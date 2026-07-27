@@ -1,0 +1,60 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-28"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Switch to combat job",
+          "InteractionType": "SwitchClass",
+          "TargetClass": "ConfiguredCombatJob",
+          "TerritoryId": 153
+        },
+        {
+          "Comment": "Accept Trial Leve",
+          "DataId": 1000823,
+          "Position": {
+            "X": 201.526,
+            "Y": 9.68945,
+            "Z": -61.4184
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "South Shroud - Quarrymill"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 134.62703,
+            "Y": 7.1539955,
+            "Z": -51.938957
+          },
+          "TerritoryId": 153,
+          "InteractionType": "Instruction",
+          "Comment": "Remove gear, or use an underleveled class.\nComplete Trial Leve to continue"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000823,
+          "Position": {
+            "X": 201.526,
+            "Y": 9.68945,
+            "Z": -61.4184
+          },
+          "TerritoryId": 153,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

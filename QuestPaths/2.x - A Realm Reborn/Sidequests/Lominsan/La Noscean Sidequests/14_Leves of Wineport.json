@@ -1,0 +1,60 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-28"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Switch to combat job",
+          "InteractionType": "SwitchClass",
+          "TargetClass": "ConfiguredCombatJob",
+          "TerritoryId": 137
+        },
+        {
+          "Comment": "Accept Trial Leve",
+          "DataId": 1002367,
+          "Position": {
+            "X": 5.75262,
+            "Y": 71.1832,
+            "Z": 0.686646
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 83.57538,
+            "Y": 65.78005,
+            "Z": 20.259033
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Instruction",
+          "Comment": "Complete the Trial Levequest\nComplete manually or can use Battlevest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002367,
+          "Position": {
+            "X": 5.75262,
+            "Y": 71.1832,
+            "Z": 0.686646
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

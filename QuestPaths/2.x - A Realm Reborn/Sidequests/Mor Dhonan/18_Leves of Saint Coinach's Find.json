@@ -1,0 +1,59 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-28"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Switch to combat job",
+          "InteractionType": "SwitchClass",
+          "TargetClass": "ConfiguredCombatJob",
+          "TerritoryId": 156
+        },
+        {
+          "Comment": "Accept Trial Leve",
+          "DataId": 1004348,
+          "Position": {
+            "X": 416,
+            "Y": -6.03864,
+            "Z": -444.4
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 121.22039,
+            "Y": -12.978282,
+            "Z": -464.1625
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Instruction",
+          "Comment": "Remove gear, or use an underleveled class.\nComplete Trial Leve to continue"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1004348,
+          "Position": {
+            "X": 415.97607,
+            "Y": -6.0610375,
+            "Z": -444.419
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

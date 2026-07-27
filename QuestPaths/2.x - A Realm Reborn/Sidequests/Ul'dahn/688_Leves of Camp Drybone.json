@@ -1,0 +1,59 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-28"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Switch to combat job",
+          "InteractionType": "SwitchClass",
+          "TargetClass": "ConfiguredCombatJob",
+          "TerritoryId": 145
+        },
+        {
+          "Comment": "Accept Trial Leve",
+          "DataId": 1001799,
+          "Position": {
+            "X": -377.12762,
+            "Y": -57.16929,
+            "Z": 128.19795
+          },
+          "TerritoryId": 145,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -416.65176,
+            "Y": -44.156845,
+            "Z": 153.43155
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Instruction",
+          "Comment": "Complete the Trial Levequest\nComplete manually or can use Battlevest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001799,
+          "Position": {
+            "X": -378.176,
+            "Y": -57.3269,
+            "Z": 129.279
+          },
+          "TerritoryId": 145,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

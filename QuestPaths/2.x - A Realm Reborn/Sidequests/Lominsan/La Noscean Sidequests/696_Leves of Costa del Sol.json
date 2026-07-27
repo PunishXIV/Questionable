@@ -1,0 +1,61 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-28"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "$": "Switch to combat job",
+          "InteractionType": "SwitchClass",
+          "TargetClass": "ConfiguredCombatJob",
+          "TerritoryId": 137
+        },
+        {
+          "Comment": "Accept Trial Leve",
+          "DataId": 1004344,
+          "Position": {
+            "X": 450.235,
+            "Y": 17.7485,
+            "Z": 470.298
+          },
+          "TerritoryId": 137,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2001104,
+          "Position": {
+            "X": 521.8575,
+            "Y": 9.472679,
+            "Z": 362.0452
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Instruction",
+          "Comment": "Complete the Trial Levequest\nComplete manually or can use Battlevest"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1004344,
+          "Position": {
+            "X": 450.235,
+            "Y": 17.7485,
+            "Z": 470.298
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
