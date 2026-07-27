@@ -106,7 +106,7 @@ internal sealed class MovementOverrideController(IClientState clientState, ILogg
                 if (alternateLocation != null)
                 {
                     _logger.LogInformation("Fudging navmesh point from {Original} to {Replacement} in blacklisted area",
-                        navPoints[i].ToString("G", CultureInfo.InvariantCulture),
+                        navPoints[i].ToString("G5", CultureInfo.InvariantCulture),
                         alternateLocation);
 
                     navPoints[i] = alternateLocation.Point;

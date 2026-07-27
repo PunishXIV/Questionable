@@ -95,7 +95,7 @@ internal static class WaitAtEnd
                                 //   - waking sands' solar
                                 //   - rising stones' solar + dawn's respite
                                 return (lastPosition - currentPosition.Value).Length() > 2;
-                            }, $"Wait(tp away from {lastPosition.ToString("G", CultureInfo.InvariantCulture)})");
+                            }, $"Wait(tp away from {lastPosition.ToString("G5", CultureInfo.InvariantCulture)})");
                     }
 
                     return
@@ -209,7 +209,7 @@ internal static class WaitAtEnd
         Vector3 Destination,
         float Distance) : ITask
     {
-        public override string ToString() => $"WaitObj({DataId} at {Destination.ToString("G", CultureInfo.InvariantCulture)} < {Distance})";
+        public override string ToString() => $"WaitObj({DataId} at {Destination.ToString("G5", CultureInfo.InvariantCulture)} < {Distance})";
     }
 
     internal sealed class WaitObjectAtPositionExecutor(GameFunctions gameFunctions) : TaskExecutor<WaitObjectAtPosition>

@@ -46,7 +46,7 @@ internal static class MoveToLandingLocation
 
             (Vector3 target, int degrees, float range) = GatheringMath.CalculateLandingLocation(location);
             logger.LogInformation("Preliminary landing location: {Location}, with degrees = {Degrees}, range = {Range}",
-                target.ToString("G", CultureInfo.InvariantCulture), degrees, range);
+                target.ToString("G5", CultureInfo.InvariantCulture), degrees, range);
 
             bool fly = Task.FlyBetweenNodes && GameFunctions.IsFlyingUnlocked(Task.TerritoryId);
             _moveTask = new MoveTask(Task.TerritoryId, target, Mount: null, 0.25f,

@@ -1,2 +1,1 @@
-- Bug fix: auto sizing -wah
-- Change: Adjusted colors -wah
+- Bug fix: less decimal places on coordinate view -alydev

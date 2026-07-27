@@ -238,7 +238,7 @@ internal static class UseItem
         IList<QuestWorkValue?> CompletionQuestVariablesFlags,
         bool StartingCombat = false) : IUseItemBase
     {
-        public override string ToString() => $"UseItem({ItemId} on ground at {Position.ToString("G", CultureInfo.InvariantCulture)})";
+        public override string ToString() => $"UseItem({ItemId} on ground at {Position.ToString("G5", CultureInfo.InvariantCulture)})";
     }
 
     internal sealed class UseOnPositionExecutor
