@@ -96,19 +96,29 @@ internal sealed partial class ActiveQuestComponent
                                      currentQuest.Quest.Root.Comment ?? string.Empty;
                     if (!string.IsNullOrWhiteSpace(comment))
                     {
-                        bool manualStep = currentStep is { InteractionType: EInteractionType.Instruction or EInteractionType.WaitForManualProgress or EInteractionType.Snipe };
-                        using ImRaii.ColorDisposable color = ImRaii.PushColor(ImGuiCol.Text, manualStep ? QstTheme.Accent : QstTheme.TextMuted);
+                        bool manualStep = currentStep is
+                        {
+                            InteractionType:
+                            EInteractionType.Instruction or
+                            EInteractionType.WaitForManualProgress or
+                            EInteractionType.Snipe
+                        };
+                        using ImRaii.ColorDisposable color =
+                            ImRaii.PushColor(ImGuiCol.Text, manualStep ? QstTheme.Accent : QstTheme.TextMuted);
                         using ImRaii.TextWrapDisposable wrap = ImRaii.TextWrapPos(0);
                         ImGui.TextUnformatted(comment);
                     }
 
                     string stats = _questController.ToStatString();
+                    float lineHeight = ImGui.GetTextLineHeightWithSpacing();
+                    Vector2 cursorStart = ImGui.GetCursorPos();
                     if (!string.IsNullOrWhiteSpace(stats))
                     {
                         using ImRaii.DisabledDisposable _ = ImRaii.Disabled();
                         using ImRaii.TextWrapDisposable wrap = ImRaii.TextWrapPos(0);
                         ImGui.TextUnformatted(stats);
                     }
+                    ImGui.SetCursorPos(new Vector2(cursorStart.X, cursorStart.Y + lineHeight * 2));
                 }
 
                 var builtNavmeshPercent = _movementController.BuiltNavmeshPercent;

@@ -1,1 +1,1 @@
-- Feature: add theme toggle -wah
+- Feature: status text no longer pushes buttons down -alydev
