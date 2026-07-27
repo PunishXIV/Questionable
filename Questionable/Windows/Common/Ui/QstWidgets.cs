@@ -23,7 +23,8 @@ internal static class QstWidgets
             ImRaii.PushColor(ImGuiCol.HeaderActive, QstTheme.WithAlpha(QstTheme.Text, 0.09f));
         using ImRaii.ColorDisposable textColor = ImRaii.PushColor(ImGuiCol.Text, QstTheme.TextMuted);
 
-        bool open = ImGui.CollapsingHeader($"{label.ToUpper(CultureInfo.CurrentUICulture)}###{id}", flags);
+        string headerLabel = label.ToUpper(CultureInfo.CurrentUICulture);
+        bool open = ImGui.CollapsingHeader($"{headerLabel}###{id}", flags);
 
         if (count != null)
         {
@@ -31,8 +32,10 @@ internal static class QstWidgets
             Vector2 textSize = ImGui.CalcTextSize(countText);
             Vector2 min = ImGui.GetItemRectMin();
             Vector2 max = ImGui.GetItemRectMax();
+            float labelEnd = ImGui.GetFontSize() + ImGui.GetStyle().FramePadding.X * 3
+                             + ImGui.CalcTextSize(headerLabel).X;
             Vector2 pos = new(
-                max.X - textSize.X - ImGui.GetStyle().FramePadding.X * 2,
+                min.X + labelEnd + ImGui.GetStyle().ItemInnerSpacing.X * 2,
                 min.Y + (max.Y - min.Y - textSize.Y) / 2f);
             ImGui.GetWindowDrawList().AddText(pos, QstTheme.ToU32(QstTheme.TextMuted), countText);
         }
@@ -110,7 +113,7 @@ internal static class QstWidgets
             drawList.AddRectFilled(pos, pos + new Vector2(width * clamped, barHeight),
                 QstTheme.ToU32(color), rounding);
 
-        ImGui.Dummy(new Vector2(width, barHeight));
+        ImGui.Dummy(new Vector2(0, barHeight));
     }
 
     // Small rounded label.
@@ -200,7 +203,7 @@ internal static class QstWidgets
             drawList.ChannelsMerge();
 
             ImGui.SetCursorScreenPos(new Vector2(_topLeft.X, bottomRight.Y));
-            ImGui.Dummy(new Vector2(_width, 0));
+            ImGui.Dummy(new Vector2(0, 0));
         }
     }
 

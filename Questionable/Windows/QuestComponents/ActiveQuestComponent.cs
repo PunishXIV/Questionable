@@ -75,11 +75,13 @@ internal sealed partial class ActiveQuestComponent
             else if (_questController.CurrentTaskState is { } currentTaskState)
             {
                 using ImRaii.ColorDisposable _ = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent);
+                using ImRaii.TextWrapDisposable wrap = ImRaii.TextWrapPos(0);
                 ImGui.TextUnformatted(currentTaskState);
             }
             else
             {
                 using ImRaii.DisabledDisposable _ = ImRaii.Disabled();
+                using ImRaii.TextWrapDisposable wrap = ImRaii.TextWrapPos(0);
                 ImGui.TextUnformatted(_questController.DebugState ?? string.Empty);
             }
 
@@ -96,6 +98,7 @@ internal sealed partial class ActiveQuestComponent
                     {
                         bool manualStep = currentStep is { InteractionType: EInteractionType.Instruction or EInteractionType.WaitForManualProgress or EInteractionType.Snipe };
                         using ImRaii.ColorDisposable color = ImRaii.PushColor(ImGuiCol.Text, manualStep ? QstTheme.Accent : QstTheme.TextMuted);
+                        using ImRaii.TextWrapDisposable wrap = ImRaii.TextWrapPos(0);
                         ImGui.TextUnformatted(comment);
                     }
 
@@ -103,7 +106,8 @@ internal sealed partial class ActiveQuestComponent
                     if (!string.IsNullOrWhiteSpace(stats))
                     {
                         using ImRaii.DisabledDisposable _ = ImRaii.Disabled();
-                        ImGui.Text(stats);
+                        using ImRaii.TextWrapDisposable wrap = ImRaii.TextWrapPos(0);
+                        ImGui.TextUnformatted(stats);
                     }
                 }
 
@@ -111,7 +115,9 @@ internal sealed partial class ActiveQuestComponent
             }
             catch (Exception e)
             {
-                ImGui.TextColored(QstTheme.Danger, e.ToString());
+                using ImRaii.ColorDisposable _ = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Danger);
+                using ImRaii.TextWrapDisposable wrap = ImRaii.TextWrapPos(0);
+                ImGui.TextUnformatted(e.ToString());
                 _logger.LogError(e, "Could not handle active quest buttons");
             }
 
@@ -267,14 +273,7 @@ internal sealed partial class ActiveQuestComponent
                 bool showStopClock = hasLevelCondition || hasCompleteQuestConditions || hasAcceptQuestConditions;
                 bool showPriorityCrystal = anyAvailable || anyUnavailable;
                 if (showStopClock || showPriorityCrystal)
-                {
-                    float clockWidth = ImGui.CalcTextSize(SeIconChar.Clock.ToIconString()).X;
-                    float crystalWidth = ImGui.CalcTextSize(SeIconChar.Hyadelyn.ToIconString()).X;
-                    float iconsWidth = (showStopClock ? clockWidth : 0f)
-                                       + (showPriorityCrystal ? crystalWidth : 0f)
-                                       + (showStopClock && showPriorityCrystal ? ImGui.GetStyle().ItemSpacing.X : 0f);
-                    ImGui.SameLine(ImGui.GetWindowContentRegionMax().X - iconsWidth);
-                }
+                    ImGui.SameLine();
 
                 if (showStopClock)
                 {
@@ -411,7 +410,6 @@ internal sealed partial class ActiveQuestComponent
 
                 if (metaSequence?.FindStep(currentQuest.Step) is { } metaStep)
                 {
-                    ImGui.SameLine();
                     QstWidgets.Chip(metaStep.InteractionType.ToString(), QstTheme.Accent);
                     if (metaStep.DataId is { } metaDataId)
                     {
@@ -457,7 +455,8 @@ internal sealed partial class ActiveQuestComponent
             }
 
             using ImRaii.ColorDisposable styleColor = ImRaii.PushColor(ImGuiCol.Text, color);
-            ImGui.Text($"{questWork}");
+            using (ImRaii.TextWrapPos(0))
+                ImGui.TextUnformatted($"{questWork}");
 
             if (ImGui.IsItemClicked())
             {

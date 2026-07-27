@@ -16,13 +16,13 @@ internal static class QstTheme
     public static readonly Vector4 TextMuted = Rgb(156, 163, 175);
     public static readonly Vector4 TextFaint = Rgb(117, 123, 134);
 
-    public static readonly Vector4 PanelBg = Rgba(26, 26, 26, 0.96f);
+    public static readonly Vector4 PanelBg = Rgba(21, 21, 21, 0.96f);
     public static readonly Vector4 PanelDark = Rgb(14, 14, 14);
     public static readonly Vector4 InputBg = Rgb(19, 19, 19);
-    public static readonly Vector4 Raised = Rgb(38, 38, 38);
-    public static readonly Vector4 RaisedHovered = Rgb(48, 48, 48);
-    public static readonly Vector4 RaisedActive = Rgb(58, 58, 58);
-    public static readonly Vector4 Edge = Rgb(46, 46, 46);
+    public static readonly Vector4 Raised = Rgb(56, 56, 56);
+    public static readonly Vector4 RaisedHovered = Rgb(72, 72, 72);
+    public static readonly Vector4 RaisedActive = Rgb(88, 88, 88);
+    public static readonly Vector4 Edge = Rgb(64, 64, 64);
 
     public static Vector4 WithAlpha(Vector4 color, float alpha) => color with { W = alpha };
 
@@ -38,7 +38,7 @@ internal static class QstTheme
         internal WindowStyleScope()
         {
             _colors = ImRaii.PushColor(ImGuiCol.WindowBg, PanelBg)
-                .Push(ImGuiCol.PopupBg, Rgba(27, 27, 27, 0.98f))
+                .Push(ImGuiCol.PopupBg, Rgba(22, 22, 22, 0.98f))
                 .Push(ImGuiCol.Border, Edge)
                 .Push(ImGuiCol.Separator, Edge)
                 .Push(ImGuiCol.FrameBg, InputBg)
@@ -55,9 +55,9 @@ internal static class QstTheme
                 .Push(ImGuiCol.HeaderActive, RaisedActive)
                 .Push(ImGuiCol.Tab, Rgb(26, 26, 26))
                 .Push(ImGuiCol.TabHovered, RaisedHovered)
-                .Push(ImGuiCol.TabActive, Rgb(43, 43, 43))
+                .Push(ImGuiCol.TabActive, Rgb(60, 60, 60))
                 .Push(ImGuiCol.TabUnfocused, Rgb(26, 26, 26))
-                .Push(ImGuiCol.TabUnfocusedActive, Rgb(36, 36, 36))
+                .Push(ImGuiCol.TabUnfocusedActive, Rgb(46, 46, 46))
                 .Push(ImGuiCol.CheckMark, Accent)
                 .Push(ImGuiCol.SliderGrab, Accent)
                 .Push(ImGuiCol.SliderGrabActive, AccentActive)
