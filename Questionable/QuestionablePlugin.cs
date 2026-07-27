@@ -88,6 +88,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
 
             serviceCollection.AddSingleton(configuration);
             Questionable.Utils.LocalizeShortcut.Initialize(configuration);
+            Windows.Common.Ui.QstTheme.Initialize(configuration);
 
             AddBasicFunctionsAndData(serviceCollection);
             AddTaskFactories(serviceCollection);
