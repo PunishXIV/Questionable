@@ -150,7 +150,7 @@ internal sealed class MovementController
                 navPoints = Destination.PartialRoute.Concat(navPoints).ToList();
                 logger.LogInformation("Navigating via route (XZ:{Distance}) [{Route}]",
                     navPoints[0].DistanceTo_XZ(navPoints[^1]),
-                    string.Join(" → ", pathfindResult.Select(x => x.ToString("G", CultureInfo.InvariantCulture))));
+                    string.Join(" → ", pathfindResult.Select(x => x.ToString("G5", CultureInfo.InvariantCulture))));
 
                 navmeshIpc.MoveTo(navPoints, Destination.IsFlying);
                 MovementStartedAt = DateTime.Now;
@@ -332,7 +332,7 @@ internal sealed class MovementController
         {
             startPosition = startPosition with { Y = startPosition.Y + 1f };
             logger.LogInformation("Using modified start position for flying pathfinding: {StartPosition}",
-                startPosition.ToString("G", CultureInfo.InvariantCulture));
+                startPosition.ToString("G5", CultureInfo.InvariantCulture));
         }
         else if (fly)
             // other positions have a (lesser) chance of starting from underground too, in which case pathfinding takes

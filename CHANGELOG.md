@@ -1,2 +1,1 @@
-- Bug fix: auto sizing -wah
-- Change: Adjusted colors -wah
+- Feature: navmesh rebuild progress bar -alydev
