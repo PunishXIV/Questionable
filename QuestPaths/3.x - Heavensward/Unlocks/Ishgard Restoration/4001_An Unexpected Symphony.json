@@ -1,6 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "Comment": "The concert cutscene is not skippable",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -35,8 +37,7 @@
               "Prompt": "TEXT_LUCKHA303_04001_Q2_000_000",
               "Answer": "TEXT_LUCKHA303_04001_A2_000_001"
             }
-          ],
-          "Comment": "Concert can be skipped via ESC → Quit Game"
+          ]
         }
       ]
     },
