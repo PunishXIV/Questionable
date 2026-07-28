@@ -1,0 +1,183 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053655,
+          "Position": {
+            "X": 231.675,
+            "Y": 50.7362,
+            "Z": 210.254
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Solution Nine",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Neon Stein"
+          ],
+          "$": "auto: issuer 1053655 (Hardiboiled)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1054748,
+          "Position": {
+            "X": 441.55,
+            "Y": 59.9832,
+            "Z": 88.9143
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1054748 (Mymond)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -249.51462,
+            "Y": 36.99997,
+            "Z": -496.92407
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1058941,
+          "Position": {
+            "X": -246.869,
+            "Y": 39.0238,
+            "Z": -482.382
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1058941 (Circine)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1058957,
+          "Position": {
+            "X": -252.342,
+            "Y": 37,
+            "Z": -495.573
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1058957 (Hardiboiled)",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_CHRHDB951_05481_Q2_000_000",
+              "Answer": "TEXT_CHRHDB951_05481_A2_000_002",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1049153,
+          "Position": {
+            "X": 246.654,
+            "Y": 51.4681,
+            "Z": 158.062
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Neon Stein"
+          ],
+          "$": "auto: todo location -> 1049153 (Saralla)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1058952,
+          "Position": {
+            "X": -323.236,
+            "Y": 4.58961,
+            "Z": -47.1466
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Solution Nine] Neon Stein",
+            "[Solution Nine] Nexus Arcade"
+          ],
+          "$": "auto: todo location -> 1058952 (Hardiboiled)"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2015339,
+          "Position": {
+            "X": -327.098,
+            "Y": 5.82137,
+            "Z": -45.9825
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Say",
+          "ChatMessage": {"Key": "TEXT_CHRHDB951_05481_SAYTODO_000_135"},
+          "$": "auto: todo location -> 2015339 (data terminal)"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1058952,
+          "Position": {
+            "X": -323.236,
+            "Y": 4.58961,
+            "Z": -47.1466
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1058952 (Hardiboiled)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058957,
+          "Position": {
+            "X": -252.342,
+            "Y": 37,
+            "Z": -495.573
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "$": "auto: todo turn-in -> 1058957 (Hardiboiled)"
+        }
+      ]
+    }
+  ]
+}
