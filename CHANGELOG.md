@@ -1,1 +1,1 @@
-- Feature: status text no longer pushes buttons down -alydev
+- Bug fix: title bar minimize button -alydev
