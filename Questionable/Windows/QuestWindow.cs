@@ -27,6 +27,8 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     private readonly TerritoryData _territoryData;
     private readonly BossModIpc _bossModIpc;
 
+    private bool _wasRunning;
+
     public QuestWindow(IDalamudPluginInterface pluginInterface,
         QuestController questController,
         IClientState clientState,
@@ -70,6 +72,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             MaximumSize = default
         };
         RespectCloseHotkey = false;
+        ShowCloseButton = true;
         AllowClickthrough = false;
 
         _minimizeButton = new()
@@ -111,17 +114,16 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
 
     public override void PreOpenCheck()
     {
-        if (_questController.IsRunning)
-        {
+        bool isRunning = _questController.IsRunning;
+
+        if (isRunning && !_wasRunning)
             IsOpen = true;
+        _wasRunning = isRunning;
+
+        if (isRunning)
             Flags |= ImGuiWindowFlags.NoCollapse;
-            ShowCloseButton = false;
-        }
         else
-        {
             Flags &= ~ImGuiWindowFlags.NoCollapse;
-            ShowCloseButton = true;
-        }
     }
 
     public override bool DrawConditions()
