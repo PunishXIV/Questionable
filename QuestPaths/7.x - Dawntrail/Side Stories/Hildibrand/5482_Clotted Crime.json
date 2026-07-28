@@ -34,7 +34,7 @@
           "TerritoryId": 1191,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": true
+            "Enabled": false
           },
           "Fly": true,
           "AetheryteShortcut": "Heritage Found - Yyasulani Station",
