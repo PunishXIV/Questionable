@@ -26,6 +26,12 @@ internal sealed class ConfigWindow : Window
             _configuration.AuthorName = authorName;
             Save();
         }
+        bool showOverlay = _configuration.ShowOverlay;
+        if (ImGui.Checkbox("Show white numbers overlay", ref showOverlay))
+        {
+            _configuration.ShowOverlay = showOverlay;
+            Save();
+        }
     }
 
     private void Save() => _pluginInterface.SavePluginConfig(_configuration);
