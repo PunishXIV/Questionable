@@ -22,6 +22,16 @@
       "Sequence": 1,
       "Steps": [
         {
+          "Position": {
+            "X": 565.0586,
+            "Y": -60.551,
+            "Z": -135.34882
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "RestartNavigationIfCancelled": false
+        },
+        {
           "DataId": 1023358,
           "Position": {
             "X": 608.5145,
@@ -136,6 +146,16 @@
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
           "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 565.0586,
+            "Y": -60.551,
+            "Z": -135.34882
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "RestartNavigationIfCancelled": false
         },
         {
           "DataId": 1023358,
