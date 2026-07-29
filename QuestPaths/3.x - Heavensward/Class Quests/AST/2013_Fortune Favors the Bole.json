@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "kaiser",
-  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-09"},
+  "LastChecked": { "Username": "okonomiyaki", "Date": "2026-07-09" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -22,17 +22,17 @@
         {
           "TerritoryId": 153,
           "InteractionType": "CreateGearset",
-          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "TerritoryId": 153,
           "InteractionType": "EquipRecommended",
-          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "TerritoryId": 153,
           "InteractionType": "UpdateGearset",
-          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "DataId": 1014981,

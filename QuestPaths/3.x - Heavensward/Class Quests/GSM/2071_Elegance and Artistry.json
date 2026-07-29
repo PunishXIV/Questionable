@@ -1,120 +1,99 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "Crafted Item: 1x Hardsilver Bangle of Casting // Autocraft requires: 2x Hardsilver Nugget, 2x Star Sapphire, 2x Star Ruby, 1x Grade 1 Intelligence Dissolvent",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1012528,
-			"Position":
-			{
-				"X": -57.41974,
-				"Y": 18.504038,
-				"Z": 66.544556
-			},
-			"TerritoryId": 131,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ul'dah",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Goldsmiths' Guild"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					130,
-					131
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1012529,
-			"Position":
-			{
-				"X": 132.86023,
-				"Y": 4,
-				"Z": -68.34515
-			},
-			"TerritoryId": 131,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Goldsmiths' Guild",
-			"[Ul'dah] Sapphire Avenue Exchange"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1012528,
-			"Position":
-			{
-				"X": -57.41974,
-				"Y": 18.504038,
-				"Z": 66.544556
-			},
-			"TerritoryId": 131,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Sapphire Avenue Exchange",
-			"[Ul'dah] Goldsmiths' Guild"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 131,
-			"ItemId": 11068,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf":
-				{
-					"Item":
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012528,
-			"Position":
-			{
-				"X": -57.41974,
-				"Y": 18.504038,
-				"Z": 66.544556
-			},
-			"TerritoryId": 131,
-			"InteractionType": "CompleteQuest",
-			"AllowHighQuality":true
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "Crafted Item: 1x Hardsilver Bangle of Casting // Autocraft requires: 2x Hardsilver Nugget, 2x Star Sapphire, 2x Star Ruby, 1x Grade 1 Intelligence Dissolvent",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012528,
+          "Position": {
+            "X": -57.41974,
+            "Y": 18.504038,
+            "Z": 66.544556
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [130, 131]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012529,
+          "Position": {
+            "X": 132.86023,
+            "Y": 4,
+            "Z": -68.34515
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Goldsmiths' Guild",
+            "[Ul'dah] Sapphire Avenue Exchange"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012528,
+          "Position": {
+            "X": -57.41974,
+            "Y": 18.504038,
+            "Z": 66.544556
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Sapphire Avenue Exchange",
+            "[Ul'dah] Goldsmiths' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 131,
+          "ItemId": 11068,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012528,
+          "Position": {
+            "X": -57.41974,
+            "Y": 18.504038,
+            "Z": 66.544556
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AllowHighQuality": true
+        }
+      ]
+    }
+  ]
 }

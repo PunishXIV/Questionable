@@ -1,138 +1,116 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"LastChecked": {"Username": "alydev", "Date": "2026-07-19"},
-  "QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1000997,
-			"Position":
-			{
-				"X": -31.265808,
-				"Y": 44.5,
-				"Z": 185.53442
-			},
-			"TerritoryId": 128,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Limsa Lominsa",
-			"AethernetShortcut":
-			[
-			"[Limsa Lominsa] Aetheryte Plaza",
-			"[Limsa Lominsa] The Aftcastle"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					128,  129
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1021042,
-			"Position":
-			{
-				"X": -184.92413,
-				"Y": 41,
-				"Z": 184.67993
-			},
-			"TerritoryId": 128,
-			"InteractionType": "Interact",
-			"DialogueChoices":
-			[
-			{
-				"Prompt": "TEXT_CLSBSM630_02616_Q1_000_000",
-				"Answer": "TEXT_CLSBSM630_02616_A1_000_001",
-				"Type": "List"
-			}
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1000997,
-			"Position":
-			{
-				"X": -31.265808,
-				"Y": 44.5,
-				"Z": 185.53442
-			},
-			"TerritoryId": 128,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"DataId": 1021043,
-			"Position":
-			{
-				"X": -5.56958,
-				"Y": 39.517494,
-				"Z": 17.257874
-			},
-			"TerritoryId": 128,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 128,
-			"ItemId": 17886,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf": 
-				{
-					"Item": 
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1000997,
-			"Position":
-			{
-				"X": -31.265808,
-				"Y": 44.5,
-				"Z": 185.53442
-			},
-			"TerritoryId": 128,
-			"InteractionType": "CompleteQuest",
-			"AethernetShortcut":
-			[
-			"[Limsa Lominsa] Fishermen's Guild",
-			"[Limsa Lominsa] The Aftcastle"
-			]
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "LastChecked": { "Username": "alydev", "Date": "2026-07-19" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000997,
+          "Position": {
+            "X": -31.265808,
+            "Y": 44.5,
+            "Z": 185.53442
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [128, 129]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021042,
+          "Position": {
+            "X": -184.92413,
+            "Y": 41,
+            "Z": 184.67993
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_CLSBSM630_02616_Q1_000_000",
+              "Answer": "TEXT_CLSBSM630_02616_A1_000_001",
+              "Type": "List"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000997,
+          "Position": {
+            "X": -31.265808,
+            "Y": 44.5,
+            "Z": 185.53442
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021043,
+          "Position": {
+            "X": -5.56958,
+            "Y": 39.517494,
+            "Z": 17.257874
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 128,
+          "ItemId": 17886,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1000997,
+          "Position": {
+            "X": -31.265808,
+            "Y": 44.5,
+            "Z": 185.53442
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermen's Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    }
+  ]
 }

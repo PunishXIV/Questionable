@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "kaiser",
-  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-09"},
+  "LastChecked": { "Username": "okonomiyaki", "Date": "2026-07-09" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -23,9 +23,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                419
-              ]
+              "InTerritory": [419]
             }
           }
         }
@@ -131,9 +129,7 @@
           ],
           "SkipConditions": {
             "StepIf": {
-              "InTerritory": [
-                128
-              ]
+              "InTerritory": [128]
             }
           }
         },
@@ -147,14 +143,7 @@
           "TerritoryId": 128,
           "InteractionType": "Interact",
           "StopDistance": 5,
-          "CompletionQuestVariablesFlags": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            64
-          ]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 1002680,
@@ -166,14 +155,7 @@
           "TerritoryId": 128,
           "InteractionType": "Interact",
           "StopDistance": 5,
-          "CompletionQuestVariablesFlags": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            32
-          ]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         }
       ]
     },

@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-07-13" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -33,10 +33,7 @@
           "TerritoryId": 155,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            4377,
-            4378
-          ],
+          "KillEnemyDataIds": [4377, 4378],
           "Fly": true
         }
       ]

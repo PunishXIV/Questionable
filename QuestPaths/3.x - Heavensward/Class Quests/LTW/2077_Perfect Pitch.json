@@ -1,164 +1,134 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "Crafted Item: 1x Dhalmelskin Leggings of Scouting HQ // Autocraft requires: 2x Dhalmel Leather, 1x Ramie Cloth, 1x Titanium Nugget, 1x Rubber",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Jeweled Crozier"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418,
-					419
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1012542,
-			"Position":
-			{
-				"X": -119.06616,
-				"Y": -12.634913,
-				"Z": -14.145203
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 419,
-			"ItemId": 10875,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf": 
-				{
-					"Item": 
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 4,
-		"Steps":
-		[
-		{
-			"DataId": 1012544,
-			"Position":
-			{
-				"X": 100.541626,
-				"Y": 15.137732,
-				"Z": 44.571533
-			},
-			"TerritoryId": 418,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Forgotten Knight"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "CompleteQuest",
-			"AethernetShortcut":
-			[
-			"[Ishgard] The Forgotten Knight",
-			"[Ishgard] The Jeweled Crozier"
-			]
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "Crafted Item: 1x Dhalmelskin Leggings of Scouting HQ // Autocraft requires: 2x Dhalmel Leather, 1x Ramie Cloth, 1x Titanium Nugget, 1x Rubber",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Jeweled Crozier"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418, 419]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012542,
+          "Position": {
+            "X": -119.06616,
+            "Y": -12.634913,
+            "Z": -14.145203
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 419,
+          "ItemId": 10875,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1012544,
+          "Position": {
+            "X": 100.541626,
+            "Y": 15.137732,
+            "Z": 44.571533
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] The Jeweled Crozier"
+          ]
+        }
+      ]
+    }
+  ]
 }

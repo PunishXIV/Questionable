@@ -1,181 +1,149 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "Crafted Item: 1x Dragonskin Choker HQ // Autocraft requires: 1x Dragon Leather, 1x Hardsilver Ingot, 1x Ramie Thread",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Jeweled Crozier"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418,
-					419
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1012180,
-			"Position":
-			{
-				"X": -174.18176,
-				"Y": -12.555469,
-				"Z": -21.561035
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1012542,
-			"Position":
-			{
-				"X": -119.06616,
-				"Y": -12.634913,
-				"Z": -14.145203
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 4,
-		"Steps":
-		[
-		{
-			"DataId": 1012545,
-			"Position":
-			{
-				"X": 32.516968,
-				"Y": -12.021002,
-				"Z": 53.482788
-			},
-			"TerritoryId": 418,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Brume"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 5,
-		"Steps":
-		[
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ishgard] The Brume",
-			"[Ishgard] The Jeweled Crozier"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 419,
-			"ItemId": 12024,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf": 
-				{
-					"Item": 
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "CompleteQuest"
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "Crafted Item: 1x Dragonskin Choker HQ // Autocraft requires: 1x Dragon Leather, 1x Hardsilver Ingot, 1x Ramie Thread",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Jeweled Crozier"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418, 419]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012180,
+          "Position": {
+            "X": -174.18176,
+            "Y": -12.555469,
+            "Z": -21.561035
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012542,
+          "Position": {
+            "X": -119.06616,
+            "Y": -12.634913,
+            "Z": -14.145203
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1012545,
+          "Position": {
+            "X": 32.516968,
+            "Y": -12.021002,
+            "Z": 53.482788
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Brume",
+            "[Ishgard] The Jeweled Crozier"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 419,
+          "ItemId": 12024,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
 }

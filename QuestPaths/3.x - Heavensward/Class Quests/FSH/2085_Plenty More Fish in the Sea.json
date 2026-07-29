@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Raitono",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-07-13" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -22,9 +22,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
+              "InTerritory": [129]
             }
           }
         }

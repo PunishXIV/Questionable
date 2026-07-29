@@ -1,91 +1,72 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-13"},
-  "QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1000997,
-			"Position":
-			{
-				"X": -31.265808,
-				"Y": 44.5,
-				"Z": 185.53442
-			},
-			"TerritoryId": 128,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Limsa Lominsa",
-			"AethernetShortcut":
-			[
-			"[Limsa Lominsa] Aetheryte Plaza",
-			"[Limsa Lominsa] The Aftcastle"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					128
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1012510,
-			"Position":
-			{
-				"X": -6.515625,
-				"Y": 39.517525,
-				"Z": 16.952698
-			},
-			"TerritoryId": 128,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 1012509,
-			"Position":
-			{
-				"X": -190.56995,
-				"Y": -12.548244,
-				"Z": -25.833557
-			},
-			"TerritoryId": 419,
-			"InteractionType": "CompleteQuest",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Jeweled Crozier"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418,  419
-					]
-				}
-			}
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "LastChecked": { "Username": "okonomiyaki", "Date": "2026-07-13" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000997,
+          "Position": {
+            "X": -31.265808,
+            "Y": 44.5,
+            "Z": 185.53442
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [128]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012510,
+          "Position": {
+            "X": -6.515625,
+            "Y": 39.517525,
+            "Z": 16.952698
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012509,
+          "Position": {
+            "X": -190.56995,
+            "Y": -12.548244,
+            "Z": -25.833557
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Jeweled Crozier"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418, 419]
+            }
+          }
+        }
+      ]
+    }
+  ]
 }

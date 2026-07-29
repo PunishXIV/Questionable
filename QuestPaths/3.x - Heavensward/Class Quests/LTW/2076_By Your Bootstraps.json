@@ -1,109 +1,90 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "Crafted Item: 1 x Wyvernskin Workboots HQ // Autocraft requires: 2x Wyvern Leather, 1x Holy Rainbow Cloth, 1x Rainbow Thread, 1x Rubber",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Jeweled Crozier"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418,
-					419
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1012180,
-			"Position":
-			{
-				"X": -174.18176,
-				"Y": -12.555469,
-				"Z": -21.561035
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 419,
-			"ItemId": 12007,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf": 
-				{
-					"Item": 
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "CompleteQuest"
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "Crafted Item: 1 x Wyvernskin Workboots HQ // Autocraft requires: 2x Wyvern Leather, 1x Holy Rainbow Cloth, 1x Rainbow Thread, 1x Rubber",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Jeweled Crozier"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418, 419]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012180,
+          "Position": {
+            "X": -174.18176,
+            "Y": -12.555469,
+            "Z": -21.561035
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 419,
+          "ItemId": 12007,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
 }

@@ -27,10 +27,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
+              "InTerritory": [129, 128]
             }
           }
         }

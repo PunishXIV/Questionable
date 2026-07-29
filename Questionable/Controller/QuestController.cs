@@ -1262,7 +1262,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public bool TryPickPriorityQuest()
     {
-        if (!IsInterruptible() || NextQuest != null || GatheringQuest != null || SimulatedQuest != null)
+        if (!IsInterruptible() ||
+            NextQuest != null ||
+            GatheringQuest != null ||
+            SimulatedQuest != null ||
+            StopAfterCurrentQuest ||
+            StopAfterAcceptingNextQuest ||
+            StopBeforeTeleport)
             return false;
 
         ElementId? priorityQuestId = _questFunctions.NextPriorityQuestsThatCanBeAccepted

@@ -22,10 +22,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
+              "InTerritory": [129, 128]
             }
           }
         }
@@ -107,10 +104,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                419
-              ]
+              "InTerritory": [418, 419]
             }
           }
         }
@@ -134,10 +128,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
+              "InTerritory": [129, 128]
             }
           }
         },
@@ -214,10 +205,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
+              "InTerritory": [129, 128]
             }
           },
           "InteractionType": "CompleteQuest",

@@ -1,129 +1,104 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "!!Crafting requires Master Blacksmith III!! Crafted Item: 1x Adamantite Winglet HQ // Autocraft requires: 3x Adamantite Nugget, 1x Aurum Regis Nugget, 1x Birch Lumber, 1x Scale Glue",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1012509,
-			"Position":
-			{
-				"X": -190.56995,
-				"Y": -12.548244,
-				"Z": -25.833557
-			},
-			"TerritoryId": 419,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] The Forgotten Knight",
-			"[Ishgard] The Jeweled Crozier"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418,  419
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 419,
-			"ItemId": 10591,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf": 
-				{
-					"Item": 
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012509,
-			"Position":
-			{
-				"X": -190.56995,
-				"Y": -12.548244,
-				"Z": -25.833557
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1013682,
-			"Position":
-			{
-				"X": 80.125,
-				"Y": 24.071722,
-				"Z": -32.181335
-			},
-			"TerritoryId": 418,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ishgard] The Jeweled Crozier",
-			"[Ishgard] The Forgotten Knight"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 1012509,
-			"Position":
-			{
-				"X": -190.56995,
-				"Y": -12.548244,
-				"Z": -25.833557
-			},
-			"TerritoryId": 419,
-			"InteractionType": "CompleteQuest",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] The Forgotten Knight",
-			"[Ishgard] The Jeweled Crozier"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418,  419
-					]
-				}
-			}
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "!!Crafting requires Master Blacksmith III!! Crafted Item: 1x Adamantite Winglet HQ // Autocraft requires: 3x Adamantite Nugget, 1x Aurum Regis Nugget, 1x Birch Lumber, 1x Scale Glue",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012509,
+          "Position": {
+            "X": -190.56995,
+            "Y": -12.548244,
+            "Z": -25.833557
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] The Jeweled Crozier"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418, 419]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 419,
+          "ItemId": 10591,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012509,
+          "Position": {
+            "X": -190.56995,
+            "Y": -12.548244,
+            "Z": -25.833557
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1013682,
+          "Position": {
+            "X": 80.125,
+            "Y": 24.071722,
+            "Z": -32.181335
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Jeweled Crozier",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012509,
+          "Position": {
+            "X": -190.56995,
+            "Y": -12.548244,
+            "Z": -25.833557
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] The Jeweled Crozier"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418, 419]
+            }
+          }
+        }
+      ]
+    }
+  ]
 }
