@@ -42,12 +42,13 @@
         },
         {
           "Position": {
-            "X": 21.086666,
-            "Y": -197.73204,
-            "Z": -153.08989
+            "X": 25.12675,
+            "Y": -198.0015,
+            "Z": -158.07468
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
           "RestartNavigationIfCancelled": false
         },
         {
