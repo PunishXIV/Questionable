@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Titanium Mask of Striking // Autocraft requires: 2x Titanium Nugget, 1x Dhalmel Leather, 1x Rose Gold Nugget",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,

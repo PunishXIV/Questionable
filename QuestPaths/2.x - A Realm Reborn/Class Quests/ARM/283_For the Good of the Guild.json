@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Mythril-plated Caligae HQ,\n 1x Reinforced Mythril Elmo HQ,\n 1x Mythril Sollerets HQ\nAutocraft requires:\n 1x Mythril Elmo,\n 2x Peiste Leather,\n 2x Mythril Plate,\n 2x Mythril Rivets,\n 2x Mythril Rings,\n 2x Hippogryph Sinew,\n 1x Aldgoat Leather,\n 1x Bronze Ingot",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,

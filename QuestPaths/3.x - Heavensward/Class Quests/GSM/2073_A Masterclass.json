@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Aurum Regis Cylinder // Autocraft requires: 1x Aurum Regis Nugget, 1x Cloud Mica Whetstone",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,

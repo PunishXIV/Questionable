@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Titanium Lump Hammer HQ // Autocraft requires: 2x Titanium Ingot, 1x Hallowed Chestnut Lumber, 1x Mythrite Ingot, 1x Wing Glue",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,

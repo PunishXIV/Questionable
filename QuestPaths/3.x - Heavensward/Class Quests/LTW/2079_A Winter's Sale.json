@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "!!Crafting requires Master Leatherworker III!! Crafted Item: 1x Chivalric Longcoat of Aiming // Autocraft requires: 3x Amphiptere Leather, 1x Chimerical Felt, 2x Aurum Regis Nugget, 2x Grade 1 Dexterity Dissolvent, 2x Dawnborne Aethersand",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,

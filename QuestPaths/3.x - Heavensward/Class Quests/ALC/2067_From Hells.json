@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 3x Grade 1 Intelligence Dissolvent HQ // Autocraft requires: 4x Deepeye Tears, 2x Mogpom, 1x Volcanic Rock Salt",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,

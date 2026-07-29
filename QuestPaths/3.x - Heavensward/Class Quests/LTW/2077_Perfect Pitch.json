@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Dhalmelskin Leggings of Scouting HQ // Autocraft requires: 2x Dhalmel Leather, 1x Ramie Cloth, 1x Titanium Nugget, 1x Rubber",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
