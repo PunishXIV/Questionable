@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
   "Comment": "Crafted Item:\n1x Sohm Al tart\n1x Ishgardian tea HQ\nAutocrafting requires:\n3x Coerthan Tea Leaves\n3x Dark Chestnut\n5x Highland Wheat\n2x Yak Milk(crystarium)\n1x Maple Sap(Jossy)\n1x Buffalo Milk(Jossy)",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -101,82 +102,7 @@
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4849,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4848,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4852,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12881,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12846,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12842,
-          "ItemCount": 1,
-          "ItemQuality": "HQ",
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
+          "TerritoryId": 128
         },
         {
           "DataId": 1012568,
