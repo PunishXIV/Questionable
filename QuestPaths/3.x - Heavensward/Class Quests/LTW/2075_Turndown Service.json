@@ -1,121 +1,102 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-14"},
-  "QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1000691,
-			"Position":
-			{
-				"X": 71.97681,
-				"Y": 8,
-				"Z": -166.52173
-			},
-			"TerritoryId": 133,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Gridania",
-			"AethernetShortcut":
-			[
-			"[Gridania] Aetheryte Plaza",
-			"[Gridania] Leatherworkers' Guild & Shaded Bower"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					132,
-					133
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Jeweled Crozier"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1012181,
-			"Position":
-			{
-				"X": -248.55426,
-				"Y": -20.034918,
-				"Z": -90.98956
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		},
-		{
-			"DataId": 1012180,
-			"Position":
-			{
-				"X": -174.18176,
-				"Y": -12.555469,
-				"Z": -21.561035
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		},
-		{
-			"DataId": 1012542,
-			"Position":
-			{
-				"X": -119.06616,
-				"Y": -12.634913,
-				"Z": -14.145203
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "CompleteQuest"
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "LastChecked": { "Username": "okonomiyaki", "Date": "2026-07-14" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000691,
+          "Position": {
+            "X": 71.97681,
+            "Y": 8,
+            "Z": -166.52173
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Leatherworkers' Guild & Shaded Bower"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [132, 133]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Jeweled Crozier"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012181,
+          "Position": {
+            "X": -248.55426,
+            "Y": -20.034918,
+            "Z": -90.98956
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1012180,
+          "Position": {
+            "X": -174.18176,
+            "Y": -12.555469,
+            "Z": -21.561035
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1012542,
+          "Position": {
+            "X": -119.06616,
+            "Y": -12.634913,
+            "Z": -14.145203
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
 }

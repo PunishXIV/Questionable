@@ -1,179 +1,142 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "Crafted Item: 3x Birch Lumber HQ // Autocraft requires: 15x Birch Log",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1012498,
-			"Position":
-			{
-				"X": 96.57422,
-				"Y": -20.020874,
-				"Z": 64.7135
-			},
-			"TerritoryId": 418,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Brume"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1012505,
-			"Position":
-			{
-				"X": -138.0484,
-				"Y": 5.467082,
-				"Z": 34.86682
-			},
-			"TerritoryId": 418,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ishgard] The Brume",
-			"[Ishgard] Skysteel Manufactory"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1000153,
-			"Position":
-			{
-				"X": -44.87683,
-				"Y": -1.2500024,
-				"Z": 56.839844
-			},
-			"TerritoryId": 132,
-			"AetheryteShortcut": "Gridania",
-			"InteractionType": "Interact",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					132
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"Position":
-				{
-				"X": 116.76828,
-				"Y": 285.9804,
-				"Z": 139.23105
-				},
-			"TerritoryId": 155,
-			"AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-			"InteractionType": "WalkTo",
-			"Fly": true,
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					155
-					]
-				}
-			}
-		},
-		{
-			"DataId": 1000776,
-			"Position":
-			{
-				"X": 115.342896,
-				"Y": 287.02945,
-				"Z": 142.1377
-			},
-			"TerritoryId": 155,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 155,
-			"ItemId": 12583,
-			"ItemCount": 3,
-			"SkipConditions":
-			{
-				"StepIf":
-				{
-					"Item":
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012498,
-			"Position":
-			{
-				"X": 96.57422,
-				"Y": -20.020874,
-				"Z": 64.7135
-			},
-			"TerritoryId": 418,
-			"AetheryteShortcut": "Ishgard",
-			"InteractionType": "CompleteQuest",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Brume"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418
-					]
-				}
-			}
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "Crafted Item: 3x Birch Lumber HQ // Autocraft requires: 15x Birch Log",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012498,
+          "Position": {
+            "X": 96.57422,
+            "Y": -20.020874,
+            "Z": 64.7135
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012505,
+          "Position": {
+            "X": -138.0484,
+            "Y": 5.467082,
+            "Z": 34.86682
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Brume",
+            "[Ishgard] Skysteel Manufactory"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1000153,
+          "Position": {
+            "X": -44.87683,
+            "Y": -1.2500024,
+            "Z": 56.839844
+          },
+          "TerritoryId": 132,
+          "AetheryteShortcut": "Gridania",
+          "InteractionType": "Interact",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [132]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 116.76828,
+            "Y": 285.9804,
+            "Z": 139.23105
+          },
+          "TerritoryId": 155,
+          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [155]
+            }
+          }
+        },
+        {
+          "DataId": 1000776,
+          "Position": {
+            "X": 115.342896,
+            "Y": 287.02945,
+            "Z": 142.1377
+          },
+          "TerritoryId": 155,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 155,
+          "ItemId": 12583,
+          "ItemCount": 3,
+          "ItemQuality": "HQ",
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012498,
+          "Position": {
+            "X": 96.57422,
+            "Y": -20.020874,
+            "Z": 64.7135
+          },
+          "TerritoryId": 418,
+          "AetheryteShortcut": "Ishgard",
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418]
+            }
+          }
+        }
+      ]
+    }
+  ]
 }

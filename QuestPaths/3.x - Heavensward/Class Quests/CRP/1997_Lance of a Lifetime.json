@@ -1,81 +1,67 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-13"},
-  "QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1000153,
-			"Position":
-			{
-				"X": -44.87683,
-				"Y": -1.2500024,
-				"Z": 56.839844
-			},
-			"TerritoryId": 132,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Gridania",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					132
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1012499,
-			"Position":
-			{
-				"X": 108.262695,
-				"Y": 24.38417,
-				"Z": 12.069824
-			},
-			"TerritoryId": 418,
-			"AetheryteShortcut": "Ishgard",
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Forgotten Knight"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 1012498,
-			"Position":
-			{
-				"X": 96.57422,
-				"Y": -20.020874,
-				"Z": 64.7135
-			},
-			"TerritoryId": 418,
-			"InteractionType": "CompleteQuest",
-			"AethernetShortcut":
-			[
-			"[Ishgard] The Forgotten Knight",
-			"[Ishgard] The Brume"
-			]
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "LastChecked": { "Username": "okonomiyaki", "Date": "2026-07-13" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000153,
+          "Position": {
+            "X": -44.87683,
+            "Y": -1.2500024,
+            "Z": 56.839844
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [132]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012499,
+          "Position": {
+            "X": 108.262695,
+            "Y": 24.38417,
+            "Z": 12.069824
+          },
+          "TerritoryId": 418,
+          "AetheryteShortcut": "Ishgard",
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012498,
+          "Position": {
+            "X": 96.57422,
+            "Y": -20.020874,
+            "Z": 64.7135
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] The Brume"
+          ]
+        }
+      ]
+    }
+  ]
 }

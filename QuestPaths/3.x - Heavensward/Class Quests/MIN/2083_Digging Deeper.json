@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-23"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-07-23" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -43,9 +43,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                399
-              ]
+              "InTerritory": [399]
             }
           }
         }
@@ -65,7 +63,14 @@
           "InteractionType": "Interact",
           "StopDistance": 1,
           "Fly": true,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 8 }
+          ]
         },
         {
           "DataId": 2005950,
@@ -78,7 +83,14 @@
           "InteractionType": "Interact",
           "StopDistance": 1,
           "Fly": true,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 2 }
+          ]
         },
         {
           "DataId": 2005949,
@@ -91,7 +103,14 @@
           "InteractionType": "Interact",
           "StopDistance": 1,
           "Fly": true,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 4 }
+          ]
         }
       ]
     },
@@ -115,17 +134,15 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                399
-              ]
+              "InTerritory": [399]
             }
           }
         }
       ]
     },
     {
-      "Sequence":4,
-      "Steps":[
+      "Sequence": 4,
+      "Steps": [
         {
           "TerritoryId": 398,
           "InteractionType": "Gather",
@@ -161,9 +178,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                399
-              ]
+              "InTerritory": [399]
             }
           }
         }

@@ -281,9 +281,12 @@ internal static class SkipCondition
 
             if (itemCount > 0 && skipConditions.Item is { NotInInventory: false })
             {
-                logger.LogInformation("Skipping step, item with itemId {ItemId} in inventory",
-                    step.ItemId.Value);
-                return true;
+                if (step.ItemCount != null && itemCount >= step.ItemCount)
+                {
+                    logger.LogInformation("Skipping step, item with itemId {ItemId} in inventory",
+                        step.ItemId.Value);
+                    return true;
+                }
             }
 
             return false;

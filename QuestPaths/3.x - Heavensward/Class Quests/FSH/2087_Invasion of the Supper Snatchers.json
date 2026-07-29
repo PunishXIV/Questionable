@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": ["alydev", "ShermTank"],
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-07-13" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,7 +16,10 @@
           },
           "TerritoryId": 129,
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Arcanists' Guild"],
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ],
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
             "Key": 263015
@@ -40,7 +43,10 @@
           },
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Ishgard] Aetheryte Plaza","[Ishgard] The Forgotten Knight"]
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
         }
       ]
     },
@@ -129,7 +135,10 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": ["[Ishgard] Aetheryte Plaza","[Ishgard] The Forgotten Knight"]
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ]
         }
       ]
     }

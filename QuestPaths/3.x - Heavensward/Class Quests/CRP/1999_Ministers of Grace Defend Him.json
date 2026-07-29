@@ -1,129 +1,104 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "Crafted Item: 1x Dark Chestnut Rod HQ // Autocraft requires: 1x Dark Chestnut Branch, 1x Dark Chestnut Lumber, 3x Growth Formula Epsilon",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1012498,
-			"Position":
-			{
-				"X": 96.57422,
-				"Y": -20.020874,
-				"Z": 64.7135
-			},
-			"TerritoryId": 418,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Brume"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1012502,
-			"Position":
-			{
-				"X": -30.655396,
-				"Y": 5.5047035,
-				"Z": 23.727722
-			},
-			"TerritoryId": 418,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ishgard] The Brume",
-			"[Ishgard] Aetheryte Plaza"
-			]
-			}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 418,
-			"ItemId": 10636,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf":
-				{
-					"Item":
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012502,
-			"Position":
-			{
-				"X": -30.655396,
-				"Y": 5.5047035,
-				"Z": 23.727722
-			},
-			"TerritoryId": 418,
-			"AetheryteShortcut": "Ishgard",
-			"InteractionType": "Interact",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 1012498,
-			"Position":
-			{
-				"X": 96.57422,
-				"Y": -20.020874,
-				"Z": 64.7135
-			},
-			"TerritoryId": 418,
-			"InteractionType": "CompleteQuest",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Brume"
-			]
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "Crafted Item: 1x Dark Chestnut Rod HQ // Autocraft requires: 1x Dark Chestnut Branch, 1x Dark Chestnut Lumber, 3x Growth Formula Epsilon",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012498,
+          "Position": {
+            "X": 96.57422,
+            "Y": -20.020874,
+            "Z": 64.7135
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012502,
+          "Position": {
+            "X": -30.655396,
+            "Y": 5.5047035,
+            "Z": 23.727722
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] The Brume",
+            "[Ishgard] Aetheryte Plaza"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 418,
+          "ItemId": 10636,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012502,
+          "Position": {
+            "X": -30.655396,
+            "Y": 5.5047035,
+            "Z": 23.727722
+          },
+          "TerritoryId": 418,
+          "AetheryteShortcut": "Ishgard",
+          "InteractionType": "Interact",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012498,
+          "Position": {
+            "X": 96.57422,
+            "Y": -20.020874,
+            "Z": 64.7135
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ]
+        }
+      ]
+    }
+  ]
 }

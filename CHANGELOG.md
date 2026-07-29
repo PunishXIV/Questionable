@@ -1,1 +1,1 @@
-- Bug fix: title bar minimize button -alydev
+- Change: Stop condition quick buttons will also prevent sidetracking to accept job quests -alydev

@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-16"},
+  "LastChecked": { "Username": "okonomiyaki", "Date": "2026-07-16" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -134,9 +134,7 @@
           "TerritoryId": 400,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            4681
-          ],
+          "KillEnemyDataIds": [4681],
           "Fly": true
         }
       ]
@@ -154,9 +152,7 @@
           "TerritoryId": 400,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            4682
-          ],
+          "KillEnemyDataIds": [4682],
           "Fly": true
         }
       ]
@@ -174,9 +170,7 @@
           "TerritoryId": 400,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            4483
-          ],
+          "KillEnemyDataIds": [4483],
           "Fly": true
         }
       ]

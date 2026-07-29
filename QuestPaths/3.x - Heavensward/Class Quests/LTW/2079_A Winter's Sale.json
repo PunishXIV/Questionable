@@ -1,177 +1,145 @@
 {
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"Comment": "!!Crafting requires Master Leatherworker III!! Crafted Item: 1x Chivalric Longcoat of Aiming // Autocraft requires: 3x Amphiptere Leather, 1x Chimerical Felt, 2x Aurum Regis Nugget, 2x Grade 1 Dexterity Dissolvent, 2x Dawnborne Aethersand",
-	"QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Jeweled Crozier"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418,
-					419
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1000691,
-			"Position":
-			{
-				"X": 71.97681,
-				"Y": 8,
-				"Z": -166.52173
-			},
-			"TerritoryId": 133,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Gridania",
-			"AethernetShortcut":
-			[
-			"[Gridania] Aetheryte Plaza",
-			"[Gridania] Leatherworkers' Guild & Shaded Bower"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Jeweled Crozier"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 419,
-			"ItemId": 12999,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf": 
-				{
-					"Item": 
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "Interact",
-			"AllowHighQuality":true
-		}
-		]
-	},
-	{
-		"Sequence": 4,
-		"Steps":
-		[
-		{
-			"DataId": 1012540,
-			"Position":
-			{
-				"X": 87.23572,
-				"Y": 23.979128,
-				"Z": -26.840637
-			},
-			"TerritoryId": 418,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Ishgard",
-			"AethernetShortcut":
-			[
-			"[Ishgard] Aetheryte Plaza",
-			"[Ishgard] The Forgotten Knight"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					418
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 1012538,
-			"Position":
-			{
-				"X": -259.083,
-				"Y": -20.034918,
-				"Z": -84.397705
-			},
-			"TerritoryId": 419,
-			"InteractionType": "CompleteQuest",
-			"AethernetShortcut":
-			[
-			"[Ishgard] The Forgotten Knight",
-			"[Ishgard] The Jeweled Crozier"
-			]
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "Comment": "!!Crafting requires Master Leatherworker III!! Crafted Item: 1x Chivalric Longcoat of Aiming // Autocraft requires: 3x Amphiptere Leather, 1x Chimerical Felt, 2x Aurum Regis Nugget, 2x Grade 1 Dexterity Dissolvent, 2x Dawnborne Aethersand",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Jeweled Crozier"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418, 419]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1000691,
+          "Position": {
+            "X": 71.97681,
+            "Y": 8,
+            "Z": -166.52173
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Leatherworkers' Guild & Shaded Bower"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Jeweled Crozier"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 419,
+          "ItemId": 12999,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "Interact",
+          "AllowHighQuality": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1012540,
+          "Position": {
+            "X": 87.23572,
+            "Y": 23.979128,
+            "Z": -26.840637
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Forgotten Knight"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [418]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012538,
+          "Position": {
+            "X": -259.083,
+            "Y": -20.034918,
+            "Z": -84.397705
+          },
+          "TerritoryId": 419,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] The Forgotten Knight",
+            "[Ishgard] The Jeweled Crozier"
+          ]
+        }
+      ]
+    }
+  ]
 }

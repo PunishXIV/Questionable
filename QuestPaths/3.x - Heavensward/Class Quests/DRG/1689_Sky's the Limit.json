@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "AnimaMachinae",
-  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-11"},
+  "LastChecked": { "Username": "okonomiyaki", "Date": "2026-07-11" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -47,11 +47,8 @@
           "Fly": true,
           "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [
-            4478
-          ],
-          "CompletionQuestVariablesFlags": [
-            1,null,null,null,null,null]
+          "KillEnemyDataIds": [4478],
+          "CompletionQuestVariablesFlags": [1, null, null, null, null, null]
         },
         {
           "DataId": 1013437,
