@@ -426,7 +426,9 @@ internal sealed partial class ActiveQuestComponent
                 using (ImRaii.Disabled())
                 {
                     ImGui.TextUnformatted(_LF("Seq {0} · Step {1}/{2}",
-                        currentQuest.Sequence, currentQuest.Step, metaSequence?.Steps.Count ?? 0));
+                        currentQuest.Sequence,
+                        currentQuest.Step != 255 ? currentQuest.Step + 1 : 255,
+                        metaSequence?.Steps.Count ?? 0));
                 }
 
                 if (metaSequence?.FindStep(currentQuest.Step) is { } metaStep)
