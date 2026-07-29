@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Dark Chestnut Rod HQ // Autocraft requires: 1x Dark Chestnut Branch, 1x Dark Chestnut Lumber, 3x Growth Formula Epsilon",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,

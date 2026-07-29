@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "!!Crafting requires Master Alchemist III!! Crafted Item: 1x Noble Gold HQ // Autocraft requires: 1x Enchanted Aurum Regis Ink, 2x Aurum Regis Nugget, 2x Hardsilver Ingot, 1x Chrysolite, 1x Mormorion",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,

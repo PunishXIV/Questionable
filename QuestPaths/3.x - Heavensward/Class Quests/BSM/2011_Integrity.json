@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "!!Crafting requires Master Blacksmith III!! Crafted Item: 1x Adamantite Winglet HQ // Autocraft requires: 3x Adamantite Nugget, 1x Aurum Regis Nugget, 1x Birch Lumber, 1x Scale Glue",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,

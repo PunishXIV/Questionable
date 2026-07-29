@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "!!Crafting requires Master Weaver III!! Crafted Item: 1x Chivalric Doublet of Healing // Autocraft requires: 3x Chimerical Felt, 1x Aurum Regis Nugget, 1x Hallowed Ramie Cloth, 1x Crawler Silk, 2x Grade 1 Mind Dissolvent, 2x Dawnborne Aethersand",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,

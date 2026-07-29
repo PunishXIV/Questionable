@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Hardsilver Bangle of Casting // Autocraft requires: 2x Hardsilver Nugget, 2x Star Sapphire, 2x Star Ruby, 1x Grade 1 Intelligence Dissolvent",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,

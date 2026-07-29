@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1 x Wyvernskin Workboots HQ // Autocraft requires: 2x Wyvern Leather, 1x Holy Rainbow Cloth, 1x Rainbow Thread, 1x Rubber",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,

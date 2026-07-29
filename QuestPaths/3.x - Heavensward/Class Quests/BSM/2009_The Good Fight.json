@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Titanium Bastard Sword HQ // Autocraft requires: 3x Titanium Nugget, 1x Hardsilver Nugget, 1x Electrum Ingot, 1x Dhalmel Leather, 1x Void Glue",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,

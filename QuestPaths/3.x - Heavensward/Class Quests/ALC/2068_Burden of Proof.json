@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "!!Crafting requires Master Alchemist III!! Crafted Item: 1x Draconian Potion of Strength HQ // Autocraft requires: 1x Abalathian Rock Salt, 2x Dragon Blood, 2x Furymint, 2x Rue, 1x Duskborne Aethersand",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,

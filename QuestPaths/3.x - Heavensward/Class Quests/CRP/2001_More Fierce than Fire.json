@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "!!Crafting requires Master Carpenter III!! Crafted Item: 1x Adamantite Trident HQ // Autocraft requires: 1x Birch Lumber, 3x Adamantite Nugget, 1x Amphiptere Leather, 1x Scale Glue",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,

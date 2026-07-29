@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Holy Cedar Composite Bow HQ // Autocraft requires: 1x Holy Cedar Lumber, 1x Cedar Branch, 2x Mythrite Ingot, 1x Rainbow Thread, 1x Wyvern Leather",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,

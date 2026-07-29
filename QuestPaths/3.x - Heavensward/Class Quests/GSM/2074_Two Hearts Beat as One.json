@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Star Ruby Music Box, 1x Star Sapphire Music Box // Autocraft requires: 8x Aurum Regis Nugget, 2x Aurum Regis Cylinder, 1x Star Ruby, 1x Star Sapphire, 2x Hardsilver Ingot, 4x Fieldcraft Demimateria II",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,

@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Cobalt Knuckles HQ,\n 1x Buccaneer's Bardiche HQ,\n 1x Cobalt Shamshir HQ\nAutocraft requires:\n 6x Cobalt Ingot,\n 1x Boar Leather,\n 1x Rosewood Branch,\n 1x Horn Glue,\n 1x Aldgoat Horn,\n 1x Basilisk Whetstone",
-  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-11"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
