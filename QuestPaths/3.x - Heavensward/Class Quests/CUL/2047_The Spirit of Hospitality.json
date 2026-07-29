@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
   "Comment": "Crafted Item:\n1x Morel Salad HQ\n1x Deep-Friend okeanis HQ\n1x Marron Glace HQ\nAutocrafting requires:\n1x Abalathian Rock Salt\n3x Birch Sap\n4x Cinderfoot Olive\n1x Cooking Sherry\n1x Dalamud Popoto\n3x Dark Chestnut\n2x Emerald Beans\n5x Highland Wheat\n1x La Noscean Lettuce(Jossy)\n2x Morel\n3x Okeanis Tail\n1x Sesame Seeds\n1x Young Cieldalaes Spinach",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -93,81 +94,7 @@
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12881,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 4857,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12860,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12854,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12892,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
-        },
-        {
-          "InteractionType": "Craft",
-          "TerritoryId": 128,
-          "ItemId": 12847,
-          "ItemCount": 1,
-          "SkipConditions": {
-            "StepIf": {
-              "Item": {
-                "NotInInventory": false
-              }
-            }
-          }
+          "TerritoryId": 128
         },
         {
           "DataId": 1012576,

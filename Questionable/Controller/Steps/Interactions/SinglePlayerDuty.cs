@@ -103,8 +103,10 @@ internal static class SinglePlayerDuty
                 }
                 else if (tId is SpecialTerritories.ItsProbablyATrap)
                 {
+                    yield return new EnableAi();
                     yield return new WaitCondition.Task(() => DutyActionsAvailable() || clientState.TerritoryType != SpecialTerritories.ItsProbablyATrap,
                         "Wait(Phase 2)");
+                    yield return new DisableAi();
                     yield return new EnableAi(Passive: true);
                 }
                 else if (tId is SpecialTerritories.Naadam)

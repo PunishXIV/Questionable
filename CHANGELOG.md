@@ -1,2 +1,1 @@
-- Change: Stop condition quick buttons will also prevent sidetracking to accept job quests -alydev
-- Change: step number in active quest component now starts from 1 instead of 0 -alydev
+- Change: It's Probably A Trap - actually fight instead of waiting for phase 2 -alydev
