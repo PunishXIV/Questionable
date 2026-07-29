@@ -1,0 +1,125 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002591,
+          "Position": {
+            "X": 567.80334,
+            "Y": 84.62209,
+            "Z": -99.59564
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InTerritory": [135] }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002678,
+          "Position": {
+            "X": 311.66272,
+            "Y": 76.39558,
+            "Z": -323.9289
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2001489,
+          "Position": {
+            "X": 254.4137,
+            "Y": 73.3501,
+            "Z": -322.13324
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "ComplexCombatData": [
+            {
+              "DataId": 329,
+              "NameId": 368
+            },
+            {
+              "DataId": 331,
+              "NameId": 372
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1002678,
+          "Position": {
+            "X": 311.66272,
+            "Y": 76.39558,
+            "Z": -323.9289
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "StopDistance": 1
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1002591,
+          "Position": {
+            "X": 567.80334,
+            "Y": 84.62209,
+            "Z": -99.59564
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002571,
+          "Position": {
+            "X": 548.63806,
+            "Y": 89.289055,
+            "Z": -74.32672
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 479
+        }
+      ]
+    }
+  ]
+}

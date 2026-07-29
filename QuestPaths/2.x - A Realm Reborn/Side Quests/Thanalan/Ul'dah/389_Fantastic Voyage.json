@@ -1,0 +1,53 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001678,
+          "Position": {
+            "X": 22.323914,
+            "Y": 7.7667847,
+            "Z": -108.87317
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InTerritory": [130] }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1001497,
+          "Position": {
+            "X": 87.17468,
+            "Y": 2.1377387,
+            "Z": 324.36096
+          },
+          "TerritoryId": 141,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Gate of Nald (Central Thanalan)"
+          ],
+          "SkipConditions": {
+            "AethernetShortcutIf": { "InSameTerritory": true }
+          }
+        }
+      ]
+    }
+  ]
+}

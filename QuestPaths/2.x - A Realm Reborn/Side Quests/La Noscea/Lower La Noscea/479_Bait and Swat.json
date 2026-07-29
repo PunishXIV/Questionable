@@ -1,0 +1,179 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002571,
+          "Position": {
+            "X": 548.63806,
+            "Y": 89.289055,
+            "Z": -74.32672
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InTerritory": [135] }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002659,
+          "Position": {
+            "X": 532.8297,
+            "Y": 88.99998,
+            "Z": -72.09894
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1002571,
+          "Position": {
+            "X": 548.63806,
+            "Y": 89.289055,
+            "Z": -74.32672
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1002591,
+          "Position": {
+            "X": 567.80334,
+            "Y": 84.62209,
+            "Z": -99.59564
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1002221,
+          "Position": {
+            "X": 283.19214,
+            "Y": 71.65547,
+            "Z": -209.43011
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2001491,
+          "Position": {
+            "X": 223.46838,
+            "Y": 72.22095,
+            "Z": -283.3448
+          },
+          "StopDistance": 2,
+          "TerritoryId": 135,
+          "InteractionType": "UseItem",
+          "ItemId": 2000434,
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2001492,
+          "Position": {
+            "X": 247.39441,
+            "Y": 74.75391,
+            "Z": -309.0105
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "ComplexCombatData": [
+            {
+              "DataId": 329,
+              "NameId": 368
+            },
+            {
+              "DataId": 331,
+              "NameId": 372
+            }
+          ],
+          "Fly": false
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1002571,
+          "Position": {
+            "X": 548.63806,
+            "Y": 89.289055,
+            "Z": -74.32672
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000972,
+          "Position": {
+            "X": 20.279175,
+            "Y": 40.19993,
+            "Z": -6.1189575
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InTerritory": [128,129] }
+          }
+        }
+      ]
+    }
+  ]
+}

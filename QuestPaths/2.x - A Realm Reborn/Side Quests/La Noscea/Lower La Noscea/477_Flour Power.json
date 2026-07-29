@@ -1,0 +1,71 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002652,
+          "Position": {
+            "X": 704.82935,
+            "Y": 67.3221,
+            "Z": -308.46118
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InTerritory": [135] }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 470.38873,
+            "Y": 86.09568,
+            "Z": -342.2494
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "Land": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 5,
+              "MinimumKillCount": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002591,
+          "Position": {
+            "X": 567.80334,
+            "Y": 84.62209,
+            "Z": -99.59564
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "NextQuestId": 478
+        }
+      ]
+    }
+  ]
+}
