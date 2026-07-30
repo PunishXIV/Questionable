@@ -48,6 +48,7 @@ internal sealed class QuickAccessButtonsComponent
     private void DrawPriorityQuestsButton()
     {
         if (QstWidgets.RailButton(FontAwesomeIcon.ExclamationCircle,
+                _L("Priority Quests"),
                 _L("Configure priority quests which will be done as soon as possible."),
                 enabled: objectTable[0] != null))
             priorityWindow.ToggleOrUncollapse();
@@ -59,7 +60,7 @@ internal sealed class QuickAccessButtonsComponent
         string tooltip = isNavmeshAvailable
             ? _L("Hold CTRL to enable this button. Rebuilding the navmesh will take some time.")
             : _L("vnavmesh is not available. Please install it first.");
-        if (QstWidgets.RailButton(FontAwesomeIcon.GlobeEurope, tooltip,
+        if (QstWidgets.RailButton(FontAwesomeIcon.GlobeEurope, _L("Rebuild Navmesh"), tooltip,
                 enabled: isNavmeshAvailable && ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
             commandManager.ProcessCommand("/vnav rebuild");
     }
@@ -79,6 +80,7 @@ internal sealed class QuickAccessButtonsComponent
     private void DrawTroubleshootingButton(QuestController.QuestProgress? questProgress, bool isRunning)
     {
         bool leftClicked = QstWidgets.RailButton(FontAwesomeIcon.Handshake,
+            _L("Stuck?"),
             _L("Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard"),
             tint: isRunning ? QstTheme.Accent : null,
             enabled: objectTable[0] != null);
@@ -159,6 +161,7 @@ internal sealed class QuickAccessButtonsComponent
         bool hasErrors = errorCount > 0;
 
         if (QstWidgets.RailButton(hasErrors ? FontAwesomeIcon.ExclamationTriangle : FontAwesomeIcon.InfoCircle,
+                _L("Quest Validation"),
                 _LF("Quest validation: {0} errors, {1} infos", errorCount, infoCount),
                 tint: hasErrors ? QstTheme.Danger : QstTheme.Info))
             questValidationWindow.ToggleOrUncollapse();

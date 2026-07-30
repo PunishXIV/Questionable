@@ -441,14 +441,12 @@ internal sealed class QuestData
 
     public List<QuestId> GetLockedClassQuests()
     {
-        Job startingClass;
+        Job startingClass = Job.ADV;
         unsafe
         {
             PlayerState* playerState = PlayerState.Instance();
             if (playerState != null)
                 startingClass = (Job)playerState->FirstClass;
-            else
-                startingClass = Job.ADV;
         }
 
         if (startingClass == Job.ADV)

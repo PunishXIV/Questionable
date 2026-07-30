@@ -1,1 +1,3 @@
-- bug fix: locked quest reasons in journal progress -alydev
+- Feature: added "instant" quests (So You Want To Be A Questionable User) to Journal Progress > Other Quests > Special Quests > Instant Quests -alydev
+  - the "Instant Quests" label can be right clicked to select "Add all to priority quests", this will let users run all available one-step quasi-quests in one go (in theory!)
+- Feature: replaced button labels (visible on hover) to quick access buttons -alydev

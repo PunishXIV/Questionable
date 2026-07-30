@@ -4,7 +4,7 @@ namespace Questionable.Data;
 
 internal sealed class JournalData
 {
-    public JournalData(IDataManager dataManager, QuestData questData)
+    public JournalData(IDataManager dataManager, QuestData questData, QuestRegistry questRegistry)
     {
         List<Genre> genres = dataManager.GetExcelSheet<JournalGenre>()
             .Where(x => x.RowId > 0 && x.Icon > 0)
@@ -35,6 +35,14 @@ internal sealed class JournalData
             .RemoveAll(x =>
                 genreLimsa.Quests.Contains(x) || genreGridania.Quests.Contains(x) || genreUldah.Quests.Contains(x));
 
+        Genre instantGenre = new(uint.MaxValue - 4, _L("Instant Quests"), SpecialQuests,
+            questRegistry.AllQuests
+                     .Where(x => x.Info is QuestInfo qInfo && qInfo.CompletesInstantly)
+                     .Select(x => x.Info)
+                     .ToList()
+        );
+        genres = genres.Append(instantGenre).ToList();
+
         Genres = genres.ToList();
         Categories = dataManager.GetExcelSheet<JournalCategory>()
             .Where(x => x.RowId > 0)
@@ -44,6 +52,7 @@ internal sealed class JournalData
             .Select(x => new Section(x, Categories.Where(y => y.SectionId == x.RowId).ToList()))
             .ToList();
     }
+    const uint SpecialQuests = 98;
 
     public List<Genre> Genres { get; }
     public List<Category> Categories { get; }
