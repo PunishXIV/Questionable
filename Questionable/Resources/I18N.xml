@@ -694,6 +694,7 @@
   <Entry>
     <!-- Found in: Windows\PriorityWindow.cs -->
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Priority Quests</Key>
     <Value lang="ja-jp">優先クエスト</Value>
     <Value lang="zh-cn">优先任务</Value>
@@ -1008,6 +1009,7 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestValidationWindow.cs -->
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Quest Validation</Key>
     <Value lang="ja-jp">クエスト検証</Value>
     <Value lang="zh-cn">任务验证</Value>
@@ -2323,6 +2325,7 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>This quest is not yet supported.</Key>
     <Value lang="ja-jp">このクエストはまだサポートされていません。</Value>
     <Value lang="zh-cn">此任务尚不支持。</Value>
@@ -2486,7 +2489,6 @@
     <Value lang="zh-cn">战斗中</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>No active quest</Key>
     <Value lang="af">Geen aktiewe soeke nie</Value>
@@ -3021,6 +3023,7 @@
     <Value lang="zh-cn">设置尽可能优先执行的优先任务。</Value>
   </Entry>
   <Entry>
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Rebuild Navmesh</Key>
     <Value lang="ja-jp">ナビメッシュを再構築</Value>
     <Value lang="zh-cn">重建导航网格</Value>
@@ -3044,6 +3047,7 @@
     <Value lang="zh-cn">重新加载数据</Value>
   </Entry>
   <Entry>
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Stuck?</Key>
     <Value lang="ja-jp">スタックしていますか？</Value>
     <Value lang="zh-cn">卡住了？</Value>
@@ -3992,5 +3996,29 @@
     <!-- Found in: Windows\QuestComponents\RemainingTasksComponent.cs -->
     <Key>Remaining Tasks</Key>
     <Value lang="zh-cn">剩余任务</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: Data\JournalData.cs -->
+    <Key>Instant Quests</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <Key>Use Questionable theme</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <Key>When disabled, Questionable's windows use your Dalamud style/theme instead.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <Key>No supported quests</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <Key>Reset sequence progess and reload quest data from disk</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <Key>Utility to browse quest data used by this plugin</Key>
   </Entry>
 </I18N>
