@@ -133,7 +133,7 @@ internal static class QstWidgets
     }
 
     // Icon button with a tooltip and an optional count badge.
-    public static bool RailButton(FontAwesomeIcon icon, string tooltip, Vector4? tint = null,
+    public static bool RailButton(FontAwesomeIcon icon, string label, string? tooltip = null, Vector4? tint = null,
         bool enabled = true, string? countBadge = null, Vector4? badgeColor = null,
         [CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
     {
@@ -156,7 +156,9 @@ internal static class QstWidgets
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
         {
             using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
-            ImGui.TextUnformatted(tooltip);
+            if (tooltip?.Length != 0)
+                tooltip = $"\n{tooltip}";
+            ImGui.TextUnformatted($"{label}{tooltip}");
         }
 
         return clicked && enabled;
