@@ -443,7 +443,23 @@ internal sealed unsafe class QuestFunctions
                         _LF("Not enough gil, estimated cost: {0:N0}{1}", teleportCosts, SeIconChar.Gil.ToIconString()));
                 }
 
-                EAetheryteLocation? firstLockedAetheryte = quest.AllSteps()
+                EAetheryteLocation? firstLockedAetheryte = GetFirstLockedAetheryte(quest);
+                if (firstLockedAetheryte != null)
+                {
+                    // if quest requires white wolf gate, and unlock quest is available, don't report locked
+                    if (firstLockedAetheryte == EAetheryteLocation.GridaniaWhiteWolfGate && IsReadyToAcceptQuest(new QuestId(802)))
+                        return new(x);
+                    return new(x, _LF("Aetheryte locked: {0}", firstLockedAetheryte));
+                }
+
+                return new PriorityQuestInfo(x);
+            })
+            .ToList();
+    }
+
+    internal EAetheryteLocation? GetFirstLockedAetheryte(Quest quest)
+    {
+        return quest.AllSteps()
                     .Select(y =>
                     {
                         if (y.Step.AetheryteShortcut is { } aetheryteShortcut &&
@@ -465,17 +481,6 @@ internal sealed unsafe class QuestFunctions
                         return (EAetheryteLocation?)null;
                     })
                     .FirstOrDefault(y => y != null);
-                if (firstLockedAetheryte != null)
-                {
-                    // if quest requires white wolf gate, and unlock quest is available, don't report locked
-                    if (firstLockedAetheryte == EAetheryteLocation.GridaniaWhiteWolfGate && IsReadyToAcceptQuest(new QuestId(802)))
-                        return new(x);
-                    return new(x, _LF("Aetheryte locked: {0}", firstLockedAetheryte));
-                }
-
-                return new PriorityQuestInfo(x);
-            })
-            .ToList();
     }
 
     private int TeleportCosts(Quest quest)
@@ -663,7 +668,8 @@ internal sealed unsafe class QuestFunctions
             lockedReason.Add(_L("Rank"), questInfo.GrandCompanyRank > GetGrandCompanyRank());
         }
 
-        lockedReason.Add(_L("Level"), playerState->CurrentLevel < questInfo.Level);
+        if (playerState->CurrentLevel < questInfo.Level)
+            lockedReason.Add(_L("Level"), playerState->CurrentLevel < questInfo.Level);
         if (questInfo.AlliedSociety != EAlliedSociety.None)
             if (questInfo.IsRepeatable)
                 lockedReason.Add(_L("Daily unavailable"), !IsDailyAlliedSocietyQuestAndAvailableToday(questId));
@@ -688,8 +694,16 @@ internal sealed unsafe class QuestFunctions
             lockedReason.Add(_L("Retainers"), retainerManager->MaxRetainerEntitlement == 0);
         }
 
-        lockedReason.Add(_L("Prev quest"), !HasCompletedPreviousQuests(questInfo, extraCompletedQuest));
-        lockedReason.Add(_L("Prev instance"), !HasCompletedPreviousInstances(questInfo));
+        if (!HasCompletedPreviousQuests(questInfo, extraCompletedQuest))
+            lockedReason.Add(_L("Prev quest"), true);
+        if (!HasCompletedPreviousInstances(questInfo))
+            lockedReason.Add(_L("Prev instance"), true);
+        if (questRegistry.TryGetQuest(questId, out Quest? quest))
+        {
+            EAetheryteLocation? firstLockedAetheryte = GetFirstLockedAetheryte(quest);
+            if (firstLockedAetheryte != null)
+                lockedReason.Add(_LF("Aetheryte locked: {0}", firstLockedAetheryte ?? EAetheryteLocation.None), true);
+        }
         return (lockedReason.Values.Any(x => x), lockedReason.Keys.ToArray());
     }
 
