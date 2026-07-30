@@ -1,1 +1,1 @@
-- Change: It's Probably A Trap - actually fight instead of waiting for phase 2 -alydev
+- bug fix: locked quest reasons in journal progress -alydev

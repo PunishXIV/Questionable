@@ -1,186 +1,157 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"LastChecked": {"Username": "alydev", "Date": "2026-07-19"},
-  "QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1000997,
-			"Position":
-			{
-				"X": -31.265808,
-				"Y": 44.5,
-				"Z": 185.53442
-			},
-			"TerritoryId": 128,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Limsa Lominsa",
-			"AethernetShortcut":
-			[
-			"[Limsa Lominsa] Aetheryte Plaza",
-			"[Limsa Lominsa] The Aftcastle"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					128,  129
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1021048,
-			"Position":
-			{
-				"X": -79.17908,
-				"Y": -6.9999995,
-				"Z": -67.704346
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Kugane",
-			"AethernetShortcut":
-			[
-			"[Kugane] Aetheryte Plaza",
-			"[Kugane] Shiokaze Hostelry"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1019050,
-			"Position":
-			{
-				"X": -135.0271,
-				"Y": -4.4404297,
-				"Z": 198.01636
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Shiokaze Hostelry",
-			"[Kugane] Pier #1"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 3,
-		"Steps":
-		[
-		{
-			"DataId": 1021048,
-			"Position":
-			{
-				"X": -79.17908,
-				"Y": -6.9999995,
-				"Z": -67.704346
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Pier #1",
-			"[Kugane] Shiokaze Hostelry"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 4,
-		"Steps":
-		[
-		{
-			"InteractionType": "Craft",
-			"TerritoryId": 628,
-			"ItemId": 17892,
-			"ItemCount": 1,
-			"SkipConditions":
-			{
-				"StepIf": 
-				{
-					"Item": 
-					{
-						"NotInInventory": false
-					}
-				}
-			}
-		},
-		{
-			"DataId": 1019050,
-			"Position":
-			{
-				"X": -135.0271,
-				"Y": -4.4404297,
-				"Z": 198.01636
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Shiokaze Hostelry",
-			"[Kugane] Pier #1"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 5,
-		"Steps":
-		[
-		{
-			"DataId": 1019050,
-			"Position":
-			{
-				"X": -135.0271,
-				"Y": -4.4404297,
-				"Z": 198.01636
-			},
-			"TerritoryId": 628,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 1000997,
-			"Position":
-			{
-				"X": -31.265808,
-				"Y": 44.5,
-				"Z": 185.53442
-			},
-			"TerritoryId": 128,
-			"InteractionType": "CompleteQuest",
-			"AetheryteShortcut": "Limsa Lominsa",
-			"AethernetShortcut":
-			[
-			"[Limsa Lominsa] Aetheryte Plaza",
-			"[Limsa Lominsa] The Aftcastle"
-			]
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "LastChecked": { "Username": "alydev", "Date": "2026-07-19" },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000997,
+          "Position": {
+            "X": -31.265808,
+            "Y": 44.5,
+            "Z": 185.53442
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [128, 129]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1021048,
+          "Position": {
+            "X": -79.17908,
+            "Y": -6.9999995,
+            "Z": -67.704346
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane",
+          "AethernetShortcut": [
+            "[Kugane] Aetheryte Plaza",
+            "[Kugane] Shiokaze Hostelry"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1019050,
+          "Position": {
+            "X": -135.0271,
+            "Y": -4.4404297,
+            "Z": 198.01636
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Shiokaze Hostelry",
+            "[Kugane] Pier #1"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1021048,
+          "Position": {
+            "X": -79.17908,
+            "Y": -6.9999995,
+            "Z": -67.704346
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Pier #1",
+            "[Kugane] Shiokaze Hostelry"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "InteractionType": "Craft",
+          "TerritoryId": 628,
+          "ItemId": 17892,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1019050,
+          "Position": {
+            "X": -135.0271,
+            "Y": -4.4404297,
+            "Z": 198.01636
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Kugane] Shiokaze Hostelry",
+            "[Kugane] Pier #1"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1019050,
+          "Position": {
+            "X": -135.0271,
+            "Y": -4.4404297,
+            "Z": 198.01636
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000997,
+          "Position": {
+            "X": -31.265808,
+            "Y": 44.5,
+            "Z": 185.53442
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ]
+        }
+      ]
+    }
+  ]
 }
