@@ -17,8 +17,6 @@ internal sealed class RemainingTasksComponent(
         IList<string> gatheringTasks = gatheringController.GetRemainingTaskNames();
         bool isGathering = gatheringTasks.Count > 0;
         IList<string> tasks = isGathering ? gatheringTasks : questController.GetRemainingTaskNames();
-        if (tasks.Count == 0)
-            return;
 
         if (!QstWidgets.SectionHeader(_L("Remaining Tasks"), "RemainingTasks", count: tasks.Count))
             return;

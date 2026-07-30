@@ -134,18 +134,22 @@ internal static class QstWidgets
 
     // Icon button with a tooltip and an optional count badge.
     public static bool RailButton(FontAwesomeIcon icon, string label, string? tooltip = null, Vector4? tint = null,
-        bool enabled = true, string? countBadge = null, Vector4? badgeColor = null,
+        bool enabled = true, string? countBadge = null, Vector4? badgeColor = null, bool showLabel = false,
         [CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
     {
         float size = ImGui.GetFrameHeight();
         bool clicked;
         using (ImRaii.Disabled(!enabled))
         {
-            clicked = ImGuiComponentsLocal.IconButton(icon, tint, activeColor: null, hoveredColor: null,
-                new Vector2(size, size), file, line);
+            if (showLabel)
+                clicked = ImGuiComponentsLocal.IconButtonWithText(icon, label, tint, activeColor: null, hoveredColor: null,
+                    file: file, line: line);
+            else
+                clicked = ImGuiComponentsLocal.IconButton(icon, tint, activeColor: null, hoveredColor: null,
+                    new Vector2(size, size), file, line);
         }
 
-        if (countBadge != null)
+        if (!showLabel && countBadge != null)
         {
             Vector2 max = ImGui.GetItemRectMax();
             Vector2 badgeSize = ImGui.CalcTextSize(countBadge);
@@ -155,10 +159,14 @@ internal static class QstWidgets
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
         {
-            using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
-            if (tooltip?.Length != 0)
-                tooltip = $"\n{tooltip}";
-            ImGui.TextUnformatted($"{label}{tooltip}");
+            if (showLabel && tooltip?.Length != 0)
+                ImGui.SetTooltip(tooltip);
+            else
+            {
+                if (tooltip?.Length != 0)
+                    tooltip = $"\n{tooltip}";
+                ImGui.SetTooltip($"{label}{tooltip}");
+            }
         }
 
         return clicked && enabled;
