@@ -38,9 +38,9 @@ internal static class WaitAtEnd
                     WaitCondition.Task notInCombat = new(() => !condition[ConditionFlag.InCombat], "Wait(not in combat)");
                     return
                     [
-                        new WaitDelay(),
+                        new WaitDelay(TimeSpan.FromSeconds(1)),
                         notInCombat,
-                        new WaitDelay(),
+                        new WaitDelay(TimeSpan.FromSeconds(1)),
                         Next(quest, sequence)
                     ];
 
@@ -69,7 +69,7 @@ internal static class WaitAtEnd
                     return
                     [
                         new WaitObjectAtPosition(step.DataId.Value, step.Position.Value, step.NpcWaitDistance ?? 0.5f),
-                        new WaitDelay(),
+                        new WaitDelay(TimeSpan.FromSeconds(1)),
                         Next(quest, sequence)
                     ];
 
@@ -108,7 +108,7 @@ internal static class WaitAtEnd
                 case EInteractionType.AcceptQuest:
                     {
                         WaitQuestAccepted accept = new(step.PickUpQuestId ?? quest.Id);
-                        WaitDelay delay = new();
+                        WaitDelay delay = new(TimeSpan.FromSeconds(1));
                         if (step.PickUpQuestId != null)
                         {
                             if (redoUtil.IsRedoActive()) // Can't accept other quests during NG+
@@ -122,7 +122,7 @@ internal static class WaitAtEnd
                 case EInteractionType.CompleteQuest:
                     {
                         WaitQuestCompleted complete = new(step.TurnInQuestId ?? quest.Id);
-                        WaitDelay delay = new();
+                        WaitDelay delay = new(TimeSpan.FromSeconds(1));
                         List<ITask> tasks = [complete, delay, .. RedeemRewardItems.CreateRedeemTasks(questData, dataManager)];
                         if (step.TurnInQuestId != null)
                             tasks.Add(Next(quest, sequence));

@@ -1,2 +1,2 @@
-- Feature: Adjusted quest window buttons -alydev
-- Change: show Remaining Tasks dropdown (if enabled) even if 0 tasks -alydev
+- bug fix: add description to journal progress button -alydev
+- bug fix(?): restore 1 second delay for accept/complete quest -alydev

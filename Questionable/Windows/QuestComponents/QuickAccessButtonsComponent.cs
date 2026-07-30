@@ -62,6 +62,7 @@ internal sealed class QuickAccessButtonsComponent
     internal void DrawReloadDataButton(bool showLabel = false)
     {
         if (QstWidgets.RailButton(FontAwesomeIcon.RedoAlt, _L("Reload Data"),
+                _L("Reset sequence progess and reload quest data from disk"),
                 showLabel: showLabel))
             Reload?.Invoke(this, EventArgs.Empty);
     }
@@ -69,6 +70,7 @@ internal sealed class QuickAccessButtonsComponent
     internal void DrawJournalProgressButton(bool showLabel = false)
     {
         if (QstWidgets.RailButton(FontAwesomeIcon.BookBookmark, _L("Journal Progress"),
+                _L("Utility to browse quest data used by this plugin"),
                 showLabel: showLabel))
             journalProgressWindow.ToggleOrUncollapse();
     }

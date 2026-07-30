@@ -84,6 +84,17 @@
           "RestartNavigationIfCancelled": false
         },
         {
+          "Position": {
+            "X": 319.92804,
+            "Y": -121.95376,
+            "Z": -317.30713
+          },
+          "TerritoryId": 613,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "RestartNavigationIfCancelled": false
+        },
+        {
           "DataId": 1020157,
           "Position": {
             "X": 300.2212,
