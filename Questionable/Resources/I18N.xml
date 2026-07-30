@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <I18N>
   <Entry>
     <!-- Found in: Configuration.cs -->
@@ -3329,11 +3329,13 @@
   <Entry>
     <!-- Found in: Controller\MovementController.cs -->
     <Key>vnavmesh was not able to find a path. Attempting to land, then trying again.</Key>
+    <Value lang="ja-jp">vnavmeshで経路を見つけられませんでした。着地してから再試行します。</Value>
     <Value lang="zh-cn">vnavmesh 无法找到路径。准备着陆后重试尝试。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Validation\Validators\AcceptQuestTerritoryValidator.cs -->
     <Key>AcceptQuest territory {0} has no aetheryte and no teleport shortcut is set</Key>
+    <Value lang="ja-jp">AcceptQuestのエリア{0}にはエーテライトがなく、テレポートのショートカットも設定されていません</Value>
     <Value lang="zh-cn">AcceptQuest 区域 {0} 没有以太之光，且未设置传送捷径</Value>
   </Entry>
   <Entry>
@@ -3374,6 +3376,7 @@
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>GC</Key>
+    <Value lang="ja-jp">GC</Value>
     <Value lang="zh-cn">军队</Value>
   </Entry>
   <Entry>
@@ -3634,391 +3637,470 @@
   <Entry>
     <!-- Found in: Utils\ImGuiComponentsLocal.cs -->
     <Key>QuestNotice</Key>
+    <Value lang="ja-jp">クエスト通知</Value>
     <Value lang="zh-cn">任务通知</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestValidationWindow.cs -->
     <Key>Filter quest validation results</Key>
+    <Value lang="ja-jp">クエスト検証結果をフィルター</Value>
     <Value lang="zh-cn">筛选任务验证结果</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
     <Key>This quest is in Stop Conditions.</Key>
+    <Value lang="ja-jp">このクエストは停止条件に設定されています。</Value>
     <Value lang="zh-cn">此任务在停止条件中。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\RedoComponent.cs -->
     <Key>Filter NG+ categories</Key>
+    <Value lang="ja-jp">NG+カテゴリをフィルター</Value>
     <Value lang="zh-cn">筛选 NG+ 分类</Value>
   </Entry>
   <Entry>
     <!-- Found in: AutoGen\Plugin\DraftQuestPathService.cs -->
     <Key>Only normal quests can be auto-generated.</Key>
+    <Value lang="ja-jp">自動生成できるのは通常のクエストのみです。</Value>
     <Value lang="zh-cn">仅普通任务可自动生成。</Value>
   </Entry>
   <Entry>
     <!-- Found in: AutoGen\Plugin\DraftQuestPathService.cs -->
     <Key>Could not find quest {0} in the game data.</Key>
+    <Value lang="ja-jp">ゲームデータにクエスト{0}が見つかりませんでした。</Value>
     <Value lang="zh-cn">在游戏数据中未找到任务 {0}。</Value>
   </Entry>
   <Entry>
     <!-- Found in: AutoGen\Plugin\DraftQuestPathService.cs -->
     <Key>Generated draft path: {0} ({1} sequences). Review it before trusting it.</Key>
+    <Value lang="ja-jp">ドラフトパスを生成しました: {0}（{1}シーケンス）。使用する前に確認してください。</Value>
     <Value lang="zh-cn">已生成草稿路径：{0} ({1} 个序列)。信任使用前请先检查。</Value>
   </Entry>
   <Entry>
     <!-- Found in: AutoGen\Plugin\DraftQuestPathService.cs -->
     <Key>Experimental: expect wrong targets and stalls. Watch the quest while it runs - do not go AFK.</Key>
+    <Value lang="ja-jp">実験的機能です。誤ったターゲットや停止が発生する可能性があります。実行中はクエストを監視し、離席しないでください。</Value>
     <Value lang="zh-cn">实验性功能：可能出现错误目标和卡死。运行时请观察任务 - 请勿离开。</Value>
   </Entry>
   <Entry>
     <!-- Found in: AutoGen\Plugin\DraftQuestPathService.cs -->
     <Key>Unable to generate a draft path, check /xllog for details.</Key>
+    <Value lang="ja-jp">ドラフトパスを生成できませんでした。詳細は/xllogを確認してください。</Value>
     <Value lang="zh-cn">无法生成草稿路径，请查看 /xllog 了解详情。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Rank</Key>
+    <Value lang="ja-jp">ランク</Value>
     <Value lang="zh-cn">等级</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Path Editor</Key>
+    <Value lang="ja-jp">パスエディター</Value>
     <Value lang="zh-cn">路径编辑器</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>unsaved</Key>
+    <Value lang="ja-jp">未保存</Value>
     <Value lang="zh-cn">未保存</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Select a quest to edit.</Key>
+    <Value lang="ja-jp">編集するクエストを選択してください。</Value>
     <Value lang="zh-cn">选择要编辑的任务。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Save</Key>
+    <Value lang="ja-jp">保存</Value>
     <Value lang="zh-cn">保存</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Writes the path to your user quest directory and reloads all quest data.\nSaving reformats the file (property order, omitted defaults).</Key>
+    <Value lang="ja-jp">パスをユーザークエストディレクトリに書き込み、すべてのクエストデータを再読み込みします。\n保存時にファイルが再フォーマットされます（プロパティの順序、既定値の省略）。</Value>
     <Value lang="zh-cn">将路径写入用户任务目录并重新加载所有任务数据。\n保存时会重新格式化文件 (属性顺序、省略默认值)。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Discard</Key>
+    <Value lang="ja-jp">破棄</Value>
     <Value lang="zh-cn">放弃</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Open Quests folder</Key>
+    <Value lang="ja-jp">クエストフォルダを開く</Value>
     <Value lang="zh-cn">打开任务文件夹</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Open this quest in your default .json text editor</Key>
+    <Value lang="ja-jp">このクエストを既定の.jsonテキストエディターで開く</Value>
     <Value lang="zh-cn">在默认 .json 文本编辑器中打开此任务</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>You have unsaved changes.</Key>
+    <Value lang="ja-jp">未保存の変更があります。</Value>
     <Value lang="zh-cn">有未保存的更改。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Save first</Key>
+    <Value lang="ja-jp">先に保存</Value>
     <Value lang="zh-cn">请先保存</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Discard changes</Key>
+    <Value lang="ja-jp">変更を破棄</Value>
     <Value lang="zh-cn">放弃更改</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Cancel</Key>
+    <Value lang="ja-jp">キャンセル</Value>
     <Value lang="zh-cn">取消</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Select a quest above, or open the editor from the Journal's right-click menu.</Key>
+    <Value lang="ja-jp">上からクエストを選択するか、ジャーナルの右クリックメニューからエディターを開いてください。</Value>
     <Value lang="zh-cn">在上方选择一个任务，或从日志的右键菜单中打开编辑器。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Sequence {0}</Key>
+    <Value lang="ja-jp">シーケンス{0}</Value>
     <Value lang="zh-cn">序列 {0}</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Add a step to this sequence</Key>
+    <Value lang="ja-jp">このシーケンスにステップを追加</Value>
     <Value lang="zh-cn">向此序列添加步骤</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Remove this empty sequence</Key>
+    <Value lang="ja-jp">この空のシーケンスを削除</Value>
     <Value lang="zh-cn">移除此空序列</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Add Sequence</Key>
+    <Value lang="ja-jp">シーケンスを追加</Value>
     <Value lang="zh-cn">添加序列</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Validation</Key>
+    <Value lang="ja-jp">検証</Value>
     <Value lang="zh-cn">验证</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorWindow.cs -->
     <Key>Saved quest path to '{0}'</Key>
+    <Value lang="ja-jp">クエストパスを「{0}」に保存しました</Value>
     <Value lang="zh-cn">已保存任务路径到 '{0}'</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestValidationWindow.cs -->
     <Key>Left click: Open in Path Editor\nRight click: Open in your default .json text editor</Key>
+    <Value lang="ja-jp">左クリック: パスエディターで開く\n右クリック: 既定の.jsonテキストエディターで開く</Value>
     <Value lang="zh-cn">左键单击: 在路径编辑器中打开\n右键单击: 在默认 .json 文本编辑器中打开</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestWindow.cs -->
     <Key>A Realm Reborn</Key>
+    <Value lang="ja-jp">新生エオルゼア</Value>
     <Value lang="zh-cn">重生之境</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestWindow.cs -->
     <Key>Events</Key>
+    <Value lang="ja-jp">イベント</Value>
     <Value lang="zh-cn">活动</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestWindow.cs -->
     <Key>Quick Access</Key>
+    <Value lang="ja-jp">クイックアクセス</Value>
     <Value lang="zh-cn">快捷操作</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestWindow.cs -->
     <Key>Path Tools</Key>
+    <Value lang="ja-jp">パスツール</Value>
     <Value lang="zh-cn">路径工具</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Allow questpath generation (experimental)</Key>
+    <Value lang="ja-jp">クエストパスの生成を許可（実験的）</Value>
     <Value lang="zh-cn">允许生成任务路径（实验性）</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Generated paths are unreviewed machine drafts: expect wrong targets, missing steps and stalls.</Key>
+    <Value lang="ja-jp">生成されたパスは未確認の機械生成ドラフトです。誤ったターゲット、手順の欠落、停止が発生する可能性があります。</Value>
     <Value lang="zh-cn">生成的路径是未经审核的机器草稿: 可能出现错误目标、缺失步骤和卡死。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Stay at the keyboard while one is running - never leave it unattended.</Key>
+    <Value lang="ja-jp">実行中はキーボードの前に留まり、決して放置しないでください。</Value>
     <Value lang="zh-cn">运行时请待在电脑前 - 切勿无人看管运行。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Right-click a quest without a path in the Journal Progress window to generate a draft.</Key>
+    <Value lang="ja-jp">ジャーナル進行ウィンドウでパスのないクエストを右クリックすると、ドラフトを生成します。</Value>
     <Value lang="zh-cn">在日志进度窗口中右键点击无路径的任务以生成草稿。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Generated paths only load in debug mode or on a dev install; without one of those, this option does nothing.</Key>
+    <Value lang="ja-jp">生成されたパスはデバッグモードまたは開発版インストールでのみ読み込まれます。それ以外ではこのオプションは機能しません。</Value>
     <Value lang="zh-cn">生成的路径仅在调试模式或开发安装中加载；不具备其中之一条件时，此选项无效。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
     <Key>Remove from list after complete</Key>
+    <Value lang="ja-jp">完了後にリストから削除</Value>
     <Value lang="zh-cn">完成后从列表移除</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Open in Path Editor</Key>
+    <Value lang="ja-jp">パスエディターで開く</Value>
     <Value lang="zh-cn">在路径编辑器中打开</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Generate draft path</Key>
+    <Value lang="ja-jp">ドラフトパスを生成</Value>
     <Value lang="zh-cn">生成草稿路径</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepCaptureComponent.cs -->
     <Key>Capture</Key>
+    <Value lang="ja-jp">取得</Value>
     <Value lang="zh-cn">捕获</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepCaptureComponent.cs -->
     <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Interaction type detected from the target's nameplate icon.</Key>
+    <Value lang="ja-jp">ターゲットのネームプレートアイコンからインタラクションタイプを検出しました。</Value>
     <Value lang="zh-cn">根据目标名牌图标检测到的交互类型。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepCaptureComponent.cs -->
     <Key>Append step from target to Seq {0}</Key>
+    <Value lang="ja-jp">ターゲットからシーケンス{0}にステップを追加</Value>
     <Value lang="zh-cn">将目标追加为序列 {0} 的步骤</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepCaptureComponent.cs -->
     <Key>No target selected.</Key>
+    <Value lang="ja-jp">ターゲットが選択されていません。</Value>
     <Value lang="zh-cn">未选择目标。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepCaptureComponent.cs -->
     <Key>Append step at my position</Key>
+    <Value lang="ja-jp">自分の位置にステップを追加</Value>
     <Value lang="zh-cn">在我当前的位置追加步骤</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Select a step to edit.</Key>
+    <Value lang="ja-jp">編集するステップを選択してください。</Value>
     <Value lang="zh-cn">选择要编辑的步骤。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Interaction Type</Key>
+    <Value lang="ja-jp">インタラクションタイプ</Value>
     <Value lang="zh-cn">交互类型</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Data ID</Key>
+    <Value lang="ja-jp">データID</Value>
     <Value lang="zh-cn">数据 ID</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Position</Key>
+    <Value lang="ja-jp">位置</Value>
     <Value lang="zh-cn">位置</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Territory ID</Key>
+    <Value lang="ja-jp">テリトリーID</Value>
     <Value lang="zh-cn">区域 ID</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Stop Distance</Key>
+    <Value lang="ja-jp">停止距離</Value>
     <Value lang="zh-cn">停止距离</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Aetheryte Shortcut</Key>
+    <Value lang="ja-jp">エーテライトのショートカット</Value>
     <Value lang="zh-cn">以太之光捷径</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Comment</Key>
+    <Value lang="ja-jp">コメント</Value>
     <Value lang="zh-cn">备注</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Shown in the debug overlay</Key>
+    <Value lang="ja-jp">デバッグオーバーレイに表示</Value>
     <Value lang="zh-cn">显示在调试悬浮窗中</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Fly</Key>
+    <Value lang="ja-jp">飛行</Value>
     <Value lang="zh-cn">飞行</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>This interaction type usually needs a Data ID.</Key>
+    <Value lang="ja-jp">このインタラクションタイプには通常データIDが必要です。</Value>
     <Value lang="zh-cn">此交互类型通常需要数据 ID。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>This interaction type usually needs a Position.</Key>
+    <Value lang="ja-jp">このインタラクションタイプには通常位置が必要です。</Value>
     <Value lang="zh-cn">此交互类型通常需要位置。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Territory ID is not set.</Key>
+    <Value lang="ja-jp">テリトリーIDが設定されていません。</Value>
     <Value lang="zh-cn">区域 ID 未设置。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Duplicate</Key>
+    <Value lang="ja-jp">複製</Value>
     <Value lang="zh-cn">复制</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Delete Step</Key>
+    <Value lang="ja-jp">ステップを削除</Value>
     <Value lang="zh-cn">删除步骤</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Step JSON</Key>
+    <Value lang="ja-jp">ステップJSON</Value>
     <Value lang="zh-cn">步骤 JSON</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Copy this step as JSON</Key>
+    <Value lang="ja-jp">このステップをJSONとしてコピー</Value>
     <Value lang="zh-cn">将此步骤复制为 JSON</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Left click: Open in Path Editor\nRight click: Open Quests folder</Key>
+    <Value lang="ja-jp">左クリック: パスエディターで開く\n右クリック: クエストフォルダを開く</Value>
     <Value lang="zh-cn">左键单击: 在路径编辑器中打开\n右键单击: 打开任务文件夹</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Seq {0} · Step {1}/{2}</Key>
+    <Value lang="ja-jp">シーケンス{0} · ステップ{1}/{2}</Value>
     <Value lang="zh-cn">序列 {0} · 步骤 {1}/{2}</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Combat</Key>
+    <Value lang="ja-jp">戦闘</Value>
     <Value lang="zh-cn">战斗</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Stopping</Key>
+    <Value lang="ja-jp">停止中</Value>
     <Value lang="zh-cn">停止中</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Running</Key>
+    <Value lang="ja-jp">実行中</Value>
     <Value lang="zh-cn">运行中</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Open the current quest in the Path Editor.</Key>
+    <Value lang="ja-jp">現在のクエストをパスエディターで開く。</Value>
     <Value lang="zh-cn">在路径编辑器中打开当前任务。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
     <Key>GC Rank: {0} (#{1} &gt;= #{2})</Key>
+    <Value lang="ja-jp">グランドカンパニーランク: {0} (#{1} &gt;= #{2})</Value>
     <Value lang="zh-cn">军队军衔: {0} (#{1} &gt;= #{2})</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Quest validation: {0} errors, {1} infos</Key>
+    <Value lang="ja-jp">クエスト検証: エラー{0}件、情報{1}件</Value>
     <Value lang="zh-cn">任务验证: {0} 个错误，{1} 个信息</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\RemainingTasksComponent.cs -->
     <Key>Remaining Tasks</Key>
+    <Value lang="ja-jp">残りのタスク</Value>
     <Value lang="zh-cn">剩余任务</Value>
   </Entry>
   <Entry>
     <!-- Found in: Data\JournalData.cs -->
     <Key>Instant Quests</Key>
+    <Value lang="ja-jp">即時クエスト</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Use Questionable theme</Key>
+    <Value lang="ja-jp">Questionableのテーマを使用</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>When disabled, Questionable's windows use your Dalamud style/theme instead.</Key>
+    <Value lang="ja-jp">無効にすると、Questionableのウィンドウは代わりにDalamudのスタイル/テーマを使用します。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>No supported quests</Key>
+    <Value lang="ja-jp">対応しているクエストはありません</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Reset sequence progess and reload quest data from disk</Key>
+    <Value lang="ja-jp">シーケンスの進行状況をリセットし、ディスクからクエストデータを再読み込み</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Utility to browse quest data used by this plugin</Key>
+    <Value lang="ja-jp">このプラグインで使用されるクエストデータを閲覧するユーティリティ</Value>
   </Entry>
 </I18N>
