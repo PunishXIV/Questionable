@@ -12,8 +12,8 @@ using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 using Questionable.Windows.Common.Ui;
+using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
 namespace Questionable.Windows.QuestComponents;
 
