@@ -69,7 +69,7 @@ internal sealed class ContextMenuController : IDisposable
         if (args.AddonName != null)
             return;
 
-        if (TryGetHoveredCharacterId(args, out var character))
+        if (TryGetHoveredCharacterId(args, out var characterNullable) && characterNullable is AddonMaster._CharaSelectListMenu.Character character)
         {
             args.AddMenuItem(CreateMenuItem_CharaSelectListMenu(character));
         }
@@ -124,10 +124,10 @@ internal sealed class ContextMenuController : IDisposable
     }
 
     private unsafe MenuItem CreateMenuItem_CharaSelectListMenu(
-        AddonMaster._CharaSelectListMenu.Character? character)
+        AddonMaster._CharaSelectListMenu.Character character)
     {
-        bool characterDisabled = DisabledCharacterIds.Contains(character?.Entry->ContentId);
-        string characterId = $"FFXIV_CHR{character?.Entry->ContentId:X16}";
+        bool characterDisabled = DisabledCharacterIds.Contains(character.Entry->ContentId);
+        string characterId = $"FFXIV_CHR{character.Entry->ContentId:X16}";
         return new()
         {
             Prefix = SeIconChar.Hexagon,
