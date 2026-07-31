@@ -1,0 +1,55 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Comment": "Autocraft requires:\n6x Chondrite Ingot\n6x Star Quartz\n12x Phrygian Gold Ingot",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039203,
+          "Position": {
+            "X": -277.689,
+            "Y": 21.846,
+            "Z": -139.064
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: issuer 1039203 (Rurusha)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 962,
+          "InteractionType": "Craft",
+          "ItemId": 35591,
+          "ItemCount": 6,
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
+        },
+        {
+          "DataId": 1039203,
+          "Position": {
+            "X": -277.689,
+            "Y": 21.846,
+            "Z": -139.064
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: todo turn-in -> 1039203 (Rurusha)"
+        }
+      ]
+    }
+  ]
+}

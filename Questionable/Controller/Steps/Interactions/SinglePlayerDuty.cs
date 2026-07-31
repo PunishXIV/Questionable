@@ -44,6 +44,7 @@ internal static class SinglePlayerDuty
         public const ushort Patisserie = 1298;
         public const ushort ViperTutorial = 1235;
         public const ushort EgistentialCrisis = 701;
+        public const ushort Nightkin = 676;
     }
 
     internal sealed class Factory
@@ -130,7 +131,7 @@ internal static class SinglePlayerDuty
                 {
                     yield return new EnableAi();
 
-                    yield return new MoveTask(step, new(-173.63245f, 23.428497f, 67.91785f));
+                    yield return new MoveTask(SpecialTerritories.EgistentialCrisis, new(-173.63245f, 23.428497f, 67.91785f));
                     yield return new WaitCondition.Task(
                         () =>
                         {
@@ -140,10 +141,10 @@ internal static class SinglePlayerDuty
                         },
                         "Wait(finishing combat)");
 
-                    yield return new MoveTask(step, new(-81.944534f, 17.852749f, 28.01129f));
+                    yield return new MoveTask(SpecialTerritories.EgistentialCrisis, new(-81.944534f, 17.852749f, 28.01129f));
                     yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(10));
 
-                    yield return new MoveTask(step, new(-3.189148f, 15.807038f, -2.7008667f));
+                    yield return new MoveTask(SpecialTerritories.EgistentialCrisis, new(-3.189148f, 15.807038f, -2.7008667f));
                     yield return new WaitCondition.Task(
                         () =>
                         {
@@ -152,7 +153,7 @@ internal static class SinglePlayerDuty
                             return !condition[ConditionFlag.InCombat];
                         },
                         "Wait(finishing combat)");
-                    yield return new MoveTask(step, new(54.61206f, 11.988899f, 0.56451416f));
+                    yield return new MoveTask(SpecialTerritories.EgistentialCrisis, new(54.61206f, 11.988899f, 0.56451416f));
                     yield return new SetTarget(7256);
                     yield return new WaitCondition.Task(
                         () =>
@@ -163,13 +164,65 @@ internal static class SinglePlayerDuty
                         },
                         "Wait(finishing combat)");
                 }
+                else if (tId == SpecialTerritories.Nightkin)
+                {
+                    yield return new EnableAi();
+
+                    foreach (Vector3 pos in new Vector3[] {
+                        new(296.57343f, -23.999998f, -46.911057f),
+                        new(252.63516f, -24f, -30.802874f),
+                        new(292.96347f, -40.000004f, -58.68649f)
+                    })
+                    {
+                        yield return new MoveTask(SpecialTerritories.Nightkin, pos, Mount: false);
+                        yield return new WaitCondition.Task(
+                        () =>
+                        {
+                            if (clientState.TerritoryType != SpecialTerritories.Nightkin)
+                                return true;
+                            return !condition[ConditionFlag.InCombat];
+                        },
+                        "Wait(finishing combat)");
+                    }
+
+                    foreach (Vector3 pos in new Vector3[] {
+                        new(368.9174f, -39.0174f, -67.61273f),
+                        new(364.1259f, -39.0174f, -61.63129f),
+                        new(376.7352f, -39f, -72.19662f),
+                        new(376.9069f, -39f, -47.19531f),
+                        new(384.6841f, -39f, -51.21257f)
+                    })
+                    {
+                        yield return new MoveTask(SpecialTerritories.Nightkin, pos, Mount: false);
+                        yield return new Interact.Task(2007939, quest, EInteractionType.Interact, SkipMarkerCheck: true);
+                    }
+                    yield return new WaitCondition.Task(
+                        () =>
+                        {
+                            if (clientState.TerritoryType != SpecialTerritories.Nightkin)
+                                return true;
+                            return objectTable.Any(o => o.BaseId.Equals(7075));
+                        },
+                        "Wait(voidsphere spawn)");
+                    yield return new MoveTask(SpecialTerritories.Nightkin, new(368.9174f, -39.0174f, -67.61273f), Mount: false);
+                    yield return new WaitCondition.Task(
+                    () =>
+                    {
+                        if (clientState.TerritoryType != SpecialTerritories.Nightkin)
+                            return true;
+                        return !condition[ConditionFlag.InCombat];
+                    },
+                    "Wait(finishing combat)");
+                    yield return new MoveTask(SpecialTerritories.Nightkin, new(376.36014f, -39f, -60.74992f), Mount: false);
+                    yield return new Interact.Task(2007939, quest, EInteractionType.Interact, SkipMarkerCheck: true);
+                }
 
                 //else if (tId == SpecialTerritories.ViperTutorial)
                 //{
                 //    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(40));
                 //    yield return new Interact.Task(17055, quest, EInteractionType.Interact, SkipMarkerCheck:true);
                 //    yield return new SetTarget(17057);
-                //    yield return new MoveTask(step, new(255.8717f, 15.075876f, 471.1717f));
+                //    yield return new MoveTask(SpecialTerritories.ViperTutorial, new(255.8717f, 15.075876f, 471.1717f), Mount:false);
                 //    yield return new Action.UseOnObject(17057, quest, EAction.WrithingSnap, CompletionQuestVariablesFlags:null);
                 //    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
                 //    yield return new Action.UseOnObject(17057, quest, EAction.SteelFangs, CompletionQuestVariablesFlags:null);
@@ -185,7 +238,7 @@ internal static class SinglePlayerDuty
                 //    yield return new Action.UseOnObject(17057, quest, EAction.WrithingSnap, CompletionQuestVariablesFlags:null);
                 //    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
                 //    yield return new Action.UseOnObject(17057, quest, EAction.DeathRattle, CompletionQuestVariablesFlags:null);
-                //    yield return new MoveTask(step, new(251.17833f, 15.400139f, 465.84366f));
+                //    yield return new MoveTask(SpecialTerritories.ViperTutorial, new(251.17833f, 15.400139f, 465.84366f), Mount:false);
                 //}
                 else
                     yield return new EnableAi(tId == SpecialTerritories.Naadam);

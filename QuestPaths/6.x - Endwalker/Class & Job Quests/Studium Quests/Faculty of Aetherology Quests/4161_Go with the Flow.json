@@ -1,0 +1,96 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Comment": "Auto buys 99x Gold Salmon Roe from Synnove\nFishes for 6x Giant Aetherlouse",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038551,
+          "Position": {
+            "X": -348.539,
+            "Y": 21.846,
+            "Z": -79.9565
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: issuer 1038551 (T'laqa Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1037054,
+          "Position": {
+            "X": 79.11792,
+            "Y": 5.1499996,
+            "Z": -46.52478
+          },
+          "TerritoryId": 962,
+          "InteractionType": "PurchaseItem",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Studium",
+            "[Old Sharlayan] Aetheryte Plaza"
+          ],
+          "ItemId": 36588,
+          "ItemCount": 99,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": { "NotInInventory": false },
+              "ExtraCondition": "NewGamePlus"
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -151.87701,
+            "Y": 156.92998,
+            "Z": -822.32367
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Fish",
+          "Fly": true,
+          "ItemsToGather": [
+            {
+              "ItemId": 35604,
+              "ItemCount": 6,
+              "Collectability": 70,
+              "FishingOptions": {
+                "BaitId": 36588,
+                "HookType": { "Normal": { "Weak": true } }
+              }
+            }
+          ],
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Hall of Artifice (Labyrinthos)"
+          ],
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
+        },
+        {
+          "DataId": 1038551,
+          "Position": {
+            "X": -348.539,
+            "Y": 21.846,
+            "Z": -79.9565
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: todo turn-in -> 1038551 (T'laqa Tia)"
+        }
+      ]
+    }
+  ]
+}
