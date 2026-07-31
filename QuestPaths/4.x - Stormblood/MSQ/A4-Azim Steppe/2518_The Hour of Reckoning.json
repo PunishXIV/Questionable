@@ -1,7 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "jigain", "Date": "2026-07-16"},
+  "Interruptible": false,
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -30,7 +31,8 @@
           "TerritoryId": 622,
           "InteractionType": "WalkTo",
           "Mount": true,
-          "TargetTerritoryId": 614
+          "TargetTerritoryId": 614,
+          "SkipConditions": { "StepIf": { "InTerritory": [614] } }
         },
         {
           "DataId": 1021652,
@@ -63,6 +65,11 @@
     {
       "Sequence": 255,
       "Steps": [
+        {
+          "TerritoryId": 614,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Yanxia - House of the Fierce"
+        },
         {
           "DataId": 1020519,
           "Position": {

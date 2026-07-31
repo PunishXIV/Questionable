@@ -1,1 +1,4 @@
-- bug fix: if aetheryte locked, check if current quest unlocks aetheryte -alydev
+- Feature: when no supported quests are available, qst shows the next MSQ (if underleveled or otherwise locked), and any tracked quests from the todo list that we don't yet support -alydev
+- Change: Quest comment visible when minimized -alydev
+- Change: hovering Locked in journal progress shows all available reasons -alydev
+- Bug fix: reset internal state on internal stop; hopefully will prevent previously completed/inaccessible quests from being stuck as active quest -alydev

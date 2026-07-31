@@ -2,6 +2,12 @@
 
 internal static class WaitCondition
 {
+    /// <summary>
+    /// Can be used to insert a WaitCondition, or can be used as a wrapper for
+    /// another function that should run at a given time within a task queue
+    /// </summary>
+    /// <param name="Predicate">A function that returns a boolean indicating success</param>
+    /// <param name="Description">Shown in the task list ingame. Ideal format: Wait(description)</param>
     internal sealed record Task(Func<bool> Predicate, string Description) : ITask
     {
         public override string ToString() => Description;

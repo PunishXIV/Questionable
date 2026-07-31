@@ -1,9 +1,11 @@
 using System.Text.RegularExpressions;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
 using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.Game.Event;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Model.Common;
@@ -25,6 +27,7 @@ internal sealed partial class ActiveQuestComponent
     PathEditorWindow pathEditorWindow,
     UiUtils uiUtils,
     IChatGui chatGui,
+    ICondition condition,
     PathDataUpdater pathDataUpdater,
     QuestData questData,
     QuickAccessButtonsComponent quickAccessButtonsComponent,
@@ -74,26 +77,26 @@ internal sealed partial class ActiveQuestComponent
             {
                 QuestSequence? currentSequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
                 QuestStep? currentStep = currentSequence?.FindStep(currentQuest.Step);
+                string comment = currentStep?.Comment ??
+                                 currentSequence?.Comment ??
+                                 currentQuest.Quest.Root.Comment ?? string.Empty;
+                if (!string.IsNullOrWhiteSpace(comment))
+                {
+                    bool manualStep = currentStep is
+                    {
+                        InteractionType:
+                        EInteractionType.Instruction or
+                        EInteractionType.WaitForManualProgress or
+                        EInteractionType.Snipe
+                    };
+                    using ImRaii.ColorDisposable color =
+                        ImRaii.PushColor(ImGuiCol.Text, manualStep ? QstTheme.Accent : QstTheme.TextMuted);
+                    using ImRaii.TextWrapDisposable wrap = ImRaii.TextWrapPos(0);
+                    ImGui.TextUnformatted(comment);
+                }
+
                 if (!isMinimized)
                 {
-                    string comment = currentStep?.Comment ??
-                                     currentSequence?.Comment ??
-                                     currentQuest.Quest.Root.Comment ?? string.Empty;
-                    if (!string.IsNullOrWhiteSpace(comment))
-                    {
-                        bool manualStep = currentStep is
-                        {
-                            InteractionType:
-                            EInteractionType.Instruction or
-                            EInteractionType.WaitForManualProgress or
-                            EInteractionType.Snipe
-                        };
-                        using ImRaii.ColorDisposable color =
-                            ImRaii.PushColor(ImGuiCol.Text, manualStep ? QstTheme.Accent : QstTheme.TextMuted);
-                        using ImRaii.TextWrapDisposable wrap = ImRaii.TextWrapPos(0);
-                        ImGui.TextUnformatted(comment);
-                    }
-
                     string stats = questController.ToStatString();
                     float lineHeight = ImGui.GetTextLineHeightWithSpacing();
                     Vector2 cursorStart = ImGui.GetCursorPos();
@@ -137,20 +140,27 @@ internal sealed partial class ActiveQuestComponent
                 if (editButtonLeft)
                     pathEditorWindow.Open(currentQuest.Quest.Id);
                 else if (editButtonRight)
-                {
-                    QuestRegistry.OpenFolder();
-                    logger.LogDebug("OpenFolder executed");
-                }
+                    questRegistry.OpenEditor(currentQuest.Quest.Id.Value);
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_L("Left click: Open in Path Editor\nRight click: Open Quests folder"));
+                    ImGui.SetTooltip(_L("Left click: Open in Path Editor\nRight click: Open in your default .json text editor"));
+
                 ImGui.SameLine();
+                bool inDuty = condition[ConditionFlag.BoundByDuty] || condition[ConditionFlag.BoundByDuty56];
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Ban) && currentQuest != null)
                 {
-                    GameMain.ExecuteCommand((int)GameCommand.AbandonQuest, (int)currentQuest.Quest.Id.Value);
-                    logger.LogDebug("AbandonQuest fired");
+                    if (inDuty)
+                    {
+                        EventFramework.LeaveCurrentContent(forced: false);
+                        logger.LogDebug("LeaveCurrentContent fired");
+                    }
+                    else
+                    {
+                        GameMain.ExecuteCommand((int)GameCommand.AbandonQuest, (int)currentQuest.Quest.Id.Value);
+                        logger.LogDebug("AbandonQuest fired");
+                    }
                 }
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip("Ask the game to abandon this quest");
+                    ImGui.SetTooltip(inDuty ? _L("Ask the game to leave this duty") : _L("Ask the game to abandon this quest"));
             }
         }
         else
@@ -175,8 +185,12 @@ internal sealed partial class ActiveQuestComponent
 
                 foreach (IQuestInfo qInfo in GetTrackedQuests())
                 {
+                    (bool isLocked, string[]? reasons) = questFunctions.IsQuestLocked(qInfo.QuestId);
                     if (uiUtils.ChecklistItem($"{qInfo.Name} ({qInfo.QuestId})", complete: false))
-                        ImGui.SetTooltip(_L("This quest is not yet supported."));
+                        if (reasons != null)
+                            ImGui.SetTooltip(_L("This quest is not available.") + "\n  " + string.Join("\n  ", reasons));
+                        else
+                            ImGui.SetTooltip(_L("This quest is not yet supported."));
                 }
             }
 
@@ -214,6 +228,9 @@ internal sealed partial class ActiveQuestComponent
     internal unsafe IEnumerable<IQuestInfo> GetTrackedQuests()
     {
         IEnumerable<IQuestInfo> outp = [];
+        (QuestReference? nextMsq, string? reason) = questFunctions.GetMainScenarioQuestId();
+        if (nextMsq.CurrentQuest is ElementId nextMsqId && nextMsqId.Value != 0)
+            outp = outp.Append(questData.GetQuestInfo(nextMsqId));
         QuestManager* questManager = QuestManager.Instance();
         for (int i = questManager->TrackedQuests.Length - 1; i >= 0; --i)
             if (questManager->TrackedQuests[i].QuestType == 1)
@@ -445,6 +462,11 @@ internal sealed partial class ActiveQuestComponent
                         ImGui.SameLine();
                         QstWidgets.Chip(metaDataId.ToString(CultureInfo.InvariantCulture), QstTheme.TextMuted);
                     }
+                }
+                if (configuration.Advanced.Debug)
+                {
+                    ImGui.SameLine();
+                    QstWidgets.Chip(questController.AutomationType.ToString(), QstTheme.Accent);
                 }
             }
 

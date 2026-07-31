@@ -12,7 +12,7 @@ internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInter
         string lockedReason = string.Empty;
         HashSet<IQuestInfo>? prereqValue = null;
         if (questFunctions.IsQuestLocked(elementId) is (bool isLocked, string[] reasons) && isLocked)
-            lockedReason = reasons[0];
+            lockedReason = string.Join("\n  ", reasons);
         else if (questFunctions.prereqCache.TryGetValue(elementId.Value, out prereqValue) &&
                 prereqValue.Any(q => questFunctions.IsQuestLocked(q.QuestId) is (bool qIsLocked, string[] reasons) && qIsLocked))
             lockedReason = _L("Prev quest");
@@ -34,7 +34,7 @@ internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInter
         if (questFunctions.IsQuestUnobtainable(elementId))
             return (QstTheme.TextMuted, FontAwesomeIcon.Minus, _L("Unobtainable"));
         if (!string.IsNullOrEmpty(lockedReason))
-            return (QstTheme.Danger, FontAwesomeIcon.Times, $"{_L("Locked")}: {lockedReason}");
+            return (QstTheme.Danger, FontAwesomeIcon.Times, $"{_L("Locked")}:\n  {lockedReason}");
         if (prereqValue == null)
             return (QstTheme.Info, FontAwesomeIcon.QuestionCircle, _L("Available(?)"));
 

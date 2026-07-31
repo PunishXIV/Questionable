@@ -250,7 +250,7 @@ internal sealed unsafe class QuestFunctions
         return QuestReference.NoQuest(msqQuest.State);
     }
 
-    public (QuestReference, string?) GetMainScenarioQuest()
+    public (QuestReference, string?) GetMainScenarioQuestId()
     {
         if (QuestManager.IsQuestComplete(3759)) // Memories Rekindled
         {
@@ -282,7 +282,14 @@ internal sealed unsafe class QuestFunctions
         if (scenarioTree->Data == null)
             return (QuestReference.NoQuest(MainScenarioQuestState.LoadingScreen), _L("Scenario Tree Data is null"));
 
-        QuestId currentQuest = new(scenarioTree->Data->MainScenarioQuestIds[0]);
+        return (new(new QuestId(scenarioTree->Data->MainScenarioQuestIds[0]), 0, MainScenarioQuestState.Available), "MSQ");
+    }
+
+    public (QuestReference, string?) GetMainScenarioQuest()
+    {
+        (QuestReference currentQuestRef, var _) = GetMainScenarioQuestId();
+        if (currentQuestRef.CurrentQuest is not QuestId currentQuest)
+            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), "MSQ");
         string extraData = $"sq: {currentQuest}";
         if (currentQuest.Value == 0)
         {
@@ -338,9 +345,6 @@ internal sealed unsafe class QuestFunctions
         // but this is just really hoping that this breaks nothing.
         if (IsQuestComplete(currentQuest))
             return (new(currentQuest, 255, MainScenarioQuestState.Available), _LF("Quest {0} complete", currentQuest.Value));
-
-        if (!IsReadyToAcceptQuest(currentQuest))
-            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _LF("Not ready to accept quest {0}", currentQuest.Value));
 
         short currentLevel = PlayerState.Instance()->CurrentLevel;
 
@@ -679,7 +683,7 @@ internal sealed unsafe class QuestFunctions
         }
 
         if (playerState->CurrentLevel < questInfo.Level)
-            lockedReason.Add(_L("Level"), playerState->CurrentLevel < questInfo.Level);
+            lockedReason.Add(_L("Level") + $": {(Job)playerState->CurrentClassJobId}={playerState->CurrentLevel} < {questInfo.Level}", playerState->CurrentLevel < questInfo.Level);
         if (questInfo.AlliedSociety != EAlliedSociety.None)
             if (questInfo.IsRepeatable)
                 lockedReason.Add(_L("Daily unavailable"), !IsDailyAlliedSocietyQuestAndAvailableToday(questId));
@@ -705,14 +709,14 @@ internal sealed unsafe class QuestFunctions
         }
 
         if (!HasCompletedPreviousQuests(questInfo, extraCompletedQuest))
-            lockedReason.Add(_L("Prev quest"), true);
+            lockedReason.Add(_L("Prev quest"), value: true);
         if (!HasCompletedPreviousInstances(questInfo))
-            lockedReason.Add(_L("Prev instance"), true);
+            lockedReason.Add(_L("Prev instance"), value: true);
         if (questRegistry.TryGetQuest(questId, out Quest? quest))
         {
             EAetheryteLocation? firstLockedAetheryte = GetFirstLockedAetheryte(quest);
             if (firstLockedAetheryte != null)
-                lockedReason.Add(_LF("Aetheryte locked: {0}", firstLockedAetheryte ?? EAetheryteLocation.None), true);
+                lockedReason.Add(_LF("Aetheryte locked: {0}", firstLockedAetheryte ?? EAetheryteLocation.None), value: true);
         }
         return (lockedReason.Values.Any(x => x), lockedReason.Keys.ToArray());
     }

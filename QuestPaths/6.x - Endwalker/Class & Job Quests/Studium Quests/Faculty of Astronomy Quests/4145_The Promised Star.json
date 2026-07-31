@@ -1,0 +1,109 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1038525,
+          "Position": {
+            "X": -296.547,
+            "Y": 21.846,
+            "Z": -162.13
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: issuer 1038525 (Jude)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "TerritoryId": 962,
+          "InteractionType": "Craft",
+          "ItemId": 35842,
+          "ItemCount": 1
+        },
+        {
+          "DataId": 1038525,
+          "Position": {
+            "X": -296.547,
+            "Y": 21.846,
+            "Z": -162.13
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1038525 (Jude); npc trade"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1038563,
+          "Position": {
+            "X": 200.959,
+            "Y": 18.8978,
+            "Z": -91.2262
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Studium",
+            "[Old Sharlayan] The Leveilleur Estate"
+          ],
+          "$": "auto: todo location -> 1038563 (Jeromere)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2011752,
+          "Position": {
+            "X": 7.60286,
+            "Y": -16.147,
+            "Z": 143.469
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Old Sharlayan] The Leveilleur Estate",
+            "[Old Sharlayan] Scholar's Harbor"
+          ],
+          "$": "auto: todo location -> 2011752 (destination)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1038525,
+          "Position": {
+            "X": -296.547,
+            "Y": 21.846,
+            "Z": -162.13
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "$": "auto: todo turn-in -> 1038525 (Jude)"
+        }
+      ]
+    }
+  ]
+}

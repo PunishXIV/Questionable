@@ -202,12 +202,15 @@ internal sealed class CreationUtilsComponent
         ElementId? currentQuest = questFunctions.GetCurrentQuest().CurrentQuest;
         using (ImRaii.Disabled(currentQuest == null))
         {
-            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit) && currentQuest != null)
-                pathEditorWindow.Open(currentQuest);
+            if (currentQuest != null)
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
+                    pathEditorWindow.Open(currentQuest);
+                else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
+                    questRegistry.OpenEditor(currentQuest.Value);
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip(_L("Open the current quest in the Path Editor."));
+            ImGui.SetTooltip(_L("Left click: Open in Path Editor\nRight click: Open in your default .json text editor"));
     }
 
     private unsafe void DrawTargetDetails(IGameObject target)
@@ -338,9 +341,8 @@ internal sealed class CreationUtilsComponent
         return $"{q.CurrentQuest} → {q.Sequence} - {qw}";
     }
 
-    private unsafe void DrawCopyButton(IGameObject target)
+    private void DrawCopyButton(IGameObject target)
     {
-        GameObject* gameObject = (GameObject*)target.Address;
         bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
         if (ImGui.IsItemHovered())
         {

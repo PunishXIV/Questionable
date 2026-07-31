@@ -1,0 +1,66 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1039211,
+          "Position": {
+            "X": -348.737,
+            "Y": 21.6486,
+            "Z": -91.6105
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Old Sharlayan] Aetheryte Plaza",
+            "[Old Sharlayan] The Studium"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_AKTKLA101_04132_Q1_000_000",
+              "Answer": "TEXT_AKTKLA101_04132_A1_000_001",
+              "Type": "List"
+            }
+          ],
+          "$": "auto: issuer 1039211 (Boric)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1039212,
+          "Position": {
+            "X": -286.707,
+            "Y": 22.3,
+            "Z": -126.305
+          },
+          "TerritoryId": 962,
+          "InteractionType": "Interact",
+          "$": "auto: lua ACTOR1 -> 1039212 (Rurusha)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1039203,
+          "Position": {
+            "X": -277.689,
+            "Y": 21.846,
+            "Z": -139.064
+          },
+          "TerritoryId": 962,
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1039203 (Rurusha)"
+        }
+      ]
+    }
+  ]
+}

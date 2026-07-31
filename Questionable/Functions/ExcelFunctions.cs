@@ -33,8 +33,7 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
         if (currentQuest != null && excelSheetName == null)
         {
             Lumina.Excel.Sheets.Quest? questRow =
-                _dataManager.GetExcelSheet<Lumina.Excel.Sheets.Quest>().GetRowOrDefault((uint)currentQuest.Id.Value +
-                                                                                        0x10000);
+                _dataManager.GetExcelSheet<Lumina.Excel.Sheets.Quest>().GetRowOrDefault((uint)currentQuest.Id.Value + 0x10000);
             if (questRow == null)
             {
                 _logger.LogError("Could not find quest row for {QuestId}", currentQuest.Id);

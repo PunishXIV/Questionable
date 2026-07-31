@@ -151,6 +151,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<StylistIpc>();
         serviceCollection.AddSingleton<MogmailIpc>();
         serviceCollection.AddSingleton<RotationSolverRebornIpc>();
+        serviceCollection.AddSingleton<ItemVendorLocationIpc>();
 
         serviceCollection.AddSingleton<GearStatsCalculator>();
 
@@ -308,6 +309,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         serviceCollection.AddSingleton<InterruptHandler>();
 
         serviceCollection.AddSingleton<HighlightObject>();
+        serviceCollection.AddSingleton<HighlightMenus>();
         serviceCollection.AddSingleton<PartyWatchDog>();
 
         serviceCollection.AddSingleton<CraftworksSupplyController>();

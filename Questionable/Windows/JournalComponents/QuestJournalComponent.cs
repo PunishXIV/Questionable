@@ -273,7 +273,8 @@ internal sealed class QuestJournalComponent
 
         ImGui.TableNextColumn();
         (Vector4 color, FontAwesomeIcon icon, string text) = uiUtils.GetQuestStyle(questInfo.QuestId);
-        uiUtils.ChecklistItem(text.Split(',', 1)[0], color, icon);
+        if (uiUtils.ChecklistItem(text.Split(':')[0], color, icon))
+            ImGui.SetTooltip(text);
     }
 
     internal static void DrawCount(int count, int total)

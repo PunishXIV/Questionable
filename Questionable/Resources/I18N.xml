@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <I18N>
   <Entry>
     <!-- Found in: Configuration.cs -->
@@ -475,7 +475,6 @@
     <Value lang="zh-cn">任务 {0} 已完成</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Not ready to accept quest {0}</Key>
     <Value lang="ja-jp">クエスト {0} を受注する準備ができていません</Value>
     <Value lang="zh-cn">尚未准备好接受任务 {0}</Value>
@@ -2289,6 +2288,7 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>This quest is not available.</Key>
     <Value lang="ja-jp">このクエストは受注できません。</Value>
     <Value lang="zh-cn">此任务不可接受。</Value>
@@ -3810,6 +3810,8 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestValidationWindow.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Left click: Open in Path Editor\nRight click: Open in your default .json text editor</Key>
     <Value lang="ja-jp">左クリック: パスエディターで開く\n右クリック: 既定の.jsonテキストエディターで開く</Value>
     <Value lang="zh-cn">左键单击: 在路径编辑器中打开\n右键单击: 在默认 .json 文本编辑器中打开</Value>
@@ -4020,7 +4022,6 @@
     <Value lang="zh-cn">将此步骤复制为 JSON</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Left click: Open in Path Editor\nRight click: Open Quests folder</Key>
     <Value lang="ja-jp">左クリック: パスエディターで開く\n右クリック: クエストフォルダを開く</Value>
     <Value lang="zh-cn">左键单击: 在路径编辑器中打开\n右键单击: 打开任务文件夹</Value>
@@ -4050,7 +4051,6 @@
     <Value lang="zh-cn">运行中</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Open the current quest in the Path Editor.</Key>
     <Value lang="ja-jp">現在のクエストをパスエディターで開く。</Value>
     <Value lang="zh-cn">在路径编辑器中打开当前任务。</Value>
@@ -4102,5 +4102,13 @@
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Utility to browse quest data used by this plugin</Key>
     <Value lang="ja-jp">このプラグインで使用されるクエストデータを閲覧するユーティリティ</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <Key>Ask the game to leave this duty</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <Key>Ask the game to abandon this quest</Key>
   </Entry>
 </I18N>
