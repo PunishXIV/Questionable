@@ -192,21 +192,22 @@ internal sealed class CreationUtilsComponent
             ImGui.SameLine();
             DrawCopyButton();
         }
-
-        ImGui.SameLine();
-        DrawPathEditorButton();
     }
 
-    private void DrawPathEditorButton()
+    internal void DrawPathEditorButton(bool sameLine = false)
     {
         ElementId? currentQuest = questFunctions.GetCurrentQuest().CurrentQuest;
         using (ImRaii.Disabled(currentQuest == null))
         {
             if (currentQuest != null)
+            {
+                if (sameLine)
+                    ImGui.SameLine();
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
                     pathEditorWindow.Open(currentQuest);
                 else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
                     questRegistry.OpenEditor(currentQuest.Value);
+            }
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))

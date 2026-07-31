@@ -6,26 +6,26 @@ namespace Questionable.Windows.QuestComponents;
 
 internal sealed class RemainingTasksComponent(
     QuestController questController,
-    GatheringController gatheringController,
-    Configuration configuration)
+    GatheringController gatheringController)
 {
+    private bool isGathering;
+    internal IList<string> Tasks
+    {
+        get
+        {
+            IList<string> gatheringTasks = gatheringController.GetRemainingTaskNames();
+            isGathering = gatheringTasks.Count > 0;
+            return isGathering ? gatheringTasks : questController.GetRemainingTaskNames();
+        }
+    }
+
     public void Draw()
     {
-        if (configuration.General.HideRemainingTasks)
-            return;
-
-        IList<string> gatheringTasks = gatheringController.GetRemainingTaskNames();
-        bool isGathering = gatheringTasks.Count > 0;
-        IList<string> tasks = isGathering ? gatheringTasks : questController.GetRemainingTaskNames();
-
-        if (!QstWidgets.SectionHeader(_L("Remaining Tasks"), "RemainingTasks", count: tasks.Count))
-            return;
-
         using (ImRaii.PushFont(UiBuilder.MonoFont))
         {
-            for (int i = 0; i < tasks.Count; i++)
+            for (int i = 0; i < Tasks.Count; i++)
             {
-                string task = isGathering ? $"G: {tasks[i]}" : tasks[i];
+                string task = isGathering ? $"G: {Tasks[i]}" : Tasks[i];
                 if (i == 0 && questController.IsRunning)
                     ImGui.TextColored(QstTheme.Accent, Truncate(task));
                 else
