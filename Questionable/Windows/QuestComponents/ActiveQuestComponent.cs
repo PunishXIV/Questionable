@@ -24,13 +24,13 @@ internal sealed partial class ActiveQuestComponent
     ICommandManager commandManager,
     Configuration configuration,
     QuestRegistry questRegistry,
-    PathEditorWindow pathEditorWindow,
     UiUtils uiUtils,
     IChatGui chatGui,
     ICondition condition,
     PathDataUpdater pathDataUpdater,
     QuestData questData,
     QuickAccessButtonsComponent quickAccessButtonsComponent,
+    CreationUtilsComponent creationUtilsComponent,
     ILogger<ActiveQuestComponent> logger)
 {
     [GeneratedRegex(@"\s\s+", RegexOptions.IgnoreCase, "en-US")]
@@ -134,15 +134,7 @@ internal sealed partial class ActiveQuestComponent
 
             if (configuration.Advanced.Debug)
             {
-                ImGui.SameLine();
-                bool editButtonLeft = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit);
-                bool editButtonRight = ImGui.IsItemClicked(ImGuiMouseButton.Right);
-                if (editButtonLeft)
-                    pathEditorWindow.Open(currentQuest.Quest.Id);
-                else if (editButtonRight)
-                    questRegistry.OpenEditor(currentQuest.Quest.Id.Value);
-                if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_L("Left click: Open in Path Editor\nRight click: Open in your default .json text editor"));
+                creationUtilsComponent.DrawPathEditorButton(sameLine: true);
 
                 ImGui.SameLine();
                 bool inDuty = condition[ConditionFlag.BoundByDuty] || condition[ConditionFlag.BoundByDuty56];
