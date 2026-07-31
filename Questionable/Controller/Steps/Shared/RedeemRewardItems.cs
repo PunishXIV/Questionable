@@ -1,9 +1,9 @@
 ﻿using Dalamud.Game.ClientState.Conditions;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel.Sheets;
+using Questionable.Controller.Steps.Common;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using Questionable.Controller.Steps.Common;
 using Quest = Questionable.Domain.Quest;
 namespace Questionable.Controller.Steps.Shared;
 

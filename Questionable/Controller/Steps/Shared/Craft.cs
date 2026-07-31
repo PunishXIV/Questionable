@@ -4,8 +4,8 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
 using Questionable.Controller.Steps.Common;
+using Questionable.Model.Questing;
 using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.Steps.Shared;

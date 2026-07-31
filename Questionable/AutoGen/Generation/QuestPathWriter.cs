@@ -7,10 +7,9 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
-using Lumina.Excel.Sheets;
-using Quest = Lumina.Excel.Sheets.Quest;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using Quest = Lumina.Excel.Sheets.Quest;
 
 namespace Questionable.AutoGen.Generation;
 

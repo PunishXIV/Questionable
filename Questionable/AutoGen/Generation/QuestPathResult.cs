@@ -1,9 +1,8 @@
 // Authored with LLM assistance, changes must be reviewed and owned by a human.
 // Initial version reviewed and owned by @Deckerz
 
-using Lumina.Excel.Sheets;
-using Quest = Lumina.Excel.Sheets.Quest;
 using Questionable.Model.Questing;
+using Quest = Lumina.Excel.Sheets.Quest;
 
 namespace Questionable.AutoGen.Generation;
 
