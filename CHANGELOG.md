@@ -1,2 +1,1 @@
-- bug fix: add description to journal progress button -alydev
-- bug fix(?): restore 1 second delay for accept/complete quest -alydev
+- bug fix: if aetheryte locked, check if current quest unlocks aetheryte -alydev

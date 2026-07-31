@@ -459,11 +459,19 @@ internal sealed unsafe class QuestFunctions
 
     internal EAetheryteLocation? GetFirstLockedAetheryte(Quest quest)
     {
+        IEnumerable<EAetheryteLocation> unlocks = [];
         return quest.AllSteps()
                     .Select(y =>
                     {
+                        if (y.Step.InteractionType is EInteractionType.AttuneAetheryte &&
+                                y.Step.Aetheryte is EAetheryteLocation a)
+                            unlocks = unlocks.Append(a);
+                        if (y.Step.InteractionType is EInteractionType.AttuneAethernetShard &&
+                                y.Step.AethernetShard is EAetheryteLocation b)
+                            unlocks = unlocks.Append(b);
                         if (y.Step.AetheryteShortcut is { } aetheryteShortcut &&
-                            !aetheryteFunctions.IsAetheryteUnlocked(aetheryteShortcut))
+                            !aetheryteFunctions.IsAetheryteUnlocked(aetheryteShortcut) &&
+                            !unlocks.Contains(aetheryteShortcut))
                         {
                             if ((y.Step.SkipConditions?.AetheryteShortcutIf?.AetheryteLocked) != aetheryteShortcut)
                                 return aetheryteShortcut;
@@ -471,10 +479,12 @@ internal sealed unsafe class QuestFunctions
 
                         if (y.Step.AethernetShortcut is { } aethernetShortcut)
                         {
-                            if (!aetheryteFunctions.IsAetheryteUnlocked(aethernetShortcut.From))
+                            if (!aetheryteFunctions.IsAetheryteUnlocked(aethernetShortcut.From) &&
+                                    !unlocks.Contains(aethernetShortcut.From))
                                 return aethernetShortcut.From;
 
-                            if (!aetheryteFunctions.IsAetheryteUnlocked(aethernetShortcut.To))
+                            if (!aetheryteFunctions.IsAetheryteUnlocked(aethernetShortcut.To) &&
+                                    !unlocks.Contains(aethernetShortcut.To))
                                 return aethernetShortcut.To;
                         }
 
