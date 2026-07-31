@@ -571,7 +571,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             {
                 unsafe
                 {
-                    if (PlayerState.Instance()->CurrentLevel < StartedQuest.Quest.Info.Level)
+                    if (PlayerState.Instance()->CurrentLevel < StartedQuest.Quest.Info.Level && !_questFunctions.IsQuestAccepted(StartedQuest.Quest.Id))
                     {
                         Stop("Quest level too high");
                         return;
