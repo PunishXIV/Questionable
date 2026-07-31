@@ -4106,9 +4106,11 @@
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Ask the game to leave this duty</Key>
+    <Value lang="ja-jp">ゲームにこのコンテンツから退出するように依頼</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Ask the game to abandon this quest</Key>
+    <Value lang="ja-jp">ゲームにこのクエストを破棄するように依頼</Value>
   </Entry>
 </I18N>
