@@ -574,6 +574,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                     if (PlayerState.Instance()->CurrentLevel < StartedQuest.Quest.Info.Level && !_questFunctions.IsQuestAccepted(StartedQuest.Quest.Id))
                     {
                         Stop("Quest level too high");
+                        ResetInternalState();
                         return;
                     }
                 }
@@ -859,7 +860,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _deathStreakKey = null;
         _deathStreakCount = 0;
         _highlightObject.SetHighlight([]);
-        ResetInternalState();
         using IDisposable? scope = _logger.BeginScope($"Stop/{label}");
         if (IsRunning || AutomationType != EAutomationType.Manual)
         {
