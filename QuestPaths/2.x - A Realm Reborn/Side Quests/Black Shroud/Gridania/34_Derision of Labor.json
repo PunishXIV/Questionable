@@ -1,0 +1,46 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000370,
+          "Position": {
+            "X": 38.345825,
+            "Y": -8.011047,
+            "Z": 113.60339
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000408,
+          "Position": {
+            "X": 106.85889,
+            "Y": -8,
+            "Z": -75.669556
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Blue Badger Gate (Central Shroud)"
+          ],
+          "SkipConditions": {
+            "AethernetShortcutIf": { "InSameTerritory": true }
+          }
+        }
+      ]
+    }
+  ]
+}

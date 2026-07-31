@@ -1,0 +1,79 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1001313,
+          "Position": {
+            "X": 16.372864,
+            "Y": 7.9999795,
+            "Z": -106.21808
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Adventurers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InTerritory": [130] }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1001390,
+          "Position": {
+            "X": -175.55511,
+            "Y": 14,
+            "Z": -8.438293
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Adventurers' Guild",
+            "[Ul'dah] Thaumaturges' Guild"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "$": "Walk out of Western Thanalan gate",
+          "Position": {
+            "X": -181.30315,
+            "Y": 14,
+            "Z": -13.908455
+          },
+          "TerritoryId": 130,
+          "TargetTerritoryId": 140,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": { "InTerritory": [140] }
+          }
+        },
+        {
+          "DataId": 1001992,
+          "Position": {
+            "X": 223.16321,
+            "Y": 52.038116,
+            "Z": 141.22217
+          },
+          "TerritoryId": 140,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

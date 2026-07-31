@@ -1,0 +1,54 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000981,
+          "Position": {
+            "X": 8.499207,
+            "Y": 39.505493,
+            "Z": 3.5552979
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": { "InTerritory": [128,129] }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002605,
+          "Position": {
+            "X": 277.943,
+            "Y": 45.143738,
+            "Z": 33.64612
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "SkipConditions": {
+            "AethernetShortcutIf": { "InSameTerritory": true }
+          },
+          "NextQuestId": 475
+        }
+      ]
+    }
+  ]
+}

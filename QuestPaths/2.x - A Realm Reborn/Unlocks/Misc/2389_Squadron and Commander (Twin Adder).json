@@ -1,0 +1,30 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "ShermTank",
+  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-30"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002394,
+          "Position": {
+            "X": -69.5354,
+            "Y": -0.50095016,
+            "Z": -9.99469
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_COMGRD101_02389_Q1_000_000",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
