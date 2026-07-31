@@ -1,1 +1,1 @@
-- bug fix: visual issue with remaining tasks component fixed -alydev
+- bug fix: don't reset visual quest progress if quest is active, as it just gets re-added immediately -alydev
