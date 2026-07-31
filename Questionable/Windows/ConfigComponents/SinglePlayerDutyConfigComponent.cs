@@ -9,8 +9,8 @@ using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using Quest = Questionable.Domain.Quest;
 using Questionable.Windows.Common.Ui;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Windows.ConfigComponents;
 

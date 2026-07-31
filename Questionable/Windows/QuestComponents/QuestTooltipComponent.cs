@@ -6,8 +6,8 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using static Questionable.Domain.QuestInfo;
 using Questionable.Windows.Common.Ui;
+using static Questionable.Domain.QuestInfo;
 namespace Questionable.Windows.QuestComponents;
 
 internal sealed class QuestTooltipComponent

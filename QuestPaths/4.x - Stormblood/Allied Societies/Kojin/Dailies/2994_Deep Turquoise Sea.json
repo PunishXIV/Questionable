@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
-  "LastChecked": {"Username": "catsume", "Date": "2026-07-02"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -58,7 +58,8 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, [{"Low": 3}], null, null, null, null],
+          "RequiredQuestVariables": [null, [{"Low": 3},{"Low": 4},{"Low": 5}], null, null, null, null],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "Fly": true
         },
         {
@@ -71,6 +72,7 @@
           "TerritoryId": 613,
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null, [{"Low": 2}], null, null, null, null],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "Fly": true
         },
         {
@@ -82,7 +84,8 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, [{"Low": 1},{"Low": 2},{"Low": 3}], null, null, null, null],
+          "RequiredQuestVariables": [null, [{"Low": 1},{"Low": 2},{"Low": 3},{"Low": 5}], null, null, null, null],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
           "Fly": true
         },
         {
@@ -94,7 +97,8 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, [{"Low": 1},{"Low": 2}], null, null, null, null],
+          "RequiredQuestVariables": [null, [{"Low": 1},{"Low": 2},{"Low": 4},{"Low": 5}], null, null, null, null],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
           "Fly": true
         },
         {
@@ -106,7 +110,8 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, [{"Low": 1},{"Low": 3}], null, null, null, null],
+          "RequiredQuestVariables": [null, [{"Low": 1},{"Low": 3},{"Low": 4}], null, null, null, null],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}],
           "Fly": true
         }
       ]

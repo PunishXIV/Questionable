@@ -6,9 +6,8 @@ using ECommons.ImGuiMethods;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
-
 using Questionable.Windows.Common.Ui;
+using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 namespace Questionable.Windows.ConfigComponents;
 
 internal sealed class GeneralConfigComponent : ConfigComponent

@@ -1,1 +1,3 @@
-- bug fix: don't reset visual quest progress if quest is active, as it just gets re-added immediately -alydev
+- bug fix: I broke the skip button, but it's fixed now -alydev
+- Feature: add button to Quick Access to clear VBM obstacle maps -alydev
+  - for if you notice your character running off into the sunset during a combat step for no apparent reason
