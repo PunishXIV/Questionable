@@ -2288,7 +2288,6 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
-    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>This quest is not available.</Key>
     <Value lang="ja-jp">このクエストは受注できません。</Value>
     <Value lang="zh-cn">此任务不可接受。</Value>
@@ -2325,7 +2324,6 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalComponent.cs -->
-    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>This quest is not yet supported.</Key>
     <Value lang="ja-jp">このクエストはまだサポートされていません。</Value>
     <Value lang="zh-cn">此任务尚不支持。</Value>
@@ -3810,7 +3808,6 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestValidationWindow.cs -->
-    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Left click: Open in Path Editor\nRight click: Open in your default .json text editor</Key>
     <Value lang="ja-jp">左クリック: パスエディターで開く\n右クリック: 既定の.jsonテキストエディターで開く</Value>
@@ -3883,6 +3880,7 @@
     <Value lang="zh-cn">在路径编辑器中打开</Value>
   </Entry>
   <Entry>
+    <!-- Found in: Windows\QuestSelectionWindow.cs -->
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Generate draft path</Key>
     <Value lang="ja-jp">ドラフトパスを生成</Value>
@@ -4068,7 +4066,7 @@
     <Value lang="zh-cn">任务验证: {0} 个错误，{1} 个信息</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\QuestComponents\RemainingTasksComponent.cs -->
+    <!-- Found in: Windows\QuestWindow.cs -->
     <Key>Remaining Tasks</Key>
     <Value lang="ja-jp">残りのタスク</Value>
     <Value lang="zh-cn">剩余任务</Value>
@@ -4112,5 +4110,21 @@
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Ask the game to abandon this quest</Key>
     <Value lang="ja-jp">ゲームにこのクエストを破棄するように依頼</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
+    <Key>This quest is accepted, but is hidden in your Journal.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <Key>Clear BossMod obstacle maps to fix pathfinding issues. Hold CTRL to enable this button</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <Key>VBM is not available. Please install it first.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
+    <Key>Clear VBM obstacle maps</Key>
   </Entry>
 </I18N>
