@@ -47,7 +47,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         ConfigWindow configWindow,
         BossModIpc bossModIpc)
         : base((configuration.Advanced.Debug ? "(!) " : "") + $"QST v{PluginVersion.ToString(4)}###Questionable",
-            ImGuiWindowFlags.AlwaysAutoResize)
+            ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoFocusOnAppearing)
     {
         _pluginInterface = pluginInterface;
         _questController = questController;
