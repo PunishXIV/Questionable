@@ -4077,40 +4077,48 @@
     <!-- Found in: Data\JournalData.cs -->
     <Key>Instant Quests</Key>
     <Value lang="ja-jp">即時クエスト</Value>
+    <Value lang="zh-cn">即时任务</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Use Questionable theme</Key>
     <Value lang="ja-jp">Questionableのテーマを使用</Value>
+    <Value lang="zh-cn">使用 Questionable 主题</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>When disabled, Questionable's windows use your Dalamud style/theme instead.</Key>
     <Value lang="ja-jp">無効にすると、Questionableのウィンドウは代わりにDalamudのスタイル/テーマを使用します。</Value>
+    <Value lang="zh-cn">禁用后，Questionable 的窗口将改用你的 Dalamud 风格/主题。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>No supported quests</Key>
     <Value lang="ja-jp">対応しているクエストはありません</Value>
+    <Value lang="zh-cn">没有支持的任务</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Reset sequence progess and reload quest data from disk</Key>
     <Value lang="ja-jp">シーケンスの進行状況をリセットし、ディスクからクエストデータを再読み込み</Value>
+    <Value lang="zh-cn">重置序列进度并从磁盘重新加载任务数据</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Utility to browse quest data used by this plugin</Key>
     <Value lang="ja-jp">このプラグインで使用されるクエストデータを閲覧するユーティリティ</Value>
+    <Value lang="zh-cn">浏览本插件所使用的任务数据</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Ask the game to leave this duty</Key>
     <Value lang="ja-jp">ゲームにこのコンテンツから退出するように依頼</Value>
+    <Value lang="zh-cn">要求游戏退出此副本</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Ask the game to abandon this quest</Key>
     <Value lang="ja-jp">ゲームにこのクエストを破棄するように依頼</Value>
+    <Value lang="zh-cn">要求游戏放弃此任务</Value>
   </Entry>
 </I18N>
