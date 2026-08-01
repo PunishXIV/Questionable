@@ -634,9 +634,17 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                             return;
                         }
 
-                        _logger.LogInformation("No current quest, resetting data [CQI: {CurrrentQuestData}], [CQ: {QuestData}], [MSQ: {MsqData}]", _questFunctions.GetCurrentQuestInternal(allowNewMsq: true), _questFunctions.GetCurrentQuest(), _questFunctions.GetMainScenarioQuest());
-                        StartedQuest = null;
-                        Stop("Resetting current quest");
+                        if (WasLastTaskUpdateWithin(TimeSpan.FromSeconds(10)))
+                        {
+                            if (EzThrottler.Throttle("nocurrentquestdelay", miliseconds: 2000))
+                                _logger.LogInformation("Would have stopped automation, but waiting to see if another quest shows up");
+                        }
+                        else
+                        {
+                            _logger.LogInformation("No current quest, resetting data [CQI: {CurrrentQuestData}], [CQ: {QuestData}], [MSQ: {MsqData}]", _questFunctions.GetCurrentQuestInternal(allowNewMsq: true), _questFunctions.GetCurrentQuest(), _questFunctions.GetMainScenarioQuest());
+                            StartedQuest = null;
+                            Stop("Resetting current quest");
+                        }
                     }
 
                     questToRun = null;
@@ -646,7 +654,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                     if (_questRegistry.TryGetQuest(currentQuestId, out Quest? quest))
                     {
                         _highlightObject.SetHighlight([]);
-                        _logger.LogInformation("New quest: {QuestName}", quest.Info.Name);
+                        _lastTaskUpdate = DateTime.Now;
+                        if (EzThrottler.Throttle(quest.Info.Name, miliseconds: 1000))
+                            _logger.LogInformation("New quest: {QuestName}", quest.Info.Name);
 
                         TryStopOnQuestAccepted(quest.Id);
 
@@ -697,6 +707,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
             if (questToRun == null)
             {
+                if (WasLastTaskUpdateWithin(TimeSpan.FromSeconds(10)))
+                {
+                    if (EzThrottler.Throttle("nocurrentquestdelay", miliseconds: 2000))
+                        _logger.LogInformation("Would have stopped automation, but waiting to see if another quest shows up");
+                    return;
+                }
                 DebugState = "No quest active";
                 Stop("No quest active");
                 return;
@@ -1288,7 +1304,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public bool WasLastTaskUpdateWithin(TimeSpan timeSpan)
     {
-        _logger.LogInformation("Last update: {Update}", _lastTaskUpdate);
+        _logger.LogTrace("Last update: {Update}", _lastTaskUpdate);
         return IsRunning || DateTime.Now <= _lastTaskUpdate.Add(timeSpan);
     }
 
