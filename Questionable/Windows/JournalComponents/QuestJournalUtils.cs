@@ -39,7 +39,8 @@ internal sealed class QuestJournalUtils
         if (!popup)
             return;
 
-        if (label != nameof(PriorityWindow))
+        bool inPriority = quest != null && questController.PriorityManager.Contains(quest);
+        if (label != nameof(PriorityWindow) || inPriority)
         {
             using (ImRaii.Disabled(disabled: true))
             {
@@ -48,18 +49,44 @@ internal sealed class QuestJournalUtils
 
             using (ImRaii.PushIndent())
             {
-                using (ImRaii.Disabled(quest == null))
+                if (label != nameof(PriorityWindow))
                 {
-                    if (ImGui.MenuItem(_L("Add to Priority Quests")) && quest != null)
-                        questController.PriorityManager.Add(quest.Id);
-                }
-                using (ImRaii.Disabled(prereqs.Count == 0 || quest == null))
-                {
-                    if (ImGui.MenuItem(_L("Add all to Priority Quests")) && quest != null)
+                    using (ImRaii.Disabled(quest == null))
                     {
-                        foreach (var qInfo in prereqs)
-                            questController.PriorityManager.Add(qInfo.QuestId);
-                        questController.PriorityManager.Add(quest.Id);
+                        if (ImGui.MenuItem(_L("Add to Priority Quests")) && quest != null)
+                            questController.PriorityManager.Add(quest.Id);
+
+                        if (ImGui.MenuItem(_L("Add to Priority Quests as Accept Only")) && quest != null)
+                            questController.PriorityManager.MarkAcceptOnly(quest.Id);
+                    }
+                    using (ImRaii.Disabled(prereqs.Count == 0 || quest == null))
+                    {
+                        if (ImGui.MenuItem(_L("Add all to Priority Quests")) && quest != null)
+                        {
+                            foreach (var qInfo in prereqs)
+                                questController.PriorityManager.Add(qInfo.QuestId);
+                            questController.PriorityManager.Add(quest.Id);
+                        }
+
+                        if (ImGui.MenuItem(_L("Add all to Priority Quests as Accept Only")) && quest != null)
+                        {
+                            foreach (var qInfo in prereqs)
+                                questController.PriorityManager.MarkAcceptOnly(qInfo.QuestId);
+                            questController.PriorityManager.MarkAcceptOnly(quest.Id);
+                        }
+                    }
+                }
+                else if (inPriority && quest != null)
+                {
+                    if (questController.PriorityManager.IsAcceptOnly(quest.Id))
+                    {
+                        if (ImGui.MenuItem(_L("Change to normal priority quest")))
+                            questController.PriorityManager.ClearAcceptOnly(quest.Id);
+                    }
+                    else
+                    {
+                        if (ImGui.MenuItem(_L("Change to accept only")))
+                            questController.PriorityManager.MarkAcceptOnly(quest.Id);
                     }
                 }
             }

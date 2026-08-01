@@ -153,6 +153,11 @@ internal sealed class PriorityWindow : LWindow
                 ImGui.Text(quest.Info.Name);
                 hovered |= ImGui.IsItemHovered();
 
+                if (hovered)
+                    _questTooltipComponent.Draw(quest.Info);
+
+                _questJournalUtils.ShowContextMenu(quest.Info, quest, nameof(PriorityWindow));
+
                 if (_questController.PriorityManager.IsAcceptOnly(quest.Id))
                 {
                     bool accepted = _questFunctions.IsQuestAccepted(quest.Id);
@@ -166,11 +171,6 @@ internal sealed class PriorityWindow : LWindow
                             ? _L("Accepted — completion follows the normal quest order.")
                             : _L("Accept only — picked up before any queued quest is completed."));
                 }
-
-                if (hovered)
-                    _questTooltipComponent.Draw(quest.Info);
-
-                _questJournalUtils.ShowContextMenu(quest.Info, quest, nameof(PriorityWindow));
 
                 if (priorityQuests.Count > 1)
                 {
