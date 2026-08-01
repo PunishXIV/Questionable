@@ -11,13 +11,21 @@ namespace Questionable.Controller.Steps.Shared;
 internal static class AetheryteShortcut
 {
     public static HashSet<uint> Territories = [212, 351, 128, 131, 133, 419];
-    internal sealed class Factory(AetheryteData aetheryteData, IClientState clientState, IObjectTable objectTable, ExtraConditionUtils extraConditionUtils)
+    internal sealed class Factory(
+        AetheryteData aetheryteData,
+        IClientState clientState,
+        IObjectTable objectTable,
+        ExtraConditionUtils extraConditionUtils,
+        ILogger<AetheryteShortcut.Factory> logger)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.AetheryteShortcut == null)
             {
+                logger.LogTrace(step.InteractionType.ToString());
+                if (step.InteractionType is EInteractionType.EquipRecommended or EInteractionType.Gather)
+                    yield break;
                 if (step.TerritoryId == 1) // unused territory ID, used to disable auto teleports as a gross hack
                     yield break;
                 bool matchesCondition(EExtraSkipCondition condition, Vector3 position) =>

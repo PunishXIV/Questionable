@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-23"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -155,6 +155,27 @@
               "Item": {
                 "NotInInventory": false
               }
+            }
+          }
+        },
+        {
+          "DataId": 1002298,
+          "Position": {
+            "X": -18.997498,
+            "Y": 6.2,
+            "Z": 157.42725
+          },
+          "TerritoryId": 131,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Sapphire Avenue Exchange",
+            "[Ul'dah] Miners' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NotInTerritory": [
+                131
+              ]
             }
           }
         },

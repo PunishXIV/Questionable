@@ -1,1 +1,2 @@
-- Feature: "no supported quests" view now shows in the tooltip if the next MSQ is accepted but hidden -alydev
+- Change: qst window no longer takes focus automatically when changing maps. longstanding annoyance i've had, just realised how to fix it. please provide feedback in discord ty -alydev
+- Change: equiprecommended and gather steps no longer automatically try to aetheryte shortcut to the territory that happens to be in the step -alydev

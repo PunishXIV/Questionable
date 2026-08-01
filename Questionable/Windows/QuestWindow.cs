@@ -47,7 +47,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         ConfigWindow configWindow,
         BossModIpc bossModIpc)
         : base((configuration.Advanced.Debug ? "(!) " : "") + $"QST v{PluginVersion.ToString(4)}###Questionable",
-            ImGuiWindowFlags.AlwaysAutoResize)
+            ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoFocusOnAppearing)
     {
         _pluginInterface = pluginInterface;
         _questController = questController;
@@ -156,7 +156,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             if (notice.Length != 0)
             {
                 ImGui.TextColored(QstTheme.Danger, _L("Notice"));
-                ImGui.TextWrapped(_L(notice));
+                ImGui.TextWrapped(notice);
                 ImGui.Separator();
             }
 

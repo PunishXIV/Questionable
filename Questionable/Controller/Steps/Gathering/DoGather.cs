@@ -162,7 +162,7 @@ internal static class DoGather
         }
 
         [SuppressMessage("ReSharper", "UnusedParameter.Local")]
-        private Queue<EAction>? GetNextActions(NodeCondition nodeCondition, List<SlotInfo> slots)
+        private unsafe Queue<EAction>? GetNextActions(NodeCondition nodeCondition, List<SlotInfo> slots)
         {
             // it's possible the item has disappeared
             if (_slotToGather != null && slots.All(x => x.Index != _slotToGather.Index))
@@ -237,7 +237,18 @@ internal static class DoGather
 
                     logger.LogDebug("Actually there's crystals, let's get those");
                     // otherwise, there most likely is -any- other item available, probably a shard/crystal
-                    _slotToGather = slots.MinBy(x => x.ItemId);
+                    InventoryManager* inventoryManager = InventoryManager.Instance();
+                    _slotToGather = slots
+                        .Where(x =>
+                            new uint[]{
+                                6688,6689,6690,6691,6692, // ARR maps
+                                12241,12242,12243,        // HW maps
+                                17835,17836,              // StB maps
+                                26744,26745,              // ShB maps
+                                36611,36612,39591,        // EW maps
+                                43556,43557,46185,        // DT maps
+                                }.Contains(x.ItemId) && inventoryManager->GetInventoryItemCount(x.ItemId) == 0
+                            ).FirstOrDefault<SlotInfo?>() ?? slots.MinBy(x => x.ItemId);
                     return actions;
                 }
             }
