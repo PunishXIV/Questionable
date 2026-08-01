@@ -156,7 +156,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             if (notice.Length != 0)
             {
                 ImGui.TextColored(QstTheme.Danger, _L("Notice"));
-                ImGui.TextWrapped(_L(notice));
+                ImGui.TextWrapped(notice);
                 ImGui.Separator();
             }
 
