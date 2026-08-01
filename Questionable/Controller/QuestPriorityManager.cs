@@ -111,10 +111,10 @@ internal sealed class QuestPriorityManager(
         _quests.Insert(newIndex, quest);
     }
 
-    public void RemoveCompleted(Func<ElementId, bool> isComplete)
+    public void RemoveCompleted(Func<ElementId, bool> isComplete, Func<ElementId, bool> isAccepted)
     {
-        _quests.RemoveAll(q => isComplete(q.Id));
-        _acceptOnly.RemoveWhere(id => isComplete(id));
+        _quests.RemoveAll(q => _acceptOnly.Contains(q.Id) ? isAccepted(q.Id) : isComplete(q.Id));
+        _acceptOnly.RemoveWhere(id => _quests.All(q => q.Id != id));
     }
 
     public void Clear()
