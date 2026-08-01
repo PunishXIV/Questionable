@@ -301,7 +301,8 @@ internal sealed unsafe class QuestFunctions
 
             List<QuestInfo> potentialQuests = questData.MainScenarioQuests
                 .Where(x => (x.StartingCity == 0 || x.StartingCity == PlayerState.Instance()->StartTown) &&
-                            IsReadyToAcceptQuest(x.QuestId, ignoreLevel: true))
+                            IsReadyToAcceptQuest(x.QuestId, ignoreLevel: true) &&
+                            x.Expansion <= (EExpansionVersion)PlayerState.Instance()->MaxExpansion)
                 .ToList();
             if (potentialQuests.Count == 0)
                 return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _L("No potential quests found"));

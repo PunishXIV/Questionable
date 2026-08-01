@@ -1,2 +1,1 @@
-- Change: qst window no longer takes focus automatically when changing maps. longstanding annoyance i've had, just realised how to fix it. please provide feedback in discord ty -alydev
-- Change: equiprecommended and gather steps no longer automatically try to aetheryte shortcut to the territory that happens to be in the step -alydev
+- bug fix: don't select next msq if current character doesn't have access to it ($$/FT) -alydev
