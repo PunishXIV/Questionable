@@ -1,3 +1,1 @@
-- bug fix: I broke the skip button, but it's fixed now -alydev
-- Feature: add button to Quick Access to clear VBM obstacle maps -alydev
-  - for if you notice your character running off into the sunset during a combat step for no apparent reason
+- Feature: "no supported quests" view now shows in the tooltip if the next MSQ is accepted but hidden -alydev

@@ -36,7 +36,7 @@ internal sealed partial class ActiveQuestComponent
     [GeneratedRegex(@"\s\s+", RegexOptions.IgnoreCase, "en-US")]
     private static partial Regex MultipleWhitespaceRegex();
 
-    public void Draw(bool isMinimized)
+    public unsafe void Draw(bool isMinimized)
     {
         (QuestController.QuestProgress Progress, QuestController.ECurrentQuestType Type)? currentQuestDetails = questController.CurrentQuestDetails;
         QuestController.QuestProgress? currentQuest = currentQuestDetails?.Progress;
@@ -134,7 +134,7 @@ internal sealed partial class ActiveQuestComponent
 
             if (configuration.Advanced.Debug)
             {
-                creationUtilsComponent.DrawPathEditorButton(sameLine: true);
+                creationUtilsComponent.DrawPathEditorButton(questFunctions.GetCurrentQuest().CurrentQuest, sameLine: true);
 
                 ImGui.SameLine();
                 bool inDuty = condition[ConditionFlag.BoundByDuty] || condition[ConditionFlag.BoundByDuty56];
@@ -178,11 +178,16 @@ internal sealed partial class ActiveQuestComponent
                 foreach (IQuestInfo qInfo in GetTrackedQuests())
                 {
                     (bool isLocked, string[]? reasons) = questFunctions.IsQuestLocked(qInfo.QuestId);
+                    QuestManager* questManager = QuestManager.Instance();
+                    (var _1, var _2, string status) = uiUtils.GetQuestStyle(qInfo.QuestId);
+                    bool acceptedButHidden = questFunctions.IsQuestAccepted(qInfo.QuestId) && questManager->GetQuestById(qInfo.QuestId.Value)->IsHidden;
                     if (uiUtils.ChecklistItem($"{qInfo.Name} ({qInfo.QuestId})", complete: false))
-                        if (reasons != null)
-                            ImGui.SetTooltip(_L("This quest is not available.") + "\n  " + string.Join("\n  ", reasons));
+                        if (reasons != null && reasons.Length > 0)
+                            ImGui.SetTooltip(status + "\n  " + string.Join("\n  ", reasons));
+                        else if (acceptedButHidden)
+                            ImGui.SetTooltip(_L("This quest is accepted, but is hidden in your Journal."));
                         else
-                            ImGui.SetTooltip(_L("This quest is not yet supported."));
+                            ImGui.SetTooltip(status);
                 }
             }
 

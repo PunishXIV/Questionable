@@ -194,9 +194,8 @@ internal sealed class CreationUtilsComponent
         }
     }
 
-    internal void DrawPathEditorButton(bool sameLine = false)
+    internal void DrawPathEditorButton(ElementId? currentQuest, bool sameLine = false)
     {
-        ElementId? currentQuest = questFunctions.GetCurrentQuest().CurrentQuest;
         using (ImRaii.Disabled(currentQuest == null))
         {
             if (currentQuest != null)

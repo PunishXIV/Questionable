@@ -22,6 +22,7 @@ internal sealed class QuestSelectionWindow : LWindow
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
     private readonly QuestTooltipComponent _questTooltipComponent;
+    private readonly IServiceProvider _serviceProvider;
     private readonly TerritoryData _territoryData;
     private readonly UiUtils _uiUtils;
     private readonly DraftQuestPathService _draftQuestPathService;
@@ -42,7 +43,8 @@ internal sealed class QuestSelectionWindow : LWindow
         IClientState clientState,
         UiUtils uiUtils,
         DraftQuestPathService draftQuestPathService,
-        QuestTooltipComponent questTooltipComponent)
+        QuestTooltipComponent questTooltipComponent,
+        IServiceProvider serviceProvider)
         : base(_L("Quest Selection") + "{WindowId}")
     {
         _questData = questData;
@@ -57,6 +59,7 @@ internal sealed class QuestSelectionWindow : LWindow
         _uiUtils = uiUtils;
         _draftQuestPathService = draftQuestPathService;
         _questTooltipComponent = questTooltipComponent;
+        _serviceProvider = serviceProvider;
 
         Size = new Vector2(500, 200);
         SizeCondition = ImGuiCond.Once;
@@ -200,11 +203,21 @@ internal sealed class QuestSelectionWindow : LWindow
 
                 using ImRaii.IdDisposable id = ImRaii.PushId(questId);
 
-                bool priority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle);
-                if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_L("Add to priority quests"));
-                if (priority)
-                    _questController.PriorityManager.Add(quest.QuestId);
+                if (knownQuest != null)
+                {
+                    bool priority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle);
+                    if (ImGui.IsItemHovered())
+                        ImGui.SetTooltip(_L("Add to priority quests"));
+                    if (priority)
+                        _questController.PriorityManager.Add(quest.QuestId);
+                }
+                else
+                {
+                    if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ArrowAltCircleRight))
+                        _draftQuestPathService.GenerateDraft(quest);
+                    if (ImGui.IsItemHovered())
+                        ImGui.SetTooltip(_L("Generate draft path"));
+                }
                 ImGui.SameLine();
 
                 bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
@@ -214,13 +227,9 @@ internal sealed class QuestSelectionWindow : LWindow
                     CopyToClipboard(quest, suffix: true);
                 else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
                     CopyToClipboard(quest, suffix: false);
-                ImGui.SameLine();
-                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
-                    (bool success, string filename) = QuestRegistry.OpenEditor(quest);
-                if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
-                    _draftQuestPathService.GenerateDraft(quest);
-                ImGui.SameLine();
+                _serviceProvider.GetRequiredService<CreationUtilsComponent>().DrawPathEditorButton(quest.QuestId, sameLine: true);
 
+                ImGui.SameLine();
                 if (knownQuest != null &&
                     knownQuest.FindSequence(0)?.LastStep()?.InteractionType is EInteractionType.AcceptQuest &&
                     _questFunctions.IsReadyToAcceptQuest(quest.QuestId))
