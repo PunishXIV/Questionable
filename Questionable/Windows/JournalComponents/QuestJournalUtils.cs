@@ -194,6 +194,24 @@ internal sealed class QuestJournalUtils
                 questController.PriorityManager.Remove(quest.QuestId);
         }
 
+        // Queues every quest in the group to be accepted before any of them is completed. Unlike
+        // "Add all to Priority Quests" (which does each quest start-to-finish one at a time), this lets the
+        // user pick up several quests in a group (such as allied societies' dailies) at once,
+        // the completion/turn-ins only start once everything queued has been accepted from the priority queue.
+        // Does not auto-start questionable, that is up to the user.
+        if (ImGui.MenuItem(_L("Accept all quests")))
+        {
+            foreach (IQuestInfo quest in quests)
+            {
+                // Only queue quests we can actually accept right now. This skips ones already completed
+                // (e.g. today's daily is done) and ones already accepted (the normal rules complete those).
+                // FIXME: This probably could allow you to add upcoming quests to get auto-accepted too, or at least better understand why you can't accept them.
+                //        For example: if you have a lvl 90 quest and lvl 80 class, it says you are not ready, but you might have a lvl 100 class you could accept with.
+                if (questFunctions.IsReadyToAcceptQuest(quest.QuestId))
+                    questController.PriorityManager.MarkAcceptOnly(quest.QuestId);
+            }
+        }
+
         if (ImGui.MenuItem(_L("Sim first quest")))
             if (quests.Count >= 1)
                 questController.SimulateQuest(quests[0], 0, 0);

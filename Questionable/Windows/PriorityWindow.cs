@@ -153,6 +153,20 @@ internal sealed class PriorityWindow : LWindow
                 ImGui.Text(quest.Info.Name);
                 hovered |= ImGui.IsItemHovered();
 
+                if (_questController.PriorityManager.IsAcceptOnly(quest.Id))
+                {
+                    bool accepted = _questFunctions.IsQuestAccepted(quest.Id);
+                    ImGui.SameLine();
+                    ImGui.AlignTextToFramePadding();
+                    using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                        ImGui.TextColored(accepted ? QstTheme.Success : QstTheme.Accent,
+                            FontAwesomeIcon.Inbox.ToIconString());
+                    if (ImGui.IsItemHovered())
+                        ImGui.SetTooltip(accepted
+                            ? _L("Accepted — completion follows the normal quest order.")
+                            : _L("Accept only — picked up before any queued quest is completed."));
+                }
+
                 if (hovered)
                     _questTooltipComponent.Draw(quest.Info);
 

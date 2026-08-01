@@ -207,13 +207,25 @@ internal sealed class AlliedSocietyJournalComponent
 
         questJournalUtils.ShowContextMenu(questInfo, quest, nameof(AlliedSocietyJournalComponent));
 
-        if (quest != null && questController.PriorityManager.Contains(quest))
+        if (quest != null)
         {
-            ImGui.SameLine();
-            using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-                ImGui.TextColored(QstTheme.Amber, FontAwesomeIcon.ExclamationCircle.ToIconString());
-            if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("This quest is in Priority Quests."));
+            bool acceptOnly = questController.PriorityManager.IsAcceptOnly(quest.Id);
+            bool inPriority = questController.PriorityManager.Contains(quest);
+            if (acceptOnly || inPriority)
+            {
+                bool accepted = acceptOnly && questFunctions.IsQuestAccepted(quest.Id);
+                ImGui.SameLine();
+                using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                    ImGui.TextColored(
+                        acceptOnly ? (accepted ? QstTheme.Success : QstTheme.Accent) : QstTheme.Amber,
+                        (acceptOnly ? FontAwesomeIcon.Inbox : FontAwesomeIcon.ExclamationCircle).ToIconString());
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip(acceptOnly
+                        ? (accepted
+                            ? _L("Accepted; completion follows the normal quest order.")
+                            : _L("Queued to be accepted"))
+                        : _L("This quest is in Priority Quests."));
+            }
         }
     }
 }
