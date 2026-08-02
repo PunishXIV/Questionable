@@ -15,10 +15,7 @@ namespace Questionable.Controller.Steps.Interactions;
 // TODO: refactor — heavy nesting (22 lines indented ≥6 levels, max indent ~12 levels).
 internal static class Interact
 {
-    internal sealed class Factory(
-        AutomatonIpc automatonIpc,
-        Configuration configuration,
-        RedoUtil redoUtil) : ITaskFactory
+    internal sealed class Factory(AutomatonIpc automatonIpc, Configuration configuration, RedoUtil redoUtil) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -56,11 +53,6 @@ internal static class Interact
             }
             else if (step.InteractionType == EInteractionType.PurchaseItem)
             {
-                //if (step.ItemId != null)
-                //    yield return new WaitCondition.Task(() => {
-                //        itemVendorLocationIpc.HighlightItemVendors(step.ItemId.Value);
-                //        return true;
-                //    }, $"OpenVendorResults({step.ItemId})");
                 if (step.DataId == null)
                     yield break;
             }

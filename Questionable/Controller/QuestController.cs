@@ -285,6 +285,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             _logger.LogInformation("Reload, resetting curent quest progress");
 
             ResetInternalState();
+            ResetAutoRefreshState();
 
             _questRegistry.Reload();
             _singlePlayerDutyConfigComponent.Reload();
@@ -298,6 +299,16 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _safeAnimationEnd = DateTime.MinValue;
 
         DebugState = null;
+    }
+
+    private void ResetAutoRefreshState()
+    {
+        _lastPlayerPosition = Vector3.Zero;
+        _lastQuestStep = -1;
+        _lastQuestSequence = 255;
+        _lastQuestId = null;
+        _lastProgressUpdate = DateTime.Now;
+        _lastAutoRefresh = DateTime.Now;
     }
 
     public void Update()
@@ -783,6 +794,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 CurrentQuest.SetStep(CurrentQuest.Step + 1);
             else
                 CurrentQuest.SetStep(CompletedStepValue);
+
+            ResetAutoRefreshState();
         }
 
         using IDisposable? scope = _logger.BeginScope("IncStepCt");
@@ -864,6 +877,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             GatheringQuest = null;
             _lastTaskUpdate = DateTime.Now;
 
+            ResetAutoRefreshState();
             unsafe
             {
                 if (_objectTable[0] is IPlayerCharacter player)
@@ -900,6 +914,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 _logger.LogInformation("Couldn't execute next step during Stop() call");
 
             _lastTaskUpdate = DateTime.Now;
+
+            ResetAutoRefreshState();
         }
         else
             Stop(label);
@@ -1134,6 +1150,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
                 _taskQueue.Enqueue(task);
             }
+
+            ResetAutoRefreshState();
         }
         catch (Exception e)
         {

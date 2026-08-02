@@ -249,7 +249,7 @@ internal sealed unsafe class QuestFunctions
 
         return QuestReference.NoQuest(msqQuest.State);
     }
-
+    
     public (QuestReference, string?) GetMainScenarioQuestId()
     {
         if (QuestManager.IsQuestComplete(3759)) // Memories Rekindled
@@ -282,14 +282,43 @@ internal sealed unsafe class QuestFunctions
         if (scenarioTree->Data == null)
             return (QuestReference.NoQuest(MainScenarioQuestState.LoadingScreen), _L("Scenario Tree Data is null"));
 
-        return (new(new QuestId(scenarioTree->Data->MainScenarioQuestIds[0]), 0, MainScenarioQuestState.Available), "MSQ");
+        QuestId currentQuest = new(scenarioTree->Data->MainScenarioQuestIds[0]);
+        return (new(currentQuest, QuestManager.GetQuestSequence(currentQuest.Value), MainScenarioQuestState.Available), $"sq: {currentQuest}");
     }
 
     public (QuestReference, string?) GetMainScenarioQuest()
     {
-        (QuestReference currentQuestRef, var _) = GetMainScenarioQuestId();
-        if (currentQuestRef.CurrentQuest is not QuestId currentQuest)
-            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), "MSQ");
+        if (QuestManager.IsQuestComplete(3759)) // Memories Rekindled
+        {
+            AgentInterface* questRedoHud = AgentModule.Instance()->GetAgentByInternalId(AgentId.QuestRedoHud);
+            if (questRedoHud != null && questRedoHud->IsAgentActive())
+            {
+                // there's surely better ways to check this, but the one in the OOB Plugin was even less reliable
+                if (gameGui.TryGetAddonByName<AtkUnitBase>("QuestRedoHud", out AtkUnitBase* addon) &&
+                    addon->AtkValuesCount == 4 &&
+                    // 0 seems to be active,
+                    // 1 seems to be paused,
+                    // 2 is unknown, but it happens e.g. before the quest 'Alzadaal's Legacy'
+                    // 3 seems to be having /ng+ open while active,
+                    // 4 seems to be when (a) suspending the chapter, or (b) having turned in a quest
+                    addon->AtkValues[0].UInt is 0 or 2 or 3 or 4)
+                {
+                    // redoHud+44 is chapter
+                    // redoHud+46 is quest
+                    ushort questId = MemoryHelper.Read<ushort>((nint)questRedoHud + 46);
+                    return (new(new QuestId(questId), QuestManager.GetQuestSequence(questId), MainScenarioQuestState.Available), "NG+");
+                }
+            }
+        }
+
+        AgentScenarioTree* scenarioTree = AgentScenarioTree.Instance();
+        if (scenarioTree == null)
+            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _L("No Scenario Tree"));
+
+        if (scenarioTree->Data == null)
+            return (QuestReference.NoQuest(MainScenarioQuestState.LoadingScreen), _L("Scenario Tree Data is null"));
+
+        QuestId currentQuest = new(scenarioTree->Data->MainScenarioQuestIds[0]);
         string extraData = $"sq: {currentQuest}";
         if (currentQuest.Value == 0)
         {
