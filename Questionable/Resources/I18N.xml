@@ -4124,21 +4124,25 @@
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>This quest is accepted, but is hidden in your Journal.</Key>
     <Value lang="ja-jp">このクエストは受注済みですが、ジャーナルには非表示です。</Value>
+    <Value lang="zh-cn">此任务已接受,但在任务日志中被隐藏。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Clear BossMod obstacle maps to fix pathfinding issues. Hold CTRL to enable this button</Key>
     <Value lang="ja-jp">経路探索の問題を修正するためにBossModの障害物マップをクリアします。CTRLを押しながらこのボタンを有効にしてください</Value>
+    <Value lang="zh-cn">清除 BossMod 障碍物地图以修复寻路问题。按住 CTRL 键以启用此按钮。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>VBM is not available. Please install it first.</Key>
     <Value lang="ja-jp">VBMは利用できません。まずインストールしてください。</Value>
+    <Value lang="zh-cn">VBM 不可用。请先安装它。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Clear VBM obstacle maps</Key>
     <Value lang="ja-jp">VBMの障害物マップをクリア</Value>
+    <Value lang="zh-cn">清除 VBM 障碍物地图</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PriorityWindow.cs -->
