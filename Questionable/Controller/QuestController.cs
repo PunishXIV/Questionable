@@ -567,18 +567,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                     return;
                 }
             }
-            if (StartedQuest != null)
-            {
-                unsafe
-                {
-                    if (PlayerState.Instance()->CurrentLevel < StartedQuest.Quest.Info.Level && !_questFunctions.IsQuestAccepted(StartedQuest.Quest.Id))
-                    {
-                        Stop("Quest level too high");
-                        ResetInternalState();
-                        return;
-                    }
-                }
-            }
 
             QuestProgress? questToRun;
             byte currentSequence;
@@ -634,17 +622,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                             return;
                         }
 
-                        if (WasLastTaskUpdateWithin(TimeSpan.FromSeconds(10)))
-                        {
-                            if (EzThrottler.Throttle("nocurrentquestdelay", miliseconds: 2000))
-                                _logger.LogInformation("Would have stopped automation, but waiting to see if another quest shows up");
-                        }
-                        else
-                        {
-                            _logger.LogInformation("No current quest, resetting data [CQI: {CurrrentQuestData}], [CQ: {QuestData}], [MSQ: {MsqData}]", _questFunctions.GetCurrentQuestInternal(allowNewMsq: true), _questFunctions.GetCurrentQuest(), _questFunctions.GetMainScenarioQuest());
-                            StartedQuest = null;
-                            Stop("Resetting current quest");
-                        }
+                        _logger.LogInformation("No current quest, resetting data [CQI: {CurrrentQuestData}], [CQ: {QuestData}], [MSQ: {MsqData}]", _questFunctions.GetCurrentQuestInternal(allowNewMsq: true), _questFunctions.GetCurrentQuest(), _questFunctions.GetMainScenarioQuest());
+                        StartedQuest = null;
+                        Stop("Resetting current quest");
                     }
 
                     questToRun = null;
@@ -654,9 +634,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                     if (_questRegistry.TryGetQuest(currentQuestId, out Quest? quest))
                     {
                         _highlightObject.SetHighlight([]);
-                        _lastTaskUpdate = DateTime.Now;
-                        if (EzThrottler.Throttle(quest.Info.Name, miliseconds: 1000))
-                            _logger.LogInformation("New quest: {QuestName}", quest.Info.Name);
+                        _logger.LogInformation("New quest: {QuestName}", quest.Info.Name);
 
                         TryStopOnQuestAccepted(quest.Id);
 
@@ -707,12 +685,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
             if (questToRun == null)
             {
-                if (WasLastTaskUpdateWithin(TimeSpan.FromSeconds(10)))
-                {
-                    if (EzThrottler.Throttle("nocurrentquestdelay", miliseconds: 2000))
-                        _logger.LogInformation("Would have stopped automation, but waiting to see if another quest shows up");
-                    return;
-                }
                 DebugState = "No quest active";
                 Stop("No quest active");
                 return;

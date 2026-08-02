@@ -347,6 +347,9 @@ internal sealed unsafe class QuestFunctions
         if (IsQuestComplete(currentQuest))
             return (new(currentQuest, 255, MainScenarioQuestState.Available), _LF("Quest {0} complete", currentQuest.Value));
 
+        if (!IsReadyToAcceptQuest(currentQuest))
+            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _LF("Not ready to accept quest {0}", currentQuest.Value));
+
         short currentLevel = PlayerState.Instance()->CurrentLevel;
 
         // are we in a loading screen?
