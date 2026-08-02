@@ -40,11 +40,14 @@ internal sealed class NotificationConfigComponent
                     v => Configuration.Notifications.ChatType = v);
 
                 ImGui.Separator();
-                ImGui.Text("NotificationMaster settings");
+                ImGui.Text(_L("NotificationMaster settings"));
                 ImGui.SameLine();
-                ImGuiComponents.HelpMarker("Requires the plugin 'NotificationMaster' to be installed.");
+                ImGuiComponents.HelpMarker(_L("Requires the plugin 'NotificationMaster' to be installed."));
+                ImGui.SameLine();
                 using (ImRaii.Disabled(!notificationMasterIpc.Enabled))
                 {
+                    if (ImGuiComponentsLocal.IconButtonWithText(Dalamud.Interface.FontAwesomeIcon.NotesMedical, _L("Test")))
+                        notificationMasterIpc.Notify(_L("Test message"));
                     bool showTrayMessage = Configuration.Notifications.ShowTrayMessage;
                     if (ImGui.Checkbox(_L("Show tray notification"), ref showTrayMessage))
                     {
@@ -58,6 +61,18 @@ internal sealed class NotificationConfigComponent
                         Configuration.Notifications.FlashTaskbar = flashTaskbar;
                         Save();
                     }
+                }
+                bool notifyOnStopCondition = Configuration.Notifications.NotifyOnStopCondition;
+                if (ImGui.Checkbox(_L("Notify when stop condition is reached"), ref notifyOnStopCondition))
+                {
+                    Configuration.Notifications.NotifyOnStopCondition = notifyOnStopCondition;
+                    Save();
+                }
+                bool notifyOnCriticalFailure = Configuration.Notifications.NotifyOnCriticalFailure;
+                if (ImGui.Checkbox(_L("Notify when QST is unable to continue automatic questing"), ref notifyOnCriticalFailure))
+                {
+                    Configuration.Notifications.NotifyOnCriticalFailure = notifyOnCriticalFailure;
+                    Save();
                 }
             }
         }

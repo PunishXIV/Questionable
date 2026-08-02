@@ -4189,4 +4189,60 @@
     <Key>Accept all quests</Key>
     <Value lang="ja-jp">すべてのクエストを受注</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: Controller\QuestController.cs -->
+    <Key>Reached or exceeded target level {0}.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\QuestController.cs -->
+    <Key>Completed quest '{0}', which is configured as a stopping point.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\QuestController.cs -->
+    <Key>Completed quest '{0}', stopping as requested.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\QuestController.cs -->
+    <Key>Stopping before teleport as requested.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\QuestController.cs -->
+    <Key>Could not retrieve next quest step, pausing.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\QuestController.cs -->
+    <Key>Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\QuestController.cs -->
+    <Key>Failed to start next task sequence, stopping.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
+    <Key>Notify when stop condition is reached</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
+    <Key>Notify when QST is unable to continue automatic questing</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
+    <Key>NotificationMaster settings</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
+    <Key>Requires the plugin 'NotificationMaster' to be installed.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
+    <Key>Test</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
+    <Key>Test message</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\QuestController.cs -->
+    <Key>Automatic questing has stopped.</Key>
+  </Entry>
 </I18N>

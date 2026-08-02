@@ -275,6 +275,8 @@ internal sealed class Configuration : IPluginConfiguration
         public XivChatType ChatType { get; set; } = XivChatType.Debug;
         public bool ShowTrayMessage { get; set; }
         public bool FlashTaskbar { get; set; }
+        public bool NotifyOnStopCondition { get; set; }
+        public bool NotifyOnCriticalFailure { get; set; } = true;
     }
 
     internal sealed class AdvancedConfiguration
