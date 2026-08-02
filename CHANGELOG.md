@@ -1,1 +1,2 @@
-- bug fix: revert msq detection refactor that broke everything lol -alydev
+- Feature: "accept only" option for priority quests (in right-click menu) -skmagiik
+  - allows using the priority quests list solely for accepting quests, then normal automatic operation takes over once they are all accepted

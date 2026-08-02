@@ -475,6 +475,7 @@
     <Value lang="zh-cn">任务 {0} 已完成</Value>
   </Entry>
   <Entry>
+    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Not ready to accept quest {0}</Key>
     <Value lang="ja-jp">クエスト {0} を受注する準備ができていません</Value>
     <Value lang="zh-cn">尚未准备好接受任务 {0}</Value>
@@ -4138,5 +4139,41 @@
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Clear VBM obstacle maps</Key>
     <Value lang="ja-jp">VBMの障害物マップをクリア</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PriorityWindow.cs -->
+    <Key>Accepted — completion follows the normal quest order.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\PriorityWindow.cs -->
+    <Key>Accept only — picked up before any queued quest is completed.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
+    <Key>Accepted; completion follows the normal quest order.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
+    <Key>Queued to be accepted</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
+    <Key>Add to Priority Quests as Accept Only</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
+    <Key>Add all to Priority Quests as Accept Only</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
+    <Key>Change to normal priority quest</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
+    <Key>Change to accept only</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
+    <Key>Accept all quests</Key>
   </Entry>
 </I18N>

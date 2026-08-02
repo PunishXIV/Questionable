@@ -49,39 +49,13 @@
           "TerritoryId": 1190,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNamePlateIconId": [
-                71223
-              ]
-            }
-          }
+          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
         }
       ]
     },
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "DataId": 1054775,
-          "Position": {
-            "X": -236.13336,
-            "Y": -0.8372388,
-            "Z": 247.11987
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNamePlateIconId": [
-                71226
-              ]
-            }
-          }
-        },
         {
           "DataId": 1054777,
           "Position": {
@@ -99,25 +73,6 @@
       "Sequence": 4,
       "Steps": [
         {
-          "DataId": 1054775,
-          "Position": {
-            "X": -236.13336,
-            "Y": -0.8372388,
-            "Z": 247.11987
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNamePlateIconId": [
-                71226
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1054778,
           "Position": {
             "X": -127.6723,
@@ -133,25 +88,6 @@
     {
       "Sequence": 5,
       "Steps": [
-        {
-          "DataId": 1054775,
-          "Position": {
-            "X": -236.13336,
-            "Y": -0.8372388,
-            "Z": 247.11987
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "StepIf": {
-              "NotNamePlateIconId": [
-                71226
-              ]
-            }
-          }
-        },
         {
           "DataId": 1054779,
           "Position": {
