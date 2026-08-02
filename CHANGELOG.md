@@ -1,2 +1,1 @@
-- Feature: added notification on failure "could not complete x check xllog for details" -alydev
-- bug fix: the prerequisites thing had the wrong default -alydev
+- bug fix: "could not retrieve next quest step" is not always a failure state, removing message until better understood -alydev
