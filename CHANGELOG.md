@@ -1,2 +1,1 @@
-- Feature: "accept only" option for priority quests (in right-click menu) -skmagiik
-  - allows using the priority quests list solely for accepting quests, then normal automatic operation takes over once they are all accepted
+- bug fix: removed obsolete special case for waking sands/rising stones that was causing unnecessary teleports -alydev
