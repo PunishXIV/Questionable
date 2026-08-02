@@ -36,10 +36,11 @@
       "Sequence": 255,
       "Steps": [
         {
+          "$": "The recipe makes 3 items, so we only need to craft 1.",
           "InteractionType": "Craft",
           "TerritoryId": 131,
           "ItemId": 4599,
-          "ItemCount": 3,
+          "ItemCount": 1,
           "SkipConditions": {
             "StepIf": {
               "Item": {
