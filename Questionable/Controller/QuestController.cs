@@ -1170,7 +1170,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 _logger.LogWarning(
                     "Could not retrieve next quest step, not doing anything [{QuestId}, {Sequence}, {Step}]",
                     CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
-                _notificationMasterIpc.NotifyOnFailure(_L("Could not retrieve next quest step, pausing.") + " " + _L("Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button."));
+                //_notificationMasterIpc.NotifyOnFailure(_L("Could not retrieve next quest step, pausing.") + " " + _L("Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button."));
                 //}
             }
 
