@@ -761,7 +761,7 @@ internal sealed unsafe class QuestFunctions
             4057 => AllMountsUnlocked(new ushort[] { 189, 192, 205, 217, 226, 238, 249 }),
             4795 => AllMountsUnlocked(new ushort[] { 261, 262, 293, 306, 315, 325, 332 }),
             5469 => AllMountsUnlocked(new ushort[] { 345, 346, 363, 389, 407, 422, 444 }),
-            _ => false
+            _ => true
         };
 
         if (!prerequisites)

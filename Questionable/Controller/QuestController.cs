@@ -892,8 +892,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             ClearTasksInternal();
             if (AutomationType is EAutomationType.Automatic && !_stopConditionComponent.commandExceptions.Any(e => label.Equals(e, StringComparison.OrdinalIgnoreCase)))
             {
-                if (_configuration.Notifications.NotifyOnCriticalFailure)
-                    _notificationMasterIpc.Notify(_L("Automatic questing has stopped."));
+                _notificationMasterIpc.NotifyOnFailure(_L("Automatic questing has stopped."));
                 if (_configuration.Stop is { RunCommandAfterStop: true } stop && stop.CommandAfterStop.StartsWith('/'))
                     _commandManager.ProcessCommand(stop.CommandAfterStop);
             }
@@ -1171,8 +1170,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 _logger.LogWarning(
                     "Could not retrieve next quest step, not doing anything [{QuestId}, {Sequence}, {Step}]",
                     CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
-                if (_configuration.Notifications.NotifyOnCriticalFailure)
-                    _notificationMasterIpc.Notify(_L("Could not retrieve next quest step, pausing.") + " " + _L("Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button."));
+                _notificationMasterIpc.NotifyOnFailure(_L("Could not retrieve next quest step, pausing.") + " " + _L("Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button."));
                 //}
             }
 
@@ -1209,8 +1207,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             _logger.LogError(e, "Failed to create tasks [{QuestId}, {Sequence}, {Step}]",
                     CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
             _chatGui.PrintError("Failed to start next task sequence, please check /xllog for details.", CommandHandler.MessageTag, CommandHandler.TagColor);
-            if (_configuration.Notifications.NotifyOnCriticalFailure)
-                _notificationMasterIpc.Notify(_L("Failed to start next task sequence, stopping.") + " " + _L("Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button."));
+            _notificationMasterIpc.NotifyOnFailure(_L("Failed to start next task sequence, stopping.") + " " + _L("Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button."));
             Stop("Tasks failed to create");
         }
     }

@@ -20,4 +20,10 @@ internal sealed class NotificationMasterIpc(IDalamudPluginInterface pluginInterf
         if (config.FlashTaskbar)
             _api.FlashTaskbarIcon();
     }
+
+    public void NotifyOnFailure(string message)
+    {
+        if (configuration.Notifications.NotifyOnCriticalFailure)
+            Notify(message);
+    }
 }
