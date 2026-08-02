@@ -4201,71 +4201,85 @@
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Reached or exceeded target level {0}.</Key>
+    <Value lang="ja-jp">目標レベル {0} に到達または超過しました。</Value>
     <Value lang="zh-cn">已达到或超过目标等级 {0}。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Completed quest '{0}', which is configured as a stopping point.</Key>
+    <Value lang="ja-jp">停止ポイントとして設定されているクエスト '{0}' を完了しました。</Value>
     <Value lang="zh-cn">已完成任务 '{0}', 该任务已设为停止点。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Completed quest '{0}', stopping as requested.</Key>
+    <Value lang="ja-jp">クエスト '{0}' を完了し、要求に従って停止しました。</Value>
     <Value lang="zh-cn">已完成任务 '{0}', 正在按照要求停止。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Stopping before teleport as requested.</Key>
+    <Value lang="ja-jp">要求に従ってテレポート前に停止しています。</Value>
     <Value lang="zh-cn">正在按照要求在传送前停止。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Could not retrieve next quest step, pausing.</Key>
+    <Value lang="ja-jp">次のクエストステップを取得できなかったため、一時停止しています。</Value>
     <Value lang="zh-cn">无法获取下一个任务步骤, 正在暂停。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button.</Key>
+    <Value lang="ja-jp">データの再読み込み、手動での修正、または「スタック？」ボタンでの問題報告を試してください。</Value>
     <Value lang="zh-cn">请尝试重新加载数据、手动修复，或使用"卡住了？"按钮报告问题。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Failed to start next task sequence, stopping.</Key>
+    <Value lang="ja-jp">次のタスクシーケンスを開始できなかったため、停止しています。</Value>
     <Value lang="zh-cn">无法开始下一个任务序列, 正在停止。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Notify when stop condition is reached</Key>
+    <Value lang="ja-jp">停止条件に達したときに通知</Value>
     <Value lang="zh-cn">达到停止条件时发送通知</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Notify when QST is unable to continue automatic questing</Key>
+    <Value lang="ja-jp">QST が自動クエストを続行できない場合に通知</Value>
     <Value lang="zh-cn">主线任务无法继续自动进行时发送通知</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>NotificationMaster settings</Key>
+    <Value lang="ja-jp">NotificationMaster の設定</Value>
     <Value lang="zh-cn">NotificationMaster 设置</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Requires the plugin 'NotificationMaster' to be installed.</Key>
+    <Value lang="ja-jp">プラグイン 'NotificationMaster' のインストールが必要です。</Value>
     <Value lang="zh-cn">需要安装插件 'NotificationMaster'。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Test</Key>
+    <Value lang="ja-jp">テスト</Value>
     <Value lang="zh-cn">测试</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Test message</Key>
+    <Value lang="ja-jp">テストメッセージ</Value>
     <Value lang="zh-cn">测试消息</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Automatic questing has stopped.</Key>
+    <Value lang="ja-jp">自動クエストが停止しました。</Value>
     <Value lang="zh-cn">自动任务已停止。</Value>
   </Entry>
 </I18N>
