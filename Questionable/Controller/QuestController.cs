@@ -550,8 +550,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             // queue it as the next quest so only its accept step (sequence 0) runs.
             // Completing the accepted quests is deferred until every flagged quest has been accepted,
             // so the user can several allied societies / quests and have them all picked up before any turn-ins start.
-            if (SimulatedQuest == null && NextQuest == null &&
-                AutomationType == EAutomationType.Automatic)
+            if (SimulatedQuest == null && NextQuest == null && GatheringQuest == null &&
+                (AutomationType == EAutomationType.Automatic || StartedQuest == null))
             {
                 TryQueueNextAcceptOnlyQuest();
             }
