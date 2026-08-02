@@ -1,1 +1,2 @@
 - Feature: added notification on failure "could not complete x check xllog for details" -alydev
+- bug fix: the prerequisites thing had the wrong default -alydev
