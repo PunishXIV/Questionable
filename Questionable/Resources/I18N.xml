@@ -4219,7 +4219,6 @@
     <Value lang="zh-cn">正在按照要求在传送前停止。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Controller\QuestController.cs -->
     <Key>Could not retrieve next quest step, pausing.</Key>
     <Value lang="zh-cn">无法获取下一个任务步骤, 正在暂停。</Value>
   </Entry>
@@ -4267,5 +4266,21 @@
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Automatic questing has stopped.</Key>
     <Value lang="zh-cn">自动任务已停止。</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\MiniTaskController.cs -->
+    <Key>Failed to start task '{0}'</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\MiniTaskController.cs -->
+    <Key>{0} Please check /xllog for more details.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\MiniTaskController.cs -->
+    <Key>Could not complete '{0}': {}.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Functions\QuestFunctions.cs -->
+    <Key>Prerequisites not met</Key>
   </Entry>
 </I18N>
