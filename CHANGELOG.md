@@ -1,1 +1,1 @@
-- bug fix: "automatic questing has stopped" notification adjusted -alydev
+- bug fix: combat job "auto/highest ilvl" wasn't working with the new automatic class switching thing, because i wasn't aware of it. wired that in. -alydev

@@ -106,7 +106,7 @@ internal sealed class ClassJobUtils
         };
     }
 
-    private Job LookupConfiguredJob(EExtendedClassJob jobType)
+    internal Job LookupConfiguredJob(EExtendedClassJob jobType)
     {
         Job configuredJob;
         if (jobType is EExtendedClassJob.ConfiguredCombatJob)

@@ -259,34 +259,37 @@ internal static class Interact
                 {
                     if (!acceptableJobs[0].IsCrafter() && !acceptableJobs[0].IsGatherer())
                     {
-                        if (acceptableJobs.Contains(configuration.General.CombatJob))
-                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CombatJob)];
+                        targetJob = classJobUtils.LookupConfiguredJob(EExtendedClassJob.ConfiguredCombatJob);
+                        if (acceptableJobs.Contains(targetJob))
+                            acceptableJobs = [.. acceptableJobs.Prepend(targetJob)];
                         else
                             logger.LogInformation("Normal quest, but configured job {CombatJob} is not valid for {QuestId}, changing to {AcceptableJob}",
-                                configuration.General.CombatJob, Task.Quest.Id, acceptableJobs[0]);
+                                targetJob, Task.Quest.Id, acceptableJobs[0]);
                     }
                     if (acceptableJobs[0].IsCrafter())
                     {
-                        if (acceptableJobs.Contains(configuration.General.CraftingJob))
-                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CraftingJob)];
+                        targetJob = classJobUtils.LookupConfiguredJob(EExtendedClassJob.ConfiguredCraftingJob);
+                        if (acceptableJobs.Contains(targetJob))
+                            acceptableJobs = [.. acceptableJobs.Prepend(targetJob)];
                         else
                             logger.LogInformation("Crafting quest, but configured job {CraftingJob} is not valid for {QuestId}, changing to {AcceptableJob}",
-                                configuration.General.CraftingJob, Task.Quest.Id, acceptableJobs[0]);
+                                targetJob, Task.Quest.Id, acceptableJobs[0]);
                     }
                     else if (acceptableJobs[0].IsGatherer())
                     {
-                        if (acceptableJobs.Contains(configuration.General.GatheringJob))
-                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.GatheringJob)];
+                        targetJob = classJobUtils.LookupConfiguredJob(EExtendedClassJob.ConfiguredGatheringJob);
+                        if (acceptableJobs.Contains(targetJob))
+                            acceptableJobs = [.. acceptableJobs.Prepend(targetJob)];
                         else
                             logger.LogInformation("Gathering quest, but configured job {GatheringJob} is not valid for {QuestId}, changing to {AcceptableJob}",
-                                configuration.General.GatheringJob, Task.Quest.Id, acceptableJobs[0]);
+                                targetJob, Task.Quest.Id, acceptableJobs[0]);
                     }
                     if (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu))
                     {
                         if (configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsCrafter())
-                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.CraftingJob)];
+                            acceptableJobs = [.. acceptableJobs.Prepend(targetJob)];
                         else if (!configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsGatherer())
-                            acceptableJobs = [.. acceptableJobs.Prepend(configuration.General.GatheringJob)];
+                            acceptableJobs = [.. acceptableJobs.Prepend(targetJob)];
                     }
                     targetJob = acceptableJobs[0];
                     if (classJobUtils.ClassToJobStone(targetJob) is (Job job, ushort item))
@@ -302,6 +305,7 @@ internal static class Interact
                         throw new Exception($"Quest {Task.Quest.Info.Name} requires a job like {targetJob}, " +
                                            "but you do not have a gearset for this job or have not configured QST job preferences.");
                     }
+                    logger.LogInformation($"Switched from {playerJob} to {targetJob}");
 
                     _continueAt = DateTime.Now.AddSeconds(0.2);
                     return ETaskResult.StillRunning;
