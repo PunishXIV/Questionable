@@ -4148,101 +4148,124 @@
     <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Accepted — completion follows the normal quest order.</Key>
     <Value lang="ja-jp">受注済み — 完了は通常のクエスト順序に従います。</Value>
+    <Value lang="zh-cn">已接取 — 按正常任务顺序完成。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Accept only — picked up before any queued quest is completed.</Key>
     <Value lang="ja-jp">受注のみ — キューに入っているクエストが完了する前に受注されます。</Value>
+    <Value lang="zh-cn">仅接取 — 优先于队列任务提前接取。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <Key>Accepted; completion follows the normal quest order.</Key>
     <Value lang="ja-jp">受注済み; 完了は通常のクエスト順序に従います。</Value>
+    <Value lang="zh-cn">已接取; 按正常任务顺序完成。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <Key>Queued to be accepted</Key>
     <Value lang="ja-jp">キューに入って受注される予定</Value>
+    <Value lang="zh-cn">排队等待接取</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Add to Priority Quests as Accept Only</Key>
     <Value lang="ja-jp">受注のみとして優先クエストに追加</Value>
+    <Value lang="zh-cn">添加到优先队列 (仅接取)</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Add all to Priority Quests as Accept Only</Key>
     <Value lang="ja-jp">すべてを受注のみとして優先クエストに追加</Value>
+    <Value lang="zh-cn">全部添加到优先队列 (仅接取)</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Change to normal priority quest</Key>
     <Value lang="ja-jp">通常の優先クエストに変更</Value>
+    <Value lang="zh-cn">切换到正常优先队列</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Change to accept only</Key>
     <Value lang="ja-jp">受注のみに変更</Value>
+    <Value lang="zh-cn">切换到仅接取模式</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Accept all quests</Key>
     <Value lang="ja-jp">すべてのクエストを受注</Value>
+    <Value lang="zh-cn">接受所有任务</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Reached or exceeded target level {0}.</Key>
+    <Value lang="zh-cn">已达到或超过目标等级 {0}。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Completed quest '{0}', which is configured as a stopping point.</Key>
+    <Value lang="zh-cn">已完成任务 '{0}', 该任务已设为停止点。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Completed quest '{0}', stopping as requested.</Key>
+    <Value lang="zh-cn">已完成任务 '{0}', 正在按照要求停止。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Stopping before teleport as requested.</Key>
+    <Value lang="zh-cn">正在按照要求在传送前停止。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Could not retrieve next quest step, pausing.</Key>
+    <Value lang="zh-cn">无法获取下一个任务步骤, 正在暂停。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button.</Key>
+    <Value lang="zh-cn">请尝试重新加载数据、手动修复，或使用"卡住了？"按钮报告问题。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Failed to start next task sequence, stopping.</Key>
+    <Value lang="zh-cn">无法开始下一个任务序列, 正在停止。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Notify when stop condition is reached</Key>
+    <Value lang="zh-cn">达到停止条件时发送通知</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Notify when QST is unable to continue automatic questing</Key>
+    <Value lang="zh-cn">主线任务无法继续自动进行时发送通知</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>NotificationMaster settings</Key>
+    <Value lang="zh-cn">NotificationMaster 设置</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Requires the plugin 'NotificationMaster' to be installed.</Key>
+    <Value lang="zh-cn">需要安装插件 'NotificationMaster'。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Test</Key>
+    <Value lang="zh-cn">测试</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Test message</Key>
+    <Value lang="zh-cn">测试消息</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\QuestController.cs -->
     <Key>Automatic questing has stopped.</Key>
+    <Value lang="zh-cn">自动任务已停止。</Value>
   </Entry>
 </I18N>
