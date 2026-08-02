@@ -11,7 +11,7 @@ internal sealed class NotificationMasterIpc(IDalamudPluginInterface pluginInterf
     public void Notify(string message)
     {
         var config = configuration.Notifications;
-        if (!config.Enabled)
+        if (!config.Enabled || !Enabled)
             return;
 
         if (config.ShowTrayMessage)

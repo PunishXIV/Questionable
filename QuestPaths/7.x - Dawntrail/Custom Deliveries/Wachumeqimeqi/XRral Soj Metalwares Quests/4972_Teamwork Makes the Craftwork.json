@@ -1,0 +1,103 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-02"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047135,
+          "Position": {
+            "X": 180.407,
+            "Y": -13.9926,
+            "Z": 1.98725
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
+          "$": "auto: issuer 1047135 (Rral Soj)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047138,
+          "Position": {
+            "X": -446.948,
+            "Y": 121.633,
+            "Z": 278.373
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kozama'uka - Earthenshire",
+          "$": "auto: todo location -> 1047138 (Rral Soj)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1047139,
+          "Position": {
+            "X": -517.109,
+            "Y": 123.277,
+            "Z": 276.248
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo location -> 1047139 (Rral Soj)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "TerritoryId": 1188,
+          "InteractionType": "Craft",
+          "ItemId": 43907,
+          "ItemCount": 1
+        },
+        {
+          "DataId": 1047140,
+          "Position": {
+            "X": -518.042,
+            "Y": 122.911,
+            "Z": 271.669
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1047140 (Papawni); npc trade"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047135,
+          "Position": {
+            "X": 180.407,
+            "Y": -13.9926,
+            "Z": 1.98725
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
+          "$": "auto: todo turn-in -> 1047135 (Rral Soj)"
+        }
+      ]
+    }
+  ]
+}

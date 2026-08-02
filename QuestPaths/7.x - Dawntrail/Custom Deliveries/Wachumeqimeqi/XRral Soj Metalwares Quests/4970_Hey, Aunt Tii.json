@@ -1,0 +1,60 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Comment": "Autocraft requires:\n6x Ruthenium Ingot\n6x Lar Ingot\n6x Mountain Chromite Ingot",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-02"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047135,
+          "Position": {
+            "X": 180.407,
+            "Y": -13.9926,
+            "Z": 1.98725
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
+          "$": "auto: issuer 1047135 (Rral Soj)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "TerritoryId": 1185,
+          "InteractionType": "Craft",
+          "ItemId": 43888,
+          "ItemCount": 6,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": { "NotInInventory": false },
+              "ExtraCondition": "NewGamePlus"
+            }
+          }
+        },
+        {
+          "DataId": 1047135,
+          "Position": {
+            "X": 180.407,
+            "Y": -13.9926,
+            "Z": 1.98725
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
+          "$": "auto: todo turn-in -> 1047135 (Rral Soj)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,1 +1,2 @@
-- bug fix: removed obsolete special case for waking sands/rising stones that was causing unnecessary teleports -alydev
+- Feature: options to send notification with NotificationMaster if QST has to stop automatic questing due to detecting a problem (on by default), or if a stop condition is reached -alydev
+  - Settings > Notifications. Check Settings > Dependencies to find and install NotificationMaster

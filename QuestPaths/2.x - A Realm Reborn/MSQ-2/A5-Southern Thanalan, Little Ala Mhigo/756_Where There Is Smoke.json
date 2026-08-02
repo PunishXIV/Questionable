@@ -24,12 +24,13 @@
       "Steps": [
         {
           "Position": {
-            "X": 318.09802,
-            "Y": 20.949646,
-            "Z": -263.94977
+            "X": 319.00192,
+            "Y": 20.684546,
+            "Z": -263.7031
           },
           "TerritoryId": 145,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "StopDistance": 1
         },
         {
           "Position": {
