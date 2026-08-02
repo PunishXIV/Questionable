@@ -108,7 +108,7 @@ internal sealed class PriorityWindow : LWindow
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Upload, _L("Export to Clipboard")))
                 ExportToClipboard();
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Check, _L("Remove finished Quests")))
-                _questController.PriorityManager.RemoveCompleted(_questFunctions.IsQuestComplete);
+                _questController.PriorityManager.RemoveCompleted(_questFunctions.IsQuestComplete, _questFunctions.IsQuestAccepted);
             ImGui.SameLine();
 
             using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
@@ -157,6 +157,20 @@ internal sealed class PriorityWindow : LWindow
                     _questTooltipComponent.Draw(quest.Info);
 
                 _questJournalUtils.ShowContextMenu(quest.Info, quest, nameof(PriorityWindow));
+
+                if (_questController.PriorityManager.IsAcceptOnly(quest.Id))
+                {
+                    bool accepted = _questFunctions.IsQuestAccepted(quest.Id);
+                    ImGui.SameLine();
+                    ImGui.AlignTextToFramePadding();
+                    using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                        ImGui.TextColored(accepted ? QstTheme.Success : QstTheme.Accent,
+                            FontAwesomeIcon.Inbox.ToIconString());
+                    if (ImGui.IsItemHovered())
+                        ImGui.SetTooltip(accepted
+                            ? _L("Accepted — completion follows the normal quest order.")
+                            : _L("Accept only — picked up before any queued quest is completed."));
+                }
 
                 if (priorityQuests.Count > 1)
                 {

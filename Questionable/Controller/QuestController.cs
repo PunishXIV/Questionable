@@ -546,6 +546,16 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 }
             }
 
+            // any priority quest is flagged accept-only and can be picked up right now,
+            // queue it as the next quest so only its accept step (sequence 0) runs.
+            // Completing the accepted quests is deferred until every flagged quest has been accepted,
+            // so the user can several allied societies / quests and have them all picked up before any turn-ins start.
+            if (SimulatedQuest == null && NextQuest == null &&
+                AutomationType == EAutomationType.Automatic)
+            {
+                TryQueueNextAcceptOnlyQuest();
+            }
+
             // Stop checks run before the NextQuest/priority cascade — otherwise a
             // queued NextQuest (e.g. an MSQ chain or priority list pick) is started
             // before the user's "stop after this quest" toggle is ever consulted.
@@ -609,6 +619,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 (ElementId? currentQuestId, currentSequence, MainScenarioQuestState msqState) = _questFunctions.GetCurrentQuest(allowNewMsq: AutomationType != EAutomationType.SingleQuestB);
                 (ElementId, byte)? priorityQuestOption =
                     _priorityManager.Quests
+                        .Where(x => !_priorityManager.IsAcceptOnly(x.Id))
                         .Where(x => _questFunctions.IsReadyToAcceptQuest(x.Id) || _questFunctions.IsQuestAccepted(x.Id))
                         .Select(x => (x.Id, QuestFunctions.GetQuestProgressInfo(x.Id)?.Sequence ?? 0))
                         .FirstOrDefault();
@@ -1103,6 +1114,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     {
         ClearTasksInternal();
 
+        if (AutomationType == EAutomationType.Automatic && TryQueueNextAcceptOnlyQuest())
+            _logger.LogInformation("Accepting queued accept-only quests before other work");
+
         if (TryPickPriorityQuest())
             _logger.LogInformation("Using priority quest over current quest");
 
@@ -1259,6 +1273,31 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         return currentStep?.AetheryteShortcut != null &&
                (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsCompleted.Count ?? 0) == 0 &&
                (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsAccepted.Count ?? 0) == 0;
+    }
+
+    /// <summary>
+    ///     While any priority quest is flagged accept-only and is ready to be accepted, it is queued as <see cref="NextQuest"/> 
+    ///     so only its accept step (sequence 0) runs; the quest stays in the priority list to be completed later. 
+    ///     The completion phase is therefore deferred until every flagged quest has been accepted (or can no longer be accepted this session)
+    /// </summary>
+    private bool TryQueueNextAcceptOnlyQuest()
+    {
+        if (!_priorityManager.HasPendingAcceptOnly)
+            return false;
+
+        Quest? next = _priorityManager.AcceptOnlyQuests
+            .FirstOrDefault(quest => _questFunctions.IsReadyToAcceptQuest(quest.Id));
+        if (next == null)
+            return false;
+
+        // We are already trying to accept this quest: don't call SetNextQuest again. It rebuilds NextQuest with Step = 0,
+        // which would reset the accept sequence every step boundary and loop it forever before it ever reaches the Interact/accept step.
+        if (NextQuest?.Quest.Id == next.Id)
+            return true;
+
+        _logger.LogInformation("Accept-all: queueing {QuestId} to be accepted before other work", next.Id);
+        SetNextQuest(next);
+        return true;
     }
 
     public bool TryPickPriorityQuest()
