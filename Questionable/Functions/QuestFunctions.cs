@@ -12,6 +12,7 @@ using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using static FFXIVClientStructs.FFXIV.Client.Game.BGMSystem;
 using static Questionable.Domain.QuestInfo;
 using static Questionable.Utils.CacheUtils;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
@@ -751,8 +752,24 @@ internal sealed unsafe class QuestFunctions
             if (firstLockedAetheryte != null)
                 lockedReason.Add(_LF("Aetheryte locked: {0}", firstLockedAetheryte ?? EAetheryteLocation.None), value: true);
         }
+
+        bool prerequisites = questId.Value switch
+        {
+            432 => AllMountsUnlocked(new ushort[] { 28, 29, 30, 31, 40, 43 }),
+            1550 => AllMountsUnlocked(new ushort[] { 75, 76, 77, 78, 90, 98, 104 }),
+            3200 => AllMountsUnlocked(new ushort[] { 115, 116, 133, 144, 158, 172, 182 }),
+            4057 => AllMountsUnlocked(new ushort[] { 189, 192, 205, 217, 226, 238, 249 }),
+            4795 => AllMountsUnlocked(new ushort[] { 261, 262, 293, 306, 315, 325, 332 }),
+            5469 => AllMountsUnlocked(new ushort[] { 345, 346, 363, 389, 407, 422, 444 }),
+            _ => false
+        };
+
+        if (!prerequisites)
+            lockedReason.Add(_LF("Prerequisites not met"), value: true);
         return (lockedReason.Values.Any(x => x), lockedReason.Keys.ToArray());
     }
+
+    private unsafe bool AllMountsUnlocked(ushort[] mounts) => mounts.All(x => PlayerState.Instance()->IsMountUnlocked(x));
 
     private bool IsQuestLocked(SatisfactionSupplyNpcId satisfactionSupplyNpcId)
     {
