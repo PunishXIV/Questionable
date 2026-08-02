@@ -1304,7 +1304,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public bool WasLastTaskUpdateWithin(TimeSpan timeSpan)
     {
-        _logger.LogTrace("Last update: {Update}", _lastTaskUpdate);
+        if (EzThrottler.Throttle("WasLastTaskUpdateWithin"))
+            _logger.LogTrace("Last update: {Update}", _lastTaskUpdate);
         return IsRunning || DateTime.Now <= _lastTaskUpdate.Add(timeSpan);
     }
 
