@@ -4143,37 +4143,46 @@
   <Entry>
     <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Accepted — completion follows the normal quest order.</Key>
+    <Value lang="ja-jp">受注済み — 完了は通常のクエスト順序に従います。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Accept only — picked up before any queued quest is completed.</Key>
+    <Value lang="ja-jp">受注のみ — キューに入っているクエストが完了する前に受注されます。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <Key>Accepted; completion follows the normal quest order.</Key>
+    <Value lang="ja-jp">受注済み; 完了は通常のクエスト順序に従います。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
     <Key>Queued to be accepted</Key>
+    <Value lang="ja-jp">キューに入って受注される予定</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Add to Priority Quests as Accept Only</Key>
+    <Value lang="ja-jp">受注のみとして優先クエストに追加</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Add all to Priority Quests as Accept Only</Key>
+    <Value lang="ja-jp">すべてを受注のみとして優先クエストに追加</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Change to normal priority quest</Key>
+    <Value lang="ja-jp">通常の優先クエストに変更</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Change to accept only</Key>
+    <Value lang="ja-jp">受注のみに変更</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestJournalUtils.cs -->
     <Key>Accept all quests</Key>
+    <Value lang="ja-jp">すべてのクエストを受注</Value>
   </Entry>
 </I18N>
