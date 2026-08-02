@@ -4,11 +4,23 @@
     "liza",
     "JerryWester"
   ],
-  "LastChecked": {"Username": "jigain", "Date": "2026-07-25"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1026958,
+          "Position": {
+            "X": -524.55945,
+            "Y": 8.698304,
+            "Z": -15.487976
+          },
+          "TerritoryId": 621,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 829,
+          "Fly": true
+        },
         {
           "DataId": 1026823,
           "Position": {

@@ -99,10 +99,8 @@ internal sealed class TaskCreator
                 .Cast<WaitAtEnd.WaitForTerritory>()
                 .FirstOrDefault();
             if (waitForTerritory != null &&
-                _clientState.TerritoryType == waitForTerritory.TerritoryId &&
-                waitForTerritory is not { TerritoryId: 212 or 351 })
+                _clientState.TerritoryType == waitForTerritory.TerritoryId)
             {
-                // if we're at the territory we're meant to be in, (unless it's waking sands or rising stones), can probably move to the next step
                 int index = newTasks.IndexOf(waitForTerritory);
                 _logger.LogWarning(
                         "Skipping {SkippedTaskCount} out of {TotalCount} tasks, we are already in TargetTerritoryId:{TerritoryId}",
