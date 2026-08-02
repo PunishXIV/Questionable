@@ -893,7 +893,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             if (AutomationType is EAutomationType.Automatic && !_stopConditionComponent.commandExceptions.Any(e => label.Equals(e, StringComparison.OrdinalIgnoreCase)))
             {
                 if (_configuration.Notifications.NotifyOnCriticalFailure)
-                    _notificationMasterIpc.Notify(_L("Automatic questing has stopped.") + " " + _L("Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button."));
+                    _notificationMasterIpc.Notify(_L("Automatic questing has stopped."));
                 if (_configuration.Stop is { RunCommandAfterStop: true } stop && stop.CommandAfterStop.StartsWith('/'))
                     _commandManager.ProcessCommand(stop.CommandAfterStop);
             }
