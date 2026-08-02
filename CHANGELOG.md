@@ -1,1 +1,1 @@
-- bug fix: combat job "auto/highest ilvl" wasn't working with the new automatic class switching thing, because i wasn't aware of it. wired that in. -alydev
+- Feature: added functionality for special quest prerequisites, e.g legendary mount quest -alydev
