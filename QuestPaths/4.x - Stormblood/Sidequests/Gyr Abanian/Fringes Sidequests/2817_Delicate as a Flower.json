@@ -1,0 +1,109 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-02"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1020818,
+          "Position": {
+            "X": 339.576,
+            "Y": 82.3406,
+            "Z": -76.524
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "$": "auto: issuer 1020818 (Garima)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008841,
+          "Position": {
+            "X": -445.243,
+            "Y": 137.827,
+            "Z": -519.554
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: todo area 18y from lua EOBJECT0 -> 2008841 (dreaming iris)"
+        },
+        {
+          "DataId": 2008842,
+          "Position": {
+            "X": -472.038,
+            "Y": 82.7621,
+            "Z": -265.187
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo area 25y from lua EOBJECT1 -> 2008842 (dreaming iris)"
+        },
+        {
+          "DataId": 2008843,
+          "Position": {
+            "X": -506.798,
+            "Y": 53.4342,
+            "Z": 36.4842
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo area 11y from lua EOBJECT2 -> 2008843 (dreaming iris)"
+        },
+        {
+          "DataId": 2008844,
+          "Position": {
+            "X": -598.23,
+            "Y": 36.4763,
+            "Z": 328.664
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo area 23y from lua EOBJECT3 -> 2008844 (dreaming iris)"
+        },
+        {
+          "DataId": 2008845,
+          "Position": {
+            "X": -582.879,
+            "Y": 36.5794,
+            "Z": 466.606
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo area 21y from lua EOBJECT4 -> 2008845 (dreaming iris)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1020818,
+          "Position": {
+            "X": 339.576,
+            "Y": 82.3406,
+            "Z": -76.524
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "$": "auto: todo turn-in -> 1020818 (Garima)"
+        }
+      ]
+    }
+  ]
+}
