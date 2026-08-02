@@ -1,1 +1,1 @@
-- bug fix: don't select next msq if current character doesn't have access to it ($$/FT) -alydev
+- bug fix: revert msq detection refactor that broke everything lol -alydev
