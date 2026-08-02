@@ -249,7 +249,7 @@ internal sealed unsafe class QuestFunctions
 
         return QuestReference.NoQuest(msqQuest.State);
     }
-    
+
     public (QuestReference, string?) GetMainScenarioQuestId()
     {
         if (QuestManager.IsQuestComplete(3759)) // Memories Rekindled
