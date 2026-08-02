@@ -1,0 +1,122 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Raitono",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006542,
+          "Position": {
+            "X": 30.6399,
+            "Y": 21.2527,
+            "Z": -643.549
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "$": "auto: issuer 1006542 (Aganbold)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 31.505556,
+            "Y": 20.295,
+            "Z": -669.3887
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "$": "Prevent getting stuck in the building"
+        },
+        {
+          "Position": {
+            "X": -386.57956,
+            "Y": -17.148407,
+            "Z": -452.4295
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            140
+          ],
+          "$": "auto: lua overworld enemies -> 140"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006542,
+          "Position": {
+            "X": 30.6399,
+            "Y": 21.2527,
+            "Z": -643.549
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Mor Dhona",
+          "$": "auto: todo location -> 1006542 (Aganbold)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": 31.505556,
+            "Y": 20.295,
+            "Z": -669.3887
+          },
+          "TerritoryId": 156,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "$": "Prevent getting stuck in the building"
+        },
+        {
+          "DataId": 2002213,
+          "Position": {
+            "X": -286.979,
+            "Y": -16.8982,
+            "Z": -361.23
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            1915
+          ],
+          "$": "auto: todo location -> 2002213 (destination); spawns enemies 1915"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006542,
+          "Position": {
+            "X": 30.6399,
+            "Y": 21.2527,
+            "Z": -643.549
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "$": "auto: todo turn-in -> 1006542 (Aganbold)"
+        }
+      ]
+    }
+  ]
+}
