@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Lumina.Excel.Sheets;
 
 namespace Questionable.Utils;
 
@@ -6,10 +7,14 @@ namespace Questionable.Utils;
 internal static class LocalizeShortcut
 {
     private static bool _debug;
+    private static IDataManager _dataManager;
+    private static IClientState _clientState;
 
-    internal static void Initialize(Configuration configuration)
+    internal static void Initialize(Configuration configuration, IDataManager dataManager, IClientState clientState)
     {
         _debug = configuration.Advanced.Debug && configuration.Advanced.DebugLocalisation;
+        _dataManager = dataManager;
+        _clientState = clientState;
     }
 
     internal static string _L(I18N.DotNet.PlainString input)
@@ -26,5 +31,23 @@ internal static class LocalizeShortcut
         if (_debug)
             return $"{{{outp}}}";
         return outp;
+    }
+
+    private static readonly Dictionary<(Type, uint), string> _translatedStrings = [];
+    public static string _T<T>(uint rowId) where T : struct, IExcelRow<T>
+    {
+        if (_translatedStrings.TryGetValue((typeof(T), rowId), out var match))
+            return match;
+
+        string value = _dataManager.GetExcelSheet<T>(_clientState.ClientLanguage).GetRow(rowId) switch
+        {
+            JournalGenre g => g.Name.ToMacroString(),
+            JournalCategory c => c.Name.ToMacroString(),
+            Addon a => a.Text.ToMacroString(),
+            ExVersion v => v.Name.ToMacroString(),
+            _ => throw new InvalidOperationException($"No known Name/Text mapping for {typeof(T).Name}")
+        };
+        _translatedStrings[(typeof(T), rowId)] = value;
+        return value;
     }
 }

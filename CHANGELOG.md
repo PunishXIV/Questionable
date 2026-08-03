@@ -1,3 +1,1 @@
-- Feature: quest accepted job now shows next to ID at top of quest window -alydev
-  - clicking it will switch to that job -alydev
-- Change: added a couple prereq story quests to delivery moogle preset -alydev
+- Feature: using game translations for priority preset names instead of contributor translations -alydev
