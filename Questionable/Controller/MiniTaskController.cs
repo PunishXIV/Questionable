@@ -90,7 +90,7 @@ internal abstract class MiniTaskController<T> : IDisposable
         {
             _logger.LogError(e, "Failed to update task {TaskName}",
                 _taskQueue.CurrentTaskExecutor.CurrentTask.ToString());
-            var msg = _LF("Could not complete '{0}': {}.", _taskQueue.CurrentTaskExecutor.CurrentTask, e.Message);
+            var msg = _LF("Could not complete '{0}': {1}.", _taskQueue.CurrentTaskExecutor.CurrentTask, e.Message);
             _chatGui.PrintError(
                 _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
             _serviceProvider.GetRequiredService<NotificationMasterIpc>().NotifyOnFailure(msg);
