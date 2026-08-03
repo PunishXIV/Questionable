@@ -193,7 +193,7 @@ internal sealed class QuestTooltipComponent
 
         if (questInfo is QuestInfo actualQuestInfo)
         {
-            if (actualQuestInfo.MoogleDeliveryLevel > 0)
+            if (actualQuestInfo.MoogleDeliveryLevel > 0 || actualQuestInfo.IsMoogleDeliveryQuest)
                 ImGui.Text(_LF("Requires Carrier Level {0}", actualQuestInfo.MoogleDeliveryLevel));
 
 

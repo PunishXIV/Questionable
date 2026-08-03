@@ -724,7 +724,7 @@ internal sealed unsafe class QuestFunctions
             else
                 lockedReason.Add(_L("Society rep"), !IsAlliedSocietyStoryQuestAvailable(questId));
 
-        if (questInfo.IsMoogleDeliveryQuest)
+        if (QuestData.DeliveryMoogleQuests.Contains(questInfo.QuestId))
         {
             byte currentDeliveryLevel = playerState->DeliveryLevel;
             if (extraCompletedQuest != null &&
@@ -732,7 +732,8 @@ internal sealed unsafe class QuestFunctions
                 extraQuestInfo is QuestInfo { IsMoogleDeliveryQuest: true })
                 currentDeliveryLevel++;
 
-            lockedReason.Add(_L("Carrier level"), questInfo.MoogleDeliveryLevel > currentDeliveryLevel);
+            if (questInfo.MoogleDeliveryLevel > currentDeliveryLevel)
+                lockedReason.Add(_L("Carrier level"), questInfo.MoogleDeliveryLevel > currentDeliveryLevel);
         }
 
         // "an ill-conceived venture" requires to have retainers unlocked
