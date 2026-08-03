@@ -1,20 +1,22 @@
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows;
 
-internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInterface pluginInterface)
+internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInterface pluginInterface, QuestData questData)
 {
     public (Vector4 Color, FontAwesomeIcon Icon, string Status) GetQuestStyle(ElementId elementId)
     {
         string lockedReason = string.Empty;
-        HashSet<IQuestInfo>? prereqValue = null;
+        questFunctions.prereqCache.TryGetValue(elementId.Value, out var prereqValue);
         if (questFunctions.IsQuestLocked(elementId) is (bool isLocked, string[] reasons) && isLocked)
             lockedReason = string.Join("\n  ", reasons);
-        else if (questFunctions.prereqCache.TryGetValue(elementId.Value, out prereqValue) &&
-                prereqValue.Any(q => questFunctions.IsQuestLocked(q.QuestId) is (bool qIsLocked, string[] reasons) && qIsLocked))
+        else if (questData.TryGetQuestInfo(elementId, out var qInfo) && qInfo is IQuestInfo questInfo &&
+                questInfo.PreviousQuestJoin is EQuestJoin.All &&
+                prereqValue != null && prereqValue.Any(q => questFunctions.IsQuestLocked(q.QuestId) is (bool qIsLocked, string[] reasons) && qIsLocked))
             lockedReason = _L("Prev quest");
 
         if (questFunctions.IsQuestAccepted(elementId))

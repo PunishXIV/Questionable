@@ -32,11 +32,7 @@
           "InteractionType": "SinglePlayerDuty",
           "Comment": "A Frosty Reception",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "TestedBossModVersion": "0.0.0.293",
-            "Notes": [
-              "(Thancred) How many enemies get pulled during the stealth section is random; if you pull multiple you can die here. Can probably be fixed by retrying on very easy."
-            ]
+            "Enabled": true
           },
           "DialogueChoices": [
             {

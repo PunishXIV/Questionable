@@ -320,16 +320,6 @@ internal sealed class PriorityWindow : LWindow
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
         if (ImGui.BeginCombo("##PresetSelection", preview, ImGuiComboFlags.HeightLarge))
         {
-            ImGui.TextDisabled(_L("Built-in"));
-            foreach (string name in builtInPresets.Keys)
-            {
-                if (ImGui.Selectable(name, _selectedPresetName == name))
-                {
-                    _selectedPresetName = name;
-                    LoadPreset(name);
-                }
-            }
-
             if (userPresets.Count > 0)
             {
                 ImGui.Separator();
@@ -341,6 +331,16 @@ internal sealed class PriorityWindow : LWindow
                         _selectedPresetName = name;
                         LoadPreset(name);
                     }
+                }
+            }
+
+            ImGui.TextDisabled(_L("Built-in"));
+            foreach (string name in builtInPresets.Keys)
+            {
+                if (ImGui.Selectable(name, _selectedPresetName == name))
+                {
+                    _selectedPresetName = name;
+                    LoadPreset(name);
                 }
             }
 
@@ -486,6 +486,7 @@ internal sealed class PriorityWindow : LWindow
             [JobQuestsPresetName] = [],
             [_L("Unlock all jobs")] = jobUnlocks,
             [_L("Gil (set TextAdvance to prefer Gil sacks)")] = gilList,
+            [_L("Delivery Moogle Quests")] = QuestData.DeliveryMoogleQuests.ToList(),
             [_L("Post-ARR unlocks")] = postARRUnlocks,
             [_L("ARR Hard Mode Primals")] = QuestData.HardModePrimals.Cast<ElementId>().ToList(),
             [_L("Crystal Tower Raids")] = QuestData.CrystalTowerQuests.Cast<ElementId>().ToList(),
