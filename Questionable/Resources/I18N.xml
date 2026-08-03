@@ -4284,17 +4284,25 @@
   <Entry>
     <!-- Found in: Controller\MiniTaskController.cs -->
     <Key>Failed to start task '{0}'</Key>
+    <Value lang="ja-jp">タスク '{0}' の開始に失敗しました</Value>
+    <Value lang="zh-cn">无法开始任务 '{0}'</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\MiniTaskController.cs -->
     <Key>{0} Please check /xllog for more details.</Key>
+    <Value lang="ja-jp">{0} 詳細については /xllog を確認してください。</Value>
+    <Value lang="zh-cn">{0} 请检查 /xllog 以获取更多详细信息。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\MiniTaskController.cs -->
     <Key>Could not complete '{0}': {}.</Key>
+    <Value lang="ja-jp">{0} を完了できませんでした: {}。</Value>
+    <Value lang="zh-cn">无法完成 '{0}': {}。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Prerequisites not met</Key>
+    <Value lang="ja-jp">前提条件が満たされていません</Value>
+    <Value lang="zh-cn">前提条件未满足</Value>
   </Entry>
 </I18N>
