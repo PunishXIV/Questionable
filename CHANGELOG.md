@@ -1,1 +1,1 @@
-- Bug fix: exception handler raised exception, which naturally broke all the things -alydev
+- Change: aesthetician is also a requirement of one of the quests in the postmoogle chain -alydev
