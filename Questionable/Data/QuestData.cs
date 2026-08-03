@@ -60,7 +60,7 @@ internal sealed class QuestData
             }
             .ToImmutableDictionary(x => x.Key, x => x.Value.Select(y => new QuestId(y)).ToImmutableList());
     public static readonly IReadOnlyList<ElementId> DeliveryMoogleQuests = ((ushort[])[
-            1481, 1483, 1482, 1484, 1531, 1532, 1533, 1485, 33, 1571, 36, 1573, 1570, 1576, 1577, 241, 242, 1574, 1572, 1575, 243, 244, 240, 496, 362
+            1481, 1483, 1482, 1484, 1531, 1532, 1533, 804, 805, 807, 1485, 33, 1571, 36, 1573, 1570, 1576, 1577, 241, 242, 1574, 1572, 1575, 243, 244, 1204, 240, 496, 362
         ]).FromNumericListOfQuests();
 
     private static readonly IReadOnlyList<uint> TankRoleQuestChapters = [136, 154, 178];

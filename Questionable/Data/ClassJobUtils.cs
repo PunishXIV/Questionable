@@ -181,11 +181,11 @@ internal sealed class ClassJobUtils
         return jobs.AsReadOnly();
     }
 
-    private unsafe Job LookupQuestStartJob(ElementId? elementId)
+    internal unsafe Job LookupQuestStartJob(ElementId? elementId)
     {
         ArgumentNullException.ThrowIfNull(elementId);
 
-        if (elementId is QuestId questId)
+        if (elementId is QuestId questId && QuestFunctions.IsQuestAccepted(questId))
         {
             QuestWork* questWork = QuestManager.Instance()->GetQuestById(questId.Value);
             if (questWork->AcceptClassJob != 0)

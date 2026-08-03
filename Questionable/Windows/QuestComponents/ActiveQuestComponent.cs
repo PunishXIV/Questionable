@@ -31,6 +31,7 @@ internal sealed partial class ActiveQuestComponent
     QuestData questData,
     QuickAccessButtonsComponent quickAccessButtonsComponent,
     CreationUtilsComponent creationUtilsComponent,
+    ClassJobUtils classJobUtils,
     ILogger<ActiveQuestComponent> logger)
 {
     [GeneratedRegex(@"\s\s+", RegexOptions.IgnoreCase, "en-US")]
@@ -284,6 +285,16 @@ internal sealed partial class ActiveQuestComponent
                 ImGui.TextUnformatted(_L("Quest: ") + Shorten(currentQuest.Quest.Info.Name));
                 ImGui.SameLine();
                 QstWidgets.Chip($"#{currentQuest.Quest.Id}", QstTheme.Info);
+                var acceptedJob = classJobUtils.LookupQuestStartJob(currentQuest.Quest.Id);
+                if (acceptedJob is not ECommons.ExcelServices.Job.ADV)
+                {
+                    ImGui.SameLine();
+                    QstWidgets.Chip($"{acceptedJob}", QstTheme.Accent);
+                    if (ImGui.IsItemClicked())
+                        classJobUtils.SwitchClassJob(acceptedJob);
+                    if (ImGui.IsItemHovered())
+                        ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+                }
 
                 if (startedQuest.Quest.Root.Disabled)
                 {

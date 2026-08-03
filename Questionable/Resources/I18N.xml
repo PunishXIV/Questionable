@@ -841,74 +841,62 @@
     <Value lang="zh-cn">按住 CTRL 键以覆盖现有预设。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>ARR Hard Mode Primals</Key>
     <Value lang="ja-jp">真蛮神討滅戦</Value>
     <Value lang="zh-cn">重生之境真蛮神讨伐歼灭战</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\PriorityWindow.cs -->
     <!-- Found in: Windows\QuestComponents\ARealmRebornComponent.cs -->
     <Key>Crystal Tower Raids</Key>
     <Value lang="ja-jp">クリスタルタワーレイド</Value>
     <Value lang="zh-cn">水晶塔大型任务</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Aether Currents: Heavensward</Key>
     <Value lang="ja-jp">風脈：蒼天篇</Value>
     <Value lang="zh-cn">风脉泉：苍穹之禁城</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Aether Currents: Stormblood</Key>
     <Value lang="ja-jp">風脈：紅蓮篇</Value>
     <Value lang="zh-cn">风脉泉：红莲之狂潮</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Aether Currents: Shadowbringers</Key>
     <Value lang="ja-jp">風脈：漆黒篇</Value>
     <Value lang="zh-cn">风脉泉：暗影之逆焰</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Aether Currents: Endwalker</Key>
     <Value lang="ja-jp">風脈：暁月篇</Value>
     <Value lang="zh-cn">风脉泉：晓月之终途</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Aether Currents: Dawntrail</Key>
     <Value lang="ja-jp">風脈：黄金篇</Value>
     <Value lang="zh-cn">风脉泉：黄金的遗产</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Role Quests: Tank</Key>
     <Value lang="ja-jp">ロールクエスト：タンク</Value>
     <Value lang="zh-cn">职能任务：防护</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Role Quests: Healer</Key>
     <Value lang="ja-jp">ロールクエスト：ヒーラー</Value>
     <Value lang="zh-cn">职能任务：治疗</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Role Quests: Melee DPS</Key>
     <Value lang="ja-jp">ロールクエスト：メレー</Value>
     <Value lang="zh-cn">职能任务：近战</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Role Quests: Physical Ranged</Key>
     <Value lang="ja-jp">ロールクエスト：レンジ</Value>
     <Value lang="zh-cn">职能任务：远程物理</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\PriorityWindow.cs -->
     <Key>Role Quests: Caster</Key>
     <Value lang="ja-jp">ロールクエスト：キャスター</Value>
     <Value lang="zh-cn">职能任务：远程魔法</Value>

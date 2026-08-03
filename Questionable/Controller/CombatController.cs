@@ -352,7 +352,7 @@ internal sealed class CombatController : IDisposable
                 if ((!expectQuestMarker || gameObjectStruct->NamePlateIconId != 0 || _currentFight.Data.SpawnType == EEnemySpawnType.FateEnemies) &&
                     _currentFight.Data.KillEnemyDataIds.Contains(GameFunctions.GetBaseID(battleNpc)))
                 {
-                    if (_currentFight.Data.SpawnType == EEnemySpawnType.FateEnemies && !PlayerState.Instance()->IsLevelSynced)
+                    if (_currentFight.Data.SpawnType == EEnemySpawnType.FateEnemies && !PlayerState.Instance()->IsLevelSynced && EzThrottler.Throttle("lsync", miliseconds: 1000))
                         _chatFunctions.ExecuteCommand("/lsync");
                     return (90, "KED");
                 }

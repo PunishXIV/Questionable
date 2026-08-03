@@ -1,4 +1,4 @@
-- Feature: added Delivery Moogle Quests preset to Priority Quests -alydev
-- Change: moved User presets above Built-in presets -alydev
-- Bug fix: "moogle delivery level = quest locked" was not properly calculated -alydev
-- Bug fix: quests appearing locked due to inaccurate logic -alydev
+- Feature: quest accepted job now shows next to ID at top of quest window -alydev
+  - clicking it will switch to that job -alydev
+- Feature: using game translations for priority preset names instead of contributor translations -alydev
+- Change: added a couple prereq story quests to delivery moogle preset -alydev
