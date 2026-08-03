@@ -4283,9 +4283,9 @@
   </Entry>
   <Entry>
     <!-- Found in: Controller\MiniTaskController.cs -->
-    <Key>Could not complete '{0}': {}.</Key>
-    <Value lang="ja-jp">{0} を完了できませんでした: {}。</Value>
-    <Value lang="zh-cn">无法完成 '{0}': {}。</Value>
+    <Key>Could not complete '{0}': {1}.</Key>
+    <Value lang="ja-jp">{0} を完了できませんでした: {1}。</Value>
+    <Value lang="zh-cn">无法完成 '{0}': {1}。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
