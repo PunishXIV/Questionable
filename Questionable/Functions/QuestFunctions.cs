@@ -743,8 +743,8 @@ internal sealed unsafe class QuestFunctions
             lockedReason.Add(_L("Retainers"), retainerManager->MaxRetainerEntitlement == 0);
         }
 
-        if (!HasCompletedPreviousQuests(questInfo, extraCompletedQuest))
-            lockedReason.Add(_L("Prev quest"), value: true);
+        if (!HasCompletedPreviousQuests(questInfo, extraCompletedQuest, out int prevQuestCount))
+            lockedReason.Add(_L("Prev quest") + $" ({prevQuestCount})", value: true);
         if (!HasCompletedPreviousInstances(questInfo))
             lockedReason.Add(_L("Prev instance"), value: true);
         if (questRegistry.TryGetQuest(questId, out Quest? quest))
@@ -775,7 +775,7 @@ internal sealed unsafe class QuestFunctions
     private bool IsQuestLocked(SatisfactionSupplyNpcId satisfactionSupplyNpcId)
     {
         SatisfactionSupplyInfo questInfo = (SatisfactionSupplyInfo)questData.GetQuestInfo(satisfactionSupplyNpcId);
-        return !HasCompletedPreviousQuests(questInfo, extraCompletedQuest: null);
+        return !HasCompletedPreviousQuests(questInfo, extraCompletedQuest: null, out var _);
     }
 
     private bool IsQuestLocked(AlliedSocietyDailyId alliedSocietyDailyId)
@@ -920,17 +920,18 @@ internal sealed unsafe class QuestFunctions
 
     private static bool IsQuestRemoved(QuestId questId) => questId.Value is 487 or 1428 or 1429;
 
-    private bool HasCompletedPreviousQuests(IQuestInfo questInfo, ElementId? extraCompletedQuest)
+    private bool HasCompletedPreviousQuests(IQuestInfo questInfo, ElementId? extraCompletedQuest, out int count)
     {
-        if (questInfo.PreviousQuests.Count == 0)
+        count = questInfo.PreviousQuests.Count;
+        if (count == 0)
             return true;
 
-        int completedQuests = questInfo.PreviousQuests.Count(x =>
+        count = questInfo.PreviousQuests.Count(x =>
             HasEnoughProgressOnPreviousQuest(x) || x.QuestId.Equals(extraCompletedQuest));
         if (questInfo.PreviousQuestJoin == EQuestJoin.All &&
-            questInfo.PreviousQuests.Count == completedQuests)
+            questInfo.PreviousQuests.Count == count)
             return true;
-        if (questInfo.PreviousQuestJoin == EQuestJoin.AtLeastOne && completedQuests > 0)
+        if (questInfo.PreviousQuestJoin == EQuestJoin.AtLeastOne && count > 0)
             return true;
 
         return false;

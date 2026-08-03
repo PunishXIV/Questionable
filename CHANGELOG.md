@@ -1,3 +1,4 @@
 - Feature: added Delivery Moogle Quests preset to Priority Quests -alydev
 - Change: moved User presets above Built-in presets -alydev
 - Bug fix: "moogle delivery level = quest locked" was not properly calculated -alydev
+- Bug fix: quests appearing locked due to inaccurate logic -alydev
