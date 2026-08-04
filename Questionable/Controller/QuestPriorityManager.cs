@@ -113,7 +113,11 @@ internal sealed class QuestPriorityManager(
 
     public void RemoveCompleted(Func<ElementId, bool> isComplete, Func<ElementId, bool> isAccepted)
     {
-        _quests.RemoveAll(q => _acceptOnly.Contains(q.Id) ? isAccepted(q.Id) : isComplete(q.Id));
+        // First remove everything that's completed (any kind), then remove accept-only quests that have
+        // been accepted (picked up) but not completed. Normal priority quests that are merely accepted and
+        // still in progress are left alone. Keeps the accept-only flags in sync with whatever remains.
+        _quests.RemoveAll(q => isComplete(q.Id));
+        _quests.RemoveAll(q => _acceptOnly.Contains(q.Id) && isAccepted(q.Id));
         _acceptOnly.RemoveWhere(id => _quests.All(q => q.Id != id));
     }
 
