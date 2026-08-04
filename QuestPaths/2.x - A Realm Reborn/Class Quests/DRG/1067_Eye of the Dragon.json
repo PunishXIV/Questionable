@@ -2,16 +2,11 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
-  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-06-28"},
+  "LastChecked": { "Username": "okonomiyaki", "Date": "2026-06-28" },
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
-        {
-            "TerritoryId": 133,
-            "InteractionType": "SwitchClass",
-            "TargetClass": "Lancer"
-        },
         {
           "DataId": 1000254,
           "Position": {
@@ -21,16 +16,13 @@
           },
           "TerritoryId": 133,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Lancers' Guild"
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
+              "InTerritory": [133]
             }
           }
         }
@@ -130,9 +122,7 @@
           "TerritoryId": 155,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [
-            1928
-          ],
+          "KillEnemyDataIds": [1928],
           "Fly": true,
           "CompletionQuestVariablesFlags": [
             {"Low": 2},
@@ -184,6 +174,3 @@
     }
   ]
 }
-
-
-
