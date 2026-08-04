@@ -68,16 +68,6 @@
           "Fly": true
         },
         {
-          "Position": {
-            "X": -592.1711,
-            "Y": -95.40693,
-            "Z": 322.00018
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2009879,
           "Position": {
             "X": -591.97375,
@@ -86,6 +76,7 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
+          "DisableNavmesh": true,
           "Fly": true,
           "DialogueChoices": [
             {
