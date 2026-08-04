@@ -142,7 +142,7 @@ internal static class WaitAtEnd
                    [CallerFilePath] string file = "", [CallerLineNumber] int line = 0) : ITask
     {
         public WaitDelay([CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
-            : this(TimeSpan.FromMilliseconds(250), Message: null, file: file, line: line)
+            : this(TimeSpan.FromMilliseconds(750), Message: null, file: file, line: line)
         {
         }
         public WaitDelay(TimeSpan Delay, [CallerFilePath] string file = "", [CallerLineNumber] int line = 0)

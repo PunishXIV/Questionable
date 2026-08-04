@@ -1,1 +1,1 @@
-- Change: aesthetician is also a requirement of one of the quests in the postmoogle chain -alydev
+- Bug fix maybe: increased default delay from .25 seconds back up to .75 seconds -alydev
