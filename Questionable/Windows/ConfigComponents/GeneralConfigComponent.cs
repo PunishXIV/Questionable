@@ -105,6 +105,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             { "fr",    _L("French") + " (WIP)" },
             { "de",    _L("German") + " (WIP)" },
             { "es",    _L("Spanish") + " (WIP)" },
+            { "ko",    _L("Korean") + " (WIP)" },
         };
         string language = Configuration.General.Language;
         if (ImGuiComponentsLocal.DrawSearchableCombo(_L("Language"), languages.Keys.ToArray(), languages.Values.ToArray(),

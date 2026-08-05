@@ -1040,6 +1040,7 @@
     <Key>Open Configuration</Key>
     <Value lang="ja-jp">設定を開く</Value>
     <Value lang="zh-cn">打开配置</Value>
+    <Value lang="ko">설정 열기</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigWindow.cs -->
@@ -1052,6 +1053,7 @@
     <Key>Notice</Key>
     <Value lang="ja-jp">通知</Value>
     <Value lang="zh-cn">注意</Value>
+    <Value lang="ko">알림</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\UiUtils.cs -->
@@ -1378,6 +1380,7 @@
     <Key>Duties</Key>
     <Value lang="ja-jp">コンテンツ</Value>
     <Value lang="zh-cn">副本</Value>
+    <Value lang="ko">임무</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
@@ -1486,138 +1489,161 @@
     <Key>Mount Roulette</Key>
     <Value lang="ja-jp">マウントルーレット</Value>
     <Value lang="zh-cn">随机坐骑</Value>
+    <Value lang="ko">무작위 호출</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Auto (highest level/item level)</Key>
     <Value lang="ja-jp">自動（最高レベル/アイテムレベル）</Value>
     <Value lang="zh-cn">自动（最高等级/品级）</Value>
+    <Value lang="ko">자동 (가장 높은 레벨/아이템 레벨)</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>None (manually pick quest)</Key>
     <Value lang="ja-jp">なし（手動でクエストを選択）</Value>
     <Value lang="zh-cn">无（手动选择任务）</Value>
+    <Value lang="ko">선택 안 함 (퀘스트 수동으로 받기)</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Maelstrom</Key>
     <Value lang="ja-jp">黒渦団</Value>
     <Value lang="zh-cn">黑涡团</Value>
+    <Value lang="ko">흑와단</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Twin Adder</Key>
     <Value lang="ja-jp">双蛇党</Value>
     <Value lang="zh-cn">双蛇党</Value>
+    <Value lang="ko">쌍사당</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Immortal Flames</Key>
     <Value lang="ja-jp">不滅隊</Value>
     <Value lang="zh-cn">恒辉队</Value>
+    <Value lang="ko">불멸대</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>General</Key>
     <Value lang="ja-jp">一般</Value>
     <Value lang="zh-cn">通用</Value>
+    <Value lang="ko">일반</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferred Combat Module</Key>
     <Value lang="ja-jp">優先する戦闘モジュール</Value>
     <Value lang="zh-cn">首选战斗模块</Value>
+    <Value lang="ko">선호 전투 모듈</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferred Mount</Key>
     <Value lang="ja-jp">優先するマウント</Value>
     <Value lang="zh-cn">首选坐骑</Value>
+    <Value lang="ko">선호 탈것</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferred Grand Company</Key>
     <Value lang="ja-jp">優先するグランドカンパニー</Value>
     <Value lang="zh-cn">首选大国防联军</Value>
+    <Value lang="ko">선호 총사령부</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferred Combat Job</Key>
     <Value lang="ja-jp">優先する戦闘ジョブ</Value>
     <Value lang="zh-cn">首选战斗职业</Value>
+    <Value lang="ko">선호 전투 직업</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferred Crafting Job</Key>
     <Value lang="ja-jp">優先するクラフタージョブ</Value>
     <Value lang="zh-cn">首选制作职业</Value>
+    <Value lang="ko">선호 제작자</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferred Gathering Job</Key>
     <Value lang="ja-jp">優先するギャザラージョブ</Value>
     <Value lang="zh-cn">首选采集职业</Value>
+    <Value lang="ko">선호 채집가</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Preferred Gear Upgrade Source</Key>
     <Value lang="ja-jp">優先する装備強化ソース</Value>
     <Value lang="zh-cn">首选装备升级来源</Value>
+    <Value lang="ko">선호 장비 업그레이드 방법</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>You've set Stylist to manage equipped gear, but it is not installed. Resetting to Vanilla.</Key>
     <Value lang="ja-jp">Stylistで装備を管理するよう設定されていますが、インストールされていません。デフォルトにリセットします。</Value>
     <Value lang="zh-cn">你已设置使用 Stylist 管理装备，但尚未安装。正在重置为默认。</Value>
+    <Value lang="ko">Stylist를 사용해 장비 착용을 관리하도록 설정했지만 Stylist가 설치되어있지 않습니다. 게임의 최강 장비 기능을 사용합니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Chocobo name</Key>
     <Value lang="ja-jp">チョコボの名前</Value>
     <Value lang="zh-cn">陆行鸟名称</Value>
+    <Value lang="ko">초코보 이름</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Chicken</Key>
     <Value lang="ja-jp">Chicken</Value>
     <Value lang="zh-cn">小小鸟</Value>
+    <Value lang="ko">초코보</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>The name to give your chocobo during the "My Little Chocobo" quest.</Key>
     <Value lang="ja-jp">「念願のマイチョコボ」クエスト中にチョコボに付ける名前。</Value>
     <Value lang="zh-cn">在'我的专属陆行鸟'任务中给你的陆行鸟命名。</Value>
+    <Value lang="ko">"드디어 내 초코보를!" 퀘스트 중 당신의 초코보에게 지어줄 이름입니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Defaults to "Chicken" if left blank.</Key>
     <Value lang="ja-jp">空白の場合は「Chicken」がデフォルトです。</Value>
     <Value lang="zh-cn">如果留空，默认为'小小鸟'。</Value>
+    <Value lang="ko">삭제하면 기본값인 "초코보"를 사용합니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Display name</Key>
     <Value lang="ja-jp">表示名</Value>
     <Value lang="zh-cn">显示名称</Value>
+    <Value lang="ko">표시 이름</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Anonymous</Key>
     <Value lang="ja-jp">Anonymous</Value>
     <Value lang="zh-cn">匿名</Value>
+    <Value lang="ko">Anonymous</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>The name associated with submissions to help with QST's development.</Key>
     <Value lang="ja-jp">QSTの開発に貢献する際の投稿に関連付けられる名前。</Value>
     <Value lang="zh-cn">为 QST 开发贡献时关联到投稿的名称。</Value>
+    <Value lang="ko">QST에 개발 도움 제공시 기여자 이름으로 사용할 이름</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Defaults to "Anonymous" if left blank.</Key>
     <Value lang="ja-jp">空白の場合は「Anonymous（匿名）」がデフォルトです。</Value>
     <Value lang="zh-cn">如果留空，默认为'匿名'。</Value>
+    <Value lang="ko">삭제하면 기본값인 "Anonymous"를 사용합니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
@@ -1630,54 +1656,63 @@
     <Key>Hide quest window in all instanced duties</Key>
     <Value lang="ja-jp">すべてのインスタンスコンテンツでクエストウィンドウを非表示</Value>
     <Value lang="zh-cn">在所有副本中隐藏任务窗口</Value>
+    <Value lang="ko">모든 인스턴스 임무에서 퀘스트 창 숨김</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Use ESC to cancel questing/movement</Key>
     <Value lang="ja-jp">ESCキーでクエスト/移動をキャンセル</Value>
     <Value lang="zh-cn">使用 ESC 取消任务/移动</Value>
+    <Value lang="ko">ESC 키를 사용해 퀘스트 진행 및 이동 취소</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Show details for incomplete seasonal events</Key>
     <Value lang="ja-jp">未完了のシーズナルイベントの詳細を表示</Value>
     <Value lang="zh-cn">显示未完成季节活动详情</Value>
+    <Value lang="ko">미완료 시즈널 이벤트 정보 표시</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Hide Sponsor button</Key>
     <Value lang="ja-jp">スポンサーボタンを非表示</Value>
     <Value lang="zh-cn">隐藏赞助按钮</Value>
+    <Value lang="ko">후원 버튼 숨김</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Questing</Key>
     <Value lang="ja-jp">クエスト実行</Value>
     <Value lang="zh-cn">任务执行</Value>
+    <Value lang="ko">퀘스트 진행</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Automatically configure TextAdvance with the recommended settings</Key>
     <Value lang="ja-jp">TextAdvanceを推奨設定で自動設定</Value>
     <Value lang="zh-cn">使用推荐设置自动配置 TextAdvance</Value>
+    <Value lang="ko">TextAdvance의 설정을 권장값으로 자동 변경</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>but don't skip cutscenes or dialogue</Key>
     <Value lang="ja-jp">カットシーンやセリフはスキップしない</Value>
     <Value lang="zh-cn">但不跳过过场动画或对话</Value>
+    <Value lang="ko">동영상이나 대사는 건너뛰지 않음</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>and don't show which answer we would have picked for you</Key>
     <Value lang="ja-jp">自動選択される回答を表示しない</Value>
     <Value lang="zh-cn">且不显示自动选择的回答</Value>
+    <Value lang="ko">플러그인이 선택한 대답 보여주지 않음</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Unlock certain optional dungeons and raids (instead of waiting for completion)</Key>
     <Value lang="ja-jp">特定のオプションダンジョンとレイドを（完了を待たずに）解放する</Value>
     <Value lang="zh-cn">解锁特定可选迷宫和大型任务（而不是等待完成）</Value>
+    <Value lang="ko">선택적 던전 및 레이드 잠금해제</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
@@ -1702,18 +1737,21 @@
     <Key>Use aetheryte tickets where available</Key>
     <Value lang="ja-jp">転送網利用券が使用可能な場合は使用する</Value>
     <Value lang="zh-cn">在可用时使用传送网使用券</Value>
+    <Value lang="ko">전송망 이용권 사용할 수 있을때 사용</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Ideally this should be set in the in-game Teleport settings, but is provided here for convenience.</Key>
     <Value lang="ja-jp">本来はゲーム内テレポ設定で行うべきですが、ここでも設定できます。</Value>
     <Value lang="zh-cn">正常情况下应在游戏传送设置中设置，但也可以在此处快捷设置。</Value>
+    <Value lang="ko">게임의 텔레포 설정에서 설정하는게 좋지만 편의를 위해 여기에서도 제공합니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Notifications</Key>
     <Value lang="ja-jp">通知</Value>
     <Value lang="zh-cn">通知</Value>
+    <Value lang="ko">알림</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
@@ -1825,36 +1863,42 @@
     <Key>Dependencies</Key>
     <Value lang="ja-jp">依存関係</Value>
     <Value lang="zh-cn">依赖项</Value>
+    <Value lang="ko">의존성</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>All required plugins are installed.</Key>
     <Value lang="ja-jp">必要なプラグインはすべてインストール済みです。</Value>
     <Value lang="zh-cn">已安装所有必要插件。</Value>
+    <Value lang="ko">요구되는 플러그인이 모두 설치되어 있습니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Required plugins are missing, Questionable will not work properly.</Key>
     <Value lang="ja-jp">必要なプラグインが不足しているため、Questionableは正常に動作しません。</Value>
     <Value lang="zh-cn">由于缺少必要插件，Questionable 将无法正常工作。</Value>
+    <Value lang="ko">요구되는 플러그인이 설치되어 있지 않습니다, Questionable이 제대로 작동하지 않을 수 있습니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Required plugins:</Key>
     <Value lang="ja-jp">必要なプラグイン：</Value>
     <Value lang="zh-cn">必要插件：</Value>
+    <Value lang="ko">요구 플러그인:</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Rotation/Automation plugins:</Key>
     <Value lang="ja-jp">ローテーション/自動化プラグイン：</Value>
     <Value lang="zh-cn">循环/自动化插件：</Value>
+    <Value lang="ko">로테이션/자동화 플러그인:</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>No rotation/combat plugin\n(combat must be done manually)</Key>
     <Value lang="ja-jp">ローテーション/戦闘プラグインなし\n（戦闘は手動）</Value>
     <Value lang="zh-cn">无循环/战斗插件\n（战斗须手动进行）</Value>
+    <Value lang="ko">로테이션/전투 플러그인 사용 안 함\n(전투는 수동으로 진행)</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
@@ -1867,6 +1911,7 @@
     <Key>Recommended/niche plugins:</Key>
     <Value lang="ja-jp">推奨/ニッチなプラグイン：</Value>
     <Value lang="zh-cn">推荐/小众插件：</Value>
+    <Value lang="ko">추천 플러그인:</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
@@ -1957,6 +2002,7 @@
     <Key>Quest Battles</Key>
     <Value lang="ja-jp">クエストバトル</Value>
     <Value lang="zh-cn">任务战斗</Value>
+    <Value lang="ko">퀘스트 전투</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
@@ -2083,6 +2129,7 @@
     <Key>Stop</Key>
     <Value lang="ja-jp">停止</Value>
     <Value lang="zh-cn">停止</Value>
+    <Value lang="ko">중단</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\StopConditionComponent.cs -->
@@ -2501,6 +2548,7 @@
     <Key>{0} quests loaded</Key>
     <Value lang="ja-jp">{0} 件のクエストを読み込みました</Value>
     <Value lang="zh-cn">已加载 {0} 个任务</Value>
+    <Value lang="ko">퀘스트 {0}개 불러옴</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
@@ -2585,6 +2633,7 @@
     <Key>(none)</Key>
     <Value lang="ja-jp">（なし）</Value>
     <Value lang="zh-cn">（无）</Value>
+    <Value lang="ko">(선택 안 함)</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
@@ -2795,30 +2844,35 @@
     <Key>Target: {0}</Key>
     <Value lang="ja-jp">ターゲット: {0}</Value>
     <Value lang="zh-cn">目标：{0}</Value>
+    <Value lang="ko">대상: {0}</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>  ({0}; {1}{2})</Key>
     <Value lang="ja-jp">  ({0}; {1}{2})</Value>
     <Value lang="zh-cn">  ({0}; {1}{2})</Value>
+    <Value lang="ko">  ({0}; {1}{2})</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Distance: {0:F2} ({1}y)</Key>
     <Value lang="ja-jp">距離: {0:F2} ({1}y)</Value>
     <Value lang="zh-cn">距离：{0:F2} ({1}y)</Value>
+    <Value lang="ko">거리: {0:F2} ({1}얄름)</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>Y: {0:F2}</Key>
     <Value lang="ja-jp">Y: {0:F2}</Value>
     <Value lang="zh-cn">Y：{0:F2}</Value>
+    <Value lang="ko">Y：{0:F2}</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
     <Key>To Target</Key>
     <Value lang="ja-jp">ターゲットへ</Value>
     <Value lang="zh-cn">前往目标</Value>
+    <Value lang="ko">대상으로</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
@@ -2843,6 +2897,7 @@
     <Key>Interact with your current target.</Key>
     <Value lang="ja-jp">現在のターゲットとインタラクト。</Value>
     <Value lang="zh-cn">与当前目标交互。</Value>
+    <Value lang="ko">현재 대상과 상호작용.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\CreationUtilsComponent.cs -->
@@ -2984,6 +3039,7 @@
     <Key>None</Key>
     <Value lang="ja-jp">なし</Value>
     <Value lang="zh-cn">无</Value>
+    <Value lang="ko">선택 안 함</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuestTooltipComponent.cs -->
@@ -3014,6 +3070,7 @@
     <Key>Rebuild Navmesh</Key>
     <Value lang="ja-jp">ナビメッシュを再構築</Value>
     <Value lang="zh-cn">重建导航网格</Value>
+    <Value lang="ko">Navmesh 다시빌드</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
@@ -3032,12 +3089,14 @@
     <Key>Reload Data</Key>
     <Value lang="ja-jp">データを再読み込み</Value>
     <Value lang="zh-cn">重新加载数据</Value>
+    <Value lang="ko">데이터 새로고침</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
     <Key>Stuck?</Key>
     <Value lang="ja-jp">スタックしていますか？</Value>
     <Value lang="zh-cn">卡住了？</Value>
+    <Value lang="ko">끼었나요?</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
@@ -3083,6 +3142,7 @@
     <Value lang="sq">Gjuha</Value>
     <Value lang="zh-cn">语言</Value>
     <Value lang="zh-tw">語言</Value>
+    <Value lang="ko">언어</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
@@ -3181,16 +3241,23 @@
     <Value lang="zh-cn">日语</Value>
   </Entry>
   <Entry>
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <Key>Korean</Key>
+    <Value lang="ko">한국어</Value>
+  </Entry>
+  <Entry>
     <!-- Found in: Windows\ConfigWindow.cs -->
     <Key>About</Key>
     <Value lang="ja-jp">概要</Value>
     <Value lang="zh-cn">关于</Value>
+    <Value lang="ko">정보</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Advanced</Key>
     <Value lang="ja-jp">詳細設定</Value>
     <Value lang="zh-cn">高级</Value>
+    <Value lang="ko">고급설정</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
@@ -3557,12 +3624,14 @@
     <Key>Preferences</Key>
     <Value lang="ja-jp">環境設定</Value>
     <Value lang="zh-cn">偏好设置</Value>
+    <Value lang="ko">설정</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Hide remaining tasks</Key>
     <Value lang="ja-jp">残りのタスクを非表示</Value>
     <Value lang="zh-cn">隐藏剩余任务</Value>
+    <Value lang="ko">남은 작업 숨김</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
@@ -3588,18 +3657,21 @@
     <Key>Questionable is not compatible with BossMod Reborn!</Key>
     <Value lang="ja-jp">QuestionableはBossMod Rebornと互換性がありません！</Value>
     <Value lang="zh-cn">Questionable 与 BossMod Reborn 不兼容！</Value>
+    <Value lang="ko">Questionable은 BossMod Reborn과 호환되지 않습니다!</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Stylist is not installed.</Key>
     <Value lang="ja-jp">Stylistがインストールされていません。</Value>
     <Value lang="zh-cn">Stylist 未安装。</Value>
+    <Value lang="ko">Stylist가 설치되어 있지 않습니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
     <Key>BossMod forks (such as Reborn) are NOT COMPATIBLE with Questionable.</Key>
     <Value lang="ja-jp">BossModのフォーク（Rebornなど）はQuestionableと互換性がありません。</Value>
     <Value lang="zh-cn">BossMod 分支版本（如 Reborn）与 Questionable 不兼容。</Value>
+    <Value lang="ko">BossMod 포크 (예: Reborn)는 Questionable과 호환되지 않습니다.</Value>
   </Entry>
   <Entry>
     <Key>Clicking this button writes the quest path to a file and opens it in your default text editor. After making a change, click Reload Data below.</Key>
@@ -3819,12 +3891,14 @@
     <Key>Quick Access</Key>
     <Value lang="ja-jp">クイックアクセス</Value>
     <Value lang="zh-cn">快捷操作</Value>
+    <Value lang="ko">빠른 메뉴</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestWindow.cs -->
     <Key>Path Tools</Key>
     <Value lang="ja-jp">パスツール</Value>
     <Value lang="zh-cn">路径工具</Value>
+    <Value lang="ko">경로 도구</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
@@ -3917,6 +3991,7 @@
     <Key>Interaction Type</Key>
     <Value lang="ja-jp">インタラクションタイプ</Value>
     <Value lang="zh-cn">交互类型</Value>
+    <Value lang="ko">상호작용 유형</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
@@ -4059,6 +4134,7 @@
     <Key>Remaining Tasks</Key>
     <Value lang="ja-jp">残りのタスク</Value>
     <Value lang="zh-cn">剩余任务</Value>
+    <Value lang="ko">남은 작업</Value>
   </Entry>
   <Entry>
     <!-- Found in: Data\JournalData.cs -->
@@ -4071,18 +4147,21 @@
     <Key>Use Questionable theme</Key>
     <Value lang="ja-jp">Questionableのテーマを使用</Value>
     <Value lang="zh-cn">使用 Questionable 主题</Value>
+    <Value lang="ko">Questionable 테마 사용</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>When disabled, Questionable's windows use your Dalamud style/theme instead.</Key>
     <Value lang="ja-jp">無効にすると、Questionableのウィンドウは代わりにDalamudのスタイル/テーマを使用します。</Value>
     <Value lang="zh-cn">禁用后，Questionable 的窗口将改用你的 Dalamud 风格/主题。</Value>
+    <Value lang="ko">비활성화 시 Questionable은 Dalamud의 스타일/테마를 대신 사용합니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>No supported quests</Key>
     <Value lang="ja-jp">対応しているクエストはありません</Value>
     <Value lang="zh-cn">没有支持的任务</Value>
+    <Value lang="ko">지원하는 퀘스트 없음</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\QuickAccessButtonsComponent.cs -->
