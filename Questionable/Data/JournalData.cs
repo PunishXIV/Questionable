@@ -43,7 +43,7 @@ internal sealed class JournalData
                      .ToList()
         );
         genres = genres.Append(instantGenre).ToList();
-        
+
         Genre collabQuests = genres.Where(g => g.Id.Equals(GenreCollaborationQuests)).Single();
         collabQuests.Quests.Add(((ushort[])[
             1153, 1154, 1155, 1556, // ffxiii 2013
