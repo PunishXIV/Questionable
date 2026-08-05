@@ -4296,5 +4296,7 @@
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Before each Interact, switch to the job a quest was accepted with</Key>
+    <Value lang="ja-jp">各インタラクトの前に、クエストを受注したジョブに切り替える</Value>
+    <Value lang="zh-cn">在每次交互之前，切换到接受任务时的职业</Value>
   </Entry>
 </I18N>
