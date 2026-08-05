@@ -320,7 +320,8 @@ internal static class Interact
             // So, even if a user manually interferes this allows us to resume questing with the correct class type :)
             if (Task.Quest != null &&
                 InteractionType is EInteractionType.CompleteQuest or EInteractionType.Interact &&
-                objectTable[0] is IPlayerCharacter completionPlayer)
+                objectTable[0] is IPlayerCharacter completionPlayer &&
+                configuration.General.SameJobThroughoutQuest)
             {
                 Job requiredJob = classJobUtils.LookupQuestStartJob(Task.Quest.Id);
                 if (requiredJob != Job.ADV && (Job)completionPlayer.ClassJob.Value.RowId != requiredJob)

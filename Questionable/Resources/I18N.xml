@@ -4293,4 +4293,8 @@
     <Value lang="ja-jp">前提条件が満たされていません</Value>
     <Value lang="zh-cn">前提条件未满足</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <Key>Before each Interact, switch to the job a quest was accepted with</Key>
+  </Entry>
 </I18N>
