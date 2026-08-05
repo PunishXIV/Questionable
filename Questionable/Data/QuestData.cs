@@ -71,6 +71,17 @@ internal sealed class QuestData
             // hildibrand 1 (picks up following quest, may not be ideal)
             1204
         ]).FromNumericListOfQuests();
+    public static readonly IReadOnlyList<ElementId> CollaborationQuests = (
+        (ushort[])[
+            1153, 1154, 1155, 1556, // ffxiii 2013
+            1287, // ffxi 2014
+            1288, // dqx
+            2141, // yokai
+            2206, // ffxi 2015
+            3158, 3159, 3160, // ffxv
+            4796, 4797, 4798, // ffxvi
+            4801, // fall guys
+        ]).FromNumericListOfQuests();
 
     private static readonly IReadOnlyList<uint> TankRoleQuestChapters = [136, 154, 178];
     private static readonly IReadOnlyList<uint> HealerRoleQuestChapters = [137, 155, 179];

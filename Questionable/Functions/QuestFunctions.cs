@@ -763,9 +763,12 @@ internal sealed unsafe class QuestFunctions
             5469 => AllMountsUnlocked(new ushort[] { 345, 346, 363, 389, 407, 422, 444 }),
             _ => true
         };
-
         if (!prerequisites)
             lockedReason.Add(_LF("Prerequisites not met"), value: true);
+
+        if (!EventInfoComponent.EventQuests.Any(eq => eq.QuestIds.Contains(questId)))
+            lockedReason.Add(_L("Limited time event"), value: true);
+
         return (lockedReason.Values.Any(x => x), lockedReason.Keys.ToArray());
     }
 
