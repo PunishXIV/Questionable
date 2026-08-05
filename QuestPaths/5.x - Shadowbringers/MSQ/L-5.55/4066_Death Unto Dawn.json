@@ -65,7 +65,7 @@
           "TerritoryId": 132,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
+            "Enabled": true,
             "TestedBossModVersion": "0.0.0.293",
             "Notes": [
               "(Lunar Odin) AI doesn't pull Odin to start combat",

@@ -1,2 +1,2 @@
-- Feature: add priority preset: unlock all custom deliveries -alydev
-- Feature: if resuming a quest, switch back to job with which the quest was accepted -skmagiik
+- Bug fix: auto class switching on accept was broken -alydev
+- Change: switching class to the quest accept class is now configurable (default true) -alydev

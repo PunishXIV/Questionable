@@ -68,7 +68,7 @@
           "TerritoryId": 918,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
+            "Enabled": true,
             "TestedBossModVersion": "0.0.0.292",
             "Notes": [
               "(phase 2) AI doesn't target Ardbert to start combat",

@@ -399,6 +399,13 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     }
                 }
 
+                bool sameJobThroughoutQuest = Configuration.General.SameJobThroughoutQuest;
+                if (ImGui.Checkbox(_L("Before each Interact, switch to the job a quest was accepted with"), ref sameJobThroughoutQuest))
+                {
+                    Configuration.General.SameJobThroughoutQuest = sameJobThroughoutQuest;
+                    Save();
+                }
+
                 //bool claimMail = Configuration.General.ClaimMail;
                 //if (ImGui.Checkbox(_L("Claim mail"), ref claimMail))
                 //{

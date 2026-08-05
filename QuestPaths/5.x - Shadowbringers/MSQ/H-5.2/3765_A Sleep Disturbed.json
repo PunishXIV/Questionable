@@ -78,7 +78,7 @@
           "TerritoryId": 817,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
+            "Enabled": true,
             "TestedBossModVersion": "0.0.0.292",
             "Notes": [
               "Doesn't walk to the teleporter to finish the duty"
