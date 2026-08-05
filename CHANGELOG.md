@@ -1,1 +1,2 @@
-- Feature: jp/cn translation
+- Feature: yokai event path -alydev
+- Feature: other collaboration quests added to journal progress -alydev
