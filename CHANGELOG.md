@@ -1,2 +1,1 @@
-- Feature: yokai event path -alydev
-- Feature: other collaboration quests added to journal progress -alydev
+- Bug fix: seasonal event locked reason -FrankenPoke
