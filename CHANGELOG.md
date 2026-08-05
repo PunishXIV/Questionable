@@ -1,2 +1,1 @@
-- Bug fix: auto class switching on accept was broken -alydev
-- Change: switching class to the quest accept class is now configurable (default true) -alydev
+- Feature: jp/cn translation
