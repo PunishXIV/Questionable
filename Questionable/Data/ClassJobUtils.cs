@@ -80,6 +80,7 @@ internal sealed class ClassJobUtils
             EExtendedClassJob.Sage => [Job.SGE],
             EExtendedClassJob.Viper => [Job.VPR],
             EExtendedClassJob.Pictomancer => [Job.PCT],
+            EExtendedClassJob.Beastmaster => [Job.BST],
 
             EExtendedClassJob.DoW => Enum.GetValues<Job>().Where(GameDataAdapter.DealsPhysicalDamage),
             EExtendedClassJob.DoM => Enum.GetValues<Job>().Where(GameDataAdapter.DealsMagicDamage),
@@ -116,7 +117,7 @@ internal sealed class ClassJobUtils
         else if (jobType is EExtendedClassJob.DoL)
             configuredJob = _configuration.General.GatheringJob;
         else
-            return Job.ADV;
+            return (ushort)jobType < Enum.GetNames(typeof(Job)).Length ? (Job)jobType : Job.ADV;
         ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> jobGearSets = GetJobGearSets(jobType is EExtendedClassJob.ConfiguredCombatJob);
         HashSet<Job> jobsWithGearSet = jobGearSets
             .Select(x => x.ClassJob)

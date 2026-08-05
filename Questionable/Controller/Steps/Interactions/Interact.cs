@@ -259,7 +259,7 @@ internal static class Interact
                 {
                     if (!acceptableJobs[0].IsCrafter() && !acceptableJobs[0].IsGatherer())
                     {
-                        targetJob = classJobUtils.LookupConfiguredJob(EExtendedClassJob.ConfiguredCombatJob);
+                        targetJob = configuration.General.CombatJob;
                         if (acceptableJobs.Contains(targetJob))
                             acceptableJobs = [.. acceptableJobs.Prepend(targetJob)];
                         else
@@ -268,7 +268,7 @@ internal static class Interact
                     }
                     if (acceptableJobs[0].IsCrafter())
                     {
-                        targetJob = classJobUtils.LookupConfiguredJob(EExtendedClassJob.ConfiguredCraftingJob);
+                        targetJob = configuration.General.CraftingJob;
                         if (acceptableJobs.Contains(targetJob))
                             acceptableJobs = [.. acceptableJobs.Prepend(targetJob)];
                         else
@@ -277,7 +277,7 @@ internal static class Interact
                     }
                     else if (acceptableJobs[0].IsGatherer())
                     {
-                        targetJob = classJobUtils.LookupConfiguredJob(EExtendedClassJob.ConfiguredGatheringJob);
+                        targetJob = configuration.General.GatheringJob;
                         if (acceptableJobs.Contains(targetJob))
                             acceptableJobs = [.. acceptableJobs.Prepend(targetJob)];
                         else

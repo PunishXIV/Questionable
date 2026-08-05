@@ -87,14 +87,8 @@
           "InteractionType": "SinglePlayerDuty",
           "Comment": "Estinien vs. Arch Ultima",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "TestedBossModVersion": "0.0.0.292",
-            "Notes": [
-              "AI doesn't move automatically for the first boss",
-              "AI doesn't move automatically for the dialogue with gaius on the bridge",
-              "After walking downstairs automatically, AI tries to run back towards the stairs (ignoring the arena boudnary)",
-              "After moving from the arena boundary, AI doesn't move into melee range and stops too far away when initially attacking"
-            ]
+            "Enabled": true,
+            "TestedBossModVersion": "0.0.0.292"
           },
           "$": "This doesn't have a duty confirmation dialog, so we're treating TEXT_LUCKMG110_03682_Q1_100_125 as one"
         }
