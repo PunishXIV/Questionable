@@ -31,7 +31,7 @@
           "TerritoryId": 814,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
