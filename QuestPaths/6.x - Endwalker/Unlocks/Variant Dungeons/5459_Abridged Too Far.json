@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
+  "Comment": "Unlocked after defeating all three bosses in A Merchant's Tale",
   "QuestSequence": [
     {
       "Sequence": 0,
