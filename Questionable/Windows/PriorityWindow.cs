@@ -485,6 +485,20 @@ internal sealed class PriorityWindow : LWindow
             2110,2053, // Dark Knight
             2123,2012 // Astrologian
         ]).FromNumericListOfQuests();
+        List<ElementId> unlockCustomDeliveries = ((ushort[])[
+            2095,2098,1551,                                     // zhloe aliapoh
+            2941,3005,                                          // m'naago
+            2632,2704,2705,2706,2707,3139,                      // kurenai
+            2758,3177,                                          // adkiragh
+            3603,3729,                                          // kai-shirr
+            3672,3725,3726,3727,3728,3837,3889,                 // ehll tou
+            3955,3956,3957,3958,3960,3999,4000,4001,4002,4079,  // charlemend
+            4523,                                               // ameliance
+            4715,                                               // anden
+            4815,                                               // margrat
+            5239,                                               // nitowikwe
+            5460,                                               // tiisol ja
+        ]).FromNumericListOfQuests();
         var aetherCurrents = _T<Addon>(2445);
         var roleQuests = _T<JournalCategory>(95);
         _builtInPresets = new(StringComparer.Ordinal)
@@ -496,6 +510,7 @@ internal sealed class PriorityWindow : LWindow
             [_T<JournalGenre>(94)] = QuestData.DeliveryMoogleQuests.ToList(),
             [_T<JournalCategory>(16)] = QuestData.HardModePrimals.Cast<ElementId>().ToList(),
             [_T<JournalCategory>(18)] = QuestData.CrystalTowerQuests.Cast<ElementId>().ToList(),
+            [_T<Addon>(5700)] = unlockCustomDeliveries,
             [$"{aetherCurrents}: {_T<ExVersion>(1)}"] = GetAetherCurrentQuests(397, 398, 399, 400, 401),
             [$"{aetherCurrents}: {_T<ExVersion>(2)}"] = GetAetherCurrentQuests(612, 613, 614, 620, 621, 622),
             [$"{aetherCurrents}: {_T<ExVersion>(3)}"] = GetAetherCurrentQuests(813, 814, 815, 816, 817, 818),

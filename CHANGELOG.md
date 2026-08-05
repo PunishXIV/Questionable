@@ -1,1 +1,2 @@
-- Bug fix maybe: increased default delay from .25 seconds back up to .75 seconds -alydev
+- Feature: add priority preset: unlock all custom deliveries -alydev
+- Feature: if resuming a quest, switch back to job with which the quest was accepted -skmagiik
