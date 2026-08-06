@@ -1,1 +1,1 @@
-- Bug fix: seasonal event locked reason -FrankenPoke
+- Bug fix: limit event quest lock to specific quests -alydev
