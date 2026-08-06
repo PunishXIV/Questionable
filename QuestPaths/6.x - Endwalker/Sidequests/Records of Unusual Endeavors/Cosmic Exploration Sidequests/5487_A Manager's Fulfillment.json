@@ -1,0 +1,131 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-06"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1052581,
+          "Position": {
+            "X": 27.232807,
+            "Y": -137.41669,
+            "Z": -411.65918
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1319,
+          "Fly": true,
+          "Comment": "Select the destination Auxesia (#4)",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_000",
+              "Answer": "TEXT_CTSWKSENTRANCE_00921_SYSTEM_000_005",
+              "Type": "List",
+              "ExcelSheet": "custom/009/CtsWksEntrance_00921"
+            }
+          ]
+        },
+        {
+          "DataId": 1056851,
+          "Position": {
+            "X": 282.918,
+            "Y": 205.642,
+            "Z": 353.536
+          },
+          "TerritoryId": 1319,
+          "InteractionType": "AcceptQuest",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_KINGWZ402_05487_Q1_000_000",
+              "Answer": "TEXT_KINGWZ402_05487_A1_000_001",
+              "Type": "List"
+            }
+          ],
+          "$": "auto: issuer 1056851 (Mumukko)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1056853,
+          "Position": {
+            "X": 504.326,
+            "Y": 245.25,
+            "Z": 523.857
+          },
+          "TerritoryId": 1319,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1056853 (Dylise)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1056851,
+          "Position": {
+            "X": 282.918,
+            "Y": 205.642,
+            "Z": 353.536
+          },
+          "TerritoryId": 1319,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1056851 (Mumukko); hands over ITEM0=2003831"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1056857,
+          "Position": {
+            "X": 419.699,
+            "Y": 265.412,
+            "Z": 477.623
+          },
+          "TerritoryId": 1319,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1056857 (Commandingway)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1056858,
+          "Position": {
+            "X": 420.859,
+            "Y": 265.412,
+            "Z": 476.585
+          },
+          "TerritoryId": 1319,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1056858 (Justa)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1056851,
+          "Position": {
+            "X": 282.918,
+            "Y": 205.642,
+            "Z": 353.536
+          },
+          "TerritoryId": 1319,
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1056851 (Mumukko)"
+        }
+      ]
+    }
+  ]
+}

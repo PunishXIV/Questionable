@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using Dalamud.Game.Addon.Lifecycle;
 using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.ClientState.Objects.Types;
@@ -6,6 +7,7 @@ using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
+using static Questionable.Controller.GatheringController;
 using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.GameUi;
@@ -16,7 +18,7 @@ namespace Questionable.Controller.GameUi;
 /// </summary>
 // TODO: refactor — heavy nesting (22 lines indented ≥6 levels, max indent 16 levels).
 //       High max indent likely reflects LINQ / method-chain continuations rather than control flow; verify before restructuring.
-internal sealed class DialogueChoiceHandler : IDisposable
+internal sealed partial class DialogueChoiceHandler : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;
     private readonly IGameGuiAdapter _gameGui;
@@ -35,6 +37,7 @@ internal sealed class DialogueChoiceHandler : IDisposable
     private readonly IChatGui _chatGui;
     private readonly IToastGui _toastGui;
     private readonly ILogger<DialogueChoiceHandler> _logger;
+    private readonly IDataManager _dataManager;
 
     public DialogueChoiceHandler(
         IAddonLifecycle addonLifecycle,
@@ -53,6 +56,7 @@ internal sealed class DialogueChoiceHandler : IDisposable
         IToastGui toastGui,
         DialogueReferenceResolver dialogueReferenceResolver,
         TravelDestinationResolver travelDestinationResolver,
+        IDataManager dataManager,
         ILogger<DialogueChoiceHandler> logger)
     {
         _addonLifecycle = addonLifecycle;
@@ -72,6 +76,7 @@ internal sealed class DialogueChoiceHandler : IDisposable
         _dialogueReferenceResolver = dialogueReferenceResolver;
         _travelDestinationResolver = travelDestinationResolver;
         _logger = logger;
+        _dataManager = dataManager;
 
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "SelectString", SelectStringPostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "CutSceneSelectString", CutsceneSelectStringPostSetup);
@@ -393,6 +398,7 @@ internal sealed class DialogueChoiceHandler : IDisposable
                     {
                         _logger.LogInformation("Adding {Count} dialogue choices from not accepted quest {QuestName}",
                             questChoices.Count, questInfo.Name);
+                        ReportPrompts(knownQuest);
                         dialogueChoices.AddRange(questChoices.Select(x => new DialogueChoiceInfo(knownQuest, x)));
                     }
                 }
@@ -402,6 +408,7 @@ internal sealed class DialogueChoiceHandler : IDisposable
         if (dialogueChoices.Count == 0)
         {
             _logger.LogDebug("No dialogue choices to check");
+            ReportPrompts(currentQuest?.Quest);
             return null;
         }
 
@@ -499,6 +506,30 @@ internal sealed class DialogueChoiceHandler : IDisposable
         return null;
     }
 
+    private void ReportPrompts(Quest? currentQuest)
+    {
+        if (_questController.AutomationType is QuestController.EAutomationType.Automatic && currentQuest != null)
+        {
+            Lumina.Excel.Sheets.Quest? questRow = _dataManager.GetExcelSheet<Lumina.Excel.Sheets.Quest>().GetRowOrDefault((uint)currentQuest.Id.Value + 0x10000);
+            if (questRow != null)
+            {
+                var excelSheetName = $"quest/{(currentQuest.Id.Value / 100):000}/{questRow.Value.Id}";
+                ExcelSheet<QuestDialogueText> excelSheet = _dataManager.GetExcelSheet<QuestDialogueText>(name: excelSheetName);
+                string lastPrompt = string.Empty;
+                foreach (var text in excelSheet)
+                {
+                    if (PromptRegex.IsMatch(text.Key.ToMacroString()))
+                        lastPrompt = text.Key.ToMacroString();
+                    if (AnswerRegex.IsMatch(text.Key.ToMacroString()))
+                        if (yesNoArray.Any(s => s.EqualsIgnoreCase(text.Value.ToMacroString())))
+                            _logger.LogDebug($@"{{""Prompt"":""{lastPrompt}"",""Yes"":true,""Type"":""YesNo""}}");
+                        else
+                            _logger.LogDebug($@"{text.Value.ToMacroString()} {{""Prompt"":""{lastPrompt}"",""Answer"":""{text.Key.ToMacroString()}"",""Type"":""List""}}");
+                }
+            }
+        }
+    }
+
     private int? HandleInstanceListChoice(string? actualPrompt)
     {
         string? expectedPrompt = _excelFunctions.GetDialogueTextByRowId("Addon", 2090, isRegex: false).GetString();
@@ -512,4 +543,12 @@ internal sealed class DialogueChoiceHandler : IDisposable
     }
 
     private sealed record DialogueChoiceInfo(Quest? Quest, DialogueChoice DialogueChoice);
+
+    [GeneratedRegex(@"^TEXT_.*?_\d{5}_Q\d")]
+    private static partial Regex PromptRegex { get; }
+
+    [GeneratedRegex(@"^TEXT_.*?_\d{5}_A\d")]
+    private static partial Regex AnswerRegex { get; }
+
+    internal static readonly string[] yesNoArray = new string[] { "yes", "no" };
 }

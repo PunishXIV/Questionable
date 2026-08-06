@@ -1,1 +1,2 @@
-- Bug fix: limit event quest lock to specific quests -alydev
+- Debug feature: if an unknown dialogue prompt is encountered, logs options as json blocks so they could be added to paths -alydev
+- Added: auxesia sidequests -alydev
