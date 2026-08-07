@@ -116,6 +116,7 @@ internal static class Interact
         GameFunctions gameFunctions,
         CameraFunctions cameraFunctions,
         Configuration configuration,
+        IChatGui chatGui,
         ICondition condition,
         IObjectTable objectTable,
         ClassJobUtils classJobUtils,
@@ -127,6 +128,7 @@ internal static class Interact
         private bool _needsFacing;
         private bool _needsUnmount;
         private bool _reportedGameObjNull;
+        private bool _reportedWrongJob;
         private ushort _unequipItem;
 
         /// <summary>
@@ -249,7 +251,10 @@ internal static class Interact
                 return ETaskResult.StillRunning;
             }
 
-            if (objectTable[0] is IPlayerCharacter player && Task.Quest != null && InteractionType == EInteractionType.AcceptQuest)
+            if (!_reportedWrongJob &&
+                objectTable[0] is IPlayerCharacter player &&
+                Task.Quest != null &&
+                InteractionType == EInteractionType.AcceptQuest)
             {
                 List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs];
                 Job playerJob = (Job)player.ClassJob.Value.RowId;
@@ -302,8 +307,10 @@ internal static class Interact
 
                     if (!classJobUtils.SwitchClassJob(targetJob))
                     {
-                        throw new Exception($"Quest {Task.Quest.Info.Name} requires a job like {targetJob}, " +
-                                           "but you do not have a gearset for this job or have not configured QST job preferences.");
+                        chatGui.PrintError(_LF(
+                            "Quest {0} requires a job like {1}, but you do not have a gearset for this job or have not configured QST job preferences.",
+                            Task.Quest.Info.Name, targetJob));
+                        _reportedWrongJob = true;
                     }
                     logger.LogInformation($"Switched from {playerJob} to {targetJob}");
 
@@ -318,7 +325,7 @@ internal static class Interact
             // class active, so before interacting to progress/complete an accepted quest, switch back to its
             // accept class if needed. LookupQuestStartJob returns Job.ADV for quests with no such lock.
             // So, even if a user manually interferes this allows us to resume questing with the correct class type :)
-            if (Task.Quest != null &&
+            if (!_reportedWrongJob && Task.Quest != null &&
                 InteractionType is EInteractionType.CompleteQuest or EInteractionType.Interact &&
                 objectTable[0] is IPlayerCharacter completionPlayer &&
                 configuration.General.SameJobThroughoutQuest)
@@ -326,11 +333,15 @@ internal static class Interact
                 Job requiredJob = classJobUtils.LookupQuestStartJob(Task.Quest.Id);
                 if (requiredJob != Job.ADV && (Job)completionPlayer.ClassJob.Value.RowId != requiredJob)
                 {
-                    logger.LogInformation("Quest {QuestId} must be continued as {RequiredJob}, switching from {CurrentJob}",
+                    logger.LogInformation("Quest {QuestId} should be continued as {RequiredJob}, switching from {CurrentJob}",
                         Task.Quest.Id, requiredJob, (Job)completionPlayer.ClassJob.Value.RowId);
                     if (!classJobUtils.SwitchClassJob(requiredJob))
-                        throw new Exception($"Quest {Task.Quest.Info.Name} must be continued as {requiredJob}, " +
-                                            "but you do not have a gearset for that job.");
+                    {
+                        chatGui.PrintError(_LF(
+                            "Quest {0} should be continued as {1}, but you do not have a gearset for that job.",
+                            Task.Quest.Info.Name, requiredJob));
+                        _reportedWrongJob = true;
+                    }
 
                     _continueAt = DateTime.Now.AddSeconds(0.2);
                     return ETaskResult.StillRunning;
