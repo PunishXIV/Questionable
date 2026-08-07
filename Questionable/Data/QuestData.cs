@@ -87,19 +87,19 @@ internal sealed class QuestData
     /// </summary>
     public static readonly Dictionary<EAetheryteLocation, (char Letter, ushort[] QuestIds)> AethernetUnlockQuests = new()
     {
-        [EAetheryteLocation.Gridania]     = ('g', [85, 12, 124, 546, 528]),
-        [EAetheryteLocation.Limsa]        = ('l', [108, 109, 507, 528]),
-        [EAetheryteLocation.Uldah]        = ('u', [568, 569, 570, 546, 507]),
-        [EAetheryteLocation.Ishgard]      = ('i', [1580]),
-        [EAetheryteLocation.Idyllshire]   = ('y', [1656]),
+        [EAetheryteLocation.Gridania] = ('g', [85, 12, 124, 546, 528]),
+        [EAetheryteLocation.Limsa] = ('l', [108, 109, 507, 528]),
+        [EAetheryteLocation.Uldah] = ('u', [568, 569, 570, 546, 507]),
+        [EAetheryteLocation.Ishgard] = ('i', [1580]),
+        [EAetheryteLocation.Idyllshire] = ('y', [1656]),
         [EAetheryteLocation.RhalgrsReach] = ('r', [2448]),
-        [EAetheryteLocation.Kugane]       = ('k', [2475]),
+        [EAetheryteLocation.Kugane] = ('k', [2475]),
         [EAetheryteLocation.DomanEnclave] = ('d', [3026]),
-        [EAetheryteLocation.Crystarium]   = ('c', [3282]),
-        [EAetheryteLocation.Eulmore]      = ('e', [3289]),
+        [EAetheryteLocation.Crystarium] = ('c', [3282]),
+        [EAetheryteLocation.Eulmore] = ('e', [3289]),
         [EAetheryteLocation.OldSharlayan] = ('s', [4359]),
-        [EAetheryteLocation.RadzAtHan]    = ('z', [4418]),
-        [EAetheryteLocation.Tuliyollal]   = ('t', [4878]),
+        [EAetheryteLocation.RadzAtHan] = ('z', [4418]),
+        [EAetheryteLocation.Tuliyollal] = ('t', [4878]),
         [EAetheryteLocation.SolutionNine] = ('n', [4937]),
     };
 
