@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -30,7 +31,6 @@
             "Z": 768.6426
           },
           "TerritoryId": 1189,
-          "Fly": true,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Yak T'el - Mamook",
           "RequiredQuestVariables": [null,[
