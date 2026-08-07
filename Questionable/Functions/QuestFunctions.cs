@@ -746,11 +746,20 @@ internal sealed unsafe class QuestFunctions
             lockedReason.Add(_L("Prev quest") + $" ({prevQuestCount})", value: true);
         if (!HasCompletedPreviousInstances(questInfo))
             lockedReason.Add(_L("Prev instance"), value: true);
-        if (questRegistry.TryGetQuest(questId, out Quest? quest))
+
+        if (questRegistry.TryGetQuest(questId, out Quest? quest) &&
+            GetFirstLockedAetheryte(quest) is EAetheryteLocation firstLockedAetheryte)
         {
-            EAetheryteLocation? firstLockedAetheryte = GetFirstLockedAetheryte(quest);
-            if (firstLockedAetheryte != null)
-                lockedReason.Add(_LF("Aetheryte locked: {0}", firstLockedAetheryte ?? EAetheryteLocation.None), value: true);
+            if (firstLockedAetheryte.TrySpecialAethernet(out EAetheryteLocation? cityState) &&
+                cityState is EAetheryteLocation loc)
+            {
+                if (QuestData.AethernetUnlockQuests.TryGetValue(loc, out var entry) &&
+                        !entry.QuestIds.FromNumericListOfQuests()
+                        .Any(q => q == questId || IsQuestAcceptedOrComplete(q)))
+                    lockedReason.Add(_LF($"Aethernet locked ({entry.Letter}): {{0}}", firstLockedAetheryte), value: true);
+            }
+            else
+                lockedReason.Add(_LF("Aetheryte locked: {0}", firstLockedAetheryte), value: true);
         }
 
         bool prerequisites = questId.Value switch

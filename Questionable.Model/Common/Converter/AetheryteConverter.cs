@@ -62,7 +62,10 @@ public sealed class AetheryteConverter() : EnumConverter<EAetheryteLocation>(Val
         { EAetheryteLocation.AzimSteppeReunion, "Azim Steppe - Reunion" },
         { EAetheryteLocation.AzimSteppeDawnThrone, "Azim Steppe - Dawn Throne" },
         { EAetheryteLocation.AzimSteppeDhoroIloh, "Azim Steppe - Dhoro Iloh" },
+
         { EAetheryteLocation.DomanEnclave, "Doman Enclave" },
+        { EAetheryteLocation.DomanEnclaveOneRiver, "Doman Enclave - One River" },
+        { EAetheryteLocation.DomanEnclaveGangos, "Doman Enclave - Gangos" },
 
         { EAetheryteLocation.Crystarium, "Crystarium" },
         { EAetheryteLocation.Eulmore, "Eulmore" },
