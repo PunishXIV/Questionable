@@ -1,1 +1,1 @@
-- Bug fix: assume special aethernets (shards that are not attuned during quests) are unlocked if certain quests are done -alydev
+- Bug fix: i accidentally a whole aethernet shard earlier -alydev

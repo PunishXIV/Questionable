@@ -363,6 +363,8 @@ public static class EAetheryteLocationExtensions
         EAetheryteLocation.DomanEnclaveNorthern,
         EAetheryteLocation.DomanEnclaveSouthern,
         EAetheryteLocation.DomanEnclaveDocks,
+        EAetheryteLocation.DomanEnclaveOneRiver,
+        EAetheryteLocation.DomanEnclaveGangos,
 
         EAetheryteLocation.CrystariumMarkets,
         EAetheryteLocation.CrystariumTemenosRookery,
