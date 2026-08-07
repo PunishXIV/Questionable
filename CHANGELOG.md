@@ -1,2 +1,1 @@
-- Debug feature: if an unknown dialogue prompt is encountered, logs options as json blocks so they could be added to paths -alydev
-- Added: auxesia sidequests -alydev
+- Bug fix: assume special aethernets (shards that are not attuned during quests) are unlocked if certain quests are done -alydev

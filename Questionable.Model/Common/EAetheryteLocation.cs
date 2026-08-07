@@ -284,8 +284,8 @@ public static class EAetheryteLocationExtensions
         EAetheryteLocation.GridaniaAmphitheatre,
         EAetheryteLocation.GridaniaBlueBadgerGate,
         EAetheryteLocation.GridaniaYellowSerpentGate,
-        EAetheryteLocation.GridaniaWhiteWolfGate,
         EAetheryteLocation.GridaniaAirship,
+        EAetheryteLocation.GridaniaWhiteWolfGate,
 
         EAetheryteLocation.UldahAdventurers,
         EAetheryteLocation.UldahThaumaturge,
@@ -362,9 +362,7 @@ public static class EAetheryteLocationExtensions
 
         EAetheryteLocation.DomanEnclaveNorthern,
         EAetheryteLocation.DomanEnclaveSouthern,
-        EAetheryteLocation.DomanEnclaveOneRiver,
         EAetheryteLocation.DomanEnclaveDocks,
-        EAetheryteLocation.DomanEnclaveGangos,
 
         EAetheryteLocation.CrystariumMarkets,
         EAetheryteLocation.CrystariumTemenosRookery,
@@ -434,4 +432,44 @@ public static class EAetheryteLocationExtensions
             or EAetheryteLocation.FirmamentHoarfrostHall
             or EAetheryteLocation.FirmamentWesternRisensongQuarter
             or EAetheryteLocation.FirmamentEasternRisensongQuarter;
+    public static bool TrySpecialAethernet(this EAetheryteLocation aetheryteLocation, out EAetheryteLocation? cityState)
+    {
+        cityState = aetheryteLocation switch
+        {
+            EAetheryteLocation.GridaniaBlueBadgerGate or
+                EAetheryteLocation.GridaniaYellowSerpentGate or
+                EAetheryteLocation.GridaniaAirship or
+                EAetheryteLocation.GridaniaWhiteWolfGate => (EAetheryteLocation?)EAetheryteLocation.Gridania,
+            EAetheryteLocation.LimsaZephyrGate or
+                EAetheryteLocation.LimsaTempestGate or
+                EAetheryteLocation.LimsaAirship => (EAetheryteLocation?)EAetheryteLocation.Limsa,
+            EAetheryteLocation.UldahAirship or
+                EAetheryteLocation.UldahGateOfTheSultana or
+                EAetheryteLocation.UldahGateOfNald or
+                EAetheryteLocation.UldahGateOfThal => (EAetheryteLocation?)EAetheryteLocation.Uldah,
+            EAetheryteLocation.IshgardGatesOfJudgement or
+                EAetheryteLocation.IshgardFirmament => (EAetheryteLocation?)EAetheryteLocation.Ishgard,
+            EAetheryteLocation.IdyllshirePrologueGate or
+                EAetheryteLocation.IdyllshireEpilogueGate => (EAetheryteLocation?)EAetheryteLocation.Idyllshire,
+            EAetheryteLocation.RhalgrsReachFringesGate or
+            EAetheryteLocation.RhalgrsReachPeaksGate => (EAetheryteLocation?)EAetheryteLocation.RhalgrsReach,
+            EAetheryteLocation.KuganeRubyPrice or
+                EAetheryteLocation.KuganeAirship => (EAetheryteLocation?)EAetheryteLocation.Kugane,
+            EAetheryteLocation.DomanEnclaveOneRiver or
+                EAetheryteLocation.DomanEnclaveGangos => (EAetheryteLocation?)EAetheryteLocation.DomanEnclave,
+            EAetheryteLocation.CrystariumTessellation => (EAetheryteLocation?)EAetheryteLocation.Crystarium,
+            EAetheryteLocation.EulmorePathToGlory => (EAetheryteLocation?)EAetheryteLocation.Eulmore,
+            EAetheryteLocation.OldSharlayanHallOfArtifice => (EAetheryteLocation?)EAetheryteLocation.OldSharlayan,
+            EAetheryteLocation.RadzAtHanGateOfFirstSight => (EAetheryteLocation?)EAetheryteLocation.RadzAtHan,
+            EAetheryteLocation.SolutionNineScanningPortNine => (EAetheryteLocation?)EAetheryteLocation.SolutionNine,
+            EAetheryteLocation.TuliyollalArchOfTheDawnUrqopacha or
+                EAetheryteLocation.TuliyollalArchOfTheDawnKozamauka or
+                EAetheryteLocation.TuliyollalIhuykatumu or
+                EAetheryteLocation.TuliyollalDirigibleLandingYakTel or
+                EAetheryteLocation.TuliyollalXakTuralSkygate or
+                EAetheryteLocation.TuliyollalPhantomVillage => (EAetheryteLocation?)EAetheryteLocation.Tuliyollal,
+            _ => null,
+        };
+        return cityState != null;
+    }
 }
