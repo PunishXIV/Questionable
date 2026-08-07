@@ -229,7 +229,7 @@ internal sealed class Configuration : IPluginConfiguration
         public string Language { get; set; } = "en";
         public bool HideRemainingTasks { get; set; }
         public bool ClaimMail { get; set; }
-        public bool SameJobThroughoutQuest { get; set; } = true;
+        public bool SameJobThroughoutQuest { get; set; };
     }
 
     internal sealed class StopConfiguration
