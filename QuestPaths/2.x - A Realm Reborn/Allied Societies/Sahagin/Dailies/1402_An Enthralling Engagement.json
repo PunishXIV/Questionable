@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-02"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -24,7 +24,7 @@
       "Sequence": 1,
       "Steps": [
         {
-          "$": "1 thrall",
+          "Comment": "1 thrall",
           "DataId": 1008810,
           "Position": {
             "X": -374.62427,
@@ -41,24 +41,12 @@
             2844
           ],
           "RequiredQuestVariables": [null,null,null,null,[
-            {"High": 1},{"High": 2},{"High": 3},{"High": 5},{"High": 6}
+            {"High": 1},{"High": 2},{"High": 3},{"High": 4},{"High": 5},{"High": 6}
           ],null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
-          "$": "1 normal",
-          "Position": {
-            "X": -374.62427,
-            "Y": -39.424538,
-            "Z": -351.46106
-          },
-          "TerritoryId": 138,
-          "InteractionType": "None",
-          "StopDistance": 1,
-          "Fly": true
-        },
-        {
-          "$": "2 thrall",
+          "Comment": "2 thrall",
           "DataId": 1008809,
           "Position": {
             "X": -368.58167,
@@ -73,12 +61,12 @@
             2844
           ],
           "RequiredQuestVariables": [null,null,null,null,[
-            {"High": 1},{"High": 2}
+            {"High": 1},{"High": 2},{"High": 4}
           ],null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
-          "$": "2 normal",
+          "Comment": "2 normal",
           "DataId": 1008814,
           "Position": {
             "X": -368.58167,
@@ -93,7 +81,7 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 2}]
         },
         {
-          "$": "3 thrall",
+          "Comment": "3 thrall",
           "DataId": 1008812,
           "Position": {
             "X": -363.42413,
@@ -107,22 +95,12 @@
             2844
           ],
           "RequiredQuestVariables": [null,null,null,null,[
-            {"High": 1},{"High": 2},{"High": 3},{"High": 5},{"High": 6}
+            {"High": 1},{"High": 2},{"High": 3},{"High": 4},{"High": 5},{"High": 6}
           ],null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
         },
         {
-          "$": "3 normal",
-          "Position": {
-            "X": -363.42413,
-            "Y": -39.34171,
-            "Z": -362.75275
-          },
-          "TerritoryId": 138,
-          "InteractionType": "None"
-        },
-        {
-          "$": "4 thrall",
+          "Comment": "4 thrall",
           "DataId": 1008808,
           "Position": {
             "X": -360.28082,
@@ -141,7 +119,7 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
-          "$": "4 normal",
+          "Comment": "4 normal",
           "DataId": 1008813,
           "Position": {
             "X": -360.28082,
@@ -151,12 +129,12 @@
           "TerritoryId": 138,
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
-            {"High": 2},{"High": 6}
+            {"High": 2},{"High": 4},{"High": 6}
           ],null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 4}]
         },
         {
-          "$": "5 thrall",
+          "Comment": "5 thrall",
           "DataId": 1008811,
           "Position": {
             "X": -355.3979,
@@ -170,19 +148,9 @@
             2844
           ],
           "RequiredQuestVariables": [null,null,null,null,[
-            {"High": 1},{"High": 2},{"High": 3},{"High": 5},{"High": 6}
+            {"High": 1},{"High": 2},{"High": 3},{"High": 4},{"High": 5},{"High": 6}
           ],null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
-        },
-        {
-          "$": "5 normal",
-          "Position": {
-            "X": -355.3979,
-            "Y": -38.487797,
-            "Z": -378.62213
-          },
-          "TerritoryId": 138,
-          "InteractionType": "None"
         }
       ]
     },

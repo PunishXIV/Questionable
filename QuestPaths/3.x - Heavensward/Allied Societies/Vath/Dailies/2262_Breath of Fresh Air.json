@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
-  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-13"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -9,13 +9,13 @@
         {
           "DataId": 1016803,
           "Position": {
-            "X": 57.297607,
-            "Y": -47.842846,
-            "Z": -174.63953
+            "X": 58.42009,
+            "Y": -48.000004,
+            "Z": -171.76868
           },
           "TerritoryId": 398,
           "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
+          "StopDistance": 2,
           "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
           "Fly": true
         }
@@ -77,10 +77,11 @@
         {
           "DataId": 1016803,
           "Position": {
-            "X": 57.297607,
-            "Y": -47.842846,
-            "Z": -174.63953
+            "X": 58.42009,
+            "Y": -48.000004,
+            "Z": -171.76868
           },
+          "StopDistance": 2,
           "TerritoryId": 398,
           "InteractionType": "Interact"
         }
@@ -120,10 +121,11 @@
         {
           "DataId": 1016803,
           "Position": {
-            "X": 57.297607,
-            "Y": -47.842846,
-            "Z": -174.63953
+            "X": 58.42009,
+            "Y": -48.000004,
+            "Z": -171.76868
           },
+          "StopDistance": 2,
           "TerritoryId": 398,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
