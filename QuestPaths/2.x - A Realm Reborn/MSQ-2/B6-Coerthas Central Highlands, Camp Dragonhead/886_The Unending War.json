@@ -34,6 +34,25 @@
           "TaxiStandId": 1179679
         },
         {
+          "$": "Unlock Camp Dragonhead aetheryte now so that we can TP back in case we die",
+          "TerritoryId": 155,
+          "StopDistance": 5,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Coerthas Central Highlands - Camp Dragonhead"
+        },
+        {
+          "$": "Camp Dragonhead taxi",
+          "DataId": 1006802,
+          "Position": {
+            "X": 195.81897,
+            "Y": 302.34818,
+            "Z": -167.86456
+          },
+          "TerritoryId": 155,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179680
+        },
+        {
           "TerritoryId": 155,
           "InteractionType": "EquipRecommended"
         },
