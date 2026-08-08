@@ -1,2 +1,1 @@
-- Change: switch to accepting job on interact now just notifies users that they might want to switch jobs instead of hard stopping -alydev
-- Change: switch to accepting job on interact is now opt in (does not change existing settings) -alydev
+- bug fixes: text wrap for prio quests, broken sponsor button -wah
