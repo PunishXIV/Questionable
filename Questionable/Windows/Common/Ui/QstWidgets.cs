@@ -41,6 +41,12 @@ internal static class QstWidgets
         return open;
     }
 
+    public static void BulletTextWrapped(string text)
+    {
+        ImGui.Bullet();
+        ImGui.TextWrapped(text);
+    }
+
     // Status pill in the window title bar.
     public static void TitleBarPill(string text, Vector4 color, string windowTitle)
     {
