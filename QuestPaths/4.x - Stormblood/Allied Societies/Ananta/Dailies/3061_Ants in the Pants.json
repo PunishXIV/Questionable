@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-04"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -67,11 +67,10 @@
       "Steps": [
         {
           "Position": {
-            "X": 482.93036,
-            "Y": 42.43753,
-            "Z": 350.85095
+            "X": 483.83258,
+            "Y": 60.34444,
+            "Z": 350.96707
           },
-          "StopDistance": 0.5,
           "TerritoryId": 612,
           "InteractionType": "WalkTo",
           "Mount": true,
@@ -79,11 +78,11 @@
         },
         {
           "Position": {
-            "X": 482.93036,
+            "X": 483.83258,
             "Y": 42,
-            "Z": 350.85095
+            "Z": 350.96707
           },
-          "StopDistance": 0.5,
+          "StopDistance": 0.25,
           "TerritoryId": 612,
           "InteractionType": "Combat",
           "Mount": true,
