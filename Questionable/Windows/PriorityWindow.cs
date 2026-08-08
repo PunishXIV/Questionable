@@ -82,11 +82,11 @@ internal sealed class PriorityWindow : LWindow
         {
             ImGui.TextWrapped(
                 _L("Questionable will generally try to do:"));
-            ImGui.BulletText(_L("Priority quests added below, in order"));
-            ImGui.BulletText(_L("'Priority' quests: class quests, ARR primals, ARR raids"));
-            ImGui.BulletText(
+            QstWidgets.BulletTextWrapped(_L("Priority quests added below, in order"));
+            QstWidgets.BulletTextWrapped(_L("'Priority' quests: class quests, ARR primals, ARR raids"));
+            QstWidgets.BulletTextWrapped(
                 _L("Supported quests in your 'To-Do list' (quests from your Quest Journal that are always on-screen)"));
-            ImGui.BulletText(_L("MSQ quest (if available, unless it is marked as 'ignored' in your Journal)"));
+            QstWidgets.BulletTextWrapped(_L("MSQ quest (if available, unless it is marked as 'ignored' in your Journal)"));
             ImGui.TextWrapped(
                 _L("If you don't have any active MSQ quest and there is no Priority Quest added here, " +
                 "it will always try to pick up the next quest in the MSQ first."));
