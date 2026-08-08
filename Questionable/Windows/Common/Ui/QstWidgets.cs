@@ -62,14 +62,14 @@ internal static class QstWidgets
         float width = padding.X * 2f + dotRadius * 2f + 4f * scale + textSize.X;
 
         string visibleTitle = windowTitle.Split("###")[0];
-        float titleStart = ImGui.GetFontSize() + ImGui.GetStyle().FramePadding.X
-                           + ImGui.GetStyle().ItemInnerSpacing.X;
+        float titleStart = ImGui.GetFontSize() + ImGui.GetStyle().FramePadding.X;
+        //+ ImGui.GetStyle().ItemInnerSpacing.X;
         Vector2 topLeft = new(
-            windowPos.X + titleStart + ImGui.CalcTextSize(visibleTitle).X + 8f * scale,
+            windowPos.X + titleStart + ImGui.CalcTextSize(visibleTitle).X - 3f * scale,
             windowPos.Y + (frameHeight - height) / 2f);
 
         ImDrawListPtr drawList = ImGui.GetWindowDrawList();
-        drawList.PushClipRect(windowPos, windowPos + new Vector2(windowWidth, frameHeight), false);
+        drawList.PushClipRect(windowPos, windowPos + new Vector2(windowWidth, frameHeight), intersectWithCurrentClipRect: false);
         drawList.AddRectFilled(topLeft, topLeft + new Vector2(width, height),
             QstTheme.ToU32(QstTheme.WithAlpha(color, 0.15f)), height / 2f);
         drawList.AddCircleFilled(new Vector2(topLeft.X + padding.X + dotRadius, topLeft.Y + height / 2f),
