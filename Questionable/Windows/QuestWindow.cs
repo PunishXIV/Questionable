@@ -48,7 +48,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         ConfigWindow configWindow,
         BossModIpc bossModIpc)
         : base((configuration.Advanced.Debug ? "(!) " : "") + $"QST v{PluginVersion.ToString(4)}###Questionable",
-            ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoFocusOnAppearing)
+            ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoFocusOnAppearing | ImGuiWindowFlags.NoCollapse)
     {
         _pluginInterface = pluginInterface;
         _questController = questController;
@@ -69,12 +69,24 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
 
         SizeConstraints = new WindowSizeConstraints
         {
-            MinimumSize = new(300, 30),
+            MinimumSize = new(320, 30),
             MaximumSize = default
         };
         RespectCloseHotkey = false;
-        ShowCloseButton = true;
+        ShowCloseButton = false;
         AllowClickthrough = false;
+
+        TitleBarButtons.Add(new()
+        {
+            Icon = FontAwesomeIcon.Times,
+            Priority = int.MinValue,
+            IconOffset = new(1.5f, 1),
+            Click = _ =>
+            {
+                IsOpen = false;
+            },
+            AvailableClickthrough = true
+        });
 
         _minimizeButton = new()
         {
@@ -88,7 +100,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             },
             AvailableClickthrough = true
         };
-        TitleBarButtons.Insert(0, _minimizeButton);
+        TitleBarButtons.Add(_minimizeButton);
 
         TitleBarButtons.Add(new()
         {
@@ -133,11 +145,6 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         if (isRunning && !_wasRunning)
             IsOpen = true;
         _wasRunning = isRunning;
-
-        if (isRunning)
-            Flags |= ImGuiWindowFlags.NoCollapse;
-        else
-            Flags &= ~ImGuiWindowFlags.NoCollapse;
     }
 
     public override bool DrawConditions()

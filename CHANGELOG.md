@@ -1,1 +1,1 @@
-- bug fixes: text wrap for prio quests, broken sponsor button -wah
+- bug fix: fixed title bar button overlapping hitboxes -alydev
