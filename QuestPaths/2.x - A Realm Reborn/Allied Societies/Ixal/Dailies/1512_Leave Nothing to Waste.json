@@ -162,6 +162,11 @@
       "Steps": [
         {
           "TerritoryId": 154,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "QuestStartJob"
+        },
+        {
+          "TerritoryId": 154,
           "InteractionType": "Craft",
           "ItemId": 8115,
           "ItemCount": 2

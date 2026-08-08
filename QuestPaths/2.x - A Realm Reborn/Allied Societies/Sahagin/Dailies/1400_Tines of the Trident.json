@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
   "$": "Technically does finish, but very inefficient combat targeting",
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-05"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
