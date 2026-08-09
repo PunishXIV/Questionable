@@ -109,8 +109,8 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         _minimizeButton = new()
         {
             Icon = FontAwesomeIcon.Minus,
-            Priority = int.MinValue,
-            IconOffset = new(1, 1),
+            Priority = TitleBarButtonPriority,
+            IconOffset = TitleBarIconOffset,
             Click = _ =>
             {
                 IsMinimized = !IsMinimized;
@@ -124,9 +124,9 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         TitleBarButtons.Add(new()
         {
             Icon = FontAwesomeIcon.Cog,
-            IconOffset = new(1, 1),
+            IconOffset = TitleBarIconOffset,
             Click = _ => configWindow.IsOpenAndUncollapsed = true,
-            Priority = int.MinValue,
+            Priority = TitleBarButtonPriority,
             ShowTooltip = () =>
             {
                 using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
@@ -139,9 +139,9 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             TitleBarButtons.Add(new()
             {
                 Icon = FontAwesomeIcon.Heart,
-                IconOffset = new(1, 1),
+                IconOffset = TitleBarIconOffset,
                 Click = _ => Process.Start(new ProcessStartInfo { FileName = "https://github.com/sponsors/alydevs", UseShellExecute = true }),
-                Priority = int.MinValue,
+                Priority = TitleBarButtonPriority,
                 ShowTooltip = () =>
                 {
                     using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();

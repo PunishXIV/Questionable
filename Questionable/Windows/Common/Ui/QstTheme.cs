@@ -118,6 +118,7 @@ internal static class QstTheme
                 .Push(ImGuiStyleVar.WindowPadding, new Vector2(10, 9))
                 .Push(ImGuiStyleVar.FramePadding, new Vector2(6, 4))
                 .Push(ImGuiStyleVar.ItemSpacing, new Vector2(7, 5))
+                .Push(ImGuiStyleVar.ItemInnerSpacing, new Vector2(6, 4))
                 .Push(ImGuiStyleVar.CellPadding, new Vector2(4, 4));
         }
 

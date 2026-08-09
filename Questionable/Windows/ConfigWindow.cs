@@ -52,9 +52,9 @@ internal sealed class ConfigWindow
             TitleBarButtons.Add(new()
             {
                 Icon = FontAwesomeIcon.Heart,
-                IconOffset = new(1.5f, 1),
+                IconOffset = TitleBarIconOffset,
                 Click = _ => Process.Start(new ProcessStartInfo { FileName = "https://github.com/sponsors/alydevs", UseShellExecute = true }),
-                Priority = int.MinValue,
+                Priority = TitleBarButtonPriority,
                 ShowTooltip = () =>
                 {
                     using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
