@@ -4,10 +4,13 @@ using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using Humanizer;
 using Questionable.Model.Questing;
 using Questionable.Windows.Common;
 using Questionable.Windows.Common.Ui;
+using AchievementCategory = Lumina.Excel.Sheets.AchievementCategory;
 using Addon = Lumina.Excel.Sheets.Addon;
+using BeastTribe = Lumina.Excel.Sheets.BeastTribe;
 using ExVersion = Lumina.Excel.Sheets.ExVersion;
 using JournalCategory = Lumina.Excel.Sheets.JournalCategory;
 using JournalGenre = Lumina.Excel.Sheets.JournalGenre;
@@ -511,7 +514,7 @@ internal sealed class PriorityWindow : LWindow
             [_T<JournalCategory>(16)] = QuestData.HardModePrimals.Cast<ElementId>().ToList(),
             [_T<JournalCategory>(18)] = QuestData.CrystalTowerQuests.Cast<ElementId>().ToList(),
             [_T<Addon>(5700)] = unlockCustomDeliveries,
-            ["Unlock Moogle Society"] = QuestData.UnlockMoogleSocietyQuests.ToList(),
+            [$"{_T<AchievementCategory>(37)}: {_T<BeastTribe>(8).Titleize()}"] = QuestData.UnlockMoogleSocietyQuests.ToList(),
             [$"{aetherCurrents}: {_T<ExVersion>(1)}"] = GetAetherCurrentQuests(397, 398, 399, 400, 401),
             [$"{aetherCurrents}: {_T<ExVersion>(2)}"] = GetAetherCurrentQuests(612, 613, 614, 620, 621, 622),
             [$"{aetherCurrents}: {_T<ExVersion>(3)}"] = GetAetherCurrentQuests(813, 814, 815, 816, 817, 818),
