@@ -1,0 +1,107 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Comment": "This quest path is automatically generated and untested. Please report in Discord whether it works.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1059628,
+          "Position": {
+            "X": 875.342,
+            "Y": 258.5,
+            "Z": 866.993
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "AcceptQuest",
+          "$": "auto: issuer 1059628 (Iris)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1059629,
+          "Position": {
+            "X": 0.62561,
+            "Y": 1.02011,
+            "Z": -37.2778
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Phantom Village"
+          ],
+          "$": "auto: todo location -> 1059629 (Iris)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1059632,
+          "Position": {
+            "X": 61.9692,
+            "Y": -1.37022,
+            "Z": -18.0315
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Phantom Village"
+          ],
+          "$": "auto: todo location -> 1059632 (Iris)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1059635,
+          "Position": {
+            "X": 0.79978,
+            "Y": 0.90001,
+            "Z": 14.991
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Phantom Village"
+          ],
+          "$": "auto: todo location -> 1059635 (Iris)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1059638,
+          "Position": {
+            "X": -2.23018,
+            "Y": 30.02,
+            "Z": -64.4502
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Phantom Village"
+          ],
+          "$": "auto: todo turn-in -> 1059638 (Iris)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Comment": "This quest path is automatically generated and untested. Please report in Discord whether it works.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1059640,
+          "Position": {
+            "X": -3.95461,
+            "Y": 30.02,
+            "Z": -65.864
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Phantom Village"
+          ],
+          "$": "auto: issuer 1059640 (Ketenramm)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1059627,
+          "Position": {
+            "X": 875.578,
+            "Y": 258.5,
+            "Z": 864.439
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059627 (Ketenramm)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 875.578,
+            "Y": 258.5,
+            "Z": 864.439
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "Instruction",
+          "Comment": "By continuing, you acknowledge the risk of being killed in one hit and losing Knowledge Level during automatic completion of this quest."
+        },
+        {
+          "DataId": 1059626,
+          "Position": {
+            "X": 877.365,
+            "Y": 258.5,
+            "Z": 865.178
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "Interact",
+          "$": "auto: lua ACTOR4 -> 1059626 (Archive)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1059627,
+          "Position": {
+            "X": 875.578,
+            "Y": 258.5,
+            "Z": 864.439
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059627 (Ketenramm)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2015450,
+          "Position": {
+            "X": -290.681,
+            "Y": 9.83041,
+            "Z": 424.358
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 2015450 (confluence)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1059627,
+          "Position": {
+            "X": 875.578,
+            "Y": 258.5,
+            "Z": 864.439
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1059627 (Ketenramm)"
+        }
+      ]
+    }
+  ]
+}

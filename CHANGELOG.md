@@ -1,2 +1,2 @@
-- Feature: priority preset to unlock Moogle society quests -raitono
-- Change: showing default close and collapse window buttons again until a suitable fix is figured out -alydev
+- Bug fix: title bar button spacing -wah
+- change: reduce allied society journal tab unchecked window from 30 days to 7 days -alydev
