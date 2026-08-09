@@ -1,1 +1,2 @@
-- bug fix: fixed title bar button overlapping hitboxes -alydev
+- Feature: priority preset to unlock Moogle society quests -raitono
+- Change: showing default close and collapse window buttons again until a suitable fix is figured out -alydev

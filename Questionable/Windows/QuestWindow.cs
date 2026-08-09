@@ -18,6 +18,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     private readonly IFramework _framework;
     private readonly InteractionUiController _interactionUiController;
     private readonly TitleBarButton _minimizeButton;
+    //private readonly TitleBarButton _collapseButton;
     private readonly IObjectTable _objectTable;
 
     private readonly IDalamudPluginInterface _pluginInterface;
@@ -48,7 +49,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         ConfigWindow configWindow,
         BossModIpc bossModIpc)
         : base((configuration.Advanced.Debug ? "(!) " : "") + $"QST v{PluginVersion.ToString(4)}###Questionable",
-            ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoFocusOnAppearing | ImGuiWindowFlags.NoCollapse)
+            ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoFocusOnAppearing)
     {
         _pluginInterface = pluginInterface;
         _questController = questController;
@@ -73,26 +74,43 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             MaximumSize = default
         };
         RespectCloseHotkey = false;
-        ShowCloseButton = false;
+        ShowCloseButton = true;//false;
         AllowClickthrough = false;
 
-        TitleBarButtons.Add(new()
-        {
-            Icon = FontAwesomeIcon.Times,
-            Priority = int.MinValue,
-            IconOffset = new(1.5f, 1),
-            Click = _ =>
-            {
-                IsOpen = false;
-            },
-            AvailableClickthrough = true
-        });
+        // Close button
+        //TitleBarButtons.Add(new()
+        //{
+        //    Icon = FontAwesomeIcon.Times,
+        //    Priority = int.MinValue,
+        //    IconOffset = new(1, 1),
+        //    Click = _ =>
+        //    {
+        //        IsOpen = false;
+        //    },
+        //    AvailableClickthrough = true
+        //});
 
+        // Collapse button
+        //_collapseButton = new()
+        //{
+        //    Icon = FontAwesomeIcon.ArrowDown,
+        //    Priority = int.MinValue,
+        //    IconOffset = new(1, 1),
+        //    Click = _ =>
+        //    {
+        //        Collapsed = !Collapsed ?? true;
+        //        _collapseButton!.Icon = (bool)Collapsed ? FontAwesomeIcon.ArrowRight : FontAwesomeIcon.ArrowDown;
+        //    },
+        //    AvailableClickthrough = true
+        //};
+        //TitleBarButtons.Add(_collapseButton);
+
+        // Minimize button
         _minimizeButton = new()
         {
             Icon = FontAwesomeIcon.Minus,
             Priority = int.MinValue,
-            IconOffset = new(1.5f, 1),
+            IconOffset = new(1, 1),
             Click = _ =>
             {
                 IsMinimized = !IsMinimized;
@@ -102,10 +120,11 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         };
         TitleBarButtons.Add(_minimizeButton);
 
+        // Settings button
         TitleBarButtons.Add(new()
         {
             Icon = FontAwesomeIcon.Cog,
-            IconOffset = new(1.5f, 1),
+            IconOffset = new(1, 1),
             Click = _ => configWindow.IsOpenAndUncollapsed = true,
             Priority = int.MinValue,
             ShowTooltip = () =>
@@ -115,11 +134,12 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             }
         });
 
+        // Sponsor button
         if (!_configuration.General.HideSponsorButton)
             TitleBarButtons.Add(new()
             {
                 Icon = FontAwesomeIcon.Heart,
-                IconOffset = new(1.5f, 1),
+                IconOffset = new(1, 1),
                 Click = _ => Process.Start(new ProcessStartInfo { FileName = "https://github.com/sponsors/alydevs", UseShellExecute = true }),
                 Priority = int.MinValue,
                 ShowTooltip = () =>
