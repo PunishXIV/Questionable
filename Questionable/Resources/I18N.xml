@@ -5002,21 +5002,36 @@
   <Entry>
     <!-- Found in: Controller\Steps\Interactions\Interact.cs -->
     <Key>Quest {0} requires a job like {1}, but you do not have a gearset for this job or have not configured QST job preferences.</Key>
+    <Value lang="ja-jp">クエスト {0} には {1} のようなジョブが必要ですが、このジョブのギアセットがないか、QSTのジョブ設定が構成されていません。</Value>
+	  <Value lang="zh-cn">任务 {0} 需要类似 {1} 的职业，但你没有该职业的装备套装，或者没有配置 QST 职业偏好设置。</Value>
+	  <Value lang="ko">퀘스트 {0}에는 {1}와 같은 직업이 필요하지만, 이 직업에 대한 장비 세트가 없거나 QST 직업 환경 설정이 구성되지 않았습니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\Steps\Interactions\Interact.cs -->
     <Key>Quest {0} should be continued as {1}, but you do not have a gearset for that job.</Key>
+	  <Value lang="ja-jp">クエスト {0} は {1} として続行する必要がありますが、そのジョブのギアセットがありません。</Value>
+	  <Value lang="zh-cn">任务 {0} 应该继续作为 {1}，但你没有该职业的装备套装。</Value>
+	  <Value lang="ko">퀘스트 {0}는 {1}로 계속 진행해야 하지만, 해당 직업에 대한 장비 세트가 없습니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Aethernet locked ({0}): {{1}}</Key>
+	  <Value lang="ja-jp">エーテルネットロック ({0}): {{1}}</Value>
+	  <Value lang="zh-cn">以太网锁定 ({0}): {{1}}</Value>
+	  <Value lang="ko">에테르넷 잠금 ({0}): {{1}}</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Limited time event</Key>
+	  <Value lang="ja-jp">期間限定イベント</Value>
+	  <Value lang="zh-cn">限时活动</Value>
+	  <Value lang="ko">한정 시간 이벤트</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Hide dialogue answer suggestions/notifications</Key>
+	  <Value lang="ja-jp">ダイアログの回答の提案/通知を非表示にする</Value>
+	  <Value lang="zh-cn">隐藏对话答案建议/通知</Value>
+	  <Value lang="ko">대화 답변 제안/알림 숨기기</Value>
   </Entry>
 </I18N>
