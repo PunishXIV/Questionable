@@ -71,6 +71,13 @@ internal sealed class QuestData
             // hildibrand 1 (picks up following quest, may not be ideal)
             1204
         ]).FromNumericListOfQuests();
+    public static readonly IReadOnlyList<ElementId> UnlockMoogleSocietyQuests = (
+        (ushort[])[
+            // Side quests that are pre-requisites for Moogle Society
+            1821,1824,1831,1832,1863,1864,1865,1866,1867,1868,1872,1878,1881,1882,1879,1883,1884,1880,1871,
+            // Tricks and Stones, the blue quest that unlocks the Moogle society
+            2320
+        ]).FromNumericListOfQuests();
     public static readonly IReadOnlyList<ElementId> CollaborationQuests = (
         (ushort[])[
             1153, 1154, 1155, 1556, // ffxiii 2013
