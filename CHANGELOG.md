@@ -1,2 +1,1 @@
-- Bug fix: title bar button spacing -wah
-- change: reduce allied society journal tab unchecked window from 30 days to 7 days -alydev
+- Change: dialogue answer suggestions chat message can now be toggled independently of textadvance settings -alydev

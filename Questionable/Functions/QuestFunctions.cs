@@ -756,7 +756,7 @@ internal sealed unsafe class QuestFunctions
                 if (QuestData.AethernetUnlockQuests.TryGetValue(loc, out var entry) &&
                         !entry.QuestIds.FromNumericListOfQuests()
                         .Any(q => q == questId || IsQuestAcceptedOrComplete(q)))
-                    lockedReason.Add(_LF($"Aethernet locked ({entry.Letter}): {{0}}", firstLockedAetheryte), value: true);
+                    lockedReason.Add(_LF("Aethernet locked ({0}): {{1}}", entry.Letter, firstLockedAetheryte), value: true);
             }
             else
                 lockedReason.Add(_LF("Aetheryte locked: {0}", firstLockedAetheryte), value: true);
