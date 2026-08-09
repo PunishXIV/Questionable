@@ -4,6 +4,10 @@ namespace Questionable.Windows.Common;
 
 public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiWindowFlags.None, bool forceMainWindow = false) : Window(windowName, flags, forceMainWindow)
 {
+    protected const int TitleBarButtonPriority = -100;
+
+    protected static readonly Vector2 TitleBarIconOffset = new(2, 2);
+
     private bool _initializedConfig;
     private bool _wasCollapsedLastFrame;
     private QstTheme.WindowStyleScope? _windowStyle;
