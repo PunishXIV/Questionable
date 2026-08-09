@@ -1,2 +1,1 @@
-- Feature: priority preset to unlock Moogle society quests -raitono
-- Change: showing default close and collapse window buttons again until a suitable fix is figured out -alydev
+- Change: dialogue answer suggestions chat message can now be toggled independently of textadvance settings -alydev

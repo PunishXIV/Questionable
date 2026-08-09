@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-26"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -23,6 +23,32 @@
     {
       "Sequence": 1,
       "Steps": [
+        {
+          "DataId": 2003214,
+          "Position": {
+            "X": 186.38892,
+            "Y": 8.132996,
+            "Z": 122.0874
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AfterInteraction",
+          "ComplexCombatData": [
+            {
+              "DataId": 740,
+              "NameId": 2305
+            }
+          ],
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2001196
+          },
+          "RequiredQuestVariables": [null,null,null,null,[
+              {"Low": 1}
+          ],null],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+        },
         {
           "DataId": 2003213,
           "Position": {
@@ -71,7 +97,7 @@
             "ItemId": 2001196
           },
           "RequiredQuestVariables": [null,null,null,null,[
-              {"Low": 2},{"Low": 3}
+              {"Low": 1},{"Low": 2},{"Low": 3}
           ],null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
@@ -153,8 +179,35 @@
             "ItemId": 2001196
           },
           "RequiredQuestVariables": [null,null,null,null,[
-              {"Low": 2}
-            ],null]
+              {"Low": 2},{"Low": 5}
+            ],null],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
+        },
+        {
+          "DataId": 2003218,
+          "Position": {
+            "X": 654.4746,
+            "Y": 7.1259155,
+            "Z": -66.056335
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AfterInteraction",
+          "ComplexCombatData": [
+            {
+              "DataId": 740,
+              "NameId": 2305
+            }
+          ],
+          "CombatItemUse": {
+            "Condition": "Incapacitated",
+            "ItemId": 2001196
+          },
+          "RequiredQuestVariables": [null,null,null,null,[
+              {"Low": 1}
+            ],null],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 4}]
         }
       ]
     },

@@ -22,6 +22,7 @@ internal sealed class AlliedSocietyJournalComponent
 {
     uint _unchecked;
     uint _incomplete;
+    private const int DaysUnchecked = 7;
     public void DrawAlliedSocietyQuests()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Allied Societies"));
@@ -119,7 +120,7 @@ internal sealed class AlliedSocietyJournalComponent
                         !questRegistry.TryGetQuest(x.QuestId, out Quest? quest) || // is not a valid quest in the registry, or
                         (quest.Root.Disabled && quest.Root.Comment == null) || // is disabled without a comment explaining why, or
                         (quest.Root.LastChecked.Date != null &&
-                            quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 30 && // has not been reported checked in more than 30 days, or
+                            quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > DaysUnchecked && // has not been reported checked in more than x days, or
                             !(quest.Root.Comment ?? "").Contains("FATE") // is not a FATE quest, we don't care that much
                         )
                     )
@@ -183,7 +184,7 @@ internal sealed class AlliedSocietyJournalComponent
             if (quest.Root.LastChecked.Date != null)
             {
                 lastChecked = $"({quest.Root.LastChecked.Date})";
-                if (quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 30)
+                if (quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > DaysUnchecked)
                     color = QstTheme.Accent;
             }
             else

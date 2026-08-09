@@ -1,0 +1,114 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Comment": "This quest path is automatically generated and untested. Please report in Discord whether it works.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1053611,
+          "Position": {
+            "X": -77.958374,
+            "Y": 5,
+            "Z": -15.396423
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1346,
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Phantom Village"
+          ],
+          "Comment": "This requires queueing into Occult Crescent: North Horn, so isn't started automatically"
+        },
+        {
+          "DataId": 1059627,
+          "Position": {
+            "X": 875.578,
+            "Y": 258.5,
+            "Z": 864.439
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "AcceptQuest",
+          "$": "auto: issuer 1059627 (Ketenramm)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 875.578,
+            "Y": 258.5,
+            "Z": 864.439
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "Instruction",
+          "Comment": "By continuing, you acknowledge the risk of being killed in one hit and losing Knowledge Level during automatic completion of this quest."
+        },
+        {
+          "DataId": 2015446,
+          "Position": {
+            "X": 631.86,
+            "Y": 60.55,
+            "Z": -444.95
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "Interact",
+          "$": "auto: todo area 16y from lua EOBJECT0 -> 2015446 (confluence)"
+        },
+        {
+          "DataId": 2015447,
+          "Position": {
+            "X": -325.662,
+            "Y": 106.292,
+            "Z": 828.753
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "Interact",
+          "$": "auto: todo area 19y from lua EOBJECT1 -> 2015447 (confluence)"
+        },
+        {
+          "DataId": 2015448,
+          "Position": {
+            "X": -596.407,
+            "Y": 41.159,
+            "Z": -572.474
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "Interact",
+          "$": "auto: todo area 14y from lua EOBJECT2 -> 2015448 (confluence)"
+        },
+        {
+          "DataId": 2015449,
+          "Position": {
+            "X": -170.815,
+            "Y": 3.56704,
+            "Z": 45.8729
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "Interact",
+          "$": "auto: todo area 21y from lua EOBJECT3 -> 2015449 (confluence)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1059626,
+          "Position": {
+            "X": 877.365,
+            "Y": 258.5,
+            "Z": 865.178
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1059626 (Archive)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "Comment": "This quest path is automatically generated and untested. Please report in Discord whether it works.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1059626,
+          "Position": {
+            "X": 877.365,
+            "Y": 258.5,
+            "Z": 865.178
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "AcceptQuest",
+          "$": "auto: issuer 1059626 (Archive)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1059644,
+          "Position": {
+            "X": 79.8883,
+            "Y": -11.2398,
+            "Z": 13.3601
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Phantom Village"
+          ],
+          "$": "auto: todo location -> 1059644 (Ofangeim)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1059648,
+          "Position": {
+            "X": 0.694185,
+            "Y": 0,
+            "Z": -21.1229
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Phantom Village"
+          ],
+          "$": "auto: todo location -> 1059648 (Ketenramm)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1053805,
+          "Position": {
+            "X": 193.093,
+            "Y": -17.9643,
+            "Z": 45.0256
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "$": "auto: todo location -> 1053805 (expedition messenger)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1053805,
+          "Position": {
+            "X": 193.093,
+            "Y": -17.9643,
+            "Z": 45.0256
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Tuliyollal",
+          "$": "auto: todo turn-in -> 1053805 (expedition messenger)"
+        }
+      ]
+    }
+  ]
+}

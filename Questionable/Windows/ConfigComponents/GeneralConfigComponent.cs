@@ -326,18 +326,12 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                             Save();
                         }
                     }
-                    if (dontSkipCutscenes)
-                    {
-                        using (ImRaii.PushIndent(2))
-                        {
-                            bool dontShowAnswerSuggestions = Configuration.General.DontShowAnswerSuggestions;
-                            if (ImGui.Checkbox(_L("and don't show which answer we would have picked for you"), ref dontShowAnswerSuggestions))
-                            {
-                                Configuration.General.DontShowAnswerSuggestions = dontShowAnswerSuggestions;
-                                Save();
-                            }
-                        }
-                    }
+                }
+                bool dontShowAnswerSuggestions = Configuration.General.DontShowAnswerSuggestions;
+                if (ImGui.Checkbox(_L("Hide dialogue answer suggestions/notifications"), ref dontShowAnswerSuggestions))
+                {
+                    Configuration.General.DontShowAnswerSuggestions = dontShowAnswerSuggestions;
+                    Save();
                 }
 
                 bool skipLowPriorityInstances = Configuration.General.SkipLowPriorityDuties;

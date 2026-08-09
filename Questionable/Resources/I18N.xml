@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <I18N>
   <Entry>
     <!-- Found in: Configuration.cs -->
@@ -1214,6 +1214,7 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigWindow.cs -->
+    <!-- Found in: Windows\QuestWindow.cs -->
     <Key>Sponsor QST development</Key>
     <Value lang="ja-jp">QSTの開発を支援する</Value>
     <Value lang="zh-cn">赞助 QST 开发</Value>
@@ -1273,7 +1274,7 @@
     <Key>Enabled (Default)</Key>
     <Value lang="ja-jp">有効（デフォルト）</Value>
     <Value lang="zh-cn">已启用（默认）</Value>
-	<Value lang="ko">활성화(기본값)</Value>
+    <Value lang="ko">활성화(기본값)</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\ConfigComponent.cs -->
@@ -1443,7 +1444,7 @@
     <Key>Class and job skills for A Realm Reborn, Heavensward and (for the Lv70 skills) Stormblood are locked behind quests. Not recommended if you plan on queueing for instances with duty finder/party finder.</Key>
     <Value lang="ja-jp">新生・蒼天（およびLv70スキルは紅蓮）のクラス・ジョブスキルはクエストで解放されます。コンテンツファインダー/パーティーファインダーを利用する予定がある場合は非推奨です。</Value>
     <Value lang="zh-cn">重生之境、苍穹之禁城和红莲之狂潮（70级技能）的职业/特职技能需要通过任务解锁。如果你计划使用任务搜索器/队员招募进入副本，不建议启用此选项。</Value>
-	<Value lang="ko">A Realm Reborn, Heavensward 및 (Lv70 스킬의 경우) Stormblood의 클래스 및 직업 스킬은 퀘스트를 통해 잠금 해제됩니다. 던전 찾기/파티 찾기를 사용하여 인스턴스를 큐에 넣을 계획이라면 권장하지 않습니다.</Value>
+    <Value lang="ko">A Realm Reborn, Heavensward 및 (Lv70 스킬의 경우) Stormblood의 클래스 및 직업 스킬은 퀘스트를 통해 잠금 해제됩니다. 던전 찾기/파티 찾기를 사용하여 인스턴스를 큐에 넣을 계획이라면 권장하지 않습니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
@@ -1457,21 +1458,21 @@
     <Key>Hard mode Ifrit/Garuda/Titan are required for the Patch 2.5 quest 'Good Intentions' and to start Heavensward.</Key>
     <Value lang="ja-jp">真イフリート/真ガルーダ/真タイタンはパッチ2.5クエスト「3本の柱」と蒼天への進行に必要です。</Value>
     <Value lang="zh-cn">真伊弗利特/真迦楼罗/真泰坦是补丁2.5任务「艾欧泽亚的支柱」和进入苍穹之禁城的必要条件。</Value>
-	<Value lang="ko">하드 모드 이프리트/가루다/타이탄은 패치 2.5 퀘스트 '선의' 및 Heavensward 시작에 필요합니다.</Value>
+    <Value lang="ko">하드 모드 이프리트/가루다/타이탄은 패치 2.5 퀘스트 '선의' 및 Heavensward 시작에 필요합니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Don't pick up Crystal Tower quests</Key>
     <Value lang="ja-jp">クリスタルタワークエストを受注しない</Value>
     <Value lang="zh-cn">不接取水晶塔任务</Value>
-	<Value lang="ko">크리스탈 타워 퀘스트 수락하지 않기</Value>
+    <Value lang="ko">크리스탈 타워 퀘스트 수락하지 않기</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <Key>Crystal Tower raids are required for the Patch 2.55 quest 'A Time to Every Purpose' and to start Heavensward.</Key>
     <Value lang="ja-jp">クリスタルタワーレイドはパッチ2.55クエスト「祝賀は誰のため」と蒼天への進行に必要です。</Value>
     <Value lang="zh-cn">水晶塔大型任务是补丁2.55任务「庆功会为谁而开」和进入苍穹之禁城的必要条件。</Value>
-	<Value lang="ko">크리스탈 타워 레이드는 패치 2.55 퀘스트 '모든 목적에 대한 시간' 및 Heavensward 시작에 필요합니다.</Value>
+    <Value lang="ko">크리스탈 타워 레이드는 패치 2.55 퀘스트 '모든 목적에 대한 시간' 및 Heavensward 시작에 필요합니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
@@ -1941,7 +1942,6 @@
     <Value lang="ko">동영상이나 대사는 건너뛰지 않음</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>and don't show which answer we would have picked for you</Key>
     <Value lang="ja-jp">自動選択される回答を表示しない</Value>
     <Value lang="zh-cn">且不显示自动选择的回答</Value>
@@ -2001,20 +2001,20 @@
     <Key>Enable notifications when manual interaction is required</Key>
     <Value lang="ja-jp">手動操作が必要なときに通知を有効にする</Value>
     <Value lang="zh-cn">需要手动交互时启用通知</Value>
-	<Value lang="ko">수동 상호작용이 필요할 때 알림 활성화</Value>
+    <Value lang="ko">수동 상호작용이 필요할 때 알림 활성화</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\NotificationConfigComponent.cs -->
     <Key>Chat channel</Key>
     <Value lang="ja-jp">チャットチャンネル</Value>
     <Value lang="zh-cn">聊天频道</Value>
-	<Value lang="ko">채팅 채널</Value>  
+    <Value lang="ko">채팅 채널</Value>
   </Entry>
   <Entry>
     <Key>Desktop notifications</Key>
     <Value lang="ja-jp">デスクトップ通知</Value>
     <Value lang="zh-cn">桌面通知</Value>
-	<Value lang="ko">데스크톱 알림</Value>
+    <Value lang="ko">데스크톱 알림</Value>
   </Entry>
   <Entry>
     <Key>Desktop tray and taskbar notifications are currently unavailable.</Key>
@@ -3589,21 +3589,18 @@
     <Value lang="ko">언어</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>English (Australian)</Key>
     <Value lang="ja-jp">英語（オーストラリア）</Value>
     <Value lang="zh-cn">英语（澳大利亚）</Value>
     <Value lang="ko">영어 (호주)</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Spanish</Key>
     <Value lang="ja-jp">スペイン語</Value>
     <Value lang="zh-cn">西班牙语</Value>
     <Value lang="ko">스페인어</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>French</Key>
     <Value lang="ja-jp">フランス語</Value>
     <Value lang="zh-cn">法语</Value>
@@ -3617,77 +3614,66 @@
     <Value lang="ko">중국어 (간체)</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Chinese (Traditional)</Key>
     <Value lang="ja-jp">中国語（繁体字）</Value>
     <Value lang="zh-cn">中文（繁体）</Value>
     <Value lang="ko">중국어 (번체)</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>German</Key>
     <Value lang="ja-jp">ドイツ語</Value>
     <Value lang="zh-cn">德语</Value>
     <Value lang="ko">독일어</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Afrikaans</Key>
     <Value lang="ja-jp">アフリカーンス語</Value>
     <Value lang="zh-cn">南非语</Value>
     <Value lang="ko">아프리칸스어</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Arabic</Key>
     <Value lang="ja-jp">アラビア語</Value>
     <Value lang="zh-cn">阿拉伯语</Value>
     <Value lang="ko">아랍어</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Albanian</Key>
     <Value lang="ja-jp">アルバニア語</Value>
     <Value lang="zh-cn">阿尔巴尼亚语</Value>
     <Value lang="ko">알바니아어</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Basque</Key>
     <Value lang="ja-jp">バスク語</Value>
     <Value lang="zh-cn">巴斯克语</Value>
     <Value lang="ko">바스크어</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Belarusian</Key>
     <Value lang="ja-jp">ベラルーシ語</Value>
     <Value lang="zh-cn">白俄罗斯语</Value>
     <Value lang="ko">벨라루스어</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Bulgarian</Key>
     <Value lang="ja-jp">ブルガリア語</Value>
     <Value lang="zh-cn">保加利亚语</Value>
     <Value lang="ko">불가리아어</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Catalan</Key>
     <Value lang="ja-jp">カタルーニャ語</Value>
     <Value lang="zh-cn">加泰罗尼亚语</Value>
     <Value lang="ko">카탈로니아어</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Croatian</Key>
     <Value lang="ja-jp">クロアチア語</Value>
     <Value lang="zh-cn">克罗地亚语</Value>
     <Value lang="ko">크로아티아어</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Czech</Key>
     <Value lang="ja-jp">チェコ語</Value>
     <Value lang="zh-cn">捷克语</Value>
@@ -4573,111 +4559,111 @@
     <Key>Data ID</Key>
     <Value lang="ja-jp">データID</Value>
     <Value lang="zh-cn">数据 ID</Value>
-	<Value lang="ko">데이터 ID</Value>
+    <Value lang="ko">데이터 ID</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Position</Key>
     <Value lang="ja-jp">位置</Value>
     <Value lang="zh-cn">位置</Value>
-	<Value lang="ko">위치</Value>
+    <Value lang="ko">위치</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Territory ID</Key>
     <Value lang="ja-jp">テリトリーID</Value>
     <Value lang="zh-cn">区域 ID</Value>
-	<Value lang="ko">영토 ID</Value>
+    <Value lang="ko">영토 ID</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Stop Distance</Key>
     <Value lang="ja-jp">停止距離</Value>
     <Value lang="zh-cn">停止距离</Value>
-	<Value lang="ko">정지 거리</Value>
+    <Value lang="ko">정지 거리</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Aetheryte Shortcut</Key>
     <Value lang="ja-jp">エーテライトのショートカット</Value>
     <Value lang="zh-cn">以太之光捷径</Value>
-	<Value lang="ko">에테라이트 바로가기</Value>
+    <Value lang="ko">에테라이트 바로가기</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Comment</Key>
     <Value lang="ja-jp">コメント</Value>
     <Value lang="zh-cn">备注</Value>
-	<Value lang="ko">댓글</Value>
+    <Value lang="ko">댓글</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Shown in the debug overlay</Key>
     <Value lang="ja-jp">デバッグオーバーレイに表示</Value>
     <Value lang="zh-cn">显示在调试悬浮窗中</Value>
-	<Value lang="ko">디버그 오버레이에 표시</Value>
+    <Value lang="ko">디버그 오버레이에 표시</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Fly</Key>
     <Value lang="ja-jp">飛行</Value>
     <Value lang="zh-cn">飞行</Value>
-	<Value lang="ko">비행</Value>
+    <Value lang="ko">비행</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>This interaction type usually needs a Data ID.</Key>
     <Value lang="ja-jp">このインタラクションタイプには通常データIDが必要です。</Value>
     <Value lang="zh-cn">此交互类型通常需要数据 ID。</Value>
-	<Value lang="ko">이 상호작용 유형에는 일반적으로 데이터 ID가 필요합니다.</Value>
+    <Value lang="ko">이 상호작용 유형에는 일반적으로 데이터 ID가 필요합니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>This interaction type usually needs a Position.</Key>
     <Value lang="ja-jp">このインタラクションタイプには通常位置が必要です。</Value>
     <Value lang="zh-cn">此交互类型通常需要位置。</Value>
-	<Value lang="ko">이 상호작용 유형에는 일반적으로 위치가 필요합니다.</Value>
+    <Value lang="ko">이 상호작용 유형에는 일반적으로 위치가 필요합니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Territory ID is not set.</Key>
     <Value lang="ja-jp">テリトリーIDが設定されていません。</Value>
     <Value lang="zh-cn">区域 ID 未设置。</Value>
-	<Value lang="ko">영토 ID가 설정되지 않았습니다.</Value>
+    <Value lang="ko">영토 ID가 설정되지 않았습니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Duplicate</Key>
     <Value lang="ja-jp">複製</Value>
     <Value lang="zh-cn">复制</Value>
-	<Value lang="ko">복제</Value>
+    <Value lang="ko">복제</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Delete Step</Key>
     <Value lang="ja-jp">ステップを削除</Value>
     <Value lang="zh-cn">删除步骤</Value>
-	<Value lang="ko">단계 삭제</Value>
+    <Value lang="ko">단계 삭제</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Step JSON</Key>
     <Value lang="ja-jp">ステップJSON</Value>
     <Value lang="zh-cn">步骤 JSON</Value>
-	<Value lang="ko">단계 JSON</Value>
+    <Value lang="ko">단계 JSON</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\PathEditorComponents\StepFormComponent.cs -->
     <Key>Copy this step as JSON</Key>
     <Value lang="ja-jp">このステップをJSONとしてコピー</Value>
     <Value lang="zh-cn">将此步骤复制为 JSON</Value>
-	<Value lang="ko">이 단계를 JSON으로 복사</Value>
+    <Value lang="ko">이 단계를 JSON으로 복사</Value>
   </Entry>
   <Entry>
     <Key>Left click: Open in Path Editor\nRight click: Open Quests folder</Key>
     <Value lang="ja-jp">左クリック: パスエディターで開く\n右クリック: クエストフォルダを開く</Value>
     <Value lang="zh-cn">左键单击: 在路径编辑器中打开\n右键单击: 打开任务文件夹</Value>
-	<Value lang="ko">왼쪽 클릭: 경로 편집기에서 열기\n오른쪽 클릭: 퀘스트 폴더 열기</Value>
+    <Value lang="ko">왼쪽 클릭: 경로 편집기에서 열기\n오른쪽 클릭: 퀘스트 폴더 열기</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
@@ -5012,5 +4998,25 @@
     <Value lang="ja-jp">各インタラクトの前に、クエストを受注したジョブに切り替える</Value>
     <Value lang="zh-cn">在每次交互之前，切换到接受任务时的职业</Value>
     <Value lang="ko">각 상호작용 전에 퀘스트를 수락한 직업으로 전환</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\Steps\Interactions\Interact.cs -->
+    <Key>Quest {0} requires a job like {1}, but you do not have a gearset for this job or have not configured QST job preferences.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\Steps\Interactions\Interact.cs -->
+    <Key>Quest {0} should be continued as {1}, but you do not have a gearset for that job.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Functions\QuestFunctions.cs -->
+    <Key>Aethernet locked ({0}): {{1}}</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Functions\QuestFunctions.cs -->
+    <Key>Limited time event</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <Key>Hide dialogue answer suggestions/notifications</Key>
   </Entry>
 </I18N>

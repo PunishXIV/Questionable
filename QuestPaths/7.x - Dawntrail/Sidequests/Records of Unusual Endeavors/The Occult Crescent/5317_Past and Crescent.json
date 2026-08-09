@@ -1,6 +1,7 @@
 {
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "liza",
+  "Author": "alydev",
+  "Comment": "This quest path is automatically generated and untested. Please report in Discord whether it works.",
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -22,15 +23,15 @@
           "Comment": "This requires queueing into Occult Crescent: South Horn, so isn't started automatically"
         },
         {
-          "DataId": 1053796,
+          "DataId": 1053802,
           "Position": {
-            "X": 868.10095,
-            "Y": 72.75855,
-            "Z": -677.3938
+            "X": 825.445,
+            "Y": 72.6786,
+            "Z": -676.53
           },
           "TerritoryId": 1252,
           "InteractionType": "AcceptQuest",
-          "Comment": "This requires queueing into Occult Crescent: South Horn AND equipping a phantom job, so isn't started automatically"
+          "$": "auto: issuer 1053802 (Archive)"
         }
       ]
     },
@@ -38,14 +39,15 @@
       "Sequence": 255,
       "Steps": [
         {
-          "DataId": 1053800,
+          "DataId": 1053802,
           "Position": {
-            "X": 822.8733,
-            "Y": 72.673935,
-            "Z": -678.7671
+            "X": 825.445,
+            "Y": 72.6786,
+            "Z": -676.53
           },
           "TerritoryId": 1252,
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1053802 (Archive)"
         }
       ]
     }
