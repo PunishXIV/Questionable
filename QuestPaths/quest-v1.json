@@ -1367,6 +1367,7 @@
                 "type": "string",
                 "description": "The action to use",
                 "enum": [
+                  "Return",
                   "Duty Action I",
                   "Duty Action II",
                   "Heavy Swing",

@@ -77,6 +77,26 @@
       "Sequence": 255,
       "Steps": [
         {
+          "DataId": 2015431,
+          "Position": {
+            "X": -547.2471,
+            "Y": 67.99808,
+            "Z": 594.4042
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "Interact"
+        },
+        {
+          "Position": {
+            "X": -547.2471,
+            "Y": 67.99808,
+            "Z": 594.4042
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "Instruction",
+          "Comment": "Teleport back to Base Camp"
+        },
+        {
           "DataId": 1059626,
           "Position": {
             "X": 877.365,

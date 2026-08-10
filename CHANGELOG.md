@@ -1,1 +1,2 @@
-- Change: dialogue answer suggestions chat message can now be toggled independently of textadvance settings -alydev
+- Feature: experimental Duties section in journal progress > item rewards -alydev
+- Feature: i18n -KouGithub2022

@@ -57,6 +57,7 @@
           },
           "TerritoryId": 1346,
           "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo area 16y from lua EOBJECT0 -> 2015446 (confluence)"
         },
         {
@@ -68,6 +69,7 @@
           },
           "TerritoryId": 1346,
           "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo area 19y from lua EOBJECT1 -> 2015447 (confluence)"
         },
         {
@@ -79,6 +81,7 @@
           },
           "TerritoryId": 1346,
           "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
           "$": "auto: todo area 14y from lua EOBJECT2 -> 2015448 (confluence)"
         },
         {
@@ -90,6 +93,7 @@
           },
           "TerritoryId": 1346,
           "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
           "$": "auto: todo area 21y from lua EOBJECT3 -> 2015449 (confluence)"
         }
       ]
