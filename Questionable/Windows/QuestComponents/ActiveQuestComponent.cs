@@ -755,16 +755,16 @@ internal sealed partial class ActiveQuestComponent
     public void DrawTitleBarPill(string windowTitle)
     {
         if (combatController.IsRunning)
-            QstWidgets.TitleBarPill(_L("Combat"), QstTheme.Accent, windowTitle);
+            QstWidgets.TitleBarPill(_L("Combat"), QstTheme.Accent, windowTitle, alignCenter: configuration.General.TitleBarPillCenter);
         else if (questController.IsRunning
                  && (questController.StopAfterCurrentQuest
                      || questController.StopAfterAcceptingNextQuest
                      || questController.StopBeforeTeleport))
-            QstWidgets.TitleBarPill(_L("Stopping"), QstTheme.Amber, windowTitle);
+            QstWidgets.TitleBarPill(_L("Stopping"), QstTheme.Amber, windowTitle, alignCenter: configuration.General.TitleBarPillCenter);
         else if (questController.IsRunning)
-            QstWidgets.TitleBarPill(_L("Running"), QstTheme.Success, windowTitle);
+            QstWidgets.TitleBarPill(_L("Running"), QstTheme.Success, windowTitle, alignCenter: configuration.General.TitleBarPillCenter);
         else
-            QstWidgets.TitleBarPill(_L("Idle"), QstTheme.TextMuted, windowTitle);
+            QstWidgets.TitleBarPill(_L("Idle"), QstTheme.TextMuted, windowTitle, alignCenter: configuration.General.TitleBarPillCenter);
     }
 
     private static float CalculateQuestProgress(QuestController.QuestProgress progress)

@@ -265,6 +265,11 @@ internal sealed class CommandHandler : IDisposable
                 _chatGui.Print($"{TerritoryData.GetNameAndId(tnameId)}");
                 break;
 
+            case "titlebarpill":
+                _configuration.General.TitleBarPillCenter = !_configuration.General.TitleBarPillCenter;
+                _configuration.Save();
+                break;
+
             //case "abandon-quest":
             //    if (parts.Length > 1)
             //        _questController.AbandonQuest(parts[1]);
