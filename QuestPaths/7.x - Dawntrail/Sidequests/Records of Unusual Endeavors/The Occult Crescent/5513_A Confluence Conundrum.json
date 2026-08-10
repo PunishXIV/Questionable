@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "Comment": "This quest path is automatically generated and untested. Please report in Discord whether it works.",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
   "QuestSequence": [
     {
       "Sequence": 0,

@@ -1,0 +1,164 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-11"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1058493,
+          "Position": {
+            "X": -228.802,
+            "Y": 0,
+            "Z": 120.807
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] The For'ard Cabins"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANALL410_05462_Q1_000_001",
+              "Answer": "TEXT_BANALL410_05462_A1_000_001",
+              "Type": "List"
+            }
+          ],
+          "$": "auto: issuer 1058493 (Zelihali)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1051741,
+          "Position": {
+            "X": 746.4866,
+            "Y": 15.431515,
+            "Z": -201.73956
+          },
+          "TerritoryId": 1188,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Kozama'uka - Dock Poga",
+          "$": "auto: todo location -> 1051741 (Wawkesa)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1054636,
+          "Position": {
+            "X": 506.706,
+            "Y": 142.25,
+            "Z": 800.229
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANALL410_05462_Q3_000_001",
+              "Answer": "TEXT_BANALL410_05462_A3_000_001",
+              "Type": "List"
+            }
+          ],
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
+          "$": "auto: todo location -> 1054636 (Fahrafahr); hands over ITEM0=2003816"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1054640,
+          "Position": {
+            "X": 496.11658,
+            "Y": 142.24991,
+            "Z": 801.6022
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1297
+        },
+        {
+          "DataId": 1058495,
+          "Position": {
+            "X": -0.300652,
+            "Y": 0.4,
+            "Z": 148.344
+          },
+          "TerritoryId": 1297,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1058495 (Ryoqor Terteh)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1054636,
+          "Position": {
+            "X": 506.706,
+            "Y": 142.25,
+            "Z": 800.229
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1054636 (Fahrafahr)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1052561,
+          "Position": {
+            "X": 578.149,
+            "Y": -144.885,
+            "Z": 721.85
+          },
+          "TerritoryId": 1189,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Yak T'el - Mamook",
+          "$": "auto: todo location -> 1052561 (Ruvoll Ja); hands over ITEM0=2003816"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1051710,
+          "Position": {
+            "X": 822.629,
+            "Y": 17.1026,
+            "Z": -263.203
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5463,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANALL410_05462_Q5_000_001",
+              "Answer": "TEXT_BANALL410_05462_A5_000_001",
+              "Type": "List"
+            }
+          ],
+          "AetheryteShortcut": "Kozama'uka - Dock Poga",
+          "$": "auto: todo turn-in -> 1051710 (Liplu)"
+        }
+      ]
+    }
+  ]
+}
