@@ -1,0 +1,109 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002657,
+          "Position": {
+            "X": 540.542,
+            "Y": 89,
+            "Z": -73.9988
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "$": "auto: issuer 1002657 (Moegramm)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002660,
+          "Position": {
+            "X": 541.772,
+            "Y": 83.6631,
+            "Z": -5.44751
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1002660 (X'payan)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1002661,
+          "Position": {
+            "X": 574.7669,
+            "Y": 87.49876,
+            "Z": -34.42437
+          },
+          "TerritoryId": 135,
+          "InteractionType": "UseItem",
+          "ItemId": 2000435,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo area 21y from lua ACTOR2 -> 1002661 (bolting dodo); use item ITEM0=2000435 on it"
+        },
+        {
+          "DataId": 1002687,
+          "Position": {
+            "X": 565.4558,
+            "Y": 84.45208,
+            "Z": -115.9672
+          },
+          "TerritoryId": 135,
+          "InteractionType": "UseItem",
+          "ItemId": 2000435,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo area 8y from lua ACTOR3 -> 1002687 (bolting dodo); use item ITEM0=2000435 on it"
+        },
+        {
+          "DataId": 1002688,
+          "Position": {
+            "X": 478.6772,
+            "Y": 81.15864,
+            "Z": -38.09804
+          },
+          "TerritoryId": 135,
+          "InteractionType": "UseItem",
+          "ItemId": 2000435,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo area 10y from lua ACTOR4 -> 1002688 (bolting dodo); use item ITEM0=2000435 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002657,
+          "Position": {
+            "X": 540.542,
+            "Y": 89,
+            "Z": -73.9988
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "$": "auto: todo turn-in -> 1002657 (Moegramm)"
+        }
+      ]
+    }
+  ]
+}
