@@ -48,7 +48,7 @@ internal static class QstWidgets
     }
 
     // Status pill in the window title bar.
-    public static void TitleBarPill(string text, Vector4 color, string windowTitle)
+    public static void TitleBarPill(string text, Vector4 color, string windowTitle, bool alignCenter = true)
     {
         float frameHeight = ImGui.GetFrameHeight();
         Vector2 windowPos = ImGui.GetWindowPos();
@@ -65,7 +65,7 @@ internal static class QstWidgets
         float titleStart = ImGui.GetFontSize() + ImGui.GetStyle().FramePadding.X;
         //+ ImGui.GetStyle().ItemInnerSpacing.X;
         Vector2 topLeft = new(
-            windowPos.X + titleStart + ImGui.CalcTextSize(visibleTitle).X - 3f * scale,
+            windowPos.X + titleStart + (alignCenter ? ImGui.CalcTextSize(visibleTitle).X - 3f * scale : 0f),
             windowPos.Y + (frameHeight - height) / 2f);
 
         ImDrawListPtr drawList = ImGui.GetWindowDrawList();
