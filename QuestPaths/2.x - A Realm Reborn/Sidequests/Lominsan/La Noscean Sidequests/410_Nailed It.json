@@ -1,0 +1,67 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002454,
+          "Position": {
+            "X": 284.779,
+            "Y": 6.33921,
+            "Z": 615.198
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "$": "auto: issuer 1002454 (Hezzkhezl)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -57.538162,
+            "Y": 41.046314,
+            "Z": 571.29395
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 135,
+              "MinimumKillCount": 3,
+              "RewardItemId": 2000219,
+              "RewardItemCount": 3
+            }
+          ],
+          "$": "auto: lua overworld enemies -> 135; until 3x item 2000219 drops"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002454,
+          "Position": {
+            "X": 284.779,
+            "Y": 6.33921,
+            "Z": 615.198
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "$": "auto: todo turn-in -> 1002454 (Hezzkhezl)"
+        }
+      ]
+    }
+  ]
+}

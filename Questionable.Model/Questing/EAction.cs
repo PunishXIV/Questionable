@@ -5,6 +5,7 @@ namespace Questionable.Model.Questing;
 [JsonConverter(typeof(ActionConverter))]
 public enum EAction
 {
+    Return = 8,
     DutyAction1 = 26 | 0x10000,
     DutyAction2 = 27 | 0x10000,
 

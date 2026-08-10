@@ -1,0 +1,109 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002657,
+          "Position": {
+            "X": 540.542,
+            "Y": 89,
+            "Z": -73.9988
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "$": "auto: issuer 1002657 (Moegramm)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002550,
+          "Position": {
+            "X": 484.55,
+            "Y": 80.0641,
+            "Z": -106.584
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1002550 (Chartain)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1002600,
+          "Position": {
+            "X": 477.668,
+            "Y": 80.064,
+            "Z": -97.7695
+          },
+          "TerritoryId": 135,
+          "InteractionType": "UseItem",
+          "ItemId": 2000437,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo location -> 1002600 (shaggy sheep); use item ITEM0=2000437 on it"
+        },
+        {
+          "DataId": 1002614,
+          "Position": {
+            "X": 495.87,
+            "Y": 79.1454,
+            "Z": -95.6482
+          },
+          "TerritoryId": 135,
+          "InteractionType": "UseItem",
+          "ItemId": 2000437,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo location -> 1002614 (shaggy sheep); use item ITEM0=2000437 on it"
+        },
+        {
+          "DataId": 1002611,
+          "Position": {
+            "X": 491.478,
+            "Y": 80.0334,
+            "Z": -112.474
+          },
+          "TerritoryId": 135,
+          "InteractionType": "UseItem",
+          "ItemId": 2000437,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo location -> 1002611 (shaggy sheep); use item ITEM0=2000437 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002657,
+          "Position": {
+            "X": 540.542,
+            "Y": 89,
+            "Z": -73.9988
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
+          ],
+          "NextQuestId": 480,
+          "$": "auto: todo turn-in -> 1002657 (Moegramm)"
+        }
+      ]
+    }
+  ]
+}

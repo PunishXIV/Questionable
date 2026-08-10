@@ -76,6 +76,7 @@ internal sealed class QuestInfo : IQuestInfo
         InstanceContentUnlock = (ushort)quest.InstanceContentUnlock.RowId;
         PreviousInstanceContent = quest.InstanceContent.Select(x => (ushort)x.RowId).Where(x => x != 0).ToList();
         PreviousInstanceContentJoin = (EQuestJoin)quest.InstanceContentJoin;
+        CfcUnlock = quest.InstanceContentUnlock.RowId != 0 ? quest.InstanceContentUnlock.ValueNullable?.ContentFinderCondition.ValueNullable : null;
         GrandCompany = (GrandCompany)quest.GrandCompany.RowId;
         GrandCompanyRank = (EGrandCompanyRank)quest.GrandCompanyRank.RowId;
         AlliedSociety = (EAlliedSociety)quest.BeastTribe.RowId;
@@ -111,6 +112,7 @@ internal sealed class QuestInfo : IQuestInfo
     public ImmutableList<QQuestId> QuestLocks { get; private set; }
     public EQuestJoin QuestLockJoin { get; private set; }
     public List<string> ActionUnlock { get; }
+    public ContentFinderCondition? CfcUnlock { get; }
     public ushort InstanceContentUnlock { get; }
     public List<ushort> PreviousInstanceContent { get; }
     public EQuestJoin PreviousInstanceContentJoin { get; }

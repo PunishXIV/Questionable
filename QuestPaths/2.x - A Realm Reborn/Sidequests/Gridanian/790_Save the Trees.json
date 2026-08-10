@@ -1,0 +1,157 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006248,
+          "Position": {
+            "X": -293.717,
+            "Y": -14.4056,
+            "Z": 204.261
+          },
+          "TerritoryId": 154,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: issuer 1006248 (Oriane)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2001991,
+          "Position": {
+            "X": -349.143,
+            "Y": -10.0001,
+            "Z": 221.521
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Combat",
+          "ItemId": 2000620,
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [40],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 4 }
+          ],
+          "$": "auto: lua EOBJECT1 -> 2001991 (scarred tree); spawns enemies 40; use item ITEM0=2000620 on it"
+        },
+        {
+          "DataId": 2001992,
+          "Position": {
+            "X": -250.551,
+            "Y": -24.8536,
+            "Z": 223.166
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Combat",
+          "ItemId": 2000620,
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [40],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 2 }
+          ],
+          "$": "auto: lua EOBJECT2 -> 2001992 (scarred tree); spawns enemies 40; use item ITEM0=2000620 on it"
+        },
+        {
+          "Position": {
+            "X": -280.49484,
+            "Y": -8.696266,
+            "Z": 279.5596
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                { "High": 8 }
+              ]
+            }
+          }
+        },
+        {
+          "DataId": 2001990,
+          "Position": {
+            "X": -282.277,
+            "Y": -5.83806,
+            "Z": 273.823
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Combat",
+          "DisableNavmesh": true,
+          "ItemId": 2000620,
+          "EnemySpawnType": "AfterItemUse",
+          "KillEnemyDataIds": [40],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 8 }
+          ],
+          "$": "auto: lua EOBJECT0 -> 2001990 (scarred tree); spawns enemies 40; use item ITEM0=2000620 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -280.49484,
+            "Y": -8.696266,
+            "Z": 279.5596
+          },
+          "TerritoryId": 154,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -282.277,
+                  "Y": -5.83806,
+                  "Z": 273.823
+                },
+                "TerritoryId": 154,
+                "MaximumDistance": 5
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1006248,
+          "Position": {
+            "X": -293.717,
+            "Y": -14.4056,
+            "Z": 204.261
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: todo turn-in -> 1006248 (Oriane)"
+        }
+      ]
+    }
+  ]
+}

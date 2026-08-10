@@ -8,9 +8,9 @@
         {
           "DataId": 1005419,
           "Position": {
-            "X": 61.661743,
-            "Y": 5.2003365,
-            "Z": -15.915161
+            "X": 62.116455,
+            "Y": 5.2023478,
+            "Z": -14.816568
           },
           "TerritoryId": 250,
           "InteractionType": "AcceptQuest",
@@ -24,11 +24,12 @@
         {
           "DataId": 1005418,
           "Position": {
-            "X": 112.321655,
-            "Y": 2.3101983,
-            "Z": -17.013855
+            "X": 112.67409,
+            "Y": 2.310198,
+            "Z": -14.135599
           },
           "TerritoryId": 250,
+          "DisableNavmesh": true,
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,0 +1,102 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1002231,
+          "Position": {
+            "X": 102.251,
+            "Y": 68.1552,
+            "Z": 328.939
+          },
+          "TerritoryId": 135,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
+          "$": "auto: issuer 1002231 (Doesrael)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1002447,
+          "Position": {
+            "X": 113.565,
+            "Y": 68.1552,
+            "Z": 376.228
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1002447 (Wyrstmaga)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1002449,
+          "Position": {
+            "X": 41.7608,
+            "Y": 71.3016,
+            "Z": 389.651
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Emote",
+          "Emote": "soothe",
+          "$": "auto: todo location -> 1002449 (irate coachman); todo says \"/soothe the irate coachmen.\""
+        },
+        {
+          "DataId": 1002450,
+          "Position": {
+            "X": 42.8446,
+            "Y": 71.3016,
+            "Z": 389.042
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Emote",
+          "Emote": "soothe",
+          "$": "auto: todo location -> 1002450 (irate coachman); todo says \"/soothe the irate coachmen.\""
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1002447,
+          "Position": {
+            "X": 113.565,
+            "Y": 68.1552,
+            "Z": 376.228
+          },
+          "TerritoryId": 135,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1002447 (Wyrstmaga)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002231,
+          "Position": {
+            "X": 102.251,
+            "Y": 68.1552,
+            "Z": 328.939
+          },
+          "TerritoryId": 135,
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1002231 (Doesrael)"
+        }
+      ]
+    }
+  ]
+}
