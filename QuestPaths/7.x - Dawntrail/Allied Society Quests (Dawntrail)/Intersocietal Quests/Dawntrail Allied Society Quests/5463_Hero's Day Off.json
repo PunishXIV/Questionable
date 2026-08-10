@@ -1,0 +1,180 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-11"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1051710,
+          "Position": {
+            "X": 822.629,
+            "Y": 17.1026,
+            "Z": -263.203
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Kozama'uka - Dock Poga",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANALL420_05463_Q1_000_001",
+              "Answer": "TEXT_BANALL420_05463_A1_000_001",
+              "Type": "List"
+            }
+          ],
+          "$": "auto: issuer 1051710 (Liplu)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1058503,
+          "Position": {
+            "X": 833.939,
+            "Y": 13.4497,
+            "Z": -213.192
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "$": "auto: todo location -> 1058503 (Genuhanu)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1051741,
+          "Position": {
+            "X": 746.6151,
+            "Y": 15.431517,
+            "Z": -201.82928
+          },
+          "TerritoryId": 1188,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Kozama'uka - Dock Poga",
+          "$": "auto: todo location -> 1051741 (Wawkesa)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1058504,
+          "Position": {
+            "X": 582.611,
+            "Y": -54.4927,
+            "Z": 8.24307
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Urqopacha - Wachunpelo",
+          "$": "auto: todo location -> 1058504 (Liplu); hands over ITEM0=2003817"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1058508,
+          "Position": {
+            "X": 586.797,
+            "Y": -54.6228,
+            "Z": 10.0136
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANALL420_05463_Q5_000_107",
+              "Type": "YesNo",
+              "Yes": true
+            }
+          ],
+          "$": "auto: todo location -> 1058508 (Ruvoll Ja)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1058510,
+          "Position": {
+            "X": 575.261,
+            "Y": -54.3527,
+            "Z": 13.0362
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_BANALL420_05463_Q6_000_001",
+              "Answer": "TEXT_BANALL420_05463_A6_000_001",
+              "Type": "List"
+            }
+          ],
+          "$": "auto: todo location -> 1058510 (Liplu)"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1058515,
+          "Position": {
+            "X": 552.492,
+            "Y": -54.4577,
+            "Z": 33.3884
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1058515 (Ruvoll Ja)"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1058511,
+          "Position": {
+            "X": 562.886,
+            "Y": -54.4577,
+            "Z": 32.1492
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1058511 (Fahrafahr)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058510,
+          "Position": {
+            "X": 575.261,
+            "Y": -54.3527,
+            "Z": 13.0362
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1058510 (Liplu)"
+        }
+      ]
+    }
+  ]
+}
