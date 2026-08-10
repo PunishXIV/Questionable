@@ -1,11 +1,27 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "Comment": "This quest path is automatically generated and untested. Please report in Discord whether it works.",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1053611,
+          "Position": {
+            "X": -77.958374,
+            "Y": 5,
+            "Z": -15.396423
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1346,
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Phantom Village"
+          ],
+          "Comment": "This requires queueing into Occult Crescent: North Horn, so isn't started automatically"
+        },
         {
           "DataId": 1059628,
           "Position": {
@@ -15,6 +31,7 @@
           },
           "TerritoryId": 1346,
           "InteractionType": "AcceptQuest",
+          "StopDistance": 5,
           "$": "auto: issuer 1059628 (Iris)"
         }
       ]
@@ -31,6 +48,7 @@
           },
           "TerritoryId": 1278,
           "InteractionType": "Interact",
+          "Comment": "Leave instance via Duty Finder shortcut",
           "AetheryteShortcut": "Tuliyollal",
           "AethernetShortcut": [
             "[Tuliyollal] Aetheryte Plaza",
@@ -52,11 +70,6 @@
           },
           "TerritoryId": 1278,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Phantom Village"
-          ],
           "$": "auto: todo location -> 1059632 (Iris)"
         }
       ]

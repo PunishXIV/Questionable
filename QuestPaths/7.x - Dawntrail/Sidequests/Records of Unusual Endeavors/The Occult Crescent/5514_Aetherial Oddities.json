@@ -1,7 +1,6 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "Comment": "This quest path is automatically generated and untested. Please report in Discord whether it works.",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
   "QuestSequence": [
     {
@@ -47,7 +46,7 @@
           },
           "TerritoryId": 1346,
           "InteractionType": "Instruction",
-          "Comment": "By continuing, you acknowledge the risk of being killed in one hit and losing Knowledge Level during automatic completion of this quest."
+          "Comment": "By continuing, you acknowledge the risk of being killed in one hit and losing Knowledge Level during automatic completion of this quest.\nAll steps in this quest path are for reference only and should never be left unattended."
         },
         {
           "DataId": 2015446,

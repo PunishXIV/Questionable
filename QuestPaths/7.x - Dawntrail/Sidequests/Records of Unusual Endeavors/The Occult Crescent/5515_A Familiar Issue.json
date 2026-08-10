@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "Comment": "This quest path is automatically generated and untested. Please report in Discord whether it works.",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-11"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -46,18 +46,17 @@
           },
           "TerritoryId": 1346,
           "InteractionType": "Instruction",
-          "Comment": "By continuing, you acknowledge the risk of being killed in one hit and losing Knowledge Level during automatic completion of this quest."
+          "Comment": "By continuing, you acknowledge the risk of being killed in one hit and losing Knowledge Level during automatic completion of this quest.\nAll steps in this quest path are for reference only and should never be left unattended."
         },
         {
-          "DataId": 1059626,
           "Position": {
-            "X": 877.365,
-            "Y": 258.5,
-            "Z": 865.178
+            "X": -168.8346,
+            "Y": 70.092285,
+            "Z": -840.9868
           },
           "TerritoryId": 1346,
-          "InteractionType": "Interact",
-          "$": "auto: lua ACTOR1 -> 1059626 (Archive)"
+          "InteractionType": "WaitForManualProgress",
+          "Comment": "Complete the critical engagement Lost in the Wind"
         }
       ]
     },

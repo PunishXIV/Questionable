@@ -28,6 +28,22 @@
       "Sequence": 1,
       "Steps": [
         {
+          "DataId": 1053611,
+          "Position": {
+            "X": -77.958374,
+            "Y": 5,
+            "Z": -15.396423
+          },
+          "TerritoryId": 1278,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1346,
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Phantom Village"
+          ],
+          "Comment": "This requires queueing into Occult Crescent: North Horn, so isn't started automatically"
+        },
+        {
           "DataId": 1059627,
           "Position": {
             "X": 875.578,
@@ -51,18 +67,37 @@
           },
           "TerritoryId": 1346,
           "InteractionType": "Instruction",
-          "Comment": "By continuing, you acknowledge the risk of being killed in one hit and losing Knowledge Level during automatic completion of this quest."
+          "Comment": "By continuing, you acknowledge the risk of being killed in one hit and losing Knowledge Level during automatic completion of this quest.\nAll steps in this quest path are for reference only and should never be left unattended."
         },
         {
-          "DataId": 1059626,
           "Position": {
-            "X": 877.365,
-            "Y": 258.5,
-            "Z": 865.178
+            "X": 803.04175,
+            "Y": 61.25,
+            "Z": -556.47906
           },
           "TerritoryId": 1346,
-          "InteractionType": "Interact",
-          "$": "auto: lua ACTOR4 -> 1059626 (Archive)"
+          "InteractionType": "WaitForManualProgress",
+          "Comment": "Complete critical encounter"
+        },
+        {
+          "Position": {
+            "X": -196.34914,
+            "Y": 18.200039,
+            "Z": -53.35111
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "WaitForManualProgress",
+          "Comment": "Complete critical encounter"
+        },
+        {
+          "Position": {
+            "X": -522.34454,
+            "Y": 123.4291,
+            "Z": -646.3351
+          },
+          "TerritoryId": 1346,
+          "InteractionType": "WaitForManualProgress",
+          "Comment": "Complete critical encounter"
         }
       ]
     },
