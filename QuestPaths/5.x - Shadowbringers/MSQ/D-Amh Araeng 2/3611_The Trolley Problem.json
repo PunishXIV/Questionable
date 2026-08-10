@@ -52,6 +52,46 @@
       "Sequence": 3,
       "Steps": [
         {
+          "Position": {
+            "X": -341.64484,
+            "Y": 46.191288,
+            "Z": -244.7952
+          },
+          "TerritoryId": 815,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Amh Araeng - Twine"}}
+        },
+        {
+          "DataId": 2010050,
+          "Position": {
+            "X": -343.80103,
+            "Y": 46.98242,
+            "Z": -235.43152
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818259,
+          "DisableNavmesh": true,
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Amh Araeng - Twine"}}
+        },
+        {
+          "Position": {
+            "X": -341.64484,
+            "Y": 46.191288,
+            "Z": -244.7952
+          },
+          "TerritoryId": 815,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Amh Araeng - Twine"}}
+        },
+        {
+          "TerritoryId": 815,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Amh Araeng - Twine",
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Amh Araeng - Twine"}}
+        },
+        {
           "DataId": 2009906,
           "Position": {
             "X": -0.7172241,
