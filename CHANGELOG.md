@@ -1,3 +1,1 @@
-- Feature: experimental Duties section in journal progress > item rewards -alydev
-- Feature: i18n -KouGithub2022
-- Feature: title bar pill optional realignment /qst titlebarpill -alydev
+- Feature: Moonfire Faire 2026 -alydev

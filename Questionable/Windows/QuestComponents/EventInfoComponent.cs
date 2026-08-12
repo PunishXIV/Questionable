@@ -3,7 +3,6 @@ using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
 using Humanizer;
 using Humanizer.Localisation;
-using BannerBg = Lumina.Excel.Sheets.BannerBg;
 using Questionable.Model.Questing;
 namespace Questionable.Windows.QuestComponents;
 
@@ -22,7 +21,8 @@ internal sealed class EventInfoComponent
     [
         // Add seasonal events here. If a quest has additional required quests (e.g Make It Rain > Gold Saucer), add a relation in QuestData#L220
         new(_L("Limited Time Items"), [new UnlockLinkId(568)], DateTime.MaxValue),
-        new(_T<BannerBg>(233), [new QuestId(2141)], AtDailyReset(2026, 10, 5)),
+        new(_T<Lumina.Excel.Sheets.BannerBg>(233), [new QuestId(2141)], AtDailyReset(2026, 10, 5)),
+        new(_T<Lumina.Excel.Sheets.CabinetSubCategory>(124).Replace("2025", "2026"), [new QuestId(5457)], AtDailyReset(2026, 8, 26)),
     ];
     private readonly QuestController _questController = questController;
 
@@ -38,10 +38,9 @@ internal sealed class EventInfoComponent
 
     public void Draw()
     {
-        foreach (EventQuest eventQuest in EventQuests)
+        foreach (EventQuest eventQuest in EventQuests.Where(x => x.EndsAtUtc >= DateTime.UtcNow && x.QuestIds.All(ShouldShowQuest)))
         {
-            if (IsIncomplete(eventQuest))
-                DrawEventQuest(eventQuest);
+            DrawEventQuest(eventQuest);
         }
     }
 
@@ -109,9 +108,8 @@ internal sealed class EventInfoComponent
     public IEnumerable<ElementId> GetCurrentlyActiveEventQuests()
     {
         return EventQuests
-            .Where(x => x.EndsAtUtc >= DateTime.UtcNow)
-            .SelectMany(x => x.QuestIds)
-            .Where(ShouldShowQuest);
+            .Where(x => x.EndsAtUtc >= DateTime.UtcNow && x.QuestIds.All(ShouldShowQuest))
+            .SelectMany(x => x.QuestIds);
     }
 
     private bool ShouldShowQuest(ElementId elementId)

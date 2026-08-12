@@ -48,6 +48,7 @@ internal static class LocalizeShortcut
             BannerBg bannerBg => bannerBg.Name.ToMacroString(),
             BeastTribe beastTribe => beastTribe.Name.ToMacroString(),
             AchievementCategory achievementCategory => achievementCategory.Name.ToMacroString(),
+            CabinetSubCategory cabinetSubCategory => cabinetSubCategory.Name.ToMacroString(),
             _ => throw new InvalidOperationException($"No known Name/Text mapping for {typeof(T).Name}")
         };
         _translatedStrings[(typeof(T), rowId)] = value;
