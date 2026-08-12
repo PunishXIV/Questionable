@@ -1,0 +1,189 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-12"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1058130,
+          "Position": {
+            "X": 14.3384,
+            "Y": 45.666,
+            "Z": 131.352
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "$": "auto: issuer 1058130 (Mayaru Moyaru)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 678.8558,
+            "Y": 8.175947,
+            "Z": 421.00647
+          },
+          "TerritoryId": 137,
+          "RestartNavigationIfCancelled": false,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "Fly": true
+        },
+        {
+          "DataId": 1058131,
+          "Position": {
+            "X": 777.493,
+            "Y": 39,
+            "Z": 400.942
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Mount": false,
+          "$": "auto: todo location -> 1058131 (Haermaga)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 744.2034,
+            "Y": 8.4,
+            "Z": 389.4422
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": 744.2034,
+            "Y": 10,
+            "Z": 389.4422
+          },
+          "TerritoryId": 137,
+          "InteractionType": "WalkTo",
+          "Comment": "Flying up a bit to help with pathing",
+          "Mount": true,
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2015117,
+          "Position": {
+            "X": 680.932,
+            "Y": 9.75954,
+            "Z": 275.711
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo location -> 2015117 (destination)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1058132,
+          "Position": {
+            "X": 508.537,
+            "Y": 9.03786,
+            "Z": 283.192
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo location -> 1058132 (pleasure cruise chaperone)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1058134,
+          "Position": {
+            "X": 511.406,
+            "Y": 8.90119,
+            "Z": 281.666
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_FESSUX201_05457_Q2_000_000",
+              "Answer": "TEXT_FESSUX201_05457_A2_000_000",
+              "Type": "List"
+            }
+          ],
+          "$": "auto: todo location -> 1058134 (Lho Mujuuk)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1058133,
+          "Position": {
+            "X": 510.192,
+            "Y": 9.04,
+            "Z": 281.765
+          },
+          "TerritoryId": 137,
+          "InteractionType": "Interact",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_FESSUX201_05457_SYSTEM_000_053",
+              "Yes": true,
+              "Type": "YesNo"
+            }
+          ],
+          "$": "auto: todo location -> 1058133 (Eavan)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 678.8558,
+            "Y": 8.175947,
+            "Z": 421.00647
+          },
+          "TerritoryId": 137,
+          "RestartNavigationIfCancelled": false,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1058136,
+          "Position": {
+            "X": 775.021,
+            "Y": 39,
+            "Z": 398.218
+          },
+          "TerritoryId": 137,
+          "InteractionType": "CompleteQuest",
+          "Mount": false,
+          "$": "auto: todo turn-in -> 1058136 (Haermaga)"
+        }
+      ]
+    }
+  ]
+}
