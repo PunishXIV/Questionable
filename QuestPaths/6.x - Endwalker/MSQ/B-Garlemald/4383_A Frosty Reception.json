@@ -39,6 +39,12 @@
               "Type": "YesNo",
               "Prompt": "TEXT_AKTKMB104_04383_Q1_100_049",
               "Yes": true
+            },
+            {
+              "Type": "List",
+              "ExcelSheet": "ContentTalk",
+              "Prompt": 264,
+              "Answer": 267
             }
           ]
         }
