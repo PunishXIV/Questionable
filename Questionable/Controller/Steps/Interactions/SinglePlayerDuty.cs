@@ -219,26 +219,34 @@ internal static class SinglePlayerDuty
 
                 //else if (tId == SpecialTerritories.ViperTutorial)
                 //{
-                //    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(40));
-                //    yield return new Interact.Task(17055, quest, EInteractionType.Interact, SkipMarkerCheck:true);
+                //    yield return new WaitCondition.Task(
+                //    () =>
+                //    {
+                //        if (clientState.TerritoryType != SpecialTerritories.ViperTutorial)
+                //            return true;
+                //        return !condition[ConditionFlag.SufferingStatusAffliction63];
+                //    },
+                //    "Wait(in event)");
+                //    yield return new Interact.Task(17055, quest, EInteractionType.Interact, SkipMarkerCheck: true);
                 //    yield return new SetTarget(17057);
-                //    yield return new MoveTask(SpecialTerritories.ViperTutorial, new(255.8717f, 15.075876f, 471.1717f), Mount:false);
-                //    yield return new Action.UseOnObject(17057, quest, EAction.WrithingSnap, CompletionQuestVariablesFlags:null);
-                //    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
-                //    yield return new Action.UseOnObject(17057, quest, EAction.SteelFangs, CompletionQuestVariablesFlags:null);
-                //    yield return new WaitAtEnd.WaitDelay();
-                //    yield return new Action.UseOnObject(17057, quest, EAction.WrithingSnap, CompletionQuestVariablesFlags:null);
-                //    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
-                //    yield return new Action.UseOnObject(17057, quest, EAction.HuntersSting, CompletionQuestVariablesFlags:null);
-                //    yield return new WaitAtEnd.WaitDelay();
-                //    yield return new Action.UseOnObject(17057, quest, EAction.WrithingSnap, CompletionQuestVariablesFlags:null);
-                //    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
-                //    yield return new Action.UseOnObject(17057, quest, EAction.FlankstingStrike, CompletionQuestVariablesFlags:null);
-                //    yield return new WaitAtEnd.WaitDelay();
-                //    yield return new Action.UseOnObject(17057, quest, EAction.WrithingSnap, CompletionQuestVariablesFlags:null);
-                //    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
-                //    yield return new Action.UseOnObject(17057, quest, EAction.DeathRattle, CompletionQuestVariablesFlags:null);
-                //    yield return new MoveTask(SpecialTerritories.ViperTutorial, new(251.17833f, 15.400139f, 465.84366f), Mount:false);
+                //    yield return new MoveTask(SpecialTerritories.ViperTutorial, new(255.8717f, 15.075876f, 471.1717f), Mount: false);
+                //    IEnumerable<EAction> actions = [
+                //        EAction.WrithingSnap,
+                //        EAction.SteelFangs,
+                //        EAction.WrithingSnap,
+                //        EAction.HuntersSting,
+                //        EAction.WrithingSnap,
+                //        EAction.FlankstingStrike,
+                //        EAction.WrithingSnap,
+                //        EAction.DeathRattle
+                //    ];
+                //    foreach (EAction action in actions)
+                //    {
+                //        yield return new SetTarget(17057);
+                //        yield return new ActionStep.UseOnObject(17057, quest, action, CompletionQuestVariablesFlags: null);
+                //        yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
+                //    }
+                //    yield return new MoveTask(SpecialTerritories.ViperTutorial, new(251.17833f, 15.400139f, 465.84366f), Mount: false);
                 //}
                 else
                     yield return new EnableAi(tId == SpecialTerritories.Naadam);
