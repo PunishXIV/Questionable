@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-06-21"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -138,6 +138,7 @@
         {
           "TerritoryId": 478,
           "InteractionType": "Gather",
+          "Comment": "This item is gatherable at 4am/pm ET with Perception > 690",
           "ItemsToGather": [
             {
               "ItemId": 17948,
@@ -158,8 +159,7 @@
           "AethernetShortcut": [
             "[Idyllshire] Aetheryte Plaza",
             "[Idyllshire] West Idyllshire"
-          ],
-          "Comment": "Eorzean Time: 4:00-5:59 AM/PM"
+          ]
         }
       ]
     }

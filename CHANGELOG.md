@@ -1,1 +1,1 @@
-- Feature: Moonfire Faire 2026 -alydev
+- Change: qst used to log warnings when in loading screen with no quests active. it doesn't do that anymore -alydev
