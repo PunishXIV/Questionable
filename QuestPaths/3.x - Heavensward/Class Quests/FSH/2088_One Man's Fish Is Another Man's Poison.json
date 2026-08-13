@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": ["alydev", "ShermTank"],
-  "LastChecked": { "Username": "alydev", "Date": "2026-07-13" },
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -103,6 +103,7 @@
     },
     {
       "Sequence": 4,
+      "Comment": "If you purchase the fish from the marketboard, click Skip until it is disabled, then click Play",
       "Steps": [
         {
           "Position": {

@@ -1,24 +1,20 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "Disabled": true,
   "$": "Needs spearfishing preset",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 129,
-          "InteractionType": "Instruction",
-          "Comment": "This quest path is disabled. By continuing, you acknowledge that it is currently unsupported."
-        },
-        {
           "DataId": 1000856,
           "Position": {
-            "X": -155.077,
-            "Y": 4.04358,
-            "Z": 202.716
+            "X": -154.26854,
+            "Y": 3.9999998,
+            "Z": 200.34163
           },
+          "StopDistance": 1,
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest",
           "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
@@ -116,14 +112,15 @@
       "Sequence": 5,
       "Steps": [
         {
+          "Position": {
+            "X": -592.9886,
+            "Y": -73.3602,
+            "Z": 636.4555
+          },
+          "Fly": true,
           "TerritoryId": 614,
-          "InteractionType": "Fish",
-          "ItemsToGather": [
-            {
-              "ItemId": 17951,
-              "ItemCount": 1
-            }
-          ]
+          "InteractionType": "Instruction",
+          "Comment": "1. activate Fathom if it is not automatically activated\n2. Catch 8x Ichthyosaur (Large and Extremely Fast) from Lv70 Teeming Waters\n3. 'The shadow of an elusive sea creature lurks somewhere nearby!'\n4. Catch 3x dafangshi (Average and Slow) from Lv70 Swimming Shadows (appears as a glowing node on minimap)"
         },
         {
           "DataId": 1021409,
@@ -133,6 +130,39 @@
             "Z": 513.6339
           },
           "TerritoryId": 614,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1021403,
+          "Position": {
+            "X": -750.9728,
+            "Y": 1.5792463,
+            "Z": -455.49707
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1021412,
+          "Position": {
+            "X": 359.33472,
+            "Y": -119.94289,
+            "Z": -239.27673
+          },
+          "TerritoryId": 613,
           "InteractionType": "Interact",
           "Fly": true
         }
@@ -144,10 +174,11 @@
         {
           "DataId": 1000856,
           "Position": {
-            "X": -155.077,
-            "Y": 4.04358,
-            "Z": 202.716
+            "X": -154.26854,
+            "Y": 3.9999998,
+            "Z": 200.34163
           },
+          "StopDistance": 1,
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
           "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]

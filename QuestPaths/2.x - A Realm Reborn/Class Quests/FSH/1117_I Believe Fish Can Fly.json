@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Raitono",
   "Comment": "This fish prefers Blizzard or Snow weather.\nBest chances between 08:00-14:00 ET",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -104,9 +104,9 @@
     },
     {
       "Sequence": 255,
+      "Comment": "If you purchase the fish from the marketboard, click Skip until it is disabled, then click Play",
       "Steps": [
         {
-          "Comment": "Move to fishing spot",
           "Position": {
             "X": -378.0664,
             "Y": 197.74948,

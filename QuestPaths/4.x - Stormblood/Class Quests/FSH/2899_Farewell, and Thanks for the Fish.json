@@ -1,23 +1,19 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "Disabled": true,
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 129,
-          "InteractionType": "Instruction",
-          "Comment": "This quest path is disabled. By continuing, you acknowledge that it is currently unsupported."
-        },
-        {
           "DataId": 1000856,
           "Position": {
-            "X": -155.077,
-            "Y": 4.04358,
-            "Z": 202.716
+            "X": -154.26854,
+            "Y": 3.9999998,
+            "Z": 200.34163
           },
+          "StopDistance": 1,
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest",
           "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
@@ -58,6 +54,53 @@
     {
       "Sequence": 255,
       "Steps": [
+        {
+          "Comment": "Purchase bait",
+          "DataId": 1021501,
+          "Position": {
+            "X": 93.217285,
+            "Y": 2.0871482,
+            "Z": -612.3598
+          },
+          "TerritoryId": 613,
+          "InteractionType": "PurchaseItem",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262876
+          },
+          "ItemId": 20617,
+          "ItemCount": 99,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": 152.40631,
+            "Y": 1.1855943,
+            "Z": -500.12503
+          },
+          "TerritoryId": 613,
+          "InteractionType": "Fish",
+          "StopDistance": 0.25,
+          "ItemsToGather": [
+            {
+              "ItemId": 17952,
+              "ItemCount": 5,
+              "FishingOptions": {
+                "BaitId": 20617,
+                "HookType": {"Normal": {"Legendary": true}},
+                "Preset": "AH7_GwUPACwKbGPGuC+m5B8Metc7Kgg19WhKka69a7qq2hvqmJbnUjQLHgHi879ulvJoeunzKj0FdBhzWfZ1sYSO/9/aL4tF4lYaIVrbhJZCaXtn7gxm2vR98YRqJWrckugcUiJVUjLVwUrPfMCwYkl/L23jL4E9tWXYcoH+jA/Nr5sGmWGDB5CICjXR7c4zRZw1/UsoBugLNXc3hsiNelEXbVSIXM+1R/uTPRvy4R0GET9tnRUKprZyakM9rIS6gWcalNp7MGnY9dUghNLCWQR8TE8VNHna5KQ0GaIaGI7WncHBUQNNba/mRPaZa6YDgKOl+Gi3N6DGQggSjNs3XzAqpgmLwdWzff7Vq39GyRN7N2/mnDs/CU17PRAnRbDUNMd9GyVIZ+brfgnUOLhVdLwpaUwdoDpltEojtANtw8oS1ea+bEQ9j+dFkeYsGmUFKcobivPudwHrUEc3KksOOgVNZG0c0FPDTBa8fNCgcWkZ7JDkAlqJsE7A0JiXQ/Hm1Rzdcm+q7ck1Q0/bXqH6dQYZl+dX29VqPGXdVCGIiJDBbWhgY1bYOTJr9CDyQzH6DtT/dNSXXm0YLNq70iiWnohDhLTsM9Vf/58oqjpS6DXuBzRskpnSkFqG2MtTeFkLMbRNfgRvYIiGlLapMBZvkbzI8JG98Mbudmzq2bDpW7e4mBsmQZ1W6HnjiKM/Tj/MePA24KQe0zAGYts+wKqbVT769ThVtYG54ZNq83Hoko4hJ/ajCfHwkRwxHRKnIQb+e+Ab4vF/i+ot30W1GNTYe1Mn5RbxVvui4n9PbTARyQDbHTTqNWggZ4yPt38GBrEUQf0Fo7FjnRyXCsa6EqLtRO303W9ukJLXFXnThuCmGTi84dyq+RFibFI9sBik8inK2JL5URehTHrOVauR/api2M/TLuXYtwG7ob7kNguJzpTwS18LPeNTcwJNJyPJLWxkzhjV235mpDOXTqA6o2FWfCsBVOeyPvlZaNOzQvmRoJFxtc0vErluC5OQ47prfrvTyErdjOppmxQKGqQOeUWug8IR7vWv1WI4YP0ucOfphq+rJ0dQE4TVOId9shXTzqKhHAIjFuYlhoq+IOgKAbhuVjXGP/HzF6OO2Ig6bj6FNitrRQZ9w+tqRwF7Jwq6WbBpchLttINT3zdjFXL2rqOBsy8at3kV+FsdwAHWcAZA018bRPym4gp9MhH+qXIXqQ6Hcr3lKYvPKpebKFTxuEYwbQA="
+              }
+            }
+          ],
+          "Fly": true
+        },
         {
           "DataId": 1021416,
           "Position": {

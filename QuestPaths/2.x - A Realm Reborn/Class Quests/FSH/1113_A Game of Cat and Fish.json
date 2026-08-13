@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Raitono",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -32,9 +32,9 @@
     },
     {
       "Sequence": 255,
+      "Comment": "If you purchase the fish from the marketboard, click Skip until it is disabled, then click Play",
       "Steps": [
         {
-          "Comment": "Purchase bait",
           "DataId": 1003254,
           "Position": {
             "X": -246.52553,
@@ -71,7 +71,6 @@
           }
         },
         {
-          "Comment": "Move to fishing spot",
           "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "Position": {
             "X": -33.696224,
@@ -82,7 +81,6 @@
           "InteractionType": "WalkTo"
         },
         {
-          "Comment": "Move to fishing spot",
           "Position": {
             "X": -35.700325,
             "Y": -39.77358,

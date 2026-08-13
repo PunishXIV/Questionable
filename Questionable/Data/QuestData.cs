@@ -190,6 +190,7 @@ internal sealed class QuestData
 
         _quests = quests.ToDictionary(x => x.QuestId, x => x);
 
+        AddPreviousQuest(new(2898), new(2922));
         // workaround because the game doesn't require completion of the CT questline through normal means
         AddPreviousQuest(new(425), new(495));
 

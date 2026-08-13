@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-14"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -25,10 +25,11 @@
         {
           "DataId": 1000856,
           "Position": {
-            "X": -155.077,
-            "Y": 4.04358,
-            "Z": 202.716
+            "X": -154.26854,
+            "Y": 3.9999998,
+            "Z": 200.34163
           },
+          "StopDistance": 1,
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -71,10 +72,11 @@
         {
           "DataId": 1000856,
           "Position": {
-            "X": -155.077,
-            "Y": 4.04358,
-            "Z": 202.716
+            "X": -154.26854,
+            "Y": 3.9999998,
+            "Z": 200.34163
           },
+          "StopDistance": 1,
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
           "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]

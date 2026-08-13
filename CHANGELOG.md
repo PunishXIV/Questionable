@@ -1,1 +1,1 @@
-- Bug fix: unobtainable branched quests were being considered when checking prereqs, fixed -alydev
+- Feature: fishing storyline done -alydev
