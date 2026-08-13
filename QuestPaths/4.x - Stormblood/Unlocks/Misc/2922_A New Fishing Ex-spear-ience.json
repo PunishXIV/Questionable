@@ -1,8 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
-  "LastChecked": {"Username": "ShermTank", "Date": "2026-07-27"},
-  "Comment": "Spearfishing Unlock",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-14"},
   "QuestSequence": [
     {
       "Sequence": 0,

@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Raitono",
   "Comment": "Timed fish: Only available 18:00-06:00 ET",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -54,10 +54,11 @@
           "Comment": "Speak with Wawalago",
           "DataId": 1000856,
           "Position": {
-            "X": -155.077,
-            "Y": 4.04358,
-            "Z": 202.716
+            "X": -154.26854,
+            "Y": 3.9999998,
+            "Z": 200.34163
           },
+          "StopDistance": 1,
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -65,9 +66,9 @@
     },
     {
       "Sequence": 3,
+      "Comment": "If you purchase the fish from the marketboard, click Skip until it is disabled, then click Play",
       "Steps": [
         {
-          "Comment": "Purchase bait",
           "DataId": 1003254,
           "Position": {
             "X": -246.52553,
@@ -104,7 +105,6 @@
           }
         },
         {
-          "Comment": "Move to fishing spot",
           "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "Position": {
             "X": 564.22797,
@@ -116,7 +116,6 @@
           "Fly": true
         },
         {
-          "Comment": "Move to fishing spot",
           "Position": {
             "X": 567.9441,
             "Y": 17.553452,

@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Raitono",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-13"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -69,10 +69,11 @@
           "Comment": "Speak with Wawalago",
           "DataId": 1000856,
           "Position": {
-            "X": -155.10797,
-            "Y": 4.0709944,
-            "Z": 202.71606
+            "X": -154.26854,
+            "Y": 3.9999998,
+            "Z": 200.34163
           },
+          "StopDistance": 1,
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -80,9 +81,9 @@
     },
     {
       "Sequence": 4,
+      "Comment": "If you purchase the fish from the marketboard, click Skip until it is disabled, then click Play",
       "Steps": [
         {
-          "Comment": "Purchase bait",
           "DataId": 1003254,
           "Position": {
             "X": -246.52553,
@@ -119,7 +120,6 @@
           }
         },
         {
-          "Comment": "Move to fishing spot",
           "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
           "Position": {
             "X": 172.00658,
