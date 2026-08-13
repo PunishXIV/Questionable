@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,7 +15,14 @@
           },
           "TerritoryId": 819,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium"
+          "AetheryteShortcut": "Crystarium",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_LUCKYB006_03662_Q1_000_000",
+              "Answer": "TEXT_LUCKYB006_03662_A1_000_001",
+              "Type": "List"
+            }
+          ]
         }
       ]
     }
