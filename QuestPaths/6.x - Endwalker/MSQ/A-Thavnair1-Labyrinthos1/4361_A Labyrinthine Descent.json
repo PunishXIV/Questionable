@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "jigain", "Date": "2026-07-13"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -106,7 +106,7 @@
             "Z": -209.40958
           },
           "TerritoryId": 962,
-          "InteractionType": "WalkTo",
+          "InteractionType": "WaitForManualProgress",
           "Comment": "Should auto-trigger the next step once Alisaie is here"
         }
       ]
