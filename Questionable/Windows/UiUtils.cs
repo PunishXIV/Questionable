@@ -15,9 +15,18 @@ internal sealed class UiUtils(QuestFunctions questFunctions, IDalamudPluginInter
         if (questFunctions.IsQuestLocked(elementId) is (bool isLocked, string[] reasons) && isLocked)
             lockedReason = string.Join("\n  ", reasons);
         else if (questData.TryGetQuestInfo(elementId, out var qInfo) && qInfo is IQuestInfo questInfo &&
-                questInfo.PreviousQuestJoin is EQuestJoin.All &&
-                prereqValue != null && prereqValue.Any(q => questFunctions.IsQuestLocked(q.QuestId) is (bool qIsLocked, string[] reasons) && qIsLocked))
-            lockedReason = _L("Prev quest");
+                questInfo.PreviousQuestJoin is EQuestJoin.All)
+        {
+            List<string> preReasons = [];
+            if (prereqValue != null)
+                foreach (IQuestInfo q in prereqValue)
+                    if (questFunctions.IsQuestLocked(q.QuestId) is (bool qIsLocked, string[] _reasons) && qIsLocked &&
+                        !questFunctions.IsQuestUnobtainable(q.QuestId))
+                        foreach (string _reason in _reasons)
+                            preReasons.Add($"{q.QuestId.Value}: {_reason}");
+            if (preReasons.Count != 0)
+                lockedReason = _L("Prev quest") + $" ({preReasons[0]}{(preReasons.Count > 1 ? $" +{preReasons.Count - 1}" : "")})";
+        }
 
         if (questFunctions.IsQuestAccepted(elementId))
             return (QstTheme.Amber, FontAwesomeIcon.PersonWalkingArrowRight, _L("Active"));

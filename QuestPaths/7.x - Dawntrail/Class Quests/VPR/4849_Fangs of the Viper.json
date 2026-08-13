@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -36,6 +37,66 @@
           "TerritoryId": 131,
           "InteractionType": "EquipItem",
           "ItemId": 41808,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "EquipItem",
+          "ItemId": 43178,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "EquipItem",
+          "ItemId": 43179,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "EquipItem",
+          "ItemId": 43180,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "EquipItem",
+          "ItemId": 43181,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "EquipItem",
+          "ItemId": 43182,
           "SkipConditions": {
             "StepIf": {
               "Item": {

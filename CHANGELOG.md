@@ -1,1 +1,1 @@
-- Change: qst used to log warnings when in loading screen with no quests active. it doesn't do that anymore -alydev
+- Bug fix: unobtainable branched quests were being considered when checking prereqs, fixed -alydev

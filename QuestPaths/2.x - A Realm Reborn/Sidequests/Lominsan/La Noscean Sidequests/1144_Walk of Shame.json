@@ -1,0 +1,41 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003359,
+          "Position": {
+            "X": 263.691,
+            "Y": -4.19629,
+            "Z": 202.167
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "$": "auto: issuer 1003359 (S'nairoh)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006614,
+          "Position": {
+            "X": 65.9025,
+            "Y": -3.12513,
+            "Z": 61.447
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "$": "auto: todo turn-in -> 1006614 (Falkbryda)"
+        }
+      ]
+    }
+  ]
+}

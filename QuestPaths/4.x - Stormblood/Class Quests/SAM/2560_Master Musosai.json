@@ -53,6 +53,66 @@
         },
         {
           "TerritoryId": 131,
+          "InteractionType": "EquipItem",
+          "ItemId": 20460,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "EquipItem",
+          "ItemId": 20461,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "EquipItem",
+          "ItemId": 20462,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "EquipItem",
+          "ItemId": 20463,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 131,
+          "InteractionType": "EquipItem",
+          "ItemId": 20464,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 131,
           "InteractionType": "EquipRecommended",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },

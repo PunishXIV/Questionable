@@ -37,6 +37,66 @@
         },
         {
           "TerritoryId": 132,
+          "InteractionType": "EquipItem",
+          "ItemId": 43183,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 132,
+          "InteractionType": "EquipItem",
+          "ItemId": 43184,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 132,
+          "InteractionType": "EquipItem",
+          "ItemId": 43185,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 132,
+          "InteractionType": "EquipItem",
+          "ItemId": 43186,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 132,
+          "InteractionType": "EquipItem",
+          "ItemId": 43187,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 132,
           "InteractionType": "CreateGearset",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },

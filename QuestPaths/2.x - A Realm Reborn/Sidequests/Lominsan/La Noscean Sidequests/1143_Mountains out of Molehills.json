@@ -1,0 +1,77 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003359,
+          "Position": {
+            "X": 263.691,
+            "Y": -4.19629,
+            "Z": 202.167
+          },
+          "TerritoryId": 138,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "$": "auto: issuer 1003359 (S'nairoh)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 263.62125,
+            "Y": -5.2462654,
+            "Z": 207.80981
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 265.9542,
+              "Y": -22.750002,
+              "Z": 221.74113
+            }
+          }
+        },
+        {
+          "DataId": 206,
+          "Position": {
+            "X": 244.58679,
+            "Y": -13.952617,
+            "Z": 117.50964
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            206
+          ],
+          "$": "auto: lua overworld enemies -> 206"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003359,
+          "Position": {
+            "X": 263.691,
+            "Y": -4.19629,
+            "Z": 202.167
+          },
+          "TerritoryId": 138,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "$": "auto: todo turn-in -> 1003359 (S'nairoh)"
+        }
+      ]
+    }
+  ]
+}

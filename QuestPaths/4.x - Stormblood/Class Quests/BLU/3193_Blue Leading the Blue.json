@@ -21,8 +21,68 @@
         },
         {
           "TerritoryId": 135,
-          "InteractionType": "EquipItem",
+          "InteractionType": "UseItem",
           "ItemId": 24587,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipItem",
+          "ItemId": 24582,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipItem",
+          "ItemId": 24583,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipItem",
+          "ItemId": 24584,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipItem",
+          "ItemId": 24585,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": true
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipItem",
+          "ItemId": 24586,
           "SkipConditions": {
             "StepIf": {
               "Item": {
