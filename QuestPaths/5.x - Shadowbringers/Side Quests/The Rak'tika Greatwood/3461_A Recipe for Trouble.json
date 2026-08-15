@@ -1,0 +1,142 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 346.97427,
+            "Y": 7.4945126,
+            "Z": -138.33932
+          },
+          "TerritoryId": 817,
+          "InteractionType": "None",
+          "Fly": true
+        },
+        {
+          "DataId": 1027732,
+          "Position": {
+            "X": 336.812,
+            "Y": 7.96076,
+            "Z": -154.925
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 346.97427,
+            "Y": 7.4945126,
+            "Z": -138.33932
+          },
+          "TerritoryId": 817,
+          "InteractionType": "None",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 356.29654,
+            "Y": 38.27366,
+            "Z": -129.45145
+          },
+          "TerritoryId": 817,
+          "InteractionType": "None",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 579.638,
+            "Y": 20.0514,
+            "Z": 74.4075
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "ComplexCombatData": [
+            {
+              "DataId": 10286,
+              "MinimumKillCount": 2,
+              "RewardItemId": 2002570,
+              "RewardItemCount": 2
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2009951,
+          "Position": {
+            "X": 266.751,
+            "Y": 20.8405,
+            "Z": 343.073
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002570,
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2009952,
+          "Position": {
+            "X": 250.157,
+            "Y": 20.7814,
+            "Z": 350.369
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            11119
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 346.97427,
+            "Y": 7.4945126,
+            "Z": -138.33932
+          },
+          "TerritoryId": 817,
+          "InteractionType": "None",
+          "Fly": true,
+          "AetheryteShortcut": "Rak'tika - Fanow"
+        },
+        {
+          "DataId": 1027732,
+          "Position": {
+            "X": 336.812,
+            "Y": 7.96076,
+            "Z": -154.925
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

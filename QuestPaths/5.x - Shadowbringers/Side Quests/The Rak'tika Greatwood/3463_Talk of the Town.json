@@ -1,0 +1,192 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027714,
+          "Position": {
+            "X": 349.533,
+            "Y": 7.49451,
+            "Z": -124.802
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 419.3228,
+            "Y": 33.637783,
+            "Z": -107.16951
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1031369,
+          "Position": {
+            "X": 418.38696,
+            "Y": 33.63778,
+            "Z": -107.89661
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1031369,
+          "Position": {
+            "X": 418.38696,
+            "Y": 33.63778,
+            "Z": -107.89661
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002861,
+          "Fly": true,
+          "Land": true,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
+        },
+        {
+          "Position": {
+            "X": 291.646,
+            "Y": 34.2428,
+            "Z": -149.737
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1031370,
+          "Position": {
+            "X": 291.646,
+            "Y": 34.2428,
+            "Z": -149.737
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1031370,
+          "Position": {
+            "X": 291.646,
+            "Y": 34.2428,
+            "Z": -149.737
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002861,
+          "Fly": true,
+          "Land": true,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
+        },
+        {
+          "Position": {
+            "X": 449.538,
+            "Y": 18.9669,
+            "Z": -52.5691
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1031371,
+          "Position": {
+            "X": 449.538,
+            "Y": 18.9669,
+            "Z": -52.5691
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1031371,
+          "Position": {
+            "X": 449.538,
+            "Y": 18.9669,
+            "Z": -52.5691
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002861,
+          "Fly": true,
+          "Land": true,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
+        },
+        {
+          "Position": {
+            "X": 320.385,
+            "Y": 20.5108,
+            "Z": -220.174
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1031372,
+          "Position": {
+            "X": 320.385,
+            "Y": 20.5108,
+            "Z": -220.174
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "DataId": 1031372,
+          "Position": {
+            "X": 320.385,
+            "Y": 20.5108,
+            "Z": -220.174
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002861,
+          "Fly": true,
+          "Land": true,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027714,
+          "Position": {
+            "X": 349.533,
+            "Y": 7.49451,
+            "Z": -124.802
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

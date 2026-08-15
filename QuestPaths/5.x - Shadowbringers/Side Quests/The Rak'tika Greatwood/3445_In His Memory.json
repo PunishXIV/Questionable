@@ -1,0 +1,167 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -303.0998,
+            "Y": 8.4904175,
+            "Z": 711.1436
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1029024,
+          "Position": {
+            "X": -301.534,
+            "Y": 8.68231,
+            "Z": 711.299
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029878,
+          "Position": {
+            "X": -295.125,
+            "Y": 7.49219,
+            "Z": 591.821
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Sprint": false
+        },
+        {
+          "DataId": 1029878,
+          "Position": {
+            "X": -295.125,
+            "Y": 7.49219,
+            "Z": 591.821
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 5,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 1029878,
+          "Position": {
+            "X": -295.12476,
+            "Y": 7.516978,
+            "Z": 591.82104
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Comment": "Speak with Varthon"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -444.81573,
+            "Y": 2.4261475,
+            "Z": 530.2357
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": -444.81573,
+            "Y": 2.4261475,
+            "Z": 530.2357
+          },
+          "StopDistance": 0.5,
+          "TerritoryId": 817,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            11114,
+            11115
+          ],
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "DataId": 2009794,
+          "Position": {
+            "X": -444.81573,
+            "Y": 2.4261475,
+            "Z": 530.2357
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WaitForNpcAtPosition",
+          "NpcWaitDistance": 2
+        },
+        {
+          "DataId": 2009794,
+          "Position": {
+            "X": -444.81573,
+            "Y": 2.4261475,
+            "Z": 530.2357
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Comment": "Find the abandoned blade"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1029879,
+          "Position": {
+            "X": -445.465,
+            "Y": 2.46754,
+            "Z": 531.341
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Comment": "Speak with Varthon"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1029024,
+          "Position": {
+            "X": -301.534,
+            "Y": 8.68231,
+            "Z": 711.299
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Slitherbough",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 423.9512,
+            "Y": 34.11471,
+            "Z": -139.3184
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1031388,
+          "Position": {
+            "X": 421.8661,
+            "Y": 34.114716,
+            "Z": -140.91711
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031389,
+          "Position": {
+            "X": 319.837,
+            "Y": 33.7629,
+            "Z": -159.233
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 266.74936,
+            "Y": -19.493479,
+            "Z": 669.26196
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1031536,
+          "Position": {
+            "X": 269.6726,
+            "Y": -19.542128,
+            "Z": 669.2759
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1031536,
+          "Position": {
+            "X": 269.6726,
+            "Y": -19.542128,
+            "Z": 669.2759
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002889,
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031389,
+          "Position": {
+            "X": 319.837,
+            "Y": 33.7629,
+            "Z": -159.233
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1031389,
+          "Position": {
+            "X": 319.837,
+            "Y": 33.7629,
+            "Z": -159.233
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002890,
+          "Fly": true,
+          "Land": true
+        },
+        {
+          "DataId": 1031389,
+          "Position": {
+            "X": 319.837,
+            "Y": 33.7629,
+            "Z": -159.233
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

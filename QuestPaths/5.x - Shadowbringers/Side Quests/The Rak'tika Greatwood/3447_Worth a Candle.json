@@ -1,0 +1,83 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-05-08"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027742,
+          "Position": {
+            "X": -115.26,
+            "Y": -18.8731,
+            "Z": 311.176
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2009788,
+          "Position": {
+            "X": -6.88277,
+            "Y": -24.149,
+            "Z": 296.03
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002526,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
+        },
+        {
+          "DataId": 2009789,
+          "Position": {
+            "X": -122.583,
+            "Y": -19.7087,
+            "Z": 374.476
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002526,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
+        },
+        {
+          "DataId": 2009790,
+          "Position": {
+            "X": -105.979,
+            "Y": -18.766,
+            "Z": 384.894
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UseItem",
+          "ItemId": 2002526,
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027742,
+          "Position": {
+            "X": -115.26,
+            "Y": -18.8731,
+            "Z": 311.176
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Slitherbough"
+        }
+      ]
+    }
+  ]
+}
