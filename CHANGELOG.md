@@ -1,1 +1,1 @@
-- Change: updated sponsor URL to https://ko-fi.com/alydev
+- Bug fix: "the hunt goes on" requires "Dawntrail" -alydev
