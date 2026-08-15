@@ -41,7 +41,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         PunishLibMain.Init(pluginInterface, "Questionable", new AboutPlugin()
         {
             Developer = "alydev",
-            Sponsor = "https://github.com/sponsors/alydevs"
+            Sponsor = "https://ko-fi.com/alydev"
         });
 
         try

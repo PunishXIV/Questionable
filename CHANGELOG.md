@@ -1,1 +1,1 @@
-- Bug fix: Added missing prereq for unlock quest Dawn of a New Deal -alydev
+- Change: updated sponsor URL to https://ko-fi.com/alydev
