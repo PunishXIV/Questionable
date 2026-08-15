@@ -1,1 +1,1 @@
-- Feature: fishing storyline done -alydev
+- Bug fix: Added missing prereq for unlock quest Dawn of a New Deal -alydev
