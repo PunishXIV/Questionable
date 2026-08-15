@@ -61,7 +61,7 @@
           "TerritoryId": 958,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
+            "Enabled": true,
             "Notes": [
               "Instance probably only works on very easy difficulty",
               "AI doesn't move to first enemy",
