@@ -1,1 +1,1 @@
-- Feature: fishing storyline done -alydev
+- Bug fix: "the hunt goes on" requires "Dawntrail" -alydev

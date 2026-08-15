@@ -53,7 +53,7 @@ internal sealed class ConfigWindow
             {
                 Icon = FontAwesomeIcon.Heart,
                 IconOffset = TitleBarIconOffset,
-                Click = _ => Process.Start(new ProcessStartInfo { FileName = "https://github.com/sponsors/alydevs", UseShellExecute = true }),
+                Click = _ => Process.Start(new ProcessStartInfo { FileName = "https://ko-fi.com/alydev", UseShellExecute = true }),
                 Priority = TitleBarButtonPriority,
                 ShowTooltip = () =>
                 {
