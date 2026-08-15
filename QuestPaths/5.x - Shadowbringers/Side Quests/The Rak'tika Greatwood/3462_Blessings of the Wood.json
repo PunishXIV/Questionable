@@ -1,0 +1,85 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027716,
+          "Position": {
+            "X": 494.991,
+            "Y": -6.55534,
+            "Z": -224.915
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1029888,
+          "Position": {
+            "X": 339.285,
+            "Y": 0.512984,
+            "Z": 163.63
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 336.55447,
+            "Y": 0.37424934,
+            "Z": 164.44731
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 336.55447,
+            "Y": 0.37424934,
+            "Z": 164.44731
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Emote",
+          "Emote": "pray",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027716,
+          "Position": {
+            "X": 494.991,
+            "Y": -6.55534,
+            "Z": -224.915
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031341,
+          "Position": {
+            "X": -131.456,
+            "Y": -17.5416,
+            "Z": 253.834
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1031343,
+          "Position": {
+            "X": -50.5532,
+            "Y": 19.9921,
+            "Z": -60.4105
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1031344,
+          "Position": {
+            "X": -696.254,
+            "Y": -0.320496,
+            "Z": 114.183
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1031345,
+          "Position": {
+            "X": -705.296,
+            "Y": 2.8089,
+            "Z": 292.443
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031341,
+          "Position": {
+            "X": -131.456,
+            "Y": -17.5416,
+            "Z": 253.834
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Slitherbough",
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZE019_03453_Q1_000_000",
+              "Answer": "TEXT_LUCKZE019_03453_A1_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZE019_03453_Q1_000_000",
+              "Answer": "TEXT_LUCKZE019_03453_A1_000_002"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZE019_03453_Q1_000_000",
+              "Answer": "TEXT_LUCKZE019_03453_A1_000_003"
+            }
+          ],
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

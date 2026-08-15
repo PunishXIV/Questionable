@@ -1,0 +1,174 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1027754,
+          "Position": {
+            "X": -108.193,
+            "Y": -19.6844,
+            "Z": 380.263
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -108.14495,
+            "Y": -19.31591,
+            "Z": 339.8015
+          },
+          "TerritoryId": 817,
+          "InteractionType": "None",
+          "Fly": true
+        },
+        {
+          "DataId": 1029142,
+          "Position": {
+            "X": -604.073,
+            "Y": 0,
+            "Z": 570.225
+          },
+          "StopDistance": 1,
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "Land": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -582.49115,
+            "Y": -0.6,
+            "Z": 538.5119
+          },
+          "TerritoryId": 817,
+          "InteractionType": "None",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -582.49115,
+            "Y": -0.6,
+            "Z": 538.5119
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Dive"
+        },
+        {
+          "DataId": 2009795,
+          "Position": {
+            "X": -548.012,
+            "Y": -38.9125,
+            "Z": 515.257
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
+        },
+        {
+          "DataId": 2009796,
+          "Position": {
+            "X": -600.186,
+            "Y": -54.7925,
+            "Z": 521.921
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
+        },
+        {
+          "DataId": 2009797,
+          "Position": {
+            "X": -586.587,
+            "Y": -59.4006,
+            "Z": 496.783
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
+        },
+        {
+          "DataId": 2009798,
+          "Position": {
+            "X": -594.775,
+            "Y": -38.0159,
+            "Z": 553.157
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
+        },
+        {
+          "DataId": 2009799,
+          "Position": {
+            "X": -596.382,
+            "Y": -55.1217,
+            "Z": 493.466
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 8]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Position": {
+            "X": -604.073,
+            "Y": 0,
+            "Z": 570.225
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Mount": true
+        },
+        {
+          "DataId": 1029142,
+          "Position": {
+            "X": -604.073,
+            "Y": 0,
+            "Z": 570.225
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1027754,
+          "Position": {
+            "X": -108.193,
+            "Y": -19.6844,
+            "Z": 380.263
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Slitherbough"
+        }
+      ]
+    }
+  ]
+}

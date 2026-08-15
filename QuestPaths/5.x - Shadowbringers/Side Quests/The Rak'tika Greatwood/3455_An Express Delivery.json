@@ -1,0 +1,81 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1031303,
+          "Position": {
+            "X": -144.705,
+            "Y": -23.3466,
+            "Z": 228.549
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -412.8938,
+            "Y": 1.6467507,
+            "Z": 497.75082
+          },
+          "TerritoryId": 817,
+          "InteractionType": "None",
+          "Fly": true
+        },
+        {
+          "DataId": 1031350,
+          "Position": {
+            "X": -412.37506,
+            "Y": 1.9149826,
+            "Z": 499.53455
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZE021_03455_Q1_000_000",
+              "Answer": "TEXT_LUCKZE021_03455_A1_000_001"
+            },
+            {
+              "Type": "List",
+              "Prompt": "TEXT_LUCKZE021_03455_Q1_000_000",
+              "Answer": "TEXT_LUCKZE021_03455_A1_000_002"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1031303,
+          "Position": {
+            "X": -144.705,
+            "Y": -23.3466,
+            "Z": 228.549
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Rak'tika - Slitherbough",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

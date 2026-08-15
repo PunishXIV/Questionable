@@ -1,0 +1,220 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Saputello",
+  "LastChecked": {
+    "Username": "Saputello",
+    "Date": "2026-08-15"
+  },
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 425.74005,
+            "Y": 33.637783,
+            "Z": -119.50773
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 1027713,
+          "Position": {
+            "X": 446.70776,
+            "Y": 34.051743,
+            "Z": -117.17407
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -574.3393,
+            "Y": -0.2748211,
+            "Z": 246.70798
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Rak'tika - Slitherbough",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -574.3393,
+            "Y": -0.2748211,
+            "Z": 246.70798
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Dive",
+          "StopDistance": 1
+        },
+        {
+          "Position": {
+            "X": -592.3887,
+            "Y": -92.6507,
+            "Z": 330.95844
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -592.69855,
+            "Y": -92.30932,
+            "Z": 311.9579
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -590.17487,
+            "Y": -79.80276,
+            "Z": 263.6639
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2009990,
+          "Position": {
+            "X": -592.0043,
+            "Y": -78.75183,
+            "Z": 260.97498
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -592.69855,
+            "Y": -92.30932,
+            "Z": 311.9579
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -592.3887,
+            "Y": -92.6507,
+            "Z": 330.95844
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -593.06824,
+            "Y": -82.50561,
+            "Z": 422.3752
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2009988,
+          "Position": {
+            "X": -593.01135,
+            "Y": -80.82703,
+            "Z": 420.95056
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -794.64276,
+            "Y": -52.391052,
+            "Z": 284.6216
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -799.0626,
+            "Y": -91.151375,
+            "Z": 270.12384
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -799.96466,
+            "Y": -94.43886,
+            "Z": 228.22961
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -798.172,
+            "Y": -81.18833,
+            "Z": 235.96161
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "Fly": true
+        },
+        {
+          "DataId": 2009989,
+          "Position": {
+            "X": -800.1373,
+            "Y": -79.75891,
+            "Z": 236.8352
+          },
+          "TerritoryId": 817,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": 425.74005,
+            "Y": 33.637783,
+            "Z": -119.50773
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "Fly": true
+        },
+        {
+          "DataId": 1027713,
+          "Position": {
+            "X": 446.70776,
+            "Y": 34.051743,
+            "Z": -117.17407
+          },
+          "TerritoryId": 817,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
