@@ -54,15 +54,9 @@ internal sealed class OneTimeSetupWindow : LWindow
                 }
             }
         }
-        else
+        else if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, _L("Install all required plugins")))
         {
-            using (ImRaii.Disabled())
-            {
-                using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.Danger))
-                {
-                    ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Check, _L("Missing required plugins"));
-                }
-            }
+            _pluginConfigComponent.InstallMissingRequiredPlugins();
         }
 
         ImGui.SameLine();

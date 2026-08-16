@@ -1,1 +1,1 @@
-- Feature: reassigned special sidequests related to EX mounts to Special Quests section -alydev
+- Feature : Update dependencies so you can install them and enable them from that menu - Kage

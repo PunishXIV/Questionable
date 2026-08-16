@@ -2198,6 +2198,70 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Install all required plugins</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Adds missing repositories and installs required plugins.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Add repository</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Install plugin</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Installing...</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Installed but not loaded</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Open installer</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>{0} is already installed.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>{0} is already installed or its files are in use.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Removed leftover {0} files and installed the plugin.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Could not install {0}: leftover files at '{1}' are in use. Close the game or delete that folder, then try again.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Enabled recommended options on {0}.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Could not enable recommended options on {0}. Open the plugin config to enable them.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Enable recommended options</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Enabling...</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Enable the recommended options for {0}.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Available on official Dalamud Repository</Key>
     <Value lang="ja-jp">公式Dalamudリポジトリで入手可能</Value>
     <Value lang="zh-cn">可在官方 Dalamud 插件库中找到</Value>

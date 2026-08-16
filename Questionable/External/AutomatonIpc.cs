@@ -4,7 +4,10 @@ namespace Questionable.External;
 
 internal sealed class AutomatonIpc
 {
+    private const string AutoSnipeTweak = "AutoSnipeQuests";
+
     private readonly ICallGateSubscriber<string, bool> _isTweakEnabled;
+    private readonly ICallGateSubscriber<string, bool, object> _setTweakState;
     private readonly ILogger<AutomatonIpc> _logger;
     private bool _loggedIpcError;
 
@@ -12,6 +15,7 @@ internal sealed class AutomatonIpc
     {
         _logger = logger;
         _isTweakEnabled = pluginInterface.GetIpcSubscriber<string, bool>("Automaton.IsTweakEnabled");
+        _setTweakState = pluginInterface.GetIpcSubscriber<string, bool, object>("Automaton.SetTweakState");
         logger.LogInformation("Automaton auto-snipe enabled: {IsTweakEnabled}", IsAutoSnipeEnabled);
     }
 
@@ -21,7 +25,11 @@ internal sealed class AutomatonIpc
         {
             try
             {
-                return _isTweakEnabled.InvokeFunc("AutoSnipeQuests");
+                return _isTweakEnabled.InvokeFunc(AutoSnipeTweak);
+            }
+            catch (IpcNotReadyError)
+            {
+                return false;
             }
             catch (IpcError e)
             {
@@ -33,6 +41,24 @@ internal sealed class AutomatonIpc
 
                 return false;
             }
+        }
+    }
+
+    public bool SetAutoSnipeEnabled(bool enabled)
+    {
+        try
+        {
+            _setTweakState.InvokeAction(AutoSnipeTweak, enabled);
+            return IsAutoSnipeEnabled == enabled;
+        }
+        catch (IpcNotReadyError)
+        {
+            return false;
+        }
+        catch (IpcError e)
+        {
+            _logger.LogWarning(e, "Could not set automaton auto-snipe to {Enabled}", enabled);
+            return false;
         }
     }
 }
