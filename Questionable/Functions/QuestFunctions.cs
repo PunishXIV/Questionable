@@ -705,23 +705,25 @@ internal sealed unsafe class QuestFunctions
     private (bool, string[]) IsQuestLocked(QuestId questId, ElementId? extraCompletedQuest = null)
     {
         PlayerState* playerState = PlayerState.Instance();
-        Dictionary<string, bool> lockedReason = [];
+        List<string> lockedReason = [];
         //lockedReason.Add("Unobtainable", IsQuestUnobtainable(questId, extraCompletedQuest));
 
         QuestInfo questInfo = (QuestInfo)questData.GetQuestInfo(questId);
         if (questInfo.GrandCompany != GrandCompany.None)
         {
-            lockedReason.Add(_L("GC"), questInfo.GrandCompany != GetGrandCompany());
-            lockedReason.Add(_L("Rank"), questInfo.GrandCompanyRank > GetGrandCompanyRank());
+            if (questInfo.GrandCompany != GetGrandCompany())
+                lockedReason.Add(_L("GC"));
+            if (questInfo.GrandCompanyRank > GetGrandCompanyRank())
+                lockedReason.Add(_L("Rank"));
         }
 
         if (playerState->CurrentLevel < questInfo.Level)
-            lockedReason.Add(_L("Level") + $": {(Job)playerState->CurrentClassJobId}={playerState->CurrentLevel} < {questInfo.Level}", playerState->CurrentLevel < questInfo.Level);
+            lockedReason.Add(_L("Level") + $": {(Job)playerState->CurrentClassJobId}={playerState->CurrentLevel} < {questInfo.Level}");
         if (questInfo.AlliedSociety != EAlliedSociety.None)
-            if (questInfo.IsRepeatable)
-                lockedReason.Add(_L("Daily unavailable"), !IsDailyAlliedSocietyQuestAndAvailableToday(questId));
-            else
-                lockedReason.Add(_L("Society rep"), !IsAlliedSocietyStoryQuestAvailable(questId));
+            if (questInfo.IsRepeatable && !IsDailyAlliedSocietyQuestAndAvailableToday(questId))
+                lockedReason.Add(_L("Daily unavailable"));
+            else if (!IsAlliedSocietyStoryQuestAvailable(questId))
+                lockedReason.Add(_L("Society rep"));
 
         if (QuestData.DeliveryMoogleQuests.Contains(questInfo.QuestId))
         {
@@ -732,20 +734,21 @@ internal sealed unsafe class QuestFunctions
                 currentDeliveryLevel++;
 
             if (questInfo.MoogleDeliveryLevel > currentDeliveryLevel)
-                lockedReason.Add(_L("Carrier level"), questInfo.MoogleDeliveryLevel > currentDeliveryLevel);
+                lockedReason.Add(_L("Carrier level"));
         }
 
         // "an ill-conceived venture" requires to have retainers unlocked
         if ((new ushort[] { 1432, 1433, 1434 }).Contains(questId.Value))
         {
             var retainerManager = RetainerManager.Instance();
-            lockedReason.Add(_L("Retainers"), retainerManager->MaxRetainerEntitlement == 0);
+            if (retainerManager->MaxRetainerEntitlement == 0)
+                lockedReason.Add(_L("Retainers"));
         }
 
         if (!HasCompletedPreviousQuests(questInfo, extraCompletedQuest, out int prevQuestCount))
-            lockedReason.Add(_L("Prev quest") + $" ({prevQuestCount})", value: true);
+            lockedReason.Add(_L("Prev quest") + $" ({prevQuestCount + 1})");
         if (!HasCompletedPreviousInstances(questInfo))
-            lockedReason.Add(_L("Prev instance"), value: true);
+            lockedReason.Add(_L("Prev instance"));
 
         if (questRegistry.TryGetQuest(questId, out Quest? quest) &&
             GetFirstLockedAetheryte(quest) is EAetheryteLocation firstLockedAetheryte)
@@ -756,13 +759,13 @@ internal sealed unsafe class QuestFunctions
                 if (QuestData.AethernetUnlockQuests.TryGetValue(loc, out var entry) &&
                         !entry.QuestIds.FromNumericListOfQuests()
                         .Any(q => q == questId || IsQuestAcceptedOrComplete(q)))
-                    lockedReason.Add(_LF("Aethernet locked ({0}): {{1}}", entry.Letter, firstLockedAetheryte), value: true);
+                    lockedReason.Add(_LF("Aethernet locked ({0}): {{1}}", entry.Letter, firstLockedAetheryte));
             }
             else
-                lockedReason.Add(_LF("Aetheryte locked: {0}", firstLockedAetheryte), value: true);
+                lockedReason.Add(_LF("Aetheryte locked: {0}", firstLockedAetheryte));
         }
 
-        bool prerequisites = questId.Value switch
+        bool questPrereqs = questId.Value switch
         {
             432 => AllMountsUnlocked(new ushort[] { 28, 29, 30, 31, 40, 43 }),
             1550 => AllMountsUnlocked(new ushort[] { 75, 76, 77, 78, 90, 98, 104 }),
@@ -772,14 +775,22 @@ internal sealed unsafe class QuestFunctions
             5469 => AllMountsUnlocked(new ushort[] { 345, 346, 363, 389, 407, 422, 444 }),
             _ => true
         };
-        if (!prerequisites)
-            lockedReason.Add(_LF("Prerequisites not met"), value: true);
+        if (!questPrereqs)
+            lockedReason.Add(_L("Prerequisites not met"));
+
+        bool achievementPrereqs = questId.Value switch
+        {
+            4081 => false, // TODO add achievement check
+            _ => true
+        };
+        if (!achievementPrereqs)
+            lockedReason.Add(_L("Achievement"));
 
         if (QuestData.CollaborationQuests.Contains(questId) &&
                 !EventInfoComponent.EventQuests.Any(eq => eq.QuestIds.Contains(questId)))
-            lockedReason.Add(_L("Limited time event"), value: true);
+            lockedReason.Add(_L("Limited time event"));
 
-        return (lockedReason.Values.Any(x => x), lockedReason.Keys.ToArray());
+        return (lockedReason.Count > 0, lockedReason.ToArray());
     }
 
     private unsafe bool AllMountsUnlocked(ushort[] mounts) => mounts.All(x => PlayerState.Instance()->IsMountUnlocked(x));

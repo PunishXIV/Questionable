@@ -1,1 +1,1 @@
-- Bug fix: "the hunt goes on" requires "Dawntrail" -alydev
+- Feature: reassigned special sidequests related to EX mounts to Special Quests section -alydev
