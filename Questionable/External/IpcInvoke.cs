@@ -21,6 +21,10 @@ internal static class IpcInvoke
         {
             return func();
         }
+        catch (IpcNotReadyError)
+        {
+            return fallback;
+        }
         catch (IpcError e)
         {
             logger.LogWarning(e, message, args);
@@ -44,6 +48,9 @@ internal static class IpcInvoke
         try
         {
             action();
+        }
+        catch (IpcNotReadyError)
+        {
         }
         catch (IpcError e)
         {

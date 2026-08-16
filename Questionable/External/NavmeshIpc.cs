@@ -40,9 +40,14 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
     public bool IsSimpleMovePathfindInProgress =>
         IpcInvoke.SafeFunc(() => _simpleMovePathfindInProgress.InvokeFunc(), fallback: false);
 
-    public void Stop() =>
+    public void Stop()
+    {
+        if (Version == null)
+            return;
+
         IpcInvoke.SafeAction(() => _pathStop.InvokeAction(), logger,
             "Could not stop navigating via navmesh {Version}", Version);
+    }
 
     public Task<List<Vector3>> Pathfind(Vector3 localPlayerPosition, Vector3 targetPosition, bool fly,
         CancellationToken cancellationToken)
