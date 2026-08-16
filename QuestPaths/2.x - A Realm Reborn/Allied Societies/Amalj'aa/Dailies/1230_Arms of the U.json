@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": ["plogon_enjoyer", "alydev"],
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -24,7 +24,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "$": "tested 1 3 QW: (1L) (-) (1H) (4L) (-) (2H)",
           "DataId": 2003141,
           "Position": {
             "X": -22.537598,
@@ -87,7 +86,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [
             null,
             null,
@@ -114,7 +112,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [
             null,
             null,
@@ -133,7 +130,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [
             null,
             null,
@@ -168,7 +164,6 @@
             null,
             null
           ],
-          "$": "QW: (1L) (-) (1H) (3L) (-) (8H)  QW: (1H1L) (-) (1H) (1H3L) (-) (8H)  QW: (2H1L) (-) (1H1L) (1H3L) (-) (8H)",
           "ComplexCombatData": [
             {
               "DataId": 740,
