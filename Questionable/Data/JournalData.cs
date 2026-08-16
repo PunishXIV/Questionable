@@ -56,6 +56,32 @@ internal sealed class JournalData
             4801, // fall guys
         ]).FromNumericListOfQuests().Select(q => questData.GetQuestInfo(q)).ToArray());
 
+        // Reassign special sidequests to another genre
+        Dictionary<QuestId, uint> questReassignPairs = new() {
+            { new(432), GenreSpecialQuests }, // arr ex mount
+            { new(1550), GenreSpecialQuests }, // hw ex mount
+            { new(3200), GenreSpecialQuests }, // stb ex mount
+            { new(4057), GenreSpecialQuests }, // shb ex mount
+            { new(4795), GenreSpecialQuests }, // ew ex mount
+            { new(5469), GenreSpecialQuests }, // dt ex mount
+        };
+        //foreach (var genre in genres)
+        //{
+        //    foreach (var q in genre.Quests)
+        //    {
+        //        if (q.Level == 1)
+        //            questReassignPairs[(QuestId)q.QuestId] = GenreSpecialQuests;
+        //    }
+        //}
+        foreach (var kvp in questReassignPairs)
+        {
+            var info = questData.GetQuestInfo(kvp.Key);
+            foreach (var _g in genres)
+                _g.Quests.Remove(info);
+            Genre genreAdd = genres.Where(g => g.Id.Equals(kvp.Value)).Single();
+            genreAdd.Quests.Add(questData.GetQuestInfo(kvp.Key));
+        }
+
         Genres = genres.ToList();
         Categories = dataManager.GetExcelSheet<JournalCategory>()
             .Where(x => x.RowId > 0)
@@ -65,12 +91,13 @@ internal sealed class JournalData
             .Select(x => new Section(x, Categories.Where(y => y.SectionId == x.RowId).ToList()))
             .ToList();
     }
+    public const uint CategorySpecialQuests = 98;
+    public const uint GenreSpecialQuests = 251;
+    public const uint GenreCollaborationQuests = 252;
     public const uint GenreStartingInUldah = uint.MaxValue - 1;
     public const uint GenreStartingInGridania = uint.MaxValue - 2;
     public const uint GenreStartingInLimsa = uint.MaxValue - 3;
     public const uint GenreInstantQuests = uint.MaxValue - 4;
-    public const uint GenreCollaborationQuests = 252;
-    public const uint CategorySpecialQuests = 98;
 
     public List<Genre> Genres { get; }
     public List<Category> Categories { get; }
