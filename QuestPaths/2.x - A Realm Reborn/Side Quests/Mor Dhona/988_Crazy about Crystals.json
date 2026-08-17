@@ -1,0 +1,79 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Raitono",
+  "LastChecked": {"Username": "Raitono", "Date": "2026-08-16"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006543,
+          "Position": {
+            "X": 29.599,
+            "Y": 26.3335,
+            "Z": -703.665
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "$": "auto: issuer 1006543 (Npah Tayuun)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002206,
+          "Position": {
+            "X": -58.6515,
+            "Y": 16.2416,
+            "Z": -611.525
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            27
+          ],
+          "$": "auto: todo location -> 2002206 (crystalline formation); spawns enemies 27"
+        },
+        {
+          "DataId": 2002207,
+          "Position": {
+            "X": -99.1047,
+            "Y": 6.5405,
+            "Z": -674.132
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            27
+          ],
+          "$": "auto: todo location -> 2002207 (crystalline formation); spawns enemies 27"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006543,
+          "Position": {
+            "X": 29.599,
+            "Y": 26.3335,
+            "Z": -703.665
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "$": "auto: todo turn-in -> 1006543 (Npah Tayuun)"
+        }
+      ]
+    }
+  ]
+}
