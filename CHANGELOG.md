@@ -1,1 +1,1 @@
-- Bug fix: navigation timed out on auxesia cosmic hoverboard path; prevented navigation from timing out while in cutscene -alydev
+- Bug fix: locked allied society quests fixed -Asha0

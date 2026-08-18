@@ -717,13 +717,18 @@ internal sealed unsafe class QuestFunctions
                 lockedReason.Add(_L("Rank"));
         }
 
-        if (playerState->CurrentLevel < questInfo.Level)
-            lockedReason.Add(_L("Level") + $": {(Job)playerState->CurrentClassJobId}={playerState->CurrentLevel} < {questInfo.Level}");
         if (questInfo.AlliedSociety != EAlliedSociety.None)
-            if (questInfo.IsRepeatable && !IsDailyAlliedSocietyQuestAndAvailableToday(questId))
-                lockedReason.Add(_L("Daily unavailable"));
+        {
+            if (questInfo.IsRepeatable)
+            {
+                if (!IsDailyAlliedSocietyQuestAndAvailableToday(questId))
+                    lockedReason.Add(_L("Daily unavailable"));
+            }
             else if (!IsAlliedSocietyStoryQuestAvailable(questId))
+            {
                 lockedReason.Add(_L("Society rep"));
+            }
+        }
 
         if (QuestData.DeliveryMoogleQuests.Contains(questInfo.QuestId))
         {
