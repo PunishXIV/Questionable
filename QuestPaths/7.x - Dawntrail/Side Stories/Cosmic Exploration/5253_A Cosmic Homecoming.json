@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
-  "LastChecked": {"Username": "jigain", "Date": "2026-07-31"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -67,7 +67,8 @@
           },
           "TerritoryId": 1237,
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 5254
+          "NextQuestId": 5254,
+          "DisableNavmesh": true
         }
       ]
     }

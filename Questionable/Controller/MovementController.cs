@@ -405,7 +405,7 @@ internal sealed class MovementController
         if (Environment.TickCount64 - Destination.LastWaypoint.UpdatedAt > 500)
         {
             // check whether we've made any progress of any kind
-            if (Math.Abs(distance - Destination.LastWaypoint.Distance2DAtLastUpdate) < 0.5f)
+            if (Math.Abs(distance - Destination.LastWaypoint.Distance2DAtLastUpdate) < 0.5f && !condition[ConditionFlag.WatchingCutscene])
             {
                 int calculations = Destination.NavmeshCalculations;
                 if (calculations % 6 == 1)
