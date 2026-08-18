@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
-  "LastChecked": {"Username": "chika", "Date": "2026-06-07"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -124,6 +124,15 @@
           "Comment": "Click the 7 arrows other than Namingway",
           "TerritoryId": 1310,
           "InteractionType": "Interact",
+          "PointMenuChoices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_KINGWK302_05449_Q2_100_000",
@@ -156,7 +165,8 @@
             "Z": 67.429565
           },
           "TerritoryId": 1310,
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5483
         }
       ]
     }

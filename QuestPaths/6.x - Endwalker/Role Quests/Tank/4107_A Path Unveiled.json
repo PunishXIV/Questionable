@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -65,16 +66,7 @@
           "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "Fly": true,
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "TestedBossModVersion": "0.1.0.1",
-            "Notes": [
-              "There is currently no BossMod Supported Bosses Logic.",
-              "BossMod doesn't use Interject.",
-              "BossMod can't handle QuickButton Actions yet.",
-              "BossMod doesn't use Healing Actions for Tanks.",
-              "It will need alot of manual work",
-              "And there is a part, where the user needs to interact."
-            ]
+            "Enabled": false
           }
         }
       ]

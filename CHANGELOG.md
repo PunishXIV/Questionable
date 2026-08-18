@@ -1,1 +1,1 @@
-- Feature : Update dependencies so you can install them and enable them from that menu - Kage
+- Bug fix: navigation timed out on auxesia cosmic hoverboard path; prevented navigation from timing out while in cutscene -alydev

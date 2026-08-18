@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "chika", "Date": "2026-06-07"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -35,7 +35,8 @@
             "Z": 67.429565
           },
           "TerritoryId": 1310,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "DisableNavmesh": true
         }
       ]
     },
@@ -72,7 +73,8 @@
             "Z": 397.8484
           },
           "TerritoryId": 1319,
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5484
         }
       ]
     }
