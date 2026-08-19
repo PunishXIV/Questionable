@@ -701,7 +701,7 @@ internal sealed unsafe class QuestFunctions
 
         return IsQuestComplete(elementId);
     }
-    
+
     public (bool, string[]?) IsQuestLocked(ElementId elementId, ElementId? extraCompletedQuest = null)
     {
         if (elementId is QuestId questId)
