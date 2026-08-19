@@ -1,1 +1,1 @@
-- Bug fix: Available or active allied quests being removed from priority window by 'remove finished' button -Asha0
+- Bug fix: Aetheryte shortcuts within zones were being skipped due to broken logic -alydev
