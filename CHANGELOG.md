@@ -1,1 +1,1 @@
-- Bug fix: locked allied society quests fixed -Asha0
+- Bug fix: Available or active allied quests being removed from priority window by 'remove finished' button -Asha0
