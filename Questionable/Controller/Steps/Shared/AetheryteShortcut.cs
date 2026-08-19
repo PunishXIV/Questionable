@@ -360,15 +360,15 @@ internal static class AetheryteShortcut
                                 return true;
                             }
 
-                            if (!Task.Step.InteractionType.Equals(EInteractionType.AttuneAetheryte) &&
-                                Task.Step.TerritoryId != clientState.TerritoryType)
+                            if (Task.Step.InteractionType.Equals(EInteractionType.AttuneAetheryte) ||
+                                !aetheryteFunctions.IsAetheryteUnlocked(Task.targetAetheryte))
                             {
-                                logger.LogInformation("No step position, teleporting to aetheryte");
-                                return false;
+                                logger.LogInformation("AttuneAetheryte, proceeding to destination");
+                                return true;
                             }
 
-                            logger.LogInformation("AttuneAetheryte, proceeding to destination");
-                            return true;
+                            logger.LogInformation("No step position, teleporting to aetheryte");
+                            return false;
                         }
 
                         float distance_target = (pos - Task.Step.Position.Value).Length();

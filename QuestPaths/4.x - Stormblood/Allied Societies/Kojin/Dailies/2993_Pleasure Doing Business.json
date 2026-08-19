@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-11"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-08-11" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -29,9 +29,23 @@
           "TerritoryId": 613,
           "Fly": true,
           "InteractionType": "None",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -795.0103,
+                  "Y": 21.373795,
+                  "Z": -466.20892
+                },
+                "TerritoryId": 613,
+                "MaximumDistance": 100
+              }
+            }
+          }
         },
-        {"$": "QW: (-) (-) (-) (2L) (1H2L) (-)",
+        {
+          "$": "QW: (-) (-) (-) (2L) (1H2L) (-)",
           "DataId": 1024310,
           "Position": {
             "X": -795.0103,
@@ -41,8 +55,23 @@
           "TerritoryId": 613,
           "InteractionType": "Interact",
           "Fly": true,
-          "Land": true,
-          "RequiredQuestVariables": [null, null, null, [{"Low": 1}], [], null]
+          "StopDistance": 0.25,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [{ "Low": 1 }],
+            [],
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 8 }
+          ]
         },
         {
           "DataId": 1024311,
@@ -54,8 +83,23 @@
           "TerritoryId": 613,
           "InteractionType": "Interact",
           "Fly": true,
-          "Land": true,
-          "RequiredQuestVariables": [null, null, null, [{"Low": 2}], [], null]
+          "StopDistance": 0.25,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [{ "Low": 2 }],
+            [],
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 4 }
+          ]
         },
         {
           "DataId": 1024312,
@@ -67,8 +111,23 @@
           "TerritoryId": 613,
           "InteractionType": "Interact",
           "Fly": true,
-          "Land": true,
-          "RequiredQuestVariables": [null, null, null, [], [{"High": 1}], null]
+          "StopDistance": 0.25,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [],
+            [{ "High": 1 }],
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 2 }
+          ]
         },
         {
           "DataId": 1024313,
@@ -80,8 +139,23 @@
           "TerritoryId": 613,
           "InteractionType": "Interact",
           "Fly": true,
-          "Land": true,
-          "RequiredQuestVariables": [null, null, null, [], [{"High": 2}], null]
+          "StopDistance": 0.25,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [],
+            [{ "High": 2 }],
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 1 }
+          ]
         },
         {
           "DataId": 1024314,
@@ -93,8 +167,23 @@
           "TerritoryId": 613,
           "InteractionType": "Interact",
           "Fly": true,
-          "Land": true,
-          "RequiredQuestVariables": [null, null, null, [], [{"Low": 1}], null]
+          "StopDistance": 0.25,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [],
+            [{ "Low": 1 }],
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "Low": 8 }
+          ]
         },
         {
           "DataId": 1024315,
@@ -106,8 +195,23 @@
           "TerritoryId": 613,
           "InteractionType": "Interact",
           "Fly": true,
-          "Land": true,
-          "RequiredQuestVariables": [null, null, null, [], [{"Low": 2}], null]
+          "StopDistance": 0.25,
+          "RequiredQuestVariables": [
+            null,
+            null,
+            null,
+            [],
+            [{ "Low": 2 }],
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "Low": 4 }
+          ]
         }
       ]
     },
