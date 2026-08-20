@@ -28,10 +28,10 @@ internal static class RedeemRewardItems
         }
     }
 
-    internal static List<ITask> CreateRedeemTasks(QuestData questData, IDataManager dataManager)
+    internal static List<ITask> CreateRedeemTasks(QuestData questData, IDataManager dataManager, bool overrideConfig = false)
     {
         Configuration configuration = Configuration.Instance();
-        if (!configuration.Advanced.AutoRedeemRewardItems)
+        if (!configuration.Advanced.AutoRedeemRewardItems && !overrideConfig)
             return [];
 
         List<ITask> tasks = [];

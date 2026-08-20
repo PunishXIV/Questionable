@@ -1434,6 +1434,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         return false;
     }
 
+    /// <summary>
+    /// Caller should ensure _taskQueue.AllTasksComplete before enqueueing.
+    /// See: CommandHandler's impl of /qst redeem
+    /// </summary>
+    /// <param name="task">An instance of a task produced by a factory or other generator</param>
+    internal void UnsafeEnqueueManualTask(ITask task) =>
+        _taskQueue.Enqueue(task);
+
     public override void Dispose()
     {
         _toastGui.ErrorToast -= OnErrorToast;

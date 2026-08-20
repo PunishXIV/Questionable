@@ -311,6 +311,7 @@ internal sealed partial class ActiveQuestComponent
                                                 configuration.Stop.QuestsToStopWhenAccepted.Any(x =>
                                                     !questFunctions.IsQuestAcceptedOrComplete(x) &&
                                                     !questFunctions.IsQuestUnobtainable(x));
+                bool preventQuestCompletion = configuration.Advanced.PreventQuestCompletion;
 
                 List<PriorityQuestInfo> priorityQuests = questFunctions.NextPriorityQuestsThatCanBeAccepted;
                 bool anyAvailable = false;
@@ -322,7 +323,7 @@ internal sealed partial class ActiveQuestComponent
                     if (anyAvailable && anyUnavailable) break;
                 }
 
-                bool showStopClock = hasLevelCondition || hasCompleteQuestConditions || hasAcceptQuestConditions;
+                bool showStopClock = hasLevelCondition || hasCompleteQuestConditions || hasAcceptQuestConditions || preventQuestCompletion;
                 bool showPriorityCrystal = anyAvailable || anyUnavailable;
                 if (showStopClock || showPriorityCrystal)
                     ImGui.SameLine();
@@ -406,6 +407,14 @@ internal sealed partial class ActiveQuestComponent
                             }
 
                             ImGui.Unindent();
+                        }
+
+                        if (preventQuestCompletion)
+                        {
+                            if (hasLevelCondition || hasCompleteQuestConditions || hasAcceptQuestConditions)
+                                ImGui.Spacing();
+
+                            ImGui.BulletText(_L("Prevent quest completion"));
                         }
                     }
                 }
