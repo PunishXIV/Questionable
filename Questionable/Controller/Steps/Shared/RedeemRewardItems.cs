@@ -110,7 +110,8 @@ internal static class RedeemRewardItems
     internal sealed class Executor
     (
         GameFunctions gameFunctions,
-        ICondition condition) : TaskExecutor<Task>
+        ICondition condition,
+        ILogger<RedeemRewardItems.Executor> logger) : TaskExecutor<Task>
     {
         private static readonly TimeSpan MinimumCastTime = TimeSpan.FromSeconds(4);
 
@@ -127,24 +128,35 @@ internal static class RedeemRewardItems
         {
             // A coffer needs a free inventory slot. If there's none we can't open it, so skip.
             if (Task.ItemReward.Type is EItemRewardType.Coffer && GameFunctions.GetFreeInventorySlots() < 1)
+            {
+                logger.LogDebug("item is coffer, but no inv slots");
                 return false;
+            }
 
             _giveUpAt = DateTime.Now.Add(GiveUpAfter);
+            logger.LogDebug("Start");
             return true;
         }
 
         public override unsafe ETaskResult Update()
         {
+            logger.LogDebug("Update");
             InventoryManager* inventoryManager = InventoryManager.Instance();
             if (inventoryManager == null)
+            {
+                logger.LogDebug("inventorymanager == null");
                 return ETaskResult.TaskComplete;
+            }
 
             bool timedOut = DateTime.Now > _giveUpAt;
 
             if (!_usedItem)
             {
                 if (timedOut)
+                {
+                    logger.LogDebug("timedOut");
                     return ETaskResult.TaskComplete;
+                }
 
                 // Wait until the character can actually use an item (not mounted, in combat,
                 // casting, animation-locked, between areas, ...) before trying to redeem.
@@ -155,7 +167,10 @@ internal static class RedeemRewardItems
 
                 // Already gone (e.g. consumed elsewhere) - nothing to do.
                 if (_itemCountBeforeUse == 0)
+                {
+                    logger.LogDebug("_itemCountBeforeUse == 0");
                     return ETaskResult.TaskComplete;
+                }
 
                 if (!gameFunctions.UseItem(Task.ItemReward.ItemId))
                     return ETaskResult.StillRunning;
@@ -171,14 +186,21 @@ internal static class RedeemRewardItems
                 _continueAt = DateTime.Now
                     .Add(castTime)
                     .AddSeconds(3);
+                logger.LogDebug("condition[ConditionFlag.Casting]");
                 return ETaskResult.StillRunning;
             }
 
             if (condition[ConditionFlag.Casting])
+            {
+                logger.LogDebug("condition[ConditionFlag.Casting]");
                 return ETaskResult.StillRunning;
+            }
 
             if (DateTime.Now <= _continueAt)
+            {
+                logger.LogDebug("DateTime.Now <= _continueAt");
                 return ETaskResult.StillRunning;
+            }
 
             // UseItem() can report success without actually consuming the item (e.g. a transient
             // "cannot use right now"). If the count didn't drop, try again until it does or we give up,
@@ -186,6 +208,7 @@ internal static class RedeemRewardItems
             if (inventoryManager->GetInventoryItemCount(Task.ItemReward.ItemId) >= _itemCountBeforeUse && !timedOut)
             {
                 _usedItem = false;
+                logger.LogDebug("itemcount >= _itemCountBeforeUse && !timedOut");
                 return ETaskResult.StillRunning;
             }
 

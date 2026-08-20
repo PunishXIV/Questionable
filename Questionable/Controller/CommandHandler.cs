@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Dalamud.Bindings.ImGui;
+using ECommons.Automation.NeoTaskManager.Tasks;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
@@ -35,6 +36,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly QuestData _questData;
     private readonly TerritoryData _territoryData;
     private readonly ITargetManager _targetManager;
+    private readonly ILogger<CommandHandler> _logger;
 
     private IReadOnlyList<uint> _previouslyUnlockedUnlockLinks = [];
 
@@ -59,7 +61,8 @@ internal sealed class CommandHandler : IDisposable
         IClientState clientState,
         Configuration configuration,
         QuestData questData,
-        TerritoryData territoryData)
+        TerritoryData territoryData,
+        ILogger<CommandHandler> logger)
     {
         _commandManager = commandManager;
         _chatGui = chatGui;
@@ -82,6 +85,7 @@ internal sealed class CommandHandler : IDisposable
         _configuration = configuration;
         _questData = questData;
         _territoryData = territoryData;
+        _logger = logger;
 
         _clientState.Logout += OnLogout;
         _commandManager.AddHandler("/qst", new(ProcessCommand)
@@ -296,6 +300,7 @@ internal sealed class CommandHandler : IDisposable
                     foreach (ITask task in tasks)
                         if (task is RedeemRewardItems.Task redeemTask)
                             _chatGui.Print(redeemTask.ItemReward.Name, MessageTag, TagColor);
+                _logger.LogInformation("Tasks created by /qst redeem: {Tasks}", string.Join(", ", tasks.Select(x => x.ToString())));
                 break;
 
             //case "abandon-quest":

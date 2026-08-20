@@ -1,4 +1,1 @@
-- Feature: if "Prevent quest completion" is on, stop indicator in quest window is shown -alydev
-- Feature: QST can redeem miscellany in inventory with `/qst redeem` -alydev
-  - to block an item from being redeemed automatically, add it to the blocklist in settings > advanced
-  - if an item is not being processed, please run `/qst redeem dry` and ask Aly in discord to add support for the item not shown in that list
+- Feature: `/qst redeem` supports folklore books now -alydev
