@@ -1,11 +1,100 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "jigain", "Date": "2026-07-17"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1044263,
+          "Position": {
+            "X": 466.05627,
+            "Y": -18.123579,
+            "Z": 718.8982
+          },
+          "TerritoryId": 958,
+          "InteractionType": "Interact",
+          "StopDistance": 4,
+          "TargetTerritoryId": 1119,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_AKTKMJ106_04675_SYSTEM_000_016",
+              "Type": "YesNo",
+              "Yes": true
+            }
+          ],
+          "Fly": true,
+          "SkipConditions": { "StepIf": { "InTerritory": [1119] } }
+        },
+        {
+          "DataId": 2013228,
+          "Position": {
+            "X": -20.370789,
+            "Y": 399.49634,
+            "Z": -818.72284
+          },
+          "TerritoryId": 1119,
+          "InteractionType": "Interact",
+          "StopDistance": 4,
+          "TargetTerritoryId": 1119,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 40.10075,
+                  "Y": 365.8499,
+                  "Z": -591.2186
+                },
+                "TerritoryId": 1119,
+                "MaximumDistance": 10
+              },
+              "NearPosition": {
+                "Position": {
+                  "X": -249.92749,
+                  "Y": -173,
+                  "Z": 126.35986
+                },
+                "TerritoryId": 1119,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        },
+        {
+          "DataId": 2013230,
+          "Position": {
+            "X": 350.08765,
+            "Y": 34.86682,
+            "Z": -433.95135
+          },
+          "TerritoryId": 1119,
+          "InteractionType": "Interact",
+          "StopDistance": 4,
+          "TargetTerritoryId": 1119,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 316.7218,
+                  "Y": 70.88865,
+                  "Z": -116.9074
+                },
+                "TerritoryId": 1119,
+                "MaximumDistance": 100
+              },
+              "NearPosition": {
+                "Position": {
+                  "X": -249.92749,
+                  "Y": -173,
+                  "Z": 126.35986
+                },
+                "TerritoryId": 1119,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        },
         {
           "DataId": 1044271,
           "Position": {
