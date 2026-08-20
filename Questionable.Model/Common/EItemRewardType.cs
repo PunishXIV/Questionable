@@ -11,4 +11,5 @@ public enum EItemRewardType
     UnlockLink,
     Duty,
     RecipeBook,
+    FolkloreBook,
 }

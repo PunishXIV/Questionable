@@ -42,6 +42,9 @@ public abstract record ItemReward(ItemRewardDetails Item)
 
             if (action.RowId is 2136)
                 return new RecipeBookReward(new(item, elementId), (ushort)item.ItemAction.Value.Data[0]);
+
+            if (action.RowId is 4107)
+                return new FolkloreBookReward(new(item, elementId), (ushort)item.ItemAction.Value.Data[0]);
         }
 
         return null;
@@ -108,5 +111,12 @@ public abstract record ItemReward(ItemRewardDetails Item)
         public override EItemRewardType Type => EItemRewardType.RecipeBook;
 
         public override unsafe bool IsUnlocked() => PlayerState.Instance()->IsSecretRecipeBookUnlocked(RecipeBookId);
+    }
+
+    internal sealed record FolkloreBookReward(ItemRewardDetails Item, ushort FolkloreBookId) : ItemReward(Item)
+    {
+        public override EItemRewardType Type => EItemRewardType.FolkloreBook;
+
+        public override unsafe bool IsUnlocked() => PlayerState.Instance()->IsFolkloreBookUnlocked(FolkloreBookId);
     }
 }
