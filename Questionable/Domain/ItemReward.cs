@@ -28,7 +28,7 @@ public abstract record ItemReward(ItemRewardDetails Item)
             if (action.RowId is 853)
                 return new MinionReward(new(item, elementId), item.ItemAction.Value.Data[0]);
 
-            if (action.RowId is 20086)
+            if (action.RowId is 20086 or 37312)
                 return new FashionAccessoryReward(new(item, elementId), item.ItemAction.Value.Data[0]);
 
             if (action.RowId is 25183)
@@ -39,6 +39,9 @@ public abstract record ItemReward(ItemRewardDetails Item)
 
             if (action.RowId is 2633)
                 return new UnlockLinkReward(new(item, elementId), (ushort)item.ItemAction.Value.Data[0]);
+
+            if (action.RowId is 2136)
+                return new RecipeBookReward(new(item, elementId), (ushort)item.ItemAction.Value.Data[0]);
         }
 
         return null;
@@ -98,5 +101,12 @@ public abstract record ItemReward(ItemRewardDetails Item)
         public override EItemRewardType Type => EItemRewardType.UnlockLink;
 
         public override unsafe bool IsUnlocked() => UIState.Instance()->IsUnlockLinkUnlocked(UnlockLinkId);
+    }
+
+    internal sealed record RecipeBookReward(ItemRewardDetails Item, ushort RecipeBookId) : ItemReward(Item)
+    {
+        public override EItemRewardType Type => EItemRewardType.RecipeBook;
+
+        public override unsafe bool IsUnlocked() => PlayerState.Instance()->IsSecretRecipeBookUnlocked(RecipeBookId);
     }
 }
