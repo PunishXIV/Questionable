@@ -15,7 +15,8 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 1161
+          "TargetTerritoryId": 1161,
+          "SkipConditions": {"StepIf": {"InTerritory": [1161]}}
         },
         {
           "DataId": 1045397,

@@ -23,17 +23,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "DataId": 2002878,
-          "Position": {
-            "X": -0.015319824,
-            "Y": -1.0223389,
-            "Z": -26.779602
-          },
-          "TerritoryId": 351,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351
-        },
-        {
           "DataId": 1008969,
           "Position": {
             "X": 0.99176025,

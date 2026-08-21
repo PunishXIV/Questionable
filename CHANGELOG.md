@@ -1,1 +1,1 @@
-- Feature: `/qst redeem` supports folklore books now -alydev
+- Bug fix: Cleaner travel through the rooms of the Rising Stones, hopefully -alydev
