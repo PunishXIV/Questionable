@@ -96,17 +96,6 @@
         },
         {
           "Position": {
-            "X": 30.917934,
-            "Y": 20.495003,
-            "Z": -656.1909
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "$": "Rising Stones Door"
-        },
-        {
-          "Position": {
             "X": 18.883974,
             "Y": 53.583996,
             "Z": -702.24194

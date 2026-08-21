@@ -7,17 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "DataId": 2002881,
-          "Position": {
-            "X": 21.133728,
-            "Y": 22.323914,
-            "Z": -631.281
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351
-        },
-        {
           "DataId": 1026990,
           "Position": {
             "X": -2.4262085,
@@ -33,28 +22,6 @@
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "DataId": 2002879,
-          "Position": {
-            "X": 0,
-            "Y": 3,
-            "Z": 27.5
-          },
-          "TerritoryId": 351,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 156
-        },
-        {
-          "Position": {
-            "X": 30.917934,
-            "Y": 20.495003,
-            "Z": -656.1909
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "$": "Rising Stones Door"
-        },
         {
           "DataId": 1029791,
           "Position": {

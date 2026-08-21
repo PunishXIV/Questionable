@@ -21,29 +21,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "DataId": 2002881,
-          "Position": {
-            "X": 21.133728,
-            "Y": 22.323914,
-            "Z": -631.281
-          },
-          "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                351
-              ]
-            },
-            "StepIf": {
-              "InTerritory": [
-                351
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1058854,
           "Position": {
             "X": -0.16790771,

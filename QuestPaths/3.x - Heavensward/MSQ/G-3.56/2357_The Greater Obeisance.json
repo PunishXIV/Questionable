@@ -80,27 +80,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 29.352629,
-            "Y": 21.285944,
-            "Z": -652.1081
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "TerritoryId": 156,
-          "DataId": 2002881,
-          "Position": {
-            "X": 21.133728,
-            "Y": 22.323914,
-            "Z": -631.281
-          },
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 351
-        },
-        {
           "DataId": 1018041,
           "Position": {
             "X": 13.199036,
