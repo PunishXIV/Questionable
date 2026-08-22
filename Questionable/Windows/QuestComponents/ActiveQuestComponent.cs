@@ -286,7 +286,7 @@ internal sealed partial class ActiveQuestComponent
                     }
                 }
 
-                uint? iconOverride = questJournalUtils.GetIconOverride((QuestInfo)currentQuest.Quest.Info, FontAwesomeIcon.Running);
+                uint? iconOverride = questJournalUtils.GetIconOverride((QuestInfo)currentQuest.Quest.Info, FontAwesomeIcon.PersonWalkingArrowRight);
                 if (iconOverride != null &&
                     textureProvider.TryGetFromGameIcon(new(iconOverride.Value), out var tex) &&
                     tex.TryGetWrap(out var texture, out _))

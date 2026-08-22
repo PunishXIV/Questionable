@@ -109,9 +109,13 @@ internal sealed class QuestInfo : IQuestInfo
             }).OfType<ItemReward>().ToList();
         Expansion = (EExpansionVersion)quest.Expansion.RowId;
         AvailableIcon = quest.EventIconType.ValueNullable?.MapIconAvailable + 1;
+        ActiveIcon = AvailableIcon + 2;
+        CompleteIcon = AvailableIcon + 4;
         InvalidIcon = quest.EventIconType.ValueNullable?.MapIconInvalid + 1;
     }
     public uint? AvailableIcon { get; private set; }
+    public uint? ActiveIcon { get; private set; }
+    public uint? CompleteIcon { get; private set; }
     public uint? InvalidIcon { get; private set; }
     public ImmutableList<QQuestId> QuestLocks { get; private set; }
     public EQuestJoin QuestLockJoin { get; private set; }
