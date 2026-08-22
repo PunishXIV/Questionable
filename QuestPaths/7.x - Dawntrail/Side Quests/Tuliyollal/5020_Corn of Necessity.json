@@ -14,7 +14,11 @@
             "Z": 95.384155
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ]
         }
       ]
     },

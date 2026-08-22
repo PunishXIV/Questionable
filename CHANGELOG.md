@@ -1,2 +1,3 @@
 - Feature: Quest icons in journal progress (can be toggled in General > UI) -alydev
   - Feature: quest icons in more places -alydev
+  - Implemented active quest/quest progress icons -alydev

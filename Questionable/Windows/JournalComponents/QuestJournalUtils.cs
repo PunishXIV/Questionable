@@ -278,10 +278,12 @@ internal sealed class QuestJournalUtils
         {
             if (icon is FontAwesomeIcon.Running)
                 iconOverride = questInfo.AvailableIcon;
+            if (icon is FontAwesomeIcon.PersonWalkingArrowRight)
+                iconOverride = questInfo.ActiveIcon;
             if (icon is FontAwesomeIcon.Times)
                 iconOverride = questInfo.InvalidIcon;
             if (icon is FontAwesomeIcon.Check)
-                iconOverride = questInfo.AvailableIcon + 4;
+                iconOverride = questInfo.CompleteIcon;
             if (icon is FontAwesomeIcon.QuestionCircle)
                 iconOverride = QuestionIcon;
         }

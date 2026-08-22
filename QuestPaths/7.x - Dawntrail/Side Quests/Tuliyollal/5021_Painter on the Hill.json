@@ -14,7 +14,11 @@
             "Z": -25.436829
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] The Resplendent Quarter"
+          ]
         }
       ]
     },
