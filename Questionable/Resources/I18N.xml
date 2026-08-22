@@ -5099,41 +5099,71 @@
   <Entry>
     <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst redeem - Redeem all reward items in inventory</Key>
+    <Value lang="ja-jp">/qst redeem - インベントリ内のすべての報酬アイテムを引き換える</Value>
+	  <Value lang="zh-cn">/qst redeem - 兑换库存中的所有奖励物品</Value>
+	  <Value lang="ko">/qst redeem - 인벤토리의 모든 보상 아이템을 교환합니다</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Achievement</Key>
+	  <Value lang="ja-jp">実績</Value>
+	  <Value lang="zh-cn">成就</Value>
+	  <Value lang="ko">업적</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Show quest icons in Journal Progress</Key>
+    <Value lang="ja-jp">ジャーナルの進行状況にクエストアイコンを表示</Value>
+	  <Value lang="zh-cn">在任务日志进度中显示任务图标</Value>
+	  <Value lang="ko">저널 진행 상황에 퀘스트 아이콘 표시</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Add {0} to Custom Plugin Repositories.</Key>
+    <Value lang="ja-jp">{0} をカスタムプラグインリポジトリに追加します。</Value>
+	  <Value lang="zh-cn">将 {0} 添加到自定义插件仓库。</Value>
+	  <Value lang="ko">{0}을(를) 사용자 지정 플러그인 저장소에 추가합니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Install {0} from its plugin repository.</Key>
+	  <Value lang="ja-jp">{0} をそのプラグインリポジトリからインストールします。</Value>
+	  <Value lang="zh-cn">从其插件仓库安装 {0}。</Value>
+	  <Value lang="ko">{0}을(를) 해당 플러그인 저장소에서 설치합니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>{0} repository is already added.</Key>
+	  <Value lang="ja-jp">{0} リポジトリはすでに追加されています。</Value>
+	  <Value lang="zh-cn">{0} 仓库已添加。</Value>
+	  <Value lang="ko">{0} 저장소가 이미 추가되었습니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Added {0} repository.</Key>
+    <Value lang="ja-jp">{0} リポジトリを追加しました。</Value>
+	  <Value lang="zh-cn">已添加 {0} 仓库。</Value>
+	  <Value lang="ko">{0} 저장소를 추가했습니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Installed {0}.</Key>
+	  <Value lang="ja-jp">{0} をインストールしました。</Value>
+	  <Value lang="zh-cn">已安装 {0}。</Value>
+	  <Value lang="ko">{0}을(를) 설치했습니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Could not install {0}. Check the plugin installer for details.</Key>
+	  <Value lang="ja-jp">{0} をインストールできませんでした。詳細はプラグインインストーラーを確認してください。</Value>
+	  <Value lang="zh-cn">无法安装 {0}。请检查插件安装程序以获取详细信息。</Value>
+	  <Value lang="ko">{0}을(를) 설치할 수 없습니다. 자세한 내용은 플러그인 설치 프로그램을 확인하세요.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestRewardComponent.cs -->
     <Key>No results</Key>
+	  <Value lang="ja-jp">結果がありません</Value>
+	  <Value lang="zh-cn">没有结果</Value>
+	  <Value lang="ko">결과 없음</Value>
   </Entry>
 </I18N>
