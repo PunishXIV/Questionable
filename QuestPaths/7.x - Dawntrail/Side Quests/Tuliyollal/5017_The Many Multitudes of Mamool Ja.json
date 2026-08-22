@@ -18,7 +18,8 @@
           "AethernetShortcut": [
             "[Tuliyollal] Aetheryte Plaza",
             "[Tuliyollal] Brightploom Post"
-          ]
+          ],
+          "SkipConditions": {"AethernetShortcutIf": {"InSameTerritory": true}}
         }
       ]
     },

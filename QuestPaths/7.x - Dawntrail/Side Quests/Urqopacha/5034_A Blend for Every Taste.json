@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "jigain", "Date": "2026-06-06"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -45,7 +45,7 @@
           "TerritoryId": 1187,
           "InteractionType": "UseItem",
           "ItemId": 2003604,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "Position": {
@@ -56,7 +56,8 @@
           "TerritoryId": 1187,
           "InteractionType": "UseItem",
           "ItemId": 2003605,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "DelaySecondsAtStart": 2,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "Position": {
@@ -67,7 +68,8 @@
           "TerritoryId": 1187,
           "InteractionType": "UseItem",
           "ItemId": 2003606,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "DelaySecondsAtStart": 2,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         }
       ]
     },
