@@ -786,7 +786,6 @@
     <Value lang="ko">설정 완료</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\OneTimeSetupWindow.cs -->
     <Key>Missing required plugins</Key>
     <Value lang="ja-jp">必要なプラグインが不足しています</Value>
     <Value lang="zh-cn">缺少必需的插件</Value>
@@ -1477,6 +1476,7 @@
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DebugConfigComponent.cs -->
     <!-- Found in: Windows\JournalComponents\AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: Windows\QuestComponents\ActiveQuestComponent.cs -->
     <Key>Prevent quest completion</Key>
     <Value lang="ja-jp">クエスト完了を防ぐ</Value>
     <Value lang="zh-cn">阻止完成任务</Value>
@@ -1601,6 +1601,7 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\DutyConfigComponent.cs -->
+    <!-- Found in: Windows\JournalComponents\QuestRewardComponent.cs -->
     <Key>Duties</Key>
     <Value lang="ja-jp">コンテンツ</Value>
     <Value lang="zh-cn">副本</Value>
@@ -2190,13 +2191,13 @@
     <Value lang="ko">웹사이트 열기</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Open Repository</Key>
     <Value lang="ja-jp">リポジトリを開く</Value>
     <Value lang="zh-cn">打开仓库</Value>
     <Value lang="ko">리포지토리 열기</Value>
   </Entry>
   <Entry>
+    <!-- Found in: Windows\OneTimeSetupWindow.cs -->
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Install all required plugins</Key>
   </Entry>
@@ -2229,7 +2230,6 @@
     <Key>{0} is already installed.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>{0} is already installed or its files are in use.</Key>
   </Entry>
   <Entry>
@@ -2261,7 +2261,6 @@
     <Key>Enable the recommended options for {0}.</Key>
   </Entry>
   <Entry>
-    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Available on official Dalamud Repository</Key>
     <Value lang="ja-jp">公式Dalamudリポジトリで入手可能</Value>
     <Value lang="zh-cn">可在官方 Dalamud 插件库中找到</Value>
@@ -3975,7 +3974,6 @@
     <Value lang="ko">군단</Value>
   </Entry>
   <Entry>
-    <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Level</Key>
     <Value lang="ja-jp">レベル</Value>
     <Value lang="zh-cn">等级</Value>
@@ -5067,35 +5065,75 @@
     <!-- Found in: Controller\Steps\Interactions\Interact.cs -->
     <Key>Quest {0} requires a job like {1}, but you do not have a gearset for this job or have not configured QST job preferences.</Key>
     <Value lang="ja-jp">クエスト {0} には {1} のようなジョブが必要ですが、このジョブのギアセットがないか、QSTのジョブ設定が構成されていません。</Value>
-	<Value lang="zh-cn">任务 {0} 需要类似 {1} 的职业，但你没有该职业的装备套装，或者没有配置 QST 职业偏好设置。</Value>
-	<Value lang="ko">퀘스트 {0}에는 {1}와 같은 직업이 필요하지만, 이 직업에 대한 장비 세트가 없거나 QST 직업 환경 설정이 구성되지 않았습니다.</Value>
+    <Value lang="zh-cn">任务 {0} 需要类似 {1} 的职业，但你没有该职业的装备套装，或者没有配置 QST 职业偏好设置。</Value>
+    <Value lang="ko">퀘스트 {0}에는 {1}와 같은 직업이 필요하지만, 이 직업에 대한 장비 세트가 없거나 QST 직업 환경 설정이 구성되지 않았습니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Controller\Steps\Interactions\Interact.cs -->
     <Key>Quest {0} should be continued as {1}, but you do not have a gearset for that job.</Key>
-	<Value lang="ja-jp">クエスト {0} は {1} として続行する必要がありますが、そのジョブのギアセットがありません。</Value>
-	<Value lang="zh-cn">任务 {0} 应该继续作为 {1}，但你没有该职业的装备套装。</Value>
-	<Value lang="ko">퀘스트 {0}는 {1}로 계속 진행해야 하지만, 해당 직업에 대한 장비 세트가 없습니다.</Value>
+    <Value lang="ja-jp">クエスト {0} は {1} として続行する必要がありますが、そのジョブのギアセットがありません。</Value>
+    <Value lang="zh-cn">任务 {0} 应该继续作为 {1}，但你没有该职业的装备套装。</Value>
+    <Value lang="ko">퀘스트 {0}는 {1}로 계속 진행해야 하지만, 해당 직업에 대한 장비 세트가 없습니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Aethernet locked ({0}): {{1}}</Key>
-	<Value lang="ja-jp">エーテルネットロック ({0}): {{1}}</Value>
-	<Value lang="zh-cn">以太网锁定 ({0}): {{1}}</Value>
-	<Value lang="ko">에테르넷 잠금 ({0}): {{1}}</Value>
+    <Value lang="ja-jp">エーテルネットロック ({0}): {{1}}</Value>
+    <Value lang="zh-cn">以太网锁定 ({0}): {{1}}</Value>
+    <Value lang="ko">에테르넷 잠금 ({0}): {{1}}</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Limited time event</Key>
-	<Value lang="ja-jp">期間限定イベント</Value>
-	<Value lang="zh-cn">限时活动</Value>
-	<Value lang="ko">한정 시간 이벤트</Value>
+    <Value lang="ja-jp">期間限定イベント</Value>
+    <Value lang="zh-cn">限时活动</Value>
+    <Value lang="ko">한정 시간 이벤트</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Hide dialogue answer suggestions/notifications</Key>
-	<Value lang="ja-jp">ダイアログの回答の提案/通知を非表示にする</Value>
-	<Value lang="zh-cn">隐藏对话答案建议/通知</Value>
-	<Value lang="ko">대화 답변 제안/알림 숨기기</Value>
+    <Value lang="ja-jp">ダイアログの回答の提案/通知を非表示にする</Value>
+    <Value lang="zh-cn">隐藏对话答案建议/通知</Value>
+    <Value lang="ko">대화 답변 제안/알림 숨기기</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: Controller\CommandHandler.cs -->
+    <Key>/qst redeem - Redeem all reward items in inventory</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Functions\QuestFunctions.cs -->
+    <Key>Achievement</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
+    <Key>Show quest icons in Journal Progress</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Add {0} to Custom Plugin Repositories.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Install {0} from its plugin repository.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>{0} repository is already added.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Added {0} repository.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Installed {0}.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
+    <Key>Could not install {0}. Check the plugin installer for details.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: Windows\JournalComponents\QuestRewardComponent.cs -->
+    <Key>No results</Key>
   </Entry>
 </I18N>

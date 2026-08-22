@@ -231,6 +231,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool HideRemainingTasks { get; set; }
         public bool ClaimMail { get; set; }
         public bool SameJobThroughoutQuest { get; set; }
+        public bool QuestIcons { get; set; } = true;
     }
 
     internal sealed class StopConfiguration

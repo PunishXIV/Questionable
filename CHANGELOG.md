@@ -1,1 +1,1 @@
-- Bug fix: Cleaner travel through the rooms of the Rising Stones, hopefully -alydev
+- Feature: Quest icons in journal progress (can be toggled in General > UI) -alydev

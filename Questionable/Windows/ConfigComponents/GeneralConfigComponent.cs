@@ -268,6 +268,13 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     Configuration.General.HideRemainingTasks = hideRemainingTasks;
                     Save();
                 }
+
+                bool questIcons = Configuration.General.QuestIcons;
+                if (ImGui.Checkbox(_L("Show quest icons in Journal Progress"), ref questIcons))
+                {
+                    Configuration.General.QuestIcons = questIcons;
+                    Save();
+                }
             }
         }
 

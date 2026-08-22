@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-06-01"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -52,7 +52,7 @@
             "Z": 660.07434
           },
           "TerritoryId": 1187,
-          "InteractionType": "WaitForNpcAtPosition",
+          "InteractionType": "WalkTo",
           "Mount": true
         },
         {
@@ -124,6 +124,7 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WaitForNpcAtPosition",
+          "DelaySecondsAtStart": 2,
           "Mount": true
         },
         {
@@ -194,8 +195,7 @@
             "Z": 424.54318
           },
           "TerritoryId": 1187,
-          "InteractionType": "WaitForNpcAtPosition",
-          "Mount": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1046889,
