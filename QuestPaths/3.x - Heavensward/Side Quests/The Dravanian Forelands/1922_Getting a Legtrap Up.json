@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
   "Comment": "Choice of Chocobo Dyeing rewards.\nYou may want to disable RewardPick (RP)\nin TextAdvance to choose what you want.",
+  "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
