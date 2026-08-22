@@ -67,7 +67,7 @@ internal sealed class QuestRewardComponent
                         ? QstTheme.Success
                         : QstTheme.Danger;
                 FontAwesomeIcon icon = complete ? FontAwesomeIcon.Check : FontAwesomeIcon.Times;
-                if (uiUtils.ChecklistItem(name, color, icon))
+                if (uiUtils.ChecklistItem(name, color, icon, iconOverride: questJournalUtils.GetIconOverride(q, icon)))
                 {
                     using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
                     ImGui.Text(_LF("Obtained from: {0}", q.Name));
@@ -106,7 +106,7 @@ internal sealed class QuestRewardComponent
                         ? QstTheme.Success
                         : QstTheme.Danger;
                 FontAwesomeIcon icon = complete ? FontAwesomeIcon.Check : FontAwesomeIcon.Times;
-                if (uiUtils.ChecklistItem(name, color, icon))
+                if (uiUtils.ChecklistItem(name, color, icon, iconOverride: questJournalUtils.GetIconOverride((QuestInfo)questInfo, icon)))
                 {
                     using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
                     if (item.Type is not EItemRewardType.TripleTriadCard)

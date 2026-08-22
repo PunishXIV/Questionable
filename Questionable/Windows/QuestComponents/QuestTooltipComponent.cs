@@ -102,30 +102,6 @@ internal sealed class QuestTooltipComponent
         DrawQuestUnlocks(questInfo, 0, showItemRewards);
     }
 
-    private void PopulatePrereqCache(ushort topLevelId, IQuestInfo questInfo, int depth = 0)
-    {
-        if (depth >= 20) return;
-        if (depth != 0 && questInfo.IsMainScenarioQuest) return;
-
-        foreach (PreviousQuestInfo q in questInfo.PreviousQuests)
-        {
-            if (!questData.TryGetQuestInfo(q.QuestId, out IQuestInfo? qInfo)) continue;
-
-            // Populate the top-level entry (full tree)
-            questFunctions.prereqCache[topLevelId].Add(qInfo);
-
-            // Recursively ensure this node's own subtree is also fully cached
-            if (!questFunctions.prereqCache.ContainsKey(qInfo.QuestId.Value))
-            {
-                questFunctions.prereqCache[qInfo.QuestId.Value] = [];
-                PopulatePrereqCache(qInfo.QuestId.Value, qInfo, 0); // full depth for subtree
-            }
-
-            if (qInfo is QuestInfo qstInfo)
-                PopulatePrereqCache(topLevelId, qstInfo, depth + 1);
-        }
-    }
-
     private readonly HashSet<IQuestInfo> _shownAlready = [];
     private IQuestInfo _currentTopLevel;
     private void DrawQuestUnlocks(IQuestInfo questInfo, int counter, bool showItemRewards)
@@ -137,7 +113,7 @@ internal sealed class QuestTooltipComponent
             if (!questFunctions.prereqCache.ContainsKey(_currentTopLevel.QuestId.Value))
             {
                 questFunctions.prereqCache[_currentTopLevel.QuestId.Value] = [];
-                PopulatePrereqCache(_currentTopLevel.QuestId.Value, _currentTopLevel);
+                questFunctions.PopulatePrereqCache(_currentTopLevel.QuestId.Value, _currentTopLevel);
             }
         }
         if (counter >= 20)

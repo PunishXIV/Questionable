@@ -272,21 +272,7 @@ internal sealed class QuestJournalComponent
 
         ImGui.TableNextColumn();
         (Vector4 color, FontAwesomeIcon icon, string text) = uiUtils.GetQuestStyle(questInfo.QuestId);
-        // FA icon override with quest icon
-        const uint CompleteIcon = 71025;
-        const uint QuestionIcon = 71026;
-        uint? iconOverride = null;
-        if (configuration.General.QuestIcons)
-        {
-            if (icon is FontAwesomeIcon.Running)
-                iconOverride = questInfo.AvailableIcon;
-            if (icon is FontAwesomeIcon.Times)
-                iconOverride = questInfo.InvalidIcon;
-            if (icon is FontAwesomeIcon.Check)
-                iconOverride = CompleteIcon;
-            if (icon is FontAwesomeIcon.QuestionCircle)
-                iconOverride = QuestionIcon;
-        }
+        uint? iconOverride = questJournalUtils.GetIconOverride(questInfo, icon);
         if (uiUtils.ChecklistItem(text.Split(':')[0], color, icon, iconOverride: iconOverride))
             ImGui.SetTooltip(text);
     }
