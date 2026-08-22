@@ -19,7 +19,8 @@
             "[Tuliyollal] Aetheryte Plaza",
             "[Tuliyollal] Dirigible Landing"
           ],
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "SkipConditions": {"AethernetShortcutIf": {"InSameTerritory": true}}
         }
       ]
     },

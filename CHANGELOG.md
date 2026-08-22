@@ -1,3 +1,2 @@
-- Feature: Quest icons in journal progress (can be toggled in General > UI) -alydev
-  - Feature: quest icons in more places -alydev
-  - Implemented active quest/quest progress icons -alydev
+- Change: Disabled unverified translations -alydev
+  - If you are able to confirm the accuracy of translations for Japanese, Simplified Chinese or Korean, please let us know.
