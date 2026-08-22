@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "Iskierka", "Date": "2026-07-11"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -24,24 +24,25 @@
       "Steps": [
         {
           "Position": {
-            "X": -523.8519,
-            "Y": 22.025784,
-            "Z": -512.0333
+            "X": 212.12222,
+            "Y": 256.37268,
+            "Z": -3.8163254
           },
           "TerritoryId": 402,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Azys Lla - Helix",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -231.93713,
-            "Y": 303.47726,
-            "Z": -311.9725
-          },
-          "TerritoryId": 402,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 155.45001,
+                  "Y": 245.1,
+                  "Z": -5.448744
+                },
+                "TerritoryId": 402,
+                "MaximumDistance": 50
+              }
+            }
+          }
         },
         {
           "DataId": 2007560,
