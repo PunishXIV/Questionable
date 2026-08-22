@@ -270,7 +270,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 }
 
                 bool questIcons = Configuration.General.QuestIcons;
-                if (ImGui.Checkbox(_L("Show quest icons in Journal Progress"), ref questIcons))
+                if (ImGui.Checkbox(_L("Show quest icons"), ref questIcons))
                 {
                     Configuration.General.QuestIcons = questIcons;
                     Save();

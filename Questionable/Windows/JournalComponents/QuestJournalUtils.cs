@@ -269,4 +269,22 @@ internal sealed class QuestJournalUtils
             if (aetheryteData.NearestAetheryteTo(location.Territory.RowId, location.Position) is { } aetheryte)
                 aetheryteFunctions.TeleportAetheryte(aetheryte);
     }
+
+    public uint? GetIconOverride(QuestInfo questInfo, FontAwesomeIcon icon)
+    {
+        const uint QuestionIcon = 71026;
+        uint? iconOverride = null;
+        if (configuration.General.QuestIcons)
+        {
+            if (icon is FontAwesomeIcon.Running)
+                iconOverride = questInfo.AvailableIcon;
+            if (icon is FontAwesomeIcon.Times)
+                iconOverride = questInfo.InvalidIcon;
+            if (icon is FontAwesomeIcon.Check)
+                iconOverride = questInfo.AvailableIcon + 4;
+            if (icon is FontAwesomeIcon.QuestionCircle)
+                iconOverride = QuestionIcon;
+        }
+        return configuration.General.QuestIcons ? iconOverride : null;
+    }
 }

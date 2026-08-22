@@ -38,6 +38,32 @@ internal sealed unsafe class QuestFunctions
     internal static readonly int[] questsThatUseWhiteWolfGate = [439, 1080, 3870, 33];
     internal Dictionary<ushort, HashSet<IQuestInfo>> prereqCache = [];
 
+    internal void PopulatePrereqCache(ushort topLevelId, IQuestInfo questInfo, int depth = 0)
+    {
+        if (depth >= 20) return;
+        if (depth != 0 && questInfo.IsMainScenarioQuest) return;
+        if (!prereqCache.ContainsKey(topLevelId))
+            prereqCache[topLevelId] = [];
+
+        foreach (PreviousQuestInfo q in questInfo.PreviousQuests)
+        {
+            if (!questData.TryGetQuestInfo(q.QuestId, out IQuestInfo? qInfo)) continue;
+
+            // Populate the top-level entry (full tree)
+            prereqCache[topLevelId].Add(qInfo);
+
+            // Recursively ensure this node's own subtree is also fully cached
+            if (!prereqCache.ContainsKey(qInfo.QuestId.Value))
+            {
+                prereqCache[qInfo.QuestId.Value] = [];
+                PopulatePrereqCache(qInfo.QuestId.Value, qInfo, 0); // full depth for subtree
+            }
+
+            if (qInfo is QuestInfo qstInfo)
+                PopulatePrereqCache(topLevelId, qstInfo, depth + 1);
+        }
+    }
+
     public QuestReference GetCurrentQuest(bool allowNewMsq = true)
     {
         QuestReference internalQuest = GetCurrentQuestInternal(allowNewMsq);
