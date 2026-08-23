@@ -1,0 +1,212 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047120,
+          "Position": {
+            "X": 165.852,
+            "Y": -13.98,
+            "Z": 18.3505
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
+          "$": "auto: issuer 1047120 (Pameka)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013893,
+          "Position": {
+            "X": 55.7246,
+            "Y": 47,
+            "Z": -366.848
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Tuliyollal",
+          "$": "auto: todo location -> 2013893 (destination)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1047123,
+          "Position": {
+            "X": 525.586,
+            "Y": 105.124,
+            "Z": 660.617
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
+          "$": "auto: todo location -> 1047123 (Pameka)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1047124,
+          "Position": {
+            "X": 493.326,
+            "Y": 111.135,
+            "Z": 589.152
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
+          "$": "auto: todo location -> 1047124 (young Yok Huy)"
+        },
+        {
+          "DataId": 1047125,
+          "Position": {
+            "X": 449.68,
+            "Y": 120.235,
+            "Z": 560.905
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo location -> 1047125 (severe Yok Huy)"
+        },
+        {
+          "DataId": 1047126,
+          "Position": {
+            "X": 367.574,
+            "Y": 129.046,
+            "Z": 635.218
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo location -> 1047126 (drowsy Yok Huy)"
+        },
+        {
+          "DataId": 1047123,
+          "Position": {
+            "X": 525.586,
+            "Y": 105.124,
+            "Z": 660.617
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo location -> 1047123 (Pameka)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1047127,
+          "Position": {
+            "X": 526.232,
+            "Y": 111.135,
+            "Z": 730.117
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
+          "$": "auto: lua ACTOR5 -> 1047127 (Yok Huy stonemason)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1047128,
+          "Position": {
+            "X": 521.977,
+            "Y": 111.135,
+            "Z": 730.943
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
+          "$": "auto: todo location -> 1047128 (Pameka)"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "TerritoryId": 1185,
+          "InteractionType": "Craft",
+          "ItemId": 43909,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": { "NotInInventory": false }
+            }
+          }
+        },
+        {
+          "DataId": 1047128,
+          "Position": {
+            "X": 521.977,
+            "Y": 111.135,
+            "Z": 730.943
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
+          "$": "auto: todo location -> 1047128 (Pameka); npc trade"
+        },
+        {
+          "DataId": 1047127,
+          "Position": {
+            "X": 526.232,
+            "Y": 111.135,
+            "Z": 730.117
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1047127 (Yok Huy stonemason); npc trade"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047120,
+          "Position": {
+            "X": 165.852,
+            "Y": -13.98,
+            "Z": 18.3505
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4980,
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
+          "$": "auto: todo turn-in -> 1047120 (Pameka)"
+        }
+      ]
+    }
+  ]
+}
