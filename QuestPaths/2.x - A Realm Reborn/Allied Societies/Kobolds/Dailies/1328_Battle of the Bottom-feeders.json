@@ -32,6 +32,7 @@
           "TerritoryId": 180,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
           "ComplexCombatData": [
             {
               "DataId": 755,

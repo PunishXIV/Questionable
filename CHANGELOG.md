@@ -1,2 +1,1 @@
-- Change: Disabled unverified translations -alydev
-  - If you are able to confirm the accuracy of translations for Japanese, Simplified Chinese or Korean, please let us know.
+- Bug fix: fixed quest icons in some places -alydev

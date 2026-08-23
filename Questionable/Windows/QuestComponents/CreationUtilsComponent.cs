@@ -38,6 +38,7 @@ internal sealed class CreationUtilsComponent
     Configuration configuration,
     ILogger<CreationUtilsComponent> logger)
 {
+    private Vector3? _savedPos;
 
     public void Draw()
     {
@@ -192,6 +193,7 @@ internal sealed class CreationUtilsComponent
             ImGui.SameLine();
             DrawCopyButton();
         }
+        DrawSavedDetails();
     }
 
     internal void DrawPathEditorButton(ElementId? currentQuest, bool sameLine = false)
@@ -249,6 +251,30 @@ internal sealed class CreationUtilsComponent
 
             GameObject* gameObject = (GameObject*)target.Address;
             ImGui.Text($"QM: {gameObject->NamePlateIconId}");
+        }
+    }
+
+    private unsafe void DrawSavedDetails()
+    {
+        if (_savedPos == null)
+            return;
+        ImGui.Spacing();
+        using (QstWidgets.Card())
+        {
+            if (objectTable[0] != null)
+            {
+                ImGui.Text(_LF("Distance: {0:F2} ({1}y)",
+                    (_savedPos.Value - objectTable[0]!.Position).Length(),
+                    Math.Floor(_savedPos.Value.DistanceTo_XZ(objectTable[0]!.Position)) - 1));
+                ImGui.SameLine();
+
+                float verticalDistance = _savedPos.Value.Y - objectTable[0]!.Position.Y;
+                string verticalDistanceText = _LF("Y: {0:F2}", verticalDistance);
+                if (Math.Abs(verticalDistance) >= MovementController.DefaultVerticalInteractionDistance)
+                    ImGui.TextColored(QstTheme.Accent, verticalDistanceText);
+                else
+                    ImGui.Text(verticalDistanceText);
+            }
         }
     }
 
@@ -323,6 +349,20 @@ internal sealed class CreationUtilsComponent
             }
             if (ImGui.IsItemHovered())
                 ImGui.SetTooltip(_L("Interact with your current target."));
+        }
+
+        if (objectTable[0] != null)
+        {
+            ImGui.SameLine();
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MapPin))
+            {
+                if (_savedPos == null)
+                    _savedPos = objectTable[0]!.Position;
+                else
+                    _savedPos = null;
+            }
+            if (ImGui.IsItemHovered())
+                ImGui.SetTooltip(_L("Save/clear current position as reference"));
         }
     }
 

@@ -33,6 +33,7 @@
           "InteractionType": "Combat",
           "Fly": true,
           "EnemySpawnType": "AutoOnEnterArea",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
           "KillEnemyDataIds": [
             17
           ],

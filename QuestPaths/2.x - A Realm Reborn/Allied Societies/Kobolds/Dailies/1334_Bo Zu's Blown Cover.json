@@ -33,6 +33,7 @@
           "TerritoryId": 180,
           "Fly": true,
           "InteractionType": "Interact",
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
           "DialogueChoices": [
             {
               "Type": "List",
