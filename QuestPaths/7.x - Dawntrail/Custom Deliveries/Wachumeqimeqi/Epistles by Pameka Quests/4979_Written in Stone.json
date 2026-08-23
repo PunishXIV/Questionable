@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -34,7 +35,10 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Wachumeqimeqi",
+            "[Tuliyollal] Brightploom Post"
+          ],
           "$": "auto: todo location -> 2013893 (destination)"
         }
       ]
@@ -141,6 +145,7 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
+          "StopDistance": 4,
           "Fly": true,
           "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "$": "auto: todo location -> 1047128 (Pameka)"
@@ -170,20 +175,9 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
+          "StopDistance": 4,
           "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "$": "auto: todo location -> 1047128 (Pameka); npc trade"
-        },
-        {
-          "DataId": 1047127,
-          "Position": {
-            "X": 526.232,
-            "Y": 111.135,
-            "Z": 730.117
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "$": "auto: todo location -> 1047127 (Yok Huy stonemason); npc trade"
         }
       ]
     },

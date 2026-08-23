@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -34,7 +35,10 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Wachumeqimeqi",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ],
           "$": "auto: todo location -> 1047130 (Zemoweni)"
         }
       ]
@@ -62,7 +66,10 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Bayside Bevy Marketplace",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
           "$": "auto: todo location -> 1047120 (Pameka); npc trade"
         },
         {
@@ -90,7 +97,10 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
+          "AethernetShortcut": [
+            "[Tuliyollal] Wachumeqimeqi",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ],
           "$": "auto: todo location -> 2013895 (destination)"
         }
       ]
@@ -125,7 +135,7 @@
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest",
           "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Bayside Bevy Marketplace",
             "[Tuliyollal] Wachumeqimeqi"
           ],
           "$": "auto: todo turn-in -> 1047120 (Pameka)"
