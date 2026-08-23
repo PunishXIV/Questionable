@@ -1,0 +1,200 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1047109,
+          "Position": {
+            "X": 155.056,
+            "Y": -13.98,
+            "Z": 2.99969
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
+          "$": "auto: issuer 1047109 (Xeerol Ja)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1047112,
+          "Position": {
+            "X": 380.072,
+            "Y": -156.005,
+            "Z": -378.68
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Urqopacha - Wachunpelo",
+          "$": "auto: todo location -> 1047112 (Halnaruk)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1048629,
+          "Position": {
+            "X": 353.374,
+            "Y": -158.053,
+            "Z": -423.725
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo area 28y from lua ACTOR3 -> 1048629 (Qobli)"
+        },
+        {
+          "DataId": 1046595,
+          "Position": {
+            "X": 343.028,
+            "Y": -160.235,
+            "Z": -461.925
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo area 18y from lua ACTOR4 -> 1046595 (Tsuvli)"
+        },
+        {
+          "DataId": 1048630,
+          "Position": {
+            "X": 259.754,
+            "Y": -168.27,
+            "Z": -472.77
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo area 8y from lua ACTOR5 -> 1048630 (Wavlu)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1047131,
+          "Position": {
+            "X": 394.489,
+            "Y": -156.05,
+            "Z": -385.751
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Urqopacha - Wachunpelo",
+          "$": "auto: todo location -> 1047131 (Xeerol Ja)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1047113,
+          "Position": {
+            "X": 316.213,
+            "Y": -164.172,
+            "Z": -465.293
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Urqopacha - Wachunpelo",
+          "$": "auto: todo location -> 1047113 (Halnaruk)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1047167,
+          "Position": {
+            "X": 354.793,
+            "Y": -155.876,
+            "Z": -370.9
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Urqopacha - Wachunpelo",
+          "$": "auto: todo location -> 1047167 (Halnaruk)"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "TerritoryId": 1187,
+          "InteractionType": "Craft",
+          "ItemId": 43911,
+          "ItemCount": 1,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": { "NotInInventory": false }
+            }
+          }
+        },
+        {
+          "DataId": 1047115,
+          "Position": {
+            "X": 335.91,
+            "Y": -154.137,
+            "Z": -372.702
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Urqopacha - Wachunpelo",
+          "$": "auto: todo location -> 1047115 (Xeerol Ja); npc trade"
+        },
+        {
+          "DataId": 1047167,
+          "Position": {
+            "X": 354.793,
+            "Y": -155.876,
+            "Z": -370.9
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1047167 (Halnaruk); npc trade"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1047109,
+          "Position": {
+            "X": 155.056,
+            "Y": -13.98,
+            "Z": 2.99969
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 4987,
+          "AethernetShortcut": [
+            "[Tuliyollal] Aetheryte Plaza",
+            "[Tuliyollal] Wachumeqimeqi"
+          ],
+          "$": "auto: todo turn-in -> 1047109 (Xeerol Ja)"
+        }
+      ]
+    }
+  ]
+}
