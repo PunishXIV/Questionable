@@ -333,6 +333,7 @@ public sealed class QuestionablePlugin : IDalamudPlugin
 
     private static void AddWindows(ServiceCollection serviceCollection)
     {
+        serviceCollection.AddSingleton<Windows.Common.Ui.GameIcons>();
         serviceCollection.AddSingleton<UiUtils>();
         serviceCollection.AddTransient<QuestSelector>();
         serviceCollection.AddTransient<RedoUtil>();

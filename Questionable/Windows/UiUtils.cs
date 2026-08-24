@@ -10,7 +10,7 @@ internal sealed class UiUtils(
     QuestFunctions questFunctions,
     IDalamudPluginInterface pluginInterface,
     QuestData questData,
-    ITextureProvider textureProvider)
+    GameIcons gameIcons)
 {
     public unsafe (Vector4 Color, FontAwesomeIcon Icon, string Status) GetQuestStyle(ElementId elementId)
     {
@@ -73,16 +73,7 @@ internal sealed class UiUtils(
     {
         if (extraPadding > 0)
             ImGui.SetCursorPosX(ImGui.GetCursorPosX() + extraPadding);
-        if (iconOverride != null &&
-            textureProvider.TryGetFromGameIcon(new(iconOverride.Value), out var tex) &&
-            tex.TryGetWrap(out var texture, out _))
-        {
-            var drawSize = new Vector2(ImGui.GetTextLineHeightWithSpacing());
-            ImGui.Image(texture.Handle, drawSize);
-            ImGui.SameLine();
-            texture.Dispose();
-        }
-        else
+        if (iconOverride is not { } iconId || !gameIcons.DrawInline(iconId))
         {
             using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
             {

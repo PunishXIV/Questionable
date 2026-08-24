@@ -33,7 +33,7 @@ internal sealed partial class ActiveQuestComponent
     CreationUtilsComponent creationUtilsComponent,
     ClassJobUtils classJobUtils,
     QuestJournalUtils questJournalUtils,
-    ITextureProvider textureProvider,
+    GameIcons gameIcons,
     ILogger<ActiveQuestComponent> logger)
 {
     [GeneratedRegex(@"\s\s+", RegexOptions.IgnoreCase, "en-US")]
@@ -287,16 +287,8 @@ internal sealed partial class ActiveQuestComponent
                 }
 
                 uint? iconOverride = questJournalUtils.GetIconOverride((QuestInfo)currentQuest.Quest.Info, FontAwesomeIcon.PersonWalkingArrowRight);
-                if (iconOverride != null &&
-                    textureProvider.TryGetFromGameIcon(new(iconOverride.Value), out var tex) &&
-                    tex.TryGetWrap(out var texture, out _))
-                {
-                    var drawSize = new Vector2(ImGui.GetTextLineHeightWithSpacing());
-                    ImGui.Image(texture.Handle, drawSize);
-                    ImGui.SameLine();
-                    texture.Dispose();
+                if (iconOverride is { } iconId && gameIcons.DrawInline(iconId))
                     ImGui.TextUnformatted(Shorten(currentQuest.Quest.Info.Name));
-                }
                 else
                     ImGui.TextUnformatted(_L("Quest: ") + Shorten(currentQuest.Quest.Info.Name));
                 ImGui.SameLine();

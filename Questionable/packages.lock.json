@@ -86,6 +86,12 @@
           "ECommons": "3.2.0.11"
         }
       },
+      "SixLabors.ImageSharp": {
+        "type": "Direct",
+        "requested": "[3.1.12, )",
+        "resolved": "3.1.12",
+        "contentHash": "iAg6zifihXEFS/t7fiHhZBGAdCp3FavsF4i2ZIDp0JfeYeDVzvmlbY1CNhhIKimaIzrzSi5M/NBFcWvZT2rB/A=="
+      },
       "System.Text.Json": {
         "type": "Direct",
         "requested": "[9.0.3, )",
@@ -157,7 +163,7 @@
       "gatheringpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.306.0.20, )"
+          "Questionable.Model": "[15.306.3.7, )"
         }
       },
       "questionable.model": {
@@ -166,7 +172,7 @@
       "questpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.306.0.20, )"
+          "Questionable.Model": "[15.306.3.7, )"
         }
       }
     }
