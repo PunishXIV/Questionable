@@ -273,8 +273,8 @@ internal sealed class QuestJournalUtils
 
     public uint? GetIconOverride(QuestInfo questInfo, FontAwesomeIcon icon, Vector4? color = null)
     {
-        const uint QuestionIcon = 71026;
-        const uint BlueRepeatable = 71142;
+        const uint QuestionIcon = 71226;
+        const uint BlueRepeatable = 71342;
         uint? iconOverride = null;
         if (configuration.General.QuestIcons)
         {
