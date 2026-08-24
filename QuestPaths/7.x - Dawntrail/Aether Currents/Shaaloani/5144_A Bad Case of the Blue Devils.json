@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -28,6 +29,17 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "WalkTo"
+        },
+        {
+          "DataId": 2013957,
+          "Position": {
+            "X": -192.18744,
+            "Y": 36.66736,
+            "Z": -53.177734
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818454
         },
         {
           "DataId": 1051300,
