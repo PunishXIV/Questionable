@@ -232,6 +232,11 @@
           "ECommons": "3.2.0.11"
         }
       },
+      "SixLabors.ImageSharp": {
+        "type": "Transitive",
+        "resolved": "3.1.12",
+        "contentHash": "iAg6zifihXEFS/t7fiHhZBGAdCp3FavsF4i2ZIDp0JfeYeDVzvmlbY1CNhhIKimaIzrzSi5M/NBFcWvZT2rB/A=="
+      },
       "System.Diagnostics.EventLog": {
         "type": "Transitive",
         "resolved": "6.0.0",
@@ -285,7 +290,7 @@
       "gatheringpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.306.0.20, )"
+          "Questionable.Model": "[15.306.3.7, )"
         }
       },
       "questionable": {
@@ -294,15 +299,16 @@
           "Dalamud.Extensions.MicrosoftLogging": "[4.0.1, )",
           "DalamudPackager": "[15.0.0, )",
           "ECommons": "[3.2.0.16, )",
-          "GatheringPaths": "[15.306.0.20, )",
+          "GatheringPaths": "[15.306.3.7, )",
           "I18N.DotNet": "[1.3.1, )",
           "JetBrains.Annotations": "[2025.2.4, )",
           "JsonSchema.Net": "[7.4.0, )",
           "Microsoft.Extensions.DependencyInjection": "[9.0.8, )",
           "NotificationMasterAPI": "[1.0.0.1, )",
           "PunishLib": "[2.0.0.1, )",
-          "QuestPaths": "[15.306.0.20, )",
-          "Questionable.Model": "[15.306.0.20, )",
+          "QuestPaths": "[15.306.3.7, )",
+          "Questionable.Model": "[15.306.3.7, )",
+          "SixLabors.ImageSharp": "[3.1.12, )",
           "WrathCombo.API": "[0.5.5, )"
         }
       },
@@ -312,7 +318,7 @@
       "questpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.306.0.20, )"
+          "Questionable.Model": "[15.306.3.7, )"
         }
       }
     }
