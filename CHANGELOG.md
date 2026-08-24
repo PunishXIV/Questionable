@@ -1,1 +1,1 @@
-- Bug fix: fixed quest icons in some places -alydev
+- Bug fix: Beautiful icons! -wah
