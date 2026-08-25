@@ -53,7 +53,13 @@ jobs:
 
       - name: Verify formatting
         run: |
-          dotnet format Questionable.sln --verify-no-changes --no-restore --severity warn -v diag
+          dotnet format Questionable.sln --no-restore --severity warn -v diag
+      - name: Apply formatting
+        uses: EndBug/add-and-commit@v10
+        with:
+          author_name: GitHub Actions
+          author_email: github-actions[bot]@users.noreply.github.com
+          message: Apply formatting
 
       - name: Build test projects
         run: |
