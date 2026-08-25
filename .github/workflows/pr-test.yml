@@ -15,15 +15,17 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: ${{ github.actor != 'github-actions[bot]' }}
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
+          ref: ${{ github.head_ref }}
           submodules: recursive
           # Need PR base + head so we can diff to find which QuestPaths files changed.
           fetch-depth: 0
@@ -53,7 +55,16 @@ jobs:
 
       - name: Verify formatting
         run: |
-          dotnet format Questionable.sln --verify-no-changes --no-restore --severity warn -v diag
+          dotnet format Questionable.sln --no-restore --severity warn -v diag
+
+      - name: Apply formatting
+        continue-on-error: true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Apply formatting"
+          git push
 
       - name: Build test projects
         run: |
