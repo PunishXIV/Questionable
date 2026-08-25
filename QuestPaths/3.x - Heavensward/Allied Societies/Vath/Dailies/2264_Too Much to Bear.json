@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-14"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -36,7 +36,8 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [5546],
           "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 2006871,
@@ -47,7 +48,8 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "Fly": true
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 2006873,
@@ -60,7 +62,8 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [5546],
-          "Fly": true
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         }
       ]
     },
