@@ -58,6 +58,7 @@ jobs:
           dotnet format Questionable.sln --no-restore --severity warn -v diag
 
       - name: Apply formatting
+        continue-on-error: true
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
