@@ -1,1 +1,2 @@
-- Feature: Add Completed Quests filter to Journal -Asha0
+- Bug fix: Boss Mod plugin installer name updated -alydev
+- Bug fix: hopefully support alternate punish repo urls for automated installer, testing -alydev

@@ -31,6 +31,12 @@ internal sealed class PluginConfigComponent
         "https://raw.githubusercontent.com/NightmareXIV/MyDalamudPlugins/main/pluginmaster.json"
     ];
 
+    private const string PunishRepositoryUrl = "https://love.puni.sh/ment.json";
+    private static readonly string[] PunishRepositoryAlternates = 
+    [
+        "https://puni.sh/api/plugins"
+    ];
+
     private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
     private readonly Configuration _configuration = configuration;
     private readonly CombatController _combatController = combatController;
@@ -47,7 +53,7 @@ internal sealed class PluginConfigComponent
         {
             {
                 ECombatModule.BossMod,
-                new("Boss Mod (VBM)",
+                new("Boss Mod",
                     "BossMod",
                     "Automates all kinds of combat and interaction in overworld and duty content",
                     new("https://github.com/awgil/ffxiv_bossmod"),
@@ -60,8 +66,9 @@ internal sealed class PluginConfigComponent
                     "WrathCombo",
                     string.Empty,
                     new("https://github.com/PunishXIV/WrathCombo"),
-                    new("https://puni.sh/api/plugins"),
-                    "/wrath")
+                    new(PunishRepositoryUrl),
+                    "/wrath",
+                    AlternateRepositoryUrls: PunishRepositoryAlternates)
             },
             {
                 ECombatModule.RotationSolverReborn,
@@ -106,8 +113,9 @@ internal sealed class PluginConfigComponent
             "Artisan",
             _L("Automates crafting"),
             new("https://github.com/PunishXIV/Artisan"),
-            new("https://puni.sh/api/plugins"),
-            "/artisan"),
+            new(PunishRepositoryUrl),
+            "/artisan",
+            AlternateRepositoryUrls: PunishRepositoryAlternates),
         new("AutoDuty",
             "AutoDuty",
             _L("Automates duties"),
@@ -118,8 +126,9 @@ internal sealed class PluginConfigComponent
             "AutoHook",
             _L("Automates fishing"),
             new("https://github.com/PunishXIV/AutoHook"),
-            new("https://puni.sh/api/plugins"),
-            "/autohook"),
+            new(PunishRepositoryUrl),
+            "/autohook",
+            AlternateRepositoryUrls: PunishRepositoryAlternates),
         new("CBT (formerly known as Automaton)",
             "Automaton",
             _L("Automaton is a collection of automation-related tweaks."),
@@ -149,14 +158,15 @@ internal sealed class PluginConfigComponent
             "PandorasBox",
             _L("Pandora's Box is a collection of tweaks."),
             new("https://github.com/PunishXIV/PandorasBox"),
-            new("https://puni.sh/api/plugins"),
+            new(PunishRepositoryUrl),
             "/pandora",
             [
                 new(_L("'Auto Active Time Maneuver' enabled"),
                     _L("Automatically completes active time maneuvers in single player instances, trials and raids"),
                     () => pandorasBoxIpc.IsAutoActiveTimeManeuverEnabled,
-                    () => pandorasBoxIpc.SetAutoActiveTimeManeuverEnabled(true))
-            ]),
+                    () => pandorasBoxIpc.SetAutoActiveTimeManeuverEnabled(enabled: true))
+            ],
+            AlternateRepositoryUrls: PunishRepositoryAlternates),
         new("Stylist",
             "Stylist",
             _L("Gear manager"),

@@ -45,6 +45,7 @@ internal static class SinglePlayerDuty
         public const ushort ViperTutorial = 1235;
         public const ushort EgistentialCrisis = 701;
         public const ushort Nightkin = 676;
+        public const ushort WarmthOfFamily = 1244;
     }
 
     internal sealed class Factory
@@ -215,6 +216,42 @@ internal static class SinglePlayerDuty
                     "Wait(finishing combat)");
                     yield return new MoveTask(SpecialTerritories.Nightkin, new(376.36014f, -39f, -60.74992f), Mount: false);
                     yield return new Interact.Task(2007939, quest, EInteractionType.Interact, SkipMarkerCheck: true);
+                }
+
+                else if (tId == SpecialTerritories.WarmthOfFamily)
+                {
+                    yield return new MoveTask(SpecialTerritories.WarmthOfFamily, new(328.9248f, -16.66298f, -310.9581f));
+                    yield return new Interact.Task(2014395, quest, EInteractionType.Interact, SkipMarkerCheck: true);
+                    yield return new MoveTask(SpecialTerritories.WarmthOfFamily, new(336.6056f, -16.60183f, -300.5593f));
+                    yield return new Interact.Task(2014403, quest, EInteractionType.Interact, SkipMarkerCheck: true);
+                    yield return new MoveTask(SpecialTerritories.WarmthOfFamily, new(414.32892f, -16.524708f, -127.3352f));
+                    yield return new EnableAi();
+                    yield return new WaitCondition.Task(
+                    () =>
+                    {
+                        if (clientState.TerritoryType != SpecialTerritories.WarmthOfFamily)
+                            return true;
+                        return condition[ConditionFlag.SufferingStatusAffliction63];
+                    },
+                    "Wait(phase 2)");
+                    yield return new WaitCondition.Task(
+                    () =>
+                    {
+                        if (clientState.TerritoryType != SpecialTerritories.WarmthOfFamily)
+                            return true;
+                        return !condition[ConditionFlag.SufferingStatusAffliction63];
+                    },
+                    "Wait(in event)");
+                    yield return new SetTarget(17976);
+                    yield return new WaitCondition.Task(
+                        () =>
+                        {
+                            if (clientState.TerritoryType != SpecialTerritories.WarmthOfFamily)
+                                return true;
+                            return objectTable.Any(o => o.BaseId.Equals(17992));
+                        },
+                        "Wait(leg exposed)");
+                    yield return new SetTarget(17992);
                 }
 
                 //else if (tId == SpecialTerritories.ViperTutorial)
