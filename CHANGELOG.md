@@ -1,1 +1,1 @@
-- Change: Remove new icons from Allied society journal tab, it was making it hard to see which ones needed checking -alydev
+- Feature: Add Completed Quests filter to Journal -Asha0

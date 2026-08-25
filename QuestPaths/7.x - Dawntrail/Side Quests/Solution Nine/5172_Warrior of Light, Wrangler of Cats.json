@@ -20,6 +20,10 @@
               "Prompt": "TEXT_KINGZG009_05172_Q1_000_000",
               "Answer": "TEXT_KINGZG009_05172_A1_000_003"
             }
+          ],
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Nexus Arcade"
           ]
         }
       ]
@@ -43,14 +47,498 @@
       "Sequence": 2,
       "Steps": [
         {
+          "Comment": "0/12 Cat might have moved left, moving it to the right side",
           "Position": {
-            "X": -375.93652,
-            "Y": 13.992493,
-            "Z": 144.06042
+            "X": -356.37466,
+            "Y": 14.80533,
+            "Z": 168.37314
           },
           "TerritoryId": 1186,
-          "InteractionType": "Instruction",
-          "Comment": "Catch the cat. Good luck!"
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "0/12",
+          "Position": {
+            "X": -364.96835,
+            "Y": 13.725717,
+            "Z": 182.23216
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "0/12",
+          "Position": {
+            "X": -382.49274,
+            "Y": 14.130916,
+            "Z": 162.61644
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "1/12 Loop start!",
+          "Position": {
+            "X": -387.2064,
+            "Y": 13.725712,
+            "Z": 146.00229
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "1/12",
+          "Position": {
+            "X": -397.9037,
+            "Y": 14.000002,
+            "Z": 156.51251
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "1/12",
+          "Position": {
+            "X": -425.60364,
+            "Y": 14.029998,
+            "Z": 133.26878
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "2/12",
+          "Position": {
+            "X": -387.2064,
+            "Y": 13.725712,
+            "Z": 146.00229
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "2/12",
+          "Position": {
+            "X": -397.9037,
+            "Y": 14.000002,
+            "Z": 156.51251
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "2/12",
+          "Position": {
+            "X": -425.60364,
+            "Y": 14.029998,
+            "Z": 133.26878
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "3/12",
+          "Position": {
+            "X": -387.2064,
+            "Y": 13.725712,
+            "Z": 146.00229
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "3/12",
+          "Position": {
+            "X": -397.9037,
+            "Y": 14.000002,
+            "Z": 156.51251
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "3/12",
+          "Position": {
+            "X": -425.60364,
+            "Y": 14.029998,
+            "Z": 133.26878
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "4/12",
+          "Position": {
+            "X": -387.2064,
+            "Y": 13.725712,
+            "Z": 146.00229
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "4/12",
+          "Position": {
+            "X": -397.9037,
+            "Y": 14.000002,
+            "Z": 156.51251
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "4/12",
+          "Position": {
+            "X": -425.60364,
+            "Y": 14.029998,
+            "Z": 133.26878
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "5/12",
+          "Position": {
+            "X": -387.2064,
+            "Y": 13.725712,
+            "Z": 146.00229
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "5/12",
+          "Position": {
+            "X": -397.9037,
+            "Y": 14.000002,
+            "Z": 156.51251
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "5/12",
+          "Position": {
+            "X": -425.60364,
+            "Y": 14.029998,
+            "Z": 133.26878
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "6/12",
+          "Position": {
+            "X": -387.2064,
+            "Y": 13.725712,
+            "Z": 146.00229
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "6/12",
+          "Position": {
+            "X": -397.9037,
+            "Y": 14.000002,
+            "Z": 156.51251
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "6/12",
+          "Position": {
+            "X": -425.60364,
+            "Y": 14.029998,
+            "Z": 133.26878
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "7/12",
+          "Position": {
+            "X": -387.2064,
+            "Y": 13.725712,
+            "Z": 146.00229
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "7/12",
+          "Position": {
+            "X": -397.9037,
+            "Y": 14.000002,
+            "Z": 156.51251
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "7/12",
+          "Position": {
+            "X": -425.60364,
+            "Y": 14.029998,
+            "Z": 133.26878
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "8/12",
+          "Position": {
+            "X": -387.2064,
+            "Y": 13.725712,
+            "Z": 146.00229
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "8/12",
+          "Position": {
+            "X": -397.9037,
+            "Y": 14.000002,
+            "Z": 156.51251
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "8/12",
+          "Position": {
+            "X": -425.60364,
+            "Y": 14.029998,
+            "Z": 133.26878
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "9/12",
+          "Position": {
+            "X": -387.2064,
+            "Y": 13.725712,
+            "Z": 146.00229
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "9/12",
+          "Position": {
+            "X": -397.9037,
+            "Y": 14.000002,
+            "Z": 156.51251
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "9/12",
+          "Position": {
+            "X": -425.60364,
+            "Y": 14.029998,
+            "Z": 133.26878
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "10/12",
+          "Position": {
+            "X": -387.2064,
+            "Y": 13.725712,
+            "Z": 146.00229
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "10/12",
+          "Position": {
+            "X": -397.9037,
+            "Y": 14.000002,
+            "Z": 156.51251
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "10/12",
+          "Position": {
+            "X": -425.60364,
+            "Y": 14.029998,
+            "Z": 133.26878
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "11/12",
+          "Position": {
+            "X": -387.2064,
+            "Y": 13.725712,
+            "Z": 146.00229
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "11/12",
+          "Position": {
+            "X": -397.9037,
+            "Y": 14.000002,
+            "Z": 156.51251
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "11/12",
+          "Position": {
+            "X": -425.60364,
+            "Y": 14.029998,
+            "Z": 133.26878
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "12/12",
+          "Position": {
+            "X": -387.2064,
+            "Y": 13.725712,
+            "Z": 146.00229
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "12/12",
+          "Position": {
+            "X": -397.9037,
+            "Y": 14.000002,
+            "Z": 156.51251
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "The cat appears to have grown tired",
+          "Position": {
+            "X": -433.56616,
+            "Y": 13.999998,
+            "Z": 149.38135
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "The cat appears to have grown tired",
+          "DataId": 1051070,
+          "Position": {
+            "X": -414.64523,
+            "Y": 13.999994,
+            "Z": 112.81886
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
+        },
+        {
+          "Comment": "The cat appears to have grown tired",
+          "DataId": 1051070,
+          "Position": {
+            "X": -414.64523,
+            "Y": 13.999994,
+            "Z": 112.81886
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "StopDistance": 0.25,
+          "DisableNavmesh": true
         }
       ]
     },
