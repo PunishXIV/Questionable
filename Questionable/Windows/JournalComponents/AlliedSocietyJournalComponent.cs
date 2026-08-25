@@ -201,8 +201,7 @@ internal sealed class AlliedSocietyJournalComponent
             checklistItem = "(FATE) " + checklistItem;
         if (showRepValue)
             checklistItem = $"[+{questInfo.SocietyRepValue}] " + checklistItem;
-        if (uiUtils.ChecklistItem(checklistItem, color, icon,
-                iconOverride: questJournalUtils.GetIconOverride(questInfo, icon, color: color)))
+        if (uiUtils.ChecklistItem(checklistItem, color, icon))
             questTooltipComponent.Draw(questInfo);
         if (addPending && (color.Equals(QstTheme.Accent) || color.Equals(QstTheme.Accent)))
             questController.PriorityManager.Add(questInfo.QuestId);
