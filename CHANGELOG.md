@@ -1,2 +1,2 @@
-- Bug fix: Boss Mod plugin installer name updated -alydev
-- Bug fix: hopefully support alternate punish repo urls for automated installer, testing -alydev
+- Bug fix: notificationmaster install button wasn't working for 1pp repo -alydev
+- Change: Remove mogmail recommendation, integration not complete yet -alydev

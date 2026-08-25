@@ -32,10 +32,11 @@ internal sealed class PluginConfigComponent
     ];
 
     private const string PunishRepositoryUrl = "https://love.puni.sh/ment.json";
-    private static readonly string[] PunishRepositoryAlternates = 
+    private static readonly string[] PunishRepositoryAlternates =
     [
         "https://puni.sh/api/plugins"
     ];
+    private const string DalamudOfficialRepo = "https://kamori.goats.dev/Plugin/PluginMaster";
 
     private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
     private readonly Configuration _configuration = configuration;
@@ -141,19 +142,18 @@ internal sealed class PluginConfigComponent
                     () => automatonIpc.IsAutoSnipeEnabled,
                     () => automatonIpc.SetAutoSnipeEnabled(true))
             ]),
-        new("MogMail",
-            "Mogmail",
-            _L("Claim mailed items during QST operation"),
-            new("https://github.com/Nexaii/Mogmail"),
-            new("https://puni.sh/api/plugins/nexai"),
-            "/mogmail"),
+        //new("MogMail",
+        //    "Mogmail",
+        //    _L("Claim mailed items during QST operation"),
+        //    new("https://github.com/Nexaii/Mogmail"),
+        //    new("https://puni.sh/api/plugins/nexai"),
+        //    "/mogmail"),
         new("NotificationMaster",
             "NotificationMaster",
             _L("Sends a configurable out-of-game notification if a quest requires manual actions."),
-            new Uri("https://github.com/NightmareXIV/NotificationMaster"),
-            new(NightmareXivRepositoryUrl),
-            "/pnotify",
-            AlternateRepositoryUrls: NightmareXivRepositoryAlternates),
+            new("https://github.com/NightmareXIV/NotificationMaster"),
+            null,
+            "/pnotify"),
         new("Pandora's Box",
             "PandorasBox",
             _L("Pandora's Box is a collection of tweaks."),
@@ -525,7 +525,7 @@ internal sealed class PluginConfigComponent
             return;
 
         string repoUrl = plugin.DalamudRepositoryUri.ToString();
-        if (DalamudReflector.HasRepo(repoUrl))
+        if (DalamudReflector.HasRepo(repoUrl) || repoUrl.Equals(DalamudOfficialRepo, StringComparison.Ordinal))
         {
             _chatGui.Print(_LF("{0} repository is already added.", plugin.DisplayName), CommandHandler.MessageTag,
                 CommandHandler.TagColor);
@@ -541,11 +541,11 @@ internal sealed class PluginConfigComponent
 
     private async Task StartInstallAsync(PluginInfo plugin)
     {
-        if (plugin.DalamudRepositoryUri == null)
-        {
-            _pluginInterface.OpenPluginInstallerTo(PluginInstallerOpenKind.AllPlugins, plugin.DisplayName);
-            return;
-        }
+        //if (plugin.DalamudRepositoryUri == null)
+        //{
+        //    _pluginInterface.OpenPluginInstallerTo(PluginInstallerOpenKind.AllPlugins, plugin.DisplayName);
+        //    return;
+        //}
 
         if (IsPluginPresent(plugin.InternalName))
         {
@@ -560,7 +560,8 @@ internal sealed class PluginConfigComponent
             return;
 
         string repoUrl = plugin.RepositoryUrls.FirstOrDefault(DalamudReflector.HasRepo)
-                         ?? plugin.DalamudRepositoryUri.ToString();
+                         ?? plugin.DalamudRepositoryUri?.ToString()
+                         ?? DalamudOfficialRepo;
         try
         {
             if (await InstallFromRepositoryAsync(repoUrl, plugin.InternalName).ConfigureAwait(false))
@@ -659,7 +660,7 @@ internal sealed class PluginConfigComponent
             return false;
         }
 
-        if (!DalamudReflector.HasRepo(repoUrl))
+        if (!DalamudReflector.HasRepo(repoUrl) && !repoUrl.Equals(DalamudOfficialRepo, StringComparison.Ordinal))
             DalamudReflector.AddRepo(repoUrl, enabled: true);
 
         DalamudReflector.SaveDalamudConfig();
