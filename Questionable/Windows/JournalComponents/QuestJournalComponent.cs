@@ -438,7 +438,7 @@ internal sealed class QuestJournalComponent
         if (filter.HideNoPaths &&
             (!questRegistry.TryGetQuest(questInfo.QuestId, out Quest? quest) || quest.Root.Disabled))
             return false;
-        
+
         if (filter.HideCompleted && questFunctions.IsQuestComplete(questInfo.QuestId))
             return false;
         return true;
