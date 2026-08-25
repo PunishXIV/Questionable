@@ -32,7 +32,7 @@ internal sealed class PluginConfigComponent
     ];
 
     private const string PunishRepositoryUrl = "https://love.puni.sh/ment.json";
-    private static readonly string[] PunishRepositoryAlternates = 
+    private static readonly string[] PunishRepositoryAlternates =
     [
         "https://puni.sh/api/plugins"
     ];
