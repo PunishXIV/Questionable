@@ -47,7 +47,7 @@ internal sealed class PluginConfigComponent
         {
             {
                 ECombatModule.BossMod,
-                new("Boss Mod (VBM)",
+                new("Boss Mod",
                     "BossMod",
                     "Automates all kinds of combat and interaction in overworld and duty content",
                     new("https://github.com/awgil/ffxiv_bossmod"),
