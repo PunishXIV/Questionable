@@ -5030,14 +5030,14 @@
     <!-- Found in: Controller\MiniTaskController.cs -->
     <Key>Failed to start task '{0}'</Key>
     <!--<Value lang="ja-jp">タスク '{0}' の開始に失敗しました</Value>-->
-    <!--<Value lang="zh-cn">无法开始任务 '{0}'</Value>-->
+    <Value lang="zh-cn">无法开始任务 '{0}'</Value>
     <!--<Value lang="ko">작업 '{0}' 시작에 실패했습니다</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: Controller\MiniTaskController.cs -->
     <Key>{0} Please check /xllog for more details.</Key>
     <!--<Value lang="ja-jp">{0} 詳細については /xllog を確認してください。</Value>-->
-    <!--<Value lang="zh-cn">{0} 请检查 /xllog 以获取更多详细信息。</Value>-->
+    <Value lang="zh-cn">{0} 请检查 /xllog 以获取详细信息。</Value>
     <!--<Value lang="ko">{0} 자세한 내용은 /xllog를 확인하세요.</Value>-->
   </Entry>
   <Entry>
@@ -5051,14 +5051,14 @@
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Prerequisites not met</Key>
     <!--<Value lang="ja-jp">前提条件が満たされていません</Value>-->
-    <!--<Value lang="zh-cn">前提条件未满足</Value>-->
+    <Value lang="zh-cn">前提条件未满足</Value>
     <!--<Value lang="ko">전제 조건이 충족되지 않았습니다</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Before each Interact, switch to the job a quest was accepted with</Key>
     <!--<Value lang="ja-jp">各インタラクトの前に、クエストを受注したジョブに切り替える</Value>-->
-    <!--<Value lang="zh-cn">在每次交互之前，切换到接受任务时的职业</Value>-->
+    <Value lang="zh-cn">在每次交互前，切换到接受任务时的职业</Value>
     <!--<Value lang="ko">각 상호작용 전에 퀘스트를 수락한 직업으로 전환</Value>-->
   </Entry>
   <Entry>
@@ -5079,7 +5079,7 @@
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Aethernet locked ({0}): {{1}}</Key>
     <Value lang="ja-jp">エーテルネットロック ({0}): {{1}}</Value>
-    <Value lang="zh-cn">以太网锁定 ({0}): {{1}}</Value>
+    <Value lang="zh-cn">以太之晶已锁定 ({0}): {{1}}</Value>
     <Value lang="ko">에테르넷 잠금 ({0}): {{1}}</Value>
   </Entry>
   <Entry>
@@ -5099,41 +5099,51 @@
   <Entry>
     <!-- Found in: Controller\CommandHandler.cs -->
     <Key>/qst redeem - Redeem all reward items in inventory</Key>
+    <Value lang="zh-cn">/qst redeem - 使用背包内的所有奖励道具</Value>
   </Entry>
   <Entry>
     <!-- Found in: Functions\QuestFunctions.cs -->
     <Key>Achievement</Key>
+    <Value lang="zh-cn">成就</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\GeneralConfigComponent.cs -->
     <Key>Show quest icons in Journal Progress</Key>
+    <Value lang="zh-cn">在日志中显示任务图标</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Add {0} to Custom Plugin Repositories.</Key>
+    <Value lang="zh-cn">将 {0} 添加到第三方插件仓库。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Install {0} from its plugin repository.</Key>
+    <Value lang="zh-cn">从 {0} 仓库安装插件。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>{0} repository is already added.</Key>
+    <Value lang="zh-cn">{0} 仓库已添加。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Added {0} repository.</Key>
+    <Value lang="zh-cn">已添加 {0} 仓库。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Installed {0}.</Key>
+    <Value lang="zh-cn">已安装 {0}。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\PluginConfigComponent.cs -->
     <Key>Could not install {0}. Check the plugin installer for details.</Key>
+    <Value lang="zh-cn">无法安装 {0}。请检查插件安装器以获取详细信息。</Value>
   </Entry>
   <Entry>
     <!-- Found in: Windows\JournalComponents\QuestRewardComponent.cs -->
     <Key>No results</Key>
+    <Value lang="zh-cn">无结果</Value>
   </Entry>
 </I18N>
