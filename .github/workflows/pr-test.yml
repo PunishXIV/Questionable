@@ -24,6 +24,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v7
         with:
+          ref: ${{ github.head_ref }}
           submodules: recursive
           # Need PR base + head so we can diff to find which QuestPaths files changed.
           fetch-depth: 0
