@@ -1,2 +1,1 @@
-- Bug fix: notificationmaster install button wasn't working for 1pp repo -alydev
-- Change: Remove mogmail recommendation, integration not complete yet -alydev
+- Change: added SelectString to recommended plugin list -alydev

@@ -174,6 +174,13 @@ internal sealed class PluginConfigComponent
             new(NightmareXivRepositoryUrl),
             "/stylist c",
             AlternateRepositoryUrls: NightmareXivRepositoryAlternates),
+        new("SelectString",
+            "SelectString",
+            "Select items in menus via 0-9 keys rather than mouse",
+            new("https://github.com/NightmareXIV/SelectString"),
+            new(NightmareXivRepositoryUrl),
+            "/ss",
+            AlternateRepositoryUrls: NightmareXivRepositoryAlternates),
     ];
 
     public override void DrawTab()
