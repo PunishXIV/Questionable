@@ -438,7 +438,9 @@ internal sealed class QuestJournalComponent
         if (filter.HideNoPaths &&
             (!questRegistry.TryGetQuest(questInfo.QuestId, out Quest? quest) || quest.Root.Disabled))
             return false;
-
+        
+        if (filter.HideCompleted && questFunctions.IsQuestComplete(questInfo.QuestId))
+            return false;
         return true;
     }
 
@@ -460,16 +462,21 @@ internal sealed class QuestJournalComponent
     {
         public bool AvailableOnly;
         public bool HideNoPaths;
+        public bool HideCompleted;
         public string SearchText = string.Empty;
 
-        public bool AdvancedFiltersActive => AvailableOnly || HideNoPaths;
+        public bool AdvancedFiltersActive =>
+            AvailableOnly ||
+            HideNoPaths ||
+            HideCompleted;
 
         public FilterConfiguration WithoutName()
         {
             return new()
             {
                 AvailableOnly = AvailableOnly,
-                HideNoPaths = HideNoPaths
+                HideNoPaths = HideNoPaths,
+                HideCompleted = HideCompleted
             };
         }
     }
