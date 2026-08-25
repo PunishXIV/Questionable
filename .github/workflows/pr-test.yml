@@ -20,6 +20,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: ${{ github.actor != 'github-actions[bot]' }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v7
