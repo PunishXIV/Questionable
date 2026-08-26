@@ -1,0 +1,92 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012102,
+          "Position": {
+            "X": 72.4041,
+            "Y": 205.682,
+            "Z": 31.632
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: issuer 1012102 (Halfsix)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005874,
+          "Position": {
+            "X": 245.355,
+            "Y": 76.5901,
+            "Z": 66.3432
+          },
+          "TerritoryId": 399,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ],
+          "ItemId": 2001712,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "DataId": 2005875,
+          "Position": {
+            "X": 238.973,
+            "Y": 78.3875,
+            "Z": -66.3207
+          },
+          "TerritoryId": 399,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2001712,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo area 8y from lua EOBJECT1 -> 2005875 (destination); use item ITEM0=2001712 on it"
+        },
+        {
+          "DataId": 2005876,
+          "Position": {
+            "X": 342.065,
+            "Y": 74.7545,
+            "Z": -115.02
+          },
+          "TerritoryId": 399,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2001712,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo area 15y from lua EOBJECT2 -> 2005876 (destination); use item ITEM0=2001712 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012102,
+          "Position": {
+            "X": 72.4041,
+            "Y": 205.682,
+            "Z": 31.632
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo turn-in -> 1012102 (Halfsix)"
+        }
+      ]
+    }
+  ]
+}

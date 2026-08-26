@@ -1,0 +1,139 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012134,
+          "Position": {
+            "X": 6.14935,
+            "Y": 206.073,
+            "Z": 98.5583
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: issuer 1012134 (Notched Bone)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014343,
+          "Position": {
+            "X": -183.296,
+            "Y": 106.206,
+            "Z": -282.062
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2006100,
+          "Position": {
+            "X": -194.384,
+            "Y": 106.6,
+            "Z": -283.764
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4061
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ]
+        },
+        {
+          "DataId": 2006102,
+          "Position": {
+            "X": -204.562,
+            "Y": 106.6,
+            "Z": -298.464
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4061
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo area 16y from lua EOBJECT2 -> 2006102"
+        },
+        {
+          "DataId": 2006101,
+          "Position": {
+            "X": -214.634,
+            "Y": 106.738,
+            "Z": -275.884
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4061
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo area 19y from lua EOBJECT1 -> 2006101"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1014343,
+          "Position": {
+            "X": -183.296,
+            "Y": 106.206,
+            "Z": -282.062
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012134,
+          "Position": {
+            "X": 6.14935,
+            "Y": 206.073,
+            "Z": 98.5583
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo turn-in -> 1012134 (Notched Bone)"
+        }
+      ]
+    }
+  ]
+}

@@ -107,7 +107,8 @@ internal sealed class QuestSelectionWindow : LWindow
         _quests = _questRegistry.AllQuests
             .Where(x => x.FindSequence(0)?.FindStep(0)?.TerritoryId == territoryId &&
                         !_questFunctions.IsQuestUnobtainable(x.Id) &&
-                        !_questFunctions.IsDailyAlliedSocietyQuest((QuestId)x.Id))
+                        x.Id is QuestId qId &&
+                        !_questFunctions.IsDailyAlliedSocietyQuest(qId))
             .Select(x => _questData.GetQuestInfo(x.Id))
             .ToList();
 

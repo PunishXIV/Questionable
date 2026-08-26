@@ -1,0 +1,109 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012136,
+          "Position": {
+            "X": 6.30194,
+            "Y": 206.165,
+            "Z": 97.2155
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: issuer 1012136 (Dedean)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014348,
+          "Position": {
+            "X": -701.9303,
+            "Y": 148.58662,
+            "Z": -33.341064
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "StopDistance": 0.25,
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "DataId": 1014350,
+          "Position": {
+            "X": -706.297,
+            "Y": 148.04,
+            "Z": -33.64
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo area 14y from lua ACTOR3 -> 1014350 (precocious adventurer)"
+        },
+        {
+          "DataId": 1014349,
+          "Position": {
+            "X": -709.249,
+            "Y": 148.02,
+            "Z": -33.6205
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo area 14y from lua ACTOR2 -> 1014349 (cautious adventurer)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1014347,
+          "Position": {
+            "X": -707.473,
+            "Y": 148.095,
+            "Z": -35.6877
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012136,
+          "Position": {
+            "X": 6.30194,
+            "Y": 206.165,
+            "Z": 97.2155
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo turn-in -> 1012136 (Dedean)"
+        }
+      ]
+    }
+  ]
+}
