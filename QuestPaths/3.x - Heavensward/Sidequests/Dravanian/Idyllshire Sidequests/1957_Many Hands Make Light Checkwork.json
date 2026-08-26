@@ -1,0 +1,91 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012132,
+          "Position": {
+            "X": 43.0156,
+            "Y": 206.033,
+            "Z": 56.5204
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: issuer 1012132 (Drydox)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1013646,
+          "Position": {
+            "X": -491.235,
+            "Y": 156.249,
+            "Z": -238.297
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": -520.87463,
+            "Y": 143.13908,
+            "Z": -307.3489
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            4024
+          ],
+          "CompletionQuestVariablesFlags": [{"Low": 5},null,null,null,null,null]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1013646,
+          "Position": {
+            "X": -491.235,
+            "Y": 156.249,
+            "Z": -238.297
+          },
+          "TerritoryId": 399,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ]
+        }
+      ]
+    }
+  ]
+}

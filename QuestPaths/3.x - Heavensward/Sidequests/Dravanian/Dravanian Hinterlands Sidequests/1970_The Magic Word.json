@@ -1,0 +1,213 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2005336,
+          "Position": {
+            "X": -488.38312,
+            "Y": 137.788,
+            "Z": 740.4025
+          },
+          "TerritoryId": 399,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 463,
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "SkipConditions": { "StepIf": { "InTerritory": [463] } }
+        },
+        {
+          "DataId": 1012141,
+          "Position": {
+            "X": 35.7081,
+            "Y": 38.4297,
+            "Z": 13.0011
+          },
+          "TerritoryId": 463,
+          "InteractionType": "AcceptQuest",
+          "$": "auto: issuer 1012141 (Saro Roggo)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012139,
+          "Position": {
+            "X": 15.7866,
+            "Y": 38.4297,
+            "Z": 18.1888
+          },
+          "TerritoryId": 463,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1012139 (straightforward broom)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012140,
+          "Position": {
+            "X": -3.43521,
+            "Y": 37.4297,
+            "Z": -6.60358
+          },
+          "TerritoryId": 463,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1012140 (statuesque broom)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1013711,
+          "Position": {
+            "X": -3.07311,
+            "Y": 38.4289,
+            "Z": 9.24209
+          },
+          "TerritoryId": 463,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1013711 (self-possessed broom)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1012141,
+          "Position": {
+            "X": 35.7081,
+            "Y": 38.4297,
+            "Z": 13.0011
+          },
+          "TerritoryId": 463,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1012141 (Saro Roggo)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2005337,
+          "Position": {
+            "X": 7.736328,
+            "Y": 38.92566,
+            "Z": -51.010986
+          },
+          "TerritoryId": 463,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 399,
+          "SkipConditions": { "StepIf": { "InTerritory": [399, 478] } }
+        },
+        {
+          "DataId": 2006080,
+          "Position": {
+            "X": -81.7397,
+            "Y": 152.541,
+            "Z": 747.877
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Say",
+          "ChatMessage": { "Key": "TEXT_HEAVNZ905_01970_SAY_000_000" },
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1014289,
+          "Position": {
+            "X": -73.7929,
+            "Y": 152.727,
+            "Z": 747.916
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Position": {
+            "X": -74.60284,
+            "Y": 152.42711,
+            "Z": 735.8858
+          },
+          "TerritoryId": 399,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -73.7929,
+                  "Y": 152.727,
+                  "Z": 747.916
+                },
+                "TerritoryId": 399,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
+          "DataId": 2005336,
+          "Position": {
+            "X": -488.38312,
+            "Y": 137.788,
+            "Z": 740.4025
+          },
+          "TerritoryId": 399,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 463,
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "SkipConditions": { "StepIf": { "InTerritory": [463] } }
+        },
+        {
+          "DataId": 1012141,
+          "Position": {
+            "X": 35.7081,
+            "Y": 38.4297,
+            "Z": 13.0011
+          },
+          "TerritoryId": 463,
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1012141 (Saro Roggo)"
+        }
+      ]
+    }
+  ]
+}

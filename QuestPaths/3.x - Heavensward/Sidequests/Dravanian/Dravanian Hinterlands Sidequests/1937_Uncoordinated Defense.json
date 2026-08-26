@@ -1,0 +1,114 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012287,
+          "Position": {
+            "X": -28.3962,
+            "Y": 100.969,
+            "Z": -186.404
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014326,
+          "Position": {
+            "X": 101.689,
+            "Y": 65.0499,
+            "Z": -154.392
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "DataId": 1014328,
+          "Position": {
+            "X": 143.728,
+            "Y": 61.514,
+            "Z": -276.204
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo area 16y from lua ACTOR2 -> 1014328 (wide-eyed watchguard)"
+        },
+        {
+          "DataId": 1014330,
+          "Position": {
+            "X": -91.0739,
+            "Y": 100.864,
+            "Z": -313.542
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo area 16y from lua ACTOR3 -> 1014330 (wide-eyed watchguard)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012287,
+          "Position": {
+            "X": -28.3962,
+            "Y": 100.969,
+            "Z": -186.404
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 73.368,
+            "Y": 205.873,
+            "Z": 23.4836
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo turn-in -> 1012097 (Slowfix)"
+        }
+      ]
+    }
+  ]
+}

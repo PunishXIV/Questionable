@@ -1,0 +1,48 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032785,
+          "Position": {
+            "X": 44.9683,
+            "Y": 206.97,
+            "Z": -8.34674
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_LUCKYB815_03965_Q1_000_000",
+              "Answer": "TEXT_LUCKYB815_03965_A1_000_002",
+              "Type": "List"
+            }
+          ],
+          "$": "auto: issuer 1032785 (painfully Ishgardian man)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1033921,
+          "Position": {
+            "X": -17.6324,
+            "Y": 211.78,
+            "Z": 0.23943
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo turn-in -> 1033921 (faux commander)"
+        }
+      ]
+    }
+  ]
+}

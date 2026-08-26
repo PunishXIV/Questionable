@@ -1,1 +1,2 @@
-- Change: added SelectString to recommended plugin list -alydev
+- Bug fix: quest selection window logic was broken -alydev
+- also i finished idyllshire and hinterlands sidequests

@@ -1,18 +1,47 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1048083,
+          "Position": {
+            "X": 302.05237,
+            "Y": 51.199978,
+            "Z": 205.0354
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1207,
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Neon Stein"
+          ],
+          "SkipConditions": {"StepIf": {"InTerritory": [1207, 1268]}}
+        },
+        {
+          "DataId": 2014673,
+          "Position": {
+            "X": -19.699463,
+            "Y": 2.7008667,
+            "Z": -30.258667
+          },
+          "TerritoryId": 1207,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1268,
+          "SkipConditions": {"StepIf": {"InTerritory": [1268]}}
+        },
+        {
           "DataId": 1054140,
           "Position": {
-            "X": 5.203247,
-            "Y": 0.025,
-            "Z": 2.304016
+            "X": 4.9254293,
+            "Y": 0.024999976,
+            "Z": 1.0550152
           },
-          "StopDistance": 7,
+          "StopDistance": 5,
           "TerritoryId": 1268,
           "InteractionType": "AcceptQuest"
         }
@@ -33,9 +62,7 @@
           "TargetTerritoryId": 1207,
           "SkipConditions": {
             "StepIf": {
-              "NotInTerritory": [
-                1268
-              ]
+              "NotInTerritory": [1268]
             }
           }
         },
@@ -90,12 +117,7 @@
               "Yes": true
             }
           ],
-          "PointMenuChoices": [
-            0,
-            1,
-            2,
-            3
-          ]
+          "PointMenuChoices": [0, 1, 2, 3]
         }
       ]
     },

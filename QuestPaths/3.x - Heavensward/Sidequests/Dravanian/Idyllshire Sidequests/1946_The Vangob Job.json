@@ -1,0 +1,92 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012101,
+          "Position": {
+            "X": 72.3735,
+            "Y": 205.737,
+            "Z": 33.5546
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: issuer 1012101 (Holepix)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 428.829,
+            "Y": 77.9587,
+            "Z": 123.094
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [4033],
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        },
+        {
+          "Position": {
+            "X": 560.914,
+            "Y": 77.4923,
+            "Z": 58.5168
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [4033],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo area 4y from lua EOBJECT1 -> 2005881"
+        },
+        {
+          "Position": {
+            "X": 535.353,
+            "Y": 77.9417,
+            "Z": -103.999
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [4033],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo area 6y from lua EOBJECT2 -> 2005882"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012101,
+          "Position": {
+            "X": 72.3735,
+            "Y": 205.737,
+            "Z": 33.5546
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo turn-in -> 1012101 (Holepix)"
+        }
+      ]
+    }
+  ]
+}

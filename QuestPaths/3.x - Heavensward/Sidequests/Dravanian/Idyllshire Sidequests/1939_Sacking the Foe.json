@@ -1,0 +1,102 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012132,
+          "Position": {
+            "X": 43.0156,
+            "Y": 206.033,
+            "Z": 56.5204
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: issuer 1012132 (Drydox)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005872,
+          "Position": {
+            "X": 282.068,
+            "Y": 89.3603,
+            "Z": -12.4682
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        },
+        {
+          "DataId": 2005871,
+          "Position": {
+            "X": 345.199,
+            "Y": 89.983,
+            "Z": -65.4237
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo area 55y from lua EOBJECT1 -> 2005871 (cumbersome sack)"
+        },
+        {
+          "DataId": 2005870,
+          "Position": {
+            "X": 295.318,
+            "Y": 81.6815,
+            "Z": -91.0968
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo area 58y from lua EOBJECT0 -> 2005870 (cumbersome sack)"
+        },
+        {
+          "DataId": 2005873,
+          "Position": {
+            "X": 301.67905,
+            "Y": 89.04843,
+            "Z": 36.48217
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
+          "$": "auto: todo area 70y from lua EOBJECT3 -> 2005873 (cumbersome sack)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012132,
+          "Position": {
+            "X": 43.0156,
+            "Y": 206.033,
+            "Z": 56.5204
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo turn-in -> 1012132 (Drydox)"
+        }
+      ]
+    }
+  ]
+}

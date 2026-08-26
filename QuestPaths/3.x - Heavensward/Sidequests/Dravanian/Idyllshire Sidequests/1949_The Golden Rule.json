@@ -1,0 +1,189 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 73.368,
+            "Y": 205.873,
+            "Z": 23.4836
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: issuer 1012097 (Slowfix)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1012099,
+          "Position": {
+            "X": 50.278442,
+            "Y": 206.04715,
+            "Z": 57.75537
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        },
+        {
+          "DataId": 1012132,
+          "Position": {
+            "X": 43.015137,
+            "Y": 206.04718,
+            "Z": 56.50415
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+        },
+        {
+          "DataId": 1012133,
+          "Position": {
+            "X": -26.840637,
+            "Y": 206.49944,
+            "Z": 28.67163
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
+        },
+        {
+          "DataId": 1012287,
+          "Position": {
+            "X": -28.3962,
+            "Y": 100.969,
+            "Z": -186.404
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 73.368,
+            "Y": 205.873,
+            "Z": 23.4836
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo location -> 1012097 (Slowfix)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 300.668,
+            "Y": 68.4309,
+            "Z": -149.941
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ],
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            4779
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 300.668,
+            "Y": 68.4309,
+            "Z": -149.941
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [
+            4779
+          ]
+        },
+        {
+          "DataId": 1014336,
+          "Position": {
+            "X": 302.478,
+            "Y": 68.2588,
+            "Z": -151.692
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Idyllshire",
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1014337,
+          "Position": {
+            "X": -182.331,
+            "Y": 100.789,
+            "Z": -385.158
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012097,
+          "Position": {
+            "X": 73.368,
+            "Y": 205.873,
+            "Z": 23.4836
+          },
+          "TerritoryId": 478,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Idyllshire",
+          "$": "auto: todo turn-in -> 1012097 (Slowfix)"
+        }
+      ]
+    }
+  ]
+}

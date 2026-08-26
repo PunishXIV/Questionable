@@ -1,0 +1,125 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2005336,
+          "Position": {
+            "X": -488.38312,
+            "Y": 137.788,
+            "Z": 740.4025
+          },
+          "TerritoryId": 399,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 463,
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "SkipConditions": {"StepIf": {"InTerritory": [463]}}
+        },
+        {
+          "DataId": 1012140,
+          "Position": {
+            "X": -3.43521,
+            "Y": 37.4297,
+            "Z": -6.60358
+          },
+          "TerritoryId": 463,
+          "InteractionType": "AcceptQuest",
+          "$": "auto: issuer 1012140 (statuesque broom)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2005337,
+          "Position": {
+            "X": 7.736328,
+            "Y": 38.92566,
+            "Z": -51.010986
+          },
+          "TerritoryId": 463,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 399,
+          "SkipConditions": {"StepIf": {"InTerritory": [399, 478]}}
+        },
+        {
+          "DataId": 2006072,
+          "Position": {
+            "X": -875.2672,
+            "Y": 166.82797,
+            "Z": 41.06902
+          },
+          "TerritoryId": 399,
+          "StopDistance": 0.25,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2005336,
+          "Position": {
+            "X": -488.38312,
+            "Y": 137.788,
+            "Z": 740.4025
+          },
+          "TerritoryId": 399,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 463,
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Prologue Gate (Western Hinterlands)"
+          ],
+          "SkipConditions": {"StepIf": {"InTerritory": [463]}}
+        },
+        {
+          "DataId": 1012140,
+          "Position": {
+            "X": -3.43521,
+            "Y": 37.4297,
+            "Z": -6.60358
+          },
+          "TerritoryId": 463,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1012140 (statuesque broom); hands over ITEM0=2001768"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012140,
+          "Position": {
+            "X": -3.43521,
+            "Y": 37.4297,
+            "Z": -6.60358
+          },
+          "TerritoryId": 463,
+          "InteractionType": "CompleteQuest",
+          "Emote": "cry",
+          "$": "auto: todo turn-in -> 1012140 (statuesque broom)"
+        }
+      ]
+    }
+  ]
+}
