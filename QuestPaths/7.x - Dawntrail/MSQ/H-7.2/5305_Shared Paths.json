@@ -1,10 +1,33 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-27"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1053870,
+          "Position": {
+            "X": -70.78668,
+            "Y": 42.8066,
+            "Z": -543.20593
+          },
+          "TerritoryId": 1186,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1274,
+          "AethernetShortcut": [
+            "[Solution Nine] Aetheryte Plaza",
+            "[Solution Nine] Resolution"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_KINGMH107_05305_SYSTEM_000_001",
+              "Type": "YesNo",
+              "Yes": true
+            }
+          ]
+        },
         {
           "DataId": 1053873,
           "Position": {
@@ -25,7 +48,7 @@
           "DataId": 1053864,
           "Position": {
             "X": -2.456726,
-            "Y": -7.35766E-08,
+            "Y": -7.35766e-8,
             "Z": 9.109558
           },
           "StopDistance": 5,
@@ -56,7 +79,7 @@
           "DataId": 1053864,
           "Position": {
             "X": -2.456726,
-            "Y": -7.35766E-08,
+            "Y": -7.35766e-8,
             "Z": 9.109558
           },
           "TerritoryId": 1207,
@@ -79,9 +102,7 @@
           "TargetTerritoryId": 1186,
           "SkipConditions": {
             "StepIf": {
-              "NotInTerritory": [
-                1207
-              ]
+              "NotInTerritory": [1207]
             }
           }
         },
