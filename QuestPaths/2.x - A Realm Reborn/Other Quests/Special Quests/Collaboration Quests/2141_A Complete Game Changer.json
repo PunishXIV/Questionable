@@ -33,6 +33,7 @@
           "TerritoryId": 144,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Gold Saucer",
+          "AethernetShortcut": ["[Gold Saucer] Aetheryte Plaza","[Gold Saucer] Entrance & Card Squares"],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESYKW001_02141_Q1_000_000",
@@ -126,6 +127,7 @@
           "TerritoryId": 144,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "Gold Saucer",
+          "AethernetShortcut": ["[Gold Saucer] Aetheryte Plaza","[Gold Saucer] Entrance & Card Squares"],
           "$": "auto: todo turn-in -> 1017235 (wandering executive)"
         }
       ]
