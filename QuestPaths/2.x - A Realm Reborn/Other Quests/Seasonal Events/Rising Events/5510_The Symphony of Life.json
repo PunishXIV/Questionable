@@ -1,0 +1,199 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1059427,
+          "Position": {
+            "X": -9.61439,
+            "Y": 39.9998,
+            "Z": 82.0985
+          },
+          "TerritoryId": 128,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "$": "auto: issuer 1059427 (wandering minstrel)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1059492,
+          "Position": {
+            "X": 27.6544,
+            "Y": 44.5,
+            "Z": 151.174
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "$": "auto: todo location -> 1059492 (querying Keeper of the Moon)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1059428,
+          "Position": {
+            "X": 3.03527,
+            "Y": 39.5176,
+            "Z": 17.7147
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059428 (Bathu Molkoh)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1059428,
+          "Position": {
+            "X": 3.03527,
+            "Y": 39.5176,
+            "Z": 17.7147
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059428 (Bathu Molkoh)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1000947,
+          "Position": {
+            "X": -54.6426,
+            "Y": 43.9917,
+            "Z": -151.202
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ],
+          "$": "auto: todo location -> 1000947 (Lyngsath)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1059431,
+          "Position": {
+            "X": 5.51981,
+            "Y": 44.9997,
+            "Z": -240.859
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Limsa Lominsa",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Culinarians' Guild",
+            "[Limsa Lominsa] Marauders' Guild"
+          ],
+          "$": "auto: todo location -> 1059431 (Ayoyo)"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 2015392,
+          "Position": {
+            "X": 33.1801,
+            "Y": 44.5,
+            "Z": 131.32
+          },
+          "TerritoryId": 128,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Marauders' Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "$": "auto: todo location -> 2015392 (destination)"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1059432,
+          "Position": {
+            "X": -187.841,
+            "Y": 3.99999,
+            "Z": 181.406
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Fishermen's Guild"
+          ],
+          "$": "auto: todo location -> 1059432 (Bathu Molkoh)"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1059435,
+          "Position": {
+            "X": 265.553,
+            "Y": -24.975,
+            "Z": 252.103
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Western La Noscea - Aleport",
+          "Fly": false,
+          "$": "auto: todo location -> 1059435 (Bathu Molkoh)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1059495,
+          "Position": {
+            "X": 3.5752,
+            "Y": 44.5,
+            "Z": 125.631
+          },
+          "TerritoryId": 128,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "NextQuestId": 5520,
+          "$": "auto: todo turn-in -> 1059495 (wandering minstrel)"
+        }
+      ]
+    }
+  ]
+}
