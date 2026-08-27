@@ -1,1 +1,1 @@
-- Updated translations -ShadyWhite, fuuga
+- Rising 2026 -alydev

@@ -31,6 +31,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
+          "TargetTerritoryId": 198,
           "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
@@ -56,6 +57,25 @@
       "Sequence": 2,
       "Steps": [
         {
+          "DataId": 1001029,
+          "Position": {
+            "X": 9.170593,
+            "Y": 20.999403,
+            "Z": -15.213318
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 198,
+          "AetheryteShortcut": "Limsa Lominsa",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_GAIUSE216_01360_Q1_000_1",
+              "Yes": true
+            }
+          ]
+        },
+        {
           "DataId": 1008679,
           "Position": {
             "X": -1.2055054,
@@ -79,7 +99,8 @@
           },
           "TerritoryId": 198,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 129
+          "TargetTerritoryId": 129,
+          "SkipConditions": {"StepIf": {"InTerritory": [129]}}
         },
         {
           "Position": {
