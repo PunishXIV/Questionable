@@ -1,11 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": [
-    "Cacahuetes",
-    "liza"
-  ],
+  "Author": ["Cacahuetes", "liza"],
   "Interruptible": false,
-  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-06-28"},
+  "LastChecked": { "Username": "okonomiyaki", "Date": "2026-06-28" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -26,9 +23,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
+              "InTerritory": [133]
             }
           }
         }
@@ -64,12 +59,15 @@
           "TerritoryId": 148,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [
-            142
-          ],
+          "KillEnemyDataIds": [142],
           "CompletionQuestVariablesFlags": [
-            {"Low": 2},
-          null,null,null,null,null],
+            { "Low": 2 },
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
           "Fly": true
         },
         {
@@ -97,13 +95,16 @@
           "TerritoryId": 148,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [
-            21
-          ],
+          "KillEnemyDataIds": [21],
           "Fly": true,
           "CompletionQuestVariablesFlags": [
-            {"Low": 2},
-          null,null,null,null,null]
+            { "Low": 2 },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
         },
         {
           "DataId": 2000918,
