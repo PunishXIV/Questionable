@@ -58,7 +58,7 @@ public sealed class QuestionablePlugin(
 
     public async ValueTask DisposeAsync()
     {
-        var serviceProvider = Interlocked.Exchange(ref _serviceProvider, null);
+        var serviceProvider = Interlocked.Exchange(ref _serviceProvider, value: null);
         if (serviceProvider is IAsyncDisposable asyncDisposable)
             await asyncDisposable.DisposeAsync().ConfigureAwait(false);
         else

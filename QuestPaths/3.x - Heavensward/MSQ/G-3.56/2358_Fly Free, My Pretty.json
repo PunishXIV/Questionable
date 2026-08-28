@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-07-29" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -31,7 +31,20 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Mount": true
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 29.352629,
+                  "Y": 21.285944,
+                  "Z": -652.1081
+                },
+                "TerritoryId": 156,
+                "MaximumDistance": 30
+              }
+            }
+          }
         },
         {
           "DataId": 1018044,
