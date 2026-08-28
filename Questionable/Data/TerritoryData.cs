@@ -8,6 +8,7 @@ using Questionable.Model.Questing;
 using Quest = Lumina.Excel.Sheets.Quest;
 namespace Questionable.Data;
 
+[RegisterSingleton]
 internal sealed class TerritoryData
 {
     private readonly ImmutableDictionary<uint, ContentFinderConditionData> _contentFinderConditions;

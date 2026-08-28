@@ -6,6 +6,7 @@ using Questionable.Model.Questing;
 
 namespace Questionable.Functions;
 
+[RegisterSingleton]
 internal sealed class ChatFunctions
 (
     IDataManager dataManager,

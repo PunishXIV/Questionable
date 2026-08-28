@@ -21,6 +21,7 @@ namespace Questionable.Functions;
 
 // TODO: refactor — heavy nesting (27 lines indented ≥6 levels, max indent 22 levels).
 //       Very high max indent likely reflects LINQ / method-chain continuations rather than control flow; verify before restructuring.
+[RegisterSingleton]
 internal sealed unsafe class QuestFunctions
 (
     QuestRegistry questRegistry,

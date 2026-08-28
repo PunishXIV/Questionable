@@ -1,6 +1,7 @@
 ﻿using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
+[RegisterSingleton<IQuestValidator, BasicSequenceValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class BasicSequenceValidator : IQuestValidator
 {
     /// <summary>

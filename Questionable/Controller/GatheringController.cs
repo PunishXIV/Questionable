@@ -14,6 +14,7 @@ using Questionable.Model.Questing;
 
 namespace Questionable.Controller;
 
+[RegisterSingleton]
 internal sealed unsafe class GatheringController
 (
     MovementController movementController,

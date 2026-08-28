@@ -3,6 +3,7 @@ using Dalamud.Plugin.Ipc.Exceptions;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
+[RegisterSingleton]
 internal sealed class StylistIpc(IDalamudPluginInterface pluginInterface, ILogger<StylistIpc> logger)
 {
     private readonly ICallGateSubscriber<bool> _isBusy = pluginInterface.GetIpcSubscriber<bool>("Stylist.IsBusy");

@@ -32,6 +32,7 @@ internal static class MountStep
         public override string ToString() => "Mount";
     }
 
+    [RegisterSingleton]
     internal sealed class MountEvaluator
     (
         GameFunctions gameFunctions,

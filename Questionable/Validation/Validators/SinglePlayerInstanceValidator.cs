@@ -1,6 +1,7 @@
 using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
+[RegisterSingleton<IQuestValidator, SinglePlayerInstanceValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class SinglePlayerInstanceValidator(TerritoryData territoryData) : IQuestValidator
 {
     private readonly Dictionary<ElementId, List<byte>> _questIdToDutyIndexes = territoryData.GetAllQuestsWithQuestBattles()

@@ -19,6 +19,7 @@ namespace Questionable.Controller.GameUi;
 ///     <c>GrandCompanyExchange</c> window is open. The purchase confirmation prompt is accepted by
 ///     <see cref="YesNoChoiceHandler" /> via <see cref="IsAwaitingYesNo" />.
 /// </remarks>
+[RegisterSingleton]
 internal sealed unsafe class GrandCompanyExchangeController : IDisposable
 {
     private const string AddonName = "GrandCompanyExchange";

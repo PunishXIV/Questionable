@@ -3,6 +3,7 @@ using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Functions;
 
+[RegisterSingleton]
 internal sealed class AlliedSocietyQuestFunctions
 {
     private readonly Dictionary<EAlliedSociety, byte> _alliedSocietyLastSeenRank = [];

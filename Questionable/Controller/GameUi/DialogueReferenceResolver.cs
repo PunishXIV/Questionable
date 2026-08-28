@@ -8,6 +8,7 @@ namespace Questionable.Controller.GameUi;
 ///     string) into a concrete <see cref="StringOrRegex"/>. Shared by the dialogue-choice and yes/no
 ///     interaction handlers.
 /// </summary>
+[RegisterSingleton]
 internal sealed class DialogueReferenceResolver(ExcelFunctions excelFunctions)
 {
     public StringOrRegex? Resolve(Quest? quest, string? excelSheet, ExcelRef? excelRef, bool isRegExp)

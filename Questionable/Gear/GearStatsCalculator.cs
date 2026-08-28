@@ -2,6 +2,7 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel.Sheets;
 namespace Questionable.Gear;
 
+[RegisterSingleton]
 public sealed class GearStatsCalculator
 {
     private const uint EternityRingItemId = 8575;

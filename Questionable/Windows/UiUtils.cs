@@ -6,6 +6,7 @@ using Questionable.Model.Questing;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows;
 
+[RegisterSingleton]
 internal sealed class UiUtils(
     QuestFunctions questFunctions,
     IDalamudPluginInterface pluginInterface,

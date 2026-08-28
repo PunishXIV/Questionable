@@ -10,6 +10,7 @@ using Questionable.Model.Common;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.ConfigComponents;
 
+[RegisterSingleton]
 internal sealed class PluginConfigComponent
 (
     IDalamudPluginInterface pluginInterface,

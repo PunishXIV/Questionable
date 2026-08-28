@@ -7,6 +7,7 @@ using Questionable.Model.Common;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.JournalComponents;
 
+[RegisterSingleton]
 internal sealed class AlliedSocietyJournalComponent
 (
     QuestFunctions questFunctions,

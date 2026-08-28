@@ -5,6 +5,7 @@ namespace Questionable.Controller.CombatModules;
 /// <summary>
 ///     Commandeered Magitek Armor; used in 'Magiteknical Failure' quest.
 /// </summary>
+[RegisterSingleton<ICombatModule, Mount128Module>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class Mount128Module(GameFunctions gameFunctions) : ICombatModule
 {
     public const ushort MountId = 128;

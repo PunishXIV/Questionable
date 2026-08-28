@@ -6,6 +6,7 @@ using Questionable.Windows.Common;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows;
 
+[RegisterSingleton]
 internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
 {
     private static readonly Version PluginVersion = typeof(QuestionablePlugin).Assembly.GetName().Version!;

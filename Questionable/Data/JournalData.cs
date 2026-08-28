@@ -2,6 +2,7 @@
 using Questionable.Model.Questing;
 namespace Questionable.Data;
 
+[RegisterSingleton]
 internal sealed class JournalData
 {
     public JournalData(IDataManager dataManager, QuestData questData, QuestRegistry questRegistry)

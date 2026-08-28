@@ -3,6 +3,7 @@ using Questionable.Model.Questing;
 
 namespace Questionable.Windows.PathEditorComponents;
 
+[RegisterSingleton]
 internal sealed class PathEditorSession(QuestRegistry questRegistry, QuestData questData)
 {
     public ElementId? QuestId { get; private set; }

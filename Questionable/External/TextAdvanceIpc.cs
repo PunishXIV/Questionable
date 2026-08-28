@@ -1,6 +1,7 @@
 ﻿using Dalamud.Plugin.Ipc;
 namespace Questionable.External;
 
+[RegisterSingleton]
 internal sealed class TextAdvanceIpc : IDisposable
 {
     private readonly Configuration _configuration;

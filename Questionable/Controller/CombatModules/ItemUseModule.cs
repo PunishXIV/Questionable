@@ -7,6 +7,7 @@ using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.CombatModules;
 
+[RegisterSingleton<ICombatModule, ItemUseModule>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition condition, MovementController movementController, ILogger<ItemUseModule> logger) : ICombatModule
 {
     private CombatController.CombatData? _combatData;

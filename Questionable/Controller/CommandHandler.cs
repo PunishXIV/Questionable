@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Dalamud.Bindings.ImGui;
-using ECommons.Automation.NeoTaskManager.Tasks;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
@@ -10,6 +9,7 @@ using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller;
 
+[RegisterSingleton]
 internal sealed class CommandHandler : IDisposable
 {
     public const ushort TagColor = 576;

@@ -3,6 +3,7 @@ using Dalamud.Game.Text.SeStringHandling;
 using I18N.DotNet;
 namespace Questionable;
 
+[RegisterSingleton]
 internal sealed class DalamudInitializer : IDisposable
 {
     private readonly Configuration _configuration;

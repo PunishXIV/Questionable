@@ -10,6 +10,7 @@ using Questionable.Windows.Common;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows;
 
+[RegisterSingleton]
 internal sealed class QuestSelectionWindow : LWindow
 {
     private const string WindowId = "###QuestionableQuestSelection";

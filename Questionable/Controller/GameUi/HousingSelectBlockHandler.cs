@@ -7,6 +7,7 @@ namespace Questionable.Controller.GameUi;
 /// <summary>
 ///     Handles the in-game "HousingSelectBlock" addon by confirming the selected housing ward.
 /// </summary>
+[RegisterSingleton]
 internal sealed class HousingSelectBlockHandler : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;

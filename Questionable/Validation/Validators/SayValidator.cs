@@ -2,6 +2,7 @@ using Lumina.Text.ReadOnly;
 using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
+[RegisterSingleton<IQuestValidator, SayValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class SayValidator(ExcelFunctions excelFunctions) : IQuestValidator
 {
     private readonly ExcelFunctions _excelFunctions = excelFunctions;

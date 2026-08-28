@@ -5,6 +5,7 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Model.Questing;
 namespace Questionable.Windows.ConfigComponents;
 
+[RegisterSingleton]
 internal sealed class StopConditionComponent : ConfigComponent
 {
     private readonly IClientState _clientState;

@@ -6,6 +6,7 @@ using Questionable.GatheringPaths;
 using Questionable.Model.Gathering;
 namespace Questionable.Controller;
 
+[RegisterSingleton]
 internal sealed class GatheringPointRegistry : IDisposable
 {
     private readonly GatheringData _gatheringData;

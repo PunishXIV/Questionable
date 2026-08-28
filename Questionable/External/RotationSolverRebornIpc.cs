@@ -4,6 +4,7 @@ using Questionable.Model.Common;
 
 namespace Questionable.External;
 
+[RegisterSingleton]
 internal sealed class RotationSolverRebornIpc(IDalamudPluginInterface pluginInterface, Configuration configuration, ILogger<RotationSolverRebornIpc> logger)
 {
     private readonly ICallGateSubscriber<StateCommandType, object> ChangeOperatingMode =

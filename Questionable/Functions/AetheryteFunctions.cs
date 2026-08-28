@@ -6,6 +6,7 @@ using Action = Lumina.Excel.Sheets.Action;
 
 namespace Questionable.Functions;
 
+[RegisterSingleton]
 internal sealed unsafe class AetheryteFunctions
 (
     IServiceProvider serviceProvider,

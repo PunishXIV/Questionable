@@ -7,6 +7,7 @@ using Questionable.Windows.Common.Ui;
 
 namespace Questionable.Windows.PathEditorComponents;
 
+[RegisterSingleton]
 internal sealed class StepCaptureComponent(
     ITargetManager targetManager,
     IClientState clientState,

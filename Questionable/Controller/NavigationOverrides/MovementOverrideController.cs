@@ -1,5 +1,6 @@
 ﻿namespace Questionable.Controller.NavigationOverrides;
 
+[RegisterSingleton]
 internal sealed class MovementOverrideController(IClientState clientState, ILogger<MovementOverrideController> logger)
 {
     // TODO evaluate these locations to determine if they still pose issues in current vnav

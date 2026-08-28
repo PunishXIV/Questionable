@@ -9,6 +9,7 @@ using Questionable.Model.Gathering;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.JournalComponents;
 
+[RegisterSingleton]
 internal sealed class GatheringJournalComponent
 {
     private readonly List<ushort> _gatheredItems = [];

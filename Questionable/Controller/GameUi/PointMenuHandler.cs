@@ -9,6 +9,7 @@ namespace Questionable.Controller.GameUi;
 ///     Handles the in-game "PointMenu" addon (used by quest steps that require picking a map point),
 ///     picking the choice configured on the current quest step.
 /// </summary>
+[RegisterSingleton]
 internal sealed class PointMenuHandler : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;

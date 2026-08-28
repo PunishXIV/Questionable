@@ -8,6 +8,7 @@ using Questionable.Windows.Common.Ui;
 
 namespace Questionable.Windows.PathEditorComponents;
 
+[RegisterSingleton]
 internal sealed class StepFormComponent
 {
     private static readonly EInteractionType[] InteractionTypes = Enum.GetValues<EInteractionType>();

@@ -9,6 +9,7 @@ using GameObject = FFXIVClientStructs.FFXIV.Client.Game.Object.GameObject;
 namespace Questionable.Controller.Utils;
 
 // Adapted from https://github.com/electr0sheep/ItemVendorLocation/blob/main/ItemVendorLocation/HighlightObject.cs
+[RegisterSingleton]
 internal sealed class HighlightObject : IDisposable
 {
     private readonly ICondition _condition;
