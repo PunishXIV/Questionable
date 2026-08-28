@@ -1,0 +1,60 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006550,
+          "Position": {
+            "X": 449.361,
+            "Y": -12.4319,
+            "Z": -387.541
+          },
+          "TerritoryId": 156,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2002211,
+          "Position": {
+            "X": 400.931,
+            "Y": -9.13782,
+            "Z": -751.644
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AfterInteraction",
+          "KillEnemyDataIds": [
+            2197
+          ],
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006550,
+          "Position": {
+            "X": 449.361,
+            "Y": -12.4319,
+            "Z": -387.541
+          },
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mor Dhona",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
