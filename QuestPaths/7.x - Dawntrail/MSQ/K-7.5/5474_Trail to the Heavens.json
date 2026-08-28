@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +14,8 @@
             "Z": -490.28766
           },
           "TerritoryId": 959,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "DisableNavmesh": true
         }
       ]
     },

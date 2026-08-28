@@ -1,1 +1,2 @@
-- Rising 2026 -alydev
+- Feature: icons for repeatable quests in journal progress -alydev
+- Feature: Filter unobtainable/repeatable quests in journal progress -alydev
