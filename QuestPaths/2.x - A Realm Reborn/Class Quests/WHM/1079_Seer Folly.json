@@ -2,15 +2,25 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
-  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-06-19"},
+  "LastChecked": { "Username": "okonomiyaki", "Date": "2026-06-19" },
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-            "TerritoryId": 133,
-            "InteractionType": "SwitchClass",
-            "TargetClass": "Conjurer"
+          "TerritoryId": 133,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Conjurer",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [133]
+            }
+          }
         },
         {
           "DataId": 1000692,
@@ -28,9 +38,7 @@
           "InteractionType": "AcceptQuest",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
+              "InTerritory": [133]
             }
           }
         }
@@ -48,7 +56,7 @@
           },
           "TerritoryId": 148,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
+          "SinglePlayerDutyOptions": { "Enabled": true },
           "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "Fly": true
         }
