@@ -6,6 +6,7 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.System.Framework;
 namespace Questionable.Functions;
 
+[RegisterSingleton]
 internal sealed unsafe class CameraFunctions : IDisposable
 {
     private readonly ILogger<CameraFunctions> _logger;

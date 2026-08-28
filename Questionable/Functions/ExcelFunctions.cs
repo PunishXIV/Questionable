@@ -7,6 +7,7 @@ using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Functions;
 
+[RegisterSingleton]
 internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunctions> logger)
 {
     private readonly IDataManager _dataManager = dataManager;

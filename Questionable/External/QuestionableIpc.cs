@@ -4,6 +4,7 @@ using JetBrains.Annotations;
 using Questionable.Model.Questing;
 namespace Questionable.External;
 
+[RegisterSingleton]
 internal sealed class QuestionableIpc : IDisposable
 {
     private const string IpcIsRunning = "Questionable.IsRunning";

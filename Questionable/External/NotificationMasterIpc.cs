@@ -2,6 +2,7 @@
 
 namespace Questionable.External;
 
+[RegisterSingleton]
 internal sealed class NotificationMasterIpc(IDalamudPluginInterface pluginInterface, Configuration configuration)
 {
     private readonly NotificationMasterApi _api = new(pluginInterface);

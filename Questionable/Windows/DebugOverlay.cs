@@ -5,6 +5,7 @@ using Dalamud.Game.ClientState.Objects.Types;
 using Questionable.Model.Questing;
 namespace Questionable.Windows;
 
+[RegisterSingleton]
 internal sealed class DebugOverlay : Window
 {
     private readonly AetheryteData _aetheryteData;

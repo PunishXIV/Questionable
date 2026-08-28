@@ -4,6 +4,7 @@ using Dalamud.Interface.Utility.Raii;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.QuestComponents;
 
+[RegisterSingleton]
 internal sealed class RemainingTasksComponent(
     QuestController questController,
     GatheringController gatheringController)

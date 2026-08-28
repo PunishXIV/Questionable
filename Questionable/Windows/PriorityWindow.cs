@@ -16,6 +16,7 @@ using JournalCategory = Lumina.Excel.Sheets.JournalCategory;
 using JournalGenre = Lumina.Excel.Sheets.JournalGenre;
 namespace Questionable.Windows;
 
+[RegisterSingleton]
 internal sealed class PriorityWindow : LWindow
 {
     private const string ClipboardPrefix = "qst:priority:";

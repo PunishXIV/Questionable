@@ -5,6 +5,7 @@ using static Questionable.Controller.Steps.Shared.Fish;
 
 namespace Questionable.Controller.Steps.Fishing;
 
+[RegisterSingleton<IFishingPresetGenerator, FishingPresetGenerator>]
 internal sealed class FishingPresetGenerator(QuestRegistry questRegistry) : IFishingPresetGenerator
 {
     private static readonly string[] HooksetKeys =

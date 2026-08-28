@@ -4,6 +4,9 @@ using Questionable.Model.Questing;
 using Questionable.QuestPaths;
 namespace Questionable.Validation.Validators;
 
+// Registered as both JsonSchemaValidator (self) and IQuestValidator via a factory forward in QuestionablePlugin
+// so the same instance is used for both service registrations.
+[RegisterSingleton]
 internal sealed class JsonSchemaValidator : IQuestValidator
 {
     private readonly Dictionary<ElementId, JsonNode> _questNodes = [];

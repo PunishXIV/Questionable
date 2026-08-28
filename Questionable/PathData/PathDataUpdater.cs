@@ -8,6 +8,7 @@ namespace Questionable.PathData;
 ///     full plugin release. The bundle is stored in <c>{ConfigDirectory}/PathData/</c> and picked up
 ///     by <see cref="QuestRegistry" />'s downloaded-bundle load tier.
 /// </summary>
+[RegisterSingleton]
 internal sealed class PathDataUpdater : IDisposable
 {
     private const string RepositoryUrl = "https://github.com/PunishXIV/Questionable";

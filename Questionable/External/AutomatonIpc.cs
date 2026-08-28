@@ -2,6 +2,7 @@
 using Dalamud.Plugin.Ipc.Exceptions;
 namespace Questionable.External;
 
+[RegisterSingleton]
 internal sealed class AutomatonIpc
 {
     private const string AutoSnipeTweak = "AutoSnipeQuests";

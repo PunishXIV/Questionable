@@ -1,6 +1,7 @@
 ﻿using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
+[RegisterSingleton<IQuestValidator, NextQuestValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class NextQuestValidator : IQuestValidator
 {
     public IEnumerable<ValidationIssue> Validate(Quest quest)

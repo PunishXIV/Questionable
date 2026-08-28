@@ -1,6 +1,7 @@
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
+[RegisterSingleton]
 internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable objectTable, RedoUtil redoUtil)
 {
     private readonly IClientState _clientState = clientState;

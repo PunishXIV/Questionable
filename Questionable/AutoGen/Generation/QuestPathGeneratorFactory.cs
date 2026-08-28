@@ -11,6 +11,7 @@ namespace Questionable.AutoGen.Generation;
 ///         former and takes the latter per call.
 ///     </para>
 /// </summary>
+[RegisterSingleton]
 public sealed class QuestPathGeneratorFactory(QuestGameData gameData)
 {
     public QuestPathAutoGenerator Create(string author) =>

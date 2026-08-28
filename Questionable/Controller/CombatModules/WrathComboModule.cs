@@ -10,6 +10,7 @@ using WrathError = WrathCombo.API.Error;
 
 namespace Questionable.Controller.CombatModules;
 
+[RegisterSingleton<ICombatModule, WrathComboModule>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class WrathComboModule : ICombatModule, IDisposable
 {
     private const string CallbackPrefix = "Questionable$Wrath";

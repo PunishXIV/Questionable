@@ -2,6 +2,7 @@
 using Questionable.Model.Common;
 namespace Questionable.External;
 
+[RegisterSingleton]
 internal sealed class LifestreamIpc(IDalamudPluginInterface pluginInterface, ILogger<LifestreamIpc> logger)
 {
 #pragma warning disable CA1823 // Avoid unused private fields

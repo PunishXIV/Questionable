@@ -3,6 +3,7 @@ using Lumina.Excel.Sheets;
 using Questionable.Model.Common;
 namespace Questionable.Data;
 
+[RegisterSingleton]
 internal sealed class AetheryteData : IAetheryteTerritoryProvider
 {
     IReadOnlyCollection<uint> IAetheryteTerritoryProvider.AetheryteTerritoryIds => TerritoryIds.Values;

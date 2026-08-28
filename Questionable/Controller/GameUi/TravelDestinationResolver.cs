@@ -12,6 +12,7 @@ namespace Questionable.Controller.GameUi;
 ///     quest step, and the warp entry matching a given prompt. Shared by the dialogue-choice and
 ///     yes/no interaction handlers.
 /// </summary>
+[RegisterSingleton]
 internal sealed class TravelDestinationResolver(
     IClientState clientState,
     GatheringPointRegistry gatheringPointRegistry,

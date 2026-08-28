@@ -9,6 +9,7 @@ using Quest = Lumina.Excel.Sheets.Quest;
 
 namespace Questionable.Data;
 
+[RegisterSingleton]
 internal sealed class QuestData
 {
     public static readonly IReadOnlyList<QuestId> HardModePrimals = [new(1048), new(1157), new(1158)];

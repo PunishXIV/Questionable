@@ -2,6 +2,7 @@ using Dalamud.Bindings.ImGui;
 using Questionable.Model.Questing;
 namespace Questionable.Windows.Utils;
 
+[RegisterTransient]
 internal sealed class QuestSelector(QuestRegistry questRegistry)
 {
     private string _searchString = string.Empty;

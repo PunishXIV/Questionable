@@ -3,6 +3,7 @@ using Lumina.Excel.Sheets;
 using Questionable.Model.Gathering;
 namespace Questionable.Data;
 
+[RegisterSingleton]
 internal sealed class GatheringData
 {
     private readonly Dictionary<uint, GatheringPointId> _botanistGatheringPoints = [];

@@ -1,6 +1,7 @@
 #pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
 namespace Questionable.External;
 
+[RegisterSingleton<IAutoHookIpc, AutoHookIpc>]
 internal sealed class AutoHookIpc : IAutoHookIpc
 {
     private readonly ILogger<AutoHookIpc> _logger;

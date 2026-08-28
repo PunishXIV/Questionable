@@ -6,6 +6,7 @@ using PunishLib.ImGuiMethods;
 using Questionable.Windows.Common;
 namespace Questionable.Windows;
 
+[RegisterSingleton]
 internal sealed class ConfigWindow
  : LWindow, IPersistableWindowConfig
 {

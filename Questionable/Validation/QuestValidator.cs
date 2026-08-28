@@ -3,6 +3,7 @@ using Questionable.Model.Questing;
 using static Questionable.Utils.CacheUtils;
 namespace Questionable.Validation;
 
+[RegisterSingleton]
 internal sealed class QuestValidator
 {
     private readonly ILogger<QuestValidator> _logger;

@@ -10,6 +10,7 @@ using Questionable.Model.Questing;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.ConfigComponents;
 
+[RegisterSingleton]
 internal sealed class DutyConfigComponent : ConfigComponent
 {
     private const string DutyClipboardPrefix = "qst:duty:";

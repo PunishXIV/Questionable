@@ -10,6 +10,7 @@ namespace Questionable.Validation.Validators;
 ///     match a territory containing an aetheryte, or the step must teleport in via
 ///     <c>AetheryteShortcut</c> / <c>AethernetShortcut</c>.
 /// </summary>
+[RegisterSingleton<IQuestValidator, AcceptQuestTerritoryValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class AcceptQuestTerritoryValidator(IAetheryteTerritoryProvider aetheryteData) : IQuestValidator
 {
     private readonly IAetheryteTerritoryProvider _aetheryteData = aetheryteData;

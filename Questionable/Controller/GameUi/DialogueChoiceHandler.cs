@@ -7,7 +7,6 @@ using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
-using static Questionable.Controller.GatheringController;
 using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.GameUi;
@@ -18,6 +17,7 @@ namespace Questionable.Controller.GameUi;
 /// </summary>
 // TODO: refactor — heavy nesting (22 lines indented ≥6 levels, max indent 16 levels).
 //       High max indent likely reflects LINQ / method-chain continuations rather than control flow; verify before restructuring.
+[RegisterSingleton]
 internal sealed partial class DialogueChoiceHandler : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;

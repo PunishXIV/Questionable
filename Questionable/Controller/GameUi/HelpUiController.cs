@@ -3,6 +3,7 @@ using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 namespace Questionable.Controller.GameUi;
 
+[RegisterSingleton]
 internal sealed class HelpUiController : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;

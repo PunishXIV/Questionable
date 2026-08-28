@@ -6,6 +6,7 @@ using Questionable.Controller.GameUi.Shop.Model;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.GameUi;
 
+[RegisterSingleton]
 internal sealed class ShopController : IDisposable, IShopWindow
 {
     private readonly IDataManager _dataManager;

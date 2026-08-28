@@ -8,6 +8,7 @@ using Lumina.Text.ReadOnly;
 using Sheets = Lumina.Excel.Sheets;
 namespace Questionable.Windows.Utils;
 
+[RegisterTransient]
 internal unsafe sealed class RedoUtil
 {
     internal readonly Dictionary<Sheets.QuestRedoChapterUI, RedoCache> RedoData = [];

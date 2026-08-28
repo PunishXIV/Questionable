@@ -6,6 +6,7 @@ using Questionable.Model.Questing;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.QuestComponents;
 
+[RegisterSingleton]
 internal sealed class ARealmRebornComponent
 (
     GameFunctions gameFunctions,

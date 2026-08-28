@@ -12,6 +12,7 @@ namespace Questionable.AutoGen;
 ///     file in the user's <c>Quests</c> directory and reloads the registry so it is picked up immediately.
 ///     The heavy lifting lives in <see cref="QuestPathAutoGenerator"/>.
 /// </summary>
+[RegisterSingleton]
 internal sealed class DraftQuestPathService(
     QuestPathGeneratorFactory generatorFactory,
     Configuration configuration,

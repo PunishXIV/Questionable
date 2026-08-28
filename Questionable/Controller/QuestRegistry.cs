@@ -15,6 +15,7 @@ using Sheets = Lumina.Excel.Sheets;
 namespace Questionable.Controller;
 
 // TODO: refactor — heavy nesting (29 lines indented ≥6 levels, max indent ~8 levels).
+[RegisterSingleton]
 internal sealed class QuestRegistry
 {
     private readonly IChatGui _chatGui;

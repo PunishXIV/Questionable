@@ -3,6 +3,7 @@ using Dalamud.Plugin.Ipc.Exceptions;
 using Questionable.Model.Questing;
 namespace Questionable.External;
 
+[RegisterSingleton]
 internal sealed class AutoDutyIpc
 (
     IDalamudPluginInterface pluginInterface,

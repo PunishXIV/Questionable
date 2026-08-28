@@ -9,6 +9,7 @@ namespace Questionable.Controller;
 ///     that pick the currently-active one, and the setters that mutate them. Extracted from
 ///     <see cref="QuestController"/>.
 /// </summary>
+[RegisterSingleton]
 internal sealed class QuestProgressTracker(
     QuestFunctions questFunctions,
     QuestRegistry questRegistry,

@@ -7,6 +7,7 @@ namespace Questionable.Controller;
 ///     Holds and mutates the user's manually-prioritised quest list. Extracted from
 ///     <see cref="QuestController"/> so the list logic lives in one focused, testable place.
 /// </summary>
+[RegisterSingleton]
 internal sealed class QuestPriorityManager(
     QuestRegistry questRegistry,
     ILogger<QuestPriorityManager> logger,

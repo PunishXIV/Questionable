@@ -16,6 +16,7 @@ global using ECommons.DalamudServices;
 global using ECommons.EzIpcManager;
 global using ECommons.Reflection;
 global using ECommons.Throttlers;
+global using Injectio.Attributes;
 global using Lumina.Excel;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;

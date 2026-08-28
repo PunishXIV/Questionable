@@ -2,6 +2,7 @@
 using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
+[RegisterSingleton<IQuestValidator, AethernetShortcutValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class AethernetShortcutValidator(AetheryteData aetheryteData) : IQuestValidator
 {
     private readonly AetheryteData _aetheryteData = aetheryteData;

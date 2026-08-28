@@ -5,6 +5,7 @@ using Questionable.Model.Questing;
 namespace Questionable.Data;
 
 [SuppressMessage("Performance", "CA1822")]
+[RegisterSingleton]
 internal sealed class AlliedSocietyData
 {
     public ReadOnlyDictionary<ushort, AlliedSocietyMountConfiguration> Mounts { get; } =

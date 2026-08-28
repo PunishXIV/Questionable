@@ -3,6 +3,7 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Group;
 namespace Questionable.Controller.Utils;
 
+[RegisterSingleton]
 internal sealed class PartyWatchDog : IDisposable
 {
     private readonly IChatGui _chatGui;

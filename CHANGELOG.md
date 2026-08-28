@@ -1,2 +1,1 @@
-- Feature: icons for repeatable quests in journal progress -alydev
-- Feature: Filter unobtainable/repeatable quests in journal progress -alydev
+- Feature: Code cleanup -Kage, alydev

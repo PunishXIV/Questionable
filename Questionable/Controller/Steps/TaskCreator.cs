@@ -3,6 +3,7 @@ using Questionable.Controller.Steps.Shared;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps;
 
+[RegisterSingleton]
 internal sealed class TaskCreator
 (
     IServiceProvider serviceProvider,

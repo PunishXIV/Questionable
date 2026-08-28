@@ -3,6 +3,7 @@ using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 namespace Questionable.External;
 
+[RegisterSingleton]
 internal sealed class PandorasBoxIpc : IDisposable
 {
     private static readonly ImmutableHashSet<string> ConflictingFeatures = new HashSet<string>

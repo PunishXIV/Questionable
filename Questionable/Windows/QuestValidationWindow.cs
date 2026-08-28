@@ -6,6 +6,7 @@ using Questionable.Windows.Common;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows;
 
+[RegisterSingleton]
 internal sealed class QuestValidationWindow : LWindow
 {
     private readonly IDalamudPluginInterface _pluginInterface;

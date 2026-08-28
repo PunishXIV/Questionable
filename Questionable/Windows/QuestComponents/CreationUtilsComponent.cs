@@ -17,6 +17,7 @@ using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
 namespace Questionable.Windows.QuestComponents;
 
+[RegisterSingleton]
 internal sealed class CreationUtilsComponent
 (
     QuestController questController,

@@ -6,6 +6,7 @@ using Humanizer.Localisation;
 using Questionable.Model.Questing;
 namespace Questionable.Windows.QuestComponents;
 
+[RegisterSingleton]
 internal sealed class EventInfoComponent
 (
     QuestData questData,

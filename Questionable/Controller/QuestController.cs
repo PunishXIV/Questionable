@@ -20,6 +20,7 @@ using Quest = Questionable.Domain.Quest;
 namespace Questionable.Controller;
 
 // TODO: refactor — heavy nesting (35 lines indented ≥6 levels, max indent ~9 levels).
+[RegisterSingleton]
 internal sealed class QuestController : MiniTaskController<QuestController>
 {
     public delegate void AutomationTypeChangedEventHandler(object sender, EAutomationType e);

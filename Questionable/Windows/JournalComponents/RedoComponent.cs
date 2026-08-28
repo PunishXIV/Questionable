@@ -7,6 +7,7 @@ using Questionable.Model.Questing;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.JournalComponents;
 
+[RegisterSingleton]
 internal sealed class RedoComponent
 (
     RedoUtil redoUtil,

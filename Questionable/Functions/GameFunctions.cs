@@ -19,6 +19,7 @@ using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Functions;
 
+[RegisterSingleton]
 internal sealed unsafe partial class GameFunctions
 (
     IDataManager dataManager,

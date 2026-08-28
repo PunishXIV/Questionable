@@ -10,6 +10,7 @@ using Questionable.Windows.Common.Ui;
 using static Questionable.Domain.QuestInfo;
 namespace Questionable.Windows.QuestComponents;
 
+[RegisterSingleton]
 internal sealed class QuestTooltipComponent
 (
     QuestRegistry questRegistry,

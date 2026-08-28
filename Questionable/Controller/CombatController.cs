@@ -15,6 +15,7 @@ namespace Questionable.Controller;
 
 // TODO: refactor — heavy nesting (21 lines indented ≥6 levels, max indent 16 levels).
 //       High max indent likely reflects LINQ / method-chain continuations rather than control flow; verify before restructuring.
+[RegisterSingleton]
 internal sealed class CombatController : IDisposable
 {
     public enum EStatus

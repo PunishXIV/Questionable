@@ -11,6 +11,7 @@ using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
 namespace Questionable.Controller;
 
+[RegisterSingleton]
 internal sealed class ContextMenuController : IDisposable
 {
     private readonly IChatGui _chatGui;

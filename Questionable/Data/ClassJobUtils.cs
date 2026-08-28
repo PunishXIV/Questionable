@@ -8,6 +8,7 @@ using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
 namespace Questionable.Data;
 
+[RegisterSingleton]
 internal sealed class ClassJobUtils
 {
     private readonly ReadOnlyDictionary<Job, sbyte> _classJobToExpArrayIndex;

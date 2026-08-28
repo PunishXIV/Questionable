@@ -3,6 +3,7 @@ using Dalamud.Interface;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.QuestComponents;
 
+[RegisterSingleton]
 internal sealed class ReportWarningComponent(Configuration configuration)
 {
     private readonly Configuration _configuration = configuration;

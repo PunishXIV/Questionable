@@ -2,6 +2,7 @@
 using Lumina.Excel.Sheets;
 namespace Questionable.Data;
 
+[RegisterSingleton]
 internal sealed class AetherCurrentData(IDataManager dataManager)
 {
     private readonly ImmutableDictionary<uint, ImmutableList<uint>> _overworldCurrents = dataManager.GetExcelSheet<AetherCurrentCompFlgSet>()

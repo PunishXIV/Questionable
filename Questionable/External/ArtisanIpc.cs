@@ -3,6 +3,7 @@ using Dalamud.Plugin.Ipc.Exceptions;
 using Questionable.Model.Questing;
 namespace Questionable.External;
 
+[RegisterSingleton]
 internal sealed class ArtisanIpc(IDalamudPluginInterface pluginInterface, ILogger<ArtisanIpc> logger)
 {
     private readonly ICallGateSubscriber<ushort, int, object> _craftItem = pluginInterface.GetIpcSubscriber<ushort, int, object>("Artisan.CraftItem");

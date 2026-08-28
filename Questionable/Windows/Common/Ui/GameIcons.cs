@@ -8,6 +8,7 @@ using SixLabors.ImageSharp.Processing;
 
 namespace Questionable.Windows.Common.Ui;
 
+[RegisterSingleton]
 internal sealed class GameIcons(
     IDataManager dataManager,
     ITextureProvider textureProvider,

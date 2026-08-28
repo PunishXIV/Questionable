@@ -4,6 +4,7 @@ using FFXIVClientStructs.FFXIV.Client.UI.Info;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
+[RegisterSingleton]
 internal sealed class MogmailIpc(IDalamudPluginInterface pluginInterface, ILogger<MogmailIpc> logger)
 {
     private readonly ICallGateSubscriber<bool> _isAvailable = pluginInterface.GetIpcSubscriber<bool>("Mogmail.IsAvailable");

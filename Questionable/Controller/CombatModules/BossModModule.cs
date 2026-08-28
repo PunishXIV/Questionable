@@ -3,6 +3,7 @@ using Dalamud.Plugin.Ipc.Exceptions;
 using Questionable.Model.Common;
 namespace Questionable.Controller.CombatModules;
 
+[RegisterSingleton<ICombatModule, BossModModule>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class BossModModule
 (
     ILogger<BossModModule> logger,

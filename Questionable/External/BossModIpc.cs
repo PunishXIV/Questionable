@@ -4,6 +4,7 @@ using Questionable.Model.Questing;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
+[RegisterSingleton]
 internal sealed class BossModIpc
 (
     IDalamudPluginInterface pluginInterface,

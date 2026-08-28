@@ -15,6 +15,7 @@ namespace Questionable.Controller.GameUi;
 ///     (<c>[0 = OK, name, ""]</c>), then the follow-up "Name your chocobo?" <c>SelectYesno</c> is
 ///     accepted by <see cref="YesNoChoiceHandler" /> via <see cref="IsAwaitingYesNo" />.
 /// </remarks>
+[RegisterSingleton]
 internal sealed unsafe class ChocoboNamingController : IDisposable
 {
     private const string AddonName = "InputString";

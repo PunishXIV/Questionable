@@ -9,6 +9,7 @@ using Questionable.Windows.PathEditorComponents;
 
 namespace Questionable.Windows;
 
+[RegisterSingleton]
 internal sealed class PathEditorWindow : LWindow
 {
     private readonly PathEditorSession _session;

@@ -5,6 +5,7 @@ using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using JetBrains.Annotations;
 namespace Questionable.Controller;
 
+[RegisterSingleton]
 internal sealed unsafe class InterruptHandler : IDisposable
 {
     private readonly IClientState _clientState;
