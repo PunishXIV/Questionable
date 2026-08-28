@@ -399,7 +399,7 @@ internal sealed class QuestRegistry
                     new QuestStep(
                         level?.Object != null && level?.Object.RowId != 0 ? EInteractionType.Interact : EInteractionType.WalkTo,
                         level?.Object.RowId != 0 ? level?.Object.RowId : null,
-                        level?.Position + new System.Numerics.Vector3(0,level?.Object.RowId == 0 ? 30 : 0,0),
+                        level?.Position + new System.Numerics.Vector3(0,level?.Object.RowId == 0 ? 10 : 0,0),
                         level?.Territory.RowId ?? info.IssuerLocation.Territory.RowId
                     ) {
                         Fly = GameFunctions.IsFlyingUnlocked(level?.Territory.RowId ?? info.IssuerLocation.Territory.RowId) ? true : null

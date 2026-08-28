@@ -967,12 +967,11 @@ public sealed class QuestPathAutoGenerator(QuestGameData gameData, string author
     ///     Height added to a position taken from a <c>Level</c> row that places no object.
     ///     <para>
     ///         Those rows mark a search area rather than a thing to stand on, and their Y often sits fractionally
-    ///         under the floor. vnavmesh fails outright on a point below the mesh ("got 0 points"), whereas a
-    ///         point above it just projects back down. <c>QuestRegistry.CreateQuestRoot</c> uses 30 for the same
-    ///         reason
+    ///         under the floor. vnavmesh fails outright on a point below the mesh ("got 0 points").
+    ///         <c>QuestRegistry.CreateQuestRoot</c> uses 10 for the same reason
     ///     </para>
     /// </summary>
-    private const float AreaHeightPadding = 30f;
+    private const float AreaHeightPadding = 10f;
 
     /// <summary>Raw coordinates of a <c>Level</c> row, for measuring distances.</summary>
     /// <summary>
