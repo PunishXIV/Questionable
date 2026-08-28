@@ -12,99 +12,42 @@ using WrathError = WrathCombo.API.WrathIPCWrapper.ErrorType;
 
 namespace Questionable;
 
-public sealed class QuestionablePlugin : IDalamudPlugin
+public sealed class QuestionablePlugin(
+    IDalamudPluginInterface pluginInterface,
+    IClientState clientState,
+    ITargetManager targetManager,
+    IFramework framework,
+    IGameGui gameGui,
+    IDataManager dataManager,
+    ISigScanner sigScanner,
+    IObjectTable objectTable,
+    IPluginLog pluginLog,
+    ICondition condition,
+    IChatGui chatGui,
+    ICommandManager commandManager,
+    IAddonLifecycle addonLifecycle,
+    IKeyState keyState,
+    IContextMenu contextMenu,
+    IToastGui toastGui,
+    IGameInteropProvider gameInteropProvider,
+    ITextureProvider textureProvider) : IAsyncDalamudPlugin
 {
-    private readonly ServiceProvider? _serviceProvider;
+    private ServiceProvider? _serviceProvider;
+    private bool _ecommonsInitialized;
 
-    public QuestionablePlugin(IDalamudPluginInterface pluginInterface,
-        IClientState clientState,
-        ITargetManager targetManager,
-        IFramework framework,
-        IGameGui gameGui,
-        IDataManager dataManager,
-        ISigScanner sigScanner,
-        IObjectTable objectTable,
-        IPluginLog pluginLog,
-        ICondition condition,
-        IChatGui chatGui,
-        ICommandManager commandManager,
-        IAddonLifecycle addonLifecycle,
-        IKeyState keyState,
-        IContextMenu contextMenu,
-        IToastGui toastGui,
-        IGameInteropProvider gameInteropProvider,
-        ITextureProvider textureProvider)
+    public async Task LoadAsync(CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(pluginInterface);
         ArgumentNullException.ThrowIfNull(chatGui);
-        ECommonsMain.Init(pluginInterface, this, Module.DalamudReflector);
-        WrathIPCWrapper.Init(pluginInterface, WrathError.IPCNotReady | WrathError.Unexpected);
-        PunishLibMain.Init(pluginInterface, "Questionable", new AboutPlugin()
-        {
-            Developer = "alydev",
-            Sponsor = "https://ko-fi.com/alydev"
-        });
 
         try
         {
-            ServiceCollection serviceCollection = [];
-            serviceCollection.AddLogging(builder => builder.SetMinimumLevel(LogLevel.Trace)
-                .ClearProviders()
-                .AddDalamudLogger(pluginLog, t => t[(t.LastIndexOf('.') + 1)..]));
-            serviceCollection.AddSingleton<IDalamudPlugin>(this);
-            serviceCollection.AddSingleton(pluginInterface);
-            serviceCollection.AddSingleton(clientState);
-            serviceCollection.AddSingleton(targetManager);
-            serviceCollection.AddSingleton(framework);
-            serviceCollection.AddSingleton(gameGui);
-            serviceCollection.AddSingleton(dataManager);
-            serviceCollection.AddSingleton(sigScanner);
-            serviceCollection.AddSingleton(objectTable);
-            serviceCollection.AddSingleton(pluginLog);
-            serviceCollection.AddSingleton(condition);
-            serviceCollection.AddSingleton(chatGui);
-            serviceCollection.AddSingleton(commandManager);
-            serviceCollection.AddSingleton(addonLifecycle);
-            serviceCollection.AddSingleton(keyState);
-            serviceCollection.AddSingleton(contextMenu);
-            serviceCollection.AddSingleton(toastGui);
-            serviceCollection.AddSingleton(gameInteropProvider);
-            serviceCollection.AddSingleton(textureProvider);
-            serviceCollection.AddSingleton(new WindowSystem(nameof(Questionable)));
-
-            var savedConfig = (Configuration?)pluginInterface.GetPluginConfig();
-            if (savedConfig != null && savedConfig.Version != Configuration.PluginConfigVersion)
-            {
-                // Backup config when version changes
-                pluginInterface.ConfigFile.CopyTo(Path.ChangeExtension(pluginInterface.ConfigFile.FullName, ".json.bak"), overwrite: true);
-                savedConfig.Version = Configuration.PluginConfigVersion;
-            }
-
-            var configuration = savedConfig ?? new Configuration();
-            if (!configuration.AutoRedeemOffResetApplied)
-            {
-                configuration.ApplyAutoRedeemRewardItemsInitialReset();
-                configuration.AutoRedeemOffResetApplied = true;
-                pluginInterface.SavePluginConfig(configuration);
-            }
-
-            serviceCollection.AddSingleton(configuration);
-            Questionable.Utils.LocalizeShortcut.Initialize(configuration, dataManager, clientState);
-            Windows.Common.Ui.QstTheme.Initialize(configuration);
-
-            AddBasicFunctionsAndData(serviceCollection);
-            AddTaskFactories(serviceCollection);
-            AddControllers(serviceCollection);
-            AddWindows(serviceCollection);
-            AddQuestValidators(serviceCollection);
-
-            serviceCollection.AddSingleton<CommandHandler>();
-            serviceCollection.AddSingleton<DalamudInitializer>();
-
-            serviceCollection.AddSingleton<IFishingPresetGenerator, FishingPresetGenerator>();
-
-            _serviceProvider = serviceCollection.BuildServiceProvider();
-            Initialize(_serviceProvider);
+            // Off the thread-pool thread LoadAsync runs on; Dalamud warns against blocking there.
+            _serviceProvider = await Task.Run(BuildAndInitialize, cancellationToken).ConfigureAwait(false);
+        }
+        catch (OperationCanceledException)
+        {
+            throw;
         }
         catch (Exception)
         {
@@ -113,10 +56,91 @@ public sealed class QuestionablePlugin : IDalamudPlugin
         }
     }
 
-    public void Dispose()
+    public async ValueTask DisposeAsync()
     {
-        _serviceProvider?.Dispose();
-        ECommonsMain.Dispose();
+        var serviceProvider = Interlocked.Exchange(ref _serviceProvider, null);
+        if (serviceProvider is IAsyncDisposable asyncDisposable)
+            await asyncDisposable.DisposeAsync().ConfigureAwait(false);
+        else
+            serviceProvider?.Dispose();
+
+        if (_ecommonsInitialized)
+        {
+            _ecommonsInitialized = false;
+            ECommonsMain.Dispose();
+        }
+    }
+
+    private ServiceProvider BuildAndInitialize()
+    {
+        ECommonsMain.Init(pluginInterface, this, Module.DalamudReflector);
+        _ecommonsInitialized = true;
+        WrathIPCWrapper.Init(pluginInterface, WrathError.IPCNotReady | WrathError.Unexpected);
+        PunishLibMain.Init(pluginInterface, "Questionable", new AboutPlugin()
+        {
+            Developer = "alydev",
+            Sponsor = "https://ko-fi.com/alydev"
+        });
+
+        ServiceCollection serviceCollection = [];
+        serviceCollection.AddLogging(builder => builder.SetMinimumLevel(LogLevel.Trace)
+            .ClearProviders()
+            .AddDalamudLogger(pluginLog, t => t[(t.LastIndexOf('.') + 1)..]));
+        serviceCollection.AddSingleton<IAsyncDalamudPlugin>(this);
+        serviceCollection.AddSingleton(pluginInterface);
+        serviceCollection.AddSingleton(clientState);
+        serviceCollection.AddSingleton(targetManager);
+        serviceCollection.AddSingleton(framework);
+        serviceCollection.AddSingleton(gameGui);
+        serviceCollection.AddSingleton(dataManager);
+        serviceCollection.AddSingleton(sigScanner);
+        serviceCollection.AddSingleton(objectTable);
+        serviceCollection.AddSingleton(pluginLog);
+        serviceCollection.AddSingleton(condition);
+        serviceCollection.AddSingleton(chatGui);
+        serviceCollection.AddSingleton(commandManager);
+        serviceCollection.AddSingleton(addonLifecycle);
+        serviceCollection.AddSingleton(keyState);
+        serviceCollection.AddSingleton(contextMenu);
+        serviceCollection.AddSingleton(toastGui);
+        serviceCollection.AddSingleton(gameInteropProvider);
+        serviceCollection.AddSingleton(textureProvider);
+        serviceCollection.AddSingleton(new WindowSystem(nameof(Questionable)));
+
+        var savedConfig = (Configuration?)pluginInterface.GetPluginConfig();
+        if (savedConfig != null && savedConfig.Version != Configuration.PluginConfigVersion)
+        {
+            // Backup config when version changes
+            pluginInterface.ConfigFile.CopyTo(Path.ChangeExtension(pluginInterface.ConfigFile.FullName, ".json.bak"), overwrite: true);
+            savedConfig.Version = Configuration.PluginConfigVersion;
+        }
+
+        var configuration = savedConfig ?? new Configuration();
+        if (!configuration.AutoRedeemOffResetApplied)
+        {
+            configuration.ApplyAutoRedeemRewardItemsInitialReset();
+            configuration.AutoRedeemOffResetApplied = true;
+            pluginInterface.SavePluginConfig(configuration);
+        }
+
+        serviceCollection.AddSingleton(configuration);
+        Questionable.Utils.LocalizeShortcut.Initialize(configuration, dataManager, clientState);
+        Windows.Common.Ui.QstTheme.Initialize(configuration);
+
+        AddBasicFunctionsAndData(serviceCollection);
+        AddTaskFactories(serviceCollection);
+        AddControllers(serviceCollection);
+        AddWindows(serviceCollection);
+        AddQuestValidators(serviceCollection);
+
+        serviceCollection.AddSingleton<CommandHandler>();
+        serviceCollection.AddSingleton<DalamudInitializer>();
+
+        serviceCollection.AddSingleton<IFishingPresetGenerator, FishingPresetGenerator>();
+
+        var serviceProvider = serviceCollection.BuildServiceProvider();
+        Initialize(serviceProvider);
+        return serviceProvider;
     }
 
     private static void AddBasicFunctionsAndData(ServiceCollection serviceCollection)
