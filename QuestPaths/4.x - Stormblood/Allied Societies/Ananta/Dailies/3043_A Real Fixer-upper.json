@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -62,7 +62,8 @@
           "RequiredQuestVariables": [null,[
             {"Low": 4}, {"Low": 6}, {"Low": 7}, {"Low": 8}, {"Low": 9}, {"Low": 10}
             ],null,null,null,null
-          ]
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 2009319,
@@ -77,7 +78,8 @@
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}, {"Low": 5}, {"Low": 7}, {"Low": 8}, {"Low": 10}
             ],null,null,null,null
-          ]
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 2009320,
@@ -92,7 +94,8 @@
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}, {"Low": 3}, {"Low": 6}, {"Low": 7}, {"Low": 9}
             ],null,null,null,null
-          ]
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "DataId": 2009322,
@@ -107,7 +110,8 @@
           "RequiredQuestVariables": [null,[
             {"Low": 2}, {"Low": 3}, {"Low": 4}, {"Low": 5}, {"Low": 6}, {"Low": 10}
             ],null,null,null,null
-          ]
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
         },
         {
           "DataId": 2009321,
@@ -122,7 +126,8 @@
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 3}, {"Low": 4}, {"Low": 5}, {"Low": 8}, {"Low": 9}
             ],null,null,null,null
-          ]
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         }
       ]
     },

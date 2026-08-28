@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "Iskierka", "Date": "2026-06-29"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -14,7 +14,9 @@
             "Z": 212.84802
           },
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "Fly": true
         }
       ]
     },
@@ -47,11 +49,8 @@
           "TerritoryId": 612,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [
-            7825,
-            7826,
-            7827
-          ]
+          "Fly": true,
+          "KillEnemyDataIds": [7825, 7826, 7827]
         }
       ]
     },
@@ -66,7 +65,8 @@
             "Z": 117.631714
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "Fly": true
         }
       ]
     },
@@ -98,7 +98,8 @@
           },
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones"
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "Fly": true
         }
       ]
     }
