@@ -1,0 +1,80 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019421,
+          "Position": {
+            "X": 27.6646,
+            "Y": 114.885,
+            "Z": -36.1487
+          },
+          "TerritoryId": 622,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 204.01901,
+            "Y": 22.460909,
+            "Z": -221.95341
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            6693
+          ],
+          "Fly": true,
+          "CompletionQuestVariablesFlags": [
+            {
+              "High": 1
+            },
+            null,
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "DataId": 2008719,
+          "Position": {
+            "X": -13.870483,
+            "Y": 66.544556,
+            "Z": -400.04578
+          },
+          "TerritoryId": 622,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019421,
+          "Position": {
+            "X": 27.6646,
+            "Y": 114.885,
+            "Z": -36.1487
+          },
+          "TerritoryId": 622,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
