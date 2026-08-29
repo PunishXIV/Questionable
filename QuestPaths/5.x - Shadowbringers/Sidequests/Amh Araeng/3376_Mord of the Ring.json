@@ -1,0 +1,97 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030391,
+          "Position": {
+            "X": 580.006,
+            "Y": -46.389,
+            "Z": -684.883
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: issuer 1030391 (Ghun Gun)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030392,
+          "Position": {
+            "X": 296.297,
+            "Y": 1.46858,
+            "Z": -266.201
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: todo location -> 1030392 (Ghun Gun)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1030393,
+          "Position": {
+            "X": 222.477,
+            "Y": 4.0297,
+            "Z": -279.955
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: todo location -> 1030393 (scrupulous trader)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030395,
+          "Position": {
+            "X": 302.405,
+            "Y": 1.46858,
+            "Z": -167.609
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: todo location -> 1030395 (antiquities dealer)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030398,
+          "Position": {
+            "X": 188.928,
+            "Y": 7.15583,
+            "Z": -178.779
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: todo turn-in -> 1030398 (Jamial)"
+        }
+      ]
+    }
+  ]
+}
