@@ -355,6 +355,15 @@ internal sealed class QuestRegistry
             .ToList();
     }
 
+    public bool TryGetQuestByContentFinderConditionId(uint cfcId, out IQuestInfo? questInfo)
+    {
+        if (_contentFinderConditionIds.TryGetValue(cfcId, out (ElementId qId, QuestStep step) value) &&
+                _questData.TryGetQuestInfo(value.qId, out questInfo))
+            return questInfo != null;
+        questInfo = null;
+        return false;
+    }
+
     public bool TryGetDutyByContentFinderConditionId(uint cfcId, [NotNullWhen(true)] out DutyOptions? dutyOptions)
     {
         if (_contentFinderConditionIds.TryGetValue(cfcId, out (ElementId QuestId, QuestStep Step) value))

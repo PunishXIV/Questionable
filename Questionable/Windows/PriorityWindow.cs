@@ -14,6 +14,7 @@ using BeastTribe = Lumina.Excel.Sheets.BeastTribe;
 using ExVersion = Lumina.Excel.Sheets.ExVersion;
 using JournalCategory = Lumina.Excel.Sheets.JournalCategory;
 using JournalGenre = Lumina.Excel.Sheets.JournalGenre;
+using ContentRoulette = Lumina.Excel.Sheets.ContentRoulette;
 namespace Questionable.Windows;
 
 [RegisterSingleton]
@@ -508,6 +509,7 @@ internal sealed class PriorityWindow : LWindow
         _builtInPresets = new(StringComparer.Ordinal)
         {
             [JobQuestsPresetName] = [],
+            [_T<ContentRoulette>(8)] = ((ushort[])[4959, 5013, 5014]).FromNumericListOfQuests(),
             [_L("Unlock all jobs")] = jobUnlocks,
             [_L("Gil (set TextAdvance to prefer Gil sacks)")] = gilList,
             [_L("Post-ARR unlocks")] = postARRUnlocks,

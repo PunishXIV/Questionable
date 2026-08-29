@@ -87,7 +87,6 @@
           "InteractionType": "Combat",
           "Fly": true,
           "EnemySpawnType": "AfterInteraction",
-          "DelaySecondsAtStart": 7,
           "KillEnemyDataIds": [
             2466
           ],
@@ -136,7 +135,6 @@
           "InteractionType": "Combat",
           "Fly": true,
           "EnemySpawnType": "AfterInteraction",
-          "DelaySecondsAtStart": 7,
           "KillEnemyDataIds": [
             2466
           ],
@@ -185,7 +183,6 @@
           "InteractionType": "Combat",
           "Fly": true,
           "EnemySpawnType": "AfterInteraction",
-          "DelaySecondsAtStart": 7,
           "KillEnemyDataIds": [
             2466
           ],
@@ -228,7 +225,6 @@
           "InteractionType": "Combat",
           "Fly": true,
           "EnemySpawnType": "AfterInteraction",
-          "DelaySecondsAtStart": 7,
           "KillEnemyDataIds": [
             2466
           ],
@@ -274,7 +270,6 @@
           "InteractionType": "Combat",
           "Fly": true,
           "EnemySpawnType": "AfterInteraction",
-          "DelaySecondsAtStart": 7,
           "KillEnemyDataIds": [
             2466
           ],
