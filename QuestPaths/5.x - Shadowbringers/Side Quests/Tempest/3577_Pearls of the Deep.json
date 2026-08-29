@@ -1,7 +1,10 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-06-04"},
+  "LastChecked": {
+    "Username": "alydev",
+    "Date": "2026-06-04"
+  },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -30,25 +33,25 @@
             "Z": -47.72653
           },
           "TerritoryId": 818,
-          "InteractionType": "WaitForManualProgress",
+          "InteractionType": "Combat",
           "Comment": "Attack Morgawr, bring health below 50%, then use item",
           "EnemySpawnType": "OverworldEnemies",
-          "ComplexCombatData": [
-            {
-              "DataId": 10309,
-              "NameId": 8625
-            }
+          "KillEnemyDataIds": [
+            10309
           ],
-          "Fly": true,
-          "Land": true,
           "CombatItemUse": {
-            "Condition": "Incapacitated",
+            "Condition": "Health%",
+            "Value": 50,
             "ItemId": 2002616
           },
+          "Fly": true,
+          "Land": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
-            { "Low": 1 },
+            {
+              "Low": 1
+            },
             null,
             null,
             null
@@ -61,23 +64,23 @@
             "Z": -650.34375
           },
           "TerritoryId": 818,
-          "InteractionType": "WaitForManualProgress",
+          "InteractionType": "Combat",
           "Comment": "Attack Mnyiri, bring health below 50%, then use item",
           "EnemySpawnType": "OverworldEnemies",
-          "ComplexCombatData": [
-            {
-              "DataId": 10318,
-              "NameId": 8633
-            }
+          "KillEnemyDataIds": [
+            10318
           ],
-          "Fly": true,
-          "Land": true,
           "CombatItemUse": {
-            "Condition": "Incapacitated",
+            "Condition": "Health%",
+            "Value": 50,
             "ItemId": 2002616
           },
+          "Fly": true,
+          "Land": true,
           "CompletionQuestVariablesFlags": [
-            { "Low": 1 },
+            {
+              "Low": 1
+            },
             null,
             null,
             null,
@@ -92,24 +95,24 @@
             "Z": -871.17426
           },
           "TerritoryId": 818,
-          "InteractionType": "WaitForManualProgress",
+          "InteractionType": "Combat",
           "Comment": "Attack Deep-sea Leech, bring health below 50%, then use item",
           "EnemySpawnType": "OverworldEnemies",
-          "ComplexCombatData": [
-            {
-              "DataId": 10317,
-              "NameId": 8632
-            }
+          "KillEnemyDataIds": [
+            10317
           ],
-          "Fly": true,
-          "Land": true,
           "CombatItemUse": {
-            "Condition": "Incapacitated",
+            "Condition": "Health%",
+            "Value": 50,
             "ItemId": 2002616
           },
+          "Fly": true,
+          "Land": true,
           "CompletionQuestVariablesFlags": [
             null,
-            { "Low": 1 },
+            {
+              "Low": 1
+            },
             null,
             null,
             null,
