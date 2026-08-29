@@ -1,0 +1,131 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-29"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1030397,
+          "Position": {
+            "X": 191.723,
+            "Y": 7.15583,
+            "Z": -181.471
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "StopDistance": 4,
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "$": "auto: issuer 1030397 (Ghun Gun)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1030401,
+          "Position": {
+            "X": 541.955,
+            "Y": -43.5035,
+            "Z": 256.092
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
+          "$": "auto: todo location -> 1030401 (Jamial)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2010013,
+          "Position": {
+            "X": 549.723,
+            "Y": -41.263,
+            "Z": 256.288
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
+          "$": "auto: lua EOBJECT0 -> 2010013 (destination)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1030402,
+          "Position": {
+            "X": 541.656,
+            "Y": -43.1094,
+            "Z": 254.27
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
+          "$": "auto: todo location -> 1030402 (Ghun Gun); hands over ITEM0=2002585"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1030403,
+          "Position": {
+            "X": 540.847,
+            "Y": -59.1365,
+            "Z": 445.867
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
+          "$": "auto: todo location -> 1030403 (Jamial)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 2010014,
+          "Position": {
+            "X": 549.706,
+            "Y": -58.9151,
+            "Z": 443.198
+          },
+          "TerritoryId": 815,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
+          "$": "auto: lua EOBJECT1 -> 2010014 (destination)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1030404,
+          "Position": {
+            "X": 544.264,
+            "Y": -59.0618,
+            "Z": 443.9
+          },
+          "TerritoryId": 815,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
+          "$": "auto: todo turn-in -> 1030404 (Ghun Gun)"
+        }
+      ]
+    }
+  ]
+}
