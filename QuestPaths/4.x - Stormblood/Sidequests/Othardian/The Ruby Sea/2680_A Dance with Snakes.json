@@ -1,0 +1,66 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021519,
+          "Position": {
+            "X": 45.8696,
+            "Y": 20.9811,
+            "Z": -641.475
+          },
+          "Comment": "Quest requires capturing low health enemies, lower level/lowered dps melee class needed",
+          "TerritoryId": 613,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 419.42535,
+            "Y": 0.42102414,
+            "Z": -674.90454
+          },
+          "Comment": "Requires using an item on enemy below 50%,\nyou may need to switch to a lower level melee class\n to capture them properly.",
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            6647
+          ],
+          "CombatItemUse": {
+            "ItemId": 2002281,
+            "Condition": "Health%",
+            "Value": 50
+          },
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021519,
+          "Position": {
+            "X": 45.8696,
+            "Y": 20.9811,
+            "Z": -641.475
+          },
+          "TerritoryId": 613,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
