@@ -3,7 +3,7 @@
   "$": "There are several Feral Crocs in the area. UseItem targets the first one in the object table (?), which may not be at the same spot each time. It also does not execute movement to get closer to a target. In order to have this task complete automatically, we need to either path towards targets before UseItem, or ensure that UseItem's target is limited to a range around the character.",
   "Author": ["Censored", "alydev"],
   "Comment": "Requires manual interaction",
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-23"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
