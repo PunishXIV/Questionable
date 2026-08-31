@@ -182,6 +182,12 @@ internal sealed class PluginConfigComponent
             new(NightmareXivRepositoryUrl),
             "/ss",
             AlternateRepositoryUrls: NightmareXivRepositoryAlternates),
+        new("QuestMap",
+            "QuestMap",
+            "Explore quests and their rewards.",
+            new("https://github.com/GemPlugins/QuestMap"),
+            null,
+            "/quests"),
     ];
 
     public override void DrawTab()
