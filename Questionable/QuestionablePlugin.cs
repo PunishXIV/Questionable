@@ -52,6 +52,24 @@ public sealed class QuestionablePlugin(
     public async ValueTask DisposeAsync()
     {
         var serviceProvider = Interlocked.Exchange(ref _serviceProvider, value: null);
+
+        // Unhook Dalamud event sources (Framework.Update, UiBuilder callbacks, toast hooks, ...)
+        // before disposing the container. MS.DI marks the root scope as disposed at the *start* of
+        // Dispose/DisposeAsync, so any GetService call after that point throws ObjectDisposedException.
+        // Under IAsyncDalamudPlugin.DisposeAsync the framework thread can tick between "scope flagged
+        // disposed" and DalamudInitializer being reached in the disposal walk, and other singletons'
+        // per-frame container access would blow up. Disposing DalamudInitializer up-front removes the
+        // event subscriptions before that window opens; its Dispose is idempotent so MS.DI's later
+        // disposal pass is a no-op.
+        try
+        {
+            serviceProvider?.GetService<DalamudInitializer>()?.Dispose();
+        }
+        catch (ObjectDisposedException)
+        {
+            // Container already torn down elsewhere — nothing to unhook.
+        }
+
         if (serviceProvider is IAsyncDisposable asyncDisposable)
             await asyncDisposable.DisposeAsync().ConfigureAwait(false);
         else
@@ -136,6 +154,11 @@ public sealed class QuestionablePlugin(
         // a second independently-constructed instance.
         serviceCollection.AddSingleton<IAetheryteTerritoryProvider>(sp => sp.GetRequiredService<AetheryteData>());
         serviceCollection.AddSingleton<IQuestValidator>(sp => sp.GetRequiredService<JsonSchemaValidator>());
+
+        // Breaks the QuestController <-> MovementController ctor cycle without handing MovementController
+        // the whole IServiceProvider. Once .Value is evaluated the container isn't touched again, so a
+        // framework tick during shutdown can't hit a disposed scope through this path.
+        serviceCollection.AddSingleton(sp => new Lazy<QuestController>(sp.GetRequiredService<QuestController>));
 
         var serviceProvider = serviceCollection.BuildServiceProvider();
         Initialize(serviceProvider);
