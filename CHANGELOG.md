@@ -1,4 +1,1 @@
-- Change: Cleaner solo duty condition check -alydev
-- Feature: support additional feature in Quest Map if detected/merged -alydev
-  - added Quest Map to recommended plugins
-- Bug fix: skip custom delivery turn-in step if GatheringOnly (called via IPC from Satisfier, which should handle turn-in step) -alydev
+- Bug fix: automatic class switching now filters by... classes you've actually got unlocked. crazy, i know -alydev

@@ -1,4 +1,5 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System.Collections.ObjectModel;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
 using ECommons.ExcelServices;
@@ -136,6 +137,7 @@ internal static class Interact
         ///     prior to the next step (in case we're attacked).
         /// </summary>
         private bool delayedFinalCheck;
+        private ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> jobGearSets = classJobUtils.GetJobGearSets();
 
         public Quest? Quest => Task.Quest;
         public EInteractionType InteractionType { get; set; }
@@ -256,7 +258,7 @@ internal static class Interact
                 Task.Quest != null &&
                 InteractionType == EInteractionType.AcceptQuest)
             {
-                List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs];
+                List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs.Where(x => jobGearSets.Any(v => v.ClassJob.Equals(x)))];
                 Job playerJob = (Job)player.ClassJob.Value.RowId;
                 Job targetJob = acceptableJobs[0];
                 logger.LogDebug($"{Task.Quest.Id} acceptableJobs: {string.Join(',', acceptableJobs.Select(j => j.ToString()))}");
