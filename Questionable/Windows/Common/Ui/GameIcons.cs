@@ -10,14 +10,28 @@ namespace Questionable.Windows.Common.Ui;
 
 [RegisterSingleton]
 internal sealed class GameIcons(
+    Configuration configuration,
     IDataManager dataManager,
     ITextureProvider textureProvider,
     ILogger<GameIcons> logger) : IDisposable
 {
     private readonly Dictionary<(uint IconId, int Size), IDalamudTextureWrap?> _cache = [];
+    private bool _enabled;
+    private DateTime _enabledChecked = DateTime.MinValue;
+    public bool Enabled
+    {
+        get
+        {
+            if (_enabledChecked < (DateTime.Now - TimeSpan.FromSeconds(2)))
+                _enabled = configuration.General.QuestIcons;
+            return _enabled;
+        }
+    }
 
     public bool DrawInline(uint iconId)
     {
+        if (!Enabled)
+            return false;
         int size = (int)MathF.Round(ImGui.GetTextLineHeightWithSpacing());
         if (size <= 0 || Get(iconId, size) is not { } texture)
             return false;
