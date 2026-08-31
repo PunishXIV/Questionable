@@ -264,7 +264,8 @@ internal sealed class CreationUtilsComponent
         {
             if (objectTable[0] != null)
             {
-                ImGui.Text(_LF("Distance: {0:F2} ({1}y)",
+                ImGui.Text($"<{_savedPos.Value.X:F3},{_savedPos.Value.Y:F3},{_savedPos.Value.Z:F3}>" +
+                        _LF("Distance: {0:F2} ({1}y)",
                     (_savedPos.Value - objectTable[0]!.Position).Length(),
                     Math.Floor(_savedPos.Value.DistanceTo_XZ(objectTable[0]!.Position)) - 1));
                 ImGui.SameLine();

@@ -46,6 +46,7 @@ internal static class SinglePlayerDuty
         public const ushort EgistentialCrisis = 701;
         public const ushort Nightkin = 676;
         public const ushort WarmthOfFamily = 1244;
+        public const ushort BarThePassage = 1246;
     }
 
     internal sealed class Factory
@@ -253,6 +254,40 @@ internal static class SinglePlayerDuty
                         "Wait(leg exposed)");
                     yield return new SetTarget(17992);
                 }
+                else if (tId == SpecialTerritories.BarThePassage)
+                {
+                    yield return new EnableAi();
+                    yield return new WaitCondition.Task(
+                    () =>
+                    {
+                        if (clientState.TerritoryType != SpecialTerritories.BarThePassage)
+                            return true;
+                        return !condition[ConditionFlag.SufferingStatusAffliction63];
+                    },
+                    "Wait(in event)");
+                    Vector3[] points = [
+                            new(0f, 0f, -300f),
+                            new(0f, 0f, -300f),
+                            new(0f, 0f, -270f),
+                            new(0f, 0f, 78f),
+                            new(0f, 0f, 103f),
+                            new(0f, 0f, 361f),
+                    ];
+                    foreach (Vector3 point in points)
+                    {
+                        yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
+                        yield return new WaitCondition.Task(
+                            () =>
+                            {
+                                if (clientState.TerritoryType != SpecialTerritories.BarThePassage)
+                                    return true;
+                                return !condition[ConditionFlag.InCombat];
+                            },
+                            "Wait(in combat)");
+                        yield return new MoveTask(SpecialTerritories.BarThePassage, point);
+                    }
+                    yield return new SetTarget(18032);
+                }
 
                 //else if (tId == SpecialTerritories.ViperTutorial)
                 //{
@@ -287,6 +322,9 @@ internal static class SinglePlayerDuty
                 //}
                 else
                     yield return new EnableAi(tId == SpecialTerritories.Naadam);
+
+                if (step.SinglePlayerDutyOptions?.Target != null)
+                    yield return new SetTarget((uint)step.SinglePlayerDutyOptions.Target);
 
                 yield return new WaitSinglePlayerDuty(cfcId);
                 yield return new DisableAi();

@@ -31,7 +31,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
+          "SinglePlayerDutyOptions": {"Enabled": true, "Target": 17034},
           "AetheryteShortcut": "Radz-at-Han",
           "AethernetShortcut": [
             "[Radz-at-Han] Aetheryte Plaza",

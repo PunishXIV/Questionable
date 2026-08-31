@@ -1,1 +1,1 @@
-- Feature: Priority preset to unlock Level Cap Dungeons roulette -alydev
+- Feature: Added override so quest paths can specify a target for the start of solo duties -alydev
