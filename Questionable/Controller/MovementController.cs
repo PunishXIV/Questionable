@@ -26,7 +26,7 @@ internal sealed class MovementController
     AetheryteData aetheryteData,
     ICommandManager commandManager,
     IChatGui chatGui,
-    IServiceProvider serviceProvider,
+    Lazy<QuestController> questController,
     ILogger<MovementController> logger) : IDisposable
 {
     public const float DefaultVerticalInteractionDistance = 1.95f;
@@ -168,7 +168,7 @@ internal sealed class MovementController
             }
         }
 
-        if (serviceProvider.GetRequiredService<QuestController>().IsQuestingStopped)
+        if (questController.Value.IsQuestingStopped)
         {
             // if (EzThrottler.Throttle("qstwouldhavejumpedin", 5000))
             //     logger.LogDebug("Questionable would have jumped in here to do something, but decided against it.");
