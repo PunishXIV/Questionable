@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-06-18"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -13,7 +13,7 @@
             "Y": 100.89075,
             "Z": -181.99438
           },
-          "StopDistance": 5,
+          "StopDistance": 6,
           "TerritoryId": 399,
           "InteractionType": "AcceptQuest",
           "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza","[Idyllshire] Epilogue Gate (Eastern Hinterlands)"]

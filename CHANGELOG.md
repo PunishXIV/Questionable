@@ -1,2 +1,1 @@
-- Bug fix: automatic class switching now filters by... classes you've actually got unlocked. crazy, i know -alydev
-  - bug fix: bypasses check if no gearsets are registered yet -alydev
+- Feature: journal progress "Show Only Blue Quests" to help with unlocking instances etc -alydev

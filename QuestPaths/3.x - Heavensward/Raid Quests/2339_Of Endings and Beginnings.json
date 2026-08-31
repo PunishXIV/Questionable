@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-06-19"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-08-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -15,8 +15,41 @@
           },
           "StopDistance": 7,
           "TerritoryId": 399,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -233.90558,
+                  "Y": 148.49608,
+                  "Z": -7.8584595
+                },
+                "MaximumDistance": 20,
+                "TerritoryId": 399
+              }
+            }
+          }
+        },
+        {
+          "DataId": 1017944,
+          "Position": {
+            "X": -233.90558,
+            "Y": 148.49608,
+            "Z": -7.8584595
+          },
+          "StopDistance": 7,
+          "TerritoryId": 399,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza","[Idyllshire] Epilogue Gate (Eastern Hinterlands)"]
+          "DisableNavmesh": true,
+          "AethernetShortcut": [
+            "[Idyllshire] Aetheryte Plaza",
+            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
+          ]
         }
       ]
     },
