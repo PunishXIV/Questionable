@@ -172,5 +172,7 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskExecutor<WaitAtEnd.WaitForTerritory, WaitAtEnd.WaitForTerritoryExecutor>();
         serviceCollection.AddTaskExecutor<WaitAtEnd.NextStep, WaitAtEnd.NextStepExecutor>();
         serviceCollection.AddTaskExecutor<WaitAtEnd.EndAutomation, WaitAtEnd.EndAutomationExecutor>();
+        serviceCollection.AddTaskExecutor<WaitAtEnd.WaitForConditionActive, WaitAtEnd.WaitForConditionActiveExecutor>();
+        serviceCollection.AddTaskExecutor<WaitAtEnd.WaitForConditionCleared, WaitAtEnd.WaitForConditionClearedExecutor>();
     }
 }

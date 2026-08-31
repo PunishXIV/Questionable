@@ -257,26 +257,25 @@ internal sealed class CreationUtilsComponent
 
     private unsafe void DrawSavedDetails()
     {
-        if (_savedPos == null)
+        if (_savedPos == null || objectTable[0] == null)
             return;
         ImGui.Spacing();
         using (QstWidgets.Card())
         {
-            if (objectTable[0] != null)
-            {
-                ImGui.Text($"<{_savedPos.Value.X:F3},{_savedPos.Value.Y:F3},{_savedPos.Value.Z:F3}>" +
-                        _LF("Distance: {0:F2} ({1}y)",
-                    (_savedPos.Value - objectTable[0]!.Position).Length(),
-                    Math.Floor(_savedPos.Value.DistanceTo_XZ(objectTable[0]!.Position)) - 1));
-                ImGui.SameLine();
+            var pos = objectTable[0]!.Position;
+            ImGui.Text($"<{pos.X:F3},{pos.Y:F3},{pos.Z:F3}>");
+            ImGui.Text($"<{_savedPos.Value.X:F3},{_savedPos.Value.Y:F3},{_savedPos.Value.Z:F3}>");
+            ImGui.Text(_LF("Distance: {0:F2} ({1}y)",
+                (_savedPos.Value - pos).Length(),
+                Math.Floor(_savedPos.Value.DistanceTo_XZ(pos)) - 1));
+            ImGui.SameLine();
 
-                float verticalDistance = _savedPos.Value.Y - objectTable[0]!.Position.Y;
-                string verticalDistanceText = _LF("Y: {0:F2}", verticalDistance);
-                if (Math.Abs(verticalDistance) >= MovementController.DefaultVerticalInteractionDistance)
-                    ImGui.TextColored(QstTheme.Accent, verticalDistanceText);
-                else
-                    ImGui.Text(verticalDistanceText);
-            }
+            float verticalDistance = _savedPos.Value.Y - pos.Y;
+            string verticalDistanceText = _LF("Y: {0:F2}", verticalDistance);
+            if (Math.Abs(verticalDistance) >= MovementController.DefaultVerticalInteractionDistance)
+                ImGui.TextColored(QstTheme.Accent, verticalDistanceText);
+            else
+                ImGui.Text(verticalDistanceText);
         }
     }
 

@@ -19,6 +19,6 @@ internal static class EnumExtensions
             bld.Append(stringVal[i]);
         }
 
-        return bld.ToString();
+        return bld.ToString().Trim();
     }
 }

@@ -313,4 +313,48 @@ internal static class WaitAtEnd
 
         public override bool ShouldInterruptOnDamage() => false;
     }
+
+    internal sealed record WaitForConditionActive
+    (
+        ConditionFlag Condition, uint TerritoryType, string? FriendlyText = null) : ITask
+    {
+        public override string ToString() =>
+            $"WaitForConditionActive({FriendlyText ?? $"{Condition.ToFormattedText()}"})";
+    }
+
+    internal sealed class WaitForConditionActiveExecutor(ICondition conditions, IClientState clientState) : TaskExecutor<WaitForConditionActive>
+    {
+        protected override bool Start() => true;
+
+        public override ETaskResult Update()
+        {
+            return (conditions[Task.Condition] || clientState.TerritoryType != Task.TerritoryType)
+                ? ETaskResult.TaskComplete
+                : ETaskResult.StillRunning;
+        }
+
+        public override bool ShouldInterruptOnDamage() => false;
+    }
+
+    internal sealed record WaitForConditionCleared
+    (
+        ConditionFlag Condition, uint TerritoryType, string? FriendlyText = null) : ITask
+    {
+        public override string ToString() =>
+            $"WaitForConditionCleared({FriendlyText ?? $"{Condition.ToFormattedText()}"})";
+    }
+
+    internal sealed class WaitForConditionClearedExecutor(ICondition conditions, IClientState clientState) : TaskExecutor<WaitForConditionCleared>
+    {
+        protected override bool Start() => true;
+
+        public override ETaskResult Update()
+        {
+            return (!conditions[Task.Condition] || clientState.TerritoryType != Task.TerritoryType)
+                ? ETaskResult.TaskComplete
+                : ETaskResult.StillRunning;
+        }
+
+        public override bool ShouldInterruptOnDamage() => false;
+    }
 }

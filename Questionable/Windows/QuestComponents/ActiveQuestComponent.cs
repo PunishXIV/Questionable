@@ -642,6 +642,8 @@ internal sealed partial class ActiveQuestComponent
                 ImGui.SameLine();
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Atlas))
                     commandManager.ProcessCommand($"/questinfo {currentQuest.Quest.Id}");
+                if (ImGui.IsItemClicked(ImGuiMouseButton.Right) && commandManager.Commands.ContainsKey("/questgraph"))
+                    commandManager.ProcessCommand($"/questgraph {currentQuest.Quest.Id}");
 
                 if (ImGui.IsItemHovered())
                     ImGui.SetTooltip(_LF("Show information about '{0}' in Quest Map plugin.", currentQuest.Quest.Info.Name));
