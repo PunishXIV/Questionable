@@ -1,1 +1,1 @@
-- Feature: journal progress "Show Only Blue Quests" to help with unlocking instances etc -alydev
+- Bug fix: Update auto job switching to force include non-combat -Asha0

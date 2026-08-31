@@ -187,7 +187,7 @@ internal sealed partial class ActiveQuestComponent
                     QuestManager* questManager = QuestManager.Instance();
                     (var _color, var icon, string status) = uiUtils.GetQuestStyle(qInfo.QuestId);
                     bool acceptedButHidden = questFunctions.IsQuestAccepted(qInfo.QuestId) && questManager->GetQuestById(qInfo.QuestId.Value)->IsHidden;
-                    if (uiUtils.ChecklistItem($"{qInfo.Name} ({qInfo.QuestId})", _color, icon, iconOverride: questJournalUtils.GetIconOverride((QuestInfo)qInfo, icon)))
+                    if (uiUtils.ChecklistItem($"{qInfo.Name} ({qInfo.QuestId})", _color, icon, iconOverride: QuestJournalUtils.GetIconOverride((QuestInfo)qInfo, icon)))
                         if (reasons != null && reasons.Length > 0)
                             ImGui.SetTooltip(status + "\n  " + string.Join("\n  ", reasons));
                         else if (acceptedButHidden)
@@ -287,7 +287,7 @@ internal sealed partial class ActiveQuestComponent
                     }
                 }
 
-                uint? iconOverride = questJournalUtils.GetIconOverride((QuestInfo)currentQuest.Quest.Info, FontAwesomeIcon.PersonWalkingArrowRight);
+                uint? iconOverride = QuestJournalUtils.GetIconOverride((QuestInfo)currentQuest.Quest.Info, FontAwesomeIcon.PersonWalkingArrowRight);
                 if (iconOverride is { } iconId && gameIcons.DrawInline(iconId))
                     ImGui.TextUnformatted(Shorten(currentQuest.Quest.Info.Name));
                 else
@@ -392,7 +392,7 @@ internal sealed partial class ActiveQuestComponent
                                 if (questRegistry.TryGetQuest(questId, out Quest? quest))
                                 {
                                     (Vector4 color, FontAwesomeIcon icon, string _) = uiUtils.GetQuestStyle(questId);
-                                    uiUtils.ChecklistItem($"{quest.Info.Name} ({questId})", color, icon, iconOverride: questJournalUtils.GetIconOverride((QuestInfo)quest.Info, icon));
+                                    uiUtils.ChecklistItem($"{quest.Info.Name} ({questId})", color, icon, iconOverride: QuestJournalUtils.GetIconOverride((QuestInfo)quest.Info, icon));
                                 }
                             }
 
@@ -411,7 +411,7 @@ internal sealed partial class ActiveQuestComponent
                                 if (questRegistry.TryGetQuest(questId, out Quest? quest))
                                 {
                                     (Vector4 color, FontAwesomeIcon icon, string _) = uiUtils.GetQuestStyle(questId);
-                                    uiUtils.ChecklistItem($"{quest.Info.Name} ({questId})", color, icon, iconOverride: questJournalUtils.GetIconOverride((QuestInfo)quest.Info, icon));
+                                    uiUtils.ChecklistItem($"{quest.Info.Name} ({questId})", color, icon, iconOverride: QuestJournalUtils.GetIconOverride((QuestInfo)quest.Info, icon));
                                 }
                             }
 
