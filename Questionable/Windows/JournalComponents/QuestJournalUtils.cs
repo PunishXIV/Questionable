@@ -279,7 +279,7 @@ internal sealed class QuestJournalUtils
                 aetheryteFunctions.TeleportAetheryte(aetheryte);
     }
 
-    public uint? GetIconOverride(QuestInfo questInfo, FontAwesomeIcon? icon = null, Vector4? color = null)
+    public static uint? GetIconOverride(QuestInfo questInfo, FontAwesomeIcon? icon = null, Vector4? color = null)
     {
         const uint QuestionIcon = 71226;
         const uint BlueRepeatable = 71342;
