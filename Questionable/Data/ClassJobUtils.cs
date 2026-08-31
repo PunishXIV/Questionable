@@ -141,6 +141,7 @@ internal sealed class ClassJobUtils
             .ThenByDescending(x => x.ItemLevel)
             .ThenByDescending(x => x.ClassJob switch
             {
+                var _ when GameDataAdapter.IsClass(x.ClassJob) => 0,
                 var _ when GameDataAdapter.IsCaster(x.ClassJob) => 50,
                 var _ when GameDataAdapter.IsPhysicalRanged(x.ClassJob) => 40,
                 var _ when GameDataAdapter.IsMelee(x.ClassJob) => 30,
@@ -153,7 +154,7 @@ internal sealed class ClassJobUtils
             .FirstOrDefault();
     }
 
-    private unsafe ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> GetJobGearSets(bool combat = true)
+    internal unsafe ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> GetJobGearSets(bool combat = true)
     {
         List<(Job, short, short)> jobs = [];
 
