@@ -258,7 +258,7 @@ internal static class Interact
                 Task.Quest != null &&
                 InteractionType == EInteractionType.AcceptQuest)
             {
-                List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs.Where(x => jobGearSets.Any(v => v.ClassJob.Equals(x)))];
+                List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs.Where(x => jobGearSets.Count == 0 || jobGearSets.Any(v => v.ClassJob.Equals(x)))];
                 Job playerJob = (Job)player.ClassJob.Value.RowId;
                 Job targetJob = acceptableJobs[0];
                 logger.LogDebug($"{Task.Quest.Id} acceptableJobs: {string.Join(',', acceptableJobs.Select(j => j.ToString()))}");
