@@ -273,7 +273,7 @@ internal sealed class QuestJournalComponent
 
         ImGui.TableNextColumn();
         (Vector4 color, FontAwesomeIcon icon, string text) = uiUtils.GetQuestStyle(questInfo.QuestId);
-        uint? iconOverride = questJournalUtils.GetIconOverride(questInfo, icon);
+        uint? iconOverride = QuestJournalUtils.GetIconOverride(questInfo, icon);
         if (uiUtils.ChecklistItem(text.Split(':')[0], color, icon, iconOverride: iconOverride))
             ImGui.SetTooltip(text);
     }
