@@ -122,18 +122,21 @@ internal sealed class QuestJournalUtils
             using (ImRaii.Disabled(questInfo.QuestId is not QuestId || !openInQuestMap))
             {
                 if (ImGui.MenuItem(_L("View in Quest Map")))
-                    commandManager.ProcessCommand($"/questinfo {questInfo.QuestId}");
+                    if (commandManager.Commands.ContainsKey("/questgraph"))
+                        commandManager.ProcessCommand($"/questgraph {questInfo.QuestId}");
+                    else
+                        commandManager.ProcessCommand($"/questinfo {questInfo.QuestId}");
             }
             using (ImRaii.Disabled(questInfo.QuestId is not QuestId))
             {
                 if (ImGui.MenuItem("View on Console Games Wiki"))
                 {
-                    var query = string.Join('&', new Dictionary<string, string>()
-                        {
-                            {"search", questInfo.SimplifiedName},
-                            {"title", "Special:Search"},
-                            {"go", "Go"}
-                        }.Select(q => $"{q.Key}={q.Value}"));
+                    var query = string.Join('&', new[]
+                    {
+                        ("search", questInfo.SimplifiedName),
+                        ("title", "Special:Search"),
+                        ("go", "Go")
+                    }.Select(p => $"{Uri.EscapeDataString(p.Item1)}={Uri.EscapeDataString(p.Item2)}"));
                     var uri = new UriBuilder("https", "ffxiv.consolegameswiki.com", 443, "mediawiki/index.php", $"?{query}");
                     Process.Start(new ProcessStartInfo { FileName = uri.ToString(), UseShellExecute = true });
                 }

@@ -1,2 +1,2 @@
-- Bug fix: unload error resolved. You may need to restart your game to properly unload Questionable to load this new update, apologies. -alydev
-- Feature: Added override so quest paths can specify a target for the start of solo duties -alydev
+- Change: Cleaner solo duty condition check -alydev
+- Feature: support additional feature in Quest Map if detected/merged -alydev
