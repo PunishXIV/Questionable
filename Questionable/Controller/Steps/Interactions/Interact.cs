@@ -137,7 +137,7 @@ internal static class Interact
         ///     prior to the next step (in case we're attacked).
         /// </summary>
         private bool delayedFinalCheck;
-        private ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> jobGearSets = classJobUtils.GetJobGearSets();
+        private ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> jobGearSets = classJobUtils.GetJobGearSets(combat: false);
 
         public Quest? Quest => Task.Quest;
         public EInteractionType InteractionType { get; set; }
