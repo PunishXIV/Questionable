@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -142,6 +143,7 @@
             "Z": 366.32324
           },
           "TerritoryId": 960,
+          "StopDistance": 6,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Ultima Thule - Base Omicron"
         }
