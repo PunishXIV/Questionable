@@ -59,11 +59,7 @@ internal static class IpcInvoke
         }
     }
 
-    /// <summary>
-    /// Runs <paramref name="action"/> on the game thread. Used for dispose-time IPC and client-struct
-    /// access: <see cref="IAsyncDalamudPlugin.DisposeAsync"/> runs off-thread, and subscriber plugins
-    /// often read <c>LocalPlayer</c> (which throws if not on the framework thread).
-    /// </summary>
+    /// <summary>Runs <paramref name="action"/> on the framework thread, or inline if already on it.</summary>
     public static void TryOnFrameworkThread(IFramework framework, Action action, ILogger? logger = null)
     {
         try
@@ -85,7 +81,7 @@ internal static class IpcInvoke
         }
     }
 
-    // Dalamud IPC surfaces a subscriber's exception as TargetInvocationException, not IpcError.
+    // Subscriber exceptions come back as TargetInvocationException, not IpcError.
     private static bool IsSafeIpcFailure(Exception e) =>
         e is IpcError or TargetInvocationException;
 }

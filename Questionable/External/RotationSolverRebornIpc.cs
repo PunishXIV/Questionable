@@ -90,15 +90,9 @@ internal sealed class RotationSolverRebornIpc(
         [Description("Start the addon in Manual mode. You need to choose the target manually. This will bypass any engage settings that you have set up and will start attacking immediately once something is targeted.")]
         Manual,
 
-        /// <summary>
-        /// 
-        /// </summary>
         [Description("This mode is managed by the AutoDuty plugin")]
         AutoDuty,
 
-        /// <summary>
-        /// 
-        /// </summary>
         [Description("This mode is managed by the Henchman plugin, or any other plugin that requires RSR just do rotation and not targetting.")]
         Henched,
     }

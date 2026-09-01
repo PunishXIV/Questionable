@@ -297,10 +297,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
         if (step is { InteractionType: EInteractionType.SinglePlayerDuty } &&
             _bossModIpc.IsConfiguredToRunSoloInstance(questId, step.SinglePlayerDutyOptions))
         {
-            // Most of these are yes/no dialogs "Duty calls, ...".
-            //
-            // For 'Vows of Virtue, Deeds of Cruelty', there's no such dialog, and it just puts you into the instance
-            // after you confirm 'Wait for Krile?'. After a wipe the game shows DifficultySelectYesNo instead.
+            // "Duty calls" yes/no. After a wipe the game uses DifficultySelectYesNo instead.
             _logger.LogInformation("SinglePlayerDutyYesNo: probably Single Player Duty");
             return true;
         }
@@ -308,11 +305,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
         return false;
     }
 
-    /// <summary>
-    /// First-attempt "Duty calls" is a plain Yes/No (always Normal). Easy/Very Easy is only on
-    /// <c>DifficultySelectYesNo</c> after a wipe or in New Game+. Command 823 requests the battle
-    /// at a difficulty; if the server ignores it, fall back to clicking Yes.
-    /// </summary>
+    // 823 requests the configured difficulty. Click Yes (Normal) if the duty does not start.
     private unsafe void ConfirmSinglePlayerDutyStart(AddonSelectYesno* addonSelectYesno)
     {
         byte difficulty = _configuration.SinglePlayerDuties.RetryDifficulty;
