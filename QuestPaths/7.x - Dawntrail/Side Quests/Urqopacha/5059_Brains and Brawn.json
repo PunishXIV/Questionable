@@ -1,6 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,7 +17,7 @@
           "TerritoryId": 1187,
           "InteractionType": "AcceptQuest",
           "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "NearPosition": {
@@ -46,7 +47,7 @@
           "TerritoryId": 1187,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+          "AetheryteShortcut": "Urqopacha - Wachunpelo"
         }
       ]
     },
@@ -63,7 +64,7 @@
           "TerritoryId": 1187,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+          "AetheryteShortcut": "Urqopacha - Wachunpelo"
         }
       ]
     },
@@ -115,7 +116,7 @@
           "TerritoryId": 1187,
           "InteractionType": "CompleteQuest",
           "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "NearPosition": {
