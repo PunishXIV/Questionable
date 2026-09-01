@@ -105,6 +105,8 @@ internal sealed class PriorityWindow : LWindow
         _questSelector.DrawSelection();
         DrawQuestList();
 
+        DrawCleanUpButton();
+
         List<ElementId> clipboardItems = ParseClipboardItems();
         using (ImRaii.Disabled(clipboardItems.Count == 0))
         {
@@ -260,6 +262,34 @@ internal sealed class PriorityWindow : LWindow
 
         if (itemToAdd != null)
             _questController.PriorityManager.Move(priorityQuests.IndexOf(itemToAdd), indexToAdd);
+    }
+
+    private void DrawCleanUpButton()
+    {
+        int openQuestCount = _questFunctions.OpenQuests.Count(x => !_questController.PriorityManager.Contains(x));
+        using (ImRaii.Disabled(openQuestCount == 0))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Broom, _L("Clean Up")))
+                AddOpenQuests();
+        }
+
+        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+        {
+            ImGui.SetTooltip(openQuestCount == 0
+                ? _L("Every open quest Questionable can continue is already in this list.")
+                : _LF("Add the {0} quest(s) you already have open to this list, finished ones first.",
+                    openQuestCount));
+        }
+    }
+
+    private void AddOpenQuests()
+    {
+        IReadOnlyList<Quest> added = _questController.QueueOpenQuests();
+        _chatGui.Print(
+            added.Count == 0
+                ? _L("No open quests to clean up.")
+                : _LF("Added {0} open quest(s) to the priority list.", added.Count),
+            CommandHandler.MessageTag, CommandHandler.TagColor);
     }
 
     private static List<ElementId> ParseClipboardItems()

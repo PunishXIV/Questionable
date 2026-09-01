@@ -1337,6 +1337,30 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         return true;
     }
 
+    public IReadOnlyList<Quest> QueueOpenQuests()
+    {
+        List<Quest> added = [];
+        foreach (ElementId questId in _questFunctions.OpenQuests)
+        {
+            if (_priorityManager.Contains(questId))
+                continue;
+
+            if (!_questRegistry.TryGetQuest(questId, out Quest? quest))
+                continue;
+
+            _priorityManager.Add(quest);
+            added.Add(quest);
+        }
+
+        if (added.Count > 0)
+        {
+            _logger.LogInformation("Clean up: queued {Count} open quest(s): {QuestIds}",
+                added.Count, string.Join(", ", added.Select(x => x.Id)));
+        }
+
+        return added;
+    }
+
     public bool TryPickPriorityQuest()
     {
         if (!IsInterruptible() ||

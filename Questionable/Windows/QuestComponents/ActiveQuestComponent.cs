@@ -207,6 +207,8 @@ internal sealed partial class ActiveQuestComponent
             ImGui.SameLine();
             quickAccessButtonsComponent.DrawPriorityQuestsButton();
             ImGui.SameLine();
+            quickAccessButtonsComponent.DrawCleanUpButton();
+            ImGui.SameLine();
             quickAccessButtonsComponent.DrawJournalProgressButton(showLabel: true);
             ImGui.SameLine();
             quickAccessButtonsComponent.DrawTroubleshootingButton(showLabel: true, highlighted: true);
@@ -606,6 +608,8 @@ internal sealed partial class ActiveQuestComponent
 
         ImGui.SameLine();
         quickAccessButtonsComponent.DrawPriorityQuestsButton();
+        ImGui.SameLine();
+        quickAccessButtonsComponent.DrawCleanUpButton();
         ImGui.SameLine();
         quickAccessButtonsComponent.DrawJournalProgressButton();
         ImGui.SameLine();
