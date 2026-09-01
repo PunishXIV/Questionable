@@ -1,1 +1,1 @@
-- Bug fix: Update auto job switching to force include non-combat -Asha0
+- Bug fix: Post-combat item use was broken by recent internal change, fixed -alydev
