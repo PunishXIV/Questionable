@@ -2389,10 +2389,10 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
-    <Key>When retrying a failed battle, it will always start at 'Very Easy' difficulty.</Key>
-    <Value lang="ja-jp">バトルに失敗して再挑戦する場合、常に「Very Easy」難易度で開始されます。</Value>
-    <Value lang="zh-cn">重试失败战斗时，将始终以'非常简单'难度开始。</Value>
-    <!--<Value lang="ko">실패한 전투를 다시 시도하는 경우, 항상 '매우 쉬움' 난이도로 시작됩니다.</Value>-->
+    <Key>It will always try to start at 'Very Easy' difficulty, including the first attempt.</Key>
+    <Value lang="ja-jp">初回を含め、常に「Very Easy」難易度での開始を試みます。</Value>
+    <Value lang="zh-cn">将尽量以「非常简单」难度开始，包括第一次尝试。</Value>
+    <!--<Value lang="ko">첫 시도를 포함해 항상 '매우 쉬움' 난이도로 시작을 시도합니다.</Value>-->
   </Entry>
   <Entry>
     <Key>Please don't enable this option when using a BossMod fork (such as Reborn); with the missing combat module configuration, it is unlikely to be compatible.</Key>

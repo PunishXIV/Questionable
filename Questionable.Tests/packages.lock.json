@@ -105,8 +105,8 @@
       },
       "ECommons": {
         "type": "Transitive",
-        "resolved": "3.2.0.16",
-        "contentHash": "nbWQqETgnryEWedkZSxNValCgTdylNOibwkaYNYvGoY7XBXWK1KzKVgAroPQpGGrF2Q3NX1mbhoDczAaePYc8w=="
+        "resolved": "3.2.1.18",
+        "contentHash": "7yudYdKsg6TMki8+vekCbnOf4JdG/JFAcMFzMC77uv8E9WF87Cln6TL+OvFYUbqatfyFiMwXwJOEs/P7LcCjPQ=="
       },
       "Humanizer.Core": {
         "type": "Transitive",
@@ -221,8 +221,8 @@
       },
       "NotificationMasterAPI": {
         "type": "Transitive",
-        "resolved": "1.0.0.1",
-        "contentHash": "ta+lQtxQzHkqPC3doDn3ud8MvtwNnTgTIeXqfqu92G4lAy+/UJZ6iEefFH4MRZmX8Z99nUmUJZ4zcRvVMABzjQ=="
+        "resolved": "1.0.0.4",
+        "contentHash": "i9WU0oWvybpmlFkagxiCLSpBHSZlvJbBe5QMP8WaCV7dSRtZg/kQf59xxTb/BsdFN9DXEKcTQ0OCCAVe9N/qEg=="
       },
       "PunishLib": {
         "type": "Transitive",
@@ -244,8 +244,8 @@
       },
       "WrathCombo.API": {
         "type": "Transitive",
-        "resolved": "0.5.5",
-        "contentHash": "mvUBFTUQt35b52MeyuPXPk+3udCAmZ+cLV5mv9Y67FQP78UT+qtpEMdAGYxEynj7+hcPGL4fGk2GB2L6eRle5Q=="
+        "resolved": "0.5.7",
+        "contentHash": "A7KURat4s3efIj+KO5LTy6Vky1Y0Hsnqt4XWBL6xYsLlYSxlqhBCS3Y/LrEkohDuGletwRjfkx8IiLTiVnEmxw=="
       },
       "xunit.abstractions": {
         "type": "Transitive",
@@ -290,7 +290,7 @@
       "gatheringpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.306.3.7, )"
+          "Questionable.Model": "[15.306.3.26, )"
         }
       },
       "questionable": {
@@ -298,18 +298,18 @@
         "dependencies": {
           "Dalamud.Extensions.MicrosoftLogging": "[4.0.1, )",
           "DalamudPackager": "[15.0.0, )",
-          "ECommons": "[3.2.0.16, )",
-          "GatheringPaths": "[15.306.3.7, )",
+          "ECommons": "[3.2.1.18, )",
+          "GatheringPaths": "[15.306.3.26, )",
           "I18N.DotNet": "[1.3.1, )",
           "JetBrains.Annotations": "[2025.2.4, )",
           "JsonSchema.Net": "[7.4.0, )",
           "Microsoft.Extensions.DependencyInjection": "[9.0.8, )",
-          "NotificationMasterAPI": "[1.0.0.1, )",
+          "NotificationMasterAPI": "[1.0.0.4, )",
           "PunishLib": "[2.0.0.1, )",
-          "QuestPaths": "[15.306.3.7, )",
-          "Questionable.Model": "[15.306.3.7, )",
+          "QuestPaths": "[15.306.3.26, )",
+          "Questionable.Model": "[15.306.3.26, )",
           "SixLabors.ImageSharp": "[3.1.12, )",
-          "WrathCombo.API": "[0.5.5, )"
+          "WrathCombo.API": "[0.5.7, )"
         }
       },
       "questionable.model": {
@@ -318,7 +318,7 @@
       "questpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.306.3.7, )"
+          "Questionable.Model": "[15.306.3.26, )"
         }
       }
     }

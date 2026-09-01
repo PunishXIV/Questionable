@@ -16,9 +16,9 @@
       },
       "ECommons": {
         "type": "Direct",
-        "requested": "[3.2.0.16, )",
-        "resolved": "3.2.0.16",
-        "contentHash": "nbWQqETgnryEWedkZSxNValCgTdylNOibwkaYNYvGoY7XBXWK1KzKVgAroPQpGGrF2Q3NX1mbhoDczAaePYc8w=="
+        "requested": "[3.2.1.18, )",
+        "resolved": "3.2.1.18",
+        "contentHash": "7yudYdKsg6TMki8+vekCbnOf4JdG/JFAcMFzMC77uv8E9WF87Cln6TL+OvFYUbqatfyFiMwXwJOEs/P7LcCjPQ=="
       },
       "Meziantou.Analyzer": {
         "type": "Direct",
@@ -28,9 +28,9 @@
       },
       "Pictomancy": {
         "type": "Direct",
-        "requested": "[1.0.9, )",
-        "resolved": "1.0.9",
-        "contentHash": "pstT42Q08Q8189TFj2ettIWr+0MDKd9FQZcGunhycW1xrWC3ZnOcitsmJGxM2w+x6Ueghcfe95NudkKwJTsfuA==",
+        "requested": "[1.0.10, )",
+        "resolved": "1.0.10",
+        "contentHash": "xHRbKtdyT15T58oZH4QSHdsnjlRMc3Vi4DbrnnIWeeZfDX3yyBu0CiVYUR37ALIGcOd1sl0bpX/9GpLl+PEMTg==",
         "dependencies": {
           "KamiToolKit": "1.1.2",
           "SharpDX.D3DCompiler": "4.2.0",

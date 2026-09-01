@@ -1,3 +1,4 @@
+using System.Reflection;
 using Dalamud.Plugin.Ipc.Exceptions;
 namespace Questionable.External;
 
@@ -9,7 +10,7 @@ internal static class IpcInvoke
         {
             return func();
         }
-        catch (IpcError)
+        catch (Exception e) when (IsSafeIpcFailure(e))
         {
             return fallback;
         }
@@ -25,7 +26,7 @@ internal static class IpcInvoke
         {
             return fallback;
         }
-        catch (IpcError e)
+        catch (Exception e) when (IsSafeIpcFailure(e))
         {
             logger.LogWarning(e, message, args);
             return fallback;
@@ -38,7 +39,7 @@ internal static class IpcInvoke
         {
             action();
         }
-        catch (IpcError)
+        catch (Exception e) when (IsSafeIpcFailure(e))
         {
         }
     }
@@ -52,9 +53,39 @@ internal static class IpcInvoke
         catch (IpcNotReadyError)
         {
         }
-        catch (IpcError e)
+        catch (Exception e) when (IsSafeIpcFailure(e))
         {
             logger.LogWarning(e, message, args);
         }
     }
+
+    /// <summary>
+    /// Runs <paramref name="action"/> on the game thread. Used for dispose-time IPC and client-struct
+    /// access: <see cref="IAsyncDalamudPlugin.DisposeAsync"/> runs off-thread, and subscriber plugins
+    /// often read <c>LocalPlayer</c> (which throws if not on the framework thread).
+    /// </summary>
+    public static void TryOnFrameworkThread(IFramework framework, Action action, ILogger? logger = null)
+    {
+        try
+        {
+            if (framework.IsInFrameworkUpdateThread)
+            {
+                action();
+                return;
+            }
+
+            if (framework.IsFrameworkUnloading)
+                return;
+
+            framework.RunOnFrameworkThread(action).GetAwaiter().GetResult();
+        }
+        catch (Exception e)
+        {
+            logger?.LogDebug(e, "Game-thread call failed");
+        }
+    }
+
+    // Dalamud IPC surfaces a subscriber's exception as TargetInvocationException, not IpcError.
+    private static bool IsSafeIpcFailure(Exception e) =>
+        e is IpcError or TargetInvocationException;
 }

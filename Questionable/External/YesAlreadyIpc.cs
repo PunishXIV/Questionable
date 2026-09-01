@@ -37,13 +37,16 @@ internal sealed class YesAlreadyIpc : IDisposable
     public void Dispose()
     {
         _framework.Update -= OnUpdate;
-        if (IPCSubscriber.IsInstalled("YesAlready") && _wasEnabled && !IsPluginEnabled())
+        IpcInvoke.TryOnFrameworkThread(_framework, () =>
         {
-            _logger.LogDebug("Re-enabling YesAlready on dispose");
-            SetPluginEnabled(true);
-        }
+            if (IPCSubscriber.IsInstalled("YesAlready") && _wasEnabled && !IsPluginEnabled())
+            {
+                _logger.LogDebug("Re-enabling YesAlready on dispose");
+                SetPluginEnabled(true);
+            }
 
-        IPCSubscriber.DisposeAll(_disposalTokens);
+            IPCSubscriber.DisposeAll(_disposalTokens);
+        }, _logger);
     }
 
     private void OnUpdate(IFramework framework)

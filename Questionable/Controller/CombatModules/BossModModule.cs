@@ -8,7 +8,8 @@ internal sealed class BossModModule
 (
     ILogger<BossModModule> logger,
     BossModIpc bossModIpc,
-    Configuration configuration) : ICombatModule, IDisposable
+    Configuration configuration,
+    IFramework framework) : ICombatModule, IDisposable
 {
     private bool _justLoaded = true;
 
@@ -46,7 +47,7 @@ internal sealed class BossModModule
             bossModIpc.Cleanup();
             return true;
         }
-        catch (IpcError e)
+        catch (Exception e)
         {
             logger.LogWarning(e, "Could not turn off combat");
             return false;
@@ -59,5 +60,5 @@ internal sealed class BossModModule
 
     public bool CanAttack(IBattleNpc target) => true;
 
-    public void Dispose() => Stop();
+    public void Dispose() => IpcInvoke.TryOnFrameworkThread(framework, () => Stop(), logger);
 }

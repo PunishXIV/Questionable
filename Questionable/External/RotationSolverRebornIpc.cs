@@ -5,7 +5,11 @@ using Questionable.Model.Common;
 namespace Questionable.External;
 
 [RegisterSingleton]
-internal sealed class RotationSolverRebornIpc(IDalamudPluginInterface pluginInterface, Configuration configuration, ILogger<RotationSolverRebornIpc> logger)
+internal sealed class RotationSolverRebornIpc(
+    IDalamudPluginInterface pluginInterface,
+    Configuration configuration,
+    ILogger<RotationSolverRebornIpc> logger,
+    IFramework framework)
 {
     private readonly ICallGateSubscriber<StateCommandType, object> ChangeOperatingMode =
         pluginInterface.GetIpcSubscriber<StateCommandType, object>("RotationSolverReborn.ChangeOperatingMode");
@@ -17,7 +21,7 @@ internal sealed class RotationSolverRebornIpc(IDalamudPluginInterface pluginInte
     {
         if (configuration.General.CombatModule != ECombatModule.RotationSolverReborn)
             return false;
-        _ = IpcInvoke.SafeFunc(() => { ChangeOperatingMode.InvokeAction(StateCommandType.Henched); return true; }, fallback: false);
+        InvokeChangeOperatingMode(StateCommandType.Henched);
         return true;
     }
 
@@ -25,8 +29,18 @@ internal sealed class RotationSolverRebornIpc(IDalamudPluginInterface pluginInte
     {
         if (configuration.General.CombatModule != ECombatModule.RotationSolverReborn)
             return;
-        _ = IpcInvoke.SafeFunc(() => { ChangeOperatingMode.InvokeAction(StateCommandType.Off); return true; }, fallback: false);
+        InvokeChangeOperatingMode(StateCommandType.Off);
     }
+
+    private void InvokeChangeOperatingMode(StateCommandType mode) =>
+        IpcInvoke.TryOnFrameworkThread(framework, () =>
+        {
+            _ = IpcInvoke.SafeFunc(() =>
+            {
+                ChangeOperatingMode.InvokeAction(mode);
+                return true;
+            }, fallback: false);
+        }, logger);
 
     internal void Dispose() => RotationStop();
     internal bool IsReady(string pluginName)

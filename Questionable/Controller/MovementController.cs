@@ -26,6 +26,7 @@ internal sealed class MovementController
     AetheryteData aetheryteData,
     ICommandManager commandManager,
     IChatGui chatGui,
+    IFramework framework,
     Lazy<QuestController> questController,
     ILogger<MovementController> logger) : IDisposable
 {
@@ -72,7 +73,7 @@ internal sealed class MovementController
     private DateTime? _landAndRetryTimeout;
     private DestinationData? _previousDestinationData;
 
-    public void Dispose() => Stop();
+    public void Dispose() => IpcInvoke.TryOnFrameworkThread(framework, Stop, logger);
 
     public void Update()
     {
