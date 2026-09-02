@@ -21,6 +21,7 @@ internal sealed class QuestJournalUtils
     MovementController movementController,
     IGameGui gameGui,
     PathEditorWindow pathEditorWindow,
+    RedoUtil redoUtil,
     AutoGen.DraftQuestPathService draftQuestPathService)
 {
     public void ShowContextMenu(IQuestInfo questInfo, Quest? quest, string label)
@@ -140,6 +141,23 @@ internal sealed class QuestJournalUtils
                     var uri = new UriBuilder("https", "ffxiv.consolegameswiki.com", 443, "mediawiki/index.php", $"?{query}");
                     Process.Start(new ProcessStartInfo { FileName = uri.ToString(), UseShellExecute = true });
                 }
+            }
+            if (configuration.Advanced.Debug)
+            {
+                RedoIndex redoIndex = redoUtil.GetChapter(questInfo.QuestId.Value);
+                bool redoActive = redoUtil.IsRedoActive();
+                using (ImRaii.Disabled(redoActive || redoIndex.Chapter.RowId == 0 || redoIndex.Chapter.ChapterName.ToString().Length == 0))
+                {
+                    if (ImGui.MenuItem(_L("Start NG+ here")))
+                    {
+                        if (redoActive) // safeguard
+                            redoUtil.SendRedoCommand(redoChapter: RedoChapter.Off);
+                        else
+                            redoUtil.SendRedoCommand(questRedoChapter: redoIndex.Chapter);
+                    }
+                }
+                if (redoActive && ImGui.MenuItem(_L("Stop NG+")))
+                    redoUtil.SendRedoCommand(redoChapter: RedoChapter.Off);
             }
         }
 
