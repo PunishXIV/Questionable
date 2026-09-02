@@ -104,7 +104,7 @@ internal sealed class PandorasBoxIpc : IDisposable
     public void Dispose()
     {
         _framework.Update -= OnUpdate;
-        RestoreConflictingFeatures();
+        IpcInvoke.TryOnFrameworkThread(_framework, RestoreConflictingFeatures, _logger);
     }
 
     private void OnUpdate(IFramework framework)
@@ -155,7 +155,7 @@ internal sealed class PandorasBoxIpc : IDisposable
                 _setFeatureEnabled.InvokeAction(feature, true);
                 _logger.LogInformation("Restored Pandora's Box feature: {Feature}", feature);
             }
-            catch (IpcError e)
+            catch (Exception e)
             {
                 _logger.LogWarning(e, "Failed to restore Pandora's Box feature: {Feature}", feature);
             }

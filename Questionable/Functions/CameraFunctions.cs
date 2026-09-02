@@ -9,6 +9,7 @@ namespace Questionable.Functions;
 [RegisterSingleton]
 internal sealed unsafe class CameraFunctions : IDisposable
 {
+    private readonly IFramework _framework;
     private readonly ILogger<CameraFunctions> _logger;
     private readonly IObjectTable _objectTable;
 
@@ -18,8 +19,9 @@ internal sealed unsafe class CameraFunctions : IDisposable
     private float DesiredAltitude;
     private float DesiredAzimuth;
 
-    public CameraFunctions(IGameInteropProvider gameInteropProvider, ILogger<CameraFunctions> logger, IObjectTable objectTable)
+    public CameraFunctions(IGameInteropProvider gameInteropProvider, ILogger<CameraFunctions> logger, IObjectTable objectTable, IFramework framework)
     {
+        _framework = framework;
         _logger = logger;
         gameInteropProvider.InitializeFromAttributes(this);
         _objectTable = objectTable;
@@ -37,7 +39,7 @@ internal sealed unsafe class CameraFunctions : IDisposable
         }
     }
 
-    public void Dispose() => _rmiCameraHook.Dispose();
+    public void Dispose() => IpcInvoke.TryOnFrameworkThread(_framework, () => _rmiCameraHook.Dispose(), _logger);
 
     private static float Deg2Rad(int degrees) => degrees * ((float)Math.PI / 180f);
 

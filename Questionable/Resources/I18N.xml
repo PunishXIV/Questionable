@@ -2389,7 +2389,7 @@
   </Entry>
   <Entry>
     <!-- Found in: Windows\ConfigComponents\SinglePlayerDutyConfigComponent.cs -->
-    <Key>When retrying a failed battle, it will always start at 'Very Easy' difficulty.</Key>
+    <Key>It will always try to start at 'Very Easy' difficulty, including the first attempt.</Key>
     <Value lang="ja-jp">バトルに失敗して再挑戦する場合、常に「Very Easy」難易度で開始されます。</Value>
     <Value lang="zh-cn">重试失败战斗时，将始终以'非常简单'难度开始。</Value>
     <!--<Value lang="ko">실패한 전투를 다시 시도하는 경우, 항상 '매우 쉬움' 난이도로 시작됩니다.</Value>-->

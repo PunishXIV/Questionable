@@ -17,16 +17,19 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
     private readonly ICallGateProvider<int, string, object> _callback;
     private readonly Configuration _configuration;
 
+    private readonly IFramework _framework;
     private readonly ILogger<WrathComboModule> _logger;
 
     private Guid? _lease;
 
     public WrathComboModule(ILogger<WrathComboModule> logger,
         Configuration configuration,
-        IDalamudPluginInterface pluginInterface)
+        IDalamudPluginInterface pluginInterface,
+        IFramework framework)
     {
         _logger = logger;
         _configuration = configuration;
+        _framework = framework;
 
         _callback =
             pluginInterface.GetIpcProvider<int, string, object>(
@@ -216,7 +219,7 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
 
     public void Dispose()
     {
-        Stop();
+        IpcInvoke.TryOnFrameworkThread(_framework, () => Stop(), _logger);
         _callback.UnregisterAction();
     }
 
