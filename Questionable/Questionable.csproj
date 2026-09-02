@@ -7,10 +7,10 @@
     </PropertyGroup>
 
     <Target Name="PopulateI18N">
+        <!-- Should be run from PR workflow so path comments match -->
         <Exec Command="dotnet tool install --global I18N.DotNet.Tool --version 1.2.1" IgnoreExitCode="true" />
-        <Exec Command="dotnet-i18n-tool parse -S . -o .\Resources\I18N.xml -r -E _L _LF" />
+        <Exec Command="dotnet-i18n-tool parse -d -S . -o ./Resources/I18N.xml -r -E _L _LF" />
     </Target>
-
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <DefineConstants>DEBUG;TRACE</DefineConstants>

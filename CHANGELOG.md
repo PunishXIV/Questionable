@@ -1,2 +1,1 @@
-- Bug fix: unload error fix -Kage
-- Feature: Clean Up button/command -wah
+- Bug fix: delivery turnin skip disabled, investigating other solutions -alydev
