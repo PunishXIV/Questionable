@@ -1,1 +1,1 @@
-- Bug fix: delivery turnin skip disabled, investigating other solutions -alydev
+- Bug fix: potd unlock quest was mistakenly included in ffxiii collab quests list -alydev
