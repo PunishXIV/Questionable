@@ -149,6 +149,7 @@ internal sealed class CommandHandler : IDisposable
                 _chatGui.Print(_L("/qst zone - shows all quests starting in the current zone (only includes quests with a known quest path, and currently visible unaccepted quests)"), MessageTag, TagColor);
                 _chatGui.Print(_L("/qst journal - toggles the Journal Progress window"), MessageTag, TagColor);
                 _chatGui.Print(_L("/qst priority - toggles the Priority window"), MessageTag, TagColor);
+                _chatGui.Print(_L("/qst cleanup - adds every quest you already have open to the priority list, finished ones first"), MessageTag, TagColor);
                 _chatGui.Print(_L("/qst mountid - prints information about your current mount"), MessageTag, TagColor);
                 _chatGui.Print(_L("/qst handle-interrupt - makes Questionable handle queued interrupts immediately (useful if you manually start combat)"), MessageTag, TagColor);
                 _chatGui.Print(_L("/qst clearlog - clears QuestCompletionLog.json"), MessageTag, TagColor);
@@ -206,6 +207,10 @@ internal sealed class CommandHandler : IDisposable
             case "p":
             case "priority":
                 _priorityWindow.ToggleOrUncollapse();
+                break;
+
+            case "cleanup":
+                CleanUpOpenQuests();
                 break;
 
             case "mountid":
@@ -509,6 +514,19 @@ internal sealed class CommandHandler : IDisposable
             _questController.StopSimulate();
             _chatGui.Print(_L("Cleared simulated quest."), MessageTag, TagColor);
         }
+    }
+
+    private void CleanUpOpenQuests()
+    {
+        IReadOnlyList<Quest> added = _questController.QueueOpenQuests();
+        if (added.Count == 0)
+        {
+            _chatGui.Print(_L("No open quests to clean up."), MessageTag, TagColor);
+            return;
+        }
+
+        _chatGui.Print(_LF("Added {0} open quest(s) to the priority list:", added.Count) + " " +
+                       string.Join(", ", added.Select(x => x.Info.Name)), MessageTag, TagColor);
     }
 
     private void PrintMountId()

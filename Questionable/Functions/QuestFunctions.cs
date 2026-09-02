@@ -442,6 +442,40 @@ internal sealed unsafe class QuestFunctions
         return false;
     }
 
+    private CachedValue<List<ElementId>> _openQuests = new(ttlSeconds: 2);
+
+    public List<ElementId> OpenQuests => _openQuests.Get(GetOpenQuests);
+
+    private List<ElementId> GetOpenQuests()
+    {
+        QuestManager* questManager = QuestManager.Instance();
+        if (questManager == null)
+            return [];
+
+        List<(ElementId QuestId, byte Sequence)> openQuests = [];
+        foreach (QuestWork questWork in questManager->NormalQuests)
+        {
+            if (questWork.QuestId == 0 || questWork.IsHidden)
+                continue;
+
+            QuestId questId = new(questWork.QuestId);
+
+            if (alliedSocietyData.GetCommonAlliedSocietyTurnIn(questId) != EAlliedSociety.None)
+                continue;
+
+            if (questRegistry.TryGetQuest(questId, out Quest? quest) &&
+                quest.FindSequence(questWork.Sequence) != null)
+                openQuests.Add((questId, questWork.Sequence));
+        }
+
+        return
+        [
+            .. openQuests
+                .OrderByDescending(x => x.Sequence == 255)
+                .Select(x => x.QuestId)
+        ];
+    }
+
     private bool IsInteractSequence(ElementId questId, byte sequenceNo, uint[] dataIds)
     {
         if (questRegistry.TryGetQuest(questId, out Quest? quest))
