@@ -1,1 +1,2 @@
-- Bug fix: Post-combat item use was broken by recent internal change, fixed -alydev
+- Bug fix: unload error fix -Kage
+- Feature: Clean Up button/command -wah

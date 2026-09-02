@@ -33,7 +33,6 @@ internal sealed partial class ActiveQuestComponent
     QuickAccessButtonsComponent quickAccessButtonsComponent,
     CreationUtilsComponent creationUtilsComponent,
     ClassJobUtils classJobUtils,
-    QuestJournalUtils questJournalUtils,
     GameIcons gameIcons,
     ILogger<ActiveQuestComponent> logger)
 {
