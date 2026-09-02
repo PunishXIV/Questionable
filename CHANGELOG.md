@@ -1,1 +1,1 @@
-- Feature: CN translation -ShadyWhite
+- Feature: JP translation -fuuga
