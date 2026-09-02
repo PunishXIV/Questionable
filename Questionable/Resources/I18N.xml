@@ -5231,6 +5231,7 @@
   <Entry>
     <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
     <Key>/qst cleanup - adds every quest you already have open to the priority list, finished ones first</Key>
+    <Value lang="ja-jp">/qst cleanup - 受注中のクエストをすべて優先リストに追加します。完了済みのものが優先されます</Value>
     <Value lang="zh-cn">/qst cleanup - 将所有已接取的任务添加到优先列表，已完成的排在前面</Value>
   </Entry>
   <Entry>
@@ -5238,88 +5239,105 @@
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
     <Key>No open quests to clean up.</Key>
+    <Value lang="ja-jp">クリーンアップ対象の受注中クエストがありません。</Value>
     <Value lang="zh-cn">没有已接取的任务可供清理。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
     <Key>Added {0} open quest(s) to the priority list:</Key>
+    <Value lang="ja-jp">受注中のクエスト {0} 件を優先リストに追加しました：</Value>
     <Value lang="zh-cn">已添加 {0} 个已接取的任务到优先列表:</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
     <Key>Clean Up</Key>
+    <Value lang="ja-jp">クリーンアップ</Value>
     <Value lang="zh-cn">清理</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <Key>Every open quest Questionable can continue is already in this list.</Key>
+    <Value lang="ja-jp">Questionableが続行できる受注中のクエストはすべてこのリストに含まれています。</Value>
     <Value lang="zh-cn">所有 Questionable 可继续的已接取任务都已在列表中。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <Key>Add the {0} quest(s) you already have open to this list, finished ones first.</Key>
+    <Value lang="ja-jp">受注中のクエスト {0} 件をこのリストに追加します。完了済みのものが優先されます。</Value>
     <Value lang="zh-cn">将你已接取的{0}个任务添加到此列表，已完成的排在前面。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <Key>Added {0} open quest(s) to the priority list.</Key>
+    <Value lang="ja-jp">受注中のクエスト {0} 件を優先リストに追加しました。</Value>
     <Value lang="zh-cn">已添加 {0} 个已接取的任务到优先列表。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Show quest icons</Key>
+    <Value lang="ja-jp">クエストアイコンを表示</Value>
     <Value lang="zh-cn">显示任务图标</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <Key>Show only Blue Quests</Key>
+    <Value lang="ja-jp">青い開放クエストのみ表示</Value>
     <Value lang="zh-cn">仅显示蓝色任务</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <Key>Hide Completed Quests</Key>
+    <Value lang="ja-jp">完了済みクエストを非表示</Value>
     <Value lang="zh-cn">隐藏已完成任务</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <Key>Hide Unobtainable Quests</Key>
+    <Value lang="ja-jp">取得不可能なクエストを非表示</Value>
     <Value lang="zh-cn">隐藏不可接取任务</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <Key>Hide Repeatable Quests</Key>
+    <Value lang="ja-jp">繰り返し可能なクエストを非表示</Value>
     <Value lang="zh-cn">隐藏可重复任务</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/CreationUtilsComponent.cs -->
     <Key>Save/clear current position as reference</Key>
+    <Value lang="ja-jp">現在位置を基準として保存/クリア</Value>
     <Value lang="zh-cn">保存/清除当前位置为参考点</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
     <Key>Unavailable while not logged in.</Key>
+    <Value lang="ja-jp">ログインしていない間は利用できません。</Value>
     <Value lang="zh-cn">未登录时不可用</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
     <Key>No open quests in your journal that Questionable knows how to continue.</Key>
+    <Value lang="ja-jp">Questionableが対応している受注中のクエストがジャーナルにありません。</Value>
     <Value lang="zh-cn">日志中没有 Questionable 可继续的已接取任务。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
     <Key>All {0} open quest(s) are already in your priority list.</Key>
+    <Value lang="ja-jp">受注中のクエスト {0} 件はすでに優先リストに含まれています。</Value>
     <Value lang="zh-cn">所有 {0} 个已接取的任务都已在优先列表中。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
     <Key>Queue the {0} quest(s) you already have open, finished ones first.</Key>
+    <Value lang="ja-jp">受注中のクエスト {0} 件をキューに追加します。完了済みのものが優先されます。</Value>
     <Value lang="zh-cn">将已接取的 {0} 个任务加入队列，已完成的排在前面。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
     <Key>Long or blocked quests are queued too - check the priority list afterwards.</Key>
+    <Value lang="ja-jp">時間のかかるクエストやブロックされているクエストもキューに追加できます。後で優先リストを確認してください。</Value>
     <Value lang="zh-cn">长任务或被阻塞的任务也被加入队列——稍后请检查优先列表。</Value>
   </Entry>
 </I18N>
