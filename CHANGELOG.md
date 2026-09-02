@@ -1,1 +1,1 @@
-- Bug fix: potd unlock quest was mistakenly included in ffxiii collab quests list -alydev
+- Feature: CN translation -ShadyWhite
