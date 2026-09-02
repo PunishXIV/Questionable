@@ -81,7 +81,7 @@ internal sealed class QuestData
         ]).FromNumericListOfQuests();
     public static readonly IReadOnlyList<ElementId> CollaborationQuests = (
         (ushort[])[
-            1153, 1154, 1155, 1556, // ffxiii 2013
+            1153, 1154, 1155, 1156, // ffxiii 2013
             1287, // ffxi 2014
             1288, // dqx
             2141, // yokai
