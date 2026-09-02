@@ -23,17 +23,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "DataId": 2001717,
-          "Position": {
-            "X": 25.497803,
-            "Y": 2.090454,
-            "Z": -0.015319824
-          },
-          "TerritoryId": 212,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 212
-        },
-        {
           "DataId": 1007478,
           "Position": {
             "X": -2.822998,
@@ -49,26 +38,24 @@
       "Sequence": 2,
       "Steps": [
         {
-          "DataId": 2001717,
-          "Position": {
-            "X": 25.497803,
-            "Y": 2.090454,
-            "Z": -0.015319824
-          },
           "TerritoryId": 212,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 212
-        },
-        {
-          "DataId": 2001716,
-          "Position": {
-            "X": -15.701599,
-            "Y": 1.083313,
-            "Z": -0.015319824
-          },
-          "TerritoryId": 212,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 140
+          "InteractionType": "UseItem",
+          "ItemId": 30362,
+          "TargetTerritoryId": 140,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": -516.35004,
+                  "Y": 14.956879,
+                  "Z": -370.47382
+                },
+                "TerritoryId": 140,
+                "MaximumDistance": 300
+              },
+              "Item": { "NotInInventory": true }
+            }
+          }
         },
         {
           "Position": {
@@ -77,7 +64,8 @@
             "Z": -369.12787
           },
           "TerritoryId": 140,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "Fly": true
         }
       ]
     },
