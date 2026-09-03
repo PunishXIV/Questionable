@@ -1,1 +1,1 @@
-- Feature: JP translation -fuuga
+- Feature: add check for artisan premade lists matching Mean/Studium/Wachu quests -alydev
