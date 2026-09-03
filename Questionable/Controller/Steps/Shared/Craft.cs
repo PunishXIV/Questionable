@@ -48,7 +48,9 @@ internal static class Craft
         private int _startingItemCount;
         protected override unsafe bool Start()
         {
-            if (artisanIpc.CraftList(Task.Quest.Id))
+            byte currentClassJobId = PlayerState.Instance()->CurrentClassJobId;
+            if (artisanIpc.CraftList(Task.Quest.Id) ||
+                artisanIpc.CraftList(int.Parse($"{Task.Quest.Id.Value | 0x10000}{currentClassJobId % 8}", CultureInfo.InvariantCulture)))
             {
                 logger.LogInformation("Craft list started");
                 return true;
@@ -76,7 +78,7 @@ internal static class Craft
             QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest.Id);
             uint recipeId = (questWork != null && questWork.ClassJob.IsCrafter() ?
                     questWork.ClassJob :
-                    (Job)PlayerState.Instance()->CurrentClassJobId
+                    (Job)currentClassJobId
                 ) switch
             {
                 Job.CRP => recipeLookup.Value.CRP.RowId,
