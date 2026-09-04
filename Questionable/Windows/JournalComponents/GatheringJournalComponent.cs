@@ -240,6 +240,8 @@ internal sealed class GatheringJournalComponent
         ImGui.TableNextColumn();
         ImGui.TreeNodeEx($"{item} - " + _gatheringItems.GetValueOrDefault(item, "???"),
             ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
+        if (ImGui.IsItemHovered())
+            ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
         if (ImGui.IsItemClicked())
         {
             GatheringController.GatheringRequest request = new(pointId, item, 0, 1);

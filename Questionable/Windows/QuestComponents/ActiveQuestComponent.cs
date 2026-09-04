@@ -176,7 +176,10 @@ internal sealed partial class ActiveQuestComponent
                     pathDataUpdater.CheckForUpdatesManually();
                 }
                 if (ImGui.IsItemHovered())
+                {
                     ImGui.SetTooltip(_L("Click to reload quest path data from server"));
+                    ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+                }
 
                 foreach (IQuestInfo qInfo in GetTrackedQuests())
                 {
@@ -300,8 +303,11 @@ internal sealed partial class ActiveQuestComponent
                 {
                     ImGui.SameLine();
                     QstWidgets.Chip($"{acceptedJob}", QstTheme.Accent);
-                    if (ImGui.IsItemClicked())
+                    if (ImGui.IsItemHovered())
+                    {
+                        ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
                         classJobUtils.SwitchClassJob(acceptedJob);
+                    }
                     if (ImGui.IsItemHovered())
                         ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
                 }
@@ -545,6 +551,7 @@ internal sealed partial class ActiveQuestComponent
 
             if (ImGui.IsItemHovered())
             {
+                ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
                 ImGui.SetTooltip(questWork.Tooltip);
                 ImGui.SameLine();
                 using (ImRaii.PushFont(UiBuilder.IconFont))

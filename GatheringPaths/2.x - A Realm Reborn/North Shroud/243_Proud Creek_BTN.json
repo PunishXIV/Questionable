@@ -24,7 +24,7 @@
                 "Y": -5.35672,
                 "Z": -17.14218
               },
-              "MinimumAngle": -50,
+              "MinimumAngle": 25,
               "MaximumAngle": 55
             },
             {
@@ -33,7 +33,7 @@
                 "Y": -5.615489,
                 "Z": -22.79385
               },
-              "MinimumAngle": -175,
+              "MinimumAngle": 20,
               "MaximumAngle": 45
             }
           ]
@@ -51,10 +51,10 @@
                 "Y": -6.724361,
                 "Z": -2.002786
               },
-              "MinimumAngle": -120,
-              "MaximumAngle": -115,
+              "MinimumAngle": -360,
+              "MaximumAngle": -345,
               "MinimumDistance": 1.9,
-              "MaximumDistance": 3
+              "MaximumDistance": 2.2
             },
             {
               "Position": {
@@ -62,8 +62,8 @@
                 "Y": -7.849501,
                 "Z": -8.288407
               },
-              "MinimumAngle": -125,
-              "MaximumAngle": -85
+              "MinimumAngle": -185,
+              "MaximumAngle": -160
             }
           ]
         }
@@ -80,8 +80,10 @@
                 "Y": -11.8893,
                 "Z": 3.8787
               },
-              "MinimumAngle": 45,
-              "MaximumAngle": 220
+              "MinimumAngle": 120,
+              "MaximumAngle": 155,
+              "MinimumDistance": 1.9,
+              "MaximumDistance": 2.5
             },
             {
               "Position": {
@@ -109,8 +111,10 @@
                 "Y": -11.51824,
                 "Z": -20.57552
               },
-              "MinimumAngle": -145,
-              "MaximumAngle": 85
+              "MinimumAngle": 335,
+              "MaximumAngle": 360,
+              "MinimumDistance": 1,
+              "MaximumDistance": 1.9
             },
             {
               "Position": {
@@ -118,8 +122,10 @@
                 "Y": -11.09225,
                 "Z": -27.17002
               },
-              "MinimumAngle": -50,
-              "MaximumAngle": 115
+              "MinimumAngle": 5,
+              "MaximumAngle": 40,
+              "MinimumDistance": 1,
+              "MaximumDistance": 2.2
             }
           ]
         }

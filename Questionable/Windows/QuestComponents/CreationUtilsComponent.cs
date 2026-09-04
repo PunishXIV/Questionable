@@ -126,7 +126,10 @@ internal sealed class CreationUtilsComponent
                                     if (questRegistry.TryGetQuest(new QuestId(dailyQuest.QuestId), out Quest? quest))
                                     {
                                         if (ImGui.IsItemHovered())
+                                        {
+                                            ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
                                             ImGui.SetTooltip($"{quest.Info.Name} ({quest.Info.AlliedSociety})");
+                                        }
 
                                         if (ImGui.IsItemClicked())
                                         {

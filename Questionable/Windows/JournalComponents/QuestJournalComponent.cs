@@ -199,7 +199,10 @@ internal sealed class QuestJournalComponent
             ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
 
         if (ImGui.IsItemHovered())
+        {
+            ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
             questTooltipComponent.Draw(questInfo);
+        }
 
         if (ImGui.IsItemClicked())
             questJournalUtils.MoveToQuestLocation(questInfo);
