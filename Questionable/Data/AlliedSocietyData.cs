@@ -47,7 +47,7 @@ internal sealed class AlliedSocietyData
                 //>= 1566 and <= 1568 => EAlliedSociety.Ixal, // Ixal quests seem designed to be done sequentially and dont craft til 255
                 >= 1325 and <= 1344 => EAlliedSociety.Kobolds, // Kobolds 1364-1373
                 >= 1364 and <= 1373 => EAlliedSociety.Kobolds,
-                >= 1257 and <= 1286 => EAlliedSociety.Sylphs,
+                >= 1257 and <= 1286 and not 1257 => EAlliedSociety.Sylphs,
                 >= 2171 and <= 2200 => EAlliedSociety.VanuVanu, //HW
                 >= 2261 and <= 2280 => EAlliedSociety.Vath,
                 >= 2290 and <= 2319 => EAlliedSociety.Moogles,

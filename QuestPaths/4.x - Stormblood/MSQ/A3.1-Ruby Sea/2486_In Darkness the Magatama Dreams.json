@@ -42,24 +42,15 @@
         },
         {
           "Position": {
-            "X": 25.12675,
-            "Y": -198.0015,
-            "Z": -158.07468
+            "X": 21.067955,
+            "Y": -197.78902,
+            "Z": -155.23956
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "RestartNavigationIfCancelled": false
-        },
-        {
-          "Position": {
-            "X": 54.259586,
-            "Y": -183.91911,
-            "Z": -174.03053
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "$": "Go around Sui-no-Sato"
+          "$": "Sui-no-Sato, NE inside",
+          "RestartNavigationIfCancelled": false,
+          "SkipConditions": {"StepIf": {"Diving": true}}
         },
         {
           "Position": {

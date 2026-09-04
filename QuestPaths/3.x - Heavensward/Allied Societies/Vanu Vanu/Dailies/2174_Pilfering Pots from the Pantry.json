@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": ["AnimaMachinae", "alydev"],
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -38,13 +38,15 @@
         {
           "DataId": 2006652,
           "Position": {
-            "X": 847.2876,
-            "Y": -50.58368,
-            "Z": 7.2174683
+            "X": 847.6585,
+            "Y": -46.00496,
+            "Z": 5.2060747
           },
           "TerritoryId": 401,
           "InteractionType": "Interact",
+          "StopDistance": 0.25,
           "Fly": true,
+          "Land": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -66,7 +68,6 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Interact",
-          "Comment": "Enemy despawns when out of range",
           "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
@@ -79,8 +80,7 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Comment": "Enemy despawns when out of range"
+          "Fly": true
         }
       ]
     },
