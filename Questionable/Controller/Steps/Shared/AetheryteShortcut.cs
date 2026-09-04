@@ -80,6 +80,7 @@ internal static class AetheryteShortcut
                             Destination: new(21.133728f, 22.323914f, -631.281f),
                             Sprint: true);
                         yield return new Interact.Task(2002881, quest, EInteractionType.Interact);
+                        yield return new WaitAtEnd.WaitForTerritory(351);
                     }
                     // if target is in Solar and we are not currently there, interact to get there
                     if (step.Position != null && matchesCondition(EExtraSkipCondition.RisingStonesSolar, step.Position.Value) &&
