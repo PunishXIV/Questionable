@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "chika", "Date": "2026-08-21"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -35,6 +35,10 @@
           "TerritoryId": 1185,
           "StopDistance": 5,
           "InteractionType": "PurchaseItem",
+          "AethernetShortcut": [
+            "[Tuliyollal] Wachumeqimeqi",
+            "[Tuliyollal] Bayside Bevy Marketplace"
+          ],
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
             "Key": 263203
@@ -78,7 +82,7 @@
               }
             }
           ],
-          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+          "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
         {
           "DataId": 1047097,
