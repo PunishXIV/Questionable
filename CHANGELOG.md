@@ -1,1 +1,1 @@
-- Feature: add check for artisan premade lists matching Mean/Studium/Wachu quests -alydev
+- Bug fix: Wait for Rising Stones transition before interior pathfinding -eternalwaitt
