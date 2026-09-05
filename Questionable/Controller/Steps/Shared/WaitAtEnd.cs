@@ -130,6 +130,8 @@ internal static class WaitAtEnd
                     }
 
                 case EInteractionType.Interact:
+                    return [new WaitDelay { InterruptOnDamage = true }, Next(quest, sequence)];
+
                 default:
                     return [new WaitDelay(), Next(quest, sequence)];
             }
@@ -141,6 +143,8 @@ internal static class WaitAtEnd
     internal sealed record WaitDelay(TimeSpan Delay, string? Message,
                    [CallerFilePath] string file = "", [CallerLineNumber] int line = 0) : ITask
     {
+        public bool InterruptOnDamage { get; init; }
+
         public WaitDelay([CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
             : this(TimeSpan.FromMilliseconds(750), Message: null, file: file, line: line)
         {
@@ -164,7 +168,7 @@ internal static class WaitAtEnd
             return true;
         }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage() => Task.InterruptOnDamage;
     }
 
     internal sealed class WaitNextStepOrSequence : ITask
