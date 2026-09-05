@@ -107,11 +107,12 @@ internal static class RedeemRewardItems
         public override string ToString() => $"TryRedeem({ItemReward.Name})";
     }
 
-    internal sealed class Executor
+    internal sealed class TryRedeemExecutor
     (
         GameFunctions gameFunctions,
         ICondition condition,
-        ILogger<RedeemRewardItems.Executor> logger) : TaskExecutor<Task>
+        DalamudInitializer dalamudInitializer,
+        ILogger<RedeemRewardItems.TryRedeemExecutor> logger) : TaskExecutor<Task>
     {
         private static readonly TimeSpan MinimumCastTime = TimeSpan.FromSeconds(4);
 
@@ -134,17 +135,17 @@ internal static class RedeemRewardItems
             }
 
             _giveUpAt = DateTime.Now.Add(GiveUpAfter);
-            logger.LogDebug("Start");
+            logger.LogTrace("Start");
             return true;
         }
 
         public override unsafe ETaskResult Update()
         {
-            logger.LogDebug("Update");
+            logger.LogTrace("Update");
             InventoryManager* inventoryManager = InventoryManager.Instance();
             if (inventoryManager == null)
             {
-                logger.LogDebug("inventorymanager == null");
+                logger.LogTrace("inventorymanager == null");
                 return ETaskResult.TaskComplete;
             }
 
@@ -154,7 +155,14 @@ internal static class RedeemRewardItems
             {
                 if (timedOut)
                 {
-                    logger.LogDebug("timedOut");
+                    logger.LogTrace("timedOut");
+                    return ETaskResult.TaskComplete;
+                }
+                
+                if (dalamudInitializer.FlagGearUnequippable)
+                {
+                    logger.LogDebug("FlagGearUnequippable");
+                    dalamudInitializer.FlagGearUnequippable = false;
                     return ETaskResult.TaskComplete;
                 }
 
@@ -168,7 +176,7 @@ internal static class RedeemRewardItems
                 // Already gone (e.g. consumed elsewhere) - nothing to do.
                 if (_itemCountBeforeUse == 0)
                 {
-                    logger.LogDebug("_itemCountBeforeUse == 0");
+                    logger.LogTrace("_itemCountBeforeUse == 0");
                     return ETaskResult.TaskComplete;
                 }
 
@@ -186,19 +194,19 @@ internal static class RedeemRewardItems
                 _continueAt = DateTime.Now
                     .Add(castTime)
                     .AddSeconds(3);
-                logger.LogDebug("condition[ConditionFlag.Casting]");
+                logger.LogTrace("condition[ConditionFlag.Casting]");
                 return ETaskResult.StillRunning;
             }
 
             if (condition[ConditionFlag.Casting])
             {
-                logger.LogDebug("condition[ConditionFlag.Casting]");
+                logger.LogTrace("condition[ConditionFlag.Casting]");
                 return ETaskResult.StillRunning;
             }
 
             if (DateTime.Now <= _continueAt)
             {
-                logger.LogDebug("DateTime.Now <= _continueAt");
+                logger.LogTrace("DateTime.Now <= _continueAt");
                 return ETaskResult.StillRunning;
             }
 
@@ -208,7 +216,7 @@ internal static class RedeemRewardItems
             if (inventoryManager->GetInventoryItemCount(Task.ItemReward.ItemId) >= _itemCountBeforeUse && !timedOut)
             {
                 _usedItem = false;
-                logger.LogDebug("itemcount >= _itemCountBeforeUse && !timedOut");
+                logger.LogTrace("itemcount >= _itemCountBeforeUse && !timedOut");
                 return ETaskResult.StillRunning;
             }
 

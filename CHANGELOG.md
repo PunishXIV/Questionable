@@ -1,1 +1,1 @@
-- Change: add spearfishing quest to fsh job quest preset -alydev
+- Bug fix: detect if gear coffer could not be opened because of class requirement and skip it until next accept -alydev
