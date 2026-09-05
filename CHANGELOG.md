@@ -1,2 +1,1 @@
-- Change: Things that can be left-clicked to do something now change the cursor to the hand pointer so it's clear. Things that can be right-clicked are unchanged -alydev
-- Bug fix: Deck The Hut can't be done with the allied society common turn-in thing without being able to produce a flying path out of the hut -alydev
+- Bug fix: Handle combat during post-interaction waits -eternalwaitt
