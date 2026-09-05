@@ -350,6 +350,9 @@ internal sealed class QuestRegistry
         if (classJob.AsJob() != classJob)
             allQuests.AddRange(_questData.GetClassJobQuests(classJob.AsJob(), includeRoleQuests));
 
+        if (classJob.Equals(Job.FSH) && allQuests.Any(x => x.QuestId.Value.Equals(2898)))
+            allQuests.Insert(allQuests.IndexOf(x => x.QuestId.Value.Equals(2898)), (QuestInfo)_questData.GetQuestInfo(new QuestId(2922)));
+
         return allQuests
             .Where(x => IsKnownQuest(x.QuestId))
             .ToList();
