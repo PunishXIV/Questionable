@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-12"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -84,7 +84,6 @@
         {
           "TerritoryId": 1191,
           "InteractionType": "Fish",
-          "AetheryteShortcut": "Heritage Found - Electrope Strike",
           "ItemsToGather": [
             {
               "ItemId": 43916,

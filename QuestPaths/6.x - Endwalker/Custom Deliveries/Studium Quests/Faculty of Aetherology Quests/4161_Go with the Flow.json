@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "Comment": "Auto buys 99x Gold Salmon Roe from Synnove\nFishes for 6x Giant Aetherlouse",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
