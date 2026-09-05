@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "Comment": "Autocraft requires:\n12x White Gold Ingot\n6x Titanium Gold Nugget\n6x Cinnamon",
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-02"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-05"},
   "QuestSequence": [
     {
       "Sequence": 0,

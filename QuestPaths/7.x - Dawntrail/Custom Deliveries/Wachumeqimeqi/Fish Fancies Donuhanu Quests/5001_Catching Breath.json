@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-12"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -33,14 +33,25 @@
         },
         {
           "Position": {
-            "X": 482.4802,
-            "Y": 14.962147,
-            "Z": 672.252
+            "X": 480.87372,
+            "Y": 15.46027,
+            "Z": 669.95386
           },
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
           "Fly": true,
           "StopDistance": 1
+        },
+        {
+          "Position": {
+            "X": 482.38736,
+            "Y": 14.930612,
+            "Z": 672.66675
+          },
+          "TerritoryId": 1190,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "Mount": false
         },
         {
           "TerritoryId": 1190,

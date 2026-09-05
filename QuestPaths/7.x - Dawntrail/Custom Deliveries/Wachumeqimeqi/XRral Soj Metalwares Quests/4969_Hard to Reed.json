@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "Comment": "Autocraft requires:\n12x Chondrite Ingot\n6x Annite Whetstone\n6x Integral Lumber",
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-02"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-05"},
   "QuestSequence": [
     {
       "Sequence": 0,

@@ -1,1 +1,1 @@
-- Bug fix: Handle combat during post-interaction waits -eternalwaitt
+- Change: add spearfishing quest to fsh job quest preset -alydev
