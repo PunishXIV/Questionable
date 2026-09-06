@@ -163,7 +163,7 @@
       "gatheringpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.306.3.26, )"
+          "Questionable.Model": "[15.306.3.37, )"
         }
       },
       "questionable.model": {
@@ -172,7 +172,7 @@
       "questpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.306.3.26, )"
+          "Questionable.Model": "[15.306.3.37, )"
         }
       }
     }

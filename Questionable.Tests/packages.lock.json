@@ -90,6 +90,16 @@
         "resolved": "8.4.0",
         "contentHash": "flxspiBs0G/0GMp7IK2J2ijV9bTG6hEwFc/z6ekHqB6nwRJ4Ry2yLdx+TkbCUYFCl4XhABkAwomeKbT6zM2Zlg=="
       },
+      "CSVFile": {
+        "type": "Transitive",
+        "resolved": "3.2.1",
+        "contentHash": "hXWPP7BGA8DS+UxdDEjAsLPdo6OUiCdaCiprxuRxpTy3nwI9DqwNWxaC5imfyD3kCb9/S2mW35s7f08uaokTUA=="
+      },
+      "CsvHelper": {
+        "type": "Transitive",
+        "resolved": "30.0.1",
+        "contentHash": "rcZtgbWR+As4G3Vpgx0AMNmShGuQLFjkHAPIIflzrfkJCx8/AOd4m96ZRmiU1Wi39qS5UVjV0P8qdgqOo5Cwyg=="
+      },
       "Dalamud.Extensions.MicrosoftLogging": {
         "type": "Transitive",
         "resolved": "4.0.1",
@@ -143,6 +153,16 @@
         "contentHash": "5T3DWENwuCzLwFWz0qjXXVWA8+5+gC95OLkhqUBWpVpWBMr9gwfhWNeX8rWyr+fLQ7pIQ+lWuHIrmXRudxOOSw==",
         "dependencies": {
           "JsonPointer.Net": "5.3.1"
+        }
+      },
+      "LuminaSupplemental.Excel": {
+        "type": "Transitive",
+        "resolved": "5.1.4",
+        "contentHash": "emnlVa7IsrBQZyNsTeQPb6iqtKsTg1Ynm1UDL72QXha0FEKF6WudM6GINlW0VxXvTpe3RL8y/G4E1w53kMV78Q==",
+        "dependencies": {
+          "CSVFile": "3.2.1",
+          "CsvHelper": "30.0.1",
+          "Sylvan.Data.Csv": "1.4.3"
         }
       },
       "Microsoft.CodeCoverage": {
@@ -237,6 +257,11 @@
         "resolved": "3.1.12",
         "contentHash": "iAg6zifihXEFS/t7fiHhZBGAdCp3FavsF4i2ZIDp0JfeYeDVzvmlbY1CNhhIKimaIzrzSi5M/NBFcWvZT2rB/A=="
       },
+      "Sylvan.Data.Csv": {
+        "type": "Transitive",
+        "resolved": "1.4.3",
+        "contentHash": "ZUFTqs5doO9aGrR2g0tjASSfxaMUnsxRBXCYFvDRn74XfIc0PUZ0FYRbI3Yu/4W/IFc/DBKH30OOeZ2xGqGyFQ=="
+      },
       "System.Diagnostics.EventLog": {
         "type": "Transitive",
         "resolved": "6.0.0",
@@ -290,7 +315,7 @@
       "gatheringpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.306.3.26, )"
+          "Questionable.Model": "[15.306.3.37, )"
         }
       },
       "questionable": {
@@ -299,15 +324,16 @@
           "Dalamud.Extensions.MicrosoftLogging": "[4.0.1, )",
           "DalamudPackager": "[15.0.0, )",
           "ECommons": "[3.2.1.18, )",
-          "GatheringPaths": "[15.306.3.26, )",
+          "GatheringPaths": "[15.306.3.37, )",
           "I18N.DotNet": "[1.3.1, )",
           "JetBrains.Annotations": "[2025.2.4, )",
           "JsonSchema.Net": "[7.4.0, )",
+          "LuminaSupplemental.Excel": "[5.1.4, )",
           "Microsoft.Extensions.DependencyInjection": "[9.0.8, )",
           "NotificationMasterAPI": "[1.0.0.4, )",
           "PunishLib": "[2.0.0.1, )",
-          "QuestPaths": "[15.306.3.26, )",
-          "Questionable.Model": "[15.306.3.26, )",
+          "QuestPaths": "[15.306.3.37, )",
+          "Questionable.Model": "[15.306.3.37, )",
           "SixLabors.ImageSharp": "[3.1.12, )",
           "WrathCombo.API": "[0.5.7, )"
         }
@@ -318,7 +344,7 @@
       "questpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.306.3.26, )"
+          "Questionable.Model": "[15.306.3.37, )"
         }
       }
     }
