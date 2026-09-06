@@ -158,7 +158,7 @@ internal static class RedeemRewardItems
                     logger.LogTrace("timedOut");
                     return ETaskResult.TaskComplete;
                 }
-                
+
                 if (dalamudInitializer.FlagGearUnequippable)
                 {
                     logger.LogDebug("FlagGearUnequippable");
