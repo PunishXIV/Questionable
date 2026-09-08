@@ -137,7 +137,6 @@ internal static class Interact
         ///     prior to the next step (in case we're attacked).
         /// </summary>
         private bool delayedFinalCheck;
-        private ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> jobGearSets = classJobUtils.GetJobGearSets(combat: false);
 
         public Quest? Quest => Task.Quest;
         public EInteractionType InteractionType { get; set; }
@@ -258,10 +257,11 @@ internal static class Interact
                 Task.Quest != null &&
                 InteractionType == EInteractionType.AcceptQuest)
             {
+                var jobGearSets = classJobUtils.GetJobGearSets(combatOnly: false);
                 List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs.Where(x => jobGearSets.Count == 0 || jobGearSets.Any(v => v.ClassJob.Equals(x)))];
+                logger.LogInformation($"{Task.Quest.Id} acceptableJobs: {string.Join(',', acceptableJobs.Select(j => j.ToString()))}");
                 Job playerJob = (Job)player.ClassJob.Value.RowId;
                 Job targetJob = acceptableJobs[0];
-                logger.LogDebug($"{Task.Quest.Id} acceptableJobs: {string.Join(',', acceptableJobs.Select(j => j.ToString()))}");
                 if (acceptableJobs.Count >= 1 && !acceptableJobs.Contains(playerJob))
                 {
                     if (!acceptableJobs[0].IsCrafter() && !acceptableJobs[0].IsGatherer())

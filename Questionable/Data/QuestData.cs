@@ -447,6 +447,8 @@ internal sealed class QuestData
             // DT
             Job.VPR => [176],
             Job.PCT => [177],
+            // EC
+            Job.BST => [206],
             // Crafter
             Job.ALC => [48, 49, 50],
             Job.ARM => [36, 37, 38],
