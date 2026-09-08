@@ -1,0 +1,171 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-09"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2011104,
+          "Position": {
+            "X": -11.001831,
+            "Y": 1.4800415,
+            "Z": -6.9733887
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [1364],
+              "NearPosition": {
+                "Position": {
+                  "X": -52.64546,
+                  "Y": 3.855009,
+                  "Z": 6.439231
+                },
+                "TerritoryId": 351,
+                "MaximumDistance": 20
+              }
+            }
+          }
+        },
+        {
+          "DataId": 2015311,
+          "Position": {
+            "X": -52.64546,
+            "Y": 3.855009,
+            "Z": 6.439231
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1364,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [1364]
+            }
+          }
+        },
+        {
+          "DataId": 1058863,
+          "Position": {
+            "X": 4.71497,
+            "Y": -11.9617,
+            "Z": 37.7965
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "AcceptQuest",
+          "DisableNavmesh": true,
+          "$": "auto: issuer 1058863 (Estinien)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2015323,
+          "Position": {
+            "X": 18.5669,
+            "Y": -10.725,
+            "Z": 26.9266
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 2015323 (icebound tree)"
+        },
+        {
+          "DataId": 2015324,
+          "Position": {
+            "X": -18.1308,
+            "Y": 0,
+            "Z": 0.866608
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 2015324 (icy surface)"
+        },
+        {
+          "DataId": 2015325,
+          "Position": {
+            "X": 26.8734,
+            "Y": -0.0695292,
+            "Z": -6.15354
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 2015325 (vantage point)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1058865,
+          "Position": {
+            "X": 0.560856,
+            "Y": 0.2,
+            "Z": -24.7786
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1058865 (Estinien)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1058865,
+          "Position": {
+            "X": 0.560856,
+            "Y": 0.2,
+            "Z": -24.7786
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {
+            "Enabled": false
+          },
+          "$": "auto: todo location -> 1058865 (Estinien)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 2015512,
+          "Position": {
+            "X": -52.6455,
+            "Y": 3.855,
+            "Z": 6.4392
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "$": "auto: lua EOBJECT4 -> 2015512 (path to the unmoored isle)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058866,
+          "Position": {
+            "X": -1.03104,
+            "Y": 0,
+            "Z": -5.89275
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "CompleteQuest",
+          "DisableNavmesh": true,
+          "$": "auto: todo turn-in -> 1058866 (Alphinaud)"
+        }
+      ]
+    }
+  ]
+}

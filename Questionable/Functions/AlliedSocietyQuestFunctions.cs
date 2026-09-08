@@ -69,7 +69,7 @@ internal sealed class AlliedSocietyQuestFunctions
             else
             {
                 List<QuestId> quests = CalculateAvailableQuests(npcData.AllQuests, seed, outranksAll, currentRank, rankedUp);
-                _logger.LogInformation("Available for {Tribe} (Seed: {Seed}, Issuer: {IssuerId}): {Quests}", alliedSociety, seed, npcData.IssuerDataId, string.Join(", ", quests));
+                _logger.LogInformation("Available for {Tribe} (Seed: {Seed}, Issuer: {IssuerId}, RankedUp: {RankedUp}): {Quests}", alliedSociety, seed, npcData.IssuerDataId, rankedUp, string.Join(", ", quests));
 
                 _dailyQuests[key] = quests;
                 result.AddRange(quests);

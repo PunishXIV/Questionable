@@ -1,0 +1,108 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-09"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1059317,
+          "Position": {
+            "X": 28.4672,
+            "Y": -8.2,
+            "Z": 122.706
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "$": "auto: issuer 1059317 (excited adventurer)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2015394,
+          "Position": {
+            "X": -319.487,
+            "Y": 60.9465,
+            "Z": -128.095
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: todo location -> 2015394 (destination)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1059318,
+          "Position": {
+            "X": -302.823,
+            "Y": 63.4842,
+            "Z": -257.193
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059318 (mysterious Miqo'te)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1059320,
+          "Position": {
+            "X": -305.111,
+            "Y": 63.4793,
+            "Z": -258.109
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059320 (Cu Sith); hands over ITEM0=2003830"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1059320,
+          "Position": {
+            "X": -305.111,
+            "Y": 63.4793,
+            "Z": -258.109
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Emote",
+          "Emote": "pet",
+          "$": "auto: todo location -> 1059320 (Cu Sith); todo says \"/pet the Cu Sith.\""
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1059767,
+          "Position": {
+            "X": -302.822,
+            "Y": 63.4842,
+            "Z": -257.193
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5491,
+          "$": "auto: todo turn-in -> 1059767 (J'yhuh Tia)"
+        }
+      ]
+    }
+  ]
+}

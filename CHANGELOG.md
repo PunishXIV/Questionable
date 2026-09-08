@@ -1,1 +1,1 @@
-- Bug fix: detect if gear coffer could not be opened because of class requirement and skip it until next accept -alydev
+- Feature: Updated for 7.56 -alydev

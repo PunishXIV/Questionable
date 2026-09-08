@@ -1,0 +1,89 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-09"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1058995,
+          "Position": {
+            "X": 0,
+            "Y": 0,
+            "Z": -7.1668
+          },
+          "TerritoryId": 351,
+          "InteractionType": "AcceptQuest",
+          "$": "auto: issuer 1058995 (Tataru)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2015322,
+          "Position": {
+            "X": -18.5635,
+            "Y": 5.5047,
+            "Z": 50.1579
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Ishgard",
+          "$": "auto: todo location -> 2015322 (destination)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1058995,
+          "Position": {
+            "X": 0,
+            "Y": 0,
+            "Z": -7.1668
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1058995 (Tataru)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1058828,
+          "Position": {
+            "X": 0,
+            "Y": 0,
+            "Z": -7.1871
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "$": "auto: lua ACTOR2 -> 1058828 (Tataru)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058862,
+          "Position": {
+            "X": 7.21747,
+            "Y": -11.9617,
+            "Z": 37.5524
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "CompleteQuest",
+          "DisableNavmesh": true,
+          "$": "auto: todo turn-in -> 1058862 (Alphinaud)"
+        }
+      ]
+    }
+  ]
+}

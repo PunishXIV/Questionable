@@ -1,0 +1,98 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-09"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1059767,
+          "Position": {
+            "X": -302.822,
+            "Y": 63.4842,
+            "Z": -257.193
+          },
+          "TerritoryId": 148,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: issuer 1059767 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1059322,
+          "Position": {
+            "X": 121.773,
+            "Y": -6.99881,
+            "Z": -86.3509
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: todo location -> 1059322 (wary Wailer)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": {
+            "X": 119.923,
+            "Y": -7.00342,
+            "Z": -87.4736
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "Comment": "Assign Cu Sith to first battlehorn, summon, then interact with J'yhuh Tia",
+          "DataId": 1059323,
+          "Position": {
+            "X": 119.923,
+            "Y": -7.00342,
+            "Z": -87.4736
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WaitForManualProgress",
+          "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "Comment": "Attack some mobs with Smash Axe until level 2, use Capture on a Ground Squirrel nearby, then travel to Middle La Noscea and use Capture on a Lost Lamb.",
+          "DataId": 1059323,
+          "Position": {
+            "X": 119.923,
+            "Y": -7.00342,
+            "Z": -87.4736
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "NextQuestId": 5492,
+          "$": "auto: todo turn-in -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    }
+  ]
+}

@@ -154,7 +154,7 @@ internal sealed class ClassJobUtils
             .FirstOrDefault();
     }
 
-    internal unsafe ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> GetJobGearSets(bool combat = true)
+    internal unsafe ReadOnlyCollection<(Job ClassJob, short Level, short ItemLevel)> GetJobGearSets(bool combatOnly = true)
     {
         List<(Job, short, short)> jobs = [];
 
@@ -169,7 +169,7 @@ internal sealed class ClassJobUtils
             if (gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists))
             {
                 Job classJob = (Job)gearset->ClassJob;
-                if (combat && (GameDataAdapter.IsCrafter(classJob) || GameDataAdapter.IsGatherer(classJob)))
+                if (combatOnly && (GameDataAdapter.IsCrafter(classJob) || GameDataAdapter.IsGatherer(classJob)))
                     continue;
 
                 short level = playerState->ClassJobLevels[_classJobToExpArrayIndex[classJob]];

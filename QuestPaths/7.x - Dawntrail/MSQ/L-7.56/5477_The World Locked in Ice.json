@@ -1,0 +1,153 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-09"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2011104,
+          "Position": {
+            "X": -11.001831,
+            "Y": 1.4800415,
+            "Z": -6.9733887
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 351,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [1364],
+              "NearPosition": {
+                "Position": {
+                  "X": -52.64546,
+                  "Y": 3.855009,
+                  "Z": 6.439231
+                },
+                "TerritoryId": 351,
+                "MaximumDistance": 20
+              }
+            }
+          }
+        },
+        {
+          "DataId": 2015311,
+          "Position": {
+            "X": -52.64546,
+            "Y": 3.855009,
+            "Z": 6.439231
+          },
+          "TerritoryId": 351,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 1364,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [1364]
+            }
+          }
+        },
+        {
+          "DataId": 1058868,
+          "Position": {
+            "X": 0,
+            "Y": 0,
+            "Z": -8.35846
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "AcceptQuest",
+          "$": "auto: issuer 1058868 (Visna)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1058868,
+          "Position": {
+            "X": 0,
+            "Y": 0,
+            "Z": -8.35846
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1058868 (Visna)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2015328,
+          "Position": {
+            "X": 22.7958,
+            "Y": 0.234404,
+            "Z": -13.1717
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "UseItem",
+          "ItemId": 2003824,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo location -> 2015328 (rimy crystal); use item ITEM0=2003824 on it"
+        },
+        {
+          "DataId": 2015329,
+          "Position": {
+            "X": 22.898,
+            "Y": 0.334689,
+            "Z": 11.9389
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "UseItem",
+          "ItemId": 2003824,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo location -> 2015329 (rimy crystal); use item ITEM0=2003824 on it"
+        },
+        {
+          "DataId": 2015331,
+          "Position": {
+            "X": -25.5259,
+            "Y": 0.189865,
+            "Z": -6.54604
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "UseItem",
+          "ItemId": 2003824,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
+          "$": "auto: todo location -> 2015331 (rimy crystal); use item ITEM0=2003824 on it"
+        },
+        {
+          "DataId": 2015330,
+          "Position": {
+            "X": -23.7323,
+            "Y": -5.74827,
+            "Z": 29.1639
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "UseItem",
+          "ItemId": 2003824,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo location -> 2015330 (rimy crystal); use item ITEM0=2003824 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058877,
+          "Position": {
+            "X": 0.377771,
+            "Y": 0,
+            "Z": -9.38665
+          },
+          "TerritoryId": 1364,
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1058877 (Visna)"
+        }
+      ]
+    }
+  ]
+}

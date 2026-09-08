@@ -59,7 +59,8 @@ internal static class QuestInfoUtils
                 { Job.RPR, classJobCategory.RPR },
                 { Job.SGE, classJobCategory.SGE },
                 { Job.VPR, classJobCategory.VPR },
-                { Job.PCT, classJobCategory.PCT }
+                { Job.PCT, classJobCategory.PCT },
+                { Job.BST, classJobCategory.ExcelPage.ReadBool(classJobCategory.RowOffset + 47) } // TODO: update when ClassJobCategory.BST is added
             }
             .Where(y => y.Value)
             .Select(y => y.Key)
