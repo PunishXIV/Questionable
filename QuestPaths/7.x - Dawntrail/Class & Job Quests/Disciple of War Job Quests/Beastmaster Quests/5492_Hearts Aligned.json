@@ -1,0 +1,164 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": {
+            "X": 119.923,
+            "Y": -7.00342,
+            "Z": -87.4736
+          },
+          "TerritoryId": 148,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: issuer 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Comment": "Perform these actions twice:\nAttack until both gauges have over 100 points. Use Trick, then use Avalanche Axe",
+          "DataId": 1059323,
+          "Position": {
+            "X": 107.636,
+            "Y": 20.557869,
+            "Z": -75.573
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WaitForManualProgress",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            19456
+          ],
+          "$": "auto: lua overworld enemies -> 19456"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": {
+            "X": 119.923,
+            "Y": -7.00342,
+            "Z": -87.4736
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1059325,
+          "Position": {
+            "X": 72.2791,
+            "Y": -6.47596,
+            "Z": -117.274
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059325 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1059327,
+          "Position": {
+            "X": -38.8953,
+            "Y": -32.2804,
+            "Z": 326.131
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059327 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1059327,
+          "Position": {
+            "X": -38.8953,
+            "Y": -32.2804,
+            "Z": 326.131
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059327 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": {
+            "X": 119.923,
+            "Y": -7.00342,
+            "Z": -87.4736
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Comment": "WIP",
+          "DataId": 1059323,
+          "Position": {
+            "X": 107.636,
+            "Y": 20.557869,
+            "Z": -75.573
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WaitForManualProgress",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            19456
+          ],
+          "$": "auto: lua overworld enemies -> 19456"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": {
+            "X": 119.923,
+            "Y": -7.00342,
+            "Z": -87.4736
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: todo turn-in -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    }
+  ]
+}
