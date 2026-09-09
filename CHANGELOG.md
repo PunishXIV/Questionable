@@ -1,1 +1,2 @@
-- Feature: Updated for 7.56 -alydev
+- Change: Override minimum level for Beastmaster quest "Hearts Aligned" to lv16, since the quest expects you to be at that level by the end of it -alydev
+- Change: added EC job placeholder support -alydev

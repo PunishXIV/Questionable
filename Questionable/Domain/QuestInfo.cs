@@ -37,7 +37,10 @@ internal sealed class QuestInfo : IQuestInfo
 
         Name = $"{quest.Name}{suffix}";
         BaseName = Name;
-        Level = quest.ClassJobLevel[0];
+        Dictionary<ushort, ushort> levelOverrides = new() {
+            { 5492, 16 } // BST Hearts Aligned
+        };
+        Level = levelOverrides.TryGetValue(QuestId.Value, out ushort requiredLevel) ? requiredLevel : quest.ClassJobLevel[0];
         IssuerDataId = quest.IssuerStart.RowId;
         IssuerLocation = new(quest.IssuerLocation.Value);
         IsRepeatable = quest.IsRepeatable;

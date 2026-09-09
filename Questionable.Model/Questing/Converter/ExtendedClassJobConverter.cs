@@ -49,6 +49,8 @@ internal sealed class ExtendedClassJobConverter() : EnumConverter<EExtendedClass
         { EExtendedClassJob.Sage, "Sage" },
         { EExtendedClassJob.Viper, "Viper" },
         { EExtendedClassJob.Pictomancer, "Pictomancer" },
+        { EExtendedClassJob.Beastmaster, "Beastmaster" },
+        { EExtendedClassJob.Bastion, "Bastion" },
         { EExtendedClassJob.DoW, "DoW" },
         { EExtendedClassJob.DoM, "DoM" },
         { EExtendedClassJob.DoH, "DoH" },

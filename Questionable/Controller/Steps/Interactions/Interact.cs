@@ -216,8 +216,7 @@ internal static class Interact
                 if (ProgressContext.WasInterrupted())
                     return ETaskResult.StillRunning;
 
-                if (ProgressContext.WasSuccessful() ||
-                                         _interactionState == EInteractionState.InteractionConfirmed)
+                if (ProgressContext.WasSuccessful() || _interactionState == EInteractionState.InteractionConfirmed)
                 {
                     if (delayedFinalCheck)
                         return ETaskResult.TaskComplete;

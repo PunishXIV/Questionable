@@ -207,6 +207,6 @@ internal enum RedoChapter
     WachuShunye = 202,
     WachuDonuhanu = 203,
     WachuMaster = 204,
-    Unknown4 = 205,
-    Unknown5 = 206,
+    Dawntrail4 = 205,
+    Beastmaster = 206,
 }

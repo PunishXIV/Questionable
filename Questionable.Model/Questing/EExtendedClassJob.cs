@@ -49,6 +49,7 @@ public enum EExtendedClassJob
     Viper,
     Pictomancer,
     Beastmaster,
+    Bastion,
     DoW,
     DoM,
     DoH,
