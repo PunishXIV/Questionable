@@ -1,6 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
+  "Comment": "Quest requires level 16 by the end\nCurrently we are overriding the minimum level to indicate this requirement",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -61,6 +63,11 @@
       "Sequence": 3,
       "Steps": [
         {
+          "TerritoryId": 148,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "Beastmaster"
+        },
+        {
           "DataId": 1059325,
           "Position": {
             "X": 72.2791,
@@ -69,6 +76,7 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
+          "Fly": true,
           "$": "auto: todo location -> 1059325 (J'yhuh Tia)"
         }
       ]
@@ -85,6 +93,7 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
+          "Fly": true,
           "$": "auto: todo location -> 1059327 (J'yhuh Tia)"
         }
       ]
