@@ -128,7 +128,8 @@
           "TerritoryId": 1364,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false
+            "Enabled": true,
+            "Target": 19818
           },
           "$": "auto: todo location -> 1058865 (Estinien)"
         }
