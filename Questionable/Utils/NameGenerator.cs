@@ -75,6 +75,18 @@ internal static class NameGenerator
         return (FirstName: firstName, LastName: lastName);
     }
 
+    private static string? _generateFirstName;
+    private static DateTime _generateFirstNameUpdated = DateTime.MinValue;
+    internal static string GenerateFirstName(bool fast = false)
+    {
+        if (_generateFirstName == null || (DateTime.Now - _generateFirstNameUpdated).TotalMilliseconds > (fast ? 50 : 500))
+        {
+            _generateFirstName = Rand.NextBool() ? GetMasculineName() : GetFeminineName();
+            _generateFirstNameUpdated = DateTime.Now;
+        }
+        return _generateFirstName;
+    }
+
     internal static string GetFirstName(string lastName, bool male)
     {
         int lastNameLength = lastName.Length;

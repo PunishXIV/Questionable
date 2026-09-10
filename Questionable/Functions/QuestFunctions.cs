@@ -97,6 +97,13 @@ internal sealed unsafe class QuestFunctions
             if (IsQuestAccepted(currentQuest) || IsQuestComplete(currentQuest))
                 return new(currentQuest, sequence, questState);
 
+            if (configuration.General.GrandCompany.Equals(GrandCompany.None))
+            {
+                Random rand = new();
+#pragma warning disable CA5394 // Do not use insecure randomness
+                return new(new QuestId((ushort)(rand.Next() % 2 + 680)), 0, questState);
+#pragma warning restore CA5394 // Do not use insecure randomness
+            }
             // The company you keep...
             return configuration.General.GrandCompany switch
             {

@@ -1,2 +1,1 @@
-- Change: Override minimum level for Beastmaster quest "Hearts Aligned" to lv16, since the quest expects you to be at that level by the end of it -alydev
-- Change: added EC job placeholder support -alydev
+- Feature: Random chocobo name if not set -alydev
