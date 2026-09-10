@@ -1754,7 +1754,7 @@
     <Value lang="ko">자동 (가장 높은 레벨/아이템 레벨)</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>None (manually pick quest)</Key>
     <Value lang="ja-jp">なし（手動でクエストを選択）</Value>
     <Value lang="zh-cn">无（手动选择任务）</Value>
@@ -1852,7 +1852,7 @@
     <Value lang="ko">초코보 이름</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Chicken</Key>
     <Value lang="ja-jp">Chicken</Value>
     <Value lang="zh-cn">小小鸟</Value>
@@ -1866,7 +1866,7 @@
     <Value lang="ko">"드디어 내 초코보를!" 퀘스트 중 당신의 초코보에게 지어줄 이름입니다.</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Defaults to "Chicken" if left blank.</Key>
     <Value lang="ja-jp">空白の場合は「Chicken」がデフォルトです。</Value>
     <Value lang="zh-cn">如果留空，默认为'小小鸟'。</Value>
@@ -5339,5 +5339,13 @@
     <Key>Long or blocked quests are queued too - check the priority list afterwards.</Key>
     <Value lang="ja-jp">時間のかかるクエストやブロックされているクエストもキューに追加できます。後で優先リストを確認してください。</Value>
     <Value lang="zh-cn">长任务或被阻塞的任务也被加入队列——稍后请检查优先列表。</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Auto</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Generates a random name if invalid or left blank.</Key>
   </Entry>
 </I18N>
