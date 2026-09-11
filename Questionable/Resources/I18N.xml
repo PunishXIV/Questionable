@@ -6123,7 +6123,6 @@
   <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Interactions/Interact.cs -->
     <Key>_JobGearsetError</Key>
-    <Value lang="en">_JobGearsetError</Value>
     <Value lang="en">QST tried to find a gearset for a job like {0} to continue {1}, but no matching gearset was found. It may be fixed by manually updating the current gearset in Character, or equipping a missing job stone. Please report this error in Discord</Value>
   </Entry>
 </I18N>
