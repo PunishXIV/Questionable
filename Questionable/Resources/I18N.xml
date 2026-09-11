@@ -2873,7 +2873,7 @@
     <!--<Value lang="ko">첫 번째 퀘스트 시뮬레이션</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Item Rewards</Key>
     <Value lang="ja-jp">アイテム報酬</Value>
     <Value lang="zh-cn">道具奖励</Value>
@@ -5347,5 +5347,13 @@
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Generates a random name if invalid or left blank.</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
+    <Key>Unlocks</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
+    <Key>Loading...</Key>
   </Entry>
 </I18N>

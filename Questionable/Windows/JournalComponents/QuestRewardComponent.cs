@@ -45,7 +45,7 @@ internal sealed class QuestRewardComponent
 
         ImGui.BulletText(
             _L("Only untradeable items are listed (e.g. the Wind-up Airship can be sold on the market board)."));
-            
+
         DrawAetheryteGroup();
         DrawGroup(_L("Duties"), EItemRewardType.Duty);
         DrawGroup(_L("Fashion Accessories"), EItemRewardType.FashionAccessory);
