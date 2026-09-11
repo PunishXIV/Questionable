@@ -1,0 +1,68 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Fronti",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1021269,
+          "Position": {
+            "X": 4.409851,
+            "Y": 4.000001,
+            "Z": 27.0542
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2008099,
+          "Position": {
+            "X": -128.121,
+            "Y": 17.2531,
+            "Z": -188.696
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Kugane] Kogane Dori Markets", "[Kugane] Bokairo Inn"]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021270,
+          "Position": {
+            "X": 83.9093,
+            "Y": 8.02,
+            "Z": 156.695
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1021269,
+          "Position": {
+            "X": 4.43096,
+            "Y": 4,
+            "Z": 27.0772
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": ["[Kugane] Thavnairian Consulate", "[Kugane] Kogane Dori Markets"]
+        }
+      ]
+    }
+  ]
+}

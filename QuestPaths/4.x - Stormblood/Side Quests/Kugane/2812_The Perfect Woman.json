@@ -1,0 +1,123 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Fronti",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023118,
+          "Position": {
+            "X": 1.60217,
+            "Y": 4,
+            "Z": 66.9108
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] Kogane Dori Markets"]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023119,
+          "Position": {
+            "X": -63.676,
+            "Y": 8,
+            "Z": -60.8378
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Kugane] Kogane Dori Markets", "[Kugane] Shiokaze Hostelry"]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1023118,
+          "Position": {
+            "X": 1.60217,
+            "Y": 4,
+            "Z": 66.9108
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Kugane] Shiokaze Hostelry", "[Kugane] Kogane Dori Markets"]
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1023122,
+          "Position": {
+            "X": 81.4935,
+            "Y": 4.05,
+            "Z": 53.1471
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
+        },
+        {
+          "DataId": 1023121,
+          "Position": {
+            "X": 102.797,
+            "Y": 12,
+            "Z": 44.48
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
+        },
+        {
+          "DataId": 1023120,
+          "Position": {
+            "X": 126.818,
+            "Y": 25,
+            "Z": 12.6497
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1023123,
+          "Position": {
+            "X": -15.8847,
+            "Y": 0,
+            "Z": -65.3544
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Kugane"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023124,
+          "Position": {
+            "X": 127.428,
+            "Y": 25,
+            "Z": 14.0841
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] The Ruby Bazaar"]
+        }
+      ]
+    }
+  ]
+}

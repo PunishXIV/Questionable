@@ -1,0 +1,54 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Fronti",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1023328,
+          "Position": {
+            "X": -63.1877,
+            "Y": -4.73387,
+            "Z": 157.885
+          },
+          "TerritoryId": 628,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] Pier #1"]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1023329,
+          "Position": {
+            "X": 40.8179,
+            "Y": 2.01199,
+            "Z": 34.0429
+          },
+          "TerritoryId": 628,
+          "InteractionType": "Interact",
+          "AethernetShortcut": ["[Kugane] Pier #1", "[Kugane] Kogane Dori Markets"]
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1023328,
+          "Position": {
+            "X": -63.1877,
+            "Y": -4.73387,
+            "Z": 157.885
+          },
+          "TerritoryId": 628,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": ["[Kugane] Kogane Dori Markets", "[Kugane] Pier #1"]
+        }
+      ]
+    }
+  ]
+}
