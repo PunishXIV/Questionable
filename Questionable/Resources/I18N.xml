@@ -5134,7 +5134,7 @@
     <!--<Value lang="ko">각 상호작용 전에 퀘스트를 수락한 직업으로 전환</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Controller/Steps/Interactions/Interact.cs -->
+    <!-- DEPRECATED -->
     <Key>Quest {0} requires a job like {1}, but you do not have a gearset for this job or have not configured QST job preferences.</Key>
     <Value lang="ja-jp">クエスト {0} には {1} のようなジョブが必要ですが、該当ジョブのギアセットがないか、QSTのジョブ設定が未構成です。</Value>
     <Value lang="zh-cn">任务 {0} 需要类似 {1} 的职业，但你没有该职业的装备套装，或者没有配置 QST 职业偏好设置。</Value>
