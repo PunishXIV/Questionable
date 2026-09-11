@@ -88,9 +88,13 @@ internal sealed class ARealmRebornComponent
         if (complete || !hover)
             return;
 
+        ImGui.SetNextWindowSize(new(300, -1));
         using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
+        ImGui.TextWrapped(_L("The ARR Alliance Raids must be completed to progress to Heavensward.\nThey can be completed quickly and easily in unrestricted party mode (\"unsync\"), but Labyrinth of the Ancients has a minimum requirement of 12 players (4 per party) to complete the Atomos encounter.\nSyrcus Tower and World of Darkness only require three players (one player per party) to enter."));
         foreach (QuestId questId in QuestData.CrystalTowerQuests)
         {
+            if (questFunctions.IsQuestComplete(questId))
+                continue;
             (Vector4 color, FontAwesomeIcon icon, string _) = uiUtils.GetQuestStyle(questId);
             uiUtils.ChecklistItem(questData.GetQuestInfo(questId).Name, color, icon, ImGui.GetStyle().FramePadding.X);
         }

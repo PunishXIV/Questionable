@@ -6133,4 +6133,8 @@
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>'My Feisty Little Chocobo' enables using your companion chocobo for overworld battles, and is completed automatically after 'My Little Chocobo' unless this is ticked.</Key>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ARealmRebornComponent.cs -->
+    <Key>The ARR Alliance Raids must be completed to progress to Heavensward.\nThey can be completed quickly and easily in unrestricted party mode ("unsync"), but Labyrinth of the Ancients has a minimum requirement of 12 players (4 per party) to complete the Atomos encounter.\nSyrcus Tower and World of Darkness only require three players (one player per party) to enter.</Key>
+  </Entry>
 </I18N>
