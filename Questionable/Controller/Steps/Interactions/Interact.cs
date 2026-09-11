@@ -17,8 +17,7 @@ namespace Questionable.Controller.Steps.Interactions;
 internal static class Interact
 {
     static string JobGearsetError(string arg0, string arg1) => _LF(
-        "QST tried to find a gearset for a job like {0} to continue {1}, but no matching gearset was found. " +
-        "It may be fixed by manually updating the current gearset in Character, or equipping a missing job stone. Please report this error in Discord",
+        "_JobGearsetError",
         arg0, arg1);
     internal sealed class Factory(AutomatonIpc automatonIpc, Configuration configuration, RedoUtil redoUtil) : ITaskFactory
     {
@@ -264,7 +263,7 @@ internal static class Interact
                 List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs.Where(x => jobGearSets.Count == 0 || jobGearSets.Any(v => v.ClassJob.Equals(x)))];
                 logger.LogInformation($"{Task.Quest.Id} acceptableJobs: {string.Join(',', acceptableJobs)}");
                 if (acceptableJobs.Count == 0)
-                    throw new Exception(JobGearsetError(Task.Quest.Info.ClassJobs[0].ToFriendlyString(), Task.Quest.Info.Name));
+                    throw new Exception(_LF("_JobGearsetError", Task.Quest.Info.ClassJobs[0].ToFriendlyString(), Task.Quest.Info.Name));
 
                 Job playerJob = (Job)player.ClassJob.Value.RowId;
                 // Reference first candidate to determine type of quest
@@ -302,7 +301,7 @@ internal static class Interact
                                 candidate, Task.Quest.Id);
                     }
                     if (acceptableJobs.Count == 0)
-                        throw new Exception(JobGearsetError(firstItem.ToFriendlyString(), Task.Quest.Info.Name));
+                        throw new Exception(_LF("_JobGearsetError", firstItem.ToFriendlyString(), Task.Quest.Info.Name));
                     if (classJobUtils.ClassToJobStone(candidate) is (Job job, ushort item))
                     {
                         _unequipItem = item;
@@ -312,7 +311,7 @@ internal static class Interact
                     }
 
                     if (!classJobUtils.SwitchClassJob(candidate) && !_reportedWrongJob)
-                        throw new Exception(JobGearsetError(candidate.ToFriendlyString(), Task.Quest.Info.Name));
+                        throw new Exception(_LF("_JobGearsetError", candidate.ToFriendlyString(), Task.Quest.Info.Name));
                     logger.LogInformation($"Switched from {playerJob} to {candidate}");
 
                     _continueAt = DateTime.Now.AddSeconds(0.2);
