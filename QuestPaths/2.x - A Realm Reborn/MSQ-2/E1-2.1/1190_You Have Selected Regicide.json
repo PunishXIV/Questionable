@@ -4,7 +4,7 @@
     "JerryWester",
     "liza"
   ],
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-14"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -294,6 +294,7 @@
         {
           "TerritoryId": 152,
           "InteractionType": "Duty",
+          "Comment": "This is the first duty in MSQ that cannot be completed with an NPC party (as of 7.56.) A max level player or a light party can unsync it easily to continue MSQ.",
           "DutyOptions": {
             "ContentFinderConditionId": 66,
             "Enabled": false

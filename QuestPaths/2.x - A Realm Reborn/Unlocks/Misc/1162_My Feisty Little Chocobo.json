@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-14"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -69,10 +69,15 @@
       "Sequence": 4,
       "Steps": [
         {
+          "TerritoryId": 148,
+          "InteractionType": "UseItem",
+          "ItemId": 4868
+        },
+        {
           "Position": {
-            "X": -44.43882,
-            "Y": -4.7683716e-7,
-            "Z": -15.861683
+            "X": -50.086567,
+            "Y": -9.536743e-7,
+            "Z": -18.283287
           },
           "TerritoryId": 148,
           "InteractionType": "WalkTo",
@@ -81,13 +86,14 @@
             "StepIf": {
               "NotNearPosition": {
                 "Position": {
-                  "X": -44.43882,
-                  "Y": -4.7683716e-7,
-                  "Z": -15.861683
+                  "X": -50.086567,
+                  "Y": -9.536743e-7,
+                  "Z": -18.283287
                 },
                 "TerritoryId": 148,
-                "MaximumDistance": 20
-              }
+                "MaximumDistance": 40
+              },
+              "Flying": "Locked"
             }
           }
         },
@@ -101,11 +107,6 @@
           "InteractionType": "WalkTo",
           "ItemId": 4868,
           "Fly": true
-        },
-        {
-          "TerritoryId": 148,
-          "InteractionType": "UseItem",
-          "ItemId": 4868
         },
         {
           "Position": {
