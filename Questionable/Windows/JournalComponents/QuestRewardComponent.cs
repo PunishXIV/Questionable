@@ -86,6 +86,7 @@ internal sealed class QuestRewardComponent
             }
             foreach (QuestInfo q in results)
             {
+                using var _ = ImRaii.PushId($"###{(int)aetheryteLocation}-{q.QuestId.Value}");
                 (Vector4 color, FontAwesomeIcon icon, string status) = uiUtils.GetQuestStyle(q.QuestId);
                 if (uiUtils.ChecklistItem(q.Name, color, icon, iconOverride: QuestJournalUtils.GetIconOverride(q, icon)))
                 {
