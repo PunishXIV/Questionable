@@ -5360,4 +5360,8 @@
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
     <Key>Hide unlocked items</Key>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/Steps/Interactions/Interact.cs -->
+    <Key>QST tried to find a gearset for a job like {0} to continue {1}, but no matching gearset was found. It may be fixed by manually updating the current gearset in Character, or equipping a missing job stone. Please report this error in Discord</Key>
+  </Entry>
 </I18N>
