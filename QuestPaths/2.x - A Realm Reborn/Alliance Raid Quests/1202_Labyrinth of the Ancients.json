@@ -53,6 +53,7 @@
         {
           "TerritoryId": 156,
           "InteractionType": "Duty",
+          "Comment": "The ARR Alliance Raids must be completed to progress to Heavensward.\nThey can be completed quickly and easily in unrestricted party mode (\"unsync\"), but Labyrinth of the Ancients has a minimum requirement of 12 players (4 per party) to complete the Atomos encounter.\nSyrcus Tower and World of Darkness only require three players (one player per party) to enter.",
           "DutyOptions": {
             "ContentFinderConditionId": 92,
             "Enabled": false,

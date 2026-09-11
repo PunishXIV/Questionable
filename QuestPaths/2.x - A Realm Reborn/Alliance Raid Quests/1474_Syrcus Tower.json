@@ -96,6 +96,7 @@
         {
           "TerritoryId": 156,
           "InteractionType": "Duty",
+          "Comment": "The ARR Alliance Raids must be completed to progress to Heavensward.\nSyrcus Tower can be completed by one max level player or a light party, but they must form an Alliance Raid with three parties of at least one person each to enter.",
           "DutyOptions": {
             "ContentFinderConditionId": 102,
             "Enabled": false,
