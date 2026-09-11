@@ -16,6 +16,10 @@ namespace Questionable.Controller.Steps.Interactions;
 // TODO: refactor — heavy nesting (22 lines indented ≥6 levels, max indent ~12 levels).
 internal static class Interact
 {
+    static string JobGearsetError(string arg0, string arg1) => _LF(
+        "QST tried to find a gearset for a job like {0} to continue {1}, but no matching gearset was found. " +
+        "It may be fixed by manually updating the current gearset in Character, or equipping a missing job stone. Please report this error in Discord",
+        arg0, arg1);
     internal sealed class Factory(AutomatonIpc automatonIpc, Configuration configuration, RedoUtil redoUtil) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -258,62 +262,58 @@ internal static class Interact
             {
                 var jobGearSets = classJobUtils.GetJobGearSets(combatOnly: false);
                 List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs.Where(x => jobGearSets.Count == 0 || jobGearSets.Any(v => v.ClassJob.Equals(x)))];
-                logger.LogInformation($"{Task.Quest.Id} acceptableJobs: {string.Join(',', acceptableJobs.Select(j => j.ToString()))}");
+                logger.LogInformation($"{Task.Quest.Id} acceptableJobs: {string.Join(',', acceptableJobs)}");
+                if (acceptableJobs.Count == 0)
+                    throw new Exception(JobGearsetError(Task.Quest.Info.ClassJobs[0].ToFriendlyString(), Task.Quest.Info.Name));
+
                 Job playerJob = (Job)player.ClassJob.Value.RowId;
-                Job targetJob = acceptableJobs[0];
-                if (acceptableJobs.Count >= 1 && !acceptableJobs.Contains(playerJob))
+                // Reference first candidate to determine type of quest
+                Job firstItem = acceptableJobs[0];
+                Job candidate = firstItem;
+                if (!acceptableJobs.Contains(playerJob))
                 {
-                    if (!acceptableJobs[0].IsCrafter() && !acceptableJobs[0].IsGatherer())
+                    if (!firstItem.IsCrafter() && !firstItem.IsGatherer())
                     {
-                        targetJob = configuration.General.CombatJob;
-                        if (acceptableJobs.Contains(targetJob))
-                            acceptableJobs = [.. acceptableJobs.Prepend(targetJob)];
+                        candidate = configuration.General.CombatJob;
+                        if (acceptableJobs.Contains(candidate))
+                            acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
                         else
-                            logger.LogInformation("Normal quest, but configured job {CombatJob} is not valid for {QuestId}, changing to {AcceptableJob}",
-                                targetJob, Task.Quest.Id, acceptableJobs[0]);
+                            logger.LogInformation("Normal quest, but configured job {CombatJob} is not valid for {QuestId}",
+                                candidate, Task.Quest.Id);
                     }
-                    if (acceptableJobs[0].IsCrafter())
+                    if (firstItem.IsCrafter() ||
+                        (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu) && configuration.Advanced.NamazuPreferCraft && !firstItem.IsCrafter()))
                     {
-                        targetJob = configuration.General.CraftingJob;
-                        if (acceptableJobs.Contains(targetJob))
-                            acceptableJobs = [.. acceptableJobs.Prepend(targetJob)];
+                        candidate = configuration.General.CraftingJob;
+                        if (acceptableJobs.Contains(candidate))
+                            acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
                         else
-                            logger.LogInformation("Crafting quest, but configured job {CraftingJob} is not valid for {QuestId}, changing to {AcceptableJob}",
-                                targetJob, Task.Quest.Id, acceptableJobs[0]);
+                            logger.LogInformation("Crafting quest, but configured job {CraftingJob} is not valid for {QuestId}",
+                                candidate, Task.Quest.Id);
                     }
-                    else if (acceptableJobs[0].IsGatherer())
+                    else if (firstItem.IsGatherer() ||
+                        (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu) && !configuration.Advanced.NamazuPreferCraft && !firstItem.IsGatherer()))
                     {
-                        targetJob = configuration.General.GatheringJob;
-                        if (acceptableJobs.Contains(targetJob))
-                            acceptableJobs = [.. acceptableJobs.Prepend(targetJob)];
+                        candidate = configuration.General.GatheringJob;
+                        if (acceptableJobs.Contains(candidate))
+                            acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
                         else
-                            logger.LogInformation("Gathering quest, but configured job {GatheringJob} is not valid for {QuestId}, changing to {AcceptableJob}",
-                                targetJob, Task.Quest.Id, acceptableJobs[0]);
+                            logger.LogInformation("Gathering quest, but configured job {GatheringJob} is not valid for {QuestId}",
+                                candidate, Task.Quest.Id);
                     }
-                    if (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu))
-                    {
-                        if (configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsCrafter())
-                            acceptableJobs = [.. acceptableJobs.Prepend(targetJob)];
-                        else if (!configuration.Advanced.NamazuPreferCraft && !acceptableJobs[0].IsGatherer())
-                            acceptableJobs = [.. acceptableJobs.Prepend(targetJob)];
-                    }
-                    targetJob = acceptableJobs[0];
-                    if (classJobUtils.ClassToJobStone(targetJob) is (Job job, ushort item))
+                    if (acceptableJobs.Count == 0)
+                        throw new Exception(JobGearsetError(firstItem.ToFriendlyString(), Task.Quest.Info.Name));
+                    if (classJobUtils.ClassToJobStone(candidate) is (Job job, ushort item))
                     {
                         _unequipItem = item;
                         logger.LogInformation("Current job {ClassJob} is not valid for {QuestId}, changing to {AcceptableJob} via {MiddleJob}",
-                            playerJob, Task.Quest.Id, targetJob, job);
-                        targetJob = job;
+                            playerJob, Task.Quest.Id, candidate, job);
+                        candidate = job;
                     }
 
-                    if (!classJobUtils.SwitchClassJob(targetJob))
-                    {
-                        chatGui.PrintError(_LF(
-                            "Quest {0} requires a job like {1}, but you do not have a gearset for this job or have not configured QST job preferences.",
-                            Task.Quest.Info.Name, targetJob));
-                        _reportedWrongJob = true;
-                    }
-                    logger.LogInformation($"Switched from {playerJob} to {targetJob}");
+                    if (!classJobUtils.SwitchClassJob(candidate) && !_reportedWrongJob)
+                        throw new Exception(JobGearsetError(candidate.ToFriendlyString(), Task.Quest.Info.Name));
+                    logger.LogInformation($"Switched from {playerJob} to {candidate}");
 
                     _continueAt = DateTime.Now.AddSeconds(0.2);
                     return ETaskResult.StillRunning;
