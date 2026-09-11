@@ -6125,4 +6125,12 @@
     <Key>_JobGearsetError</Key>
     <Value lang="en">QST tried to find a gearset for a job like {0} to continue {1}, but no matching gearset was found. It may be fixed by manually updating the current gearset in Character, or equipping a missing job stone. Please report this error in Discord</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <Key>Don't pick up "My Feisty Little Chocobo"</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <Key>'My Feisty Little Chocobo' enables using your companion chocobo for overworld battles, and is completed automatically after 'My Little Chocobo' unless this is ticked.</Key>
+  </Entry>
 </I18N>
