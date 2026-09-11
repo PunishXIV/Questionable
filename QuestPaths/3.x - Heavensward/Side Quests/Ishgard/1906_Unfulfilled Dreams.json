@@ -1,0 +1,110 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Fronti",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1012170,
+          "Position": {
+            "X": 102.931,
+            "Y": 3.65085,
+            "Z": 65.5858
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1014728,
+          "Position": {
+            "X": 103.25781,
+            "Y": 3.5978973,
+            "Z": 48.752563
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            {
+              "High": 8
+            }
+          ]
+        },
+        {
+          "DataId": 2006254,
+          "Position": {
+            "X": 33.951294,
+            "Y": -12.008911,
+            "Z": 29.129395
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1012170,
+          "Position": {
+            "X": 102.92212,
+            "Y": 3.6299734,
+            "Z": 65.56799
+          },
+          "TerritoryId": 418,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2006255,
+          "Position": {
+            "X": -586.1448,
+            "Y": -165.9419,
+            "Z": 607.5073
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1012170,
+          "Position": {
+            "X": 102.931,
+            "Y": 3.65085,
+            "Z": 65.5858
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ]
+        }
+      ]
+    }
+  ]
+}
