@@ -631,6 +631,9 @@ internal sealed unsafe class QuestFunctions
 
             if (!configuration.Advanced.SkipCrystalTowerRaids)
                 priorityQuests.AddRange(QuestData.CrystalTowerQuests);
+
+            if (!configuration.Advanced.SkipFeistyLittleChocobo)
+                priorityQuests.Add(new QuestId(1162));
         }
 
         if (!configuration.Advanced.SkipClassJobQuests)

@@ -301,6 +301,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool SkipClassJobQuests { get; set; }
         public bool SkipARealmRebornHardModePrimals { get; set; }
         public bool SkipCrystalTowerRaids { get; set; }
+        public bool SkipFeistyLittleChocobo { get; set; }
         public bool PreventQuestCompletion { get; set; }
         public bool AbandonQuestBeforeCompletion { get; set; }
         public bool RemoveFromPriorityWhenAbandoned { get; set; }

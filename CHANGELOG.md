@@ -1,1 +1,1 @@
-- Bug fix: Reworked job switching logic to hopefully fix "Index was out of range." error. Please report issues in discord. -alydev
+- Change: added 'My Feisty Little Chocobo' to automatic quest after 'My Little Chocobo' -alydev

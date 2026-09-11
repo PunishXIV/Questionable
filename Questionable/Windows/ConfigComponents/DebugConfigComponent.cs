@@ -314,6 +314,16 @@ internal sealed class DebugConfigComponent
                 ImGui.SameLine();
                 ImGuiComponents.HelpMarker(_L("Crystal Tower raids are required for the Patch 2.55 quest 'A Time to Every Purpose' and to start Heavensward."));
 
+                bool skipFeistyLittleChocobo = Configuration.Advanced.SkipFeistyLittleChocobo;
+                if (ImGui.Checkbox(_L("Don't pick up \"My Feisty Little Chocobo\""), ref skipFeistyLittleChocobo))
+                {
+                    Configuration.Advanced.SkipFeistyLittleChocobo = skipFeistyLittleChocobo;
+                    Save();
+                }
+
+                ImGui.SameLine();
+                ImGuiComponents.HelpMarker(_L("'My Feisty Little Chocobo' enables using your companion chocobo for overworld battles, and is completed automatically after 'My Little Chocobo' unless this is ticked."));
+
                 bool preventQuestCompletion = Configuration.Advanced.PreventQuestCompletion;
                 if (ImGui.Checkbox(_L("Prevent quest completion"), ref preventQuestCompletion))
                 {
