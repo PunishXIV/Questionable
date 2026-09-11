@@ -1,10 +1,14 @@
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
+using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
 [RegisterSingleton]
-internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogger<NavmeshIpc> logger)
+internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogger<NavmeshIpc> logger) : Ipc
 {
+    public override string InternalName => "vnavmesh";
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && _isNavReady.InvokeFunc(), fallback: false);
     private readonly ICallGateSubscriber<float> _buildProgress = pluginInterface.GetIpcSubscriber<float>("vnavmesh.Nav.BuildProgress");
     private readonly ICallGateSubscriber<bool> _isNavReady = pluginInterface.GetIpcSubscriber<bool>("vnavmesh.Nav.IsReady");
     private readonly ICallGateSubscriber<Vector3, Vector3, bool, CancellationToken, Task<List<Vector3>>> _navPathfind =
@@ -33,8 +37,6 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
             return plugin?.Version ?? null;
         }
     }
-
-    public bool IsReady => IpcInvoke.SafeFunc(() => _isNavReady.InvokeFunc(), fallback: false);
 
     public bool IsPathRunning => IpcInvoke.SafeFunc(() => _pathIsRunning.InvokeFunc(), fallback: false);
 
@@ -77,7 +79,7 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
 
     public bool SimplePathfindAndMoveTo(Vector3 destination, bool fly)
     {
-        if (!IsReady)
+        if (!IsReady())
             return false;
         return IpcInvoke.SafeFunc(() => _simpleMovePathfindAndMoveTo.InvokeFunc(destination, fly), fallback: false,
             logger, "Could not SimplePathfindAndMoveTo {Version}", Version);
@@ -85,7 +87,7 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
 
     public bool SimplePathfindAndMoveCloseTo(Vector3 destination, bool fly, float range)
     {
-        if (!IsReady)
+        if (!IsReady())
             return false;
         return IpcInvoke.SafeFunc(() => _simpleMovePathfindAndMoveCloseTo.InvokeFunc(destination, fly, range), fallback: false,
             logger, "Could not SimplePathfindAndMoveCloseTo {Version}", Version);

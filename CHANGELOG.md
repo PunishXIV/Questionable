@@ -1,1 +1,1 @@
-- Feature: Random chocobo name if not set -alydev
+- Feature: Journal Progress > Item Rewards renamed to Unlocks, added Aetheryte unlock quest list -alydev

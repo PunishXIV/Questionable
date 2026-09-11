@@ -5,8 +5,11 @@ using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
 [RegisterSingleton]
-internal sealed class MogmailIpc(IDalamudPluginInterface pluginInterface, ILogger<MogmailIpc> logger)
+internal sealed class MogmailIpc(IDalamudPluginInterface pluginInterface, ILogger<MogmailIpc> logger) : Ipc
 {
+    public override string InternalName => "Mogmail";
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && !_isBusy.InvokeFunc(), fallback: false);
     private readonly ICallGateSubscriber<bool> _isAvailable = pluginInterface.GetIpcSubscriber<bool>("Mogmail.IsAvailable");
     private readonly ICallGateSubscriber<bool> _isBusy = pluginInterface.GetIpcSubscriber<bool>("Mogmail.IsBusy");
     private readonly ICallGateSubscriber<bool> _claimAll = pluginInterface.GetIpcSubscriber<bool>("Mogmail.ClaimAll");

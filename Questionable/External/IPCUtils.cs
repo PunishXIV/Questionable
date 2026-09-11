@@ -6,13 +6,11 @@ internal interface IPCUtils
     {
         internal static bool IsInstalled(string pluginName) => DalamudReflector.TryGetDalamudPlugin(pluginName, out object _, suppressErrors: false, ignoreCache: true);
 
-        internal static Version Version(string pluginName)
+        internal static Version? Version(string pluginName)
         {
-            Version _version;
+            Version? _version = null;
             if (DalamudReflector.TryGetDalamudPlugin(pluginName, out object? dalamudPlugin, suppressErrors: false, ignoreCache: true))
-                _version = dalamudPlugin.GetType().Assembly.GetName().Version ?? new Version(0, 0, 0, 0);
-            else
-                _version = new(0, 0, 0, 0);
+                _version = dalamudPlugin.GetType().Assembly.GetName().Version;
             return _version;
         }
 

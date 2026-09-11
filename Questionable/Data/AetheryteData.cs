@@ -56,8 +56,9 @@ internal sealed class AetheryteData : IAetheryteTerritoryProvider
             .ToList();
     }
 
-    public ReadOnlyDictionary<EAetheryteLocation, Vector3> Locations { get; } =
-        new Dictionary<EAetheryteLocation, Vector3>
+    public ReadOnlyDictionary<EAetheryteLocation, Vector3> Locations { get; } = OrderedLocations.AsReadOnly<EAetheryteLocation, Vector3>();
+    public static OrderedDictionary<EAetheryteLocation, Vector3> OrderedLocations { get; } =
+        new OrderedDictionary<EAetheryteLocation, Vector3>
             {
                 { EAetheryteLocation.Gridania, new(32.913696f, 2.670288f, 30.014404f) },
                 { EAetheryteLocation.GridaniaArcher, new(166.58276f, -1.7243042f, 86.13721f) },
@@ -316,8 +317,18 @@ internal sealed class AetheryteData : IAetheryteTerritoryProvider
                 { EAetheryteLocation.LivingMemoryLeynodeMnemo, new(-0.22894287f, 57.175537f, 796.9634f) },
                 { EAetheryteLocation.LivingMemoryLeynodePyro, new(657.98413f, 28.976807f, -284.01617f) },
                 { EAetheryteLocation.LivingMemoryLeynodeAero, new(-255.26825f, 59.433838f, -397.6654f) }
-            }
-            .AsReadOnly();
+            };
+    public static List<EAetheryteLocation> Aetherytes
+    {
+        get
+        {
+            var a = OrderedLocations.Keys.ToList();
+            foreach (var b in Enum.GetValues<EAetheryteLocation>())
+                if (!a.Contains(b))
+                    a.Add(b);
+            return a;
+        }
+    }
 
     /// <summary>
     ///     Airship landings are special as they're one-way only (except for Radz-at-Han, which is a normal aetheryte).

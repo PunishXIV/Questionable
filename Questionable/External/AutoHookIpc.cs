@@ -1,9 +1,15 @@
 #pragma warning disable CS0649 // Field is never assigned to, and will always have its default value
+using static Questionable.External.IPCUtils;
+
 namespace Questionable.External;
 
 [RegisterSingleton<IAutoHookIpc, AutoHookIpc>]
-internal sealed class AutoHookIpc : IAutoHookIpc
+internal sealed class AutoHookIpc : Ipc, IAutoHookIpc
 {
+    public override string InternalName => "AutoHook";
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && _isPluginEnabled(), fallback: false);
+
     private readonly ILogger<AutoHookIpc> _logger;
 
     [EzIPC("GetPluginState")] private readonly Func<bool> _isPluginEnabled;

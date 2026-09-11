@@ -1,6 +1,7 @@
 ﻿using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using Questionable.Model.Questing;
+using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
 [RegisterSingleton]
@@ -9,8 +10,12 @@ internal sealed class AutoDutyIpc
     IDalamudPluginInterface pluginInterface,
     Configuration configuration,
     TerritoryData territoryData,
-    ILogger<AutoDutyIpc> logger)
+    ILogger<AutoDutyIpc> logger) : Ipc
 {
+    public override string InternalName => "AutoDuty";
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && !_isStopped.InvokeFunc(), fallback: false);
+
     [Flags]
     public enum DutyMode : int
     {
