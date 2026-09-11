@@ -43,6 +43,10 @@
           },
           "TerritoryId": 128,
           "InteractionType": "PurchaseItem",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ],
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
             "Key": 262174

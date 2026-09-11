@@ -25,6 +25,10 @@
           }
         },
         {
+          "TerritoryId": 133,
+          "InteractionType": "UpdateGearset"
+        },
+        {
           "DataId": 1006756,
           "Position": {
             "X": -16.891846,

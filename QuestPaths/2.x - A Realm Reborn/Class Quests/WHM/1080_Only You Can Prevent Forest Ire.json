@@ -61,6 +61,10 @@
           "ItemId": 4547
         },
         {
+          "TerritoryId": 153,
+          "InteractionType": "UpdateGearset"
+        },
+        {
           "DataId": 1006751,
           "Position": {
             "X": -139.45221,

@@ -11,7 +11,12 @@
           "TerritoryId": 137,
           "InteractionType": "EquipItem",
           "ItemId": 4544,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {"AetheryteShortcutIf": {"ExtraCondition": "CostaDelSol"}}
+        },
+        {
+          "TerritoryId": 137,
+          "InteractionType": "UpdateGearset"
         },
         {
           "DataId": 1006746,
