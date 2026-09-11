@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-09-09"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -142,7 +142,7 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Comment": "Attack some mobs with Smash Axe until level 2, use Capture on a Ground Squirrel nearby, then travel to Middle La Noscea and use Capture on a Lost Lamb.",
+          "Comment": "* Attack nearby Lv1 mobs with Smash Axe until level 2\n* Use Capture on a Ground Squirrel nearby\n* Travel to Middle La Noscea and use Capture on a Lost Lamb.\n* The next quest after this requires Lv16 to complete. You can reach this by capturing other nearby creatures, although on a non-preferred world you may need to do some grinding to be able to reach the minimum level to capture each one:\n - Pugil, Puk Hatchling, Bogy, Tiny Mandragora, Wounded Aurochs\n* Go through the cave to the south, capture:\n - Cave Bat, Wild Dodo, Galago, Nesting Buzzard, Rivertoad\n* On a preferred world, this will get you to Lv10. Return to Middle La Noscea, head north, and capture:\n - Megalocrab, Wespe\n* Return to Bentbranch Meadows, capture:\n - Roselet, Black Eft, Anole, Diremite, Treant Sapling\n* On a preferred world, you should be at or near Lv16. If you need more exp, travel to Horizon and capture:\n - Sabotender (near Ul'dah gate), Rusty Coblyn, Thickshell, Scaphite\n* Travel to Central Thanalan, capture:\n - Spriggan Graverobber\n* If you've reached Lv16, you may also want to travel to Aleport and capture:\n - Killer Mantis, Rothlyt Pelican\n* At this point you have 27/50 of the Bestiary complete and should be around Lv16-17.",
           "DataId": 1059323,
           "Position": {
             "X": 119.923,
