@@ -56,6 +56,7 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
     {
         _questJournalComponent.RefreshCounts();
         _gatheringJournalComponent.RefreshCounts();
+        _questRewardComponent.RefreshCounts();
     }
 
     public override void OnOpen()

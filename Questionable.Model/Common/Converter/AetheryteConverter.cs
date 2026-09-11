@@ -3,7 +3,7 @@ namespace Questionable.Model.Common.Converter;
 
 public sealed class AetheryteConverter() : EnumConverter<EAetheryteLocation>(Values, shard: false)
 {
-    private static readonly Dictionary<EAetheryteLocation, string> Values = new()
+    public static readonly Dictionary<EAetheryteLocation, string> Values = new()
     {
         { EAetheryteLocation.Gridania, "Gridania" },
         { EAetheryteLocation.CentralShroudBentbranchMeadows, "Central Shroud - Bentbranch Meadows" },
