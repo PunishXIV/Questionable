@@ -1,11 +1,19 @@
 ﻿using System.Collections.Immutable;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
+using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
 [RegisterSingleton]
-internal sealed class PandorasBoxIpc : IDisposable
+internal sealed class PandorasBoxIpc : Ipc, IDisposable
 {
+    public override string InternalName => "PandorasBox";
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() =>
+        {
+            var _ = _getFeatureEnabled.InvokeFunc(ConflictingFeatures.First()) != null;
+            return GetVersion() != null && _getFeatureEnabled.InvokeFunc(ConflictingFeatures.First()) != null;
+        }, fallback: false);
     private static readonly ImmutableHashSet<string> ConflictingFeatures = new HashSet<string>
     {
         // Actions

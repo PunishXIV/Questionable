@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using Dalamud.Plugin.Ipc;
 using Questionable.Model.Common;
+using static Questionable.External.IPCUtils;
 
 namespace Questionable.External;
 
@@ -9,8 +10,15 @@ internal sealed class RotationSolverRebornIpc(
     IDalamudPluginInterface pluginInterface,
     Configuration configuration,
     ILogger<RotationSolverRebornIpc> logger,
-    IFramework framework)
+    IFramework framework) : Ipc
 {
+    public override string InternalName => "RotationSolverReborn";
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() => 
+        {
+            var _ = Test.InvokeFunc("Validate RSR is callable from Questionable");
+            return GetVersion() != null;
+        }, fallback: false);
     private readonly ICallGateSubscriber<StateCommandType, object> ChangeOperatingMode =
         pluginInterface.GetIpcSubscriber<StateCommandType, object>("RotationSolverReborn.ChangeOperatingMode");
     private readonly ICallGateSubscriber<string, object> Test =

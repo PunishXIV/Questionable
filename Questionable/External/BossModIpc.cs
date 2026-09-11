@@ -10,8 +10,15 @@ internal sealed class BossModIpc
     IDalamudPluginInterface pluginInterface,
     Configuration configuration,
     TerritoryData territoryData,
-    ICommandManager commandManager)
+    ICommandManager commandManager) : Ipc
 {
+    public override string InternalName => PluginName;
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() => 
+        {
+            var _ = _getActivePreset.InvokeFunc();
+            return GetVersion() != null;
+        }, fallback: false);
     public enum EPreset
     {
         Overworld,

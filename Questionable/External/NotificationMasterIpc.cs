@@ -1,10 +1,14 @@
 ﻿using NotificationMasterAPI;
+using static Questionable.External.IPCUtils;
 
 namespace Questionable.External;
 
 [RegisterSingleton]
-internal sealed class NotificationMasterIpc(IDalamudPluginInterface pluginInterface, Configuration configuration)
+internal sealed class NotificationMasterIpc(IDalamudPluginInterface pluginInterface, Configuration configuration) : Ipc
 {
+    public override string InternalName => "vnavmesh";
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && Enabled, fallback: false);
     private readonly NotificationMasterApi _api = new(pluginInterface);
 
     public bool Enabled => _api.IsIPCReady();

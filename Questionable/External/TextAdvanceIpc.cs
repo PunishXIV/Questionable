@@ -1,9 +1,17 @@
 ﻿using Dalamud.Plugin.Ipc;
+using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
 [RegisterSingleton]
-internal sealed class TextAdvanceIpc : IDisposable
+internal sealed class TextAdvanceIpc : Ipc, IDisposable
 {
+    public override string InternalName => "TextAdvance";
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() =>
+        {
+            var _ = _isInExternalControl.InvokeFunc();
+            return GetVersion() != null;
+        }, fallback: false);
     private readonly Configuration _configuration;
     private readonly ICallGateSubscriber<string, bool> _disableExternalControl;
     private readonly ICallGateSubscriber<string, ExternalTerritoryConfig, bool> _enableExternalControl;

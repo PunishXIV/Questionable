@@ -42,7 +42,7 @@ internal sealed class MovementController
         {
             try
             {
-                return navmeshIpc.IsReady;
+                return navmeshIpc.IsReady();
             }
             catch (IpcNotReadyError)
             {

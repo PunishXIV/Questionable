@@ -3,8 +3,15 @@
 namespace Questionable.External;
 
 [RegisterSingleton]
-internal sealed class YesAlreadyIpc : IDisposable
+internal sealed class YesAlreadyIpc : Ipc, IDisposable
 {
+    public override string InternalName => "YesAlready";
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override bool IsReady() => IpcInvoke.SafeFunc(() =>
+        {
+            var _ = IsPluginEnabled;
+            return GetVersion() != null;
+        }, fallback: false);
     private static readonly EzIPCDisposalToken[] _disposalTokens = EzIPC.Init(typeof(YesAlreadyIpc), "YesAlready", SafeWrapper.IPCException);
     [EzIPC("IsPluginEnabled")] public static readonly Func<bool> IsPluginEnabled;
     [EzIPC("SetPluginEnabled")] private static readonly Action<bool> SetPluginEnabled;
