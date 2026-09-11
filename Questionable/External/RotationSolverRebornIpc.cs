@@ -14,7 +14,7 @@ internal sealed class RotationSolverRebornIpc(
 {
     public override string InternalName => "RotationSolverReborn";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
-    public override bool IsReady() => IpcInvoke.SafeFunc(() => 
+    public override bool IsReady() => IpcInvoke.SafeFunc(() =>
         {
             var _ = Test.InvokeFunc("Validate RSR is callable from Questionable");
             return GetVersion() != null;

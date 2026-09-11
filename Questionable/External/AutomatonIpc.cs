@@ -8,7 +8,7 @@ internal sealed class AutomatonIpc : Ipc
 {
     public override string InternalName => "Automaton";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
-    public override bool IsReady() => IpcInvoke.SafeFunc(() => 
+    public override bool IsReady() => IpcInvoke.SafeFunc(() =>
         {
             var _ = _isTweakEnabled.InvokeFunc(AutoSnipeTweak);
             return GetVersion() != null;

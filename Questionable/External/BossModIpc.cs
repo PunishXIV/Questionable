@@ -14,7 +14,7 @@ internal sealed class BossModIpc
 {
     public override string InternalName => PluginName;
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
-    public override bool IsReady() => IpcInvoke.SafeFunc(() => 
+    public override bool IsReady() => IpcInvoke.SafeFunc(() =>
         {
             var _ = _getActivePreset.InvokeFunc();
             return GetVersion() != null;
