@@ -1,1 +1,2 @@
 - Feature: Journal Progress > Item Rewards renamed to Unlocks, added Aetheryte unlock quest list -alydev
+  - Feature: added Hide unlocked items checkbox to Unlocks view -alydev
