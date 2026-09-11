@@ -7,6 +7,70 @@
       "Sequence": 0,
       "Steps": [
         {
+          "TerritoryId": 135,
+          "InteractionType": "UseItem",
+          "ItemId": 52649,
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipItem",
+          "ItemId": 47470,
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipItem",
+          "ItemId": 47472,
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipItem",
+          "ItemId": 50727,
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipItem",
+          "ItemId": 50728,
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipItem",
+          "ItemId": 50729,
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipItem",
+          "ItemId": 50730,
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipItem",
+          "ItemId": 50731,
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "UseItem",
+          "ItemId": 49805,
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "EquipRecommended",
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "CreateGearset",
+          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+        },
+        {
           "DataId": 1059767,
           "Position": {
             "X": -302.822,
