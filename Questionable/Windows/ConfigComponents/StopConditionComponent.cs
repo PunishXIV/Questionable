@@ -1,5 +1,6 @@
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
+using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility.Raii;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Model.Questing;
@@ -97,6 +98,9 @@ internal sealed class StopConditionComponent : ConfigComponent
 
         ImGui.Separator();
 
+        if (!enabled)
+            ImGui.PushStyleColor(ImGuiCol.Text, ImGuiColors.DalamudGrey);
+
         // Level stop condition section
         ImGui.Text(_L("Stop when character level reaches:"));
 
@@ -151,6 +155,9 @@ internal sealed class StopConditionComponent : ConfigComponent
             _acceptQuestSelector,
             Configuration.Stop.QuestsToStopWhenAccepted,
             () => Configuration.Stop.QuestsToStopWhenAccepted.Clear());
+
+        if (!enabled)
+            ImGui.PopStyleColor();
     }
 
     private void DrawQuestStopSection(string label, string sectionId, QuestSelector selector, List<ElementId> quests,
