@@ -26,12 +26,12 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Comment": "Perform these actions twice:\nAttack until both gauges have over 100 points. Use Trick, then use Avalanche Axe",
+          "Comment": "Perform these actions twice:\nUse First Battlehorn\nAttack until both gauges have over 100 points\nUse Trick, then use Avalanche Axe",
           "DataId": 1059323,
           "Position": {
-            "X": 107.636,
-            "Y": 20.557869,
-            "Z": -75.573
+            "X": 127.99964,
+            "Y": -6.9535503,
+            "Z": -84.869156
           },
           "TerritoryId": 148,
           "InteractionType": "WaitForManualProgress",
@@ -76,6 +76,7 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
+          "StopDistance": 5,
           "Fly": true,
           "$": "auto: todo location -> 1059325 (J'yhuh Tia)"
         }
@@ -109,7 +110,8 @@
             "Z": 326.131
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
+          "InteractionType": "WaitForManualProgress",
+          "Comment": "Go into the crypt below, capture Geshunpest, assign to Second Battlehorn, summon, then interact with J'yhuh Tia",
           "$": "auto: todo location -> 1059327 (J'yhuh Tia)"
         }
       ]
@@ -137,9 +139,9 @@
           "Comment": "WIP",
           "DataId": 1059323,
           "Position": {
-            "X": 107.636,
-            "Y": 20.557869,
-            "Z": -75.573
+            "X": 119.920654,
+            "Y": -7.003505,
+            "Z": -87.48004
           },
           "TerritoryId": 148,
           "InteractionType": "WaitForManualProgress",

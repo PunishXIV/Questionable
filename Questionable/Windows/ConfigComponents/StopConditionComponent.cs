@@ -97,66 +97,60 @@ internal sealed class StopConditionComponent : ConfigComponent
 
         ImGui.Separator();
 
-        using (ImRaii.Disabled(!enabled))
+        // Level stop condition section
+        ImGui.Text(_L("Stop when character level reaches:"));
+
+        bool levelToStopAfter = Configuration.Stop.LevelToStopAfter;
+        if (ImGui.Checkbox(_L("Enable level stop condition"), ref levelToStopAfter))
         {
-            // Level stop condition section
-            ImGui.Text(_L("Stop when character level reaches:"));
-
-            bool levelToStopAfter = Configuration.Stop.LevelToStopAfter;
-            if (ImGui.Checkbox(_L("Enable level stop condition"), ref levelToStopAfter))
-            {
-                Configuration.Stop.LevelToStopAfter = levelToStopAfter;
-                Save();
-            }
-
-            using (ImRaii.Disabled(!levelToStopAfter))
-            {
-                int targetLevel = Configuration.Stop.TargetLevel;
-                ImGui.SetNextItemWidth(100);
-                if (ImGui.InputInt(_L("Stop at level"), ref targetLevel, 1, 5))
-                {
-                    Configuration.Stop.TargetLevel = Math.Max(1, Math.Min(100, targetLevel));
-                    Save();
-                }
-
-                // Show current level for reference
-                unsafe
-                {
-                    PlayerState* playerState = PlayerState.Instance();
-                    short currentLevel = playerState->CurrentLevel;
-                    if (currentLevel > 0)
-                    {
-                        ImGui.SameLine();
-                        ImGui.TextDisabled(_LF("(Current: {0})", currentLevel));
-                    }
-                }
-            }
-
-            ImGui.Separator();
-
-            bool removeWhenCompleteConditionMet = Configuration.Stop.RemoveWhenCompleteConditionMet;
-            if (ImGui.Checkbox(_L("Remove from list after complete"), ref removeWhenCompleteConditionMet))
-            {
-                Configuration.Stop.RemoveWhenCompleteConditionMet = removeWhenCompleteConditionMet;
-                Save();
-            }
-
-            DrawQuestStopSection(
-                _L("Stop when completing any of the quests selected below:"),
-                "Complete",
-                _completeQuestSelector,
-                Configuration.Stop.QuestsToStopAfter,
-                () => Configuration.Stop.QuestsToStopAfter.Clear());
-
-            ImGui.Separator();
-
-            DrawQuestStopSection(
-                _L("Stop when accepting any of the quests selected below:"),
-                "Accept",
-                _acceptQuestSelector,
-                Configuration.Stop.QuestsToStopWhenAccepted,
-                () => Configuration.Stop.QuestsToStopWhenAccepted.Clear());
+            Configuration.Stop.LevelToStopAfter = levelToStopAfter;
+            Save();
         }
+
+        int targetLevel = Configuration.Stop.TargetLevel;
+        ImGui.SetNextItemWidth(100);
+        if (ImGui.InputInt(_L("Stop at level"), ref targetLevel, 1, 5))
+        {
+            Configuration.Stop.TargetLevel = Math.Max(1, Math.Min(100, targetLevel));
+            Save();
+        }
+
+        // Show current level for reference
+        unsafe
+        {
+            PlayerState* playerState = PlayerState.Instance();
+            short currentLevel = playerState->CurrentLevel;
+            if (currentLevel > 0)
+            {
+                ImGui.SameLine();
+                ImGui.TextDisabled(_LF("(Current: {0})", currentLevel));
+            }
+        }
+
+        ImGui.Separator();
+
+        bool removeWhenCompleteConditionMet = Configuration.Stop.RemoveWhenCompleteConditionMet;
+        if (ImGui.Checkbox(_L("Remove from list after complete"), ref removeWhenCompleteConditionMet))
+        {
+            Configuration.Stop.RemoveWhenCompleteConditionMet = removeWhenCompleteConditionMet;
+            Save();
+        }
+
+        DrawQuestStopSection(
+            _L("Stop when completing any of the quests selected below:"),
+            "Complete",
+            _completeQuestSelector,
+            Configuration.Stop.QuestsToStopAfter,
+            () => Configuration.Stop.QuestsToStopAfter.Clear());
+
+        ImGui.Separator();
+
+        DrawQuestStopSection(
+            _L("Stop when accepting any of the quests selected below:"),
+            "Accept",
+            _acceptQuestSelector,
+            Configuration.Stop.QuestsToStopWhenAccepted,
+            () => Configuration.Stop.QuestsToStopWhenAccepted.Clear());
     }
 
     private void DrawQuestStopSection(string label, string sectionId, QuestSelector selector, List<ElementId> quests,
