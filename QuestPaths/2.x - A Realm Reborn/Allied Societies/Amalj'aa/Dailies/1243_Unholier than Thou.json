@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-09-04"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -22,55 +22,8 @@
     },
     {
       "Sequence": 1,
-      "$": "Yeah look idk it wasn't working unless i copied the same step multiple times",
       "Comment": "QST really struggles with enemies spread out so far\nPlease use reload data/skip if you get stuck",
       "Steps": [
-        {
-          "Position": {
-            "X": 112.794685,
-            "Y": 15.870176,
-            "Z": 12.528458
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Combat",
-          "ComplexCombatData": [
-            {
-              "DataId": 740,
-              "NameId": 1839,
-              "MinimumKillCount": 1
-            },
-            {
-              "DataId": 742,
-              "NameId": 1840,
-              "MinimumKillCount": 1
-            }
-          ],
-          "EnemySpawnType": "OverworldEnemies",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 220.92955,
-            "Y": 7.53045,
-            "Z": -21.572783
-          },
-          "TerritoryId": 146,
-          "InteractionType": "Combat",
-          "ComplexCombatData": [
-            {
-              "DataId": 740,
-              "NameId": 1839,
-              "MinimumKillCount": 1
-            },
-            {
-              "DataId": 742,
-              "NameId": 1840,
-              "MinimumKillCount": 1
-            }
-          ],
-          "EnemySpawnType": "OverworldEnemies",
-          "Fly": true
-        },
         {
           "Position": {
             "X": 344.06277,
@@ -83,12 +36,14 @@
             {
               "DataId": 740,
               "NameId": 1839,
-              "MinimumKillCount": 1
+              "MinimumKillCount": 1,
+              "CompletionQuestVariablesFlags": [null,{"Low": 3},null,null,null,null]
             },
             {
               "DataId": 742,
               "NameId": 1840,
-              "MinimumKillCount": 1
+              "MinimumKillCount": 1,
+              "CompletionQuestVariablesFlags": [null,{"High": 3},null,null,null,null]
             }
           ],
           "EnemySpawnType": "OverworldEnemies",
