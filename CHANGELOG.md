@@ -1,1 +1,1 @@
-- Change: allow changing Stop condition settings while they aren't active -alydev
+- Change: Comment field becomes scrollable if more than 5 lines -alydev

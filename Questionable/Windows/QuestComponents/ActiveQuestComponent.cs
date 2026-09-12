@@ -94,8 +94,29 @@ internal sealed partial class ActiveQuestComponent
                     };
                     using ImRaii.ColorDisposable color =
                         ImRaii.PushColor(ImGuiCol.Text, manualStep ? QstTheme.Accent : QstTheme.TextMuted);
-                    using ImRaii.TextWrapDisposable wrap = ImRaii.TextWrapPos(0);
-                    ImGui.TextUnformatted(comment);
+
+                    const int maxInlineLines = 5;
+                    float wrapWidth = ImGui.GetContentRegionAvail().X;
+                    float lineHeight = ImGui.GetTextLineHeight();
+                    Vector2 textSize = ImGui.CalcTextSize(comment, hideTextAfterDoubleHash: false, wrapWidth);
+                    int lineCount = Math.Max(1, (int)MathF.Round(textSize.Y / lineHeight, MidpointRounding.ToEven));
+
+                    if (lineCount > maxInlineLines)
+                    {
+                        float childHeight = ImGui.GetTextLineHeightWithSpacing() * maxInlineLines;
+                        using ImRaii.ChildDisposable child =
+                            ImRaii.Child("##questComment", new Vector2(0, childHeight), border: true);
+                        if (child)
+                        {
+                            using ImRaii.TextWrapDisposable wrap = ImRaii.TextWrapPos(0);
+                            ImGui.TextUnformatted(comment);
+                        }
+                    }
+                    else
+                    {
+                        using ImRaii.TextWrapDisposable wrap = ImRaii.TextWrapPos(0);
+                        ImGui.TextUnformatted(comment);
+                    }
                 }
 
                 if (!isMinimized)
