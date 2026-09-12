@@ -8,14 +8,19 @@
       "Steps": [
         {
           "TerritoryId": 135,
-          "InteractionType": "UseItem",
-          "ItemId": 52649,
+          "InteractionType": "EquipItem",
+          "ItemId": 47470,
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
         },
         {
           "TerritoryId": 135,
-          "InteractionType": "EquipItem",
-          "ItemId": 47470,
+          "InteractionType": "CreateGearset",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "TerritoryId": 135,
+          "InteractionType": "UseItem",
+          "ItemId": 52649,
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
         },
         {
@@ -67,8 +72,8 @@
         },
         {
           "TerritoryId": 135,
-          "InteractionType": "CreateGearset",
-          "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
+          "InteractionType": "UpdateGearset",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1059767,

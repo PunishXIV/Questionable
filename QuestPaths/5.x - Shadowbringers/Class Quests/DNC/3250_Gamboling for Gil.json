@@ -10,7 +10,6 @@
           "TerritoryId": 129,
           "InteractionType": "EquipItem",
           "ItemId": 27358,
-          "AetheryteShortcut": "Limsa Lominsa",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -114,7 +113,8 @@
             "Z": 195.94104
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa"
         }
       ]
     },

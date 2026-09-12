@@ -1,2 +1,1 @@
-- Change: added 'My Feisty Little Chocobo' to automatic quest after 'My Little Chocobo' -alydev
-- Change: added explanation to Crystal Tower Raids tooltip -alydev
+- Change: allow changing Stop condition settings while they aren't active -alydev

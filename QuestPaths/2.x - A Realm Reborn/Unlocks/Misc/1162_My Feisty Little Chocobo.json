@@ -130,6 +130,31 @@
       "Sequence": 255,
       "Steps": [
         {
+          "DataId": 1000220,
+          "Position": {
+            "X": 15.749301,
+            "Y": -8.011559,
+            "Z": -13.498969
+          },
+          "TerritoryId": 148,
+          "StopDistance": 1,
+          "InteractionType": "PurchaseItem",
+          "ItemId": 4868,
+          "ItemCount": 99,
+          "PurchaseMenu": {
+            "ExcelSheet": "GilShop",
+            "Key": 262773
+          },
+          "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "Item": {
+                "NotInInventory": false
+              }
+            }
+          }
+        },
+        {
           "DataId": 1000471,
           "Position": {
             "X": -60.471558,
