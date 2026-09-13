@@ -59,6 +59,7 @@ internal sealed class QuestRegistry
     public IEnumerable<Quest> AllQuests => _quests.Values;
     private CachedValue<int> _count = new(ttlSeconds: 1);
     public int Count => _count.Get(() => _quests.Count(x => !x.Value.Root.Disabled));
+    public bool ValidationRunning => _questValidator.Running;
     public int ValidationIssueCount => _questValidator.IssueCount;
     public int ValidationErrorCount => _questValidator.ErrorCount;
 
