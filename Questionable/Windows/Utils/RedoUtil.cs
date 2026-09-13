@@ -5,19 +5,58 @@ using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
+using Questionable.Model.Questing;
 using Sheets = Lumina.Excel.Sheets;
 namespace Questionable.Windows.Utils;
 
-[RegisterTransient]
+[RegisterSingleton]
 internal unsafe sealed class RedoUtil
 {
     internal readonly Dictionary<Sheets.QuestRedoChapterUI, RedoCache> RedoData = [];
     internal readonly AgentInterface* QuestRedoHud;
     private readonly IGameGuiAdapter _gameGui;
+    private readonly QuestFunctions _questFunctions;
+    private readonly QuestRegistry _questRegistry;
+    private readonly ILogger<RedoUtil> _logger;
+    private Domain.Quest? _unlockQuest;
+    private bool _warned;
+    // lazy-init + one-shot recovery log; not pure
+    internal Domain.Quest? UnlockQuest
+    {
+        get
+        {
+            if (_unlockQuest == null && !_questRegistry.TryGetQuest(new QuestId(3759), out _unlockQuest))
+            {
+                if (EzThrottler.Throttle("RedoUtil.UnlockQuest"))
+                {
+                    _logger.LogWarning("UnlockQuest could not be set, retrying on next frame");
+                }
+                _warned = true;
+                return null;
+            }
+            if (_warned)
+            {
+                _logger.LogDebug("UnlockQuest is now set");
+                _warned = false;
+            }
+            return _unlockQuest;
+        }
+    }
+    internal bool Disabled
+    {
+        get
+        {
+            var q = UnlockQuest;
+            return q == null || !_questFunctions.IsQuestComplete(q.Id);
+        }
+    }
 
-    public RedoUtil(IGameGuiAdapter gameGui)
+    public RedoUtil(IGameGuiAdapter gameGui, QuestRegistry questRegistry, QuestFunctions questFunctions, ILogger<RedoUtil> logger)
     {
         _gameGui = gameGui;
+        _questFunctions = questFunctions;
+        _questRegistry = questRegistry;
+        _logger = logger;
         QuestRedoHud = AgentModule.Instance()->GetAgentByInternalId(AgentId.QuestRedoHud);
         RedoData = [];
         Generate();
@@ -81,7 +120,10 @@ internal unsafe sealed class RedoUtil
         }
         if (IsRedoActive())
             chapterIndex = 0;
-        GameMain.ExecuteCommand((int)GameCommand.QuestRedo, chapterIndex ?? 0);
+        if (!Disabled)
+            GameMain.ExecuteCommand((int)GameCommand.QuestRedo, chapterIndex ?? 0);
+        else
+            _logger.LogWarning("Cowardly refusing to execute QuestRedo, UnlockQuest may not be complete");
     }
 
     internal bool IsRedoActive() => QuestRedoHud != null && QuestRedoHud->IsAgentActive() && TryGetActiveRedoChapter(out var _);
