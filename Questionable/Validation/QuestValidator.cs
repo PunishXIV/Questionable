@@ -22,6 +22,7 @@ internal sealed class QuestValidator
 
     public IReadOnlyList<ValidationIssue> Issues => _validationIssues;
     private CachedValue<int> _errorCount = new(ttlSeconds: 1);
+    public volatile bool Running;
     public int IssueCount => _validationIssues.Count;
     public int ErrorCount => _errorCount.Get(() => _validationIssues.Count(x => x.Severity == EIssueSeverity.Error));
 
@@ -38,6 +39,9 @@ internal sealed class QuestValidator
         {
             try
             {
+                if (Running)
+                    return;
+                Running = true;
                 _validationIssues.Clear();
 
                 List<ValidationIssue> issues = [];
@@ -92,6 +96,7 @@ internal sealed class QuestValidator
             {
                 _logger.LogError(e, "Unable to validate quests");
             }
+            Running = false;
         }, CancellationToken.None, TaskCreationOptions.LongRunning, TaskScheduler.Default);
     }
 
