@@ -1,0 +1,367 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.7262,
+            "Y": -0.9374562,
+            "Z": -62.21112
+          },
+          "TerritoryId": 154,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 126.385,
+            "Y": 50.844803,
+            "Z": -723.489
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "Fly": true,
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "$": "auto: todo location with no object - check what actually happens here"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.726,
+            "Y": -0.937455,
+            "Z": -62.1923
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: todo location -> 1003075 (Gerolt); hands over ITEM0=2000988"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.726,
+            "Y": -0.937455,
+            "Z": -62.1923
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: todo location -> 1003075 (Gerolt); npc trade"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.726,
+            "Y": -0.937455,
+            "Z": -62.1923
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: lua ACTOR0 -> 1003075 (Gerolt)"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.726,
+            "Y": -0.937455,
+            "Z": -62.1923
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: todo location -> 1003075 (Gerolt); hands over ITEM1=2000997"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 1001304,
+          "Position": {
+            "X": 25.5894,
+            "Y": 28.9768,
+            "Z": -825.376
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona",
+          "$": "auto: todo location -> 1001304 (Rowena)"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "Position": {
+            "X": -0.423301,
+            "Y": 78.202805,
+            "Z": -0.650272
+          },
+          "TerritoryId": 167,
+          "InteractionType": "WalkTo",
+          "$": "auto: todo location with no object - check what actually happens here"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1001304,
+          "Position": {
+            "X": 25.5894,
+            "Y": 28.9768,
+            "Z": -825.376
+          },
+          "TerritoryId": 156,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona",
+          "$": "auto: todo location -> 1001304 (Rowena); hands over ITEM2=2001006"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.726,
+            "Y": -0.937455,
+            "Z": -62.1923
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: todo location -> 1003075 (Gerolt); hands over ITEM3=2001015"
+        }
+      ]
+    },
+    {
+      "Sequence": 10,
+      "Steps": [
+        {
+          "DataId": 1008161,
+          "Position": {
+            "X": 110.141,
+            "Y": 51.5495,
+            "Z": -646.187
+          },
+          "TerritoryId": 180,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            756,
+            755,
+            757
+          ],
+          "$": "auto: lua overworld enemies -> 756, 755, 757"
+        }
+      ]
+    },
+    {
+      "Sequence": 11,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.726,
+            "Y": -0.937455,
+            "Z": -62.1923
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: todo location -> 1003075 (Gerolt)"
+        }
+      ]
+    },
+    {
+      "Sequence": 12,
+      "Steps": [
+        {
+          "DataId": 1008161,
+          "Position": {
+            "X": 447.657,
+            "Y": -0.636397,
+            "Z": -66.4825
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: lua ACTOR3 -> 1008161 (portly moogle)"
+        }
+      ]
+    },
+    {
+      "Sequence": 13,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.726,
+            "Y": -0.937455,
+            "Z": -62.1923
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: todo location -> 1003075 (Gerolt)"
+        }
+      ]
+    },
+    {
+      "Sequence": 14,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.726,
+            "Y": -0.937455,
+            "Z": -62.1923
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: todo location -> 1003075 (Gerolt); npc trade"
+        }
+      ]
+    },
+    {
+      "Sequence": 15,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.726,
+            "Y": -0.937455,
+            "Z": -62.1923
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: lua ACTOR0 -> 1003075 (Gerolt)"
+        }
+      ]
+    },
+    {
+      "Sequence": 16,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.726,
+            "Y": -0.937455,
+            "Z": -62.1923
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: lua ACTOR0 -> 1003075 (Gerolt)"
+        }
+      ]
+    },
+    {
+      "Sequence": 17,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.726,
+            "Y": -0.937455,
+            "Z": -62.1923
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: lua ACTOR0 -> 1003075 (Gerolt)"
+        }
+      ]
+    },
+    {
+      "Sequence": 18,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.726,
+            "Y": -0.937455,
+            "Z": -62.1923
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: todo location -> 1003075 (Gerolt); hands over ITEM4=2001024"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.726,
+            "Y": -0.937455,
+            "Z": -62.1923
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "$": "auto: todo turn-in -> 1003075 (Gerolt)"
+        }
+      ]
+    }
+  ]
+}
