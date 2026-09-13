@@ -314,30 +314,6 @@
           "Status": "Transparent"
         },
         {
-          "Position": {
-            "X": 37.71168,
-            "Y": 4.7303743,
-            "Z": 250.62769
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 37.71168,
-                  "Y": 4.7303743,
-                  "Z": 250.62769
-                },
-                "TerritoryId": 152,
-                "MaximumDistance": 10
-              }
-            }
-          }
-        },
-        {
           "DataId": 1005561,
           "Position": {
             "X": 47.01306,
@@ -347,6 +323,7 @@
           "TerritoryId": 152,
           "InteractionType": "CompleteQuest",
           "StopDistance": 1,
+          "Fly": true,
           "AetheryteShortcut": "East Shroud - Hawthorne Hut"
         }
       ]

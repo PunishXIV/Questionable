@@ -195,30 +195,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Comment": "Moving out of combat range",
-          "Position": {
-            "X": 45.215626,
-            "Y": -20.8526,
-            "Z": -510.42453
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 45.215626,
-                  "Y": -20.8526,
-                  "Z": -510.42453
-                },
-                "TerritoryId": 152,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 1005563,
           "Position": {
             "X": 48.874634,
