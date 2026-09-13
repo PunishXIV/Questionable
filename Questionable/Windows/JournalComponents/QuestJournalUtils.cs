@@ -318,7 +318,7 @@ internal sealed class QuestJournalUtils
         if (icon is FontAwesomeIcon.Check)
             iconOverride = questInfo.CompleteIcon;
         if (questInfo.IsRepeatable && iconOverride % 10 < 2)
-            iconOverride = iconOverride + (2 - iconOverride % 10);
+            iconOverride += (2 - iconOverride % 10);
         if (icon is FontAwesomeIcon.QuestionCircle)
             iconOverride = QuestionIcon;
         return iconOverride;
