@@ -324,11 +324,8 @@ internal sealed partial class ActiveQuestComponent
                 {
                     ImGui.SameLine();
                     QstWidgets.Chip($"{acceptedJob}", QstTheme.Accent);
-                    if (ImGui.IsItemHovered())
-                    {
-                        ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+                    if (ImGui.IsItemClicked())
                         classJobUtils.SwitchClassJob(acceptedJob);
-                    }
                     if (ImGui.IsItemHovered())
                         ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
                 }
