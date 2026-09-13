@@ -1,2 +1,1 @@
-- Change: Stop condition settings editable when disabled -alydev
-  - Change: Stop condition settings colour changed to grey when disabled (still editable, just makes it clearer that they're disabled) -alydev
+- Bug fix: mousing over quest accepted job pill triggered job change; fixed -alydev
