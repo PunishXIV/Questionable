@@ -8,9 +8,9 @@
         {
           "DataId": 1003075,
           "Position": {
-            "X": 440.7262,
-            "Y": -0.9374562,
-            "Z": -62.21112
+            "X": 440.60822,
+            "Y": -0.9374456,
+            "Z": -63.35452
           },
           "TerritoryId": 154,
           "InteractionType": "AcceptQuest",
@@ -42,9 +42,9 @@
         {
           "DataId": 1003075,
           "Position": {
-            "X": 440.7262,
-            "Y": -0.9374562,
-            "Z": -62.21112
+            "X": 440.60822,
+            "Y": -0.9374456,
+            "Z": -63.35452
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
@@ -59,21 +59,21 @@
         {
           "DataId": 1003075,
           "Position": {
-            "X": 440.7262,
-            "Y": -0.9374562,
-            "Z": -62.21112
+            "X": 440.60822,
+            "Y": -0.9374456,
+            "Z": -63.35452
           },
           "TerritoryId": 154,
           "Fly": true,
-          "InteractionType": "WaitForManualProgress",
-          "Comment": "Craft/purchase off marketboard an erudite's picatrix of healing and meld 2 grade 3 quicktongue materia to it."
+          "InteractionType": "Instruction",
+          "Comment": "Craft/purchase off marketboard an Erudite's Picatrix of Healing and meld 2 Quicktongue Materia III to it."
         },
         {
           "DataId": 1003075,
           "Position": {
-            "X": 440.7262,
-            "Y": -0.9374562,
-            "Z": -62.21112
+            "X": 440.60822,
+            "Y": -0.9374456,
+            "Z": -63.35452
           },
           "InteractionType": "Interact",
           "TerritoryId": 154,
@@ -91,7 +91,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 74,
-            "Enabled": false
+            "Enabled": true
           },
           "Comment": "Queue for A Relic Reborn: The Chimera"
         }
@@ -114,9 +114,9 @@
         {
           "DataId": 1003075,
           "Position": {
-            "X": 440.7262,
-            "Y": -0.9374562,
-            "Z": -62.21112
+            "X": 440.60822,
+            "Y": -0.9374456,
+            "Z": -63.35452
           },
           "TerritoryId": 154,
           "InteractionType": "Interact"
@@ -149,7 +149,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 14,
-            "Enabled": false
+            "Enabled": true
           },
           "Comment": "Queue for Amdapor Keep"
         }
@@ -187,9 +187,9 @@
         {
           "DataId": 1003075,
           "Position": {
-            "X": 440.7262,
-            "Y": -0.9374562,
-            "Z": -62.21112
+            "X": 440.60822,
+            "Y": -0.9374456,
+            "Z": -63.35452
           },
           "TerritoryId": 154,
           "InteractionType": "Interact"
@@ -249,9 +249,9 @@
         {
           "DataId": 1003075,
           "Position": {
-            "X": 440.7262,
-            "Y": -0.9374562,
-            "Z": -62.21112
+            "X": 440.60822,
+            "Y": -0.9374456,
+            "Z": -63.35452
           },
           "TerritoryId": 154,
           "InteractionType": "Interact"
@@ -266,7 +266,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 75,
-            "Enabled": false
+            "Enabled": true
           },
           "Comment": "Queue for A Relic Reborn: The Hydra"
         }
@@ -289,9 +289,9 @@
         {
           "DataId": 1003075,
           "Position": {
-            "X": 440.7262,
-            "Y": -0.9374562,
-            "Z": -62.21112
+            "X": 440.60822,
+            "Y": -0.9374456,
+            "Z": -63.35452
           },
           "TerritoryId": 154,
           "InteractionType": "Interact"
@@ -308,9 +308,9 @@
         {
           "DataId": 1003075,
           "Position": {
-            "X": 440.7262,
-            "Y": -0.9374562,
-            "Z": -62.21112
+            "X": 440.60822,
+            "Y": -0.9374456,
+            "Z": -63.35452
           },
           "TerritoryId": 154,
           "InteractionType": "Interact"
@@ -362,9 +362,9 @@
         {
           "DataId": 1003075,
           "Position": {
-            "X": 440.7262,
-            "Y": -0.9374562,
-            "Z": -62.21112
+            "X": 440.60822,
+            "Y": -0.9374456,
+            "Z": -63.35452
           },
           "TerritoryId": 154,
           "InteractionType": "Interact"
@@ -408,9 +408,9 @@
         {
           "DataId": 1003075,
           "Position": {
-            "X": 440.7262,
-            "Y": -0.9374562,
-            "Z": -62.21112
+            "X": 440.60822,
+            "Y": -0.9374456,
+            "Z": -63.35452
           },
           "TerritoryId": 154,
           "InteractionType": "CompleteQuest"

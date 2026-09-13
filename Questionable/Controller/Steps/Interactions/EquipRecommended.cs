@@ -29,6 +29,9 @@ internal static class EquipRecommended
                 step.InteractionType != EInteractionType.Combat)
                 return null;
 
+            // If step equips something, we probably want to leave the manually equipped item
+            if (sequence.Steps.Any(x => x.InteractionType is EInteractionType.EquipItem))
+                return null;
             return new EquipTask();
         }
     }

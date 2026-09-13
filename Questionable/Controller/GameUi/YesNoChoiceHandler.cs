@@ -43,6 +43,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
     private readonly Regex _purchaseItemRegex;
     private readonly Regex _ticketRegex;
     private readonly Regex _hqTradeRegex;
+    private readonly Regex _fcInviteRegex;
 
     public YesNoChoiceHandler(
         IAddonLifecycle addonLifecycle,
@@ -91,6 +92,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
         _purchaseItemRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 3406, addon => addon.Text, pluginLog)!;
         _ticketRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 102686, addon => addon.Text, pluginLog)!;
         _hqTradeRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 102434, addon => addon.Text, pluginLog)!;
+        _fcInviteRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 2873, addon => addon.Text, pluginLog)!;
 
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "SelectYesno", SelectYesnoPostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "DifficultySelectYesNo", DifficultySelectYesNoPostSetup);
