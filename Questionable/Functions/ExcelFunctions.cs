@@ -115,6 +115,11 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
             ContentTalk? questRow = _dataManager.GetExcelSheet<ContentTalk>().GetRowOrDefault(rowId);
             return questRow?.Text;
         }
+        if (string.Equals(excelSheet, "SpecialShop", StringComparison.Ordinal))
+        {
+            SpecialShop? questRow = _dataManager.GetExcelSheet<SpecialShop>().GetRowOrDefault(rowId);
+            return questRow?.Name;
+        }
 
         throw new ArgumentOutOfRangeException(nameof(excelSheet), $"Unsupported excel sheet {excelSheet}");
     }

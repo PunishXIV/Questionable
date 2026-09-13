@@ -314,6 +314,20 @@
                     "type": "integer"
                   }
                 },
+                "DutiesUnlocked": {
+                  "description": "Skip this step if all listed ContentFinderConditionId are unlocked",
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "DutiesCompleted": {
+                  "description": "Skip this step if all listed ContentFinderConditionId are completed",
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
                 "AetheryteLocked": {
                   "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
                 },

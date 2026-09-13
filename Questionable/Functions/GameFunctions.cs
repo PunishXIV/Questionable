@@ -33,7 +33,7 @@ internal sealed unsafe partial class GameFunctions
     ILogger<GameFunctions> logger,
     HighlightObject highlightObject)
 {
-    private readonly ReadOnlyDictionary<uint, uint> _contentFinderConditionToContentId = Svc.Data.GetExcelSheet<ContentFinderCondition>()
+    internal readonly ReadOnlyDictionary<uint, uint> ContentFinderConditionToContentId = Svc.Data.GetExcelSheet<ContentFinderCondition>()
         .Where(x => x.RowId > 0 && x.Content.RowId > 0)
         .ToDictionary(x => x.RowId, x => x.Content.RowId)
         .AsReadOnly();
@@ -377,7 +377,7 @@ internal sealed unsafe partial class GameFunctions
 
     public void OpenDutyFinder(uint contentFinderConditionId = 0, uint contentId = 0)
     {
-        if (contentId != 0 || _contentFinderConditionToContentId.TryGetValue(contentFinderConditionId, out contentId))
+        if (contentId != 0 || ContentFinderConditionToContentId.TryGetValue(contentFinderConditionId, out contentId))
         {
             if (UIState.IsInstanceContentUnlocked(contentId))
                 AgentContentsFinder.Instance()->OpenRegularDuty(contentFinderConditionId);

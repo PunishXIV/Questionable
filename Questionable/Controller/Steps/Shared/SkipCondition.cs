@@ -85,6 +85,12 @@ internal static class SkipCondition
             if (CheckNameplateCondition(step, skipConditions))
                 return true;
 
+            if (CheckDutiesUnlockedCondition(skipConditions))
+                return true;
+
+            if (CheckDutiesCompletedCondition(skipConditions))
+                return true;
+
             if (CheckItemCondition(step, skipConditions))
                 return true;
 
@@ -250,6 +256,32 @@ internal static class SkipCondition
             return false;
         }
 
+        private bool CheckDutiesUnlockedCondition(SkipStepConditions skipConditions)
+        {
+            if (skipConditions.DutiesUnlocked.Count > 0)
+            {
+                if (skipConditions.DutiesUnlocked.All(x =>
+                        gameFunctions.ContentFinderConditionToContentId.TryGetValue(x, out var contentId) &&
+                        UIState.IsInstanceContentUnlocked(contentId)))
+                    return true;
+            }
+
+            return false;
+        }
+
+        private bool CheckDutiesCompletedCondition(SkipStepConditions skipConditions)
+        {
+            if (skipConditions.DutiesCompleted.Count > 0)
+            {
+                if (skipConditions.DutiesCompleted.All(x =>
+                        gameFunctions.ContentFinderConditionToContentId.TryGetValue(x, out var contentId) &&
+                        UIState.IsInstanceContentCompleted(contentId)))
+                    return true;
+            }
+
+            return false;
+        }
+
         private unsafe bool CheckItemCondition(QuestStep step, SkipStepConditions skipConditions)
         {
             // Skip step if specified item is not in inventory (checks both NQ and HQ)
@@ -390,7 +422,7 @@ internal static class SkipCondition
                         .SelectMany(x => classJobUtils.AsIndividualJobs(x, elementId)).ToList();
                     Job questJob = questWork.ClassJob;
                     logger.LogInformation("Checking quest job {QuestJob} against {ExpectedJobs}", questJob,
-                        string.Join(",", expectedJobs));
+                        string.Join(',', expectedJobs));
                     if (questJob != Job.ADV && !expectedJobs.Contains(questJob))
                     {
                         logger.LogInformation("Skipping step, as quest was accepted on a different job");
@@ -410,7 +442,7 @@ internal static class SkipCondition
                     step.RequiredCurrentJob.SelectMany(x => classJobUtils.AsIndividualJobs(x, elementId)).ToList();
                 Job currentJob = (Job)PlayerState.Instance()->CurrentClassJobId;
                 logger.LogInformation("Checking current job {CurrentJob} against {ExpectedJobs}", currentJob,
-                    string.Join(",", expectedJobs));
+                    string.Join(',', expectedJobs));
                 if (!expectedJobs.Contains(currentJob))
                 {
                     logger.LogInformation("Skipping step, as step requires a different job");
@@ -458,8 +490,8 @@ internal static class SkipCondition
                     return true;
                 }
 
-                if ((configuration.Advanced.SkipAetherCurrents &&
-                    QuestData.AetherCurrentQuests.Contains(step.PickUpQuestId)) ||
+                if (configuration.Advanced.SkipAetherCurrents &&
+                    QuestData.AetherCurrentQuests.Contains(step.PickUpQuestId) &&
                     GameFunctions.IsFlyingUnlocked(step.TerritoryId)) // story skip apparently makes 1748 impossible to complete -alydev
                 {
                     logger.LogInformation("Skipping step, as aether current quests should be skipped");

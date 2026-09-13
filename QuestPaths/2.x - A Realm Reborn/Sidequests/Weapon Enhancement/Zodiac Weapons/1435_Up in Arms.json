@@ -1,0 +1,81 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-14"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Comment": "Trade Thavnairian Mist and weapon to upgrade",
+          "DataId": 2002555,
+          "Position": {
+            "X": 447.94647,
+            "Y": -0.6576674,
+            "Z": -67.84026
+          },
+          "StopDistance": 1,
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true
+        },
+        {
+          "TerritoryId": 154,
+          "InteractionType": "Instruction",
+          "Comment": "Equip upgraded weapon"
+        },
+        {
+          "DataId": 1003075,
+          "Position": {
+            "X": 440.60822,
+            "Y": -0.9374456,
+            "Z": -63.35452
+          },
+          "TerritoryId": 154,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "North Shroud - Fallgourd Float",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1008948,
+          "Position": {
+            "X": 405.12,
+            "Y": -4.49814,
+            "Z": -89.1504
+          },
+          "TerritoryId": 154,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1008948,
+          "Position": {
+            "X": 405.12,
+            "Y": -4.49814,
+            "Z": -89.1504
+          },
+          "TerritoryId": 154,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_JOBREL001_01435_Q1_000_000",
+              "Yes": true,
+              "Type": "YesNo"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
