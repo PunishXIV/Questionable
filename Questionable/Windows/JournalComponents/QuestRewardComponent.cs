@@ -88,6 +88,10 @@ internal sealed class QuestRewardComponent
             var complete = uistate->IsChocoboTaxiStandUnlocked(taxiStand.RowId);
             if (_hideCompleted && complete) continue;
             ImGui.Text(taxiStand.PlaceName.ToMacroString());
+            if (ImGui.IsItemHovered())
+                ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+            if (ImGui.IsItemClicked())
+                ImGui.SetClipboardText(taxiStand.RowId.ToString(CultureInfo.InvariantCulture));
             if (_taxiStandUnlockQuests.TryGetValue(taxiStand.RowId, out var value))
                 foreach (var quest in value)
                 {

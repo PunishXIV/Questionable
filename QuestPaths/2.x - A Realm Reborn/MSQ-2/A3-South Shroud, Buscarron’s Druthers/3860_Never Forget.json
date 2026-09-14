@@ -115,6 +115,18 @@
           }
         },
         {
+          "DataId": 1002721,
+          "Position": {
+            "X": 187.9148,
+            "Y": 98.5214,
+            "Z": -193.19452
+          },
+          "TerritoryId": 134,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179670,
+          "AetheryteShortcut": "Middle La Noscea - Summerford Farms"
+        },
+        {
           "DataId": 1003584,
           "Position": {
             "X": 317.43335,
@@ -154,6 +166,18 @@
           }
         },
         {
+          "DataId": 1002720,
+          "Position": {
+            "X": 49.271362,
+            "Y": 29.315498,
+            "Z": 605.27954
+          },
+          "TerritoryId": 135,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179675,
+          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+        },
+        {
           "TerritoryId": 138,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Western La Noscea - Swiftperch",
@@ -166,6 +190,18 @@
               "AetheryteUnlocked": "Western La Noscea - Swiftperch"
             }
           }
+        },
+        {
+          "DataId": 1002722,
+          "Position": {
+            "X": 667.68884,
+            "Y": 9.882242,
+            "Z": 487.32727
+          },
+          "TerritoryId": 138,
+          "InteractionType": "UnlockTaxiStand",
+          "AetheryteShortcut": "Western La Noscea - Swiftperch",
+          "TaxiStandId": 1179671
         },
         {
           "DataId": 1003393,

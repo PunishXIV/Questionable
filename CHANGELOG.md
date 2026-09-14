@@ -1,1 +1,1 @@
-- Bug fix: Random GC selection -alydev
+- Change: taxi stand name clickable to copy ID -alydev
