@@ -1,1 +1,1 @@
-- Change: taxi stand name clickable to copy ID -alydev
+- Feature: equiprecommended equips job stone if in inv and not equipped -alydev
