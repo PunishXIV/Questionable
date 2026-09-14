@@ -28,6 +28,29 @@
           "Aetheryte": "South Shroud - Camp Tranquil"
         },
         {
+          "DataId": 1002983,
+          "Position": {
+            "X": -207.50745,
+            "Y": 20.799791,
+            "Z": 346.91382
+          },
+          "TerritoryId": 153,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179654
+        },
+        {
+          "DataId": 1002754,
+          "Position": {
+            "X": -219.22644,
+            "Y": 20.923328,
+            "Z": 338.4298
+          },
+          "TerritoryId": 153,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 1162,
+          "SkipConditions": {"StepIf": {"QuestsCompleted": [1162]}}
+        },
+        {
           "DataId": 1000576,
           "Position": {
             "X": 21.469421,

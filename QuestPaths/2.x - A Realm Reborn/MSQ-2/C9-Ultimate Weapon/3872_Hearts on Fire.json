@@ -28,6 +28,17 @@
           "Aetheryte": "Northern Thanalan - Ceruleum Processing Plant"
         },
         {
+          "DataId": 1004241,
+          "Position": {
+            "X": -41.306213,
+            "Y": 48,
+            "Z": -52.933594
+          },
+          "TerritoryId": 147,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179668
+        },
+        {
           "DataId": 1006647,
           "Position": {
             "X": -28.244446,
