@@ -69,6 +69,14 @@ internal static class Interact
             {
                 if (step.TaxiStandId == null)
                     yield break;
+                var skip = false;
+                unsafe
+                {
+                    if (UIState.Instance()->IsChocoboTaxiStandUnlocked(step.TaxiStandId.Value))
+                        skip = true;
+                }
+                if (skip)
+                    yield break;
             }
             else if (step.InteractionType != EInteractionType.Interact)
                 yield break;

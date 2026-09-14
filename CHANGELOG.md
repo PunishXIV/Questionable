@@ -1,1 +1,1 @@
-- Feature: equiprecommended equips job stone if in inv and not equipped -alydev
+- Feature: skip chocobo porter unlock if already unlocked (inc travel to porter), added chocobokeep unlocks throughout arr -alydev

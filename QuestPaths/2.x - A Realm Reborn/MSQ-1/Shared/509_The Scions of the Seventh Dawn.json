@@ -22,14 +22,47 @@
       "Sequence": 1,
       "Steps": [
         {
+          "DataId": 1004019,
+          "Position": {
+            "X": -335.9579,
+            "Y": 13.983717,
+            "Z": -99.65674
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 140,
+          "AetheryteShortcut": "Western Thanalan - Horizon"
+        },
+        {
+          "DataId": 1002295,
+          "Position": {
+            "X": -246.08228,
+            "Y": 32.44368,
+            "Z": 383.84058
+          },
+          "TerritoryId": 140,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179661
+        },
+        {
+          "DataId": 1002039,
+          "Position": {
+            "X": -298.7564,
+            "Y": 13.983702,
+            "Z": 303.36462
+          },
+          "TerritoryId": 140,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 140
+        },
+        {
           "Position": {
             "X": -316.29608,
             "Y": 23.44405,
             "Z": -345.24487
           },
           "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western Thanalan - Horizon"
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
