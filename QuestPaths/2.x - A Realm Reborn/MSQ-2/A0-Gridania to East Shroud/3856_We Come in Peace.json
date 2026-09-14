@@ -4,7 +4,7 @@
     "liza",
     "JerryWester"
   ],
-  "LastChecked": {"Username": "alydev", "Date": "2026-09-11"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -82,6 +82,17 @@
               "AetheryteUnlocked": "East Shroud - Hawthorne Hut"
             }
           }
+        },
+        {
+          "DataId": 1002981,
+          "Position": {
+            "X": -194.32367,
+            "Y": 1.001574,
+            "Z": 278.0652
+          },
+          "TerritoryId": 152,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179651
         },
         {
           "DataId": 1006188,
