@@ -38,6 +38,37 @@
       "Sequence": 2,
       "Steps": [
         {
+          "TerritoryId": 212,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Yellow Serpent Gate (North Shroud)"
+          ]
+        },
+        {
+          "DataId": 1002985,
+          "Position": {
+            "X": 320.57666,
+            "Y": -6.266033,
+            "Z": -72.80078
+          },
+          "TerritoryId": 154,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179655
+        },
+        {
+          "DataId": 1002984,
+          "Position": {
+            "X": 1.2054443,
+            "Y": -46.518444,
+            "Z": 238.5747
+          },
+          "TerritoryId": 154,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179656
+        },
+        {
           "DataId": 1006240,
           "Position": {
             "X": 14.389221,
@@ -45,12 +76,7 @@
             "Z": 262.65344
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

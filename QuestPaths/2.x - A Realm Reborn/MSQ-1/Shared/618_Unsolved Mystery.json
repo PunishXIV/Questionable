@@ -77,23 +77,93 @@
       "Steps": [
         {
           "Position": {
-            "X": -378.46735,
-            "Y": -38.009487,
-            "Z": 159.38092
+            "X": -171.46503,
+            "Y": -46.504063,
+            "Z": 491.88867
           },
           "TerritoryId": 145,
           "InteractionType": "WalkTo",
-          "$": "Camp Drybone cliff jump"
+          "TargetTerritoryId": 146,
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Little Ala Mhigo"}}
         },
         {
           "Position": {
-            "X": -379.3895,
-            "Y": -59.000004,
-            "Z": 147.99257
+            "X": -47.50145,
+            "Y": 16.362688,
+            "Z": -439.62503
           },
-          "TerritoryId": 145,
+          "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "$": "vnav sometimes attempts to walk to the aetheryte using exactly one waypoint between zone boundary and aetheryte, which means walking into walls",
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Little Ala Mhigo"}}
+        },
+        {
+          "TerritoryId": 146,
+          "InteractionType": "AttuneAetheryte",
+          "StopDistance": 7,
+          "Aetheryte": "Southern Thanalan - Little Ala Mhigo",
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Little Ala Mhigo"}}
+        },
+        {
+          "DataId": 1004412,
+          "Position": {
+            "X": -176.2265,
+            "Y": 26.903078,
+            "Z": -411.64264
+          },
+          "TerritoryId": 146,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179664
+        },
+        {
+          "Position": {
+            "X": -180.60515,
+            "Y": 17.857697,
+            "Z": -278.74887
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Forgotten Springs"}}
+        },
+        {
+          "Position": {
+            "X": -183.61136,
+            "Y": 3.5857017,
+            "Z": -248.78667
+          },
+          "TerritoryId": 146,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Forgotten Springs"}}
+        },
+        {
+          "DataId": 1004596,
+          "Position": {
+            "X": -471.27496,
+            "Y": -2.650424,
+            "Z": 95.628296
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 146,
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Forgotten Springs"}}
+        },
+        {
+          "TerritoryId": 146,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Southern Thanalan - Forgotten Springs",
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Forgotten Springs"}}
+        },
+        {
+          "DataId": 1004413,
+          "Position": {
+            "X": -309.22406,
+            "Y": 7.3784404,
+            "Z": 417.83777
+          },
+          "TerritoryId": 146,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179665
         },
         {
           "DataId": 1003929,
@@ -103,7 +173,8 @@
             "Z": 106.79785
           },
           "TerritoryId": 145,
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
         }
       ]
     }
