@@ -3,6 +3,7 @@ using Dalamud.Game.Text;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Utility;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Common;
 using Questionable.Model.Common.Converter;
@@ -21,6 +22,7 @@ internal sealed class QuestRewardComponent
     UiUtils uiUtils,
     AetheryteData aetheryteData,
     AetheryteFunctions aetheryteFunctions,
+    IDataManager dataManager,
     ILogger<QuestRewardComponent> logger)
 {
     private bool _showEventRewards;
@@ -34,6 +36,7 @@ internal sealed class QuestRewardComponent
         _generation++;
         _aetheryteUnlocks = [];
         _aetheryteLoadState = ELoadState.NotStarted;
+        _taxiStandUnlockQuests = [];
     }
 
     public void DrawItemRewards()
@@ -50,6 +53,7 @@ internal sealed class QuestRewardComponent
             _L("Only untradeable items are listed (e.g. the Wind-up Airship can be sold on the market board)."));
 
         DrawAetheryteGroup();
+        DrawChocoboPorterGroup();
         DrawGroup(_L("Duties"), EItemRewardType.Duty);
         DrawGroup(_L("Fashion Accessories"), EItemRewardType.FashionAccessory);
         DrawGroup(_L("Minions"), EItemRewardType.Minion);
@@ -57,9 +61,61 @@ internal sealed class QuestRewardComponent
         DrawGroup(_L("Orchestrion Rolls"), EItemRewardType.OrchestrionRoll);
         DrawGroup(_L("Triple Triad Cards"), EItemRewardType.TripleTriadCard);
     }
+
+    private readonly List<ChocoboTaxiStand> _taxiStands = dataManager.GetExcelSheet<ChocoboTaxiStand>().Where(x => x.RowId >= 1179650).ToList();
+    private Dictionary<uint, List<Domain.Quest>> _taxiStandUnlockQuests = [];
+    private unsafe void DrawChocoboPorterGroup()
+    {
+        if (!ImGui.CollapsingHeader($"{_T<Addon>(2730)}###RewardChocoboPorter"))
+            return;
+        var total = 0;
+        var uistate = UIState.Instance();
+        if (_taxiStandUnlockQuests.Count == 0)
+        {
+            Dictionary<uint, List<Domain.Quest>> tmp = [];
+            foreach (Domain.Quest quest in questRegistry.AllQuests)
+                foreach (var (Sequence, StepId, Step) in quest.AllSteps())
+                    if (Step.InteractionType is EInteractionType.UnlockTaxiStand && Step.TaxiStandId != null)
+                        if (tmp.TryGetValue(Step.TaxiStandId.Value, out var value))
+                            value.Add(quest);
+                        else
+                            tmp[Step.TaxiStandId.Value] = [quest];
+            _taxiStandUnlockQuests = tmp;
+        }
+
+        foreach (ChocoboTaxiStand taxiStand in _taxiStands)
+        {
+            var complete = uistate->IsChocoboTaxiStandUnlocked(taxiStand.RowId);
+            if (_hideCompleted && complete) continue;
+            ImGui.Text(taxiStand.PlaceName.ToMacroString());
+            if (_taxiStandUnlockQuests.TryGetValue(taxiStand.RowId, out var value))
+                foreach (var quest in value)
+                {
+                    var q = quest.GetQuestInfo();
+                    using var _ = ImRaii.PushId($"###{(int)taxiStand.RowId}-{quest.Id.Value}");
+                    (Vector4 color, FontAwesomeIcon icon, string status) = uiUtils.GetQuestStyle(quest.Id);
+                    if (uiUtils.ChecklistItem(q.Name, color, icon, iconOverride: QuestJournalUtils.GetIconOverride(q, icon)))
+                    {
+                        using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
+                        ImGui.Text(_LF("Obtained from: {0}", q.Name));
+                        using (ImRaii.PushIndent())
+                        {
+                            questTooltipComponent.DrawInner(q, showItemRewards: false);
+                        }
+                    }
+                    questJournalUtils.ShowContextMenu(q, quest, nameof(QuestRewardComponent));
+                }
+
+            ImGui.Separator();
+            total++;
+        }
+        if (total == 0)
+            ImGui.Text(_L("No results"));
+    }
+
     private void DrawAetheryteGroup()
     {
-        if (!ImGui.CollapsingHeader($"{_T<HowTo>(15)}###RewardComponent"))
+        if (!ImGui.CollapsingHeader($"{_T<HowTo>(15)}###RewardAetheryte"))
             return;
         switch (_aetheryteLoadState)
         {
