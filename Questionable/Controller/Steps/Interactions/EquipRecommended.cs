@@ -1,8 +1,11 @@
 ﻿using Dalamud.Game.ClientState.Conditions;
+using Dalamud.Game.ClientState.Objects.SubKinds;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using FFXIVClientStructs.Interop;
+using Questionable.Controller.Steps.Shared;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
@@ -20,19 +23,37 @@ internal static class EquipRecommended
         }
     }
 
-    internal sealed class BeforeDutyOrInstance : SimpleTaskFactory
+    internal sealed class BeforeDutyOrInstance(ClassJobUtils classJobUtils, IObjectTable objectTable) : ITaskFactory
     {
-        public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
+        public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.Duty &&
                 step.InteractionType != EInteractionType.SinglePlayerDuty &&
                 step.InteractionType != EInteractionType.Combat)
-                return null;
+                yield break;
 
             // If step equips something, we probably want to leave the manually equipped item
             if (sequence.Steps.Any(x => x.InteractionType is EInteractionType.EquipItem))
-                return null;
-            return new EquipTask();
+                yield break;
+            // If there's an unequipped job stone, find it and equip it
+            if (objectTable[0] is IPlayerCharacter player &&
+                classJobUtils.ClassToJobStone((Job)player.ClassJob.Value.RowId) is (Job targetJob, ushort jobStone))
+            {
+                bool hasJobStone = false;
+                unsafe
+                {
+                    InventoryManager* inventoryManager = InventoryManager.Instance();
+                    InventoryContainer* equippedContainer = inventoryManager->GetInventoryContainer(InventoryType.ArmorySoulCrystal);
+                    if (inventoryManager->GetItemCountInContainer(jobStone, InventoryType.ArmorySoulCrystal) != 0)
+                        hasJobStone = true;
+                }
+                if (hasJobStone)
+                {
+                    yield return new EquipItem.Task(jobStone);
+                    yield return new CreateGearset.Task();
+                }
+            }
+            yield return new EquipTask();
         }
     }
 
