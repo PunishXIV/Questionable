@@ -19,14 +19,15 @@ internal sealed class AutoDutyIpc
     [Flags]
     public enum DutyMode : int
     {
-        None = 0,
-        Support = 1,
-        Trust = 2,
-        Squadron = 4,
-        Regular = 8,
-        Trial = 16,
-        Raid = 32,
-        Variant = 64
+        None = 0 << 0,
+        Support = 1 << 0,
+        Trust = 1 << 1,
+        Squadron = 1 << 2,
+        Regular = 1 << 3,
+        Trial = 1 << 4,
+        Raid = 1 << 5,
+        Variant = 1 << 6,
+        NoviceHall = 1 << 7
     }
 
     private readonly ICallGateSubscriber<uint, bool> _contentHasPath = pluginInterface.GetIpcSubscriber<uint, bool>("AutoDuty.ContentHasPath");

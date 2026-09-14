@@ -1,11 +1,12 @@
 ﻿using Dalamud.Game.ClientState.Objects.Enums;
+using Questionable.Controller.Steps.Shared;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Aetheryte
 {
-    internal sealed class Factory : SimpleTaskFactory
+    internal sealed class Factory(AetheryteFunctions aetheryteFunctions) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -13,6 +14,8 @@ internal static class Aetheryte
                 return null;
             if (!step.Aetheryte.HasValue)
                 throw new ArgumentNullException(nameof(step.Aetheryte));
+            if (aetheryteFunctions.IsAetheryteUnlocked(step.Aetheryte.Value))
+                return null;
 
             return new Attune(step.Aetheryte.Value, step.SkipConditions?.StepIf);
         }

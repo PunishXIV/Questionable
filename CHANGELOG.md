@@ -1,1 +1,1 @@
-- Feature: skip chocobo porter unlock if already unlocked (inc travel to porter), added chocobokeep unlocks throughout arr -alydev
+- Change: skip aetheryte attune travel if already attuned -alydev
