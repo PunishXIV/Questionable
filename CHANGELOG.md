@@ -1,1 +1,1 @@
-- Feature: added Chocobo Porter header to unlocks tab -alydev
+- Bug fix: Random GC selection -alydev

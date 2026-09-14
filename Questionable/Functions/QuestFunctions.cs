@@ -65,6 +65,8 @@ internal sealed unsafe class QuestFunctions
         }
     }
 
+    private ushort? _gc;
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "<Pending>")]
     public QuestReference GetCurrentQuest(bool allowNewMsq = true)
     {
         QuestReference internalQuest = GetCurrentQuestInternal(allowNewMsq);
@@ -99,10 +101,12 @@ internal sealed unsafe class QuestFunctions
 
             if (configuration.General.GrandCompany.Equals(GrandCompany.None))
             {
-                Random rand = new();
-#pragma warning disable CA5394 // Do not use insecure randomness
-                return new(new QuestId((ushort)(rand.Next() % 2 + 680)), 0, questState);
-#pragma warning restore CA5394 // Do not use insecure randomness
+                if (_gc == null)
+                {
+                    Random rand = new();
+                    _gc = (ushort)(rand.Next() % 2 + 680);
+                }
+                return new(new QuestId(_gc.Value), 0, questState);
             }
             // The company you keep...
             return configuration.General.GrandCompany switch
