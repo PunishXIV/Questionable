@@ -72,6 +72,7 @@ internal sealed class QuestRewardComponent
                 ImGui.Text(_L("Loading..."));
                 return;
         }
+        var total = 0;
         foreach (EAetheryteLocation aetheryteLocation in AetheryteData.Aetherytes)
         {
             if (aetheryteLocation is EAetheryteLocation.None) continue;
@@ -106,7 +107,10 @@ internal sealed class QuestRewardComponent
                 questJournalUtils.ShowContextMenu(q, quest, nameof(QuestRewardComponent));
             }
             ImGui.Separator();
+            total++;
         }
+        if (total == 0)
+            ImGui.Text(_L("No results"));
     }
 
     private void DrawGroup(string label, EItemRewardType type)
@@ -130,6 +134,8 @@ internal sealed class QuestRewardComponent
                     continue;
                 string name = $"{cfc.Name.ToDalamudString()} ({cfc.RowId})";
                 bool complete = questFunctions.IsQuestComplete(q.QuestId);
+                if (_hideCompleted && complete)
+                    continue;
                 Vector4 color = !questRegistry.IsKnownQuest(q.QuestId)
                     ? QstTheme.TextMuted
                     : complete

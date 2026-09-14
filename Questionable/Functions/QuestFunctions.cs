@@ -598,6 +598,7 @@ internal sealed unsafe class QuestFunctions
                     .FirstOrDefault(y => y != null);
     }
 
+    private string _last = string.Empty;
     private int TeleportCosts(Quest quest)
     {
         List<EAetheryteLocation> teleportTargets = quest.AllSteps()
@@ -615,7 +616,12 @@ internal sealed unsafe class QuestFunctions
         foreach (TeleportInfo info in telepo->TeleportList)
             teleportCosts.TryAdd(info.AetheryteId, info.GilCost);
 
-        return teleportTargets.Sum(x => (int)teleportCosts.GetValueOrDefault((uint)x, 999u));
+        var msg = $"TeleportCosts: {string.Join('+', teleportTargets)} " +
+            $"({string.Join(", ", teleportCosts.Where(x => teleportTargets.Contains((EAetheryteLocation)x.Key)).Select(x => $"{(EAetheryteLocation)x.Key}={x.Value}"))})";
+        if (msg != _last)
+            Svc.Log.Debug(msg);
+        _last = msg;
+        return teleportTargets.Sum(x => (int)teleportCosts.GetValueOrDefault((uint)x, 200u));
     }
 
     public List<ElementId> GetPriorityQuests(bool onlyClassAndRoleQuests = false)
