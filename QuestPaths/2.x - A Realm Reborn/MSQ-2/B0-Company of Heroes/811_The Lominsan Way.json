@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "alydev", "Date": "2026-09-11"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -51,18 +51,13 @@
           "InteractionType": "Interact",
           "TargetTerritoryId": 137,
           "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol"
-            },
-            "AethernetShortcutIf": {
-              "AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol"
-            },
-            "StepIf": {
-              "AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol"
-            }
-          }
+          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
+        },
+        {
+          "TerritoryId": 137,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Eastern La Noscea - Costa Del Sol",
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol"}}
         },
         {
           "$": "Costa del Sol Taxi",
@@ -77,11 +72,6 @@
           "TaxiStandId": 1179677
         },
         {
-          "TerritoryId": 137,
-          "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Eastern La Noscea - Costa Del Sol"
-        },
-        {
           "DataId": 1006266,
           "Position": {
             "X": 560.35706,
@@ -89,7 +79,8 @@
             "Z": 455.89368
           },
           "TerritoryId": 137,
-          "InteractionType": "CompleteQuest"
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
         }
       ]
     }
