@@ -1,4 +1,1 @@
-- Bug fix: teleport cost estimate now logs calculations to help with figuring out why it hasn't been doing things -alydev
-- Bug fixes: journal progress > unlocks: -alydev
-  - "no results" if aetheryte list is empty after filtering "hide completed items"
-  - duties list respects "hide completed items"
+- Feature: added Chocobo Porter header to unlocks tab -alydev
