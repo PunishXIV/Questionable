@@ -1,11 +1,32 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-25"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "TerritoryId": 133,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Gridania] Leatherworkers' Guild & Shaded Bower",
+            "[Gridania] Botanists' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 71.97681,
+                  "Y": 8,
+                  "Z": -166.52173
+                },
+                "TerritoryId": 133,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
         {
           "DataId": 1000294,
           "Position": {
@@ -29,9 +50,7 @@
           "InteractionType": "AcceptQuest",
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
+              "InTerritory": [133]
             }
           }
         }

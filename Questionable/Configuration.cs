@@ -203,7 +203,7 @@ internal sealed class Configuration : IPluginConfiguration
     internal sealed class GeneralConfiguration
     {
         public ECombatModule CombatModule { get; set; } = ECombatModule.None;
-        public uint MountId { get; set; } = 71;
+        public uint MountId { get; set; } = 1;
         public string ChocoboName { get; set; } = string.Empty;
         public GrandCompany GrandCompany { get; set; } = GrandCompany.None;
         public Job CombatJob { get; set; } = Job.ADV;

@@ -1,11 +1,32 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-25"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "TerritoryId": 128,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] The Aftcastle",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -32.028687,
+                  "Y": 41.499985,
+                  "Z": 208.39233
+                },
+                "TerritoryId": 128,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
         {
           "DataId": 1000946,
           "Position": {
@@ -22,9 +43,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
+              "InTerritory": [128]
             }
           },
           "DialogueChoices": [
