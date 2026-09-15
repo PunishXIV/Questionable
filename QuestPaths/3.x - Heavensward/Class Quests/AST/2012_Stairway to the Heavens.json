@@ -184,8 +184,7 @@
           "InteractionType": "CompleteQuest",
           "StopDistance": 5,
           "Fly": true,
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "NextQuestId": 2013
+          "AetheryteShortcut": "South Shroud - Quarrymill"
         }
       ]
     }

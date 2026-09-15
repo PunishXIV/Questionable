@@ -1,19 +1,41 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Starr",
-  "LastChecked": {"Username": "Anonymous", "Date": "2026-08-06"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
+          "TerritoryId": 144,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Gold Saucer] Wonder Square East",
+            "[Gold Saucer] Entrance & Card Squares"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 57.345837,
+                  "Y": 20.99973,
+                  "Z": 82.112114
+                },
+                "TerritoryId": 144,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
+        {
           "DataId": 1011060,
           "Position": {
-            "X": -96.87958,
-            "Y": -0.86297023,
-            "Z": 67.826294
+            "X": -95.36419,
+            "Y": -1.1017216,
+            "Z": 66.016075
           },
           "TerritoryId": 144,
+          "StopDistance": 1,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Gold Saucer",
           "DialogueChoices": [

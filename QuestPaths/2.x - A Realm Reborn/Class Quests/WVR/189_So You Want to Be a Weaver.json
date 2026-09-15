@@ -1,11 +1,32 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-25"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "TerritoryId": 131,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Ul'dah] Goldsmiths' Guild",
+            "[Ul'dah] Weavers' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -25.162231,
+                  "Y": 12.199998,
+                  "Z": 110.795654
+                },
+                "TerritoryId": 131,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
         {
           "DataId": 1002283,
           "Position": {
@@ -22,9 +43,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
+              "InTerritory": [131]
             }
           },
           "DialogueChoices": [

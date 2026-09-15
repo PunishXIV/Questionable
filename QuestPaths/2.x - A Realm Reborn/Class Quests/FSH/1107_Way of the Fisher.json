@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-25"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -59,8 +59,7 @@
               "Yes": true
             }
           ],
-          "InteractionType": "CompleteQuest",
-          "NextQuestId": 1108
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

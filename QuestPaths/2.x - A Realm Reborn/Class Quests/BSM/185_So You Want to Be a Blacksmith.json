@@ -1,11 +1,32 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-25"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "TerritoryId": 129,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermen's Guild",
+            "[Limsa Lominsa] The Aftcastle"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -184.8656,
+                  "Y": 3.999987,
+                  "Z": 174.76753
+                },
+                "TerritoryId": 129,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
         {
           "DataId": 1000995,
           "Position": {
@@ -22,9 +43,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
+              "InTerritory": [128]
             }
           },
           "DialogueChoices": [

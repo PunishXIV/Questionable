@@ -1,17 +1,38 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Starr",
-  "LastChecked": {"Username": "Saionji", "Date": "2026-09-03"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
+          "TerritoryId": 144,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Gold Saucer] Cactpot Board",
+            "[Gold Saucer] Chocobo Square"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 119.92558,
+                  "Y": 13.001013,
+                  "Z": -12.923852
+                },
+                "TerritoryId": 144,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
+        {
           "DataId": 1010464,
           "Position": {
-            "X": -0.015319824,
-            "Y": -1.8903663E-06,
-            "Z": -65.61273
+            "X": -0.13309006,
+            "Y": -2.026558E-06,
+            "Z": -64.397385
           },
           "TerritoryId": 388,
           "InteractionType": "AcceptQuest",
@@ -22,9 +43,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                144
-              ]
+              "InTerritory": [144]
             }
           }
         }
