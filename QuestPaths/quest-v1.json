@@ -180,7 +180,8 @@
             "CompleteQuest",
             "InitiateLeve",
             "Fish",
-            "Macro"
+            "Macro",
+            "CleanUpOtherQuests"
           ]
         },
         "Disabled": {

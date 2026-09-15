@@ -60,6 +60,7 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskExecutor<LogQuestCompletion.Task, LogQuestCompletion.LogQuestCompletionExecutor>();
         serviceCollection
             .AddTaskExecutor<MoveToLandingLocation.Task, MoveToLandingLocation.MoveToLandingLocationExecutor>();
+        serviceCollection.AddTaskFactory<CleanUpOtherQuests.CleanUpOtherQuestsFactory>();
         //serviceCollection.AddTaskFactoryAndExecutor<Mail.ClaimMailTask, Mail.Factory, Mail.ClaimMailExecutor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<SkipCondition.SkipTask, SkipCondition.Factory, SkipCondition.CheckSkip>();

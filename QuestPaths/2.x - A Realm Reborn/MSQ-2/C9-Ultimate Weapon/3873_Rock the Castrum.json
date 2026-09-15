@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "alydev", "Date": "2026-09-11"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -23,6 +23,27 @@
     {
       "Sequence": 1,
       "Steps": [
+        {
+          "DataId": 1006657,
+          "Position": {
+            "X": -294.81964,
+            "Y": 88,
+            "Z": -225.17743
+          },
+          "TerritoryId": 147,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "$": "This doesn't include the DRK/MCH/AST coffers that exist at level 50, but you cannot obtain them until HW",
+      "Steps": [
+        {
+          "TerritoryId": 147,
+          "InteractionType": "CleanUpOtherQuests"
+        },
         {
           "TerritoryId": 147,
           "InteractionType": "UseItem",
@@ -170,23 +191,6 @@
           "TerritoryId": 147,
           "InteractionType": "EquipRecommended"
         },
-        {
-          "DataId": 1006657,
-          "Position": {
-            "X": -294.81964,
-            "Y": 88,
-            "Z": -225.17743
-          },
-          "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
-        }
-      ]
-    },
-    {
-      "Sequence": 2,
-      "$": "This doesn't include the DRK/MCH/AST coffers that exist at level 50, but you cannot obtain them until HW",
-      "Steps": [
         {
           "TerritoryId": 147,
           "InteractionType": "Duty",

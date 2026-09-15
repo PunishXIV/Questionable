@@ -1,1 +1,2 @@
-- Change: skip aetheryte attune travel if already attuned -alydev
+- Feature: Added step to clean up job quests/other priority quests before continuing with msq -alydev
+- Change: crystal icon now always visible, hovering shows available job quests/other priority quests. grey when empty, amber when not -alydev
