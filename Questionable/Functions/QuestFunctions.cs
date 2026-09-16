@@ -812,6 +812,17 @@ internal sealed unsafe class QuestFunctions
                 lockedReason.Add(_L("Rank"));
         }
 
+        bool isClassQuest = questInfo.NewGamePlusChapter != 0 &&
+            QuestData.JobToClassQuestChapterIds.Values
+                .Any(x => x.Contains(questInfo.NewGamePlusChapter));
+        if ((isClassQuest && questInfo.ClassJobs.Count >= 1) || questInfo.ClassJobs.Count == 1)
+        {
+            var levels = PlayerState.Instance()->ClassJobLevels;
+            var index = questInfo.ClassJobs[0].GetData().ExpArrayIndex;
+            if (index >= 0 && levels.Length > index && levels[index] < questInfo.Level)
+                lockedReason.Add($"{_L("Low level")} ({questInfo.ClassJobs[0]})");
+        }
+
         if (questInfo.AlliedSociety != EAlliedSociety.None)
         {
             if (questInfo.IsRepeatable)

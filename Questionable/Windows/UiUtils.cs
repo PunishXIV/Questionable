@@ -54,8 +54,6 @@ internal sealed class UiUtils(
             return (QstTheme.Danger, FontAwesomeIcon.Times, $"{_L("Locked")}:\n  {lockedReason}");
         if (prereqValue == null)
             return (QstTheme.Info, FontAwesomeIcon.QuestionCircle, _L("Available(?)"));
-        if (qInfo != null && PlayerState.Instance()->CurrentLevel < qInfo.Level)
-            return (QstTheme.Danger, FontAwesomeIcon.Times, _L("Low level"));
 
         return (QstTheme.Amber, FontAwesomeIcon.Running, _L("Available"));
     }
