@@ -1,5 +1,1 @@
-- Feature: added beastmaster and second blue mage quest to priority preset for unlocking all jobs -alydev
-- Change: default mount changed to company chocobo (why was it not this already) -alydev
-- Change: shortened minimum cast time for TryRedeem from 7 seconds to 4 seconds -alydev
-- Change: added second job quest to "Unlock all jobs" preset so each job makes its gearset -alydev
-- Change: added gold saucer quests to post-arr unlocks -alydev
+- Feature: random chocobo names in settings will now be locked in by editing the field. Clear the text box and press enter to get a new name. -alydev
