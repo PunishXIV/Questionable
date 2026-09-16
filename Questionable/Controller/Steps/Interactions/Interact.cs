@@ -278,34 +278,37 @@ internal static class Interact
                 Job candidate = firstItem;
                 if (!acceptableJobs.Contains(playerJob))
                 {
-                    if (!firstItem.IsCrafter() && !firstItem.IsGatherer())
+                    if (acceptableJobs.Count > 1)
                     {
-                        candidate = configuration.General.CombatJob;
-                        if (acceptableJobs.Contains(candidate))
-                            acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
-                        else
-                            logger.LogInformation("Normal quest, but configured job {CombatJob} is not valid for {QuestId}",
-                                candidate, Task.Quest.Id);
-                    }
-                    if (firstItem.IsCrafter() ||
-                        (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu) && configuration.Advanced.NamazuPreferCraft && !firstItem.IsCrafter()))
-                    {
-                        candidate = configuration.General.CraftingJob;
-                        if (acceptableJobs.Contains(candidate))
-                            acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
-                        else
-                            logger.LogInformation("Crafting quest, but configured job {CraftingJob} is not valid for {QuestId}",
-                                candidate, Task.Quest.Id);
-                    }
-                    else if (firstItem.IsGatherer() ||
-                        (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu) && !configuration.Advanced.NamazuPreferCraft && !firstItem.IsGatherer()))
-                    {
-                        candidate = configuration.General.GatheringJob;
-                        if (acceptableJobs.Contains(candidate))
-                            acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
-                        else
-                            logger.LogInformation("Gathering quest, but configured job {GatheringJob} is not valid for {QuestId}",
-                                candidate, Task.Quest.Id);
+                        if (!firstItem.IsCrafter() && !firstItem.IsGatherer())
+                        {
+                            candidate = configuration.General.CombatJob;
+                            if (acceptableJobs.Contains(candidate))
+                                acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
+                            else
+                                logger.LogInformation("Normal quest, but configured job {CombatJob} is not valid for {QuestId}",
+                                    candidate, Task.Quest.Id);
+                        }
+                        if (firstItem.IsCrafter() ||
+                            (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu) && configuration.Advanced.NamazuPreferCraft && !firstItem.IsCrafter()))
+                        {
+                            candidate = configuration.General.CraftingJob;
+                            if (acceptableJobs.Contains(candidate))
+                                acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
+                            else
+                                logger.LogInformation("Crafting quest, but configured job {CraftingJob} is not valid for {QuestId}",
+                                    candidate, Task.Quest.Id);
+                        }
+                        else if (firstItem.IsGatherer() ||
+                            (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu) && !configuration.Advanced.NamazuPreferCraft && !firstItem.IsGatherer()))
+                        {
+                            candidate = configuration.General.GatheringJob;
+                            if (acceptableJobs.Contains(candidate))
+                                acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
+                            else
+                                logger.LogInformation("Gathering quest, but configured job {GatheringJob} is not valid for {QuestId}",
+                                    candidate, Task.Quest.Id);
+                        }
                     }
                     if (acceptableJobs.Count == 0)
                         throw new Exception(_LF("_JobGearsetError", firstItem.ToFriendlyString(), Task.Quest.Info.Name));
