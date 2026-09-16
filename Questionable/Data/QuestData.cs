@@ -62,7 +62,7 @@ internal sealed class QuestData
             }
             .ToImmutableDictionary(x => x.Key, x => x.Value.Select(y => new QuestId(y)).ToImmutableList());
 
-    
+
     internal static readonly ImmutableDictionary<Job, ImmutableList<uint>> JobToClassQuestChapterIds = new Dictionary<Job, ImmutableList<uint>>()
     {
         { Job.ADV, [] },
