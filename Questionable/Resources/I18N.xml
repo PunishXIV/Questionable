@@ -649,7 +649,6 @@
     <!--<Value lang="ko">로딩 화면 중</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/UiUtils.cs -->
     <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
     <Key>Low level</Key>
     <Value lang="en">Low level</Value>

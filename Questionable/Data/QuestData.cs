@@ -1,4 +1,5 @@
 ﻿using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
@@ -60,6 +61,65 @@ internal sealed class QuestData
                 { 1192, [5174, 5176, 5178, 5179] }
             }
             .ToImmutableDictionary(x => x.Key, x => x.Value.Select(y => new QuestId(y)).ToImmutableList());
+
+
+    internal static readonly ImmutableDictionary<Job, ImmutableList<uint>> JobToClassQuestChapterIds = new Dictionary<Job, ImmutableList<uint>>()
+    {
+        { Job.ADV, [] },
+        // ARR
+        { Job.GLA, [63] },
+        { Job.PLD, [72, 73, 74] },
+        { Job.MRD, [64] },
+        { Job.WAR, [76, 77, 78] },
+        { Job.CNJ, [65] },
+        { Job.WHM, [86, 87, 88] },
+        { Job.ACN, [66] },
+        { Job.SMN, [127, 128, 129] },
+        { Job.SCH, [90, 91, 92] },
+        { Job.PGL, [67] },
+        { Job.MNK, [98, 99, 100] },
+        { Job.LNC, [68] },
+        { Job.DRG, [102, 103, 104] },
+        { Job.ROG, [69] },
+        { Job.NIN, [106, 107, 108] },
+        { Job.ARC, [70] },
+        { Job.BRD, [113, 114, 115] },
+        { Job.THM, [71] },
+        { Job.BLM, [123, 124, 125] },
+        // HW
+        { Job.DRK, [80, 81, 82] },
+        { Job.AST, [94, 95, 96] },
+        { Job.MCH, [117, 118, 119] },
+        // SB
+        { Job.SAM, [110, 111] },
+        { Job.RDM, [131, 132] },
+        { Job.BLU, [134, 135, 146, 170] },
+        // ShB
+        { Job.GNB, [84] },
+        { Job.DNC, [121] },
+        // EW
+        { Job.SGE, [152] },
+        { Job.RPR, [153] },
+        // DT
+        { Job.VPR, [176] },
+        { Job.PCT, [177] },
+        // EC
+        { Job.BST, [206] },
+        // Crafter
+        { Job.ALC, [48, 49, 50] },
+        { Job.ARM, [36, 37, 38] },
+        { Job.BSM, [33, 34, 35] },
+        { Job.CRP, [30, 31, 32] },
+        { Job.CUL, [51, 52, 53] },
+        { Job.GSM, [39, 40, 41] },
+        { Job.LTW, [42, 43, 44] },
+        { Job.WVR, [45, 46, 47] },
+        // Gatherer
+        { Job.MIN, [54, 55, 56] },
+        { Job.BTN, [57, 58, 59] },
+        { Job.FSH, [60, 61, 62] },
+    }.ToImmutableDictionary();
+
     public static readonly IReadOnlyList<ElementId> DeliveryMoogleQuests = (
         (ushort[])[
             // postmoogle quests
@@ -407,77 +467,22 @@ internal sealed class QuestData
 
     public List<QuestInfo> GetClassJobQuests(Job classJob, bool includeRoleQuests = false)
     {
-        List<uint> chapterIds = classJob switch
-        {
-            Job.ADV => [],
-            // ARR
-            Job.GLA => [63],
-            Job.PLD => [72, 73, 74],
-            Job.MRD => [64],
-            Job.WAR => [76, 77, 78],
-            Job.CNJ => [65],
-            Job.WHM => [86, 87, 88],
-            Job.ACN => [66],
-            Job.SMN => [127, 128, 129],
-            Job.SCH => [90, 91, 92],
-            Job.PGL => [67],
-            Job.MNK => [98, 99, 100],
-            Job.LNC => [68],
-            Job.DRG => [102, 103, 104],
-            Job.ROG => [69],
-            Job.NIN => [106, 107, 108],
-            Job.ARC => [70],
-            Job.BRD => [113, 114, 115],
-            Job.THM => [71],
-            Job.BLM => [123, 124, 125],
-            // HW
-            Job.DRK => [80, 81, 82],
-            Job.AST => [94, 95, 96],
-            Job.MCH => [117, 118, 119],
-            // SB
-            Job.SAM => [110, 111],
-            Job.RDM => [131, 132],
-            Job.BLU => [134, 135, 146, 170],
-            // ShB
-            Job.GNB => [84],
-            Job.DNC => [121],
-            // EW
-            Job.SGE => [152],
-            Job.RPR => [153],
-            // DT
-            Job.VPR => [176],
-            Job.PCT => [177],
-            // EC
-            Job.BST => [206],
-            // Crafter
-            Job.ALC => [48, 49, 50],
-            Job.ARM => [36, 37, 38],
-            Job.BSM => [33, 34, 35],
-            Job.CRP => [30, 31, 32],
-            Job.CUL => [51, 52, 53],
-            Job.GSM => [39, 40, 41],
-            Job.LTW => [42, 43, 44],
-            Job.WVR => [45, 46, 47],
-            // Gatherer
-            Job.MIN => [54, 55, 56],
-            Job.BTN => [57, 58, 59],
-            Job.FSH => [60, 61, 62],
-            var _ => LogUnsupportedClassJobAndReturnEmpty(classJob)
-        };
+        if (!JobToClassQuestChapterIds.TryGetValue(classJob, out var chapterIds))
+            chapterIds = LogUnsupportedClassJobAndReturnEmpty(classJob);
 
         if (includeRoleQuests)
-            chapterIds.AddRange(GetRoleQuestIds(classJob));
+            chapterIds = [.. chapterIds, .. GetRoleQuestIds(classJob)];
 
         return GetQuestsInNewGamePlusChapters(chapterIds);
     }
 
-    private List<uint> LogUnsupportedClassJobAndReturnEmpty(Job classJob)
+    private ImmutableList<uint> LogUnsupportedClassJobAndReturnEmpty(Job classJob)
     {
         _pluginLog?.Debug("Ignoring unsupported class job in GetClassJobQuests: {ClassJob}", classJob);
         return [];
     }
 
-    public List<QuestInfo> GetRoleQuests(Job referenceClassJob) => GetQuestsInNewGamePlusChapters(GetRoleQuestIds(referenceClassJob).ToList());
+    public List<QuestInfo> GetRoleQuests(Job referenceClassJob) => GetQuestsInNewGamePlusChapters(GetRoleQuestIds(referenceClassJob).ToImmutableList());
 
     private static IEnumerable<uint> GetRoleQuestIds(Job classJob)
     {
@@ -492,7 +497,7 @@ internal sealed class QuestData
         };
     }
 
-    private List<QuestInfo> GetQuestsInNewGamePlusChapters(List<uint> chapterIds)
+    private List<QuestInfo> GetQuestsInNewGamePlusChapters(ImmutableList<uint> chapterIds)
     {
         return _quests.Values
             .Where(x => x is QuestInfo)
