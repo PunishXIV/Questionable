@@ -6099,43 +6099,55 @@
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Auto</Key>
     <Value lang="en">Auto</Value>
+    <Value lang="zh-cn">自动</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Generates a random name if invalid or left blank.</Key>
     <Value lang="en">Generates a random name if invalid or left blank.</Value>
+    <Value lang="zh-cn">如果名称无效或留空，则随机生成一个名称。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
     <Key>Unlocks</Key>
     <Value lang="en">Unlocks</Value>
+    <Value lang="zh-cn">解锁</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
     <Key>Loading...</Key>
     <Value lang="en">Loading...</Value>
+    <Value lang="zh-cn">加载中...</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
     <Key>Hide unlocked items</Key>
     <Value lang="en">Hide unlocked items</Value>
+    <Value lang="zh-cn">隐藏已解锁物品</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Interactions/Interact.cs -->
     <Key>_JobGearsetError</Key>
     <Value lang="en">QST tried to find a gearset for a job like {0} to continue {1}, but no matching gearset was found. It may be fixed by manually updating the current gearset in Character, or equipping a missing job stone. Please report this error in Discord</Value>
+    <Value lang="zh-cn">QST 试图寻找适合 {0} 的装备套装以继续执行 {1}，但未找到匹配的套装。可尝试在角色面板中手动更新当前套装，或装备缺失的职业水晶来解决此问题。请在 Discord 中报告此错误。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Don't pick up "My Feisty Little Chocobo"</Key>
+    <Value lang="en">Don't pick up "My Feisty Little Chocobo"</Value>
+    <Value lang="zh-cn">不接取「可靠的搭档」任务</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>'My Feisty Little Chocobo' enables using your companion chocobo for overworld battles, and is completed automatically after 'My Little Chocobo' unless this is ticked.</Key>
+    <Value lang="en">'My Feisty Little Chocobo' enables using your companion chocobo for overworld battles, and is completed automatically after 'My Little Chocobo' unless this is ticked.</Value>
+    <Value lang="zh-cn">「可靠的搭档」任务可解锁搭档陆行鸟的野外战斗功能。除非勾选此项，否则会在完成「我的专属陆行鸟」后自动完成该任务。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ARealmRebornComponent.cs -->
     <Key>The ARR Alliance Raids must be completed to progress to Heavensward.\nThey can be completed quickly and easily in unrestricted party mode ("unsync"), but Labyrinth of the Ancients has a minimum requirement of 12 players (4 per party) to complete the Atomos encounter.\nSyrcus Tower and World of Darkness only require three players (one player per party) to enter.</Key>
+    <Value lang="en">The ARR Alliance Raids must be completed to progress to Heavensward.\nThey can be completed quickly and easily in unrestricted party mode ("unsync"), but Labyrinth of the Ancients has a minimum requirement of 12 players (4 per party) to complete the Atomos encounter.\nSyrcus Tower and World of Darkness only require three players (one player per party) to enter.</Value>
+    <Value lang="zh-cn">必须完成重生之境团队任务才能进入苍穹之禁城。在解除限制模式（"解除同步"）下可以快速轻松完成攻略，但古代人迷宫的阿托莫斯战斗至少需要12名玩家（每队4人）才能攻略。希尔科斯塔和暗之世界只需3名玩家（每队1人）即可进入。</Value>
   </Entry>
 </I18N>
