@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "alydev", "Date": "2026-09-12"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -96,7 +96,7 @@
           "TerritoryId": 139,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
         },
         {
           "Position": {
@@ -106,7 +106,8 @@
           },
           "TerritoryId": 139,
           "InteractionType": "WalkTo",
-          "TargetTerritoryId": 180
+          "TargetTerritoryId": 180,
+          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
         },
         {
           "Position": {

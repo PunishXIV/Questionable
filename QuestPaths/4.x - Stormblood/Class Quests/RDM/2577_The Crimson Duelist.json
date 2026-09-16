@@ -198,8 +198,7 @@
           "StopDistance": 1,
           "TerritoryId": 145,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "NextQuestId": 2578
+          "Fly": true
         }
       ]
     }

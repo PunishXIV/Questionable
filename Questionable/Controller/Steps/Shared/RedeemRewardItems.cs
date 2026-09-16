@@ -192,8 +192,7 @@ internal static class RedeemRewardItems
 
                 _usedItem = true;
                 _continueAt = DateTime.Now
-                    .Add(castTime)
-                    .AddSeconds(3);
+                    .Add(castTime);
                 logger.LogTrace("condition[ConditionFlag.Casting]");
                 return ETaskResult.StillRunning;
             }

@@ -72,8 +72,7 @@ internal static class Interact
                 var skip = false;
                 unsafe
                 {
-                    if (UIState.Instance()->IsChocoboTaxiStandUnlocked(step.TaxiStandId.Value))
-                        skip = true;
+                    skip = PlayerState.Instance()->CurrentLevel < 10 || UIState.Instance()->IsChocoboTaxiStandUnlocked(step.TaxiStandId.Value);
                 }
                 if (skip)
                     yield break;

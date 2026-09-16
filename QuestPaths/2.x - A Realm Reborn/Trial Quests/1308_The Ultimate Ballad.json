@@ -1,21 +1,21 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-  "Author": "liza",
+  "Author": "Kiarra",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "DataId": 1009294,
+          "DataId": 1006950,
           "Position": {
-            "X": -63.767517,
-            "Y": -1.7171676,
-            "Z": 11.673096
+            "X": 14.755432,
+            "Y": 21.252728,
+            "Z": -640.71106
           },
-          "TerritoryId": 132,
+          "TerritoryId": 156,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "AetheryteShortcut": "Mor Dhona"
         }
       ]
     },
@@ -23,16 +23,14 @@
       "Sequence": 1,
       "Steps": [
         {
-          "DataId": 1011250,
+          "DataId": 1008278,
           "Position": {
-            "X": 616.51013,
-            "Y": 22.291952,
-            "Z": 85.22156
+            "X": 15.27417,
+            "Y": 21.252728,
+            "Z": -634.8516
           },
-          "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true
+          "TerritoryId": 156,
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -40,10 +38,10 @@
       "Sequence": 2,
       "Steps": [
         {
-          "TerritoryId": 153,
+          "TerritoryId": 155,
           "InteractionType": "Duty",
           "DutyOptions": {
-            "ContentFinderConditionId": 82,
+            "ContentFinderConditionId": 68,
             "Enabled": false,
             "LowPriority": true
           }
@@ -54,14 +52,15 @@
       "Sequence": 255,
       "Steps": [
         {
-          "DataId": 1011250,
+          "DataId": 1008278,
           "Position": {
-            "X": 616.51013,
-            "Y": 22.291952,
-            "Z": 85.22156
+            "X": 15.27417,
+            "Y": 21.252728,
+            "Z": -634.8516
           },
-          "TerritoryId": 153,
-          "InteractionType": "CompleteQuest"
+          "TerritoryId": 156,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Mor Dhona"
         }
       ]
     }

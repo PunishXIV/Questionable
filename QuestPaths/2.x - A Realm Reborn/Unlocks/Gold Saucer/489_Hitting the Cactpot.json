@@ -1,18 +1,41 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
+          "TerritoryId": 144,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Gold Saucer] Entrance & Card Squares",
+            "[Gold Saucer] Cactpot Board"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -94.31675,
+                  "Y": -1.2929175,
+                  "Z": 65.39152
+                },
+                "TerritoryId": 144,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
+        {
           "DataId": 1010446,
           "Position": {
-              "X": 122.85034,
-              "Y": 13.001344,
-              "Z": -9.384338
+            "X": 121.0189,
+            "Y": 13.001184,
+            "Z": -10.356828
           },
           "TerritoryId": 144,
+          "StopDistance": 1,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Gold Saucer",
           "AethernetShortcut": [

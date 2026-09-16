@@ -62,8 +62,13 @@ internal sealed class QuestRewardComponent
         DrawGroup(_L("Triple Triad Cards"), EItemRewardType.TripleTriadCard);
     }
 
-    private readonly List<ChocoboTaxiStand> _taxiStands = dataManager.GetExcelSheet<ChocoboTaxiStand>().Where(x => x.RowId >= 1179650).ToList();
+    private readonly List<ChocoboTaxiStand> _taxiStands = dataManager.GetExcelSheet<ChocoboTaxiStand>().ToList();
     private Dictionary<uint, List<Domain.Quest>> _taxiStandUnlockQuests = [];
+    private static readonly HashSet<uint> _excludedTaxiStands = new HashSet<uint> {
+            1179648, // Reginald Eventman I
+            1179649, // Reginald Eventman II
+            1179678, // （空き）placeholder
+        };
     private unsafe void DrawChocoboPorterGroup()
     {
         if (!ImGui.CollapsingHeader($"{_T<Addon>(2730)}###RewardChocoboPorter"))
@@ -85,6 +90,8 @@ internal sealed class QuestRewardComponent
 
         foreach (ChocoboTaxiStand taxiStand in _taxiStands)
         {
+            if (_excludedTaxiStands.Contains(taxiStand.RowId))
+                continue;
             var complete = uistate->IsChocoboTaxiStandUnlocked(taxiStand.RowId);
             if (_hideCompleted && complete) continue;
             ImGui.Text(taxiStand.PlaceName.ToMacroString());

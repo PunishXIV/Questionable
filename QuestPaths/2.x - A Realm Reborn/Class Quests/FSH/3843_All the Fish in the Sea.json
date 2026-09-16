@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-25"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -22,6 +22,40 @@
       "Sequence": 255,
       "Steps": [
         {
+          "TerritoryId": 129,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Fishermen's Guild",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -168.47485,
+                  "Y": 4.5500045,
+                  "Z": 163.65295
+                },
+                "TerritoryId": 129,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
+        {
+          "TerritoryId": 129,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ]
+        },
+        {
+          "TerritoryId": 129,
+          "InteractionType": "SwitchClass",
+          "TargetClass": "QuestStartJob"
+        },
+        {
           "DataId": 1005424,
           "Position": {
             "X": -412.80237,
@@ -29,12 +63,7 @@
             "Z": 75.05908
           },
           "TerritoryId": 129,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ],
-          "NextQuestId": 1109
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

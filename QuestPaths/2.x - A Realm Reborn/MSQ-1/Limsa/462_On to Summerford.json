@@ -34,18 +34,6 @@
           ]
         },
         {
-          "DataId": 1002721,
-          "Position": {
-            "X": 187.9148,
-            "Y": 98.5214,
-            "Z": -193.19452
-          },
-          "TerritoryId": 134,
-          "InteractionType": "UnlockTaxiStand",
-          "TaxiStandId": 1179670,
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms"
-        },
-        {
           "TerritoryId": 134,
           "InteractionType": "RegisterFreeOrFavoredAetheryte",
           "Aetheryte": "Middle La Noscea - Summerford Farms"

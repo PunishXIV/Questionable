@@ -469,11 +469,13 @@ internal sealed class CreationUtilsComponent
 
                                      """ + (GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ?
                                    $$"""
-                                               "InteractionType": "",
+                                               "InteractionType": "WalkTo",
+                                               "StopDistance": 1,
                                                "Fly": true
                                      """ :
                                    $$"""
-                                               "InteractionType": ""
+                                               "InteractionType": "WalkTo",
+                                               "StopDistance": 1
                                      """));
         }
         else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
