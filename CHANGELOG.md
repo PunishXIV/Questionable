@@ -1,1 +1,2 @@
 - Feature: random chocobo names in settings will now be locked in by editing the field. Clear the text box and press enter to get a new name. -alydev
+- Update: CN translation -ShadyWhite
