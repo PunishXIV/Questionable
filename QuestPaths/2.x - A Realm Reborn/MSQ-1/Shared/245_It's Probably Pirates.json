@@ -128,6 +128,11 @@
       "Sequence": 4,
       "Steps": [
         {
+          "TerritoryId": 138,
+          "InteractionType": "AttuneAetheryte",
+          "Aetheryte": "Western La Noscea - Swiftperch"
+        },
+        {
           "DataId": 1002722,
           "Position": {
             "X": 667.68884,
