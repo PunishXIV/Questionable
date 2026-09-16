@@ -1,2 +1,1 @@
-- Feature: random chocobo names in settings will now be locked in by editing the field. Clear the text box and press enter to get a new name. -alydev
-- Update: CN translation -ShadyWhite
+- Bug fix: Ignore configured job preferences if quest has only one acceptable job (class quests) -alydev
