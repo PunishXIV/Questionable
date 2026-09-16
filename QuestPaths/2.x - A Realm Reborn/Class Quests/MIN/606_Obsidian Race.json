@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-02"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-08-02" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -22,9 +22,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
+              "InTerritory": [131]
             }
           }
         }
@@ -49,9 +47,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
+              "InTerritory": [131]
             }
           }
         }
@@ -79,6 +75,27 @@
     {
       "Sequence": 3,
       "Steps": [
+        {
+          "TerritoryId": 131,
+          "InteractionType": "None",
+          "AethernetShortcut": [
+            "[Ul'dah] Gladiators' Guild",
+            "[Ul'dah] Miners' Guild"
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -82.29199,
+                  "Y": 6.9845686,
+                  "Z": 9.414734
+                },
+                "TerritoryId": 131,
+                "MaximumDistance": 50
+              }
+            }
+          }
+        },
         {
           "TerritoryId": 131,
           "InteractionType": "Gather",
@@ -112,9 +129,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
+              "InTerritory": [131]
             }
           }
         }
@@ -139,10 +154,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
+              "InTerritory": [130, 131]
             }
           }
         }
