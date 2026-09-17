@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
-  "LastChecked": {"Username": "alydev", "Date": "2026-09-10"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -24,21 +24,31 @@
       "Sequence": 1,
       "Steps": [
         {
+          "DataId": 2452,
           "Position": {
-            "X": -38.375584,
-            "Y": 8.492833,
-            "Z": 156.09068
+            "X": -24.15509,
+            "Y": 7.5814295,
+            "Z": 120.1953
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "ComplexCombatData": [
-            {
-              "DataId": 2452,
-              "MinimumKillCount": 2
-            }
-          ],
-          "Fly": true
+          "Fly": true,
+          "KillEnemyDataIds": [2452],
+          "CompletionQuestVariablesFlags": [{"Low": 1},null,null,null,null,null]
+        },
+        {
+          "DataId": 2452,
+          "Position": {
+            "X": -114.458,
+            "Y": 7.8163004,
+            "Z": 222.3391
+          },
+          "TerritoryId": 146,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "Fly": true,
+          "KillEnemyDataIds": [2452]
         }
       ]
     },

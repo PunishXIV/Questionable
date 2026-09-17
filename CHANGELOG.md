@@ -1,1 +1,1 @@
-- Feature: class quests and quests that can be done by only one class now check that class's level (instead of the player's current job's level) when testing if locked -alydev
+- Feature: Add "Levequests" priority preset to unlock all ARR levemetes (the leves themselves are not automated by Questionable at this time) -alydev

@@ -537,26 +537,36 @@ internal sealed class PriorityWindow : LWindow
             5008,5239,                                          // nitowikwe
             5460,                                               // tiisol ja
         ]).FromNumericListOfQuests();
+        List<ElementId> unlockLeves = ((ushort[])[
+            693,220,687,    // Initial unlock
+            58,59,60,       // hest
+            694,695,696,14, // la noscea
+            221,443,444,    // shroud
+            688,692,15,     // thanalan
+            16,17,          // coerthas
+            18,             // mor dhona
+        ]).FromNumericListOfQuests();
         var aetherCurrents = _T<Addon>(2445);
         var roleQuests = _T<JournalCategory>(95);
         _builtInPresets = new(StringComparer.Ordinal)
         {
-            [JobQuestsPresetName] = [],
-            [_T<ContentRoulette>(8)] = ((ushort[])[4959, 5013, 5014]).FromNumericListOfQuests(),
-            [_L("Unlock all jobs")] = jobUnlocks,
+            [JobQuestsPresetName] = [], // Job Quests
+            [_T<ContentRoulette>(8)] = ((ushort[])[4959, 5013, 5014]).FromNumericListOfQuests(), // Level Cap Dungeons
             [_L("Gil (set TextAdvance to prefer Gil sacks)")] = gilList,
+            [_L("Unlock all jobs")] = jobUnlocks,
             [_L("Post-ARR unlocks")] = postARRUnlocks,
-            [_T<JournalGenre>(94)] = QuestData.DeliveryMoogleQuests.ToList(),
-            [_T<JournalCategory>(16)] = QuestData.HardModePrimals.Cast<ElementId>().ToList(),
-            [_T<JournalCategory>(18)] = QuestData.CrystalTowerQuests.Cast<ElementId>().ToList(),
-            [_T<Addon>(5700)] = unlockCustomDeliveries,
-            [$"{_T<AchievementCategory>(37)}: {_T<BeastTribe>(8).Titleize()}"] = QuestData.UnlockMoogleSocietyQuests.ToList(),
-            [$"{aetherCurrents}: {_T<ExVersion>(1)}"] = GetAetherCurrentQuests(397, 398, 399, 400, 401),
+            [_T<Addon>(455)] = unlockLeves, // Levequests
+            [_T<JournalGenre>(94)] = QuestData.DeliveryMoogleQuests.ToList(), // Delivery Moogle Quests
+            [_T<JournalCategory>(16)] = QuestData.HardModePrimals.Cast<ElementId>().ToList(), // Primals
+            [_T<JournalCategory>(18)] = QuestData.CrystalTowerQuests.Cast<ElementId>().ToList(), // Crystal Tower
+            [_T<Addon>(5700)] = unlockCustomDeliveries, // Custom Deliveries
+            [$"{_T<AchievementCategory>(37)}: {_T<BeastTribe>(8).Titleize()}"] = QuestData.UnlockMoogleSocietyQuests.ToList(), // Moogles
+            [$"{aetherCurrents}: {_T<ExVersion>(1)}"] = GetAetherCurrentQuests(397, 398, 399, 400, 401), // Aether Currents
             [$"{aetherCurrents}: {_T<ExVersion>(2)}"] = GetAetherCurrentQuests(612, 613, 614, 620, 621, 622),
             [$"{aetherCurrents}: {_T<ExVersion>(3)}"] = GetAetherCurrentQuests(813, 814, 815, 816, 817, 818),
             [$"{aetherCurrents}: {_T<ExVersion>(4)}"] = GetAetherCurrentQuests(956, 957, 958, 959, 960, 961),
             [$"{aetherCurrents}: {_T<ExVersion>(5)}"] = GetAetherCurrentQuests(1187, 1188, 1189, 1190, 1191, 1192),
-            [$"{roleQuests}: {_T<Addon>(1082)}"] = _questData.GetRoleQuests(Job.PLD).Select(x => x.QuestId).ToList(),
+            [$"{roleQuests}: {_T<Addon>(1082)}"] = _questData.GetRoleQuests(Job.PLD).Select(x => x.QuestId).ToList(), // Role Quests
             [$"{roleQuests}: {_T<Addon>(1083)}"] = _questData.GetRoleQuests(Job.WHM).Select(x => x.QuestId).ToList(),
             [$"{roleQuests}: {_T<Addon>(1084)}"] = _questData.GetRoleQuests(Job.MNK).Select(x => x.QuestId).ToList(),
             [$"{roleQuests}: {_T<Addon>(1085)}"] = _questData.GetRoleQuests(Job.BRD).Select(x => x.QuestId).ToList(),

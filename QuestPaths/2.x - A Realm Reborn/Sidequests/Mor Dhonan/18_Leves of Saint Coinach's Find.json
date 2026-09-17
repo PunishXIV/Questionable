@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-28"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,12 +16,14 @@
           "Comment": "Accept Trial Leve",
           "DataId": 1004348,
           "Position": {
-            "X": 416,
-            "Y": -6.03864,
-            "Z": -444.4
+            "X": 417.19382,
+            "Y": -6.000782,
+            "Z": -445.3679
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest"
+          "StopDistance": 1,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
         }
       ]
     },
@@ -36,6 +38,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Instruction",
+          "Fly": true,
           "Comment": "Remove gear, or use an underleveled class.\nComplete Trial Leve to continue"
         }
       ]

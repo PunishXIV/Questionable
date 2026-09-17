@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-28"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -16,12 +16,14 @@
           "Comment": "Accept Trial Leve",
           "DataId": 1002384,
           "Position": {
-            "X": 227.617,
-            "Y": 221.991,
-            "Z": 341.681
+            "X": 228.30836,
+            "Y": 222,
+            "Z": 340.4614
           },
           "TerritoryId": 155,
-          "InteractionType": "AcceptQuest"
+          "StopDistance": 1,
+          "InteractionType": "AcceptQuest",
+          "Fly": true
         }
       ]
     },
