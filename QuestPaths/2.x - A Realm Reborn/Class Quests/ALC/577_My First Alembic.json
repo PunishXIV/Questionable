@@ -30,10 +30,11 @@
         {
           "DataId": 1002299,
           "Position": {
-            "X": -98.8938,
-            "Y": 40.200146,
-            "Z": 120.83618
+            "X": -103.62651,
+            "Y": 41.50014,
+            "Z": 120.44341
           },
+          "StopDistance": 0.25,
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Ul'dah",
@@ -94,10 +95,11 @@
         {
           "DataId": 1002299,
           "Position": {
-            "X": -98.8938,
-            "Y": 40.200146,
-            "Z": 120.83618
+            "X": -103.62651,
+            "Y": 41.50014,
+            "Z": 120.44341
           },
+          "StopDistance": 0.25,
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
           "AllowHighQuality": true,
