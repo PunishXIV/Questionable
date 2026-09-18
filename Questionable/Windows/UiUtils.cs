@@ -68,7 +68,9 @@ internal sealed class UiUtils(
         return (QstTheme.Danger, FontAwesomeIcon.Times);
     }
 
-    public bool ChecklistItem(string text, Vector4 color, FontAwesomeIcon icon, float extraPadding = 0, uint? iconOverride = null)
+    /// <returns>bool: IsItemHovered for whole widget</returns>
+    /// <param name="onClick">Invoked once if any part of the widget was clicked this frame.</param>
+    public bool ChecklistItem(string text, Vector4 color, FontAwesomeIcon icon, float extraPadding = 0, uint? iconOverride = null, Action? onClick = null)
     {
         if (extraPadding > 0)
             ImGui.SetCursorPosX(ImGui.GetCursorPosX() + extraPadding);
@@ -81,12 +83,16 @@ internal sealed class UiUtils(
         }
 
         bool hover = ImGui.IsItemHovered();
+        bool click = ImGui.IsItemClicked();
 
         ImGui.SameLine();
         if (extraPadding > 0)
             ImGui.SetCursorPosX(ImGui.GetCursorPosX() + extraPadding);
         ImGui.TextUnformatted(text);
         hover |= ImGui.IsItemHovered();
+        click |= ImGui.IsItemClicked();
+        if (click)
+            onClick?.Invoke();
         return hover;
     }
 
