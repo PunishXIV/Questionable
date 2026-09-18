@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using System.Text.RegularExpressions;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Conditions;
@@ -7,6 +8,7 @@ using Dalamud.Interface.Utility.Raii;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Event;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
@@ -38,12 +40,25 @@ internal sealed partial class ActiveQuestComponent
 {
     [GeneratedRegex(@"\s\s+", RegexOptions.IgnoreCase, "en-US")]
     private static partial Regex MultipleWhitespaceRegex();
+    private List<PriorityQuestInfo> priorityQuests => questFunctions.NextPriorityQuestsThatCanBeAccepted;
+    private bool anyAvailable;
+    private bool anyUnavailable;
 
     public unsafe void Draw(bool isMinimized)
     {
         (QuestController.QuestProgress Progress, QuestController.ECurrentQuestType Type)? currentQuestDetails = questController.CurrentQuestDetails;
         QuestController.QuestProgress? currentQuest = currentQuestDetails?.Progress;
         QuestController.ECurrentQuestType? currentQuestType = currentQuestDetails?.Type;
+
+        anyAvailable = false;
+        anyUnavailable = false;
+        foreach (var p in priorityQuests)
+        {
+            if (p.IsAvailable) anyAvailable = true;
+            else anyUnavailable = true;
+            if (anyAvailable && anyUnavailable) break;
+        }
+
         if (pathDataUpdater.WaitingForPluginUpdate)
         {
             using ImRaii.ColorDisposable _ = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent);
@@ -185,6 +200,7 @@ internal sealed partial class ActiveQuestComponent
                 ImGui.Text(pathDataUpdater.Status);
             else
                 ImGui.Text(_L("No supported quests"));
+            DrawPriorityCrystal();
             if (!isMinimized)
             {
                 var color = QstTheme.TextMuted;
@@ -202,21 +218,40 @@ internal sealed partial class ActiveQuestComponent
                     ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
                 }
 
-                foreach (IQuestInfo qInfo in GetTrackedQuests())
+                var trackedQuests = GetTrackedQuests();
+
+                using (ImRaii.Child(
+                    "##trackedQuests",
+                    new Vector2(0, ImGui.GetTextLineHeightWithSpacing() * (trackedQuests.Count > 5 ? 5 : trackedQuests.Count)),
+                    border: trackedQuests.Count > 5))
                 {
-                    if (!questFunctions.prereqCache.ContainsKey(qInfo.QuestId.Value))
-                        questFunctions.PopulatePrereqCache(qInfo.QuestId.Value, qInfo);
-                    (bool isLocked, string[]? reasons) = questFunctions.IsQuestLocked(qInfo.QuestId);
-                    QuestManager* questManager = QuestManager.Instance();
-                    (var _color, var icon, string status) = uiUtils.GetQuestStyle(qInfo.QuestId);
-                    bool acceptedButHidden = questFunctions.IsQuestAccepted(qInfo.QuestId) && questManager->GetQuestById(qInfo.QuestId.Value)->IsHidden;
-                    if (uiUtils.ChecklistItem($"{qInfo.Name} ({qInfo.QuestId})", _color, icon, iconOverride: QuestJournalUtils.GetIconOverride((QuestInfo)qInfo, icon)))
-                        if (reasons != null && reasons.Length > 0)
-                            ImGui.SetTooltip(status + "\n  " + string.Join("\n  ", reasons));
-                        else if (acceptedButHidden)
-                            ImGui.SetTooltip(_L("This quest is accepted, but is hidden in your Journal."));
-                        else
-                            ImGui.SetTooltip(status);
+                    foreach (IQuestInfo qInfo in trackedQuests)
+                    {
+                        if (!questFunctions.prereqCache.ContainsKey(qInfo.QuestId.Value))
+                            questFunctions.PopulatePrereqCache(qInfo.QuestId.Value, qInfo);
+                        (bool isLocked, string[]? reasons) = questFunctions.IsQuestLocked(qInfo.QuestId);
+                        QuestManager* questManager = QuestManager.Instance();
+                        (var _color, var icon, string status) = uiUtils.GetQuestStyle(qInfo.QuestId);
+                        bool acceptedButHidden = questFunctions.IsQuestAccepted(qInfo.QuestId) && questManager->GetQuestById(qInfo.QuestId.Value)->IsHidden;
+                        if (uiUtils.ChecklistItem(
+                            $"{qInfo.Name} ({qInfo.QuestId})",
+                            _color,
+                            icon,
+                            iconOverride: QuestJournalUtils.GetIconOverride((QuestInfo)qInfo, icon),
+                            onClick: () =>
+                            {
+                                AgentQuestJournal.Instance()->OpenForQuest(qInfo.QuestId.Value, type: 1);
+                            }))
+                        {
+                            ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+                            if (reasons != null && reasons.Length > 0)
+                                ImGui.SetTooltip(status + "\n  " + string.Join("\n  ", reasons));
+                            else if (acceptedButHidden)
+                                ImGui.SetTooltip(_L("This quest is accepted, but is hidden in your Journal."));
+                            else
+                                ImGui.SetTooltip(status);
+                        }
+                    }
                 }
             }
 
@@ -253,7 +288,7 @@ internal sealed partial class ActiveQuestComponent
 #endif
     }
 
-    internal unsafe IEnumerable<IQuestInfo> GetTrackedQuests()
+    internal unsafe ImmutableList<IQuestInfo> GetTrackedQuests()
     {
         IEnumerable<IQuestInfo> outp = [];
         (QuestReference? nextMsq, string? reason) = questFunctions.GetMainScenarioQuestId();
@@ -261,11 +296,14 @@ internal sealed partial class ActiveQuestComponent
             outp = outp.Append(questData.GetQuestInfo(nextMsqId));
         QuestManager* questManager = QuestManager.Instance();
         for (int i = questManager->TrackedQuests.Length - 1; i >= 0; --i)
-            if (questManager->TrackedQuests[i].QuestType == 1)
-                outp = outp.Append(
-                    questData.GetQuestInfo(
-                        QuestId.FromRowId(questManager->NormalQuests[questManager->TrackedQuests[i].Index].QuestId)));
-        return outp;
+            if (questManager->TrackedQuests[i].QuestType == 1 &&
+                    questData.TryGetQuestInfo(
+                        QuestId.FromRowId(questManager->NormalQuests[questManager->TrackedQuests[i].Index].QuestId), out var qInfo))
+                outp = outp.Append(qInfo);
+        for (int i = questManager->NormalQuests.Length - 1; i >= 0; --i)
+            if (questData.TryGetQuestInfo(QuestId.FromRowId(questManager->NormalQuests[i].QuestId), out var qInfo) && !outp.Contains(qInfo))
+                outp = outp.Append(qInfo);
+        return outp.ToImmutableList();
     }
 
     private void DrawQuestNames(QuestController.QuestProgress currentQuest,
@@ -280,6 +318,7 @@ internal sealed partial class ActiveQuestComponent
                     currentQuest.Quest.Id,
                     currentQuest.Sequence,
                     currentQuest.Step));
+            DrawPriorityCrystal();
         }
         else if (currentQuestType == QuestController.ECurrentQuestType.Gathering)
         {
@@ -290,6 +329,7 @@ internal sealed partial class ActiveQuestComponent
                     currentQuest.Quest.Id,
                     currentQuest.Sequence,
                     currentQuest.Step));
+            DrawPriorityCrystal();
         }
         else
         {
@@ -346,16 +386,6 @@ internal sealed partial class ActiveQuestComponent
                                                     !questFunctions.IsQuestAcceptedOrComplete(x) &&
                                                     !questFunctions.IsQuestUnobtainable(x));
                 bool preventQuestCompletion = configuration.Advanced.PreventQuestCompletion;
-
-                List<PriorityQuestInfo> priorityQuests = questFunctions.NextPriorityQuestsThatCanBeAccepted;
-                bool anyAvailable = false;
-                bool anyUnavailable = false;
-                foreach (var p in priorityQuests)
-                {
-                    if (p.IsAvailable) anyAvailable = true;
-                    else anyUnavailable = true;
-                    if (anyAvailable && anyUnavailable) break;
-                }
 
                 bool showStopClock = hasLevelCondition || hasCompleteQuestConditions || hasAcceptQuestConditions || preventQuestCompletion;
                 bool showPriorityCrystal = true; //anyAvailable || anyUnavailable;
@@ -455,46 +485,7 @@ internal sealed partial class ActiveQuestComponent
 
 
                 if (showPriorityCrystal)
-                {
-                    if (showStopClock)
-                        ImGui.SameLine();
-                    ImGui.TextColored(anyAvailable || anyUnavailable ? QstTheme.Amber : QstTheme.Text, SeIconChar.Hyadelyn.ToIconString());
-                    if (ImGui.IsItemHovered())
-                    {
-                        List<ElementId> availablePriorityQuests = priorityQuests
-                            .Where(x => x.IsAvailable)
-                            .Select(x => x.QuestId)
-                            .ToList();
-                        List<PriorityQuestInfo> unavailablePriorityQuests = priorityQuests
-                            .Where(x => !x.IsAvailable)
-                            .ToList();
-                        using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
-                        ImGui.Text(
-                            _L("Certain priority quest (e.g. class quests) may be started/completed by the plugin prior to continuing, usually at a teleport step."));
-                        ImGui.Separator();
-                        ImGui.Text(_L("Available priority quests:"));
-                        if (availablePriorityQuests.Count > 0)
-                        {
-                            foreach (ElementId questId in availablePriorityQuests)
-                            {
-                                if (questRegistry.TryGetQuest(questId, out Quest? quest))
-                                    ImGui.BulletText($"{quest.Info.Name} ({questId})");
-                            }
-                        }
-                        else
-                            ImGui.BulletText(_L("(none)"));
-
-                        if (unavailablePriorityQuests.Count > 0)
-                        {
-                            ImGui.Text(_L("Unavailable priority quests:"));
-                            foreach ((ElementId questId, string? reason) in unavailablePriorityQuests)
-                            {
-                                if (questRegistry.TryGetQuest(questId, out Quest? quest))
-                                    ImGui.BulletText($"{quest.Info.Name} ({questId}) - {reason}");
-                            }
-                        }
-                    }
-                }
+                    DrawPriorityCrystal(sameLine: showStopClock);
 
                 QuestSequence? metaSequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
                 using (ImRaii.Disabled())
@@ -834,5 +825,48 @@ internal sealed partial class ActiveQuestComponent
             return string.Concat(text.AsSpan(0, 25).Trim(), ((SeIconChar)57434).ToIconString());
 
         return text;
+    }
+
+    private void DrawPriorityCrystal(bool sameLine = true)
+    {
+        if (sameLine)
+            ImGui.SameLine();
+        ImGui.TextColored(anyAvailable || anyUnavailable ? QstTheme.Amber : QstTheme.Text, SeIconChar.Hyadelyn.ToIconString());
+        if (ImGui.IsItemHovered())
+        {
+            List<ElementId> availablePriorityQuests = priorityQuests
+                .Where(x => x.IsAvailable)
+                .Select(x => x.QuestId)
+                .ToList();
+            List<PriorityQuestInfo> unavailablePriorityQuests = priorityQuests
+                .Where(x => !x.IsAvailable)
+                .ToList();
+            using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
+            ImGui.Text(
+                _L("Certain priority quest (e.g. class quests) may be started/completed by the plugin prior to continuing, usually at a teleport step."));
+            ImGui.Separator();
+            ImGui.Text(_L("Available priority quests:"));
+            if (availablePriorityQuests.Count > 0)
+            {
+                foreach (ElementId questId in availablePriorityQuests)
+                {
+                    if (questRegistry.TryGetQuest(questId, out Quest? quest))
+                        ImGui.BulletText($"{quest.Info.Name} ({questId})");
+                }
+            }
+            else
+                ImGui.BulletText(_L("(none)"));
+
+            if (unavailablePriorityQuests.Count > 0)
+            {
+                ImGui.Text(_L("Unavailable priority quests:"));
+                foreach ((ElementId questId, string? reason) in unavailablePriorityQuests)
+                {
+                    if (questRegistry.TryGetQuest(questId, out Quest? quest))
+                        ImGui.BulletText($"{quest.Info.Name} ({questId}) - {reason}");
+                }
+            }
+        }
+
     }
 }

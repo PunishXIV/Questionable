@@ -1,1 +1,1 @@
-- Feature: Add "Levequests" priority preset to unlock all ARR levemetes (the leves themselves are not automated by Questionable at this time) -alydev
+- Feature: list all accepted quests that are hidden in the journal; clicking opens journal -alydev
