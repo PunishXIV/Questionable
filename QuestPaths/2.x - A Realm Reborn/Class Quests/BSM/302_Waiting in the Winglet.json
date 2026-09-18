@@ -10,25 +10,15 @@
         {
           "DataId": 1000997,
           "Position": {
-            "X": -83.687256,
-            "Y": 18.92163,
-            "Z": -31.686525
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Limsa Lominsa"
-        },
-        {
-          "DataId": 1000997,
-          "Position": {
             "X": -31.265808,
             "Y": 44.5,
             "Z": 185.53442
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
-            "[Limsa Lominsa] Culinarians' Guild",
+            "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"
           ]
         }
