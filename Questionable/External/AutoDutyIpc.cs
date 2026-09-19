@@ -72,8 +72,8 @@ internal sealed class AutoDutyIpc
 
         try
         {
-            _setConfig.InvokeAction("Unsynced", $"{dutyMode == DutyMode.Regular}");
-            _setConfig.InvokeAction("dutyModeEnum", dutyMode.ToString());
+            _setConfig.InvokeAction("Meta.Unsynced", $"{dutyMode == DutyMode.Regular}");
+            _setConfig.InvokeAction("Meta.DutyModeEnum", dutyMode.ToString());
 
             _run.InvokeAction(cfcData.TerritoryId, 1, !configuration.Advanced.DisableAutoDutyBareMode);
         }
