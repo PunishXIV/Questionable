@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
   "Comment": "Crafted Item:\nEft Steak HQ,\n Beef Stew HQ,\nTrapper's Quiche,\nCrowned Pie HQ\nAutocraft requires:\n1x Popoto,\n1x Nutmeg,\n1x Eft Tail\nWill buy rest from Jossy",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,

@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Boarskin Smithy's Gloves HQ\nAutocraft requires:\n 2x Boar Leather,\n 1x Steel Ingot,\n 1x Hippogryph Sinew",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,

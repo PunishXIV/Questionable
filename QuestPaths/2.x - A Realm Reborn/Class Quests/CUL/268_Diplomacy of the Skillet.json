@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
   "Comment": "Crafted Item:\nBlood Currant Tart HQ\nPastry Fish HQ\nChamomile Tea HQ\nAutocraft requires:\n1x Blood Currants,\n1x Effervescent Water,\n1x Desert Saffron,\n1x Gelatin (Crystarium 10g),\n1x Raisins (Gerulf,Limsa 5g),\n1x Almonds,\n1x Mirror Apple,\n1x Chamomile\nWill buy rest from Jossy\nNote:Req 25 Alc for natron(or buy)",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -22,10 +23,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
+              "InTerritory": [129, 128]
             }
           }
         }
@@ -198,7 +196,11 @@
                 "NotInInventory": false
               }
             }
-          }
+          },
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ]
         },
         {
           "InteractionType": "Craft",

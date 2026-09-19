@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
   "Comment": "Crafted Item:\n 1x Ratatouille\nAutocraft requires:\n 1x Wizard Eggplant,\n1 Ramhorn Zucchini,\n1 Laurel,\n4 Lavender\nWill buy rest from Jossy",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -70,7 +71,11 @@
                 "NotInInventory": false
               }
             }
-          }
+          },
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ]
         },
         {
           "DataId": 1003249,

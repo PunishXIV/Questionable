@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
   "Comment": "Crafted Item:\nDzemael Gratin HQ\nAutocraft requires:\n1x Popoto,\n1x Nutmeg,\n1x Eft Tail\nWill buy rest from Jossy",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
