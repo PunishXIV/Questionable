@@ -67,7 +67,8 @@
           "AethernetShortcut": [
             "[Ul'dah] Sapphire Avenue Exchange",
             "[Ul'dah] Adventurers' Guild"
-          ]
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 1001301,
@@ -77,7 +78,8 @@
             "Z": -83.878845
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 1001354,
@@ -87,7 +89,8 @@
             "Z": -87.44946
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         }
       ]
     },
@@ -96,7 +99,7 @@
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
+          "TerritoryId": 130,
           "ItemId": 1987,
           "ItemCount": 1,
           "SkipConditions": {

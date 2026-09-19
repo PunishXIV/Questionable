@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Hi-Ether HQ\nAutocraft requires:\n 1x Distilled Water,\n 1x Matron's Mistletoe,\n 1x Mandrake",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -23,10 +24,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
+              "InTerritory": [130, 131]
             }
           }
         }
@@ -43,7 +41,11 @@
             "Z": 118.88306
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Alchemists' Guild"
+          ]
         }
       ]
     },

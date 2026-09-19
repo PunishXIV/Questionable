@@ -1,7 +1,8 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
   "Comment": "Crafted Item:\n 1x Smoked Raptor HQ\nAutocraft requires:\n 1x Raptor Shank,1 Sun Lemon (Sahagin 28g)\nWill buy rest from Jossy",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -22,10 +23,7 @@
           ],
           "SkipConditions": {
             "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
+              "InTerritory": [129, 128]
             }
           }
         }
@@ -42,7 +40,11 @@
             "Z": -160.23505
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ]
         }
       ]
     },
@@ -123,7 +125,10 @@
           "TerritoryId": 128,
           "ItemId": 4857,
           "ItemCount": 1,
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Culinarians' Guild"],
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Culinarians' Guild"
+          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
