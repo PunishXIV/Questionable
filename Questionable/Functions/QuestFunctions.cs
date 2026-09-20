@@ -290,6 +290,8 @@ internal sealed unsafe class QuestFunctions
 
     public (QuestReference, string?) GetMainScenarioQuestId()
     {
+        if (configuration.Advanced.StopMSQ)
+            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), "Stop MSQ");
         if (QuestManager.IsQuestComplete(3759)) // Memories Rekindled
         {
             AgentInterface* questRedoHud = AgentModule.Instance()->GetAgentByInternalId(AgentId.QuestRedoHud);
@@ -326,6 +328,8 @@ internal sealed unsafe class QuestFunctions
 
     public (QuestReference, string?) GetMainScenarioQuest()
     {
+        if (configuration.Advanced.StopMSQ)
+            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), "Stop MSQ");
         if (QuestManager.IsQuestComplete(3759)) // Memories Rekindled
         {
             AgentInterface* questRedoHud = AgentModule.Instance()->GetAgentByInternalId(AgentId.QuestRedoHud);
@@ -367,10 +371,10 @@ internal sealed unsafe class QuestFunctions
             // excluding branching quests
 
             List<QuestInfo> potentialQuests = questData.MainScenarioQuests
-                .Where(x => (x.StartingCity == 0 || x.StartingCity == PlayerState.Instance()->StartTown) &&
-                            IsReadyToAcceptQuest(x.QuestId, ignoreLevel: true) &&
-                            x.Expansion <= (EExpansionVersion)PlayerState.Instance()->MaxExpansion)
-                .ToList();
+                    .Where(x => (x.StartingCity == 0 || x.StartingCity == PlayerState.Instance()->StartTown) &&
+                                IsReadyToAcceptQuest(x.QuestId, ignoreLevel: true) &&
+                                x.Expansion <= (EExpansionVersion)PlayerState.Instance()->MaxExpansion)
+                    .ToList();
             if (potentialQuests.Count == 0)
                 return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _L("No potential quests found"));
 
