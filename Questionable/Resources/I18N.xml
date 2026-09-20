@@ -5204,7 +5204,7 @@
     <!--<Value lang="ko">이벤트</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestWindow.cs -->
+    <!-- DEPRECATED -->
     <Key>Quick Access</Key>
     <Value lang="en">Quick Access</Value>
     <Value lang="ja-jp">クイックアクセス</Value>
