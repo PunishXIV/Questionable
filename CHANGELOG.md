@@ -1,2 +1,2 @@
-- Change: "quick access buttons" no longer hidden by dropdown -alydev
-- Bug fix: debug option was pointing to wrong variable -alydev
+- Bug fix: add prereqs for ARR intersocietal questline -alydev
+- Bug fix: debug overlay stabilised -alydev
