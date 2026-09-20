@@ -32,7 +32,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Tribunal"
@@ -155,7 +154,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Last Vigil"

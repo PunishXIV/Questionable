@@ -16,7 +16,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Jeweled Crozier"
@@ -43,7 +42,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Jeweled Crozier"
