@@ -212,6 +212,8 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                     // TODO add tests
                 }
 
+                _quickAccessButtonsComponent.Draw();
+
                 if (_aRealmRebornComponent.ShouldDraw
                     && QstWidgets.SectionHeader(_L("A Realm Reborn"), "ARealmReborn"))
                     _aRealmRebornComponent.Draw();
@@ -219,9 +221,6 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                 if (_eventInfoComponent.ShouldDraw
                     && QstWidgets.SectionHeader(_L("Events"), "Events"))
                     _eventInfoComponent.Draw();
-
-                if (QstWidgets.SectionHeader(_L("Quick Access"), "QuickAccess"))
-                    _quickAccessButtonsComponent.Draw();
 
                 if (QstWidgets.SectionHeader(_L("Path Tools"), "PathTools", defaultOpen: false))
                     _creationUtilsComponent.Draw();

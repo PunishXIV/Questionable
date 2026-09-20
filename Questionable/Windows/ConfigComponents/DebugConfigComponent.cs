@@ -329,7 +329,7 @@ internal sealed class DebugConfigComponent
                     bool stopMsq = Configuration.Advanced.StopMSQ;
                     if (ImGui.Checkbox("Stop MSQ", ref stopMsq))
                     {
-                        Configuration.Advanced.PreventQuestCompletion = stopMsq;
+                        Configuration.Advanced.StopMSQ = stopMsq;
                         Save();
                     }
                 }
