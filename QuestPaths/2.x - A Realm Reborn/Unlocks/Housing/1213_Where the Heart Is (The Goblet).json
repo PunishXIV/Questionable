@@ -123,7 +123,6 @@
           "InteractionType": "CompleteQuest",
           "Fly": true,
           "DelaySecondsAtStart": 3,
-          "AetheryteShortcut": "Ul'dah",
           "AethernetShortcut": [
             "[Ul'dah] Aetheryte Plaza",
             "[Ul'dah] Gate of the Sultana (Western Thanalan)"

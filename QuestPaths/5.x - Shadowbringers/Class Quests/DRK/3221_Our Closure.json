@@ -15,7 +15,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Forgotten Knight"
@@ -132,7 +131,6 @@
           "TerritoryId": 135,
           "InteractionType": "Interact",
           "Fly": true,
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
@@ -156,7 +154,6 @@
             "Key": "TEXT_LUCKBC012_03221_SYSTEM_000_0160"
           },
           "Fly": true,
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Gates of Judgement (Coerthas Central Highlands)"
@@ -176,7 +173,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Forgotten Knight"

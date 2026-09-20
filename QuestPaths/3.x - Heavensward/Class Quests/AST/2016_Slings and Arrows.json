@@ -16,7 +16,6 @@
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest",
           "StopDistance": 5,
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Athenaeum Astrologicum"
@@ -42,7 +41,6 @@
           "TerritoryId": 419,
           "InteractionType": "Interact",
           "StopDistance": 4,
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Athenaeum Astrologicum"
@@ -76,7 +74,6 @@
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "StopDistance": 5,
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Hawkers' Alley"
@@ -172,7 +169,6 @@
           "TerritoryId": 128,
           "InteractionType": "Interact",
           "StopDistance": 5,
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Marauders' Guild"
@@ -211,7 +207,6 @@
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest",
           "StopDistance": 5,
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Athenaeum Astrologicum"

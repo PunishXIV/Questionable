@@ -15,7 +15,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Saint Reymanaud's Cathedral"
@@ -142,7 +141,6 @@
           "TerritoryId": 419,
           "InteractionType": "Interact",
           "TargetTerritoryId": 427,
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Saint Reymanaud's Cathedral"

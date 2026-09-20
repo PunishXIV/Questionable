@@ -14,7 +14,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] The Aftcastle"
@@ -52,7 +51,6 @@
           "$": "Backup Path; used if someone teleports elsewhere after accepting quest. Contains aetheryte teleport. Skip if in upper decks.",
           "TerritoryId": 129,
           "InteractionType": "None",
-          "AetheryteShortcut": "Limsa Lominsa",
           "AethernetShortcut": [
             "[Limsa Lominsa] Aetheryte Plaza",
             "[Limsa Lominsa] Airship Landing"

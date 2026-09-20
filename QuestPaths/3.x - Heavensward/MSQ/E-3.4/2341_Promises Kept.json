@@ -16,7 +16,6 @@
           "StopDistance": 7,
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] The Last Vigil"
@@ -33,7 +32,6 @@
         {
           "TerritoryId": 418,
           "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Athenaeum Astrologicum"
