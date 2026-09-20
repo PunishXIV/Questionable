@@ -37,9 +37,9 @@ internal sealed class CreationUtilsComponent
     ICondition condition,
     IGameGui gameGui,
     Configuration configuration,
+    DebugOverlay debugOverlay,
     ILogger<CreationUtilsComponent> logger)
 {
-    private Vector3? _savedPos;
 
     public void Draw()
     {
@@ -260,25 +260,27 @@ internal sealed class CreationUtilsComponent
 
     private unsafe void DrawSavedDetails()
     {
-        if (_savedPos == null || objectTable[0] == null)
+        if (debugOverlay.SavedPos == null || objectTable[0] == null)
             return;
         ImGui.Spacing();
         using (QstWidgets.Card())
         {
             var pos = objectTable[0]!.Position;
             ImGui.Text($"<{pos.X:F3},{pos.Y:F3},{pos.Z:F3}>");
-            ImGui.Text($"<{_savedPos.Value.X:F3},{_savedPos.Value.Y:F3},{_savedPos.Value.Z:F3}>");
+            ImGui.Text($"<{debugOverlay.SavedPos.Value.X:F3},{debugOverlay.SavedPos.Value.Y:F3},{debugOverlay.SavedPos.Value.Z:F3}>");
             ImGui.Text(_LF("Distance: {0:F2} ({1}y)",
-                (_savedPos.Value - pos).Length(),
-                Math.Floor(_savedPos.Value.DistanceTo_XZ(pos)) - 1));
+                (debugOverlay.SavedPos.Value - pos).Length(),
+                Math.Floor(debugOverlay.SavedPos.Value.DistanceTo_XZ(pos)) - 1));
             ImGui.SameLine();
 
-            float verticalDistance = _savedPos.Value.Y - pos.Y;
+            float verticalDistance = debugOverlay.SavedPos.Value.Y - pos.Y;
             string verticalDistanceText = _LF("Y: {0:F2}", verticalDistance);
             if (Math.Abs(verticalDistance) >= MovementController.DefaultVerticalInteractionDistance)
                 ImGui.TextColored(QstTheme.Accent, verticalDistanceText);
             else
                 ImGui.Text(verticalDistanceText);
+            //if (debugOverlay.ScreenPosCache.TryGetValue(debugOverlay.SavedPos.GetHashCode(), out var screenPos))
+            //    ImGui.Text($"<{screenPos.X:F3},{screenPos.Y:F3}>");
         }
     }
 
@@ -360,10 +362,11 @@ internal sealed class CreationUtilsComponent
             ImGui.SameLine();
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MapPin))
             {
-                if (_savedPos == null)
-                    _savedPos = objectTable[0]!.Position;
+                if (debugOverlay.SavedPos == null)
+                    debugOverlay.SavedPos = objectTable[0]!.Position;
                 else
-                    _savedPos = null;
+                    debugOverlay.SavedPos = null;
+                logger.LogDebug($"SavedPos: {debugOverlay.SavedPos?.ToString("G5", CultureInfo.InvariantCulture)}");
             }
             if (ImGui.IsItemHovered())
                 ImGui.SetTooltip(_L("Save/clear current position as reference"));

@@ -90,16 +90,6 @@
         "resolved": "8.4.0",
         "contentHash": "flxspiBs0G/0GMp7IK2J2ijV9bTG6hEwFc/z6ekHqB6nwRJ4Ry2yLdx+TkbCUYFCl4XhABkAwomeKbT6zM2Zlg=="
       },
-      "CSVFile": {
-        "type": "Transitive",
-        "resolved": "3.2.1",
-        "contentHash": "hXWPP7BGA8DS+UxdDEjAsLPdo6OUiCdaCiprxuRxpTy3nwI9DqwNWxaC5imfyD3kCb9/S2mW35s7f08uaokTUA=="
-      },
-      "CsvHelper": {
-        "type": "Transitive",
-        "resolved": "30.0.1",
-        "contentHash": "rcZtgbWR+As4G3Vpgx0AMNmShGuQLFjkHAPIIflzrfkJCx8/AOd4m96ZRmiU1Wi39qS5UVjV0P8qdgqOo5Cwyg=="
-      },
       "Dalamud.Extensions.MicrosoftLogging": {
         "type": "Transitive",
         "resolved": "4.0.1",
@@ -155,14 +145,12 @@
           "JsonPointer.Net": "5.3.1"
         }
       },
-      "LuminaSupplemental.Excel": {
+      "KamiToolKit": {
         "type": "Transitive",
-        "resolved": "5.1.4",
-        "contentHash": "emnlVa7IsrBQZyNsTeQPb6iqtKsTg1Ynm1UDL72QXha0FEKF6WudM6GINlW0VxXvTpe3RL8y/G4E1w53kMV78Q==",
+        "resolved": "1.1.2",
+        "contentHash": "pyydp+XFd+E00uEXXd44GGNCCH2uAK1ndwjLVHKVrHg059g65ry+92a5UdDISWZRJMhK+LcDpDUPSijnFavCvQ==",
         "dependencies": {
-          "CSVFile": "3.2.1",
-          "CsvHelper": "30.0.1",
-          "Sylvan.Data.Csv": "1.4.3"
+          "SixLabors.ImageSharp": "3.1.12"
         }
       },
       "Microsoft.CodeCoverage": {
@@ -220,6 +208,11 @@
         "resolved": "8.0.0",
         "contentHash": "bXJEZrW9ny8vjMF1JV253WeLhpEVzFo1lyaZu1vQ4ZxWUlVvknZ/+ftFgVheLubb4eZPSwwxBeqS1JkCOjxd8g=="
       },
+      "Microsoft.NETCore.Platforms": {
+        "type": "Transitive",
+        "resolved": "1.1.0",
+        "contentHash": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A=="
+      },
       "Microsoft.TestPlatform.ObjectModel": {
         "type": "Transitive",
         "resolved": "17.13.0",
@@ -234,6 +227,14 @@
           "Newtonsoft.Json": "13.0.1"
         }
       },
+      "NETStandard.Library": {
+        "type": "Transitive",
+        "resolved": "1.6.1",
+        "contentHash": "WcSp3+vP+yHNgS8EV5J7pZ9IRpeDuARBPN28by8zqff1wJQXm26PVU8L3/fYLBJVU7BtDyqNVWq2KlCVvSSR4A==",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
       "Newtonsoft.Json": {
         "type": "Transitive",
         "resolved": "13.0.1",
@@ -244,6 +245,18 @@
         "resolved": "1.0.0.4",
         "contentHash": "i9WU0oWvybpmlFkagxiCLSpBHSZlvJbBe5QMP8WaCV7dSRtZg/kQf59xxTb/BsdFN9DXEKcTQ0OCCAVe9N/qEg=="
       },
+      "Pictomancy": {
+        "type": "Transitive",
+        "resolved": "1.0.10",
+        "contentHash": "xHRbKtdyT15T58oZH4QSHdsnjlRMc3Vi4DbrnnIWeeZfDX3yyBu0CiVYUR37ALIGcOd1sl0bpX/9GpLl+PEMTg==",
+        "dependencies": {
+          "KamiToolKit": "1.1.2",
+          "SharpDX.D3DCompiler": "4.2.0",
+          "SharpDX.Direct2D1": "4.2.0",
+          "SharpDX.Direct3D11": "4.2.0",
+          "SharpDX.Mathematics": "4.2.0"
+        }
+      },
       "PunishLib": {
         "type": "Transitive",
         "resolved": "2.0.0.1",
@@ -252,15 +265,65 @@
           "ECommons": "3.2.0.11"
         }
       },
+      "SharpDX": {
+        "type": "Transitive",
+        "resolved": "4.2.0",
+        "contentHash": "3pv0LFMvfK/dv1qISJnn8xBeeT6R/FRvr0EV4KI2DGsL84Qlv6P7isWqxGyU0LCwlSVCJN3jgHJ4Bl0KI2PJww==",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        }
+      },
+      "SharpDX.D3DCompiler": {
+        "type": "Transitive",
+        "resolved": "4.2.0",
+        "contentHash": "Rnsd6Ilp127xbXqhTit8WKFQUrXwWxqVGpglyWDNkIBCk0tWXNQEjrJpsl0KAObzyZaa33+EXAikLVt5fnd3GA==",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "SharpDX": "4.2.0"
+        }
+      },
+      "SharpDX.Direct2D1": {
+        "type": "Transitive",
+        "resolved": "4.2.0",
+        "contentHash": "Qs8LzDMaQf1u3KB8ArHu9pDv6itZ++QXs99a/bVAG+nKr0Hx5NG4mcN5vsfE0mVR2TkeHfeUm4PksRah6VUPtA==",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "SharpDX": "4.2.0",
+          "SharpDX.DXGI": "4.2.0"
+        }
+      },
+      "SharpDX.Direct3D11": {
+        "type": "Transitive",
+        "resolved": "4.2.0",
+        "contentHash": "oTm/iT5X/IIuJ8kNYP+DTC/MhBhqtRF5dbgPPFgLBdQv0BKzNTzXQQXd7SveBFjQg6hXEAJ2jGCAzNYvGFc9LA==",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "SharpDX": "4.2.0",
+          "SharpDX.DXGI": "4.2.0"
+        }
+      },
+      "SharpDX.DXGI": {
+        "type": "Transitive",
+        "resolved": "4.2.0",
+        "contentHash": "UjKqkgWc8U+SP+j3LBzFP6OB6Ntapjih7Xo+g1rLcsGbIb5KwewBrBChaUu7sil8rWoeVU/k0EJd3SMN4VqNZw==",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "SharpDX": "4.2.0"
+        }
+      },
+      "SharpDX.Mathematics": {
+        "type": "Transitive",
+        "resolved": "4.2.0",
+        "contentHash": "R2pcKLgdsP9p5WyTjHmGOZ0ka0zASAZYc6P4L6rSvjYhf6klGYbent7MiVwbkwkt9dD44p5brjy5IwAnVONWGw==",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "SharpDX": "4.2.0"
+        }
+      },
       "SixLabors.ImageSharp": {
         "type": "Transitive",
         "resolved": "3.1.12",
         "contentHash": "iAg6zifihXEFS/t7fiHhZBGAdCp3FavsF4i2ZIDp0JfeYeDVzvmlbY1CNhhIKimaIzrzSi5M/NBFcWvZT2rB/A=="
-      },
-      "Sylvan.Data.Csv": {
-        "type": "Transitive",
-        "resolved": "1.4.3",
-        "contentHash": "ZUFTqs5doO9aGrR2g0tjASSfxaMUnsxRBXCYFvDRn74XfIc0PUZ0FYRbI3Yu/4W/IFc/DBKH30OOeZ2xGqGyFQ=="
       },
       "System.Diagnostics.EventLog": {
         "type": "Transitive",
@@ -315,7 +378,7 @@
       "gatheringpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.306.3.37, )"
+          "Questionable.Model": "[15.756.3.10, )"
         }
       },
       "questionable": {
@@ -324,16 +387,16 @@
           "Dalamud.Extensions.MicrosoftLogging": "[4.0.1, )",
           "DalamudPackager": "[15.0.0, )",
           "ECommons": "[3.2.1.18, )",
-          "GatheringPaths": "[15.306.3.37, )",
+          "GatheringPaths": "[15.756.3.10, )",
           "I18N.DotNet": "[1.3.1, )",
           "JetBrains.Annotations": "[2025.2.4, )",
           "JsonSchema.Net": "[7.4.0, )",
-          "LuminaSupplemental.Excel": "[5.1.4, )",
           "Microsoft.Extensions.DependencyInjection": "[9.0.8, )",
           "NotificationMasterAPI": "[1.0.0.4, )",
+          "Pictomancy": "[1.0.10, )",
           "PunishLib": "[2.0.0.1, )",
-          "QuestPaths": "[15.306.3.37, )",
-          "Questionable.Model": "[15.306.3.37, )",
+          "QuestPaths": "[15.756.3.10, )",
+          "Questionable.Model": "[15.756.3.10, )",
           "SixLabors.ImageSharp": "[3.1.12, )",
           "WrathCombo.API": "[0.5.7, )"
         }
@@ -344,7 +407,7 @@
       "questpaths": {
         "type": "Project",
         "dependencies": {
-          "Questionable.Model": "[15.306.3.37, )"
+          "Questionable.Model": "[15.756.3.10, )"
         }
       }
     }

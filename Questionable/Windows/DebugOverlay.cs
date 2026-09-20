@@ -18,6 +18,8 @@ internal sealed class DebugOverlay : Window
     private readonly IObjectTable _objectTable;
     private readonly QuestController _questController;
     private readonly QuestRegistry _questRegistry;
+    internal Vector3? SavedPos;
+    internal readonly Dictionary<int, Vector2> ScreenPosCache = [];
 
     public DebugOverlay(QuestController questController, QuestRegistry questRegistry, IGameGui gameGui,
         IClientState clientState, ICondition condition, AetheryteData aetheryteData, IObjectTable objectTable,
@@ -68,6 +70,7 @@ internal sealed class DebugOverlay : Window
 
         DrawCurrentQuest();
         DrawHighlightedQuest();
+        DrawSavedPos();
 
         if (_configuration.Advanced.CombatDataOverlay)
             DrawCombatTargets();
@@ -128,8 +131,9 @@ internal sealed class DebugOverlay : Window
         if (!visible)
             return;
 
-        ImGui.GetWindowDrawList().AddCircleFilled(screenPos, 3f, color);
-        ImGui.GetWindowDrawList().AddText(screenPos + new Vector2(10, -8), color,
+        Vector2 smoothedPos = GetSmoothedScreenPos(position.GetHashCode(), screenPos);
+        ImGui.GetWindowDrawList().AddCircleFilled(smoothedPos, 3f, color);
+        ImGui.GetWindowDrawList().AddText(smoothedPos + new Vector2(10, -8), color,
             $"{counter}: {step.InteractionType} {step.DataId ?? '-'}\n{position.ToString("G5", CultureInfo.InvariantCulture)} [{(position - _objectTable[0]!.Position).Length():N2}]\n{step.Comment}");
     }
 
@@ -148,6 +152,7 @@ internal sealed class DebugOverlay : Window
                 continue;
 
             (int priority, string reason) = _combatController.GetKillPriority(x);
+            // no smoothing for combat target overlay, caching the position of moving objects is pointless (is that a pun?)
             ImGui.GetWindowDrawList().AddText(screenPos + new Vector2(10, -8), priority > 0 ? 0xFF00FF00 : 0xFFFFFFFF,
                 $"{x.Name}/{x.GameObjectId:X}, {GameFunctions.GetBaseID(x)}, {priority} - {reason}, {Vector3.Distance(x.Position, _objectTable[0]!.Position):N2}, {x.IsTargetable}");
         }
@@ -175,5 +180,38 @@ internal sealed class DebugOverlay : Window
 
         position = null;
         return false;
+    }
+
+    private void DrawSavedPos()
+    {
+        if (SavedPos == null)
+            return;
+
+        if (!_configuration.Advanced.DebugOverlay)
+            return;
+
+        bool visible = _gameGui.WorldToScreen(SavedPos.Value, out Vector2 screenPos);
+        if (!visible)
+            return;
+        Vector2 smoothedPos = GetSmoothedScreenPos(SavedPos.Value.GetHashCode(), screenPos);
+        ImGui.GetWindowDrawList().AddCircleFilled(smoothedPos, 3f, 0xFF02B8FA);
+        ImGui.GetWindowDrawList().AddText(smoothedPos + new Vector2(10, -8), 0xFF02B8FA,
+            $"SavedPos\n{SavedPos.Value.ToString("G5", CultureInfo.InvariantCulture)} [{(SavedPos.Value - _objectTable[0]!.Position).Length():N2}]");
+    }
+
+    private Vector2 GetSmoothedScreenPos(int key, Vector2 rawPos, float smoothing = 0.35f, float snapThresholdSq = 1f)
+    {
+        var smoothed = rawPos;
+        if (ScreenPosCache.TryGetValue(key, out var lastPos) &&
+            (rawPos - lastPos).LengthSquared() < snapThresholdSq)
+        {
+            smoothed = Vector2.Lerp(lastPos, rawPos, smoothing);
+        }
+
+        ScreenPosCache[key] = smoothed;
+        var stablePos = new Vector2(
+            MathF.Round(smoothed.X / 2f, MidpointRounding.ToEven) * 2f,
+            MathF.Round(smoothed.Y / 2f, MidpointRounding.ToEven) * 2f);
+        return stablePos;
     }
 }

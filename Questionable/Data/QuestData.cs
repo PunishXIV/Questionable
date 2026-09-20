@@ -335,6 +335,25 @@ internal sealed class QuestData
         AddPreviousQuest(new(5443), new(434));
         AddPreviousQuest(new(3242), new(3654));
 
+        // ARR intersocietal prereq
+        AddPreviousQuest(new(1465), new(1221)); // amaljaa
+        AddPreviousQuest(new(1465), new(1256)); // sylph
+        AddPreviousQuest(new(1465), new(1324)); // kobold
+        AddPreviousQuest(new(1465), new(1378)); // sahagin
+        AddPreviousQuest(new(1465), new(1493)); // ixal
+
+        AddPreviousQuest(new(1466), new(1221)); // amaljaa
+        AddPreviousQuest(new(1466), new(1256)); // sylph
+        AddPreviousQuest(new(1466), new(1324)); // kobold
+        AddPreviousQuest(new(1466), new(1378)); // sahagin
+        AddPreviousQuest(new(1466), new(1493)); // ixal
+
+        AddPreviousQuest(new(1467), new(1221)); // amaljaa
+        AddPreviousQuest(new(1467), new(1256)); // sylph
+        AddPreviousQuest(new(1467), new(1324)); // kobold
+        AddPreviousQuest(new(1467), new(1378)); // sahagin
+        AddPreviousQuest(new(1467), new(1493)); // ixal
+
         // "In order to proceed with this quest" [...]
         /* my little chocobo
         AddPreviousQuest(new QuestId(1036), new QuestId());
