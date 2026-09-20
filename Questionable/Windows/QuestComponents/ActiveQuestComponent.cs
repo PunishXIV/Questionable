@@ -219,37 +219,39 @@ internal sealed partial class ActiveQuestComponent
                 }
 
                 var trackedQuests = GetTrackedQuests();
-
-                using (ImRaii.Child(
-                    "##trackedQuests",
-                    new Vector2(0, ImGui.GetTextLineHeightWithSpacing() * (trackedQuests.Count > 5 ? 5 : trackedQuests.Count)),
-                    border: trackedQuests.Count > 5))
+                if (trackedQuests.Count > 0)
                 {
-                    foreach (IQuestInfo qInfo in trackedQuests)
+                    using (ImRaii.Child(
+                        "##trackedQuests",
+                        new Vector2(0, ImGui.GetTextLineHeightWithSpacing() * (trackedQuests.Count > 5 ? 5 : trackedQuests.Count)),
+                        border: trackedQuests.Count > 5))
                     {
-                        if (!questFunctions.prereqCache.ContainsKey(qInfo.QuestId.Value))
-                            questFunctions.PopulatePrereqCache(qInfo.QuestId.Value, qInfo);
-                        (bool isLocked, string[]? reasons) = questFunctions.IsQuestLocked(qInfo.QuestId);
-                        QuestManager* questManager = QuestManager.Instance();
-                        (var _color, var icon, string status) = uiUtils.GetQuestStyle(qInfo.QuestId);
-                        bool acceptedButHidden = questFunctions.IsQuestAccepted(qInfo.QuestId) && questManager->GetQuestById(qInfo.QuestId.Value)->IsHidden;
-                        if (uiUtils.ChecklistItem(
-                            $"{qInfo.Name} ({qInfo.QuestId})",
-                            _color,
-                            icon,
-                            iconOverride: QuestJournalUtils.GetIconOverride((QuestInfo)qInfo, icon),
-                            onClick: () =>
-                            {
-                                AgentQuestJournal.Instance()->OpenForQuest(qInfo.QuestId.Value, type: 1);
-                            }))
+                        foreach (IQuestInfo qInfo in trackedQuests)
                         {
-                            ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-                            if (reasons != null && reasons.Length > 0)
-                                ImGui.SetTooltip(status + "\n  " + string.Join("\n  ", reasons));
-                            else if (acceptedButHidden)
-                                ImGui.SetTooltip(_L("This quest is accepted, but is hidden in your Journal."));
-                            else
-                                ImGui.SetTooltip(status);
+                            if (!questFunctions.prereqCache.ContainsKey(qInfo.QuestId.Value))
+                                questFunctions.PopulatePrereqCache(qInfo.QuestId.Value, qInfo);
+                            (bool isLocked, string[]? reasons) = questFunctions.IsQuestLocked(qInfo.QuestId);
+                            QuestManager* questManager = QuestManager.Instance();
+                            (var _color, var icon, string status) = uiUtils.GetQuestStyle(qInfo.QuestId);
+                            bool acceptedButHidden = questFunctions.IsQuestAccepted(qInfo.QuestId) && questManager->GetQuestById(qInfo.QuestId.Value)->IsHidden;
+                            if (uiUtils.ChecklistItem(
+                                $"{qInfo.Name} ({qInfo.QuestId})",
+                                _color,
+                                icon,
+                                iconOverride: QuestJournalUtils.GetIconOverride((QuestInfo)qInfo, icon),
+                                onClick: () =>
+                                {
+                                    AgentQuestJournal.Instance()->OpenForQuest(qInfo.QuestId.Value, type: 1);
+                                }))
+                            {
+                                ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+                                if (reasons != null && reasons.Length > 0)
+                                    ImGui.SetTooltip(status + "\n  " + string.Join("\n  ", reasons));
+                                else if (acceptedButHidden)
+                                    ImGui.SetTooltip(_L("This quest is accepted, but is hidden in your Journal."));
+                                else
+                                    ImGui.SetTooltip(status);
+                            }
                         }
                     }
                 }

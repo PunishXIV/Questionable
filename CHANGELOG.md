@@ -1,1 +1,1 @@
-- Fix: AutoDuty integration -erdelf
+- Bug fix: if character has no quests, qst window expanded to max height, fixed -alydev
