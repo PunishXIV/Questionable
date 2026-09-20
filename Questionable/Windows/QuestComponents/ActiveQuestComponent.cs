@@ -624,12 +624,6 @@ internal sealed partial class ActiveQuestComponent
             ImGui.SetTooltip(_L("Stop all actions now."));
 
         ImGui.SameLine();
-        quickAccessButtonsComponent.DrawPriorityQuestsButton();
-        ImGui.SameLine();
-        quickAccessButtonsComponent.DrawCleanUpButton();
-        ImGui.SameLine();
-        quickAccessButtonsComponent.DrawJournalProgressButton();
-        ImGui.SameLine();
         quickAccessButtonsComponent.DrawTroubleshootingButton(showLabel: true);
 
         if (isMinimized)

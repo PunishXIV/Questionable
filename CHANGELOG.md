@@ -1,1 +1,2 @@
-- Bug fix: if character has no quests, qst window expanded to max height, fixed -alydev
+- Change: "quick access buttons" no longer hidden by dropdown -alydev
+- Bug fix: debug option was pointing to wrong variable -alydev
