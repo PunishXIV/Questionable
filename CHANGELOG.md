@@ -1,1 +1,2 @@
 - Feature: add quest job category to tooltip -alydev
+  - Bug fix: rare crash fixed -alydev
