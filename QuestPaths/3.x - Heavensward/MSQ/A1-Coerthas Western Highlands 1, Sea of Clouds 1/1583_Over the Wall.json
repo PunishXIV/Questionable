@@ -98,6 +98,18 @@
           "StopDistance": 7
         },
         {
+          "DataId": 1011226,
+          "Position": {
+            "X": 483.11572,
+            "Y": 217.95139,
+            "Z": 751.0642
+          },
+          "TerritoryId": 397,
+          "InteractionType": "UnlockTaxiStand",
+          "Fly": true,
+          "TaxiStandId": 1179685
+        },
+        {
           "DataId": 1011231,
           "Position": {
             "X": 503.1051,

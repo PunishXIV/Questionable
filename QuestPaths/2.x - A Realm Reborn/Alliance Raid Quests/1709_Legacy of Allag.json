@@ -23,14 +23,16 @@
       "Sequence": 1,
       "Steps": [
         {
+          "DataId": 1006900,
           "Position": {
-            "X": 445.96164,
-            "Y": -5.3604937,
-            "Z": -466.67636
+            "X": 427.57288,
+            "Y": -5.2769094,
+            "Z": -462.48572
           },
           "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "UnlockTaxiStand",
+          "Fly": true,
+          "TaxiStandId": 1179683
         },
         {
           "DataId": 1006725,

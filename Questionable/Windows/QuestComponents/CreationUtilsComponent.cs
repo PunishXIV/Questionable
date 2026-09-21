@@ -36,6 +36,7 @@ internal sealed class CreationUtilsComponent
     ITargetManager targetManager,
     ICondition condition,
     IGameGui gameGui,
+    IDataManager dataManager,
     Configuration configuration,
     DebugOverlay debugOverlay,
     ILogger<CreationUtilsComponent> logger)
@@ -388,6 +389,26 @@ internal sealed class CreationUtilsComponent
         return $"{q.CurrentQuest} → {q.Sequence} - {qw}";
     }
 
+    private readonly HashSet<uint> chocoboStands = dataManager.GetExcelSheet<Lumina.Excel.Sheets.ChocoboTaxiStand>().Select(x => x.RowId).ToHashSet();
+    private uint? IsChocobokeep(IGameObject target)
+    {
+        if (target.ObjectKind == ObjectKind.EventNpc)
+        {
+            if (!dataManager.GetExcelSheet<Lumina.Excel.Sheets.ENpcBase>().TryGetRow(target.BaseId, out var row))
+                return null;
+
+            return row.ENpcData.Count > 0 && chocoboStands.Contains(row.ENpcData[0].RowId) ? row.ENpcData[0].RowId : null;
+        }
+        if (target.ObjectKind == ObjectKind.EventObj)
+        {
+            if (!dataManager.GetExcelSheet<Lumina.Excel.Sheets.EObj>().TryGetRow(target.BaseId, out var row))
+                return null;
+
+            return chocoboStands.Contains(row.Data.RowId) ? row.Data.RowId : null;
+        }
+        return null;
+    }
+
     private void DrawCopyButton(IGameObject target)
     {
         bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
@@ -399,37 +420,38 @@ internal sealed class CreationUtilsComponent
 
         if (copy)
         {
+            string pos =
+                $$"""
+                  "DataId": {{GameFunctions.GetBaseID(target)}},
+                            "Position": {
+                              "X": {{target.Position.X.ToString(CultureInfo.InvariantCulture)}},
+                              "Y": {{target.Position.Y.ToString(CultureInfo.InvariantCulture)}},
+                              "Z": {{target.Position.Z.ToString(CultureInfo.InvariantCulture)}}
+                            },
+                  """;
+            uint? chocobokeep = IsChocobokeep(target);
+            string interactionType = chocobokeep != null ? "UnlockTaxiStand" : QuestStepCapture.GuessInteractionType(target).ToString();
+            string territoryIntType =
+                $$"""
+
+                            "TerritoryId": {{clientState.TerritoryType}},
+                            "InteractionType": "{{interactionType}}"
+                  """ + (chocobokeep == null && GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ?
+                $$"""
+                  ,
+                            "Fly": true
+                  """ : "") + (chocobokeep != null ?
+                $$"""
+                  ,
+                            "TaxiStandId": {{chocobokeep}}
+                  """ : "");
             if (target.ObjectKind == ObjectKind.GatheringPoint)
             {
-                ImGui.SetClipboardText($$"""
-                                         "DataId": {{GameFunctions.GetBaseID(target)}},
-                                                   "Position": {
-                                                     "X": {{target.Position.X.ToString(CultureInfo.InvariantCulture)}},
-                                                     "Y": {{target.Position.Y.ToString(CultureInfo.InvariantCulture)}},
-                                                     "Z": {{target.Position.Z.ToString(CultureInfo.InvariantCulture)}}
-                                                   }
-                                         """);
+                ImGui.SetClipboardText(pos);
             }
             else
             {
-                string interactionType = QuestStepCapture.GuessInteractionType(target).ToString();
-                ImGui.SetClipboardText($$"""
-                                         "DataId": {{GameFunctions.GetBaseID(target)}},
-                                                   "Position": {
-                                                     "X": {{target.Position.X.ToString(CultureInfo.InvariantCulture)}},
-                                                     "Y": {{target.Position.Y.ToString(CultureInfo.InvariantCulture)}},
-                                                     "Z": {{target.Position.Z.ToString(CultureInfo.InvariantCulture)}}
-                                                   },
-                                                   "TerritoryId": {{clientState.TerritoryType}},
-
-                                         """ + (GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ?
-                                       $$"""
-                                                   "InteractionType": "{{interactionType}}",
-                                                   "Fly": true
-                                         """ :
-                                       $$"""
-                                                   "InteractionType": "{{interactionType}}"
-                                         """));
+                ImGui.SetClipboardText(pos + territoryIntType);
             }
         }
         else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))

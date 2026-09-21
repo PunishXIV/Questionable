@@ -27,6 +27,17 @@
           "Aetheryte": "The Churning Mists - Moghome"
         },
         {
+          "DataId": 2005698,
+          "Position": {
+            "X": 265.156,
+            "Y": -42.557434,
+            "Z": 565.6061
+          },
+          "TerritoryId": 400,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179690
+        },
+        {
           "DataId": 1013195,
           "Position": {
             "X": 287.55627,

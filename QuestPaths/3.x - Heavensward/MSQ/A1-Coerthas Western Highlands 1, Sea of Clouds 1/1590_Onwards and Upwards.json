@@ -104,6 +104,17 @@
           "Aetheryte": "The Sea of Clouds - Camp Cloudtop"
         },
         {
+          "DataId": 1012303,
+          "Position": {
+            "X": -630.5791,
+            "Y": -119.631645,
+            "Z": 484.33655
+          },
+          "TerritoryId": 401,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179694
+        },
+        {
           "DataId": 1011952,
           "Position": {
             "X": -277.63788,

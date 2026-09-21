@@ -96,6 +96,17 @@
           "Aetheryte": "The Sea of Clouds - Ok' Zundu"
         },
         {
+          "DataId": 2005695,
+          "Position": {
+            "X": -621.51526,
+            "Y": -58.51837,
+            "Z": -319.4171
+          },
+          "TerritoryId": 401,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179693
+        },
+        {
           "DataId": 1013095,
           "Position": {
             "X": -560.69275,
