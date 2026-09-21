@@ -89,6 +89,17 @@
           "Aetheryte": "The Dravanian Forelands - Tailfeather"
         },
         {
+          "DataId": 1012304,
+          "Position": {
+            "X": 549.82825,
+            "Y": -51.27571,
+            "Z": 68.955444
+          },
+          "TerritoryId": 398,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179687
+        },
+        {
           "DataId": 1011916,
           "Position": {
             "X": 470.02356,

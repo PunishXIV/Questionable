@@ -70,6 +70,17 @@
           "AetherCurrentId": 2818086
         },
         {
+          "DataId": 2005697,
+          "Position": {
+            "X": -50.21753,
+            "Y": 100.694214,
+            "Z": -203.02136
+          },
+          "TerritoryId": 399,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179689
+        },
+        {
           "Position": {
             "X": -229.85187,
             "Y": 107.00484,

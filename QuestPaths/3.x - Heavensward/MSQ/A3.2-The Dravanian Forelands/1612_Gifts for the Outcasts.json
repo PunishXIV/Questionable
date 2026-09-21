@@ -28,6 +28,17 @@
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "The Dravanian Forelands - Anyx Trine"}}
         },
         {
+          "DataId": 2005696,
+          "Position": {
+            "X": -209.36908,
+            "Y": -35.41626,
+            "Z": 162.92053
+          },
+          "TerritoryId": 398,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179688
+        },
+        {
           "DataId": 1011916,
           "Position": {
             "X": 470.02356,
