@@ -397,7 +397,7 @@ internal sealed class CreationUtilsComponent
             if (!dataManager.GetExcelSheet<Lumina.Excel.Sheets.ENpcBase>().TryGetRow(target.BaseId, out var row))
                 return null;
 
-            return row.ENpcData.Count > 0 && chocoboStands.Contains(row.ENpcData[0].RowId) ? row.ENpcData[0].RowId : null;
+            return row.ENpcData.Where(x => chocoboStands.Contains(x.RowId)).FirstOrNull()?.RowId;
         }
         if (target.ObjectKind == ObjectKind.EventObj)
         {
