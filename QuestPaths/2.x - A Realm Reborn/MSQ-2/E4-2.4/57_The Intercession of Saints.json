@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "alydev", "Date": "2026-09-12"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -78,11 +78,11 @@
         {
           "DataId": 1009982,
           "Position": {
-            "X": 208.88062,
-            "Y": 229.04996,
-            "Z": 322.4994
+            "X": 209.19392,
+            "Y": 229.04999,
+            "Z": 324.39032
           },
-          "StopDistance": 5,
+          "StopDistance": 2,
           "TerritoryId": 155,
           "InteractionType": "Interact"
         }

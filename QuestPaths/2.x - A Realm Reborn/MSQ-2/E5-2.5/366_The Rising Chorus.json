@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "alydev", "Date": "2026-09-12"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -45,7 +45,8 @@
             "Z": -369.7414
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "Fly": true
         }
       ]
     },
@@ -84,6 +85,11 @@
     {
       "Sequence": 6,
       "Steps": [
+        {
+          "TerritoryId": 156,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Mor Dhona"
+        },
         {
           "DataId": 1010857,
           "Position": {
