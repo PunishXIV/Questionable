@@ -1,2 +1,3 @@
 - Feature: "copy target position" now detects chocobokeeps, can add handling for other NPC types to speed up path development -alydev
 - Feature: HW chocobokeeps added to msq -alydev
+- Change: icon layout when no supported quests active -alydev
