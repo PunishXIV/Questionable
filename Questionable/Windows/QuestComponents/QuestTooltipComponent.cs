@@ -102,7 +102,7 @@ internal sealed class QuestTooltipComponent
             _ when qInfo.ClassJobCategory.RowId.Equals(34) => _T<Addon>(DoWDoM),
             _ when qInfo.ClassJobCategory.RowId.Equals(35) => _T<Addon>(DoHDoL),
             _ when qInfo.ClassJobCategory.RowId.Equals(142) => _T<Addon>(DoWDoM),
-            _ => $"{qInfo.ClassJobCategory.Name}"
+            _ => qInfo.ClassJobCategory.Name.ToMacroString()
         };
         ImGui.Text(_LF("Job: {0}", category));
 
