@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
-  "LastChecked": {"Username": "alydev", "Date": "2026-09-14"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -63,7 +63,19 @@
           "TerritoryId": 138,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [765, 775, 776]
+          "KillEnemyDataIds": [765, 775, 776],
+          "CompletionQuestVariablesFlags": [null,null,{"High": 3},null,null,null]
+        },
+        {
+          "Position": {
+            "X": -830.20886,
+            "Y": -25.652752,
+            "Z": 889.1423
+          },
+          "TerritoryId": 138,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [2886]
         }
       ]
     },

@@ -1,1 +1,1 @@
-- Feature: zh-tw translation -baihu7851
+- Feature: add quest job category to tooltip -alydev
