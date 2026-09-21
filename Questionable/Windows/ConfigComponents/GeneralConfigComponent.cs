@@ -92,6 +92,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             { "en",    _L("English") },
             { "ja-jp", _L("Japanese") },
             { "zh-cn", _L("Chinese (Simplified)") },
+            { "zh-tw", _L("Chinese (Traditional)") },
             { "ko",    _L("Korean") + " (WIP)" }
         };
         string language = Configuration.General.Language;
