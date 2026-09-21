@@ -87,6 +87,7 @@ internal sealed class QuestInfo : IQuestInfo
         AlliedSocietyRank = (EAlliedSocietyRank)quest.BeastReputationRank.RowId;
         SocietyRepValue = quest.ReputationReward;
         ClassJobs = QuestInfoUtils.AsList(quest.ClassJobCategory0.ValueNullable!);
+        ClassJobCategory = quest.ClassJobCategory0.Value;
         IsSeasonalEvent = quest.Festival.RowId != 0;
         NewGamePlusChapter = newGamePlusChapter;
         StartingCity = startingCity;
@@ -158,6 +159,7 @@ internal sealed class QuestInfo : IQuestInfo
     public bool CanCancel { get; }
     public EAlliedSociety AlliedSociety { get; }
     public IReadOnlyList<Job> ClassJobs { get; }
+    public ClassJobCategory ClassJobCategory { get; }
     public EExpansionVersion Expansion { get; }
     public string SimplifiedName => BaseName
         .Replace(".", "", StringComparison.Ordinal)

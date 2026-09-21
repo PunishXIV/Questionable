@@ -4,6 +4,7 @@ using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
+using Addon = Lumina.Excel.Sheets.Addon;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Windows.Common.Ui;
@@ -30,6 +31,7 @@ internal sealed class QuestTooltipComponent
 
     public void DrawInner(IQuestInfo questInfo, bool showItemRewards)
     {
+        QuestInfo qInfo = (QuestInfo)questInfo;
         unsafe
         {
             string lvlString = $"{SeIconChar.LevelEn.ToIconString()}{questInfo.Level}";
@@ -45,7 +47,7 @@ internal sealed class QuestTooltipComponent
         ImGui.SameLine();
         ImGui.TextUnformatted($"{questInfo.QuestId}");
 
-        if (questInfo is QuestInfo { IsSeasonalEvent: true })
+        if (qInfo is QuestInfo { IsSeasonalEvent: true })
         {
             ImGui.SameLine();
             ImGui.TextUnformatted(_L("Event"));
@@ -57,7 +59,7 @@ internal sealed class QuestTooltipComponent
             ImGui.TextUnformatted(_L("Repeatable"));
         }
 
-        if (questInfo is QuestInfo { CompletesInstantly: true })
+        if (qInfo is QuestInfo { CompletesInstantly: true })
         {
             ImGui.SameLine();
             ImGui.TextUnformatted(_L("Instant"));
@@ -84,20 +86,30 @@ internal sealed class QuestTooltipComponent
                 ImGui.Text(_LF("NG+: {0}", redoIndex));
 
             if (quest.Root.LastChecked.Date != null)
-                ImGui.Text(_LF("Last checked: {0} by {1}", quest.Root.LastChecked.Date, quest.Root.LastChecked.Username?.ToString() ?? ""));
+                ImGui.Text(_LF("Last checked: {0} by {1}", quest.Root.LastChecked.Date, quest.Root.LastChecked.Username ?? ""));
         }
         else
         {
             ImGui.SameLine();
             ImGui.TextColored(QstTheme.Danger, _L("NoQuestPath"));
-            if (questInfo is QuestInfo questInfo1)
-                ImGui.Text($"{questInfo1.IssuerLocation.Territory.PlaceName.Value.Name}");
+            ImGui.Text($"{qInfo.IssuerLocation.Territory.PlaceName.Value.Name}");
         }
+
+        const int DoWDoM = 1080;
+        const int DoHDoL = 1081;
+        string category = qInfo.ClassJobCategory switch
+        {
+            _ when qInfo.ClassJobCategory.RowId.Equals(34) => _T<Addon>(DoWDoM),
+            _ when qInfo.ClassJobCategory.RowId.Equals(35) => _T<Addon>(DoHDoL),
+            _ when qInfo.ClassJobCategory.RowId.Equals(142) => _T<Addon>(DoWDoM),
+            _ => $"{qInfo.ClassJobCategory.Name}"
+        };
+        ImGui.Text(_LF("Job: {0}", category));
 
         if (questInfo.AlliedSociety != EAlliedSociety.None)
             ImGui.Text(_LF("Society: {0}", questInfo.AlliedSociety));
 
-        if (questInfo is QuestInfo qInfo && qInfo.AlliedSocietyRank != EAlliedSocietyRank.None)
+        if (qInfo.AlliedSocietyRank != EAlliedSocietyRank.None)
             ImGui.Text(_LF("Rank: {0}{1}", qInfo.AlliedSocietyRank, (!qInfo.IsRepeatable ? " (maxed)" : "")));
 
         DrawQuestUnlocks(questInfo, 0, showItemRewards);
