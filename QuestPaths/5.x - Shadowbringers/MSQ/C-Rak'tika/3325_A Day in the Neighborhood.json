@@ -49,6 +49,17 @@
           "Aetheryte": "Rak'tika - Slitherbough"
         },
         {
+          "DataId": 1027740,
+          "Position": {
+            "X": -105.9129,
+            "Y": -18.247393,
+            "Z": 271.10706
+          },
+          "TerritoryId": 817,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179718
+        },
+        {
           "DataId": 1029198,
           "Position": {
             "X": -118.18121,

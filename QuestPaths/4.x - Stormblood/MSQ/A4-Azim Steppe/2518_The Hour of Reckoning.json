@@ -71,6 +71,17 @@
           "Aetheryte": "Yanxia - House of the Fierce"
         },
         {
+          "DataId": 1019267,
+          "Position": {
+            "X": 276.17297,
+            "Y": 8.117117,
+            "Z": -404.10468
+          },
+          "TerritoryId": 614,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179706
+        },
+        {
           "DataId": 1020519,
           "Position": {
             "X": 173.78503,

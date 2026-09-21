@@ -99,6 +99,17 @@
           "Aetheryte": "Lakeland - Fort Jobb"
         },
         {
+          "DataId": 1028314,
+          "Position": {
+            "X": 663.5995,
+            "Y": 45.4141,
+            "Z": -60.44104
+          },
+          "TerritoryId": 813,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179723
+        },
+        {
           "Position": {
             "X": 601.42426,
             "Y": 23.210327,

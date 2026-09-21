@@ -58,6 +58,17 @@
           "Aetheryte": "Ruby Sea - Tamamizu"
         },
         {
+          "DataId": 1019174,
+          "Position": {
+            "X": 318.44043,
+            "Y": -119.15506,
+            "Z": -207.90424
+          },
+          "TerritoryId": 613,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179704
+        },
+        {
           "Position": {
             "X": 543.42303,
             "Y": -61.394184,

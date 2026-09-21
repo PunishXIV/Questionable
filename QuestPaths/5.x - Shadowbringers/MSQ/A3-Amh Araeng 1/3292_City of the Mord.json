@@ -27,6 +27,17 @@
           "Aetheryte": "Amh Araeng - Mord Souq"
         },
         {
+          "DataId": 1027900,
+          "Position": {
+            "X": 281.87976,
+            "Y": 1.4685826,
+            "Z": -265.3697
+          },
+          "TerritoryId": 815,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179720
+        },
+        {
           "DataId": 1027872,
           "Position": {
             "X": 268.4519,

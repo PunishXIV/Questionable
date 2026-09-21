@@ -92,6 +92,17 @@
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Amh Araeng - Twine"}}
         },
         {
+          "DataId": 1027902,
+          "Position": {
+            "X": -492.69858,
+            "Y": 45.12982,
+            "Z": -284.96228
+          },
+          "TerritoryId": 815,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179719
+        },
+        {
           "DataId": 2009906,
           "Position": {
             "X": -0.7172241,

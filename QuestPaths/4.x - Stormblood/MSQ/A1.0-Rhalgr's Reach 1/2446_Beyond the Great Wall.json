@@ -83,6 +83,17 @@
           "Aetheryte": "Fringes - Castrum Oriens"
         },
         {
+          "DataId": 1019512,
+          "Position": {
+            "X": -603.357,
+            "Y": 130.18283,
+            "Z": -470.63403
+          },
+          "TerritoryId": 612,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179696
+        },
+        {
           "Position": {
             "X": -612.8515,
             "Y": 130,

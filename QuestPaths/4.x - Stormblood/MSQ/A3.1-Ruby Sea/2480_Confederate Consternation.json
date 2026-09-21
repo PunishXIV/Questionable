@@ -43,6 +43,17 @@
           "Aetheryte": "Ruby Sea - Onokoro"
         },
         {
+          "DataId": 1021500,
+          "Position": {
+            "X": 44.144287,
+            "Y": 0.7369439,
+            "Z": -563.2258
+          },
+          "TerritoryId": 613,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179703
+        },
+        {
           "Position": {
             "X": 20.867485,
             "Y": 25.111027,

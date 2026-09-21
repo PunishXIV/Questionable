@@ -115,6 +115,17 @@
           "Aetheryte": "Lochs - Porta Praetoria"
         },
         {
+          "DataId": 1022982,
+          "Position": {
+            "X": -510.06332,
+            "Y": 8.699991,
+            "Z": 20.98108
+          },
+          "TerritoryId": 621,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179700
+        },
+        {
           "DataId": 1021704,
           "Position": {
             "X": -651.51447,

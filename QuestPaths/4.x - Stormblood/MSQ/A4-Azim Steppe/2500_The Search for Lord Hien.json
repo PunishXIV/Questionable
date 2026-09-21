@@ -83,6 +83,17 @@
           "Aetheryte": "Azim Steppe - Reunion"
         },
         {
+          "DataId": 1019332,
+          "Position": {
+            "X": 569.0242,
+            "Y": -19.218569,
+            "Z": 269.91675
+          },
+          "TerritoryId": 622,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179707
+        },
+        {
           "DataId": 1020275,
           "Position": {
             "X": 540.917,

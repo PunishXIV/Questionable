@@ -66,6 +66,17 @@
           "Aetheryte": "Fringes - Peering Stones"
         },
         {
+          "DataId": 1020801,
+          "Position": {
+            "X": 461.9973,
+            "Y": 114.210846,
+            "Z": 230.12122
+          },
+          "TerritoryId": 612,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179697
+        },
+        {
           "DataId": 1020578,
           "Position": {
             "X": 426.56592,

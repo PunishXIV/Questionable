@@ -43,6 +43,17 @@
           "Aetheryte": "Il Mheg - Lydha Lran"
         },
         {
+          "DataId": 2010636,
+          "Position": {
+            "X": -432.08972,
+            "Y": 64.1947,
+            "Z": 549.8893
+          },
+          "TerritoryId": 816,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179716
+        },
+        {
           "DataId": 2009816,
           "Position": {
             "X": -382.8031,

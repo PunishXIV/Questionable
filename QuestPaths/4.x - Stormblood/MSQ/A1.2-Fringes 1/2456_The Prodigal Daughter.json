@@ -27,6 +27,17 @@
           "Aetheryte": "Peaks - Ala Gannha"
         },
         {
+          "DataId": 1020836,
+          "Position": {
+            "X": 49.240845,
+            "Y": 118.35526,
+            "Z": -728.96924
+          },
+          "TerritoryId": 620,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179698
+        },
+        {
           "DataId": 2007976,
           "Position": {
             "X": 202.86865,

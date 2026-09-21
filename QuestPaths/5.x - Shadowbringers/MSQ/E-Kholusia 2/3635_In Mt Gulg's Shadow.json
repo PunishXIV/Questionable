@@ -96,6 +96,17 @@
           "Aetheryte": "Kholusia - Tomra"
         },
         {
+          "DataId": 1027470,
+          "Position": {
+            "X": -412.253,
+            "Y": 417.13983,
+            "Z": -599.4812
+          },
+          "TerritoryId": 814,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179710
+        },
+        {
           "DataId": 1030216,
           "Position": {
             "X": -445.48718,
