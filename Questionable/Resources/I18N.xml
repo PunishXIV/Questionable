@@ -6913,4 +6913,8 @@
     <Value lang="zh-cn">必须完成重生之境团队任务才能进入苍穹之禁城。在解除限制模式（"解除同步"）下可以快速轻松完成攻略，但古代人迷宫的阿托莫斯战斗至少需要12名玩家（每队4人）才能攻略。希尔科斯塔和暗之世界只需3名玩家（每队1人）即可进入。</Value>
     <Value lang="zh-tw">必須完成新生艾奧傑亞團隊任務才能進入蒼天伊修加爾德。在解除限制模式下可以快速輕鬆完成攻略，但古代人迷宮的亞特蒙斯戰鬥至少需要12名玩家（每隊4人）才能攻略。希爾科斯塔和暗之世界只需3名玩家（每隊1人）即可進入。</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
+    <Key>Job: {0}</Key>
+  </Entry>
 </I18N>
