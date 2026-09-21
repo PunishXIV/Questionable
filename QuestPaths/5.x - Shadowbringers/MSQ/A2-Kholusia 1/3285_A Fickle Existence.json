@@ -27,6 +27,17 @@
           "Aetheryte": "Kholusia - Wright"
         },
         {
+          "DataId": 1027431,
+          "Position": {
+            "X": -236.95734,
+            "Y": 21.472721,
+            "Z": 346.79175
+          },
+          "TerritoryId": 814,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179711
+        },
+        {
           "DataId": 1027516,
           "Position": {
             "X": -266.0716,

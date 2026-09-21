@@ -119,6 +119,17 @@
           "Aetheryte": "Lakeland - Ostall Imperative"
         },
         {
+          "DataId": 1028312,
+          "Position": {
+            "X": -589.01355,
+            "Y": 67.179344,
+            "Z": -173.84613
+          },
+          "TerritoryId": 813,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179722
+        },
+        {
           "Position": {
             "X": -694.6047,
             "Y": 50.939487,

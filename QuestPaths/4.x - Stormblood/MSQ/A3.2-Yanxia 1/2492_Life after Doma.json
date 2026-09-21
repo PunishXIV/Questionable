@@ -57,6 +57,17 @@
           "Aetheryte": "Yanxia - Namai"
         },
         {
+          "DataId": 1019252,
+          "Position": {
+            "X": 468.55872,
+            "Y": 68.228966,
+            "Z": -76.64612
+          },
+          "TerritoryId": 614,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179705
+        },
+        {
           "DataId": 1020016,
           "Position": {
             "X": 414.51123,

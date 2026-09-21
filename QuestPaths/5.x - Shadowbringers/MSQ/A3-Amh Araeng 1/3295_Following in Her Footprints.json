@@ -28,6 +28,17 @@
           "Aetheryte": "Amh Araeng - Inn at Journey's Head"
         },
         {
+          "DataId": 1027868,
+          "Position": {
+            "X": 386.19055,
+            "Y": -26.84075,
+            "Z": 275.5016
+          },
+          "TerritoryId": 815,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179724
+        },
+        {
           "DataId": 2010047,
           "Position": {
             "X": 344.6554,

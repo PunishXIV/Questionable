@@ -63,6 +63,17 @@
           "Aetheryte": "Kholusia - Stilltide"
         },
         {
+          "DataId": 1027959,
+          "Position": {
+            "X": 692.37805,
+            "Y": 28.117111,
+            "Z": 298.02393
+          },
+          "TerritoryId": 814,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179712
+        },
+        {
           "Position": {
             "X": 683.3415,
             "Y": 30.116053,

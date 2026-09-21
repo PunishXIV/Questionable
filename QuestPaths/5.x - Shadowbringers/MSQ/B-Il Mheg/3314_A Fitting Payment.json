@@ -28,6 +28,17 @@
           "Aetheryte": "Il Mheg - Pla Enni"
         },
         {
+          "DataId": 2010637,
+          "Position": {
+            "X": 50.30896,
+            "Y": 101.73181,
+            "Z": -850.6142
+          },
+          "TerritoryId": 816,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179714
+        },
+        {
           "DataId": 1029572,
           "Position": {
             "X": -44.022278,

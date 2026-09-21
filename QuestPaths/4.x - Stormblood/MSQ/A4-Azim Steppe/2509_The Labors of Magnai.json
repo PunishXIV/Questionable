@@ -27,6 +27,17 @@
           "Aetheryte": "Azim Steppe - Dawn Throne"
         },
         {
+          "DataId": 1019418,
+          "Position": {
+            "X": 86.32019,
+            "Y": 116.043,
+            "Z": -37.43042
+          },
+          "TerritoryId": 622,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179709
+        },
+        {
           "DataId": 1020687,
           "Position": {
             "X": 102.92212,

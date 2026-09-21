@@ -27,6 +27,17 @@
           "Aetheryte": "Peaks - Ala Ghiri"
         },
         {
+          "DataId": 1020865,
+          "Position": {
+            "X": -258.77777,
+            "Y": 257.71973,
+            "Z": 721.21765
+          },
+          "TerritoryId": 620,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179699
+        },
+        {
           "DataId": 1020604,
           "Position": {
             "X": -299.39728,

@@ -129,6 +129,17 @@
           "Aetheryte": "Il Mheg - Wolekdorf"
         },
         {
+          "DataId": 2010638,
+          "Position": {
+            "X": 351.67468,
+            "Y": 84.15344,
+            "Z": -647.05884
+          },
+          "TerritoryId": 816,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179715
+        },
+        {
           "DataId": 1029575,
           "Position": {
             "X": 477.46997,

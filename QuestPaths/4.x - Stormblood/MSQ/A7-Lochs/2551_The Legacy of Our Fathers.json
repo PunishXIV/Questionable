@@ -38,6 +38,17 @@
           "Aetheryte": "Lochs - Ala Mhigan Quarter"
         },
         {
+          "DataId": 1023041,
+          "Position": {
+            "X": 635.88916,
+            "Y": 79.99999,
+            "Z": 668.8181
+          },
+          "TerritoryId": 621,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179701
+        },
+        {
           "DataId": 1022733,
           "Position": {
             "X": 643.67126,
