@@ -129,7 +129,7 @@ public sealed class QuestStep
     /// <returns></returns>
     public bool IsTeleportableForPriorityQuests()
     {
-        if (AetheryteShortcut != null)
+        if (AetheryteShortcut != null || AethernetShortcut?.From != null)
             return true;
 
         if (InteractionType == EInteractionType.UseItem && ItemId == VesperBayAetheryteTicket)

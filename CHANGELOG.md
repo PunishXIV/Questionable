@@ -1,2 +1,1 @@
-- Bug fix: add prereqs for ARR intersocietal questline -alydev
-- Bug fix: debug overlay stabilised -alydev
+- Bug fix: job quests were broken with "can't teleport to start" -alydev
