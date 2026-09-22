@@ -334,6 +334,7 @@ internal sealed class QuestData
         AddPreviousQuest(new(5001), new(4912));
         AddPreviousQuest(new(5443), new(434));
         AddPreviousQuest(new(3242), new(3654));
+        AddPreviousQuest(new(3153), new(3141));
 
         // ARR intersocietal prereq
         AddPreviousQuest(new(1465), new(1221)); // amaljaa

@@ -1,2 +1,1 @@
-- Feature: add quest job category to tooltip -alydev
-  - Bug fix: rare crash fixed -alydev
+- Feature: added/testing post-HW unlocks, DoH/DoL unlocks presets -alydev

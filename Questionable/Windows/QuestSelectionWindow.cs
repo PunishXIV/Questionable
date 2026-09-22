@@ -23,6 +23,7 @@ internal sealed class QuestSelectionWindow : LWindow
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
     private readonly QuestTooltipComponent _questTooltipComponent;
+    private readonly QuestJournalUtils _questJournalUtils;
     private readonly IServiceProvider _serviceProvider;
     private readonly TerritoryData _territoryData;
     private readonly UiUtils _uiUtils;
@@ -45,6 +46,7 @@ internal sealed class QuestSelectionWindow : LWindow
         UiUtils uiUtils,
         DraftQuestPathService draftQuestPathService,
         QuestTooltipComponent questTooltipComponent,
+        QuestJournalUtils questJournalUtils,
         IServiceProvider serviceProvider)
         : base(_L("Quest Selection") + "{WindowId}")
     {
@@ -60,6 +62,7 @@ internal sealed class QuestSelectionWindow : LWindow
         _uiUtils = uiUtils;
         _draftQuestPathService = draftQuestPathService;
         _questTooltipComponent = questTooltipComponent;
+        _questJournalUtils = questJournalUtils;
         _serviceProvider = serviceProvider;
 
         Size = new Vector2(500, 200);
@@ -185,6 +188,9 @@ internal sealed class QuestSelectionWindow : LWindow
 
                 if (ImGui.IsItemHovered())
                     _questTooltipComponent.Draw(quest);
+
+                if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
+                    _questJournalUtils.ShowContextMenu(quest, knownQuest, nameof(QuestSelectionWindow));
             }
 
             if (ImGui.TableNextColumn())
@@ -199,6 +205,12 @@ internal sealed class QuestSelectionWindow : LWindow
                 }
 
                 ImGui.TextUnformatted(quest.Name);
+
+                if (ImGui.IsItemHovered())
+                    _questTooltipComponent.Draw(quest);
+
+                if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
+                    _questJournalUtils.ShowContextMenu(quest, knownQuest, nameof(QuestSelectionWindow));
             }
 
             if (ImGui.TableNextColumn())
