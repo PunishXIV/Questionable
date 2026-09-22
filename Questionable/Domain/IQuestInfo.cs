@@ -21,6 +21,7 @@ internal interface IQuestInfo
     public bool IsMainScenarioQuest { get; }
     public IReadOnlyList<Job> ClassJobs { get; }
     public EExpansionVersion Expansion { get; }
+    public string? Patch => QuestPatchMapper.GetPatch(QuestId.Value);
 
     public string SimplifiedName => BaseName
         .Replace(".", "", StringComparison.Ordinal)

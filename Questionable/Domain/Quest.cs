@@ -15,6 +15,7 @@ internal sealed class Quest
     public required QuestRoot Root { get; init; }
     public required IQuestInfo Info { get; init; }
     public required ESource Source { get; init; }
+    public string? Patch => QuestPatchMapper.GetPatch(Id.Value);
 
     public QuestInfo GetQuestInfo() => (QuestInfo)Info;
 

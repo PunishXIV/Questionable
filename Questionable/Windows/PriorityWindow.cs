@@ -442,6 +442,15 @@ internal sealed class PriorityWindow : LWindow
             835, 903, 916, 918, 919, 920, 929, 928, 930, 931, 932, 945, 1010, 1011, 1015, 1017, 1019, 1553, 1021, 1023,
             1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033, 1034, 1035
         ]).FromNumericListOfQuests();
+        List<ElementId> DoHDoLUnlocks = ((ushort[])[
+            152,  // desynth
+            639,  // melding
+            3018, 1422, // craft glamour prisms (blocks the other)
+            2095, // inscrutable
+            2096, // specialist
+            2097, // reduction
+            2098, // collectables lv60
+        ]).FromNumericListOfQuests();
         List<ElementId> postARRUnlocks = ((ushort[])[
             // don't add DoH/DoL unlocks to this
             // Features
@@ -483,6 +492,20 @@ internal sealed class PriorityWindow : LWindow
             705, // ARR relics
             1048,1157,1158,1194,1195,1196,1197,1198,1412,1413,1530,90, // primal EX
             1008, 1009, 1012, 433, // urth's fount chain
+        ]).FromNumericListOfQuests();
+        List<ElementId> postHWUnlocks = ((ushort[])[
+            2248, // hullbreaker hard
+            2201, // sirius hard
+            2282, // lost city amdapor hard
+            2203, // thordan ex
+            2119, // hw hunts
+            2113, // fractal continuum
+            2112, // neverreap
+            2202, // arboretum
+            2118, // stone sky sea
+            2386, // gubal hard
+            2392, // WT
+            2402, // sohm al hard
         ]).FromNumericListOfQuests();
         List<ElementId> jobUnlocks = ((ushort[])[
             // Gridania
@@ -554,7 +577,9 @@ internal sealed class PriorityWindow : LWindow
             [_T<ContentRoulette>(8)] = ((ushort[])[4959, 5013, 5014]).FromNumericListOfQuests(), // Level Cap Dungeons
             [_L("Gil (set TextAdvance to prefer Gil sacks)")] = gilList,
             [_L("Unlock all jobs")] = jobUnlocks,
+            [_L("DoH/DoL unlocks")] = DoHDoLUnlocks,
             [_L("Post-ARR unlocks")] = postARRUnlocks,
+            [_L("Post-HW unlocks")] = postHWUnlocks,
             [_T<Addon>(455)] = unlockLeves, // Levequests
             [_T<JournalGenre>(94)] = QuestData.DeliveryMoogleQuests.ToList(), // Delivery Moogle Quests
             [_T<JournalCategory>(16)] = QuestData.HardModePrimals.Cast<ElementId>().ToList(), // Primals
