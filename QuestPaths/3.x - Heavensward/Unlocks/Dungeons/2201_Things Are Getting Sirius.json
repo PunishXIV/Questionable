@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -48,27 +49,6 @@
           }
         },
         {
-          "$": "Backup Path; used if someone teleports elsewhere after accepting quest. Contains aetheryte teleport. Skip if in upper decks.",
-          "TerritoryId": 129,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Airship Landing"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            },
-            "StepIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
-        },
-        {
           "$": "Main/Backup path setup breaks if user starts QST while on the airship landing, but this shouldn't happen in most cases",
           "DataId": 1016103,
           "Position": {
@@ -77,7 +57,11 @@
             "Z": -9.567444
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Airship Landing"
+          ]
         }
       ]
     },

@@ -450,6 +450,7 @@ internal sealed class PriorityWindow : LWindow
             2096, // specialist
             2097, // reduction
             2098, // collectables lv60
+            1551, // zhloe custom delivery
         ]).FromNumericListOfQuests();
         List<ElementId> postARRUnlocks = ((ushort[])[
             // don't add DoH/DoL unlocks to this
@@ -503,8 +504,8 @@ internal sealed class PriorityWindow : LWindow
             2112, // neverreap
             2202, // arboretum
             2118, // stone sky sea
-            2386, // gubal hard
             2392, // WT
+            2386, // gubal hard
             2402, // sohm al hard
         ]).FromNumericListOfQuests();
         List<ElementId> jobUnlocks = ((ushort[])[

@@ -7,10 +7,20 @@
       "Sequence": 0,
       "Steps": [
         {
+          "Position": {
+            "X": -214.67926,
+            "Y": 11.971041,
+            "Z": 25.192627
+          },
+          "StopDistance": 7,
+          "TerritoryId": 152,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+        },
+        {
           "TerritoryId": 152,
           "InteractionType": "EquipItem",
           "ItemId": 27357,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "SkipConditions": {
             "StepIf": {
               "Item": {
