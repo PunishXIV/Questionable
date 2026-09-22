@@ -45,7 +45,13 @@ internal sealed class QuestTooltipComponent
         (Vector4 color, FontAwesomeIcon _, string tooltipText) = uiUtils.GetQuestStyle(questInfo.QuestId);
         ImGui.TextColored(color, tooltipText);
         ImGui.SameLine();
-        ImGui.TextUnformatted($"{questInfo.QuestId}");
+        ImGui.TextUnformatted($"#{questInfo.QuestId}");
+        
+        if (questInfo.Patch != null)
+        {
+            ImGui.SameLine();
+            ImGui.Text(questInfo.Patch);
+        }
 
         if (qInfo is QuestInfo { IsSeasonalEvent: true })
         {

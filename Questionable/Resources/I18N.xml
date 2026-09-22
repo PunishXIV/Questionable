@@ -6916,13 +6916,16 @@
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
     <Key>Job: {0}</Key>
+    <Value lang="en">Job: {0}</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <Key>DoH/DoL unlocks</Key>
+    <Value lang="en">DoH/DoL unlocks</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <Key>Post-HW unlocks</Key>
+    <Value lang="en">Post-HW unlocks</Value>
   </Entry>
 </I18N>
