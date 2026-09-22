@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-08-26" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -54,6 +54,30 @@
       "Sequence": 255,
       "Steps": [
         {
+          "DataId": 1011946,
+          "Position": {
+            "X": -692.798,
+            "Y": 5.084,
+            "Z": -841.061
+          },
+          "TerritoryId": 398,
+          "InteractionType": "Interact",
+          "TargetTerritoryId": 400,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": -692.798,
+                  "Y": 5.084,
+                  "Z": -841.061
+                },
+                "TerritoryId": 398,
+                "MaximumDistance": 100
+              }
+            }
+          }
+        },
+        {
           "$": "Dungeon spits you out at the base of Sohm Al, but interaction with Solemn Dragon to warp up there seems to be not working at this time",
           "DataId": 1018429,
           "Position": {
@@ -64,6 +88,7 @@
           "TerritoryId": 400,
           "InteractionType": "CompleteQuest",
           "Fly": true,
+          "StopDistance": 10,
           "AetheryteShortcut": "The Churning Mists - Moghome"
         }
       ]
