@@ -6917,4 +6917,12 @@
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
     <Key>Job: {0}</Key>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <Key>DoH/DoL unlocks</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <Key>Post-HW unlocks</Key>
+  </Entry>
 </I18N>
