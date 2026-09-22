@@ -46,7 +46,7 @@ internal sealed class QuestTooltipComponent
         ImGui.TextColored(color, tooltipText);
         ImGui.SameLine();
         ImGui.TextUnformatted($"#{questInfo.QuestId}");
-        
+
         if (questInfo.Patch != null)
         {
             ImGui.SameLine();
