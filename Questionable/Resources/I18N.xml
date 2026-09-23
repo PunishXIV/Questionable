@@ -6931,17 +6931,21 @@
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Takes effect next time the plugin is loaded</Key>
+    <Value lang="en">Takes effect next time the plugin is loaded</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Hide quest patch badge</Key>
+    <Value lang="en">Hide quest patch badge</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Hide which job a quest was started with</Key>
+    <Value lang="en">Hide which job a quest was started with</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <Key>This quest was added to the game in Patch {0}.\nClick here to view the changelog from this patch.</Key>
+    <Value lang="en">This quest was added to the game in Patch {0}.\nClick here to view the changelog from this patch.</Value>
   </Entry>
 </I18N>
