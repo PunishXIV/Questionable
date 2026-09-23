@@ -202,36 +202,42 @@ internal sealed class Configuration : IPluginConfiguration
     #region Variables
     internal sealed class GeneralConfiguration
     {
+        // Preferences
+        public string Language { get; set; } = "en";
         public ECombatModule CombatModule { get; set; } = ECombatModule.None;
         public uint MountId { get; set; } = 1;
-        public string ChocoboName { get; set; } = string.Empty;
         public GrandCompany GrandCompany { get; set; } = GrandCompany.None;
         public Job CombatJob { get; set; } = Job.ADV;
         public Job CraftingJob { get; set; } = Job.CRP;
         public Job GatheringJob { get; set; } = Job.MIN;
         public EGearsetUpdateSource GearsetUpdateSource { get; set; } = EGearsetUpdateSource.Vanilla;
-        public bool HideInAllInstances { get; set; } = true;
-        public bool UseQuestionableTheme { get; set; } = true;
-        public bool TitleBarPillCenter { get; set; } = true;
+        public string ChocoboName { get; set; } = string.Empty;
+        public string DisplayName { get; set; } = "Anonymous";
+        // UI
         public bool UseEscToCancelQuesting { get; set; } = true;
+        public bool UseQuestionableTheme { get; set; } = true;
         public bool ShowIncompleteSeasonalEvents { get; set; } = true;
-        public bool SkipLowPriorityDuties { get; set; }
+        public bool QuestIcons { get; set; } = true;
+        public bool HideSponsorButton { get; set; }
+        public bool HideRemainingTasks { get; set; }
+        public bool HideInAllInstances { get; set; } = true;
+        public bool HidePatch { get; set; }
+        public bool HideQuestStartedJob { get; set; }
+        // Questing
         public bool ConfigureTextAdvance { get; set; } = true;
         public bool DontSkipCutscenes { get; set; }
         public bool DontShowAnswerSuggestions { get; set; }
-        public bool AutoStepRefreshEnabled { get; set; }
-        public int AutoStepRefreshDelaySeconds { get; set; } = 30;
+        public bool SkipLowPriorityDuties { get; set; }
         public bool UseTickets { get; set; }
-        public bool HideSponsorButton { get; set; }
+        public bool SameJobThroughoutQuest { get; set; }
+        // Unimplemented/hidden
+        public bool TitleBarPillCenter { get; set; } = true;
         public bool DismissedReportWarning { get; set; }
         public bool ReportsDisabled { get; set; }
         public string ReportMessage { get; set; } = "";
-        public string DisplayName { get; set; } = "Anonymous";
-        public string Language { get; set; } = "en";
-        public bool HideRemainingTasks { get; set; }
         public bool ClaimMail { get; set; }
-        public bool SameJobThroughoutQuest { get; set; }
-        public bool QuestIcons { get; set; } = true;
+        public bool AutoStepRefreshEnabled { get; set; }
+        public int AutoStepRefreshDelaySeconds { get; set; } = 30;
     }
 
     internal sealed class StopConfiguration

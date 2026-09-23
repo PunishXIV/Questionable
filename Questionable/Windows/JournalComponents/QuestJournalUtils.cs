@@ -131,16 +131,7 @@ internal sealed class QuestJournalUtils
             using (ImRaii.Disabled(questInfo.QuestId is not QuestId))
             {
                 if (ImGui.MenuItem("View on Console Games Wiki"))
-                {
-                    var query = string.Join('&', new[]
-                    {
-                        ("search", questInfo.SimplifiedName),
-                        ("title", "Special:Search"),
-                        ("go", "Go")
-                    }.Select(p => $"{Uri.EscapeDataString(p.Item1)}={Uri.EscapeDataString(p.Item2)}"));
-                    var uri = new UriBuilder("https", "ffxiv.consolegameswiki.com", 443, "mediawiki/index.php", $"?{query}");
-                    Process.Start(new ProcessStartInfo { FileName = uri.ToString(), UseShellExecute = true });
-                }
+                    MoreInfoUtils.SearchConsoleGamesWiki(questInfo.SimplifiedName);
             }
             if (configuration.Advanced.Debug)
             {

@@ -1,1 +1,3 @@
-- Feature: added/testing post-HW unlocks, DoH/DoL unlocks presets -alydev
+- Feature: Patch number badge (click to open Console Games Wiki to the changelog page) -alydev
+- Feature: ^ new badge and quest-accepted-job badge can be hidden -alydev
+- Change: General and Advanced config tabs slightly reordered -alydev
