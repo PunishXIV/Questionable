@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Conditions;
@@ -353,17 +354,22 @@ internal sealed partial class ActiveQuestComponent
                     ImGui.TextUnformatted(Shorten(currentQuest.Quest.Info.Name));
                 else
                     ImGui.TextUnformatted(_L("Quest: ") + Shorten(currentQuest.Quest.Info.Name));
+
                 ImGui.SameLine();
                 QstWidgets.Chip($"#{currentQuest.Quest.Id}", QstTheme.Info);
-                var acceptedJob = classJobUtils.LookupQuestStartJob(currentQuest.Quest.Id);
-                if (acceptedJob is not ECommons.ExcelServices.Job.ADV)
+
+                if (!configuration.General.HideQuestStartedJob)
                 {
-                    ImGui.SameLine();
-                    QstWidgets.Chip($"{acceptedJob}", QstTheme.Accent);
-                    if (ImGui.IsItemClicked())
-                        classJobUtils.SwitchClassJob(acceptedJob);
-                    if (ImGui.IsItemHovered())
-                        ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+                    var acceptedJob = classJobUtils.LookupQuestStartJob(currentQuest.Quest.Id);
+                    if (acceptedJob is not ECommons.ExcelServices.Job.ADV)
+                    {
+                        ImGui.SameLine();
+                        QstWidgets.Chip($"{acceptedJob}", QstTheme.Accent);
+                        if (ImGui.IsItemClicked())
+                            classJobUtils.SwitchClassJob(acceptedJob);
+                        if (ImGui.IsItemHovered())
+                            ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+                    }
                 }
 
                 if (startedQuest.Quest.Root.Disabled)
@@ -501,6 +507,24 @@ internal sealed partial class ActiveQuestComponent
                         QstWidgets.Chip(metaDataId.ToString(CultureInfo.InvariantCulture), QstTheme.TextMuted);
                     }
                 }
+
+                if (!configuration.General.HidePatch)
+                {
+                    var patch = QuestPatchMapper.GetPatch(currentQuest.Quest.Id.Value);
+                    if (patch != null)
+                    {
+                        ImGui.SameLine();
+                        QstWidgets.Chip(patch, QstTheme.Danger);
+                        if (ImGui.IsItemHovered())
+                        {
+                            ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+                            ImGui.SetTooltip(_LF("This quest was added to the game in Patch {0}.\nClick here to view the changelog from this patch.", patch));
+                        }
+                        if (ImGui.IsItemClicked())
+                            MoreInfoUtils.SearchConsoleGamesWiki($"Patch {patch}");
+                    }
+                }
+
                 if (configuration.Advanced.Debug)
                 {
                     ImGui.SameLine();

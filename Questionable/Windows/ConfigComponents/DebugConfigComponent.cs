@@ -66,6 +66,8 @@ internal sealed class DebugConfigComponent
             }
         }
 
+        ImGui.Separator();
+
         if (QstWidgets.SectionHeader(_L("Information"), "Information", defaultOpen: false))
         {
             using (ImRaii.PushIndent())
@@ -170,20 +172,22 @@ internal sealed class DebugConfigComponent
 
         ImGui.Separator();
 
-        ImGui.Text(_L("AutoDuty Settings"));
-        using (ImRaii.PushIndent())
+        if (QstWidgets.SectionHeader(_L("AutoDuty Settings"), "AutoDutySettings", defaultOpen: true))
         {
-            ImGui.AlignTextToFramePadding();
-            bool disableAutoDutyBareMode = Configuration.Advanced.DisableAutoDutyBareMode;
-            if (ImGui.Checkbox(_L("Use Pre-Loop/Loop/Post-Loop settings"), ref disableAutoDutyBareMode))
+            using (ImRaii.PushIndent())
             {
-                Configuration.Advanced.DisableAutoDutyBareMode = disableAutoDutyBareMode;
-                Save();
-            }
+                ImGui.AlignTextToFramePadding();
+                bool disableAutoDutyBareMode = Configuration.Advanced.DisableAutoDutyBareMode;
+                if (ImGui.Checkbox(_L("Use Pre-Loop/Loop/Post-Loop settings"), ref disableAutoDutyBareMode))
+                {
+                    Configuration.Advanced.DisableAutoDutyBareMode = disableAutoDutyBareMode;
+                    Save();
+                }
 
-            ImGui.SameLine();
-            ImGuiComponents.HelpMarker(
-                _L("Typically, the loop settings for AutoDuty are disabled when running dungeons with Questionable, since they can cause issues (or even shut down your PC)."));
+                ImGui.SameLine();
+                ImGuiComponents.HelpMarker(
+                    _L("Typically, the loop settings for AutoDuty are disabled when running dungeons with Questionable, since they can cause issues (or even shut down your PC)."));
+            }
         }
 
         ImGui.Separator();
