@@ -894,8 +894,9 @@ internal sealed unsafe class QuestFunctions
             lockedReason.Add(_L("Prerequisites not met"));
 
         bool achievementPrereqs = questId.Value switch
-        {
-            4081 => false, // TODO add achievement check
+        { // TODO add achievement checks
+            4081 => false, // The Adventurer with All The Cards (triad 1-150)
+            576 => false, // Like Sire Like Fledgling (chocobo breeding)
             _ => true
         };
         if (!achievementPrereqs)
