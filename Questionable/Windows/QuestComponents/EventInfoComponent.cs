@@ -23,8 +23,8 @@ internal sealed class EventInfoComponent
         // Add seasonal events here. If a quest has additional required quests (e.g Make It Rain > Gold Saucer), add a relation in QuestData#L220
         new(_L("Limited Time Items"), [new UnlockLinkId(568)], DateTime.MaxValue),
         new(_T<Lumina.Excel.Sheets.BannerBg>(233), [new QuestId(2141)], AtDailyReset(2026, 10, 5)),
-        // The Rising 2026
-        new($"{_T<Lumina.Excel.Sheets.FittingShopCategory>(107)} 2026", [new QuestId(5510), new QuestId(5520)], AtDailyReset(2026, 9, 10)),
+        // FFXV 2026
+        new($"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(70)} 2026", [new QuestId(3158), new QuestId(3159), new QuestId(3160)], AtDailyReset(2026, 10, 13)),
     ];
     private readonly QuestController _questController = questController;
 
