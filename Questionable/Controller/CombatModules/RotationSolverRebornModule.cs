@@ -5,7 +5,14 @@ namespace Questionable.Controller.CombatModules;
 [RegisterSingleton<ICombatModule, RotationSolverRebornModule>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class RotationSolverRebornModule(RotationSolverRebornIpc rotationSolverRebornIpc) : ICombatModule, IDisposable
 {
-    public bool CanHandleFight(CombatController.CombatData combatData) => rotationSolverRebornIpc.IsEnabled;
+    public bool CanHandleFight(CombatController.CombatData combatData)
+    {
+        if (GameFunctions.GetMountId() == Mount128Module.MountId ||
+            GameFunctions.GetMountId() == Mount147Module.MountId)
+            return false;
+
+        return rotationSolverRebornIpc.IsEnabled;
+    }
 
     public bool Start(CombatController.CombatData combatData) => rotationSolverRebornIpc.RotationAuto();
 

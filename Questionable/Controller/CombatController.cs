@@ -91,6 +91,7 @@ internal sealed class CombatController : IDisposable
         combatModule ??= _combatModules.FirstOrDefault(x => x.CanHandleFight(combatData));
         if (combatModule == null)
             return false;
+        _logger.LogInformation($"Combat module: {combatModule}");
 
         if (combatModule.Start(combatData))
         {
