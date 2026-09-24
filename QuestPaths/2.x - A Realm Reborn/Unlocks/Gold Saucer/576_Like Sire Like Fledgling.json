@@ -6,15 +6,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 144,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Gold Saucer] Aetheryte Plaza",
-            "[Gold Saucer] Chocobo Square"
-          ],
-          "SkipConditions": {"StepIf": {"InTerritory": [388]}}
-        },
-        {
           "DataId": 1011030,
           "Position": {
             "X": 7.522644,
@@ -22,7 +13,11 @@
             "Z": -68.589294
           },
           "TerritoryId": 388,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Gold Saucer] Aetheryte Plaza",
+            "[Gold Saucer] Chocobo Square"
+          ]
         }
       ]
     },
