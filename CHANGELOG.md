@@ -1,1 +1,1 @@
-- Bug fix: Special combat modules for quests e.g magiteknical failure were broken. hopefully they are now less broken. -alydev
+- Feature: add FFXV quests -alydev

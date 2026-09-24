@@ -1,0 +1,118 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-24"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1026870,
+          "Position": {
+            "X": 11.4485,
+            "Y": 0.00455916,
+            "Z": 4.49697
+          },
+          "TerritoryId": 132,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "$": "auto: issuer 1026870 (Noctis)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1026868,
+          "Position": {
+            "X": -40.4673,
+            "Y": 0.131915,
+            "Z": -231.668
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: lua ACTOR2 -> 1026868 (Noctis)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1026867,
+          "Position": {
+            "X": -36.4468,
+            "Y": 7.23699,
+            "Z": -121.006
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "$": "auto: todo location -> 1026867 (Kipih Jakkya)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1026869,
+          "Position": {
+            "X": 67.3685,
+            "Y": -8.06071,
+            "Z": 110.918
+          },
+          "TerritoryId": 132,
+          "InteractionType": "SinglePlayerDuty",
+          "SinglePlayerDutyOptions": {"Enabled": true},
+          "AethernetShortcut": [
+            "[Gridania] Mih Khetto's Amphitheatre",
+            "[Gridania] Airship Landing"
+          ],
+          "$": "auto: todo location -> 1026869 (Kipih Jakkya)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1026869,
+          "Position": {
+            "X": 67.3685,
+            "Y": -8.06071,
+            "Z": 110.918
+          },
+          "TerritoryId": 132,
+          "InteractionType": "Interact",
+          "AetheryteShortcut": "Gridania",
+          "$": "auto: lua ACTOR3 -> 1026869 (Kipih Jakkya)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1026869,
+          "Position": {
+            "X": 67.3685,
+            "Y": -8.06071,
+            "Z": 110.918
+          },
+          "TerritoryId": 132,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Gridania",
+          "$": "auto: todo turn-in -> 1026869 (Kipih Jakkya)"
+        }
+      ]
+    }
+  ]
+}
