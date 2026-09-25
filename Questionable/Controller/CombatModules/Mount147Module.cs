@@ -2,16 +2,13 @@
 using Questionable.Model.Questing;
 namespace Questionable.Controller.CombatModules;
 
-/// <summary>
-///     Commandeered Magitek Armor; used in 'Magiteknical Failure' quest.
-/// </summary>
 [RegisterSingleton<ICombatModule, Mount147Module>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class Mount147Module(GameFunctions gameFunctions) : ICombatModule
 {
     public const ushort MountId = 147;
     private readonly EAction[] _actions = [EAction.Trample];
 
-    public bool CanHandleFight(CombatController.CombatData combatData) => GameFunctions.GetMountId() == MountId;
+    public bool CanHandleFight(CombatController.CombatData combatData) => false;//GameFunctions.GetMountId() == MountId;
 
     public bool Start(CombatController.CombatData combatData) => true;
 
