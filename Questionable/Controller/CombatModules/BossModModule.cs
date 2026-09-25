@@ -9,8 +9,6 @@ internal sealed class BossModModule
     ILogger<BossModModule> logger,
     BossModIpc bossModIpc,
     Configuration configuration,
-    Mount128Module mount128Module,
-    Mount147Module mount147Module,
     IFramework framework) : ICombatModule, IDisposable
 {
     private bool _justLoaded = true;
@@ -20,9 +18,9 @@ internal sealed class BossModModule
         if (configuration.General.CombatModule != ECombatModule.BossMod)
             return false;
 
-        if (mount128Module.CanHandleFight(combatData) ||
-            mount147Module.CanHandleFight(combatData))
-            return false;
+        //if (GameFunctions.GetMountId() == Mount128Module.MountId ||
+        //    GameFunctions.GetMountId() == Mount147Module.MountId)
+        //    return false;
 
         return bossModIpc.IsSupported();
     }
