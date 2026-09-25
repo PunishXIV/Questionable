@@ -3,12 +3,15 @@ using JetBrains.Annotations;
 namespace Questionable.Controller.CombatModules;
 
 [RegisterSingleton<ICombatModule, RotationSolverRebornModule>(Duplicate = DuplicateStrategy.Append)]
-internal sealed class RotationSolverRebornModule(RotationSolverRebornIpc rotationSolverRebornIpc) : ICombatModule, IDisposable
+internal sealed class RotationSolverRebornModule(
+    RotationSolverRebornIpc rotationSolverRebornIpc,
+    Mount128Module mount128Module,
+    Mount147Module mount147Module) : ICombatModule, IDisposable
 {
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
-        if (GameFunctions.GetMountId() == Mount128Module.MountId ||
-            GameFunctions.GetMountId() == Mount147Module.MountId)
+        if (mount128Module.CanHandleFight(combatData) ||
+            mount147Module.CanHandleFight(combatData))
             return false;
 
         return rotationSolverRebornIpc.IsEnabled;
