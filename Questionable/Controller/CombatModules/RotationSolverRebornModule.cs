@@ -3,16 +3,13 @@ using JetBrains.Annotations;
 namespace Questionable.Controller.CombatModules;
 
 [RegisterSingleton<ICombatModule, RotationSolverRebornModule>(Duplicate = DuplicateStrategy.Append)]
-internal sealed class RotationSolverRebornModule(
-    RotationSolverRebornIpc rotationSolverRebornIpc,
-    Mount128Module mount128Module,
-    Mount147Module mount147Module) : ICombatModule, IDisposable
+internal sealed class RotationSolverRebornModule(RotationSolverRebornIpc rotationSolverRebornIpc) : ICombatModule, IDisposable
 {
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
-        if (mount128Module.CanHandleFight(combatData) ||
-            mount147Module.CanHandleFight(combatData))
-            return false;
+        //if (GameFunctions.GetMountId() == Mount128Module.MountId ||
+        //    GameFunctions.GetMountId() == Mount147Module.MountId)
+        //    return false;
 
         return rotationSolverRebornIpc.IsEnabled;
     }

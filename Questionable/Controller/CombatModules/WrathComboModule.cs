@@ -19,23 +19,17 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
 
     private readonly IFramework _framework;
     private readonly ILogger<WrathComboModule> _logger;
-    private readonly Mount147Module _mount147Module;
-    private readonly Mount128Module _mount128Module;
 
     private Guid? _lease;
 
     public WrathComboModule(ILogger<WrathComboModule> logger,
         Configuration configuration,
         IDalamudPluginInterface pluginInterface,
-        IFramework framework,
-        Mount128Module mount128Module,
-        Mount147Module mount147Module)
+        IFramework framework)
     {
         _logger = logger;
         _configuration = configuration;
         _framework = framework;
-        _mount128Module = mount128Module;
-        _mount147Module = mount147Module;
 
         _callback =
             pluginInterface.GetIpcProvider<int, string, object>(
@@ -49,9 +43,9 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
             ECombatModule.WrathCombo)
             return false;
 
-        if (_mount128Module.CanHandleFight(combatData) ||
-            _mount147Module.CanHandleFight(combatData))
-            return false;
+        //if (GameFunctions.GetMountId() == Mount128Module.MountId ||
+        //    GameFunctions.GetMountId() == Mount147Module.MountId)
+        //    return false;
 
         try
         {
