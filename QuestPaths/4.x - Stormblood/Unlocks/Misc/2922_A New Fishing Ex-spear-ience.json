@@ -9,7 +9,8 @@
         {
           "InteractionType": "SwitchClass",
           "TargetClass": "Fisher",
-          "TerritoryId": 1
+          "TerritoryId": 613,
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
         },
         {
           "DataId": 1021362,
@@ -19,8 +20,7 @@
             "Z": -277.05804
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
