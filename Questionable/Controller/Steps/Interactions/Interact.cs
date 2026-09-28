@@ -26,6 +26,9 @@ internal static class Interact
             if (step.InteractionType is EInteractionType.AcceptQuest or EInteractionType.CompleteQuest
                 or EInteractionType.SinglePlayerDuty)
             {
+                if (step.InteractionType == EInteractionType.SinglePlayerDuty)
+                    yield return new SinglePlayerDuty.LeaveParty();
+
                 if (step.InteractionType is EInteractionType.AcceptQuest && sequence.Sequence > 0 && redoUtil.IsRedoActive())
                 {
                     // Can't accept other quests during NG+
