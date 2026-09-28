@@ -15,7 +15,7 @@ internal static class SwitchClassJob
                 yield break;
 
             Job classJob = classJobUtils.AsIndividualJobs(step.TargetClass, quest.Id).Single();
-            if (classJobUtils.ClassToJobStone(classJob) is (Job job, ushort jobStone))
+            if (ClassJobUtils.ClassToJobStone(classJob) is (Job job, ushort jobStone))
             {
                 yield return new Task(job);
                 yield return new UnequipItem.Task(jobStone);

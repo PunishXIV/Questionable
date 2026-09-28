@@ -816,15 +816,26 @@ internal sealed unsafe class QuestFunctions
                 lockedReason.Add(_L("Rank"));
         }
 
+        // quest is in a ng+ chapter, and the chapter id is a known class quest group
         bool isClassQuest = questInfo.NewGamePlusChapter != 0 &&
             QuestData.JobToClassQuestChapterIds.Values
                 .Any(x => x.Contains(questInfo.NewGamePlusChapter));
-        if ((isClassQuest && questInfo.ClassJobs.Count >= 1) || questInfo.ClassJobs.Count == 1)
+        // if this is a class quest with only one or two acceptable jobs (i.e class or job)
+        if (isClassQuest && questInfo.ClassJobs.Count >= 1 && questInfo.ClassJobs.Count <= 2)
         {
             var levels = PlayerState.Instance()->ClassJobLevels;
             var index = questInfo.ClassJobs[0].GetData().ExpArrayIndex;
             if (index >= 0 && levels.Length > index && levels[index] < questInfo.Level)
                 lockedReason.Add($"{_L("Low level")} ({questInfo.ClassJobs[0]})");
+        }
+        // if this is a class quest with a wider range of acceptable jobs (i.e an unlock quest)
+        if (isClassQuest && questInfo.ClassJobs.Count > 5)
+        {
+            var levels = PlayerState.Instance()->ClassJobLevels;
+            var highest = levels.IndexOf(levels.ToArray().Max());
+            var highestJob = questInfo.ClassJobs.Where(x => x.GetData().ExpArrayIndex == highest).FirstOrNull();
+            if (highestJob != null && levels[highest] < questInfo.Level)
+                lockedReason.Add($"{_L("Low level")} ({ClassJobUtils.ClassToJobStone(highestJob.Value).Item1})");
         }
 
         if (questInfo.AlliedSociety != EAlliedSociety.None)
