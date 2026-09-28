@@ -60,7 +60,7 @@ internal static class SinglePlayerDuty
         {
             if (step.InteractionType != EInteractionType.SinglePlayerDuty)
                 yield break;
-                
+
             if (bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions))
             {
                 uint cfcId = 0;
