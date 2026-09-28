@@ -315,7 +315,7 @@ internal static class Interact
                     }
                     if (acceptableJobs.Count == 0)
                         throw new Exception(_LF("_JobGearsetError", firstItem.ToFriendlyString(), Task.Quest.Info.Name));
-                    if (classJobUtils.ClassToJobStone(candidate) is (Job job, ushort item))
+                    if (ClassJobUtils.ClassToJobStone(candidate) is (Job job, ushort item))
                     {
                         _unequipItem = item;
                         logger.LogInformation("Current job {ClassJob} is not valid for {QuestId}, changing to {AcceptableJob} via {MiddleJob}",

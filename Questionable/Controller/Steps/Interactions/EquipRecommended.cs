@@ -23,7 +23,7 @@ internal static class EquipRecommended
         }
     }
 
-    internal sealed class BeforeDutyOrInstance(ClassJobUtils classJobUtils, IObjectTable objectTable) : ITaskFactory
+    internal sealed class BeforeDutyOrInstance(IObjectTable objectTable) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -37,7 +37,7 @@ internal static class EquipRecommended
                 yield break;
             // If there's an unequipped job stone, find it and equip it
             if (objectTable[0] is IPlayerCharacter player &&
-                classJobUtils.ClassToJobStone((Job)player.ClassJob.Value.RowId) is (Job targetJob, ushort jobStone))
+                ClassJobUtils.ClassToJobStone((Job)player.ClassJob.Value.RowId) is (Job targetJob, ushort jobStone))
             {
                 bool hasJobStone = false;
                 unsafe

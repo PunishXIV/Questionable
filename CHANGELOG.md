@@ -1,1 +1,1 @@
-- Feature: Leaving party before SinglePlayerDuty -alydev
+- Bug fix: Use highest level job to test if class unlock quest is blocked by low level -alydev

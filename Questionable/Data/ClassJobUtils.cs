@@ -198,7 +198,7 @@ internal sealed class ClassJobUtils
         return Job.ADV;
     }
 
-    private readonly Dictionary<Job, (Job, ushort)> classToJobStone = new() {
+    private static readonly Dictionary<Job, (Job, ushort)> ClassToJobStoneData = new() {
                 { Job.GLA, (Job.PLD, 4542) },
                 { Job.PGL, (Job.MNK, 4543) },
                 { Job.MRD, (Job.WAR, 4544) },
@@ -209,9 +209,9 @@ internal sealed class ClassJobUtils
                 { Job.ACN, (Job.SMN, 4549) },
                 { Job.ROG, (Job.NIN, 7886) }
             };
-    public (Job?, ushort?) ClassToJobStone(Job classJob)
+    public static (Job?, ushort?) ClassToJobStone(Job classJob)
     {
-        if (classToJobStone.TryGetValue(classJob, out var value))
+        if (ClassToJobStoneData.TryGetValue(classJob, out var value))
         {
             (var job, var item) = value;
             bool unlocked = false;
