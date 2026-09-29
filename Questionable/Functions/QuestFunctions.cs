@@ -15,6 +15,7 @@ using Questionable.Model.Questing;
 using static Questionable.Domain.QuestInfo;
 using static Questionable.Utils.CacheUtils;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
+using Achievement = FFXIVClientStructs.FFXIV.Client.Game.UI.Achievement;
 using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Functions;
@@ -764,14 +765,14 @@ internal sealed unsafe class QuestFunctions
         if (elementId is AlliedSocietyDailyId)
             return false;
         if (elementId is UnlockLinkId unlockLinkId)
-            return IsQuestComplete(unlockLinkId);
+            return IsUnlockLinkUnlocked(unlockLinkId);
 
         throw new ArgumentOutOfRangeException(nameof(elementId));
     }
 
     public bool IsQuestComplete(QuestId questId) => QuestManager.IsQuestComplete(questId.Value);
 
-    public bool IsQuestComplete(UnlockLinkId unlockLinkId) => UIState.Instance()->IsUnlockLinkUnlocked(unlockLinkId.Value);
+    public bool IsUnlockLinkUnlocked(UnlockLinkId unlockLinkId) => UIState.Instance()->IsUnlockLinkUnlocked(unlockLinkId.Value);
 
     public bool IsQuestFinishedForPriorityRemoval(ElementId elementId)
     {
@@ -893,25 +894,24 @@ internal sealed unsafe class QuestFunctions
 
         bool questPrereqs = questId.Value switch
         {
+            // EX mounts
             432 => AllMountsUnlocked(new ushort[] { 28, 29, 30, 31, 40, 43 }),
             1550 => AllMountsUnlocked(new ushort[] { 75, 76, 77, 78, 90, 98, 104 }),
             3200 => AllMountsUnlocked(new ushort[] { 115, 116, 133, 144, 158, 172, 182 }),
             4057 => AllMountsUnlocked(new ushort[] { 189, 192, 205, 217, 226, 238, 249 }),
             4795 => AllMountsUnlocked(new ushort[] { 261, 262, 293, 306, 315, 325, 332 }),
             5469 => AllMountsUnlocked(new ushort[] { 345, 346, 363, 389, 407, 422, 444 }),
+            // gold saucer
+            576 => RaceChocoboRank40(),
+            4081 => IsAchievementComplete(2819),
+            // blue mage
+            3195 => IsUnlockLinkUnlocked(new(113)),
+            // potd
+            2387 => IsAchievementComplete(1580),
             _ => true
         };
         if (!questPrereqs)
             lockedReason.Add(_L("Prerequisites not met"));
-
-        bool achievementPrereqs = questId.Value switch
-        { // TODO add achievement checks
-            4081 => false, // The Adventurer with All The Cards (triad 1-150)
-            576 => false, // Like Sire Like Fledgling (chocobo breeding)
-            _ => true
-        };
-        if (!achievementPrereqs)
-            lockedReason.Add(_L("Achievement"));
 
         if (QuestData.CollaborationQuests.Contains(questId) &&
                 !EventInfoComponent.EventQuests.Any(eq => eq.QuestIds.Contains(questId)))
@@ -921,6 +921,24 @@ internal sealed unsafe class QuestFunctions
     }
 
     private unsafe bool AllMountsUnlocked(ushort[] mounts) => mounts.All(x => PlayerState.Instance()->IsMountUnlocked(x));
+    private unsafe bool RaceChocoboRank40() => RaceChocoboManager.Instance()->Rank >= 40;
+    private bool _achievementsRequested;
+    private unsafe bool IsAchievementComplete(int achievementId)
+    {
+        if (!Achievement.Instance()->IsLoaded())
+        {
+            if (!_achievementsRequested)
+                AgentAchievement.Instance()->Show();
+            _achievementsRequested = true;
+            return false;
+        }
+        if (_achievementsRequested)
+        {
+            AgentAchievement.Instance()->Hide();
+            _achievementsRequested = false;
+        }
+        return Achievement.Instance()->IsComplete(achievementId);
+    }
 
     private bool IsQuestLocked(SatisfactionSupplyNpcId satisfactionSupplyNpcId)
     {

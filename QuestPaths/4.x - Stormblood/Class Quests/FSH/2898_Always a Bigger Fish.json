@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "$": "Needs spearfishing preset",
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-14"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -164,6 +164,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
+          "AetheryteShortcut": "Ruby Sea - Tamamizu",
           "Fly": true
         }
       ]

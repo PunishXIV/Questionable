@@ -1,0 +1,53 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Anonymous",
+  "Comment": "Becomes available after acquiring all DT EX mounts",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Comment": "This quest was automatically generated and is untested. Please report in Discord if it works.",
+          "DataId": 1058935,
+          "Position": {
+            "X": 96.3417,
+            "Y": 47,
+            "Z": -170.779
+          },
+          "TerritoryId": 1185,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2015333,
+          "Position": {
+            "X": -101.832,
+            "Y": 131.675,
+            "Z": -63.712
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2015333,
+          "Position": {
+            "X": -101.832,
+            "Y": 131.675,
+            "Z": -63.712
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
