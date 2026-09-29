@@ -1,0 +1,67 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Anonymous",
+  "Comment": "Becomes available after acquiring all EW EX mounts",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Comment": "This quest was automatically generated and is untested. Please report in Discord if it works.",
+          "DataId": 1046032,
+          "Position": {
+            "X": 15.8251,
+            "Y": 2.373,
+            "Z": -42.991
+          },
+          "TerritoryId": 962,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046033,
+          "Position": {
+            "X": -478,
+            "Y": 146.284,
+            "Z": 450
+          },
+          "TerritoryId": 959,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "Position": {
+            "X": 693.797,
+            "Y": 156.369,
+            "Z": 265.749
+          },
+          "TerritoryId": 959,
+          "InteractionType": "WalkTo"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2013481,
+          "Position": {
+            "X": -79.7348,
+            "Y": 59.6559,
+            "Z": 190.072
+          },
+          "TerritoryId": 959,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}

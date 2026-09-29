@@ -1,0 +1,71 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Anonymous",
+  "Comment": "Becomes available after acquiring all ShB EX mounts",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Comment": "This quest was automatically generated and is untested. Please report in Discord if it works.",
+          "DataId": 1032764,
+          "Position": {
+            "X": -496.508,
+            "Y": 7.68117,
+            "Z": 53.1475
+          },
+          "TerritoryId": 621,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2011469,
+          "Position": {
+            "X": -645.169,
+            "Y": -174.559,
+            "Z": -477.928
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2011470,
+          "Position": {
+            "X": -364.987,
+            "Y": 257.944,
+            "Z": -0.0220977
+          },
+          "TerritoryId": 402,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2011470,
+          "Position": {
+            "X": -364.987,
+            "Y": 257.944,
+            "Z": -0.0220977
+          },
+          "TerritoryId": 402,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}

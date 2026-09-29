@@ -1,0 +1,70 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Anonymous",
+  "Comment": "Becomes available after acquiring all HW EX mounts",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Comment": "This quest was automatically generated and is untested. Please report in Discord if it works.",
+          "DataId": 1017656,
+          "Position": {
+            "X": 70.767,
+            "Y": 207.29,
+            "Z": 0.610088
+          },
+          "TerritoryId": 478,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1018765,
+          "Position": {
+            "X": -86.7079,
+            "Y": 193.348,
+            "Z": 62.7847
+          },
+          "TerritoryId": 478,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2007704,
+          "Position": {
+            "X": 738.402,
+            "Y": 277.97,
+            "Z": 460.954
+          },
+          "TerritoryId": 399,
+          "InteractionType": "Interact",
+          "Fly": true
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 2007704,
+          "Position": {
+            "X": 738.402,
+            "Y": 277.97,
+            "Z": 460.954
+          },
+          "TerritoryId": 399,
+          "InteractionType": "CompleteQuest",
+          "Fly": true
+        }
+      ]
+    }
+  ]
+}
