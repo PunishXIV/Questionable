@@ -4,15 +4,11 @@ internal interface IPCUtils
 {
     internal sealed class IPCSubscriber
     {
-        internal static bool IsInstalled(string pluginName) => DalamudReflector.TryGetDalamudPlugin(pluginName, out object _, suppressErrors: false, ignoreCache: true);
+        internal static bool IsInstalled(string pluginName) =>
+            Svc.PluginInterface.InstalledPlugins.Any(p => p.InternalName == pluginName && p.IsLoaded);
 
-        internal static Version? Version(string pluginName)
-        {
-            Version? _version = null;
-            if (DalamudReflector.TryGetDalamudPlugin(pluginName, out object? dalamudPlugin, suppressErrors: false, ignoreCache: true))
-                _version = dalamudPlugin.GetType().Assembly.GetName().Version;
-            return _version;
-        }
+        internal static Version? Version(string pluginName) =>
+            Svc.PluginInterface.InstalledPlugins.FirstOrDefault(p => p.Name == pluginName && p.IsLoaded)?.Version;
 
         internal static void DisposeAll(EzIPCDisposalToken[] _disposalTokens)
         {
