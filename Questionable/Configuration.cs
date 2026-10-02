@@ -291,6 +291,8 @@ internal sealed class Configuration : IPluginConfiguration
     internal sealed class AdvancedConfiguration
     {
         public bool DebugOverlay { get; set; }
+        public bool ShowSavedPos { get; set; }
+        public bool ShowFlagPos { get; set; }
         public bool CombatDataOverlay { get; set; }
         public bool HighlightSelectedNpc { get; set; } = true;
         public ObjectHighlightColor HighlightColor { get; set; } = ObjectHighlightColor.Yellow;

@@ -407,6 +407,9 @@ internal sealed class PriorityWindow : LWindow
                 _presetName = string.Empty;
             }
         }
+        ImGui.SameLine();
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Redo))
+            _builtInPresets = null;
 
         bool isUserPreset = _selectedPresetName != null && userPresets.ContainsKey(_selectedPresetName);
         if (isUserPreset)
@@ -572,6 +575,7 @@ internal sealed class PriorityWindow : LWindow
         ]).FromNumericListOfQuests();
         var aetherCurrents = _T<Addon>(2445);
         var roleQuests = _T<JournalCategory>(95);
+        var gilQuestsList = _questData.GetQuestsWithItemReward(5825, 5826, 27994);
         _builtInPresets = new(StringComparer.Ordinal)
         {
             [JobQuestsPresetName] = [], // Job Quests
@@ -597,6 +601,7 @@ internal sealed class PriorityWindow : LWindow
             [$"{roleQuests}: {_T<Addon>(1084)}"] = _questData.GetRoleQuests(Job.MNK).Select(x => x.QuestId).ToList(),
             [$"{roleQuests}: {_T<Addon>(1085)}"] = _questData.GetRoleQuests(Job.BRD).Select(x => x.QuestId).ToList(),
             [$"{roleQuests}: {_T<Addon>(1086)}"] = _questData.GetRoleQuests(Job.BLM).Select(x => x.QuestId).ToList(),
+            ["Experimental: "] = gilQuestsList,
         };
 
         return _builtInPresets;

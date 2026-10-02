@@ -92,6 +92,10 @@ internal sealed class QuestInfo : IQuestInfo
         NewGamePlusChapter = newGamePlusChapter;
         StartingCity = startingCity;
         MoogleDeliveryLevel = (byte)quest.DeliveryQuest.RowId;
+        ItemRewardsRaw = quest.OptionalItemReward
+            .Where(x => x.RowId > 0)
+            .Select(x => x.RowId)
+            .ToList();
         ItemRewards = quest.Reward.Where(x => x.RowId > 0 && x.Is<Item>())
             .Select(x => x.GetValueOrDefault<Item>())
             .Where(x => x != null)
@@ -141,6 +145,7 @@ internal sealed class QuestInfo : IQuestInfo
     public byte StartingCity { get; set; }
     public byte MoogleDeliveryLevel { get; }
     public bool IsMoogleDeliveryQuest => JournalGenre == 87;
+    public IReadOnlyList<uint> ItemRewardsRaw { get; }
     public IReadOnlyList<ItemReward> ItemRewards { get; }
     public IReadOnlyList<ItemReward> TripleTriadCardRewards { get; }
 
