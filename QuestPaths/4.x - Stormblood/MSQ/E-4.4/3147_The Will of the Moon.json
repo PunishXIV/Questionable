@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "jigain", "Date": "2026-09-06"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -66,11 +66,12 @@
         {
           "DataId": 1020280,
           "Position": {
-            "X": -448.1422,
-            "Y": 2.2771428,
-            "Z": 632.1354
+            "X": -447.5113,
+            "Y": 2.2771435,
+            "Z": 630.74994
           },
           "TerritoryId": 622,
+          "StopDistance": 1,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Azim Steppe - Dawn Throne",
           "Fly": true

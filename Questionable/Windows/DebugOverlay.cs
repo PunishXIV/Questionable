@@ -2,6 +2,7 @@
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using Questionable.Model.Questing;
 namespace Questionable.Windows;
 
@@ -18,12 +19,14 @@ internal sealed class DebugOverlay : Window
     private readonly IObjectTable _objectTable;
     private readonly QuestController _questController;
     private readonly QuestRegistry _questRegistry;
+    private readonly NavmeshIpc _navmeshIpc;
     internal Vector3? SavedPos;
     internal readonly Dictionary<int, Vector2> ScreenPosCache = [];
 
     public DebugOverlay(QuestController questController, QuestRegistry questRegistry, IGameGui gameGui,
         IClientState clientState, ICondition condition, AetheryteData aetheryteData, IObjectTable objectTable,
-        CombatController combatController, Configuration configuration, HighlightObject highlightObject)
+        CombatController combatController, Configuration configuration, HighlightObject highlightObject,
+        NavmeshIpc navmeshIpc)
         : base(_L("Questionable Debug Overlay") + "###QuestionableDebugOverlay",
             ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoBackground |
             ImGuiWindowFlags.NoInputs | ImGuiWindowFlags.NoSavedSettings, forceMainWindow: true)
@@ -38,6 +41,7 @@ internal sealed class DebugOverlay : Window
         _combatController = combatController;
         _configuration = configuration;
         _highlightObject = highlightObject;
+        _navmeshIpc = navmeshIpc;
 
         Position = Vector2.Zero;
         PositionCondition = ImGuiCond.Always;
@@ -71,6 +75,7 @@ internal sealed class DebugOverlay : Window
         DrawCurrentQuest();
         DrawHighlightedQuest();
         DrawSavedPos();
+        DrawFlagPos();
 
         if (_configuration.Advanced.CombatDataOverlay)
             DrawCombatTargets();
@@ -187,7 +192,7 @@ internal sealed class DebugOverlay : Window
         if (SavedPos == null)
             return;
 
-        if (!_configuration.Advanced.DebugOverlay)
+        if (!_configuration.Advanced.DebugOverlay || !_configuration.Advanced.ShowSavedPos)
             return;
 
         bool visible = _gameGui.WorldToScreen(SavedPos.Value, out Vector2 screenPos);
@@ -197,6 +202,31 @@ internal sealed class DebugOverlay : Window
         ImGui.GetWindowDrawList().AddCircleFilled(smoothedPos, 3f, 0xFF02B8FA);
         ImGui.GetWindowDrawList().AddText(smoothedPos + new Vector2(10, -8), 0xFF02B8FA,
             $"SavedPos\n{SavedPos.Value.ToString("G5", CultureInfo.InvariantCulture)} [{(SavedPos.Value - _objectTable[0]!.Position).Length():N2}]");
+    }
+
+    readonly Dictionary<Vector2, float> _flagFloorPos = [];
+    private unsafe void DrawFlagPos()
+    {
+        if (!_configuration.Advanced.DebugOverlay || !_configuration.Advanced.ShowFlagPos)
+            return;
+        AgentMap* agentMap = AgentMap.Instance();
+        if (agentMap is null || agentMap->FlagMarkerCount == 0)
+            return;
+        var marker = agentMap->FlagMapMarkers[0];
+        if (marker.TerritoryId != _clientState.TerritoryType)
+            return;
+        if (!_flagFloorPos.TryGetValue(new(marker.XFloat, marker.YFloat), out float height))
+        {
+            height = _navmeshIpc.GetPointOnFloor(new(marker.XFloat, 1024, marker.YFloat), unlandable: true)?.Y ?? 0;
+        }
+        Vector3 flagPos = new(marker.XFloat, height, marker.YFloat);
+        bool visible = _gameGui.WorldToScreen(flagPos, out Vector2 screenPos);
+        if (!visible)
+            return;
+        Vector2 smoothedPos = GetSmoothedScreenPos(flagPos.GetHashCode(), screenPos);
+        ImGui.GetWindowDrawList().AddCircleFilled(smoothedPos, 3f, 0xFF4444FF);
+        ImGui.GetWindowDrawList().AddText(smoothedPos + new Vector2(10, -8), 0xFF4444FF,
+            $"FlagPos\n{flagPos.ToString("G5", CultureInfo.InvariantCulture)} [{(flagPos - _objectTable[0]!.Position).Length():N2}]");
     }
 
     private Vector2 GetSmoothedScreenPos(int key, Vector2 rawPos, float smoothing = 0.35f, float snapThresholdSq = 1f)

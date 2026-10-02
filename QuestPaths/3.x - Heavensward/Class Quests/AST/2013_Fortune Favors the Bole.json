@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "kaiser",
-  "LastChecked": {"Username": "Anonymous", "Date": "2026-09-01"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -12,6 +12,7 @@
           "ItemId": 10524,
           "AetheryteShortcut": "South Shroud - Quarrymill",
           "SkipConditions": {
+            "AetheryteShortcutIf": {"InTerritory": [153]},
             "StepIf": {
               "Item": {
                 "NotInInventory": true

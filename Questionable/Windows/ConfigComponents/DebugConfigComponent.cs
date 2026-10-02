@@ -83,6 +83,20 @@ internal sealed class DebugConfigComponent
                 {
                     using (ImRaii.PushIndent())
                     {
+                        bool showSavedPos = Configuration.Advanced.ShowSavedPos;
+                        if (ImGui.Checkbox(_L("Show saved position"), ref showSavedPos))
+                        {
+                            Configuration.Advanced.ShowSavedPos = showSavedPos;
+                            Save();
+                        }
+
+                        bool showFlagPos = Configuration.Advanced.ShowFlagPos;
+                        if (ImGui.Checkbox(_L("Show flag position"), ref showFlagPos))
+                        {
+                            Configuration.Advanced.ShowFlagPos = showFlagPos;
+                            Save();
+                        }
+
                         bool combatDataOverlay = Configuration.Advanced.CombatDataOverlay;
                         if (ImGui.Checkbox(_L("Enable combat data overlay"), ref combatDataOverlay))
                         {

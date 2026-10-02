@@ -52,10 +52,11 @@
         {
           "DataId": 1000100,
           "Position": {
-            "X": 23.819275,
-            "Y": -8,
-            "Z": 115.92273
+            "X": 25.872286,
+            "Y": -8.000001,
+            "Z": 115.7687
           },
+          "StopDistance": 1,
           "TerritoryId": 132,
           "InteractionType": "Interact",
           "AethernetShortcut": [
@@ -86,10 +87,11 @@
         {
           "DataId": 1000100,
           "Position": {
-            "X": 23.819275,
-            "Y": -8,
-            "Z": 115.92273
+            "X": 25.872286,
+            "Y": -8.000001,
+            "Z": 115.7687
           },
+          "StopDistance": 1,
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest"
         }

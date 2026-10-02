@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "jigain", "Date": "2026-09-06"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -141,10 +141,11 @@
         {
           "DataId": 1019468,
           "Position": {
-            "X": 170.58057,
+            "X": 165.61469,
             "Y": 13.02367,
-            "Z": -91.96619
+            "Z": -90.53424
           },
+          "StopDistance": 1,
           "TerritoryId": 635,
           "InteractionType": "CompleteQuest",
           "AetheryteShortcut": "Rhalgr's Reach",
