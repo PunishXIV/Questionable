@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Censored",
-  "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -43,9 +43,9 @@
         {
           "DataId": 1005950,
           "Position": {
-            "X": -11.7647705,
-            "Y": 49.2008,
-            "Z": -289.2348
+            "X": -12.719825,
+            "Y": 49.200806,
+            "Z": -290.33356
           },
           "TerritoryId": 180,
           "InteractionType": "Emote",
