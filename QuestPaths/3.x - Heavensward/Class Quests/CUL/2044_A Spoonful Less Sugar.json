@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
   "Comment": "Crafted Item: 1x Sohm Al Tart NQ, 1x Ishgardian tea HQ\nAutocrafting requires:\n3x Coerthan Tea Leaves\n3x Dark Chestnut\n5x Highland Wheat\n2x Yak Milk(crystarium)\n1x Maple Sap(Jossy)\n1x Buffalo Milk(Jossy)",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,

@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
   "Comment": "Crafted Item: 1x Cockatrice Meatballs HQ\nAutocrafting requires:\n3x Cockatrice Thigh\n2x Cyclops Onion\n1x Abalathian Rock Salt",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,

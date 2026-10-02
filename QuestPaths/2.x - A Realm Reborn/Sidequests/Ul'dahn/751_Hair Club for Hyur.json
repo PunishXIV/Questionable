@@ -1,0 +1,82 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006209,
+          "Position": {
+            "X": -67.08886,
+            "Y": -20.296291,
+            "Z": -3.9321687
+          },
+          "TerritoryId": 145,
+          "StopDistance": 1,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "$": "auto: issuer 1006209 (Helmhart)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": 98.545,
+            "Y": 7.6303005,
+            "Z": 31.9263
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            203
+          ],
+          "$": "auto: lua overworld enemies -> 203"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1006209,
+          "Position": {
+            "X": -67.08886,
+            "Y": -20.296291,
+            "Z": -3.9321687
+          },
+          "TerritoryId": 145,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo location -> 1006209 (Helmhart); hands over ITEM0=2000600"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006209,
+          "Position": {
+            "X": -67.08886,
+            "Y": -20.296291,
+            "Z": -3.9321687
+          },
+          "TerritoryId": 145,
+          "StopDistance": 1,
+          "InteractionType": "CompleteQuest",
+          "ItemId": 2000975,
+          "Fly": true,
+          "$": "auto: todo turn-in -> 1006209 (Helmhart)"
+        }
+      ]
+    }
+  ]
+}
