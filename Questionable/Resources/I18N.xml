@@ -6630,7 +6630,7 @@
     <Value lang="zh-tw">/qst redeem - 使用背包內的所有獎勵道具</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
+    <!-- DEPRECATED -->
     <Key>Achievement</Key>
     <Value lang="en">Achievement</Value>
     <Value lang="ja-jp">アチーブメント</Value>
