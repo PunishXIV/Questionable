@@ -191,7 +191,7 @@ internal sealed class DebugOverlay : Window
     {
         if (SavedPos == null)
             return;
-            
+
         if (!_configuration.Advanced.DebugOverlay || !_configuration.Advanced.ShowSavedPos)
             return;
 

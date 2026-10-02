@@ -6948,4 +6948,12 @@
     <Key>This quest was added to the game in Patch {0}.\nClick here to view the changelog from this patch.</Key>
     <Value lang="en">This quest was added to the game in Patch {0}.\nClick here to view the changelog from this patch.</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <Key>Show saved position</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <Key>Show flag position</Key>
+  </Entry>
 </I18N>
