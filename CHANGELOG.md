@@ -1,2 +1,2 @@
-- Feature: experimental dynamic priority preset: adds all quests currently available that have silver/gold pieces as reward -alydev
-- Feature: debug overlay has option to show flag position now -alydev
+- Bug fix: Use lighter method of determining if a plugin is installed -Jaksuhn
+- Bug fix: Order combat targets by distance first -alydev

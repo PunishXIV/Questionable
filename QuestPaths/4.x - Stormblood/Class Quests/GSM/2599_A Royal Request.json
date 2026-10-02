@@ -1,126 +1,115 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
-	"Author": "Gezah",
-	"LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
-  "QuestSequence":
-	[
-	{
-		"Sequence": 0,
-		"Steps":
-		[
-		{
-			"DataId": 1004093,
-			"Position":
-			{
-				"X": -25.162231,
-				"Y": 12.199998,
-				"Z": 110.795654
-			},
-			"TerritoryId": 131,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ul'dah",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Goldsmiths' Guild"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					130,
-					131
-					]
-				}
-			}
-		}
-		]
-	},
-	{
-		"Sequence": 1,
-		"Steps":
-		[
-		{
-			"DataId": 1021137,
-			"Position":
-			{
-				"X": -46.28064,
-				"Y": 15.654453,
-				"Z": 348.2566
-			},
-			"TerritoryId": 141,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Goldsmiths' Guild",
-			"[Ul'dah] Gate of Nald (Central Thanalan)"
-			]
-		}
-		]
-	},
-	{
-		"Sequence": 2,
-		"Steps":
-		[
-		{
-			"DataId": 1021140,
-			"Position":
-			{
-				"X": -41.9776,
-				"Y": 15.209389,
-				"Z": 346.05933
-			},
-			"TerritoryId": 141,
-			"InteractionType": "Interact"
-		},
-		{
-			"DataId": 1021139,
-			"Position":
-			{
-				"X": -42.801575,
-				"Y": 15.362579,
-				"Z": 347.12744
-			},
-			"TerritoryId": 141,
-			"InteractionType": "Interact"
-		},
-		{
-			"DataId": 1021138,
-			"Position":
-			{
-				"X": -43.47296,
-				"Y": 15.500618,
-				"Z": 348.19556
-			},
-			"TerritoryId": 141,
-			"InteractionType": "Interact"
-		}
-		]
-	},
-	{
-		"Sequence": 255,
-		"Steps":
-		[
-		{
-			"DataId": 1002280,
-			"Position":
-			{
-				"X": -35.385742,
-				"Y": 13.599964,
-				"Z": 97.24573
-			},
-			"TerritoryId": 131,
-			"InteractionType": "CompleteQuest",
-			"AetheryteShortcut": "Ul'dah",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Goldsmiths' Guild"
-			]
-		}
-		]
-	}
-	]
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Gezah",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1004093,
+          "Position": {
+            "X": -25.162231,
+            "Y": 12.199998,
+            "Z": 110.795654
+          },
+          "TerritoryId": 131,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ],
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [130, 131]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "InteractionType": "None",
+          "TerritoryId": 130,
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Gate of Nald (Central Thanalan)"
+          ],
+          "SkipConditions": { "StepIf": { "InTerritory": [131] } }
+        },
+        {
+          "DataId": 1021137,
+          "Position": {
+            "X": -46.28064,
+            "Y": 15.654453,
+            "Z": 348.2566
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Goldsmiths' Guild",
+            "[Ul'dah] Gate of Nald (Central Thanalan)"
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1021140,
+          "Position": {
+            "X": -41.9776,
+            "Y": 15.209389,
+            "Z": 346.05933
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1021139,
+          "Position": {
+            "X": -42.801575,
+            "Y": 15.362579,
+            "Z": 347.12744
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1021138,
+          "Position": {
+            "X": -43.47296,
+            "Y": 15.500618,
+            "Z": 348.19556
+          },
+          "TerritoryId": 141,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1002280,
+          "Position": {
+            "X": -35.385742,
+            "Y": 13.599964,
+            "Z": 97.24573
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Goldsmiths' Guild"
+          ]
+        }
+      ]
+    }
+  ]
 }

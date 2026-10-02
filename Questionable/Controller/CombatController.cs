@@ -273,8 +273,8 @@ internal sealed class CombatController : IDisposable
             Distance = Vector3.Distance(x.Position, playerPosition.Value)
         })
             .Where(x => x.Priority > 0)
-            .OrderByDescending(x => x.Priority)
-            .ThenBy(x => x.Distance)
+            .OrderBy(x => x.Distance)
+            .ThenByDescending(x => x.Priority)
             .Select(x => x.GameObject)
             .FirstOrDefault();
     }
