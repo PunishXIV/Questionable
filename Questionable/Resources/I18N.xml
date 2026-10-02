@@ -6951,9 +6951,11 @@
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Show saved position</Key>
+    <Value lang="en">Show saved position</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Show flag position</Key>
+    <Value lang="en">Show flag position</Value>
   </Entry>
 </I18N>

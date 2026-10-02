@@ -213,6 +213,8 @@ internal sealed class DebugOverlay : Window
         if (agentMap is null || agentMap->FlagMarkerCount == 0)
             return;
         var marker = agentMap->FlagMapMarkers[0];
+        if (marker.TerritoryId != _clientState.TerritoryType)
+            return;
         if (!_flagFloorPos.TryGetValue(new(marker.XFloat, marker.YFloat), out float height))
         {
             height = _navmeshIpc.GetPointOnFloor(new(marker.XFloat, 1024, marker.YFloat), unlandable: true)?.Y ?? 0;
