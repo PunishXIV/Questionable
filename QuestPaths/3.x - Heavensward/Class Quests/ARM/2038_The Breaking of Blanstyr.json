@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -67,7 +67,9 @@
             "Z": 183.40387
           },
           "TerritoryId": 128,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WalkTo",
+          "TargetTerritoryId": 135,
+          "SkipConditions": {"StepIf": {"InTerritory": [135]}}
         },
         {
           "Position": {

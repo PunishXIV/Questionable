@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -50,9 +50,9 @@
         {
           "DataId": 1012100,
           "Position": {
-            "X": -93.71004,
-            "Y": 100.93474,
-            "Z": -381.49872
+            "X": -187.03804,
+            "Y": 101.59906,
+            "Z": -525.0579
           },
           "TerritoryId": 399,
           "InteractionType": "Combat",

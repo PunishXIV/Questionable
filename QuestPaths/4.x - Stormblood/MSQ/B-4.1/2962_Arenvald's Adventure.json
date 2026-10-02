@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": ["JerryWester", "alydev"],
-  "LastChecked": {"Username": "jigain", "Date": "2026-09-06"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -9,10 +9,11 @@
         {
           "DataId": 1019468,
           "Position": {
-            "X": 170.58057,
+            "X": 165.61469,
             "Y": 13.02367,
-            "Z": -91.96619
+            "Z": -90.53424
           },
+          "StopDistance": 1,
           "TerritoryId": 635,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Rhalgr's Reach",
@@ -34,22 +35,14 @@
             "Z": -124.52893
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "StopDistance": 4
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -63.63005,
-            "Y": -0.0012056828,
-            "Z": -101.09714
-          },
-          "TerritoryId": 635,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 2009050,
           "Position": {
@@ -58,11 +51,7 @@
             "Z": 58.182617
           },
           "TerritoryId": 635,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Western Rhalgr's Reach",
-            "[Rhalgr's Reach] Aetheryte Plaza"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

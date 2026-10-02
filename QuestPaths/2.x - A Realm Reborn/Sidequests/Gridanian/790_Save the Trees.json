@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-09-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -142,11 +142,12 @@
         {
           "DataId": 1006248,
           "Position": {
-            "X": -293.717,
-            "Y": -14.4056,
-            "Z": 204.261
+            "X": -292.96768,
+            "Y": -14.530079,
+            "Z": 203.2394
           },
           "TerritoryId": 154,
+          "StopDistance": 1,
           "InteractionType": "CompleteQuest",
           "Fly": true,
           "AetheryteShortcut": "North Shroud - Fallgourd Float",

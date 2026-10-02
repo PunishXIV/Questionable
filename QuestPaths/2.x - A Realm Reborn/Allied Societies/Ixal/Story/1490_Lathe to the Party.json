@@ -57,10 +57,11 @@
         {
           "DataId": 1002804,
           "Position": {
-            "X": -26.260803,
+            "X": -26.586267,
             "Y": -40.705082,
-            "Z": 172.74731
+            "Z": 174.59982
           },
+          "StopDistance": 1,
           "TerritoryId": 154,
           "InteractionType": "Interact",
           "AetheryteShortcut": "North Shroud - Fallgourd Float"

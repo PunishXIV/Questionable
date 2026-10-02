@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "JerryWester",
-  "LastChecked": {"Username": "jigain", "Date": "2026-09-06"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -42,11 +42,12 @@
         {
           "DataId": 1021505,
           "Position": {
-            "X": 79.42322,
+            "X": 80.49649,
             "Y": 33.00897,
-            "Z": -669.9474
+            "Z": -669.84753
           },
           "TerritoryId": 613,
+          "StopDistance": 1,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Ruby Sea - Onokoro",
           "Fly": true

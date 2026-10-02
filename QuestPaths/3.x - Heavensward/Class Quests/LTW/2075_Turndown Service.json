@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Gezah",
-  "LastChecked": {"Username": "alydev", "Date": "2026-07-30"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -57,7 +57,8 @@
             "Z": -90.98956
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 1012180,
@@ -67,7 +68,8 @@
             "Z": -21.561035
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 1012542,
@@ -77,7 +79,8 @@
             "Z": -14.145203
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         }
       ]
     },

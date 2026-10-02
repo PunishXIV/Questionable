@@ -18,10 +18,11 @@
         {
           "DataId": 1020337,
           "Position": {
-            "X": 171.31299,
+            "X": 165.61469,
             "Y": 13.02367,
-            "Z": -89.951965
+            "Z": -90.53424
           },
+          "StopDistance": 1,
           "TerritoryId": 635,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Rhalgr's Reach",
