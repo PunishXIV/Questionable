@@ -1,0 +1,140 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1006273,
+          "Position": {
+            "X": 619.7284,
+            "Y": 23.936245,
+            "Z": 456.43982
+          },
+          "TerritoryId": 137,
+          "StopDistance": 1,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "$": "auto: issuer 1006273 (Gegeruju)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1006320,
+          "Position": {
+            "X": 466.19223,
+            "Y": 11.9579115,
+            "Z": 156.63432
+          },
+          "TerritoryId": 137,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo location -> 1006320 (pitiless poacher)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2002066,
+          "Position": {
+            "X": 458.183,
+            "Y": 12.3571,
+            "Z": 163.043
+          },
+          "TerritoryId": 137,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2000661,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
+          "$": "auto: todo location -> 2002066 (destination); use item ITEM0=2000661 on it"
+        },
+        {
+          "DataId": 2002065,
+          "Position": {
+            "X": 458.549,
+            "Y": 12.6106,
+            "Z": 190.478
+          },
+          "TerritoryId": 137,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2000661,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo location -> 2002065 (destination); use item ITEM0=2000661 on it"
+        },
+        {
+          "DataId": 2002064,
+          "Position": {
+            "X": 458.457,
+            "Y": 12.8984,
+            "Z": 216.846
+          },
+          "TerritoryId": 137,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2000661,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo location -> 2002064 (destination); use item ITEM0=2000661 on it"
+        },
+        {
+          "DataId": 2002677,
+          "Position": {
+            "X": 446.421,
+            "Y": 13.9017,
+            "Z": 239.545
+          },
+          "TerritoryId": 137,
+          "InteractionType": "UseItem",
+          "Fly": true,
+          "ItemId": 2000661,
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
+          "$": "auto: todo location -> 2002677 (destination); use item ITEM0=2000661 on it"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1006320,
+          "Position": {
+            "X": 466.19223,
+            "Y": 11.9579115,
+            "Z": 156.63432
+          },
+          "TerritoryId": 137,
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "$": "auto: todo location -> 1006320 (pitiless poacher)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1006273,
+          "Position": {
+            "X": 619.7284,
+            "Y": 23.936245,
+            "Z": 456.43982
+          },
+          "TerritoryId": 137,
+          "StopDistance": 1,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "$": "auto: todo turn-in -> 1006273 (Gegeruju)"
+        }
+      ]
+    }
+  ]
+}
