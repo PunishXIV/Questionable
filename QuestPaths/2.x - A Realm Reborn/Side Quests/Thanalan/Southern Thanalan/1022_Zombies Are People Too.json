@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Thaksin",
-  "LastChecked": {"Username": "Iskierka", "Date": "2026-07-05"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -57,37 +57,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Position": {
-            "X": -207.9934,
-            "Y": 66.78476,
-            "Z": -258.7822
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
-        },{
-          "Position": {
-            "X": -234.89017,
-            "Y": 63.51318,
-            "Z": -255.7134
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -356.22986,
-            "Y": 57.972702,
-            "Z": -381.27402
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-
-        {
           "DataId": 1006604,
           "Position": {
             "X": -278.73657,
@@ -131,6 +100,7 @@
             "Z": 129.13567
           },
           "TerritoryId": 146,
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "Fly": true
         }
       ]
@@ -163,6 +133,7 @@
           },
           "TerritoryId": 146,
           "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "Fly": true
         }
       ]

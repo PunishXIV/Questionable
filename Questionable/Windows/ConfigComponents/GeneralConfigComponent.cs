@@ -251,6 +251,16 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     Save();
                 }
 
+                using (ImRaii.Disabled(!showIncompleteSeasonalEvents))
+                {
+                    bool showCompleteSeasonalEvents = Configuration.General.ShowCompleteSeasonalEvents;
+                    if (ImGui.Checkbox(_L("Continue showing completed seasonal events"), ref showCompleteSeasonalEvents))
+                    {
+                        Configuration.General.ShowCompleteSeasonalEvents = showCompleteSeasonalEvents;
+                        Save();
+                    }
+                }
+
                 bool questIcons = Configuration.General.QuestIcons;
                 if (ImGui.Checkbox(_L("Show quest icons"), ref questIcons))
                 {
