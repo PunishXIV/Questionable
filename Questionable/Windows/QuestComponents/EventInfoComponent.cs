@@ -17,30 +17,38 @@ internal sealed class EventInfoComponent
     QuestTooltipComponent questTooltipComponent,
     Configuration configuration)
 {
-    private readonly Configuration _configuration = configuration;
     internal static readonly List<EventQuest> EventQuests =
     [
         // Add seasonal events here. If a quest has additional required quests (e.g Make It Rain > Gold Saucer), add a relation in QuestData#L220
         new(_L("Limited Time Items"), [new UnlockLinkId(568)], DateTime.MaxValue),
+        // Yokai 2026
         new(_T<Lumina.Excel.Sheets.BannerBg>(233), [new QuestId(2141)], AtDailyReset(2026, 10, 5)),
         // FFXV 2026
-        new($"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(70)} 2026", [new QuestId(3158), new QuestId(3159), new QuestId(3160)], AtDailyReset(2026, 10, 13)),
+        new(
+            $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(70)} 2026",
+            [new QuestId(3158), new QuestId(3159),
+            new QuestId(3160)],
+            AtDailyReset(2026, 10, 13)
+        ),
+        // Fall Guys
+        new(
+            $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(74)} 2026",
+            [new QuestId(434), new QuestId(4801)],
+            AtDailyReset(2026, 10, 27),
+            AtDailyReset(2026, 10, 7)
+        ),
     ];
-    private readonly QuestController _questController = questController;
 
-    private readonly QuestData _questData = questData;
-    private readonly QuestFunctions _questFunctions = questFunctions;
-    private readonly QuestRegistry _questRegistry = questRegistry;
-    private readonly QuestTooltipComponent _questTooltipComponent = questTooltipComponent;
-    private readonly UiUtils _uiUtils = uiUtils;
-
-    public bool ShouldDraw => _configuration.General.ShowIncompleteSeasonalEvents && EventQuests.Any(IsIncomplete);
+    public bool ShouldDraw => configuration.General.ShowIncompleteSeasonalEvents && EventQuests.Any(IsIncomplete);
 
     private static DateTime AtDailyReset(int year, int month, int day) => new(new(year, month, day), new(14, 59), DateTimeKind.Utc);
 
     public void Draw()
     {
-        foreach (EventQuest eventQuest in EventQuests.Where(x => x.EndsAtUtc >= DateTime.UtcNow && x.QuestIds.All(ShouldShowQuest)))
+        foreach (EventQuest eventQuest in EventQuests.Where(x =>
+            x.EndsAtUtc >= DateTime.UtcNow &&
+            (x.QuestIds.All(ShouldShowQuest) ||
+            x.StartsAtUtc > DateTime.UtcNow)))
         {
             DrawEventQuest(eventQuest);
         }
@@ -48,52 +56,62 @@ internal sealed class EventInfoComponent
 
     private void DrawEventQuest(EventQuest eventQuest)
     {
-        if (eventQuest.EndsAtUtc != DateTime.MaxValue)
+        ImGui.Text(eventQuest.Name);
+        if (eventQuest.StartsAtUtc != null)
+        {
+            string time = (eventQuest.StartsAtUtc.Value - DateTime.UtcNow).Humanize(
+                1,
+                CultureInfo.InvariantCulture,
+                minUnit: TimeUnit.Minute,
+                maxUnit: TimeUnit.Day);
+            ImGui.SameLine();
+            ImGui.Text(_LF("starts in {0}", time));
+        }
+        else if (eventQuest.EndsAtUtc != DateTime.MaxValue)
         {
             string time = (eventQuest.EndsAtUtc - DateTime.UtcNow).Humanize(
                 1,
                 CultureInfo.InvariantCulture,
                 minUnit: TimeUnit.Minute,
                 maxUnit: TimeUnit.Day);
-            ImGui.Text($"{eventQuest.Name} ({time})");
+            ImGui.SameLine();
+            ImGui.Text(_LF("ends in {0}", time));
         }
-        else
-            ImGui.Text(eventQuest.Name);
 
         List<ElementId> startableQuests = eventQuest.QuestIds.Where(x =>
-                _questRegistry.IsKnownQuest(x) &&
-                _questFunctions.IsReadyToAcceptQuest(x) &&
-                x != _questController.StartedQuest?.Quest.Id &&
-                x != _questController.NextQuest?.Quest.Id)
+                questRegistry.IsKnownQuest(x) &&
+                questFunctions.IsReadyToAcceptQuest(x) &&
+                x != questController.StartedQuest?.Quest.Id &&
+                x != questController.NextQuest?.Quest.Id)
             .ToList();
         foreach (ElementId questId in eventQuest.QuestIds)
         {
-            if (_questFunctions.IsQuestComplete(questId))
+            if (!configuration.General.ShowCompleteSeasonalEvents && questFunctions.IsQuestComplete(questId))
                 continue;
 
             using (ImRaii.PushId($"##EventQuestSelection{questId}"))
             {
-                string questName = _questData.GetQuestInfo(questId).Name;
+                string questName = questData.GetQuestInfo(questId).Name;
 
                 bool priority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle);
                 if (ImGui.IsItemHovered())
                     ImGui.SetTooltip(_L("Add to priority quests"));
                 if (priority)
-                    _questController.PriorityManager.Add(questId);
+                    questController.PriorityManager.Add(questId);
                 ImGui.SameLine();
                 if (startableQuests.Contains(questId) &&
-                    _questRegistry.TryGetQuest(questId, out Quest? quest))
+                    questRegistry.TryGetQuest(questId, out Quest? quest))
                 {
-                    if (ImGuiComponentsLocal.QuestNotice(_questController, quest))
-                        _questTooltipComponent.Draw(quest.Info);
+                    if (ImGuiComponentsLocal.QuestNotice(questController, quest))
+                        questTooltipComponent.Draw(quest.Info);
                 }
                 else
                 {
                     ImGui.SetCursorPosX(ImGui.GetCursorPosX());
 
-                    (Vector4 Color, FontAwesomeIcon Icon, string Status) = _uiUtils.GetQuestStyle(questId);
-                    if (_uiUtils.ChecklistItem(questName, Color, Icon, ImGui.GetStyle().FramePadding.X))
-                        _questTooltipComponent.Draw(_questData.GetQuestInfo(questId));
+                    (Vector4 Color, FontAwesomeIcon Icon, string Status) = uiUtils.GetQuestStyle(questId);
+                    if (uiUtils.ChecklistItem(questName, Color, Icon, ImGui.GetStyle().FramePadding.X))
+                        questTooltipComponent.Draw(questData.GetQuestInfo(questId));
                 }
             }
         }
@@ -101,8 +119,12 @@ internal sealed class EventInfoComponent
 
     private bool IsIncomplete(EventQuest eventQuest)
     {
+        // if event end time is in the past, event is complete
         if (eventQuest.EndsAtUtc <= DateTime.UtcNow)
             return false;
+        // if event start time is in the future, event is incomplete (bypass completed repeating events)
+        if (eventQuest.StartsAtUtc > DateTime.UtcNow)
+            return true;
 
         return eventQuest.QuestIds.Any(ShouldShowQuest);
     }
@@ -110,15 +132,15 @@ internal sealed class EventInfoComponent
     public IEnumerable<ElementId> GetCurrentlyActiveEventQuests()
     {
         return EventQuests
-            .Where(x => x.EndsAtUtc >= DateTime.UtcNow && x.QuestIds.All(ShouldShowQuest))
+            .Where(x => x.StartsAtUtc < DateTime.UtcNow && x.EndsAtUtc >= DateTime.UtcNow && x.QuestIds.All(ShouldShowQuest))
             .SelectMany(x => x.QuestIds);
     }
 
     private bool ShouldShowQuest(ElementId elementId)
     {
-        return !_questFunctions.IsQuestComplete(elementId) &&
-               !_questFunctions.IsQuestUnobtainable(elementId);
+        return !questFunctions.IsQuestUnobtainable(elementId) &&
+               (configuration.General.ShowCompleteSeasonalEvents || !questFunctions.IsQuestComplete(elementId));
     }
 
-    internal sealed record EventQuest(string Name, List<ElementId> QuestIds, DateTime EndsAtUtc);
+    internal sealed record EventQuest(string Name, List<ElementId> QuestIds, DateTime EndsAtUtc, DateTime? StartsAtUtc = null);
 }

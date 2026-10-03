@@ -1,2 +1,2 @@
-- Bug fix: Use lighter method of determining if a plugin is installed -Jaksuhn
-- Bug fix: Order combat targets by distance first -alydev
+- Feature: Upcoming events (if i remember to add them manually) are now shown -alydev
+- Feature: Config to continue showing completed seasonal events -alydev
