@@ -6958,4 +6958,16 @@
     <Key>Show flag position</Key>
     <Value lang="en">Show flag position</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Continue showing completed seasonal events</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/EventInfoComponent.cs -->
+    <Key>starts in {0}</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/EventInfoComponent.cs -->
+    <Key>ends in {0}</Key>
+  </Entry>
 </I18N>
