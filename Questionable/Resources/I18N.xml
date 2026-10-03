@@ -6961,13 +6961,16 @@
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Continue showing completed seasonal events</Key>
+    <Value lang="en">Continue showing completed seasonal events</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/EventInfoComponent.cs -->
     <Key>starts in {0}</Key>
+    <Value lang="en">starts in {0}</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/EventInfoComponent.cs -->
     <Key>ends in {0}</Key>
+    <Value lang="en">ends in {0}</Value>
   </Entry>
 </I18N>
