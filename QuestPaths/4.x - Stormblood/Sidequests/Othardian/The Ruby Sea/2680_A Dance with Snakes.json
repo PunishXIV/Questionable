@@ -1,6 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-04"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -28,6 +29,26 @@
             "X": 419.42535,
             "Y": 0.42102414,
             "Z": -674.90454
+          },
+          "Comment": "Requires using an item on enemy below 50%,\nyou may need to switch to a lower level melee class\n to capture them properly.",
+          "TerritoryId": 613,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            6647
+          ],
+          "CombatItemUse": {
+            "ItemId": 2002281,
+            "Condition": "Health%",
+            "Value": 50
+          },
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": 447.7592,
+            "Y": 3.642196,
+            "Z": -594.10876
           },
           "Comment": "Requires using an item on enemy below 50%,\nyou may need to switch to a lower level melee class\n to capture them properly.",
           "TerritoryId": 613,
