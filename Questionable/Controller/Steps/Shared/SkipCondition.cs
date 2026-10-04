@@ -490,9 +490,9 @@ internal static class SkipCondition
                     return true;
                 }
 
-                if (configuration.Advanced.SkipAetherCurrents &&
-                    QuestData.AetherCurrentQuests.Contains(step.PickUpQuestId) &&
-                    GameFunctions.IsFlyingUnlocked(step.TerritoryId)) // story skip apparently makes 1748 impossible to complete -alydev
+                if (QuestData.AetherCurrentQuests.Contains(step.PickUpQuestId) &&
+                    (configuration.Advanced.SkipAetherCurrents ||
+                     GameFunctions.IsFlyingUnlocked(step.TerritoryId))) // story skip apparently makes 1748 impossible to complete -alydev
                 {
                     logger.LogInformation("Skipping step, as aether current quests should be skipped");
                     return true;
