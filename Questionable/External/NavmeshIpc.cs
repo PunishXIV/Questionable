@@ -74,6 +74,9 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
             "Could not move via navmesh {Version}", Version);
     }
 
+    public Vector3? GetPointOnFloor(Lumina.Excel.Sheets.Level level) =>
+        GetPointOnFloor(new Vector3(level.X, level.Y, level.Z), unlandable: false);
+
     public Vector3? GetPointOnFloor(Vector3 position, bool unlandable, float range = 0.2f) =>
         IpcInvoke.SafeFunc(() => _queryPointOnFloor.InvokeFunc(position, unlandable, range), fallback: null);
 
