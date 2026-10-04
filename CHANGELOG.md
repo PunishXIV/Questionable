@@ -1,1 +1,1 @@
-- Feature: zh-cn translation update -ShadyWhite
+- Bug fix: future event was not shown as locked -alydev
