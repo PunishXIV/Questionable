@@ -6917,60 +6917,72 @@
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
     <Key>Job: {0}</Key>
     <Value lang="en">Job: {0}</Value>
+    <Value lang="zh-cn">职业：{0}</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <Key>DoH/DoL unlocks</Key>
     <Value lang="en">DoH/DoL unlocks</Value>
+    <Value lang="zh-cn">能工巧匠/大地使者解锁</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <Key>Post-HW unlocks</Key>
     <Value lang="en">Post-HW unlocks</Value>
+    <Value lang="zh-cn">3.X 后续主线解锁</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Takes effect next time the plugin is loaded</Key>
     <Value lang="en">Takes effect next time the plugin is loaded</Value>
+    <Value lang="zh-cn">下次加载插件时生效</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Hide quest patch badge</Key>
     <Value lang="en">Hide quest patch badge</Value>
+    <Value lang="zh-cn">隐藏任务版本标签</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Hide which job a quest was started with</Key>
     <Value lang="en">Hide which job a quest was started with</Value>
+    <Value lang="zh-cn">隐藏任务开始时的职业</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <Key>This quest was added to the game in Patch {0}.\nClick here to view the changelog from this patch.</Key>
     <Value lang="en">This quest was added to the game in Patch {0}.\nClick here to view the changelog from this patch.</Value>
+    <Value lang="zh-cn">该任务于 {0} 版本加入游戏。\n点击此处查看该版本的更新笔记。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Show saved position</Key>
     <Value lang="en">Show saved position</Value>
+    <Value lang="zh-cn">显示已保存位置</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Show flag position</Key>
     <Value lang="en">Show flag position</Value>
+    <Value lang="zh-cn">显示旗帜位置</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Continue showing completed seasonal events</Key>
     <Value lang="en">Continue showing completed seasonal events</Value>
+    <Value lang="zh-cn">继续显示已完成的季节活动</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/EventInfoComponent.cs -->
     <Key>starts in {0}</Key>
     <Value lang="en">starts in {0}</Value>
+    <Value lang="zh-cn">在 {0} 开始</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/EventInfoComponent.cs -->
     <Key>ends in {0}</Key>
     <Value lang="en">ends in {0}</Value>
+    <Value lang="zh-cn">在 {0} 结束</Value>
   </Entry>
 </I18N>
