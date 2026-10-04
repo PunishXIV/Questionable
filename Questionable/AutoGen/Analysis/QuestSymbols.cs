@@ -10,13 +10,13 @@ namespace Questionable.AutoGen.Analysis;
 ///     every <c>ACTOR0</c>, <c>SEQ_3</c>, <c>LOC_ACTOR1</c> or <c>EVENTITEM0</c> the script names resolves
 ///     to a row id through this table.
 /// </summary>
-public sealed class QuestSymbols
+internal sealed class QuestSymbols
 {
     private readonly Dictionary<string, uint> _values;
 
     private QuestSymbols(Dictionary<string, uint> values) => _values = values;
 
-    public static QuestSymbols From(Quest quest)
+    internal static QuestSymbols From(Quest quest)
     {
         Dictionary<string, uint> values = new(StringComparer.Ordinal);
         foreach (var param in quest.QuestParams)
@@ -29,12 +29,12 @@ public sealed class QuestSymbols
         return new QuestSymbols(values);
     }
 
-    public IReadOnlyDictionary<string, uint> All => _values;
+    internal IReadOnlyDictionary<string, uint> All => _values;
 
-    public uint? Value(string symbol) => _values.TryGetValue(symbol, out uint value) ? value : null;
+    internal uint? Value(string symbol) => _values.TryGetValue(symbol, out uint value) ? value : null;
 
     /// <summary>Data id behind an <c>ACTOR</c>/<c>EOBJECT</c> symbol name.</summary>
-    public uint? DataId(string symbol) =>
+    internal uint? DataId(string symbol) =>
         symbol.StartsWith("ACTOR", StringComparison.Ordinal) || symbol.StartsWith("EOBJECT", StringComparison.Ordinal)
             ? Value(symbol)
             : null;
@@ -44,7 +44,7 @@ public sealed class QuestSymbols
     ///     <c>QuestParams</c> entries, so the number comes from the symbol name: <c>SEQ_3</c> is sequence 3 and
     ///     <c>SEQ_FINISH</c> is the terminal sequence 255.
     /// </summary>
-    public byte? SequenceValue(string symbol)
+    internal byte? SequenceValue(string symbol)
     {
         if (!symbol.StartsWith("SEQ_", StringComparison.Ordinal))
             return null;
@@ -64,16 +64,16 @@ public sealed class QuestSymbols
     ///     Level row id behind an <c>ENEMY*</c> symbol. Unlike actors, these resolve to a <c>Level</c> row whose
     ///     <c>Object</c> is the BNpcBase id the plugin matches enemies on.
     /// </summary>
-    public uint? EnemyLevelRow(string symbol) =>
+    internal uint? EnemyLevelRow(string symbol) =>
         symbol.StartsWith("ENEMY", StringComparison.Ordinal) ? Value(symbol) : null;
 
-    public static bool IsEnemySymbol(string symbol) => symbol.StartsWith("ENEMY", StringComparison.Ordinal);
+    internal static bool IsEnemySymbol(string symbol) => symbol.StartsWith("ENEMY", StringComparison.Ordinal);
 
     /// <summary>
     ///     The quest's single event item, when it has exactly one. "Kill things until three of these drop"
     ///     objectives point the fight at it; more than one item and there is no telling which the drop is.
     /// </summary>
-    public uint? SoleEventItem()
+    internal uint? SoleEventItem()
     {
         uint? only = null;
         foreach ((string symbol, uint value) in _values)
@@ -95,11 +95,11 @@ public sealed class QuestSymbols
     }
 
     /// <summary>Level row id backing a <c>LOC_ACTOR*</c>/<c>LOC_POS_*</c>/<c>LOC_EOBJ*</c> symbol.</summary>
-    public uint? LevelRow(string symbol) =>
+    internal uint? LevelRow(string symbol) =>
         symbol.StartsWith("LOC_", StringComparison.Ordinal) ? Value(symbol) : null;
 
     /// <summary>The <c>LOC_</c> symbols that describe where an <c>ACTOR</c>/<c>EOBJECT</c> symbol stands.</summary>
-    public IEnumerable<uint> LevelRowsFor(string actorSymbol)
+    internal IEnumerable<uint> LevelRowsFor(string actorSymbol)
     {
         string suffix = actorSymbol switch
         {
@@ -123,7 +123,7 @@ public sealed class QuestSymbols
         }
     }
 
-    public IEnumerable<string> DutySymbols =>
+    internal IEnumerable<string> DutySymbols =>
         _values.Keys.Where(x =>
             x.StartsWith("QUESTBATTLE", StringComparison.Ordinal) ||
             x.StartsWith("INSTANCEDUNGEON", StringComparison.Ordinal));

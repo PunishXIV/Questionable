@@ -5,7 +5,7 @@ using Questionable.AutoGen.Generation;
 using Questionable.Model.Questing;
 
 
-namespace Questionable.AutoGen;
+namespace Questionable.AutoGen.Plugin;
 
 /// <summary>
 ///     In-game entry point for the questpath auto-generator: turns a journal quest without a path into a draft
@@ -26,16 +26,16 @@ internal sealed class DraftQuestPathService(
     ///     same conditions as <see cref="QuestRegistry.Reload"/> — generating a file that would never load
     ///     helps nobody.
     /// </summary>
-    public bool CanGenerateDrafts => configuration.Advanced.AllowPathGeneration && UserDirectoryIsLoaded;
+    internal bool CanGenerateDrafts => configuration.Advanced.AllowPathGeneration && UserDirectoryIsLoaded;
 
     /// <summary>Whether the registry reads the user <c>Quests</c> directory at all.</summary>
-    public bool UserDirectoryIsLoaded => configuration.Advanced.Debug || pluginInterface.IsDev
+    internal bool UserDirectoryIsLoaded => configuration.Advanced.Debug || pluginInterface.IsDev
 #if DEBUG
         || true
 #endif
     ;
 
-    public void GenerateDraft(IQuestInfo questInfo)
+    internal void GenerateDraft(IQuestInfo questInfo)
     {
         try
         {

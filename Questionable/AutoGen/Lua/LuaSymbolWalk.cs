@@ -9,10 +9,10 @@ namespace Questionable.AutoGen.Lua;
 ///     Quest scripts are generated from a template, so the <em>order</em> of these references is
 ///     meaningful: <c>SEQ_3</c> followed by <c>ACTOR3</c> means "at sequence 3, actor 3 is the target".
 /// </summary>
-public static class LuaSymbolWalk
+internal static class LuaSymbolWalk
 {
     /// <summary>Referenced strings of <paramref name="proto"/> and everything nested inside it, in program order.</summary>
-    public static IReadOnlyList<string> Deep(LuaProto proto)
+    internal static IReadOnlyList<string> Deep(LuaProto proto)
     {
         List<string> result = [];
         Walk(proto, result);

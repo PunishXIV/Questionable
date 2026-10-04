@@ -10,11 +10,11 @@ namespace Questionable.AutoGen.Lua;
 ///     Only the parts needed to recover constants, call structure and nested function names are decoded;
 ///     this is not a decompiler.
 /// </summary>
-public static class LuaBytecode
+internal static class LuaBytecode
 {
     private static ReadOnlySpan<byte> Signature => "Lua"u8;
 
-    public static LuaProto Parse(byte[] data)
+    internal static LuaProto Parse(byte[] data)
     {
         if (data.Length < 12 || !data.AsSpan(0, 4).SequenceEqual(Signature))
             throw new InvalidDataException("Not a Lua binary chunk.");

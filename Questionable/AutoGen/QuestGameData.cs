@@ -16,7 +16,7 @@ using Quest = Lumina.Excel.Sheets.Quest;
 namespace Questionable.AutoGen;
 
 /// <summary>Excel and file lookups the generator needs, backed by a local game install.</summary>
-public sealed class QuestGameData : IDisposable
+internal sealed class QuestGameData : IDisposable
 {
     // SeIconChar.QuestSync / SeIconChar.QuestRepeatable, which the journal prefixes some names with.
     private const char QuestSyncIcon = (char)0xE0BE;
@@ -36,7 +36,7 @@ public sealed class QuestGameData : IDisposable
     private static readonly string[] LayerFiles = ["planevent", "planmap", "planlive"];
 
     /// <summary>Standalone use: opens the given <c>game/sqpack</c> directory and owns the handle.</summary>
-    public QuestGameData(string sqPackDirectory)
+    internal QuestGameData(string sqPackDirectory)
         : this(new GameData(sqPackDirectory, new LuminaOptions
         {
             PanicOnSheetChecksumMismatch = false,
@@ -49,7 +49,7 @@ public sealed class QuestGameData : IDisposable
     ///     In-plugin use: borrows an already-open <see cref="GameData"/> (Dalamud's, via
     ///     <c>IDataManager.GameData</c>), which must not be disposed by us.
     /// </summary>
-    public QuestGameData(GameData gameData)
+    internal QuestGameData(GameData gameData)
         : this(gameData, ownsGameData: false)
     {
     }
@@ -65,14 +65,14 @@ public sealed class QuestGameData : IDisposable
         _emotesByCommand = new Lazy<Dictionary<string, EEmote>>(BuildEmoteIndex);
     }
 
-    public ExcelSheet<Quest> Quests => _gameData.GetExcelSheet<Quest>()
+    internal ExcelSheet<Quest> Quests => _gameData.GetExcelSheet<Quest>()
                                        ?? throw new InvalidOperationException("Quest sheet unavailable.");
 
-    public string GameVersion =>
+    internal string GameVersion =>
         _gameData.Repositories.TryGetValue("ffxiv", out var repository) ? repository.Version : "unknown";
 
     /// <summary>Looks a quest up by its in-journal id, the number used in questpath filenames.</summary>
-    public Quest? FindByQuestId(ushort questId)
+    internal Quest? FindByQuestId(ushort questId)
     {
         // Quest rows are 0x10000-based; a bare journal id needs the high bits restored.
         foreach (Quest quest in Quests)
@@ -91,7 +91,7 @@ public sealed class QuestGameData : IDisposable
     }
 
     /// <summary>The quests listed as prerequisites of <paramref name="quest"/>.</summary>
-    public IEnumerable<Quest> PreviousQuests(Quest quest)
+    internal IEnumerable<Quest> PreviousQuests(Quest quest)
     {
         foreach (var previous in quest.PreviousQuest)
         {
@@ -101,7 +101,7 @@ public sealed class QuestGameData : IDisposable
     }
 
     /// <summary>The quests that list <paramref name="quest"/> as one of their prerequisites.</summary>
-    public IEnumerable<Quest> NextQuests(Quest quest)
+    internal IEnumerable<Quest> NextQuests(Quest quest)
     {
         foreach (uint rowId in _followers.Value[quest.RowId])
         {
@@ -130,7 +130,7 @@ public sealed class QuestGameData : IDisposable
     }
 
     /// <summary>Exact (case-insensitive) name matches if there are any, otherwise substring matches.</summary>
-    public IReadOnlyList<Quest> FindByName(string name)
+    internal IReadOnlyList<Quest> FindByName(string name)
     {
         List<Quest> exact = [];
         List<Quest> partial = [];
@@ -150,13 +150,13 @@ public sealed class QuestGameData : IDisposable
         return exact.Count > 0 ? exact : partial;
     }
 
-    public static string QuestName(Quest quest) => TrimJournalIcons(quest.Name.ExtractText());
+    internal static string QuestName(Quest quest) => TrimJournalIcons(quest.Name.ExtractText());
 
     private static string TrimJournalIcons(string name) =>
         name.TrimStart(QuestSyncIcon, QuestRepeatableIcon, ' ');
 
     /// <summary>Reads and parses the quest's compiled Lua script, or <c>null</c> when the quest has none.</summary>
-    public LuaProto? LoadScript(Quest quest)
+    internal LuaProto? LoadScript(Quest quest)
     {
         string id = quest.Id.ExtractText();
         int underscore = id.LastIndexOf('_');
@@ -180,14 +180,14 @@ public sealed class QuestGameData : IDisposable
     }
 
     /// <summary>Every <c>Level</c> row pointing at the given ENpc/EObj data id.</summary>
-    public IEnumerable<Level> LevelsForObject(uint dataId) => _levelsByObject.Value[dataId];
+    internal IEnumerable<Level> LevelsForObject(uint dataId) => _levelsByObject.Value[dataId];
 
     /// <summary>
     ///     Every spot the territory's layer data places the given ENpc/EObj, which is where the ones the
     ///     <c>Level</c> sheet has no row for actually stand. A quest's own actors are laid out per quest
     ///     (<c>QST_SubSea068_001</c> and the like), so an id can appear more than once - the caller picks.
     /// </summary>
-    public IReadOnlyList<Vector3> LayerPositions(uint dataId, uint territoryId) =>
+    internal IReadOnlyList<Vector3> LayerPositions(uint dataId, uint territoryId) =>
         LayerPlacements(territoryId).TryGetValue(dataId, out List<Vector3>? positions) ? positions : [];
 
     private Dictionary<uint, List<Vector3>> LayerPlacements(uint territoryId)
@@ -251,7 +251,7 @@ public sealed class QuestGameData : IDisposable
         return placements;
     }
 
-    public Level? FindLevel(uint levelRowId)
+    internal Level? FindLevel(uint levelRowId)
     {
         if (levelRowId == 0)
             return null;
@@ -261,13 +261,13 @@ public sealed class QuestGameData : IDisposable
     }
 
     /// <summary>Whether the zone has aether currents at all, which is the offline proxy for "flying is possible here".</summary>
-    public bool TerritorySupportsFlight(uint territoryId)
+    internal bool TerritorySupportsFlight(uint territoryId)
     {
         TerritoryType? territory = _gameData.GetExcelSheet<TerritoryType>()?.GetRowOrDefault(territoryId);
         return territory is { AetherCurrentCompFlgSet.RowId: > 0 };
     }
 
-    public string TerritoryName(uint territoryId)
+    internal string TerritoryName(uint territoryId)
     {
         TerritoryType? territory = _gameData.GetExcelSheet<TerritoryType>()?.GetRowOrDefault(territoryId);
         return territory?.PlaceName.ValueNullable?.Name.ExtractText() ?? $"#{territoryId}";
@@ -278,7 +278,7 @@ public sealed class QuestGameData : IDisposable
     ///     <c>TodoParams</c> array. Emote objectives spell the emote out here and nowhere else:
     ///     "/dance for Aanu Vanu."
     /// </summary>
-    public IReadOnlyList<string> TodoTexts(Quest quest)
+    internal IReadOnlyList<string> TodoTexts(Quest quest)
     {
         string id = quest.Id.ExtractText();
         int underscore = id.LastIndexOf('_');
@@ -314,7 +314,7 @@ public sealed class QuestGameData : IDisposable
     }
 
     /// <summary>Maps a text command such as <c>/dance</c> to the emote it triggers.</summary>
-    public EEmote? EmoteFromCommand(string command)
+    internal EEmote? EmoteFromCommand(string command)
     {
         if (_emotesByCommand.Value.TryGetValue(command, out EEmote emote))
             return emote;
@@ -353,15 +353,15 @@ public sealed class QuestGameData : IDisposable
     ///     limit — you cannot hold more than the objective needs — so it doubles as the required count.
     /// </summary>
     /// <summary>Singular name of an event item, as the journal's todo lines write it ("lice comb").</summary>
-    public string EventItemName(uint itemId) =>
+    internal string EventItemName(uint itemId) =>
         _gameData.GetExcelSheet<EventItem>()?.GetRowOrDefault(itemId)?.Singular.ExtractText() ?? string.Empty;
 
-    public int EventItemStackSize(uint itemId) =>
+    internal int EventItemStackSize(uint itemId) =>
         _gameData.GetExcelSheet<EventItem>()?.GetRowOrDefault(itemId)?.StackSize is { } size and > 0
             ? (int)size
             : 0;
 
-    public string ObjectName(uint dataId)
+    internal string ObjectName(uint dataId)
     {
         if (dataId == 0)
             return string.Empty;
@@ -377,7 +377,7 @@ public sealed class QuestGameData : IDisposable
     ///     no aetheryte of their own, like Limsa Lominsa Upper Decks — the zone's nearest aethernet shard plus
     ///     the hop to reach it from its aethernet group's main aetheryte.
     /// </summary>
-    public TravelShortcut? ResolveTravel(uint territoryId, Vector3 position)
+    internal TravelShortcut? ResolveTravel(uint territoryId, Vector3 position)
     {
         Vector2 target = new(position.X, position.Z);
 
@@ -464,7 +464,7 @@ public sealed class QuestGameData : IDisposable
     ///     Where an aetheryte or aethernet shard stands, in world X/Z. Null when it carries no map marker to
     ///     recover a position from.
     /// </summary>
-    public Vector2? AetherytePosition(EAetheryteLocation location)
+    internal Vector2? AetherytePosition(EAetheryteLocation location)
     {
         foreach (AetheryteEntry entry in _aetherytes.Value)
         {

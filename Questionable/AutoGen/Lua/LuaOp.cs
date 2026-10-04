@@ -4,7 +4,7 @@
 namespace Questionable.AutoGen.Lua;
 
 /// <summary>Lua 5.1 opcodes, in the order the reference implementation defines them.</summary>
-public enum LuaOp
+internal enum LuaOp
 {
     Move = 0,
     LoadK = 1,

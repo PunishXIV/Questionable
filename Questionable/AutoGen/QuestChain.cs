@@ -10,22 +10,22 @@ namespace Questionable.AutoGen;
 ///     Walks the prerequisite graph out from a quest, in both directions: the quests it requires
 ///     (<c>Quest.PreviousQuest</c>) and the quests that require it.
 /// </summary>
-public static class QuestChain
+internal static class QuestChain
 {
     /// <summary>
     ///     Ceiling on how many paths one <c>--recursive</c> expansion may write. Applied after quests that
     ///     already have a file are dropped, so a chain that is mostly done still reaches the gaps further along
     ///     it rather than spending the budget on quests it is going to skip anyway.
     /// </summary>
-    public const int GenerationLimit = 200;
+    internal const int GenerationLimit = 200;
 
     /// <summary>
     ///     Ceiling on how far the graph walk itself will go. Traversal is only sheet lookups, so this can be
     ///     far more generous than <see cref="GenerationLimit"/>; it exists to stop the story graph running away.
     /// </summary>
-    public const int TraversalLimit = 5000;
+    internal const int TraversalLimit = 5000;
 
-    public static QuestChainResult Resolve(QuestGameData gameData, Quest root, int maxDepth, int limit)
+    internal static QuestChainResult Resolve(QuestGameData gameData, Quest root, int maxDepth, int limit)
     {
         Dictionary<uint, Quest> found = new() { [root.RowId] = root };
         Queue<(Quest Quest, int Depth)> queue = new();
