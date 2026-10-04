@@ -1,2 +1,1 @@
-- Feature: Upcoming events (if i remember to add them manually) are now shown -alydev
-- Feature: Config to continue showing completed seasonal events -alydev
+- Feature: zh-cn translation update -ShadyWhite
