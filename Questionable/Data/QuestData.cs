@@ -428,21 +428,23 @@ internal sealed class QuestData
             .ToImmutableHashSet();
     }
 
-    public List<ElementId> GetQuestsWithItemReward(params uint[] itemId)
+    public List<ElementId> GetQuestsMatching(Func<QuestInfo, bool> predicate, bool onlyAvailable = true)
     {
         var questFunctions = _serviceProvider.GetRequiredService<QuestFunctions>();
-        return _quests.Where(x => x.Value is QuestInfo)
-            .Select(x => (QuestInfo)x.Value)
-            .Where(x =>
-                x != null &&
-                x.ItemRewardsRaw.ContainsAny(itemId) &&
-                !questFunctions.IsQuestUnobtainable(x.QuestId) &&
-                !questFunctions.IsQuestComplete(x.QuestId) &&
-                !questFunctions.IsQuestLocked(x.QuestId).Item1)
+        return _quests.Values
+            .OfType<QuestInfo>()
+            .Where(predicate)
+            .Where(x => !onlyAvailable ||
+                (!questFunctions.IsQuestUnobtainable(x.QuestId) &&
+                 !questFunctions.IsQuestComplete(x.QuestId) &&
+                 !questFunctions.IsQuestLocked(x.QuestId).Item1))
             .OrderBy(x => x.ToDoLocations.Count > 0 ? x.ToDoLocations[0].Territory.RowId : x.QuestId.Value)
             .Select(x => x.QuestId)
             .ToList();
     }
+
+    public List<ElementId> GetQuestsWithItemReward(bool onlyAvailable = true, params uint[] itemId)
+        => GetQuestsMatching(x => x.ItemRewardsRaw.ContainsAny(itemId), onlyAvailable: onlyAvailable);
 
     public static ImmutableHashSet<QuestId> AetherCurrentQuests { get; } =
         AetherCurrentQuestsByTerritory.Values.SelectMany(x => x).ToImmutableHashSet();

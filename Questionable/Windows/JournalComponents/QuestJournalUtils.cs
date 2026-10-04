@@ -3,6 +3,7 @@ using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text.SeStringHandling.Payloads;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
+using Questionable.AutoGen.Plugin;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Windows.Common.Ui;
@@ -22,7 +23,7 @@ internal sealed class QuestJournalUtils
     IGameGui gameGui,
     PathEditorWindow pathEditorWindow,
     RedoUtil redoUtil,
-    AutoGen.DraftQuestPathService draftQuestPathService)
+    DraftQuestPathService draftQuestPathService)
 {
     public void ShowContextMenu(IQuestInfo questInfo, Quest? quest, string label)
     {

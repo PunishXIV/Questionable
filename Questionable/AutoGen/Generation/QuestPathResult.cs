@@ -10,7 +10,7 @@ namespace Questionable.AutoGen.Generation;
 ///     A generated path plus the caveats that came with it.
 ///     <paramref name="Provenance" /> maps each step to the note written into its <c>$</c> dev comment.
 /// </summary>
-public sealed record QuestPathResult(
+internal sealed record QuestPathResult(
     Quest Quest,
     QuestRoot Root,
     IReadOnlyList<string> Notes,

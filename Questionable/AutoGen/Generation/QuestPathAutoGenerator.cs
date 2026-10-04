@@ -21,7 +21,7 @@ namespace Questionable.AutoGen.Generation;
 ///         is left out. Every step carries a <c>$</c> dev comment recording where it was derived from.
 ///     </para>
 /// </summary>
-public sealed class QuestPathAutoGenerator(QuestGameData gameData, string author)
+internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string author)
 {
     private readonly Dictionary<QuestStep, string> _provenance = new(ReferenceEqualityComparer.Instance);
 
@@ -32,7 +32,7 @@ public sealed class QuestPathAutoGenerator(QuestGameData gameData, string author
     /// </summary>
     private readonly List<string> _unattributedEnemies = [];
 
-    public QuestPathResult Generate(Quest quest)
+    internal QuestPathResult Generate(Quest quest)
     {
         _provenance.Clear();
 
@@ -912,6 +912,9 @@ public sealed class QuestPathAutoGenerator(QuestGameData gameData, string author
     ///         be unnecessary is skipped at runtime by the distance checks in <c>UseAetheryteShortcut</c>, so
     ///         emitting one per sequence is safe and matches what hand-written paths do.
     ///     </para>
+    ///     <note>
+    ///         This can lead to extraneous teleporting, extra shortcuts should be pruned if unnecessary.
+    ///     </note>
     /// </summary>
     private bool ApplyTravel(List<QuestSequence> sequences)
     {
@@ -1011,9 +1014,9 @@ public sealed class QuestPathAutoGenerator(QuestGameData gameData, string author
 
     /// <summary>Coordinates to put in a step, lifted clear of the floor when the row places no object.</summary>
     private static Vector3 StepPosition(Level level) =>
-        level.Object.RowId == 0
-            ? new Vector3(level.X, level.Y + AreaHeightPadding, level.Z)
-            : new Vector3(level.X, level.Y, level.Z);
+        level.Object.RowId == 0 ?
+            new Vector3(level.X, level.Y + AreaHeightPadding, level.Z) :
+            new Vector3(level.X, level.Y, level.Z);
 
     private string Describe(uint dataId)
     {

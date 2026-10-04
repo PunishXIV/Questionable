@@ -12,15 +12,15 @@ namespace Questionable.AutoGen.Generation;
 ///     </para>
 /// </summary>
 [RegisterSingleton]
-public sealed class QuestPathGeneratorFactory(QuestGameData gameData)
+internal sealed class QuestPathGeneratorFactory(QuestGameData gameData)
 {
-    public QuestPathAutoGenerator Create(string author) =>
+    internal QuestPathAutoGenerator Create(string author) =>
         new(gameData, string.IsNullOrWhiteSpace(author) ? "Anonymous" : author.Trim());
 
     /// <summary>
     ///     Generates from a journal quest id, or returns <c>null</c> when no such quest exists. Callers that
     ///     only have an id do not need to touch the Excel sheets themselves.
     /// </summary>
-    public QuestPathResult? GenerateById(ushort questId, string author) =>
+    internal QuestPathResult? GenerateById(ushort questId, string author) =>
         gameData.FindByQuestId(questId) is { } quest ? Create(author).Generate(quest) : null;
 }

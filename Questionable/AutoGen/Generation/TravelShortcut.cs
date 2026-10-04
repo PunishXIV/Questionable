@@ -13,7 +13,7 @@ namespace Questionable.AutoGen.Generation;
 ///     Set when the choice could not be made confidently, e.g. the zone has several aethernet shards but none of
 ///     them carry a map marker to measure against. The aetheryte is still worth emitting; the hop is left out.
 /// </param>
-public sealed record TravelShortcut(
+internal sealed record TravelShortcut(
     EAetheryteLocation Aetheryte,
     AethernetShortcut? Aethernet,
     string? Caveat = null);

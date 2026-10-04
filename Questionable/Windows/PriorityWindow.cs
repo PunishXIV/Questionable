@@ -575,7 +575,10 @@ internal sealed class PriorityWindow : LWindow
         ]).FromNumericListOfQuests();
         var aetherCurrents = _T<Addon>(2445);
         var roleQuests = _T<JournalCategory>(95);
-        var gilQuestsList = _questData.GetQuestsWithItemReward(5825, 5826, 27994);
+        var gilQuestsList = _questData.GetQuestsWithItemReward(onlyAvailable: true, 5825, 5826, 27994);
+        var questHealthPercent = _questData.GetQuestsMatching(q =>
+            _questRegistry.TryGetQuest(q.QuestId, out var quest) &&
+            quest.AllSteps().Any(a => a.Step.CombatItemUse?.Condition is ECombatItemUseCondition.HealthPercent), onlyAvailable: false);
         _builtInPresets = new(StringComparer.Ordinal)
         {
             [JobQuestsPresetName] = [], // Job Quests
@@ -601,7 +604,8 @@ internal sealed class PriorityWindow : LWindow
             [$"{roleQuests}: {_T<Addon>(1084)}"] = _questData.GetRoleQuests(Job.MNK).Select(x => x.QuestId).ToList(),
             [$"{roleQuests}: {_T<Addon>(1085)}"] = _questData.GetRoleQuests(Job.BRD).Select(x => x.QuestId).ToList(),
             [$"{roleQuests}: {_T<Addon>(1086)}"] = _questData.GetRoleQuests(Job.BLM).Select(x => x.QuestId).ToList(),
-            ["Experimental: "] = gilQuestsList,
+            ["Experimental: Available quests rewarding silver/gold gil sacks"] = gilQuestsList,
+            ["Experimental: Quests that require a mob to be damaged to a certain health%"] = questHealthPercent,
         };
 
         return _builtInPresets;

@@ -1,1 +1,2 @@
-- Bug fix: future event was not shown as locked -alydev
+- Bug fix: Fix aether current quest pickup skip when SkipAetherCurrents is enabled -raitono
+- Feature: another experimental priority preset -alydev

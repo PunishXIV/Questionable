@@ -14,7 +14,7 @@ using Quest = Lumina.Excel.Sheets.Quest;
 namespace Questionable.AutoGen.Generation;
 
 /// <summary>Serializes a generated path the same way the plugin's own editor does.</summary>
-public static class QuestPathWriter
+internal static class QuestPathWriter
 {
     private const string SchemaUrl = "https://qstxiv.github.io/schema/quest-v1.json";
 
@@ -36,7 +36,7 @@ public static class QuestPathWriter
         }
     };
 
-    public static string FileName(Quest quest) =>
+    internal static string FileName(Quest quest) =>
         $"{quest.RowId & 0xFFFF}_{SimplifyName(QuestGameData.QuestName(quest))}.json";
 
     /// <summary>Same character stripping <c>QuestInfo.SimplifiedName</c> applies before using a name as a filename.</summary>
@@ -48,7 +48,7 @@ public static class QuestPathWriter
         return name.Trim();
     }
 
-    public static string Serialize(QuestPathResult result)
+    internal static string Serialize(QuestPathResult result)
     {
         JsonObject serialized = (JsonObject)JsonSerializer.SerializeToNode(result.Root, Options)!;
 
@@ -62,10 +62,10 @@ public static class QuestPathWriter
     }
 
     /// <summary>Whether a path for this quest is already on disk, and so should be left alone.</summary>
-    public static bool Exists(Quest quest, string directory) =>
+    internal static bool Exists(Quest quest, string directory) =>
         File.Exists(Path.Combine(directory, FileName(quest)));
 
-    public static FileInfo Write(QuestPathResult result, string directory)
+    internal static FileInfo Write(QuestPathResult result, string directory)
     {
         Directory.CreateDirectory(directory);
         FileInfo file = new(Path.Combine(directory, FileName(result.Quest)));

@@ -49,15 +49,15 @@ public sealed class GameDataFixture : IDisposable
         }
     }
 
-    public QuestGameData? GameData { get; }
-    public QuestPathGeneratorFactory? Factory { get; }
+    internal QuestGameData? GameData { get; }
+    internal QuestPathGeneratorFactory? Factory { get; }
 
     public bool Available => GameData != null && Factory != null;
 
     /// <summary>Fixed author, so generated output never depends on the machine's configuration.</summary>
     public const string Author = "TestBot";
 
-    public QuestPathAutoGenerator CreateGenerator() =>
+    internal QuestPathAutoGenerator CreateGenerator() =>
         Factory?.Create(Author) ?? throw new InvalidOperationException("No game data available.");
 
     public void Dispose() => GameData?.Dispose();

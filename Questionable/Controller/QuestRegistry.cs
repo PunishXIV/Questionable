@@ -7,6 +7,7 @@ using Dalamud.Plugin.Ipc;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
+using Questionable.AutoGen.Plugin;
 using Questionable.Model.Questing;
 using Questionable.QuestPaths;
 using static Questionable.Domain.QuestInfo;
@@ -29,6 +30,7 @@ internal sealed class QuestRegistry
     private readonly Dictionary<ElementId, Quest> _quests = [];
     private readonly QuestValidator _questValidator;
     private readonly Configuration _configuration;
+    private readonly DraftQuestPathService _draftQuestPathService;
 
     private readonly ICallGateProvider<object> _reloadDataIpc;
     private readonly TerritoryData _territoryData;
@@ -41,6 +43,7 @@ internal sealed class QuestRegistry
         ILogger<QuestRegistry> logger,
         TerritoryData territoryData,
         Configuration configuration,
+        DraftQuestPathService draftQuestPathService,
         IDataManager dataManager,
         IChatGui chatGui)
     {
@@ -53,6 +56,7 @@ internal sealed class QuestRegistry
         _chatGui = chatGui;
         _dataManager = dataManager;
         _configuration = configuration;
+        _draftQuestPathService = draftQuestPathService;
         _reloadDataIpc = _pluginInterface.GetIpcProvider<object>("Questionable.ReloadData");
     }
 

@@ -283,7 +283,6 @@ internal sealed class QuestTooltipComponent
                 if (!unlocksText)
                 {
                     ImGui.Text(_L("Unlocks:"));
-                    unlocksText = true;
                 }
                 foreach (string reward in actualQuestInfo.ActionUnlock)
                     ImGui.BulletText(reward);

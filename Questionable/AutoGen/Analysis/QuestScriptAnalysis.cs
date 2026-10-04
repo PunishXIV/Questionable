@@ -22,7 +22,7 @@ namespace Questionable.AutoGen.Analysis;
 ///         the constant stream, not an evaluation of the bytecode.
 ///     </para>
 /// </summary>
-public sealed class QuestScriptAnalysis
+internal sealed class QuestScriptAnalysis
 {
     // Function names are compared case-insensitively: the same helper is spelled getNpcTradeItemInfo in some
     // scripts and GetNpcTradeItemInfo in others.
@@ -46,28 +46,28 @@ public sealed class QuestScriptAnalysis
     {
     }
 
-    public IReadOnlyDictionary<byte, SequenceHint> Hints => _hints;
+    internal IReadOnlyDictionary<byte, SequenceHint> Hints => _hints;
 
     /// <summary>Scene function names that offer or accept the quest.</summary>
-    public IReadOnlyList<string> AcceptScenes => _acceptScenes;
+    internal IReadOnlyList<string> AcceptScenes => _acceptScenes;
 
     /// <summary>Scene function names that complete the quest or hand out rewards.</summary>
-    public IReadOnlyList<string> CompleteScenes => _completeScenes;
+    internal IReadOnlyList<string> CompleteScenes => _completeScenes;
 
-    public bool HasScript { get; private init; }
+    internal bool HasScript { get; private init; }
 
     /// <summary>
     ///     Whether the script declares <c>IsEventItemUsable</c>. Quests that hand their item to an NPC do not;
     ///     quests where you use the item on something do.
     /// </summary>
-    public bool UsesEventItems { get; private set; }
+    internal bool UsesEventItems { get; private set; }
 
     private readonly List<string> _acceptScenes = [];
     private readonly List<string> _completeScenes = [];
 
-    public static QuestScriptAnalysis Empty() => new() { HasScript = false };
+    internal static QuestScriptAnalysis Empty() => new() { HasScript = false };
 
-    public static QuestScriptAnalysis Analyze(LuaProto root, QuestSymbols symbols)
+    internal static QuestScriptAnalysis Analyze(LuaProto root, QuestSymbols symbols)
     {
         QuestScriptAnalysis analysis = new() { HasScript = true };
 
