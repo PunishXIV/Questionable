@@ -1013,7 +1013,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
     private static Vector3 Position(Level level) => new(level.X, level.Y, level.Z);
 
     /// <summary>Coordinates to put in a step, lifted clear of the floor when the row places no object.</summary>
-    private Vector3 StepPosition(Level level) =>
+    private static Vector3 StepPosition(Level level) =>
         level.Object.RowId == 0 ?
             new Vector3(level.X, level.Y + AreaHeightPadding, level.Z) :
             new Vector3(level.X, level.Y, level.Z);
