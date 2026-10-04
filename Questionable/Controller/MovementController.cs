@@ -129,6 +129,17 @@ internal sealed class MovementController
                         }
                     }
                 }
+                //if (Destination.IsFlying && navPoints.Count > 0 && navmeshIpc.GetPointOnFloor(navPoints[^1], unlandable: false) == null)
+                //{
+                //    var floorPoint = navmeshIpc.GetPointOnFloor(navPoints[^1], unlandable: false, range: 3f);
+                //    if (floorPoint != null)
+                //    {
+                //        navPoints[^1] = floorPoint.Value;
+                //        Destination = Destination with { Position = floorPoint.Value, StopDistance = 0.25f };
+                //    }
+                //    else
+                //        logger.LogDebug("Could not find floorPoint");
+                //}
 
                 if (!Destination.IsFlying)
                 {
