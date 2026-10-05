@@ -231,6 +231,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool SkipLowPriorityDuties { get; set; }
         public bool UseTickets { get; set; }
         public bool SameJobThroughoutQuest { get; set; }
+        public bool IgnoreNextQuestIfPrioSet { get; set; }
         // Unimplemented/hidden
         public bool TitleBarPillCenter { get; set; } = true;
         public bool DismissedReportWarning { get; set; }
