@@ -6985,4 +6985,8 @@
     <Value lang="en">ends in {0}</Value>
     <Value lang="zh-cn">在 {0} 结束</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Ignore 'next quest' if Priority Quests has valid alternative</Key>
+  </Entry>
 </I18N>
