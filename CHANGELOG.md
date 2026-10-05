@@ -1,1 +1,2 @@
-- Feature: Config: Ignore 'next quest' if Priority Quests has valid alternative -alydev
+- Change: Exclude unobtainable or complete quests from built-in priority presets -alydev
+- Change: Ignore level requirement for preset quests, AcceptQuest has level checking and job switching, no need to ignore outleveled quests if they're explicitly specified in a preset -alydev

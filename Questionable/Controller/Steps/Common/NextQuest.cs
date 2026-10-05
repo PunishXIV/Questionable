@@ -51,10 +51,10 @@ internal static class NextQuest
             }
             else if (isLocked)
             {
-                logger.LogInformation("Can't set next quest to {QuestId}, quest is locked. {Reasons}", Task.NextQuestId,
-                    (reasons != null ? string.Join(',', reasons) : ""));
-                questController.SetNextQuest(quest: null);
-            }
+                    logger.LogInformation("Can't set next quest to {QuestId}, quest is locked. {Reasons}", Task.NextQuestId,
+                        (reasons != null ? string.Join(',', reasons) : ""));
+                    questController.SetNextQuest(quest: null);
+                }
             else if (isUnobtainable)
             {
                 logger.LogInformation("Can't set next quest to {QuestId}, quest is unobtainable.", Task.NextQuestId);
