@@ -630,11 +630,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             }
             else
             {
-                (ElementId? currentQuestId, currentSequence, MainScenarioQuestState msqState) = _questFunctions.GetCurrentQuest(allowNewMsq: AutomationType != EAutomationType.SingleQuestB);
+                (ElementId? currentQuestId, currentSequence, MainScenarioQuestState msqState) =
+                    _questFunctions.GetCurrentQuest(allowNewMsq: AutomationType != EAutomationType.SingleQuestB);
                 (ElementId, byte)? priorityQuestOption =
                     _priorityManager.Quests
                         .Where(x => !_priorityManager.IsAcceptOnly(x.Id))
-                        .Where(x => _questFunctions.IsReadyToAcceptQuest(x.Id) || _questFunctions.IsQuestAccepted(x.Id))
+                        .Where(x => _questFunctions.IsReadyToAcceptQuest(x.Id, ignoreLevel: true) ||
+                                    _questFunctions.IsQuestAccepted(x.Id))
                         .Select(x => (x.Id, QuestFunctions.GetQuestProgressInfo(x.Id)?.Sequence ?? 0))
                         .FirstOrDefault();
                 if (priorityQuestOption is { Item1: not null } priorityQuest)

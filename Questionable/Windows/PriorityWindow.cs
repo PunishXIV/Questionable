@@ -546,9 +546,9 @@ internal sealed class PriorityWindow : LWindow
             4073,4074, // Reaper
             4848,4849, // Viper
             // Ishgard
-            2109,1696, // Machinist
-            2110,2053, // Dark Knight
-            2123,2012 // Astrologian
+            2109,1696,1697, // Machinist
+            2110,2053,2054, // Dark Knight
+            2123,2012,2013, // Astrologian
         ]).FromNumericListOfQuests();
         List<ElementId> unlockCustomDeliveries = ((ushort[])[
             2095,2097,2098,1551,                                // zhloe aliapoh
@@ -633,7 +633,8 @@ internal sealed class PriorityWindow : LWindow
         Dictionary<string, List<ElementId>> builtInPresets = GetOrCreateBuiltInPresets();
         if (builtInPresets.TryGetValue(name, out List<ElementId>? questIds))
         {
-            _questController.PriorityManager.Import(questIds);
+            _questController.PriorityManager.Import(
+                questIds.Where(q => !_questFunctions.IsQuestUnobtainable(q) && !_questFunctions.IsQuestComplete(q)));
         }
         else if (_configuration.Priority.Presets.TryGetValue(name, out List<string>? questIdStrings))
         {
