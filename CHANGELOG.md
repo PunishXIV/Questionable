@@ -1,2 +1,1 @@
-- Bug fix: Fix aether current quest pickup skip when SkipAetherCurrents is enabled -raitono
-- Feature: another experimental priority preset -alydev
+- Feature: Config: Ignore 'next quest' if Priority Quests has valid alternative -alydev
