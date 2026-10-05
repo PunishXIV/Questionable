@@ -914,7 +914,10 @@ internal sealed unsafe class QuestFunctions
             lockedReason.Add(_L("Prerequisites not met"));
 
         if (questInfo.IsSeasonalEvent &&
-                !EventInfoComponent.EventQuests.Any(eq => eq.QuestIds.Contains(questId) && eq.StartsAtUtc < DateTime.UtcNow && eq.EndsAtUtc > DateTime.UtcNow))
+                !EventInfoComponent.EventQuests.Any(eq =>
+                    eq.QuestIds.Contains(questId) &&
+                    (eq.StartsAtUtc == null || eq.StartsAtUtc < DateTime.UtcNow) &&
+                    eq.EndsAtUtc >= DateTime.UtcNow))
             lockedReason.Add(_L("Limited time event"));
 
         return (lockedReason.Count > 0, lockedReason.ToArray());
