@@ -422,6 +422,13 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     Save();
                 }
 
+                bool ignoreNextQuestIfPrioSet = Configuration.General.IgnoreNextQuestIfPrioSet;
+                if (ImGui.Checkbox(_L("Ignore 'next quest' if Priority Quests has valid alternative"), ref ignoreNextQuestIfPrioSet))
+                {
+                    Configuration.General.IgnoreNextQuestIfPrioSet = ignoreNextQuestIfPrioSet;
+                    Save();
+                }
+
                 //bool claimMail = Configuration.General.ClaimMail;
                 //if (ImGui.Checkbox(_L("Claim mail"), ref claimMail))
                 //{

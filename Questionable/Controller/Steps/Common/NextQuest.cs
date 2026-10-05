@@ -3,7 +3,7 @@ namespace Questionable.Controller.Steps.Common;
 
 internal static class NextQuest
 {
-    internal sealed class Factory(QuestFunctions questFunctions) : SimpleTaskFactory
+    internal sealed class Factory(QuestFunctions questFunctions, QuestController questController, Configuration configuration) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -18,6 +18,9 @@ internal static class NextQuest
 
             // probably irrelevant, since pick up is handled elsewhere (and, in particular, checks for aetherytes and stuff)
             if (questFunctions.GetPriorityQuests(onlyClassAndRoleQuests: true).Contains(step.NextQuestId))
+                return null;
+
+            if (configuration.General.IgnoreNextQuestIfPrioSet && questController.PriorityManager.Quests.Any(q => questFunctions.IsReadyToAcceptQuest(q.Id)))
                 return null;
 
             return new SetQuestTask(step.NextQuestId, quest.Id);
