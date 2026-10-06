@@ -161,7 +161,9 @@
             "Z": -173.5137
           },
           "TerritoryId": 816,
-          "InteractionType": "WalkTo",
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [10249, 10250, 10251],
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [
@@ -259,6 +261,18 @@
               ]
             }
           }
+        },
+        {
+          "Position": {
+            "X": 533.1536,
+            "Y": 109.112404,
+            "Z": -154.17346
+          },
+          "StopDistance": 0.25,
+          "TerritoryId": 816,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "FinishCombatIfAny",
+          "KillEnemyDataIds": [10249, 10250, 10251]
         },
         {
           "Position": {
