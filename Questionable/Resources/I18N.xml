@@ -6787,6 +6787,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
     <Key>Hide Unobtainable Quests</Key>
     <Value lang="en">Hide Unobtainable Quests</Value>
     <Value lang="ja-jp">取得不可能なクエストを非表示</Value>

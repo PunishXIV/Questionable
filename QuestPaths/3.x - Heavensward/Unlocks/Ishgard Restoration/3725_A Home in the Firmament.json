@@ -1,26 +1,11 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-09-23"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-09-23" },
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
-        {
-          "InteractionType": "None",
-          "TerritoryId": 886,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
         {
           "DataId": 1031681,
           "Position": {
@@ -30,11 +15,13 @@
           },
           "TerritoryId": 886,
           "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Firmament"
+          ],
           "SkipConditions": {
             "StepIf": {
-              "NotNamePlateIconId": [
-                60091
-              ]
+              "NotNamePlateIconId": [60091]
             }
           }
         },
@@ -49,9 +36,7 @@
           "InteractionType": "Interact",
           "SkipConditions": {
             "StepIf": {
-              "NotNamePlateIconId": [
-                60091
-              ]
+              "NotNamePlateIconId": [60091]
             }
           }
         },
@@ -67,9 +52,7 @@
           "InteractionType": "Interact",
           "SkipConditions": {
             "StepIf": {
-              "NotNamePlateIconId": [
-                60091
-              ]
+              "NotNamePlateIconId": [60091]
             }
           }
         },
@@ -93,9 +76,7 @@
           "InteractionType": "Interact",
           "SkipConditions": {
             "StepIf": {
-              "NotNamePlateIconId": [
-                60091
-              ]
+              "NotNamePlateIconId": [60091]
             }
           }
         },
@@ -110,9 +91,7 @@
           "InteractionType": "Interact",
           "SkipConditions": {
             "StepIf": {
-              "NotNamePlateIconId": [
-                60091
-              ]
+              "NotNamePlateIconId": [60091]
             }
           }
         },
@@ -128,9 +107,7 @@
           "InteractionType": "Interact",
           "SkipConditions": {
             "StepIf": {
-              "NotNamePlateIconId": [
-                60091
-              ]
+              "NotNamePlateIconId": [60091]
             }
           }
         },
@@ -145,9 +122,7 @@
           "InteractionType": "Interact",
           "SkipConditions": {
             "StepIf": {
-              "NotNamePlateIconId": [
-                60091
-              ]
+              "NotNamePlateIconId": [60091]
             }
           }
         },
@@ -162,9 +137,7 @@
           "InteractionType": "Interact",
           "SkipConditions": {
             "StepIf": {
-              "NotNamePlateIconId": [
-                60091
-              ]
+              "NotNamePlateIconId": [60091]
             }
           }
         },
@@ -237,7 +210,7 @@
             "[Ishgard] The Brume",
             "[Ishgard] The Forgotten Knight"
           ],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 1011192,
@@ -248,7 +221,7 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
           "DataId": 1012180,
@@ -263,7 +236,7 @@
             "[Ishgard] The Forgotten Knight",
             "[Ishgard] The Jeweled Crozier"
           ],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         }
       ]
     },

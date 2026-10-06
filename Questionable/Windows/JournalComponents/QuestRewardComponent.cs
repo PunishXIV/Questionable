@@ -26,6 +26,7 @@ internal sealed class QuestRewardComponent
     ILogger<QuestRewardComponent> logger)
 {
     private bool _showEventRewards;
+    private bool _hideUnobtainable;
     private bool _hideCompleted;
     private volatile uint _generation;
     private OrderedDictionary<EAetheryteLocation, List<QuestInfo>> _aetheryteUnlocks = [];
@@ -46,6 +47,7 @@ internal sealed class QuestRewardComponent
             return;
 
         ImGui.Checkbox(_L("Show rewards from seasonal event quests"), ref _showEventRewards);
+        ImGui.Checkbox(_L("Hide Unobtainable Quests"), ref _hideUnobtainable);
         ImGui.Checkbox(_L("Hide unlocked items"), ref _hideCompleted);
         ImGui.Spacing();
 
@@ -102,7 +104,13 @@ internal sealed class QuestRewardComponent
             if (_taxiStandUnlockQuests.TryGetValue(taxiStand.RowId, out var value))
                 foreach (var quest in value)
                 {
+                    bool isUnobtainable = questFunctions.IsQuestUnobtainable(quest.Id);
+                    if (_hideUnobtainable && isUnobtainable)
+                        continue;
                     var q = quest.GetQuestInfo();
+                    bool isEventQuest = q.IsSeasonalEvent;
+                    if (!_showEventRewards && isEventQuest)
+                        continue;
                     using var _ = ImRaii.PushId($"###{(int)taxiStand.RowId}-{quest.Id.Value}");
                     (Vector4 color, FontAwesomeIcon icon, string status) = uiUtils.GetQuestStyle(quest.Id);
                     if (uiUtils.ChecklistItem(q.Name, color, icon, iconOverride: QuestJournalUtils.GetIconOverride(q, icon)))
@@ -159,6 +167,12 @@ internal sealed class QuestRewardComponent
             }
             foreach (QuestInfo q in results)
             {
+                bool isEventQuest = q.IsSeasonalEvent;
+                if (!_showEventRewards && isEventQuest)
+                    continue;
+                bool isUnobtainable = questFunctions.IsQuestUnobtainable(q.QuestId);
+                if (_hideUnobtainable && isUnobtainable)
+                    continue;
                 using var _ = ImRaii.PushId($"###{(int)aetheryteLocation}-{q.QuestId.Value}");
                 (Vector4 color, FontAwesomeIcon icon, string status) = uiUtils.GetQuestStyle(q.QuestId);
                 if (uiUtils.ChecklistItem(q.Name, color, icon, iconOverride: QuestJournalUtils.GetIconOverride(q, icon)))
@@ -226,8 +240,7 @@ internal sealed class QuestRewardComponent
 
         var results = questData.RedeemableItems.Where(x => x.Type == type)
             .OrderBy(x => x.Name, StringComparer.CurrentCultureIgnoreCase).ToList();
-        if (results.Count == 0)
-            ImGui.Text(_L("No results"));
+        var total = 0;
 
         foreach (ItemReward item in results)
         {
@@ -235,6 +248,9 @@ internal sealed class QuestRewardComponent
             {
                 bool isEventQuest = questInfo is QuestInfo { IsSeasonalEvent: true };
                 if (!_showEventRewards && isEventQuest)
+                    continue;
+                bool isUnobtainable = questFunctions.IsQuestUnobtainable(item.ElementId);
+                if (_hideUnobtainable && isUnobtainable)
                     continue;
 
                 string name = item.Name;
@@ -262,8 +278,11 @@ internal sealed class QuestRewardComponent
                 }
                 questRegistry.TryGetQuest(questInfo.QuestId, out Domain.Quest? quest);
                 questJournalUtils.ShowContextMenu(questInfo, quest, nameof(QuestRewardComponent));
+                total++;
             }
         }
+        if (total == 0)
+            ImGui.Text(_L("No results"));
     }
     private void StartAetheryteBuild()
     {

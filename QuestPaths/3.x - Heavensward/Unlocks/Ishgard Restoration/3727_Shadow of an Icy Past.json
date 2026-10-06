@@ -1,14 +1,22 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "Anonymous", "Date": "2026-09-03"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "InteractionType": "None",
+          "DataId": 1031998,
+          "Position": {
+            "X": -6.9733887,
+            "Y": -16,
+            "Z": 164.20227
+          },
+          "StopDistance": 5,
           "TerritoryId": 886,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Firmament"
@@ -20,17 +28,6 @@
               ]
             }
           }
-        },
-        {
-          "DataId": 1031998,
-          "Position": {
-            "X": -6.9733887,
-            "Y": -16,
-            "Z": 164.20227
-          },
-          "StopDistance": 5,
-          "TerritoryId": 886,
-          "InteractionType": "AcceptQuest"
         }
       ]
     },
