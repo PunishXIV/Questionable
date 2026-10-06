@@ -186,17 +186,16 @@ internal sealed class CreationUtilsComponent
 
         if (targetManager.Target != null)
         {
-            DrawTargetDetails(targetManager.Target);
-            DrawInteractionButtons(targetManager.Target);
-            ImGui.SameLine();
             DrawCopyButton(targetManager.Target);
+            ImGui.SameLine();
+            DrawInteractionButtons(targetManager.Target);
+            DrawTargetDetails(targetManager.Target);
         }
         else
         {
-            ImGui.Spacing();
-            DrawInteractionButtons();
-            ImGui.SameLine();
             DrawCopyButton();
+            ImGui.SameLine();
+            DrawInteractionButtons();
         }
         DrawSavedDetails();
     }
@@ -287,28 +286,18 @@ internal sealed class CreationUtilsComponent
 
     private unsafe void DrawInteractionButtons(IGameObject? target = null)
     {
-        if (target != null)
+        if (objectTable[0] != null)
         {
-            using (ImRaii.Disabled(!movementController.IsNavmeshReady || gameFunctions.IsOccupied()))
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MapPin))
             {
-                if (!movementController.IsPathfinding)
-                {
-                    if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Bullseye, _L("To Target")))
-                    {
-                        movementController.NavigateTo(EMovementType.DebugWindow, GameFunctions.GetBaseID(target),
-                            target.Position, new()
-                            {
-                                Fly = condition[ConditionFlag.Mounted] && gameFunctions.IsFlyingUnlockedInCurrentZone(),
-                                Sprint = true,
-                            });
-                    }
-                }
+                if (debugOverlay.SavedPos == null)
+                    debugOverlay.SavedPos = objectTable[0]!.Position;
                 else
-                {
-                    if (ImGui.Button(_L("Cancel pathfinding")))
-                        movementController.ResetPathfinding();
-                }
+                    debugOverlay.SavedPos = null;
+                logger.LogDebug($"SavedPos: {debugOverlay.SavedPos?.ToString("G5", CultureInfo.InvariantCulture)}");
             }
+            if (ImGui.IsItemHovered())
+                ImGui.SetTooltip(_L("Save/clear current position as reference"));
             ImGui.SameLine();
         }
 
@@ -343,6 +332,27 @@ internal sealed class CreationUtilsComponent
         if (target != null)
         {
             ImGui.SameLine();
+            using (ImRaii.Disabled(!movementController.IsNavmeshReady || gameFunctions.IsOccupied()))
+            {
+                if (!movementController.IsPathfinding)
+                {
+                    if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Bullseye, _L("To Target")))
+                    {
+                        movementController.NavigateTo(EMovementType.DebugWindow, GameFunctions.GetBaseID(target),
+                            target.Position, new()
+                            {
+                                Fly = condition[ConditionFlag.Mounted] && gameFunctions.IsFlyingUnlockedInCurrentZone(),
+                                Sprint = true,
+                            });
+                    }
+                }
+                else
+                {
+                    if (ImGui.Button(_L("Cancel pathfinding")))
+                        movementController.ResetPathfinding();
+                }
+            }
+            ImGui.SameLine();
             using (ImRaii.Disabled(gameFunctions.IsOccupied()))
             {
                 bool interact = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MousePointer);
@@ -356,21 +366,6 @@ internal sealed class CreationUtilsComponent
             }
             if (ImGui.IsItemHovered())
                 ImGui.SetTooltip(_L("Interact with your current target."));
-        }
-
-        if (objectTable[0] != null)
-        {
-            ImGui.SameLine();
-            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MapPin))
-            {
-                if (debugOverlay.SavedPos == null)
-                    debugOverlay.SavedPos = objectTable[0]!.Position;
-                else
-                    debugOverlay.SavedPos = null;
-                logger.LogDebug($"SavedPos: {debugOverlay.SavedPos?.ToString("G5", CultureInfo.InvariantCulture)}");
-            }
-            if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Save/clear current position as reference"));
         }
     }
 
