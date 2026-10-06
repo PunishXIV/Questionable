@@ -26,7 +26,7 @@ internal sealed class QuestRewardComponent
     ILogger<QuestRewardComponent> logger)
 {
     private bool _showEventRewards;
-    private bool _showUnobtainable;
+    private bool _hideUnobtainable;
     private bool _hideCompleted;
     private volatile uint _generation;
     private OrderedDictionary<EAetheryteLocation, List<QuestInfo>> _aetheryteUnlocks = [];
@@ -47,7 +47,7 @@ internal sealed class QuestRewardComponent
             return;
 
         ImGui.Checkbox(_L("Show rewards from seasonal event quests"), ref _showEventRewards);
-        ImGui.Checkbox(_L("Show unobtainable quests"), ref _showUnobtainable);
+        ImGui.Checkbox(_L("Hide unobtainable quests"), ref _hideUnobtainable);
         ImGui.Checkbox(_L("Hide unlocked items"), ref _hideCompleted);
         ImGui.Spacing();
 
@@ -105,7 +105,7 @@ internal sealed class QuestRewardComponent
                 foreach (var quest in value)
                 {
                     bool isUnobtainable = questFunctions.IsQuestUnobtainable(quest.Id);
-                    if (!_showUnobtainable && isUnobtainable)
+                    if (_hideUnobtainable && isUnobtainable)
                         continue;
                     var q = quest.GetQuestInfo();
                     bool isEventQuest = q.IsSeasonalEvent;
@@ -171,7 +171,7 @@ internal sealed class QuestRewardComponent
                 if (!_showEventRewards && isEventQuest)
                     continue;
                 bool isUnobtainable = questFunctions.IsQuestUnobtainable(q.QuestId);
-                if (!_showUnobtainable && isUnobtainable)
+                if (_hideUnobtainable && isUnobtainable)
                     continue;
                 using var _ = ImRaii.PushId($"###{(int)aetheryteLocation}-{q.QuestId.Value}");
                 (Vector4 color, FontAwesomeIcon icon, string status) = uiUtils.GetQuestStyle(q.QuestId);
@@ -250,7 +250,7 @@ internal sealed class QuestRewardComponent
                 if (!_showEventRewards && isEventQuest)
                     continue;
                 bool isUnobtainable = questFunctions.IsQuestUnobtainable(item.ElementId);
-                if (!_showUnobtainable && isUnobtainable)
+                if (_hideUnobtainable && isUnobtainable)
                     continue;
 
                 string name = item.Name;
