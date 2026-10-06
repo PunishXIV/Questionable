@@ -1,15 +1,21 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "Comment": "The concert cutscene is not skippable",
-  "LastChecked": {"Username": "Anonymous", "Date": "2026-09-03"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
         {
-          "InteractionType": "None",
+          "DataId": 1035521,
+          "Position": {
+            "X": 207.599,
+            "Y": -40,
+            "Z": -13.290649
+          },
           "TerritoryId": 886,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Firmament"
@@ -21,16 +27,6 @@
               ]
             }
           }
-        },
-        {
-          "DataId": 1035521,
-          "Position": {
-            "X": 207.599,
-            "Y": -40,
-            "Z": -13.290649
-          },
-          "TerritoryId": 886,
-          "InteractionType": "AcceptQuest"
         }
       ]
     },

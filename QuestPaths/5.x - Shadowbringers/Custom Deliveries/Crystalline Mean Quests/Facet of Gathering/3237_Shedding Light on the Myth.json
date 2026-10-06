@@ -1,8 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "ShermTank",
-  "Comment": "WIP; Manual gathering step",
-  "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -103,8 +102,6 @@
       "Steps": [
         {
           "TerritoryId": 816,
-          "Comment": "MIN node: ( 8.6 , 19.6 )\nBTN node: ( 11.5 , 20.3 )",
-          "$": "QST is stuck at 'Gather(Pending for 26756)', even if specifying the gathering point id (MIN: 32627, BTN:32721).",
           "InteractionType": "Gather",
           "ItemsToGather": [
             {

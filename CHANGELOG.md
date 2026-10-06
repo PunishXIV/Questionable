@@ -1,1 +1,2 @@
-- Change: UX: adjust button position in Path Tools section so they remain in same place -alydev
+- Feature: hide unobtainable quests from "Unlocks" tab in journal progress -alydev
+  - the triple triad section there is pretty broken, i'll fix it someday

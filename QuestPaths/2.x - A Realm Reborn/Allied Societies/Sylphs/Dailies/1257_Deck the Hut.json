@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "Interruptible": false,
-  "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -36,7 +36,15 @@
           "Fly": true,
           "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "InteractionType": "UseItem",
-          "ItemId": 2001117
+          "ItemId": 2001117,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "Low": 8 }
+          ]
         },
         {
           "DataId": 2003161,
@@ -47,7 +55,15 @@
           },
           "TerritoryId": 152,
           "InteractionType": "UseItem",
-          "ItemId": 2001117
+          "ItemId": 2001117,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "Low": 2 }
+          ]
         },
         {
           "DataId": 2003157,
@@ -59,7 +75,15 @@
           "TerritoryId": 152,
           "StopDistance": 1,
           "InteractionType": "UseItem",
-          "ItemId": 2001117
+          "ItemId": 2001117,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 2 }
+          ]
         },
         {
           "DataId": 2003158,
@@ -70,7 +94,15 @@
           },
           "TerritoryId": 152,
           "InteractionType": "UseItem",
-          "ItemId": 2001117
+          "ItemId": 2001117,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 1 }
+          ]
         },
         {
           "DataId": 2003162,
@@ -82,7 +114,15 @@
           "TerritoryId": 152,
           "StopDistance": 1,
           "InteractionType": "UseItem",
-          "ItemId": 2001117
+          "ItemId": 2001117,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "Low": 1 }
+          ]
         },
         {
           "DataId": 2003160,
@@ -96,7 +136,15 @@
           "Land": true,
           "StopDistance": 1,
           "InteractionType": "UseItem",
-          "ItemId": 2001117
+          "ItemId": 2001117,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "Low": 4 }
+          ]
         },
         {
           "Position": {
@@ -117,7 +165,15 @@
           },
           "TerritoryId": 152,
           "InteractionType": "UseItem",
-          "ItemId": 2001117
+          "ItemId": 2001117,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 8 }
+          ]
         },
         {
           "Position": {
@@ -148,7 +204,15 @@
           "TerritoryId": 152,
           "InteractionType": "UseItem",
           "DisableNavmesh": true,
-          "ItemId": 2001117
+          "ItemId": 2001117,
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 4 }
+          ]
         }
       ]
     },
