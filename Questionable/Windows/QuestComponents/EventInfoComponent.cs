@@ -20,19 +20,23 @@ internal sealed class EventInfoComponent
     internal static readonly List<EventQuest> EventQuests =
     [
         // Add seasonal events here. If a quest has additional required quests (e.g Make It Rain > Gold Saucer), add a relation in QuestData#L220
+        // Comment out inactive events so they can be reused in future, don't delete blocks
         new(_L("Limited Time Items"), [new UnlockLinkId(568)], DateTime.MaxValue),
-        // Yokai 2026
-        new(_T<Lumina.Excel.Sheets.BannerBg>(233), [new QuestId(2141)], AtDailyReset(2026, 10, 5)),
-        // FFXV 2026
+        // Yokai
         new(
-            $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(70)} 2026",
-            [new QuestId(3158), new QuestId(3159),
-            new QuestId(3160)],
+            $"{_T<Lumina.Excel.Sheets.BannerBg>(233)} {DateTime.UtcNow.Year}",
+            [new QuestId(434), new QuestId(2141)],
+            AtDailyReset(2026, 10, 5)
+        ),
+        // FFXV
+        new(
+            $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(70)} {DateTime.UtcNow.Year}",
+            [new QuestId(3158), new QuestId(3159), new QuestId(3160)],
             AtDailyReset(2026, 10, 13)
         ),
         // Fall Guys
         new(
-            $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(74)} 2026",
+            $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(74)} {DateTime.UtcNow.Year}",
             [new QuestId(434), new QuestId(4801)],
             AtDailyReset(2026, 10, 27),
             AtDailyReset(2026, 10, 7)

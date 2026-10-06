@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": ["Cacahuetes", "liza"],
   "Interruptible": false,
-  "LastChecked": { "Username": "okonomiyaki", "Date": "2026-06-28" },
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -40,6 +40,7 @@
           "StopDistance": 0.5,
           "TerritoryId": 148,
           "InteractionType": "Combat",
+          "Fly": true,
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [],
           "AethernetShortcut": [
@@ -86,6 +87,17 @@
       "Steps": [
         {
           "Position": {
+            "X": 211.82181,
+            "Y": 23.457642,
+            "Z": 163.4502
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "Fly": true
+        },
+        {
+          "Position": {
             "X": 211.82294,
             "Y": 23.458103,
             "Z": 157.57333
@@ -95,7 +107,6 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [21],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             { "Low": 2 },
             null,
@@ -106,6 +117,29 @@
           ]
         },
         {
+          "Position": {
+            "X": 211.82181,
+            "Y": 23.457642,
+            "Z": 163.4502
+          },
+          "TerritoryId": 148,
+          "InteractionType": "WalkTo",
+          "StopDistance": 0.25,
+          "SkipConditions": {
+            "StepIf": {
+              "NotNearPosition": {
+                "Position": {
+                  "X": 215.99133,
+                  "Y": 23.575134,
+                  "Z": 153.2157
+                },
+                "TerritoryId": 148,
+                "MaximumDistance": 10
+              }
+            }
+          }
+        },
+        {
           "DataId": 2000918,
           "Position": {
             "X": 215.99133,
@@ -113,7 +147,8 @@
             "Z": 153.2157
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "DisableNavmesh": true
         }
       ]
     },

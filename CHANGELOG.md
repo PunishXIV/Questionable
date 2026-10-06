@@ -1,3 +1,1 @@
-- Bug fix: Yokai event quest was mistakenly marked as locked -alydev
-- Change: Exclude unobtainable or complete quests from built-in priority presets -alydev
-- Change: Ignore level requirement for preset quests, AcceptQuest has level checking and job switching, no need to ignore outleveled quests if they're explicitly specified in a preset -alydev
+- Change: UX: adjust button position in Path Tools section so they remain in same place -alydev
