@@ -47,7 +47,7 @@ internal sealed class QuestRewardComponent
             return;
 
         ImGui.Checkbox(_L("Show rewards from seasonal event quests"), ref _showEventRewards);
-        ImGui.Checkbox(_L("Hide unobtainable quests"), ref _hideUnobtainable);
+        ImGui.Checkbox(_L("Hide Unobtainable Quests"), ref _hideUnobtainable);
         ImGui.Checkbox(_L("Hide unlocked items"), ref _hideCompleted);
         ImGui.Spacing();
 
