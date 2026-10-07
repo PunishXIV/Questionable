@@ -52,7 +52,7 @@ internal sealed class EventInfoComponent
         foreach (EventQuest eventQuest in EventQuests.Where(x =>
             x.EndsAtUtc >= DateTime.UtcNow &&
             (x.QuestIds.All(ShouldShowQuest) ||
-            x.StartsAtUtc > DateTime.UtcNow)))
+            x.StartsAtUtc < DateTime.UtcNow)))
         {
             DrawEventQuest(eventQuest);
         }
@@ -61,7 +61,7 @@ internal sealed class EventInfoComponent
     private void DrawEventQuest(EventQuest eventQuest)
     {
         ImGui.Text(eventQuest.Name);
-        if (eventQuest.StartsAtUtc != null)
+        if (eventQuest.StartsAtUtc != null && eventQuest.StartsAtUtc.Value >= DateTime.UtcNow)
         {
             string time = (eventQuest.StartsAtUtc.Value - DateTime.UtcNow).Humanize(
                 1,
@@ -126,9 +126,9 @@ internal sealed class EventInfoComponent
         // if event end time is in the past, event is complete
         if (eventQuest.EndsAtUtc <= DateTime.UtcNow)
             return false;
-        // if event start time is in the future, event is incomplete (bypass completed repeating events)
+        // if event start time is in the future, event is complete
         if (eventQuest.StartsAtUtc > DateTime.UtcNow)
-            return true;
+            return false;
 
         return eventQuest.QuestIds.Any(ShouldShowQuest);
     }

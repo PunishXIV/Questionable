@@ -1,2 +1,1 @@
-- Feature: check achievements for merchants tale advanced unlock quest -alydev
-- Change: shb quest The Light of Inspiration now tries to complete the role quest storyline for the current job before accepting, regardless of if you have "Don't pick up class/job/role quests" enabled, as it's required to complete the quest -alydev
+- Bug fix: event info was broken, that's my bad -alydev
