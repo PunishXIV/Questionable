@@ -1,11 +1,382 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
+  "Comment": "Completion of at least one role questline is required to finish The Light of Inspiration.",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "DataId": 1029900,
+          "Position": {
+            "X": -35.385742,
+            "Y": 3.9998174,
+            "Z": 251.75854
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3243,
+          "RequiredCurrentJob": ["Paladin", "Warrior", "Gunbreaker", "Dark Knight"],
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        },
+        {
+          "DataId": 1029889,
+          "Position": {
+            "X": -35.385742,
+            "Y": 3.9998174,
+            "Z": 251.75854
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3244,
+          "RequiredCurrentJob": ["Paladin", "Warrior", "Gunbreaker", "Dark Knight"],
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        },
+        {
+          "DataId": 1029893,
+          "Position": {
+            "X": -248.34064,
+            "Y": 21.086334,
+            "Z": 346.0287
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3245,
+          "RequiredCurrentJob": ["Paladin", "Warrior", "Gunbreaker", "Dark Knight"],
+          "Fly": true,
+          "AetheryteShortcut": "Kholusia - Wright"
+        },
+        {
+          "DataId": 1029959,
+          "Position": {
+            "X": 295.27722,
+            "Y": 1.4685827,
+            "Z": -290.18085
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3246,
+          "RequiredCurrentJob": ["Paladin", "Warrior", "Gunbreaker", "Dark Knight"],
+          "AetheryteShortcut": "Amh Araeng - Mord Souq",
+          "Fly": true
+        },
+        {
+          "DataId": 1029963,
+          "Position": {
+            "X": 61.020752,
+            "Y": 100.95007,
+            "Z": -872.4651
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3247,
+          "RequiredCurrentJob": ["Paladin", "Warrior", "Gunbreaker", "Dark Knight"],
+          "AetheryteShortcut": "Il Mheg - Pla Enni",
+          "Fly": true
+        },
+        {
+          "DataId": 1029963,
+          "Position": {
+            "X": 61.020752,
+            "Y": 100.95007,
+            "Z": -872.4651
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3248,
+          "RequiredCurrentJob": ["Paladin", "Warrior", "Gunbreaker", "Dark Knight"],
+          "AetheryteShortcut": "Il Mheg - Pla Enni",
+          "Fly": true
+        },
+        
+        {
+          "DataId": 1029998,
+          "Position": {
+            "X": -26.657532,
+            "Y": 3.999815,
+            "Z": 209.88782
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3267,
+          "RequiredCurrentJob": ["White Mage", "Scholar", "Astrologian", "Sage"],
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        },
+        {
+          "DataId": 1031158,
+          "Position": {
+            "X": -26.657532,
+            "Y": 3.999815,
+            "Z": 209.88782
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3268,
+          "RequiredCurrentJob": ["White Mage", "Scholar", "Astrologian", "Sage"],
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Musica Universalis Markets"
+          ]
+        },
+        {
+          "DataId": 1031158,
+          "Position": {
+            "X": -26.657532,
+            "Y": 3.999815,
+            "Z": 209.88782
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3269,
+          "RequiredCurrentJob": ["White Mage", "Scholar", "Astrologian", "Sage"],
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Musica Universalis Markets"
+          ]
+        },
+        {
+          "DataId": 1031158,
+          "Position": {
+            "X": -26.657532,
+            "Y": 3.999815,
+            "Z": 209.88782
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3270,
+          "RequiredCurrentJob": ["White Mage", "Scholar", "Astrologian", "Sage"],
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Musica Universalis Markets"
+          ]
+        },
+        {
+          "DataId": 1031158,
+          "Position": {
+            "X": -26.657532,
+            "Y": 3.999815,
+            "Z": 209.88782
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3271,
+          "RequiredCurrentJob": ["White Mage", "Scholar", "Astrologian", "Sage"],
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Musica Universalis Markets"
+          ]
+        },
+        {
+          "DataId": 1030021,
+          "Position": {
+            "X": -456.6568,
+            "Y": 417.12558,
+            "Z": -597.1008
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3272,
+          "RequiredCurrentJob": ["White Mage", "Scholar", "Astrologian", "Sage"],
+          "AetheryteShortcut": "Kholusia - Tomra"
+        },
+        
+        {
+          "DataId": 1030126,
+          "Position": {
+            "X": -18.143005,
+            "Y": 3.9998174,
+            "Z": 235.40088
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3273,
+          "RequiredCurrentJob": ["Monk", "Dragoon", "Ninja", "Samurai", "Reaper", "Viper", "Bard", "Machinist", "Dancer"],
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        },
+        {
+          "DataId": 1030964,
+          "Position": {
+            "X": -18.143005,
+            "Y": 3.9998174,
+            "Z": 235.40088
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3274,
+          "RequiredCurrentJob": ["Monk", "Dragoon", "Ninja", "Samurai", "Reaper", "Viper", "Bard", "Machinist", "Dancer"],
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        },
+        {
+          "DataId": 1030964,
+          "Position": {
+            "X": -18.143005,
+            "Y": 3.9998174,
+            "Z": 235.40088
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3275,
+          "RequiredCurrentJob": ["Monk", "Dragoon", "Ninja", "Samurai", "Reaper", "Viper", "Bard", "Machinist", "Dancer"],
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        },
+        {
+          "DataId": 1030964,
+          "Position": {
+            "X": -18.143005,
+            "Y": 3.9998174,
+            "Z": 235.40088
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3276,
+          "RequiredCurrentJob": ["Monk", "Dragoon", "Ninja", "Samurai", "Reaper", "Viper", "Bard", "Machinist", "Dancer"],
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
+        },
+        {
+          "DataId": 1030145,
+          "Position": {
+            "X": 93.461426,
+            "Y": 37.43559,
+            "Z": 611.50525
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3277,
+          "RequiredCurrentJob": ["Monk", "Dragoon", "Ninja", "Samurai", "Reaper", "Viper", "Bard", "Machinist", "Dancer"],
+          "AetheryteShortcut": "Kholusia - Wright",
+          "Fly": true
+        },
+        {
+          "DataId": 1030144,
+          "Position": {
+            "X": 94.68213,
+            "Y": 37.377014,
+            "Z": 611.1085
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3278,
+          "RequiredCurrentJob": ["Monk", "Dragoon", "Ninja", "Samurai", "Reaper", "Viper", "Bard", "Machinist", "Dancer"],
+          "AetheryteShortcut": "Kholusia - Wright",
+          "Fly": true
+        },
+        
+        {
+          "DataId": 1030643,
+          "Position": {
+            "X": -0.16790771,
+            "Y": 3.9998174,
+            "Z": 201.9226
+          },
+          "TerritoryId": 819,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3623,
+          "RequiredCurrentJob": ["Black Mage", "Summoner", "Red Mage", "Pictomancer"],
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] Musica Universalis Markets"
+          ]
+        },
+        {
+          "DataId": 1030625,
+          "Position": {
+            "X": 218.73804,
+            "Y": 7.1558266,
+            "Z": -249.1341
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3624,
+          "RequiredCurrentJob": ["Black Mage", "Summoner", "Red Mage", "Pictomancer"],
+          "AetheryteShortcut": "Amh Araeng - Mord Souq"
+        },
+        {
+          "DataId": 1030625,
+          "Position": {
+            "X": 218.73804,
+            "Y": 7.1558266,
+            "Z": -249.1341
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3625,
+          "RequiredCurrentJob": ["Black Mage", "Summoner", "Red Mage", "Pictomancer"],
+          "AetheryteShortcut": "Amh Araeng - Mord Souq"
+        },
+        {
+          "DataId": 1030625,
+          "Position": {
+            "X": 218.73804,
+            "Y": 7.1558266,
+            "Z": -249.1341
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3626,
+          "RequiredCurrentJob": ["Black Mage", "Summoner", "Red Mage", "Pictomancer"],
+          "AetheryteShortcut": "Amh Araeng - Mord Souq"
+        },
+        {
+          "DataId": 1030625,
+          "Position": {
+            "X": 218.73804,
+            "Y": 7.1558266,
+            "Z": -249.1341
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3627,
+          "RequiredCurrentJob": ["Black Mage", "Summoner", "Red Mage", "Pictomancer"],
+          "AetheryteShortcut": "Amh Araeng - Mord Souq"
+        },
+        {
+          "DataId": 1030625,
+          "Position": {
+            "X": 218.73804,
+            "Y": 7.1558266,
+            "Z": -249.1341
+          },
+          "TerritoryId": 815,
+          "InteractionType": "AcceptQuest",
+          "PickUpQuestId": 3628,
+          "RequiredCurrentJob": ["Black Mage", "Summoner", "Red Mage", "Pictomancer"],
+          "AetheryteShortcut": "Amh Araeng - Mord Souq"
+        },
+
         {
           "DataId": 1030225,
           "Position": {
