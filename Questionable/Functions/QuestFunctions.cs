@@ -895,12 +895,12 @@ internal sealed unsafe class QuestFunctions
         bool questPrereqs = questId.Value switch
         {
             // EX mounts
-            432 => AllMountsUnlocked(new ushort[] { 28, 29, 30, 31, 40, 43 }),
-            1550 => AllMountsUnlocked(new ushort[] { 75, 76, 77, 78, 90, 98, 104 }),
-            3200 => AllMountsUnlocked(new ushort[] { 115, 116, 133, 144, 158, 172, 182 }),
-            4057 => AllMountsUnlocked(new ushort[] { 189, 192, 205, 217, 226, 238, 249 }),
-            4795 => AllMountsUnlocked(new ushort[] { 261, 262, 293, 306, 315, 325, 332 }),
-            5469 => AllMountsUnlocked(new ushort[] { 345, 346, 363, 389, 407, 422, 444 }),
+            432 => AllMountsUnlocked(28, 29, 30, 31, 40, 43),
+            1550 => AllMountsUnlocked(75, 76, 77, 78, 90, 98, 104),
+            3200 => AllMountsUnlocked(115, 116, 133, 144, 158, 172, 182),
+            4057 => AllMountsUnlocked(189, 192, 205, 217, 226, 238, 249),
+            4795 => AllMountsUnlocked(261, 262, 293, 306, 315, 325, 332),
+            5469 => AllMountsUnlocked(345, 346, 363, 389, 407, 422, 444),
             // gold saucer
             576 => RaceChocoboRank40(),
             4081 => IsAchievementComplete(2819),
@@ -908,6 +908,8 @@ internal sealed unsafe class QuestFunctions
             3195 => IsUnlockLinkUnlocked(new(113)),
             // potd
             2387 => IsAchievementComplete(1580),
+            // merchants tale advanced
+            5459 => IsAchievementComplete(3892, 3893, 3894),
             _ => true
         };
         if (!questPrereqs)
@@ -923,10 +925,10 @@ internal sealed unsafe class QuestFunctions
         return (lockedReason.Count > 0, lockedReason.ToArray());
     }
 
-    private unsafe bool AllMountsUnlocked(ushort[] mounts) => mounts.All(x => PlayerState.Instance()->IsMountUnlocked(x));
+    private unsafe bool AllMountsUnlocked(params ushort[] mounts) => mounts.All(x => PlayerState.Instance()->IsMountUnlocked(x));
     private unsafe bool RaceChocoboRank40() => RaceChocoboManager.Instance()->Rank >= 40;
     private bool _achievementsRequested;
-    private unsafe bool IsAchievementComplete(int achievementId)
+    private unsafe bool IsAchievementComplete(params int[] achievementIds)
     {
         if (!Achievement.Instance()->IsLoaded())
         {
@@ -940,7 +942,7 @@ internal sealed unsafe class QuestFunctions
             AgentAchievement.Instance()->Hide();
             _achievementsRequested = false;
         }
-        return Achievement.Instance()->IsComplete(achievementId);
+        return achievementIds.All(Achievement.Instance()->IsComplete);
     }
 
     private bool IsQuestLocked(SatisfactionSupplyNpcId satisfactionSupplyNpcId)
