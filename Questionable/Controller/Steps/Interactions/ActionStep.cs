@@ -1,5 +1,4 @@
 using System.Collections.ObjectModel;
-using System.Runtime.Serialization;
 using Dalamud.Game.ClientState.Objects.Types;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Questionable.Controller.Steps.Common;
@@ -43,7 +42,7 @@ internal static class ActionStep
         uint? DataId,
         Quest? Quest,
         EAction Action,
-        List<QuestWorkValue?>? CompletionQuestVariablesFlags = null,
+        List<QuestWorkValue?>? CompletionQuestVariablesFlags,
         bool IgnoreResult = false,
         float Timeout = 0.5f) : ITask
     {
@@ -94,6 +93,7 @@ internal static class ActionStep
             else
             {
                 _usedAction = gameFunctions.UseAction(Task.Action);
+                logger.LogTrace($"start _usedAction: {_usedAction}");
                 _continueAt = DateTime.Now.AddSeconds(Task.Timeout);
                 return true;
             }
@@ -105,8 +105,11 @@ internal static class ActionStep
         {
             if (DateTime.Now <= _continueAt)
                 return ETaskResult.StillRunning;
+            logger.LogTrace($"update _usedAction: {_usedAction}");
+            if (Task.IgnoreResult)
+                return ETaskResult.TaskComplete;
 
-            if (!Task.IgnoreResult && !_usedAction)
+            if (!_usedAction)
             {
                 if (Task.DataId != null)
                 {

@@ -1,4 +1,2 @@
-- Feature: setting under UI to hide things in unobtained expansions (i.e free trial), currently implemented as test in allied society journal tab -alydev
-- Change: PGL lv30 quest battle rotation -alydev
-- Change: "Copy Position" button in Path Tools changed to always copy player's position, so it returns a safe spot to stand at all times -alydev
-- Change: We can now lock events as visible even if all quests are complete. Fall Guys 2026 will stay visible as a reminder until the event is finished -alydev
+- Bug fix: quest actions don't seem to be working right, reverted the change, but i'm too tired to investigate further today. -alydev
+- Feature: and i'm tired because i automated the lv15 rogue quest battle in aleport, so that works now -alydev
