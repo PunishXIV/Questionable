@@ -304,6 +304,15 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     Configuration.General.HideQuestStartedJob = hideQuestStartedJob;
                     Save();
                 }
+
+                bool hideThingsNotAvailable = Configuration.General.HideThingsNotAvailable;
+                if (ImGui.Checkbox(_L("Hide things unavailable in your account's unlocked expansions"), ref hideThingsNotAvailable))
+                {
+                    Configuration.General.HideThingsNotAvailable = hideThingsNotAvailable;
+                    Save();
+                }
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip(_L("If you are on free trial, or do not own the current expansion, this will hide content in locked expansions"));
             }
         }
 

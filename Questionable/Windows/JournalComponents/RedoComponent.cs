@@ -115,7 +115,7 @@ internal sealed class RedoComponent
                 if (!unobtainable && qInfo != null && quest == null)
                     showAnyway = true;
                 return null;
-            }).Where(q => q != null).ToArray();
+            }).OfType<Domain.Quest>().ToArray();
             if (checkQuests.Length == 0 && _hideDone && !showAnyway)
                 continue;
             ImGui.TableNextRow();
