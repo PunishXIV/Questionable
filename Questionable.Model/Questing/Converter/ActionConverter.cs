@@ -11,6 +11,8 @@ public sealed class ActionConverter() : EnumConverter<EAction>(Values)
         { EAction.DutyAction2, "Duty Action II" },
         { EAction.HeavySwing, "Heavy Swing" },
         { EAction.Bootshine, "Bootshine" },
+        { EAction.TrueStrike, "True Strike" },
+        { EAction.SnapPunch, "Snap Punch" },
         { EAction.TwinSnakes, "Twin Snakes" },
         { EAction.Demolish, "Demolish" },
         { EAction.DragonKick, "Dragon Kick" },

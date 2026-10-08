@@ -47,6 +47,7 @@ internal static class SinglePlayerDuty
         public const ushort Nightkin = 676;
         public const ushort WarmthOfFamily = 1244;
         public const ushort BarThePassage = 1246;
+        public const ushort Holyfist = 261;
     }
 
     internal sealed class Factory
@@ -251,6 +252,14 @@ internal static class SinglePlayerDuty
                         yield return new MoveTask(SpecialTerritories.BarThePassage, point);
                     }
                     yield return new SetTarget(18032);
+                }
+                else if (tId == SpecialTerritories.Holyfist)
+                {
+                    for (var _ = 0; _ < 3; _++)
+                        foreach (EAction action in new List<EAction>()
+                                { EAction.Bootshine, EAction.TrueStrike, EAction.SnapPunch })
+                            yield return new ActionStep.UseOnObject(879, quest, action, IgnoreResult: true, Timeout: 3);
+                    yield return new EnableAi();
                 }
 
                 //else if (tId == SpecialTerritories.ViperTutorial)
