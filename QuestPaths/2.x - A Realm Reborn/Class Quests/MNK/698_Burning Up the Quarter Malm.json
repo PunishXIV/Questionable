@@ -1,8 +1,9 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "plogon_enjoyer",
+  "Comment": "Requires manual interaction",
   "Interruptible": false,
-  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-06-26"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -105,12 +106,31 @@
             "Z": -94.337494
           },
           "TerritoryId": 141,
-          "InteractionType": "Combat",
+          "InteractionType": "WalkTo",
+          "Comment": "Use Bootshine / True Strike / Snap Punch combo three times",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             771
           ],
           "Fly": true,
+          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
+          "CombatDelaySecondsAtStart": 0,
+          "$": "Will stop once 3 Qiqirn Shellsweppers get hit by Snap Punch since it will move on to the next sequence"
+        },
+        {
+          "Position": {
+            "X": -210.32118,
+            "Y": 21.582167,
+            "Z": -94.337494
+          },
+          "TerritoryId": 141,
+          "InteractionType": "WaitForManualProgress",
+          "Comment": "Use Bootshine / True Strike / Snap Punch combo three times",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            771
+          ],
+          "Mount": false,
           "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "CombatDelaySecondsAtStart": 0,
           "$": "Will stop once 3 Qiqirn Shellsweppers get hit by Snap Punch since it will move on to the next sequence"
