@@ -170,7 +170,7 @@ internal sealed unsafe partial class GameFunctions
 
     public bool UseItemOnPosition(Vector3 position, uint itemId) => ActionManager.Instance()->UseActionLocation(ActionType.EventItem, itemId, location: &position);
 
-    public bool UseAction(EAction action)
+    public bool UseAction(EAction action, bool? ignoreResult = null)
     {
         uint actionId = (uint)action & 0xFFFF;
         ActionType actionType = ((uint)action & 0x10000) == 0x10000 ? ActionType.GeneralAction : ActionType.Action;
@@ -183,7 +183,7 @@ internal sealed unsafe partial class GameFunctions
             logger.LogInformation("UseAction {Action} (adjusted: {AdjustedActionId}) result: {Result}", action,
                 actionId, result);
 
-            return result;
+            return ignoreResult != null ? ignoreResult.Value : result;
         }
 
         return false;

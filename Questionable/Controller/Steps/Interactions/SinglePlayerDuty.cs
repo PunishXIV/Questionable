@@ -48,6 +48,7 @@ internal static class SinglePlayerDuty
         public const ushort WarmthOfFamily = 1244;
         public const ushort BarThePassage = 1246;
         public const ushort Holyfist = 261;
+        public const ushort StifledScreams = 405;
     }
 
     internal sealed class Factory
@@ -258,8 +259,31 @@ internal static class SinglePlayerDuty
                     for (var _ = 0; _ < 3; _++)
                         foreach (EAction action in new List<EAction>()
                                 { EAction.Bootshine, EAction.TrueStrike, EAction.SnapPunch })
-                            yield return new ActionStep.UseOnObject(879, quest, action, IgnoreResult: true, Timeout: 3);
+                            yield return new ActionStep.UseOnObject(879, quest, action, CompletionQuestVariablesFlags: null, IgnoreResult: true, Timeout: 3);
                     yield return new EnableAi();
+                }
+                else if (tId == SpecialTerritories.StifledScreams)
+                {
+                    foreach (var (Pos, Target) in new List<(Vector3, uint)>()
+                    {
+                        (new(324.66034f, -35.9494f, 315.05234f), 2004819),
+                        (new(323.9337f, -31.34907f, 265.4001f), 2004821),
+                        (new(328.53488f, -24.998547f, 252.8242f), 2004823),
+                        (new(328.53488f, -24.998547f, 252.8242f), 2004824),
+                    })
+                    {
+                        yield return new MoveTask(SpecialTerritories.StifledScreams, Pos, StopDistance: 1f);
+                        yield return new EnableAi();
+                        yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
+                        yield return new WaitAtEnd.WaitForConditionCleared(ConditionFlag.InCombat, SpecialTerritories.StifledScreams);
+                        yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1));
+                        yield return new DisableAi();
+                        yield return new MoveTask(SpecialTerritories.StifledScreams, Pos, StopDistance: 1f);
+                        yield return new Interact.Task(Target, quest, EInteractionType.Interact);
+                    }
+                    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1));
+                    yield return new EnableAi();
+                    yield return new MoveTask(SpecialTerritories.StifledScreams, new(320.1693f, -24.998898f, 246.24161f), StopDistance: 1f);
                 }
 
                 //else if (tId == SpecialTerritories.ViperTutorial)

@@ -75,13 +75,15 @@
         {
           "DataId": 1002324,
           "Position": {
-            "X": 112.80994,
+            "X": 113.57544,
             "Y": 17.536886,
-            "Z": 31.296265
+            "Z": 31.153059
           },
           "TerritoryId": 140,
+          "StopDistance": 1,
           "Fly": true,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "DataId": 1002322,
@@ -91,7 +93,8 @@
             "Z": 12.954895
           },
           "TerritoryId": 140,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 1002323,
@@ -101,7 +104,8 @@
             "Z": 9.018005
           },
           "TerritoryId": 140,
-          "InteractionType": "Interact"
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         }
       ]
     },
