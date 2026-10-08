@@ -4374,7 +4374,7 @@
     <Value lang="ko">현재 대상과 상호작용.</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/CreationUtilsComponent.cs -->
+    <!-- DEPRECATED -->
     <Key>Left click: Copy target position as JSON.\nRight click: Copy target position as C# code.</Key>
     <Value lang="en">Left click: Copy target position as JSON.\nRight click: Copy target position as C# code.</Value>
     <Value lang="ja-jp">左クリック：ターゲット位置をJSONとしてコピー\n右クリック：ターゲット位置をC#コードとしてコピー</Value>
@@ -6989,5 +6989,13 @@
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Ignore 'next quest' if Priority Quests has valid alternative</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Hide things unavailable in your account's unlocked expansions</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>If you are on free trial, or do not own the current expansion, this will hide content in locked expansions</Key>
   </Entry>
 </I18N>
