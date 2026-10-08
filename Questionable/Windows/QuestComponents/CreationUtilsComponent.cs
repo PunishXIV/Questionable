@@ -406,11 +406,14 @@ internal sealed class CreationUtilsComponent
 
     private void DrawCopyButton(IGameObject target)
     {
+        var targetPos = target.Position;
+        if (objectTable[0] != null)
+            targetPos = objectTable[0]!.Position;
         bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
         if (ImGui.IsItemHovered())
         {
             ImGui.SetTooltip(
-                _L("Left click: Copy target position as JSON.\nRight click: Copy target position as C# code."));
+                _L("Left click: Copy your position as JSON.\nRight click: Copy your position as C# code."));
         }
 
         if (copy)
@@ -419,9 +422,9 @@ internal sealed class CreationUtilsComponent
                 $$"""
                   "DataId": {{GameFunctions.GetBaseID(target)}},
                             "Position": {
-                              "X": {{target.Position.X.ToString(CultureInfo.InvariantCulture)}},
-                              "Y": {{target.Position.Y.ToString(CultureInfo.InvariantCulture)}},
-                              "Z": {{target.Position.Z.ToString(CultureInfo.InvariantCulture)}}
+                              "X": {{targetPos.X.ToString(CultureInfo.InvariantCulture)}},
+                              "Y": {{targetPos.Y.ToString(CultureInfo.InvariantCulture)}},
+                              "Z": {{targetPos.Z.ToString(CultureInfo.InvariantCulture)}}
                             },
                   """;
             uint? chocobokeep = IsChocobokeep(target);
@@ -430,6 +433,7 @@ internal sealed class CreationUtilsComponent
                 $$"""
 
                             "TerritoryId": {{clientState.TerritoryType}},
+                            "StopDistance": 1,
                             "InteractionType": "{{interactionType}}"
                   """ + (chocobokeep == null && GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ?
                 $$"""
