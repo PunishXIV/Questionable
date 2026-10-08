@@ -4,6 +4,7 @@ using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Questionable.Model.Common;
+using Questionable.Model.Questing;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.JournalComponents;
 
@@ -103,7 +104,7 @@ internal sealed class AlliedSocietyJournalComponent
         _unchecked = 0;
         _incomplete = 0;
 
-        foreach (EAlliedSociety alliedSociety in Enum.GetValues<EAlliedSociety>().Where(x => x != EAlliedSociety.None))
+        foreach (EAlliedSociety alliedSociety in alliedSocietyQuestFunctions.GetAlliedSocieties(!configuration.General.HideThingsNotAvailable))
         {
             List<IQuestInfo> quests = alliedSocietyQuestFunctions.GetAvailableAlliedSocietyQuests(alliedSociety)
                 .Select(x => questData.GetQuestInfo(x))

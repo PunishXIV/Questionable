@@ -11,6 +11,8 @@ public enum EAction
 
     HeavySwing = 31,
     Bootshine = 53,
+    TrueStrike = 54,
+    SnapPunch = 56,
     TwinSnakes = 61,
     Demolish = 66,
     DragonKick = 74,

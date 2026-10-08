@@ -7,6 +7,7 @@ using Dalamud.Plugin.Ipc;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.AutoGen.Plugin;
 using Questionable.Model.Questing;
 using Questionable.QuestPaths;
@@ -34,6 +35,7 @@ internal sealed class QuestRegistry
 
     private readonly ICallGateProvider<object> _reloadDataIpc;
     private readonly TerritoryData _territoryData;
+    private EExpansionVersion _characterExpansion;
 
     public QuestRegistry(
         IDalamudPluginInterface pluginInterface,
@@ -58,7 +60,13 @@ internal sealed class QuestRegistry
         _configuration = configuration;
         _draftQuestPathService = draftQuestPathService;
         _reloadDataIpc = _pluginInterface.GetIpcProvider<object>("Questionable.ReloadData");
+        unsafe
+        {
+            _characterExpansion = (EExpansionVersion)PlayerState.Instance()->MaxExpansion;
+        }
     }
+
+    public EExpansionVersion CharacterExpansion => _characterExpansion;
 
     public IEnumerable<Quest> AllQuests => _quests.Values;
     private CachedValue<int> _count = new(ttlSeconds: 1);
@@ -116,6 +124,10 @@ internal sealed class QuestRegistry
         }
 
         _logger.LogInformation("Loaded {Count} quests in total", _quests.Count);
+        unsafe
+        {
+            _characterExpansion = (EExpansionVersion)PlayerState.Instance()->MaxExpansion;
+        }
     }
 
     [Conditional("RELEASE")]

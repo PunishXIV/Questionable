@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
-  "LastChecked": { "Username": "okonomiyaki", "Date": "2026-06-28" },
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -98,11 +98,12 @@
         {
           "DataId": 1007564,
           "Position": {
-            "X": 272.23608,
-            "Y": 222.26244,
-            "Z": 339.1317
+            "X": 273.64572,
+            "Y": 222.2455,
+            "Z": 338.12424
           },
           "TerritoryId": 155,
+          "StopDistance": 1,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "Fly": true
