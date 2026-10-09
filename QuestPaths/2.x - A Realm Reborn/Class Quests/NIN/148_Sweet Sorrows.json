@@ -246,7 +246,7 @@
           },
           "TerritoryId": 137,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": false}
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },

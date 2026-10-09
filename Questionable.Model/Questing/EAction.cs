@@ -5,20 +5,29 @@ namespace Questionable.Model.Questing;
 [JsonConverter(typeof(ActionConverter))]
 public enum EAction
 {
+    AutoAttack = 1,
+    Sprint = 4,
     Return = 8,
     DutyAction1 = 26 | 0x10000,
     DutyAction2 = 27 | 0x10000,
 
+    // rog quest
+    SpinningEdge = 2240,
+    // mrd quest
     HeavySwing = 31,
+    // pgl quest
     Bootshine = 53,
     TrueStrike = 54,
     SnapPunch = 56,
     TwinSnakes = 61,
+    // mnk quest
     Demolish = 66,
     DragonKick = 74,
     HeavyShot = 97,
+    // cnj quest
     Cure = 120,
     Cure2 = 135,
+    // sge quest
     Eukrasia = 24290,
     Diagnosis = 24284,
     EukrasianDiagnosis = 24291,
