@@ -5,7 +5,7 @@
             Lightly enforce named arguments for boolean and null literals
             (configured in .editorconfig). Analyzer-only, no runtime cost.
         -->
-        <PackageReference Include="Meziantou.Analyzer" Version="3.0.122"
+        <PackageReference Include="Meziantou.Analyzer" Version="3.0.296"
                          PrivateAssets="all" ExcludeAssets="runtime" />
     </ItemGroup>
 </Project>
