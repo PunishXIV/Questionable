@@ -298,6 +298,13 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     Save();
                 }
 
+                bool hideLevel = Configuration.General.HideQuestRequiredLevel;
+                if (ImGui.Checkbox(_L("Hide quest level badge"), ref hideLevel))
+                {
+                    Configuration.General.HideQuestRequiredLevel = hideLevel;
+                    Save();
+                }
+
                 bool hideQuestStartedJob = Configuration.General.HideQuestStartedJob;
                 if (ImGui.Checkbox(_L("Hide which job a quest was started with"), ref hideQuestStartedJob))
                 {
