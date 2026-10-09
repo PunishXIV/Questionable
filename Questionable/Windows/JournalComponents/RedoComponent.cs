@@ -218,7 +218,8 @@ internal sealed class RedoComponent
         if (ImGui.MenuItem(_L("Add all to Priority Quests")))
         {
             foreach (IQuestInfo quest in quests)
-                questController.PriorityManager.Add(quest.QuestId);
+                if (!questFunctions.IsQuestUnobtainable(quest.QuestId) && !questFunctions.IsQuestComplete(quest.QuestId))
+                    questController.PriorityManager.Add(quest.QuestId);
         }
 
         if (ImGui.MenuItem(_L("Remove all from Priority Quests")))

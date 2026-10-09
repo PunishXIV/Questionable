@@ -73,7 +73,9 @@ public sealed class QuestionablePlugin(
         if (serviceProvider is IAsyncDisposable asyncDisposable)
             await asyncDisposable.DisposeAsync().ConfigureAwait(false);
         else
+#pragma warning disable MA0042 // Do not use blocking calls when the calling method is async
             serviceProvider?.Dispose();
+#pragma warning restore MA0042 // Do not use blocking calls when the calling method is async
 
         if (_ecommonsInitialized)
         {

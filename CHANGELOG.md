@@ -1,2 +1,2 @@
-- Bug fix: quest actions don't seem to be working right, reverted the change, but i'm too tired to investigate further today. -alydev
-- Feature: and i'm tired because i automated the lv15 rogue quest battle in aleport, so that works now -alydev
+- Change: exclude unobtainable and complete quests from "Add all to priority quests" output
+- Feature: lv30 rogue quest -alydev
