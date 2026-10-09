@@ -8,6 +8,22 @@
       "Sequence": 0,
       "Steps": [
         {
+          "DataId": 1030225,
+          "Position": {
+            "X": 28.824219,
+            "Y": 381.81906,
+            "Z": -524.4374
+          },
+          "StopDistance": 5,
+          "TerritoryId": 818,
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
           "DataId": 1029900,
           "Position": {
             "X": -35.385742,
@@ -377,22 +393,6 @@
           "AetheryteShortcut": "Amh Araeng - Mord Souq"
         },
 
-        {
-          "DataId": 1030225,
-          "Position": {
-            "X": 28.824219,
-            "Y": 381.81906,
-            "Z": -524.4374
-          },
-          "StopDistance": 5,
-          "TerritoryId": 818,
-          "InteractionType": "AcceptQuest"
-        }
-      ]
-    },
-    {
-      "Sequence": 1,
-      "Steps": [
         {
           "DataId": 1027758,
           "Position": {

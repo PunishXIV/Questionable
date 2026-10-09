@@ -2,11 +2,31 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
   "Interruptible": false,
-  "LastChecked": {"Username": "okonomiyaki", "Date": "2026-06-27"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "TerritoryId": 129,
+          "InteractionType": "UnequipItem",
+          "ItemId": 4549
+        },
+        {
+          "InteractionType": "CreateGearset",
+          "TerritoryId": 129,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "InteractionType": "EquipRecommended",
+          "TerritoryId": 129,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+        },
+        {
+          "InteractionType": "UpdateGearset",
+          "TerritoryId": 129,
+          "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
+        },
         {
           "DataId": 1000895,
           "Position": {
