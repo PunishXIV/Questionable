@@ -68,14 +68,16 @@ internal sealed class QuestJournalUtils
                         if (ImGui.MenuItem(_L("Add all to Priority Quests")) && quest != null)
                         {
                             foreach (var qInfo in prereqs)
-                                questController.PriorityManager.Add(qInfo.QuestId);
+                                if (!questFunctions.IsQuestUnobtainable(qInfo.QuestId) && !questFunctions.IsQuestComplete(qInfo.QuestId))
+                                    questController.PriorityManager.Add(qInfo.QuestId);
                             questController.PriorityManager.Add(quest.Id);
                         }
 
                         if (ImGui.MenuItem(_L("Add all to Priority Quests as Accept Only")) && quest != null)
                         {
                             foreach (var qInfo in prereqs)
-                                questController.PriorityManager.MarkAcceptOnly(qInfo.QuestId);
+                                if (!questFunctions.IsQuestUnobtainable(qInfo.QuestId) && !questFunctions.IsQuestComplete(qInfo.QuestId))
+                                    questController.PriorityManager.MarkAcceptOnly(qInfo.QuestId);
                             questController.PriorityManager.MarkAcceptOnly(quest.Id);
                         }
                     }
@@ -231,7 +233,8 @@ internal sealed class QuestJournalUtils
         if (ImGui.MenuItem(_L("Add all to Priority Quests")))
         {
             foreach (IQuestInfo quest in quests)
-                questController.PriorityManager.Add(quest.QuestId);
+                if (!questFunctions.IsQuestUnobtainable(quest.QuestId) && !questFunctions.IsQuestComplete(quest.QuestId))
+                    questController.PriorityManager.Add(quest.QuestId);
         }
 
         if (ImGui.MenuItem(_L("Remove all from Priority Quests")))
