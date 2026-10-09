@@ -47,7 +47,7 @@ internal static class EquipRecommended
                     if (inventoryManager->GetItemCountInContainer(jobStone, InventoryType.ArmorySoulCrystal) != 0)
                         hasJobStone = true;
                 }
-                if (hasJobStone)
+                if (hasJobStone && quest.GetQuestInfo().ClassJobs.Contains(targetJob))
                 {
                     yield return new EquipItem.Task(jobStone);
                     yield return new CreateGearset.Task();

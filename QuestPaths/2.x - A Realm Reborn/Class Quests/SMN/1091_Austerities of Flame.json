@@ -2,11 +2,16 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
   "Interruptible": false,
-  "LastChecked": {"Username": "Anonymous", "Date": "2026-08-29"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
       "Steps": [
+        {
+          "TerritoryId": 129,
+          "InteractionType": "UnequipItem",
+          "ItemId": 4550
+        },
         {
           "DataId": 1000909,
           "Position": {

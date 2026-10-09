@@ -1,2 +1,1 @@
-- Change: exclude unobtainable and complete quests from "Add all to priority quests" output
-- Feature: lv30 rogue quest -alydev
+- Bug fix: job stone check was breaking sch/smn class quest -alydev
