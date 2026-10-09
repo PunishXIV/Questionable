@@ -325,7 +325,7 @@ internal static class SinglePlayerDuty
                     yield return new ActionStep.UseOnObject(3470, quest, EAction.SpinningEdge, CompletionQuestVariablesFlags: null, IgnoreResult: true, Timeout: 3);
                     yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(10));
                     yield return new MoveTask(SpecialTerritories.CloyingVictory, new(-41.835114f, 40f, 19.288048f));
-                    
+
                 }
 
                 //else if (tId == SpecialTerritories.ViperTutorial)
