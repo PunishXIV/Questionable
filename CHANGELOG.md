@@ -1,1 +1,2 @@
-- Bug fix: job stone check was breaking sch/smn class quest -alydev
+- Change: adjusted quest window component positions -alydev
+- Feature: show/hide quest level requirement -alydev

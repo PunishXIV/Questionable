@@ -27,11 +27,12 @@ internal sealed class RemainingTasksComponent(
             for (int i = 0; i < Tasks.Count; i++)
             {
                 string task = isGathering ? $"G: {Tasks[i]}" : Tasks[i];
+                using var _wrap = ImRaii.TextWrapPos(0);
                 if (i == 0 && questController.IsRunning)
                     ImGui.TextColored(QstTheme.Accent, Truncate(task));
                 else
                 {
-                    using ImRaii.DisabledDisposable _ = ImRaii.Disabled();
+                    using ImRaii.DisabledDisposable _dis = ImRaii.Disabled();
                     ImGui.TextUnformatted(Truncate(task));
                 }
 

@@ -114,6 +114,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             IconOffset = TitleBarIconOffset,
             Click = _ =>
             {
+                IsOpenAndUncollapsed = true;
                 IsMinimized = !IsMinimized;
                 _minimizeButton!.Icon = IsMinimized ? FontAwesomeIcon.WindowMaximize : FontAwesomeIcon.Minus;
             },

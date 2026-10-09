@@ -225,6 +225,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool HidePatch { get; set; }
         public bool HideQuestStartedJob { get; set; }
         public bool HideThingsNotAvailable { get; set; }
+        public bool HideQuestRequiredLevel { get; set; }
         // Questing
         public bool ConfigureTextAdvance { get; set; } = true;
         public bool DontSkipCutscenes { get; set; }
