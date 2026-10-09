@@ -505,7 +505,7 @@ internal sealed partial class ActiveQuestComponent
                     }
                 }
 
-                ImGui.Dummy(new(0,0));
+                ImGui.Dummy(new(0, 0));
 
                 if (metaSequence?.FindStep(currentQuest.Step) is { } metaStep)
                 {
