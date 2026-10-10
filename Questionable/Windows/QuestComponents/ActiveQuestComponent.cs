@@ -483,13 +483,14 @@ internal sealed partial class ActiveQuestComponent
                         $"{(hqrl ? SeIconChar.LevelEn.ToIconString() + currentQuest.Quest.GetQuestInfo().Level : "")}";
                     if (levelPatchText.Length > 0)
                     {
+                        var chipWidth = ImGui.CalcTextSize(levelPatchText).X + ImGui.GetScrollX() + 3 * ImGui.GetStyle().ItemSpacing.X;
+                        ImGui.SameLine();
+                        ImGui.Dummy(new(chipWidth + ImGui.GetStyle().ItemSpacing.X, ImGui.GetStyle().ItemSpacing.Y));
                         ImGui.SameLine();
                         ImGui.SetCursorPosX(
                             ImGui.GetCursorPosX() +
                             ImGui.GetContentRegionAvail().X -
-                            ImGui.CalcTextSize(levelPatchText).X -
-                            ImGui.GetScrollX() -
-                            3 * ImGui.GetStyle().ItemSpacing.X
+                            chipWidth
                         );
                         QstWidgets.Chip(levelPatchText, QstTheme.Info);
                         if (patch != null)
