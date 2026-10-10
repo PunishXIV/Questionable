@@ -7004,9 +7004,11 @@
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Hide quest level badge</Key>
+    <Value lang="en">Hide quest level badge</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <Key>Pending</Key>
+    <Value lang="en">Pending</Value>
   </Entry>
 </I18N>

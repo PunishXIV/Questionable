@@ -1,4 +1,5 @@
-﻿using Dalamud.Interface.Utility.Raii;
+﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Interface.Utility.Raii;
 using Questionable.Windows.Common;
 namespace Questionable.Windows;
 
@@ -21,7 +22,7 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
         RedoComponent redoComponent,
         QuestRegistry questRegistry,
         IClientState clientState)
-        : base(_L("Journal Progress") + "###QuestionableJournalProgress")
+        : base(_L("Journal Progress") + "###QuestionableJournalProgress", ImGuiWindowFlags.AlwaysVerticalScrollbar)
     {
         _questJournalComponent = questJournalComponent;
         _alliedSocietyJournalComponent = alliedSocietyJournalComponent;

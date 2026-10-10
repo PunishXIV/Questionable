@@ -14,7 +14,6 @@
             "Z": -9.10968
           },
           "TerritoryId": 351,
-          "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -24,23 +23,14 @@
       "Steps": [
         {
           "Position": {
-            "X": 29.958076,
-            "Y": 21.232033,
-            "Z": -653.85443
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
             "X": 26.789001,
             "Y": 54.865185,
             "Z": -770.47614
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true
+          "Fly": true,
+          "AetheryteShortcut": "Mor Dhona"
         },
         {
           "DataId": 1033818,

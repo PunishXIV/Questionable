@@ -1,2 +1,2 @@
-- Change: adjusted quest window component positions -alydev
-- Feature: show/hide quest level requirement -alydev
+- Feature: expand journal progress categories on search -alydev
+- Feature: clear journal progress search with button -alydev
