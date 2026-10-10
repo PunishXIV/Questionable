@@ -1,1 +1,2 @@
-- Feature: expand quest journal categories on search -alydev
+- Feature: expand journal progress categories on search -alydev
+- Feature: clear journal progress search with button -alydev

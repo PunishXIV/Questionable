@@ -30,6 +30,7 @@ internal sealed class QuestJournalComponent
 
     private bool _allOpen;
     private bool _applyOpenState = true;
+    private int _results;
 
     public void DrawQuests()
     {
@@ -55,7 +56,20 @@ internal sealed class QuestJournalComponent
         QuestJournalUtils.ShowFilterContextMenu(this);
 
         ImGui.SameLine();
-        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
+        ImGui.SetNextItemWidth(ImGui.GetStyle().ItemSpacing.X);
+        using (ImRaii.Disabled(Filter.SearchText.Length == 0))
+        {
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Times))
+            {
+                Filter.SearchText = string.Empty;
+                UpdateFilter();
+                _allOpen = false;
+                _applyOpenState = true;
+            }
+        }
+
+        ImGui.SameLine();
+        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - ImGui.CalcTextSize("9999").X - ImGui.GetStyle().ItemSpacing.X);
         if (ImGui.InputTextWithHint(string.Empty, _L("Search quests and categories"), ref Filter.SearchText, 256))
         {
             var state = Filter.SearchText.Length > 1;
@@ -66,6 +80,11 @@ internal sealed class QuestJournalComponent
             }
             UpdateFilter();
         }
+
+        ImGui.SameLine();
+        ImGui.SetNextItemWidth(ImGui.CalcTextSize("9999").X);
+        ImGui.TextUnformatted($"{(_results != 0 ? _results : "-")}");
+        _results = 0;
 
         if (_filteredSections.Count > 0)
         {
@@ -124,7 +143,7 @@ internal sealed class QuestJournalComponent
 
         ImGui.TableNextRow();
         ImGui.TableNextColumn();
-        
+
         if (_applyOpenState)
             ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
         bool open = ImGui.TreeNodeEx(filter.Category.Name, ImGuiTreeNodeFlags.SpanFullWidth);
@@ -159,7 +178,7 @@ internal sealed class QuestJournalComponent
             if (redoIndex.Index != -1)
                 genreName = $"{filter.Genre.Name} ({redoIndex.Chapter.ChapterName})";
         }
-        
+
         if (_applyOpenState)
             ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
         bool open = ImGui.TreeNodeEx(genreName, ImGuiTreeNodeFlags.SpanFullWidth);
@@ -298,6 +317,8 @@ internal sealed class QuestJournalComponent
         uint? iconOverride = QuestJournalUtils.GetIconOverride(questInfo, icon);
         if (uiUtils.ChecklistItem(text.Split(':')[0], color, icon, iconOverride: iconOverride))
             ImGui.SetTooltip(text);
+
+        _results++;
     }
 
     internal static void DrawCount(int count, int total)
