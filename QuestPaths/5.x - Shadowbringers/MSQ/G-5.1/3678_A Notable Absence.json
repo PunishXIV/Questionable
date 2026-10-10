@@ -70,6 +70,18 @@
       "Sequence": 255,
       "Steps": [
         {
+          "DataId": 1029991,
+          "Position": {
+            "X": -105.61956,
+            "Y": -9.999162,
+            "Z": -54.08564
+          },
+          "TerritoryId": 820,
+          "StopDistance": 1,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179713
+        },
+        {
           "DataId": 1031746,
           "Position": {
             "X": -4.043701,

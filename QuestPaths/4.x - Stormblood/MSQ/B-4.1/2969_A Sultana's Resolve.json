@@ -58,6 +58,19 @@
       "Sequence": 2,
       "Steps": [
         {
+          "DataId": 1018995,
+          "Position": {
+            "X": -108.220955,
+            "Y": -7.000001,
+            "Z": -63.81958
+          },
+          "TerritoryId": 628,
+          "StopDistance": 1,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179702,
+          "AethernetShortcut": ["[Kugane] Aetheryte Plaza","[Kugane] Shiokaze Hostelry"]
+        },
+        {
           "DataId": 1024044,
           "Position": {
             "X": -110.36853,

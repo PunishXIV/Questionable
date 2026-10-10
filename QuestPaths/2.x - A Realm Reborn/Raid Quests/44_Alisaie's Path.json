@@ -9,12 +9,12 @@
         {
           "DataId": 1009777,
           "Position": {
-            "X": -59.983215,
-            "Y": 76.798584,
-            "Z": -204.0589
+            "X": -59.61667,
+            "Y": 77.12567,
+            "Z": -205.53052
           },
-          "StopDistance": 1,
           "TerritoryId": 147,
+          "StopDistance": 2,
           "InteractionType": "AcceptQuest",
           "Fly": true,
           "DialogueChoices": [
