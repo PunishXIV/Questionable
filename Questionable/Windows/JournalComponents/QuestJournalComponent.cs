@@ -124,7 +124,7 @@ internal sealed class QuestJournalComponent
 
         ImGui.TableNextRow();
         ImGui.TableNextColumn();
-        
+
         if (_applyOpenState)
             ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
         bool open = ImGui.TreeNodeEx(filter.Category.Name, ImGuiTreeNodeFlags.SpanFullWidth);
@@ -159,7 +159,7 @@ internal sealed class QuestJournalComponent
             if (redoIndex.Index != -1)
                 genreName = $"{filter.Genre.Name} ({redoIndex.Chapter.ChapterName})";
         }
-        
+
         if (_applyOpenState)
             ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
         bool open = ImGui.TreeNodeEx(genreName, ImGuiTreeNodeFlags.SpanFullWidth);
