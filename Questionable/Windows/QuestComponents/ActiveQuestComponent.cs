@@ -167,29 +167,6 @@ internal sealed partial class ActiveQuestComponent
             }
 
             DrawSimulationControls();
-
-            if (configuration.Advanced.Debug)
-            {
-                creationUtilsComponent.DrawPathEditorButton(questFunctions.GetCurrentQuest().CurrentQuest, sameLine: true);
-
-                ImGui.SameLine();
-                bool inDuty = condition[ConditionFlag.BoundByDuty] || condition[ConditionFlag.BoundByDuty56];
-                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Ban) && currentQuest != null)
-                {
-                    if (inDuty)
-                    {
-                        EventFramework.LeaveCurrentContent(forced: false);
-                        logger.LogDebug("LeaveCurrentContent fired");
-                    }
-                    else
-                    {
-                        GameMain.ExecuteCommand((int)GameCommand.AbandonQuest, (int)currentQuest.Quest.Id.Value);
-                        logger.LogDebug("AbandonQuest fired");
-                    }
-                }
-                if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(inDuty ? _L("Ask the game to leave this duty") : _L("Ask the game to abandon this quest"));
-            }
         }
         else
         {
@@ -263,6 +240,29 @@ internal sealed partial class ActiveQuestComponent
 
             ImGui.SameLine();
             quickAccessButtonsComponent.DrawTroubleshootingButton(showLabel: true, highlighted: true);
+        }
+
+        if (configuration.Advanced.Debug)
+        {
+            creationUtilsComponent.DrawPathEditorButton(questController.StartedQuest?.Quest.Id ?? questController.CurrentQuest?.Quest.Id, sameLine: true);
+
+            ImGui.SameLine();
+            bool inDuty = condition[ConditionFlag.BoundByDuty] || condition[ConditionFlag.BoundByDuty56];
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Ban) && currentQuest != null)
+            {
+                if (inDuty)
+                {
+                    EventFramework.LeaveCurrentContent(forced: false);
+                    logger.LogDebug("LeaveCurrentContent fired");
+                }
+                else
+                {
+                    GameMain.ExecuteCommand((int)GameCommand.AbandonQuest, (int)currentQuest.Quest.Id.Value);
+                    logger.LogDebug("AbandonQuest fired");
+                }
+            }
+            if (ImGui.IsItemHovered())
+                ImGui.SetTooltip(inDuty ? _L("Ask the game to leave this duty") : _L("Ask the game to abandon this quest"));
         }
 
 #if REPORTING
@@ -505,7 +505,7 @@ internal sealed partial class ActiveQuestComponent
                     }
                 }
 
-                ImGui.Dummy(new(0,0));
+                ImGui.Dummy(new(0, 0));
 
                 if (metaSequence?.FindStep(currentQuest.Step) is { } metaStep)
                 {

@@ -28,6 +28,9 @@ internal sealed class QuestJournalComponent
 
     internal FilterConfiguration Filter { get; } = new();
 
+    private bool _allOpen;
+    private bool _applyOpenState = true;
+
     public void DrawQuests()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Quests"));
@@ -54,7 +57,15 @@ internal sealed class QuestJournalComponent
         ImGui.SameLine();
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
         if (ImGui.InputTextWithHint(string.Empty, _L("Search quests and categories"), ref Filter.SearchText, 256))
+        {
+            var state = Filter.SearchText.Length > 1;
+            if (state != _allOpen)
+            {
+                _allOpen = state;
+                _applyOpenState = true;
+            }
             UpdateFilter();
+        }
 
         if (_filteredSections.Count > 0)
         {
@@ -72,6 +83,8 @@ internal sealed class QuestJournalComponent
         }
         else
             ImGui.Text(_L("No quest or category matches your search."));
+
+        _applyOpenState = false;
     }
 
     private void DrawSection(FilteredSection filter)
@@ -84,6 +97,8 @@ internal sealed class QuestJournalComponent
         ImGui.TableNextRow();
         ImGui.TableNextColumn();
 
+        if (_applyOpenState)
+            ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
         bool open = ImGui.TreeNodeEx(filter.Section.Name, ImGuiTreeNodeFlags.SpanFullWidth);
 
         ImGui.TableNextColumn();
@@ -109,7 +124,9 @@ internal sealed class QuestJournalComponent
 
         ImGui.TableNextRow();
         ImGui.TableNextColumn();
-
+        
+        if (_applyOpenState)
+            ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
         bool open = ImGui.TreeNodeEx(filter.Category.Name, ImGuiTreeNodeFlags.SpanFullWidth);
 
         ImGui.TableNextColumn();
@@ -142,7 +159,9 @@ internal sealed class QuestJournalComponent
             if (redoIndex.Index != -1)
                 genreName = $"{filter.Genre.Name} ({redoIndex.Chapter.ChapterName})";
         }
-
+        
+        if (_applyOpenState)
+            ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
         bool open = ImGui.TreeNodeEx(genreName, ImGuiTreeNodeFlags.SpanFullWidth);
 
         questJournalUtils.ShowQuestGroupContextMenu($"DrawGenre{filter.Genre.Id}", filter.Quests);
