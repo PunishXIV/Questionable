@@ -7001,4 +7001,12 @@
     <Key>If you are on free trial, or do not own the current expansion, this will hide content in locked expansions</Key>
     <Value lang="en">If you are on free trial, or do not own the current expansion, this will hide content in locked expansions</Value>
   </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Hide quest level badge</Key>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Pending</Key>
+  </Entry>
 </I18N>
