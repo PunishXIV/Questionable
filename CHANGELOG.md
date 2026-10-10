@@ -1,2 +1,1 @@
-- Feature: expand journal progress categories on search -alydev
-- Feature: clear journal progress search with button -alydev
+- Bug fix: reserve space for quest info widget -alydev
