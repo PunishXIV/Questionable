@@ -788,7 +788,7 @@ internal sealed unsafe class QuestFunctions
         return IsQuestComplete(elementId);
     }
 
-    public (bool, string[]?) IsQuestLocked(ElementId elementId, ElementId? extraCompletedQuest = null)
+    public (bool isLocked, string[]? reasons) IsQuestLocked(ElementId elementId, ElementId? extraCompletedQuest = null)
     {
         if (elementId is QuestId questId)
             return IsQuestLocked(questId, extraCompletedQuest);
@@ -802,7 +802,7 @@ internal sealed unsafe class QuestFunctions
         throw new ArgumentOutOfRangeException(nameof(elementId));
     }
 
-    private (bool, string[]) IsQuestLocked(QuestId questId, ElementId? extraCompletedQuest = null)
+    private (bool isLocked, string[]? reasons) IsQuestLocked(QuestId questId, ElementId? extraCompletedQuest = null)
     {
         PlayerState* playerState = PlayerState.Instance();
         List<string> lockedReason = [];

@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
   "Interruptible": false,
-  "LastChecked": {"Username": "Anonymous", "Date": "2026-08-29"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -71,11 +71,12 @@
         {
           "DataId": 1006792,
           "Position": {
-            "X": -378.10333,
-            "Y": 51.61585,
-            "Z": -290.11975
+            "X": -376.51804,
+            "Y": 51.535522,
+            "Z": -290.80536
           },
           "TerritoryId": 180,
+          "StopDistance": 1,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true},
           "Fly": true

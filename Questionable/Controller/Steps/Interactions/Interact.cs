@@ -134,6 +134,7 @@ internal static class Interact
         ICondition condition,
         IObjectTable objectTable,
         ClassJobUtils classJobUtils,
+        //DalamudInitializer dalamudInitializer,
         ILogger<DoInteract> logger)
         : TaskExecutor<Task>, IConditionChangeAware
     {
@@ -228,6 +229,18 @@ internal static class Interact
             {
                 if (ProgressContext.WasInterrupted())
                     return ETaskResult.StillRunning;
+
+                // started this, realised i don't have a good way to test it. in theory there's a way here to catch
+                // 'unable to execute command while x' and recover to retry the interact
+                //if (dalamudInitializer.FlagUnableExecuteCommand)
+                //{
+                //    logger.LogDebug("FlagUnableExecuteCommand");
+                //    dalamudInitializer.FlagUnableExecuteCommand = false;
+                //    // might just be landing, retry interaction
+                //    _interactionState = EInteractionState.None;
+                //    _continueAt = DateTime.Now.AddSeconds(1);
+                //    return ETaskResult.StillRunning;
+                //}
 
                 if (ProgressContext.WasSuccessful() || _interactionState == EInteractionState.InteractionConfirmed)
                 {
