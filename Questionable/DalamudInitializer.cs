@@ -23,6 +23,7 @@ internal sealed class DalamudInitializer : IDisposable
     private readonly WindowSystem _windowSystem;
     private bool _disposed;
     internal bool FlagGearUnequippable;
+    internal bool FlagUnableExecuteCommand;
 
     public DalamudInitializer(
         IDalamudPluginInterface pluginInterface,
@@ -148,6 +149,20 @@ internal sealed class DalamudInitializer : IDisposable
         {
             FlagGearUnequippable = false;
         }
+
+        if (DialogueReferenceResolver.IsMatch(
+                message.ToString(),
+                new(Svc.Data.GetExcelSheet<LogMessage>().GetRow(7777).Text.ToRegex())) // 'unable to execute command while in flight'
+            && _questController.IsRunning)
+        {
+            FlagUnableExecuteCommand = true;
+            _logger.LogDebug("Toast: UnableExecuteCommand");
+        }
+        else if (FlagUnableExecuteCommand)
+        {
+            FlagUnableExecuteCommand = false;
+        }
+
         _logger.LogTrace("Error Toast: {Message}", message);
     }
 
