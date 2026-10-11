@@ -2,6 +2,7 @@
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
+using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 
 namespace Questionable.Utils;
@@ -37,7 +38,7 @@ internal static class ImGuiComponentsLocal
     {
         id ??= $"{Path.GetFileName(file)}:{line}";
         ImGui.PushID(id);
-        bool result = ImGuiComponents.IconButton(icon, defaultColor, activeColor, hoveredColor, size);
+        bool result = ImGuiComponents.IconButton(icon, defaultColor, activeColor, hoveredColor, size / ImGuiHelpers.GlobalScale);
         ImGui.PopID();
         return result;
     }

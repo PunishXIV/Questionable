@@ -1,1 +1,1 @@
-- Bug fix: reserve space for quest info widget -alydev
+- Bug fix: handle font scale -alydev
