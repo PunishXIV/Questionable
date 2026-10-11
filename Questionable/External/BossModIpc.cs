@@ -87,8 +87,16 @@ internal sealed class BossModIpc
 
     public void SetPresetForSoloDuty(EPreset preset)
     {
+        UnsetBasicSettings();
         ConfigureZoneForQuestBattle();
         SetActivePreset(preset);
+    }
+
+    // i guess we're doing plugin subtweeting now
+    public void UnsetBasicSettings()
+    {
+        if (configuration.Advanced.BMRestoreMovement)
+            _configuration.InvokeFunc(["ActionTweaksConfig", "PreventMovingWhileCasting", "false"], false);
     }
 
     public void LoadPresets()

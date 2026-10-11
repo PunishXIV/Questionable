@@ -144,6 +144,7 @@ internal static class Duty
 
     internal sealed class WaitAutoDutyExecutor
     (
+        BossModIpc bossModIpc,
         AutoDutyIpc autoDutyIpc,
         TerritoryData territoryData,
         IClientState clientState) : TaskExecutor<WaitAutoDutyTask>, IStoppableTaskExecutor
@@ -154,9 +155,12 @@ internal static class Duty
                 out TerritoryData.ContentFinderConditionData? cfcData))
                 throw new TaskException("Failed to get territory ID for content finder condition");
 
-            return clientState.TerritoryType != cfcData.TerritoryId && autoDutyIpc.IsStopped()
-                ? ETaskResult.TaskComplete
-                : ETaskResult.StillRunning;
+            if (clientState.TerritoryType != cfcData.TerritoryId && autoDutyIpc.IsStopped())
+            {
+                bossModIpc.UnsetBasicSettings();
+                return ETaskResult.TaskComplete;
+            }
+            return ETaskResult.StillRunning;
         }
 
         public void StopNow() => autoDutyIpc.Stop();
