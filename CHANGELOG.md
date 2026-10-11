@@ -1,1 +1,2 @@
-- Bug fix: handle font scale -alydev
+- Bug fix: Clear started quest on stop, should fix "seq 255 / not accepted" bug -alydev
+- Bug fix: Added config option to revert bossmod 'prevent movement while casting' to off when qst starts a solo duty or AD finishes qst-orchestrated duty automation -alydev
