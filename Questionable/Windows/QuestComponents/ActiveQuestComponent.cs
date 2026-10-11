@@ -5,6 +5,7 @@ using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
+using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Event;
@@ -483,13 +484,12 @@ internal sealed partial class ActiveQuestComponent
                         $"{(hqrl ? SeIconChar.LevelEn.ToIconString() + currentQuest.Quest.GetQuestInfo().Level : "")}";
                     if (levelPatchText.Length > 0)
                     {
-                        var chipWidth = ImGui.CalcTextSize(levelPatchText).X + ImGui.GetScrollX() + 3 * ImGui.GetStyle().ItemSpacing.X;
+                        var chipWidth = ImGui.CalcTextSize(levelPatchText).X + ImGui.GetScrollX() + 4 * ImGui.GetStyle().ItemSpacing.X * ImGuiHelpers.GlobalScale;
                         ImGui.SameLine();
-                        ImGui.Dummy(new(chipWidth + ImGui.GetStyle().ItemSpacing.X, ImGui.GetStyle().ItemSpacing.Y));
+                        ImGui.Dummy(new(chipWidth, ImGui.GetStyle().ItemSpacing.Y));
                         ImGui.SameLine();
                         ImGui.SetCursorPosX(
-                            ImGui.GetCursorPosX() +
-                            ImGui.GetContentRegionAvail().X -
+                            ImGui.GetCursorPosX() -
                             chipWidth
                         );
                         QstWidgets.Chip(levelPatchText, QstTheme.Info);
