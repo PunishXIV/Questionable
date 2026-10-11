@@ -95,7 +95,8 @@ internal sealed class BossModIpc
     // i guess we're doing plugin subtweeting now
     public void UnsetBasicSettings()
     {
-        _configuration.InvokeFunc(["ActionTweaksConfig", "PreventMovingWhileCasting", "false"], false);
+        if (configuration.Advanced.BMRestoreMovement)
+            _configuration.InvokeFunc(["ActionTweaksConfig", "PreventMovingWhileCasting", "false"], false);
     }
 
     public void LoadPresets()

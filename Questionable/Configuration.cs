@@ -332,6 +332,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool AllowPathGeneration { get; set; }
         public bool AutoRedeemRewardItems { get; set; }
         public HashSet<uint> AutoRedeemItemBlacklist { get; set; } = [];
+        public bool BMRestoreMovement { get; set; } 
     }
 
     internal void ApplyAutoRedeemRewardItemsInitialReset()

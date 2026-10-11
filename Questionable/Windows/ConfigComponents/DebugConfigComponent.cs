@@ -202,6 +202,16 @@ internal sealed class DebugConfigComponent
                 ImGui.SameLine();
                 ImGuiComponents.HelpMarker(
                     _L("Typically, the loop settings for AutoDuty are disabled when running dungeons with Questionable, since they can cause issues (or even shut down your PC)."));
+
+                bool bmRestoreMovement = Configuration.Advanced.BMRestoreMovement;
+                if (ImGui.Checkbox(_L("Restore BossMod setting to default"), ref bmRestoreMovement))
+                {
+                    Configuration.Advanced.BMRestoreMovement = bmRestoreMovement;
+                    Save();
+                }
+
+                ImGui.SameLine();
+                ImGuiComponents.HelpMarker(_L("When starting a solo duty or if Autoduty has finished qst-orchestrated duty automation, restore Bossmod's setting 'Prevent Movement While Casting' to default"));
             }
         }
 
