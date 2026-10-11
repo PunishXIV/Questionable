@@ -1,2 +1,2 @@
-- Bug fix: Clear started quest on stop, should fix "seq 255 / not accepted" bug -alydev
-- Bug fix: Added config option to revert bossmod 'prevent movement while casting' to off when qst starts a solo duty or AD finishes qst-orchestrated duty automation -alydev
+- Bug fix: apparently dynamic teleports to limsa upper decks have been broken -alydev
+  - the other three citystates have the aetheryte area as n and the secondary area as n+1. the exception is limsa, where upper decks is 128 and lower decks is 129, and i didn't notice this until today. -alydev
