@@ -427,6 +427,13 @@ internal static class AetheryteShortcut
                 return true;
             }
 
+            // quick hack, pls fix better
+            if (Task.TargetAetheryte == EAetheryteLocation.MorDhona && Task.Step?.TerritoryId == 351 && clientState.TerritoryType == 351)
+            {
+                logger.LogInformation("Skipping aetheryte teleport, it shouldn't be doing that anyway");
+                return true;
+            }
+
             logger.LogInformation("Not skipping aetheryte teleport");
             return false;
         }
