@@ -1080,7 +1080,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     protected override void OnTaskComplete(ITask task)
     {
         if (task is WaitAtEnd.WaitQuestCompleted)
-            SimulatedQuest = null;
+            SimulatedQuest = StartedQuest = null;
 
     }
 

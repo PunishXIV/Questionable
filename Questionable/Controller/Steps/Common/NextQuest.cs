@@ -44,32 +44,25 @@ internal static class NextQuest
         {
             var isUnobtainable = questFunctions.IsQuestUnobtainable(Task.NextQuestId, Task.CurrentQuestId);
             (var isLocked, string[]? reasons) = questFunctions.IsQuestLocked(Task.NextQuestId, Task.CurrentQuestId);
+            Quest? nextQuest = null;
             if (questController.AutomationType is QuestController.EAutomationType.SingleQuestA or QuestController.EAutomationType.SingleQuestB)
-            {
                 logger.LogInformation("Won't set next quest to {QuestId}, automation type is CurrentQuestOnly", Task.NextQuestId);
-                questController.SetNextQuest(quest: null);
-            }
+
             else if (isLocked)
-            {
                 logger.LogInformation("Can't set next quest to {QuestId}, quest is locked. {Reasons}", Task.NextQuestId,
                     (reasons != null ? string.Join(',', reasons) : ""));
-                questController.SetNextQuest(quest: null);
-            }
+
             else if (isUnobtainable)
-            {
                 logger.LogInformation("Can't set next quest to {QuestId}, quest is unobtainable.", Task.NextQuestId);
-                questController.SetNextQuest(quest: null);
-            }
-            else if (questRegistry.TryGetQuest(Task.NextQuestId, out Quest? quest))
-            {
-                logger.LogInformation("Setting next quest to {QuestId}: '{QuestName}'", Task.NextQuestId, quest.Info.Name);
-                questController.SetNextQuest(quest);
-            }
+
+            else if (questRegistry.TryGetQuest(Task.NextQuestId, out nextQuest))
+                logger.LogInformation("Setting next quest to {QuestId}: '{QuestName}'", Task.NextQuestId, nextQuest.Info.Name);
+
             else
-            {
                 logger.LogInformation("Next quest with id {QuestId} not found", Task.NextQuestId);
-                questController.SetNextQuest(quest: null);
-            }
+                
+            if (nextQuest != null)
+                questController.SetNextQuest(quest: nextQuest);
 
             return true;
         }
