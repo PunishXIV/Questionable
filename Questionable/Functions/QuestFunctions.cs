@@ -418,7 +418,7 @@ internal sealed unsafe class QuestFunctions
         // but this is just really hoping that this breaks nothing.
         if (IsQuestComplete(currentQuest))
             return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _LF("Quest {0} complete", currentQuest.Value));
-            //return (new(currentQuest, 255, MainScenarioQuestState.Available), _LF("Quest {0} complete", currentQuest.Value));
+        //return (new(currentQuest, 255, MainScenarioQuestState.Available), _LF("Quest {0} complete", currentQuest.Value));
 
         if (!IsReadyToAcceptQuest(currentQuest))
             return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _LF("Not ready to accept quest {0}", currentQuest.Value));

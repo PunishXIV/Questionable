@@ -60,7 +60,7 @@ internal static class NextQuest
 
             else
                 logger.LogInformation("Next quest with id {QuestId} not found", Task.NextQuestId);
-                
+
             if (nextQuest != null)
                 questController.SetNextQuest(quest: nextQuest);
 
