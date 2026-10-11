@@ -83,7 +83,14 @@ internal sealed class QuestProgressTracker(
         highlightObject.SetHighlight([]);
         logger.LogInformation("NextQuest: {QuestId}", quest?.Id);
         if (quest != null)
-            NextQuest = new(quest);
+        {
+            if (questFunctions.IsQuestLocked(quest.Id) is (bool isLocked, string[] reasons) && isLocked)
+                logger.LogWarning("NextQuest: {QuestId} locked ({Reasons})",
+                    quest?.Id,
+                    string.Join(',', reasons));
+            else
+                NextQuest = null;
+        }
         else
             NextQuest = null;
     }
