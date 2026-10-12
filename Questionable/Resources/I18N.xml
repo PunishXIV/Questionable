@@ -7014,17 +7014,21 @@
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Restore BossMod setting to default</Key>
+    <Value lang="en">Restore BossMod setting to default</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>When starting a solo duty or if Autoduty has finished qst-orchestrated duty automation, restore Bossmod's setting 'Prevent Movement While Casting' to default</Key>
+    <Value lang="en">When starting a solo duty or if Autoduty has finished qst-orchestrated duty automation, restore Bossmod's setting 'Prevent Movement While Casting' to default</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/PathData/PathDataUpdater.cs -->
     <Key>Update check failed; will retry next launch</Key>
+    <Value lang="en">Update check failed; will retry next launch</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/PathData/PathDataUpdater.cs -->
     <Key>Update check failed: bundle download URL is invalid</Key>
+    <Value lang="en">Update check failed: bundle download URL is invalid</Value>
   </Entry>
 </I18N>
