@@ -1,0 +1,59 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-12"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1000909,
+          "Position": {
+            "X": -326.361,
+            "Y": 12.8937,
+            "Z": 10.001
+          },
+          "TerritoryId": 129,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Limsa Lominsa] Aetheryte Plaza",
+            "[Limsa Lominsa] Arcanists' Guild"
+          ],
+          "$": "auto: issuer 1000909 (Thubyrgeim)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 2013383,
+          "Position": {
+            "X": -332.385,
+            "Y": -2.37447,
+            "Z": 14.9962
+          },
+          "TerritoryId": 129,
+          "InteractionType": "Interact",
+          "$": "auto: todo location -> 2013383 (destination)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1000909,
+          "Position": {
+            "X": -326.361,
+            "Y": 12.8937,
+            "Z": 10.001
+          },
+          "TerritoryId": 129,
+          "InteractionType": "CompleteQuest",
+          "$": "auto: todo turn-in -> 1000909 (Thubyrgeim)"
+        }
+      ]
+    }
+  ]
+}
