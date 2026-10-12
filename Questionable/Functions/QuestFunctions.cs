@@ -418,7 +418,7 @@ internal sealed unsafe class QuestFunctions
         // but this is just really hoping that this breaks nothing.
         if (IsQuestComplete(currentQuest))
             return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _LF("Quest {0} complete", currentQuest.Value));
-            //return (new(currentQuest, 255, MainScenarioQuestState.Available), _LF("Quest {0} complete", currentQuest.Value));
+        //return (new(currentQuest, 255, MainScenarioQuestState.Available), _LF("Quest {0} complete", currentQuest.Value));
 
         if (!IsReadyToAcceptQuest(currentQuest))
             return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _LF("Not ready to accept quest {0}", currentQuest.Value));
@@ -1000,8 +1000,19 @@ internal sealed unsafe class QuestFunctions
 
     public bool IsQuestUnobtainable(QuestId questId, ElementId? extraCompletedQuest = null)
     {
+        var playerState = PlayerState.Instance();
         QuestInfo questInfo = (QuestInfo)questData.GetQuestInfo(questId);
-        if (questInfo.Expansion > (EExpansionVersion)PlayerState.Instance()->MaxExpansion)
+        if (questInfo.Expansion > (EExpansionVersion)playerState->MaxExpansion)
+            return true;
+
+        // unobtainable on free trial
+        if (playerState->MaxLevel == 80 &&
+            (EExpansionVersion)playerState->MaxExpansion == EExpansionVersion.Shadowbringers &&
+            (new ushort[]
+            {
+                // ventures
+                1432, 1433, 1434
+            }).Contains(questId.Value))
             return true;
 
         if (questInfo.QuestLocks.Count > 0)
@@ -1017,7 +1028,7 @@ internal sealed unsafe class QuestFunctions
         if (questData.GetLockedClassQuests().Contains(questId))
             return true;
 
-        byte startingCity = PlayerState.Instance()->StartTown;
+        byte startingCity = playerState->StartTown;
         if (questInfo.StartingCity > 0 && questInfo.StartingCity != startingCity)
             return true;
 
@@ -1048,7 +1059,7 @@ internal sealed unsafe class QuestFunctions
         if (closeToHomeQuests.TryGetValue(questId.Value, out Job neededStartingClass) &&
             closeToHomeQuests.Any(x => IsQuestAcceptedOrComplete(new QuestId(x.Key))))
         {
-            Job actualStartingClass = (Job)PlayerState.Instance()->FirstClass;
+            Job actualStartingClass = (Job)playerState->FirstClass;
             if (actualStartingClass != neededStartingClass)
                 return true;
         }

@@ -85,7 +85,7 @@ jobs:
             -c Release --no-restore \
             --source $PWD/.nuget
         env:
-          SIXLABORS_LICENSE_KEY: ${{ secrets.SIXLABORS_LICENSE_KEY }}
+          SIXLABORS_LICENSE_KEY: ${{ vars.SIXLABORS_LICENSE_KEY }}
 
       - name: Compute changed quest files
         id: changed-quests
