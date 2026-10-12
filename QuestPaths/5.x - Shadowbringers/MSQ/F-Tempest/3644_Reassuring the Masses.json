@@ -15,7 +15,11 @@
           },
           "StopDistance": 7,
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest"
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Pendants"
+          ]
         }
       ]
     },
