@@ -48,9 +48,6 @@ internal static class SinglePlayerDuty
         public const ushort WarmthOfFamily = 1244;
         public const ushort BarThePassage = 1246;
         public const ushort Holyfist = 261;
-        public const ushort StifledScreams = 405;
-        public const ushort SweetSorrows = 408;
-        public const ushort CloyingVictory = 409;
     }
 
     internal sealed class Factory
@@ -263,69 +260,6 @@ internal static class SinglePlayerDuty
                                 { EAction.Bootshine, EAction.TrueStrike, EAction.SnapPunch })
                             yield return new ActionStep.UseOnObject(879, quest, action, CompletionQuestVariablesFlags: null, IgnoreResult: true, Timeout: 3);
                     yield return new EnableAi();
-                }
-                else if (tId == SpecialTerritories.StifledScreams)
-                {
-                    foreach (var (Pos, Target) in new List<(Vector3, uint)>()
-                    {
-                        (new(324.66034f, -35.9494f, 315.05234f), 2004819),
-                        (new(323.9337f, -31.34907f, 265.4001f), 2004821),
-                        (new(328.53488f, -24.998547f, 252.8242f), 2004823),
-                        (new(328.53488f, -24.998547f, 252.8242f), 2004824),
-                    })
-                    {
-                        yield return new MoveTask(SpecialTerritories.StifledScreams, Pos, StopDistance: 1f);
-                        yield return new EnableAi();
-                        yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
-                        yield return new WaitAtEnd.WaitForConditionCleared(ConditionFlag.InCombat, SpecialTerritories.StifledScreams);
-                        yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1));
-                        yield return new DisableAi();
-                        yield return new MoveTask(SpecialTerritories.StifledScreams, Pos, StopDistance: 1f);
-                        yield return new Interact.Task(Target, quest, EInteractionType.Interact);
-                    }
-                    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(1));
-                    yield return new EnableAi();
-                    yield return new MoveTask(SpecialTerritories.StifledScreams, new(320.1693f, -24.998898f, 246.24161f), StopDistance: 1f);
-                }
-                else if (tId == SpecialTerritories.SweetSorrows)
-                {
-                    yield return new EnableAi();
-                    yield return new MoveTask(SpecialTerritories.SweetSorrows, new(565.7145f, 14.58708f, 394.56073f), StopDistance: 1f, DisableNavmesh: true, Sprint: true);
-                    yield return new MoveTask(SpecialTerritories.SweetSorrows, new(564.492f, 17.707418f, 417.76187f), StopDistance: 1f, DisableNavmesh: true);
-                    yield return new MoveTask(SpecialTerritories.SweetSorrows, new(527.36694f, 17.448053f, 448.32532f));
-                    yield return new WaitAtEnd.WaitForConditionCleared(ConditionFlag.InCombat, SpecialTerritories.SweetSorrows);
-                    yield return new MoveTask(SpecialTerritories.SweetSorrows, new(540.3593f, 17.448053f, 455.69476f));
-                    yield return new MoveTask(SpecialTerritories.SweetSorrows, new(602.4109f, 23.936245f, 455.89368f), StopDistance: 1f, DisableNavmesh: true);
-                }
-                else if (tId == SpecialTerritories.CloyingVictory)
-                {
-                    yield return new EnableAi();
-                    yield return new MoveTask(SpecialTerritories.CloyingVictory, new(-48.722107f, 39.999973f, 103.89868f));
-                    yield return new WaitAtEnd.WaitForConditionCleared(ConditionFlag.InCombat, SpecialTerritories.CloyingVictory);
-                    yield return new MoveTask(SpecialTerritories.CloyingVictory, new(-50.797363f, 40.096096f, 74.69287f));
-                    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(2));
-                    yield return new WaitAtEnd.WaitForConditionCleared(ConditionFlag.InCombat, SpecialTerritories.CloyingVictory);
-                    yield return new DisableAi();
-                    yield return new ActionStep.UseOnObject(DataId: null, quest, EAction.Sprint, CompletionQuestVariablesFlags: null, IgnoreResult: true, Timeout: 3);
-                    yield return new MoveTask(SpecialTerritories.CloyingVictory, new(-35.30274f, 31.999994f, 2.6456501f));
-                    yield return new EnableAi();
-                    yield return new ActionStep.UseOnObject(3470, quest, EAction.SpinningEdge, CompletionQuestVariablesFlags: null, IgnoreResult: true, Timeout: 3);
-                    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(10));
-                    yield return new DisableAi();
-                    yield return new MoveTask(SpecialTerritories.CloyingVictory, new(-39.60305f, 39.999966f, -3.7845893f));
-                    yield return new MoveTask(SpecialTerritories.CloyingVictory, new(-12.715178f, 44f, -34.29882f));
-                    yield return new EnableAi();
-                    yield return new ActionStep.UseOnObject(3470, quest, EAction.SpinningEdge, CompletionQuestVariablesFlags: null, IgnoreResult: true, Timeout: 3);
-                    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(10));
-                    yield return new DisableAi();
-                    yield return new MoveTask(SpecialTerritories.CloyingVictory, new(-39.60305f, 39.999966f, -3.7845893f));
-                    yield return new MoveTask(SpecialTerritories.CloyingVictory, new(-30.287169f, 40.00177f, 27.505785f));
-                    yield return new MoveTask(SpecialTerritories.CloyingVictory, new(21.302723f, 39.999966f, 33.09102f));
-                    yield return new EnableAi();
-                    yield return new ActionStep.UseOnObject(3470, quest, EAction.SpinningEdge, CompletionQuestVariablesFlags: null, IgnoreResult: true, Timeout: 3);
-                    yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(10));
-                    yield return new MoveTask(SpecialTerritories.CloyingVictory, new(-41.835114f, 40f, 19.288048f));
-
                 }
 
                 //else if (tId == SpecialTerritories.ViperTutorial)
