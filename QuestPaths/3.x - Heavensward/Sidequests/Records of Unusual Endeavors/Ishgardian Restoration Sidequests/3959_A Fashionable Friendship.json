@@ -7,14 +7,20 @@
       "Sequence": 0,
       "Steps": [
         {
-          "InteractionType": "None",
           "TerritoryId": 418,
-          "TargetTerritoryId": 886,
+          "InteractionType": "None",
+          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Firmament"
           ],
-          "SkipConditions": { "StepIf": { "InTerritory": [886] } }
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                886
+              ]
+            }
+          }
         },
         {
           "DataId": 1032813,

@@ -907,10 +907,28 @@ internal sealed unsafe class QuestFunctions
             4081 => IsAchievementComplete(2819),
             // blue mage
             3195 => IsUnlockLinkUnlocked(new(113)),
-            // potd
+            // potd floor 50
             2387 => IsAchievementComplete(1580),
+            1557 => IsAchievementComplete(1580),
+            3131 => IsAchievementComplete(1580),
             // merchants tale advanced
             5459 => IsAchievementComplete(3892, 3893, 3894),
+            // deliveries
+            3006 => IsAchievementComplete(1972), // mnaago
+            3140 => IsAchievementComplete(2070), // kurenai
+            3178 => IsAchievementComplete(2186), // adkiragh
+            3730 => IsAchievementComplete(2428), // kai-shirr
+            3731 => IsAchievementComplete(2429),
+            3890 => IsAchievementComplete(2627), // ehll tou
+            4080 => IsAchievementComplete(2837), // charlemend
+            4524 => IsAchievementComplete(3062), // ameliance
+            4525 => IsAchievementComplete(3063),
+            4716 => IsAchievementComplete(3167), // anden
+            4816 => IsAchievementComplete(3355), // margrat
+            5240 => IsAchievementComplete(3596), // nitowikwe
+            5461 => IsAchievementComplete(3990), // aunt tii
+            // doman enclave
+            3153 => DomanEnclaveStoryProgress(75),
             _ => true
         };
         if (!questPrereqs)
@@ -926,10 +944,18 @@ internal sealed unsafe class QuestFunctions
         return (lockedReason.Count > 0, lockedReason.ToArray());
     }
 
-    private unsafe bool AllMountsUnlocked(params ushort[] mounts) => mounts.All(x => PlayerState.Instance()->IsMountUnlocked(x));
-    private unsafe bool RaceChocoboRank40() => RaceChocoboManager.Instance()->Rank >= 40;
+    private bool DomanEnclaveStoryProgress(byte milestone)
+    {
+        var enclave = DomanEnclaveManager.Instance();
+        if (enclave->IsLoaded)
+            return enclave->State.CurrentMilestone >= milestone;
+        return false;
+    }
+
+    private bool AllMountsUnlocked(params ushort[] mounts) => mounts.All(x => PlayerState.Instance()->IsMountUnlocked(x));
+    private bool RaceChocoboRank40() => RaceChocoboManager.Instance()->Rank >= 40;
     private bool _achievementsRequested;
-    private unsafe bool IsAchievementComplete(params int[] achievementIds)
+    private bool IsAchievementComplete(params int[] achievementIds)
     {
         if (!Achievement.Instance()->IsLoaded())
         {

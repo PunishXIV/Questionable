@@ -57,8 +57,10 @@ internal sealed class BossModIpc
     }
 
     public PresetDefinition AddPreset(EPreset preset) => AddPreset(PresetDefinitions[preset]);
-    public PresetDefinition AddPreset(PresetDefinition definition)
+    public PresetDefinition AddPreset(PresetDefinition definition, bool bulk = false)
     {
+        if (!bulk)
+            ClearObstacleMaps();
         if (_getPreset.InvokeFunc(definition.Name) == null)
             _createPreset.InvokeFunc(definition.Content, true);
         return definition;
@@ -66,11 +68,12 @@ internal sealed class BossModIpc
 
     public void AddAllPresets(bool delete = false)
     {
+        ClearObstacleMaps();
         foreach (PresetDefinition definition in PresetDefinitions.Values)
         {
             if (delete)
                 DeletePreset(definition);
-            AddPreset(definition);
+            AddPreset(definition, bulk: true);
         }
     }
 
@@ -132,6 +135,8 @@ internal sealed class BossModIpc
         ReleaseSoloDutyZone();
         ClearActivePresets();
     }
+
+    public void ClearObstacleMaps() => commandManager.ProcessCommand("/vbm clear-maps");
 
     private void ConfigureZoneForQuestBattle()
     {

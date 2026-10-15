@@ -17,6 +17,7 @@ internal sealed class QuickAccessButtonsComponent
     QuestValidationWindow questValidationWindow,
     JournalProgressWindow journalProgressWindow,
     PriorityWindow priorityWindow,
+    BossModIpc bossModIpc,
     ICommandManager commandManager,
     IObjectTable objectTable,
     IClientState clientState,
@@ -118,7 +119,7 @@ internal sealed class QuickAccessButtonsComponent
         if (QstWidgets.RailButton(FontAwesomeIcon.Directions, _L("Clear VBM obstacle maps"), tooltip,
                 enabled: isNavmeshAvailable && ImGui.IsKeyDown(ImGuiKey.ModCtrl),
                 showLabel: showLabel))
-            commandManager.ProcessCommand("/vbm clear-maps");
+            bossModIpc.ClearObstacleMaps();
     }
 
     internal void DrawReloadDataButton(bool showLabel = false)

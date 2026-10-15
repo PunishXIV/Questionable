@@ -1,5 +1,1 @@
-- Bug fix: trial players can't complete retainer venture quest -alydev
-- Change: If download of path bundle data fails, it now falls back to a Github proxy hosted on CloudFlare Workers -alydev
-  - This is to accommodate CN users, as github urls tend to be blocked there
-  - The source for this proxy worker is available at https://github.com/qstxiv/gh.qstxiv.dev
-    - or https://gh.qstxiv.dev/qstxiv/gh.qstxiv.dev/raw/main/src/index.js
+- Bug fix: Reset VBM obstacle map before combat starts to prevent movement bug -alydev
