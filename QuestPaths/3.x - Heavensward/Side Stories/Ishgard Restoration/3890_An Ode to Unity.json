@@ -8,14 +8,15 @@
         {
           "TerritoryId": 418,
           "InteractionType": "None",
+          "AetheryteShortcut": "Ishgard",
           "AethernetShortcut": [
             "[Ishgard] Aetheryte Plaza",
             "[Ishgard] Firmament"
           ],
           "SkipConditions": {
-            "StepIf": {
+            "AetheryteShortcutIf": {
               "InTerritory": [
-                154
+                886
               ]
             }
           }
