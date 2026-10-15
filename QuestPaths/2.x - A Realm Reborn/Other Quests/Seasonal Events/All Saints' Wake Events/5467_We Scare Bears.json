@@ -1,0 +1,110 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1058681,
+          "Position": {
+            "X": -50,
+            "Y": 6.5,
+            "Z": -88.3956
+          },
+          "TerritoryId": 133,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Gridania",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "$": "auto: issuer 1058681 (pumpkin-headed apparition)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1058682,
+          "Position": {
+            "X": -117.204,
+            "Y": 6.78004,
+            "Z": -189.593
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "$": "auto: todo location -> 1058682 (pumpkin-headed apparition)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1058683,
+          "Position": {
+            "X": -232.0933,
+            "Y": 6.100875,
+            "Z": -161.4812
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Botanists' Guild"
+          ],
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
+          "$": "auto: todo area 10y from lua ACTOR2 -> 1058683 (adamant adventurer)"
+        },
+        {
+          "DataId": 1058684,
+          "Position": {
+            "X": -165.9055,
+            "Y": 7.304168,
+            "Z": -82.48528
+          },
+          "TerritoryId": 133,
+          "InteractionType": "Interact",
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
+          "$": "auto: todo area 10y from lua ACTOR3 -> 1058684 (ebullient adventurer)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058686,
+          "Position": {
+            "X": -51.8476,
+            "Y": 6.5,
+            "Z": -88.5306
+          },
+          "TerritoryId": 133,
+          "InteractionType": "CompleteQuest",
+          "NextQuestId": 5468,
+          "AetheryteShortcut": "Gridania",
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_FESHLX201_05467_Q2_000_000",
+              "Answer": "TEXT_FESHLX201_05467_A2_000_001",
+              "Type": "List"
+            }
+          ],
+          "AethernetShortcut": [
+            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Mih Khetto's Amphitheatre"
+          ],
+          "$": "auto: todo turn-in -> 1058686 (Pattin)"
+        }
+      ]
+    }
+  ]
+}
