@@ -23,16 +23,22 @@ internal sealed class EventInfoComponent
         // Comment out inactive events so they can be reused in future, don't delete blocks
         new(_L("Limited Time Items"), [new UnlockLinkId(568)], DateTime.MaxValue),
         // Yokai
-        new(
-            $"{_T<Lumina.Excel.Sheets.BannerBg>(233)} {DateTime.UtcNow.Year}",
-            [new QuestId(434), new QuestId(2141)],
-            AtDailyReset(2026, 10, 5)
-        ),
+        //new(
+        //    $"{_T<Lumina.Excel.Sheets.BannerBg>(233)} {DateTime.UtcNow.Year}",
+        //    [new QuestId(434), new QuestId(2141)],
+        //    AtDailyReset(2026, 10, 5)
+        //),
         // FFXV
+        //new(
+        //    $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(70)} {DateTime.UtcNow.Year}",
+        //    [new QuestId(3158), new QuestId(3159), new QuestId(3160)],
+        //    AtDailyReset(2026, 10, 13)
+        //),
+        // All Saints 2026
         new(
-            $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(70)} {DateTime.UtcNow.Year}",
-            [new QuestId(3158), new QuestId(3159), new QuestId(3160)],
-            AtDailyReset(2026, 10, 13)
+            $"{_T<Lumina.Excel.Sheets.FittingShopCategory>(109)} {DateTime.UtcNow.Year}",
+            [new QuestId(5467), new QuestId(5468)],
+            AtDailyReset(2026, 11, 2)
         ),
         // Fall Guys
         new(

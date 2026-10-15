@@ -1,1 +1,1 @@
-- Bug fix: Reset VBM obstacle map before combat starts to prevent movement bug -alydev
+- Feature: All Saints Wake 2026 -alydev
