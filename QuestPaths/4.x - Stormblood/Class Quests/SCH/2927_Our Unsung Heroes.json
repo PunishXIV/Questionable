@@ -60,25 +60,16 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Position": {
-            "X": 207.68561,
-            "Y": -3.1246834,
-            "Z": 42.986313
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1013135,
           "Position": {
-            "X": 206.0426,
-            "Y": -3.111818,
-            "Z": 41.94702
+            "X": 207.58165,
+            "Y": -3.148354,
+            "Z": 42.04371
           },
           "TerritoryId": 139,
+          "StopDistance": 0.25,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true,
           "InteractionType": "Interact"
         }
       ]
@@ -89,11 +80,14 @@
         {
           "DataId": 1013135,
           "Position": {
-            "X": 206.0426,
-            "Y": -3.111818,
-            "Z": 41.94702
+            "X": 207.58165,
+            "Y": -3.148354,
+            "Z": 42.04371
           },
           "TerritoryId": 139,
+          "StopDistance": 0.25,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,

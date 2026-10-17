@@ -1,7 +1,8 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "Anonymous", "Date": "2026-08-31"},
+  "Comment": "These summons hit quite hard, recommend gear upgrade to ilvl 255+ (The Sirensong Sea drops ilvl 260 gear)",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,

@@ -1,1 +1,1 @@
-- Feature: All Saints Wake 2026 -alydev
+- Change: Indicate class quest job next to quest ID -alydev

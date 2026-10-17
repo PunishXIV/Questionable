@@ -1,5 +1,4 @@
 using System.Collections.Immutable;
-using System.Diagnostics;
 using System.Text.RegularExpressions;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.ClientState.Conditions;
@@ -7,6 +6,7 @@ using Dalamud.Game.Text;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
+using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Event;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
@@ -471,42 +471,39 @@ internal sealed partial class ActiveQuestComponent
                 if (showPriorityCrystal)
                     DrawPriorityCrystal(sameLine: showStopClock);
 
-                bool hp = !configuration.General.HidePatch;
-                bool hqrl = !configuration.General.HideQuestRequiredLevel;
-                if (hp || hqrl)
-                {
-                    var patch = QuestPatchMapper.GetPatch(currentQuest.Quest.Id.Value);
-                    string levelPatchText =
-                        $"#{currentQuest.Quest.Id}" +
-                        $"{(hp || hqrl ? " " : "")}" +
-                        $"{(hp && patch != null ? patch : "")}" +
-                        $"{(hp && hqrl ? " " : "")}" +
-                        $"{(hqrl ? SeIconChar.LevelEn.ToIconString() + currentQuest.Quest.GetQuestInfo().Level : "")}";
-                    if (levelPatchText.Length > 0)
-                    {
-                        var chipWidth = ImGui.CalcTextSize(levelPatchText).X + ImGui.GetScrollX() + 4 * ImGui.GetStyle().ItemSpacing.X * ImGuiHelpers.GlobalScale;
-                        ImGui.SameLine();
-                        ImGui.Dummy(new(chipWidth, ImGui.GetStyle().ItemSpacing.Y));
-                        ImGui.SameLine();
-                        ImGui.SetCursorPosX(
-                            ImGui.GetCursorPosX() -
-                            chipWidth
-                        );
-                        QstWidgets.Chip(levelPatchText, QstTheme.Info);
-                        if (patch != null)
-                        {
-                            if (ImGui.IsItemHovered())
-                            {
-                                ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-                                ImGui.SetTooltip(_LF("This quest was added to the game in Patch {0}.\nClick here to view the changelog from this patch.", patch));
-                            }
-                            if (ImGui.IsItemClicked())
-                                MoreInfoUtils.SearchConsoleGamesWiki($"Patch {patch}");
-                        }
-                    }
-                }
+                var patch = QuestPatchMapper.GetPatch(currentQuest.Quest.Id.Value);
+                Job? classQuestJob = currentQuest.Quest.Info.ClassJobs.Count < 2 ? currentQuest.Quest.Info.ClassJobs[^1] : null;
+                bool showPatch = !configuration.General.HidePatch;
+                bool showLevel = !configuration.General.HideQuestRequiredLevel;
+                var parts = new List<string> { $"#{currentQuest.Quest.Id}" };
 
-                ImGui.Dummy(new(0, 0));
+                if (classQuestJob != null)
+                    parts.Add($"{classQuestJob}");
+                if (showPatch && patch != null)
+                    parts.Add(patch);
+                if (showLevel)
+                    parts.Add(SeIconChar.LevelEn.ToIconString() + currentQuest.Quest.GetQuestInfo().Level);
+
+                string levelPatchText = string.Join(' ', parts);
+                var chipWidth = ImGui.CalcTextSize(levelPatchText).X + ImGui.GetScrollX() + 4 * ImGui.GetStyle().ItemSpacing.X * ImGuiHelpers.GlobalScale;
+                ImGui.SameLine();
+                ImGui.Dummy(new(chipWidth, ImGui.GetStyle().ItemSpacing.Y));
+                ImGui.SameLine();
+                ImGui.SetCursorPosX(
+                    ImGui.GetCursorPosX() -
+                    chipWidth
+                );
+                QstWidgets.Chip(levelPatchText, QstTheme.Info);
+                if (patch != null)
+                {
+                    if (ImGui.IsItemHovered())
+                    {
+                        ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+                        ImGui.SetTooltip(_LF("This quest was added to the game in Patch {0}.\nClick here to view the changelog from this patch.", patch));
+                    }
+                    if (ImGui.IsItemClicked())
+                        MoreInfoUtils.SearchConsoleGamesWiki($"Patch {patch}");
+                }
 
                 if (metaSequence?.FindStep(currentQuest.Step) is { } metaStep)
                 {
@@ -531,7 +528,7 @@ internal sealed partial class ActiveQuestComponent
                 if (!configuration.General.HideQuestStartedJob)
                 {
                     var acceptedJob = classJobUtils.LookupQuestStartJob(currentQuest.Quest.Id);
-                    if (acceptedJob is not ECommons.ExcelServices.Job.ADV)
+                    if (acceptedJob is not Job.ADV)
                     {
                         ImGui.SameLine();
                         QstWidgets.Chip($"{acceptedJob}", QstTheme.Accent);
