@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "kaiser",
-  "LastChecked": {"Username": "Anonymous", "Date": "2026-09-01"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -105,7 +105,6 @@
           "StopDistance": 5,
           "AetheryteShortcut": "Mor Dhona",
           "Fly": true,
-          "Comment": "Solo duty here!",
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }

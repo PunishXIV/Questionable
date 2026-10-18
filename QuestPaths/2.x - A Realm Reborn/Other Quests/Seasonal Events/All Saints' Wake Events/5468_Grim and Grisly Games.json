@@ -1,7 +1,7 @@
-{
+﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -82,6 +82,7 @@
           },
           "TerritoryId": 1369,
           "InteractionType": "UseItem",
+          "GroundTarget": true,
           "ItemId": 2003819
         }
       ]
@@ -100,6 +101,7 @@
           "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2003819,
+          "GroundTarget": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -120,6 +122,7 @@
           "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2003819,
+          "GroundTarget": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -140,6 +143,7 @@
           "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2003819,
+          "GroundTarget": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -160,6 +164,7 @@
           "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2003819,
+          "GroundTarget": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -180,6 +185,7 @@
           "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2003819,
+          "GroundTarget": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,

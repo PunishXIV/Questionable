@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "Iskierka", "Date": "2026-07-01"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -31,24 +31,16 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 207.68561,
-            "Y": -3.1246834,
-            "Z": 42.986313
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true
-        },
-        {
           "DataId": 1013135,
           "Position": {
-            "X": 206.0426,
-            "Y": -3.111818,
-            "Z": 41.94702
+            "X": 207.58165,
+            "Y": -3.148354,
+            "Z": 42.04371
           },
           "TerritoryId": 139,
+          "StopDistance": 0.25,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true,
           "InteractionType": "Interact"
         }
       ]
@@ -111,24 +103,16 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 207.68561,
-            "Y": -3.1246834,
-            "Z": 42.986313
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true
-        },
-        {
           "DataId": 1013135,
           "Position": {
-            "X": 206.0426,
-            "Y": -3.111818,
-            "Z": 41.94702
+            "X": 207.58165,
+            "Y": -3.148354,
+            "Z": 42.04371
           },
           "TerritoryId": 139,
+          "StopDistance": 0.25,
+          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
+          "Fly": true,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2924
         }

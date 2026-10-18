@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
-  "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -56,10 +56,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo area 10y from lua ACTOR2 -> 1058683 (adamant adventurer)"
         },
@@ -72,6 +68,10 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Gridania] Botanists' Guild",
+            "[Gridania] Conjurers' Guild"
+          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo area 10y from lua ACTOR3 -> 1058684 (ebullient adventurer)"
         }
@@ -90,7 +90,6 @@
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5468,
-          "AetheryteShortcut": "Gridania",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESHLX201_05467_Q2_000_000",
@@ -99,7 +98,7 @@
             }
           ],
           "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
+            "[Gridania] Conjurers' Guild",
             "[Gridania] Mih Khetto's Amphitheatre"
           ],
           "$": "auto: todo turn-in -> 1058686 (Pattin)"
