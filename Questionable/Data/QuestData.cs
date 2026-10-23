@@ -1,5 +1,4 @@
 ﻿using System.Collections.Immutable;
-using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
@@ -68,35 +67,35 @@ internal sealed class QuestData
         { Job.ADV, [] },
         // ARR
         { Job.GLA, [63] },
-        { Job.PLD, [72, 73, 74] },
+        { Job.PLD, [72, 73, 74, 75] },
         { Job.MRD, [64] },
-        { Job.WAR, [76, 77, 78] },
+        { Job.WAR, [76, 77, 78, 79] },
         { Job.CNJ, [65] },
-        { Job.WHM, [86, 87, 88] },
+        { Job.WHM, [86, 87, 88, 89] },
         { Job.ACN, [66] },
-        { Job.SMN, [127, 128, 129] },
-        { Job.SCH, [90, 91, 92] },
+        { Job.SMN, [127, 128, 129, 130] },
+        { Job.SCH, [90, 91, 92, 93] },
         { Job.PGL, [67] },
-        { Job.MNK, [98, 99, 100] },
+        { Job.MNK, [98, 99, 100, 101] },
         { Job.LNC, [68] },
-        { Job.DRG, [102, 103, 104] },
+        { Job.DRG, [102, 103, 104, 105] },
         { Job.ROG, [69] },
-        { Job.NIN, [106, 107, 108] },
+        { Job.NIN, [106, 107, 108, 109] },
         { Job.ARC, [70] },
-        { Job.BRD, [113, 114, 115] },
+        { Job.BRD, [113, 114, 115, 116] },
         { Job.THM, [71] },
-        { Job.BLM, [123, 124, 125] },
+        { Job.BLM, [123, 124, 125, 126] },
         // HW
-        { Job.DRK, [80, 81, 82] },
-        { Job.AST, [94, 95, 96] },
-        { Job.MCH, [117, 118, 119] },
+        { Job.DRK, [80, 81, 82, 83] },
+        { Job.AST, [94, 95, 96, 97] },
+        { Job.MCH, [117, 118, 119, 120] },
         // SB
-        { Job.SAM, [110, 111] },
-        { Job.RDM, [131, 132] },
+        { Job.SAM, [110, 111, 112] },
+        { Job.RDM, [131, 132, 133] },
         { Job.BLU, [134, 135, 146, 170] },
         // ShB
-        { Job.GNB, [84] },
-        { Job.DNC, [121] },
+        { Job.GNB, [84, 85] },
+        { Job.DNC, [121, 122] },
         // EW
         { Job.SGE, [152] },
         { Job.RPR, [153] },
