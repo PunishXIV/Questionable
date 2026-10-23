@@ -1,0 +1,83 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1022954,
+          "Position": {
+            "X": -658.289,
+            "Y": 130,
+            "Z": -536.492
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: issuer 1022954 (Maelstrom officer)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Position": {
+            "X": -274.23923,
+            "Y": 69.26243,
+            "Z": -663.6735
+          },
+          "TerritoryId": 612,
+          "StopDistance": 1,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7565,
+            7512,
+            7224
+          ],
+          "$": "auto: lua enemies spawn here -> 7565, 7512, 7224"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022955,
+          "Position": {
+            "X": -274.574,
+            "Y": 69.2851,
+            "Z": -663.741
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: todo location -> 1022955 (Maelstrom officer)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1022954,
+          "Position": {
+            "X": -658.289,
+            "Y": 130,
+            "Z": -536.492
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: todo turn-in -> 1022954 (Maelstrom officer)"
+        }
+      ]
+    }
+  ]
+}

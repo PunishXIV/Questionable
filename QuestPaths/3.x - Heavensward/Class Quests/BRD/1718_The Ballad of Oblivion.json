@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": { "Username": "okonomiyaki", "Date": "2026-07-16" },
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -91,13 +91,24 @@
       "Sequence": 4,
       "Steps": [
         {
-          "DataId": 1014275,
           "Position": {
-            "X": -179.46143,
-            "Y": 19.473629,
-            "Z": -855.98535
+            "X": -433.6987,
+            "Y": 4.1693993,
+            "Z": -719.2221
           },
           "TerritoryId": 401,
+          "InteractionType": "WalkTo",
+          "StopDistance": 1
+        },
+        {
+          "DataId": 1014275,
+          "Position": {
+            "X": -181.42244,
+            "Y": 19.449415,
+            "Z": -855.1448
+          },
+          "TerritoryId": 401,
+          "StopDistance": 1,
           "InteractionType": "SinglePlayerDuty",
           "Fly": true,
           "SinglePlayerDutyOptions": {

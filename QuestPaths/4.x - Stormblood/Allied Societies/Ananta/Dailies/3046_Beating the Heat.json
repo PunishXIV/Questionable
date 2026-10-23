@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-09-13"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -59,13 +59,24 @@
           "TerritoryId": 612,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            8581
-          ],
+          "KillEnemyDataIds": [8581],
           "Fly": true,
-          "RequiredQuestVariables": [null,null,[
-            {"Low": 1}, {"Low": 2}
-            ],null,null,null]
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [{ "Low": 1 }, { "Low": 2 }],
+            null,
+            null,
+            null
+          ],
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 8 }
+          ]
         },
         {
           "DataId": 2009328,
@@ -78,12 +89,23 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "Fly": true,
-          "KillEnemyDataIds": [
-            8581
+          "KillEnemyDataIds": [8581],
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [{ "Low": 2 }, { "Low": 3 }],
+            null,
+            null,
+            null
           ],
-          "RequiredQuestVariables": [null,null,[
-            {"Low": 2}, {"Low": 3}
-            ],null,null,null]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 4 }
+          ]
         },
         {
           "Position": {
@@ -94,9 +116,26 @@
           "TerritoryId": 612,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "RequiredQuestVariables": [null,null,[
-            {"Low": 1}, {"Low": 3}
-            ],null,null,null]
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [{ "Low": 1 }, { "Low": 3 }],
+            null,
+            null,
+            null
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "CompletionQuestVariablesFlags": [
+                null,
+                null,
+                null,
+                null,
+                null,
+                { "High": 2 }
+              ]
+            }
+          }
         },
         {
           "DataId": 2009329,
@@ -108,12 +147,23 @@
           "TerritoryId": 612,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [
-            8581
+          "KillEnemyDataIds": [8581],
+          "RequiredQuestVariables": [
+            null,
+            null,
+            [{ "Low": 1 }, { "Low": 3 }],
+            null,
+            null,
+            null
           ],
-          "RequiredQuestVariables": [null,null,[
-            {"Low": 1}, {"Low": 3}
-            ],null,null,null]
+          "CompletionQuestVariablesFlags": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "High": 2 }
+          ]
         }
       ]
     },

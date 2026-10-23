@@ -1,1 +1,1 @@
-- Change: Indicate class quest job next to quest ID -alydev
+- Bug fix: ignore action result for now so quest progress continues -alydev
