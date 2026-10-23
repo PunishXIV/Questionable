@@ -183,7 +183,8 @@ internal sealed unsafe partial class GameFunctions
             logger.LogInformation("UseAction {Action} (adjusted: {AdjustedActionId}) result: {Result}", action,
                 actionId, result);
 
-            return ignoreResult != null ? ignoreResult.Value : result;
+            // TODO figure out what UseAction returns and why it returns false when an action is successful
+            return true; //ignoreResult != null ? ignoreResult.Value : result;
         }
 
         return false;

@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-08-28"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -99,12 +99,13 @@
       "Steps": [
         {
           "Position": {
-            "X": -401.34625,
-            "Y": 73.77551,
-            "Z": -103.195656
+            "X": -397.46393,
+            "Y": 73.9107,
+            "Z": -104.34829
           },
           "TerritoryId": 612,
           "InteractionType": "WalkTo",
+          "StopDistance": 1,
           "Fly": true
         },
         {
@@ -123,34 +124,16 @@
       "Sequence": 6,
       "Steps": [
         {
-          "Position": {
-            "X": -391.48306,
-            "Y": 73.52123,
-            "Z": -100.069016
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -424.38403,
-            "Y": 62.880836,
-            "Z": -28.616083
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1023158,
           "Position": {
-            "X": -426.71857,
-            "Y": 63.23476,
-            "Z": -28.82434
+            "X": -424.24503,
+            "Y": 62.890038,
+            "Z": -28.174877
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact"
+          "StopDistance": 1,
+          "InteractionType": "Interact",
+          "Fly": true
         }
       ]
     },

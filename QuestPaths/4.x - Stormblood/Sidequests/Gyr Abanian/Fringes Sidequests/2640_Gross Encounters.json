@@ -1,0 +1,116 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1019519,
+          "Position": {
+            "X": -613.092,
+            "Y": 129.992,
+            "Z": -529.839
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: issuer 1019519 (Serpent Marshal Brookstone)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1022059,
+          "Position": {
+            "X": -266.838,
+            "Y": 60.4484,
+            "Z": -457.523
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: lua ACTOR1 -> 1022059 (flame recruit)"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1022060,
+          "Position": {
+            "X": -234.823,
+            "Y": 42.3231,
+            "Z": -235.552
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: lua ACTOR2 -> 1022060 (serpent recruit)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2008814,
+          "Position": {
+            "X": 199.632,
+            "Y": 54.1052,
+            "Z": -529.507
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Peering Stones",
+          "$": "auto: lua EOBJECT0 -> 2008814 (destination)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "Position": {
+            "X": 196.033,
+            "Y": 61.2987,
+            "Z": -612.299
+          },
+          "TerritoryId": 612,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            7506
+          ],
+          "$": "auto: lua enemies spawn here -> 7506"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1019519,
+          "Position": {
+            "X": -613.092,
+            "Y": 129.992,
+            "Z": -529.839
+          },
+          "TerritoryId": 612,
+          "InteractionType": "CompleteQuest",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "$": "auto: todo turn-in -> 1019519 (Serpent Marshal Brookstone)"
+        }
+      ]
+    }
+  ]
+}
