@@ -1,1 +1,1 @@
-- Bug fix: ignore action result for now so quest progress continues -alydev
+- Bug fix: missing final chapter of job quests caused incorrect IsQuestLocked behaviour -alydev
