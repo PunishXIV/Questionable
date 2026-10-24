@@ -45,7 +45,21 @@
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ]
+          ],
+          "SkipConditions": {
+            "StepIf": {
+              "AetheryteUnlocked": "North Shroud - Fallgourd Float",
+              "InTerritory": [154]
+            },
+            "AetheryteShortcutIf": {
+              "AetheryteUnlocked": "North Shroud - Fallgourd Float",
+              "InTerritory": [132,154]
+            },
+            "AethernetShortcutIf": {
+              "AetheryteUnlocked": "North Shroud - Fallgourd Float",
+              "InTerritory": [154]
+            }
+          }
         },
         {
           "DataId": 1002985,
