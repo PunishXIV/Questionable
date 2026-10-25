@@ -77,6 +77,7 @@ jobs:
 
       - name: Build test projects
         run: |
+          export SIXLABORS_LICENSE_KEY="`curl https://static.qstxiv.dev/sixlabors.lic 2>/dev/null`"
           dotnet build Questionable.Tests/Questionable.Tests.csproj \
             -c Release --no-restore \
             -p:DalamudLibPath=$DALAMUD_HOME \
@@ -84,8 +85,6 @@ jobs:
           dotnet build QuestPathGenerator.Tests/QuestPathGenerator.Tests.csproj \
             -c Release --no-restore \
             --source $PWD/.nuget
-        env:
-          SIXLABORS_LICENSE_KEY: ${{ vars.SIXLABORS_LICENSE_KEY }}
 
       - name: Compute changed quest files
         id: changed-quests
