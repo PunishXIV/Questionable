@@ -1,1 +1,1 @@
-- Bug fix: missing final chapter of job quests caused incorrect IsQuestLocked behaviour -alydev
+- Bug fix: Don't leave party if qst not configured to run solo instances -alydev

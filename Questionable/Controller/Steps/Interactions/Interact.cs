@@ -16,17 +16,15 @@ namespace Questionable.Controller.Steps.Interactions;
 // TODO: refactor — heavy nesting (22 lines indented ≥6 levels, max indent ~12 levels).
 internal static class Interact
 {
-    static string JobGearsetError(string arg0, string arg1) => _LF(
-        "_JobGearsetError",
-        arg0, arg1);
-    internal sealed class Factory(AutomatonIpc automatonIpc, Configuration configuration, RedoUtil redoUtil) : ITaskFactory
+    internal sealed class Factory(AutomatonIpc automatonIpc, BossModIpc bossModIpc, Configuration configuration, RedoUtil redoUtil) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType is EInteractionType.AcceptQuest or EInteractionType.CompleteQuest
                 or EInteractionType.SinglePlayerDuty)
             {
-                if (step.InteractionType == EInteractionType.SinglePlayerDuty)
+                if (step.InteractionType == EInteractionType.SinglePlayerDuty &&
+                    bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions))
                     yield return new SinglePlayerDuty.LeaveParty();
 
                 if (step.InteractionType is EInteractionType.AcceptQuest && sequence.Sequence > 0 && redoUtil.IsRedoActive())
