@@ -22,6 +22,7 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
             _logger.LogWarning("Could not find dialogue text for key '{Key}' in sheet '{Sheet}'", key, excelSheetName);
             return new(string.Empty);
         }
+        _logger.LogDebug($"Resolved {key} to '{seString.Value.WithCertainMacroCodeReplacements()}");
 
         if (isRegex)
             return new(seString.Value.ToRegex());

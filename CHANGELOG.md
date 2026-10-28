@@ -1,1 +1,2 @@
-- Bug fix: Don't leave party if qst not configured to run solo instances -alydev
+- Feature: keybound event -alydev
+- Bug fix: figured out why cbt's auto event quest thing wasn't working, hopefully -alydev

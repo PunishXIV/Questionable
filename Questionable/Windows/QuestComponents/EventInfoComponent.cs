@@ -41,11 +41,19 @@ internal sealed class EventInfoComponent
             AtDailyReset(2026, 11, 2)
         ),
         // Fall Guys
+        //new(
+        //    $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(74)} {DateTime.UtcNow.Year}",
+        //    [new QuestId(434), new QuestId(4801)],
+        //    EndsAtUtc: AtDailyReset(2026, 10, 27),
+        //    StartsAtUtc: AtDailyReset(2026, 10, 7),
+        //    staysActive: true
+        //),
+        // FFVII Keybound Brawlers
         new(
-            $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(74)} {DateTime.UtcNow.Year}",
-            [new QuestId(434), new QuestId(4801)],
-            EndsAtUtc: AtDailyReset(2026, 10, 27),
-            StartsAtUtc: AtDailyReset(2026, 10, 7),
+            $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(200)} {DateTime.UtcNow.Year}",
+            [new QuestId(434), new QuestId(5466)],
+            EndsAtUtc: AtDailyReset(2027, 1, 29),
+            StartsAtUtc: AtDailyReset(2026, 10, 27),
             staysActive: true
         ),
     ];
@@ -145,7 +153,10 @@ internal sealed class EventInfoComponent
     public IEnumerable<ElementId> GetCurrentlyActiveEventQuests()
     {
         return EventQuests
-            .Where(x => x.StartsAtUtc < DateTime.UtcNow && x.EndsAtUtc >= DateTime.UtcNow && x.QuestIds.All(ShouldShowQuest))
+            .Where(x =>
+                x.StartsAtUtc < DateTime.UtcNow &&
+                x.EndsAtUtc >= DateTime.UtcNow &&
+                x.QuestIds.Any(ShouldShowQuest))
             .SelectMany(x => x.QuestIds);
     }
 

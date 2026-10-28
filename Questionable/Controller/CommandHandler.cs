@@ -35,6 +35,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly QuestWindow _questWindow;
     private readonly QuestData _questData;
     private readonly TerritoryData _territoryData;
+    private readonly EventInfoComponent _eventInfoComponent;
     private readonly ITargetManager _targetManager;
     private readonly ILogger<CommandHandler> _logger;
 
@@ -62,6 +63,7 @@ internal sealed class CommandHandler : IDisposable
         Configuration configuration,
         QuestData questData,
         TerritoryData territoryData,
+        EventInfoComponent eventInfoComponent,
         ILogger<CommandHandler> logger)
     {
         _commandManager = commandManager;
@@ -85,6 +87,7 @@ internal sealed class CommandHandler : IDisposable
         _configuration = configuration;
         _questData = questData;
         _territoryData = territoryData;
+        _eventInfoComponent = eventInfoComponent;
         _logger = logger;
 
         _clientState.Logout += OnLogout;
@@ -349,6 +352,13 @@ internal sealed class CommandHandler : IDisposable
         string[] parts = arguments.Split(' ');
         switch (parts[0])
         {
+            case "eventquests":
+                var eventQuests = _eventInfoComponent.GetCurrentlyActiveEventQuests().Select(q => q.ToString()).ToArray();
+                if (eventQuests.Length > 0)
+                    _chatGui.Print(string.Join(", ", eventQuests));
+                else
+                    _chatGui.Print("There are no active event quests.", MessageTag, TagColor);
+                break;
             case "unlock-links":
                 IReadOnlyList<uint>? unlockedUnlockLinks = _gameFunctions.GetUnlockLinks();
                 if (unlockedUnlockLinks != null)
