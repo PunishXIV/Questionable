@@ -4,7 +4,6 @@ using Dalamud.Interface.Utility.Raii;
 using Humanizer;
 using Humanizer.Localisation;
 using Questionable.Model.Questing;
-using static Questionable.Windows.QuestComponents.EventInfoComponent;
 namespace Questionable.Windows.QuestComponents;
 
 [RegisterSingleton]
