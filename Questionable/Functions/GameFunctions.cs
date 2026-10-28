@@ -420,7 +420,11 @@ internal sealed unsafe partial class GameFunctions
         if (b == null)
             return false;
 
-        return NormalizeGameString(a) == NormalizeGameString(b);
+        var _a = NormalizeGameString(a);
+        var _b = NormalizeGameString(b);
+        var eq = _a == _b;
+        Svc.Log.Verbose($"GameStringEquals: {_a} {(eq ? "==" : "!=")} {_b}");
+        return eq;
     }
 
     private static string NormalizeGameString(string value) =>

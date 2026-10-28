@@ -88,6 +88,15 @@
       "Steps": [
         {
           "Position": {
+            "X": -650.58673,
+            "Y": 39.856243,
+            "Z": 371.54846
+          },
+          "TerritoryId": 612,
+          "InteractionType": "WalkTo"
+        },
+        {
+          "Position": {
             "X": -381.88757,
             "Y": 40.283813,
             "Z": 484.82483
@@ -114,7 +123,7 @@
           },
           "TerritoryId": 612,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
+          "SinglePlayerDutyOptions": {"Enabled": false},
           "ItemId": 2002053
         }
       ]
