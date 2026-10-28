@@ -4,6 +4,7 @@ using Dalamud.Interface.Utility.Raii;
 using Humanizer;
 using Humanizer.Localisation;
 using Questionable.Model.Questing;
+using static Questionable.Windows.QuestComponents.EventInfoComponent;
 namespace Questionable.Windows.QuestComponents;
 
 [RegisterSingleton]
@@ -142,7 +143,7 @@ internal sealed class EventInfoComponent
         if (eventQuest.EndsAtUtc <= DateTime.UtcNow)
             return false;
         // if event start time is in the future, event is complete
-        if (eventQuest.StartsAtUtc > DateTime.UtcNow)
+        if (eventQuest.StartsAtUtc != null && eventQuest.StartsAtUtc > DateTime.UtcNow)
             return false;
         if (eventQuest.staysActive)
             return true;
@@ -154,7 +155,7 @@ internal sealed class EventInfoComponent
     {
         return EventQuests
             .Where(x =>
-                x.StartsAtUtc < DateTime.UtcNow &&
+                (x.StartsAtUtc == null || x.StartsAtUtc < DateTime.UtcNow) &&
                 x.EndsAtUtc >= DateTime.UtcNow &&
                 x.QuestIds.Any(ShouldShowQuest))
             .SelectMany(x => x.QuestIds);
