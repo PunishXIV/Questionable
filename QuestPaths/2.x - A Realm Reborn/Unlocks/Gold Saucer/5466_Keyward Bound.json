@@ -1,0 +1,70 @@
+﻿{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "OmegaJackie",
+  "$": "Authored with LLM assistance, changes must be reviewed and owned by a human.\nInitial version reviewed and owned by @OmegaJackie",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1058756,
+          "Position": {
+            "X": -33.798767,
+            "Y": -0.015319824,
+            "Z": 45.181885
+          },
+          "TerritoryId": 144,
+          "AetheryteShortcut": "Gold Saucer",
+          "InteractionType": "AcceptQuest"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1058754,
+          "Position": {
+            "X": 0.77819824,
+            "Y": 3.9997299,
+            "Z": 61.203857
+          },
+          "TerritoryId": 144,
+          "TargetTerritoryId": 1360,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Comment": "Plays a cutscene, then shows a SelectYesno whose OK button stays disabled until the \"I understand.\" checkbox (keyboard-required notice) is ticked.",
+      "Steps": [
+        {
+          "DataId": 1058752,
+          "Position": {
+            "X": -13.626343,
+            "Y": 0.33279797,
+            "Z": -28.152893
+          },
+          "TerritoryId": 1360,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1058752,
+          "Position": {
+            "X": -13.626343,
+            "Y": 0.33279797,
+            "Z": -28.152893
+          },
+          "TerritoryId": 1360,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
