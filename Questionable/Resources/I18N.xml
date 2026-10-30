@@ -6990,45 +6990,54 @@
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Ignore 'next quest' if Priority Quests has valid alternative</Key>
     <Value lang="en">Ignore 'next quest' if Priority Quests has valid alternative</Value>
+    <Value lang="zh-cn">优先任务存在有效替代时，忽略"下一个任务"</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Hide things unavailable in your account's unlocked expansions</Key>
     <Value lang="en">Hide things unavailable in your account's unlocked expansions</Value>
+    <Value lang="zh-cn">隐藏账号未解锁资料片中的内容</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>If you are on free trial, or do not own the current expansion, this will hide content in locked expansions</Key>
     <Value lang="en">If you are on free trial, or do not own the current expansion, this will hide content in locked expansions</Value>
+    <Value lang="zh-cn">如果你处于免费体验状态，或未拥有当前资料片，将隐藏锁定资料片中的内容。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Hide quest level badge</Key>
     <Value lang="en">Hide quest level badge</Value>
+    <Value lang="zh-cn">隐藏任务等级标识</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <Key>Pending</Key>
     <Value lang="en">Pending</Value>
+    <Value lang="zh-cn">等待中</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Restore BossMod setting to default</Key>
     <Value lang="en">Restore BossMod setting to default</Value>
+    <Value lang="zh-cn">恢复 BossMod 默认设置</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>When starting a solo duty or if Autoduty has finished qst-orchestrated duty automation, restore Bossmod's setting 'Prevent Movement While Casting' to default</Key>
     <Value lang="en">When starting a solo duty or if Autoduty has finished qst-orchestrated duty automation, restore Bossmod's setting 'Prevent Movement While Casting' to default</Value>
+    <Value lang="zh-cn">在单人副本开始时或 AutoDuty 完成 QST 编排的副本后，将 BossMod「读条时锁定移动」设置恢复为默认值。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/PathData/PathDataUpdater.cs -->
     <Key>Update check failed; will retry next launch</Key>
     <Value lang="en">Update check failed; will retry next launch</Value>
+    <Value lang="zh-cn">更新检查失败；将在下次启动时重试</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/PathData/PathDataUpdater.cs -->
     <Key>Update check failed: bundle download URL is invalid</Key>
     <Value lang="en">Update check failed: bundle download URL is invalid</Value>
+    <Value lang="zh-cn">更新检查失败：资源包下载链接无效</Value>
   </Entry>
 </I18N>
