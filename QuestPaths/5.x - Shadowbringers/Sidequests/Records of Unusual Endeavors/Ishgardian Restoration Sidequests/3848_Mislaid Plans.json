@@ -1,0 +1,54 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032897,
+          "Position": {
+            "X": 151.488,
+            "Y": -20,
+            "Z": 65.9305
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] The Brume"
+          ],
+          "DialogueChoices": [
+            {
+              "Prompt": "TEXT_LUCKHT001_03848_Q1_000_000",
+              "Answer": "TEXT_LUCKHT001_03848_A1_000_000",
+              "Type": "List"
+            }
+          ],
+          "$": "auto: issuer 1032897 (Skysteel engineer)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1032898,
+          "Position": {
+            "X": -163.454,
+            "Y": 16.9796,
+            "Z": -29.2914
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] The Brume",
+            "[Ishgard] Skysteel Manufactory"
+          ],
+          "NextQuestId": 3849,
+          "$": "auto: todo turn-in -> 1032898 (Neillemard)"
+        }
+      ]
+    }
+  ]
+}

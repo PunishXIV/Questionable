@@ -124,7 +124,7 @@
           "TerritoryId": 622,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
+            "Enabled": true,
             "TestedBossModVersion": "0.1.0.1",
             "Notes": [
               "Keeps attacking the invulnerable boss instead of the mammoths, thus letting your allied NPC die"

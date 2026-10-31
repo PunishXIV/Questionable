@@ -50,12 +50,14 @@ public enum EExtendedClassJob
     Pictomancer,
     Beastmaster,
     Bastion,
-    DoW,
-    DoM,
-    DoH,
-    DoL,
-    ConfiguredCombatJob,
-    QuestStartJob,
-    ConfiguredCraftingJob,
-    ConfiguredGatheringJob
+    Zephyr,
+
+    DoW = 247,
+    DoM = 248,
+    DoH = 249,
+    DoL = 250,
+    ConfiguredCombatJob = 251,
+    QuestStartJob = 252,
+    ConfiguredCraftingJob = 253,
+    ConfiguredGatheringJob = 254
 }

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032898,
+          "Position": {
+            "X": -163.454,
+            "Y": 16.9796,
+            "Z": -29.2914
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory"
+          ],
+          "$": "auto: issuer 1032898 (Neillemard)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "InteractionType": "None",
+          "TerritoryId": 418,
+          "AethernetShortcut": [
+            "[Ishgard] Skysteel Manufactory",
+            "[Ishgard] Aetheryte Plaza"
+          ]
+        },
+        {
+          "DataId": 1035012,
+          "Position": {
+            "X": -72.656,
+            "Y": -10,
+            "Z": 169.119
+          },
+          "TerritoryId": 886,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Firmament"
+          ],
+          "$": "auto: todo turn-in -> 1035012 (Emeny)"
+        }
+      ]
+    }
+  ]
+}
