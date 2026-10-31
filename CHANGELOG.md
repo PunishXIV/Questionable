@@ -1,1 +1,1 @@
-- Feature: zh-cn translations updated -ShadyWhite
+- Change: fix end date of typing event now that we know when evercold is releasing -alydev
