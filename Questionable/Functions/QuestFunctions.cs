@@ -541,20 +541,24 @@ internal sealed unsafe class QuestFunctions
                     return new(x, _L("No sequence 0 with steps"));
 
                 // all priority quests assume we're able to teleport to the beginning (and for e.g. class quests, the end)
-                // ideally without having to wait 15m for Return.
-                // TODO This should be tweaked for level 1-5 class quests so that all of them can be done without teleport unlocked; the latest we unlock teleport is level 10 for Gridania characters
-                //      That probably means that (a) level 1-5 class quests should be doable without any teleports at all, and (b) the return point after being interrupted should be in the main city
+                // ideally without having to wait 15m for Return. Teleport can unlock as late as level 10 (Gridania), so
+                // until then we still allow quests that never need it, which covers most level 1-5 class quests.
                 if (!aetheryteFunctions.IsTeleportUnlocked())
-                    return new(x, _L("Teleport not unlocked"));
-
-                if (!firstStep.IsTeleportableForPriorityQuests())
-                    return new(x, _L("Can't teleport to start"));
-
-                int teleportCosts = TeleportCosts(quest);
-                if (gil < teleportCosts)
                 {
-                    return new(x,
-                        _LF("Not enough gil, estimated cost: {0:N0}{1}", teleportCosts, SeIconChar.Gil.ToIconString()));
+                    if (!CanBeDoneWithoutTeleport(quest))
+                        return new(x, _L("Teleport not unlocked"));
+                }
+                else
+                {
+                    if (!firstStep.IsTeleportableForPriorityQuests())
+                        return new(x, _L("Can't teleport to start"));
+
+                    int teleportCosts = TeleportCosts(quest);
+                    if (gil < teleportCosts)
+                    {
+                        return new(x,
+                            _LF("Not enough gil, estimated cost: {0:N0}{1}", teleportCosts, SeIconChar.Gil.ToIconString()));
+                    }
                 }
 
                 EAetheryteLocation? firstLockedAetheryte = GetFirstLockedAetheryte(quest);
@@ -571,40 +575,56 @@ internal sealed unsafe class QuestFunctions
             .ToList();
     }
 
+    /// <summary>
+    ///     Whether a quest can be walked from where we are: it starts in the current zone, and every aetheryte shortcut
+    ///     only leads into the zone we're already in at that point (those get walked while teleport is locked).
+    /// </summary>
+    private bool CanBeDoneWithoutTeleport(Quest quest)
+    {
+        uint? currentTerritory = clientState.TerritoryType;
+        bool isFirstStep = true;
+        foreach ((QuestSequence _, int _, QuestStep step) in quest.AllSteps())
+        {
+            if (isFirstStep && step.TerritoryId != currentTerritory)
+                return false;
+            if (step.AetheryteShortcut != null && step.TerritoryId != currentTerritory)
+                return false;
+
+            currentTerritory = step.TargetTerritoryId ?? step.TerritoryId;
+            isFirstStep = false;
+        }
+
+        return true;
+    }
+
     internal EAetheryteLocation? GetFirstLockedAetheryte(Quest quest)
     {
-        IEnumerable<EAetheryteLocation> unlocks = [];
-        return quest.AllSteps()
-                    .Select(y =>
-                    {
-                        if (y.Step.InteractionType is EInteractionType.AttuneAetheryte &&
-                                y.Step.Aetheryte is EAetheryteLocation a)
-                            unlocks = unlocks.Append(a);
-                        if (y.Step.InteractionType is EInteractionType.AttuneAethernetShard &&
-                                y.Step.AethernetShard is EAetheryteLocation b)
-                            unlocks = unlocks.Append(b);
-                        if (y.Step.AetheryteShortcut is { } aetheryteShortcut &&
-                            !aetheryteFunctions.IsAetheryteUnlocked(aetheryteShortcut) &&
-                            !unlocks.Contains(aetheryteShortcut))
-                        {
-                            if ((y.Step.SkipConditions?.AetheryteShortcutIf?.AetheryteLocked) != aetheryteShortcut)
-                                return aetheryteShortcut;
-                        }
+        // aetherytes attuned by an earlier step of the same quest don't count as locked
+        HashSet<EAetheryteLocation> attunedByQuest = [];
+        foreach ((QuestSequence _, int _, QuestStep step) in quest.AllSteps())
+        {
+            if (step is { InteractionType: EInteractionType.AttuneAetheryte, Aetheryte: { } aetheryte })
+                attunedByQuest.Add(aetheryte);
+            if (step is { InteractionType: EInteractionType.AttuneAethernetShard, AethernetShard: { } aethernetShard })
+                attunedByQuest.Add(aethernetShard);
 
-                        if (y.Step.AethernetShortcut is { } aethernetShortcut)
-                        {
-                            if (!aetheryteFunctions.IsAetheryteUnlocked(aethernetShortcut.From) &&
-                                    !unlocks.Contains(aethernetShortcut.From))
-                                return aethernetShortcut.From;
+            if (step.AetheryteShortcut is { } aetheryteShortcut && IsLocked(aetheryteShortcut) &&
+                step.SkipConditions?.AetheryteShortcutIf?.AetheryteLocked != aetheryteShortcut)
+                return aetheryteShortcut;
 
-                            if (!aetheryteFunctions.IsAetheryteUnlocked(aethernetShortcut.To) &&
-                                    !unlocks.Contains(aethernetShortcut.To))
-                                return aethernetShortcut.To;
-                        }
+            if (step.AethernetShortcut is { } aethernetShortcut)
+            {
+                if (IsLocked(aethernetShortcut.From))
+                    return aethernetShortcut.From;
+                if (IsLocked(aethernetShortcut.To))
+                    return aethernetShortcut.To;
+            }
+        }
 
-                        return (EAetheryteLocation?)null;
-                    })
-                    .FirstOrDefault(y => y != null);
+        return null;
+
+        bool IsLocked(EAetheryteLocation location) =>
+            !aetheryteFunctions.IsAetheryteUnlocked(location) && !attunedByQuest.Contains(location);
     }
 
     private string _last = string.Empty;
@@ -1188,6 +1208,30 @@ internal sealed unsafe class QuestFunctions
 
         PlayerState* playerState = PlayerState.Instance();
         return playerState != null && playerState->ClassJobLevels[classJobRow.ExpArrayIndex] > 0;
+    }
+
+    /// <summary>
+    ///     Whether one of the classes/jobs the quest can be accepted with is already at the quest's level, so it can be
+    ///     accepted after switching to it (the accept step picks such a class).
+    /// </summary>
+    public bool HasClassJobAtQuestLevel(ElementId questId)
+    {
+        if (!questData.TryGetQuestInfo(questId, out IQuestInfo? questInfo))
+            return false;
+
+        if (questInfo.ClassJobs.Count == 0)
+            return PlayerState.Instance()->CurrentLevel >= questInfo.Level;
+
+        return questInfo.ClassJobs.Any(job => GetClassJobLevel(job) >= questInfo.Level);
+    }
+
+    public static short GetClassJobLevel(Job classJob)
+    {
+        PlayerState* playerState = PlayerState.Instance();
+        int index = classJob.GetData().ExpArrayIndex;
+        return playerState != null && index >= 0 && index < playerState->ClassJobLevels.Length
+            ? playerState->ClassJobLevels[index]
+            : (short)0;
     }
 
     public GrandCompany GetGrandCompany() => (GrandCompany)PlayerState.Instance()->GrandCompany;

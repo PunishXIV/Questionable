@@ -354,6 +354,12 @@ internal static class AetheryteShortcut
                     (Task.Step.AethernetShortcut is { } aethernet &&
                     aetheryteData.TerritoryIds[aethernet.To].Equals(territoryType)))
                 {
+                    if (!aetheryteFunctions.IsTeleportUnlocked())
+                    {
+                        logger.LogInformation("Skipping aetheryte teleport, teleport isn't unlocked yet and we're already in the zone");
+                        return true;
+                    }
+
                     if (!skipConditions.Never)
                     {
                         if (skipConditions is { InSameTerritory: true })

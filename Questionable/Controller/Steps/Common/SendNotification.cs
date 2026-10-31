@@ -3,7 +3,6 @@ using Dalamud.Game.Text.SeStringHandling;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Common;
 
-// TODO: refactor — heavy nesting (22 lines indented ≥6 levels, max indent 8 levels).
 internal static class SendNotification
 {
     internal sealed class Factory
@@ -63,47 +62,54 @@ internal static class SendNotification
                 text += $" - {Task.Comment}";
 
             if (configuration.Notifications.ChatType != XivChatType.None)
-            {
-                XivChatEntry message = configuration.Notifications.ChatType switch
-                {
-                    XivChatType.Say
-                        or XivChatType.Shout
-                        or XivChatType.TellOutgoing
-                        or XivChatType.TellIncoming
-                        or XivChatType.Party
-                        or XivChatType.Alliance
-                        or >= XivChatType.Ls1 and <= XivChatType.Ls8
-                        or XivChatType.FreeCompany
-                        or XivChatType.NoviceNetwork
-                        or XivChatType.Yell
-                        or XivChatType.CrossParty
-                        or XivChatType.PvPTeam
-                        or XivChatType.CrossLinkShell1
-                        or XivChatType.NPCDialogue
-                        or XivChatType.NPCDialogueAnnouncements
-                        or >= XivChatType.CrossLinkShell2 and <= XivChatType.CrossLinkShell8
-                        => new()
-                        {
-                            Message = text,
-                            Type = configuration.Notifications.ChatType,
-                            Name = new SeStringBuilder()
-                                .AddUiForeground(CommandHandler.MessageTag, CommandHandler.TagColor)
-                                .Build()
-                        },
-                    var _ => new()
-                    {
-                        Message = new SeStringBuilder()
-                            .AddUiForeground($"[{CommandHandler.MessageTag}] ", CommandHandler.TagColor)
-                            .Append(text)
-                            .Build(),
-                        Type = configuration.Notifications.ChatType
-                    }
-                };
-                chatGui.Print(message);
-            }
+                chatGui.Print(CreateChatMessage(text, configuration.Notifications.ChatType));
+
             notificationMasterIpc.Notify(text);
             return true;
         }
+
+        private static XivChatEntry CreateChatMessage(string text, XivChatType chatType)
+        {
+            // channels that show a sender get the tag as the sender, the others get it in front of the message
+            if (HasSender(chatType))
+            {
+                return new()
+                {
+                    Message = text,
+                    Type = chatType,
+                    Name = new SeStringBuilder()
+                        .AddUiForeground(CommandHandler.MessageTag, CommandHandler.TagColor)
+                        .Build()
+                };
+            }
+
+            return new()
+            {
+                Message = new SeStringBuilder()
+                    .AddUiForeground($"[{CommandHandler.MessageTag}] ", CommandHandler.TagColor)
+                    .Append(text)
+                    .Build(),
+                Type = chatType
+            };
+        }
+
+        private static bool HasSender(XivChatType chatType) =>
+            chatType is XivChatType.Say
+                or XivChatType.Shout
+                or XivChatType.TellOutgoing
+                or XivChatType.TellIncoming
+                or XivChatType.Party
+                or XivChatType.Alliance
+                or >= XivChatType.Ls1 and <= XivChatType.Ls8
+                or XivChatType.FreeCompany
+                or XivChatType.NoviceNetwork
+                or XivChatType.Yell
+                or XivChatType.CrossParty
+                or XivChatType.PvPTeam
+                or XivChatType.CrossLinkShell1
+                or XivChatType.NPCDialogue
+                or XivChatType.NPCDialogueAnnouncements
+                or >= XivChatType.CrossLinkShell2 and <= XivChatType.CrossLinkShell8;
 
         public override ETaskResult Update() => ETaskResult.TaskComplete;
 

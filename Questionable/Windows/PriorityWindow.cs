@@ -435,7 +435,6 @@ internal sealed class PriorityWindow : LWindow
             ImGui.TextColored(QstTheme.Amber, _L("Hold CTRL to overwrite existing preset."));
     }
 
-    //TODO Add all jobs for all role quests
     private Dictionary<string, List<ElementId>> GetOrCreateBuiltInPresets()
     {
         if (_builtInPresets != null)

@@ -5,7 +5,6 @@ using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
-// TODO: refactor — heavy nesting (20 lines indented ≥6 levels, max indent 11 levels).
 internal static class AethernetShortcut
 {
     internal sealed class Factory
@@ -70,130 +69,133 @@ internal static class AethernetShortcut
 
         protected override bool Start()
         {
-            if (!Task.SkipConditions.Never)
+            if (!Task.SkipConditions.Never && CheckSkipConditions() is { } skipResult)
+                return skipResult;
+
+            if (!aetheryteFunctions.IsAetheryteUnlocked(Task.From) ||
+                !aetheryteFunctions.IsAetheryteUnlocked(Task.To))
             {
-                if (Task.SkipConditions.InSameTerritory &&
-                    clientState.TerritoryType == aetheryteData.TerritoryIds[Task.To])
-                {
-                    logger.LogInformation("Skipping aethernet shortcut because the target is in the same territory");
-                    return false;
-                }
+                if (clientState.TerritoryType != aetheryteData.TerritoryIds[Task.To])
+                    throw new TaskException($"Aethernet shortcut not unlocked (from: {Task.From}, to: {Task.To})");
 
-                if (Task.SkipConditions.InTerritory.Contains(clientState.TerritoryType))
-                {
-                    logger.LogInformation(
-                        "Skipping aethernet shortcut because the target is in the specified territory");
-                    return false;
-                }
-
-                if (Task.SkipConditions.QuestsCompleted.Count > 0 &&
-                    Task.SkipConditions.QuestsCompleted.All(questFunctions.IsQuestComplete))
-                {
-                    logger.LogInformation("Skipping aethernet shortcut, all prequisite quests are complete");
-                    return true;
-                }
-
-                if (Task.SkipConditions.QuestsAccepted.Count > 0 &&
-                    Task.SkipConditions.QuestsAccepted.All(questFunctions.IsQuestAccepted))
-                {
-                    logger.LogInformation("Skipping aethernet shortcut, all prequisite quests are accepted");
-                    return true;
-                }
-
-                if (Task.SkipConditions.AetheryteLocked != null &&
-                    !aetheryteFunctions.IsAetheryteUnlocked(Task.SkipConditions.AetheryteLocked.Value))
-                {
-                    logger.LogInformation("Skipping aethernet shortcut because the target aetheryte is locked");
-                    return false;
-                }
-
-                if (Task.SkipConditions.AetheryteUnlocked != null &&
-                    aetheryteFunctions.IsAetheryteUnlocked(Task.SkipConditions.AetheryteUnlocked.Value))
-                {
-                    logger.LogInformation("Skipping aethernet shortcut because the target aetheryte is unlocked");
-                    return false;
-                }
-                if (Task.SkipConditions.InTerritory.Contains(clientState.TerritoryType))
-                {
-                    logger.LogInformation("Skipping aethernet teleport due to SkipCondition (InTerritory)");
-                    return false;
-                }
-            }
-
-            if (aetheryteFunctions.IsAetheryteUnlocked(Task.From) &&
-                aetheryteFunctions.IsAetheryteUnlocked(Task.To))
-            {
-                uint territoryType = clientState.TerritoryType;
-                Vector3 playerPosition = objectTable[0]!.Position;
-
-                // closer to the source
-                if (aetheryteData.CalculateDistance(playerPosition, territoryType, Task.From) <
-                    aetheryteData.CalculateDistance(playerPosition, territoryType, Task.To))
-                {
-                    if (aetheryteData.CalculateDistance(playerPosition, territoryType, Task.From) <
-                        (Task.From.IsFirmamentAetheryte() ? 11f : 4f))
-                    {
-                        DoTeleport();
-                        return true;
-                    }
-
-                    if (Task.From == EAetheryteLocation.SolutionNine)
-                    {
-                        logger.LogInformation("Moving to S9 aetheryte");
-                        List<Vector3> nearbyPoints =
-                        [
-                            new(0, 8.442986f, 9),
-                            new(9, 8.442986f, 0),
-                            new(-9, 8.442986f, 0),
-                            new(0, 8.442986f, -9)
-                        ];
-
-                        Vector3 closestPoint = nearbyPoints.MinBy(x => Vector3.Distance(playerPosition, x));
-                        _moving = true;
-                        movementController.NavigateTo(EMovementType.Quest, (uint)Task.From, closestPoint, new()
-                        {
-                            Sprint = true,
-                            StopDistance = 0.25f,
-                        });
-                        return true;
-                    }
-
-                    if (territoryData.CanUseMount(territoryType) &&
-                        aetheryteData.CalculateDistance(playerPosition, territoryType, Task.From) > 30 &&
-                        !gameFunctions.HasStatusPreventingMount())
-                    {
-                        _triedMounting = gameFunctions.Mount();
-                        if (_triedMounting)
-                        {
-                            _continueAt = DateTime.Now.AddSeconds(0.5);
-                            return true;
-                        }
-                    }
-                    if (Task.To is EAetheryteLocation.UldahAirship && territoryType == 130 && playerPosition.Y > 80)
-                    {
-                        logger.LogInformation("Skipping aethernet teleport, already in Uldah airship landing");
-                        return false;
-                    }
-                    if (Task.To is EAetheryteLocation.LimsaAirship && territoryType == 128 && playerPosition.Y > 90)
-                    {
-                        logger.LogInformation("Skipping aethernet teleport, already in Limsa airship landing");
-                        return false;
-                    }
-
-                    MoveTo();
-                    return true;
-                }
-            }
-            else if (clientState.TerritoryType == aetheryteData.TerritoryIds[Task.To])
-            {
                 logger.LogWarning(
                     "Aethernet shortcut not unlocked (from: {FromAetheryte}, to: {ToAetheryte}), skipping as we are already in the destination territory",
                     Task.From, Task.To);
+                return false;
             }
-            else
-                throw new TaskException($"Aethernet shortcut not unlocked (from: {Task.From}, to: {Task.To})");
 
-            return false;
+            uint territoryType = clientState.TerritoryType;
+            Vector3 playerPosition = objectTable[0]!.Position;
+            float distanceToSource = aetheryteData.CalculateDistance(playerPosition, territoryType, Task.From);
+
+            // already closer to the destination than to the source
+            if (distanceToSource >= aetheryteData.CalculateDistance(playerPosition, territoryType, Task.To))
+                return false;
+
+            if (distanceToSource < (Task.From.IsFirmamentAetheryte() ? 11f : 4f))
+            {
+                DoTeleport();
+                return true;
+            }
+
+            if (Task.From == EAetheryteLocation.SolutionNine)
+            {
+                MoveToSolutionNineAetheryte(playerPosition);
+                return true;
+            }
+
+            if (territoryData.CanUseMount(territoryType) && distanceToSource > 30 &&
+                !gameFunctions.HasStatusPreventingMount())
+            {
+                _triedMounting = gameFunctions.Mount();
+                if (_triedMounting)
+                {
+                    _continueAt = DateTime.Now.AddSeconds(0.5);
+                    return true;
+                }
+            }
+
+            if (Task.To is EAetheryteLocation.UldahAirship && territoryType == 130 && playerPosition.Y > 80)
+            {
+                logger.LogInformation("Skipping aethernet teleport, already in Uldah airship landing");
+                return false;
+            }
+
+            if (Task.To is EAetheryteLocation.LimsaAirship && territoryType == 128 && playerPosition.Y > 90)
+            {
+                logger.LogInformation("Skipping aethernet teleport, already in Limsa airship landing");
+                return false;
+            }
+
+            MoveTo();
+            return true;
+        }
+
+        /// <returns>What <see cref="Start" /> should return if a skip condition matches, otherwise null.</returns>
+        private bool? CheckSkipConditions()
+        {
+            if (Task.SkipConditions.InSameTerritory &&
+                clientState.TerritoryType == aetheryteData.TerritoryIds[Task.To])
+            {
+                logger.LogInformation("Skipping aethernet shortcut because the target is in the same territory");
+                return false;
+            }
+
+            if (Task.SkipConditions.InTerritory.Contains(clientState.TerritoryType))
+            {
+                logger.LogInformation("Skipping aethernet shortcut because the target is in the specified territory");
+                return false;
+            }
+
+            if (Task.SkipConditions.QuestsCompleted.Count > 0 &&
+                Task.SkipConditions.QuestsCompleted.All(questFunctions.IsQuestComplete))
+            {
+                logger.LogInformation("Skipping aethernet shortcut, all prequisite quests are complete");
+                return true;
+            }
+
+            if (Task.SkipConditions.QuestsAccepted.Count > 0 &&
+                Task.SkipConditions.QuestsAccepted.All(questFunctions.IsQuestAccepted))
+            {
+                logger.LogInformation("Skipping aethernet shortcut, all prequisite quests are accepted");
+                return true;
+            }
+
+            if (Task.SkipConditions.AetheryteLocked != null &&
+                !aetheryteFunctions.IsAetheryteUnlocked(Task.SkipConditions.AetheryteLocked.Value))
+            {
+                logger.LogInformation("Skipping aethernet shortcut because the target aetheryte is locked");
+                return false;
+            }
+
+            if (Task.SkipConditions.AetheryteUnlocked != null &&
+                aetheryteFunctions.IsAetheryteUnlocked(Task.SkipConditions.AetheryteUnlocked.Value))
+            {
+                logger.LogInformation("Skipping aethernet shortcut because the target aetheryte is unlocked");
+                return false;
+            }
+
+            return null;
+        }
+
+        private void MoveToSolutionNineAetheryte(Vector3 playerPosition)
+        {
+            logger.LogInformation("Moving to S9 aetheryte");
+            List<Vector3> nearbyPoints =
+            [
+                new(0, 8.442986f, 9),
+                new(9, 8.442986f, 0),
+                new(-9, 8.442986f, 0),
+                new(0, 8.442986f, -9)
+            ];
+
+            Vector3 closestPoint = nearbyPoints.MinBy(x => Vector3.Distance(playerPosition, x));
+            _moving = true;
+            movementController.NavigateTo(EMovementType.Quest, (uint)Task.From, closestPoint, new()
+            {
+                Sprint = true,
+                StopDistance = 0.25f,
+            });
         }
 
         private void MoveTo()

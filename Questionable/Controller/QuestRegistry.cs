@@ -16,7 +16,6 @@ using static Questionable.Utils.CacheUtils;
 using Sheets = Lumina.Excel.Sheets;
 namespace Questionable.Controller;
 
-// TODO: refactor — heavy nesting (29 lines indented ≥6 levels, max indent ~8 levels).
 [RegisterSingleton]
 internal sealed class QuestRegistry
 {
@@ -255,26 +254,22 @@ internal sealed class QuestRegistry
     {
         foreach (Quest quest in _quests.Values)
         {
-            foreach (QuestSequence dutySequence in quest.AllSequences())
+            foreach ((QuestSequence sequence, int _, QuestStep step) in quest.AllSteps())
             {
-                foreach (QuestStep dutyStep in dutySequence.Steps.Where(x =>
-                    x.InteractionType is EInteractionType.Duty or EInteractionType.SinglePlayerDuty))
+                if (step is { InteractionType: EInteractionType.Duty, DutyOptions: { } dutyOptions })
                 {
-                    if (dutyStep is { InteractionType: EInteractionType.Duty, DutyOptions: { } dutyOptions })
+                    _contentFinderConditionIds[dutyOptions.ContentFinderConditionId] = (quest.Id, step);
+                    if (dutyOptions.LowPriority)
                     {
-                        _contentFinderConditionIds[dutyOptions.ContentFinderConditionId] = (quest.Id, dutyStep);
-                        if (dutyOptions.LowPriority)
-                        {
-                            _lowPriorityContentFinderConditionQuests.Add((dutyOptions.ContentFinderConditionId,
-                                quest.Id, dutySequence.Sequence));
-                        }
+                        _lowPriorityContentFinderConditionQuests.Add((dutyOptions.ContentFinderConditionId,
+                            quest.Id, sequence.Sequence));
                     }
-                    else if (dutyStep.InteractionType == EInteractionType.SinglePlayerDuty &&
-                             _territoryData.TryGetContentFinderConditionForSoloInstance(quest.Id,
-                                 dutyStep.SinglePlayerDutyIndex, out TerritoryData.ContentFinderConditionData? cfcData))
-                    {
-                        _contentFinderConditionIds[cfcData.ContentFinderConditionId] = (quest.Id, dutyStep);
-                    }
+                }
+                else if (step.InteractionType == EInteractionType.SinglePlayerDuty &&
+                         _territoryData.TryGetContentFinderConditionForSoloInstance(quest.Id,
+                             step.SinglePlayerDutyIndex, out TerritoryData.ContentFinderConditionData? cfcData))
+                {
+                    _contentFinderConditionIds[cfcData.ContentFinderConditionId] = (quest.Id, step);
                 }
             }
         }
@@ -391,57 +386,40 @@ internal sealed class QuestRegistry
     public static string GetFilename(QuestInfo info) => $"{info.QuestId}_{info.SimplifiedName}.json";
     public static QuestRoot CreateQuestRoot(QuestInfo info)
     {
-        QuestSequence seq0 = new()
-        {
-            Sequence = 0,
-            Steps = [
-                    new QuestStep(
-                        EInteractionType.AcceptQuest,
-                        info.IssuerDataId,
-                        info.IssuerLocation.Position,
-                        info.IssuerLocation.Territory.RowId
-                    ) {
-                        Fly = GameFunctions.IsFlyingUnlocked(info.IssuerLocation.Territory.RowId) ? true : null
-                    }
-                ]
-        };
-        List<QuestSequence> sequences = [seq0];
+        List<QuestSequence> sequences =
+        [
+            new()
+            {
+                Sequence = 0,
+                Steps = [CreateStep(EInteractionType.AcceptQuest, info.IssuerDataId, info.IssuerLocation.Position,
+                    info.IssuerLocation.Territory.RowId)]
+            }
+        ];
         Svc.Log.Debug($"NumSequences: {info.NumSequences}");
         for (var i = 0; i <= info.NumSequences; i++)
         {
-            SheetLevel? level = i < info.ToDoLocations.Count ? info.ToDoLocations[i] : null;
-            if (level?.Position == null || i == 255)
+            if (i == 255 || i >= info.ToDoLocations.Count)
                 continue;
+
+            SheetLevel level = info.ToDoLocations[i];
+            uint objectId = level.Object.RowId;
             sequences.Add(new QuestSequence
             {
                 Sequence = (byte)(i + 1),
-                Steps = [
-                    new QuestStep(
-                        level?.Object != null && level?.Object.RowId != 0 ? EInteractionType.Interact : EInteractionType.WalkTo,
-                        level?.Object.RowId != 0 ? level?.Object.RowId : null,
-                        level?.Position + new System.Numerics.Vector3(0,level?.Object.RowId == 0 ? 30 : 0,0),
-                        level?.Territory.RowId ?? info.IssuerLocation.Territory.RowId
-                    ) {
-                        Fly = GameFunctions.IsFlyingUnlocked(level?.Territory.RowId ?? info.IssuerLocation.Territory.RowId) ? true : null
-                    }
-                ]
+                Steps = [CreateStep(objectId != 0 ? EInteractionType.Interact : EInteractionType.WalkTo,
+                    objectId != 0 ? objectId : null,
+                    level.Position + new System.Numerics.Vector3(0, objectId == 0 ? 30 : 0, 0),
+                    level.Territory.RowId)]
             });
         }
-        QuestSequence seq255 = new()
+
+        SheetLevel completion = info.ToDoLocations[^1];
+        sequences.Add(new QuestSequence
         {
             Sequence = 255,
-            Steps = [
-                    new QuestStep(
-                        EInteractionType.CompleteQuest,
-                        info.ToDoLocations[^1].Object.RowId,
-                        info.ToDoLocations[^1].Position,
-                        info.ToDoLocations[^1].Territory.RowId
-                    ) {
-                        Fly = GameFunctions.IsFlyingUnlocked(info.ToDoLocations[^1].Territory.RowId) ? true : null
-                    }
-                ]
-        };
-        sequences.Add(seq255);
+            Steps = [CreateStep(EInteractionType.CompleteQuest, completion.Object.RowId, completion.Position,
+                completion.Territory.RowId)]
+        });
         var name = "Anonymous";
         var pluginConfig = Svc.PluginInterface.GetPluginConfig();
         if (pluginConfig is Configuration config)
@@ -452,6 +430,13 @@ internal sealed class QuestRegistry
             QuestSequence = sequences
         };
     }
+    private static QuestStep CreateStep(EInteractionType interactionType, uint? dataId,
+        System.Numerics.Vector3? position, uint territoryId) =>
+        new(interactionType, dataId, position, territoryId)
+        {
+            Fly = GameFunctions.IsFlyingUnlocked(territoryId) ? true : null
+        };
+
     public static string GetQuestPathsDirectory()
     {
         var pluginConfig = Svc.PluginInterface.GetPluginConfig();
@@ -462,50 +447,49 @@ internal sealed class QuestRegistry
     public static string? GetFullPath(IQuestInfo info, bool withFilename = true) => GetFullPath((QuestInfo)info, withFilename);
     public static string? GetFullPath(QuestInfo info, bool withFilename = true)
     {
-        var filename = GetFilename(info);
-        var pluginConfig = Svc.PluginInterface.GetPluginConfig();
-        if (pluginConfig is Configuration config && config.Advanced.Debug && Svc.PluginInterface.IsDev)
+        string folder;
+        if (Svc.PluginInterface.GetPluginConfig() is Configuration { Advanced.Debug: true } && Svc.PluginInterface.IsDev)
         {
-            DirectoryInfo? targetFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths", ExpansionData.ExpansionFolders[info.Expansion]));
-            if (targetFolder == null)
-                return null;
-            string? path = "";
-            if (info.JournalGenre != null && info.JournalGenre != uint.MaxValue)
-            {
-                var genre = Svc.Data.GetExcelSheet<Sheets.JournalGenre>().GetRow(info.JournalGenre.Value);
-                path = $"{genre.Name}";
-                Svc.Log.Debug($"Genre: {genre.Name}");
-                if (genre.JournalCategory.ValueNullable != null)
-                {
-                    var category = genre.JournalCategory.Value;
-                    Svc.Log.Debug($"Category: {category.Name}");
-                    if (category.Name != genre.Name)
-                        path = Path.Combine($"{category.Name}", path);
-                    if (category.JournalSection.ValueNullable != null)
-                    {
-                        var section = category.JournalSection.Value;
-                        Svc.Log.Debug($"Section: {section.Name}");
-                        if (section.Name != category.Name)
-                        {
-                            var catPath = $"{category.Name}".Replace($"{section.Name}", "").Trim();
-                            path = Path.Combine($"{section.Name}", catPath, category.Name != genre.Name ? $"{genre.Name}" : "");
-                        }
-                    }
-                }
-            }
-            if (path == null || path.Length == 0)
-            {
-                if (withFilename)
-                    return Path.Combine(targetFolder.FullName, "Unsorted", filename);
-                return Path.Combine(targetFolder.FullName, "Unsorted");
-            }
-            if (withFilename)
-                return Path.Combine(targetFolder.FullName, path, filename);
-            return Path.Combine(targetFolder.FullName, path);
+            DirectoryInfo expansionFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName,
+                "QuestPaths", ExpansionData.ExpansionFolders[info.Expansion]));
+            string journalPath = GetJournalPath(info);
+            folder = Path.Combine(expansionFolder.FullName, journalPath.Length == 0 ? "Unsorted" : journalPath);
         }
-        if (withFilename)
-            return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests", filename);
-        return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests");
+        else
+            folder = Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests");
+
+        return withFilename ? Path.Combine(folder, GetFilename(info)) : folder;
+    }
+
+    /// <summary>
+    ///     The folder a quest path belongs in under its expansion folder, following the journal's section, category
+    ///     and genre. Empty if the quest has no journal genre.
+    /// </summary>
+    private static string GetJournalPath(QuestInfo info)
+    {
+        if (info.JournalGenre == null || info.JournalGenre == uint.MaxValue)
+            return string.Empty;
+
+        var genre = Svc.Data.GetExcelSheet<Sheets.JournalGenre>().GetRow(info.JournalGenre.Value);
+        string path = $"{genre.Name}";
+        Svc.Log.Debug($"Genre: {genre.Name}");
+        if (genre.JournalCategory.ValueNullable is not { } category)
+            return path;
+
+        Svc.Log.Debug($"Category: {category.Name}");
+        if (category.Name != genre.Name)
+            path = Path.Combine($"{category.Name}", path);
+        if (category.JournalSection.ValueNullable is not { } section)
+            return path;
+
+        Svc.Log.Debug($"Section: {section.Name}");
+        if (section.Name != category.Name)
+        {
+            var catPath = $"{category.Name}".Replace($"{section.Name}", "").Trim();
+            path = Path.Combine($"{section.Name}", catPath, category.Name != genre.Name ? $"{genre.Name}" : "");
+        }
+
+        return path;
     }
     public static (bool, FileInfo?, string) CreatePath(IQuestInfo info) => CreatePath((QuestInfo)info);
     public static (bool, FileInfo?, string) CreatePath(QuestInfo info, Quest? quest = null, bool dryrun = false)

@@ -272,6 +272,11 @@ internal static class Interact
                 if (acceptableJobs.Count == 0)
                     throw new Exception(_LF("_JobGearsetError", Task.Quest.Info.ClassJobs[0].ToFriendlyString(), Task.Quest.Info.Name));
 
+                // the game won't offer the quest on a class below its level, so prefer classes that are high enough
+                List<Job> levelledJobs = [.. acceptableJobs.Where(x => QuestFunctions.GetClassJobLevel(x) >= Task.Quest.Info.Level)];
+                if (levelledJobs.Count > 0)
+                    acceptableJobs = levelledJobs;
+
                 Job playerJob = (Job)player.ClassJob.Value.RowId;
                 // Reference first candidate to determine type of quest
                 Job firstItem = acceptableJobs[0];

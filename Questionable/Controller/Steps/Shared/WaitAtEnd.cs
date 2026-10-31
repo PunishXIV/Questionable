@@ -4,7 +4,6 @@ using Questionable.Controller.Steps.Common;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
-// TODO: refactor — heavy nesting (27 lines indented ≥6 levels, max indent ~9 levels).
 internal static class WaitAtEnd
 {
     internal sealed class Factory
@@ -75,32 +74,9 @@ internal static class WaitAtEnd
 
                 case EInteractionType.Interact when step.TargetTerritoryId != null:
                 case EInteractionType.UseItem when step.TargetTerritoryId != null:
-                    ITask waitInteraction;
-                    if (step.TerritoryId != step.TargetTerritoryId)
-                    {
-                        // interaction moves to a different territory
-                        waitInteraction = new WaitForTerritory(step.TargetTerritoryId.Value);
-                    }
-                    else
-                    {
-                        Vector3 lastPosition = step.Position ?? objectTable[0]?.Position ?? Vector3.Zero;
-                        waitInteraction = new WaitCondition.Task(() =>
-                            {
-                                Vector3? currentPosition = objectTable[0]?.Position;
-                                if (currentPosition == null)
-                                    return false;
-
-                                // interaction moved to elsewhere in the zone
-                                // the 'closest' locations are probably
-                                //   - waking sands' solar
-                                //   - rising stones' solar + dawn's respite
-                                return (lastPosition - currentPosition.Value).Length() > 2;
-                            }, $"Wait(tp away from {lastPosition.ToString("G5", CultureInfo.InvariantCulture)})");
-                    }
-
                     return
                     [
-                        waitInteraction,
+                        WaitUntilMoved(step, step.TargetTerritoryId.Value),
                         new WaitDelay(),
                         Next(quest, sequence)
                     ];
@@ -135,6 +111,28 @@ internal static class WaitAtEnd
                 default:
                     return [new WaitDelay(), Next(quest, sequence)];
             }
+        }
+
+        /// <summary>
+        ///     Waits until an interaction has moved us: into another territory, or elsewhere in the same one.
+        /// </summary>
+        private ITask WaitUntilMoved(QuestStep step, ushort targetTerritoryId)
+        {
+            if (step.TerritoryId != targetTerritoryId)
+                return new WaitForTerritory(targetTerritoryId);
+
+            Vector3 lastPosition = step.Position ?? objectTable[0]?.Position ?? Vector3.Zero;
+            return new WaitCondition.Task(() =>
+            {
+                Vector3? currentPosition = objectTable[0]?.Position;
+                if (currentPosition == null)
+                    return false;
+
+                // the 'closest' locations are probably
+                //   - waking sands' solar
+                //   - rising stones' solar + dawn's respite
+                return (lastPosition - currentPosition.Value).Length() > 2;
+            }, $"Wait(tp away from {lastPosition.ToString("G5", CultureInfo.InvariantCulture)})");
         }
 
         private static NextStep Next(Quest quest, QuestSequence sequence) => new(quest.Id, sequence.Sequence);

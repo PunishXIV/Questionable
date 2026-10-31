@@ -1301,7 +1301,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             return false;
 
         Quest? next = _priorityManager.AcceptOnlyQuests
-            .FirstOrDefault(quest => _questFunctions.IsReadyToAcceptQuest(quest.Id));
+            .FirstOrDefault(quest => _questFunctions.IsReadyToAcceptQuest(quest.Id, ignoreLevel: true) &&
+                                     _questFunctions.HasClassJobAtQuestLevel(quest.Id));
         if (next == null)
             return false;
 

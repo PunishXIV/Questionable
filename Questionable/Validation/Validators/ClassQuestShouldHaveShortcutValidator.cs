@@ -14,11 +14,7 @@ internal sealed class ClassQuestShouldHaveShortcutValidator : IQuestValidator
                 continue;
 
             foreach (QuestInfo questInfo in questData.GetClassJobQuests(classJob))
-            {
-                // TODO maybe remove the level check
-                if (questInfo.Level >= 1)
-                    _classJobQuests.Add(questInfo.QuestId);
-            }
+                _classJobQuests.Add(questInfo.QuestId);
         }
     }
 

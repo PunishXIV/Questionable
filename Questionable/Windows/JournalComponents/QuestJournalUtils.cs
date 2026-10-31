@@ -252,11 +252,11 @@ internal sealed class QuestJournalUtils
         {
             foreach (IQuestInfo quest in quests)
             {
-                // Only queue quests we can actually accept right now. This skips ones already completed
-                // (e.g. today's daily is done) and ones already accepted (the normal rules complete those).
-                // FIXME: This probably could allow you to add upcoming quests to get auto-accepted too, or at least better understand why you can't accept them.
-                //        For example: if you have a lvl 90 quest and lvl 80 class, it says you are not ready, but you might have a lvl 100 class you could accept with.
-                if (questFunctions.IsReadyToAcceptQuest(quest.QuestId))
+                // Only queue quests we can actually accept. This skips ones already completed (e.g. today's daily
+                // is done) and ones already accepted (the normal rules complete those). The current class doesn't
+                // need the level, as long as another class does: the accept step switches to it.
+                if (questFunctions.IsReadyToAcceptQuest(quest.QuestId, ignoreLevel: true) &&
+                    questFunctions.HasClassJobAtQuestLevel(quest.QuestId))
                     questController.PriorityManager.MarkAcceptOnly(quest.QuestId);
             }
         }
