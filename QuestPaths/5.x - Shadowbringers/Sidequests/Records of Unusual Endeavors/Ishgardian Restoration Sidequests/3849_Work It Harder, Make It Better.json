@@ -1,0 +1,63 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1032898,
+          "Position": {
+            "X": -163.454,
+            "Y": 16.9796,
+            "Z": -29.2914
+          },
+          "TerritoryId": 418,
+          "InteractionType": "AcceptQuest",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory"
+          ],
+          "$": "auto: issuer 1032898 (Neillemard)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1032900,
+          "Position": {
+            "X": -160.3108,
+            "Y": 17.04397,
+            "Z": -55.254734
+          },
+          "TerritoryId": 418,
+          "StopDistance": 1,
+          "InteractionType": "Instruction",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory"
+          ],
+          "Comment": "Craft/gather required items to upgrade to Dragonsung tool (check Denys for which items you need)"
+        },
+        {
+          "DataId": 1032899,
+          "Position": {
+            "X": -165.308,
+            "Y": 16.9796,
+            "Z": -30.5179
+          },
+          "TerritoryId": 418,
+          "InteractionType": "CompleteQuest",
+          "AethernetShortcut": [
+            "[Ishgard] Aetheryte Plaza",
+            "[Ishgard] Skysteel Manufactory"
+          ],
+          "NextQuestId": 3892,
+          "$": "auto: todo turn-in -> 1032899 (Nimie)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,3 +1,1 @@
-- Feature: keybound event -alydev
-- Bug fix: figured out why cbt's auto event quest thing wasn't working, hopefully -alydev
-  - Bug fix: it wasn't showing event quests that didn't have a specified start date, because they had already started when i added it -alydev
+- Feature: zh-cn translations updated -ShadyWhite
