@@ -6,7 +6,6 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Questionable.Model.Common;
-using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
 using Questionable.QuestPathGenerator.RoslynElements;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
@@ -74,9 +73,6 @@ public static class RoslynShortcuts
                 HookType hookType => hookType.ToExpressionSyntax(),
                 HookTypeFilter hookTypeFilter => hookTypeFilter.ToExpressionSyntax(),
                 Hookset hookset => hookset.ToExpressionSyntax(),
-                GatheringNodeGroup nodeGroup => nodeGroup.ToExpressionSyntax(),
-                GatheringNode nodeLocation => nodeLocation.ToExpressionSyntax(),
-                GatheringLocation location => location.ToExpressionSyntax(),
                 CombatItemUse combatItemUse => combatItemUse.ToExpressionSyntax(),
                 not null when value.GetType().IsEnum => MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression,
                     IdentifierName(value.GetType().Name), IdentifierName(value.GetType().GetEnumName(value)!)),

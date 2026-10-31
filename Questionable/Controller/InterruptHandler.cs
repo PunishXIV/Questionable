@@ -40,11 +40,24 @@ internal sealed unsafe class InterruptHandler : IDisposable
 
     public event EventHandler? Interrupted;
 
+    /// <summary>
+    ///     When the server last confirmed an action the local player started (auto-attacks excluded).
+    /// </summary>
+    public DateTime LastPlayerActionEffect { get; private set; } = DateTime.MinValue;
+
     private void HandleProcessActionEffect(uint sourceId, Character* sourceCharacter, Vector3* pos,
         EffectHeader* effectHeader, EffectEntry* effectArray, ulong* effectTail)
     {
         try
         {
+            // a non-zero source sequence means the client requested this action (rather than e.g. an auto-attack)
+            if (sourceId == _objectTable[0]?.EntityId && effectHeader->SourceSequence != 0)
+            {
+                _logger.LogDebug("Action effect for own action {ActionType} {ActionId}", effectHeader->ActionType,
+                    effectHeader->ActionID);
+                LastPlayerActionEffect = DateTime.Now;
+            }
+
             if (!_territoryData.IsDutyInstance(_clientState.TerritoryType))
             {
                 for (int i = 0; i < effectHeader->TargetCount; i++)

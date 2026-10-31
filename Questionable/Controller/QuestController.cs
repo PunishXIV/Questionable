@@ -192,7 +192,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _notificationMasterIpc = serviceProvider.GetRequiredService<NotificationMasterIpc>();
 
         _condition.ConditionChange += OnConditionChange;
-        _toastGui.Toast += OnNormalToast;
         _toastGui.ErrorToast += OnErrorToast;
     }
 
@@ -1408,8 +1407,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             conditionChangeAware.OnConditionChange(flag, value);
     }
 
-    private void OnNormalToast(ref SeString message, ref ToastOptions options, ref bool isHandled) => _gatheringController.OnNormalToast(message);
-
     protected override void HandleInterruption(object? sender, EventArgs e)
     {
         if (!IsRunning)
@@ -1473,7 +1470,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public override void Dispose()
     {
         _toastGui.ErrorToast -= OnErrorToast;
-        _toastGui.Toast -= OnNormalToast;
         _condition.ConditionChange -= OnConditionChange;
         base.Dispose();
     }

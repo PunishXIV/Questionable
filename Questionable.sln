@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.8.12021.73 stable
+VisualStudioVersion = 18.8.12021.73
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Questionable", "Questionable\Questionable.csproj", "{C91EEF13-A1AC-4A40-B695-DD4E378E5989}"
 EndProject
@@ -12,10 +12,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Questionable.Model", "Questionable.Model\Questionable.Model.csproj", "{E15144A5-AFF5-4D86-9561-AFF7DF7F505D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuestPathGenerator.Tests", "QuestPathGenerator.Tests\QuestPathGenerator.Tests.csproj", "{4FD6F346-8961-4BD5-BDA2-E5F426DE4FC7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GatheringPaths", "GatheringPaths\GatheringPaths.csproj", "{8BF98BEF-6F00-4197-91ED-75F8F1C35FFB}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GatheringPathRenderer", "GatheringPathRenderer\GatheringPathRenderer.csproj", "{F514DA95-9867-4F3F-8062-ACE0C62E8740}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BBFFC6EA-15B1-48FC-B4D3-D9491278C27F}"
 	ProjectSection(SolutionItems) = preProject
@@ -55,14 +51,6 @@ Global
 		{4FD6F346-8961-4BD5-BDA2-E5F426DE4FC7}.Debug|x64.Build.0 = Debug|x64
 		{4FD6F346-8961-4BD5-BDA2-E5F426DE4FC7}.Release|x64.ActiveCfg = Release|x64
 		{4FD6F346-8961-4BD5-BDA2-E5F426DE4FC7}.Release|x64.Build.0 = Release|x64
-		{8BF98BEF-6F00-4197-91ED-75F8F1C35FFB}.Debug|x64.ActiveCfg = Debug|x64
-		{8BF98BEF-6F00-4197-91ED-75F8F1C35FFB}.Debug|x64.Build.0 = Debug|x64
-		{8BF98BEF-6F00-4197-91ED-75F8F1C35FFB}.Release|x64.ActiveCfg = Release|x64
-		{8BF98BEF-6F00-4197-91ED-75F8F1C35FFB}.Release|x64.Build.0 = Release|x64
-		{F514DA95-9867-4F3F-8062-ACE0C62E8740}.Debug|x64.ActiveCfg = Debug|x64
-		{F514DA95-9867-4F3F-8062-ACE0C62E8740}.Debug|x64.Build.0 = Debug|x64
-		{F514DA95-9867-4F3F-8062-ACE0C62E8740}.Release|x64.ActiveCfg = Release|x64
-		{F514DA95-9867-4F3F-8062-ACE0C62E8740}.Release|x64.Build.0 = Release|x64
 		{8572A8B2-2F31-4D17-B207-6A7A2E0579EF}.Debug|x64.ActiveCfg = Debug|x64
 		{8572A8B2-2F31-4D17-B207-6A7A2E0579EF}.Debug|x64.Build.0 = Debug|x64
 		{8572A8B2-2F31-4D17-B207-6A7A2E0579EF}.Release|x64.ActiveCfg = Release|x64

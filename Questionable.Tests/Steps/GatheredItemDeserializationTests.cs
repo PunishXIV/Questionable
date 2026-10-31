@@ -67,7 +67,7 @@ public sealed class GatheredItemDeserializationTests
         var (quest, sequence, _) = QuestTestData.FactoryContext(new QuestId(2621), 4, step!);
         var factory = new Gather.Factory();
 
-        var task = factory.CreateAllTasks(quest, sequence, step!).OfType<Gather.DelayedGatheringTask>().Single();
+        var task = factory.CreateAllTasks(quest, sequence, step!).OfType<Gather.GatheringTask>().Single();
 
         Assert.Equal(17945u, task.GatheredItem.ItemId);
         Assert.Equal(20, task.GatheredItem.ItemCount);

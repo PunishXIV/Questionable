@@ -1,8 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using ECommons.ExcelServices;
-using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
 
 namespace Questionable.Controller.GameUi;
@@ -15,11 +12,10 @@ namespace Questionable.Controller.GameUi;
 [RegisterSingleton]
 internal sealed class TravelDestinationResolver(
     IClientState clientState,
-    GatheringPointRegistry gatheringPointRegistry,
     IDataManager dataManager,
     ILogger<TravelDestinationResolver> logger)
 {
-    public unsafe ushort? FindTargetTerritoryFromQuestStep(QuestController.QuestProgress currentQuest)
+    public ushort? FindTargetTerritoryFromQuestStep(QuestController.QuestProgress currentQuest)
     {
         // this can be triggered either manually (in which case we should increase the step counter), or automatically
         // (in which case it is ~1 frame later, and the step counter has already been increased)
@@ -33,28 +29,6 @@ internal sealed class TravelDestinationResolver(
             logger.LogTrace("FindTargetTerritoryFromQuestStep (current): {CurrentTerritory}, {TargetTerritory}",
                 step.TerritoryId,
                 step.TargetTerritoryId);
-        }
-
-        if (step != null && (step.TerritoryId != clientState.TerritoryType || step.TargetTerritoryId == null) &&
-            step.InteractionType == EInteractionType.Gather)
-        {
-            if (gatheringPointRegistry.TryGetGatheringPointId(step.ItemsToGather[0].ItemId,
-                    (Job?)PlayerState.Instance()->CurrentClassJobId ?? Job.ADV,
-                    out GatheringPointId? gatheringPointId) &&
-                gatheringPointRegistry.TryGetGatheringPoint(gatheringPointId, out GatheringRoot? root))
-            {
-                foreach (QuestStep gatheringStep in root.Steps)
-                {
-                    if (gatheringStep.TerritoryId == clientState.TerritoryType && gatheringStep.TargetTerritoryId != null)
-                    {
-                        logger.LogTrace(
-                            "FindTargetTerritoryFromQuestStep (gathering): {CurrentTerritory}, {TargetTerritory}",
-                            gatheringStep.TerritoryId,
-                            gatheringStep.TargetTerritoryId);
-                        return gatheringStep.TargetTerritoryId;
-                    }
-                }
-            }
         }
 
         if (step == null || step.TargetTerritoryId == null)

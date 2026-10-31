@@ -58,16 +58,12 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskFactoryAndExecutor<QuestCleanUp.CloseGatheringAddonTask, QuestCleanUp.CloseGatheringAddonFactory, QuestCleanUp.DoCloseAddon>();
         serviceCollection.AddTaskExecutor<AbandonQuest.Task, AbandonQuest.AbandonQuestExecutor>();
         serviceCollection.AddTaskExecutor<LogQuestCompletion.Task, LogQuestCompletion.LogQuestCompletionExecutor>();
-        serviceCollection
-            .AddTaskExecutor<MoveToLandingLocation.Task, MoveToLandingLocation.MoveToLandingLocationExecutor>();
         serviceCollection.AddTaskFactory<CleanUpOtherQuests.CleanUpOtherQuestsFactory>();
         //serviceCollection.AddTaskFactoryAndExecutor<Mail.ClaimMailTask, Mail.Factory, Mail.ClaimMailExecutor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<SkipCondition.SkipTask, SkipCondition.Factory, SkipCondition.CheckSkip>();
         serviceCollection
             .AddTaskFactoryAndExecutor<RedeemRewardItems.Task, RedeemRewardItems.Factory, RedeemRewardItems.TryRedeemExecutor>();
-        serviceCollection.AddTaskExecutor<DoGather.Task, DoGather.GatherExecutor>();
-        serviceCollection.AddTaskExecutor<DoGatherCollectable.Task, DoGatherCollectable.GatherCollectableExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<SwitchClassJob.Task, SwitchClassJob.Factory,
             SwitchClassJob.SwitchClassJobExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<CreateGearset.Task, CreateGearset.Factory,
@@ -90,7 +86,6 @@ internal static class ServiceCollectionExtensions
             .AddTaskExecutor<AetheryteShortcut.MoveAwayFromAetheryte,
                 AetheryteShortcut.MoveAwayFromAetheryteExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<Gather.GatheringTask, Gather.Factory, Gather.StartGathering>();
-        serviceCollection.AddTaskExecutor<Gather.DelayedGatheringTask, Gather.DelayedGatheringExecutor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<AethernetShortcut.Task, AethernetShortcut.Factory,
                 AethernetShortcut.UseAethernetShortcut>();
@@ -122,7 +117,6 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskExecutor<Emote.UseOnSelf, Emote.UseOnSelfExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<ActionStep.UseOnObject, ActionStep.Factory, ActionStep.UseOnObjectExecutor>();
         serviceCollection.AddTaskExecutor<ActionStep.UseMudraOnObject, ActionStep.UseMudraOnObjectExecutor>();
-        serviceCollection.AddTaskExecutor<ActionStep.TriggerStatusIfMissing, ActionStep.TriggerStatusIfMissingExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<StatusOff.Task, StatusOff.Factory, StatusOff.DoStatusOff>();
         serviceCollection.AddTaskFactoryAndExecutor<Interact.Task, Interact.Factory, Interact.DoInteract>();
         serviceCollection.AddTaskFactory<Jump.Factory>();
@@ -141,6 +135,7 @@ internal static class ServiceCollectionExtensions
             .AddTaskFactoryAndExecutor<EquipRecommended.EquipTask, EquipRecommended.Factory,
                 EquipRecommended.DoEquipRecommended>();
         serviceCollection.AddTaskFactoryAndExecutor<Craft.CraftTask, Craft.Factory, Craft.DoCraft>();
+        serviceCollection.AddTaskFactoryAndExecutor<Purchase.BuyTask, Purchase.Factory, Purchase.DoBuy>();
         serviceCollection.AddTaskFactoryAndExecutor<Fish.FishTask, Fish.Factory, Fish.DoFish>();
         serviceCollection
             .AddTaskFactoryAndExecutor<TurnInDelivery.Task, TurnInDelivery.Factory,

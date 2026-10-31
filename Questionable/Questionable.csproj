@@ -22,7 +22,7 @@
 
     <ItemGroup>
         <PackageReference Include="Dalamud.Extensions.MicrosoftLogging" Version="4.0.1" />
-        <PackageReference Include="ECommons" Version="3.2.1.22" />
+        <PackageReference Include="ECommons" Version="3.2.1.26" />
         <PackageReference Include="I18N.DotNet" Version="1.3.1" />
         <PackageReference Include="Injectio" Version="6.2.0">
           <PrivateAssets>all</PrivateAssets>
@@ -39,7 +39,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\GatheringPaths\GatheringPaths.csproj" />
         <ProjectReference Include="..\Questionable.Model\Questionable.Model.csproj" />
         <ProjectReference Include="..\QuestPaths\QuestPaths.csproj" />
     </ItemGroup>

@@ -94,7 +94,7 @@ jobs:
           # theory only re-runs on files touched by this PR. Empty => run everything (local dev).
           BASE_SHA="${{ github.event.pull_request.base.sha }}"
           HEAD_SHA="${{ github.event.pull_request.head.sha }}"
-          CHANGED=$(git diff --name-only --diff-filter=AMR "$BASE_SHA" "$HEAD_SHA" -- 'QuestPaths/**/*.json' 'GatheringPaths/**/*.json' | tr '\n' ';')
+          CHANGED=$(git diff --name-only --diff-filter=AMR "$BASE_SHA" "$HEAD_SHA" -- 'QuestPaths/**/*.json' | tr '\n' ';')
           echo "Changed quest files:"
           echo "$CHANGED" | tr ';' '\n'
           echo "QUESTIONABLE_CHANGED_QUESTS=$CHANGED" >> "$GITHUB_ENV"

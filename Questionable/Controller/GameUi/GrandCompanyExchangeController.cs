@@ -13,7 +13,7 @@ namespace Questionable.Controller.GameUi;
 ///     longer need manual intervention.
 /// </summary>
 /// <remarks>
-///     Mirrors <see cref="ShopController" />, but the GC Exchange is driven through
+///     Buys Grand Company seal items (Knightshopper doesn't support seals). The GC Exchange is driven through
 ///     <c>AgentGrandCompanyExchange.ReceiveEvent</c>. The controller acts only while a
 ///     <see cref="EInteractionType.PurchaseItem" /> step is current and the
 ///     <c>GrandCompanyExchange</c> window is open. The purchase confirmation prompt is accepted by
@@ -61,7 +61,7 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
 
     /// <summary>
     ///     Set while a purchase confirmation prompt is expected; <see cref="YesNoChoiceHandler" />
-    ///     accepts the prompt and clears this flag. Mirrors <see cref="ShopController.IsAwaitingYesNo" />.
+    ///     accepts the prompt and clears this flag.
     /// </summary>
     public bool IsAwaitingYesNo { get; set; }
 

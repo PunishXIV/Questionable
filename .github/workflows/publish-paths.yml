@@ -1,6 +1,6 @@
 name: Publish path data bundle
 
-# Publishes the quest/gathering path data as a standalone, downloadable bundle whenever
+# Publishes the quest path data as a standalone, downloadable bundle whenever
 # path JSON changes. This is independent of the plugin release (release.yml) and does NOT
 # bump Directory.Build.targets or create a v{VERSION} tag.
 
@@ -9,7 +9,6 @@ on:
     branches: [ new-main, testing ]
     paths:
       - 'QuestPaths/**'
-      - 'GatheringPaths/**'
   workflow_dispatch:
 
 concurrency:
@@ -80,8 +79,8 @@ jobs:
           }
           EOF
 
-          # Bundle = the expansion folders of both path projects + the manifest at the root.
-          zip -r -q -X out/paths.zip QuestPaths/?.x* GatheringPaths/?.x*
+          # Bundle = the expansion folders of the quest path project + the manifest at the root.
+          zip -r -q -X out/paths.zip QuestPaths/?.x*
           zip -q -X -j out/paths.zip manifest.json
 
           SHA=$(sha256sum out/paths.zip | cut -d' ' -f1)
@@ -110,7 +109,7 @@ jobs:
           tag_name: paths-${{ steps.channel.outputs.channel }}
           name: "Path data (${{ steps.channel.outputs.channel }})"
           body: |
-            Rolling quest/gathering path data bundle for the **${{ steps.channel.outputs.channel }}** channel.
+            Rolling quest path data bundle for the **${{ steps.channel.outputs.channel }}** channel.
 
             - Data version: `${{ steps.meta.outputs.data_version }}`
             - Minimum plugin data format: `${{ steps.meta.outputs.min_format }}`
@@ -126,7 +125,7 @@ jobs:
       - name: Collect changed path files
         id: changes
         run: |
-          # List files changed in this push that live under QuestPaths/ or GatheringPaths/.
+          # List files changed in this push that live under QuestPaths/.
           # For a normal push, github.event.before points at the previous tip; for the first
           # push to a branch (or workflow_dispatch) it can be all-zeros, so fall back to HEAD~1.
           BEFORE="${{ github.event.before }}"
@@ -135,9 +134,9 @@ jobs:
           fi
 
           if [ -n "$BEFORE" ]; then
-            NUMSTAT=$(git diff --numstat "$BEFORE" HEAD -- 'QuestPaths/**' 'GatheringPaths/**')
+            NUMSTAT=$(git diff --numstat "$BEFORE" HEAD -- 'QuestPaths/**')
           else
-            NUMSTAT=$(git diff-tree --no-commit-id --numstat -r HEAD -- 'QuestPaths/**' 'GatheringPaths/**')
+            NUMSTAT=$(git diff-tree --no-commit-id --numstat -r HEAD -- 'QuestPaths/**')
           fi
 
           # Drop files whose diff is exactly one line added and one line removed — these are

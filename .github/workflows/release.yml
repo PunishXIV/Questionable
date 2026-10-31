@@ -7,7 +7,6 @@ on:
     # trigger a full plugin release. Mixed commits (code + paths) still release normally.
     paths-ignore:
       - 'QuestPaths/**'
-      - 'GatheringPaths/**'
   workflow_dispatch:
     inputs:
       force_release:

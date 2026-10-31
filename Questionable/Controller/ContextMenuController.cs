@@ -7,7 +7,6 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.System.Framework;
 using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
-using Questionable.Model.Gathering;
 using Questionable.Model.Questing;
 namespace Questionable.Controller;
 
@@ -20,7 +19,7 @@ internal sealed class ContextMenuController : IDisposable
     private readonly GameFunctions _gameFunctions;
     private readonly IGameGuiAdapter _gameGui;
     private readonly GatheringData _gatheringData;
-    private readonly GatheringPointRegistry _gatheringPointRegistry;
+    private readonly GatherChillIpc _gatherChillIpc;
     private readonly ILogger<ContextMenuController> _logger;
     private readonly QuestController _questController;
     private readonly QuestData _questData;
@@ -33,7 +32,7 @@ internal sealed class ContextMenuController : IDisposable
     public ContextMenuController(
         IContextMenu contextMenu,
         QuestController questController,
-        GatheringPointRegistry gatheringPointRegistry,
+        GatherChillIpc gatherChillIpc,
         GatheringData gatheringData,
         QuestRegistry questRegistry,
         QuestData questData,
@@ -47,7 +46,7 @@ internal sealed class ContextMenuController : IDisposable
     {
         _contextMenu = contextMenu;
         _questController = questController;
-        _gatheringPointRegistry = gatheringPointRegistry;
+        _gatherChillIpc = gatherChillIpc;
         _gatheringData = gatheringData;
         _questRegistry = questRegistry;
         _questData = questData;
@@ -172,9 +171,9 @@ internal sealed class ContextMenuController : IDisposable
         if (classJob != currentClassJob)
             return;
 
-        if (!_gatheringPointRegistry.TryGetGatheringPointId(itemId, classJob, out GatheringPointId? _))
+        if (!_gatheringData.IsGatherableBy(itemId, classJob) || !_gatherChillIpc.CanGather(itemId))
         {
-            _logger.LogInformation("No gathering point found for {ClassJob}.", classJob);
+            _logger.LogInformation("Gather n Chill can't gather {ItemId} as {ClassJob}.", itemId, classJob);
             return;
         }
 

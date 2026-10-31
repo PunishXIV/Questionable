@@ -11,10 +11,14 @@ internal static class MoveTo
         IClientState clientState,
         IObjectTable objectTable,
         AetheryteData aetheryteData,
+        GilShopData gilShopData,
         ILogger<Factory> logger) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
+            if (Purchase.IsHandledByKnightshopper(step, gilShopData))
+                return [];
+
             if (step.Position != null)
                 return CreateMoveTasks(quest, step, step.Position.Value);
             if (step is { DataId: not null, StopDistance: not null })

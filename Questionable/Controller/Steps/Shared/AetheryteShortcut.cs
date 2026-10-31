@@ -16,11 +16,15 @@ internal static class AetheryteShortcut
         IClientState clientState,
         IObjectTable objectTable,
         ExtraConditionUtils extraConditionUtils,
+        GilShopData gilShopData,
         ILogger<AetheryteShortcut.Factory> logger)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
+            if (Purchase.IsHandledByKnightshopper(step, gilShopData))
+                yield break;
+
             if (step.AetheryteShortcut == null)
             {
                 logger.LogTrace(step.InteractionType.ToString());

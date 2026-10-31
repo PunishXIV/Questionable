@@ -16,9 +16,6 @@ internal static class PathDataBundle
     /// <summary>Zip-entry path prefix for quest path files.</summary>
     public const string QuestPathPrefix = "QuestPaths/";
 
-    /// <summary>Zip-entry path prefix for gathering path files.</summary>
-    public const string GatheringPathPrefix = "GatheringPaths/";
-
     private static readonly JsonSerializerOptions ManifestJsonOptions = new()
     {
         PropertyNameCaseInsensitive = true,

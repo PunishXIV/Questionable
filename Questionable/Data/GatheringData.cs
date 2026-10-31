@@ -1,14 +1,13 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Gathering;
 namespace Questionable.Data;
 
 [RegisterSingleton]
 internal sealed class GatheringData
 {
-    private readonly Dictionary<uint, GatheringPointId> _botanistGatheringPoints = [];
+    private readonly HashSet<uint> _botanistItems = [];
     private readonly Dictionary<uint, ushort> _itemIdToCollectability;
-    private readonly Dictionary<uint, GatheringPointId> _minerGatheringPoints = [];
+    private readonly HashSet<uint> _minerItems = [];
     private readonly Dictionary<uint, uint> _npcForCustomDeliveries;
 
     public GatheringData(IDataManager dataManager, ILogger<GatheringData> logger)
@@ -24,13 +23,13 @@ internal sealed class GatheringData
                 if (gatheringItemToItem.TryGetValue(gatheringItem.RowId, out uint itemId))
                 {
                     if (gatheringPointBase.GatheringType.RowId is 0 or 1)
-                        _minerGatheringPoints[itemId] = new((ushort)gatheringPointBase.RowId);
+                        _minerItems.Add(itemId);
                     else if (gatheringPointBase.GatheringType.RowId is 2 or 3)
-                        _botanistGatheringPoints[itemId] = new((ushort)gatheringPointBase.RowId);
+                        _botanistItems.Add(itemId);
                 }
             }
         }
-        logger.LogDebug($"Loaded {_minerGatheringPoints.Count + _botanistGatheringPoints.Count} gathering items ({_minerGatheringPoints.Count} + {_botanistGatheringPoints.Count})");
+        logger.LogDebug($"Loaded {_minerItems.Count + _botanistItems.Count} gathering items ({_minerItems.Count} + {_botanistItems.Count})");
 
         _itemIdToCollectability = dataManager.GetSubrowExcelSheet<SatisfactionSupply>()
             .Flatten()
@@ -58,12 +57,12 @@ internal sealed class GatheringData
             .ToDictionary(x => x.ItemId, x => x.NpcId);
     }
 
-    public IEnumerable<GatheringPointId> MinerGatheringPoints => _minerGatheringPoints.Values;
-    public IEnumerable<GatheringPointId> BotanistGatheringPoints => _botanistGatheringPoints.Values;
-
-    public bool TryGetMinerGatheringPointByItemId(uint itemId, [NotNullWhen(true)] out GatheringPointId? gatheringPointId) => _minerGatheringPoints.TryGetValue(itemId, out gatheringPointId);
-
-    public bool TryGetBotanistGatheringPointByItemId(uint itemId, [NotNullWhen(true)] out GatheringPointId? gatheringPointId) => _botanistGatheringPoints.TryGetValue(itemId, out gatheringPointId);
+    public bool IsGatherableBy(uint itemId, Job classJob) => classJob switch
+    {
+        Job.MIN => _minerItems.Contains(itemId),
+        Job.BTN => _botanistItems.Contains(itemId),
+        var _ => false
+    };
 
     public ushort GetRecommendedCollectability(uint itemId) => _itemIdToCollectability.GetValueOrDefault(itemId);
 

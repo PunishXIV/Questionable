@@ -170,7 +170,11 @@ internal sealed unsafe partial class GameFunctions
 
     public bool UseItemOnPosition(Vector3 position, uint itemId) => ActionManager.Instance()->UseActionLocation(ActionType.EventItem, itemId, location: &position);
 
-    public bool UseAction(EAction action, bool? ignoreResult = null)
+    /// <returns>
+    ///     Whether the game accepted (used or queued) the action. This doesn't mean it went off, see
+    ///     <see cref="InterruptHandler.LastPlayerActionEffect" /> for that.
+    /// </returns>
+    public bool UseAction(EAction action)
     {
         uint actionId = (uint)action & 0xFFFF;
         ActionType actionType = ((uint)action & 0x10000) == 0x10000 ? ActionType.GeneralAction : ActionType.Action;
@@ -182,9 +186,7 @@ internal sealed unsafe partial class GameFunctions
             bool result = ActionManager.Instance()->UseAction(actionType, actionId);
             logger.LogInformation("UseAction {Action} (adjusted: {AdjustedActionId}) result: {Result}", action,
                 actionId, result);
-
-            // TODO figure out what UseAction returns and why it returns false when an action is successful
-            return true; //ignoreResult != null ? ignoreResult.Value : result;
+            return result;
         }
 
         return false;

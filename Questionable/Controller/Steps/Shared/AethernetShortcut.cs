@@ -11,12 +11,13 @@ internal static class AethernetShortcut
     internal sealed class Factory
     (
         AetheryteData aetheryteData,
-        IClientState clientState)
+        IClientState clientState,
+        GilShopData gilShopData)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (step.AethernetShortcut == null)
+            if (step.AethernetShortcut == null || Purchase.IsHandledByKnightshopper(step, gilShopData))
                 yield break;
 
             yield return new WaitNavmesh.Task();

@@ -27,7 +27,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
     private readonly TerritoryData _territoryData;
     private readonly IClientState _clientState;
     private readonly ITargetManager _targetManager;
-    private readonly ShopController _shopController;
     private readonly GrandCompanyExchangeController _grandCompanyExchangeController;
     private readonly ChocoboNamingController _chocoboNamingController;
     private readonly Configuration _configuration;
@@ -40,7 +39,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
     private readonly ILogger<YesNoChoiceHandler> _logger;
 
     private readonly Regex _returnRegex;
-    private readonly Regex _purchaseItemRegex;
     private readonly Regex _ticketRegex;
     private readonly Regex _hqTradeRegex;
     private readonly Regex _fcInviteRegex;
@@ -54,7 +52,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
         TerritoryData territoryData,
         IClientState clientState,
         ITargetManager targetManager,
-        ShopController shopController,
         GrandCompanyExchangeController grandCompanyExchangeController,
         ChocoboNamingController chocoboNamingController,
         Configuration configuration,
@@ -76,7 +73,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
         _territoryData = territoryData;
         _clientState = clientState;
         _targetManager = targetManager;
-        _shopController = shopController;
         _grandCompanyExchangeController = grandCompanyExchangeController;
         _chocoboNamingController = chocoboNamingController;
         _configuration = configuration;
@@ -89,7 +85,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
         _logger = logger;
 
         _returnRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 196, addon => addon.Text, pluginLog)!;
-        _purchaseItemRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 3406, addon => addon.Text, pluginLog)!;
         _ticketRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 102686, addon => addon.Text, pluginLog)!;
         _hqTradeRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 102434, addon => addon.Text, pluginLog)!;
         _fcInviteRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 2873, addon => addon.Text, pluginLog)!;
@@ -148,13 +143,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
             return;
 
         _logger.LogTrace("Prompt: '{Prompt}'", actualPrompt);
-        if (_shopController.IsAwaitingYesNo && _purchaseItemRegex.IsMatch(actualPrompt))
-        {
-            addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
-            _shopController.IsAwaitingYesNo = false;
-            return;
-        }
-
         if (_grandCompanyExchangeController.IsAwaitingYesNo)
         {
             _logger.LogInformation("Confirming Grand Company exchange purchase");

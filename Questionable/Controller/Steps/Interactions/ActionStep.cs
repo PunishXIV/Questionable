@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Questionable.Controller.Steps.Common;
@@ -53,10 +54,23 @@ internal static class ActionStep
     internal sealed class UseOnObjectExecutor
     (
         GameFunctions gameFunctions,
+        InterruptHandler interruptHandler,
+        ICondition condition,
         ILogger<UseOnObject> logger) : TaskExecutor<UseOnObject>
     {
+        private const int MaxAttempts = 10;
+
+        /// <summary>
+        ///     The game accepting an action doesn't mean it went off, so give the server time to confirm it before
+        ///     trying again.
+        /// </summary>
+        private static readonly TimeSpan AcceptedRetryDelay = TimeSpan.FromSeconds(3);
+
         private DateTime _continueAt = DateTime.MinValue;
-        private bool _usedAction;
+        private DateTime _retryAt = DateTime.MinValue;
+        private DateTime _firstAttemptAt = DateTime.MaxValue;
+        private int _attempts;
+        private bool _accepted;
 
         protected override bool Start()
         {
@@ -85,15 +99,14 @@ internal static class ActionStep
                         }
                     }
 
-                    _usedAction = gameFunctions.UseAction(gameObject, Task.Action);
+                    TryUseAction(gameObject);
                     _continueAt = DateTime.Now.AddSeconds(Task.Timeout);
                     return true;
                 }
             }
             else
             {
-                _usedAction = gameFunctions.UseAction(Task.Action);
-                logger.LogTrace($"start _usedAction: {_usedAction}");
+                TryUseAction(null);
                 _continueAt = DateTime.Now.AddSeconds(Task.Timeout);
                 return true;
             }
@@ -105,42 +118,75 @@ internal static class ActionStep
         {
             if (DateTime.Now <= _continueAt)
                 return ETaskResult.StillRunning;
-            logger.LogTrace($"update _usedAction: {_usedAction}");
             if (Task.IgnoreResult)
                 return ETaskResult.TaskComplete;
 
-            if (!_usedAction)
+            if (_attempts > 0 && interruptHandler.LastPlayerActionEffect >= _firstAttemptAt)
+                return CheckCompletionFlags();
+
+            // if the quest already progressed, don't use the action again even if we missed the confirmation
+            if (HasCompletionFlags() && CheckCompletionFlags() == ETaskResult.TaskComplete)
+                return ETaskResult.TaskComplete;
+
+            if (_attempts >= MaxAttempts)
             {
-                if (Task.DataId != null)
-                {
-                    IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId.Value);
-                    if (gameObject == null || !gameObject.IsTargetable)
-                        return ETaskResult.StillRunning;
+                if (!_accepted)
+                    throw new TaskException($"Unable to use action {Task.Action}");
 
-                    _usedAction = gameFunctions.UseAction(gameObject, Task.Action);
-                    _continueAt = DateTime.Now.AddSeconds(Task.Timeout);
-                }
-                else
-                {
-                    _usedAction = gameFunctions.UseAction(Task.Action);
-                    _continueAt = DateTime.Now.AddSeconds(Task.Timeout);
-                }
+                // some actions might never send an action effect, keep the old behaviour for those
+                logger.LogWarning("No confirmation for action {Action} after {Attempts} attempts, assuming it was used",
+                    Task.Action, _attempts);
+                return CheckCompletionFlags();
+            }
 
+            if (DateTime.Now < _retryAt || condition[ConditionFlag.Casting])
                 return ETaskResult.StillRunning;
-            }
 
-            if (Task.Quest != null &&
-                Task.CompletionQuestVariablesFlags != null &&
-                QuestWorkUtils.HasCompletionFlags(Task.CompletionQuestVariablesFlags))
+            if (Task.DataId != null)
             {
-                QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest.Id);
-                return questWork != null &&
-                       QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork)
-                    ? ETaskResult.TaskComplete
-                    : ETaskResult.StillRunning;
-            }
+                IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId.Value);
+                if (gameObject == null || !gameObject.IsTargetable)
+                    return ETaskResult.StillRunning;
 
-            return ETaskResult.TaskComplete;
+                TryUseAction(gameObject);
+            }
+            else
+                TryUseAction(null);
+
+            return ETaskResult.StillRunning;
+        }
+
+        private void TryUseAction(IGameObject? gameObject)
+        {
+            bool accepted = gameObject != null
+                ? gameFunctions.UseAction(gameObject, Task.Action)
+                : gameFunctions.UseAction(Task.Action);
+
+            if (_attempts == 0)
+                _firstAttemptAt = DateTime.Now;
+
+            _attempts++;
+            _accepted |= accepted;
+            _retryAt = DateTime.Now + (accepted ? AcceptedRetryDelay : TimeSpan.FromSeconds(Task.Timeout));
+            logger.LogDebug("Action {Action} attempt {Attempt}, accepted: {Accepted}", Task.Action, _attempts,
+                accepted);
+        }
+
+        private bool HasCompletionFlags() =>
+            Task.Quest != null &&
+            Task.CompletionQuestVariablesFlags != null &&
+            QuestWorkUtils.HasCompletionFlags(Task.CompletionQuestVariablesFlags);
+
+        private ETaskResult CheckCompletionFlags()
+        {
+            if (!HasCompletionFlags())
+                return ETaskResult.TaskComplete;
+
+            QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest!.Id);
+            return questWork != null &&
+                   QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags!, questWork)
+                ? ETaskResult.TaskComplete
+                : ETaskResult.StillRunning;
         }
 
         public override bool ShouldInterruptOnDamage() => true;
@@ -212,28 +258,6 @@ internal static class ActionStep
             logger.LogError("Unable to find relevant combo for {Action}", Task.Action);
             return ETaskResult.TaskComplete;
         }
-
-        public override bool ShouldInterruptOnDamage() => false;
-    }
-
-    internal sealed record TriggerStatusIfMissing(EStatus Status, EAction Action) : ITask
-    {
-        public override string ToString() => $"TriggerStatus({Status})";
-    }
-
-    internal sealed class TriggerStatusIfMissingExecutor(GameFunctions gameFunctions)
-        : TaskExecutor<TriggerStatusIfMissing>
-    {
-        protected override bool Start()
-        {
-            if (gameFunctions.HasStatus(Task.Status))
-                return false;
-
-            gameFunctions.UseAction(Task.Action);
-            return true;
-        }
-
-        public override ETaskResult Update() => gameFunctions.HasStatus(Task.Status) ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
 
         public override bool ShouldInterruptOnDamage() => false;
     }

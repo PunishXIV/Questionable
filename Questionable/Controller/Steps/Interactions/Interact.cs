@@ -16,7 +16,8 @@ namespace Questionable.Controller.Steps.Interactions;
 // TODO: refactor — heavy nesting (22 lines indented ≥6 levels, max indent ~12 levels).
 internal static class Interact
 {
-    internal sealed class Factory(AutomatonIpc automatonIpc, BossModIpc bossModIpc, Configuration configuration, RedoUtil redoUtil) : ITaskFactory
+    internal sealed class Factory(AutomatonIpc automatonIpc, BossModIpc bossModIpc, Configuration configuration, RedoUtil redoUtil,
+        GilShopData gilShopData) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -58,7 +59,7 @@ internal static class Interact
             }
             else if (step.InteractionType == EInteractionType.PurchaseItem)
             {
-                if (step.DataId == null)
+                if (step.DataId == null || Purchase.IsHandledByKnightshopper(step, gilShopData))
                     yield break;
             }
             else if (step.InteractionType == EInteractionType.Snipe)

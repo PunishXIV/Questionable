@@ -175,7 +175,6 @@ public sealed class QuestionablePlugin(
         // plugin version, so the registry doesn't pick up a stale one.
         PathDataUpdater pathDataUpdater = serviceProvider.GetRequiredService<PathDataUpdater>();
         serviceProvider.GetRequiredService<QuestRegistry>().Reload();
-        serviceProvider.GetRequiredService<GatheringPointRegistry>().Reload();
         serviceProvider.GetRequiredService<SinglePlayerDutyConfigComponent>().Reload();
         serviceProvider.GetRequiredService<CommandHandler>();
         serviceProvider.GetRequiredService<ContextMenuController>();
@@ -186,7 +185,6 @@ public sealed class QuestionablePlugin(
         serviceProvider.GetRequiredService<HousingSelectBlockHandler>();
         serviceProvider.GetRequiredService<YesNoChoiceHandler>();
         serviceProvider.GetRequiredService<DialogueChoiceHandler>();
-        serviceProvider.GetRequiredService<ShopController>();
         serviceProvider.GetRequiredService<GrandCompanyExchangeController>();
         serviceProvider.GetRequiredService<ChocoboNamingController>();
         serviceProvider.GetRequiredService<QuestionableIpc>();

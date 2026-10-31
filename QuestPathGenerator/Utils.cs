@@ -26,8 +26,6 @@ public static class Utils
         AdditionalText commonCompletionFlagsFile =
             context.AdditionalFiles.Single(x => Path.GetFileName(x.Path) == "common-completionflags.json");
         AdditionalText commonVector3File = context.AdditionalFiles.Single(x => Path.GetFileName(x.Path) == "common-vector3.json");
-        AdditionalText? gatheringSchemaFile =
-            context.AdditionalFiles.SingleOrDefault(x => Path.GetFileName(x.Path) == "gatheringlocation-v1.json");
         AdditionalText? questSchemaFile = context.AdditionalFiles.SingleOrDefault(x => Path.GetFileName(x.Path) == "quest-v1.json");
 
         SchemaRegistry.Global.Register(
@@ -50,14 +48,6 @@ public static class Utils
             new("https://qstxiv.github.io/schema/common-vector3.json"),
             JsonSchema.FromText(commonVector3File.GetText(context.CancellationToken)!.ToString()));
 
-        if (gatheringSchemaFile != null)
-        {
-            SchemaRegistry.Global.Register(
-                new(
-                    "https://qstxiv.github.io/schema/gatheringlocation-v1.json"),
-                JsonSchema.FromText(gatheringSchemaFile.GetText(context.CancellationToken)!.ToString()));
-        }
-
         if (questSchemaFile != null)
         {
             SchemaRegistry.Global.Register(
@@ -72,7 +62,6 @@ public static class Utils
             commonClassJobFile,
             commonCompletionFlagsFile,
             commonVector3File,
-            gatheringSchemaFile,
             questSchemaFile
         ];
         return jsonSchemaFiles.Where(x => x != null).Cast<AdditionalText>().ToList();

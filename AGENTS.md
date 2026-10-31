@@ -36,7 +36,7 @@ From `CONTRIBUTING.md`: Questionable does not want scope creep. Before writing c
 
 - **Confirmation before mutation.** Do not run `edit`, `write`, or side-effecting `bash` (git commits, pushes, package installs, formatters that rewrite files, build artifacts) without explicit in-turn permission from the user. Read-only inspection (`ls`, `grep`, `find`, `read`, `git status`/`diff`/`log`) does not require confirmation.
 - **Respect the build setup.** Questionable is a Dalamud plugin. Any `dotnet build`/`format`/`test` invocation that touches `Questionable.csproj` (or projects that reference it, e.g. `Questionable.Tests`) must pass `-p:DalamudLibPath=<path>`. See `.github/workflows/release.yml` for the canonical setup.
-- **Do not touch generated data bundles** (`QuestPaths/**`, `GatheringPaths/**`) unless the task is explicitly about them.
+- **Do not touch generated data bundles** (`QuestPaths/**`) unless the task is explicitly about them.
 - **Formatting.** If you run `dotnet format`, run it once against `Questionable.sln` with `-p:DalamudLibPath=...` and `--severity info`, matching CI. Do not add `--verify-no-changes` semantics to unrelated PRs.
 - **Commit messages and PR bodies** should describe what changed and why, in the human's voice, and must include the AI-usage disclosure noted above.
 
