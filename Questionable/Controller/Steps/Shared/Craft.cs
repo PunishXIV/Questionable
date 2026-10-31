@@ -175,7 +175,7 @@ internal static class Craft
             // Retrieve ItemQuality from the current quest step, defaults to Any if not specified
             if (questController.CurrentQuest is { } currentQuest)
             {
-                QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
+                QuestSequence? sequence = currentQuest.FindSequence();
                 if (sequence?.Steps.Count > currentQuest.Step)
                     return sequence.Steps[currentQuest.Step].ItemQuality;
             }

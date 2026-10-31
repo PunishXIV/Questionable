@@ -44,9 +44,6 @@ internal sealed class QuestPriorityManager(
 
     public void ClearAcceptOnly(ElementId elementId) => _acceptOnly.Remove(elementId);
 
-    /// <summary>Clears every accept-only flag (the quests remain in the priority list).</summary>
-    public void ClearAllAcceptOnly() => _acceptOnly.Clear();
-
     public bool Contains(Quest quest) => _quests.Any(q => q.Id == quest.Id);
 
     public bool Contains(ElementId elementId) => _quests.Any(q => q.Id == elementId);

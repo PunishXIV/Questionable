@@ -521,14 +521,6 @@ internal sealed class QuestJournalComponent
         public bool HideRepeatable;
         public string SearchText = string.Empty;
 
-        public bool AdvancedFiltersActive =>
-            AvailableOnly ||
-            BlueOnly ||
-            HideNoPaths ||
-            HideCompleted ||
-            HideUnobtainable ||
-            HideRepeatable;
-
         public FilterConfiguration WithoutName()
         {
             return new()

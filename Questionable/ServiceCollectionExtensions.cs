@@ -78,7 +78,6 @@ internal static class ServiceCollectionExtensions
             .AddTaskFactoryAndExecutor<StepDisabled.SkipRemainingTasks, StepDisabled.Factory,
                 StepDisabled.SkipDisabledStepsExecutor>();
         serviceCollection.AddTaskFactory<EquipRecommended.BeforeDutyOrInstance>();
-        serviceCollection.AddTaskExecutor<Gather.SkipMarker, Gather.DoSkip>();
         serviceCollection
             .AddTaskFactoryAndExecutor<AetheryteShortcut.Task, AetheryteShortcut.Factory,
                 AetheryteShortcut.UseAetheryteShortcut>();
@@ -112,6 +111,7 @@ internal static class ServiceCollectionExtensions
             .AddTaskFactoryAndExecutor<Duty.OpenDutyFinderTask, Duty.Factory, Duty.OpenDutyFinderExecutor>();
         serviceCollection.AddTaskExecutor<Duty.StartAutoDutyTask, Duty.StartAutoDutyExecutor>();
         serviceCollection.AddTaskExecutor<Duty.WaitAutoDutyTask, Duty.WaitAutoDutyExecutor>();
+        serviceCollection.AddTaskExecutor<Duty.OpenVariantDFTask, Duty.OpenVariantDFExecutor>();
         serviceCollection.AddTaskFactory<Emote.Factory>();
         serviceCollection.AddTaskExecutor<Emote.UseOnObject, Emote.UseOnObjectExecutor>();
         serviceCollection.AddTaskExecutor<Emote.UseOnSelf, Emote.UseOnSelfExecutor>();

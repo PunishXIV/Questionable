@@ -183,19 +183,6 @@ internal sealed class RedoComponent
                         if (questFunctions.IsQuestComplete(quest.Id))
                             _completed += 1;
                     }
-                    //else
-                    //{
-                    //    ImGui.TableNextRow();
-                    //    ImGui.TableNextColumn();
-                    //    ImGui.TreeNodeEx(_LF("{0} ({1})", q.Name, (ushort)q.RowId),
-                    //        ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
-
-                    //    ImGui.TableNextColumn();
-                    //    QuestJournalComponent.DrawCount(0, 0);
-                    //    ImGui.TableNextColumn();
-                    //    (Vector4 color, FontAwesomeIcon icon, string text) = uiUtils.GetQuestStyle(qid);
-                    //    uiUtils.ChecklistItem(text, color, icon);
-                    //}
                     if (qInfo != null && !questFunctions.IsQuestUnobtainable(qid))
                         _total += 1;
                 }

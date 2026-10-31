@@ -92,7 +92,7 @@ internal sealed partial class ActiveQuestComponent
 
             try
             {
-                QuestSequence? currentSequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
+                QuestSequence? currentSequence = currentQuest.FindSequence();
                 QuestStep? currentStep = currentSequence?.FindStep(currentQuest.Step);
                 string comment = currentStep?.Comment ??
                                  currentSequence?.Comment ??
@@ -330,7 +330,7 @@ internal sealed partial class ActiveQuestComponent
             QuestController.QuestProgress? startedQuest = questController.StartedQuest;
             if (startedQuest != null)
             {
-                QuestSequence? metaSequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
+                QuestSequence? metaSequence = currentQuest.FindSequence();
                 uint? iconOverride = QuestJournalUtils.GetIconOverride((QuestInfo)currentQuest.Quest.Info, FontAwesomeIcon.PersonWalkingArrowRight);
 
                 bool hasLevelCondition = configuration.Stop.Enabled && configuration.Stop.LevelToStopAfter;
@@ -668,7 +668,7 @@ internal sealed partial class ActiveQuestComponent
         else
         {
             bool lastStep = currentStep ==
-                            currentQuest.Quest.FindSequence(currentQuest.Sequence)?.Steps.LastOrDefault();
+                            currentQuest.FindSequence()?.Steps.LastOrDefault();
             bool colored = currentStep != null
                            && !lastStep
                            && currentStep.InteractionType == EInteractionType.Instruction
@@ -776,7 +776,7 @@ internal sealed partial class ActiveQuestComponent
             }
         }
 
-        QuestSequence? simulatedSequence = simulatedQuest.Quest.FindSequence(simulatedQuest.Sequence);
+        QuestSequence? simulatedSequence = simulatedQuest.FindSequence();
         if (simulatedSequence != null)
         {
             using ImRaii.IdDisposable _ = ImRaii.PushId("SimulatedStep");

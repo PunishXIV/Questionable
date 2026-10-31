@@ -206,8 +206,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
             if (CheckQuestSelection(addonSelectIconString, currentQuest.Quest, answers))
                 return;
 
-            QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
-            QuestStep? step = sequence?.FindStep(currentQuest.Step);
+            QuestStep? step = currentQuest.FindStep();
             if (step is { InteractionType: EInteractionType.AcceptQuest, PickUpQuestId: not null } &&
                 _questRegistry.TryGetQuest(step.PickUpQuestId, out Quest? pickupQuest))
             {
@@ -262,7 +261,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
             List<EAetheryteLocation> freeOrFavoredAetheryteRegistrations = [];
             if (checkAllSteps)
             {
-                QuestSequence? sequence = quest.FindSequence(currentQuest.Sequence);
+                QuestSequence? sequence = currentQuest.FindSequence();
                 IEnumerable<DialogueChoice>? choices = sequence?.Steps.SelectMany(x => x.DialogueChoices);
                 if (choices != null)
                     dialogueChoices.AddRange(choices.Select(x => new DialogueChoiceInfo(quest, x)));
@@ -284,11 +283,11 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                 QuestStep? step = null;
                 if (_territoryData.IsQuestBattleInstance(_clientState.TerritoryType))
                 {
-                    step = quest.FindSequence(currentQuest.Sequence)?.Steps
+                    step = currentQuest.FindSequence()?.Steps
                         .FirstOrDefault(x => x.InteractionType == EInteractionType.SinglePlayerDuty);
                 }
 
-                step ??= quest.FindSequence(currentQuest.Sequence)?.FindStep(currentQuest.Step);
+                step ??= currentQuest.FindStep();
 
                 if (step == null)
                     _logger.LogDebug("Ignoring current quest dialogue choices, no active step");

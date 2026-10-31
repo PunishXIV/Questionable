@@ -176,6 +176,7 @@ public sealed class QuestionablePlugin(
         PathDataUpdater pathDataUpdater = serviceProvider.GetRequiredService<PathDataUpdater>();
         serviceProvider.GetRequiredService<QuestRegistry>().Reload();
         serviceProvider.GetRequiredService<SinglePlayerDutyConfigComponent>().Reload();
+        serviceProvider.GetRequiredService<ProfileController>();
         serviceProvider.GetRequiredService<CommandHandler>();
         serviceProvider.GetRequiredService<ContextMenuController>();
         serviceProvider.GetRequiredService<CraftworksSupplyController>();

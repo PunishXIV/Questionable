@@ -172,8 +172,6 @@ internal static class Interact
                     {
                         logger.LogDebug($"Moving {_unequipItem} to {targetSlot} in soul crystal inv");
                         _ = inventoryManager->MoveItemSlot(InventoryType.EquippedItems, srcSlot, armoryType, targetSlot, a6: true);
-                        //if (result != 0)
-                        //    throw new Exception($"UnequipItem failed to move {_unequipItem} to {targetSlot} in soul crystal inv");
                     }
                     else
                     {
@@ -229,18 +227,6 @@ internal static class Interact
                 if (ProgressContext.WasInterrupted())
                     return ETaskResult.StillRunning;
 
-                // started this, realised i don't have a good way to test it. in theory there's a way here to catch
-                // 'unable to execute command while x' and recover to retry the interact
-                //if (dalamudInitializer.FlagUnableExecuteCommand)
-                //{
-                //    logger.LogDebug("FlagUnableExecuteCommand");
-                //    dalamudInitializer.FlagUnableExecuteCommand = false;
-                //    // might just be landing, retry interaction
-                //    _interactionState = EInteractionState.None;
-                //    _continueAt = DateTime.Now.AddSeconds(1);
-                //    return ETaskResult.StillRunning;
-                //}
-
                 if (ProgressContext.WasSuccessful() || _interactionState == EInteractionState.InteractionConfirmed)
                 {
                     if (delayedFinalCheck)
@@ -253,7 +239,6 @@ internal static class Interact
             }
 
             IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
-            //if (gameObject == null || !gameObject.IsTargetable || !HasAnyMarker(gameObject))
             if (gameObject == null)
             {
                 if (!_reportedGameObjNull)

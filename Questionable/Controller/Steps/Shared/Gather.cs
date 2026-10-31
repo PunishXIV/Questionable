@@ -58,21 +58,4 @@ internal static class Gather
                 Task.GatheredItem.Collectability));
         }
     }
-
-    /// <summary>
-    ///     A task that does nothing, but if we're skipping a step, this will be the task next in queue to be executed (instead
-    ///     of progressing to the next step) if gathering.
-    /// </summary>
-    internal sealed class SkipMarker : ITask
-    {
-        public override string ToString() => "Gather/SkipMarker";
-    }
-
-    internal sealed class DoSkip : TaskExecutor<SkipMarker>
-    {
-        protected override bool Start() => true;
-        public override ETaskResult Update() => ETaskResult.TaskComplete;
-
-        public override bool ShouldInterruptOnDamage() => false;
-    }
 }

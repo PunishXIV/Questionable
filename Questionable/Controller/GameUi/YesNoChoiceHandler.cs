@@ -178,14 +178,14 @@ internal sealed class YesNoChoiceHandler : IDisposable
         Quest quest = currentQuest.Quest;
         if (checkAllSteps)
         {
-            QuestSequence? sequence = quest.FindSequence(currentQuest.Sequence);
+            QuestSequence? sequence = currentQuest.FindSequence();
             if (sequence != null &&
                 sequence.Steps.Any(step => HandleDefaultYesNo(addonSelectYesno, quest, step, step.DialogueChoices, actualPrompt)))
                 return true;
         }
         else
         {
-            QuestStep? step = quest.FindSequence(currentQuest.Sequence)?.FindStep(currentQuest.Step);
+            QuestStep? step = currentQuest.FindStep();
             if (step != null && HandleDefaultYesNo(addonSelectYesno, quest, step, step.DialogueChoices, actualPrompt))
                 return true;
         }
@@ -386,12 +386,12 @@ internal sealed class YesNoChoiceHandler : IDisposable
         bool autoConfirm;
         if (checkAllSteps)
         {
-            QuestSequence? sequence = quest.FindSequence(currentQuest.Sequence);
+            QuestSequence? sequence = currentQuest.FindSequence();
             autoConfirm = sequence != null && sequence.Steps.Any(step => CheckSinglePlayerDutyYesNo(quest.Id, step));
         }
         else
         {
-            QuestStep? step = quest.FindSequence(currentQuest.Sequence)?.FindStep(currentQuest.Step);
+            QuestStep? step = currentQuest.FindStep();
             autoConfirm = step != null && CheckSinglePlayerDutyYesNo(quest.Id, step);
         }
 

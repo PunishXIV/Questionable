@@ -19,7 +19,6 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     private readonly IFramework _framework;
     private readonly InteractionUiController _interactionUiController;
     private readonly TitleBarButton _minimizeButton;
-    //private readonly TitleBarButton _collapseButton;
     private readonly IObjectTable _objectTable;
 
     private readonly IDalamudPluginInterface _pluginInterface;
@@ -75,36 +74,8 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             MaximumSize = default
         };
         RespectCloseHotkey = false;
-        ShowCloseButton = true;//false;
+        ShowCloseButton = true;
         AllowClickthrough = false;
-
-        // Close button
-        //TitleBarButtons.Add(new()
-        //{
-        //    Icon = FontAwesomeIcon.Times,
-        //    Priority = int.MinValue,
-        //    IconOffset = new(1, 1),
-        //    Click = _ =>
-        //    {
-        //        IsOpen = false;
-        //    },
-        //    AvailableClickthrough = true
-        //});
-
-        // Collapse button
-        //_collapseButton = new()
-        //{
-        //    Icon = FontAwesomeIcon.ArrowDown,
-        //    Priority = int.MinValue,
-        //    IconOffset = new(1, 1),
-        //    Click = _ =>
-        //    {
-        //        Collapsed = !Collapsed ?? true;
-        //        _collapseButton!.Icon = (bool)Collapsed ? FontAwesomeIcon.ArrowRight : FontAwesomeIcon.ArrowDown;
-        //    },
-        //    AvailableClickthrough = true
-        //};
-        //TitleBarButtons.Add(_collapseButton);
 
         // Minimize button
         _minimizeButton = new()
@@ -208,11 +179,6 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             _activeQuestComponent.Draw(IsMinimized);
             if (!IsMinimized)
             {
-                if (false)
-                {
-                    // TODO add tests
-                }
-
                 _quickAccessButtonsComponent.Draw();
 
                 if (_aRealmRebornComponent.ShouldDraw

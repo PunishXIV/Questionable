@@ -102,11 +102,6 @@ internal sealed class BossModIpc
             _configuration.InvokeFunc(["ActionTweaksConfig", "PreventMovingWhileCasting", "false"], false);
     }
 
-    public void LoadPresets()
-    {
-        ClearActivePresets();
-    }
-
     public void ClearActivePresets()
     {
         string? activePreset = _getActivePreset.InvokeFunc();

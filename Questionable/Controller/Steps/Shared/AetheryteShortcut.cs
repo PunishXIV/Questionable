@@ -359,8 +359,6 @@ internal static class AetheryteShortcut
                         if (skipConditions is { InSameTerritory: true })
                         {
                             logger.LogDebug("Ignoring InSameTerritory, obsolete due to distance check");
-                            //logger.LogInformation("Skipping aetheryte teleport due to SkipCondition (InSameTerritory)");
-                            //return true;
                         }
 
                         Vector3 pos = objectTable[0]!.Position;

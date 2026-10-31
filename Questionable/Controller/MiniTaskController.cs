@@ -110,7 +110,7 @@ internal abstract class MiniTaskController<T> : IDisposable
 
                 while (_taskQueue.TryDequeue(out ITask? nextTask))
                 {
-                    if (nextTask is ILastTask or Gather.SkipMarker)
+                    if (nextTask is ILastTask)
                     {
                         ITaskExecutor taskExecutor =
                             _serviceProvider.GetRequiredKeyedService<ITaskExecutor>(nextTask.GetType());

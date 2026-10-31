@@ -418,7 +418,6 @@ internal sealed unsafe class QuestFunctions
         // but this is just really hoping that this breaks nothing.
         if (IsQuestComplete(currentQuest))
             return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _LF("Quest {0} complete", currentQuest.Value));
-        //return (new(currentQuest, 255, MainScenarioQuestState.Available), _LF("Quest {0} complete", currentQuest.Value));
 
         if (!IsReadyToAcceptQuest(currentQuest))
             return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _LF("Not ready to accept quest {0}", currentQuest.Value));
@@ -1189,12 +1188,6 @@ internal sealed unsafe class QuestFunctions
 
         PlayerState* playerState = PlayerState.Instance();
         return playerState != null && playerState->ClassJobLevels[classJobRow.ExpArrayIndex] > 0;
-    }
-
-    public bool IsJobUnlocked(Job classJob)
-    {
-        ClassJob classJobRow = dataManager.GetExcelSheet<ClassJob>().GetRow((uint)classJob);
-        return IsClassJobUnlocked((Job)classJobRow.ClassJobParent.RowId);
     }
 
     public GrandCompany GetGrandCompany() => (GrandCompany)PlayerState.Instance()->GrandCompany;

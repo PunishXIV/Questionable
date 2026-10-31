@@ -4,6 +4,7 @@ using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
 using PunishLib.ImGuiMethods;
 using Questionable.Windows.Common;
+using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows;
 
 [RegisterSingleton]
@@ -16,6 +17,8 @@ internal sealed class ConfigWindow
     private readonly GeneralConfigComponent _generalConfigComponent;
     private readonly NotificationConfigComponent _notificationConfigComponent;
     private readonly PluginConfigComponent _pluginConfigComponent;
+    private readonly ProfileController _profileController;
+    private readonly ProfilesConfigComponent _profilesConfigComponent;
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly SinglePlayerDutyConfigComponent _singlePlayerDutyConfigComponent;
     private readonly StopConditionComponent _stopConditionComponent;
@@ -24,6 +27,8 @@ internal sealed class ConfigWindow
     IDalamudPluginInterface pluginInterface,
     GeneralConfigComponent generalConfigComponent,
     PluginConfigComponent pluginConfigComponent,
+    ProfilesConfigComponent profilesConfigComponent,
+    ProfileController profileController,
     DutyConfigComponent dutyConfigComponent,
     SinglePlayerDutyConfigComponent singlePlayerDutyConfigComponent,
     StopConditionComponent stopConditionComponent,
@@ -37,6 +42,8 @@ internal sealed class ConfigWindow
         _generalConfigComponent = generalConfigComponent;
         _notificationConfigComponent = notificationConfigComponent;
         _pluginConfigComponent = pluginConfigComponent;
+        _profilesConfigComponent = profilesConfigComponent;
+        _profileController = profileController;
         _pluginInterface = pluginInterface;
         _singlePlayerDutyConfigComponent = singlePlayerDutyConfigComponent;
         _stopConditionComponent = stopConditionComponent;
@@ -67,13 +74,25 @@ internal sealed class ConfigWindow
 
     public void SaveWindowConfig() => _pluginInterface.SavePluginConfig(_configuration);
 
+    // the profiles tab may have switched profiles for editing; go back to the one this character uses
+    public override void OnClose() => _profileController.ActivateForCurrentCharacter();
+
     public override void DrawContent()
     {
+        if (_configuration.Profiles.Count > 0)
+        {
+            if (_configuration.ActiveProfileName is { } profileName)
+                ImGui.TextColored(QstTheme.Amber, _LF("Editing profile '{0}': changes only apply to this profile.", profileName));
+            else
+                ImGui.TextDisabled(_L("Editing the default settings."));
+        }
+
         using ImRaii.TabBarDisposable tabBar = ImRaii.TabBar("QuestionableConfigTabs");
         if (!tabBar)
             return;
 
         _generalConfigComponent.DrawTab();
+        _profilesConfigComponent.DrawTab();
         _pluginConfigComponent.DrawTab();
         _dutyConfigComponent.DrawTab();
         _singlePlayerDutyConfigComponent.DrawTab();

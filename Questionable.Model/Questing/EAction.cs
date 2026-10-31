@@ -77,27 +77,6 @@ public enum EAction
     RoaringEggscapade = 42039,
     TheSpriganator = 42038,
 
-    Prospect = 227,
-    CollectMiner = 240,
-    LuckOfTheMountaineer = 4081,
-    ScourMiner = 22182,
-    MeticulousMiner = 22184,
-    ScrutinyMiner = 22185,
-
-    Triangulate = 210,
-    CollectBotanist = 815,
-    LuckOfThePioneer = 4095,
-    ScourBotanist = 22186,
-    MeticulousBotanist = 22188,
-    ScrutinyBotanist = 22189,
-
-    SharpVision1 = 235,
-    SharpVision2 = 237,
-    SharpVision3 = 295,
-    FieldMastery1 = 218,
-    FieldMastery2 = 220,
-    FieldMastery3 = 294,
-
     FSHCast = 289,
     FSHQuit = 299,
 

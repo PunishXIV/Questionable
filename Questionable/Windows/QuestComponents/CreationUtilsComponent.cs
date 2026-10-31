@@ -279,8 +279,6 @@ internal sealed class CreationUtilsComponent
                 ImGui.TextColored(QstTheme.Accent, verticalDistanceText);
             else
                 ImGui.Text(verticalDistanceText);
-            //if (debugOverlay.ScreenPosCache.TryGetValue(debugOverlay.SavedPos.GetHashCode(), out var screenPos))
-            //    ImGui.Text($"<{screenPos.X:F3},{screenPos.Y:F3}>");
         }
     }
 
@@ -367,21 +365,6 @@ internal sealed class CreationUtilsComponent
             if (ImGui.IsItemHovered())
                 ImGui.SetTooltip(_L("Interact with your current target."));
         }
-    }
-
-    private string GetCurrentQuestInfoAsString()
-    {
-        QuestReference q = questFunctions.GetCurrentQuest();
-        string qw;
-        if (q.CurrentQuest is QuestId)
-        {
-            QuestProgressInfo? progressInfo = QuestFunctions.GetQuestProgressInfo(q.CurrentQuest);
-            qw = progressInfo != null ? progressInfo.ToString() : "QW: -";
-        }
-        else
-            return _L("No active quest");
-
-        return $"{q.CurrentQuest} → {q.Sequence} - {qw}";
     }
 
     private readonly HashSet<uint> chocoboStands = dataManager.GetExcelSheet<Lumina.Excel.Sheets.ChocoboTaxiStand>().Select(x => x.RowId).ToHashSet();

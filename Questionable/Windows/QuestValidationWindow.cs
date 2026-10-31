@@ -90,13 +90,6 @@ internal sealed class QuestValidationWindow : LWindow
                         ImGui.SetClipboardText(fileName);
                     }
 
-                    //ImGui.SameLine();
-                    //bool sim = ImGuiComponentsLocal.IconButton($"###ValidationWindowSim{quest.QuestId.Value}", FontAwesomeIcon.Play);
-                    //if (ImGui.IsItemHovered())
-                    //    ImGui.SetTooltip(_L("Simulate quest"));
-                    //if (sim)
-                    //    _questController.SimulateQuest(quest, validationIssue.Sequence ?? 0, 0);
-
                     ImGui.SameLine();
                     bool edit = ImGuiComponentsLocal.IconButton($"###ValidationWindowEdit{quest.QuestId.Value}", FontAwesomeIcon.Edit);
                     bool editExternal = ImGui.IsItemClicked(ImGuiMouseButton.Right);

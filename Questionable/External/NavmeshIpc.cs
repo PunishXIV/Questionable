@@ -25,8 +25,6 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         pluginInterface.GetIpcSubscriber<Vector3, bool, float, bool>("vnavmesh.SimpleMove.PathfindAndMoveCloseTo");
     private readonly ICallGateSubscriber<Vector3, bool, bool> _simpleMovePathfindAndMoveTo =
         pluginInterface.GetIpcSubscriber<Vector3, bool, bool>("vnavmesh.SimpleMove.PathfindAndMoveTo");
-    private readonly ICallGateSubscriber<bool> _simpleMovePathfindInProgress =
-        pluginInterface.GetIpcSubscriber<bool>("vnavmesh.SimpleMove.PathfindInProgress");
 
     public Version? Version
     {
@@ -39,9 +37,6 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
     }
 
     public bool IsPathRunning => IpcInvoke.SafeFunc(() => _pathIsRunning.InvokeFunc(), fallback: false);
-
-    public bool IsSimpleMovePathfindInProgress =>
-        IpcInvoke.SafeFunc(() => _simpleMovePathfindInProgress.InvokeFunc(), fallback: false);
 
     public void Stop()
     {

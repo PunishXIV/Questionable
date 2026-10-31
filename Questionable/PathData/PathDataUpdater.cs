@@ -4,7 +4,7 @@ using System.Text.Json;
 namespace Questionable.PathData;
 
 /// <summary>
-///     Downloads newer quest/gathering path bundles at runtime so path-only updates don't require a
+///     Downloads newer quest path bundles at runtime so path-only updates don't require a
 ///     full plugin release. The bundle is stored in <c>{ConfigDirectory}/PathData/</c> and picked up
 ///     by <see cref="QuestRegistry" />'s downloaded-bundle load tier.
 /// </summary>

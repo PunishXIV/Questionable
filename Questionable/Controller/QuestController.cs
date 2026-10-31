@@ -133,7 +133,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     /// </summary>
     private DateTime _safeAnimationEnd = DateTime.MinValue;
 
-    //private bool _retriedLastStep;
 
     public QuestController(
         IClientState clientState,
@@ -301,7 +300,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     {
         _tracker.Reset();
         _safeAnimationEnd = DateTime.MinValue;
-        //_retriedLastStep = false;
 
         DebugState = null;
     }
@@ -406,8 +404,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             ExecuteNextStep();
             return;
         }
-
-        //CheckAutoRefreshCondition();
 
         try
         {
@@ -886,7 +882,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _handlingDeath = false;
         _deathStreakKey = null;
         _deathStreakCount = 0;
-        //_retriedLastStep = false;
         _highlightObject.SetHighlight([]);
         using IDisposable? scope = _logger.BeginScope($"Stop/{label}");
         if (IsRunning || AutomationType != EAutomationType.Manual)
@@ -1154,27 +1149,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             }
             else
             {
-                //if (!_retriedLastStep &&
-                //    CurrentQuestDetails?.Progress.Sequence is byte _seq &&
-                //    CurrentQuestDetails?.Progress.Quest.FindSequence(_seq) is QuestSequence _sequence &&
-                //    _sequence.LastStep() is QuestStep lastStep)
-                //{
-                //    _logger.LogWarning(
-                //        "Could not retrieve next quest step, retrying last step once [{QuestId}, {Sequence}, {Step}]",
-                //        CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, _sequence.Steps.IndexOf(lastStep));
-
-                //    CurrentQuest?.SetStep(_sequence.Steps.IndexOf(lastStep));
-                //    seq = _sequence;
-                //    step = lastStep;
-                //    _retriedLastStep = true;
-                //}
-                //else
-                //{
                 _logger.LogWarning(
                     "Could not retrieve next quest step, not doing anything [{QuestId}, {Sequence}, {Step}]",
                     CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
-                //_notificationMasterIpc.NotifyOnFailure(_L("Could not retrieve next quest step, pausing.") + " " + _L("Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button."));
-                //}
             }
 
             if (CurrentQuest == null || !createTasks)
@@ -1304,11 +1281,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (currentQuest.Quest.Info.AlliedSociety != EAlliedSociety.None)
             return false;
 
-        QuestSequence? currentSequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
         if (currentQuest.Step > 0)
             return false;
 
-        QuestStep? currentStep = currentSequence?.FindStep(currentQuest.Step);
+        QuestStep? currentStep = currentQuest.FindStep();
         return currentStep?.AetheryteShortcut != null &&
                (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsCompleted.Count ?? 0) == 0 &&
                (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsAccepted.Count ?? 0) == 0;
@@ -1486,6 +1462,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         public byte Sequence { get; private set; }
         public int Step { get; private set; }
         public StepProgress StepProgress { get; private set; } = new(DateTime.Now);
+
+        public QuestSequence? FindSequence() => Quest.FindSequence(Sequence);
+        public QuestStep? FindStep() => FindSequence()?.FindStep(Step);
 
         public void SetSequence(byte sequence, int step = 0)
         {

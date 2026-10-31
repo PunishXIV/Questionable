@@ -26,6 +26,13 @@
     <ItemGroup>
         <ProjectReference Include="..\Questionable\Questionable.csproj" />
     </ItemGroup>
+    <!-- Configuration implements Dalamud's IPluginConfiguration, so tests that create it need Dalamud.dll at run time. -->
+    <ItemGroup>
+        <Reference Include="Dalamud">
+            <HintPath>$(DalamudLibPath)Dalamud.dll</HintPath>
+            <Private>true</Private>
+        </Reference>
+    </ItemGroup>
 
     <!--
         The questpath generator tests construct QuestGameData against an installed game, which needs Lumina at

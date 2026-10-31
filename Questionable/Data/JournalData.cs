@@ -66,14 +66,6 @@ internal sealed class JournalData
             { new(4795), GenreSpecialQuests }, // ew ex mount
             { new(5469), GenreSpecialQuests }, // dt ex mount
         };
-        //foreach (var genre in genres)
-        //{
-        //    foreach (var q in genre.Quests)
-        //    {
-        //        if (q.Level == 1)
-        //            questReassignPairs[(QuestId)q.QuestId] = GenreSpecialQuests;
-        //    }
-        //}
         foreach (var kvp in questReassignPairs)
         {
             var info = questData.GetQuestInfo(kvp.Key);

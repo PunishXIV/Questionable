@@ -7,14 +7,6 @@ namespace Questionable.Utils;
 internal static class CompressUtils
 {
     // https://stackoverflow.com/questions/25134897/gzip-compression-and-decompression-in-c-sharp
-    public static object? DecompressObject(string input)
-    {
-        return JsonConvert.DeserializeObject(Decompress(input));
-    }
-    public static object? CompressObject(object input)
-    {
-        return Compress(JsonConvert.SerializeObject(input));
-    }
 
     public static string Decompress(string input)
     {

@@ -75,7 +75,7 @@ internal sealed class PointMenuHandler : IDisposable
             return;
         }
 
-        QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
+        QuestSequence? sequence = currentQuest.FindSequence();
         if (sequence == null)
             return;
 

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace Questionable.PathData;
 
 /// <summary>
-///     Metadata describing a published quest/gathering path bundle. A copy is stored as the
+///     Metadata describing a published quest path bundle. A copy is stored as the
 ///     <c>manifest.json</c> entry inside every bundle zip, and a standalone copy is published
 ///     remotely so the updater can check for a newer bundle without downloading the whole zip.
 /// </summary>

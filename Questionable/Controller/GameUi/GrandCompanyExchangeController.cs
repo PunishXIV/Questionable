@@ -146,9 +146,7 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
 
     private QuestStep? FindCurrentStep()
     {
-        QuestController.QuestProgress? currentQuest = _questController.CurrentQuest;
-        QuestSequence? currentSequence = currentQuest?.Quest.FindSequence(currentQuest.Sequence);
-        return currentSequence?.FindStep(currentQuest?.Step ?? 0);
+        return _questController.CurrentQuest?.FindStep();
     }
 
     private static AgentInterface* GetAgent() =>

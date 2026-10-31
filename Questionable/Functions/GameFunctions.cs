@@ -258,15 +258,6 @@ internal sealed unsafe partial class GameFunctions
             return true;
         }
 
-        // company chocobo is locked
-        // - company chocobo whistle may not have been used, this does not necessarily mean mounting is not possible -alydev
-        //PlayerState* playerState = PlayerState.Instance();
-        //if (playerState != null && !playerState->IsMountUnlocked(1))
-        //{
-        //    logger.LogDebug("!playerState->IsMountUnlocked(1)");
-        //    return true;
-        //}
-
         if (!IsMountingUnlocked())
         {
             logger.LogDebug("!IsMountingUnlocked");
@@ -398,10 +389,17 @@ internal sealed unsafe partial class GameFunctions
         }
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>")]
+    /// <summary>
+    ///     Opens the variant dungeon finder. It can't preselect a dungeon, so the player picks it.
+    /// </summary>
     public void OpenVariantDF()
     {
+        AgentInterface* agent = AgentModule.Instance()->GetAgentByInternalId(AgentId.VVDFinder);
+        if (agent == null || agent->IsAgentActive())
+            return;
 
+        logger.LogInformation("Opening the variant dungeon finder");
+        agent->Show();
     }
 
     // ECommons' AddonMaster returns plain entry text, but excel-resolved text keeps decoration

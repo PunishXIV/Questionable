@@ -801,7 +801,7 @@
                       "type": "integer"
                     },
                     "MinimumKillCount": {
-                      "description": "Overworld mobs: If this number of mobs has been killed, will wait a bit before attempting to pull another mob to see if the quest progresses",
+                      "description": "Only used together with IgnoreQuestMarker: after killing this many of this enemy, it no longer counts as a target. Otherwise the quest marker on the enemy decides when enough have been killed.",
                       "type": "integer"
                     },
                     "RewardItemId": {

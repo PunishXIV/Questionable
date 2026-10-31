@@ -77,19 +77,6 @@ internal sealed class HighlightObject : IDisposable
         });
     }
 
-    public void RemoveHighlight(uint Id,
-                   [CallerFilePath] string file = "",
-                 [CallerLineNumber] int line = 0)
-    {
-        _ = _framework.Run(() =>
-        {
-            _logger.LogDebug("Removing {Id} from highlight ({Caller})", Id, $"{Path.GetFileName(file)}:{line}");
-            _targetNpcDataId = _targetNpcDataId.Where(n => n != Id).ToArray();
-        });
-    }
-
-    public void HighlightQuestObjects(ElementId questId) => SetHighlight(_dataManager.GetExcelSheet<EObj>().Where(obj => obj.Data.Equals((uint)questId.Value)).Select(obj => obj.RowId).ToArray());
-
     public void SetHighlight(uint[] Ids,
                    [CallerFilePath] string file = "",
                  [CallerLineNumber] int line = 0)

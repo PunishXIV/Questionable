@@ -88,7 +88,6 @@ internal sealed class QuestRegistry
         _lowPriorityContentFinderConditionQuests.Clear();
 
         if (!LoadQuestsFromDownloadedBundle())
-            //LoadQuestsFromAssembly();
             _logger.LogWarning("Bundled quests were not loaded, we have no quests!");
         if (_configuration.Advanced.Debug || Svc.PluginInterface.IsDev
 #if DEBUG
@@ -375,15 +374,6 @@ internal sealed class QuestRegistry
             .ToList();
     }
 
-    public bool TryGetQuestByContentFinderConditionId(uint cfcId, out IQuestInfo? questInfo)
-    {
-        if (_contentFinderConditionIds.TryGetValue(cfcId, out (ElementId qId, QuestStep step) value) &&
-                _questData.TryGetQuestInfo(value.qId, out questInfo))
-            return questInfo != null;
-        questInfo = null;
-        return false;
-    }
-
     public bool TryGetDutyByContentFinderConditionId(uint cfcId, [NotNullWhen(true)] out DutyOptions? dutyOptions)
     {
         if (_contentFinderConditionIds.TryGetValue(cfcId, out (ElementId QuestId, QuestStep Step) value))
@@ -602,10 +592,6 @@ internal sealed class QuestRegistry
         return (true, path);
     }
 
-    public static string OpenEditorDescription = _L("Clicking this button writes the quest path to a file and opens it in your default text editor.") +
-               _L("After making a change, click Reload Data below.") + "\n" +
-               _L("To revert to the official version, delete the file and click Reload Data again.") + "\n" +
-               _L("Left click: Open this quest in your default .json text editor\nRight click: Open Quests folder");
     public static (bool, string) OpenEditor(IQuestInfo info) => OpenEditor((QuestInfo)info);
     public static (bool, string) OpenEditor(QuestInfo info) => OpenEditor(GetFilename(info), info);
     public (bool, string) OpenEditor(ushort questId)

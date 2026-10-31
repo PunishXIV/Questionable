@@ -1,4 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 using Dalamud.Configuration;
 using Dalamud.Game.Text;
 using ECommons.ExcelServices;
@@ -126,6 +127,7 @@ internal sealed class Configuration : IPluginConfiguration
     /// </summary>
     internal void ClearActiveProfile()
     {
+        CaptureActiveProfile();
         ActiveProfileName = null;
         _activeProfileGeneral = null;
         _activeProfileStop = null;
@@ -142,6 +144,7 @@ internal sealed class Configuration : IPluginConfiguration
 
     private void ApplyPatches(string profileName, Dictionary<string, JObject> patches)
     {
+        CaptureActiveProfile();
         ActiveProfileName = profileName;
         _activeProfileGeneral = MergeSection(_general, patches, "General");
         _activeProfileStop = MergeSection(_stop, patches, "Stop");
@@ -154,21 +157,62 @@ internal sealed class Configuration : IPluginConfiguration
     /// <summary>
     /// Serialises <paramref name="base"/> to a JObject, merges the patch for
     /// <paramref name="sectionKey"/> on top, and deserialises the result.
-    /// Returns null (fall-through to base) if the section is absent from the patch.
+    /// Always returns a copy, even without a patch, so edits made while a profile is active
+    /// never change the base section.
     /// </summary>
-    private static T? MergeSection<T>(T @base, Dictionary<string, JObject> patches, string sectionKey)
+    private static T MergeSection<T>(T @base, Dictionary<string, JObject> patches, string sectionKey)
         where T : class
     {
-        if (!patches.TryGetValue(sectionKey, out var patch))
-            return null;
-
         var merged = JObject.FromObject(@base);
-        merged.Merge(patch, new JsonMergeSettings
+        if (patches.TryGetValue(sectionKey, out var patch))
         {
-            MergeArrayHandling = MergeArrayHandling.Replace,
-            MergeNullValueHandling = MergeNullValueHandling.Merge,
-        });
-        return merged.ToObject<T>();
+            merged.Merge(patch, new JsonMergeSettings
+            {
+                MergeArrayHandling = MergeArrayHandling.Replace,
+                MergeNullValueHandling = MergeNullValueHandling.Merge,
+            });
+        }
+
+        return merged.ToObject<T>()!;
+    }
+
+    /// <summary>
+    /// Writes the active profile's edits back into <see cref="Profiles"/> as a sparse patch,
+    /// keeping only the fields that differ from the base. Runs right before the config is
+    /// serialised, so it covers every place that saves the config.
+    /// </summary>
+    [OnSerializing]
+    internal void CaptureActiveProfile(StreamingContext context = default)
+    {
+        if (ActiveProfileName == null || !Profiles.TryGetValue(ActiveProfileName, out var patches))
+            return;
+
+        CapturePatch(patches, "General", _general, _activeProfileGeneral);
+        CapturePatch(patches, "Stop", _stop, _activeProfileStop);
+        CapturePatch(patches, "Duties", _duties, _activeProfileDuties);
+        CapturePatch(patches, "SinglePlayerDuties", _singlePlayerDuties, _activeProfileSinglePlayerDuties);
+        CapturePatch(patches, "Notifications", _notifications, _activeProfileNotifications);
+        CapturePatch(patches, "Advanced", _advanced, _activeProfileAdvanced);
+    }
+
+    private static void CapturePatch<T>(Dictionary<string, JObject> patches, string sectionKey, T @base, T? active)
+        where T : class
+    {
+        if (active == null)
+            return;
+
+        JObject baseJson = JObject.FromObject(@base);
+        JObject patch = [];
+        foreach (JProperty property in JObject.FromObject(active).Properties())
+        {
+            if (!JToken.DeepEquals(property.Value, baseJson[property.Name]))
+                patch[property.Name] = property.Value.DeepClone();
+        }
+
+        if (patch.Count == 0)
+            patches.Remove(sectionKey);
+        else
+            patches[sectionKey] = patch;
     }
 
     /// <summary>
@@ -197,6 +241,39 @@ internal sealed class Configuration : IPluginConfiguration
         if (ActiveProfileName == profileName)
             ClearActiveProfile();
     }
+
+    /// <summary>
+    /// Renames a profile and moves its character bindings along. Fails if the new name is taken.
+    /// </summary>
+    internal bool RenameProfile(string oldName, string newName)
+    {
+        if (oldName == newName || Profiles.ContainsKey(newName) || !Profiles.Remove(oldName, out var patches))
+            return false;
+
+        Profiles[newName] = patches;
+        foreach (var charId in CharacterProfiles.Where(x => x.Value == oldName).Select(x => x.Key).ToList())
+            CharacterProfiles[charId] = newName;
+
+        if (ActiveProfileName == oldName)
+            ActiveProfileName = newName;
+        return true;
+    }
+
+    /// <summary>
+    /// Binds a character to a profile, or back to the base configuration when <paramref name="profileName"/> is null.
+    /// </summary>
+    internal void AssignProfile(string contentId, string? profileName)
+    {
+        if (profileName == null || !Profiles.ContainsKey(profileName))
+            CharacterProfiles.Remove(contentId);
+        else
+            CharacterProfiles[contentId] = profileName;
+    }
+
+    internal string? GetProfileForCharacter(string contentId) =>
+        CharacterProfiles.TryGetValue(contentId, out var profileName) && Profiles.ContainsKey(profileName)
+            ? profileName
+            : null;
     #endregion
 
     #region Variables
@@ -357,7 +434,7 @@ internal sealed class Configuration : IPluginConfiguration
 
     internal sealed class PathDataConfiguration
     {
-        /// <summary>Whether to automatically download newer quest/gathering path bundles.</summary>
+        /// <summary>Whether to automatically download newer quest path bundles.</summary>
         public bool AutoUpdate { get; set; } = true;
 
         /// <summary>Data version of the path bundle currently in <c>{ConfigDirectory}/PathData/</c>; 0 if none.</summary>

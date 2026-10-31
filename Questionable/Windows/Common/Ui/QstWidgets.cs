@@ -79,27 +79,6 @@ internal static class QstWidgets
         drawList.PopClipRect();
     }
 
-    // Inline status pill.
-    public static void StatusPill(string text, Vector4 color)
-    {
-        float scale = ImGuiHelpers.GlobalScale;
-        Vector2 textSize = ImGui.CalcTextSize(text);
-        float dotRadius = 3f * scale;
-        Vector2 padding = new(8f * scale, 2f * scale);
-        float height = textSize.Y + padding.Y * 2;
-        float width = padding.X * 2 + dotRadius * 2 + 4f * scale + textSize.X;
-
-        Vector2 pos = ImGui.GetCursorScreenPos();
-        ImDrawListPtr drawList = ImGui.GetWindowDrawList();
-        drawList.AddRectFilled(pos, pos + new Vector2(width, height),
-            QstTheme.ToU32(QstTheme.WithAlpha(color, 0.15f)), height / 2f);
-        drawList.AddCircleFilled(new Vector2(pos.X + padding.X + dotRadius, pos.Y + height / 2f),
-            dotRadius, QstTheme.ToU32(color));
-        drawList.AddText(new Vector2(pos.X + padding.X + dotRadius * 2 + 4f * scale, pos.Y + padding.Y),
-            QstTheme.ToU32(color), text);
-        ImGui.Dummy(new Vector2(width, height));
-    }
-
     // Slim progress bar.
     public static void ThinProgressBar(float fraction, Vector4 color, float height = 4f)
     {

@@ -311,13 +311,6 @@ internal sealed class CommandHandler : IDisposable
                 _logger.LogInformation("Tasks created by /qst redeem: {Tasks}", string.Join(", ", tasks.Select(x => x.ToString())));
                 break;
 
-            //case "abandon-quest":
-            //    if (parts.Length > 1)
-            //        _questController.AbandonQuest(parts[1]);
-            //    else
-            //        _questController.AbandonQuest();
-            //    break;
-
             case "":
                 _questWindow.ToggleOrUncollapse();
                 break;

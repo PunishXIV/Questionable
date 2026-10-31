@@ -43,10 +43,6 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
             ECombatModule.WrathCombo)
             return false;
 
-        //if (GameFunctions.GetMountId() == Mount128Module.MountId ||
-        //    GameFunctions.GetMountId() == Mount147Module.MountId)
-        //    return false;
-
         try
         {
             WrathIPCWrapper.Test();

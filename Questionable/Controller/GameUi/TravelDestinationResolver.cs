@@ -11,7 +11,6 @@ namespace Questionable.Controller.GameUi;
 /// </summary>
 [RegisterSingleton]
 internal sealed class TravelDestinationResolver(
-    IClientState clientState,
     IDataManager dataManager,
     ILogger<TravelDestinationResolver> logger)
 {
@@ -19,7 +18,7 @@ internal sealed class TravelDestinationResolver(
     {
         // this can be triggered either manually (in which case we should increase the step counter), or automatically
         // (in which case it is ~1 frame later, and the step counter has already been increased)
-        QuestSequence? sequence = currentQuest.Quest.FindSequence(currentQuest.Sequence);
+        QuestSequence? sequence = currentQuest.FindSequence();
         if (sequence == null)
             return null;
 

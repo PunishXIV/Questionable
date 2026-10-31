@@ -24,7 +24,6 @@ internal sealed class MovementController
     MovementOverrideController movementOverrideController,
     IObjectTable objectTable,
     AetheryteData aetheryteData,
-    ICommandManager commandManager,
     IChatGui chatGui,
     IFramework framework,
     Lazy<QuestController> questController,
@@ -34,7 +33,6 @@ internal sealed class MovementController
 
     private CancellationTokenSource? _cancellationTokenSource;
     private Task<List<Vector3>>? _pathfindTask;
-    public ICommandManager CommandManager { get; } = commandManager;
 
     public bool IsNavmeshReady
     {
@@ -129,17 +127,6 @@ internal sealed class MovementController
                         }
                     }
                 }
-                //if (Destination.IsFlying && navPoints.Count > 0 && navmeshIpc.GetPointOnFloor(navPoints[^1], unlandable: false) == null)
-                //{
-                //    var floorPoint = navmeshIpc.GetPointOnFloor(navPoints[^1], unlandable: false, range: 3f);
-                //    if (floorPoint != null)
-                //    {
-                //        navPoints[^1] = floorPoint.Value;
-                //        Destination = Destination with { Position = floorPoint.Value, StopDistance = 0.25f };
-                //    }
-                //    else
-                //        logger.LogDebug("Could not find floorPoint");
-                //}
 
                 if (!Destination.IsFlying)
                 {
@@ -174,7 +161,6 @@ internal sealed class MovementController
             {
                 string error = "Unable to complete pathfinding task";
                 logger.LogWarning(error);
-                //_commandManager.ProcessCommand("/vnav rebuild");
                 ResetPathfinding();
                 throw new PathfindingFailedException(error);
             }
@@ -182,8 +168,6 @@ internal sealed class MovementController
 
         if (questController.Value.IsQuestingStopped)
         {
-            // if (EzThrottler.Throttle("qstwouldhavejumpedin", 5000))
-            //     logger.LogDebug("Questionable would have jumped in here to do something, but decided against it.");
             return;
         }
 

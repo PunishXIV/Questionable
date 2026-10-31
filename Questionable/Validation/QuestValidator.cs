@@ -54,20 +54,6 @@ internal sealed class QuestValidator
                         {
                             foreach (ValidationIssue issue in validator.Validate(quest))
                             {
-                                /*
-                                var level = issue.Severity == EIssueSeverity.Error
-                                    ? LogLevel.Warning
-                                    : LogLevel.Debug;
-                                _logger.Log(level,
-                                    "Validation failed: {QuestId} ({QuestName}) / {QuestSequence} / {QuestStep} - {Description}",
-                                    issue.ElementId, quest.Info.Name, issue.Sequence, issue.Step, issue.Description);
-                                */
-                                //if (issue.Type == EIssueType.QuestDisabled && quest.Info.AlliedSociety != EAlliedSociety.None)
-                                //{
-                                //    disabledTribeQuests.TryAdd(quest.Info.AlliedSociety, 0);
-                                //    disabledTribeQuests[quest.Info.AlliedSociety]++;
-                                //}
-                                //else
                                 issues.Add(issue);
                             }
                         }

@@ -115,6 +115,8 @@ internal sealed class CombatController : IDisposable
         if (_currentFight == null)
             return EStatus.Complete;
 
+        CountKillOfLastTarget();
+
         if (_movementController.IsPathfinding ||
             _movementController.IsPathRunning ||
             _movementController.MovementStartedAt > DateTime.Now.AddSeconds(-1))
@@ -384,6 +386,47 @@ internal sealed class CombatController : IDisposable
         return (null, _L("Not BattleNpc"));
     }
 
+    /// <summary>
+    ///     Entries that ignore quest markers have no marker to tell us when enough enemies are dead, so for those we
+    ///     count our own kills against <see cref="ComplexCombatData.MinimumKillCount" />. Every other entry is still
+    ///     decided by the quest marker, as kills by other players can make our own count wrong.
+    /// </summary>
+    private void CountKillOfLastTarget()
+    {
+        if (_currentFight?.LastTargetId is not { } lastTargetId)
+            return;
+
+        if (_objectTable.FirstOrDefault(x => x.GameObjectId == lastTargetId) is not IBattleNpc { IsDead: true } battleNpc ||
+            !_currentFight.CountedKills.Add(lastTargetId))
+            return;
+
+        List<ComplexCombatData> complexCombatData = _currentFight.Data.ComplexCombatDatas;
+        for (int i = 0; i < complexCombatData.Count; ++i)
+        {
+            ComplexCombatData condition = complexCombatData[i];
+            if (!condition.IgnoreQuestMarker || condition.MinimumKillCount is not { } minimumKillCount ||
+                _currentFight.Data.CompletedComplexDatas.Contains(i))
+                continue;
+
+            if (condition.DataId != GameFunctions.GetBaseID(battleNpc) ||
+                (condition.NameId != null && condition.NameId != battleNpc.NameId))
+                continue;
+
+            int kills = _currentFight.KillCounts.GetValueOrDefault(i) + 1;
+            _currentFight.KillCounts[i] = kills;
+            _logger.LogInformation("Killed {DataId} ({Kills}/{MinimumKillCount})", condition.DataId, kills,
+                minimumKillCount);
+            if (kills >= minimumKillCount)
+            {
+                _logger.LogInformation("Complex combat condition fulfilled: killed {Kills}x {DataId}", kills,
+                    condition.DataId);
+                _currentFight.Data.CompletedComplexDatas.Add(i);
+            }
+
+            return;
+        }
+    }
+
     private void SetTarget(IGameObject? target)
     {
         if (target == null)
@@ -412,6 +455,8 @@ internal sealed class CombatController : IDisposable
             _logger.LogInformation("Setting target to {TargetName} ({TargetId:X8})", target.Name.ToString(),
                 target.GameObjectId);
             _targetManager.Target = target;
+            if (_currentFight != null)
+                _currentFight.LastTargetId = target.GameObjectId;
             MoveToTarget(target);
         }
     }
@@ -529,6 +574,9 @@ internal sealed class CombatController : IDisposable
         public required ICombatModule Module { get; init; }
         public required CombatData Data { get; init; }
         public required DateTime LastDistanceCheck { get; set; }
+        public ulong? LastTargetId { get; set; }
+        public HashSet<ulong> CountedKills { get; } = [];
+        public Dictionary<int, int> KillCounts { get; } = [];
     }
 
     public sealed class CombatData

@@ -29,13 +29,6 @@ internal sealed class AlliedSocietyData
             { 369, new([1051798], EAetheryteLocation.KozamaukaDockPoga) }, //pelu
             { 391, new([1052562], EAetheryteLocation.YakTelMamook) }, //mamook
         }.AsReadOnly();
-
-    public bool IsAlliedSocietyMount(ushort? mountId)
-    {
-        if (mountId is { } && Mounts.TryGetValue(mountId.Value, out AlliedSocietyMountConfiguration? mountConfig) && mountConfig is { })
-            return true;
-        return false;
-    }
     public EAlliedSociety GetCommonAlliedSocietyTurnIn(ElementId elementId)
     {
         if (elementId is QuestId questId)

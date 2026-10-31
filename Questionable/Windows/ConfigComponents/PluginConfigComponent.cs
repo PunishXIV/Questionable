@@ -434,23 +434,6 @@ internal sealed class PluginConfigComponent
         }
     }
 
-    private static bool PluginImageButton(PluginInfo plugin, float size, bool isInstalled, bool isActive)
-    {
-        string url = $"https://qstxiv.github.io/icons/{plugin.InternalName}.png";
-        if (ThreadLoadImageHandler.TryGetTextureWrap(url, out IDalamudTextureWrap? logo))
-        {
-            return ImGui.ImageButton(
-                logo.Handle,
-                new(size.Scale(), size.Scale()),
-                2,
-                isInstalled ? QstTheme.Success : QstTheme.Danger,
-                isActive ? Vector4.One : new(0.5f, 0.5f, 0.5f, 1f)
-            );
-        }
-
-        return false;
-    }
-
     public void InstallMissingRequiredPlugins()
         => _ = InstallMissingRequiredPluginsAsync();
 
@@ -566,11 +549,6 @@ internal sealed class PluginConfigComponent
 
     private async Task StartInstallAsync(PluginInfo plugin)
     {
-        //if (plugin.DalamudRepositoryUri == null)
-        //{
-        //    _pluginInterface.OpenPluginInstallerTo(PluginInstallerOpenKind.AllPlugins, plugin.DisplayName);
-        //    return;
-        //}
 
         if (IsPluginPresent(plugin.InternalName))
         {

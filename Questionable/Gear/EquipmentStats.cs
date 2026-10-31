@@ -22,14 +22,7 @@ public sealed record EquipmentStats(Dictionary<EBaseParam, StatInfo> Stats, byte
         return v?.MateriaValue ?? 0;
     }
 
-    public bool IsOvercapped(EBaseParam param)
-    {
-        Stats.TryGetValue(param, out StatInfo? v);
-        return v?.Overcapped ?? false;
-    }
-
     public bool Has(EBaseParam substat) => Stats.ContainsKey(substat);
-    public bool HasMateria() => Stats.Values.Any(x => x.MateriaValue > 0);
 
     public override int GetHashCode() => HashCode.Combine(MateriaCount, Stats);
 
