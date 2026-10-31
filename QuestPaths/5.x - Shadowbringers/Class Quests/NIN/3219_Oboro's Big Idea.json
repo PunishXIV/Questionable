@@ -16,7 +16,8 @@
           "TerritoryId": 137,
           "InteractionType": "Interact",
           "TargetTerritoryId": 137,
-          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+          "AetheryteShortcut": "Eastern La Noscea - Wineport",
+          "SkipConditions": {"StepIf": {"ExtraCondition": "DockStorehouse"}}
         },
         {
           "DataId": 1010139,
@@ -86,6 +87,30 @@
           "InteractionType": "WalkTo"
         },
         {
+          "Position": {
+            "X": -307.55157,
+            "Y": 10.247091,
+            "Z": -571.51746
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "StopDistance": 1,
+          "DisableNavmesh": true,
+          "Fly": true
+        },
+        {
+          "Position": {
+            "X": -304.1348,
+            "Y": 10.674036,
+            "Z": -572.1407
+          },
+          "TerritoryId": 180,
+          "InteractionType": "WalkTo",
+          "StopDistance": 1,
+          "DisableNavmesh": true,
+          "Fly": true
+        },
+        {
           "DataId": 2010175,
           "Position": {
             "X": -302.72375,
@@ -93,8 +118,7 @@
             "Z": -578.02704
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

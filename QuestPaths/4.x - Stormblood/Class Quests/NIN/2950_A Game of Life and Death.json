@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "xan",
-  "LastChecked": {"Username": "Anonymous", "Date": "2026-08-31"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -100,7 +100,7 @@
           "TerritoryId": 613,
           "Fly": true,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
+          "SinglePlayerDutyOptions": { "Enabled": true },
           "AetheryteShortcut": "Ruby Sea - Tamamizu",
           "SkipConditions": {
             "AetheryteShortcutIf": {

@@ -294,7 +294,7 @@ internal static class SinglePlayerDuty
                 //    yield return new MoveTask(SpecialTerritories.ViperTutorial, new(251.17833f, 15.400139f, 465.84366f), Mount: false);
                 //}
                 else
-                    yield return new EnableAi(tId == SpecialTerritories.Naadam);
+                    yield return new EnableAi(step.SinglePlayerDutyOptions?.Passive ?? false, tId == SpecialTerritories.Naadam);
 
                 if (step.SinglePlayerDutyOptions?.Target != null)
                     yield return new SetTarget((uint)step.SinglePlayerDutyOptions.Target);
@@ -341,7 +341,7 @@ internal static class SinglePlayerDuty
         public override bool ShouldInterruptOnDamage() => false;
     }
 
-    internal sealed record EnableAi(bool Passive = false) : ITask
+    internal sealed record EnableAi(bool Passive = false, bool Naadam = false) : ITask
     {
         public override string ToString() => $"BossMod.EnableAi({(Passive ? "Passive" : "AutoPull")})";
     }
@@ -352,7 +352,9 @@ internal static class SinglePlayerDuty
     {
         protected override bool Start()
         {
-            bossModIpc.SetPresetForSoloDuty(Task.Passive ? BossModIpc.EPreset.Overworld : BossModIpc.EPreset.QuestBattle);
+            bossModIpc.SetPresetForSoloDuty(
+                Task.Passive ? 
+                    (Task.Naadam ? BossModIpc.EPreset.Overworld : BossModIpc.EPreset.NormalMovement) : BossModIpc.EPreset.QuestBattle);
             return true;
         }
 

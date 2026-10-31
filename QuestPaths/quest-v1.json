@@ -1742,6 +1742,9 @@
                   "Enabled": {
                     "type": "boolean"
                   },
+                  "Passive": {
+                    "type": "boolean"
+                  },
                   "Notes": {
                     "type": "array",
                     "items": {

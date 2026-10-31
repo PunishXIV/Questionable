@@ -4,6 +4,7 @@ namespace Questionable.Model.Questing;
 public sealed class SinglePlayerDutyOptions
 {
     public bool Enabled { get; set; }
+    public bool Passive { get; set; }
     public List<string> Notes { get; set; } = [];
     public byte Index { get; set; }
     public int? Target { get; set; }

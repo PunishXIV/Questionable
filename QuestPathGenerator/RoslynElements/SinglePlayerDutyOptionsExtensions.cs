@@ -21,6 +21,9 @@ internal static class SinglePlayerDutyOptionsExtensions
                             Assignment(nameof(SinglePlayerDutyOptions.Enabled),
                                     dutyOptions.Enabled, emptyOptions.Enabled)
                                 .AsSyntaxNodeOrToken(),
+                            Assignment(nameof(SinglePlayerDutyOptions.Passive),
+                                    dutyOptions.Passive, emptyOptions.Passive)
+                                .AsSyntaxNodeOrToken(),
                             AssignmentList(nameof(SinglePlayerDutyOptions.Notes), dutyOptions.Notes)
                                 .AsSyntaxNodeOrToken(),
                             Assignment(nameof(SinglePlayerDutyOptions.Index),

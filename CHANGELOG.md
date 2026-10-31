@@ -1,1 +1,1 @@
-- Change: fix end date of typing event now that we know when evercold is releasing -alydev
+- Experimental feature: "Passive" setting for solo duties to check if boss module runs fine without combat (though lacking *all* combat isn't ideal for a vbm preset and that needs to be investigated, some solo duties work fine if you just move to the right spots) -alydev
