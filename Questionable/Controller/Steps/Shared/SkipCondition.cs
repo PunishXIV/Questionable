@@ -9,6 +9,17 @@ namespace Questionable.Controller.Steps.Shared;
 
 internal static class SkipCondition
 {
+    internal static CraftingItem? GetItemTarget(ElementId questId, QuestStep step)
+    {
+        if (step.ItemId == null)
+            return null;
+
+        var target = new CraftingItem(step.ItemId.Value, step.ItemCount ?? 0, step.ItemQuality);
+        return step.InteractionType == EInteractionType.Craft && step.ItemCount is > 0
+            ? QuestCraftingRequirements.ResolveItem(questId, target)
+            : target;
+    }
+
     internal sealed class Factory(Configuration configuration) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
@@ -284,39 +295,41 @@ internal static class SkipCondition
 
         private unsafe bool CheckItemCondition(QuestStep step, SkipStepConditions skipConditions)
         {
-            // Skip step if specified item is not in inventory (checks both NQ and HQ)
-            if (step is { ItemId: null })
+            CraftingItem? target = GetItemTarget(Task.ElementId, step);
+            if (target == null)
                 return false;
 
             InventoryManager* inventoryManager = InventoryManager.Instance();
             int itemCount = 0;
-            switch (step.ItemQuality)
+            switch (target.Quality)
             {
                 case EItemQuality.NQ:
-                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: false, checkEquipped: false);
+                    itemCount = inventoryManager->GetInventoryItemCount(target.ItemId, isHq: false, checkEquipped: false);
                     break;
                 case EItemQuality.HQ:
-                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: true, checkEquipped: false);
+                    itemCount = inventoryManager->GetInventoryItemCount(target.ItemId, isHq: true, checkEquipped: false);
                     break;
                 case EItemQuality.Any:
-                    itemCount = inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: false, checkEquipped: false)
-                                + inventoryManager->GetInventoryItemCount(step.ItemId.Value, isHq: true, checkEquipped: false);
+                    itemCount = inventoryManager->GetInventoryItemCount(target.ItemId, isHq: false, checkEquipped: false)
+                                + inventoryManager->GetInventoryItemCount(target.ItemId, isHq: true, checkEquipped: false);
+                    if (step.InteractionType == EInteractionType.Craft)
+                        itemCount += inventoryManager->GetInventoryItemCount(target.ItemId + 500000, isHq: false, checkEquipped: false);
                     break;
             }
 
             if (itemCount == 0 && skipConditions.Item is { NotInInventory: true })
             {
                 logger.LogInformation("Skipping step, no item with itemId {ItemId} in inventory",
-                    step.ItemId.Value);
+                    target.ItemId);
                 return true;
             }
 
             if (itemCount > 0 && skipConditions.Item is { NotInInventory: false })
             {
-                if (step.ItemCount != null && itemCount >= step.ItemCount)
+                if (step.ItemCount != null && itemCount >= target.ItemCount)
                 {
                     logger.LogInformation("Skipping step, item with itemId {ItemId} in inventory",
-                        step.ItemId.Value);
+                        target.ItemId);
                     return true;
                 }
             }

@@ -41,6 +41,8 @@ internal sealed class CombatController : IDisposable
     private readonly ITargetManager _targetManager;
 
     private CurrentFight? _currentFight;
+    private ICombatModule? _pendingCleanup;
+    private bool _cleanupFailureLogged;
     private ulong? _lastTargetId;
     private List<byte>? _previousQuestVariables;
     private bool _wasInCombat;
@@ -74,6 +76,8 @@ internal sealed class CombatController : IDisposable
     }
 
     public bool IsRunning => _currentFight != null;
+    public bool HasPendingCleanup => _pendingCleanup != null;
+    public string? BlockReason { get; private set; }
 
     public void Dispose()
     {
@@ -84,17 +88,26 @@ internal sealed class CombatController : IDisposable
     public bool Start(CombatData combatData)
     {
         Stop(_L("Starting combat"));
+        if (HasPendingCleanup)
+            throw new TaskException(BlockReason!);
+        if (combatData.SpawnType == EEnemySpawnType.FinishCombatIfAny && !_condition[ConditionFlag.InCombat])
+            return false;
 
         ICombatModule? combatModule = null;
         if (combatData.CombatItemUse != null)
             combatModule = _combatModules.OfType<ItemUseModule>().FirstOrDefault(x => x.CanHandleFight(combatData));
         combatModule ??= _combatModules.FirstOrDefault(x => x.CanHandleFight(combatData));
         if (combatModule == null)
-            return false;
+            throw new TaskException("No combat module is available for this fight.");
         _logger.LogInformation($"Combat module: {combatModule}");
 
-        if (combatModule.Start(combatData))
+        // Retain ownership before calling a provider: a throwing/rejected start can still acquire resources.
+        _pendingCleanup = combatModule;
+        try
         {
+            if (!combatModule.Start(combatData))
+                throw new TaskException($"{combatModule.GetType().Name} rejected combat startup.");
+
             _currentFight = new()
             {
                 Module = combatModule,
@@ -104,17 +117,41 @@ internal sealed class CombatController : IDisposable
             _wasInCombat =
                 combatData.SpawnType is EEnemySpawnType.QuestInterruption or EEnemySpawnType.FinishCombatIfAny;
             UpdateLastTargetAndQuestVariables(target: null);
+            _pendingCleanup = null;
             return true;
         }
-
-        return false;
+        catch
+        {
+            Stop("Combat startup failed");
+            throw;
+        }
     }
 
     public EStatus Update()
     {
+        if (HasPendingCleanup)
+            throw new TaskException(BlockReason ?? "Waiting for combat cleanup.");
         if (_currentFight == null)
             return EStatus.Complete;
 
+        try
+        {
+            _currentFight.Module.VerifyActive();
+            return UpdateCurrentFight();
+        }
+        catch (Exception e)
+        {
+            Stop("Combat interrupted");
+            if (e is TaskException)
+                throw;
+            throw new TaskException("Combat provider failed; quest execution stopped.", e);
+        }
+    }
+
+    private EStatus UpdateCurrentFight()
+    {
+        if (_currentFight == null)
+            return EStatus.Complete;
         CountKillOfLastTarget();
 
         if (_movementController.IsPathfinding ||
@@ -179,17 +216,7 @@ internal sealed class CombatController : IDisposable
             if (nextTarget != null && nextTarget.Equals(target))
             {
                 if (!IsMovingOrShouldMove(target))
-                {
-                    try
-                    {
-                        _currentFight.Module.Update(target);
-                    }
-                    catch (TaskException e)
-                    {
-                        _logger.LogWarning(e, "Combat was interrupted, stopping: {Exception}", e.Message);
-                        SetTarget(target: null);
-                    }
-                }
+                    _currentFight!.Module.Update(target);
             }
             else if (nextTarget != null)
             {
@@ -557,14 +584,42 @@ internal sealed class CombatController : IDisposable
     public void Stop(string label)
     {
         using IDisposable? scope = _logger.BeginScope(label);
-        if (_currentFight != null)
-        {
-            _logger.LogInformation("Stopping current fight");
-            _currentFight.Module.Stop();
-        }
-
+        CurrentFight? fight = _currentFight;
         _currentFight = null;
         _wasInCombat = false;
+        if (fight != null)
+        {
+            _logger.LogInformation("Stopping current fight");
+            _pendingCleanup = fight.Module;
+        }
+        TryRetryCleanup();
+    }
+
+    public void TryRetryCleanup()
+    {
+        if (_pendingCleanup == null)
+            return;
+
+        try
+        {
+            if (_pendingCleanup.Stop())
+            {
+                _pendingCleanup = null;
+                _cleanupFailureLogged = false;
+                BlockReason = null;
+                return;
+            }
+            BlockReason = $"Waiting for {_pendingCleanup.GetType().Name} to release combat control.";
+        }
+        catch (Exception e)
+        {
+            BlockReason = $"Combat cleanup failed: {e.Message}";
+            if (!_cleanupFailureLogged)
+            {
+                _logger.LogWarning(e, "Could not release combat control; retaining cleanup for retry");
+                _cleanupFailureLogged = true;
+            }
+        }
     }
 
     private void TerritoryChanged(uint territoryId) => Stop(_L("TerritoryChanged"));

@@ -1,5 +1,4 @@
 using Dalamud.Plugin.Ipc;
-using Dalamud.Plugin.Ipc.Exceptions;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
@@ -15,16 +14,18 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         pluginInterface.GetIpcSubscriber<Vector3, Vector3, bool, CancellationToken, Task<List<Vector3>>>(
             "vnavmesh.Nav.PathfindCancelable");
     private readonly ICallGateSubscriber<bool> _pathIsRunning = pluginInterface.GetIpcSubscriber<bool>("vnavmesh.Path.IsRunning");
+    private readonly ICallGateSubscriber<bool> _movementAllowed = pluginInterface.GetIpcSubscriber<bool>("vnavmesh.Path.GetMovementAllowed");
+    private readonly ICallGateSubscriber<bool> _simpleMoveInProgress = pluginInterface.GetIpcSubscriber<bool>("vnavmesh.SimpleMove.PathfindInProgress");
+    private readonly ICallGateSubscriber<bool> _pathfindInProgress = pluginInterface.GetIpcSubscriber<bool>("vnavmesh.Nav.PathfindInProgress");
+    private readonly ICallGateSubscriber<int> _queuedPathfinds = pluginInterface.GetIpcSubscriber<int>("vnavmesh.Nav.PathfindNumQueued");
     private readonly ICallGateSubscriber<List<Vector3>> _pathListWaypoints = pluginInterface.GetIpcSubscriber<List<Vector3>>("vnavmesh.Path.ListWaypoints");
     private readonly ICallGateSubscriber<List<Vector3>, bool, object> _pathMoveTo = pluginInterface.GetIpcSubscriber<List<Vector3>, bool, object>("vnavmesh.Path.MoveTo");
     private readonly ICallGateSubscriber<float, object> _pathSetTolerance = pluginInterface.GetIpcSubscriber<float, object>("vnavmesh.Path.SetTolerance");
     private readonly ICallGateSubscriber<object> _pathStop = pluginInterface.GetIpcSubscriber<object>("vnavmesh.Path.Stop");
     private readonly ICallGateSubscriber<Vector3, bool, float, Vector3?> _queryPointOnFloor =
         pluginInterface.GetIpcSubscriber<Vector3, bool, float, Vector3?>("vnavmesh.Query.Mesh.PointOnFloor");
-    private readonly ICallGateSubscriber<Vector3, bool, float, bool> _simpleMovePathfindAndMoveCloseTo =
-        pluginInterface.GetIpcSubscriber<Vector3, bool, float, bool>("vnavmesh.SimpleMove.PathfindAndMoveCloseTo");
-    private readonly ICallGateSubscriber<Vector3, bool, bool> _simpleMovePathfindAndMoveTo =
-        pluginInterface.GetIpcSubscriber<Vector3, bool, bool>("vnavmesh.SimpleMove.PathfindAndMoveTo");
+    private readonly ICallGateSubscriber<Vector3, float, float, Vector3?> _nearestPointReachable =
+        pluginInterface.GetIpcSubscriber<Vector3, float, float, Vector3?>("vnavmesh.Query.Mesh.NearestPointReachable");
 
     public Version? Version
     {
@@ -36,7 +37,26 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         }
     }
 
-    public bool IsPathRunning => IpcInvoke.SafeFunc(() => _pathIsRunning.InvokeFunc(), fallback: false);
+    public bool? GetPathRunning() => ReadOptional<bool>(() => _pathIsRunning.InvokeFunc());
+
+    public bool IsPathRunning => GetPathRunning() != false;
+
+    public bool? GetMovementAllowed() => ReadOptional(() => _movementAllowed.HasFunction ? (bool?)_movementAllowed.InvokeFunc() : null);
+    public bool? GetSimpleMoveInProgress() => ReadOptional(() => _simpleMoveInProgress.HasFunction ? (bool?)_simpleMoveInProgress.InvokeFunc() : null);
+    public bool? GetPathfindInProgress() => ReadOptional(() => _pathfindInProgress.HasFunction ? (bool?)_pathfindInProgress.InvokeFunc() : null);
+    public int? GetQueuedPathfinds() => ReadOptional(() => _queuedPathfinds.HasFunction ? (int?)_queuedPathfinds.InvokeFunc() : null);
+
+    private static T? ReadOptional<T>(Func<T?> read) where T : struct
+    {
+        try
+        {
+            return read();
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
 
     public void Stop()
     {
@@ -55,47 +75,32 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
             _pathSetTolerance.InvokeAction(0.25f);
             return _navPathfind.InvokeFunc(localPlayerPosition, targetPosition, fly, cancellationToken);
         }
-        catch (IpcNotReadyError e)
+        catch (Exception e)
         {
-            logger.LogWarning(e, "Could not pathfind via navmesh {Version}", Version);
             return Task.FromException<List<Vector3>>(e);
         }
     }
 
     public void MoveTo(List<Vector3> position, bool fly)
     {
-        Stop();
-        IpcInvoke.SafeAction(() => _pathMoveTo.InvokeAction(position, fly), logger,
-            "Could not move via navmesh {Version}", Version);
+        _pathStop.InvokeAction();
+        _pathMoveTo.InvokeAction(position, fly);
     }
 
     public Vector3? GetPointOnFloor(Lumina.Excel.Sheets.Level level) =>
         GetPointOnFloor(new Vector3(level.X, level.Y, level.Z), unlandable: false);
 
     public Vector3? GetPointOnFloor(Vector3 position, bool unlandable, float range = 0.2f) =>
-        IpcInvoke.SafeFunc(() => _queryPointOnFloor.InvokeFunc(position, unlandable, range), fallback: null);
+        ReadOptional(() => _queryPointOnFloor.InvokeFunc(position, unlandable, range));
 
-    public bool SimplePathfindAndMoveTo(Vector3 destination, bool fly)
-    {
-        if (!IsReady())
-            return false;
-        return IpcInvoke.SafeFunc(() => _simpleMovePathfindAndMoveTo.InvokeFunc(destination, fly), fallback: false,
-            logger, "Could not SimplePathfindAndMoveTo {Version}", Version);
-    }
-
-    public bool SimplePathfindAndMoveCloseTo(Vector3 destination, bool fly, float range)
-    {
-        if (!IsReady())
-            return false;
-        return IpcInvoke.SafeFunc(() => _simpleMovePathfindAndMoveCloseTo.InvokeFunc(destination, fly, range), fallback: false,
-            logger, "Could not SimplePathfindAndMoveCloseTo {Version}", Version);
-    }
+    public Vector3? GetNearestPointReachable(Vector3 position, float halfExtentXZ, float halfExtentY) =>
+        ReadOptional(() => _nearestPointReachable.InvokeFunc(position, halfExtentXZ, halfExtentY));
 
     public List<Vector3> GetWaypoints()
     {
-        if (!IsPathRunning)
+        if (GetPathRunning() != true)
             return [];
-        return IpcInvoke.SafeFunc<List<Vector3>>(() => _pathListWaypoints.InvokeFunc(), []);
+        return IpcInvoke.SafeFunc<List<Vector3>>(() => _pathListWaypoints.InvokeFunc(), []) ?? [];
     }
 
     public int GetBuildProgress() =>

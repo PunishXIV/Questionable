@@ -9,7 +9,6 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
-using Questionable.Controller.Steps.Interactions;
 using Questionable.Model.Questing;
 using Action = Lumina.Excel.Sheets.Action;
 using BattleChara = FFXIVClientStructs.FFXIV.Client.Game.Character.BattleChara;
@@ -449,11 +448,6 @@ internal sealed unsafe partial class GameFunctions
             if (!condition[ConditionFlag.PreparingToCraft])
                 return true;
         }
-
-        if (condition[ConditionFlag.Unconscious] &&
-            condition[ConditionFlag.SufferingStatusAffliction63] &&
-            clientState.TerritoryType == SinglePlayerDuty.SpecialTerritories.Lahabrea)
-            return false; // needed to process the tasks
 
         return condition[ConditionFlag.Occupied] || condition[ConditionFlag.Occupied30] ||
                condition[ConditionFlag.Occupied33] || condition[ConditionFlag.Occupied38] ||

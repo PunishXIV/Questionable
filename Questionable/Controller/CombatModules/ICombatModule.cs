@@ -9,6 +9,9 @@ internal interface ICombatModule
 
     bool Stop();
 
+    // Called even while moving or waiting for a target. Local combat modules need no ownership check.
+    void VerifyActive() { }
+
     void Update(IGameObject nextTarget);
 
     bool CanAttack(IBattleNpc target);

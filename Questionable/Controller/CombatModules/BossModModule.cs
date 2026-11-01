@@ -44,8 +44,7 @@ internal sealed class BossModModule
     {
         try
         {
-            bossModIpc.Cleanup();
-            return true;
+            return bossModIpc.StopOwnedPreset();
         }
         catch (Exception e)
         {
@@ -57,6 +56,8 @@ internal sealed class BossModModule
     public void Update(IGameObject gameObject)
     {
     }
+
+    public void VerifyActive() => bossModIpc.VerifyOwnedPreset();
 
     public bool CanAttack(IBattleNpc target) => true;
 

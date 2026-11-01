@@ -247,7 +247,7 @@ internal static class WaitAtEnd
             return ETaskResult.TaskComplete;
         }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage() => true;
     }
 
     internal sealed record WaitQuestCompleted(ElementId ElementId) : ITask
@@ -261,7 +261,7 @@ internal static class WaitAtEnd
 
         public override ETaskResult Update() => questFunctions.IsQuestComplete(Task.ElementId) ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage() => true;
     }
 
     internal sealed record WaitForTerritory

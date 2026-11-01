@@ -12,6 +12,7 @@ namespace Questionable.Windows.QuestComponents;
 internal sealed class QuickAccessButtonsComponent
 (
     QuestController questController,
+    MovementController movementController,
     QuestFunctions questFunctions,
     QuestRegistry questRegistry,
     QuestValidationWindow questValidationWindow,
@@ -209,6 +210,7 @@ internal sealed class QuickAccessButtonsComponent
                         { "Territory", TerritoryData.GetNameAndId(clientState.TerritoryType) }
                     }},
                 };
+                AddNavigationFailure(troubleshooting, movementController.LastFailure);
                 output = JsonSerializer.Serialize(troubleshooting, JsonOptions.Default);
                 ImGui.SetClipboardText(output);
                 chatGui.Print(_L("Troubleshooting information has been copied to clipboard. " +
@@ -216,6 +218,12 @@ internal sealed class QuickAccessButtonsComponent
                     CommandHandler.MessageTag, CommandHandler.TagColor);
             }
         }
+    }
+
+    internal static void AddNavigationFailure(Dictionary<string, object?> troubleshooting, NavigationFailureSnapshot? failure)
+    {
+        if (failure != null)
+            troubleshooting["LastNavigationFailure"] = failure;
     }
 
     internal void DrawValidationIssuesButton(bool showLabel = false)

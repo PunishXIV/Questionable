@@ -91,7 +91,7 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
 
     private void OnFrameworkUpdate(IFramework framework)
     {
-        if (!IsOpen || _state == EState.Done || !_questController.IsRunning)
+        if (!IsOpen || _state == EState.Done || !_questController.IsRunning || _questController.HasExternalOperation)
             return;
 
         QuestStep? step = FindCurrentStep();

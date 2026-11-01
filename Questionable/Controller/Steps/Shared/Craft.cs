@@ -1,4 +1,5 @@
 ﻿using ECommons.ExcelServices;
+using System.Diagnostics;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
@@ -22,7 +23,7 @@ internal static class Craft
             return
             [
                 new MountStep.UnmountTask(),
-                new CraftTask(quest, step.ItemId, step.ItemCount)
+                new CraftTask(quest, sequence.Sequence, step)
             ];
         }
     }
@@ -30,125 +31,275 @@ internal static class Craft
     internal sealed record CraftTask
     (
         Quest Quest,
-        uint? ItemId,
-        int? ItemCount) : ITask
+        byte Sequence,
+        QuestStep Step) : ITask
     {
+        public uint? ItemId => Step.ItemId;
+        public int? ItemCount => Step.ItemCount;
         public override string ToString() => $"Craft({ItemCount}x {ItemId})";
+    }
+
+    internal static bool HasItemTarget(CraftTask task)
+    {
+        if (task.ItemId.HasValue || task.ItemCount.HasValue)
+        {
+            if (task.ItemId is null or 0 || task.ItemCount is null or <= 0)
+                throw new TaskException("Craft requires both an item ID and a positive item count");
+            return true;
+        }
+
+        // Legacy class-quest paths rely on built-in lists without declaring their outputs.
+        if (task.Quest.Id is not QuestId)
+            throw new TaskException("Artisan list-only crafting requires a normal quest ID");
+        return false;
+    }
+
+    internal static bool IsQuestObjectiveMet(CraftTask task, bool questComplete, QuestProgressInfo? questWork) =>
+        QuestWorkUtils.HasCompletionFlags(task.Step.CompletionQuestVariablesFlags) &&
+        (questComplete || questWork != null &&
+            (questWork.Sequence > task.Sequence ||
+             questWork.Sequence == task.Sequence && QuestWorkUtils.MatchesQuestWork(task.Step.CompletionQuestVariablesFlags, questWork)));
+
+    internal static IReadOnlyList<CraftingItem> GetItemTargets(CraftTask task) => HasItemTarget(task)
+        ? [QuestCraftingRequirements.ResolveItem(task.Quest.Id,
+            new CraftingItem(task.ItemId!.Value, task.ItemCount!.Value, task.Step.ItemQuality))]
+        : QuestCraftingRequirements.GetLegacyItems(task.Quest.Id, task.Sequence);
+
+    internal static bool AreItemsSatisfied(IReadOnlyList<CraftingItem> targets, Func<CraftingItem, int> countItems) =>
+        targets.Count > 0 && targets.All(item => countItems(item) >= item.ItemCount);
+
+    internal static bool TryStartQuestList(IArtisanIpc artisanIpc, ElementId questId,
+        uint? itemId = null, IReadOnlySet<uint>? requiredItemIds = null)
+    {
+        if (questId is not QuestId)
+            throw new TaskException("Artisan quest lists require a normal quest ID");
+
+        // A full list may consume an explicitly requested intermediate (e.g. Natron in CUL 268).
+        // Explicit steps need evidence that a list produces their target before submission.
+        if (itemId.HasValue && (requiredItemIds is not { Count: > 0 } || !requiredItemIds.Contains(itemId.Value)))
+            return false;
+
+        ArtisanStartResult result = artisanIpc.CraftList(questId.Value.ToInt() + 65536);
+        return result switch
+        {
+            ArtisanStartResult.Submitted => true,
+            ArtisanStartResult.MissingList => false,
+            _ => throw new TaskException($"Artisan list request was not accepted ({result}); recipe fallback is unsafe"),
+        };
+    }
+
+    internal static int GetCraftCount(int remainingItems, int yield)
+    {
+        if (remainingItems <= 0 || yield <= 0)
+            throw new TaskException("Craft quantity and recipe yield must be positive");
+        return 1 + (remainingItems - 1) / yield;
+    }
+
+    internal static uint SelectRecipe(Job job, IReadOnlyList<uint> recipes)
+    {
+        int index = (int)job - (int)Job.CRP;
+        return index >= 0 && index < recipes.Count && recipes[index] != 0
+            ? recipes[index]
+            : recipes.FirstOrDefault(x => x != 0);
+    }
+
+    internal static int CountMatchingItems(EItemQuality quality, int normal, int high, int collectable) => quality switch
+    {
+        EItemQuality.NQ => normal,
+        EItemQuality.HQ => high,
+        EItemQuality.Any => normal + high + collectable,
+        _ => throw new TaskException($"Unsupported craft item quality {quality}"),
+    };
+
+    internal sealed class Progress(ArtisanStatus initialStatus, bool requireObjective = true)
+    {
+        internal static readonly TimeSpan StartTimeout = TimeSpan.FromSeconds(15);
+        internal static readonly TimeSpan IdleGrace = TimeSpan.FromSeconds(2);
+        private bool _observedBusy = initialStatus == ArtisanStatus.Busy;
+        private TimeSpan? _idleSince;
+
+        public bool Update(ArtisanStatus status, bool objectiveMet, TimeSpan elapsed)
+        {
+            // CraftingOperationState blocks unavailable providers before progress is evaluated.
+            if (status == ArtisanStatus.Paused)
+                throw new TaskException("Artisan is paused or has a stop request; cancel its work manually before restarting Questionable");
+
+            if (status == ArtisanStatus.Busy)
+            {
+                _observedBusy = true;
+                _idleSince = null;
+                return false;
+            }
+
+            if (status == ArtisanStatus.Queued)
+            {
+                _idleSince = null;
+                if (!_observedBusy && elapsed >= StartTimeout)
+                    throw new TaskException("Artisan work remained queued without starting for 15 seconds; cancel queued work manually before restarting");
+                return false;
+            }
+
+            _idleSince ??= elapsed;
+            if (elapsed - _idleSince.Value < IdleGrace)
+                return false;
+            if (requireObjective ? objectiveMet : _observedBusy)
+                return true;
+            if (_observedBusy)
+                throw new TaskException("Artisan stopped without meeting the craft count/quality or quest objective");
+            if (elapsed >= StartTimeout)
+                throw new TaskException("Artisan did not start within 15 seconds and the craft objective is unmet; check for queued work before restarting");
+            return false;
+        }
     }
 
     internal sealed class DoCraft
     (
         IDataManager dataManager,
-        ArtisanIpc artisanIpc,
+        IArtisanIpc artisanIpc,
         ILogger<DoCraft> logger,
-        QuestController questController) : TaskExecutor<CraftTask>
+        QuestFunctions questFunctions,
+        CraftingOperationState craftingOperation) : TaskExecutor<CraftTask>, ITaskExecutor.IStoppableTaskExecutor
     {
-        private EItemQuality _itemQuality = EItemQuality.Any;
-        private int _previousCount;
-        private int _startingItemCount;
+        private bool _requireObjective;
+        private IReadOnlyList<CraftingItem> _itemTargets = [];
+        private int[] _previousCounts = [];
+        private Progress _progress = null!;
+        private readonly Stopwatch _elapsed = new();
+        private Guid? _operationId;
+
         protected override unsafe bool Start()
         {
-            byte currentClassJobId = PlayerState.Instance()->CurrentClassJobId;
-            if (artisanIpc.CraftList(Task.Quest.Id) ||
-                artisanIpc.CraftList(int.Parse($"{Task.Quest.Id.Value | 0x10000}{currentClassJobId % 8}", CultureInfo.InvariantCulture)))
+            // Establish the same objective before either list or recipe submission.
+            bool hasItemTarget = HasItemTarget(Task);
+            _itemTargets = GetItemTargets(Task);
+            _requireObjective = _itemTargets.Count > 0 || QuestWorkUtils.HasCompletionFlags(Task.Step.CompletionQuestVariablesFlags);
+            _previousCounts = _itemTargets.Select(GetOwnedItemCount).ToArray();
+            IReadOnlySet<uint>? requiredItemIds = null;
+            if (hasItemTarget && Task.Quest.Id is QuestId questId &&
+                dataManager.GetExcelSheet<Lumina.Excel.Sheets.Quest>().GetRowOrDefault(questId.Value + 65536u) is { } questRow)
             {
-                logger.LogInformation("Craft list started");
-                return true;
+                requiredItemIds = QuestCraftingRequirements.GetRequiredItemIds(questRow.QuestParams
+                    .Select(x => (x.ScriptInstruction.ExtractText(), x.ScriptArg)));
             }
-            if (!Task.ItemId.HasValue)
-                throw new ArgumentNullException(nameof(Task.ItemId));
-            if (!Task.ItemCount.HasValue)
-                throw new ArgumentNullException(nameof(Task.ItemCount));
 
-            // Get the item quality requirement from the quest step (NQ, HQ, or Any)
-            _itemQuality = GetItemQuality();
-            int ownedCount = GetOwnedItemCount();
-
-            if (ownedCount >= Task.ItemCount)
+            IReadOnlyList<CraftingItem>? listTargets = CraftingBatch.Resolve(Task, requiredItemIds);
+            if ((listTargets != null && AreItemsSatisfied(listTargets, GetOwnedItemCount)) || IsObjectiveMet())
             {
-                logger.LogInformation("Already own {ItemCount}x {ItemId}", Task.ItemCount, Task.ItemId);
+                logger.LogInformation("Craft objective is already met for {QuestId}", Task.Quest.Id);
                 return false;
             }
 
-            _startingItemCount = ownedCount;
-            _previousCount = ownedCount;
+            if (!hasItemTarget && QuestFunctions.GetQuestProgressInfo(Task.Quest.Id) == null)
+                throw new TaskException("Quest state is unavailable; cannot verify this Artisan list's objective");
 
-            RecipeLookup? recipeLookup = dataManager.GetExcelSheet<RecipeLookup>().GetRowOrDefault(Task.ItemId.Value) ??
+            if (listTargets != null)
+            {
+                // Read the list's inventory before submission; retain the recipe objective for fallback.
+                int[] listCounts = listTargets.Select(GetOwnedItemCount).ToArray();
+                bool listRequiresObjective = listTargets.Count > 0 || QuestWorkUtils.HasCompletionFlags(Task.Step.CompletionQuestVariablesFlags);
+                if (TryStartQuestList(artisanIpc, Task.Quest.Id, Task.ItemId, requiredItemIds))
+                {
+                    _itemTargets = listTargets;
+                    _previousCounts = listCounts;
+                    _requireObjective = listRequiresObjective;
+                    return TrackSubmission();
+                }
+            }
+
+            if (!hasItemTarget)
+                throw new TaskException("Artisan has no list for this quest and no item target is available for recipe fallback");
+
+            RecipeLookup recipeLookup = dataManager.GetExcelSheet<RecipeLookup>().GetRowOrDefault(Task.ItemId!.Value) ??
                                          throw new TaskException($"Item {Task.ItemId} is not craftable");
             QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest.Id);
-            uint recipeId = (questWork != null && questWork.ClassJob.IsCrafter() ?
-                    questWork.ClassJob :
-                    (Job)currentClassJobId
-                ) switch
-            {
-                Job.CRP => recipeLookup.Value.CRP.RowId,
-                Job.BSM => recipeLookup.Value.BSM.RowId,
-                Job.ARM => recipeLookup.Value.ARM.RowId,
-                Job.GSM => recipeLookup.Value.GSM.RowId,
-                Job.LTW => recipeLookup.Value.LTW.RowId,
-                Job.WVR => recipeLookup.Value.WVR.RowId,
-                Job.ALC => recipeLookup.Value.ALC.RowId,
-                Job.CUL => recipeLookup.Value.CUL.RowId,
-                var _ => 0
-            };
-
-            if (recipeId == 0)
-            {
-                recipeId = new[]
-                    {
-                        recipeLookup.Value.CRP.RowId,
-                        recipeLookup.Value.BSM.RowId,
-                        recipeLookup.Value.ARM.RowId,
-                        recipeLookup.Value.GSM.RowId,
-                        recipeLookup.Value.LTW.RowId,
-                        recipeLookup.Value.WVR.RowId,
-                        recipeLookup.Value.ALC.RowId,
-                        recipeLookup.Value.WVR.RowId
-                    }
-                    .FirstOrDefault(x => x != 0);
-            }
+            PlayerState* playerState = PlayerState.Instance();
+            if (playerState == null)
+                throw new TaskException("Player state is unavailable; cannot select a crafting job");
+            Job job = questWork != null && questWork.ClassJob.IsCrafter()
+                ? questWork.ClassJob
+                : (Job)playerState->CurrentClassJobId;
+            uint recipeId = SelectRecipe(job,
+            [
+                recipeLookup.CRP.RowId,
+                recipeLookup.BSM.RowId,
+                recipeLookup.ARM.RowId,
+                recipeLookup.GSM.RowId,
+                recipeLookup.LTW.RowId,
+                recipeLookup.WVR.RowId,
+                recipeLookup.ALC.RowId,
+                recipeLookup.CUL.RowId,
+            ]);
 
             if (recipeId == 0)
                 throw new TaskException($"Unable to determine recipe for item {Task.ItemId}");
 
-            int remainingItemCount = Task.ItemCount.Value - _startingItemCount;
+            Recipe recipe = dataManager.GetExcelSheet<Recipe>().GetRowOrDefault(recipeId) ??
+                            throw new TaskException($"Recipe {recipeId} does not exist");
+            CraftingItem target = _itemTargets.Single();
+            int startingItemCount = _previousCounts[0];
+            int remainingItemCount = target.ItemCount - startingItemCount;
+            int crafts = GetCraftCount(remainingItemCount, recipe.AmountResult);
             logger.LogInformation(
                 "Starting craft for item {ItemId} with recipe {RecipeId} for {RemainingItemCount} items (quality: {Quality}, owned: {OwnedCount})",
-                Task.ItemId, recipeId, remainingItemCount, _itemQuality, _startingItemCount);
-            if (!artisanIpc.CraftItem((ushort)recipeId, remainingItemCount))
-                throw new TaskException($"Failed to start Artisan craft for recipe {recipeId}");
+                Task.ItemId, recipeId, remainingItemCount, target.Quality, startingItemCount);
+            ArtisanStartResult result = artisanIpc.CraftItem(checked((ushort)recipeId), crafts);
+            if (result != ArtisanStartResult.Submitted)
+                throw new TaskException($"Failed to submit Artisan recipe {recipeId} ({result}); check Artisan before restarting");
 
+            return TrackSubmission();
+        }
+
+        private bool TrackSubmission()
+        {
+            // IsBusy includes queued startup/cleanup. There is no scoped cancellation IPC;
+            // SetStopRequest only pauses lists and must not be treated as cancellation.
+            _elapsed.Restart();
+            _operationId = craftingOperation.OperationId ??
+                throw new TaskException("Artisan submission was not tracked; check Artisan before restarting");
+            ArtisanStatus status = artisanIpc.GetStatus();
+            craftingOperation.ObserveStatus(status);
+            _progress = new Progress(status, _requireObjective);
+            if (_requireObjective)
+                logger.LogInformation("Artisan request submitted; waiting for activity and verified craft output");
+            else
+                logger.LogWarning("Legacy list-only craft for {QuestId} has no item target or completion flags; waiting for active Artisan execution then stable idle, but outputs cannot be verified", Task.Quest.Id);
             return true;
         }
 
         public override unsafe ETaskResult Update()
         {
-            if (!Task.ItemId.HasValue || !Task.ItemCount.HasValue)
-            {
-                if (artisanIpc.IsCrafting())
-                    return ETaskResult.StillRunning;
-                return CloseCraftingLog() ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
-            }
-            int currentCount = GetOwnedItemCount();
+            ArtisanStatus status = artisanIpc.GetStatus();
+            craftingOperation.ObserveStatus(status);
+            if (!craftingOperation.CanContinue(_operationId))
+                throw new TaskException(craftingOperation.BlockReason ?? "Artisan crafting ownership was lost");
 
             // Log only when item count changes
-            if (currentCount != _previousCount)
+            for (int i = 0; i < _itemTargets.Count; ++i)
             {
-                int craftedCount = currentCount - _startingItemCount;
-                logger.LogInformation("Craft progress: {Current}/{Target} items (crafted: {Crafted}, quality: {Quality})",
-                    currentCount, Task.ItemCount, craftedCount, _itemQuality);
-                _previousCount = currentCount;
+                CraftingItem item = _itemTargets[i];
+                int currentCount = GetOwnedItemCount(item);
+                if (currentCount != _previousCounts[i])
+                {
+                    logger.LogInformation("Craft progress for item {ItemId}: {Current}/{Target} (quality: {Quality})",
+                        item.ItemId, currentCount, item.ItemCount, item.Quality);
+                    _previousCounts[i] = currentCount;
+                }
             }
 
-            // Check if we've reached the target count and crafting has stopped
-            if (currentCount >= Task.ItemCount && !artisanIpc.IsCrafting())
+            if (_progress.Update(status, IsObjectiveMet(), _elapsed.Elapsed))
             {
-                logger.LogInformation("Item count reached ({Count}x {ItemId}), closing crafting window", Task.ItemCount, Task.ItemId);
-                return CloseCraftingLog() ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
+                if (_requireObjective)
+                    logger.LogInformation("Craft objective met for {QuestId}, closing crafting window", Task.Quest.Id);
+                else
+                    logger.LogInformation("Legacy Artisan list finished for {QuestId}; outputs remain unverified, closing crafting window", Task.Quest.Id);
+                if (CloseCraftingLog() && craftingOperation.TryComplete(_operationId))
+                    return ETaskResult.TaskComplete;
             }
 
             return ETaskResult.StillRunning;
         }
+
+        public void StopNow() => craftingOperation.Abandon(_operationId);
 
         private static unsafe bool CloseCraftingLog()
         {
@@ -170,34 +321,26 @@ internal static class Craft
             return true;
         }
 
-        private EItemQuality GetItemQuality()
+        private bool IsObjectiveMet()
         {
-            // Retrieve ItemQuality from the current quest step, defaults to Any if not specified
-            if (questController.CurrentQuest is { } currentQuest)
-            {
-                QuestSequence? sequence = currentQuest.FindSequence();
-                if (sequence?.Steps.Count > currentQuest.Step)
-                    return sequence.Steps[currentQuest.Step].ItemQuality;
-            }
-
-            return EItemQuality.Any;
+            if (_itemTargets.Count > 0)
+                return AreItemsSatisfied(_itemTargets, GetOwnedItemCount);
+            if (!_requireObjective)
+                return false;
+            QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest.Id);
+            return IsQuestObjectiveMet(Task, questFunctions.IsQuestComplete(Task.Quest.Id), questWork);
         }
 
-        private unsafe int GetOwnedItemCount()
+        private static unsafe int GetOwnedItemCount(CraftingItem item)
         {
-            if (!Task.ItemId.HasValue)
-                throw new ArgumentNullException(nameof(Task.ItemId));
             // Count items in inventory based on quality requirement: NQ, HQ, or both (Any)
             InventoryManager* inventoryManager = InventoryManager.Instance();
-            return _itemQuality switch
-            {
-                EItemQuality.NQ => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, isHq: false, checkEquipped: false),
-                EItemQuality.HQ => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, isHq: true, checkEquipped: false),
-                EItemQuality.Any => inventoryManager->GetInventoryItemCount(Task.ItemId.Value, isHq: false, checkEquipped: false)
-                                    + inventoryManager->GetInventoryItemCount(Task.ItemId.Value, isHq: true, checkEquipped: false)
-                                    + inventoryManager->GetInventoryItemCount(Task.ItemId.Value + 500000, isHq: false, checkEquipped: false),
-                var _ => 0
-            };
+            if (inventoryManager == null)
+                throw new TaskException("Inventory is unavailable; cannot verify the craft objective");
+            return CountMatchingItems(item.Quality,
+                inventoryManager->GetInventoryItemCount(item.ItemId, isHq: false, checkEquipped: false),
+                inventoryManager->GetInventoryItemCount(item.ItemId, isHq: true, checkEquipped: false),
+                inventoryManager->GetInventoryItemCount(item.ItemId + 500000, isHq: false, checkEquipped: false));
         }
 
         // we're on a crafting class, so combat doesn't make much sense (we also can't change classes in combat...)

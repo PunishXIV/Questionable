@@ -1,13 +1,13 @@
 ﻿using PunishLib;
 using Questionable.AutoGen;
 using WrathCombo.API;
-using WrathError = WrathCombo.API.WrathIPCWrapper.ErrorType;
 
 namespace Questionable;
 
 public sealed class QuestionablePlugin(
     IDalamudPluginInterface pluginInterface,
     IClientState clientState,
+    IDutyState dutyState,
     ITargetManager targetManager,
     IFramework framework,
     IGameGui gameGui,
@@ -63,11 +63,38 @@ public sealed class QuestionablePlugin(
         // disposal pass is a no-op.
         try
         {
-            serviceProvider?.GetService<DalamudInitializer>()?.Dispose();
+            if (serviceProvider != null && !framework.IsFrameworkUnloading)
+            {
+                await framework.RunOnFrameworkThread(() =>
+                {
+                    try
+                    {
+                        serviceProvider.GetService<DalamudInitializer>()?.Dispose();
+                    }
+                    finally
+                    {
+                        serviceProvider.GetService<QuestController>()?.Shutdown();
+                    }
+                }).ConfigureAwait(false);
+            }
+            else
+                serviceProvider?.GetService<DalamudInitializer>()?.Dispose();
         }
         catch (ObjectDisposedException)
         {
             // Container already torn down elsewhere — nothing to unhook.
+        }
+        catch (Exception e)
+        {
+            pluginLog.Error(e, "Unable to finish quest cleanup during plugin unload");
+            try
+            {
+                serviceProvider?.GetService<DalamudInitializer>()?.Dispose();
+            }
+            catch (Exception unhookError)
+            {
+                pluginLog.Error(unhookError, "Unable to unhook event sources during plugin unload");
+            }
         }
 
         if (serviceProvider is IAsyncDisposable asyncDisposable)
@@ -88,7 +115,7 @@ public sealed class QuestionablePlugin(
     {
         ECommonsMain.Init(pluginInterface, this, Module.DalamudReflector);
         _ecommonsInitialized = true;
-        WrathIPCWrapper.Init(pluginInterface, WrathError.IPCNotReady | WrathError.Unexpected);
+        WrathIPCWrapper.Init(pluginInterface);
         PunishLibMain.Init(pluginInterface, "Questionable", new AboutPlugin()
         {
             Developer = "alydev",
@@ -104,6 +131,7 @@ public sealed class QuestionablePlugin(
         serviceCollection.AddSingleton<IAsyncDalamudPlugin>(this);
         serviceCollection.AddSingleton(pluginInterface);
         serviceCollection.AddSingleton(clientState);
+        serviceCollection.AddSingleton(dutyState);
         serviceCollection.AddSingleton(targetManager);
         serviceCollection.AddSingleton(framework);
         serviceCollection.AddSingleton(gameGui);

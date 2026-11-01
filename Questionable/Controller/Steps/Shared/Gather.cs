@@ -37,25 +37,25 @@ internal static class Gather
     internal sealed class StartGathering(GatheringController gatheringController) : TaskExecutor<GatheringTask>,
         IStoppableTaskExecutor
     {
+        private Guid? _owner;
+
         public override ETaskResult Update()
         {
-            return gatheringController.Update() switch
+            return gatheringController.Update(_owner) switch
             {
                 GatheringController.EStatus.Complete => ETaskResult.TaskComplete,
-                GatheringController.EStatus.Failed => throw new TaskException(
-                    $"Gather n Chill stopped before gathering {Task.GatheredItem.ItemCount}x {Task.GatheredItem.ItemId}"),
                 var _ => ETaskResult.StillRunning
             };
         }
 
-        public void StopNow() => gatheringController.Stop("StopNow");
+        public void StopNow() => gatheringController.StopOwned(_owner);
 
         // Gather n Chill handles movement and gathering; combat interrupts would just fight it
         public override bool ShouldInterruptOnDamage() => false;
         protected override bool Start()
         {
             return gatheringController.Start(new(Task.GatheredItem.ItemId, Task.GatheredItem.ItemCount,
-                Task.GatheredItem.Collectability));
+                Task.GatheredItem.Collectability), out _owner);
         }
     }
 }

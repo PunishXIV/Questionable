@@ -155,6 +155,7 @@ internal sealed class QuestionableIpc : IDisposable
         _startQuest.UnregisterFunc();
         _startSingleQuest.UnregisterFunc();
         _isQuestLocked.UnregisterFunc();
+        _isQuestLockedReason.UnregisterFunc();
         _isQuestComplete.UnregisterFunc();
         _isReadyToAcceptQuest.UnregisterFunc();
         _isQuestAccepted.UnregisterFunc();
@@ -168,11 +169,15 @@ internal sealed class QuestionableIpc : IDisposable
         _startGatheringComplex.UnregisterFunc();
         _stop.UnregisterFunc();
         _redoLookup.UnregisterFunc();
+        _redoLookupIndex.UnregisterFunc();
     }
 
     private bool StartQuest(string questId, bool single)
     {
         _logger.LogDebug("StartQuest({QuestId},{Single})", questId, single);
+        if (!_questController.CanStartQuest("IPCQuestSelection"))
+            return false;
+
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.TryGetQuest(elementId, out Quest? quest))
         {

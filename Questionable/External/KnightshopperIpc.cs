@@ -1,15 +1,13 @@
-// Authored with LLM assistance, changes must be reviewed and owned by a human.
-// Initial version reviewed and owned by @Kagekazu
 using Dalamud.Plugin.Ipc;
-using Dalamud.Plugin.Ipc.Exceptions;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
 /// <summary>
 ///     Knightshopper's purchase IPC, see <c>docs/IPC.md</c> in its install folder.
 /// </summary>
-[RegisterSingleton]
-internal sealed class KnightshopperIpc(IDalamudPluginInterface pluginInterface, ILogger<KnightshopperIpc> logger) : Ipc
+[RegisterSingleton<IKnightshopperIpc, KnightshopperIpc>]
+internal sealed class KnightshopperIpc(IDalamudPluginInterface pluginInterface, ILogger<KnightshopperIpc> logger,
+    PurchaseOperationState operation) : Ipc, IKnightshopperIpc
 {
     /// <summary>
     ///     First API version that has <c>Knightshopper.Purchase.StartItems</c>.
@@ -20,6 +18,7 @@ internal sealed class KnightshopperIpc(IDalamudPluginInterface pluginInterface, 
 
     public enum EStartResult
     {
+        Uncertain = -1,
         Started = 0,
         Busy = 1,
         InvalidCurrency = 2,
@@ -44,9 +43,20 @@ internal sealed class KnightshopperIpc(IDalamudPluginInterface pluginInterface, 
 
     public override string InternalName => "Knightshopper";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
-    public override bool IsReady() => IpcInvoke.SafeFunc(() => _apiVersion.InvokeFunc() >= MinimumApiVersion, fallback: false);
+    public override bool IsReady()
+    {
+        try
+        {
+            return _apiVersion.InvokeFunc() >= MinimumApiVersion;
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+    }
 
     private readonly ICallGateSubscriber<int> _apiVersion = pluginInterface.GetIpcSubscriber<int>("Knightshopper.ApiVersion");
+    private readonly ICallGateSubscriber<bool> _isBusy = pluginInterface.GetIpcSubscriber<bool>("Knightshopper.IsBusy");
 
     private readonly ICallGateSubscriber<int, (uint ItemId, uint Quantity)[], (int, Guid, string)> _startItems =
         pluginInterface.GetIpcSubscriber<int, (uint ItemId, uint Quantity)[], (int, Guid, string)>("Knightshopper.Purchase.StartItems");
@@ -62,44 +72,103 @@ internal sealed class KnightshopperIpc(IDalamudPluginInterface pluginInterface, 
     /// </summary>
     public EStartResult BuyWithGil(uint itemId, uint quantity, out Guid operationId, out string message)
     {
+        operationId = Guid.Empty;
+        message = "";
+        if (operation.HasOperation)
+            return EStartResult.Busy;
+        if (itemId == 0 || quantity == 0)
+            return EStartResult.InvalidQuantity;
+        if (!IsReady())
+            return EStartResult.NotReady;
+        bool? busy = GetBusy();
+        if (busy != false)
+            return busy == true ? EStartResult.Busy : EStartResult.NotReady;
+
+        // Record ownership before invoking a provider: an exception can occur after acceptance.
+        Guid owner = operation.BeginSubmission();
         try
         {
             logger.LogInformation("Asking Knightshopper to buy {ItemId} up to {Quantity}", itemId, quantity);
             (int result, operationId, message) = _startItems.InvokeFunc(GilCurrency, [(itemId, quantity)]);
-            return (EStartResult)result;
+            if (result == (int)EStartResult.Started)
+            {
+                operation.AcceptSubmission(owner, operationId);
+                return operationId != Guid.Empty ? EStartResult.Started : EStartResult.Uncertain;
+            }
+
+            if (Enum.IsDefined((EStartResult)result) && result >= (int)EStartResult.Busy)
+            {
+                operation.RejectSubmission(owner);
+                return (EStartResult)result;
+            }
         }
-        catch (IpcError e)
+        catch (Exception e)
         {
             logger.LogError(e, "Unable to start Knightshopper purchase");
-            operationId = Guid.Empty;
             message = e.Message;
-            return EStartResult.NotReady;
         }
+
+        operation.MarkUncertain(owner);
+        return EStartResult.Uncertain;
     }
 
-    public (EPurchaseState State, string Message) GetStatus(Guid operationId)
+    private (EPurchaseState State, string Message) GetStatus(Guid operationId)
     {
         try
         {
             (int state, int _, int _, uint _, string message) = _getStatus.InvokeFunc(operationId);
             return ((EPurchaseState)state, message);
         }
-        catch (IpcError e)
+        catch (Exception e)
         {
-            logger.LogWarning(e, "Unable to read Knightshopper purchase status");
+            logger.LogDebug(e, "Unable to read Knightshopper purchase status");
             return (EPurchaseState.Unknown, e.Message);
         }
     }
 
-    public void Cancel(Guid operationId)
+    public void PollOperation()
+    {
+        if (operation.OperationId is not { } owner)
+            return;
+        if (operation.ProviderOperationId is { } providerId)
+        {
+            var (state, message) = GetStatus(providerId);
+            operation.ObserveStatus(owner, state, message);
+        }
+        if (operation.IsAbandoned)
+            CancelOwned();
+        if (operation.RequiresReconciliation)
+            ObserveIdle();
+    }
+
+    public void CancelOwned()
+    {
+        operation.AbandonCurrent();
+        if (!operation.TryBeginCancellation(out Guid providerId))
+            return;
+        try
+        {
+            logger.LogInformation("Requesting cancellation of Knightshopper purchase {OperationId}", providerId);
+            operation.ObserveCancellation(providerId, _cancel.InvokeFunc(providerId));
+        }
+        catch (Exception e)
+        {
+            logger.LogDebug(e, "Unable to cancel Knightshopper purchase {OperationId}", providerId);
+        }
+    }
+
+    public void ObserveIdle()
+        => operation.ObserveIdle(IsReady() ? GetBusy() : null);
+
+    public bool? GetBusy()
     {
         try
         {
-            _cancel.InvokeFunc(operationId);
+            return _isBusy.InvokeFunc();
         }
-        catch (IpcError e)
+        catch (Exception)
         {
-            logger.LogWarning(e, "Unable to cancel Knightshopper purchase");
+            return null;
         }
     }
 }

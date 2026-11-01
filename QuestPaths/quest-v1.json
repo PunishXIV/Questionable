@@ -1754,10 +1754,6 @@
                     "maximum": 1,
                     "description": "If a quest has multiple solo instances (which affects 5 quests total), indicates which one this is"
                   },
-                  "Target": {
-                    "type": "integer",
-                    "description": "The DataId to target at the start of the instance"
-                  },
                   "TestedBossModVersion": {
                     "type": "string",
                     "pattern": "^\\d+\\.\\d+\\.\\d+\\.\\d+$"

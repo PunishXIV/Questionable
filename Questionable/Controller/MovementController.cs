@@ -26,13 +26,30 @@ internal sealed class MovementController
     AetheryteData aetheryteData,
     IChatGui chatGui,
     IFramework framework,
+    PurchaseOperationState purchaseOperation,
+    IKnightshopperIpc knightshopperIpc,
+    GatheringOperationState gatheringOperation,
+    IGatherChillIpc gatherChillIpc,
+    FishingOperationState fishingOperation,
+    AutoDutyIpc autoDutyIpc,
     Lazy<QuestController> questController,
     ILogger<MovementController> logger) : IDisposable
 {
     public const float DefaultVerticalInteractionDistance = 1.95f;
 
+    [SuppressMessage("Usage", "CA2213:Disposable fields should be disposed",
+        Justification = "Dispose dispatches Stop to the framework thread. ResetPathfinding detaches the CTS and CancelAndDisposeAsync disposes it after cancellation callbacks finish.")]
     private CancellationTokenSource? _cancellationTokenSource;
     private Task<List<Vector3>>? _pathfindTask;
+    private bool _hasSubmittedRoute;
+    private long? _pathfindingStartedAt;
+    private long? _providerDiagnosticsUpdatedAt;
+    private bool? _movementAllowed;
+    private bool? _simpleMoveInProgress;
+    private bool? _pathfindInProgress;
+    private int? _queuedPathfinds;
+
+    internal Func<long> PathfindingClock { get; set; } = static () => Environment.TickCount64;
 
     public bool IsNavmeshReady
     {
@@ -49,40 +66,48 @@ internal sealed class MovementController
         }
     }
 
-    public bool IsPathRunning
-    {
-        get
-        {
-            try
-            {
-                return navmeshIpc.IsPathRunning;
-            }
-            catch (IpcNotReadyError)
-            {
-                return false;
-            }
-        }
-    }
+    public bool? GetPathRunning() => navmeshIpc.GetPathRunning();
+
+    public bool IsPathRunning => GetPathRunning() ?? Destination != null;
 
     public bool IsPathfinding => _pathfindTask is { IsCompleted: false };
     public DestinationData? Destination { get; set; }
+    public NavigationFailureSnapshot? LastFailure { get; private set; }
     public DateTime MovementStartedAt { get; private set; } = DateTime.Now;
     public int BuiltNavmeshPercent => navmeshIpc.GetBuildProgress();
     private DateTime? _landAndRetryTimeout;
     private DestinationData? _previousDestinationData;
+    private bool HasExternalMovementOperation => purchaseOperation.HasOperation ||
+        gatheringOperation.HasOperation || fishingOperation.HasOperation || autoDutyIpc.HasOperation;
 
     public void Dispose() => IpcInvoke.TryOnFrameworkThread(framework, Stop, logger);
 
     public void Update()
     {
+        if (!CanSubmitMovement(Destination != null || _pathfindTask != null || _previousDestinationData != null,
+            refreshProviderDiagnostics: false))
+            return;
+
+        ThrowIfPathfindingFailed();
+
+        if (Destination != null && GetPathRunning() == null)
+        {
+            var failure = CreateFailure(PathfindingFailureReason.StatusUnavailable,
+                "Unable to determine navmesh movement status");
+            ClearLocalMovement();
+            throw failure;
+        }
+
         if (_landAndRetryTimeout != null && _previousDestinationData != null)
         {
             if (condition[ConditionFlag.InFlight])
             {
                 if (DateTime.Now > _landAndRetryTimeout)
                 {
+                    var failure = CreateFailure(PathfindingFailureReason.LandingFailed,
+                        "Land-and-retry timed out, still InFlight");
                     Stop();
-                    throw new PathfindingFailedException("Land-and-retry timed out, still InFlight");
+                    throw failure;
                 }
                 return;
             }
@@ -111,58 +136,54 @@ internal sealed class MovementController
                         LandExecutor.TryLanding();
                         return;
                     }
+                    var failure = CreateFailure(PathfindingFailureReason.NoRoute,
+                        "Pathfinding complete, got 0 points");
                     Stop();
-                    throw new PathfindingFailedException("Pathfinding complete, got 0 points");
+                    throw failure;
                 }
 
                 List<Vector3> navPoints = pathfindResult.Skip(1).ToList();
-                Vector3 start = objectTable[0]?.Position ?? navPoints[0];
-                if (Destination.IsFlying && !condition[ConditionFlag.InFlight] && condition[ConditionFlag.Mounted])
-                {
-                    if (IsOnFlightPath(start) || navPoints.Any(IsOnFlightPath))
-                    {
-                        unsafe
-                        {
-                            ActionManager.Instance()->UseAction(ActionType.GeneralAction, 2);
-                        }
-                    }
-                }
 
-                if (!Destination.IsFlying)
+                if (navPoints.Count > 0 && !Destination.IsFlying)
                 {
                     (navPoints, bool recalculateNavmesh) = movementOverrideController.AdjustPath(navPoints);
-                    if (recalculateNavmesh && Destination.ShouldRecalculateNavmesh())
+                    if (navPoints.Count > 0 && recalculateNavmesh && Destination.ShouldRecalculateNavmesh())
                     {
                         Destination.NavmeshCalculations++;
                         Destination.PartialRoute.AddRange(navPoints);
                         logger.LogInformation("Running navmesh recalculation with fudged point ({From} to {To})",
                             navPoints[^1], Destination.Position);
 
-                        _cancellationTokenSource = new();
-                        _cancellationTokenSource.CancelAfter(TimeSpan.FromSeconds(30));
-                        _pathfindTask =
-                            navmeshIpc.Pathfind(navPoints[^1], Destination.Position, Destination.IsFlying,
-                                _cancellationTokenSource.Token);
+                        StartPathfinding(navPoints[^1], Destination.Position, Destination.IsFlying);
                         return;
                     }
                 }
 
                 navPoints = Destination.PartialRoute.Concat(navPoints).ToList();
+                if (navPoints.Count == 0)
+                {
+                    Vector3? playerPosition = objectTable[0]?.Position;
+                    bool arrived = playerPosition is Vector3 position &&
+                        Vector3.Distance(position, Destination.Position) < Destination.StopDistance &&
+                        position.Y - Destination.Position.Y <= Destination.VerticalStopDistance;
+                    if (!arrived)
+                    {
+                        var failure = CreateFailure(PathfindingFailureReason.NoRoute,
+                            "Pathfinding returned no movement waypoints before reaching the destination");
+                        ClearLocalMovement();
+                        throw failure;
+                    }
+                    ClearLocalMovement();
+                    MovementStartedAt = DateTime.Now;
+                    return;
+                }
                 logger.LogInformation("Navigating via route (XZ:{Distance}) [{Route}]",
                     navPoints[0].DistanceTo_XZ(navPoints[^1]),
                     string.Join(" → ", pathfindResult.Select(x => x.ToString("G5", CultureInfo.InvariantCulture))));
 
-                navmeshIpc.MoveTo(navPoints, Destination.IsFlying);
-                MovementStartedAt = DateTime.Now;
-
-                ResetPathfinding();
-            }
-            else if (_pathfindTask.IsCompleted)
-            {
-                string error = "Unable to complete pathfinding task";
-                logger.LogWarning(error);
-                ResetPathfinding();
-                throw new PathfindingFailedException(error);
+                ThrowIfPathfindingFailed();
+                if (!SubmitMovement(navPoints, Destination.IsFlying))
+                    return;
             }
         }
 
@@ -256,6 +277,9 @@ internal sealed class MovementController
 
     private void Restart(DestinationData destination)
     {
+        if (!CanSubmitMovement())
+            return;
+
         Stop();
 
         NavigationOptions options = new()
@@ -267,12 +291,6 @@ internal sealed class MovementController
             NavigateTo(EMovementType.None, destination.DataId, destination.Position, options);
         else
             NavigateTo(EMovementType.None, destination.DataId, [destination.Position], options);
-    }
-
-    private bool IsOnFlightPath(Vector3 p)
-    {
-        Vector3? pointOnFloor = navmeshIpc.GetPointOnFloor(p, unlandable: true);
-        return pointOnFloor != null && Math.Abs(pointOnFloor.Value.Y - p.Y) > 0.5f;
     }
 
     [MemberNotNull(nameof(Destination))]
@@ -303,6 +321,9 @@ internal sealed class MovementController
 
     public void NavigateTo(EMovementType type, uint? dataId, Vector3 to, NavigationOptions options)
     {
+        if (!CanSubmitMovement(isNewRequest: true))
+            return;
+
         bool fly = options.Fly || condition[ConditionFlag.Diving];
         if (fly && options.Land)
             to = to with { Y = to.Y + 2.6f };
@@ -312,8 +333,6 @@ internal sealed class MovementController
         logger.LogInformation("Pathfinding to {Destination}", Destination);
 
         Destination.NavmeshCalculations++;
-        _cancellationTokenSource = new();
-        _cancellationTokenSource.CancelAfter(TimeSpan.FromSeconds(30));
 
         Vector3? playerPosition = objectTable[0]?.Position;
         if (playerPosition == null)
@@ -337,12 +356,76 @@ internal sealed class MovementController
             // only for flying; as walking uses a different algorithm
             startPosition = startPosition with { Y = startPosition.Y + 0.2f };
 
-        _pathfindTask =
-            navmeshIpc.Pathfind(startPosition, to, fly, _cancellationTokenSource.Token);
+        StartPathfinding(startPosition, to, fly);
+    }
+
+    internal void StartPathfinding(Vector3 from, Vector3 to, bool fly)
+    {
+        if (!CanSubmitMovement())
+            return;
+
+        ResetPathfinding();
+        _pathfindingStartedAt = PathfindingClock();
+        _cancellationTokenSource = new();
+        _pathfindTask = navmeshIpc.Pathfind(from, to, fly, _cancellationTokenSource.Token);
+    }
+
+    private void ThrowIfPathfindingFailed()
+    {
+        Task<List<Vector3>>? task = _pathfindTask;
+        if (task == null)
+            return;
+
+        Exception? failure = null;
+        if (task.IsCompleted && !task.IsCompletedSuccessfully)
+        {
+            try
+            {
+                task.GetAwaiter().GetResult();
+            }
+            catch (Exception e)
+            {
+                // Awaiting preserves the provider's original exception instead of its task wrapper.
+                failure = e;
+            }
+        }
+
+        // Check even completed tasks: a provider may ignore cancellation and return a late route.
+        if (_pathfindingStartedAt is long startedAt && PathfindingClock() - startedAt >= 30_000)
+        {
+            var exception = CreateFailure(PathfindingFailureReason.TimedOut,
+                "Pathfinding timed out after 30 seconds", failure);
+            ClearLocalMovement();
+            throw exception;
+        }
+
+        if (failure != null)
+        {
+            PathfindingFailureReason reason = failure switch
+            {
+                IpcNotReadyError => PathfindingFailureReason.Unavailable,
+                OperationCanceledException => PathfindingFailureReason.Cancelled,
+                _ => PathfindingFailureReason.ProviderFault,
+            };
+            var exception = CreateFailure(reason, "Unable to complete pathfinding task", failure);
+            ClearLocalMovement();
+            throw exception;
+        }
     }
 
     public void NavigateTo(EMovementType type, uint? dataId, List<Vector3> to, NavigationOptions options)
     {
+        if (!CanSubmitMovement(isNewRequest: true))
+            return;
+
+        if (to.Count == 0)
+        {
+            var failure = CreateFailure(PathfindingFailureReason.NoRoute,
+                "Cannot navigate without movement waypoints", isNewRequest: true);
+            ClearLocalMovement();
+            throw failure;
+        }
+
         bool fly = options.Fly || condition[ConditionFlag.Diving];
         if (fly && options.Land && to.Count > 0)
             to[^1] = to[^1] with { Y = to[^1].Y + 2.6f };
@@ -351,26 +434,198 @@ internal sealed class MovementController
         PrepareNavigation(type, dataId, to[^1], effective, useNavmesh: false);
 
         logger.LogInformation("Moving to {Destination}", Destination);
-        navmeshIpc.MoveTo(to, fly);
+        SubmitMovement(to, fly);
+    }
+
+    private void RefreshProviderDiagnostics(bool force)
+    {
+        long now = PathfindingClock();
+        if (!force && _providerDiagnosticsUpdatedAt is long updatedAt && now - updatedAt < 250)
+            return;
+
+        _movementAllowed = navmeshIpc.GetMovementAllowed();
+        _simpleMoveInProgress = navmeshIpc.GetSimpleMoveInProgress();
+        _pathfindInProgress = navmeshIpc.GetPathfindInProgress();
+        _queuedPathfinds = navmeshIpc.GetQueuedPathfinds();
+        _providerDiagnosticsUpdatedAt = now;
+    }
+
+    private bool CanSubmitMovement(bool hasRequest = true, bool isNewRequest = false,
+        bool refreshProviderDiagnostics = true)
+    {
+        if (HasExternalMovementOperation)
+        {
+            ClearLocalMovement();
+            return false;
+        }
+
+        if (!hasRequest)
+            return true;
+
+        bool providerHasWork = HasExternalMovementProviderWork();
+        // A provider query may have reconciled a retained operation in the meantime.
+        if (HasExternalMovementOperation)
+        {
+            ClearLocalMovement();
+            return false;
+        }
+
+        // Updates share a short-lived cache; submissions and retries always check fresh status.
+        // Missing optional IPC remains unknown and does not disable navigation.
+        RefreshProviderDiagnostics(refreshProviderDiagnostics);
+        if (_movementAllowed == false)
+        {
+            var disabled = CreateFailure(PathfindingFailureReason.MovementDisabled,
+                "Movement is disabled in vnavmesh", isNewRequest: isNewRequest);
+            // Disabling the follower pauses its waypoints; clear our submitted route so
+            // re-enabling movement cannot resume it after quest cleanup loses Destination.
+            if (_hasSubmittedRoute && !providerHasWork && _simpleMoveInProgress != true)
+                navmeshIpc.Stop();
+            ClearLocalMovement();
+            throw disabled;
+        }
+
+        if (!providerHasWork && _simpleMoveInProgress != true)
+            return true;
+
+        var failure = CreateFailure(PathfindingFailureReason.MovementBlocked,
+            _simpleMoveInProgress == true
+                ? "Navigation blocked by pending vnavmesh SimpleMove work"
+                : "Navigation blocked by an external movement provider", isNewRequest: isNewRequest);
+        ClearLocalMovement();
+        throw failure;
+    }
+
+    internal bool SubmitMovement(List<Vector3> points, bool fly)
+    {
+        if (!CanSubmitMovement())
+            return false;
+
+        try
+        {
+            navmeshIpc.MoveTo(points, fly);
+        }
+        catch (Exception e)
+        {
+            var failure = CreateFailure(PathfindingFailureReason.StartFailed,
+                "Unable to start navmesh movement", e);
+            ClearLocalMovement();
+            throw failure;
+        }
+
+        _hasSubmittedRoute = true;
         MovementStartedAt = DateTime.Now;
+        ResetPathfinding();
+        return true;
+    }
+
+    public void RecordFailure(PathfindingFailedException exception, string? quest = null, string? task = null)
+    {
+        NavigationFailureSnapshot snapshot = exception.Snapshot ?? CaptureFailure(exception, Destination);
+        snapshot = snapshot with { Quest = quest ?? snapshot.Quest, Task = task ?? snapshot.Task };
+        exception.Snapshot = snapshot;
+        LastFailure = snapshot;
+    }
+
+    internal void RecordFailureWithDestination(PathfindingFailedException exception, DestinationData fallbackDestination)
+    {
+        exception.Snapshot ??= CaptureFailure(exception, Destination ?? fallbackDestination);
+        RecordFailure(exception);
+    }
+
+    private PathfindingFailedException CreateFailure(PathfindingFailureReason reason, string message,
+        Exception? innerException = null, bool isNewRequest = false)
+    {
+        var exception = new PathfindingFailedException(reason, message, innerException);
+        // A rejected initial submission has not replaced the previous request yet.
+        exception.Snapshot = CaptureFailure(exception, isNewRequest ? null : Destination ?? _previousDestinationData,
+            includeElapsed: !isNewRequest);
+        RecordFailure(exception);
+        return exception;
+    }
+
+    private NavigationFailureSnapshot CaptureFailure(PathfindingFailedException exception,
+        DestinationData? destination, bool includeElapsed = true) => new()
+    {
+        TimestampUtc = DateTimeOffset.UtcNow,
+        Reason = exception.Reason.ToString(),
+        Message = exception.Message,
+        ExceptionType = exception.GetType().FullName,
+        InnerExceptionType = exception.InnerException?.GetType().FullName,
+        InnerExceptionMessage = ReadFailureContext(() => exception.InnerException?.Message, null),
+        TerritoryId = ReadFailureContext(() => (uint)clientState.TerritoryType, 0u),
+        PlayerPosition = ReadFailureContext(() => objectTable[0]?.Position.ToString("G9", CultureInfo.InvariantCulture), null),
+        Destination = destination?.Position.ToString("G9", CultureInfo.InvariantCulture),
+        DataId = destination?.DataId,
+        Fly = destination?.IsFlying,
+        StopDistance = destination is { StopDistance: var distance } && float.IsFinite(distance) ? distance : null,
+        ElapsedMilliseconds = includeElapsed && _pathfindingStartedAt is long startedAt
+            ? ReadFailureContext<double?>(() => PathfindingClock() - startedAt, null)
+            : null,
+        // Version reads loaded plugin metadata only. Reporting must never query IPC status.
+        NavmeshVersion = ReadFailureContext(() => navmeshIpc.Version?.ToString(), null),
+        MovementAllowed = _movementAllowed,
+        SimpleMoveInProgress = _simpleMoveInProgress,
+        PathfindInProgress = _pathfindInProgress,
+        QueuedPathfinds = _queuedPathfinds,
+        // Failure-only diagnostic candidates; never substitute these for the quest destination.
+        FloorPoint = destination == null ? null : ReadFailureContext(() =>
+            navmeshIpc.GetPointOnFloor(destination.Position, unlandable: false, range: 0.2f)
+                ?.ToString("G9", CultureInfo.InvariantCulture), null),
+        NearestReachablePoint = destination == null ? null : ReadFailureContext(() =>
+            navmeshIpc.GetNearestPointReachable(destination.Position, halfExtentXZ: 0.2f, halfExtentY: 2f)
+                ?.ToString("G9", CultureInfo.InvariantCulture), null),
+    };
+
+    private static T ReadFailureContext<T>(Func<T> read, T unknown)
+    {
+        try
+        {
+            return read();
+        }
+        catch (Exception)
+        {
+            // Diagnostic context is best effort and must not replace the navigation failure.
+            return unknown;
+        }
     }
 
     public void ResetPathfinding()
     {
-        if (_cancellationTokenSource != null)
-        {
-            try
-            {
-                _cancellationTokenSource.Cancel();
-            }
-            catch (ObjectDisposedException)
-            {
-            }
-
-            _cancellationTokenSource.Dispose();
-        }
-
+        CancellationTokenSource? cancellationTokenSource = _cancellationTokenSource;
+        Task<List<Vector3>>? task = _pathfindTask;
+        _cancellationTokenSource = null;
         _pathfindTask = null;
+        _pathfindingStartedAt = null;
+
+        // Detached work can still fault after cancellation. Observe it without touching controller state.
+        if (task != null)
+            _ = task.ContinueWith(static completed => { _ = completed.Exception; },
+                CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously,
+                TaskScheduler.Default);
+
+        if (cancellationTokenSource != null)
+            _ = CancelAndDisposeAsync(cancellationTokenSource);
+    }
+
+    private static async Task CancelAndDisposeAsync(CancellationTokenSource cancellationTokenSource)
+    {
+        try
+        {
+            // Provider callbacks must not block the framework thread or mask the request's failure.
+            await cancellationTokenSource.CancelAsync().ConfigureAwait(false);
+        }
+        catch (AggregateException)
+        {
+            // Cancellation callback failures are observed; an ordinary reset remains silent.
+        }
+        catch (ObjectDisposedException)
+        {
+        }
+        finally
+        {
+            cancellationTokenSource.Dispose();
+        }
     }
 
     private bool RecalculateNavmesh(List<Vector3> navPoints, Vector3 start)
@@ -422,7 +677,8 @@ internal sealed class MovementController
                     Restart(Destination);
                 }
 
-                Destination.NavmeshCalculations = calculations + 1;
+                if (Destination != null)
+                    Destination.NavmeshCalculations = calculations + 1;
                 return true;
             }
 
@@ -465,19 +721,46 @@ internal sealed class MovementController
         }
     }
 
+    private bool HasExternalMovementProviderWork()
+    {
+        bool? purchaseBusy = knightshopperIpc.GetBusy();
+        if (purchaseBusy == true || (purchaseBusy == null && knightshopperIpc.IsReady()))
+            return true;
+
+        bool? gatheringBusy = gatherChillIpc.GetBusy();
+        if (gatheringBusy == true || (gatheringBusy == null && gatherChillIpc.IsAvailable()))
+            return true;
+
+        return autoDutyIpc.IsAvailable() && autoDutyIpc.GetStopped() != true;
+    }
+
     public void Stop()
     {
+        bool providerHasWork = HasExternalMovementOperation || HasExternalMovementProviderWork() ||
+            HasExternalMovementOperation || navmeshIpc.GetSimpleMoveInProgress() == true;
+        ClearLocalMovement();
+        // Protect manual purchasing/gathering/duties as well as retained operations. Cancellation
+        // requests and queue resets do not establish that the provider has stopped travelling.
+        // Pending SimpleMove cannot be cancelled safely and may publish a global route later.
+        if (providerHasWork || HasExternalMovementOperation)
+            return;
+
         navmeshIpc.Stop();
-        ResetPathfinding();
-        Destination = null;
-        _previousDestinationData = null;
-        _landAndRetryTimeout = null;
 
         if (InputManager.IsAutoRunning())
         {
             logger.LogInformation("Turning off auto-move [stop]");
             chatFunctions.ExecuteCommand("/automove off");
         }
+    }
+
+    private void ClearLocalMovement()
+    {
+        _hasSubmittedRoute = false;
+        Destination = null;
+        _previousDestinationData = null;
+        _landAndRetryTimeout = null;
+        ResetPathfinding();
     }
 
     public sealed record DestinationData
@@ -527,8 +810,33 @@ internal sealed class MovementController
             };
     }
 
+    public enum PathfindingFailureReason
+    {
+        Unknown,
+        Unavailable,
+        TimedOut,
+        Cancelled,
+        ProviderFault,
+        NoRoute,
+        LandingFailed,
+        StatusUnavailable,
+        StartFailed,
+        NotArrived,
+        MovementBlocked,
+        MovementDisabled,
+    }
+
     public sealed class PathfindingFailedException : Exception
     {
+        public PathfindingFailureReason Reason { get; }
+        internal NavigationFailureSnapshot? Snapshot { get; set; }
+
+        public PathfindingFailedException(PathfindingFailureReason reason, string message, Exception? innerException = null)
+            : base(message, innerException)
+        {
+            Reason = reason;
+        }
+
         public PathfindingFailedException()
         {
         }

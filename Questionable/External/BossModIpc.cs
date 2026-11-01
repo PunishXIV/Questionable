@@ -13,7 +13,8 @@ internal sealed class BossModIpc
     ICommandManager commandManager) : Ipc
 {
     public override string InternalName => PluginName;
-    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override Version? GetVersion() => pluginInterface.InstalledPlugins
+        .FirstOrDefault(p => p.InternalName == PluginName && p.IsLoaded)?.Version;
     public override bool IsReady() => IpcInvoke.SafeFunc(() =>
         {
             var _ = _getActivePreset.InvokeFunc();
@@ -27,6 +28,7 @@ internal sealed class BossModIpc
     }
 
     private const string PluginName = "BossMod";
+    private const string ProviderLostReason = "BossMod disappeared. Check its settings and stop its presets, then confirm it is stopped.";
 
     private static readonly ReadOnlyDictionary<EPreset, PresetDefinition> PresetDefinitions = new Dictionary<EPreset, PresetDefinition>
     {
@@ -38,15 +40,48 @@ internal sealed class BossModIpc
 
     private readonly ICallGateSubscriber<string, bool, bool> _createPreset = pluginInterface.GetIpcSubscriber<string, bool, bool>($"{PluginName}.Presets.Create");
     private readonly ICallGateSubscriber<string?> _getActivePreset = pluginInterface.GetIpcSubscriber<string?>($"{PluginName}.Presets.GetActive");
+    private readonly ICallGateSubscriber<List<string>> _getActivePresets = pluginInterface.GetIpcSubscriber<List<string>>($"{PluginName}.Presets.GetActiveList");
     private readonly ICallGateSubscriber<string, string?> _getPreset = pluginInterface.GetIpcSubscriber<string, string?>($"{PluginName}.Presets.Get");
     private readonly ICallGateSubscriber<string, bool> _setPreset = pluginInterface.GetIpcSubscriber<string, bool>($"{PluginName}.Presets.SetActive");
     private readonly ICallGateSubscriber<string, bool> _deletePreset = pluginInterface.GetIpcSubscriber<string, bool>($"{PluginName}.Presets.Delete");
     private readonly ICallGateSubscriber<IReadOnlyList<string>, bool, IReadOnlyList<string>> _configuration =
         pluginInterface.GetIpcSubscriber<IReadOnlyList<string>, bool, IReadOnlyList<string>>($"{PluginName}.Configuration");
 
-    private bool _soloDutyZoneConfigured;
-    private bool _enableQuestBattlesOverridden;
+    private OwnedPreset? _ownedPreset;
     private bool _bossmodRebornDetected;
+
+    public bool HasOwnedSoloDuty => _ownedPreset is { SoloDuty: true };
+    public bool HasPendingCleanup => _ownedPreset is { Stopping: true };
+    public string? CleanupReason => _ownedPreset?.Reason;
+
+    // GetActive alone cannot establish idle: newer BossMod also returns null for multiple presets.
+    public bool CanConfirmStopped
+    {
+        get
+        {
+            try
+            {
+                return _ownedPreset is { } owned &&
+                    (owned.ProviderLost || (owned.OwnershipLost && owned.Settings.All(x => !x.Pending))) &&
+                    ProviderAvailable() && _getActivePresets.HasFunction && _getActivePresets.InvokeFunc().Count == 0;
+            }
+            catch (Exception)
+            {
+                // A failed provider query is unknown, never a safe state for the confirmation UI.
+                return false;
+            }
+        }
+    }
+
+    public bool TryConfirmStopped()
+    {
+        if (!CanConfirmStopped)
+            return false;
+
+        // Never replay snapshots against a provider that disappeared, even after acknowledgement.
+        _ownedPreset = null;
+        return true;
+    }
 
     public bool IsSupported() => IpcInvoke.SafeFunc(() => _getPreset.HasFunction, fallback: false);
     public bool BossModRebornDetected()
@@ -61,8 +96,8 @@ internal sealed class BossModIpc
     {
         if (!bulk)
             ClearObstacleMaps();
-        if (_getPreset.InvokeFunc(definition.Name) == null)
-            _createPreset.InvokeFunc(definition.Content, true);
+        if (_getPreset.InvokeFunc(definition.Name) == null && !_createPreset.InvokeFunc(definition.Content, true))
+            throw new TaskException($"BossMod rejected creation of preset '{definition.Name}'.");
         return definition;
     }
 
@@ -72,112 +107,306 @@ internal sealed class BossModIpc
         foreach (PresetDefinition definition in PresetDefinitions.Values)
         {
             if (delete)
-                DeletePreset(definition);
+                _deletePreset.InvokeFunc(definition.Name);
             AddPreset(definition, bulk: true);
         }
     }
 
-    public bool DeletePreset(EPreset preset) => DeletePreset(PresetDefinitions[preset]);
-
-    public bool DeletePreset(PresetDefinition definition) => _deletePreset.InvokeFunc(definition.Name);
-
-    public void SetActivePreset(EPreset preset)
-    {
-        PresetDefinition definition = AddPreset(preset);
-        commandManager.ProcessCommand("/vbmai off");
-        _setPreset.InvokeFunc(definition.Name);
-    }
+    public void SetActivePreset(EPreset preset) => ActivatePreset(preset, soloDuty: false);
 
     public void SetPresetForSoloDuty(EPreset preset)
     {
-        UnsetBasicSettings();
-        ConfigureZoneForQuestBattle();
-        SetActivePreset(preset);
+        ActivatePreset(preset, soloDuty: true);
     }
 
-    // i guess we're doing plugin subtweeting now
+    public void StartSoloDuty(uint contentFinderConditionId)
+    {
+        // Pâtisserie needs movement and interactions without a combat rotation.
+        SetPresetForSoloDuty(contentFinderConditionId == 1045 ? EPreset.NormalMovement : EPreset.QuestBattle);
+    }
+
     public void UnsetBasicSettings()
     {
-        if (configuration.Advanced.BMRestoreMovement)
-            _configuration.InvokeFunc(["ActionTweaksConfig", "PreventMovingWhileCasting", "false"], false);
-    }
-
-    public void ClearActivePresets()
-    {
-        string? activePreset = _getActivePreset.InvokeFunc();
-        if (activePreset == null)
+        if (!configuration.Advanced.BMRestoreMovement)
             return;
 
-        foreach (PresetDefinition definition in PresetDefinitions.Values)
+        OwnedPreset owned = Acquire(soloDuty: false);
+        try
         {
-            if (definition.Name.Equals(activePreset, StringComparison.Ordinal))
+            OverrideSetting(owned, "ActionTweaksConfig", "PreventMovingWhileCasting", false);
+        }
+        catch (Exception e)
+        {
+            FailAcquisition(owned, e);
+            throw new TaskException(owned.Reason!, e);
+        }
+    }
+
+    private void ActivatePreset(EPreset preset, bool soloDuty)
+    {
+        OwnedPreset owned = Acquire(soloDuty);
+        try
+        {
+            if (!owned.HasPresetSnapshot)
             {
-                _clearPreset.InvokeFunc();
-                return;
+                if (_getActivePresets.HasFunction && _getActivePresets.InvokeFunc().Count > 1)
+                    throw new TaskException("BossMod has multiple active presets; stop them before starting Questionable.");
+                owned.PreviousPreset = _getActivePreset.InvokeFunc();
+                owned.HasPresetSnapshot = true;
+            }
+            OverrideSetting(owned, "AutorotationConfig", "ClearPresetOnCombatEnd", false);
+            if (soloDuty)
+            {
+                if (configuration.Advanced.BMRestoreMovement)
+                    OverrideSetting(owned, "ActionTweaksConfig", "PreventMovingWhileCasting", false);
+                OverrideSetting(owned, "AutorotationConfig", "ClearPresetOnDeath", false);
+                OverrideSetting(owned, "ZoneModuleConfig", "EnableQuestBattles", true);
+            }
+            PresetDefinition definition = AddPreset(preset);
+            OverrideSetting(owned, "AIConfig", "Enabled", false);
+
+            string? previousExpected = owned.ExpectedPreset;
+            bool previousPending = owned.PresetPending;
+            owned.ExpectedPreset = definition.Name;
+            owned.PresetPending = true; // SetActive can apply its change and then throw.
+            if (!_setPreset.InvokeFunc(definition.Name))
+            {
+                owned.ExpectedPreset = previousExpected;
+                owned.PresetPending = previousPending;
+                throw new TaskException($"BossMod rejected activation of preset '{definition.Name}'.");
             }
         }
+        catch (Exception e)
+        {
+            FailAcquisition(owned, e);
+            throw new TaskException(owned.Reason!, e);
+        }
+    }
+
+    private OwnedPreset Acquire(bool soloDuty)
+    {
+        if (HasPendingCleanup)
+            throw new TaskException(CleanupReason!);
+        if (_ownedPreset != null)
+        {
+            VerifyOwnedPreset();
+            _ownedPreset.SoloDuty |= soloDuty;
+            return _ownedPreset;
+        }
+
+        if (!ProviderAvailable())
+            throw new TaskException("BossMod is unavailable.");
+        if (_getActivePresets.HasFunction && _getActivePresets.InvokeFunc().Count > 1)
+            throw new TaskException("BossMod has multiple active presets; stop them before starting Questionable.");
+
+        return _ownedPreset = new OwnedPreset(soloDuty);
+    }
+
+    public void VerifyOwnedPreset()
+    {
+        if (_ownedPreset is not { } owned)
+            throw new TaskException("Questionable no longer owns a BossMod preset.");
+        if (owned.Stopping)
+            throw new TaskException(owned.Reason!);
+        try
+        {
+            EnsureProvider(owned);
+            if (owned.PresetPending && !string.Equals(_getActivePreset.InvokeFunc(), owned.ExpectedPreset, StringComparison.Ordinal))
+            {
+                owned.OwnershipLost = true;
+                owned.PresetPending = false;
+                throw new TaskException("BossMod's active preset changed. Stop its presets, then confirm it is stopped.");
+            }
+        }
+        catch (Exception e)
+        {
+            FailAcquisition(owned, e);
+            throw new TaskException(owned.Reason!, e);
+        }
+    }
+
+    /// <summary>Poll before controller early returns. Healthy solo ownership permits local duty tasks.</summary>
+    public void PollSoloDuty()
+    {
+        if (HasPendingCleanup)
+        {
+            if (!StopOwnedPreset())
+                throw new TaskException(CleanupReason!);
+        }
+        else if (HasOwnedSoloDuty)
+            VerifyOwnedPreset();
     }
 
     public void DisableSoloDutyPreset()
     {
-        ReleaseSoloDutyZone();
-        ClearActivePresets();
+        if (HasOwnedSoloDuty && !StopOwnedPreset())
+            throw new TaskException(CleanupReason!);
     }
 
     public void Cleanup()
     {
-        commandManager.ProcessCommand("/vbmai off");
-        ReleaseSoloDutyZone();
-        ClearActivePresets();
+        if (!StopOwnedPreset())
+            throw new TaskException(CleanupReason!);
+    }
+
+    public bool StopOwnedPreset()
+    {
+        if (_ownedPreset is not { } owned)
+            return true;
+        owned.Stopping = true;
+        try
+        {
+            EnsureProvider(owned);
+            if (owned.PresetPending)
+            {
+                string? current = _getActivePreset.InvokeFunc();
+                // GetActive returns null for both an empty list and multiple active presets.
+                bool multiplePresets = _getActivePresets.HasFunction && _getActivePresets.InvokeFunc().Count > 1;
+                if (!multiplePresets && string.Equals(current, owned.ExpectedPreset, StringComparison.Ordinal))
+                {
+                    bool accepted = owned.PreviousPreset == null
+                        ? _clearPreset.InvokeFunc()
+                        : _setPreset.InvokeFunc(owned.PreviousPreset);
+                    if (!accepted)
+                        throw new TaskException("BossMod rejected restoring the previous preset.");
+                }
+                else if (multiplePresets || !string.Equals(current, owned.PreviousPreset, StringComparison.Ordinal))
+                {
+                    owned.OwnershipLost = true;
+                    owned.Reason = "BossMod's active preset changed. Stop its presets, then confirm it is stopped.";
+                }
+                owned.PresetPending = false;
+            }
+        }
+        catch (Exception e)
+        {
+            FailAcquisition(owned, e);
+        }
+
+        // Preset failure does not discard independent setting-restoration obligations.
+        bool settingsRestored = !owned.ProviderLost && RestoreSettings(owned);
+        if (owned.ProviderLost || owned.OwnershipLost || owned.PresetPending || !settingsRestored)
+            return false;
+        _ownedPreset = null;
+        return true;
     }
 
     public void ClearObstacleMaps() => commandManager.ProcessCommand("/vbm clear-maps");
 
-    private void ConfigureZoneForQuestBattle()
+    private bool ProviderAvailable()
     {
-        if (!_soloDutyZoneConfigured)
+        bool available;
+        try
         {
-            commandManager.ProcessCommand("/vbm cfg Autorotation ClearPresetOnCombatEnd false");
-            _soloDutyZoneConfigured = true;
+            available = _getActivePreset.HasFunction && _setPreset.HasFunction &&
+                _clearPreset.HasFunction && GetVersion() != null;
         }
-
-        bool? enableQuestBattles = TryGetEnableQuestBattles();
-        if (enableQuestBattles is not true)
-            SetEnableQuestBattles(enabled: true);
-        _enableQuestBattlesOverridden = enableQuestBattles == false;
-    }
-
-    private void ReleaseSoloDutyZone()
-    {
-        if (_enableQuestBattlesOverridden)
+        catch (Exception)
         {
-            SetEnableQuestBattles(enabled: false);
-            _enableQuestBattlesOverridden = false;
+            available = false;
         }
-
-        _soloDutyZoneConfigured = false;
-    }
-
-    private bool? TryGetEnableQuestBattles()
-    {
-        if (!_configuration.HasFunction)
-            return null;
-
-        return IpcInvoke.SafeFunc(() =>
+        if (!available && _ownedPreset is { } owned)
         {
-            IReadOnlyList<string> result = _configuration.InvokeFunc(
-                ["cfg", "ZoneModuleConfig", "EnableQuestBattles"], false);
-            if (result.Count == 0)
-                return (bool?)null;
-
-            return bool.TryParse(result[0], out bool value) ? value : null;
-        }, fallback: null);
+            owned.ProviderLost = owned.Stopping = true;
+            owned.Reason = ProviderLostReason;
+        }
+        return available;
     }
 
-    private void SetEnableQuestBattles(bool enabled) =>
-        commandManager.ProcessCommand(enabled
-            ? "/vbm cfg ZoneModuleConfig EnableQuestBattles true"
-            : "/vbm cfg ZoneModuleConfig EnableQuestBattles false");
+    private void EnsureProvider(OwnedPreset owned)
+    {
+        if (owned.ProviderLost || !ProviderAvailable())
+        {
+            owned.ProviderLost = true;
+            throw new TaskException(ProviderLostReason);
+        }
+    }
+
+    private void FailAcquisition(OwnedPreset owned, Exception exception)
+    {
+        owned.Stopping = true;
+        if (!ProviderAvailable())
+            owned.ProviderLost = true;
+        owned.Reason = owned.ProviderLost
+            ? ProviderLostReason
+            : exception.Message;
+    }
+
+    private void OverrideSetting(OwnedPreset owned, string type, string field, bool value)
+    {
+        if (owned.Settings.Any(x => x.Type == type && x.Field == field))
+            return;
+        EnsureProvider(owned);
+        bool previous = ReadSetting(type, field);
+        var setting = new SettingOverride(type, field, previous, value);
+        owned.Settings.Add(setting);
+        if (previous != value)
+        {
+            setting.Pending = true; // A throwing IPC can still have applied the value.
+            WriteSetting(type, field, value);
+        }
+    }
+
+    private bool RestoreSettings(OwnedPreset owned)
+    {
+        foreach (SettingOverride setting in owned.Settings.Where(x => x.Pending))
+        {
+            try
+            {
+                EnsureProvider(owned);
+                if (ReadSetting(setting.Type, setting.Field) == setting.Applied)
+                    WriteSetting(setting.Type, setting.Field, setting.Previous);
+                setting.Pending = false;
+            }
+            catch (Exception e)
+            {
+                FailAcquisition(owned, e);
+                if (owned.ProviderLost)
+                    break;
+            }
+        }
+        return owned.Settings.All(x => !x.Pending);
+    }
+
+    private bool ReadSetting(string type, string field)
+    {
+        // BossMod's Configuration endpoint calls ConfigRoot.ConsoleCommand directly, without "cfg".
+        IReadOnlyList<string> result = _configuration.InvokeFunc([type, field], false);
+        if (result.Count != 1 || !bool.TryParse(result[0], out bool value))
+            throw new TaskException($"Unable to read BossMod setting {type}.{field}.");
+        return value;
+    }
+
+    private void WriteSetting(string type, string field, bool value)
+    {
+        IReadOnlyList<string> result = _configuration.InvokeFunc([type, field, value ? "true" : "false"], false);
+        if (result.Count != 0 || ReadSetting(type, field) != value)
+            throw new TaskException($"BossMod rejected setting {type}.{field} to {value}.");
+    }
+
+    private sealed class OwnedPreset(bool soloDuty)
+    {
+        // Settings-only movement work does not snapshot a preset until one is acquired.
+        public string? PreviousPreset { get; set; }
+        public bool HasPresetSnapshot { get; set; }
+        public string? ExpectedPreset { get; set; }
+        public bool PresetPending { get; set; }
+        public bool SoloDuty { get; set; } = soloDuty;
+        public bool Stopping { get; set; }
+        public bool ProviderLost { get; set; }
+        public bool OwnershipLost { get; set; }
+        public string? Reason { get; set; }
+        public List<SettingOverride> Settings { get; } = [];
+    }
+
+    private sealed class SettingOverride(string type, string field, bool previous, bool applied)
+    {
+        public string Type { get; } = type;
+        public string Field { get; } = field;
+        public bool Previous { get; } = previous;
+        public bool Applied { get; } = applied;
+        public bool Pending { get; set; }
+    }
 
     public bool IsConfiguredToRunSoloInstance(ElementId questId, SinglePlayerDutyOptions? dutyOptions)
     {

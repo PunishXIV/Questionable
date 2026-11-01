@@ -29,29 +29,42 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
 
     public bool Start(CombatController.CombatData combatData)
     {
-        if (_delegate!.Start(combatData))
-        {
-            _combatData = combatData;
-            _isDoingRotation = true;
-            _continueAt = DateTime.Now;
-            return true;
-        }
-
-        return false;
+        _combatData = combatData;
+        StartRotation();
+        _continueAt = DateTime.Now;
+        return true;
     }
 
     public bool Stop()
     {
-        if (_isDoingRotation)
-        {
-            _delegate!.Stop();
-            _isDoingRotation = false;
-            _combatData = null;
-            _delegate = null;
-            _continueAt = DateTime.Now;
-        }
-
+        // A failed start or an item-use pause may still own partial provider state.
+        if (_delegate != null && !_delegate.Stop())
+            return false;
+        _isDoingRotation = false;
+        _combatData = null;
+        _delegate = null;
+        _continueAt = DateTime.Now;
         return true;
+    }
+
+    public void VerifyActive()
+    {
+        if (_isDoingRotation)
+            _delegate!.VerifyActive();
+    }
+
+    internal void StartRotation()
+    {
+        if (_delegate == null || _combatData == null || !_delegate.Start(_combatData))
+            throw new TaskException("Unable to start rotation for combat item use.");
+        _isDoingRotation = true;
+    }
+
+    internal void StopRotation()
+    {
+        if (_delegate != null && !_delegate.Stop())
+            throw new TaskException("Waiting for rotation to stop before using a combat item.");
+        _isDoingRotation = false;
     }
 
     public void Update(IGameObject nextTarget)
@@ -86,16 +99,14 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
                     InventoryManager* inventoryManager = InventoryManager.Instance();
                     if (inventoryManager->GetInventoryItemCount(_combatData.CombatItemUse.ItemId) == 0)
                     {
-                        _isDoingRotation = false;
-                        _delegate.Stop();
+                        StopRotation();
                         return;
                     }
                 }
 
                 if (ShouldUseItem(nextTarget))
                 {
-                    _isDoingRotation = false;
-                    _delegate.Stop();
+                    StopRotation();
                     unsafe
                     {
                         logger.LogInformation("Using item {ItemId}", _combatData.CombatItemUse.ItemId);
@@ -116,8 +127,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
             }
             else
             {
-                _isDoingRotation = true;
-                _delegate.Start(_combatData);
+                StartRotation();
             }
         }
         else if (_isDoingRotation)

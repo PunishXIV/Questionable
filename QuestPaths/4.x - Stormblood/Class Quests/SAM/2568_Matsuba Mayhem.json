@@ -118,7 +118,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true, "Target": 7154},
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "AethernetShortcut": [
             "[Kugane] Thavnairian Consulate",
             "[Kugane] Rakuza District"

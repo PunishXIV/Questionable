@@ -17,8 +17,14 @@ internal sealed class MoveExecutor
     ICondition condition,
     IDataManager dataManager,
     MountStep.MountEvaluator mountEvaluator,
-    IServiceProvider serviceProvider) : TaskExecutor<MoveTask>, IToastAware
+    IServiceProvider serviceProvider) : TaskExecutor<MoveTask>, IToastAware, ITaskExecutor.IStoppableTaskExecutor
 {
+    public void StopNow()
+    {
+        if (_movementController.Destination != null)
+            _movementController.Stop();
+    }
+
     private readonly string _cannotExecuteAtThisTime = DataManagerAdapter.GetString<LogMessage>(dataManager, 579, x => x.Text)!;
     private readonly IClientState _clientState = clientState;
     private readonly ICondition _condition = condition;
@@ -38,36 +44,73 @@ internal sealed class MoveExecutor
 
     public override ETaskResult Update()
     {
+        try
+        {
+            return UpdateMovement();
+        }
+        catch (MovementController.PathfindingFailedException e)
+        {
+            RecordFailure(e);
+            throw;
+        }
+    }
+
+    private void RecordFailure(MovementController.PathfindingFailedException exception) =>
+        _movementController.RecordFailureWithDestination(exception, new(
+            EMovementType.Quest, Task.DataId, Task.Destination,
+            Task.StopDistance ?? QuestStep.DefaultStopDistance, Task.Fly, Task.Sprint ?? false,
+            MovementController.DefaultVerticalInteractionDistance, Task.Land, !Task.DisableNavmesh));
+
+    private ETaskResult UpdateMovement()
+    {
         if (UpdateMountState() is { } mountStateResult)
             return mountStateResult;
 
         if (_startAction == null)
             return ETaskResult.TaskComplete;
 
-        if (_movementController.IsPathfinding || _movementController.IsPathRunning)
+        if (_movementController.IsPathfinding)
+            return ETaskResult.StillRunning;
+
+        bool? running = _movementController.GetPathRunning();
+        if (running == null)
+            throw new MovementController.PathfindingFailedException(
+                MovementController.PathfindingFailureReason.StatusUnavailable,
+                "Unable to verify whether navigation is still running; movement will not be retried");
+        if (running == true)
             return ETaskResult.StillRunning;
 
         DateTime movementStartedAt = _movementController.MovementStartedAt;
         if (movementStartedAt == DateTime.MaxValue || movementStartedAt.AddSeconds(2) >= DateTime.Now)
             return ETaskResult.StillRunning;
 
-        if (_canRestart &&
-            Vector3.Distance(_objectTable[0]!.Position, _destination) >
-            (Task.StopDistance ?? QuestStep.DefaultStopDistance) + 5f)
-        {
-            _canRestart = false;
-            if (_clientState.TerritoryType == Task.TerritoryId)
-            {
-                _logger.LogInformation("Looks like movement was interrupted, re-attempting to move");
-                _startAction();
-                return ETaskResult.StillRunning;
-            }
+        if (_objectTable[0] is not { } player)
+            return ETaskResult.StillRunning;
 
-            _logger.LogInformation(
-                "Looks like movement was interrupted, do nothing since we're in a different territory now");
+        if (ShouldRestartAfterStop(Task, _clientState.TerritoryType, player.Position, ref _canRestart))
+        {
+            _logger.LogInformation("Looks like movement was interrupted, re-attempting to move");
+            _startAction();
+            return ETaskResult.StillRunning;
         }
 
         return ETaskResult.TaskComplete;
+    }
+
+    internal static bool ShouldRestartAfterStop(MoveTask task, uint territoryId, Vector3 position, ref bool canRestart)
+    {
+        // Territory transitions can complete movement before the original endpoint is reached.
+        if (territoryId != task.TerritoryId ||
+            Vector3.Distance(position, task.Destination) <= (task.StopDistance ?? QuestStep.DefaultStopDistance) + 5f)
+            return false;
+
+        if (!canRestart)
+            throw new MovementController.PathfindingFailedException(
+                MovementController.PathfindingFailureReason.NotArrived,
+                "Movement stopped before reaching the destination");
+
+        canRestart = false;
+        return true;
     }
 
     public override bool WasInterrupted()
@@ -116,6 +159,19 @@ internal sealed class MoveExecutor
     }
 
     protected override bool Start()
+    {
+        try
+        {
+            return StartMovement();
+        }
+        catch (MovementController.PathfindingFailedException e)
+        {
+            RecordFailure(e);
+            throw;
+        }
+    }
+
+    private bool StartMovement()
     {
         _canRestart = Task.RestartNavigation;
         _destination = Task.Destination;

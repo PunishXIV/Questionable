@@ -54,9 +54,11 @@ internal sealed class TerritoryData
 
         _questBattlesToContentFinderCondition = dataManager.GetExcelSheet<Quest>()
             .Where(x => x is { RowId: > 0, IssuerLocation.RowId: > 0 })
-            .SelectMany(GetQuestBattles)
+            .SelectMany(quest => GetQuestBattles(dataManager, quest))
             .Select(x => (x.QuestId, x.Index,
                 CfcId: LookupContentFinderConditionForQuestBattle(dataManager, x.QuestBattleId)))
+            .Where(x => x.CfcId != 0 && _contentFinderConditions.ContainsKey(x.CfcId))
+            .Distinct()
             .ToImmutableDictionary(x => (x.QuestId, x.Index), x => x.CfcId);
     }
 
@@ -105,25 +107,55 @@ internal sealed class TerritoryData
         return string.Concat(name[0].ToString().ToUpper(CultureInfo.InvariantCulture), name.AsSpan(1));
     }
 
-    private static IEnumerable<(ElementId QuestId, byte Index, uint QuestBattleId)> GetQuestBattles(Quest quest)
+    private static IEnumerable<(ElementId QuestId, byte Index, uint QuestBattleId)> GetQuestBattles(IDataManager dataManager, Quest quest)
     {
+        HashSet<byte> questBattleIndexes = [];
+        List<(byte Index, uint Id)> seasonalDuties = [];
         foreach (Quest.QuestParamsStruct t in quest.QuestParams)
         {
-            if (t.ScriptInstruction == "QUESTBATTLE0" || (quest.RowId.Equals(5325) && t.ScriptInstruction == "INSTANCEDUNGEON0"))
-                yield return (QuestId.FromRowId(quest.RowId), 0, t.ScriptArg);
-            else if (t.ScriptInstruction == "QUESTBATTLE1")
-                yield return (QuestId.FromRowId(quest.RowId), 1, t.ScriptArg);
-            else if (t.ScriptInstruction.IsEmpty)
+            if (t.ScriptInstruction.IsEmpty)
                 break;
+
+            string instruction = t.ScriptInstruction.ToString();
+            uint? instanceType = instruction.StartsWith("INSTANCEDUNGEON", StringComparison.Ordinal)
+                ? dataManager.GetExcelSheet<InstanceContent>().GetRowOrDefault(t.ScriptArg)?.InstanceContentType.RowId
+                : null;
+            if (TryGetSoloDutyIndex(instruction, instanceType, out byte index))
+            {
+                if (instruction.StartsWith("QUESTBATTLE", StringComparison.Ordinal))
+                {
+                    if (questBattleIndexes.Add(index))
+                        yield return (QuestId.FromRowId(quest.RowId), index, t.ScriptArg);
+                }
+                else
+                    seasonalDuties.Add((index, t.ScriptArg));
+            }
         }
+        foreach (var duty in seasonalDuties)
+            if (questBattleIndexes.Add(duty.Index))
+                yield return (QuestId.FromRowId(quest.RowId), duty.Index, duty.Id);
+    }
+
+    internal static bool TryGetSoloDutyIndex(string instruction, uint? instanceType, out byte index)
+    {
+        index = 0;
+        const string questBattle = "QUESTBATTLE";
+        const string instanceDungeon = "INSTANCEDUNGEON";
+        string prefix;
+        if (instruction.StartsWith(questBattle, StringComparison.Ordinal))
+            prefix = questBattle;
+        else if (instruction.StartsWith(instanceDungeon, StringComparison.Ordinal) &&
+                 instanceType == (uint)FFXIVClientStructs.FFXIV.Client.Game.InstanceContent.InstanceContentType.SeasonalDungeon)
+            prefix = instanceDungeon;
+        else
+            return false;
+        return byte.TryParse(instruction.AsSpan(prefix.Length), NumberStyles.None, CultureInfo.InvariantCulture, out index);
     }
 
     private static uint LookupContentFinderConditionForQuestBattle(IDataManager dataManager, uint questBattleId)
     {
-        if (questBattleId >= 5000)
-            return dataManager.GetExcelSheet<InstanceContent>().GetRow(questBattleId).ContentFinderCondition.RowId;
-
-        return dataManager.GetExcelSheet<QuestBattleResident>().GetRow(questBattleId).SoloDuty.RowId;
+        uint cfcId = dataManager.GetExcelSheet<QuestBattleResident>().GetRowOrDefault(questBattleId)?.SoloDuty.RowId ?? 0;
+        return cfcId != 0 ? cfcId : dataManager.GetExcelSheet<InstanceContent>().GetRowOrDefault(questBattleId)?.ContentFinderCondition.RowId ?? 0;
     }
 
     public sealed record ContentFinderConditionData

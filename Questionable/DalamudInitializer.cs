@@ -120,18 +120,41 @@ internal sealed class DalamudInitializer : IDisposable
         }
         catch (MovementController.PathfindingFailedException e)
         {
-            _logger.LogError(e, $"PathfindingFailedException NeverFly:{_configuration.Advanced.NeverFly}");
-            if (_configuration.Advanced.NeverFly)
-                _chatGui.PrintError(_L("vnavmesh was not able to find a path. This may be due to the " +
-                    "'Disable flying' setting in QST config > Advanced. Please uncheck this if you expected this " +
-                    "to run fine.") + $" {e.Message}", CommandHandler.MessageTag, CommandHandler.TagColor);
-            else
-                _chatGui.PrintError(_LF("vnavmesh was not able to find a path! Please report this to " +
-                    "Questionable developers. {0}", _questController.CurrentQuest?.ToString() ?? "") + $" {e.Message}",
-                    CommandHandler.MessageTag, CommandHandler.TagColor);
+            _questController.RecordNavigationFailure(e);
+            _logger.LogError(e, "Navigation failed ({Reason}), quest {Quest}, NeverFly:{NeverFly}",
+                e.Reason, _questController.CurrentQuest?.ToString(), _configuration.Advanced.NeverFly);
+            _chatGui.PrintError(GetPathfindingFailureMessage(e.Reason, _configuration.Advanced.NeverFly),
+                CommandHandler.MessageTag, CommandHandler.TagColor);
             _questController.Stop(_L("Pathfinding failed"));
         }
     }
+
+    internal static string GetPathfindingFailureMessage(MovementController.PathfindingFailureReason reason, bool neverFly) => reason switch
+    {
+        MovementController.PathfindingFailureReason.MovementDisabled =>
+            _L("Navigation stopped because movement is disabled in vnavmesh. Re-enable it when you are ready, then resume QST."),
+        MovementController.PathfindingFailureReason.StatusUnavailable =>
+            _L("Navigation stopped because vnavmesh's movement status could not be checked. Check that vnavmesh is loaded before resuming QST."),
+        MovementController.PathfindingFailureReason.StartFailed =>
+            _L("Navigation could not be started. Check /xllog for the underlying error before resuming QST."),
+        MovementController.PathfindingFailureReason.NotArrived =>
+            _L("Movement stopped before reaching the destination. Use Stuck? to copy troubleshooting information if this keeps happening."),
+        MovementController.PathfindingFailureReason.MovementBlocked =>
+            _L("Navigation stopped because another plugin is travelling or vnavmesh has a pending movement request. Wait for that activity to finish before resuming QST."),
+        MovementController.PathfindingFailureReason.Unavailable =>
+            _L("Navigation stopped because vnavmesh's IPC is unavailable. Check that vnavmesh is loaded, then resume QST."),
+        MovementController.PathfindingFailureReason.TimedOut =>
+            _L("Navigation stopped because pathfinding exceeded 30 seconds. If this keeps happening, use Stuck? to copy troubleshooting information and include the /xllog error."),
+        MovementController.PathfindingFailureReason.Cancelled =>
+            _L("Navigation stopped because vnavmesh cancelled the pathfinding request. Resume QST when navigation is available."),
+        MovementController.PathfindingFailureReason.NoRoute when neverFly =>
+            _L("vnavmesh returned no route. Flying is disabled in QST config > Advanced; enable it if this route requires flying."),
+        MovementController.PathfindingFailureReason.NoRoute =>
+            _L("vnavmesh returned no route from your current position. If this keeps happening, use Stuck? to copy troubleshooting information and describe where you became stuck."),
+        MovementController.PathfindingFailureReason.LandingFailed =>
+            _L("Navigation stopped because landing did not complete. Land in a suitable place, then resume QST."),
+        _ => _L("Navigation failed. Check /xllog for the underlying error; include it with the Stuck? troubleshooting information if you report the problem."),
+    };
 
     private void OnToast(ref SeString message, ref ToastOptions options, ref bool isHandled) => _logger.LogTrace("Normal Toast: {Message}", message);
 

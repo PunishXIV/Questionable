@@ -2,6 +2,16 @@ namespace Questionable.External;
 
 internal interface IAutoHookIpc
 {
+    bool SupportsOwnedFishing();
+    /// <summary>Null means readiness/idle could not be established; false requires a fresh idle observation.</summary>
+    bool? GetFishingBusy();
+    AutoHookIpc.EOwnedStartResult StartOwnedFishing(string preset, out string message);
+    void PollOperation();
+    /// <summary>Requests a normal stop without abandoning the active executor's ownership.</summary>
+    void RequestStop();
+    void CancelOwned();
+    void ObserveIdle();
+
     /// <summary>
     /// Whether the AutoHook plugin is installed and IPC is reachable.
     /// Unlike <see cref="IsPluginEnabled"/>, this returns true when the plugin is installed but disabled.

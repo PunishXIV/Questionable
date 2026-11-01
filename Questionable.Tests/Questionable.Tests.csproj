@@ -9,6 +9,13 @@
         <Platforms>x64</Platforms>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(DalamudLibPath)' == ''">
+        <DalamudLibPath Condition="$([MSBuild]::IsOSPlatform('Windows'))">$(appdata)\XIVLauncher\addon\Hooks\dev</DalamudLibPath>
+        <DalamudLibPath Condition="$([MSBuild]::IsOSPlatform('Linux'))">$(HOME)/.xlcore/dalamud/Hooks/dev</DalamudLibPath>
+        <DalamudLibPath Condition="$([MSBuild]::IsOSPlatform('OSX'))">$(HOME)/Library/Application Support/XIV on Mac/dalamud/Hooks/dev</DalamudLibPath>
+        <DalamudLibPath Condition="'$(DALAMUD_HOME)' != ''">$(DALAMUD_HOME)</DalamudLibPath>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
         <PackageReference Include="NSubstitute" Version="5.3.0" />
@@ -29,7 +36,7 @@
     <!-- Configuration implements Dalamud's IPluginConfiguration, so tests that create it need Dalamud.dll at run time. -->
     <ItemGroup>
         <Reference Include="Dalamud">
-            <HintPath>$(DalamudLibPath)Dalamud.dll</HintPath>
+            <HintPath>$(DalamudLibPath)/Dalamud.dll</HintPath>
             <Private>true</Private>
         </Reference>
     </ItemGroup>

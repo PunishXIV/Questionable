@@ -1,5 +1,3 @@
-// Authored with LLM assistance, changes must be reviewed and owned by a human.
-// Initial version reviewed and owned by @Kagekazu
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Questionable.Model.Questing;
 using static Questionable.Controller.Steps.ITaskExecutor;
@@ -27,33 +25,69 @@ internal static class Purchase
             if (!IsHandledByKnightshopper(step, gilShopData))
                 return [];
 
-            return [new BuyTask(step.ItemId!.Value, Math.Max(1, step.ItemCount.GetValueOrDefault(1)))];
+            return [new BuyTask(step.ItemId!.Value, Math.Max(1, step.ItemCount.GetValueOrDefault(1)), step.ItemQuality)];
         }
     }
 
-    internal sealed record BuyTask(uint ItemId, int ItemCount) : ITask
+    internal sealed record BuyTask(uint ItemId, int ItemCount, EItemQuality Quality = EItemQuality.Any) : ITask
     {
         public override string ToString() => $"Buy({ItemCount}x {ItemId})";
     }
 
-    internal sealed class DoBuy(KnightshopperIpc knightshopperIpc, ILogger<DoBuy> logger)
-        : TaskExecutor<BuyTask>, IStoppableTaskExecutor
+    internal sealed class DoBuy : TaskExecutor<BuyTask>, IStoppableTaskExecutor
     {
-        private Guid _operationId = Guid.Empty;
+        private readonly IKnightshopperIpc _knightshopperIpc;
+        private readonly PurchaseOperationState _operation;
+        private readonly Func<BuyTask, int> _countItems;
+        private readonly Action _stopMovement;
+        private readonly TimeProvider _clock;
+        private Guid? _owner;
+        private long? _completedAt;
+
+        public DoBuy(IKnightshopperIpc knightshopperIpc, PurchaseOperationState operation,
+            MovementController movementController)
+            : this(knightshopperIpc, operation, GetOwnedCount, movementController.Stop)
+        {
+        }
+
+        internal DoBuy(IKnightshopperIpc knightshopperIpc, PurchaseOperationState operation,
+            Func<BuyTask, int> countItems, Action stopMovement, TimeProvider? clock = null)
+        {
+            _knightshopperIpc = knightshopperIpc;
+            _operation = operation;
+            _countItems = countItems;
+            _stopMovement = stopMovement;
+            _clock = clock ?? TimeProvider.System;
+        }
 
         protected override bool Start()
         {
-            if (GetOwnedCount() >= Task.ItemCount)
+            _owner = null;
+            _completedAt = null;
+            if (_operation.HasOperation)
+                throw new TaskException(_operation.BlockReason!);
+            if (_countItems(Task) >= Task.ItemCount)
                 return false;
 
-            if (!knightshopperIpc.IsReady())
+            if (Task.Quality == EItemQuality.HQ)
+                throw new TaskException("A gil shop cannot supply the required HQ quest item");
+
+            if (!_knightshopperIpc.IsReady())
                 throw new TaskException("Knightshopper is required for buying quest items, but isn't installed, enabled or up to date");
 
+            if (_knightshopperIpc.GetBusy() != false)
+                throw new TaskException("Knightshopper is busy or unavailable; finish its current work before buying quest items");
+
+            // Drop pending Questionable paths before the provider takes over navigation.
+            _stopMovement();
             KnightshopperIpc.EStartResult result =
-                knightshopperIpc.BuyWithGil(Task.ItemId, (uint)Task.ItemCount, out _operationId, out string message);
+                _knightshopperIpc.BuyWithGil(Task.ItemId, (uint)Task.ItemCount, out _, out string message);
+            if (result is KnightshopperIpc.EStartResult.Started or KnightshopperIpc.EStartResult.Uncertain)
+                _owner = _operation.OperationId;
             return result switch
             {
                 KnightshopperIpc.EStartResult.Started => true,
+                KnightshopperIpc.EStartResult.EmptyList when _countItems(Task) >= Task.ItemCount => false,
                 KnightshopperIpc.EStartResult.NotAllowed => throw new TaskException(
                     "Knightshopper blocked the purchase. Enable its IPC permissions and add Questionable to its allowed plugins."),
                 var _ => throw new TaskException($"Knightshopper didn't buy {Task.ItemCount}x {Task.ItemId} ({result}): {message}")
@@ -62,14 +96,30 @@ internal static class Purchase
 
         public override ETaskResult Update()
         {
-            (KnightshopperIpc.EPurchaseState state, string message) = knightshopperIpc.GetStatus(_operationId);
+            if (!_owner.HasValue || _operation.OperationId != _owner || _operation.RequiresReconciliation)
+                throw new TaskException(_operation.BlockReason ?? "Knightshopper purchase ownership was lost");
+
+            KnightshopperIpc.EPurchaseState state = _operation.Status;
             switch (state)
             {
                 case KnightshopperIpc.EPurchaseState.Succeeded:
-                    return ETaskResult.TaskComplete;
+                    if (_countItems(Task) >= Task.ItemCount)
+                    {
+                        _operation.TryReleaseTerminal(_owner);
+                        return ETaskResult.TaskComplete;
+                    }
+
+                    // Allow the final inventory update to arrive after the provider's result.
+                    _completedAt ??= _clock.GetTimestamp();
+                    if (_clock.GetElapsedTime(_completedAt.Value) < TimeSpan.FromSeconds(2))
+                        return ETaskResult.StillRunning;
+                    _operation.TryReleaseTerminal(_owner);
+                    throw new TaskException($"Knightshopper finished, but the inventory does not contain {Task.ItemCount}x {Task.ItemId}");
 
                 case KnightshopperIpc.EPurchaseState.Failed:
                 case KnightshopperIpc.EPurchaseState.Cancelled:
+                    string message = _operation.Message;
+                    _operation.TryReleaseTerminal(_owner);
                     throw new TaskException($"Knightshopper didn't buy {Task.ItemCount}x {Task.ItemId} ({state}): {message}");
 
                 default:
@@ -79,20 +129,29 @@ internal static class Purchase
 
         public void StopNow()
         {
-            if (_operationId == Guid.Empty)
-                return;
-
-            logger.LogInformation("Cancelling Knightshopper purchase {OperationId}", _operationId);
-            knightshopperIpc.Cancel(_operationId);
+            if (_owner.HasValue && _operation.OperationId == _owner)
+                _knightshopperIpc.CancelOwned();
         }
 
         // Knightshopper handles travel and the shop windows
         public override bool ShouldInterruptOnDamage() => false;
 
-        private unsafe int GetOwnedCount()
+        private static unsafe int GetOwnedCount(BuyTask task)
         {
             InventoryManager* inventoryManager = InventoryManager.Instance();
-            return inventoryManager == null ? 0 : inventoryManager->GetInventoryItemCount(Task.ItemId);
+            if (inventoryManager == null)
+                throw new TaskException("Inventory is unavailable; cannot verify the purchase");
+
+            return CountItems(task.Quality,
+                inventoryManager->GetInventoryItemCount(task.ItemId, isHq: false, checkEquipped: false),
+                inventoryManager->GetInventoryItemCount(task.ItemId, isHq: true, checkEquipped: false));
         }
     }
+
+    internal static int CountItems(EItemQuality quality, int normal, int high) => quality switch
+    {
+        EItemQuality.NQ => normal,
+        EItemQuality.HQ => high,
+        _ => normal + high,
+    };
 }

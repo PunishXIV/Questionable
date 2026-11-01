@@ -1,6 +1,7 @@
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
+using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.ConfigComponents;
@@ -55,6 +56,28 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
             set(values[index]);
             Save();
         }
+    }
+
+    /// <summary>
+    ///     Draws a checkbox bound to a configuration value, saving on change, with an optional help marker after it.
+    /// </summary>
+    /// <returns>The value after this frame.</returns>
+    protected bool DrawCheckbox(string label, Func<bool> get, Action<bool> set, string? help = null)
+    {
+        bool value = get();
+        if (ImGui.Checkbox(label, ref value))
+        {
+            set(value);
+            Save();
+        }
+
+        if (help != null)
+        {
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker(help);
+        }
+
+        return value;
     }
 
     protected static string FormatLevel(int level, bool includePrefix = true)

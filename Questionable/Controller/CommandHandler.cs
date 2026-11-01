@@ -170,7 +170,8 @@ internal sealed class CommandHandler : IDisposable
                 break;
 
             case "stop":
-                _movementController.Stop();
+                if (!_questController.HasExternalOperation)
+                    _movementController.Stop();
                 _questController.Stop(_L("Stop command"));
                 break;
 
@@ -515,7 +516,9 @@ internal sealed class CommandHandler : IDisposable
         else
         {
             _questController.StopSimulate();
-            _chatGui.Print(_L("Cleared simulated quest."), MessageTag, TagColor);
+            _chatGui.Print(_questController.SimulatedQuest == null
+                ? _L("Cleared simulated quest.")
+                : _L("Wait for the external operation to stop, then clear the simulated quest again."), MessageTag, TagColor);
         }
     }
 

@@ -1,8 +1,10 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using ECommons.ExcelServices;
+using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
-using Questionable.Controller.Steps.Common;
+using Questionable.Controller;
+using Questionable.Controller.Steps;
+using Questionable.Controller.Steps.Fishing;
 using Questionable.Controller.Steps.Shared;
 using Questionable.External;
 using Questionable.Model.Questing;
@@ -19,7 +21,34 @@ public sealed class FishTests
     public FishTests()
     {
         _autoHookIpc.IsAvailable().Returns(returnThis: true);
-        _factory = new Fish.Factory(_autoHookIpc);
+        _factory = new Fish.Factory();
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void FailedPresetGeneration_DoesNotMutateProviderOrCreatePreparationTasks(bool initiallyEnabled)
+    {
+        _autoHookIpc.IsPluginEnabled().Returns(initiallyEnabled);
+        _autoHookIpc.SetPluginEnabled(Arg.Any<bool>()).Returns(true);
+        _autoHookIpc.SupportsOwnedFishing().Returns(true);
+        _autoHookIpc.GetFishingBusy().Returns(false);
+        var generator = Substitute.For<IFishingPresetGenerator>();
+        var failure = new InvalidOperationException("Invalid fishing preset");
+        generator.CreatePresetFromTask(Arg.Any<Fish.FishTask>()).Returns(_ => throw failure);
+        var executor = new Fish.DoFish(_autoHookIpc, new FishingOperationState(), generator,
+            NullLogger<Fish.DoFish>.Instance, _ => false);
+        var task = new Fish.FishTask(QuestTestData.CreateQuest(new QuestId(65000)), Item(42, 1), []);
+        TaskQueue queue = new(NullLogger.Instance);
+
+        Assert.Same(failure, Assert.Throws<InvalidOperationException>(() => queue.StartTask(executor, task)));
+        executor.StopNow();
+
+        Assert.Null(queue.CurrentTaskExecutor);
+        _autoHookIpc.DidNotReceiveWithAnyArgs().SetPluginEnabled(default);
+        _autoHookIpc.DidNotReceive().DeleteAllAnonymousPresets();
+        _autoHookIpc.DidNotReceiveWithAnyArgs().CreateAndSelectAnonymousPreset(default!);
+        _autoHookIpc.DidNotReceive().CancelOwned();
     }
 
     // --- helpers ---
@@ -100,7 +129,7 @@ public sealed class FishTests
     // --- CreateAllTasks ---
 
     [Fact]
-    public void FishStep_WhenAutoHookUnavailable_CreatesNoTasks()
+    public void FishStep_WhenAutoHookUnavailable_RetainsObjectiveCheckingTask()
     {
         _autoHookIpc.IsAvailable().Returns(returnThis: false);
         var item = Item(4874, 3);
@@ -108,7 +137,7 @@ public sealed class FishTests
 
         var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
 
-        Assert.Empty(tasks);
+        Assert.IsType<Fish.FishTask>(Assert.Single(tasks));
     }
 
     [Fact]
@@ -123,18 +152,14 @@ public sealed class FishTests
     }
 
     [Fact]
-    public void FishStep_WithSingleItem_CreatesUnmountSwitchAndFishTask()
+    public void FishStep_WithSingleItem_DefersPreparationUntilObjectiveAndProviderChecks()
     {
         var item = Item(4874, 3);
         var (quest, sequence, step) = QuestTestData.FactoryContext(new QuestId(1109), 1, FishStep(itemsToGather: [item]));
 
         var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
 
-        Assert.Equal(3, tasks.Count);
-        Assert.IsType<MountStep.UnmountTask>(tasks[0]);
-        Assert.Equal(Job.FSH, Assert.IsType<SwitchClassJob.Task>(tasks[1]).ClassJob);
-
-        var fishTask = Assert.IsType<Fish.FishTask>(tasks[2]);
+        var fishTask = Assert.IsType<Fish.FishTask>(Assert.Single(tasks));
         Assert.Same(quest, fishTask.Quest);
         Assert.Same(item, fishTask.GatheredItem);
         Assert.False(fishTask.HasCompletionQuestVariablesFlags);
@@ -153,11 +178,7 @@ public sealed class FishTests
 
         var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
 
-        Assert.Equal(5, tasks.Count);
-        Assert.IsType<MountStep.UnmountTask>(tasks[0]);
-        Assert.Equal(Job.FSH, Assert.IsType<SwitchClassJob.Task>(tasks[1]).ClassJob);
-
-        var fishTasks = tasks.Skip(2).Cast<Fish.FishTask>().ToList();
+        var fishTasks = tasks.Cast<Fish.FishTask>().ToList();
         Assert.Equal(3, fishTasks.Count);
         Assert.Same(firstItem, fishTasks[0].GatheredItem);
         Assert.Same(secondItem, fishTasks[1].GatheredItem);
@@ -176,11 +197,7 @@ public sealed class FishTests
 
         var tasks = _factory.CreateAllTasks(quest, sequence, step).ToList();
 
-        Assert.Equal(3, tasks.Count);
-        Assert.IsType<MountStep.UnmountTask>(tasks[0]);
-        Assert.Equal(Job.FSH, Assert.IsType<SwitchClassJob.Task>(tasks[1]).ClassJob);
-
-        var fishTask = Assert.IsType<Fish.FishTask>(tasks[2]);
+        var fishTask = Assert.IsType<Fish.FishTask>(Assert.Single(tasks));
         Assert.Same(quest, fishTask.Quest);
         Assert.Null(fishTask.GatheredItem);
         Assert.True(fishTask.HasCompletionQuestVariablesFlags);

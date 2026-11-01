@@ -1,5 +1,3 @@
-// Authored with LLM assistance, changes must be reviewed and owned by a human.
-// Initial version reviewed and owned by @Kagekazu
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 
 namespace Questionable.Controller;

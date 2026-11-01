@@ -110,7 +110,6 @@ internal static class ServiceCollectionExtensions
         serviceCollection
             .AddTaskFactoryAndExecutor<Duty.OpenDutyFinderTask, Duty.Factory, Duty.OpenDutyFinderExecutor>();
         serviceCollection.AddTaskExecutor<Duty.StartAutoDutyTask, Duty.StartAutoDutyExecutor>();
-        serviceCollection.AddTaskExecutor<Duty.WaitAutoDutyTask, Duty.WaitAutoDutyExecutor>();
         serviceCollection.AddTaskExecutor<Duty.OpenVariantDFTask, Duty.OpenVariantDFExecutor>();
         serviceCollection.AddTaskFactory<Emote.Factory>();
         serviceCollection.AddTaskExecutor<Emote.UseOnObject, Emote.UseOnObjectExecutor>();
@@ -146,15 +145,12 @@ internal static class ServiceCollectionExtensions
         serviceCollection
             .AddTaskExecutor<SinglePlayerDuty.StartSinglePlayerDuty, SinglePlayerDuty.StartSinglePlayerDutyExecutor>();
         serviceCollection.AddTaskExecutor<SinglePlayerDuty.EnableAi, SinglePlayerDuty.EnableAiExecutor>();
-        serviceCollection.AddTaskExecutor<SinglePlayerDuty.SetPreset, SinglePlayerDuty.SetPresetExecutor>();
-        serviceCollection.AddTaskExecutor<SinglePlayerDuty.Commence, SinglePlayerDuty.CommenceExecutor>();
         serviceCollection
             .AddTaskExecutor<SinglePlayerDuty.WaitSinglePlayerDuty, SinglePlayerDuty.WaitSinglePlayerDutyExecutor>();
         serviceCollection
             .AddTaskExecutor<SinglePlayerDuty.WaitForSinglePlayerDutyOutcome,
                 SinglePlayerDuty.WaitForSinglePlayerDutyOutcomeExecutor>();
         serviceCollection.AddTaskExecutor<SinglePlayerDuty.DisableAi, SinglePlayerDuty.DisableAiExecutor>();
-        serviceCollection.AddTaskExecutor<SinglePlayerDuty.SetTarget, SinglePlayerDuty.SetTargetExecutor>();
 
         serviceCollection.AddTaskExecutor<WaitCondition.Task, WaitCondition.WaitConditionExecutor>();
         serviceCollection.AddTaskExecutor<WaitNavmesh.Task, WaitNavmesh.Executor>();

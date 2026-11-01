@@ -91,8 +91,8 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
     }
 
     private bool ShouldHandleUiInteractions =>
-        _questController.IsRunning ||
-        _territoryData.IsQuestBattleInstance(_clientState.TerritoryType);
+        !_questController.HasExternalOperation &&
+        (_questController.IsRunning || _territoryData.IsQuestBattleInstance(_clientState.TerritoryType));
 
     private unsafe void SelectStringPostSetup(AddonEvent type, AddonArgs args)
     {
@@ -125,6 +125,9 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
     /// </summary>
     public unsafe void CheckExisting()
     {
+        if (_questController.HasExternalOperation)
+            return;
+
         if (_gameGui.TryGetAddonByName("SelectString", out AddonSelectString* addonSelectString))
         {
             _logger.LogInformation("SelectString window is open");

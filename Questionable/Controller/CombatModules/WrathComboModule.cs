@@ -1,12 +1,10 @@
-﻿using System.ComponentModel;
-using System.Data;
+using System.ComponentModel;
 using System.Reflection;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Ipc;
 using Questionable.Model.Common;
 using WrathCombo.API;
 using WrathCombo.API.Enum;
-using WrathError = WrathCombo.API.Error;
 
 namespace Questionable.Controller.CombatModules;
 
@@ -21,6 +19,7 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
     private readonly ILogger<WrathComboModule> _logger;
 
     private Guid? _lease;
+    private bool _cleanupFailureLogged;
 
     public WrathComboModule(ILogger<WrathComboModule> logger,
         Configuration configuration,
@@ -45,34 +44,26 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
 
         try
         {
-            WrathIPCWrapper.Test();
-            if (!WrathIPCWrapper.IPCReady())
-                throw new EvaluateException("WrathCombo IPC not ready");
-            return true;
+            return WrathIPCWrapper.IPCReady();
         }
-        catch (WrathError.Exception e) when (e is WrathError.APIBehindException or
-            WrathError.UninitializedException)
+        catch (Exception e)
         {
-            _logger.LogWarning(e, "Problem with WrathCombo.API usage. " +
-                                  "Please report to Questionable or Wrath team.");
+            _logger.LogDebug(e, "WrathCombo is unavailable");
+            return false;
         }
-        catch (EvaluateException e)
-        {
-            _logger.LogWarning(e, "Problem with WrathCombo usage. " +
-                                  "Please report to Wrath team.");
-        }
-        catch (Exception)
-        {
-            // Ignore
-        }
-
-        return false;
     }
 
     public bool Start(CombatController.CombatData combatData)
     {
+        if (_lease != null)
+            return false;
+
+        _cleanupFailureLogged = false;
+        bool started = false;
         try
         {
+            if (!WrathIPCWrapper.IPCReady())
+                return false;
             _lease = WrathIPCWrapper.RegisterForLeaseWithCallback(
                 "Questionable",
                 "Questionable",
@@ -85,68 +76,52 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
                 return false;
             }
 
-            SetResult autoRotationSet = WrathIPCWrapper
-                .SetAutoRotationState(_lease.Value);
+            SetResult autoRotationSet = WrathIPCWrapper.SetAutoRotationState(_lease.Value, true);
             if (!autoRotationSet.IsSuccess())
             {
                 _logger.LogError("Unable to set Wrath's Auto Rotation state");
-                Stop();
                 return false;
             }
 
-            SetResult currentJobSetForAutoRotation = WrathIPCWrapper
-                .SetCurrentJobAutoRotationReady(_lease.Value);
+            SetResult currentJobSetForAutoRotation = WrathIPCWrapper.SetCurrentJobAutoRotationReady(_lease.Value);
             if (!currentJobSetForAutoRotation.IsSuccess())
             {
                 _logger.LogError("Unable to set Wrath to be Auto Rotation-ready");
-                Stop();
                 return false;
             }
 
             // Make Wrath Work
-            SetResult targetingMode = WrathIPCWrapper
-                .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.DPSRotationMode,
-                    DPSRotationMode.Manual);
-            SetResult healerRotationMode = WrathIPCWrapper
-                .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.HealerRotationMode,
-                    HealerRotationMode.Lowest_Current);
-            SetResult healerMagicTargeting = WrathIPCWrapper
-                .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.HealerAlwaysHardTarget, value: false);
-            SetResult combatOnly = WrathIPCWrapper
-                .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.InCombatOnly, value: false);
+            SetResult targetingMode = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
+                AutoRotationConfigOption.DPSRotationMode,
+                DPSRotationMode.Manual);
+            SetResult healerRotationMode = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
+                AutoRotationConfigOption.HealerRotationMode,
+                HealerRotationMode.Lowest_Current);
+            SetResult healerMagicTargeting = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
+                AutoRotationConfigOption.HealerAlwaysHardTarget, false);
+            SetResult combatOnly = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
+                AutoRotationConfigOption.InCombatOnly, false);
 
             // Make Wrath Work well
-            SetResult includeNPCs = WrathIPCWrapper
-                .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.IncludeNPCs, value: true);
-            SetResult targetCombatOnly = WrathIPCWrapper
-                .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.OnlyAttackInCombat, value: false);
-            SetResult cleanse = WrathIPCWrapper
-                .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.AutoCleanse, value: true);
+            SetResult includeNPCs = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
+                AutoRotationConfigOption.IncludeNPCs, true);
+            SetResult targetCombatOnly = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
+                AutoRotationConfigOption.OnlyAttackInCombat, false);
+            SetResult cleanse = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
+                AutoRotationConfigOption.AutoCleanse, true);
 
             // Nice-to-haves
-            SetResult rez = WrathIPCWrapper
-                .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.AutoRez, value: true);
-            SetResult rezAsDPS = WrathIPCWrapper
-                .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.AutoRezDPSJobs, value: true);
-            SetResult kardia = WrathIPCWrapper
-                .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.ManageKardia, value: true);
-            SetResult aoeTargetThreshold = WrathIPCWrapper
-                .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.DPSAoETargets,
-                    3);
-            SetResult rezNonParty = WrathIPCWrapper
-                .SetAutoRotationConfigState(_lease.Value,
-                    AutoRotationConfigOption.AutoRezOutOfParty, value: false);
+            SetResult rez = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
+                AutoRotationConfigOption.AutoRez, true);
+            SetResult rezAsDPS = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
+                AutoRotationConfigOption.AutoRezDPSJobs, true);
+            SetResult kardia = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
+                AutoRotationConfigOption.ManageKardia, true);
+            SetResult aoeTargetThreshold = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
+                AutoRotationConfigOption.DPSAoETargets,
+                3);
+            SetResult rezNonParty = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
+                AutoRotationConfigOption.AutoRezOutOfParty, false);
 
             if (!WrathResultExtensions.AllSuccessful(out string failed,
                 ("HealerRotationMode", healerRotationMode),
@@ -165,55 +140,64 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
                 _logger.LogError("Unable to configure Wrath Auto Rotation " +
                                  "settings: {Result}",
                     string.Join(", ", failed));
-                Stop();
+                return false;
             }
 
+            VerifyActive();
+            started = true;
             return true;
         }
-        catch (WrathError.IPCException e)
+        catch (Exception e)
         {
-            _logger.LogWarning(e, "Problem with Wrath Combo Setup. " +
-                                  "Please report to Wrath team.");
+            _logger.LogWarning(e, "Could not configure WrathCombo combat");
+            return false;
         }
-        catch (Exception)
+        finally
         {
-            // Ignore
+            if (!started)
+                Stop();
         }
-
-        return false;
     }
 
     public bool Stop()
     {
         try
         {
-            if (_lease != null)
-                WrathIPCWrapper.ReleaseControl(_lease.Value);
-
+            if (_lease is { } lease)
+            {
+                WrathIPCWrapper.ReleaseControl(lease);
+                _lease = null;
+            }
+            _cleanupFailureLogged = false;
             return true;
         }
-        catch (WrathError.IPCException e)
+        catch (Exception e)
         {
-            _logger.LogWarning(e, "Problem with Wrath Combo stopping. " +
-                                  "Please report to Wrath team.");
+            if (!_cleanupFailureLogged)
+            {
+                _logger.LogWarning(e, "Could not release WrathCombo lease; retaining it for retry");
+                _cleanupFailureLogged = true;
+            }
+            return false;
         }
-        catch (Exception)
-        {
-            // Ignore
-        }
-        finally
-        {
-            _lease = null;
-        }
-
-        return false;
     }
 
-    public void Update(IGameObject nextTarget)
+    public void VerifyActive()
     {
         if (_lease == null)
-            throw new TaskException("Wrath Combo Lease is cancelled");
+            throw new TaskException("WrathCombo lease was cancelled.");
+        try
+        {
+            if (!WrathIPCWrapper.IPCReady())
+                throw new TaskException("WrathCombo is no longer ready.");
+        }
+        catch (Exception e) when (e is not TaskException)
+        {
+            throw new TaskException("WrathCombo is no longer available.", e);
+        }
     }
+
+    public void Update(IGameObject nextTarget) => VerifyActive();
 
     public bool CanAttack(IBattleNpc target) => true;
 

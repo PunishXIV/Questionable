@@ -32,21 +32,15 @@ internal sealed class DebugConfigComponent
 
         ImGui.Separator();
 
-        bool neverFly = Configuration.Advanced.NeverFly;
-        if (ImGui.Checkbox(_L("Disable flying (even if unlocked for the zone)"), ref neverFly))
-        {
-            Configuration.Advanced.NeverFly = neverFly;
-            Save();
-        }
+        DrawCheckbox(_L("Disable flying (even if unlocked for the zone)"),
+            () => Configuration.Advanced.NeverFly,
+            value => Configuration.Advanced.NeverFly = value);
 
         ImGui.Separator();
 
-        bool allowPathGeneration = Configuration.Advanced.AllowPathGeneration;
-        if (ImGui.Checkbox(_L("Allow questpath generation (experimental)"), ref allowPathGeneration))
-        {
-            Configuration.Advanced.AllowPathGeneration = allowPathGeneration;
-            Save();
-        }
+        bool allowPathGeneration = DrawCheckbox(_L("Allow questpath generation (experimental)"),
+            () => Configuration.Advanced.AllowPathGeneration,
+            value => Configuration.Advanced.AllowPathGeneration = value);
 
         if (allowPathGeneration)
         {
@@ -73,46 +67,31 @@ internal sealed class DebugConfigComponent
         {
             using (ImRaii.PushIndent())
             {
-                bool debugOverlay = Configuration.Advanced.DebugOverlay;
-                if (ImGui.Checkbox(_L("Enable debug overlay"), ref debugOverlay))
-                {
-                    Configuration.Advanced.DebugOverlay = debugOverlay;
-                    Save();
-                }
+                bool debugOverlay = DrawCheckbox(_L("Enable debug overlay"),
+                    () => Configuration.Advanced.DebugOverlay,
+                    value => Configuration.Advanced.DebugOverlay = value);
 
                 using (ImRaii.Disabled(!debugOverlay))
                 {
                     using (ImRaii.PushIndent())
                     {
-                        bool showSavedPos = Configuration.Advanced.ShowSavedPos;
-                        if (ImGui.Checkbox(_L("Show saved position"), ref showSavedPos))
-                        {
-                            Configuration.Advanced.ShowSavedPos = showSavedPos;
-                            Save();
-                        }
+                        DrawCheckbox(_L("Show saved position"),
+                            () => Configuration.Advanced.ShowSavedPos,
+                            value => Configuration.Advanced.ShowSavedPos = value);
 
-                        bool showFlagPos = Configuration.Advanced.ShowFlagPos;
-                        if (ImGui.Checkbox(_L("Show flag position"), ref showFlagPos))
-                        {
-                            Configuration.Advanced.ShowFlagPos = showFlagPos;
-                            Save();
-                        }
+                        DrawCheckbox(_L("Show flag position"),
+                            () => Configuration.Advanced.ShowFlagPos,
+                            value => Configuration.Advanced.ShowFlagPos = value);
 
-                        bool combatDataOverlay = Configuration.Advanced.CombatDataOverlay;
-                        if (ImGui.Checkbox(_L("Enable combat data overlay"), ref combatDataOverlay))
-                        {
-                            Configuration.Advanced.CombatDataOverlay = combatDataOverlay;
-                            Save();
-                        }
+                        DrawCheckbox(_L("Enable combat data overlay"),
+                            () => Configuration.Advanced.CombatDataOverlay,
+                            value => Configuration.Advanced.CombatDataOverlay = value);
                     }
                 }
 
-                bool highlightNpc = Configuration.Advanced.HighlightSelectedNpc;
-                if (ImGui.Checkbox(_L("Highlight NPCs related to the current quest sequence"), ref highlightNpc))
-                {
-                    Configuration.Advanced.HighlightSelectedNpc = highlightNpc;
-                    Save();
-                }
+                bool highlightNpc = DrawCheckbox(_L("Highlight NPCs related to the current quest sequence"),
+                    () => Configuration.Advanced.HighlightSelectedNpc,
+                    value => Configuration.Advanced.HighlightSelectedNpc = value);
 
                 using (ImRaii.Disabled(!highlightNpc))
                 {
@@ -127,59 +106,33 @@ internal sealed class DebugConfigComponent
                     }
                 }
 
-                bool additionalStatusInformation = Configuration.Advanced.AdditionalStatusInformation;
-                if (ImGui.Checkbox(_L("Draw additional status information"), ref additionalStatusInformation))
-                {
-                    Configuration.Advanced.AdditionalStatusInformation = additionalStatusInformation;
-                    Save();
-                }
+                bool additionalStatusInformation = DrawCheckbox(_L("Draw additional status information"),
+                    () => Configuration.Advanced.AdditionalStatusInformation,
+                    value => Configuration.Advanced.AdditionalStatusInformation = value);
 
                 if (additionalStatusInformation)
                 {
-                    bool showTracked = Configuration.Advanced.ShowTracked;
-                    bool showDailies = Configuration.Advanced.ShowDailies;
-                    bool showDirector = Configuration.Advanced.ShowDirector;
-                    bool showActionManager = Configuration.Advanced.ShowActionManager;
-                    bool showNewGamePlus = Configuration.Advanced.ShowNewGamePlus;
-                    bool showHoveredItem = Configuration.Advanced.ShowHoveredItem;
                     using (ImRaii.PushIndent())
                     {
                         ImGui.AlignTextToFramePadding();
-                        if (ImGui.Checkbox(_L("Show Tracked Quests"), ref showTracked))
-                        {
-                            Configuration.Advanced.ShowTracked = showTracked;
-                            Save();
-                        }
-
-                        if (ImGui.Checkbox(_L("Show Accepted/Complete Daily Quests"), ref showDailies))
-                        {
-                            Configuration.Advanced.ShowDailies = showDailies;
-                            Save();
-                        }
-
-                        if (ImGui.Checkbox(_L("Show Director info"), ref showDirector))
-                        {
-                            Configuration.Advanced.ShowDirector = showDirector;
-                            Save();
-                        }
-
-                        if (ImGui.Checkbox(_L("Show Action Manager"), ref showActionManager))
-                        {
-                            Configuration.Advanced.ShowActionManager = showActionManager;
-                            Save();
-                        }
-
-                        if (ImGui.Checkbox(_L("Show NG+ Chapter"), ref showNewGamePlus))
-                        {
-                            Configuration.Advanced.ShowNewGamePlus = showNewGamePlus;
-                            Save();
-                        }
-
-                        if (ImGui.Checkbox(_L("Show Hovered Item"), ref showHoveredItem))
-                        {
-                            Configuration.Advanced.ShowHoveredItem = showHoveredItem;
-                            Save();
-                        }
+                        DrawCheckbox(_L("Show Tracked Quests"),
+                            () => Configuration.Advanced.ShowTracked,
+                            value => Configuration.Advanced.ShowTracked = value);
+                        DrawCheckbox(_L("Show Accepted/Complete Daily Quests"),
+                            () => Configuration.Advanced.ShowDailies,
+                            value => Configuration.Advanced.ShowDailies = value);
+                        DrawCheckbox(_L("Show Director info"),
+                            () => Configuration.Advanced.ShowDirector,
+                            value => Configuration.Advanced.ShowDirector = value);
+                        DrawCheckbox(_L("Show Action Manager"),
+                            () => Configuration.Advanced.ShowActionManager,
+                            value => Configuration.Advanced.ShowActionManager = value);
+                        DrawCheckbox(_L("Show NG+ Chapter"),
+                            () => Configuration.Advanced.ShowNewGamePlus,
+                            value => Configuration.Advanced.ShowNewGamePlus = value);
+                        DrawCheckbox(_L("Show Hovered Item"),
+                            () => Configuration.Advanced.ShowHoveredItem,
+                            value => Configuration.Advanced.ShowHoveredItem = value);
                     }
                 }
             }
@@ -192,26 +145,15 @@ internal sealed class DebugConfigComponent
             using (ImRaii.PushIndent())
             {
                 ImGui.AlignTextToFramePadding();
-                bool disableAutoDutyBareMode = Configuration.Advanced.DisableAutoDutyBareMode;
-                if (ImGui.Checkbox(_L("Use Pre-Loop/Loop/Post-Loop settings"), ref disableAutoDutyBareMode))
-                {
-                    Configuration.Advanced.DisableAutoDutyBareMode = disableAutoDutyBareMode;
-                    Save();
-                }
-
-                ImGui.SameLine();
-                ImGuiComponents.HelpMarker(
+                DrawCheckbox(_L("Use Pre-Loop/Loop/Post-Loop settings"),
+                    () => Configuration.Advanced.DisableAutoDutyBareMode,
+                    value => Configuration.Advanced.DisableAutoDutyBareMode = value,
                     _L("Typically, the loop settings for AutoDuty are disabled when running dungeons with Questionable, since they can cause issues (or even shut down your PC)."));
 
-                bool bmRestoreMovement = Configuration.Advanced.BMRestoreMovement;
-                if (ImGui.Checkbox(_L("Restore BossMod setting to default"), ref bmRestoreMovement))
-                {
-                    Configuration.Advanced.BMRestoreMovement = bmRestoreMovement;
-                    Save();
-                }
-
-                ImGui.SameLine();
-                ImGuiComponents.HelpMarker(_L("When starting a solo duty or if Autoduty has finished qst-orchestrated duty automation, restore Bossmod's setting 'Prevent Movement While Casting' to default"));
+                DrawCheckbox(_L("Restore BossMod setting to default"),
+                    () => Configuration.Advanced.BMRestoreMovement,
+                    value => Configuration.Advanced.BMRestoreMovement = value,
+                    _L("When starting a solo duty or if Autoduty has finished qst-orchestrated duty automation, restore Bossmod's setting 'Prevent Movement While Casting' to default"));
             }
         }
 

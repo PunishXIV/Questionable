@@ -720,10 +720,24 @@ internal sealed class PluginConfigComponent
     }
 
     private IExposedPlugin? FindInstalledPlugin(PluginInfo pluginInfo, bool requireLoaded = true)
+        => FindInstalledPlugin(_pluginInterface.InstalledPlugins, pluginInfo.InternalName, requireLoaded);
+
+    internal static IExposedPlugin? FindInstalledPlugin(IEnumerable<IExposedPlugin> installedPlugins, string internalName,
+        bool requireLoaded = true)
     {
-        return _pluginInterface.InstalledPlugins.FirstOrDefault(x =>
-            string.Equals(x.InternalName, pluginInfo.InternalName, StringComparison.OrdinalIgnoreCase)
-            && (!requireLoaded || x.IsLoaded));
+        IExposedPlugin? installedPlugin = null;
+        foreach (IExposedPlugin plugin in installedPlugins)
+        {
+            if (!string.Equals(plugin.InternalName, internalName, StringComparison.OrdinalIgnoreCase))
+                continue;
+
+            if (plugin.IsLoaded)
+                return plugin;
+
+            installedPlugin ??= plugin;
+        }
+
+        return requireLoaded ? null : installedPlugin;
     }
 
     private bool IsPluginPresent(string internalName)

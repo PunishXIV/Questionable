@@ -11,6 +11,15 @@ internal sealed class AutoHookIpc : Ipc, IAutoHookIpc
     public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && _isPluginEnabled(), fallback: false);
 
     private readonly ILogger<AutoHookIpc> _logger;
+    private readonly FishingOperationState _operation;
+    private readonly Func<int> _ownedVersion;
+    private readonly Func<bool> _fishingIdle;
+    private readonly Func<Guid, string, (int, string)> _startOwned;
+    private readonly Func<Guid, (int, bool, string)> _ownedStatus;
+    private readonly Func<Guid, bool> _stopOwned;
+
+    internal enum EOwnedStartResult { Uncertain = -1, Accepted = 0, Busy = 1, InvalidPreset = 2, NotReady = 3 }
+    internal enum EOwnedFishingState { Unknown = 0, Starting = 1, Running = 2, Stopping = 3, Stopped = 4, Failed = 5, OwnershipLost = 6 }
 
     [EzIPC("GetPluginState")] private readonly Func<bool> _isPluginEnabled;
     [EzIPC("SetPluginState")] private readonly Action<bool> _setPluginEnabled;
@@ -39,11 +48,128 @@ internal sealed class AutoHookIpc : Ipc, IAutoHookIpc
     /// </returns>
     [EzIPC("SwapSwimbaitByIndex")] private readonly Func<byte, bool> _swapSwimbaitByIndex;
 
-    public AutoHookIpc(ILogger<AutoHookIpc> logger)
+    public AutoHookIpc(IDalamudPluginInterface pluginInterface, ILogger<AutoHookIpc> logger, FishingOperationState operation)
+        : this(logger, operation,
+            pluginInterface.GetIpcSubscriber<int>("AutoHook.GetOwnedFishingApiVersion").InvokeFunc,
+            pluginInterface.GetIpcSubscriber<bool>("AutoHook.IsFishingIdle").InvokeFunc,
+            pluginInterface.GetIpcSubscriber<Guid, string, (int, string)>("AutoHook.StartOwnedFishing").InvokeFunc,
+            pluginInterface.GetIpcSubscriber<Guid, (int, bool, string)>("AutoHook.GetOwnedFishingStatus").InvokeFunc,
+            pluginInterface.GetIpcSubscriber<Guid, bool>("AutoHook.StopOwnedFishing").InvokeFunc)
     {
-        _logger = logger;
         EzIPC.Init(this, "AutoHook", SafeWrapper.IPCException);
     }
+
+    internal AutoHookIpc(ILogger<AutoHookIpc> logger, FishingOperationState operation, Func<int> version,
+        Func<bool> idle, Func<Guid, string, (int, string)> start, Func<Guid, (int, bool, string)> status,
+        Func<Guid, bool> stop)
+    {
+        _logger = logger;
+        _operation = operation;
+        _ownedVersion = version;
+        _fishingIdle = idle;
+        _startOwned = start;
+        _ownedStatus = status;
+        _stopOwned = stop;
+    }
+
+    public bool SupportsOwnedFishing()
+    {
+        try { return _ownedVersion() >= 1; }
+        catch (Exception) { return false; }
+    }
+
+    public bool? GetFishingBusy()
+    {
+        try { return SupportsOwnedFishing() ? !_fishingIdle() : null; }
+        catch (Exception e)
+        {
+            _logger.LogDebug(e, "Unable to observe AutoHook idle state");
+            return null;
+        }
+    }
+
+    public EOwnedStartResult StartOwnedFishing(string preset, out string message)
+    {
+        message = "";
+        if (_operation.HasOperation)
+            return EOwnedStartResult.Busy;
+        if (!SupportsOwnedFishing())
+            return EOwnedStartResult.NotReady;
+        bool? busy = GetFishingBusy();
+        if (busy != false)
+            return busy == true ? EOwnedStartResult.Busy : EOwnedStartResult.NotReady;
+
+        // The client supplies the ID, so even a lost start reply can be polled and stopped.
+        Guid owner = _operation.BeginSubmission();
+        try
+        {
+            (int result, message) = _startOwned(owner, preset);
+            if (result == (int)EOwnedStartResult.Accepted)
+            {
+                _operation.AcceptSubmission(owner, owner);
+                return EOwnedStartResult.Accepted;
+            }
+            if (result is >= (int)EOwnedStartResult.Busy and <= (int)EOwnedStartResult.NotReady)
+            {
+                _operation.RejectSubmission(owner);
+                return (EOwnedStartResult)result;
+            }
+        }
+        catch (Exception e)
+        {
+            _logger.LogWarning(e, "AutoHook fishing submission has an uncertain result");
+            message = e.Message;
+        }
+
+        _operation.MarkUncertain(owner);
+        return EOwnedStartResult.Uncertain;
+    }
+
+    public void PollOperation()
+    {
+        if (_operation.OperationId is not { } owner)
+            return;
+        try
+        {
+            if (!SupportsOwnedFishing())
+                _operation.ObserveStatus(owner, EOwnedFishingState.Unknown, false, "AutoHook is unavailable");
+            else
+            {
+                var (state, started, message) = _ownedStatus(owner);
+                _operation.ObserveStatus(owner, (EOwnedFishingState)state, started, message);
+            }
+        }
+        catch (Exception e)
+        {
+            _logger.LogDebug(e, "Unable to poll AutoHook operation {OperationId}", owner);
+            _operation.ObserveStatus(owner, EOwnedFishingState.Unknown, false, e.Message);
+        }
+        SendStop();
+        if (_operation.RequiresReconciliation)
+            ObserveIdle();
+    }
+
+    public void RequestStop()
+    {
+        _operation.RequestStop();
+        SendStop();
+    }
+
+    public void CancelOwned()
+    {
+        _operation.AbandonCurrent();
+        RequestStop();
+    }
+
+    private void SendStop()
+    {
+        if (!_operation.TryBeginStop(out Guid owner))
+            return;
+        try { _operation.ObserveStop(owner, _stopOwned(owner)); }
+        catch (Exception e) { _logger.LogDebug(e, "Unable to stop AutoHook operation {OperationId}", owner); }
+    }
+
+    public void ObserveIdle() => _operation.ObserveIdle(GetFishingBusy());
 
     public bool IsAvailable() =>
         IpcInvoke.SafeFunc(() =>

@@ -19,7 +19,7 @@ internal sealed class ContextMenuController : IDisposable
     private readonly GameFunctions _gameFunctions;
     private readonly IGameGuiAdapter _gameGui;
     private readonly GatheringData _gatheringData;
-    private readonly GatherChillIpc _gatherChillIpc;
+    private readonly IGatherChillIpc _gatherChillIpc;
     private readonly ILogger<ContextMenuController> _logger;
     private readonly QuestController _questController;
     private readonly QuestData _questData;
@@ -32,7 +32,7 @@ internal sealed class ContextMenuController : IDisposable
     public ContextMenuController(
         IContextMenu contextMenu,
         QuestController questController,
-        GatherChillIpc gatherChillIpc,
+        IGatherChillIpc gatherChillIpc,
         GatheringData gatheringData,
         QuestRegistry questRegistry,
         QuestData questData,
