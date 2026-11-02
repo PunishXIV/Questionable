@@ -107,6 +107,7 @@ internal static class ServiceCollectionExtensions
             .AddTaskFactoryAndExecutor<AetheryteFreeOrFavored.Register, AetheryteFreeOrFavored.Factory,
                 AetheryteFreeOrFavored.DoRegister>();
         serviceCollection.AddTaskFactoryAndExecutor<Combat.Task, Combat.Factory, Combat.HandleCombat>();
+        serviceCollection.AddTaskExecutor<Combat.CheckAfterInterruption, Combat.CheckAfterInterruptionExecutor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<Duty.OpenDutyFinderTask, Duty.Factory, Duty.OpenDutyFinderExecutor>();
         serviceCollection.AddTaskExecutor<Duty.StartAutoDutyTask, Duty.StartAutoDutyExecutor>();

@@ -1,4 +1,5 @@
-﻿using Questionable.Controller.Steps.Common;
+﻿using Dalamud.Game.ClientState.Conditions;
+using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
@@ -154,6 +155,33 @@ internal static class Combat
                 CombatItemUse = combatItemUse
             }, completionQuestVariablesFlags, isLastStep);
         }
+    }
+
+    internal sealed record CheckAfterInterruption : ITask
+    {
+        public override string ToString() => "Check combat after interruption";
+    }
+
+    internal sealed class CheckAfterInterruptionExecutor(ICondition condition)
+        : TaskExecutor<CheckAfterInterruption>, ITaskExecutor.IExtraTaskCreator
+    {
+        protected override bool Start() => true;
+
+        public override ETaskResult Update() => ETaskResult.CreateNewTasks;
+
+        public IEnumerable<ITask> CreateExtraTasks()
+        {
+            if (!condition[ConditionFlag.InCombat])
+                yield break;
+
+            if (condition[ConditionFlag.Mounted])
+                yield return new MountStep.UnmountTask();
+
+            yield return Factory.CreateTask(elementId: null, -1, isLastStep: false,
+                EEnemySpawnType.FinishCombatIfAny, [], [], [], combatItemUse: null);
+        }
+
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     internal sealed record Task

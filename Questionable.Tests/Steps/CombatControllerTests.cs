@@ -1,3 +1,5 @@
+using Dalamud.Game.ClientState.Conditions;
+using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
@@ -15,6 +17,7 @@ namespace Questionable.Tests.Steps;
 public sealed class CombatControllerTests : IDisposable
 {
     private readonly ICombatModule _module = Substitute.For<ICombatModule>();
+    private readonly ICondition _condition = Substitute.For<ICondition>();
     private readonly CombatController _controller;
 
     public CombatControllerTests()
@@ -25,7 +28,7 @@ public sealed class CombatControllerTests : IDisposable
         var framework = Substitute.For<IFramework>();
         framework.IsInFrameworkUpdateThread.Returns(true);
         _controller = new CombatController([_module], null!, Substitute.For<ITargetManager>(),
-            Substitute.For<IObjectTable>(), Substitute.For<ICondition>(), Substitute.For<IClientState>(),
+            Substitute.For<IObjectTable>(), _condition, Substitute.For<IClientState>(),
             null!, null!, framework, NullLogger<CombatController>.Instance);
     }
 
@@ -60,6 +63,55 @@ public sealed class CombatControllerTests : IDisposable
         _module.CanHandleFight(Arg.Any<CombatController.CombatData>()).Returns(false);
         Assert.False(_controller.Start(CombatTestData.Create(EEnemySpawnType.FinishCombatIfAny)));
         _module.DidNotReceive().Start(Arg.Any<CombatController.CombatData>());
+    }
+
+    [Fact]
+    public void OptionalCombatExecutor_RunsUntilCombatEndsThenStopsProvider()
+    {
+        using var navigation = new StationaryNavigationFixture();
+        var framework = Substitute.For<IFramework>();
+        framework.IsInFrameworkUpdateThread.Returns(true);
+        using var controller = new CombatController([_module], navigation.Movement,
+            Substitute.For<ITargetManager>(), navigation.Objects, _condition, navigation.Client,
+            null!, null!, framework, NullLogger<CombatController>.Instance);
+        var executor = new Combat.HandleCombat(controller);
+        var task = new Combat.Task(CombatTestData.Create(EEnemySpawnType.FinishCombatIfAny), [], false);
+        _condition[ConditionFlag.InCombat].Returns(true);
+
+        Assert.True(executor.Start(task));
+        Assert.Equal(ETaskResult.StillRunning, executor.Update());
+        Assert.Equal(ETaskResult.StillRunning, executor.Update());
+        Assert.True(controller.IsRunning);
+        _module.Received(1).Start(task.CombatData);
+        _module.DidNotReceive().Stop();
+
+        _condition[ConditionFlag.InCombat].Returns(false);
+
+        Assert.Equal(ETaskResult.TaskComplete, executor.Update());
+        _module.Received(3).VerifyActive();
+        _module.Received(1).Stop();
+        Assert.False(controller.IsRunning);
+        Assert.False(controller.HasPendingCleanup);
+    }
+
+    [Fact]
+    public void OptionalCombatExecutor_CombatEndsBeforeStartup_SkipsWithoutProvider()
+    {
+        TaskQueue queue = new(NullLogger.Instance);
+        _condition[ConditionFlag.InCombat].Returns(true);
+        queue.Enqueue(new Combat.Task(CombatTestData.Create(EEnemySpawnType.FinishCombatIfAny), [], false));
+
+        _condition[ConditionFlag.InCombat].Returns(false);
+
+        Assert.True(queue.TryDequeue(out var task));
+        Assert.False(queue.StartTask(new Combat.HandleCombat(_controller), task!));
+        Assert.Null(queue.CurrentTaskExecutor);
+        Assert.True(queue.AllTasksComplete);
+        Assert.False(_controller.IsRunning);
+        Assert.False(_controller.HasPendingCleanup);
+        _module.DidNotReceive().CanHandleFight(Arg.Any<CombatController.CombatData>());
+        _module.DidNotReceive().Start(Arg.Any<CombatController.CombatData>());
+        _module.DidNotReceive().Stop();
     }
 
     [Theory]
@@ -109,5 +161,19 @@ public sealed class CombatControllerTests : IDisposable
         Assert.Same(failure, throwsTaskException ? reported : reported.InnerException);
         _module.Received(1).Stop();
         Assert.False(_controller.IsRunning);
+    }
+
+    private sealed class StationaryNavigationFixture : NavigationTestFixture
+    {
+        public StationaryNavigationFixture()
+        {
+            var running = Substitute.For<ICallGateSubscriber<bool>>();
+            running.InvokeFunc().Returns(false);
+            Plugin.GetIpcSubscriber<bool>("vnavmesh.Path.IsRunning").Returns(running);
+            InitializeMovement(null!, () => 0);
+            // Bypass the recent-movement grace period without sleeping or changing production code.
+            typeof(MovementController).GetProperty(nameof(MovementController.MovementStartedAt))!
+                .SetValue(Movement, DateTime.MinValue);
+        }
     }
 }
