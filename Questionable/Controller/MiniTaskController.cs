@@ -241,7 +241,8 @@ internal abstract class MiniTaskController<T> : IDisposable
 
         _logger.LogWarning("Interrupted, attempting to resolve (if in combat)");
         List<ITask> tasks = [];
-        if (_condition[ConditionFlag.InCombat])
+        bool inCombat = _condition[ConditionFlag.InCombat];
+        if (inCombat)
         {
             if (_condition[ConditionFlag.Mounted])
                 tasks.Add(new MountStep.UnmountTask());
@@ -249,6 +250,10 @@ internal abstract class MiniTaskController<T> : IDisposable
             tasks.Add(Combat.Factory.CreateTask(elementId: null, -1, isLastStep: false, EEnemySpawnType.QuestInterruption, [], [], [], combatItemUse: null));
         }
         tasks.Add(new WaitAtEnd.WaitDelay());
+        // Damage can arrive before the game raises InCombat. Check again after recovery,
+        // before replaying the interrupted interaction.
+        if (!inCombat)
+            tasks.Add(new Combat.CheckAfterInterruption());
         if (!_taskQueue.InterruptWith(tasks))
         {
             Stop("Task cancellation failed");
