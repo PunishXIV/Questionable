@@ -3,6 +3,7 @@ using System.Numerics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Dalamud.Game.ClientState.Objects.Types;
+using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
@@ -208,6 +209,7 @@ public sealed class NavigationFailureCaptureTests
     {
         using var fixture = new Fixture();
         fixture.StopWithoutNativeInput();
+        fixture.LoadNavmesh();
         if (statusUnavailable)
             fixture.Running.InvokeFunc().Returns(_ => throw new InvalidOperationException("Status lost"));
         MoveTask task = new(958, new Vector3(100, 0, 0), StopDistance: 2f, DataId: 123, Fly: true,
@@ -225,6 +227,31 @@ public sealed class NavigationFailureCaptureTests
         Assert.Equal(true, snapshot.Fly);
         Assert.Equal(2f, snapshot.StopDistance);
         Assert.Null(snapshot.ElapsedMilliseconds);
+    }
+
+    [Fact]
+    public void ExecutorWaitsOutANavmeshReloadAndMovesAgainWithoutUsingUpTheRetry()
+    {
+        using var fixture = new Fixture();
+        fixture.StopWithoutNativeInput();
+        fixture.LoadNavmesh();
+        int starts = 0;
+        MoveTask task = new(958, new Vector3(100, 0, 0), RestartNavigation: false);
+        var executor = fixture.CreateExecutor(task, () => starts++);
+        typeof(MovementController).GetProperty(nameof(MovementController.MovementStartedAt))!
+            .SetValue(fixture.Movement, DateTime.Now.AddSeconds(-10));
+
+        // vnav dropped the route while it rebuilt the zone's navmesh (e.g. on a first visit).
+        fixture.NavReady.InvokeFunc().Returns(false);
+        Assert.Equal(ETaskResult.StillRunning, executor.Update());
+        Assert.Equal(0, starts);
+
+        fixture.NavReady.InvokeFunc().Returns(true);
+        Assert.Equal(ETaskResult.StillRunning, executor.Update());
+        Assert.Equal(1, starts);
+
+        // A later ordinary stop still fails, as retries are disabled for this step.
+        Assert.Equal(Reason.NotArrived, Assert.Throws<Failure>(() => executor.Update()).Reason);
     }
 
     [Fact]
@@ -253,6 +280,7 @@ public sealed class NavigationFailureCaptureTests
     {
         public IGameObject Player { get; } = Substitute.For<IGameObject>();
         public ICallGateSubscriber<bool> Running { get; } = Substitute.For<ICallGateSubscriber<bool>>();
+        public ICallGateSubscriber<bool> NavReady { get; } = Substitute.For<ICallGateSubscriber<bool>>();
         public TaskCompletionSource<List<Vector3>> Pending { get; set; } = new();
         public MovementController.DestinationData Request { get; } = new(default, 42, Vector3.One, 1f,
             false, false, 1f, false, true);
@@ -261,6 +289,8 @@ public sealed class NavigationFailureCaptureTests
         public Fixture()
         {
             Plugin.GetIpcSubscriber<bool>("vnavmesh.Path.IsRunning").Returns(Running);
+            Plugin.GetIpcSubscriber<bool>("vnavmesh.Nav.IsReady").Returns(NavReady);
+            NavReady.InvokeFunc().Returns(true);
             Pathfind.InvokeFunc(Arg.Any<Vector3>(), Arg.Any<Vector3>(), Arg.Any<bool>(), Arg.Any<CancellationToken>())
                 .Returns(_ => Pending.Task);
             Objects[0].Returns(Player);
@@ -272,6 +302,16 @@ public sealed class NavigationFailureCaptureTests
 
         public void AssertNoNavigationFailure() => Assert.Same(QuestBoundary, Record.Exception(Movement.Update));
 
+        // The executor only trusts a navmesh-ready signal from a loaded vnavmesh.
+        public void LoadNavmesh()
+        {
+            var provider = Substitute.For<IExposedPlugin>();
+            provider.InternalName.Returns("vnavmesh");
+            provider.IsLoaded.Returns(true);
+            provider.Version.Returns(new Version(1, 2, 3, 14));
+            Plugin.InstalledPlugins.Returns([provider]);
+        }
+
         public void StopWithoutNativeInput()
         {
             Knightshopper.GetBusy().Returns(true);
@@ -279,14 +319,15 @@ public sealed class NavigationFailureCaptureTests
             Knightshopper.GetBusy().Returns(false);
         }
 
-        public MoveExecutor CreateExecutor(MoveTask task)
+        public MoveExecutor CreateExecutor(MoveTask task, Action? start = null)
         {
             // Bypass constructor-only game sheet lookup; exercise the real Start/Update paths.
             var executor = (MoveExecutor)RuntimeHelpers.GetUninitializedObject(typeof(MoveExecutor));
             SetField("_movementController", Movement);
             SetField("_clientState", Client);
             SetField("_objectTable", Objects);
-            SetField("_startAction", (Action)(() => { }));
+            SetField("_logger", NullLogger<MoveExecutor>.Instance);
+            SetField("_startAction", start ?? (() => { }));
             typeof(TaskExecutor<MoveTask>).GetProperty("Task", BindingFlags.Instance | BindingFlags.NonPublic)!
                 .SetValue(executor, task);
             return executor;

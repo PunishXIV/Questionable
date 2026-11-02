@@ -55,6 +55,29 @@ public sealed class MovementCompletionTests
         Assert.False(MoveExecutor.ShouldRestartAfterStop(task, 959, Vector3.Zero, ref canRestart));
     }
 
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void NavmeshReloadRestartsWithoutUsingUpTheRetry(bool canRestart)
+    {
+        // vnav clears its route whenever its navmesh changes, e.g. while a zone's mesh is first built.
+        MoveTask task = new(958, new Vector3(100, 0, 0), RestartNavigation: canRestart);
+        Assert.True(MoveExecutor.ShouldRestartAfterStop(task, 958, Vector3.Zero, ref canRestart, navmeshReloaded: true));
+        Assert.True(MoveExecutor.ShouldRestartAfterStop(task, 958, Vector3.Zero, ref canRestart, navmeshReloaded: true));
+        Assert.Equal(task.RestartNavigation, canRestart);
+    }
+
+    [Theory]
+    [InlineData(958, 100)]
+    [InlineData(959, 0)]
+    public void NavmeshReloadAfterArrivalOrTransitionCompletes(uint territoryId, float x)
+    {
+        MoveTask task = new(958, new Vector3(100, 0, 0));
+        bool canRestart = true;
+        Assert.False(MoveExecutor.ShouldRestartAfterStop(task, territoryId, new Vector3(x, 0, 0), ref canRestart,
+            navmeshReloaded: true));
+    }
+
     [Fact]
     public void DistanceIncludesHeight()
     {

@@ -49,7 +49,7 @@ public sealed class NavmeshDelegationTests
         else
             fixture.Simple.InvokeFunc().Returns(true);
 
-        var failure = Assert.Throws<Failure>(() =>
+        void Act()
         {
             switch (phase)
             {
@@ -59,7 +59,18 @@ public sealed class NavmeshDelegationTests
                 case "submit": fixture.Movement.SubmitMovement([Vector3.One], true); break;
                 default: fixture.Movement.Update(); break;
             }
-        });
+        }
+
+        if (!disabled)
+        {
+            // A pending SimpleMove is waited out first; it only blocks once it outlasts the wait.
+            Assert.Null(Record.Exception(Act));
+            Assert.True(fixture.Movement.IsPathfinding);
+            fixture.AssertNoTravelCalls();
+            fixture.Now += MovementController.SimpleMoveWaitMilliseconds;
+        }
+
+        var failure = Assert.Throws<Failure>(disabled ? (Action)Act : fixture.Movement.Update);
 
         Assert.Equal(disabled ? Reason.MovementDisabled : Reason.MovementBlocked, failure.Reason);
         Assert.Null(fixture.Movement.Destination);
@@ -131,6 +142,61 @@ public sealed class NavmeshDelegationTests
 
         Assert.Null(fixture.Movement.Destination);
         fixture.AssertNoTravelCalls();
+    }
+
+    [Fact]
+    public void ShortSimpleMoveIsWaitedOutAndThePathfindThenStarts()
+    {
+        using var fixture = new Fixture();
+        fixture.Simple.InvokeFunc().Returns(true);
+        fixture.Start();
+
+        Assert.True(fixture.Movement.IsPathfinding); // Still busy, so the move executor keeps waiting.
+        fixture.Pathfind.DidNotReceive().InvokeFunc(Arg.Any<Vector3>(), Arg.Any<Vector3>(), Arg.Any<bool>(), Arg.Any<CancellationToken>());
+
+        fixture.Simple.InvokeFunc().Returns(false);
+        fixture.Now = 1_000;
+        fixture.Movement.Update();
+
+        fixture.Pathfind.Received(1).InvokeFunc(Vector3.Zero, fixture.Request.Position, true, Arg.Any<CancellationToken>());
+        Assert.Same(fixture.Request, fixture.Movement.Destination);
+        Assert.Null(fixture.Movement.LastFailure);
+        fixture.AssertNoTravelCalls();
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void RouteAfterSimpleMoveIsKeptOnlyIfItStillLeadsToTheDestination(bool ours)
+    {
+        using var fixture = new Fixture();
+        Assert.True(fixture.Movement.SubmitMovement([fixture.Request.Position], true));
+        fixture.Stop.ClearReceivedCalls();
+        fixture.Move.ClearReceivedCalls();
+
+        // vnav re-paths by itself (e.g. after its own stuck check); our update pauses meanwhile.
+        fixture.Simple.InvokeFunc().Returns(true);
+        fixture.Now = 250;
+        fixture.Movement.Update();
+        Assert.True(fixture.Movement.IsPathfinding);
+
+        fixture.Simple.InvokeFunc().Returns(false);
+        fixture.Running.InvokeFunc().Returns(true);
+        fixture.Waypoints.InvokeFunc().Returns([ours ? fixture.Request.Position : new Vector3(-500, 0, 0)]);
+        fixture.Now = 500;
+
+        if (ours)
+        {
+            fixture.AssertQuestBoundary();
+            Assert.Same(fixture.Request, fixture.Movement.Destination);
+        }
+        else
+        {
+            var failure = Assert.Throws<Failure>(fixture.Movement.Update);
+            Assert.Equal(Reason.MovementBlocked, failure.Reason);
+            Assert.Null(fixture.Movement.Destination);
+        }
+        fixture.AssertNoTravelCalls(); // Never stop or replace another plugin's route.
     }
 
     [Theory]
@@ -305,6 +371,8 @@ public sealed class NavmeshDelegationTests
         public ICallGateSubscriber<List<Vector3>, bool, object> Move { get; } = Substitute.For<ICallGateSubscriber<List<Vector3>, bool, object>>();
         public ICallGateSubscriber<Vector3, bool, float, Vector3?> Floor { get; } = Substitute.For<ICallGateSubscriber<Vector3, bool, float, Vector3?>>();
         public ICallGateSubscriber<Vector3, float, float, Vector3?> Nearest { get; } = Substitute.For<ICallGateSubscriber<Vector3, float, float, Vector3?>>();
+        public ICallGateSubscriber<bool> Running { get; } = Substitute.For<ICallGateSubscriber<bool>>();
+        public ICallGateSubscriber<List<Vector3>> Waypoints { get; } = Substitute.For<ICallGateSubscriber<List<Vector3>>>();
         public IEnumerable<ICallGateSubscriber<bool>> BooleanStatusGates => [Allowed, Simple, Pathfinding];
         public TaskCompletionSource<List<Vector3>> Pending { get; } = new();
         public MovementController.DestinationData Request { get; } = new(default, 42, new(100, 0, 0), 1f,
@@ -327,6 +395,8 @@ public sealed class NavmeshDelegationTests
             Plugin.GetIpcSubscriber<List<Vector3>, bool, object>("vnavmesh.Path.MoveTo").Returns(Move);
             Plugin.GetIpcSubscriber<Vector3, bool, float, Vector3?>("vnavmesh.Query.Mesh.PointOnFloor").Returns(Floor);
             Plugin.GetIpcSubscriber<Vector3, float, float, Vector3?>("vnavmesh.Query.Mesh.NearestPointReachable").Returns(Nearest);
+            Plugin.GetIpcSubscriber<bool>("vnavmesh.Path.IsRunning").Returns(Running);
+            Plugin.GetIpcSubscriber<List<Vector3>>("vnavmesh.Path.ListWaypoints").Returns(Waypoints);
             foreach (var gate in BooleanStatusGates)
                 gate.HasFunction.Returns(true);
             Queued.HasFunction.Returns(true);

@@ -47,6 +47,12 @@ internal sealed class MovementController
     private bool? _simpleMoveInProgress;
     private bool? _pathfindInProgress;
     private int? _queuedPathfinds;
+    private long? _simpleMoveSeenAt;
+    private bool _simpleMoveSettled;
+    private Action? _deferredStart;
+
+    // How long a pending vnavmesh SimpleMove request may hold up navigation before it counts as a blocker.
+    internal const long SimpleMoveWaitMilliseconds = 15_000;
 
     internal Func<long> PathfindingClock { get; set; } = static () => Environment.TickCount64;
 
@@ -69,7 +75,9 @@ internal sealed class MovementController
 
     public bool IsPathRunning => GetPathRunning() ?? Destination != null;
 
-    public bool IsPathfinding => _pathfindTask is { IsCompleted: false };
+    // Waiting out a pending SimpleMove counts as pathfinding, so callers don't mistake the pause for a stop.
+    public bool IsPathfinding => _pathfindTask is { IsCompleted: false } || _deferredStart != null ||
+        (_simpleMoveSeenAt != null && Destination != null);
     public DestinationData? Destination { get; set; }
     public NavigationFailureSnapshot? LastFailure { get; private set; }
     public DateTime MovementStartedAt { get; private set; } = DateTime.Now;
@@ -83,9 +91,23 @@ internal sealed class MovementController
 
     public void Update()
     {
-        if (!CanSubmitMovement(Destination != null || _pathfindTask != null || _previousDestinationData != null,
-            refreshProviderDiagnostics: false))
+        if (!CanSubmitMovement(Destination != null || _pathfindTask != null || _previousDestinationData != null ||
+            _deferredStart != null, refreshProviderDiagnostics: false))
             return;
+
+        if (_deferredStart is { } deferredStart)
+        {
+            _deferredStart = null;
+            deferredStart();
+            return;
+        }
+
+        if (_simpleMoveSettled)
+        {
+            _simpleMoveSettled = false;
+            if (CheckRouteAfterSimpleMove())
+                return;
+        }
 
         ThrowIfPathfindingFailed();
 
@@ -320,7 +342,7 @@ internal sealed class MovementController
 
     public void NavigateTo(EMovementType type, uint? dataId, Vector3 to, NavigationOptions options)
     {
-        if (!CanSubmitMovement(isNewRequest: true))
+        if (!CanSubmitMovement(isNewRequest: true, retry: () => NavigateTo(type, dataId, to, options)))
             return;
 
         bool fly = options.Fly || condition[ConditionFlag.Diving];
@@ -360,7 +382,7 @@ internal sealed class MovementController
 
     internal void StartPathfinding(Vector3 from, Vector3 to, bool fly)
     {
-        if (!CanSubmitMovement())
+        if (!CanSubmitMovement(retry: () => StartPathfinding(from, to, fly)))
             return;
 
         ResetPathfinding();
@@ -414,7 +436,7 @@ internal sealed class MovementController
 
     public void NavigateTo(EMovementType type, uint? dataId, List<Vector3> to, NavigationOptions options)
     {
-        if (!CanSubmitMovement(isNewRequest: true))
+        if (!CanSubmitMovement(isNewRequest: true, retry: () => NavigateTo(type, dataId, to, options)))
             return;
 
         if (to.Count == 0)
@@ -450,7 +472,7 @@ internal sealed class MovementController
     }
 
     private bool CanSubmitMovement(bool hasRequest = true, bool isNewRequest = false,
-        bool refreshProviderDiagnostics = true)
+        bool refreshProviderDiagnostics = true, Action? retry = null)
     {
         if (HasExternalMovementOperation)
         {
@@ -485,12 +507,77 @@ internal sealed class MovementController
         }
 
         if (!providerHasWork && _simpleMoveInProgress != true)
+        {
+            if (_simpleMoveSeenAt != null)
+            {
+                _simpleMoveSeenAt = null;
+                _simpleMoveSettled = true;
+            }
+
             return true;
+        }
+
+        // A pending SimpleMove (another plugin's request, or vnav re-pathing a stuck route by itself) usually
+        // resolves within a second and cannot be cancelled safely. Wait for it instead of failing at once.
+        if (!providerHasWork)
+        {
+            long now = PathfindingClock();
+            _simpleMoveSeenAt ??= now;
+            if (now - _simpleMoveSeenAt.Value < SimpleMoveWaitMilliseconds)
+            {
+                if (retry != null)
+                {
+                    if (isNewRequest)
+                        ClearLocalMovement();
+                    else
+                        ResetPathfinding();
+                    _deferredStart = retry;
+                    MovementStartedAt = DateTime.MaxValue;
+                }
+
+                return false;
+            }
+        }
 
         var failure = CreateFailure(PathfindingFailureReason.MovementBlocked,
             _simpleMoveInProgress == true
                 ? "Navigation blocked by pending vnavmesh SimpleMove work"
                 : "Navigation blocked by an external movement provider", isNewRequest: isNewRequest);
+        ClearLocalMovement();
+        throw failure;
+    }
+
+    /// <summary>
+    /// Once a pending SimpleMove has resolved, vnav may be following a route that is not ours.
+    /// </summary>
+    /// <returns>True if this update should not continue.</returns>
+    private bool CheckRouteAfterSimpleMove()
+    {
+        if (Destination == null || _previousDestinationData != null)
+            return false;
+
+        bool? running = GetPathRunning();
+        if (running != true)
+        {
+            // vnav dropped our route for its own request; move again unless we're already there.
+            if (_hasSubmittedRoute && _pathfindTask == null && objectTable[0]?.Position is Vector3 position &&
+                Vector3.Distance(position, Destination.Position) > Destination.StopDistance)
+            {
+                logger.LogInformation("vnavmesh dropped the route for a SimpleMove request, moving again");
+                Restart(Destination);
+                return true;
+            }
+
+            return false;
+        }
+
+        List<Vector3> waypoints = navmeshIpc.GetWaypoints();
+        if (_hasSubmittedRoute && (waypoints.Count == 0 ||
+            Vector3.Distance(waypoints[^1], Destination.Position) <= Destination.StopDistance + 5f))
+            return false;
+
+        var failure = CreateFailure(PathfindingFailureReason.MovementBlocked,
+            "Another plugin's vnavmesh SimpleMove request took over movement");
         ClearLocalMovement();
         throw failure;
     }
@@ -735,6 +822,8 @@ internal sealed class MovementController
 
     public void Stop()
     {
+        _simpleMoveSeenAt = null;
+        _simpleMoveSettled = false;
         bool providerHasWork = HasExternalMovementOperation || HasExternalMovementProviderWork() ||
             HasExternalMovementOperation || navmeshIpc.GetSimpleMoveInProgress() == true;
         ClearLocalMovement();
@@ -759,6 +848,7 @@ internal sealed class MovementController
         Destination = null;
         _previousDestinationData = null;
         _landAndRetryTimeout = null;
+        _deferredStart = null;
         ResetPathfinding();
     }
 

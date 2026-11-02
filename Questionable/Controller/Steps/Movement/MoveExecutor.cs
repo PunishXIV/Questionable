@@ -35,6 +35,11 @@ internal sealed class MoveExecutor
     private readonly IServiceProvider _serviceProvider = serviceProvider;
     private bool _canRestart;
     private Vector3 _destination;
+    private bool _navmeshReloaded;
+    private DateTime? _navmeshWaitStartedAt;
+
+    // First builds of a large zone can take a while; WaitNavmesh itself has no limit.
+    private static readonly TimeSpan NavmeshReloadTimeout = TimeSpan.FromMinutes(2);
 
     private (MountStep.MountExecutor Executor, MountStep.MountTask Task)? _mountBeforeMovement;
     private (MountStep.MountExecutor Executor, MountStep.MountTask Task)? _mountDuringMovement;
@@ -69,6 +74,11 @@ internal sealed class MoveExecutor
         if (_startAction == null)
             return ETaskResult.TaskComplete;
 
+        // vnav drops its current route whenever its navmesh changes, even for routes that don't use the mesh.
+        bool navmeshReady = _movementController.IsNavmeshReady;
+        if (!navmeshReady)
+            _navmeshReloaded = true;
+
         if (_movementController.IsPathfinding)
             return ETaskResult.StillRunning;
 
@@ -87,9 +97,25 @@ internal sealed class MoveExecutor
         if (_objectTable[0] is not { } player)
             return ETaskResult.StillRunning;
 
-        if (ShouldRestartAfterStop(Task, _clientState.TerritoryType, player.Position, ref _canRestart))
+        if (!navmeshReady && _clientState.TerritoryType == Task.TerritoryId)
         {
-            _logger.LogInformation("Looks like movement was interrupted, re-attempting to move");
+            _navmeshWaitStartedAt ??= DateTime.Now;
+            if (DateTime.Now - _navmeshWaitStartedAt < NavmeshReloadTimeout)
+                return ETaskResult.StillRunning;
+
+            throw new MovementController.PathfindingFailedException(
+                MovementController.PathfindingFailureReason.NotArrived,
+                "Movement stopped and vnavmesh did not finish loading its navmesh");
+        }
+
+        _navmeshWaitStartedAt = null;
+        bool navmeshReloaded = _navmeshReloaded;
+        _navmeshReloaded = false;
+        if (ShouldRestartAfterStop(Task, _clientState.TerritoryType, player.Position, ref _canRestart, navmeshReloaded))
+        {
+            _logger.LogInformation(navmeshReloaded
+                ? "Movement was interrupted by a navmesh reload, moving again"
+                : "Looks like movement was interrupted, re-attempting to move");
             _startAction();
             return ETaskResult.StillRunning;
         }
@@ -97,12 +123,17 @@ internal sealed class MoveExecutor
         return ETaskResult.TaskComplete;
     }
 
-    internal static bool ShouldRestartAfterStop(MoveTask task, uint territoryId, Vector3 position, ref bool canRestart)
+    internal static bool ShouldRestartAfterStop(MoveTask task, uint territoryId, Vector3 position, ref bool canRestart,
+        bool navmeshReloaded = false)
     {
         // Territory transitions can complete movement before the original endpoint is reached.
         if (territoryId != task.TerritoryId ||
             Vector3.Distance(position, task.Destination) <= (task.StopDistance ?? QuestStep.DefaultStopDistance) + 5f)
             return false;
+
+        // A navmesh reload cleared the route; that doesn't use up the one retry for a real interruption.
+        if (navmeshReloaded)
+            return true;
 
         if (!canRestart)
             throw new MovementController.PathfindingFailedException(
