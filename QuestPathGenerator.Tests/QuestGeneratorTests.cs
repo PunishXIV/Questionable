@@ -4,7 +4,7 @@ using Questionable.QuestPathGenerator;
 using Xunit;
 namespace QuestPathGenerator.Tests;
 
-public sealed class QuestGeneratorTest
+public sealed class QuestGeneratorTests
 {
     [Fact]
     public void SyntaxNodeListWithNullValues()

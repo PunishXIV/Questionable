@@ -24,7 +24,7 @@ namespace Questionable.Tests.AutoGen;
 ///         a regression alarm, not a target. Raise them when the generator genuinely improves.
 ///     </para>
 /// </summary>
-public sealed class QuestPathGenerationAccuracyTest(GameDataFixture fixture, ITestOutputHelper output)
+public sealed class QuestPathGenerationAccuracyTests(GameDataFixture fixture, ITestOutputHelper output)
     : IClassFixture<GameDataFixture>
 {
     /// <summary>Measured 97.2% over all 4095 hand-authored quests at the time of writing.</summary>

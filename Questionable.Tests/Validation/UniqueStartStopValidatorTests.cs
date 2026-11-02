@@ -7,7 +7,7 @@ using static Questionable.Tests.TestData.QuestTestData;
 
 namespace Questionable.Tests.Validation;
 
-public sealed class UniqueStartStopValidatorTest
+public sealed class UniqueStartStopValidatorTests
 {
     private readonly UniqueStartStopValidator _validator = new();
 

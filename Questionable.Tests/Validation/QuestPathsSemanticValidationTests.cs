@@ -26,7 +26,7 @@ namespace Questionable.Tests.Validation;
 /// should stay in the plugin-side test path for now.
 /// </para>
 /// </summary>
-public sealed class QuestPathsSemanticValidationTest
+public sealed class QuestPathsSemanticValidationTests
 {
     private static IReadOnlyList<IQuestValidator> BuildValidators() =>
     [

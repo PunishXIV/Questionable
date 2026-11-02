@@ -7,7 +7,7 @@ using static Questionable.Tests.TestData.QuestTestData;
 
 namespace Questionable.Tests.Validation;
 
-public sealed class NextQuestValidatorTest
+public sealed class NextQuestValidatorTests
 {
     private readonly NextQuestValidator _validator = new();
 

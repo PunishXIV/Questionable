@@ -20,7 +20,7 @@ namespace Questionable.Tests.AutoGen;
 ///         Requires an installed game — see <see cref="GameDataFixture"/>; without one the tests return early.
 ///     </para>
 /// </summary>
-public sealed class QuestPathGenerationTest(GameDataFixture fixture, ITestOutputHelper output)
+public sealed class QuestPathGenerationTests(GameDataFixture fixture, ITestOutputHelper output)
     : IClassFixture<GameDataFixture>
 {
     private static readonly JsonSerializerOptions ReloadOptions = new() { PropertyNameCaseInsensitive = false };

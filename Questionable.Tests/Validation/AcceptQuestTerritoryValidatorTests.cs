@@ -13,7 +13,7 @@ using static Questionable.Tests.TestData.QuestTestData;
 
 namespace Questionable.Tests.Validation;
 
-public sealed class AcceptQuestTerritoryValidatorTest
+public sealed class AcceptQuestTerritoryValidatorTests
 {
     // Two known aetheryte territories the validator should consider "valid"
     private const uint LimsaTerritory = 129;
@@ -36,7 +36,7 @@ public sealed class AcceptQuestTerritoryValidatorTest
 
     private readonly AcceptQuestTerritoryValidator _validator;
 
-    public AcceptQuestTerritoryValidatorTest()
+    public AcceptQuestTerritoryValidatorTests()
     {
         var provider = Substitute.For<IAetheryteTerritoryProvider>();
         provider.AetheryteTerritoryIds.Returns(new[] { LimsaTerritory, GridaniaTerritory });

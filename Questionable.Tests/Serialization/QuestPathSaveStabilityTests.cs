@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Questionable.Tests.Serialization;
 
-public sealed class QuestPathSaveStabilityTest
+public sealed class QuestPathSaveStabilityTests
 {
     [Theory]
     [ClassData(typeof(EmbeddedQuestLoader))]
