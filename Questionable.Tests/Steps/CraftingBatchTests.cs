@@ -164,34 +164,62 @@ public sealed class CraftingBatchTests
         Assert.Null(CraftingBatch.Resolve(task, Carpenter538Outputs));
     }
 
-    [Fact]
-    public void DuplicateInventoryThresholds_MergeByMaximumWithoutMutatingSteps()
+    [Theory]
+    [InlineData(EItemQuality.Any)]
+    [InlineData(EItemQuality.NQ)]
+    [InlineData(EItemQuality.HQ)]
+    public void DuplicateInventoryThresholds_MergeByMaximumWithoutMutatingSteps(EItemQuality quality)
     {
-        var first = CraftStep(2219, 5);
-        var second = CraftStep(2219, 9);
+        var first = CraftStep(2219, 5, quality);
+        var second = CraftStep(2219, 9, quality);
         var task = DuplicateTask(first, second);
 
         var outputs = CraftingBatch.Resolve(task, new HashSet<uint> { 2219 });
 
         Assert.NotNull(outputs);
-        Assert.Equal(9, Assert.Single(outputs).ItemCount);
+        Assert.Equal(new CraftingItem(2219, 9, quality), Assert.Single(outputs));
         Assert.Equal(5, first.ItemCount);
         Assert.Equal(9, second.ItemCount);
     }
 
     [Theory]
-    [InlineData(EItemQuality.Any, EItemQuality.NQ, EItemQuality.NQ)]
-    [InlineData(EItemQuality.NQ, EItemQuality.Any, EItemQuality.NQ)]
-    [InlineData(EItemQuality.Any, EItemQuality.HQ, EItemQuality.HQ)]
-    [InlineData(EItemQuality.HQ, EItemQuality.Any, EItemQuality.HQ)]
-    public void DuplicateQualities_KeepTheStrictRequirement(EItemQuality first, EItemQuality second, EItemQuality expected)
+    [InlineData(EItemQuality.NQ, 5, false)]
+    [InlineData(EItemQuality.NQ, 5, true)]
+    [InlineData(EItemQuality.HQ, 5, false)]
+    [InlineData(EItemQuality.HQ, 5, true)]
+    [InlineData(EItemQuality.NQ, 9, false)]
+    [InlineData(EItemQuality.NQ, 9, true)]
+    [InlineData(EItemQuality.HQ, 9, false)]
+    [InlineData(EItemQuality.HQ, 9, true)]
+    public void DuplicateQualities_KeepTheStrictRequirementWhenItCoversAnyCount(
+        EItemQuality quality, int anyCount, bool strictFirst)
     {
-        var task = DuplicateTask(CraftStep(2219, 5, first), CraftStep(2219, 9, second));
+        var strict = CraftStep(2219, 9, quality);
+        var any = CraftStep(2219, anyCount);
+        var task = strictFirst ? DuplicateTask(strict, any) : DuplicateTask(any, strict);
 
         var outputs = CraftingBatch.Resolve(task, new HashSet<uint> { 2219 });
 
         Assert.NotNull(outputs);
-        Assert.Equal(new CraftingItem(2219, 9, expected), Assert.Single(outputs));
+        Assert.Equal(new CraftingItem(2219, 9, quality), Assert.Single(outputs));
+    }
+
+    [Theory]
+    [InlineData(EItemQuality.NQ, false)]
+    [InlineData(EItemQuality.NQ, true)]
+    [InlineData(EItemQuality.HQ, false)]
+    [InlineData(EItemQuality.HQ, true)]
+    public void DuplicateQualities_RejectListWhenAnyCountExceedsStrictCount(EItemQuality quality, bool strictFirst)
+    {
+        var strict = CraftStep(2219, 5, quality);
+        var any = CraftStep(2219, 9);
+        var task = strictFirst ? DuplicateTask(strict, any) : DuplicateTask(any, strict);
+
+        Assert.Null(CraftingBatch.Resolve(task, new HashSet<uint> { 2219 }));
+        Assert.Equal(5, strict.ItemCount);
+        Assert.Equal(quality, strict.ItemQuality);
+        Assert.Equal(9, any.ItemCount);
+        Assert.Equal(EItemQuality.Any, any.ItemQuality);
     }
 
     [Theory]

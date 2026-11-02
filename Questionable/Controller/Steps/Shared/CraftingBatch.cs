@@ -73,6 +73,12 @@ internal static class CraftingBatch
         if (previous.Quality != item.Quality && previous.Quality != EItemQuality.Any && item.Quality != EItemQuality.Any)
             return false;
 
+        // A larger Any threshold must not increase how many NQ/HQ items are required.
+        if (previous.Quality != item.Quality &&
+            ((previous.Quality == EItemQuality.Any && previous.ItemCount > item.ItemCount) ||
+             (item.Quality == EItemQuality.Any && item.ItemCount > previous.ItemCount)))
+            return false;
+
         // These are inventory thresholds, not quantities to craft again for each path step.
         outputs[item.ItemId] = new CraftingItem(item.ItemId, Math.Max(previous.ItemCount, item.ItemCount),
             previous.Quality == EItemQuality.Any ? item.Quality : previous.Quality);
