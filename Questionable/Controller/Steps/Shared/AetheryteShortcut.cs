@@ -23,7 +23,7 @@ internal static class AetheryteShortcut
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (Purchase.IsHandledByKnightshopper(step, gilShopData) || Fish.IsHandledByFeesh(step, feeshIpc))
+            if (Purchase.IsHandledByKnightshopper(step, gilShopData) || ProviderTravel.IsHandled(sequence, step, feeshIpc))
                 yield break;
 
             if (step.AetheryteShortcut == null)

@@ -17,7 +17,7 @@ internal static class MoveTo
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (Purchase.IsHandledByKnightshopper(step, gilShopData) || Fish.IsHandledByFeesh(step, feeshIpc))
+            if (Purchase.IsHandledByKnightshopper(step, gilShopData) || ProviderTravel.IsHandled(sequence, step, feeshIpc))
                 return [];
 
             if (step.Position != null)

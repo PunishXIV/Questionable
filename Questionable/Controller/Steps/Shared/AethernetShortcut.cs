@@ -18,7 +18,7 @@ internal static class AethernetShortcut
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.AethernetShortcut == null || Purchase.IsHandledByKnightshopper(step, gilShopData) ||
-                Fish.IsHandledByFeesh(step, feeshIpc))
+                ProviderTravel.IsHandled(sequence, step, feeshIpc))
                 yield break;
 
             yield return new WaitNavmesh.Task();
