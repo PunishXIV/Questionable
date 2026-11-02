@@ -52,7 +52,7 @@ internal sealed class EventInfoComponent
         new(
             $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(200)} {DateTime.UtcNow.Year}",
             [new QuestId(434), new QuestId(5466)],
-            EndsAtUtc: AtDailyReset(2027, 1, 29),
+            EndsAtUtc: AtDailyReset(2027, 2, 23),
             StartsAtUtc: AtDailyReset(2026, 10, 27),
             staysActive: true
         ),
