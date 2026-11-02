@@ -63,7 +63,6 @@ internal static class QstWidgets
 
         string visibleTitle = windowTitle.Split("###")[0];
         float titleStart = ImGui.GetFontSize() + ImGui.GetStyle().FramePadding.X;
-        //+ ImGui.GetStyle().ItemInnerSpacing.X;
         Vector2 topLeft = new(
             windowPos.X + titleStart + (alignCenter ? ImGui.CalcTextSize(visibleTitle).X - 3f * scale : 0f),
             windowPos.Y + (frameHeight - height) / 2f);

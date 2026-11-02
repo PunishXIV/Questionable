@@ -131,6 +131,16 @@ public sealed class WrathComboModuleTests : IDisposable
     }
 
     [Fact]
+    public void ReusedLease_DuplicateResultsStillStart()
+    {
+        _auto.InvokeFunc(_lease, true).Returns(SetResult.Duplicate);
+        _job.InvokeFunc(_lease).Returns(SetResult.Duplicate);
+        _configure.InvokeFunc(_lease, Arg.Any<object>(), Arg.Any<object>()).Returns(SetResult.Duplicate);
+        Assert.True(_module.Start(CombatTestData.Create()));
+        _release.DidNotReceiveWithAnyArgs().InvokeAction(default);
+    }
+
+    [Fact]
     public void MissingProvider_IsCheckedEvenWithoutTarget()
     {
         Assert.True(_module.Start(CombatTestData.Create()));

@@ -41,7 +41,7 @@ public sealed class SoloDutyTests
         Assert.True(_context.Settings[("ZoneModuleConfig", "EnableQuestBattles")]);
         Assert.False(_context.Settings[("AutorotationConfig", "ClearPresetOnCombatEnd")]);
         Assert.False(_context.Settings[("AutorotationConfig", "ClearPresetOnDeath")]);
-        Assert.False(_context.Settings[("ActionTweaksConfig", "PreventMovingWhileCasting")]);
+        Assert.True(_context.Settings[("ActionTweaksConfig", "PreventMovingWhileCasting")]);
         Assert.False(_context.Settings[("AIConfig", "Enabled")]);
 
         _context.Ipc.PollSoloDuty();

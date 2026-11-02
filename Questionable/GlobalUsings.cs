@@ -31,7 +31,6 @@ global using Questionable.Domain;
 global using Questionable.Extensions;
 global using Questionable.External;
 global using Questionable.Functions;
-global using Questionable.GameStructs;
 global using Questionable.Gear;
 global using Questionable.Model;
 global using Questionable.PathData;

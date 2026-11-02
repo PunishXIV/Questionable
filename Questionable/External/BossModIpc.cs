@@ -125,23 +125,6 @@ internal sealed class BossModIpc
         SetPresetForSoloDuty(contentFinderConditionId == 1045 ? EPreset.NormalMovement : EPreset.QuestBattle);
     }
 
-    public void UnsetBasicSettings()
-    {
-        if (!configuration.Advanced.BMRestoreMovement)
-            return;
-
-        OwnedPreset owned = Acquire(soloDuty: false);
-        try
-        {
-            OverrideSetting(owned, "ActionTweaksConfig", "PreventMovingWhileCasting", false);
-        }
-        catch (Exception e)
-        {
-            FailAcquisition(owned, e);
-            throw new TaskException(owned.Reason!, e);
-        }
-    }
-
     private void ActivatePreset(EPreset preset, bool soloDuty)
     {
         OwnedPreset owned = Acquire(soloDuty);
@@ -157,8 +140,6 @@ internal sealed class BossModIpc
             OverrideSetting(owned, "AutorotationConfig", "ClearPresetOnCombatEnd", false);
             if (soloDuty)
             {
-                if (configuration.Advanced.BMRestoreMovement)
-                    OverrideSetting(owned, "ActionTweaksConfig", "PreventMovingWhileCasting", false);
                 OverrideSetting(owned, "AutorotationConfig", "ClearPresetOnDeath", false);
                 OverrideSetting(owned, "ZoneModuleConfig", "EnableQuestBattles", true);
             }

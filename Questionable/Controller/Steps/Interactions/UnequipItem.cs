@@ -62,7 +62,7 @@ internal static class UnequipItem
             if (inventoryManager == null)
                 return ETaskResult.StillRunning;
 
-            if (!IsItemEquipped(inventoryManager))
+            if (!EquipmentSlots.IsEquipped(inventoryManager, _targetSlots, Task.ItemId))
                 return ETaskResult.TaskComplete;
 
             Unequip();
@@ -72,8 +72,7 @@ internal static class UnequipItem
 
         public bool OnErrorToast(SeString message)
         {
-            string? insufficientArmoryChestSpace = DataManagerAdapter.GetString<LogMessage>(dataManager, 709, x => x.Text);
-            if (GameFunctions.GameStringEquals(message.TextValue, insufficientArmoryChestSpace))
+            if (EquipmentSlots.IsArmoryFullToast(dataManager, message))
                 _attempts = MaxAttempts;
 
             return false;
@@ -85,7 +84,7 @@ internal static class UnequipItem
         {
             _item = dataManager.GetExcelSheet<Item>().GetRowOrDefault(Task.ItemId) ??
                     throw new ArgumentOutOfRangeException(nameof(Task.ItemId));
-            _targetSlots = GetEquipSlot(_item) ?? throw new InvalidOperationException("Not a piece of equipment");
+            _targetSlots = EquipmentSlots.For(_item.Value) ?? throw new InvalidOperationException("Not a piece of equipment");
 
             if (GetArmoryInventoryType(_item.Value) == null)
                 throw new InvalidOperationException("Item has no armory destination");
@@ -93,18 +92,6 @@ internal static class UnequipItem
             Unequip();
             _continueAt = DateTime.Now.AddSeconds(1);
             return true;
-        }
-
-        private unsafe bool IsItemEquipped(InventoryManager* inventoryManager)
-        {
-            foreach (ushort slot in _targetSlots)
-            {
-                InventoryItem* itemSlot = inventoryManager->GetInventorySlot(InventoryType.EquippedItems, slot);
-                if (itemSlot != null && itemSlot->ItemId == Task.ItemId)
-                    return true;
-            }
-
-            return false;
         }
 
         private unsafe void Unequip()
@@ -117,7 +104,7 @@ internal static class UnequipItem
             if (inventoryManager == null)
                 return;
 
-            if (!IsItemEquipped(inventoryManager))
+            if (!EquipmentSlots.IsEquipped(inventoryManager, _targetSlots, Task.ItemId))
             {
                 logger.LogInformation("Already unequipped {Item}, skipping step", _item?.Name.ToString());
                 return;
@@ -134,7 +121,7 @@ internal static class UnequipItem
                 if (itemSlot == null || itemSlot->ItemId != Task.ItemId)
                     continue;
 
-                if (!TryFindFirstEmptySlot(armoryContainer, out ushort targetSlot))
+                if (!EquipmentSlots.TryFindFirstEmptySlot(armoryContainer, out ushort targetSlot))
                 {
                     logger.LogWarning("Armory container {ArmoryType} is full, cannot unequip item {ItemId}",
                         armoryType, Task.ItemId);
@@ -152,22 +139,6 @@ internal static class UnequipItem
             }
         }
 
-        internal static unsafe bool TryFindFirstEmptySlot(InventoryContainer* container, out ushort slot)
-        {
-            for (ushort i = 0; i < container->Size; i++)
-            {
-                InventoryItem* itemSlot = container->GetInventorySlot(i);
-                if (itemSlot == null || itemSlot->ItemId == 0)
-                {
-                    slot = i;
-                    return true;
-                }
-            }
-
-            slot = 0;
-            return false;
-        }
-
         private static InventoryType? GetArmoryInventoryType(Item item) =>
             item.EquipSlotCategory.RowId switch
             {
@@ -177,19 +148,5 @@ internal static class UnequipItem
                 17 => InventoryType.ArmorySoulCrystal,
                 _ => null
             };
-
-        private static List<ushort>? GetEquipSlot(Item? item)
-        {
-            if (item == null)
-                return [];
-            return item.Value.EquipSlotCategory.RowId switch
-            {
-                >= 1 and <= 11 => [(ushort)(item.Value.EquipSlotCategory.RowId - 1)],
-                12 => [11, 12], // rings
-                13 => [0],
-                17 => [13], // soul crystal
-                var _ => null
-            };
-        }
     }
 }

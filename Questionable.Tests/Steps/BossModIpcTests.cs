@@ -67,7 +67,6 @@ public sealed class BossModIpcTests
         _context.Settings[("ZoneModuleConfig", "EnableQuestBattles")] = true;
         _context.Settings[("AutorotationConfig", "ClearPresetOnCombatEnd")] = false;
         _context.Settings[("AutorotationConfig", "ClearPresetOnDeath")] = false;
-        _context.Settings[("ActionTweaksConfig", "PreventMovingWhileCasting")] = false;
         _context.Settings[("AIConfig", "Enabled")] = false;
         Ipc.SetPresetForSoloDuty(BossModIpc.EPreset.QuestBattle);
         Ipc.DisableSoloDutyPreset();
@@ -75,9 +74,8 @@ public sealed class BossModIpcTests
     }
 
     [Fact]
-    public void MovementSettingDisabledInQuestionable_IsNotTouched()
+    public void MovementSetting_IsNeverTouched()
     {
-        _context.Configuration.Advanced.BMRestoreMovement = false;
         Ipc.SetPresetForSoloDuty(BossModIpc.EPreset.QuestBattle);
         Ipc.DisableSoloDutyPreset();
         Assert.DoesNotContain(_context.Writes, x => x.Field == "PreventMovingWhileCasting");
@@ -93,11 +91,10 @@ public sealed class BossModIpcTests
         _context.Settings[("ZoneModuleConfig", "EnableQuestBattles")] = false;
         _context.Settings[("AutorotationConfig", "ClearPresetOnCombatEnd")] = true;
         _context.Settings[("AutorotationConfig", "ClearPresetOnDeath")] = true;
-        _context.Settings[("ActionTweaksConfig", "PreventMovingWhileCasting")] = true;
         _context.Settings[("AIConfig", "Enabled")] = true;
         Ipc.SetPresetForSoloDuty(BossModIpc.EPreset.Overworld);
         Ipc.DisableSoloDutyPreset();
-        Assert.Equal(clearPresetOnDeath ? 5 : 4, _context.Writes.Count);
+        Assert.Equal(clearPresetOnDeath ? 4 : 3, _context.Writes.Count);
         AssertOriginalSettings();
     }
 
@@ -241,7 +238,7 @@ public sealed class BossModIpcTests
         _context.SettingError = (_, field) => field == "ClearPresetOnCombatEnd" ? "Rejected" : null;
         Assert.False(Ipc.StopOwnedPreset());
         Assert.False(_context.Settings[("ZoneModuleConfig", "EnableQuestBattles")]);
-        Assert.True(_context.Settings[("ActionTweaksConfig", "PreventMovingWhileCasting")]);
+        Assert.True(_context.Settings[("AIConfig", "Enabled")]);
         Assert.Equal("User preset", _context.ActivePreset);
         _context.SettingError = null;
         Assert.True(Ipc.StopOwnedPreset());
@@ -363,32 +360,6 @@ public sealed class BossModIpcTests
     }
 
     [Fact]
-    public void BasicMovementSettings_DoNotClaimSoloDutyOrCreateAnActiveBarrier()
-    {
-        Ipc.UnsetBasicSettings();
-        Assert.False(Ipc.HasOwnedSoloDuty);
-        Assert.False(Ipc.HasPendingCleanup);
-        Assert.Null(Ipc.CleanupReason);
-        _context.ActivePreset = "Other manual preset";
-        Ipc.PollSoloDuty();
-        Ipc.DisableSoloDutyPreset();
-        Assert.False(_context.Settings[("ActionTweaksConfig", "PreventMovingWhileCasting")]);
-        Assert.True(Ipc.StopOwnedPreset());
-        Assert.True(_context.Settings[("ActionTweaksConfig", "PreventMovingWhileCasting")]);
-        Assert.Equal("Other manual preset", _context.ActivePreset);
-    }
-
-    [Fact]
-    public void MovementSettings_DoNotSnapshotPresetBeforePresetAcquisition()
-    {
-        Ipc.UnsetBasicSettings();
-        _context.ActivePreset = "Changed before combat";
-        Ipc.SetActivePreset(BossModIpc.EPreset.Overworld);
-        Assert.True(Ipc.StopOwnedPreset());
-        Assert.Equal("Changed before combat", _context.ActivePreset);
-    }
-
-    [Fact]
     public void ConfirmationUi_TreatsGenericProviderExceptionsAsUnknown()
     {
         Ipc.SetPresetForSoloDuty(BossModIpc.EPreset.QuestBattle);
@@ -497,7 +468,6 @@ public sealed class BossModIpcTests
                 AfterSettingWrite?.Invoke(args[0], args[1], value);
                 return Array.Empty<string>();
             });
-            Configuration.Advanced.BMRestoreMovement = true;
             Ipc = new BossModIpc(plugin, Configuration, null!, Substitute.For<ICommandManager>());
         }
     }

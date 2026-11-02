@@ -102,8 +102,6 @@ internal sealed class CreationUtilsComponent
                                         break;
 
                                     case 1:
-                                        //_questRegistry.TryGetQuest(questManager->NormalQuests[trackedQuest.Index].QuestId,
-                                        //    out var quest);
                                         ImGui.Text(
                                             _LF("Tracked Quest: {0} → {1}",
                                                     questManager->NormalQuests[trackedQuest.Index].QuestId,
@@ -300,7 +298,6 @@ internal sealed class CreationUtilsComponent
         }
 
         uint targetId = GameFunctions.GetBaseID(target);
-        //logger.LogDebug($"Current target: {target.Name} {targetId}");
         if (target != null)
         {
             using (ImRaii.Disabled(!questData.IsIssuerOfAnyQuest(targetId)))

@@ -1,56 +1,33 @@
-using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Ipc;
 using static Questionable.External.IPCUtils;
 
 namespace Questionable.External;
 
 [RegisterSingleton<IGatherChillIpc, GatherChillIpc>]
-internal sealed class GatherChillIpc : Ipc, IGatherChillIpc
+internal sealed class GatherChillIpc(IDalamudPluginInterface pluginInterface, ILogger<GatherChillIpc> logger,
+    GatheringOperationState operation) : Ipc, IGatherChillIpc
 {
-    private readonly ILogger<GatherChillIpc> _logger;
-    private readonly GatheringOperationState _operation;
-    private readonly Func<bool?> _gameIdle;
-    private readonly Func<bool> _hasLifestream;
-    private readonly ICallGateSubscriber<int> _apiVersion;
-    private readonly ICallGateSubscriber<bool> _isBusy;
-    private readonly ICallGateSubscriber<uint, bool> _canGather;
-    private readonly ICallGateSubscriber<uint, int, bool> _gatherItem;
-    private readonly ICallGateSubscriber<object> _stop;
-    private readonly ICallGateSubscriber<bool> _pathRunning;
-    private readonly ICallGateSubscriber<bool> _pathFinding;
-    private readonly ICallGateSubscriber<bool> _simplePathFinding;
-    private readonly ICallGateSubscriber<bool> _lifestreamBusy;
+    internal const string Owner = "Questionable";
 
-    public GatherChillIpc(IDalamudPluginInterface pluginInterface, ILogger<GatherChillIpc> logger,
-        GatheringOperationState operation, IClientState clientState, ICondition condition)
-        : this(pluginInterface, logger, operation, () => clientState.IsLoggedIn
-            ? !condition[ConditionFlag.Gathering] && !condition[ConditionFlag.Casting] &&
-              !condition[ConditionFlag.BetweenAreas] && !condition[ConditionFlag.BetweenAreas51]
-            : null)
-    {
-    }
+    /// <summary>First API version with <c>GatherChill.StartJob</c>.</summary>
+    private const int MinimumApiVersion = 3;
 
-    internal GatherChillIpc(IDalamudPluginInterface pluginInterface, ILogger<GatherChillIpc> logger,
-        GatheringOperationState operation, Func<bool?> gameIdle)
-    {
-        _logger = logger;
-        _operation = operation;
-        _gameIdle = gameIdle;
-        _hasLifestream = () => pluginInterface.InstalledPlugins.Any(p => p.InternalName == "Lifestream" && p.IsLoaded);
-        _apiVersion = pluginInterface.GetIpcSubscriber<int>("GatherChill.ApiVersion");
-        _isBusy = pluginInterface.GetIpcSubscriber<bool>("GatherChill.IsBusy");
-        _canGather = pluginInterface.GetIpcSubscriber<uint, bool>("GatherChill.CanGather");
-        _gatherItem = pluginInterface.GetIpcSubscriber<uint, int, bool>("GatherChill.GatherItem");
-        _stop = pluginInterface.GetIpcSubscriber<object>("GatherChill.Stop");
-        _pathRunning = pluginInterface.GetIpcSubscriber<bool>("vnavmesh.Path.IsRunning");
-        _pathFinding = pluginInterface.GetIpcSubscriber<bool>("vnavmesh.Nav.PathfindInProgress");
-        _simplePathFinding = pluginInterface.GetIpcSubscriber<bool>("vnavmesh.SimpleMove.PathfindInProgress");
-        _lifestreamBusy = pluginInterface.GetIpcSubscriber<bool>("Lifestream.IsBusy");
-    }
+    private readonly ICallGateSubscriber<int> _apiVersion = pluginInterface.GetIpcSubscriber<int>("GatherChill.ApiVersion");
+    private readonly ICallGateSubscriber<bool> _isBusy = pluginInterface.GetIpcSubscriber<bool>("GatherChill.IsBusy");
+    private readonly ICallGateSubscriber<uint, bool> _canGather = pluginInterface.GetIpcSubscriber<uint, bool>("GatherChill.CanGather");
+
+    private readonly ICallGateSubscriber<string, uint, int, (int, Guid, string)> _startJob =
+        pluginInterface.GetIpcSubscriber<string, uint, int, (int, Guid, string)>("GatherChill.StartJob");
+
+    private readonly ICallGateSubscriber<Guid, (int, int, int, string)> _getJob =
+        pluginInterface.GetIpcSubscriber<Guid, (int, int, int, string)>("GatherChill.GetJob");
+
+    private readonly ICallGateSubscriber<string, Guid, bool> _cancelJob =
+        pluginInterface.GetIpcSubscriber<string, Guid, bool>("GatherChill.CancelJob");
 
     public override string InternalName => "GatherChill";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
-    public bool IsAvailable() => Read(() => _apiVersion.InvokeFunc() >= 2) == true;
+    public bool IsAvailable() => Read(() => _apiVersion.InvokeFunc() >= MinimumApiVersion) == true;
     public override bool IsReady() => IsAvailable();
     public bool? GetBusy() => Read(_isBusy.InvokeFunc);
     public bool CanGather(uint itemId) => Read(() => _canGather.InvokeFunc(itemId)) == true;
@@ -58,7 +35,7 @@ internal sealed class GatherChillIpc : Ipc, IGatherChillIpc
     public GatherStartResult StartRequest(uint itemId, int additionalCount, out string message)
     {
         message = "";
-        if (_operation.HasOperation)
+        if (operation.HasOperation)
             return GatherStartResult.Busy;
         if (itemId == 0 || additionalCount <= 0)
             return GatherStartResult.Invalid;
@@ -66,82 +43,82 @@ internal sealed class GatherChillIpc : Ipc, IGatherChillIpc
             return GatherStartResult.NotReady;
         if (GetBusy() != false)
             return GatherStartResult.Busy;
-
-        Guid owner = _operation.BeginSubmission();
+        
+        Guid owner = operation.BeginSubmission();
         try
         {
-            _logger.LogInformation("Requesting {Count} additional {ItemId} from Gather n Chill", additionalCount, itemId);
-            if (!_gatherItem.InvokeFunc(itemId, additionalCount))
+            logger.LogInformation("Asking Gather n Chill for {Count} more of {ItemId}", additionalCount, itemId);
+            (int result, Guid jobId, message) = _startJob.InvokeFunc(Owner, itemId, additionalCount);
+            if (result == (int)GatherStartResult.Started && jobId != Guid.Empty)
             {
-                _operation.RejectSubmission(owner);
-                return GatherStartResult.Busy;
+                operation.AcceptSubmission(owner, jobId);
+                return GatherStartResult.Started;
             }
-            _operation.AcceptLegacySubmission(owner);
-            return GatherStartResult.Started;
+
+            // Gather n Chill's refusals use the same numbers as GatherStartResult.
+            if (result != (int)GatherStartResult.Started && Enum.IsDefined((GatherStartResult)result) &&
+                result >= (int)GatherStartResult.Busy)
+            {
+                operation.RejectSubmission(owner);
+                return (GatherStartResult)result;
+            }
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "Gather n Chill submission reply unavailable");
-            _operation.MarkLegacyUncertain(owner);
+            logger.LogError(e, "Unable to start a Gather n Chill job");
             message = e.Message;
-            return GatherStartResult.Uncertain;
         }
+
+        operation.MarkUncertain(owner);
+        return GatherStartResult.Uncertain;
     }
 
     public void PollOperation()
     {
-        if (!_operation.HasOperation)
+        if (operation.OperationId is not { } owner)
             return;
-        _operation.ObserveLegacyStatus(GetBusy(), ReadChildrenIdle());
+        if (operation.ProviderOperationId is { } jobId)
+        {
+            var (state, message) = GetJob(jobId);
+            operation.ObserveStatus(owner, state, message);
+        }
+        if (operation.IsAbandoned)
+            CancelOwned();
+        if (operation.RequiresReconciliation)
+            ObserveIdle();
     }
 
     public void CancelOwned()
     {
-        if (!_operation.HasOperation)
+        if (!operation.HasOperation)
             return;
-        Guid owner = _operation.OperationId!.Value;
-        // The legacy stop is global. Send it at most once while this submission remains
-        // known; provider loss or a lost start reply requires manual reconciliation instead.
-        if (!_operation.BeginLegacyStop())
+        operation.AbandonCurrent();
+        if (!operation.TryBeginCancellation(out Guid jobId))
             return;
-        bool? busy = GetBusy();
-        if (busy == false)
-            return;
-        if (busy == null)
-        {
-            _operation.MarkLegacyUncertain(owner);
-            return;
-        }
         try
         {
-            _stop.InvokeAction();
+            logger.LogInformation("Cancelling Gather n Chill job {JobId}", jobId);
+            operation.ObserveCancellation(jobId, _cancelJob.InvokeFunc(Owner, jobId));
         }
         catch (Exception e)
         {
-            _operation.MarkLegacyUncertain(owner);
-            _logger.LogWarning(e, "Unable to confirm the Gather n Chill stop request");
+            logger.LogDebug(e, "Unable to cancel Gather n Chill job {JobId}", jobId);
         }
     }
 
-    public void ObserveIdle() => PollOperation();
+    public void ObserveIdle() => operation.ObserveIdle(IsReady() ? GetBusy() : null);
 
-    private bool? ReadChildrenIdle()
+    private (ExternalOperationStatus State, string Message) GetJob(Guid jobId)
     {
         try
         {
-            bool? gameIdle = _gameIdle();
-            if (gameIdle != true)
-                return gameIdle;
-            // Read each child before combining results: busy must not mask an unavailable child.
-            bool running = _pathRunning.InvokeFunc();
-            bool finding = _pathFinding.InvokeFunc();
-            bool simpleFinding = _simplePathFinding.InvokeFunc();
-            bool lifestream = _hasLifestream() && _lifestreamBusy.InvokeFunc();
-            return !running && !finding && !simpleFinding && !lifestream;
+            (int state, int _, int _, string message) = _getJob.InvokeFunc(jobId);
+            return ((ExternalOperationStatus)state, message);
         }
-        catch (Exception)
+        catch (Exception e)
         {
-            return null;
+            logger.LogDebug(e, "Unable to read Gather n Chill job {JobId}", jobId);
+            return (ExternalOperationStatus.Unknown, e.Message);
         }
     }
 

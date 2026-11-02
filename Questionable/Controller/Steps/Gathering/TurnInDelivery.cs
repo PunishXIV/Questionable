@@ -6,9 +6,7 @@ namespace Questionable.Controller.Steps.Gathering;
 
 internal static class TurnInDelivery
 {
-    internal sealed class Factory
-    //(QuestController questController)
-    : SimpleTaskFactory
+    internal sealed class Factory : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {

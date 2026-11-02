@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using Dalamud.Hooking;
+﻿using Dalamud.Hooking;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using JetBrains.Annotations;
@@ -46,31 +45,32 @@ internal sealed unsafe class InterruptHandler : IDisposable
     public DateTime LastPlayerActionEffect { get; private set; } = DateTime.MinValue;
 
     private void HandleProcessActionEffect(uint sourceId, Character* sourceCharacter, Vector3* pos,
-        EffectHeader* effectHeader, EffectEntry* effectArray, ulong* effectTail)
+        ActionEffectHandler.Header* effectHeader, ActionEffectHandler.Effect* effectArray, ulong* effectTail)
     {
         try
         {
             // a non-zero source sequence means the client requested this action (rather than e.g. an auto-attack)
             if (sourceId == _objectTable[0]?.EntityId && effectHeader->SourceSequence != 0)
             {
-                _logger.LogDebug("Action effect for own action {ActionType} {ActionId}", effectHeader->ActionType,
-                    effectHeader->ActionID);
+                _logger.LogDebug("Action effect for own action {ActionType} {ActionId}", (ActionType)effectHeader->ActionType,
+                    effectHeader->ActionId);
                 LastPlayerActionEffect = DateTime.Now;
             }
 
             if (!_territoryData.IsDutyInstance(_clientState.TerritoryType))
             {
-                for (int i = 0; i < effectHeader->TargetCount; i++)
+                for (int i = 0; i < effectHeader->NumTargets; i++)
                 {
                     uint targetId = (uint)(effectTail[i] & uint.MaxValue);
-                    EffectEntry* effect = effectArray + 8 * i;
+                    // Eight effect slots per target.
+                    ActionEffectHandler.Effect* effect = effectArray + 8 * i;
 
                     if (targetId == _objectTable[0]?.GameObjectId &&
-                        effect->Type is EActionEffectType.Damage or EActionEffectType.BlockedDamage
+                        (EActionEffectType)effect->Type is EActionEffectType.Damage or EActionEffectType.BlockedDamage
                             or EActionEffectType.ParriedDamage)
                     {
                         _logger.LogTrace("Damage action effect on self, from {SourceId} ({EffectType})", sourceId,
-                            effect->Type);
+                            (EActionEffectType)effect->Type);
                         Interrupted?.Invoke(this, EventArgs.Empty);
                         break;
                     }
@@ -88,43 +88,7 @@ internal sealed unsafe class InterruptHandler : IDisposable
     }
 
     private delegate void ProcessActionEffect(uint sourceId, Character* sourceCharacter, Vector3* pos,
-        EffectHeader* effectHeader, EffectEntry* effectArray, ulong* effectTail);
-
-    [StructLayout(LayoutKind.Explicit)]
-    private struct EffectEntry
-    {
-        [FieldOffset(0)] public EActionEffectType Type;
-        [FieldOffset(1)] public byte Param0;
-        [FieldOffset(2)] public byte Param1;
-        [FieldOffset(3)] public byte Param2;
-        [FieldOffset(4)] public byte Mult;
-        [FieldOffset(5)] public byte Flags;
-        [FieldOffset(6)] public ushort Value;
-
-        public readonly byte AttackType => (byte)(Param1 & 0xF);
-
-        public override readonly string ToString()
-        {
-            return
-                $"Type: {Type}, p0: {Param0:D3}, p1: {Param1:D3}, p2: {Param2:D3} 0x{Param2:X2} '{Convert.ToString(Param2, 2).PadLeft(8, '0')}', mult: {Mult:D3}, flags: {Flags:D3} | {Convert.ToString(Flags, 2).PadLeft(8, '0')}, value: {Value:D6} ATTACK TYPE: {AttackType}";
-        }
-    }
-
-    [StructLayout(LayoutKind.Explicit)]
-    private struct EffectHeader
-    {
-        [FieldOffset(0)] public ulong AnimationTargetId;
-        [FieldOffset(8)] public uint ActionID;
-        [FieldOffset(12)] public uint GlobalEffectCounter;
-        [FieldOffset(16)] public float AnimationLockTime;
-        [FieldOffset(20)] public uint SomeTargetID;
-        [FieldOffset(24)] public ushort SourceSequence;
-        [FieldOffset(26)] public ushort Rotation;
-        [FieldOffset(28)] public ushort AnimationId;
-        [FieldOffset(30)] public byte Variation;
-        [FieldOffset(31)] public ActionType ActionType;
-        [FieldOffset(33)] public byte TargetCount;
-    }
+        ActionEffectHandler.Header* effectHeader, ActionEffectHandler.Effect* effectArray, ulong* effectTail);
 
     [UsedImplicitly(ImplicitUseTargetFlags.Members)]
     private enum EActionEffectType : byte

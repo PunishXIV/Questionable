@@ -13,7 +13,6 @@ namespace Questionable.Controller;
 [RegisterSingleton]
 internal sealed class ContextMenuController : IDisposable
 {
-    private readonly IChatGui _chatGui;
     private readonly IClientState _clientState;
     private readonly IContextMenu _contextMenu;
     private readonly GameFunctions _gameFunctions;
@@ -22,9 +21,7 @@ internal sealed class ContextMenuController : IDisposable
     private readonly IGatherChillIpc _gatherChillIpc;
     private readonly ILogger<ContextMenuController> _logger;
     private readonly QuestController _questController;
-    private readonly QuestData _questData;
     private readonly QuestFunctions _questFunctions;
-    private readonly QuestRegistry _questRegistry;
     private readonly Configuration _configuration;
 
     private IEnumerable<ulong> DisabledCharacterIds = [];
@@ -34,13 +31,10 @@ internal sealed class ContextMenuController : IDisposable
         QuestController questController,
         IGatherChillIpc gatherChillIpc,
         GatheringData gatheringData,
-        QuestRegistry questRegistry,
-        QuestData questData,
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
         Configuration configuration,
         IGameGuiAdapter gameGui,
-        IChatGui chatGui,
         IClientState clientState,
         ILogger<ContextMenuController> logger)
     {
@@ -48,13 +42,10 @@ internal sealed class ContextMenuController : IDisposable
         _questController = questController;
         _gatherChillIpc = gatherChillIpc;
         _gatheringData = gatheringData;
-        _questRegistry = questRegistry;
-        _questData = questData;
         _gameFunctions = gameFunctions;
         _questFunctions = questFunctions;
         _configuration = configuration;
         _gameGui = gameGui;
-        _chatGui = chatGui;
         _clientState = clientState;
         _logger = logger;
 
@@ -106,6 +97,12 @@ internal sealed class ContextMenuController : IDisposable
 
         return hoveredItem != 0;
     }
+
+    /// <summary>
+    ///     At 4/5 hearts, satisfaction is 540/1080 with 3 deliveries left, 720/1080 with 4, 900/1080 with 5; at 5 hearts it is 0/0.
+    /// </summary>
+    private static int TurnInsToNextRank(ushort current, ushort max, int maxTurnIns) =>
+        max == 0 ? maxTurnIns : maxTurnIns * (max - current) / max;
 
     private static bool TryGetHoveredCharacterId(
         IMenuOpenedArgs args,
@@ -187,7 +184,8 @@ internal sealed class ContextMenuController : IDisposable
         {
             int maxTurnIns = agentSatisfactionSupply->NpcInfo.SatisfactionRank == 1 ? 3 : 6;
             quantityToGather = Math.Min(agentSatisfactionSupply->NpcData.RemainingAllowances,
-                ((AgentSatisfactionSupply2*)agentSatisfactionSupply)->CalculateTurnInsToNextRank(maxTurnIns));
+                TurnInsToNextRank(agentSatisfactionSupply->NpcData.SatisfactionCur,
+                    agentSatisfactionSupply->NpcData.SatisfactionMax, maxTurnIns));
         }
         if (_configuration.Advanced.Debug)
             quantityToGather = 1;
@@ -214,42 +212,8 @@ internal sealed class ContextMenuController : IDisposable
             Prefix = SeIconChar.Hyadelyn,
             PrefixColor = 52,
             Name = name,
-            OnClicked = _ => StartGathering(npcId, itemId, quantityToGather, collectability, classJob),
+            OnClicked = _ => _questController.StartGathering(npcId, itemId, classJob, quantityToGather, collectability),
             IsEnabled = string.IsNullOrEmpty(lockedReasonn)
         });
-    }
-
-    private void StartGathering(uint npcId, uint itemId, int quantity, ushort collectability,
-        Job classJob)
-    {
-        SatisfactionSupplyInfo info = (SatisfactionSupplyInfo)_questData.GetAllByIssuerDataId(npcId)
-            .Single(x => x is SatisfactionSupplyInfo);
-        if (_questRegistry.TryGetQuest(info.QuestId, out Quest? quest))
-        {
-            QuestSequence sequence = quest.FindSequence(0)!;
-
-            QuestStep switchClassStep = sequence.Steps.Single(x => x.InteractionType == EInteractionType.SwitchClass);
-            switchClassStep.TargetClass = classJob switch
-            {
-                Job.MIN => EExtendedClassJob.Miner,
-                Job.BTN => EExtendedClassJob.Botanist,
-                var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, message: null)
-            };
-
-            QuestStep gatherStep = sequence.Steps.Single(x => x.InteractionType == EInteractionType.Gather);
-            gatherStep.ItemsToGather =
-            [
-                new()
-                {
-                    ItemId = itemId,
-                    ItemCount = quantity,
-                    Collectability = collectability
-                }
-            ];
-            _questController.SetGatheringQuest(quest);
-            _questController.StartGatheringQuest("SatisfactionSupply prepare gathering");
-        }
-        else
-            _chatGui.PrintError($"No associated quest ({info.QuestId}).", "Questionable");
     }
 }

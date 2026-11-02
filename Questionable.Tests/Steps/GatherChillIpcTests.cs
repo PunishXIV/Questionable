@@ -11,19 +11,20 @@ namespace Questionable.Tests.Steps;
 
 public sealed class GatherChillIpcTests
 {
+    private readonly Guid _jobId = Guid.NewGuid();
     private readonly ICallGateSubscriber<int> _version = Substitute.For<ICallGateSubscriber<int>>();
     private readonly ICallGateSubscriber<bool> _busy = Substitute.For<ICallGateSubscriber<bool>>();
     private readonly ICallGateSubscriber<uint, bool> _canGather = Substitute.For<ICallGateSubscriber<uint, bool>>();
-    private readonly ICallGateSubscriber<uint, int, bool> _gather = Substitute.For<ICallGateSubscriber<uint, int, bool>>();
-    private readonly ICallGateSubscriber<object> _stop = Substitute.For<ICallGateSubscriber<object>>();
-    private readonly ICallGateSubscriber<bool> _path = Substitute.For<ICallGateSubscriber<bool>>();
-    private readonly ICallGateSubscriber<bool> _pathfind = Substitute.For<ICallGateSubscriber<bool>>();
-    private readonly ICallGateSubscriber<bool> _simplePathfind = Substitute.For<ICallGateSubscriber<bool>>();
+    private readonly ICallGateSubscriber<string, uint, int, (int, Guid, string)> _startJob =
+        Substitute.For<ICallGateSubscriber<string, uint, int, (int, Guid, string)>>();
+    private readonly ICallGateSubscriber<Guid, (int, int, int, string)> _getJob =
+        Substitute.For<ICallGateSubscriber<Guid, (int, int, int, string)>>();
+    private readonly ICallGateSubscriber<string, Guid, bool> _cancelJob = Substitute.For<ICallGateSubscriber<string, Guid, bool>>();
     private readonly TestClock _clock = new();
     private readonly GatheringOperationState _state;
     private readonly GatherChillIpc _ipc;
-    private bool? _gameIdle = true;
     private bool _providerBusy;
+    private ExternalOperationStatus _jobState = ExternalOperationStatus.Running;
 
     public GatherChillIpcTests()
     {
@@ -31,206 +32,165 @@ public sealed class GatherChillIpcTests
         plugin.GetIpcSubscriber<int>("GatherChill.ApiVersion").Returns(_version);
         plugin.GetIpcSubscriber<bool>("GatherChill.IsBusy").Returns(_busy);
         plugin.GetIpcSubscriber<uint, bool>("GatherChill.CanGather").Returns(_canGather);
-        plugin.GetIpcSubscriber<uint, int, bool>("GatherChill.GatherItem").Returns(_gather);
-        plugin.GetIpcSubscriber<object>("GatherChill.Stop").Returns(_stop);
-        plugin.GetIpcSubscriber<bool>("vnavmesh.Path.IsRunning").Returns(_path);
-        plugin.GetIpcSubscriber<bool>("vnavmesh.Nav.PathfindInProgress").Returns(_pathfind);
-        plugin.GetIpcSubscriber<bool>("vnavmesh.SimpleMove.PathfindInProgress").Returns(_simplePathfind);
-        _version.InvokeFunc().Returns(2);
+        plugin.GetIpcSubscriber<string, uint, int, (int, Guid, string)>("GatherChill.StartJob").Returns(_startJob);
+        plugin.GetIpcSubscriber<Guid, (int, int, int, string)>("GatherChill.GetJob").Returns(_getJob);
+        plugin.GetIpcSubscriber<string, Guid, bool>("GatherChill.CancelJob").Returns(_cancelJob);
+        _version.InvokeFunc().Returns(3);
         _busy.InvokeFunc().Returns(_ => _providerBusy);
-        _gather.InvokeFunc(42, 3).Returns(_ =>
+        _startJob.InvokeFunc(GatherChillIpc.Owner, 42, 3).Returns(_ =>
         {
             _providerBusy = true;
-            return true;
+            return (0, _jobId, "Gathering 3x 42");
         });
+        _getJob.InvokeFunc(_jobId).Returns(_ => ((int)_jobState, 1, 3, _jobState.ToString()));
+        _cancelJob.InvokeFunc(GatherChillIpc.Owner, _jobId).Returns(true);
         _state = new GatheringOperationState(_clock);
-        _ipc = new GatherChillIpc(plugin, NullLogger<GatherChillIpc>.Instance, _state, () => _gameIdle);
+        _ipc = new GatherChillIpc(plugin, NullLogger<GatherChillIpc>.Instance, _state);
     }
 
     [Fact]
-    public void ExistingApi2_SubmitsOneItemAndAdditionalQuantity()
+    public void StartJob_OwnsTheReturnedJob()
     {
         Start();
-        _gather.Received(1).InvokeFunc(42, 3);
-        Assert.True(_state.HasOperation);
-        Assert.Null(_state.ProviderOperationId); // the legacy API supplies no remote identity
+        _startJob.Received(1).InvokeFunc(GatherChillIpc.Owner, 42, 3);
+        Assert.Equal(_jobId, _state.ProviderOperationId);
         Assert.Equal(ExternalOperationStatus.Running, _state.Status);
         Assert.Equal(GatherStartResult.Busy, _ipc.StartRequest(42, 3, out _));
     }
 
     [Fact]
-    public void BusyManualWork_IsNeverStartedOrStopped()
+    public void OlderApi_IsNotReadyAndNeverStarts()
     {
-        _busy.InvokeFunc().Returns(true);
-        Assert.Equal(GatherStartResult.Busy, _ipc.StartRequest(42, 3, out _));
-        _ipc.CancelOwned();
+        _version.InvokeFunc().Returns(2);
+        Assert.False(_ipc.IsAvailable());
+        Assert.Equal(GatherStartResult.NotReady, _ipc.StartRequest(42, 3, out _));
+        _startJob.DidNotReceiveWithAnyArgs().InvokeFunc(default!, default, default);
         Assert.False(_state.HasOperation);
-        _gather.DidNotReceiveWithAnyArgs().InvokeFunc(default, default);
-        _stop.DidNotReceive().InvokeAction();
     }
 
     [Fact]
-    public void RejectedStart_DoesNotAcquireOrCancelWork()
+    public void BusyManualWork_IsNeverStartedOrCancelled()
     {
-        _gather.Configure().InvokeFunc(42, 3).Returns(false);
+        _providerBusy = true;
         Assert.Equal(GatherStartResult.Busy, _ipc.StartRequest(42, 3, out _));
         _ipc.CancelOwned();
         Assert.False(_state.HasOperation);
-        _stop.DidNotReceive().InvokeAction();
+        _startJob.DidNotReceiveWithAnyArgs().InvokeFunc(default!, default, default);
+        _cancelJob.DidNotReceiveWithAnyArgs().InvokeFunc(default!, default);
+    }
+
+    [Theory]
+    [InlineData(1, (int)GatherStartResult.Busy)]
+    [InlineData(2, (int)GatherStartResult.Unsupported)]
+    [InlineData(3, (int)GatherStartResult.Invalid)]
+    [InlineData(4, (int)GatherStartResult.NotReady)]
+    public void RefusedStart_DoesNotAcquireWork(int result, int expected)
+    {
+        _startJob.Configure().InvokeFunc(GatherChillIpc.Owner, 42, 3).Returns((result, Guid.Empty, "refused"));
+        Assert.Equal((GatherStartResult)expected, _ipc.StartRequest(42, 3, out string message));
+        Assert.Equal("refused", message);
+        Assert.False(_state.HasOperation);
     }
 
     [Fact]
-    public void AmbiguousStart_DoesNotBlindlySendGlobalStopOrRetry()
+    public void LostStartReply_NeedsConfirmationAndIsNeverCancelledBlindly()
     {
-        _gather.Configure().InvokeFunc(42, 3).Returns(_ => throw new InvalidOperationException("reply lost"));
+        _startJob.Configure().InvokeFunc(GatherChillIpc.Owner, 42, 3).Returns(_ => throw new InvalidOperationException("reply lost"));
         Assert.Equal(GatherStartResult.Uncertain, _ipc.StartRequest(42, 3, out _));
         _ipc.CancelOwned();
         Assert.True(_state.RequiresReconciliation);
-        Assert.True(_state.HasOperation);
-        Assert.Equal(GatherStartResult.Busy, _ipc.StartRequest(42, 3, out _));
-        _gather.Received(1).InvokeFunc(42, 3);
-        _stop.DidNotReceive().InvokeAction();
+        _cancelJob.DidNotReceiveWithAnyArgs().InvokeFunc(default!, default);
+        _providerBusy = false;
         ObserveIdle();
-        Assert.True(_state.HasOperation);
         Assert.True(_state.TryConfirmIdle());
     }
 
     [Fact]
-    public void NormalCompletion_RequiresFreshStableIdleAndExecutorVerification()
+    public void StartedWithoutJobId_IsUncertain()
     {
-        Start();
-        _busy.InvokeFunc().Returns(false);
-        _ipc.PollOperation();
-        Assert.False(_state.IsTerminal);
-        ObserveIdle();
-        Assert.Equal(ExternalOperationStatus.Succeeded, _state.Status);
-        Assert.True(_state.HasOperation);
-        Assert.True(_state.TryReleaseTerminal(_state.OperationId));
-    }
-
-    [Theory]
-    [InlineData(0)]
-    [InlineData(1)]
-    [InlineData(2)]
-    [InlineData(3)]
-    public void ProviderIdle_DoesNotReleaseWhileChildrenOrGatheringStillActive(int activeChild)
-    {
-        Start();
-        _busy.InvokeFunc().Returns(false);
-        if (activeChild == 0) _path.InvokeFunc().Returns(true);
-        if (activeChild == 1) _pathfind.InvokeFunc().Returns(true);
-        if (activeChild == 2) _simplePathfind.InvokeFunc().Returns(true);
-        if (activeChild == 3) _gameIdle = false;
-        ObserveIdle();
-        Assert.True(_state.HasOperation);
-        Assert.False(_state.IsTerminal);
-        Assert.False(_state.CanConfirmIdle);
+        _startJob.Configure().InvokeFunc(GatherChillIpc.Owner, 42, 3).Returns((0, Guid.Empty, "started"));
+        Assert.Equal(GatherStartResult.Uncertain, _ipc.StartRequest(42, 3, out _));
+        Assert.True(_state.RequiresReconciliation);
     }
 
     [Fact]
-    public void KnownCancellation_IsSentOnceAndWaitsForActualIdle()
+    public void Stopping_WaitsForTheJobsOwnOutcome()
+    {
+        Start();
+        _jobState = ExternalOperationStatus.CancellationRequested;
+        _ipc.PollOperation();
+        Assert.False(_state.IsTerminal);
+
+        _jobState = ExternalOperationStatus.Succeeded;
+        _ipc.PollOperation();
+        Assert.True(_state.IsTerminal);
+        Assert.Equal(ExternalOperationStatus.Succeeded, _state.Status);
+        Assert.Equal("Succeeded", _state.Message);
+    }
+
+    [Fact]
+    public void CancelOwned_CancelsOnlyOurJobOnceAndWaitsForItToSettle()
     {
         Start();
         _ipc.CancelOwned();
         _ipc.CancelOwned();
-        _stop.Received(1).InvokeAction();
+        _cancelJob.Received(1).InvokeFunc(GatherChillIpc.Owner, _jobId);
         Assert.True(_state.HasOperation);
-        Assert.True(_state.IsAbandoned);
-        _busy.InvokeFunc().Returns(false);
-        ObserveIdle();
+
+        _jobState = ExternalOperationStatus.Cancelled;
+        _ipc.PollOperation();
         Assert.False(_state.HasOperation);
     }
 
     [Fact]
-    public void CancellationTimeout_RetainsGuardAndDoesNotRepeatGlobalStop()
+    public void RefusedCancel_IsRetriedAfterTheThrottle()
     {
         Start();
+        _cancelJob.Configure().InvokeFunc(GatherChillIpc.Owner, _jobId).Returns(false);
         _ipc.CancelOwned();
+        _clock.Advance(TimeSpan.FromSeconds(3));
         _ipc.PollOperation();
-        _clock.Advance(TimeSpan.FromSeconds(15));
+        _cancelJob.Received(2).InvokeFunc(GatherChillIpc.Owner, _jobId);
+    }
+
+    [Fact]
+    public void ForgottenJob_NeedsConfirmationAfterStableIdle()
+    {
+        Start();
+        _jobState = ExternalOperationStatus.Unknown;
+        _ipc.PollOperation();
+        _clock.Advance(TimeSpan.FromSeconds(11));
         _ipc.PollOperation();
         Assert.True(_state.RequiresReconciliation);
-        Assert.True(_state.HasOperation);
-        _ipc.CancelOwned();
-        _stop.Received(1).InvokeAction();
-        _busy.InvokeFunc().Returns(false);
+        Assert.False(_state.TryConfirmIdle());
+
+        _providerBusy = false;
         ObserveIdle();
         Assert.True(_state.TryConfirmIdle());
     }
 
     [Fact]
-    public void ProviderDisappearance_PreservesGuardEvenAfterItReturnsIdle()
+    public void UnreadableJob_IsUnknownNotFinished()
     {
         Start();
-        _busy.InvokeFunc().Returns(_ => throw new InvalidOperationException("unloaded"));
+        _getJob.Configure().InvokeFunc(_jobId).Returns(_ => throw new InvalidOperationException("provider gone"));
         _ipc.PollOperation();
-        _ipc.CancelOwned();
-        _stop.DidNotReceive().InvokeAction();
-        _busy.Configure().InvokeFunc().Returns(false);
-        ObserveIdle();
-        Assert.True(_state.HasOperation);
-        Assert.True(_state.RequiresReconciliation);
-        Assert.True(_state.TryConfirmIdle());
+        Assert.Equal(ExternalOperationStatus.Unknown, _state.Status);
+        Assert.False(_state.IsTerminal);
     }
 
-    [Fact]
-    public void MissingChildStatus_IsUnknownNotIdle()
+    private void Start()
     {
-        Start();
-        _busy.InvokeFunc().Returns(false);
-        _path.InvokeFunc().Returns(_ => throw new InvalidOperationException("navmesh unloaded"));
-        ObserveIdle();
-        Assert.True(_state.RequiresReconciliation);
-        Assert.False(_state.TryConfirmIdle());
-    }
-
-    [Fact]
-    public void LoggedOutState_CannotBeAcknowledgedAsIdle()
-    {
-        Start();
-        _busy.InvokeFunc().Returns(false);
-        _gameIdle = null;
-        ObserveIdle();
-        Assert.True(_state.HasOperation);
-        Assert.False(_state.TryConfirmIdle());
-    }
-
-    [Theory]
-    [InlineData(0)]
-    [InlineData(1)]
-    [InlineData(2)]
-    public void MissingChildStatus_IsNotMaskedByAnotherBusyChild(int missingChild)
-    {
-        Start();
-        _busy.InvokeFunc().Returns(false);
-        ICallGateSubscriber<bool>[] children = [_path, _pathfind, _simplePathfind];
-        children[missingChild].InvokeFunc().Returns(_ => throw new InvalidOperationException("child unavailable"));
-        children[(missingChild + 1) % children.Length].InvokeFunc().Returns(true);
-
+        Assert.Equal(GatherStartResult.Started, _ipc.StartRequest(42, 3, out _));
         _ipc.PollOperation();
-        _ipc.CancelOwned();
-
-        Assert.True(_state.HasOperation);
-        Assert.True(_state.RequiresReconciliation);
-        Assert.False(_state.TryConfirmIdle());
-        _stop.DidNotReceive().InvokeAction();
-
-        foreach (var child in children)
-            child.Configure().InvokeFunc().Returns(false);
-        ObserveIdle();
-        Assert.True(_state.HasOperation);
-        Assert.True(_state.TryConfirmIdle());
     }
-
-    private void Start() => Assert.Equal(GatherStartResult.Started, _ipc.StartRequest(42, 3, out _));
 
     private void ObserveIdle()
     {
-        _ipc.PollOperation();
-        for (int i = 0; i < 4; ++i)
-        {
-            _clock.Advance(TimeSpan.FromMilliseconds(500));
-            _ipc.PollOperation();
-        }
+        _ipc.ObserveIdle();
+        _clock.Advance(TimeSpan.FromSeconds(1));
+        _ipc.ObserveIdle();
+        _clock.Advance(TimeSpan.FromSeconds(1));
+        _ipc.ObserveIdle();
     }
 }

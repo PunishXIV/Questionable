@@ -167,7 +167,7 @@ internal static class Interact
                     var armoryType = InventoryType.ArmorySoulCrystal;
                     ushort srcSlot = 13;
                     InventoryContainer* armoryContainer = inventoryManager->GetInventoryContainer(armoryType);
-                    if (UnequipItem.DoUnequip.TryFindFirstEmptySlot(armoryContainer, out ushort targetSlot))
+                    if (EquipmentSlots.TryFindFirstEmptySlot(armoryContainer, out ushort targetSlot))
                     {
                         logger.LogDebug($"Moving {_unequipItem} to {targetSlot} in soul crystal inv");
                         _ = inventoryManager->MoveItemSlot(InventoryType.EquippedItems, srcSlot, armoryType, targetSlot, a6: true);

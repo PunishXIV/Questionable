@@ -623,30 +623,12 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/External/AutoDutyIpc.cs -->
-    <Key>Unknown ContentFinderConditionId {0}</Key>
-    <Value lang="en">Unknown ContentFinderConditionId {0}</Value>
-    <Value lang="ja-jp">不明なコンテンツファインダー条件ID: {0}</Value>
-    <Value lang="zh-cn">未知的 ContentFinderConditionId {0}</Value>
-    <Value lang="zh-tw">未知的 ContentFinderConditionId {0}</Value>
-    <!--<Value lang="ko">알 수 없는 ContentFinderConditionId {0}</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/External/AutoDutyIpc.cs -->
     <Key>Unable to run content with AutoDuty: {0}</Key>
     <Value lang="en">Unable to run content with AutoDuty: {0}</Value>
     <Value lang="ja-jp">AutoDutyでコンテンツを実行できません: {0}</Value>
     <Value lang="zh-cn">无法使用 AutoDuty 运行内容：{0}</Value>
     <Value lang="zh-tw">無法使用 AutoDuty 執行內容：{0}</Value>
     <!--<Value lang="ko">AutoDuty로 콘텐츠를 실행할 수 없습니다: {0}</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/External/AutoDutyIpc.cs -->
-    <Key>Unable to stop AutoDuty: {0}</Key>
-    <Value lang="en">Unable to stop AutoDuty: {0}</Value>
-    <Value lang="ja-jp">AutoDutyを停止できません: {0}</Value>
-    <Value lang="zh-cn">无法停止 AutoDuty：{0}</Value>
-    <Value lang="zh-tw">無法停止 AutoDuty：{0}</Value>
-    <!--<Value lang="ko">AutoDuty를 중지할 수 없습니다: {0}</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/External/BossModIpc.cs -->
@@ -1010,15 +992,6 @@
     <!--<Value lang="ko">설정 완료</Value>-->
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>Missing required plugins</Key>
-    <Value lang="en">Missing required plugins</Value>
-    <Value lang="ja-jp">必要なプラグインが不足しています</Value>
-    <Value lang="zh-cn">缺少必需的插件</Value>
-    <Value lang="zh-tw">缺少必需的外掛</Value>
-    <!--<Value lang="ko">필수 플러그인이 누락되었습니다</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/OneTimeSetupWindow.cs -->
     <Key>Close window &amp; don't enable Questionable</Key>
     <Value lang="en">Close window &amp; don't enable Questionable</Value>
@@ -1255,15 +1228,6 @@
     <!--<Value lang="ko">기존 프리셋을 덮어쓰려면 CTRL 키를 누른 상태로 유지하십시오.</Value>-->
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>ARR Hard Mode Primals</Key>
-    <Value lang="en">ARR Hard Mode Primals</Value>
-    <Value lang="ja-jp">真蛮神討滅戦</Value>
-    <Value lang="zh-cn">重生之境真蛮神讨伐歼灭战</Value>
-    <Value lang="zh-tw">新生艾奧傑亞真蠻神殲滅戰</Value>
-    <!--<Value lang="ko">ARR 하드 모드 프라이멀</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ARealmRebornComponent.cs -->
     <Key>Crystal Tower Raids</Key>
     <Value lang="en">Crystal Tower Raids</Value>
@@ -1271,96 +1235,6 @@
     <Value lang="zh-cn">水晶塔大型任务</Value>
     <Value lang="zh-tw">水晶塔團隊任務</Value>
     <!--<Value lang="ko">크리스탈 타워 레이드</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Aether Currents: Heavensward</Key>
-    <Value lang="en">Aether Currents: Heavensward</Value>
-    <Value lang="ja-jp">風脈：蒼天篇</Value>
-    <Value lang="zh-cn">风脉泉：苍穹之禁城</Value>
-    <Value lang="zh-tw">風脈泉：蒼天伊修加爾德</Value>
-    <!--<Value lang="ko">에테르 흐름: 천공편</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Aether Currents: Stormblood</Key>
-    <Value lang="en">Aether Currents: Stormblood</Value>
-    <Value lang="ja-jp">風脈：紅蓮篇</Value>
-    <Value lang="zh-cn">风脉泉：红莲之狂潮</Value>
-    <Value lang="zh-tw">風脈泉：紅蓮解放者</Value>
-    <!--<Value lang="ko">에테르 흐름: 홍련편</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Aether Currents: Shadowbringers</Key>
-    <Value lang="en">Aether Currents: Shadowbringers</Value>
-    <Value lang="ja-jp">風脈：漆黒篇</Value>
-    <Value lang="zh-cn">风脉泉：暗影之逆焰</Value>
-    <Value lang="zh-tw">風脈泉：漆黑反叛者</Value>
-    <!--<Value lang="ko">에테르 흐름: 섀도브링거</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Aether Currents: Endwalker</Key>
-    <Value lang="en">Aether Currents: Endwalker</Value>
-    <Value lang="ja-jp">風脈：暁月篇</Value>
-    <Value lang="zh-cn">风脉泉：晓月之终途</Value>
-    <Value lang="zh-tw">風脈泉：曉月之終途</Value>
-    <!--<Value lang="ko">에테르 흐름: 엔드워커</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Aether Currents: Dawntrail</Key>
-    <Value lang="en">Aether Currents: Dawntrail</Value>
-    <Value lang="ja-jp">風脈：黄金篇</Value>
-    <Value lang="zh-cn">风脉泉：黄金的遗产</Value>
-    <Value lang="zh-tw">風脈泉：黃金遺產</Value>
-    <!--<Value lang="ko">에테르 흐름: 던트레일</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Role Quests: Tank</Key>
-    <Value lang="en">Role Quests: Tank</Value>
-    <Value lang="ja-jp">ロールクエスト：タンク</Value>
-    <Value lang="zh-cn">职能任务：防护</Value>
-    <Value lang="zh-tw">職能任務：防護</Value>
-    <!--<Value lang="ko">역할 퀘스트: 탱크</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Role Quests: Healer</Key>
-    <Value lang="en">Role Quests: Healer</Value>
-    <Value lang="ja-jp">ロールクエスト：ヒーラー</Value>
-    <Value lang="zh-cn">职能任务：治疗</Value>
-    <Value lang="zh-tw">職能任務：治療</Value>
-    <!--<Value lang="ko">역할 퀘스트: 힐러</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Role Quests: Melee DPS</Key>
-    <Value lang="en">Role Quests: Melee DPS</Value>
-    <Value lang="ja-jp">ロールクエスト：メレー</Value>
-    <Value lang="zh-cn">职能任务：近战</Value>
-    <Value lang="zh-tw">職能任務：近戰</Value>
-    <!--<Value lang="ko">역할 퀘스트: 근접 DPS</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Role Quests: Physical Ranged</Key>
-    <Value lang="en">Role Quests: Physical Ranged</Value>
-    <Value lang="ja-jp">ロールクエスト：レンジ</Value>
-    <Value lang="zh-cn">职能任务：远程物理</Value>
-    <Value lang="zh-tw">職能任務：遠程物理</Value>
-    <!--<Value lang="ko">역할 퀘스트: 원거리 물리</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Role Quests: Caster</Key>
-    <Value lang="en">Role Quests: Caster</Value>
-    <Value lang="ja-jp">ロールクエスト：キャスター</Value>
-    <Value lang="zh-cn">职能任务：远程魔法</Value>
-    <Value lang="zh-tw">職能任務：遠程魔法</Value>
-    <!--<Value lang="ko">역할 퀘스트: 캐스터</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
@@ -1547,15 +1421,6 @@
     <Value lang="zh-cn">问题</Value>
     <Value lang="zh-tw">問題</Value>
     <!--<Value lang="ko">문제</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Simulate quest</Key>
-    <Value lang="en">Simulate quest</Value>
-    <Value lang="ja-jp">クエストをシミュレート</Value>
-    <Value lang="zh-cn">模拟任务</Value>
-    <Value lang="zh-tw">模擬任務</Value>
-    <!--<Value lang="ko">퀘스트 시뮬레이션</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestWindow.cs -->
@@ -2241,15 +2106,6 @@
     <Value lang="ko">자동 (가장 높은 레벨/아이템 레벨)</Value>
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>None (manually pick quest)</Key>
-    <Value lang="en">None (manually pick quest)</Value>
-    <Value lang="ja-jp">なし（手動でクエストを選択）</Value>
-    <Value lang="zh-cn">无（手动选择任务）</Value>
-    <Value lang="zh-tw">無（手動選擇任務）</Value>
-    <Value lang="ko">선택 안 함 (퀘스트 수동으로 받기)</Value>
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Maelstrom</Key>
     <Value lang="en">Maelstrom</Value>
@@ -2367,15 +2223,6 @@
     <Value lang="ko">초코보 이름</Value>
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>Chicken</Key>
-    <Value lang="en">Chicken</Value>
-    <Value lang="ja-jp">Chicken</Value>
-    <Value lang="zh-cn">小小鸟</Value>
-    <Value lang="zh-tw">小雞</Value>
-    <Value lang="ko">초코보</Value>
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>The name to give your chocobo during the "My Little Chocobo" quest.</Key>
     <Value lang="en">The name to give your chocobo during the "My Little Chocobo" quest.</Value>
@@ -2383,15 +2230,6 @@
     <Value lang="zh-cn">在'我的专属陆行鸟'任务中给你的陆行鸟命名。</Value>
     <Value lang="zh-tw">在'我的專屬陸行鳥'任務中給你的陸行鳥命名。</Value>
     <Value lang="ko">"드디어 내 초코보를!" 퀘스트 중 당신의 초코보에게 지어줄 이름입니다.</Value>
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Defaults to "Chicken" if left blank.</Key>
-    <Value lang="en">Defaults to "Chicken" if left blank.</Value>
-    <Value lang="ja-jp">空白の場合は「Chicken」がデフォルトです。</Value>
-    <Value lang="zh-cn">如果留空，默认为'小小鸟'。</Value>
-    <Value lang="zh-tw">如果留空，預設為'小雞'。</Value>
-    <Value lang="ko">삭제하면 기본값인 "초코보"를 사용합니다.</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
@@ -2502,15 +2340,6 @@
     <Value lang="ko">동영상이나 대사는 건너뛰지 않음</Value>
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>and don't show which answer we would have picked for you</Key>
-    <Value lang="en">and don't show which answer we would have picked for you</Value>
-    <Value lang="ja-jp">自動選択される回答を表示しない</Value>
-    <Value lang="zh-cn">且不显示自动选择的回答</Value>
-    <Value lang="zh-tw">且不顯示自動選擇的回答</Value>
-    <Value lang="ko">플러그인이 선택한 대답 보여주지 않음</Value>
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Unlock certain optional dungeons and raids (instead of waiting for completion)</Key>
     <Value lang="en">Unlock certain optional dungeons and raids (instead of waiting for completion)</Value>
@@ -2590,24 +2419,6 @@
     <Value lang="zh-cn">聊天频道</Value>
     <Value lang="zh-tw">聊天頻道</Value>
     <Value lang="ko">채팅 채널</Value>
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Desktop notifications</Key>
-    <Value lang="en">Desktop notifications</Value>
-    <Value lang="ja-jp">デスクトップ通知</Value>
-    <Value lang="zh-cn">桌面通知</Value>
-    <Value lang="zh-tw">桌面通知</Value>
-    <Value lang="ko">데스크톱 알림</Value>
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Desktop tray and taskbar notifications are currently unavailable.</Key>
-    <Value lang="en">Desktop tray and taskbar notifications are currently unavailable.</Value>
-    <Value lang="ja-jp">デスクトップトレイおよびタスクバー通知は現在利用できません。</Value>
-    <Value lang="zh-cn">桌面托盘和任务栏通知当前不可用。</Value>
-    <Value lang="zh-tw">桌面系統匣和工作列通知目前不可用。</Value>
-    <!--<Value lang="ko">데스크톱 트레이와 작업 표시줄 알림은 현재 사용할 수 없습니다.</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
@@ -2782,15 +2593,6 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
-    <Key>No rotation/combat plugin\n(combat must be done manually)</Key>
-    <Value lang="en">No rotation/combat plugin\n(combat must be done manually)</Value>
-    <Value lang="ja-jp">ローテーション/戦闘プラグインなし\n（戦闘は手動）</Value>
-    <Value lang="zh-cn">无循环/战斗插件\n（战斗须手动进行）</Value>
-    <Value lang="zh-tw">無循環/戰鬥外掛\n（戰鬥須手動進行）</Value>
-    <Value lang="ko">로테이션/전투 플러그인 사용 안 함\n(전투는 수동으로 진행)</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
     <Key>The following rotation/combat plugin(s) are provided for compatibility and testing purposes:</Key>
     <Value lang="en">The following rotation/combat plugin(s) are provided for compatibility and testing purposes:</Value>
     <Value lang="ja-jp">以下のローテーション/戦闘プラグインは互換性・テスト目的で提供されています：</Value>
@@ -2826,15 +2628,6 @@
     <!--<Value lang="ko">웹사이트 열기</Value>-->
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>Open Repository</Key>
-    <Value lang="en">Open Repository</Value>
-    <Value lang="ja-jp">リポジトリを開く</Value>
-    <Value lang="zh-cn">打开仓库</Value>
-    <Value lang="zh-tw">開啟倉庫</Value>
-    <!--<Value lang="ko">리포지토리 열기</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/OneTimeSetupWindow.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
     <Key>Install all required plugins</Key>
@@ -2848,13 +2641,6 @@
     <Value lang="en">Adds missing repositories and installs required plugins.</Value>
     <Value lang="ja-jp">不足しているリポジトリを追加し、必要なプラグインをインストールします。</Value>
     <Value lang="zh-tw">新增缺少的倉庫並安裝必要外掛。</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
-    <Key>Add repository</Key>
-    <Value lang="en">Add repository</Value>
-    <Value lang="ja-jp">リポジトリを追加</Value>
-    <Value lang="zh-tw">新增倉庫</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
@@ -2890,13 +2676,6 @@
     <Value lang="en">{0} is already installed.</Value>
     <Value lang="ja-jp">{0} はすでにインストールされています。</Value>
     <Value lang="zh-tw">{0} 已安裝。</Value>
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>{0} is already installed or its files are in use.</Key>
-    <Value lang="en">{0} is already installed or its files are in use.</Value>
-    <Value lang="ja-jp">{0} はすでにインストールされているか、ファイルが使用中です。</Value>
-    <Value lang="zh-tw">{0} 已安裝，或其檔案正在使用中。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
@@ -2946,15 +2725,6 @@
     <Value lang="en">Enable the recommended options for {0}.</Value>
     <Value lang="ja-jp">{0} の推奨オプションを有効にします。</Value>
     <Value lang="zh-tw">啟用 {0} 的建議選項。</Value>
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Available on official Dalamud Repository</Key>
-    <Value lang="en">Available on official Dalamud Repository</Value>
-    <Value lang="ja-jp">公式Dalamudリポジトリで入手可能</Value>
-    <Value lang="zh-cn">可在官方 Dalamud 插件库中找到</Value>
-    <Value lang="zh-tw">可在官方 Dalamud 外掛庫中找到</Value>
-    <!--<Value lang="ko">공식 Dalamud 리포지토리에서 사용 가능</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/ProfilesConfigComponent.cs -->
@@ -3039,15 +2809,6 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
-    <Key>{0} ※ {1}</Key>
-    <Value lang="en">{0} ※ {1}</Value>
-    <Value lang="ja-jp">{0} ※ {1}</Value>
-    <Value lang="zh-cn">{0} ※ {1}</Value>
-    <Value lang="zh-tw">{0} ※ {1}</Value>
-    <!--<Value lang="ko">{0} ※ {1}</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
     <Key>Quest Battles</Key>
     <Value lang="en">Quest Battles</Value>
     <Value lang="ja-jp">クエストバトル</Value>
@@ -3099,15 +2860,6 @@
     <Value lang="zh-cn">重试失败战斗时，将始终以'非常简单'难度开始。</Value>
     <Value lang="zh-tw">重試失敗戰鬥時，將始終以'非常簡單'難度開始。</Value>
     <!--<Value lang="ko">실패한 전투를 다시 시도하는 경우, 항상 '매우 쉬움' 난이도로 시작됩니다.</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Please don't enable this option when using a BossMod fork (such as Reborn); with the missing combat module configuration, it is unlikely to be compatible.</Key>
-    <Value lang="en">Please don't enable this option when using a BossMod fork (such as Reborn); with the missing combat module configuration, it is unlikely to be compatible.</Value>
-    <Value lang="ja-jp">BossModのフォーク（Rebornなど）を使用する場合はこのオプションを有効にしないでください。戦闘モジュールの設定が欠如しているため、互換性がない可能性があります。</Value>
-    <Value lang="zh-cn">使用 BossMod 分支版（如 Reborn）时，请勿启用此选项；由于缺少战斗模块配置，可能不兼容。</Value>
-    <Value lang="zh-tw">使用 BossMod 分支版（如 Reborn）時，請勿啟用此選項；由於缺少戰鬥模組設定，可能不相容。</Value>
-    <!--<Value lang="ko">BossMod 포크(예: Reborn)를 사용할 때 이 옵션을 활성화하지 마십시오. 전투 모듈 구성이 누락되어 있어 호환되지 않을 수 있습니다.</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
@@ -3374,24 +3126,6 @@
     <!--<Value lang="ko">이 퀘스트는 우선 순위 퀘스트에 포함되어 있습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/GatheringJournalComponent.cs -->
-    <Key>Gathering Points</Key>
-    <Value lang="en">Gathering Points</Value>
-    <Value lang="ja-jp">採集ポイント</Value>
-    <Value lang="zh-cn">采集点</Value>
-    <Value lang="zh-tw">採集點</Value>
-    <!--<Value lang="ko">채집 포인트</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/GatheringJournalComponent.cs -->
-    <Key>Search areas, gathering points and items</Key>
-    <Value lang="en">Search areas, gathering points and items</Value>
-    <Value lang="ja-jp">エリア、採集ポイント、アイテムを検索</Value>
-    <Value lang="zh-cn">搜索区域、采集点和道具</Value>
-    <Value lang="zh-tw">搜尋區域、採集點和道具</Value>
-    <!--<Value lang="ko">지역, 채집 포인트 및 아이템 검색</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/GatheringJournalComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
@@ -3401,24 +3135,6 @@
     <Value lang="zh-cn">已支持</Value>
     <Value lang="zh-tw">已支援</Value>
     <!--<Value lang="ko">지원됨</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/GatheringJournalComponent.cs -->
-    <Key>Collected</Key>
-    <Value lang="en">Collected</Value>
-    <Value lang="ja-jp">収集済み</Value>
-    <Value lang="zh-cn">已收集</Value>
-    <Value lang="zh-tw">已收集</Value>
-    <!--<Value lang="ko">수집됨</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/GatheringJournalComponent.cs -->
-    <Key>No area, gathering point or item matches your search text.</Key>
-    <Value lang="en">No area, gathering point or item matches your search text.</Value>
-    <Value lang="ja-jp">検索テキストに一致するエリア、採集ポイント、アイテムがありません。</Value>
-    <Value lang="zh-cn">没有与搜索文本匹配的区域、采集点或道具。</Value>
-    <Value lang="zh-tw">沒有符合搜尋文字的區域、採集點或道具。</Value>
-    <!--<Value lang="ko">검색 텍스트와 일치하는 지역, 채집 포인트 또는 아이템이 없습니다.</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
@@ -3686,15 +3402,6 @@
     <!--<Value lang="ko">첫 번째 퀘스트 시뮬레이션</Value>-->
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>Item Rewards</Key>
-    <Value lang="en">Item Rewards</Value>
-    <Value lang="ja-jp">アイテム報酬</Value>
-    <Value lang="zh-cn">道具奖励</Value>
-    <Value lang="zh-tw">道具獎勵</Value>
-    <!--<Value lang="ko">아이템 보상</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestRewardComponent.cs -->
     <Key>Show rewards from seasonal event quests</Key>
     <Value lang="en">Show rewards from seasonal event quests</Value>
@@ -3803,15 +3510,6 @@
     <!--<Value lang="ko">({0}) 선택 해제: #{1}{2} ({3}/{4})</Value>-->
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>!Future/Unknown Quest ({0})</Key>
-    <Value lang="en">!Future/Unknown Quest ({0})</Value>
-    <Value lang="ja-jp">!将来的/不明なクエスト ({0})</Value>
-    <Value lang="zh-cn">!未来/未知任务 ({0})</Value>
-    <Value lang="zh-tw">!未來/未知任務 ({0})</Value>
-    <!--<Value lang="ko">!미래/알 수 없는 퀘스트 ({0})</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <Key>New version available!</Key>
     <Value lang="en">New version available!</Value>
@@ -3828,28 +3526,6 @@
     <Value lang="zh-cn">战斗中</Value>
     <Value lang="zh-tw">戰鬥中</Value>
     <!--<Value lang="ko">전투 중</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/CreationUtilsComponent.cs -->
-    <Key>No active quest</Key>
-    <Value lang="en">No active quest</Value>
-    <Value lang="af">Geen aktiewe soeke nie</Value>
-    <Value lang="ar">لا توجد مهمة نشطة</Value>
-    <Value lang="be">Няма актыўных квэстаў</Value>
-    <Value lang="bg">Няма активна задача</Value>
-    <Value lang="ca">Cap missió activa</Value>
-    <Value lang="cs">Žádný aktivní úkol</Value>
-    <Value lang="de">Keine aktive Quest</Value>
-    <Value lang="en-au">Crikey, no quests??</Value>
-    <Value lang="es">No hay ninguna misión activa</Value>
-    <Value lang="eu">Ez dago bilaketa aktiborik</Value>
-    <Value lang="fr">Aucune quête active</Value>
-    <Value lang="hr">Nema aktivnih zadataka</Value>
-    <Value lang="ja-jp">アクティブなクエストはありません</Value>
-    <Value lang="sq">Asnjë mision aktiv</Value>
-    <Value lang="zh-cn">没有正在进行的任务</Value>
-    <Value lang="zh-tw">沒有正在進行的任務</Value>
-    <!--<Value lang="ko">활성 퀘스트 없음</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
@@ -4374,15 +4050,6 @@
     <Value lang="ko">현재 대상과 상호작용.</Value>
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>Left click: Copy target position as JSON.\nRight click: Copy target position as C# code.</Key>
-    <Value lang="en">Left click: Copy target position as JSON.\nRight click: Copy target position as C# code.</Value>
-    <Value lang="ja-jp">左クリック：ターゲット位置をJSONとしてコピー\n右クリック：ターゲット位置をC#コードとしてコピー</Value>
-    <Value lang="zh-cn">左键点击：将目标位置复制为 JSON。\n右键点击：将目标位置复制为 C# 代码。</Value>
-    <Value lang="zh-tw">左鍵點選：將目標位置複製為 JSON。\n右鍵點選：將目標位置複製為 C# 程式碼。</Value>
-    <!--<Value lang="ko">왼쪽 클릭: 대상 위치를 JSON으로 복사\n오른쪽 클릭: 대상 위치를 C# 코드로 복사</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/CreationUtilsComponent.cs -->
     <Key>Left click: Copy your position as JSON.\nRight click: Copy your position as C# code.</Key>
     <Value lang="en">Left click: Copy your position as JSON.\nRight click: Copy your position as C# code.</Value>
@@ -4399,24 +4066,6 @@
     <Value lang="zh-cn">限时道具</Value>
     <Value lang="zh-tw">限時道具</Value>
     <!--<Value lang="ko">한정 시간 아이템</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Make It Rain</Key>
-    <Value lang="en">Make It Rain</Value>
-    <Value lang="ja-jp">ゴールドソーサーフェスティバル</Value>
-    <Value lang="zh-cn">金碟嘉年华</Value>
-    <Value lang="zh-tw">金碟嘉年華</Value>
-    <!--<Value lang="ko">골드 소서 페스티벌</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>SeasonalEventSelection</Key>
-    <Value lang="en">SeasonalEventSelection</Value>
-    <Value lang="ja-jp">シーズナルイベントセレクション</Value>
-    <Value lang="zh-cn">季节活动选择</Value>
-    <Value lang="zh-tw">季節活動選擇</Value>
-    <!--<Value lang="ko">시즌 이벤트 선택</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
@@ -4729,33 +4378,6 @@
     <Value lang="ko">언어</Value>
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>English (Australian)</Key>
-    <Value lang="en">English (Australian)</Value>
-    <Value lang="ja-jp">英語（オーストラリア）</Value>
-    <Value lang="zh-cn">英语（澳大利亚）</Value>
-    <Value lang="zh-tw">英語（澳大利亞）</Value>
-    <!--<Value lang="ko">영어 (호주)</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Spanish</Key>
-    <Value lang="en">Spanish</Value>
-    <Value lang="ja-jp">スペイン語</Value>
-    <Value lang="zh-cn">西班牙语</Value>
-    <Value lang="zh-tw">西班牙語</Value>
-    <!--<Value lang="ko">스페인어</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>French</Key>
-    <Value lang="en">French</Value>
-    <Value lang="ja-jp">フランス語</Value>
-    <Value lang="zh-cn">法语</Value>
-    <Value lang="zh-tw">法語</Value>
-    <!--<Value lang="ko">프랑스어</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Chinese (Simplified)</Key>
     <Value lang="en">Chinese (Simplified)</Value>
@@ -4772,96 +4394,6 @@
     <Value lang="zh-cn">中文（繁体）</Value>
     <Value lang="zh-tw">中文（繁體）</Value>
     <!--<Value lang="ko">중국어 (번체)</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>German</Key>
-    <Value lang="en">German</Value>
-    <Value lang="ja-jp">ドイツ語</Value>
-    <Value lang="zh-cn">德语</Value>
-    <Value lang="zh-tw">德語</Value>
-    <!--<Value lang="ko">독일어</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Afrikaans</Key>
-    <Value lang="en">Afrikaans</Value>
-    <Value lang="ja-jp">アフリカーンス語</Value>
-    <Value lang="zh-cn">南非语</Value>
-    <Value lang="zh-tw">南非語</Value>
-    <!--<Value lang="ko">아프리칸스어</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Arabic</Key>
-    <Value lang="en">Arabic</Value>
-    <Value lang="ja-jp">アラビア語</Value>
-    <Value lang="zh-cn">阿拉伯语</Value>
-    <Value lang="zh-tw">阿拉伯語</Value>
-    <!--<Value lang="ko">아랍어</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Albanian</Key>
-    <Value lang="en">Albanian</Value>
-    <Value lang="ja-jp">アルバニア語</Value>
-    <Value lang="zh-cn">阿尔巴尼亚语</Value>
-    <Value lang="zh-tw">阿爾巴尼亞語</Value>
-    <!--<Value lang="ko">알바니아어</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Basque</Key>
-    <Value lang="en">Basque</Value>
-    <Value lang="ja-jp">バスク語</Value>
-    <Value lang="zh-cn">巴斯克语</Value>
-    <Value lang="zh-tw">巴斯克語</Value>
-    <!--<Value lang="ko">바스크어</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Belarusian</Key>
-    <Value lang="en">Belarusian</Value>
-    <Value lang="ja-jp">ベラルーシ語</Value>
-    <Value lang="zh-cn">白俄罗斯语</Value>
-    <Value lang="zh-tw">白俄羅斯語</Value>
-    <!--<Value lang="ko">벨라루스어</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Bulgarian</Key>
-    <Value lang="en">Bulgarian</Value>
-    <Value lang="ja-jp">ブルガリア語</Value>
-    <Value lang="zh-cn">保加利亚语</Value>
-    <Value lang="zh-tw">保加利亞語</Value>
-    <!--<Value lang="ko">불가리아어</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Catalan</Key>
-    <Value lang="en">Catalan</Value>
-    <Value lang="ja-jp">カタルーニャ語</Value>
-    <Value lang="zh-cn">加泰罗尼亚语</Value>
-    <Value lang="zh-tw">加泰羅尼亞語</Value>
-    <!--<Value lang="ko">카탈로니아어</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Croatian</Key>
-    <Value lang="en">Croatian</Value>
-    <Value lang="ja-jp">クロアチア語</Value>
-    <Value lang="zh-cn">克罗地亚语</Value>
-    <Value lang="zh-tw">克羅埃西亞語</Value>
-    <!--<Value lang="ko">크로아티아어</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Czech</Key>
-    <Value lang="en">Czech</Value>
-    <Value lang="ja-jp">チェコ語</Value>
-    <Value lang="zh-cn">捷克语</Value>
-    <Value lang="zh-tw">捷克語</Value>
-    <!--<Value lang="ko">체코어</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
@@ -5129,24 +4661,6 @@
     <!--<Value lang="ko">완전히 확인된 챕터 숨기기</Value>-->
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>Expand all categories for this session</Key>
-    <Value lang="en">Expand all categories for this session</Value>
-    <Value lang="ja-jp">このセッション中は全てのカテゴリを展開</Value>
-    <Value lang="zh-cn">本次会话展开所有分类</Value>
-    <Value lang="zh-tw">本次會話展開所有分類</Value>
-    <!--<Value lang="ko">이번 세션 동안 모든 카테고리 확장</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>{0} ({1})</Key>
-    <Value lang="en">{0} ({1})</Value>
-    <Value lang="ja-jp">{0} ({1})</Value>
-    <Value lang="zh-cn">{0} ({1})</Value>
-    <Value lang="zh-tw">{0} ({1})</Value>
-    <!--<Value lang="ko">{0} ({1})</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
     <Key>This setting takes effect after the plugin is reloaded.</Key>
     <Value lang="en">This setting takes effect after the plugin is reloaded.</Value>
@@ -5292,15 +4806,6 @@
     <!--<Value lang="ko">콘텐츠 유형: {0}</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
-    <Key>Automates fishing</Key>
-    <Value lang="en">Automates fishing</Value>
-    <Value lang="ja-jp">釣りを自動化</Value>
-    <Value lang="zh-cn">自动钓鱼</Value>
-    <Value lang="zh-tw">自動釣魚</Value>
-    <!--<Value lang="ko">낚시 자동화</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <Key>Locate quest issuer</Key>
     <Value lang="en">Locate quest issuer</Value>
@@ -5308,15 +4813,6 @@
     <Value lang="zh-cn">定位任务发布者</Value>
     <Value lang="zh-tw">定位任務釋出者</Value>
     <!--<Value lang="ko">퀘스트 발급자 위치 찾기</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Dragon Quest X</Key>
-    <Value lang="en">Dragon Quest X</Value>
-    <Value lang="ja-jp">ドラゴンクエストX</Value>
-    <Value lang="zh-cn">勇者斗恶龙X</Value>
-    <Value lang="zh-tw">勇者鬥惡龍X</Value>
-    <!--<Value lang="ko">드래곤 퀘스트 X</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/Utils/ItemBlacklistSelector.cs -->
@@ -5380,42 +4876,6 @@
     <Value lang="zh-cn">此角色尚未解锁昔日重现模式</Value>
     <Value lang="zh-tw">此角色尚未解鎖昔日重現模式</Value>
     <!--<Value lang="ko">이 캐릭터에서는 NG+가 아직 잠금 해제되지 않았습니다</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/QuestRegistry.cs -->
-    <Key>Clicking this button writes the quest path to a file and opens it in your default text editor.</Key>
-    <Value lang="en">Clicking this button writes the quest path to a file and opens it in your default text editor.</Value>
-    <Value lang="ja-jp">このボタンをクリックすると、クエストパスをファイルに書き出し、デフォルトのテキストエディタで開きます。</Value>
-    <Value lang="zh-cn">点击此按钮会将任务路径写入文件，并使用默认文本编辑器打开。</Value>
-    <Value lang="zh-tw">點選此按鈕會將任務路徑寫入檔案，並使用預設文字編輯器開啟。</Value>
-    <!--<Value lang="ko">이 버튼을 클릭하면 퀘스트 경로가 파일에 기록되고 기본 텍스트 편집기에서 열립니다.</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/QuestRegistry.cs -->
-    <Key>After making a change, click Reload Data below.</Key>
-    <Value lang="en">After making a change, click Reload Data below.</Value>
-    <Value lang="ja-jp">変更後は、下の「データを再読み込み」をクリックしてください。</Value>
-    <Value lang="zh-cn">在修改后请点击"重新加载数据"按钮。</Value>
-    <Value lang="zh-tw">在修改後請點選"重新載入資料"按鈕。</Value>
-    <!--<Value lang="ko">변경 후 아래의 "데이터 다시 로드"를 클릭하세요.</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/QuestRegistry.cs -->
-    <Key>To revert to the official version, delete the file and click Reload Data again.</Key>
-    <Value lang="en">To revert to the official version, delete the file and click Reload Data again.</Value>
-    <Value lang="ja-jp">公式バージョンに戻すには、ファイルを削除して再度「データを再読み込み」をクリックしてください。</Value>
-    <Value lang="zh-cn">如需恢复官方版本，请删除该文件并再次点击"重新加载数据"。</Value>
-    <Value lang="zh-tw">如需恢復官方版本，請刪除該檔案並再次點選"重新載入資料"。</Value>
-    <!--<Value lang="ko">공식 버전으로 되돌리려면 파일을 삭제하고 다시 "데이터 다시 로드"를 클릭하세요.</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/QuestRegistry.cs -->
-    <Key>Left click: Open this quest in your default .json text editor\nRight click: Open Quests folder</Key>
-    <Value lang="en">Left click: Open this quest in your default .json text editor\nRight click: Open Quests folder</Value>
-    <Value lang="ja-jp">左クリック：このクエストをデフォルトの.jsonテキストエディタで開く\n右クリック：Questsフォルダを開く</Value>
-    <Value lang="zh-cn">左键单击：在默认 JSON 文本编辑器中打开此任务\n右键单击：打开任务文件夹</Value>
-    <Value lang="zh-tw">左鍵單擊：在預設 JSON 文字編輯器中開啟此任務\n右鍵單擊：開啟任務資料夾</Value>
-    <!--<Value lang="ko">왼쪽 클릭: 기본 .json 텍스트 편집기에서 이 퀘스트 열기\n오른쪽 클릭: 퀘스트 폴더 열기</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
@@ -5516,42 +4976,6 @@
     <Value lang="zh-cn">BossMod 分支版本（如 Reborn）与 Questionable 不兼容。</Value>
     <Value lang="zh-tw">BossMod 分支版本（如 Reborn）與 Questionable 不相容。</Value>
     <Value lang="ko">BossMod 포크 (예: Reborn)는 Questionable과 호환되지 않습니다.</Value>
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Clicking this button writes the quest path to a file and opens it in your default text editor. After making a change, click Reload Data below.</Key>
-    <Value lang="en">Clicking this button writes the quest path to a file and opens it in your default text editor. After making a change, click Reload Data below.</Value>
-    <Value lang="ja-jp">このボタンをクリックすると、クエストパスをファイルに書き出し、デフォルトのテキストエディタで開きます。変更後は、下の「データを再読み込み」をクリックしてください。</Value>
-    <Value lang="zh-cn">点击此按钮会将任务路径写入文件，并使用默认文本编辑器打开。做出更改后，请点击下方的"重新加载数据"。</Value>
-    <Value lang="zh-tw">點選此按鈕會將任務路徑寫入檔案，並使用預設文字編輯器開啟。做出更改後，請點選下方的"重新載入資料"。</Value>
-    <!--<Value lang="ko">이 버튼을 클릭하면 퀘스트 경로가 파일에 기록되고 기본 텍스트 편집기에서 열립니다. 변경 후 아래의 "데이터 다시 로드"를 클릭하세요.</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>To revert to the official version, delete the file and click Reload Data again.</Key>
-    <Value lang="en">To revert to the official version, delete the file and click Reload Data again.</Value>
-    <Value lang="ja-jp">公式バージョンに戻すには、ファイルを削除して再度「データを再読み込み」をクリックしてください。</Value>
-    <Value lang="zh-cn">如需恢复官方版本，请删除该文件并再次点击"重新加载数据"。</Value>
-    <Value lang="zh-tw">如需恢復官方版本，請刪除該檔案並再次點選"重新載入資料"。</Value>
-    <!--<Value lang="ko">공식 버전으로 되돌리려면 파일을 삭제하고 다시 "데이터 다시 로드"를 클릭하세요.</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Clicking this button writes the quest path to a file and opens it in your default text editor.</Key>
-    <Value lang="en">Clicking this button writes the quest path to a file and opens it in your default text editor.</Value>
-    <Value lang="ja-jp">このボタンをクリックすると、クエストパスをファイルに書き出し、デフォルトのテキストエディタで開きます。</Value>
-    <Value lang="zh-cn">点击此按钮会将任务路径写入文件，并使用默认文本编辑器打开。</Value>
-    <Value lang="zh-tw">點選此按鈕會將任務路徑寫入檔案，並使用預設文字編輯器開啟。</Value>
-    <!--<Value lang="ko">이 버튼을 클릭하면 퀘스트 경로가 파일에 기록되고 기본 텍스트 편집기에서 열립니다.</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>After making a change, click Reload Data below.</Key>
-    <Value lang="en">After making a change, click Reload Data below.</Value>
-    <Value lang="ja-jp">変更後は、下の「データを再読み込み」をクリックしてください。</Value>
-    <Value lang="zh-cn">做出更改后，请点击下方的"重新加载数据"。</Value>
-    <Value lang="zh-tw">做出更改後，請點選下方的"重新載入資料"。</Value>
-    <!--<Value lang="ko">변경 후 아래의 "데이터 다시 로드"를 클릭하세요.</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Utils/ImGuiComponentsLocal.cs -->
@@ -5816,17 +5240,6 @@
     <!--<Value lang="ko">퀘스트 경로를 '{0}'에 저장했습니다</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestValidationWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/QuestComponents/CreationUtilsComponent.cs -->
-    <Key>Left click: Open in Path Editor\nRight click: Open in your default .json text editor</Key>
-    <Value lang="en">Left click: Open in Path Editor\nRight click: Open in your default .json text editor</Value>
-    <Value lang="ja-jp">左クリック: パスエディターで開く
-右クリック: デフォルトの .json テキストエディターで開く</Value>
-    <Value lang="zh-cn">左键单击: 在路径编辑器中打开\n右键单击: 在默认 .json 文本编辑器中打开</Value>
-    <Value lang="zh-tw">左鍵單擊: 在路徑編輯器中開啟\n右鍵單擊: 在預設 .json 文字編輯器中開啟</Value>
-    <!--<Value lang="ko">왼쪽 클릭: 경로 편집기에서 열기\n오른쪽 클릭: 기본 .json 텍스트 편집기에서 열기</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/QuestWindow.cs -->
     <Key>A Realm Reborn</Key>
     <Value lang="en">A Realm Reborn</Value>
@@ -5843,15 +5256,6 @@
     <Value lang="zh-cn">活动</Value>
     <Value lang="zh-tw">活動</Value>
     <!--<Value lang="ko">이벤트</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Quick Access</Key>
-    <Value lang="en">Quick Access</Value>
-    <Value lang="ja-jp">クイックアクセス</Value>
-    <Value lang="zh-cn">快捷操作</Value>
-    <Value lang="zh-tw">快捷操作</Value>
-    <Value lang="ko">빠른 메뉴</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestWindow.cs -->
@@ -6135,16 +5539,6 @@
     <Value lang="ko">이 단계를 JSON으로 복사</Value>
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>Left click: Open in Path Editor\nRight click: Open Quests folder</Key>
-    <Value lang="en">Left click: Open in Path Editor\nRight click: Open Quests folder</Value>
-    <Value lang="ja-jp">左クリック: パスエディターで開く
-右クリック: クエストフォルダを開く</Value>
-    <Value lang="zh-cn">左键单击: 在路径编辑器中打开\n右键单击: 打开任务文件夹</Value>
-    <Value lang="zh-tw">左鍵單擊: 在路徑編輯器中開啟\n右鍵單擊: 開啟任務資料夾</Value>
-    <Value lang="ko">왼쪽 클릭: 경로 편집기에서 열기\n오른쪽 클릭: 퀘스트 폴더 열기</Value>
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
     <Key>Seq {0} · Step {1}/{2}</Key>
     <Value lang="en">Seq {0} · Step {1}/{2}</Value>
@@ -6179,15 +5573,6 @@
     <Value lang="zh-cn">运行中</Value>
     <Value lang="zh-tw">執行中</Value>
     <!--<Value lang="ko">실행 중</Value>-->
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Open the current quest in the Path Editor.</Key>
-    <Value lang="en">Open the current quest in the Path Editor.</Value>
-    <Value lang="ja-jp">現在のクエストをパスエディターで開きます。</Value>
-    <Value lang="zh-cn">在路径编辑器中打开当前任务。</Value>
-    <Value lang="zh-tw">在路徑編輯器中開啟目前任務。</Value>
-    <!--<Value lang="ko">현재 퀘스트를 경로 편집기에서 열기.</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuestTooltipComponent.cs -->
@@ -6442,15 +5827,6 @@
     <!--<Value lang="ko">요청에 따라 텔레포트 전에 중지합니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>Could not retrieve next quest step, pausing.</Key>
-    <Value lang="en">Could not retrieve next quest step, pausing.</Value>
-    <Value lang="ja-jp">次のクエストステップを取得できませんでした。一時停止します。</Value>
-    <Value lang="zh-cn">无法获取下一个任务步骤, 正在暂停。</Value>
-    <Value lang="zh-tw">無法取得下一個任務步驟, 正在暫停。</Value>
-    <!--<Value lang="ko">다음 퀘스트 단계를 가져올 수 없어 일시 중지합니다.</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Controller/QuestController.cs -->
     <Key>Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button.</Key>
     <Value lang="en">Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button.</Value>
@@ -6577,15 +5953,6 @@
     <!--<Value lang="ko">각 상호작용 전에 퀘스트를 수락한 직업으로 전환</Value>-->
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>Quest {0} requires a job like {1}, but you do not have a gearset for this job or have not configured QST job preferences.</Key>
-    <Value lang="en">Quest {0} requires a job like {1}, but you do not have a gearset for this job or have not configured QST job preferences.</Value>
-    <Value lang="ja-jp">クエスト {0} には {1} のようなジョブが必要ですが、該当ジョブのギアセットがないか、QSTのジョブ設定が未構成です。</Value>
-    <Value lang="zh-cn">任务 {0} 需要类似 {1} 的职业，但你没有该职业的装备套装，或者没有配置 QST 职业偏好设置。</Value>
-    <Value lang="zh-tw">任務 {0} 需要類似 {1} 的職業，但你沒有該職業的裝備套裝，或者尚未設定 QST 的職業偏好。</Value>
-    <Value lang="ko">퀘스트 {0}에는 {1}와 같은 직업이 필요하지만, 이 직업에 대한 장비 세트가 없거나 QST 직업 환경 설정이 구성되지 않았습니다.</Value>
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Interactions/Interact.cs -->
     <Key>Quest {0} should be continued as {1}, but you do not have a gearset for that job.</Key>
     <Value lang="en">Quest {0} should be continued as {1}, but you do not have a gearset for that job.</Value>
@@ -6630,52 +5997,12 @@
     <Value lang="zh-tw">/qst redeem - 使用背包內的所有獎勵道具</Value>
   </Entry>
   <Entry>
-    <!-- DEPRECATED -->
-    <Key>Achievement</Key>
-    <Value lang="en">Achievement</Value>
-    <Value lang="ja-jp">アチーブメント</Value>
-    <Value lang="zh-cn">成就</Value>
-    <Value lang="zh-tw">成就</Value>
-  </Entry>
-  <Entry>
-    <!-- DEPRECATED -->
-    <Key>Show quest icons in Journal Progress</Key>
-    <Value lang="en">Show quest icons in Journal Progress</Value>
-    <Value lang="ja-jp">ジャーナル進捗にクエストアイコンを表示</Value>
-    <Value lang="zh-cn">在日志中显示任务图标</Value>
-    <Value lang="zh-tw">在日誌中顯示任務圖示</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
-    <Key>Add {0} to Custom Plugin Repositories.</Key>
-    <Value lang="en">Add {0} to Custom Plugin Repositories.</Value>
-    <Value lang="ja-jp">{0} をカスタムプラグインリポジトリに追加します。</Value>
-    <Value lang="zh-cn">将 {0} 添加到第三方插件仓库。</Value>
-    <Value lang="zh-tw">將 {0} 新增到第三方外掛倉庫。</Value>
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
     <Key>Install {0} from its plugin repository.</Key>
     <Value lang="en">Install {0} from its plugin repository.</Value>
     <Value lang="ja-jp">{0} をプラグインリポジトリからインストールします。</Value>
     <Value lang="zh-cn">从 {0} 仓库安装插件。</Value>
     <Value lang="zh-tw">從 {0} 倉庫安裝外掛。</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
-    <Key>{0} repository is already added.</Key>
-    <Value lang="en">{0} repository is already added.</Value>
-    <Value lang="ja-jp">{0} リポジトリはすでに追加されています。</Value>
-    <Value lang="zh-cn">{0} 仓库已添加。</Value>
-    <Value lang="zh-tw">{0} 倉庫已新增。</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
-    <Key>Added {0} repository.</Key>
-    <Value lang="en">Added {0} repository.</Value>
-    <Value lang="ja-jp">{0} リポジトリを追加しました。</Value>
-    <Value lang="zh-cn">已添加 {0} 仓库。</Value>
-    <Value lang="zh-tw">已新增 {0} 倉庫。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
@@ -7015,18 +6342,6 @@
     <Key>Pending</Key>
     <Value lang="en">Pending</Value>
     <Value lang="zh-cn">等待中</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
-    <Key>Restore BossMod setting to default</Key>
-    <Value lang="en">Restore BossMod setting to default</Value>
-    <Value lang="zh-cn">恢复 BossMod 默认设置</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
-    <Key>When starting a solo duty or if Autoduty has finished qst-orchestrated duty automation, restore Bossmod's setting 'Prevent Movement While Casting' to default</Key>
-    <Value lang="en">When starting a solo duty or if Autoduty has finished qst-orchestrated duty automation, restore Bossmod's setting 'Prevent Movement While Casting' to default</Value>
-    <Value lang="zh-cn">在单人副本开始时或 AutoDuty 完成 QST 编排的副本后，将 BossMod「读条时锁定移动」设置恢复为默认值。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/PathData/PathDataUpdater.cs -->

@@ -17,5 +17,7 @@ internal static class WrathResultExtensions
         return failed.Length == 0;
     }
 
-    public static bool IsSuccess(this SetResult result) => result is SetResult.Okay or SetResult.OkayWorking;
+    // Duplicate means the value was already set, e.g. on a lease Wrath handed back to a re-registering plugin.
+    public static bool IsSuccess(this SetResult result) =>
+        result is SetResult.Okay or SetResult.OkayWorking or SetResult.Duplicate;
 }

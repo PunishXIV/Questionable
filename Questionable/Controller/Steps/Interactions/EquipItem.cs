@@ -70,12 +70,8 @@ internal static class EquipItem
             if (inventoryManager == null)
                 return ETaskResult.StillRunning;
 
-            foreach (ushort x in _targetSlots)
-            {
-                InventoryItem* itemSlot = inventoryManager->GetInventorySlot(InventoryType.EquippedItems, x);
-                if (itemSlot != null && itemSlot->ItemId == Task.ItemId)
-                    return ETaskResult.TaskComplete;
-            }
+            if (EquipmentSlots.IsEquipped(inventoryManager, _targetSlots, Task.ItemId))
+                return ETaskResult.TaskComplete;
 
             Equip();
             _continueAt = DateTime.Now.AddSeconds(1);
@@ -84,8 +80,7 @@ internal static class EquipItem
 
         public bool OnErrorToast(SeString message)
         {
-            string? insufficientArmoryChestSpace = DataManagerAdapter.GetString<LogMessage>(dataManager, 709, x => x.Text);
-            if (GameFunctions.GameStringEquals(message.TextValue, insufficientArmoryChestSpace))
+            if (EquipmentSlots.IsArmoryFullToast(dataManager, message))
                 _attempts = MaxAttempts;
 
             return false;
@@ -97,7 +92,7 @@ internal static class EquipItem
         {
             _item = dataManager.GetExcelSheet<Item>().GetRowOrDefault(Task.ItemId) ??
                     throw new ArgumentOutOfRangeException(nameof(Task.ItemId));
-            _targetSlots = GetEquipSlot(_item) ?? throw new InvalidOperationException("Not a piece of equipment");
+            _targetSlots = EquipmentSlots.For(_item.Value) ?? throw new InvalidOperationException("Not a piece of equipment");
 
             Equip();
             _continueAt = DateTime.Now.AddSeconds(1);
@@ -114,18 +109,13 @@ internal static class EquipItem
             if (inventoryManager == null)
                 return;
 
-            InventoryContainer* equippedContainer = inventoryManager->GetInventoryContainer(InventoryType.EquippedItems);
-            if (equippedContainer == null)
+            if (inventoryManager->GetInventoryContainer(InventoryType.EquippedItems) == null)
                 return;
 
-            foreach (ushort slot in _targetSlots)
+            if (EquipmentSlots.IsEquipped(inventoryManager, _targetSlots, Task.ItemId))
             {
-                InventoryItem* itemSlot = equippedContainer->GetInventorySlot(slot);
-                if (itemSlot != null && itemSlot->ItemId == Task.ItemId)
-                {
-                    logger.LogInformation("Already equipped {Item}, skipping step", _item?.Name.ToString());
-                    return;
-                }
+                logger.LogInformation("Already equipped {Item}, skipping step", _item?.Name.ToString());
+                return;
             }
 
             foreach (InventoryType sourceInventoryType in SourceInventoryTypes)
@@ -167,20 +157,6 @@ internal static class EquipItem
             }
 
             throw new TaskException($"Could not equip item {Task.ItemId}.");
-        }
-
-        private static List<ushort>? GetEquipSlot(Item? item)
-        {
-            if (item == null)
-                return [];
-            return item.Value.EquipSlotCategory.RowId switch
-            {
-                >= 1 and <= 11 => [(ushort)(item.Value.EquipSlotCategory.RowId - 1)],
-                12 => [11, 12], // rings
-                13 => [0],
-                17 => [13], // soul crystal
-                var _ => null
-            };
         }
     }
 }

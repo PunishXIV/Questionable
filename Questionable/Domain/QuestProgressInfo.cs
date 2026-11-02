@@ -25,7 +25,6 @@ internal sealed class QuestProgressInfo
             Tooltip += $"{Convert.ToString(thisbyte, 2).PadLeft(8).Replace(" ", "0", StringComparison.InvariantCulture)}\n";
             int upper = thisbyte >> 4;
             int lower = thisbyte & 0xF;
-            //repr += $"{thisbyte} ";
             if (upper != 0 || lower != 0)
             {
                 repr += "(";

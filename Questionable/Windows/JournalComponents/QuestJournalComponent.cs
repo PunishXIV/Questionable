@@ -204,7 +204,6 @@ internal sealed class QuestJournalComponent
     internal void DrawQuest(QuestInfo questInfo)
     {
         bool fate = false;
-        //bool repeatable = false;
         string lastChecked = "";
         string lastCheckedLong = "";
         string questDescription = $"{questInfo.Name} ({questInfo.QuestId})";
