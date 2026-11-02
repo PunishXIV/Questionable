@@ -91,9 +91,6 @@ internal sealed class DalamudInitializer : IDisposable
 
     public void Dispose()
     {
-        // Idempotent: QuestionablePlugin.DisposeAsync calls this up-front to unhook Dalamud event
-        // sources before the DI container is disposed, and MS.DI then calls it again during the
-        // container's own disposal walk. Second call must be a no-op.
         if (_disposed)
             return;
         _disposed = true;
