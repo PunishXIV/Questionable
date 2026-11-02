@@ -65,7 +65,6 @@ internal sealed class FishingOperationState(TimeProvider? timeProvider = null)
         }
 
         // Until our job is seen running, an ended line may be the previous job's.
-        // After the deadline it remains uncertain, but stable idle can permit manual reconciliation.
         bool startupTimedOut = !HasStarted && _clock.GetElapsedTime(_submittedAt) >= TimeSpan.FromSeconds(30);
         bool unknown = state is EFeeshJobState.Unavailable or EFeeshJobState.Unrecognized ||
                        (HasStarted && state == EFeeshJobState.None) || startupTimedOut;

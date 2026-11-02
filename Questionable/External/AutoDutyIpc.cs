@@ -139,8 +139,7 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
         if (!game.Available || !game.Idle || game.InQueue || game.Loading || game.InDuty)
             throw new TaskException("Cannot start AutoDuty while native duty, queue or movement is active.");
 
-        // Read both settings before mutation. GetConfig exists in the legacy API,
-        // but an installed version may not support these particular keys.
+        // Not every AutoDuty version supports these GetConfig keys; read both before changing anything.
         string unsynced;
         string mode;
         try
@@ -169,7 +168,7 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
             }
             Operation.MarkRunSubmitted();
             _run.InvokeAction(data.TerritoryId, 1, !_configuration.Advanced.DisableAutoDutyBareMode);
-            // A void return is not acceptance. Observe activity; never blindly retry Run.
+            // Run returns nothing; watch for activity instead of retrying it.
             PollOperation();
         }
         catch (Exception e)
@@ -218,7 +217,7 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
             return;
         try
         {
-            // Global Stop is safe only while this observed submission still owns execution.
+            // Stop is global, so only send it while our run owns AutoDuty.
             _stop.InvokeAction();
         }
         catch (Exception e)
@@ -280,7 +279,7 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
                 string current = ReadSetting(setting.Key);
                 if (current == setting.Applied)
                 {
-                    // Never replay old overrides into a replacement provider/manual run.
+                    // Don't restore old settings into a reloaded AutoDuty.
                     if (Operation.ProviderLost)
                     {
                         string label = setting.Key == UnsyncedKey ? "unsynced setting" : "duty mode";

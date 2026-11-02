@@ -319,7 +319,6 @@ internal enum FeeshStartResult
 /// <summary>The job state from Feesh's <c>Catching</c> text.</summary>
 internal enum EFeeshJobState
 {
-    /// <summary>Not readable.</summary>
     Unavailable,
     /// <summary>Empty: no job has run yet.</summary>
     None,

@@ -49,10 +49,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     /// <summary>Extra grace period (seconds) added on top of the game's animation lock before we consider the player idle.</summary>
     private const float AnimationLockGraceSeconds = 1f;
 
-    /// <summary>FFXIV item-ID offset for high-quality items.</summary>
     private const uint HighQualityItemIdOffset = 1_000_000;
 
-    /// <summary>FFXIV item-ID offset for collectable items.</summary>
     private const uint CollectableItemIdOffset = 500_000;
 
     /// <summary>How long to wait at sequence 0/step 0 before assuming the quest-accept addon never fired and resetting.</summary>
@@ -122,8 +120,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private (ElementId QuestId, byte Sequence, int Step)? _deathStreakKey;
     private int _deathStreakCount;
 
-    /// <summary>
-    /// </summary>
     private DateTime _lastTaskUpdate = DateTime.Now;
 
     /// <summary>
@@ -334,8 +330,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public void Update()
     {
-        // Reconcile even while stopped, occupied or logged out. Retained work must not
-        // depend on the executor or automatic quest scheduling continuing to run.
+        // Reconcile retained work even while stopped, occupied or logged out.
         bool craftingBlocked = UpdateCraftingOperation();
         bool purchaseBlocked = UpdateOwnedOperation(_purchaseOperation, _taskQueue.CurrentTaskExecutor is Purchase.DoBuy,
             _purchaseStatusPoll, _knightshopperIpc.PollOperation, _knightshopperIpc.CancelOwned);
@@ -450,8 +445,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     {
         lock (_progressLock)
         {
-            // Let the owning executor verify its own objective before quest selection or
-            // sequence changes can discard it, even if the game already advanced the quest.
+            // Let the owning executor verify its objective before quest or sequence changes discard it.
             if (HasExternalOperation)
                 return;
 
@@ -780,10 +774,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     private bool ClearTasksInternal()
     {
-        // This also covers a failed start or cancellation that already detached the executor.
+        // Provider work is cleaned up even when its executor has already detached.
         _craftingOperation.AbandonCurrent();
         bool success = _taskQueue.Reset();
-        // Cancellation may still be pending after the executor has been detached.
         success &= TryCleanup(_knightshopperIpc.CancelOwned, "Knightshopper purchase");
         success &= TryCleanup(_feeshIpc.CancelOwned, "Feesh fishing");
         if (_movementController.Destination != null || _purchaseOperation.HasOperation ||
@@ -791,11 +784,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             success &= TryCleanup(_movementController.Stop, "movement");
         success &= TryCleanup(() => _combatController.Stop("ClearTasksInternal"), "combat");
         success &= TryCleanup(() => _gatheringController.Stop("ClearTasksInternal"), "gathering");
-        // These operations can outlive the executor that started them.
         success &= TryCleanup(_autoDutyIpc.Stop, "AutoDuty");
         success &= TryCleanup(_bossModIpc.DisableSoloDutyPreset, "solo duty");
-        // A provider can retain cleanup without throwing. Do not let callers prepare
-        // replacement tasks (whose factories may have side effects) until it settles.
+        // A provider can still be cleaning up without having failed; don't queue replacements yet.
         return success && !HasExternalOperation;
     }
 
@@ -813,8 +804,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         }
     }
 
-    // Called on the framework thread before the service container is disposed. Avoid stop commands
-    // and notifications here: unloading the plugin is not a user-configured quest stopping point.
+    // Plugin unload: no stop commands or notifications, as unloading isn't a quest stopping point.
     internal void Shutdown()
     {
         ClearTasksInternal();
@@ -874,8 +864,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         using IDisposable? scope = _logger.BeginScope($"Stop/{label}");
         bool wasRunning = IsRunning || AutomationType != EAutomationType.Manual;
         bool wasAutomatic = AutomationType == EAutomationType.Automatic;
-        // An executor may already have detached itself during failed startup/cancellation.
-        // Operations owned across tasks still need cleanup even when the queue is now empty.
+        // Owned operations still need cleanup even if the executor already detached.
         ClearTasksInternal();
         if (!wasRunning)
             return;
@@ -910,8 +899,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     {
         bool hadExternalOperation = HasExternalOperation;
         Stop(label);
-        // ClearTasksInternal already stops Questionable's own movement. A retained
-        // external request is not permission to stop a global/manual navmesh route.
+        // Our own movement is already stopped; a retained external request doesn't allow stopping a manual route.
         if (hadExternalOperation || HasExternalOperation)
             return;
 
@@ -924,8 +912,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     {
         if (!CanPrepareQuestTasks())
         {
-            // The tracked quest or sequence may already have changed. Its old queue
-            // must not continue while replacement work is blocked by another provider.
+            // The old queue must not continue while another provider blocks its replacement.
             Stop("Quest replan blocked");
             return;
         }
@@ -1104,9 +1091,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             return false;
         }
 
-        // Manual Knightshopper work has no local owner, but preparing a step can stop
-        // global movement before DoBuy gets its own preflight. Keep Knightshopper optional
-        // for ordinary questing; a ready provider with an unreadable busy flag is not idle.
+        // Manual Knightshopper work has no owner here, so block on busy or unreadable status.
         if (_knightshopperIpc.IsReady() && _knightshopperIpc.GetBusy() != false)
         {
             DebugState = _L("Knightshopper is busy or its status is unavailable. Finish its current work before starting questing.");
@@ -1181,8 +1166,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public bool TryConfirmArtisanIdle()
     {
-        // Confirmation only releases the barrier. It must never resume a queued task or
-        // automatic scheduling, and a fresh read must reject newly busy/paused Artisan work.
+        // Confirming only releases the barrier; it never resumes questing.
         if (!_craftingOperation.RequiresReconciliation || IsRunning || AutomationType != EAutomationType.Manual)
             return false;
 
@@ -1273,8 +1257,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             _combatController.TryRetryCleanup();
             try
             {
-                // Solo duties deliberately retain local movement/interaction tasks between
-                // BossMod activations. Healthy ownership must not block that task sequence.
+                // Solo duties keep local movement/interaction tasks between BossMod activations.
                 _bossModIpc.PollSoloDuty();
             }
             catch (Exception e)
@@ -1298,8 +1281,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (!operation.RequiresReconciliation || IsRunning || AutomationType != EAutomationType.Manual)
             return false;
 
-        // Refresh both the retained operation and global idle: a newly Running operation
-        // must not be acknowledged using a stale Unknown status. Never resume questing here.
+        // Refresh both, so a newly running operation isn't confirmed from a stale status.
         if (!TryCleanup(poll, "external operation confirmation status") ||
             !TryCleanup(observeIdle, "external operation idle confirmation"))
             return false;
@@ -1341,8 +1323,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         if (_combatController.HasPendingCleanup || _bossModIpc.HasPendingCleanup)
             return;
 
-        // External work can occupy the player, but its owning executor still needs to verify
-        // the result. Never bypass loading/logout safety checks.
+        // The owning executor must still verify external work that occupies the player.
         bool updatingCraft = _taskQueue.CurrentTaskExecutor is Craft.DoCraft && _craftingOperation.HasOperation;
         bool updatingPurchase = _taskQueue.CurrentTaskExecutor is Purchase.DoBuy && _purchaseOperation.HasOperation;
         bool updatingGather = _taskQueue.CurrentTaskExecutor is Gather.StartGathering && _gatheringOperation.HasOperation;

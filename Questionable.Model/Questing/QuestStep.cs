@@ -126,7 +126,6 @@ public sealed class QuestStep
     /// <summary>
     ///     Only relevant for the step 0 in sequence 0: Whether this step is valid for teleporting to it.
     /// </summary>
-    /// <returns></returns>
     public bool IsTeleportableForPriorityQuests()
     {
         if (AetheryteShortcut != null || AethernetShortcut?.From != null)

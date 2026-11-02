@@ -22,9 +22,7 @@ public class NamespaceShadowing
         {
             TypeDefinition td = md.GetTypeDefinition(handle);
 
-            // Skip nested types — their Namespace field is empty in metadata;
-            // the enclosing type carries the namespace and is visited on its
-            // own iteration.
+            // Nested types have an empty namespace in metadata; their enclosing type carries it.
             if (td.IsNested)
                 continue;
 

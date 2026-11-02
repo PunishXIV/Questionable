@@ -41,8 +41,7 @@ internal abstract class MiniTaskController<T> : IDisposable
 
     public virtual void Dispose() => _interruptHandler.Interrupted -= HandleInterruption;
 
-    // External operations may outlive their executor. Derived controllers can hold replacement
-    // work without preventing the current executor from updating and verifying its result.
+    // Lets derived controllers hold back new tasks without stopping the current executor.
     protected virtual bool CanStartNextTask() => true;
 
     protected virtual void UpdateCurrentTask()
@@ -250,8 +249,7 @@ internal abstract class MiniTaskController<T> : IDisposable
             tasks.Add(Combat.Factory.CreateTask(elementId: null, -1, isLastStep: false, EEnemySpawnType.QuestInterruption, [], [], [], combatItemUse: null));
         }
         tasks.Add(new WaitAtEnd.WaitDelay());
-        // Damage can arrive before the game raises InCombat. Check again after recovery,
-        // before replaying the interrupted interaction.
+        // Damage can arrive before InCombat is set, so check again before replaying the interaction.
         if (!inCombat)
             tasks.Add(new Combat.CheckAfterInterruption());
         if (!_taskQueue.InterruptWith(tasks))
@@ -265,8 +263,7 @@ internal abstract class MiniTaskController<T> : IDisposable
 
     private void InterruptWithoutCombat()
     {
-        // Duty providers handle their own transient status/toast interruptions. Do not
-        // cancel the owned run merely because its ownership blocks replacement tasks.
+        // Duty providers handle their own interruptions; don't cancel the run for them.
         if (_taskQueue.CurrentTaskExecutor is SinglePlayerDuty.WaitSinglePlayerDutyExecutor
             or Duty.StartAutoDutyExecutor)
             return;

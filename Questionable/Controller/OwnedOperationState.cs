@@ -83,8 +83,7 @@ internal abstract class OwnedOperationState(string providerName, string activity
         else
         {
             _unknownSince = null;
-            // An active operation contradicts a global idle report; require a new idle
-            // observation period if its status subsequently becomes unavailable.
+            // Running contradicts an idle report, so idle has to be observed afresh.
             _idleSince = _lastIdleObservation = null;
         }
 

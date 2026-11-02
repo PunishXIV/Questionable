@@ -65,8 +65,6 @@ internal sealed class InteractionUiController : IDisposable
             if (!recovery.InitialSweepDone)
             {
                 recovery.InitialSweepDone = true;
-                // Preserve current-step duty/difficulty handling and the other dialogue types.
-                // Only explicit quest choices are retried by the bounded recovery below.
                 HandleCurrentDialogueChoices();
                 return;
             }

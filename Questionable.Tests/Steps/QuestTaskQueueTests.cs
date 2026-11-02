@@ -45,8 +45,7 @@ public sealed class QuestTaskQueueTests
             Substitute.For<IObjectTable>(), Substitute.For<ICondition>(), Substitute.For<IClientState>(),
             null!, null!, framework, NullLogger<CombatController>.Instance);
 
-        // Use the real step-transition method with managed quest data, without starting
-        // native game hooks or constructing unrelated UI services.
+        // Skip the constructor's game hooks and UI services; exercise the real step transition.
         var controller = (QuestController)RuntimeHelpers.GetUninitializedObject(typeof(QuestController));
         SetField("_progressLock", Activator.CreateInstance(typeof(System.Threading.Lock))!);
         SetField("_logger", NullLogger<QuestController>.Instance);
@@ -119,8 +118,7 @@ public sealed class QuestTaskQueueTests
             null!, Substitute.For<IChatGui>(), framework, new(), purchase, gatheringOperation, gather,
             new(), duty.Ipc, null!, NullLogger<MovementController>.Instance);
 
-        // Bypass unrelated game-sheet and UI construction; exercise the real replan,
-        // Stop, provider cleanup and TaskQueue cancellation paths with no native player.
+        // Skip game-sheet and UI construction; exercise the real replan, Stop and cleanup paths.
         var controller = (QuestController)RuntimeHelpers.GetUninitializedObject(typeof(QuestController));
         SetField("_logger", NullLogger<QuestController>.Instance);
         SetField("_highlightObject", highlight);

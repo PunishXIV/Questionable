@@ -201,8 +201,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
         return false;
     }
 
-    // A restart can find the player in a later step's dialogue before the task queue can run.
-    // Only an explicit matching choice may recover that situation; never infer a future solo duty.
+    // After a restart the player can already be in a later step's dialogue; only answer an explicit matching choice.
     internal unsafe bool TryHandleStartupDialogue()
     {
         if (_questController.HasExternalOperation || _questController.StartedQuest is not { } quest ||
@@ -382,8 +381,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
         if (now < confirmation.NextCheckAt)
             return;
 
-        // The duty prompt itself can keep OccupiedInCutSceneEvent set. Its exact text and
-        // enabled button establish readiness; only loading prevents this owned confirmation.
+        // The duty prompt can keep OccupiedInCutSceneEvent set, so only loading blocks the confirmation.
         bool loading = _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51];
         string? prompt = null;
         bool ready = false;

@@ -21,7 +21,6 @@ public sealed class EmbeddedQuest
             .Replace(".json", "", System.StringComparison.Ordinal);
     }
 
-    /// <summary>Full embedded-resource manifest name.</summary>
     public string ManifestName { get; }
 
     /// <summary>Filename without directories or extension, used as the theory display name.</summary>

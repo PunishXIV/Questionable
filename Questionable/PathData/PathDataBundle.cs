@@ -10,10 +10,8 @@ namespace Questionable.PathData;
 /// </summary>
 internal static class PathDataBundle
 {
-    /// <summary>Name of the manifest entry inside the bundle zip.</summary>
     public const string ManifestEntryName = "manifest.json";
 
-    /// <summary>Zip-entry path prefix for quest path files.</summary>
     public const string QuestPathPrefix = "QuestPaths/";
 
     private static readonly JsonSerializerOptions ManifestJsonOptions = new()

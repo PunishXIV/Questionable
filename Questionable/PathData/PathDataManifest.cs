@@ -42,7 +42,6 @@ internal sealed class PathDataManifest
     [JsonPropertyName("bundleSha256")]
     public string? BundleSha256 { get; set; }
 
-    /// <summary>When the bundle was produced.</summary>
     [JsonPropertyName("generatedAt")]
     public DateTimeOffset? GeneratedAt { get; set; }
 

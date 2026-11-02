@@ -128,8 +128,7 @@ public sealed class MovementOwnershipTests : IDisposable
         knightshopper.GetBusy().Returns(false);
         using MovementController movement = CreateController(new(), knightshopper, operation, gather);
 
-        // A real IPC adapter must keep old providers visible to the movement guard.
-        // The null navmesh dependency fails if Stop attempts to touch global movement.
+        // Old providers stay visible to the movement guard; the null navmesh fails if Stop touches global movement.
         movement.Stop();
 
         Assert.Null(movement.Destination);
@@ -148,8 +147,7 @@ public sealed class MovementOwnershipTests : IDisposable
     {
         GatheringOperationState operation = new();
         Guid owner = operation.BeginSubmission();
-        // Legacy gathering has no remote operation ID; local retention alone must
-        // protect travel, including when the provider reports idle or its reply was lost.
+        // Legacy gathering has no remote ID, so local retention alone protects travel, even after idle or a lost reply.
         if (abandoned)
             operation.AbandonCurrent();
         if (uncertain)
@@ -316,8 +314,7 @@ public sealed class MovementOwnershipTests : IDisposable
             _ownedAutoDuties.Add(autoDuty);
         }
 
-        // Native dependencies are deliberately null: reaching the global navmesh stop fails
-        // these tests before any game input can be touched.
+        // Native dependencies are null, so reaching the global navmesh stop fails the test before any game input.
         return new MovementController(
             navmeshIpc: null!,
             clientState: null!,

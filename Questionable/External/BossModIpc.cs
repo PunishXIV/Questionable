@@ -67,7 +67,6 @@ internal sealed class BossModIpc
             }
             catch (Exception)
             {
-                // A failed provider query is unknown, never a safe state for the confirmation UI.
                 return false;
             }
         }
@@ -78,7 +77,7 @@ internal sealed class BossModIpc
         if (!CanConfirmStopped)
             return false;
 
-        // Never replay snapshots against a provider that disappeared, even after acknowledgement.
+        // The old BossMod is gone; don't restore its snapshot into the new one.
         _ownedPreset = null;
         return true;
     }
@@ -264,7 +263,7 @@ internal sealed class BossModIpc
             FailAcquisition(owned, e);
         }
 
-        // Preset failure does not discard independent setting-restoration obligations.
+        // Settings are restored even if restoring the preset failed.
         bool settingsRestored = !owned.ProviderLost && RestoreSettings(owned);
         if (owned.ProviderLost || owned.OwnershipLost || owned.PresetPending || !settingsRestored)
             return false;

@@ -75,7 +75,6 @@ internal static class Craft
             throw new TaskException("Artisan quest lists require a normal quest ID");
 
         // A full list may consume an explicitly requested intermediate (e.g. Natron in CUL 268).
-        // Explicit steps need evidence that a list produces their target before submission.
         if (itemId.HasValue && (requiredItemIds is not { Count: > 0 } || !requiredItemIds.Contains(itemId.Value)))
             return false;
 
@@ -120,7 +119,6 @@ internal static class Craft
 
         public bool Update(ArtisanStatus status, bool objectiveMet, TimeSpan elapsed)
         {
-            // CraftingOperationState blocks unavailable providers before progress is evaluated.
             if (status == ArtisanStatus.Paused)
                 throw new TaskException("Artisan is paused or has a stop request; cancel its work manually before restarting Questionable");
 
@@ -169,7 +167,6 @@ internal static class Craft
 
         protected override unsafe bool Start()
         {
-            // Establish the same objective before either list or recipe submission.
             bool hasItemTarget = HasItemTarget(Task);
             _itemTargets = GetItemTargets(Task);
             _requireObjective = _itemTargets.Count > 0 || QuestWorkUtils.HasCompletionFlags(Task.Step.CompletionQuestVariablesFlags);
@@ -194,7 +191,6 @@ internal static class Craft
 
             if (listTargets != null)
             {
-                // Read the list's inventory before submission; retain the recipe objective for fallback.
                 int[] listCounts = listTargets.Select(GetOwnedItemCount).ToArray();
                 bool listRequiresObjective = listTargets.Count > 0 || QuestWorkUtils.HasCompletionFlags(Task.Step.CompletionQuestVariablesFlags);
                 if (TryStartQuestList(artisanIpc, Task.Quest.Id, Task.ItemId, requiredItemIds))
@@ -251,8 +247,7 @@ internal static class Craft
 
         private bool TrackSubmission()
         {
-            // IsBusy includes queued startup/cleanup. There is no scoped cancellation IPC;
-            // SetStopRequest only pauses lists and must not be treated as cancellation.
+            // IsBusy includes queued startup/cleanup. SetStopRequest only pauses lists; Artisan has no cancel for just our work.
             _elapsed.Restart();
             _operationId = craftingOperation.OperationId ??
                 throw new TaskException("Artisan submission was not tracked; check Artisan before restarting");

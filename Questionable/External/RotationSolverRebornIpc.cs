@@ -112,7 +112,7 @@ internal sealed class RotationSolverRebornIpc : Ipc
             }
             if (!ReferenceEquals(_owner, provider))
             {
-                // The old instance is gone. Never replay its snapshot into the replacement.
+                // The old RSR is gone; don't restore its snapshot into the new one.
                 _owner = null;
                 return true;
             }
@@ -179,9 +179,7 @@ internal sealed class RotationSolverRebornIpc : Ipc
 
     private void EnsureFrameworkThread()
     {
-        // Combat runs on Framework.Update. An IPC/UI/disposal caller must never synchronously wait
-        // for that thread: it may be waiting on the caller. Failed off-thread cleanup stays pending
-        // for CombatController's framework poll; plugin shutdown already marshals cleanup there.
+        // Never wait on the framework thread from elsewhere; failed off-thread cleanup is retried by CombatController's poll.
         if (!_framework.IsInFrameworkUpdateThread)
             throw new TaskException("Rotation control must run on the framework thread; cleanup remains pending.");
     }
@@ -233,9 +231,6 @@ internal sealed class RotationSolverRebornIpc : Ipc
         throw new TaskException("This RotationSolverReborn version does not expose readable mode state.");
     }
 
-    /// <summary>
-    /// The state of the plugin.
-    /// </summary>
     public enum StateCommandType : byte
     {
         /// <summary>

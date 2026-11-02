@@ -43,7 +43,6 @@ internal sealed class AutoDutyOperationState(TimeProvider? timeProvider = null)
             return;
         ProviderLost |= providerLost;
         MarkUncertain(owner);
-        // Unknown permits confirmation only after all settings obligations have settled.
         SetStatus(_settingsRestored ? ExternalOperationStatus.Unknown : ExternalOperationStatus.CancellationRequested, message);
     }
 
@@ -93,8 +92,7 @@ internal sealed class AutoDutyOperationState(TimeProvider? timeProvider = null)
             else if (stopped == true && ObservedRunning)
             {
                 _observedStop = true;
-                // A normal provider stop can precede a long cutscene or loading screen.
-                // Only an explicit cancellation starts the stop-acknowledgement deadline.
+                // A normal stop can be followed by a long cutscene or load; only a cancel starts the deadline.
                 SetStatus(IsAbandoned ? ExternalOperationStatus.CancellationRequested : ExternalOperationStatus.Running,
                     "Waiting for duty, movement and settings cleanup");
             }

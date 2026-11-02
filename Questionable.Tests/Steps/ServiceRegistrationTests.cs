@@ -46,8 +46,7 @@ public sealed class ServiceRegistrationTests
         plugin.GetIpcSubscriber<bool>("GatherChill.IsBusy").Returns(busy);
         plugin.GetIpcSubscriber<uint, bool>("GatherChill.CanGather").Returns(canGather);
 
-        // Use the generated production descriptors for the failing startup path.
-        // Unrelated quest/game services are placeholders; their native initialization is not exercised here.
+        // Production registrations; unrelated game services are placeholders.
         IServiceCollection registrations = new ServiceCollection().AddQuestionable();
         IServiceCollection services = new ServiceCollection();
         services.Add(registrations.Single(s => s.ServiceType == typeof(ContextMenuController)));

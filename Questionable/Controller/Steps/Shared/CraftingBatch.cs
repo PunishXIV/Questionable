@@ -6,7 +6,7 @@ internal static class CraftingBatch
 {
     internal static IReadOnlyList<CraftingItem>? Resolve(Craft.CraftTask task, IReadOnlySet<uint>? requiredItemIds)
     {
-        // Keep legacy list-only compatibility, including an empty, unverified target set.
+        // Legacy list-only step without item targets.
         if (task.ItemId == null && task.ItemCount == null)
             return Craft.GetItemTargets(task);
 
@@ -38,7 +38,6 @@ internal static class CraftingBatch
             if (targets.Count != 1 || targets[0].ItemId != craft.Step.ItemId.Value)
                 return null;
 
-            // Metadata correction must not hide an explicitly incompatible NQ/HQ requirement.
             if (craft.Step.ItemQuality != EItemQuality.Any && targets[0].Quality != EItemQuality.Any &&
                 craft.Step.ItemQuality != targets[0].Quality)
                 return null;
@@ -46,7 +45,6 @@ internal static class CraftingBatch
                 return null;
         }
 
-        // Every native output must be explicitly represented in this block, with complete metadata.
         if (!requiredItemIds.SetEquals(outputs.Keys))
             return null;
         foreach (CraftingItem requirement in requirements)
@@ -99,7 +97,7 @@ internal static class CraftingBatch
         if (skip == null || skip.Never)
             return false;
 
-        // Inventory sufficiency does not change the batch's scope. Other skip predicates can.
+        // Already having the items doesn't skip the batch.
         return skip.Item is { NotInInventory: true } ||
                skip.CompletionQuestVariablesFlags.Any(x => x != null) ||
                skip.Flying != null || skip.Chocobo != null || skip.Diving != null || skip.NotTargetable ||

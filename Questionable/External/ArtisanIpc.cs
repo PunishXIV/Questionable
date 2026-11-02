@@ -65,7 +65,7 @@ internal sealed class ArtisanIpc(IDalamudPluginInterface pluginInterface, ILogge
         Guid? operationId = null;
         try
         {
-            // Only a successful catalogue query can establish that fallback is appropriate.
+            // Only report a missing list when the list query itself worked.
             if (!_getLists.InvokeFunc().ContainsKey(listId))
                 return ArtisanStartResult.MissingList;
 
@@ -130,7 +130,7 @@ internal interface IArtisanIpc
 
 internal enum ArtisanStartResult
 {
-    // These IPC actions return void. Submission is not proof of execution or completion.
+    // Artisan's IPC returns nothing, so Submitted doesn't mean it ran.
     Submitted,
     MissingList,
     Busy,

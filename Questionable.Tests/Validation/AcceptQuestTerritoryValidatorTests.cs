@@ -136,7 +136,6 @@ public sealed class AcceptQuestTerritoryValidatorTests
     [Fact]
     public void AcceptQuestStep_InNonZeroSequence_IsIgnored()
     {
-        // The rule is scoped to sequence 0; other sequences are someone else's concern.
         var quest = CreateQuest(new QuestId(1),
             Seq(0, AcceptStep(LimsaTerritory)),
             Seq(1, AcceptStep(NoAetheryteTerritory)));
@@ -159,8 +158,6 @@ public sealed class AcceptQuestTerritoryValidatorTests
     [MemberData(nameof(CharacterStartingTerritoryData))]
     public void AcceptQuest_InCharacterStartingTerritory_NoShortcuts_ReturnsNoIssues(uint territoryId)
     {
-        // The player is auto-placed in these territories for the opening class/race quest,
-        // so requiring an AetheryteShortcut/AethernetShortcut would be nonsensical.
         var quest = CreateQuest(new QuestId(1),
             Seq(0, AcceptStep(territoryId)));
 

@@ -116,8 +116,7 @@ public sealed class WaitAtEndTests
         WaitAtEnd.NextStep next = new(new QuestId(123), 0);
         queue.Enqueue(next);
 
-        // Use the production keyed registrations and controller update path to exercise
-        // task insertion ahead of replay, without touching native interaction executors.
+        // Production registrations and update path, without native interaction executors.
         IServiceCollection services = new ServiceCollection();
         ServiceCollectionExtensions.AddTaskRegistrations(services);
         services.AddSingleton(condition);
@@ -223,8 +222,7 @@ public sealed class WaitAtEndTests
     private static InterruptionController CreateController(TaskQueue queue, ICondition condition,
         IServiceProvider? provider = null)
     {
-        // Bypass native hooks and game-sheet construction, exercising the real damage
-        // handler, wait executors and replay queue without invoking native quest reads.
+        // Skip native hooks and game-sheet construction; exercise the real damage handler and replay queue.
         var controller = (InterruptionController)RuntimeHelpers.GetUninitializedObject(typeof(InterruptionController));
         SetField("_taskQueue", queue);
         SetField("_condition", condition);

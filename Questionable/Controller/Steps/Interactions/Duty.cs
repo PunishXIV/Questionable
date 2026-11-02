@@ -154,7 +154,7 @@ internal static class Duty
             }
             finally
             {
-                // Even a lost Run reply leaves work which controller cleanup must retain.
+                // A lost Run reply can still have started work, so keep ownership.
                 if (previousOwner == null)
                     _owner = _autoDutyIpc.Operation.OperationId;
             }

@@ -119,8 +119,7 @@ public sealed class SoloDutyTests
         Assert.Equal(ETaskResult.TaskComplete, executor.Update());
         string? ownedPreset = _context.ActivePreset;
 
-        // Model the provider's configurable ordinary-death and combat-end transitions.
-        // ScriptedDeath is deliberately not involved in this generic lifetime policy.
+        // Model the provider's configurable death and combat-end transitions.
         if (_context.Settings[("AutorotationConfig", "ClearPresetOnDeath")])
             _context.ActivePreset = "Force disabled";
         _context.Ipc.PollSoloDuty();
