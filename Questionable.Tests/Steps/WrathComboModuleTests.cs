@@ -10,6 +10,7 @@ using Questionable.Controller;
 using Questionable.Controller.CombatModules;
 using Questionable.Controller.Steps;
 using Questionable.Model.Common;
+using Questionable.Tests.TestData;
 using WrathCombo.API;
 using WrathCombo.API.Enum;
 using Xunit;
@@ -75,7 +76,7 @@ public sealed class WrathComboModuleTests : IDisposable
     public void RejectedConfiguration_FailsStartAndReleasesPartialLease(AutoRotationConfigOption rejected)
     {
         _configure.InvokeFunc(_lease, rejected, Arg.Any<object>()).Returns(SetResult.InvalidConfiguration);
-        Assert.False(_module.Start(CombatControllerTests.Data()));
+        Assert.False(_module.Start(CombatTestData.Create()));
         _release.Received(1).InvokeAction(_lease);
         Assert.True(_module.Stop());
         _release.Received(1).InvokeAction(_lease);
@@ -86,14 +87,14 @@ public sealed class WrathComboModuleTests : IDisposable
     {
         _configure.InvokeFunc(_lease, Arg.Any<object>(), Arg.Any<object>())
             .Returns(_ => throw new InvalidOperationException("provider failed"));
-        Assert.False(_module.Start(CombatControllerTests.Data()));
+        Assert.False(_module.Start(CombatTestData.Create()));
         _release.Received(1).InvokeAction(_lease);
     }
 
     [Fact]
     public void FailedRelease_RetainsSameLeaseForRetry()
     {
-        Assert.True(_module.Start(CombatControllerTests.Data()));
+        Assert.True(_module.Start(CombatTestData.Create()));
         bool failed = true;
         _release.When(x => x.InvokeAction(_lease)).Do(_ =>
         {
@@ -102,13 +103,13 @@ public sealed class WrathComboModuleTests : IDisposable
         });
         Assert.False(_module.Stop());
         Assert.False(_module.Stop());
-        Assert.False(_module.Start(CombatControllerTests.Data()));
+        Assert.False(_module.Start(CombatTestData.Create()));
         Assert.Single(_logger.ReceivedCalls(), call => call.GetMethodInfo().Name == "Log" &&
             call.GetArguments()[0] is LogLevel.Warning);
         failed = false;
         Assert.True(_module.Stop());
         _release.Received(3).InvokeAction(_lease);
-        Assert.True(_module.Start(CombatControllerTests.Data()));
+        Assert.True(_module.Start(CombatTestData.Create()));
         failed = true;
         Assert.False(_module.Stop());
         Assert.Equal(2, _logger.ReceivedCalls().Count(call => call.GetMethodInfo().Name == "Log" &&
@@ -122,7 +123,7 @@ public sealed class WrathComboModuleTests : IDisposable
         using var controller = new CombatController([_module], null!, Substitute.For<ITargetManager>(),
             Substitute.For<IObjectTable>(), Substitute.For<ICondition>(), Substitute.For<IClientState>(),
             null!, null!, _framework, NullLogger<CombatController>.Instance);
-        Assert.True(controller.Start(CombatControllerTests.Data()));
+        Assert.True(controller.Start(CombatTestData.Create()));
         _cancel(0, "manual takeover");
         Assert.Contains("lease was cancelled", Assert.Throws<TaskException>(() => controller.Update()).Message);
         Assert.False(controller.IsRunning);
@@ -132,7 +133,7 @@ public sealed class WrathComboModuleTests : IDisposable
     [Fact]
     public void MissingProvider_IsCheckedEvenWithoutTarget()
     {
-        Assert.True(_module.Start(CombatControllerTests.Data()));
+        Assert.True(_module.Start(CombatTestData.Create()));
         _ready.InvokeFunc().Returns(false);
         Assert.Throws<TaskException>(() => _module.VerifyActive());
     }

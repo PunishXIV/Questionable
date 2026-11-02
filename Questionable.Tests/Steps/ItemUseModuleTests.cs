@@ -5,6 +5,7 @@ using Questionable.Controller;
 using Questionable.Controller.CombatModules;
 using Questionable.Controller.Steps;
 using Questionable.Model.Questing;
+using Questionable.Tests.TestData;
 using Xunit;
 
 namespace Questionable.Tests.Steps;
@@ -13,16 +14,7 @@ public sealed class ItemUseModuleTests
 {
     private readonly ICombatModule _rotation = Substitute.For<ICombatModule>();
     private readonly ItemUseModule _module;
-    private readonly CombatController.CombatData _data = new()
-    {
-        ElementId = null,
-        Sequence = 0,
-        CompletionQuestVariablesFlags = [],
-        SpawnType = EEnemySpawnType.AfterInteraction,
-        KillEnemyDataIds = [],
-        ComplexCombatDatas = [],
-        CombatItemUse = new CombatItemUse { ItemId = 1 },
-    };
+    private readonly CombatController.CombatData _data = CombatTestData.Create(itemUse: new CombatItemUse { ItemId = 1 });
 
     public ItemUseModuleTests()
     {

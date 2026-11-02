@@ -7,6 +7,7 @@ using Questionable.Controller.CombatModules;
 using Questionable.Controller.Steps;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Model.Questing;
+using Questionable.Tests.TestData;
 using Xunit;
 
 namespace Questionable.Tests.Steps;
@@ -39,7 +40,7 @@ public sealed class CombatControllerTests : IDisposable
             throws ? throw new InvalidOperationException("partially started") : false);
         TaskQueue queue = new(NullLogger.Instance);
         Assert.ThrowsAny<Exception>(() => queue.StartTask(new Combat.HandleCombat(_controller),
-            new Combat.Task(Data(), [], false)));
+            new Combat.Task(CombatTestData.Create(), [], false)));
         _module.Received(1).Stop();
         Assert.False(_controller.IsRunning);
         Assert.False(_controller.HasPendingCleanup);
@@ -49,7 +50,7 @@ public sealed class CombatControllerTests : IDisposable
     public void MissingProvider_StopsRatherThanSkippingCombatTask()
     {
         _module.CanHandleFight(Arg.Any<CombatController.CombatData>()).Returns(false);
-        Assert.Throws<TaskException>(() => _controller.Start(Data()));
+        Assert.Throws<TaskException>(() => _controller.Start(CombatTestData.Create()));
         _module.DidNotReceive().Start(Arg.Any<CombatController.CombatData>());
     }
 
@@ -57,7 +58,7 @@ public sealed class CombatControllerTests : IDisposable
     public void OptionalCombatWithNoFight_SkipsWithoutProvider()
     {
         _module.CanHandleFight(Arg.Any<CombatController.CombatData>()).Returns(false);
-        Assert.False(_controller.Start(Data(EEnemySpawnType.FinishCombatIfAny)));
+        Assert.False(_controller.Start(CombatTestData.Create(EEnemySpawnType.FinishCombatIfAny)));
         _module.DidNotReceive().Start(Arg.Any<CombatController.CombatData>());
     }
 
@@ -66,19 +67,19 @@ public sealed class CombatControllerTests : IDisposable
     [InlineData(true)]
     public void FailedCleanup_BlocksReplacementAndRetainsModuleUntilRetry(bool throws)
     {
-        Assert.True(_controller.Start(Data()));
+        Assert.True(_controller.Start(CombatTestData.Create()));
         _module.Stop().Returns(_ => throws ? throw new InvalidOperationException("unavailable") : false);
         _controller.Stop("cancelled");
         Assert.False(_controller.IsRunning);
         Assert.True(_controller.HasPendingCleanup);
         Assert.NotNull(_controller.BlockReason);
-        Assert.Throws<TaskException>(() => _controller.Start(Data()));
+        Assert.Throws<TaskException>(() => _controller.Start(CombatTestData.Create()));
         _module.Received(1).Start(Arg.Any<CombatController.CombatData>());
         _module.Configure().Stop().Returns(true);
         _controller.TryRetryCleanup();
         Assert.False(_controller.HasPendingCleanup);
         Assert.Null(_controller.BlockReason);
-        Assert.True(_controller.Start(Data()));
+        Assert.True(_controller.Start(CombatTestData.Create()));
     }
 
     [Fact]
@@ -86,7 +87,7 @@ public sealed class CombatControllerTests : IDisposable
     {
         _module.Start(Arg.Any<CombatController.CombatData>()).Returns(false);
         _module.Stop().Returns(false);
-        Assert.Throws<TaskException>(() => _controller.Start(Data()));
+        Assert.Throws<TaskException>(() => _controller.Start(CombatTestData.Create()));
         Assert.True(_controller.HasPendingCleanup);
         Assert.False(_controller.IsRunning);
         _module.Stop().Returns(true);
@@ -99,7 +100,7 @@ public sealed class CombatControllerTests : IDisposable
     [InlineData(true)]
     public void LostOwnership_StopsBeforeAccessingMovementOrTargets(bool throwsTaskException)
     {
-        Assert.True(_controller.Start(Data()));
+        Assert.True(_controller.Start(CombatTestData.Create()));
         Exception failure = throwsTaskException
             ? new TaskException("lease cancelled")
             : new InvalidOperationException("provider disappeared");
@@ -109,15 +110,4 @@ public sealed class CombatControllerTests : IDisposable
         _module.Received(1).Stop();
         Assert.False(_controller.IsRunning);
     }
-
-    internal static CombatController.CombatData Data(EEnemySpawnType spawnType = EEnemySpawnType.AfterInteraction) => new()
-    {
-        ElementId = null,
-        Sequence = 0,
-        CompletionQuestVariablesFlags = [],
-        SpawnType = spawnType,
-        KillEnemyDataIds = [],
-        ComplexCombatDatas = [],
-        CombatItemUse = null,
-    };
 }
