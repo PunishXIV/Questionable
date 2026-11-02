@@ -20,7 +20,6 @@ using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller;
 
-// TODO: refactor — heavy nesting (35 lines indented ≥6 levels, max indent ~9 levels).
 [RegisterSingleton]
 internal sealed class QuestController : MiniTaskController<QuestController>
 {
@@ -618,23 +617,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 }
             }
 
-            // any priority quest is flagged accept-only and can be picked up right now,
-            // queue it as the next quest so only its accept step (sequence 0) runs.
-            // Completing the accepted quests is deferred until every flagged quest has been accepted,
-            // so the user can several allied societies / quests and have them all picked up before any turn-ins start.
+            // Queue currently available accept-only priority quests before completing any.
             if (SimulatedQuest == null && NextQuest == null && GatheringQuest == null &&
                 (AutomationType == EAutomationType.Automatic || StartedQuest == null))
             {
                 TryQueueNextAcceptOnlyQuest();
             }
 
-            // Stop checks run before the NextQuest/priority cascade — otherwise a
-            // queued NextQuest (e.g. an MSQ chain or priority list pick) is started
-            // before the user's "stop after this quest" toggle is ever consulted.
-            // This checks for both IsQuestComplete and !IsQuestAccepted because
-            // repeatable quests (and new game+ questing) returns true for Complete,
-            // but the quest may still be active. This prevents the stop condition
-            // being tripped early.
+            // Honor the stop-after toggle before starting queued or priority quests; completed repeatables may still be active.
             if (StartedQuest != null && _questFunctions.IsQuestComplete(StartedQuest.Quest.Id) && !_questFunctions.IsQuestAccepted(StartedQuest.Quest.Id))
             {
                 if (_configuration.Stop.Enabled &&

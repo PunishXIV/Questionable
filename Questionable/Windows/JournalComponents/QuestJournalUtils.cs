@@ -243,11 +243,7 @@ internal sealed class QuestJournalUtils
                 questController.PriorityManager.Remove(quest.QuestId);
         }
 
-        // Queues every quest in the group to be accepted before any of them is completed. Unlike
-        // "Add all to Priority Quests" (which does each quest start-to-finish one at a time), this lets the
-        // user pick up several quests in a group (such as allied societies' dailies) at once,
-        // the completion/turn-ins only start once everything queued has been accepted from the priority queue.
-        // Does not auto-start questionable, that is up to the user.
+        // Queue the group's accept steps before any completions, unlike the normal priority flow.
         if (ImGui.MenuItem(_L("Accept all quests")))
         {
             foreach (IQuestInfo quest in quests)

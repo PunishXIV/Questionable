@@ -8,7 +8,6 @@ using Questionable.AutoGen.Plugin;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.ConfigComponents;
 
-// TODO: refactor — heavy nesting (41 lines indented ≥6 levels, max indent ~12 levels).
 [RegisterSingleton]
 internal sealed class DebugConfigComponent
 (

@@ -42,13 +42,7 @@ internal sealed class QuestProgressInfo
                 repr += "   ";
         }
 
-        // For combat quests, a sequence to kill 3 enemies works a bit like this:
-        // Trigger enemies → 0
-        // Kill first enemy → 1
-        // Kill second enemy → 2
-        // Last enemy → increase sequence, reset variable to 0
-        // The order in which enemies are killed doesn't seem to matter.
-        // If multiple waves spawn, this continues to count up (e.g. 1 enemy from wave 1, 2 enemies from wave 2, 1 from wave 3) would count to 3 then 0
+        // Combat progress increments per kill and resets when the sequence advances; kills across waves count together.
         _asString = $"QW: {repr.Trim()}";
     }
 

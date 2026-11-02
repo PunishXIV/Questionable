@@ -170,14 +170,10 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
             AddStepsPerTodoArea(symbols, sequence, hint, todoLevels);
         }
 
-        // When the script names enemies with no actor in front of them, the fight is what the sequence is for.
-        // The quest giver stays targetable throughout and gets listed for that reason alone, so interacting with
-        // them mid-hunt is a step the player never performs. Any other actor is still worth emitting.
+        // An unattributed enemy makes this a combat sequence; omit its persistent quest giver as an interaction.
         bool objectiveIsCombat = hint != null && hint.EnemyPairs.Any(x => x.Actor == null);
 
-        // With a fight to be had, the sequence's actor is where it happens rather than someone to talk to; the
-        // combat step below anchors itself to them. Emitting a separate interaction here produces a step the
-        // player never performs - the NPC just says a line and the objective is still the fight.
+        // Combat actors anchor combat steps, not separate interactions.
         if (sequence.Steps.Count == 0 && !objectiveIsCombat && hint is { TargetSymbols.Count: > 0 })
         {
             uint? preferredTerritory = todoLevels.Count > 0 ? todoLevels[0].Territory.RowId : null;
@@ -191,10 +187,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
             }
         }
 
-        // Applied last, and to the sequence as a whole, so every enemy the script names is covered no matter
-        // which of the branches above produced the steps.
-        // Emote first: a todo line that spells out "/dance" is more specific evidence than merely carrying an
-        // item, so it claims the step before the item-use pass looks at what is left.
+        // Apply emotes first: explicit todo text is stronger evidence than item ownership.
         ApplyEmote(quest, sequence, number);
 
         if (hint != null)
@@ -207,11 +200,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         if (sequence.Steps.Count == 0 && todoLevels.Count > 0 && AddUnattributedCombat(symbols, sequence, todoLevels, TodoQty(quest, number)))
             return sequence;
 
-        // Last resort before giving up on a target: pair the search areas with whatever actors the script
-        // named for this sequence. The branch above runs this only for the "speak with all three" shape; here
-        // the constraints are dropped, because a step pointing at the right NPC beats a bare position.
-        // Not when the sequence is a fight, though - the combat step already anchors itself to the actor, and
-        // adding an interaction on the same NPC in front of it is a step the player never performs.
+        // As a non-combat fallback, match remaining search areas to sequence actors.
         if (sequence.Steps.Count == 0 && !objectiveIsCombat && hint != null && todoLevels.Count > 0)
             AddStepsPerTodoArea(symbols, sequence, hint, todoLevels);
 
@@ -480,10 +469,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
 
             if (analysis.UsesEventItems)
             {
-                // An item is picked up in one sequence and used in another, and it is held for the whole span
-                // between. Using it consumes it, so the latest sequence still holding it is where it gets used -
-                // anything before that is just carrying it. Sequences that ended up with nothing to use it on
-                // are skipped, which walks the search back to the last one that does.
+                // For carried event items, apply use to the latest non-trade sequence that holds it.
                 IEnumerable<SequenceHint> holders = analysis.Hints.Values
                     .Where(x => x.HeldItemSymbols.Contains(symbol, StringComparer.Ordinal) && !x.IsNpcTrade)
                     .OrderByDescending(x => x.Sequence);
@@ -500,10 +486,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
                 continue;
             }
 
-            // Some scripts never declare IsEventItemUsable even though the quest plainly uses the item. The
-            // journal still says so - "Use the lice comb on the shaggy sheep" - so fall back to the todo line
-            // that tells you to use it. Only an explicit instruction counts: lines that merely name the item
-            // while handing it over or picking it up are not item uses.
+            // If the script lacks IsEventItemUsable, use an explicit journal instruction as a fallback.
             if (SequenceUsingItem(quest, itemId) is { } named &&
                 bySequence.TryGetValue(named, out QuestSequence? namedSequence))
             {
@@ -668,10 +651,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
             ? $"auto: lua enemies spawn here -> {string.Join(", ", enemies)}"
             : $"auto: lua overworld enemies -> {string.Join(", ", enemies)}";
 
-        // "Kill until it drops": the fight has to keep going until the item is in the bag. Without this the
-        // plugin stops the moment combat ends, i.e. after a single kill. How many are needed comes from the
-        // event item's stack size, which is the objective's own limit; the todo quantity counts kills, not
-        // drops, and the two are not always the same.
+        // For drop objectives, event-item stack size determines needed kills; todo quantity can differ.
         int needed = dropItemId is { } id ? gameData.EventItemStackSize(id) : 0;
         if (needed == 0)
             needed = requiredCount;

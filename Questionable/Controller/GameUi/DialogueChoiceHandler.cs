@@ -15,8 +15,6 @@ namespace Questionable.Controller.GameUi;
 ///     Handles the in-game "SelectString", "CutSceneSelectString" and "SelectIconString" addons —
 ///     picking the list entry that matches the current quest's dialogue choices.
 /// </summary>
-// TODO: refactor — heavy nesting (22 lines indented ≥6 levels, max indent 16 levels).
-//       High max indent likely reflects LINQ / method-chain continuations rather than control flow; verify before restructuring.
 [RegisterSingleton]
 internal sealed partial class DialogueChoiceHandler : IDisposable
 {

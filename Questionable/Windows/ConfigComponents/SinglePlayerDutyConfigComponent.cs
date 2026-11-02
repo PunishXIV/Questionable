@@ -14,7 +14,6 @@ using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Windows.ConfigComponents;
 
-// TODO: refactor — heavy nesting (39 lines indented ≥6 levels, max indent ~8 levels). Likely mirrors DutyConfigComponent structure.
 [RegisterSingleton]
 internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
 {

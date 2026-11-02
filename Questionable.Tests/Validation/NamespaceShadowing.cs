@@ -9,11 +9,7 @@ public class NamespaceShadowing
     [Fact]
     public void MainAssembly_HasNoTypesInModelNamespace()
     {
-        // Read the assembly's metadata directly from disk. Using reflection
-        // (Assembly.GetTypes()) forces the CLR to resolve every type's base
-        // classes and interfaces, which drags in Dalamud/Lumina at test time
-        // and throws ReflectionTypeLoadException. MetadataReader inspects the
-        // PE file without executing any type resolution.
+        // Reflection resolves dependencies unavailable to this test; inspect PE metadata instead.
         string path = Path.Combine(AppContext.BaseDirectory, "Questionable.dll");
         Assert.True(File.Exists(path), $"Questionable.dll not found at {path}");
 

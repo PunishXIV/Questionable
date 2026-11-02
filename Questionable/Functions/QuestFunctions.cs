@@ -20,8 +20,6 @@ using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Functions;
 
-// TODO: refactor — heavy nesting (27 lines indented ≥6 levels, max indent 22 levels).
-//       Very high max indent likely reflects LINQ / method-chain continuations rather than control flow; verify before restructuring.
 [RegisterSingleton]
 internal sealed unsafe class QuestFunctions
 (
@@ -245,23 +243,6 @@ internal sealed unsafe class QuestFunctions
                                 return new(talkToNormalNpcs.Value.Item1, talkToNormalNpcs.Value.Item2, msqQuest.State);
                         }
 
-                        /*
-                             * TODO: If you have e.g. a mount quest in the middle of 3, it should temporarily make you
-                             *       do that quest first, even if it isn't the first in the list. Otherwise, the logic
-                             *       here won't make much sense.
-                             *
-                             * TODO: This also won't work if two or three daily quests use a mount.
-                            if (mountNpcs.Length > 0)
-                            {
-                                var talkToMountNpc = alliedQuestsForSameSociety
-                                    .Where(x => x.Sequence < 255)
-                                    .Where(x => IsInteractStep(x.Quest, x.Sequence, mountNpcs))
-                                    .Cast<(ElementId, byte)?>()
-                                    .FirstOrDefault();
-                                if (talkToMountNpc != null)
-                                    return talkToMountNpc.Value;
-                            }
-                            */
                     }
                 }
             }
@@ -1094,13 +1075,8 @@ internal sealed unsafe class QuestFunctions
             { 570, Job.THM }
         };
 
-        // The starting class experience is a bit confusing. If you start in Gridania, the MSQ next quest data will
-        // always select 'Close to Home (Lancer)' even if starting as Conjurer/Archer. However, if we always mark the
-        // Lancer quest as unobtainable, it'll not get picked up as Conjurer/Archer, and thus will stop questing.
-        //
-        // While the NPC offers all 3 quests, there's no manual selection, and interacting will automatically select the
-        // quest for your current class, then switch you from a dead-ish intro zone to the actual starting city
-        // (so that you can't come back later to pick up another quest).
+        // The starter-city NPC offers every Close to Home quest but selects the current class's quest.
+        // Once one has started, treat the other starting-class quests as unavailable.
         if (closeToHomeQuests.TryGetValue(questId.Value, out Job neededStartingClass) &&
             closeToHomeQuests.Any(x => IsQuestAcceptedOrComplete(new QuestId(x.Key))))
         {

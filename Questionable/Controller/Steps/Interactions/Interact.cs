@@ -13,7 +13,6 @@ using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
 namespace Questionable.Controller.Steps.Interactions;
 
-// TODO: refactor — heavy nesting (22 lines indented ≥6 levels, max indent ~12 levels).
 internal static class Interact
 {
     internal sealed class Factory(AutomatonIpc automatonIpc, BossModIpc bossModIpc, Configuration configuration, RedoUtil redoUtil,
@@ -334,12 +333,7 @@ internal static class Interact
                 }
             }
 
-            // A class/job quest can only be progressed on the class it was accepted with — otherwise the game
-            // blocks with "You cannot continue this quest until the following conditions are met: Required
-            // Class/Job: X". Accepting a batch of quests (e.g. the accept-only flow) can leave a different
-            // class active, so before interacting to progress/complete an accepted quest, switch back to its
-            // accept class if needed. LookupQuestStartJob returns Job.ADV for quests with no such lock.
-            // So, even if a user manually interferes this allows us to resume questing with the correct class type :)
+            // Accepted class/job quests must be progressed on their original class; switch back before interacting.
             if (!_reportedWrongJob && Task.Quest != null &&
                 InteractionType is EInteractionType.CompleteQuest or EInteractionType.Interact &&
                 objectTable[0] is IPlayerCharacter completionPlayer &&

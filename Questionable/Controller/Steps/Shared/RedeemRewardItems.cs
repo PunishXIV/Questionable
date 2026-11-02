@@ -9,10 +9,7 @@ namespace Questionable.Controller.Steps.Shared;
 
 internal static class RedeemRewardItems
 {
-    // Items we've already tried this run, keyed by item id -> stack size at the time we used it.
-    // Kept in memory only (not persisted, not user-visible): if an item is still present with the same
-    // quantity we attempted, we skip it instead of retrying forever (coffers always report as locked).
-    // A changed quantity (e.g. a freshly obtained coffer of the same type) lets it be tried again.
+    // Avoid retrying an unchanged reward item indefinitely; retry if its stack changes.
     private static readonly Dictionary<uint, int> AttemptedItems = [];
 
     internal static void ResetAttemptedItems() => AttemptedItems.Clear();

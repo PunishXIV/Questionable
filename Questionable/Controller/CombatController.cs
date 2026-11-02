@@ -13,8 +13,6 @@ using BattleNpcSubKind = Dalamud.Game.ClientState.Objects.Enums.BattleNpcSubKind
 
 namespace Questionable.Controller;
 
-// TODO: refactor — heavy nesting (21 lines indented ≥6 levels, max indent 16 levels).
-//       High max indent likely reflects LINQ / method-chain continuations rather than control flow; verify before restructuring.
 [RegisterSingleton]
 internal sealed class CombatController : IDisposable
 {
@@ -159,12 +157,7 @@ internal sealed class CombatController : IDisposable
             _movementController.MovementStartedAt > DateTime.Now.AddSeconds(-1))
             return EStatus.Moving;
 
-        // Overworld enemies typically means that if we want to kill 3 enemies, we could have anywhere from 0 to 20
-        // enemies in the area (0 if someone else killed them before, like can happen with bots in Fools' Falls in
-        // La Noscea).
-        //
-        // For all 'normal' types, e.g. auto-spawning on entering an area, there's a fixed number of enemies that you're
-        // fighting with, and the enemies in the overworld aren't relevant.
+        // Overworld enemies are variable; instanced or area spawns have fixed enemies.
         if (_currentFight.Data.SpawnType is EEnemySpawnType.OverworldEnemies)
         {
             if (_targetManager.Target != null)

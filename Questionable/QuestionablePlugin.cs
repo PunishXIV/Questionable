@@ -53,14 +53,8 @@ public sealed class QuestionablePlugin(
     {
         var serviceProvider = Interlocked.Exchange(ref _serviceProvider, value: null);
 
-        // Unhook Dalamud event sources (Framework.Update, UiBuilder callbacks, toast hooks, ...)
-        // before disposing the container. MS.DI marks the root scope as disposed at the *start* of
-        // Dispose/DisposeAsync, so any GetService call after that point throws ObjectDisposedException.
-        // Under IAsyncDalamudPlugin.DisposeAsync the framework thread can tick between "scope flagged
-        // disposed" and DalamudInitializer being reached in the disposal walk, and other singletons'
-        // per-frame container access would blow up. Disposing DalamudInitializer up-front removes the
-        // event subscriptions before that window opens; its Dispose is idempotent so MS.DI's later
-        // disposal pass is a no-op.
+        // Dispose event sources before the DI container so callbacks cannot access disposed services.
+        // DalamudInitializer.Dispose is idempotent, so the container's later disposal is safe.
         try
         {
             if (serviceProvider != null && !framework.IsFrameworkUnloading)

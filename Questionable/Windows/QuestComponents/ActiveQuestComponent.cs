@@ -17,7 +17,6 @@ using Questionable.Model.Questing;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.QuestComponents;
 
-// TODO: refactor — heavy nesting (43 lines indented ≥6 levels, max indent ~13 levels).
 [RegisterSingleton]
 internal sealed partial class ActiveQuestComponent
 (
@@ -287,7 +286,6 @@ internal sealed partial class ActiveQuestComponent
             ImGui.SameLine();
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle, reportButtonColor))
             {
-                // TODO report
             }
 
             if (ImGui.IsItemHovered())

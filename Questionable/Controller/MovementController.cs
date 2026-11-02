@@ -12,7 +12,6 @@ using Questionable.Model.Common.Converter;
 using Questionable.Model.Questing;
 namespace Questionable.Controller;
 
-// TODO: refactor — heavy nesting (33 lines indented ≥6 levels, max indent 8 levels).
 [RegisterSingleton]
 internal sealed class MovementController
 (
