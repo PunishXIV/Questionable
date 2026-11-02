@@ -1,9 +1,8 @@
-using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using Questionable.Controller.Steps.Common;
-using Questionable.Controller.Steps.Fishing;
+using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
 using static Questionable.Controller.Steps.ITaskExecutor;
+using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.Steps.Shared;
 
@@ -23,123 +22,138 @@ internal static class Fish
         }
     }
 
+    /// <summary>Feesh switches job and travels itself, so Questionable skips its own travel for these steps.</summary>
+    public static bool IsHandledByFeesh(QuestStep step, IFeeshIpc feeshIpc) =>
+        step is { InteractionType: EInteractionType.Fish, ItemsToGather.Count: > 0 } &&
+        step.ItemsToGather.All(item => item.Collectability == 0) &&
+        feeshIpc.IsAvailable() &&
+        step.ItemsToGather.All(item => feeshIpc.CanCatch(item.ItemId));
+
     internal sealed record FishTask(Quest Quest, GatheredItem? GatheredItem,
         IList<QuestWorkValue?> CompletionQuestVariablesFlags) : ITask
     {
         public bool HasCompletionQuestVariablesFlags { get; } =
             QuestWorkUtils.HasCompletionFlags(CompletionQuestVariablesFlags);
-        public string? PreparedPreset { get; init; }
 
         public override string ToString() =>
             $"Fish{(HasCompletionQuestVariablesFlags ? "*" : "")}{(GatheredItem != null ? $"({GatheredItem.ItemCount}x {GatheredItem.ItemId})" : "")}";
     }
 
-    internal sealed class DoFish : TaskExecutor<FishTask>, IStoppableTaskExecutor, IExtraTaskCreator
+    internal sealed class DoFish : TaskExecutor<FishTask>, IStoppableTaskExecutor
     {
-        private readonly IAutoHookIpc _autoHookIpc;
+        private readonly IFeeshIpc _feeshIpc;
         private readonly FishingOperationState _operation;
-        private readonly IFishingPresetGenerator _generator;
         private readonly ILogger<DoFish> _logger;
         private readonly Func<FishTask, bool> _objectivesSatisfied;
+        private readonly Func<GatheredItem, int> _eligibleCount;
+        private readonly Func<uint, string> _itemName;
         private readonly TimeProvider _clock;
         private Guid? _owner;
-        private string? _preparedPreset;
         private long? _completedAt;
 
-        public DoFish(IAutoHookIpc autoHookIpc, FishingOperationState operation,
-            IFishingPresetGenerator generator, ILogger<DoFish> logger)
-            : this(autoHookIpc, operation, generator, logger, HasCompletedObjectives)
+        public DoFish(IFeeshIpc feeshIpc, FishingOperationState operation, IDataManager dataManager,
+            ILogger<DoFish> logger)
+            : this(feeshIpc, operation, logger, HasCompletedObjectives, CountEligibleInInventory,
+                itemId => dataManager.GetExcelSheet<Item>().GetRowOrDefault(itemId)?.Name.ToString() is { Length: > 0 } name
+                    ? name
+                    : itemId.ToString(CultureInfo.InvariantCulture))
         {
         }
 
-        internal DoFish(IAutoHookIpc autoHookIpc, FishingOperationState operation,
-            IFishingPresetGenerator generator, ILogger<DoFish> logger, Func<FishTask, bool> objectivesSatisfied,
-            TimeProvider? clock = null)
+        internal DoFish(IFeeshIpc feeshIpc, FishingOperationState operation, ILogger<DoFish> logger,
+            Func<FishTask, bool> objectivesSatisfied, Func<GatheredItem, int> eligibleCount,
+            Func<uint, string> itemName, TimeProvider? clock = null)
         {
-            _autoHookIpc = autoHookIpc;
+            _feeshIpc = feeshIpc;
             _operation = operation;
-            _generator = generator;
             _logger = logger;
             _objectivesSatisfied = objectivesSatisfied;
+            _eligibleCount = eligibleCount;
+            _itemName = itemName;
             _clock = clock ?? TimeProvider.System;
         }
 
         protected override bool Start()
         {
             _owner = null;
-            _preparedPreset = null;
             _completedAt = null;
             if (_operation.HasOperation)
                 throw new TaskException(_operation.BlockReason!);
             if (_objectivesSatisfied(Task))
                 return false;
-            if (Task.GatheredItem == null && !Task.HasCompletionQuestVariablesFlags)
-                throw new TaskException("Fishing has no item or quest-variable completion condition");
-            if (!_autoHookIpc.SupportsOwnedFishing())
-                throw new TaskException("Fishing requires AutoHook with owned fishing API v1; the installed provider is missing or unsupported");
-            if (_autoHookIpc.GetFishingBusy() != false)
-                throw new TaskException("AutoHook is busy or unavailable; finish manual fishing before starting quest fishing");
+            if (Task.GatheredItem is not { } item)
+                throw new TaskException("This fishing step has no fish for Feesh to catch. Fish manually, then restart Questionable.");
+            if (UnsupportedReason(item) is { } reason)
+                throw new TaskException(reason);
 
-            if (Task.PreparedPreset == null)
-            {
-                // Generate and validate locally before unmounting, changing job or touching provider settings.
-                if (!FishingData.FishingPresets.TryGetValue((QuestId)Task.Quest.Id, out string? preset))
-                    preset = Task.GatheredItem?.FishingOptions?.Preset ?? _generator.CreatePresetFromTask(Task);
-                if (string.IsNullOrWhiteSpace(preset))
-                    throw new TaskException("The fishing preset is empty");
-                _preparedPreset = preset;
-                return true;
-            }
-
-            AutoHookIpc.EOwnedStartResult result = _autoHookIpc.StartOwnedFishing(Task.PreparedPreset, out string message);
-            if (result is AutoHookIpc.EOwnedStartResult.Accepted or AutoHookIpc.EOwnedStartResult.Uncertain)
+            int missing = item.ItemCount - _eligibleCount(item);
+            FeeshStartResult result = _feeshIpc.StartCatch(item.ItemId, Math.Max(1, missing), out string message);
+            if (result is FeeshStartResult.Started or FeeshStartResult.Uncertain)
                 _owner = _operation.OperationId;
-            if (result != AutoHookIpc.EOwnedStartResult.Accepted || !_owner.HasValue)
-                throw new TaskException($"AutoHook did not acknowledge fishing startup ({result}): {message}");
-            _logger.LogInformation("Started owned fishing request {OperationId} for quest {QuestId}", _owner, Task.Quest.Id);
+            if (result != FeeshStartResult.Started || !_owner.HasValue)
+                throw new TaskException(result switch
+                {
+                    FeeshStartResult.Busy => "Feesh is busy. Finish or stop its current work in WahTools, then restart Questionable.",
+                    FeeshStartResult.Refused => $"Feesh refused to catch {_itemName(item.ItemId)}; the Dalamud log says why. Fix that in Feesh or fish manually, then restart Questionable.",
+                    FeeshStartResult.NotReady => "Feesh is not available. Check that WahTools is loaded.",
+                    _ => $"Feesh did not confirm the catch job ({result}): {message}",
+                });
+            _logger.LogInformation("Started Feesh catch job {OperationId} for quest {QuestId}", _owner, Task.Quest.Id);
             return true;
         }
 
-        public IEnumerable<ITask> CreateExtraTasks()
+        private string? UnsupportedReason(GatheredItem item)
         {
-            yield return new MountStep.UnmountTask();
-            yield return new SwitchClassJob.Task(Job.FSH);
-            yield return Task with { PreparedPreset = _preparedPreset! };
+            if (item.Collectability > 0)
+                return $"Feesh can't catch collectable fish yet. Fish {_itemName(item.ItemId)} (collectability {item.Collectability}) manually, then restart Questionable.";
+            if (!_feeshIpc.IsAvailable())
+                return "Fishing needs Feesh from WahTools. Install it or fish manually, then restart Questionable.";
+            if (!_feeshIpc.CanCatch(item.ItemId))
+                return $"Feesh doesn't know where to catch {_itemName(item.ItemId)}. Fish it manually, then restart Questionable.";
+            return null;
         }
 
         public override ETaskResult Update()
         {
-            if (_preparedPreset != null)
-                return ETaskResult.CreateNewTasks;
             if (!_owner.HasValue || _operation.OperationId != _owner)
-                throw new TaskException("AutoHook fishing ownership was lost");
+                throw new TaskException("Feesh fishing ownership was lost");
 
             if (_operation.IsTerminal)
             {
-                if (_operation.Status == ExternalOperationStatus.Succeeded && _objectivesSatisfied(Task))
+                // Cancelled after the quest flags were met still counts as done.
+                bool ended = _operation.Status is ExternalOperationStatus.Succeeded or ExternalOperationStatus.Cancelled;
+                if (ended && _objectivesSatisfied(Task))
                 {
-                    _operation.TryReleaseTerminal(_owner);
+                    Release();
                     return ETaskResult.TaskComplete;
                 }
+
                 _completedAt ??= _clock.GetTimestamp();
-                if (_operation.Status == ExternalOperationStatus.Succeeded &&
-                    _clock.GetElapsedTime(_completedAt.Value) < TimeSpan.FromSeconds(2))
+                if (ended && _clock.GetElapsedTime(_completedAt.Value) < TimeSpan.FromSeconds(2))
                     return ETaskResult.StillRunning;
                 string message = _operation.Message;
-                _operation.TryReleaseTerminal(_owner);
-                throw new TaskException($"AutoHook stopped before the fishing objective was verified: {message}");
+                Release();
+                throw new TaskException($"Feesh stopped before the fishing objective was met: {message}");
             }
+
             if (_operation.RequiresReconciliation)
                 throw new TaskException(_operation.BlockReason!);
-            if (_objectivesSatisfied(Task))
-                _autoHookIpc.RequestStop();
+            if (_objectivesSatisfied(Task) && !_operation.StopRequested)
+                _feeshIpc.RequestStop();
             return ETaskResult.StillRunning;
+        }
+
+        private void Release()
+        {
+            _operation.TryReleaseTerminal(_owner);
+            if (Task.GatheredItem is { } item)
+                _feeshIpc.ReleaseCatch(item.ItemId);
         }
 
         public void StopNow()
         {
             if (_owner.HasValue && _operation.OperationId == _owner)
-                _autoHookIpc.CancelOwned();
+                _feeshIpc.CancelOwned();
         }
 
         public override bool ShouldInterruptOnDamage() => false;
@@ -149,7 +163,7 @@ internal static class Fish
         task.HasCompletionQuestVariablesFlags && matchesQuestWork ||
         task.GatheredItem is { } item && eligibleItemCount >= item.ItemCount;
 
-    private static unsafe bool HasCompletedObjectives(FishTask task)
+    private static bool HasCompletedObjectives(FishTask task)
     {
         // Matching quest flags are authoritative even for quests whose fish are consumed or are key items.
         if (task.HasCompletionQuestVariablesFlags && QuestFunctions.GetQuestProgressInfo(task.Quest.Id) is { } work &&
@@ -157,14 +171,18 @@ internal static class Fish
             return true;
         if (task.GatheredItem is not { } item)
             return false;
+        return ObjectivesSatisfied(task, false, CountEligibleInInventory(item));
+    }
+
+    private static unsafe int CountEligibleInInventory(GatheredItem item)
+    {
         if (item.ItemId == 0 || item.ItemCount <= 0 || item.Collectability > short.MaxValue)
             throw new TaskException("Invalid fishing item requirement");
         InventoryManager* inventory = InventoryManager.Instance();
         if (inventory == null)
             throw new TaskException("Inventory is unavailable; cannot verify the fishing objective");
-        int count = CountEligibleItems(item, (id, highQuality, collectability) =>
+        return CountEligibleItems(item, (id, highQuality, collectability) =>
             inventory->GetInventoryItemCount(id, isHq: highQuality, checkEquipped: false, minCollectability: collectability));
-        return ObjectivesSatisfied(task, false, count);
     }
 
     internal static int CountEligibleItems(GatheredItem item, Func<uint, bool, short, int> count) =>

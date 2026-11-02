@@ -17,12 +17,13 @@ internal static class AetheryteShortcut
         IObjectTable objectTable,
         ExtraConditionUtils extraConditionUtils,
         GilShopData gilShopData,
+        IFeeshIpc feeshIpc,
         ILogger<AetheryteShortcut.Factory> logger)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (Purchase.IsHandledByKnightshopper(step, gilShopData))
+            if (Purchase.IsHandledByKnightshopper(step, gilShopData) || Fish.IsHandledByFeesh(step, feeshIpc))
                 yield break;
 
             if (step.AetheryteShortcut == null)

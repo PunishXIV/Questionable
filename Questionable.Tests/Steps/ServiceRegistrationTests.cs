@@ -15,7 +15,7 @@ public sealed class ServiceRegistrationTests
     [InlineData(typeof(IArtisanIpc), typeof(ArtisanIpc))]
     [InlineData(typeof(IGatherChillIpc), typeof(GatherChillIpc))]
     [InlineData(typeof(IKnightshopperIpc), typeof(KnightshopperIpc))]
-    [InlineData(typeof(IAutoHookIpc), typeof(AutoHookIpc))]
+    [InlineData(typeof(IFeeshIpc), typeof(FeeshIpc))]
     public void InterfaceRegisteredAdapters_HaveNoUnresolvableConcreteConsumers(Type contract, Type implementation)
     {
         IServiceCollection services = new ServiceCollection().AddQuestionable();

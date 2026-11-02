@@ -1,241 +1,332 @@
 using Microsoft.Extensions.Logging.Abstractions;
-using NSubstitute;
 using Questionable.Controller;
 using Questionable.Controller.Steps;
-using Questionable.Controller.Steps.Common;
-using Questionable.Controller.Steps.Fishing;
 using Questionable.Controller.Steps.Shared;
 using Questionable.External;
 using Questionable.Model.Questing;
 using Questionable.Tests.TestData;
 using Xunit;
-using static Questionable.External.AutoHookIpc;
 
 namespace Questionable.Tests.Steps;
 
-public sealed class FishOperationTests
+public sealed class FishOperationTests : IDisposable
 {
     private readonly TestClock _clock = new();
     private readonly FishingOperationState _operation;
-    private readonly AutoHookIpc _ipc;
+    private readonly FeeshIpc _ipc;
     private readonly Fish.DoFish _executor;
     private readonly TaskQueue _queue = new(NullLogger.Instance);
-    private readonly IFishingPresetGenerator _generator = Substitute.For<IFishingPresetGenerator>();
     private readonly Fish.FishTask _task = new(QuestTestData.CreateQuest(new QuestId(65000)),
         new GatheredItem { ItemId = 42, ItemCount = 3 }, []);
-    private EOwnedFishingState _status = EOwnedFishingState.Starting;
-    private EOwnedStartResult _startResult = EOwnedStartResult.Accepted;
-    private bool _supported = true;
-    private bool _idle = true;
-    private bool _unavailable;
-    private bool _startThrows;
-    private bool _stopAccepted = true;
+    private string? _catching = "";
+    private bool _available = true;
+    private bool? _busy = false;
+    private bool _canCatch = true;
+    private bool _catchResult = true;
+    private bool _catchThrows;
+    private bool _cancelAccepted = true;
     private bool _objectives;
-    private bool _started;
-    private int _starts;
-    private readonly List<Guid> _stops = [];
-    private Guid _submitted;
+    private int _eligible;
+    private readonly List<(string Owner, uint Fish, int Count, bool Keep)> _catches = [];
+    private readonly List<string> _cancels = [];
+    private readonly List<uint> _releases = [];
 
     public FishOperationTests()
     {
         _operation = new FishingOperationState(_clock);
-        _ipc = new AutoHookIpc(NullLogger<AutoHookIpc>.Instance, _operation,
-            () => _unavailable ? throw new InvalidOperationException("unloaded") : _supported ? 1 : 0,
-            () => _idle,
-            (id, _) =>
+        _ipc = new FeeshIpc(NullLogger<FeeshIpc>.Instance, _operation,
+            () => _busy ?? throw new InvalidOperationException("unloaded"),
+            _ => _canCatch ? "stand" : "",
+            (owner, fish, count, keep) =>
             {
-                _submitted = id;
-                ++_starts;
-                if (_startThrows)
+                _catches.Add((owner, fish, count, keep));
+                if (_catchThrows)
                     throw new InvalidOperationException("reply lost after acceptance");
-                return ((int)_startResult, "start result");
+                return _catchResult;
             },
-            _ => ((int)_status, _started, "provider status"),
-            id => { _stops.Add(id); return _stopAccepted; });
-        _generator.CreatePresetFromTask(Arg.Any<Fish.FishTask>()).Returns("preset");
-        _executor = new Fish.DoFish(_ipc, _operation, _generator, NullLogger<Fish.DoFish>.Instance,
-            _ => _objectives, _clock);
+            () => _available && _catching != null ? _catching : throw new InvalidOperationException("unloaded"),
+            owner => { _cancels.Add(owner); return _cancelAccepted; },
+            (_, fish) => { _releases.Add(fish); return true; });
+        _executor = new Fish.DoFish(_ipc, _operation, NullLogger<Fish.DoFish>.Instance,
+            _ => _objectives, _ => _eligible, id => $"fish {id}", _clock);
     }
 
     [Fact]
-    public void Preparation_ProducesActionsOnlyAfterChecksAndPresetGeneration()
+    public void SatisfiedObjective_SkipsUnavailableFeesh()
     {
-        Assert.True(_queue.StartTask(_executor, _task));
-        Assert.Equal(ETaskResult.CreateNewTasks, UpdateExecutor());
-        var tasks = _executor.CreateExtraTasks().ToArray();
-        Assert.IsType<MountStep.UnmountTask>(tasks[0]);
-        Assert.IsType<SwitchClassJob.Task>(tasks[1]);
-        Assert.Equal("preset", Assert.IsType<Fish.FishTask>(tasks[2]).PreparedPreset);
-        Assert.Equal(0, _starts);
-        Assert.False(_operation.HasOperation);
-    }
-
-    [Fact]
-    public void UnsupportedProvider_HardFailsUnmetObjectiveWithoutMutation()
-    {
-        _supported = false;
-        Assert.Throws<TaskException>(() => _queue.StartTask(_executor, _task));
-        Assert.Equal(0, _starts);
-        Assert.Empty(_stops);
-        _generator.DidNotReceiveWithAnyArgs().CreatePresetFromTask(default!);
-    }
-
-    [Fact]
-    public void SatisfiedObjective_SkipsUnavailableProvider()
-    {
-        _unavailable = true;
+        _available = false;
         _objectives = true;
         Assert.False(_queue.StartTask(_executor, _task));
-        Assert.Equal(0, _starts);
-        Assert.Empty(_stops);
+        Assert.Empty(_catches);
     }
 
     [Fact]
-    public void ManualFishing_BlocksBeforePreparationAndIsNeverStopped()
+    public void CollectableFish_StopsForManualFishingWithoutContactingFeesh()
     {
-        _idle = false;
-        Assert.Throws<TaskException>(() => _queue.StartTask(_executor, _task));
-        _ipc.CancelOwned();
-        Assert.Equal(0, _starts);
-        Assert.Empty(_stops);
+        var task = _task with { GatheredItem = new GatheredItem { ItemId = 42, ItemCount = 6, Collectability = 433 } };
+        var e = Assert.Throws<TaskException>(() => _queue.StartTask(_executor, task));
+        Assert.Contains("collectable", e.Message);
+        Assert.Contains("fish 42", e.Message);
+        Assert.Empty(_catches);
+    }
+
+    [Fact]
+    public void FishWithoutKnownSpot_StopsForManualFishing()
+    {
+        _canCatch = false;
+        var e = Assert.Throws<TaskException>(() => _queue.StartTask(_executor, _task));
+        Assert.Contains("doesn't know where", e.Message);
+        Assert.Empty(_catches);
+    }
+
+    [Fact]
+    public void MissingWahTools_StopsForManualFishing()
+    {
+        _available = false;
+        var e = Assert.Throws<TaskException>(() => _queue.StartTask(_executor, _task));
+        Assert.Contains("WahTools", e.Message);
+        Assert.Empty(_catches);
+    }
+
+    [Fact]
+    public void FlagOnlyStep_StopsForManualFishing()
+    {
+        var task = new Fish.FishTask(_task.Quest, null,
+            [null, new QuestWorkValue(1, 1, EQuestWorkMode.Bitwise), null, null, null, null]);
+        Assert.Throws<TaskException>(() => _queue.StartTask(_executor, task));
+        Assert.Empty(_catches);
     }
 
     [Theory]
-    [InlineData(1)]
-    [InlineData(2)]
-    [InlineData(3)]
-    public void RejectedStart_ReleasesSubmissionWithoutCancellation(int result)
+    [InlineData(true)]
+    [InlineData(null)]
+    public void BusyOrUnreadableWahTools_IsRefusedBeforeSubmitting(bool? busy)
     {
-        _startResult = (EOwnedStartResult)result;
-        Assert.Throws<TaskException>(Start);
+        _busy = busy;
+        var e = Assert.Throws<TaskException>(Start);
+        Assert.Contains("busy", e.Message);
+        Assert.Empty(_catches);
         Assert.False(_operation.HasOperation);
-        Assert.Empty(_stops);
     }
 
     [Fact]
-    public void AmbiguousStart_RetainsClientIdAcrossQueueRollback()
+    public void Start_RequestsOnlyTheMissingCountAndKeepsIt()
     {
-        _startThrows = true;
+        _eligible = 1;
+        Start();
+        Assert.Equal((FeeshIpc.Owner, 42u, 2, true), Assert.Single(_catches));
+        Assert.True(_operation.HasOperation);
+        Assert.False(_operation.RequiresReconciliation);
+    }
+
+    [Fact]
+    public void RefusedCatch_ReleasesSubmissionWithoutCancelling()
+    {
+        _catchResult = false;
+        var e = Assert.Throws<TaskException>(Start);
+        Assert.Contains("refused", e.Message);
+        Assert.False(_operation.HasOperation);
+        Assert.Empty(_cancels);
+    }
+
+    [Fact]
+    public void LostReply_RetainsOwnershipAndCancelsOnlyOurJob()
+    {
+        _catchThrows = true;
         Assert.Throws<TaskException>(Start);
         Assert.True(_operation.HasOperation);
         Assert.True(_operation.IsAbandoned);
         Assert.True(_operation.RequiresReconciliation);
-        Assert.Equal(_submitted, _operation.OperationId);
-        Assert.Equal(_submitted, Assert.Single(_stops));
-        _status = EOwnedFishingState.Stopped;
-        _ipc.PollOperation();
-        Assert.False(_operation.HasOperation);
+        Assert.Equal(FeeshIpc.Owner, Assert.Single(_cancels));
+        Assert.Equal(42u, Assert.Single(_releases));
     }
 
     [Fact]
-    public void ObjectiveStop_RetainsActiveOwnerUntilActualStopAcknowledgement()
+    public void CatchDone_WithObjectivesCompletesAndReleasesTheHold()
     {
         Start();
-        _status = EOwnedFishingState.Running;
-        _started = true;
+        _catching = "fishing 0/3";
+        Assert.Equal(ETaskResult.StillRunning, UpdateExecutor());
+        Assert.True(_operation.HasStarted);
+
+        _catching = "done 3/3";
+        _objectives = true;
+        _ipc.OnCatchDone(FeeshIpc.Owner, true);
+        Assert.Equal(ETaskResult.TaskComplete, UpdateExecutor());
+        Assert.False(_operation.HasOperation);
+        Assert.Equal(42u, Assert.Single(_releases));
+    }
+
+    [Fact]
+    public void EndedStateBeforeTheJobRuns_IsTreatedAsThePreviousJob()
+    {
+        Start();
+        _catching = "done";
+        Assert.Equal(ETaskResult.StillRunning, UpdateExecutor());
+        Assert.False(_operation.IsTerminal);
+        Assert.False(_operation.HasStarted);
+    }
+
+    [Fact]
+    public void OtherOwnersCatchDone_IsIgnored()
+    {
+        Start();
+        _catching = "fishing 1/3";
+        _ipc.OnCatchDone("SomeoneElse", true);
+        Assert.Equal(ETaskResult.StillRunning, UpdateExecutor());
+        Assert.False(_operation.IsTerminal);
+    }
+
+    [Fact]
+    public void MissedCatchDone_StableWahToolsIdleEndsTheJob()
+    {
+        Start();
+        _catching = "fishing 2/3";
+        _busy = true;
+        UpdateExecutor();
+        _catching = "done 3/3";
+        _busy = false;
         _objectives = true;
         Assert.Equal(ETaskResult.StillRunning, UpdateExecutor());
-        Assert.False(_operation.IsAbandoned);
-        Assert.True(_operation.HasStarted);
-        Assert.Equal(_submitted, Assert.Single(_stops));
-        _status = EOwnedFishingState.Stopping;
-        Assert.Equal(ETaskResult.StillRunning, UpdateExecutor());
-        Assert.True(_operation.HasOperation);
-        _status = EOwnedFishingState.Stopped;
+        for (int i = 0; i < 4; ++i)
+        {
+            _clock.Advance(TimeSpan.FromMilliseconds(500));
+            _ipc.PollOperation();
+        }
+
         Assert.Equal(ETaskResult.TaskComplete, UpdateExecutor());
         Assert.False(_operation.HasOperation);
     }
 
     [Fact]
-    public void StopBeforeFirstCast_CancelsPendingStartWithoutClaimingItStarted()
+    public void PartialCatch_FailsAndReleasesTheHold()
     {
         Start();
-        _queue.Reset();
-        Assert.True(_operation.HasOperation);
-        Assert.False(_operation.HasStarted);
-        Assert.True(_operation.IsAbandoned);
-        _status = EOwnedFishingState.Stopping;
-        _ipc.PollOperation();
-        Assert.True(_operation.HasOperation);
-        _status = EOwnedFishingState.Stopped;
-        _ipc.PollOperation();
+        _catching = "partial 1/3: out of bait";
+        _ipc.OnCatchDone(FeeshIpc.Owner, false);
+        var e = Assert.Throws<TaskException>(() => UpdateExecutor());
+        Assert.Contains("out of bait", e.Message);
         Assert.False(_operation.HasOperation);
+        Assert.Equal(42u, Assert.Single(_releases));
     }
 
     [Fact]
-    public void RefusedNormalStop_IsRetriedWithoutAbandoningOwner()
+    public void SucceededWithoutObjectives_FailsAfterInventoryGracePeriod()
     {
         Start();
-        _stopAccepted = false;
-        _objectives = true;
-        UpdateExecutor();
-        UpdateExecutor();
-        Assert.Single(_stops);
-        _clock.Advance(TimeSpan.FromSeconds(2));
-        UpdateExecutor();
-        Assert.Equal(2, _stops.Count);
-        Assert.False(_operation.IsAbandoned);
-    }
-
-    [Fact]
-    public void ProviderLoss_IsNeverIdleAndCannotReleaseGuard()
-    {
-        Start();
-        _unavailable = true;
-        Assert.Null(_ipc.GetFishingBusy());
-        _ipc.PollOperation();
-        _clock.Advance(TimeSpan.FromSeconds(10));
-        _ipc.PollOperation();
-        Assert.True(_operation.RequiresReconciliation);
-        Assert.True(_operation.HasOperation);
-        Assert.False(_operation.TryConfirmIdle());
-    }
-
-    [Fact]
-    public void OwnershipLost_ImmediatelyRequiresReconciliationAndNeverStopsReplacement()
-    {
-        Start();
-        _status = EOwnedFishingState.OwnershipLost;
-        _idle = false;
-        Assert.Throws<TaskException>(() => UpdateExecutor());
-        _queue.Reset();
-        Assert.True(_operation.HasOperation);
-        Assert.True(_operation.RequiresReconciliation);
-        Assert.Empty(_stops);
-        Assert.False(_operation.TryConfirmIdle());
-        _idle = true;
-        _ipc.ObserveIdle();
-        for (int i = 0; i < 4; ++i)
-        {
-            _clock.Advance(TimeSpan.FromMilliseconds(500));
-            _ipc.ObserveIdle();
-        }
-        Assert.True(_operation.CanConfirmIdle);
-        Assert.True(_operation.TryConfirmIdle());
-    }
-
-    [Fact]
-    public void MissingStartAcknowledgement_TimesOutWithRetainedStopGuard()
-    {
-        Start();
-        _clock.Advance(TimeSpan.FromSeconds(30));
-        Assert.Throws<TaskException>(() => UpdateExecutor());
-        Assert.True(_operation.RequiresReconciliation);
-        Assert.True(_operation.HasOperation);
-        Assert.Single(_stops);
-        Assert.Equal(1, _starts);
-    }
-
-    [Fact]
-    public void StoppedWithoutObjectives_FailsAfterInventoryGracePeriod()
-    {
-        Start();
-        _status = EOwnedFishingState.Stopped;
+        _catching = "done 3/3";
+        _ipc.OnCatchDone(FeeshIpc.Owner, true);
         Assert.Equal(ETaskResult.StillRunning, UpdateExecutor());
         _clock.Advance(TimeSpan.FromSeconds(2));
         Assert.Throws<TaskException>(() => UpdateExecutor());
         Assert.False(_operation.HasOperation);
     }
+
+    [Fact]
+    public void ObjectivesMetEarly_CancelsOurJobAndCountsTheCancelAsDone()
+    {
+        Start();
+        _catching = "fishing 1/3";
+        UpdateExecutor();
+        _objectives = true;
+        Assert.Equal(ETaskResult.StillRunning, UpdateExecutor());
+        Assert.False(_operation.IsAbandoned);
+        Assert.Equal(FeeshIpc.Owner, Assert.Single(_cancels));
+
+        _catching = "cancelled";
+        _ipc.OnCatchDone(FeeshIpc.Owner, false);
+        Assert.Equal(ETaskResult.TaskComplete, UpdateExecutor());
+        Assert.False(_operation.HasOperation);
+    }
+
+    [Fact]
+    public void RefusedCancel_IsRetriedWithoutAbandoning()
+    {
+        Start();
+        _cancelAccepted = false;
+        _objectives = true;
+        UpdateExecutor();
+        UpdateExecutor();
+        Assert.Single(_cancels);
+        _clock.Advance(TimeSpan.FromSeconds(2));
+        UpdateExecutor();
+        Assert.Equal(2, _cancels.Count);
+        Assert.False(_operation.IsAbandoned);
+    }
+
+    [Fact]
+    public void Stop_AbandonsReleasesAndClearsOnceFeeshAcknowledges()
+    {
+        Start();
+        _catching = "fishing 1/3";
+        UpdateExecutor();
+        _queue.Reset();
+        Assert.True(_operation.IsAbandoned);
+        Assert.Equal(FeeshIpc.Owner, Assert.Single(_cancels));
+        Assert.Equal(42u, Assert.Single(_releases));
+        Assert.True(_operation.HasOperation);
+
+        _catching = "cancelled";
+        _ipc.OnCatchDone(FeeshIpc.Owner, false);
+        _ipc.PollOperation();
+        Assert.False(_operation.HasOperation);
+    }
+
+    [Fact]
+    public void ProviderLoss_RequiresReconciliationAndIsNeverIdle()
+    {
+        Start();
+        _catching = "fishing 1/3";
+        UpdateExecutor();
+        _available = false;
+        _busy = null;
+        _ipc.PollOperation();
+        _clock.Advance(TimeSpan.FromSeconds(10));
+        _ipc.PollOperation();
+        Assert.True(_operation.RequiresReconciliation);
+        Assert.Throws<TaskException>(() => _executor.Update());
+        Assert.False(_operation.TryConfirmIdle());
+    }
+
+    [Fact]
+    public void UnrecognisedStatus_IsNeverTreatedAsDone()
+    {
+        Start();
+        _catching = "fishing 1/3";
+        UpdateExecutor();
+        _catching = "mooching";
+        _objectives = true;
+        Assert.Equal(ETaskResult.StillRunning, UpdateExecutor());
+        Assert.False(_operation.IsTerminal);
+    }
+
+    [Fact]
+    public void JobThatNeverStarts_TimesOutAndCancels()
+    {
+        Start();
+        _clock.Advance(TimeSpan.FromSeconds(30));
+        Assert.Throws<TaskException>(() => UpdateExecutor());
+        Assert.True(_operation.RequiresReconciliation);
+        Assert.Equal(FeeshIpc.Owner, Assert.Single(_cancels));
+        Assert.Single(_catches);
+    }
+
+    [Theory]
+    [InlineData(null, nameof(EFeeshJobState.Unavailable))]
+    [InlineData("", nameof(EFeeshJobState.None))]
+    [InlineData("  ", nameof(EFeeshJobState.None))]
+    // Real formats, from WahTools FeeshModule.Control.cs.
+    [InlineData("fishing Harbor Herring 0/3", nameof(EFeeshJobState.Fishing))]
+    [InlineData("finishing Harbor Herring 3/3", nameof(EFeeshJobState.Finishing))]
+    [InlineData("done Harbor Herring 3/3", nameof(EFeeshJobState.Done))]
+    [InlineData("partial Harbor Herring 1/3: Harbor Herring: no bait", nameof(EFeeshJobState.Partial))]
+    [InlineData("failed Harbor Herring 0/3: tour stopped", nameof(EFeeshJobState.Failed))]
+    [InlineData("cancelled Harbor Herring 1/3: Questionable called it off", nameof(EFeeshJobState.Cancelled))]
+    [InlineData("stopped Harbor Herring 1/3: stopped by hand", nameof(EFeeshJobState.Stopped))]
+    [InlineData("3/3 done", nameof(EFeeshJobState.Unrecognized))]
+    [InlineData("mooching", nameof(EFeeshJobState.Unrecognized))]
+    public void CatchingText_IsParsedByItsFirstWord(string? text, string expected) =>
+        Assert.Equal(expected, FeeshIpc.ParseState(text).ToString());
 
     [Fact]
     public void CollectabilityRequirement_QueriesOnlyQualifiedCollectableInventory()
@@ -262,18 +353,20 @@ public sealed class FishOperationTests
     [InlineData(true)]
     public void QuestFlags_AreAuthoritativeWithOrWithoutAnInventoryTarget(bool hasItem)
     {
-        var task = _task with { GatheredItem = hasItem ? _task.GatheredItem : null };
         // Construct afresh: completion-flag presence is cached by the record constructor.
-        task = new Fish.FishTask(task.Quest, task.GatheredItem,
+        var task = new Fish.FishTask(_task.Quest, hasItem ? _task.GatheredItem : null,
             [null, new QuestWorkValue(1, 1, EQuestWorkMode.Bitwise), null, null, null, null]);
         Assert.True(Fish.ObjectivesSatisfied(task, true, 0));
         Assert.False(Fish.ObjectivesSatisfied(task, false, 0));
     }
+
+    public void Dispose() => _ipc.Dispose();
 
     private ETaskResult UpdateExecutor()
     {
         _ipc.PollOperation();
         return _executor.Update();
     }
-    private void Start() => Assert.True(_queue.StartTask(_executor, _task with { PreparedPreset = "preset" }));
+
+    private void Start() => Assert.True(_queue.StartTask(_executor, _task));
 }

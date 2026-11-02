@@ -723,20 +723,20 @@ internal sealed partial class ActiveQuestComponent
         using (ImRaii.TextWrapPos(0))
         {
             ImGui.TextUnformatted(fishingOperation.RequiresReconciliation || fishingOperation.IsAbandoned
-                ? fishingOperation.BlockReason ?? _L("Check AutoHook before restarting.")
-                : _L("Fishing for quest items with AutoHook"));
+                ? fishingOperation.BlockReason ?? _L("Check Feesh before restarting.")
+                : _L("Fishing for quest items with Feesh"));
         }
 
         if (!fishingOperation.RequiresReconciliation)
             return;
 
-        if (DrawRecoveryConfirmationButton(_L("I stopped AutoHook"), fishingOperation.CanConfirmIdle))
-            questController.TryConfirmAutoHookIdle();
+        if (DrawRecoveryConfirmationButton(_L("I stopped Feesh"), fishingOperation.CanConfirmIdle))
+            questController.TryConfirmFeeshIdle();
 
         using (ImRaii.TextWrapPos(0))
         {
-            ImGui.TextUnformatted(_L("Finish or stop fishing in AutoHook before confirming."));
-            ImGui.TextUnformatted(_L("AutoHook must remain idle for at least 2 seconds. Confirmation only clears the block; start questing separately."));
+            ImGui.TextUnformatted(_L("Finish or stop fishing in Feesh before confirming."));
+            ImGui.TextUnformatted(_L("WahTools must remain idle for at least 2 seconds. Confirmation only clears the block; start questing separately."));
         }
     }
 
@@ -994,7 +994,7 @@ internal sealed partial class ActiveQuestComponent
         else if (gatheringOperation.RequiresReconciliation)
             (text, color) = (_L("Check Gather n Chill"), QstTheme.Amber);
         else if (fishingOperation.RequiresReconciliation)
-            (text, color) = (_L("Check AutoHook"), QstTheme.Amber);
+            (text, color) = (_L("Check Feesh"), QstTheme.Amber);
         else if (purchaseOperation.HasOperation)
             (text, color) = (purchaseOperation.IsAbandoned ? _L("Stopping purchase") : _L("Purchasing"),
                 purchaseOperation.IsAbandoned ? QstTheme.Amber : QstTheme.Accent);

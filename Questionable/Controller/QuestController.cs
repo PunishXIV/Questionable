@@ -92,7 +92,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private readonly IGatherChillIpc _gatherChillIpc;
     private readonly GatheringOperationState _gatheringOperation;
     private readonly Stopwatch _gatheringStatusPoll = new();
-    private readonly IAutoHookIpc _autoHookIpc;
+    private readonly IFeeshIpc _feeshIpc;
     private readonly FishingOperationState _fishingOperation;
     private readonly Stopwatch _fishingStatusPoll = new();
     private readonly HighlightObject _highlightObject;
@@ -166,7 +166,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         PurchaseOperationState purchaseOperation,
         IGatherChillIpc gatherChillIpc,
         GatheringOperationState gatheringOperation,
-        IAutoHookIpc autoHookIpc,
+        IFeeshIpc feeshIpc,
         FishingOperationState fishingOperation,
         ILogger<QuestController> logger,
         HighlightObject highlightObject,
@@ -206,7 +206,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _purchaseOperation = purchaseOperation;
         _gatherChillIpc = gatherChillIpc;
         _gatheringOperation = gatheringOperation;
-        _autoHookIpc = autoHookIpc;
+        _feeshIpc = feeshIpc;
         _fishingOperation = fishingOperation;
         _questRegistry = questRegistry;
         _priorityManager = priorityManager;
@@ -369,7 +369,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         bool gatheringBlocked = UpdateOwnedOperation(_gatheringOperation, _taskQueue.CurrentTaskExecutor is Gather.StartGathering,
             _gatheringStatusPoll, _gatherChillIpc.PollOperation, _gatherChillIpc.CancelOwned);
         bool fishingBlocked = UpdateOwnedOperation(_fishingOperation, _taskQueue.CurrentTaskExecutor is Fish.DoFish,
-            _fishingStatusPoll, _autoHookIpc.PollOperation, _autoHookIpc.CancelOwned);
+            _fishingStatusPoll, _feeshIpc.PollOperation, _feeshIpc.CancelOwned);
         bool dutyBlocked = UpdateOwnedOperation(_autoDutyIpc.Operation, _taskQueue.CurrentTaskExecutor is Duty.StartAutoDutyExecutor,
             _autoDutyStatusPoll, _autoDutyIpc.PollOperation, _autoDutyIpc.CancelOwned);
         bool combatBlocked = UpdateCombatRecovery();
@@ -897,7 +897,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         bool success = _taskQueue.Reset();
         // Cancellation may still be pending after the executor has been detached.
         success &= TryCleanup(_knightshopperIpc.CancelOwned, "Knightshopper purchase");
-        success &= TryCleanup(_autoHookIpc.CancelOwned, "AutoHook fishing");
+        success &= TryCleanup(_feeshIpc.CancelOwned, "Feesh fishing");
         if (_movementController.Destination != null || _purchaseOperation.HasOperation ||
             _gatheringOperation.HasOperation || _fishingOperation.HasOperation || _autoDutyIpc.HasOperation)
             success &= TryCleanup(_movementController.Stop, "movement");
@@ -1234,11 +1234,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             return false;
         }
 
-        // Legacy AutoHook must not block ordinary questing. Fish checks the owned API
-        // separately before preparing or starting any fishing work.
-        if (_autoHookIpc.SupportsOwnedFishing() && _autoHookIpc.GetFishingBusy() != false)
+        // WahTools drives the character while busy.
+        if (_feeshIpc.IsAvailable() && _feeshIpc.GetBusy() != false)
         {
-            DebugState = _L("AutoHook is busy or its status is unavailable. Finish its current work before starting questing.");
+            DebugState = _L("WahTools is busy or its status is unavailable. Finish its current work before starting questing.");
             return false;
         }
 
@@ -1359,8 +1358,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public bool TryConfirmGatherChillIdle() =>
         TryConfirmOwnedOperationIdle(_gatheringOperation, _gatherChillIpc.PollOperation, _gatherChillIpc.ObserveIdle);
 
-    public bool TryConfirmAutoHookIdle() =>
-        TryConfirmOwnedOperationIdle(_fishingOperation, _autoHookIpc.PollOperation, _autoHookIpc.ObserveIdle);
+    public bool TryConfirmFeeshIdle() =>
+        TryConfirmOwnedOperationIdle(_fishingOperation, _feeshIpc.PollOperation, _feeshIpc.ObserveIdle);
 
     public bool TryConfirmAutoDutyIdle() =>
         TryConfirmOwnedOperationIdle(_autoDutyIpc.Operation, _autoDutyIpc.PollOperation, _autoDutyIpc.ObserveIdle);

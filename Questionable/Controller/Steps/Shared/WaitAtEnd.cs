@@ -11,7 +11,6 @@ internal static class WaitAtEnd
         IObjectTable objectTable,
         ICondition condition,
         AutoDutyIpc autoDutyIpc,
-        IAutoHookIpc autoHookIpc,
         BossModIpc bossModIpc,
         RedoUtil redoUtil,
         QuestData questData,
@@ -50,7 +49,6 @@ internal static class WaitAtEnd
 
                 case EInteractionType.Duty when !autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions):
                 case EInteractionType.SinglePlayerDuty when !bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions):
-                case EInteractionType.Fish when !autoHookIpc.IsAvailable():
                     return [new EndAutomation()];
 
                 case EInteractionType.WalkTo:

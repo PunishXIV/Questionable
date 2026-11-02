@@ -1,10 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
-using Questionable.Controller;
-using Questionable.Controller.Steps;
-using Questionable.Controller.Steps.Fishing;
 using Questionable.Controller.Steps.Shared;
 using Questionable.External;
 using Questionable.Model.Questing;
@@ -15,40 +11,14 @@ namespace Questionable.Tests.Steps;
 
 public sealed class FishTests
 {
-    private readonly IAutoHookIpc _autoHookIpc = Substitute.For<IAutoHookIpc>();
+    private readonly IFeeshIpc _feeshIpc = Substitute.For<IFeeshIpc>();
     private readonly Fish.Factory _factory;
 
     public FishTests()
     {
-        _autoHookIpc.IsAvailable().Returns(returnThis: true);
+        _feeshIpc.IsAvailable().Returns(true);
+        _feeshIpc.CanCatch(Arg.Any<uint>()).Returns(true);
         _factory = new Fish.Factory();
-    }
-
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void FailedPresetGeneration_DoesNotMutateProviderOrCreatePreparationTasks(bool initiallyEnabled)
-    {
-        _autoHookIpc.IsPluginEnabled().Returns(initiallyEnabled);
-        _autoHookIpc.SetPluginEnabled(Arg.Any<bool>()).Returns(true);
-        _autoHookIpc.SupportsOwnedFishing().Returns(true);
-        _autoHookIpc.GetFishingBusy().Returns(false);
-        var generator = Substitute.For<IFishingPresetGenerator>();
-        var failure = new InvalidOperationException("Invalid fishing preset");
-        generator.CreatePresetFromTask(Arg.Any<Fish.FishTask>()).Returns(_ => throw failure);
-        var executor = new Fish.DoFish(_autoHookIpc, new FishingOperationState(), generator,
-            NullLogger<Fish.DoFish>.Instance, _ => false);
-        var task = new Fish.FishTask(QuestTestData.CreateQuest(new QuestId(65000)), Item(42, 1), []);
-        TaskQueue queue = new(NullLogger.Instance);
-
-        Assert.Same(failure, Assert.Throws<InvalidOperationException>(() => queue.StartTask(executor, task)));
-        executor.StopNow();
-
-        Assert.Null(queue.CurrentTaskExecutor);
-        _autoHookIpc.DidNotReceiveWithAnyArgs().SetPluginEnabled(default);
-        _autoHookIpc.DidNotReceive().DeleteAllAnonymousPresets();
-        _autoHookIpc.DidNotReceiveWithAnyArgs().CreateAndSelectAnonymousPreset(default!);
-        _autoHookIpc.DidNotReceive().CancelOwned();
     }
 
     // --- helpers ---
@@ -129,9 +99,9 @@ public sealed class FishTests
     // --- CreateAllTasks ---
 
     [Fact]
-    public void FishStep_WhenAutoHookUnavailable_RetainsObjectiveCheckingTask()
+    public void FishStep_WhenFeeshUnavailable_RetainsObjectiveCheckingTask()
     {
-        _autoHookIpc.IsAvailable().Returns(returnThis: false);
+        _feeshIpc.IsAvailable().Returns(false);
         var item = Item(4874, 3);
         var (quest, sequence, step) = QuestTestData.FactoryContext(new QuestId(1109), 1, FishStep(itemsToGather: [item]));
 
@@ -203,5 +173,50 @@ public sealed class FishTests
         Assert.True(fishTask.HasCompletionQuestVariablesFlags);
         Assert.Equal(completionFlags, fishTask.CompletionQuestVariablesFlags);
         Assert.Equal("Fish*", fishTask.ToString());
+    }
+
+    // --- IsHandledByFeesh ---
+
+    [Fact]
+    public void FeeshCatchableStep_SkipsQuestionableTravel()
+    {
+        var step = FishStep(itemsToGather: [Item(4874, 3)]);
+
+        Assert.True(Fish.IsHandledByFeesh(step, _feeshIpc));
+    }
+
+    [Fact]
+    public void CollectableFish_KeepsQuestionableTravelWithoutAskingFeesh()
+    {
+        var step = FishStep(itemsToGather: [Item(43906, 6, collectability: 433)]);
+
+        Assert.False(Fish.IsHandledByFeesh(step, _feeshIpc));
+        _feeshIpc.DidNotReceiveWithAnyArgs().CanCatch(default);
+    }
+
+    [Fact]
+    public void FishWithoutKnownSpot_KeepsQuestionableTravel()
+    {
+        _feeshIpc.CanCatch(2001410).Returns(false);
+        var step = FishStep(itemsToGather: [Item(4874, 3), Item(2001410, 2)]);
+
+        Assert.False(Fish.IsHandledByFeesh(step, _feeshIpc));
+    }
+
+    [Fact]
+    public void UnavailableFeeshOrFlagOnlyStep_KeepsQuestionableTravel()
+    {
+        Assert.False(Fish.IsHandledByFeesh(FishStep(completionQuestVariablesFlags: CompletionFlags1514()), _feeshIpc));
+
+        _feeshIpc.IsAvailable().Returns(false);
+        Assert.False(Fish.IsHandledByFeesh(FishStep(itemsToGather: [Item(4874, 3)]), _feeshIpc));
+    }
+
+    [Fact]
+    public void NonFishStep_IsNeverHandledByFeesh()
+    {
+        var step = new QuestStep { InteractionType = EInteractionType.Gather, ItemsToGather = [Item(4874, 3)] };
+
+        Assert.False(Fish.IsHandledByFeesh(step, _feeshIpc));
     }
 }

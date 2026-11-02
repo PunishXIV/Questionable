@@ -104,7 +104,7 @@ public sealed class QuestTaskQueueTests
             condition, client, null!, null!, framework, NullLogger<CombatController>.Instance);
         var purchase = Substitute.For<IKnightshopperIpc>();
         var gather = Substitute.For<IGatherChillIpc>();
-        var fishing = Substitute.For<IAutoHookIpc>();
+        var fishing = Substitute.For<IFeeshIpc>();
         List<string> cleanupOrder = [];
         purchase.When(x => x.CancelOwned()).Do(_ => cleanupOrder.Add("purchase"));
         fishing.When(x => x.CancelOwned()).Do(_ => cleanupOrder.Add("fishing"));
@@ -136,7 +136,7 @@ public sealed class QuestTaskQueueTests
         SetField("_fishingOperation", new FishingOperationState());
         SetField("_knightshopperIpc", purchase);
         SetField("_gatherChillIpc", gather);
-        SetField("_autoHookIpc", fishing);
+        SetField("_feeshIpc", fishing);
         SetField("_gatheringController", new GatheringController(gather, gatheringOperation, _ => 0, () => { }));
         var queue = new TaskQueue(NullLogger.Instance);
         typeof(MiniTaskController<QuestController>).GetField("_taskQueue", BindingFlags.Instance | BindingFlags.NonPublic)!
