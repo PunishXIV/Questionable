@@ -1,6 +1,3 @@
-// Authored with LLM assistance, changes must be reviewed and owned by a human.
-// Initial version reviewed and owned by @Kagekazu
-
 using Dalamud.Plugin.Ipc.Exceptions;
 using Microsoft.Extensions.Logging.Abstractions;
 using Questionable.External;
