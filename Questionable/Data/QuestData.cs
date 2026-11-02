@@ -217,12 +217,15 @@ internal sealed class QuestData
                 startingCities[quest.Quest.RowId] = redoChapter;
         }
 
+        ILookup<uint, Item> cardItemsByQuest = CreateCardRewardLookup(
+            dataManager.GetExcelSheet<TripleTriadCardResident>(), dataManager.GetExcelSheet<Item>());
+
         List<IQuestInfo> quests =
         [
             ..dataManager.GetExcelSheet<Quest>()
                 .Where(x => x.RowId > 0 && x.IssuerLocation.RowId > 0)
                 .Select(x => new QuestInfo(x, questChapters.GetValueOrDefault(x.RowId),
-                    startingCities.GetValueOrDefault(x.RowId), journalGenreOverrides)),
+                    startingCities.GetValueOrDefault(x.RowId), journalGenreOverrides, cardItemsByQuest[x.RowId])),
             ..dataManager.GetExcelSheet<SatisfactionNpc>()
                 .Where(x => x is { RowId: > 0, Npc.RowId: > 0 })
                 .Select(x => new SatisfactionSupplyInfo(x))
@@ -422,6 +425,21 @@ internal sealed class QuestData
             .Cast<QuestInfo>()
             .SelectMany(x => x.ItemRewards.Union(x.TripleTriadCardRewards))
             .ToImmutableHashSet();
+    }
+
+    internal static ILookup<uint, Item> CreateCardRewardLookup(IEnumerable<TripleTriadCardResident> cards,
+        IEnumerable<Item> items)
+    {
+        Dictionary<uint, Item> itemsByCard = [];
+        foreach (Item item in items)
+        {
+            if (item.ItemAction.Value.Action.RowId == 3357)
+                itemsByCard.TryAdd(item.AdditionalData.RowId, item);
+        }
+
+        // Keep the first matching item and the card sheet's order, as the per-quest lookup did.
+        return cards.Where(card => itemsByCard.ContainsKey(card.RowId))
+            .ToLookup(card => card.Quest.RowId, card => itemsByCard[card.RowId]);
     }
 
     public List<ElementId> GetQuestsMatching(Func<QuestInfo, bool> predicate, bool onlyAvailable = true)

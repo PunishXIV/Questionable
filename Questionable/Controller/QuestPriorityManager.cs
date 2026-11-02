@@ -89,8 +89,6 @@ internal sealed class QuestPriorityManager(
         int index = _quests.FindIndex(q => q.Id == elementId);
         if (index != -1)
         {
-            if (index >= _quests.Count)
-                index = 0;
             logger.LogDebug($"Removing {index}: {_quests[index].Info.Name}");
             _quests.RemoveAt(index);
         }
@@ -129,8 +127,7 @@ internal sealed class QuestPriorityManager(
     {
         foreach (ElementId elementId in questElements)
         {
-            if (questRegistry.TryGetQuest(elementId, out Quest? quest) && !_quests.Contains(quest))
-                _quests.Add(quest);
+            Add(elementId);
         }
     }
 

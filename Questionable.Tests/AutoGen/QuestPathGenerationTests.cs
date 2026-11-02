@@ -8,7 +8,6 @@ using System.Text.Json;
 using Questionable.AutoGen.Generation;
 using Questionable.Model.Questing;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Questionable.Tests.AutoGen;
 
@@ -17,24 +16,17 @@ namespace Questionable.Tests.AutoGen;
 ///     them. Each case here corresponds to a bug that was found by running the generated path in-game, so a
 ///     regression in any of these rules means someone's quest silently stops working again.
 ///     <para>
-///         Requires an installed game — see <see cref="GameDataFixture"/>; without one the tests return early.
+///         Requires an installed game — see <see cref="GameDataFixture"/>; without one the tests are skipped.
 ///     </para>
 /// </summary>
-public sealed class QuestPathGenerationTests(GameDataFixture fixture, ITestOutputHelper output)
+public sealed class QuestPathGenerationTests(GameDataFixture fixture)
     : IClassFixture<GameDataFixture>
 {
     private static readonly JsonSerializerOptions ReloadOptions = new() { PropertyNameCaseInsensitive = false };
 
-    /// <summary>Generates a quest, or returns null when there is no game data to generate from.</summary>
-    private QuestRoot? Generate(ushort questId)
+    private QuestRoot Generate(ushort questId)
     {
-        if (!fixture.Available)
-        {
-            output.WriteLine(
-                $"Skipped: no FFXIV installation found (set {GameDataFixture.GamePathEnvVar} to run these).");
-            return null;
-        }
-
+        Assert.True(fixture.Available, "Game data became unavailable after test discovery.");
         QuestPathResult? result = fixture.Factory!.GenerateById(questId, GameDataFixture.Author);
         Assert.NotNull(result);
         return result.Root;
@@ -43,13 +35,12 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture, ITestOutpu
     private static QuestSequence SequenceOf(QuestRoot root, byte sequence) =>
         Assert.Single(root.QuestSequence, x => x.Sequence == sequence);
 
-    [Fact]
+    [GameDataFact]
     public void Quest481_UsesTheLiceCombRatherThanTalkingToSheep()
     {
         // The script never declares IsEventItemUsable; only the journal's "Use the lice comb on the shaggy
         // sheep" says so, which is what the todo-text fallback exists for.
-        if (Generate(481) is not { } root)
-            return;
+        QuestRoot root = Generate(481);
 
         QuestSequence sequence = SequenceOf(root, 2);
         Assert.NotEmpty(sequence.Steps);
@@ -60,12 +51,11 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture, ITestOutpu
         });
     }
 
-    [Fact]
+    [GameDataFact]
     public void Quest1914_PerformsTheEmoteTheJournalAsksFor()
     {
         // "/dance for Aanu Vanu" - the emote appears in neither QuestParams nor any Lua function.
-        if (Generate(1914) is not { } root)
-            return;
+        QuestRoot root = Generate(1914);
 
         foreach (byte sequenceNumber in new byte[] { 1, 2 })
         {
@@ -75,13 +65,12 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture, ITestOutpu
         }
     }
 
-    [Fact]
+    [GameDataFact]
     public void Quest1915_UsesTheSaddleAtTheSequenceThatConsumesIt()
     {
         // The saddle is held across sequences 1 and 2: picked up at 1, used at 2. Using it starts the fight,
         // so the combat step is AfterItemUse rather than AfterInteraction.
-        if (Generate(1915) is not { } root)
-            return;
+        QuestRoot root = Generate(1915);
 
         QuestStep pickUp = Assert.Single(SequenceOf(root, 1).Steps);
         Assert.Equal(EInteractionType.Interact, pickUp.InteractionType);
@@ -92,25 +81,23 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture, ITestOutpu
         Assert.Equal(2001761u, use.ItemId);
     }
 
-    [Fact]
+    [GameDataFact]
     public void Quest1916_DoesNotInteractWithTheQuestGiverBeforeAHunt()
     {
         // The script lists an actor alongside the enemies only because they stay targetable; the fight is the
         // objective and the combat step anchors to them, so there is no interaction step in front of it.
-        if (Generate(1916) is not { } root)
-            return;
+        QuestRoot root = Generate(1916);
 
         QuestStep step = Assert.Single(SequenceOf(root, 3).Steps);
         Assert.Equal(EInteractionType.Combat, step.InteractionType);
     }
 
-    [Fact]
+    [GameDataFact]
     public void Quest1919_KeepsFightingUntilTheKeyDrops()
     {
         // Without a drop condition the fight ends after a single kill. How many are needed comes from the
         // event item's stack size, not the todo quantity.
-        if (Generate(1919) is not { } root)
-            return;
+        QuestRoot root = Generate(1919);
 
         QuestStep fight = Assert.Single(SequenceOf(root, 1).Steps);
         Assert.Equal(EInteractionType.Combat, fight.InteractionType);
@@ -126,26 +113,24 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture, ITestOutpu
         Assert.Equal(2001672u, use.ItemId);
     }
 
-    [Fact]
+    [GameDataFact]
     public void Quest1741_VisitsEveryNpcOfAMultiTargetSequence()
     {
         // "Speak with all three": the todo entries are bare map ranges, so each actor has to be matched to an
         // area by position. Taking only the first actor leaves the path stuck on an NPC already spoken to.
-        if (Generate(1741) is not { } root)
-            return;
+        QuestRoot root = Generate(1741);
 
         List<uint> targets = [.. SequenceOf(root, 1).Steps.Select(x => x.DataId ?? 0)];
         Assert.Equal([1012057u, 1012056u, 1012053u], targets);
     }
 
-    [Fact]
+    [GameDataFact]
     public void Quest480_PlacesActorsTheLevelSheetHasNoRowFor()
     {
         // The three bolting dodos are quest-only actors: the Level sheet never mentions them and the journal
         // only gives a search area with a 103y radius. Standing at the middle of that circle leaves the item
         // out of range, so the positions have to come from the zone's layer data instead.
-        if (Generate(480) is not { } root)
-            return;
+        QuestRoot root = Generate(480);
 
         Vector3[] dodos =
         [
@@ -166,13 +151,12 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture, ITestOutpu
         });
     }
 
-    [Fact]
+    [GameDataFact]
     public void Quest1709_FindsEveryEnemyOfAMultiFightSequence()
     {
         // Four interact-then-fight pairs across four zones; applying combat only to the primary actor found
         // half of them.
-        if (Generate(1709) is not { } root)
-            return;
+        QuestRoot root = Generate(1709);
 
         HashSet<uint> enemies =
         [
@@ -184,17 +168,12 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture, ITestOutpu
         Assert.Superset(new HashSet<uint> { 9487u, 9488u, 9489u, 9490u }, enemies);
     }
 
-    [Fact]
+    [GameDataFact]
     public void GeneratedPathsAreLoadableByThePlugin()
     {
         // Round-trips the writer's output back through the model the plugin loads paths with, which catches
         // serialization changes that would produce files the registry cannot read.
-        if (!fixture.Available)
-        {
-            output.WriteLine(
-                $"Skipped: no FFXIV installation found (set {GameDataFixture.GamePathEnvVar} to run these).");
-            return;
-        }
+        Assert.True(fixture.Available, "Game data became unavailable after test discovery.");
 
         foreach (ushort questId in new ushort[] { 481, 1200, 1709, 1741, 1914, 1915, 1916, 1919 })
         {

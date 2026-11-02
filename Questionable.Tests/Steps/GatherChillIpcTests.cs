@@ -51,6 +51,8 @@ public sealed class GatherChillIpcTests
     [Fact]
     public void StartJob_OwnsTheReturnedJob()
     {
+        Assert.True(_ipc.IsAvailable());
+        Assert.True(_ipc.IsReady());
         Start();
         _startJob.Received(1).InvokeFunc(GatherChillIpc.Owner, 42, 3);
         Assert.Equal(_jobId, _state.ProviderOperationId);
@@ -58,14 +60,48 @@ public sealed class GatherChillIpcTests
         Assert.Equal(GatherStartResult.Busy, _ipc.StartRequest(42, 3, out _));
     }
 
-    [Fact]
-    public void OlderApi_IsNotReadyAndNeverStarts()
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void OlderApi_IsAvailableButNotReadyAndNeverStarts(int version)
     {
-        _version.InvokeFunc().Returns(2);
-        Assert.False(_ipc.IsAvailable());
+        _version.InvokeFunc().Returns(version);
+        Assert.True(_ipc.IsAvailable());
+        Assert.False(_ipc.IsReady());
         Assert.Equal(GatherStartResult.NotReady, _ipc.StartRequest(42, 3, out _));
         _startJob.DidNotReceiveWithAnyArgs().InvokeFunc(default!, default, default);
         Assert.False(_state.HasOperation);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void MissingOrInvalidApi_IsUnavailableAndNeverStarts(bool missing)
+    {
+        _version.InvokeFunc().Returns(_ => missing ? throw new InvalidOperationException("provider absent") : 0);
+        Assert.False(_ipc.IsAvailable());
+        Assert.False(_ipc.IsReady());
+        Assert.Equal(GatherStartResult.NotReady, _ipc.StartRequest(42, 3, out _));
+        _startJob.DidNotReceiveWithAnyArgs().InvokeFunc(default!, default, default);
+        Assert.False(_state.HasOperation);
+    }
+
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void OlderApi_IdleCannotReleaseAnUncertainApi3Submission(int version)
+    {
+        _startJob.Configure().InvokeFunc(GatherChillIpc.Owner, 42, 3).Returns(_ => throw new InvalidOperationException("reply lost"));
+        Assert.Equal(GatherStartResult.Uncertain, _ipc.StartRequest(42, 3, out _));
+        _version.InvokeFunc().Returns(version);
+        _providerBusy = false;
+
+        ObserveIdle();
+
+        Assert.False(_state.TryConfirmIdle());
+        Assert.True(_state.HasOperation);
+        Assert.True(_state.RequiresReconciliation);
+        _cancelJob.DidNotReceiveWithAnyArgs().InvokeFunc(default!, default);
     }
 
     [Fact]

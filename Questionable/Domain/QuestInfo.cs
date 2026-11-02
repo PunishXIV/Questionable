@@ -12,7 +12,8 @@ namespace Questionable.Domain;
 
 internal sealed class QuestInfo : IQuestInfo
 {
-    public QuestInfo(ExcelQuest quest, uint newGamePlusChapter, byte startingCity, JournalGenreOverrides journalGenreOverrides)
+    public QuestInfo(ExcelQuest quest, uint newGamePlusChapter, byte startingCity, JournalGenreOverrides journalGenreOverrides,
+        IEnumerable<Item> tripleTriadCardItems)
     {
         QuestId = QQuestId.FromRowId(quest.RowId);
 
@@ -104,16 +105,9 @@ internal sealed class QuestInfo : IQuestInfo
             .Where(x => x != null)
             .Cast<ItemReward>()
             .ToList();
-        TripleTriadCardRewards = Svc.Data.GetExcelSheet<TripleTriadCardResident>()
-            .Where(x => x.Quest.RowId == quest.RowId)
-            .Select(x =>
-            {
-                var item = Svc.Data.GetExcelSheet<Item>()
-                    .Where(item => item.ItemAction.Value is var itemAction &&
-                        itemAction.Action.RowId == 3357 && // triple triad card use action
-                        item.AdditionalData.RowId == x.RowId).FirstOrNull();
-                return item != null ? ItemReward.CreateFromItem(item.Value, QuestId) : null;
-            }).OfType<ItemReward>().ToList();
+        TripleTriadCardRewards = tripleTriadCardItems
+            .Select(item => ItemReward.CreateFromItem(item, QuestId))
+            .OfType<ItemReward>().ToList();
         Expansion = (EExpansionVersion)quest.Expansion.RowId;
         AvailableIcon = quest.EventIconType.ValueNullable?.NpcIconAvailable + 1;
         ActiveIcon = AvailableIcon + 2;

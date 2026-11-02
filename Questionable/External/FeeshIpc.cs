@@ -11,6 +11,9 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
 
     private readonly ILogger<FeeshIpc> _logger;
     private readonly FishingOperationState _operation;
+    private readonly IFramework _framework;
+    private readonly TimeProvider _clock;
+    private readonly Dictionary<uint, long> _pendingReleases = [];
     private readonly Func<bool> _isBusy;
     private readonly Func<uint, string> _taggedStand;
     private readonly Func<string, uint, int, bool, bool> _catch;
@@ -22,8 +25,9 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
     private bool? _catchDoneResult;
     private uint? _heldFish;
 
-    public FeeshIpc(IDalamudPluginInterface pluginInterface, ILogger<FeeshIpc> logger, FishingOperationState operation)
-        : this(logger, operation,
+    public FeeshIpc(IDalamudPluginInterface pluginInterface, ILogger<FeeshIpc> logger, FishingOperationState operation,
+        IFramework framework)
+        : this(logger, operation, framework,
             pluginInterface.GetIpcSubscriber<bool>("WahTools.IsBusy").InvokeFunc,
             pluginInterface.GetIpcSubscriber<uint, string>("WahTools.Feesh.TaggedStand").InvokeFunc,
             pluginInterface.GetIpcSubscriber<string, uint, int, bool, bool>("WahTools.Feesh.Catch").InvokeFunc,
@@ -35,18 +39,21 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
         _catchDone.Subscribe(OnCatchDone);
     }
 
-    internal FeeshIpc(ILogger<FeeshIpc> logger, FishingOperationState operation, Func<bool> isBusy,
+    internal FeeshIpc(ILogger<FeeshIpc> logger, FishingOperationState operation, IFramework framework, Func<bool> isBusy,
         Func<uint, string> taggedStand, Func<string, uint, int, bool, bool> startCatch, Func<string> catching,
-        Func<string, bool> cancelCatch, Func<string, uint, bool> releaseCatch)
+        Func<string, bool> cancelCatch, Func<string, uint, bool> releaseCatch, TimeProvider? clock = null)
     {
         _logger = logger;
         _operation = operation;
+        _framework = framework;
+        _clock = clock ?? TimeProvider.System;
         _isBusy = isBusy;
         _taggedStand = taggedStand;
         _catch = startCatch;
         _catching = catching;
         _cancelCatch = cancelCatch;
         _releaseCatch = releaseCatch;
+        _framework.Update += OnFrameworkUpdate;
     }
 
     public override string InternalName => "WahTools";
@@ -93,6 +100,8 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
             }
 
             _operation.AcceptCatch(owner);
+            // The new job now needs this owner's hold; an old release must not remove it.
+            _pendingReleases.Remove(fishId);
             _heldFish = fishId;
             return FeeshStartResult.Started;
         }
@@ -100,6 +109,7 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
         {
             _logger.LogWarning(e, "Feesh catch submission has an uncertain result");
             _operation.MarkUncertain(owner);
+            _pendingReleases.Remove(fishId);
             _heldFish = fishId;
             message = e.Message;
             return FeeshStartResult.Uncertain;
@@ -108,6 +118,7 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
 
     public void PollOperation()
     {
+        RetryPendingReleases();
         if (_operation.OperationId is not { } owner)
             return;
 
@@ -129,6 +140,7 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
 
     public void CancelOwned()
     {
+        RetryPendingReleases();
         if (!_operation.HasOperation)
             return;
         _operation.AbandonCurrent();
@@ -141,15 +153,37 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
 
     public void ReleaseCatch(uint fishId)
     {
+        if (_heldFish == fishId)
+            _heldFish = null;
+        TryReleaseCatch(fishId);
+    }
+
+    private void TryReleaseCatch(uint fishId)
+    {
+        _pendingReleases[fishId] = _clock.GetTimestamp();
         try
         {
+            // False means this owner no longer holds the fish, which also completes cleanup.
             _releaseCatch(Owner, fishId);
-            if (_heldFish == fishId)
-                _heldFish = null;
+            _pendingReleases.Remove(fishId);
         }
         catch (Exception e)
         {
             _logger.LogDebug(e, "Unable to release Feesh's hold on {FishId}", fishId);
+        }
+    }
+
+    // QuestController stops polling once the job is released, but its hold cleanup can still be pending.
+    private void OnFrameworkUpdate(IFramework framework) => RetryPendingReleases();
+
+    private void RetryPendingReleases(bool force = false)
+    {
+        if (_pendingReleases.Count == 0)
+            return;
+        foreach (var (fishId, lastAttempt) in _pendingReleases.ToArray())
+        {
+            if (force || _clock.GetElapsedTime(lastAttempt) >= TimeSpan.FromSeconds(2))
+                TryReleaseCatch(fishId);
         }
     }
 
@@ -227,7 +261,20 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
         }
     }
 
-    public void Dispose() => _catchDone?.Unsubscribe(OnCatchDone);
+    public void Dispose()
+    {
+        _framework.Update -= OnFrameworkUpdate;
+        _catchDone?.Unsubscribe(OnCatchDone);
+        IpcInvoke.TryOnFrameworkThread(_framework, () => RetryPendingReleases(force: true), _logger);
+
+        // Framework unloading can skip both the final retry and the controller's cancellation.
+        var remainingHolds = _pendingReleases.Keys.ToHashSet();
+        if (_heldFish is { } fishId)
+            remainingHolds.Add(fishId);
+        if (remainingHolds.Count > 0)
+            _logger.LogWarning("Feesh holds could not be released before unloading: {FishIds}. Release them in WahTools.",
+                string.Join(", ", remainingHolds));
+    }
 }
 
 internal interface IFeeshIpc

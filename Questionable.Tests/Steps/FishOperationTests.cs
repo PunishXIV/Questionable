@@ -1,4 +1,7 @@
+using Dalamud.Plugin.Services;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using NSubstitute;
 using Questionable.Controller;
 using Questionable.Controller.Steps;
 using Questionable.Controller.Steps.Shared;
@@ -12,6 +15,8 @@ namespace Questionable.Tests.Steps;
 public sealed class FishOperationTests : IDisposable
 {
     private readonly TestClock _clock = new();
+    private readonly IFramework _framework = Substitute.For<IFramework>();
+    private readonly ILogger<FeeshIpc> _logger = Substitute.For<ILogger<FeeshIpc>>();
     private readonly FishingOperationState _operation;
     private readonly FeeshIpc _ipc;
     private readonly Fish.DoFish _executor;
@@ -25,28 +30,39 @@ public sealed class FishOperationTests : IDisposable
     private bool _catchResult = true;
     private bool _catchThrows;
     private bool _cancelAccepted = true;
+    private bool _releaseThrows;
     private bool _objectives;
     private int _eligible;
     private readonly List<(string Owner, uint Fish, int Count, bool Keep)> _catches = [];
     private readonly List<string> _cancels = [];
     private readonly List<uint> _releases = [];
+    private readonly HashSet<uint> _holds = [];
 
     public FishOperationTests()
     {
         _operation = new FishingOperationState(_clock);
-        _ipc = new FeeshIpc(NullLogger<FeeshIpc>.Instance, _operation,
+        _framework.IsInFrameworkUpdateThread.Returns(true);
+        _ipc = new FeeshIpc(_logger, _operation, _framework,
             () => _busy ?? throw new InvalidOperationException("unloaded"),
             _ => _canCatch ? "stand" : "",
             (owner, fish, count, keep) =>
             {
                 _catches.Add((owner, fish, count, keep));
+                if (keep && (_catchResult || _catchThrows))
+                    _holds.Add(fish);
                 if (_catchThrows)
                     throw new InvalidOperationException("reply lost after acceptance");
                 return _catchResult;
             },
             () => _available && _catching != null ? _catching : throw new InvalidOperationException("unloaded"),
             owner => { _cancels.Add(owner); return _cancelAccepted; },
-            (_, fish) => { _releases.Add(fish); return true; });
+            (_, fish) =>
+            {
+                _releases.Add(fish);
+                if (_releaseThrows)
+                    throw new InvalidOperationException("release unavailable");
+                return _holds.Remove(fish);
+            }, _clock);
         _executor = new Fish.DoFish(_ipc, _operation, NullLogger<Fish.DoFish>.Instance,
             _ => _objectives, _ => _eligible, id => $"fish {id}", _clock);
     }
@@ -155,6 +171,145 @@ public sealed class FishOperationTests : IDisposable
         Assert.Equal(ETaskResult.TaskComplete, UpdateExecutor());
         Assert.False(_operation.HasOperation);
         Assert.Equal(42u, Assert.Single(_releases));
+    }
+
+    [Fact]
+    public void FailedRelease_RetriesOnFrameworkWithoutJobOwnershipAndIsThrottled()
+    {
+        CompleteWithFailedRelease();
+        Assert.False(_operation.HasOperation);
+        Assert.Contains(42u, _holds);
+        FrameworkUpdate();
+        _ipc.CancelOwned();
+        Assert.Single(_releases);
+
+        _clock.Advance(TimeSpan.FromSeconds(2));
+        FrameworkUpdate();
+        Assert.Equal(2, _releases.Count);
+        Assert.Contains(42u, _holds);
+
+        _releaseThrows = false;
+        _clock.Advance(TimeSpan.FromSeconds(2));
+        FrameworkUpdate();
+        Assert.Equal(3, _releases.Count);
+        Assert.Empty(_holds);
+        _clock.Advance(TimeSpan.FromSeconds(2));
+        FrameworkUpdate();
+        Assert.Equal(3, _releases.Count);
+        Assert.Empty(_cancels);
+    }
+
+    [Fact]
+    public void FailedRelease_SurvivesStartingAnotherFish()
+    {
+        CompleteWithFailedRelease();
+        Assert.Equal(FeeshStartResult.Started, _ipc.StartCatch(43, 1, out _));
+        _releaseThrows = false;
+        _clock.Advance(TimeSpan.FromSeconds(2));
+        FrameworkUpdate();
+
+        Assert.Equal(new uint[] { 42, 42 }, _releases);
+        Assert.Equal(43u, Assert.Single(_holds));
+        Assert.True(_operation.HasOperation);
+        Assert.Empty(_cancels);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void SameFishReplacement_SupersedesOldReleaseEvenWhenStartReplyIsLost(bool lostReply)
+    {
+        CompleteWithFailedRelease();
+        _catchThrows = lostReply;
+        Assert.Equal(lostReply ? FeeshStartResult.Uncertain : FeeshStartResult.Started,
+            _ipc.StartCatch(42, 1, out _));
+        _releaseThrows = false;
+        _clock.Advance(TimeSpan.FromSeconds(2));
+        FrameworkUpdate();
+        Assert.Single(_releases);
+        Assert.Contains(42u, _holds);
+
+        _ipc.CancelOwned();
+        Assert.Equal(2, _releases.Count);
+        Assert.Empty(_holds);
+    }
+
+    [Fact]
+    public void RefusedSameFishCatch_KeepsTheOldReleasePending()
+    {
+        CompleteWithFailedRelease();
+        _catchResult = false;
+        Assert.Equal(FeeshStartResult.Refused, _ipc.StartCatch(42, 1, out _));
+        _releaseThrows = false;
+        _clock.Advance(TimeSpan.FromSeconds(2));
+        FrameworkUpdate();
+        Assert.Equal(2, _releases.Count);
+        Assert.Empty(_holds);
+    }
+
+    [Fact]
+    public void AlreadyReleasedHold_CompletesPendingCleanup()
+    {
+        CompleteWithFailedRelease();
+        _holds.Clear(); // Released manually in WahTools; ReleaseCatch now returns false.
+        _releaseThrows = false;
+        _clock.Advance(TimeSpan.FromSeconds(2));
+        FrameworkUpdate();
+        _clock.Advance(TimeSpan.FromSeconds(2));
+        FrameworkUpdate();
+        Assert.Equal(2, _releases.Count);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void Dispose_RetriesPendingReleaseAndUnsubscribesFrameworkUpdates(bool releaseStillFails)
+    {
+        CompleteWithFailedRelease();
+        _releaseThrows = releaseStillFails;
+        _ipc.Dispose();
+        Assert.Equal(2, _releases.Count);
+        Assert.Equal(releaseStillFails, _holds.Contains(42));
+        if (releaseStillFails)
+            Assert.Contains("42", Assert.Single(DisposalWarnings()));
+        else
+            Assert.Empty(DisposalWarnings());
+        _releaseThrows = false;
+        _clock.Advance(TimeSpan.FromSeconds(2));
+        FrameworkUpdate();
+        Assert.Equal(2, _releases.Count);
+    }
+
+    [Theory]
+    [InlineData(false, false)]
+    [InlineData(true, false)]
+    [InlineData(false, true)]
+    [InlineData(true, true)]
+    public void Dispose_WhenFrameworkIsUnloading_ReportsAllRemainingHoldsWithoutIpc(bool pending, bool active)
+    {
+        if (pending)
+            CompleteWithFailedRelease();
+        if (active)
+            Assert.Equal(FeeshStartResult.Started, _ipc.StartCatch(43, 1, out _));
+
+        _releaseThrows = false;
+        _framework.IsInFrameworkUpdateThread.Returns(false);
+        _framework.IsFrameworkUnloading.Returns(true);
+        int releaseAttempts = _releases.Count;
+        _framework.ClearReceivedCalls();
+        _ipc.Dispose();
+
+        Assert.Equal(releaseAttempts, _releases.Count);
+        Assert.Empty(_cancels);
+        Assert.DoesNotContain(_framework.ReceivedCalls(), call => call.GetMethodInfo().Name == "RunOnFrameworkThread");
+        if (!pending && !active)
+            Assert.Empty(DisposalWarnings());
+        else
+        {
+            string warning = Assert.Single(DisposalWarnings());
+            Assert.Equal(pending, warning.Contains("42", StringComparison.Ordinal));
+            Assert.Equal(active, warning.Contains("43", StringComparison.Ordinal));
+        }
     }
 
     [Fact]
@@ -312,6 +467,77 @@ public sealed class FishOperationTests : IDisposable
     }
 
     [Theory]
+    [InlineData("")]
+    [InlineData("done previous fish 3/3")]
+    [InlineData("cancelled previous fish 1/3")]
+    public void UnobservedInactiveJob_CanBeConfirmedOnlyAfterTimeoutAndStableIdle(string status)
+    {
+        Start();
+        _catching = status;
+        _cancelAccepted = false;
+        _ipc.PollOperation();
+        Assert.False(_operation.TryConfirmIdle());
+
+        _clock.Advance(TimeSpan.FromSeconds(30));
+        _ipc.PollOperation();
+        Assert.Equal(ExternalOperationStatus.Unknown, _operation.Status);
+        Assert.True(_operation.RequiresReconciliation);
+        Assert.False(_operation.TryConfirmIdle());
+        Assert.Single(_cancels);
+        _queue.Reset(); // Match the controller's stop before manual reconciliation.
+        for (int i = 0; i < 4; ++i)
+        {
+            _clock.Advance(TimeSpan.FromMilliseconds(500));
+            _ipc.PollOperation();
+        }
+
+        Assert.False(_operation.IsTerminal);
+        Assert.True(_operation.TryConfirmIdle());
+        Assert.False(_operation.HasOperation);
+        Assert.Single(_catches);
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(null)]
+    public void TimedOutJob_BusyOrUnreadableProviderCannotBeConfirmed(bool? busy)
+    {
+        Start();
+        _clock.Advance(TimeSpan.FromSeconds(30));
+        _busy = busy;
+        for (int i = 0; i < 6; ++i)
+        {
+            _ipc.PollOperation();
+            _clock.Advance(TimeSpan.FromMilliseconds(500));
+        }
+        Assert.Equal(ExternalOperationStatus.Unknown, _operation.Status);
+        Assert.True(_operation.RequiresReconciliation);
+        Assert.False(_operation.TryConfirmIdle());
+    }
+
+    [Theory]
+    [InlineData("fishing fish 0/3")]
+    [InlineData("finishing fish 3/3")]
+    public void ActiveStateAfterStartupTimeout_PreventsIdleConfirmation(string status)
+    {
+        Start();
+        _clock.Advance(TimeSpan.FromSeconds(30));
+        _ipc.PollOperation();
+        for (int i = 0; i < 4; ++i)
+        {
+            _clock.Advance(TimeSpan.FromMilliseconds(500));
+            _ipc.PollOperation();
+        }
+        Assert.True(_operation.CanConfirmIdle);
+
+        _catching = status;
+        _ipc.PollOperation();
+        Assert.True(_operation.HasStarted);
+        Assert.Equal(ExternalOperationStatus.CancellationRequested, _operation.Status);
+        Assert.False(_operation.TryConfirmIdle());
+    }
+
+    [Theory]
     [InlineData(null, nameof(EFeeshJobState.Unavailable))]
     [InlineData("", nameof(EFeeshJobState.None))]
     [InlineData("  ", nameof(EFeeshJobState.None))]
@@ -361,6 +587,24 @@ public sealed class FishOperationTests : IDisposable
     }
 
     public void Dispose() => _ipc.Dispose();
+
+    private IEnumerable<string> DisposalWarnings() => _logger.ReceivedCalls()
+        .Where(call => call.GetMethodInfo().Name == "Log" && call.GetArguments()[0] is LogLevel.Warning)
+        .Select(call => call.GetArguments()[2]?.ToString() ?? "");
+
+    private void FrameworkUpdate() => _framework.Update += Raise.Event<IFramework.OnUpdateDelegate>(_framework);
+
+    private void CompleteWithFailedRelease()
+    {
+        Start();
+        _objectives = true;
+        _catching = "done fish 3/3";
+        _releaseThrows = true;
+        _ipc.OnCatchDone(FeeshIpc.Owner, true);
+        Assert.Equal(ETaskResult.TaskComplete, UpdateExecutor());
+        Assert.True(_queue.Reset());
+        Assert.Single(_releases);
+    }
 
     private ETaskResult UpdateExecutor()
     {

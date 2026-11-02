@@ -7,6 +7,9 @@ internal static class Combat
 {
     internal sealed class Factory() : ITaskFactory
     {
+        private const ushort Mount128Id = 128;
+        private const ushort Mount147Id = 147;
+
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.Combat)
@@ -14,8 +17,8 @@ internal static class Combat
             if (!step.EnemySpawnType.HasValue)
                 throw new ArgumentNullException(nameof(step.EnemySpawnType));
 
-            if (GameFunctions.GetMountId() != Mount128Module.MountId &&
-                GameFunctions.GetMountId() != Mount147Module.MountId)
+            if (GameFunctions.GetMountId() != Mount128Id &&
+                GameFunctions.GetMountId() != Mount147Id)
             {
                 yield return new MountStep.UnmountTask();
             }

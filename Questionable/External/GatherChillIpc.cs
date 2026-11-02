@@ -27,8 +27,9 @@ internal sealed class GatherChillIpc(IDalamudPluginInterface pluginInterface, IL
 
     public override string InternalName => "GatherChill";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
-    public bool IsAvailable() => Read(() => _apiVersion.InvokeFunc() >= MinimumApiVersion) == true;
-    public override bool IsReady() => IsAvailable();
+    // Older providers can still be moving the character even though we cannot submit jobs to them.
+    public bool IsAvailable() => Read(() => _apiVersion.InvokeFunc() > 0) == true;
+    public override bool IsReady() => Read(() => _apiVersion.InvokeFunc() >= MinimumApiVersion) == true;
     public bool? GetBusy() => Read(_isBusy.InvokeFunc);
     public bool CanGather(uint itemId) => Read(() => _canGather.InvokeFunc(itemId)) == true;
 

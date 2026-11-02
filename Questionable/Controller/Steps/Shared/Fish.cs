@@ -145,8 +145,7 @@ internal static class Fish
 
         private void Release()
         {
-            _operation.TryReleaseTerminal(_owner);
-            if (Task.GatheredItem is { } item)
+            if (_operation.TryReleaseTerminal(_owner) && Task.GatheredItem is { } item)
                 _feeshIpc.ReleaseCatch(item.ItemId);
         }
 

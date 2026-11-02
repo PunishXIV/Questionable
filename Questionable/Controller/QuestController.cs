@@ -58,12 +58,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     /// <summary>How long to wait at sequence 0/step 0 before assuming the quest-accept addon never fired and resetting.</summary>
     private const int QuestAcceptStalledTimeoutSeconds = 15;
 
-    /// <summary>Minimum cooldown between auto-refresh attempts.</summary>
-    private const int AutoRefreshCooldownSeconds = 5;
-
-    /// <summary>Player must move at least this many world-units for the auto-refresh "progress" check to fire.</summary>
-    private const float AutoRefreshProgressMoveThreshold = 0.5f;
-
     /// <summary>Consecutive deaths on the same quest step before death handling gives up and stops.</summary>
     private const int MaxConsecutiveDeaths = 5;
 
@@ -114,7 +108,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private readonly ICommandManager _commandManager;
     private readonly NotificationMasterIpc _notificationMasterIpc;
     private EAutomationType _automationType;
-    private DateTime _lastAutoRefresh = DateTime.MinValue;
 
     /// <summary>True while recovering from the player's death (waiting for the return prompt / respawn).</summary>
     private bool _handlingDeath;
@@ -128,15 +121,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     /// <summary>Quest step a death streak is counted against; the streak resets when the step changes.</summary>
     private (ElementId QuestId, byte Sequence, int Step)? _deathStreakKey;
     private int _deathStreakCount;
-
-    /// <summary>
-    ///     Auto-refresh fields for tracking player state and progress
-    /// </summary>
-    private Vector3 _lastPlayerPosition = Vector3.Zero;
-    private DateTime _lastProgressUpdate = DateTime.Now;
-    private ElementId? _lastQuestId;
-    private byte _lastQuestSequence = 255;
-    private int _lastQuestStep = -1;
 
     /// <summary>
     /// </summary>
@@ -333,7 +317,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             _logger.LogInformation("Reload, resetting curent quest progress");
 
             ResetInternalState();
-            ResetAutoRefreshState();
 
             _questRegistry.Reload();
             _singlePlayerDutyConfigComponent.Reload();
@@ -347,16 +330,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _safeAnimationEnd = DateTime.MinValue;
 
         DebugState = null;
-    }
-
-    private void ResetAutoRefreshState()
-    {
-        _lastPlayerPosition = Vector3.Zero;
-        _lastQuestStep = -1;
-        _lastQuestSequence = 255;
-        _lastQuestId = null;
-        _lastProgressUpdate = DateTime.Now;
-        _lastAutoRefresh = DateTime.Now;
     }
 
     public void Update()
@@ -470,88 +443,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         {
             if (EzThrottler.Throttle(ex.Message))
                 throw;
-        }
-    }
-
-    // kept for reference
-    private void CheckAutoRefreshCondition()
-    {
-        if (HasExternalOperation ||
-            !_configuration.General.AutoStepRefreshEnabled ||
-            AutomationType != EAutomationType.Automatic ||
-            !IsRunning ||
-            CurrentQuest == null ||
-            !_clientState.IsLoggedIn ||
-            _objectTable[0] == null ||
-            DateTime.Now < _lastAutoRefresh.AddSeconds(AutoRefreshCooldownSeconds))
-        {
-            return;
-        }
-
-        Vector3? playerPosition = _objectTable[0]?.Position;
-        if (playerPosition == null ||
-            _condition[ConditionFlag.InCombat] ||
-            _condition[ConditionFlag.Unconscious] ||
-            _condition[ConditionFlag.BoundByDuty] ||
-            _condition[ConditionFlag.InDeepDungeon] ||
-            _condition[ConditionFlag.WatchingCutscene] ||
-            _condition[ConditionFlag.WatchingCutscene78] ||
-            _condition[ConditionFlag.BetweenAreas] ||
-            _condition[ConditionFlag.BetweenAreas51] ||
-            _gameFunctions.IsOccupied() ||
-            _movementController.IsPathfinding ||
-            _movementController.IsPathRunning ||
-            !_movementController.IsNavmeshReady ||
-            (_taskQueue.CurrentTaskExecutor?.CurrentTask.GetType().Namespace == typeof(WaitAtEnd).Namespace) ||
-            DateTime.Now < _safeAnimationEnd)
-        {
-            _lastProgressUpdate = DateTime.Now;
-            return;
-        }
-
-        Vector3 currentPosition = playerPosition.Value;
-        ElementId currentQuestId = CurrentQuest.Quest.Id;
-        byte currentSequence = CurrentQuest.Sequence;
-        int currentStep = CurrentQuest.Step;
-
-        bool hasProgressBeenMade =
-            Vector3.Distance(currentPosition, _lastPlayerPosition) > AutoRefreshProgressMoveThreshold ||
-            !currentQuestId.Equals(_lastQuestId) ||
-            currentSequence != _lastQuestSequence ||
-            currentStep != _lastQuestStep;
-
-        if (hasProgressBeenMade)
-        {
-            _lastPlayerPosition = currentPosition;
-            _lastQuestId = currentQuestId;
-            _lastQuestSequence = currentSequence;
-            _lastQuestStep = currentStep;
-            _lastProgressUpdate = DateTime.Now;
-        }
-        else
-        {
-            // we detect no progress, check if we should auto-refresh
-            TimeSpan timeSinceProgress = DateTime.Now - _lastProgressUpdate;
-            TimeSpan refreshDelay = TimeSpan.FromSeconds(_configuration.General.AutoStepRefreshDelaySeconds);
-
-            if (timeSinceProgress >= refreshDelay)
-            {
-                _logger.LogInformation("Automatically refreshing quest step as no progress detected for {TimeSinceProgress:F1} seconds (quest: {QuestId}, sequence: {Sequence}, step: {Step})",
-                    timeSinceProgress.TotalSeconds, currentQuestId, currentSequence, currentStep);
-
-                _chatGui.Print($"Automatically refreshing quest step as no progress detected for {timeSinceProgress.TotalSeconds:F0} seconds.",
-                    CommandHandler.MessageTag, CommandHandler.TagColor);
-
-                if (!ClearTasksInternal())
-                {
-                    Stop("Task cleanup failed");
-                    return;
-                }
-
-                Reload();
-
-                _lastAutoRefresh = DateTime.Now;
-            }
         }
     }
 
@@ -880,8 +771,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 CurrentQuest.SetStep(CurrentQuest.Step + 1);
             else
                 CurrentQuest.SetStep(CompletedStepValue);
-
-            ResetAutoRefreshState();
         }
 
         using IDisposable? scope = _logger.BeginScope("IncStepCt");
@@ -998,7 +887,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         GatheringQuest = null;
         _lastTaskUpdate = DateTime.Now;
 
-        ResetAutoRefreshState();
         if (wasAutomatic && !_stopConditionComponent.commandExceptions.Any(e => label.Equals(e, StringComparison.OrdinalIgnoreCase)))
         {
             TryCleanup(() => _notificationMasterIpc.NotifyOnFailure(_L("Automatic questing has stopped.")), "stop notification");
@@ -1062,8 +950,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
             _logger.LogInformation("Couldn't execute next step during Stop() call");
 
         _lastTaskUpdate = DateTime.Now;
-
-        ResetAutoRefreshState();
     }
 
     /// <summary>
@@ -1634,8 +1520,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
                 _taskQueue.Enqueue(task);
             }
-
-            ResetAutoRefreshState();
         }
         catch (Exception e)
         {

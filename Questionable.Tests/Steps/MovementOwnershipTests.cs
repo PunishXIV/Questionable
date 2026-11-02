@@ -107,6 +107,39 @@ public sealed class MovementOwnershipTests : IDisposable
     }
 
     [Theory]
+    [InlineData(1, false)]
+    [InlineData(1, true)]
+    [InlineData(2, false)]
+    [InlineData(2, true)]
+    public void OlderGatheringApi_BusyOrUnreadableStatusProtectsProviderTravel(int version, bool unreadable)
+    {
+        var plugin = Substitute.For<IDalamudPluginInterface>();
+        var apiVersion = Substitute.For<ICallGateSubscriber<int>>();
+        var busy = Substitute.For<ICallGateSubscriber<bool>>();
+        var cancel = Substitute.For<ICallGateSubscriber<string, Guid, bool>>();
+        apiVersion.InvokeFunc().Returns(version);
+        busy.InvokeFunc().Returns(_ => unreadable ? throw new InvalidOperationException("status unavailable") : true);
+        plugin.GetIpcSubscriber<int>("GatherChill.ApiVersion").Returns(apiVersion);
+        plugin.GetIpcSubscriber<bool>("GatherChill.IsBusy").Returns(busy);
+        plugin.GetIpcSubscriber<string, Guid, bool>("GatherChill.CancelJob").Returns(cancel);
+        GatheringOperationState operation = new();
+        var gather = new GatherChillIpc(plugin, NullLogger<GatherChillIpc>.Instance, operation);
+        var knightshopper = Substitute.For<IKnightshopperIpc>();
+        knightshopper.GetBusy().Returns(false);
+        using MovementController movement = CreateController(new(), knightshopper, operation, gather);
+
+        // A real IPC adapter must keep old providers visible to the movement guard.
+        // The null navmesh dependency fails if Stop attempts to touch global movement.
+        movement.Stop();
+
+        Assert.Null(movement.Destination);
+        Assert.True(gather.IsAvailable());
+        Assert.False(gather.IsReady());
+        Assert.False(operation.HasOperation);
+        cancel.DidNotReceiveWithAnyArgs().InvokeFunc(default!, default);
+    }
+
+    [Theory]
     [InlineData(false, false)]
     [InlineData(false, true)]
     [InlineData(true, false)]

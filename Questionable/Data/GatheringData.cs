@@ -31,7 +31,8 @@ internal sealed class GatheringData
         }
         logger.LogDebug($"Loaded {_minerItems.Count + _botanistItems.Count} gathering items ({_minerItems.Count} + {_botanistItems.Count})");
 
-        _itemIdToCollectability = dataManager.GetSubrowExcelSheet<SatisfactionSupply>()
+        SubrowExcelSheet<SatisfactionSupply> supplies = dataManager.GetSubrowExcelSheet<SatisfactionSupply>();
+        _itemIdToCollectability = supplies
             .Flatten()
             .Where(x => x.RowId > 0 && x.Slot is 2)
             .Select(x => new
@@ -44,9 +45,7 @@ internal sealed class GatheringData
 
         _npcForCustomDeliveries = dataManager.GetExcelSheet<SatisfactionNpc>()
             .Where(x => x.RowId > 0)
-            .SelectMany(x => dataManager.GetSubrowExcelSheet<SatisfactionSupply>()
-                .Flatten()
-                .Where(y => y.RowId == x.SatisfactionNpcParams[^1].SupplyIndex)
+            .SelectMany(x => GetSupplies(supplies, x.SatisfactionNpcParams[^1].SupplyIndex)
                 .Select(y => new
                 {
                     ItemId = y.Item.RowId,
@@ -56,6 +55,9 @@ internal sealed class GatheringData
             .Distinct()
             .ToDictionary(x => x.ItemId, x => x.NpcId);
     }
+
+    private static IEnumerable<SatisfactionSupply> GetSupplies(SubrowExcelSheet<SatisfactionSupply> supplies, int rowId) =>
+        rowId >= 0 && supplies.TryGetRow((uint)rowId, out var row) ? row : Enumerable.Empty<SatisfactionSupply>();
 
     public bool IsGatherableBy(uint itemId, Job classJob) => classJob switch
     {

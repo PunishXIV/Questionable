@@ -39,15 +39,10 @@ public sealed class QuestPathGenerationAccuracyTests(GameDataFixture fixture, IT
     /// </summary>
     private const int SampleStride = 20;
 
-    [Fact]
+    [GameDataFact]
     public void GeneratedPathsAgreeWithHandAuthoredOnes()
     {
-        if (!fixture.Available)
-        {
-            output.WriteLine(
-                $"Skipped: no FFXIV installation found (set {GameDataFixture.GamePathEnvVar} to run these).");
-            return;
-        }
+        Assert.True(fixture.Available, "Game data became unavailable after test discovery.");
 
         int sequencesCompared = 0, sequencesMatched = 0, questsCompared = 0, questsMatched = 0;
         List<string> mismatches = [];
@@ -57,53 +52,14 @@ public sealed class QuestPathGenerationAccuracyTests(GameDataFixture fixture, IT
             if (!TryReadQuestId(embedded, out ushort questId))
                 continue;
 
-            QuestRoot? hand = ReadHandAuthored(embedded);
-            if (hand == null)
-                continue;
+            QuestRoot hand = ReadHandAuthored(embedded);
 
             QuestPathResult? result = fixture.Factory!.GenerateById(questId, GameDataFixture.Author);
-            if (result == null)
-                continue;
-
-            QuestRoot generated = result.Root;
             questsCompared++;
-            bool questMatched = true;
-
-            foreach (QuestSequence handSequence in hand.QuestSequence)
-            {
-                // The last targeted step of a sequence is the interaction it exists for; earlier ones are
-                // navigation waypoints a generator has no way to know about.
-                uint? target = handSequence.Steps.LastOrDefault(x => x.DataId is > 0)?.DataId;
-                if (target == null)
-                    continue;
-
-                sequencesCompared++;
-                List<uint> generatedTargets =
-                [
-                    .. generated.QuestSequence
-                        .Where(x => x.Sequence == handSequence.Sequence)
-                        .SelectMany(x => x.Steps)
-                        .Where(x => x.DataId is > 0)
-                        .Select(x => x.DataId!.Value)
-                ];
-
-                if (generatedTargets.Contains(target.Value))
-                {
-                    sequencesMatched++;
-                }
-                else
-                {
-                    questMatched = false;
-                    if (mismatches.Count < 20)
-                    {
-                        mismatches.Add(
-                            $"{embedded.ShortName} seq {handSequence.Sequence}: " +
-                            $"want {target.Value}, got [{string.Join(",", generatedTargets)}]");
-                    }
-                }
-            }
-
-            if (questMatched)
+            var comparison = CompareQuest(hand, result?.Root, embedded.ShortName, mismatches);
+            sequencesCompared += comparison.Compared;
+            sequencesMatched += comparison.Matched;
+            if (comparison.QuestMatched)
                 questsMatched++;
         }
 
@@ -145,16 +101,49 @@ public sealed class QuestPathGenerationAccuracyTests(GameDataFixture fixture, IT
                    out questId);
     }
 
-    private static QuestRoot? ReadHandAuthored(EmbeddedQuest embedded)
+    internal static (int Compared, int Matched, bool QuestMatched) CompareQuest(
+        QuestRoot hand, QuestRoot? generated, string name, List<string> mismatches)
     {
-        try
+        int compared = 0, matched = 0;
+        bool questMatched = generated != null;
+        if (generated == null && mismatches.Count < 20)
+            mismatches.Add($"{name}: generation returned no path");
+
+        foreach (QuestSequence handSequence in hand.QuestSequence)
         {
-            using System.IO.Stream stream = embedded.OpenStream();
-            return JsonSerializer.Deserialize<QuestRoot>(stream);
+            // Compare the final targeted interaction; earlier targets can be navigation waypoints.
+            uint? target = handSequence.Steps.LastOrDefault(x => x.DataId is > 0)?.DataId;
+            if (target == null)
+                continue;
+
+            compared++;
+            List<uint> generatedTargets = generated == null ? [] :
+            [
+                .. generated.QuestSequence
+                    .Where(x => x.Sequence == handSequence.Sequence)
+                    .SelectMany(x => x.Steps)
+                    .Where(x => x.DataId is > 0)
+                    .Select(x => x.DataId!.Value)
+            ];
+
+            if (generatedTargets.Contains(target.Value))
+                matched++;
+            else
+            {
+                questMatched = false;
+                if (mismatches.Count < 20)
+                    mismatches.Add($"{name} seq {handSequence.Sequence}: " +
+                                   $"want {target.Value}, got [{string.Join(",", generatedTargets)}]");
+            }
         }
-        catch (JsonException)
-        {
-            return null;
-        }
+
+        return (compared, matched, questMatched);
+    }
+
+    private static QuestRoot ReadHandAuthored(EmbeddedQuest embedded)
+    {
+        using System.IO.Stream stream = embedded.OpenStream();
+        return JsonSerializer.Deserialize<QuestRoot>(stream)
+               ?? throw new InvalidOperationException($"'{embedded.ManifestName}' deserialized to a null quest.");
     }
 }
