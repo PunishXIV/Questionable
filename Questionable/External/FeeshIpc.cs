@@ -229,3 +229,60 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
 
     public void Dispose() => _catchDone?.Unsubscribe(OnCatchDone);
 }
+
+internal interface IFeeshIpc
+{
+    /// <summary>WahTools is loaded and Feesh answers.</summary>
+    bool IsAvailable();
+
+    /// <summary><c>WahTools.IsBusy</c>; null if unreadable.</summary>
+    bool? GetBusy();
+
+    /// <summary>Feesh knows a spot for this fish.</summary>
+    bool CanCatch(uint fishId);
+
+    /// <summary>Catches <paramref name="additionalCount"/> more and keeps them until released.</summary>
+    FeeshStartResult StartCatch(uint fishId, int additionalCount, out string message);
+
+    void PollOperation();
+
+    /// <summary>Ends the job early; the executor keeps ownership.</summary>
+    void RequestStop();
+
+    void CancelOwned();
+    void ObserveIdle();
+
+    /// <summary>Lets Feesh use this fish again.</summary>
+    void ReleaseCatch(uint fishId);
+}
+
+internal enum FeeshStartResult
+{
+    Started,
+    /// <summary>The call may have reached Feesh, but the reply was lost.</summary>
+    Uncertain,
+    /// <summary>WahTools or Questionable is already busy.</summary>
+    Busy,
+    /// <summary>Feesh refused the job; the reason is in the Dalamud log.</summary>
+    Refused,
+    NotReady,
+    Invalid,
+}
+
+/// <summary>The job state from Feesh's <c>Catching</c> text.</summary>
+internal enum EFeeshJobState
+{
+    /// <summary>Not readable.</summary>
+    Unavailable,
+    /// <summary>Empty: no job has run yet.</summary>
+    None,
+    Fishing,
+    Finishing,
+    Done,
+    Partial,
+    Failed,
+    Cancelled,
+    Stopped,
+    /// <summary>Unknown wording; never treated as finished.</summary>
+    Unrecognized,
+}

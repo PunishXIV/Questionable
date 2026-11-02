@@ -99,10 +99,10 @@ internal static class Purchase
             if (!_owner.HasValue || _operation.OperationId != _owner || _operation.RequiresReconciliation)
                 throw new TaskException(_operation.BlockReason ?? "Knightshopper purchase ownership was lost");
 
-            KnightshopperIpc.EPurchaseState state = _operation.Status;
+            ExternalOperationStatus state = _operation.Status;
             switch (state)
             {
-                case KnightshopperIpc.EPurchaseState.Succeeded:
+                case ExternalOperationStatus.Succeeded:
                     if (_countItems(Task) >= Task.ItemCount)
                     {
                         _operation.TryReleaseTerminal(_owner);
@@ -116,8 +116,8 @@ internal static class Purchase
                     _operation.TryReleaseTerminal(_owner);
                     throw new TaskException($"Knightshopper finished, but the inventory does not contain {Task.ItemCount}x {Task.ItemId}");
 
-                case KnightshopperIpc.EPurchaseState.Failed:
-                case KnightshopperIpc.EPurchaseState.Cancelled:
+                case ExternalOperationStatus.Failed:
+                case ExternalOperationStatus.Cancelled:
                     string message = _operation.Message;
                     _operation.TryReleaseTerminal(_owner);
                     throw new TaskException($"Knightshopper didn't buy {Task.ItemCount}x {Task.ItemId} ({state}): {message}");

@@ -157,3 +157,25 @@ internal sealed class GatherChillIpc : Ipc, IGatherChillIpc
         }
     }
 }
+
+internal interface IGatherChillIpc
+{
+    bool IsAvailable();
+    bool IsReady();
+    bool? GetBusy();
+    bool CanGather(uint itemId);
+    GatherStartResult StartRequest(uint itemId, int additionalCount, out string message);
+    void PollOperation();
+    void CancelOwned();
+    void ObserveIdle();
+}
+
+internal enum GatherStartResult
+{
+    Uncertain = -1,
+    Started = 0,
+    Busy = 1,
+    Unsupported = 2,
+    Invalid = 3,
+    NotReady = 4,
+}

@@ -40,7 +40,7 @@ internal sealed class AutomatonIpc : Ipc
             {
                 return false;
             }
-            catch (IpcError e)
+            catch (Exception e) when (IpcInvoke.IsSafeIpcFailure(e))
             {
                 if (!_loggedIpcError)
                 {
@@ -64,7 +64,7 @@ internal sealed class AutomatonIpc : Ipc
         {
             return false;
         }
-        catch (IpcError e)
+        catch (Exception e) when (IpcInvoke.IsSafeIpcFailure(e))
         {
             _logger.LogWarning(e, "Could not set automaton auto-snipe to {Enabled}", enabled);
             return false;

@@ -11,7 +11,6 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     public override bool IsReady() => IpcInvoke.SafeFunc(() =>
         {
-            var _ = _getFeatureEnabled.InvokeFunc(ConflictingFeatures.First()) != null;
             return GetVersion() != null && _getFeatureEnabled.InvokeFunc(ConflictingFeatures.First()) != null;
         }, fallback: false);
     private static readonly ImmutableHashSet<string> ConflictingFeatures = new HashSet<string>
@@ -79,7 +78,7 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
             {
                 return false;
             }
-            catch (IpcError e)
+            catch (Exception e) when (IpcInvoke.IsSafeIpcFailure(e))
             {
                 if (!_loggedIpcError)
                 {
@@ -103,7 +102,7 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
         {
             return false;
         }
-        catch (IpcError e)
+        catch (Exception e) when (IpcInvoke.IsSafeIpcFailure(e))
         {
             _logger.LogWarning(e, "Could not set Pandora's Box auto active time maneuver to {Enabled}", enabled);
             return false;

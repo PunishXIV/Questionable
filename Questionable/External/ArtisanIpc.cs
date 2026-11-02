@@ -1,6 +1,7 @@
-﻿using Dalamud.Plugin.Ipc;
-using Dalamud.Plugin.Ipc.Exceptions;
+﻿using Dalamud.Plugin.Ipc.Exceptions;
+using Dalamud.Plugin.Ipc;
 using static Questionable.External.IPCUtils;
+
 namespace Questionable.External;
 
 [RegisterSingleton<IArtisanIpc, ArtisanIpc>]
@@ -118,4 +119,31 @@ internal sealed class ArtisanIpc(IDalamudPluginInterface pluginInterface, ILogge
             return ArtisanStatus.Unavailable;
         }
     }
+}
+
+internal interface IArtisanIpc
+{
+    ArtisanStatus GetStatus();
+    ArtisanStartResult CraftList(int listId);
+    ArtisanStartResult CraftItem(ushort recipeId, int crafts);
+}
+
+internal enum ArtisanStartResult
+{
+    // These IPC actions return void. Submission is not proof of execution or completion.
+    Submitted,
+    MissingList,
+    Busy,
+    Unavailable,
+    Failed,
+}
+
+internal enum ArtisanStatus
+{
+    Unavailable,
+    Idle,
+    // Busy with setup/cleanup, but neither a list nor endurance is active yet.
+    Queued,
+    Busy,
+    Paused,
 }

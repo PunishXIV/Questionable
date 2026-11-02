@@ -47,7 +47,7 @@ public sealed class PurchaseTests
         _operation = new PurchaseOperationState(_clock);
         _ipc = new KnightshopperIpc(plugin, NullLogger<KnightshopperIpc>.Instance, _operation);
         _executor = new Purchase.DoBuy(_ipc, _operation, _ => _owned, () => ++_movementStops, _clock);
-        Status(EPurchaseState.Running);
+        Status(ExternalOperationStatus.Running);
     }
 
     [Fact]
@@ -60,7 +60,7 @@ public sealed class PurchaseTests
         _owned = 5;
         _ipc.PollOperation();
         Assert.Equal(ETaskResult.StillRunning, _executor.Update());
-        Status(EPurchaseState.Succeeded);
+        Status(ExternalOperationStatus.Succeeded);
         _ipc.PollOperation();
         Assert.True(_operation.HasOperation);
         Assert.Equal(ETaskResult.TaskComplete, _executor.Update());
@@ -153,12 +153,12 @@ public sealed class PurchaseTests
         Assert.Null(_queue.CurrentTaskExecutor);
         Assert.Equal(_providerId, _operation.ProviderOperationId);
         _ipc.CancelOwned();
-        Status(EPurchaseState.CancellationRequested);
+        Status(ExternalOperationStatus.CancellationRequested);
         _ipc.PollOperation();
         Assert.True(_operation.HasOperation);
         _cancel.Received(1).InvokeFunc(_providerId);
         Assert.Equal(EStartResult.Busy, _ipc.BuyWithGil(43, 2, out _, out _));
-        Status(EPurchaseState.Cancelled);
+        Status(ExternalOperationStatus.Cancelled);
         _ipc.PollOperation();
         Assert.False(_operation.HasOperation);
     }
@@ -168,7 +168,7 @@ public sealed class PurchaseTests
     {
         Start();
         _owned = 5;
-        Status(EPurchaseState.Succeeded);
+        Status(ExternalOperationStatus.Succeeded);
         _ipc.PollOperation();
         Assert.Equal(ETaskResult.TaskComplete, _executor.Update());
         Assert.Equal(EStartResult.Started, _ipc.BuyWithGil(43, 2, out _, out _));
@@ -242,7 +242,7 @@ public sealed class PurchaseTests
         Assert.Throws<TaskException>(() => _executor.Update());
         Assert.True(_operation.HasOperation);
         _queue.Reset();
-        Status(EPurchaseState.Succeeded);
+        Status(ExternalOperationStatus.Succeeded);
         _ipc.PollOperation();
         Assert.False(_operation.HasOperation); // late result resolves abandoned ownership, never advances the old task
     }
@@ -251,7 +251,7 @@ public sealed class PurchaseTests
     public void SuccessWithoutItems_FailsAfterShortInventoryPropagationGrace()
     {
         Start();
-        Status(EPurchaseState.Succeeded);
+        Status(ExternalOperationStatus.Succeeded);
         _ipc.PollOperation();
         Assert.Equal(ETaskResult.StillRunning, _executor.Update());
         _clock.Advance(TimeSpan.FromSeconds(2));
@@ -263,7 +263,7 @@ public sealed class PurchaseTests
     public void DelayedInventoryUpdate_CompletesWithoutSubmittingAgain()
     {
         Start();
-        Status(EPurchaseState.Succeeded);
+        Status(ExternalOperationStatus.Succeeded);
         _ipc.PollOperation();
         Assert.Equal(ETaskResult.StillRunning, _executor.Update());
         _clock.Advance(TimeSpan.FromMilliseconds(500));
@@ -274,13 +274,13 @@ public sealed class PurchaseTests
     }
 
     [Theory]
-    [InlineData((int)EPurchaseState.Failed)]
-    [InlineData((int)EPurchaseState.Cancelled)]
+    [InlineData((int)ExternalOperationStatus.Failed)]
+    [InlineData((int)ExternalOperationStatus.Cancelled)]
     public void TerminalFailure_StopsEvenWhenItemsArePresent(int result)
     {
         Start();
         _owned = 5;
-        Status((EPurchaseState)result);
+        Status((ExternalOperationStatus)result);
         _ipc.PollOperation();
         Assert.Throws<TaskException>(() => _executor.Update());
         Assert.False(_operation.HasOperation);
@@ -301,7 +301,7 @@ public sealed class PurchaseTests
         Assert.Equal(expected, Purchase.CountItems(quality, 2, 3));
 
     private void Start() => Assert.True(_queue.StartTask(_executor, _task));
-    private void Status(EPurchaseState state) =>
+    private void Status(ExternalOperationStatus state) =>
         _status.Configure().InvokeFunc(_providerId).Returns(((int)state, 0, 1, 42u, state.ToString()));
 
     private void AssertNoSubmissionOrCancellation()

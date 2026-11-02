@@ -562,7 +562,7 @@ internal sealed class MovementController
             ? ReadFailureContext<double?>(() => PathfindingClock() - startedAt, null)
             : null,
         // Version reads loaded plugin metadata only. Reporting must never query IPC status.
-        NavmeshVersion = ReadFailureContext(() => navmeshIpc.Version?.ToString(), null),
+        NavmeshVersion = ReadFailureContext(() => navmeshIpc.GetVersion()?.ToString(), null),
         MovementAllowed = _movementAllowed,
         SimpleMoveInProgress = _simpleMoveInProgress,
         PathfindInProgress = _pathfindInProgress,

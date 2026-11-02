@@ -1,5 +1,4 @@
 ﻿using Dalamud.Plugin.Ipc;
-using Dalamud.Plugin.Ipc.Exceptions;
 using FFXIVClientStructs.FFXIV.Client.UI.Info;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
@@ -36,7 +35,7 @@ internal sealed class MogmailIpc(IDalamudPluginInterface pluginInterface, ILogge
         {
             return _claimAll.InvokeFunc();
         }
-        catch (IpcError e)
+        catch (Exception e) when (IpcInvoke.IsSafeIpcFailure(e))
         {
             if (!_loggedIpcError)
             {

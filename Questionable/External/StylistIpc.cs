@@ -1,19 +1,20 @@
 ﻿using Dalamud.Plugin.Ipc;
-using Dalamud.Plugin.Ipc.Exceptions;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
 [RegisterSingleton]
 internal sealed class StylistIpc(IDalamudPluginInterface pluginInterface, ILogger<StylistIpc> logger) : Ipc
 {
-    public override string InternalName => "Stylist";
+    private const string PluginName = "Stylist";
+
+    public override string InternalName => PluginName;
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && !_isBusy.InvokeFunc(), fallback: false);
     private readonly ICallGateSubscriber<bool> _isBusy = pluginInterface.GetIpcSubscriber<bool>("Stylist.IsBusy");
     private readonly ICallGateSubscriber<bool?, bool?, object?> _updateGearset = pluginInterface.GetIpcSubscriber<bool?, bool?, object?>("Stylist.UpdateCurrentGearsetEx"); //bool? moveItemsFromInventory, bool? shouldEquip
     private bool _loggedIpcError;
 
-    public static bool IsInstalled => IPCSubscriber.IsInstalled("Stylist");
+    public static bool IsInstalled => IPCSubscriber.IsInstalled(PluginName);
 
     /// <summary>Set once the missing-Stylist fallback has been announced, so it is printed once per session.</summary>
     public bool WarnedMissing { get; set; }
@@ -29,7 +30,7 @@ internal sealed class StylistIpc(IDalamudPluginInterface pluginInterface, ILogge
             _updateGearset.InvokeAction(true, true);
             return true;
         }
-        catch (IpcError e)
+        catch (Exception e) when (IpcInvoke.IsSafeIpcFailure(e))
         {
             if (!_loggedIpcError)
             {

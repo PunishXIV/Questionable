@@ -45,7 +45,7 @@ internal sealed class YesAlreadyIpc : Ipc, IDisposable
         _framework.Update -= OnUpdate;
         IpcInvoke.TryOnFrameworkThread(_framework, () =>
         {
-            if (IPCSubscriber.IsInstalled("YesAlready") && _disabledByQuestionable && !IsPluginEnabled())
+            if (IPCSubscriber.IsInstalled(InternalName) && _disabledByQuestionable && !IsPluginEnabled())
             {
                 _logger.LogDebug("Re-enabling YesAlready on dispose");
                 SetPluginEnabled(true);
@@ -58,7 +58,7 @@ internal sealed class YesAlreadyIpc : Ipc, IDisposable
 
     private void OnUpdate(IFramework framework)
     {
-        if (!IPCSubscriber.IsInstalled("YesAlready"))
+        if (!IPCSubscriber.IsInstalled(InternalName))
             return;
 
         bool hasActiveQuest = (_questController.IsRunning ||

@@ -7,7 +7,6 @@ using NSubstitute;
 using Questionable.Controller;
 using Questionable.External;
 using Xunit;
-using static Questionable.External.KnightshopperIpc;
 
 namespace Questionable.Tests.Steps;
 
@@ -48,7 +47,7 @@ public sealed class MovementOwnershipTests : IDisposable
         if (cancellationPending)
         {
             operation.AbandonCurrent();
-            operation.ObserveStatus(owner, EPurchaseState.CancellationRequested, "stopping");
+            operation.ObserveStatus(owner, ExternalOperationStatus.CancellationRequested, "stopping");
         }
 
         var knightshopper = Substitute.For<IKnightshopperIpc>();

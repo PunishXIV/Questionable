@@ -1,12 +1,12 @@
 using Dalamud.Plugin.Ipc;
-using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
 [RegisterSingleton]
 internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogger<NavmeshIpc> logger) : Ipc
 {
     public override string InternalName => "vnavmesh";
-    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
+    public override Version? GetVersion() => pluginInterface.InstalledPlugins
+        .FirstOrDefault(x => x.InternalName == InternalName && x.IsLoaded)?.Version;
     public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && _isNavReady.InvokeFunc(), fallback: false);
     private readonly ICallGateSubscriber<float> _buildProgress = pluginInterface.GetIpcSubscriber<float>("vnavmesh.Nav.BuildProgress");
     private readonly ICallGateSubscriber<bool> _isNavReady = pluginInterface.GetIpcSubscriber<bool>("vnavmesh.Nav.IsReady");
@@ -26,16 +26,6 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
         pluginInterface.GetIpcSubscriber<Vector3, bool, float, Vector3?>("vnavmesh.Query.Mesh.PointOnFloor");
     private readonly ICallGateSubscriber<Vector3, float, float, Vector3?> _nearestPointReachable =
         pluginInterface.GetIpcSubscriber<Vector3, float, float, Vector3?>("vnavmesh.Query.Mesh.NearestPointReachable");
-
-    public Version? Version
-    {
-        get
-        {
-            IExposedPlugin? plugin = pluginInterface.InstalledPlugins.FirstOrDefault(x =>
-                x.InternalName == "vnavmesh" && x.IsLoaded);
-            return plugin?.Version ?? null;
-        }
-    }
 
     public bool? GetPathRunning() => ReadOptional<bool>(() => _pathIsRunning.InvokeFunc());
 
@@ -60,11 +50,11 @@ internal sealed class NavmeshIpc(IDalamudPluginInterface pluginInterface, ILogge
 
     public void Stop()
     {
-        if (Version == null)
+        if (GetVersion() == null)
             return;
 
         IpcInvoke.SafeAction(() => _pathStop.InvokeAction(), logger,
-            "Could not stop navigating via navmesh {Version}", Version);
+            "Could not stop navigating via navmesh {Version}", GetVersion());
     }
 
     public Task<List<Vector3>> Pathfind(Vector3 localPlayerPosition, Vector3 targetPosition, bool fly,

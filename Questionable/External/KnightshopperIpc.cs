@@ -1,5 +1,6 @@
 using Dalamud.Plugin.Ipc;
 using static Questionable.External.IPCUtils;
+
 namespace Questionable.External;
 
 /// <summary>
@@ -29,16 +30,6 @@ internal sealed class KnightshopperIpc(IDalamudPluginInterface pluginInterface, 
         ItemUnavailable = 7,
         InvalidQuantity = 8,
         ListNotFound = 9
-    }
-
-    public enum EPurchaseState
-    {
-        Unknown = 0,
-        Running = 1,
-        CancellationRequested = 2,
-        Succeeded = 3,
-        Failed = 4,
-        Cancelled = 5
     }
 
     public override string InternalName => "Knightshopper";
@@ -112,17 +103,17 @@ internal sealed class KnightshopperIpc(IDalamudPluginInterface pluginInterface, 
         return EStartResult.Uncertain;
     }
 
-    private (EPurchaseState State, string Message) GetStatus(Guid operationId)
+    private (ExternalOperationStatus State, string Message) GetStatus(Guid operationId)
     {
         try
         {
             (int state, int _, int _, uint _, string message) = _getStatus.InvokeFunc(operationId);
-            return ((EPurchaseState)state, message);
+            return ((ExternalOperationStatus)state, message);
         }
         catch (Exception e)
         {
             logger.LogDebug(e, "Unable to read Knightshopper purchase status");
-            return (EPurchaseState.Unknown, e.Message);
+            return (ExternalOperationStatus.Unknown, e.Message);
         }
     }
 
@@ -171,4 +162,14 @@ internal sealed class KnightshopperIpc(IDalamudPluginInterface pluginInterface, 
             return null;
         }
     }
+}
+
+internal interface IKnightshopperIpc
+{
+    bool IsReady();
+    bool? GetBusy();
+    KnightshopperIpc.EStartResult BuyWithGil(uint itemId, uint quantity, out Guid operationId, out string message);
+    void PollOperation();
+    void CancelOwned();
+    void ObserveIdle();
 }
