@@ -62,9 +62,12 @@ internal static class AethernetShortcut
         MovementController movementController,
         ICondition condition) : TaskExecutor<Task>
     {
+        private const int MaxRefusedTeleports = 5;
+
         private DateTime _continueAt = DateTime.MinValue;
         private bool _moving;
         private bool _teleported;
+        private int _refusedTeleports;
         private bool _triedMounting;
 
         protected override bool Start()
@@ -222,8 +225,18 @@ internal static class AethernetShortcut
         private void DoTeleport()
         {
             logger.LogInformation("Using lifestream to teleport to {Destination}", Task.To);
-            lifestreamIpc.Teleport(Task.To);
-            _teleported = true;
+            // false means Lifestream queued nothing: it is busy or does not know the destination.
+            if (lifestreamIpc.Teleport(Task.To))
+            {
+                _teleported = true;
+                return;
+            }
+
+            if (++_refusedTeleports >= MaxRefusedTeleports)
+                throw new TaskException($"Lifestream refused the aethernet teleport to {Task.To} (busy or unknown destination)");
+
+            logger.LogWarning("Lifestream refused the aethernet teleport to {Destination}, retrying", Task.To);
+            _continueAt = DateTime.Now.AddSeconds(1);
         }
 
         public override ETaskResult Update()

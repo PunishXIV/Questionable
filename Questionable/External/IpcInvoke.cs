@@ -82,6 +82,6 @@ internal static class IpcInvoke
     }
 
     // Subscriber exceptions come back as TargetInvocationException, not IpcError.
-    private static bool IsSafeIpcFailure(Exception e) =>
+    internal static bool IsSafeIpcFailure(Exception e) =>
         e is IpcError or TargetInvocationException;
 }

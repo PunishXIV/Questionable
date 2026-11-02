@@ -163,12 +163,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     Configuration.General.GearsetUpdateSource = gearsetSource;
                     Save();
                 }
-                if (!StylistIpc.IsInstalled && gearsetSource is EGearsetUpdateSource.Stylist)
-                {
-                    Svc.Chat.Print(_L("You've set Stylist to manage equipped gear, but it is not installed. Resetting to Vanilla."), CommandHandler.MessageTag, CommandHandler.TagColor);
-                    Configuration.General.GearsetUpdateSource = EGearsetUpdateSource.Vanilla;
-                    Save();
-                }
+                // A missing Stylist keeps the saved choice; gear steps use Vanilla until it is installed again.
             }
             ImGui.EndGroup();
             if (!StylistIpc.IsInstalled && ImGui.IsItemHovered())

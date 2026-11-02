@@ -49,7 +49,7 @@ internal sealed class GatherChillIpc : Ipc, IGatherChillIpc
     }
 
     public override string InternalName => "GatherChill";
-    public override Version? GetVersion() => IPCSubscriber.Version("Gather & Chill");
+    public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     public bool IsAvailable() => Read(() => _apiVersion.InvokeFunc() >= 2) == true;
     public override bool IsReady() => IsAvailable();
     public bool? GetBusy() => Read(_isBusy.InvokeFunc);

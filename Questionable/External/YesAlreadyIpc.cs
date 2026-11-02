@@ -22,7 +22,8 @@ internal sealed class YesAlreadyIpc : Ipc, IDisposable
     private readonly QuestController _questController;
     private readonly TerritoryData _territoryData;
 
-    private bool _wasEnabled;
+    // Only true while YesAlready is off because Questionable turned it off; the user's own state is never restored over.
+    private bool _disabledByQuestionable;
 
     public YesAlreadyIpc(IFramework framework,
         QuestController questController,
@@ -35,8 +36,6 @@ internal sealed class YesAlreadyIpc : Ipc, IDisposable
         _territoryData = territoryData;
         _clientState = clientState;
         _logger = logger;
-        _wasEnabled = IsPluginEnabled();
-        _logger.LogInformation("Enabled:{WasEnabled}", _wasEnabled);
 
         _framework.Update += OnUpdate;
     }
@@ -46,41 +45,48 @@ internal sealed class YesAlreadyIpc : Ipc, IDisposable
         _framework.Update -= OnUpdate;
         IpcInvoke.TryOnFrameworkThread(_framework, () =>
         {
-            if (IPCSubscriber.IsInstalled("YesAlready") && _wasEnabled && !IsPluginEnabled())
+            if (IPCSubscriber.IsInstalled("YesAlready") && _disabledByQuestionable && !IsPluginEnabled())
             {
                 _logger.LogDebug("Re-enabling YesAlready on dispose");
                 SetPluginEnabled(true);
             }
 
+            _disabledByQuestionable = false;
             IPCSubscriber.DisposeAll(_disposalTokens);
         }, _logger);
     }
 
     private void OnUpdate(IFramework framework)
     {
-        if (IPCSubscriber.IsInstalled("YesAlready"))
+        if (!IPCSubscriber.IsInstalled("YesAlready"))
+            return;
+
+        bool hasActiveQuest = (_questController.IsRunning ||
+                               _questController.AutomationType != QuestController.EAutomationType.Manual) &&
+                              !_territoryData.IsDutyInstance(_clientState.TerritoryType);
+        (bool? setEnabled, _disabledByQuestionable) =
+            DecideToggle(hasActiveQuest, IsPluginEnabled(), _disabledByQuestionable);
+        if (setEnabled is { } enabled)
         {
-            bool hasActiveQuest = (_questController.IsRunning ||
-                                   _questController.AutomationType != QuestController.EAutomationType.Manual) &&
-                                  !_territoryData.IsDutyInstance(_clientState.TerritoryType);
-            if (hasActiveQuest)
-            {
-                if (IsPluginEnabled() && !_wasEnabled)
-                {
-                    _logger.LogDebug("Requested YesAlready off");
-                    SetPluginEnabled(false);
-                    _wasEnabled = true;
-                }
-            }
-            else
-            {
-                if (!IsPluginEnabled() && _wasEnabled)
-                {
-                    _logger.LogDebug("Requested YesAlready on");
-                    SetPluginEnabled(true);
-                    _wasEnabled = false;
-                }
-            }
+            _logger.LogDebug("Requested YesAlready {State}", enabled ? "on" : "off");
+            SetPluginEnabled(enabled);
         }
+    }
+
+    /// <returns>The state to request, or null to leave YesAlready alone, and whether Questionable now owns it being off.</returns>
+    internal static (bool? SetEnabled, bool DisabledByQuestionable) DecideToggle(bool hasActiveQuest, bool isEnabled,
+        bool disabledByQuestionable)
+    {
+        if (hasActiveQuest)
+        {
+            // A user re-enabling YesAlready mid-run is respected until the run ends.
+            if (isEnabled && !disabledByQuestionable)
+                return (false, true);
+            return (null, disabledByQuestionable);
+        }
+
+        if (disabledByQuestionable && !isEnabled)
+            return (true, false);
+        return (null, false);
     }
 }

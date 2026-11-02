@@ -62,24 +62,32 @@ internal static class EquipRecommended
         public override string ToString() => "EquipRecommended";
     }
 
-    internal sealed unsafe class DoEquipRecommended(IChatGui chatGui, ICondition condition, Configuration config, StylistIpc stylist)
+    internal sealed unsafe class DoEquipRecommended(IChatGui chatGui, ICondition condition, Configuration config, StylistIpc stylist,
+        ILogger<DoEquipRecommended> logger)
         : TaskExecutor<EquipTask>
     {
         private bool _checkedOrTriggeredEquipmentUpdate;
         private DateTime _continueAt = DateTime.MinValue;
+        // The source for this task only; a missing Stylist must not overwrite the saved preference.
+        private EGearsetUpdateSource _source;
 
         protected override bool Start()
         {
             if (condition[ConditionFlag.InCombat])
                 return false;
 
-            if (!StylistIpc.IsInstalled && config.General.GearsetUpdateSource is EGearsetUpdateSource.Stylist)
+            _source = config.General.GearsetUpdateSource;
+            if (!StylistIpc.IsInstalled && _source is EGearsetUpdateSource.Stylist)
             {
-                chatGui.Print("You've set Stylist to manage equipped gear, but it is not installed. Resetting to Vanilla.", CommandHandler.MessageTag, CommandHandler.TagColor);
-                config.General.GearsetUpdateSource = EGearsetUpdateSource.Vanilla;
-                Svc.PluginInterface.SavePluginConfig(config);
+                if (!stylist.WarnedMissing)
+                {
+                    chatGui.Print("You've set Stylist to manage equipped gear, but it is not installed. Using Vanilla until it is.", CommandHandler.MessageTag, CommandHandler.TagColor);
+                    stylist.WarnedMissing = true;
+                }
+
+                _source = EGearsetUpdateSource.Vanilla;
             }
-            switch (config.General.GearsetUpdateSource)
+            switch (_source)
             {
                 case EGearsetUpdateSource.Vanilla:
                     RecommendEquipModule.Instance()->SetupForClassJob(PlayerState.Instance()->CurrentClassJobId);
@@ -92,9 +100,18 @@ internal static class EquipRecommended
             return true;
         }
 
+        private ETaskResult FallBackToVanilla(string reason)
+        {
+            logger.LogWarning("Stylist {Reason}; equipping recommended gear with Vanilla instead", reason);
+            _source = EGearsetUpdateSource.Vanilla;
+            _checkedOrTriggeredEquipmentUpdate = false;
+            RecommendEquipModule.Instance()->SetupForClassJob(PlayerState.Instance()->CurrentClassJobId);
+            return ETaskResult.StillRunning;
+        }
+
         public override ETaskResult Update()
         {
-            switch (config.General.GearsetUpdateSource)
+            switch (_source)
             {
                 case EGearsetUpdateSource.Vanilla:
                     RecommendEquipModule* recommendedEquipModule = RecommendEquipModule.Instance();
@@ -117,12 +134,15 @@ internal static class EquipRecommended
                     break;
                 case EGearsetUpdateSource.Stylist:
                     {
-                        if (stylist.IsBusy)
+                        if (stylist.IsBusy is not { } busy)
+                            return FallBackToVanilla("became unavailable");
+                        if (busy)
                             return ETaskResult.StillRunning;
 
                         if (!_checkedOrTriggeredEquipmentUpdate)
                         {
-                            stylist.UpdateGearset();
+                            if (!stylist.UpdateGearset())
+                                return FallBackToVanilla("rejected the gear update");
                             _checkedOrTriggeredEquipmentUpdate = true;
                             _continueAt = DateTime.Now.AddSeconds(0.25);
                             return ETaskResult.StillRunning;

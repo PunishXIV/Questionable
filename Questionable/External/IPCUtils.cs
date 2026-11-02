@@ -7,8 +7,9 @@ internal interface IPCUtils
         internal static bool IsInstalled(string pluginName) =>
             Svc.PluginInterface.InstalledPlugins.Any(p => p.InternalName == pluginName && p.IsLoaded);
 
+        // Internal names, like IsInstalled: display names differ for some plugins ("Pandora's Box", "Gather & Chill").
         internal static Version? Version(string pluginName) =>
-            Svc.PluginInterface.InstalledPlugins.FirstOrDefault(p => p.Name == pluginName && p.IsLoaded)?.Version;
+            Svc.PluginInterface.InstalledPlugins.FirstOrDefault(p => p.InternalName == pluginName && p.IsLoaded)?.Version;
 
         internal static void DisposeAll(EzIPCDisposalToken[] _disposalTokens)
         {

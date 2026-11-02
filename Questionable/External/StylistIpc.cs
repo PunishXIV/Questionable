@@ -15,13 +15,19 @@ internal sealed class StylistIpc(IDalamudPluginInterface pluginInterface, ILogge
 
     public static bool IsInstalled => IPCSubscriber.IsInstalled("Stylist");
 
-    public bool IsBusy => !IsInstalled || _isBusy.InvokeFunc();
+    /// <summary>Set once the missing-Stylist fallback has been announced, so it is printed once per session.</summary>
+    public bool WarnedMissing { get; set; }
 
-    public void UpdateGearset()
+    /// <returns>Whether Stylist is busy, or null when it is not installed or its IPC is unavailable.</returns>
+    public bool? IsBusy => IsInstalled ? IpcInvoke.SafeFunc<bool?>(() => _isBusy.InvokeFunc(), fallback: null) : null;
+
+    /// <returns>Whether the update request reached Stylist.</returns>
+    public bool UpdateGearset()
     {
         try
         {
             _updateGearset.InvokeAction(true, true);
+            return true;
         }
         catch (IpcError e)
         {
@@ -30,6 +36,8 @@ internal sealed class StylistIpc(IDalamudPluginInterface pluginInterface, ILogge
                 _loggedIpcError = true;
                 logger.LogWarning(e, "Could not query stylist to update gearset, probably not installed");
             }
+
+            return false;
         }
     }
 }

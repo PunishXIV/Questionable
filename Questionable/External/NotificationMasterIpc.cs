@@ -6,7 +6,7 @@ namespace Questionable.External;
 [RegisterSingleton]
 internal sealed class NotificationMasterIpc(IDalamudPluginInterface pluginInterface, Configuration configuration) : Ipc
 {
-    public override string InternalName => "vnavmesh";
+    public override string InternalName => "NotificationMaster";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && Enabled, fallback: false);
     private readonly NotificationMasterApi _api = new(pluginInterface);

@@ -122,7 +122,7 @@ internal sealed class PluginConfigComponent
             "GatherChill",
             _L("Required for gathering quests and the gathering journal"),
             new("https://github.com/LeontopodiumNivale14/Gather-Chill"),
-            null,
+            new("https://puni.sh/api/repository/ice"),
             "/gatherchill"),
         new("Knightshopper",
             "Knightshopper",
@@ -488,27 +488,8 @@ internal sealed class PluginConfigComponent
 
     private void DrawInstallButtons(PluginInfo plugin)
     {
+        // One click: installing adds the plugin's repository first when it is missing.
         bool installing = _installingPlugins.Contains(plugin.InternalName);
-        bool repoAdded = IsRepositoryAdded(plugin);
-        bool firstButton = true;
-
-        if (!repoAdded && plugin.DalamudRepositoryUri != null)
-        {
-            using (ImRaii.Disabled(installing))
-            {
-                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Plus, _L("Add repository")))
-                    TryAddRepository(plugin);
-            }
-
-            if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_LF("Add {0} to Custom Plugin Repositories.", plugin.DalamudRepositoryUri));
-
-            firstButton = false;
-        }
-
-        if (!firstButton)
-            ImGui.SameLine();
-
         using (ImRaii.Disabled(installing))
         {
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download,
@@ -524,27 +505,43 @@ internal sealed class PluginConfigComponent
             Util.OpenLink(plugin.WebsiteUri.ToString());
     }
 
-    private static bool IsRepositoryAdded(PluginInfo plugin)
-        => plugin.RepositoryUrls.Any(DalamudReflector.HasRepo);
-
-    private void TryAddRepository(PluginInfo plugin)
+    /// <returns>
+    ///     The user's own URL for one of the plugin's repositories. Query strings are ignored, so a puni.sh
+    ///     repository added with <c>?authKey=</c> is reused instead of being added again without it.
+    /// </returns>
+    private string? FindConfiguredRepository(PluginInfo plugin)
     {
-        if (plugin.DalamudRepositoryUri == null)
-            return;
+        List<string> configured = GetConfiguredRepositoryUrls();
+        return plugin.RepositoryUrls.Select(url => FindMatchingRepository(configured, url)).FirstOrDefault(x => x != null);
+    }
 
-        string repoUrl = plugin.DalamudRepositoryUri.ToString();
-        if (DalamudReflector.HasRepo(repoUrl) || repoUrl.Equals(DalamudOfficialRepo, StringComparison.Ordinal))
+    internal static string? FindMatchingRepository(IEnumerable<string> configuredUrls, string repoUrl)
+        => configuredUrls.FirstOrDefault(configured => IsSameRepository(configured, repoUrl));
+
+    internal static bool IsSameRepository(string a, string b)
+        => string.Equals(WithoutQuery(a), WithoutQuery(b), StringComparison.OrdinalIgnoreCase);
+
+    private static string WithoutQuery(string url)
+    {
+        int query = url.IndexOf('?', StringComparison.Ordinal);
+        return (query >= 0 ? url[..query] : url).Trim().TrimEnd('/');
+    }
+
+    private List<string> GetConfiguredRepositoryUrls()
+    {
+        try
         {
-            _chatGui.Print(_LF("{0} repository is already added.", plugin.DisplayName), CommandHandler.MessageTag,
-                CommandHandler.TagColor);
-            return;
-        }
+            object config = DalamudReflector.GetService("Dalamud.Configuration.Internal.DalamudConfiguration");
+            if (config.GetFoP("ThirdRepoList") is not System.Collections.IEnumerable repos)
+                return [];
 
-        DalamudReflector.AddRepo(repoUrl, enabled: true);
-        DalamudReflector.SaveDalamudConfig();
-        DalamudReflector.ReloadPluginMasters();
-        _chatGui.Print(_LF("Added {0} repository.", plugin.DisplayName), CommandHandler.MessageTag,
-            CommandHandler.TagColor);
+            return repos.Cast<object>().Select(repo => repo.GetFoP("Url") as string).OfType<string>().ToList();
+        }
+        catch (Exception e)
+        {
+            _logger.LogDebug(e, "Could not read the configured plugin repositories");
+            return [];
+        }
     }
 
     private async Task StartInstallAsync(PluginInfo plugin)
@@ -562,7 +559,7 @@ internal sealed class PluginConfigComponent
         if (!_installingPlugins.Add(plugin.InternalName))
             return;
 
-        string repoUrl = plugin.RepositoryUrls.FirstOrDefault(DalamudReflector.HasRepo)
+        string repoUrl = FindConfiguredRepository(plugin)
                          ?? plugin.DalamudRepositoryUri?.ToString()
                          ?? DalamudOfficialRepo;
         try

@@ -43,8 +43,8 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
     private readonly ICallGateSubscriber<string, bool, object?> _setFeatureEnabled;
     private readonly TerritoryData _territoryData;
 
+    private readonly FeatureSuppression _suppression;
     private bool _loggedIpcError;
-    private HashSet<string>? _pausedFeatures;
 
     public PandorasBoxIpc(IDalamudPluginInterface pluginInterface,
         IFramework framework,
@@ -58,6 +58,7 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
         _territoryData = territoryData;
         _clientState = clientState;
         _logger = logger;
+        _suppression = new FeatureSuppression(ConflictingFeatures, logger);
         _getFeatureEnabled = pluginInterface.GetIpcSubscriber<string, bool?>("PandorasBox.GetFeatureEnabled");
         _setFeatureEnabled = pluginInterface.GetIpcSubscriber<string, bool, object?>("PandorasBox.SetFeatureEnabled");
         logger.LogInformation("Pandora's Box auto active time maneuver enabled: {IsAtmEnabled}",
@@ -112,63 +113,102 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
     public void Dispose()
     {
         _framework.Update -= OnUpdate;
-        IpcInvoke.TryOnFrameworkThread(_framework, RestoreConflictingFeatures, _logger);
+        IpcInvoke.TryOnFrameworkThread(_framework, () =>
+        {
+            _suppression.Update(false, IsInstalled, _getFeatureEnabled.InvokeFunc,
+                (feature, enabled) => _setFeatureEnabled.InvokeAction(feature, enabled), force: true);
+            if (_suppression.OwnedOff.Count > 0)
+                _logger.LogWarning("Could not restore Pandora's Box features on unload: {Features}",
+                    string.Join(", ", _suppression.OwnedOff));
+        }, _logger);
     }
+
+    private bool IsInstalled => IPCSubscriber.IsInstalled(InternalName);
 
     private void OnUpdate(IFramework framework)
     {
-        bool hasActiveQuest = _questController.IsRunning ||
-                              _questController.AutomationType != QuestController.EAutomationType.Manual;
-        if (hasActiveQuest && !_territoryData.IsDutyInstance(_clientState.TerritoryType))
-            DisableConflictingFeatures();
-        else
-            RestoreConflictingFeatures();
-    }
-
-    private void DisableConflictingFeatures()
-    {
-        if (_pausedFeatures != null)
+        bool hasActiveQuest = (_questController.IsRunning ||
+                               _questController.AutomationType != QuestController.EAutomationType.Manual) &&
+                              !_territoryData.IsDutyInstance(_clientState.TerritoryType);
+        if (!_suppression.HasWork(hasActiveQuest))
             return;
 
-        _pausedFeatures = [];
+        _suppression.Update(hasActiveQuest, IsInstalled, _getFeatureEnabled.InvokeFunc,
+            (feature, enabled) => _setFeatureEnabled.InvokeAction(feature, enabled));
+    }
 
-        foreach (string feature in ConflictingFeatures)
+    /// <summary>
+    /// Pauses conflicting features during a run and restores only the ones Questionable turned off.
+    /// Features whose state could not be read, and restores that failed, are retried rather than forgotten.
+    /// </summary>
+    internal sealed class FeatureSuppression(IEnumerable<string> features, ILogger logger, TimeProvider? timeProvider = null)
+    {
+        private static readonly TimeSpan RetryInterval = TimeSpan.FromSeconds(5);
+
+        private readonly ImmutableArray<string> _features = [..features];
+        private readonly TimeProvider _clock = timeProvider ?? TimeProvider.System;
+        private readonly HashSet<string> _ownedOff = [];
+        private readonly HashSet<string> _unchecked = [];
+        private bool _runActive;
+        private bool _warnedThisRun;
+        private long? _lastFailureAt;
+
+        public IReadOnlySet<string> OwnedOff => _ownedOff;
+
+        /// <returns>Whether <see cref="Update"/> has anything to do, so idle frames make no IPC calls.</returns>
+        public bool HasWork(bool hasActiveQuest) =>
+            hasActiveQuest != _runActive || (hasActiveQuest ? _unchecked.Count > 0 : _ownedOff.Count > 0);
+
+        public void Update(bool hasActiveQuest, bool providerInstalled, Func<string, bool?> isEnabled,
+            Action<string, bool> setEnabled, bool force = false)
         {
-            try
+            if (hasActiveQuest != _runActive)
             {
-                bool? isEnabled = _getFeatureEnabled.InvokeFunc(feature);
-                if (isEnabled == true)
+                _runActive = hasActiveQuest;
+                _warnedThisRun = false;
+                _lastFailureAt = null;
+                _unchecked.Clear();
+                if (hasActiveQuest)
+                    _unchecked.UnionWith(_features.Where(x => !_ownedOff.Contains(x)));
+            }
+
+            HashSet<string> pending = hasActiveQuest ? _unchecked : _ownedOff;
+            bool waitingToRetry = !force && _lastFailureAt is { } failedAt &&
+                                  _clock.GetElapsedTime(failedAt) < RetryInterval;
+            if (pending.Count == 0 || !providerInstalled || waitingToRetry)
+                return;
+
+            foreach (string feature in pending.ToList())
+            {
+                try
                 {
-                    _setFeatureEnabled.InvokeAction(feature, false);
-                    _pausedFeatures.Add(feature);
-                    _logger.LogInformation("Paused Pandora's Box feature: {Feature}", feature);
+                    if (hasActiveQuest)
+                    {
+                        if (isEnabled(feature) == true)
+                        {
+                            setEnabled(feature, false);
+                            _ownedOff.Add(feature);
+                            logger.LogInformation("Paused Pandora's Box feature: {Feature}", feature);
+                        }
+                    }
+                    else
+                    {
+                        setEnabled(feature, true);
+                        logger.LogInformation("Restored Pandora's Box feature: {Feature}", feature);
+                    }
+
+                    pending.Remove(feature);
+                }
+                catch (Exception e) when (IpcInvoke.IsSafeIpcFailure(e))
+                {
+                    if (!_warnedThisRun)
+                        logger.LogWarning(e, "Failed to {Action} Pandora's Box feature {Feature}; retrying",
+                            hasActiveQuest ? "pause" : "restore", feature);
+                    _warnedThisRun = true;
                 }
             }
-            catch (IpcError e)
-            {
-                _logger.LogWarning(e, "Failed to pause Pandora's Box feature: {Feature}", feature);
-            }
+
+            _lastFailureAt = pending.Count > 0 ? _clock.GetTimestamp() : null;
         }
-    }
-
-    private void RestoreConflictingFeatures()
-    {
-        if (_pausedFeatures == null)
-            return;
-
-        foreach (string feature in _pausedFeatures)
-        {
-            try
-            {
-                _setFeatureEnabled.InvokeAction(feature, true);
-                _logger.LogInformation("Restored Pandora's Box feature: {Feature}", feature);
-            }
-            catch (Exception e)
-            {
-                _logger.LogWarning(e, "Failed to restore Pandora's Box feature: {Feature}", feature);
-            }
-        }
-
-        _pausedFeatures = null;
     }
 }
