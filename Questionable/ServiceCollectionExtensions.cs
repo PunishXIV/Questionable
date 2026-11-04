@@ -141,6 +141,7 @@ internal static class ServiceCollectionExtensions
             .AddTaskFactoryAndExecutor<TurnInDelivery.Task, TurnInDelivery.Factory,
                 TurnInDelivery.SatisfactionSupplyTurnIn>();
 
+        serviceCollection.AddSingleton<SinglePlayerDuty.RetryCounter>();
         serviceCollection.AddTaskFactory<SinglePlayerDuty.Factory>();
         serviceCollection.AddTaskExecutor<SinglePlayerDuty.LeaveParty, SinglePlayerDuty.LeavePartyExecutor>();
         serviceCollection

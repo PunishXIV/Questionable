@@ -40,6 +40,10 @@ internal sealed class BossModModule
         }
     }
 
+    public bool Pause() => bossModIpc.PauseOwnedPreset();
+
+    public bool Resume() => bossModIpc.ResumeOwnedPreset();
+
     public bool Stop()
     {
         try

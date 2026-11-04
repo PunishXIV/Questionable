@@ -22,6 +22,7 @@ internal abstract class NavigationTestFixture : IDisposable
     public PurchaseOperationState Purchase { get; } = new();
     public IKnightshopperIpc Knightshopper { get; } = Substitute.For<IKnightshopperIpc>();
     public IGatherChillIpc Gather { get; } = Substitute.For<IGatherChillIpc>();
+    public IFeeshIpc Feesh { get; } = Substitute.For<IFeeshIpc>();
     public ICallGateSubscriber<Vector3, Vector3, bool, CancellationToken, Task<List<Vector3>>> Pathfind { get; } =
         Substitute.For<ICallGateSubscriber<Vector3, Vector3, bool, CancellationToken, Task<List<Vector3>>>>();
     public NavmeshIpc Navmesh { get; private set; } = null!;
@@ -41,7 +42,7 @@ internal abstract class NavigationTestFixture : IDisposable
         framework.IsFrameworkUnloading.Returns(true);
         Navmesh = new(Plugin, NullLogger<NavmeshIpc>.Instance);
         Movement = new(Navmesh, Client, null!, null!, Condition, movementOverride!, Objects, null!,
-            Substitute.For<IChatGui>(), framework, Purchase, Knightshopper, new(), Gather, new(), Duty.Ipc,
+            Substitute.For<IChatGui>(), framework, Purchase, Knightshopper, new(), Gather, new(), Feesh, Duty.Ipc,
             new Lazy<QuestController>(() => throw QuestBoundary), NullLogger<MovementController>.Instance)
         {
             Destination = destination,

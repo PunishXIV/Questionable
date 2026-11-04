@@ -131,6 +131,8 @@ public sealed class NavigationSubmissionTests
     [InlineData("duty", true)]
     [InlineData("unknown-duty", false)]
     [InlineData("unknown-duty", true)]
+    [InlineData("feesh", false)]
+    [InlineData("feesh", true)]
     public void ManualProviderBlocksBothInitialEntryPointsBeforeNativePreparation(string provider, bool direct)
     {
         using var fixture = new Fixture();
@@ -158,6 +160,8 @@ public sealed class NavigationSubmissionTests
     [InlineData("duty", true)]
     [InlineData("unknown-duty", false)]
     [InlineData("unknown-duty", true)]
+    [InlineData("feesh", false)]
+    [InlineData("feesh", true)]
     public void ManualTakeoverBlocksDelayedRouteAndLandingRetry(string provider, bool landingRetry)
     {
         using var fixture = new Fixture();
@@ -223,6 +227,7 @@ public sealed class NavigationSubmissionTests
         fixture.Duty.StoppedGate.InvokeFunc().Returns(_ => throw new InvalidOperationException("Unavailable"));
         fixture.Knightshopper.GetBusy().Returns((bool?)null);
         fixture.Gather.GetBusy().Returns((bool?)null);
+        fixture.Feesh.GetBusy().Returns((bool?)null);
 
         Assert.True(fixture.Movement.SubmitMovement([Vector3.One], false));
 
@@ -235,6 +240,8 @@ public sealed class NavigationSubmissionTests
     [InlineData("purchase", true)]
     [InlineData("gather", false)]
     [InlineData("gather", true)]
+    [InlineData("feesh", false)]
+    [InlineData("feesh", true)]
     public void AvailableProviderWithUnknownBusyStatusBlocksInitialNavigation(string provider, bool direct)
     {
         using var fixture = new Fixture();
@@ -380,6 +387,7 @@ public sealed class NavigationSubmissionTests
             {
                 case "purchase": Knightshopper.GetBusy().Returns(true); break;
                 case "gather": Gather.GetBusy().Returns(true); break;
+                case "feesh": Feesh.GetBusy().Returns(true); break;
                 case "duty": Duty.Stopped = false; break;
                 case "unknown-duty": Duty.StoppedGate.InvokeFunc().Returns(_ => throw new InvalidOperationException("Status lost")); break;
                 default: throw new ArgumentOutOfRangeException(nameof(provider));
@@ -400,6 +408,11 @@ public sealed class NavigationSubmissionTests
             {
                 Knightshopper.IsReady().Returns(true);
                 Knightshopper.GetBusy().Returns((bool?)null);
+            }
+            else if (provider == "feesh")
+            {
+                Feesh.IsAvailable().Returns(true);
+                Feesh.GetBusy().Returns((bool?)null);
             }
             else
             {

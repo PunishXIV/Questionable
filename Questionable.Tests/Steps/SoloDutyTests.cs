@@ -5,6 +5,7 @@ using Questionable.Controller.Steps;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Shared;
 using Questionable.External;
+using Questionable.Model.Questing;
 using Xunit;
 
 namespace Questionable.Tests.Steps;
@@ -12,6 +13,96 @@ namespace Questionable.Tests.Steps;
 public sealed class SoloDutyTests
 {
     private readonly BossModIpcTests.BossModTestContext _context = new();
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void RetryCounter_CharacterChangeStartsWithFirstFailure(bool observeChange)
+    {
+        var counter = new SinglePlayerDuty.RetryCounter();
+        var questId = new QuestId(1);
+        for (int failure = 1; failure < SinglePlayerDuty.MaxRetries; ++failure)
+            Assert.Equal(failure, counter.RecordRetry("character A", questId, 454, 2));
+
+        if (observeChange)
+            counter.Observe("character B", _ => 2);
+
+        Assert.Equal(1, counter.RecordRetry("character B", questId, 454, 2));
+        Assert.Equal(2, counter.RecordRetry("character B", questId, 454, 2));
+        Assert.Equal(1, counter.RecordRetry("character A", questId, 454, 2));
+    }
+
+    [Theory]
+    [InlineData(null)] // Logout, even if QST is stopped.
+    [InlineData("character B")]
+    public void RetryCounter_ObservedSessionChangeClearsFailuresBeforeReturning(string? nextCharacter)
+    {
+        var counter = new SinglePlayerDuty.RetryCounter();
+        var questId = new QuestId(1);
+        counter.RecordRetry("character A", questId, 454, 2);
+
+        counter.Observe(nextCharacter, _ => throw new InvalidOperationException("Old character's quest must not be read"));
+
+        Assert.Equal(1, counter.RecordRetry("character A", questId, 454, 2));
+    }
+
+    [Theory]
+    [InlineData((byte)3)]
+    [InlineData(null)]
+    public void RetryCounter_QuestProgressClearsFailuresWithoutRunningOutcomeTask(byte? sequence)
+    {
+        var counter = new SinglePlayerDuty.RetryCounter();
+        var questId = new QuestId(1);
+        counter.RecordRetry("character A", questId, 454, 2);
+
+        counter.Observe("character A", observedQuest =>
+        {
+            Assert.Equal(questId, observedQuest);
+            return sequence;
+        });
+
+        Assert.Equal(1, counter.RecordRetry("character A", questId, 454, 2));
+    }
+
+    [Fact]
+    public void RetryCounter_UnchangedQuestRetainsConsecutiveFailuresUntilLimit()
+    {
+        var counter = new SinglePlayerDuty.RetryCounter();
+        var questId = new QuestId(1);
+        for (int failure = 1; failure <= SinglePlayerDuty.MaxRetries; ++failure)
+        {
+            counter.Observe("character A", _ => 2);
+            Assert.Equal(failure, counter.RecordRetry("character A", questId, 454, 2));
+        }
+
+        counter.Clear(); // The outcome executor clears the streak when stopping at the limit.
+        Assert.Equal(1, counter.RecordRetry("character A", questId, 454, 2));
+    }
+
+    [Theory]
+    [InlineData(2, 454, 2)]
+    [InlineData(1, 461, 2)]
+    [InlineData(1, 454, 3)]
+    public void RetryCounter_DifferentQuestDutyOrSequenceStartsNewStreak(ushort quest, uint duty, byte sequence)
+    {
+        var counter = new SinglePlayerDuty.RetryCounter();
+        counter.RecordRetry("character A", new QuestId(1), 454, 2);
+
+        Assert.Equal(1, counter.RecordRetry("character A", new QuestId(quest), duty, sequence));
+    }
+
+    [Fact]
+    public void RetryCounter_AbsentCharacterCannotConsumeRetries()
+    {
+        var counter = new SinglePlayerDuty.RetryCounter();
+        var questId = new QuestId(1);
+        counter.RecordRetry("character A", questId, 454, 2);
+
+        Assert.Throws<TaskException>(() => counter.RecordRetry(null, questId, 454, 2));
+        counter.Observe(null, _ => throw new InvalidOperationException("No active streak to check"));
+
+        Assert.Equal(1, counter.RecordRetry("character A", questId, 454, 2));
+    }
 
     [Theory]
     [InlineData(123, "Questionable - Quest Battles")]

@@ -7,9 +7,12 @@ using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 using Questionable;
+using Questionable.Controller.CombatModules;
 using Questionable.Controller.Steps;
 using Questionable.External;
 using Questionable.Model.Common;
+using Questionable.Model.Questing;
+using Questionable.Tests.TestData;
 using Xunit;
 using Mode = Questionable.External.RotationSolverRebornIpc.StateCommandType;
 
@@ -53,6 +56,81 @@ public sealed class RotationSolverRebornIpcTests
                 ++_modeReads;
                 return _failReadingMode ? throw new InvalidOperationException("mode unavailable") : _mode;
             }, () => _ticks);
+    }
+
+    [Theory]
+    [InlineData((int)Mode.Auto, false)]
+    [InlineData((int)Mode.Manual, false)]
+    [InlineData((int)Mode.Auto, true)]
+    public void CombatItemPause_SuppressesRotationAndRestoresOriginalModeOnlyOnStop(int originalValue, bool stopWhilePaused)
+    {
+        Mode original = (Mode)originalValue;
+        _mode = original;
+        var item = CreateItemModule();
+        item.StopRotation();
+        Assert.Equal(Mode.Off, _mode);
+        item.VerifyActive();
+        if (!stopWhilePaused)
+        {
+            item.StartRotation();
+            Assert.Equal(Mode.Henched, _mode);
+            item.StopRotation();
+            Assert.Equal(Mode.Off, _mode);
+            item.StartRotation();
+        }
+        Assert.True(item.Stop());
+        Assert.Equal(original, _mode);
+        _change.Received(1).InvokeAction(original);
+    }
+
+    [Theory]
+    [InlineData(false, false)]
+    [InlineData(false, true)]
+    [InlineData(true, false)]
+    [InlineData(true, true)]
+    public void FailedItemTransition_RetainsOriginalModeForCleanup(bool resume, bool appliedBeforeThrow)
+    {
+        _mode = Mode.Manual;
+        var item = CreateItemModule();
+        if (resume)
+            item.StopRotation();
+        _reject = !appliedBeforeThrow;
+        _throwAfterChange = appliedBeforeThrow;
+        Assert.Throws<TaskException>(() =>
+        {
+            if (resume)
+                item.StartRotation();
+            else
+                item.StopRotation();
+        });
+        _reject = _throwAfterChange = false;
+        Assert.True(item.Stop());
+        Assert.Equal(Mode.Manual, _mode);
+    }
+
+    [Fact]
+    public void ManualTakeoverDuringItemPause_IsDetectedAndPreserved()
+    {
+        _mode = Mode.Auto;
+        var item = CreateItemModule();
+        item.StopRotation();
+        _mode = Mode.Manual;
+        Assert.Throws<TaskException>(item.VerifyActive);
+        Assert.Throws<TaskException>(item.StartRotation);
+        Assert.True(item.Stop());
+        Assert.Equal(Mode.Manual, _mode);
+    }
+
+    private ItemUseModule CreateItemModule()
+    {
+        var services = Substitute.For<IServiceProvider>();
+        services.GetService(typeof(IEnumerable<ICombatModule>))
+            .Returns(new ICombatModule[] { new RotationSolverRebornModule(_ipc) });
+        var item = new ItemUseModule(services, Substitute.For<ICondition>(), null!, NullLogger<ItemUseModule>.Instance);
+        var data = CombatTestData.Create(itemUse: new CombatItemUse { ItemId = 1 });
+        Assert.True(item.CanHandleFight(data));
+        Assert.True(item.Start(data));
+        return item;
     }
 
     [Theory]

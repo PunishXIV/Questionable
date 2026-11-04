@@ -26,6 +26,7 @@ public sealed class QuestionablePlugin(
     ITextureProvider textureProvider) : IAsyncDalamudPlugin
 {
     private ServiceProvider? _serviceProvider;
+    private Configuration? _runtimeConfiguration;
     private bool _ecommonsInitialized;
 
     public async Task LoadAsync(CancellationToken cancellationToken)
@@ -91,12 +92,20 @@ public sealed class QuestionablePlugin(
             }
         }
 
-        if (serviceProvider is IAsyncDisposable asyncDisposable)
-            await asyncDisposable.DisposeAsync().ConfigureAwait(false);
-        else
+        try
+        {
+            if (serviceProvider is IAsyncDisposable asyncDisposable)
+                await asyncDisposable.DisposeAsync().ConfigureAwait(false);
+            else
 #pragma warning disable MA0042 // Do not use blocking calls when the calling method is async
-            serviceProvider?.Dispose();
+                serviceProvider?.Dispose();
 #pragma warning restore MA0042 // Do not use blocking calls when the calling method is async
+        }
+        finally
+        {
+            if (Interlocked.Exchange(ref _runtimeConfiguration, null) is { } configuration)
+                Configuration.ClearRuntime(configuration);
+        }
 
         if (_ecommonsInitialized)
         {
@@ -161,6 +170,8 @@ public sealed class QuestionablePlugin(
         }
 
         serviceCollection.AddSingleton(configuration);
+        _runtimeConfiguration = configuration;
+        Configuration.InitializeRuntime(configuration);
         Questionable.Utils.LocalizeShortcut.Initialize(configuration, dataManager, clientState);
         Windows.Common.Ui.QstTheme.Initialize(configuration);
 

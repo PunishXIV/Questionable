@@ -241,7 +241,7 @@ internal static class WaitAtEnd
             if (!questFunctions.IsQuestAccepted(Task.ElementId))
                 return ETaskResult.StillRunning;
 
-            questController.TryStopOnQuestAccepted(Task.ElementId);
+            questController.TryStopOnExpectedQuestAccepted(Task.ElementId);
             return ETaskResult.TaskComplete;
         }
 

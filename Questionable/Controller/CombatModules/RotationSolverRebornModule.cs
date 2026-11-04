@@ -10,6 +10,10 @@ internal sealed class RotationSolverRebornModule(RotationSolverRebornIpc rotatio
 
     public bool Stop() => rotationSolverRebornIpc.RotationStop();
 
+    public bool Pause() => rotationSolverRebornIpc.RotationPause();
+
+    public bool Resume() => rotationSolverRebornIpc.RotationResume();
+
     public void VerifyActive() => rotationSolverRebornIpc.VerifyActive();
 
     public void Update(IGameObject gameObject)

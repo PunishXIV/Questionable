@@ -15,6 +15,24 @@ namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Interact
 {
+    internal static Job SelectQuestJob(IReadOnlyList<Job> acceptableJobs, Configuration configuration,
+        EAlliedSociety alliedSociety, bool isCrafter, bool isGatherer)
+    {
+        Job fallback = acceptableJobs[0];
+        if (acceptableJobs.Count == 1)
+            return fallback;
+
+        Job preferred;
+        if (isCrafter || (alliedSociety == EAlliedSociety.Namazu && configuration.Advanced.NamazuPreferCraft))
+            preferred = configuration.General.CraftingJob;
+        else if (isGatherer || alliedSociety == EAlliedSociety.Namazu)
+            preferred = configuration.General.GatheringJob;
+        else
+            preferred = configuration.General.CombatJob;
+
+        return acceptableJobs.Contains(preferred) ? preferred : fallback;
+    }
+
     internal sealed class Factory(AutomatonIpc automatonIpc, BossModIpc bossModIpc, Configuration configuration, RedoUtil redoUtil,
         GilShopData gilShopData) : ITaskFactory
     {
@@ -277,45 +295,11 @@ internal static class Interact
                     acceptableJobs = levelledJobs;
 
                 Job playerJob = (Job)player.ClassJob.Value.RowId;
-                // Reference first candidate to determine type of quest
-                Job firstItem = acceptableJobs[0];
-                Job candidate = firstItem;
                 if (!acceptableJobs.Contains(playerJob))
                 {
-                    if (acceptableJobs.Count > 1)
-                    {
-                        if (!firstItem.IsCrafter() && !firstItem.IsGatherer())
-                        {
-                            candidate = configuration.General.CombatJob;
-                            if (acceptableJobs.Contains(candidate))
-                                acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
-                            else
-                                logger.LogInformation("Normal quest, but configured job {CombatJob} is not valid for {QuestId}",
-                                    candidate, Task.Quest.Id);
-                        }
-                        if (firstItem.IsCrafter() ||
-                            (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu) && configuration.Advanced.NamazuPreferCraft && !firstItem.IsCrafter()))
-                        {
-                            candidate = configuration.General.CraftingJob;
-                            if (acceptableJobs.Contains(candidate))
-                                acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
-                            else
-                                logger.LogInformation("Crafting quest, but configured job {CraftingJob} is not valid for {QuestId}",
-                                    candidate, Task.Quest.Id);
-                        }
-                        else if (firstItem.IsGatherer() ||
-                            (Task.Quest.Info.AlliedSociety.Equals(EAlliedSociety.Namazu) && !configuration.Advanced.NamazuPreferCraft && !firstItem.IsGatherer()))
-                        {
-                            candidate = configuration.General.GatheringJob;
-                            if (acceptableJobs.Contains(candidate))
-                                acceptableJobs = [.. acceptableJobs.Prepend(candidate)];
-                            else
-                                logger.LogInformation("Gathering quest, but configured job {GatheringJob} is not valid for {QuestId}",
-                                    candidate, Task.Quest.Id);
-                        }
-                    }
-                    if (acceptableJobs.Count == 0)
-                        throw new Exception(_LF("_JobGearsetError", firstItem.ToFriendlyString(), Task.Quest.Info.Name));
+                    Job firstJob = acceptableJobs[0];
+                    Job candidate = SelectQuestJob(acceptableJobs, configuration, Task.Quest.Info.AlliedSociety,
+                        firstJob.IsCrafter(), firstJob.IsGatherer());
                     if (ClassJobUtils.ClassToJobStone(candidate) is (Job job, ushort item))
                     {
                         _unequipItem = item;

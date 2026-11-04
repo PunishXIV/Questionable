@@ -19,6 +19,8 @@ internal sealed class RotationSolverRebornIpc : Ipc
     private readonly ICallGateSubscriber<string, object> _test;
     private object? _owner;
     private StateCommandType _previousMode;
+    private StateCommandType _expectedMode = StateCommandType.Henched;
+    private StateCommandType? _transitionFrom;
     private bool _ownershipLost;
     private bool _cleanupFailureLogged;
     private long _nextVerificationAt;
@@ -82,6 +84,8 @@ internal sealed class RotationSolverRebornIpc : Ipc
             if (previous is StateCommandType.Henched or StateCommandType.AutoDuty)
                 return false;
             _previousMode = previous;
+            _expectedMode = StateCommandType.Henched;
+            _transitionFrom = null;
             _ownershipLost = false;
             _cleanupFailureLogged = false;
             _owner = provider;
@@ -93,6 +97,33 @@ internal sealed class RotationSolverRebornIpc : Ipc
         catch (Exception e)
         {
             _logger.LogWarning(e, "Could not start RotationSolverReborn combat");
+            return false;
+        }
+    }
+
+    public bool RotationPause() => ChangeOwnedMode(StateCommandType.Off);
+
+    public bool RotationResume() => ChangeOwnedMode(StateCommandType.Henched);
+
+    private bool ChangeOwnedMode(StateCommandType mode)
+    {
+        try
+        {
+            EnsureFrameworkThread();
+            VerifyActiveCore();
+            _transitionFrom = _expectedMode;
+            _expectedMode = mode;
+            // Keep both possible states until readback succeeds: IPC may apply and then throw.
+            _changeMode.InvokeAction(mode);
+            if (_getMode(_owner!) != mode)
+                throw new TaskException("RotationSolverReborn rejected the combat item rotation change.");
+            _transitionFrom = null;
+            _nextVerificationAt = 0;
+            return true;
+        }
+        catch (Exception e)
+        {
+            _logger.LogWarning(e, "Could not change RotationSolverReborn mode for combat item use");
             return false;
         }
     }
@@ -117,7 +148,7 @@ internal sealed class RotationSolverRebornIpc : Ipc
                 return true;
             }
             StateCommandType current = _getMode(provider);
-            if (current != StateCommandType.Henched)
+            if (current != _expectedMode && current != _transitionFrom)
             {
                 // A manual change (or an already-completed rollback) takes precedence.
                 _owner = null;
@@ -170,7 +201,7 @@ internal sealed class RotationSolverRebornIpc : Ipc
             _ownershipLost = true;
             throw new TaskException("RotationSolverReborn disappeared or was replaced.");
         }
-        if (_ownershipLost || _getMode(provider) != StateCommandType.Henched)
+        if (_ownershipLost || _getMode(provider) != _expectedMode)
         {
             _ownershipLost = true;
             throw new TaskException("RotationSolverReborn combat control was lost.");

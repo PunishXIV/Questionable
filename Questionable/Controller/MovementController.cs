@@ -30,6 +30,7 @@ internal sealed class MovementController
     GatheringOperationState gatheringOperation,
     IGatherChillIpc gatherChillIpc,
     FishingOperationState fishingOperation,
+    IFeeshIpc feeshIpc,
     AutoDutyIpc autoDutyIpc,
     Lazy<QuestController> questController,
     ILogger<MovementController> logger) : IDisposable
@@ -739,6 +740,10 @@ internal sealed class MovementController
 
         bool? gatheringBusy = gatherChillIpc.GetBusy();
         if (gatheringBusy == true || (gatheringBusy == null && gatherChillIpc.IsAvailable()))
+            return true;
+
+        bool? fishingBusy = feeshIpc.GetBusy();
+        if (fishingBusy == true || (fishingBusy == null && feeshIpc.IsAvailable()))
             return true;
 
         return autoDutyIpc.IsAvailable() && autoDutyIpc.GetStopped() != true;

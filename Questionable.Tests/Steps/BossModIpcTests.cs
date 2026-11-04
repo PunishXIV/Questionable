@@ -1,10 +1,15 @@
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
+using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 using NSubstitute.Extensions;
+using Questionable.Controller.CombatModules;
 using Questionable.Controller.Steps;
 using Questionable.External;
+using Questionable.Model.Common;
+using Questionable.Model.Questing;
+using Questionable.Tests.TestData;
 using Xunit;
 
 namespace Questionable.Tests.Steps;
@@ -13,6 +18,101 @@ public sealed class BossModIpcTests
 {
     private readonly BossModTestContext _context = new();
     private BossModIpc Ipc => _context.Ipc;
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void CombatItemPause_ClearsRotationAndRestoresOriginalPresetOnlyOnStop(bool stopWhilePaused)
+    {
+        var item = CreateItemModule();
+        item.StopRotation();
+        Assert.Null(_context.ActivePreset);
+        Assert.False(_context.Settings[("AutorotationConfig", "ClearPresetOnCombatEnd")]);
+        item.VerifyActive();
+        if (!stopWhilePaused)
+        {
+            item.StartRotation();
+            Assert.Equal("Questionable", _context.ActivePreset);
+            item.StopRotation();
+            Assert.Null(_context.ActivePreset);
+            item.StartRotation();
+        }
+        Assert.True(item.Stop());
+        Assert.Equal("User preset", _context.ActivePreset);
+        _context.SetPreset.Received(1).InvokeFunc("User preset");
+        AssertOriginalSettings();
+    }
+
+    [Theory]
+    [InlineData(false, false)]
+    [InlineData(false, true)]
+    [InlineData(true, false)]
+    [InlineData(true, true)]
+    public void FailedItemTransition_RetainsOriginalPresetForCleanup(bool resume, bool appliedBeforeThrow)
+    {
+        var item = CreateItemModule();
+        if (resume)
+        {
+            item.StopRotation();
+            _context.RejectActivation = !appliedBeforeThrow;
+            _context.AfterActivation = appliedBeforeThrow ? () => throw new InvalidOperationException("reply failed") : null;
+        }
+        else
+        {
+            _context.ClearPreset.Configure().InvokeFunc().Returns(_ =>
+            {
+                if (!appliedBeforeThrow)
+                    return false;
+                _context.ActivePreset = null;
+                throw new InvalidOperationException("reply failed");
+            });
+        }
+        Assert.Throws<TaskException>(() =>
+        {
+            if (resume)
+                item.StartRotation();
+            else
+                item.StopRotation();
+        });
+        _context.RejectActivation = false;
+        _context.AfterActivation = null;
+        Assert.True(item.Stop());
+        Assert.Equal("User preset", _context.ActivePreset);
+        AssertOriginalSettings();
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void ManualTakeoverDuringItemPause_IsDetectedAndPreserved(bool multiplePresets)
+    {
+        var item = CreateItemModule();
+        item.StopRotation();
+        _context.ActivePreset = multiplePresets ? null : "Manual replacement";
+        if (multiplePresets)
+            _context.ActivePresetList = ["Manual replacement", "Another preset"];
+        Assert.Throws<TaskException>(item.VerifyActive);
+        Assert.Throws<TaskException>(item.StartRotation);
+        Assert.False(item.Stop());
+        Assert.Equal(multiplePresets ? null : "Manual replacement", _context.ActivePreset);
+        _context.SetPreset.DidNotReceive().InvokeFunc("User preset");
+    }
+
+    private ItemUseModule CreateItemModule()
+    {
+        var configuration = new Configuration();
+        configuration.General.CombatModule = ECombatModule.BossMod;
+        var services = Substitute.For<IServiceProvider>();
+        services.GetService(typeof(IEnumerable<ICombatModule>)).Returns(new ICombatModule[]
+        {
+            new BossModModule(NullLogger<BossModModule>.Instance, Ipc, configuration, Substitute.For<IFramework>())
+        });
+        var item = new ItemUseModule(services, Substitute.For<ICondition>(), null!, NullLogger<ItemUseModule>.Instance);
+        var data = CombatTestData.Create(itemUse: new CombatItemUse { ItemId = 1 });
+        Assert.True(item.CanHandleFight(data));
+        Assert.True(item.Start(data));
+        return item;
+    }
 
     [Fact]
     public void RejectedCreation_DoesNotActivatePreset()

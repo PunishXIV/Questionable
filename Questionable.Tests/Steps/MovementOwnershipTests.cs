@@ -246,6 +246,37 @@ public sealed class MovementOwnershipTests : IDisposable
     }
 
     [Theory]
+    [InlineData(false, false)]
+    [InlineData(false, true)]
+    [InlineData(true, false)]
+    [InlineData(true, true)]
+    public void ManualFeesh_StopPreservesTravelWithoutQuestionableOwner(bool unknown, bool localDestination)
+    {
+        var plugin = Substitute.For<IDalamudPluginInterface>();
+        var stop = Substitute.For<ICallGateSubscriber<object>>();
+        plugin.GetIpcSubscriber<object>("vnavmesh.Path.Stop").Returns(stop);
+        stop.When(x => x.InvokeAction()).Do(_ => throw new InvalidOperationException("Manual route was stopped"));
+        var navmesh = new NavmeshIpc(plugin, NullLogger<NavmeshIpc>.Instance);
+        var feesh = Substitute.For<IFeeshIpc>();
+        feesh.IsAvailable().Returns(true);
+        feesh.GetBusy().Returns(unknown ? (bool?)null : true);
+        var fishing = new FishingOperationState();
+        using MovementController movement = CreateController(new(), Substitute.For<IKnightshopperIpc>(),
+            fishingOperation: fishing, feesh: feesh, navmesh: navmesh);
+        if (!localDestination)
+            movement.Destination = null;
+
+        // UI Stop and Skip both reach this path; no pending SimpleMove or QST-owned catch protects it.
+        movement.Stop();
+
+        Assert.Null(movement.Destination);
+        Assert.False(fishing.HasOperation);
+        feesh.Received(1).GetBusy();
+        feesh.DidNotReceive().CancelOwned();
+        stop.DidNotReceive().InvokeAction();
+    }
+
+    [Theory]
     [InlineData(false)]
     [InlineData(true)]
     public void ManualAutoDuty_StopDoesNotInterruptProviderTravel(bool statusFailure)
@@ -304,7 +335,8 @@ public sealed class MovementOwnershipTests : IDisposable
 
     private MovementController CreateController(PurchaseOperationState operation, IKnightshopperIpc knightshopper,
         GatheringOperationState? gatheringOperation = null, IGatherChillIpc? gatherChill = null,
-        FishingOperationState? fishingOperation = null, AutoDutyIpc? autoDuty = null)
+        FishingOperationState? fishingOperation = null, AutoDutyIpc? autoDuty = null, IFeeshIpc? feesh = null,
+        NavmeshIpc? navmesh = null)
     {
         var framework = Substitute.For<IFramework>();
         framework.IsFrameworkUnloading.Returns(true);
@@ -316,7 +348,7 @@ public sealed class MovementOwnershipTests : IDisposable
 
         // Native dependencies are null, so reaching the global navmesh stop fails the test before any game input.
         return new MovementController(
-            navmeshIpc: null!,
+            navmeshIpc: navmesh!,
             clientState: null!,
             gameFunctions: null!,
             chatFunctions: null!,
@@ -331,6 +363,7 @@ public sealed class MovementOwnershipTests : IDisposable
             gatheringOperation: gatheringOperation ?? new(),
             gatherChillIpc: gatherChill ?? Substitute.For<IGatherChillIpc>(),
             fishingOperation: fishingOperation ?? new(),
+            feeshIpc: feesh ?? Substitute.For<IFeeshIpc>(),
             autoDutyIpc: autoDuty,
             questController: null!,
             logger: NullLogger<MovementController>.Instance)

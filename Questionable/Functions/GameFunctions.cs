@@ -171,10 +171,13 @@ internal sealed unsafe partial class GameFunctions
 
     /// <returns>
     ///     Whether the game accepted (used or queued) the action. This doesn't mean it went off, see
-    ///     <see cref="InterruptHandler.LastPlayerActionEffect" /> for that.
+    ///     <see cref="InterruptHandler.Confirmations" /> for that.
     /// </returns>
-    public bool UseAction(EAction action)
+    public bool UseAction(EAction action) => UseAction(action, out _);
+
+    public bool UseAction(EAction action, out InterruptHandler.ActionRequest? request)
     {
+        request = null;
         uint actionId = (uint)action & 0xFFFF;
         ActionType actionType = ((uint)action & 0x10000) == 0x10000 ? ActionType.GeneralAction : ActionType.Action;
         if (actionType == ActionType.Action)
@@ -182,7 +185,11 @@ internal sealed unsafe partial class GameFunctions
 
         if (ActionManager.Instance()->GetActionStatus(actionType, actionId) == 0)
         {
+            ushort previousSequence = ActionManager.Instance()->LastUsedActionSequence;
+            request = CreateActionRequest(actionType, actionId, null);
             bool result = ActionManager.Instance()->UseAction(actionType, actionId);
+            if (result && ActionManager.Instance()->LastUsedActionSequence != previousSequence)
+                request = request with { SourceSequence = ActionManager.Instance()->LastUsedActionSequence };
             logger.LogInformation("UseAction {Action} (adjusted: {AdjustedActionId}) result: {Result}", action,
                 actionId, result);
             return result;
@@ -191,8 +198,12 @@ internal sealed unsafe partial class GameFunctions
         return false;
     }
 
-    public bool UseAction(IGameObject gameObject, EAction action, bool checkCanUse = true)
+    public bool UseAction(IGameObject gameObject, EAction action, bool checkCanUse = true) =>
+        UseAction(gameObject, action, out _, checkCanUse);
+
+    public bool UseAction(IGameObject gameObject, EAction action, out InterruptHandler.ActionRequest? request, bool checkCanUse = true)
     {
+        request = null;
         uint actionId = (uint)action & 0xFFFF;
         ActionType actionType = ((uint)action & 0x10000) == 0x10000 ? ActionType.GeneralAction : ActionType.Action;
         if (actionType == ActionType.GeneralAction)
@@ -213,6 +224,8 @@ internal sealed unsafe partial class GameFunctions
         targetManager.Target = gameObject;
         if (ActionManager.Instance()->GetActionStatus(actionType, actionId, gameObject.GameObjectId) == 0)
         {
+            ushort previousSequence = ActionManager.Instance()->LastUsedActionSequence;
+            request = CreateActionRequest(actionType, actionId, gameObject.EntityId);
             bool result;
             if (actionRow.TargetArea)
             {
@@ -231,10 +244,20 @@ internal sealed unsafe partial class GameFunctions
                     actionId, gameObject, result);
             }
 
+            if (result && ActionManager.Instance()->LastUsedActionSequence != previousSequence)
+                request = request with { SourceSequence = ActionManager.Instance()->LastUsedActionSequence };
             return result;
         }
 
         return false;
+    }
+
+    private static InterruptHandler.ActionRequest CreateActionRequest(ActionType type, uint actionId, uint? targetId)
+    {
+        // Duty-action buttons send the underlying spell's ID and type in their action effect.
+        if (type == ActionType.GeneralAction && ActionManager.GetSpellIdForAction(type, actionId) is > 0 and var spellId)
+            return new((byte)ActionType.Action, spellId, targetId);
+        return new((byte)type, actionId, targetId);
     }
 
     public bool IsObjectAtPosition(uint dataId, Vector3 position, float distance)

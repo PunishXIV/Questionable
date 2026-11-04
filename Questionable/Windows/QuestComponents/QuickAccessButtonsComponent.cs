@@ -188,13 +188,13 @@ internal sealed class QuickAccessButtonsComponent
                             , StringComparer.Ordinal) ?? [], StringComparer.Ordinal);
                 }
                 catch (Exception) { }
-                Configuration? config = (Configuration?)pluginInterface.GetPluginConfig();
+                Configuration config = Configuration.Instance();
                 IPlayerCharacter player = (IPlayerCharacter)objectTable[0]!;
                 Dictionary<string, object?> troubleshooting = new(StringComparer.Ordinal){
                     { "LoadedPlugins", plugins },
                     { "QST", new Dictionary<string,string>(StringComparer.Ordinal){
                         { "Version", CommandHandler.MessageTag },
-                        { "Debug", config?.Advanced.Debug.ToString() ?? "false" }
+                        { "Debug", config.Advanced.Debug.ToString() }
                     } },
                     { "Configuration", config },
                     { "CompletedQuests", questCompletions.Count },

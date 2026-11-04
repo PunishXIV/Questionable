@@ -159,6 +159,27 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
         }
     }
 
+    public bool Pause() => SetRotationEnabled(false);
+
+    public bool Resume() => SetRotationEnabled(true);
+
+    private bool SetRotationEnabled(bool enabled)
+    {
+        try
+        {
+            VerifyActive();
+            if (!WrathIPCWrapper.SetAutoRotationState(_lease!.Value, enabled).IsSuccess())
+                return false;
+            VerifyActive();
+            return true;
+        }
+        catch (Exception e)
+        {
+            _logger.LogWarning(e, "Could not change WrathCombo rotation for combat item use");
+            return false;
+        }
+    }
+
     public bool Stop()
     {
         try

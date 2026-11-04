@@ -73,29 +73,34 @@ internal abstract class MiniTaskController<T> : IDisposable
             return;
         }
 
+        ITaskExecutor currentExecutor = _taskQueue.CurrentTaskExecutor;
         ETaskResult result;
         try
         {
-            if (_taskQueue.CurrentTaskExecutor.WasInterrupted())
+            if (currentExecutor.WasInterrupted())
             {
                 InterruptQueueWithCombat();
                 return;
             }
 
-            result = _taskQueue.CurrentTaskExecutor.Update();
+            result = currentExecutor.Update();
         }
         catch (Exception e)
         {
-            OnTaskFailure(e, _taskQueue.CurrentTaskExecutor.CurrentTask);
+            OnTaskFailure(e, currentExecutor.CurrentTask);
             _logger.LogError(e, "Failed to update task {TaskName}",
-                _taskQueue.CurrentTaskExecutor.CurrentTask.ToString());
-            var msg = _LF("Could not complete '{0}': {1}.", _taskQueue.CurrentTaskExecutor.CurrentTask, e.Message);
+                currentExecutor.CurrentTask.ToString());
+            var msg = _LF("Could not complete '{0}': {1}.", currentExecutor.CurrentTask, e.Message);
             _chatGui.PrintError(
                 _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
             Stop("Task failed to update");
             _serviceProvider.GetRequiredService<NotificationMasterIpc>().NotifyOnFailure(msg);
             return;
         }
+
+        // Updating a task can stop automation or replace the queue (e.g. stopping on quest acceptance).
+        if (!ReferenceEquals(_taskQueue.CurrentTaskExecutor, currentExecutor))
+            return;
 
         switch (result)
         {

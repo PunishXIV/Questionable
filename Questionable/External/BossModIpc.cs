@@ -191,7 +191,9 @@ internal sealed class BossModIpc
         try
         {
             EnsureProvider(owned);
-            if (owned.PresetPending && !string.Equals(_getActivePreset.InvokeFunc(), owned.ExpectedPreset, StringComparison.Ordinal))
+            if (owned.PresetPending &&
+                ((_getActivePresets.HasFunction && _getActivePresets.InvokeFunc().Count > 1) ||
+                 !string.Equals(_getActivePreset.InvokeFunc(), owned.ExpectedPreset, StringComparison.Ordinal)))
             {
                 owned.OwnershipLost = true;
                 owned.PresetPending = false;
@@ -229,6 +231,47 @@ internal sealed class BossModIpc
             throw new TaskException(CleanupReason!);
     }
 
+    public bool PauseOwnedPreset() => ChangeOwnedPreset(paused: true);
+
+    public bool ResumeOwnedPreset() => ChangeOwnedPreset(paused: false);
+
+    private bool ChangeOwnedPreset(bool paused)
+    {
+        if (_ownedPreset is not { } owned)
+            return false;
+        try
+        {
+            VerifyOwnedPreset();
+            if (paused)
+            {
+                if (owned.PausedPreset != null)
+                    return true;
+                owned.PausedPreset = owned.ExpectedPreset ??
+                    throw new TaskException("Questionable has no BossMod preset to pause.");
+            }
+            string? desired = paused ? null : owned.PausedPreset ??
+                throw new TaskException("Questionable has no paused BossMod preset to resume.");
+            owned.TransitionFromPreset = owned.ExpectedPreset;
+            owned.HasPresetTransition = true;
+            owned.ExpectedPreset = desired;
+            // Retain both possible states for cleanup if an IPC applies and then throws.
+            bool accepted = desired == null ? _clearPreset.InvokeFunc() : _setPreset.InvokeFunc(desired);
+            if (!accepted ||
+                (_getActivePresets.HasFunction && _getActivePresets.InvokeFunc().Count > 1) ||
+                !string.Equals(_getActivePreset.InvokeFunc(), desired, StringComparison.Ordinal))
+                throw new TaskException("BossMod rejected the combat item rotation change.");
+            owned.HasPresetTransition = false;
+            if (!paused)
+                owned.PausedPreset = null;
+            return true;
+        }
+        catch (Exception e)
+        {
+            FailAcquisition(owned, e);
+            return false;
+        }
+    }
+
     public bool StopOwnedPreset()
     {
         if (_ownedPreset is not { } owned)
@@ -242,7 +285,9 @@ internal sealed class BossModIpc
                 string? current = _getActivePreset.InvokeFunc();
                 // GetActive returns null for both an empty list and multiple active presets.
                 bool multiplePresets = _getActivePresets.HasFunction && _getActivePresets.InvokeFunc().Count > 1;
-                if (!multiplePresets && string.Equals(current, owned.ExpectedPreset, StringComparison.Ordinal))
+                if (!multiplePresets &&
+                    (string.Equals(current, owned.ExpectedPreset, StringComparison.Ordinal) ||
+                     (owned.HasPresetTransition && string.Equals(current, owned.TransitionFromPreset, StringComparison.Ordinal))))
                 {
                     bool accepted = owned.PreviousPreset == null
                         ? _clearPreset.InvokeFunc()
@@ -370,6 +415,9 @@ internal sealed class BossModIpc
         public string? PreviousPreset { get; set; }
         public bool HasPresetSnapshot { get; set; }
         public string? ExpectedPreset { get; set; }
+        public string? PausedPreset { get; set; }
+        public string? TransitionFromPreset { get; set; }
+        public bool HasPresetTransition { get; set; }
         public bool PresetPending { get; set; }
         public bool SoloDuty { get; set; } = soloDuty;
         public bool Stopping { get; set; }

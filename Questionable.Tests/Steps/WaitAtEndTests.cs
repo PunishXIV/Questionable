@@ -219,6 +219,44 @@ public sealed class WaitAtEndTests
         Assert.True(queue.AllTasksComplete);
     }
 
+    [Theory]
+    [InlineData(nameof(ETaskResult.TaskComplete), false)]
+    [InlineData(nameof(ETaskResult.TaskComplete), true)]
+    [InlineData(nameof(ETaskResult.CreateNewTasks), false)]
+    [InlineData(nameof(ETaskResult.CreateNewTasks), true)]
+    [InlineData(nameof(ETaskResult.NextStep), false)]
+    [InlineData(nameof(ETaskResult.NextStep), true)]
+    [InlineData(nameof(ETaskResult.RetryStep), false)]
+    [InlineData(nameof(ETaskResult.RetryStep), true)]
+    [InlineData(nameof(ETaskResult.End), false)]
+    [InlineData(nameof(ETaskResult.End), true)]
+    public void UpdateThatStopsOrReplacesTheQueueDoesNotProcessItsStaleResult(string result, bool replace)
+    {
+        TaskQueue queue = new(NullLogger.Instance);
+        var controller = CreateController(queue, Substitute.For<ICondition>());
+        var executor = Substitute.For<ITaskExecutor>();
+        var replacement = Substitute.For<ITaskExecutor>();
+        executor.Start(Arg.Any<ITask>()).Returns(true);
+        replacement.Start(Arg.Any<ITask>()).Returns(true);
+        WaitAtEnd.WaitQuestAccepted accepted = new(new QuestId(2881));
+        Assert.True(queue.StartTask(executor, accepted));
+        queue.Enqueue(new WaitAtEnd.NextStep(new QuestId(2552), 1));
+        executor.Update().Returns(_ =>
+        {
+            controller.Stop("test stop");
+            if (replace)
+                Assert.True(queue.StartTask(replacement, new WaitAtEnd.WaitDelay()));
+            return Enum.Parse<ETaskResult>(result);
+        });
+
+        controller.Tick();
+
+        Assert.Empty(queue.RemainingTasks);
+        Assert.Same(replace ? replacement : null, queue.CurrentTaskExecutor);
+        Assert.Equal(0, controller.CompletedTasks);
+        replacement.DidNotReceive().Update();
+    }
+
     private static InterruptionController CreateController(TaskQueue queue, ICondition condition,
         IServiceProvider? provider = null)
     {
@@ -239,6 +277,10 @@ public sealed class WaitAtEndTests
     private sealed class InterruptionController()
         : MiniTaskController<InterruptionController>(null!, null!, null!, null!, null!, NullLogger<InterruptionController>.Instance)
     {
+        public int CompletedTasks { get; private set; }
+
+        protected override void OnTaskComplete(ITask task) => ++CompletedTasks;
+
         public void ReceiveDamage() => HandleInterruption(this, EventArgs.Empty);
 
         public void Tick() => UpdateCurrentTask();

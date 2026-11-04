@@ -63,16 +63,21 @@ internal static class EquipRecommended
     }
 
     internal sealed unsafe class DoEquipRecommended(IChatGui chatGui, ICondition condition, Configuration config, StylistIpc stylist,
-        ILogger<DoEquipRecommended> logger)
+        ILogger<DoEquipRecommended> logger, TimeProvider? timeProvider = null)
         : TaskExecutor<EquipTask>
     {
         private bool _checkedOrTriggeredEquipmentUpdate;
         private DateTime _continueAt = DateTime.MinValue;
+        private readonly TimeProvider _clock = timeProvider ?? TimeProvider.System;
+        private long? _stylistBusySince;
         // The source for this task only; a missing Stylist must not overwrite the saved preference.
         private EGearsetUpdateSource _source;
 
         protected override bool Start()
         {
+            _stylistBusySince = null;
+            _checkedOrTriggeredEquipmentUpdate = false;
+            _continueAt = DateTime.MinValue;
             if (condition[ConditionFlag.InCombat])
                 return false;
 
@@ -133,23 +138,33 @@ internal static class EquipRecommended
 
                     break;
                 case EGearsetUpdateSource.Stylist:
-                    {
-                        if (stylist.IsBusy is not { } busy)
-                            return FallBackToVanilla("became unavailable");
-                        if (busy)
-                            return ETaskResult.StillRunning;
+                    return UpdateStylist(stylist.IsBusy, stylist.UpdateGearset);
+            }
 
-                        if (!_checkedOrTriggeredEquipmentUpdate)
-                        {
-                            if (!stylist.UpdateGearset())
-                                return FallBackToVanilla("rejected the gear update");
-                            _checkedOrTriggeredEquipmentUpdate = true;
-                            _continueAt = DateTime.Now.AddSeconds(0.25);
-                            return ETaskResult.StillRunning;
-                        }
-                    }
+            return DateTime.Now >= _continueAt ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
+        }
 
-                    break;
+        internal ETaskResult UpdateStylist(bool? isBusy, Func<bool> updateGearset)
+        {
+            if (isBusy is not { } busy)
+                return FallBackToVanilla("became unavailable");
+            if (busy)
+            {
+                _stylistBusySince ??= _clock.GetTimestamp();
+                // Stylist may still be changing equipment; do not start a competing Vanilla update.
+                if (_clock.GetElapsedTime(_stylistBusySince.Value) >= TimeSpan.FromSeconds(30))
+                    throw new TaskException("Stylist stayed busy for 30 seconds. Finish or stop its work, then restart Questionable.");
+                return ETaskResult.StillRunning;
+            }
+
+            _stylistBusySince = null;
+            if (!_checkedOrTriggeredEquipmentUpdate)
+            {
+                if (!updateGearset())
+                    return FallBackToVanilla("rejected the gear update");
+                _checkedOrTriggeredEquipmentUpdate = true;
+                _continueAt = DateTime.Now.AddSeconds(0.25);
+                return ETaskResult.StillRunning;
             }
 
             return DateTime.Now >= _continueAt ? ETaskResult.TaskComplete : ETaskResult.StillRunning;

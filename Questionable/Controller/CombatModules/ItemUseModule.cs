@@ -30,7 +30,9 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
     public bool Start(CombatController.CombatData combatData)
     {
         _combatData = combatData;
-        StartRotation();
+        if (_delegate == null || !_delegate.Start(combatData))
+            throw new TaskException("Unable to start rotation for combat item use.");
+        _isDoingRotation = true;
         _continueAt = DateTime.Now;
         return true;
     }
@@ -49,22 +51,34 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
 
     public void VerifyActive()
     {
-        if (_isDoingRotation)
+        if (_combatData != null)
             _delegate!.VerifyActive();
     }
 
     internal void StartRotation()
     {
-        if (_delegate == null || _combatData == null || !_delegate.Start(_combatData))
+        if (_delegate == null || _combatData == null || !_delegate.Resume())
             throw new TaskException("Unable to start rotation for combat item use.");
         _isDoingRotation = true;
     }
 
     internal void StopRotation()
     {
-        if (_delegate != null && !_delegate.Stop())
+        if (_delegate == null || !_delegate.Pause())
             throw new TaskException("Waiting for rotation to stop before using a combat item.");
         _isDoingRotation = false;
+    }
+
+    public bool Pause()
+    {
+        StopRotation();
+        return true;
+    }
+
+    public bool Resume()
+    {
+        StartRotation();
+        return true;
     }
 
     public void Update(IGameObject nextTarget)

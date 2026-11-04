@@ -13,25 +13,43 @@ internal static class SinglePlayerDuty
 {
     internal const int MaxRetries = 5;
 
-    private static (ElementId QuestId, uint CfcId, byte Sequence)? _lastRetryKey;
-    private static int _retryCount;
-
-    private static int RecordRetry(ElementId questId, uint cfcId, byte sequence)
+    internal sealed class RetryCounter
     {
-        var key = (questId, cfcId, sequence);
-        if (_lastRetryKey != key)
+        private (string ContentId, ElementId QuestId, uint CfcId, byte Sequence)? _lastRetryKey;
+        private int _retryCount;
+
+        public int RecordRetry(string? contentId, ElementId questId, uint cfcId, byte sequence)
         {
-            _lastRetryKey = key;
-            _retryCount = 0;
+            if (contentId == null)
+            {
+                Clear();
+                throw new TaskException("Cannot retry a solo duty without a logged-in character.");
+            }
+
+            var key = (contentId, questId, cfcId, sequence);
+            if (_lastRetryKey != key)
+            {
+                _lastRetryKey = key;
+                _retryCount = 0;
+            }
+
+            return ++_retryCount;
         }
 
-        return ++_retryCount;
-    }
+        public void Observe(string? contentId, Func<ElementId, byte?> getSequence)
+        {
+            if (_lastRetryKey is not { } key)
+                return;
 
-    private static void ClearRetryCount()
-    {
-        _lastRetryKey = null;
-        _retryCount = 0;
+            if (key.ContentId != contentId || getSequence(key.QuestId) != key.Sequence)
+                Clear();
+        }
+
+        public void Clear()
+        {
+            _lastRetryKey = null;
+            _retryCount = 0;
+        }
     }
 
     internal sealed class Factory(BossModIpc bossModIpc, TerritoryData territoryData) : ITaskFactory
@@ -212,6 +230,7 @@ internal static class SinglePlayerDuty
         GameFunctions gameFunctions,
         ICondition condition,
         IChatGui chatGui,
+        RetryCounter retryCounter,
         ILogger<WaitForSinglePlayerDutyOutcomeExecutor> logger)
         : TaskExecutor<WaitForSinglePlayerDutyOutcome>, IDebugStateProvider
     {
@@ -254,7 +273,8 @@ internal static class SinglePlayerDuty
             if (progress == null || progress.Sequence != Task.StartSequence)
                 return ETaskResult.StillRunning;
 
-            int failures = RecordRetry(Task.QuestId, Task.ContentFinderConditionId, Task.StartSequence);
+            int failures = retryCounter.RecordRetry(ProfileController.CurrentContentId,
+                Task.QuestId, Task.ContentFinderConditionId, Task.StartSequence);
             if (failures >= MaxRetries)
             {
                 logger.LogError(
@@ -263,7 +283,7 @@ internal static class SinglePlayerDuty
                 chatGui.PrintError(
                     $"You failed this instance {MaxRetries} times, Questionable is stopping. Please check it manually and report any issues to the instance.",
                     CommandHandler.MessageTag, CommandHandler.TagColor);
-                ClearRetryCount();
+                retryCounter.Clear();
                 return ETaskResult.End;
             }
 

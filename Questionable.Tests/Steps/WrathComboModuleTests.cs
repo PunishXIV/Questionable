@@ -56,6 +56,7 @@ public sealed class WrathComboModuleTests : IDisposable
         _ready.InvokeFunc().Returns(true);
         _register.InvokeFunc("Questionable", "Questionable", "Questionable$Wrath").Returns(_lease);
         _auto.InvokeFunc(_lease, true).Returns(SetResult.Okay);
+        _auto.InvokeFunc(_lease, false).Returns(SetResult.Okay);
         _job.InvokeFunc(_lease).Returns(SetResult.Okay);
         _configure.InvokeFunc(_lease, Arg.Any<object>(), Arg.Any<object>()).Returns(SetResult.Okay);
         var configuration = new Configuration();
@@ -67,6 +68,62 @@ public sealed class WrathComboModuleTests : IDisposable
     }
 
     public void Dispose() => _module.Dispose();
+
+    [Fact]
+    public void ItemPause_DisablesRotationWithoutReleasingOrReacquiringLease()
+    {
+        Assert.True(_module.Start(CombatTestData.Create()));
+        Assert.True(_module.Pause());
+        _auto.Received(1).InvokeFunc(_lease, false);
+        _release.DidNotReceive().InvokeAction(_lease);
+        _module.VerifyActive();
+        Assert.True(_module.Resume());
+        _auto.Received(2).InvokeFunc(_lease, true);
+        _register.Received(1).InvokeFunc("Questionable", "Questionable", "Questionable$Wrath");
+        Assert.True(_module.Stop());
+        _release.Received(1).InvokeAction(_lease);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void RejectedItemTransition_FailsButRetainsLeaseForFinalCleanup(bool resume)
+    {
+        Assert.True(_module.Start(CombatTestData.Create()));
+        if (resume)
+            Assert.True(_module.Pause());
+        _auto.InvokeFunc(_lease, resume).Returns(SetResult.InvalidConfiguration);
+        Assert.False(resume ? _module.Resume() : _module.Pause());
+        _release.DidNotReceive().InvokeAction(_lease);
+        Assert.True(_module.Stop());
+        _release.Received(1).InvokeAction(_lease);
+    }
+
+    [Fact]
+    public void LeaseCancelledDuringPauseRequest_DoesNotReportSuccessfulPause()
+    {
+        Assert.True(_module.Start(CombatTestData.Create()));
+        _auto.InvokeFunc(_lease, false).Returns(_ =>
+        {
+            _cancel(0, "cancelled while applying pause");
+            return SetResult.Okay;
+        });
+        Assert.False(_module.Pause());
+        Assert.True(_module.Stop());
+        _release.DidNotReceive().InvokeAction(_lease);
+    }
+
+    [Fact]
+    public void CancelledLeaseDuringItemPause_IsNotResumed()
+    {
+        Assert.True(_module.Start(CombatTestData.Create()));
+        Assert.True(_module.Pause());
+        _cancel(0, "cancelled during item cast");
+        Assert.False(_module.Resume());
+        _auto.Received(1).InvokeFunc(_lease, true);
+        Assert.True(_module.Stop());
+        _release.DidNotReceive().InvokeAction(_lease);
+    }
 
     [Theory]
     [InlineData(AutoRotationConfigOption.DPSRotationMode)]

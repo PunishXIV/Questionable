@@ -420,10 +420,7 @@ internal sealed class QuestRegistry
             Steps = [CreateStep(EInteractionType.CompleteQuest, completion.Object.RowId, completion.Position,
                 completion.Territory.RowId)]
         });
-        var name = "Anonymous";
-        var pluginConfig = Svc.PluginInterface.GetPluginConfig();
-        if (pluginConfig is Configuration config)
-            name = config.General.DisplayName;
+        var name = Configuration.Instance().General.DisplayName;
         return new QuestRoot()
         {
             Author = [name],
@@ -439,8 +436,7 @@ internal sealed class QuestRegistry
 
     public static string GetQuestPathsDirectory()
     {
-        var pluginConfig = Svc.PluginInterface.GetPluginConfig();
-        if (pluginConfig is Configuration config && config.Advanced.Debug && Svc.PluginInterface.IsDev)
+        if (Configuration.Instance().Advanced.Debug && Svc.PluginInterface.IsDev)
             return Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName, "QuestPaths");
         return Path.Combine(Svc.PluginInterface.GetPluginConfigDirectory(), "Quests");
     }
@@ -448,7 +444,7 @@ internal sealed class QuestRegistry
     public static string? GetFullPath(QuestInfo info, bool withFilename = true)
     {
         string folder;
-        if (Svc.PluginInterface.GetPluginConfig() is Configuration { Advanced.Debug: true } && Svc.PluginInterface.IsDev)
+        if (Configuration.Instance().Advanced.Debug && Svc.PluginInterface.IsDev)
         {
             DirectoryInfo expansionFolder = new(Path.Combine(AssemblyLocation.Directory!.Parent!.Parent!.FullName,
                 "QuestPaths", ExpansionData.ExpansionFolders[info.Expansion]));

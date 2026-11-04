@@ -68,12 +68,19 @@ internal static class ActionStep
 
         private DateTime _continueAt = DateTime.MinValue;
         private DateTime _retryAt = DateTime.MinValue;
-        private DateTime _firstAttemptAt = DateTime.MaxValue;
         private int _attempts;
         private bool _accepted;
+        private readonly List<(InterruptHandler.ActionRequest Request, long AfterVersion)> _requests = [];
+        private bool _confirmed;
 
         protected override bool Start()
         {
+            _requests.Clear();
+            _confirmed = false;
+            _attempts = 0;
+            _accepted = false;
+            _continueAt = DateTime.MinValue;
+            _retryAt = DateTime.MinValue;
             if (Task.DataId != null)
             {
                 IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId.Value);
@@ -114,18 +121,21 @@ internal static class ActionStep
             return true;
         }
 
-        public override ETaskResult Update()
+        public override ETaskResult Update() => Update(CheckCompletionFlags);
+
+        internal ETaskResult Update(Func<ETaskResult> checkCompletionFlags)
         {
             if (DateTime.Now <= _continueAt)
                 return ETaskResult.StillRunning;
             if (Task.IgnoreResult)
                 return ETaskResult.TaskComplete;
 
-            if (_attempts > 0 && interruptHandler.LastPlayerActionEffect >= _firstAttemptAt)
-                return CheckCompletionFlags();
+            _confirmed |= _requests.Any(request => interruptHandler.Confirmations.Contains(request.Request, request.AfterVersion));
+            if (_confirmed)
+                return checkCompletionFlags();
 
             // if the quest already progressed, don't use the action again even if we missed the confirmation
-            if (HasCompletionFlags() && CheckCompletionFlags() == ETaskResult.TaskComplete)
+            if (HasCompletionFlags() && checkCompletionFlags() == ETaskResult.TaskComplete)
                 return ETaskResult.TaskComplete;
 
             if (_attempts >= MaxAttempts)
@@ -136,7 +146,7 @@ internal static class ActionStep
                 // some actions might never send an action effect, keep the old behaviour for those
                 logger.LogWarning("No confirmation for action {Action} after {Attempts} attempts, assuming it was used",
                     Task.Action, _attempts);
-                return CheckCompletionFlags();
+                return checkCompletionFlags();
             }
 
             if (DateTime.Now < _retryAt || condition[ConditionFlag.Casting])
@@ -158,13 +168,20 @@ internal static class ActionStep
 
         private void TryUseAction(IGameObject? gameObject)
         {
+            long afterVersion = interruptHandler.Confirmations.Version;
+            InterruptHandler.ActionRequest? request;
             bool accepted = gameObject != null
-                ? gameFunctions.UseAction(gameObject, Task.Action)
-                : gameFunctions.UseAction(Task.Action);
+                ? gameFunctions.UseAction(gameObject, Task.Action, out request)
+                : gameFunctions.UseAction(Task.Action, out request);
 
-            if (_attempts == 0)
-                _firstAttemptAt = DateTime.Now;
+            RecordAttempt(accepted, request, afterVersion);
+        }
 
+        internal void RecordAttempt(bool accepted, InterruptHandler.ActionRequest? request, long afterVersion)
+        {
+            // Hooks can queue a native request while returning false. Its matching spell/target still proves execution.
+            if (request != null)
+                _requests.Add((accepted ? request : request with { SourceSequence = null }, afterVersion));
             _attempts++;
             _accepted |= accepted;
             _retryAt = DateTime.Now + (accepted ? AcceptedRetryDelay : TimeSpan.FromSeconds(Task.Timeout));

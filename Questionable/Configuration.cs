@@ -14,13 +14,18 @@ namespace Questionable;
 
 internal sealed class Configuration : IPluginConfiguration
 {
-    internal static Configuration Instance()
-    {
-        var pluginConfig = Svc.PluginInterface.GetPluginConfig();
-        if (pluginConfig is Configuration config)
-            return config;
-        throw new Exception(_L("Could not get plugin config"));
-    }
+    private static Configuration? _runtimeInstance;
+
+    // Static game helpers must use the same live profile as injected consumers.
+    // GetPluginConfig deserializes the saved base settings without activating a profile.
+    internal static Configuration Instance() => Volatile.Read(ref _runtimeInstance)
+        ?? throw new InvalidOperationException("Runtime configuration has not been initialized.");
+
+    internal static void InitializeRuntime(Configuration configuration) =>
+        Interlocked.Exchange(ref _runtimeInstance, configuration);
+
+    internal static void ClearRuntime(Configuration configuration) =>
+        Interlocked.CompareExchange(ref _runtimeInstance, null, configuration);
     #region Serialised data
     // Variables that are not affected by profile switches
     public const int PluginSetupVersion = 5;
@@ -83,6 +88,21 @@ internal sealed class Configuration : IPluginConfiguration
     internal AdvancedConfiguration BaseAdvanced => _advanced;
 
     #region Character Profiles
+    internal event Action<string>? LanguageChanged;
+
+    internal void SetLanguage(string language)
+    {
+        string previousLanguage = General.Language;
+        General.Language = language;
+        NotifyLanguageChanged(previousLanguage);
+    }
+
+    private void NotifyLanguageChanged(string previousLanguage)
+    {
+        if (!string.Equals(previousLanguage, General.Language, StringComparison.OrdinalIgnoreCase))
+            LanguageChanged?.Invoke(General.Language);
+    }
+
     // Runtime-only merged section code (never serialised)
     [JsonIgnore] private GeneralConfiguration? _activeProfileGeneral;
     [JsonIgnore] private StopConfiguration? _activeProfileStop;
@@ -127,6 +147,7 @@ internal sealed class Configuration : IPluginConfiguration
     /// </summary>
     internal void ClearActiveProfile()
     {
+        string previousLanguage = General.Language;
         CaptureActiveProfile();
         ActiveProfileName = null;
         _activeProfileGeneral = null;
@@ -135,6 +156,7 @@ internal sealed class Configuration : IPluginConfiguration
         _activeProfileSinglePlayerDuties = null;
         _activeProfileNotifications = null;
         _activeProfileAdvanced = null;
+        NotifyLanguageChanged(previousLanguage);
     }
 
     /// <summary>
@@ -144,6 +166,7 @@ internal sealed class Configuration : IPluginConfiguration
 
     private void ApplyPatches(string profileName, Dictionary<string, JObject> patches)
     {
+        string previousLanguage = General.Language;
         CaptureActiveProfile();
         ActiveProfileName = profileName;
         _activeProfileGeneral = MergeSection(_general, patches, "General");
@@ -152,6 +175,7 @@ internal sealed class Configuration : IPluginConfiguration
         _activeProfileSinglePlayerDuties = MergeSection(_singlePlayerDuties, patches, "SinglePlayerDuties");
         _activeProfileNotifications = MergeSection(_notifications, patches, "Notifications");
         _activeProfileAdvanced = MergeSection(_advanced, patches, "Advanced");
+        NotifyLanguageChanged(previousLanguage);
     }
 
     /// <summary>

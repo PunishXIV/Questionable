@@ -39,10 +39,32 @@ internal sealed unsafe class InterruptHandler : IDisposable
 
     public event EventHandler? Interrupted;
 
-    /// <summary>
-    ///     When the server last confirmed an action the local player started (auto-attacks excluded).
-    /// </summary>
-    public DateTime LastPlayerActionEffect { get; private set; } = DateTime.MinValue;
+    public ActionConfirmations Confirmations { get; } = new();
+
+    internal sealed record ActionRequest(byte Type, uint ActionId, uint? TargetId, ushort? SourceSequence = null);
+
+    internal sealed class ActionConfirmations
+    {
+        private readonly Queue<(ushort Sequence, byte Type, uint ActionId, uint[] Targets, long Version)> _effects = new();
+        public long Version { get; private set; }
+
+        public void Observe(ushort sequence, byte type = (byte)ActionType.Action, uint actionId = 0, params uint[] targets)
+        {
+            if (sequence == 0)
+                return;
+
+            _effects.Enqueue((sequence, type, actionId, targets, ++Version));
+            while (_effects.Count > 32)
+                _effects.Dequeue();
+        }
+
+        public bool Contains(ActionRequest request, long afterVersion) =>
+            _effects.Any(effect => effect.Version > afterVersion &&
+                (request.SourceSequence is { } sequence
+                    ? effect.Sequence == sequence
+                    : request.ActionId != 0 && effect.Type == request.Type && effect.ActionId == request.ActionId &&
+                      (request.TargetId == null || effect.Targets.Contains(request.TargetId.Value))));
+    }
 
     private void HandleProcessActionEffect(uint sourceId, Character* sourceCharacter, Vector3* pos,
         ActionEffectHandler.Header* effectHeader, ActionEffectHandler.Effect* effectArray, ulong* effectTail)
@@ -54,7 +76,11 @@ internal sealed unsafe class InterruptHandler : IDisposable
             {
                 _logger.LogDebug("Action effect for own action {ActionType} {ActionId}", (ActionType)effectHeader->ActionType,
                     effectHeader->ActionId);
-                LastPlayerActionEffect = DateTime.Now;
+                uint[] targets = new uint[effectHeader->NumTargets];
+                for (int i = 0; i < targets.Length; ++i)
+                    targets[i] = (uint)effectTail[i];
+                Confirmations.Observe(effectHeader->SourceSequence, effectHeader->ActionType,
+                    effectHeader->ActionId, targets);
             }
 
             if (!_territoryData.IsDutyInstance(_clientState.TerritoryType))

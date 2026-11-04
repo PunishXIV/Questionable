@@ -8,6 +8,7 @@ namespace Questionable;
 internal sealed class DalamudInitializer : IDisposable
 {
     private readonly Configuration _configuration;
+    private readonly ConfigurationLocalization _configurationLocalization;
     private readonly ConfigWindow _configWindow;
     private readonly IFramework _framework;
     private readonly HighlightObject _highlightObject;
@@ -61,7 +62,7 @@ internal sealed class DalamudInitializer : IDisposable
         _highlightObject = highlightObject;
         _partyWatchDog = partyWatchDog;
         _logger = logger;
-        SetupI18N(_configuration.General.Language);
+        _configurationLocalization = new(configuration, SetupI18N);
 
         _windowSystem.AddWindow(oneTimeSetupWindow);
         _windowSystem.AddWindow(questWindow);
@@ -94,6 +95,8 @@ internal sealed class DalamudInitializer : IDisposable
         if (_disposed)
             return;
         _disposed = true;
+
+        _configurationLocalization.Dispose();
 
         _toastGui.QuestToast -= OnQuestToast;
         _toastGui.ErrorToast -= OnErrorToast;

@@ -99,11 +99,8 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         if (ImGuiComponentsLocal.DrawSearchableCombo(_L("Language"), languages.Keys.ToArray(), languages.Values.ToArray(),
             Configuration.General.Language, ref _langSearchString, ref language))
         {
-            var was = Configuration.General.Language;
-            Configuration.General.Language = language;
+            Configuration.SetLanguage(language);
             Save();
-            if (was != Configuration.General.Language)
-                DalamudInitializer.SetupI18N(Configuration.General.Language);
         }
 
         if (QstWidgets.SectionHeader(_L("Preferences"), "Preferences", defaultOpen: false))

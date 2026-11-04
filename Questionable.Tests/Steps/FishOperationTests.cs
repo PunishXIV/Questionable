@@ -68,6 +68,21 @@ public sealed class FishOperationTests : IDisposable
     }
 
     [Fact]
+    public void OneSizeFitsAll_FisherBranch_RequestsSunshellFromFeesh()
+    {
+        var quest = QuestTestData.LoadQuest(new QuestId(3097), new EmbeddedQuest(
+            "QuestPaths/4.x - Stormblood/Allied Societies/Namazu/Story/3097_One Size Fits All.json"));
+        var sequence = quest.FindSequence(255)!;
+        var step = sequence.Steps.Single(x => x.RequiredQuestAcceptedJob.Contains(EExtendedClassJob.Fisher));
+
+        Assert.Empty(new Gather.Factory().CreateAllTasks(quest, sequence, step));
+        var task = Assert.IsType<Fish.FishTask>(Assert.Single(new Fish.Factory().CreateAllTasks(quest, sequence, step)));
+        Assert.True(ProviderTravel.IsHandled(sequence, step, _ipc));
+        Assert.True(_queue.StartTask(_executor, task));
+        Assert.Equal((FeeshIpc.Owner, 22668u, 1, true), Assert.Single(_catches));
+    }
+
+    [Fact]
     public void SatisfiedObjective_SkipsUnavailableFeesh()
     {
         _available = false;

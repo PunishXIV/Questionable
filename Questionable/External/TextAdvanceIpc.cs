@@ -54,9 +54,11 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
         {
             if (_isExternalControlActivated && dontSkipCutscenes != _sentDontSkipCutscenes)
             {
-                // Settings are only sent with control; release it so the next update re-acquires with the new ones.
-                if (IpcInvoke.SafeFunc(() => _disableExternalControl.InvokeFunc(_pluginName), fallback: false))
-                    _isExternalControlActivated = false;
+                // TextAdvance accepts updated settings from the same requester. Keep control
+                // throughout so its normal auto-interact/cutscene settings cannot take over.
+                if (IpcInvoke.SafeFunc(() => _enableExternalControl.InvokeFunc(
+                        _pluginName, CreateExternalTerritoryConfig(dontSkipCutscenes)), fallback: false))
+                    _sentDontSkipCutscenes = dontSkipCutscenes;
             }
             else if (IpcInvoke.SafeFunc<bool?>(() => _isInExternalControl.InvokeFunc(), fallback: null) == false &&
                      IpcInvoke.SafeFunc(() => _enableExternalControl.InvokeFunc(
@@ -90,7 +92,7 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
         EnableAutoInteract = false
     };
 
-    private sealed class ExternalTerritoryConfig
+    internal sealed class ExternalTerritoryConfig
     {
         public bool? EnableQuestAccept;
         public bool? EnableQuestComplete;
