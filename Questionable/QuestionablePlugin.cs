@@ -25,7 +25,12 @@ public sealed class QuestionablePlugin(
     IGameInteropProvider gameInteropProvider,
     ITextureProvider textureProvider) : IAsyncDalamudPlugin
 {
-    private ServiceProvider? _serviceProvider;
+    private readonly PluginLifetime _lifetime = new();
+#pragma warning disable CA2213 // These captured references are owned and disposed by PluginLifetime's DI container.
+    private DalamudInitializer? _initializer;
+    private QuestController? _questController;
+    private PathDataUpdater? _pathDataUpdater;
+#pragma warning restore CA2213
     private Configuration? _runtimeConfiguration;
     private bool _ecommonsInitialized;
 
@@ -37,7 +42,9 @@ public sealed class QuestionablePlugin(
         try
         {
             // Off the thread-pool thread LoadAsync runs on; Dalamud warns against blocking there.
-            _serviceProvider = await Task.Run(BuildAndInitialize, cancellationToken).ConfigureAwait(false);
+            await _lifetime.InitializeAsync(
+                () => Task.Run(BuildAndInitialize, cancellationToken), StopEventSourcesAsync, ReleaseGlobals,
+                e => pluginLog.Error(e, "Unable to finish plugin cleanup"), cancellationToken).ConfigureAwait(false);
         }
         catch (OperationCanceledException)
         {
@@ -45,76 +52,81 @@ public sealed class QuestionablePlugin(
         }
         catch (Exception)
         {
-            chatGui.PrintError(_L("Unable to load plugin, check /xllog for details"), _L("Questionable"));
+            try
+            {
+                chatGui.PrintError(_L("Unable to load plugin, check /xllog for details"), _L("Questionable"));
+            }
+            catch
+            {
+                // Reporting a load failure must not replace its original exception.
+            }
             throw;
         }
     }
 
-    public async ValueTask DisposeAsync()
+    public ValueTask DisposeAsync() => _lifetime.DisposeAsync();
+
+    private async ValueTask StopEventSourcesAsync()
     {
-        var serviceProvider = Interlocked.Exchange(ref _serviceProvider, value: null);
-
-        // Dispose event sources before the DI container so callbacks cannot access disposed services.
-        // DalamudInitializer.Dispose is idempotent, so the container's later disposal is safe.
+        var initializer = Interlocked.Exchange(ref _initializer, null);
+        var questController = Interlocked.Exchange(ref _questController, null);
         try
         {
-            if (serviceProvider != null && !framework.IsFrameworkUnloading)
-            {
-                await framework.RunOnFrameworkThread(() =>
-                {
-                    try
-                    {
-                        serviceProvider.GetService<DalamudInitializer>()?.Dispose();
-                    }
-                    finally
-                    {
-                        serviceProvider.GetService<QuestController>()?.Shutdown();
-                    }
-                }).ConfigureAwait(false);
-            }
-            else
-                serviceProvider?.GetService<DalamudInitializer>()?.Dispose();
-        }
-        catch (ObjectDisposedException)
-        {
-            // Container already torn down elsewhere — nothing to unhook.
-        }
-        catch (Exception e)
-        {
-            pluginLog.Error(e, "Unable to finish quest cleanup during plugin unload");
-            try
-            {
-                serviceProvider?.GetService<DalamudInitializer>()?.Dispose();
-            }
-            catch (Exception unhookError)
-            {
-                pluginLog.Error(unhookError, "Unable to unhook event sources during plugin unload");
-            }
-        }
-
-        try
-        {
-            if (serviceProvider is IAsyncDisposable asyncDisposable)
-                await asyncDisposable.DisposeAsync().ConfigureAwait(false);
-            else
-#pragma warning disable MA0042 // Do not use blocking calls when the calling method is async
-                serviceProvider?.Dispose();
-#pragma warning restore MA0042 // Do not use blocking calls when the calling method is async
+            // Stop background mutations before the container starts disposing their dependencies.
+#pragma warning disable CA1849 // Cancel now; the DI container awaits updater disposal after event sources are stopped.
+            Interlocked.Exchange(ref _pathDataUpdater, null)?.Dispose();
+#pragma warning restore CA1849
         }
         finally
+        {
+            if (!framework.IsFrameworkUnloading && (initializer != null || questController != null))
+            {
+                try
+                {
+                    await framework.RunOnFrameworkThread(() =>
+                    {
+                        try
+                        {
+                            initializer?.Dispose();
+                        }
+                        finally
+                        {
+                            questController?.Shutdown();
+                        }
+                    }).ConfigureAwait(false);
+                }
+                catch
+                {
+                    // Dispatch can fail during framework shutdown; still detach the event sources.
+                    initializer?.Dispose();
+#pragma warning disable CA2219 // PluginLifetime logs this failure and still runs container/global cleanup.
+                    throw;
+#pragma warning restore CA2219
+                }
+            }
+            else
+                initializer?.Dispose();
+        }
+    }
+
+    private void ReleaseGlobals()
+    {
+        try
         {
             if (Interlocked.Exchange(ref _runtimeConfiguration, null) is { } configuration)
                 Configuration.ClearRuntime(configuration);
         }
-
-        if (_ecommonsInitialized)
+        finally
         {
-            _ecommonsInitialized = false;
-            ECommonsMain.Dispose();
+            if (_ecommonsInitialized)
+            {
+                _ecommonsInitialized = false;
+                ECommonsMain.Dispose();
+            }
         }
     }
 
-    private ServiceProvider BuildAndInitialize()
+    private void BuildAndInitialize()
     {
         ECommonsMain.Init(pluginInterface, this, Module.DalamudReflector);
         _ecommonsInitialized = true;
@@ -196,20 +208,21 @@ public sealed class QuestionablePlugin(
         serviceCollection.AddSingleton(sp => new Lazy<QuestController>(sp.GetRequiredService<QuestController>));
 
         var serviceProvider = serviceCollection.BuildServiceProvider();
+        _lifetime.OwnServices(serviceProvider);
         Initialize(serviceProvider);
-        return serviceProvider;
     }
 
     // Task factories and executors are now registered in ServiceCollectionExtensions:AddTaskRegistrations
 
-    private static void Initialize(IServiceProvider serviceProvider)
+    private void Initialize(IServiceProvider serviceProvider)
     {
         // Resolve before the registry loads — its constructor discards a bundle left by an older
         // plugin version, so the registry doesn't pick up a stale one.
-        PathDataUpdater pathDataUpdater = serviceProvider.GetRequiredService<PathDataUpdater>();
+        _pathDataUpdater = serviceProvider.GetRequiredService<PathDataUpdater>();
         serviceProvider.GetRequiredService<QuestRegistry>().Reload();
         serviceProvider.GetRequiredService<SinglePlayerDutyConfigComponent>().Reload();
         serviceProvider.GetRequiredService<ProfileController>();
+        _questController = serviceProvider.GetRequiredService<QuestController>();
         serviceProvider.GetRequiredService<CommandHandler>();
         serviceProvider.GetRequiredService<ContextMenuController>();
         serviceProvider.GetRequiredService<CraftworksSupplyController>();
@@ -222,10 +235,10 @@ public sealed class QuestionablePlugin(
         serviceProvider.GetRequiredService<GrandCompanyExchangeController>();
         serviceProvider.GetRequiredService<ChocoboNamingController>();
         serviceProvider.GetRequiredService<QuestionableIpc>();
-        serviceProvider.GetRequiredService<DalamudInitializer>();
+        _initializer = serviceProvider.GetRequiredService<DalamudInitializer>();
         serviceProvider.GetRequiredService<TextAdvanceIpc>();
         serviceProvider.GetRequiredService<YesAlreadyIpc>();
 
-        pathDataUpdater.CheckForUpdates();
+        _pathDataUpdater.CheckForUpdates();
     }
 }

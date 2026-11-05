@@ -5,7 +5,7 @@ using JetBrains.Annotations;
 namespace Questionable.Controller;
 
 [RegisterSingleton]
-internal sealed unsafe class InterruptHandler : IDisposable
+internal sealed unsafe class InterruptHandler : IDisposable, ITaskInterruptionSource
 {
     private readonly IClientState _clientState;
     private readonly IFramework _framework;

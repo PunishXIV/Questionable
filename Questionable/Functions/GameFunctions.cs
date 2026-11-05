@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.Types;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -424,12 +423,6 @@ internal sealed unsafe partial class GameFunctions
         agent->Show();
     }
 
-    // ECommons' AddonMaster returns plain entry text, but excel-resolved text keeps decoration
-    // macros (icons, italics, ...) as literal "<icon(69)>"-style tokens. Strip those so addon
-    // text and excel text compare equal regardless of which reader produced them.
-    [GeneratedRegex("<[^>]+>", RegexOptions.Compiled, matchTimeoutMilliseconds: 1000)]
-    private static partial Regex MacroLiteralRegex();
-
     /// <summary>
     ///     Ensures characters like '-' are handled equally in both strings, and that decoration
     ///     macros (icons, italics, ...) and surrounding whitespace do not affect equality.
@@ -442,18 +435,12 @@ internal sealed unsafe partial class GameFunctions
         if (b == null)
             return false;
 
-        var _a = NormalizeGameString(a);
-        var _b = NormalizeGameString(b);
+        var _a = GameStringComparison.Normalize(a);
+        var _b = GameStringComparison.Normalize(b);
         var eq = _a == _b;
         Svc.Log.Verbose($"GameStringEquals: {_a} {(eq ? "==" : "!=")} {_b}");
         return eq;
     }
-
-    private static string NormalizeGameString(string value) =>
-        MacroLiteralRegex().Replace(value, string.Empty)
-            .ReplaceLineEndings()
-            .Replace('\u2013', '-')
-            .Trim();
 
     public bool IsOccupied()
     {

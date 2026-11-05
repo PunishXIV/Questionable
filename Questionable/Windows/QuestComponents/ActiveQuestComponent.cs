@@ -809,7 +809,7 @@ internal sealed partial class ActiveQuestComponent
         {
             if (!questController.HasExternalOperation)
                 movementController.Stop();
-            questController.Stop(_L("UI stop"));
+            questController.StopFromUi(_L("UI stop"));
             gatheringController.Stop(_L("UI stop"));
         }
         if (ImGui.IsItemHovered())

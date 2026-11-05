@@ -2,13 +2,10 @@
 // Initial version reviewed and owned by @eternalwaitt
 
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
-using Questionable.Controller;
 using Questionable.Controller.Steps;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Interactions;
@@ -41,6 +38,10 @@ public sealed class WaitAtEndTests
     [InlineData(true, true, false)]
     public void QuestWaitDamageStartsCombatBeforeReplayingConversationUnlessInFlight(bool turnIn, bool inFlight, bool inCombat)
     {
+        var condition = Substitute.For<ICondition>();
+        condition[ConditionFlag.InCombat].Returns(inCombat);
+        condition[ConditionFlag.InFlight].Returns(inFlight);
+        using var fixture = new TaskRunnerFixture(condition);
         QuestId questId = new(123);
         ITask wait = turnIn
             ? new WaitAtEnd.WaitQuestCompleted(questId)
@@ -50,7 +51,7 @@ public sealed class WaitAtEndTests
             : new WaitAtEnd.WaitQuestAcceptedExecutor(null!, null!);
         Interact.Task interaction = new(100, null,
             turnIn ? EInteractionType.CompleteQuest : EInteractionType.AcceptQuest);
-        TaskQueue queue = new(NullLogger.Instance);
+        TaskQueue queue = fixture.Queue;
         queue.Enqueue(interaction);
         Assert.True(queue.TryDequeue(out _)); // Interaction completed before the quest-state wait.
         queue.Enqueue(wait);
@@ -61,12 +62,7 @@ public sealed class WaitAtEndTests
         queue.Enqueue(pendingDelay);
         queue.Enqueue(next);
 
-        var condition = Substitute.For<ICondition>();
-        condition[ConditionFlag.InCombat].Returns(inCombat);
-        condition[ConditionFlag.InFlight].Returns(inFlight);
-        var controller = CreateController(queue, condition);
-
-        controller.ReceiveDamage();
+        fixture.ReceiveDamage();
 
         if (inFlight)
         {
@@ -99,7 +95,15 @@ public sealed class WaitAtEndTests
     {
         var condition = Substitute.For<ICondition>();
         condition[ConditionFlag.Mounted].Returns(mounted);
-        TaskQueue queue = new(NullLogger.Instance);
+
+        // Production registrations and update path, without native interaction executors.
+        IServiceCollection services = new ServiceCollection();
+        ServiceCollectionExtensions.AddTaskRegistrations(services);
+        services.AddSingleton(condition);
+        using ServiceProvider provider = services.BuildServiceProvider();
+        using var fixture = new TaskRunnerFixture(condition, provider);
+        var controller = fixture.Controller;
+        TaskQueue queue = fixture.Queue;
         Interact.Task interaction = new(100, null,
             turnIn ? EInteractionType.CompleteQuest : EInteractionType.AcceptQuest);
         queue.Enqueue(interaction);
@@ -116,13 +120,7 @@ public sealed class WaitAtEndTests
         WaitAtEnd.NextStep next = new(new QuestId(123), 0);
         queue.Enqueue(next);
 
-        // Production registrations and update path, without native interaction executors.
-        IServiceCollection services = new ServiceCollection();
-        ServiceCollectionExtensions.AddTaskRegistrations(services);
-        services.AddSingleton(condition);
-        using ServiceProvider provider = services.BuildServiceProvider();
-        var controller = CreateController(queue, condition, provider);
-        controller.ReceiveDamage();
+        fixture.ReceiveDamage();
         Assert.Collection(queue.RemainingTasks,
             task => Assert.Equal(TimeSpan.FromMilliseconds(750), Assert.IsType<WaitAtEnd.WaitDelay>(task).Delay),
             task => Assert.IsType<Combat.CheckAfterInterruption>(task),
@@ -130,17 +128,17 @@ public sealed class WaitAtEndTests
             task => Assert.Same(wait, task),
             task => Assert.Same(next, task));
 
-        controller.ReceiveDamage(); // No executor between tasks: do not duplicate replay.
+        fixture.ReceiveDamage(); // No executor between tasks: do not duplicate replay.
         controller.Tick(); // Start the existing recovery delay.
         var delay = Assert.IsType<WaitAtEnd.WaitDelayExecutor>(queue.CurrentTaskExecutor);
         condition[ConditionFlag.InCombat].Returns(entersCombat);
-        controller.ReceiveDamage(); // Recovery itself is not damage-interruptible.
+        fixture.ReceiveDamage(); // Recovery itself is not damage-interruptible.
         typeof(AbstractDelayedTaskExecutor<WaitAtEnd.WaitDelay>)
             .GetField("_continueAt", BindingFlags.Instance | BindingFlags.NonPublic)!
             .SetValue(delay, DateTime.MinValue);
         controller.Tick(); // Complete recovery without a wall-clock sleep.
         controller.Tick(); // Start the late check.
-        controller.ReceiveDamage();
+        fixture.ReceiveDamage();
         controller.Tick(); // Insert combat ahead of the original replay, if now needed.
 
         ITask[] remaining = queue.RemainingTasks.ToArray();
@@ -178,11 +176,12 @@ public sealed class WaitAtEndTests
         var condition = Substitute.For<ICondition>();
         condition[ConditionFlag.InCombat].Returns(true);
         condition[ConditionFlag.Mounted].Returns(true);
-        TaskQueue queue = new(NullLogger.Instance);
+        using var fixture = new TaskRunnerFixture(condition);
+        TaskQueue queue = fixture.Queue;
         WaitAtEnd.WaitDelay task = new() { InterruptOnDamage = true };
         Assert.True(queue.StartTask(new WaitAtEnd.WaitDelayExecutor(), task));
 
-        CreateController(queue, condition).ReceiveDamage();
+        fixture.ReceiveDamage();
 
         Assert.Collection(queue.RemainingTasks,
             item => Assert.IsType<MountStep.UnmountTask>(item),
@@ -198,11 +197,12 @@ public sealed class WaitAtEndTests
     public void StopDuringRecoveryClearsLateCombatCheck(bool checkStarted)
     {
         var condition = Substitute.For<ICondition>();
-        TaskQueue queue = new(NullLogger.Instance);
+        using var fixture = new TaskRunnerFixture(condition);
+        var controller = fixture.Controller;
+        TaskQueue queue = fixture.Queue;
         Assert.True(queue.StartTask(new WaitAtEnd.WaitDelayExecutor(),
             new WaitAtEnd.WaitDelay { InterruptOnDamage = true }));
-        var controller = CreateController(queue, condition);
-        controller.ReceiveDamage();
+        fixture.ReceiveDamage();
         Assert.True(queue.TryDequeue(out ITask? delay));
         if (checkStarted)
         {
@@ -232,8 +232,9 @@ public sealed class WaitAtEndTests
     [InlineData(nameof(ETaskResult.End), true)]
     public void UpdateThatStopsOrReplacesTheQueueDoesNotProcessItsStaleResult(string result, bool replace)
     {
-        TaskQueue queue = new(NullLogger.Instance);
-        var controller = CreateController(queue, Substitute.For<ICondition>());
+        using var fixture = new TaskRunnerFixture();
+        var controller = fixture.Controller;
+        TaskQueue queue = fixture.Queue;
         var executor = Substitute.For<ITaskExecutor>();
         var replacement = Substitute.For<ITaskExecutor>();
         executor.Start(Arg.Any<ITask>()).Returns(true);
@@ -257,38 +258,4 @@ public sealed class WaitAtEndTests
         replacement.DidNotReceive().Update();
     }
 
-    private static InterruptionController CreateController(TaskQueue queue, ICondition condition,
-        IServiceProvider? provider = null)
-    {
-        // Skip native hooks and game-sheet construction; exercise the real damage handler and replay queue.
-        var controller = (InterruptionController)RuntimeHelpers.GetUninitializedObject(typeof(InterruptionController));
-        SetField("_taskQueue", queue);
-        SetField("_condition", condition);
-        SetField("_logger", NullLogger<InterruptionController>.Instance);
-        if (provider != null)
-            SetField("_serviceProvider", provider);
-        return controller;
-
-        void SetField(string name, object value) =>
-            typeof(MiniTaskController<InterruptionController>)
-                .GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(controller, value);
-    }
-
-    private sealed class InterruptionController()
-        : MiniTaskController<InterruptionController>(null!, null!, null!, null!, null!, NullLogger<InterruptionController>.Instance)
-    {
-        public int CompletedTasks { get; private set; }
-
-        protected override void OnTaskComplete(ITask task) => ++CompletedTasks;
-
-        public void ReceiveDamage() => HandleInterruption(this, EventArgs.Empty);
-
-        public void Tick() => UpdateCurrentTask();
-
-        public override void Stop(string label)
-        {
-            Assert.Equal("test stop", label);
-            Assert.True(_taskQueue.Reset());
-        }
-    }
 }

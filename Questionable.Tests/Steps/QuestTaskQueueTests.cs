@@ -1,7 +1,6 @@
 using System.Numerics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
@@ -10,10 +9,8 @@ using Questionable.Controller.Steps;
 using Questionable.Controller.Steps.Movement;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Controller.Utils;
-using Questionable.External;
 using Questionable.Model.Questing;
 using Questionable.Tests.TestData;
-using Questionable.Windows.ConfigComponents;
 using Xunit;
 
 namespace Questionable.Tests.Steps;
@@ -42,6 +39,7 @@ public sealed class QuestTaskQueueTests
         Assert.Equal(stepCount == 1 ? 255 : 1, context.Progress.Step);
         Assert.Equal(QuestController.EAutomationType.Manual, context.Controller.AutomationType);
         Assert.True(context.Queue.AllTasksComplete);
+        Assert.Equal(automatic ? ["notify", "/after-stop"] : Array.Empty<string>(), context.StopEffects);
     }
 
     [Theory]
@@ -57,6 +55,7 @@ public sealed class QuestTaskQueueTests
         Assert.Equal(1, context.Progress.Step);
         Assert.Equal(QuestController.EAutomationType.Manual, context.Controller.AutomationType);
         Assert.True(context.Queue.AllTasksComplete);
+        Assert.Equal(automatic ? ["notify", "/after-stop"] : Array.Empty<string>(), context.StopEffects);
     }
 
     [Theory]
@@ -75,38 +74,23 @@ public sealed class QuestTaskQueueTests
         Assert.Same(originalStepProgress, context.Progress.StepProgress);
         Assert.Equal(QuestController.EAutomationType.Manual, context.Controller.AutomationType);
         Assert.True(context.Queue.AllTasksComplete);
+        Assert.Equal(["notify", "/after-stop"], context.StopEffects);
     }
 
     private sealed class SkipTestContext : IDisposable
     {
-        private static readonly string[] SkipCommandExceptions = ["Skip", "SkipNx"];
-        private readonly AutoDutyFixture _duty = new();
+        private readonly ExternalOperationFixture _operations = new();
         private readonly HighlightObject _highlight;
-        private readonly CombatController _combat;
-        private readonly MovementController _movement;
 
         public QuestController Controller { get; }
         public QuestController.QuestProgress Progress { get; }
         public TaskQueue Queue { get; } = new(NullLogger.Instance);
+        public List<string> StopEffects { get; } = [];
 
         public SkipTestContext(bool automatic, int stepCount)
         {
-            var framework = Substitute.For<IFramework>();
-            framework.IsFrameworkUnloading.Returns(true);
-            var objects = Substitute.For<IObjectTable>();
-            var condition = Substitute.For<ICondition>();
-            var client = Substitute.For<IClientState>();
-            var purchase = Substitute.For<IKnightshopperIpc>();
-            var gather = Substitute.For<IGatherChillIpc>();
-            var fishing = Substitute.For<IFeeshIpc>();
-            var gatheringOperation = new GatheringOperationState();
-            _highlight = new HighlightObject(framework, new(), condition, objects,
+            _highlight = new HighlightObject(_operations.Framework, new(), _operations.Condition, _operations.Objects,
                 Substitute.For<IDataManager>(), NullLogger<HighlightObject>.Instance);
-            _combat = new CombatController([], null!, Substitute.For<ITargetManager>(), objects,
-                condition, client, null!, null!, framework, NullLogger<CombatController>.Instance);
-            _movement = new MovementController(null!, client, null!, null!, condition, null!, objects,
-                null!, Substitute.For<IChatGui>(), framework, new(), purchase, gatheringOperation, gather,
-                new(), fishing, _duty.Ipc, null!, NullLogger<MovementController>.Instance);
             var quest = QuestTestData.CreateQuest(new QuestId(123),
                 QuestTestData.Seq(2, Enumerable.Range(0, stepCount).Select(_ => new QuestStep()).ToArray()));
             Progress = new(quest, sequence: 2);
@@ -119,25 +103,19 @@ public sealed class QuestTaskQueueTests
             Controller = (QuestController)RuntimeHelpers.GetUninitializedObject(typeof(QuestController));
             SetField("_progressLock", Activator.CreateInstance(typeof(System.Threading.Lock))!);
             SetField("_logger", NullLogger<QuestController>.Instance);
+            SetField("_recovery", new QuestRecoveryController(NullLogger<QuestRecoveryController>.Instance));
             SetField("_highlightObject", _highlight);
             SetField("_tracker", tracker);
-            SetField("_objectTable", objects);
-            SetField("_movementController", _movement);
-            SetField("_combatController", _combat);
-            SetField("_bossModIpc", new BossModIpc(Substitute.For<IDalamudPluginInterface>(), new(), null!, null!));
-            SetField("_autoDutyIpc", _duty.Ipc);
-            SetField("_craftingOperation", new CraftingOperationState());
-            SetField("_purchaseOperation", new PurchaseOperationState());
-            SetField("_gatheringOperation", gatheringOperation);
-            SetField("_fishingOperation", new FishingOperationState());
-            SetField("_knightshopperIpc", purchase);
-            SetField("_gatherChillIpc", gather);
-            SetField("_feeshIpc", fishing);
-            SetField("_gatheringController", new GatheringController(gather, gatheringOperation, _ => 0, () => { }));
-            var stopConditions = (StopConditionComponent)RuntimeHelpers.GetUninitializedObject(typeof(StopConditionComponent));
-            typeof(StopConditionComponent).GetField("commandExceptions", BindingFlags.Instance | BindingFlags.NonPublic)!
-                .SetValue(stopConditions, SkipCommandExceptions);
-            SetField("_stopConditionComponent", stopConditions);
+            SetField("_objectTable", _operations.Objects);
+            SetField("_movementController", _operations.Movement);
+            SetField("_combatController", _operations.Combat);
+            SetField("_gatheringController", _operations.GatheringController);
+            SetField("_externalOperations", _operations.Coordinator);
+            var configuration = new Configuration();
+            configuration.Stop.RunCommandAfterStop = true;
+            configuration.Stop.CommandAfterStop = "/after-stop";
+            SetField("_stopPolicy", new QuestStopPolicy(configuration, _ => StopEffects.Add("notify"),
+                StopEffects.Add, NullLogger<QuestStopPolicy>.Instance));
             typeof(MiniTaskController<QuestController>).GetField("_taskQueue", BindingFlags.Instance | BindingFlags.NonPublic)!
                 .SetValue(Controller, Queue);
             Controller.AutomationType = automatic
@@ -150,10 +128,8 @@ public sealed class QuestTaskQueueTests
 
         public void Dispose()
         {
-            _movement.Dispose();
-            _combat.Dispose();
             _highlight.Dispose();
-            _duty.Dispose();
+            _operations.Dispose();
         }
     }
 
@@ -177,25 +153,16 @@ public sealed class QuestTaskQueueTests
         {
             SimulatedQuest = progress
         };
-        var framework = Substitute.For<IFramework>();
-        framework.IsFrameworkUnloading.Returns(true);
-        using var duty = new AutoDutyFixture();
-        using var combat = new CombatController([], null!, Substitute.For<ITargetManager>(),
-            Substitute.For<IObjectTable>(), Substitute.For<ICondition>(), Substitute.For<IClientState>(),
-            null!, null!, framework, NullLogger<CombatController>.Instance);
+        using var operations = new ExternalOperationFixture();
 
         // Skip the constructor's game hooks and UI services; exercise the real step transition.
         var controller = (QuestController)RuntimeHelpers.GetUninitializedObject(typeof(QuestController));
         SetField("_progressLock", Activator.CreateInstance(typeof(System.Threading.Lock))!);
         SetField("_logger", NullLogger<QuestController>.Instance);
+        SetField("_recovery", new QuestRecoveryController(NullLogger<QuestRecoveryController>.Instance));
         SetField("_tracker", tracker);
-        SetField("_craftingOperation", new CraftingOperationState());
-        SetField("_purchaseOperation", new PurchaseOperationState());
-        SetField("_gatheringOperation", new GatheringOperationState());
-        SetField("_fishingOperation", new FishingOperationState());
-        SetField("_autoDutyIpc", duty.Ipc);
-        SetField("_combatController", combat);
-        SetField("_bossModIpc", new BossModIpc(Substitute.For<IDalamudPluginInterface>(), new(), null!, null!));
+        SetField("_externalOperations", operations.Coordinator);
+        SetField("_stopPolicy", new QuestStopPolicy(new Configuration(), _ => { }, _ => { }, NullLogger<QuestStopPolicy>.Instance));
 
         controller.IncreaseStepCount(questId, completedSequence);
 
@@ -230,19 +197,12 @@ public sealed class QuestTaskQueueTests
     public void BlockedReplanCancelsObsoleteQueueAndDoesNotResumeWhenProviderBecomesIdle(
         string entryPoint, string provider, bool unknown)
     {
-        var framework = Substitute.For<IFramework>();
-        framework.IsFrameworkUnloading.Returns(true);
-        var objects = Substitute.For<IObjectTable>();
-        var condition = Substitute.For<ICondition>();
-        var client = Substitute.For<IClientState>();
-        using var duty = new AutoDutyFixture();
-        using var highlight = new HighlightObject(framework, new(), condition, objects,
+        using var operations = new ExternalOperationFixture();
+        using var highlight = new HighlightObject(operations.Framework, new(), operations.Condition, operations.Objects,
             Substitute.For<IDataManager>(), NullLogger<HighlightObject>.Instance);
-        using var combat = new CombatController([], null!, Substitute.For<ITargetManager>(), objects,
-            condition, client, null!, null!, framework, NullLogger<CombatController>.Instance);
-        var purchase = Substitute.For<IKnightshopperIpc>();
-        var gather = Substitute.For<IGatherChillIpc>();
-        var fishing = Substitute.For<IFeeshIpc>();
+        var purchase = operations.Knightshopper;
+        var gather = operations.Gather;
+        var fishing = operations.Feesh;
         List<string> cleanupOrder = [];
         purchase.When(x => x.CancelOwned()).Do(_ => cleanupOrder.Add("purchase"));
         fishing.When(x => x.CancelOwned()).Do(_ => cleanupOrder.Add("fishing"));
@@ -252,29 +212,18 @@ public sealed class QuestTaskQueueTests
         bool? busy = unknown ? null : true;
         purchase.GetBusy().Returns(provider == "purchase" ? busy : false);
         gather.GetBusy().Returns(provider == "gather" ? busy : false);
-        var gatheringOperation = new GatheringOperationState();
-        using var movement = new MovementController(null!, client, null!, null!, condition, null!, objects,
-            null!, Substitute.For<IChatGui>(), framework, new(), purchase, gatheringOperation, gather,
-            new(), fishing, duty.Ipc, null!, NullLogger<MovementController>.Instance);
-
         // Skip game-sheet and UI construction; exercise the real replan, Stop and cleanup paths.
         var controller = (QuestController)RuntimeHelpers.GetUninitializedObject(typeof(QuestController));
         SetField("_logger", NullLogger<QuestController>.Instance);
+        SetField("_recovery", new QuestRecoveryController(NullLogger<QuestRecoveryController>.Instance));
         SetField("_highlightObject", highlight);
         SetField("_tracker", new QuestProgressTracker(null!, null!, highlight, NullLogger<QuestProgressTracker>.Instance));
-        SetField("_objectTable", objects);
-        SetField("_movementController", movement);
-        SetField("_combatController", combat);
-        SetField("_bossModIpc", new BossModIpc(Substitute.For<IDalamudPluginInterface>(), new(), null!, null!));
-        SetField("_autoDutyIpc", duty.Ipc);
-        SetField("_craftingOperation", new CraftingOperationState());
-        SetField("_purchaseOperation", new PurchaseOperationState());
-        SetField("_gatheringOperation", gatheringOperation);
-        SetField("_fishingOperation", new FishingOperationState());
-        SetField("_knightshopperIpc", purchase);
-        SetField("_gatherChillIpc", gather);
-        SetField("_feeshIpc", fishing);
-        SetField("_gatheringController", new GatheringController(gather, gatheringOperation, _ => 0, () => { }));
+        SetField("_objectTable", operations.Objects);
+        SetField("_movementController", operations.Movement);
+        SetField("_combatController", operations.Combat);
+        SetField("_externalOperations", operations.Coordinator);
+        SetField("_stopPolicy", new QuestStopPolicy(new Configuration(), _ => { }, _ => { }, NullLogger<QuestStopPolicy>.Instance));
+        SetField("_gatheringController", operations.GatheringController);
         var queue = new TaskQueue(NullLogger.Instance);
         typeof(MiniTaskController<QuestController>).GetField("_taskQueue", BindingFlags.Instance | BindingFlags.NonPublic)!
             .SetValue(controller, queue);
@@ -306,7 +255,7 @@ public sealed class QuestTaskQueueTests
         executor.Received(1).StopNow();
         Assert.Equal(["executor", "purchase", "fishing", "gathering", "manual"], cleanupOrder);
         Assert.False(controller.HasExternalOperation);
-        duty.Stop.DidNotReceive().InvokeAction();
+        operations.Duty.Stop.DidNotReceive().InvokeAction();
 
         purchase.GetBusy().Returns(false);
         gather.GetBusy().Returns(false);

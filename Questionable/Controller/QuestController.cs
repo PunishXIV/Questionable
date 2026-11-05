@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Diagnostics;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Keys;
 using Dalamud.Game.ClientState.Objects.SubKinds;
@@ -21,7 +20,7 @@ using Quest = Questionable.Domain.Quest;
 namespace Questionable.Controller;
 
 [RegisterSingleton]
-internal sealed class QuestController : MiniTaskController<QuestController>
+internal sealed class QuestController : MiniTaskController<QuestController>, IExternalOperationHost, IQuestRecoveryHost
 {
     public delegate void AutomationTypeChangedEventHandler(object sender, EAutomationType e);
 
@@ -56,12 +55,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     /// <summary>How long to wait at sequence 0/step 0 before assuming the quest-accept addon never fired and resetting.</summary>
     private const int QuestAcceptStalledTimeoutSeconds = 15;
 
-    /// <summary>Consecutive deaths on the same quest step before death handling gives up and stops.</summary>
-    private const int MaxConsecutiveDeaths = 5;
-
-    /// <summary>Seconds to wait after returning from a death before retrying the current step.</summary>
-    private const int DeathRecoveryGraceSeconds = 3;
-
     private HashSet<ElementId>? _questsAwaitingAcceptance;
     private QuestProgress? _nextQuestAwaitingAcceptance;
 
@@ -74,23 +67,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private readonly GameFunctions _gameFunctions;
     private readonly IGameGuiAdapter _gameGui;
     private readonly GatheringController _gatheringController;
-    private readonly AutoDutyIpc _autoDutyIpc;
-    private readonly BossModIpc _bossModIpc;
+    private readonly ExternalOperationCoordinator _externalOperations;
+    private readonly QuestRecoveryController _recovery;
     private readonly SinglePlayerDuty.RetryCounter _soloDutyRetries;
-    private readonly Stopwatch _autoDutyStatusPoll = new();
-    private readonly Stopwatch _combatStatusPoll = new();
-    private readonly IArtisanIpc _artisanIpc;
-    private readonly CraftingOperationState _craftingOperation;
-    private readonly Stopwatch _craftingStatusPoll = new();
-    private readonly IKnightshopperIpc _knightshopperIpc;
-    private readonly PurchaseOperationState _purchaseOperation;
-    private readonly Stopwatch _purchaseStatusPoll = new();
-    private readonly IGatherChillIpc _gatherChillIpc;
-    private readonly GatheringOperationState _gatheringOperation;
-    private readonly Stopwatch _gatheringStatusPoll = new();
-    private readonly IFeeshIpc _feeshIpc;
-    private readonly FishingOperationState _fishingOperation;
-    private readonly Stopwatch _fishingStatusPoll = new();
     private readonly HighlightObject _highlightObject;
     private readonly IKeyState _keyState;
     private readonly ILogger<QuestController> _logger;
@@ -104,25 +83,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private readonly QuestPriorityManager _priorityManager;
     private readonly QuestProgressTracker _tracker;
     private readonly SinglePlayerDutyConfigComponent _singlePlayerDutyConfigComponent;
-    private readonly StopConditionComponent _stopConditionComponent;
+    private readonly QuestStopPolicy _stopPolicy;
     private readonly TaskCreator _taskCreator;
     private readonly IToastGui _toastGui;
-    private readonly ICommandManager _commandManager;
     private readonly NotificationMasterIpc _notificationMasterIpc;
+    private bool _disposed;
     private EAutomationType _automationType;
-
-    /// <summary>True while recovering from the player's death (waiting for the return prompt / respawn).</summary>
-    private bool _handlingDeath;
-
-    /// <summary>When the player regained consciousness after a death; used to let the zone settle.</summary>
-    private DateTime _respawnedAt = DateTime.MinValue;
-
-    /// <summary>Throttle for re-confirming the return-to-respawn prompt while the player is dead.</summary>
-    private DateTime _lastReturnConfirmAt = DateTime.MinValue;
-
-    /// <summary>Quest step a death streak is counted against; the streak resets when the step changes.</summary>
-    private (ElementId QuestId, byte Sequence, int Step)? _deathStreakKey;
-    private int _deathStreakCount;
 
     private DateTime _lastTaskUpdate = DateTime.Now;
 
@@ -142,17 +108,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         MovementController movementController,
         CombatController combatController,
         GatheringController gatheringController,
-        AutoDutyIpc autoDutyIpc,
-        BossModIpc bossModIpc,
+        ExternalOperationCoordinator externalOperations,
+        QuestRecoveryController recovery,
         SinglePlayerDuty.RetryCounter soloDutyRetries,
-        IArtisanIpc artisanIpc,
-        CraftingOperationState craftingOperation,
-        IKnightshopperIpc knightshopperIpc,
-        PurchaseOperationState purchaseOperation,
-        IGatherChillIpc gatherChillIpc,
-        GatheringOperationState gatheringOperation,
-        IFeeshIpc feeshIpc,
-        FishingOperationState fishingOperation,
         ILogger<QuestController> logger,
         HighlightObject highlightObject,
         QuestRegistry questRegistry,
@@ -167,13 +125,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         TaskCreator taskCreator,
         IServiceProvider serviceProvider,
         InterruptHandler interruptHandler,
-        IDataManager dataManager,
+        TaskToastClassifier toastClassifier,
+        NotificationMasterIpc notificationMasterIpc,
         IGameGuiAdapter gameGui,
-        ICommandManager commandManager,
         SinglePlayerDutyConfigComponent singlePlayerDutyConfigComponent,
-        StopConditionComponent stopConditionComponent,
+        QuestStopPolicy stopPolicy,
         AlliedSocietyQuestFunctions alliedSocietyQuestFunctions)
-        : base(chatGui, condition, serviceProvider, interruptHandler, dataManager, logger)
+        : base(chatGui, condition, serviceProvider, interruptHandler, toastClassifier,
+            notificationMasterIpc.NotifyOnFailure, logger)
     {
         _clientState = clientState;
         _objectTable = objectTable;
@@ -183,17 +142,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _movementController = movementController;
         _combatController = combatController;
         _gatheringController = gatheringController;
-        _autoDutyIpc = autoDutyIpc;
-        _bossModIpc = bossModIpc;
+        _externalOperations = externalOperations;
+        _recovery = recovery;
         _soloDutyRetries = soloDutyRetries;
-        _artisanIpc = artisanIpc;
-        _craftingOperation = craftingOperation;
-        _knightshopperIpc = knightshopperIpc;
-        _purchaseOperation = purchaseOperation;
-        _gatherChillIpc = gatherChillIpc;
-        _gatheringOperation = gatheringOperation;
-        _feeshIpc = feeshIpc;
-        _fishingOperation = fishingOperation;
         _questRegistry = questRegistry;
         _priorityManager = priorityManager;
         _tracker = tracker;
@@ -205,15 +156,29 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _configuration = configuration;
         _taskCreator = taskCreator;
         _singlePlayerDutyConfigComponent = singlePlayerDutyConfigComponent;
-        _stopConditionComponent = stopConditionComponent;
+        _stopPolicy = stopPolicy;
         _alliedSocietyQuestFunctions = alliedSocietyQuestFunctions;
         _logger = logger;
         _highlightObject = highlightObject;
-        _commandManager = commandManager;
-        _notificationMasterIpc = serviceProvider.GetRequiredService<NotificationMasterIpc>();
+        _notificationMasterIpc = notificationMasterIpc;
 
-        _condition.ConditionChange += OnConditionChange;
-        _toastGui.ErrorToast += OnErrorToast;
+        try
+        {
+            _condition.ConditionChange += OnConditionChange;
+            _toastGui.ErrorToast += OnErrorToast;
+        }
+        catch
+        {
+            try
+            {
+                Dispose();
+            }
+            catch (Exception cleanupError)
+            {
+                _logger.LogError(cleanupError, "Unable to roll back quest controller subscriptions");
+            }
+            throw;
+        }
     }
 
     public EAutomationType AutomationType
@@ -285,12 +250,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     public Func<bool>? IsQuestWindowOpenFunction { private get; set; } = () => true;
 
     public bool IsRunning => !_taskQueue.AllTasksComplete;
-    public bool HasExternalOperation => _craftingOperation.HasOperation || _purchaseOperation.HasOperation ||
-        _gatheringOperation.HasOperation || _fishingOperation.HasOperation || _autoDutyIpc.HasOperation ||
-        _combatController.HasPendingCleanup || _bossModIpc.HasPendingCleanup;
-    private string? ExternalOperationBlockReason => _craftingOperation.BlockReason ?? _purchaseOperation.BlockReason ??
-        _gatheringOperation.BlockReason ?? _fishingOperation.BlockReason ?? _autoDutyIpc.BlockReason ??
-        _combatController.BlockReason ?? (_bossModIpc.HasPendingCleanup ? _bossModIpc.CleanupReason : null);
+    public bool HasExternalOperation => _externalOperations.HasExternalOperation;
+    private string? ExternalOperationBlockReason => _externalOperations.BlockReason;
+    ITaskExecutor? IExternalOperationHost.CurrentExecutor => _taskQueue.CurrentTaskExecutor;
+    bool IExternalOperationHost.IsActive => IsRunning || AutomationType != EAutomationType.Manual;
+    string? IExternalOperationHost.Status { set => DebugState = value; }
     public TaskQueue TaskQueue => _taskQueue;
 
     public string? CurrentTaskState
@@ -304,13 +268,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         }
     }
 
-    public bool IsQuestingStopped
-    {
-        get
-        {
-            return AutomationType == EAutomationType.Manual && !IsRunning && !IsQuestWindowOpen;
-        }
-    }
+    public bool IsQuestingStopped => _recovery.IsQuestingStopped(this);
 
     public event AutomationTypeChangedEventHandler? AutomationTypeChanged;
 
@@ -346,18 +304,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _soloDutyRetries.Observe(_clientState.IsLoggedIn ? ProfileController.CurrentContentId : null,
             static questId => QuestFunctions.GetQuestProgressInfo(questId)?.Sequence);
 
-        // Reconcile retained work even while stopped, occupied or logged out.
-        bool craftingBlocked = UpdateCraftingOperation();
-        bool purchaseBlocked = UpdateOwnedOperation(_purchaseOperation, _taskQueue.CurrentTaskExecutor is Purchase.DoBuy,
-            _purchaseStatusPoll, _knightshopperIpc.PollOperation, _knightshopperIpc.CancelOwned);
-        bool gatheringBlocked = UpdateOwnedOperation(_gatheringOperation, _taskQueue.CurrentTaskExecutor is Gather.StartGathering,
-            _gatheringStatusPoll, _gatherChillIpc.PollOperation, _gatherChillIpc.CancelOwned);
-        bool fishingBlocked = UpdateOwnedOperation(_fishingOperation, _taskQueue.CurrentTaskExecutor is Fish.DoFish,
-            _fishingStatusPoll, _feeshIpc.PollOperation, _feeshIpc.CancelOwned);
-        bool dutyBlocked = UpdateOwnedOperation(_autoDutyIpc.Operation, _taskQueue.CurrentTaskExecutor is Duty.StartAutoDutyExecutor,
-            _autoDutyStatusPoll, _autoDutyIpc.PollOperation, _autoDutyIpc.CancelOwned);
-        bool combatBlocked = UpdateCombatRecovery();
-        if (craftingBlocked || purchaseBlocked || gatheringBlocked || fishingBlocked || dutyBlocked || combatBlocked)
+        if (_externalOperations.Update(this))
             return;
 
         unsafe
@@ -379,37 +326,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
         UpdateCurrentQuest();
 
-        if (!_clientState.IsLoggedIn)
-        {
-            StopAllDueToConditionFailed("Logged out");
+        if (UpdateStopAndDeath())
             return;
-        }
-        if (_condition[ConditionFlag.Unconscious])
-        {
-            if (_autoDutyIpc.HasOperation && _taskQueue.CurrentTaskExecutor is Duty.StartAutoDutyExecutor)
-            {
-                // ignoring death in a dungeon if it is being run by AD
-            }
-            else if (_bossModIpc.HasOwnedSoloDuty)
-            {
-                // ignoring death in a solo duty so it can be retried
-            }
-            else if (!_taskQueue.AllTasksComplete || _handlingDeath)
-            {
-                BeginDeathHandling();
-                return;
-            }
-        }
-        else if (_handlingDeath)
-        {
-            FinishDeathHandling();
-            return;
-        }
-        else if (_configuration.General.UseEscToCancelQuesting && _keyState[VirtualKey.ESCAPE])
-        {
-            if (!_taskQueue.AllTasksComplete)
-                StopAllDueToConditionFailed("ESC pressed");
-        }
 
         // check level stop condition
         // stops immediately instead of quest stop after completion of quest
@@ -456,6 +374,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>
                 throw;
         }
     }
+
+    internal bool UpdateStopAndDeath() => _recovery.Update(this);
 
     private void UpdateCurrentQuest()
     {
@@ -813,34 +733,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
     private bool ClearTasksInternal()
     {
         _questsAwaitingAcceptance?.Clear();
-        // Provider work is cleaned up even when its executor has already detached.
-        _craftingOperation.AbandonCurrent();
-        bool success = _taskQueue.Reset();
-        success &= TryCleanup(_knightshopperIpc.CancelOwned, "Knightshopper purchase");
-        success &= TryCleanup(_feeshIpc.CancelOwned, "Feesh fishing");
-        if (_movementController.Destination != null || _purchaseOperation.HasOperation ||
-            _gatheringOperation.HasOperation || _fishingOperation.HasOperation || _autoDutyIpc.HasOperation)
-            success &= TryCleanup(_movementController.Stop, "movement");
-        success &= TryCleanup(() => _combatController.Stop("ClearTasksInternal"), "combat");
-        success &= TryCleanup(() => _gatheringController.Stop("ClearTasksInternal"), "gathering");
-        success &= TryCleanup(_autoDutyIpc.Stop, "AutoDuty");
-        success &= TryCleanup(_bossModIpc.DisableSoloDutyPreset, "solo duty");
-        // A provider can still be cleaning up without having failed; don't queue replacements yet.
-        return success && !HasExternalOperation;
-    }
-
-    private bool TryCleanup(Action cleanup, string operation)
-    {
-        try
-        {
-            cleanup();
-            return true;
-        }
-        catch (Exception e)
-        {
-            _logger.LogError(e, "Unable to stop {Operation}", operation);
-            return false;
-        }
+        return _externalOperations.CancelAll(_taskQueue.Reset);
     }
 
     // Plugin unload: no stop commands or notifications, as unloading isn't a quest stopping point.
@@ -905,14 +798,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public override void Stop(string label) => Stop(label, clearQuest: true);
 
-    private void Stop(string label, bool clearQuest)
+    public void StopFromUi(string label) => Stop(label, clearQuest: true, policyReason: QuestStopPolicy.UiStopReason);
+
+    private void Stop(string label, bool clearQuest, string? policyReason = null)
     {
         StopAfterCurrentQuest = false;
         StopAfterAcceptingNextQuest = false;
         StopBeforeTeleport = false;
-        _handlingDeath = false;
-        _deathStreakKey = null;
-        _deathStreakCount = 0;
+        _recovery.Reset();
         _highlightObject.SetHighlight([]);
         using IDisposable? scope = _logger.BeginScope($"Stop/{label}");
         bool wasRunning = IsRunning || AutomationType != EAutomationType.Manual;
@@ -932,12 +825,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         }
         _lastTaskUpdate = DateTime.Now;
 
-        if (wasAutomatic && !_stopConditionComponent.commandExceptions.Any(e => label.Equals(e, StringComparison.OrdinalIgnoreCase)))
-        {
-            TryCleanup(() => _notificationMasterIpc.NotifyOnFailure(_L("Automatic questing has stopped.")), "stop notification");
-            if (_configuration.Stop is { RunCommandAfterStop: true } stop && stop.CommandAfterStop.StartsWith('/'))
-                TryCleanup(() => _commandManager.ProcessCommand(stop.CommandAfterStop), "stop command");
-        }
+        _stopPolicy.Apply(policyReason ?? label, wasAutomatic);
         unsafe
         {
             if (_objectTable[0] is IPlayerCharacter player)
@@ -995,104 +883,34 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         _lastTaskUpdate = DateTime.Now;
     }
 
-    /// <summary>
-    ///     Recovers from the player dying during questing: on the first frame it stops the current
-    ///     tasks, then every frame it confirms the return-to-respawn prompt until the player respawns.
-    /// </summary>
-    private void BeginDeathHandling()
+    bool IQuestRecoveryHost.IsManual => AutomationType == EAutomationType.Manual;
+    bool IQuestRecoveryHost.HasQueuedTasks => IsRunning;
+    bool IQuestRecoveryHost.IsLoggedIn => _clientState.IsLoggedIn;
+    bool IQuestRecoveryHost.EscapeRequested =>
+        _configuration.General.UseEscToCancelQuesting && _keyState[VirtualKey.ESCAPE];
+    bool IQuestRecoveryHost.IsUnconscious => _condition[ConditionFlag.Unconscious];
+    bool IQuestRecoveryHost.OwnsDuty => _externalOperations.OwnsDuty(_taskQueue.CurrentTaskExecutor);
+    bool IQuestRecoveryHost.HasOwnedSoloDuty => _externalOperations.HasOwnedSoloDuty;
+    bool IQuestRecoveryHost.IsZoning => _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51];
+    bool IQuestRecoveryHost.HasPlayer => _objectTable[0] != null;
+    (ElementId QuestId, byte Sequence, int Step)? IQuestRecoveryHost.CurrentStep => CurrentQuest is { } current
+        ? (current.Quest.Id, current.Sequence, current.Step)
+        : null;
+    bool IQuestRecoveryHost.ClearTasks() => ClearTasksInternal();
+    void IQuestRecoveryHost.StopMovement() => _movementController.Stop();
+    void IQuestRecoveryHost.StopAll(string reason) => StopAllDueToConditionFailed(reason);
+    void IQuestRecoveryHost.RetryCurrentStep() => ExecuteNextStep();
+    void IQuestRecoveryHost.ReportDeathLimit(int deaths) =>
+        _chatGui.PrintError($"You died {deaths} times, manual intervention needed.", CommandHandler.MessageTag, CommandHandler.TagColor);
+
+    unsafe bool IQuestRecoveryHost.TryConfirmReturnPrompt()
     {
-        if (HasExternalOperation)
-        {
-            Stop("Died during external operation");
-            return;
-        }
-
-        if (!_handlingDeath)
-        {
-            _handlingDeath = true;
-            _respawnedAt = DateTime.MinValue;
-            _lastReturnConfirmAt = DateTime.MinValue;
-            _logger.LogWarning("Player died while questing — waiting to return and retry the current step");
-            if (!ClearTasksInternal())
-            {
-                Stop("Task cleanup failed");
-                return;
-            }
-            _movementController.Stop();
-        }
-
-        ConfirmReturnPrompt();
-    }
-
-    /// <summary>Confirms the "Return?" SelectYesno that appears after death, throttled while it is open.</summary>
-    private unsafe void ConfirmReturnPrompt()
-    {
-        if (DateTime.Now - _lastReturnConfirmAt < TimeSpan.FromMilliseconds(500))
-            return;
-
         if (!_gameGui.TryGetAddonByName("SelectYesno", out AtkUnitBase* addon) || !addon->IsVisible)
-            return;
+            return false;
 
-        _lastReturnConfirmAt = DateTime.Now;
         _logger.LogInformation("Confirming return-to-respawn prompt");
         new AddonMaster.SelectYesno((nint)addon).Yes();
-    }
-
-    /// <summary>
-    ///     Continues recovering after the player regained consciousness: waits for the zone to settle,
-    ///     then retries the current step — or stops with an error after too many deaths on it.
-    /// </summary>
-    private void FinishDeathHandling()
-    {
-        if (!_clientState.IsLoggedIn ||
-            _condition[ConditionFlag.BetweenAreas] ||
-            _condition[ConditionFlag.BetweenAreas51] ||
-            _objectTable[0] == null)
-        {
-            _respawnedAt = DateTime.MinValue;
-            return;
-        }
-
-        if (_respawnedAt == DateTime.MinValue)
-        {
-            _respawnedAt = DateTime.Now;
-            return;
-        }
-
-        if (DateTime.Now - _respawnedAt < TimeSpan.FromSeconds(DeathRecoveryGraceSeconds))
-            return;
-
-        _handlingDeath = false;
-
-        int deaths = RecordDeath();
-        if (deaths >= MaxConsecutiveDeaths)
-        {
-            _logger.LogError("Player died {Deaths} times on the same step — stopping", deaths);
-            _chatGui.PrintError($"You died {MaxConsecutiveDeaths} times, manual intervention needed.",
-                CommandHandler.MessageTag, CommandHandler.TagColor);
-            StopAllDueToConditionFailed("Died too many times");
-            return;
-        }
-
-        _logger.LogInformation("Retrying current step after death ({Deaths}/{Max})", deaths, MaxConsecutiveDeaths);
-        ExecuteNextStep();
-    }
-
-    /// <summary>
-    ///     Increments the death counter for the current quest step, resetting it when the step changes.
-    /// </summary>
-    private int RecordDeath()
-    {
-        (ElementId QuestId, byte Sequence, int Step)? key = CurrentQuest is { } current
-            ? (current.Quest.Id, current.Sequence, current.Step)
-            : null;
-        if (_deathStreakKey != key)
-        {
-            _deathStreakKey = key;
-            _deathStreakCount = 0;
-        }
-
-        return ++_deathStreakCount;
+        return true;
     }
 
     public void SimulateQuest(IQuestInfo? questInfo, byte sequence, int step)
@@ -1166,36 +984,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     private bool CanPrepareQuestTasks()
     {
-        if (!CanStartNextTask())
-            return false;
-
-        if (_autoDutyIpc.IsAvailable() && _autoDutyIpc.GetStopped() != true)
-        {
-            DebugState = _L("AutoDuty is busy or its status is unavailable. Finish its current work before starting questing.");
-            return false;
-        }
-
-        // Manual Knightshopper work has no owner here, so block on busy or unreadable status.
-        if (_knightshopperIpc.IsReady() && _knightshopperIpc.GetBusy() != false)
-        {
-            DebugState = _L("Knightshopper is busy or its status is unavailable. Finish its current work before starting questing.");
-            return false;
-        }
-
-        if (_gatherChillIpc.IsAvailable() && _gatherChillIpc.GetBusy() != false)
-        {
-            DebugState = _L("Gather n Chill is busy or its status is unavailable. Finish its current work before starting questing.");
-            return false;
-        }
-
-        // WahTools drives the character while busy.
-        if (_feeshIpc.IsAvailable() && _feeshIpc.GetBusy() != false)
-        {
-            DebugState = _L("WahTools is busy or its status is unavailable. Finish its current work before starting questing.");
-            return false;
-        }
-
-        return true;
+        bool ready = _externalOperations.CanPrepareQuestTasks(out string? reason);
+        if (reason != null)
+            DebugState = reason;
+        return ready;
     }
 
     public bool CanStartQuest(string label)
@@ -1210,209 +1002,24 @@ internal sealed class QuestController : MiniTaskController<QuestController>
         return false;
     }
 
-    private bool UpdateCraftingOperation()
-    {
-        if (!_craftingOperation.HasOperation)
-        {
-            _craftingStatusPoll.Reset();
-            return false;
-        }
-
-        if (!_craftingStatusPoll.IsRunning || _craftingStatusPoll.Elapsed >= TimeSpan.FromMilliseconds(250))
-            ObserveCraftingStatus();
-
-        if (_taskQueue.CurrentTaskExecutor is not Craft.DoCraft)
-            _craftingOperation.AbandonCurrent();
-
-        if (!_craftingOperation.RequiresReconciliation)
-            return false;
-
-        if (IsRunning || AutomationType != EAutomationType.Manual)
-            Stop("Artisan requires reconciliation");
-
-        DebugState = _craftingOperation.BlockReason;
-        return true;
-    }
-
-    private void ObserveCraftingStatus()
-    {
-        _craftingStatusPoll.Restart();
-        try
-        {
-            _craftingOperation.ObserveStatus(_artisanIpc.GetStatus());
-        }
-        catch (Exception e)
-        {
-            _craftingOperation.ObserveStatus(ArtisanStatus.Unavailable);
-            _logger.LogWarning(e, "Unable to observe retained Artisan operation");
-        }
-    }
-
-    public bool TryConfirmArtisanIdle()
-    {
-        // Confirming only releases the barrier; it never resumes questing.
-        if (!_craftingOperation.RequiresReconciliation || IsRunning || AutomationType != EAutomationType.Manual)
-            return false;
-
-        ObserveCraftingStatus();
-        if (!_craftingOperation.TryConfirmIdle())
-            return false;
-
-        DebugState = ExternalOperationBlockReason;
-        return true;
-    }
-
-    private bool UpdateOwnedOperation(OwnedOperationState operation, bool hasMatchingExecutor,
-        Stopwatch statusPoll, Action poll, Action cancel)
-    {
-        if (!operation.HasOperation)
-        {
-            statusPoll.Reset();
-            return false;
-        }
-
-        // Stop scheduling before polling can release an abandoned operation at terminal status.
-        if ((operation.IsAbandoned || operation.RequiresReconciliation || !hasMatchingExecutor) &&
-            (IsRunning || AutomationType != EAutomationType.Manual))
-            Stop("External operation no longer active");
-
-        if (!statusPoll.IsRunning || statusPoll.Elapsed >= TimeSpan.FromMilliseconds(250))
-        {
-            statusPoll.Restart();
-            if (!hasMatchingExecutor)
-                TryCleanup(cancel, "detached external operation");
-            if (!TryCleanup(poll, "external operation status"))
-            {
-                Stop("External operation status unavailable");
-                DebugState = operation.BlockReason ?? _L("Unable to observe the external operation.");
-                return true;
-            }
-        }
-
-        if (!operation.HasOperation)
-        {
-            DebugState = ExternalOperationBlockReason;
-            return false;
-        }
-
-        if (!operation.RequiresReconciliation && !operation.IsAbandoned && hasMatchingExecutor)
-            return false;
-
-        if (IsRunning || AutomationType != EAutomationType.Manual)
-            Stop("External operation requires reconciliation");
-
-        DebugState = operation.BlockReason;
-        return true;
-    }
-
-    public bool TryConfirmKnightshopperIdle() =>
-        TryConfirmOwnedOperationIdle(_purchaseOperation, _knightshopperIpc.PollOperation, _knightshopperIpc.ObserveIdle);
-
-    public bool TryConfirmGatherChillIdle() =>
-        TryConfirmOwnedOperationIdle(_gatheringOperation, _gatherChillIpc.PollOperation, _gatherChillIpc.ObserveIdle);
-
-    public bool TryConfirmFeeshIdle() =>
-        TryConfirmOwnedOperationIdle(_fishingOperation, _feeshIpc.PollOperation, _feeshIpc.ObserveIdle);
-
-    public bool TryConfirmAutoDutyIdle() =>
-        TryConfirmOwnedOperationIdle(_autoDutyIpc.Operation, _autoDutyIpc.PollOperation, _autoDutyIpc.ObserveIdle);
-
-    public bool TryConfirmBossModStopped()
-    {
-        if (IsRunning || AutomationType != EAutomationType.Manual || !_bossModIpc.TryConfirmStopped())
-            return false;
-        _combatController.TryRetryCleanup();
-        DebugState = ExternalOperationBlockReason;
-        return true;
-    }
-
-    private bool UpdateCombatRecovery()
-    {
-        if (_combatController.HasPendingCleanup || _bossModIpc.HasPendingCleanup)
-        {
-            // Clear scheduling before a cleanup retry can release the retained owner.
-            if (IsRunning || AutomationType != EAutomationType.Manual)
-                Stop("Combat cleanup is unresolved");
-        }
-
-        if (!_combatStatusPoll.IsRunning || _combatStatusPoll.Elapsed >= TimeSpan.FromMilliseconds(250))
-        {
-            _combatStatusPoll.Restart();
-            _combatController.TryRetryCleanup();
-            try
-            {
-                // Solo duties keep local movement/interaction tasks between BossMod activations.
-                _bossModIpc.PollSoloDuty();
-            }
-            catch (Exception e)
-            {
-                if (IsRunning || AutomationType != EAutomationType.Manual)
-                {
-                    _logger.LogWarning(e, "Solo-duty control was lost");
-                    Stop("Solo-duty control was lost");
-                }
-            }
-        }
-
-        if (!_combatController.HasPendingCleanup && !_bossModIpc.HasPendingCleanup)
-            return false;
-        DebugState = ExternalOperationBlockReason;
-        return true;
-    }
-
-    private bool TryConfirmOwnedOperationIdle(OwnedOperationState operation, Action poll, Action observeIdle)
-    {
-        if (!operation.RequiresReconciliation || IsRunning || AutomationType != EAutomationType.Manual)
-            return false;
-
-        // Refresh both, so a newly running operation isn't confirmed from a stale status.
-        if (!TryCleanup(poll, "external operation confirmation status") ||
-            !TryCleanup(observeIdle, "external operation idle confirmation"))
-            return false;
-
-        // Polling may already have released an abandoned operation on a terminal result.
-        if (operation.HasOperation && !operation.TryConfirmIdle())
-            return false;
-
-        DebugState = ExternalOperationBlockReason;
-        return true;
-    }
+    public bool TryConfirmArtisanIdle() => _externalOperations.TryConfirmArtisanIdle(this);
+    public bool TryConfirmKnightshopperIdle() => _externalOperations.TryConfirmKnightshopperIdle(this);
+    public bool TryConfirmGatherChillIdle() => _externalOperations.TryConfirmGatherChillIdle(this);
+    public bool TryConfirmFeeshIdle() => _externalOperations.TryConfirmFeeshIdle(this);
+    public bool TryConfirmAutoDutyIdle() => _externalOperations.TryConfirmAutoDutyIdle(this);
+    public bool TryConfirmBossModStopped() => _externalOperations.TryConfirmBossModStopped(this);
 
     protected override void UpdateCurrentTask()
     {
-        if (_craftingOperation.HasOperation &&
-            (_craftingOperation.RequiresReconciliation || _taskQueue.CurrentTaskExecutor is not Craft.DoCraft))
-            return;
-
-        if (_purchaseOperation.HasOperation &&
-            (_purchaseOperation.RequiresReconciliation || _purchaseOperation.IsAbandoned ||
-             _taskQueue.CurrentTaskExecutor is not Purchase.DoBuy))
-            return;
-
-        if (_gatheringOperation.HasOperation &&
-            (_gatheringOperation.RequiresReconciliation || _gatheringOperation.IsAbandoned ||
-             _taskQueue.CurrentTaskExecutor is not Gather.StartGathering))
-            return;
-
-        if (_fishingOperation.HasOperation &&
-            (_fishingOperation.RequiresReconciliation || _fishingOperation.IsAbandoned ||
-             _taskQueue.CurrentTaskExecutor is not Fish.DoFish))
-            return;
-
-        if (_autoDutyIpc.HasOperation &&
-            (_autoDutyIpc.RequiresReconciliation || _autoDutyIpc.Operation.IsAbandoned ||
-             _taskQueue.CurrentTaskExecutor is not Duty.StartAutoDutyExecutor))
-            return;
-
-        if (_combatController.HasPendingCleanup || _bossModIpc.HasPendingCleanup)
+        if (!_externalOperations.CanUpdateTask(_taskQueue.CurrentTaskExecutor))
             return;
 
         // The owning executor must still verify external work that occupies the player.
-        bool updatingCraft = _taskQueue.CurrentTaskExecutor is Craft.DoCraft && _craftingOperation.HasOperation;
-        bool updatingPurchase = _taskQueue.CurrentTaskExecutor is Purchase.DoBuy && _purchaseOperation.HasOperation;
-        bool updatingGather = _taskQueue.CurrentTaskExecutor is Gather.StartGathering && _gatheringOperation.HasOperation;
-        bool updatingFish = _taskQueue.CurrentTaskExecutor is Fish.DoFish && _fishingOperation.HasOperation;
-        bool updatingDuty = _taskQueue.CurrentTaskExecutor is Duty.StartAutoDutyExecutor && _autoDutyIpc.HasOperation;
+        bool updatingCraft = _externalOperations.OwnsCraft(_taskQueue.CurrentTaskExecutor);
+        bool updatingPurchase = _externalOperations.OwnsPurchase(_taskQueue.CurrentTaskExecutor);
+        bool updatingGather = _externalOperations.OwnsGathering(_taskQueue.CurrentTaskExecutor);
+        bool updatingFish = _externalOperations.OwnsFishing(_taskQueue.CurrentTaskExecutor);
+        bool updatingDuty = _externalOperations.OwnsDuty(_taskQueue.CurrentTaskExecutor);
         if ((updatingCraft || updatingPurchase || updatingGather || updatingFish || updatingDuty) &&
             (!_clientState.IsLoggedIn || _objectTable[0] == null ||
              _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51] ||
@@ -1869,9 +1476,24 @@ internal sealed class QuestController : MiniTaskController<QuestController>
 
     public override void Dispose()
     {
-        _toastGui.ErrorToast -= OnErrorToast;
-        _condition.ConditionChange -= OnConditionChange;
-        base.Dispose();
+        if (_disposed)
+            return;
+        _disposed = true;
+        try
+        {
+            _toastGui.ErrorToast -= OnErrorToast;
+        }
+        finally
+        {
+            try
+            {
+                _condition.ConditionChange -= OnConditionChange;
+            }
+            finally
+            {
+                base.Dispose();
+            }
+        }
     }
 
     public sealed class QuestProgress

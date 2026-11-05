@@ -1,7 +1,5 @@
-﻿using System.Text.RegularExpressions;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text.SeStringHandling;
-using Lumina.Excel.Sheets;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Model.Questing;
@@ -12,34 +10,57 @@ namespace Questionable.Controller;
 
 internal abstract class MiniTaskController<T> : IDisposable
 {
-    private readonly Regex _actionCanceledText;
-    private readonly string _cantExecuteDueToStatusText;
-
     private readonly IChatGui _chatGui;
     private readonly ICondition _condition;
-    private readonly string _eventCanceledText;
-    private readonly InterruptHandler _interruptHandler;
+    private readonly ITaskInterruptionSource _interruptHandler;
+    private readonly TaskToastClassifier _toastClassifier;
+    private readonly Action<string> _notifyOnFailure;
     private readonly ILogger<T> _logger;
     private readonly IServiceProvider _serviceProvider;
+    private bool _disposed;
     protected readonly TaskQueue _taskQueue;
 
     protected MiniTaskController(IChatGui chatGui, ICondition condition, IServiceProvider serviceProvider,
-        InterruptHandler interruptHandler, IDataManager dataManager, ILogger<T> logger)
+        ITaskInterruptionSource interruptHandler, TaskToastClassifier toastClassifier,
+        Action<string> notifyOnFailure, ILogger<T> logger)
     {
         _chatGui = chatGui;
         _logger = logger;
         _taskQueue = new TaskQueue(logger);
         _serviceProvider = serviceProvider;
         _interruptHandler = interruptHandler;
+        _toastClassifier = toastClassifier;
+        _notifyOnFailure = notifyOnFailure;
         _condition = condition;
 
-        _eventCanceledText = DataManagerAdapter.GetString<LogMessage>(dataManager, 1318, x => x.Text)!; // Event canceled.
-        _actionCanceledText = DataManagerAdapter.GetRegex<LogMessage>(dataManager, 1314, x => x.Text)!; // Action canceled. You are under attack.
-        _cantExecuteDueToStatusText = DataManagerAdapter.GetString<LogMessage>(dataManager, 7728, x => x.Text)!; // Unable to execute command while suffering status affliction.
-        _interruptHandler.Interrupted += HandleInterruption;
+        try
+        {
+            _interruptHandler.Interrupted += HandleInterruption;
+        }
+        catch
+        {
+            try
+            {
+                // An event accessor can attach the handler before reporting a failure.
+                UnsubscribeFromInterruptions();
+            }
+            catch (Exception cleanupError)
+            {
+                _logger.LogError(cleanupError, "Unable to roll back task interruption subscription");
+            }
+            throw;
+        }
     }
 
-    public virtual void Dispose() => _interruptHandler.Interrupted -= HandleInterruption;
+    public virtual void Dispose() => UnsubscribeFromInterruptions();
+
+    private void UnsubscribeFromInterruptions()
+    {
+        if (_disposed)
+            return;
+        _disposed = true;
+        _interruptHandler.Interrupted -= HandleInterruption;
+    }
 
     // Lets derived controllers hold back new tasks without stopping the current executor.
     protected virtual bool CanStartNextTask() => true;
@@ -51,24 +72,7 @@ internal abstract class MiniTaskController<T> : IDisposable
             if (!CanStartNextTask() || !_taskQueue.TryDequeue(out ITask? upcomingTask))
                 return;
 
-            try
-            {
-                _logger.LogInformation("Starting task {TaskName}", upcomingTask.ToString());
-                ITaskExecutor taskExecutor =
-                    _serviceProvider.GetRequiredKeyedService<ITaskExecutor>(upcomingTask.GetType());
-                if (!_taskQueue.StartTask(taskExecutor, upcomingTask))
-                    _logger.LogTrace("Task {TaskName} was skipped", upcomingTask.ToString());
-            }
-            catch (Exception e)
-            {
-                OnTaskFailure(e, upcomingTask);
-                _logger.LogError(e, "Failed to start task {TaskName}", upcomingTask.ToString());
-                var msg = _LF("Failed to start task '{0}'", upcomingTask);
-                _chatGui.PrintError(
-                    _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
-                Stop("Task failed to start");
-                _serviceProvider.GetRequiredService<NotificationMasterIpc>().NotifyOnFailure(msg);
-            }
+            StartTask(upcomingTask);
 
             return;
         }
@@ -94,7 +98,7 @@ internal abstract class MiniTaskController<T> : IDisposable
             _chatGui.PrintError(
                 _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
             Stop("Task failed to update");
-            _serviceProvider.GetRequiredService<NotificationMasterIpc>().NotifyOnFailure(msg);
+            _notifyOnFailure(msg);
             return;
         }
 
@@ -125,18 +129,7 @@ internal abstract class MiniTaskController<T> : IDisposable
                 {
                     if (nextTask is ILastTask)
                     {
-                        ITaskExecutor taskExecutor =
-                            _serviceProvider.GetRequiredKeyedService<ITaskExecutor>(nextTask.GetType());
-                        try
-                        {
-                            _taskQueue.StartTask(taskExecutor, nextTask);
-                        }
-                        catch (Exception e)
-                        {
-                            OnTaskFailure(e, nextTask);
-                            _logger.LogError(e, "Failed to start final task after skipping");
-                            Stop("Task failed to start");
-                        }
+                        StartTask(nextTask);
                         return;
                     }
                 }
@@ -205,6 +198,27 @@ internal abstract class MiniTaskController<T> : IDisposable
         }
     }
 
+    private void StartTask(ITask task)
+    {
+        try
+        {
+            _logger.LogInformation("Starting task {TaskName}", task.ToString());
+            ITaskExecutor taskExecutor = _serviceProvider.GetRequiredKeyedService<ITaskExecutor>(task.GetType());
+            if (!_taskQueue.StartTask(taskExecutor, task))
+                _logger.LogTrace("Task {TaskName} was skipped", task.ToString());
+        }
+        catch (Exception e)
+        {
+            OnTaskFailure(e, task);
+            _logger.LogError(e, "Failed to start task {TaskName}", task.ToString());
+            var msg = _LF("Failed to start task '{0}'", task);
+            _chatGui.PrintError(
+                _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
+            Stop("Task failed to start");
+            _notifyOnFailure(msg);
+        }
+    }
+
     protected virtual void OnTaskFailure(Exception exception, ITask task)
     {
     }
@@ -268,6 +282,10 @@ internal abstract class MiniTaskController<T> : IDisposable
 
     private void InterruptWithoutCombat()
     {
+        // Unrelated manual toasts must not wake an idle queue or replay completed interactions.
+        if (_taskQueue.AllTasksComplete)
+            return;
+
         // Duty providers handle their own interruptions; don't cancel the run for them.
         if (_taskQueue.CurrentTaskExecutor is SinglePlayerDuty.WaitSinglePlayerDutyExecutor
             or Duty.StartAutoDutyExecutor)
@@ -306,14 +324,13 @@ internal abstract class MiniTaskController<T> : IDisposable
 
         if (!isHandled)
         {
-            if (_actionCanceledText.IsMatch(message.TextValue) &&
+            if (_toastClassifier.IsActionCancellation(message.TextValue) &&
                 !_condition[ConditionFlag.InFlight] &&
                 _taskQueue.CurrentTaskExecutor?.ShouldInterruptOnDamage() == true)
             {
                 InterruptQueueWithCombat();
             }
-            else if (GameFunctions.GameStringEquals(_cantExecuteDueToStatusText, message.TextValue) ||
-                     GameFunctions.GameStringEquals(_eventCanceledText, message.TextValue))
+            else if (_toastClassifier.IsEventOrStatusCancellation(message.TextValue))
             {
                 InterruptWithoutCombat();
             }
