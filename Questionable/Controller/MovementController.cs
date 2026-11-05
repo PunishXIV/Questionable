@@ -25,13 +25,7 @@ internal sealed class MovementController
     AetheryteData aetheryteData,
     IChatGui chatGui,
     IFramework framework,
-    PurchaseOperationState purchaseOperation,
-    IKnightshopperIpc knightshopperIpc,
-    GatheringOperationState gatheringOperation,
-    IGatherChillIpc gatherChillIpc,
-    FishingOperationState fishingOperation,
-    IFeeshIpc feeshIpc,
-    AutoDutyIpc autoDutyIpc,
+    Lazy<ExternalOperationCoordinator> externalOperations,
     Lazy<QuestController> questController,
     ILogger<MovementController> logger) : IDisposable
 {
@@ -82,8 +76,7 @@ internal sealed class MovementController
     public int BuiltNavmeshPercent => navmeshIpc.GetBuildProgress();
     private DateTime? _landAndRetryTimeout;
     private DestinationData? _previousDestinationData;
-    private bool HasExternalMovementOperation => purchaseOperation.HasOperation ||
-        gatheringOperation.HasOperation || fishingOperation.HasOperation || autoDutyIpc.HasOperation;
+    private bool HasExternalMovementOperation => externalOperations.Value.HasMovingOperation;
 
     public void Dispose() => IpcInvoke.TryOnFrameworkThread(framework, Stop, logger);
 
@@ -732,22 +725,7 @@ internal sealed class MovementController
         }
     }
 
-    private bool HasExternalMovementProviderWork()
-    {
-        bool? purchaseBusy = knightshopperIpc.GetBusy();
-        if (purchaseBusy == true || (purchaseBusy == null && knightshopperIpc.IsReady()))
-            return true;
-
-        bool? gatheringBusy = gatherChillIpc.GetBusy();
-        if (gatheringBusy == true || (gatheringBusy == null && gatherChillIpc.IsAvailable()))
-            return true;
-
-        bool? fishingBusy = feeshIpc.GetBusy();
-        if (fishingBusy == true || (fishingBusy == null && feeshIpc.IsAvailable()))
-            return true;
-
-        return autoDutyIpc.IsAvailable() && autoDutyIpc.GetStopped() != true;
-    }
+    private bool HasExternalMovementProviderWork() => externalOperations.Value.MayBeMovingCharacter();
 
     public void Stop()
     {

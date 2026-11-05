@@ -889,8 +889,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     bool IQuestRecoveryHost.EscapeRequested =>
         _configuration.General.UseEscToCancelQuesting && _keyState[VirtualKey.ESCAPE];
     bool IQuestRecoveryHost.IsUnconscious => _condition[ConditionFlag.Unconscious];
-    bool IQuestRecoveryHost.OwnsDuty => _externalOperations.OwnsDuty(_taskQueue.CurrentTaskExecutor);
-    bool IQuestRecoveryHost.HasOwnedSoloDuty => _externalOperations.HasOwnedSoloDuty;
+    bool IQuestRecoveryHost.ProviderHandlesDeath => _externalOperations.HandlesPlayerDeath(_taskQueue.CurrentTaskExecutor);
     bool IQuestRecoveryHost.IsZoning => _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51];
     bool IQuestRecoveryHost.HasPlayer => _objectTable[0] != null;
     (ElementId QuestId, byte Sequence, int Step)? IQuestRecoveryHost.CurrentStep => CurrentQuest is { } current
@@ -1002,12 +1001,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         return false;
     }
 
-    public bool TryConfirmArtisanIdle() => _externalOperations.TryConfirmArtisanIdle(this);
-    public bool TryConfirmKnightshopperIdle() => _externalOperations.TryConfirmKnightshopperIdle(this);
-    public bool TryConfirmGatherChillIdle() => _externalOperations.TryConfirmGatherChillIdle(this);
-    public bool TryConfirmFeeshIdle() => _externalOperations.TryConfirmFeeshIdle(this);
-    public bool TryConfirmAutoDutyIdle() => _externalOperations.TryConfirmAutoDutyIdle(this);
-    public bool TryConfirmBossModStopped() => _externalOperations.TryConfirmBossModStopped(this);
+    /// <summary>The user stopped this provider's work by hand. Clears its block only; never resumes questing.</summary>
+    public bool TryConfirmIdle(IOperationProvider provider) => _externalOperations.TryConfirmIdle(provider, this);
 
     protected override void UpdateCurrentTask()
     {
@@ -1015,19 +1010,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return;
 
         // The owning executor must still verify external work that occupies the player.
-        bool updatingCraft = _externalOperations.OwnsCraft(_taskQueue.CurrentTaskExecutor);
-        bool updatingPurchase = _externalOperations.OwnsPurchase(_taskQueue.CurrentTaskExecutor);
-        bool updatingGather = _externalOperations.OwnsGathering(_taskQueue.CurrentTaskExecutor);
-        bool updatingFish = _externalOperations.OwnsFishing(_taskQueue.CurrentTaskExecutor);
-        bool updatingDuty = _externalOperations.OwnsDuty(_taskQueue.CurrentTaskExecutor);
-        if ((updatingCraft || updatingPurchase || updatingGather || updatingFish || updatingDuty) &&
+        IOperationProvider? owner = _externalOperations.GetOwner(_taskQueue.CurrentTaskExecutor);
+        if (owner != null &&
             (!_clientState.IsLoggedIn || _objectTable[0] == null ||
              _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51] ||
              _gameFunctions.IsLoadingScreenVisible()))
             return;
 
-        if (_gameFunctions.IsOccupied() && !updatingPurchase && !updatingGather && !updatingFish && !updatingDuty &&
-            !(updatingCraft && _condition[ConditionFlag.Crafting]) &&
+        if (_gameFunctions.IsOccupied() && owner?.CanUpdateWhileOccupied != true &&
             // Outcome polling resets its grace timer before returning while occupied.
             _taskQueue.CurrentTaskExecutor is not SinglePlayerDuty.WaitForSinglePlayerDutyOutcomeExecutor &&
             !_gameFunctions.IsOccupiedWithCustomDeliveryNpc(CurrentQuest?.Quest))

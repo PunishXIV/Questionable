@@ -1,4 +1,4 @@
-namespace Questionable.Controller;
+namespace Questionable.Controller.Operations;
 
 /// <summary>Local ownership for AutoDuty's void Run/Stop API; there is no remote operation ID.</summary>
 [RegisterSingleton]
@@ -19,7 +19,6 @@ internal sealed class AutoDutyOperationState(TimeProvider? timeProvider = null)
     public bool EnteredDuty { get; private set; }
     public bool DutyCompleted { get; private set; }
     public bool ProviderLost { get; private set; }
-    public ExternalOperationStatus Status => CurrentStatus;
     public bool CanRestoreSettings => HasOperation && _stopped == true && HasStableIdle &&
         (RequiresReconciliation || _observedStop || !RunSubmitted);
 
@@ -132,7 +131,7 @@ internal sealed class AutoDutyOperationState(TimeProvider? timeProvider = null)
     private void SetStatus(ExternalOperationStatus status, string message)
     {
         // Repeating a non-Unknown status would reset OwnedOperationState's idle streak.
-        if (OperationId is { } owner && (CurrentStatus != status || Message != message))
+        if (OperationId is { } owner && (Status != status || Message != message))
             ObserveOperationStatus(owner, status, message);
     }
 }

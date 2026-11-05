@@ -1,4 +1,4 @@
-namespace Questionable.Controller;
+namespace Questionable.Controller.Operations;
 
 /// <summary>Owns the Feesh catch job across queue resets and normal stops.</summary>
 [RegisterSingleton]
@@ -10,7 +10,6 @@ internal sealed class FishingOperationState(TimeProvider? timeProvider = null)
     private long? _lastStopAttempt;
     private bool _stopAccepted;
 
-    public ExternalOperationStatus Status => CurrentStatus;
     public bool HasStarted { get; private set; }
     public bool StopRequested { get; private set; }
 
@@ -56,7 +55,7 @@ internal sealed class FishingOperationState(TimeProvider? timeProvider = null)
                 or EFeeshJobState.Cancelled or EFeeshJobState.Stopped)
         {
             // Without CatchDone, finish once WahTools stays idle. Observe stopping once: it resets the idle streak.
-            if (CurrentStatus != ExternalOperationStatus.CancellationRequested)
+            if (Status != ExternalOperationStatus.CancellationRequested)
                 ObserveOperationStatus(owner, ExternalOperationStatus.CancellationRequested, message);
             ObserveIdle(busy);
             if (HasStableIdle)

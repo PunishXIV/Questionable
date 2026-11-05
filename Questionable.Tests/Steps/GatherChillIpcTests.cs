@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 using NSubstitute.Extensions;
 using Questionable.Controller;
+using Questionable.Controller.Operations;
 using Questionable.External;
 using Xunit;
 

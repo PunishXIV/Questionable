@@ -4,6 +4,7 @@ using Dalamud.Plugin.Services;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using Questionable.Controller;
+using Questionable.Controller.Operations;
 using Questionable.External;
 using Xunit;
 

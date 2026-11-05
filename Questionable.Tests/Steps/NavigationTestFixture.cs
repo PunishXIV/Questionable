@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 using Questionable.Controller;
 using Questionable.Controller.NavigationOverrides;
+using Questionable.Controller.Operations;
 using Questionable.External;
 
 namespace Questionable.Tests.Steps;
@@ -41,8 +42,10 @@ internal abstract class NavigationTestFixture : IDisposable
         var framework = Substitute.For<IFramework>();
         framework.IsFrameworkUnloading.Returns(true);
         Navmesh = new(Plugin, NullLogger<NavmeshIpc>.Instance);
+        var operations = TestOperationProviders.Coordinator(
+            TestOperationProviders.Moving(Purchase, Knightshopper, new(), Gather, new(), Feesh, Duty.Ipc), () => Movement);
         Movement = new(Navmesh, Client, null!, null!, Condition, movementOverride!, Objects, null!,
-            Substitute.For<IChatGui>(), framework, Purchase, Knightshopper, new(), Gather, new(), Feesh, Duty.Ipc,
+            Substitute.For<IChatGui>(), framework, operations,
             new Lazy<QuestController>(() => throw QuestBoundary), NullLogger<MovementController>.Instance)
         {
             Destination = destination,

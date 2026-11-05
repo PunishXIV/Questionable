@@ -3,27 +3,23 @@ using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
 /// <summary>
-///     Gather n Chill and Feesh switch job and travel themselves, so Questionable skips its own travel for their steps
-///     and for walk-only steps that just lead to them.
+///     Providers that travel themselves (and switch job) take over a step's travel, so Questionable skips its own
+///     for that step and, where the provider says so, for walk-only steps that just lead to it.
 /// </summary>
 internal static class ProviderTravel
 {
-    public static bool IsHandled(QuestSequence sequence, QuestStep step, IFeeshIpc feeshIpc)
+    public static bool IsHandled(QuestSequence sequence, QuestStep step, IEnumerable<IOperationProvider> providers)
     {
-        if (IsProviderStep(step, feeshIpc))
+        IOperationProvider[] all = providers as IOperationProvider[] ?? providers.ToArray();
+        if (all.Any(x => x.HandlesTravel(step)))
             return true;
         if (!IsWalkOnly(step))
             return false;
 
         int index = sequence.Steps.IndexOf(step);
         QuestStep? next = index < 0 ? null : sequence.Steps.Skip(index + 1).FirstOrDefault(x => !IsWalkOnly(x));
-        return next != null && IsProviderStep(next, feeshIpc);
+        return next != null && all.Any(x => x.HandlesLeadInTravel && x.HandlesTravel(next));
     }
-
-    // Gathering always goes through Gather n Chill; steps naming a quest-specific node (e.g. 3833) still walk there.
-    // Fish Feesh can't catch keep their travel for manual fishing.
-    private static bool IsProviderStep(QuestStep step, IFeeshIpc feeshIpc) =>
-        step is { InteractionType: EInteractionType.Gather, DataId: null } || Fish.IsHandledByFeesh(step, feeshIpc);
 
     private static bool IsWalkOnly(QuestStep step) =>
         step.InteractionType is EInteractionType.WalkTo or EInteractionType.None &&

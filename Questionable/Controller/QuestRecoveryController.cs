@@ -36,7 +36,7 @@ internal sealed class QuestRecoveryController(ILogger<QuestRecoveryController> l
         if (host.IsUnconscious)
         {
             // These providers own their death/retry behavior.
-            if (host.OwnsDuty || host.HasOwnedSoloDuty)
+            if (host.ProviderHandlesDeath)
                 return false;
 
             if (host.HasQueuedTasks || IsRecovering)

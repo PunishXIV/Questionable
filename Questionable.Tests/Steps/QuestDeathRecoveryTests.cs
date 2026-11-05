@@ -62,18 +62,15 @@ public sealed class QuestDeathRecoveryTests
     }
 
     [Theory]
-    [InlineData(false, false)]
-    [InlineData(true, false)]
-    [InlineData(false, true)]
-    [InlineData(true, true)]
-    public void OwnedDutiesHandleDeathUntilEscapeRequestsAStop(bool solo, bool escape)
+    [InlineData(false)]
+    [InlineData(true)]
+    public void OwnedDutiesHandleDeathUntilEscapeRequestsAStop(bool escape)
     {
         var host = new RecoveryHost
         {
             HasQueuedTasks = true,
             IsUnconscious = true,
-            OwnsDuty = !solo,
-            HasOwnedSoloDuty = solo,
+            ProviderHandlesDeath = true,
             HasExternalOperation = true,
             EscapePressed = escape,
         };
@@ -331,8 +328,7 @@ public sealed class QuestDeathRecoveryTests
         public bool EscapePressed { get; set; }
         public bool EscapeRequested => EscapeEnabled && EscapePressed;
         public bool IsUnconscious { get; set; }
-        public bool OwnsDuty { get; set; }
-        public bool HasOwnedSoloDuty { get; set; }
+        public bool ProviderHandlesDeath { get; set; }
         public bool HasExternalOperation { get; set; }
         public bool IsZoning { get; set; }
         public bool HasPlayer { get; set; } = true;

@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 using Questionable.Controller;
+using Questionable.Controller.Operations;
 using Questionable.Controller.Steps;
 using Questionable.Controller.Steps.Shared;
 using Questionable.External;
@@ -77,7 +78,7 @@ public sealed class FishOperationTests : IDisposable
 
         Assert.Empty(new Gather.Factory().CreateAllTasks(quest, sequence, step));
         var task = Assert.IsType<Fish.FishTask>(Assert.Single(new Fish.Factory().CreateAllTasks(quest, sequence, step)));
-        Assert.True(ProviderTravel.IsHandled(sequence, step, _ipc));
+        Assert.True(ProviderTravel.IsHandled(sequence, step, [new FeeshOperationProvider(_ipc, _operation)]));
         Assert.True(_queue.StartTask(_executor, task));
         Assert.Equal((FeeshIpc.Owner, 22668u, 1, true), Assert.Single(_catches));
     }

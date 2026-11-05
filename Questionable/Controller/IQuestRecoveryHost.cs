@@ -11,8 +11,8 @@ internal interface IQuestRecoveryHost
     bool IsLoggedIn { get; }
     bool EscapeRequested { get; }
     bool IsUnconscious { get; }
-    bool OwnsDuty { get; }
-    bool HasOwnedSoloDuty { get; }
+    /// <summary>A provider (AutoDuty, or BossMod in a solo duty) owns death and retry behaviour right now.</summary>
+    bool ProviderHandlesDeath { get; }
     bool HasExternalOperation { get; }
     bool IsZoning { get; }
     bool HasPlayer { get; }

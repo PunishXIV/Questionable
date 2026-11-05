@@ -253,7 +253,7 @@ public sealed class QuestTaskQueueTests
         Assert.Empty(queue.RemainingTasks);
         Assert.Null(queue.CurrentTaskExecutor);
         executor.Received(1).StopNow();
-        Assert.Equal(["executor", "purchase", "fishing", "gathering", "manual"], cleanupOrder);
+        Assert.Equal(["executor", "purchase", "gathering", "fishing", "manual"], cleanupOrder);
         Assert.False(controller.HasExternalOperation);
         operations.Duty.Stop.DidNotReceive().InvokeAction();
 
@@ -265,7 +265,7 @@ public sealed class QuestTaskQueueTests
         Assert.Equal(QuestController.EAutomationType.Manual, controller.AutomationType);
         executor.Received(1).StopNow();
         executor.DidNotReceive().Update();
-        Assert.Equal(["purchase", "fishing", "gathering"], cleanupOrder);
+        Assert.Equal(["purchase", "gathering", "fishing"], cleanupOrder);
 
         void SetField(string name, object value) =>
             typeof(QuestController).GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(controller, value);

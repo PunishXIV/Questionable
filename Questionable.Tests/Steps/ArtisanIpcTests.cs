@@ -3,6 +3,7 @@ using Dalamud.Plugin.Ipc;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 using Questionable.Controller;
+using Questionable.Controller.Operations;
 using Questionable.External;
 using Xunit;
 

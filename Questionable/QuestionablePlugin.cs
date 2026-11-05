@@ -206,6 +206,9 @@ public sealed class QuestionablePlugin(
         // the whole IServiceProvider. Once .Value is evaluated the container isn't touched again, so a
         // framework tick during shutdown can't hit a disposed scope through this path.
         serviceCollection.AddSingleton(sp => new Lazy<QuestController>(sp.GetRequiredService<QuestController>));
+        // Same for MovementController <-> operation providers (combat cleanup needs CombatController, which moves).
+        serviceCollection.AddSingleton(sp =>
+            new Lazy<ExternalOperationCoordinator>(sp.GetRequiredService<ExternalOperationCoordinator>));
 
         var serviceProvider = serviceCollection.BuildServiceProvider();
         _lifetime.OwnServices(serviceProvider);
@@ -223,6 +226,8 @@ public sealed class QuestionablePlugin(
         serviceProvider.GetRequiredService<SinglePlayerDutyConfigComponent>().Reload();
         serviceProvider.GetRequiredService<ProfileController>();
         _questController = serviceProvider.GetRequiredService<QuestController>();
+        // MovementController.Dispose reads this; resolve it now so unloading never reaches into a disposed container.
+        _ = serviceProvider.GetRequiredService<Lazy<ExternalOperationCoordinator>>().Value;
         serviceProvider.GetRequiredService<CommandHandler>();
         serviceProvider.GetRequiredService<ContextMenuController>();
         serviceProvider.GetRequiredService<CraftworksSupplyController>();

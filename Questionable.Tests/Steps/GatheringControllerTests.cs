@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 using Questionable.Controller;
+using Questionable.Controller.Operations;
 using Questionable.Controller.Steps;
 using Questionable.Controller.Steps.Shared;
 using Questionable.External;

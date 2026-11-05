@@ -4,6 +4,7 @@ using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 using Questionable.Controller;
+using Questionable.Controller.Operations;
 using Questionable.Controller.Steps;
 using Questionable.Data;
 using Questionable.External;

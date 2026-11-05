@@ -1,4 +1,6 @@
 using NSubstitute;
+using Questionable.Controller;
+using Questionable.Controller.Operations;
 using Questionable.Controller.Steps.Shared;
 using Questionable.External;
 using Questionable.Model.Questing;
@@ -9,11 +11,17 @@ namespace Questionable.Tests.Steps;
 public sealed class ProviderTravelTests
 {
     private readonly IFeeshIpc _feeshIpc = Substitute.For<IFeeshIpc>();
+    private readonly List<IOperationProvider> _providers;
 
     public ProviderTravelTests()
     {
         _feeshIpc.IsAvailable().Returns(true);
         _feeshIpc.CanCatch(Arg.Any<uint>()).Returns(true);
+        _providers =
+        [
+            new GatherChillOperationProvider(Substitute.For<IGatherChillIpc>(), new GatheringOperationState()),
+            new FeeshOperationProvider(_feeshIpc, new FishingOperationState()),
+        ];
     }
 
     private static QuestStep Step(EInteractionType type, List<QuestWorkValue?>? completionQuestVariablesFlags = null,
@@ -33,10 +41,10 @@ public sealed class ProviderTravelTests
             second = Step(EInteractionType.WalkTo), fish = Step(EInteractionType.Fish, itemId: 4874);
         var sequence = new QuestSequence { Steps = [purchase, first, second, fish] };
 
-        Assert.True(ProviderTravel.IsHandled(sequence, first, _feeshIpc));
-        Assert.True(ProviderTravel.IsHandled(sequence, second, _feeshIpc));
-        Assert.True(ProviderTravel.IsHandled(sequence, fish, _feeshIpc));
-        Assert.False(ProviderTravel.IsHandled(sequence, purchase, _feeshIpc));
+        Assert.True(ProviderTravel.IsHandled(sequence, first, _providers));
+        Assert.True(ProviderTravel.IsHandled(sequence, second, _providers));
+        Assert.True(ProviderTravel.IsHandled(sequence, fish, _providers));
+        Assert.False(ProviderTravel.IsHandled(sequence, purchase, _providers));
     }
 
     [Fact]
@@ -46,8 +54,8 @@ public sealed class ProviderTravelTests
         QuestStep walk = Step(EInteractionType.WalkTo), fish = Step(EInteractionType.Fish, itemId: 1509);
         var sequence = new QuestSequence { Steps = [walk, fish] };
 
-        Assert.False(ProviderTravel.IsHandled(sequence, walk, _feeshIpc));
-        Assert.False(ProviderTravel.IsHandled(sequence, fish, _feeshIpc));
+        Assert.False(ProviderTravel.IsHandled(sequence, walk, _providers));
+        Assert.False(ProviderTravel.IsHandled(sequence, fish, _providers));
     }
 
     [Fact]
@@ -58,10 +66,10 @@ public sealed class ProviderTravelTests
             gather = Step(EInteractionType.Gather, itemId: 5121), turnIn = Step(EInteractionType.Interact);
         var sequence = new QuestSequence { Steps = [walk, empty, gather, turnIn] };
 
-        Assert.True(ProviderTravel.IsHandled(sequence, walk, _feeshIpc));
-        Assert.True(ProviderTravel.IsHandled(sequence, empty, _feeshIpc));
-        Assert.True(ProviderTravel.IsHandled(sequence, gather, _feeshIpc));
-        Assert.False(ProviderTravel.IsHandled(sequence, turnIn, _feeshIpc));
+        Assert.True(ProviderTravel.IsHandled(sequence, walk, _providers));
+        Assert.True(ProviderTravel.IsHandled(sequence, empty, _providers));
+        Assert.True(ProviderTravel.IsHandled(sequence, gather, _providers));
+        Assert.False(ProviderTravel.IsHandled(sequence, turnIn, _providers));
     }
 
     [Fact]
@@ -72,8 +80,8 @@ public sealed class ProviderTravelTests
         gather.DataId = 33005;
         var sequence = new QuestSequence { Steps = [walk, gather] };
 
-        Assert.False(ProviderTravel.IsHandled(sequence, walk, _feeshIpc));
-        Assert.False(ProviderTravel.IsHandled(sequence, gather, _feeshIpc));
+        Assert.False(ProviderTravel.IsHandled(sequence, walk, _providers));
+        Assert.False(ProviderTravel.IsHandled(sequence, gather, _providers));
     }
 
     [Fact]
@@ -86,7 +94,23 @@ public sealed class ProviderTravelTests
             Steps = [flagged, Step(EInteractionType.Gather, itemId: 5121), plain, Step(EInteractionType.Interact)],
         };
 
-        Assert.False(ProviderTravel.IsHandled(sequence, flagged, _feeshIpc));
-        Assert.False(ProviderTravel.IsHandled(sequence, plain, _feeshIpc));
+        Assert.False(ProviderTravel.IsHandled(sequence, flagged, _providers));
+        Assert.False(ProviderTravel.IsHandled(sequence, plain, _providers));
+    }
+
+    [Fact]
+    public void ProviderWithoutLeadInTravel_SkipsOnlyItsOwnStep()
+    {
+        // Knightshopper travels to the shop itself, but walk steps before a purchase keep their travel.
+        QuestStep walk = Step(EInteractionType.WalkTo), purchase = Step(EInteractionType.PurchaseItem);
+        var shop = Substitute.For<IOperationProvider>();
+        shop.HandlesTravel(purchase).Returns(true);
+        var sequence = new QuestSequence { Steps = [walk, purchase] };
+
+        Assert.True(ProviderTravel.IsHandled(sequence, purchase, [shop]));
+        Assert.False(ProviderTravel.IsHandled(sequence, walk, [shop]));
+
+        shop.HandlesLeadInTravel.Returns(true);
+        Assert.True(ProviderTravel.IsHandled(sequence, walk, [shop]));
     }
 }

@@ -11,14 +11,13 @@ internal static class AethernetShortcut
     (
         AetheryteData aetheryteData,
         IClientState clientState,
-        GilShopData gilShopData,
-        IFeeshIpc feeshIpc)
+        IEnumerable<IOperationProvider> operationProviders)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (step.AethernetShortcut == null || Purchase.IsHandledByKnightshopper(step, gilShopData) ||
-                ProviderTravel.IsHandled(sequence, step, feeshIpc))
+            if (step.AethernetShortcut == null ||
+                ProviderTravel.IsHandled(sequence, step, operationProviders))
                 yield break;
 
             yield return new WaitNavmesh.Task();

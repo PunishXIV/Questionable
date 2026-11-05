@@ -1,4 +1,4 @@
-namespace Questionable.Controller;
+namespace Questionable.Controller.Operations;
 
 /// <summary>
 /// Retains legacy Artisan submissions independently of the task queue. The current IPC cannot

@@ -5,6 +5,7 @@ using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 using Questionable.Controller;
+using Questionable.Controller.Operations;
 using Questionable.External;
 using Xunit;
 
@@ -346,8 +347,13 @@ public sealed class MovementOwnershipTests : IDisposable
             _ownedAutoDuties.Add(autoDuty);
         }
 
+        MovementController? controller = null;
+        var operations = TestOperationProviders.Coordinator(TestOperationProviders.Moving(operation, knightshopper,
+            gatheringOperation ?? new(), gatherChill ?? Substitute.For<IGatherChillIpc>(), fishingOperation ?? new(),
+            feesh ?? Substitute.For<IFeeshIpc>(), autoDuty), () => controller!);
+
         // Native dependencies are null, so reaching the global navmesh stop fails the test before any game input.
-        return new MovementController(
+        return controller = new MovementController(
             navmeshIpc: navmesh!,
             clientState: null!,
             gameFunctions: null!,
@@ -358,13 +364,7 @@ public sealed class MovementOwnershipTests : IDisposable
             aetheryteData: null!,
             chatGui: null!,
             framework: framework,
-            purchaseOperation: operation,
-            knightshopperIpc: knightshopper,
-            gatheringOperation: gatheringOperation ?? new(),
-            gatherChillIpc: gatherChill ?? Substitute.For<IGatherChillIpc>(),
-            fishingOperation: fishingOperation ?? new(),
-            feeshIpc: feesh ?? Substitute.For<IFeeshIpc>(),
-            autoDutyIpc: autoDuty,
+            externalOperations: operations,
             questController: null!,
             logger: NullLogger<MovementController>.Instance)
         {

@@ -21,12 +21,7 @@ namespace Questionable.Windows.QuestComponents;
 internal sealed partial class ActiveQuestComponent
 (
     QuestController questController,
-    CraftingOperationState craftingOperation,
-    PurchaseOperationState purchaseOperation,
-    GatheringOperationState gatheringOperation,
-    FishingOperationState fishingOperation,
-    AutoDutyIpc autoDutyIpc,
-    BossModIpc bossModIpc,
+    ExternalOperationCoordinator externalOperations,
     MovementController movementController,
     CombatController combatController,
     GatheringController gatheringController,
@@ -53,12 +48,7 @@ internal sealed partial class ActiveQuestComponent
 
     public unsafe void Draw(bool isMinimized)
     {
-        DrawCraftingOperation();
-        DrawPurchaseOperation();
-        DrawGatheringOperation();
-        DrawFishingOperation();
-        DrawDutyOperation();
-        DrawCombatRecovery();
+        DrawOperations();
 
         (QuestController.QuestProgress Progress, QuestController.ECurrentQuestType Type)? currentQuestDetails = questController.CurrentQuestDetails;
         QuestController.QuestProgress? currentQuest = currentQuestDetails?.Progress;
@@ -639,139 +629,34 @@ internal sealed partial class ActiveQuestComponent
         return questWork;
     }
 
-    private void DrawCraftingOperation()
+    private void DrawOperations()
     {
-        if (!craftingOperation.HasOperation)
-            return;
-
-        using (ImRaii.TextWrapPos(0))
+        foreach (IOperationProvider provider in externalOperations.Providers)
         {
-            ImGui.TextUnformatted(craftingOperation.RequiresReconciliation
-                ? craftingOperation.BlockReason ?? _L("Check Artisan before restarting.")
-                : _L("Crafting with Artisan"));
+            if (provider.GetStatusView() is not { } view)
+                continue;
+
+            using (ImRaii.TextWrapPos(0))
+                ImGui.TextUnformatted(view.Status);
+
+            if (view.Recovery is not { } recovery)
+                continue;
+
+            if (recovery.Detail != null)
+            {
+                using (ImRaii.TextWrapPos(0))
+                    ImGui.TextUnformatted(recovery.Detail);
+            }
+
+            if (DrawRecoveryConfirmationButton(recovery.ConfirmLabel, recovery.CanConfirm))
+                questController.TryConfirmIdle(provider);
+
+            using (ImRaii.TextWrapPos(0))
+            {
+                foreach (string instruction in recovery.Instructions)
+                    ImGui.TextUnformatted(instruction);
+            }
         }
-
-        if (!craftingOperation.RequiresReconciliation)
-            return;
-
-        DrawOperationRecovery(_L("I stopped Artisan"), craftingOperation.CanConfirmIdle,
-            questController.TryConfirmArtisanIdle,
-            _L("Finish or cancel all queued work in Artisan and clear any pause or stop request there. Paused work is not idle."),
-            _L("Artisan must remain idle for at least 2 seconds. Confirmation only clears the block; start questing separately."));
-    }
-
-    private void DrawPurchaseOperation()
-    {
-        if (!purchaseOperation.HasOperation)
-            return;
-
-        using (ImRaii.TextWrapPos(0))
-        {
-            ImGui.TextUnformatted(purchaseOperation.RequiresReconciliation || purchaseOperation.IsAbandoned
-                ? purchaseOperation.BlockReason ?? _L("Check Knightshopper before restarting.")
-                : _L("Buying quest items with Knightshopper"));
-        }
-
-        if (!purchaseOperation.RequiresReconciliation)
-            return;
-
-        DrawOperationRecovery(_L("I stopped Knightshopper"), purchaseOperation.CanConfirmIdle,
-            questController.TryConfirmKnightshopperIdle,
-            _L("Finish or stop the purchase in Knightshopper before confirming."),
-            _L("Knightshopper must remain idle for at least 2 seconds. Confirmation only clears the block; start questing separately."));
-    }
-
-    private void DrawGatheringOperation()
-    {
-        if (!gatheringOperation.HasOperation)
-            return;
-
-        using (ImRaii.TextWrapPos(0))
-        {
-            ImGui.TextUnformatted(gatheringOperation.RequiresReconciliation || gatheringOperation.IsAbandoned
-                ? gatheringOperation.BlockReason ?? _L("Check Gather n Chill before restarting.")
-                : _L("Gathering quest items with Gather n Chill"));
-        }
-
-        if (!gatheringOperation.RequiresReconciliation)
-            return;
-
-        DrawOperationRecovery(_L("I stopped Gather n Chill"), gatheringOperation.CanConfirmIdle,
-            questController.TryConfirmGatherChillIdle,
-            _L("Finish or stop gathering in Gather n Chill before confirming."),
-            _L("Gather n Chill must remain idle for at least 2 seconds. Confirmation only clears the block; start questing separately."));
-    }
-
-    private void DrawOperationRecovery(string label, bool canConfirmIdle, Func<bool> confirmIdle, string instruction,
-        string idleInstruction)
-    {
-        if (DrawRecoveryConfirmationButton(label, canConfirmIdle))
-            confirmIdle();
-
-        using (ImRaii.TextWrapPos(0))
-        {
-            ImGui.TextUnformatted(instruction);
-            ImGui.TextUnformatted(idleInstruction);
-        }
-    }
-
-    private void DrawFishingOperation()
-    {
-        if (!fishingOperation.HasOperation)
-            return;
-
-        using (ImRaii.TextWrapPos(0))
-        {
-            ImGui.TextUnformatted(fishingOperation.RequiresReconciliation || fishingOperation.IsAbandoned
-                ? fishingOperation.BlockReason ?? _L("Check Feesh before restarting.")
-                : _L("Fishing for quest items with Feesh"));
-        }
-
-        if (!fishingOperation.RequiresReconciliation)
-            return;
-
-        if (DrawRecoveryConfirmationButton(_L("I stopped Feesh"), fishingOperation.CanConfirmIdle))
-            questController.TryConfirmFeeshIdle();
-
-        using (ImRaii.TextWrapPos(0))
-        {
-            ImGui.TextUnformatted(_L("Finish or stop fishing in Feesh before confirming."));
-            ImGui.TextUnformatted(_L("WahTools must remain idle for at least 2 seconds. Confirmation only clears the block; start questing separately."));
-        }
-    }
-
-    private void DrawDutyOperation()
-    {
-        if (!autoDutyIpc.HasOperation)
-            return;
-
-        using (ImRaii.TextWrapPos(0))
-            ImGui.TextUnformatted(autoDutyIpc.Operation.BlockReason ?? _L("Running a duty with AutoDuty"));
-
-        if (!autoDutyIpc.RequiresReconciliation)
-            return;
-        using (ImRaii.TextWrapPos(0))
-            ImGui.TextUnformatted(autoDutyIpc.Operation.Message);
-        if (DrawRecoveryConfirmationButton(_L("I stopped AutoDuty"), autoDutyIpc.CanConfirmIdle))
-            questController.TryConfirmAutoDutyIdle();
-        using (ImRaii.TextWrapPos(0))
-            ImGui.TextUnformatted(_L("Stop AutoDuty and leave its duty or queue before confirming. Movement and temporary settings must be settled. Confirmation does not restart questing."));
-    }
-
-    private void DrawCombatRecovery()
-    {
-        if (!combatController.HasPendingCleanup && !bossModIpc.HasPendingCleanup)
-            return;
-        using (ImRaii.TextWrapPos(0))
-            ImGui.TextUnformatted(bossModIpc.CleanupReason ?? combatController.BlockReason ??
-                                  _L("Waiting for combat control to be released."));
-
-        if (!bossModIpc.HasPendingCleanup)
-            return;
-        if (DrawRecoveryConfirmationButton(_L("I stopped BossMod"), bossModIpc.CanConfirmStopped))
-            questController.TryConfirmBossModStopped();
-        using (ImRaii.TextWrapPos(0))
-            ImGui.TextUnformatted(_L("Stop BossMod's active presets and check its settings before confirming. Confirmation does not restart questing."));
     }
 
     private bool DrawRecoveryConfirmationButton(string label, bool canConfirmIdle)
@@ -987,23 +872,8 @@ internal sealed partial class ActiveQuestComponent
         string text;
         Vector4 color;
 
-        if (craftingOperation.RequiresReconciliation)
-            (text, color) = (_L("Check Artisan"), QstTheme.Amber);
-        else if (purchaseOperation.RequiresReconciliation)
-            (text, color) = (_L("Check Knightshopper"), QstTheme.Amber);
-        else if (gatheringOperation.RequiresReconciliation)
-            (text, color) = (_L("Check Gather n Chill"), QstTheme.Amber);
-        else if (fishingOperation.RequiresReconciliation)
-            (text, color) = (_L("Check Feesh"), QstTheme.Amber);
-        else if (purchaseOperation.HasOperation)
-            (text, color) = (purchaseOperation.IsAbandoned ? _L("Stopping purchase") : _L("Purchasing"),
-                purchaseOperation.IsAbandoned ? QstTheme.Amber : QstTheme.Accent);
-        else if (gatheringOperation.HasOperation)
-            (text, color) = (gatheringOperation.IsAbandoned ? _L("Stopping gathering") : _L("Gathering"),
-                gatheringOperation.IsAbandoned ? QstTheme.Amber : QstTheme.Accent);
-        else if (fishingOperation.HasOperation)
-            (text, color) = (fishingOperation.IsAbandoned ? _L("Stopping fishing") : _L("Fishing"),
-                fishingOperation.IsAbandoned ? QstTheme.Amber : QstTheme.Accent);
+        if (externalOperations.GetTitleBarPill() is { } pill)
+            (text, color) = (pill.Text, pill.Warning ? QstTheme.Amber : QstTheme.Accent);
         else if (combatController.IsRunning)
             (text, color) = (_L("Combat"), QstTheme.Accent);
         else if (questController.IsRunning
