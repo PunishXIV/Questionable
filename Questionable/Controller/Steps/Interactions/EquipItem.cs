@@ -136,7 +136,6 @@ internal static class EquipItem
                     if (sourceItem == null || sourceItem->ItemId != Task.ItemId)
                         continue;
 
-                    // Move the item to the first available slot
                     ushort targetSlot = _targetSlots
                         .Where(x =>
                         {

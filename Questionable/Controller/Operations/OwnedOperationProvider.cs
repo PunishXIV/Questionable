@@ -3,7 +3,6 @@ using Questionable.Model.Questing;
 
 namespace Questionable.Controller.Operations;
 
-/// <summary>Shared polling, cancellation and confirmation for providers tracked by an <see cref="OwnedOperationState"/>.</summary>
 internal abstract class OwnedOperationProvider(OwnedOperationState operation) : IOperationProvider
 {
     private readonly Stopwatch _statusPoll = new();
@@ -28,7 +27,6 @@ internal abstract class OwnedOperationProvider(OwnedOperationState operation) : 
     public abstract OperationStatusView? GetStatusView();
     public abstract OperationPill? GetTitleBarPill();
 
-    /// <summary>The usual panel entry: active text, or the block reason once it is stopping or needs checking.</summary>
     protected OperationStatusView? StatusView(string checkText, string activeText, string confirmLabel,
         params string[] instructions)
     {

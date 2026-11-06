@@ -268,7 +268,6 @@ internal static class Craft
             if (!craftingOperation.CanContinue(_operationId))
                 throw new TaskException(craftingOperation.BlockReason ?? "Artisan crafting ownership was lost");
 
-            // Log only when item count changes
             for (int i = 0; i < _itemTargets.Count; ++i)
             {
                 CraftingItem item = _itemTargets[i];
@@ -328,7 +327,6 @@ internal static class Craft
 
         private static unsafe int GetOwnedItemCount(CraftingItem item)
         {
-            // Count items in inventory based on quality requirement: NQ, HQ, or both (Any)
             InventoryManager* inventoryManager = InventoryManager.Instance();
             if (inventoryManager == null)
                 throw new TaskException("Inventory is unavailable; cannot verify the craft objective");
@@ -338,7 +336,7 @@ internal static class Craft
                 inventoryManager->GetInventoryItemCount(item.ItemId + 500000, isHq: false, checkEquipped: false));
         }
 
-        // we're on a crafting class, so combat doesn't make much sense (we also can't change classes in combat...)
+        // On a crafting class combat doesn't make sense, and we can't change classes in combat.
         public override bool ShouldInterruptOnDamage() => false;
     }
 }

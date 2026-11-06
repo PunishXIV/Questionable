@@ -33,9 +33,6 @@ internal static class QuestTestData
     public static QuestSequence Seq(byte sequence, params QuestStep[] steps) =>
         new() { Sequence = sequence, Steps = [.. steps] };
 
-    /// <summary>
-    /// Builds a quest graph the same way runtime does: sequence lives on the quest, step comes from that sequence.
-    /// </summary>
     public static (Quest Quest, QuestSequence Sequence, QuestStep Step) FactoryContext(
         ElementId id,
         byte sequenceNumber,

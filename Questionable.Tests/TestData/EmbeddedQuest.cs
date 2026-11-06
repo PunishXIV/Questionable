@@ -6,12 +6,7 @@ using System.Reflection;
 
 namespace Questionable.Tests.TestData;
 
-/// <summary>
-/// Wraps a QuestPaths JSON file that has been embedded into the test assembly.
-/// The manifest name matches the file's path relative to the repository root
-/// (using forward slashes), e.g.
-/// <c>QuestPaths/2.x - A Realm Reborn/Side Quests/Thanalan/Ul'dah/396_No Lady Is an Island.json</c>.
-/// </summary>
+// Embedded resource names use the repository-relative path with forward slashes.
 public sealed class EmbeddedQuest
 {
     public EmbeddedQuest(string manifestName)
@@ -23,7 +18,6 @@ public sealed class EmbeddedQuest
 
     public string ManifestName { get; }
 
-    /// <summary>Filename without directories or extension, used as the theory display name.</summary>
     public string ShortName { get; }
 
     public Stream OpenStream() =>

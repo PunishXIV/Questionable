@@ -3,16 +3,10 @@ using static Questionable.External.IPCUtils;
 
 namespace Questionable.External;
 
-/// <summary>
-///     Knightshopper's purchase IPC, see <c>docs/IPC.md</c> in its install folder.
-/// </summary>
 [RegisterSingleton<IKnightshopperIpc, KnightshopperIpc>]
 internal sealed class KnightshopperIpc(IDalamudPluginInterface pluginInterface, ILogger<KnightshopperIpc> logger,
     PurchaseOperationState operation) : Ipc, IKnightshopperIpc
 {
-    /// <summary>
-    ///     First API version that has <c>Knightshopper.Purchase.StartItems</c>.
-    /// </summary>
     private const int MinimumApiVersion = 2;
 
     private const int GilCurrency = 2;
@@ -57,10 +51,7 @@ internal sealed class KnightshopperIpc(IDalamudPluginInterface pluginInterface, 
 
     private readonly ICallGateSubscriber<Guid, bool> _cancel = pluginInterface.GetIpcSubscriber<Guid, bool>("Knightshopper.Purchase.Cancel");
 
-    /// <summary>
-    ///     Starts buying an item with gil. <paramref name="quantity" /> is the total to own afterwards, not the amount
-    ///     to buy.
-    /// </summary>
+    // quantity is the total to own afterwards, not the amount to buy.
     public EStartResult BuyWithGil(uint itemId, uint quantity, out Guid operationId, out string message)
     {
         operationId = Guid.Empty;

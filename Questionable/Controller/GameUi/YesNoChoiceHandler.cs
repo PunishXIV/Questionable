@@ -12,10 +12,6 @@ using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.GameUi;
 
-/// <summary>
-///     Handles the in-game "SelectYesno" and "DifficultySelectYesNo" addons — answering quest
-///     dialogue prompts, travel confirmations, HQ-trade prompts and quest-battle difficulty selection.
-/// </summary>
 [RegisterSingleton]
 internal sealed class YesNoChoiceHandler : IDisposable
 {
@@ -122,11 +118,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
         HandleDifficultySelectYesNo((AtkUnitBase*)args.Addon.Address, checkAllSteps: false);
     }
 
-    /// <summary>
-    ///     Handles any SelectYesno / DifficultySelectYesNo addon already open when automation starts.
-    ///     Bypasses the <see cref="ShouldHandleUiInteractions"/> gate for SelectYesno, matching the
-    ///     legacy "initial check" behaviour.
-    /// </summary>
+    // The initial sweep bypasses the interaction gate.
     public unsafe void CheckExisting()
     {
         if (_questController.HasExternalOperation)

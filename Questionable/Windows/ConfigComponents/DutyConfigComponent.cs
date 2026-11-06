@@ -269,9 +269,6 @@ internal sealed class DutyConfigComponent : ConfigComponent
             {
                 totalCount++;
 
-                // a duty is considered "enabled" if:
-                // it's whitelisted, OR
-                // it's not blacklisted AND it's enabled by default
                 bool isEnabled = Configuration.Duties.WhitelistedDutyCfcIds.Contains(cfcId) ||
                                  (!Configuration.Duties.BlacklistedDutyCfcIds.Contains(cfcId) && dutyOptions.Enabled);
 

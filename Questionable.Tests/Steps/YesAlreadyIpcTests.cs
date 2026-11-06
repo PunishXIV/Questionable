@@ -42,7 +42,6 @@ public sealed class YesAlreadyIpcTests
         Assert.Null(set);
         Assert.False(owned);
 
-        // The next run suppresses it again.
         (set, owned) = YesAlreadyIpc.DecideToggle(hasActiveQuest: true, isEnabled: true, disabledByQuestionable: owned);
         Assert.Equal(false, set);
         Assert.True(owned);

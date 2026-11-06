@@ -3,7 +3,7 @@ using Questionable.Model.Questing;
 
 namespace Questionable.Controller.Operations;
 
-/// <summary>Questionable's own combat and BossMod solo-duty control, which can outlive a stop until released.</summary>
+// Combat and BossMod solo-duty work can outlive a stop until released.
 [RegisterSingleton<IOperationProvider, CombatCleanupProvider>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class CombatCleanupProvider(
     CombatController combatController,

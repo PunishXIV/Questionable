@@ -117,7 +117,6 @@ internal sealed class QuestRegistry
         }
         catch (Exception e)
         {
-            // why does this even throw
             _logger.LogWarning(e, "Error during Reload.SendMessage IPC");
         }
 
@@ -187,12 +186,7 @@ internal sealed class QuestRegistry
         }
     }
 
-    /// <summary>
-    ///     Loads quests from a downloaded path bundle (<c>{ConfigDirectory}/PathData/bundle.zip</c>)
-    ///     if one is present. Entries here override the compiled baseline but are themselves
-    ///     overridden by the hand-authored user directory. A single bad entry is skipped rather
-    ///     than aborting the rest of the bundle.
-    /// </summary>
+    // Bundles override compiled paths but not user paths; malformed entries are skipped.
     private bool LoadQuestsFromDownloadedBundle()
     {
         string bundlePath = PathDataBundle.GetBundlePath(_pluginInterface);
@@ -457,10 +451,6 @@ internal sealed class QuestRegistry
         return withFilename ? Path.Combine(folder, GetFilename(info)) : folder;
     }
 
-    /// <summary>
-    ///     The folder a quest path belongs in under its expansion folder, following the journal's section, category
-    ///     and genre. Empty if the quest has no journal genre.
-    /// </summary>
     private static string GetJournalPath(QuestInfo info)
     {
         if (info.JournalGenre == null || info.JournalGenre == uint.MaxValue)

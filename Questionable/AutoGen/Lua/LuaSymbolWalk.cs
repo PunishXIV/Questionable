@@ -3,15 +3,8 @@
 
 namespace Questionable.AutoGen.Lua;
 
-/// <summary>
-///     Walks a function body in program order and yields every string constant it touches
-///     (globals it reads, table keys, comparison operands, call targets).
-///     Quest scripts are generated from a template, so the <em>order</em> of these references is
-///     meaningful: <c>SEQ_3</c> followed by <c>ACTOR3</c> means "at sequence 3, actor 3 is the target".
-/// </summary>
 internal static class LuaSymbolWalk
 {
-    /// <summary>Referenced strings of <paramref name="proto"/> and everything nested inside it, in program order.</summary>
     internal static IReadOnlyList<string> Deep(LuaProto proto)
     {
         List<string> result = [];

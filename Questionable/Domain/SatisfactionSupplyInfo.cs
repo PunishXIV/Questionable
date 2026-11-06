@@ -33,8 +33,6 @@ internal sealed class SatisfactionSupplyInfo : IQuestInfo
     public bool IsMainScenarioQuest => false;
     public EExpansionVersion Expansion { get; }
 
-    /// <summary>
-    ///     We don't have collectables implemented for any other class.
-    /// </summary>
+    // We don't have collectables implemented for any other class.
     public IReadOnlyList<Job> ClassJobs { get; } = [Job.MIN, Job.BTN];
 }

@@ -11,14 +11,7 @@ using Xunit;
 
 namespace Questionable.Tests.AutoGen;
 
-/// <summary>
-///     Pins the derivation rules in <see cref="QuestPathAutoGenerator"/> against quests whose shape exercises
-///     them. Each case here corresponds to a bug that was found by running the generated path in-game, so a
-///     regression in any of these rules means someone's quest silently stops working again.
-///     <para>
-///         Requires an installed game — see <see cref="GameDataFixture"/>; without one the tests are skipped.
-///     </para>
-/// </summary>
+// Each case pins a derivation rule that previously failed in-game; tests need installed game data.
 public sealed class QuestPathGenerationTests(GameDataFixture fixture)
     : IClassFixture<GameDataFixture>
 {

@@ -1,6 +1,5 @@
 namespace Questionable;
 
-/// <summary>Owns startup resources until initialization succeeds, and rolls them back when it fails.</summary>
 internal sealed class PluginLifetime : IAsyncDisposable
 {
 #pragma warning disable CA2213 // Retained for repeated/concurrent disposal; no wait handle is created.

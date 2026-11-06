@@ -104,7 +104,6 @@ internal static class Combat
                     if (step.CombatDelaySecondsAtStart == null)
                         yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(delayAfter));
 
-                    // automatically triggered when entering area, i.e. only unmount
                     yield return CreateTask(quest, sequence, step);
                     break;
 
@@ -217,7 +216,6 @@ internal static class Combat
             if (_status != CombatController.EStatus.Complete)
                 return ETaskResult.StillRunning;
 
-            // if our quest step has any completion flags, we need to check if they are set
             if (QuestWorkUtils.HasCompletionFlags(Task.CompletionQuestVariableFlags) &&
                 Task.CombatData.ElementId is QuestId questId)
             {
@@ -231,8 +229,7 @@ internal static class Combat
                 return ETaskResult.StillRunning;
             }
 
-            // the last step, by definition, can only be progressed by the game recognizing we're in a new sequence,
-            // so this is an indefinite wait
+            // The last step only progresses when the game moves to a new sequence, so this waits indefinitely.
             if (Task.IsLastStep)
                 return ETaskResult.StillRunning;
 

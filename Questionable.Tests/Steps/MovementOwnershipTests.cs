@@ -301,7 +301,7 @@ public sealed class MovementOwnershipTests : IDisposable
         operation.MarkRunSubmitted();
         operation.AbandonCurrent();
         if (uncertain)
-            operation.RequireReconciliation("Provider status lost", providerLost: true);
+            operation.RequireReconciliation("Provider status lost");
         using var duty = CreateAutoDuty(operation, stopped: true);
         using MovementController movement = CreateController(new(), Substitute.For<IKnightshopperIpc>(), autoDuty: duty);
 

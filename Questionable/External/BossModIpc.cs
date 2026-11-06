@@ -207,7 +207,6 @@ internal sealed class BossModIpc
         }
     }
 
-    /// <summary>Poll before controller early returns. Healthy solo ownership permits local duty tasks.</summary>
     public void PollSoloDuty()
     {
         if (HasPendingCleanup)

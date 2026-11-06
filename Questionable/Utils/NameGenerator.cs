@@ -5,9 +5,6 @@ using Lumina.Text.ReadOnly;
 
 namespace Questionable.Utils;
 
-/// <summary>
-/// Adapted from Henchman by Knightmore
-/// </summary>
 [SuppressMessage("Security", "CA5394:Do not use insecure randomness")]
 internal static class NameGenerator
 {

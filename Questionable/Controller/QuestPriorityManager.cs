@@ -3,10 +3,6 @@ using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller;
 
-/// <summary>
-///     Holds and mutates the user's manually-prioritised quest list. Extracted from
-///     <see cref="QuestController"/> so the list logic lives in one focused, testable place.
-/// </summary>
 [RegisterSingleton]
 internal sealed class QuestPriorityManager(
     QuestRegistry questRegistry,
@@ -16,25 +12,19 @@ internal sealed class QuestPriorityManager(
     private const char ClipboardSeparator = ';';
     private readonly List<Quest> _quests = [];
 
-    /// <summary>
-    ///     Quests in the priority list that should only be <em>accepted</em>, not driven to completion.
-    ///     They are initially automated to acceptance; once accepted they are left to the normal questing rules (to-do list order, same-society batch turn-ins, ...)
-    ///     to complete. They remain visible in the priority list, and marked as accepted, but the priority completion selection always skips them once accepted.
-    /// </summary>
+    // Accepted accept-only quests remain listed but are skipped until normal completion.
     private readonly HashSet<ElementId> _acceptOnly = [];
 
     public IReadOnlyList<Quest> Quests => _quests;
     public int Count => _quests.Count;
     public bool IsEmpty => _quests.Count == 0;
 
-    /// <summary>Priority-list quests flagged accept-only, in list order.</summary>
     public IEnumerable<Quest> AcceptOnlyQuests => _quests.Where(q => _acceptOnly.Contains(q.Id));
 
     public bool HasPendingAcceptOnly => _acceptOnly.Count > 0;
 
     public bool IsAcceptOnly(ElementId elementId) => _acceptOnly.Contains(elementId);
 
-    /// <summary>Adds the quest to the priority list (if needed) and flags it as accept-only.</summary>
     public void MarkAcceptOnly(ElementId elementId)
     {
         Add(elementId);
@@ -96,7 +86,6 @@ internal sealed class QuestPriorityManager(
         _acceptOnly.Remove(elementId);
     }
 
-    /// <summary>Moves the quest at <paramref name="oldIndex"/> to <paramref name="newIndex"/> (used by drag-drop).</summary>
     public void Move(int oldIndex, int newIndex)
     {
         if (oldIndex < 0 || oldIndex >= _quests.Count || newIndex < 0 || newIndex >= _quests.Count)
@@ -109,9 +98,7 @@ internal sealed class QuestPriorityManager(
 
     public void RemoveCompleted(Func<ElementId, bool> isComplete, Func<ElementId, bool> isAccepted)
     {
-        // First remove everything that's completed (any kind), then remove accept-only quests that have
-        // been accepted (picked up) but not completed. Normal priority quests that are merely accepted and
-        // still in progress are left alone. Keeps the accept-only flags in sync with whatever remains.
+        // Keep accept-only flags in sync with the quests that remain.
         _quests.RemoveAll(q => isComplete(q.Id));
         _quests.RemoveAll(q => _acceptOnly.Contains(q.Id) && isAccepted(q.Id));
         _acceptOnly.RemoveWhere(id => _quests.All(q => q.Id != id));

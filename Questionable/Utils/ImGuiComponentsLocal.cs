@@ -69,10 +69,6 @@ internal static class ImGuiComponentsLocal
         return result;
     }
 
-    /// <summary>
-    ///     Draws a searchable combo (BeginCombo + InputTextWithHint filter) for large option lists.
-    ///     The search box stays pinned at the top of the popup; only the option list scrolls.
-    /// </summary>
     internal static bool DrawSearchableCombo<T>(
         string label, T[] values, string[] labels, T active, ref string searchString, ref T selected,
         bool labelAsPreview = false,

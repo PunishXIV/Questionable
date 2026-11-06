@@ -65,7 +65,6 @@ internal sealed class ArtisanIpc(IDalamudPluginInterface pluginInterface, ILogge
         Guid? operationId = null;
         try
         {
-            // Only report a missing list when the list query itself worked.
             if (!_getLists.InvokeFunc().ContainsKey(listId))
                 return ArtisanStartResult.MissingList;
 

@@ -90,7 +90,6 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
                 return false;
             }
 
-            // Make Wrath Work
             SetResult targetingMode = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
                 AutoRotationConfigOption.DPSRotationMode,
                 DPSRotationMode.Manual);
@@ -102,7 +101,6 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
             SetResult combatOnly = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
                 AutoRotationConfigOption.InCombatOnly, false);
 
-            // Make Wrath Work well
             SetResult includeNPCs = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
                 AutoRotationConfigOption.IncludeNPCs, true);
             SetResult targetCombatOnly = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
@@ -110,7 +108,6 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
             SetResult cleanse = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
                 AutoRotationConfigOption.AutoCleanse, true);
 
-            // Nice-to-haves
             SetResult rez = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,
                 AutoRotationConfigOption.AutoRez, true);
             SetResult rezAsDPS = WrathIPCWrapper.SetAutoRotationConfigState(_lease.Value,

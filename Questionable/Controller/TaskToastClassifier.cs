@@ -3,7 +3,6 @@ using Lumina.Excel.Sheets;
 
 namespace Questionable.Controller;
 
-/// <summary>Recognizes localized task interruptions without accessing game state while classifying a toast.</summary>
 [RegisterSingleton]
 internal sealed class TaskToastClassifier
 {

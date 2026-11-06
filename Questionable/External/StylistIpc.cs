@@ -16,13 +16,10 @@ internal sealed class StylistIpc(IDalamudPluginInterface pluginInterface, ILogge
 
     public static bool IsInstalled => IPCSubscriber.IsInstalled(PluginName);
 
-    /// <summary>Set once the missing-Stylist fallback has been announced, so it is printed once per session.</summary>
     public bool WarnedMissing { get; set; }
 
-    /// <returns>Whether Stylist is busy, or null when it is not installed or its IPC is unavailable.</returns>
     public bool? IsBusy => IsInstalled ? IpcInvoke.SafeFunc<bool?>(() => _isBusy.InvokeFunc(), fallback: null) : null;
 
-    /// <returns>Whether the update request reached Stylist.</returns>
     public bool UpdateGearset()
     {
         try

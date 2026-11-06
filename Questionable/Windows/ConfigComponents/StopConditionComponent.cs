@@ -100,7 +100,6 @@ internal sealed class StopConditionComponent : ConfigComponent
         if (!enabled)
             ImGui.PushStyleColor(ImGuiCol.Text, ImGuiColors.DalamudGrey);
 
-        // Level stop condition section
         ImGui.Text(_L("Stop when character level reaches:"));
 
         bool levelToStopAfter = Configuration.Stop.LevelToStopAfter;
@@ -118,7 +117,6 @@ internal sealed class StopConditionComponent : ConfigComponent
             Save();
         }
 
-        // Show current level for reference
         unsafe
         {
             PlayerState* playerState = PlayerState.Instance();

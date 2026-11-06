@@ -1,5 +1,4 @@
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
@@ -17,6 +16,9 @@ public sealed class TextAdvanceIpcTests : IDisposable
 {
     private readonly IFramework _framework = Substitute.For<IFramework>();
     private readonly Configuration _configuration = new();
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Reliability", "CA2213:Disposable fields should be disposed",
+        Justification = "Built without its constructor, so it holds no game subscriptions to release.")]
     private readonly QuestController _controller;
     private readonly TextAdvanceIpc _ipc;
     private readonly ICallGateSubscriber<string, TerritoryConfig, bool> _enable =
@@ -36,11 +38,7 @@ public sealed class TextAdvanceIpcTests : IDisposable
 
     public TextAdvanceIpcTests()
     {
-        _controller = (QuestController)RuntimeHelpers.GetUninitializedObject(typeof(QuestController));
-        typeof(MiniTaskController<QuestController>).GetField("_taskQueue", BindingFlags.Instance | BindingFlags.NonPublic)!
-            .SetValue(_controller, new TaskQueue(NullLogger.Instance));
-        typeof(QuestController).GetField("_logger", BindingFlags.Instance | BindingFlags.NonPublic)!
-            .SetValue(_controller, NullLogger<QuestController>.Instance);
+        _controller = TestQuestController.Create();
         _controller.AutomationType = QuestController.EAutomationType.Automatic;
         _framework.IsInFrameworkUpdateThread.Returns(true);
         var plugin = Substitute.For<IDalamudPluginInterface>();

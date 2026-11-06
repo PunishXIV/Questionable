@@ -6,15 +6,7 @@ using Questionable.Model.Questing;
 
 namespace Questionable.Controller.GameUi;
 
-/// <summary>
-///     Fills in the chocobo's name during the "My Little Chocobo" quests (700/701/702) using the
-///     name configured in <see cref="Configuration.GeneralConfiguration.ChocoboName" />.
-/// </summary>
-/// <remarks>
-///     Two steps: the <c>InputString</c> dialog is confirmed with a single callback
-///     (<c>[0 = OK, name, ""]</c>), then the follow-up "Name your chocobo?" <c>SelectYesno</c> is
-///     accepted by <see cref="YesNoChoiceHandler" /> via <see cref="IsAwaitingYesNo" />.
-/// </remarks>
+// Chocobo naming requires InputString followed by SelectYesno.
 [RegisterSingleton]
 internal sealed unsafe class ChocoboNamingController : IDisposable
 {
@@ -49,10 +41,6 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
         _framework.Update += OnFrameworkUpdate;
     }
 
-    /// <summary>
-    ///     Set after the name is submitted; <see cref="YesNoChoiceHandler" /> accepts the follow-up
-    ///     "Name your chocobo?" confirmation prompt and clears this.
-    /// </summary>
     public bool IsAwaitingYesNo { get; set; }
 
     public void Dispose()
@@ -97,7 +85,6 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
     private bool IsChocoboQuestActive() =>
         _questController.CurrentQuest?.Quest.Id is QuestId { Value: 700 or 701 or 702 };
 
-    /// <summary>The configured name, or <see cref="DefaultName" /> if it is unset or not a valid 2-20 letter name.</summary>
     private string GetConfiguredName()
     {
         string name = (_configuration.General.ChocoboName ?? string.Empty).Trim();

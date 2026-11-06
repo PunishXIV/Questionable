@@ -34,10 +34,7 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
 
     protected void Save() => _pluginInterface.SavePluginConfig(Configuration);
 
-    /// <summary>
-    ///     Draws an ImGui combo that maps a configuration value to/from an entry in <paramref name="values"/>.
-    ///     If the current value is not in <paramref name="values"/>, resets to <paramref name="values"/>[0] and saves.
-    /// </summary>
+    // Invalid saved values reset to the first option.
     protected void DrawComboOption<T>(string label, T[] values, string[] labels, Func<T> get, Action<T> set)
     {
         if (values.Length == 0)
@@ -58,10 +55,6 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
         }
     }
 
-    /// <summary>
-    ///     Draws a checkbox bound to a configuration value, saving on change, with an optional help marker after it.
-    /// </summary>
-    /// <returns>The value after this frame.</returns>
     protected bool DrawCheckbox(string label, Func<bool> get, Action<bool> set, string? help = null)
     {
         bool value = get();

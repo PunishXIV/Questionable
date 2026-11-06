@@ -56,7 +56,7 @@ internal sealed class ContextMenuController : IDisposable
 
     private void MenuOpened(IMenuOpenedArgs args)
     {
-        // no clue why this isn't the actual name, but here we are
+        // The game reports this as a null addon name.
         if (args.AddonName != null)
             return;
 
@@ -98,9 +98,7 @@ internal sealed class ContextMenuController : IDisposable
         return hoveredItem != 0;
     }
 
-    /// <summary>
-    ///     At 4/5 hearts, satisfaction is 540/1080 with 3 deliveries left, 720/1080 with 4, 900/1080 with 5; at 5 hearts it is 0/0.
-    /// </summary>
+    // At 4/5 hearts satisfaction is 540/1080 with 3 deliveries left, 720 with 4, 900 with 5; at 5 hearts it is 0/0.
     private static int TurnInsToNextRank(ushort current, ushort max, int maxTurnIns) =>
         max == 0 ? maxTurnIns : maxTurnIns * (max - current) / max;
 
@@ -130,7 +128,7 @@ internal sealed class ContextMenuController : IDisposable
             Prefix = SeIconChar.Hexagon,
             PrefixColor = 52,
             Name = (characterDisabled ? "ID not found" : "Open Data") + $" (*{characterId[^5..]})",
-            IsEnabled = true, //!characterDisabled,
+            IsEnabled = true,
             OnClicked = _1 =>
             {
                 if (character != null)

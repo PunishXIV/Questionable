@@ -243,7 +243,6 @@ internal sealed class CombatController : IDisposable
         if (_currentFight == null)
             return null;
 
-        // check if any complex combat conditions are fulfilled
         List<ComplexCombatData> complexCombatData = _currentFight.Data.ComplexCombatDatas;
         if (complexCombatData.Count > 0)
         {
@@ -310,11 +309,9 @@ internal sealed class CombatController : IDisposable
         // priority is a value between 0 and 100 inclusive; we want to always kill enemies we have fight with on first
         if (gameObject is IBattleNpc battleNpc && battleNpc.StatusFlags.HasFlag(StatusFlags.InCombat))
         {
-            // stuff trying to kill us
             if (gameObject.TargetObjectId == _objectTable[0]?.GameObjectId)
                 return (rawPriority.Value + 150, reason + "/" + _L("Targeted"));
 
-            // stuff on our enmity list that's not necessarily targeting us
             Hater haters = UIState.Instance()->Hater;
             for (int i = 0; i < haters.HaterCount; ++i)
             {
@@ -390,7 +387,6 @@ internal sealed class CombatController : IDisposable
                 }
             }
 
-            // enemies that we have aggro on
             if (battleNpc.BattleNpcKind is BattleNpcSubKind.BNpcPart or BattleNpcSubKind.Combatant)
             {
                 // npc that starts a fate or does turn-ins; not sure why they're marked as hostile
@@ -406,11 +402,7 @@ internal sealed class CombatController : IDisposable
         return (null, _L("Not BattleNpc"));
     }
 
-    /// <summary>
-    ///     Entries that ignore quest markers have no marker to tell us when enough enemies are dead, so for those we
-    ///     count our own kills against <see cref="ComplexCombatData.MinimumKillCount" />. Every other entry is still
-    ///     decided by the quest marker, as kills by other players can make our own count wrong.
-    /// </summary>
+    // Entries without quest markers count only our kills; other players make that count unreliable.
     private void CountKillOfLastTarget()
     {
         if (_currentFight?.LastTargetId is not { } lastTargetId)
@@ -500,7 +492,7 @@ internal sealed class CombatController : IDisposable
     {
         IGameObject? player = _objectTable[0];
         if (player == null)
-            return; // uh oh
+            return;
 
         float hitboxOffset = player.HitboxRadius + gameObject.HitboxRadius;
         float actualDistance = Vector3.Distance(player.Position, gameObject.Position);
@@ -567,11 +559,6 @@ internal sealed class CombatController : IDisposable
         _previousQuestVariables = _currentFight!.Data.ElementId != null
             ? QuestFunctions.GetQuestProgressInfo(_currentFight.Data.ElementId)?.Variables
             : null;
-        /*
-        _logger.LogTrace("UpdateTargetData: {TargetId}; {QuestVariables}",
-            target?.GameObjectId.ToString("X8", CultureInfo.InvariantCulture) ?? "null",
-            _previousQuestVariables != null ? string.Join(", ", _previousQuestVariables) : "null");
-        */
     }
 
     public void Stop(string label)

@@ -136,10 +136,6 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
             (feature, enabled) => _setFeatureEnabled.InvokeAction(feature, enabled));
     }
 
-    /// <summary>
-    /// Pauses conflicting features during a run and restores only the ones Questionable turned off.
-    /// Features whose state could not be read, and restores that failed, are retried rather than forgotten.
-    /// </summary>
     internal sealed class FeatureSuppression(IEnumerable<string> features, ILogger logger, TimeProvider? timeProvider = null)
     {
         private static readonly TimeSpan RetryInterval = TimeSpan.FromSeconds(5);
@@ -154,7 +150,6 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
 
         public IReadOnlySet<string> OwnedOff => _ownedOff;
 
-        /// <returns>Whether <see cref="Update"/> has anything to do, so idle frames make no IPC calls.</returns>
         public bool HasWork(bool hasActiveQuest) =>
             hasActiveQuest != _runActive || (hasActiveQuest ? _unchecked.Count > 0 : _ownedOff.Count > 0);
 

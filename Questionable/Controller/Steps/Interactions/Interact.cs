@@ -150,7 +150,6 @@ internal static class Interact
         ICondition condition,
         IObjectTable objectTable,
         ClassJobUtils classJobUtils,
-        //DalamudInitializer dalamudInitializer,
         ILogger<DoInteract> logger)
         : TaskExecutor<Task>, IConditionChangeAware
     {
@@ -162,10 +161,7 @@ internal static class Interact
         private bool _reportedWrongJob;
         private ushort _unequipItem;
 
-        /// <summary>
-        ///     A slight delay when we think an interaction has ended, to make sure that we're processing "Action cancelled"
-        ///     prior to the next step (in case we're attacked).
-        /// </summary>
+        // Process a possible cancellation from combat before the next step.
         private bool delayedFinalCheck;
 
         public Quest? Quest => Task.Quest;
@@ -390,7 +386,6 @@ internal static class Interact
                 return false;
             }
 
-            // this is only relevant for followers on quests
             if (!gameObject.IsTargetable && condition[ConditionFlag.Mounted] &&
                 gameObject.ObjectKind != ObjectKind.GatheringPoint)
             {

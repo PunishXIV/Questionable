@@ -106,7 +106,6 @@ internal sealed class PluginConfigComponent
             new(NightmareXivRepositoryUrl),
             "/at c",
             AlternateRepositoryUrls: NightmareXivRepositoryAlternates),
-        //CombatPlugins[ECombatModule.BossMod]
     ];
 
     private readonly IReadOnlyList<PluginInfo> _recommendedPlugins =
@@ -153,12 +152,6 @@ internal sealed class PluginConfigComponent
                     () => automatonIpc.IsAutoSnipeEnabled,
                     () => automatonIpc.SetAutoSnipeEnabled(true))
             ]),
-        //new("MogMail",
-        //    "Mogmail",
-        //    _L("Claim mailed items during QST operation"),
-        //    new("https://github.com/Nexaii/Mogmail"),
-        //    new("https://puni.sh/api/plugins/nexai"),
-        //    "/mogmail"),
         new("NotificationMaster",
             "NotificationMaster",
             _L("Sends a configurable out-of-game notification if a quest requires manual actions."),
@@ -487,7 +480,6 @@ internal sealed class PluginConfigComponent
 
     private void DrawInstallButtons(PluginInfo plugin)
     {
-        // One click: installing adds the plugin's repository first when it is missing.
         bool installing = _installingPlugins.Contains(plugin.InternalName);
         using (ImRaii.Disabled(installing))
         {
@@ -504,10 +496,7 @@ internal sealed class PluginConfigComponent
             Util.OpenLink(plugin.WebsiteUri.ToString());
     }
 
-    /// <returns>
-    ///     The user's own URL for one of the plugin's repositories. Query strings are ignored, so a puni.sh
-    ///     repository added with <c>?authKey=</c> is reused instead of being added again without it.
-    /// </returns>
+    // Match URLs without query strings so authenticated puni.sh repositories are reused.
     private string? FindConfiguredRepository(PluginInfo plugin)
     {
         List<string> configured = GetConfiguredRepositoryUrls();
@@ -637,11 +626,8 @@ internal sealed class PluginConfigComponent
         return false;
     }
 
-    /// <summary>
-    ///     ECommons <c>AddPlugin</c> hard-codes <c>InstallPluginAsync</c> arguments. Dalamud added an
-    ///     optional <c>inheritedWorkingPluginId</c> parameter; reflection still requires it, which
-    ///     throws "Parameter count mismatch". Bind the live method's parameters by name instead.
-    /// </summary>
+    // ECommons AddPlugin hard-codes InstallPluginAsync's arguments; Dalamud's optional inheritedWorkingPluginId
+    // makes that reflection throw "Parameter count mismatch", so bind the parameters by name.
     private async Task<bool> InstallFromRepositoryAsync(string repoUrl, string internalName)
     {
         var plugins = await DalamudReflector.GetPluginMaster(repoUrl).ConfigureAwait(false);

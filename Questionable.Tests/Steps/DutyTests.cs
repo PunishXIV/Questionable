@@ -89,7 +89,7 @@ public sealed class DutyTests
         f.PollFor(3);
         Assert.Equal(ETaskResult.TaskComplete, executor.Update());
         Assert.False(f.State.HasOperation);
-        f.AssertOriginalSettings();
+        f.AssertUserProfileRestored();
     }
 
     [Fact]

@@ -44,22 +44,14 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskExecutor<T, TExecutor>();
     }
 
-    /// <summary>
-    /// Task factories and executors need paired registrations (ITaskFactory + self, or
-    /// keyed ITaskExecutor + self), which don't map cleanly onto a single Injectio attribute.
-    /// This module keeps the pairing helpers above and is picked up automatically by
-    /// Injectio's generated <c>AddQuestionable</c> extension.
-    /// </summary>
     [RegisterServices]
     public static void AddTaskRegistrations(IServiceCollection serviceCollection)
     {
-        // individual tasks
         serviceCollection.AddTaskFactory<QuestCleanUp.CheckAlliedSocietyMount>();
         serviceCollection.AddTaskFactoryAndExecutor<QuestCleanUp.CloseGatheringAddonTask, QuestCleanUp.CloseGatheringAddonFactory, QuestCleanUp.DoCloseAddon>();
         serviceCollection.AddTaskExecutor<AbandonQuest.Task, AbandonQuest.AbandonQuestExecutor>();
         serviceCollection.AddTaskExecutor<LogQuestCompletion.Task, LogQuestCompletion.LogQuestCompletionExecutor>();
         serviceCollection.AddTaskFactory<CleanUpOtherQuests.CleanUpOtherQuestsFactory>();
-        //serviceCollection.AddTaskFactoryAndExecutor<Mail.ClaimMailTask, Mail.Factory, Mail.ClaimMailExecutor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<SkipCondition.SkipTask, SkipCondition.Factory, SkipCondition.CheckSkip>();
         serviceCollection
@@ -73,7 +65,6 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskExecutor<MountStep.MountTask, MountStep.MountExecutor>();
         serviceCollection.AddTaskExecutor<MountStep.UnmountTask, MountStep.UnmountExecutor>();
 
-        // task factories
         serviceCollection
             .AddTaskFactoryAndExecutor<StepDisabled.SkipRemainingTasks, StepDisabled.Factory,
                 StepDisabled.SkipDisabledStepsExecutor>();

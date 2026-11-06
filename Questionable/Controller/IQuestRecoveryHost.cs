@@ -2,7 +2,6 @@ using Questionable.Model.Questing;
 
 namespace Questionable.Controller;
 
-/// <summary>Live state and effects used by quest stop and death recovery.</summary>
 internal interface IQuestRecoveryHost
 {
     bool IsManual { get; }
@@ -11,7 +10,7 @@ internal interface IQuestRecoveryHost
     bool IsLoggedIn { get; }
     bool EscapeRequested { get; }
     bool IsUnconscious { get; }
-    /// <summary>A provider (AutoDuty, or BossMod in a solo duty) owns death and retry behaviour right now.</summary>
+    // AutoDuty and BossMod solo duties manage their own death and retry behavior.
     bool ProviderHandlesDeath { get; }
     bool HasExternalOperation { get; }
     bool IsZoning { get; }

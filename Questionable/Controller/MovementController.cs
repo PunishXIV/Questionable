@@ -242,7 +242,6 @@ internal sealed class MovementController
                         }
                         else
                         {
-                            // aethernet shard
                             if (Math.Abs(localPlayerPosition.Y - gameObject.Position.Y) <
                                 DefaultVerticalInteractionDistance)
                             {
@@ -310,9 +309,6 @@ internal sealed class MovementController
         MovementStartedAt = DateTime.MaxValue;
     }
 
-    /// <summary>
-    /// Unpacks DestinationData params to simplify building new nav options
-    /// </summary>
     public void NavigateTo(DestinationData destination) =>
         NavigateTo(destination.MovementType, destination.DataId, destination.Position, NavigationOptions.FromDestinationData(destination));
 
@@ -660,7 +656,6 @@ internal sealed class MovementController
 
         if (Environment.TickCount64 - Destination.LastWaypoint.UpdatedAt > 500)
         {
-            // check whether we've made any progress of any kind
             if (Math.Abs(distance - Destination.LastWaypoint.Distance2DAtLastUpdate) < 0.5f && !condition[ConditionFlag.WatchingCutscene])
             {
                 int calculations = Destination.NavmeshCalculations;
@@ -708,8 +703,6 @@ internal sealed class MovementController
             // 70 is ~10 seconds of sprint
             float sprintDistance = 100f;
 
-            // if we're in towns/event areas, jog is a neat fallback (if we're not already jogging,
-            // if we're too close then sprinting will barely benefit us)
             if (!gameFunctions.HasStatus(EStatus.Jog) &&
                 ((int)GameMain.Instance()->CurrentTerritoryIntendedUseId) is 0 or 7 or 13 or 14 or 15 or 19 or 23 or 29)
             {
@@ -780,9 +773,6 @@ internal sealed class MovementController
         public double Distance2DAtLastUpdate { get; set; }
     }
 
-    /// <summary>
-    ///     Optional settings for <see cref="NavigateTo(EMovementType, uint?, Vector3, NavigationOptions)"/> and its list overload.
-    /// </summary>
     public sealed record NavigationOptions
     {
         public bool Fly { get; init; }

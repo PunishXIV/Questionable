@@ -49,7 +49,6 @@ internal static class SwitchClassJob
             return ETaskResult.StillRunning;
         }
 
-        // can we even take damage while switching jobs? we should be out of combat...
         public override bool ShouldInterruptOnDamage() => false;
     }
 }

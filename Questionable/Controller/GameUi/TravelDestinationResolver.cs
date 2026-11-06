@@ -4,11 +4,6 @@ using Questionable.Model.Questing;
 
 namespace Questionable.Controller.GameUi;
 
-/// <summary>
-///     Resolves travel destinations for interaction handlers: the target territory of the current
-///     quest step, and the warp entry matching a given prompt. Shared by the dialogue-choice and
-///     yes/no interaction handlers.
-/// </summary>
 [RegisterSingleton]
 internal sealed class TravelDestinationResolver(
     IDataManager dataManager,
@@ -56,7 +51,7 @@ internal sealed class TravelDestinationResolver(
     public bool TryFindWarp(ushort targetTerritoryId, string actualPrompt, [NotNullWhen(true)] out uint? warpId,
         [NotNullWhen(true)] out string? warpText)
     {
-        // Override for island sanc, this is not good and should be cleaner
+        // Island Sanctuary workaround.
         if (targetTerritoryId == 1055)
         {
             warpId = 131497;

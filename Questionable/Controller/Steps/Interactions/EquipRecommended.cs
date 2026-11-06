@@ -32,10 +32,8 @@ internal static class EquipRecommended
                 step.InteractionType != EInteractionType.Combat)
                 yield break;
 
-            // If step equips something, we probably want to leave the manually equipped item
             if (sequence.Steps.Any(x => x.InteractionType is EInteractionType.EquipItem))
                 yield break;
-            // If there's an unequipped job stone, find it and equip it
             if (objectTable[0] is IPlayerCharacter player &&
                 ClassJobUtils.ClassToJobStone((Job)player.ClassJob.Value.RowId) is (Job targetJob, ushort jobStone))
             {

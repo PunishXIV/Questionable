@@ -20,7 +20,6 @@ internal unsafe sealed class RedoUtil
     private readonly ILogger<RedoUtil> _logger;
     private Domain.Quest? _unlockQuest;
     private bool _warned;
-    // lazy-init + one-shot recovery log; not pure
     internal Domain.Quest? UnlockQuest
     {
         get
@@ -100,15 +99,8 @@ internal unsafe sealed class RedoUtil
         return new(key, index);
     }
 
-
-    /// <summary>
-    /// if NG+ is already active, this silently overwrites the chapter index to 0 so NG+ is turned off.
-    /// users of this function then need to run it again to send the right value.
-    /// this is intended behaviour. do not change this. -alydev
-    /// </summary>
-    /// <param name="chapterIndex"></param>
-    /// <param name="redoChapter"></param>
-    /// <param name="questRedoChapter"></param>
+    // If NG+ is already active, this silently overwrites the chapter index to 0 so NG+ is turned off.
+    // Callers then need to run it again to send the right value. This is intended behaviour, do not change this. -alydev
     internal void SendRedoCommand(int? chapterIndex = null, RedoChapter? redoChapter = null, QuestRedoChapterUI? questRedoChapter = null)
     {
         if (chapterIndex == null)

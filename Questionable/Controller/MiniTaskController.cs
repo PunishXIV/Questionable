@@ -154,7 +154,6 @@ internal abstract class MiniTaskController<T> : IDisposable
 
                 _taskQueue.CurrentTaskExecutor = null;
 
-                // handled in next update
                 return;
 
             case ETaskResult.NextStep:

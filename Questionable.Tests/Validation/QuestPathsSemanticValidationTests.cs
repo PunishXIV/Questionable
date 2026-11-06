@@ -14,24 +14,12 @@ using Xunit;
 
 namespace Questionable.Tests.Validation;
 
-/// <summary>
-/// Runs the semantic <see cref="IQuestValidator"/> implementations against every quest JSON
-/// embedded from <c>QuestPaths/</c> and fails if any validator produces an issue with
-/// <see cref="EIssueSeverity.Error"/> severity.
-/// <para>
-/// This is the "framework" test for on-disk quest validation. To add another validator to the
-/// gate, extend <see cref="BuildValidators"/> — provided the validator can be constructed
-/// without runtime Dalamud services and only inspects <c>Quest.Id</c> / <c>Quest.Root</c>.
-/// Validators that need <see cref="IQuestInfo"/> beyond <see cref="IQuestInfo.QuestId"/>
-/// should stay in the plugin-side test path for now.
-/// </para>
-/// </summary>
+// Only validators independent of runtime Dalamud services belong in this test gate.
 public sealed class QuestPathsSemanticValidationTests
 {
     private static IReadOnlyList<IQuestValidator> BuildValidators() =>
     [
         new UniqueStartStopValidator(),
-        // Add further Dalamud-free validators here as coverage grows.
     ];
 
     [Theory]

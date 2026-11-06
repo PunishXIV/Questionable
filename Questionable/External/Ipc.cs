@@ -94,7 +94,6 @@ internal static class IpcInvoke
         }
     }
 
-    /// <summary>Runs <paramref name="action"/> on the framework thread, or inline if already on it.</summary>
     public static void TryOnFrameworkThread(IFramework framework, Action action, ILogger? logger = null)
     {
         try

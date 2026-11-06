@@ -4,15 +4,10 @@ using static Questionable.Controller.Steps.ITaskExecutor;
 
 namespace Questionable.Controller.Steps.Shared;
 
-/// <summary>
-///     Gil shop purchases are handed to Knightshopper, which picks a vendor and travels there itself.
-/// </summary>
+// Knightshopper chooses the vendor and travels for gil purchases.
 internal static class Purchase
 {
-    /// <summary>
-    ///     Steps where QST shouldn't travel to or talk to the vendor, since Knightshopper does both. Anything not sold
-    ///     for gil (GC seals, tomestones, special currencies) stays with the quest path.
-    /// </summary>
+    // Non-gil currencies stay with the quest path.
     public static bool IsHandledByKnightshopper(QuestStep step, GilShopData gilShopData) =>
         step is { InteractionType: EInteractionType.PurchaseItem, ItemId: { } itemId } &&
         step.PurchaseMenu?.ExcelSheet != "SpecialShop" &&
@@ -133,7 +128,6 @@ internal static class Purchase
                 _knightshopperIpc.CancelOwned();
         }
 
-        // Knightshopper handles travel and the shop windows
         public override bool ShouldInterruptOnDamage() => false;
 
         private static unsafe int GetOwnedCount(BuyTask task)

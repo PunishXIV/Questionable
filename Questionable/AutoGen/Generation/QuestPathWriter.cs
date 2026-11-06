@@ -13,12 +13,10 @@ using Quest = Lumina.Excel.Sheets.Quest;
 
 namespace Questionable.AutoGen.Generation;
 
-/// <summary>Serializes a generated path the same way the plugin's own editor does.</summary>
 internal static class QuestPathWriter
 {
     private const string SchemaUrl = "https://qstxiv.github.io/schema/quest-v1.json";
 
-    /// <summary>Mirrors <c>Questionable.Utils.JsonOptions.Default</c>, which the checked-in paths are written with.</summary>
     private static readonly JsonSerializerOptions Options = new()
     {
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
@@ -39,7 +37,6 @@ internal static class QuestPathWriter
     internal static string FileName(Quest quest) =>
         $"{quest.RowId & 0xFFFF}_{SimplifyName(QuestGameData.QuestName(quest))}.json";
 
-    /// <summary>Same character stripping <c>QuestInfo.SimplifiedName</c> applies before using a name as a filename.</summary>
     private static string SimplifyName(string name)
     {
         foreach (char invalid in new[] { '.', '*', '"', '/', '\\', '<', '>', '|', ':', '?' })
@@ -61,7 +58,6 @@ internal static class QuestPathWriter
         return output.ToJsonString(Options);
     }
 
-    /// <summary>Whether a path for this quest is already on disk, and so should be left alone.</summary>
     internal static bool Exists(Quest quest, string directory) =>
         File.Exists(Path.Combine(directory, FileName(quest)));
 
@@ -73,10 +69,6 @@ internal static class QuestPathWriter
         return file;
     }
 
-    /// <summary>
-    ///     Adds the <c>$</c> dev comment to each step. It is not part of the C# model — only of the JSON schema —
-    ///     so it has to go in after serialization, matched up positionally with the sequences it came from.
-    /// </summary>
     private static void InjectDevComments(JsonObject output, QuestPathResult result)
     {
         if (output["QuestSequence"] is not JsonArray sequences)

@@ -168,7 +168,6 @@ public sealed class QuestionablePlugin(
         var savedConfig = (Configuration?)pluginInterface.GetPluginConfig();
         if (savedConfig != null && savedConfig.Version != Configuration.PluginConfigVersion)
         {
-            // Backup config when version changes
             pluginInterface.ConfigFile.CopyTo(Path.ChangeExtension(pluginInterface.ConfigFile.FullName, ".json.bak"), overwrite: true);
             savedConfig.Version = Configuration.PluginConfigVersion;
         }
@@ -215,7 +214,6 @@ public sealed class QuestionablePlugin(
         Initialize(serviceProvider);
     }
 
-    // Task factories and executors are now registered in ServiceCollectionExtensions:AddTaskRegistrations
 
     private void Initialize(IServiceProvider serviceProvider)
     {

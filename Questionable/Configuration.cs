@@ -27,11 +27,9 @@ internal sealed class Configuration : IPluginConfiguration
     internal static void ClearRuntime(Configuration configuration) =>
         Interlocked.CompareExchange(ref _runtimeInstance, null, configuration);
     #region Serialised data
-    // Variables that are not affected by profile switches
     public const int PluginSetupVersion = 5;
     public const int PluginConfigVersion = 2;
     public int PluginSetupCompleteVersion { get; set; }
-    // Persisted base sections
     [JsonProperty(nameof(General))] private GeneralConfiguration _general { get; } = new();
     [JsonProperty(nameof(Stop))] private StopConfiguration _stop { get; } = new();
     [JsonProperty(nameof(Duties))] private DutyConfiguration _duties { get; } = new();
@@ -44,31 +42,16 @@ internal sealed class Configuration : IPluginConfiguration
     public PathDataConfiguration PathData { get; } = new();
     public int Version { get; set; } = PluginConfigVersion;
 
-    /// <summary>
-    /// One-time flag: the release that defaulted auto-redeem off forces it off once on first load,
-    /// then never touches <see cref="AdvancedConfiguration.AutoRedeemRewardItems"/> again.
-    /// </summary>
     public bool AutoRedeemOffResetApplied { get; set; }
 
-    // --- Persisted profile data ---
-    /// <summary>
-    /// Named profiles. Each profile is a sparse patch — only fields that differ from
-    /// the base configuration are stored. Sections and fields absent from the patch
-    /// fall through to the base values transparently.
-    /// </summary>
     public Dictionary<string, Dictionary<string, JObject>> Profiles { get; set; } = [];
 
-    /// <summary>
-    /// Maps a character's PlayerState.ContentId to a named profile in
-    /// <see cref="Profiles"/>. Characters with no entry use the base configuration.
-    /// </summary>
     public Dictionary<string, string> CharacterProfiles { get; set; } = [];
     #endregion
 
     internal bool IsPluginSetupComplete() => PluginSetupCompleteVersion == PluginSetupVersion;
     internal void MarkPluginSetupComplete() => PluginSetupCompleteVersion = PluginSetupVersion;
 
-    // Public configuration surface; falls through to the base configuration when no profile is active
     [JsonIgnore] public GeneralConfiguration General => _activeProfileGeneral ?? _general;
     [JsonIgnore] public StopConfiguration Stop => _activeProfileStop ?? _stop;
     [JsonIgnore] public DutyConfiguration Duties => _activeProfileDuties ?? _duties;
@@ -76,10 +59,6 @@ internal sealed class Configuration : IPluginConfiguration
     [JsonIgnore] public NotificationConfiguration Notifications => _activeProfileNotifications ?? _notifications;
     [JsonIgnore] public AdvancedConfiguration Advanced => _activeProfileAdvanced ?? _advanced;
 
-    /// <summary>
-    /// Returns the base (non-profiled) instance of a section for use in the
-    /// config UI when editing base values.
-    /// </summary>
     internal GeneralConfiguration BaseGeneral => _general;
     internal StopConfiguration BaseStop => _stop;
     internal DutyConfiguration BaseDuties => _duties;
@@ -103,7 +82,6 @@ internal sealed class Configuration : IPluginConfiguration
             LanguageChanged?.Invoke(General.Language);
     }
 
-    // Runtime-only merged section code (never serialised)
     [JsonIgnore] private GeneralConfiguration? _activeProfileGeneral;
     [JsonIgnore] private StopConfiguration? _activeProfileStop;
     [JsonIgnore] private DutyConfiguration? _activeProfileDuties;
@@ -111,10 +89,6 @@ internal sealed class Configuration : IPluginConfiguration
     [JsonIgnore] private NotificationConfiguration? _activeProfileNotifications;
     [JsonIgnore] private AdvancedConfiguration? _activeProfileAdvanced;
 
-    /// <summary>
-    /// Activates the profile associated with the given character content ID, merging
-    /// it over the base configuration. Pass null or an unmapped ID to revert to base.
-    /// </summary>
     internal void ActivateForCharacter(string contentId)
     {
         if (!CharacterProfiles.TryGetValue(contentId, out var profileName) ||
@@ -127,10 +101,6 @@ internal sealed class Configuration : IPluginConfiguration
         ApplyPatches(profileName, patches);
     }
 
-    /// <summary>
-    /// Activates a named profile directly, regardless of current character.
-    /// Useful for preview/testing in the config UI.
-    /// </summary>
     internal void ActivateProfile(string profileName)
     {
         if (!Profiles.TryGetValue(profileName, out var patches))
@@ -142,9 +112,6 @@ internal sealed class Configuration : IPluginConfiguration
         ApplyPatches(profileName, patches);
     }
 
-    /// <summary>
-    /// Reverts to the base configuration (no profile active).
-    /// </summary>
     internal void ClearActiveProfile()
     {
         string previousLanguage = General.Language;
@@ -159,9 +126,6 @@ internal sealed class Configuration : IPluginConfiguration
         NotifyLanguageChanged(previousLanguage);
     }
 
-    /// <summary>
-    /// Returns the name of the currently active profile, or null if using base config.
-    /// </summary>
     [JsonIgnore] internal string? ActiveProfileName { get; private set; }
 
     private void ApplyPatches(string profileName, Dictionary<string, JObject> patches)
@@ -178,12 +142,6 @@ internal sealed class Configuration : IPluginConfiguration
         NotifyLanguageChanged(previousLanguage);
     }
 
-    /// <summary>
-    /// Serialises <paramref name="base"/> to a JObject, merges the patch for
-    /// <paramref name="sectionKey"/> on top, and deserialises the result.
-    /// Always returns a copy, even without a patch, so edits made while a profile is active
-    /// never change the base section.
-    /// </summary>
     private static T MergeSection<T>(T @base, Dictionary<string, JObject> patches, string sectionKey)
         where T : class
     {
@@ -200,11 +158,6 @@ internal sealed class Configuration : IPluginConfiguration
         return merged.ToObject<T>()!;
     }
 
-    /// <summary>
-    /// Writes the active profile's edits back into <see cref="Profiles"/> as a sparse patch,
-    /// keeping only the fields that differ from the base. Runs right before the config is
-    /// serialised, so it covers every place that saves the config.
-    /// </summary>
     [OnSerializing]
     internal void CaptureActiveProfile(StreamingContext context = default)
     {
@@ -239,22 +192,15 @@ internal sealed class Configuration : IPluginConfiguration
             patches[sectionKey] = patch;
     }
 
-    /// <summary>
-    /// Creates a new empty (no-op) profile with the given name.
-    /// </summary>
     internal void CreateProfile(string profileName)
     {
         Profiles.TryAdd(profileName, []);
     }
 
-    /// <summary>
-    /// Removes a profile and any character bindings that reference it.
-    /// </summary>
     internal void DeleteProfile(string profileName)
     {
         Profiles.Remove(profileName);
 
-        // Clean up any character bindings pointing at the deleted profile
         var toRemove = new List<string>();
         foreach (var (charId, name) in CharacterProfiles)
             if (name == profileName)
@@ -266,9 +212,6 @@ internal sealed class Configuration : IPluginConfiguration
             ClearActiveProfile();
     }
 
-    /// <summary>
-    /// Renames a profile and moves its character bindings along. Fails if the new name is taken.
-    /// </summary>
     internal bool RenameProfile(string oldName, string newName)
     {
         if (oldName == newName || Profiles.ContainsKey(newName) || !Profiles.Remove(oldName, out var patches))
@@ -283,9 +226,6 @@ internal sealed class Configuration : IPluginConfiguration
         return true;
     }
 
-    /// <summary>
-    /// Binds a character to a profile, or back to the base configuration when <paramref name="profileName"/> is null.
-    /// </summary>
     internal void AssignProfile(string contentId, string? profileName)
     {
         if (profileName == null || !Profiles.ContainsKey(profileName))
@@ -303,7 +243,6 @@ internal sealed class Configuration : IPluginConfiguration
     #region Variables
     internal sealed class GeneralConfiguration
     {
-        // Preferences
         public string Language { get; set; } = "en";
         public ECombatModule CombatModule { get; set; } = ECombatModule.None;
         public uint MountId { get; set; } = 1;
@@ -314,7 +253,6 @@ internal sealed class Configuration : IPluginConfiguration
         public EGearsetUpdateSource GearsetUpdateSource { get; set; } = EGearsetUpdateSource.Vanilla;
         public string ChocoboName { get; set; } = string.Empty;
         public string DisplayName { get; set; } = "Anonymous";
-        // UI
         public bool UseEscToCancelQuesting { get; set; } = true;
         public bool UseQuestionableTheme { get; set; } = true;
         public bool ShowIncompleteSeasonalEvents { get; set; } = true;
@@ -327,7 +265,6 @@ internal sealed class Configuration : IPluginConfiguration
         public bool HideQuestStartedJob { get; set; }
         public bool HideThingsNotAvailable { get; set; }
         public bool HideQuestRequiredLevel { get; set; }
-        // Questing
         public bool ConfigureTextAdvance { get; set; } = true;
         public bool DontSkipCutscenes { get; set; }
         public bool DontShowAnswerSuggestions { get; set; }
@@ -335,7 +272,6 @@ internal sealed class Configuration : IPluginConfiguration
         public bool UseTickets { get; set; }
         public bool SameJobThroughoutQuest { get; set; }
         public bool IgnoreNextQuestIfPrioSet { get; set; }
-        // Unimplemented/hidden
         public bool TitleBarPillCenter { get; set; } = true;
         public bool DismissedReportWarning { get; set; }
         public bool ReportsDisabled { get; set; }
@@ -426,10 +362,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool Debug { get; set; }
         public bool DebugLocalisation { get; set; }
 
-        /// <summary>
-        ///     Gates the experimental questpath auto-generation (Journal Progress right-click). Generated paths
-        ///     are unreviewed machine drafts and must not be run unattended.
-        /// </summary>
+        // Generated paths are unreviewed drafts and must not run unattended.
         public bool AllowPathGeneration { get; set; }
         public bool AutoRedeemRewardItems { get; set; }
         public HashSet<uint> AutoRedeemItemBlacklist { get; set; } = [];
@@ -457,16 +390,12 @@ internal sealed class Configuration : IPluginConfiguration
 
     internal sealed class PathDataConfiguration
     {
-        /// <summary>Whether to automatically download newer quest path bundles.</summary>
         public bool AutoUpdate { get; set; } = true;
 
-        /// <summary>Data version of the path bundle currently in <c>{ConfigDirectory}/PathData/</c>; 0 if none.</summary>
         public long InstalledDataVersion { get; set; }
 
-        /// <summary>Plugin version that downloaded the current bundle; used to discard it after a plugin update.</summary>
         public string? BundlePluginVersion { get; set; }
 
-        /// <summary>When the updater last checked for a newer bundle.</summary>
         public DateTimeOffset? LastCheck { get; set; }
     }
     #endregion

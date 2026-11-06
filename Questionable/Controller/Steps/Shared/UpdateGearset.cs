@@ -35,14 +35,12 @@ internal static class UpdateGearset
     {
         protected override unsafe bool StartInternal()
         {
-            // Safety check: ensure player is logged in
             if (!clientState.IsLoggedIn)
             {
                 logger.LogWarning("Cannot update gearset: player is not logged in");
                 throw new TaskException("Player is not logged in");
             }
 
-            // Safety check: ensure gearset module is available
             RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
             if (gearsetModule == null)
             {
@@ -50,18 +48,15 @@ internal static class UpdateGearset
                 throw new TaskException("Gearset system is not available");
             }
 
-            // Safety check: ensure player is not in combat
             if (condition[ConditionFlag.InCombat])
             {
                 logger.LogWarning("Cannot update gearset: player is in combat");
                 throw new TaskException("Cannot update gearset while in combat");
             }
 
-            // Determine which gearset to update
             int gearsetId;
             if (Task.TargetClass.HasValue)
             {
-                // Find gearset by class/job
                 logger.LogInformation("Looking for gearset with job {ClassJob}", Task.TargetClass.Value);
 
                 bool found = false;
@@ -89,8 +84,6 @@ internal static class UpdateGearset
             }
             else
             {
-                // Update the currently equipped gearset
-                // CurrentGearsetIndex is -1 if no gearset is equipped
                 gearsetId = gearsetModule->CurrentGearsetIndex;
 
                 if (gearsetId < 0)
@@ -102,8 +95,6 @@ internal static class UpdateGearset
                 logger.LogInformation("Updating currently equipped gearset {GearsetId}", gearsetId);
             }
 
-            // Update the gearset with currently equipped gear
-            // This will overwrite the gearset at the specified slot with current gear
             int result = gearsetModule->UpdateGearset(gearsetId);
 
             if (result < 0)

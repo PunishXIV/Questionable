@@ -210,7 +210,6 @@ public sealed class SoloDutyTests
         Assert.Equal(ETaskResult.TaskComplete, executor.Update());
         string? ownedPreset = _context.ActivePreset;
 
-        // Model the provider's configurable death and combat-end transitions.
         if (_context.Settings[("AutorotationConfig", "ClearPresetOnDeath")])
             _context.ActivePreset = "Force disabled";
         _context.Ipc.PollSoloDuty();

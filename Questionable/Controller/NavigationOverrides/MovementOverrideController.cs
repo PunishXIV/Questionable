@@ -88,11 +88,7 @@ internal sealed class MovementOverrideController(IClientState clientState, ILogg
     private readonly IClientState _clientState = clientState;
     private readonly ILogger<MovementOverrideController> _logger = logger;
 
-    /// <summary>
-    ///     Certain areas shouldn't have navmesh points in them, e.g. the aetheryte in HF Outskirts can't be
-    ///     walked on without jumping, but if you teleport to the wrong side you're fucked otherwise.
-    /// </summary>
-    /// <param name="navPoints">list of points to check</param>
+    // Blacklists navmesh points the game cannot traverse, such as the HF Outskirts aetheryte.
     public (List<Vector3>, bool) AdjustPath(List<Vector3> navPoints)
     {
         foreach (IBlacklistedLocation blacklistedArea in BlacklistedLocations)

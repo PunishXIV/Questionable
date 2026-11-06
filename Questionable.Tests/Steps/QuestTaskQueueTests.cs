@@ -1,6 +1,5 @@
 using System.Numerics;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
@@ -99,32 +98,16 @@ public sealed class QuestTaskQueueTests
                 StartedQuest = Progress
             };
 
-            // Exercise real Skip/Stop with a normal quest, without game hooks or native objects.
-            Controller = (QuestController)RuntimeHelpers.GetUninitializedObject(typeof(QuestController));
-            SetField("_progressLock", Activator.CreateInstance(typeof(System.Threading.Lock))!);
-            SetField("_logger", NullLogger<QuestController>.Instance);
-            SetField("_recovery", new QuestRecoveryController(NullLogger<QuestRecoveryController>.Instance));
-            SetField("_highlightObject", _highlight);
-            SetField("_tracker", tracker);
-            SetField("_objectTable", _operations.Objects);
-            SetField("_movementController", _operations.Movement);
-            SetField("_combatController", _operations.Combat);
-            SetField("_gatheringController", _operations.GatheringController);
-            SetField("_externalOperations", _operations.Coordinator);
             var configuration = new Configuration();
             configuration.Stop.RunCommandAfterStop = true;
             configuration.Stop.CommandAfterStop = "/after-stop";
-            SetField("_stopPolicy", new QuestStopPolicy(configuration, _ => StopEffects.Add("notify"),
-                StopEffects.Add, NullLogger<QuestStopPolicy>.Instance));
-            typeof(MiniTaskController<QuestController>).GetField("_taskQueue", BindingFlags.Instance | BindingFlags.NonPublic)!
-                .SetValue(Controller, Queue);
+            Controller = TestQuestController.Create(Queue, _operations, _highlight, tracker, configuration,
+                stopPolicy: new QuestStopPolicy(configuration, _ => StopEffects.Add("notify"),
+                    StopEffects.Add, NullLogger<QuestStopPolicy>.Instance));
             Controller.AutomationType = automatic
                 ? QuestController.EAutomationType.Automatic
                 : QuestController.EAutomationType.Manual;
         }
-
-        private void SetField(string name, object value) =>
-            typeof(QuestController).GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(Controller, value);
 
         public void Dispose()
         {
@@ -155,14 +138,7 @@ public sealed class QuestTaskQueueTests
         };
         using var operations = new ExternalOperationFixture();
 
-        // Skip the constructor's game hooks and UI services; exercise the real step transition.
-        var controller = (QuestController)RuntimeHelpers.GetUninitializedObject(typeof(QuestController));
-        SetField("_progressLock", Activator.CreateInstance(typeof(System.Threading.Lock))!);
-        SetField("_logger", NullLogger<QuestController>.Instance);
-        SetField("_recovery", new QuestRecoveryController(NullLogger<QuestRecoveryController>.Instance));
-        SetField("_tracker", tracker);
-        SetField("_externalOperations", operations.Coordinator);
-        SetField("_stopPolicy", new QuestStopPolicy(new Configuration(), _ => { }, _ => { }, NullLogger<QuestStopPolicy>.Instance));
+        var controller = TestQuestController.Create(operations: operations, tracker: tracker);
 
         controller.IncreaseStepCount(questId, completedSequence);
 
@@ -180,9 +156,6 @@ public sealed class QuestTaskQueueTests
             Assert.NotSame(originalStepProgress, progress.StepProgress);
             Assert.Equal(0, progress.StepProgress.PointMenuCounter);
         }
-
-        void SetField(string name, object value) =>
-            typeof(QuestController).GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(controller, value);
     }
 
     [Theory]
@@ -212,21 +185,8 @@ public sealed class QuestTaskQueueTests
         bool? busy = unknown ? null : true;
         purchase.GetBusy().Returns(provider == "purchase" ? busy : false);
         gather.GetBusy().Returns(provider == "gather" ? busy : false);
-        // Skip game-sheet and UI construction; exercise the real replan, Stop and cleanup paths.
-        var controller = (QuestController)RuntimeHelpers.GetUninitializedObject(typeof(QuestController));
-        SetField("_logger", NullLogger<QuestController>.Instance);
-        SetField("_recovery", new QuestRecoveryController(NullLogger<QuestRecoveryController>.Instance));
-        SetField("_highlightObject", highlight);
-        SetField("_tracker", new QuestProgressTracker(null!, null!, highlight, NullLogger<QuestProgressTracker>.Instance));
-        SetField("_objectTable", operations.Objects);
-        SetField("_movementController", operations.Movement);
-        SetField("_combatController", operations.Combat);
-        SetField("_externalOperations", operations.Coordinator);
-        SetField("_stopPolicy", new QuestStopPolicy(new Configuration(), _ => { }, _ => { }, NullLogger<QuestStopPolicy>.Instance));
-        SetField("_gatheringController", operations.GatheringController);
         var queue = new TaskQueue(NullLogger.Instance);
-        typeof(MiniTaskController<QuestController>).GetField("_taskQueue", BindingFlags.Instance | BindingFlags.NonPublic)!
-            .SetValue(controller, queue);
+        var controller = TestQuestController.Create(queue, operations, highlight);
         var executor = Substitute.For<ITaskExecutor.IStoppableTaskExecutor>();
         var current = new MoveTask(958, Vector3.One);
         executor.Start(current).Returns(true);
@@ -266,9 +226,6 @@ public sealed class QuestTaskQueueTests
         executor.Received(1).StopNow();
         executor.DidNotReceive().Update();
         Assert.Equal(["purchase", "gathering", "fishing"], cleanupOrder);
-
-        void SetField(string name, object value) =>
-            typeof(QuestController).GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(controller, value);
 
         void Replan()
         {

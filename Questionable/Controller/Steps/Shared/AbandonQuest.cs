@@ -26,7 +26,6 @@ internal static class AbandonQuest
         private uint attempts;
         protected override bool Start()
         {
-            // Safety check: ensure player is logged in
             if (objectTable[0] == null || !clientState.IsLoggedIn || Task.Quest == null)
             {
                 throw new TaskException("Player is not logged in or quest is null");

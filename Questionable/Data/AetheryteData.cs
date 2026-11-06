@@ -330,9 +330,6 @@ internal sealed class AetheryteData : IAetheryteTerritoryProvider
         }
     }
 
-    /// <summary>
-    ///     Airship landings are special as they're one-way only (except for Radz-at-Han, which is a normal aetheryte).
-    /// </summary>
     private ReadOnlyDictionary<EAetheryteLocation, Vector3> AirshipLandingLocations { get; } =
         new Dictionary<EAetheryteLocation, Vector3>
         {

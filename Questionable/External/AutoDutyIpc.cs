@@ -10,6 +10,8 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
 {
     private const string UnsyncedKey = "Meta.Unsynced";
     private const string DutyModeKey = "Meta.DutyModeEnum";
+    internal const string ProfileName = "Questionable";
+
     private readonly Configuration _configuration;
     private readonly Func<uint, TerritoryData.ContentFinderConditionData?> _findContent;
     private readonly Func<AutoDutyGameState> _gameState;
@@ -19,14 +21,15 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
     private readonly ICallGateSubscriber<uint, bool> _contentHasPath;
     private readonly ICallGateSubscriber<bool> _isStopped;
     private readonly ICallGateSubscriber<uint, int, bool, object> _run;
+    private readonly ICallGateSubscriber<string, uint, int, bool, object> _runForPlugin;
+    private readonly ICallGateSubscriber<string, bool, object> _pluginConfig;
     private readonly ICallGateSubscriber<string, string> _getConfig;
     private readonly ICallGateSubscriber<string, object, object> _setConfig;
     private readonly ICallGateSubscriber<object> _stop;
     private readonly ICallGateSubscriber<bool> _pathRunning;
     private readonly ICallGateSubscriber<bool> _pathFinding;
     private readonly ICallGateSubscriber<bool> _simplePathFinding;
-    private readonly List<SettingOverride> _settings = [];
-    private bool _loggedRestoreFailure;
+    private bool _loggedReleaseFailure;
 
     public AutoDutyIpc(IDalamudPluginInterface pluginInterface, Configuration configuration,
         TerritoryData territoryData, ILogger<AutoDutyIpc> logger, AutoDutyOperationState operation,
@@ -55,6 +58,8 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
         _contentHasPath = pluginInterface.GetIpcSubscriber<uint, bool>("AutoDuty.ContentHasPath");
         _isStopped = pluginInterface.GetIpcSubscriber<bool>("AutoDuty.IsStopped");
         _run = pluginInterface.GetIpcSubscriber<uint, int, bool, object>("AutoDuty.Run");
+        _runForPlugin = pluginInterface.GetIpcSubscriber<string, uint, int, bool, object>("AutoDuty.RunForPlugin");
+        _pluginConfig = pluginInterface.GetIpcSubscriber<string, bool, object>("AutoDuty.PluginConfig");
         _getConfig = pluginInterface.GetIpcSubscriber<string, string>("AutoDuty.GetConfig");
         _setConfig = pluginInterface.GetIpcSubscriber<string, object, object>("AutoDuty.SetConfig");
         _stop = pluginInterface.GetIpcSubscriber<object>("AutoDuty.Stop");
@@ -77,7 +82,9 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
     public override string InternalName => "AutoDuty";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     public override bool IsReady() => GetStopped() != null && _contentHasPath.HasFunction &&
-        _getConfig.HasFunction && _setConfig.HasAction;
+        _getConfig.HasFunction && _setConfig.HasAction && SupportsPluginProfile();
+
+    private bool SupportsPluginProfile() => _pluginConfig.HasAction && _runForPlugin.HasAction;
 
     public bool IsAvailable()
     {
@@ -133,41 +140,29 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
         if (!IsConfiguredToRunContent(new DutyOptions { ContentFinderConditionId = cfcId, Enabled = pathEnabled }))
             throw new TaskException("AutoDuty is disabled or this duty is excluded or unsupported.");
         var data = _findContent(cfcId) ?? throw new TaskException($"Unknown ContentFinderConditionId {cfcId}");
+        if (GetStopped() != null && !SupportsPluginProfile())
+            throw new TaskException("Update AutoDuty: this version can't run duties in a separate Questionable profile.");
         if (!IsReady() || GetStopped() != true)
             throw new TaskException("AutoDuty is unavailable or busy; refusing to replace its work.");
         var game = ReadGameState();
         if (!game.Available || !game.Idle || game.InQueue || game.Loading || game.InDuty)
             throw new TaskException("Cannot start AutoDuty while native duty, queue or movement is active.");
 
-        // Not every AutoDuty version supports these GetConfig keys; read both before changing anything.
-        string unsynced;
-        string mode;
-        try
-        {
-            unsynced = ReadSetting(UnsyncedKey);
-            mode = ReadSetting(DutyModeKey);
-        }
-        catch (Exception e)
-        {
-            throw new TaskException("AutoDuty must expose readable duty mode and unsynced settings before starting.", e);
-        }
-
-        if (GetStopped() != true)
-            throw new TaskException("AutoDuty became busy or unavailable before submission.");
         Operation.BeginSubmission(data.TerritoryId);
-        _settings.Clear();
-        _loggedRestoreFailure = false;
+        _loggedReleaseFailure = false;
         try
         {
-            ApplySetting(UnsyncedKey, unsynced, (dutyMode == DutyMode.Regular).ToString());
-            ApplySetting(DutyModeKey, mode, dutyMode.ToString());
+            // Before SetConfig, so it writes to our profile instead of the user's.
+            _pluginConfig.InvokeAction(ProfileName, true);
+            ApplySetting(UnsyncedKey, (dutyMode == DutyMode.Regular).ToString());
+            ApplySetting(DutyModeKey, dutyMode.ToString());
             if (GetStopped() != true)
             {
-                Operation.RequireReconciliation("AutoDuty became busy during configuration; its work is not owned", providerLost: true);
+                Operation.RequireReconciliation("AutoDuty became busy during configuration; its work is not owned");
                 throw new TaskException("AutoDuty became busy during configuration.");
             }
             Operation.MarkRunSubmitted();
-            _run.InvokeAction(data.TerritoryId, 1, !_configuration.Advanced.DisableAutoDutyBareMode);
+            _runForPlugin.InvokeAction(ProfileName, data.TerritoryId, 1, !_configuration.Advanced.DisableAutoDutyBareMode);
             // Run returns nothing; watch for activity instead of retrying it.
             PollOperation();
         }
@@ -175,7 +170,7 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
         {
             Operation.RequireReconciliation(Operation.RunSubmitted
                 ? "AutoDuty submission is uncertain; check its work before restarting"
-                : "AutoDuty configuration failed; temporary settings must be reconciled");
+                : "AutoDuty configuration failed; its profile will be switched back while idle");
             throw new TaskException(_LF("Unable to run content with AutoDuty: {0}", e.Message), e);
         }
     }
@@ -199,11 +194,11 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
         if (!HasOperation)
             return;
         Operation.Observe(GetStopped(), ReadGameState());
-        if (!Operation.CanRestoreSettings)
+        if (!Operation.CanReleaseProfile)
             return;
-        if (RestoreSettings())
+        if (ReleaseProfile())
         {
-            Operation.SettingsRestored();
+            Operation.ProfileReleased();
             Operation.FinishIfSettled();
         }
     }
@@ -259,49 +254,28 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
         throw new InvalidOperationException($"AutoDuty returned an unsupported value for {key}.");
     }
 
-    private void ApplySetting(string key, string original, string applied)
+    private void ApplySetting(string key, string applied)
     {
-        if (original == applied)
-            return;
-        _settings.Add(new SettingOverride(key, original, applied));
         _setConfig.InvokeAction(key, applied);
         if (ReadSetting(key) != applied)
             throw new InvalidOperationException($"AutoDuty did not apply {key}.");
     }
 
-    private bool RestoreSettings()
+    // AutoDuty switches back itself when a run stops; this covers runs that never started.
+    private bool ReleaseProfile()
     {
         try
         {
-            for (int i = _settings.Count - 1; i >= 0; --i)
-            {
-                var setting = _settings[i];
-                string current = ReadSetting(setting.Key);
-                if (current == setting.Applied)
-                {
-                    // Don't restore old settings into a reloaded AutoDuty.
-                    if (Operation.ProviderLost)
-                    {
-                        string label = setting.Key == UnsyncedKey ? "unsynced setting" : "duty mode";
-                        Operation.RequireReconciliation($"Restore AutoDuty's {label} to {setting.Original}, or choose a different value, then confirm idle. " +
-                            "The previous provider or operation was lost, so Questionable cannot safely restore it automatically.");
-                        return false;
-                    }
-                    _setConfig.InvokeAction(setting.Key, setting.Original);
-                    if (ReadSetting(setting.Key) != setting.Original)
-                        throw new InvalidOperationException($"AutoDuty did not restore {setting.Key}.");
-                }
-                _settings.RemoveAt(i); // preserve a later user edit
-            }
+            _pluginConfig.InvokeAction(ProfileName, false);
             return true;
         }
         catch (Exception e)
         {
-            Operation.RequireReconciliation("AutoDuty settings restoration failed; cleanup will be retried while idle");
-            if (!_loggedRestoreFailure)
+            Operation.RequireReconciliation("AutoDuty didn't switch back from Questionable's profile; this will be retried while idle");
+            if (!_loggedReleaseFailure)
             {
-                _logger.LogWarning(e, "Unable to restore AutoDuty temporary settings");
-                _loggedRestoreFailure = true;
+                _logger.LogWarning(e, "Unable to switch AutoDuty back from Questionable's profile");
+                _loggedReleaseFailure = true;
             }
             return false;
         }
@@ -313,6 +287,4 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
             _dutyState.DutyCompleted -= _dutyCompleted;
         // The controller attempts cancellation on the framework thread before disposal.
     }
-
-    private sealed record SettingOverride(string Key, string Original, string Applied);
 }

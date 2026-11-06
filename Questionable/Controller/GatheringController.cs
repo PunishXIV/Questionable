@@ -2,7 +2,6 @@
 
 namespace Questionable.Controller;
 
-/// <summary>Verifies transient gathering without editing the provider's saved list.</summary>
 [RegisterSingleton]
 internal sealed class GatheringController
 {

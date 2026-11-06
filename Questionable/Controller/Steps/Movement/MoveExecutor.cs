@@ -157,8 +157,6 @@ internal sealed class MoveExecutor
 
     public override bool ShouldInterruptOnDamage()
     {
-        // (a) waiting for a mount to complete, or
-        // (b) want combat to be done before any other interaction?
         return _mountBeforeMovement != null || ShouldResolveCombatBeforeNextInteraction();
     }
 

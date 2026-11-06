@@ -57,7 +57,6 @@ internal sealed class JournalData
             4801, // fall guys
         ]).FromNumericListOfQuests().Select(q => questData.GetQuestInfo(q)).ToArray());
 
-        // Reassign special sidequests to another genre
         Dictionary<QuestId, uint> questReassignPairs = new() {
             { new(432), GenreSpecialQuests }, // arr ex mount
             { new(1550), GenreSpecialQuests }, // hw ex mount

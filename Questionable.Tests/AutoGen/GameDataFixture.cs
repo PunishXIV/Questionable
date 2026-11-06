@@ -9,16 +9,7 @@ using Questionable.AutoGen.Generation;
 
 namespace Questionable.Tests.AutoGen;
 
-/// <summary>
-///     Shared game-data handle for the questpath generator tests.
-///     <para>
-///         These tests read the installed game's sqpack, which CI does not have. When no installation is
-///         found <see cref="GameDataFactAttribute"/> reports the tests as skipped. The
-///         generator is only meaningfully testable against real game data, and a mocked
-///         <c>Quest</c>/<c>Level</c>/Lua corpus would test the mock rather than the derivation rules.
-///         Set <c>QUESTIONABLE_GAME_PATH</c> to point at a game folder explicitly.
-///     </para>
-/// </summary>
+// Generator tests need real sqpack; without an installation they are skipped.
 public sealed class GameDataFixture : IDisposable
 {
     internal const string GamePathEnvVar = "QUESTIONABLE_GAME_PATH";
@@ -55,7 +46,7 @@ public sealed class GameDataFixture : IDisposable
 
     public bool Available => GameData != null && Factory != null;
 
-    /// <summary>Fixed author, so generated output never depends on the machine's configuration.</summary>
+    // Keep generated output independent of machine configuration.
     public const string Author = "TestBot";
 
     internal QuestPathAutoGenerator CreateGenerator() =>

@@ -456,7 +456,6 @@ internal sealed class PriorityWindow : LWindow
         ]).FromNumericListOfQuests();
         List<ElementId> postARRUnlocks = ((ushort[])[
             // don't add DoH/DoL unlocks to this
-            // Features
             434, 435, 488, 3081, 3201, 437, 489, 436,  // gold saucer
             1212, 565, // unlock LB, then second part of 436 ^, then unlock rest of housing districts
             1213, 1214, // housing districts
@@ -471,7 +470,6 @@ internal sealed class PriorityWindow : LWindow
             4644, // island sanc visit
             3759, // new game+
             5187, // free fantasia
-            // Duties
             94, // sastacha hard
             697, 1410, // halatali
             764, 96, // qarn
@@ -489,7 +487,6 @@ internal sealed class PriorityWindow : LWindow
             1524, // tamtara hard
             1525, // stone vigil hard
             1526, // hullbreaker isle
-            //2248, // hullbreaker hard requires HW
             1556, // palace of the dead
             1308, // ultimates
             705, // ARR relics
@@ -511,7 +508,6 @@ internal sealed class PriorityWindow : LWindow
             2402, // sohm al hard
         ]).FromNumericListOfQuests();
         List<ElementId> jobUnlocks = ((ushort[])[
-            // Gridania
             181,131,219, // Archer
             180,132,218, // Lancer
             182,133,211, // Conjurer
@@ -521,7 +517,6 @@ internal sealed class PriorityWindow : LWindow
             3261,3262, // Gunbreaker
             4854,4855, // Pictomancer
             5490,5491, // Beastmaster
-            // Limsa
             179,310,312, // Marauder
             451,452,454, // Arcanist
             101,102,104, // Rogue
@@ -532,7 +527,6 @@ internal sealed class PriorityWindow : LWindow
             3249,3250, // Dancer
             3192,3193, // Blue Mage
             4067,4068, // Sage
-            // Uldah
             177,285,286, // Gladiator
             183,344,346, // Thaumaturge
             178,532,553, // Pugilist
@@ -544,7 +538,6 @@ internal sealed class PriorityWindow : LWindow
             2576,2577, // Red Mage
             4073,4074, // Reaper
             4848,4849, // Viper
-            // Ishgard
             2109,1696,1697, // Machinist
             2110,2053,2054, // Dark Knight
             2123,2012,2013, // Astrologian

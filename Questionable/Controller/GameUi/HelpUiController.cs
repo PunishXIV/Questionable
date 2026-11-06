@@ -100,9 +100,7 @@ internal sealed class HelpUiController : IDisposable
         addon->FireCallbackInt(13);
     }
 
-    /// <summary>
-    ///     Opened e.g. the first time you open the duty finder window during Sastasha.
-    /// </summary>
+    // The game can open this when Duty Finder is first opened during Sastasha.
     private unsafe void MultipleHelpWindowPostSetup(AddonEvent type, AddonArgs args)
     {
         if (_questController.StartedQuest?.Quest.Id.Value == 245)

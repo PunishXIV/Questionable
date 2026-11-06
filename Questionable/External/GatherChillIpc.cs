@@ -9,7 +9,6 @@ internal sealed class GatherChillIpc(IDalamudPluginInterface pluginInterface, IL
 {
     internal const string Owner = "Questionable";
 
-    /// <summary>First API version with <c>GatherChill.StartJob</c>.</summary>
     private const int MinimumApiVersion = 3;
 
     private readonly ICallGateSubscriber<int> _apiVersion = pluginInterface.GetIpcSubscriber<int>("GatherChill.ApiVersion");

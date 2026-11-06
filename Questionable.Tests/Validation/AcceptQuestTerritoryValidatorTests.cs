@@ -43,8 +43,6 @@ public sealed class AcceptQuestTerritoryValidatorTests
         _validator = new AcceptQuestTerritoryValidator(provider);
     }
 
-    // --- helpers ---
-
     private static QuestStep InteractStep(uint territoryId,
         EAetheryteLocation? aetheryteShortcut = null,
         AethernetShortcut? aethernetShortcut = null) =>
@@ -66,8 +64,6 @@ public sealed class AcceptQuestTerritoryValidatorTests
             AetheryteShortcut = aetheryteShortcut,
             AethernetShortcut = aethernetShortcut,
         };
-
-    // --- happy paths ---
 
     [Fact]
     public void AcceptQuest_TerritoryIsAetheryteTerritory_ReturnsNoIssues()
@@ -101,8 +97,6 @@ public sealed class AcceptQuestTerritoryValidatorTests
         Assert.Empty(_validator.Validate(quest));
     }
 
-    // --- the failing case ---
-
     [Fact]
     public void AcceptQuest_UnknownTerritory_NoShortcuts_ReturnsNone()
     {
@@ -117,8 +111,6 @@ public sealed class AcceptQuestTerritoryValidatorTests
         Assert.Equal((byte)0, issues[0].Sequence);
         Assert.Equal(0, issues[0].Step);
     }
-
-    // --- scope: only sequence 0 AcceptQuest steps are checked ---
 
     [Fact]
     public void NonAcceptQuestStep_InSequence0_IsIgnored()
@@ -152,8 +144,6 @@ public sealed class AcceptQuestTerritoryValidatorTests
         Assert.Empty(_validator.Validate(quest));
     }
 
-    // --- known exceptions ---
-
     [Theory]
     [MemberData(nameof(CharacterStartingTerritoryData))]
     public void AcceptQuest_InCharacterStartingTerritory_NoShortcuts_ReturnsNoIssues(uint territoryId)
@@ -173,8 +163,6 @@ public sealed class AcceptQuestTerritoryValidatorTests
 
         Assert.Empty(_validator.Validate(quest));
     }
-
-    // --- multiple steps ---
 
     [Fact]
     public void OnlyOffendingAcceptQuestStepIsReported()

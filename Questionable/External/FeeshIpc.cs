@@ -3,7 +3,6 @@ using static Questionable.External.IPCUtils;
 
 namespace Questionable.External;
 
-/// <summary>WahTools' Feesh catch jobs: one job per owner, no job IDs.</summary>
 [RegisterSingleton<IFeeshIpc, FeeshIpc>]
 internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
 {
@@ -187,10 +186,6 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
         }
     }
 
-    /// <summary>
-    /// Reads the first word of <c>Catching</c>: "fishing", then "finishing" while the rod and travel settle, then
-    /// the result ("done|partial|failed|cancelled|stopped ..."), which stays until the next job.
-    /// </summary>
     internal static EFeeshJobState ParseState(string? text)
     {
         if (text == null)
@@ -279,48 +274,37 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
 
 internal interface IFeeshIpc
 {
-    /// <summary>WahTools is loaded and Feesh answers.</summary>
     bool IsAvailable();
 
-    /// <summary><c>WahTools.IsBusy</c>; null if unreadable.</summary>
     bool? GetBusy();
 
-    /// <summary>Feesh knows a spot for this fish.</summary>
     bool CanCatch(uint fishId);
 
-    /// <summary>Catches <paramref name="additionalCount"/> more and keeps them until released.</summary>
     FeeshStartResult StartCatch(uint fishId, int additionalCount, out string message);
 
     void PollOperation();
 
-    /// <summary>Ends the job early; the executor keeps ownership.</summary>
     void RequestStop();
 
     void CancelOwned();
     void ObserveIdle();
 
-    /// <summary>Lets Feesh use this fish again.</summary>
     void ReleaseCatch(uint fishId);
 }
 
 internal enum FeeshStartResult
 {
     Started,
-    /// <summary>The call may have reached Feesh, but the reply was lost.</summary>
     Uncertain,
-    /// <summary>WahTools or Questionable is already busy.</summary>
     Busy,
-    /// <summary>Feesh refused the job; the reason is in the Dalamud log.</summary>
     Refused,
     NotReady,
     Invalid,
 }
 
-/// <summary>The job state from Feesh's <c>Catching</c> text.</summary>
 internal enum EFeeshJobState
 {
     Unavailable,
-    /// <summary>Empty: no job has run yet.</summary>
     None,
     Fishing,
     Finishing,
@@ -329,6 +313,5 @@ internal enum EFeeshJobState
     Failed,
     Cancelled,
     Stopped,
-    /// <summary>Unknown wording; never treated as finished.</summary>
     Unrecognized,
 }

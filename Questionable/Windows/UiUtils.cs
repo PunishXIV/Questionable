@@ -68,8 +68,6 @@ internal sealed class UiUtils(
         return (QstTheme.Danger, FontAwesomeIcon.Times);
     }
 
-    /// <returns>bool: IsItemHovered for whole widget</returns>
-    /// <param name="onClick">Invoked once if any part of the widget was clicked this frame.</param>
     public bool ChecklistItem(string text, Vector4 color, FontAwesomeIcon icon, float extraPadding = 0, uint? iconOverride = null, Action? onClick = null)
     {
         if (extraPadding > 0)

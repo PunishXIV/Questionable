@@ -5,10 +5,6 @@ namespace Questionable.Controller.Steps.Common;
 
 internal static class MountStep
 {
-    /// <summary>
-    ///     Distance to the destination below which mounting is not worth the cast. Applies when a step has not
-    ///     forced the issue with <c>Mount</c>/<c>Fly</c>, i.e. <see cref="EMountIf.AwayFromPosition"/>.
-    /// </summary>
     public const float MountDistance = 50f;
 
     public enum EMountIf
@@ -199,7 +195,6 @@ internal static class MountStep
 
             if (!_unmountTriggered)
             {
-                // if still flying, we still need to land
                 if (condition[ConditionFlag.InFlight])
                     gameFunctions.Unmount();
                 else

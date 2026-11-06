@@ -134,7 +134,6 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
             }
             else if (condition[ConditionFlag.Casting])
             {
-                // do nothing
                 DateTime alternativeContinueAt = DateTime.Now.AddSeconds(0.5);
                 if (alternativeContinueAt > _continueAt)
                     _continueAt = alternativeContinueAt;

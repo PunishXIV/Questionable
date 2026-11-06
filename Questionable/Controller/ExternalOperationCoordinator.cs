@@ -1,6 +1,5 @@
 namespace Questionable.Controller;
 
-/// <summary>Coordinates retained provider work. Request creation and provider recovery rules stay with their owners.</summary>
 [RegisterSingleton]
 internal sealed class ExternalOperationCoordinator : IOperationContext
 {
@@ -25,12 +24,10 @@ internal sealed class ExternalOperationCoordinator : IOperationContext
     public bool HasExternalOperation => _providers.Any(x => x.HasOperation);
     public string? BlockReason => _providers.Select(x => x.BlockReason).FirstOrDefault(x => x != null);
 
-    /// <summary>Retained work that moves the character, so Questionable must leave movement alone.</summary>
     public bool HasMovingOperation => _providers.Any(x => x.MovesCharacter && x.HasOperation);
 
     public bool MayBeMovingCharacter() => _providers.Any(x => x.MayBeMovingCharacter());
 
-    /// <summary>The provider whose retained work this executor drives, if any.</summary>
     public IOperationProvider? GetOwner(ITaskExecutor? executor) => _providers.FirstOrDefault(x => x.OwnsExecutor(executor));
 
     public bool HandlesPlayerDeath(ITaskExecutor? executor) => _providers.Any(x => x.HandlesPlayerDeath(executor));
@@ -93,7 +90,6 @@ internal sealed class ExternalOperationCoordinator : IOperationContext
 
     public bool CanUpdateTask(ITaskExecutor? executor) => _providers.All(x => x.CanUpdateTask(executor));
 
-    /// <summary>The first provider that needs checking, else the first one with a status, else null.</summary>
     public OperationPill? GetTitleBarPill()
     {
         OperationPill?[] pills = _providers.Select(x => x.GetTitleBarPill()).ToArray();

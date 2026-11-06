@@ -664,7 +664,6 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
             Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Clear();
             Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Clear();
 
-            // Get all enabled quest battles and whitelist them
             IEnumerable<SinglePlayerDutyInfo> allEnabledDuties = GetAllEnabledSinglePlayerDuties();
             foreach (SinglePlayerDutyInfo duty in allEnabledDuties)
                 Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Add(duty.ContentFinderConditionId);
@@ -766,9 +765,6 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
             {
                 totalCount++;
 
-                // a quest battle is considered "enabled" if:
-                // it's whitelisted, OR
-                // it's not blacklisted AND it's enabled by default
                 bool isEnabled = Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Contains(dutyInfo.ContentFinderConditionId) ||
                                  (!Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Contains(dutyInfo.ContentFinderConditionId) && dutyInfo.EnabledByDefault);
 
@@ -785,7 +781,6 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
         int totalEnabled = 0;
         int totalCount = 0;
 
-        // Count starting city battles
         foreach (List<SinglePlayerDutyInfo> battles in _startingCityBattles.Values)
         {
             (int enabled, int total) = GetQuestBattleCounts(battles);
@@ -793,7 +788,6 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
             totalCount += total;
         }
 
-        // Count main scenario battles by expansion
         foreach (List<SinglePlayerDutyInfo> battles in _mainScenarioBattles.Values)
         {
             (int enabled, int total) = GetQuestBattleCounts(battles);
@@ -874,9 +868,7 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
         public bool IsGridaniaStart => ContentFinderConditionId is 296 or 297 or 299 or 298;
         public bool IsUldahStart => ContentFinderConditionId is 335 or 312 or 337 or 336;
 
-        /// <summary>
-        ///     'Other' role quest is the post-EW/DT role quests.
-        /// </summary>
+        // Post-EW/DT role quests.
         public bool IsOtherRoleQuest => ContentFinderConditionId is 845 or 1016;
     }
 }

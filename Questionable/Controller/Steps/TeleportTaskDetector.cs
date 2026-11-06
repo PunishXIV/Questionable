@@ -4,9 +4,6 @@ using Questionable.Model.Common;
 
 namespace Questionable.Controller.Steps;
 
-/// <summary>
-///     Identifies upcoming tasks that will teleport the player via an aetheryte or a quest item.
-/// </summary>
 internal static class TeleportTaskDetector
 {
     public static bool IsUpcomingTeleport(ITask task, uint currentTerritoryId)

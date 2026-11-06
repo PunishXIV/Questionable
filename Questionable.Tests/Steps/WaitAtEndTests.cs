@@ -96,7 +96,6 @@ public sealed class WaitAtEndTests
         var condition = Substitute.For<ICondition>();
         condition[ConditionFlag.Mounted].Returns(mounted);
 
-        // Production registrations and update path, without native interaction executors.
         IServiceCollection services = new ServiceCollection();
         ServiceCollectionExtensions.AddTaskRegistrations(services);
         services.AddSingleton(condition);

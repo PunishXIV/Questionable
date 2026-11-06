@@ -8,7 +8,6 @@ using Questionable.External;
 
 namespace Questionable.Tests.Steps;
 
-/// <summary>Real providers over test states and substituted IPC, for code that asks the coordinator.</summary>
 internal static class TestOperationProviders
 {
     public static IOperationProvider[] Moving(PurchaseOperationState purchase, IKnightshopperIpc knightshopper,
@@ -21,7 +20,6 @@ internal static class TestOperationProviders
         new AutoDutyOperationProvider(autoDuty),
     ];
 
-    /// <summary>Created on first use, so the movement controller it needs can be built after it.</summary>
     public static Lazy<ExternalOperationCoordinator> Coordinator(IEnumerable<IOperationProvider> providers,
         Func<MovementController> movement) =>
         new(() => new ExternalOperationCoordinator(providers, movement(),

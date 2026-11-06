@@ -224,10 +224,6 @@ internal sealed class QuestJournalComponent
 
             if ((quest.Root.Comment ?? "").Contains("FATE"))
                 fate = true;
-            /*if ((quest.Root.Comment ?? "").Contains("Repeatable"))
-            {
-                repeatable = true;
-            }*/
         }
 
         ImGui.TableNextRow();

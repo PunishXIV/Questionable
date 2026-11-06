@@ -2,10 +2,7 @@ using Questionable.Model.Questing;
 
 namespace Questionable.Controller.Steps.Shared;
 
-/// <summary>
-///     Providers that travel themselves (and switch job) take over a step's travel, so Questionable skips its own
-///     for that step and, where the provider says so, for walk-only steps that just lead to it.
-/// </summary>
+// Providers that travel themselves take over the related travel steps.
 internal static class ProviderTravel
 {
     public static bool IsHandled(QuestSequence sequence, QuestStep step, IEnumerable<IOperationProvider> providers)

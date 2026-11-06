@@ -117,7 +117,7 @@ internal sealed class AlliedSocietyJournalComponent
 
             using (ImRaii.Disabled(quests.Count == 0))
             {
-                // If, of the quests in this category, any quest...
+                // Ignore Ixal Deliverance and FATE quests when flagging unchecked paths.
                 if (quests.Any(x => !x.QuestId.Value.Equals(1569) && ( // is not the Ixal delivery quest "Deliverance", and
                         !questRegistry.TryGetQuest(x.QuestId, out Quest? quest) || // is not a valid quest in the registry, or
                         (quest.Root.Disabled && quest.Root.Comment == null) || // is disabled without a comment explaining why, or

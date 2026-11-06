@@ -22,7 +22,7 @@ internal static class Fish
         }
     }
 
-    /// <summary>Feesh switches job and travels itself, so Questionable skips its own travel for these steps.</summary>
+    // Feesh switches job and travels itself.
     public static bool IsHandledByFeesh(QuestStep step, IFeeshIpc feeshIpc) =>
         step is { InteractionType: EInteractionType.Fish, ItemsToGather.Count: > 0 } &&
         step.ItemsToGather.All(item => item.Collectability == 0) &&

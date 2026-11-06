@@ -34,7 +34,6 @@ internal static class AetheryteShortcut
                     yield break;
                 bool matchesCondition(EExtraSkipCondition condition, Vector3 position) =>
                     extraConditionUtils.MatchesExtraCondition(condition, position, step.TerritoryId);
-                // Scion quest hubs
                 if (step.TerritoryId == 212) // Waking Sands
                 {
                     step.TargetTerritoryId = 212;
@@ -51,7 +50,6 @@ internal static class AetheryteShortcut
                             Destination: new(-480.9181f, 18.00103f, -386.862f));
                         yield return new Interact.Task(2001711, quest, EInteractionType.Interact);
                     }
-                    // if target position is in the solar, and we're either not in the territory yet or are not in the solar, interact to enter
                     if (step.Position != null && matchesCondition(EExtraSkipCondition.WakingSandsSolar, step.Position.Value) &&
                         (!inTerritory || objectTable[0] != null && !matchesCondition(EExtraSkipCondition.WakingSandsSolar, objectTable[0]!.Position)))
                     {
@@ -61,7 +59,6 @@ internal static class AetheryteShortcut
                             Sprint: true);
                         yield return new Interact.Task(2001715, quest, EInteractionType.Interact);
                     }
-                    // if target is *not* in Solar and we are there, interact to leave
                     if (step.Position != null && !matchesCondition(EExtraSkipCondition.WakingSandsSolar, step.Position.Value) &&
                         inTerritory && objectTable[0] != null && matchesCondition(EExtraSkipCondition.WakingSandsSolar, objectTable[0]!.Position))
                     {
@@ -86,7 +83,6 @@ internal static class AetheryteShortcut
                         yield return new Interact.Task(2002881, quest, EInteractionType.Interact);
                         yield return new WaitAtEnd.WaitForTerritory(351);
                     }
-                    // if target is in Solar and we are not currently there, interact to get there
                     if (step.Position != null && matchesCondition(EExtraSkipCondition.RisingStonesSolar, step.Position.Value) &&
                         (!inTerritory || objectTable[0] != null && !matchesCondition(EExtraSkipCondition.RisingStonesSolar, objectTable[0]!.Position)))
                     {
@@ -96,7 +92,6 @@ internal static class AetheryteShortcut
                             Sprint: true);
                         yield return new Interact.Task(2002878, quest, EInteractionType.Interact);
                     }
-                    // if target is *not* in Solar and we are there, interact to leave
                     if (step.Position != null && !matchesCondition(EExtraSkipCondition.RisingStonesSolar, step.Position.Value) &&
                         inTerritory && objectTable[0] != null && matchesCondition(EExtraSkipCondition.RisingStonesSolar, objectTable[0]!.Position))
                     {
@@ -108,10 +103,8 @@ internal static class AetheryteShortcut
                     }
                 }
 
-                // Citystates
                 else if (Territories.Skip(2).Take(4).Contains(step.TerritoryId))
                 {
-                    // of course there's an exception
                     var tId = step.TerritoryId != 128 ? step.TerritoryId - 1 : step.TerritoryId + 1;
                     EAetheryteLocation? tp = aetheryteData.NearestAetheryteTo(tId, new());
                     EAetheryteLocation? anD = new List<EAetheryteLocation?>() {
@@ -149,10 +142,7 @@ internal static class AetheryteShortcut
         }
     }
 
-    /// <param name="ExpectedTerritoryId">
-    ///     If using an aethernet shortcut after, the aetheryte's territory-id and the step's
-    ///     territory-id can differ, we always use the aetheryte's territory-id.
-    /// </param>
+    // A following aethernet shortcut can use a territory other than the step's.
     internal sealed record Task
     (
         QuestStep? Step,
@@ -235,7 +225,7 @@ internal static class AetheryteShortcut
                 return true;
             }
 
-            // quick hack, pls fix better
+            // Hack: Mor Dhona must not teleport to the Rising Stones while already there.
             if (Task.TargetAetheryte == EAetheryteLocation.MorDhona && Task.Step?.TerritoryId == 351 && clientState.TerritoryType == 351)
             {
                 logger.LogInformation("Skipping aetheryte teleport, it shouldn't be doing that anyway");
@@ -569,7 +559,6 @@ internal static class AetheryteShortcut
 
         protected override bool Start()
         {
-            // only relevant if we're actually near the s9 aetheryte at the end
             Vector3 playerPosition = objectTable[0]!.Position;
             if (aetheryteData.CalculateDistance(playerPosition, clientState.TerritoryType, Task.TargetAetheryte) >= 20)
                 return false;

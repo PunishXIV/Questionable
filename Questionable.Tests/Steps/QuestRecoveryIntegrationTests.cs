@@ -1,5 +1,3 @@
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Keys;
 using Dalamud.Plugin.Services;
@@ -26,11 +24,8 @@ public sealed class QuestRecoveryIntegrationTests
         configuration.General.UseEscToCancelQuesting = enabled;
         var keys = Substitute.For<IKeyState>();
         keys[VirtualKey.ESCAPE].Returns(pressed);
-        var controller = (QuestController)RuntimeHelpers.GetUninitializedObject(typeof(QuestController));
-        typeof(QuestController).GetField("_configuration", BindingFlags.Instance | BindingFlags.NonPublic)!
-            .SetValue(controller, configuration);
-        typeof(QuestController).GetField("_keyState", BindingFlags.Instance | BindingFlags.NonPublic)!
-            .SetValue(controller, keys);
+        var controller = TestQuestController.Create(configuration: configuration);
+        TestQuestController.Set(controller, "_keyState", keys);
 
         Assert.Equal(expected, ((IQuestRecoveryHost)controller).EscapeRequested);
     }
@@ -45,9 +40,8 @@ public sealed class QuestRecoveryIntegrationTests
         var condition = Substitute.For<ICondition>();
         condition[ConditionFlag.BetweenAreas].Returns(betweenAreas);
         condition[ConditionFlag.BetweenAreas51].Returns(betweenAreas51);
-        var controller = (QuestController)RuntimeHelpers.GetUninitializedObject(typeof(QuestController));
-        typeof(QuestController).GetField("_condition", BindingFlags.Instance | BindingFlags.NonPublic)!
-            .SetValue(controller, condition);
+        var controller = TestQuestController.Create();
+        TestQuestController.Set(controller, "_condition", condition);
 
         Assert.Equal(expected, ((IQuestRecoveryHost)controller).IsZoning);
     }
@@ -88,24 +82,15 @@ public sealed class QuestRecoveryIntegrationTests
             Assert.False(recovery.IsRecovering);
         });
 
-        // Limited wiring check: native construction and the full framework Update remain outside this fixture.
-        var controller = (QuestController)RuntimeHelpers.GetUninitializedObject(typeof(QuestController));
-        SetField("_logger", NullLogger<QuestController>.Instance);
-        SetField("_recovery", recovery);
-        SetField("_highlightObject", highlight);
-        SetField("_tracker", new QuestProgressTracker(null!, null!, highlight, NullLogger<QuestProgressTracker>.Instance));
-        SetField("_objectTable", operations.Objects);
-        SetField("_externalOperations", operations.Coordinator);
         var configuration = new Configuration();
         configuration.Stop.RunCommandAfterStop = true;
         configuration.Stop.CommandAfterStop = "/after-stop";
         List<string> stopEffects = [];
-        SetField("_stopPolicy", new QuestStopPolicy(configuration, _ => stopEffects.Add("notify"),
-            stopEffects.Add, NullLogger<QuestStopPolicy>.Instance));
+        var controller = TestQuestController.Create(queue, operations, highlight, configuration: configuration,
+            recovery: recovery, stopPolicy: new QuestStopPolicy(configuration, _ => stopEffects.Add("notify"),
+                stopEffects.Add, NullLogger<QuestStopPolicy>.Instance));
         if (uiLabel != null)
             controller.AutomationType = QuestController.EAutomationType.Automatic;
-        typeof(MiniTaskController<QuestController>).GetField("_taskQueue", BindingFlags.Instance | BindingFlags.NonPublic)!
-            .SetValue(controller, queue);
         controller.IsQuestWindowOpenFunction = () => false;
         Assert.False(controller.IsQuestingStopped);
 
@@ -126,8 +111,5 @@ public sealed class QuestRecoveryIntegrationTests
         clock.Advance(TimeSpan.FromMinutes(1));
         Assert.False(recovery.Update(recoveringHost));
         recoveringHost.DidNotReceive().RetryCurrentStep();
-
-        void SetField(string name, object value) =>
-            typeof(QuestController).GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(controller, value);
     }
 }

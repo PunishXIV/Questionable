@@ -2,10 +2,6 @@ using FFXIVClientStructs.FFXIV.Component.GUI;
 
 namespace Questionable.Controller.GameUi;
 
-/// <summary>
-///     Coordinates the per-addon interaction handlers. When automation starts it sweeps any addons
-///     that are already open; live addon events are handled by each handler's own listener.
-/// </summary>
 [RegisterSingleton]
 internal sealed class InteractionUiController : IDisposable
 {
@@ -98,10 +94,6 @@ internal sealed class InteractionUiController : IDisposable
         }
     }
 
-    /// <summary>
-    ///     Sweeps every addon that may already be open when automation starts, letting each handler
-    ///     act on it. Live addon events are handled by the individual handlers' own listeners.
-    /// </summary>
     internal void HandleCurrentDialogueChoices()
     {
         _dialogueChoiceHandler.CheckExisting();

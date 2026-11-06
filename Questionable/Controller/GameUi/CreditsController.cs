@@ -26,10 +26,6 @@ internal sealed class CreditsController : IDisposable
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "CreditScroll", CreditScrollPostSetup);
     }
 
-
-    /// <summary>
-    ///     ARR Credits.
-    /// </summary>
     private unsafe void CreditScrollPostSetup(AddonEvent type, AddonArgs args)
     {
         _logger.LogInformation("Closing Credits sequence");
@@ -37,9 +33,6 @@ internal sealed class CreditsController : IDisposable
         addon->FireCallbackInt(-2);
     }
 
-    /// <summary>
-    ///     Credits for (possibly all?) expansions, not used for ARR.
-    /// </summary>
     private unsafe void CreditPostSetup(AddonEvent type, AddonArgs args)
     {
         _logger.LogInformation("Closing Credits sequence");

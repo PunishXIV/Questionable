@@ -79,8 +79,7 @@ internal sealed class TaskCreator
                 _territoryData.TryGetContentFinderCondition(singlePlayerDutyTask.ContentFinderConditionId,
                     out TerritoryData.ContentFinderConditionData? cfcData))
             {
-                // if we have a single player duty in queue, we check if we're in the matching territory
-                // if yes, skip all steps before (e.g. teleporting, waiting for navmesh, moving, interacting)
+                // Resume queued solo duties in their instance instead of repeating travel steps.
                 if (_clientState.TerritoryType == cfcData.TerritoryId)
                 {
                     int index = newTasks.IndexOf(singlePlayerDutyTask);

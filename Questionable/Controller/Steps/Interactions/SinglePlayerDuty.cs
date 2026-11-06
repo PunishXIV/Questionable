@@ -110,8 +110,7 @@ internal static class SinglePlayerDuty
             if (!condition[ConditionFlag.BoundByDuty])
                 return ETaskResult.StillRunning;
 
-            // we add a minimum wait time to try avoid issues with starting too early
-            // could also be adding unnecessary wait time but needs more investigation ig
+            // Avoid starting the duty before the client is ready.
             if (_enteredAt == DateTime.MinValue)
                 _enteredAt = DateTime.Now;
 
@@ -211,12 +210,7 @@ internal static class SinglePlayerDuty
         public override bool ShouldInterruptOnDamage() => false;
     }
 
-    /// <summary>
-    ///     Sits after <see cref="WaitSinglePlayerDuty"/> + <see cref="DisableAi"/>. Normally the controller's
-    ///     sequence-change watcher in UpdateCurrentQuest clears this task and moves on; if no quest progress
-    ///     happens within a grace period after leaving the instance, we assume the duty failed and ask the
-    ///     controller to re-run the current step.
-    /// </summary>
+    // Retry if leaving a solo duty does not advance the quest within the grace period.
     internal sealed record WaitForSinglePlayerDutyOutcome(
         uint ContentFinderConditionId,
         ElementId QuestId,
@@ -241,8 +235,7 @@ internal static class SinglePlayerDuty
 
         public override unsafe ETaskResult Update()
         {
-            // Reset the grace timer whenever the player is busy (cutscene, loading screen,
-            // animation lock, etc.) — the quest sequence won't update during these.
+            // Quest progress cannot update while the player is busy.
             if (gameFunctions.IsOccupied() ||
                 condition[ConditionFlag.WatchingCutscene] ||
                 condition[ConditionFlag.WatchingCutscene78] ||
@@ -253,8 +246,6 @@ internal static class SinglePlayerDuty
                 return ETaskResult.StillRunning;
             }
 
-            // If somehow we're back inside the same instance (shouldn't happen — WaitSinglePlayerDuty
-            // already confirmed we exited), keep waiting.
             if (GameMain.Instance()->CurrentContentFinderConditionId == Task.ContentFinderConditionId)
             {
                 _readyAt = DateTime.Now;
@@ -267,8 +258,7 @@ internal static class SinglePlayerDuty
             if (DateTime.Now - _readyAt < GracePeriod)
                 return ETaskResult.StillRunning;
 
-            // If the in-game quest sequence advanced (or the quest is gone), the duty succeeded —
-            // QuestController.UpdateCurrentQuest will clear us; just keep waiting.
+            // If the sequence advanced, the duty succeeded and UpdateCurrentQuest clears this task; keep waiting.
             QuestProgressInfo? progress = QuestFunctions.GetQuestProgressInfo(Task.QuestId);
             if (progress == null || progress.Sequence != Task.StartSequence)
                 return ETaskResult.StillRunning;

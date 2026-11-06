@@ -16,7 +16,6 @@ internal static class NextQuest
             if (step.NextQuestId == quest.Id)
                 return null;
 
-            // probably irrelevant, since pick up is handled elsewhere (and, in particular, checks for aetherytes and stuff)
             if (questFunctions.GetPriorityQuests(onlyClassAndRoleQuests: true).Contains(step.NextQuestId))
                 return null;
 

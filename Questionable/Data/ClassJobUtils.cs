@@ -82,8 +82,6 @@ internal sealed class ClassJobUtils
             EExtendedClassJob.Viper => [Job.VPR],
             EExtendedClassJob.Pictomancer => [Job.PCT],
             EExtendedClassJob.Beastmaster => [Job.BST],
-            //EExtendedClassJob.Bastion => [Job.BAS],
-            //EExtendedClassJob.Zephyr => [Job.ZPH],
 
             EExtendedClassJob.DoW => Enum.GetValues<Job>().Where(GameDataAdapter.DealsPhysicalDamage),
             EExtendedClassJob.DoM => Enum.GetValues<Job>().Where(GameDataAdapter.DealsMagicDamage),

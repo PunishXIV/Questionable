@@ -1,6 +1,5 @@
 namespace Questionable.Controller.Operations;
 
-/// <summary>Shared ownership and recovery rules; provider IDs are retained when the API supplies them.</summary>
 internal abstract class OwnedOperationState(string providerName, string activity, TimeProvider? timeProvider = null)
 {
     private readonly TimeProvider _clock = timeProvider ?? TimeProvider.System;

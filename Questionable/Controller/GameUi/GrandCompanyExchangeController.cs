@@ -7,18 +7,7 @@ using Questionable.Model.Questing;
 
 namespace Questionable.Controller.GameUi;
 
-/// <summary>
-///     Automates buying a Grand Company Chocobo Issuance from the GC quartermaster's
-///     "Grand Company Exchange" window, so the "My Little Chocobo" quests (700/701/702) no
-///     longer need manual intervention.
-/// </summary>
-/// <remarks>
-///     Buys Grand Company seal items (Knightshopper doesn't support seals). The GC Exchange is driven through
-///     <c>AgentGrandCompanyExchange.ReceiveEvent</c>. The controller acts only while a
-///     <see cref="EInteractionType.PurchaseItem" /> step is current and the
-///     <c>GrandCompanyExchange</c> window is open. The purchase confirmation prompt is accepted by
-///     <see cref="YesNoChoiceHandler" /> via <see cref="IsAwaitingYesNo" />.
-/// </remarks>
+// Grand Company seal purchases use AgentGrandCompanyExchange; Knightshopper does not support seals.
 [RegisterSingleton]
 internal sealed unsafe class GrandCompanyExchangeController : IDisposable
 {
@@ -28,8 +17,6 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
     private const int MaterielTabValue0 = 2;
     private const int MaterielTabValue1 = 1;
 
-    //   BuyChocoboLicense buys the chocobo issuance.
-    //   BuyChocoboIssuanceSlot is its row index within the Materiel tab.
     private const int BuyValue0 = 0;
     private const int BuyChocoboIssuanceSlot = 6;
     private const int BuyQuantity = 1;
@@ -59,10 +46,6 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
         _framework.Update += OnFrameworkUpdate;
     }
 
-    /// <summary>
-    ///     Set while a purchase confirmation prompt is expected; <see cref="YesNoChoiceHandler" />
-    ///     accepts the prompt and clears this flag.
-    /// </summary>
     public bool IsAwaitingYesNo { get; set; }
 
     public void Dispose()
@@ -107,8 +90,6 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
             return;
         }
 
-        // After the purchase is triggered, wait for the issuance to arrive (caught by the
-        // inventory check above) or give up once the deadline passes.
         if (_state == EState.Purchasing)
         {
             if (DateTime.Now >= _purchaseDeadline)
@@ -155,7 +136,6 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
     private static int GetItemCount(uint itemId) =>
         InventoryManager.Instance()->GetInventoryItemCount(itemId, checkEquipped: false, checkArmory: true);
 
-    /// <summary>Closes the Grand Company Exchange window so the quest can move to the next step.</summary>
     private void CloseWindow()
     {
         if (_gameGuiAdapter.TryGetAddonByName(AddonName, out AtkUnitBase* addon))

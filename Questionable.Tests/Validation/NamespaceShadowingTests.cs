@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Questionable.Tests.Validation;
 
-public class NamespaceShadowing
+public class NamespaceShadowingTests
 {
     [Fact]
     public void MainAssembly_HasNoTypesInModelNamespace()

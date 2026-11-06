@@ -168,10 +168,6 @@ internal sealed unsafe partial class GameFunctions
 
     public bool UseItemOnPosition(Vector3 position, uint itemId) => ActionManager.Instance()->UseActionLocation(ActionType.EventItem, itemId, location: &position);
 
-    /// <returns>
-    ///     Whether the game accepted (used or queued) the action. This doesn't mean it went off, see
-    ///     <see cref="InterruptHandler.Confirmations" /> for that.
-    /// </returns>
     public bool UseAction(EAction action) => UseAction(action, out _);
 
     public bool UseAction(EAction action, out InterruptHandler.ActionRequest? request)
@@ -410,9 +406,7 @@ internal sealed unsafe partial class GameFunctions
         }
     }
 
-    /// <summary>
-    ///     Opens the variant dungeon finder. It can't preselect a dungeon, so the player picks it.
-    /// </summary>
+    // Can't preselect a dungeon, so the player picks it.
     public void OpenVariantDF()
     {
         AgentInterface* agent = AgentModule.Instance()->GetAgentByInternalId(AgentId.VVDFinder);
@@ -423,10 +417,6 @@ internal sealed unsafe partial class GameFunctions
         agent->Show();
     }
 
-    /// <summary>
-    ///     Ensures characters like '-' are handled equally in both strings, and that decoration
-    ///     macros (icons, italics, ...) and surrounding whitespace do not affect equality.
-    /// </summary>
     public static bool GameStringEquals(string? a, string? b)
     {
         if (a == null)
@@ -472,7 +462,6 @@ internal sealed unsafe partial class GameFunctions
 
     public bool IsOccupiedWithCustomDeliveryNpc(Quest? currentQuest)
     {
-        // not a supply quest?
         if (currentQuest is not { Info: SatisfactionSupplyInfo })
             return false;
 

@@ -170,7 +170,6 @@ internal static class RedeemRewardItems
 
                 _itemCountBeforeUse = inventoryManager->GetInventoryItemCount(Task.ItemReward.ItemId);
 
-                // Already gone (e.g. consumed elsewhere) - nothing to do.
                 if (_itemCountBeforeUse == 0)
                 {
                     logger.LogTrace("_itemCountBeforeUse == 0");
@@ -180,7 +179,6 @@ internal static class RedeemRewardItems
                 if (!gameFunctions.UseItem(Task.ItemReward.ItemId))
                     return ETaskResult.StillRunning;
 
-                // Record the stack we just acted on so we don't retry this exact stack forever.
                 AttemptedItems[Task.ItemReward.ItemId] = _itemCountBeforeUse;
 
                 TimeSpan castTime = Task.ItemReward.CastTime;

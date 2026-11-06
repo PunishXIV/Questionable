@@ -35,7 +35,6 @@ internal abstract class NavigationTestFixture : IDisposable
             .Returns(Pathfind);
     }
 
-    // Call after the individual fixture configures its IPCs and game state.
     protected void InitializeMovement(MovementController.DestinationData destination, Func<long> clock,
         MovementOverrideController? movementOverride = null)
     {

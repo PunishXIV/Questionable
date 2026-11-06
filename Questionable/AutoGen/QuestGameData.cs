@@ -15,10 +15,9 @@ using Quest = Lumina.Excel.Sheets.Quest;
 
 namespace Questionable.AutoGen;
 
-/// <summary>Excel and file lookups the generator needs, backed by a local game install.</summary>
 internal sealed class QuestGameData : IDisposable
 {
-    // SeIconChar.QuestSync / SeIconChar.QuestRepeatable, which the journal prefixes some names with.
+    // Journal quest names can start with these icon characters.
     private const char QuestSyncIcon = (char)0xE0BE;
     private const char QuestRepeatableIcon = (char)0xE0BF;
 
@@ -29,13 +28,12 @@ internal sealed class QuestGameData : IDisposable
     private readonly Lazy<ILookup<uint, uint>> _followers;
     private readonly Lazy<Dictionary<string, EEmote>> _emotesByCommand;
 
-    // Layer data is read per territory on first use; a quest only ever touches a handful of zones.
+    // Cache layer data per territory; a quest touches few zones.
     private readonly Dictionary<uint, Dictionary<uint, List<Vector3>>> _layerPlacements = [];
 
-    // Quest actors live in planevent; planmap and planlive carry a few of the ones tied to map markers.
+    // Quest actors are usually in planevent; map-marker actors can be in the other files.
     private static readonly string[] LayerFiles = ["planevent", "planmap", "planlive"];
 
-    /// <summary>Standalone use: opens the given <c>game/sqpack</c> directory and owns the handle.</summary>
     internal QuestGameData(string sqPackDirectory)
         : this(new GameData(sqPackDirectory, new LuminaOptions
         {
@@ -45,10 +43,7 @@ internal sealed class QuestGameData : IDisposable
     {
     }
 
-    /// <summary>
-    ///     In-plugin use: borrows an already-open <see cref="GameData"/> (Dalamud's, via
-    ///     <c>IDataManager.GameData</c>), which must not be disposed by us.
-    /// </summary>
+    // Borrows Dalamud's GameData, so it must not be disposed here.
     internal QuestGameData(GameData gameData)
         : this(gameData, ownsGameData: false)
     {
@@ -71,10 +66,9 @@ internal sealed class QuestGameData : IDisposable
     internal string GameVersion =>
         _gameData.Repositories.TryGetValue("ffxiv", out var repository) ? repository.Version : "unknown";
 
-    /// <summary>Looks a quest up by its in-journal id, the number used in questpath filenames.</summary>
     internal Quest? FindByQuestId(ushort questId)
     {
-        // Quest rows are 0x10000-based; a bare journal id needs the high bits restored.
+        // Journal ids omit the Quest row's high bits.
         foreach (Quest quest in Quests)
         {
             if ((quest.RowId & 0xFFFF) == questId && !quest.Name.IsEmpty)
@@ -90,7 +84,6 @@ internal sealed class QuestGameData : IDisposable
             _gameData.Dispose();
     }
 
-    /// <summary>The quests listed as prerequisites of <paramref name="quest"/>.</summary>
     internal IEnumerable<Quest> PreviousQuests(Quest quest)
     {
         foreach (var previous in quest.PreviousQuest)
@@ -100,7 +93,6 @@ internal sealed class QuestGameData : IDisposable
         }
     }
 
-    /// <summary>The quests that list <paramref name="quest"/> as one of their prerequisites.</summary>
     internal IEnumerable<Quest> NextQuests(Quest quest)
     {
         foreach (uint rowId in _followers.Value[quest.RowId])
@@ -110,7 +102,6 @@ internal sealed class QuestGameData : IDisposable
         }
     }
 
-    /// <summary>Reverse of <c>Quest.PreviousQuest</c>, so the chain can be walked forwards as well as back.</summary>
     private ILookup<uint, uint> BuildFollowerIndex()
     {
         List<(uint Previous, uint Next)> edges = [];
@@ -129,7 +120,6 @@ internal sealed class QuestGameData : IDisposable
         return edges.ToLookup(x => x.Previous, x => x.Next);
     }
 
-    /// <summary>Exact (case-insensitive) name matches if there are any, otherwise substring matches.</summary>
     internal IReadOnlyList<Quest> FindByName(string name)
     {
         List<Quest> exact = [];
@@ -155,7 +145,6 @@ internal sealed class QuestGameData : IDisposable
     private static string TrimJournalIcons(string name) =>
         name.TrimStart(QuestSyncIcon, QuestRepeatableIcon, ' ');
 
-    /// <summary>Reads and parses the quest's compiled Lua script, or <c>null</c> when the quest has none.</summary>
     internal LuaProto? LoadScript(Quest quest)
     {
         string id = quest.Id.ExtractText();
@@ -179,14 +168,8 @@ internal sealed class QuestGameData : IDisposable
         }
     }
 
-    /// <summary>Every <c>Level</c> row pointing at the given ENpc/EObj data id.</summary>
     internal IEnumerable<Level> LevelsForObject(uint dataId) => _levelsByObject.Value[dataId];
 
-    /// <summary>
-    ///     Every spot the territory's layer data places the given ENpc/EObj, which is where the ones the
-    ///     <c>Level</c> sheet has no row for actually stand. A quest's own actors are laid out per quest
-    ///     (<c>QST_SubSea068_001</c> and the like), so an id can appear more than once - the caller picks.
-    /// </summary>
     internal IReadOnlyList<Vector3> LayerPositions(uint dataId, uint territoryId) =>
         LayerPlacements(territoryId).TryGetValue(dataId, out List<Vector3>? positions) ? positions : [];
 
@@ -260,7 +243,6 @@ internal sealed class QuestGameData : IDisposable
         return level is { Territory.RowId: > 0 } ? level : null;
     }
 
-    /// <summary>Whether the zone has aether currents at all, which is the offline proxy for "flying is possible here".</summary>
     internal bool TerritorySupportsFlight(uint territoryId)
     {
         TerritoryType? territory = _gameData.GetExcelSheet<TerritoryType>()?.GetRowOrDefault(territoryId);
@@ -273,11 +255,6 @@ internal sealed class QuestGameData : IDisposable
         return territory?.PlaceName.ValueNullable?.Name.ExtractText() ?? $"#{territoryId}";
     }
 
-    /// <summary>
-    ///     The quest's own todo lines, indexed by their <c>TODO_nn</c> number, which lines up with the
-    ///     <c>TodoParams</c> array. Emote objectives spell the emote out here and nowhere else:
-    ///     "/dance for Aanu Vanu."
-    /// </summary>
     internal IReadOnlyList<string> TodoTexts(Quest quest)
     {
         string id = quest.Id.ExtractText();
@@ -313,7 +290,6 @@ internal sealed class QuestGameData : IDisposable
             .Select(x => byIndex.TryGetValue(x, out string? text) ? text : string.Empty)];
     }
 
-    /// <summary>Maps a text command such as <c>/dance</c> to the emote it triggers.</summary>
     internal EEmote? EmoteFromCommand(string command)
     {
         if (_emotesByCommand.Value.TryGetValue(command, out EEmote emote))
@@ -348,11 +324,6 @@ internal sealed class QuestGameData : IDisposable
         return byCommand;
     }
 
-    /// <summary>
-    ///     How many of a quest's event item you are asked to collect. The sheet's stack size is exactly that
-    ///     limit — you cannot hold more than the objective needs — so it doubles as the required count.
-    /// </summary>
-    /// <summary>Singular name of an event item, as the journal's todo lines write it ("lice comb").</summary>
     internal string EventItemName(uint itemId) =>
         _gameData.GetExcelSheet<EventItem>()?.GetRowOrDefault(itemId)?.Singular.ExtractText() ?? string.Empty;
 
@@ -372,11 +343,6 @@ internal sealed class QuestGameData : IDisposable
         return _gameData.GetExcelSheet<ENpcResident>()?.GetRowOrDefault(dataId)?.Singular.ExtractText() ?? string.Empty;
     }
 
-    /// <summary>
-    ///     Works out how to travel to a point: the nearest aetheryte in that zone, or — for city wards that have
-    ///     no aetheryte of their own, like Limsa Lominsa Upper Decks — the zone's nearest aethernet shard plus
-    ///     the hop to reach it from its aethernet group's main aetheryte.
-    /// </summary>
     internal TravelShortcut? ResolveTravel(uint territoryId, Vector3 position)
     {
         Vector2 target = new(position.X, position.Z);
@@ -413,12 +379,6 @@ internal sealed class QuestGameData : IDisposable
             shardConfident ? null : Ambiguity(shard.Value, shards));
     }
 
-    /// <summary>
-    ///     Picks the entry nearest <paramref name="target"/>. Reports low confidence when the choice had to be
-    ///     made between several candidates whose positions are unknown — not every aethernet shard has a map
-    ///     marker (the Idyllshire gates into the Dravanian Hinterlands, for instance), and guessing between two
-    ///     unplaced shards is how you end up at the wrong end of the zone.
-    /// </summary>
     private static (AetheryteEntry? Entry, bool Confident) Choose(List<AetheryteEntry> candidates, Vector2 target)
     {
         switch (candidates.Count)
@@ -460,10 +420,6 @@ internal sealed class QuestGameData : IDisposable
                $"so verify it against {others}";
     }
 
-    /// <summary>
-    ///     Where an aetheryte or aethernet shard stands, in world X/Z. Null when it carries no map marker to
-    ///     recover a position from.
-    /// </summary>
     internal Vector2? AetherytePosition(EAetheryteLocation location)
     {
         foreach (AetheryteEntry entry in _aetherytes.Value)
@@ -478,7 +434,6 @@ internal sealed class QuestGameData : IDisposable
     private List<AetheryteEntry> InTerritory(uint territoryId, bool main) =>
         [.. _aetherytes.Value.Where(x => x.TerritoryId == territoryId && x.IsMainAetheryte == main)];
 
-    /// <summary>Both ends of an aethernet hop have to be names the questpath schema knows.</summary>
     private static bool IsAethernetEndpoint(EAetheryteLocation location) =>
         AethernetShardConverter.Values.ContainsKey(location);
 
@@ -522,16 +477,8 @@ internal sealed class QuestGameData : IDisposable
         return entries;
     }
 
-    /// <summary>
-    ///     Aetheryte world positions, recovered from map markers.
-    ///     <para>
-    ///         The <c>Level</c> rows the <c>Aetheryte</c> sheet points at no longer exist, but <c>MapMarker</c>
-    ///         still carries every aetheryte (<c>DataType</c> 3, keyed by aetheryte row) and every aethernet
-    ///         shard (<c>DataType</c> 4, keyed by the <c>PlaceName</c> in <c>Aetheryte.AethernetName</c>).
-    ///         Marker coordinates are map pixels, so they convert back to world X/Z through the map's size
-    ///         factor and offset — accurate to a couple of units, which is ample for picking the nearest one.
-    ///     </para>
-    /// </summary>
+    // The Level rows the Aetheryte sheet points at no longer exist; MapMarker still has every aetheryte
+    // (DataType 3) and aethernet shard (DataType 4), in map pixels.
     private Dictionary<uint, Vector2> BuildAetherytePositions(ExcelSheet<Aetheryte> aetherytes)
     {
         ExcelSheet<Map>? maps = _gameData.GetExcelSheet<Map>();

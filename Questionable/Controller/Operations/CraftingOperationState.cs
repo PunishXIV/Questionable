@@ -1,9 +1,6 @@
 namespace Questionable.Controller.Operations;
 
-/// <summary>
-/// Retains legacy Artisan submissions independently of the task queue. The current IPC cannot
-/// identify or cancel an operation, so abandoned or uncertain work needs explicit reconciliation.
-/// </summary>
+// Artisan cannot identify or cancel submissions, so uncertain work needs reconciliation.
 [RegisterSingleton]
 internal sealed class CraftingOperationState(TimeProvider? timeProvider = null)
 {
@@ -93,7 +90,6 @@ internal sealed class CraftingOperationState(TimeProvider? timeProvider = null)
         return true;
     }
 
-    /// <summary>Called only after the user confirms they finished or stopped Artisan's work.</summary>
     public bool TryConfirmIdle()
     {
         if (!CanConfirmIdle)

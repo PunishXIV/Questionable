@@ -11,10 +11,6 @@ using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.GameUi;
 
-/// <summary>
-///     Handles the in-game "SelectString", "CutSceneSelectString" and "SelectIconString" addons —
-///     picking the list entry that matches the current quest's dialogue choices.
-/// </summary>
 [RegisterSingleton]
 internal sealed partial class DialogueChoiceHandler : IDisposable
 {
@@ -116,11 +112,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
         HandleSelectIconString((AddonSelectIconString*)args.Addon.Address, checkAllSteps: false);
     }
 
-    /// <summary>
-    ///     Handles any SelectString / CutSceneSelectString / SelectIconString addon already open when
-    ///     automation starts. Bypasses the <see cref="ShouldHandleUiInteractions"/> gate, matching the
-    ///     legacy "initial check" behaviour.
-    /// </summary>
+    // The initial sweep bypasses the interaction gate.
     public unsafe void CheckExisting()
     {
         if (_questController.HasExternalOperation)
@@ -229,7 +221,6 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
     private unsafe bool CheckQuestSelection(AddonSelectIconString* addonSelectIconString, Quest quest,
         List<string?> answers)
     {
-        // it is possible for this to be a quest selection
         string questName = quest.Info.Name;
         int questSelection = answers.FindIndex(x => GameFunctions.GameStringEquals(questName, x));
         if (questSelection >= 0)
@@ -356,7 +347,6 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                 }));
             }
 
-            // add all travel dialogue choices
             ushort? targetTerritoryId = _travelDestinationResolver.FindTargetTerritoryFromQuestStep(currentQuest);
             if (targetTerritoryId != null)
             {
@@ -382,7 +372,6 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
         else
             _logger.LogDebug("Ignoring current quest dialogue choices, no active quest");
 
-        // add all quests that start with the targeted npc
         IGameObject? target = _targetManager.Target;
         if (target != null)
         {

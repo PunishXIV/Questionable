@@ -171,7 +171,6 @@ public sealed class CombatControllerTests : IDisposable
             running.InvokeFunc().Returns(false);
             Plugin.GetIpcSubscriber<bool>("vnavmesh.Path.IsRunning").Returns(running);
             InitializeMovement(null!, () => 0);
-            // Skip the recent-movement grace period.
             typeof(MovementController).GetProperty(nameof(MovementController.MovementStartedAt))!
                 .SetValue(Movement, DateTime.MinValue);
         }

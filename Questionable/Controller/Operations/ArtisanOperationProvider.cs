@@ -5,7 +5,7 @@ using Questionable.Model.Questing;
 
 namespace Questionable.Controller.Operations;
 
-/// <summary>Artisan's IPC can't identify or cancel a request, so uncertain work always needs the user to confirm.</summary>
+// Artisan cannot identify or cancel requests, so uncertain work requires user confirmation.
 [RegisterSingleton<IOperationProvider, ArtisanOperationProvider>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class ArtisanOperationProvider(
     IArtisanIpc artisanIpc,

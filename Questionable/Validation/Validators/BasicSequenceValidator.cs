@@ -4,9 +4,6 @@ namespace Questionable.Validation.Validators;
 [RegisterSingleton<IQuestValidator, BasicSequenceValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class BasicSequenceValidator : IQuestValidator
 {
-    /// <summary>
-    ///     A quest should have sequences from 0 to N, and (if more than 'AcceptQuest' exists), a 255 sequence.
-    /// </summary>
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
         List<QuestSequence> sequences = quest.Root.QuestSequence;

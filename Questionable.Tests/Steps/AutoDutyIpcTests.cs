@@ -84,8 +84,8 @@ public sealed class AutoDutyIpcTests
         Assert.Throws<TaskException>(f.Start);
         f.Ipc.CancelOwned();
         Assert.False(f.State.HasOperation);
-        Assert.Empty(f.Writes);
-        f.Run.DidNotReceiveWithAnyArgs().InvokeAction(default, default, default);
+        Assert.Empty(f.Calls);
+        f.RunForPlugin.DidNotReceiveWithAnyArgs().InvokeAction(default!, default, default, default);
         f.Stop.DidNotReceive().InvokeAction();
     }
 
@@ -105,7 +105,7 @@ public sealed class AutoDutyIpcTests
         f.Configuration.Duties.RunInstancedContentWithAutoDuty = false;
         Assert.Throws<TaskException>(() => f.Ipc.StartInstance(AutoDutyFixture.CfcId, (AutoDutyIpc.DutyMode)mode));
         Assert.Empty(f.Writes);
-        f.Run.DidNotReceiveWithAnyArgs().InvokeAction(default, default, default);
+        f.RunForPlugin.DidNotReceiveWithAnyArgs().InvokeAction(default!, default, default, default);
     }
 
     [Fact]
@@ -115,17 +115,51 @@ public sealed class AutoDutyIpcTests
         f.GetConfig.HasFunction.Returns(false);
         Assert.Throws<TaskException>(f.Start);
         Assert.False(f.State.HasOperation);
-        Assert.Empty(f.Writes);
+        Assert.Empty(f.Calls);
     }
 
     [Fact]
-    public void UnsupportedNestedSetting_RejectsBeforeAnyMutation()
+    public void AutoDutyWithoutPluginProfiles_AsksForAnUpdateBeforeAnyChange()
     {
         using var f = new AutoDutyFixture();
-        f.Settings[AutoDutyFixture.ModeKey] = "";
-        Assert.Throws<TaskException>(f.Start);
+        f.PluginConfig.HasAction.Returns(false);
+
+        var e = Assert.Throws<TaskException>(f.Start);
+
+        Assert.Contains("Update AutoDuty", e.Message, StringComparison.Ordinal);
+        Assert.False(f.Ipc.IsReady());
+        Assert.True(f.Ipc.IsAvailable());
         Assert.False(f.State.HasOperation);
-        Assert.Empty(f.Writes);
+        Assert.Empty(f.Calls);
+    }
+
+    [Fact]
+    public void ProfileIsSwitchedBeforeAnySettingIsWritten()
+    {
+        using var f = new AutoDutyFixture();
+        f.Start();
+
+        Assert.Equal(["profile on", $"set {AutoDutyFixture.UnsyncedKey}", $"set {AutoDutyFixture.ModeKey}", "run"], f.Calls);
+        Assert.Equal("Support", f.ProfileSettings![AutoDutyFixture.ModeKey]);
+        Assert.Equal("False", f.ProfileSettings[AutoDutyFixture.UnsyncedKey]);
+        Assert.Equal("Trust", f.Settings[AutoDutyFixture.ModeKey]);
+        Assert.Equal("True", f.Settings[AutoDutyFixture.UnsyncedKey]);
+    }
+
+    [Fact]
+    public void IgnoredSetting_DoesNotRunAndSwitchesBack()
+    {
+        using var f = new AutoDutyFixture();
+        f.GetConfig.InvokeFunc(AutoDutyFixture.ModeKey).Returns("Trust");
+
+        Assert.Throws<TaskException>(f.Start);
+        Assert.True(f.State.HasOperation);
+        Assert.False(f.State.RunSubmitted);
+        f.PollFor(3);
+
+        f.AssertUserProfileRestored();
+        Assert.True(f.Ipc.TryConfirmIdle());
+        f.RunForPlugin.DidNotReceiveWithAnyArgs().InvokeAction(default!, default, default, default);
     }
 
     [Fact]
@@ -142,8 +176,8 @@ public sealed class AutoDutyIpcTests
         Assert.Throws<TaskException>(f.Start);
         Assert.True(f.Ipc.TryConfirmIdle());
         f.Stop.DidNotReceive().InvokeAction();
-        f.Run.Received(1).InvokeAction(AutoDutyFixture.TerritoryId, 1, true);
-        f.AssertOriginalSettings();
+        f.RunForPlugin.Received(1).InvokeAction(AutoDutyIpc.ProfileName, AutoDutyFixture.TerritoryId, 1, true);
+        f.AssertUserProfileRestored();
     }
 
     [Fact]
@@ -157,11 +191,11 @@ public sealed class AutoDutyIpcTests
         Assert.Throws<TaskException>(f.Start);
         Assert.False(f.Ipc.TryConfirmIdle());
         f.Stop.DidNotReceive().InvokeAction();
-        f.Run.Received(1).InvokeAction(AutoDutyFixture.TerritoryId, 1, true);
+        f.RunForPlugin.Received(1).InvokeAction(AutoDutyIpc.ProfileName, AutoDutyFixture.TerritoryId, 1, true);
         f.Stopped = true;
         f.PollFor(3);
         Assert.True(f.Ipc.TryConfirmIdle());
-        f.AssertOriginalSettings();
+        f.AssertUserProfileRestored();
     }
 
     [Theory]
@@ -209,7 +243,7 @@ public sealed class AutoDutyIpcTests
         f.Game = f.Game with { InQueue = false };
         f.PollFor(3);
         Assert.False(f.State.HasOperation);
-        f.AssertOriginalSettings();
+        f.AssertUserProfileRestored();
     }
 
     [Theory]
@@ -237,7 +271,7 @@ public sealed class AutoDutyIpcTests
         f.Ipc.PollOperation();
         f.Ipc.CancelOwned();
         Assert.True(f.State.HasOperation);
-        Assert.True(f.State.ProviderLost);
+        Assert.True(f.State.RequiresReconciliation);
         Assert.False(f.Ipc.IsStopped());
         f.Available = true;
         f.Stopped = false; // a manual run in the reloaded provider
@@ -246,14 +280,10 @@ public sealed class AutoDutyIpcTests
         int writes = f.Writes.Count;
         f.Stopped = true;
         f.PollFor(3);
-        Assert.False(f.State.CanConfirmIdle); // outstanding old settings cannot cross sessions
-        Assert.Contains("Trust", f.State.Message, StringComparison.Ordinal);
-        Assert.Equal(writes, f.Writes.Count);
-        f.Settings[AutoDutyFixture.ModeKey] = "Trust";
-        f.Settings[AutoDutyFixture.UnsyncedKey] = "True";
-        f.PollFor(3);
+        // The user's profile was never changed, so there is nothing to restore by hand.
         Assert.True(f.Ipc.TryConfirmIdle());
         Assert.Equal(writes, f.Writes.Count);
+        f.AssertUserProfileRestored();
     }
 
     [Fact]
@@ -270,7 +300,7 @@ public sealed class AutoDutyIpcTests
     }
 
     [Fact]
-    public void NativeCompletionAndExitAreRequired_AndSettingsRestoreBeforeRelease()
+    public void NativeCompletionAndExitAreRequired_AndProfileSwitchedBackBeforeRelease()
     {
         using var f = new AutoDutyFixture();
         f.Start();
@@ -283,7 +313,7 @@ public sealed class AutoDutyIpcTests
         f.Exit();
         f.PollFor(3);
         Assert.Equal(ExternalOperationStatus.Succeeded, f.State.Status);
-        f.AssertOriginalSettings();
+        f.AssertUserProfileRestored();
         Assert.True(f.State.TryReleaseTerminal(f.State.OperationId));
     }
 
@@ -297,7 +327,7 @@ public sealed class AutoDutyIpcTests
         f.Stopped = true;
         f.PollFor(3);
         Assert.Equal(ExternalOperationStatus.Failed, f.State.Status);
-        f.AssertOriginalSettings();
+        f.AssertUserProfileRestored();
     }
 
     [Theory]
@@ -315,7 +345,7 @@ public sealed class AutoDutyIpcTests
         Assert.True(f.State.HasOperation);
         Assert.False(f.State.IsTerminal);
         Assert.False(f.State.RequiresReconciliation);
-        Assert.Equal("Support", f.Settings[AutoDutyFixture.ModeKey]);
+        Assert.Equal("Support", f.ProfileSettings![AutoDutyFixture.ModeKey]);
 
         f.Game = f.Game with { InDuty = false, Loading = true };
         f.PollFor(30); // A slow loading screen is not a failed Stop request either.
@@ -326,55 +356,40 @@ public sealed class AutoDutyIpcTests
 
         Assert.Equal(completed ? ExternalOperationStatus.Succeeded : ExternalOperationStatus.Failed, f.State.Status);
         Assert.False(f.State.RequiresReconciliation);
-        f.AssertOriginalSettings();
+        f.AssertUserProfileRestored();
         f.Stop.DidNotReceive().InvokeAction();
         Assert.True(f.State.TryReleaseTerminal(f.State.OperationId));
     }
 
     [Fact]
-    public void LaterUserSettingChange_IsPreserved()
+    public void FailedSwitchBack_RetainsObligationAndRequiresAcknowledgementAfterRetry()
     {
-        using var f = new AutoDutyFixture();
+        using var f = new AutoDutyFixture { RunStarts = false };
         f.Start();
-        f.Settings[AutoDutyFixture.ModeKey] = "Variant";
+        f.FailRelease = true;
         f.Ipc.CancelOwned();
-        f.Stopped = true;
-        f.PollFor(3);
-        Assert.False(f.State.HasOperation);
-        Assert.Equal("Variant", f.Settings[AutoDutyFixture.ModeKey]);
-        Assert.Equal("True", f.Settings[AutoDutyFixture.UnsyncedKey]);
-        Assert.DoesNotContain(f.Writes, x => x == (AutoDutyFixture.ModeKey, "Trust"));
-    }
-
-    [Fact]
-    public void FailedRestoration_RetainsObligationAndRequiresAcknowledgementAfterRetry()
-    {
-        using var f = new AutoDutyFixture();
-        f.Start();
-        f.FailRestore = true;
-        f.Ipc.CancelOwned();
-        f.Stopped = true;
-        f.PollFor(4);
+        f.PollFor(16);
         Assert.True(f.State.HasOperation);
         Assert.True(f.State.RequiresReconciliation);
         Assert.False(f.State.CanConfirmIdle);
-        f.FailRestore = false;
+        Assert.True(f.ProfileActive);
+        f.FailRelease = false;
         f.PollFor(3);
-        f.AssertOriginalSettings();
+        f.AssertUserProfileRestored();
         Assert.True(f.Ipc.TryConfirmIdle());
     }
 
     [Fact]
-    public void SetterThrowsAfterChangingValue_RestoresPartialMutationWithoutRunning()
+    public void SetterThrowsAfterChangingValue_SwitchesBackWithoutRunning()
     {
         using var f = new AutoDutyFixture { ThrowAfterFirstWrite = true };
         Assert.Throws<TaskException>(f.Start);
         Assert.True(f.State.HasOperation);
         Assert.False(f.State.RunSubmitted);
         f.PollFor(3);
-        f.AssertOriginalSettings();
+        f.AssertUserProfileRestored();
         Assert.True(f.Ipc.TryConfirmIdle());
-        f.Run.DidNotReceiveWithAnyArgs().InvokeAction(default, default, default);
+        f.RunForPlugin.DidNotReceiveWithAnyArgs().InvokeAction(default!, default, default, default);
         f.Stop.DidNotReceive().InvokeAction();
     }
 

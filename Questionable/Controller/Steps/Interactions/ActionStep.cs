@@ -60,10 +60,7 @@ internal static class ActionStep
     {
         private const int MaxAttempts = 10;
 
-        /// <summary>
-        ///     The game accepting an action doesn't mean it went off, so give the server time to confirm it before
-        ///     trying again.
-        /// </summary>
+        // The game accepting an action doesn't mean it went off, so give the server time to confirm before retrying.
         private static readonly TimeSpan AcceptedRetryDelay = TimeSpan.FromSeconds(3);
 
         private DateTime _continueAt = DateTime.MinValue;
@@ -94,12 +91,12 @@ internal static class ActionStep
                 {
                     if (Task.Action == EAction.Diagnosis)
                     {
-                        // If SGE have Eukrasia status, we need to remove it.
+                        // Eukrasia changes Diagnosis into a different action.
                         if (gameFunctions.HasStatus(EStatus.Eukrasia))
                         {
                             if (GameFunctions.RemoveStatus(EStatus.Eukrasia))
                             {
-                                // Introduce a delay of 2 seconds before using the next action (otherwise it will try and use Eukrasia Diagnosis)
+                                // Wait 2 seconds, otherwise it uses Eukrasian Diagnosis.
                                 _continueAt = DateTime.Now.AddSeconds(2);
                                 return true;
                             }
@@ -143,7 +140,7 @@ internal static class ActionStep
                 if (!_accepted)
                     throw new TaskException($"Unable to use action {Task.Action}");
 
-                // some actions might never send an action effect, keep the old behaviour for those
+                // Some actions never send an action effect.
                 logger.LogWarning("No confirmation for action {Action} after {Attempts} attempts, assuming it was used",
                     Task.Action, _attempts);
                 return checkCompletionFlags();

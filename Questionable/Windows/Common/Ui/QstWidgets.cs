@@ -8,7 +8,6 @@ namespace Questionable.Windows.Common.Ui;
 
 internal static class QstWidgets
 {
-    // Collapsible section header with an optional count.
     public static bool SectionHeader(string label, string id, int? count = null, bool defaultOpen = true)
     {
         ImGuiTreeNodeFlags flags = defaultOpen ? ImGuiTreeNodeFlags.DefaultOpen : ImGuiTreeNodeFlags.None;
@@ -47,7 +46,6 @@ internal static class QstWidgets
         ImGui.TextWrapped(text);
     }
 
-    // Status pill in the window title bar.
     public static void TitleBarPill(string text, Vector4 color, string windowTitle, bool alignCenter = true)
     {
         float frameHeight = ImGui.GetFrameHeight();
@@ -78,7 +76,6 @@ internal static class QstWidgets
         drawList.PopClipRect();
     }
 
-    // Slim progress bar.
     public static void ThinProgressBar(float fraction, Vector4 color, float height = 4f)
     {
         float barHeight = height * ImGuiHelpers.GlobalScale;
@@ -98,7 +95,6 @@ internal static class QstWidgets
         ImGui.Dummy(new Vector2(0, barHeight));
     }
 
-    // Small rounded label.
     public static bool Chip(string text, Vector4 color)
     {
         float scale = ImGuiHelpers.GlobalScale;
@@ -114,7 +110,6 @@ internal static class QstWidgets
         return ImGui.IsItemHovered();
     }
 
-    // Icon button with a tooltip and an optional count badge.
     public static bool RailButton(FontAwesomeIcon icon, string label, string? tooltip = null, Vector4? tint = null,
         bool enabled = true, string? countBadge = null, Vector4? badgeColor = null, bool showLabel = false,
         [CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
@@ -154,10 +149,8 @@ internal static class QstWidgets
         return clicked && enabled;
     }
 
-    // Boxed group of SegmentToggles.
     public static SegmentGroupScope SegmentGroup(bool armed) => new(armed);
 
-    // Inset content box.
     public static CardScope Card(Vector4? borderColor = null) => new(borderColor);
 
     internal sealed class CardScope : IDisposable
@@ -199,7 +192,6 @@ internal static class QstWidgets
         }
     }
 
-    // Toggle button for a SegmentGroup.
     public static bool SegmentToggle(FontAwesomeIcon icon, bool active, string tooltipOn, string tooltipOff,
         [CallerFilePath] string file = "", [CallerLineNumber] int line = 0)
     {

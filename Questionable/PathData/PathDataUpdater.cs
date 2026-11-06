@@ -3,11 +3,6 @@ using System.Text.Json;
 
 namespace Questionable.PathData;
 
-/// <summary>
-///     Downloads newer quest path bundles at runtime so path-only updates don't require a
-///     full plugin release. The bundle is stored in <c>{ConfigDirectory}/PathData/</c> and picked up
-///     by <see cref="QuestRegistry" />'s downloaded-bundle load tier.
-/// </summary>
 [RegisterSingleton]
 internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
 {
@@ -77,7 +72,6 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
 
     public DateTime StatusLastChanged { get; private set; } = DateTime.Now;
     private string _status = _L("Idle");
-    /// <summary>Human-readable status for the config UI.</summary>
     public string Status
     {
         get
@@ -133,14 +127,12 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         get { lock (_lifetimeLock) return _updateTask; }
     }
 
-    /// <summary>Starts a background update check if auto-update is enabled.</summary>
     public void CheckForUpdates()
     {
         if (_configuration.PathData.AutoUpdate)
             StartUpdateCheck();
     }
 
-    /// <summary>Starts a background update check regardless of the auto-update setting.</summary>
     public void CheckForUpdatesManually() => StartUpdateCheck();
 
     private void StartUpdateCheck()
@@ -170,11 +162,6 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         }
     }
 
-    /// <summary>
-    ///     Discards the cached bundle if it was downloaded by a different plugin version — the
-    ///     freshly installed plugin's compiled paths become the new baseline. Runs synchronously in
-    ///     the constructor, before the registry first loads.
-    /// </summary>
     private void DiscardStaleBundle()
     {
         if (_configuration.PathData.BundlePluginVersion == _pluginVersion)

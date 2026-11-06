@@ -1,6 +1,5 @@
 namespace Questionable.Controller.Operations;
 
-/// <summary>Owns the Feesh catch job across queue resets and normal stops.</summary>
 [RegisterSingleton]
 internal sealed class FishingOperationState(TimeProvider? timeProvider = null)
     : OwnedOperationState("Feesh", "fishing for quest items", timeProvider)
@@ -22,11 +21,9 @@ internal sealed class FishingOperationState(TimeProvider? timeProvider = null)
         return owner;
     }
 
-    /// <summary>Feesh has no job IDs, so the local ID is used for both.</summary>
+    // Feesh has no job IDs, so the local ID is used for both.
     public void AcceptCatch(Guid owner) => AcceptSubmission(owner, owner);
 
-    /// <param name="catchDone"><c>CatchDone</c>'s result for this job; null until it fires.</param>
-    /// <param name="busy"><c>WahTools.IsBusy</c>; null if unreadable.</param>
     public void ObserveCatch(Guid owner, EFeeshJobState state, string message, bool? catchDone, bool? busy)
     {
         if (OperationId != owner || IsTerminal)

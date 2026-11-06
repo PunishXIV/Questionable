@@ -41,23 +41,19 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         Simulated
     }
 
-
-    /// <summary>Sentinel value for <c>CurrentQuest.Step</c> meaning "all steps of the current sequence are completed".</summary>
     private const int CompletedStepValue = 255;
 
-    /// <summary>Extra grace period (seconds) added on top of the game's animation lock before we consider the player idle.</summary>
+    // Extra grace after the game's animation lock.
     private const float AnimationLockGraceSeconds = 1f;
 
     private const uint HighQualityItemIdOffset = 1_000_000;
 
     private const uint CollectableItemIdOffset = 500_000;
 
-    /// <summary>How long to wait at sequence 0/step 0 before assuming the quest-accept addon never fired and resetting.</summary>
+    // The quest-accept addon can fail to appear at sequence 0/step 0.
     private const int QuestAcceptStalledTimeoutSeconds = 15;
 
-    private HashSet<ElementId>? _questsAwaitingAcceptance;
-    private QuestProgress? _nextQuestAwaitingAcceptance;
-
+    private readonly QuestAcceptanceController _acceptance;
     private readonly AlliedSocietyQuestFunctions _alliedSocietyQuestFunctions;
     private readonly IChatGui _chatGui;
     private readonly IClientState _clientState;
@@ -92,13 +88,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     private DateTime _lastTaskUpdate = DateTime.Now;
 
-    /// <summary>
-    ///     Some combat encounters finish relatively early (i.e. they're done as part of progressing the quest, but not
-    ///     technically necessary to progress the quest if we'd just run away and back). We add some slight delay, as
-    ///     talking to NPCs, teleporting etc. won't successfully execute.
-    /// </summary>
+    // Combat can end before quest actions are safe again.
     private DateTime _safeAnimationEnd = DateTime.MinValue;
-
 
     public QuestController(
         IClientState clientState,
@@ -110,6 +101,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         GatheringController gatheringController,
         ExternalOperationCoordinator externalOperations,
         QuestRecoveryController recovery,
+        QuestAcceptanceController acceptance,
         SinglePlayerDuty.RetryCounter soloDutyRetries,
         ILogger<QuestController> logger,
         HighlightObject highlightObject,
@@ -144,6 +136,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _gatheringController = gatheringController;
         _externalOperations = externalOperations;
         _recovery = recovery;
+        _acceptance = acceptance;
         _soloDutyRetries = soloDutyRetries;
         _questRegistry = questRegistry;
         _priorityManager = priorityManager;
@@ -219,7 +212,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         {
             _tracker.NextQuest = value;
             if (value == null)
-                _nextQuestAwaitingAcceptance = null;
+                _acceptance.ClearSelection();
         }
     }
 
@@ -229,9 +222,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         private set => _tracker.GatheringQuest = value;
     }
 
-    /// <summary>
-    ///     Used when accepting leves, as there's a small delay
-    /// </summary>
+    // Leve acceptance is delayed.
     public QuestProgress? PendingQuest
     {
         get => _tracker.PendingQuest;
@@ -241,7 +232,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     public QuestPriorityManager PriorityManager => _priorityManager;
 
     public bool StopAfterCurrentQuest { get; set; }
-    public bool StopAfterAcceptingNextQuest { get; set; }
+    public bool StopAfterAcceptingNextQuest
+    {
+        get => _acceptance.StopAfterAcceptingNextQuest;
+        set => _acceptance.StopAfterAcceptingNextQuest = value;
+    }
+
     public bool StopBeforeTeleport { get; set; }
 
     public string? DebugState { get; private set; }
@@ -291,7 +287,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     private void ResetInternalState()
     {
-        _nextQuestAwaitingAcceptance = null;
+        _acceptance.ClearSelection();
         _tracker.Reset();
         _safeAnimationEnd = DateTime.MinValue;
 
@@ -329,8 +325,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (UpdateStopAndDeath())
             return;
 
-        // check level stop condition
-        // stops immediately instead of quest stop after completion of quest
         if (_configuration.Stop.Enabled && _configuration.Stop.LevelToStopAfter)
         {
             unsafe
@@ -396,7 +390,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
             // Observe expected acceptances before quest selection or a sequence change replaces the queue.
             bool wasRunning = AutomationType != EAutomationType.Manual;
-            ObserveQuestAcceptances(_questFunctions.IsQuestAccepted, TryStopOnQuestAccepted);
+            _acceptance.ObserveQueued(_taskQueue, _questFunctions.IsQuestAccepted, TryStopOnQuestAccepted);
             if (wasRunning && AutomationType == EAutomationType.Manual)
                 return;
 
@@ -473,7 +467,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             else if (NextQuest != null && _questFunctions.IsReadyToAcceptQuest(NextQuest.Quest.Id))
             {
                 questToRun = NextQuest;
-                currentSequence = NextQuest.Sequence; // by definition, this should always be 0
+                currentSequence = NextQuest.Sequence;
                 if (NextQuest.Step == 0 &&
                     _taskQueue.AllTasksComplete &&
                     AutomationType == EAutomationType.Automatic)
@@ -652,35 +646,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     internal void EnqueueQuestTask(ITask task, Func<ElementId, bool> isAccepted)
     {
-        if (task is WaitAtEnd.WaitQuestAccepted wait && !isAccepted(wait.ElementId))
-            (_questsAwaitingAcceptance ??= []).Add(wait.ElementId);
+        _acceptance.TrackQueued(task, isAccepted);
         _taskQueue.Enqueue(task);
-    }
-
-    internal void ObserveQuestAcceptances(Func<ElementId, bool> isAccepted, Action<ElementId> onAccepted)
-    {
-        if (_questsAwaitingAcceptance == null)
-            return;
-
-        foreach (ElementId questId in _questsAwaitingAcceptance.ToArray())
-        {
-            bool stillQueued = _taskQueue.CurrentTaskExecutor?.CurrentTask is WaitAtEnd.WaitQuestAccepted current &&
-                               current.ElementId == questId ||
-                               _taskQueue.RemainingTasks.OfType<WaitAtEnd.WaitQuestAccepted>().Any(x => x.ElementId == questId);
-            if (!stillQueued)
-            {
-                _questsAwaitingAcceptance.Remove(questId);
-                continue;
-            }
-            if (!isAccepted(questId))
-                continue;
-            _questsAwaitingAcceptance.Remove(questId);
-            if (_nextQuestAwaitingAcceptance?.Quest.Id == questId)
-                _nextQuestAwaitingAcceptance = null;
-            onAccepted(questId);
-            if (AutomationType == EAutomationType.Manual)
-                return;
-        }
     }
 
     public (QuestSequence? Sequence, QuestStep? Step, bool createTasks) GetNextStep() => _tracker.GetNextStep();
@@ -732,11 +699,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     private bool ClearTasksInternal()
     {
-        _questsAwaitingAcceptance?.Clear();
+        _acceptance.ClearQueued();
         return _externalOperations.CancelAll(_taskQueue.Reset);
     }
 
-    // Plugin unload: no stop commands or notifications, as unloading isn't a quest stopping point.
+    // Unloading must not stop automation or show notifications.
     internal void Shutdown()
     {
         ClearTasksInternal();
@@ -748,20 +715,17 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     public void TryStopOnExpectedQuestAccepted(ElementId questId)
     {
-        if (_questsAwaitingAcceptance?.Remove(questId) == true)
+        if (_acceptance.TryConsumeQueued(questId))
             TryStopOnQuestAccepted(questId);
     }
 
-    /// <summary>
-    ///     Stops automation when a quest is accepted, if configured or requested via
-    ///     <see cref="StopAfterAcceptingNextQuest"/>.
-    /// </summary>
     public void TryStopOnQuestAccepted(ElementId questId)
     {
         if (AutomationType == EAutomationType.Manual)
             return;
 
-        if (!ShouldStopOnQuestAccepted(questId, _questFunctions.IsQuestAccepted(questId), out bool configStop))
+        if (!_acceptance.ShouldStop(questId, _questFunctions.IsQuestAccepted(questId),
+                AutomationType == EAutomationType.Manual, out bool configStop))
             return;
 
         if (_questRegistry.TryGetQuest(questId, out Quest? quest))
@@ -783,17 +747,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
         StartedQuest = null;
         Stop(configStop ? $"Accept stopping point [{questId}] reached" : $"Stop after accept [{questId}]");
-    }
-
-    internal bool ShouldStopOnQuestAccepted(ElementId questId, bool isAccepted, out bool configStop)
-    {
-        configStop = false;
-        if (AutomationType == EAutomationType.Manual || !isAccepted)
-            return false;
-
-        configStop = _configuration.Stop.Enabled &&
-                     _configuration.Stop.QuestsToStopWhenAccepted.Any(x => x == questId);
-        return configStop || StopAfterAcceptingNextQuest;
     }
 
     public override void Stop(string label) => Stop(label, clearQuest: true);
@@ -942,17 +895,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     internal void SelectNextQuest(Quest? quest, bool isAccepted)
     {
         _tracker.SetNextQuest(quest);
-        // Keep the selection snapshot across task replans, but tie it to this exact selection.
-        _nextQuestAwaitingAcceptance = isAccepted ? null : NextQuest;
+        _acceptance.Select(NextQuest, isAccepted);
     }
 
     internal bool ResolveNextQuest(bool isAccepted, bool isComplete, Action<ElementId> onAccepted)
     {
-        if (NextQuest is not { } next || !isAccepted && (next.Quest.Info.IsRepeatable || !isComplete))
+        if (NextQuest is not { } next || !_acceptance.TryResolve(next, isAccepted, isComplete, out bool newlyAccepted))
             return false;
 
-        bool newlyAccepted = isAccepted && ReferenceEquals(_nextQuestAwaitingAcceptance, next);
-        _nextQuestAwaitingAcceptance = null;
         _logger.LogInformation("Next quest {QuestId} accepted or completed", next.Quest.Id);
         if (AutomationType == EAutomationType.SingleQuestA)
         {
@@ -1001,7 +951,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         return false;
     }
 
-    /// <summary>The user stopped this provider's work by hand. Clears its block only; never resumes questing.</summary>
+    // A manual provider stop clears only its block; it never resumes questing.
     public bool TryConfirmIdle(IOperationProvider provider) => _externalOperations.TryConfirmIdle(provider, this);
 
     protected override void UpdateCurrentTask()
@@ -1307,11 +1257,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsAccepted.Count ?? 0) == 0;
     }
 
-    /// <summary>
-    ///     While any priority quest is flagged accept-only and is ready to be accepted, it is queued as <see cref="NextQuest"/> 
-    ///     so only its accept step (sequence 0) runs; the quest stays in the priority list to be completed later. 
-    ///     The completion phase is therefore deferred until every flagged quest has been accepted (or can no longer be accepted this session)
-    /// </summary>
+    // Accept-only priorities run sequence 0, then remain for normal completion.
     private bool TryQueueNextAcceptOnlyQuest()
     {
         if (!_priorityManager.HasPendingAcceptOnly)
@@ -1456,11 +1402,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         return false;
     }
 
-    /// <summary>
-    /// Caller should ensure _taskQueue.AllTasksComplete before enqueueing.
-    /// See: CommandHandler's impl of /qst redeem
-    /// </summary>
-    /// <param name="task">An instance of a task produced by a factory or other generator</param>
     internal void UnsafeEnqueueManualTask(ITask task) =>
         _taskQueue.Enqueue(task);
 

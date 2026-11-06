@@ -2,9 +2,6 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 
 namespace Questionable.Controller;
 
-/// <summary>
-///     Applies the settings profile bound to the logged-in character, and drops it again on logout.
-/// </summary>
 [RegisterSingleton]
 internal sealed unsafe class ProfileController : IDisposable
 {
@@ -27,9 +24,6 @@ internal sealed unsafe class ProfileController : IDisposable
             _framework.RunOnFrameworkThread(ActivateForCurrentCharacter);
     }
 
-    /// <summary>
-    ///     The key characters are bound by in <see cref="Configuration.CharacterProfiles" />, or null when not logged in.
-    /// </summary>
     public static string? CurrentContentId
     {
         get
@@ -41,10 +35,6 @@ internal sealed unsafe class ProfileController : IDisposable
         }
     }
 
-    /// <summary>
-    ///     Switches to the current character's profile (or the base settings). Also used to undo a profile the config
-    ///     window switched to for editing.
-    /// </summary>
     public void ActivateForCurrentCharacter()
     {
         string? contentId = CurrentContentId;

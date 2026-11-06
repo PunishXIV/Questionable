@@ -9,20 +9,7 @@ using System.Reflection;
 
 namespace Questionable.Tests.TestData;
 
-/// <summary>
-/// xUnit theory data source that enumerates every quest JSON embedded into the test assembly.
-/// <para>
-/// If the <c>QUESTIONABLE_CHANGED_QUESTS</c> environment variable is set to a non-empty value,
-/// the enumeration is filtered to only the quests whose repo-relative path appears in that list.
-/// The variable is a semicolon- or newline-separated list of paths from the repository root
-/// (forward slashes), e.g. <c>QuestPaths/2.x - A Realm Reborn/Side Quests/Thanalan/Ul'dah/396_No Lady Is an Island.json</c>.
-/// </para>
-/// <para>
-/// When the variable is unset or empty (the local-development case) every embedded quest is
-/// returned. CI populates it from <c>git diff</c> between the PR base and head so the
-/// framework only re-validates files touched by the pull request.
-/// </para>
-/// </summary>
+// QUESTIONABLE_CHANGED_QUESTS limits validation to PR-changed paths; otherwise every embedded quest is used.
 public sealed class EmbeddedQuestLoader : IEnumerable<object[]>
 {
     internal const string ChangedQuestsEnvVar = "QUESTIONABLE_CHANGED_QUESTS";

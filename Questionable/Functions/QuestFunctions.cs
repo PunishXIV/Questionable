@@ -49,10 +49,8 @@ internal sealed unsafe class QuestFunctions
         {
             if (!questData.TryGetQuestInfo(q.QuestId, out IQuestInfo? qInfo)) continue;
 
-            // Populate the top-level entry (full tree)
             prereqCache[topLevelId].Add(qInfo);
 
-            // Recursively ensure this node's own subtree is also fully cached
             if (!prereqCache.ContainsKey(qInfo.QuestId.Value))
             {
                 prereqCache[qInfo.QuestId.Value] = [];
@@ -94,7 +92,6 @@ internal sealed unsafe class QuestFunctions
 
         if (currentQuest.Value == 681)
         {
-            // if we have already picked up the GC quest, just return the progress for it
             if (IsQuestAccepted(currentQuest) || IsQuestComplete(currentQuest))
                 return new(currentQuest, sequence, questState);
 
@@ -107,7 +104,6 @@ internal sealed unsafe class QuestFunctions
                 }
                 return new(new QuestId(_gc.Value), 0, questState);
             }
-            // The company you keep...
             return configuration.General.GrandCompany switch
             {
                 GrandCompany.TwinAdder => new(new QuestId(680), 0, questState),
@@ -272,7 +268,6 @@ internal sealed unsafe class QuestFunctions
 
     public (QuestReference, string?) GetMainScenarioQuestId() => ReadMainScenarioQuest(out _);
 
-    /// <summary>The quest the game points at: the NG+ chapter quest, else the scenario tree's first entry (0 when empty).</summary>
     private (QuestReference, string?) ReadMainScenarioQuest(out bool newGamePlus)
     {
         newGamePlus = false;
@@ -381,11 +376,9 @@ internal sealed unsafe class QuestFunctions
 
         short currentLevel = PlayerState.Instance()->CurrentLevel;
 
-        // are we in a loading screen?
         if (objectTable[0] == null)
             return (QuestReference.NoQuest(MainScenarioQuestState.LoadingScreen), _L("In loading screen"));
 
-        // if we're not at a high enough level to continue, we also ignore it
         if (questRegistry.TryGetQuest(currentQuest, out Quest? quest)
             && quest.Info.Level > currentLevel)
         {
@@ -532,10 +525,6 @@ internal sealed unsafe class QuestFunctions
             .ToList();
     }
 
-    /// <summary>
-    ///     Whether a quest can be walked from where we are: it starts in the current zone, and every aetheryte shortcut
-    ///     only leads into the zone we're already in at that point (those get walked while teleport is locked).
-    /// </summary>
     private bool CanBeDoneWithoutTeleport(Quest quest)
     {
         uint? currentTerritory = clientState.TerritoryType;
@@ -617,7 +606,6 @@ internal sealed unsafe class QuestFunctions
         {
             if (!configuration.Advanced.SkipARealmRebornHardModePrimals)
             {
-                // Ifrit quest is handled as a pickup during MSQ
                 priorityQuests.AddRange(QuestData.HardModePrimals.Skip(1));
             }
 
@@ -695,7 +683,6 @@ internal sealed unsafe class QuestFunctions
 
         if (!ignoreLevel)
         {
-            // if we're not at a high enough level to continue, we also ignore it
             short currentLevel = PlayerState.Instance()->CurrentLevel;
             if (currentLevel != 0 && quest != null && quest.Info.Level > currentLevel)
                 return false;
@@ -755,10 +742,8 @@ internal sealed unsafe class QuestFunctions
     {
         if (elementId is QuestId questId && IsDailyAlliedSocietyQuest(questId))
         {
-            // If currently accepted, not removable
             if (IsQuestAccepted(questId))
                 return false;
-            // Allied only remove if completed today
             return QuestManager.Instance()->IsDailyQuestCompleted(questId.Value);
         }
 
@@ -870,25 +855,19 @@ internal sealed unsafe class QuestFunctions
 
         bool questPrereqs = questId.Value switch
         {
-            // EX mounts
             432 => AllMountsUnlocked(28, 29, 30, 31, 40, 43),
             1550 => AllMountsUnlocked(75, 76, 77, 78, 90, 98, 104),
             3200 => AllMountsUnlocked(115, 116, 133, 144, 158, 172, 182),
             4057 => AllMountsUnlocked(189, 192, 205, 217, 226, 238, 249),
             4795 => AllMountsUnlocked(261, 262, 293, 306, 315, 325, 332),
             5469 => AllMountsUnlocked(345, 346, 363, 389, 407, 422, 444),
-            // gold saucer
             576 => RaceChocoboRank40(),
             4081 => IsAchievementComplete(2819),
-            // blue mage
             3195 => IsUnlockLinkUnlocked(new(113)),
-            // potd floor 50
             2387 => IsAchievementComplete(1580),
             1557 => IsAchievementComplete(1580),
             3131 => IsAchievementComplete(1580),
-            // merchants tale advanced
             5459 => IsAchievementComplete(3892, 3893, 3894),
-            // deliveries
             3006 => IsAchievementComplete(1972), // mnaago
             3140 => IsAchievementComplete(2070), // kurenai
             3178 => IsAchievementComplete(2186), // adkiragh
@@ -902,7 +881,6 @@ internal sealed unsafe class QuestFunctions
             4816 => IsAchievementComplete(3355), // margrat
             5240 => IsAchievementComplete(3596), // nitowikwe
             5461 => IsAchievementComplete(3990), // aunt tii
-            // doman enclave
             3153 => DomanEnclaveStoryProgress(75),
             _ => true
         };
@@ -1011,7 +989,6 @@ internal sealed unsafe class QuestFunctions
             (EExpansionVersion)playerState->MaxExpansion == EExpansionVersion.Shadowbringers &&
             (new ushort[]
             {
-                // ventures
                 1432, 1433, 1434
             }).Contains(questId.Value))
             return true;
@@ -1066,9 +1043,6 @@ internal sealed unsafe class QuestFunctions
         return false;
     }
 
-    /// <summary>
-    ///     All unlock links (presumably) have unique conditions, be that quests or otherwise.
-    /// </summary>
     private static bool IsQuestUnobtainable(UnlockLinkId unlockLinkId)
     {
         if (unlockLinkId.Value == 506)
@@ -1161,10 +1135,6 @@ internal sealed unsafe class QuestFunctions
         return playerState != null && playerState->ClassJobLevels[classJobRow.ExpArrayIndex] > 0;
     }
 
-    /// <summary>
-    ///     Whether one of the classes/jobs the quest can be accepted with is already at the quest's level, so it can be
-    ///     accepted after switching to it (the accept step picks such a class).
-    /// </summary>
     public bool HasClassJobAtQuestLevel(ElementId questId)
     {
         if (!questData.TryGetQuestInfo(questId, out IQuestInfo? questInfo))

@@ -5,10 +5,6 @@ using Questionable.Model.Questing;
 
 namespace Questionable.Controller.GameUi;
 
-/// <summary>
-///     Handles the in-game "PointMenu" addon (used by quest steps that require picking a map point),
-///     picking the choice configured on the current quest step.
-/// </summary>
 [RegisterSingleton]
 internal sealed class PointMenuHandler : IDisposable
 {
@@ -52,11 +48,7 @@ internal sealed class PointMenuHandler : IDisposable
         HandlePointMenu((AtkUnitBase*)args.Addon.Address);
     }
 
-    /// <summary>
-    ///     Handles a PointMenu that is already open when automation starts. Unlike the live addon
-    ///     callback this bypasses the <see cref="ShouldHandleUiInteractions"/> gate, matching the
-    ///     legacy "initial check" behaviour.
-    /// </summary>
+    // The initial sweep bypasses the interaction gate.
     public unsafe void CheckExisting()
     {
         if (_gameGui.TryGetAddonByName("PointMenu", out AtkUnitBase* addonPointMenu))

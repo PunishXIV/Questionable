@@ -294,7 +294,6 @@ internal sealed class CommandHandler : IDisposable
                     break;
                 }
                 RedeemRewardItems.ResetAttemptedItems();
-                // yields UnmountTask followed by redeem tasks
                 var tasks = RedeemRewardItems.CreateRedeemTasks(_questData, _dataManager, overrideConfig: true);
                 if (tasks.Count == 0)
                 {

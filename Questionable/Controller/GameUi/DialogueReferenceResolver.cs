@@ -3,11 +3,6 @@ using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.GameUi;
 
-/// <summary>
-///     Resolves a dialogue choice's prompt/answer reference (an Excel key, an Excel row id, or a raw
-///     string) into a concrete <see cref="StringOrRegex"/>. Shared by the dialogue-choice and yes/no
-///     interaction handlers.
-/// </summary>
 [RegisterSingleton]
 internal sealed class DialogueReferenceResolver(ExcelFunctions excelFunctions)
 {
@@ -27,10 +22,7 @@ internal sealed class DialogueReferenceResolver(ExcelFunctions excelFunctions)
         return null;
     }
 
-    /// <summary>
-    ///     Returns whether <paramref name="actualAnswer"/> matches <paramref name="expectedAnswer"/>,
-    ///     tolerating embedded newlines in the actual answer.
-    /// </summary>
+    // FFXIV dialogue answers can contain embedded newlines.
     public static bool IsMatch(string? actualAnswer, StringOrRegex? expectedAnswer)
     {
         if (actualAnswer == null && expectedAnswer == null)

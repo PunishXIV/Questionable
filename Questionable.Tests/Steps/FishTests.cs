@@ -21,8 +21,6 @@ public sealed class FishTests
         _factory = new Fish.Factory();
     }
 
-    // --- helpers ---
-
     private static QuestStep FishStep(
         List<GatheredItem>? itemsToGather = null,
         List<QuestWorkValue?>? completionQuestVariablesFlags = null) =>
@@ -95,8 +93,6 @@ public sealed class FishTests
         Assert.True(fishTask.GatheredItem.FishingOptions.HookType.Double.Value.Hookset!.Strong);
         Assert.Null(fishTask.GatheredItem.FishingOptions.HookType.Triple);
     }
-
-    // --- CreateAllTasks ---
 
     [Fact]
     public void FishStep_WhenFeeshUnavailable_RetainsObjectiveCheckingTask()
@@ -174,8 +170,6 @@ public sealed class FishTests
         Assert.Equal(completionFlags, fishTask.CompletionQuestVariablesFlags);
         Assert.Equal("Fish*", fishTask.ToString());
     }
-
-    // --- IsHandledByFeesh ---
 
     [Fact]
     public void FeeshCatchableStep_SkipsQuestionableTravel()

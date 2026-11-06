@@ -53,7 +53,6 @@ internal static class WaitAtEnd
 
                 case EInteractionType.WalkTo:
                 case EInteractionType.Jump:
-                    // no need to wait if we're just moving around
                     return [Next(quest, sequence)];
 
                 case EInteractionType.WaitForObjectAtPosition:
@@ -111,9 +110,6 @@ internal static class WaitAtEnd
             }
         }
 
-        /// <summary>
-        ///     Waits until an interaction has moved us: into another territory, or elsewhere in the same one.
-        /// </summary>
         private ITask WaitUntilMoved(QuestStep step, ushort targetTerritoryId)
         {
             if (step.TerritoryId != targetTerritoryId)
@@ -126,9 +122,6 @@ internal static class WaitAtEnd
                 if (currentPosition == null)
                     return false;
 
-                // the 'closest' locations are probably
-                //   - waking sands' solar
-                //   - rising stones' solar + dawn's respite
                 return (lastPosition - currentPosition.Value).Length() > 2;
             }, $"Wait(tp away from {lastPosition.ToString("G5", CultureInfo.InvariantCulture)})");
         }

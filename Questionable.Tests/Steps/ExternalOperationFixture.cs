@@ -10,7 +10,6 @@ using Questionable.External;
 
 namespace Questionable.Tests.Steps;
 
-/// <summary>Real lifecycle coordination and state, with provider IPC and game boundaries substituted.</summary>
 internal sealed class ExternalOperationFixture : IDisposable
 {
     public TestClock Clock { get; } = new();

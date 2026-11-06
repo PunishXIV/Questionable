@@ -380,7 +380,6 @@ internal sealed partial class ActiveQuestComponent
 
                 if (showStopClock)
                 {
-                    // Tooltip color based on status
                     Vector4 iconColor = QstTheme.Special;
 
                     if (hasLevelCondition)
@@ -402,7 +401,6 @@ internal sealed partial class ActiveQuestComponent
                         ImGui.Text(_L("Stop Conditions:"));
                         ImGui.Separator();
 
-                        // Level stop condition
                         if (hasLevelCondition)
                         {
                             unsafe
@@ -420,7 +418,6 @@ internal sealed partial class ActiveQuestComponent
                             }
                         }
 
-                        // Quest stop conditions
                         if (hasCompleteQuestConditions)
                         {
                             if (hasLevelCondition)
@@ -673,7 +670,7 @@ internal sealed partial class ActiveQuestComponent
         {
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Play, QstTheme.Accent))
             {
-                // if we haven't accepted this quest, mark it as next quest so that we can optionally use aetherytes to travel
+                // Choosing an unaccepted quest permits aetheryte travel.
                 if (questProgressInfo == null)
                     questController.SetNextQuest(currentQuest.Quest);
 

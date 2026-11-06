@@ -5,11 +5,6 @@ using Quest = Lumina.Excel.Sheets.Quest;
 
 namespace Questionable.AutoGen.Analysis;
 
-/// <summary>
-///     The <c>Quest.QuestParams</c> array is the symbol table the quest's Lua script is compiled against:
-///     every <c>ACTOR0</c>, <c>SEQ_3</c>, <c>LOC_ACTOR1</c> or <c>EVENTITEM0</c> the script names resolves
-///     to a row id through this table.
-/// </summary>
 internal sealed class QuestSymbols
 {
     private readonly Dictionary<string, uint> _values;
@@ -33,17 +28,11 @@ internal sealed class QuestSymbols
 
     internal uint? Value(string symbol) => _values.TryGetValue(symbol, out uint value) ? value : null;
 
-    /// <summary>Data id behind an <c>ACTOR</c>/<c>EOBJECT</c> symbol name.</summary>
     internal uint? DataId(string symbol) =>
         symbol.StartsWith("ACTOR", StringComparison.Ordinal) || symbol.StartsWith("EOBJECT", StringComparison.Ordinal)
             ? Value(symbol)
             : null;
 
-    /// <summary>
-    ///     Sequence byte a <c>SEQ_*</c> symbol stands for. These are runtime globals rather than
-    ///     <c>QuestParams</c> entries, so the number comes from the symbol name: <c>SEQ_3</c> is sequence 3 and
-    ///     <c>SEQ_FINISH</c> is the terminal sequence 255.
-    /// </summary>
     internal byte? SequenceValue(string symbol)
     {
         if (!symbol.StartsWith("SEQ_", StringComparison.Ordinal))
@@ -60,19 +49,11 @@ internal sealed class QuestSymbols
         return Value(symbol) is { } value && value <= 255 ? (byte)value : null;
     }
 
-    /// <summary>
-    ///     Level row id behind an <c>ENEMY*</c> symbol. Unlike actors, these resolve to a <c>Level</c> row whose
-    ///     <c>Object</c> is the BNpcBase id the plugin matches enemies on.
-    /// </summary>
     internal uint? EnemyLevelRow(string symbol) =>
         symbol.StartsWith("ENEMY", StringComparison.Ordinal) ? Value(symbol) : null;
 
     internal static bool IsEnemySymbol(string symbol) => symbol.StartsWith("ENEMY", StringComparison.Ordinal);
 
-    /// <summary>
-    ///     The quest's single event item, when it has exactly one. "Kill things until three of these drop"
-    ///     objectives point the fight at it; more than one item and there is no telling which the drop is.
-    /// </summary>
     internal uint? SoleEventItem()
     {
         uint? only = null;
@@ -94,11 +75,9 @@ internal sealed class QuestSymbols
         return only;
     }
 
-    /// <summary>Level row id backing a <c>LOC_ACTOR*</c>/<c>LOC_POS_*</c>/<c>LOC_EOBJ*</c> symbol.</summary>
     internal uint? LevelRow(string symbol) =>
         symbol.StartsWith("LOC_", StringComparison.Ordinal) ? Value(symbol) : null;
 
-    /// <summary>The <c>LOC_</c> symbols that describe where an <c>ACTOR</c>/<c>EOBJECT</c> symbol stands.</summary>
     internal IEnumerable<uint> LevelRowsFor(string actorSymbol)
     {
         string suffix = actorSymbol switch

@@ -64,7 +64,6 @@ internal static class JsonOptions
             try { defaultInstance = Activator.CreateInstance(property.PropertyType); }
             catch { continue; }
 
-            // Serialize the default once so we can compare JSON output
             string defaultJson = JsonSerializer.Serialize(defaultInstance, Default);
 
             property.ShouldSerialize = (_, val) =>

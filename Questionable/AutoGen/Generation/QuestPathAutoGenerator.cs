@@ -10,26 +10,10 @@ using Quest = Lumina.Excel.Sheets.Quest;
 
 namespace Questionable.AutoGen.Generation;
 
-/// <summary>
-///     Produces a first-draft questpath for a quest by combining the <c>Quest</c> sheet
-///     (issuer, todo locations, script symbol table) with what the quest's compiled Lua script says about
-///     which actor belongs to which sequence.
-///     <para>
-///         The output is a starting point for a human path author, not a finished path: positions come from
-///         <c>Level</c> rows rather than from walking the route, and anything the sheets and script cannot
-///         express (dialogue choices, duty specifics, quest-variable gating, whether flying is unlocked yet)
-///         is left out. Every step carries a <c>$</c> dev comment recording where it was derived from.
-///     </para>
-/// </summary>
 internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string author)
 {
     private readonly Dictionary<QuestStep, string> _provenance = new(ReferenceEqualityComparer.Instance);
 
-    /// <summary>
-    ///     <c>ENEMY*</c> symbols the script never mentions in a sequence branch. Hunt objectives ("kill ten
-    ///     little ladybugs") often work this way: the enemy is declared but the Lua has nothing to say about it.
-    ///     Kept so the first sequence that only has a search area to offer can claim them.
-    /// </summary>
     private readonly List<string> _unattributedEnemies = [];
 
     internal QuestPathResult Generate(Quest quest)
@@ -85,7 +69,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
             ReferenceEqualityComparer.Instance));
     }
 
-    /// <summary>Sequences between accept and turn-in, from the script's <c>SEQ_*</c> symbols and the todo list.</summary>
     private static List<byte> CollectSequences(Quest quest, QuestSymbols symbols, QuestScriptAnalysis analysis)
     {
         SortedSet<byte> sequences = [];
@@ -130,11 +113,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         return sequence;
     }
 
-    /// <summary>
-    ///     Target selection, most trustworthy source first:
-    ///     a todo location that names an object is the journal's own marker for the sequence; failing that the
-    ///     script's actor for the sequence; failing that a bare todo position with nothing to interact with.
-    /// </summary>
     private QuestSequence? BuildSequence(Quest quest, QuestSymbols symbols, QuestScriptAnalysis analysis, byte number)
     {
         QuestSequence sequence = new() { Sequence = number };
@@ -219,12 +197,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         return sequence;
     }
 
-    /// <summary>
-    ///     Turns every enemy the script names for this sequence into combat. Each enemy is attached to the step
-    ///     for the actor that spawns it; if no such step exists yet — a sequence like
-    ///     <c>EOBJECT0 ENEMY0 EOBJECT1 ENEMY1</c> only produces one step on its own — the missing one is added,
-    ///     in script order. Enemies with no actor in front of them become a standalone fight.
-    /// </summary>
     private void ApplyCombat(
         QuestSymbols symbols,
         QuestSequence sequence,
@@ -303,14 +275,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         }
     }
 
-    /// <summary>
-    ///     Emits one step per todo area, pairing each with the candidate actor standing closest to it. Keeps the
-    ///     journal's own ordering, which is the order the sequence expects them to be visited in.
-    /// </summary>
-    /// <summary>
-    ///     How far an actor's own position may sit from a search area before the area is treated as the better
-    ///     answer. Zones are large; a placed actor this far from the journal's marker is not the thing marked.
-    /// </summary>
+    // Past this, a placed actor isn't the thing the journal's marker points at.
     private const float MaximumAreaMatchDistance = 200f;
 
     private void AddStepsPerTodoArea(
@@ -386,12 +351,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         }
     }
 
-    /// <summary>
-    ///     Every spot in the territory an actor could be standing. A <c>Level</c> row is the actor's own
-    ///     placement and settles it; without one - which is the case for most quest-only actors, the bolting
-    ///     dodos of "capture the bolting dodos" among them - the zone's layer data is where the game itself
-    ///     puts them, and an actor laid out once per quest phase gets a spot for each.
-    /// </summary>
     private IEnumerable<Vector3> PlacementsIn((string Symbol, uint DataId, Level? Level) actor, uint territoryId)
     {
         if (actor.Level is { } level)
@@ -406,11 +365,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
             yield return position;
     }
 
-    /// <summary>
-    ///     The layer placement of an object closest to <paramref name="near" />, or the first one when there is
-    ///     nothing to measure against. An actor laid out once per quest phase has several, and the journal's
-    ///     marker is the only hint as to which phase this sequence is.
-    /// </summary>
     private Vector3? NearestPlacement(uint dataId, uint territoryId, Vector3? near)
     {
         IReadOnlyList<Vector3> placements = gameData.LayerPositions(dataId, territoryId);
@@ -423,11 +377,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         return placements.OrderBy(x => Vector3.Distance(x, target)).First();
     }
 
-    /// <summary>
-    ///     Turns plain interactions into item uses where the script says the player is carrying an event item
-    ///     and is able to use it. Accepting, turning in and fighting are left alone — you do not use a key on a
-    ///     quest giver or a boar.
-    /// </summary>
     private void ApplyEventItemUses(
         Quest quest,
         QuestSymbols symbols,
@@ -495,10 +444,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         }
     }
 
-    /// <summary>
-    ///     The sequence whose todo line tells you to <em>use</em> this event item. Requires both the item's name
-    ///     and a "use" instruction, so "Obtain a fresh bunch of gysahl greens" does not count as using them.
-    /// </summary>
     private byte? SequenceUsingItem(Quest quest, uint itemId)
     {
         string name = gameData.EventItemName(itemId);
@@ -520,7 +465,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         return null;
     }
 
-    /// <summary>Converts a sequence's steps to use the item, if any of them can be. False when none apply.</summary>
     private bool UseItemOn(QuestSequence sequence, string symbol, uint itemId)
     {
         bool applied = false;
@@ -552,7 +496,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         return applied;
     }
 
-    /// <summary>Records an item handover in the step comments; the step itself stays a plain interaction.</summary>
     private void AnnotateTrade(QuestSymbols symbols, QuestSequence sequence, SequenceHint hint)
     {
         if (!hint.IsNpcTrade)
@@ -568,10 +511,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         }
     }
 
-    /// <summary>
-    ///     An <c>ENEMY*</c> symbol is stored one of two ways: as a <c>Level</c> row placing a spawned enemy in
-    ///     the world, or — for "kill ten of these" objectives — as the enemy id itself, with no location.
-    /// </summary>
     private (uint Id, Level? Level) ResolveEnemy(QuestSymbols symbols, string symbol)
     {
         if (symbols.EnemyLevelRow(symbol) is not { } value || value == 0)
@@ -584,10 +523,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         return (value, null);
     }
 
-    /// <summary>
-    ///     Claims the enemies the script never tied to a sequence, once, for the first sequence that has a
-    ///     search area and nothing else to do in it.
-    /// </summary>
     private bool AddUnattributedCombat(QuestSymbols symbols, QuestSequence sequence, List<Level> todoLevels, int requiredCount)
     {
         if (_unattributedEnemies.Count == 0)
@@ -615,7 +550,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         return sequence.Steps.Count > 0;
     }
 
-    /// <summary>Combat with no interaction in front of it: go to the area and fight what is there.</summary>
     private void AddStandaloneCombat(
         QuestSequence sequence,
         List<uint> enemies,
@@ -689,10 +623,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         sequence.Steps.Add(step);
     }
 
-    /// <summary>
-    ///     Turns an interaction into an emote when the journal asks for one. "/dance for Aanu Vanu" is the only
-    ///     place the game records which emote a quest wants — it is in neither the script nor the sheet columns.
-    /// </summary>
     private void ApplyEmote(Quest quest, QuestSequence sequence, byte number)
     {
         if (sequence.Steps.Count == 0)
@@ -727,7 +657,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         }
     }
 
-    /// <summary>Finds the first text command in a todo line that names an emote.</summary>
     private EEmote? EmoteIn(string todoText)
     {
         foreach (string word in todoText.Split(' ', StringSplitOptions.RemoveEmptyEntries))
@@ -742,7 +671,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         return null;
     }
 
-    /// <summary>Whether this is the NPC who hands the quest out or takes it back in.</summary>
     private static bool IsQuestGiver(Quest quest, uint? dataId) =>
         dataId is { } id && id != 0 && (id == quest.IssuerStart.RowId || id == quest.TargetEnd.RowId);
 
@@ -794,10 +722,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         return step;
     }
 
-    /// <summary>
-    ///     Where an actor actually stands. World <c>Level</c> rows are preferred over the script's <c>LOC_</c>
-    ///     symbols, which frequently point at cutscene placements rather than the interactable NPC.
-    /// </summary>
     private Level? ResolveLevel(QuestSymbols symbols, string symbol, uint dataId, uint? preferredTerritory)
     {
         List<Level> placements = [.. gameData.LevelsForObject(dataId)];
@@ -884,18 +808,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         return sequence;
     }
 
-    /// <summary>
-    ///     Adds travel shortcuts and marks steps in zones that allow flight.
-    ///     <para>
-    ///         Tracking resets at every sequence, because the plugin picks each sequence up from wherever the
-    ///         player happens to be rather than continuing from the previous step. A shortcut that turns out to
-    ///         be unnecessary is skipped at runtime by the distance checks in <c>UseAetheryteShortcut</c>, so
-    ///         emitting one per sequence is safe and matches what hand-written paths do.
-    ///     </para>
-    ///     <note>
-    ///         This can lead to extraneous teleporting, extra shortcuts should be pruned if unnecessary.
-    ///     </note>
-    /// </summary>
     private bool ApplyTravel(List<QuestSequence> sequences)
     {
         bool needsManualShortcut = false;
@@ -946,30 +858,12 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
 
     private void Note(QuestStep step, string provenance) => _provenance[step] = provenance;
 
-    /// <summary>
-    ///     Height added to a position taken from a <c>Level</c> row that places no object.
-    ///     <para>
-    ///         Those rows mark a search area rather than a thing to stand on, and their Y often sits fractionally
-    ///         under the floor. vnavmesh fails outright on a point below the mesh ("got 0 points").
-    ///         <c>QuestRegistry.CreateQuestRoot</c> uses 30 for the same reason
-    ///     </para>
-    /// </summary>
+    // Level rows without an object can sit just under the floor, and vnavmesh fails on a point below the mesh.
+    // QuestRegistry.CreateQuestRoot uses 30 for the same reason.
     private const float AreaHeightPadding = 30f;
 
-    /// <summary>Raw coordinates of a <c>Level</c> row, for measuring distances.</summary>
-    /// <summary>
-    ///     Below this, flying is not worth the mount-up. Setting <c>Fly</c> forces the plugin to mount whatever
-    ///     the distance (<c>EMountIf.Always</c> in <c>MoveExecutor</c>); leaving it unset hands the decision to
-    ///     <c>MountEvaluator</c>. Shares that evaluator's threshold so the two agree — a step left unflown
-    ///     because it was short is then one the evaluator also declines to mount for.
-    /// </summary>
     private const float MinimumFlightDistance = MountStep.MountDistance;
 
-    /// <summary>
-    ///     Whether the trip to this step is long enough to fly. The trip starts wherever the step's own travel
-    ///     shortcut lands the player, or at the previous step when it stays in the same zone. When neither is
-    ///     known the distance is unknowable, and flying is left on rather than guessed away.
-    /// </summary>
     private bool IsWorthFlying(QuestStep step, QuestStep? previousStep)
     {
         if (step.Position is not { } destination)
@@ -992,7 +886,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
 
     private static Vector3 Position(Level level) => new(level.X, level.Y, level.Z);
 
-    /// <summary>Coordinates to put in a step, lifted clear of the floor when the row places no object.</summary>
     private static Vector3 StepPosition(Level level) =>
         level.Object.RowId == 0 ?
             new Vector3(level.X, level.Y + AreaHeightPadding, level.Z) :

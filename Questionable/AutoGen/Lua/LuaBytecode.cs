@@ -5,11 +5,6 @@ using System.Text;
 
 namespace Questionable.AutoGen.Lua;
 
-/// <summary>
-///     Minimal reader for the Lua 5.1 binary chunks (<c>.luab</c>) that ship in <c>game_script/</c>.
-///     Only the parts needed to recover constants, call structure and nested function names are decoded;
-///     this is not a decompiler.
-/// </summary>
 internal static class LuaBytecode
 {
     private static ReadOnlySpan<byte> Signature => "Lua"u8;
@@ -127,10 +122,6 @@ internal static class LuaBytecode
         return value;
     }
 
-    /// <summary>
-    ///     Recovers the name each nested function was stored under. Quest scripts declare everything as
-    ///     <c>function Chunk.OnSceneNNNNN(...)</c>, which compiles to CLOSURE followed by SETTABLE/SETGLOBAL.
-    /// </summary>
     private static void AssignNames(LuaProto proto)
     {
         int? pendingProto = null;

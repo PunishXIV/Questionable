@@ -6,10 +6,6 @@ using Quest = Lumina.Excel.Sheets.Quest;
 
 namespace Questionable.AutoGen.Generation;
 
-/// <summary>
-///     A generated path plus the caveats that came with it.
-///     <paramref name="Provenance" /> maps each step to the note written into its <c>$</c> dev comment.
-/// </summary>
 internal sealed record QuestPathResult(
     Quest Quest,
     QuestRoot Root,

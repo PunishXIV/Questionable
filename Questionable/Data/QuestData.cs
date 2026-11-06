@@ -20,14 +20,12 @@ internal sealed class QuestData
     public static readonly ImmutableDictionary<uint, ImmutableList<QuestId>> AetherCurrentQuestsByTerritory =
         new Dictionary<uint, List<ushort>>
             {
-                // Heavensward
                 { 397, [1744, 1759, 1760, 2111] },
                 { 398, [1771, 1790, 1797, 1802] },
                 { 399, [1936, 1945, 1963, 1966] },
                 { 400, [1819, 1823, 1828, 1835] },
                 { 401, [1748, 1874, 1909, 1910] },
 
-                // Stormblood
                 { 612, [2639, 2661, 2816, 2821] },
                 { 613, [2632, 2673, 2687, 2693] },
                 { 614, [2724, 2728, 2730, 2733] },
@@ -35,7 +33,6 @@ internal sealed class QuestData
                 { 621, [2877, 2880, 2881, 2883] },
                 { 622, [2760, 2771, 2782, 2791] },
 
-                // Shadowbringers
                 { 813, [3380, 3384, 3385, 3386] },
                 { 814, [3360, 3371, 3537, 3556] },
                 { 815, [3375, 3503, 3511, 3525] },
@@ -43,7 +40,6 @@ internal sealed class QuestData
                 { 817, [3444, 3467, 3478, 3656] },
                 { 818, [3588, 3592, 3593, 3594] },
 
-                // Endwalker
                 { 956, [4320, 4329, 4480, 4484] },
                 { 957, [4203, 4257, 4259, 4489] },
                 { 958, [4216, 4232, 4498, 4502] },
@@ -51,7 +47,6 @@ internal sealed class QuestData
                 { 960, [4342, 4346, 4354, 4355] },
                 { 961, [4288, 4313, 4507, 4511] },
 
-                // Dawntrail
                 { 1187, [5039, 5047, 5051, 5055] },
                 { 1188, [5064, 5074, 5081, 5085] },
                 { 1189, [5094, 5103, 5110, 5114] },
@@ -65,7 +60,6 @@ internal sealed class QuestData
     internal static readonly ImmutableDictionary<Job, ImmutableList<uint>> JobToClassQuestChapterIds = new Dictionary<Job, ImmutableList<uint>>()
     {
         { Job.ADV, [] },
-        // ARR
         { Job.GLA, [63] },
         { Job.PLD, [72, 73, 74, 75] },
         { Job.MRD, [64] },
@@ -85,26 +79,19 @@ internal sealed class QuestData
         { Job.BRD, [113, 114, 115, 116] },
         { Job.THM, [71] },
         { Job.BLM, [123, 124, 125, 126] },
-        // HW
         { Job.DRK, [80, 81, 82, 83] },
         { Job.AST, [94, 95, 96, 97] },
         { Job.MCH, [117, 118, 119, 120] },
-        // SB
         { Job.SAM, [110, 111, 112] },
         { Job.RDM, [131, 132, 133] },
         { Job.BLU, [134, 135, 146, 170] },
-        // ShB
         { Job.GNB, [84, 85] },
         { Job.DNC, [121, 122] },
-        // EW
         { Job.SGE, [152] },
         { Job.RPR, [153] },
-        // DT
         { Job.VPR, [176] },
         { Job.PCT, [177] },
-        // EC
         { Job.BST, [206] },
-        // Crafter
         { Job.ALC, [48, 49, 50] },
         { Job.ARM, [36, 37, 38] },
         { Job.BSM, [33, 34, 35] },
@@ -113,7 +100,6 @@ internal sealed class QuestData
         { Job.GSM, [39, 40, 41] },
         { Job.LTW, [42, 43, 44] },
         { Job.WVR, [45, 46, 47] },
-        // Gatherer
         { Job.MIN, [54, 55, 56] },
         { Job.BTN, [57, 58, 59] },
         { Job.FSH, [60, 61, 62] },
@@ -121,21 +107,14 @@ internal sealed class QuestData
 
     public static readonly IReadOnlyList<ElementId> DeliveryMoogleQuests = (
         (ushort[])[
-            // postmoogle quests
             1481, 1483, 1482, 1484, 1531, 1532, 1533, 1485, 33, 1571, 36, 1573, 1570, 1576, 1577, 241, 242, 1574, 1572, 1575, 243, 244, 240, 496, 362,
-            // prereqs
-            // fungal frolic chain
             804, 805, 807,
-            // aesthetician
             1210,
-            // hildibrand 1 (picks up following quest, may not be ideal)
             1204
         ]).FromNumericListOfQuests();
     public static readonly IReadOnlyList<ElementId> UnlockMoogleSocietyQuests = (
         (ushort[])[
-            // Side quests that are pre-requisites for Moogle Society
             1821,1824,1831,1832,1863,1864,1865,1866,1867,1868,1872,1878,1881,1882,1879,1883,1884,1880,1871,
-            // Tricks and Stones, the blue quest that unlocks the Moogle society
             2320
         ]).FromNumericListOfQuests();
     public static readonly IReadOnlyList<ElementId> CollaborationQuests = (
@@ -150,9 +129,6 @@ internal sealed class QuestData
             4801, // fall guys
         ]).FromNumericListOfQuests();
 
-    /// <summary>
-    /// if any of these quests are done, all citystate aethernet locations should be attuned
-    /// </summary>
     public static readonly Dictionary<EAetheryteLocation, (char Letter, ushort[] QuestIds)> AethernetUnlockQuests = new()
     {
         [EAetheryteLocation.Gridania] = ('g', [85, 12, 124, 546, 528]),
@@ -338,7 +314,6 @@ internal sealed class QuestData
         AddPreviousQuest(new(3242), new(3654));
         AddPreviousQuest(new(3153), new(3141));
 
-        // ARR intersocietal prereq
         AddPreviousQuest(new(1465), new(1221)); // amaljaa
         AddPreviousQuest(new(1465), new(1256)); // sylph
         AddPreviousQuest(new(1465), new(1324)); // kobold
@@ -374,13 +349,11 @@ internal sealed class QuestData
         AddPreviousQuest(new QuestId(3833), new QuestId(spearfishing));
         */
 
-        // Shadow Walk with Me
         AddPreviousQuest(new(3629), new(3248));
         AddPreviousQuest(new(3629), new(3272));
         AddPreviousQuest(new(3629), new(3278));
         AddPreviousQuest(new(3629), new(3628));
 
-        // The Hero's Journey
         AddPreviousQuest(new(3986), new(2115));
         AddPreviousQuest(new(3986), new(2116));
         AddPreviousQuest(new(3986), new(2281));
@@ -393,7 +366,6 @@ internal sealed class QuestData
         AddPreviousQuest(new(5188), new(4847));
         AddPreviousQuest(new(5188), new(4959));
 
-        // initial city quests are side quests
         // unclear if 470 can be started as the required quest isn't available anymore
         ushort[] limsaSideQuests =
             [107, 111, 112, 122, 663, 475, 472, 476, 470, 473, 474, 477, 486, 478, 479, 59, 400, 401, 693, 405];
@@ -410,7 +382,6 @@ internal sealed class QuestData
         foreach (ushort questId in uldahSideQuests)
             ((QuestInfo)_quests[new QuestId(questId)]).StartingCity = 3;
 
-        // follow-up quests to picking a GC
         AddGcFollowUpQuests();
 
         MainScenarioQuests = _quests.Values.Where(x => x is QuestInfo { IsMainScenarioQuest: true })
@@ -467,11 +438,6 @@ internal sealed class QuestData
     public ImmutableHashSet<ItemReward> RedeemableItems { get; }
     public QuestId LastMainScenarioQuestId { get; }
 
-    /// <summary>
-    /// Adds a manual link to indicate that questToUpdate requires requiredQuestId to be completed first, so the former can be marked as locked
-    /// </summary>
-    /// <param name="questToUpdate">The QuestId of the quest that needs a prereq added</param>
-    /// <param name="requiredQuestId">The QuestId of the prereq</param>
     private void AddPreviousQuest(QuestId questToUpdate, QuestId requiredQuestId)
     {
         if (_quests.TryGetValue(questToUpdate, out IQuestInfo? quest) && quest is QuestInfo questInfo)

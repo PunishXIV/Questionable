@@ -5,18 +5,13 @@ using Questionable.Controller.Steps.Shared;
 using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
-/// <summary>
-///     For sequence 0 <see cref="EInteractionType.AcceptQuest"/> steps, <c>TerritoryId</c> must either
-///     match a territory containing an aetheryte, or the step must teleport in via
-///     <c>AetheryteShortcut</c> / <c>AethernetShortcut</c>.
-/// </summary>
 [RegisterSingleton<IQuestValidator, AcceptQuestTerritoryValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class AcceptQuestTerritoryValidator(IAetheryteTerritoryProvider aetheryteData) : IQuestValidator
 {
     private readonly IAetheryteTerritoryProvider _aetheryteData = aetheryteData;
     private static readonly HashSet<uint> CharacterStartingTerritories = [181, 182, 183];
 
-    /// <summary>These territories are handled by custom code in <see cref="Questionable.Controller.Steps.Shared.AetheryteShortcut.CreateAllTasks"/></summary>
+    // These territories are handled by custom code in AetheryteShortcut.CreateAllTasks.
     private static readonly HashSet<uint> AetheryteShortcutTerritories = AetheryteShortcut.Territories;
 
     public IEnumerable<ValidationIssue> Validate(Quest quest)

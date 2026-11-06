@@ -1,9 +1,6 @@
 using Lumina.Excel.Sheets;
 namespace Questionable.Data;
 
-/// <summary>
-///     Which items are sold by regular gil vendors, i.e. which purchases Knightshopper can make with gil.
-/// </summary>
 [RegisterSingleton]
 internal sealed class GilShopData(IDataManager dataManager)
 {

@@ -77,7 +77,6 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         ShowCloseButton = true;
         AllowClickthrough = false;
 
-        // Minimize button
         _minimizeButton = new()
         {
             Icon = FontAwesomeIcon.Minus,
@@ -93,7 +92,6 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         };
         TitleBarButtons.Add(_minimizeButton);
 
-        // Settings button
         TitleBarButtons.Add(new()
         {
             Icon = FontAwesomeIcon.Cog,
@@ -107,7 +105,6 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             }
         });
 
-        // Sponsor button
         if (!_configuration.General.HideSponsorButton)
             TitleBarButtons.Add(new()
             {

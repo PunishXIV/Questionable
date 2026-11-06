@@ -15,28 +15,17 @@ using Xunit.Abstractions;
 
 namespace Questionable.Tests.AutoGen;
 
-/// <summary>
-///     Measures generated paths against the hand-authored ones and fails if agreement drops below the floors
-///     below. This is the guard the individual rule tests cannot give: a change that improves one quest while
-///     quietly breaking a hundred others shows up here.
-///     <para>
-///         The floors sit a little under the measured rates so ordinary noise does not fail the build; they are
-///         a regression alarm, not a target. Raise them when the generator genuinely improves.
-///     </para>
-/// </summary>
+// Regression floors catch broad path-generation regressions that individual rule tests miss.
 public sealed class QuestPathGenerationAccuracyTests(GameDataFixture fixture, ITestOutputHelper output)
     : IClassFixture<GameDataFixture>
 {
-    /// <summary>Measured 97.2% over all 4095 hand-authored quests at the time of writing.</summary>
+    // Baseline: 97.2% over 4,095 hand-authored quests.
     private const double SequenceMatchFloor = 0.95;
 
-    /// <summary>Measured 88.5% over the same set.</summary>
+    // Baseline: 88.5% over the same set.
     private const double QuestMatchFloor = 0.85;
 
-    /// <summary>
-    ///     Every Nth embedded quest, so the test covers the whole corpus shape without spending minutes on it.
-    ///     The full sweep is the same code with this set to 1.
-    /// </summary>
+    // Samples the corpus shape; set to 1 for the full sweep.
     private const int SampleStride = 20;
 
     [GameDataFact]

@@ -4,10 +4,8 @@ using Lumina.Excel.Sheets;
 
 namespace Questionable.Controller.Steps.Interactions;
 
-/// <summary>Equipment slot lookups shared by <see cref="EquipItem"/> and <see cref="UnequipItem"/>.</summary>
 internal static class EquipmentSlots
 {
-    /// <returns>The equipped-item slots the item can occupy, or null if it is not equipment.</returns>
     public static List<ushort>? For(Item item) =>
         item.EquipSlotCategory.RowId switch
         {

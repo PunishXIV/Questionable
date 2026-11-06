@@ -30,14 +30,12 @@ internal static class CreateGearset
     {
         protected override unsafe bool StartInternal()
         {
-            // Safety check: ensure player is logged in
             if (!clientState.IsLoggedIn)
             {
                 logger.LogWarning("Cannot create gearset: player is not logged in");
                 throw new TaskException("Player is not logged in");
             }
 
-            // Safety check: ensure gearset module is available
             RaptureGearsetModule* gearsetModule = RaptureGearsetModule.Instance();
             if (gearsetModule == null)
             {
@@ -45,18 +43,12 @@ internal static class CreateGearset
                 throw new TaskException("Gearset system is not available");
             }
 
-            // Safety check: ensure player is not in combat
             if (condition[ConditionFlag.InCombat])
             {
                 logger.LogWarning("Cannot create gearset: player is in combat");
                 throw new TaskException("Cannot create gearset while in combat");
             }
 
-            // Create the gearset with currently equipped gear
-            // This will automatically:
-            // - Use the player's current job for the gearset
-            // - Name it based on the current job (e.g., "Culinarian", "Paladin")
-            // - Find the next available slot (0-99)
             int gearsetId = gearsetModule->CreateGearset();
 
             if (gearsetId < 0)

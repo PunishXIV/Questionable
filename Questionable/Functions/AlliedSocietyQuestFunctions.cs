@@ -174,7 +174,6 @@ internal sealed class AlliedSocietyQuestFunctions
             return (int)(S1 % range);
         }
 
-        // returns new value for s1
         private static uint Transform(uint s0, uint s1)
         {
             uint temp = s0 ^ (s0 << 11);

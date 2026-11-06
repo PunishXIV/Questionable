@@ -11,13 +11,9 @@ public sealed class UniqueStartStopValidatorTests
 {
     private readonly UniqueStartStopValidator _validator = new();
 
-    // --- helpers ---
-
     private static QuestStep Step(EInteractionType type,
         ElementId? pickUpQuestId = null, ElementId? turnInQuestId = null) =>
         new() { InteractionType = type, PickUpQuestId = pickUpQuestId, TurnInQuestId = turnInQuestId };
-
-    // --- early exits ---
 
     [Fact]
     public void SatisfactionSupplyQuest_ReturnsNoIssues()
@@ -38,8 +34,6 @@ public sealed class UniqueStartStopValidatorTests
 
         Assert.Empty(_validator.Validate(quest));
     }
-
-    // --- AcceptQuest ---
 
     [Fact]
     public void AcceptQuestAsLastStepOfSequence0_ReturnsNoIssues()
@@ -110,8 +104,6 @@ public sealed class UniqueStartStopValidatorTests
         Assert.DoesNotContain(issues, x => x.Type == EIssueType.UnexpectedAcceptQuestStep);
     }
 
-    // --- CompleteQuest ---
-
     [Fact]
     public void CompleteQuestAsLastStepOfSequence255_ReturnsNoIssues()
     {
@@ -164,8 +156,6 @@ public sealed class UniqueStartStopValidatorTests
         Assert.Contains(issues, x => x.Type == EIssueType.MissingQuestComplete);
         Assert.DoesNotContain(issues, x => x.Type == EIssueType.UnexpectedCompleteQuestStep);
     }
-
-    // --- no sequence 0 / 255 ---
 
     [Fact]
     public void NoSequence0_NoMissingAcceptIssue()

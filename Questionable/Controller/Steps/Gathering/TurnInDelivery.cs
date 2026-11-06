@@ -12,7 +12,6 @@ internal static class TurnInDelivery
         {
             if (quest.Id is not SatisfactionSupplyNpcId ||
                     sequence.Sequence != 1
-                    //|| questController.AutomationType is QuestController.EAutomationType.GatheringOnly
                     )
                 return null;
 
@@ -61,11 +60,9 @@ internal static class TurnInDelivery
                 return ETaskResult.TaskComplete;
             }
 
-            // we should at least wait until we have less allowances
             if (_remainingAllowances == remainingAllowances)
                 return ETaskResult.StillRunning;
 
-            // try turning it in...
             logger.LogInformation("Attempting turn-in (remaining allowances: {RemainingAllowances})",
                 remainingAllowances);
             _remainingAllowances = remainingAllowances;
@@ -79,7 +76,7 @@ internal static class TurnInDelivery
             return ETaskResult.StillRunning;
         }
 
-        // not even sure if any turn-in npcs are NEAR mobs; but we also need to be on a gathering/crafting job
+        // Turn-ins need a gathering/crafting job, so fighting back isn't an option.
         public override bool ShouldInterruptOnDamage() => false;
     }
 }

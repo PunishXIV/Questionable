@@ -3,12 +3,6 @@ using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller;
 
-/// <summary>
-///     Tracks which quest is currently being worked on. There are up to five quest "slots"
-///     (started / simulated / next / gathering / pending); this class owns those slots, the rules
-///     that pick the currently-active one, and the setters that mutate them. Extracted from
-///     <see cref="QuestController"/>.
-/// </summary>
 [RegisterSingleton]
 internal sealed class QuestProgressTracker(
     QuestFunctions questFunctions,
@@ -21,9 +15,7 @@ internal sealed class QuestProgressTracker(
     public QuestController.QuestProgress? NextQuest { get; set; }
     public QuestController.QuestProgress? GatheringQuest { get; set; }
 
-    /// <summary>
-    ///     Used when accepting leves, as there's a small delay.
-    /// </summary>
+    // Leve acceptance is delayed.
     public QuestController.QuestProgress? PendingQuest { get; set; }
 
     public (QuestController.QuestProgress Progress, QuestController.ECurrentQuestType Type)? CurrentQuestDetails
@@ -45,7 +37,6 @@ internal sealed class QuestProgressTracker(
 
     public QuestController.QuestProgress? CurrentQuest => CurrentQuestDetails?.Progress;
 
-    /// <summary>Clears every quest slot.</summary>
     public void Reset()
     {
         StartedQuest = null;

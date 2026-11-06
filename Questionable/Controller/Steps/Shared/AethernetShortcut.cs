@@ -92,7 +92,6 @@ internal static class AethernetShortcut
             Vector3 playerPosition = objectTable[0]!.Position;
             float distanceToSource = aetheryteData.CalculateDistance(playerPosition, territoryType, Task.From);
 
-            // already closer to the destination than to the source
             if (distanceToSource >= aetheryteData.CalculateDistance(playerPosition, territoryType, Task.To))
                 return false;
 
@@ -135,7 +134,6 @@ internal static class AethernetShortcut
             return true;
         }
 
-        /// <returns>What <see cref="Start" /> should return if a skip condition matches, otherwise null.</returns>
         private bool? CheckSkipConditions()
         {
             if (Task.SkipConditions.InSameTerritory &&

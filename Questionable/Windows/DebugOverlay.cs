@@ -157,7 +157,7 @@ internal sealed class DebugOverlay : Window
                 continue;
 
             (int priority, string reason) = _combatController.GetKillPriority(x);
-            // no smoothing for combat target overlay, caching the position of moving objects is pointless (is that a pun?)
+            // Combat targets move too quickly for smoothing.
             ImGui.GetWindowDrawList().AddText(screenPos + new Vector2(10, -8), priority > 0 ? 0xFF00FF00 : 0xFFFFFFFF,
                 $"{x.Name}/{x.GameObjectId:X}, {GameFunctions.GetBaseID(x)}, {priority} - {reason}, {Vector3.Distance(x.Position, _objectTable[0]!.Position):N2}, {x.IsTargetable}");
         }

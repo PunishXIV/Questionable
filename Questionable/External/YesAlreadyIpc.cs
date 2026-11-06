@@ -73,7 +73,6 @@ internal sealed class YesAlreadyIpc : Ipc, IDisposable
         }
     }
 
-    /// <returns>The state to request, or null to leave YesAlready alone, and whether Questionable now owns it being off.</returns>
     internal static (bool? SetEnabled, bool DisabledByQuestionable) DecideToggle(bool hasActiveQuest, bool isEnabled,
         bool disabledByQuestionable)
     {
