@@ -198,7 +198,7 @@
           },
           "TerritoryId": 135,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": false},
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
           "Fly": true
         }

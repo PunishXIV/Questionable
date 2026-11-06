@@ -55,13 +55,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "TestedBossModVersion": "0.1.0.1",
-            "Notes": [
-              "(phase 2) AI doesn't use any of the Red Baron's attacks, just moves with it and eventually dies (after a few minutes)"
-            ]
-          },
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "Fly": true
         }
       ]

@@ -30,14 +30,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "TestedBossModVersion": "0.0.0.294",
-            "Notes": [
-              "(phase 1) AI walks (a bit) towards enemies, but doesn't target them and doesn't attack",
-              "(phase 1) AI doesn't move close enough to the tattered plumage; needs to be re-tested"
-            ]
-          },
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "AethernetShortcut": [
             "[Old Sharlayan] The Studium",
             "[Old Sharlayan] Scholar's Harbor"

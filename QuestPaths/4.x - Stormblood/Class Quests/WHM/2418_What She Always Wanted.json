@@ -124,7 +124,7 @@
           "TerritoryId": 612,
           "InteractionType": "SinglePlayerDuty",
           "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "SinglePlayerDutyOptions": {"Enabled": false},
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "ItemId": 2002053
         }
       ]

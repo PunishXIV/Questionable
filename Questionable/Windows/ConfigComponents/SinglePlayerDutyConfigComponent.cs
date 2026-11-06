@@ -260,8 +260,7 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
             {
                 ImGui.TextUnformatted(_L("Work in Progress:"));
                 ImGui.BulletText(_L("Will always use BossMod for combat (ignoring the configured combat module)."));
-                ImGui.BulletText(_L("Only a small subset of quest battles have been tested - most of which are in the MSQ."));
-                ImGui.BulletText(_L("It will always try to start at 'Very Easy' difficulty, including the first attempt."));
+                ImGui.BulletText(_L("Retries after a failed attempt always start at 'Very Easy' difficulty. The first attempt may start at 'Normal'."));
                 ImGui.BulletText(_L("BossMod forks (such as Reborn) are NOT COMPATIBLE with Questionable."));
             }
 

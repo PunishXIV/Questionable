@@ -2893,20 +2893,11 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
-    <Key>Only a small subset of quest battles have been tested - most of which are in the MSQ.</Key>
-    <Value lang="en">Only a small subset of quest battles have been tested - most of which are in the MSQ.</Value>
-    <Value lang="ja-jp">テスト済みのクエストバトルはごく一部であり、ほとんどはメインシナリオのものです。</Value>
-    <Value lang="zh-cn">只有一小部分任务战斗经过测试 - 其中大部分是主线任务。</Value>
-    <Value lang="zh-tw">只有一小部分任務戰鬥經過測試 - 其中大部分是主線任務。</Value>
-    <!--<Value lang="ko">퀘스트 전투는 소수의 부분만 테스트되었으며, 대부분은 메인 시나리오에 속합니다.</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
-    <Key>It will always try to start at 'Very Easy' difficulty, including the first attempt.</Key>
-    <Value lang="en">It will always try to start at 'Very Easy' difficulty, including the first attempt.</Value>
-    <Value lang="ja-jp">バトルに失敗して再挑戦する場合、常に「Very Easy」難易度で開始されます。</Value>
-    <Value lang="zh-cn">重试失败战斗时，将始终以'非常简单'难度开始。</Value>
-    <Value lang="zh-tw">重試失敗戰鬥時，將始終以'非常簡單'難度開始。</Value>
+    <Key>Retries after a failed attempt always start at 'Very Easy' difficulty. The first attempt may start at 'Normal'.</Key>
+    <Value lang="en">Retries after a failed attempt always start at 'Very Easy' difficulty. The first attempt may start at 'Normal'.</Value>
+    <Value lang="ja-jp">バトルに失敗して再挑戦する場合、常に「Very Easy」難易度で開始されます。初回は「Normal」で開始される場合があります。</Value>
+    <Value lang="zh-cn">重试失败战斗时，将始终以'非常简单'难度开始。首次尝试可能以'普通'难度开始。</Value>
+    <Value lang="zh-tw">重試失敗戰鬥時，將始終以'非常簡單'難度開始。首次嘗試可能以'普通'難度開始。</Value>
     <!--<Value lang="ko">실패한 전투를 다시 시도하는 경우, 항상 '매우 쉬움' 난이도로 시작됩니다.</Value>-->
   </Entry>
   <Entry>

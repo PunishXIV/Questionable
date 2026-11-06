@@ -79,7 +79,7 @@
           "StopDistance": 7,
           "TerritoryId": 612,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": false}
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },

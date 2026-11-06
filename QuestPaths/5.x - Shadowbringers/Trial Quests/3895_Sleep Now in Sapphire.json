@@ -100,9 +100,7 @@
           "StopDistance": 5,
           "TerritoryId": 829,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Index": 1
-          },
+          "SinglePlayerDutyOptions": {"Enabled": true, "Index": 1},
           "DialogueChoices": [
             {
               "Type": "List",

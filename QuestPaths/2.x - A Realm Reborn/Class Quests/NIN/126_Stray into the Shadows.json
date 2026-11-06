@@ -249,16 +249,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "TestedBossModVersion": "0.0.0.292",
-            "Notes": [
-              "(phase 1) AI doesn't move or pick up the stolen firearms",
-              "(phase 1 + 2) AI automatically removes Hidden status",
-              "(phase 2) AI only moves while targeted enemies are in range + gets stuck on corners while trying to get to irrelevant enemies",
-              "(phase 2) AI doesn't even attempt to navigate to the end of the quest"
-            ]
-          }
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
