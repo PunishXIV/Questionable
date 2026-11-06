@@ -270,6 +270,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool DontShowAnswerSuggestions { get; set; }
         public bool SkipLowPriorityDuties { get; set; }
         public bool UseTickets { get; set; }
+        public bool ConfirmCurrencyOverCap { get; set; }
         public bool SameJobThroughoutQuest { get; set; }
         public bool IgnoreNextQuestIfPrioSet { get; set; }
         public bool TitleBarPillCenter { get; set; } = true;

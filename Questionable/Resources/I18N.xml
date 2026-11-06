@@ -2410,6 +2410,38 @@
     <Value lang="ko">게임의 텔레포 설정에서 설정하는게 좋지만 편의를 위해 여기에서도 제공합니다.</Value>
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Accept losing gil, company seals or tomestones over the cap</Key>
+    <Value lang="en">Accept losing gil, company seals or tomestones over the cap</Value>
+    <Value lang="ja-jp">上限を超えるギル・軍票・トームストーンの破棄を承諾する</Value>
+    <Value lang="zh-cn">接受舍弃超出上限的金币、军票或神典石</Value>
+    <Value lang="zh-tw">接受捨棄超出上限的金幣、軍票或神典石</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>When a reward would go over the cap, the game asks before discarding the excess. Off: Questionable stops so you can spend them first. On: it confirms and continues.</Key>
+    <Value lang="en">When a reward would go over the cap, the game asks before discarding the excess. Off: Questionable stops so you can spend them first. On: it confirms and continues.</Value>
+    <Value lang="ja-jp">報酬が上限を超える場合、ゲームは超過分を破棄する前に確認します。オフ: Questionableは停止するので、先に消費できます。オン: 確認して続行します。</Value>
+    <Value lang="zh-cn">当奖励会超出上限时，游戏会在舍弃超出部分前询问。关闭：Questionable 会停止，方便你先花掉。开启：自动确认并继续。</Value>
+    <Value lang="zh-tw">當獎勵會超出上限時，遊戲會在捨棄超出部分前詢問。關閉：Questionable 會停止，方便你先花掉。開啟：自動確認並繼續。</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/GameUi/YesNoChoiceHandler.cs -->
+    <Key>Confirmed going over a currency cap; the excess was discarded.</Key>
+    <Value lang="en">Confirmed going over a currency cap; the excess was discarded.</Value>
+    <Value lang="ja-jp">通貨の上限超過を承諾しました。超過分は破棄されました。</Value>
+    <Value lang="zh-cn">已确认超出货币上限，超出部分已被舍弃。</Value>
+    <Value lang="zh-tw">已確認超出貨幣上限，超出部分已被捨棄。</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/GameUi/YesNoChoiceHandler.cs -->
+    <Key>Stopped: this reward would go over a currency cap. Spend some first, or allow it in the settings.</Key>
+    <Value lang="en">Stopped: this reward would go over a currency cap. Spend some first, or allow it in the settings.</Value>
+    <Value lang="ja-jp">停止しました: この報酬は通貨の上限を超えます。先に消費するか、設定で許可してください。</Value>
+    <Value lang="zh-cn">已停止：此奖励会超出货币上限。请先花掉一些，或在设置中允许。</Value>
+    <Value lang="zh-tw">已停止：此獎勵會超出貨幣上限。請先花掉一些，或在設定中允許。</Value>
+  </Entry>
+  <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
     <Key>Notifications</Key>
     <Value lang="en">Notifications</Value>

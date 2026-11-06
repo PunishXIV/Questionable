@@ -423,6 +423,21 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     }
                 }
 
+                bool confirmCurrencyOverCap = Configuration.General.ConfirmCurrencyOverCap;
+                if (ImGui.Checkbox(_L("Accept losing gil, company seals or tomestones over the cap"), ref confirmCurrencyOverCap))
+                {
+                    Configuration.General.ConfirmCurrencyOverCap = confirmCurrencyOverCap;
+                    Save();
+                }
+
+                if (ImGui.IsItemHovered())
+                {
+                    using (ImRaii.Tooltip())
+                    {
+                        ImGui.Text(_L("When a reward would go over the cap, the game asks before discarding the excess. Off: Questionable stops so you can spend them first. On: it confirms and continues."));
+                    }
+                }
+
                 bool sameJobThroughoutQuest = Configuration.General.SameJobThroughoutQuest;
                 if (ImGui.Checkbox(_L("Before each Interact, switch to the job a quest was accepted with"), ref sameJobThroughoutQuest))
                 {

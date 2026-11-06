@@ -38,6 +38,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
     private readonly Regex _ticketRegex;
     private readonly Regex _hqTradeRegex;
     private readonly Regex _fcInviteRegex;
+    private readonly Regex[] _overCapRegexes;
     private SoloDutyConfirmation? _soloDutyConfirmation;
 
     public YesNoChoiceHandler(
@@ -85,6 +86,11 @@ internal sealed class YesNoChoiceHandler : IDisposable
         _ticketRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 102686, addon => addon.Text, pluginLog)!;
         _hqTradeRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 102434, addon => addon.Text, pluginLog)!;
         _fcInviteRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 2873, addon => addon.Text, pluginLog)!;
+        // Gil, company seals, tomestones and their combinations.
+        _overCapRegexes = new uint[] { 4474, 4605, 4606, 4607, 4609, 5648, 5841 }
+            .Select(row => DataManagerAdapter.GetRegex<Addon>(dataManager, row, addon => addon.Text, pluginLog))
+            .OfType<Regex>()
+            .ToArray();
 
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "SelectYesno", SelectYesnoPostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "DifficultySelectYesNo", DifficultySelectYesNoPostSetup);
@@ -466,6 +472,24 @@ internal sealed class YesNoChoiceHandler : IDisposable
         {
             _logger.LogInformation("Automatically confirming HQ item trade");
             addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
+            return true;
+        }
+
+        if (_questController.IsRunning && _overCapRegexes.Any(regex => regex.IsMatch(actualPrompt)))
+        {
+            if (_configuration.General.ConfirmCurrencyOverCap)
+            {
+                _logger.LogInformation("Confirming reward over the currency cap: {Prompt}", actualPrompt);
+                _chatGui.Print(_L("Confirmed going over a currency cap; the excess was discarded."), CommandHandler.MessageTag, CommandHandler.TagColor);
+                addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
+            }
+            else
+            {
+                _logger.LogInformation("Reward would go over the currency cap, stopping: {Prompt}", actualPrompt);
+                _chatGui.PrintError(_L("Stopped: this reward would go over a currency cap. Spend some first, or allow it in the settings."), CommandHandler.MessageTag, CommandHandler.TagColor);
+                _questController.Stop("Currency over cap");
+            }
+
             return true;
         }
 
