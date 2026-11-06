@@ -3,10 +3,10 @@ using System.Reflection;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Ipc;
 using Questionable.Model.Common;
-using WrathCombo.API;
 using WrathCombo.API.Enum;
+using WrathCombo.API;
 
-namespace Questionable.Controller.CombatModules;
+namespace Questionable.External;
 
 [RegisterSingleton<ICombatModule, WrathComboModule>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class WrathComboModule : ICombatModule, IDisposable
@@ -236,4 +236,24 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
             description, realReason.ToString(), additionalInfo);
         _lease = null;
     }
+}
+
+internal static class WrathResultExtensions
+{
+    public static bool AllSuccessful
+    (out string failedVariableNames,
+        params (string name, SetResult result)[] results)
+    {
+        string[] failed = results
+            .Where(r => !r.result.IsSuccess())
+            .Select(r => r.name)
+            .ToArray();
+
+        failedVariableNames = string.Join(", ", failed);
+        return failed.Length == 0;
+    }
+
+    // Duplicate means the value was already set, e.g. on a lease Wrath handed back to a re-registering plugin.
+    public static bool IsSuccess(this SetResult result) =>
+        result is SetResult.Okay or SetResult.OkayWorking or SetResult.Duplicate;
 }

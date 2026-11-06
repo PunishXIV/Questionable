@@ -1,41 +1,47 @@
-using Dalamud.Plugin.Ipc;
+using FFXIVClientStructs.FFXIV.Client.Game;
+using Questionable.Controller.Steps.Shared;
+using Questionable.Model.Questing;
 using static Questionable.External.IPCUtils;
 
 namespace Questionable.External;
 
-[RegisterSingleton<IGatherChillIpc, GatherChillIpc>]
-internal sealed class GatherChillIpc(IDalamudPluginInterface pluginInterface, ILogger<GatherChillIpc> logger,
-    GatheringOperationState operation) : Ipc, IGatherChillIpc
+[RegisterSingleton]
+internal sealed class GatherChillIpc : Ipc, IDisposable
 {
     internal const string Owner = "Questionable";
 
     private const int MinimumApiVersion = 3;
 
-    private readonly ICallGateSubscriber<int> _apiVersion = pluginInterface.GetIpcSubscriber<int>("GatherChill.ApiVersion");
-    private readonly ICallGateSubscriber<bool> _isBusy = pluginInterface.GetIpcSubscriber<bool>("GatherChill.IsBusy");
-    private readonly ICallGateSubscriber<uint, bool> _canGather = pluginInterface.GetIpcSubscriber<uint, bool>("GatherChill.CanGather");
+    private readonly ILogger<GatherChillIpc> _logger;
+    private readonly GatheringOperationState _operation;
+    private readonly EzIPCDisposalToken[] _disposalTokens;
 
-    private readonly ICallGateSubscriber<string, uint, int, (int, Guid, string)> _startJob =
-        pluginInterface.GetIpcSubscriber<string, uint, int, (int, Guid, string)>("GatherChill.StartJob");
+    [EzIPC("ApiVersion")] private readonly Func<int> _apiVersion = null!;
+    [EzIPC("IsBusy")] private readonly Func<bool> _isBusy = null!;
+    [EzIPC("CanGather")] private readonly Func<uint, bool> _canGather = null!;
+    [EzIPC("StartJob")] private readonly Func<string, uint, int, (int, Guid, string)> _startJob = null!;
+    [EzIPC("GetJob")] private readonly Func<Guid, (int, int, int, string)> _getJob = null!;
+    [EzIPC("CancelJob")] private readonly Func<string, Guid, bool> _cancelJob = null!;
 
-    private readonly ICallGateSubscriber<Guid, (int, int, int, string)> _getJob =
-        pluginInterface.GetIpcSubscriber<Guid, (int, int, int, string)>("GatherChill.GetJob");
-
-    private readonly ICallGateSubscriber<string, Guid, bool> _cancelJob =
-        pluginInterface.GetIpcSubscriber<string, Guid, bool>("GatherChill.CancelJob");
+    public GatherChillIpc(ILogger<GatherChillIpc> logger, GatheringOperationState operation)
+    {
+        _logger = logger;
+        _operation = operation;
+        _disposalTokens = EzIPC.Init(this, InternalName, SafeWrapper.None);
+    }
 
     public override string InternalName => "GatherChill";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     // Older providers can still be moving the character even though we cannot submit jobs to them.
-    public bool IsAvailable() => Read(() => _apiVersion.InvokeFunc() > 0) == true;
-    public override bool IsReady() => Read(() => _apiVersion.InvokeFunc() >= MinimumApiVersion) == true;
-    public bool? GetBusy() => Read(_isBusy.InvokeFunc);
-    public bool CanGather(uint itemId) => Read(() => _canGather.InvokeFunc(itemId)) == true;
+    public bool IsAvailable() => Read(() => _apiVersion() > 0) == true;
+    public override bool IsReady() => Read(() => _apiVersion() >= MinimumApiVersion) == true;
+    public bool? GetBusy() => Read(_isBusy);
+    public bool CanGather(uint itemId) => Read(() => _canGather(itemId)) == true;
 
     public GatherStartResult StartRequest(uint itemId, int additionalCount, out string message)
     {
         message = "";
-        if (operation.HasOperation)
+        if (_operation.HasOperation)
             return GatherStartResult.Busy;
         if (itemId == 0 || additionalCount <= 0)
             return GatherStartResult.Invalid;
@@ -43,15 +49,15 @@ internal sealed class GatherChillIpc(IDalamudPluginInterface pluginInterface, IL
             return GatherStartResult.NotReady;
         if (GetBusy() != false)
             return GatherStartResult.Busy;
-        
-        Guid owner = operation.BeginSubmission();
+
+        Guid owner = _operation.BeginSubmission();
         try
         {
-            logger.LogInformation("Asking Gather n Chill for {Count} more of {ItemId}", additionalCount, itemId);
-            (int result, Guid jobId, message) = _startJob.InvokeFunc(Owner, itemId, additionalCount);
+            _logger.LogInformation("Asking Gather n Chill for {Count} more of {ItemId}", additionalCount, itemId);
+            (int result, Guid jobId, message) = _startJob(Owner, itemId, additionalCount);
             if (result == (int)GatherStartResult.Started && jobId != Guid.Empty)
             {
-                operation.AcceptSubmission(owner, jobId);
+                _operation.AcceptSubmission(owner, jobId);
                 return GatherStartResult.Started;
             }
 
@@ -59,65 +65,65 @@ internal sealed class GatherChillIpc(IDalamudPluginInterface pluginInterface, IL
             if (result != (int)GatherStartResult.Started && Enum.IsDefined((GatherStartResult)result) &&
                 result >= (int)GatherStartResult.Busy)
             {
-                operation.RejectSubmission(owner);
+                _operation.RejectSubmission(owner);
                 return (GatherStartResult)result;
             }
         }
         catch (Exception e)
         {
-            logger.LogError(e, "Unable to start a Gather n Chill job");
+            _logger.LogError(e, "Unable to start a Gather n Chill job");
             message = e.Message;
         }
 
-        operation.MarkUncertain(owner);
+        _operation.MarkUncertain(owner);
         return GatherStartResult.Uncertain;
     }
 
     public void PollOperation()
     {
-        if (operation.OperationId is not { } owner)
+        if (_operation.OperationId is not { } owner)
             return;
-        if (operation.ProviderOperationId is { } jobId)
+        if (_operation.ProviderOperationId is { } jobId)
         {
             var (state, message) = GetJob(jobId);
-            operation.ObserveStatus(owner, state, message);
+            _operation.ObserveStatus(owner, state, message);
         }
-        if (operation.IsAbandoned)
+        if (_operation.IsAbandoned)
             CancelOwned();
-        if (operation.RequiresReconciliation)
+        if (_operation.RequiresReconciliation)
             ObserveIdle();
     }
 
     public void CancelOwned()
     {
-        if (!operation.HasOperation)
+        if (!_operation.HasOperation)
             return;
-        operation.AbandonCurrent();
-        if (!operation.TryBeginCancellation(out Guid jobId))
+        _operation.AbandonCurrent();
+        if (!_operation.TryBeginCancellation(out Guid jobId))
             return;
         try
         {
-            logger.LogInformation("Cancelling Gather n Chill job {JobId}", jobId);
-            operation.ObserveCancellation(jobId, _cancelJob.InvokeFunc(Owner, jobId));
+            _logger.LogInformation("Cancelling Gather n Chill job {JobId}", jobId);
+            _operation.ObserveCancellation(jobId, _cancelJob(Owner, jobId));
         }
         catch (Exception e)
         {
-            logger.LogDebug(e, "Unable to cancel Gather n Chill job {JobId}", jobId);
+            _logger.LogDebug(e, "Unable to cancel Gather n Chill job {JobId}", jobId);
         }
     }
 
-    public void ObserveIdle() => operation.ObserveIdle(IsReady() ? GetBusy() : null);
+    public void ObserveIdle() => _operation.ObserveIdle(IsReady() ? GetBusy() : null);
 
     private (ExternalOperationStatus State, string Message) GetJob(Guid jobId)
     {
         try
         {
-            (int state, int _, int _, string message) = _getJob.InvokeFunc(jobId);
+            (int state, int _, int _, string message) = _getJob(jobId);
             return ((ExternalOperationStatus)state, message);
         }
         catch (Exception e)
         {
-            logger.LogDebug(e, "Unable to read Gather n Chill job {JobId}", jobId);
+            _logger.LogDebug(e, "Unable to read Gather n Chill job {JobId}", jobId);
             return (ExternalOperationStatus.Unknown, e.Message);
         }
     }
@@ -133,18 +139,8 @@ internal sealed class GatherChillIpc(IDalamudPluginInterface pluginInterface, IL
             return null;
         }
     }
-}
 
-internal interface IGatherChillIpc
-{
-    bool IsAvailable();
-    bool IsReady();
-    bool? GetBusy();
-    bool CanGather(uint itemId);
-    GatherStartResult StartRequest(uint itemId, int additionalCount, out string message);
-    void PollOperation();
-    void CancelOwned();
-    void ObserveIdle();
+    public void Dispose() => IPCSubscriber.DisposeAll(_disposalTokens);
 }
 
 internal enum GatherStartResult
@@ -155,4 +151,145 @@ internal enum GatherStartResult
     Unsupported = 2,
     Invalid = 3,
     NotReady = 4,
+}
+
+[RegisterSingleton<IOperationProvider, GatherChillOperationProvider>(Duplicate = DuplicateStrategy.Append)]
+internal sealed class GatherChillOperationProvider(GatherChillIpc gatherChillIpc, GatheringOperationState operation)
+    : OwnedOperationProvider(operation)
+{
+    public override int Order => 300;
+    public override string Name => "Gather n Chill";
+    protected override string CancelLabel => "gathering";
+    public override bool HandlesLeadInTravel => true;
+
+    protected override bool IsOwningExecutor(ITaskExecutor? executor) => executor is Gather.StartGathering;
+    protected override void PollOperation() => gatherChillIpc.PollOperation();
+    protected override void CancelOwned() => gatherChillIpc.CancelOwned();
+    protected override void ObserveIdle() => gatherChillIpc.ObserveIdle();
+
+    public override bool MayBeMovingCharacter()
+    {
+        bool? busy = gatherChillIpc.GetBusy();
+        return busy == true || (busy == null && gatherChillIpc.IsAvailable());
+    }
+
+    // Gathering always goes through Gather n Chill; steps naming a quest-specific node (e.g. 3833) still walk there.
+    public override bool HandlesTravel(QuestStep step) => step is { InteractionType: EInteractionType.Gather, DataId: null };
+
+    public override OperationStatusView? GetStatusView() => StatusView(
+        _L("Check Gather n Chill before restarting."),
+        _L("Gathering quest items with Gather n Chill"),
+        _L("I stopped Gather n Chill"),
+        _L("Finish or stop gathering in Gather n Chill before confirming."),
+        _L("Gather n Chill must remain idle for at least 2 seconds. Confirmation only clears the block; start questing separately."));
+
+    public override OperationPill? GetTitleBarPill() =>
+        TitleBarPill(_L("Check Gather n Chill"), _L("Gathering"), _L("Stopping gathering"));
+
+    public override string? GetStartBlockReason() =>
+        gatherChillIpc.IsAvailable() && gatherChillIpc.GetBusy() != false
+            ? _L("Gather n Chill is busy or its status is unavailable. Finish its current work before starting questing.")
+            : null;
+}
+
+[RegisterSingleton]
+internal sealed class GatheringOperationState(TimeProvider? timeProvider = null)
+    : OwnedOperationState("Gather n Chill", "gathering quest items", timeProvider)
+{
+    public void ObserveStatus(Guid owner, ExternalOperationStatus status, string message) =>
+        ObserveOperationStatus(owner, status, message);
+}
+
+[RegisterSingleton]
+internal sealed class GatheringController(
+    GatherChillIpc gatherChillIpc,
+    GatheringOperationState operation,
+    MovementController movementController)
+{
+    public enum EStatus
+    {
+        Gathering,
+        Complete,
+    }
+
+    private GatheringRequest? _currentRequest;
+
+    public bool Start(GatheringRequest request, out Guid? owner)
+    {
+        owner = null;
+        if (operation.HasOperation)
+            throw new TaskException(operation.BlockReason!);
+        if (request.ItemId == 0 || request.Quantity <= 0 || request.Collectability > short.MaxValue)
+            throw new TaskException("Invalid gathering item, quantity or collectability");
+        int remaining = request.Quantity - GetOwnedCount(request);
+        if (remaining <= 0)
+            return false;
+
+        if (!gatherChillIpc.IsReady())
+            throw new TaskException("Gather n Chill is required for gathering, but isn't installed, enabled or up to date");
+        if (gatherChillIpc.GetBusy() != false)
+            throw new TaskException("Gather n Chill is busy or unavailable; finish its current work before gathering quest items");
+        if (!gatherChillIpc.CanGather(request.ItemId))
+            throw new TaskException($"Gather n Chill can't gather item {request.ItemId}");
+
+        movementController.Stop();
+        _currentRequest = request;
+        GatherStartResult result = gatherChillIpc.StartRequest(request.ItemId, remaining, out string message);
+        if (result is GatherStartResult.Started or GatherStartResult.Uncertain)
+            owner = operation.OperationId;
+        if (result != GatherStartResult.Started)
+            throw new TaskException($"Gather n Chill didn't start gathering {request.ItemId} ({result}): {message}");
+        return true;
+    }
+
+    public EStatus Update(Guid? owner)
+    {
+        if (!owner.HasValue || owner != operation.OperationId || _currentRequest == null)
+            throw new TaskException("Gather n Chill is no longer running Questionable's request");
+        if (operation.RequiresReconciliation || operation.IsAbandoned)
+            throw new TaskException(operation.BlockReason!);
+        if (!operation.IsTerminal)
+            return EStatus.Gathering;
+
+        GatheringRequest request = _currentRequest;
+        ExternalOperationStatus status = operation.Status;
+        string message = operation.Message;
+        bool satisfied = status == ExternalOperationStatus.Succeeded && GetOwnedCount(request) >= request.Quantity;
+        operation.TryReleaseTerminal(owner);
+        _currentRequest = null;
+        if (satisfied)
+            return EStatus.Complete;
+
+        throw new TaskException($"Gather n Chill ended ({status}) without completing {request.Quantity}x {request.ItemId} at collectability {request.Collectability}: {message}");
+    }
+
+    public void Stop(string label) => gatherChillIpc.CancelOwned();
+
+    public void StopOwned(Guid? owner)
+    {
+        if (owner.HasValue && owner == operation.OperationId)
+            gatherChillIpc.CancelOwned();
+    }
+
+    public IList<string> GetRemainingTaskNames() =>
+        operation.HasOperation && _currentRequest is { } request
+            ? [$"Gather n Chill: {request.Quantity}x {request.ItemId}"]
+            : [];
+
+    private static unsafe int GetOwnedCount(GatheringRequest request)
+    {
+        InventoryManager* inventoryManager = InventoryManager.Instance();
+        if (inventoryManager == null)
+            throw new TaskException("Inventory is unavailable; cannot verify gathering");
+
+        int collectables = inventoryManager->GetInventoryItemCount(request.ItemId + 500_000,
+            checkEquipped: false, minCollectability: (short)request.Collectability);
+        if (request.Collectability > 0)
+            return collectables;
+
+        return collectables + inventoryManager->GetInventoryItemCount(request.ItemId, checkEquipped: false) +
+            inventoryManager->GetInventoryItemCount(request.ItemId, isHq: true, checkEquipped: false);
+    }
+
+    public sealed record GatheringRequest(uint ItemId, int Quantity, ushort Collectability = 0);
 }

@@ -23,7 +23,7 @@ internal static class Fish
     }
 
     // Feesh switches job and travels itself.
-    public static bool IsHandledByFeesh(QuestStep step, IFeeshIpc feeshIpc) =>
+    public static bool IsHandledByFeesh(QuestStep step, FeeshIpc feeshIpc) =>
         step is { InteractionType: EInteractionType.Fish, ItemsToGather.Count: > 0 } &&
         step.ItemsToGather.All(item => item.Collectability == 0) &&
         feeshIpc.IsAvailable() &&
@@ -41,37 +41,28 @@ internal static class Fish
 
     internal sealed class DoFish : TaskExecutor<FishTask>, IStoppableTaskExecutor
     {
-        private readonly IFeeshIpc _feeshIpc;
+        private readonly FeeshIpc _feeshIpc;
         private readonly FishingOperationState _operation;
+        private readonly IDataManager _dataManager;
         private readonly ILogger<DoFish> _logger;
-        private readonly Func<FishTask, bool> _objectivesSatisfied;
-        private readonly Func<GatheredItem, int> _eligibleCount;
-        private readonly Func<uint, string> _itemName;
-        private readonly TimeProvider _clock;
+        private readonly IQuestGameState _gameState;
         private Guid? _owner;
         private long? _completedAt;
 
-        public DoFish(IFeeshIpc feeshIpc, FishingOperationState operation, IDataManager dataManager,
+        public DoFish(FeeshIpc feeshIpc, FishingOperationState operation, IDataManager dataManager,
             ILogger<DoFish> logger, IQuestGameState gameState)
-            : this(feeshIpc, operation, logger, task => HasCompletedObjectives(task, gameState), CountEligibleInInventory,
-                itemId => dataManager.GetExcelSheet<Item>().GetRowOrDefault(itemId)?.Name.ToString() is { Length: > 0 } name
-                    ? name
-                    : itemId.ToString(CultureInfo.InvariantCulture))
-        {
-        }
-
-        internal DoFish(IFeeshIpc feeshIpc, FishingOperationState operation, ILogger<DoFish> logger,
-            Func<FishTask, bool> objectivesSatisfied, Func<GatheredItem, int> eligibleCount,
-            Func<uint, string> itemName, TimeProvider? clock = null)
         {
             _feeshIpc = feeshIpc;
             _operation = operation;
+            _dataManager = dataManager;
             _logger = logger;
-            _objectivesSatisfied = objectivesSatisfied;
-            _eligibleCount = eligibleCount;
-            _itemName = itemName;
-            _clock = clock ?? TimeProvider.System;
+            _gameState = gameState;
         }
+
+        private string ItemName(uint itemId) =>
+            _dataManager.GetExcelSheet<Item>().GetRowOrDefault(itemId)?.Name.ToString() is { Length: > 0 } name
+                ? name
+                : itemId.ToString(CultureInfo.InvariantCulture);
 
         protected override bool Start()
         {
@@ -79,14 +70,14 @@ internal static class Fish
             _completedAt = null;
             if (_operation.HasOperation)
                 throw new TaskException(_operation.BlockReason!);
-            if (_objectivesSatisfied(Task))
+            if (HasCompletedObjectives(Task, _gameState))
                 return false;
             if (Task.GatheredItem is not { } item)
                 throw new TaskException("This fishing step has no fish for Feesh to catch. Fish manually, then restart Questionable.");
             if (UnsupportedReason(item) is { } reason)
                 throw new TaskException(reason);
 
-            int missing = item.ItemCount - _eligibleCount(item);
+            int missing = item.ItemCount - CountEligibleInInventory(item);
             FeeshStartResult result = _feeshIpc.StartCatch(item.ItemId, Math.Max(1, missing), out string message);
             if (result is FeeshStartResult.Started or FeeshStartResult.Uncertain)
                 _owner = _operation.OperationId;
@@ -94,7 +85,7 @@ internal static class Fish
                 throw new TaskException(result switch
                 {
                     FeeshStartResult.Busy => "Feesh is busy. Finish or stop its current work in WahTools, then restart Questionable.",
-                    FeeshStartResult.Refused => $"Feesh refused to catch {_itemName(item.ItemId)}; the Dalamud log says why. Fix that in Feesh or fish manually, then restart Questionable.",
+                    FeeshStartResult.Refused => $"Feesh refused to catch {ItemName(item.ItemId)}; the Dalamud log says why. Fix that in Feesh or fish manually, then restart Questionable.",
                     FeeshStartResult.NotReady => "Feesh is not available. Check that WahTools is loaded.",
                     _ => $"Feesh did not confirm the catch job ({result}): {message}",
                 });
@@ -105,11 +96,11 @@ internal static class Fish
         private string? UnsupportedReason(GatheredItem item)
         {
             if (item.Collectability > 0)
-                return $"Feesh can't catch collectable fish yet. Fish {_itemName(item.ItemId)} (collectability {item.Collectability}) manually, then restart Questionable.";
+                return $"Feesh can't catch collectable fish yet. Fish {ItemName(item.ItemId)} (collectability {item.Collectability}) manually, then restart Questionable.";
             if (!_feeshIpc.IsAvailable())
                 return "Fishing needs Feesh from WahTools. Install it or fish manually, then restart Questionable.";
             if (!_feeshIpc.CanCatch(item.ItemId))
-                return $"Feesh doesn't know where to catch {_itemName(item.ItemId)}. Fish it manually, then restart Questionable.";
+                return $"Feesh doesn't know where to catch {ItemName(item.ItemId)}. Fish it manually, then restart Questionable.";
             return null;
         }
 
@@ -122,14 +113,14 @@ internal static class Fish
             {
                 // Cancelled after the quest flags were met still counts as done.
                 bool ended = _operation.Status is ExternalOperationStatus.Succeeded or ExternalOperationStatus.Cancelled;
-                if (ended && _objectivesSatisfied(Task))
+                if (ended && HasCompletedObjectives(Task, _gameState))
                 {
                     Release();
                     return ETaskResult.TaskComplete;
                 }
 
-                _completedAt ??= _clock.GetTimestamp();
-                if (ended && _clock.GetElapsedTime(_completedAt.Value) < TimeSpan.FromSeconds(2))
+                _completedAt ??= TimeProvider.System.GetTimestamp();
+                if (ended && TimeProvider.System.GetElapsedTime(_completedAt.Value) < TimeSpan.FromSeconds(2))
                     return ETaskResult.StillRunning;
                 string message = _operation.Message;
                 Release();
@@ -138,7 +129,7 @@ internal static class Fish
 
             if (_operation.RequiresReconciliation)
                 throw new TaskException(_operation.BlockReason!);
-            if (_objectivesSatisfied(Task) && !_operation.StopRequested)
+            if (HasCompletedObjectives(Task, _gameState) && !_operation.StopRequested)
                 _feeshIpc.RequestStop();
             return ETaskResult.StillRunning;
         }

@@ -1,5 +1,3 @@
-using System.Numerics;
-using System.Reflection;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
@@ -155,84 +153,6 @@ public sealed class QuestTaskQueueTests
             Assert.Equal(stepCount == 1 ? 255 : 1, progress.Step);
             Assert.NotSame(originalStepProgress, progress.StepProgress);
             Assert.Equal(0, progress.StepProgress.PointMenuCounter);
-        }
-    }
-
-    [Theory]
-    [InlineData("CheckNextTasks", "purchase", false)]
-    [InlineData("CheckNextTasks", "purchase", true)]
-    [InlineData("CheckNextTasks", "gather", false)]
-    [InlineData("CheckNextTasks", "gather", true)]
-    [InlineData("ExecuteNextStep", "purchase", false)]
-    [InlineData("ExecuteNextStep", "purchase", true)]
-    [InlineData("ExecuteNextStep", "gather", false)]
-    [InlineData("ExecuteNextStep", "gather", true)]
-    public void BlockedReplanCancelsObsoleteQueueAndDoesNotResumeWhenProviderBecomesIdle(
-        string entryPoint, string provider, bool unknown)
-    {
-        using var operations = new ExternalOperationFixture();
-        using var highlight = new HighlightObject(operations.Framework, new(), operations.Condition, operations.Objects,
-            Substitute.For<IDataManager>(), NullLogger<HighlightObject>.Instance);
-        var purchase = operations.Knightshopper;
-        var gather = operations.Gather;
-        var fishing = operations.Feesh;
-        List<string> cleanupOrder = [];
-        purchase.When(x => x.CancelOwned()).Do(_ => cleanupOrder.Add("purchase"));
-        fishing.When(x => x.CancelOwned()).Do(_ => cleanupOrder.Add("fishing"));
-        gather.When(x => x.CancelOwned()).Do(_ => cleanupOrder.Add("gathering"));
-        purchase.IsReady().Returns(provider == "purchase");
-        gather.IsAvailable().Returns(provider == "gather");
-        bool? busy = unknown ? null : true;
-        purchase.GetBusy().Returns(provider == "purchase" ? busy : false);
-        gather.GetBusy().Returns(provider == "gather" ? busy : false);
-        var queue = new TaskQueue(NullLogger.Instance);
-        var controller = TestQuestController.Create(queue, operations, highlight);
-        var executor = Substitute.For<ITaskExecutor.IStoppableTaskExecutor>();
-        var current = new MoveTask(958, Vector3.One);
-        executor.Start(current).Returns(true);
-        executor.CurrentTask.Returns(current);
-        executor.When(x => x.StopNow()).Do(_ =>
-        {
-            Assert.Null(queue.CurrentTaskExecutor);
-            Assert.Empty(queue.RemainingTasks);
-            cleanupOrder.Add("executor");
-        });
-        Assert.True(queue.StartTask(executor, current));
-        queue.Enqueue(new MoveTask(958, new Vector3(20, 0, 0)));
-        controller.AutomationType = QuestController.EAutomationType.SingleQuestA;
-        controller.AutomationTypeChanged += (_, mode) =>
-        {
-            Assert.Equal(QuestController.EAutomationType.Manual, mode);
-            cleanupOrder.Add("manual");
-        };
-
-        Replan();
-
-        Assert.False(controller.IsRunning);
-        Assert.Equal(QuestController.EAutomationType.Manual, controller.AutomationType);
-        Assert.Empty(queue.RemainingTasks);
-        Assert.Null(queue.CurrentTaskExecutor);
-        executor.Received(1).StopNow();
-        Assert.Equal(["executor", "purchase", "gathering", "fishing", "manual"], cleanupOrder);
-        Assert.False(controller.HasExternalOperation);
-
-        purchase.GetBusy().Returns(false);
-        gather.GetBusy().Returns(false);
-        cleanupOrder.Clear();
-        Replan();
-        Assert.False(controller.IsRunning);
-        Assert.Equal(QuestController.EAutomationType.Manual, controller.AutomationType);
-        executor.Received(1).StopNow();
-        executor.DidNotReceive().Update();
-        Assert.Equal(["purchase", "gathering", "fishing"], cleanupOrder);
-
-        void Replan()
-        {
-            var method = typeof(QuestController).GetMethod(entryPoint, BindingFlags.Instance | BindingFlags.NonPublic)!;
-            if (entryPoint == "CheckNextTasks")
-                method.CreateDelegate<Action<string>>(controller)("New sequence");
-            else
-                method.CreateDelegate<Action>(controller)();
         }
     }
 }

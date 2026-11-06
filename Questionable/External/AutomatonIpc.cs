@@ -1,30 +1,29 @@
-﻿using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Ipc.Exceptions;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
 [RegisterSingleton]
-internal sealed class AutomatonIpc : Ipc
+internal sealed class AutomatonIpc : Ipc, IDisposable
 {
     public override string InternalName => "Automaton";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     public override bool IsReady() => IpcInvoke.SafeFunc(() =>
         {
-            var _ = _isTweakEnabled.InvokeFunc(AutoSnipeTweak);
+            var _ = _isTweakEnabled(AutoSnipeTweak);
             return GetVersion() != null;
         }, fallback: false);
     private const string AutoSnipeTweak = "AutoSnipeQuests";
 
-    private readonly ICallGateSubscriber<string, bool> _isTweakEnabled;
-    private readonly ICallGateSubscriber<string, bool, object> _setTweakState;
+    [EzIPC("IsTweakEnabled")] private readonly Func<string, bool> _isTweakEnabled = null!;
+    [EzIPC("SetTweakState")] private readonly Action<string, bool> _setTweakState = null!;
+    private readonly EzIPCDisposalToken[] _disposalTokens;
     private readonly ILogger<AutomatonIpc> _logger;
     private bool _loggedIpcError;
 
-    public AutomatonIpc(IDalamudPluginInterface pluginInterface, ILogger<AutomatonIpc> logger)
+    public AutomatonIpc(ILogger<AutomatonIpc> logger)
     {
         _logger = logger;
-        _isTweakEnabled = pluginInterface.GetIpcSubscriber<string, bool>("Automaton.IsTweakEnabled");
-        _setTweakState = pluginInterface.GetIpcSubscriber<string, bool, object>("Automaton.SetTweakState");
+        _disposalTokens = EzIPC.Init(this, InternalName, SafeWrapper.None);
         logger.LogInformation("Automaton auto-snipe enabled: {IsTweakEnabled}", IsAutoSnipeEnabled);
     }
 
@@ -34,7 +33,7 @@ internal sealed class AutomatonIpc : Ipc
         {
             try
             {
-                return _isTweakEnabled.InvokeFunc(AutoSnipeTweak);
+                return _isTweakEnabled(AutoSnipeTweak);
             }
             catch (IpcNotReadyError)
             {
@@ -57,7 +56,7 @@ internal sealed class AutomatonIpc : Ipc
     {
         try
         {
-            _setTweakState.InvokeAction(AutoSnipeTweak, enabled);
+            _setTweakState(AutoSnipeTweak, enabled);
             return IsAutoSnipeEnabled == enabled;
         }
         catch (IpcNotReadyError)
@@ -70,4 +69,6 @@ internal sealed class AutomatonIpc : Ipc
             return false;
         }
     }
+
+    public void Dispose() => IPCSubscriber.DisposeAll(_disposalTokens);
 }

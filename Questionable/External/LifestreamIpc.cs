@@ -1,49 +1,55 @@
-﻿using Dalamud.Plugin.Ipc;
 using Questionable.Model.Common;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
 [RegisterSingleton]
-internal sealed class LifestreamIpc(IDalamudPluginInterface pluginInterface, ILogger<LifestreamIpc> logger) : Ipc
+internal sealed class LifestreamIpc : Ipc, IDisposable
 {
+    private readonly ILogger<LifestreamIpc> _logger;
+    private readonly EzIPCDisposalToken[] _disposalTokens;
+
+    [EzIPC("AethernetTeleport")] private readonly Func<string, bool> _aethernetTeleport = null!;
+    [EzIPC("AethernetTeleportById")] private readonly Func<uint, bool> _aethernetTeleportById = null!;
+    [EzIPC("AethernetTeleportByPlaceNameId")] private readonly Func<uint, bool> _aethernetTeleportByPlaceNameId = null!;
+    [EzIPC("AethernetTeleportToFirmament")] private readonly Func<bool> _aethernetTeleportToFirmament = null!;
+    [EzIPC("IsBusy")] private readonly Func<bool> _isBusy = null!;
+
+    public LifestreamIpc(ILogger<LifestreamIpc> logger)
+    {
+        _logger = logger;
+        _disposalTokens = EzIPC.Init(this, InternalName, SafeWrapper.None);
+    }
+
     public override string InternalName => "Lifestream";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
-    public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && !_isBusy.InvokeFunc(), fallback: false);
-    private readonly ICallGateSubscriber<string, bool> _aethernetTeleport =
-        pluginInterface.GetIpcSubscriber<string, bool>("Lifestream.AethernetTeleport");
-    private readonly ICallGateSubscriber<uint, bool> _aethernetTeleportById =
-        pluginInterface.GetIpcSubscriber<uint, bool>("Lifestream.AethernetTeleportById");
-    private readonly ICallGateSubscriber<uint, bool> _aethernetTeleportByPlaceNameId =
-        pluginInterface.GetIpcSubscriber<uint, bool>("Lifestream.AethernetTeleportByPlaceNameId");
-    private readonly ICallGateSubscriber<bool> _aethernetTeleportToFirmament =
-        pluginInterface.GetIpcSubscriber<bool>("Lifestream.AethernetTeleportToFirmament");
-    private readonly ICallGateSubscriber<bool> _isBusy =
-        pluginInterface.GetIpcSubscriber<bool>("Lifestream.IsBusy");
+    public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && !_isBusy(), fallback: false);
 
-    public bool IsBusy => IpcInvoke.SafeFunc(() => _isBusy.InvokeFunc(), fallback: false);
+    public bool IsBusy => IpcInvoke.SafeFunc(() => _isBusy(), fallback: false);
 
     public bool Teleport(string destination)
     {
-        logger.LogInformation("Teleporting to vague string '{Destination}'", destination);
-        return _aethernetTeleport.InvokeFunc(destination);
+        _logger.LogInformation("Teleporting to vague string '{Destination}'", destination);
+        return _aethernetTeleport(destination);
     }
 
     public bool Teleport(EAetheryteLocation aetheryteLocation)
     {
-        logger.LogInformation("Teleporting to '{Name}'", aetheryteLocation);
+        _logger.LogInformation("Teleporting to '{Name}'", aetheryteLocation);
         return aetheryteLocation switch
         {
-            EAetheryteLocation.IshgardFirmament => _aethernetTeleportToFirmament.InvokeFunc(),
-            EAetheryteLocation.FirmamentMendicantsCourt => _aethernetTeleportByPlaceNameId.InvokeFunc(3436),
-            EAetheryteLocation.FirmamentMattock => _aethernetTeleportByPlaceNameId.InvokeFunc(3473),
-            EAetheryteLocation.FirmamentNewNest => _aethernetTeleportByPlaceNameId.InvokeFunc(3475),
-            EAetheryteLocation.FirmanentSaintRoellesDais => _aethernetTeleportByPlaceNameId.InvokeFunc(3474),
-            EAetheryteLocation.FirmamentFeatherfall => _aethernetTeleportByPlaceNameId.InvokeFunc(3525),
-            EAetheryteLocation.FirmamentHoarfrostHall => _aethernetTeleportByPlaceNameId.InvokeFunc(3528),
-            EAetheryteLocation.FirmamentWesternRisensongQuarter => _aethernetTeleportByPlaceNameId.InvokeFunc(3646),
-            EAetheryteLocation.FirmamentEasternRisensongQuarter => _aethernetTeleportByPlaceNameId.InvokeFunc(3645),
+            EAetheryteLocation.IshgardFirmament => _aethernetTeleportToFirmament(),
+            EAetheryteLocation.FirmamentMendicantsCourt => _aethernetTeleportByPlaceNameId(3436),
+            EAetheryteLocation.FirmamentMattock => _aethernetTeleportByPlaceNameId(3473),
+            EAetheryteLocation.FirmamentNewNest => _aethernetTeleportByPlaceNameId(3475),
+            EAetheryteLocation.FirmanentSaintRoellesDais => _aethernetTeleportByPlaceNameId(3474),
+            EAetheryteLocation.FirmamentFeatherfall => _aethernetTeleportByPlaceNameId(3525),
+            EAetheryteLocation.FirmamentHoarfrostHall => _aethernetTeleportByPlaceNameId(3528),
+            EAetheryteLocation.FirmamentWesternRisensongQuarter => _aethernetTeleportByPlaceNameId(3646),
+            EAetheryteLocation.FirmamentEasternRisensongQuarter => _aethernetTeleportByPlaceNameId(3645),
             EAetheryteLocation.None => throw new ArgumentOutOfRangeException(nameof(aetheryteLocation)),
-            var _ => _aethernetTeleportById.InvokeFunc((uint)aetheryteLocation)
+            var _ => _aethernetTeleportById((uint)aetheryteLocation)
         };
     }
+
+    public void Dispose() => IPCSubscriber.DisposeAll(_disposalTokens);
 }

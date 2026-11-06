@@ -1,22 +1,31 @@
-﻿using Dalamud.Plugin.Ipc;
 using FFXIVClientStructs.FFXIV.Client.UI.Info;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
 [RegisterSingleton]
-internal sealed class MogmailIpc(IDalamudPluginInterface pluginInterface, ILogger<MogmailIpc> logger) : Ipc
+internal sealed class MogmailIpc : Ipc, IDisposable
 {
+    private readonly ILogger<MogmailIpc> _logger;
+    private readonly EzIPCDisposalToken[] _disposalTokens;
+
+    [EzIPC("IsAvailable")] private readonly Func<bool> _isAvailable = null!;
+    [EzIPC("IsBusy")] private readonly Func<bool> _isBusy = null!;
+    [EzIPC("ClaimAll")] private readonly Func<bool> _claimAll = null!;
+
+    public MogmailIpc(ILogger<MogmailIpc> logger)
+    {
+        _logger = logger;
+        _disposalTokens = EzIPC.Init(this, InternalName, SafeWrapper.None);
+    }
+
     public override string InternalName => "Mogmail";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
-    public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && !_isBusy.InvokeFunc(), fallback: false);
-    private readonly ICallGateSubscriber<bool> _isAvailable = pluginInterface.GetIpcSubscriber<bool>("Mogmail.IsAvailable");
-    private readonly ICallGateSubscriber<bool> _isBusy = pluginInterface.GetIpcSubscriber<bool>("Mogmail.IsBusy");
-    private readonly ICallGateSubscriber<bool> _claimAll = pluginInterface.GetIpcSubscriber<bool>("Mogmail.ClaimAll");
+    public override bool IsReady() => IpcInvoke.SafeFunc(() => GetVersion() != null && !_isBusy(), fallback: false);
     private bool _loggedIpcError;
 
-    public bool IsInstalled => IPCSubscriber.IsInstalled("Mogmail") && _isAvailable.InvokeFunc();
+    public bool IsInstalled => IPCSubscriber.IsInstalled("Mogmail") && _isAvailable();
 
-    public bool IsBusy => !IsInstalled || _isBusy.InvokeFunc();
+    public bool IsBusy => !IsInstalled || _isBusy();
 
     public unsafe static uint? LetterCount
     {
@@ -33,16 +42,18 @@ internal sealed class MogmailIpc(IDalamudPluginInterface pluginInterface, ILogge
     {
         try
         {
-            return _claimAll.InvokeFunc();
+            return _claimAll();
         }
         catch (Exception e) when (IpcInvoke.IsSafeIpcFailure(e))
         {
             if (!_loggedIpcError)
             {
                 _loggedIpcError = true;
-                logger.LogWarning(e, "Could not call Mogmail.ClaimAll");
+                _logger.LogWarning(e, "Could not call Mogmail.ClaimAll");
             }
             return false;
         }
     }
+
+    public void Dispose() => IPCSubscriber.DisposeAll(_disposalTokens);
 }

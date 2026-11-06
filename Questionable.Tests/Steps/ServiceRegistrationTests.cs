@@ -1,5 +1,3 @@
-using Dalamud.Plugin;
-using Dalamud.Plugin.Ipc;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
@@ -14,10 +12,6 @@ namespace Questionable.Tests.Steps;
 public sealed class ServiceRegistrationTests
 {
     [Theory]
-    [InlineData(typeof(IArtisanIpc), typeof(ArtisanIpc))]
-    [InlineData(typeof(IGatherChillIpc), typeof(GatherChillIpc))]
-    [InlineData(typeof(IKnightshopperIpc), typeof(KnightshopperIpc))]
-    [InlineData(typeof(IFeeshIpc), typeof(FeeshIpc))]
     [InlineData(typeof(IQuestGameState), typeof(GameQuestState))]
     [InlineData(typeof(IQuestCatalog), typeof(QuestCatalog))]
     public void InterfaceRegisteredAdapters_HaveNoUnresolvableConcreteConsumers(Type contract, Type implementation)
@@ -36,25 +30,13 @@ public sealed class ServiceRegistrationTests
     }
 
     [Fact]
-    public void ContextMenu_ResolvesWithNoCompanionPluginsAndUnavailableGatheringIpc()
+    public void ContextMenu_ResolvesWithoutGatherChill()
     {
-        var plugin = Substitute.For<IDalamudPluginInterface>();
-        plugin.InstalledPlugins.Returns(Array.Empty<IExposedPlugin>());
-        var version = Substitute.For<ICallGateSubscriber<int>>();
-        var busy = Substitute.For<ICallGateSubscriber<bool>>();
-        var canGather = Substitute.For<ICallGateSubscriber<uint, bool>>();
-        version.InvokeFunc().Returns(_ => throw new InvalidOperationException("No IPC provider registered"));
-        busy.InvokeFunc().Returns(_ => throw new InvalidOperationException("No IPC provider registered"));
-        canGather.InvokeFunc(Arg.Any<uint>()).Returns(_ => throw new InvalidOperationException("No IPC provider registered"));
-        plugin.GetIpcSubscriber<int>("GatherChill.ApiVersion").Returns(version);
-        plugin.GetIpcSubscriber<bool>("GatherChill.IsBusy").Returns(busy);
-        plugin.GetIpcSubscriber<uint, bool>("GatherChill.CanGather").Returns(canGather);
-
+        NoPluginsInstalled.Ensure();
         IServiceCollection registrations = new ServiceCollection().AddQuestionable();
         IServiceCollection services = new ServiceCollection();
         services.Add(registrations.Single(s => s.ServiceType == typeof(ContextMenuController)));
-        services.Add(registrations.Single(s => s.ServiceType == typeof(IGatherChillIpc)));
-        services.AddSingleton(plugin);
+        services.Add(registrations.Single(s => s.ServiceType == typeof(GatherChillIpc)));
         services.AddSingleton(Substitute.For<IContextMenu>());
         services.AddSingleton(Substitute.For<IClientState>());
         services.AddSingleton(Substitute.For<ICondition>());
@@ -63,8 +45,7 @@ public sealed class ServiceRegistrationTests
         foreach (var parameter in typeof(ContextMenuController).GetConstructors().Single().GetParameters())
         {
             Type type = parameter.ParameterType;
-            if (type == typeof(GatherChillIpc) || type == typeof(IGatherChillIpc) ||
-                services.Any(s => s.ServiceType == type) ||
+            if (services.Any(s => s.ServiceType == type) ||
                 type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Microsoft.Extensions.Logging.ILogger<>))
                 continue;
             services.AddSingleton(type, _ => null!);
@@ -72,8 +53,7 @@ public sealed class ServiceRegistrationTests
 
         using var provider = services.BuildServiceProvider(new ServiceProviderOptions { ValidateOnBuild = true });
         Assert.NotNull(provider.GetRequiredService<ContextMenuController>());
-        var gather = provider.GetRequiredService<IGatherChillIpc>();
-        Assert.Same(gather, provider.GetRequiredService<IGatherChillIpc>());
+        var gather = provider.GetRequiredService<GatherChillIpc>();
         Assert.False(gather.IsReady());
         Assert.False(gather.CanGather(42));
         Assert.Null(gather.GetBusy());

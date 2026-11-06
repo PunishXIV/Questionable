@@ -1,57 +1,36 @@
-using Dalamud.Plugin.Ipc;
+using Questionable.Controller.Steps.Shared;
+using Questionable.Model.Questing;
 using static Questionable.External.IPCUtils;
 
 namespace Questionable.External;
 
-[RegisterSingleton<IFeeshIpc, FeeshIpc>]
-internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
+[RegisterSingleton]
+internal sealed class FeeshIpc : Ipc, IDisposable
 {
     internal const string Owner = "Questionable";
 
     private readonly ILogger<FeeshIpc> _logger;
     private readonly FishingOperationState _operation;
     private readonly IFramework _framework;
-    private readonly TimeProvider _clock;
     private readonly Dictionary<uint, long> _pendingReleases = [];
-    private readonly Func<bool> _isBusy;
-    private readonly Func<uint, string> _taggedStand;
-    private readonly Func<string, uint, int, bool, bool> _catch;
-    private readonly Func<string> _catching;
-    private readonly Func<string, bool> _cancelCatch;
-    private readonly Func<string, uint, bool> _releaseCatch;
-    private readonly ICallGateSubscriber<string, bool, object?>? _catchDone;
     private readonly object _catchDoneLock = new();
+    private readonly EzIPCDisposalToken[] _disposalTokens;
     private bool? _catchDoneResult;
     private uint? _heldFish;
 
-    public FeeshIpc(IDalamudPluginInterface pluginInterface, ILogger<FeeshIpc> logger, FishingOperationState operation,
-        IFramework framework)
-        : this(logger, operation, framework,
-            pluginInterface.GetIpcSubscriber<bool>("WahTools.IsBusy").InvokeFunc,
-            pluginInterface.GetIpcSubscriber<uint, string>("WahTools.Feesh.TaggedStand").InvokeFunc,
-            pluginInterface.GetIpcSubscriber<string, uint, int, bool, bool>("WahTools.Feesh.Catch").InvokeFunc,
-            pluginInterface.GetIpcSubscriber<string>("WahTools.Feesh.Catching").InvokeFunc,
-            pluginInterface.GetIpcSubscriber<string, bool>("WahTools.Feesh.CancelCatch").InvokeFunc,
-            pluginInterface.GetIpcSubscriber<string, uint, bool>("WahTools.Feesh.ReleaseCatch").InvokeFunc)
-    {
-        _catchDone = pluginInterface.GetIpcSubscriber<string, bool, object?>("WahTools.Feesh.CatchDone");
-        _catchDone.Subscribe(OnCatchDone);
-    }
+    [EzIPC("IsBusy")] private readonly Func<bool> _isBusy = null!;
+    [EzIPC("Feesh.TaggedStand")] private readonly Func<uint, string> _taggedStand = null!;
+    [EzIPC("Feesh.Catch")] private readonly Func<string, uint, int, bool, bool> _catch = null!;
+    [EzIPC("Feesh.Catching")] private readonly Func<string> _catching = null!;
+    [EzIPC("Feesh.CancelCatch")] private readonly Func<string, bool> _cancelCatch = null!;
+    [EzIPC("Feesh.ReleaseCatch")] private readonly Func<string, uint, bool> _releaseCatch = null!;
 
-    internal FeeshIpc(ILogger<FeeshIpc> logger, FishingOperationState operation, IFramework framework, Func<bool> isBusy,
-        Func<uint, string> taggedStand, Func<string, uint, int, bool, bool> startCatch, Func<string> catching,
-        Func<string, bool> cancelCatch, Func<string, uint, bool> releaseCatch, TimeProvider? clock = null)
+    public FeeshIpc(ILogger<FeeshIpc> logger, FishingOperationState operation, IFramework framework)
     {
         _logger = logger;
         _operation = operation;
         _framework = framework;
-        _clock = clock ?? TimeProvider.System;
-        _isBusy = isBusy;
-        _taggedStand = taggedStand;
-        _catch = startCatch;
-        _catching = catching;
-        _cancelCatch = cancelCatch;
-        _releaseCatch = releaseCatch;
+        _disposalTokens = EzIPC.Init(this, InternalName, SafeWrapper.None);
         _framework.Update += OnFrameworkUpdate;
     }
 
@@ -159,7 +138,7 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
 
     private void TryReleaseCatch(uint fishId)
     {
-        _pendingReleases[fishId] = _clock.GetTimestamp();
+        _pendingReleases[fishId] = TimeProvider.System.GetTimestamp();
         try
         {
             // False means this owner no longer holds the fish, which also completes cleanup.
@@ -181,7 +160,7 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
             return;
         foreach (var (fishId, lastAttempt) in _pendingReleases.ToArray())
         {
-            if (force || _clock.GetElapsedTime(lastAttempt) >= TimeSpan.FromSeconds(2))
+            if (force || TimeProvider.System.GetElapsedTime(lastAttempt) >= TimeSpan.FromSeconds(2))
                 TryReleaseCatch(fishId);
         }
     }
@@ -209,7 +188,8 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
         };
     }
 
-    internal void OnCatchDone(string owner, bool done)
+    [EzIPCEvent("Feesh.CatchDone")]
+    private void OnCatchDone(string owner, bool done)
     {
         if (owner != Owner)
             return;
@@ -259,7 +239,7 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
     public void Dispose()
     {
         _framework.Update -= OnFrameworkUpdate;
-        _catchDone?.Unsubscribe(OnCatchDone);
+        IPCSubscriber.DisposeAll(_disposalTokens);
         IpcInvoke.TryOnFrameworkThread(_framework, () => RetryPendingReleases(force: true), _logger);
 
         // Framework unloading can skip both the final retry and the controller's cancellation.
@@ -270,26 +250,6 @@ internal sealed class FeeshIpc : Ipc, IFeeshIpc, IDisposable
             _logger.LogWarning("Feesh holds could not be released before unloading: {FishIds}. Release them in WahTools.",
                 string.Join(", ", remainingHolds));
     }
-}
-
-internal interface IFeeshIpc
-{
-    bool IsAvailable();
-
-    bool? GetBusy();
-
-    bool CanCatch(uint fishId);
-
-    FeeshStartResult StartCatch(uint fishId, int additionalCount, out string message);
-
-    void PollOperation();
-
-    void RequestStop();
-
-    void CancelOwned();
-    void ObserveIdle();
-
-    void ReleaseCatch(uint fishId);
 }
 
 internal enum FeeshStartResult
@@ -314,4 +274,151 @@ internal enum EFeeshJobState
     Cancelled,
     Stopped,
     Unrecognized,
+}
+
+[RegisterSingleton<IOperationProvider, FeeshOperationProvider>(Duplicate = DuplicateStrategy.Append)]
+internal sealed class FeeshOperationProvider(FeeshIpc feeshIpc, FishingOperationState operation)
+    : OwnedOperationProvider(operation)
+{
+    public override int Order => 400;
+    public override string Name => "Feesh";
+    protected override string CancelLabel => "Feesh fishing";
+    public override bool HandlesLeadInTravel => true;
+
+    protected override bool IsOwningExecutor(ITaskExecutor? executor) => executor is Fish.DoFish;
+    protected override void PollOperation() => feeshIpc.PollOperation();
+    protected override void CancelOwned() => feeshIpc.CancelOwned();
+    protected override void ObserveIdle() => feeshIpc.ObserveIdle();
+
+    public override bool MayBeMovingCharacter()
+    {
+        bool? busy = feeshIpc.GetBusy();
+        return busy == true || (busy == null && feeshIpc.IsAvailable());
+    }
+
+    // Fish Feesh can't catch keep their travel for manual fishing.
+    public override bool HandlesTravel(QuestStep step) => Fish.IsHandledByFeesh(step, feeshIpc);
+
+    public override OperationStatusView? GetStatusView() => StatusView(
+        _L("Check Feesh before restarting."),
+        _L("Fishing for quest items with Feesh"),
+        _L("I stopped Feesh"),
+        _L("Finish or stop fishing in Feesh before confirming."),
+        _L("WahTools must remain idle for at least 2 seconds. Confirmation only clears the block; start questing separately."));
+
+    public override OperationPill? GetTitleBarPill() =>
+        TitleBarPill(_L("Check Feesh"), _L("Fishing"), _L("Stopping fishing"));
+
+    // WahTools drives the character while busy.
+    public override string? GetStartBlockReason() =>
+        feeshIpc.IsAvailable() && feeshIpc.GetBusy() != false
+            ? _L("WahTools is busy or its status is unavailable. Finish its current work before starting questing.")
+            : null;
+}
+
+[RegisterSingleton]
+internal sealed class FishingOperationState(TimeProvider? timeProvider = null)
+    : OwnedOperationState("Feesh", "fishing for quest items", timeProvider)
+{
+    private readonly TimeProvider _clock = timeProvider ?? TimeProvider.System;
+    private long _submittedAt;
+    private long? _lastStopAttempt;
+    private bool _stopAccepted;
+
+    public bool HasStarted { get; private set; }
+    public bool StopRequested { get; private set; }
+
+    public new Guid BeginSubmission()
+    {
+        Guid owner = base.BeginSubmission();
+        HasStarted = StopRequested = _stopAccepted = false;
+        _lastStopAttempt = null;
+        _submittedAt = _clock.GetTimestamp();
+        return owner;
+    }
+
+    // Feesh has no job IDs, so the local ID is used for both.
+    public void AcceptCatch(Guid owner) => AcceptSubmission(owner, owner);
+
+    public void ObserveCatch(Guid owner, EFeeshJobState state, string message, bool? catchDone, bool? busy)
+    {
+        if (OperationId != owner || IsTerminal)
+            return;
+
+        bool active = state is EFeeshJobState.Fishing or EFeeshJobState.Finishing;
+        HasStarted |= active || catchDone != null;
+        ExternalOperationStatus running = StopRequested || IsAbandoned
+            ? ExternalOperationStatus.CancellationRequested
+            : ExternalOperationStatus.Running;
+
+        // CatchDone fires once the rod is away and travel has stopped.
+        if (catchDone is { } met)
+        {
+            ObserveOperationStatus(owner, Final(state, met), message);
+            return;
+        }
+
+        if (active)
+        {
+            ObserveOperationStatus(owner, running, message);
+            return;
+        }
+
+        if (HasStarted && state is EFeeshJobState.Done or EFeeshJobState.Partial or EFeeshJobState.Failed
+                or EFeeshJobState.Cancelled or EFeeshJobState.Stopped)
+        {
+            // Without CatchDone, finish once WahTools stays idle. Observe stopping once: it resets the idle streak.
+            if (Status != ExternalOperationStatus.CancellationRequested)
+                ObserveOperationStatus(owner, ExternalOperationStatus.CancellationRequested, message);
+            ObserveIdle(busy);
+            if (HasStableIdle)
+                ObserveOperationStatus(owner, Final(state, state == EFeeshJobState.Done), message);
+            return;
+        }
+
+        // Until our job is seen running, an ended line may be the previous job's.
+        bool startupTimedOut = !HasStarted && _clock.GetElapsedTime(_submittedAt) >= TimeSpan.FromSeconds(30);
+        bool unknown = state is EFeeshJobState.Unavailable or EFeeshJobState.Unrecognized ||
+                       (HasStarted && state == EFeeshJobState.None) || startupTimedOut;
+        ObserveOperationStatus(owner, unknown ? ExternalOperationStatus.Unknown : running, message);
+
+        if (startupTimedOut)
+        {
+            RequestStop();
+            MarkUncertain(owner);
+        }
+    }
+
+    private static ExternalOperationStatus Final(EFeeshJobState state, bool met) =>
+        state == EFeeshJobState.Cancelled ? ExternalOperationStatus.Cancelled
+        : met ? ExternalOperationStatus.Succeeded
+        : ExternalOperationStatus.Failed;
+
+    public void RequestStop()
+    {
+        if (!HasOperation || IsTerminal)
+            return;
+        StopRequested = true;
+        // Unknown stays unknown, and observing stopping again would reset the idle streak.
+        if (Status is not (ExternalOperationStatus.Unknown or ExternalOperationStatus.CancellationRequested))
+            ObserveOperationStatus(OperationId!.Value, ExternalOperationStatus.CancellationRequested, "Stopping fishing");
+    }
+
+    public bool TryBeginStop(out Guid owner)
+    {
+        owner = OperationId.GetValueOrDefault();
+        // CancelCatch only ends our own job, so it is safe after a lost start reply.
+        if (!HasOperation || IsTerminal || !(StopRequested || IsAbandoned) || _stopAccepted ||
+            (_lastStopAttempt is { } last && _clock.GetElapsedTime(last) < TimeSpan.FromSeconds(2)))
+            return false;
+
+        _lastStopAttempt = _clock.GetTimestamp();
+        return true;
+    }
+
+    public void ObserveStop(Guid owner, bool accepted)
+    {
+        if (OperationId == owner)
+            _stopAccepted |= accepted;
+    }
 }

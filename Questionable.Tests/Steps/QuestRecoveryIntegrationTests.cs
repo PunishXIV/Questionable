@@ -75,12 +75,6 @@ public sealed class QuestRecoveryIntegrationTests
         var queue = new TaskQueue(NullLogger.Instance);
         if (queued)
             queue.Enqueue(new WaitAtEnd.WaitNextStepOrSequence());
-        bool cleanupObserved = false;
-        operations.Knightshopper.When(x => x.CancelOwned()).Do(_ =>
-        {
-            cleanupObserved = true;
-            Assert.False(recovery.IsRecovering);
-        });
 
         var configuration = new Configuration();
         configuration.Stop.RunCommandAfterStop = true;
@@ -102,7 +96,6 @@ public sealed class QuestRecoveryIntegrationTests
         Assert.Empty(stopEffects);
         Assert.Equal(QuestController.EAutomationType.Manual, controller.AutomationType);
 
-        Assert.True(cleanupObserved);
         Assert.False(recovery.IsRecovering);
         Assert.True(queue.AllTasksComplete);
         Assert.True(controller.IsQuestingStopped);

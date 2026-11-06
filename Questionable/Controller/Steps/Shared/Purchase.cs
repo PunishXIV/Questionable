@@ -31,28 +31,18 @@ internal static class Purchase
 
     internal sealed class DoBuy : TaskExecutor<BuyTask>, IStoppableTaskExecutor
     {
-        private readonly IKnightshopperIpc _knightshopperIpc;
+        private readonly KnightshopperIpc _knightshopperIpc;
         private readonly PurchaseOperationState _operation;
-        private readonly Func<BuyTask, int> _countItems;
-        private readonly Action _stopMovement;
-        private readonly TimeProvider _clock;
+        private readonly MovementController _movementController;
         private Guid? _owner;
         private long? _completedAt;
 
-        public DoBuy(IKnightshopperIpc knightshopperIpc, PurchaseOperationState operation,
+        public DoBuy(KnightshopperIpc knightshopperIpc, PurchaseOperationState operation,
             MovementController movementController)
-            : this(knightshopperIpc, operation, GetOwnedCount, movementController.Stop)
-        {
-        }
-
-        internal DoBuy(IKnightshopperIpc knightshopperIpc, PurchaseOperationState operation,
-            Func<BuyTask, int> countItems, Action stopMovement, TimeProvider? clock = null)
         {
             _knightshopperIpc = knightshopperIpc;
             _operation = operation;
-            _countItems = countItems;
-            _stopMovement = stopMovement;
-            _clock = clock ?? TimeProvider.System;
+            _movementController = movementController;
         }
 
         protected override bool Start()
@@ -61,7 +51,7 @@ internal static class Purchase
             _completedAt = null;
             if (_operation.HasOperation)
                 throw new TaskException(_operation.BlockReason!);
-            if (_countItems(Task) >= Task.ItemCount)
+            if (GetOwnedCount(Task) >= Task.ItemCount)
                 return false;
 
             if (Task.Quality == EItemQuality.HQ)
@@ -74,7 +64,7 @@ internal static class Purchase
                 throw new TaskException("Knightshopper is busy or unavailable; finish its current work before buying quest items");
 
             // Drop pending Questionable paths before the provider takes over navigation.
-            _stopMovement();
+            _movementController.Stop();
             KnightshopperIpc.EStartResult result =
                 _knightshopperIpc.BuyWithGil(Task.ItemId, (uint)Task.ItemCount, out _, out string message);
             if (result is KnightshopperIpc.EStartResult.Started or KnightshopperIpc.EStartResult.Uncertain)
@@ -82,7 +72,7 @@ internal static class Purchase
             return result switch
             {
                 KnightshopperIpc.EStartResult.Started => true,
-                KnightshopperIpc.EStartResult.EmptyList when _countItems(Task) >= Task.ItemCount => false,
+                KnightshopperIpc.EStartResult.EmptyList when GetOwnedCount(Task) >= Task.ItemCount => false,
                 KnightshopperIpc.EStartResult.NotAllowed => throw new TaskException(
                     "Knightshopper blocked the purchase. Enable its IPC permissions and add Questionable to its allowed plugins."),
                 var _ => throw new TaskException($"Knightshopper didn't buy {Task.ItemCount}x {Task.ItemId} ({result}): {message}")
@@ -98,15 +88,15 @@ internal static class Purchase
             switch (state)
             {
                 case ExternalOperationStatus.Succeeded:
-                    if (_countItems(Task) >= Task.ItemCount)
+                    if (GetOwnedCount(Task) >= Task.ItemCount)
                     {
                         _operation.TryReleaseTerminal(_owner);
                         return ETaskResult.TaskComplete;
                     }
 
                     // Allow the final inventory update to arrive after the provider's result.
-                    _completedAt ??= _clock.GetTimestamp();
-                    if (_clock.GetElapsedTime(_completedAt.Value) < TimeSpan.FromSeconds(2))
+                    _completedAt ??= TimeProvider.System.GetTimestamp();
+                    if (TimeProvider.System.GetElapsedTime(_completedAt.Value) < TimeSpan.FromSeconds(2))
                         return ETaskResult.StillRunning;
                     _operation.TryReleaseTerminal(_owner);
                     throw new TaskException($"Knightshopper finished, but the inventory does not contain {Task.ItemCount}x {Task.ItemId}");

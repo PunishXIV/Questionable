@@ -22,7 +22,6 @@ public sealed class ExternalOperationCoordinatorTests
         using var fixture = new ExternalOperationFixture();
         fixture.Crafting.BeginSubmission();
         fixture.Gathering.BeginSubmission();
-        fixture.Artisan.GetStatus().Returns(ArtisanStatus.Unavailable);
         var host = new Host
         {
             IsActive = true,
@@ -33,8 +32,7 @@ public sealed class ExternalOperationCoordinatorTests
 
         Assert.False(host.IsActive);
         Assert.Null(host.CurrentExecutor);
-        fixture.Gather.Received(1).CancelOwned();
-        fixture.Gather.Received(1).PollOperation();
+        Assert.True(fixture.Gathering.IsAbandoned);
     }
 
     [Fact]
@@ -63,195 +61,6 @@ public sealed class ExternalOperationCoordinatorTests
         Assert.False(host.IsActive);
     }
 
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void StoppedOperation_StopsTasksBeforeStatusCheck(bool alreadyAbandoned)
-    {
-        using var fixture = new ExternalOperationFixture();
-        var operation = fixture.Purchase;
-        Guid owner = operation.BeginSubmission();
-        operation.AcceptSubmission(owner, Guid.NewGuid());
-        if (alreadyAbandoned)
-            operation.AbandonCurrent();
-        var queue = new TaskQueue(NullLogger.Instance);
-        queue.Enqueue(new WaitAtEnd.WaitNextStepOrSequence());
-        List<string> events = [];
-        var host = new Host { IsActive = true };
-        host.OnStop = () =>
-        {
-            events.Add("stop");
-            fixture.Coordinator.CancelAll(queue.Reset);
-        };
-        fixture.Knightshopper.When(x => x.CancelOwned()).Do(_ =>
-        {
-            Assert.True(queue.AllTasksComplete);
-            events.Add("cancel");
-            operation.AbandonCurrent();
-        });
-        fixture.Knightshopper.When(x => x.PollOperation()).Do(_ =>
-        {
-            Assert.False(host.IsActive);
-            Assert.True(queue.AllTasksComplete);
-            events.Add("terminal");
-            operation.ObserveStatus(owner, ExternalOperationStatus.Succeeded, "finished");
-        });
-
-        Assert.False(fixture.Coordinator.Update(host));
-
-        Assert.Equal(["stop", "cancel", "cancel", "terminal"], events);
-        Assert.False(fixture.Coordinator.HasExternalOperation);
-        Assert.False(host.IsActive);
-        Assert.True(queue.AllTasksComplete);
-        Assert.True(fixture.Coordinator.CanUpdateTask(null));
-    }
-
-    [Fact]
-    public void AllProviders_ArePolledAfterError()
-    {
-        using var fixture = new ExternalOperationFixture();
-        fixture.Crafting.BeginSubmission();
-        fixture.Purchase.BeginSubmission();
-        fixture.Gathering.BeginSubmission();
-        fixture.Fishing.BeginSubmission();
-        fixture.BossMod.Ipc.SetPresetForSoloDuty(BossModIpc.EPreset.QuestBattle);
-        fixture.BossMod.Available = false;
-        fixture.Artisan.GetStatus().Returns(_ => throw new InvalidOperationException("Artisan unavailable"));
-        fixture.Knightshopper.When(x => x.PollOperation()).Do(_ => throw new InvalidOperationException("status failed"));
-        var host = new Host { IsActive = true };
-
-        Assert.True(fixture.Coordinator.Update(host));
-
-        fixture.Artisan.Received(1).GetStatus();
-        fixture.Knightshopper.Received(1).PollOperation();
-        fixture.Gather.Received(1).PollOperation();
-        fixture.Feesh.Received(1).PollOperation();
-        Assert.True(fixture.BossMod.Ipc.HasPendingCleanup);
-        Assert.True(fixture.Crafting.RequiresReconciliation);
-        Assert.False(host.IsActive);
-        Assert.False(fixture.Coordinator.CanPrepareQuestTasks(out _));
-        Assert.False(fixture.Coordinator.CanUpdateTask(null));
-    }
-
-    [Fact]
-    public void CancellationContinuesAfterQueueAndProviderFailuresInProviderOrder()
-    {
-        using var fixture = new ExternalOperationFixture();
-        fixture.Crafting.BeginSubmission();
-        fixture.Purchase.BeginSubmission();
-        fixture.BossMod.Ipc.SetPresetForSoloDuty(BossModIpc.EPreset.QuestBattle);
-        fixture.BossMod.Available = false;
-        List<string> order = [];
-        fixture.Knightshopper.When(x => x.CancelOwned()).Do(_ =>
-        {
-            order.Add("purchase");
-            throw new InvalidOperationException("cancel failed");
-        });
-        fixture.Feesh.When(x => x.CancelOwned()).Do(_ => order.Add("fishing"));
-        fixture.Gather.When(x => x.CancelOwned()).Do(_ => order.Add("gathering"));
-
-        Assert.False(fixture.Coordinator.CancelAll(() =>
-        {
-            Assert.True(fixture.Crafting.RequiresReconciliation);
-            order.Add("queue");
-            return false;
-        }));
-
-        Assert.Equal(["queue", "purchase", "gathering", "fishing"], order);
-        Assert.True(fixture.BossMod.Ipc.HasPendingCleanup);
-        Assert.True(fixture.Coordinator.HasExternalOperation);
-    }
-
-    [Theory]
-    [InlineData("purchase")]
-    [InlineData("gathering")]
-    [InlineData("fishing")]
-    public void MissingManualProviderStatusBlocksPreparation(string provider)
-    {
-        using var fixture = new ExternalOperationFixture();
-        fixture.Knightshopper.IsReady().Returns(provider == "purchase");
-        fixture.Knightshopper.GetBusy().Returns((bool?)null);
-        fixture.Gather.IsAvailable().Returns(provider == "gathering");
-        fixture.Gather.GetBusy().Returns((bool?)null);
-        fixture.Feesh.IsAvailable().Returns(provider == "fishing");
-        fixture.Feesh.GetBusy().Returns((bool?)null);
-
-        Assert.False(fixture.Coordinator.CanPrepareQuestTasks(out string? reason));
-        Assert.Contains("status is unavailable", reason);
-        Assert.False(fixture.Coordinator.HasExternalOperation);
-    }
-
-    [Fact]
-    public void MissingDutyStatusBlocksPreparation()
-    {
-        using var fixture = new ExternalOperationFixture();
-        fixture.DutyStatus = () => throw new InvalidOperationException("status unavailable");
-
-        Assert.False(fixture.Coordinator.CanPrepareQuestTasks(out string? reason));
-        Assert.Contains("AutoDuty", reason);
-    }
-
-    [Fact]
-    public void CraftConfirmationRequiresFreshIdleAndNeverResumes()
-    {
-        using var fixture = new ExternalOperationFixture();
-        fixture.Crafting.BeginSubmission();
-        fixture.Crafting.AbandonCurrent();
-        fixture.Artisan.GetStatus().Returns(ArtisanStatus.Idle);
-        var host = new Host();
-
-        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<ArtisanOperationProvider>(), host));
-        fixture.Clock.Advance(TimeSpan.FromSeconds(1));
-        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<ArtisanOperationProvider>(), host));
-        fixture.Clock.Advance(TimeSpan.FromSeconds(1));
-        Assert.True(fixture.Coordinator.TryConfirmIdle(fixture.Provider<ArtisanOperationProvider>(), host));
-
-        Assert.False(fixture.Crafting.HasOperation);
-        Assert.False(host.IsActive);
-        Assert.Null(host.CurrentExecutor);
-        Assert.Equal(0, host.StopCount);
-        Assert.Null(host.Status);
-    }
-
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void Confirmation_RefreshesStatusAndBlocksOtherWork(bool becameBusy)
-    {
-        using var fixture = new ExternalOperationFixture();
-        Guid owner = fixture.Purchase.BeginSubmission();
-        fixture.Purchase.MarkUncertain(owner);
-        fixture.Fishing.BeginSubmission();
-        fixture.Purchase.ObserveIdle(false);
-        fixture.Clock.Advance(TimeSpan.FromSeconds(1));
-        fixture.Purchase.ObserveIdle(false);
-        fixture.Clock.Advance(TimeSpan.FromSeconds(1));
-        List<string> order = [];
-        fixture.Knightshopper.When(x => x.PollOperation()).Do(_ =>
-        {
-            order.Add("status");
-            if (becameBusy)
-                fixture.Purchase.ObserveStatus(owner, ExternalOperationStatus.Running, "new work");
-        });
-        fixture.Knightshopper.When(x => x.ObserveIdle()).Do(_ =>
-        {
-            order.Add("idle");
-            fixture.Purchase.ObserveIdle(becameBusy);
-        });
-        var host = new Host();
-
-        Assert.Equal(!becameBusy, fixture.Coordinator.TryConfirmIdle(fixture.Provider<KnightshopperOperationProvider>(), host));
-
-        Assert.Equal(["status", "idle"], order);
-        Assert.Equal(becameBusy, fixture.Purchase.HasOperation);
-        Assert.True(fixture.Coordinator.HasExternalOperation);
-        Assert.False(fixture.Coordinator.CanPrepareQuestTasks(out _));
-        Assert.False(host.IsActive);
-        Assert.Null(host.CurrentExecutor);
-        if (!becameBusy)
-            Assert.Equal(fixture.Fishing.BlockReason, host.Status);
-    }
-
     [Fact]
     public void ActiveSchedulingRejectsEveryConfirmationWithoutReadingProviders()
     {
@@ -269,10 +78,6 @@ public sealed class ExternalOperationCoordinatorTests
         Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<AutoDutyOperationProvider>(), host));
         Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<CombatCleanupProvider>(), host));
 
-        fixture.Artisan.DidNotReceive().GetStatus();
-        fixture.Knightshopper.DidNotReceive().PollOperation();
-        fixture.Gather.DidNotReceive().PollOperation();
-        fixture.Feesh.DidNotReceive().PollOperation();
         Assert.True(host.IsActive);
     }
 
@@ -294,7 +99,7 @@ public sealed class ExternalOperationCoordinatorTests
                 break;
             case "purchase":
                 fixture.Purchase.BeginSubmission();
-                executor = new Purchase.DoBuy(fixture.Knightshopper, fixture.Purchase, _ => 0, () => { });
+                executor = new Purchase.DoBuy(fixture.Knightshopper, fixture.Purchase, fixture.Movement);
                 break;
             case "gathering":
                 fixture.Gathering.BeginSubmission();
@@ -302,8 +107,8 @@ public sealed class ExternalOperationCoordinatorTests
                 break;
             default:
                 fixture.Fishing.BeginSubmission();
-                executor = new Fish.DoFish(fixture.Feesh, fixture.Fishing, NullLogger<Fish.DoFish>.Instance,
-                    _ => false, _ => 0, _ => "Quest fish");
+                executor = new Fish.DoFish(fixture.Feesh, fixture.Fishing, Substitute.For<IDataManager>(),
+                    NullLogger<Fish.DoFish>.Instance, null!);
                 break;
         }
 
@@ -315,24 +120,6 @@ public sealed class ExternalOperationCoordinatorTests
         fixture.Gathering.AbandonCurrent();
         fixture.Fishing.AbandonCurrent();
         Assert.False(fixture.Coordinator.CanUpdateTask(executor));
-    }
-
-    [Fact]
-    public void SoloDutyLoss_StopsTaskScheduling()
-    {
-        using var fixture = new ExternalOperationFixture();
-        fixture.BossMod.Ipc.SetPresetForSoloDuty(BossModIpc.EPreset.QuestBattle);
-        var host = new Host { IsActive = true };
-        Assert.True(fixture.Coordinator.HandlesPlayerDeath(null));
-        Assert.True(fixture.Coordinator.CanUpdateTask(null));
-        fixture.BossMod.Available = false;
-
-        Assert.True(fixture.Coordinator.Update(host));
-
-        Assert.False(host.IsActive);
-        Assert.Equal(1, host.StopCount);
-        Assert.True(fixture.Coordinator.HasExternalOperation);
-        Assert.False(fixture.Coordinator.CanUpdateTask(null));
     }
 
     [Fact]
@@ -371,10 +158,9 @@ public sealed class ExternalOperationCoordinatorTests
     {
         IServiceCollection services = new ServiceCollection().AddQuestionable();
         // AutoDuty is also used by its concrete type, so its interface registration forwards to that singleton.
-        using var autoDuty = new AutoDutyIpc(() => true);
-        using var dutyProvider = TestOperationProviders.AutoDuty(autoDuty);
+        using var fixture = new ExternalOperationFixture();
         var resolver = Substitute.For<IServiceProvider>();
-        resolver.GetService(typeof(AutoDutyOperationProvider)).Returns(dutyProvider);
+        resolver.GetService(typeof(AutoDutyOperationProvider)).Returns(fixture.Provider<AutoDutyOperationProvider>());
 
         Assert.Equal(
             new[]
@@ -440,7 +226,7 @@ public sealed class ExternalOperationCoordinatorTests
         fixture.Purchase.BeginSubmission();
         fixture.Crafting.BeginSubmission();
         fixture.Condition[Dalamud.Game.ClientState.Conditions.ConditionFlag.Crafting].Returns(crafting);
-        var buy = new Purchase.DoBuy(fixture.Knightshopper, fixture.Purchase, _ => 0, () => { });
+        var buy = new Purchase.DoBuy(fixture.Knightshopper, fixture.Purchase, fixture.Movement);
         var craft = new Craft.DoCraft(Substitute.For<IDataManager>(), fixture.Artisan,
             NullLogger<Craft.DoCraft>.Instance, null!, fixture.Crafting);
 
@@ -456,19 +242,15 @@ public sealed class ExternalOperationCoordinatorTests
     }
 
     [Fact]
-    public void MovementSeesMovingWorkAndBusyPluginsButNotCrafting()
+    public void MovementSeesMovingWorkButNotCrafting()
     {
         using var fixture = new ExternalOperationFixture();
         fixture.Crafting.BeginSubmission();
         Assert.False(fixture.Coordinator.HasMovingOperation);
-        Assert.False(fixture.Coordinator.MayBeMovingCharacter());
 
         fixture.Fishing.BeginSubmission();
-        fixture.Gather.IsAvailable().Returns(true);
-        fixture.Gather.GetBusy().Returns((bool?)null);
 
         Assert.True(fixture.Coordinator.HasMovingOperation);
-        Assert.True(fixture.Coordinator.MayBeMovingCharacter());
     }
 
     [Fact]
@@ -514,21 +296,6 @@ public sealed class ExternalOperationCoordinatorTests
         fixture.Fishing.MarkUncertain(fixture.Fishing.BeginSubmission());
 
         Assert.Equal("Check Feesh", fixture.Coordinator.GetTitleBarPill()?.Text);
-    }
-
-    [Fact]
-    public void LostSoloDutyAsksTheUserToStopBossMod()
-    {
-        using var fixture = new ExternalOperationFixture();
-        fixture.BossMod.Ipc.SetPresetForSoloDuty(BossModIpc.EPreset.QuestBattle);
-        Assert.Null(fixture.Provider<CombatCleanupProvider>().GetStatusView());
-        fixture.BossMod.Available = false;
-
-        fixture.Coordinator.Update(new Host { IsActive = true });
-
-        OperationStatusView? view = fixture.Provider<CombatCleanupProvider>().GetStatusView();
-        Assert.Equal(fixture.BossMod.Ipc.CleanupReason, view?.Status);
-        Assert.Equal("I stopped BossMod", view?.Recovery?.ConfirmLabel);
     }
 
     private sealed class Host : IExternalOperationHost

@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.Loader;
+using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Ipc;
 using Questionable.Model.Common;
 
@@ -12,9 +13,6 @@ internal sealed class RotationSolverRebornIpc : Ipc
     private readonly Configuration _configuration;
     private readonly ILogger<RotationSolverRebornIpc> _logger;
     private readonly IFramework _framework;
-    private readonly Func<object?> _getProvider;
-    private readonly Func<object, StateCommandType> _getMode;
-    private readonly Func<long> _getTickCount;
     private readonly ICallGateSubscriber<StateCommandType, object> _changeMode;
     private readonly ICallGateSubscriber<string, object> _test;
     private object? _owner;
@@ -27,26 +25,16 @@ internal sealed class RotationSolverRebornIpc : Ipc
 
     public RotationSolverRebornIpc(IDalamudPluginInterface pluginInterface, Configuration configuration,
         ILogger<RotationSolverRebornIpc> logger, IFramework framework)
-        : this(pluginInterface, configuration, logger, framework, FindProvider, ReadMode)
-    {
-    }
-
-    internal RotationSolverRebornIpc(IDalamudPluginInterface pluginInterface, Configuration configuration,
-        ILogger<RotationSolverRebornIpc> logger, IFramework framework,
-        Func<object?> getProvider, Func<object, StateCommandType> getMode, Func<long>? getTickCount = null)
     {
         _configuration = configuration;
         _logger = logger;
         _framework = framework;
-        _getProvider = getProvider;
-        _getMode = getMode;
-        _getTickCount = getTickCount ?? (() => Environment.TickCount64);
         _changeMode = pluginInterface.GetIpcSubscriber<StateCommandType, object>("RotationSolverReborn.ChangeOperatingMode");
         _test = pluginInterface.GetIpcSubscriber<string, object>("RotationSolverReborn.Test");
     }
 
     public override string InternalName => "RotationSolver";
-    public override Version? GetVersion() => _getProvider()?.GetType().Assembly.GetName().Version;
+    public override Version? GetVersion() => FindProvider()?.GetType().Assembly.GetName().Version;
     public bool IsEnabled => _configuration.General.CombatModule == ECombatModule.RotationSolverReborn && IsReady();
 
     public override bool IsReady()
@@ -54,10 +42,10 @@ internal sealed class RotationSolverRebornIpc : Ipc
         try
         {
             EnsureFrameworkThread();
-            object? provider = _getProvider();
+            object? provider = FindProvider();
             if (provider == null || !_changeMode.HasAction)
                 return false;
-            _ = _getMode(provider);
+            _ = ReadMode(provider);
             return true;
         }
         catch (Exception e)
@@ -75,11 +63,11 @@ internal sealed class RotationSolverRebornIpc : Ipc
         try
         {
             EnsureFrameworkThread();
-            object? provider = _getProvider();
+            object? provider = FindProvider();
             if (provider == null || !_changeMode.HasAction)
                 return false;
             _test.InvokeAction("Validate RSR is callable from Questionable");
-            StateCommandType previous = _getMode(provider);
+            StateCommandType previous = ReadMode(provider);
             // These modes belong to another plugin; do not borrow its rotation.
             if (previous is StateCommandType.Henched or StateCommandType.AutoDuty)
                 return false;
@@ -115,7 +103,7 @@ internal sealed class RotationSolverRebornIpc : Ipc
             _expectedMode = mode;
             // Keep both possible states until readback succeeds: IPC may apply and then throw.
             _changeMode.InvokeAction(mode);
-            if (_getMode(_owner!) != mode)
+            if (ReadMode(_owner!) != mode)
                 throw new TaskException("RotationSolverReborn rejected the combat item rotation change.");
             _transitionFrom = null;
             _nextVerificationAt = 0;
@@ -135,7 +123,7 @@ internal sealed class RotationSolverRebornIpc : Ipc
         try
         {
             EnsureFrameworkThread();
-            object? provider = _getProvider();
+            object? provider = FindProvider();
             if (provider == null)
             {
                 _ownershipLost = true;
@@ -147,7 +135,7 @@ internal sealed class RotationSolverRebornIpc : Ipc
                 _owner = null;
                 return true;
             }
-            StateCommandType current = _getMode(provider);
+            StateCommandType current = ReadMode(provider);
             if (current != _expectedMode && current != _transitionFrom)
             {
                 // A manual change (or an already-completed rollback) takes precedence.
@@ -158,7 +146,7 @@ internal sealed class RotationSolverRebornIpc : Ipc
                 return false;
 
             _changeMode.InvokeAction(_previousMode);
-            if (_getMode(provider) != _previousMode)
+            if (ReadMode(provider) != _previousMode)
                 return false;
             _owner = null;
             return true;
@@ -185,7 +173,7 @@ internal sealed class RotationSolverRebornIpc : Ipc
             _ownershipLost = true;
             throw new TaskException("RotationSolverReborn is no longer available.");
         }
-        long now = _getTickCount();
+        long now = Environment.TickCount64;
         if (now >= _nextVerificationAt)
         {
             VerifyActiveCore();
@@ -195,13 +183,13 @@ internal sealed class RotationSolverRebornIpc : Ipc
 
     private void VerifyActiveCore()
     {
-        object? provider = _getProvider();
+        object? provider = FindProvider();
         if (_owner == null || provider == null || !ReferenceEquals(provider, _owner))
         {
             _ownershipLost = true;
             throw new TaskException("RotationSolverReborn disappeared or was replaced.");
         }
-        if (_ownershipLost || _getMode(provider) != _expectedMode)
+        if (_ownershipLost || ReadMode(provider) != _expectedMode)
         {
             _ownershipLost = true;
             throw new TaskException("RotationSolverReborn combat control was lost.");
@@ -283,4 +271,30 @@ internal sealed class RotationSolverRebornIpc : Ipc
         [Description("This mode is managed by the Henchman plugin, or any other plugin that requires RSR just do rotation and not targetting.")]
         Henched,
     }
+}
+
+[RegisterSingleton<ICombatModule, RotationSolverRebornModule>(Duplicate = DuplicateStrategy.Append)]
+internal sealed class RotationSolverRebornModule(RotationSolverRebornIpc rotationSolverRebornIpc) : ICombatModule, IDisposable
+{
+    public string Name => "Rotation Solver Reborn";
+
+    public bool CanHandleFight(CombatController.CombatData combatData) => rotationSolverRebornIpc.IsEnabled;
+
+    public bool Start(CombatController.CombatData combatData) => rotationSolverRebornIpc.RotationAuto();
+
+    public bool Stop() => rotationSolverRebornIpc.RotationStop();
+
+    public bool Pause() => rotationSolverRebornIpc.RotationPause();
+
+    public bool Resume() => rotationSolverRebornIpc.RotationResume();
+
+    public void VerifyActive() => rotationSolverRebornIpc.VerifyActive();
+
+    public void Update(IGameObject gameObject)
+    {
+    }
+
+    public bool CanAttack(IBattleNpc target) => true;
+
+    public void Dispose() => Stop();
 }

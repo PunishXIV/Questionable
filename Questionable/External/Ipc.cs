@@ -118,6 +118,9 @@ internal static class IpcInvoke
     // Subscriber exceptions come back as TargetInvocationException, not IpcError.
     internal static bool IsSafeIpcFailure(Exception e) =>
         e is IpcError or TargetInvocationException;
+
+    // EzIPC can't ask whether an endpoint exists; a call that nobody registered throws this.
+    internal static bool IsMissing(Exception e) => e is IpcNotReadyError || e.InnerException is IpcNotReadyError;
 }
 
 internal enum ExternalOperationStatus

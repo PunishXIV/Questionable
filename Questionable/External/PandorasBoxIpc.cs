@@ -1,5 +1,4 @@
-﻿using System.Collections.Immutable;
-using Dalamud.Plugin.Ipc;
+using System.Collections.Immutable;
 using Dalamud.Plugin.Ipc.Exceptions;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
@@ -11,7 +10,7 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     public override bool IsReady() => IpcInvoke.SafeFunc(() =>
         {
-            return GetVersion() != null && _getFeatureEnabled.InvokeFunc(ConflictingFeatures.First()) != null;
+            return GetVersion() != null && _getFeatureEnabled(ConflictingFeatures.First()) != null;
         }, fallback: false);
     private static readonly ImmutableHashSet<string> ConflictingFeatures = new HashSet<string>
     {
@@ -36,17 +35,17 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
 
     private readonly IFramework _framework;
 
-    private readonly ICallGateSubscriber<string, bool?> _getFeatureEnabled;
+    [EzIPC("GetFeatureEnabled")] private readonly Func<string, bool?> _getFeatureEnabled = null!;
     private readonly ILogger<PandorasBoxIpc> _logger;
     private readonly QuestController _questController;
-    private readonly ICallGateSubscriber<string, bool, object?> _setFeatureEnabled;
+    [EzIPC("SetFeatureEnabled")] private readonly Action<string, bool> _setFeatureEnabled = null!;
+    private readonly EzIPCDisposalToken[] _disposalTokens;
     private readonly TerritoryData _territoryData;
 
     private readonly FeatureSuppression _suppression;
     private bool _loggedIpcError;
 
-    public PandorasBoxIpc(IDalamudPluginInterface pluginInterface,
-        IFramework framework,
+    public PandorasBoxIpc(IFramework framework,
         QuestController questController,
         TerritoryData territoryData,
         IClientState clientState,
@@ -58,8 +57,7 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
         _clientState = clientState;
         _logger = logger;
         _suppression = new FeatureSuppression(ConflictingFeatures, logger);
-        _getFeatureEnabled = pluginInterface.GetIpcSubscriber<string, bool?>("PandorasBox.GetFeatureEnabled");
-        _setFeatureEnabled = pluginInterface.GetIpcSubscriber<string, bool, object?>("PandorasBox.SetFeatureEnabled");
+        _disposalTokens = EzIPC.Init(this, InternalName, SafeWrapper.None);
         logger.LogInformation("Pandora's Box auto active time maneuver enabled: {IsAtmEnabled}",
             IsAutoActiveTimeManeuverEnabled);
 
@@ -72,7 +70,7 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
         {
             try
             {
-                return _getFeatureEnabled.InvokeFunc("Auto Active Time Maneuver") == true;
+                return _getFeatureEnabled("Auto Active Time Maneuver") == true;
             }
             catch (IpcNotReadyError)
             {
@@ -95,7 +93,7 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
     {
         try
         {
-            _setFeatureEnabled.InvokeAction("Auto Active Time Maneuver", enabled);
+            _setFeatureEnabled("Auto Active Time Maneuver", enabled);
             return IsAutoActiveTimeManeuverEnabled == enabled;
         }
         catch (IpcNotReadyError)
@@ -114,12 +112,12 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
         _framework.Update -= OnUpdate;
         IpcInvoke.TryOnFrameworkThread(_framework, () =>
         {
-            _suppression.Update(false, IsInstalled, _getFeatureEnabled.InvokeFunc,
-                (feature, enabled) => _setFeatureEnabled.InvokeAction(feature, enabled), force: true);
+            _suppression.Update(false, IsInstalled, _getFeatureEnabled, _setFeatureEnabled, force: true);
             if (_suppression.OwnedOff.Count > 0)
                 _logger.LogWarning("Could not restore Pandora's Box features on unload: {Features}",
                     string.Join(", ", _suppression.OwnedOff));
         }, _logger);
+        IPCSubscriber.DisposeAll(_disposalTokens);
     }
 
     private bool IsInstalled => IPCSubscriber.IsInstalled(InternalName);
@@ -132,8 +130,7 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
         if (!_suppression.HasWork(hasActiveQuest))
             return;
 
-        _suppression.Update(hasActiveQuest, IsInstalled, _getFeatureEnabled.InvokeFunc,
-            (feature, enabled) => _setFeatureEnabled.InvokeAction(feature, enabled));
+        _suppression.Update(hasActiveQuest, IsInstalled, _getFeatureEnabled, _setFeatureEnabled);
     }
 
     internal sealed class FeatureSuppression(IEnumerable<string> features, ILogger logger, TimeProvider? timeProvider = null)

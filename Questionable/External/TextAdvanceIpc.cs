@@ -1,4 +1,3 @@
-﻿using Dalamud.Plugin.Ipc;
 using static Questionable.External.IPCUtils;
 namespace Questionable.External;
 
@@ -9,14 +8,15 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     public override bool IsReady() => IpcInvoke.SafeFunc(() =>
         {
-            var _ = _isInExternalControl.InvokeFunc();
+            var _ = _isInExternalControl();
             return GetVersion() != null;
         }, fallback: false);
     private readonly Configuration _configuration;
-    private readonly ICallGateSubscriber<string, bool> _disableExternalControl;
-    private readonly ICallGateSubscriber<string, ExternalTerritoryConfig, bool> _enableExternalControl;
+    [EzIPC("DisableExternalControl")] private readonly Func<string, bool> _disableExternalControl = null!;
+    [EzIPC("EnableExternalControl")] private readonly Func<string, ExternalTerritoryConfig, bool> _enableExternalControl = null!;
     private readonly IFramework _framework;
-    private readonly ICallGateSubscriber<bool> _isInExternalControl;
+    [EzIPC("IsInExternalControl")] private readonly Func<bool> _isInExternalControl = null!;
+    private readonly EzIPCDisposalToken[] _disposalTokens;
     private readonly string _pluginName;
     private readonly QuestController _questController;
     private bool _isExternalControlActivated;
@@ -28,11 +28,7 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
         _framework = framework;
         _questController = questController;
         _configuration = configuration;
-        _isInExternalControl = pluginInterface.GetIpcSubscriber<bool>("TextAdvance.IsInExternalControl");
-        _enableExternalControl =
-            pluginInterface.GetIpcSubscriber<string, ExternalTerritoryConfig, bool>(
-                "TextAdvance.EnableExternalControl");
-        _disableExternalControl = pluginInterface.GetIpcSubscriber<string, bool>("TextAdvance.DisableExternalControl");
+        _disposalTokens = EzIPC.Init(this, InternalName, SafeWrapper.None);
         _pluginName = pluginInterface.InternalName;
         _framework.Update += OnUpdate;
     }
@@ -41,7 +37,8 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
     {
         _framework.Update -= OnUpdate;
         if (_isExternalControlActivated)
-            IpcInvoke.TryOnFrameworkThread(_framework, () => _disableExternalControl.InvokeFunc(_pluginName));
+            IpcInvoke.TryOnFrameworkThread(_framework, () => _disableExternalControl(_pluginName));
+        IPCSubscriber.DisposeAll(_disposalTokens);
     }
 
     private void OnUpdate(IFramework framework)
@@ -56,12 +53,12 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
             {
                 // TextAdvance accepts updated settings from the same requester. Keep control
                 // throughout so its normal auto-interact/cutscene settings cannot take over.
-                if (IpcInvoke.SafeFunc(() => _enableExternalControl.InvokeFunc(
+                if (IpcInvoke.SafeFunc(() => _enableExternalControl(
                         _pluginName, CreateExternalTerritoryConfig(dontSkipCutscenes)), fallback: false))
                     _sentDontSkipCutscenes = dontSkipCutscenes;
             }
-            else if (IpcInvoke.SafeFunc<bool?>(() => _isInExternalControl.InvokeFunc(), fallback: null) == false &&
-                     IpcInvoke.SafeFunc(() => _enableExternalControl.InvokeFunc(
+            else if (IpcInvoke.SafeFunc<bool?>(() => _isInExternalControl(), fallback: null) == false &&
+                     IpcInvoke.SafeFunc(() => _enableExternalControl(
                          _pluginName, CreateExternalTerritoryConfig(dontSkipCutscenes)), fallback: false))
             {
                 _isExternalControlActivated = true;
@@ -72,8 +69,8 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
         {
             if (_isExternalControlActivated)
             {
-                if (IpcInvoke.SafeFunc(() => _disableExternalControl.InvokeFunc(_pluginName), fallback: false) ||
-                    IpcInvoke.SafeFunc<bool?>(() => _isInExternalControl.InvokeFunc(), fallback: null) == false)
+                if (IpcInvoke.SafeFunc(() => _disableExternalControl(_pluginName), fallback: false) ||
+                    IpcInvoke.SafeFunc<bool?>(() => _isInExternalControl(), fallback: null) == false)
                     _isExternalControlActivated = false;
             }
         }

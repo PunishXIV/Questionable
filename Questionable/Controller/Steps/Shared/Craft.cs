@@ -68,7 +68,7 @@ internal static class Craft
     internal static bool AreItemsSatisfied(IReadOnlyList<CraftingItem> targets, Func<CraftingItem, int> countItems) =>
         targets.Count > 0 && targets.All(item => countItems(item) >= item.ItemCount);
 
-    internal static bool TryStartQuestList(IArtisanIpc artisanIpc, ElementId questId,
+    internal static bool TryStartQuestList(ArtisanIpc artisanIpc, ElementId questId,
         uint? itemId = null, IReadOnlySet<uint>? requiredItemIds = null)
     {
         if (questId is not QuestId)
@@ -153,7 +153,7 @@ internal static class Craft
     internal sealed class DoCraft
     (
         IDataManager dataManager,
-        IArtisanIpc artisanIpc,
+        ArtisanIpc artisanIpc,
         ILogger<DoCraft> logger,
         QuestFunctions questFunctions,
         CraftingOperationState craftingOperation) : TaskExecutor<CraftTask>, ITaskExecutor.IStoppableTaskExecutor

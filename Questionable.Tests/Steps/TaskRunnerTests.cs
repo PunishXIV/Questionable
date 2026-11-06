@@ -312,7 +312,7 @@ public sealed class TaskRunnerTests
     {
         using var operations = new ExternalOperationFixture();
         using var fixture = new TaskRunnerFixture();
-        ITaskExecutor executor = new SinglePlayerDuty.WaitSinglePlayerDutyExecutor(operations.BossMod.Ipc, operations.Movement);
+        ITaskExecutor executor = new SinglePlayerDuty.WaitSinglePlayerDutyExecutor(operations.BossMod, operations.Movement);
         ITask task = new SinglePlayerDuty.WaitSinglePlayerDuty(42);
         Assert.True(fixture.Queue.StartTask(executor, task));
         SeString message = "Event canceled.";

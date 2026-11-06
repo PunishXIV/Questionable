@@ -1,23 +1,20 @@
 using System.Collections.ObjectModel;
-using Dalamud.Plugin.Ipc;
+using Dalamud.Game.ClientState.Objects.Types;
+using Dalamud.Plugin.Ipc.Exceptions;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using static Questionable.External.IPCUtils;
+
 namespace Questionable.External;
 
 [RegisterSingleton]
-internal sealed class BossModIpc
-(
-    IDalamudPluginInterface pluginInterface,
-    Configuration configuration,
-    TerritoryData territoryData,
-    ICommandManager commandManager) : Ipc
+internal sealed class BossModIpc : Ipc, IDisposable
 {
     public override string InternalName => PluginName;
-    public override Version? GetVersion() => pluginInterface.InstalledPlugins
-        .FirstOrDefault(p => p.InternalName == PluginName && p.IsLoaded)?.Version;
+    public override Version? GetVersion() => IPCSubscriber.Version(PluginName);
     public override bool IsReady() => IpcInvoke.SafeFunc(() =>
         {
-            var _ = _getActivePreset.InvokeFunc();
+            var _ = _getActivePreset();
             return GetVersion() != null;
         }, fallback: false);
     public enum EPreset
@@ -36,16 +33,28 @@ internal sealed class BossModIpc
         { EPreset.QuestBattle, new("Questionable - Quest Battles", "QuestBattle") },
         { EPreset.NormalMovement, new("Questionable - Normal Movement", "NormalMovement") }
     }.AsReadOnly();
-    private readonly ICallGateSubscriber<bool> _clearPreset = pluginInterface.GetIpcSubscriber<bool>($"{PluginName}.Presets.ClearActive");
 
-    private readonly ICallGateSubscriber<string, bool, bool> _createPreset = pluginInterface.GetIpcSubscriber<string, bool, bool>($"{PluginName}.Presets.Create");
-    private readonly ICallGateSubscriber<string?> _getActivePreset = pluginInterface.GetIpcSubscriber<string?>($"{PluginName}.Presets.GetActive");
-    private readonly ICallGateSubscriber<List<string>> _getActivePresets = pluginInterface.GetIpcSubscriber<List<string>>($"{PluginName}.Presets.GetActiveList");
-    private readonly ICallGateSubscriber<string, string?> _getPreset = pluginInterface.GetIpcSubscriber<string, string?>($"{PluginName}.Presets.Get");
-    private readonly ICallGateSubscriber<string, bool> _setPreset = pluginInterface.GetIpcSubscriber<string, bool>($"{PluginName}.Presets.SetActive");
-    private readonly ICallGateSubscriber<string, bool> _deletePreset = pluginInterface.GetIpcSubscriber<string, bool>($"{PluginName}.Presets.Delete");
-    private readonly ICallGateSubscriber<IReadOnlyList<string>, bool, IReadOnlyList<string>> _configuration =
-        pluginInterface.GetIpcSubscriber<IReadOnlyList<string>, bool, IReadOnlyList<string>>($"{PluginName}.Configuration");
+    private readonly Configuration _configuration;
+    private readonly TerritoryData _territoryData;
+    private readonly ICommandManager _commandManager;
+    private readonly EzIPCDisposalToken[] _disposalTokens;
+
+    [EzIPC("Presets.ClearActive")] private readonly Func<bool> _clearPreset = null!;
+    [EzIPC("Presets.Create")] private readonly Func<string, bool, bool> _createPreset = null!;
+    [EzIPC("Presets.GetActive")] private readonly Func<string?> _getActivePreset = null!;
+    [EzIPC("Presets.GetActiveList")] private readonly Func<List<string>> _getActivePresets = null!;
+    [EzIPC("Presets.Get")] private readonly Func<string, string?> _getPreset = null!;
+    [EzIPC("Presets.SetActive")] private readonly Func<string, bool> _setPreset = null!;
+    [EzIPC("Presets.Delete")] private readonly Func<string, bool> _deletePreset = null!;
+    [EzIPC("Configuration")] private readonly Func<IReadOnlyList<string>, bool, IReadOnlyList<string>> _configurationCommand = null!;
+
+    public BossModIpc(Configuration configuration, TerritoryData territoryData, ICommandManager commandManager)
+    {
+        _configuration = configuration;
+        _territoryData = territoryData;
+        _commandManager = commandManager;
+        _disposalTokens = EzIPC.Init(this, PluginName, SafeWrapper.None);
+    }
 
     private OwnedPreset? _ownedPreset;
     private bool _bossmodRebornDetected;
@@ -63,7 +72,7 @@ internal sealed class BossModIpc
             {
                 return _ownedPreset is { } owned &&
                     (owned.ProviderLost || (owned.OwnershipLost && owned.Settings.All(x => !x.Pending))) &&
-                    ProviderAvailable() && _getActivePresets.HasFunction && _getActivePresets.InvokeFunc().Count == 0;
+                    ProviderAvailable() && ActivePresetCount() == 0;
             }
             catch (Exception)
             {
@@ -82,7 +91,30 @@ internal sealed class BossModIpc
         return true;
     }
 
-    public bool IsSupported() => IpcInvoke.SafeFunc(() => _getPreset.HasFunction, fallback: false);
+    public bool IsSupported()
+    {
+        try
+        {
+            _getActivePreset();
+            return true;
+        }
+        catch (Exception e)
+        {
+            return !IpcInvoke.IsMissing(e);
+        }
+    }
+
+    private int? ActivePresetCount()
+    {
+        try
+        {
+            return _getActivePresets().Count;
+        }
+        catch (Exception e) when (IpcInvoke.IsMissing(e))
+        {
+            return null;
+        }
+    }
     public bool BossModRebornDetected()
     {
         if (EzThrottler.Throttle("BossModRebornDetected", miliseconds: 1000))
@@ -95,7 +127,7 @@ internal sealed class BossModIpc
     {
         if (!bulk)
             ClearObstacleMaps();
-        if (_getPreset.InvokeFunc(definition.Name) == null && !_createPreset.InvokeFunc(definition.Content, true))
+        if (_getPreset(definition.Name) == null && !_createPreset(definition.Content, true))
             throw new TaskException($"BossMod rejected creation of preset '{definition.Name}'.");
         return definition;
     }
@@ -106,7 +138,7 @@ internal sealed class BossModIpc
         foreach (PresetDefinition definition in PresetDefinitions.Values)
         {
             if (delete)
-                _deletePreset.InvokeFunc(definition.Name);
+                _deletePreset(definition.Name);
             AddPreset(definition, bulk: true);
         }
     }
@@ -131,9 +163,9 @@ internal sealed class BossModIpc
         {
             if (!owned.HasPresetSnapshot)
             {
-                if (_getActivePresets.HasFunction && _getActivePresets.InvokeFunc().Count > 1)
+                if (ActivePresetCount() > 1)
                     throw new TaskException("BossMod has multiple active presets; stop them before starting Questionable.");
-                owned.PreviousPreset = _getActivePreset.InvokeFunc();
+                owned.PreviousPreset = _getActivePreset();
                 owned.HasPresetSnapshot = true;
             }
             OverrideSetting(owned, "AutorotationConfig", "ClearPresetOnCombatEnd", false);
@@ -149,7 +181,7 @@ internal sealed class BossModIpc
             bool previousPending = owned.PresetPending;
             owned.ExpectedPreset = definition.Name;
             owned.PresetPending = true; // SetActive can apply its change and then throw.
-            if (!_setPreset.InvokeFunc(definition.Name))
+            if (!_setPreset(definition.Name))
             {
                 owned.ExpectedPreset = previousExpected;
                 owned.PresetPending = previousPending;
@@ -176,7 +208,7 @@ internal sealed class BossModIpc
 
         if (!ProviderAvailable())
             throw new TaskException("BossMod is unavailable.");
-        if (_getActivePresets.HasFunction && _getActivePresets.InvokeFunc().Count > 1)
+        if (ActivePresetCount() > 1)
             throw new TaskException("BossMod has multiple active presets; stop them before starting Questionable.");
 
         return _ownedPreset = new OwnedPreset(soloDuty);
@@ -192,8 +224,8 @@ internal sealed class BossModIpc
         {
             EnsureProvider(owned);
             if (owned.PresetPending &&
-                ((_getActivePresets.HasFunction && _getActivePresets.InvokeFunc().Count > 1) ||
-                 !string.Equals(_getActivePreset.InvokeFunc(), owned.ExpectedPreset, StringComparison.Ordinal)))
+                ((ActivePresetCount() > 1) ||
+                 !string.Equals(_getActivePreset(), owned.ExpectedPreset, StringComparison.Ordinal)))
             {
                 owned.OwnershipLost = true;
                 owned.PresetPending = false;
@@ -254,10 +286,10 @@ internal sealed class BossModIpc
             owned.HasPresetTransition = true;
             owned.ExpectedPreset = desired;
             // Retain both possible states for cleanup if an IPC applies and then throws.
-            bool accepted = desired == null ? ClearPreset() : _setPreset.InvokeFunc(desired);
+            bool accepted = desired == null ? ClearPreset() : _setPreset(desired);
             if (!accepted ||
-                (_getActivePresets.HasFunction && _getActivePresets.InvokeFunc().Count > 1) ||
-                !string.Equals(_getActivePreset.InvokeFunc(), desired, StringComparison.Ordinal))
+                (ActivePresetCount() > 1) ||
+                !string.Equals(_getActivePreset(), desired, StringComparison.Ordinal))
                 throw new TaskException("BossMod rejected the combat item rotation change.");
             owned.HasPresetTransition = false;
             if (!paused)
@@ -281,16 +313,16 @@ internal sealed class BossModIpc
             EnsureProvider(owned);
             if (owned.PresetPending)
             {
-                string? current = _getActivePreset.InvokeFunc();
+                string? current = _getActivePreset();
                 // GetActive returns null for both an empty list and multiple active presets.
-                bool multiplePresets = _getActivePresets.HasFunction && _getActivePresets.InvokeFunc().Count > 1;
+                bool multiplePresets = ActivePresetCount() > 1;
                 if (!multiplePresets &&
                     (string.Equals(current, owned.ExpectedPreset, StringComparison.Ordinal) ||
                      (owned.HasPresetTransition && string.Equals(current, owned.TransitionFromPreset, StringComparison.Ordinal))))
                 {
                     bool accepted = owned.PreviousPreset == null
                         ? ClearPreset()
-                        : _setPreset.InvokeFunc(owned.PreviousPreset);
+                        : _setPreset(owned.PreviousPreset);
                     if (!accepted)
                         throw new TaskException("BossMod rejected restoring the previous preset.");
                 }
@@ -317,18 +349,17 @@ internal sealed class BossModIpc
 
     // ClearActive returns false when no preset is active, which is already the state we want.
     private bool ClearPreset() =>
-        _clearPreset.InvokeFunc() ||
-        (_getActivePreset.InvokeFunc() == null && (!_getActivePresets.HasFunction || _getActivePresets.InvokeFunc().Count == 0));
+        _clearPreset() ||
+        (_getActivePreset() == null && ActivePresetCount() is null or 0);
 
-    public void ClearObstacleMaps() => commandManager.ProcessCommand("/vbm clear-maps");
+    public void ClearObstacleMaps() => _commandManager.ProcessCommand("/vbm clear-maps");
 
     private bool ProviderAvailable()
     {
         bool available;
         try
         {
-            available = _getActivePreset.HasFunction && _setPreset.HasFunction &&
-                _clearPreset.HasFunction && GetVersion() != null;
+            available = GetVersion() != null && IsSupported();
         }
         catch (Exception)
         {
@@ -400,7 +431,7 @@ internal sealed class BossModIpc
     private bool ReadSetting(string type, string field)
     {
         // BossMod's Configuration endpoint calls ConfigRoot.ConsoleCommand directly, without "cfg".
-        IReadOnlyList<string> result = _configuration.InvokeFunc([type, field], false);
+        IReadOnlyList<string> result = _configurationCommand([type, field], false);
         if (result.Count != 1 || !bool.TryParse(result[0], out bool value))
             throw new TaskException($"Unable to read BossMod setting {type}.{field}.");
         return value;
@@ -408,7 +439,7 @@ internal sealed class BossModIpc
 
     private void WriteSetting(string type, string field, bool value)
     {
-        IReadOnlyList<string> result = _configuration.InvokeFunc([type, field, value ? "true" : "false"], false);
+        IReadOnlyList<string> result = _configurationCommand([type, field, value ? "true" : "false"], false);
         if (result.Count != 0 || ReadSetting(type, field) != value)
             throw new TaskException($"BossMod rejected setting {type}.{field} to {value}.");
     }
@@ -445,21 +476,23 @@ internal sealed class BossModIpc
         if (!IsSupported())
             return false;
 
-        if (!configuration.SinglePlayerDuties.RunSoloInstancesWithBossMod)
+        if (!_configuration.SinglePlayerDuties.RunSoloInstancesWithBossMod)
             return false;
 
         dutyOptions ??= new();
-        if (!territoryData.TryGetContentFinderConditionForSoloInstance(questId, dutyOptions.Index, out TerritoryData.ContentFinderConditionData? cfcData))
+        if (!_territoryData.TryGetContentFinderConditionForSoloInstance(questId, dutyOptions.Index, out TerritoryData.ContentFinderConditionData? cfcData))
             return false;
 
-        if (configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Contains(cfcData.ContentFinderConditionId))
+        if (_configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Contains(cfcData.ContentFinderConditionId))
             return false;
 
-        if (configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Contains(cfcData.ContentFinderConditionId))
+        if (_configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Contains(cfcData.ContentFinderConditionId))
             return true;
 
         return dutyOptions.Enabled;
     }
+
+    public void Dispose() => IPCSubscriber.DisposeAll(_disposalTokens);
 
     public sealed class PresetDefinition(string name, string fileName)
     {
@@ -476,4 +509,71 @@ internal sealed class BossModIpc
             return reader.ReadToEnd();
         }
     }
+}
+
+[RegisterSingleton<ICombatModule, BossModModule>(Duplicate = DuplicateStrategy.Append)]
+internal sealed class BossModModule
+(
+    ILogger<BossModModule> logger,
+    BossModIpc bossModIpc,
+    Configuration configuration,
+    IFramework framework) : ICombatModule, IDisposable
+{
+    public string Name => "Boss Mod";
+
+    private bool _justLoaded = true;
+
+    public bool CanHandleFight(CombatController.CombatData combatData)
+    {
+        if (configuration.General.CombatModule != ECombatModule.BossMod)
+            return false;
+
+        return bossModIpc.IsSupported();
+    }
+
+    public bool Start(CombatController.CombatData combatData)
+    {
+        try
+        {
+            if (_justLoaded)
+            {
+                bossModIpc.AddAllPresets(delete: true);
+                _justLoaded = false;
+            }
+            bossModIpc.SetActivePreset(BossModIpc.EPreset.Overworld);
+            return true;
+        }
+        catch (IpcError e)
+        {
+            logger.LogWarning(e, "Could not start combat");
+            return false;
+        }
+    }
+
+    public bool Pause() => bossModIpc.PauseOwnedPreset();
+
+    public bool Resume() => bossModIpc.ResumeOwnedPreset();
+
+    public bool Stop()
+    {
+        try
+        {
+            return bossModIpc.StopOwnedPreset();
+        }
+        catch (Exception e)
+        {
+            logger.LogWarning(e, "Could not turn off combat");
+            return false;
+        }
+    }
+
+    public void Update(IGameObject gameObject)
+    {
+    }
+
+    public void VerifyActive() => bossModIpc.VerifyOwnedPreset();
+
+    public bool CanAttack(IBattleNpc target) => true;
+
+    public void Dispose() => IpcInvoke.TryOnFrameworkThread(framework, () => Stop(), logger);
 }
