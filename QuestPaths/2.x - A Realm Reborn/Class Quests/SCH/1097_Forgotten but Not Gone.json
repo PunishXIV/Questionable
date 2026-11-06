@@ -10,7 +10,8 @@
         {
           "TerritoryId": 129,
           "InteractionType": "UnequipItem",
-          "ItemId": 4549
+          "ItemId": 4549,
+          "AetheryteShortcut": "Limsa Lominsa"
         },
         {
           "InteractionType": "CreateGearset",
