@@ -220,9 +220,31 @@ public sealed class QuestSelectionControllerTests
         Assert.Equal(expected, QuestSelectionController.IsLevelTooHigh(playerLevel, NewQuest(10, questLevel)));
     }
 
+    [Fact]
+    public void StartedQuestIsHeldOnlyDuringALoadingScreen()
+    {
+        Assert.True(QuestSelectionController.ShouldHoldStartedQuest(Progress(10), betweenAreas: true));
+        Assert.False(QuestSelectionController.ShouldHoldStartedQuest(Progress(10), betweenAreas: false));
+        Assert.False(QuestSelectionController.ShouldHoldStartedQuest(null, betweenAreas: true));
+    }
+
+    [Fact]
+    public void SwitchingBackToADisplacedQuestResumesItsStep()
+    {
+        QuestProgress displaced = new(NewQuest(10), 255, step: 1);
+
+        QuestProgress resumed = QuestSelectionController.ResumeOrStart(displaced, displaced.Quest, 255);
+        Assert.Equal(1, resumed.Step);
+
+        Assert.Equal(0, QuestSelectionController.ResumeOrStart(displaced, displaced.Quest, 2).Step);
+        Assert.Equal(0, QuestSelectionController.ResumeOrStart(displaced, NewQuest(11), 255).Step);
+        Assert.Equal(0, QuestSelectionController.ResumeOrStart(null, displaced.Quest, 255).Step);
+    }
+
     private sealed class FakeState : IQuestSelectionState
     {
         public bool InDuty { get; set; }
+        public bool BetweenAreas { get; set; }
         public HashSet<ElementId> Accepted { get; } = [];
         public HashSet<ElementId> Complete { get; } = [];
         public HashSet<ElementId> Ready { get; } = [];

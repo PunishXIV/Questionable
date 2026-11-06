@@ -33,6 +33,14 @@ internal sealed class QuestSelectionController(Configuration configuration)
 
     public static bool IsLevelTooHigh(int playerLevel, Quest quest) => playerLevel < quest.Info.Level;
 
+    // Quest state read during a teleport can briefly offer another quest (e.g. a priority quest).
+    internal static bool ShouldHoldStartedQuest(QuestProgress? started, bool betweenAreas) => started != null && betweenAreas;
+
+    internal static QuestProgress ResumeOrStart(QuestProgress? displaced, Quest quest, byte sequence) =>
+        displaced != null && displaced.Quest.Id == quest.Id && displaced.Sequence == sequence
+            ? new(quest, sequence, displaced.Step)
+            : new(quest, sequence);
+
     // Leaving a duty, or a quest that can't be resumed from elsewhere (e.g. the ferry-only Isles of Umbre), strands the player.
     internal static bool CanSwitchToPriorityQuest(QuestProgress? started, ElementId priorityQuestId, bool inDuty) =>
         started == null || started.Quest.Id == priorityQuestId || (!inDuty && started.Quest.Root.Interruptible);
@@ -88,6 +96,7 @@ internal interface IQuestRule
 internal interface IQuestSelectionState
 {
     bool InDuty { get; }
+    bool BetweenAreas { get; }
     bool IsAccepted(ElementId questId);
     bool IsComplete(ElementId questId);
     bool IsReadyToAccept(ElementId questId, bool ignoreLevel = false);

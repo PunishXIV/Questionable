@@ -458,6 +458,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 }
             }
 
+            if (QuestSelectionController.ShouldHoldStartedQuest(StartedQuest, SelectionState.BetweenAreas))
+            {
+                DebugState = "Loading";
+                return;
+            }
+
             QuestChoice choice = QuestSelectionController.Choose(new QuestSelectionContext(Slots, _priorityManager.Quests,
                 _priorityManager.IsAcceptOnly, AutomationType, SelectionState));
             QuestProgress? questToRun;
@@ -630,7 +636,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     {
         _highlightObject.SetHighlight([]);
         _logger.LogInformation("New quest: {QuestName}", quest.Info.Name);
-        StartedQuest = new(quest, sequence);
+        QuestProgress? previous = StartedQuest;
+        StartedQuest = QuestSelectionController.ResumeOrStart(_tracker.DisplacedQuest, quest, sequence);
+        _tracker.DisplacedQuest = previous != null && previous.Quest.Id != quest.Id ? previous : null;
+        if (StartedQuest.Step > 0)
+            _logger.LogInformation("Resuming at sequence {Sequence} step {Step}", StartedQuest.Sequence, StartedQuest.Step);
     }
 
     internal void EnqueueQuestTask(ITask task, Func<ElementId, bool> isAccepted)
@@ -1232,6 +1242,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private sealed class SelectionStateAdapter(QuestController controller) : IQuestSelectionState
     {
         public bool InDuty => controller._condition[ConditionFlag.BoundByDuty];
+        public bool BetweenAreas => controller._condition[ConditionFlag.BetweenAreas] || controller._condition[ConditionFlag.BetweenAreas51];
         public bool IsAccepted(ElementId questId) => controller._questFunctions.IsQuestAccepted(questId);
         public bool IsComplete(ElementId questId) => controller._questFunctions.IsQuestComplete(questId);
         public bool IsReadyToAccept(ElementId questId, bool ignoreLevel = false) =>

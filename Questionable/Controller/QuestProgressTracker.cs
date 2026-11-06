@@ -18,6 +18,9 @@ internal sealed class QuestProgressTracker(
     // Leve acceptance is delayed.
     public QuestController.QuestProgress? PendingQuest { get; set; }
 
+    // The started quest a brief switch replaced, so switching back resumes its step.
+    public QuestController.QuestProgress? DisplacedQuest { get; set; }
+
     public (QuestController.QuestProgress Progress, QuestController.ECurrentQuestType Type)? CurrentQuestDetails
     {
         get
@@ -44,6 +47,7 @@ internal sealed class QuestProgressTracker(
         GatheringQuest = null;
         PendingQuest = null;
         SimulatedQuest = null;
+        DisplacedQuest = null;
     }
 
     public void SimulateQuest(IQuestInfo? questInfo, byte sequence, int step)
