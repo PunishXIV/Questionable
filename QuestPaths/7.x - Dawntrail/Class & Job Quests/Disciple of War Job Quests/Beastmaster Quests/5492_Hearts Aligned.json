@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "Comment": "Quest requires level 16 by the end\nCurrently we are overriding the minimum level to indicate this requirement",
-  "LastChecked": { "Username": "alydev", "Date": "2026-09-09" },
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
