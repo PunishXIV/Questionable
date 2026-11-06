@@ -225,7 +225,8 @@ internal static class SinglePlayerDuty
         ICondition condition,
         IChatGui chatGui,
         RetryCounter retryCounter,
-        ILogger<WaitForSinglePlayerDutyOutcomeExecutor> logger)
+        ILogger<WaitForSinglePlayerDutyOutcomeExecutor> logger,
+        IQuestGameState gameState)
         : TaskExecutor<WaitForSinglePlayerDutyOutcome>, IDebugStateProvider
     {
         private static readonly TimeSpan GracePeriod = TimeSpan.FromSeconds(15);
@@ -259,7 +260,7 @@ internal static class SinglePlayerDuty
                 return ETaskResult.StillRunning;
 
             // If the sequence advanced, the duty succeeded and UpdateCurrentQuest clears this task; keep waiting.
-            QuestProgressInfo? progress = QuestFunctions.GetQuestProgressInfo(Task.QuestId);
+            QuestProgressInfo? progress = gameState.GetQuestProgressInfo(Task.QuestId);
             if (progress == null || progress.Sequence != Task.StartSequence)
                 return ETaskResult.StillRunning;
 

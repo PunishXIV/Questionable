@@ -121,12 +121,12 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         List<Level> withObject = [.. todoLevels.Where(x => x.Object.RowId != 0)];
         analysis.Hints.TryGetValue(number, out SequenceHint? hint);
 
-        // Only trust the todo objects when they account for the whole list. A sequence that is mostly bare
+        // Only trust the to-do objects when they account for the whole list. A sequence that is mostly bare
         // search areas with one named NPC among them is pointing at the areas; the NPC is a bystander who
         // happens to stand there, and interacting with them is not the objective.
         if (withObject.Count > 0 && withObject.Count == todoLevels.Count)
         {
-            // A sequence's todo list can name the same object more than once; interacting with it twice is not
+            // A sequence's to-do list can name the same object more than once; interacting with it twice is not
             // what that means, so one step per object is enough.
             HashSet<uint> alreadyStepped = [];
             foreach (Level level in withObject)
@@ -143,7 +143,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         else if (hint != null && TodoQty(quest, number) > 1 && todoLevels.Count > 1 &&
                  hint.CandidateSymbols.Count > 1)
         {
-            // "Speak with all three": the todo entries are bare map ranges with nothing to interact with, and
+            // "Speak with all three": the to-do entries are bare map ranges with nothing to interact with, and
             // the actor for each one has to be matched to it by position.
             AddStepsPerTodoArea(symbols, sequence, hint, todoLevels);
         }
@@ -165,7 +165,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
             }
         }
 
-        // Apply emotes first: explicit todo text is stronger evidence than item ownership.
+        // Apply emotes first: explicit to-do text is stronger evidence than item ownership.
         ApplyEmote(quest, sequence, number);
 
         if (hint != null)
@@ -585,7 +585,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
             ? $"auto: lua enemies spawn here -> {string.Join(", ", enemies)}"
             : $"auto: lua overworld enemies -> {string.Join(", ", enemies)}";
 
-        // For drop objectives, event-item stack size determines needed kills; todo quantity can differ.
+        // For drop objectives, event-item stack size determines needed kills; to-do quantity can differ.
         int needed = dropItemId is { } id ? gameData.EventItemStackSize(id) : 0;
         if (needed == 0)
             needed = requiredCount;

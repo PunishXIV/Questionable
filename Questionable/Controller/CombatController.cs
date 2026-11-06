@@ -174,7 +174,7 @@ internal sealed class CombatController : IDisposable
                         {
                             ElementId? elementId = _currentFight.Data.ElementId;
                             QuestProgressInfo? questProgressInfo = elementId != null
-                                ? QuestFunctions.GetQuestProgressInfo(elementId)
+                                ? _questFunctions.GetQuestProgressInfo(elementId)
                                 : null;
 
                             if (questProgressInfo != null &&
@@ -272,7 +272,7 @@ internal sealed class CombatController : IDisposable
                 if (QuestWorkUtils.HasCompletionFlags(condition.CompletionQuestVariablesFlags) &&
                     _currentFight.Data.ElementId is QuestId questId)
                 {
-                    QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(questId);
+                    QuestProgressInfo? questWork = _questFunctions.GetQuestProgressInfo(questId);
                     if (questWork != null &&
                         QuestWorkUtils.MatchesQuestWork(condition.CompletionQuestVariablesFlags, questWork))
                     {
@@ -557,7 +557,7 @@ internal sealed class CombatController : IDisposable
     {
         _lastTargetId = target?.GameObjectId;
         _previousQuestVariables = _currentFight!.Data.ElementId != null
-            ? QuestFunctions.GetQuestProgressInfo(_currentFight.Data.ElementId)?.Variables
+            ? _questFunctions.GetQuestProgressInfo(_currentFight.Data.ElementId)?.Variables
             : null;
     }
 

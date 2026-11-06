@@ -52,8 +52,8 @@ internal static class Fish
         private long? _completedAt;
 
         public DoFish(IFeeshIpc feeshIpc, FishingOperationState operation, IDataManager dataManager,
-            ILogger<DoFish> logger)
-            : this(feeshIpc, operation, logger, HasCompletedObjectives, CountEligibleInInventory,
+            ILogger<DoFish> logger, IQuestGameState gameState)
+            : this(feeshIpc, operation, logger, task => HasCompletedObjectives(task, gameState), CountEligibleInInventory,
                 itemId => dataManager.GetExcelSheet<Item>().GetRowOrDefault(itemId)?.Name.ToString() is { Length: > 0 } name
                     ? name
                     : itemId.ToString(CultureInfo.InvariantCulture))
@@ -162,10 +162,10 @@ internal static class Fish
         task.HasCompletionQuestVariablesFlags && matchesQuestWork ||
         task.GatheredItem is { } item && eligibleItemCount >= item.ItemCount;
 
-    private static bool HasCompletedObjectives(FishTask task)
+    private static bool HasCompletedObjectives(FishTask task, IQuestGameState gameState)
     {
         // Matching quest flags are authoritative even for quests whose fish are consumed or are key items.
-        if (task.HasCompletionQuestVariablesFlags && QuestFunctions.GetQuestProgressInfo(task.Quest.Id) is { } work &&
+        if (task.HasCompletionQuestVariablesFlags && gameState.GetQuestProgressInfo(task.Quest.Id) is { } work &&
             QuestWorkUtils.MatchesQuestWork(task.CompletionQuestVariablesFlags, work))
             return true;
         if (task.GatheredItem is not { } item)

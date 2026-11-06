@@ -179,14 +179,14 @@ internal static class WaitAtEnd
         public override string ToString() => $"Wait(QW: {string.Join(", ", Step.CompletionQuestVariablesFlags.Select(x => x?.ToString() ?? "-"))})";
     }
 
-    internal sealed class WaitForCompletionFlagsExecutor()
+    internal sealed class WaitForCompletionFlagsExecutor(IQuestGameState gameState)
         : TaskExecutor<WaitForCompletionFlags>
     {
         protected override bool Start() => true;
 
         public override ETaskResult Update()
         {
-            QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest);
+            QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(Task.Quest);
             return questWork != null &&
                    QuestWorkUtils.MatchesQuestWork(Task.Step.CompletionQuestVariablesFlags, questWork)
                 ? ETaskResult.TaskComplete

@@ -150,7 +150,8 @@ internal static class Interact
         ICondition condition,
         IObjectTable objectTable,
         ClassJobUtils classJobUtils,
-        ILogger<DoInteract> logger)
+        ILogger<DoInteract> logger,
+        IQuestGameState gameState)
         : TaskExecutor<Task>, IConditionChangeAware
     {
         private DateTime _continueAt = DateTime.MinValue;
@@ -230,7 +231,7 @@ internal static class Interact
                 return ETaskResult.TaskComplete;
             else if (Quest != null && Task.HasCompletionQuestVariablesFlags)
             {
-                QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Quest.Id);
+                QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(Quest.Id);
 
                 if (questWork != null && QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork))
                     return ETaskResult.TaskComplete;
@@ -286,7 +287,7 @@ internal static class Interact
                     throw new Exception(_LF("_JobGearsetError", Task.Quest.Info.ClassJobs[0].ToFriendlyString(), Task.Quest.Info.Name));
 
                 // the game won't offer the quest on a class below its level, so prefer classes that are high enough
-                List<Job> levelledJobs = [.. acceptableJobs.Where(x => QuestFunctions.GetClassJobLevel(x) >= Task.Quest.Info.Level)];
+                List<Job> levelledJobs = [.. acceptableJobs.Where(x => gameState.GetClassJobLevel(x) >= Task.Quest.Info.Level)];
                 if (levelledJobs.Count > 0)
                     acceptableJobs = levelledJobs;
 

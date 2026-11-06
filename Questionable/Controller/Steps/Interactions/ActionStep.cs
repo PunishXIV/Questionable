@@ -56,7 +56,8 @@ internal static class ActionStep
         GameFunctions gameFunctions,
         InterruptHandler interruptHandler,
         ICondition condition,
-        ILogger<UseOnObject> logger) : TaskExecutor<UseOnObject>
+        ILogger<UseOnObject> logger,
+        IQuestGameState gameState) : TaskExecutor<UseOnObject>
     {
         private const int MaxAttempts = 10;
 
@@ -196,7 +197,7 @@ internal static class ActionStep
             if (!HasCompletionFlags())
                 return ETaskResult.TaskComplete;
 
-            QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest!.Id);
+            QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(Task.Quest!.Id);
             return questWork != null &&
                    QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags!, questWork)
                 ? ETaskResult.TaskComplete

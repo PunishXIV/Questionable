@@ -6,6 +6,7 @@ using NSubstitute;
 using Questionable.Controller;
 using Questionable.Controller.Operations;
 using Questionable.External;
+using Questionable.Functions;
 using Xunit;
 
 namespace Questionable.Tests.Steps;
@@ -17,6 +18,8 @@ public sealed class ServiceRegistrationTests
     [InlineData(typeof(IGatherChillIpc), typeof(GatherChillIpc))]
     [InlineData(typeof(IKnightshopperIpc), typeof(KnightshopperIpc))]
     [InlineData(typeof(IFeeshIpc), typeof(FeeshIpc))]
+    [InlineData(typeof(IQuestGameState), typeof(GameQuestState))]
+    [InlineData(typeof(IQuestCatalog), typeof(QuestCatalog))]
     public void InterfaceRegisteredAdapters_HaveNoUnresolvableConcreteConsumers(Type contract, Type implementation)
     {
         IServiceCollection services = new ServiceCollection().AddQuestionable();

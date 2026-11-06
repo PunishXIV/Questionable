@@ -42,7 +42,7 @@ public sealed class CombatControllerTests : IDisposable
         _module.Start(Arg.Any<CombatController.CombatData>()).Returns(_ =>
             throws ? throw new InvalidOperationException("partially started") : false);
         TaskQueue queue = new(NullLogger.Instance);
-        Assert.ThrowsAny<Exception>(() => queue.StartTask(new Combat.HandleCombat(_controller),
+        Assert.ThrowsAny<Exception>(() => queue.StartTask(new Combat.HandleCombat(_controller, new FakeQuestGameState()),
             new Combat.Task(CombatTestData.Create(), [], false)));
         _module.Received(1).Stop();
         Assert.False(_controller.IsRunning);
@@ -74,7 +74,7 @@ public sealed class CombatControllerTests : IDisposable
         using var controller = new CombatController([_module], navigation.Movement,
             Substitute.For<ITargetManager>(), navigation.Objects, _condition, navigation.Client,
             null!, null!, framework, NullLogger<CombatController>.Instance);
-        var executor = new Combat.HandleCombat(controller);
+        var executor = new Combat.HandleCombat(controller, new FakeQuestGameState());
         var task = new Combat.Task(CombatTestData.Create(EEnemySpawnType.FinishCombatIfAny), [], false);
         _condition[ConditionFlag.InCombat].Returns(true);
 
@@ -104,7 +104,7 @@ public sealed class CombatControllerTests : IDisposable
         _condition[ConditionFlag.InCombat].Returns(false);
 
         Assert.True(queue.TryDequeue(out var task));
-        Assert.False(queue.StartTask(new Combat.HandleCombat(_controller), task!));
+        Assert.False(queue.StartTask(new Combat.HandleCombat(_controller, new FakeQuestGameState()), task!));
         Assert.Null(queue.CurrentTaskExecutor);
         Assert.True(queue.AllTasksComplete);
         Assert.False(_controller.IsRunning);

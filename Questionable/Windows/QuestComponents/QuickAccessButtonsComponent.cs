@@ -200,7 +200,7 @@ internal sealed class QuickAccessButtonsComponent
                     { "CompletedQuests", questCompletions.Count },
                     { "Quest", new Dictionary<string,object?>(StringComparer.Ordinal){
                         { "ToString", questProgress?.ToString() },
-                        { "QW", questProgress != null ? QuestFunctions.GetQuestProgressInfo(questProgress.Quest.Id)?.ToString() : "Error: questProgress is null" },
+                        { "QW", questProgress != null ? questFunctions.GetQuestProgressInfo(questProgress.Quest.Id)?.ToString() : "Error: questProgress is null" },
                         { "Source", questProgress?.Quest.Source }
                     }},
                     { "Character", new Dictionary<string,object>(StringComparer.Ordinal){

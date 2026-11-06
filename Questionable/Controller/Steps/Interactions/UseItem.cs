@@ -123,7 +123,8 @@ internal static class UseItem
     internal abstract class UseItemExecutorBase<T>
     (
         ICondition condition,
-        ILogger logger) : TaskExecutor<T>
+        ILogger logger,
+        IQuestGameState gameState) : TaskExecutor<T>
     where T : class, IUseItemBase
     {
         private DateTime _continueAt;
@@ -156,7 +157,7 @@ internal static class UseItem
         {
             if (QuestId is QuestId realQuestId && QuestWorkUtils.HasCompletionFlags(CompletionQuestVariablesFlags))
             {
-                QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(realQuestId);
+                QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(realQuestId);
                 if (questWork != null &&
                     QuestWorkUtils.MatchesQuestWork(CompletionQuestVariablesFlags, questWork))
                     return ETaskResult.TaskComplete;
@@ -224,8 +225,9 @@ internal static class UseItem
     (
         GameFunctions gameFunctions,
         ICondition condition,
-        ILogger<UseOnGroundExecutor> logger)
-        : UseItemExecutorBase<UseOnGround>(condition, logger)
+        ILogger<UseOnGroundExecutor> logger,
+        IQuestGameState gameState)
+        : UseItemExecutorBase<UseOnGround>(condition, logger, gameState)
     {
         protected override bool UseItem() => gameFunctions.UseItemOnGround(Task.DataId, ItemId);
     }
@@ -245,8 +247,9 @@ internal static class UseItem
     (
         GameFunctions gameFunctions,
         ICondition condition,
-        ILogger<UseOnPosition> logger)
-        : UseItemExecutorBase<UseOnPosition>(condition, logger)
+        ILogger<UseOnPosition> logger,
+        IQuestGameState gameState)
+        : UseItemExecutorBase<UseOnPosition>(condition, logger, gameState)
     {
         protected override bool UseItem() => gameFunctions.UseItemOnPosition(Task.Position, ItemId);
     }
@@ -266,8 +269,9 @@ internal static class UseItem
     (
         GameFunctions gameFunctions,
         ICondition condition,
-        ILogger<UseOnObject> logger)
-        : UseItemExecutorBase<UseOnObject>(condition, logger)
+        ILogger<UseOnObject> logger,
+        IQuestGameState gameState)
+        : UseItemExecutorBase<UseOnObject>(condition, logger, gameState)
     {
         protected override bool UseItem() => gameFunctions.UseItem(Task.DataId, ItemId);
     }
@@ -286,8 +290,9 @@ internal static class UseItem
     (
         GameFunctions gameFunctions,
         ICondition condition,
-        ILogger<UseOnSelf> logger)
-        : UseItemExecutorBase<UseOnSelf>(condition, logger)
+        ILogger<UseOnSelf> logger,
+        IQuestGameState gameState)
+        : UseItemExecutorBase<UseOnSelf>(condition, logger, gameState)
     {
         protected override bool UseItem() => gameFunctions.UseItem(ItemId);
     }

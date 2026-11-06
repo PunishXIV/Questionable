@@ -5964,12 +5964,12 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->
-    <Key>Aethernet locked ({0}): {{1}}</Key>
-    <Value lang="en">Aethernet locked ({0}): {{1}}</Value>
-    <Value lang="ja-jp">エーテルネットロック ({0}): {{1}}</Value>
-    <Value lang="zh-cn">以太之晶已锁定 ({0}): {{1}}</Value>
-    <Value lang="zh-tw">乙太之晶已鎖定 ({0}): {{1}}</Value>
-    <Value lang="ko">에테르넷 잠금 ({0}): {{1}}</Value>
+    <Key>Aethernet locked ({0}): {1}</Key>
+    <Value lang="en">Aethernet locked ({0}): {1}</Value>
+    <Value lang="ja-jp">エーテルネットロック ({0}): {1}</Value>
+    <Value lang="zh-cn">以太之晶已锁定 ({0}): {1}</Value>
+    <Value lang="zh-tw">乙太之晶已鎖定 ({0}): {1}</Value>
+    <Value lang="ko">에테르넷 잠금 ({0}): {1}</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Functions/QuestFunctions.cs -->

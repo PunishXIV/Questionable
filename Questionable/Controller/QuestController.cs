@@ -302,7 +302,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     {
         // Success can replace the outcome task before its next update; observe it independently.
         _soloDutyRetries.Observe(_clientState.IsLoggedIn ? ProfileController.CurrentContentId : null,
-            static questId => QuestFunctions.GetQuestProgressInfo(questId)?.Sequence);
+            questId => _questFunctions.GetQuestProgressInfo(questId)?.Sequence);
 
         if (_externalOperations.Update(this))
             return;
@@ -1237,7 +1237,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         public bool IsReadyToAccept(ElementId questId, bool ignoreLevel = false) =>
             controller._questFunctions.IsReadyToAcceptQuest(questId, ignoreLevel);
         public bool HasClassJobAtQuestLevel(ElementId questId) => controller._questFunctions.HasClassJobAtQuestLevel(questId);
-        public byte GetSequence(ElementId questId) => QuestFunctions.GetQuestProgressInfo(questId)?.Sequence ?? 0;
+        public byte GetSequence(ElementId questId) => controller._questFunctions.GetQuestProgressInfo(questId)?.Sequence ?? 0;
         public QuestReference GetCurrentQuest(bool allowNewMsq) => controller._questFunctions.GetCurrentQuest(allowNewMsq);
     }
 

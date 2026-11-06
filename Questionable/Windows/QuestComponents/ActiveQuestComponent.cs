@@ -577,7 +577,7 @@ internal sealed partial class ActiveQuestComponent
 
     private QuestProgressInfo? DrawQuestWork(QuestController.QuestProgress currentQuest, bool isMinimized)
     {
-        QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(currentQuest.Quest.Id);
+        QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(currentQuest.Quest.Id);
 
         if (questWork != null)
         {

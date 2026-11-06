@@ -186,7 +186,7 @@ internal static class Craft
                 return false;
             }
 
-            if (!hasItemTarget && QuestFunctions.GetQuestProgressInfo(Task.Quest.Id) == null)
+            if (!hasItemTarget && questFunctions.GetQuestProgressInfo(Task.Quest.Id) == null)
                 throw new TaskException("Quest state is unavailable; cannot verify this Artisan list's objective");
 
             if (listTargets != null)
@@ -207,7 +207,7 @@ internal static class Craft
 
             RecipeLookup recipeLookup = dataManager.GetExcelSheet<RecipeLookup>().GetRowOrDefault(Task.ItemId!.Value) ??
                                          throw new TaskException($"Item {Task.ItemId} is not craftable");
-            QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest.Id);
+            QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Task.Quest.Id);
             PlayerState* playerState = PlayerState.Instance();
             if (playerState == null)
                 throw new TaskException("Player state is unavailable; cannot select a crafting job");
@@ -321,7 +321,7 @@ internal static class Craft
                 return AreItemsSatisfied(_itemTargets, GetOwnedItemCount);
             if (!_requireObjective)
                 return false;
-            QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(Task.Quest.Id);
+            QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Task.Quest.Id);
             return IsQuestObjectiveMet(Task, questFunctions.IsQuestComplete(Task.Quest.Id), questWork);
         }
 

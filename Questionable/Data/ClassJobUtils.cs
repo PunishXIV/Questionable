@@ -188,7 +188,7 @@ internal sealed class ClassJobUtils
     {
         ArgumentNullException.ThrowIfNull(elementId);
 
-        if (elementId is QuestId questId && QuestFunctions.IsQuestAccepted(questId))
+        if (elementId is QuestId questId && QuestManager.Instance()->IsQuestAccepted(questId.Value))
         {
             QuestWork* questWork = QuestManager.Instance()->GetQuestById(questId.Value);
             if (questWork->AcceptClassJob != 0)

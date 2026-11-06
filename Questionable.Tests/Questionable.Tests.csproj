@@ -56,6 +56,14 @@
         </Reference>
     </ItemGroup>
 
+    <!-- Quest state fakes build QuestProgressInfo from a QuestWork. -->
+    <ItemGroup>
+        <Reference Include="FFXIVClientStructs">
+            <HintPath>$(DalamudLibPath)/FFXIVClientStructs.dll</HintPath>
+            <Private>true</Private>
+        </Reference>
+    </ItemGroup>
+
     <PropertyGroup>
         <AssemblySearchPaths>$(AssemblySearchPaths);$(DalamudLibPath)</AssemblySearchPaths>
     </PropertyGroup>

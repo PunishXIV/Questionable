@@ -204,7 +204,8 @@ internal static class Combat
 
     internal sealed class HandleCombat
     (
-        CombatController combatController) : TaskExecutor<Task>
+        CombatController combatController,
+        IQuestGameState gameState) : TaskExecutor<Task>
     {
         private CombatController.EStatus _status = CombatController.EStatus.NotStarted;
 
@@ -219,7 +220,7 @@ internal static class Combat
             if (QuestWorkUtils.HasCompletionFlags(Task.CompletionQuestVariableFlags) &&
                 Task.CombatData.ElementId is QuestId questId)
             {
-                QuestProgressInfo? questWork = QuestFunctions.GetQuestProgressInfo(questId);
+                QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(questId);
                 if (questWork == null)
                     return ETaskResult.StillRunning;
 

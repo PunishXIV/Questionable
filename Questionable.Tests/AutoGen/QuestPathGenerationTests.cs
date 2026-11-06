@@ -32,7 +32,7 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture)
     public void Quest481_UsesTheLiceCombRatherThanTalkingToSheep()
     {
         // The script never declares IsEventItemUsable; only the journal's "Use the lice comb on the shaggy
-        // sheep" says so, which is what the todo-text fallback exists for.
+        // sheep" says so, which is what the to-do text fallback exists for.
         QuestRoot root = Generate(481);
 
         QuestSequence sequence = SequenceOf(root, 2);
@@ -89,7 +89,7 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture)
     public void Quest1919_KeepsFightingUntilTheKeyDrops()
     {
         // Without a drop condition the fight ends after a single kill. How many are needed comes from the
-        // event item's stack size, not the todo quantity.
+        // event item's stack size, not the to-do quantity.
         QuestRoot root = Generate(1919);
 
         QuestStep fight = Assert.Single(SequenceOf(root, 1).Steps);
@@ -109,7 +109,7 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture)
     [GameDataFact]
     public void Quest1741_VisitsEveryNpcOfAMultiTargetSequence()
     {
-        // "Speak with all three": the todo entries are bare map ranges, so each actor has to be matched to an
+        // "Speak with all three": the to-do entries are bare map ranges, so each actor has to be matched to an
         // area by position. Taking only the first actor leaves the path stuck on an NPC already spoken to.
         QuestRoot root = Generate(1741);
 

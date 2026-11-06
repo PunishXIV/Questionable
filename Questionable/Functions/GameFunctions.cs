@@ -46,7 +46,7 @@ internal sealed unsafe partial class GameFunctions
         if (Configuration.Instance().Advanced.NeverFly)
             return false;
 
-        if (QuestFunctions.IsQuestAccepted(new(3304)) && Svc.Condition[ConditionFlag.Mounted])
+        if (QuestManager.Instance()->IsQuestAccepted(3304) && Svc.Condition[ConditionFlag.Mounted])
         {
             // special quest amaro, not the normal one
             // TODO Check if this also applies to beast tribe mounts
