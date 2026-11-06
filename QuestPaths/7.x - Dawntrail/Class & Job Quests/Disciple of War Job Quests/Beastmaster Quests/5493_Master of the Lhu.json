@@ -1,0 +1,227 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "alydev",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": {
+            "X": 119.923,
+            "Y": -7.00342,
+            "Z": -87.4736
+          },
+          "TerritoryId": 148,
+          "InteractionType": "AcceptQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: issuer 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "Comment": "Assign Opo-opo to First Battlehorn, and Flying trap to Second Battlehorn\nSummon Opo-opo, enter combat with target dummy, use Tempered Release\nRepeat for Flying trap",
+          "DataId": 1059323,
+          "Position": {
+            "X": 107.636,
+            "Y": 20.557869,
+            "Z": -75.573
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            19456
+          ],
+          "$": "auto: lua overworld enemies -> 19456"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": {
+            "X": 119.923,
+            "Y": -7.00342,
+            "Z": -87.4736
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": {
+            "X": 119.923,
+            "Y": -7.00342,
+            "Z": -87.4736
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 4,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": {
+            "X": 107.636,
+            "Y": 20.557869,
+            "Z": -75.573
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "EnemySpawnType": "OverworldEnemies",
+          "KillEnemyDataIds": [
+            19456
+          ],
+          "$": "auto: lua overworld enemies -> 19456"
+        }
+      ]
+    },
+    {
+      "Sequence": 5,
+      "Steps": [
+        {
+          "DataId": 1059323,
+          "Position": {
+            "X": 119.923,
+            "Y": -7.00342,
+            "Z": -87.4736
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 6,
+      "Steps": [
+        {
+          "DataId": 5000000,
+          "Position": {
+            "X": -163.504,
+            "Y": 0.993473,
+            "Z": -19.7391
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: todo location -> 5000000"
+        },
+        {
+          "Position": {
+            "X": -163.504,
+            "Y": 0.3189,
+            "Z": -19.7391
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Combat",
+          "EnemySpawnType": "AutoOnEnterArea",
+          "KillEnemyDataIds": [
+            20059
+          ],
+          "$": "auto: lua enemies spawn here -> 20059"
+        }
+      ]
+    },
+    {
+      "Sequence": 7,
+      "Steps": [
+        {
+          "DataId": 1059329,
+          "Position": {
+            "X": -161.059,
+            "Y": 0.901358,
+            "Z": -29.1296
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: todo location -> 1059329 (Lauda)"
+        }
+      ]
+    },
+    {
+      "Sequence": 8,
+      "Steps": [
+        {
+          "DataId": 1059333,
+          "Position": {
+            "X": -160.874,
+            "Y": 0.922115,
+            "Z": -29.4097
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: todo location -> 1059333 (Lauda)"
+        }
+      ]
+    },
+    {
+      "Sequence": 9,
+      "Steps": [
+        {
+          "DataId": 1059325,
+          "Position": {
+            "X": 72.2791,
+            "Y": -6.47596,
+            "Z": -117.274
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: todo location -> 1059325 (J'yhuh Tia)"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1059325,
+          "Position": {
+            "X": 72.2791,
+            "Y": -6.47596,
+            "Z": -117.274
+          },
+          "TerritoryId": 148,
+          "InteractionType": "CompleteQuest",
+          "Fly": true,
+          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
+          "$": "auto: todo turn-in -> 1059325 (J'yhuh Tia)"
+        }
+      ]
+    }
+  ]
+}
