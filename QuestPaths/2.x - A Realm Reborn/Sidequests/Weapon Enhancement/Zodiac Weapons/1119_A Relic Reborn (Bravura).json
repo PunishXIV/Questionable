@@ -111,7 +111,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 74,
-            "Enabled": false
+            "Enabled": true
           },
           "Comment": "Queue for A Relic Reborn: The Chimera"
         }
@@ -386,7 +386,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 75,
-            "Enabled": false
+            "Enabled": true
           },
           "Comment": "Queue for A Relic Reborn: The Hydra"
         }
@@ -438,7 +438,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 59,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
@@ -451,7 +451,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 61,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]
@@ -464,7 +464,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 60,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]

@@ -3,7 +3,6 @@ using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
-using Dalamud.Utility;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Common;
 using Questionable.Model.Questing;
@@ -99,13 +98,6 @@ internal sealed class DutyConfigComponent : ConfigComponent
             ImGui.Text(
                 _L("Questionable includes a default list of duties that work if AutoDuty and BossMod are installed."));
 
-            ImGui.Text(
-                _L("The included list of duties can change with each update, and is based on the following spreadsheet:"));
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.GlobeEurope, _L("Open AutoDuty spreadsheet")))
-            {
-                Util.OpenLink(
-                    "https://docs.google.com/spreadsheets/d/151RlpqRcCpiD_VbQn6Duf-u-S71EP7d0mx3j1PDNoNA/edit?pli=1#gid=0");
-            }
 
             ImGui.Separator();
             ImGui.Text(_L("You can override the settings for each individual dungeon/trial:"));

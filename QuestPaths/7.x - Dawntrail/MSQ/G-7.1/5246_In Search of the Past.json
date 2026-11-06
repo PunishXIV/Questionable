@@ -125,11 +125,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 1008,
-            "Enabled": true,
-            "Notes": [
-              "(boss 2) Requires vbm's auto-turn gaze option",
-              "(boss 3) Dashes (such as on SMN) will dash into the hole"
-            ]
+            "Enabled": true
           }
         }
       ]

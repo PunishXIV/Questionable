@@ -117,11 +117,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 242,
-            "Enabled": true,
-            "Notes": [
-              "(before boss 2) AD doesn't attack magitek pods, but waits for enemies to spawn from them (even though it has explicit waypoints)",
-              "(boss 2) VBM moves out of the towers before their mechanic is resolved, sometimes killing the NPC healer"
-            ]
+            "Enabled": true
           }
         }
       ]

@@ -32,7 +32,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 65,
-            "Enabled": false
+            "Enabled": true
           },
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
@@ -41,7 +41,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 64,
-            "Enabled": false
+            "Enabled": true
           },
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
@@ -50,7 +50,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 63,
-            "Enabled": false
+            "Enabled": true
           },
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }

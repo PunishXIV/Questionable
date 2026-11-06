@@ -28,7 +28,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 113,
-            "Enabled": false
+            "Enabled": true
           }
         }
       ]

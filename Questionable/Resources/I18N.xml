@@ -2000,24 +2000,6 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
-    <Key>The included list of duties can change with each update, and is based on the following spreadsheet:</Key>
-    <Value lang="en">The included list of duties can change with each update, and is based on the following spreadsheet:</Value>
-    <Value lang="ja-jp">含まれるコンテンツリストはアップデートごとに変更される場合があり、以下のスプレッドシートに基づいています：</Value>
-    <Value lang="zh-cn">所包含的副本列表可能随每次更新而变动，基于以下表格：</Value>
-    <Value lang="zh-tw">所包含的副本列表可能隨每次更新而變動，基於以下表格：</Value>
-    <!--<Value lang="ko">포함된 임무 목록은 업데이트마다 변경될 수 있으며, 다음 스프레드시트를 기반으로 합니다:</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
-    <Key>Open AutoDuty spreadsheet</Key>
-    <Value lang="en">Open AutoDuty spreadsheet</Value>
-    <Value lang="ja-jp">AutoDutyスプレッドシートを開く</Value>
-    <Value lang="zh-cn">打开 AutoDuty 电子表格</Value>
-    <Value lang="zh-tw">開啟 AutoDuty 電子表格</Value>
-    <!--<Value lang="ko">AutoDuty 스프레드시트 열기</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <Key>You can override the settings for each individual dungeon/trial:</Key>
     <Value lang="en">You can override the settings for each individual dungeon/trial:</Value>
     <Value lang="ja-jp">各ダンジョン/討滅戦の設定を個別に上書きできます：</Value>

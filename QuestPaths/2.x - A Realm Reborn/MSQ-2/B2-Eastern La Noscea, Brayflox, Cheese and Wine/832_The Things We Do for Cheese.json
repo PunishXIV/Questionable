@@ -108,10 +108,7 @@
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 8,
-            "Enabled": true,
-            "Notes": [
-              "(boss 2) Will walk out of the boss arena to try and attack optional enemies on the upper level, thus resetting the boss and breaking the path"
-            ]
+            "Enabled": true
           }
         }
       ]

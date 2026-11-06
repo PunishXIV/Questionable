@@ -75,7 +75,7 @@
           "Comment": "Variant dungeon unsupported:\nLacking boss modules for path 1 bosses",
           "DutyOptions": {
             "ContentFinderConditionId": 868,
-            "Enabled": false,
+            "Enabled": true,
             "Notes": [
               "Lacking boss modules for path 1 bosses"
             ]
