@@ -253,6 +253,11 @@ internal sealed class QuestData
 
         _quests = quests.ToDictionary(x => x.QuestId, x => x);
 
+        // SMN quests need normal trials complete for each egi
+        AddPreviousQuest(new(1091), new(343)); // ifrit
+        AddPreviousQuest(new(1092), new(857)); // titan
+        AddPreviousQuest(new(1095), new(519)); // garuda
+
         AddPreviousQuest(new(5008), new(4933));
         AddPreviousQuest(new(5012), new(4959));
         // workaround because the game doesn't require completion of the CT questline through normal means
