@@ -46,13 +46,7 @@
           "InteractionType": "SinglePlayerDuty",
           "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
           "Fly": true,
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.0.1",
-            "Notes": [
-              "Sometimes the movement is the cause of a duty failing."
-            ]
-          }
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },

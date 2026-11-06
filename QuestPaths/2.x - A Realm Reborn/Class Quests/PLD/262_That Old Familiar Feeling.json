@@ -236,11 +236,7 @@
           },
           "TerritoryId": 130,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "Notes": ["Should ignore lv20 Nameless Attacker, but doesn't, takes a while"],
-            "TestedBossModVersion": "0.4.21.1"
-          },
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "AethernetShortcut": [
             "[Ul'dah] Gladiators' Guild",
             "[Ul'dah] Adventurers' Guild"

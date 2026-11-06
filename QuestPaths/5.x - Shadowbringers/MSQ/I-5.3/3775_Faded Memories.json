@@ -67,14 +67,7 @@
           },
           "TerritoryId": 918,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292",
-            "Notes": [
-              "(phase 2) AI doesn't target Ardbert to start combat",
-              "(phase 2) VBM module: Elidibus' line cleave only covers half the length of the actual line (survivable)"
-            ]
-          },
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "Comment": "Fight NPCs, then Elidibus",
           "DialogueChoices": [
             {

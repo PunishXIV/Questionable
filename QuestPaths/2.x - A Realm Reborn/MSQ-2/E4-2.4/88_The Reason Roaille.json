@@ -62,14 +62,7 @@
           },
           "TerritoryId": 147,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292",
-            "Notes": [
-              "Will target Eline first (other NPCs later), and move to some -other- group of NPCs; only re-targets once they're at 1 HP (for Eline) or die",
-              "If the target isn't in melee range but other NPCs are, whether any AOEs are used for nearby enemies seems random"
-            ]
-          },
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "Fly": true,
           "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
         }

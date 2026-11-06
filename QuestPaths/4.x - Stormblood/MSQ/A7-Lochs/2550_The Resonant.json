@@ -139,13 +139,7 @@
           },
           "TerritoryId": 621,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.0.1",
-            "Notes": [
-              "(Fordola) Gets hit by AOEs due to moving into them before the mechanic resolves"
-            ]
-          }
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },

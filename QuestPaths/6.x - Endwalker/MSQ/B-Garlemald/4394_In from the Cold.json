@@ -60,15 +60,7 @@
           },
           "TerritoryId": 958,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "Notes": [
-              "Instance probably only works on very easy difficulty",
-              "AI doesn't move to first enemy",
-              "AI doesn't unmount from the Magitek Reaper",
-              "Navmesh takes 5+ minutes to build"
-            ]
-          },
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "DialogueChoices": [
             {
               "Type": "YesNo",

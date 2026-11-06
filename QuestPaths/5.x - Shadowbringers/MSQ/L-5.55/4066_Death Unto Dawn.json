@@ -63,15 +63,7 @@
           "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.0.0.293",
-            "Notes": [
-              "(Lunar Odin) AI doesn't pull Odin to start combat",
-              "(Lunar Ravana) AI doesn't pull Ravana to start combat",
-              "(Lunar Ravana) AI doesn't move out of directional parry directions"
-            ]
-          },
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "Comment": "Death Unto Dawn"
         }
       ]

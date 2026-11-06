@@ -74,13 +74,7 @@
           "StopDistance": 7,
           "TerritoryId": 621,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.0.1",
-            "Notes": [
-              "Navigation gets stuck in various places"
-            ]
-          },
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "AetheryteShortcut": "Lochs - Porta Praetoria"
         }
       ]

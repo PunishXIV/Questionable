@@ -45,13 +45,7 @@
           },
           "TerritoryId": 816,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.0.1",
-            "Notes": [
-              "AI doesn't pull enemies when spawning into the instance"
-            ]
-          },
+          "SinglePlayerDutyOptions": {"Enabled": true},
           "Fly": true
         }
       ]

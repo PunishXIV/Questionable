@@ -30,14 +30,7 @@
           },
           "TerritoryId": 155,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "7.5.6.5",
-            "Notes": [
-              "AI doesn't move after starting the instance, so enemies won't be triggered",
-              "(First Barrier) If the player is too far south, after being stunned by Vishap's roar, AI doesn't move out of the AOE and dies to the Cauterize"
-            ]
-          }
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },

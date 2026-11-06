@@ -71,13 +71,7 @@
           },
           "TerritoryId": 402,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "Notes": [
-              "failed to pull all mob packs, ran into wall before Colossus miniboss until pointed at missed pack",
-              "doesn't pull end boss"
-            ]
-          }
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },

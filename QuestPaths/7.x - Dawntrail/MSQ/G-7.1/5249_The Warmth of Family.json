@@ -30,16 +30,7 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {
-            "Enabled": true,
-            "TestedBossModVersion": "0.1.0.0",
-            "Notes": [
-              "(pre-fight) AI doesn't move to the Rroneeks or interact with them",
-              "(phase 1/2) No VBM module, so doesn't target the leg, doesn't avoid AOEs and dies",
-              "(phase 1) AI doesn't pull boss",
-              "(phase 2) AI runs away with the stack marker; doesn't pick up orbs"
-            ]
-          }
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
