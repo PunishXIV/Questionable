@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "liza",
-  "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
+  "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -145,7 +145,7 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Comment": "Gear upgrades to ilvl 385 can be purchased from Local Merchant at Stilltide",
+          "Comment": "Gear upgrades to ilvl 385 can be purchased from the Merchant at Fort Jobb",
           "TerritoryId": 813,
           "InteractionType": "Duty",
           "DutyOptions": {

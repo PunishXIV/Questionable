@@ -10,7 +10,8 @@
         {
           "TerritoryId": 129,
           "InteractionType": "UnequipItem",
-          "ItemId": 4550
+          "ItemId": 4550,
+          "AetheryteShortcut": "Limsa Lominsa"
         },
         {
           "DataId": 1000909,
