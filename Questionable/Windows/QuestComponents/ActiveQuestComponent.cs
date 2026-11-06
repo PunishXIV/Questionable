@@ -175,6 +175,8 @@ internal sealed partial class ActiveQuestComponent
         {
             if (pathDataUpdater.Status != _L("Idle") && (DateTime.Now - pathDataUpdater.StatusLastChanged).TotalSeconds < 30)
                 ImGui.Text(pathDataUpdater.Status);
+            else if (questFunctions.GetLevelLockedMainScenarioQuest() is var (lockedMsq, _))
+                ImGui.TextColored(QstTheme.Amber, _LF("Next MSQ '{0}' needs level {1}", lockedMsq.Name, lockedMsq.Level));
             else
                 ImGui.Text(_L("No supported quests"));
             DrawPriorityCrystal();
@@ -244,6 +246,14 @@ internal sealed partial class ActiveQuestComponent
 
             ImGui.SameLine();
             quickAccessButtonsComponent.DrawTroubleshootingButton(showLabel: true, highlighted: true);
+
+            if (isMinimized)
+            {
+                ImGui.SameLine();
+                quickAccessButtonsComponent.DrawPriorityQuestsButton();
+                ImGui.SameLine();
+                quickAccessButtonsComponent.DrawJournalProgressButton();
+            }
         }
 
         if (configuration.Advanced.Debug)
@@ -701,7 +711,13 @@ internal sealed partial class ActiveQuestComponent
         quickAccessButtonsComponent.DrawTroubleshootingButton(showLabel: true);
 
         if (isMinimized)
+        {
             quickAccessButtonsComponent.DrawReloadDataButton();
+            ImGui.SameLine();
+            quickAccessButtonsComponent.DrawPriorityQuestsButton();
+            ImGui.SameLine();
+            quickAccessButtonsComponent.DrawJournalProgressButton();
+        }
         else
         {
             bool lastStep = currentStep ==

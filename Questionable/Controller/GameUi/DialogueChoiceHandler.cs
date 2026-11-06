@@ -469,9 +469,12 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                 if (DialogueReferenceResolver.IsMatch(answers[i], excelAnswer))
                 {
                     string notif = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} '{answers[i]}'";
-                    if (_configuration.General.DontSkipCutscenes && !_configuration.General.DontShowAnswerSuggestions)
-                        _toastGui.ShowQuest(notif);
-                    _chatGui.Print(notif, CommandHandler.MessageTag, CommandHandler.TagColor);
+                    if (!_configuration.General.DontShowAnswerSuggestions)
+                    {
+                        if (_configuration.General.DontSkipCutscenes)
+                            _toastGui.ShowQuest(notif);
+                        _chatGui.Print(notif, CommandHandler.MessageTag, CommandHandler.TagColor);
+                    }
                     _logger.LogInformation("Returning {Index}: '{Answer}' for '{Prompt}'",
                         i, answers[i], actualPrompt);
 

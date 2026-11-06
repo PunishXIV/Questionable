@@ -49,6 +49,25 @@ internal sealed record DomanEnclavePrerequisite(byte Milestone) : QuestPrerequis
         state.DomanEnclaveMilestone >= Milestone ? null : _L("Needs Doman Enclave progress");
 }
 
+internal static class PreviousQuestReason
+{
+    private const int ShownNames = 2;
+
+    public static string Format(bool anyOf, IReadOnlyList<string> missingNames)
+    {
+        if (missingNames.Count == 0)
+            return _L("Prev quest");
+
+        string names = string.Join(", ", missingNames.Take(ShownNames));
+        int hidden = missingNames.Count - ShownNames;
+        if (anyOf)
+            return hidden > 0 ? _LF("Needs one of: {0} (+{1})", names, hidden) : _LF("Needs one of: {0}", names);
+        if (hidden > 0)
+            return _LF("Needs quests: {0} (+{1})", names, hidden);
+        return missingNames.Count == 1 ? _LF("Needs quest: {0}", names) : _LF("Needs quests: {0}", names);
+    }
+}
+
 internal interface IPrerequisiteState
 {
     byte ChocoboRacingRank { get; }

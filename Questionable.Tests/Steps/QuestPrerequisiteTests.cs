@@ -85,6 +85,16 @@ public sealed class QuestPrerequisiteTests
         Assert.Equal(met ? null : "Needs Doman Enclave progress", reason);
     }
 
+    [Fact]
+    public void PreviousQuestReasonNamesTheMissingQuests()
+    {
+        Assert.Equal("Needs quest: Wise Guides", PreviousQuestReason.Format(anyOf: false, ["Wise Guides"]));
+        Assert.Equal("Needs quests: A, B", PreviousQuestReason.Format(anyOf: false, ["A", "B"]));
+        Assert.Equal("Needs quests: A, B (+2)", PreviousQuestReason.Format(anyOf: false, ["A", "B", "C", "D"]));
+        Assert.Equal("Needs one of: A, B", PreviousQuestReason.Format(anyOf: true, ["A", "B"]));
+        Assert.Equal("Needs one of: A, B (+1)", PreviousQuestReason.Format(anyOf: true, ["A", "B", "C"]));
+    }
+
     private sealed class FakeState : IPrerequisiteState
     {
         public HashSet<int> Achievements { get; } = [];

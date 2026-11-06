@@ -74,6 +74,7 @@ internal static class Duty
         private readonly Configuration _configuration;
         private readonly Func<short?> _itemLevel;
         private readonly Action<string> _notify;
+        private readonly Func<short?> _playerLevel;
         private Guid? _owner;
 
         public StartAutoDutyExecutor(GearStatsCalculator gearStatsCalculator, AutoDutyIpc autoDutyIpc,
@@ -84,19 +85,20 @@ internal static class Duty
                 {
                     if (!sendNotificationExecutor.Start(new SendNotification.Task(EInteractionType.Duty, text)))
                         chatGui.PrintError(text, CommandHandler.MessageTag, CommandHandler.TagColor);
-                })
+                }, GetPlayerLevel)
         {
         }
 
         internal StartAutoDutyExecutor(AutoDutyIpc autoDutyIpc,
             Func<uint, TerritoryData.ContentFinderConditionData?> findContent, Configuration configuration,
-            Func<short?> itemLevel, Action<string> notify)
+            Func<short?> itemLevel, Action<string> notify, Func<short?>? playerLevel = null)
         {
             _autoDutyIpc = autoDutyIpc;
             _findContent = findContent;
             _configuration = configuration;
             _itemLevel = itemLevel;
             _notify = notify;
+            _playerLevel = playerLevel ?? (() => null);
         }
 
         public override ETaskResult Update()
@@ -130,6 +132,15 @@ internal static class Duty
             var cfcData = _findContent(Task.ContentFinderConditionId) ??
                 throw new TaskException("Failed to get territory ID for content finder condition");
 
+            // Otherwise AutoDuty keeps queueing and the duty finder keeps refusing.
+            if (_playerLevel() is { } playerLevel && playerLevel > 0 && cfcData.RequiredLevel > playerLevel)
+            {
+                string errorText = _LF("Stopped: '{0}' needs level {1} (you're level {2}).",
+                    cfcData.Name, cfcData.RequiredLevel, playerLevel);
+                _notify(errorText);
+                throw new TaskException(errorText);
+            }
+
             AutoDutyIpc.DutyMode dutyMode = Task.DutyMode;
             short currentItemLevel = _itemLevel() ?? throw new TaskException("Equipped items unavailable");
             if (cfcData.RequiredItemLevel > currentItemLevel)
@@ -159,6 +170,12 @@ internal static class Duty
                     _owner = _autoDutyIpc.Operation.OperationId;
             }
             return true;
+        }
+
+        private static unsafe short? GetPlayerLevel()
+        {
+            PlayerState* playerState = PlayerState.Instance();
+            return playerState == null ? null : playerState->CurrentLevel;
         }
 
         private static unsafe short? GetItemLevel(GearStatsCalculator gearStatsCalculator)

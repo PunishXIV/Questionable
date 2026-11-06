@@ -308,6 +308,21 @@ internal sealed unsafe class QuestFunctions
         return (new(currentQuest, QuestManager.GetQuestSequence(currentQuest.Value), MainScenarioQuestState.Available), $"sq: {currentQuest}");
     }
 
+    public (IQuestInfo Quest, short PlayerLevel)? GetLevelLockedMainScenarioQuest()
+    {
+        (QuestReference source, string? _) = ReadMainScenarioQuest(out bool newGamePlus);
+        if (newGamePlus || source.State != MainScenarioQuestState.Available ||
+            source.CurrentQuest is not QuestId { Value: not 0 } questId ||
+            !questRegistry.TryGetQuest(questId, out Quest? quest) || IsQuestAcceptedOrComplete(questId))
+            return null;
+
+        short playerLevel = PlayerState.Instance()->CurrentLevel;
+        if (playerLevel == 0 || quest.Info.Level <= playerLevel || !IsReadyToAcceptQuest(questId, ignoreLevel: true))
+            return null;
+
+        return (quest.Info, playerLevel);
+    }
+
     public (QuestReference, string?) GetMainScenarioQuest()
     {
         (QuestReference source, string? extraData) = ReadMainScenarioQuest(out bool newGamePlus);
@@ -371,10 +386,13 @@ internal sealed unsafe class QuestFunctions
         if (IsQuestComplete(currentQuest))
             return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _LF("Quest {0} complete", currentQuest.Value));
 
-        if (!IsReadyToAcceptQuest(currentQuest))
+        if (!IsReadyToAcceptQuest(currentQuest, ignoreLevel: true))
             return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _LF("Not ready to accept quest {0}", currentQuest.Value));
 
         short currentLevel = PlayerState.Instance()->CurrentLevel;
+        if (currentLevel != 0 && questRegistry.TryGetQuest(currentQuest, out Quest? levelQuest) &&
+            levelQuest.Info.Level > currentLevel)
+            return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _L("Low level"));
 
         if (objectTable[0] == null)
             return (QuestReference.NoQuest(MainScenarioQuestState.LoadingScreen), _L("In loading screen"));
@@ -833,8 +851,12 @@ internal sealed unsafe class QuestFunctions
                 lockedReason.Add(_L("Retainers"));
         }
 
-        if (!HasCompletedPreviousQuests(questInfo, extraCompletedQuest, out int prevQuestCount))
-            lockedReason.Add(_L("Prev quest") + $" ({prevQuestCount + 1})");
+        if (!HasCompletedPreviousQuests(questInfo, extraCompletedQuest))
+            lockedReason.Add(PreviousQuestReason.Format(questInfo.PreviousQuestJoin == EQuestJoin.AtLeastOne,
+                questInfo.PreviousQuests
+                    .Where(x => !HasEnoughProgressOnPreviousQuest(x) && !x.QuestId.Equals(extraCompletedQuest))
+                    .Select(x => questData.TryGetQuestInfo(x.QuestId, out IQuestInfo? info) ? info.Name : x.QuestId.ToString())
+                    .ToList()));
         if (!HasCompletedPreviousInstances(questInfo))
             lockedReason.Add(_L("Prev instance"));
 
@@ -900,7 +922,7 @@ internal sealed unsafe class QuestFunctions
     private bool IsQuestLocked(SatisfactionSupplyNpcId satisfactionSupplyNpcId)
     {
         SatisfactionSupplyInfo questInfo = (SatisfactionSupplyInfo)questData.GetQuestInfo(satisfactionSupplyNpcId);
-        return !HasCompletedPreviousQuests(questInfo, extraCompletedQuest: null, out var _);
+        return !HasCompletedPreviousQuests(questInfo, extraCompletedQuest: null);
     }
 
     private bool IsQuestLocked(AlliedSocietyDailyId alliedSocietyDailyId)
@@ -1047,13 +1069,12 @@ internal sealed unsafe class QuestFunctions
 
     private static bool IsQuestRemoved(QuestId questId) => questId.Value is 487 or 1428 or 1429;
 
-    private bool HasCompletedPreviousQuests(IQuestInfo questInfo, ElementId? extraCompletedQuest, out int count)
+    private bool HasCompletedPreviousQuests(IQuestInfo questInfo, ElementId? extraCompletedQuest)
     {
-        count = questInfo.PreviousQuests.Count;
-        if (count == 0)
+        if (questInfo.PreviousQuests.Count == 0)
             return true;
 
-        count = questInfo.PreviousQuests.Count(x =>
+        int count = questInfo.PreviousQuests.Count(x =>
             HasEnoughProgressOnPreviousQuest(x) || x.QuestId.Equals(extraCompletedQuest));
         if (questInfo.PreviousQuestJoin == EQuestJoin.All &&
             questInfo.PreviousQuests.Count == count)

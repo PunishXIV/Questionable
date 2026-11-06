@@ -551,6 +551,15 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             if (questToRun == null)
             {
                 DebugState = "No quest active";
+                if (AutomationType != EAutomationType.Manual &&
+                    _questFunctions.GetLevelLockedMainScenarioQuest() is var (lockedMsq, playerLevel))
+                {
+                    _logger.LogInformation("Stopping automation, next MSQ {QuestId} needs level {QuestLevel} (player level {PlayerLevel})",
+                        lockedMsq.QuestId, lockedMsq.Level, playerLevel);
+                    _chatGui.Print(_LF("Stopped: '{0}' needs level {1} (you're level {2}).",
+                        lockedMsq.Name, lockedMsq.Level, playerLevel), CommandHandler.MessageTag, CommandHandler.TagColor);
+                }
+
                 Stop("No quest active");
                 return;
             }

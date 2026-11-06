@@ -105,6 +105,31 @@ public sealed class DutyTests
         f.Run.DidNotReceiveWithAnyArgs().InvokeAction(default, default, default);
     }
 
+    [Theory]
+    [InlineData(88, true)]
+    [InlineData(89, false)]
+    public void Executor_BelowTheDutyLevelStopsInsteadOfQueueing(int playerLevel, bool blocked)
+    {
+        using var f = new AutoDutyFixture();
+        string? notification = null;
+        var executor = new Duty.StartAutoDutyExecutor(f.Ipc, _ => AutoDutyFixture.Content with { RequiredLevel = 89 },
+            f.Configuration, () => 1000, text => notification = text, () => (short)playerLevel);
+
+        if (blocked)
+        {
+            Assert.Throws<TaskException>(() => executor.Start(Task()));
+            Assert.Equal("Stopped: 'Test duty' needs level 89 (you're level 88).", notification);
+            Assert.False(f.State.HasOperation);
+            f.Run.DidNotReceiveWithAnyArgs().InvokeAction(default, default, default);
+        }
+        else
+        {
+            executor.Start(Task());
+            Assert.Null(notification);
+            Assert.True(f.State.HasOperation);
+        }
+    }
+
     [Fact]
     public void Executor_RechecksConfigurationAtStart()
     {
