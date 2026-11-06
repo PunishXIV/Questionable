@@ -70,7 +70,7 @@ internal sealed class NotificationConfigComponent
                     Save();
                 }
                 bool notifyOnCriticalFailure = Configuration.Notifications.NotifyOnCriticalFailure;
-                if (ImGui.Checkbox(_L("Notify when QST is unable to continue automatic questing"), ref notifyOnCriticalFailure))
+                if (ImGui.Checkbox(_L("Notify when Questionable is unable to continue automatic questing"), ref notifyOnCriticalFailure))
                 {
                     Configuration.Notifications.NotifyOnCriticalFailure = notifyOnCriticalFailure;
                     Save();

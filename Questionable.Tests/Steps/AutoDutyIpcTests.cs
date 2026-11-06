@@ -139,11 +139,202 @@ public sealed class AutoDutyIpcTests
         using var f = new AutoDutyFixture();
         f.Start();
 
-        Assert.Equal(["profile on", $"set {AutoDutyFixture.UnsyncedKey}", $"set {AutoDutyFixture.ModeKey}", "run"], f.Calls);
+        Assert.Equal("profile on", f.Calls[0]);
+        Assert.Equal([$"set {AutoDutyFixture.UnsyncedKey}", $"set {AutoDutyFixture.ModeKey}"], f.Calls.Skip(1).Take(2));
+        Assert.All(f.Calls.Skip(1).SkipLast(1), call => Assert.StartsWith("set ", call, StringComparison.Ordinal));
+        Assert.Equal("run", f.Calls[^1]);
         Assert.Equal("Support", f.ProfileSettings![AutoDutyFixture.ModeKey]);
         Assert.Equal("False", f.ProfileSettings[AutoDutyFixture.UnsyncedKey]);
         Assert.Equal("Trust", f.Settings[AutoDutyFixture.ModeKey]);
         Assert.Equal("True", f.Settings[AutoDutyFixture.UnsyncedKey]);
+    }
+
+    [Fact]
+    public void RiskyCopiedUserSettings_AreForcedForQuestRuns_AndUserProfileIsUntouched()
+    {
+        using var f = new AutoDutyFixture();
+        var risky = new Dictionary<string, string>
+        {
+            ["Loop.Termination.TerminationMethodEnum"] = "Kill_PC",
+            ["DutyConfig.AutoExitDuty"] = "False",
+            [$"{AutoDutyFixture.Pre}[RetireLoopActionConfig].Enabled"] = "True",
+            [$"{AutoDutyFixture.Pre}[ExecuteCommandsLoopActionConfig].Enabled"] = "True",
+            [$"{AutoDutyFixture.Between}[AutoRetainerMultiModeLoopActionConfig].Enabled"] = "True",
+            [$"{AutoDutyFixture.Between}[DiscardItemsLoopActionConfig].Enabled"] = "True",
+            [$"{AutoDutyFixture.Between}[DesynthLoopActionConfig].Enabled"] = "True",
+            ["DutyConfig.LootBossTreasureOnly"] = "True",
+        };
+        foreach (var (key, value) in risky)
+            f.Settings[key] = value;
+        f.Settings[$"{AutoDutyFixture.Pre}[ExtractLoopActionConfig].Enabled"] = "False";
+        f.Settings[$"{AutoDutyFixture.Pre}[ExtractLoopActionConfig].AutoExtractAll"] = "True";
+
+        f.Start();
+
+        var profile = f.ProfileSettings!;
+        Assert.Equal("False", profile["Loop.Termination.Enabled"]);
+        Assert.Equal("Do_Nothing", profile["Loop.Termination.TerminationMethodEnum"]);
+        Assert.Equal("True", profile["DutyConfig.AutoExitDuty"]);
+        Assert.Equal("True", profile["DutyConfig.OnlyExitWhenDutyDone"]);
+        Assert.Equal("False", profile[$"{AutoDutyFixture.Pre}[RetireLoopActionConfig].Enabled"]);
+        Assert.Equal("False", profile[$"{AutoDutyFixture.Pre}[ExecuteCommandsLoopActionConfig].Enabled"]);
+        Assert.Equal("False", profile["Loop.Between.Enabled"]);
+        Assert.Equal("False", profile["DutyConfig.LootBossTreasureOnly"]);
+        Assert.Equal("All", profile["DutyConfig.LootMethodEnum"]);
+        Assert.Equal("False", profile["DutyConfig.Stuck.StuckReturn"]);
+        Assert.Equal("False", profile["DutyConfig.AutoManageVnavAlignCamera"]);
+        Assert.Equal("True", profile["DutyConfig.PathDrawEnabled"]);
+        Assert.Equal("True", profile["Loop.Pre.Enabled"]);
+        Assert.Equal("True", profile[$"{AutoDutyFixture.Pre}[RepairLoopActionConfig].Enabled"]);
+        Assert.Equal("50", profile[$"{AutoDutyFixture.Pre}[RepairLoopActionConfig].AutoRepairPct"]);
+        Assert.Equal("True", profile[$"{AutoDutyFixture.Pre}[AutoEquipLoopActionConfig].Enabled"]);
+        Assert.Equal("True", profile[$"{AutoDutyFixture.Pre}[ExtractLoopActionConfig].Enabled"]);
+        Assert.Equal("False", profile[$"{AutoDutyFixture.Pre}[ExtractLoopActionConfig].AutoExtractAll"]);
+        Assert.All(AutoDutyIpc.ProfileSettings.Where(s => profile.ContainsKey(s.Key)),
+            s => Assert.Equal(s.Value, profile[s.Key], ignoreCase: true));
+        Assert.All(risky, setting => Assert.Equal(setting.Value, f.Settings[setting.Key]));
+    }
+
+    [Fact]
+    public void PersonalActionsAddedToUserLists_AreSwitchedOff_AndRepairAndGearArePinned()
+    {
+        using var f = new AutoDutyFixture();
+        string[] personalPre =
+        [
+            "CofferOpenLoopActionConfig", "ArmoireLoopActionConfig", "GlamourLoopActionConfig",
+            "GCTurnInLoopActionConfig", "ShopLoopActionConfig",
+        ];
+        foreach (string type in personalPre)
+            f.Settings[$"{AutoDutyFixture.Pre}[{type}].Enabled"] = "True";
+        f.Settings[$"{AutoDutyFixture.Pre}[ExtractLoopActionConfig].Enabled"] = "True";
+        f.Settings[$"{AutoDutyFixture.Pre}[ExtractLoopActionConfig].AutoExtractAll"] = "True";
+        f.Settings[$"{AutoDutyFixture.Between}[RepairLoopActionConfig].Enabled"] = "True";
+        f.Settings[$"{AutoDutyFixture.Pre}[AutoEquipLoopActionConfig].RecommendedGearSource"] = "Stylist";
+        f.Settings[$"{AutoDutyFixture.Pre}[RepairLoopActionConfig].AutoRepairSelf"] = "True";
+
+        f.Start();
+
+        var profile = f.ProfileSettings!;
+        Assert.All(personalPre, type => Assert.Equal("False", profile[$"{AutoDutyFixture.Pre}[{type}].Enabled"]));
+        Assert.Equal("False", profile["Loop.Between.Enabled"]);
+        Assert.Equal("Vanilla", profile[$"{AutoDutyFixture.Pre}[AutoEquipLoopActionConfig].RecommendedGearSource"]);
+        Assert.Equal("False", profile[$"{AutoDutyFixture.Pre}[RepairLoopActionConfig].AutoRepairSelf"]);
+        Assert.Equal("True", profile[$"{AutoDutyFixture.Pre}[RepairLoopActionConfig].Enabled"]);
+        Assert.Equal("True", profile[$"{AutoDutyFixture.Pre}[AutoEquipLoopActionConfig].Enabled"]);
+        Assert.Equal("True", profile[$"{AutoDutyFixture.Pre}[ExtractLoopActionConfig].Enabled"]);
+        Assert.Equal("False", profile[$"{AutoDutyFixture.Pre}[ExtractLoopActionConfig].AutoExtractAll"]);
+        Assert.All(personalPre, type => Assert.Equal("True", f.Settings[$"{AutoDutyFixture.Pre}[{type}].Enabled"]));
+        Assert.Equal("Stylist", f.Settings[$"{AutoDutyFixture.Pre}[AutoEquipLoopActionConfig].RecommendedGearSource"]);
+    }
+
+    [Fact]
+    public void EveryOtherPreLoopActionType_IsForcedOff_AndAfterRunIsOffAsAWhole()
+    {
+        string[] wanted = ["RepairLoopActionConfig", "AutoEquipLoopActionConfig", "ExtractLoopActionConfig"];
+        string[] allTypes =
+        [
+            "AutoEquip", "Repair", "AutoRetainer", "AutoRetainerMultiMode", "DiscardItems", "TripleTriadUse",
+            "TripleTriadSell", "Armoire", "Glamour", "Extract", "GCTurnIn", "Desynth", "CofferOpen", "Shop",
+            "Retire", "ConsumeItems", "ExecuteCommands", "Wait", "PlaySound",
+        ];
+        var forcedOff = AutoDutyIpc.ProfileSettings
+            .Where(s => s.Kind == AutoDutyIpc.SettingKind.ForceOff)
+            .Select(s => s.Key)
+            .ToHashSet();
+
+        foreach (string type in allTypes.Select(t => $"{t}LoopActionConfig"))
+            Assert.Equal(!wanted.Contains(type), forcedOff.Contains($"{AutoDutyFixture.Pre}[{type}].Enabled"));
+        Assert.All(forcedOff, key => Assert.StartsWith(AutoDutyFixture.Pre, key, StringComparison.Ordinal));
+        Assert.All(AutoDutyIpc.ProfileSettings.Where(s => s.Kind == AutoDutyIpc.SettingKind.ForceOff),
+            s => Assert.Equal("False", s.Value));
+        Assert.Contains(AutoDutyIpc.ProfileSettings, s => s is { Key: "Loop.Between.Enabled", Value: "False", Kind: AutoDutyIpc.SettingKind.Required });
+    }
+
+    [Fact]
+    public void RunUsesTheProfilesLoopSettings()
+    {
+        using var f = new AutoDutyFixture();
+        f.Start();
+        f.RunForPlugin.Received(1).InvokeAction(AutoDutyIpc.ProfileName, AutoDutyFixture.TerritoryId, 1, false);
+        f.RunForPlugin.DidNotReceive().InvokeAction(Arg.Any<string>(), Arg.Any<uint>(), Arg.Any<int>(), true);
+    }
+
+    [Fact]
+    public void SettingsAlreadyInPlace_AreNotWrittenAgain()
+    {
+        using var f = new AutoDutyFixture();
+        f.Start();
+        f.Enter();
+        f.RaiseCompleted();
+        f.Stopped = true;
+        f.Exit();
+        f.PollFor(3);
+        Assert.True(f.State.TryReleaseTerminal(f.State.OperationId));
+        f.Writes.Clear();
+
+        f.Start();
+
+        Assert.Empty(f.Writes);
+        f.RunForPlugin.Received(2).InvokeAction(AutoDutyIpc.ProfileName, AutoDutyFixture.TerritoryId, 1, false);
+    }
+
+    [Fact]
+    public void ReadBackInDifferentCase_CountsAsApplied()
+    {
+        using var f = new AutoDutyFixture();
+        f.Settings["DutyConfig.AutoExitDuty"] = "true";
+        f.Settings["Loop.Termination.TerminationMethodEnum"] = "do_nothing";
+
+        f.Start();
+
+        Assert.DoesNotContain(f.Writes, w => w.Key is "DutyConfig.AutoExitDuty" or "Loop.Termination.TerminationMethodEnum");
+    }
+
+    [Fact]
+    public void MissingRequiredSetting_RefusesToRunAndAsksForUpdate()
+    {
+        using var f = new AutoDutyFixture();
+        f.Settings.Remove("Loop.Termination.TerminationMethodEnum");
+
+        var e = Assert.Throws<TaskException>(f.Start);
+
+        Assert.Contains("Update AutoDuty", e.Message, StringComparison.Ordinal);
+        Assert.Contains("Loop.Termination.TerminationMethodEnum", e.Message, StringComparison.Ordinal);
+        Assert.False(f.State.RunSubmitted);
+        f.RunForPlugin.DidNotReceiveWithAnyArgs().InvokeAction(default!, default, default, default);
+        f.PollFor(3);
+        f.AssertUserProfileRestored();
+        Assert.True(f.Ipc.TryConfirmIdle());
+    }
+
+    [Theory]
+    [InlineData("Loop.Pre.Actions.[RepairLoopActionConfig]")]
+    [InlineData("Loop.Pre.Actions.[AutoEquipLoopActionConfig]")]
+    [InlineData("Loop.Pre.Actions.[ExtractLoopActionConfig]")]
+    public void WantedActionDeletedByUser_RunsWithoutIt(string action)
+    {
+        using var f = new AutoDutyFixture();
+        foreach (string key in f.Settings.Keys.Where(k => k.StartsWith(action, StringComparison.Ordinal)).ToList())
+            f.Settings.Remove(key);
+
+        f.Start();
+
+        Assert.DoesNotContain(f.Writes, w => w.Key.StartsWith(action, StringComparison.Ordinal));
+        f.RunForPlugin.Received(1).InvokeAction(AutoDutyIpc.ProfileName, AutoDutyFixture.TerritoryId, 1, false);
+    }
+
+    [Fact]
+    public void ForcedOffActionDeletedByUser_IsNotWrittenAndRuns()
+    {
+        using var f = new AutoDutyFixture();
+        const string retire = $"{AutoDutyFixture.Pre}[RetireLoopActionConfig].Enabled";
+        f.Settings.Remove(retire);
+
+        f.Start();
+
+        Assert.DoesNotContain(f.Writes, w => w.Key == retire);
+        f.GetConfig.Received(1).InvokeFunc(retire);
+        f.RunForPlugin.Received(1).InvokeAction(AutoDutyIpc.ProfileName, AutoDutyFixture.TerritoryId, 1, false);
     }
 
     [Fact]
@@ -176,7 +367,7 @@ public sealed class AutoDutyIpcTests
         Assert.Throws<TaskException>(f.Start);
         Assert.True(f.Ipc.TryConfirmIdle());
         f.Stop.DidNotReceive().InvokeAction();
-        f.RunForPlugin.Received(1).InvokeAction(AutoDutyIpc.ProfileName, AutoDutyFixture.TerritoryId, 1, true);
+        f.RunForPlugin.Received(1).InvokeAction(AutoDutyIpc.ProfileName, AutoDutyFixture.TerritoryId, 1, false);
         f.AssertUserProfileRestored();
     }
 
@@ -191,7 +382,7 @@ public sealed class AutoDutyIpcTests
         Assert.Throws<TaskException>(f.Start);
         Assert.False(f.Ipc.TryConfirmIdle());
         f.Stop.DidNotReceive().InvokeAction();
-        f.RunForPlugin.Received(1).InvokeAction(AutoDutyIpc.ProfileName, AutoDutyFixture.TerritoryId, 1, true);
+        f.RunForPlugin.Received(1).InvokeAction(AutoDutyIpc.ProfileName, AutoDutyFixture.TerritoryId, 1, false);
         f.Stopped = true;
         f.PollFor(3);
         Assert.True(f.Ipc.TryConfirmIdle());

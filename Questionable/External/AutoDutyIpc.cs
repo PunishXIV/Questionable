@@ -10,7 +10,64 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
 {
     private const string UnsyncedKey = "Meta.Unsynced";
     private const string DutyModeKey = "Meta.DutyModeEnum";
+    private const string PreAction = "Loop.Pre.Actions.";
     internal const string ProfileName = "Questionable";
+
+    internal enum SettingKind
+    {
+        Required,
+        WantOn,
+        ForceOff,
+    }
+
+    internal sealed record ProfileSetting(string Key, string Value, SettingKind Kind = SettingKind.Required);
+
+    // Every loop action type except the playlist ones, which AutoDuty runs regardless of these settings.
+    // Asking for a type the list doesn't hold logs an error in AutoDuty; it has no way to list or reset them.
+    private static readonly string[] LoopActionTypes =
+    [
+        "AutoEquip", "Repair", "AutoRetainer", "AutoRetainerMultiMode", "DiscardItems", "TripleTriadUse",
+        "TripleTriadSell", "Armoire", "Glamour", "Extract", "GCTurnIn", "Desynth", "CofferOpen", "Shop",
+        "Retire", "ConsumeItems", "ExecuteCommands", "Wait", "PlaySound",
+    ];
+
+    // The profile starts as a copy of the user's default, so everything that could stall or harm a quest run is forced.
+    internal static readonly IReadOnlyList<ProfileSetting> ProfileSettings =
+    [
+        new("Loop.Pre.Enabled", "True"),
+        new("Loop.Between.Enabled", "False"),
+        new("Loop.Termination.Enabled", "False"),
+        new("Loop.Termination.TerminationMethodEnum", "Do_Nothing"),
+        new("DutyConfig.AutoExitDuty", "True"),
+        new("DutyConfig.OnlyExitWhenDutyDone", "True"),
+        new("DutyConfig.AutoManageRotationPluginState", "True"),
+        new("DutyConfig.RotationPlugin", "All"),
+        new("DutyConfig.AutoManageBossModAISettings", "True"),
+        new("DutyConfig.AutoManageVnavAlignCamera", "False"),
+        new("DutyConfig.LootTreasure", "True"),
+        new("DutyConfig.LootMethodEnum", "All"),
+        new("DutyConfig.LootBossTreasureOnly", "False"),
+        new("DutyConfig.Stuck.MinStuckTime", "500"),
+        new("DutyConfig.Stuck.StuckOnStep", "True"),
+        new("DutyConfig.Stuck.RebuildNavmeshOnStuck", "True"),
+        new("DutyConfig.Stuck.RebuildNavmeshAfterStuckXTimes", "5"),
+        new("DutyConfig.Stuck.StuckReturn", "False"),
+        new("DutyConfig.WaitBeforeLeaving", "0"),
+        new("DutyConfig.PathDrawEnabled", "True"),
+        new("DutyConfig.PathDrawStepCount", "5"),
+        new($"{PreAction}[RepairLoopActionConfig].Enabled", "True", SettingKind.WantOn),
+        new($"{PreAction}[RepairLoopActionConfig].AutoRepairPct", "50", SettingKind.WantOn),
+        new($"{PreAction}[RepairLoopActionConfig].AutoRepairSelf", "False", SettingKind.WantOn),
+        new($"{PreAction}[AutoEquipLoopActionConfig].Enabled", "True", SettingKind.WantOn),
+        new($"{PreAction}[AutoEquipLoopActionConfig].RecommendedGearSource", "Vanilla", SettingKind.WantOn),
+        new($"{PreAction}[ExtractLoopActionConfig].Enabled", "True", SettingKind.WantOn),
+        new($"{PreAction}[ExtractLoopActionConfig].AutoExtractAll", "False", SettingKind.WantOn),
+        .. ForceOffExcept(PreAction, "Repair", "AutoEquip", "Extract"),
+    ];
+
+    private static IEnumerable<ProfileSetting> ForceOffExcept(string list, params string[] wanted) =>
+        LoopActionTypes.Except(wanted).Select(type =>
+            new ProfileSetting($"{list}[{type}LoopActionConfig].Enabled", "False", SettingKind.ForceOff));
 
     private readonly Configuration _configuration;
     private readonly Func<uint, TerritoryData.ContentFinderConditionData?> _findContent;
@@ -154,15 +211,17 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
         {
             // Before SetConfig, so it writes to our profile instead of the user's.
             _pluginConfig.InvokeAction(ProfileName, true);
-            ApplySetting(UnsyncedKey, (dutyMode == DutyMode.Regular).ToString());
-            ApplySetting(DutyModeKey, dutyMode.ToString());
+            ApplySetting(new ProfileSetting(UnsyncedKey, (dutyMode == DutyMode.Regular).ToString()));
+            ApplySetting(new ProfileSetting(DutyModeKey, dutyMode.ToString()));
+            foreach (var setting in ProfileSettings)
+                ApplySetting(setting);
             if (GetStopped() != true)
             {
                 Operation.RequireReconciliation("AutoDuty became busy during configuration; its work is not owned");
                 throw new TaskException("AutoDuty became busy during configuration.");
             }
             Operation.MarkRunSubmitted();
-            _runForPlugin.InvokeAction(ProfileName, data.TerritoryId, 1, !_configuration.Advanced.DisableAutoDutyBareMode);
+            _runForPlugin.InvokeAction(ProfileName, data.TerritoryId, 1, false);
             // Run returns nothing; watch for activity instead of retrying it.
             PollOperation();
         }
@@ -244,22 +303,33 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
         }
     }
 
-    private string ReadSetting(string key)
+    // Read first: every write makes AutoDuty save the profile to disk, and an unknown key reads back empty.
+    private void ApplySetting(ProfileSetting setting)
     {
-        string value = _getConfig.InvokeFunc(key);
-        if (key == UnsyncedKey && bool.TryParse(value, out bool unsynced))
-            return unsynced.ToString();
-        if (key == DutyModeKey && Enum.TryParse(value, true, out DutyMode mode) && Enum.IsDefined(mode))
-            return mode.ToString();
-        throw new InvalidOperationException($"AutoDuty returned an unsupported value for {key}.");
+        string current = _getConfig.InvokeFunc(setting.Key) ?? string.Empty;
+        if (current.Length == 0)
+        {
+            switch (setting.Kind)
+            {
+                case SettingKind.ForceOff:
+                    return;
+                case SettingKind.WantOn:
+                    _logger.LogWarning("AutoDuty's {Profile} profile has no {Key}; running without it", ProfileName, setting.Key);
+                    return;
+                default:
+                    throw new InvalidOperationException($"Update AutoDuty: it doesn't support {setting.Key}.");
+            }
+        }
+
+        if (Matches(current, setting.Value))
+            return;
+        _setConfig.InvokeAction(setting.Key, setting.Value);
+        if (!Matches(_getConfig.InvokeFunc(setting.Key), setting.Value))
+            throw new InvalidOperationException($"AutoDuty did not apply {setting.Key}.");
     }
 
-    private void ApplySetting(string key, string applied)
-    {
-        _setConfig.InvokeAction(key, applied);
-        if (ReadSetting(key) != applied)
-            throw new InvalidOperationException($"AutoDuty did not apply {key}.");
-    }
+    private static bool Matches(string? actual, string expected) =>
+        string.Equals(actual, expected, StringComparison.OrdinalIgnoreCase);
 
     // AutoDuty switches back itself when a run stops; this covers runs that never started.
     private bool ReleaseProfile()

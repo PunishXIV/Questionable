@@ -346,7 +346,6 @@ internal sealed class Configuration : IPluginConfiguration
         public bool ShowActionManager { get; set; }
         public bool ShowNewGamePlus { get; set; }
         public bool ShowHoveredItem { get; set; }
-        public bool DisableAutoDutyBareMode { get; set; }
         public bool SkipAetherCurrents { get; set; }
         public bool SkipClassJobQuests { get; set; }
         public bool SkipARealmRebornHardModePrimals { get; set; }

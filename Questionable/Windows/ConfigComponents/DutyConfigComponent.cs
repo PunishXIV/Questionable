@@ -85,7 +85,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(
                 _L("If the level of your current job is greater than 15 levels above a duty's sync level, or if your average item level is greater than 100 over " +
-                "a duty's required item level, Questionable will ask AutoDuty to run it solo as an Unrestricted Party.") +
+                "a duty's required item level, Questionable will ask AutoDuty to run it solo as an Unrestricted Party.") + " " +
                 _L("This now does not include Trials, which are likely to have extra complexity or mechanics making them infeasible to complete as an Unrestricted Party."));
             ImGui.SameLine();
             ImGui.TextColored(QstTheme.Danger, _L("Experimental feature"));

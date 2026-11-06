@@ -1,9 +1,7 @@
 using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
 using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
-using Lumina.Excel.Sheets;
 using Questionable.AutoGen.Plugin;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.ConfigComponents;
@@ -13,13 +11,8 @@ internal sealed class DebugConfigComponent
 (
     IDalamudPluginInterface pluginInterface,
     Configuration configuration,
-    PathDataUpdater pathDataUpdater,
-    IDataManager dataManager,
     DraftQuestPathService draftQuestPathService) : ConfigComponent(pluginInterface, configuration)
 {
-    private readonly ItemBlacklistSelector _itemBlacklistSelector = new(dataManager);
-    private uint? _itemToRemove;
-
     public override void DrawTab()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Advanced") + "###Debug");
@@ -57,6 +50,27 @@ internal sealed class DebugConfigComponent
                     ImGui.TextColored(QstTheme.Danger,
                         _L("Generated paths only load in debug mode or on a dev install; without one of those, this option does nothing."));
                 }
+            }
+        }
+
+        string displayName = Configuration.General.DisplayName;
+        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X / 2);
+        if (ImGui.InputText(_L("Display name"), ref displayName, 20))
+            Configuration.General.DisplayName = displayName;
+
+        if (ImGui.IsItemDeactivatedAfterEdit())
+        {
+            if (string.IsNullOrWhiteSpace(Configuration.General.DisplayName))
+                Configuration.General.DisplayName = _L("Anonymous");
+            Save();
+        }
+
+        if (ImGui.IsItemHovered())
+        {
+            using (ImRaii.Tooltip())
+            {
+                ImGui.Text(_L("Your name as the author of quest paths you create or generate here."));
+                ImGui.Text(_L("Defaults to \"Anonymous\" if left blank."));
             }
         }
 
@@ -138,157 +152,10 @@ internal sealed class DebugConfigComponent
         }
 
         ImGui.Separator();
-
-        if (QstWidgets.SectionHeader(_L("AutoDuty Settings"), "AutoDutySettings", defaultOpen: true))
+        if (QstWidgets.SectionHeader(_L("Testing"), "QuestSkips", defaultOpen: false))
         {
             using (ImRaii.PushIndent())
             {
-                ImGui.AlignTextToFramePadding();
-                DrawCheckbox(_L("Use Pre-Loop/Loop/Post-Loop settings"),
-                    () => Configuration.Advanced.DisableAutoDutyBareMode,
-                    value => Configuration.Advanced.DisableAutoDutyBareMode = value,
-                    _L("Typically, the loop settings for AutoDuty are disabled when running dungeons with Questionable, since they can cause issues (or even shut down your PC)."));
-            }
-        }
-
-        ImGui.Separator();
-
-        if (QstWidgets.SectionHeader(_L("Reward item redemption"), "RewardRedemption", defaultOpen: false))
-        {
-            using (ImRaii.PushIndent())
-            {
-                bool autoRedeemRewardItems = Configuration.Advanced.AutoRedeemRewardItems;
-                if (ImGui.Checkbox(_L("Automatically open redeemable items (coffers, minions, emotes, etc.)"),
-                        ref autoRedeemRewardItems))
-                {
-                    Configuration.Advanced.AutoRedeemRewardItems = autoRedeemRewardItems;
-                    Save();
-                }
-
-                ImGui.SameLine();
-                ImGuiComponents.HelpMarker(_L(
-                    "After turning in a quest (or before accepting one), Questionable uses items in your inventory that unlock mounts, minions, orchestrion rolls, emotes, and similar rewards. Disable this if you prefer to open them yourself."));
-
-                using (ImRaii.Disabled(!autoRedeemRewardItems))
-                {
-                    using (ImRaii.PushIndent())
-                    {
-                        ImGui.TextWrapped(_L(
-                            "Items on this list are never opened automatically. Add venture coffers, Grand Company coffers, or anything else you want to keep closed."));
-
-                        HashSet<uint> blacklist = Configuration.Advanced.AutoRedeemItemBlacklist;
-                        _itemBlacklistSelector.ItemSelected = itemId =>
-                        {
-                            if (blacklist.Add(itemId))
-                                Save();
-                        };
-                        _itemBlacklistSelector.DrawSelection(blacklist);
-
-                        if (blacklist.Count > 0)
-                        {
-                            using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
-                            {
-                                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, _L("Clear All")))
-                                {
-                                    blacklist.Clear();
-                                    Save();
-                                }
-                            }
-
-                            if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                                ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
-
-                            ImGui.Separator();
-                        }
-
-                        foreach (uint itemId in blacklist.OrderBy(x => x))
-                        {
-                            using (ImRaii.PushId($"BlacklistItem{itemId}"))
-                            {
-                                string name = dataManager.GetExcelSheet<Item>()?.GetRowOrDefault(itemId)?.Name.ToString()
-                                              ?? itemId.ToString(CultureInfo.InvariantCulture);
-                                ImGui.AlignTextToFramePadding();
-                                ImGui.Text($"{name} ({itemId})");
-
-                                using (ImRaii.PushFont(UiBuilder.IconFont))
-                                {
-                                    ImGui.SameLine(ImGui.GetContentRegionAvail().X +
-                                                   ImGui.GetStyle().WindowPadding.X -
-                                                   ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
-                                                   ImGui.GetStyle().FramePadding.X * 2);
-                                }
-
-                                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Times))
-                                    _itemToRemove = itemId;
-                            }
-                        }
-
-                        if (_itemToRemove is uint removeId)
-                        {
-                            blacklist.Remove(removeId);
-                            _itemToRemove = null;
-                            Save();
-                        }
-                    }
-                }
-            }
-        }
-
-        ImGui.Separator();
-        if (QstWidgets.SectionHeader(_L("Quest/Interaction Skips"), "QuestSkips", defaultOpen: false))
-        {
-            using (ImRaii.PushIndent())
-            {
-                bool skipAetherCurrents = Configuration.Advanced.SkipAetherCurrents;
-                if (ImGui.Checkbox(_L("Don't pick up aether currents/aether current quests"), ref skipAetherCurrents))
-                {
-                    Configuration.Advanced.SkipAetherCurrents = skipAetherCurrents;
-                    Save();
-                }
-
-                ImGui.SameLine();
-                ImGuiComponents.HelpMarker(_L("If not done during the MSQ by Questionable, you have to manually pick up any missed aether currents/quests. You can set Questionable to run all pending aether current quests using the Priority Quests preset system."));
-
-                bool skipClassJobQuests = Configuration.Advanced.SkipClassJobQuests;
-                if (ImGui.Checkbox(_L("Don't pick up class/job/role quests"), ref skipClassJobQuests))
-                {
-                    Configuration.Advanced.SkipClassJobQuests = skipClassJobQuests;
-                    Save();
-                }
-
-                ImGui.SameLine();
-                ImGuiComponents.HelpMarker(_L("Class and job skills for A Realm Reborn, Heavensward and (for the Lv70 skills) Stormblood are locked behind quests. Not recommended if you plan on queueing for instances with duty finder/party finder."));
-
-                bool skipARealmRebornHardModePrimals = Configuration.Advanced.SkipARealmRebornHardModePrimals;
-                if (ImGui.Checkbox(_L("Don't pick up ARR hard mode primal quests"), ref skipARealmRebornHardModePrimals))
-                {
-                    Configuration.Advanced.SkipARealmRebornHardModePrimals = skipARealmRebornHardModePrimals;
-                    Save();
-                }
-
-                ImGui.SameLine();
-                ImGuiComponents.HelpMarker(_L("Hard mode Ifrit/Garuda/Titan are required for the Patch 2.5 quest 'Good Intentions' and to start Heavensward."));
-
-                bool skipCrystalTowerRaids = Configuration.Advanced.SkipCrystalTowerRaids;
-                if (ImGui.Checkbox(_L("Don't pick up Crystal Tower quests"), ref skipCrystalTowerRaids))
-                {
-                    Configuration.Advanced.SkipCrystalTowerRaids = skipCrystalTowerRaids;
-                    Save();
-                }
-
-                ImGui.SameLine();
-                ImGuiComponents.HelpMarker(_L("Crystal Tower raids are required for the Patch 2.55 quest 'A Time to Every Purpose' and to start Heavensward."));
-
-                bool skipFeistyLittleChocobo = Configuration.Advanced.SkipFeistyLittleChocobo;
-                if (ImGui.Checkbox(_L("Don't pick up \"My Feisty Little Chocobo\""), ref skipFeistyLittleChocobo))
-                {
-                    Configuration.Advanced.SkipFeistyLittleChocobo = skipFeistyLittleChocobo;
-                    Save();
-                }
-
-                ImGui.SameLine();
-                ImGuiComponents.HelpMarker(_L("'My Feisty Little Chocobo' enables using your companion chocobo for overworld battles, and is completed automatically after 'My Little Chocobo' unless this is ticked."));
-
                 if (Configuration.Advanced.Debug)
                 {
                     bool stopMsq = Configuration.Advanced.StopMSQ;
@@ -340,36 +207,6 @@ internal sealed class DebugConfigComponent
                 ImGuiComponents.HelpMarker(_L("When enabled, Questionable will also remove a quest from the priority queue when it is abandoned. " +
                     "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed."));
 
-                bool namazuPreferCraft = Configuration.Advanced.NamazuPreferCraft;
-                if (ImGui.Checkbox(_L("Namazu: prefer Crafting job over Gatherer"), ref namazuPreferCraft))
-                {
-                    Configuration.Advanced.NamazuPreferCraft = namazuPreferCraft;
-                    Save();
-                }
-
-                ImGui.SameLine();
-                ImGuiComponents.HelpMarker(_L("Namazu tribe quests can be done as either DoH or DoL, this lets you set that preference."));
-
-                bool showWindowOnStart = Configuration.Advanced.ShowWindowOnStart;
-                if (ImGui.Checkbox(_L("Show window on start"), ref showWindowOnStart))
-                {
-                    Configuration.Advanced.ShowWindowOnStart = showWindowOnStart;
-                    Save();
-                }
-
-                ImGui.SameLine();
-                ImGuiComponents.HelpMarker(_L("When enabled, Questionable's progress window will show when the plugin is loaded."));
-
-                bool startMinimized = Configuration.Advanced.StartMinimized;
-                if (ImGui.Checkbox(_L("Start minimized"), ref startMinimized))
-                {
-                    Configuration.Advanced.StartMinimized = startMinimized;
-                    Save();
-                }
-
-                ImGui.SameLine();
-                ImGuiComponents.HelpMarker(_L("When enabled, Questionable's progress window will be in its minimized state when loaded."));
-
                 bool openEditor = Configuration.Advanced.OpenEditor;
                 if (ImGui.Checkbox(_L("Open editor when starting quest"), ref openEditor))
                 {
@@ -380,33 +217,6 @@ internal sealed class DebugConfigComponent
                 ImGui.SameLine();
                 ImGuiComponents.HelpMarker(_L("On starting a quest, Questionable will open the path for it in your default text editor."));
             }
-        }
-
-        ImGui.Separator();
-        ImGui.Text(_L("Path data"));
-        using (ImRaii.PushIndent())
-        {
-            bool autoUpdatePaths = Configuration.PathData.AutoUpdate;
-            if (ImGui.Checkbox(_L("Automatically download quest/gathering path updates"), ref autoUpdatePaths))
-            {
-                Configuration.PathData.AutoUpdate = autoUpdatePaths;
-                Save();
-            }
-
-            ImGui.SameLine();
-            ImGuiComponents.HelpMarker(_L("Downloads newer quest/gathering paths without needing a full plugin update."));
-
-            if (ImGui.Button(_L("Check for path updates now")))
-                pathDataUpdater.CheckForUpdatesManually();
-
-            ImGui.SameLine();
-            ImGui.TextColored(QstTheme.TextMuted, pathDataUpdater.Status);
-
-            long installedVersion = Configuration.PathData.InstalledDataVersion;
-            ImGui.TextColored(QstTheme.TextMuted,
-                installedVersion == 0
-                    ? _L("Using the path data bundled with the plugin.")
-                    : _LF("Downloaded path data version: {0}", installedVersion));
         }
     }
 }

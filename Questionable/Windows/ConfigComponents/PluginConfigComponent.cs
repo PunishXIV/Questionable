@@ -237,7 +237,7 @@ internal sealed class PluginConfigComponent
             }
         }
 
-        if (QstWidgets.SectionHeader(_L("Rotation/Automation plugins:"), "RotationPlugins", defaultOpen: false))
+        if (QstWidgets.SectionHeader(_L("Rotation/Automation plugins:"), "RotationPlugins", defaultOpen: true))
         {
             using (ImRaii.Disabled(_combatController.IsRunning))
             {

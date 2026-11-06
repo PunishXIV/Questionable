@@ -1116,7 +1116,7 @@
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Clear All</Key>
     <Value lang="en">Clear All</Value>
     <Value lang="ja-jp">すべてクリア</Value>
@@ -1129,7 +1129,7 @@
     <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Hold CTRL to enable this button.</Key>
     <Value lang="en">Hold CTRL to enable this button.</Value>
     <Value lang="ja-jp">このボタンを有効にするにはCTRLを押したままにしてください。</Value>
@@ -1661,51 +1661,30 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
-    <Key>AutoDuty Settings</Key>
-    <Value lang="en">AutoDuty Settings</Value>
-    <Value lang="ja-jp">AutoDuty設定</Value>
-    <Value lang="zh-cn">AutoDuty 设置</Value>
-    <Value lang="zh-tw">AutoDuty 設定</Value>
-    <!--<Value lang="ko">AutoDuty 설정</Value>-->
+    <Key>Testing</Key>
+    <Value lang="en">Testing</Value>
+    <Value lang="ja-jp">テスト</Value>
+    <Value lang="zh-cn">测试</Value>
+    <Value lang="zh-tw">測試</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
-    <Key>Use Pre-Loop/Loop/Post-Loop settings</Key>
-    <Value lang="en">Use Pre-Loop/Loop/Post-Loop settings</Value>
-    <Value lang="ja-jp">プリループ/ループ/ポストループ設定を使用</Value>
-    <Value lang="zh-cn">使用预循环/循环/后循环设置</Value>
-    <Value lang="zh-tw">使用預迴圈/迴圈/後迴圈設定</Value>
-    <!--<Value lang="ko">프리루프/루프/포스트루프 설정 사용</Value>-->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Optional quests</Key>
+    <Value lang="en">Optional quests</Value>
+    <Value lang="ja-jp">任意のクエスト</Value>
+    <Value lang="zh-cn">可选任务</Value>
+    <Value lang="zh-tw">可選任務</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
-    <Key>Typically, the loop settings for AutoDuty are disabled when running dungeons with Questionable, since they can cause issues (or even shut down your PC).</Key>
-    <Value lang="en">Typically, the loop settings for AutoDuty are disabled when running dungeons with Questionable, since they can cause issues (or even shut down your PC).</Value>
-    <Value lang="ja-jp">通常、QuestionableでダンジョンをプレイするときはAutoDutyのループ設定が無効になっています。これは問題が発生したり（PCのシャットダウンなど）する可能性があるためです。</Value>
-    <Value lang="zh-cn">通常情况下，使用 Questionable 运行副本时，AutoDuty 的循环设置会被禁用，因为可能导致问题（甚至关闭你的电脑）。</Value>
-    <Value lang="zh-tw">通常情況下，使用 Questionable 執行副本時，AutoDuty 的迴圈設定會被停用，因為可能導致問題（甚至關閉你的電腦）。</Value>
-    <!--<Value lang="ko">일반적으로 Questionable로 던전을 실행할 때 AutoDuty의 루프 설정은 비활성화됩니다. 이는 문제가 발생할 수 있기 때문입니다(심지어 PC가 종료될 수도 있음).</Value>-->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Pick up aether currents and aether current quests</Key>
+    <Value lang="en">Pick up aether currents and aether current quests</Value>
+    <Value lang="ja-jp">風脈と風脈クエストを受注する</Value>
+    <Value lang="zh-cn">接取风脉泉和风脉任务</Value>
+    <Value lang="zh-tw">接取風脈泉和風脈任務</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
-    <Key>Quest/Interaction Skips</Key>
-    <Value lang="en">Quest/Interaction Skips</Value>
-    <Value lang="ja-jp">クエスト/インタラクションのスキップ</Value>
-    <Value lang="zh-cn">任务/交互跳过</Value>
-    <Value lang="zh-tw">任務/互動跳過</Value>
-    <!--<Value lang="ko">퀘스트/상호작용 건너뛰기</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
-    <Key>Don't pick up aether currents/aether current quests</Key>
-    <Value lang="en">Don't pick up aether currents/aether current quests</Value>
-    <Value lang="ja-jp">風脈/風脈クエストを受注しない</Value>
-    <Value lang="zh-cn">不接取风脉泉/风脉任务</Value>
-    <Value lang="zh-tw">不接取風脈泉/風脈任務</Value>
-    <!--<Value lang="ko">풍맥/풍맥 퀘스트 수락하지 않기</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>If not done during the MSQ by Questionable, you have to manually pick up any missed aether currents/quests. You can set Questionable to run all pending aether current quests using the Priority Quests preset system.</Key>
     <Value lang="en">If not done during the MSQ by Questionable, you have to manually pick up any missed aether currents/quests. You can set Questionable to run all pending aether current quests using the Priority Quests preset system.</Value>
     <Value lang="ja-jp">Questionableのメインシナリオ進行中に行わなかった場合、見逃した風脈/風脈クエストは手動で受注する必要があります。優先クエストのプリセットシステムを使用して、保留中の風脈クエストをすべて実行するようQuestionableを設定できます。</Value>
@@ -1714,16 +1693,15 @@
     <!--<Value lang="ko">Questionable로 MSQ 진행 중에 수행되지 않은 경우, 놓친 풍맥/풍맥 퀘스트를 수동으로 수락해야 합니다. 우선 순위 퀘스트 프리셋 시스템을 사용하여 Questionable이 모든 보류 중인 풍맥 퀘스트를 실행하도록 설정할 수 있습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
-    <Key>Don't pick up class/job/role quests</Key>
-    <Value lang="en">Don't pick up class/job/role quests</Value>
-    <Value lang="ja-jp">クラス/ジョブ/ロールクエストを受注しない</Value>
-    <Value lang="zh-cn">不接取职业/特职/职能任务</Value>
-    <Value lang="zh-tw">不接取職業/特職/職能任務</Value>
-    <!--<Value lang="ko">클래스/직업/역할 퀘스트 수락하지 않기</Value>-->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Pick up class/job/role quests</Key>
+    <Value lang="en">Pick up class/job/role quests</Value>
+    <Value lang="ja-jp">クラス/ジョブ/ロールクエストを受注する</Value>
+    <Value lang="zh-cn">接取职业/特职/职能任务</Value>
+    <Value lang="zh-tw">接取職業/特職/職能任務</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Class and job skills for A Realm Reborn, Heavensward and (for the Lv70 skills) Stormblood are locked behind quests. Not recommended if you plan on queueing for instances with duty finder/party finder.</Key>
     <Value lang="en">Class and job skills for A Realm Reborn, Heavensward and (for the Lv70 skills) Stormblood are locked behind quests. Not recommended if you plan on queueing for instances with duty finder/party finder.</Value>
     <Value lang="ja-jp">新生・蒼天（およびLv70スキルは紅蓮）のクラス・ジョブスキルはクエストで解放されます。コンテンツファインダー/パーティーファインダーを利用する予定がある場合は非推奨です。</Value>
@@ -1732,16 +1710,15 @@
     <Value lang="ko">A Realm Reborn, Heavensward 및 (Lv70 스킬의 경우) Stormblood의 클래스 및 직업 스킬은 퀘스트를 통해 잠금 해제됩니다. 던전 찾기/파티 찾기를 사용하여 인스턴스를 큐에 넣을 계획이라면 권장하지 않습니다.</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
-    <Key>Don't pick up ARR hard mode primal quests</Key>
-    <Value lang="en">Don't pick up ARR hard mode primal quests</Value>
-    <Value lang="ja-jp">新生真蛮神討滅戦クエストを受注しない</Value>
-    <Value lang="zh-cn">不接受重生之境真蛮神讨伐歼灭战任务</Value>
-    <Value lang="zh-tw">不接受新生艾奧傑亞真蠻神殲滅戰任務</Value>
-    <!--<Value lang="ko">ARR 하드 모드 프라이멀 퀘스트 수락하지 않기</Value>-->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Pick up ARR hard mode primal quests</Key>
+    <Value lang="en">Pick up ARR hard mode primal quests</Value>
+    <Value lang="ja-jp">新生真蛮神討滅戦クエストを受注する</Value>
+    <Value lang="zh-cn">接受重生之境真蛮神讨伐歼灭战任务</Value>
+    <Value lang="zh-tw">接受新生艾奧傑亞真蠻神殲滅戰任務</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Hard mode Ifrit/Garuda/Titan are required for the Patch 2.5 quest 'Good Intentions' and to start Heavensward.</Key>
     <Value lang="en">Hard mode Ifrit/Garuda/Titan are required for the Patch 2.5 quest 'Good Intentions' and to start Heavensward.</Value>
     <Value lang="ja-jp">真イフリート/真ガルーダ/真タイタンはパッチ2.5クエスト「3本の柱」と蒼天への進行に必要です。</Value>
@@ -1750,16 +1727,15 @@
     <Value lang="ko">하드 모드 이프리트/가루다/타이탄은 패치 2.5 퀘스트 '선의' 및 Heavensward 시작에 필요합니다.</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
-    <Key>Don't pick up Crystal Tower quests</Key>
-    <Value lang="en">Don't pick up Crystal Tower quests</Value>
-    <Value lang="ja-jp">クリスタルタワークエストを受注しない</Value>
-    <Value lang="zh-cn">不接取水晶塔任务</Value>
-    <Value lang="zh-tw">不接取水晶塔任務</Value>
-    <Value lang="ko">크리스탈 타워 퀘스트 수락하지 않기</Value>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Pick up Crystal Tower quests</Key>
+    <Value lang="en">Pick up Crystal Tower quests</Value>
+    <Value lang="ja-jp">クリスタルタワークエストを受注する</Value>
+    <Value lang="zh-cn">接取水晶塔任务</Value>
+    <Value lang="zh-tw">接取水晶塔任務</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Crystal Tower raids are required for the Patch 2.55 quest 'A Time to Every Purpose' and to start Heavensward.</Key>
     <Value lang="en">Crystal Tower raids are required for the Patch 2.55 quest 'A Time to Every Purpose' and to start Heavensward.</Value>
     <Value lang="ja-jp">クリスタルタワーレイドはパッチ2.55クエスト「祝賀は誰のため」と蒼天への進行に必要です。</Value>
@@ -1824,7 +1800,7 @@
     <!--<Value lang="ko">포기 시 우선 순위에서 제거</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Namazu: prefer Crafting job over Gatherer</Key>
     <Value lang="en">Namazu: prefer Crafting job over Gatherer</Value>
     <Value lang="ja-jp">ナマズオ：採集より製作を優先</Value>
@@ -1833,7 +1809,7 @@
     <!--<Value lang="ko">나마즈오: 채집보다 제작 직업 우선</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Namazu tribe quests can be done as either DoH or DoL, this lets you set that preference.</Key>
     <Value lang="en">Namazu tribe quests can be done as either DoH or DoL, this lets you set that preference.</Value>
     <Value lang="ja-jp">ナマズオ族クエストはクラフターまたはギャザラーで実行できます。ここで設定できます。</Value>
@@ -1842,7 +1818,7 @@
     <!--<Value lang="ko">나마즈오 부족 퀘스트는 DoH 또는 DoL로 수행할 수 있으며, 여기서 해당 선호도를 설정할 수 있습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Show window on start</Key>
     <Value lang="en">Show window on start</Value>
     <Value lang="ja-jp">起動時にウィンドウを表示</Value>
@@ -1851,7 +1827,7 @@
     <!--<Value lang="ko">시작 시 창 표시</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>When enabled, Questionable's progress window will show when the plugin is loaded.</Key>
     <Value lang="en">When enabled, Questionable's progress window will show when the plugin is loaded.</Value>
     <Value lang="ja-jp">有効にすると、プラグイン読み込み時にQuestionableの進捗ウィンドウが表示されます。</Value>
@@ -1860,7 +1836,7 @@
     <!--<Value lang="ko">활성화되면 플러그인이 로드될 때 Questionable의 진행 창이 표시됩니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Start minimized</Key>
     <Value lang="en">Start minimized</Value>
     <Value lang="ja-jp">最小化状態で開始</Value>
@@ -1869,7 +1845,7 @@
     <!--<Value lang="ko">최소화 상태로 시작</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>When enabled, Questionable's progress window will be in its minimized state when loaded.</Key>
     <Value lang="en">When enabled, Questionable's progress window will be in its minimized state when loaded.</Value>
     <Value lang="ja-jp">有効にすると、読み込み時にQuestionableの進捗ウィンドウが最小化されます。</Value>
@@ -1879,7 +1855,6 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Path data</Key>
     <Value lang="en">Path data</Value>
     <Value lang="ja-jp">パスデータ</Value>
@@ -1888,7 +1863,7 @@
     <!--<Value lang="ko">경로 데이터</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Automatically download quest/gathering path updates</Key>
     <Value lang="en">Automatically download quest/gathering path updates</Value>
     <Value lang="ja-jp">クエスト/採集パスの更新を自動的にダウンロード</Value>
@@ -1897,7 +1872,7 @@
     <!--<Value lang="ko">퀘스트/채집 경로 업데이트를 자동으로 다운로드</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Downloads newer quest/gathering paths without needing a full plugin update.</Key>
     <Value lang="en">Downloads newer quest/gathering paths without needing a full plugin update.</Value>
     <Value lang="ja-jp">プラグインのフルアップデートなしに新しいクエスト/採集パスをダウンロードします。</Value>
@@ -1906,7 +1881,7 @@
     <!--<Value lang="ko">전체 플러그인 업데이트 없이 새로운 퀘스트/채집 경로를 다운로드합니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Check for path updates now</Key>
     <Value lang="en">Check for path updates now</Value>
     <Value lang="ja-jp">今すぐパスの更新を確認</Value>
@@ -1915,7 +1890,15 @@
     <!--<Value lang="ko">지금 경로 업데이트 확인</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Updates</Key>
+    <Value lang="en">Updates</Value>
+    <Value lang="ja-jp">アップデート</Value>
+    <Value lang="zh-cn">更新</Value>
+    <Value lang="zh-tw">更新</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Using the path data bundled with the plugin.</Key>
     <Value lang="en">Using the path data bundled with the plugin.</Value>
     <Value lang="ja-jp">プラグインに同梱のパスデータを使用中。</Value>
@@ -1924,7 +1907,7 @@
     <!--<Value lang="ko">플러그인에 번들된 경로 데이터를 사용 중입니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Downloaded path data version: {0}</Key>
     <Value lang="en">Downloaded path data version: {0}</Value>
     <Value lang="ja-jp">ダウンロード済みパスデータバージョン: {0}</Value>
@@ -2141,15 +2124,6 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Preferred Combat Module</Key>
-    <Value lang="en">Preferred Combat Module</Value>
-    <Value lang="ja-jp">優先する戦闘モジュール</Value>
-    <Value lang="zh-cn">首选战斗模块</Value>
-    <Value lang="zh-tw">首選戰鬥模組</Value>
-    <Value lang="ko">선호 전투 모듈</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Preferred Mount</Key>
     <Value lang="en">Preferred Mount</Value>
     <Value lang="ja-jp">優先するマウント</Value>
@@ -2230,7 +2204,7 @@
     <Value lang="ko">"드디어 내 초코보를!" 퀘스트 중 당신의 초코보에게 지어줄 이름입니다.</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Display name</Key>
     <Value lang="en">Display name</Value>
     <Value lang="ja-jp">表示名</Value>
@@ -2239,7 +2213,7 @@
     <Value lang="ko">표시 이름</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Anonymous</Key>
     <Value lang="en">Anonymous</Value>
     <Value lang="ja-jp">Anonymous</Value>
@@ -2248,16 +2222,15 @@
     <Value lang="ko">Anonymous</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>The name associated with submissions to help with QST's development.</Key>
-    <Value lang="en">The name associated with submissions to help with QST's development.</Value>
-    <Value lang="ja-jp">QSTの開発に貢献する際の投稿に関連付けられる名前。</Value>
-    <Value lang="zh-cn">为 QST 开发贡献时关联到投稿的名称。</Value>
-    <Value lang="zh-tw">為 QST 開發貢獻時關聯到投稿的名稱。</Value>
-    <Value lang="ko">QST에 개발 도움 제공시 기여자 이름으로 사용할 이름</Value>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <Key>Your name as the author of quest paths you create or generate here.</Key>
+    <Value lang="en">Your name as the author of quest paths you create or generate here.</Value>
+    <Value lang="ja-jp">ここで作成・生成したクエストパスの作者名。</Value>
+    <Value lang="zh-cn">在此创建或生成的任务路径所使用的作者名。</Value>
+    <Value lang="zh-tw">在此建立或產生的任務路徑所使用的作者名稱。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Defaults to "Anonymous" if left blank.</Key>
     <Value lang="en">Defaults to "Anonymous" if left blank.</Value>
     <Value lang="ja-jp">空白の場合は「Anonymous（匿名）」がデフォルトです。</Value>
@@ -2857,12 +2830,11 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
-    <Key>Work in Progress:</Key>
-    <Value lang="en">Work in Progress:</Value>
-    <Value lang="ja-jp">開発中：</Value>
-    <Value lang="zh-cn">开发中：</Value>
-    <Value lang="zh-tw">開發中：</Value>
-    <!--<Value lang="ko">진행 중:</Value>-->
+    <Key>Notes:</Key>
+    <Value lang="en">Notes:</Value>
+    <Value lang="ja-jp">注意：</Value>
+    <Value lang="zh-cn">注意：</Value>
+    <Value lang="zh-tw">注意：</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
@@ -4774,7 +4746,7 @@
     <!--<Value lang="ko">모든 직업 잠금 해제</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Reward item redemption</Key>
     <Value lang="en">Reward item redemption</Value>
     <Value lang="ja-jp">報酬アイテムの開封</Value>
@@ -4783,7 +4755,7 @@
     <!--<Value lang="ko">보상 아이템 사용</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Automatically open redeemable items (coffers, minions, emotes, etc.)</Key>
     <Value lang="en">Automatically open redeemable items (coffers, minions, emotes, etc.)</Value>
     <Value lang="ja-jp">開封可能なアイテム（宝箱、ミニオン、エモートなど）を自動的に開く</Value>
@@ -4792,7 +4764,7 @@
     <!--<Value lang="ko">자동으로 교환 가능한 아이템 열기 (상자, 미니언, 감정 표현 등)</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>After turning in a quest (or before accepting one), Questionable uses items in your inventory that unlock mounts, minions, orchestrion rolls, emotes, and similar rewards. Disable this if you prefer to open them yourself.</Key>
     <Value lang="en">After turning in a quest (or before accepting one), Questionable uses items in your inventory that unlock mounts, minions, orchestrion rolls, emotes, and similar rewards. Disable this if you prefer to open them yourself.</Value>
     <Value lang="ja-jp">クエスト終了後（または受注前）に、Questionableはインベントリ内のマウント・ミニオン・オーケストリオン譜・エモートなどの報酬アイテムを使用します。自分で開封したい場合は無効にしてください。</Value>
@@ -4801,7 +4773,7 @@
     <!--<Value lang="ko">퀘스트를 제출한 후(또는 수락하기 전에), Questionable은 인벤토리 내에서 탈것, 미니언, 오케스트리온 롤, 감정 표현 및 유사한 보상을 잠금 해제하는 아이템을 사용합니다. 직접 열고 싶다면 이 옵션을 비활성화하세요.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Items on this list are never opened automatically. Add venture coffers, Grand Company coffers, or anything else you want to keep closed.</Key>
     <Value lang="en">Items on this list are never opened automatically. Add venture coffers, Grand Company coffers, or anything else you want to keep closed.</Value>
     <Value lang="ja-jp">このリストに登録したアイテムは自動開封されません。リテイナーの宝箱、GCの特別支給コンテナなど、開封したくないアイテムを追加してください。</Value>
@@ -5877,12 +5849,11 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
-    <Key>Notify when QST is unable to continue automatic questing</Key>
-    <Value lang="en">Notify when QST is unable to continue automatic questing</Value>
-    <Value lang="ja-jp">QSTが自動クエストを続行できなくなったときに通知する</Value>
-    <Value lang="zh-cn">主线任务无法继续自动进行时发送通知</Value>
-    <Value lang="zh-tw">主線任務無法繼續自動進行時傳送通知</Value>
-    <!--<Value lang="ko">QST가 자동 퀘스트를 계속할 수 없을 때 알림</Value>-->
+    <Key>Notify when Questionable is unable to continue automatic questing</Key>
+    <Value lang="en">Notify when Questionable is unable to continue automatic questing</Value>
+    <Value lang="ja-jp">Questionableが自動クエストを続行できなくなったときに通知する</Value>
+    <Value lang="zh-cn">Questionable 无法继续自动任务时发送通知</Value>
+    <Value lang="zh-tw">Questionable 無法繼續自動任務時傳送通知</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
@@ -5967,12 +5938,11 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Before each Interact, switch to the job a quest was accepted with</Key>
-    <Value lang="en">Before each Interact, switch to the job a quest was accepted with</Value>
-    <Value lang="ja-jp">インタラクト前に、クエストを受注したジョブに切り替える</Value>
-    <Value lang="zh-cn">在每次交互前，切换到接受任务时的职业</Value>
-    <Value lang="zh-tw">在每次互動前，切換到接受任務時的職業</Value>
-    <!--<Value lang="ko">각 상호작용 전에 퀘스트를 수락한 직업으로 전환</Value>-->
+    <Key>Switch back to the job a quest was started with before each interaction</Key>
+    <Value lang="en">Switch back to the job a quest was started with before each interaction</Value>
+    <Value lang="ja-jp">各インタラクトの前に、クエストを開始したジョブに戻す</Value>
+    <Value lang="zh-cn">每次交互前，切换回开始任务时的职业</Value>
+    <Value lang="zh-tw">每次互動前，切換回開始任務時的職業</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/Steps/Interactions/Interact.cs -->
@@ -6243,18 +6213,18 @@
     <Value lang="zh-tw">QST 試圖尋找適合 {0} 的裝備套裝以繼續執行 {1}，但未找到符合的套裝。可嘗試在角色面板中手動更新目前套裝，或裝備缺失的職業水晶來解決此問題。請在 Discord 中報告此錯誤。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
-    <Key>Don't pick up "My Feisty Little Chocobo"</Key>
-    <Value lang="en">Don't pick up "My Feisty Little Chocobo"</Value>
-    <Value lang="zh-cn">不接取「可靠的搭档」任务</Value>
-    <Value lang="zh-tw">不接取「可靠的搭檔」任務</Value>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>Pick up "My Feisty Little Chocobo"</Key>
+    <Value lang="en">Pick up "My Feisty Little Chocobo"</Value>
+    <Value lang="zh-cn">接取「可靠的搭档」任务</Value>
+    <Value lang="zh-tw">接取「可靠的搭檔」任務</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
-    <Key>'My Feisty Little Chocobo' enables using your companion chocobo for overworld battles, and is completed automatically after 'My Little Chocobo' unless this is ticked.</Key>
-    <Value lang="en">'My Feisty Little Chocobo' enables using your companion chocobo for overworld battles, and is completed automatically after 'My Little Chocobo' unless this is ticked.</Value>
-    <Value lang="zh-cn">「可靠的搭档」任务可解锁搭档陆行鸟的野外战斗功能。除非勾选此项，否则会在完成「我的专属陆行鸟」后自动完成该任务。</Value>
-    <Value lang="zh-tw">「可靠的搭檔」任務可解鎖搭檔陸行鳥的野外戰鬥功能。除非勾選此項，否則會在完成「我的專屬陸行鳥」後自動完成該任務。</Value>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
+    <Key>'My Feisty Little Chocobo' lets your companion chocobo fight with you in the overworld. When ticked, it is done automatically after 'My Little Chocobo'.</Key>
+    <Value lang="en">'My Feisty Little Chocobo' lets your companion chocobo fight with you in the overworld. When ticked, it is done automatically after 'My Little Chocobo'.</Value>
+    <Value lang="zh-cn">「可靠的搭档」任务可让搭档陆行鸟在野外与你一起战斗。勾选后，会在完成「我的专属陆行鸟」后自动完成该任务。</Value>
+    <Value lang="zh-tw">「可靠的搭檔」任務可讓搭檔陸行鳥在野外與你一起戰鬥。勾選後，會在完成「我的專屬陸行鳥」後自動完成該任務。</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ARealmRebornComponent.cs -->
@@ -6337,9 +6307,11 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
-    <Key>Ignore 'next quest' if Priority Quests has valid alternative</Key>
-    <Value lang="en">Ignore 'next quest' if Priority Quests has valid alternative</Value>
-    <Value lang="zh-cn">优先任务存在有效替代时，忽略"下一个任务"</Value>
+    <Key>When a quest finishes, do ready priority quests before its follow-up quest</Key>
+    <Value lang="en">When a quest finishes, do ready priority quests before its follow-up quest</Value>
+    <Value lang="ja-jp">クエスト完了時、続きのクエストより先に受注可能な優先クエストを行う</Value>
+    <Value lang="zh-cn">任务完成时，先进行可接取的优先任务，再进行其后续任务</Value>
+    <Value lang="zh-tw">任務完成時，先進行可接取的優先任務，再進行其後續任務</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->

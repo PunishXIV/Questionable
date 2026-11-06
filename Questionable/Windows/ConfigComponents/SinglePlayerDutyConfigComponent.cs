@@ -258,7 +258,7 @@ internal sealed class SinglePlayerDutyConfigComponent : ConfigComponent
         {
             using (_ = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Danger))
             {
-                ImGui.TextUnformatted(_L("Work in Progress:"));
+                ImGui.TextUnformatted(_L("Notes:"));
                 ImGui.BulletText(_L("Will always use BossMod for combat (ignoring the configured combat module)."));
                 ImGui.BulletText(_L("Retries after a failed attempt always start at 'Very Easy' difficulty. The first attempt may start at 'Normal'."));
                 ImGui.BulletText(_L("BossMod forks (such as Reborn) are NOT COMPATIBLE with Questionable."));

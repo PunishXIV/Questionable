@@ -32,8 +32,58 @@ internal sealed class AutoDutyFixture : IDisposable
     public ICallGateSubscriber<object> Stop { get; } = Substitute.For<ICallGateSubscriber<object>>();
     public ICallGateSubscriber<string, string> GetConfig { get; } = Substitute.For<ICallGateSubscriber<string, string>>();
     public ICallGateSubscriber<bool> PathRunning { get; } = Substitute.For<ICallGateSubscriber<bool>>();
-    // The user's own AutoDuty profile, and Questionable's (a copy of it, made on first use).
-    public Dictionary<string, string> Settings { get; } = new() { [ModeKey] = "Trust", [UnsyncedKey] = "True" };
+    public const string Pre = "Loop.Pre.Actions.";
+    public const string Between = "Loop.Between.Actions.";
+    // The user's own AutoDuty profile (AutoDuty's defaults), and Questionable's (a copy of it, made on first use).
+    public Dictionary<string, string> Settings { get; } = new()
+    {
+        [ModeKey] = "Trust",
+        [UnsyncedKey] = "True",
+        ["Loop.Pre.Enabled"] = "True",
+        ["Loop.Between.Enabled"] = "True",
+        ["Loop.Between.ExecuteLastLoop"] = "False",
+        ["Loop.Termination.Enabled"] = "True",
+        ["Loop.Termination.TerminationMethodEnum"] = "Do_Nothing",
+        ["DutyConfig.AutoExitDuty"] = "True",
+        ["DutyConfig.OnlyExitWhenDutyDone"] = "False",
+        ["DutyConfig.AutoManageRotationPluginState"] = "True",
+        ["DutyConfig.RotationPlugin"] = "All",
+        ["DutyConfig.AutoManageBossModAISettings"] = "True",
+        ["DutyConfig.AutoManageVnavAlignCamera"] = "True",
+        ["DutyConfig.LootTreasure"] = "True",
+        ["DutyConfig.LootMethodEnum"] = "AutoDuty",
+        ["DutyConfig.LootBossTreasureOnly"] = "False",
+        ["DutyConfig.Stuck.MinStuckTime"] = "500",
+        ["DutyConfig.Stuck.StuckOnStep"] = "True",
+        ["DutyConfig.Stuck.RebuildNavmeshOnStuck"] = "True",
+        ["DutyConfig.Stuck.RebuildNavmeshAfterStuckXTimes"] = "5",
+        ["DutyConfig.Stuck.StuckReturn"] = "True",
+        ["DutyConfig.WaitBeforeLeaving"] = "0",
+        ["DutyConfig.PathDrawEnabled"] = "False",
+        ["DutyConfig.PathDrawStepCount"] = "5",
+        [$"{Pre}[ExecuteCommandsLoopActionConfig].Enabled"] = "False",
+        [$"{Pre}[ConsumeItemsLoopActionConfig].Enabled"] = "False",
+        [$"{Pre}[AutoEquipLoopActionConfig].Enabled"] = "False",
+        [$"{Pre}[AutoEquipLoopActionConfig].RecommendedGearSource"] = "Vanilla",
+        [$"{Pre}[RepairLoopActionConfig].Enabled"] = "False",
+        [$"{Pre}[RepairLoopActionConfig].AutoRepairPct"] = "50",
+        [$"{Pre}[RepairLoopActionConfig].AutoRepairSelf"] = "False",
+        [$"{Pre}[RetireLoopActionConfig].Enabled"] = "False",
+        [$"{Between}[WaitLoopActionConfig].Enabled"] = "False",
+        [$"{Between}[ExecuteCommandsLoopActionConfig].Enabled"] = "False",
+        [$"{Between}[CofferOpenLoopActionConfig].Enabled"] = "False",
+        [$"{Between}[AutoRetainerLoopActionConfig].Enabled"] = "False",
+        [$"{Between}[AutoRetainerMultiModeLoopActionConfig].Enabled"] = "False",
+        [$"{Between}[AutoEquipLoopActionConfig].Enabled"] = "False",
+        [$"{Between}[ExtractLoopActionConfig].Enabled"] = "False",
+        [$"{Between}[ExtractLoopActionConfig].AutoExtractAll"] = "False",
+        [$"{Between}[DesynthLoopActionConfig].Enabled"] = "False",
+        [$"{Between}[GCTurnInLoopActionConfig].Enabled"] = "False",
+        [$"{Between}[TripleTriadUseLoopActionConfig].Enabled"] = "False",
+        [$"{Between}[TripleTriadSellLoopActionConfig].Enabled"] = "False",
+        [$"{Between}[DiscardItemsLoopActionConfig].Enabled"] = "False",
+        [$"{Between}[ConsumeItemsLoopActionConfig].Enabled"] = "False",
+    };
     public Dictionary<string, string>? ProfileSettings { get; private set; }
     public bool ProfileActive { get; set; }
     public List<(string Key, string Value)> Writes { get; } = [];
@@ -92,13 +142,15 @@ internal sealed class AutoDutyFixture : IDisposable
         Stop.HasAction.Returns(_ => Available);
         GetConfig.HasFunction.Returns(true);
         setConfig.HasAction.Returns(true);
-        GetConfig.InvokeFunc(Arg.Any<string>()).Returns(x => ActiveSettings[x.Arg<string>()]);
+        // Like AutoDuty: an unknown setting reads back empty and ignores writes.
+        GetConfig.InvokeFunc(Arg.Any<string>()).Returns(x => ActiveSettings.GetValueOrDefault(x.Arg<string>(), string.Empty));
         setConfig.When(x => x.InvokeAction(Arg.Any<string>(), Arg.Any<object>())).Do(x =>
         {
             string key = x.ArgAt<string>(0);
             string value = (string)x.ArgAt<object>(1);
             Calls.Add($"set {key}");
-            ActiveSettings[key] = value;
+            if (ActiveSettings.ContainsKey(key))
+                ActiveSettings[key] = value;
             Writes.Add((key, value));
             if (ThrowAfterFirstWrite && Writes.Count == 1)
                 throw new InvalidOperationException("Reply lost after setting changed");
@@ -114,7 +166,7 @@ internal sealed class AutoDutyFixture : IDisposable
                 ProfileSettings ??= new(Settings);
             ProfileActive = on;
         });
-        RunForPlugin.When(x => x.InvokeAction(AutoDutyIpc.ProfileName, TerritoryId, 1, true)).Do(_ =>
+        RunForPlugin.When(x => x.InvokeAction(AutoDutyIpc.ProfileName, TerritoryId, 1, false)).Do(_ =>
         {
             Assert.True(State!.HasOperation);
             Calls.Add("run");

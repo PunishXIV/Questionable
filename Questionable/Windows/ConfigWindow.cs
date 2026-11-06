@@ -92,12 +92,12 @@ internal sealed class ConfigWindow
             return;
 
         _generalConfigComponent.DrawTab();
-        _profilesConfigComponent.DrawTab();
         _pluginConfigComponent.DrawTab();
         _dutyConfigComponent.DrawTab();
         _singlePlayerDutyConfigComponent.DrawTab();
         _stopConditionComponent.DrawTab();
         _notificationConfigComponent.DrawTab();
+        _profilesConfigComponent.DrawTab();
         _debugConfigComponent.DrawTab();
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("About") + "###QuestionableConfigTabs");
         if (!tab)
