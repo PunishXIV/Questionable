@@ -104,7 +104,7 @@ internal sealed class CombatController : IDisposable
         try
         {
             if (!combatModule.Start(combatData))
-                throw new TaskException($"{combatModule.GetType().Name} rejected combat startup.");
+                throw new TaskException($"{combatModule.Name} refused to start the fight.");
 
             _currentFight = new()
             {
@@ -589,7 +589,7 @@ internal sealed class CombatController : IDisposable
                 BlockReason = null;
                 return;
             }
-            BlockReason = $"Waiting for {_pendingCleanup.GetType().Name} to release combat control.";
+            BlockReason = $"Waiting for {_pendingCleanup.Name} to give back combat control.";
         }
         catch (Exception e)
         {

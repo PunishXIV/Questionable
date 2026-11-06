@@ -26,7 +26,7 @@ public sealed class SoloDutyConfirmationTests
     }
 
     [Fact]
-    public void DialogNotReadyForOneMinute_RetainsFallbackUntilButtonIsReady()
+    public void DialogDelay_KeepsFallbackUntilReady()
     {
         var quest = CreateProgress();
         var confirmation = new Confirmation(quest, Prompt, RequestedAt);

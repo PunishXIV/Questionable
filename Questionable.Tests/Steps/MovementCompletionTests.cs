@@ -31,7 +31,7 @@ public sealed class MovementCompletionTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void ArrivalRetainsExistingDistanceAllowance(bool canRestart)
+    public void Arrival_KeepsDistanceAllowance(bool canRestart)
     {
         MoveTask task = new(958, Vector3.Zero, StopDistance: 2f);
         Assert.False(MoveExecutor.ShouldRestartAfterStop(task, 958, new Vector3(7, 0, 0), ref canRestart));

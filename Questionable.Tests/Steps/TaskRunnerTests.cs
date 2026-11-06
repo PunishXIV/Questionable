@@ -71,7 +71,7 @@ public sealed class TaskRunnerTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void FinalTaskAfterSkipRetainsSuccessfulAndDeclinedStartupBehavior(bool starts)
+    public void LastTaskAfterSkip_KeepsStartupResult(bool starts)
     {
         var finalExecutor = Substitute.For<ITaskExecutor>();
         finalExecutor.Start(Arg.Any<ITask>()).Returns(starts);

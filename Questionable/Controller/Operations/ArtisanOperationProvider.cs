@@ -50,7 +50,7 @@ internal sealed class ArtisanOperationProvider(
             return false;
 
         if (host.IsActive)
-            host.Stop("Artisan requires reconciliation");
+            host.Stop("Artisan needs checking");
 
         host.Status = operation.BlockReason;
         return true;

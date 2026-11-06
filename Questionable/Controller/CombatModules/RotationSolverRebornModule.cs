@@ -4,6 +4,8 @@ namespace Questionable.Controller.CombatModules;
 [RegisterSingleton<ICombatModule, RotationSolverRebornModule>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class RotationSolverRebornModule(RotationSolverRebornIpc rotationSolverRebornIpc) : ICombatModule, IDisposable
 {
+    public string Name => "Rotation Solver Reborn";
+
     public bool CanHandleFight(CombatController.CombatData combatData) => rotationSolverRebornIpc.IsEnabled;
 
     public bool Start(CombatController.CombatData combatData) => rotationSolverRebornIpc.RotationAuto();

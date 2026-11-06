@@ -50,7 +50,7 @@ public sealed class GatherChillIpcTests
     }
 
     [Fact]
-    public void StartJob_OwnsTheReturnedJob()
+    public void StartJob_TracksReturnedJob()
     {
         Assert.True(_ipc.IsAvailable());
         Assert.True(_ipc.IsReady());
@@ -90,7 +90,7 @@ public sealed class GatherChillIpcTests
     [Theory]
     [InlineData(1)]
     [InlineData(2)]
-    public void OlderApi_IdleCannotReleaseAnUncertainApi3Submission(int version)
+    public void OlderApiIdle_DoesNotConfirmUncertainStart(int version)
     {
         _startJob.Configure().InvokeFunc(GatherChillIpc.Owner, 42, 3).Returns(_ => throw new InvalidOperationException("reply lost"));
         Assert.Equal(GatherStartResult.Uncertain, _ipc.StartRequest(42, 3, out _));
@@ -130,7 +130,7 @@ public sealed class GatherChillIpcTests
     }
 
     [Fact]
-    public void LostStartReply_NeedsConfirmationAndIsNeverCancelledBlindly()
+    public void LostStartReply_NeedsConfirmation()
     {
         _startJob.Configure().InvokeFunc(GatherChillIpc.Owner, 42, 3).Returns(_ => throw new InvalidOperationException("reply lost"));
         Assert.Equal(GatherStartResult.Uncertain, _ipc.StartRequest(42, 3, out _));
@@ -166,7 +166,7 @@ public sealed class GatherChillIpcTests
     }
 
     [Fact]
-    public void CancelOwned_CancelsOnlyOurJobOnceAndWaitsForItToSettle()
+    public void CancelJob_CancelsOnlyOurJob()
     {
         Start();
         _ipc.CancelOwned();
@@ -191,7 +191,7 @@ public sealed class GatherChillIpcTests
     }
 
     [Fact]
-    public void ForgottenJob_NeedsConfirmationAfterStableIdle()
+    public void MissingJobAfterIdle_NeedsConfirmation()
     {
         Start();
         _jobState = ExternalOperationStatus.Unknown;

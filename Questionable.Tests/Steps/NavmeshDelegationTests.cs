@@ -194,7 +194,7 @@ public sealed class NavmeshDelegationTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void UnknownOptionalStatusKeepsExistingSubmissionFallback(bool faulted)
+    public void UnknownOptionalStatus_KeepsCurrentRoute(bool faulted)
     {
         using var fixture = new Fixture();
         foreach (var gate in fixture.BooleanStatusGates)
@@ -224,7 +224,7 @@ public sealed class NavmeshDelegationTests
     }
 
     [Fact]
-    public void MountedFlightDispatchesWithoutPreflightGroundScan()
+    public void MountedFlight_SendsWithoutGroundCheck()
     {
         using var fixture = new Fixture();
         fixture.Start();
@@ -240,7 +240,7 @@ public sealed class NavmeshDelegationTests
     }
 
     [Fact]
-    public void UpdateCachesOnlyOptionalStatusFor250MillisecondsAndDispatchRefreshes()
+    public void Update_CachesOptionalStatus()
     {
         using var fixture = new Fixture();
         fixture.Start();
@@ -268,7 +268,7 @@ public sealed class NavmeshDelegationTests
     }
 
     [Fact]
-    public void WhollyIdleUpdateDoesNotQueryOptionalStatusOrGround()
+    public void IdleUpdate_SkipsOptionalStatus()
     {
         using var fixture = new Fixture();
         fixture.Movement.Destination = null;

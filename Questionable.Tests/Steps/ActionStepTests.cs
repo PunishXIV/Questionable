@@ -89,7 +89,7 @@ public sealed class ActionStepTests
     }
 
     [Fact]
-    public void AcceptedWithoutDispatchedSequenceIsNotConfirmedByOtherActions()
+    public void AcceptedActionWithoutSequence_WaitsForConfirmation()
     {
         var executor = CreateExecutor();
         executor.RecordAttempt(true, Request(), _confirmations.Version);
@@ -99,7 +99,7 @@ public sealed class ActionStepTests
     }
 
     [Fact]
-    public void MatchingActionStillWaitsForQuestFlagsAndRetainsConfirmation()
+    public void ConfirmedActionWithQuestFlags_WaitsForFlags()
     {
         var executor = CreateExecutor(withFlags: true);
         executor.RecordAttempt(true, Request(41), _confirmations.Version);
@@ -147,7 +147,7 @@ public sealed class ActionStepTests
     }
 
     [Fact]
-    public void DispatchedRequestDoesNotBorrowSameSpellFromAnotherRequest()
+    public void ActionRequestWithDifferentSequence_Waits()
     {
         var executor = CreateExecutor();
         executor.RecordAttempt(true, Request(41), _confirmations.Version);

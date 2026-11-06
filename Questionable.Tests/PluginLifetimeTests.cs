@@ -143,7 +143,7 @@ public sealed class PluginLifetimeTests
     }
 
     [Fact]
-    public async Task FailureBeforeContainerCreationStillReleasesGlobals()
+    public async Task InitializationFailure_ReleasesGlobals()
     {
         var failure = new IOException("configuration read failed");
         int globalsReleased = 0;
@@ -157,7 +157,7 @@ public sealed class PluginLifetimeTests
     }
 
     [Fact]
-    public async Task CancellationAfterInitializationStartsRollsBackOwnedServices()
+    public async Task InitializationCancellation_RollsBackServices()
     {
         using CancellationTokenSource cancellation = new();
         var initializationStarted = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -190,7 +190,7 @@ public sealed class PluginLifetimeTests
     }
 
     [Fact]
-    public async Task DisposalDuringInitializationWaitsForResourceOwnership()
+    public async Task DisposalDuringInitialization_WaitsForServices()
     {
         var initializationStarted = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
         var finishInitialization = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);

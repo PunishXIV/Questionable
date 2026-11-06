@@ -95,7 +95,7 @@ public sealed class FishTests
     }
 
     [Fact]
-    public void FishStep_WhenFeeshUnavailable_RetainsObjectiveCheckingTask()
+    public void FishStepWithoutFeesh_KeepsItemCheck()
     {
         _feeshIpc.IsAvailable().Returns(false);
         var item = Item(4874, 3);

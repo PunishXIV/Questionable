@@ -63,7 +63,7 @@ internal sealed class GatheringController
     public EStatus Update(Guid? owner)
     {
         if (!owner.HasValue || owner != _operation.OperationId || _currentRequest == null)
-            throw new TaskException("Gather n Chill request ownership was lost");
+            throw new TaskException("Gather n Chill is no longer running Questionable's request");
         if (_operation.RequiresReconciliation || _operation.IsAbandoned)
             throw new TaskException(_operation.BlockReason!);
         if (!_operation.IsTerminal)

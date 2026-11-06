@@ -30,7 +30,7 @@ public sealed class ItemUseModuleTests
     }
 
     [Fact]
-    public void RejectedInitialStart_RetainsDelegateForRollback()
+    public void RejectedStart_KeepsDelegateForRollback()
     {
         _rotation.Start(_data).Returns(false);
         Assert.Throws<TaskException>(() => _module.Start(_data));
@@ -52,7 +52,7 @@ public sealed class ItemUseModuleTests
     }
 
     [Fact]
-    public void FailedPause_PreventsItemUseAndRetainsDelegateForRetry()
+    public void PauseFailure_BlocksItemUse()
     {
         Assert.True(_module.Start(_data));
         _rotation.Pause().Returns(false);
@@ -64,7 +64,7 @@ public sealed class ItemUseModuleTests
     }
 
     [Fact]
-    public void OwnershipCheck_AlsoVerifiesPausedRotation()
+    public void ControlCheck_VerifiesPausedRotation()
     {
         Assert.True(_module.Start(_data));
         _rotation.When(x => x.VerifyActive()).Do(_ => throw new TaskException("lease cancelled"));

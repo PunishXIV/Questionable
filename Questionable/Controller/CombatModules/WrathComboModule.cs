@@ -11,6 +11,8 @@ namespace Questionable.Controller.CombatModules;
 [RegisterSingleton<ICombatModule, WrathComboModule>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class WrathComboModule : ICombatModule, IDisposable
 {
+    public string Name => "Wrath Combo";
+
     private const string CallbackPrefix = "Questionable$Wrath";
     private readonly ICallGateProvider<int, string, object> _callback;
     private readonly Configuration _configuration;
@@ -203,7 +205,7 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
     public void VerifyActive()
     {
         if (_lease == null)
-            throw new TaskException("WrathCombo lease was cancelled.");
+            throw new TaskException("Wrath Combo stopped letting Questionable control it.");
         try
         {
             if (!WrathIPCWrapper.IPCReady())

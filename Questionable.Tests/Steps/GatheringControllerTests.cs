@@ -104,7 +104,7 @@ public sealed class GatheringControllerTests
     }
 
     [Fact]
-    public void Reset_RetainsOwnershipWhileCancellationIsPending()
+    public void Reset_KeepsControlUntilCancelEnds()
     {
         Assert.True(_queue.StartTask(_executor, _task));
         Guid owner = _state.OperationId!.Value;

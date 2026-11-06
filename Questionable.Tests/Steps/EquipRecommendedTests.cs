@@ -27,7 +27,7 @@ public sealed class EquipRecommendedTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void BusyTimesOutBeforeOrAfterSubmissionWithoutStartingCompetingWork(bool submitted)
+    public void BusyStylist_TimesOutWithoutNewRequest(bool submitted)
     {
         if (submitted)
             Assert.Equal(ETaskResult.StillRunning, Update(busy: false));
@@ -45,7 +45,7 @@ public sealed class EquipRecommendedTests
     }
 
     [Fact]
-    public void InitialBusyWaitDoesNotConsumeThePostSubmissionTimeout()
+    public void InitialBusyWait_DoesNotShortenRequestTimeout()
     {
         Update(busy: true);
         _clock.Advance(TimeSpan.FromSeconds(29));
@@ -61,7 +61,7 @@ public sealed class EquipRecommendedTests
     }
 
     [Fact]
-    public void RestartClearsPreviousBusyWaitAndSubmission()
+    public void Restart_ClearsBusyWaitAndRequest()
     {
         Update(busy: false);
         Update(busy: true);

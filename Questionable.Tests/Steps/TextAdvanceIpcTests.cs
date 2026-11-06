@@ -114,7 +114,7 @@ public sealed class TextAdvanceIpcTests : IDisposable
     [InlineData(1)]
     [InlineData(2)]
     [InlineData(3)]
-    public void FailedRefresh_KeepsControlAndRetriesUntilAcknowledged(int failure)
+    public void RefreshFailure_RetriesUntilConfirmed(int failure)
     {
         Tick();
         _configuration.General.DontSkipCutscenes = true;
@@ -149,7 +149,7 @@ public sealed class TextAdvanceIpcTests : IDisposable
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void StoppingOrDisablingIntegration_ReleasesControl(bool disableIntegration)
+    public void StopOrDisable_GivesBackControl(bool disableIntegration)
     {
         Tick();
         _configuration.General.DontSkipCutscenes = true;
@@ -181,7 +181,7 @@ public sealed class TextAdvanceIpcTests : IDisposable
     }
 
     [Fact]
-    public void Dispose_ReleasesControlAndUnsubscribesFromUpdates()
+    public void Dispose_GivesBackControlAndUnsubscribes()
     {
         Tick();
         _ipc.Dispose();

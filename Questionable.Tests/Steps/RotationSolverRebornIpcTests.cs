@@ -88,7 +88,7 @@ public sealed class RotationSolverRebornIpcTests
     [InlineData(false, true)]
     [InlineData(true, false)]
     [InlineData(true, true)]
-    public void FailedItemTransition_RetainsOriginalModeForCleanup(bool resume, bool appliedBeforeThrow)
+    public void ItemTransitionFailure_RestoresOriginalMode(bool resume, bool appliedBeforeThrow)
     {
         _mode = Mode.Manual;
         var item = CreateItemModule();
@@ -191,7 +191,7 @@ public sealed class RotationSolverRebornIpcTests
     }
 
     [Fact]
-    public void ThrowAfterStart_PreservesRollbackObligation()
+    public void StartError_RollsBackMode()
     {
         _mode = Mode.Manual;
         _throwAfterChange = true;
@@ -238,7 +238,7 @@ public sealed class RotationSolverRebornIpcTests
     }
 
     [Fact]
-    public void MissingThenReturningSameProvider_DoesNotBlindlyStopPotentialManualRun()
+    public void ReturningProvider_DoesNotStopManualRun()
     {
         object? previous = _provider;
         Assert.True(_ipc.RotationAuto());

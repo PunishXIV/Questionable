@@ -32,7 +32,7 @@ public sealed class YesAlreadyIpcTests
     }
 
     [Fact]
-    public void ReEnabledByUserMidRunIsLeftAloneAndOwnershipEndsWithTheRun()
+    public void UserEnablesYesAlready_KeepsItEnabled()
     {
         var (set, owned) = YesAlreadyIpc.DecideToggle(hasActiveQuest: true, isEnabled: true, disabledByQuestionable: true);
         Assert.Null(set);
@@ -48,7 +48,7 @@ public sealed class YesAlreadyIpcTests
     }
 
     [Fact]
-    public void IdleWithoutOwnershipDoesNothing()
+    public void IdleWithoutControl_DoesNothing()
     {
         var (set, owned) = YesAlreadyIpc.DecideToggle(hasActiveQuest: false, isEnabled: true, disabledByQuestionable: false);
         Assert.Null(set);

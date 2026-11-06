@@ -14,7 +14,7 @@ public sealed class CraftingOperationStateTests
     public CraftingOperationStateTests() => _state = new CraftingOperationState(_clock);
 
     [Fact]
-    public void RecordedSubmission_BlocksASecondStartBeforeAnyStatusResponse()
+    public void StartedCraft_BlocksSecondStart()
     {
         Guid id = _state.BeginSubmission();
 
@@ -25,7 +25,7 @@ public sealed class CraftingOperationStateTests
     }
 
     [Fact]
-    public void NormalCompletion_RequiresTheOwnerAndFreshStableIdle()
+    public void CompletedCraft_WaitsForFreshIdle()
     {
         Guid id = _state.BeginSubmission();
         _state.ObserveStatus(ArtisanStatus.Busy);
@@ -41,7 +41,7 @@ public sealed class CraftingOperationStateTests
     }
 
     [Fact]
-    public void Abandonment_RetainsOwnershipUntilExplicitConfirmation()
+    public void AbandonedCraft_WaitsForConfirmation()
     {
         Guid id = _state.BeginSubmission();
         _state.Abandon(id);
@@ -59,7 +59,7 @@ public sealed class CraftingOperationStateTests
     }
 
     [Fact]
-    public void UncertainSubmission_DoesNotTreatIdleAsProofTheCallDidNothing()
+    public void UncertainCraftStart_WaitsForConfirmation()
     {
         Guid id = _state.BeginSubmission();
         _state.MarkUncertain(id);
@@ -75,7 +75,7 @@ public sealed class CraftingOperationStateTests
     [InlineData((int)ArtisanStatus.Queued)]
     [InlineData((int)ArtisanStatus.Paused)]
     [InlineData((int)ArtisanStatus.Unavailable)]
-    public void Confirmation_CannotReleaseBusyQueuedPausedOrUnavailableWork(int status)
+    public void Confirmation_RejectsBusyOrUnavailableCraft(int status)
     {
         _state.BeginSubmission();
         _state.AbandonCurrent();
@@ -88,7 +88,7 @@ public sealed class CraftingOperationStateTests
     }
 
     [Fact]
-    public void ProviderLoss_ImmediatelyRequiresReconciliationAndInvalidatesStableIdle()
+    public void ProviderLoss_RequiresConfirmation()
     {
         Guid id = _state.BeginSubmission();
         ObserveStableIdle();
@@ -105,7 +105,7 @@ public sealed class CraftingOperationStateTests
     }
 
     [Fact]
-    public void ProviderLoss_IsStickyEvenAfterIdleOrAnotherBusySession()
+    public void ProviderLossAfterIdle_RequiresConfirmation()
     {
         Guid id = _state.BeginSubmission();
         _state.ObserveStatus(ArtisanStatus.Busy);

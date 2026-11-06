@@ -17,7 +17,7 @@ namespace Questionable.Tests.Steps;
 public sealed class ExternalOperationCoordinatorTests
 {
     [Fact]
-    public void LaterProvidersSeeExecutorDetachedByEarlierReconciliation()
+    public void LaterProviders_SeeStoppedExecutor()
     {
         using var fixture = new ExternalOperationFixture();
         fixture.Crafting.BeginSubmission();
@@ -38,7 +38,7 @@ public sealed class ExternalOperationCoordinatorTests
     }
 
     [Fact]
-    public void CombatCleanupStopsSchedulingBeforeSuccessfulRetryReleasesTheBarrier()
+    public void CombatCleanup_StopsTasksUntilFinished()
     {
         var module = Substitute.For<ICombatModule>();
         module.CanHandleFight(Arg.Any<CombatController.CombatData>()).Returns(true);
@@ -66,7 +66,7 @@ public sealed class ExternalOperationCoordinatorTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void DetachedOwnerStopsSchedulingBeforeTerminalPollCanReleaseIt(bool alreadyAbandoned)
+    public void StoppedOperation_StopsTasksBeforeStatusCheck(bool alreadyAbandoned)
     {
         using var fixture = new ExternalOperationFixture();
         var operation = fixture.Purchase;
@@ -107,7 +107,7 @@ public sealed class ExternalOperationCoordinatorTests
     }
 
     [Fact]
-    public void EveryOwnerIsPolledEvenAfterEarlierProviderBlocksOrThrows()
+    public void AllProviders_ArePolledAfterError()
     {
         using var fixture = new ExternalOperationFixture();
         fixture.Crafting.BeginSubmission();
@@ -222,7 +222,7 @@ public sealed class ExternalOperationCoordinatorTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void OwnedConfirmationRefreshesStatusAndKeepsOtherOwnersBlocked(bool becameBusy)
+    public void Confirmation_RefreshesStatusAndBlocksOtherWork(bool becameBusy)
     {
         using var fixture = new ExternalOperationFixture();
         Guid owner = fixture.Purchase.BeginSubmission();
@@ -288,7 +288,7 @@ public sealed class ExternalOperationCoordinatorTests
     [InlineData("gathering")]
     [InlineData("fishing")]
     [InlineData("duty")]
-    public void OnlyTheMatchingHealthyExecutorCanContinueWhileOwnerIsRetained(string provider)
+    public void MatchingExecutor_ContinuesWhileRunning(string provider)
     {
         using var fixture = new ExternalOperationFixture();
         ITaskExecutor executor;
@@ -331,7 +331,7 @@ public sealed class ExternalOperationCoordinatorTests
     }
 
     [Fact]
-    public void HealthySoloDutyAllowsLocalTasksButLostOwnershipStopsScheduling()
+    public void SoloDutyLoss_StopsTaskScheduling()
     {
         using var fixture = new ExternalOperationFixture();
         fixture.BossMod.Ipc.SetPresetForSoloDuty(BossModIpc.EPreset.QuestBattle);
@@ -442,7 +442,7 @@ public sealed class ExternalOperationCoordinatorTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void OwnerIsTheProviderWhoseExecutorRuns(bool crafting)
+    public void Executor_SelectsItsProvider(bool crafting)
     {
         using var fixture = new ExternalOperationFixture();
         fixture.Purchase.BeginSubmission();
@@ -493,7 +493,7 @@ public sealed class ExternalOperationCoordinatorTests
     }
 
     [Fact]
-    public void NothingIsShownWithoutRetainedWork()
+    public void NoOperation_HidesStatus()
     {
         using var fixture = new ExternalOperationFixture();
 

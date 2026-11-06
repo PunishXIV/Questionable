@@ -11,6 +11,8 @@ internal sealed class BossModModule
     Configuration configuration,
     IFramework framework) : ICombatModule, IDisposable
 {
+    public string Name => "Boss Mod";
+
     private bool _justLoaded = true;
 
     public bool CanHandleFight(CombatController.CombatData combatData)

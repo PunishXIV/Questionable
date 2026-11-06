@@ -17,7 +17,7 @@ public sealed class NavigationSubmissionTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void StatusFailureIsUnknownAndOnlyOwnedMovementIsBusy(bool missing)
+    public void StatusFailure_OnlyBlocksQuestionableMovement(bool missing)
     {
         using var fixture = new Fixture();
         fixture.Start();
@@ -64,7 +64,7 @@ public sealed class NavigationSubmissionTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void NavmeshSubmissionPropagatesStopAndMoveErrors(bool stopFails)
+    public void NavmeshRequest_ReportsStopAndMoveErrors(bool stopFails)
     {
         using var fixture = new Fixture();
         var cause = new InvalidOperationException("Submission failed");
@@ -82,7 +82,7 @@ public sealed class NavigationSubmissionTests
     [InlineData(false, true)]
     [InlineData(true, false)]
     [InlineData(true, true)]
-    public void ControllerSubmissionFailureClearsRequestAndPreservesCause(bool stopFails, bool delayed)
+    public void RouteRequestFailure_ClearsRequestAndKeepsCause(bool stopFails, bool delayed)
     {
         using var fixture = new Fixture();
         var cause = new InvalidOperationException("Original provider diagnostic");
@@ -101,7 +101,7 @@ public sealed class NavigationSubmissionTests
     }
 
     [Fact]
-    public void SuccessfulSubmissionStopsBeforeMovingAndThenUpdatesStartTime()
+    public void RouteStart_StopsBeforeMoving()
     {
         using var fixture = new Fixture();
         var calls = new List<string>();
@@ -133,7 +133,7 @@ public sealed class NavigationSubmissionTests
     [InlineData("unknown-duty", true)]
     [InlineData("feesh", false)]
     [InlineData("feesh", true)]
-    public void ManualProviderBlocksBothInitialEntryPointsBeforeNativePreparation(string provider, bool direct)
+    public void ManualProvider_BlocksRoutesBeforeSetup(string provider, bool direct)
     {
         using var fixture = new Fixture();
         fixture.Block(provider);
@@ -183,7 +183,7 @@ public sealed class NavigationSubmissionTests
     }
 
     [Fact]
-    public void TakeoverIsCheckedAgainImmediatelyBeforeDispatch()
+    public void ManualTakeover_IsCheckedBeforeSending()
     {
         using var fixture = new Fixture();
         fixture.Start();
@@ -198,7 +198,7 @@ public sealed class NavigationSubmissionTests
     }
 
     [Fact]
-    public void RetainedOperationStillSilentlyClearsAtDispatch()
+    public void PendingOperation_ClearsBeforeSending()
     {
         using var fixture = new Fixture();
         fixture.Start();
@@ -220,7 +220,7 @@ public sealed class NavigationSubmissionTests
     }
 
     [Fact]
-    public void AbsentOptionalProvidersDoNotBlockSubmission()
+    public void MissingOptionalProviders_DoNotBlockRoute()
     {
         using var fixture = new Fixture();
         fixture.Duty.Available = false;
@@ -262,7 +262,7 @@ public sealed class NavigationSubmissionTests
     [Theory]
     [InlineData("purchase")]
     [InlineData("gather")]
-    public void BusyStatusLostBeforeDispatchPreventsReplacingProviderRoute(string provider)
+    public void LostBusyStatus_DoesNotReplaceProviderRoute(string provider)
     {
         using var fixture = new Fixture();
         fixture.Start();
@@ -335,7 +335,7 @@ public sealed class NavigationSubmissionTests
     }
 
     [Fact]
-    public void OnePointRecalculationDispatchesAccumulatedPartialRoute()
+    public void OnePointRecalculation_SendsPartialRoute()
     {
         using var fixture = new Fixture();
         fixture.Movement.Destination!.PartialRoute.Add(Vector3.One);
@@ -350,7 +350,7 @@ public sealed class NavigationSubmissionTests
     }
 
     [Fact]
-    public void EmptyDirectRouteFailsBeforeNativePreparation()
+    public void EmptyDirectRoute_FailsBeforeSetup()
     {
         using var fixture = new Fixture();
         fixture.AssertFailure(Reason.NoRoute, () => fixture.Movement.NavigateTo(default, null, new List<Vector3>(), new()));

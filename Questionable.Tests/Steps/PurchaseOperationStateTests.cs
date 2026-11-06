@@ -13,7 +13,7 @@ public sealed class PurchaseOperationStateTests
     public PurchaseOperationStateTests() => _state = new PurchaseOperationState(_clock);
 
     [Fact]
-    public void Submission_BlocksReplacementBeforeProviderReply()
+    public void StartRequest_BlocksSecondPurchase()
     {
         Guid owner = _state.BeginSubmission();
         Assert.Throws<TaskException>(() => _state.BeginSubmission());
@@ -22,7 +22,7 @@ public sealed class PurchaseOperationStateTests
     }
 
     [Fact]
-    public void Success_RemainsOwnedUntilExecutorVerifiesInventory()
+    public void SuccessfulPurchase_WaitsForItemCheck()
     {
         Guid owner = Start();
         _state.ObserveStatus(owner, ExternalOperationStatus.Succeeded, "done");
@@ -37,7 +37,7 @@ public sealed class PurchaseOperationStateTests
     [InlineData((int)ExternalOperationStatus.Succeeded)]
     [InlineData((int)ExternalOperationStatus.Failed)]
     [InlineData((int)ExternalOperationStatus.Cancelled)]
-    public void DetachedPurchase_ReleasesOnAnyAuthoritativeTerminalResult(int result)
+    public void StoppedPurchase_EndsOnAnyResult(int result)
     {
         var terminal = (ExternalOperationStatus)result;
         Guid owner = Start();
@@ -49,7 +49,7 @@ public sealed class PurchaseOperationStateTests
     }
 
     [Fact]
-    public void AcceptedCancellation_IsNotCompletionAndEventuallyNeedsReconciliation()
+    public void AcceptedCancel_WaitsForFinishedStatus()
     {
         Guid owner = Start();
         _state.AbandonCurrent();
@@ -69,7 +69,7 @@ public sealed class PurchaseOperationStateTests
     }
 
     [Fact]
-    public void RejectedCancellation_RetriesOnlyTheOwnedIdAndIsThrottled()
+    public void RejectedCancel_RetriesSamePurchase()
     {
         Start();
         _state.AbandonCurrent();
@@ -82,7 +82,7 @@ public sealed class PurchaseOperationStateTests
     }
 
     [Fact]
-    public void UnknownStatus_IsBoundedButNeverReleasesOwnership()
+    public void UnknownStatus_NeedsConfirmation()
     {
         Guid owner = Start();
         _state.ObserveStatus(owner, ExternalOperationStatus.Unknown, "unavailable");

@@ -75,7 +75,7 @@ internal abstract class OwnedOperationProvider(OwnedOperationState operation) : 
         {
             _statusPoll.Restart();
             if (!hasMatchingExecutor)
-                context.TryCleanup(CancelOwned, "detached external operation");
+                context.TryCleanup(CancelOwned, "plugin work left behind");
             if (!context.TryCleanup(PollOperation, "external operation status"))
             {
                 host.Stop("External operation status unavailable");
@@ -94,7 +94,7 @@ internal abstract class OwnedOperationProvider(OwnedOperationState operation) : 
             return false;
 
         if (host.IsActive)
-            host.Stop("External operation requires reconciliation");
+            host.Stop("Plugin work needs checking");
 
         host.Status = operation.BlockReason;
         return true;

@@ -116,7 +116,7 @@ internal static class Fish
         public override ETaskResult Update()
         {
             if (!_owner.HasValue || _operation.OperationId != _owner)
-                throw new TaskException("Feesh fishing ownership was lost");
+                throw new TaskException("Feesh is no longer fishing for Questionable");
 
             if (_operation.IsTerminal)
             {

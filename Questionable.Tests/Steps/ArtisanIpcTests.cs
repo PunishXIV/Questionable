@@ -122,7 +122,7 @@ public sealed class ArtisanIpcTests
     }
 
     [Fact]
-    public void ListActionReturning_IsOnlySubmission()
+    public void ListStart_ReturnsSubmitted()
     {
         _startList.When(x => x.InvokeAction(ListId)).Do(_ => Assert.True(_operation.HasOperation));
         Assert.Equal(ArtisanStartResult.Submitted, _ipc.CraftList(ListId));
@@ -155,7 +155,7 @@ public sealed class ArtisanIpcTests
     }
 
     [Fact]
-    public void RecipeSubmission_PassesSynthesisCountUnchanged()
+    public void RecipeStart_PassesRequestedCount()
     {
         _craft.When(x => x.InvokeAction(42, 2)).Do(_ => Assert.True(_operation.HasOperation));
         Assert.Equal(ArtisanStartResult.Submitted, _ipc.CraftItem(42, 2));
@@ -163,7 +163,7 @@ public sealed class ArtisanIpcTests
     }
 
     [Fact]
-    public void PendingSubmission_BlocksDuplicateAndFallbackEvenWhileProviderStillIdle()
+    public void SubmittedRecipe_BlocksOtherStarts()
     {
         Assert.Equal(ArtisanStartResult.Submitted, _ipc.CraftList(ListId));
         Guid? originalId = _operation.OperationId;
@@ -178,7 +178,7 @@ public sealed class ArtisanIpcTests
     }
 
     [Fact]
-    public void ConfirmedMissingList_CanFallBackWithoutRetainingAnOperation()
+    public void MissingList_AllowsRecipeStart()
     {
         _lists.InvokeFunc().Returns(new Dictionary<int, string>());
         Assert.Equal(ArtisanStartResult.MissingList, _ipc.CraftList(ListId));

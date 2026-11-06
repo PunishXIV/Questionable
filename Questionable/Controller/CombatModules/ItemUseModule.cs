@@ -16,6 +16,8 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
     private ICombatModule? _delegate;
     private bool _isDoingRotation;
 
+    public string Name => _delegate?.Name ?? "Item use";
+
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
         if (combatData.CombatItemUse == null)

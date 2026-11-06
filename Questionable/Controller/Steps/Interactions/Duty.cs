@@ -105,7 +105,7 @@ internal static class Duty
         {
             var operation = _autoDutyIpc.Operation;
             if (_owner == null || operation.OperationId != _owner)
-                throw new TaskException("AutoDuty operation ownership was lost.");
+                throw new TaskException("AutoDuty is no longer running Questionable's duty.");
             if (operation.RequiresReconciliation || operation.IsAbandoned)
                 throw new TaskException(operation.Message);
             if (!operation.IsTerminal)

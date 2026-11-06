@@ -52,7 +52,7 @@ public sealed class PurchaseTests
     }
 
     [Fact]
-    public void PartialInventory_SubmitsTargetTotalAndWaitsForTerminalSuccess()
+    public void PartialItems_StartsTargetTotalPurchase()
     {
         _owned = 2;
         Start();
@@ -107,7 +107,7 @@ public sealed class PurchaseTests
     [InlineData((int)EStartResult.NotAllowed)]
     [InlineData((int)EStartResult.ItemUnavailable)]
     [InlineData((int)EStartResult.NotReady)]
-    public void ExplicitRejection_ReleasesSubmissionAndDoesNotCancelOtherWork(int result)
+    public void RejectedPurchase_ClearsStartOnly(int result)
     {
         _start.InvokeFunc(2, Arg.Any<(uint, uint)[]>()).Returns((result, Guid.Empty, "rejected"));
         Assert.Throws<TaskException>(Start);
@@ -117,7 +117,7 @@ public sealed class PurchaseTests
     }
 
     [Fact]
-    public void ItemsArrivingDuringSubmission_AllowEmptyListOnlyAfterInventoryVerification()
+    public void ItemsAlreadyOwned_FinishesWithoutPurchase()
     {
         _start.InvokeFunc(2, Arg.Any<(uint, uint)[]>()).Returns(_ =>
         {
@@ -131,7 +131,7 @@ public sealed class PurchaseTests
     [Theory]
     [InlineData(true)]
     [InlineData(false)]
-    public void AmbiguousStart_RetainsOwnershipAndCannotBeRetried(bool throws)
+    public void UncertainPurchaseStart_BlocksRetry(bool throws)
     {
         _start.InvokeFunc(2, Arg.Any<(uint, uint)[]>()).Returns(_ => throws
             ? throw new InvalidOperationException("reply lost after acceptance")
@@ -147,7 +147,7 @@ public sealed class PurchaseTests
     }
 
     [Fact]
-    public void QueueReset_RetainsIdUntilCancellationAcknowledged()
+    public void QueueReset_KeepsPurchaseUntilCancelled()
     {
         Start();
         Assert.True(_queue.Reset());
@@ -179,7 +179,7 @@ public sealed class PurchaseTests
     }
 
     [Fact]
-    public void StopDuringSubmission_CancelsAcceptedOperationWhenItsIdArrives()
+    public void StopDuringStart_CancelsReturnedPurchase()
     {
         _start.InvokeFunc(2, Arg.Any<(uint, uint)[]>()).Returns(_ =>
         {
@@ -194,7 +194,7 @@ public sealed class PurchaseTests
     }
 
     [Fact]
-    public void UnsupportedApi_RejectsBeforeAcquiringOwnershipOrStoppingMovement()
+    public void UnsupportedApi_StopsBeforeMovement()
     {
         _version.InvokeFunc().Returns(1);
         Assert.Throws<TaskException>(Start);
@@ -208,7 +208,7 @@ public sealed class PurchaseTests
     [InlineData((int)EStartResult.Uncertain)]
     [InlineData(-2)]
     [InlineData(1234)]
-    public void UnrecognisedStartResult_RetainsUncertainty(int result)
+    public void UnknownStartResult_NeedsConfirmation(int result)
     {
         _start.InvokeFunc(2, Arg.Any<(uint, uint)[]>()).Returns((result, Guid.Empty, "new result"));
         Assert.Throws<TaskException>(Start);
@@ -218,7 +218,7 @@ public sealed class PurchaseTests
     }
 
     [Fact]
-    public void CancellationException_RetainsOwnerAndRetriesWithoutStartingAgain()
+    public void CancelError_RetriesWithoutNewPurchase()
     {
         Start();
         _cancel.InvokeFunc(_providerId).Returns(_ => throw new InvalidOperationException("unloaded"));
@@ -232,7 +232,7 @@ public sealed class PurchaseTests
     }
 
     [Fact]
-    public void StatusFailure_TimesOutWithoutReleasingProviderOwnership()
+    public void StatusFailure_TimesOutWithPurchasePending()
     {
         Start();
         _status.InvokeFunc(_providerId).Returns(_ => throw new InvalidOperationException("unloaded"));
@@ -277,7 +277,7 @@ public sealed class PurchaseTests
     [Theory]
     [InlineData((int)ExternalOperationStatus.Failed)]
     [InlineData((int)ExternalOperationStatus.Cancelled)]
-    public void TerminalFailure_StopsEvenWhenItemsArePresent(int result)
+    public void PurchaseFailure_StopsWithItemsPresent(int result)
     {
         Start();
         _owned = 5;

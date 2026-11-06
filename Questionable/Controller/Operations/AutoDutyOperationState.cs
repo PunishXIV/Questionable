@@ -76,7 +76,7 @@ internal sealed class AutoDutyOperationState(TimeProvider? timeProvider = null)
             RequireReconciliation("AutoDuty status was lost; check its work before confirming idle");
 
         if (stopped == false && _observedStop)
-            RequireReconciliation("AutoDuty started again after stopping; its new work is not owned by Questionable");
+            RequireReconciliation("AutoDuty started again after stopping; Questionable didn't start it");
 
         if (!RequiresReconciliation)
         {
@@ -99,10 +99,10 @@ internal sealed class AutoDutyOperationState(TimeProvider? timeProvider = null)
                 _entryWaitSince = _clock.GetTimestamp();
             else if (RunSubmitted && (!ObservedRunning || !EnteredDuty) &&
                      _clock.GetElapsedTime(_entryWaitSince) >= TimeSpan.FromSeconds(ObservedRunning ? 120 : 15))
-                RequireReconciliation("AutoDuty did not enter or queue for the requested duty; its void Run call may have been rejected");
+                RequireReconciliation("AutoDuty didn't enter or queue for the duty; it may have refused the run");
 
             if (_stoppingSince is { } stopping && _clock.GetElapsedTime(stopping) >= TimeSpan.FromSeconds(15))
-                RequireReconciliation("AutoDuty stop or native duty exit has not been confirmed");
+                RequireReconciliation("AutoDuty hasn't confirmed it stopped and left the duty");
         }
 
         bool? busy = stopped == null || !game.Available ? null :

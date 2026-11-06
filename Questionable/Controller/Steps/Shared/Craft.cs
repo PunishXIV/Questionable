@@ -266,7 +266,7 @@ internal static class Craft
             ArtisanStatus status = artisanIpc.GetStatus();
             craftingOperation.ObserveStatus(status);
             if (!craftingOperation.CanContinue(_operationId))
-                throw new TaskException(craftingOperation.BlockReason ?? "Artisan crafting ownership was lost");
+                throw new TaskException(craftingOperation.BlockReason ?? "Artisan is no longer crafting for Questionable");
 
             for (int i = 0; i < _itemTargets.Count; ++i)
             {

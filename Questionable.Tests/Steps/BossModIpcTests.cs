@@ -48,7 +48,7 @@ public sealed class BossModIpcTests
     [InlineData(false, true)]
     [InlineData(true, false)]
     [InlineData(true, true)]
-    public void FailedItemTransition_RetainsOriginalPresetForCleanup(bool resume, bool appliedBeforeThrow)
+    public void ItemTransitionFailure_RestoresOriginalPreset(bool resume, bool appliedBeforeThrow)
     {
         var item = CreateItemModule();
         if (resume)
@@ -239,7 +239,7 @@ public sealed class BossModIpcTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void OverworldCombatEnd_KeepsOwnershipUntilStopAndRestoresPolicy(bool initiallyEnabled)
+    public void OverworldCombatEnd_RestoresPolicyOnStop(bool initiallyEnabled)
     {
         _context.Settings[("AutorotationConfig", "ClearPresetOnCombatEnd")] = initiallyEnabled;
         Ipc.SetActivePreset(BossModIpc.EPreset.Overworld);
@@ -261,7 +261,7 @@ public sealed class BossModIpcTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void FailedPresetCleanup_RestoresIndependentSettingsAndRetainsRetry(bool failRead)
+    public void PresetCleanupFailure_RetriesAndRestoresSettings(bool failRead)
     {
         _context.ActivePreset = null;
         Ipc.SetPresetForSoloDuty(BossModIpc.EPreset.QuestBattle);
@@ -280,7 +280,7 @@ public sealed class BossModIpcTests
     }
 
     [Fact]
-    public void RejectedClear_RetainsCleanupUntilPresetIsActuallyReleased()
+    public void RejectedClear_KeepsCleanupPending()
     {
         _context.ActivePreset = null;
         Ipc.SetActivePreset(BossModIpc.EPreset.Overworld);
@@ -304,7 +304,7 @@ public sealed class BossModIpcTests
     }
 
     [Fact]
-    public void RejectedPreviousPresetRestore_RetainsCleanup()
+    public void PresetRestoreFailure_KeepsCleanupPending()
     {
         Ipc.SetActivePreset(BossModIpc.EPreset.Overworld);
         _context.RejectActivation = true;
@@ -315,7 +315,7 @@ public sealed class BossModIpcTests
     }
 
     [Fact]
-    public void ThrowAfterActivation_RetainsEnoughOwnershipToRestore()
+    public void ActivationError_RestoresPreviousPreset()
     {
         _context.AfterActivation = () => throw new InvalidOperationException("lost response");
         Assert.Throws<TaskException>(() => Ipc.SetActivePreset(BossModIpc.EPreset.Overworld));
@@ -327,7 +327,7 @@ public sealed class BossModIpcTests
     }
 
     [Fact]
-    public void ThrowAfterSettingMutation_RetainsPartialAcquisitionBeforePresetActivation()
+    public void SettingError_RestoresChangedSettings()
     {
         _context.AfterSettingWrite = (_, field, _) =>
         {
@@ -344,7 +344,7 @@ public sealed class BossModIpcTests
     }
 
     [Fact]
-    public void FailedSettingRestore_DoesNotDiscardOtherObligations()
+    public void SettingRestoreFailure_KeepsOtherCleanup()
     {
         Ipc.SetPresetForSoloDuty(BossModIpc.EPreset.QuestBattle);
         _context.SettingError = (_, field) => field == "ClearPresetOnCombatEnd" ? "Rejected" : null;
@@ -358,7 +358,7 @@ public sealed class BossModIpcTests
     }
 
     [Fact]
-    public void ConfigurationQuery_UsesNativeContractAndRejectsInvalidReadback()
+    public void ConfigurationRead_RejectsInvalidResponse()
     {
         _context.ConfigurationEndpoint.Configure().InvokeFunc(
             Arg.Is<IReadOnlyList<string>>(x => x.Count == 2 && x[0] == "ZoneModuleConfig"), false)
@@ -371,7 +371,7 @@ public sealed class BossModIpcTests
     }
 
     [Fact]
-    public void DisableWithoutOwnership_DoesNotTouchManualPresetOrConfiguration()
+    public void DisableWithoutControl_LeavesManualPreset()
     {
         Ipc.DisableSoloDutyPreset();
         Ipc.Cleanup();
@@ -381,7 +381,7 @@ public sealed class BossModIpcTests
     }
 
     [Fact]
-    public void ManualPresetTakeover_IsPreservedAndRequiresExplicitIdleAcknowledgement()
+    public void ManualPresetChange_WaitsForConfirmation()
     {
         Ipc.SetPresetForSoloDuty(BossModIpc.EPreset.QuestBattle);
         _context.ActivePreset = "Manual replacement";
@@ -419,7 +419,7 @@ public sealed class BossModIpcTests
     }
 
     [Fact]
-    public void NativeVersionStillRequired_ForReadinessAndAcquisition()
+    public void VersionCheck_RequiredBeforeStarting()
     {
         _context.Provider.Version.Returns((Version)null!);
         Assert.False(Ipc.IsReady());
@@ -446,7 +446,7 @@ public sealed class BossModIpcTests
     [Theory]
     [InlineData(null)]
     [InlineData("User preset")]
-    public void StopBeforeOwnershipPoll_WithMultiplePresets_RetainsBarrierWithoutClearingManualWork(string? previous)
+    public void StopWithMultiplePresets_LeavesManualPreset(string? previous)
     {
         _context.ActivePreset = previous;
         Ipc.SetActivePreset(BossModIpc.EPreset.Overworld);

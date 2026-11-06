@@ -65,7 +65,7 @@ public sealed class SoloDutyTests
     }
 
     [Fact]
-    public void RetryCounter_UnchangedQuestRetainsConsecutiveFailuresUntilLimit()
+    public void SameQuest_KeepsFailureCount()
     {
         var counter = new SinglePlayerDuty.RetryCounter();
         var questId = new QuestId(1);
@@ -202,7 +202,7 @@ public sealed class SoloDutyTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void OrdinaryDeath_RetainsOwnedPresetForNativeRetryAndRestoresActualPolicy(bool initiallyEnabled)
+    public void DeathRetry_RestoresPreviousPolicy(bool initiallyEnabled)
     {
         _context.Settings[("AutorotationConfig", "ClearPresetOnDeath")] = initiallyEnabled;
         var executor = new SinglePlayerDuty.EnableAiExecutor(_context.Ipc);
@@ -231,7 +231,7 @@ public sealed class SoloDutyTests
     }
 
     [Fact]
-    public void EnableCompletion_KeepsOwnershipAcrossIntermediateTasksUntilControllerCleanup()
+    public void EnableAi_KeepsControlUntilControllerCleanup()
     {
         var executor = new SinglePlayerDuty.EnableAiExecutor(_context.Ipc);
         var queue = new TaskQueue(NullLogger.Instance);
@@ -256,7 +256,7 @@ public sealed class SoloDutyTests
     [Theory]
     [InlineData(454, "Questionable - Quest Battles")]
     [InlineData(1045, "Questionable - Normal Movement")]
-    public void ResetDuringActivationTask_ReleasesDutySelectedPreset(uint cfcId, string expectedPreset)
+    public void ResetDuringActivation_RestoresUserPreset(uint cfcId, string expectedPreset)
     {
         var originalSettings = _context.Settings.ToDictionary(x => x.Key, x => x.Value);
         var queue = new TaskQueue(NullLogger.Instance);
@@ -286,7 +286,7 @@ public sealed class SoloDutyTests
     }
 
     [Fact]
-    public void FailedReset_DoesNotLoseCleanupWhenExecutorIsDetached()
+    public void ResetFailure_KeepsCleanupPending()
     {
         _context.ActivePreset = null;
         var queue = new TaskQueue(NullLogger.Instance);

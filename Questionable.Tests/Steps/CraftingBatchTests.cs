@@ -68,7 +68,7 @@ public sealed class CraftingBatchTests
     }
 
     [Fact]
-    public void ExplicitCraft_RequiresNonemptyMatchingNativeMetadata()
+    public void ExplicitCraft_RequiresMatchingRecipeData()
     {
         var task = LoadTask(538, 1937);
 
@@ -79,7 +79,7 @@ public sealed class CraftingBatchTests
     }
 
     [Fact]
-    public void UnknownQuestMetadata_RejectsEvenWhenNativeIdsMatchThePath()
+    public void UnknownQuestData_RejectsMatchingRecipe()
     {
         var step = CraftStep(2219, 1);
         var quest = QuestTestData.CreateQuest(new QuestId(ushort.MaxValue), QuestTestData.Seq(255, step));
@@ -243,7 +243,7 @@ public sealed class CraftingBatchTests
     }
 
     [Fact]
-    public void LegacyKnownList_ReturnsExistingTargetsWithoutNativeMetadata()
+    public void KnownList_ReturnsExistingTargets()
     {
         var task = LoadTask(141, null);
 

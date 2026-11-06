@@ -92,7 +92,7 @@ internal static class Purchase
         public override ETaskResult Update()
         {
             if (!_owner.HasValue || _operation.OperationId != _owner || _operation.RequiresReconciliation)
-                throw new TaskException(_operation.BlockReason ?? "Knightshopper purchase ownership was lost");
+                throw new TaskException(_operation.BlockReason ?? "Knightshopper is no longer buying for Questionable");
 
             ExternalOperationStatus state = _operation.Status;
             switch (state)

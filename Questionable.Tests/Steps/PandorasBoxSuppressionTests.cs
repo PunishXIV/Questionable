@@ -81,7 +81,7 @@ public sealed class PandorasBoxSuppressionTests
     }
 
     [Fact]
-    public void StillOwnedFeatureIsNotReadAsUserDisabledWhenTheNextRunStarts()
+    public void NextRun_DoesNotReadPausedFeatureAsUserChoice()
     {
         var suppression = Create();
         Update(suppression, active: true);
@@ -110,7 +110,7 @@ public sealed class PandorasBoxSuppressionTests
     }
 
     [Fact]
-    public void MissingProviderMakesNoCallsAndKeepsTheObligation()
+    public void MissingProvider_MakesNoCalls()
     {
         var suppression = Create();
         Update(suppression, active: true);

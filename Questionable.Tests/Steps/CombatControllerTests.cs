@@ -117,7 +117,7 @@ public sealed class CombatControllerTests : IDisposable
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void FailedCleanup_BlocksReplacementAndRetainsModuleUntilRetry(bool throws)
+    public void CleanupFailure_BlocksNewCombatModule(bool throws)
     {
         Assert.True(_controller.Start(CombatTestData.Create()));
         _module.Stop().Returns(_ => throws ? throw new InvalidOperationException("unavailable") : false);
@@ -135,7 +135,7 @@ public sealed class CombatControllerTests : IDisposable
     }
 
     [Fact]
-    public void FailedStartAndRollback_RetainCleanup()
+    public void StartFailure_KeepsCleanupPending()
     {
         _module.Start(Arg.Any<CombatController.CombatData>()).Returns(false);
         _module.Stop().Returns(false);
@@ -150,7 +150,7 @@ public sealed class CombatControllerTests : IDisposable
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void LostOwnership_StopsBeforeAccessingMovementOrTargets(bool throwsTaskException)
+    public void LostControl_StopsBeforeGameAccess(bool throwsTaskException)
     {
         Assert.True(_controller.Start(CombatTestData.Create()));
         Exception failure = throwsTaskException

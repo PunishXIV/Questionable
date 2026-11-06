@@ -88,7 +88,7 @@ public sealed class NavigationFailureCaptureTests
     }
 
     [Fact]
-    public void FailureSurvivesStopNewRequestAndSuccessfulSubmission()
+    public void Failure_RemainsAfterNewRoute()
     {
         using var fixture = new Fixture();
         fixture.Start();
@@ -165,7 +165,7 @@ public sealed class NavigationFailureCaptureTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void BlockedInitialSubmissionCannotAttributePreviousRequest(bool direct)
+    public void BlockedRoute_DoesNotUsePreviousDestination(bool direct)
     {
         using var fixture = new Fixture();
         fixture.Start();

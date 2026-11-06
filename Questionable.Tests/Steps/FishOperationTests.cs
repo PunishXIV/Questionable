@@ -152,7 +152,7 @@ public sealed class FishOperationTests : IDisposable
     }
 
     [Fact]
-    public void RefusedCatch_ReleasesSubmissionWithoutCancelling()
+    public void RefusedCatch_ClearsStartWithoutCancelling()
     {
         _catchResult = false;
         var e = Assert.Throws<TaskException>(Start);
@@ -162,7 +162,7 @@ public sealed class FishOperationTests : IDisposable
     }
 
     [Fact]
-    public void LostReply_RetainsOwnershipAndCancelsOnlyOurJob()
+    public void LostCatchReply_CancelsOnlyOurJob()
     {
         _catchThrows = true;
         Assert.Throws<TaskException>(Start);
@@ -174,7 +174,7 @@ public sealed class FishOperationTests : IDisposable
     }
 
     [Fact]
-    public void CatchDone_WithObjectivesCompletesAndReleasesTheHold()
+    public void CompletedCatchWithItems_Finishes()
     {
         Start();
         _catching = "fishing 0/3";
@@ -190,7 +190,7 @@ public sealed class FishOperationTests : IDisposable
     }
 
     [Fact]
-    public void FailedRelease_RetriesOnFrameworkWithoutJobOwnershipAndIsThrottled()
+    public void CancelFailure_RetriesOnFramework()
     {
         CompleteWithFailedRelease();
         Assert.False(_operation.HasOperation);
@@ -216,7 +216,7 @@ public sealed class FishOperationTests : IDisposable
     }
 
     [Fact]
-    public void FailedRelease_SurvivesStartingAnotherFish()
+    public void CancelFailure_SurvivesNextFish()
     {
         CompleteWithFailedRelease();
         Assert.Equal(FeeshStartResult.Started, _ipc.StartCatch(43, 1, out _));
@@ -233,7 +233,7 @@ public sealed class FishOperationTests : IDisposable
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void SameFishReplacement_SupersedesOldReleaseEvenWhenStartReplyIsLost(bool lostReply)
+    public void SameFishStart_ReplacesOldCancel(bool lostReply)
     {
         CompleteWithFailedRelease();
         _catchThrows = lostReply;
@@ -251,7 +251,7 @@ public sealed class FishOperationTests : IDisposable
     }
 
     [Fact]
-    public void RefusedSameFishCatch_KeepsTheOldReleasePending()
+    public void RefusedSameFish_KeepsPreviousCancel()
     {
         CompleteWithFailedRelease();
         _catchResult = false;
@@ -264,7 +264,7 @@ public sealed class FishOperationTests : IDisposable
     }
 
     [Fact]
-    public void AlreadyReleasedHold_CompletesPendingCleanup()
+    public void MissingCatchJob_FinishesCleanup()
     {
         CompleteWithFailedRelease();
         _holds.Clear(); // Released manually in WahTools; ReleaseCatch now returns false.
@@ -279,7 +279,7 @@ public sealed class FishOperationTests : IDisposable
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void Dispose_RetriesPendingReleaseAndUnsubscribesFrameworkUpdates(bool releaseStillFails)
+    public void Dispose_RetriesCancelAndUnsubscribes(bool releaseStillFails)
     {
         CompleteWithFailedRelease();
         _releaseThrows = releaseStillFails;
@@ -339,7 +339,7 @@ public sealed class FishOperationTests : IDisposable
     }
 
     [Fact]
-    public void OtherOwnersCatchDone_IsIgnored()
+    public void OtherCatchCompletion_IsIgnored()
     {
         Start();
         _catching = "fishing 1/3";
@@ -370,7 +370,7 @@ public sealed class FishOperationTests : IDisposable
     }
 
     [Fact]
-    public void PartialCatch_FailsAndReleasesTheHold()
+    public void PartialCatch_FailsAndClearsJob()
     {
         Start();
         _catching = "partial 1/3: out of bait";
@@ -426,7 +426,7 @@ public sealed class FishOperationTests : IDisposable
     }
 
     [Fact]
-    public void Stop_AbandonsReleasesAndClearsOnceFeeshAcknowledges()
+    public void Stop_ClearsJobAfterFeeshConfirms()
     {
         Start();
         _catching = "fishing 1/3";
@@ -444,7 +444,7 @@ public sealed class FishOperationTests : IDisposable
     }
 
     [Fact]
-    public void ProviderLoss_RequiresReconciliationAndIsNeverIdle()
+    public void ProviderLoss_RequiresConfirmation()
     {
         Start();
         _catching = "fishing 1/3";
@@ -486,7 +486,7 @@ public sealed class FishOperationTests : IDisposable
     [InlineData("")]
     [InlineData("done previous fish 3/3")]
     [InlineData("cancelled previous fish 1/3")]
-    public void UnobservedInactiveJob_CanBeConfirmedOnlyAfterTimeoutAndStableIdle(string status)
+    public void InactiveJobAfterTimeout_CanBeConfirmed(string status)
     {
         Start();
         _catching = status;
@@ -593,7 +593,7 @@ public sealed class FishOperationTests : IDisposable
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void QuestFlags_AreAuthoritativeWithOrWithoutAnInventoryTarget(bool hasItem)
+    public void QuestFlags_DetermineCompletion(bool hasItem)
     {
         // Construct afresh: completion-flag presence is cached by the record constructor.
         var task = new Fish.FishTask(_task.Quest, hasItem ? _task.GatheredItem : null,

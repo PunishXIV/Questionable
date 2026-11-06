@@ -70,7 +70,7 @@ public sealed class WrathComboModuleTests : IDisposable
     public void Dispose() => _module.Dispose();
 
     [Fact]
-    public void ItemPause_DisablesRotationWithoutReleasingOrReacquiringLease()
+    public void ItemPause_DisablesRotationWithoutNewControl()
     {
         Assert.True(_module.Start(CombatTestData.Create()));
         Assert.True(_module.Pause());
@@ -87,7 +87,7 @@ public sealed class WrathComboModuleTests : IDisposable
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void RejectedItemTransition_FailsButRetainsLeaseForFinalCleanup(bool resume)
+    public void RejectedItemChange_KeepsControlForCleanup(bool resume)
     {
         Assert.True(_module.Start(CombatTestData.Create()));
         if (resume)
@@ -100,7 +100,7 @@ public sealed class WrathComboModuleTests : IDisposable
     }
 
     [Fact]
-    public void LeaseCancelledDuringPauseRequest_DoesNotReportSuccessfulPause()
+    public void CancelledControlDuringPause_FailsPause()
     {
         Assert.True(_module.Start(CombatTestData.Create()));
         _auto.InvokeFunc(_lease, false).Returns(_ =>
@@ -114,7 +114,7 @@ public sealed class WrathComboModuleTests : IDisposable
     }
 
     [Fact]
-    public void CancelledLeaseDuringItemPause_IsNotResumed()
+    public void CancelledControlDuringItemPause_DoesNotResume()
     {
         Assert.True(_module.Start(CombatTestData.Create()));
         Assert.True(_module.Pause());
@@ -130,7 +130,7 @@ public sealed class WrathComboModuleTests : IDisposable
     [InlineData(AutoRotationConfigOption.HealerRotationMode)]
     [InlineData(AutoRotationConfigOption.AutoRez)]
     [InlineData(AutoRotationConfigOption.AutoRezOutOfParty)]
-    public void RejectedConfiguration_FailsStartAndReleasesPartialLease(AutoRotationConfigOption rejected)
+    public void RejectedConfiguration_StopsAndGivesBackControl(AutoRotationConfigOption rejected)
     {
         _configure.InvokeFunc(_lease, rejected, Arg.Any<object>()).Returns(SetResult.InvalidConfiguration);
         Assert.False(_module.Start(CombatTestData.Create()));
@@ -140,7 +140,7 @@ public sealed class WrathComboModuleTests : IDisposable
     }
 
     [Fact]
-    public void ThrowingConfiguration_AlsoReleasesPartialLease()
+    public void ConfigurationError_GivesBackControl()
     {
         _configure.InvokeFunc(_lease, Arg.Any<object>(), Arg.Any<object>())
             .Returns(_ => throw new InvalidOperationException("provider failed"));
@@ -149,7 +149,7 @@ public sealed class WrathComboModuleTests : IDisposable
     }
 
     [Fact]
-    public void FailedRelease_RetainsSameLeaseForRetry()
+    public void GiveBackFailure_RetriesSameControl()
     {
         Assert.True(_module.Start(CombatTestData.Create()));
         bool failed = true;
@@ -175,20 +175,20 @@ public sealed class WrathComboModuleTests : IDisposable
     }
 
     [Fact]
-    public void CancelledLease_StopsControllerWithoutReleasingOtherControl()
+    public void CancelledControl_StopsCombatController()
     {
         using var controller = new CombatController([_module], null!, Substitute.For<ITargetManager>(),
             Substitute.For<IObjectTable>(), Substitute.For<ICondition>(), Substitute.For<IClientState>(),
             null!, null!, _framework, NullLogger<CombatController>.Instance);
         Assert.True(controller.Start(CombatTestData.Create()));
         _cancel(0, "manual takeover");
-        Assert.Contains("lease was cancelled", Assert.Throws<TaskException>(() => controller.Update()).Message);
+        Assert.Contains("stopped letting Questionable control it", Assert.Throws<TaskException>(() => controller.Update()).Message);
         Assert.False(controller.IsRunning);
         _release.DidNotReceiveWithAnyArgs().InvokeAction(default);
     }
 
     [Fact]
-    public void ReusedLease_DuplicateResultsStillStart()
+    public void ExistingControl_DuplicateRepliesStillStart()
     {
         _auto.InvokeFunc(_lease, true).Returns(SetResult.Duplicate);
         _job.InvokeFunc(_lease).Returns(SetResult.Duplicate);

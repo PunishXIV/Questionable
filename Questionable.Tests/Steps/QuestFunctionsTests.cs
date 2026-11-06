@@ -73,7 +73,7 @@ public sealed class QuestFunctionsTests
     }
 
     [Fact]
-    public void RetainerQuestNeedsRetainers()
+    public void RetainerQuest_RequiresRetainers()
     {
         _catalog.Add(TestQuestInfo.Create(1432));
         _state.HasRetainers = false;

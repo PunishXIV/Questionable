@@ -32,7 +32,7 @@ public sealed class CraftTests
     [InlineData(0u, 5)]
     [InlineData(42u, 0)]
     [InlineData(42u, -1)]
-    public void UnverifiableTarget_IsRejectedBeforeSubmission(uint? itemId, int? itemCount)
+    public void UnverifiedTarget_StopsBeforeStart(uint? itemId, int? itemCount)
     {
         var task = new Craft.CraftTask(QuestTestData.CreateQuest(new QuestId(1)), 1,
             new QuestStep { ItemId = itemId, ItemCount = itemCount });
@@ -41,7 +41,7 @@ public sealed class CraftTests
     }
 
     [Fact]
-    public void NoItemTarget_WithExplicitCompletionFlagsRetainsObjective()
+    public void EmptyTargetWithFlags_KeepsObjective()
     {
         var task = new Craft.CraftTask(QuestTestData.CreateQuest(new QuestId(1)), 1,
             new QuestStep { CompletionQuestVariablesFlags = [null, new QuestWorkValue(1, 1, EQuestWorkMode.Bitwise), null, null, null, null] });
@@ -247,7 +247,7 @@ public sealed class CraftTests
     }
 
     [Fact]
-    public void IdleSubmission_WaitsForDelayedStartupThenRequiresObjective()
+    public void IdleStart_WaitsForCraftAndItems()
     {
         var progress = new Craft.Progress(ArtisanStatus.Idle);
 
@@ -259,7 +259,7 @@ public sealed class CraftTests
     }
 
     [Fact]
-    public void IdleSubmissionWithoutOutput_TimesOut()
+    public void IdleStartWithoutItems_TimesOut()
     {
         var progress = new Craft.Progress(ArtisanStatus.Idle);
 
@@ -268,7 +268,7 @@ public sealed class CraftTests
     }
 
     [Fact]
-    public void QueuedSubmissionWithoutActiveExecution_TimesOut()
+    public void QueuedStartWithoutCrafting_TimesOut()
     {
         var progress = new Craft.Progress(ArtisanStatus.Queued);
 
@@ -300,7 +300,7 @@ public sealed class CraftTests
     }
 
     [Fact]
-    public void LegacyListOnlyCompletesAfterActiveExecutionAndStableIdle()
+    public void LegacyList_CompletesAfterCraftingStops()
     {
         var progress = new Craft.Progress(ArtisanStatus.Idle, requireObjective: false);
 
@@ -312,7 +312,7 @@ public sealed class CraftTests
     }
 
     [Fact]
-    public void LegacyListOnlyRetainsInitialActiveObservation()
+    public void LegacyList_KeepsInitialBusyState()
     {
         var progress = new Craft.Progress(ArtisanStatus.Busy, requireObjective: false);
 
@@ -321,7 +321,7 @@ public sealed class CraftTests
     }
 
     [Fact]
-    public void InitialBusyObservation_IsRetainedWhenListFinishesBeforeNextUpdate()
+    public void InitialBusyThenIdle_FailsWithoutItems()
     {
         var progress = new Craft.Progress(ArtisanStatus.Busy);
 

@@ -54,7 +54,7 @@ public sealed class CraftingRequirementTests
     [InlineData(578, 4564u)]
     [InlineData(587, 3274u)]
     [InlineData(611, 4305u)]
-    public void LevelFiveTargets_RetainThreeItems(ushort questId, uint itemId)
+    public void LevelFiveTargets_KeepThreeItems(ushort questId, uint itemId)
     {
         var id = new QuestId(questId);
         var requested = new CraftingItem(itemId, 3, EItemQuality.Any);
@@ -65,7 +65,7 @@ public sealed class CraftingRequirementTests
     }
 
     [Fact]
-    public void Culinarian268_IntermediateNatronRetainsAnyQuality()
+    public void Culinarian268_RequiresAnyQualityNatron()
     {
         var id = new QuestId(268);
         var requested = new CraftingItem(5522, 1, EItemQuality.Any);

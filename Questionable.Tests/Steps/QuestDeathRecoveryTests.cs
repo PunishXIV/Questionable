@@ -64,7 +64,7 @@ public sealed class QuestDeathRecoveryTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void OwnedDutiesHandleDeathUntilEscapeRequestsAStop(bool escape)
+    public void DutyRun_HandlesDeathUntilStopped(bool escape)
     {
         var host = new RecoveryHost
         {
@@ -188,7 +188,7 @@ public sealed class QuestDeathRecoveryTests
     }
 
     [Fact]
-    public void RetainedNonDutyOperationStopsBeforeLocalRecovery()
+    public void OtherOperation_StopsBeforeDeathRecovery()
     {
         var host = new RecoveryHost { HasQueuedTasks = true, IsUnconscious = true, HasExternalOperation = true };
 

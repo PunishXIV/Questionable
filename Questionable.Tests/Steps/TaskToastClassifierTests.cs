@@ -44,6 +44,6 @@ public sealed class TaskToastClassifierTests
     [InlineData("<icon(69)> First\r\nSecond – line ", "First\nSecond - line", true)]
     [InlineData("First  second", "First second", false)]
     [InlineData("First", "first", false)]
-    public void SharedGameTextComparisonRetainsNullWhitespaceAndCaseRules(string? left, string? right, bool expected) =>
+    public void GameTextComparison_KeepsNullAndCaseRules(string? left, string? right, bool expected) =>
         Assert.Equal(expected, GameStringComparison.AreEqual(left, right));
 }

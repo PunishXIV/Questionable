@@ -13,7 +13,7 @@ public sealed class PathfindingFailureTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void ProviderFaultRetainsOriginalCause(bool synchronous)
+    public void ProviderFault_KeepsOriginalCause(bool synchronous)
     {
         using var fixture = new Fixture();
         var cause = new InvalidOperationException("Provider diagnostic");
@@ -62,7 +62,7 @@ public sealed class PathfindingFailureTests
     }
 
     [Fact]
-    public void ResultAvailableAfterDeadlineIsNotDispatched()
+    public void LateRouteResult_IsNotSent()
     {
         using var fixture = new Fixture();
         fixture.Start();
