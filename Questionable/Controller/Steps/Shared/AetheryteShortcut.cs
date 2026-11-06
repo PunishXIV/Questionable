@@ -10,6 +10,15 @@ namespace Questionable.Controller.Steps.Shared;
 internal static class AetheryteShortcut
 {
     public static HashSet<uint> Territories = [212, 351, 128, 131, 133, 419];
+
+    // Limsa Upper Decks (128) pairs with Lower Decks (129); the other city parts pair with the zone before them.
+    internal static uint CityNeighbourTerritory(uint territoryId) => territoryId != 128 ? territoryId - 1 : territoryId + 1;
+
+    // A sequence that also visits the neighbouring part walks between them instead.
+    internal static bool ShouldEnterCityByAethernet(QuestSequence sequence, QuestStep step, uint currentTerritory) =>
+        !sequence.Steps.Any(x => x.TerritoryId == CityNeighbourTerritory(step.TerritoryId)) &&
+        currentTerritory != step.TerritoryId &&
+        step.AethernetShortcut == null;
     // TODO: refactor the nested territory-specific routing in this factory after SmartNav coverage is established.
     internal sealed class Factory(
         AetheryteData aetheryteData,
@@ -105,7 +114,7 @@ internal static class AetheryteShortcut
 
                 else if (Territories.Skip(2).Take(4).Contains(step.TerritoryId))
                 {
-                    var tId = step.TerritoryId != 128 ? step.TerritoryId - 1 : step.TerritoryId + 1;
+                    var tId = CityNeighbourTerritory(step.TerritoryId);
                     EAetheryteLocation? tp = aetheryteData.NearestAetheryteTo(tId, new());
                     EAetheryteLocation? anD = new List<EAetheryteLocation?>() {
                         EAetheryteLocation.LimsaAftcastle,
@@ -114,9 +123,7 @@ internal static class AetheryteShortcut
                         EAetheryteLocation.IshgardLastVigil
                     }.First(location => location?.Territory(aetheryteData) == step.TerritoryId) ?? null;
                     if (tp is { } teleportDest && anD is { } aethernetDest &&
-                        !sequence.Steps.Any(step => step.TerritoryId != 128 ? step.TerritoryId == step.TerritoryId - 1 : step.TerritoryId == step.TerritoryId + 1) &&
-                        clientState.TerritoryType != step.TerritoryId &&
-                        step.AethernetShortcut == null)
+                        ShouldEnterCityByAethernet(sequence, step, clientState.TerritoryType))
                     {
                         yield return new Task(step, quest.Id, teleportDest, tId);
                         yield return new AethernetShortcut.Task(teleportDest, aethernetDest);

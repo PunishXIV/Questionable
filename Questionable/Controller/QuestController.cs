@@ -493,7 +493,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                                     _questFunctions.IsQuestAccepted(x.Id))
                         .Select(x => (x.Id, QuestFunctions.GetQuestProgressInfo(x.Id)?.Sequence ?? 0))
                         .FirstOrDefault();
-                if (priorityQuestOption is { Item1: not null } priorityQuest)
+                if (priorityQuestOption is { Item1: not null } priorityQuest &&
+                    CanSwitchToPriorityQuest(StartedQuest, priorityQuest.Item1, _condition[ConditionFlag.BoundByDuty]))
                 {
                     currentQuestId = priorityQuest.Item1;
                     currentSequence = priorityQuest.Item2;
@@ -1256,6 +1257,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsCompleted.Count ?? 0) == 0 &&
                (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsAccepted.Count ?? 0) == 0;
     }
+
+    // Leaving a duty, or a quest that can't be resumed from elsewhere (e.g. the ferry-only Isles of Umbre), strands the player.
+    internal static bool CanSwitchToPriorityQuest(QuestProgress? started, ElementId priorityQuestId, bool inDuty) =>
+        started == null || started.Quest.Id == priorityQuestId || (!inDuty && started.Quest.Root.Interruptible);
 
     // Accept-only priorities run sequence 0, then remain for normal completion.
     private bool TryQueueNextAcceptOnlyQuest()

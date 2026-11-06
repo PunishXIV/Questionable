@@ -386,8 +386,23 @@ internal sealed class PriorityWindow : LWindow
             ImGui.EndCombo();
         }
 
-        ImGui.TextColoredWrapped(QstTheme.Danger, _L("Selecting a preset will override your current priority list and activate the preset. " +
-            "You can save your current list as a preset by entering a name below and selecting Save."));
+        bool addPresetsToList = _configuration.Priority.AddPresetsToList;
+        if (ImGui.Checkbox(_L("Add presets to the current list"), ref addPresetsToList))
+        {
+            _configuration.Priority.AddPresetsToList = addPresetsToList;
+            SaveConfig();
+        }
+
+        if (addPresetsToList)
+        {
+            ImGui.TextWrapped(_L("Selecting a preset adds its quests to the end of your current priority list. " +
+                "You can save your current list as a preset by entering a name below and selecting Save."));
+        }
+        else
+        {
+            ImGui.TextColoredWrapped(QstTheme.Danger, _L("Selecting a preset will override your current priority list and activate the preset. " +
+                "You can save your current list as a preset by entering a name below and selecting Save."));
+        }
 
         ImGui.Spacing();
 
@@ -614,7 +629,8 @@ internal sealed class PriorityWindow : LWindow
 
     private void LoadPreset(string name)
     {
-        _questController.PriorityManager.Clear();
+        if (!_configuration.Priority.AddPresetsToList)
+            _questController.PriorityManager.Clear();
 
         if (name == JobQuestsPresetName)
         {

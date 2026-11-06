@@ -907,23 +907,14 @@ internal sealed unsafe class QuestFunctions
 
     private bool AllMountsUnlocked(params ushort[] mounts) => mounts.All(x => PlayerState.Instance()->IsMountUnlocked(x));
     private bool RaceChocoboRank40() => RaceChocoboManager.Instance()->Rank >= 40;
-    private bool _achievementsRequested;
-    private bool IsAchievementComplete(params int[] achievementIds)
-    {
-        if (!Achievement.Instance()->IsLoaded())
-        {
-            if (!_achievementsRequested)
-                AgentAchievement.Instance()->Show();
-            _achievementsRequested = true;
-            return false;
-        }
-        if (_achievementsRequested)
-        {
-            AgentAchievement.Instance()->Hide();
-            _achievementsRequested = false;
-        }
-        return achievementIds.All(Achievement.Instance()->IsComplete);
-    }
+    private readonly AchievementCache _achievements = new(
+        () => ProfileController.CurrentContentId,
+        () => Achievement.Instance()->IsLoaded(),
+        id => Achievement.Instance()->IsComplete(id),
+        () => AgentAchievement.Instance()->Show(),
+        () => AgentAchievement.Instance()->Hide());
+
+    private bool IsAchievementComplete(params int[] achievementIds) => _achievements.IsComplete(achievementIds);
 
     private bool IsQuestLocked(SatisfactionSupplyNpcId satisfactionSupplyNpcId)
     {

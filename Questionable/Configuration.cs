@@ -386,6 +386,7 @@ internal sealed class Configuration : IPluginConfiguration
     internal sealed class PriorityConfiguration
     {
         public Dictionary<string, List<string>> Presets { get; set; } = [];
+        public bool AddPresetsToList { get; set; }
     }
 
     internal sealed class PathDataConfiguration
