@@ -9,21 +9,25 @@ namespace Questionable.Controller.GameUi;
 internal sealed class CraftworksSupplyController : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;
+    private readonly Configuration _configuration;
     private readonly IFramework _framework;
     private readonly IGameGuiAdapter _gameGui;
     private readonly ILogger<CraftworksSupplyController> _logger;
     private readonly QuestController _questController;
 
     public CraftworksSupplyController(QuestController questController, IAddonLifecycle addonLifecycle,
-        IGameGuiAdapter gameGui, IFramework framework, ILogger<CraftworksSupplyController> logger)
+        IGameGuiAdapter gameGui, IFramework framework, Configuration configuration,
+        ILogger<CraftworksSupplyController> logger)
     {
+        _configuration = configuration;
         _questController = questController;
         _addonLifecycle = addonLifecycle;
         _gameGui = gameGui;
         _framework = framework;
         _logger = logger;
 
-        _addonLifecycle.RegisterListener(AddonEvent.PostReceiveEvent, "ContextIconMenu", ContextIconMenuPostReceiveEvent);
+        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "ContextIconMenu", ContextIconMenuPostOpen);
+        _addonLifecycle.RegisterListener(AddonEvent.PostRefresh, "ContextIconMenu", ContextIconMenuPostOpen);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "BankaCraftworksSupply",
             BankaCraftworksSupplyPostUpdate);
     }
@@ -34,7 +38,8 @@ internal sealed class CraftworksSupplyController : IDisposable
     {
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "BankaCraftworksSupply",
             BankaCraftworksSupplyPostUpdate);
-        _addonLifecycle.UnregisterListener(AddonEvent.PostReceiveEvent, "ContextIconMenu", ContextIconMenuPostReceiveEvent);
+        _addonLifecycle.UnregisterListener(AddonEvent.PostRefresh, "ContextIconMenu", ContextIconMenuPostOpen);
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "ContextIconMenu", ContextIconMenuPostOpen);
     }
 
     private unsafe void BankaCraftworksSupplyPostUpdate(AddonEvent type, AddonArgs args)
@@ -57,10 +62,12 @@ internal sealed class CraftworksSupplyController : IDisposable
         AddonMaster.BankaCraftworksSupply master = new(addon);
         if (master.FirstUnfilledSlot is { } slot)
         {
-            // TryHandOver opens the item-pick context menu, which ContextIconMenuPostReceiveEvent handles.
+            // TryHandOver opens the item-pick context menu, which ContextIconMenuPostOpen handles.
             _logger.LogInformation("Selecting an item for slot {Slot}", slot);
             master.TryHandOver(slot);
         }
+        else if (_configuration.Advanced.SkipCraftworksDelivery)
+            _logger.LogInformation("All slots filled; not delivering (testing option is on)");
         else
         {
             _logger.LogInformation("Confirming turn-in");
@@ -68,13 +75,21 @@ internal sealed class CraftworksSupplyController : IDisposable
         }
     }
 
-    // TODO: This seems to not work if the mouse isn't over the FFXIV window?
-    private unsafe void ContextIconMenuPostReceiveEvent(AddonEvent type, AddonArgs args)
+    // TODO: confirm on a real delivery that the item is picked with the cursor outside the game window.
+    private unsafe void ContextIconMenuPostOpen(AddonEvent type, AddonArgs args)
     {
         if (!ShouldHandleUiInteractions)
             return;
+        
+        _framework.RunOnTick(() =>
+        {
+            if (ShouldHandleUiInteractions && _gameGui.TryGetAddonByName("ContextIconMenu", out AtkUnitBase* addon))
+                PickItemForCraftworksSupply((AddonContextIconMenu*)addon);
+        });
+    }
 
-        AddonContextIconMenu* addonContextIconMenu = (AddonContextIconMenu*)args.Addon.Address;
+    private unsafe void PickItemForCraftworksSupply(AddonContextIconMenu* addonContextIconMenu)
+    {
         if (!addonContextIconMenu->IsVisible)
             return;
 

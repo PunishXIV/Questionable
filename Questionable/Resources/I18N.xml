@@ -1788,6 +1788,22 @@
     <!--<Value lang="ko">활성화되면 Questionable은 퀘스트를 제출하고 완료하려고 시도하지 않습니다. 마지막 제출 단계 외에는 모든 작업이 자동으로 수행됩니다.</Value>-->
   </Entry>
   <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <Key>Testing: fill Wachumeqimeqi turn-ins without delivering</Key>
+    <Value lang="en">Testing: fill Wachumeqimeqi turn-ins without delivering</Value>
+    <Value lang="ja-jp">テスト用：ワチュメキメキの納品でアイテムを入れるが納品しない</Value>
+    <Value lang="zh-cn">测试：在瓦丘梅奇梅奇的交纳窗口中放入物品但不交纳</Value>
+    <Value lang="zh-tw">測試：在瓦丘梅奇梅奇的交納視窗中放入物品但不交納</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <Key>Questionable puts the items into the Wachumeqimeqi delivery window but doesn't press Deliver, so the quest isn't used up. Close the window and talk to the NPC again to retry.</Key>
+    <Value lang="en">Questionable puts the items into the Wachumeqimeqi delivery window but doesn't press Deliver, so the quest isn't used up. Close the window and talk to the NPC again to retry.</Value>
+    <Value lang="ja-jp">ワチュメキメキの納品ウィンドウにアイテムを入れますが「納品する」は押さないため、クエストは消費されません。ウィンドウを閉じてNPCに再度話しかけると再試行できます。</Value>
+    <Value lang="zh-cn">Questionable 会把物品放入瓦丘梅奇梅奇的交纳窗口，但不会点击“交纳”，因此任务不会被消耗。关闭窗口并再次与NPC对话即可重试。</Value>
+    <Value lang="zh-tw">Questionable 會把物品放入瓦丘梅奇梅奇的交納視窗，但不會點擊「交納」，因此任務不會被消耗。關閉視窗並再次與NPC對話即可重試。</Value>
+  </Entry>
+  <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Abandon quest before completion</Key>

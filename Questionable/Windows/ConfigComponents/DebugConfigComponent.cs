@@ -309,6 +309,16 @@ internal sealed class DebugConfigComponent
                 ImGui.SameLine();
                 ImGuiComponents.HelpMarker(_L("When enabled, Questionable will not attempt to turn-in and complete quests. This will do everything automatically except the final turn-in step."));
 
+                bool skipCraftworksDelivery = Configuration.Advanced.SkipCraftworksDelivery;
+                if (ImGui.Checkbox(_L("Testing: fill Wachumeqimeqi turn-ins without delivering"), ref skipCraftworksDelivery))
+                {
+                    Configuration.Advanced.SkipCraftworksDelivery = skipCraftworksDelivery;
+                    Save();
+                }
+
+                ImGui.SameLine();
+                ImGuiComponents.HelpMarker(_L("Questionable puts the items into the Wachumeqimeqi delivery window but doesn't press Deliver, so the quest isn't used up. Close the window and talk to the NPC again to retry."));
+
                 bool abandonQuestBeforeCompletion = Configuration.Advanced.AbandonQuestBeforeCompletion;
                 bool removeFromPriorityWhenAbandoned = Configuration.Advanced.RemoveFromPriorityWhenAbandoned;
                 if (ImGui.Checkbox(_L("Abandon quest before completion"), ref abandonQuestBeforeCompletion))

@@ -353,6 +353,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool SkipFeistyLittleChocobo { get; set; }
         public bool StopMSQ { get; set; }
         public bool PreventQuestCompletion { get; set; }
+        public bool SkipCraftworksDelivery { get; set; }
         public bool AbandonQuestBeforeCompletion { get; set; }
         public bool RemoveFromPriorityWhenAbandoned { get; set; }
         public bool ShowWindowOnStart { get; set; }
