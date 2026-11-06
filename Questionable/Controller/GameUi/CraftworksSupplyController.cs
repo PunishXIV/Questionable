@@ -68,7 +68,7 @@ internal sealed class CraftworksSupplyController : IDisposable
         }
     }
 
-    // FIXME: This seems to not work if the mouse isn't over the FFXIV window?
+    // TODO: This seems to not work if the mouse isn't over the FFXIV window?
     private unsafe void ContextIconMenuPostReceiveEvent(AddonEvent type, AddonArgs args)
     {
         if (!ShouldHandleUiInteractions)

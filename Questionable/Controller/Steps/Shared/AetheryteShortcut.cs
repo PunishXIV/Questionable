@@ -232,7 +232,7 @@ internal static class AetheryteShortcut
                 return true;
             }
 
-            // Hack: Mor Dhona must not teleport to the Rising Stones while already there.
+            // TODO: replace this hack. Mor Dhona must not teleport to the Rising Stones while already there.
             if (Task.TargetAetheryte == EAetheryteLocation.MorDhona && Task.Step?.TerritoryId == 351 && clientState.TerritoryType == 351)
             {
                 logger.LogInformation("Skipping aetheryte teleport, it shouldn't be doing that anyway");
