@@ -353,7 +353,7 @@ internal static class SinglePlayerDuty
         protected override bool Start()
         {
             bossModIpc.SetPresetForSoloDuty(
-                Task.Passive ? 
+                Task.Passive ?
                     (Task.Naadam ? BossModIpc.EPreset.Overworld : BossModIpc.EPreset.NormalMovement) : BossModIpc.EPreset.QuestBattle);
             return true;
         }
