@@ -1,1 +1,1 @@
-- Change: fix end date of typing event now that we know when evercold is releasing -alydev
+- Feature: Configuration profiles -Kage
