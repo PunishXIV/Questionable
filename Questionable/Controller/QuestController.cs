@@ -41,7 +41,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         Simulated
     }
 
-    private const int CompletedStepValue = 255;
+    private const int CompletedStepValue = QuestStepPlanner.CompletedStep;
 
     // Extra grace after the game's animation lock.
     private const float AnimationLockGraceSeconds = 1f;
@@ -596,28 +596,29 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                     $"New sequence {questToRun == StartedQuest}/{_questFunctions.GetCurrentQuestInternal(allowNewMsq: true)}");
             }
 
-            Quest q = questToRun.Quest;
-            QuestSequence? sequence = q.FindSequence(questToRun.Sequence);
-            if (sequence == null)
+            switch (QuestStepPlanner.CheckStep(questToRun))
             {
-                DebugState = $"Sequence {questToRun.Sequence} not found";
-                Stop("Unknown sequence");
-                return;
-            }
+                case EStepState.UnknownSequence:
+                    DebugState = $"Sequence {questToRun.Sequence} not found";
+                    if (AutomationType != EAutomationType.Manual)
+                        _chatGui.PrintError(_LF("Stopped: no path for '{0}' sequence {1}. Try Reload Data or report it with Stuck?",
+                            questToRun.Quest.Info.Name, questToRun.Sequence), CommandHandler.MessageTag, CommandHandler.TagColor);
+                    Stop("Unknown sequence");
+                    return;
 
-            if (questToRun.Step == CompletedStepValue)
-            {
-                DebugState = "Step completed";
-                if (!_taskQueue.AllTasksComplete)
-                    CheckNextTasks("Step complete");
-                return;
-            }
+                case EStepState.Completed:
+                    DebugState = "Step completed";
+                    if (!_taskQueue.AllTasksComplete)
+                        CheckNextTasks("Step complete");
+                    return;
 
-            if (sequence.Steps.Count > 0 && questToRun.Step >= sequence.Steps.Count)
-            {
-                DebugState = "Step not found";
-                Stop("Unknown step");
-                return;
+                case EStepState.UnknownStep:
+                    DebugState = "Step not found";
+                    if (AutomationType != EAutomationType.Manual)
+                        _chatGui.PrintError(_LF("Stopped: no path for '{0}' sequence {1} step {2}. Try Reload Data or report it with Stuck?",
+                            questToRun.Quest.Info.Name, questToRun.Sequence, questToRun.Step), CommandHandler.MessageTag, CommandHandler.TagColor);
+                    Stop("Unknown step");
+                    return;
             }
 
             DebugState = null;
@@ -651,33 +652,29 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             }
 
             (QuestSequence? seq, QuestStep? step, bool _) = GetNextStep();
-            if (CurrentQuest == null || seq == null || step == null)
+            QuestProgress? current = CurrentQuest;
+            StepAdvance advance = QuestStepPlanner.Advance(current, seq, step, questId, sequence);
+            switch (advance.Kind)
             {
-                _logger.LogWarning("Unable to retrieve next quest step, not increasing step count");
-                return;
+                case EStepAdvance.NoStep:
+                    _logger.LogWarning("Unable to retrieve next quest step, not increasing step count");
+                    return;
+
+                case EStepAdvance.OtherQuest:
+                    _logger.LogWarning(
+                        "Ignoring 'increase step count' for different quest (expected {ExpectedQuestId}, but we are at {CurrentQuestId}",
+                        questId, current!.Quest.Id);
+                    return;
+
+                case EStepAdvance.OtherSequence:
+                    _logger.LogWarning(
+                        "Ignoring 'increase step count' for different sequence (expected {ExpectedSequence}, but we are at {CurrentSequence}",
+                        sequence, seq!.Sequence);
+                    return;
             }
 
-            if (questId != null && CurrentQuest.Quest.Id != questId)
-            {
-                _logger.LogWarning(
-                    "Ignoring 'increase step count' for different quest (expected {ExpectedQuestId}, but we are at {CurrentQuestId}",
-                    questId, CurrentQuest.Quest.Id);
-                return;
-            }
-
-            if (sequence != null && seq.Sequence != sequence.Value)
-            {
-                _logger.LogWarning(
-                    "Ignoring 'increase step count' for different sequence (expected {ExpectedSequence}, but we are at {CurrentSequence}",
-                    sequence, seq.Sequence);
-                return;
-            }
-
-            _logger.LogInformation("Increasing step count from {CurrentValue}", CurrentQuest.Step);
-            if (CurrentQuest.Step + 1 < seq.Steps.Count)
-                CurrentQuest.SetStep(CurrentQuest.Step + 1);
-            else
-                CurrentQuest.SetStep(CompletedStepValue);
+            _logger.LogInformation("Increasing step count from {CurrentValue}", current!.Step);
+            current.SetStep(advance.NextStep);
         }
 
         using IDisposable? scope = _logger.BeginScope("IncStepCt");
@@ -1079,10 +1076,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         (QuestSequence? seq, QuestStep? step, bool createTasks) = GetNextStep();
         if (CurrentQuest == null || seq == null)
         {
-            if (CurrentQuestDetails?.Progress.Quest.Id is SatisfactionSupplyNpcId &&
-                CurrentQuestDetails?.Progress.Sequence == 1 &&
-                CurrentQuestDetails?.Progress.Step == CompletedStepValue &&
-                CurrentQuestDetails?.Type == ECurrentQuestType.Gathering)
+            if (QuestStepPlanner.IsGatheringDeliveryDone(CurrentQuestDetails))
             {
                 _logger.LogInformation("Completed delivery quest");
                 SetGatheringQuest(quest: null);
@@ -1106,20 +1100,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         try
         {
             foreach (ITask task in _taskCreator.CreateTasks(CurrentQuest.Quest, CurrentQuest.Sequence, seq, step))
-            {
-                if (SimulatedQuest != null)
-                {
-                    string repr = task.ToString() ?? "";
-                    string[] SimSkip = ["Interact", "Action", "Emote", "Craft", "Unmount"];
-                    if (repr.Contains('(') && SimSkip.Contains(repr[..repr.IndexOf('(')]) && step != null && step.TargetTerritoryId.Equals(step.TerritoryId))
-                    {
-                        _logger.LogInformation("Skipping {Repr} due to simulation", repr);
-                        continue;
-                    }
-                }
-
                 EnqueueQuestTask(task, _questFunctions.IsQuestAccepted);
-            }
         }
         catch (Exception e)
         {
