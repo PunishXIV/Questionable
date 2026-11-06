@@ -853,39 +853,9 @@ internal sealed unsafe class QuestFunctions
                 lockedReason.Add(_LF("Aetheryte locked: {0}", firstLockedAetheryte));
         }
 
-        bool questPrereqs = questId.Value switch
-        {
-            432 => AllMountsUnlocked(28, 29, 30, 31, 40, 43),
-            1550 => AllMountsUnlocked(75, 76, 77, 78, 90, 98, 104),
-            3200 => AllMountsUnlocked(115, 116, 133, 144, 158, 172, 182),
-            4057 => AllMountsUnlocked(189, 192, 205, 217, 226, 238, 249),
-            4795 => AllMountsUnlocked(261, 262, 293, 306, 315, 325, 332),
-            5469 => AllMountsUnlocked(345, 346, 363, 389, 407, 422, 444),
-            576 => RaceChocoboRank40(),
-            4081 => IsAchievementComplete(2819),
-            3195 => IsUnlockLinkUnlocked(new(113)),
-            2387 => IsAchievementComplete(1580),
-            1557 => IsAchievementComplete(1580),
-            3131 => IsAchievementComplete(1580),
-            5459 => IsAchievementComplete(3892, 3893, 3894),
-            3006 => IsAchievementComplete(1972), // mnaago
-            3140 => IsAchievementComplete(2070), // kurenai
-            3178 => IsAchievementComplete(2186), // adkiragh
-            3730 => IsAchievementComplete(2428), // kai-shirr
-            3731 => IsAchievementComplete(2429),
-            3890 => IsAchievementComplete(2627), // ehll tou
-            4080 => IsAchievementComplete(2837), // charlemend
-            4524 => IsAchievementComplete(3062), // ameliance
-            4525 => IsAchievementComplete(3063),
-            4716 => IsAchievementComplete(3167), // anden
-            4816 => IsAchievementComplete(3355), // margrat
-            5240 => IsAchievementComplete(3596), // nitowikwe
-            5461 => IsAchievementComplete(3990), // aunt tii
-            3153 => DomanEnclaveStoryProgress(75),
-            _ => true
-        };
-        if (!questPrereqs)
-            lockedReason.Add(_L("Prerequisites not met"));
+        if (QuestData.SpecialPrerequisites.TryGetValue(questId.Value, out QuestPrerequisite? prerequisite) &&
+            prerequisite.GetUnmetReason(PrerequisiteState) is { } unmetReason)
+            lockedReason.Add(unmetReason);
 
         if (questInfo.IsSeasonalEvent &&
                 !EventInfoComponent.EventQuests.Any(eq =>
@@ -897,16 +867,28 @@ internal sealed unsafe class QuestFunctions
         return (lockedReason.Count > 0, lockedReason.ToArray());
     }
 
-    private bool DomanEnclaveStoryProgress(byte milestone)
-    {
-        var enclave = DomanEnclaveManager.Instance();
-        if (enclave->IsLoaded)
-            return enclave->State.CurrentMilestone >= milestone;
-        return false;
-    }
+    private IPrerequisiteState PrerequisiteState => _prerequisiteState ??= new PrerequisiteStateAdapter(this);
+    private IPrerequisiteState? _prerequisiteState;
 
-    private bool AllMountsUnlocked(params ushort[] mounts) => mounts.All(x => PlayerState.Instance()->IsMountUnlocked(x));
-    private bool RaceChocoboRank40() => RaceChocoboManager.Instance()->Rank >= 40;
+    private sealed class PrerequisiteStateAdapter(QuestFunctions functions) : IPrerequisiteState
+    {
+        public byte ChocoboRacingRank => RaceChocoboManager.Instance()->Rank;
+
+        public byte? DomanEnclaveMilestone
+        {
+            get
+            {
+                DomanEnclaveManager* enclave = DomanEnclaveManager.Instance();
+                return enclave->IsLoaded ? enclave->State.CurrentMilestone : null;
+            }
+        }
+
+        public bool IsAchievementComplete(int[] achievementIds) => functions._achievements.IsComplete(achievementIds);
+        public bool IsMountUnlocked(ushort mountId) => PlayerState.Instance()->IsMountUnlocked(mountId);
+        public bool IsUnlockLinkUnlocked(ushort unlockLinkId) => functions.IsUnlockLinkUnlocked(new UnlockLinkId(unlockLinkId));
+        public string AchievementName(int achievementId) => _T<Lumina.Excel.Sheets.Achievement>((uint)achievementId);
+        public string MountName(ushort mountId) => _T<Mount>(mountId);
+    }
     private readonly AchievementCache _achievements = new(
         () => ProfileController.CurrentContentId,
         () => Achievement.Instance()->IsLoaded(),
@@ -914,7 +896,6 @@ internal sealed unsafe class QuestFunctions
         () => AgentAchievement.Instance()->Show(),
         () => AgentAchievement.Instance()->Hide());
 
-    private bool IsAchievementComplete(params int[] achievementIds) => _achievements.IsComplete(achievementIds);
 
     private bool IsQuestLocked(SatisfactionSupplyNpcId satisfactionSupplyNpcId)
     {

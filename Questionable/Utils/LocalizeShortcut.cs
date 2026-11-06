@@ -52,6 +52,8 @@ internal static class LocalizeShortcut
             FittingShopCategory fittingShopCategory => fittingShopCategory.Name.ToMacroString(),
             ContentRoulette contentRoulette => contentRoulette.Name.ToMacroString(),
             HowTo howTo => howTo.Name.ToMacroString(),
+            Achievement achievement => achievement.Name.ToMacroString(),
+            Mount mount => mount.Singular.ToMacroString(),
             _ => throw new InvalidOperationException($"No known Name/Text mapping for {typeof(T).Name}")
         };
         _translatedStrings[(typeof(T), rowId)] = value;

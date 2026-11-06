@@ -14,6 +14,38 @@ internal sealed class QuestData
 {
     public static readonly IReadOnlyList<QuestId> HardModePrimals = [new(1048), new(1157), new(1158)];
 
+    public static readonly ImmutableDictionary<ushort, QuestPrerequisite> SpecialPrerequisites =
+        new Dictionary<ushort, QuestPrerequisite>
+        {
+            [432] = new MountsPrerequisite(28, 29, 30, 31, 40, 43),
+            [1550] = new MountsPrerequisite(75, 76, 77, 78, 90, 98, 104),
+            [3200] = new MountsPrerequisite(115, 116, 133, 144, 158, 172, 182),
+            [4057] = new MountsPrerequisite(189, 192, 205, 217, 226, 238, 249),
+            [4795] = new MountsPrerequisite(261, 262, 293, 306, 315, 325, 332),
+            [5469] = new MountsPrerequisite(345, 346, 363, 389, 407, 422, 444),
+            [576] = new ChocoboRacingRankPrerequisite(40),
+            [4081] = new AchievementPrerequisite(2819),
+            [3195] = new UnlockLinkPrerequisite(113),
+            [2387] = new AchievementPrerequisite(1580),
+            [1557] = new AchievementPrerequisite(1580),
+            [3131] = new AchievementPrerequisite(1580),
+            [5459] = new AchievementPrerequisite(3892, 3893, 3894),
+            [3006] = new AchievementPrerequisite(1972), // mnaago
+            [3140] = new AchievementPrerequisite(2070), // kurenai
+            [3178] = new AchievementPrerequisite(2186), // adkiragh
+            [3730] = new AchievementPrerequisite(2428), // kai-shirr
+            [3731] = new AchievementPrerequisite(2429),
+            [3890] = new AchievementPrerequisite(2627), // ehll tou
+            [4080] = new AchievementPrerequisite(2837), // charlemend
+            [4524] = new AchievementPrerequisite(3062), // ameliance
+            [4525] = new AchievementPrerequisite(3063),
+            [4716] = new AchievementPrerequisite(3167), // anden
+            [4816] = new AchievementPrerequisite(3355), // margrat
+            [5240] = new AchievementPrerequisite(3596), // nitowikwe
+            [5461] = new AchievementPrerequisite(3990), // aunt tii
+            [3153] = new DomanEnclavePrerequisite(75),
+        }.ToImmutableDictionary();
+
     public static readonly IReadOnlyList<QuestId> CrystalTowerQuests =
         [new(1709), new(1200), new(1201), new(1202), new(1203), new(1474), new(494), new(495)];
 
