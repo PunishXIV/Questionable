@@ -145,7 +145,7 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Comment": "Gear upgrades to ilvl 385 can be purchased from Local Merchant at Stilltide",
+          "Comment": "Gear upgrades to ilvl 385 can be purchased from the Merchant at Fort Jobb",
           "TerritoryId": 813,
           "InteractionType": "Duty",
           "DutyOptions": {

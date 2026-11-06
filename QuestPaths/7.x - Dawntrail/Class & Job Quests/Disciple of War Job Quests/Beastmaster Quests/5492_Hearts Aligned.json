@@ -2,7 +2,7 @@
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "alydev",
   "Comment": "Quest requires level 16 by the end\nCurrently we are overriding the minimum level to indicate this requirement",
-  "LastChecked": {"Username": "alydev", "Date": "2026-09-09"},
+  "LastChecked": { "Username": "alydev", "Date": "2026-09-09" },
   "QuestSequence": [
     {
       "Sequence": 0,
@@ -36,9 +36,7 @@
           "TerritoryId": 148,
           "InteractionType": "WaitForManualProgress",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [
-            19456
-          ],
+          "KillEnemyDataIds": [19456],
           "$": "auto: lua overworld enemies -> 19456"
         }
       ]
@@ -75,9 +73,34 @@
             "Z": -117.274
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
+          "InteractionType": "WalkTo",
           "StopDistance": 5,
           "Fly": true,
+          "SkipConditions": {
+            "StepIf": {
+              "NearPosition": {
+                "Position": {
+                  "X": 72.2791,
+                  "Y": -6.47596,
+                  "Z": -117.274
+                },
+                "TerritoryId": 148,
+                "MaximumDistance": 10
+              }
+            }
+          },
+          "$": "auto: todo location -> 1059325 (J'yhuh Tia)"
+        },
+        {
+          "DataId": 1059325,
+          "Position": {
+            "X": 72.2791,
+            "Y": -6.47596,
+            "Z": -117.274
+          },
+          "TerritoryId": 148,
+          "InteractionType": "Interact",
+          "StopDistance": 5,
           "$": "auto: todo location -> 1059325 (J'yhuh Tia)"
         }
       ]
@@ -136,19 +159,17 @@
       "Sequence": 7,
       "Steps": [
         {
-          "Comment": "WIP",
-          "DataId": 1059323,
+          "Comment": "Ensure Cu Sith is summoned by using First Battlehorn. Trick has different affinity based on which beast is summoned.\nAttack target dummy until both gauges have over 100 points\nUse Trick, then Mistral Axe to complete a Moonstalker combo\nAttack target dummy until both gauges have over 100 points\nUse Gale Axe, then Trick to complete a Sunstrider combo",
+          "DataId": 19456,
           "Position": {
-            "X": 119.920654,
-            "Y": -7.003505,
-            "Z": -87.48004
+            "X": 126.783066,
+            "Y": -6.9812546,
+            "Z": -83.18186
           },
           "TerritoryId": 148,
           "InteractionType": "WaitForManualProgress",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [
-            19456
-          ],
+          "KillEnemyDataIds": [19456],
           "$": "auto: lua overworld enemies -> 19456"
         }
       ]
@@ -157,6 +178,7 @@
       "Sequence": 255,
       "Steps": [
         {
+          "Comment": "You might get stuck in HandleCombat with the target dummy; interact manually with the guy to finish the quest",
           "DataId": 1059323,
           "Position": {
             "X": 119.923,

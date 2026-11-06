@@ -38,6 +38,23 @@
       "Sequence": 1,
       "Steps": [
         {
+          "DataId": 1027265,
+          "Position": {
+            "X": 55.868057,
+            "Y": 36.197685,
+            "Z": -175.88983
+          },
+          "TerritoryId": 819,
+          "StopDistance": 1,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179721,
+          "AetheryteShortcut": "Crystarium",
+          "AethernetShortcut": [
+            "[Crystarium] Aetheryte Plaza",
+            "[Crystarium] The Amaro Launch"
+          ]
+        },
+        {
           "DataId": 1027854,
           "Position": {
             "X": 40.57373,
@@ -46,7 +63,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
           "AethernetShortcut": [
             "[Crystarium] Aetheryte Plaza",
             "[Crystarium] The Amaro Launch"

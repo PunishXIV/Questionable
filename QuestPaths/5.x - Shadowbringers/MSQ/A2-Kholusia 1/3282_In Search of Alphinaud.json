@@ -65,6 +65,22 @@
       "Sequence": 2,
       "Steps": [
         {
+          "DataId": 1027265,
+          "Position": {
+            "X": 55.868057,
+            "Y": 36.197685,
+            "Z": -175.88983
+          },
+          "TerritoryId": 819,
+          "StopDistance": 1,
+          "InteractionType": "UnlockTaxiStand",
+          "TaxiStandId": 1179721,
+          "AethernetShortcut": [
+            "[Crystarium] Temenos Rookery",
+            "[Crystarium] The Amaro Launch"
+          ]
+        },
+        {
           "DataId": 1029806,
           "Position": {
             "X": 62.394165,
