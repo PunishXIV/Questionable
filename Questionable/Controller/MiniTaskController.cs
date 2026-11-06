@@ -94,7 +94,8 @@ internal abstract class MiniTaskController<T> : IDisposable
             OnTaskFailure(e, currentExecutor.CurrentTask);
             _logger.LogError(e, "Failed to update task {TaskName}",
                 currentExecutor.CurrentTask.ToString());
-            var msg = _LF("Could not complete '{0}': {1}.", currentExecutor.CurrentTask, e.Message);
+            // Game messages already end in a period.
+            var msg = _LF("Could not complete '{0}': {1}.", currentExecutor.CurrentTask, e.Message.TrimEnd('.'));
             _chatGui.PrintError(
                 _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
             Stop("Task failed to update");

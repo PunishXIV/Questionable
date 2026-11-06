@@ -38,9 +38,11 @@ internal sealed class MoveExecutor
     private bool _navmeshReloaded;
     private DateTime? _navmeshWaitStartedAt;
     private long? _simpleMoveWaitStartedAt;
+    private DateTime _nextMountCheckAt;
 
     // First builds of a large zone can take a while; WaitNavmesh itself has no limit.
     private static readonly TimeSpan NavmeshReloadTimeout = TimeSpan.FromMinutes(2);
+    private static readonly TimeSpan MountRecheckInterval = TimeSpan.FromSeconds(0.5);
 
     private (MountStep.MountExecutor Executor, MountStep.MountTask Task)? _mountBeforeMovement;
     private (MountStep.MountExecutor Executor, MountStep.MountTask Task)? _mountDuringMovement;
@@ -318,7 +320,8 @@ internal sealed class MoveExecutor
             }
 
             DateTime retryAt = DateTime.Now;
-            if (_mountEvaluator.EvaluateMountState(mountTask, dryRun: true, ref retryAt) == MountStep.MountResult.DontMount)
+            if (ShouldRecheckMount(DateTime.Now, ref _nextMountCheckAt) &&
+                _mountEvaluator.EvaluateMountState(mountTask, dryRun: true, ref retryAt) == MountStep.MountResult.DontMount)
             {
                 _logger.LogInformation("MountDuringMovement implicitly complete (shouldn't mount anymore)");
                 _mountDuringMovement = null;
@@ -332,4 +335,14 @@ internal sealed class MoveExecutor
     }
 
     private bool ShouldResolveCombatBeforeNextInteraction() => Task.InteractionType is EInteractionType.Jump;
+
+    // The evaluator logs on every call; in combat it keeps answering 'WhenOutOfCombat' for the whole walk.
+    internal static bool ShouldRecheckMount(DateTime now, ref DateTime nextCheckAt)
+    {
+        if (now < nextCheckAt)
+            return false;
+
+        nextCheckAt = now + MountRecheckInterval;
+        return true;
+    }
 }

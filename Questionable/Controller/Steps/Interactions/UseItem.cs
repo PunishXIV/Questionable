@@ -1,4 +1,5 @@
 ﻿using Dalamud.Game.ClientState.Conditions;
+using Dalamud.Game.Text.SeStringHandling;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Movement;
@@ -124,12 +125,19 @@ internal static class UseItem
     (
         ICondition condition,
         ILogger logger,
-        IQuestGameState gameState) : TaskExecutor<T>
+        IQuestGameState gameState,
+        IDataManager dataManager) : TaskExecutor<T>, IToastAware
     where T : class, IUseItemBase
     {
+        private const int MaxRefusals = 3;
+        private static readonly TimeSpan RefusalWindow = TimeSpan.FromSeconds(2);
+
         private DateTime _continueAt;
         private int _itemCount;
         private bool _usedItem;
+        private DateTime? _usedAt;
+        private int _refusals;
+        private string? _lastRefusal;
 
         private ElementId? QuestId => Task.QuestId;
         protected uint ItemId => Task.ItemId;
@@ -137,6 +145,14 @@ internal static class UseItem
         private bool StartingCombat => Task.StartingCombat;
 
         protected abstract bool UseItem();
+
+        private static string GetItemName(IDataManager dataManager, uint itemId)
+        {
+            string? name = itemId >= 2_000_000
+                ? dataManager.GetExcelSheet<Lumina.Excel.Sheets.EventItem>().GetRowOrDefault(itemId)?.Singular.ExtractText()
+                : dataManager.GetExcelSheet<Lumina.Excel.Sheets.Item>().GetRowOrDefault(itemId)?.Name.ExtractText();
+            return string.IsNullOrEmpty(name) ? itemId.ToString(CultureInfo.InvariantCulture) : name;
+        }
 
         protected override unsafe bool Start()
         {
@@ -146,11 +162,36 @@ internal static class UseItem
 
             _itemCount = inventoryManager->GetInventoryItemCount(ItemId);
             if (_itemCount == 0)
-                throw new TaskException($"Don't have any {ItemId} in inventory (checks NQ only)");
+                throw new TaskException($"Don't have any {GetItemName(dataManager, ItemId)} ({ItemId}) in inventory (checks NQ only)");
 
-            ProgressContext = InteractionProgressContext.FromActionUseOrDefault(() => _usedItem = UseItem());
-            _continueAt = DateTime.Now.Add(GetRetryDelay());
+            UseItemNow();
             return true;
+        }
+
+        private void UseItemNow()
+        {
+            ProgressContext = InteractionProgressContext.FromActionUseOrDefault(() => _usedItem = UseItem());
+            _usedAt = DateTime.Now;
+            _continueAt = DateTime.Now.Add(GetRetryDelay());
+        }
+
+        // The game refuses some uses (in combat, wrong area, busy) with an error toast while UseItem still reports success.
+        internal static bool IsRefusalOfLastUse(bool usedItem, DateTime? usedAt, DateTime now) =>
+            usedItem && usedAt is { } at && now - at <= RefusalWindow;
+
+        public bool OnErrorToast(SeString message)
+        {
+            if (!IsRefusalOfLastUse(_usedItem, _usedAt, DateTime.Now))
+                return false;
+
+            _usedItem = false;
+            _usedAt = null;
+            _refusals++;
+            _lastRefusal = message.TextValue;
+            _continueAt = DateTime.Now.AddSeconds(2);
+            logger.LogInformation("The game refused item {ItemId} ({Message}), attempt {Attempt}/{MaxAttempts}",
+                ItemId, _lastRefusal, _refusals, MaxRefusals);
+            return false;
         }
 
         public override unsafe ETaskResult Update()
@@ -165,6 +206,9 @@ internal static class UseItem
 
             if (DateTime.Now <= _continueAt)
                 return ETaskResult.StillRunning;
+
+            if (_refusals >= MaxRefusals)
+                throw new TaskException($"The game refused to use {GetItemName(dataManager, ItemId)}: {_lastRefusal}");
 
             if (StartingCombat && condition[ConditionFlag.InCombat])
                 return ETaskResult.TaskComplete;
@@ -181,7 +225,6 @@ internal static class UseItem
                 int itemCount = inventoryManager->GetInventoryItemCount(ItemId);
                 if (itemCount == _itemCount)
                 {
-                    // TODO Better handling for game-provided errors, i.e. reacting to the 'Could not use' messages. UseItem() is successful in this case (and returns 0)
                     logger.LogInformation(
                         "Attempted to use vesper bay aetheryte ticket, but it didn't consume an item - reattempting next frame");
                     _usedItem = false;
@@ -191,8 +234,7 @@ internal static class UseItem
 
             if (!_usedItem)
             {
-                ProgressContext = InteractionProgressContext.FromActionUseOrDefault(() => _usedItem = UseItem());
-                _continueAt = DateTime.Now.Add(GetRetryDelay());
+                UseItemNow();
                 return ETaskResult.StillRunning;
             }
 
@@ -226,8 +268,9 @@ internal static class UseItem
         GameFunctions gameFunctions,
         ICondition condition,
         ILogger<UseOnGroundExecutor> logger,
-        IQuestGameState gameState)
-        : UseItemExecutorBase<UseOnGround>(condition, logger, gameState)
+        IQuestGameState gameState,
+        IDataManager dataManager)
+        : UseItemExecutorBase<UseOnGround>(condition, logger, gameState, dataManager)
     {
         protected override bool UseItem() => gameFunctions.UseItemOnGround(Task.DataId, ItemId);
     }
@@ -248,8 +291,9 @@ internal static class UseItem
         GameFunctions gameFunctions,
         ICondition condition,
         ILogger<UseOnPosition> logger,
-        IQuestGameState gameState)
-        : UseItemExecutorBase<UseOnPosition>(condition, logger, gameState)
+        IQuestGameState gameState,
+        IDataManager dataManager)
+        : UseItemExecutorBase<UseOnPosition>(condition, logger, gameState, dataManager)
     {
         protected override bool UseItem() => gameFunctions.UseItemOnPosition(Task.Position, ItemId);
     }
@@ -270,8 +314,9 @@ internal static class UseItem
         GameFunctions gameFunctions,
         ICondition condition,
         ILogger<UseOnObject> logger,
-        IQuestGameState gameState)
-        : UseItemExecutorBase<UseOnObject>(condition, logger, gameState)
+        IQuestGameState gameState,
+        IDataManager dataManager)
+        : UseItemExecutorBase<UseOnObject>(condition, logger, gameState, dataManager)
     {
         protected override bool UseItem() => gameFunctions.UseItem(Task.DataId, ItemId);
     }
@@ -291,8 +336,9 @@ internal static class UseItem
         GameFunctions gameFunctions,
         ICondition condition,
         ILogger<UseOnSelf> logger,
-        IQuestGameState gameState)
-        : UseItemExecutorBase<UseOnSelf>(condition, logger, gameState)
+        IQuestGameState gameState,
+        IDataManager dataManager)
+        : UseItemExecutorBase<UseOnSelf>(condition, logger, gameState, dataManager)
     {
         protected override bool UseItem() => gameFunctions.UseItem(ItemId);
     }

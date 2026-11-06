@@ -99,4 +99,15 @@ public sealed class MovementCompletionTests
         Assert.Null(startedAt);
         Assert.True(MoveExecutor.ShouldWaitForSimpleMove(true, 50_000, ref startedAt));
     }
+
+    [Fact]
+    public void MountDuringMovementIsRecheckedAtMostEveryHalfSecond()
+    {
+        DateTime now = new(2026, 11, 6, 12, 0, 0);
+        DateTime nextCheckAt = default;
+        Assert.True(MoveExecutor.ShouldRecheckMount(now, ref nextCheckAt));
+        Assert.False(MoveExecutor.ShouldRecheckMount(now.AddSeconds(0.49), ref nextCheckAt));
+        Assert.True(MoveExecutor.ShouldRecheckMount(now.AddSeconds(0.5), ref nextCheckAt));
+        Assert.False(MoveExecutor.ShouldRecheckMount(now.AddSeconds(0.9), ref nextCheckAt));
+    }
 }

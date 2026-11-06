@@ -160,6 +160,7 @@ internal sealed class DalamudInitializer : IDisposable
 
     private void OnErrorToast(ref SeString message, ref bool isHandled)
     {
+        _logger.LogDebug("Error toast: {Message}", message.TextValue);
         if (DialogueReferenceResolver.IsMatch(
                 message.ToString(),
                 new(Svc.Data.GetExcelSheet<LogMessage>().GetRow(1951).Text.ToRegex())) // 'contains gear unequippable'
