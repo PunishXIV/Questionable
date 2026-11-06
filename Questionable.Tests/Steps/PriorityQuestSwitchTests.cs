@@ -23,7 +23,7 @@ public sealed class PriorityQuestSwitchTests
     [InlineData(false, true, false)]
     public void SwitchesAwayOnlyFromInterruptibleQuestsOutsideDuties(bool interruptible, bool inDuty, bool expected)
     {
-        Assert.Equal(expected, QuestController.CanSwitchToPriorityQuest(Started(962, interruptible), Priority, inDuty));
+        Assert.Equal(expected, QuestSelectionController.CanSwitchToPriorityQuest(Started(962, interruptible), Priority, inDuty));
     }
 
     [Theory]
@@ -31,7 +31,7 @@ public sealed class PriorityQuestSwitchTests
     [InlineData(true)]
     public void NothingStartedOrAlreadyOnThePriorityQuestAlwaysSwitches(bool inDuty)
     {
-        Assert.True(QuestController.CanSwitchToPriorityQuest(null, Priority, inDuty));
-        Assert.True(QuestController.CanSwitchToPriorityQuest(Started(1234, interruptible: false), Priority, inDuty));
+        Assert.True(QuestSelectionController.CanSwitchToPriorityQuest(null, Priority, inDuty));
+        Assert.True(QuestSelectionController.CanSwitchToPriorityQuest(Started(1234, interruptible: false), Priority, inDuty));
     }
 }

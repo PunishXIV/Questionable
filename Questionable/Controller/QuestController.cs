@@ -54,6 +54,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private const int QuestAcceptStalledTimeoutSeconds = 15;
 
     private readonly QuestAcceptanceController _acceptance;
+    private readonly QuestSelectionController _selection;
+    private IQuestSelectionState? _selectionState;
     private readonly AlliedSocietyQuestFunctions _alliedSocietyQuestFunctions;
     private readonly IChatGui _chatGui;
     private readonly IClientState _clientState;
@@ -102,6 +104,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         ExternalOperationCoordinator externalOperations,
         QuestRecoveryController recovery,
         QuestAcceptanceController acceptance,
+        QuestSelectionController selection,
         SinglePlayerDuty.RetryCounter soloDutyRetries,
         ILogger<QuestController> logger,
         HighlightObject highlightObject,
@@ -137,6 +140,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _externalOperations = externalOperations;
         _recovery = recovery;
         _acceptance = acceptance;
+        _selection = selection;
         _soloDutyRetries = soloDutyRetries;
         _questRegistry = questRegistry;
         _priorityManager = priorityManager;
@@ -419,17 +423,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             }
 
             // Queue currently available accept-only priority quests before completing any.
-            if (SimulatedQuest == null && NextQuest == null && GatheringQuest == null &&
-                (AutomationType == EAutomationType.Automatic || StartedQuest == null))
-            {
+            if (QuestSelectionController.ShouldQueueAcceptOnly(Slots, AutomationType))
                 TryQueueNextAcceptOnlyQuest();
-            }
 
-            // Honor the stop-after toggle before starting queued or priority quests; completed repeatables may still be active.
-            if (StartedQuest != null && _questFunctions.IsQuestComplete(StartedQuest.Quest.Id) && !_questFunctions.IsQuestAccepted(StartedQuest.Quest.Id))
+            // Honor the stop-after toggle before starting queued or priority quests.
+            EStopPoint? stopPoint = _selection.GetStopPoint(StartedQuest, StopAfterCurrentQuest, SelectionState);
+            if (StartedQuest != null && stopPoint != null)
             {
-                if (_configuration.Stop.Enabled &&
-                    _configuration.Stop.QuestsToStopAfter.Contains(StartedQuest.Quest.Id))
+                if (stopPoint == EStopPoint.Configured)
                 {
                     ElementId questId = StartedQuest.Quest.Id;
                     _logger.LogInformation("Reached stopping point (quest: {QuestId})", questId);
@@ -443,7 +444,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                     return;
                 }
 
-                if (StopAfterCurrentQuest)
+                if (stopPoint == EStopPoint.AfterCurrentQuest)
                 {
                     ElementId questId = StartedQuest.Quest.Id;
                     _logger.LogInformation("Stopping after current quest as requested (quest: {QuestId})", questId);
@@ -457,49 +458,23 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 }
             }
 
+            QuestChoice choice = QuestSelectionController.Choose(new QuestSelectionContext(Slots, _priorityManager.Quests,
+                _priorityManager.IsAcceptOnly, AutomationType, SelectionState));
             QuestProgress? questToRun;
-            byte currentSequence;
-            if (SimulatedQuest != null)
+            byte currentSequence = choice.Sequence;
+            if (choice.Progress != null)
             {
-                currentSequence = SimulatedQuest.Sequence;
-                questToRun = SimulatedQuest;
-            }
-            else if (NextQuest != null && _questFunctions.IsReadyToAcceptQuest(NextQuest.Quest.Id))
-            {
-                questToRun = NextQuest;
-                currentSequence = NextQuest.Sequence;
-                if (NextQuest.Step == 0 &&
-                    _taskQueue.AllTasksComplete &&
-                    AutomationType == EAutomationType.Automatic)
-                    ExecuteNextStep();
-            }
-            else if (GatheringQuest != null)
-            {
-                questToRun = GatheringQuest;
-                currentSequence = GatheringQuest.Sequence;
-                if (GatheringQuest.Step == 0 &&
+                questToRun = choice.Progress;
+                if (choice.Source != EQuestSource.Simulated &&
+                    questToRun.Step == 0 &&
                     _taskQueue.AllTasksComplete &&
                     AutomationType == EAutomationType.Automatic)
                     ExecuteNextStep();
             }
             else
             {
-                (ElementId? currentQuestId, currentSequence, MainScenarioQuestState msqState) =
-                    _questFunctions.GetCurrentQuest(allowNewMsq: AutomationType != EAutomationType.SingleQuestB);
-                (ElementId, byte)? priorityQuestOption =
-                    _priorityManager.Quests
-                        .Where(x => !_priorityManager.IsAcceptOnly(x.Id))
-                        .Where(x => _questFunctions.IsReadyToAcceptQuest(x.Id, ignoreLevel: true) ||
-                                    _questFunctions.IsQuestAccepted(x.Id))
-                        .Select(x => (x.Id, QuestFunctions.GetQuestProgressInfo(x.Id)?.Sequence ?? 0))
-                        .FirstOrDefault();
-                if (priorityQuestOption is { Item1: not null } priorityQuest &&
-                    CanSwitchToPriorityQuest(StartedQuest, priorityQuest.Item1, _condition[ConditionFlag.BoundByDuty]))
-                {
-                    currentQuestId = priorityQuest.Item1;
-                    currentSequence = priorityQuest.Item2;
-                }
-
+                ElementId? currentQuestId = choice.QuestId;
+                MainScenarioQuestState msqState = choice.MsqState;
                 if (currentQuestId == null || currentQuestId.Value == 0)
                 {
                     if (StartedQuest != null)
@@ -538,11 +513,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
                         unsafe
                         {
-                            if (PlayerState.Instance()->CurrentLevel < quest.Info.Level)
+                            int playerLevel = PlayerState.Instance()->CurrentLevel;
+                            if (QuestSelectionController.IsLevelTooHigh(playerLevel, quest))
                             {
                                 _logger.LogInformation(
                                     "Stopping automation, player level ({PlayerLevel}) < quest level ({QuestLevel}",
-                                    PlayerState.Instance()->CurrentLevel, quest.Info.Level);
+                                    playerLevel, quest.Info.Level);
+                                _chatGui.Print(_LF("Stopped: '{0}' needs level {1} (you're level {2}).",
+                                    quest.Info.Name, quest.Info.Level, playerLevel), CommandHandler.MessageTag, CommandHandler.TagColor);
                                 Stop("Quest level too high");
                             }
                             else
@@ -1258,9 +1236,20 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsAccepted.Count ?? 0) == 0;
     }
 
-    // Leaving a duty, or a quest that can't be resumed from elsewhere (e.g. the ferry-only Isles of Umbre), strands the player.
-    internal static bool CanSwitchToPriorityQuest(QuestProgress? started, ElementId priorityQuestId, bool inDuty) =>
-        started == null || started.Quest.Id == priorityQuestId || (!inDuty && started.Quest.Root.Interruptible);
+    private QuestSlots Slots => new(StartedQuest, NextQuest, GatheringQuest, SimulatedQuest);
+    private IQuestSelectionState SelectionState => _selectionState ??= new SelectionStateAdapter(this);
+
+    private sealed class SelectionStateAdapter(QuestController controller) : IQuestSelectionState
+    {
+        public bool InDuty => controller._condition[ConditionFlag.BoundByDuty];
+        public bool IsAccepted(ElementId questId) => controller._questFunctions.IsQuestAccepted(questId);
+        public bool IsComplete(ElementId questId) => controller._questFunctions.IsQuestComplete(questId);
+        public bool IsReadyToAccept(ElementId questId, bool ignoreLevel = false) =>
+            controller._questFunctions.IsReadyToAcceptQuest(questId, ignoreLevel);
+        public bool HasClassJobAtQuestLevel(ElementId questId) => controller._questFunctions.HasClassJobAtQuestLevel(questId);
+        public byte GetSequence(ElementId questId) => QuestFunctions.GetQuestProgressInfo(questId)?.Sequence ?? 0;
+        public QuestReference GetCurrentQuest(bool allowNewMsq) => controller._questFunctions.GetCurrentQuest(allowNewMsq);
+    }
 
     // Accept-only priorities run sequence 0, then remain for normal completion.
     private bool TryQueueNextAcceptOnlyQuest()
@@ -1268,9 +1257,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (!_priorityManager.HasPendingAcceptOnly)
             return false;
 
-        Quest? next = _priorityManager.AcceptOnlyQuests
-            .FirstOrDefault(quest => _questFunctions.IsReadyToAcceptQuest(quest.Id, ignoreLevel: true) &&
-                                     _questFunctions.HasClassJobAtQuestLevel(quest.Id));
+        Quest? next = QuestSelectionController.PickAcceptOnly(_priorityManager.AcceptOnlyQuests, SelectionState);
         if (next == null)
             return false;
 

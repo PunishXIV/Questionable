@@ -26,6 +26,7 @@ internal static class TestQuestController
         Set(controller, "_logger", NullLogger<QuestController>.Instance);
         Set(controller, "_configuration", configuration);
         Set(controller, "_acceptance", acceptance ?? new QuestAcceptanceController(configuration));
+        Set(controller, "_selection", new QuestSelectionController(configuration));
         Set(controller, "_recovery", recovery ?? new QuestRecoveryController(NullLogger<QuestRecoveryController>.Instance));
         Set(controller, "_stopPolicy", stopPolicy ??
             new QuestStopPolicy(configuration, _ => { }, _ => { }, NullLogger<QuestStopPolicy>.Instance));

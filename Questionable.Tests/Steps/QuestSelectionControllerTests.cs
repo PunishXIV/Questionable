@@ -1,0 +1,252 @@
+using NSubstitute;
+using Questionable.Controller;
+using Questionable.Domain;
+using Questionable.Functions;
+using Questionable.Model.Questing;
+using Questionable.Tests.TestData;
+using Xunit;
+using EAutomationType = Questionable.Controller.QuestController.EAutomationType;
+using QuestProgress = Questionable.Controller.QuestController.QuestProgress;
+
+namespace Questionable.Tests.Steps;
+
+public sealed class QuestSelectionControllerTests
+{
+    private readonly Configuration _configuration = new();
+    private readonly QuestSelectionController _selection;
+    private readonly FakeState _state = new();
+    private readonly HashSet<ElementId> _acceptOnly = [];
+
+    public QuestSelectionControllerTests() => _selection = new(_configuration);
+
+    private static Quest NewQuest(ushort id, int level = 1, bool interruptible = true)
+    {
+        Quest quest = QuestTestData.CreateQuest(new QuestId(id));
+        quest.Info.Level.Returns((ushort)level);
+        quest.Root.Interruptible = interruptible;
+        return quest;
+    }
+
+    private static QuestProgress Progress(ushort id, byte sequence = 1, bool interruptible = true) =>
+        new(NewQuest(id, interruptible: interruptible), sequence);
+
+    private QuestChoice Choose(QuestSlots slots, EAutomationType automation = EAutomationType.Automatic, params Quest[] priority) =>
+        QuestSelectionController.Choose(new QuestSelectionContext(slots, priority, _acceptOnly.Contains, automation, _state));
+
+    private static QuestSlots Slots(QuestProgress? started = null, QuestProgress? next = null, QuestProgress? gathering = null,
+        QuestProgress? simulated = null) => new(started, next, gathering, simulated);
+
+    [Fact]
+    public void SimulatedBeatsEveryOtherSource()
+    {
+        QuestProgress simulated = Progress(1, sequence: 3);
+        _state.Ready.Add(new QuestId(2));
+
+        QuestChoice choice = Choose(Slots(next: Progress(2), gathering: Progress(3), simulated: simulated), priority: [NewQuest(4)]);
+
+        Assert.Equal(EQuestSource.Simulated, choice.Source);
+        Assert.Same(simulated, choice.Progress);
+        Assert.Equal(3, choice.Sequence);
+        Assert.Equal(0, _state.CurrentQueries);
+    }
+
+    [Fact]
+    public void NextRunsOnlyOnceItCanBeAccepted()
+    {
+        QuestProgress next = Progress(2);
+        QuestProgress gathering = Progress(3);
+
+        Assert.Equal(EQuestSource.Gathering, Choose(Slots(next: next, gathering: gathering)).Source);
+
+        _state.Ready.Add(next.Quest.Id);
+        QuestChoice choice = Choose(Slots(next: next, gathering: gathering));
+        Assert.Equal(EQuestSource.Next, choice.Source);
+        Assert.Same(next, choice.Progress);
+    }
+
+    [Fact]
+    public void JournalQuestRunsWhenNothingElseOffers()
+    {
+        _state.Current = new QuestReference(new QuestId(70), 2, MainScenarioQuestState.Available);
+
+        QuestChoice choice = Choose(Slots(started: Progress(70)));
+
+        Assert.Equal(EQuestSource.Journal, choice.Source);
+        Assert.Null(choice.Progress);
+        Assert.Equal(new QuestId(70), choice.QuestId);
+        Assert.Equal(2, choice.Sequence);
+        Assert.Equal(MainScenarioQuestState.Available, choice.MsqState);
+    }
+
+    [Theory]
+    [InlineData((int)EAutomationType.Automatic, true)]
+    [InlineData((int)EAutomationType.SingleQuestA, true)]
+    [InlineData((int)EAutomationType.SingleQuestB, false)]
+    public void OnlyTheFinishedSingleQuestStopsNewMsqFromBeingOffered(int automation, bool allowNewMsq)
+    {
+        Choose(Slots(), (EAutomationType)automation);
+
+        Assert.Equal(allowNewMsq, _state.LastAllowNewMsq);
+    }
+
+    [Fact]
+    public void PriorityQuestReadyIgnoringLevelOrAcceptedOverridesTheJournal()
+    {
+        _state.Current = QuestReference.NoQuest(MainScenarioQuestState.Complete);
+        Quest notReady = NewQuest(10);
+        Quest ready = NewQuest(11);
+        _state.ReadyIgnoringLevel.Add(ready.Id);
+        _state.Sequences[ready.Id] = 4;
+
+        QuestChoice choice = Choose(Slots(), priority: [notReady, ready]);
+
+        Assert.Equal(EQuestSource.Priority, choice.Source);
+        Assert.Equal(ready.Id, choice.QuestId);
+        Assert.Equal(4, choice.Sequence);
+        Assert.Equal(MainScenarioQuestState.Complete, choice.MsqState);
+
+        _state.ReadyIgnoringLevel.Clear();
+        _state.Accepted.Add(notReady.Id);
+        Assert.Equal(notReady.Id, Choose(Slots(), priority: [notReady, ready]).QuestId);
+    }
+
+    [Fact]
+    public void AcceptOnlyPriorityQuestsAreLeftToTheAcceptOnlyQueue()
+    {
+        Quest acceptOnly = NewQuest(10);
+        _acceptOnly.Add(acceptOnly.Id);
+        _state.Ready.Add(acceptOnly.Id);
+
+        Assert.Equal(EQuestSource.Journal, Choose(Slots(), priority: [acceptOnly]).Source);
+    }
+
+    [Fact]
+    public void OnlyTheFirstEligiblePriorityQuestIsConsidered()
+    {
+        // The started quest can't be interrupted, so the first candidate is refused even though the second is the started one.
+        _state.Current = new QuestReference(new QuestId(11), 1, MainScenarioQuestState.Available);
+        Quest first = NewQuest(10);
+        Quest second = NewQuest(11);
+        _state.Ready.UnionWith([first.Id, second.Id]);
+
+        QuestChoice choice = Choose(Slots(started: Progress(11, interruptible: false)), priority: [first, second]);
+
+        Assert.Equal(EQuestSource.Journal, choice.Source);
+    }
+
+    [Theory]
+    [InlineData(true, false, (int)EQuestSource.Priority)]
+    [InlineData(true, true, (int)EQuestSource.Journal)]
+    [InlineData(false, false, (int)EQuestSource.Journal)]
+    public void PriorityQuestTakesOverOnlyFromAnInterruptibleQuestOutsideDuties(bool interruptible, bool inDuty, int expected)
+    {
+        Quest priority = NewQuest(10);
+        _state.Ready.Add(priority.Id);
+        _state.InDuty = inDuty;
+
+        Assert.Equal((EQuestSource)expected, Choose(Slots(started: Progress(70, interruptible: interruptible)), priority: [priority]).Source);
+    }
+
+    [Theory]
+    [InlineData((int)EAutomationType.Automatic, false, true)]
+    [InlineData((int)EAutomationType.Automatic, true, true)]
+    [InlineData((int)EAutomationType.Manual, false, true)]
+    [InlineData((int)EAutomationType.Manual, true, false)]
+    [InlineData((int)EAutomationType.SingleQuestA, true, false)]
+    public void AcceptOnlyQueueRunsWhenAutomaticOrNothingIsStarted(int automation, bool started, bool expected)
+    {
+        Assert.Equal(expected, QuestSelectionController.ShouldQueueAcceptOnly(Slots(started: started ? Progress(1) : null),
+            (EAutomationType)automation));
+    }
+
+    [Fact]
+    public void AcceptOnlyQueueWaitsForOtherSlots()
+    {
+        Assert.False(QuestSelectionController.ShouldQueueAcceptOnly(Slots(next: Progress(1)), EAutomationType.Automatic));
+        Assert.False(QuestSelectionController.ShouldQueueAcceptOnly(Slots(gathering: Progress(1)), EAutomationType.Automatic));
+        Assert.False(QuestSelectionController.ShouldQueueAcceptOnly(Slots(simulated: Progress(1)), EAutomationType.Automatic));
+    }
+
+    [Fact]
+    public void AcceptOnlyPicksTheFirstQuestReadyIgnoringLevelWithTheRightClass()
+    {
+        Quest wrongClass = NewQuest(10);
+        Quest notReady = NewQuest(11);
+        Quest pick = NewQuest(12);
+        _state.ReadyIgnoringLevel.UnionWith([wrongClass.Id, pick.Id]);
+        _state.ClassJob.UnionWith([notReady.Id, pick.Id]);
+
+        Assert.Same(pick, QuestSelectionController.PickAcceptOnly([wrongClass, notReady, pick], _state));
+        Assert.Null(QuestSelectionController.PickAcceptOnly([wrongClass, notReady], _state));
+    }
+
+    [Theory]
+    [InlineData(true, true, false, (int)EStopPoint.Configured)]
+    [InlineData(true, true, true, (int)EStopPoint.Configured)]
+    [InlineData(false, true, true, (int)EStopPoint.AfterCurrentQuest)]
+    [InlineData(true, false, true, (int)EStopPoint.AfterCurrentQuest)]
+    [InlineData(false, true, false, null)]
+    public void StopPointNeedsTheQuestDoneAndGone(bool enabled, bool listed, bool stopAfterCurrent, int? expected)
+    {
+        QuestProgress started = Progress(70);
+        _configuration.Stop.Enabled = enabled;
+        if (listed)
+            _configuration.Stop.QuestsToStopAfter.Add(started.Quest.Id);
+        _state.Complete.Add(started.Quest.Id);
+
+        Assert.Equal((EStopPoint?)expected, _selection.GetStopPoint(started, stopAfterCurrent, _state));
+    }
+
+    [Fact]
+    public void NoStopPointWhileTheQuestIsUnfinishedOrStillAccepted()
+    {
+        QuestProgress started = Progress(70);
+        _configuration.Stop.Enabled = true;
+        _configuration.Stop.QuestsToStopAfter.Add(started.Quest.Id);
+
+        Assert.Null(_selection.GetStopPoint(started, stopAfterCurrentQuest: true, _state));
+        _state.Complete.Add(started.Quest.Id);
+        _state.Accepted.Add(started.Quest.Id); // a completed repeatable picked up again
+        Assert.Null(_selection.GetStopPoint(started, stopAfterCurrentQuest: true, _state));
+        Assert.Null(_selection.GetStopPoint(null, stopAfterCurrentQuest: true, _state));
+    }
+
+    [Theory]
+    [InlineData(34, 35, true)]
+    [InlineData(35, 35, false)]
+    [InlineData(36, 35, false)]
+    public void LevelIsTooHighOnlyBelowTheQuestLevel(int playerLevel, int questLevel, bool expected)
+    {
+        Assert.Equal(expected, QuestSelectionController.IsLevelTooHigh(playerLevel, NewQuest(10, questLevel)));
+    }
+
+    private sealed class FakeState : IQuestSelectionState
+    {
+        public bool InDuty { get; set; }
+        public HashSet<ElementId> Accepted { get; } = [];
+        public HashSet<ElementId> Complete { get; } = [];
+        public HashSet<ElementId> Ready { get; } = [];
+        public HashSet<ElementId> ReadyIgnoringLevel { get; } = [];
+        public HashSet<ElementId> ClassJob { get; } = [];
+        public Dictionary<ElementId, byte> Sequences { get; } = [];
+        public QuestReference Current { get; set; } = QuestReference.NoQuest(MainScenarioQuestState.Available);
+        public int CurrentQueries { get; private set; }
+        public bool? LastAllowNewMsq { get; private set; }
+
+        public bool IsAccepted(ElementId questId) => Accepted.Contains(questId);
+        public bool IsComplete(ElementId questId) => Complete.Contains(questId);
+
+        public bool IsReadyToAccept(ElementId questId, bool ignoreLevel = false) =>
+            Ready.Contains(questId) || (ignoreLevel && ReadyIgnoringLevel.Contains(questId));
+
+        public bool HasClassJobAtQuestLevel(ElementId questId) => ClassJob.Contains(questId);
+        public byte GetSequence(ElementId questId) => Sequences.GetValueOrDefault(questId);
+
+        public QuestReference GetCurrentQuest(bool allowNewMsq)
+        {
+            CurrentQueries++;
+            LastAllowNewMsq = allowNewMsq;
+            return Current;
+        }
+    }
+}
