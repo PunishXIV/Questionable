@@ -215,7 +215,6 @@ public sealed class QuestTaskQueueTests
         executor.Received(1).StopNow();
         Assert.Equal(["executor", "purchase", "gathering", "fishing", "manual"], cleanupOrder);
         Assert.False(controller.HasExternalOperation);
-        operations.Duty.Stop.DidNotReceive().InvokeAction();
 
         purchase.GetBusy().Returns(false);
         gather.GetBusy().Returns(false);

@@ -8,7 +8,7 @@ internal static class SendNotification
     internal sealed class Factory
     (
         AutomatonIpc automatonIpc,
-        AutoDutyIpc autoDutyIpc,
+        AutoDutyOperationProvider autoDuty,
         BossModIpc bossModIpc,
         TerritoryData territoryData) : SimpleTaskFactory
     {
@@ -18,7 +18,7 @@ internal static class SendNotification
             {
                 EInteractionType.Snipe when !automatonIpc.IsAutoSnipeEnabled =>
                     new(step.InteractionType, step.Comment),
-                EInteractionType.Duty when !autoDutyIpc.IsConfiguredToRunContent(step.DutyOptions) =>
+                EInteractionType.Duty when !autoDuty.IsConfiguredToRunContent(step.DutyOptions) =>
                     new(step.InteractionType, step.DutyOptions?.ContentFinderConditionId is { } contentFinderConditionId
                         ? territoryData.GetContentFinderCondition(contentFinderConditionId)?.Name
                         : step.Comment),

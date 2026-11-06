@@ -223,8 +223,7 @@ public sealed class NavigationSubmissionTests
     public void MissingOptionalProviders_DoNotBlockRoute()
     {
         using var fixture = new Fixture();
-        fixture.Duty.Available = false;
-        fixture.Duty.StoppedGate.InvokeFunc().Returns(_ => throw new InvalidOperationException("Unavailable"));
+        fixture.DutyStatus = () => throw new IpcNotReadyError("AutoDuty.IsStopped");
         fixture.Knightshopper.GetBusy().Returns((bool?)null);
         fixture.Gather.GetBusy().Returns((bool?)null);
         fixture.Feesh.GetBusy().Returns((bool?)null);
@@ -388,8 +387,8 @@ public sealed class NavigationSubmissionTests
                 case "purchase": Knightshopper.GetBusy().Returns(true); break;
                 case "gather": Gather.GetBusy().Returns(true); break;
                 case "feesh": Feesh.GetBusy().Returns(true); break;
-                case "duty": Duty.Stopped = false; break;
-                case "unknown-duty": Duty.StoppedGate.InvokeFunc().Returns(_ => throw new InvalidOperationException("Status lost")); break;
+                case "duty": DutyStatus = () => false; break;
+                case "unknown-duty": DutyStatus = () => throw new InvalidOperationException("Status lost"); break;
                 default: throw new ArgumentOutOfRangeException(nameof(provider));
             }
         }

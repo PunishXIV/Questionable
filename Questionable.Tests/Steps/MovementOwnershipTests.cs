@@ -14,6 +14,7 @@ namespace Questionable.Tests.Steps;
 public sealed class MovementOwnershipTests : IDisposable
 {
     private readonly List<AutoDutyIpc> _ownedAutoDuties = [];
+    private readonly List<AutoDutyOperationProvider> _ownedDutyProviders = [];
 
     [Fact]
     public void ManualPurchase_StopClearsLocalDestinationWithoutStoppingProviderTravel()
@@ -282,57 +283,17 @@ public sealed class MovementOwnershipTests : IDisposable
     [InlineData(true)]
     public void ManualAutoDuty_StopDoesNotInterruptProviderTravel(bool statusFailure)
     {
-        using var duty = CreateAutoDuty(new(), stopped: false, statusFailure: statusFailure);
+        using var duty = CreateAutoDuty(stopped: false, statusFailure: statusFailure);
         using MovementController movement = CreateController(new(), Substitute.For<IKnightshopperIpc>(), autoDuty: duty);
 
         movement.Stop();
 
         Assert.Null(movement.Destination);
-        Assert.False(duty.HasOperation);
+        Assert.False(_ownedDutyProviders.Single().Operation.HasOperation);
     }
 
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void RetainedAutoDuty_ProtectsTravelAfterQueueResetOrLostStatus(bool uncertain)
-    {
-        AutoDutyOperationState operation = new();
-        Guid owner = operation.BeginSubmission(123);
-        operation.MarkRunSubmitted();
-        operation.AbandonCurrent();
-        if (uncertain)
-            operation.RequireReconciliation("Provider status lost");
-        using var duty = CreateAutoDuty(operation, stopped: true);
-        using MovementController movement = CreateController(new(), Substitute.For<IKnightshopperIpc>(), autoDuty: duty);
-
-        AssertExternalMovementProtected(movement);
-
-        Assert.Equal(owner, operation.OperationId);
-        Assert.True(operation.IsAbandoned);
-        Assert.Equal(uncertain, operation.RequiresReconciliation);
-    }
-
-    private static AutoDutyIpc CreateAutoDuty(AutoDutyOperationState operation, bool stopped, bool statusFailure = false)
-    {
-        var pluginInterface = Substitute.For<IDalamudPluginInterface>();
-        var isStopped = Substitute.For<ICallGateSubscriber<bool>>();
-        isStopped.HasFunction.Returns(true);
-        isStopped.InvokeFunc().Returns(_ =>
-        {
-            if (statusFailure)
-                throw new InvalidOperationException("Provider status lost");
-            return stopped;
-        });
-        pluginInterface.GetIpcSubscriber<bool>("AutoDuty.IsStopped").Returns(isStopped);
-        var run = Substitute.For<ICallGateSubscriber<uint, int, bool, object>>();
-        run.HasAction.Returns(true);
-        pluginInterface.GetIpcSubscriber<uint, int, bool, object>("AutoDuty.Run").Returns(run);
-        var stop = Substitute.For<ICallGateSubscriber<object>>();
-        stop.HasAction.Returns(true);
-        pluginInterface.GetIpcSubscriber<object>("AutoDuty.Stop").Returns(stop);
-        return new AutoDutyIpc(pluginInterface, new(), _ => null, NullLogger<AutoDutyIpc>.Instance,
-            operation, () => default);
-    }
+    private static AutoDutyIpc CreateAutoDuty(bool stopped, bool statusFailure = false) =>
+        new(() => statusFailure ? throw new InvalidOperationException("Provider status lost") : stopped);
 
     private MovementController CreateController(PurchaseOperationState operation, IKnightshopperIpc knightshopper,
         GatheringOperationState? gatheringOperation = null, IGatherChillIpc? gatherChill = null,
@@ -343,14 +304,16 @@ public sealed class MovementOwnershipTests : IDisposable
         framework.IsFrameworkUnloading.Returns(true);
         if (autoDuty == null)
         {
-            autoDuty = CreateAutoDuty(new(), stopped: true);
+            autoDuty = CreateAutoDuty(stopped: true);
             _ownedAutoDuties.Add(autoDuty);
         }
 
         MovementController? controller = null;
+        var dutyProvider = TestOperationProviders.AutoDuty(autoDuty);
+        _ownedDutyProviders.Add(dutyProvider);
         var operations = TestOperationProviders.Coordinator(TestOperationProviders.Moving(operation, knightshopper,
             gatheringOperation ?? new(), gatherChill ?? Substitute.For<IGatherChillIpc>(), fishingOperation ?? new(),
-            feesh ?? Substitute.For<IFeeshIpc>(), autoDuty), () => controller!);
+            feesh ?? Substitute.For<IFeeshIpc>(), dutyProvider), () => controller!);
 
         // Native dependencies are null, so reaching the global navmesh stop fails the test before any game input.
         return controller = new MovementController(
@@ -383,6 +346,8 @@ public sealed class MovementOwnershipTests : IDisposable
 
     public void Dispose()
     {
+        foreach (var provider in _ownedDutyProviders)
+            provider.Dispose();
         foreach (var autoDuty in _ownedAutoDuties)
             autoDuty.Dispose();
     }

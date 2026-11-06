@@ -13,7 +13,9 @@ namespace Questionable.Tests.Steps;
 internal sealed class ExternalOperationFixture : IDisposable
 {
     public TestClock Clock { get; } = new();
-    public AutoDutyFixture Duty { get; } = new();
+    public Func<bool> DutyStatus { get; set; } = () => true;
+    public AutoDutyIpc AutoDuty { get; }
+    private readonly AutoDutyOperationProvider _dutyProvider;
     public BossModIpcTests.BossModTestContext BossMod { get; } = new();
     public IFramework Framework { get; } = Substitute.For<IFramework>();
     public IObjectTable Objects { get; } = Substitute.For<IObjectTable>();
@@ -47,13 +49,15 @@ internal sealed class ExternalOperationFixture : IDisposable
         Combat = new(combatModules ?? [], Movement, Substitute.For<ITargetManager>(), Objects,
             Condition, Client, null!, null!, Framework, NullLogger<CombatController>.Instance);
         GatheringController = new(Gather, Gathering, _ => 0, () => { });
+        AutoDuty = new(() => DutyStatus());
+        _dutyProvider = TestOperationProviders.AutoDuty(AutoDuty);
         // Deliberately not in run order: the coordinator sorts by Order.
         Providers =
         [
             new CombatCleanupProvider(Combat, BossMod.Ipc, NullLogger<CombatCleanupProvider>.Instance),
             new FeeshOperationProvider(Feesh, Fishing),
             new ArtisanOperationProvider(Artisan, Crafting, Condition, NullLogger<ArtisanOperationProvider>.Instance),
-            new AutoDutyOperationProvider(Duty.Ipc),
+            _dutyProvider,
             new GatherChillOperationProvider(Gather, Gathering),
             new KnightshopperOperationProvider(Knightshopper, Purchase, GilShop),
             .. extraProviders ?? [],
@@ -70,6 +74,7 @@ internal sealed class ExternalOperationFixture : IDisposable
     {
         Movement.Dispose();
         Combat.Dispose();
-        Duty.Dispose();
+        _dutyProvider.Dispose();
+        AutoDuty.Dispose();
     }
 }

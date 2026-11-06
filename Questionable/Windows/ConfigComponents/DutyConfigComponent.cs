@@ -13,7 +13,7 @@ namespace Questionable.Windows.ConfigComponents;
 internal sealed class DutyConfigComponent : ConfigComponent
 {
     private const string DutyClipboardPrefix = "qst:duty:";
-    private readonly AutoDutyIpc _autoDutyIpc;
+    private readonly AutoDutyOperationProvider _autoDuty;
     private readonly Dictionary<EExpansionVersion, List<DutyInfo>> _contentFinderConditionNames;
     private bool runInstancedContentWithAutoDuty;
 
@@ -25,12 +25,12 @@ internal sealed class DutyConfigComponent : ConfigComponent
         Configuration configuration,
         IDataManager dataManager,
         QuestRegistry questRegistry,
-        AutoDutyIpc autoDutyIpc,
+        AutoDutyOperationProvider autoDuty,
         TerritoryData territoryData)
         : base(pluginInterface, configuration)
     {
         _questRegistry = questRegistry;
-        _autoDutyIpc = autoDutyIpc;
+        _autoDuty = autoDuty;
 
         _contentFinderConditionNames = dataManager.GetExcelSheet<DawnContent>()
             .Where(x => x is { RowId: > 0, Unknown16: false })
@@ -194,7 +194,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
         if (ImGui.IsItemHovered() && Configuration.Advanced.AdditionalStatusInformation)
             DrawDutyDebugTooltip(dutyInfo);
 
-        if (runInstancedContentWithAutoDuty && !_autoDutyIpc.HasPath(dutyInfo.CfcId))
+        if (runInstancedContentWithAutoDuty && !_autoDuty.HasPath(dutyInfo.CfcId))
         {
             ImGuiComponents.HelpMarker(_L("This duty is not supported by AutoDuty"),
                 FontAwesomeIcon.Times, QstTheme.Danger);

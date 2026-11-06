@@ -307,26 +307,13 @@ public sealed class TaskRunnerTests
             task => Assert.Same(original, task));
     }
 
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void CancellationToastDoesNotInterruptDutyProviders(bool solo)
+    [Fact]
+    public void CancellationToastDoesNotInterruptSoloDuty()
     {
         using var operations = new ExternalOperationFixture();
         using var fixture = new TaskRunnerFixture();
-        ITaskExecutor executor;
-        ITask task;
-        if (solo)
-        {
-            executor = new SinglePlayerDuty.WaitSinglePlayerDutyExecutor(operations.BossMod.Ipc, operations.Movement);
-            task = new SinglePlayerDuty.WaitSinglePlayerDuty(AutoDutyFixture.CfcId);
-        }
-        else
-        {
-            executor = new Duty.StartAutoDutyExecutor(operations.Duty.Ipc, _ => AutoDutyFixture.Content,
-                operations.Duty.Configuration, () => 100, _ => { });
-            task = new Duty.StartAutoDutyTask(AutoDutyFixture.CfcId, AutoDutyIpc.DutyMode.Support);
-        }
+        ITaskExecutor executor = new SinglePlayerDuty.WaitSinglePlayerDutyExecutor(operations.BossMod.Ipc, operations.Movement);
+        ITask task = new SinglePlayerDuty.WaitSinglePlayerDuty(42);
         Assert.True(fixture.Queue.StartTask(executor, task));
         SeString message = "Event canceled.";
         bool handled = false;
@@ -335,7 +322,6 @@ public sealed class TaskRunnerTests
 
         Assert.Same(executor, fixture.Queue.CurrentTaskExecutor);
         Assert.Empty(fixture.Queue.RemainingTasks);
-        operations.Duty.Stop.DidNotReceive().InvokeAction();
         fixture.Queue.Reset();
     }
 

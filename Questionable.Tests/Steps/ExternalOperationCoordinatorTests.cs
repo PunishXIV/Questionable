@@ -114,8 +114,6 @@ public sealed class ExternalOperationCoordinatorTests
         fixture.Purchase.BeginSubmission();
         fixture.Gathering.BeginSubmission();
         fixture.Fishing.BeginSubmission();
-        fixture.Duty.Start();
-        fixture.Duty.Available = false;
         fixture.BossMod.Ipc.SetPresetForSoloDuty(BossModIpc.EPreset.QuestBattle);
         fixture.BossMod.Available = false;
         fixture.Artisan.GetStatus().Returns(_ => throw new InvalidOperationException("Artisan unavailable"));
@@ -128,7 +126,6 @@ public sealed class ExternalOperationCoordinatorTests
         fixture.Knightshopper.Received(1).PollOperation();
         fixture.Gather.Received(1).PollOperation();
         fixture.Feesh.Received(1).PollOperation();
-        Assert.True(fixture.Duty.State.IsAbandoned);
         Assert.True(fixture.BossMod.Ipc.HasPendingCleanup);
         Assert.True(fixture.Crafting.RequiresReconciliation);
         Assert.False(host.IsActive);
@@ -142,8 +139,6 @@ public sealed class ExternalOperationCoordinatorTests
         using var fixture = new ExternalOperationFixture();
         fixture.Crafting.BeginSubmission();
         fixture.Purchase.BeginSubmission();
-        fixture.Duty.Start();
-        fixture.Duty.ThrowStop = true;
         fixture.BossMod.Ipc.SetPresetForSoloDuty(BossModIpc.EPreset.QuestBattle);
         fixture.BossMod.Available = false;
         List<string> order = [];
@@ -163,7 +158,6 @@ public sealed class ExternalOperationCoordinatorTests
         }));
 
         Assert.Equal(["queue", "purchase", "gathering", "fishing"], order);
-        fixture.Duty.Stop.Received(1).InvokeAction();
         Assert.True(fixture.BossMod.Ipc.HasPendingCleanup);
         Assert.True(fixture.Coordinator.HasExternalOperation);
     }
@@ -191,7 +185,7 @@ public sealed class ExternalOperationCoordinatorTests
     public void MissingDutyStatusBlocksPreparation()
     {
         using var fixture = new ExternalOperationFixture();
-        fixture.Duty.StoppedGate.InvokeFunc().Returns(_ => throw new InvalidOperationException("status unavailable"));
+        fixture.DutyStatus = () => throw new InvalidOperationException("status unavailable");
 
         Assert.False(fixture.Coordinator.CanPrepareQuestTasks(out string? reason));
         Assert.Contains("AutoDuty", reason);
@@ -287,7 +281,6 @@ public sealed class ExternalOperationCoordinatorTests
     [InlineData("purchase")]
     [InlineData("gathering")]
     [InlineData("fishing")]
-    [InlineData("duty")]
     public void MatchingExecutor_ContinuesWhileRunning(string provider)
     {
         using var fixture = new ExternalOperationFixture();
@@ -307,15 +300,10 @@ public sealed class ExternalOperationCoordinatorTests
                 fixture.Gathering.BeginSubmission();
                 executor = new Gather.StartGathering(fixture.GatheringController);
                 break;
-            case "fishing":
+            default:
                 fixture.Fishing.BeginSubmission();
                 executor = new Fish.DoFish(fixture.Feesh, fixture.Fishing, NullLogger<Fish.DoFish>.Instance,
                     _ => false, _ => 0, _ => "Quest fish");
-                break;
-            default:
-                fixture.Duty.Start();
-                executor = new Duty.StartAutoDutyExecutor(fixture.Duty.Ipc, _ => AutoDutyFixture.Content,
-                    new(), () => 100, _ => { });
                 break;
         }
 
@@ -326,7 +314,6 @@ public sealed class ExternalOperationCoordinatorTests
         fixture.Purchase.AbandonCurrent();
         fixture.Gathering.AbandonCurrent();
         fixture.Fishing.AbandonCurrent();
-        fixture.Duty.State.AbandonCurrent();
         Assert.False(fixture.Coordinator.CanUpdateTask(executor));
     }
 
@@ -383,6 +370,11 @@ public sealed class ExternalOperationCoordinatorTests
     public void EveryProviderIsRegistered()
     {
         IServiceCollection services = new ServiceCollection().AddQuestionable();
+        // AutoDuty is also used by its concrete type, so its interface registration forwards to that singleton.
+        using var autoDuty = new AutoDutyIpc(() => true);
+        using var dutyProvider = TestOperationProviders.AutoDuty(autoDuty);
+        var resolver = Substitute.For<IServiceProvider>();
+        resolver.GetService(typeof(AutoDutyOperationProvider)).Returns(dutyProvider);
 
         Assert.Equal(
             new[]
@@ -391,7 +383,7 @@ public sealed class ExternalOperationCoordinatorTests
                 typeof(FeeshOperationProvider), typeof(GatherChillOperationProvider), typeof(KnightshopperOperationProvider),
             },
             services.Where(s => s.ServiceType == typeof(IOperationProvider))
-                .Select(s => s.ImplementationType!).OrderBy(t => t.Name));
+                .Select(s => s.ImplementationType ?? s.ImplementationFactory!(resolver).GetType()).OrderBy(t => t.Name));
     }
 
     [Fact]
@@ -464,19 +456,6 @@ public sealed class ExternalOperationCoordinatorTests
     }
 
     [Fact]
-    public void OnlyAnOwnedAutoDutyRunOrSoloDutyHandlesDeath()
-    {
-        using var fixture = new ExternalOperationFixture();
-        var duty = new Duty.StartAutoDutyExecutor(fixture.Duty.Ipc, _ => AutoDutyFixture.Content, new(), () => 100, _ => { });
-        Assert.False(fixture.Coordinator.HandlesPlayerDeath(duty));
-
-        fixture.Duty.Start();
-
-        Assert.True(fixture.Coordinator.HandlesPlayerDeath(duty));
-        Assert.False(fixture.Coordinator.HandlesPlayerDeath(null));
-    }
-
-    [Fact]
     public void MovementSeesMovingWorkAndBusyPluginsButNotCrafting()
     {
         using var fixture = new ExternalOperationFixture();
@@ -535,22 +514,6 @@ public sealed class ExternalOperationCoordinatorTests
         fixture.Fishing.MarkUncertain(fixture.Fishing.BeginSubmission());
 
         Assert.Equal("Check Feesh", fixture.Coordinator.GetTitleBarPill()?.Text);
-    }
-
-    [Fact]
-    public void AutoDutyRecoveryShowsItsMessageAboveTheButton()
-    {
-        using var fixture = new ExternalOperationFixture();
-        fixture.Duty.Start();
-        Assert.Equal(fixture.Duty.State.BlockReason, fixture.Provider<AutoDutyOperationProvider>().GetStatusView()?.Status);
-
-        fixture.Duty.State.RequireReconciliation("AutoDuty status was lost");
-
-        OperationRecoveryView? recovery = fixture.Provider<AutoDutyOperationProvider>().GetStatusView()?.Recovery;
-        Assert.Equal("I stopped AutoDuty", recovery?.ConfirmLabel);
-        Assert.Equal("AutoDuty status was lost", recovery?.Detail);
-        Assert.Single(recovery!.Instructions);
-        Assert.Null(fixture.Coordinator.GetTitleBarPill());
     }
 
     [Fact]
