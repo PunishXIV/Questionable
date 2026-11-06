@@ -292,6 +292,18 @@ public sealed class BossModIpcTests
     }
 
     [Fact]
+    public void StopWhilePaused_WithNoOriginalPreset_SucceedsAlthoughBossModHasNothingToClear()
+    {
+        _context.ActivePreset = null;
+        var item = CreateItemModule();
+        item.StopRotation();
+        Assert.Null(_context.ActivePreset);
+        Assert.True(item.Stop());
+        Assert.Null(_context.ActivePreset);
+        Assert.False(Ipc.HasPendingCleanup);
+    }
+
+    [Fact]
     public void RejectedPreviousPresetRestore_RetainsCleanup()
     {
         Ipc.SetActivePreset(BossModIpc.EPreset.Overworld);
@@ -550,6 +562,8 @@ public sealed class BossModIpcTests
             {
                 if (FailClearPreset)
                     throw new InvalidOperationException("clear failed");
+                if ((ActivePresetList ?? (ActivePreset == null ? [] : [ActivePreset])).Count == 0)
+                    return false;
                 ActivePreset = null;
                 return true;
             });

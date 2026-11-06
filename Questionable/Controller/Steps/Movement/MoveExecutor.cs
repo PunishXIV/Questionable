@@ -37,6 +37,7 @@ internal sealed class MoveExecutor
     private Vector3 _destination;
     private bool _navmeshReloaded;
     private DateTime? _navmeshWaitStartedAt;
+    private long? _simpleMoveWaitStartedAt;
 
     // First builds of a large zone can take a while; WaitNavmesh itself has no limit.
     private static readonly TimeSpan NavmeshReloadTimeout = TimeSpan.FromMinutes(2);
@@ -109,6 +110,10 @@ internal sealed class MoveExecutor
         }
 
         _navmeshWaitStartedAt = null;
+        if (ShouldWaitForSimpleMove(_movementController.IsSimpleMoveInProgress(), Environment.TickCount64,
+                ref _simpleMoveWaitStartedAt))
+            return ETaskResult.StillRunning;
+
         bool navmeshReloaded = _navmeshReloaded;
         _navmeshReloaded = false;
         if (ShouldRestartAfterStop(Task, _clientState.TerritoryType, player.Position, ref _canRestart, navmeshReloaded))
@@ -121,6 +126,19 @@ internal sealed class MoveExecutor
         }
 
         return ETaskResult.TaskComplete;
+    }
+
+    // The controller's status cache can miss vnav starting to re-path a stuck route; a retry would then be refused.
+    internal static bool ShouldWaitForSimpleMove(bool simpleMoveInProgress, long now, ref long? waitStartedAt)
+    {
+        if (!simpleMoveInProgress)
+        {
+            waitStartedAt = null;
+            return false;
+        }
+
+        waitStartedAt ??= now;
+        return now - waitStartedAt.Value < MovementController.SimpleMoveWaitMilliseconds;
     }
 
     internal static bool ShouldRestartAfterStop(MoveTask task, uint territoryId, Vector3 position, ref bool canRestart,

@@ -12,6 +12,10 @@ internal static class AetheryteShortcut
     public static HashSet<uint> Territories = [212, 351, 128, 131, 133, 419];
 
     // Limsa Upper Decks (128) pairs with Lower Decks (129); the other city parts pair with the zone before them.
+    // Teleporting would leave the zone the step happens in, e.g. Mor Dhona from inside The Rising Stones.
+    internal static bool IsAlreadyInStepTerritory(uint playerTerritory, uint stepTerritory, uint teleportTerritory) =>
+        playerTerritory == stepTerritory && teleportTerritory != stepTerritory;
+
     internal static uint CityNeighbourTerritory(uint territoryId) => territoryId != 128 ? territoryId - 1 : territoryId + 1;
 
     // A sequence that also visits the neighbouring part walks between them instead.
@@ -224,18 +228,17 @@ internal static class AetheryteShortcut
                     if (decision is { } shouldSkip)
                         return shouldSkip;
                 }
+
+                if (!skipConditions.Never && IsAlreadyInStepTerritory(territoryType, step.TerritoryId, Task.ExpectedTerritoryId))
+                {
+                    logger.LogInformation("Skipping aetheryte teleport, we're already in the step's zone and the aetheryte is in another");
+                    return true;
+                }
             }
 
             if (gameFunctions.HasCharacterStatusPreventingMountOrSprint()) // Transporting
             {
                 logger.LogInformation("Skipping aetheryte teleport, character is busy.");
-                return true;
-            }
-
-            // TODO: replace this hack. Mor Dhona must not teleport to the Rising Stones while already there.
-            if (Task.TargetAetheryte == EAetheryteLocation.MorDhona && Task.Step?.TerritoryId == 351 && clientState.TerritoryType == 351)
-            {
-                logger.LogInformation("Skipping aetheryte teleport, it shouldn't be doing that anyway");
                 return true;
             }
 

@@ -86,4 +86,17 @@ public sealed class MovementCompletionTests
         Assert.Throws<MovementController.PathfindingFailedException>(() =>
             MoveExecutor.ShouldRestartAfterStop(task, 958, new Vector3(0, 8, 0), ref canRestart));
     }
+
+    [Fact]
+    public void StoppedRouteWaitsOutVnavRepathingBeforeRetrying()
+    {
+        long? startedAt = null;
+        Assert.True(MoveExecutor.ShouldWaitForSimpleMove(true, 1_000, ref startedAt));
+        Assert.True(MoveExecutor.ShouldWaitForSimpleMove(true, 1_000 + MovementController.SimpleMoveWaitMilliseconds - 1, ref startedAt));
+        Assert.False(MoveExecutor.ShouldWaitForSimpleMove(true, 1_000 + MovementController.SimpleMoveWaitMilliseconds, ref startedAt));
+
+        Assert.False(MoveExecutor.ShouldWaitForSimpleMove(false, 50_000, ref startedAt));
+        Assert.Null(startedAt);
+        Assert.True(MoveExecutor.ShouldWaitForSimpleMove(true, 50_000, ref startedAt));
+    }
 }

@@ -60,7 +60,6 @@ public static class RoslynShortcuts
                 PurchaseMenu purchaseMenu => purchaseMenu.ToExpressionSyntax(),
                 ComplexCombatData complexCombatData => complexCombatData.ToExpressionSyntax(),
                 QuestWorkValue questWorkValue => questWorkValue.ToExpressionSyntax(),
-                List<QuestWorkValue> list => list.ToExpressionSyntax(), // TODO fix in AssignmentList
                 DutyOptions dutyOptions => dutyOptions.ToExpressionSyntax(),
                 SinglePlayerDutyOptions dutyOptions => dutyOptions.ToExpressionSyntax(),
                 SkipConditions skipConditions => skipConditions.ToExpressionSyntax(),
@@ -74,6 +73,7 @@ public static class RoslynShortcuts
                 HookTypeFilter hookTypeFilter => hookTypeFilter.ToExpressionSyntax(),
                 Hookset hookset => hookset.ToExpressionSyntax(),
                 CombatItemUse combatItemUse => combatItemUse.ToExpressionSyntax(),
+                System.Collections.IEnumerable items => CollectionLiteral(items.Cast<object?>()),
                 not null when value.GetType().IsEnum => MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression,
                     IdentifierName(value.GetType().Name), IdentifierName(value.GetType().GetEnumName(value)!)),
                 var _ => throw new($"Unsupported data type {value.GetType()} = {value}")
@@ -120,17 +120,18 @@ public static class RoslynShortcuts
             return AssignmentExpression(
                 SyntaxKind.SimpleAssignmentExpression,
                 IdentifierName(name),
-                CollectionExpression(
-                    SeparatedList<CollectionElementSyntax>(
-                        SyntaxNodeList(list.Select(x => ExpressionElement(
-                            LiteralValue(x)).AsSyntaxNodeOrToken()).ToArray())
-                    )));
+                CollectionLiteral(list));
         }
         catch (Exception e)
         {
             throw new($"Unable to handle list [{name}]: {e}", e);
         }
     }
+
+    public static CollectionExpressionSyntax CollectionLiteral<T>(IEnumerable<T> items) =>
+        CollectionExpression(
+            SeparatedList<CollectionElementSyntax>(
+                SyntaxNodeList(items.Select(x => ExpressionElement(LiteralValue(x)).AsSyntaxNodeOrToken()).ToArray())));
 
     public static SyntaxNodeOrToken? AsSyntaxNodeOrToken(this SyntaxNode? node)
     {

@@ -3,7 +3,7 @@
 [RegisterSingleton]
 internal sealed class MovementOverrideController(IClientState clientState, ILogger<MovementOverrideController> logger)
 {
-    // TODO evaluate these locations to determine if they still pose issues in current vnav
+    // TODO: re-check these mesh workarounds against SmartNav's routing (route parity) once vnav owns the route.
     private static readonly List<IBlacklistedLocation> BlacklistedLocations =
     [
         new BlacklistedArea(1191, new(-223.0412f, 31.937134f, -584.03906f), 5f, 7.75f),

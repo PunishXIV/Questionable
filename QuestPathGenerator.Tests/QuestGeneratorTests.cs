@@ -23,4 +23,27 @@ public sealed class QuestGeneratorTests
 
         Assert.Empty(list);
     }
+
+    [Fact]
+    public void NestedQuestWorkListsRenderAsCollections()
+    {
+        QuestStep step = new()
+        {
+            TerritoryId = 1,
+            InteractionType = EInteractionType.WalkTo,
+            RequiredQuestVariables = [[new QuestWorkValue(1, 2, EQuestWorkMode.Exact)], null, []],
+            CompletionQuestVariablesFlags = [null, new QuestWorkValue(0x12)],
+        };
+
+        string code = RoslynShortcuts.LiteralValue(step).NormalizeWhitespace().ToFullString();
+
+        Assert.Equal(
+            """
+            new QuestStep(EInteractionType.WalkTo, null, null, 1U)
+            {
+                RequiredQuestVariables = [[new QuestWorkValue(1, 2, EQuestWorkMode.Exact)], null, []],
+                CompletionQuestVariablesFlags = [null, new QuestWorkValue(1, 2, EQuestWorkMode.Bitwise)]
+            }
+            """.ReplaceLineEndings(), code.ReplaceLineEndings());
+    }
 }

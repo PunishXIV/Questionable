@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.CodeAnalysis;
+﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Questionable.Model.Questing;
@@ -24,9 +22,4 @@ internal static class QuestWorkValueExtensions
                         Token(SyntaxKind.CommaToken),
                         Argument(LiteralValue(qwv.Mode))
                     })));
-
-    public static ExpressionSyntax ToExpressionSyntax(this List<QuestWorkValue> list) => CollectionExpression(
-        SeparatedList<CollectionElementSyntax>(
-            SyntaxNodeList(list.Select(x => ExpressionElement(
-                LiteralValue(x)).AsSyntaxNodeOrToken()).ToArray())));
 }

@@ -33,11 +33,16 @@ internal sealed class HelpUiController : IDisposable
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "JobHudNotice", JobHudNoticePostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "Guide", GuidePostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "EventTutorial", EventTutorialPostSetup);
+        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, ActiveHelpAddons, ActiveHelpPostSetup);
     }
+
+    // Active Help: the popup and the "?" notice that opens it.
+    private static readonly string[] ActiveHelpAddons = ["HowTo", "HowToNotice"];
 
 
     public void Dispose()
     {
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, ActiveHelpAddons, ActiveHelpPostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "EventTutorial", EventTutorialPostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "Guide", GuidePostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "JobHudNotice", JobHudNoticePostSetup);
@@ -76,6 +81,28 @@ internal sealed class HelpUiController : IDisposable
             _logger.LogInformation("JobHudNotice window is open");
             JobHudNoticePostSetup(addonJobHudNotice);
         }
+
+        foreach (string addonName in ActiveHelpAddons)
+            CloseActiveHelp(addonName);
+    }
+
+    private void ActiveHelpPostSetup(AddonEvent type, AddonArgs args)
+    {
+        if (_questController.IsRunning || _questController.AutomationType != QuestController.EAutomationType.Manual)
+        {
+            // Closing during setup doesn't stick (see EventTutorial), so wait a frame.
+            string addonName = args.AddonName;
+            _framework.RunOnTick(() => CloseActiveHelp(addonName));
+        }
+    }
+
+    private unsafe void CloseActiveHelp(string addonName)
+    {
+        if (!_gameGui.TryGetAddonByName(addonName, out AtkUnitBase* addon) || !addon->IsVisible)
+            return;
+
+        _logger.LogInformation("Closing {AddonName} window", addonName);
+        addon->Close(true);
     }
 
     private unsafe void UnendingCodexPostSetup(AddonEvent type, AddonArgs args)
@@ -140,7 +167,6 @@ internal sealed class HelpUiController : IDisposable
     {
         if (_questController.IsRunning || _questController.AutomationType != QuestController.EAutomationType.Manual)
         {
-            // TODO Verify that this actually works; in initial testing it didn't close the window.
             _framework.RunOnTick(() =>
             {
                 if (_gameGui.TryGetAddonByName("EventTutorial", out AtkUnitBase* addonEventTutorial))

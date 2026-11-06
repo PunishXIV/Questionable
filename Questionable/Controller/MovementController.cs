@@ -66,6 +66,12 @@ internal sealed class MovementController
 
     public bool? GetPathRunning() => navmeshIpc.GetPathRunning();
 
+    public bool IsSimpleMoveInProgress()
+    {
+        RefreshProviderDiagnostics(force: true);
+        return _simpleMoveInProgress == true;
+    }
+
     public bool IsPathRunning => GetPathRunning() ?? Destination != null;
 
     // Waiting out a pending SimpleMove counts as pathfinding, so callers don't mistake the pause for a stop.

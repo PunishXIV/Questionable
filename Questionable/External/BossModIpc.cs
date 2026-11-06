@@ -254,7 +254,7 @@ internal sealed class BossModIpc
             owned.HasPresetTransition = true;
             owned.ExpectedPreset = desired;
             // Retain both possible states for cleanup if an IPC applies and then throws.
-            bool accepted = desired == null ? _clearPreset.InvokeFunc() : _setPreset.InvokeFunc(desired);
+            bool accepted = desired == null ? ClearPreset() : _setPreset.InvokeFunc(desired);
             if (!accepted ||
                 (_getActivePresets.HasFunction && _getActivePresets.InvokeFunc().Count > 1) ||
                 !string.Equals(_getActivePreset.InvokeFunc(), desired, StringComparison.Ordinal))
@@ -289,7 +289,7 @@ internal sealed class BossModIpc
                      (owned.HasPresetTransition && string.Equals(current, owned.TransitionFromPreset, StringComparison.Ordinal))))
                 {
                     bool accepted = owned.PreviousPreset == null
-                        ? _clearPreset.InvokeFunc()
+                        ? ClearPreset()
                         : _setPreset.InvokeFunc(owned.PreviousPreset);
                     if (!accepted)
                         throw new TaskException("BossMod rejected restoring the previous preset.");
@@ -314,6 +314,11 @@ internal sealed class BossModIpc
         _ownedPreset = null;
         return true;
     }
+
+    // ClearActive returns false when no preset is active, which is already the state we want.
+    private bool ClearPreset() =>
+        _clearPreset.InvokeFunc() ||
+        (_getActivePreset.InvokeFunc() == null && (!_getActivePresets.HasFunction || _getActivePresets.InvokeFunc().Count == 0));
 
     public void ClearObstacleMaps() => commandManager.ProcessCommand("/vbm clear-maps");
 

@@ -159,6 +159,7 @@ internal static class Interact
         private bool _needsFacing;
         private bool _needsUnmount;
         private bool _reportedGameObjNull;
+        private string? _loggedAcceptableJobs;
         private bool _reportedWrongJob;
         private ushort _unequipItem;
 
@@ -282,7 +283,13 @@ internal static class Interact
             {
                 var jobGearSets = classJobUtils.GetJobGearSets(combatOnly: false);
                 List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs.Where(x => jobGearSets.Count == 0 || jobGearSets.Any(v => v.ClassJob.Equals(x)))];
-                logger.LogInformation($"{Task.Quest.Id} acceptableJobs: {string.Join(',', acceptableJobs)}");
+                // Runs every frame while waiting for the target.
+                string acceptableJobsText = string.Join(',', acceptableJobs);
+                if (acceptableJobsText != _loggedAcceptableJobs)
+                {
+                    _loggedAcceptableJobs = acceptableJobsText;
+                    logger.LogInformation("{QuestId} acceptableJobs: {AcceptableJobs}", Task.Quest.Id, acceptableJobsText);
+                }
                 if (acceptableJobs.Count == 0)
                     throw new Exception(_LF("_JobGearsetError", Task.Quest.Info.ClassJobs[0].ToFriendlyString(), Task.Quest.Info.Name));
 
@@ -371,6 +378,7 @@ internal static class Interact
         protected override bool Start()
         {
             InteractionType = Task.InteractionType;
+            _loggedAcceptableJobs = null;
 
             _needsFacing = true;
             IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
