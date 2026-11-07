@@ -1,10 +1,7 @@
 // Authored with LLM assistance, changes must be reviewed and owned by a human.
 // Initial version reviewed and owned by @Deckerz
 
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using Questionable.AutoGen.Generation;
