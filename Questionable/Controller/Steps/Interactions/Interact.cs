@@ -42,7 +42,7 @@ internal static class Interact
                 or EInteractionType.SinglePlayerDuty)
             {
                 if (step.InteractionType == EInteractionType.SinglePlayerDuty &&
-                    bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions))
+                    bossModIpc.CanRunQuestBattle(quest.Id, step.SinglePlayerDutyOptions))
                     yield return new SinglePlayerDuty.LeaveParty();
 
                 if (step.InteractionType is EInteractionType.AcceptQuest && sequence.Sequence > 0 && redoUtil.IsRedoActive())

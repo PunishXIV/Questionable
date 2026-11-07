@@ -11,7 +11,7 @@ namespace Questionable.External;
 internal sealed class ArtisanIpc : Ipc, IDisposable
 {
     private readonly ILogger<ArtisanIpc> _logger;
-    private readonly CraftingOperationState _craftingOperation;
+    private readonly CraftingState _operation;
     private readonly EzIPCDisposalToken[] _disposalTokens;
 
     [EzIPC("CraftItem")] private readonly Action<ushort, int> _craftItem = null!;
@@ -23,16 +23,16 @@ internal sealed class ArtisanIpc : Ipc, IDisposable
     [EzIPC("StartListById")] private readonly Action<int> _startListById = null!;
     [EzIPC("IsBusy")] private readonly Func<bool> _isBusy = null!;
 
-    public ArtisanIpc(ILogger<ArtisanIpc> logger, CraftingOperationState craftingOperation)
+    public ArtisanIpc(ILogger<ArtisanIpc> logger, CraftingState operation)
     {
         _logger = logger;
-        _craftingOperation = craftingOperation;
+        _operation = operation;
         _disposalTokens = EzIPC.Init(this, InternalName, SafeWrapper.None);
     }
 
     public override string InternalName => "Artisan";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
-    public override bool IsReady() => !_craftingOperation.HasOperation && GetStatus() == ArtisanStatus.Idle;
+    public override bool IsReady() => !_operation.HasOperation && GetStatus() == ArtisanStatus.Idle;
 
     public ArtisanStartResult CraftItem(ushort recipeId, int crafts)
     {
@@ -48,22 +48,22 @@ internal sealed class ArtisanIpc : Ipc, IDisposable
         {
             _logger.LogInformation("Submitting {Crafts} crafts with recipe {RecipeId} to Artisan", crafts,
                 recipeId);
-            operationId = _craftingOperation.BeginSubmission();
-            _logger.LogDebug("Tracking Artisan recipe submission {OperationId}", operationId);
+            operationId = _operation.BeginRequest();
+            _logger.LogDebug("Tracking Artisan recipe submission {Id}", operationId);
             _craftItem(recipeId, crafts);
-            return ArtisanStartResult.Submitted;
+            return ArtisanStartResult.Sent;
         }
         catch (IpcError e)
         {
             if (operationId.HasValue)
-                _craftingOperation.MarkUncertain(operationId.Value);
+                _operation.MarkUncertain(operationId.Value);
             _logger.LogError(e, "Unable to craft items");
             return ArtisanStartResult.Unavailable;
         }
         catch (Exception e)
         {
             if (operationId.HasValue)
-                _craftingOperation.MarkUncertain(operationId.Value);
+                _operation.MarkUncertain(operationId.Value);
             _logger.LogError(e, "Artisan recipe submission failed; it may have queued work, do not retry automatically");
             return ArtisanStartResult.Failed;
         }
@@ -86,28 +86,28 @@ internal sealed class ArtisanIpc : Ipc, IDisposable
                 return rejection.Value;
 
             _logger.LogInformation("Submitting list {ListId} to Artisan", listId);
-            operationId = _craftingOperation.BeginSubmission();
-            _logger.LogDebug("Tracking Artisan list submission {OperationId}", operationId);
+            operationId = _operation.BeginRequest();
+            _logger.LogDebug("Tracking Artisan list submission {Id}", operationId);
             _startListById(listId);
-            return ArtisanStartResult.Submitted;
+            return ArtisanStartResult.Sent;
         }
         catch (IpcError e)
         {
             if (operationId.HasValue)
-                _craftingOperation.MarkUncertain(operationId.Value);
+                _operation.MarkUncertain(operationId.Value);
             _logger.LogError(e, "Unable to submit Artisan list");
             return ArtisanStartResult.Unavailable;
         }
         catch (Exception e)
         {
             if (operationId.HasValue)
-                _craftingOperation.MarkUncertain(operationId.Value);
+                _operation.MarkUncertain(operationId.Value);
             _logger.LogError(e, "Artisan list submission failed; it may have queued work, do not fall back");
             return ArtisanStartResult.Failed;
         }
     }
 
-    private ArtisanStartResult? CheckReady() => _craftingOperation.HasOperation ? ArtisanStartResult.Busy : GetStatus() switch
+    private ArtisanStartResult? CheckReady() => _operation.HasOperation ? ArtisanStartResult.Busy : GetStatus() switch
     {
         ArtisanStatus.Idle => null,
         ArtisanStatus.Unavailable => ArtisanStartResult.Unavailable,
@@ -137,8 +137,8 @@ internal sealed class ArtisanIpc : Ipc, IDisposable
 
 internal enum ArtisanStartResult
 {
-    // Artisan's IPC returns nothing, so Submitted doesn't mean it ran.
-    Submitted,
+    // Artisan's IPC returns nothing, so Sent doesn't mean it ran.
+    Sent,
     MissingList,
     Busy,
     Unavailable,
@@ -156,12 +156,12 @@ internal enum ArtisanStatus
 }
 
 // Artisan cannot identify or cancel requests, so uncertain work requires user confirmation.
-[RegisterSingleton<IOperationProvider, ArtisanOperationProvider>(Duplicate = DuplicateStrategy.Append)]
-internal sealed class ArtisanOperationProvider(
+[RegisterSingleton<IOperationProvider, ArtisanProvider>(Duplicate = DuplicateStrategy.Append)]
+internal sealed class ArtisanProvider(
     ArtisanIpc artisanIpc,
-    CraftingOperationState operation,
+    CraftingState operation,
     ICondition condition,
-    ILogger<ArtisanOperationProvider> logger) : IOperationProvider
+    ILogger<ArtisanProvider> logger) : IOperationProvider
 {
     private readonly Stopwatch _statusPoll = new();
 
@@ -177,10 +177,10 @@ internal sealed class ArtisanOperationProvider(
     public bool MayBeMovingCharacter() => false;
     public bool HandlesTravel(QuestStep step) => false;
 
-    public bool OwnsExecutor(ITaskExecutor? executor) => executor is Craft.DoCraft && operation.HasOperation;
+    public bool HandlesExecutor(ITaskExecutor? executor) => executor is Craft.DoCraft && operation.HasOperation;
 
     public bool CanUpdateTask(ITaskExecutor? executor) =>
-        !operation.HasOperation || !operation.RequiresReconciliation && executor is Craft.DoCraft;
+        !operation.HasOperation || !operation.NeedsConfirmation && executor is Craft.DoCraft;
 
     public bool Update(IExternalOperationHost host, IOperationContext context)
     {
@@ -194,9 +194,9 @@ internal sealed class ArtisanOperationProvider(
             ObserveStatus();
 
         if (host.CurrentExecutor is not Craft.DoCraft)
-            operation.AbandonCurrent();
+            operation.Abandon();
 
-        if (!operation.RequiresReconciliation)
+        if (!operation.NeedsConfirmation)
             return false;
 
         if (host.IsActive)
@@ -206,13 +206,13 @@ internal sealed class ArtisanOperationProvider(
         return true;
     }
 
-    public void Abandon() => operation.AbandonCurrent();
+    public void Abandon() => operation.Abandon();
 
     public bool Cancel(IOperationContext context) => true;
 
     public bool TryConfirmIdle(IExternalOperationHost host, IOperationContext context)
     {
-        if (!operation.RequiresReconciliation || host.IsActive)
+        if (!operation.NeedsConfirmation || host.IsActive)
             return false;
 
         ObserveStatus();
@@ -230,10 +230,10 @@ internal sealed class ArtisanOperationProvider(
         if (!operation.HasOperation)
             return null;
 
-        return new(operation.RequiresReconciliation
+        return new(operation.NeedsConfirmation
                 ? operation.BlockReason ?? _L("Check Artisan before restarting.")
                 : _L("Crafting with Artisan"),
-            operation.RequiresReconciliation
+            operation.NeedsConfirmation
                 ? new OperationRecoveryView(_L("I stopped Artisan"), operation.CanConfirmIdle,
                 [
                     _L("Finish or cancel all queued work in Artisan and clear any pause or stop request there. Paused work is not idle."),
@@ -243,7 +243,7 @@ internal sealed class ArtisanOperationProvider(
     }
 
     public OperationPill? GetTitleBarPill() =>
-        operation.RequiresReconciliation ? new(_L("Check Artisan"), Warning: true, NeedsCheck: true) : null;
+        operation.NeedsConfirmation ? new(_L("Check Artisan"), Warning: true, NeedsCheck: true) : null;
 
     private void ObserveStatus()
     {
@@ -262,59 +262,59 @@ internal sealed class ArtisanOperationProvider(
 
 // Artisan cannot identify or cancel submissions, so uncertain work needs reconciliation.
 [RegisterSingleton]
-internal sealed class CraftingOperationState(TimeProvider? timeProvider = null)
+internal sealed class CraftingState(TimeProvider? timeProvider = null)
 {
     private readonly TimeProvider _clock = timeProvider ?? TimeProvider.System;
     private long? _idleSince;
     private long? _lastObservedAt;
     private ArtisanStatus _status;
 
-    public Guid? OperationId { get; private set; }
-    public bool HasOperation => OperationId.HasValue;
-    public bool RequiresReconciliation { get; private set; }
+    public Guid? Id { get; private set; }
+    public bool HasOperation => Id.HasValue;
+    public bool NeedsConfirmation { get; private set; }
 
-    public string? BlockReason => !HasOperation ? null : RequiresReconciliation
+    public string? BlockReason => !HasOperation ? null : NeedsConfirmation
         ? "Artisan may still have crafting work. Finish or stop it in Artisan, then confirm it is stopped."
         : "Artisan is handling a crafting request. Stop Questionable before starting other work.";
 
-    public bool CanConfirmIdle => HasOperation && RequiresReconciliation && HasStableIdle;
+    public bool CanConfirmIdle => HasOperation && NeedsConfirmation && IdleSettled;
 
-    private bool HasStableIdle => _status == ArtisanStatus.Idle && _idleSince is { } idleSince &&
+    private bool IdleSettled => _status == ArtisanStatus.Idle && _idleSince is { } idleSince &&
         _lastObservedAt is { } observedAt &&
         _clock.GetElapsedTime(idleSince) >= TimeSpan.FromSeconds(2) &&
         _clock.GetElapsedTime(observedAt) <= TimeSpan.FromSeconds(1);
 
-    public Guid BeginSubmission()
+    public Guid BeginRequest()
     {
         if (HasOperation)
             throw new TaskException(BlockReason!);
 
-        OperationId = Guid.NewGuid();
-        RequiresReconciliation = false;
+        Id = Guid.NewGuid();
+        NeedsConfirmation = false;
         _idleSince = null;
         _lastObservedAt = null;
         _status = ArtisanStatus.Queued;
-        return OperationId.Value;
+        return Id.Value;
     }
 
     public void MarkUncertain(Guid operationId)
     {
-        if (OperationId == operationId)
-            AbandonCurrent();
+        if (Id == operationId)
+            Abandon();
     }
 
-    public void AbandonCurrent()
+    public void Abandon()
     {
         if (!HasOperation)
             return;
 
-        RequiresReconciliation = true;
+        NeedsConfirmation = true;
     }
 
     public void Abandon(Guid? operationId)
     {
-        if (operationId.HasValue && OperationId == operationId)
-            AbandonCurrent();
+        if (operationId.HasValue && Id == operationId)
+            Abandon();
     }
 
     public void ObserveStatus(ArtisanStatus status)
@@ -335,15 +335,15 @@ internal sealed class CraftingOperationState(TimeProvider? timeProvider = null)
 
         // A later idle response cannot prove that a replacement provider finished our request.
         if (status == ArtisanStatus.Unavailable)
-            RequiresReconciliation = true;
+            NeedsConfirmation = true;
     }
 
-    public bool CanContinue(Guid? operationId) => operationId.HasValue && OperationId == operationId &&
-        !RequiresReconciliation;
+    public bool CanContinue(Guid? operationId) => operationId.HasValue && Id == operationId &&
+        !NeedsConfirmation;
 
     public bool TryComplete(Guid? operationId)
     {
-        if (!CanContinue(operationId) || !HasStableIdle)
+        if (!CanContinue(operationId) || !IdleSettled)
             return false;
 
         Clear();
@@ -361,8 +361,8 @@ internal sealed class CraftingOperationState(TimeProvider? timeProvider = null)
 
     private void Clear()
     {
-        OperationId = null;
-        RequiresReconciliation = false;
+        Id = null;
+        NeedsConfirmation = false;
         _idleSince = null;
         _lastObservedAt = null;
     }

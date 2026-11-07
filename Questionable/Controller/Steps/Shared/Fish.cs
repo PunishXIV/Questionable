@@ -42,14 +42,14 @@ internal static class Fish
     internal sealed class DoFish : TaskExecutor<FishTask>, IStoppableTaskExecutor
     {
         private readonly FeeshIpc _feeshIpc;
-        private readonly FishingOperationState _operation;
+        private readonly FishingState _operation;
         private readonly IDataManager _dataManager;
         private readonly ILogger<DoFish> _logger;
         private readonly IQuestGameState _gameState;
         private Guid? _owner;
         private long? _completedAt;
 
-        public DoFish(FeeshIpc feeshIpc, FishingOperationState operation, IDataManager dataManager,
+        public DoFish(FeeshIpc feeshIpc, FishingState operation, IDataManager dataManager,
             ILogger<DoFish> logger, IQuestGameState gameState)
         {
             _feeshIpc = feeshIpc;
@@ -80,7 +80,7 @@ internal static class Fish
             int missing = item.ItemCount - CountEligibleInInventory(item);
             FeeshStartResult result = _feeshIpc.StartCatch(item.ItemId, Math.Max(1, missing), out string message);
             if (result is FeeshStartResult.Started or FeeshStartResult.Uncertain)
-                _owner = _operation.OperationId;
+                _owner = _operation.Id;
             if (result != FeeshStartResult.Started || !_owner.HasValue)
                 throw new TaskException(result switch
                 {
@@ -89,7 +89,7 @@ internal static class Fish
                     FeeshStartResult.NotReady => "Feesh is not available. Check that WahTools is loaded.",
                     _ => $"Feesh did not confirm the catch job ({result}): {message}",
                 });
-            _logger.LogInformation("Started Feesh catch job {OperationId} for quest {QuestId}", _owner, Task.Quest.Id);
+            _logger.LogInformation("Started Feesh catch job {Id} for quest {QuestId}", _owner, Task.Quest.Id);
             return true;
         }
 
@@ -106,10 +106,10 @@ internal static class Fish
 
         public override ETaskResult Update()
         {
-            if (!_owner.HasValue || _operation.OperationId != _owner)
+            if (!_owner.HasValue || _operation.Id != _owner)
                 throw new TaskException("Feesh is no longer fishing for Questionable");
 
-            if (_operation.IsTerminal)
+            if (_operation.IsFinished)
             {
                 // Cancelled after the quest flags were met still counts as done.
                 bool ended = _operation.Status is ExternalOperationStatus.Succeeded or ExternalOperationStatus.Cancelled;
@@ -127,7 +127,7 @@ internal static class Fish
                 throw new TaskException($"Feesh stopped before the fishing objective was met: {message}");
             }
 
-            if (_operation.RequiresReconciliation)
+            if (_operation.NeedsConfirmation)
                 throw new TaskException(_operation.BlockReason!);
             if (HasCompletedObjectives(Task, _gameState) && !_operation.StopRequested)
                 _feeshIpc.RequestStop();
@@ -136,14 +136,14 @@ internal static class Fish
 
         private void Release()
         {
-            if (_operation.TryReleaseTerminal(_owner) && Task.GatheredItem is { } item)
+            if (_operation.TryClearFinished(_owner) && Task.GatheredItem is { } item)
                 _feeshIpc.ReleaseCatch(item.ItemId);
         }
 
         public void StopNow()
         {
-            if (_owner.HasValue && _operation.OperationId == _owner)
-                _feeshIpc.CancelOwned();
+            if (_owner.HasValue && _operation.Id == _owner)
+                _feeshIpc.CancelWork();
         }
 
         public override bool ShouldInterruptOnDamage() => false;

@@ -48,7 +48,7 @@ internal static class Gather
             };
         }
 
-        public void StopNow() => gatheringController.StopOwned(_owner);
+        public void StopNow() => gatheringController.StopIfCurrent(_owner);
 
         // Gather n Chill handles movement and gathering; combat interrupts would just fight it
         public override bool ShouldInterruptOnDamage() => false;

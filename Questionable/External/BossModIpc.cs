@@ -56,12 +56,12 @@ internal sealed class BossModIpc : Ipc, IDisposable
         _disposalTokens = EzIPC.Init(this, PluginName, SafeWrapper.None);
     }
 
-    private OwnedPreset? _ownedPreset;
-    private bool _bossmodRebornDetected;
+    private Session? _session;
+    private bool _rebornInstalled;
 
-    public bool HasOwnedSoloDuty => _ownedPreset is { SoloDuty: true };
-    public bool HasPendingCleanup => _ownedPreset is { Stopping: true };
-    public string? CleanupReason => _ownedPreset?.Reason;
+    public bool HasQuestBattle => _session is { IsQuestBattle: true };
+    public bool HasPendingCleanup => _session is { Stopping: true };
+    public string? CleanupReason => _session?.Reason;
 
     // GetActive alone cannot establish idle: newer BossMod also returns null for multiple presets.
     public bool CanConfirmStopped
@@ -70,8 +70,8 @@ internal sealed class BossModIpc : Ipc, IDisposable
         {
             try
             {
-                return _ownedPreset is { } owned &&
-                    (owned.ProviderLost || (owned.OwnershipLost && owned.Settings.All(x => !x.Pending))) &&
+                return _session is { } session &&
+                    (session.ProviderLost || (session.ControlLost && session.Settings.All(x => !x.Pending))) &&
                     ProviderAvailable() && ActivePresetCount() == 0;
             }
             catch (Exception)
@@ -87,7 +87,7 @@ internal sealed class BossModIpc : Ipc, IDisposable
             return false;
 
         // The old BossMod is gone; don't restore its snapshot into the new one.
-        _ownedPreset = null;
+        _session = null;
         return true;
     }
 
@@ -115,11 +115,11 @@ internal sealed class BossModIpc : Ipc, IDisposable
             return null;
         }
     }
-    public bool BossModRebornDetected()
+    public bool IsRebornInstalled()
     {
-        if (EzThrottler.Throttle("BossModRebornDetected", miliseconds: 1000))
-            _bossmodRebornDetected = IPCSubscriber.IsInstalled("BossModReborn");
-        return _bossmodRebornDetected;
+        if (EzThrottler.Throttle("IsRebornInstalled", miliseconds: 1000))
+            _rebornInstalled = IPCSubscriber.IsInstalled("BossModReborn");
+        return _rebornInstalled;
     }
 
     public PresetDefinition AddPreset(EPreset preset) => AddPreset(PresetDefinitions[preset]);
@@ -143,67 +143,67 @@ internal sealed class BossModIpc : Ipc, IDisposable
         }
     }
 
-    public void SetActivePreset(EPreset preset) => ActivatePreset(preset, soloDuty: false);
+    public void SetActivePreset(EPreset preset) => ActivatePreset(preset, questBattle: false);
 
-    public void SetPresetForSoloDuty(EPreset preset)
+    public void SetQuestBattlePreset(EPreset preset)
     {
-        ActivatePreset(preset, soloDuty: true);
+        ActivatePreset(preset, questBattle: true);
     }
 
-    public void StartSoloDuty(uint contentFinderConditionId)
+    public void StartQuestBattle(uint cfcId)
     {
         // Pâtisserie needs movement and interactions without a combat rotation.
-        SetPresetForSoloDuty(contentFinderConditionId == 1045 ? EPreset.NormalMovement : EPreset.QuestBattle);
+        SetQuestBattlePreset(cfcId == 1045 ? EPreset.NormalMovement : EPreset.QuestBattle);
     }
 
-    private void ActivatePreset(EPreset preset, bool soloDuty)
+    private void ActivatePreset(EPreset preset, bool questBattle)
     {
-        OwnedPreset owned = Acquire(soloDuty);
+        Session session = Acquire(questBattle);
         try
         {
-            if (!owned.HasPresetSnapshot)
+            if (!session.HasPresetSnapshot)
             {
                 if (ActivePresetCount() > 1)
                     throw new TaskException("BossMod has multiple active presets; stop them before starting Questionable.");
-                owned.PreviousPreset = _getActivePreset();
-                owned.HasPresetSnapshot = true;
+                session.PreviousPreset = _getActivePreset();
+                session.HasPresetSnapshot = true;
             }
-            OverrideSetting(owned, "AutorotationConfig", "ClearPresetOnCombatEnd", false);
-            if (soloDuty)
+            OverrideSetting(session, "AutorotationConfig", "ClearPresetOnCombatEnd", false);
+            if (questBattle)
             {
-                OverrideSetting(owned, "AutorotationConfig", "ClearPresetOnDeath", false);
-                OverrideSetting(owned, "ZoneModuleConfig", "EnableQuestBattles", true);
+                OverrideSetting(session, "AutorotationConfig", "ClearPresetOnDeath", false);
+                OverrideSetting(session, "ZoneModuleConfig", "EnableQuestBattles", true);
             }
             PresetDefinition definition = AddPreset(preset);
-            OverrideSetting(owned, "AIConfig", "Enabled", false);
+            OverrideSetting(session, "AIConfig", "Enabled", false);
 
-            string? previousExpected = owned.ExpectedPreset;
-            bool previousPending = owned.PresetPending;
-            owned.ExpectedPreset = definition.Name;
-            owned.PresetPending = true; // SetActive can apply its change and then throw.
+            string? previousExpected = session.ExpectedPreset;
+            bool previousPending = session.PresetPending;
+            session.ExpectedPreset = definition.Name;
+            session.PresetPending = true; // SetActive can apply its change and then throw.
             if (!_setPreset(definition.Name))
             {
-                owned.ExpectedPreset = previousExpected;
-                owned.PresetPending = previousPending;
+                session.ExpectedPreset = previousExpected;
+                session.PresetPending = previousPending;
                 throw new TaskException($"BossMod rejected activation of preset '{definition.Name}'.");
             }
         }
         catch (Exception e)
         {
-            FailAcquisition(owned, e);
-            throw new TaskException(owned.Reason!, e);
+            MarkFailed(session, e);
+            throw new TaskException(session.Reason!, e);
         }
     }
 
-    private OwnedPreset Acquire(bool soloDuty)
+    private Session Acquire(bool questBattle)
     {
         if (HasPendingCleanup)
             throw new TaskException(CleanupReason!);
-        if (_ownedPreset != null)
+        if (_session != null)
         {
-            VerifyOwnedPreset();
-            _ownedPreset.SoloDuty |= soloDuty;
-            return _ownedPreset;
+            VerifyPreset();
+            _session.IsQuestBattle |= questBattle;
+            return _session;
         }
 
         if (!ProviderAvailable())
@@ -211,139 +211,139 @@ internal sealed class BossModIpc : Ipc, IDisposable
         if (ActivePresetCount() > 1)
             throw new TaskException("BossMod has multiple active presets; stop them before starting Questionable.");
 
-        return _ownedPreset = new OwnedPreset(soloDuty);
+        return _session = new Session(questBattle);
     }
 
-    public void VerifyOwnedPreset()
+    public void VerifyPreset()
     {
-        if (_ownedPreset is not { } owned)
+        if (_session is not { } session)
             throw new TaskException("Questionable no longer owns a BossMod preset.");
-        if (owned.Stopping)
-            throw new TaskException(owned.Reason!);
+        if (session.Stopping)
+            throw new TaskException(session.Reason!);
         try
         {
-            EnsureProvider(owned);
-            if (owned.PresetPending &&
+            EnsureProvider(session);
+            if (session.PresetPending &&
                 ((ActivePresetCount() > 1) ||
-                 !string.Equals(_getActivePreset(), owned.ExpectedPreset, StringComparison.Ordinal)))
+                 !string.Equals(_getActivePreset(), session.ExpectedPreset, StringComparison.Ordinal)))
             {
-                owned.OwnershipLost = true;
-                owned.PresetPending = false;
+                session.ControlLost = true;
+                session.PresetPending = false;
                 throw new TaskException("BossMod's active preset changed. Stop its presets, then confirm it is stopped.");
             }
         }
         catch (Exception e)
         {
-            FailAcquisition(owned, e);
-            throw new TaskException(owned.Reason!, e);
+            MarkFailed(session, e);
+            throw new TaskException(session.Reason!, e);
         }
     }
 
-    public void PollSoloDuty()
+    public void PollQuestBattle()
     {
         if (HasPendingCleanup)
         {
-            if (!StopOwnedPreset())
+            if (!StopPreset())
                 throw new TaskException(CleanupReason!);
         }
-        else if (HasOwnedSoloDuty)
-            VerifyOwnedPreset();
+        else if (HasQuestBattle)
+            VerifyPreset();
     }
 
-    public void DisableSoloDutyPreset()
+    public void StopQuestBattle()
     {
-        if (HasOwnedSoloDuty && !StopOwnedPreset())
+        if (HasQuestBattle && !StopPreset())
             throw new TaskException(CleanupReason!);
     }
 
     public void Cleanup()
     {
-        if (!StopOwnedPreset())
+        if (!StopPreset())
             throw new TaskException(CleanupReason!);
     }
 
-    public bool PauseOwnedPreset() => ChangeOwnedPreset(paused: true);
+    public bool PausePreset() => SetPaused(paused: true);
 
-    public bool ResumeOwnedPreset() => ChangeOwnedPreset(paused: false);
+    public bool ResumePreset() => SetPaused(paused: false);
 
-    private bool ChangeOwnedPreset(bool paused)
+    private bool SetPaused(bool paused)
     {
-        if (_ownedPreset is not { } owned)
+        if (_session is not { } session)
             return false;
         try
         {
-            VerifyOwnedPreset();
+            VerifyPreset();
             if (paused)
             {
-                if (owned.PausedPreset != null)
+                if (session.PausedPreset != null)
                     return true;
-                owned.PausedPreset = owned.ExpectedPreset ??
+                session.PausedPreset = session.ExpectedPreset ??
                     throw new TaskException("Questionable has no BossMod preset to pause.");
             }
-            string? desired = paused ? null : owned.PausedPreset ??
+            string? desired = paused ? null : session.PausedPreset ??
                 throw new TaskException("Questionable has no paused BossMod preset to resume.");
-            owned.TransitionFromPreset = owned.ExpectedPreset;
-            owned.HasPresetTransition = true;
-            owned.ExpectedPreset = desired;
+            session.TransitionFromPreset = session.ExpectedPreset;
+            session.HasPresetTransition = true;
+            session.ExpectedPreset = desired;
             // Retain both possible states for cleanup if an IPC applies and then throws.
             bool accepted = desired == null ? ClearPreset() : _setPreset(desired);
             if (!accepted ||
                 (ActivePresetCount() > 1) ||
                 !string.Equals(_getActivePreset(), desired, StringComparison.Ordinal))
                 throw new TaskException("BossMod rejected the combat item rotation change.");
-            owned.HasPresetTransition = false;
+            session.HasPresetTransition = false;
             if (!paused)
-                owned.PausedPreset = null;
+                session.PausedPreset = null;
             return true;
         }
         catch (Exception e)
         {
-            FailAcquisition(owned, e);
+            MarkFailed(session, e);
             return false;
         }
     }
 
-    public bool StopOwnedPreset()
+    public bool StopPreset()
     {
-        if (_ownedPreset is not { } owned)
+        if (_session is not { } session)
             return true;
-        owned.Stopping = true;
+        session.Stopping = true;
         try
         {
-            EnsureProvider(owned);
-            if (owned.PresetPending)
+            EnsureProvider(session);
+            if (session.PresetPending)
             {
                 string? current = _getActivePreset();
                 // GetActive returns null for both an empty list and multiple active presets.
                 bool multiplePresets = ActivePresetCount() > 1;
                 if (!multiplePresets &&
-                    (string.Equals(current, owned.ExpectedPreset, StringComparison.Ordinal) ||
-                     (owned.HasPresetTransition && string.Equals(current, owned.TransitionFromPreset, StringComparison.Ordinal))))
+                    (string.Equals(current, session.ExpectedPreset, StringComparison.Ordinal) ||
+                     (session.HasPresetTransition && string.Equals(current, session.TransitionFromPreset, StringComparison.Ordinal))))
                 {
-                    bool accepted = owned.PreviousPreset == null
+                    bool accepted = session.PreviousPreset == null
                         ? ClearPreset()
-                        : _setPreset(owned.PreviousPreset);
+                        : _setPreset(session.PreviousPreset);
                     if (!accepted)
                         throw new TaskException("BossMod rejected restoring the previous preset.");
                 }
-                else if (multiplePresets || !string.Equals(current, owned.PreviousPreset, StringComparison.Ordinal))
+                else if (multiplePresets || !string.Equals(current, session.PreviousPreset, StringComparison.Ordinal))
                 {
-                    owned.OwnershipLost = true;
-                    owned.Reason = "BossMod's active preset changed. Stop its presets, then confirm it is stopped.";
+                    session.ControlLost = true;
+                    session.Reason = "BossMod's active preset changed. Stop its presets, then confirm it is stopped.";
                 }
-                owned.PresetPending = false;
+                session.PresetPending = false;
             }
         }
         catch (Exception e)
         {
-            FailAcquisition(owned, e);
+            MarkFailed(session, e);
         }
 
         // Settings are restored even if restoring the preset failed.
-        bool settingsRestored = !owned.ProviderLost && RestoreSettings(owned);
-        if (owned.ProviderLost || owned.OwnershipLost || owned.PresetPending || !settingsRestored)
+        bool settingsRestored = !session.ProviderLost && RestoreSettings(session);
+        if (session.ProviderLost || session.ControlLost || session.PresetPending || !settingsRestored)
             return false;
-        _ownedPreset = null;
+        _session = null;
         return true;
     }
 
@@ -365,41 +365,41 @@ internal sealed class BossModIpc : Ipc, IDisposable
         {
             available = false;
         }
-        if (!available && _ownedPreset is { } owned)
+        if (!available && _session is { } session)
         {
-            owned.ProviderLost = owned.Stopping = true;
-            owned.Reason = ProviderLostReason;
+            session.ProviderLost = session.Stopping = true;
+            session.Reason = ProviderLostReason;
         }
         return available;
     }
 
-    private void EnsureProvider(OwnedPreset owned)
+    private void EnsureProvider(Session session)
     {
-        if (owned.ProviderLost || !ProviderAvailable())
+        if (session.ProviderLost || !ProviderAvailable())
         {
-            owned.ProviderLost = true;
+            session.ProviderLost = true;
             throw new TaskException(ProviderLostReason);
         }
     }
 
-    private void FailAcquisition(OwnedPreset owned, Exception exception)
+    private void MarkFailed(Session session, Exception exception)
     {
-        owned.Stopping = true;
+        session.Stopping = true;
         if (!ProviderAvailable())
-            owned.ProviderLost = true;
-        owned.Reason = owned.ProviderLost
+            session.ProviderLost = true;
+        session.Reason = session.ProviderLost
             ? ProviderLostReason
             : exception.Message;
     }
 
-    private void OverrideSetting(OwnedPreset owned, string type, string field, bool value)
+    private void OverrideSetting(Session session, string type, string field, bool value)
     {
-        if (owned.Settings.Any(x => x.Type == type && x.Field == field))
+        if (session.Settings.Any(x => x.Type == type && x.Field == field))
             return;
-        EnsureProvider(owned);
+        EnsureProvider(session);
         bool previous = ReadSetting(type, field);
         var setting = new SettingOverride(type, field, previous, value);
-        owned.Settings.Add(setting);
+        session.Settings.Add(setting);
         if (previous != value)
         {
             setting.Pending = true; // A throwing IPC can still have applied the value.
@@ -407,25 +407,25 @@ internal sealed class BossModIpc : Ipc, IDisposable
         }
     }
 
-    private bool RestoreSettings(OwnedPreset owned)
+    private bool RestoreSettings(Session session)
     {
-        foreach (SettingOverride setting in owned.Settings.Where(x => x.Pending))
+        foreach (SettingOverride setting in session.Settings.Where(x => x.Pending))
         {
             try
             {
-                EnsureProvider(owned);
+                EnsureProvider(session);
                 if (ReadSetting(setting.Type, setting.Field) == setting.Applied)
                     WriteSetting(setting.Type, setting.Field, setting.Previous);
                 setting.Pending = false;
             }
             catch (Exception e)
             {
-                FailAcquisition(owned, e);
-                if (owned.ProviderLost)
+                MarkFailed(session, e);
+                if (session.ProviderLost)
                     break;
             }
         }
-        return owned.Settings.All(x => !x.Pending);
+        return session.Settings.All(x => !x.Pending);
     }
 
     private bool ReadSetting(string type, string field)
@@ -444,7 +444,7 @@ internal sealed class BossModIpc : Ipc, IDisposable
             throw new TaskException($"BossMod rejected setting {type}.{field} to {value}.");
     }
 
-    private sealed class OwnedPreset(bool soloDuty)
+    private sealed class Session(bool questBattle)
     {
         // Settings-only movement work does not snapshot a preset until one is acquired.
         public string? PreviousPreset { get; set; }
@@ -454,10 +454,10 @@ internal sealed class BossModIpc : Ipc, IDisposable
         public string? TransitionFromPreset { get; set; }
         public bool HasPresetTransition { get; set; }
         public bool PresetPending { get; set; }
-        public bool SoloDuty { get; set; } = soloDuty;
+        public bool IsQuestBattle { get; set; } = questBattle;
         public bool Stopping { get; set; }
         public bool ProviderLost { get; set; }
-        public bool OwnershipLost { get; set; }
+        public bool ControlLost { get; set; }
         public string? Reason { get; set; }
         public List<SettingOverride> Settings { get; } = [];
     }
@@ -471,7 +471,7 @@ internal sealed class BossModIpc : Ipc, IDisposable
         public bool Pending { get; set; }
     }
 
-    public bool IsConfiguredToRunSoloInstance(ElementId questId, SinglePlayerDutyOptions? dutyOptions)
+    public bool CanRunQuestBattle(ElementId questId, SinglePlayerDutyOptions? dutyOptions)
     {
         if (!IsSupported())
             return false;
@@ -497,9 +497,9 @@ internal sealed class BossModIpc : Ipc, IDisposable
     public sealed class PresetDefinition(string name, string fileName)
     {
         public string Name { get; } = name;
-        public string Content { get; } = LoadPreset(fileName);
+        public string Content { get; } = Load(fileName);
 
-        public static string LoadPreset(string name)
+        public static string Load(string name)
         {
             Stream stream =
                 typeof(BossModIpc).Assembly.GetManifestResourceStream(
@@ -550,15 +550,15 @@ internal sealed class BossModModule
         }
     }
 
-    public bool Pause() => bossModIpc.PauseOwnedPreset();
+    public bool Pause() => bossModIpc.PausePreset();
 
-    public bool Resume() => bossModIpc.ResumeOwnedPreset();
+    public bool Resume() => bossModIpc.ResumePreset();
 
     public bool Stop()
     {
         try
         {
-            return bossModIpc.StopOwnedPreset();
+            return bossModIpc.StopPreset();
         }
         catch (Exception e)
         {
@@ -571,7 +571,7 @@ internal sealed class BossModModule
     {
     }
 
-    public void VerifyActive() => bossModIpc.VerifyOwnedPreset();
+    public void VerifyActive() => bossModIpc.VerifyPreset();
 
     public bool CanAttack(IBattleNpc target) => true;
 

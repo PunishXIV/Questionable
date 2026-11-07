@@ -40,7 +40,7 @@ public sealed class ServiceRegistrationTests
         services.AddSingleton(Substitute.For<IContextMenu>());
         services.AddSingleton(Substitute.For<IClientState>());
         services.AddSingleton(Substitute.For<ICondition>());
-        services.AddSingleton<GatheringOperationState>();
+        services.AddSingleton<GatheringState>();
         services.AddLogging();
         foreach (var parameter in typeof(ContextMenuController).GetConstructors().Single().GetParameters())
         {
@@ -58,6 +58,6 @@ public sealed class ServiceRegistrationTests
         Assert.False(gather.CanGather(42));
         Assert.Null(gather.GetBusy());
         Assert.Equal(GatherStartResult.NotReady, gather.StartRequest(42, 1, out _));
-        Assert.False(provider.GetRequiredService<GatheringOperationState>().HasOperation);
+        Assert.False(provider.GetRequiredService<GatheringState>().HasOperation);
     }
 }

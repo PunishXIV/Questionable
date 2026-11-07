@@ -37,7 +37,7 @@ internal sealed class StylistIpc : Ipc, IDisposable
             _updateGearset(true, true);
             return true;
         }
-        catch (Exception e) when (IpcInvoke.IsSafeIpcFailure(e))
+        catch (Exception e) when (IpcInvoke.IsSafeFailure(e))
         {
             if (!_loggedIpcError)
             {

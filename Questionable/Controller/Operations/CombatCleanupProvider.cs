@@ -23,10 +23,10 @@ internal sealed class CombatCleanupProvider(
     public bool CanUpdateWhileOccupied => false;
     public bool HandlesLeadInTravel => false;
 
-    public bool OwnsExecutor(ITaskExecutor? executor) => false;
+    public bool HandlesExecutor(ITaskExecutor? executor) => false;
 
     // BossMod owns death and retry behaviour during a solo duty it runs for us.
-    public bool HandlesPlayerDeath(ITaskExecutor? executor) => bossModIpc.HasOwnedSoloDuty;
+    public bool HandlesPlayerDeath(ITaskExecutor? executor) => bossModIpc.HasQuestBattle;
 
     public bool MayBeMovingCharacter() => false;
     public bool HandlesTravel(QuestStep step) => false;
@@ -46,7 +46,7 @@ internal sealed class CombatCleanupProvider(
             try
             {
                 // Solo duties keep local movement/interaction tasks between BossMod activations.
-                bossModIpc.PollSoloDuty();
+                bossModIpc.PollQuestBattle();
             }
             catch (Exception e)
             {
@@ -71,7 +71,7 @@ internal sealed class CombatCleanupProvider(
     public bool Cancel(IOperationContext context)
     {
         bool success = context.TryCleanup(() => combatController.Stop("ClearTasksInternal"), "combat");
-        success &= context.TryCleanup(bossModIpc.DisableSoloDutyPreset, "solo duty");
+        success &= context.TryCleanup(bossModIpc.StopQuestBattle, "solo duty");
         return success;
     }
 

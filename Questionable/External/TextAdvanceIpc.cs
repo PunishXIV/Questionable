@@ -19,7 +19,7 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
     private readonly EzIPCDisposalToken[] _disposalTokens;
     private readonly string _pluginName;
     private readonly QuestController _questController;
-    private bool _isExternalControlActivated;
+    private bool _hasControl;
     private bool _sentDontSkipCutscenes;
 
     public TextAdvanceIpc(IDalamudPluginInterface pluginInterface, IFramework framework,
@@ -36,7 +36,7 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
     public void Dispose()
     {
         _framework.Update -= OnUpdate;
-        if (_isExternalControlActivated)
+        if (_hasControl)
             IpcInvoke.TryOnFrameworkThread(_framework, () => _disableExternalControl(_pluginName));
         IPCSubscriber.DisposeAll(_disposalTokens);
     }
@@ -49,34 +49,34 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
         // A missing or unloading TextAdvance must not throw from every framework update.
         if (_configuration.General.ConfigureTextAdvance && hasActiveQuest)
         {
-            if (_isExternalControlActivated && dontSkipCutscenes != _sentDontSkipCutscenes)
+            if (_hasControl && dontSkipCutscenes != _sentDontSkipCutscenes)
             {
                 // TextAdvance accepts updated settings from the same requester. Keep control
                 // throughout so its normal auto-interact/cutscene settings cannot take over.
                 if (IpcInvoke.SafeFunc(() => _enableExternalControl(
-                        _pluginName, CreateExternalTerritoryConfig(dontSkipCutscenes)), fallback: false))
+                        _pluginName, CreateConfig(dontSkipCutscenes)), fallback: false))
                     _sentDontSkipCutscenes = dontSkipCutscenes;
             }
             else if (IpcInvoke.SafeFunc<bool?>(() => _isInExternalControl(), fallback: null) == false &&
                      IpcInvoke.SafeFunc(() => _enableExternalControl(
-                         _pluginName, CreateExternalTerritoryConfig(dontSkipCutscenes)), fallback: false))
+                         _pluginName, CreateConfig(dontSkipCutscenes)), fallback: false))
             {
-                _isExternalControlActivated = true;
+                _hasControl = true;
                 _sentDontSkipCutscenes = dontSkipCutscenes;
             }
         }
         else
         {
-            if (_isExternalControlActivated)
+            if (_hasControl)
             {
                 if (IpcInvoke.SafeFunc(() => _disableExternalControl(_pluginName), fallback: false) ||
                     IpcInvoke.SafeFunc<bool?>(() => _isInExternalControl(), fallback: null) == false)
-                    _isExternalControlActivated = false;
+                    _hasControl = false;
             }
         }
     }
 
-    private static ExternalTerritoryConfig CreateExternalTerritoryConfig(bool dontSkipCutscenes) => new()
+    private static ExternalTerritoryConfig CreateConfig(bool dontSkipCutscenes) => new()
     {
         EnableQuestAccept = true,
         EnableQuestComplete = true,

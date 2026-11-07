@@ -10,7 +10,7 @@ internal static class WaitAtEnd
     (
         IObjectTable objectTable,
         ICondition condition,
-        AutoDutyOperationProvider autoDuty,
+        AutoDutyProvider autoDuty,
         BossModIpc bossModIpc,
         RedoUtil redoUtil,
         QuestData questData,
@@ -47,8 +47,8 @@ internal static class WaitAtEnd
                 case EInteractionType.Snipe:
                     return [new WaitNextStepOrSequence()];
 
-                case EInteractionType.Duty when !autoDuty.IsConfiguredToRunContent(step.DutyOptions):
-                case EInteractionType.SinglePlayerDuty when !bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions):
+                case EInteractionType.Duty when !autoDuty.CanRunDuty(step.DutyOptions):
+                case EInteractionType.SinglePlayerDuty when !bossModIpc.CanRunQuestBattle(quest.Id, step.SinglePlayerDutyOptions):
                     return [new EndAutomation()];
 
                 case EInteractionType.WalkTo:

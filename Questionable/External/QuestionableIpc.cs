@@ -32,7 +32,7 @@ internal sealed class QuestionableIpc : IDisposable
     private readonly ICallGateProvider<string, bool> _addQuestPriority;
     private readonly ICallGateProvider<bool> _clearQuestPriority;
     private readonly ICallGateProvider<string> _exportQuestPriority;
-    private readonly ICallGateProvider<List<string>> _getCurrentlyActiveEventQuests;
+    private readonly ICallGateProvider<List<string>> _getActiveEventQuests;
     private readonly ICallGateProvider<string?> _getCurrentQuestId;
     private readonly ICallGateProvider<StepData?> _getCurrentStepData;
     private readonly ICallGateProvider<string, bool> _importQuestPriority;
@@ -84,9 +84,9 @@ internal sealed class QuestionableIpc : IDisposable
         _getCurrentStepData = pluginInterface.GetIpcProvider<StepData?>(IpcGetCurrentStepData);
         _getCurrentStepData.RegisterFunc(GetStepData);
 
-        _getCurrentlyActiveEventQuests =
+        _getActiveEventQuests =
             pluginInterface.GetIpcProvider<List<string>>(IpcGetCurrentlyActiveEventQuests);
-        _getCurrentlyActiveEventQuests.RegisterFunc(() =>
+        _getActiveEventQuests.RegisterFunc(() =>
             [.. eventInfoComponent.GetCurrentlyActiveEventQuests().Select(q => q.ToString())]);
 
         _startQuest = pluginInterface.GetIpcProvider<string, bool>(IpcStartQuest);
@@ -151,7 +151,7 @@ internal sealed class QuestionableIpc : IDisposable
         _isRunning.UnregisterFunc();
         _getCurrentQuestId.UnregisterFunc();
         _getCurrentStepData.UnregisterFunc();
-        _getCurrentlyActiveEventQuests.UnregisterFunc();
+        _getActiveEventQuests.UnregisterFunc();
         _startQuest.UnregisterFunc();
         _startSingleQuest.UnregisterFunc();
         _isQuestLocked.UnregisterFunc();
@@ -342,8 +342,8 @@ internal sealed class QuestionableIpc : IDisposable
     {
         if (questId >= 131072)
             return new("", -1);
-        RedoIndex outp = _redoUtil.GetChapter((ushort)questId);
-        return new(outp.Chapter.ToString() ?? "???", outp.Index);
+        RedoIndex redo = _redoUtil.GetChapter((ushort)questId);
+        return new(redo.Chapter.ToString() ?? "???", redo.Index);
     }
 
     [UsedImplicitly(ImplicitUseKindFlags.Access, ImplicitUseTargetFlags.WithMembers)]

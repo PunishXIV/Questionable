@@ -6,18 +6,18 @@ using Questionable.External;
 
 namespace Questionable.Tests.Steps;
 
-public sealed class PurchaseOperationStateTests
+public sealed class PurchaseStateTests
 {
     private readonly TestClock _clock = new();
-    private readonly PurchaseOperationState _state;
-    public PurchaseOperationStateTests() => _state = new PurchaseOperationState(_clock);
+    private readonly PurchaseState _state;
+    public PurchaseStateTests() => _state = new PurchaseState(_clock);
 
     [Fact]
     public void StartRequest_BlocksSecondPurchase()
     {
-        Guid owner = _state.BeginSubmission();
-        Assert.Throws<TaskException>(() => _state.BeginSubmission());
-        Assert.False(_state.TryReleaseTerminal(owner));
+        Guid owner = _state.BeginRequest();
+        Assert.Throws<TaskException>(() => _state.BeginRequest());
+        Assert.False(_state.TryClearFinished(owner));
         Assert.False(_state.TryConfirmIdle());
     }
 
@@ -25,12 +25,12 @@ public sealed class PurchaseOperationStateTests
     public void SuccessfulPurchase_WaitsForItemCheck()
     {
         Guid owner = Start();
-        _state.ObserveStatus(owner, ExternalOperationStatus.Succeeded, "done");
-        _state.ObserveStatus(owner, ExternalOperationStatus.Unknown, "expired");
+        _state.ObservePurchase(owner, ExternalOperationStatus.Succeeded, "done");
+        _state.ObservePurchase(owner, ExternalOperationStatus.Unknown, "expired");
         Assert.True(_state.HasOperation);
         Assert.Equal(ExternalOperationStatus.Succeeded, _state.Status);
-        Assert.False(_state.TryReleaseTerminal(Guid.NewGuid()));
-        Assert.True(_state.TryReleaseTerminal(owner));
+        Assert.False(_state.TryClearFinished(Guid.NewGuid()));
+        Assert.True(_state.TryClearFinished(owner));
     }
 
     [Theory]
@@ -41,10 +41,10 @@ public sealed class PurchaseOperationStateTests
     {
         var terminal = (ExternalOperationStatus)result;
         Guid owner = Start();
-        _state.AbandonCurrent();
-        _state.ObserveStatus(Guid.NewGuid(), terminal, "wrong owner");
+        _state.Abandon();
+        _state.ObservePurchase(Guid.NewGuid(), terminal, "wrong owner");
         Assert.True(_state.HasOperation);
-        _state.ObserveStatus(owner, terminal, "done");
+        _state.ObservePurchase(owner, terminal, "done");
         Assert.False(_state.HasOperation);
     }
 
@@ -52,19 +52,19 @@ public sealed class PurchaseOperationStateTests
     public void AcceptedCancel_WaitsForFinishedStatus()
     {
         Guid owner = Start();
-        _state.AbandonCurrent();
-        Assert.True(_state.TryBeginCancellation(out Guid provider));
-        _state.ObserveCancellation(provider, true);
-        _state.ObserveStatus(owner, ExternalOperationStatus.CancellationRequested, "stopping");
+        _state.Abandon();
+        Assert.True(_state.TryBeginCancel(out Guid provider));
+        _state.ObserveCancel(provider, true);
+        _state.ObservePurchase(owner, ExternalOperationStatus.CancelRequested, "stopping");
         _clock.Advance(TimeSpan.FromSeconds(15));
-        _state.ObserveStatus(owner, ExternalOperationStatus.CancellationRequested, "still stopping");
+        _state.ObservePurchase(owner, ExternalOperationStatus.CancelRequested, "still stopping");
         Assert.True(_state.HasOperation);
-        Assert.True(_state.RequiresReconciliation);
-        Assert.False(_state.TryBeginCancellation(out _));
-        Assert.Throws<TaskException>(() => _state.BeginSubmission());
+        Assert.True(_state.NeedsConfirmation);
+        Assert.False(_state.TryBeginCancel(out _));
+        Assert.Throws<TaskException>(() => _state.BeginRequest());
         StableIdle();
         Assert.False(_state.TryConfirmIdle()); // live operation status overrides an inconsistent idle flag
-        _state.ObserveStatus(owner, ExternalOperationStatus.Cancelled, "stopped");
+        _state.ObservePurchase(owner, ExternalOperationStatus.Cancelled, "stopped");
         Assert.False(_state.HasOperation);
     }
 
@@ -72,12 +72,12 @@ public sealed class PurchaseOperationStateTests
     public void RejectedCancel_RetriesSamePurchase()
     {
         Start();
-        _state.AbandonCurrent();
-        Assert.True(_state.TryBeginCancellation(out Guid first));
-        _state.ObserveCancellation(first, false);
-        Assert.False(_state.TryBeginCancellation(out _));
+        _state.Abandon();
+        Assert.True(_state.TryBeginCancel(out Guid first));
+        _state.ObserveCancel(first, false);
+        Assert.False(_state.TryBeginCancel(out _));
         _clock.Advance(TimeSpan.FromSeconds(2));
-        Assert.True(_state.TryBeginCancellation(out Guid second));
+        Assert.True(_state.TryBeginCancel(out Guid second));
         Assert.Equal(first, second);
     }
 
@@ -85,13 +85,13 @@ public sealed class PurchaseOperationStateTests
     public void UnknownStatus_NeedsConfirmation()
     {
         Guid owner = Start();
-        _state.ObserveStatus(owner, ExternalOperationStatus.Unknown, "unavailable");
+        _state.ObservePurchase(owner, ExternalOperationStatus.Unknown, "unavailable");
         _clock.Advance(TimeSpan.FromSeconds(9));
-        _state.ObserveStatus(owner, ExternalOperationStatus.Unknown, "unavailable");
-        Assert.False(_state.RequiresReconciliation);
+        _state.ObservePurchase(owner, ExternalOperationStatus.Unknown, "unavailable");
+        Assert.False(_state.NeedsConfirmation);
         _clock.Advance(TimeSpan.FromSeconds(1));
-        _state.ObserveStatus(owner, (ExternalOperationStatus)99, "new unknown status");
-        Assert.True(_state.RequiresReconciliation);
+        _state.ObservePurchase(owner, (ExternalOperationStatus)99, "new unknown status");
+        Assert.True(_state.NeedsConfirmation);
         Assert.True(_state.HasOperation);
         StableIdle();
         Assert.True(_state.CanConfirmIdle);
@@ -104,7 +104,7 @@ public sealed class PurchaseOperationStateTests
     [InlineData(null)]
     public void ManualRecovery_RejectsBusyOrUnavailableProvider(bool? busy)
     {
-        _state.MarkUncertain(_state.BeginSubmission());
+        _state.MarkUncertain(_state.BeginRequest());
         StableIdle();
         _state.ObserveIdle(busy);
         Assert.False(_state.TryConfirmIdle());
@@ -114,7 +114,7 @@ public sealed class PurchaseOperationStateTests
     [Fact]
     public void ManualRecovery_RequiresFreshContinuousIdleAndExplicitConfirmation()
     {
-        _state.AcceptSubmission(_state.BeginSubmission(), Guid.Empty);
+        _state.AcceptRequest(_state.BeginRequest(), Guid.Empty);
         StableIdle();
         Assert.True(_state.CanConfirmIdle);
         Assert.True(_state.HasOperation);
@@ -131,13 +131,13 @@ public sealed class PurchaseOperationStateTests
     {
         Guid owner = Start();
         _state.MarkUncertain(owner);
-        _state.ObserveStatus(owner, ExternalOperationStatus.Unknown, "lost status");
+        _state.ObservePurchase(owner, ExternalOperationStatus.Unknown, "lost status");
         StableIdle();
         Assert.True(_state.CanConfirmIdle);
-        _state.ObserveStatus(owner, ExternalOperationStatus.Running, "still running");
+        _state.ObservePurchase(owner, ExternalOperationStatus.Running, "still running");
         _state.ObserveIdle(false);
         _clock.Advance(TimeSpan.FromMilliseconds(500));
-        _state.ObserveStatus(owner, ExternalOperationStatus.Unknown, "lost again");
+        _state.ObservePurchase(owner, ExternalOperationStatus.Unknown, "lost again");
         _state.ObserveIdle(false);
         Assert.False(_state.TryConfirmIdle());
         StableIdle();
@@ -146,8 +146,8 @@ public sealed class PurchaseOperationStateTests
 
     private Guid Start()
     {
-        Guid owner = _state.BeginSubmission();
-        _state.AcceptSubmission(owner, Guid.NewGuid());
+        Guid owner = _state.BeginRequest();
+        _state.AcceptRequest(owner, Guid.NewGuid());
         return owner;
     }
 

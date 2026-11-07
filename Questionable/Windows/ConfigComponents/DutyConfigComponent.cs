@@ -13,7 +13,7 @@ namespace Questionable.Windows.ConfigComponents;
 internal sealed class DutyConfigComponent : ConfigComponent
 {
     private const string DutyClipboardPrefix = "qst:duty:";
-    private readonly AutoDutyOperationProvider _autoDuty;
+    private readonly AutoDutyProvider _autoDuty;
     private readonly Dictionary<EExpansionVersion, List<DutyInfo>> _contentFinderConditionNames;
     private bool runInstancedContentWithAutoDuty;
 
@@ -25,7 +25,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
         Configuration configuration,
         IDataManager dataManager,
         QuestRegistry questRegistry,
-        AutoDutyOperationProvider autoDuty,
+        AutoDutyProvider autoDuty,
         TerritoryData territoryData)
         : base(pluginInterface, configuration)
     {

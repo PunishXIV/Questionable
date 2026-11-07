@@ -81,7 +81,7 @@ internal static class Craft
         ArtisanStartResult result = artisanIpc.CraftList(questId.Value.ToInt() + 65536);
         return result switch
         {
-            ArtisanStartResult.Submitted => true,
+            ArtisanStartResult.Sent => true,
             ArtisanStartResult.MissingList => false,
             _ => throw new TaskException($"Artisan list request was not accepted ({result}); recipe fallback is unsafe"),
         };
@@ -156,7 +156,7 @@ internal static class Craft
         ArtisanIpc artisanIpc,
         ILogger<DoCraft> logger,
         QuestFunctions questFunctions,
-        CraftingOperationState craftingOperation) : TaskExecutor<CraftTask>, ITaskExecutor.IStoppableTaskExecutor
+        CraftingState craftingOperation) : TaskExecutor<CraftTask>, ITaskExecutor.IStoppableTaskExecutor
     {
         private bool _requireObjective;
         private IReadOnlyList<CraftingItem> _itemTargets = [];
@@ -239,7 +239,7 @@ internal static class Craft
                 "Starting craft for item {ItemId} with recipe {RecipeId} for {RemainingItemCount} items (quality: {Quality}, owned: {OwnedCount})",
                 Task.ItemId, recipeId, remainingItemCount, target.Quality, startingItemCount);
             ArtisanStartResult result = artisanIpc.CraftItem(checked((ushort)recipeId), crafts);
-            if (result != ArtisanStartResult.Submitted)
+            if (result != ArtisanStartResult.Sent)
                 throw new TaskException($"Failed to submit Artisan recipe {recipeId} ({result}); check Artisan before restarting");
 
             return TrackSubmission();
@@ -249,7 +249,7 @@ internal static class Craft
         {
             // IsBusy includes queued startup/cleanup. SetStopRequest only pauses lists; Artisan has no cancel for just our work.
             _elapsed.Restart();
-            _operationId = craftingOperation.OperationId ??
+            _operationId = craftingOperation.Id ??
                 throw new TaskException("Artisan submission was not tracked; check Artisan before restarting");
             ArtisanStatus status = artisanIpc.GetStatus();
             craftingOperation.ObserveStatus(status);

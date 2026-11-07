@@ -85,8 +85,8 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
                 return false;
             }
 
-            SetResult currentJobSetForAutoRotation = WrathIPCWrapper.SetCurrentJobAutoRotationReady(_lease.Value);
-            if (!currentJobSetForAutoRotation.IsSuccess())
+            SetResult jobReady = WrathIPCWrapper.SetCurrentJobAutoRotationReady(_lease.Value);
+            if (!jobReady.IsSuccess())
             {
                 _logger.LogError("Unable to set Wrath to be Auto Rotation-ready");
                 return false;
@@ -241,7 +241,7 @@ internal sealed class WrathComboModule : ICombatModule, IDisposable
 internal static class WrathResultExtensions
 {
     public static bool AllSuccessful
-    (out string failedVariableNames,
+    (out string failedNames,
         params (string name, SetResult result)[] results)
     {
         string[] failed = results
@@ -249,7 +249,7 @@ internal static class WrathResultExtensions
             .Select(r => r.name)
             .ToArray();
 
-        failedVariableNames = string.Join(", ", failed);
+        failedNames = string.Join(", ", failed);
         return failed.Length == 0;
     }
 

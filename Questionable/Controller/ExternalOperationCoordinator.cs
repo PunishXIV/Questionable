@@ -28,7 +28,7 @@ internal sealed class ExternalOperationCoordinator : IOperationContext
 
     public bool MayBeMovingCharacter() => _providers.Any(x => x.MayBeMovingCharacter());
 
-    public IOperationProvider? GetOwner(ITaskExecutor? executor) => _providers.FirstOrDefault(x => x.OwnsExecutor(executor));
+    public IOperationProvider? GetOwner(ITaskExecutor? executor) => _providers.FirstOrDefault(x => x.HandlesExecutor(executor));
 
     public bool HandlesPlayerDeath(ITaskExecutor? executor) => _providers.Any(x => x.HandlesPlayerDeath(executor));
 

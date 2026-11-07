@@ -15,11 +15,11 @@ internal sealed class RotationSolverRebornIpc : Ipc
     private readonly IFramework _framework;
     private readonly ICallGateSubscriber<StateCommandType, object> _changeMode;
     private readonly ICallGateSubscriber<string, object> _test;
-    private object? _owner;
+    private object? _controlled;
     private StateCommandType _previousMode;
     private StateCommandType _expectedMode = StateCommandType.Henched;
     private StateCommandType? _transitionFrom;
-    private bool _ownershipLost;
+    private bool _controlLost;
     private bool _cleanupFailureLogged;
     private long _nextVerificationAt;
 
@@ -57,7 +57,7 @@ internal sealed class RotationSolverRebornIpc : Ipc
 
     public bool RotationAuto()
     {
-        if (_configuration.General.CombatModule != ECombatModule.RotationSolverReborn || _owner != null)
+        if (_configuration.General.CombatModule != ECombatModule.RotationSolverReborn || _controlled != null)
             return false;
 
         try
@@ -74,9 +74,9 @@ internal sealed class RotationSolverRebornIpc : Ipc
             _previousMode = previous;
             _expectedMode = StateCommandType.Henched;
             _transitionFrom = null;
-            _ownershipLost = false;
+            _controlLost = false;
             _cleanupFailureLogged = false;
-            _owner = provider;
+            _controlled = provider;
             _changeMode.InvokeAction(StateCommandType.Henched);
             VerifyActiveCore();
             _nextVerificationAt = 0;
@@ -89,11 +89,11 @@ internal sealed class RotationSolverRebornIpc : Ipc
         }
     }
 
-    public bool RotationPause() => ChangeOwnedMode(StateCommandType.Off);
+    public bool RotationPause() => SetMode(StateCommandType.Off);
 
-    public bool RotationResume() => ChangeOwnedMode(StateCommandType.Henched);
+    public bool RotationResume() => SetMode(StateCommandType.Henched);
 
-    private bool ChangeOwnedMode(StateCommandType mode)
+    private bool SetMode(StateCommandType mode)
     {
         try
         {
@@ -103,7 +103,7 @@ internal sealed class RotationSolverRebornIpc : Ipc
             _expectedMode = mode;
             // Keep both possible states until readback succeeds: IPC may apply and then throw.
             _changeMode.InvokeAction(mode);
-            if (ReadMode(_owner!) != mode)
+            if (ReadMode(_controlled!) != mode)
                 throw new TaskException("RotationSolverReborn rejected the combat item rotation change.");
             _transitionFrom = null;
             _nextVerificationAt = 0;
@@ -118,7 +118,7 @@ internal sealed class RotationSolverRebornIpc : Ipc
 
     public bool RotationStop()
     {
-        if (_owner == null)
+        if (_controlled == null)
             return true;
         try
         {
@@ -126,29 +126,29 @@ internal sealed class RotationSolverRebornIpc : Ipc
             object? provider = FindProvider();
             if (provider == null)
             {
-                _ownershipLost = true;
+                _controlLost = true;
                 return false;
             }
-            if (!ReferenceEquals(_owner, provider))
+            if (!ReferenceEquals(_controlled, provider))
             {
                 // The old RSR is gone; don't restore its snapshot into the new one.
-                _owner = null;
+                _controlled = null;
                 return true;
             }
             StateCommandType current = ReadMode(provider);
             if (current != _expectedMode && current != _transitionFrom)
             {
                 // A manual change (or an already-completed rollback) takes precedence.
-                _owner = null;
+                _controlled = null;
                 return true;
             }
-            if (_ownershipLost)
+            if (_controlLost)
                 return false;
 
             _changeMode.InvokeAction(_previousMode);
             if (ReadMode(provider) != _previousMode)
                 return false;
-            _owner = null;
+            _controlled = null;
             return true;
         }
         catch (Exception e)
@@ -165,12 +165,12 @@ internal sealed class RotationSolverRebornIpc : Ipc
     public void VerifyActive()
     {
         EnsureFrameworkThread();
-        if (_owner == null || _ownershipLost)
+        if (_controlled == null || _controlLost)
             throw new TaskException("RotationSolverReborn combat control was lost.");
         // HasAction is cheap and catches endpoint removal without reflection or logging each frame.
         if (!_changeMode.HasAction)
         {
-            _ownershipLost = true;
+            _controlLost = true;
             throw new TaskException("RotationSolverReborn is no longer available.");
         }
         long now = Environment.TickCount64;
@@ -184,14 +184,14 @@ internal sealed class RotationSolverRebornIpc : Ipc
     private void VerifyActiveCore()
     {
         object? provider = FindProvider();
-        if (_owner == null || provider == null || !ReferenceEquals(provider, _owner))
+        if (_controlled == null || provider == null || !ReferenceEquals(provider, _controlled))
         {
-            _ownershipLost = true;
+            _controlLost = true;
             throw new TaskException("RotationSolverReborn disappeared or was replaced.");
         }
-        if (_ownershipLost || ReadMode(provider) != _expectedMode)
+        if (_controlLost || ReadMode(provider) != _expectedMode)
         {
-            _ownershipLost = true;
+            _controlLost = true;
             throw new TaskException("RotationSolverReborn combat control was lost.");
         }
     }

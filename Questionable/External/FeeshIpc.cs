@@ -7,10 +7,10 @@ namespace Questionable.External;
 [RegisterSingleton]
 internal sealed class FeeshIpc : Ipc, IDisposable
 {
-    internal const string Owner = "Questionable";
+    internal const string CallerName = "Questionable";
 
     private readonly ILogger<FeeshIpc> _logger;
-    private readonly FishingOperationState _operation;
+    private readonly FishingState _operation;
     private readonly IFramework _framework;
     private readonly Dictionary<uint, long> _pendingReleases = [];
     private readonly object _catchDoneLock = new();
@@ -25,7 +25,7 @@ internal sealed class FeeshIpc : Ipc, IDisposable
     [EzIPC("Feesh.CancelCatch")] private readonly Func<string, bool> _cancelCatch = null!;
     [EzIPC("Feesh.ReleaseCatch")] private readonly Func<string, uint, bool> _releaseCatch = null!;
 
-    public FeeshIpc(ILogger<FeeshIpc> logger, FishingOperationState operation, IFramework framework)
+    public FeeshIpc(ILogger<FeeshIpc> logger, FishingState operation, IFramework framework)
     {
         _logger = logger;
         _operation = operation;
@@ -65,20 +65,20 @@ internal sealed class FeeshIpc : Ipc, IDisposable
         if (GetBusy() != false)
             return FeeshStartResult.Busy;
 
-        Guid owner = _operation.BeginSubmission();
+        Guid id = _operation.BeginRequest();
         lock (_catchDoneLock)
             _catchDoneResult = null;
         try
         {
             _logger.LogInformation("Requesting {Count} additional {FishId} from Feesh", additionalCount, fishId);
-            if (!_catch(Owner, fishId, additionalCount, true))
+            if (!_catch(CallerName, fishId, additionalCount, true))
             {
-                _operation.RejectSubmission(owner);
+                _operation.RejectRequest(id);
                 return GetBusy() == true ? FeeshStartResult.Busy : FeeshStartResult.Refused;
             }
 
-            _operation.AcceptCatch(owner);
-            // The new job now needs this owner's hold; an old release must not remove it.
+            _operation.AcceptCatch(id);
+            // The new job now needs Questionable's hold on this fish; an old release must not remove it.
             _pendingReleases.Remove(fishId);
             _heldFish = fishId;
             return FeeshStartResult.Started;
@@ -86,7 +86,7 @@ internal sealed class FeeshIpc : Ipc, IDisposable
         catch (Exception e)
         {
             _logger.LogWarning(e, "Feesh catch submission has an uncertain result");
-            _operation.MarkUncertain(owner);
+            _operation.MarkUncertain(id);
             _pendingReleases.Remove(fishId);
             _heldFish = fishId;
             message = e.Message;
@@ -97,16 +97,16 @@ internal sealed class FeeshIpc : Ipc, IDisposable
     public void PollOperation()
     {
         RetryPendingReleases();
-        if (_operation.OperationId is not { } owner)
+        if (_operation.Id is not { } id)
             return;
 
         string? text = ReadCatching();
         bool? catchDone;
         lock (_catchDoneLock)
             catchDone = _catchDoneResult;
-        _operation.ObserveCatch(owner, ParseState(text), text ?? "Feesh is unavailable", catchDone, GetBusy());
+        _operation.ObserveCatch(id, ParseState(text), text ?? "Feesh is unavailable", catchDone, GetBusy());
         SendStop();
-        if (_operation.RequiresReconciliation)
+        if (_operation.NeedsConfirmation)
             ObserveIdle();
     }
 
@@ -116,12 +116,12 @@ internal sealed class FeeshIpc : Ipc, IDisposable
         SendStop();
     }
 
-    public void CancelOwned()
+    public void CancelWork()
     {
         RetryPendingReleases();
         if (!_operation.HasOperation)
             return;
-        _operation.AbandonCurrent();
+        _operation.Abandon();
         RequestStop();
         if (_heldFish is { } fishId)
             ReleaseCatch(fishId);
@@ -141,8 +141,8 @@ internal sealed class FeeshIpc : Ipc, IDisposable
         _pendingReleases[fishId] = TimeProvider.System.GetTimestamp();
         try
         {
-            // False means this owner no longer holds the fish, which also completes cleanup.
-            _releaseCatch(Owner, fishId);
+            // False means Questionable no longer holds the fish, which also completes cleanup.
+            _releaseCatch(CallerName, fishId);
             _pendingReleases.Remove(fishId);
         }
         catch (Exception e)
@@ -189,9 +189,9 @@ internal sealed class FeeshIpc : Ipc, IDisposable
     }
 
     [EzIPCEvent("Feesh.CatchDone")]
-    private void OnCatchDone(string owner, bool done)
+    private void OnCatchDone(string caller, bool done)
     {
-        if (owner != Owner)
+        if (caller != CallerName)
             return;
         // May arrive off the framework thread; the next poll applies it.
         lock (_catchDoneLock)
@@ -200,15 +200,15 @@ internal sealed class FeeshIpc : Ipc, IDisposable
 
     private void SendStop()
     {
-        if (!_operation.TryBeginStop(out Guid owner))
+        if (!_operation.TryBeginStop(out Guid id))
             return;
         try
         {
-            _operation.ObserveStop(owner, _cancelCatch(Owner));
+            _operation.ObserveStop(id, _cancelCatch(CallerName));
         }
         catch (Exception e)
         {
-            _logger.LogDebug(e, "Unable to cancel Feesh catch job {OperationId}", owner);
+            _logger.LogDebug(e, "Unable to cancel Feesh catch job {Id}", id);
         }
     }
 
@@ -276,18 +276,18 @@ internal enum EFeeshJobState
     Unrecognized,
 }
 
-[RegisterSingleton<IOperationProvider, FeeshOperationProvider>(Duplicate = DuplicateStrategy.Append)]
-internal sealed class FeeshOperationProvider(FeeshIpc feeshIpc, FishingOperationState operation)
-    : OwnedOperationProvider(operation)
+[RegisterSingleton<IOperationProvider, FeeshProvider>(Duplicate = DuplicateStrategy.Append)]
+internal sealed class FeeshProvider(FeeshIpc feeshIpc, FishingState operation)
+    : PluginOperationProvider(operation)
 {
     public override int Order => 400;
     public override string Name => "Feesh";
     protected override string CancelLabel => "Feesh fishing";
     public override bool HandlesLeadInTravel => true;
 
-    protected override bool IsOwningExecutor(ITaskExecutor? executor) => executor is Fish.DoFish;
+    protected override bool MatchesExecutor(ITaskExecutor? executor) => executor is Fish.DoFish;
     protected override void PollOperation() => feeshIpc.PollOperation();
-    protected override void CancelOwned() => feeshIpc.CancelOwned();
+    protected override void CancelWork() => feeshIpc.CancelWork();
     protected override void ObserveIdle() => feeshIpc.ObserveIdle();
 
     public override bool MayBeMovingCharacter()
@@ -317,50 +317,50 @@ internal sealed class FeeshOperationProvider(FeeshIpc feeshIpc, FishingOperation
 }
 
 [RegisterSingleton]
-internal sealed class FishingOperationState(TimeProvider? timeProvider = null)
-    : OwnedOperationState("Feesh", "fishing for quest items", timeProvider)
+internal sealed class FishingState(TimeProvider? timeProvider = null)
+    : PluginOperationState("Feesh", "fishing for quest items", timeProvider)
 {
     private readonly TimeProvider _clock = timeProvider ?? TimeProvider.System;
-    private long _submittedAt;
+    private long _requestedAt;
     private long? _lastStopAttempt;
     private bool _stopAccepted;
 
     public bool HasStarted { get; private set; }
     public bool StopRequested { get; private set; }
 
-    public new Guid BeginSubmission()
+    public new Guid BeginRequest()
     {
-        Guid owner = base.BeginSubmission();
+        Guid id = base.BeginRequest();
         HasStarted = StopRequested = _stopAccepted = false;
         _lastStopAttempt = null;
-        _submittedAt = _clock.GetTimestamp();
-        return owner;
+        _requestedAt = _clock.GetTimestamp();
+        return id;
     }
 
     // Feesh has no job IDs, so the local ID is used for both.
-    public void AcceptCatch(Guid owner) => AcceptSubmission(owner, owner);
+    public void AcceptCatch(Guid id) => AcceptRequest(id, id);
 
-    public void ObserveCatch(Guid owner, EFeeshJobState state, string message, bool? catchDone, bool? busy)
+    public void ObserveCatch(Guid id, EFeeshJobState state, string message, bool? catchDone, bool? busy)
     {
-        if (OperationId != owner || IsTerminal)
+        if (Id != id || IsFinished)
             return;
 
         bool active = state is EFeeshJobState.Fishing or EFeeshJobState.Finishing;
         HasStarted |= active || catchDone != null;
         ExternalOperationStatus running = StopRequested || IsAbandoned
-            ? ExternalOperationStatus.CancellationRequested
+            ? ExternalOperationStatus.CancelRequested
             : ExternalOperationStatus.Running;
 
         // CatchDone fires once the rod is away and travel has stopped.
         if (catchDone is { } met)
         {
-            ObserveOperationStatus(owner, Final(state, met), message);
+            ObserveStatus(id, Final(state, met), message);
             return;
         }
 
         if (active)
         {
-            ObserveOperationStatus(owner, running, message);
+            ObserveStatus(id, running, message);
             return;
         }
 
@@ -368,24 +368,24 @@ internal sealed class FishingOperationState(TimeProvider? timeProvider = null)
                 or EFeeshJobState.Cancelled or EFeeshJobState.Stopped)
         {
             // Without CatchDone, finish once WahTools stays idle. Observe stopping once: it resets the idle streak.
-            if (Status != ExternalOperationStatus.CancellationRequested)
-                ObserveOperationStatus(owner, ExternalOperationStatus.CancellationRequested, message);
+            if (Status != ExternalOperationStatus.CancelRequested)
+                ObserveStatus(id, ExternalOperationStatus.CancelRequested, message);
             ObserveIdle(busy);
-            if (HasStableIdle)
-                ObserveOperationStatus(owner, Final(state, state == EFeeshJobState.Done), message);
+            if (IdleSettled)
+                ObserveStatus(id, Final(state, state == EFeeshJobState.Done), message);
             return;
         }
 
         // Until our job is seen running, an ended line may be the previous job's.
-        bool startupTimedOut = !HasStarted && _clock.GetElapsedTime(_submittedAt) >= TimeSpan.FromSeconds(30);
+        bool startupTimedOut = !HasStarted && _clock.GetElapsedTime(_requestedAt) >= TimeSpan.FromSeconds(30);
         bool unknown = state is EFeeshJobState.Unavailable or EFeeshJobState.Unrecognized ||
                        (HasStarted && state == EFeeshJobState.None) || startupTimedOut;
-        ObserveOperationStatus(owner, unknown ? ExternalOperationStatus.Unknown : running, message);
+        ObserveStatus(id, unknown ? ExternalOperationStatus.Unknown : running, message);
 
         if (startupTimedOut)
         {
             RequestStop();
-            MarkUncertain(owner);
+            MarkUncertain(id);
         }
     }
 
@@ -396,19 +396,19 @@ internal sealed class FishingOperationState(TimeProvider? timeProvider = null)
 
     public void RequestStop()
     {
-        if (!HasOperation || IsTerminal)
+        if (!HasOperation || IsFinished)
             return;
         StopRequested = true;
         // Unknown stays unknown, and observing stopping again would reset the idle streak.
-        if (Status is not (ExternalOperationStatus.Unknown or ExternalOperationStatus.CancellationRequested))
-            ObserveOperationStatus(OperationId!.Value, ExternalOperationStatus.CancellationRequested, "Stopping fishing");
+        if (Status is not (ExternalOperationStatus.Unknown or ExternalOperationStatus.CancelRequested))
+            ObserveStatus(Id!.Value, ExternalOperationStatus.CancelRequested, "Stopping fishing");
     }
 
-    public bool TryBeginStop(out Guid owner)
+    public bool TryBeginStop(out Guid id)
     {
-        owner = OperationId.GetValueOrDefault();
+        id = Id.GetValueOrDefault();
         // CancelCatch only ends our own job, so it is safe after a lost start reply.
-        if (!HasOperation || IsTerminal || !(StopRequested || IsAbandoned) || _stopAccepted ||
+        if (!HasOperation || IsFinished || !(StopRequested || IsAbandoned) || _stopAccepted ||
             (_lastStopAttempt is { } last && _clock.GetElapsedTime(last) < TimeSpan.FromSeconds(2)))
             return false;
 
@@ -416,9 +416,9 @@ internal sealed class FishingOperationState(TimeProvider? timeProvider = null)
         return true;
     }
 
-    public void ObserveStop(Guid owner, bool accepted)
+    public void ObserveStop(Guid id, bool accepted)
     {
-        if (OperationId == owner)
+        if (Id == id)
             _stopAccepted |= accepted;
     }
 }

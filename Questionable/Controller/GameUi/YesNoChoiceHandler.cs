@@ -325,7 +325,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
     private bool CheckSinglePlayerDutyYesNo(ElementId questId, QuestStep? step)
     {
         if (step is { InteractionType: EInteractionType.SinglePlayerDuty } &&
-            _bossModIpc.IsConfiguredToRunSoloInstance(questId, step.SinglePlayerDutyOptions))
+            _bossModIpc.CanRunQuestBattle(questId, step.SinglePlayerDutyOptions))
         {
             // "Duty calls" yes/no. After a wipe the game uses DifficultySelectYesNo instead.
             _logger.LogInformation("SinglePlayerDutyYesNo: probably Single Player Duty");

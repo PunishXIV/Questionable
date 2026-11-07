@@ -24,7 +24,7 @@ internal static class Duty
         NoviceHall = 1 << 7
     }
 
-    internal sealed class Factory(AutoDutyOperationProvider autoDuty, TerritoryData territoryData, Configuration configuration) : ITaskFactory
+    internal sealed class Factory(AutoDutyProvider autoDuty, TerritoryData territoryData, Configuration configuration) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -34,7 +34,7 @@ internal static class Duty
             ArgumentNullException.ThrowIfNull(step.DutyOptions);
 
             bool variant = quest.Id is QuestId { Value: 4646 or 4733 or 4789 or 5441 };
-            if (!autoDuty.IsConfiguredToRunContent(step.DutyOptions))
+            if (!autoDuty.CanRunDuty(step.DutyOptions))
             {
                 if (variant)
                     yield return new OpenVariantDFTask(step.DutyOptions.ContentFinderConditionId);
@@ -83,7 +83,7 @@ internal static class Duty
 
     internal sealed class StartAutoDutyExecutor(
         GearStatsCalculator gearStatsCalculator,
-        AutoDutyOperationProvider autoDuty,
+        AutoDutyProvider autoDuty,
         TerritoryData territoryData,
         Configuration configuration,
         IChatGui chatGui,
@@ -100,16 +100,16 @@ internal static class Duty
         public override ETaskResult Update()
         {
             var operation = autoDuty.Operation;
-            if (_owner == null || operation.OperationId != _owner)
+            if (_owner == null || operation.Id != _owner)
                 throw new TaskException("AutoDuty is no longer running Questionable's duty.");
-            if (operation.RequiresReconciliation || operation.IsAbandoned)
+            if (operation.NeedsConfirmation || operation.IsAbandoned)
                 throw new TaskException(operation.Message);
-            if (!operation.IsTerminal)
+            if (!operation.IsFinished)
                 return ETaskResult.StillRunning;
 
             bool completed = operation.Status == ExternalOperationStatus.Succeeded;
             string message = operation.Message;
-            operation.TryReleaseTerminal(_owner);
+            operation.TryClearFinished(_owner);
             if (!completed)
                 throw new TaskException(message);
             return ETaskResult.TaskComplete;
@@ -117,7 +117,7 @@ internal static class Duty
 
         public void StopNow()
         {
-            if (_owner != null && autoDuty.Operation.OperationId == _owner)
+            if (_owner != null && autoDuty.Operation.Id == _owner)
                 autoDuty.CancelRun();
         }
 
@@ -154,16 +154,16 @@ internal static class Duty
                 !cfcData.ContentType.Equals(EContentType.Trials))
                 dutyMode = DutyMode.Regular;
 
-            Guid? previousOwner = autoDuty.Operation.OperationId;
+            Guid? previousOwner = autoDuty.Operation.Id;
             try
             {
-                autoDuty.StartInstance(Task.ContentFinderConditionId, dutyMode, Task.PathEnabled);
+                autoDuty.StartDuty(Task.ContentFinderConditionId, dutyMode, Task.PathEnabled);
             }
             finally
             {
                 // A lost Run reply can still have started work, so keep ownership.
                 if (previousOwner == null)
-                    _owner = autoDuty.Operation.OperationId;
+                    _owner = autoDuty.Operation.Id;
             }
             return true;
         }

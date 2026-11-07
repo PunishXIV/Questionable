@@ -23,15 +23,15 @@ internal sealed class ExternalOperationFixture : IDisposable
     public AutoDutyIpc AutoDuty { get; }
     public BossModIpc BossMod { get; }
     public NavmeshIpc Navmesh { get; }
-    public CraftingOperationState Crafting { get; }
-    public PurchaseOperationState Purchase { get; }
-    public GatheringOperationState Gathering { get; }
-    public FishingOperationState Fishing { get; }
+    public CraftingState Crafting { get; }
+    public PurchaseState Purchase { get; }
+    public GatheringState Gathering { get; }
+    public FishingState Fishing { get; }
     public CombatController Combat { get; }
     public GatheringController GatheringController { get; }
     public MovementController Movement { get; }
     public ExternalOperationCoordinator Coordinator { get; }
-    private readonly AutoDutyOperationProvider _dutyProvider;
+    private readonly AutoDutyProvider _dutyProvider;
 
     public ExternalOperationFixture(IEnumerable<ICombatModule>? combatModules = null,
         IEnumerable<IOperationProvider>? extraProviders = null)
@@ -55,17 +55,17 @@ internal sealed class ExternalOperationFixture : IDisposable
         Combat = new(combatModules ?? [], Movement, Substitute.For<ITargetManager>(), Objects,
             Condition, Client, null!, null!, Framework, NullLogger<CombatController>.Instance);
         GatheringController = new(Gather, Gathering, Movement);
-        _dutyProvider = new(AutoDuty, new Configuration(), null!, NullLogger<AutoDutyOperationProvider>.Instance,
+        _dutyProvider = new(AutoDuty, new Configuration(), null!, NullLogger<AutoDutyProvider>.Instance,
             new(), Client, Condition, Substitute.For<IDutyState>(), Navmesh);
         // Deliberately not in run order: the coordinator sorts by Order.
         Providers =
         [
             new CombatCleanupProvider(Combat, BossMod, NullLogger<CombatCleanupProvider>.Instance),
-            new FeeshOperationProvider(Feesh, Fishing),
-            new ArtisanOperationProvider(Artisan, Crafting, Condition, NullLogger<ArtisanOperationProvider>.Instance),
+            new FeeshProvider(Feesh, Fishing),
+            new ArtisanProvider(Artisan, Crafting, Condition, NullLogger<ArtisanProvider>.Instance),
             _dutyProvider,
-            new GatherChillOperationProvider(Gather, Gathering),
-            new KnightshopperOperationProvider(Knightshopper, Purchase, GilShop),
+            new GatherChillProvider(Gather, Gathering),
+            new KnightshopperProvider(Knightshopper, Purchase, GilShop),
             .. extraProviders ?? [],
         ];
         Coordinator = new(Providers, Movement, NullLogger<ExternalOperationCoordinator>.Instance);

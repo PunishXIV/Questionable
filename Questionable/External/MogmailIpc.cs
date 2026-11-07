@@ -44,7 +44,7 @@ internal sealed class MogmailIpc : Ipc, IDisposable
         {
             return _claimAll();
         }
-        catch (Exception e) when (IpcInvoke.IsSafeIpcFailure(e))
+        catch (Exception e) when (IpcInvoke.IsSafeFailure(e))
         {
             if (!_loggedIpcError)
             {

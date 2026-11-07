@@ -54,22 +54,22 @@ internal sealed class AutoDutyIpc : Ipc, IDisposable
 }
 
 [RegisterSingleton]
-internal sealed class AutoDutyOperationProvider : OwnedOperationProvider, IDisposable
+internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
 {
     private const string ProfileName = "Questionable";
     private readonly AutoDutyIpc _ipc;
     private readonly Configuration _configuration;
     private readonly TerritoryData _territoryData;
-    private readonly ILogger<AutoDutyOperationProvider> _logger;
+    private readonly ILogger<AutoDutyProvider> _logger;
     private readonly IClientState _clientState;
     private readonly ICondition _condition;
     private readonly IDutyState _dutyState;
     private readonly NavmeshIpc _navmesh;
     private readonly IDutyState.DutyCompletedDelegate _dutyCompleted;
-    private bool _loggedReleaseFailure;
+    private bool _loggedSwitchBackFailure;
 
-    public AutoDutyOperationProvider(AutoDutyIpc ipc, Configuration configuration, TerritoryData territoryData,
-        ILogger<AutoDutyOperationProvider> logger, AutoDutyOperationState operation, IClientState clientState,
+    public AutoDutyProvider(AutoDutyIpc ipc, Configuration configuration, TerritoryData territoryData,
+        ILogger<AutoDutyProvider> logger, AutoDutyState operation, IClientState clientState,
         ICondition condition, IDutyState dutyState, NavmeshIpc navmesh) : base(operation)
     {
         _ipc = ipc;
@@ -89,18 +89,18 @@ internal sealed class AutoDutyOperationProvider : OwnedOperationProvider, IDispo
         _dutyState.DutyCompleted += _dutyCompleted;
     }
 
-    public AutoDutyOperationState Operation { get; }
+    public AutoDutyState Operation { get; }
 
     public override int Order => 500;
     public override string Name => "AutoDuty";
     protected override string CancelLabel => "AutoDuty";
 
-    protected override bool IsOwningExecutor(ITaskExecutor? executor) => executor is Duty.StartAutoDutyExecutor;
-    protected override void CancelOwned() => CancelRun();
+    protected override bool MatchesExecutor(ITaskExecutor? executor) => executor is Duty.StartAutoDutyExecutor;
+    protected override void CancelWork() => CancelRun();
     protected override void ObserveIdle() => PollOperation();
 
     // AutoDuty owns its death and retry behaviour while it runs our duty.
-    public override bool HandlesPlayerDeath(ITaskExecutor? executor) => OwnsExecutor(executor);
+    public override bool HandlesPlayerDeath(ITaskExecutor? executor) => HandlesExecutor(executor);
 
     public override bool MayBeMovingCharacter() => _ipc.IsAvailable() && _ipc.GetStopped() != true;
 
@@ -110,7 +110,7 @@ internal sealed class AutoDutyOperationProvider : OwnedOperationProvider, IDispo
             return null;
 
         return new(Operation.BlockReason ?? _L("Running a duty with AutoDuty"),
-            Operation.RequiresReconciliation
+            Operation.NeedsConfirmation
                 ? new OperationRecoveryView(_L("I stopped AutoDuty"), Operation.CanConfirmIdle,
                     [_L("Stop AutoDuty and leave its duty or queue before confirming. Movement and temporary settings must be settled. Confirmation does not restart questing.")],
                     Detail: Operation.Message)
@@ -124,7 +124,7 @@ internal sealed class AutoDutyOperationProvider : OwnedOperationProvider, IDispo
             ? _L("AutoDuty is busy or its status is unavailable. Finish its current work before starting questing.")
             : null;
 
-    public bool IsConfiguredToRunContent(DutyOptions? dutyOptions) =>
+    public bool CanRunDuty(DutyOptions? dutyOptions) =>
         dutyOptions is { ContentFinderConditionId: > 0 } &&
         _configuration.Duties.RunInstancedContentWithAutoDuty &&
         !_configuration.Duties.BlacklistedDutyCfcIds.Contains(dutyOptions.ContentFinderConditionId) &&
@@ -141,11 +141,11 @@ internal sealed class AutoDutyOperationProvider : OwnedOperationProvider, IDispo
     private TerritoryData.ContentFinderConditionData? FindContent(uint cfcId) =>
         _territoryData.TryGetContentFinderCondition(cfcId, out var data) ? data : null;
 
-    public void StartInstance(uint cfcId, Duty.DutyMode dutyMode, bool pathEnabled = true)
+    public void StartDuty(uint cfcId, Duty.DutyMode dutyMode, bool pathEnabled = true)
     {
         if (HasOperation)
             throw new TaskException(BlockReason!);
-        if (!IsConfiguredToRunContent(new DutyOptions { ContentFinderConditionId = cfcId, Enabled = pathEnabled }))
+        if (!CanRunDuty(new DutyOptions { ContentFinderConditionId = cfcId, Enabled = pathEnabled }))
             throw new TaskException("AutoDuty is disabled or this duty is excluded or unsupported.");
         var data = FindContent(cfcId) ?? throw new TaskException($"Unknown ContentFinderConditionId {cfcId}");
         if (_ipc.GetStopped() != true)
@@ -154,8 +154,8 @@ internal sealed class AutoDutyOperationProvider : OwnedOperationProvider, IDispo
         if (!game.Available || !game.Idle || game.InQueue || game.Loading || game.InDuty)
             throw new TaskException("Cannot start AutoDuty while native duty, queue or movement is active.");
 
-        Guid owner = Operation.BeginSubmission(data.TerritoryId);
-        _loggedReleaseFailure = false;
+        Guid id = Operation.BeginRequest(data.TerritoryId);
+        _loggedSwitchBackFailure = false;
         try
         {
             // Before SetConfig, so it writes to our profile instead of the user's.
@@ -163,12 +163,12 @@ internal sealed class AutoDutyOperationProvider : OwnedOperationProvider, IDispo
         }
         catch (Exception e) when (IpcInvoke.IsMissing(e))
         {
-            Operation.RejectSubmission(owner);
+            Operation.RejectRequest(id);
             throw new TaskException("Update AutoDuty: this version can't run duties in a separate Questionable profile.", e);
         }
         catch (Exception e)
         {
-            Operation.RequireReconciliation("AutoDuty configuration failed; its profile will be switched back while idle");
+            Operation.RequireConfirmation("AutoDuty configuration failed; its profile will be switched back while idle");
             throw new TaskException(_LF("Unable to run content with AutoDuty: {0}", e.Message), e);
         }
 
@@ -179,17 +179,17 @@ internal sealed class AutoDutyOperationProvider : OwnedOperationProvider, IDispo
             ApplySetting("DutyConfig.AutoExitDuty", "True");
             if (_ipc.GetStopped() != true)
             {
-                Operation.RequireReconciliation("AutoDuty became busy during configuration; its work is not owned");
+                Operation.RequireConfirmation("AutoDuty became busy during configuration; its work is not owned");
                 throw new TaskException("AutoDuty became busy during configuration.");
             }
-            Operation.MarkRunSubmitted();
+            Operation.MarkRunRequested();
             _ipc.RunForPlugin(ProfileName, data.TerritoryId, 1, true);
             // Run returns nothing; watch for activity instead of retrying it.
             PollOperation();
         }
         catch (Exception e)
         {
-            Operation.RequireReconciliation(Operation.RunSubmitted
+            Operation.RequireConfirmation(Operation.RunRequested
                 ? "AutoDuty submission is uncertain; check its work before restarting"
                 : "AutoDuty configuration failed; its profile will be switched back while idle");
             throw new TaskException(_LF("Unable to run content with AutoDuty: {0}", e.Message), e);
@@ -201,11 +201,11 @@ internal sealed class AutoDutyOperationProvider : OwnedOperationProvider, IDispo
         if (!HasOperation)
             return;
         Operation.Observe(_ipc.GetStopped(), ReadGameState());
-        if (!Operation.CanReleaseProfile)
+        if (!Operation.CanSwitchProfileBack)
             return;
-        if (ReleaseProfile())
+        if (SwitchProfileBack())
         {
-            Operation.ProfileReleased();
+            Operation.ProfileSwitchedBack();
             Operation.FinishIfSettled();
         }
     }
@@ -224,7 +224,7 @@ internal sealed class AutoDutyOperationProvider : OwnedOperationProvider, IDispo
         }
         catch (Exception e)
         {
-            Operation.RequireReconciliation("AutoDuty stop request failed; stopping is not confirmed");
+            Operation.RequireConfirmation("AutoDuty stop request failed; stopping is not confirmed");
             _logger.LogWarning(e, "Unable to confirm the AutoDuty stop request");
         }
     }
@@ -273,7 +273,7 @@ internal sealed class AutoDutyOperationProvider : OwnedOperationProvider, IDispo
         string.Equals(actual, expected, StringComparison.OrdinalIgnoreCase);
 
     // AutoDuty switches back itself when a run stops; this covers runs that never started.
-    private bool ReleaseProfile()
+    private bool SwitchProfileBack()
     {
         try
         {
@@ -282,11 +282,11 @@ internal sealed class AutoDutyOperationProvider : OwnedOperationProvider, IDispo
         }
         catch (Exception e)
         {
-            Operation.RequireReconciliation("AutoDuty didn't switch back from Questionable's profile; this will be retried while idle");
-            if (!_loggedReleaseFailure)
+            Operation.RequireConfirmation("AutoDuty didn't switch back from Questionable's profile; this will be retried while idle");
+            if (!_loggedSwitchBackFailure)
             {
                 _logger.LogWarning(e, "Unable to switch AutoDuty back from Questionable's profile");
-                _loggedReleaseFailure = true;
+                _loggedSwitchBackFailure = true;
             }
             return false;
         }
@@ -297,107 +297,107 @@ internal sealed class AutoDutyOperationProvider : OwnedOperationProvider, IDispo
 
 // AutoDuty's Run/Stop API provides no remote operation ID.
 [RegisterSingleton]
-internal sealed class AutoDutyOperationState(TimeProvider? timeProvider = null)
-    : OwnedOperationState("AutoDuty", "running a duty", timeProvider)
+internal sealed class AutoDutyState(TimeProvider? timeProvider = null)
+    : PluginOperationState("AutoDuty", "running a duty", timeProvider)
 {
     private readonly TimeProvider _clock = timeProvider ?? TimeProvider.System;
     private long _entryWaitSince;
     private long? _stoppingSince;
     private bool _stopAttempted;
     private bool _observedStop;
-    private bool _profileReleased;
+    private bool _profileSwitchedBack;
     private bool? _stopped;
 
     public uint TerritoryId { get; private set; }
-    public bool RunSubmitted { get; private set; }
+    public bool RunRequested { get; private set; }
     public bool ObservedRunning { get; private set; }
     public bool EnteredDuty { get; private set; }
     public bool DutyCompleted { get; private set; }
-    public bool CanReleaseProfile => HasOperation && _stopped == true && HasStableIdle &&
-        (RequiresReconciliation || _observedStop || !RunSubmitted);
+    public bool CanSwitchProfileBack => HasOperation && _stopped == true && IdleSettled &&
+        (NeedsConfirmation || _observedStop || !RunRequested);
 
-    public Guid BeginSubmission(uint territoryId)
+    public Guid BeginRequest(uint territoryId)
     {
-        Guid owner = base.BeginSubmission();
+        Guid id = base.BeginRequest();
         TerritoryId = territoryId;
-        RunSubmitted = ObservedRunning = EnteredDuty = DutyCompleted = false;
-        _stopAttempted = _observedStop = _profileReleased = false;
+        RunRequested = ObservedRunning = EnteredDuty = DutyCompleted = false;
+        _stopAttempted = _observedStop = _profileSwitchedBack = false;
         _stopped = null;
         _entryWaitSince = _clock.GetTimestamp();
         _stoppingSince = null;
-        return owner;
+        return id;
     }
 
-    public void MarkRunSubmitted() => RunSubmitted = true;
+    public void MarkRunRequested() => RunRequested = true;
 
-    public void RequireReconciliation(string message)
+    public void RequireConfirmation(string message)
     {
-        if (OperationId is not { } owner)
+        if (Id is not { } id)
             return;
-        MarkUncertain(owner);
-        SetStatus(_profileReleased ? ExternalOperationStatus.Unknown : ExternalOperationStatus.CancellationRequested, message);
+        MarkUncertain(id);
+        SetStatus(_profileSwitchedBack ? ExternalOperationStatus.Unknown : ExternalOperationStatus.CancelRequested, message);
     }
 
     public void ObserveDutyCompleted(uint territoryId)
     {
-        if (HasOperation && RunSubmitted && territoryId == TerritoryId)
+        if (HasOperation && RunRequested && territoryId == TerritoryId)
             EnteredDuty = DutyCompleted = true;
     }
 
     public bool BeginStop()
     {
         bool canStop = HasOperation && ObservedRunning && _stopped == false &&
-            !RequiresReconciliation && !_observedStop && !_stopAttempted && !IsTerminal;
-        AbandonCurrent();
+            !NeedsConfirmation && !_observedStop && !_stopAttempted && !IsFinished;
+        Abandon();
         _stoppingSince ??= _clock.GetTimestamp();
         if (canStop)
         {
             _stopAttempted = true;
-            SetStatus(ExternalOperationStatus.CancellationRequested, "Waiting for AutoDuty to stop");
+            SetStatus(ExternalOperationStatus.CancelRequested, "Waiting for AutoDuty to stop");
         }
         return canStop;
     }
 
     public void Observe(bool? stopped, AutoDutyGameState game)
     {
-        if (!HasOperation || IsTerminal)
+        if (!HasOperation || IsFinished)
             return;
 
         _stopped = stopped;
-        if (game.Available && !game.Loading && game.TerritoryId == TerritoryId && RunSubmitted)
+        if (game.Available && !game.Loading && game.TerritoryId == TerritoryId && RunRequested)
             EnteredDuty = true;
 
         if (stopped == null)
-            RequireReconciliation("AutoDuty status was lost; check its work before confirming idle");
+            RequireConfirmation("AutoDuty status was lost; check its work before confirming idle");
 
         if (stopped == false && _observedStop)
-            RequireReconciliation("AutoDuty started again after stopping; Questionable didn't start it");
+            RequireConfirmation("AutoDuty started again after stopping; Questionable didn't start it");
 
-        if (!RequiresReconciliation)
+        if (!NeedsConfirmation)
         {
-            if (stopped == false && RunSubmitted)
+            if (stopped == false && RunRequested)
             {
                 ObservedRunning = true;
-                SetStatus(IsAbandoned ? ExternalOperationStatus.CancellationRequested : ExternalOperationStatus.Running,
+                SetStatus(IsAbandoned ? ExternalOperationStatus.CancelRequested : ExternalOperationStatus.Running,
                     EnteredDuty ? "Running duty" : "Waiting to enter duty");
             }
             else if (stopped == true && ObservedRunning)
             {
                 _observedStop = true;
                 // A normal stop can be followed by a long cutscene or load; only a cancel starts the deadline.
-                SetStatus(IsAbandoned ? ExternalOperationStatus.CancellationRequested : ExternalOperationStatus.Running,
+                SetStatus(IsAbandoned ? ExternalOperationStatus.CancelRequested : ExternalOperationStatus.Running,
                     "Waiting for duty, movement and profile cleanup");
             }
 
             // A real queue or loading screen is progress, even when it takes hours.
             if (game.Available && (game.InQueue || game.Loading))
                 _entryWaitSince = _clock.GetTimestamp();
-            else if (RunSubmitted && (!ObservedRunning || !EnteredDuty) &&
+            else if (RunRequested && (!ObservedRunning || !EnteredDuty) &&
                      _clock.GetElapsedTime(_entryWaitSince) >= TimeSpan.FromSeconds(ObservedRunning ? 120 : 15))
-                RequireReconciliation("AutoDuty didn't enter or queue for the duty; it may have refused the run");
+                RequireConfirmation("AutoDuty didn't enter or queue for the duty; it may have refused the run");
 
             if (_stoppingSince is { } stopping && _clock.GetElapsedTime(stopping) >= TimeSpan.FromSeconds(15))
-                RequireReconciliation("AutoDuty hasn't confirmed it stopped and left the duty");
+                RequireConfirmation("AutoDuty hasn't confirmed it stopped and left the duty");
         }
 
         bool? busy = stopped == null || !game.Available ? null :
@@ -405,16 +405,16 @@ internal sealed class AutoDutyOperationState(TimeProvider? timeProvider = null)
         ObserveIdle(busy);
     }
 
-    public void ProfileReleased()
+    public void ProfileSwitchedBack()
     {
-        _profileReleased = true;
-        if (RequiresReconciliation)
+        _profileSwitchedBack = true;
+        if (NeedsConfirmation)
             SetStatus(ExternalOperationStatus.Unknown, Message);
     }
 
     public void FinishIfSettled()
     {
-        if (!_profileReleased || !CanReleaseProfile || RequiresReconciliation)
+        if (!_profileSwitchedBack || !CanSwitchProfileBack || NeedsConfirmation)
             return;
         SetStatus(IsAbandoned ? ExternalOperationStatus.Cancelled :
             EnteredDuty && DutyCompleted ? ExternalOperationStatus.Succeeded : ExternalOperationStatus.Failed,
@@ -423,9 +423,9 @@ internal sealed class AutoDutyOperationState(TimeProvider? timeProvider = null)
 
     private void SetStatus(ExternalOperationStatus status, string message)
     {
-        // Repeating a non-Unknown status would reset OwnedOperationState's idle streak.
-        if (OperationId is { } owner && (Status != status || Message != message))
-            ObserveOperationStatus(owner, status, message);
+        // Repeating a non-Unknown status would reset PluginOperationState's idle streak.
+        if (Id is { } id && (Status != status || Message != message))
+            ObserveStatus(id, status, message);
     }
 }
 

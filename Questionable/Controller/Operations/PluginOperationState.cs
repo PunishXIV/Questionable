@@ -1,6 +1,6 @@
 namespace Questionable.Controller.Operations;
 
-internal abstract class OwnedOperationState(string providerName, string activity, TimeProvider? timeProvider = null)
+internal abstract class PluginOperationState(string providerName, string activity, TimeProvider? timeProvider = null)
 {
     private readonly TimeProvider _clock = timeProvider ?? TimeProvider.System;
     private long? _unknownSince;
@@ -10,68 +10,68 @@ internal abstract class OwnedOperationState(string providerName, string activity
     private long? _idleSince;
     private long? _lastIdleObservation;
 
-    public Guid? OperationId { get; private set; }
-    public Guid? ProviderOperationId { get; private set; }
-    public bool HasOperation => OperationId.HasValue;
+    public Guid? Id { get; private set; }
+    public Guid? ProviderId { get; private set; }
+    public bool HasOperation => Id.HasValue;
     public bool IsAbandoned { get; private set; }
-    public bool RequiresReconciliation { get; private set; }
+    public bool NeedsConfirmation { get; private set; }
     public ExternalOperationStatus Status { get; private set; }
     public string Message { get; private set; } = "";
-    public bool IsTerminal => Status is ExternalOperationStatus.Succeeded or ExternalOperationStatus.Failed or ExternalOperationStatus.Cancelled;
-    public string? BlockReason => !HasOperation ? null : RequiresReconciliation
+    public bool IsFinished => Status is ExternalOperationStatus.Succeeded or ExternalOperationStatus.Failed or ExternalOperationStatus.Cancelled;
+    public string? BlockReason => !HasOperation ? null : NeedsConfirmation
         ? $"Check {providerName}: finish or stop its work, then confirm it is stopped."
-        : IsAbandoned || Status == ExternalOperationStatus.CancellationRequested
+        : IsAbandoned || Status == ExternalOperationStatus.CancelRequested
             ? $"Waiting for {providerName} to stop its work."
             : $"{providerName} is {activity}. Stop Questionable before starting other work.";
 
-    public bool CanConfirmIdle => HasOperation && RequiresReconciliation && Status == ExternalOperationStatus.Unknown && HasStableIdle;
+    public bool CanConfirmIdle => HasOperation && NeedsConfirmation && Status == ExternalOperationStatus.Unknown && IdleSettled;
 
-    protected bool HasStableIdle =>
+    protected bool IdleSettled =>
         _idleSince is { } idleSince && _lastIdleObservation is { } observedAt &&
         _clock.GetElapsedTime(idleSince) >= TimeSpan.FromSeconds(2) &&
         _clock.GetElapsedTime(observedAt) <= TimeSpan.FromSeconds(1);
 
-    public Guid BeginSubmission()
+    public Guid BeginRequest()
     {
         if (HasOperation)
             throw new TaskException(BlockReason!);
 
-        OperationId = Guid.NewGuid();
+        Id = Guid.NewGuid();
         Status = ExternalOperationStatus.Unknown;
         _unknownSince = _clock.GetTimestamp();
-        return OperationId.Value;
+        return Id.Value;
     }
 
-    public void AcceptSubmission(Guid owner, Guid? providerId)
+    public void AcceptRequest(Guid id, Guid? providerId)
     {
-        if (OperationId != owner)
+        if (Id != id)
             return;
         if (providerId == Guid.Empty)
         {
-            MarkUncertain(owner);
+            MarkUncertain(id);
             return;
         }
 
-        ProviderOperationId = providerId;
+        ProviderId = providerId;
         Status = ExternalOperationStatus.Running;
         _unknownSince = null;
     }
 
-    public void RejectSubmission(Guid owner)
+    public void RejectRequest(Guid id)
     {
-        if (OperationId == owner && ProviderOperationId == null)
+        if (Id == id && ProviderId == null)
             Clear();
     }
 
-    public void MarkUncertain(Guid owner)
+    public void MarkUncertain(Guid id)
     {
-        if (OperationId == owner)
-            RequiresReconciliation = true;
+        if (Id == id)
+            NeedsConfirmation = true;
     }
 
-    protected void ObserveOperationStatus(Guid owner, ExternalOperationStatus status, string message)
+    protected void ObserveStatus(Guid id, ExternalOperationStatus status, string message)
     {
-        if (OperationId != owner || IsTerminal)
+        if (Id != id || IsFinished)
             return;
 
         Status = Enum.IsDefined(status) ? status : ExternalOperationStatus.Unknown;
@@ -86,31 +86,31 @@ internal abstract class OwnedOperationState(string providerName, string activity
             _idleSince = _lastIdleObservation = null;
         }
 
-        if (Status == ExternalOperationStatus.CancellationRequested)
+        if (Status == ExternalOperationStatus.CancelRequested)
             _stoppingSince ??= now;
 
         if ((_unknownSince is { } unknown && _clock.GetElapsedTime(unknown, now) >= TimeSpan.FromSeconds(10)) ||
             (_stoppingSince is { } stopping && _clock.GetElapsedTime(stopping, now) >= TimeSpan.FromSeconds(15)))
-            RequiresReconciliation = true;
+            NeedsConfirmation = true;
 
-        if (IsTerminal && IsAbandoned)
+        if (IsFinished && IsAbandoned)
             Clear();
     }
 
-    public void AbandonCurrent()
+    public void Abandon()
     {
         if (!HasOperation)
             return;
         IsAbandoned = true;
         _stoppingSince ??= _clock.GetTimestamp();
-        if (IsTerminal)
+        if (IsFinished)
             Clear();
     }
 
-    public bool TryBeginCancellation(out Guid providerId)
+    public bool TryBeginCancel(out Guid providerId)
     {
-        providerId = ProviderOperationId.GetValueOrDefault();
-        if (!HasOperation || !IsAbandoned || providerId == Guid.Empty || IsTerminal || _cancelAccepted ||
+        providerId = ProviderId.GetValueOrDefault();
+        if (!HasOperation || !IsAbandoned || providerId == Guid.Empty || IsFinished || _cancelAccepted ||
             (_lastCancelAttempt is { } last && _clock.GetElapsedTime(last) < TimeSpan.FromSeconds(2)))
             return false;
 
@@ -118,15 +118,15 @@ internal abstract class OwnedOperationState(string providerName, string activity
         return true;
     }
 
-    public void ObserveCancellation(Guid providerId, bool accepted)
+    public void ObserveCancel(Guid providerId, bool accepted)
     {
-        if (ProviderOperationId == providerId)
+        if (ProviderId == providerId)
             _cancelAccepted |= accepted;
     }
 
-    public bool TryReleaseTerminal(Guid? owner)
+    public bool TryClearFinished(Guid? id)
     {
-        if (!owner.HasValue || OperationId != owner || !IsTerminal)
+        if (!id.HasValue || Id != id || !IsFinished)
             return false;
         Clear();
         return true;
@@ -154,10 +154,10 @@ internal abstract class OwnedOperationState(string providerName, string activity
 
     private void Clear()
     {
-        OperationId = ProviderOperationId = null;
+        Id = ProviderId = null;
         Status = ExternalOperationStatus.Unknown;
         Message = "";
-        IsAbandoned = RequiresReconciliation = _cancelAccepted = false;
+        IsAbandoned = NeedsConfirmation = _cancelAccepted = false;
         _unknownSince = _stoppingSince = _lastCancelAttempt = _idleSince = _lastIdleObservation = null;
     }
 }

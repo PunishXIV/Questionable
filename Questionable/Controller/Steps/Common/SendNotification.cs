@@ -8,7 +8,7 @@ internal static class SendNotification
     internal sealed class Factory
     (
         AutomatonIpc automatonIpc,
-        AutoDutyOperationProvider autoDuty,
+        AutoDutyProvider autoDuty,
         BossModIpc bossModIpc,
         TerritoryData territoryData) : SimpleTaskFactory
     {
@@ -18,11 +18,11 @@ internal static class SendNotification
             {
                 EInteractionType.Snipe when !automatonIpc.IsAutoSnipeEnabled =>
                     new(step.InteractionType, step.Comment),
-                EInteractionType.Duty when !autoDuty.IsConfiguredToRunContent(step.DutyOptions) =>
+                EInteractionType.Duty when !autoDuty.CanRunDuty(step.DutyOptions) =>
                     new(step.InteractionType, step.DutyOptions?.ContentFinderConditionId is { } contentFinderConditionId
                         ? territoryData.GetContentFinderCondition(contentFinderConditionId)?.Name
                         : step.Comment),
-                EInteractionType.SinglePlayerDuty when !bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions) =>
+                EInteractionType.SinglePlayerDuty when !bossModIpc.CanRunQuestBattle(quest.Id, step.SinglePlayerDutyOptions) =>
                     new Task(step.InteractionType, quest.Info.Name),
                 var _ => null
             };

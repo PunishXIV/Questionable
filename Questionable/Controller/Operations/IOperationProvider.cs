@@ -15,7 +15,7 @@ internal interface IOperationProvider
 
     bool MovesCharacter { get; }
 
-    bool OwnsExecutor(ITaskExecutor? executor);
+    bool HandlesExecutor(ITaskExecutor? executor);
 
     bool CanUpdateTask(ITaskExecutor? executor);
 

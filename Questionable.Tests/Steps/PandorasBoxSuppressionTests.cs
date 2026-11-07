@@ -33,12 +33,12 @@ public sealed class PandorasBoxSuppressionTests
         Update(suppression, active: true);
         Assert.False(_enabled["A"]);
         Assert.False(_enabled["B"]);
-        Assert.Equal(["A"], suppression.OwnedOff);
+        Assert.Equal(["A"], suppression.TurnedOff);
 
         Update(suppression, active: false);
         Assert.True(_enabled["A"]);
         Assert.False(_enabled["B"]);
-        Assert.Empty(suppression.OwnedOff);
+        Assert.Empty(suppression.TurnedOff);
         Assert.False(suppression.HasWork(false));
     }
 
@@ -58,7 +58,7 @@ public sealed class PandorasBoxSuppressionTests
         _clock.Advance(TimeSpan.FromSeconds(5));
         Update(suppression, active: true);
         Assert.False(_enabled["A"]);
-        Assert.Equal(["A"], suppression.OwnedOff);
+        Assert.Equal(["A"], suppression.TurnedOff);
         Assert.False(suppression.HasWork(true));
     }
 
@@ -70,14 +70,14 @@ public sealed class PandorasBoxSuppressionTests
 
         _available = false;
         Update(suppression, active: false);
-        Assert.Equal(["A"], suppression.OwnedOff);
+        Assert.Equal(["A"], suppression.TurnedOff);
         Assert.True(suppression.HasWork(false));
 
         _available = true;
         _clock.Advance(TimeSpan.FromSeconds(5));
         Update(suppression, active: false);
         Assert.True(_enabled["A"]);
-        Assert.Empty(suppression.OwnedOff);
+        Assert.Empty(suppression.TurnedOff);
     }
 
     [Fact]
@@ -90,7 +90,7 @@ public sealed class PandorasBoxSuppressionTests
 
         _available = true;
         Update(suppression, active: true);
-        Assert.Equal(["A"], suppression.OwnedOff);
+        Assert.Equal(["A"], suppression.TurnedOff);
 
         Update(suppression, active: false);
         Assert.True(_enabled["A"]);
@@ -117,6 +117,6 @@ public sealed class PandorasBoxSuppressionTests
 
         suppression.Update(false, providerInstalled: false, _ => throw new InvalidOperationException(),
             (_, _) => throw new InvalidOperationException());
-        Assert.Equal(["A"], suppression.OwnedOff);
+        Assert.Equal(["A"], suppression.TurnedOff);
     }
 }

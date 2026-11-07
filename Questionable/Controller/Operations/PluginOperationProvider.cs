@@ -3,7 +3,7 @@ using Questionable.Model.Questing;
 
 namespace Questionable.Controller.Operations;
 
-internal abstract class OwnedOperationProvider(OwnedOperationState operation) : IOperationProvider
+internal abstract class PluginOperationProvider(PluginOperationState operation) : IOperationProvider
 {
     private readonly Stopwatch _statusPoll = new();
 
@@ -19,9 +19,9 @@ internal abstract class OwnedOperationProvider(OwnedOperationState operation) : 
     public virtual bool HandlesPlayerDeath(ITaskExecutor? executor) => false;
     public abstract bool MayBeMovingCharacter();
     public virtual bool HandlesTravel(QuestStep step) => false;
-    protected abstract bool IsOwningExecutor(ITaskExecutor? executor);
+    protected abstract bool MatchesExecutor(ITaskExecutor? executor);
     protected abstract void PollOperation();
-    protected abstract void CancelOwned();
+    protected abstract void CancelWork();
     protected abstract void ObserveIdle();
     public abstract string? GetStartBlockReason();
     public abstract OperationStatusView? GetStatusView();
@@ -33,17 +33,17 @@ internal abstract class OwnedOperationProvider(OwnedOperationState operation) : 
         if (!operation.HasOperation)
             return null;
 
-        string status = operation.RequiresReconciliation || operation.IsAbandoned
+        string status = operation.NeedsConfirmation || operation.IsAbandoned
             ? operation.BlockReason ?? checkText
             : activeText;
-        return new(status, operation.RequiresReconciliation
+        return new(status, operation.NeedsConfirmation
             ? new OperationRecoveryView(confirmLabel, operation.CanConfirmIdle, instructions)
             : null);
     }
 
     protected OperationPill? TitleBarPill(string checkText, string activeText, string stoppingText)
     {
-        if (operation.RequiresReconciliation)
+        if (operation.NeedsConfirmation)
             return new(checkText, Warning: true, NeedsCheck: true);
         if (!operation.HasOperation)
             return null;
@@ -52,15 +52,15 @@ internal abstract class OwnedOperationProvider(OwnedOperationState operation) : 
             : new(activeText, Warning: false, NeedsCheck: false);
     }
 
-    public bool OwnsExecutor(ITaskExecutor? executor) => IsOwningExecutor(executor) && operation.HasOperation;
+    public bool HandlesExecutor(ITaskExecutor? executor) => MatchesExecutor(executor) && operation.HasOperation;
 
     public bool CanUpdateTask(ITaskExecutor? executor) =>
         !operation.HasOperation ||
-        !operation.RequiresReconciliation && !operation.IsAbandoned && IsOwningExecutor(executor);
+        !operation.NeedsConfirmation && !operation.IsAbandoned && MatchesExecutor(executor);
 
     public bool Update(IExternalOperationHost host, IOperationContext context)
     {
-        bool hasMatchingExecutor = IsOwningExecutor(host.CurrentExecutor);
+        bool hasMatchingExecutor = MatchesExecutor(host.CurrentExecutor);
         if (!operation.HasOperation)
         {
             _statusPoll.Reset();
@@ -68,14 +68,14 @@ internal abstract class OwnedOperationProvider(OwnedOperationState operation) : 
         }
 
         // Stop scheduling before polling can release an abandoned operation at terminal status.
-        if ((operation.IsAbandoned || operation.RequiresReconciliation || !hasMatchingExecutor) && host.IsActive)
+        if ((operation.IsAbandoned || operation.NeedsConfirmation || !hasMatchingExecutor) && host.IsActive)
             host.Stop("External operation no longer active");
 
         if (!_statusPoll.IsRunning || _statusPoll.Elapsed >= TimeSpan.FromMilliseconds(250))
         {
             _statusPoll.Restart();
             if (!hasMatchingExecutor)
-                context.TryCleanup(CancelOwned, "plugin work left behind");
+                context.TryCleanup(CancelWork, "plugin work left behind");
             if (!context.TryCleanup(PollOperation, "external operation status"))
             {
                 host.Stop("External operation status unavailable");
@@ -90,7 +90,7 @@ internal abstract class OwnedOperationProvider(OwnedOperationState operation) : 
             return false;
         }
 
-        if (!operation.RequiresReconciliation && !operation.IsAbandoned && hasMatchingExecutor)
+        if (!operation.NeedsConfirmation && !operation.IsAbandoned && hasMatchingExecutor)
             return false;
 
         if (host.IsActive)
@@ -104,11 +104,11 @@ internal abstract class OwnedOperationProvider(OwnedOperationState operation) : 
     {
     }
 
-    public bool Cancel(IOperationContext context) => context.TryCleanup(CancelOwned, CancelLabel);
+    public bool Cancel(IOperationContext context) => context.TryCleanup(CancelWork, CancelLabel);
 
     public bool TryConfirmIdle(IExternalOperationHost host, IOperationContext context)
     {
-        if (!operation.RequiresReconciliation || host.IsActive)
+        if (!operation.NeedsConfirmation || host.IsActive)
             return false;
 
         // Refresh both, so a newly running operation isn't confirmed from a stale status.

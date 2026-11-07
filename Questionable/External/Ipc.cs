@@ -20,9 +20,9 @@ internal interface IPCUtils
         internal static Version? Version(string pluginName) =>
             Svc.PluginInterface.InstalledPlugins.FirstOrDefault(p => p.InternalName == pluginName && p.IsLoaded)?.Version;
 
-        internal static void DisposeAll(EzIPCDisposalToken[] _disposalTokens)
+        internal static void DisposeAll(EzIPCDisposalToken[] tokens)
         {
-            foreach (EzIPCDisposalToken token in _disposalTokens)
+            foreach (EzIPCDisposalToken token in tokens)
             {
                 try
                 {
@@ -45,7 +45,7 @@ internal static class IpcInvoke
         {
             return func();
         }
-        catch (Exception e) when (IsSafeIpcFailure(e))
+        catch (Exception e) when (IsSafeFailure(e))
         {
             return fallback;
         }
@@ -61,7 +61,7 @@ internal static class IpcInvoke
         {
             return fallback;
         }
-        catch (Exception e) when (IsSafeIpcFailure(e))
+        catch (Exception e) when (IsSafeFailure(e))
         {
             logger.LogWarning(e, message, args);
             return fallback;
@@ -74,7 +74,7 @@ internal static class IpcInvoke
         {
             action();
         }
-        catch (Exception e) when (IsSafeIpcFailure(e))
+        catch (Exception e) when (IsSafeFailure(e))
         {
         }
     }
@@ -88,7 +88,7 @@ internal static class IpcInvoke
         catch (IpcNotReadyError)
         {
         }
-        catch (Exception e) when (IsSafeIpcFailure(e))
+        catch (Exception e) when (IsSafeFailure(e))
         {
             logger.LogWarning(e, message, args);
         }
@@ -116,7 +116,7 @@ internal static class IpcInvoke
     }
 
     // Subscriber exceptions come back as TargetInvocationException, not IpcError.
-    internal static bool IsSafeIpcFailure(Exception e) =>
+    internal static bool IsSafeFailure(Exception e) =>
         e is IpcError or TargetInvocationException;
 
     // EzIPC can't ask whether an endpoint exists; a call that nobody registered throws this.
@@ -127,7 +127,7 @@ internal enum ExternalOperationStatus
 {
     Unknown = 0,
     Running = 1,
-    CancellationRequested = 2,
+    CancelRequested = 2,
     Succeeded = 3,
     Failed = 4,
     Cancelled = 5,

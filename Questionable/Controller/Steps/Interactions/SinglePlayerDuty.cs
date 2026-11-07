@@ -57,7 +57,7 @@ internal static class SinglePlayerDuty
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.InteractionType != EInteractionType.SinglePlayerDuty ||
-                !bossModIpc.IsConfiguredToRunSoloInstance(quest.Id, step.SinglePlayerDutyOptions))
+                !bossModIpc.CanRunQuestBattle(quest.Id, step.SinglePlayerDutyOptions))
                 yield break;
 
             if (!territoryData.TryGetContentFinderConditionForSoloInstance(quest.Id, step.SinglePlayerDutyIndex, out var content))
@@ -136,17 +136,17 @@ internal static class SinglePlayerDuty
     {
         protected override bool Start()
         {
-            bossModIpc.StartSoloDuty(Task.ContentFinderConditionId);
+            bossModIpc.StartQuestBattle(Task.ContentFinderConditionId);
             return true;
         }
 
         public override ETaskResult Update()
         {
-            bossModIpc.PollSoloDuty();
+            bossModIpc.PollQuestBattle();
             return ETaskResult.TaskComplete;
         }
 
-        public void StopNow() => bossModIpc.DisableSoloDutyPreset();
+        public void StopNow() => bossModIpc.StopQuestBattle();
 
         public override bool ShouldInterruptOnDamage() => false;
     }
@@ -172,13 +172,13 @@ internal static class SinglePlayerDuty
 
         public override unsafe ETaskResult Update()
         {
-            bossModIpc.PollSoloDuty();
+            bossModIpc.PollQuestBattle();
             return GameMain.Instance()->CurrentContentFinderConditionId != Task.ContentFinderConditionId
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
         }
 
-        public void StopNow() => bossModIpc.DisableSoloDutyPreset();
+        public void StopNow() => bossModIpc.StopQuestBattle();
 
         public override bool ShouldInterruptOnDamage() => false;
         protected override bool Start() => true;
@@ -195,17 +195,17 @@ internal static class SinglePlayerDuty
     {
         protected override bool Start()
         {
-            bossModIpc.DisableSoloDutyPreset();
+            bossModIpc.StopQuestBattle();
             return true;
         }
 
         public override ETaskResult Update()
         {
-            bossModIpc.PollSoloDuty();
+            bossModIpc.PollQuestBattle();
             return ETaskResult.TaskComplete;
         }
 
-        public void StopNow() => bossModIpc.DisableSoloDutyPreset();
+        public void StopNow() => bossModIpc.StopQuestBattle();
 
         public override bool ShouldInterruptOnDamage() => false;
     }

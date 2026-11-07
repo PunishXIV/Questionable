@@ -20,8 +20,8 @@ public sealed class ExternalOperationCoordinatorTests
     public void LaterProviders_SeeStoppedExecutor()
     {
         using var fixture = new ExternalOperationFixture();
-        fixture.Crafting.BeginSubmission();
-        fixture.Gathering.BeginSubmission();
+        fixture.Crafting.BeginRequest();
+        fixture.Gathering.BeginRequest();
         var host = new Host
         {
             IsActive = true,
@@ -65,17 +65,17 @@ public sealed class ExternalOperationCoordinatorTests
     public void ActiveSchedulingRejectsEveryConfirmationWithoutReadingProviders()
     {
         using var fixture = new ExternalOperationFixture();
-        fixture.Crafting.MarkUncertain(fixture.Crafting.BeginSubmission());
-        fixture.Purchase.MarkUncertain(fixture.Purchase.BeginSubmission());
-        fixture.Gathering.MarkUncertain(fixture.Gathering.BeginSubmission());
-        fixture.Fishing.MarkUncertain(fixture.Fishing.BeginSubmission());
+        fixture.Crafting.MarkUncertain(fixture.Crafting.BeginRequest());
+        fixture.Purchase.MarkUncertain(fixture.Purchase.BeginRequest());
+        fixture.Gathering.MarkUncertain(fixture.Gathering.BeginRequest());
+        fixture.Fishing.MarkUncertain(fixture.Fishing.BeginRequest());
         var host = new Host { IsActive = true };
 
-        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<ArtisanOperationProvider>(), host));
-        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<KnightshopperOperationProvider>(), host));
-        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<GatherChillOperationProvider>(), host));
-        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<FeeshOperationProvider>(), host));
-        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<AutoDutyOperationProvider>(), host));
+        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<ArtisanProvider>(), host));
+        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<KnightshopperProvider>(), host));
+        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<GatherChillProvider>(), host));
+        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<FeeshProvider>(), host));
+        Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<AutoDutyProvider>(), host));
         Assert.False(fixture.Coordinator.TryConfirmIdle(fixture.Provider<CombatCleanupProvider>(), host));
 
         Assert.True(host.IsActive);
@@ -93,20 +93,20 @@ public sealed class ExternalOperationCoordinatorTests
         switch (provider)
         {
             case "crafting":
-                fixture.Crafting.BeginSubmission();
+                fixture.Crafting.BeginRequest();
                 executor = new Craft.DoCraft(Substitute.For<IDataManager>(), fixture.Artisan,
                     NullLogger<Craft.DoCraft>.Instance, null!, fixture.Crafting);
                 break;
             case "purchase":
-                fixture.Purchase.BeginSubmission();
+                fixture.Purchase.BeginRequest();
                 executor = new Purchase.DoBuy(fixture.Knightshopper, fixture.Purchase, fixture.Movement);
                 break;
             case "gathering":
-                fixture.Gathering.BeginSubmission();
+                fixture.Gathering.BeginRequest();
                 executor = new Gather.StartGathering(fixture.GatheringController);
                 break;
             default:
-                fixture.Fishing.BeginSubmission();
+                fixture.Fishing.BeginRequest();
                 executor = new Fish.DoFish(fixture.Feesh, fixture.Fishing, Substitute.For<IDataManager>(),
                     NullLogger<Fish.DoFish>.Instance, null!);
                 break;
@@ -115,10 +115,10 @@ public sealed class ExternalOperationCoordinatorTests
         Assert.True(fixture.Coordinator.CanUpdateTask(executor));
         Assert.False(fixture.Coordinator.CanUpdateTask(null));
         Assert.False(fixture.Coordinator.CanUpdateTask(new WaitAtEnd.WaitNextStepOrSequenceExecutor()));
-        fixture.Crafting.AbandonCurrent();
-        fixture.Purchase.AbandonCurrent();
-        fixture.Gathering.AbandonCurrent();
-        fixture.Fishing.AbandonCurrent();
+        fixture.Crafting.Abandon();
+        fixture.Purchase.Abandon();
+        fixture.Gathering.Abandon();
+        fixture.Fishing.Abandon();
         Assert.False(fixture.Coordinator.CanUpdateTask(executor));
     }
 
@@ -135,8 +135,8 @@ public sealed class ExternalOperationCoordinatorTests
     public void EarlierProviderBlockReasonWins()
     {
         using var fixture = new ExternalOperationFixture();
-        fixture.Fishing.BeginSubmission();
-        fixture.Purchase.BeginSubmission();
+        fixture.Fishing.BeginRequest();
+        fixture.Purchase.BeginRequest();
 
         Assert.Equal(fixture.Purchase.BlockReason, fixture.Coordinator.BlockReason);
     }
@@ -160,13 +160,13 @@ public sealed class ExternalOperationCoordinatorTests
         // AutoDuty is also used by its concrete type, so its interface registration forwards to that singleton.
         using var fixture = new ExternalOperationFixture();
         var resolver = Substitute.For<IServiceProvider>();
-        resolver.GetService(typeof(AutoDutyOperationProvider)).Returns(fixture.Provider<AutoDutyOperationProvider>());
+        resolver.GetService(typeof(AutoDutyProvider)).Returns(fixture.Provider<AutoDutyProvider>());
 
         Assert.Equal(
             new[]
             {
-                typeof(ArtisanOperationProvider), typeof(AutoDutyOperationProvider), typeof(CombatCleanupProvider),
-                typeof(FeeshOperationProvider), typeof(GatherChillOperationProvider), typeof(KnightshopperOperationProvider),
+                typeof(ArtisanProvider), typeof(AutoDutyProvider), typeof(CombatCleanupProvider),
+                typeof(FeeshProvider), typeof(GatherChillProvider), typeof(KnightshopperProvider),
             },
             services.Where(s => s.ServiceType == typeof(IOperationProvider))
                 .Select(s => s.ImplementationType ?? s.ImplementationFactory!(resolver).GetType()).OrderBy(t => t.Name));
@@ -223,8 +223,8 @@ public sealed class ExternalOperationCoordinatorTests
     public void Executor_SelectsItsProvider(bool crafting)
     {
         using var fixture = new ExternalOperationFixture();
-        fixture.Purchase.BeginSubmission();
-        fixture.Crafting.BeginSubmission();
+        fixture.Purchase.BeginRequest();
+        fixture.Crafting.BeginRequest();
         fixture.Condition[Dalamud.Game.ClientState.Conditions.ConditionFlag.Crafting].Returns(crafting);
         var buy = new Purchase.DoBuy(fixture.Knightshopper, fixture.Purchase, fixture.Movement);
         var craft = new Craft.DoCraft(Substitute.For<IDataManager>(), fixture.Artisan,
@@ -245,10 +245,10 @@ public sealed class ExternalOperationCoordinatorTests
     public void MovementSeesMovingWorkButNotCrafting()
     {
         using var fixture = new ExternalOperationFixture();
-        fixture.Crafting.BeginSubmission();
+        fixture.Crafting.BeginRequest();
         Assert.False(fixture.Coordinator.HasMovingOperation);
 
-        fixture.Fishing.BeginSubmission();
+        fixture.Fishing.BeginRequest();
 
         Assert.True(fixture.Coordinator.HasMovingOperation);
     }
@@ -266,8 +266,8 @@ public sealed class ExternalOperationCoordinatorTests
     public void PanelShowsWorkThenAsksForConfirmationOnceUncertain()
     {
         using var fixture = new ExternalOperationFixture();
-        var provider = fixture.Provider<KnightshopperOperationProvider>();
-        Guid owner = fixture.Purchase.BeginSubmission();
+        var provider = fixture.Provider<KnightshopperProvider>();
+        Guid owner = fixture.Purchase.BeginRequest();
 
         Assert.Equal(new OperationStatusView("Buying quest items with Knightshopper"), provider.GetStatusView());
         Assert.Equal(new OperationPill("Purchasing", Warning: false, NeedsCheck: false), fixture.Coordinator.GetTitleBarPill());
@@ -288,12 +288,12 @@ public sealed class ExternalOperationCoordinatorTests
     public void TitleBarPrefersAnyProviderNeedingACheckOverEarlierWork()
     {
         using var fixture = new ExternalOperationFixture();
-        fixture.Purchase.BeginSubmission();
-        fixture.Purchase.AbandonCurrent();
+        fixture.Purchase.BeginRequest();
+        fixture.Purchase.Abandon();
         Assert.Equal(new OperationPill("Stopping purchase", Warning: true, NeedsCheck: false),
             fixture.Coordinator.GetTitleBarPill());
 
-        fixture.Fishing.MarkUncertain(fixture.Fishing.BeginSubmission());
+        fixture.Fishing.MarkUncertain(fixture.Fishing.BeginRequest());
 
         Assert.Equal("Check Feesh", fixture.Coordinator.GetTitleBarPill()?.Text);
     }

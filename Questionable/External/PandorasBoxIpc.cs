@@ -76,7 +76,7 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
             {
                 return false;
             }
-            catch (Exception e) when (IpcInvoke.IsSafeIpcFailure(e))
+            catch (Exception e) when (IpcInvoke.IsSafeFailure(e))
             {
                 if (!_loggedIpcError)
                 {
@@ -100,7 +100,7 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
         {
             return false;
         }
-        catch (Exception e) when (IpcInvoke.IsSafeIpcFailure(e))
+        catch (Exception e) when (IpcInvoke.IsSafeFailure(e))
         {
             _logger.LogWarning(e, "Could not set Pandora's Box auto active time maneuver to {Enabled}", enabled);
             return false;
@@ -113,9 +113,9 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
         IpcInvoke.TryOnFrameworkThread(_framework, () =>
         {
             _suppression.Update(false, IsInstalled, _getFeatureEnabled, _setFeatureEnabled, force: true);
-            if (_suppression.OwnedOff.Count > 0)
+            if (_suppression.TurnedOff.Count > 0)
                 _logger.LogWarning("Could not restore Pandora's Box features on unload: {Features}",
-                    string.Join(", ", _suppression.OwnedOff));
+                    string.Join(", ", _suppression.TurnedOff));
         }, _logger);
         IPCSubscriber.DisposeAll(_disposalTokens);
     }
@@ -139,16 +139,16 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
 
         private readonly ImmutableArray<string> _features = [..features];
         private readonly TimeProvider _clock = timeProvider ?? TimeProvider.System;
-        private readonly HashSet<string> _ownedOff = [];
+        private readonly HashSet<string> _turnedOff = [];
         private readonly HashSet<string> _unchecked = [];
         private bool _runActive;
         private bool _warnedThisRun;
         private long? _lastFailureAt;
 
-        public IReadOnlySet<string> OwnedOff => _ownedOff;
+        public IReadOnlySet<string> TurnedOff => _turnedOff;
 
         public bool HasWork(bool hasActiveQuest) =>
-            hasActiveQuest != _runActive || (hasActiveQuest ? _unchecked.Count > 0 : _ownedOff.Count > 0);
+            hasActiveQuest != _runActive || (hasActiveQuest ? _unchecked.Count > 0 : _turnedOff.Count > 0);
 
         public void Update(bool hasActiveQuest, bool providerInstalled, Func<string, bool?> isEnabled,
             Action<string, bool> setEnabled, bool force = false)
@@ -160,10 +160,10 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
                 _lastFailureAt = null;
                 _unchecked.Clear();
                 if (hasActiveQuest)
-                    _unchecked.UnionWith(_features.Where(x => !_ownedOff.Contains(x)));
+                    _unchecked.UnionWith(_features.Where(x => !_turnedOff.Contains(x)));
             }
 
-            HashSet<string> pending = hasActiveQuest ? _unchecked : _ownedOff;
+            HashSet<string> pending = hasActiveQuest ? _unchecked : _turnedOff;
             bool waitingToRetry = !force && _lastFailureAt is { } failedAt &&
                                   _clock.GetElapsedTime(failedAt) < RetryInterval;
             if (pending.Count == 0 || !providerInstalled || waitingToRetry)
@@ -178,7 +178,7 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
                         if (isEnabled(feature) == true)
                         {
                             setEnabled(feature, false);
-                            _ownedOff.Add(feature);
+                            _turnedOff.Add(feature);
                             logger.LogInformation("Paused Pandora's Box feature: {Feature}", feature);
                         }
                     }
@@ -190,7 +190,7 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
 
                     pending.Remove(feature);
                 }
-                catch (Exception e) when (IpcInvoke.IsSafeIpcFailure(e))
+                catch (Exception e) when (IpcInvoke.IsSafeFailure(e))
                 {
                     if (!_warnedThisRun)
                         logger.LogWarning(e, "Failed to {Action} Pandora's Box feature {Feature}; retrying",

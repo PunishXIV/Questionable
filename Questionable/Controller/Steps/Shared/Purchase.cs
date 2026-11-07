@@ -32,12 +32,12 @@ internal static class Purchase
     internal sealed class DoBuy : TaskExecutor<BuyTask>, IStoppableTaskExecutor
     {
         private readonly KnightshopperIpc _knightshopperIpc;
-        private readonly PurchaseOperationState _operation;
+        private readonly PurchaseState _operation;
         private readonly MovementController _movementController;
         private Guid? _owner;
         private long? _completedAt;
 
-        public DoBuy(KnightshopperIpc knightshopperIpc, PurchaseOperationState operation,
+        public DoBuy(KnightshopperIpc knightshopperIpc, PurchaseState operation,
             MovementController movementController)
         {
             _knightshopperIpc = knightshopperIpc;
@@ -68,7 +68,7 @@ internal static class Purchase
             KnightshopperIpc.EStartResult result =
                 _knightshopperIpc.BuyWithGil(Task.ItemId, (uint)Task.ItemCount, out _, out string message);
             if (result is KnightshopperIpc.EStartResult.Started or KnightshopperIpc.EStartResult.Uncertain)
-                _owner = _operation.OperationId;
+                _owner = _operation.Id;
             return result switch
             {
                 KnightshopperIpc.EStartResult.Started => true,
@@ -81,7 +81,7 @@ internal static class Purchase
 
         public override ETaskResult Update()
         {
-            if (!_owner.HasValue || _operation.OperationId != _owner || _operation.RequiresReconciliation)
+            if (!_owner.HasValue || _operation.Id != _owner || _operation.NeedsConfirmation)
                 throw new TaskException(_operation.BlockReason ?? "Knightshopper is no longer buying for Questionable");
 
             ExternalOperationStatus state = _operation.Status;
@@ -90,7 +90,7 @@ internal static class Purchase
                 case ExternalOperationStatus.Succeeded:
                     if (GetOwnedCount(Task) >= Task.ItemCount)
                     {
-                        _operation.TryReleaseTerminal(_owner);
+                        _operation.TryClearFinished(_owner);
                         return ETaskResult.TaskComplete;
                     }
 
@@ -98,13 +98,13 @@ internal static class Purchase
                     _completedAt ??= TimeProvider.System.GetTimestamp();
                     if (TimeProvider.System.GetElapsedTime(_completedAt.Value) < TimeSpan.FromSeconds(2))
                         return ETaskResult.StillRunning;
-                    _operation.TryReleaseTerminal(_owner);
+                    _operation.TryClearFinished(_owner);
                     throw new TaskException($"Knightshopper finished, but the inventory does not contain {Task.ItemCount}x {Task.ItemId}");
 
                 case ExternalOperationStatus.Failed:
                 case ExternalOperationStatus.Cancelled:
                     string message = _operation.Message;
-                    _operation.TryReleaseTerminal(_owner);
+                    _operation.TryClearFinished(_owner);
                     throw new TaskException($"Knightshopper didn't buy {Task.ItemCount}x {Task.ItemId} ({state}): {message}");
 
                 default:
@@ -114,8 +114,8 @@ internal static class Purchase
 
         public void StopNow()
         {
-            if (_owner.HasValue && _operation.OperationId == _owner)
-                _knightshopperIpc.CancelOwned();
+            if (_owner.HasValue && _operation.Id == _owner)
+                _knightshopperIpc.CancelWork();
         }
 
         public override bool ShouldInterruptOnDamage() => false;

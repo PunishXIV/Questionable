@@ -27,7 +27,7 @@ internal sealed class KnightshopperIpc : Ipc, IDisposable
     }
 
     private readonly ILogger<KnightshopperIpc> _logger;
-    private readonly PurchaseOperationState _operation;
+    private readonly PurchaseState _operation;
     private readonly EzIPCDisposalToken[] _disposalTokens;
 
     [EzIPC("ApiVersion")] private readonly Func<int> _apiVersion = null!;
@@ -36,7 +36,7 @@ internal sealed class KnightshopperIpc : Ipc, IDisposable
     [EzIPC("Purchase.GetStatus")] private readonly Func<Guid, (int, int, int, uint, string)> _getStatus = null!;
     [EzIPC("Purchase.Cancel")] private readonly Func<Guid, bool> _cancel = null!;
 
-    public KnightshopperIpc(ILogger<KnightshopperIpc> logger, PurchaseOperationState operation)
+    public KnightshopperIpc(ILogger<KnightshopperIpc> logger, PurchaseState operation)
     {
         _logger = logger;
         _operation = operation;
@@ -73,20 +73,20 @@ internal sealed class KnightshopperIpc : Ipc, IDisposable
             return busy == true ? EStartResult.Busy : EStartResult.NotReady;
 
         // Record ownership before invoking a provider: an exception can occur after acceptance.
-        Guid owner = _operation.BeginSubmission();
+        Guid id = _operation.BeginRequest();
         try
         {
             _logger.LogInformation("Asking Knightshopper to buy {ItemId} up to {Quantity}", itemId, quantity);
             (int result, operationId, message) = _startItems(GilCurrency, [(itemId, quantity)]);
             if (result == (int)EStartResult.Started)
             {
-                _operation.AcceptSubmission(owner, operationId);
+                _operation.AcceptRequest(id, operationId);
                 return operationId != Guid.Empty ? EStartResult.Started : EStartResult.Uncertain;
             }
 
             if (Enum.IsDefined((EStartResult)result) && result >= (int)EStartResult.Busy)
             {
-                _operation.RejectSubmission(owner);
+                _operation.RejectRequest(id);
                 return (EStartResult)result;
             }
         }
@@ -96,7 +96,7 @@ internal sealed class KnightshopperIpc : Ipc, IDisposable
             message = e.Message;
         }
 
-        _operation.MarkUncertain(owner);
+        _operation.MarkUncertain(id);
         return EStartResult.Uncertain;
     }
 
@@ -116,32 +116,32 @@ internal sealed class KnightshopperIpc : Ipc, IDisposable
 
     public void PollOperation()
     {
-        if (_operation.OperationId is not { } owner)
+        if (_operation.Id is not { } id)
             return;
-        if (_operation.ProviderOperationId is { } providerId)
+        if (_operation.ProviderId is { } providerId)
         {
             var (state, message) = GetStatus(providerId);
-            _operation.ObserveStatus(owner, state, message);
+            _operation.ObservePurchase(id, state, message);
         }
         if (_operation.IsAbandoned)
-            CancelOwned();
-        if (_operation.RequiresReconciliation)
+            CancelWork();
+        if (_operation.NeedsConfirmation)
             ObserveIdle();
     }
 
-    public void CancelOwned()
+    public void CancelWork()
     {
-        _operation.AbandonCurrent();
-        if (!_operation.TryBeginCancellation(out Guid providerId))
+        _operation.Abandon();
+        if (!_operation.TryBeginCancel(out Guid providerId))
             return;
         try
         {
-            _logger.LogInformation("Requesting cancellation of Knightshopper purchase {OperationId}", providerId);
-            _operation.ObserveCancellation(providerId, _cancel(providerId));
+            _logger.LogInformation("Requesting cancellation of Knightshopper purchase {Id}", providerId);
+            _operation.ObserveCancel(providerId, _cancel(providerId));
         }
         catch (Exception e)
         {
-            _logger.LogDebug(e, "Unable to cancel Knightshopper purchase {OperationId}", providerId);
+            _logger.LogDebug(e, "Unable to cancel Knightshopper purchase {Id}", providerId);
         }
     }
 
@@ -163,19 +163,19 @@ internal sealed class KnightshopperIpc : Ipc, IDisposable
     public void Dispose() => IPCSubscriber.DisposeAll(_disposalTokens);
 }
 
-[RegisterSingleton<IOperationProvider, KnightshopperOperationProvider>(Duplicate = DuplicateStrategy.Append)]
-internal sealed class KnightshopperOperationProvider(
+[RegisterSingleton<IOperationProvider, KnightshopperProvider>(Duplicate = DuplicateStrategy.Append)]
+internal sealed class KnightshopperProvider(
     KnightshopperIpc knightshopperIpc,
-    PurchaseOperationState operation,
-    GilShopData gilShopData) : OwnedOperationProvider(operation)
+    PurchaseState operation,
+    GilShopData gilShopData) : PluginOperationProvider(operation)
 {
     public override int Order => 200;
     public override string Name => "Knightshopper";
     protected override string CancelLabel => "Knightshopper purchase";
 
-    protected override bool IsOwningExecutor(ITaskExecutor? executor) => executor is Purchase.DoBuy;
+    protected override bool MatchesExecutor(ITaskExecutor? executor) => executor is Purchase.DoBuy;
     protected override void PollOperation() => knightshopperIpc.PollOperation();
-    protected override void CancelOwned() => knightshopperIpc.CancelOwned();
+    protected override void CancelWork() => knightshopperIpc.CancelWork();
     protected override void ObserveIdle() => knightshopperIpc.ObserveIdle();
 
     public override bool MayBeMovingCharacter()
@@ -197,7 +197,7 @@ internal sealed class KnightshopperOperationProvider(
     public override OperationPill? GetTitleBarPill() =>
         TitleBarPill(_L("Check Knightshopper"), _L("Purchasing"), _L("Stopping purchase"));
 
-    // Manual Knightshopper work has no owner here, so block on busy or unreadable status.
+    // Manual Knightshopper work has no id here, so block on busy or unreadable status.
     public override string? GetStartBlockReason() =>
         knightshopperIpc.IsReady() && knightshopperIpc.GetBusy() != false
             ? _L("Knightshopper is busy or its status is unavailable. Finish its current work before starting questing.")
@@ -205,9 +205,9 @@ internal sealed class KnightshopperOperationProvider(
 }
 
 [RegisterSingleton]
-internal sealed class PurchaseOperationState(TimeProvider? timeProvider = null)
-    : OwnedOperationState("Knightshopper", "buying quest items", timeProvider)
+internal sealed class PurchaseState(TimeProvider? timeProvider = null)
+    : PluginOperationState("Knightshopper", "buying quest items", timeProvider)
 {
-    public void ObserveStatus(Guid owner, ExternalOperationStatus status, string message) =>
-        ObserveOperationStatus(owner, status, message);
+    public void ObservePurchase(Guid id, ExternalOperationStatus status, string message) =>
+        ObserveStatus(id, status, message);
 }
