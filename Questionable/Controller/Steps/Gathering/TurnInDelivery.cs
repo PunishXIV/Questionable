@@ -24,7 +24,7 @@ internal static class TurnInDelivery
         public override string ToString() => "WeeklyDeliveryTurnIn";
     }
 
-    internal sealed class SatisfactionSupplyTurnIn(ILogger<SatisfactionSupplyTurnIn> logger) : TaskExecutor<Task>
+    internal sealed class Executor(ILogger<Executor> logger) : TaskExecutor<Task>
     {
         private ushort? _remainingAllowances;
 

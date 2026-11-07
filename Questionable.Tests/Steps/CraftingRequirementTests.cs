@@ -178,7 +178,7 @@ public sealed class CraftingRequirementTests
         Assert.Null(SkipCondition.GetItemTarget(new QuestId(648), step));
     }
 
-    private static Craft.CraftTask CreateCraftTask(ElementId questId, CraftingItem requested) =>
+    private static Craft.Task CreateCraftTask(ElementId questId, CraftingItem requested) =>
         new(QuestTestData.CreateQuest(questId), 1,
             new QuestStep
             {

@@ -19,8 +19,8 @@ internal static class SendNotification
                 EInteractionType.Snipe when !automatonIpc.IsAutoSnipeEnabled =>
                     new(step.InteractionType, step.Comment),
                 EInteractionType.Duty when !autoDuty.CanRunDuty(step.DutyOptions) =>
-                    new(step.InteractionType, step.DutyOptions?.ContentFinderConditionId is { } contentFinderConditionId
-                        ? territoryData.GetContentFinderCondition(contentFinderConditionId)?.Name
+                    new(step.InteractionType, step.DutyOptions?.ContentFinderConditionId is { } cfcId
+                        ? territoryData.GetContentFinderCondition(cfcId)?.Name
                         : step.Comment),
                 EInteractionType.SinglePlayerDuty when !bossModIpc.CanRunQuestBattle(quest.Id, step.SinglePlayerDutyOptions) =>
                     new Task(step.InteractionType, quest.Info.Name),

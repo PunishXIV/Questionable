@@ -44,11 +44,11 @@ public sealed class WaitAtEndTests
         using var fixture = new TaskRunnerFixture(condition);
         QuestId questId = new(123);
         ITask wait = turnIn
-            ? new WaitAtEnd.WaitQuestCompleted(questId)
-            : new WaitAtEnd.WaitQuestAccepted(questId);
+            ? new WaitAtEnd.QuestCompleted(questId)
+            : new WaitAtEnd.QuestAccepted(questId);
         ITaskExecutor executor = turnIn
-            ? new WaitAtEnd.WaitQuestCompletedExecutor(null!)
-            : new WaitAtEnd.WaitQuestAcceptedExecutor(null!, null!);
+            ? new WaitAtEnd.QuestCompletedExecutor(null!)
+            : new WaitAtEnd.QuestAcceptedExecutor(null!, null!);
         Interact.Task interaction = new(100, null,
             turnIn ? EInteractionType.CompleteQuest : EInteractionType.AcceptQuest);
         TaskQueue queue = fixture.Queue;
@@ -108,11 +108,11 @@ public sealed class WaitAtEndTests
         queue.Enqueue(interaction);
         Assert.True(queue.TryDequeue(out _));
         ITask wait = turnIn
-            ? new WaitAtEnd.WaitQuestCompleted(new QuestId(123))
-            : new WaitAtEnd.WaitQuestAccepted(new QuestId(123));
+            ? new WaitAtEnd.QuestCompleted(new QuestId(123))
+            : new WaitAtEnd.QuestAccepted(new QuestId(123));
         ITaskExecutor executor = turnIn
-            ? new WaitAtEnd.WaitQuestCompletedExecutor(null!)
-            : new WaitAtEnd.WaitQuestAcceptedExecutor(null!, null!);
+            ? new WaitAtEnd.QuestCompletedExecutor(null!)
+            : new WaitAtEnd.QuestAcceptedExecutor(null!, null!);
         queue.Enqueue(wait);
         Assert.True(queue.TryDequeue(out ITask? current));
         Assert.True(queue.StartTask(executor, current));
@@ -132,7 +132,7 @@ public sealed class WaitAtEndTests
         var delay = Assert.IsType<WaitAtEnd.WaitDelayExecutor>(queue.CurrentTaskExecutor);
         condition[ConditionFlag.InCombat].Returns(entersCombat);
         fixture.ReceiveDamage(); // Recovery itself is not damage-interruptible.
-        typeof(AbstractDelayedTaskExecutor<WaitAtEnd.WaitDelay>)
+        typeof(DelayedTaskExecutor<WaitAtEnd.WaitDelay>)
             .GetField("_continueAt", BindingFlags.Instance | BindingFlags.NonPublic)!
             .SetValue(delay, DateTime.MinValue);
         controller.Tick(); // Complete recovery without a wall-clock sleep.
@@ -238,7 +238,7 @@ public sealed class WaitAtEndTests
         var replacement = Substitute.For<ITaskExecutor>();
         executor.Start(Arg.Any<ITask>()).Returns(true);
         replacement.Start(Arg.Any<ITask>()).Returns(true);
-        WaitAtEnd.WaitQuestAccepted accepted = new(new QuestId(2881));
+        WaitAtEnd.QuestAccepted accepted = new(new QuestId(2881));
         Assert.True(queue.StartTask(executor, accepted));
         queue.Enqueue(new WaitAtEnd.NextStep(new QuestId(2552), 1));
         executor.Update().Returns(_ =>

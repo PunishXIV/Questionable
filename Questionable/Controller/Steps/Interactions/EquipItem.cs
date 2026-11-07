@@ -26,10 +26,10 @@ internal static class EquipItem
         public override string ToString() => $"Equip({ItemId})";
     }
 
-    internal sealed class DoEquip
+    internal sealed class Executor
     (
         IDataManager dataManager,
-        ILogger<DoEquip> logger) : TaskExecutor<Task>, IToastAware
+        ILogger<Executor> logger) : TaskExecutor<Task>, IToastAware
     {
         private const int MaxAttempts = 3;
 

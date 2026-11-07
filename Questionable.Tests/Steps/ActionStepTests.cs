@@ -180,9 +180,9 @@ public sealed class ActionStepTests
     public void ItemUseCountsAsRefusedOnlyForAnErrorToastRightAfterASuccessfulUse()
     {
         DateTime usedAt = new(2026, 11, 6, 12, 0, 0);
-        Assert.True(UseItem.UseItemExecutorBase<UseItem.UseOnSelf>.IsRefusalOfLastUse(true, usedAt, usedAt.AddSeconds(2)));
-        Assert.False(UseItem.UseItemExecutorBase<UseItem.UseOnSelf>.IsRefusalOfLastUse(true, usedAt, usedAt.AddSeconds(2.1)));
-        Assert.False(UseItem.UseItemExecutorBase<UseItem.UseOnSelf>.IsRefusalOfLastUse(false, usedAt, usedAt.AddSeconds(1)));
-        Assert.False(UseItem.UseItemExecutorBase<UseItem.UseOnSelf>.IsRefusalOfLastUse(true, null, usedAt));
+        Assert.True(UseItem.ExecutorBase<UseItem.UseOnSelf>.IsRefusalOfLastUse(true, usedAt, usedAt.AddSeconds(2)));
+        Assert.False(UseItem.ExecutorBase<UseItem.UseOnSelf>.IsRefusalOfLastUse(true, usedAt, usedAt.AddSeconds(2.1)));
+        Assert.False(UseItem.ExecutorBase<UseItem.UseOnSelf>.IsRefusalOfLastUse(false, usedAt, usedAt.AddSeconds(1)));
+        Assert.False(UseItem.ExecutorBase<UseItem.UseOnSelf>.IsRefusalOfLastUse(true, null, usedAt));
     }
 }

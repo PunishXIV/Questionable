@@ -27,7 +27,7 @@ public sealed class QuestTaskQueueTests
     {
         using var context = new SkipTestContext(automatic, stepCount);
         if (hasExecutor)
-            context.Queue.StartTask(new WaitAtEnd.WaitNextStepOrSequenceExecutor(), new WaitAtEnd.WaitNextStepOrSequence());
+            context.Queue.StartTask(new WaitAtEnd.NextStepOrSequenceExecutor(), new WaitAtEnd.NextStepOrSequence());
         context.Queue.Enqueue(new WaitAtEnd.NextStep(context.Progress.Quest.Id, context.Progress.Sequence));
 
         context.Controller.Skip(context.Progress.Quest.Id, context.Progress.Sequence);
@@ -61,7 +61,7 @@ public sealed class QuestTaskQueueTests
     public void SkipRejectsStaleQuestOrSequence(ushort questId, byte sequence)
     {
         using var context = new SkipTestContext(automatic: true, stepCount: 2);
-        context.Queue.StartTask(new WaitAtEnd.WaitNextStepOrSequenceExecutor(), new WaitAtEnd.WaitNextStepOrSequence());
+        context.Queue.StartTask(new WaitAtEnd.NextStepOrSequenceExecutor(), new WaitAtEnd.NextStepOrSequence());
         var originalStepProgress = context.Progress.StepProgress;
 
         context.Controller.Skip(new QuestId(questId), sequence);

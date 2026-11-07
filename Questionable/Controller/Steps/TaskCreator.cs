@@ -38,17 +38,17 @@ internal sealed class TaskCreator
         {
             if (!quest.Root.Disabled &&
                 quest.FindSequence((byte)(sequenceNumber - 1)) is { } prevSequence &&
-                !prevSequence.Steps.Any(_step => _step is { InteractionType: EInteractionType.Duty or EInteractionType.SinglePlayerDuty }))
+                !prevSequence.Steps.Any(x => x is { InteractionType: EInteractionType.Duty or EInteractionType.SinglePlayerDuty }))
             {
                 _chatGui.PrintError(
                     $"Path for quest '{quest.Info.Name}' ({quest.Id}) does not contain sequence {sequenceNumber}, please report this: https://github.com/PunishXIV/Questionable/discussions/20",
                     CommandHandler.MessageTag, CommandHandler.TagColor);
             }
 
-            newTasks = [new WaitAtEnd.WaitNextStepOrSequence()];
+            newTasks = [new WaitAtEnd.NextStepOrSequence()];
         }
         else if (step == null)
-            newTasks = [new WaitAtEnd.WaitNextStepOrSequence()];
+            newTasks = [new WaitAtEnd.NextStepOrSequence()];
         else
         {
             using IServiceScope scope = _serviceProvider.CreateScope();
@@ -71,18 +71,18 @@ internal sealed class TaskCreator
                 })
                 .ToList();
 
-            SinglePlayerDuty.StartSinglePlayerDuty? singlePlayerDutyTask = newTasks
-                .Where(y => y is SinglePlayerDuty.StartSinglePlayerDuty)
-                .Cast<SinglePlayerDuty.StartSinglePlayerDuty>()
+            QuestBattle.Start? questBattleTask = newTasks
+                .Where(y => y is QuestBattle.Start)
+                .Cast<QuestBattle.Start>()
                 .FirstOrDefault();
-            if (singlePlayerDutyTask != null &&
-                _territoryData.TryGetContentFinderCondition(singlePlayerDutyTask.ContentFinderConditionId,
+            if (questBattleTask != null &&
+                _territoryData.TryGetContentFinderCondition(questBattleTask.CfcId,
                     out TerritoryData.ContentFinderConditionData? cfcData))
             {
                 // Resume queued solo duties in their instance instead of repeating travel steps.
                 if (_clientState.TerritoryType == cfcData.TerritoryId)
                 {
-                    int index = newTasks.IndexOf(singlePlayerDutyTask);
+                    int index = newTasks.IndexOf(questBattleTask);
                     _logger.LogWarning(
                         "Skipping {SkippedTaskCount} out of {TotalCount} tasks, questionable was started while in single player duty",
                         index + 1, newTasks.Count);
@@ -94,9 +94,9 @@ internal sealed class TaskCreator
                 }
             }
 
-            WaitAtEnd.WaitForTerritory? waitForTerritory = newTasks
-                .Where(y => y is WaitAtEnd.WaitForTerritory)
-                .Cast<WaitAtEnd.WaitForTerritory>()
+            WaitAtEnd.TerritoryEntered? waitForTerritory = newTasks
+                .Where(y => y is WaitAtEnd.TerritoryEntered)
+                .Cast<WaitAtEnd.TerritoryEntered>()
                 .FirstOrDefault();
             if (waitForTerritory != null &&
                 _clientState.TerritoryType == waitForTerritory.TerritoryId)

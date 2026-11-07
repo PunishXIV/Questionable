@@ -17,7 +17,7 @@ internal sealed class QuestAcceptanceController(Configuration configuration)
 
     public void TrackQueued(ITask task, Func<ElementId, bool> isAccepted)
     {
-        if (task is WaitAtEnd.WaitQuestAccepted wait && !isAccepted(wait.ElementId))
+        if (task is WaitAtEnd.QuestAccepted wait && !isAccepted(wait.ElementId))
             _queued.Add(wait.ElementId);
     }
 
@@ -78,6 +78,6 @@ internal sealed class QuestAcceptanceController(Configuration configuration)
     }
 
     private static bool IsQueued(TaskQueue queue, ElementId questId) =>
-        queue.CurrentTaskExecutor?.CurrentTask is WaitAtEnd.WaitQuestAccepted current && current.ElementId == questId ||
-        queue.RemainingTasks.OfType<WaitAtEnd.WaitQuestAccepted>().Any(x => x.ElementId == questId);
+        queue.CurrentTaskExecutor?.CurrentTask is WaitAtEnd.QuestAccepted current && current.ElementId == questId ||
+        queue.RemainingTasks.OfType<WaitAtEnd.QuestAccepted>().Any(x => x.ElementId == questId);
 }

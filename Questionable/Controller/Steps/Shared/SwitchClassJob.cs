@@ -30,7 +30,7 @@ internal static class SwitchClassJob
         public override string ToString() => $"SwitchJob({ClassJob})";
     }
 
-    internal sealed class SwitchClassJobExecutor(ClassJobUtils classJobUtils) : AbstractDelayedTaskExecutor<Task>
+    internal sealed class Executor(ClassJobUtils classJobUtils) : DelayedTaskExecutor<Task>
     {
         protected override unsafe bool StartInternal()
         {

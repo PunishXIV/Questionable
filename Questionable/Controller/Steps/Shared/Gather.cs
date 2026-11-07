@@ -16,13 +16,13 @@ internal static class Gather
 
             foreach (GatheredItem itemToGather in step.ItemsToGather)
             {
-                yield return new GatheringTask(itemToGather);
+                yield return new Task(itemToGather);
                 yield return new WaitAtEnd.WaitDelay();
             }
         }
     }
 
-    internal sealed record GatheringTask(GatheredItem GatheredItem) : ITask
+    internal sealed record Task(GatheredItem GatheredItem) : ITask
     {
         public override string ToString()
         {
@@ -34,28 +34,28 @@ internal static class Gather
         }
     }
 
-    internal sealed class StartGathering(GatheringController gatheringController) : TaskExecutor<GatheringTask>,
-        IStoppableTaskExecutor
+    internal sealed class Executor(GatheringController gatheringController) : TaskExecutor<Task>,
+        IStoppable
     {
-        private Guid? _owner;
+        private Guid? _operationId;
 
         public override ETaskResult Update()
         {
-            return gatheringController.Update(_owner) switch
+            return gatheringController.Update(_operationId) switch
             {
                 GatheringController.EStatus.Complete => ETaskResult.TaskComplete,
                 var _ => ETaskResult.StillRunning
             };
         }
 
-        public void StopNow() => gatheringController.StopIfCurrent(_owner);
+        public void StopNow() => gatheringController.StopIfCurrent(_operationId);
 
         // Gather n Chill handles movement and gathering; combat interrupts would just fight it
         public override bool ShouldInterruptOnDamage() => false;
         protected override bool Start()
         {
             return gatheringController.Start(new(Task.GatheredItem.ItemId, Task.GatheredItem.ItemCount,
-                Task.GatheredItem.Collectability), out _owner);
+                Task.GatheredItem.Collectability), out _operationId);
         }
     }
 }

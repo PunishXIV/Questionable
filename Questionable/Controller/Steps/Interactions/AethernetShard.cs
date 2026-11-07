@@ -25,11 +25,11 @@ internal static class AethernetShard
         public override string ToString() => $"AttuneAethernetShard({AetheryteLocation})";
     }
 
-    internal sealed class DoAttune
+    internal sealed class AttuneExecutor
     (
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
-        ILogger<DoAttune> logger) : TaskExecutor<Attune>
+        ILogger<AttuneExecutor> logger) : TaskExecutor<Attune>
     {
         protected override bool Start()
         {

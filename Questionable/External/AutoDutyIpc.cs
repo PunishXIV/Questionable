@@ -141,7 +141,7 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
     private TerritoryData.ContentFinderConditionData? FindContent(uint cfcId) =>
         _territoryData.TryGetContentFinderCondition(cfcId, out var data) ? data : null;
 
-    public void StartDuty(uint cfcId, Duty.DutyMode dutyMode, bool pathEnabled = true)
+    public void StartDuty(uint cfcId, Duty.Mode dutyMode, bool pathEnabled = true)
     {
         if (HasOperation)
             throw new TaskException(BlockReason!);
@@ -174,7 +174,7 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
 
         try
         {
-            ApplySetting("Meta.Unsynced", (dutyMode == Duty.DutyMode.Regular).ToString());
+            ApplySetting("Meta.Unsynced", (dutyMode == Duty.Mode.Regular).ToString());
             ApplySetting("Meta.DutyModeEnum", dutyMode.ToString());
             ApplySetting("DutyConfig.AutoExitDuty", "True");
             if (_ipc.GetStopped() != true)

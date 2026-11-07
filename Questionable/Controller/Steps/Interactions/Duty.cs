@@ -11,7 +11,7 @@ namespace Questionable.Controller.Steps.Interactions;
 internal static class Duty
 {
     [Flags]
-    internal enum DutyMode
+    internal enum Mode
     {
         None = 0 << 0,
         Support = 1 << 0,
@@ -44,11 +44,11 @@ internal static class Duty
             }
 
             bool allowUnsync = step.DutyOptions.CanUnsync is not false;
-            DutyMode dutyMode = DutyMode.Support;
+            Mode dutyMode = Mode.Support;
             if (allowUnsync && configuration.Duties.RunUnsynced && quest.Id is QuestId { Value: >= 357 and <= 360 })
-                dutyMode = DutyMode.Regular;
+                dutyMode = Mode.Regular;
             else if (variant)
-                dutyMode = DutyMode.Variant;
+                dutyMode = Mode.Variant;
             else if (allowUnsync && configuration.Duties.RunUnsynced)
             {
                 unsafe
@@ -58,7 +58,7 @@ internal static class Duty
                                                                    out TerritoryData.ContentFinderConditionData? cfcData) &&
                             playerState->CurrentLevel - 20 >= cfcData.ClassJobLevelSync &&
                             !cfcData.ContentType.Equals(EContentType.Trials))
-                        dutyMode = DutyMode.Regular;
+                        dutyMode = Mode.Regular;
                 }
             }
 
@@ -66,19 +66,19 @@ internal static class Duty
                 step.DutyOptions.Enabled);
 
             if (!QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags))
-                yield return new WaitAtEnd.WaitNextStepOrSequence();
+                yield return new WaitAtEnd.NextStepOrSequence();
         }
     }
 
     internal sealed record StartAutoDutyTask
     (
-        uint ContentFinderConditionId,
-        DutyMode DutyMode,
+        uint CfcId,
+        Mode Mode,
         bool AllowUnsync = true,
         bool PathEnabled = true)
         : ITask
     {
-        public override string ToString() => $"AutoDuty({ContentFinderConditionId}, {DutyMode})";
+        public override string ToString() => $"AutoDuty({CfcId}, {Mode})";
     }
 
     internal sealed class StartAutoDutyExecutor(
@@ -87,9 +87,9 @@ internal static class Duty
         TerritoryData territoryData,
         Configuration configuration,
         IChatGui chatGui,
-        SendNotification.Executor sendNotificationExecutor) : TaskExecutor<StartAutoDutyTask>, IStoppableTaskExecutor
+        SendNotification.Executor sendNotificationExecutor) : TaskExecutor<StartAutoDutyTask>, IStoppable
     {
-        private Guid? _owner;
+        private Guid? _operationId;
 
         private void Notify(string text)
         {
@@ -100,7 +100,7 @@ internal static class Duty
         public override ETaskResult Update()
         {
             var operation = autoDuty.Operation;
-            if (_owner == null || operation.Id != _owner)
+            if (_operationId == null || operation.Id != _operationId)
                 throw new TaskException("AutoDuty is no longer running Questionable's duty.");
             if (operation.NeedsConfirmation || operation.IsAbandoned)
                 throw new TaskException(operation.Message);
@@ -109,7 +109,7 @@ internal static class Duty
 
             bool completed = operation.Status == ExternalOperationStatus.Succeeded;
             string message = operation.Message;
-            operation.TryClearFinished(_owner);
+            operation.TryClearFinished(_operationId);
             if (!completed)
                 throw new TaskException(message);
             return ETaskResult.TaskComplete;
@@ -117,15 +117,15 @@ internal static class Duty
 
         public void StopNow()
         {
-            if (_owner != null && autoDuty.Operation.Id == _owner)
+            if (_operationId != null && autoDuty.Operation.Id == _operationId)
                 autoDuty.CancelRun();
         }
 
         public override bool ShouldInterruptOnDamage() => false;
         protected override bool Start()
         {
-            _owner = null;
-            if (!territoryData.TryGetContentFinderCondition(Task.ContentFinderConditionId, out var cfcData))
+            _operationId = null;
+            if (!territoryData.TryGetContentFinderCondition(Task.CfcId, out var cfcData))
                 throw new TaskException("Failed to get territory ID for content finder condition");
 
             // Otherwise AutoDuty keeps queueing and the duty finder keeps refusing.
@@ -137,7 +137,7 @@ internal static class Duty
                 throw new TaskException(errorText);
             }
 
-            DutyMode dutyMode = Task.DutyMode;
+            Mode dutyMode = Task.Mode;
             short currentItemLevel = GetItemLevel(gearStatsCalculator) ?? throw new TaskException("Equipped items unavailable");
             if (cfcData.RequiredItemLevel > currentItemLevel)
             {
@@ -146,24 +146,24 @@ internal static class Duty
                 Notify(errorText);
                 throw new TaskException(errorText);
             }
-            if (dutyMode == DutyMode.Regular &&
+            if (dutyMode == Mode.Regular &&
                 (!Task.AllowUnsync || !configuration.Duties.RunUnsynced))
-                dutyMode = DutyMode.Support;
+                dutyMode = Mode.Support;
             if (Task.AllowUnsync && configuration.Duties.RunUnsynced &&
-                dutyMode == DutyMode.Support && currentItemLevel - 200 >= cfcData.RequiredItemLevel &&
+                dutyMode == Mode.Support && currentItemLevel - 200 >= cfcData.RequiredItemLevel &&
                 !cfcData.ContentType.Equals(EContentType.Trials))
-                dutyMode = DutyMode.Regular;
+                dutyMode = Mode.Regular;
 
-            Guid? previousOwner = autoDuty.Operation.Id;
+            Guid? previousId = autoDuty.Operation.Id;
             try
             {
-                autoDuty.StartDuty(Task.ContentFinderConditionId, dutyMode, Task.PathEnabled);
+                autoDuty.StartDuty(Task.CfcId, dutyMode, Task.PathEnabled);
             }
             finally
             {
                 // A lost Run reply can still have started work, so keep ownership.
-                if (previousOwner == null)
-                    _owner = autoDuty.Operation.Id;
+                if (previousId == null)
+                    _operationId = autoDuty.Operation.Id;
             }
             return true;
         }
@@ -184,9 +184,9 @@ internal static class Duty
         }
     }
 
-    internal sealed record OpenDutyFinderTask(uint ContentFinderConditionId) : ITask
+    internal sealed record OpenDutyFinderTask(uint CfcId) : ITask
     {
-        public override string ToString() => $"OpenDutyFinder({ContentFinderConditionId})";
+        public override string ToString() => $"OpenDutyFinder({CfcId})";
     }
 
     internal sealed class OpenDutyFinderExecutor
@@ -199,7 +199,7 @@ internal static class Duty
             if (condition[ConditionFlag.InDutyQueue])
                 return false;
 
-            gameFunctions.OpenDutyFinder(Task.ContentFinderConditionId);
+            gameFunctions.OpenDutyFinder(Task.CfcId);
             return true;
         }
 
@@ -208,9 +208,9 @@ internal static class Duty
         public override bool ShouldInterruptOnDamage() => false;
     }
 
-    internal sealed record OpenVariantDFTask(uint ContentFinderConditionId) : ITask
+    internal sealed record OpenVariantDFTask(uint CfcId) : ITask
     {
-        public override string ToString() => $"OpenVariantDF({ContentFinderConditionId})";
+        public override string ToString() => $"OpenVariantDF({CfcId})";
     }
 
     internal sealed class OpenVariantDFExecutor

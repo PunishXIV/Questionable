@@ -18,6 +18,6 @@ internal static class TeleportTaskDetector
             return aetheryte.TargetAetheryte != EAetheryteLocation.None;
         }
 
-        return task is UseItem.IUseItemBase;
+        return task is UseItem.IUseTask;
     }
 }

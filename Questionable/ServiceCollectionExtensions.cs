@@ -48,37 +48,37 @@ internal static class ServiceCollectionExtensions
     public static void AddTaskRegistrations(IServiceCollection serviceCollection)
     {
         serviceCollection.AddTaskFactory<QuestCleanUp.CheckAlliedSocietyMount>();
-        serviceCollection.AddTaskFactoryAndExecutor<QuestCleanUp.CloseGatheringAddonTask, QuestCleanUp.CloseGatheringAddonFactory, QuestCleanUp.DoCloseAddon>();
-        serviceCollection.AddTaskExecutor<AbandonQuest.Task, AbandonQuest.AbandonQuestExecutor>();
-        serviceCollection.AddTaskExecutor<LogQuestCompletion.Task, LogQuestCompletion.LogQuestCompletionExecutor>();
-        serviceCollection.AddTaskFactory<CleanUpOtherQuests.CleanUpOtherQuestsFactory>();
+        serviceCollection.AddTaskFactoryAndExecutor<QuestCleanUp.CloseAddonTask, QuestCleanUp.CloseAddonFactory, QuestCleanUp.CloseAddonExecutor>();
+        serviceCollection.AddTaskExecutor<AbandonQuest.Task, AbandonQuest.Executor>();
+        serviceCollection.AddTaskExecutor<LogQuestCompletion.Task, LogQuestCompletion.Executor>();
+        serviceCollection.AddTaskFactory<CleanUpOtherQuests.Factory>();
         serviceCollection
-            .AddTaskFactoryAndExecutor<SkipCondition.SkipTask, SkipCondition.Factory, SkipCondition.CheckSkip>();
+            .AddTaskFactoryAndExecutor<SkipCondition.Task, SkipCondition.Factory, SkipCondition.Executor>();
         serviceCollection
-            .AddTaskFactoryAndExecutor<RedeemRewardItems.Task, RedeemRewardItems.Factory, RedeemRewardItems.TryRedeemExecutor>();
+            .AddTaskFactoryAndExecutor<RedeemRewardItems.Task, RedeemRewardItems.Factory, RedeemRewardItems.Executor>();
         serviceCollection.AddTaskFactoryAndExecutor<SwitchClassJob.Task, SwitchClassJob.Factory,
-            SwitchClassJob.SwitchClassJobExecutor>();
+            SwitchClassJob.Executor>();
         serviceCollection.AddTaskFactoryAndExecutor<CreateGearset.Task, CreateGearset.Factory,
-            CreateGearset.CreateGearsetExecutor>();
+            CreateGearset.Executor>();
         serviceCollection.AddTaskFactoryAndExecutor<UpdateGearset.Task, UpdateGearset.Factory,
-            UpdateGearset.UpdateGearsetExecutor>();
+            UpdateGearset.Executor>();
         serviceCollection.AddTaskExecutor<MountStep.MountTask, MountStep.MountExecutor>();
         serviceCollection.AddTaskExecutor<MountStep.UnmountTask, MountStep.UnmountExecutor>();
 
         serviceCollection
-            .AddTaskFactoryAndExecutor<StepDisabled.SkipRemainingTasks, StepDisabled.Factory,
-                StepDisabled.SkipDisabledStepsExecutor>();
+            .AddTaskFactoryAndExecutor<StepDisabled.Task, StepDisabled.Factory,
+                StepDisabled.Executor>();
         serviceCollection.AddTaskFactory<EquipRecommended.BeforeDutyOrInstance>();
         serviceCollection
             .AddTaskFactoryAndExecutor<AetheryteShortcut.Task, AetheryteShortcut.Factory,
-                AetheryteShortcut.UseAetheryteShortcut>();
+                AetheryteShortcut.Executor>();
         serviceCollection
-            .AddTaskExecutor<AetheryteShortcut.MoveAwayFromAetheryte,
-                AetheryteShortcut.MoveAwayFromAetheryteExecutor>();
-        serviceCollection.AddTaskFactoryAndExecutor<Gather.GatheringTask, Gather.Factory, Gather.StartGathering>();
+            .AddTaskExecutor<AetheryteShortcut.MoveAway,
+                AetheryteShortcut.MoveAwayExecutor>();
+        serviceCollection.AddTaskFactoryAndExecutor<Gather.Task, Gather.Factory, Gather.Executor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<AethernetShortcut.Task, AethernetShortcut.Factory,
-                AethernetShortcut.UseAethernetShortcut>();
+                AethernetShortcut.Executor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<WaitAtStart.WaitDelay, WaitAtStart.Factory, WaitAtStart.WaitDelayExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<MoveTask, MoveTo.Factory, MoveExecutor>();
@@ -88,16 +88,16 @@ internal static class ServiceCollectionExtensions
             .AddTaskFactoryAndExecutor<SendNotification.Task, SendNotification.Factory, SendNotification.Executor>();
 
         serviceCollection
-            .AddTaskFactoryAndExecutor<NextQuest.SetQuestTask, NextQuest.Factory, NextQuest.NextQuestExecutor>();
+            .AddTaskFactoryAndExecutor<NextQuest.SetQuestTask, NextQuest.Factory, NextQuest.SetQuestExecutor>();
         serviceCollection
-            .AddTaskFactoryAndExecutor<AetherCurrent.Attune, AetherCurrent.Factory, AetherCurrent.DoAttune>();
+            .AddTaskFactoryAndExecutor<AetherCurrent.Attune, AetherCurrent.Factory, AetherCurrent.AttuneExecutor>();
         serviceCollection
-            .AddTaskFactoryAndExecutor<AethernetShard.Attune, AethernetShard.Factory, AethernetShard.DoAttune>();
-        serviceCollection.AddTaskFactoryAndExecutor<Aetheryte.Attune, Aetheryte.Factory, Aetheryte.DoAttune>();
+            .AddTaskFactoryAndExecutor<AethernetShard.Attune, AethernetShard.Factory, AethernetShard.AttuneExecutor>();
+        serviceCollection.AddTaskFactoryAndExecutor<Aetheryte.Attune, Aetheryte.Factory, Aetheryte.AttuneExecutor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<AetheryteFreeOrFavored.Register, AetheryteFreeOrFavored.Factory,
-                AetheryteFreeOrFavored.DoRegister>();
-        serviceCollection.AddTaskFactoryAndExecutor<Combat.Task, Combat.Factory, Combat.HandleCombat>();
+                AetheryteFreeOrFavored.RegisterExecutor>();
+        serviceCollection.AddTaskFactoryAndExecutor<Combat.Task, Combat.Factory, Combat.Executor>();
         serviceCollection.AddTaskExecutor<Combat.CheckAfterInterruption, Combat.CheckAfterInterruptionExecutor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<Duty.OpenDutyFinderTask, Duty.Factory, Duty.OpenDutyFinderExecutor>();
@@ -108,56 +108,56 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskExecutor<Emote.UseOnSelf, Emote.UseOnSelfExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<ActionStep.UseOnObject, ActionStep.Factory, ActionStep.UseOnObjectExecutor>();
         serviceCollection.AddTaskExecutor<ActionStep.UseMudraOnObject, ActionStep.UseMudraOnObjectExecutor>();
-        serviceCollection.AddTaskFactoryAndExecutor<StatusOff.Task, StatusOff.Factory, StatusOff.DoStatusOff>();
-        serviceCollection.AddTaskFactoryAndExecutor<Interact.Task, Interact.Factory, Interact.DoInteract>();
+        serviceCollection.AddTaskFactoryAndExecutor<StatusOff.Task, StatusOff.Factory, StatusOff.Executor>();
+        serviceCollection.AddTaskFactoryAndExecutor<Interact.Task, Interact.Factory, Interact.Executor>();
         serviceCollection.AddTaskFactory<Jump.Factory>();
-        serviceCollection.AddTaskExecutor<Jump.SingleJumpTask, Jump.DoSingleJump>();
-        serviceCollection.AddTaskExecutor<Jump.RepeatedJumpTask, Jump.DoRepeatedJumps>();
-        serviceCollection.AddTaskFactoryAndExecutor<Dive.Task, Dive.Factory, Dive.DoDive>();
-        serviceCollection.AddTaskFactoryAndExecutor<Say.Task, Say.Factory, Say.UseChat>();
+        serviceCollection.AddTaskExecutor<Jump.SingleTask, Jump.SingleExecutor>();
+        serviceCollection.AddTaskExecutor<Jump.RepeatedTask, Jump.RepeatedExecutor>();
+        serviceCollection.AddTaskFactoryAndExecutor<Dive.Task, Dive.Factory, Dive.Executor>();
+        serviceCollection.AddTaskFactoryAndExecutor<Say.Task, Say.Factory, Say.Executor>();
         serviceCollection.AddTaskFactory<UseItem.Factory>();
         serviceCollection.AddTaskExecutor<UseItem.UseOnGround, UseItem.UseOnGroundExecutor>();
         serviceCollection.AddTaskExecutor<UseItem.UseOnPosition, UseItem.UseOnPositionExecutor>();
         serviceCollection.AddTaskExecutor<UseItem.UseOnObject, UseItem.UseOnObjectExecutor>();
         serviceCollection.AddTaskExecutor<UseItem.UseOnSelf, UseItem.UseOnSelfExecutor>();
-        serviceCollection.AddTaskFactoryAndExecutor<EquipItem.Task, EquipItem.Factory, EquipItem.DoEquip>();
-        serviceCollection.AddTaskFactoryAndExecutor<UnequipItem.Task, UnequipItem.Factory, UnequipItem.DoUnequip>();
+        serviceCollection.AddTaskFactoryAndExecutor<EquipItem.Task, EquipItem.Factory, EquipItem.Executor>();
+        serviceCollection.AddTaskFactoryAndExecutor<UnequipItem.Task, UnequipItem.Factory, UnequipItem.Executor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<EquipRecommended.EquipTask, EquipRecommended.Factory,
-                EquipRecommended.DoEquipRecommended>();
-        serviceCollection.AddTaskFactoryAndExecutor<Craft.CraftTask, Craft.Factory, Craft.DoCraft>();
-        serviceCollection.AddTaskFactoryAndExecutor<Purchase.BuyTask, Purchase.Factory, Purchase.DoBuy>();
-        serviceCollection.AddTaskFactoryAndExecutor<Fish.FishTask, Fish.Factory, Fish.DoFish>();
+                EquipRecommended.EquipExecutor>();
+        serviceCollection.AddTaskFactoryAndExecutor<Craft.Task, Craft.Factory, Craft.Executor>();
+        serviceCollection.AddTaskFactoryAndExecutor<Purchase.BuyTask, Purchase.Factory, Purchase.BuyExecutor>();
+        serviceCollection.AddTaskFactoryAndExecutor<Fish.Task, Fish.Factory, Fish.Executor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<TurnInDelivery.Task, TurnInDelivery.Factory,
-                TurnInDelivery.SatisfactionSupplyTurnIn>();
+                TurnInDelivery.Executor>();
 
-        serviceCollection.AddSingleton<SinglePlayerDuty.RetryCounter>();
-        serviceCollection.AddTaskFactory<SinglePlayerDuty.Factory>();
-        serviceCollection.AddTaskExecutor<SinglePlayerDuty.LeaveParty, SinglePlayerDuty.LeavePartyExecutor>();
+        serviceCollection.AddSingleton<QuestBattle.RetryCounter>();
+        serviceCollection.AddTaskFactory<QuestBattle.Factory>();
+        serviceCollection.AddTaskExecutor<QuestBattle.LeaveParty, QuestBattle.LeavePartyExecutor>();
         serviceCollection
-            .AddTaskExecutor<SinglePlayerDuty.StartSinglePlayerDuty, SinglePlayerDuty.StartSinglePlayerDutyExecutor>();
-        serviceCollection.AddTaskExecutor<SinglePlayerDuty.EnableAi, SinglePlayerDuty.EnableAiExecutor>();
+            .AddTaskExecutor<QuestBattle.Start, QuestBattle.StartExecutor>();
+        serviceCollection.AddTaskExecutor<QuestBattle.EnableAi, QuestBattle.EnableAiExecutor>();
         serviceCollection
-            .AddTaskExecutor<SinglePlayerDuty.WaitSinglePlayerDuty, SinglePlayerDuty.WaitSinglePlayerDutyExecutor>();
+            .AddTaskExecutor<QuestBattle.WaitForExit, QuestBattle.WaitForExitExecutor>();
         serviceCollection
-            .AddTaskExecutor<SinglePlayerDuty.WaitForSinglePlayerDutyOutcome,
-                SinglePlayerDuty.WaitForSinglePlayerDutyOutcomeExecutor>();
-        serviceCollection.AddTaskExecutor<SinglePlayerDuty.DisableAi, SinglePlayerDuty.DisableAiExecutor>();
+            .AddTaskExecutor<QuestBattle.WaitForOutcome,
+                QuestBattle.WaitForOutcomeExecutor>();
+        serviceCollection.AddTaskExecutor<QuestBattle.DisableAi, QuestBattle.DisableAiExecutor>();
 
-        serviceCollection.AddTaskExecutor<WaitCondition.Task, WaitCondition.WaitConditionExecutor>();
+        serviceCollection.AddTaskExecutor<WaitCondition.Task, WaitCondition.Executor>();
         serviceCollection.AddTaskExecutor<WaitNavmesh.Task, WaitNavmesh.Executor>();
         serviceCollection.AddTaskFactory<WaitAtEnd.Factory>();
         serviceCollection.AddTaskExecutor<WaitAtEnd.WaitDelay, WaitAtEnd.WaitDelayExecutor>();
-        serviceCollection.AddTaskExecutor<WaitAtEnd.WaitNextStepOrSequence, WaitAtEnd.WaitNextStepOrSequenceExecutor>();
-        serviceCollection.AddTaskExecutor<WaitAtEnd.WaitForCompletionFlags, WaitAtEnd.WaitForCompletionFlagsExecutor>();
-        serviceCollection.AddTaskExecutor<WaitAtEnd.WaitObjectAtPosition, WaitAtEnd.WaitObjectAtPositionExecutor>();
-        serviceCollection.AddTaskExecutor<WaitAtEnd.WaitQuestAccepted, WaitAtEnd.WaitQuestAcceptedExecutor>();
-        serviceCollection.AddTaskExecutor<WaitAtEnd.WaitQuestCompleted, WaitAtEnd.WaitQuestCompletedExecutor>();
-        serviceCollection.AddTaskExecutor<WaitAtEnd.WaitForTerritory, WaitAtEnd.WaitForTerritoryExecutor>();
+        serviceCollection.AddTaskExecutor<WaitAtEnd.NextStepOrSequence, WaitAtEnd.NextStepOrSequenceExecutor>();
+        serviceCollection.AddTaskExecutor<WaitAtEnd.CompletionFlags, WaitAtEnd.CompletionFlagsExecutor>();
+        serviceCollection.AddTaskExecutor<WaitAtEnd.ObjectAtPosition, WaitAtEnd.ObjectAtPositionExecutor>();
+        serviceCollection.AddTaskExecutor<WaitAtEnd.QuestAccepted, WaitAtEnd.QuestAcceptedExecutor>();
+        serviceCollection.AddTaskExecutor<WaitAtEnd.QuestCompleted, WaitAtEnd.QuestCompletedExecutor>();
+        serviceCollection.AddTaskExecutor<WaitAtEnd.TerritoryEntered, WaitAtEnd.TerritoryEnteredExecutor>();
         serviceCollection.AddTaskExecutor<WaitAtEnd.NextStep, WaitAtEnd.NextStepExecutor>();
         serviceCollection.AddTaskExecutor<WaitAtEnd.EndAutomation, WaitAtEnd.EndAutomationExecutor>();
-        serviceCollection.AddTaskExecutor<WaitAtEnd.WaitForConditionActive, WaitAtEnd.WaitForConditionActiveExecutor>();
-        serviceCollection.AddTaskExecutor<WaitAtEnd.WaitForConditionCleared, WaitAtEnd.WaitForConditionClearedExecutor>();
+        serviceCollection.AddTaskExecutor<WaitAtEnd.ConditionActive, WaitAtEnd.ConditionActiveExecutor>();
+        serviceCollection.AddTaskExecutor<WaitAtEnd.ConditionCleared, WaitAtEnd.ConditionClearedExecutor>();
     }
 }

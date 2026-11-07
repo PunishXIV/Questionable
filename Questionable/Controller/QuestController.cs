@@ -67,7 +67,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private readonly GatheringController _gatheringController;
     private readonly ExternalOperationCoordinator _externalOperations;
     private readonly QuestRecoveryController _recovery;
-    private readonly SinglePlayerDuty.RetryCounter _soloDutyRetries;
+    private readonly QuestBattle.RetryCounter _soloDutyRetries;
     private readonly HighlightObject _highlightObject;
     private readonly IKeyState _keyState;
     private readonly ILogger<QuestController> _logger;
@@ -105,7 +105,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         QuestRecoveryController recovery,
         QuestAcceptanceController acceptance,
         QuestSelectionController selection,
-        SinglePlayerDuty.RetryCounter soloDutyRetries,
+        QuestBattle.RetryCounter soloDutyRetries,
         ILogger<QuestController> logger,
         HighlightObject highlightObject,
         QuestRegistry questRegistry,
@@ -348,7 +348,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         }
 
         if (!HasExternalOperation && AutomationType == EAutomationType.Automatic &&
-            (_taskQueue.AllTasksComplete || _taskQueue.CurrentTaskExecutor?.CurrentTask is WaitAtEnd.WaitQuestAccepted)
+            (_taskQueue.AllTasksComplete || _taskQueue.CurrentTaskExecutor?.CurrentTask is WaitAtEnd.QuestAccepted)
             && CurrentQuest is { Sequence: 0, Step: 0 } or { Sequence: 0, Step: CompletedStepValue }
             && DateTime.Now >= CurrentQuest.StepProgress.StartedAt.AddSeconds(QuestAcceptStalledTimeoutSeconds))
         {
@@ -964,7 +964,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
         if (_gameFunctions.IsOccupied() && owner?.CanUpdateWhileOccupied != true &&
             // Outcome polling resets its grace timer before returning while occupied.
-            _taskQueue.CurrentTaskExecutor is not SinglePlayerDuty.WaitForSinglePlayerDutyOutcomeExecutor &&
+            _taskQueue.CurrentTaskExecutor is not QuestBattle.WaitForOutcomeExecutor &&
             !_gameFunctions.IsOccupiedWithCustomDeliveryNpc(CurrentQuest?.Quest))
             return;
 
@@ -998,7 +998,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     protected override void OnTaskComplete(ITask task)
     {
-        if (task is WaitAtEnd.WaitQuestCompleted)
+        if (task is WaitAtEnd.QuestCompleted)
             SimulatedQuest = StartedQuest = null;
 
     }

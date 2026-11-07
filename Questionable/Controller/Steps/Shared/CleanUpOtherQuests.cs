@@ -5,7 +5,7 @@ namespace Questionable.Controller.Steps.Shared;
 
 internal static class CleanUpOtherQuests
 {
-    internal sealed class CleanUpOtherQuestsFactory(QuestFunctions questFunctions, QuestController questController, QuestRegistry questRegistry) : SimpleTaskFactory
+    internal sealed class Factory(QuestFunctions questFunctions, QuestController questController, QuestRegistry questRegistry) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {

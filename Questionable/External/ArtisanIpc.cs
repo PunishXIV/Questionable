@@ -177,10 +177,10 @@ internal sealed class ArtisanProvider(
     public bool MayBeMovingCharacter() => false;
     public bool HandlesTravel(QuestStep step) => false;
 
-    public bool HandlesExecutor(ITaskExecutor? executor) => executor is Craft.DoCraft && operation.HasOperation;
+    public bool HandlesExecutor(ITaskExecutor? executor) => executor is Craft.Executor && operation.HasOperation;
 
     public bool CanUpdateTask(ITaskExecutor? executor) =>
-        !operation.HasOperation || !operation.NeedsConfirmation && executor is Craft.DoCraft;
+        !operation.HasOperation || !operation.NeedsConfirmation && executor is Craft.Executor;
 
     public bool Update(IExternalOperationHost host, IOperationContext context)
     {
@@ -193,7 +193,7 @@ internal sealed class ArtisanProvider(
         if (!_statusPoll.IsRunning || _statusPoll.Elapsed >= TimeSpan.FromMilliseconds(250))
             ObserveStatus();
 
-        if (host.CurrentExecutor is not Craft.DoCraft)
+        if (host.CurrentExecutor is not Craft.Executor)
             operation.Abandon();
 
         if (!operation.NeedsConfirmation)

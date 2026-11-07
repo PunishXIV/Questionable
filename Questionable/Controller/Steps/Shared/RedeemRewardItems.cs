@@ -21,11 +21,11 @@ internal static class RedeemRewardItems
             if (step.InteractionType != EInteractionType.AcceptQuest)
                 return [];
 
-            return CreateRedeemTasks(questData, dataManager);
+            return CreateTasks(questData, dataManager);
         }
     }
 
-    internal static List<ITask> CreateRedeemTasks(QuestData questData, IDataManager dataManager, bool overrideConfig = false)
+    internal static List<ITask> CreateTasks(QuestData questData, IDataManager dataManager, bool overrideConfig = false)
     {
         Configuration configuration = Configuration.Instance();
         if (!configuration.Advanced.AutoRedeemRewardItems && !overrideConfig)
@@ -104,12 +104,12 @@ internal static class RedeemRewardItems
         public override string ToString() => $"TryRedeem({ItemReward.Name})";
     }
 
-    internal sealed class TryRedeemExecutor
+    internal sealed class Executor
     (
         GameFunctions gameFunctions,
         ICondition condition,
         DalamudInitializer dalamudInitializer,
-        ILogger<RedeemRewardItems.TryRedeemExecutor> logger) : TaskExecutor<Task>
+        ILogger<RedeemRewardItems.Executor> logger) : TaskExecutor<Task>
     {
         private static readonly TimeSpan MinimumCastTime = TimeSpan.FromSeconds(4);
 

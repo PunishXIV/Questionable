@@ -23,7 +23,7 @@ public sealed class CityAethernetEntryTests
     {
         QuestSequence sequence = Sequence(128, 128);
 
-        Assert.True(AetheryteShortcut.ShouldEnterCityByAethernet(sequence, sequence.Steps[0], currentTerritory: 135));
+        Assert.True(AetheryteShortcut.ShouldEnterByAethernet(sequence, sequence.Steps[0], currentTerritory: 135));
     }
 
     [Fact]
@@ -31,7 +31,7 @@ public sealed class CityAethernetEntryTests
     {
         QuestSequence sequence = Sequence(129, 128);
 
-        Assert.False(AetheryteShortcut.ShouldEnterCityByAethernet(sequence, sequence.Steps[1], currentTerritory: 135));
+        Assert.False(AetheryteShortcut.ShouldEnterByAethernet(sequence, sequence.Steps[1], currentTerritory: 135));
     }
 
     [Fact]
@@ -40,8 +40,8 @@ public sealed class CityAethernetEntryTests
         QuestSequence sequence = Sequence(128);
         QuestStep step = sequence.Steps[0];
 
-        Assert.False(AetheryteShortcut.ShouldEnterCityByAethernet(sequence, step, currentTerritory: 128));
+        Assert.False(AetheryteShortcut.ShouldEnterByAethernet(sequence, step, currentTerritory: 128));
         step.AethernetShortcut = new Questionable.Model.Common.AethernetShortcut();
-        Assert.False(AetheryteShortcut.ShouldEnterCityByAethernet(sequence, step, currentTerritory: 135));
+        Assert.False(AetheryteShortcut.ShouldEnterByAethernet(sequence, step, currentTerritory: 135));
     }
 }

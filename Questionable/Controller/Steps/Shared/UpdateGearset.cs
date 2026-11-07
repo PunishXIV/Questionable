@@ -27,11 +27,11 @@ internal static class UpdateGearset
         public override string ToString() => $"UpdateGearset({TargetClass?.ToString() ?? "current"})";
     }
 
-    internal sealed class UpdateGearsetExecutor
+    internal sealed class Executor
     (
         IClientState clientState,
         ICondition condition,
-        ILogger<UpdateGearsetExecutor> logger) : AbstractDelayedTaskExecutor<Task>
+        ILogger<Executor> logger) : DelayedTaskExecutor<Task>
     {
         protected override unsafe bool StartInternal()
         {

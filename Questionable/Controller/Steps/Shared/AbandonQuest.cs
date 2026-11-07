@@ -11,7 +11,7 @@ internal static class AbandonQuest
         public override string ToString() => $"AbandonQuest({Quest?.Id.Value.ToString(CultureInfo.InvariantCulture) ?? "???"})";
     }
 
-    internal sealed class AbandonQuestExecutor
+    internal sealed class Executor
     (
         IClientState clientState,
         IObjectTable objectTable,
@@ -21,9 +21,9 @@ internal static class AbandonQuest
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
         QuestController questController,
-        ILogger<AbandonQuestExecutor> logger) : TaskExecutor<Task>
+        ILogger<Executor> logger) : TaskExecutor<Task>
     {
-        private uint attempts;
+        private uint _attempts;
         protected override bool Start()
         {
             if (objectTable[0] == null || !clientState.IsLoggedIn || Task.Quest == null)
@@ -49,7 +49,7 @@ internal static class AbandonQuest
                 throw new TaskException("Quest cannot be cancelled");
             }
 
-            AbandonQuestAction();
+            SendAbandon();
             return true;
         }
 
@@ -61,13 +61,13 @@ internal static class AbandonQuest
                 chatGui.Print($"Quest abandoned{(Task.Quest != null ? $": {Task.Quest?.Info.Name}" : "")}");
                 return ETaskResult.TaskComplete;
             }
-            if (EzThrottler.Throttle("AbandonQuest")) AbandonQuestAction();
+            if (EzThrottler.Throttle("AbandonQuest")) SendAbandon();
             return ETaskResult.StillRunning;
         }
 
-        public void AbandonQuestAction()
+        public void SendAbandon()
         {
-            if (attempts >= 5)
+            if (_attempts >= 5)
             {
                 configuration.Advanced.AbandonQuestBeforeCompletion = false;
                 configuration.Save();
@@ -75,7 +75,7 @@ internal static class AbandonQuest
             }
             logger.LogInformation($"Firing AbandonQuest for {Task.Quest?.Id.Value}");
             GameMain.ExecuteCommand((int)GameCommand.AbandonQuest, (int)Task.Quest!.Id.Value);
-            attempts += 1;
+            _attempts += 1;
             if (configuration.Advanced.RemoveFromPriorityWhenAbandoned)
                 questController.PriorityManager.Remove(Task.Quest.Id);
         }

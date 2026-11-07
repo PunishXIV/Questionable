@@ -24,12 +24,12 @@ internal static class AethernetShortcut
             yield return new Task(step.AethernetShortcut.From, step.AethernetShortcut.To,
                 step.SkipConditions?.AethernetShortcutIf ?? new());
 
-            if (AetheryteShortcut.MoveAwayFromAetheryteExecutor.AppliesTo(step.AethernetShortcut.To))
+            if (AetheryteShortcut.MoveAwayExecutor.AppliesTo(step.AethernetShortcut.To))
             {
                 yield return new WaitCondition.Task(
                     () => clientState.TerritoryType == aetheryteData.TerritoryIds[step.AethernetShortcut.To],
                     $"Wait(territory: {TerritoryData.GetNameAndId(aetheryteData.TerritoryIds[step.AethernetShortcut.To])})");
-                yield return new AetheryteShortcut.MoveAwayFromAetheryte(step.AethernetShortcut.To);
+                yield return new AetheryteShortcut.MoveAway(step.AethernetShortcut.To);
             }
         }
     }
@@ -49,9 +49,9 @@ internal static class AethernetShortcut
         public override string ToString() => $"UseAethernet({From} -> {To})";
     }
 
-    internal sealed class UseAethernetShortcut
+    internal sealed class Executor
     (
-        ILogger<UseAethernetShortcut> logger,
+        ILogger<Executor> logger,
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
@@ -103,7 +103,7 @@ internal static class AethernetShortcut
 
             if (Task.From == EAetheryteLocation.SolutionNine)
             {
-                MoveToSolutionNineAetheryte(playerPosition);
+                MoveToSolutionNine(playerPosition);
                 return true;
             }
 
@@ -180,7 +180,7 @@ internal static class AethernetShortcut
             return null;
         }
 
-        private void MoveToSolutionNineAetheryte(Vector3 playerPosition)
+        private void MoveToSolutionNine(Vector3 playerPosition)
         {
             logger.LogInformation("Moving to S9 aetheryte");
             List<Vector3> nearbyPoints =
@@ -211,13 +211,13 @@ internal static class AethernetShortcut
                 var _ => 5f
             };
 
-            bool goldSaucerAethernetShard = aetheryteData.IsGoldSaucerAetheryte(Task.From) &&
+            bool isGoldSaucerShard = aetheryteData.IsGoldSaucerAetheryte(Task.From) &&
                                             !AetheryteConverter.IsLargeAetheryte(Task.From);
             movementController.NavigateTo(EMovementType.Quest, (uint)Task.From, aetheryteData.Locations[Task.From], new()
             {
                 Sprint = true,
                 StopDistance = distance,
-                VerticalStopDistance = goldSaucerAethernetShard ? 5f : null,
+                VerticalStopDistance = isGoldSaucerShard ? 5f : null,
             });
         }
 

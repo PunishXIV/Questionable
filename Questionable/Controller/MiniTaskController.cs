@@ -287,7 +287,7 @@ internal abstract class MiniTaskController<T> : IDisposable
             return;
 
         // Duty providers handle their own interruptions; don't cancel the run for them.
-        if (_taskQueue.CurrentTaskExecutor is SinglePlayerDuty.WaitSinglePlayerDutyExecutor
+        if (_taskQueue.CurrentTaskExecutor is QuestBattle.WaitForExitExecutor
             or Duty.StartAutoDutyExecutor)
             return;
 

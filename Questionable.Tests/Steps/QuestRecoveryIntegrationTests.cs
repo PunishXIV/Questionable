@@ -74,7 +74,7 @@ public sealed class QuestRecoveryIntegrationTests
             Substitute.For<IDataManager>(), NullLogger<HighlightObject>.Instance);
         var queue = new TaskQueue(NullLogger.Instance);
         if (queued)
-            queue.Enqueue(new WaitAtEnd.WaitNextStepOrSequence());
+            queue.Enqueue(new WaitAtEnd.NextStepOrSequence());
 
         var configuration = new Configuration();
         configuration.Stop.RunCommandAfterStop = true;

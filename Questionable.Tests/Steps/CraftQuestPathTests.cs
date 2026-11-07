@@ -27,7 +27,7 @@ public sealed class CraftQuestPathTests
                 foreach (var step in sequence.Steps.Where(x => x.InteractionType == EInteractionType.Craft &&
                              x.ItemId == null && x.ItemCount == null))
                 {
-                    var targets = Craft.GetItemTargets(new Craft.CraftTask(quest, sequence.Sequence, step));
+                    var targets = Craft.GetItemTargets(new Craft.Task(quest, sequence.Sequence, step));
                     Assert.True(targets.Count > 0, $"{embedded.ShortName}, sequence {sequence.Sequence} has no craft outputs");
                     Assert.False(Craft.AreItemsSatisfied(targets, _ => 0));
                     Assert.True(Craft.AreItemsSatisfied(targets, item => item.ItemCount));

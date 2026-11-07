@@ -82,7 +82,7 @@ internal static class Combat
 
                     if (!step.Action.Value.RequiresMount())
                         yield return new MountStep.UnmountTask();
-                    yield return new ActionStep.UseOnObject(step.DataId.Value, Quest: null, step.Action.Value, CompletionQuestVariablesFlags: null);
+                    yield return new ActionStep.UseOnObject(step.DataId.Value, Quest: null, step.Action.Value, CompletionFlags: null);
                     yield return new WaitAtEnd.WaitDelay(TimeSpan.FromSeconds(delayAfter));
                     yield return CreateTask(quest, sequence, step);
                     break;
@@ -139,7 +139,7 @@ internal static class Combat
             bool isLastStep,
             EEnemySpawnType enemySpawnType,
             IList<uint> killEnemyDataIds,
-            IList<QuestWorkValue?> completionQuestVariablesFlags,
+            IList<QuestWorkValue?> completionFlags,
             IList<ComplexCombatData> complexCombatData,
             CombatItemUse? combatItemUse)
         {
@@ -147,12 +147,12 @@ internal static class Combat
             {
                 ElementId = elementId,
                 Sequence = sequence,
-                CompletionQuestVariablesFlags = completionQuestVariablesFlags,
+                CompletionQuestVariablesFlags = completionFlags,
                 SpawnType = enemySpawnType,
                 KillEnemyDataIds = killEnemyDataIds.ToList(),
                 ComplexCombatDatas = complexCombatData.ToList(),
                 CombatItemUse = combatItemUse
-            }, completionQuestVariablesFlags, isLastStep);
+            }, completionFlags, isLastStep);
         }
     }
 
@@ -186,14 +186,14 @@ internal static class Combat
     internal sealed record Task
     (
         CombatController.CombatData CombatData,
-        IList<QuestWorkValue?> CompletionQuestVariableFlags,
+        IList<QuestWorkValue?> CompletionFlags,
         bool IsLastStep) : ITask
     {
         public override string ToString()
         {
             if (CombatData.SpawnType == EEnemySpawnType.FinishCombatIfAny)
                 return "HandleCombat(wait: not in combat, optional)";
-            if (QuestWorkUtils.HasCompletionFlags(CompletionQuestVariableFlags))
+            if (QuestWorkUtils.HasCompletionFlags(CompletionFlags))
                 return "HandleCombat(wait: QW flags)";
             if (IsLastStep)
                 return "HandleCombat(wait: next sequence)";
@@ -202,7 +202,7 @@ internal static class Combat
         }
     }
 
-    internal sealed class HandleCombat
+    internal sealed class Executor
     (
         CombatController combatController,
         IQuestGameState gameState) : TaskExecutor<Task>
@@ -217,14 +217,14 @@ internal static class Combat
             if (_status != CombatController.EStatus.Complete)
                 return ETaskResult.StillRunning;
 
-            if (QuestWorkUtils.HasCompletionFlags(Task.CompletionQuestVariableFlags) &&
+            if (QuestWorkUtils.HasCompletionFlags(Task.CompletionFlags) &&
                 Task.CombatData.ElementId is QuestId questId)
             {
                 QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(questId);
                 if (questWork == null)
                     return ETaskResult.StillRunning;
 
-                if (QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariableFlags, questWork))
+                if (QuestWorkUtils.MatchesQuestWork(Task.CompletionFlags, questWork))
                     return ETaskResult.TaskComplete;
 
                 return ETaskResult.StillRunning;

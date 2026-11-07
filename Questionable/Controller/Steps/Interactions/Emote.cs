@@ -44,7 +44,7 @@ internal static class Emote
     }
 
     internal sealed class UseOnObjectExecutor(ChatFunctions chatFunctions)
-        : AbstractDelayedTaskExecutor<UseOnObject>
+        : DelayedTaskExecutor<UseOnObject>
     {
         private bool _emoteFired;
 
@@ -70,7 +70,7 @@ internal static class Emote
         public override string ToString() => $"Emote({Emote})";
     }
 
-    internal sealed class UseOnSelfExecutor(ChatFunctions chatFunctions) : AbstractDelayedTaskExecutor<UseOnSelf>
+    internal sealed class UseOnSelfExecutor(ChatFunctions chatFunctions) : DelayedTaskExecutor<UseOnSelf>
     {
         protected override bool StartInternal()
         {

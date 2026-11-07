@@ -162,7 +162,7 @@ internal sealed class GatherChillProvider(GatherChillIpc gatherChillIpc, Gatheri
     protected override string CancelLabel => "gathering";
     public override bool HandlesLeadInTravel => true;
 
-    protected override bool MatchesExecutor(ITaskExecutor? executor) => executor is Gather.StartGathering;
+    protected override bool MatchesExecutor(ITaskExecutor? executor) => executor is Gather.Executor;
     protected override void PollOperation() => gatherChillIpc.PollOperation();
     protected override void CancelWork() => gatherChillIpc.CancelWork();
     protected override void ObserveIdle() => gatherChillIpc.ObserveIdle();

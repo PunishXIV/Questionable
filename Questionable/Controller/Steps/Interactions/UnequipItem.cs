@@ -26,10 +26,10 @@ internal static class UnequipItem
         public override string ToString() => $"Unequip({ItemId})";
     }
 
-    internal sealed class DoUnequip
+    internal sealed class Executor
     (
         IDataManager dataManager,
-        ILogger<DoUnequip> logger) : TaskExecutor<Task>, IToastAware
+        ILogger<Executor> logger) : TaskExecutor<Task>, IToastAware
     {
         private const int MaxAttempts = 3;
 

@@ -41,11 +41,11 @@ internal static class SkipCondition
                 return null;
             }
 
-            return new SkipTask(step, skipConditions ?? new(), quest.Id);
+            return new Task(step, skipConditions ?? new(), quest.Id);
         }
     }
 
-    internal sealed record SkipTask
+    internal sealed record Task
     (
         QuestStep Step,
         SkipStepConditions SkipConditions,
@@ -54,9 +54,9 @@ internal static class SkipCondition
         public override string ToString() => "CheckSkip";
     }
 
-    internal sealed class CheckSkip
+    internal sealed class Executor
     (
-        ILogger<CheckSkip> logger,
+        ILogger<Executor> logger,
         Configuration configuration,
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
@@ -65,7 +65,7 @@ internal static class SkipCondition
         IObjectTable objectTable,
         ICondition condition,
         ExtraConditionUtils extraConditionUtils,
-        ClassJobUtils classJobUtils) : TaskExecutor<SkipTask>
+        ClassJobUtils classJobUtils) : TaskExecutor<Task>
     {
         protected override bool Start()
         {
@@ -75,68 +75,68 @@ internal static class SkipCondition
 
             logger.LogInformation("Checking skip conditions; {ConfiguredConditions}", string.Join(",", skipConditions));
 
-            if (CheckFlyingCondition(step, skipConditions))
+            if (CheckFlying(step, skipConditions))
                 return true;
 
-            if (CheckUnlockedMountCondition(skipConditions))
+            if (CheckChocobo(skipConditions))
                 return true;
 
-            if (CheckDivingCondition(skipConditions))
+            if (CheckDiving(skipConditions))
                 return true;
 
-            if (CheckTerritoryCondition(skipConditions))
+            if (CheckTerritory(skipConditions))
                 return true;
 
-            if (CheckQuestConditions(skipConditions))
+            if (CheckQuests(skipConditions))
                 return true;
 
-            if (CheckTargetableCondition(step, skipConditions))
+            if (CheckTargetable(step, skipConditions))
                 return true;
 
-            if (CheckNameplateCondition(step, skipConditions))
+            if (CheckNameplate(step, skipConditions))
                 return true;
 
-            if (CheckDutiesUnlockedCondition(skipConditions))
+            if (CheckDutiesUnlocked(skipConditions))
                 return true;
 
-            if (CheckDutiesCompletedCondition(skipConditions))
+            if (CheckDutiesCompleted(skipConditions))
                 return true;
 
-            if (CheckItemCondition(step, skipConditions))
+            if (CheckItem(step, skipConditions))
                 return true;
 
-            if (CheckAetheryteCondition(step, skipConditions))
+            if (CheckAetheryte(step, skipConditions))
                 return true;
 
-            if (CheckAetherCurrentCondition(step))
+            if (CheckAetherCurrent(step))
                 return true;
 
-            if (CheckQuestWorkConditions(elementId, step))
+            if (CheckQuestWork(elementId, step))
                 return true;
 
-            if (CheckJobCondition(elementId, step))
+            if (CheckJob(elementId, step))
                 return true;
 
-            if (CheckPositionCondition(skipConditions))
+            if (CheckPosition(skipConditions))
                 return true;
 
             if (skipConditions.ExtraCondition != null && skipConditions.ExtraCondition != EExtraSkipCondition.None &&
-                extraConditionUtils.MatchesExtraCondition(skipConditions.ExtraCondition.Value))
+                extraConditionUtils.Matches(skipConditions.ExtraCondition.Value))
             {
                 logger.LogInformation("Skipping step, extra condition {ExtraCondition} matches", skipConditions.ExtraCondition);
                 return true;
             }
 
-            if (CheckPickUpTurnInQuestIds(step))
+            if (CheckPickUpTurnIn(step))
                 return true;
 
-            if (CheckTaxiStandUnlocked(step))
+            if (CheckTaxiStand(step))
                 return true;
 
             return false;
         }
 
-        private bool CheckFlyingCondition(QuestStep step, SkipStepConditions skipConditions)
+        private bool CheckFlying(QuestStep step, SkipStepConditions skipConditions)
         {
             if (skipConditions.Flying == ELockedSkipCondition.Unlocked &&
                 GameFunctions.IsFlyingUnlocked(step.TerritoryId))
@@ -155,7 +155,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private unsafe bool CheckUnlockedMountCondition(SkipStepConditions skipConditions)
+        private unsafe bool CheckChocobo(SkipStepConditions skipConditions)
         {
             if (skipConditions.Chocobo == ELockedSkipCondition.Unlocked &&
                 PlayerState.Instance()->IsMountUnlocked(1))
@@ -167,7 +167,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckTerritoryCondition(SkipStepConditions skipConditions)
+        private bool CheckTerritory(SkipStepConditions skipConditions)
         {
             if (skipConditions.InTerritory.Count > 0 &&
                 skipConditions.InTerritory.Contains(clientState.TerritoryType))
@@ -186,7 +186,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckDivingCondition(SkipStepConditions skipConditions)
+        private bool CheckDiving(SkipStepConditions skipConditions)
         {
             if (skipConditions.Diving == true && condition[ConditionFlag.Diving])
             {
@@ -203,7 +203,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckQuestConditions(SkipStepConditions skipConditions)
+        private bool CheckQuests(SkipStepConditions skipConditions)
         {
             if (skipConditions.QuestsCompleted.Count > 0 &&
                 skipConditions.QuestsCompleted.All(questFunctions.IsQuestComplete))
@@ -222,7 +222,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckTargetableCondition(QuestStep step, SkipStepConditions skipConditions)
+        private bool CheckTargetable(QuestStep step, SkipStepConditions skipConditions)
         {
             if (skipConditions.NotTargetable &&
                 step is { DataId: not null })
@@ -246,7 +246,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private unsafe bool CheckNameplateCondition(QuestStep step, SkipStepConditions skipConditions)
+        private unsafe bool CheckNameplate(QuestStep step, SkipStepConditions skipConditions)
         {
             if (skipConditions.NotNamePlateIconId.Count > 0 &&
                 step is { DataId: not null })
@@ -267,7 +267,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckDutiesUnlockedCondition(SkipStepConditions skipConditions)
+        private bool CheckDutiesUnlocked(SkipStepConditions skipConditions)
         {
             if (skipConditions.DutiesUnlocked.Count > 0)
             {
@@ -280,7 +280,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckDutiesCompletedCondition(SkipStepConditions skipConditions)
+        private bool CheckDutiesCompleted(SkipStepConditions skipConditions)
         {
             if (skipConditions.DutiesCompleted.Count > 0)
             {
@@ -293,7 +293,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private unsafe bool CheckItemCondition(QuestStep step, SkipStepConditions skipConditions)
+        private unsafe bool CheckItem(QuestStep step, SkipStepConditions skipConditions)
         {
             CraftingItem? target = GetItemTarget(Task.ElementId, step);
             if (target == null)
@@ -337,7 +337,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckAetheryteCondition(QuestStep step, SkipStepConditions skipConditions)
+        private bool CheckAetheryte(QuestStep step, SkipStepConditions skipConditions)
         {
             if (step is { Aetheryte: { } aetheryteLocation, InteractionType: EInteractionType.AttuneAetheryte } &&
                 aetheryteFunctions.IsAetheryteUnlocked(aetheryteLocation))
@@ -380,7 +380,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckAetherCurrentCondition(QuestStep step)
+        private bool CheckAetherCurrent(QuestStep step)
         {
             if (step is { InteractionType: EInteractionType.AttuneAetherCurrent } &&
                 configuration.Advanced.SkipAetherCurrents)
@@ -399,7 +399,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckQuestWorkConditions(ElementId elementId, QuestStep step)
+        private bool CheckQuestWork(ElementId elementId, QuestStep step)
         {
             QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(elementId);
             if (questWork != null)
@@ -447,7 +447,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private unsafe bool CheckJobCondition(ElementId elementId, QuestStep step)
+        private unsafe bool CheckJob(ElementId elementId, QuestStep step)
         {
             if (step is { RequiredCurrentJob.Count: > 0 })
             {
@@ -466,7 +466,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckPositionCondition(SkipStepConditions skipConditions)
+        private bool CheckPosition(SkipStepConditions skipConditions)
         {
             if (skipConditions.NearPosition is { } nearPosition &&
                 clientState.TerritoryType == nearPosition.TerritoryId)
@@ -493,7 +493,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckPickUpTurnInQuestIds(QuestStep step)
+        private bool CheckPickUpTurnIn(QuestStep step)
         {
             if (step.PickUpQuestId != null)
             {
@@ -530,7 +530,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private unsafe bool CheckTaxiStandUnlocked(QuestStep step)
+        private unsafe bool CheckTaxiStand(QuestStep step)
         {
             UIState* uiState = UIState.Instance();
             if (step.TaxiStandId is not null)

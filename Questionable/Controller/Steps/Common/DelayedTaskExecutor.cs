@@ -1,11 +1,11 @@
 ﻿namespace Questionable.Controller.Steps.Common;
 
-internal abstract class AbstractDelayedTaskExecutor<T>(TimeSpan delay) : TaskExecutor<T>
+internal abstract class DelayedTaskExecutor<T>(TimeSpan delay) : TaskExecutor<T>
 where T : class, ITask
 {
     private DateTime _continueAt;
 
-    protected AbstractDelayedTaskExecutor()
+    protected DelayedTaskExecutor()
         : this(TimeSpan.FromSeconds(5))
     {
     }

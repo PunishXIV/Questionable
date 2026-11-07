@@ -27,7 +27,7 @@ public sealed class TaskRunnerTests
     public void TaskCreationFailuresStopAndReportWithoutStartingReplacement(bool skipping, string failurePoint)
     {
         var expected = new InvalidOperationException("executor failed");
-        var failing = Substitute.For<ITaskExecutor, IStoppableTaskExecutor>();
+        var failing = Substitute.For<ITaskExecutor, IStoppable>();
         failing.Start(Arg.Any<ITask>()).Returns(_ => throw expected);
         ServiceCollection registrations = [];
         if (failurePoint != "missing")
@@ -58,9 +58,9 @@ public sealed class TaskRunnerTests
         Assert.True(fixture.Queue.AllTasksComplete);
         Assert.Equal(0, fixture.Controller.CompletedTasks);
         if (skipping)
-            ((IStoppableTaskExecutor)previous!).Received(1).StopNow();
+            ((IStoppable)previous!).Received(1).StopNow();
         if (failurePoint == "start")
-            ((IStoppableTaskExecutor)failing).Received(1).StopNow();
+            ((IStoppable)failing).Received(1).StopNow();
 
         fixture.Controller.Tick();
         Assert.Equal(0, replacementStarts);
@@ -312,8 +312,8 @@ public sealed class TaskRunnerTests
     {
         using var operations = new ExternalOperationFixture();
         using var fixture = new TaskRunnerFixture();
-        ITaskExecutor executor = new SinglePlayerDuty.WaitSinglePlayerDutyExecutor(operations.BossMod, operations.Movement);
-        ITask task = new SinglePlayerDuty.WaitSinglePlayerDuty(42);
+        ITaskExecutor executor = new QuestBattle.WaitForExitExecutor(operations.BossMod, operations.Movement);
+        ITask task = new QuestBattle.WaitForExit(42);
         Assert.True(fixture.Queue.StartTask(executor, task));
         SeString message = "Event canceled.";
         bool handled = false;
@@ -330,7 +330,7 @@ public sealed class TaskRunnerTests
         ITaskExecutor? previous = null;
         if (skipping)
         {
-            previous = Substitute.For<ITaskExecutor, IStoppableTaskExecutor>();
+            previous = Substitute.For<ITaskExecutor, IStoppable>();
             var current = new WaitAtEnd.WaitDelay();
             previous.Start(current).Returns(true);
             previous.CurrentTask.Returns(current);

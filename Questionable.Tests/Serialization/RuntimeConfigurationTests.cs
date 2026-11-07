@@ -53,7 +53,7 @@ public sealed class RuntimeConfigurationTests : IDisposable
 
         // Exercises the actual redemption entry point: disabled means it must
         // return before consulting quest data, item data, or native inventory.
-        Assert.Empty(RedeemRewardItems.CreateRedeemTasks(null!, null!));
+        Assert.Empty(RedeemRewardItems.CreateTasks(null!, null!));
     }
 
     [Fact]

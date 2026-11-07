@@ -22,11 +22,11 @@ internal static class CreateGearset
         public override string ToString() => "CreateGearset";
     }
 
-    internal sealed class CreateGearsetExecutor
+    internal sealed class Executor
     (
         IClientState clientState,
         ICondition condition,
-        ILogger<CreateGearsetExecutor> logger) : AbstractDelayedTaskExecutor<Task>
+        ILogger<Executor> logger) : DelayedTaskExecutor<Task>
     {
         protected override unsafe bool StartInternal()
         {

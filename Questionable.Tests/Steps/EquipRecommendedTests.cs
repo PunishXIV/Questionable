@@ -14,14 +14,14 @@ public sealed class EquipRecommendedTests
     private readonly TestClock _clock = new();
     private readonly ICondition _condition = Substitute.For<ICondition>();
     private readonly Configuration _configuration = new();
-    private readonly EquipRecommended.DoEquipRecommended _executor;
+    private readonly EquipRecommended.EquipExecutor _executor;
     private int _requests;
 
     public EquipRecommendedTests()
     {
         _configuration.General.GearsetUpdateSource = EGearsetUpdateSource.Stylist;
         _executor = new(null!, _condition, _configuration, null!,
-            NullLogger<EquipRecommended.DoEquipRecommended>.Instance, _clock);
+            NullLogger<EquipRecommended.EquipExecutor>.Instance, _clock);
     }
 
     [Theory]

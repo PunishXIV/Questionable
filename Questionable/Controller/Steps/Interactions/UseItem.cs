@@ -36,7 +36,7 @@ internal static class UseItem
                 {
                     InventoryManager* inventoryManager = InventoryManager.Instance();
                     if (inventoryManager->GetInventoryItemCount(step.ItemId.Value) == 0)
-                        return CreateVesperBayFallbackTask();
+                        return CreateVesperBayFallback();
                 }
 
                 UseOnSelf task = new(quest.Id, step.ItemId.Value, step.CompletionQuestVariablesFlags);
@@ -97,7 +97,7 @@ internal static class UseItem
             }
         }
 
-        private IEnumerable<ITask> CreateVesperBayFallbackTask()
+        private IEnumerable<ITask> CreateVesperBayFallback()
         {
             logger.LogWarning("No vesper bay aetheryte tickets in inventory, navigating via ferry in Limsa instead");
 
@@ -113,21 +113,21 @@ internal static class UseItem
         }
     }
 
-    internal interface IUseItemBase : ITask
+    internal interface IUseTask : ITask
     {
         ElementId? QuestId { get; }
         uint ItemId { get; }
-        IList<QuestWorkValue?> CompletionQuestVariablesFlags { get; }
+        IList<QuestWorkValue?> CompletionFlags { get; }
         bool StartingCombat { get; }
     }
 
-    internal abstract class UseItemExecutorBase<T>
+    internal abstract class ExecutorBase<T>
     (
         ICondition condition,
         ILogger logger,
         IQuestGameState gameState,
         IDataManager dataManager) : TaskExecutor<T>, IToastAware
-    where T : class, IUseItemBase
+    where T : class, IUseTask
     {
         private const int MaxRefusals = 3;
         private static readonly TimeSpan RefusalWindow = TimeSpan.FromSeconds(2);
@@ -141,10 +141,10 @@ internal static class UseItem
 
         private ElementId? QuestId => Task.QuestId;
         protected uint ItemId => Task.ItemId;
-        private IList<QuestWorkValue?> CompletionQuestVariablesFlags => Task.CompletionQuestVariablesFlags;
+        private IList<QuestWorkValue?> CompletionFlags => Task.CompletionFlags;
         private bool StartingCombat => Task.StartingCombat;
 
-        protected abstract bool UseItem();
+        protected abstract bool Use();
 
         private static string GetItemName(IDataManager dataManager, uint itemId)
         {
@@ -164,13 +164,13 @@ internal static class UseItem
             if (_itemCount == 0)
                 throw new TaskException($"Don't have any {GetItemName(dataManager, ItemId)} ({ItemId}) in inventory (checks NQ only)");
 
-            UseItemNow();
+            UseNow();
             return true;
         }
 
-        private void UseItemNow()
+        private void UseNow()
         {
-            ProgressContext = InteractionProgressContext.FromActionUseOrDefault(() => _usedItem = UseItem());
+            ProgressContext = InteractionProgressContext.FromActionUseOrDefault(() => _usedItem = Use());
             _usedAt = DateTime.Now;
             _continueAt = DateTime.Now.Add(GetRetryDelay());
         }
@@ -196,11 +196,11 @@ internal static class UseItem
 
         public override unsafe ETaskResult Update()
         {
-            if (QuestId is QuestId realQuestId && QuestWorkUtils.HasCompletionFlags(CompletionQuestVariablesFlags))
+            if (QuestId is QuestId realQuestId && QuestWorkUtils.HasCompletionFlags(CompletionFlags))
             {
                 QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(realQuestId);
                 if (questWork != null &&
-                    QuestWorkUtils.MatchesQuestWork(CompletionQuestVariablesFlags, questWork))
+                    QuestWorkUtils.MatchesQuestWork(CompletionFlags, questWork))
                     return ETaskResult.TaskComplete;
             }
 
@@ -234,7 +234,7 @@ internal static class UseItem
 
             if (!_usedItem)
             {
-                UseItemNow();
+                UseNow();
                 return ETaskResult.StillRunning;
             }
 
@@ -257,8 +257,8 @@ internal static class UseItem
         ElementId? QuestId,
         uint DataId,
         uint ItemId,
-        IList<QuestWorkValue?> CompletionQuestVariablesFlags,
-        bool StartingCombat = false) : IUseItemBase
+        IList<QuestWorkValue?> CompletionFlags,
+        bool StartingCombat = false) : IUseTask
     {
         public override string ToString() => $"UseItem({ItemId} on ground at {DataId})";
     }
@@ -270,9 +270,9 @@ internal static class UseItem
         ILogger<UseOnGroundExecutor> logger,
         IQuestGameState gameState,
         IDataManager dataManager)
-        : UseItemExecutorBase<UseOnGround>(condition, logger, gameState, dataManager)
+        : ExecutorBase<UseOnGround>(condition, logger, gameState, dataManager)
     {
-        protected override bool UseItem() => gameFunctions.UseItemOnGround(Task.DataId, ItemId);
+        protected override bool Use() => gameFunctions.UseItemOnGround(Task.DataId, ItemId);
     }
 
     internal sealed record UseOnPosition
@@ -280,8 +280,8 @@ internal static class UseItem
         ElementId? QuestId,
         Vector3 Position,
         uint ItemId,
-        IList<QuestWorkValue?> CompletionQuestVariablesFlags,
-        bool StartingCombat = false) : IUseItemBase
+        IList<QuestWorkValue?> CompletionFlags,
+        bool StartingCombat = false) : IUseTask
     {
         public override string ToString() => $"UseItem({ItemId} on ground at {Position.ToString("G5", CultureInfo.InvariantCulture)})";
     }
@@ -293,9 +293,9 @@ internal static class UseItem
         ILogger<UseOnPosition> logger,
         IQuestGameState gameState,
         IDataManager dataManager)
-        : UseItemExecutorBase<UseOnPosition>(condition, logger, gameState, dataManager)
+        : ExecutorBase<UseOnPosition>(condition, logger, gameState, dataManager)
     {
-        protected override bool UseItem() => gameFunctions.UseItemOnPosition(Task.Position, ItemId);
+        protected override bool Use() => gameFunctions.UseItemOnPosition(Task.Position, ItemId);
     }
 
     internal sealed record UseOnObject
@@ -303,8 +303,8 @@ internal static class UseItem
         ElementId? QuestId,
         uint DataId,
         uint ItemId,
-        IList<QuestWorkValue?> CompletionQuestVariablesFlags,
-        bool StartingCombat = false) : IUseItemBase
+        IList<QuestWorkValue?> CompletionFlags,
+        bool StartingCombat = false) : IUseTask
     {
         public override string ToString() => $"UseItem({ItemId} on {DataId})";
     }
@@ -316,17 +316,17 @@ internal static class UseItem
         ILogger<UseOnObject> logger,
         IQuestGameState gameState,
         IDataManager dataManager)
-        : UseItemExecutorBase<UseOnObject>(condition, logger, gameState, dataManager)
+        : ExecutorBase<UseOnObject>(condition, logger, gameState, dataManager)
     {
-        protected override bool UseItem() => gameFunctions.UseItem(Task.DataId, ItemId);
+        protected override bool Use() => gameFunctions.UseItem(Task.DataId, ItemId);
     }
 
     internal sealed record UseOnSelf
     (
         ElementId? QuestId,
         uint ItemId,
-        IList<QuestWorkValue?> CompletionQuestVariablesFlags,
-        bool StartingCombat = false) : IUseItemBase
+        IList<QuestWorkValue?> CompletionFlags,
+        bool StartingCombat = false) : IUseTask
     {
         public override string ToString() => $"UseItem({ItemId})";
     }
@@ -338,8 +338,8 @@ internal static class UseItem
         ILogger<UseOnSelf> logger,
         IQuestGameState gameState,
         IDataManager dataManager)
-        : UseItemExecutorBase<UseOnSelf>(condition, logger, gameState, dataManager)
+        : ExecutorBase<UseOnSelf>(condition, logger, gameState, dataManager)
     {
-        protected override bool UseItem() => gameFunctions.UseItem(ItemId);
+        protected override bool Use() => gameFunctions.UseItem(ItemId);
     }
 }

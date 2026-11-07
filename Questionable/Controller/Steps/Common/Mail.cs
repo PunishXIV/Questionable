@@ -26,23 +26,23 @@ internal static class Mail
             if (MogmailIpc.LetterCount == 0)
                 yield break;
 
-            var objList = FindDeliveryMoogle(objectTable);
-            if (objList.TryGetFirst(out IGameObject? moogle) && moogle != null)
+            var moogles = FindDeliveryMoogle(objectTable);
+            if (moogles.TryGetFirst(out IGameObject? moogle) && moogle != null)
             {
                 logger.LogDebug("Moving to moogle");
                 yield return new MoveTask(step, moogle.Position);
-                yield return new ClaimMailTask(moogle);
+                yield return new ClaimTask(moogle);
             }
         }
     }
 
-    internal sealed record ClaimMailTask(IGameObject GameObject) : ITask
+    internal sealed record ClaimTask(IGameObject GameObject) : ITask
     {
         public bool ShouldRedoOnInterrupt() => true;
         public override string ToString() => "ClaimMail()";
     }
 
-    internal sealed class ClaimMailExecutor(ITargetManager targetManager, MogmailIpc mogmailIpc) : TaskExecutor<ClaimMailTask>
+    internal sealed class ClaimExecutor(ITargetManager targetManager, MogmailIpc mogmailIpc) : TaskExecutor<ClaimTask>
     {
         protected unsafe override bool Start()
         {
@@ -69,8 +69,8 @@ internal static class Mail
         var sheet = Svc.Data.Excel.GetSheet<ENpcBase>();
         foreach (IGameObject? obj in objectTable)
         {
-            if (sheet.TryGetRow(obj.BaseId, out var enpcsheet))
-                if (enpcsheet.ENpcData.Any(x => x.RowId == 720898))
+            if (sheet.TryGetRow(obj.BaseId, out var npc))
+                if (npc.ENpcData.Any(x => x.RowId == 720898))
                     yield return obj;
         }
     }

@@ -12,12 +12,12 @@ internal static class LogQuestCompletion
         public override string ToString() => $"LogQuestCompletion({Quest?.Id.Value.ToString(CultureInfo.InvariantCulture) ?? "???"})";
     }
 
-    internal sealed class LogQuestCompletionExecutor
+    internal sealed class Executor
     (
         IClientState clientState,
         IObjectTable objectTable,
         IDalamudPluginInterface pluginInterface,
-        ILogger<LogQuestCompletionExecutor> logger) : TaskExecutor<Task>
+        ILogger<Executor> logger) : TaskExecutor<Task>
     {
         protected override bool Start()
         {
@@ -26,26 +26,26 @@ internal static class LogQuestCompletion
                 throw new TaskException("Player is not logged in or quest is null");
             }
 
-            LogQuestCompletionAction();
+            AddEntry();
             return true;
         }
 
         public override ETaskResult Update() => ETaskResult.TaskComplete;
 
-        public void LogQuestCompletionAction()
+        public void AddEntry()
         {
             if (Task.Quest == null)
                 return;
             logger.LogInformation($"Logging quest completion: {Task.Quest?.Id.Value}");
             string path = Path.Combine(pluginInterface.ConfigDirectory.FullName, "QuestCompletionLog.json");
-            List<QuestCompletion> data = ReadQuestCompletions();
+            List<QuestCompletion> data = ReadLog();
             QuestInfo? info = (QuestInfo?)Task.Quest?.Info;
             data.Add(new()
             {
                 Quest = $"{info?.QuestId}_{info?.SimplifiedName}",
                 LastChecked = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
             });
-            WriteQuestCompletions(data);
+            WriteLog(data);
         }
 
         public override bool ShouldInterruptOnDamage() => false;
@@ -57,7 +57,7 @@ internal static class LogQuestCompletion
         public required string LastChecked { get; init; }
     }
 
-    internal static List<QuestCompletion> ReadQuestCompletions()
+    internal static List<QuestCompletion> ReadLog()
     {
         List<QuestCompletion> data = [];
         if (File.Exists(LogPath))
@@ -76,7 +76,7 @@ internal static class LogQuestCompletion
         return data;
     }
 
-    internal static void WriteQuestCompletions(List<QuestCompletion> questCompletions)
+    internal static void WriteLog(List<QuestCompletion> questCompletions)
     {
         JsonNode? node = JsonSerializer.SerializeToNode(questCompletions, JsonOptions.Default)!;
         using FileStream writeStream = File.Create(LogPath);
@@ -88,7 +88,7 @@ internal static class LogQuestCompletion
         node.WriteTo(writer, JsonOptions.Default);
     }
 
-    internal static void ClearQuestCompletions()
+    internal static void ClearLog()
     {
         JsonNode? node = JsonSerializer.SerializeToNode(new List<QuestCompletion>(), JsonOptions.Default)!;
         using FileStream writeStream = File.Create(LogPath);

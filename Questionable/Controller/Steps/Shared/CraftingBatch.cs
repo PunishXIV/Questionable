@@ -4,7 +4,7 @@ namespace Questionable.Controller.Steps.Shared;
 
 internal static class CraftingBatch
 {
-    internal static IReadOnlyList<CraftingItem>? Resolve(Craft.CraftTask task, IReadOnlySet<uint>? requiredItemIds)
+    internal static IReadOnlyList<CraftingItem>? Resolve(Craft.Task task, IReadOnlySet<uint>? requiredItemIds)
     {
         // Legacy list-only step without item targets.
         if (task.ItemId == null && task.ItemCount == null)
@@ -34,7 +34,7 @@ internal static class CraftingBatch
             if (!requiredItemIds.Contains(craft.Step.ItemId!.Value))
                 continue;
 
-            IReadOnlyList<CraftingItem> targets = Craft.GetItemTargets(new Craft.CraftTask(task.Quest, task.Sequence, craft.Step));
+            IReadOnlyList<CraftingItem> targets = Craft.GetItemTargets(new Craft.Task(task.Quest, task.Sequence, craft.Step));
             if (targets.Count != 1 || targets[0].ItemId != craft.Step.ItemId.Value)
                 return null;
 

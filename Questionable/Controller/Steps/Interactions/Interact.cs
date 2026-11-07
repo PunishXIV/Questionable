@@ -43,7 +43,7 @@ internal static class Interact
             {
                 if (step.InteractionType == EInteractionType.SinglePlayerDuty &&
                     bossModIpc.CanRunQuestBattle(quest.Id, step.SinglePlayerDutyOptions))
-                    yield return new SinglePlayerDuty.LeaveParty();
+                    yield return new QuestBattle.LeaveParty();
 
                 if (step.InteractionType is EInteractionType.AcceptQuest && sequence.Sequence > 0 && redoUtil.IsRedoActive())
                 {
@@ -127,21 +127,21 @@ internal static class Interact
         uint? PickUpItemId = null,
         uint? TaxiStandId = null,
         SkipStepConditions? SkipConditions = null,
-        List<QuestWorkValue?>? CompletionQuestVariablesFlags = null) : ITask
+        List<QuestWorkValue?>? CompletionFlags = null) : ITask
     {
-        public List<QuestWorkValue?> CompletionQuestVariablesFlags { get; } = CompletionQuestVariablesFlags ?? [];
+        public List<QuestWorkValue?> CompletionFlags { get; } = CompletionFlags ?? [];
 
-        public bool HasCompletionQuestVariablesFlags { get; } =
+        public bool HasCompletionFlags { get; } =
             Quest != null &&
-            CompletionQuestVariablesFlags != null &&
-            QuestWorkUtils.HasCompletionFlags(CompletionQuestVariablesFlags);
+            CompletionFlags != null &&
+            QuestWorkUtils.HasCompletionFlags(CompletionFlags);
 
         public bool ShouldRedoOnInterrupt() => true;
 
-        public override string ToString() => $"Interact{(HasCompletionQuestVariablesFlags ? "*" : "")}({DataId})";
+        public override string ToString() => $"Interact{(HasCompletionFlags ? "*" : "")}({DataId})";
     }
 
-    internal sealed class DoInteract
+    internal sealed class Executor
     (
         GameFunctions gameFunctions,
         CameraFunctions cameraFunctions,
@@ -150,7 +150,7 @@ internal static class Interact
         ICondition condition,
         IObjectTable objectTable,
         ClassJobUtils classJobUtils,
-        ILogger<DoInteract> logger,
+        ILogger<Executor> logger,
         IQuestGameState gameState)
         : TaskExecutor<Task>, IConditionChangeAware
     {
@@ -158,13 +158,13 @@ internal static class Interact
         private EInteractionState _interactionState = EInteractionState.None;
         private bool _needsFacing;
         private bool _needsUnmount;
-        private bool _reportedGameObjNull;
+        private bool _reportedNoObject;
         private string? _loggedAcceptableJobs;
         private bool _reportedWrongJob;
         private ushort _unequipItem;
 
         // Process a possible cancellation from combat before the next step.
-        private bool delayedFinalCheck;
+        private bool _delayedFinalCheck;
 
         public Quest? Quest => Task.Quest;
         public EInteractionType InteractionType { get; set; }
@@ -230,11 +230,11 @@ internal static class Interact
             }
             else if (InteractionType == EInteractionType.Gather && condition[ConditionFlag.Gathering])
                 return ETaskResult.TaskComplete;
-            else if (Quest != null && Task.HasCompletionQuestVariablesFlags)
+            else if (Quest != null && Task.HasCompletionFlags)
             {
                 QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(Quest.Id);
 
-                if (questWork != null && QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags, questWork))
+                if (questWork != null && QuestWorkUtils.MatchesQuestWork(Task.CompletionFlags, questWork))
                     return ETaskResult.TaskComplete;
             }
             else if (ProgressContext != null)
@@ -242,13 +242,13 @@ internal static class Interact
                 if (ProgressContext.WasInterrupted())
                     return ETaskResult.StillRunning;
 
-                if (ProgressContext.WasSuccessful() || _interactionState == EInteractionState.InteractionConfirmed)
+                if (ProgressContext.WasSuccessful() || _interactionState == EInteractionState.Confirmed)
                 {
-                    if (delayedFinalCheck)
+                    if (_delayedFinalCheck)
                         return ETaskResult.TaskComplete;
 
                     _continueAt = DateTime.Now.AddSeconds(0.2);
-                    delayedFinalCheck = true;
+                    _delayedFinalCheck = true;
                     return ETaskResult.StillRunning;
                 }
             }
@@ -256,16 +256,16 @@ internal static class Interact
             IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
             if (gameObject == null)
             {
-                if (!_reportedGameObjNull)
+                if (!_reportedNoObject)
                 {
                     logger.LogDebug("gameObject is null");
-                    _reportedGameObjNull = true;
+                    _reportedNoObject = true;
                 }
 
                 return ETaskResult.StillRunning;
             }
 
-            _reportedGameObjNull = false;
+            _reportedNoObject = false;
 
             if (_needsFacing)
             {
@@ -364,12 +364,12 @@ internal static class Interact
                 return;
 
             logger.LogDebug("Condition change: {Flag} = {Value}", flag, value);
-            if (_interactionState == EInteractionState.InteractionTriggered &&
+            if (_interactionState == EInteractionState.Triggered &&
                 flag is ConditionFlag.OccupiedInQuestEvent or ConditionFlag.OccupiedInEvent &&
                 value)
             {
                 logger.LogInformation("Interaction was most likely triggered");
-                _interactionState = EInteractionState.InteractionConfirmed;
+                _interactionState = EInteractionState.Confirmed;
             }
         }
 
@@ -414,7 +414,7 @@ internal static class Interact
                 InteractionProgressContext.FromActionUseOrDefault(() =>
                 {
                     if (gameFunctions.InteractWith(gameObject))
-                        _interactionState = EInteractionState.InteractionTriggered;
+                        _interactionState = EInteractionState.Triggered;
                     else
                         _interactionState = EInteractionState.None;
                     return _interactionState != EInteractionState.None;
@@ -434,8 +434,8 @@ internal static class Interact
         private enum EInteractionState
         {
             None,
-            InteractionTriggered,
-            InteractionConfirmed
+            Triggered,
+            Confirmed
         }
     }
 }

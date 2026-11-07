@@ -137,10 +137,12 @@ public sealed class QuestionablePlugin(
             Sponsor = "https://ko-fi.com/alydev"
         });
 
+        HashSet<string> namespaces = typeof(QuestionablePlugin).Assembly.GetTypes()
+            .Select(x => x.Namespace).OfType<string>().ToHashSet();
         ServiceCollection serviceCollection = [];
         serviceCollection.AddLogging(builder => builder.SetMinimumLevel(LogLevel.Trace)
             .ClearProviders()
-            .AddDalamudLogger(pluginLog, t => t[(t.LastIndexOf('.') + 1)..]));
+            .AddDalamudLogger(pluginLog, t => LogCategory(t, namespaces)));
 
         // Dalamud services supplied to the plugin constructor - Injectio can't discover these.
         serviceCollection.AddSingleton<IAsyncDalamudPlugin>(this);
@@ -243,5 +245,17 @@ public sealed class QuestionablePlugin(
         serviceProvider.GetRequiredService<YesAlreadyIpc>();
 
         _pathDataUpdater.CheckForUpdates();
+    }
+
+    // Categories use dots for nested types too, so cut only the namespace: Craft.Executor, not Executor.
+    private static string LogCategory(string category, HashSet<string> namespaces)
+    {
+        for (int i = category.LastIndexOf('.'); i > 0; i = category.LastIndexOf('.', i - 1))
+        {
+            if (namespaces.Contains(category[..i]))
+                return category[(i + 1)..];
+        }
+
+        return category[(category.LastIndexOf('.') + 1)..];
     }
 }

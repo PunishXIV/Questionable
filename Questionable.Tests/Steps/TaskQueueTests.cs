@@ -147,7 +147,7 @@ public sealed class TaskQueueTests
         public bool ShouldRedoOnInterrupt() => Redo;
     }
 
-    private sealed class Executor : TaskExecutor<TestTask>, ITaskExecutor.IStoppableTaskExecutor
+    private sealed class Executor : TaskExecutor<TestTask>, ITaskExecutor.IStoppable
     {
         public Func<bool> OnStart { get; init; } = () => true;
         public Action OnStop { get; init; } = () => { };

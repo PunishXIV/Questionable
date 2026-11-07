@@ -36,10 +36,10 @@ internal static class AetherCurrent
         public override string ToString() => $"AttuneAetherCurrent({AetherCurrentId})";
     }
 
-    internal sealed class DoAttune
+    internal sealed class AttuneExecutor
     (
         GameFunctions gameFunctions,
-        ILogger<DoAttune> logger) : TaskExecutor<Attune>
+        ILogger<AttuneExecutor> logger) : TaskExecutor<Attune>
     {
         protected override bool Start()
         {

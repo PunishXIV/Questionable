@@ -37,7 +37,7 @@ internal sealed class TaskQueue(ILogger logger)
         if (CurrentTaskExecutor != null)
             throw new InvalidOperationException("A task is already running.");
 
-        // Retain the executor during startup so partial acquisitions can be cleaned up.
+        // Keep the executor during startup so partial acquisitions can be cleaned up.
         CurrentTaskExecutor = executor;
         try
         {
@@ -57,17 +57,17 @@ internal sealed class TaskQueue(ILogger logger)
     public bool CancelCurrentTask()
     {
         ITaskExecutor? executor = CurrentTaskExecutor;
-        // Detach before calling external code, including reentrant or throwing cleanup.
+        // Clear it before calling external code, including reentrant or throwing cleanup.
         CurrentTaskExecutor = null;
         try
         {
-            if (executor is ITaskExecutor.IStoppableTaskExecutor stoppable)
+            if (executor is ITaskExecutor.IStoppable stoppable)
                 stoppable.StopNow();
             return true;
         }
         catch (Exception e)
         {
-            logger.LogError(e, "Failed to cancel task {ExecutorType}", executor?.GetType().Name);
+            logger.LogError(e, "Failed to cancel task {ExecutorType}", executor?.GetType().FullName?.Split('.')[^1].Replace('+', '.'));
             return false;
         }
     }

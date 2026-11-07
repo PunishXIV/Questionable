@@ -24,10 +24,10 @@ internal static class StatusOff
         public override string ToString() => $"StatusOff({Status})";
     }
 
-    internal sealed class DoStatusOff
+    internal sealed class Executor
     (
         GameFunctions gameFunctions)
-        : AbstractDelayedTaskExecutor<Task>
+        : DelayedTaskExecutor<Task>
     {
         protected override bool StartInternal()
         {

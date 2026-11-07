@@ -9,16 +9,16 @@ using Questionable.Model.Questing;
 using static Questionable.Controller.Steps.ITaskExecutor;
 namespace Questionable.Controller.Steps.Interactions;
 
-internal static class SinglePlayerDuty
+internal static class QuestBattle
 {
     internal const int MaxRetries = 5;
 
     internal sealed class RetryCounter
     {
-        private (string ContentId, ElementId QuestId, uint CfcId, byte Sequence)? _lastRetryKey;
-        private int _retryCount;
+        private (string ContentId, ElementId QuestId, uint CfcId, byte Sequence)? _lastKey;
+        private int _count;
 
-        public int RecordRetry(string? contentId, ElementId questId, uint cfcId, byte sequence)
+        public int Record(string? contentId, ElementId questId, uint cfcId, byte sequence)
         {
             if (contentId == null)
             {
@@ -27,18 +27,18 @@ internal static class SinglePlayerDuty
             }
 
             var key = (contentId, questId, cfcId, sequence);
-            if (_lastRetryKey != key)
+            if (_lastKey != key)
             {
-                _lastRetryKey = key;
-                _retryCount = 0;
+                _lastKey = key;
+                _count = 0;
             }
 
-            return ++_retryCount;
+            return ++_count;
         }
 
         public void Observe(string? contentId, Func<ElementId, byte?> getSequence)
         {
-            if (_lastRetryKey is not { } key)
+            if (_lastKey is not { } key)
                 return;
 
             if (key.ContentId != contentId || getSequence(key.QuestId) != key.Sequence)
@@ -47,8 +47,8 @@ internal static class SinglePlayerDuty
 
         public void Clear()
         {
-            _lastRetryKey = null;
-            _retryCount = 0;
+            _lastKey = null;
+            _count = 0;
         }
     }
 
@@ -70,19 +70,19 @@ internal static class SinglePlayerDuty
         internal static IEnumerable<ITask> CreateDutyTasks(uint cfcId, ElementId questId, byte sequence)
         {
             yield return new MountStep.UnmountTask();
-            yield return new StartSinglePlayerDuty(cfcId);
+            yield return new Start(cfcId);
             yield return new EnableAi(cfcId);
-            yield return new WaitSinglePlayerDuty(cfcId);
+            yield return new WaitForExit(cfcId);
             yield return new DisableAi();
-            yield return new WaitForSinglePlayerDutyOutcome(cfcId, questId, sequence);
+            yield return new WaitForOutcome(cfcId, questId, sequence);
         }
     }
-    internal sealed record StartSinglePlayerDuty(uint ContentFinderConditionId) : ITask
+    internal sealed record Start(uint CfcId) : ITask
     {
-        public override string ToString() => $"Wait(BossMod, entered instance {ContentFinderConditionId})";
+        public override string ToString() => $"Wait(BossMod, entered instance {CfcId})";
     }
 
-    internal sealed class StartSinglePlayerDutyExecutor(ICondition condition) : TaskExecutor<StartSinglePlayerDuty>
+    internal sealed class StartExecutor(ICondition condition) : TaskExecutor<Start>
     {
         private DateTime _enteredAt = DateTime.MinValue;
 
@@ -99,12 +99,12 @@ internal static class SinglePlayerDuty
             {
                 ContentsFinder* contentsFinder = ContentsFinder.Instance();
                 if (contentsFinder != null &&
-                    CanConfirmEntry(Task.ContentFinderConditionId, contentsFinder->QueueInfo.PoppedQueueEntry.Id,
+                    CanConfirmEntry(Task.CfcId, contentsFinder->QueueInfo.PoppedQueueEntry.Id,
                         contentsFinder->QueueInfo.PoppedQueueEntry.ContentType == ContentsType.Regular) &&
                     EzThrottler.Throttle("Questionable.SoloDuty.Confirm", 2000))
                     confirm.Commence();
             }
-            if (gameMain->CurrentContentFinderConditionId != Task.ContentFinderConditionId)
+            if (gameMain->CurrentContentFinderConditionId != Task.CfcId)
                 return ETaskResult.StillRunning;
 
             if (!condition[ConditionFlag.BoundByDuty])
@@ -125,18 +125,18 @@ internal static class SinglePlayerDuty
             requestedContent != 0 && regularDuty && poppedContent == requestedContent;
     }
 
-    internal sealed record EnableAi(uint ContentFinderConditionId) : ITask
+    internal sealed record EnableAi(uint CfcId) : ITask
     {
-        public override string ToString() => $"BossMod.RunSoloDuty({ContentFinderConditionId})";
+        public override string ToString() => $"BossMod.RunSoloDuty({CfcId})";
     }
 
     internal sealed class EnableAiExecutor
     (
-        BossModIpc bossModIpc) : TaskExecutor<EnableAi>, IStoppableTaskExecutor
+        BossModIpc bossModIpc) : TaskExecutor<EnableAi>, IStoppable
     {
         protected override bool Start()
         {
-            bossModIpc.StartQuestBattle(Task.ContentFinderConditionId);
+            bossModIpc.StartQuestBattle(Task.CfcId);
             return true;
         }
 
@@ -151,16 +151,16 @@ internal static class SinglePlayerDuty
         public override bool ShouldInterruptOnDamage() => false;
     }
 
-    internal sealed record WaitSinglePlayerDuty(uint ContentFinderConditionId) : ITask
+    internal sealed record WaitForExit(uint CfcId) : ITask
     {
-        public override string ToString() => $"Wait(BossMod, left instance {ContentFinderConditionId})";
+        public override string ToString() => $"Wait(BossMod, left instance {CfcId})";
     }
 
-    internal sealed class WaitSinglePlayerDutyExecutor
+    internal sealed class WaitForExitExecutor
     (
         BossModIpc bossModIpc,
         MovementController movementController)
-        : TaskExecutor<WaitSinglePlayerDuty>, IStoppableTaskExecutor, IDebugStateProvider
+        : TaskExecutor<WaitForExit>, IStoppable, IDebugStateProvider
     {
         public string? GetDebugState()
         {
@@ -173,7 +173,7 @@ internal static class SinglePlayerDuty
         public override unsafe ETaskResult Update()
         {
             bossModIpc.PollQuestBattle();
-            return GameMain.Instance()->CurrentContentFinderConditionId != Task.ContentFinderConditionId
+            return GameMain.Instance()->CurrentContentFinderConditionId != Task.CfcId
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
         }
@@ -191,7 +191,7 @@ internal static class SinglePlayerDuty
 
     internal sealed class DisableAiExecutor
     (
-        BossModIpc bossModIpc) : TaskExecutor<DisableAi>, IStoppableTaskExecutor
+        BossModIpc bossModIpc) : TaskExecutor<DisableAi>, IStoppable
     {
         protected override bool Start()
         {
@@ -211,23 +211,23 @@ internal static class SinglePlayerDuty
     }
 
     // Retry if leaving a solo duty does not advance the quest within the grace period.
-    internal sealed record WaitForSinglePlayerDutyOutcome(
-        uint ContentFinderConditionId,
+    internal sealed record WaitForOutcome(
+        uint CfcId,
         ElementId QuestId,
         byte StartSequence) : ITask
     {
         public override string ToString() =>
-            $"WaitForSinglePlayerDutyOutcome({ContentFinderConditionId}, seq={StartSequence})";
+            $"WaitForSinglePlayerDutyOutcome({CfcId}, seq={StartSequence})";
     }
 
-    internal sealed class WaitForSinglePlayerDutyOutcomeExecutor(
+    internal sealed class WaitForOutcomeExecutor(
         GameFunctions gameFunctions,
         ICondition condition,
         IChatGui chatGui,
         RetryCounter retryCounter,
-        ILogger<WaitForSinglePlayerDutyOutcomeExecutor> logger,
+        ILogger<WaitForOutcomeExecutor> logger,
         IQuestGameState gameState)
-        : TaskExecutor<WaitForSinglePlayerDutyOutcome>, IDebugStateProvider
+        : TaskExecutor<WaitForOutcome>, IDebugStateProvider
     {
         private static readonly TimeSpan GracePeriod = TimeSpan.FromSeconds(15);
         private DateTime _readyAt = DateTime.MinValue;
@@ -247,7 +247,7 @@ internal static class SinglePlayerDuty
                 return ETaskResult.StillRunning;
             }
 
-            if (GameMain.Instance()->CurrentContentFinderConditionId == Task.ContentFinderConditionId)
+            if (GameMain.Instance()->CurrentContentFinderConditionId == Task.CfcId)
             {
                 _readyAt = DateTime.Now;
                 return ETaskResult.StillRunning;
@@ -264,13 +264,13 @@ internal static class SinglePlayerDuty
             if (progress == null || progress.Sequence != Task.StartSequence)
                 return ETaskResult.StillRunning;
 
-            int failures = retryCounter.RecordRetry(ProfileController.CurrentContentId,
-                Task.QuestId, Task.ContentFinderConditionId, Task.StartSequence);
+            int failures = retryCounter.Record(ProfileController.CurrentContentId,
+                Task.QuestId, Task.CfcId, Task.StartSequence);
             if (failures >= MaxRetries)
             {
                 logger.LogError(
                     "SinglePlayerDuty {Cfc} failed {Failures} times — stopping",
-                    Task.ContentFinderConditionId, failures);
+                    Task.CfcId, failures);
                 chatGui.PrintError(
                     $"You failed this instance {MaxRetries} times, Questionable is stopping. Please check it manually and report any issues to the instance.",
                     CommandHandler.MessageTag, CommandHandler.TagColor);
@@ -280,7 +280,7 @@ internal static class SinglePlayerDuty
 
             logger.LogWarning(
                 "SinglePlayerDuty {Cfc} appears to have failed (attempt {Failures}/{Max}, no quest progress {Seconds}s after leaving instance) — retrying step",
-                Task.ContentFinderConditionId, failures, MaxRetries, GracePeriod.TotalSeconds);
+                Task.CfcId, failures, MaxRetries, GracePeriod.TotalSeconds);
             return ETaskResult.RetryStep;
         }
 
@@ -304,14 +304,14 @@ internal static class SinglePlayerDuty
 
     internal sealed class LeavePartyExecutor : TaskExecutor<LeaveParty>
     {
-        protected override bool Start() => LeavePartyAction();
+        protected override bool Start() => TryLeave();
 
         public override ETaskResult Update()
         {
-            return LeavePartyAction() ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
+            return TryLeave() ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
         }
 
-        public unsafe static bool LeavePartyAction()
+        public unsafe static bool TryLeave()
         {
             if (InfoProxyCrossRealm.IsLocalPlayerInParty())
             {

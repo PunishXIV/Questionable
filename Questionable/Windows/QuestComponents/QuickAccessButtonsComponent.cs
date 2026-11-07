@@ -153,7 +153,7 @@ internal sealed class QuickAccessButtonsComponent
         if (leftClicked || rightClicked)
         {
             string output = "";
-            List<LogQuestCompletion.QuestCompletion> questCompletions = LogQuestCompletion.ReadQuestCompletions();
+            List<LogQuestCompletion.QuestCompletion> questCompletions = LogQuestCompletion.ReadLog();
             if (rightClicked)
             {
                 output = JsonSerializer.Serialize(questCompletions, JsonOptions.Default);

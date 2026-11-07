@@ -112,7 +112,7 @@ public sealed class QuestAcceptanceStopTests
     {
         var next = Progress(2881);
         _acceptance.Select(next, isAccepted: false);
-        Queue(new WaitAtEnd.WaitQuestAccepted(next.Quest.Id));
+        Queue(new WaitAtEnd.QuestAccepted(next.Quest.Id));
         Assert.True(_queue.Reset());
         _acceptance.ClearQueued();
         List<ElementId> accepted = [];
@@ -133,7 +133,7 @@ public sealed class QuestAcceptanceStopTests
     {
         var next = Progress(2881);
         _acceptance.Select(next, isAccepted: false);
-        Queue(new WaitAtEnd.WaitQuestAccepted(next.Quest.Id));
+        Queue(new WaitAtEnd.QuestAccepted(next.Quest.Id));
         int reports = 0;
 
         void Observer() => _acceptance.ObserveQueued(_queue, _ => true, _ => reports++);
@@ -165,7 +165,7 @@ public sealed class QuestAcceptanceStopTests
         _acceptance.StopAfterAcceptingNextQuest = true;
         QuestId expected = new(accepting);
         Queue(new WaitAtEnd.WaitDelay());
-        Queue(new WaitAtEnd.WaitQuestAccepted(expected));
+        Queue(new WaitAtEnd.QuestAccepted(expected));
         List<ElementId> accepted = [];
         _acceptance.ObserveQueued(_queue, _ => false, accepted.Add);
         Assert.Empty(accepted);
@@ -186,9 +186,9 @@ public sealed class QuestAcceptanceStopTests
     public void ActiveAcceptanceWaitIsObservedAfterItLeavesTheQueue()
     {
         QuestId expected = new(2881);
-        Queue(new WaitAtEnd.WaitQuestAccepted(expected));
+        Queue(new WaitAtEnd.QuestAccepted(expected));
         Assert.True(_queue.TryDequeue(out ITask? task));
-        Assert.True(_queue.StartTask(new WaitAtEnd.WaitQuestAcceptedExecutor(null!, null!), task!));
+        Assert.True(_queue.StartTask(new WaitAtEnd.QuestAcceptedExecutor(null!, null!), task!));
         List<ElementId> accepted = [];
 
         _acceptance.ObserveQueued(_queue, _ => true, accepted.Add);
@@ -200,7 +200,7 @@ public sealed class QuestAcceptanceStopTests
     public void AnUnrelatedAcceptanceDoesNotConsumeAPendingOne()
     {
         QuestId expected = new(253);
-        Queue(new WaitAtEnd.WaitQuestAccepted(expected));
+        Queue(new WaitAtEnd.QuestAccepted(expected));
         List<ElementId> accepted = [];
 
         _acceptance.ObserveQueued(_queue, id => id == new QuestId(2881), accepted.Add);
@@ -213,7 +213,7 @@ public sealed class QuestAcceptanceStopTests
     [Fact]
     public void AlreadyAcceptedOptionalPickupIsNotANewAcceptance()
     {
-        Queue(new WaitAtEnd.WaitQuestAccepted(new QuestId(2881)), accepted: true);
+        Queue(new WaitAtEnd.QuestAccepted(new QuestId(2881)), accepted: true);
         List<ElementId> accepted = [];
 
         _acceptance.ObserveQueued(_queue, _ => true, accepted.Add);
@@ -225,7 +225,7 @@ public sealed class QuestAcceptanceStopTests
     [Fact]
     public void DiscardedAcceptanceWaitCannotReportLater()
     {
-        Queue(new WaitAtEnd.WaitQuestAccepted(new QuestId(2881)));
+        Queue(new WaitAtEnd.QuestAccepted(new QuestId(2881)));
         Assert.True(_queue.Reset());
         List<ElementId> accepted = [];
 
@@ -238,8 +238,8 @@ public sealed class QuestAcceptanceStopTests
     [Fact]
     public void AStopDuringObservationEndsTheRestOfThePlan()
     {
-        Queue(new WaitAtEnd.WaitQuestAccepted(new QuestId(2881)));
-        Queue(new WaitAtEnd.WaitQuestAccepted(new QuestId(253)));
+        Queue(new WaitAtEnd.QuestAccepted(new QuestId(2881)));
+        Queue(new WaitAtEnd.QuestAccepted(new QuestId(253)));
         List<ElementId> accepted = [];
 
         _acceptance.ObserveQueued(_queue, _ => true, id =>
@@ -254,7 +254,7 @@ public sealed class QuestAcceptanceStopTests
     [Fact]
     public void ObservedAcceptanceCannotBeReusedAfterArmingTheToggle()
     {
-        Queue(new WaitAtEnd.WaitQuestAccepted(new QuestId(2881)));
+        Queue(new WaitAtEnd.QuestAccepted(new QuestId(2881)));
         List<ElementId> accepted = [];
         _acceptance.ObserveQueued(_queue, _ => true, id =>
         {
@@ -413,8 +413,8 @@ public sealed class QuestAcceptanceWiringTests : IDisposable
     [Fact]
     public void QueuedWaitsAreTrackedAsTheyAreEnqueued()
     {
-        _controller.EnqueueQuestTask(new WaitAtEnd.WaitQuestAccepted(new QuestId(2881)), _ => false);
-        _controller.EnqueueQuestTask(new WaitAtEnd.WaitQuestAccepted(new QuestId(253)), _ => true);
+        _controller.EnqueueQuestTask(new WaitAtEnd.QuestAccepted(new QuestId(2881)), _ => false);
+        _controller.EnqueueQuestTask(new WaitAtEnd.QuestAccepted(new QuestId(253)), _ => true);
         List<ElementId> accepted = [];
 
         _acceptance.ObserveQueued(_queue, _ => true, accepted.Add);
@@ -429,7 +429,7 @@ public sealed class QuestAcceptanceWiringTests : IDisposable
         var quest = QuestTestData.CreateQuest(new QuestId(2881));
         _controller.SelectNextQuest(quest, isAccepted: false);
         var selected = _controller.NextQuest!;
-        _controller.EnqueueQuestTask(new WaitAtEnd.WaitQuestAccepted(quest.Id), _ => false);
+        _controller.EnqueueQuestTask(new WaitAtEnd.QuestAccepted(quest.Id), _ => false);
         _controller.StopAfterAcceptingNextQuest = true;
 
         _controller.Stop("test");
@@ -450,7 +450,7 @@ public sealed class QuestAcceptanceWiringTests : IDisposable
         _controller.AutomationType = QuestController.EAutomationType.Manual;
         var quest = QuestTestData.CreateQuest(new QuestId(2881));
         _controller.SelectNextQuest(quest, isAccepted: false);
-        _controller.EnqueueQuestTask(new WaitAtEnd.WaitQuestAccepted(quest.Id), _ => false);
+        _controller.EnqueueQuestTask(new WaitAtEnd.QuestAccepted(quest.Id), _ => false);
 
         _controller.TryStopOnExpectedQuestAccepted(quest.Id);
 

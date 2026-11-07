@@ -173,7 +173,7 @@ internal sealed class KnightshopperProvider(
     public override string Name => "Knightshopper";
     protected override string CancelLabel => "Knightshopper purchase";
 
-    protected override bool MatchesExecutor(ITaskExecutor? executor) => executor is Purchase.DoBuy;
+    protected override bool MatchesExecutor(ITaskExecutor? executor) => executor is Purchase.BuyExecutor;
     protected override void PollOperation() => knightshopperIpc.PollOperation();
     protected override void CancelWork() => knightshopperIpc.CancelWork();
     protected override void ObserveIdle() => knightshopperIpc.ObserveIdle();

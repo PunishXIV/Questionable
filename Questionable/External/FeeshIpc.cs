@@ -285,7 +285,7 @@ internal sealed class FeeshProvider(FeeshIpc feeshIpc, FishingState operation)
     protected override string CancelLabel => "Feesh fishing";
     public override bool HandlesLeadInTravel => true;
 
-    protected override bool MatchesExecutor(ITaskExecutor? executor) => executor is Fish.DoFish;
+    protected override bool MatchesExecutor(ITaskExecutor? executor) => executor is Fish.Executor;
     protected override void PollOperation() => feeshIpc.PollOperation();
     protected override void CancelWork() => feeshIpc.CancelWork();
     protected override void ObserveIdle() => feeshIpc.ObserveIdle();

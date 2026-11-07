@@ -61,26 +61,26 @@ internal static class QuestCleanUp
         }
     }
 
-    internal sealed class CloseGatheringAddonFactory(IGameGuiAdapter gameGui) : ITaskFactory
+    internal sealed class CloseAddonFactory(IGameGuiAdapter gameGui) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (IsAddonOpen("GatheringMasterpiece"))
-                yield return new CloseGatheringAddonTask("GatheringMasterpiece");
+                yield return new CloseAddonTask("GatheringMasterpiece");
 
             if (IsAddonOpen("Gathering"))
-                yield return new CloseGatheringAddonTask("Gathering");
+                yield return new CloseAddonTask("Gathering");
         }
 
         private unsafe bool IsAddonOpen(string name) => gameGui.TryGetAddonByName(name, out AtkUnitBase* addon) && addon->IsVisible;
     }
 
-    internal sealed record CloseGatheringAddonTask(string AddonName) : ITask
+    internal sealed record CloseAddonTask(string AddonName) : ITask
     {
         public override string ToString() => $"CloseAddon({AddonName})";
     }
 
-    internal sealed class DoCloseAddon(IGameGuiAdapter gameGui) : TaskExecutor<CloseGatheringAddonTask>
+    internal sealed class CloseAddonExecutor(IGameGuiAdapter gameGui) : TaskExecutor<CloseAddonTask>
     {
         protected override unsafe bool Start()
         {

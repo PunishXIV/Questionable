@@ -32,12 +32,12 @@ internal static class NextQuest
         public override string ToString() => $"SetNextQuest({NextQuestId})";
     }
 
-    internal sealed class NextQuestExecutor
+    internal sealed class SetQuestExecutor
     (
         QuestRegistry questRegistry,
         QuestController questController,
         QuestFunctions questFunctions,
-        ILogger<NextQuestExecutor> logger) : TaskExecutor<SetQuestTask>
+        ILogger<SetQuestExecutor> logger) : TaskExecutor<SetQuestTask>
     {
         protected override bool Start()
         {

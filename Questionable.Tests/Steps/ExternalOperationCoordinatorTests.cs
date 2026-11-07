@@ -25,7 +25,7 @@ public sealed class ExternalOperationCoordinatorTests
         var host = new Host
         {
             IsActive = true,
-            CurrentExecutor = new Gather.StartGathering(fixture.GatheringController),
+            CurrentExecutor = new Gather.Executor(fixture.GatheringController),
         };
 
         Assert.True(fixture.Coordinator.Update(host));
@@ -94,27 +94,27 @@ public sealed class ExternalOperationCoordinatorTests
         {
             case "crafting":
                 fixture.Crafting.BeginRequest();
-                executor = new Craft.DoCraft(Substitute.For<IDataManager>(), fixture.Artisan,
-                    NullLogger<Craft.DoCraft>.Instance, null!, fixture.Crafting);
+                executor = new Craft.Executor(Substitute.For<IDataManager>(), fixture.Artisan,
+                    NullLogger<Craft.Executor>.Instance, null!, fixture.Crafting);
                 break;
             case "purchase":
                 fixture.Purchase.BeginRequest();
-                executor = new Purchase.DoBuy(fixture.Knightshopper, fixture.Purchase, fixture.Movement);
+                executor = new Purchase.BuyExecutor(fixture.Knightshopper, fixture.Purchase, fixture.Movement);
                 break;
             case "gathering":
                 fixture.Gathering.BeginRequest();
-                executor = new Gather.StartGathering(fixture.GatheringController);
+                executor = new Gather.Executor(fixture.GatheringController);
                 break;
             default:
                 fixture.Fishing.BeginRequest();
-                executor = new Fish.DoFish(fixture.Feesh, fixture.Fishing, Substitute.For<IDataManager>(),
-                    NullLogger<Fish.DoFish>.Instance, null!);
+                executor = new Fish.Executor(fixture.Feesh, fixture.Fishing, Substitute.For<IDataManager>(),
+                    NullLogger<Fish.Executor>.Instance, null!);
                 break;
         }
 
         Assert.True(fixture.Coordinator.CanUpdateTask(executor));
         Assert.False(fixture.Coordinator.CanUpdateTask(null));
-        Assert.False(fixture.Coordinator.CanUpdateTask(new WaitAtEnd.WaitNextStepOrSequenceExecutor()));
+        Assert.False(fixture.Coordinator.CanUpdateTask(new WaitAtEnd.NextStepOrSequenceExecutor()));
         fixture.Crafting.Abandon();
         fixture.Purchase.Abandon();
         fixture.Gathering.Abandon();
@@ -226,9 +226,9 @@ public sealed class ExternalOperationCoordinatorTests
         fixture.Purchase.BeginRequest();
         fixture.Crafting.BeginRequest();
         fixture.Condition[Dalamud.Game.ClientState.Conditions.ConditionFlag.Crafting].Returns(crafting);
-        var buy = new Purchase.DoBuy(fixture.Knightshopper, fixture.Purchase, fixture.Movement);
-        var craft = new Craft.DoCraft(Substitute.For<IDataManager>(), fixture.Artisan,
-            NullLogger<Craft.DoCraft>.Instance, null!, fixture.Crafting);
+        var buy = new Purchase.BuyExecutor(fixture.Knightshopper, fixture.Purchase, fixture.Movement);
+        var craft = new Craft.Executor(Substitute.For<IDataManager>(), fixture.Artisan,
+            NullLogger<Craft.Executor>.Instance, null!, fixture.Crafting);
 
         IOperationProvider? purchaseOwner = fixture.Coordinator.GetOwner(buy);
         IOperationProvider? craftOwner = fixture.Coordinator.GetOwner(craft);
@@ -238,7 +238,7 @@ public sealed class ExternalOperationCoordinatorTests
         Assert.Equal("Artisan", craftOwner?.Name);
         Assert.Equal(crafting, craftOwner!.CanUpdateWhileOccupied);
         Assert.Null(fixture.Coordinator.GetOwner(null));
-        Assert.Null(fixture.Coordinator.GetOwner(new WaitAtEnd.WaitNextStepOrSequenceExecutor()));
+        Assert.Null(fixture.Coordinator.GetOwner(new WaitAtEnd.NextStepOrSequenceExecutor()));
     }
 
     [Fact]

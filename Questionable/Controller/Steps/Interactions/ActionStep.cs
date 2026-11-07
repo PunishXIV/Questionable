@@ -24,7 +24,7 @@ internal static class ActionStep
             return [new MountStep.UnmountTask(), task];
         }
 
-        public static ITask OnObject(uint? dataId, Quest quest, EAction action, List<QuestWorkValue?>? completionQuestVariablesFlags)
+        public static ITask OnObject(uint? dataId, Quest quest, EAction action, List<QuestWorkValue?>? completionFlags)
         {
             if (action is EAction.FumaShuriken or EAction.Katon or EAction.Raiton)
             {
@@ -34,7 +34,7 @@ internal static class ActionStep
                 return new UseMudraOnObject(dataId.Value, action);
             }
 
-            return new UseOnObject(dataId, quest, action, completionQuestVariablesFlags);
+            return new UseOnObject(dataId, quest, action, completionFlags);
         }
     }
 
@@ -43,7 +43,7 @@ internal static class ActionStep
         uint? DataId,
         Quest? Quest,
         EAction Action,
-        List<QuestWorkValue?>? CompletionQuestVariablesFlags,
+        List<QuestWorkValue?>? CompletionFlags,
         bool IgnoreResult = false,
         float Timeout = 0.5f) : ITask
     {
@@ -189,8 +189,8 @@ internal static class ActionStep
 
         private bool HasCompletionFlags() =>
             Task.Quest != null &&
-            Task.CompletionQuestVariablesFlags != null &&
-            QuestWorkUtils.HasCompletionFlags(Task.CompletionQuestVariablesFlags);
+            Task.CompletionFlags != null &&
+            QuestWorkUtils.HasCompletionFlags(Task.CompletionFlags);
 
         private ETaskResult CheckCompletionFlags()
         {
@@ -199,7 +199,7 @@ internal static class ActionStep
 
             QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(Task.Quest!.Id);
             return questWork != null &&
-                   QuestWorkUtils.MatchesQuestWork(Task.CompletionQuestVariablesFlags!, questWork)
+                   QuestWorkUtils.MatchesQuestWork(Task.CompletionFlags!, questWork)
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
         }

@@ -22,7 +22,7 @@ internal static class WaitAtEnd
             if (step.CompletionQuestVariablesFlags.Count == 6 &&
                 QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags))
             {
-                WaitForCompletionFlags task = new((QuestId)quest.Id, step);
+                CompletionFlags task = new((QuestId)quest.Id, step);
                 WaitDelay delay = new();
                 return [task, delay, Next(quest, sequence)];
             }
@@ -45,7 +45,7 @@ internal static class WaitAtEnd
                 case EInteractionType.WaitForManualProgress:
                 case EInteractionType.Instruction:
                 case EInteractionType.Snipe:
-                    return [new WaitNextStepOrSequence()];
+                    return [new NextStepOrSequence()];
 
                 case EInteractionType.Duty when !autoDuty.CanRunDuty(step.DutyOptions):
                 case EInteractionType.SinglePlayerDuty when !bossModIpc.CanRunQuestBattle(quest.Id, step.SinglePlayerDutyOptions):
@@ -64,7 +64,7 @@ internal static class WaitAtEnd
 
                     return
                     [
-                        new WaitObjectAtPosition(step.DataId.Value, step.Position.Value, step.NpcWaitDistance ?? 0.5f),
+                        new ObjectAtPosition(step.DataId.Value, step.Position.Value, step.NpcWaitDistance ?? 0.5f),
                         new WaitDelay(TimeSpan.FromSeconds(1)),
                         Next(quest, sequence)
                     ];
@@ -80,7 +80,7 @@ internal static class WaitAtEnd
 
                 case EInteractionType.AcceptQuest:
                     {
-                        WaitQuestAccepted accept = new(step.PickUpQuestId ?? quest.Id);
+                        QuestAccepted accept = new(step.PickUpQuestId ?? quest.Id);
                         WaitDelay delay = new(TimeSpan.FromSeconds(1));
                         if (step.PickUpQuestId != null)
                         {
@@ -94,9 +94,9 @@ internal static class WaitAtEnd
 
                 case EInteractionType.CompleteQuest:
                     {
-                        WaitQuestCompleted complete = new(step.TurnInQuestId ?? quest.Id);
+                        QuestCompleted complete = new(step.TurnInQuestId ?? quest.Id);
                         WaitDelay delay = new(TimeSpan.FromSeconds(1));
-                        List<ITask> tasks = [complete, delay, .. RedeemRewardItems.CreateRedeemTasks(questData, dataManager)];
+                        List<ITask> tasks = [complete, delay, .. RedeemRewardItems.CreateTasks(questData, dataManager)];
                         if (step.TurnInQuestId != null)
                             tasks.Add(Next(quest, sequence));
                         return tasks;
@@ -113,7 +113,7 @@ internal static class WaitAtEnd
         private ITask WaitUntilMoved(QuestStep step, ushort targetTerritoryId)
         {
             if (step.TerritoryId != targetTerritoryId)
-                return new WaitForTerritory(targetTerritoryId);
+                return new TerritoryEntered(targetTerritoryId);
 
             Vector3 lastPosition = step.Position ?? objectTable[0]?.Position ?? Vector3.Zero;
             return new WaitCondition.Task(() =>
@@ -149,7 +149,7 @@ internal static class WaitAtEnd
             $"Wait(seconds: {Delay.TotalSeconds}{(Message != null ? $", message: {Message}" : "")}, {Path.GetFileNameWithoutExtension(file)}:L{line})";
     }
 
-    internal sealed class WaitDelayExecutor : AbstractDelayedTaskExecutor<WaitDelay>
+    internal sealed class WaitDelayExecutor : DelayedTaskExecutor<WaitDelay>
     {
         protected override bool StartInternal()
         {
@@ -160,12 +160,12 @@ internal static class WaitAtEnd
         public override bool ShouldInterruptOnDamage() => Task.InterruptOnDamage;
     }
 
-    internal sealed class WaitNextStepOrSequence : ITask
+    internal sealed class NextStepOrSequence : ITask
     {
         public override string ToString() => "Wait(next step or sequence)";
     }
 
-    internal sealed class WaitNextStepOrSequenceExecutor : TaskExecutor<WaitNextStepOrSequence>
+    internal sealed class NextStepOrSequenceExecutor : TaskExecutor<NextStepOrSequence>
     {
         protected override bool Start() => true;
 
@@ -174,13 +174,13 @@ internal static class WaitAtEnd
         public override bool ShouldInterruptOnDamage() => false;
     }
 
-    internal sealed record WaitForCompletionFlags(QuestId Quest, QuestStep Step) : ITask
+    internal sealed record CompletionFlags(QuestId Quest, QuestStep Step) : ITask
     {
         public override string ToString() => $"Wait(QW: {string.Join(", ", Step.CompletionQuestVariablesFlags.Select(x => x?.ToString() ?? "-"))})";
     }
 
-    internal sealed class WaitForCompletionFlagsExecutor(IQuestGameState gameState)
-        : TaskExecutor<WaitForCompletionFlags>
+    internal sealed class CompletionFlagsExecutor(IQuestGameState gameState)
+        : TaskExecutor<CompletionFlags>
     {
         protected override bool Start() => true;
 
@@ -196,7 +196,7 @@ internal static class WaitAtEnd
         public override bool ShouldInterruptOnDamage() => false;
     }
 
-    internal sealed record WaitObjectAtPosition
+    internal sealed record ObjectAtPosition
     (
         uint DataId,
         Vector3 Destination,
@@ -205,7 +205,7 @@ internal static class WaitAtEnd
         public override string ToString() => $"WaitObj({DataId} at {Destination.ToString("G5", CultureInfo.InvariantCulture)} < {Distance})";
     }
 
-    internal sealed class WaitObjectAtPositionExecutor(GameFunctions gameFunctions) : TaskExecutor<WaitObjectAtPosition>
+    internal sealed class ObjectAtPositionExecutor(GameFunctions gameFunctions) : TaskExecutor<ObjectAtPosition>
     {
         protected override bool Start() => true;
 
@@ -219,13 +219,13 @@ internal static class WaitAtEnd
         public override bool ShouldInterruptOnDamage() => false;
     }
 
-    internal sealed record WaitQuestAccepted(ElementId ElementId) : ITask
+    internal sealed record QuestAccepted(ElementId ElementId) : ITask
     {
         public override string ToString() => $"WaitQuestAccepted({ElementId})";
     }
 
-    internal sealed class WaitQuestAcceptedExecutor(QuestFunctions questFunctions, QuestController questController)
-        : TaskExecutor<WaitQuestAccepted>
+    internal sealed class QuestAcceptedExecutor(QuestFunctions questFunctions, QuestController questController)
+        : TaskExecutor<QuestAccepted>
     {
         protected override bool Start() => true;
 
@@ -241,12 +241,12 @@ internal static class WaitAtEnd
         public override bool ShouldInterruptOnDamage() => true;
     }
 
-    internal sealed record WaitQuestCompleted(ElementId ElementId) : ITask
+    internal sealed record QuestCompleted(ElementId ElementId) : ITask
     {
         public override string ToString() => $"WaitQuestComplete({ElementId})";
     }
 
-    internal sealed class WaitQuestCompletedExecutor(QuestFunctions questFunctions) : TaskExecutor<WaitQuestCompleted>
+    internal sealed class QuestCompletedExecutor(QuestFunctions questFunctions) : TaskExecutor<QuestCompleted>
     {
         protected override bool Start() => true;
 
@@ -255,14 +255,14 @@ internal static class WaitAtEnd
         public override bool ShouldInterruptOnDamage() => true;
     }
 
-    internal sealed record WaitForTerritory
+    internal sealed record TerritoryEntered
     (
         ushort TerritoryId) : ITask
     {
         public override string ToString() => $"WaitForTerritory({TerritoryId})";
     }
 
-    internal sealed class WaitForTerritoryExecutor(IClientState clientState) : TaskExecutor<WaitForTerritory>
+    internal sealed class TerritoryEnteredExecutor(IClientState clientState) : TaskExecutor<TerritoryEntered>
     {
         protected override bool Start() => true;
 
@@ -307,7 +307,7 @@ internal static class WaitAtEnd
         public override bool ShouldInterruptOnDamage() => false;
     }
 
-    internal sealed record WaitForConditionActive
+    internal sealed record ConditionActive
     (
         ConditionFlag Condition, uint TerritoryType, string? FriendlyText = null) : ITask
     {
@@ -315,7 +315,7 @@ internal static class WaitAtEnd
             $"WaitForConditionActive({FriendlyText ?? $"{Condition.ToFormattedText()}"})";
     }
 
-    internal sealed class WaitForConditionActiveExecutor(ICondition conditions, IClientState clientState) : TaskExecutor<WaitForConditionActive>
+    internal sealed class ConditionActiveExecutor(ICondition conditions, IClientState clientState) : TaskExecutor<ConditionActive>
     {
         protected override bool Start() => true;
 
@@ -329,7 +329,7 @@ internal static class WaitAtEnd
         public override bool ShouldInterruptOnDamage() => false;
     }
 
-    internal sealed record WaitForConditionCleared
+    internal sealed record ConditionCleared
     (
         ConditionFlag Condition, uint TerritoryType, string? FriendlyText = null) : ITask
     {
@@ -337,7 +337,7 @@ internal static class WaitAtEnd
             $"WaitForConditionCleared({FriendlyText ?? $"{Condition.ToFormattedText()}"})";
     }
 
-    internal sealed class WaitForConditionClearedExecutor(ICondition conditions, IClientState clientState) : TaskExecutor<WaitForConditionCleared>
+    internal sealed class ConditionClearedExecutor(ICondition conditions, IClientState clientState) : TaskExecutor<ConditionCleared>
     {
         protected override bool Start() => true;
 

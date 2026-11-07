@@ -16,9 +16,9 @@ internal static class Fish
                 yield break;
 
             // An unavailable provider must not turn an unmet fishing objective into an empty queue.
-            yield return new FishTask(quest, step.ItemsToGather.FirstOrDefault(), step.CompletionQuestVariablesFlags);
+            yield return new Task(quest, step.ItemsToGather.FirstOrDefault(), step.CompletionQuestVariablesFlags);
             foreach (GatheredItem item in step.ItemsToGather.Skip(1))
-                yield return new FishTask(quest, item, step.CompletionQuestVariablesFlags);
+                yield return new Task(quest, item, step.CompletionQuestVariablesFlags);
         }
     }
 
@@ -29,31 +29,31 @@ internal static class Fish
         feeshIpc.IsAvailable() &&
         step.ItemsToGather.All(item => feeshIpc.CanCatch(item.ItemId));
 
-    internal sealed record FishTask(Quest Quest, GatheredItem? GatheredItem,
-        IList<QuestWorkValue?> CompletionQuestVariablesFlags) : ITask
+    internal sealed record Task(Quest Quest, GatheredItem? GatheredItem,
+        IList<QuestWorkValue?> CompletionFlags) : ITask
     {
-        public bool HasCompletionQuestVariablesFlags { get; } =
-            QuestWorkUtils.HasCompletionFlags(CompletionQuestVariablesFlags);
+        public bool HasCompletionFlags { get; } =
+            QuestWorkUtils.HasCompletionFlags(CompletionFlags);
 
         public override string ToString() =>
-            $"Fish{(HasCompletionQuestVariablesFlags ? "*" : "")}{(GatheredItem != null ? $"({GatheredItem.ItemCount}x {GatheredItem.ItemId})" : "")}";
+            $"Fish{(HasCompletionFlags ? "*" : "")}{(GatheredItem != null ? $"({GatheredItem.ItemCount}x {GatheredItem.ItemId})" : "")}";
     }
 
-    internal sealed class DoFish : TaskExecutor<FishTask>, IStoppableTaskExecutor
+    internal sealed class Executor : TaskExecutor<Task>, IStoppable
     {
         private readonly FeeshIpc _feeshIpc;
-        private readonly FishingState _operation;
+        private readonly FishingState _state;
         private readonly IDataManager _dataManager;
-        private readonly ILogger<DoFish> _logger;
+        private readonly ILogger<Executor> _logger;
         private readonly IQuestGameState _gameState;
-        private Guid? _owner;
+        private Guid? _operationId;
         private long? _completedAt;
 
-        public DoFish(FeeshIpc feeshIpc, FishingState operation, IDataManager dataManager,
-            ILogger<DoFish> logger, IQuestGameState gameState)
+        public Executor(FeeshIpc feeshIpc, FishingState state, IDataManager dataManager,
+            ILogger<Executor> logger, IQuestGameState gameState)
         {
             _feeshIpc = feeshIpc;
-            _operation = operation;
+            _state = state;
             _dataManager = dataManager;
             _logger = logger;
             _gameState = gameState;
@@ -66,10 +66,10 @@ internal static class Fish
 
         protected override bool Start()
         {
-            _owner = null;
+            _operationId = null;
             _completedAt = null;
-            if (_operation.HasOperation)
-                throw new TaskException(_operation.BlockReason!);
+            if (_state.HasOperation)
+                throw new TaskException(_state.BlockReason!);
             if (HasCompletedObjectives(Task, _gameState))
                 return false;
             if (Task.GatheredItem is not { } item)
@@ -80,8 +80,8 @@ internal static class Fish
             int missing = item.ItemCount - CountEligibleInInventory(item);
             FeeshStartResult result = _feeshIpc.StartCatch(item.ItemId, Math.Max(1, missing), out string message);
             if (result is FeeshStartResult.Started or FeeshStartResult.Uncertain)
-                _owner = _operation.Id;
-            if (result != FeeshStartResult.Started || !_owner.HasValue)
+                _operationId = _state.Id;
+            if (result != FeeshStartResult.Started || !_operationId.HasValue)
                 throw new TaskException(result switch
                 {
                     FeeshStartResult.Busy => "Feesh is busy. Finish or stop its current work in WahTools, then restart Questionable.",
@@ -89,7 +89,7 @@ internal static class Fish
                     FeeshStartResult.NotReady => "Feesh is not available. Check that WahTools is loaded.",
                     _ => $"Feesh did not confirm the catch job ({result}): {message}",
                 });
-            _logger.LogInformation("Started Feesh catch job {Id} for quest {QuestId}", _owner, Task.Quest.Id);
+            _logger.LogInformation("Started Feesh catch job {Id} for quest {QuestId}", _operationId, Task.Quest.Id);
             return true;
         }
 
@@ -106,13 +106,13 @@ internal static class Fish
 
         public override ETaskResult Update()
         {
-            if (!_owner.HasValue || _operation.Id != _owner)
+            if (!_operationId.HasValue || _state.Id != _operationId)
                 throw new TaskException("Feesh is no longer fishing for Questionable");
 
-            if (_operation.IsFinished)
+            if (_state.IsFinished)
             {
                 // Cancelled after the quest flags were met still counts as done.
-                bool ended = _operation.Status is ExternalOperationStatus.Succeeded or ExternalOperationStatus.Cancelled;
+                bool ended = _state.Status is ExternalOperationStatus.Succeeded or ExternalOperationStatus.Cancelled;
                 if (ended && HasCompletedObjectives(Task, _gameState))
                 {
                     Release();
@@ -122,42 +122,42 @@ internal static class Fish
                 _completedAt ??= TimeProvider.System.GetTimestamp();
                 if (ended && TimeProvider.System.GetElapsedTime(_completedAt.Value) < TimeSpan.FromSeconds(2))
                     return ETaskResult.StillRunning;
-                string message = _operation.Message;
+                string message = _state.Message;
                 Release();
                 throw new TaskException($"Feesh stopped before the fishing objective was met: {message}");
             }
 
-            if (_operation.NeedsConfirmation)
-                throw new TaskException(_operation.BlockReason!);
-            if (HasCompletedObjectives(Task, _gameState) && !_operation.StopRequested)
+            if (_state.NeedsConfirmation)
+                throw new TaskException(_state.BlockReason!);
+            if (HasCompletedObjectives(Task, _gameState) && !_state.StopRequested)
                 _feeshIpc.RequestStop();
             return ETaskResult.StillRunning;
         }
 
         private void Release()
         {
-            if (_operation.TryClearFinished(_owner) && Task.GatheredItem is { } item)
+            if (_state.TryClearFinished(_operationId) && Task.GatheredItem is { } item)
                 _feeshIpc.ReleaseCatch(item.ItemId);
         }
 
         public void StopNow()
         {
-            if (_owner.HasValue && _operation.Id == _owner)
+            if (_operationId.HasValue && _state.Id == _operationId)
                 _feeshIpc.CancelWork();
         }
 
         public override bool ShouldInterruptOnDamage() => false;
     }
 
-    internal static bool ObjectivesSatisfied(FishTask task, bool matchesQuestWork, int eligibleItemCount) =>
-        task.HasCompletionQuestVariablesFlags && matchesQuestWork ||
+    internal static bool ObjectivesSatisfied(Task task, bool matchesQuestWork, int eligibleItemCount) =>
+        task.HasCompletionFlags && matchesQuestWork ||
         task.GatheredItem is { } item && eligibleItemCount >= item.ItemCount;
 
-    private static bool HasCompletedObjectives(FishTask task, IQuestGameState gameState)
+    private static bool HasCompletedObjectives(Task task, IQuestGameState gameState)
     {
-        // Matching quest flags are authoritative even for quests whose fish are consumed or are key items.
-        if (task.HasCompletionQuestVariablesFlags && gameState.GetQuestProgressInfo(task.Quest.Id) is { } work &&
-            QuestWorkUtils.MatchesQuestWork(task.CompletionQuestVariablesFlags, work))
+        // Matching quest flags count as done even for quests whose fish are consumed or are key items.
+        if (task.HasCompletionFlags && gameState.GetQuestProgressInfo(task.Quest.Id) is { } work &&
+            QuestWorkUtils.MatchesQuestWork(task.CompletionFlags, work))
             return true;
         if (task.GatheredItem is not { } item)
             return false;

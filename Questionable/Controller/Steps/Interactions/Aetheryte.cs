@@ -27,11 +27,11 @@ internal static class Aetheryte
         public override string ToString() => $"AttuneAetheryte({AetheryteLocation})";
     }
 
-    internal sealed class DoAttune
+    internal sealed class AttuneExecutor
     (
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
-        ILogger<DoAttune> logger) : TaskExecutor<Attune>
+        ILogger<AttuneExecutor> logger) : TaskExecutor<Attune>
     {
         protected override bool Start()
         {

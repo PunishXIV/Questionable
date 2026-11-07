@@ -60,11 +60,11 @@ internal static class EquipRecommended
         public override string ToString() => "EquipRecommended";
     }
 
-    internal sealed unsafe class DoEquipRecommended(IChatGui chatGui, ICondition condition, Configuration config, StylistIpc stylist,
-        ILogger<DoEquipRecommended> logger, TimeProvider? timeProvider = null)
+    internal sealed unsafe class EquipExecutor(IChatGui chatGui, ICondition condition, Configuration config, StylistIpc stylist,
+        ILogger<EquipExecutor> logger, TimeProvider? timeProvider = null)
         : TaskExecutor<EquipTask>
     {
-        private bool _checkedOrTriggeredEquipmentUpdate;
+        private bool _gearChecked;
         private DateTime _continueAt = DateTime.MinValue;
         private readonly TimeProvider _clock = timeProvider ?? TimeProvider.System;
         private long? _stylistBusySince;
@@ -74,7 +74,7 @@ internal static class EquipRecommended
         protected override bool Start()
         {
             _stylistBusySince = null;
-            _checkedOrTriggeredEquipmentUpdate = false;
+            _gearChecked = false;
             _continueAt = DateTime.MinValue;
             if (condition[ConditionFlag.InCombat])
                 return false;
@@ -107,7 +107,7 @@ internal static class EquipRecommended
         {
             logger.LogWarning("Stylist {Reason}; equipping recommended gear with Vanilla instead", reason);
             _source = EGearsetUpdateSource.Vanilla;
-            _checkedOrTriggeredEquipmentUpdate = false;
+            _gearChecked = false;
             RecommendEquipModule.Instance()->SetupForClassJob(PlayerState.Instance()->CurrentClassJobId);
             return ETaskResult.StillRunning;
         }
@@ -121,16 +121,16 @@ internal static class EquipRecommended
                     if (recommendedEquipModule->IsUpdating)
                         return ETaskResult.StillRunning;
 
-                    if (!_checkedOrTriggeredEquipmentUpdate)
+                    if (!_gearChecked)
                     {
-                        if (!IsAllRecommendedGearEquipped())
+                        if (!IsRecommendedGearEquipped())
                         {
                             chatGui.Print("Equipping recommended gear.", CommandHandler.MessageTag, CommandHandler.TagColor);
                             recommendedEquipModule->EquipRecommendedGear();
                             _continueAt = DateTime.Now.AddSeconds(0.25);
                         }
 
-                        _checkedOrTriggeredEquipmentUpdate = true;
+                        _gearChecked = true;
                         return ETaskResult.StillRunning;
                     }
 
@@ -156,11 +156,11 @@ internal static class EquipRecommended
             }
 
             _stylistBusySince = null;
-            if (!_checkedOrTriggeredEquipmentUpdate)
+            if (!_gearChecked)
             {
                 if (!updateGearset())
                     return FallBackToVanilla("rejected the gear update");
-                _checkedOrTriggeredEquipmentUpdate = true;
+                _gearChecked = true;
                 _continueAt = DateTime.Now.AddSeconds(0.25);
                 return ETaskResult.StillRunning;
             }
@@ -168,7 +168,7 @@ internal static class EquipRecommended
             return DateTime.Now >= _continueAt ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
         }
 
-        private bool IsAllRecommendedGearEquipped()
+        private bool IsRecommendedGearEquipped()
         {
             RecommendEquipModule* recommendedEquipModule = RecommendEquipModule.Instance();
             InventoryManager* inventoryManager = InventoryManager.Instance();

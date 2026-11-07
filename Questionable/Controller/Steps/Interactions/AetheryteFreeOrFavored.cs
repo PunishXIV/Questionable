@@ -24,11 +24,11 @@ internal static class AetheryteFreeOrFavored
         public override string ToString() => $"RegisterFreeOrFavoredAetheryte({AetheryteLocation})";
     }
 
-    internal sealed class DoRegister
+    internal sealed class RegisterExecutor
     (
         AetheryteFunctions aetheryteFunctions,
         GameFunctions gameFunctions,
-        ILogger<DoRegister> logger) : TaskExecutor<Register>
+        ILogger<RegisterExecutor> logger) : TaskExecutor<Register>
     {
         protected override bool Start()
         {

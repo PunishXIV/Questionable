@@ -10,7 +10,7 @@ internal static class Dive
 {
     private static DiveDelegate? _diveFunc;
     private static DiveDelegate DiveFunc => _diveFunc ??= Marshal.GetDelegateForFunctionPointer<DiveDelegate>(Svc.SigScanner.ScanText("48 89 5C 24 ?? 57 48 81 EC ?? ?? ?? ?? 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 84 24 ?? ?? ?? ?? 48 8B 1D ?? ?? ?? ?? 48 8D 54 24"));
-    public static unsafe void ExecuteDive() => DiveFunc(Control.Instance());
+    public static unsafe void Execute() => DiveFunc(Control.Instance());
     private static unsafe void Dismount() => ActionManager.Instance()->UseAction(ActionType.GeneralAction, 23);
     private unsafe delegate byte DiveDelegate(void* control);
 
@@ -30,8 +30,8 @@ internal static class Dive
         public override string ToString() => "Dive";
     }
 
-    internal sealed class DoDive(ICondition condition)
-        : AbstractDelayedTaskExecutor<Task>(TimeSpan.FromSeconds(5))
+    internal sealed class Executor(ICondition condition)
+        : DelayedTaskExecutor<Task>(TimeSpan.FromSeconds(5))
     {
         private int _attempts;
 
@@ -50,7 +50,7 @@ internal static class Dive
         {
             if (condition[ConditionFlag.Swimming] || condition[ConditionFlag.Mounted])
             {
-                ExecuteDive();
+                Execute();
                 Dismount();
                 return true;
             }

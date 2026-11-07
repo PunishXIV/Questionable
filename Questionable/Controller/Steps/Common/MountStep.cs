@@ -38,7 +38,7 @@ internal static class MountStep
         IObjectTable objectTable,
         ILogger<MountEvaluator> logger)
     {
-        public unsafe MountResult EvaluateMountState(MountTask task, bool dryRun, ref DateTime retryAt)
+        public unsafe MountResult Evaluate(MountTask task, bool dryRun, ref DateTime retryAt)
         {
             if (condition[ConditionFlag.Mounted])
             {
@@ -107,7 +107,7 @@ internal static class MountStep
         protected override bool Start()
         {
             _mountTriggered = false;
-            return mountEvaluator.EvaluateMountState(Task, dryRun: false, ref _retryAt) == MountResult.Mount;
+            return mountEvaluator.Evaluate(Task, dryRun: false, ref _retryAt) == MountResult.Mount;
         }
 
         public override ETaskResult Update()

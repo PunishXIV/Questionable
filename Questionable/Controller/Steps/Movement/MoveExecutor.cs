@@ -17,7 +17,7 @@ internal sealed class MoveExecutor
     ICondition condition,
     IDataManager dataManager,
     MountStep.MountEvaluator mountEvaluator,
-    IServiceProvider serviceProvider) : TaskExecutor<MoveTask>, IToastAware, ITaskExecutor.IStoppableTaskExecutor
+    IServiceProvider serviceProvider) : TaskExecutor<MoveTask>, IToastAware, ITaskExecutor.IStoppable
 {
     public void StopNow()
     {
@@ -169,7 +169,7 @@ internal sealed class MoveExecutor
         DateTime retryAt = DateTime.Now;
         if (Task.Fly && _condition[ConditionFlag.InCombat] && !_condition[ConditionFlag.Mounted] &&
             _mountBeforeMovement is { Task: { } mountTask } &&
-            _mountEvaluator.EvaluateMountState(mountTask, dryRun: true, ref retryAt) == MountStep.MountResult.WhenOutOfCombat)
+            _mountEvaluator.Evaluate(mountTask, dryRun: true, ref retryAt) == MountStep.MountResult.WhenOutOfCombat)
             return true;
 
         return base.WasInterrupted();
@@ -177,7 +177,7 @@ internal sealed class MoveExecutor
 
     public override bool ShouldInterruptOnDamage()
     {
-        return _mountBeforeMovement != null || ShouldResolveCombatBeforeNextInteraction();
+        return _mountBeforeMovement != null || ShouldClearCombatFirst();
     }
 
     public bool OnErrorToast(SeString message)
@@ -258,20 +258,20 @@ internal sealed class MoveExecutor
                         : MountStep.EMountIf.AwayFromPosition;
                 MountStep.MountTask mountTask = new(Task.TerritoryId, mountIf, _destination);
                 DateTime retryAt = DateTime.Now;
-                (MountStep.MountExecutor Executor, MountStep.MountTask)? move;
+                (MountStep.MountExecutor Executor, MountStep.MountTask)? mount;
 
-                if (_mountEvaluator.EvaluateMountState(mountTask, dryRun: true, ref retryAt) != MountStep.MountResult.DontMount)
+                if (_mountEvaluator.Evaluate(mountTask, dryRun: true, ref retryAt) != MountStep.MountResult.DontMount)
                 {
-                    move = (_serviceProvider.GetRequiredService<MountStep.MountExecutor>(), mountTask);
-                    move.Value.Executor.Start(mountTask);
+                    mount = (_serviceProvider.GetRequiredService<MountStep.MountExecutor>(), mountTask);
+                    mount.Value.Executor.Start(mountTask);
                 }
                 else
-                    move = null;
+                    mount = null;
 
                 if (Task.Fly)
-                    _mountBeforeMovement = move;
+                    _mountBeforeMovement = mount;
                 else
-                    _mountDuringMovement = move;
+                    _mountDuringMovement = mount;
             }
         }
 
@@ -321,7 +321,7 @@ internal sealed class MoveExecutor
 
             DateTime retryAt = DateTime.Now;
             if (ShouldRecheckMount(DateTime.Now, ref _nextMountCheckAt) &&
-                _mountEvaluator.EvaluateMountState(mountTask, dryRun: true, ref retryAt) == MountStep.MountResult.DontMount)
+                _mountEvaluator.Evaluate(mountTask, dryRun: true, ref retryAt) == MountStep.MountResult.DontMount)
             {
                 _logger.LogInformation("MountDuringMovement implicitly complete (shouldn't mount anymore)");
                 _mountDuringMovement = null;
@@ -334,7 +334,7 @@ internal sealed class MoveExecutor
         return null;
     }
 
-    private bool ShouldResolveCombatBeforeNextInteraction() => Task.InteractionType is EInteractionType.Jump;
+    private bool ShouldClearCombatFirst() => Task.InteractionType is EInteractionType.Jump;
 
     // The evaluator logs on every call; in combat it keeps answering 'WhenOutOfCombat' for the whole walk.
     internal static bool ShouldRecheckMount(DateTime now, ref DateTime nextCheckAt)

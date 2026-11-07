@@ -21,7 +21,7 @@ internal static class WaitAtStart
         public override string ToString() => $"Wait[S](seconds: {Delay.TotalSeconds})";
     }
 
-    internal sealed class WaitDelayExecutor : AbstractDelayedTaskExecutor<WaitDelay>
+    internal sealed class WaitDelayExecutor : DelayedTaskExecutor<WaitDelay>
     {
         protected override bool StartInternal()
         {

@@ -250,7 +250,7 @@ internal sealed class CommandHandler : IDisposable
                 break;
 
             case "clearlog":
-                LogQuestCompletion.ClearQuestCompletions();
+                LogQuestCompletion.ClearLog();
                 _chatGui.PrintError(_L("Completions log has been cleared"));
                 break;
 
@@ -294,7 +294,7 @@ internal sealed class CommandHandler : IDisposable
                     break;
                 }
                 RedeemRewardItems.ResetAttemptedItems();
-                var tasks = RedeemRewardItems.CreateRedeemTasks(_questData, _dataManager, overrideConfig: true);
+                var tasks = RedeemRewardItems.CreateTasks(_questData, _dataManager, overrideConfig: true);
                 if (tasks.Count == 0)
                 {
                     _chatGui.Print("Nothing to redeem.", MessageTag, TagColor);

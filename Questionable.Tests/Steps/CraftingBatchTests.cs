@@ -36,7 +36,7 @@ public sealed class CraftingBatchTests
         Assert.True(Carpenter538Outputs.SetEquals(outputs.Select(x => x.ItemId)));
         foreach (var craft in task.Quest.AllSteps().Where(x => x.Step.InteractionType == EInteractionType.Craft))
         {
-            var expected = Assert.Single(Craft.GetItemTargets(new Craft.CraftTask(task.Quest, craft.Sequence.Sequence, craft.Step)));
+            var expected = Assert.Single(Craft.GetItemTargets(new Craft.Task(task.Quest, craft.Sequence.Sequence, craft.Step)));
             Assert.Equal(expected, outputs.Single(x => x.ItemId == expected.ItemId));
         }
 
@@ -84,7 +84,7 @@ public sealed class CraftingBatchTests
         var step = CraftStep(2219, 1);
         var quest = QuestTestData.CreateQuest(new QuestId(ushort.MaxValue), QuestTestData.Seq(255, step));
 
-        Assert.Null(CraftingBatch.Resolve(new Craft.CraftTask(quest, 255, step), new HashSet<uint> { 2219 }));
+        Assert.Null(CraftingBatch.Resolve(new Craft.Task(quest, 255, step), new HashSet<uint> { 2219 }));
     }
 
     [Fact]
@@ -260,7 +260,7 @@ public sealed class CraftingBatchTests
         var step = new QuestStep { InteractionType = EInteractionType.Craft };
         var quest = QuestTestData.CreateQuest(new QuestId(ushort.MaxValue), QuestTestData.Seq(255, step));
 
-        var outputs = CraftingBatch.Resolve(new Craft.CraftTask(quest, 255, step), null);
+        var outputs = CraftingBatch.Resolve(new Craft.Task(quest, 255, step), null);
 
         Assert.NotNull(outputs);
         Assert.Empty(outputs);
@@ -270,18 +270,18 @@ public sealed class CraftingBatchTests
     private static QuestStep CraftStep(uint itemId, int count, EItemQuality quality = EItemQuality.Any) =>
         new() { InteractionType = EInteractionType.Craft, ItemId = itemId, ItemCount = count, ItemQuality = quality };
 
-    private static Craft.CraftTask DuplicateTask(params QuestStep[] steps)
+    private static Craft.Task DuplicateTask(params QuestStep[] steps)
     {
         var quest = QuestTestData.CreateQuest(new QuestId(139), QuestTestData.Seq(255, steps));
-        return new Craft.CraftTask(quest, 255, steps[0]);
+        return new Craft.Task(quest, 255, steps[0]);
     }
 
-    private static Craft.CraftTask LoadTask(ushort questId, uint? itemId)
+    private static Craft.Task LoadTask(ushort questId, uint? itemId)
     {
         string resource = typeof(EmbeddedQuest).Assembly.GetManifestResourceNames()
             .Single(x => x.Contains($"/{questId}_", StringComparison.Ordinal));
         var quest = QuestTestData.LoadQuest(new QuestId(questId), new EmbeddedQuest(resource));
         var craft = quest.AllSteps().Single(x => x.Step.InteractionType == EInteractionType.Craft && x.Step.ItemId == itemId);
-        return new Craft.CraftTask(quest, craft.Sequence.Sequence, craft.Step);
+        return new Craft.Task(quest, craft.Sequence.Sequence, craft.Step);
     }
 }

@@ -7,15 +7,15 @@ internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable
     private readonly IClientState _clientState = clientState;
     private readonly IObjectTable _objectTable = objectTable;
 
-    public bool MatchesExtraCondition(EExtraSkipCondition skipCondition)
+    public bool Matches(EExtraSkipCondition skipCondition)
     {
         Vector3? position = _objectTable[0]?.Position;
         return position != null &&
                _clientState.TerritoryType != 0 &&
-               MatchesExtraCondition(skipCondition, position.Value, _clientState.TerritoryType);
+               Matches(skipCondition, position.Value, _clientState.TerritoryType);
     }
 
-    public bool MatchesExtraCondition(EExtraSkipCondition skipCondition, Vector3 position, uint territoryType)
+    public bool Matches(EExtraSkipCondition skipCondition, Vector3 position, uint territoryType)
     {
         return skipCondition switch
         {

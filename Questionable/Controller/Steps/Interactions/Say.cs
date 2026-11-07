@@ -35,7 +35,7 @@ internal static class Say
         public override string ToString() => $"Say({ChatMessage})";
     }
 
-    internal sealed class UseChat(ChatFunctions chatFunctions) : AbstractDelayedTaskExecutor<Task>
+    internal sealed class Executor(ChatFunctions chatFunctions) : DelayedTaskExecutor<Task>
     {
         protected override bool StartInternal()
         {
