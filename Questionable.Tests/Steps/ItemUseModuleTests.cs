@@ -39,7 +39,7 @@ public sealed class ItemUseModuleTests
     }
 
     [Fact]
-    public void RejectedRestart_AfterItemPauseDoesNotClaimRotationIsRunning()
+    public void RejectedRestart_KeepsRotationStopped()
     {
         Assert.True(_module.Start(_data));
         _module.StopRotation();

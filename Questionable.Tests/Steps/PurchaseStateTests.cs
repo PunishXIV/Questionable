@@ -102,7 +102,7 @@ public sealed class PurchaseStateTests
     [Theory]
     [InlineData(true)]
     [InlineData(null)]
-    public void ManualRecovery_RejectsBusyOrUnavailableProvider(bool? busy)
+    public void ManualRecovery_RejectsBusyOrMissing(bool? busy)
     {
         _state.MarkUncertain(_state.BeginRequest());
         StableIdle();
@@ -112,7 +112,7 @@ public sealed class PurchaseStateTests
     }
 
     [Fact]
-    public void ManualRecovery_RequiresFreshContinuousIdleAndExplicitConfirmation()
+    public void ManualRecovery_NeedsFreshIdleAndConfirm()
     {
         _state.AcceptRequest(_state.BeginRequest(), Guid.Empty);
         StableIdle();
@@ -127,7 +127,7 @@ public sealed class PurchaseStateTests
     }
 
     [Fact]
-    public void ActiveStatus_InvalidatesAnEarlierIdleStreak()
+    public void ActiveStatus_ResetsIdleStreak()
     {
         Guid owner = Start();
         _state.MarkUncertain(owner);

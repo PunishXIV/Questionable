@@ -29,7 +29,7 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture)
         Assert.Single(root.QuestSequence, x => x.Sequence == sequence);
 
     [GameDataFact]
-    public void Quest481_UsesTheLiceCombRatherThanTalkingToSheep()
+    public void Quest481_UsesLiceCombOnSheep()
     {
         // The script never declares IsEventItemUsable; only the journal's "Use the lice comb on the shaggy
         // sheep" says so, which is what the to-do text fallback exists for.
@@ -45,7 +45,7 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture)
     }
 
     [GameDataFact]
-    public void Quest1914_PerformsTheEmoteTheJournalAsksFor()
+    public void Quest1914_PerformsJournalEmote()
     {
         // "/dance for Aanu Vanu" - the emote appears in neither QuestParams nor any Lua function.
         QuestRoot root = Generate(1914);
@@ -59,7 +59,7 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture)
     }
 
     [GameDataFact]
-    public void Quest1915_UsesTheSaddleAtTheSequenceThatConsumesIt()
+    public void Quest1915_UsesSaddleWhereConsumed()
     {
         // The saddle is held across sequences 1 and 2: picked up at 1, used at 2. Using it starts the fight,
         // so the combat step is AfterItemUse rather than AfterInteraction.
@@ -75,7 +75,7 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture)
     }
 
     [GameDataFact]
-    public void Quest1916_DoesNotInteractWithTheQuestGiverBeforeAHunt()
+    public void Quest1916_NoGiverTalkBeforeHunt()
     {
         // The script lists an actor alongside the enemies only because they stay targetable; the fight is the
         // objective and the combat step anchors to them, so there is no interaction step in front of it.
@@ -107,7 +107,7 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture)
     }
 
     [GameDataFact]
-    public void Quest1741_VisitsEveryNpcOfAMultiTargetSequence()
+    public void Quest1741_VisitsEveryTargetNpc()
     {
         // "Speak with all three": the to-do entries are bare map ranges, so each actor has to be matched to an
         // area by position. Taking only the first actor leaves the path stuck on an NPC already spoken to.
@@ -118,7 +118,7 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture)
     }
 
     [GameDataFact]
-    public void Quest480_PlacesActorsTheLevelSheetHasNoRowFor()
+    public void Quest480_PlacesActorsWithoutLevelRow()
     {
         // The three bolting dodos are quest-only actors: the Level sheet never mentions them and the journal
         // only gives a search area with a 103y radius. Standing at the middle of that circle leaves the item
@@ -145,7 +145,7 @@ public sealed class QuestPathGenerationTests(GameDataFixture fixture)
     }
 
     [GameDataFact]
-    public void Quest1709_FindsEveryEnemyOfAMultiFightSequence()
+    public void Quest1709_FindsEveryEnemy()
     {
         // Four interact-then-fight pairs across four zones; applying combat only to the primary actor found
         // half of them.

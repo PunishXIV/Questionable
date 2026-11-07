@@ -12,7 +12,7 @@ public sealed class PluginSelectionTests
     [InlineData(true, false)]
     [InlineData(false, true)]
     [InlineData(true, true)]
-    public void LoadedDevelopmentCopy_IsPreferredOverDisabledCopy(bool developmentCopyFirst, bool requireLoaded)
+    public void LoadedDevelopmentCopy_BeatsDisabled(bool developmentCopyFirst, bool requireLoaded)
     {
         var disabledPlugin = CreatePlugin("BossMod", isLoaded: false);
         var developmentPlugin = CreatePlugin("BossMod", isLoaded: true);
@@ -44,7 +44,7 @@ public sealed class PluginSelectionTests
     }
 
     [Fact]
-    public void DisabledCopyOnly_IsNotSelectedWhenLoadedIsRequired()
+    public void DisabledCopyOnly_SkippedIfLoadedNeeded()
     {
         var disabledPlugin = CreatePlugin("BossMod", isLoaded: false);
 
@@ -72,7 +72,7 @@ public sealed class PluginSelectionTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void UnrelatedLoadedPlugin_DoesNotHideDisabledMatch(bool requireLoaded)
+    public void UnrelatedLoaded_KeepsDisabledMatch(bool requireLoaded)
     {
         var unrelatedPlugin = CreatePlugin("vnavmesh", isLoaded: true);
         var disabledPlugin = CreatePlugin("BossMod", isLoaded: false);

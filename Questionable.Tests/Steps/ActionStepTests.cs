@@ -22,7 +22,7 @@ public sealed class ActionStepTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void UnrelatedConfirmationDoesNotCompleteAcceptedOrRejectedAction(bool accepted)
+    public void UnrelatedConfirmation_CompletesNothing(bool accepted)
     {
         var executor = CreateExecutor();
         executor.RecordAttempt(accepted, accepted ? Request(41) : null, _confirmations.Version);
@@ -32,7 +32,7 @@ public sealed class ActionStepTests
     }
 
     [Fact]
-    public void RejectedActionCannotBorrowAMatchingSequence()
+    public void RejectedAction_CannotBorrowSequence()
     {
         var executor = CreateExecutor();
         executor.RecordAttempt(false, Request(41), _confirmations.Version);
@@ -44,7 +44,7 @@ public sealed class ActionStepTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void UnrelatedConfirmationDoesNotHideExhaustedRejectedAttempts(bool withFlags)
+    public void UnrelatedConfirmation_StillFailsAtLimit(bool withFlags)
     {
         var executor = CreateExecutor(withFlags);
         for (int i = 0; i < 10; ++i)
@@ -55,7 +55,7 @@ public sealed class ActionStepTests
     }
 
     [Fact]
-    public void MatchingConfirmationSurvivesALaterUnrelatedEffect()
+    public void MatchingConfirmation_SurvivesLaterEffect()
     {
         var executor = CreateExecutor();
         executor.RecordAttempt(true, Request(41), _confirmations.Version);
@@ -66,7 +66,7 @@ public sealed class ActionStepTests
     }
 
     [Fact]
-    public void StaleConfirmationCannotSatisfyAReusedSequence()
+    public void StaleConfirmation_IsIgnored()
     {
         _confirmations.Observe(41);
         var executor = CreateExecutor();
@@ -78,7 +78,7 @@ public sealed class ActionStepTests
     }
 
     [Fact]
-    public void LateConfirmationOfAcceptedAttemptSurvivesRejectedRetry()
+    public void LateConfirmation_SurvivesRejectedRetry()
     {
         var executor = CreateExecutor();
         executor.RecordAttempt(true, Request(41), _confirmations.Version);
@@ -89,7 +89,7 @@ public sealed class ActionStepTests
     }
 
     [Fact]
-    public void AcceptedActionWithoutSequence_WaitsForConfirmation()
+    public void AcceptedNoSequence_WaitsForConfirmation()
     {
         var executor = CreateExecutor();
         executor.RecordAttempt(true, Request(), _confirmations.Version);
@@ -99,7 +99,7 @@ public sealed class ActionStepTests
     }
 
     [Fact]
-    public void ConfirmedActionWithQuestFlags_WaitsForFlags()
+    public void ConfirmedWithFlags_WaitsForFlags()
     {
         var executor = CreateExecutor(withFlags: true);
         executor.RecordAttempt(true, Request(41), _confirmations.Version);
@@ -113,7 +113,7 @@ public sealed class ActionStepTests
     }
 
     [Fact]
-    public void ZeroSequenceDoesNotCountAsPlayerActionConfirmation()
+    public void ZeroSequence_IsNotConfirmation()
     {
         _confirmations.Observe(0);
         Assert.Equal(0, _confirmations.Version);
@@ -123,7 +123,7 @@ public sealed class ActionStepTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void QueuedRequestCompletesOnMatchingSpellAndTarget(bool accepted)
+    public void QueuedRequest_CompletesOnSpellAndTarget(bool accepted)
     {
         var executor = CreateExecutor();
         executor.RecordAttempt(accepted, Request(), _confirmations.Version);
@@ -137,7 +137,7 @@ public sealed class ActionStepTests
     }
 
     [Fact]
-    public void QueuedRequestCannotUseMatchingEffectFromBeforeAttempt()
+    public void QueuedRequest_IgnoresEarlierEffect()
     {
         _confirmations.Observe(41, SpellActionType, 120, 123);
         var executor = CreateExecutor();
@@ -177,7 +177,7 @@ public sealed class ActionStepTests
     }
 
     [Fact]
-    public void ItemUseCountsAsRefusedOnlyForAnErrorToastRightAfterASuccessfulUse()
+    public void ItemUse_RefusedOnlyByToastAfterUse()
     {
         DateTime usedAt = new(2026, 11, 6, 12, 0, 0);
         Assert.True(UseItem.ExecutorBase<UseItem.UseOnSelf>.IsRefusalOfLastUse(true, usedAt, usedAt.AddSeconds(2)));

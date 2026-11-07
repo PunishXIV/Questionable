@@ -27,7 +27,7 @@ public sealed class QuestPrerequisiteTests
     }
 
     [Fact]
-    public void AchievementNamesEveryRequiredAchievementUntilAllAreDone()
+    public void Achievements_NamedUntilAllDone()
     {
         var prerequisite = new AchievementPrerequisite(3892, 3893);
 
@@ -37,7 +37,7 @@ public sealed class QuestPrerequisiteTests
     }
 
     [Fact]
-    public void MountsListOnlyTheMissingOnesAndCountTheRest()
+    public void Mounts_ListMissingCountRest()
     {
         var prerequisite = new MountsPrerequisite(1, 2, 3, 4, 5);
         _state.Mounts.Add(2);
@@ -53,7 +53,7 @@ public sealed class QuestPrerequisiteTests
     [InlineData(39, false)]
     [InlineData(40, true)]
     [InlineData(41, true)]
-    public void ChocoboRacingRankMustReachTheRequiredRank(byte rank, bool met)
+    public void ChocoboRacing_NeedsRequiredRank(byte rank, bool met)
     {
         _state.ChocoboRacingRank = rank;
 
@@ -76,7 +76,7 @@ public sealed class QuestPrerequisiteTests
     [InlineData(null, false)]
     [InlineData((byte)74, false)]
     [InlineData((byte)75, true)]
-    public void DomanEnclaveNeedsLoadedProgressAtTheMilestone(byte? milestone, bool met)
+    public void DomanEnclave_NeedsLoadedProgress(byte? milestone, bool met)
     {
         _state.DomanEnclaveMilestone = milestone;
 

@@ -12,7 +12,7 @@ public sealed class NextQuestValidatorTests
     private readonly NextQuestValidator _validator = new();
 
     [Fact]
-    public void WhenNextQuestIdReferencesSelf_ReturnsError()
+    public void NextQuestIsSelf_ReturnsError()
     {
         var questId = new QuestId(123);
         var quest = CreateQuest(questId, Seq(0, new QuestStep { NextQuestId = questId }));
@@ -25,7 +25,7 @@ public sealed class NextQuestValidatorTests
     }
 
     [Fact]
-    public void WhenNextQuestIdReferencesDifferentQuest_ReturnsNoIssues()
+    public void NextQuestIsOther_ReturnsNoIssues()
     {
         var questId = new QuestId(123);
         var quest = CreateQuest(questId, Seq(0, new QuestStep { NextQuestId = new QuestId(456) }));
@@ -36,7 +36,7 @@ public sealed class NextQuestValidatorTests
     }
 
     [Fact]
-    public void WhenNoNextQuestId_ReturnsNoIssues()
+    public void NoNextQuest_ReturnsNoIssues()
     {
         var questId = new QuestId(123);
         var quest = CreateQuest(questId, Seq(0, new QuestStep { NextQuestId = null }));
@@ -47,7 +47,7 @@ public sealed class NextQuestValidatorTests
     }
 
     [Fact]
-    public void WhenMultipleStepsAndOnlyOneReferencesSelf_ReturnsOneError()
+    public void OneStepIsSelf_ReturnsOneError()
     {
         var questId = new QuestId(123);
         var quest = CreateQuest(questId,

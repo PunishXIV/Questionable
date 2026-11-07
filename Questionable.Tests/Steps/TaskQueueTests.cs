@@ -7,7 +7,7 @@ namespace Questionable.Tests.Steps;
 public sealed class TaskQueueTests
 {
     [Fact]
-    public void CancellationDetachesBeforeCallingProviderAndRunsOnce()
+    public void Cancel_ClearsExecutorThenStopsOnce()
     {
         TaskQueue queue = new(NullLogger.Instance);
         Executor executor = new() { OnStop = () => Assert.Null(queue.CurrentTaskExecutor) };
@@ -19,7 +19,7 @@ public sealed class TaskQueueTests
     }
 
     [Fact]
-    public void ResetClearsQueueEvenWhenProviderStopThrows()
+    public void Reset_ClearsQueueIfStopThrows()
     {
         TaskQueue queue = new(NullLogger.Instance);
         Executor executor = new() { OnStop = () => throw new InvalidOperationException("Provider unloaded") };
@@ -34,7 +34,7 @@ public sealed class TaskQueueTests
     }
 
     [Fact]
-    public void InterruptionCancelsBeforeReplayingCurrentTask()
+    public void Interruption_CancelsBeforeReplay()
     {
         TaskQueue queue = new(NullLogger.Instance);
         TestTask current = new("current");
@@ -53,7 +53,7 @@ public sealed class TaskQueueTests
     }
 
     [Fact]
-    public void FailedCancellationDoesNotStartAnInterruptionAlongsideProvider()
+    public void FailedCancellation_StartsNoInterruption()
     {
         TaskQueue queue = new(NullLogger.Instance);
         Executor executor = new() { OnStop = () => throw new InvalidOperationException("Stop rejected") };
@@ -68,7 +68,7 @@ public sealed class TaskQueueTests
     [InlineData(false, false)]
     [InlineData(true, false)]
     [InlineData(true, true)]
-    public void InterruptionReplaysOnlyRedoableHistoryThenCurrentAndPendingTasks(bool hasCurrent, bool redoCurrent)
+    public void Interruption_ReplaysRedoableThenRest(bool hasCurrent, bool redoCurrent)
     {
         TaskQueue queue = new(NullLogger.Instance);
         TestTask first = new("first");
@@ -103,7 +103,7 @@ public sealed class TaskQueueTests
     }
 
     [Fact]
-    public void FailedStartupRollsBackAndPreservesOriginalError()
+    public void FailedStartup_RollsBackKeepsError()
     {
         TaskQueue queue = new(NullLogger.Instance);
         InvalidOperationException startupFailure = new("Preset setup failed after enabling provider");
@@ -120,7 +120,7 @@ public sealed class TaskQueueTests
     }
 
     [Fact]
-    public void SkippedStartDoesNotCancelUnacquiredProviderWork()
+    public void SkippedStart_KeepsProviderWork()
     {
         TaskQueue queue = new(NullLogger.Instance);
         Executor executor = new() { OnStart = () => false };
@@ -131,7 +131,7 @@ public sealed class TaskQueueTests
     }
 
     [Fact]
-    public void SuccessfulCompletionDoesNotCancelProvider()
+    public void Completion_DoesNotCancelProvider()
     {
         TaskQueue queue = new(NullLogger.Instance);
         Executor executor = new();

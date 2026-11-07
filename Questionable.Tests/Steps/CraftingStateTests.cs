@@ -75,7 +75,7 @@ public sealed class CraftingStateTests
     [InlineData((int)ArtisanStatus.Queued)]
     [InlineData((int)ArtisanStatus.Paused)]
     [InlineData((int)ArtisanStatus.Unavailable)]
-    public void Confirmation_RejectsBusyOrUnavailableCraft(int status)
+    public void Confirmation_RejectsBusyOrMissing(int status)
     {
         _state.BeginRequest();
         _state.Abandon();
@@ -105,7 +105,7 @@ public sealed class CraftingStateTests
     }
 
     [Fact]
-    public void ProviderLossAfterIdle_RequiresConfirmation()
+    public void ProviderLossAfterIdle_NeedsConfirmation()
     {
         Guid id = _state.BeginRequest();
         _state.ObserveStatus(ArtisanStatus.Busy);
@@ -125,7 +125,7 @@ public sealed class CraftingStateTests
     }
 
     [Fact]
-    public void StaleIdleSnapshot_CannotAuthorizeConfirmationOrCompletion()
+    public void StaleIdle_CannotConfirmOrComplete()
     {
         Guid id = _state.BeginRequest();
         ObserveStableIdle();
@@ -141,7 +141,7 @@ public sealed class CraftingStateTests
     }
 
     [Fact]
-    public void BriefIdleBeforeQueuedWork_DoesNotEnableConfirmation()
+    public void BriefIdleBeforeWork_BlocksConfirmation()
     {
         _state.BeginRequest();
         _state.Abandon();
@@ -157,7 +157,7 @@ public sealed class CraftingStateTests
     }
 
     [Fact]
-    public void LateOldExecutor_CannotAbandonOrCompleteANewOperation()
+    public void LateOldExecutor_CannotEndNewOperation()
     {
         Guid oldId = _state.BeginRequest();
         _state.Abandon(oldId);

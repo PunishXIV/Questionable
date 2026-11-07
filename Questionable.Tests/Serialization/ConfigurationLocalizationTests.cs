@@ -6,7 +6,7 @@ namespace Questionable.Tests.Serialization;
 public sealed class ConfigurationLocalizationTests
 {
     [Fact]
-    public void ProfileActivationDuringInitialLoad_AppliesLatestLanguageWithoutRecursing()
+    public void ProfileDuringLoad_AppliesLatestLanguage()
     {
         Configuration configuration = new();
         AddProfile(configuration, "Alt", "ja-jp");
@@ -46,7 +46,7 @@ public sealed class ConfigurationLocalizationTests
     }
 
     [Fact]
-    public async Task ConcurrentLanguageChange_WaitsForCurrentLoadAndAppliesLatestLanguage()
+    public async Task ConcurrentChange_AppliesLatestLanguage()
     {
         Configuration configuration = new();
         using ManualResetEventSlim firstLoadStarted = new();
@@ -97,7 +97,7 @@ public sealed class ConfigurationLocalizationTests
     }
 
     [Fact]
-    public void Subscribe_AppliesAlreadyActiveProfileLanguage()
+    public void Subscribe_AppliesActiveProfileLanguage()
     {
         Configuration configuration = new();
         AddProfile(configuration, "Alt", "ja-jp");
@@ -112,7 +112,7 @@ public sealed class ConfigurationLocalizationTests
     [Theory]
     [InlineData(false, "en")]
     [InlineData(true, "zh-cn")]
-    public void EditingProfileThenRestoringCharacter_AppliesBothLanguages(bool hasProfile, string characterLanguage)
+    public void EditThenRestore_AppliesBothLanguages(bool hasProfile, string characterLanguage)
     {
         Configuration configuration = new();
         AddProfile(configuration, "Character", characterLanguage);
@@ -140,7 +140,7 @@ public sealed class ConfigurationLocalizationTests
     }
 
     [Fact]
-    public void CharacterLoginLogoutAndSwitch_AppliesEachEffectiveLanguage()
+    public void LoginLogoutSwitch_AppliesEachLanguage()
     {
         Configuration configuration = new();
         AddProfile(configuration, "First", "ja-jp");
@@ -159,7 +159,7 @@ public sealed class ConfigurationLocalizationTests
     }
 
     [Fact]
-    public void SwitchingOrEditingWithoutLanguageChange_DoesNotReload()
+    public void SameLanguage_DoesNotReload()
     {
         Configuration configuration = new();
         AddProfile(configuration, "First", "ja-jp");
@@ -176,7 +176,7 @@ public sealed class ConfigurationLocalizationTests
     }
 
     [Fact]
-    public void DeletingActiveProfile_RestoresDefaultLanguage()
+    public void DeletedProfile_RestoresDefaultLanguage()
     {
         Configuration configuration = new();
         AddProfile(configuration, "Alt", "ja-jp");
@@ -190,7 +190,7 @@ public sealed class ConfigurationLocalizationTests
     }
 
     [Fact]
-    public void EditingDefaultLanguage_AppliesImmediatelyAndSurvivesProfileRoundTrip()
+    public void DefaultLanguageEdit_AppliesAndPersists()
     {
         Configuration configuration = new();
         AddProfile(configuration, "Alt", "ja-jp");
@@ -205,7 +205,7 @@ public sealed class ConfigurationLocalizationTests
     }
 
     [Fact]
-    public void Dispose_UnsubscribesFromEditsAndProfileChanges()
+    public void Dispose_UnsubscribesFromChanges()
     {
         Configuration configuration = new();
         AddProfile(configuration, "Alt", "ja-jp");

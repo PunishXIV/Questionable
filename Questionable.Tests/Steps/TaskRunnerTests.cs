@@ -24,7 +24,7 @@ public sealed class TaskRunnerTests
     [InlineData(true, "missing")]
     [InlineData(true, "factory")]
     [InlineData(true, "start")]
-    public void TaskCreationFailuresStopAndReportWithoutStartingReplacement(bool skipping, string failurePoint)
+    public void CreationFailure_StopsAndReports(bool skipping, string failurePoint)
     {
         var expected = new InvalidOperationException("executor failed");
         var failing = Substitute.For<ITaskExecutor, IStoppable>();
@@ -93,7 +93,7 @@ public sealed class TaskRunnerTests
     }
 
     [Fact]
-    public void UpdateFailureUsesInjectedNotificationsAndStopsQueue()
+    public void UpdateFailure_NotifiesAndStops()
     {
         using var fixture = new TaskRunnerFixture();
         var task = new WaitAtEnd.WaitDelay();
@@ -115,7 +115,7 @@ public sealed class TaskRunnerTests
     }
 
     [Fact]
-    public void DisposalUnsubscribesExactlyOnceAndLateDamageDoesNotMutateQueue()
+    public void Dispose_UnsubscribesOnceIgnoresDamage()
     {
         using var fixture = new TaskRunnerFixture();
         Assert.Equal(1, fixture.Interruptions.SubscriberCount);
@@ -133,7 +133,7 @@ public sealed class TaskRunnerTests
     }
 
     [Fact]
-    public void FailedSubscriptionRollsBackPartiallyAddedHandler()
+    public void FailedSubscribe_RollsBackHandler()
     {
         using var provider = new ServiceCollection().BuildServiceProvider();
         var source = new TaskRunnerFixture.TestInterruptionSource { ThrowAfterAdding = true };
@@ -155,7 +155,7 @@ public sealed class TaskRunnerTests
     [InlineData("Event canceled.", false, false, true)]
     [InlineData("Unable to execute command while suffering status affliction.", false, false, true)]
     [InlineData("Unrelated error", true, false, false)]
-    public void ToastHandlingPreservesDamageFlightAndNonCombatRules(string text, bool damage, bool flight, bool interrupted)
+    public void Toasts_KeepDamageFlightNonCombatRules(string text, bool damage, bool flight, bool interrupted)
     {
         using var fixture = new TaskRunnerFixture();
         fixture.Condition[ConditionFlag.InFlight].Returns(flight);
@@ -177,7 +177,7 @@ public sealed class TaskRunnerTests
     [InlineData(true, "Event canceled.")]
     [InlineData(false, "Unable to execute command while suffering status affliction.")]
     [InlineData(true, "Unable to execute command while suffering status affliction.")]
-    public void IdleCancellationToastDoesNotReplayCompletedWork(bool completedStep, string text)
+    public void IdleCancelToast_DoesNotReplayWork(bool completedStep, string text)
     {
         var interaction = new Interact.Task(100, null, EInteractionType.Interact);
         var executor = Substitute.For<ITaskExecutor>();
@@ -214,7 +214,7 @@ public sealed class TaskRunnerTests
     [Theory]
     [InlineData("Event canceled.")]
     [InlineData("Unable to execute command while suffering status affliction.")]
-    public void CancellationToastBetweenTasksStillReplaysCompletedInteraction(string text)
+    public void ToastBetweenTasks_ReplaysInteraction(string text)
     {
         var interaction = new Interact.Task(100, null, EInteractionType.Interact);
         var executor = Substitute.For<ITaskExecutor>();
@@ -250,7 +250,7 @@ public sealed class TaskRunnerTests
     [Theory]
     [InlineData("Event canceled.")]
     [InlineData("Unable to execute command while suffering status affliction.")]
-    public void IdleCancellationToastDoesNotStopBlockedProviderWork(string text)
+    public void IdleCancelToast_KeepsProviderWork(string text)
     {
         using var fixture = new TaskRunnerFixture();
         fixture.Controller.AllowNewTasks = false;
@@ -289,7 +289,7 @@ public sealed class TaskRunnerTests
     [Theory]
     [InlineData(true, true)]
     [InlineData(false, false)]
-    public void OverlappingToastFallsBackToNonCombatWhenDamageRecoveryIsDisallowed(bool flight, bool damage)
+    public void OverlappingToast_FallsBackToNonCombat(bool flight, bool damage)
     {
         var toasts = new TaskToastClassifier("overlap", new("^overlap$"), "status");
         using var fixture = new TaskRunnerFixture(toasts: toasts);
@@ -308,7 +308,7 @@ public sealed class TaskRunnerTests
     }
 
     [Fact]
-    public void CancellationToastDoesNotInterruptSoloDuty()
+    public void CancelToast_KeepsQuestBattle()
     {
         using var operations = new ExternalOperationFixture();
         using var fixture = new TaskRunnerFixture();

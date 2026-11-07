@@ -82,7 +82,7 @@ public sealed class QuestSelectionControllerTests
     [InlineData((int)EAutomationType.Automatic, true)]
     [InlineData((int)EAutomationType.SingleQuestA, true)]
     [InlineData((int)EAutomationType.SingleQuestB, false)]
-    public void OnlyTheFinishedSingleQuestStopsNewMsqFromBeingOffered(int automation, bool allowNewMsq)
+    public void FinishedSingleQuest_StopsMainScenario(int automation, bool allowNewMsq)
     {
         Choose(Slots(), (EAutomationType)automation);
 
@@ -90,7 +90,7 @@ public sealed class QuestSelectionControllerTests
     }
 
     [Fact]
-    public void PriorityQuestReadyIgnoringLevelOrAcceptedOverridesTheJournal()
+    public void ReadyPriorityQuest_OverridesJournal()
     {
         _state.Current = QuestReference.NoQuest(MainScenarioQuestState.Complete);
         Quest notReady = NewQuest(10);
@@ -111,7 +111,7 @@ public sealed class QuestSelectionControllerTests
     }
 
     [Fact]
-    public void AcceptOnlyPriorityQuestsAreLeftToTheAcceptOnlyQueue()
+    public void AcceptOnlyPriority_LeftToAcceptQueue()
     {
         Quest acceptOnly = NewQuest(10);
         _acceptOnly.Add(acceptOnly.Id);
@@ -121,7 +121,7 @@ public sealed class QuestSelectionControllerTests
     }
 
     [Fact]
-    public void OnlyTheFirstEligiblePriorityQuestIsConsidered()
+    public void PriorityQuests_OnlyFirstEligible()
     {
         // The started quest can't be interrupted, so the first candidate is refused even though the second is the started one.
         _state.Current = new QuestReference(new QuestId(11), 1, MainScenarioQuestState.Available);
@@ -138,7 +138,7 @@ public sealed class QuestSelectionControllerTests
     [InlineData(true, false, (int)EQuestSource.Priority)]
     [InlineData(true, true, (int)EQuestSource.Journal)]
     [InlineData(false, false, (int)EQuestSource.Journal)]
-    public void PriorityQuestTakesOverOnlyFromAnInterruptibleQuestOutsideDuties(bool interruptible, bool inDuty, int expected)
+    public void PriorityQuest_OnlyInterruptsOutsideDuty(bool interruptible, bool inDuty, int expected)
     {
         Quest priority = NewQuest(10);
         _state.Ready.Add(priority.Id);
@@ -153,7 +153,7 @@ public sealed class QuestSelectionControllerTests
     [InlineData((int)EAutomationType.Manual, false, true)]
     [InlineData((int)EAutomationType.Manual, true, false)]
     [InlineData((int)EAutomationType.SingleQuestA, true, false)]
-    public void AcceptOnlyQueueRunsWhenAutomaticOrNothingIsStarted(int automation, bool started, bool expected)
+    public void AcceptOnlyQueue_RunsIfAutoOrIdle(int automation, bool started, bool expected)
     {
         Assert.Equal(expected, QuestSelectionController.ShouldQueueAcceptOnly(Slots(started: started ? Progress(1) : null),
             (EAutomationType)automation));
@@ -168,7 +168,7 @@ public sealed class QuestSelectionControllerTests
     }
 
     [Fact]
-    public void AcceptOnlyPicksTheFirstQuestReadyIgnoringLevelWithTheRightClass()
+    public void AcceptOnly_PicksFirstReadyForClass()
     {
         Quest wrongClass = NewQuest(10);
         Quest notReady = NewQuest(11);
@@ -198,7 +198,7 @@ public sealed class QuestSelectionControllerTests
     }
 
     [Fact]
-    public void NoStopPointWhileTheQuestIsUnfinishedOrStillAccepted()
+    public void StopPoint_NotWhileQuestUnfinished()
     {
         QuestProgress started = Progress(70);
         _configuration.Stop.Enabled = true;
@@ -221,7 +221,7 @@ public sealed class QuestSelectionControllerTests
     }
 
     [Fact]
-    public void StartedQuestIsHeldOnlyDuringALoadingScreen()
+    public void StartedQuest_HeldOnlyWhileLoading()
     {
         Assert.True(QuestSelectionController.ShouldHoldStartedQuest(Progress(10), betweenAreas: true));
         Assert.False(QuestSelectionController.ShouldHoldStartedQuest(Progress(10), betweenAreas: false));
@@ -229,7 +229,7 @@ public sealed class QuestSelectionControllerTests
     }
 
     [Fact]
-    public void SwitchingBackToADisplacedQuestResumesItsStep()
+    public void SwitchBack_ResumesDisplacedStep()
     {
         QuestProgress displaced = new(NewQuest(10), 255, step: 1);
 

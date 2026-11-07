@@ -57,7 +57,7 @@ public sealed class QuestStepPlannerTests
     }
 
     [Fact]
-    public void GatheringDeliveryIsDoneOnlyAfterItsTurnInSequence()
+    public void GatherDelivery_DoneAfterTurnIn()
     {
         ElementId npc = new SatisfactionSupplyNpcId(1);
         var gathering = QuestController.ECurrentQuestType.Gathering;

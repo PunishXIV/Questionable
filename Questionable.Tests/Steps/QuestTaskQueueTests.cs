@@ -23,7 +23,7 @@ public sealed class QuestTaskQueueTests
     [InlineData(true, false, 2)]
     [InlineData(true, true, 1)]
     [InlineData(true, true, 2)]
-    public void SkipPreservesNormalQuestAndAdvancesWhileStopping(bool automatic, bool hasExecutor, int stepCount)
+    public void Skip_KeepsQuestAndAdvancesOnStop(bool automatic, bool hasExecutor, int stepCount)
     {
         using var context = new SkipTestContext(automatic, stepCount);
         if (hasExecutor)
@@ -121,7 +121,7 @@ public sealed class QuestTaskQueueTests
     [InlineData(2, 2)]
     [InlineData(1, null)]
     [InlineData(2, null)]
-    public void StepCompletionRejectsOldSequenceWithoutChangingCurrentProgress(int stepCount, int? completedSequence)
+    public void StepDone_RejectsOldSequence(int stepCount, int? completedSequence)
     {
         QuestId questId = new(123);
         var quest = QuestTestData.CreateQuest(questId,

@@ -13,7 +13,7 @@ public sealed class TaskToastClassifierTests
     [InlineData("Commande impossible - état anormal.", true)]
     [InlineData("Event Canceled.", false)]
     [InlineData("Unrelated message", false)]
-    public void EventAndStatusMatchingPreservesGameTextNormalization(string text, bool expected)
+    public void EventAndStatus_KeepTextNormalization(string text, bool expected)
     {
         var classifier = new TaskToastClassifier("Event canceled.", new Regex("^Action canceled\\.$"),
             "<italic>Commande impossible – état anormal.</italic>");
@@ -29,7 +29,7 @@ public sealed class TaskToastClassifierTests
         Assert.Equal(expected, TaskRunnerFixture.CreateToasts().IsActionCancellation(text));
 
     [Fact]
-    public void MissingEventAndStatusRowsDoNotClassifyUnrelatedToasts()
+    public void MissingRows_ClassifyNothing()
     {
         var classifier = new TaskToastClassifier(null, new Regex("^Action canceled\\.$"), null);
 

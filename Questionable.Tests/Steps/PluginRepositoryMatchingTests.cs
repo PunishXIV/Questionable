@@ -10,7 +10,7 @@ public sealed class PluginRepositoryMatchingTests
     [InlineData("https://puni.sh/api/repository/knightmore/", "https://puni.sh/api/repository/knightmore")]
     [InlineData(" HTTPS://PUNI.SH/api/repository/croizat?authKey=abc ", "https://puni.sh/api/repository/croizat")]
     [InlineData("https://love.puni.sh/ment.json", "https://love.puni.sh/ment.json")]
-    public void SameRepositoryIgnoresQueryCaseAndTrailingSlash(string configured, string requested) =>
+    public void Match_IgnoresQueryCaseAndSlash(string configured, string requested) =>
         Assert.True(PluginConfigComponent.IsSameRepository(configured, requested));
 
     [Theory]

@@ -16,7 +16,7 @@ public sealed class AchievementCacheTests
         _cache = new(() => _contentId, () => _loaded, _complete.Contains, () => _shown++, () => _hidden++);
 
     [Fact]
-    public void OpensTheWindowOnceAndClosesItWhenDataArrives()
+    public void Window_OpensOnceClosesOnData()
     {
         Assert.False(_cache.IsComplete(1580));
         Assert.False(_cache.IsComplete(1580));

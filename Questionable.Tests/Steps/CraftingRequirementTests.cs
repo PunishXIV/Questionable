@@ -10,7 +10,7 @@ namespace Questionable.Tests.Steps;
 public sealed class CraftingRequirementTests
 {
     [Fact]
-    public void PartialHighQualityInventory_DoesNotSkipOrUnderRequestCrafts()
+    public void PartialHighQuality_CraftsFullCount()
     {
         var task = CreateCraftTask(new QuestId(648), new CraftingItem(4599, 1, EItemQuality.Any));
         var target = Assert.Single(Craft.GetItemTargets(task));
@@ -36,7 +36,7 @@ public sealed class CraftingRequirementTests
     [InlineData(648, 4599u, 3, EItemQuality.HQ)]
     [InlineData(257, 4640u, 2, EItemQuality.Any)]
     [InlineData(268, 4712u, 1, EItemQuality.HQ)]
-    public void ExplicitCraftTarget_UsesRequiredCountAndQuality(ushort questId, uint itemId, int itemCount, EItemQuality quality)
+    public void ExplicitTarget_UsesCountAndQuality(ushort questId, uint itemId, int itemCount, EItemQuality quality)
     {
         var id = new QuestId(questId);
         var requested = new CraftingItem(itemId, 1, EItemQuality.Any);
@@ -87,7 +87,7 @@ public sealed class CraftingRequirementTests
     }
 
     [Fact]
-    public void ExplicitLargerCount_IsPreservedWhileRequiredQualityIsEnforced()
+    public void LargerCount_KeptWithRequiredQuality()
     {
         var id = new QuestId(648);
         var requested = new CraftingItem(4599, 5, EItemQuality.Any);
@@ -98,7 +98,7 @@ public sealed class CraftingRequirementTests
     }
 
     [Fact]
-    public void KnownAnyQualityTarget_PreservesStricterRequestedQuality()
+    public void AnyQualityTarget_KeepsStricterQuality()
     {
         var id = new QuestId(257);
         var requested = new CraftingItem(4640, 1, EItemQuality.HQ);
@@ -109,7 +109,7 @@ public sealed class CraftingRequirementTests
     }
 
     [Fact]
-    public void NonQuestWithSameId_DoesNotApplyQuestRequirements()
+    public void NonQuestSameId_GetsNoRequirements()
     {
         var id = new SatisfactionSupplyNpcId(648);
         var requested = new CraftingItem(4599, 1, EItemQuality.Any);
@@ -145,7 +145,7 @@ public sealed class CraftingRequirementTests
     [Theory]
     [InlineData(2670u)]
     [InlineData(3322u)]
-    public void Weaver590Targets_AcceptOneNormalQualityItem(uint itemId)
+    public void Weaver590_AcceptsOneNormalQualityItem(uint itemId)
     {
         var id = new QuestId(590);
         var requested = new CraftingItem(itemId, 1, EItemQuality.Any);
@@ -161,7 +161,7 @@ public sealed class CraftingRequirementTests
     [Theory]
     [InlineData(EInteractionType.Craft, 3, EItemQuality.HQ)]
     [InlineData(EInteractionType.PurchaseItem, 1, EItemQuality.Any)]
-    public void SkipItemTarget_AppliesQuestRequirementsOnlyToCrafts(EInteractionType interactionType, int itemCount, EItemQuality quality)
+    public void SkipItemTarget_RequirementsOnlyForCrafts(EInteractionType interactionType, int itemCount, EItemQuality quality)
     {
         var step = new QuestStep { InteractionType = interactionType, ItemId = 4599, ItemCount = 1, ItemQuality = EItemQuality.Any };
 

@@ -12,7 +12,7 @@ public sealed class InteractJobSelectionTests
     [InlineData(Job.CRP, Job.BSM, Job.ARM)]
     [InlineData(Job.MIN, Job.BTN, Job.FSH)]
     [InlineData(Job.PLD, Job.WAR, Job.ADV)]
-    public void IneligiblePreferenceFallsBackToAnEligibleJob(Job first, Job second, Job preferred)
+    public void IneligibleJob_FallsBackToEligible(Job first, Job second, Job preferred)
     {
         var configuration = ConfigurationWithPreference(preferred);
         // The preferred job was excluded by the quest's job, gearset or level filter.

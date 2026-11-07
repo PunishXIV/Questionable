@@ -18,7 +18,7 @@ public sealed class QuestRecoveryIntegrationTests
     [InlineData(false, true, false)]
     [InlineData(true, false, false)]
     [InlineData(true, true, true)]
-    public void ControllerMapsEscapeThroughTheLiveSetting(bool enabled, bool pressed, bool expected)
+    public void Controller_EscapeUsesLiveSetting(bool enabled, bool pressed, bool expected)
     {
         var configuration = new Configuration();
         configuration.General.UseEscToCancelQuesting = enabled;
@@ -57,7 +57,7 @@ public sealed class QuestRecoveryIntegrationTests
     [InlineData(true, "{UI 停止}")]
     [InlineData(false, "UI停止")]
     [InlineData(false, "UI 停止")]
-    public void ControllerStopResetsRecoveryBeforeCleanupEvenWhenTheQueueIsIdle(bool queued, string? uiLabel)
+    public void Stop_ResetsRecoveryBeforeCleanup(bool queued, string? uiLabel)
     {
         var clock = new TestClock();
         var recovery = new QuestRecoveryController(NullLogger<QuestRecoveryController>.Instance, clock);

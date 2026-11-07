@@ -26,7 +26,7 @@ public sealed class CraftingBatchTests
     [InlineData(1937u)]
     [InlineData(1862u)]
     [InlineData(2039u)]
-    public void Carpenter538_ResolvesAllThreeCorrectedOutputs(uint itemId)
+    public void Carpenter538_ResolvesAllThreeOutputs(uint itemId)
     {
         var task = LoadTask(538, itemId);
         var outputs = CraftingBatch.Resolve(task, Carpenter538Outputs);
@@ -47,7 +47,7 @@ public sealed class CraftingBatchTests
     [InlineData(5522u)]
     [InlineData(4712u)]
     [InlineData(4850u)]
-    public void Culinarian268_ResolvesFinalGroupEvenAtIntermediateSteps(uint itemId)
+    public void Culinarian268_FinalGroupFromAnyStep(uint itemId)
     {
         var task = LoadTask(268, itemId);
         var outputs = CraftingBatch.Resolve(task, Culinarian268Outputs);
@@ -97,7 +97,7 @@ public sealed class CraftingBatchTests
     }
 
     [Fact]
-    public void InteractionBetweenCrafts_BreaksBatchEvenInSameSequence()
+    public void InteractionBetweenCrafts_BreaksBatch()
     {
         var task = LoadTask(538, 1937);
         task.Quest.FindSequence(task.Sequence)!.Steps.Insert(1, new QuestStep { InteractionType = EInteractionType.Interact });
@@ -124,7 +124,7 @@ public sealed class CraftingBatchTests
     [InlineData("required-job")]
     [InlineData("skip-territory")]
     [InlineData("skip-missing-item")]
-    public void UncertainCraftAnywhereInBlock_RejectsList(string condition)
+    public void UncertainCraftInBlock_RejectsList(string condition)
     {
         var task = LoadTask(538, 1937);
         var other = task.Quest.FindSequence(task.Sequence)!.Steps.Single(x => x.ItemId == 2039);
@@ -168,7 +168,7 @@ public sealed class CraftingBatchTests
     [InlineData(EItemQuality.Any)]
     [InlineData(EItemQuality.NQ)]
     [InlineData(EItemQuality.HQ)]
-    public void DuplicateInventoryThresholds_MergeByMaximumWithoutMutatingSteps(EItemQuality quality)
+    public void DuplicateThresholds_MergeByMaximum(EItemQuality quality)
     {
         var first = CraftStep(2219, 5, quality);
         var second = CraftStep(2219, 9, quality);
@@ -191,7 +191,7 @@ public sealed class CraftingBatchTests
     [InlineData(EItemQuality.NQ, 9, true)]
     [InlineData(EItemQuality.HQ, 9, false)]
     [InlineData(EItemQuality.HQ, 9, true)]
-    public void DuplicateQualities_KeepTheStrictRequirementWhenItCoversAnyCount(
+    public void DuplicateQualities_KeepStrictIfCovered(
         EItemQuality quality, int anyCount, bool strictFirst)
     {
         var strict = CraftStep(2219, 9, quality);
@@ -209,7 +209,7 @@ public sealed class CraftingBatchTests
     [InlineData(EItemQuality.NQ, true)]
     [InlineData(EItemQuality.HQ, false)]
     [InlineData(EItemQuality.HQ, true)]
-    public void DuplicateQualities_RejectListWhenAnyCountExceedsStrictCount(EItemQuality quality, bool strictFirst)
+    public void DuplicateQualities_RejectIfAnyExceeds(EItemQuality quality, bool strictFirst)
     {
         var strict = CraftStep(2219, 5, quality);
         var any = CraftStep(2219, 9);
@@ -233,7 +233,7 @@ public sealed class CraftingBatchTests
     }
 
     [Fact]
-    public void CorrectedHqMetadata_DoesNotHideAnExplicitNqConflict()
+    public void CorrectedHq_KeepsExplicitNqConflict()
     {
         var task = LoadTask(538, 1937);
         task.Step.ItemQuality = EItemQuality.NQ;
@@ -255,7 +255,7 @@ public sealed class CraftingBatchTests
     }
 
     [Fact]
-    public void LegacyUnknownList_PreservesEmptyCompatibilityWithoutSatisfiedObjective()
+    public void LegacyUnknownList_IsEmptyNotSatisfied()
     {
         var step = new QuestStep { InteractionType = EInteractionType.Craft };
         var quest = QuestTestData.CreateQuest(new QuestId(ushort.MaxValue), QuestTestData.Seq(255, step));

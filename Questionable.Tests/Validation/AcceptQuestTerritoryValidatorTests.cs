@@ -66,7 +66,7 @@ public sealed class AcceptQuestTerritoryValidatorTests
         };
 
     [Fact]
-    public void AcceptQuest_TerritoryIsAetheryteTerritory_ReturnsNoIssues()
+    public void AetheryteTerritory_ReturnsNoIssues()
     {
         var quest = CreateQuest(new QuestId(1),
             Seq(0, AcceptStep(LimsaTerritory)));
@@ -75,7 +75,7 @@ public sealed class AcceptQuestTerritoryValidatorTests
     }
 
     [Fact]
-    public void AcceptQuest_UnknownTerritory_ButAetheryteShortcutSet_ReturnsNoIssues()
+    public void AetheryteShortcut_ReturnsNoIssues()
     {
         var quest = CreateQuest(new QuestId(1),
             Seq(0, AcceptStep(NoAetheryteTerritory, aetheryteShortcut: EAetheryteLocation.Limsa)));
@@ -84,7 +84,7 @@ public sealed class AcceptQuestTerritoryValidatorTests
     }
 
     [Fact]
-    public void AcceptQuest_UnknownTerritory_ButAethernetShortcutSet_ReturnsNoIssues()
+    public void AethernetShortcut_ReturnsNoIssues()
     {
         var quest = CreateQuest(new QuestId(1),
             Seq(0, AcceptStep(NoAetheryteTerritory,
@@ -98,7 +98,7 @@ public sealed class AcceptQuestTerritoryValidatorTests
     }
 
     [Fact]
-    public void AcceptQuest_UnknownTerritory_NoShortcuts_ReturnsNone()
+    public void UnknownTerritory_IssueHasNoSeverity()
     {
         var quest = CreateQuest(new QuestId(1),
             Seq(0, AcceptStep(NoAetheryteTerritory)));
@@ -126,7 +126,7 @@ public sealed class AcceptQuestTerritoryValidatorTests
     }
 
     [Fact]
-    public void AcceptQuestStep_InNonZeroSequence_IsIgnored()
+    public void NonZeroSequence_IsIgnored()
     {
         var quest = CreateQuest(new QuestId(1),
             Seq(0, AcceptStep(LimsaTerritory)),
@@ -146,7 +146,7 @@ public sealed class AcceptQuestTerritoryValidatorTests
 
     [Theory]
     [MemberData(nameof(CharacterStartingTerritoryData))]
-    public void AcceptQuest_InCharacterStartingTerritory_NoShortcuts_ReturnsNoIssues(uint territoryId)
+    public void StartingTerritory_ReturnsNoIssues(uint territoryId)
     {
         var quest = CreateQuest(new QuestId(1),
             Seq(0, AcceptStep(territoryId)));
@@ -156,7 +156,7 @@ public sealed class AcceptQuestTerritoryValidatorTests
 
     [Theory]
     [MemberData(nameof(RecoveryTerritoryData))]
-    public void AcceptQuest_RecoveryTerritory_NoShortcuts_ReturnsNoIssues(uint acceptTerritory, uint prevTerritory)
+    public void RecoveryTerritory_ReturnsNoIssues(uint acceptTerritory, uint prevTerritory)
     {
         var quest = CreateQuest(new QuestId(1),
             Seq(0, InteractStep(prevTerritory), AcceptStep(acceptTerritory)));

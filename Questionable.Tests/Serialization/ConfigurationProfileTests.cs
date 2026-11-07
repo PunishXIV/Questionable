@@ -7,7 +7,7 @@ namespace Questionable.Tests.Serialization;
 public sealed class ConfigurationProfileTests
 {
     [Fact]
-    public void EditUnderProfile_IsStoredAsSparsePatch_AndLeavesBaseAlone()
+    public void ProfileEdit_StoresSparsePatch()
     {
         Configuration configuration = new();
         configuration.CreateProfile("Alt");
@@ -23,7 +23,7 @@ public sealed class ConfigurationProfileTests
     }
 
     [Fact]
-    public void EditUnderProfile_OfUntouchedSection_DoesNotChangeBase()
+    public void ProfileEditOtherSection_KeepsBase()
     {
         Configuration configuration = new();
         configuration.CreateProfile("Alt");
@@ -39,7 +39,7 @@ public sealed class ConfigurationProfileTests
     }
 
     [Fact]
-    public void ActivatingProfile_AppliesPatch_IncludingCollections()
+    public void ProfileActivation_PatchesCollections()
     {
         Configuration configuration = new();
         configuration.CreateProfile("Alt");
@@ -53,7 +53,7 @@ public sealed class ConfigurationProfileTests
     }
 
     [Fact]
-    public void ValueChangedBackToBase_IsDroppedFromPatch()
+    public void ValueBackToBase_IsDroppedFromPatch()
     {
         Configuration configuration = new();
         configuration.CreateProfile("Alt");
@@ -98,7 +98,7 @@ public sealed class ConfigurationProfileTests
     }
 
     [Fact]
-    public void ActivateForCharacter_WithoutBinding_UsesBase()
+    public void UnboundCharacter_UsesBase()
     {
         Configuration configuration = new();
         configuration.CreateProfile("Alt");

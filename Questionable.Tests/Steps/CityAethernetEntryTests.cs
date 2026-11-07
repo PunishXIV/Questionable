@@ -19,7 +19,7 @@ public sealed class CityAethernetEntryTests
         Assert.Equal(neighbour, AetheryteShortcut.CityNeighbourTerritory(territory));
 
     [Fact]
-    public void EntersByAethernetWhenTheSequenceStaysInThisPart()
+    public void SequenceStaysInPart_UsesAethernet()
     {
         QuestSequence sequence = Sequence(128, 128);
 
@@ -27,7 +27,7 @@ public sealed class CityAethernetEntryTests
     }
 
     [Fact]
-    public void WalksWhenTheSequenceAlsoUsesTheNeighbouringPart()
+    public void SequenceUsesNeighbour_Walks()
     {
         QuestSequence sequence = Sequence(129, 128);
 
@@ -35,7 +35,7 @@ public sealed class CityAethernetEntryTests
     }
 
     [Fact]
-    public void DoesNothingWhenAlreadyThereOrTheStepHasItsOwnAethernet()
+    public void AlreadyThereOrOwnAethernet_DoesNothing()
     {
         QuestSequence sequence = Sequence(128);
         QuestStep step = sequence.Steps[0];

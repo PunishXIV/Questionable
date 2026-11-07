@@ -8,7 +8,7 @@ namespace Questionable.Tests.Steps;
 public sealed class MovementCompletionTests
 {
     [Fact]
-    public void InterruptedMovementGetsOneRetryThenFailsInsteadOfCompleting()
+    public void Interrupted_RetriesOnceThenFails()
     {
         MoveTask task = new(958, new Vector3(100, 0, 0));
         bool canRestart = true;
@@ -20,7 +20,7 @@ public sealed class MovementCompletionTests
     }
 
     [Fact]
-    public void RetryDisabledCannotCompleteFarFromDestination()
+    public void NoRetry_CannotCompleteFarAway()
     {
         MoveTask task = new(958, new Vector3(100, 0, 0), RestartNavigation: false);
         bool canRestart = task.RestartNavigation;
@@ -49,7 +49,7 @@ public sealed class MovementCompletionTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void TerritoryTransitionDoesNotRestartOldRoute(bool canRestart)
+    public void TerritoryChange_DoesNotRestartRoute(bool canRestart)
     {
         MoveTask task = new(958, new Vector3(100, 0, 0));
         Assert.False(MoveExecutor.ShouldRestartAfterStop(task, 959, Vector3.Zero, ref canRestart));
@@ -58,7 +58,7 @@ public sealed class MovementCompletionTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void NavmeshReloadRestartsWithoutUsingUpTheRetry(bool canRestart)
+    public void NavmeshReload_RestartsWithoutRetry(bool canRestart)
     {
         // vnav clears its route whenever its navmesh changes, e.g. while a zone's mesh is first built.
         MoveTask task = new(958, new Vector3(100, 0, 0), RestartNavigation: canRestart);
@@ -70,7 +70,7 @@ public sealed class MovementCompletionTests
     [Theory]
     [InlineData(958, 100)]
     [InlineData(959, 0)]
-    public void NavmeshReloadAfterArrivalOrTransitionCompletes(uint territoryId, float x)
+    public void NavmeshReloadAfterArrival_Completes(uint territoryId, float x)
     {
         MoveTask task = new(958, new Vector3(100, 0, 0));
         bool canRestart = true;
@@ -88,7 +88,7 @@ public sealed class MovementCompletionTests
     }
 
     [Fact]
-    public void StoppedRouteWaitsOutVnavRepathingBeforeRetrying()
+    public void StoppedRoute_WaitsForVnavRepath()
     {
         long? startedAt = null;
         Assert.True(MoveExecutor.ShouldWaitForSimpleMove(true, 1_000, ref startedAt));
@@ -101,7 +101,7 @@ public sealed class MovementCompletionTests
     }
 
     [Fact]
-    public void MountDuringMovementIsRecheckedAtMostEveryHalfSecond()
+    public void MountCheck_AtMostEveryHalfSecond()
     {
         DateTime now = new(2026, 11, 6, 12, 0, 0);
         DateTime nextCheckAt = default;

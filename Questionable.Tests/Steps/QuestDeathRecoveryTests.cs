@@ -46,7 +46,7 @@ public sealed class QuestDeathRecoveryTests
     }
 
     [Fact]
-    public void DisabledEscapePreservesRecoveryAndItsGracePeriod()
+    public void DisabledEscape_KeepsRecoveryAndGrace()
     {
         var host = new RecoveryHost { EscapeEnabled = false };
         host.BeginRecovery();
@@ -91,7 +91,7 @@ public sealed class QuestDeathRecoveryTests
     }
 
     [Fact]
-    public void ClosedWindowDoesNotSuspendManualStepRecovery()
+    public void ClosedWindow_KeepsManualRecovery()
     {
         var host = new RecoveryHost { IsManual = true, IsQuestWindowOpen = false };
         host.BeginRecovery();
@@ -140,7 +140,7 @@ public sealed class QuestDeathRecoveryTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void ZoningOrMissingPlayerRestartsTheEntireRespawnGrace(bool missingPlayer)
+    public void ZoningOrNoPlayer_RestartsGrace(bool missingPlayer)
     {
         var host = new RecoveryHost();
         host.BeginRecovery();
@@ -177,7 +177,7 @@ public sealed class QuestDeathRecoveryTests
     }
 
     [Fact]
-    public void FailedCleanupStopsBeforeMovementOrReturnConfirmation()
+    public void FailedCleanup_StopsBeforeMoving()
     {
         var host = new RecoveryHost { HasQueuedTasks = true, IsUnconscious = true, CleanupSucceeds = false };
 
@@ -199,7 +199,7 @@ public sealed class QuestDeathRecoveryTests
     }
 
     [Fact]
-    public void MissingPromptDoesNotConsumeConfirmationThrottle()
+    public void MissingPrompt_KeepsThrottle()
     {
         var host = new RecoveryHost();
         host.BeginRecovery();
@@ -222,7 +222,7 @@ public sealed class QuestDeathRecoveryTests
     }
 
     [Fact]
-    public void RecoveryRetriesOnceAtTheThreeSecondBoundary()
+    public void Recovery_RetriesOnceAtThreeSeconds()
     {
         var host = new RecoveryHost();
         host.BeginRecovery();
@@ -242,7 +242,7 @@ public sealed class QuestDeathRecoveryTests
     [InlineData(124, 2, 0)]
     [InlineData(123, 3, 0)]
     [InlineData(123, 2, 1)]
-    public void ChangedQuestSequenceOrStepStartsANewDeathStreak(ushort questId, byte sequence, int step)
+    public void ChangedProgress_StartsNewStreak(ushort questId, byte sequence, int step)
     {
         var host = new RecoveryHost();
         for (int i = 0; i < 4; ++i)
@@ -256,7 +256,7 @@ public sealed class QuestDeathRecoveryTests
     }
 
     [Fact]
-    public void ResetStartsANewDeathStreakAndClearsPromptThrottle()
+    public void Reset_NewStreakAndClearsThrottle()
     {
         var host = new RecoveryHost { PromptVisible = true };
         for (int i = 0; i < 4; ++i)
@@ -279,14 +279,14 @@ public sealed class QuestDeathRecoveryTests
     [InlineData(true, true, false, false)]
     [InlineData(true, false, true, false)]
     [InlineData(true, false, false, true)]
-    public void IdlePredicateKeepsExistingModeQueueAndWindowRules(bool manual, bool queued, bool window, bool stopped)
+    public void IdleCheck_KeepsModeQueueWindowRules(bool manual, bool queued, bool window, bool stopped)
     {
         var host = new RecoveryHost { IsManual = manual, HasQueuedTasks = queued, IsQuestWindowOpen = window };
         Assert.Equal(stopped, host.Recovery.IsQuestingStopped(host));
     }
 
     [Fact]
-    public void LogoutDoesNotReadEscapeOrPlayerConditions()
+    public void Logout_SkipsEscapeAndPlayerChecks()
     {
         var host = Substitute.For<IQuestRecoveryHost>();
         host.IsLoggedIn.Returns(false);
@@ -300,7 +300,7 @@ public sealed class QuestDeathRecoveryTests
     }
 
     [Fact]
-    public void RecoveryKeepsTheIdleGateFromReadingWindowVisibility()
+    public void Recovery_IdleCheckIgnoresWindow()
     {
         var host = Substitute.For<IQuestRecoveryHost>();
         host.IsManual.Returns(true);

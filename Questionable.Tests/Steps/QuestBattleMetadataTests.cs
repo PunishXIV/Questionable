@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Questionable.Tests.Steps;
 
-public sealed class SoloDutyMetadataTests
+public sealed class QuestBattleMetadataTests
 {
     [Theory]
     [InlineData("QUESTBATTLE0", null, true, 0)]
@@ -17,7 +17,7 @@ public sealed class SoloDutyMetadataTests
     [InlineData("QUESTBATTLE256", null, false, 0)]
     [InlineData("QUESTBATTLE+1", null, false, 0)]
     [InlineData("INSTANCEDUNGEON_NAME0", 11u, false, 0)]
-    public void Discovery_UsesQuestInstructionsAndSeasonalMetadata(string instruction, uint? instanceType, bool expected, byte expectedIndex)
+    public void Discovery_UsesInstructionsAndSeasonal(string instruction, uint? instanceType, bool expected, byte expectedIndex)
     {
         Assert.Equal(expected, TerritoryData.TryGetQuestBattleIndex(instruction, instanceType, out byte index));
         Assert.Equal(expectedIndex, index);

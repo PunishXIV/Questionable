@@ -10,7 +10,7 @@ namespace Questionable.Tests.Steps;
 public sealed class GatheredItemDeserializationTests
 {
     [Fact]
-    public void MinimalItem_OmittedOptionalFieldsDeserializeToZero()
+    public void MinimalItem_OmittedFieldsAreZero()
     {
         const string json = """
         {
@@ -29,7 +29,7 @@ public sealed class GatheredItemDeserializationTests
     }
 
     [Fact]
-    public void WithCollectability_ExplicitValueRoundTrips()
+    public void Collectability_RoundTrips()
     {
         const string json = """
         {
@@ -48,7 +48,7 @@ public sealed class GatheredItemDeserializationTests
     }
 
     [Fact]
-    public void GatherStep_MinimalItemsToGatherFlowThroughFactory()
+    public void GatherStep_MinimalItemsReachFactory()
     {
         const string json = """
         {
@@ -76,7 +76,7 @@ public sealed class GatheredItemDeserializationTests
     }
 
     [Fact]
-    public void FishStep_OmittedCollectabilityDefaultsToZeroWithFishingOptions()
+    public void FishStep_MissingCollectabilityIsZero()
     {
         const string json = """
         {

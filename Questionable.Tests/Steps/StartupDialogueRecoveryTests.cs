@@ -8,7 +8,7 @@ namespace Questionable.Tests.Steps;
 public sealed class StartupDialogueRecoveryTests
 {
     [Fact]
-    public void QuestThenDelayedDialog_AreBothObservedBeforeTheFirstExecutor()
+    public void QuestThenDialog_BothSeenBeforeStart()
     {
         var start = DateTime.UnixEpoch;
         var recovery = new Recovery(start);
@@ -33,7 +33,7 @@ public sealed class StartupDialogueRecoveryTests
     }
 
     [Fact]
-    public void FirstExecutor_PermanentlyEndsStartupRecovery()
+    public void FirstExecutor_EndsRecovery()
     {
         var start = DateTime.UnixEpoch;
         var recovery = new Recovery(start) { InitialSweepDone = true };
@@ -43,7 +43,7 @@ public sealed class StartupDialogueRecoveryTests
     }
 
     [Fact]
-    public void FirstExecutorAlreadyStarted_DoesNotSuppressTheInitialFullSweep()
+    public void StartedExecutor_KeepsFirstFullSweep()
     {
         var start = DateTime.UnixEpoch;
         var recovery = new Recovery(start);
@@ -54,7 +54,7 @@ public sealed class StartupDialogueRecoveryTests
     }
 
     [Fact]
-    public void ExternalOperation_PreventsDialogueScanning()
+    public void ExternalOperation_BlocksScanning()
     {
         var start = DateTime.UnixEpoch;
         var recovery = new Recovery(start);
@@ -64,7 +64,7 @@ public sealed class StartupDialogueRecoveryTests
     }
 
     [Fact]
-    public void MissingContextOrTasks_DoNotConsumeTheRecoveryWindow()
+    public void MissingContext_KeepsRecoveryWindow()
     {
         var start = DateTime.UnixEpoch;
         var recovery = new Recovery(start);
@@ -74,7 +74,7 @@ public sealed class StartupDialogueRecoveryTests
     }
 
     [Fact]
-    public void RecoveryWindowExpires_InsteadOfBecomingContinuousDialogueAutomation()
+    public void RecoveryWindow_Expires()
     {
         var start = DateTime.UnixEpoch;
         var recovery = new Recovery(start);
@@ -83,7 +83,7 @@ public sealed class StartupDialogueRecoveryTests
     }
 
     [Fact]
-    public void SequenceRecovery_OnlyConsidersExplicitYesNoPrompts()
+    public void SequenceRecovery_OnlyYesNoPrompts()
     {
         var supper = new DialogueChoice { Type = EDialogChoiceType.YesNo, Prompt = ExcelRef.FromKey("SUPPER"), Yes = true };
         var sequence = new QuestSequence

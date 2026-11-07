@@ -35,7 +35,7 @@ public sealed class QuestStopPolicyTests
     [InlineData(false, "/after-stop")]
     [InlineData(true, "after-stop")]
     [InlineData(true, "")]
-    public void DisabledOrInvalidCommandsStillAllowNotification(bool enabled, string command)
+    public void DisabledCommands_StillNotify(bool enabled, string command)
     {
         var configuration = Config();
         configuration.Stop.RunCommandAfterStop = enabled;
@@ -68,7 +68,7 @@ public sealed class QuestStopPolicyTests
     [InlineData(true, false)]
     [InlineData(false, true)]
     [InlineData(true, true)]
-    public void EffectFailuresAreLoggedWithoutEscapingOrPreventingOtherEffects(bool failNotification, bool failCommand)
+    public void EffectFailure_LoggedOthersStillRun(bool failNotification, bool failCommand)
     {
         List<string> effects = [];
         var logger = Substitute.For<ILogger<QuestStopPolicy>>();

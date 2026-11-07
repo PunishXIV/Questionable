@@ -9,7 +9,7 @@ namespace Questionable.Tests.Steps;
 public sealed class CraftQuestPathTests
 {
     [Fact]
-    public void ShippedListOnlyCrafts_HaveVerifiableOutputsAtTheirActualSequence()
+    public void ListOnlyCrafts_HaveVerifiableOutputs()
     {
         int checkedSteps = 0;
         foreach (string resource in typeof(EmbeddedQuest).Assembly.GetManifestResourceNames()

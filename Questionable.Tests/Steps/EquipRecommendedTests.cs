@@ -45,7 +45,7 @@ public sealed class EquipRecommendedTests
     }
 
     [Fact]
-    public void InitialBusyWait_DoesNotShortenRequestTimeout()
+    public void InitialBusyWait_KeepsFullTimeout()
     {
         Update(busy: true);
         _clock.Advance(TimeSpan.FromSeconds(29));

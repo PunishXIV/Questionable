@@ -9,7 +9,7 @@ namespace Questionable.Tests.Steps;
 public sealed class NavigationFailureReportTests
 {
     [Fact]
-    public void ReportWithoutFailureKeepsExistingFieldsAndOmitsFailureSection()
+    public void NoFailure_OmitsFailureSection()
     {
         Dictionary<string, object?> report = new() { ["Quest"] = "current quest" };
         QuickAccessComponent.AddNavigationFailure(report, null);
@@ -19,7 +19,7 @@ public sealed class NavigationFailureReportTests
     }
 
     [Fact]
-    public void ReportPreservesHistoricalFailureSeparatelyFromCurrentQuest()
+    public void PastFailure_KeptApartFromCurrent()
     {
         var failure = JsonSerializer.Deserialize<NavigationFailureSnapshot>("""
             {

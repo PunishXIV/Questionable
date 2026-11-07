@@ -25,7 +25,7 @@ public sealed class QuestFunctionsTests
     private string[] LockReasons(ushort questId) => _functions.IsQuestLocked(new QuestId(questId)).reasons!;
 
     [Fact]
-    public void AllPreviousQuestsMustBeDoneAndTheMissingOnesAreNamed()
+    public void PreviousQuests_AllNeededMissingNamed()
     {
         _catalog.Add(TestQuestInfo.Create(1, "Wise Guides"));
         _catalog.Add(TestQuestInfo.Create(2, "Sage Council"));
@@ -53,7 +53,7 @@ public sealed class QuestFunctionsTests
     [Theory]
     [InlineData(2, true)]
     [InlineData(3, false)]
-    public void PreviousQuestInProgressCountsOnceItReachesTheSequence(int sequence, bool locked)
+    public void InProgressPrevious_CountsAtSequence(int sequence, bool locked)
     {
         _catalog.Add(TestQuestInfo.Create(1, "A"));
         _catalog.Add(TestQuestInfo.Create(2, previous: [new(new QuestId(1), Sequence: 3)]));
@@ -82,7 +82,7 @@ public sealed class QuestFunctionsTests
     }
 
     [Fact]
-    public void SpecialPrerequisiteReasonComesFromTheTable()
+    public void SpecialPrerequisite_ReasonFromTable()
     {
         _catalog.Add(TestQuestInfo.Create(576));
         _state.ChocoboRacingRank = 39;
@@ -93,7 +93,7 @@ public sealed class QuestFunctionsTests
     }
 
     [Fact]
-    public void LockedAetheryteShortcutLocksTheQuestUnlessTheQuestAttunesItFirst()
+    public void LockedAetheryte_LocksUnlessAttuned()
     {
         var shortcut = new QuestStep { TerritoryId = 956, AetheryteShortcut = EAetheryteLocation.LabyrinthosAporia };
         _catalog.Add(TestQuestInfo.Create(1), QuestTestData.Seq(0, shortcut));
@@ -107,7 +107,7 @@ public sealed class QuestFunctionsTests
     }
 
     [Fact]
-    public void LockedCityAethernetNamesTheShardUntilItsUnlockQuestIsStarted()
+    public void LockedAethernet_NamedUntilQuestStarts()
     {
         _catalog.Add(TestQuestInfo.Create(1), QuestTestData.Seq(0,
             new QuestStep { TerritoryId = 129, AetheryteShortcut = EAetheryteLocation.LimsaZephyrGate }));
@@ -122,7 +122,7 @@ public sealed class QuestFunctionsTests
     [InlineData(2, 100, 100, false)]
     [InlineData(2, 99, 100, true)]
     [InlineData(3, 0, 100, false)]
-    public void AlliedSocietyStoryQuestNeedsRankOrReputation(int rank, int reputation, int needed, bool locked)
+    public void SocietyStory_NeedsRankOrReputation(int rank, int reputation, int needed, bool locked)
     {
         _catalog.Add(TestQuestInfo.Create(1)
             .With(nameof(QuestInfo.AlliedSociety), EAlliedSociety.Amaljaa)
@@ -137,7 +137,7 @@ public sealed class QuestFunctionsTests
     [InlineData(49, false, false)]
     [InlineData(49, true, true)]
     [InlineData(50, false, true)]
-    public void ReadyToAcceptChecksTheLevelUnlessAskedNotTo(int playerLevel, bool ignoreLevel, bool ready)
+    public void ReadyToAccept_ChecksLevelByDefault(int playerLevel, bool ignoreLevel, bool ready)
     {
         _catalog.Add(TestQuestInfo.Create(1, level: 50));
         _state.CurrentLevel = (short)playerLevel;
@@ -146,7 +146,7 @@ public sealed class QuestFunctionsTests
     }
 
     [Fact]
-    public void ReadyToAcceptRejectsAcceptedCompleteLockedAndUnreleasedQuests()
+    public void ReadyToAccept_RejectsUnavailable()
     {
         _catalog.Add(TestQuestInfo.Create(1));
         _catalog.Add(TestQuestInfo.Create(2, previous: [new(new QuestId(1))]));
@@ -190,7 +190,7 @@ public sealed class QuestFunctionsTests
     }
 
     [Fact]
-    public void MainScenarioQuestThatIsCompleteOrHiddenIsNotPicked()
+    public void MainScenario_SkipsDoneOrHidden()
     {
         GuideShows(10);
         _state.Complete.Add(10);
@@ -203,7 +203,7 @@ public sealed class QuestFunctionsTests
     }
 
     [Fact]
-    public void NewGamePlusChapterWinsOverTheScenarioGuide()
+    public void NewGamePlus_BeatsScenarioGuide()
     {
         GuideShows(10);
         _state.Complete.Add(3759);
@@ -214,7 +214,7 @@ public sealed class QuestFunctionsTests
     }
 
     [Fact]
-    public void ScenarioGuideStatesMapToMainScenarioStates()
+    public void ScenarioGuide_MapsToMainScenario()
     {
         _state.Guide = new(EScenarioGuideState.Missing);
         Assert.Equal(MainScenarioQuestState.Unavailable, _functions.GetMainScenarioQuest().Item1.State);
@@ -226,7 +226,7 @@ public sealed class QuestFunctionsTests
     }
 
     [Fact]
-    public void EmptyGuideFallsBackToTheOnlyReadyMainScenarioQuest()
+    public void EmptyGuide_FallsBackToReadyQuest()
     {
         _catalog.Add(TestQuestInfo.Create(30, mainScenario: true));
         _catalog.Add(TestQuestInfo.Create(31, mainScenario: true, previous: [new(new QuestId(30))]));

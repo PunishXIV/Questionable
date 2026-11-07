@@ -11,7 +11,7 @@ public sealed class GameDataInfrastructureTests
     [Theory]
     [InlineData(null)]
     [InlineData("")]
-    public void MissingOptionalInstallation_IsMarkedSkipped(string? configured)
+    public void MissingOptionalInstall_IsSkipped(string? configured)
     {
         var fact = new GameDataFactAttribute(configured, () => null);
 
@@ -30,7 +30,7 @@ public sealed class GameDataInfrastructureTests
     }
 
     [Fact]
-    public void InvalidExplicitInstallation_FailsWithoutFallingBackOrSkipping()
+    public void InvalidExplicitInstall_FailsOutright()
     {
         string missing = Path.Combine(Path.GetTempPath(), $"questionable-missing-{Guid.NewGuid():N}");
         string? Discover() => throw new InvalidOperationException("Explicit paths must not fall back.");
@@ -43,7 +43,7 @@ public sealed class GameDataInfrastructureTests
     }
 
     [Fact]
-    public void FailedGeneration_RemainsInSequenceAndQuestAccuracy()
+    public void FailedGeneration_CountsInAccuracy()
     {
         QuestRoot hand = TwoTargetQuest();
         List<string> mismatches = [];
@@ -57,7 +57,7 @@ public sealed class GameDataInfrastructureTests
     }
 
     [Fact]
-    public void PartialGeneration_FailsWholeQuestAgreement()
+    public void PartialGeneration_FailsQuestAgreement()
     {
         QuestRoot hand = TwoTargetQuest();
         QuestRoot generated = new() { QuestSequence = [hand.QuestSequence[0]] };
@@ -67,7 +67,7 @@ public sealed class GameDataInfrastructureTests
     }
 
     [Fact]
-    public void FailedGeneration_WithoutTargetedSequencesStillFailsQuestAgreement()
+    public void UntargetedFailure_FailsQuestAgreement()
     {
         Assert.Equal((0, 0, false),
             QuestPathGenerationAccuracyTests.CompareQuest(new QuestRoot(), null, "empty", []));

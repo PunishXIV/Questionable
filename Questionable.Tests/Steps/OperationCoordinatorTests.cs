@@ -14,7 +14,7 @@ using Xunit;
 
 namespace Questionable.Tests.Steps;
 
-public sealed class ExternalOperationCoordinatorTests
+public sealed class OperationCoordinatorTests
 {
     [Fact]
     public void LaterProviders_SeeStoppedExecutor()
@@ -62,7 +62,7 @@ public sealed class ExternalOperationCoordinatorTests
     }
 
     [Fact]
-    public void ActiveSchedulingRejectsEveryConfirmationWithoutReadingProviders()
+    public void ActiveScheduling_RejectsConfirmation()
     {
         using var fixture = new ExternalOperationFixture();
         fixture.Crafting.MarkUncertain(fixture.Crafting.BeginRequest());
@@ -123,7 +123,7 @@ public sealed class ExternalOperationCoordinatorTests
     }
 
     [Fact]
-    public void ProvidersRunInDeclaredOrderWhateverTheRegistrationOrder()
+    public void Providers_RunInDeclaredOrder()
     {
         using var fixture = new ExternalOperationFixture();
 
@@ -173,7 +173,7 @@ public sealed class ExternalOperationCoordinatorTests
     }
 
     [Fact]
-    public void AddedProviderTakesPartWithoutCoordinatorChanges()
+    public void AddedProvider_JoinsWithoutChanges()
     {
         var added = Substitute.For<IOperationProvider>();
         added.Order.Returns(700);
@@ -263,7 +263,7 @@ public sealed class ExternalOperationCoordinatorTests
     }
 
     [Fact]
-    public void PanelShowsWorkThenAsksForConfirmationOnceUncertain()
+    public void Panel_ShowsWorkThenAsksToConfirm()
     {
         using var fixture = new ExternalOperationFixture();
         var provider = fixture.Provider<KnightshopperProvider>();
@@ -285,7 +285,7 @@ public sealed class ExternalOperationCoordinatorTests
     }
 
     [Fact]
-    public void TitleBarPrefersAnyProviderNeedingACheckOverEarlierWork()
+    public void TitleBar_PrefersProviderNeedingCheck()
     {
         using var fixture = new ExternalOperationFixture();
         fixture.Purchase.BeginRequest();

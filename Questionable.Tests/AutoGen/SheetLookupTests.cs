@@ -14,7 +14,7 @@ namespace Questionable.Tests.AutoGen;
 public sealed class SheetLookupTests(GameDataFixture fixture) : IClassFixture<GameDataFixture>
 {
     [GameDataFact]
-    public void CardRewardIndex_PreservesLegacyItemsAndOrder()
+    public void CardRewards_KeepItemsAndOrder()
     {
         Assert.True(fixture.Available, "Game data is required for sheet lookup parity checks.");
         var excel = fixture.GameData!.Quests.Module;
@@ -36,7 +36,7 @@ public sealed class SheetLookupTests(GameDataFixture fixture) : IClassFixture<Ga
     }
 
     [GameDataFact]
-    public void CustomDeliveryLookup_PreservesLegacyMappings()
+    public void CustomDelivery_KeepsOldMappings()
     {
         Assert.True(fixture.Available, "Game data is required for sheet lookup parity checks.");
         var excel = fixture.GameData!.Quests.Module;

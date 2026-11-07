@@ -13,7 +13,7 @@ public sealed class RotationSolverRebornIpcTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void ModeReader_SupportsMergedAndReferencedBasicAssembly(bool separateBasic)
+    public void ModeReader_ReadsMergedOrReferenced(bool separateBasic)
     {
         var context = new AssemblyLoadContext($"RSR shape {Guid.NewGuid()}", isCollectible: true);
         try
@@ -54,7 +54,7 @@ public sealed class RotationSolverRebornIpcTests
     }
 
     [Fact]
-    public void ModeReader_DoesNotUseBasicFromAnotherProviderLoadContext()
+    public void ModeReader_IgnoresOtherLoadContext()
     {
         var oldContext = new AssemblyLoadContext($"Old RSR {Guid.NewGuid()}", isCollectible: true);
         var newContext = new AssemblyLoadContext($"New RSR {Guid.NewGuid()}", isCollectible: true);

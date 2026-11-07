@@ -14,7 +14,7 @@ public sealed class ServiceRegistrationTests
     [Theory]
     [InlineData(typeof(IQuestGameState), typeof(GameQuestState))]
     [InlineData(typeof(IQuestCatalog), typeof(QuestCatalog))]
-    public void InterfaceRegisteredAdapters_HaveNoUnresolvableConcreteConsumers(Type contract, Type implementation)
+    public void Adapters_HaveNoUnresolvedConsumers(Type contract, Type implementation)
     {
         IServiceCollection services = new ServiceCollection().AddQuestionable();
         Assert.Contains(services, s => !s.IsKeyedService && s.ServiceType == contract &&

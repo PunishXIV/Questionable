@@ -36,7 +36,7 @@ public sealed class UniqueStartStopValidatorTests
     }
 
     [Fact]
-    public void AcceptQuestAsLastStepOfSequence0_ReturnsNoIssues()
+    public void AcceptQuestLast_ReturnsNoIssues()
     {
         var quest = CreateQuest(new QuestId(1),
             Seq(0,
@@ -48,7 +48,7 @@ public sealed class UniqueStartStopValidatorTests
     }
 
     [Fact]
-    public void AcceptQuestNotLastStepOfSequence0_ReturnsError()
+    public void AcceptQuestNotLast_ReturnsError()
     {
         var quest = CreateQuest(new QuestId(1),
             Seq(0,
@@ -105,7 +105,7 @@ public sealed class UniqueStartStopValidatorTests
     }
 
     [Fact]
-    public void CompleteQuestAsLastStepOfSequence255_ReturnsNoIssues()
+    public void CompleteQuestLast_ReturnsNoIssues()
     {
         var quest = CreateQuest(new QuestId(1),
             Seq(0, Step(EInteractionType.AcceptQuest)),
@@ -117,7 +117,7 @@ public sealed class UniqueStartStopValidatorTests
     }
 
     [Fact]
-    public void CompleteQuestNotLastStepOfSequence255_ReturnsError()
+    public void CompleteQuestNotLast_ReturnsError()
     {
         var quest = CreateQuest(new QuestId(1),
             Seq(0, Step(EInteractionType.AcceptQuest)),

@@ -8,7 +8,7 @@ namespace Questionable.Tests;
 public sealed class PluginLifetimeTests
 {
     [Fact]
-    public async Task LateInitializationFailureUnhooksAndDisposesPreviouslyCreatedServices()
+    public async Task LateStartupFailure_UnhooksAndDisposes()
     {
         List<string> events = [];
         List<Exception> cleanupErrors = [];
@@ -59,7 +59,7 @@ public sealed class PluginLifetimeTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public async Task CleanupFailuresPreserveStartupExceptionAndAttemptEveryPhase(bool loggerThrows)
+    public async Task CleanupFailure_KeepsErrorRunsAllPhases(bool loggerThrows)
     {
         var original = new InvalidOperationException("startup");
         var stopFailure = new IOException("unhook");
@@ -105,7 +105,7 @@ public sealed class PluginLifetimeTests
     }
 
     [Fact]
-    public async Task SuccessfulStartupWaitsForAsyncDisposalBeforeReleasingGlobals()
+    public async Task Dispose_ReleasesGlobalsAfterAsyncDispose()
     {
         List<string> events = [];
         var releaseDisposal = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -157,7 +157,7 @@ public sealed class PluginLifetimeTests
     }
 
     [Fact]
-    public async Task InitializationCancellation_RollsBackServices()
+    public async Task CancelledStartup_RollsBackServices()
     {
         using CancellationTokenSource cancellation = new();
         var initializationStarted = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -190,7 +190,7 @@ public sealed class PluginLifetimeTests
     }
 
     [Fact]
-    public async Task DisposalDuringInitialization_WaitsForServices()
+    public async Task DisposeDuringStartup_WaitsForServices()
     {
         var initializationStarted = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
         var finishInitialization = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -216,7 +216,7 @@ public sealed class PluginLifetimeTests
     }
 
     [Fact]
-    public async Task DisposalBeforeInitializationPreventsResourceCreation()
+    public async Task DisposeBeforeStartup_CreatesNothing()
     {
         var lifetime = new PluginLifetime();
         await lifetime.DisposeAsync();

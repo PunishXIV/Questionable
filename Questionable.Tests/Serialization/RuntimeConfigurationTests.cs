@@ -13,7 +13,7 @@ public sealed class RuntimeConfigurationTests : IDisposable
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void RuntimeConsumers_FollowCharacterOverrides_AfterSave(bool baseEnabled)
+    public void Consumers_FollowCharacterAfterSave(bool baseEnabled)
     {
         _configuration.Advanced.AutoRedeemRewardItems = baseEnabled;
         _configuration.Advanced.NeverFly = baseEnabled;
@@ -42,7 +42,7 @@ public sealed class RuntimeConfigurationTests : IDisposable
     }
 
     [Fact]
-    public void Redemption_ProfileDisabled_DoesNotEnumerateInventory()
+    public void DisabledRedemption_SkipsInventory()
     {
         _configuration.Advanced.AutoRedeemRewardItems = true;
         _configuration.CreateProfile("Alt");
@@ -57,7 +57,7 @@ public sealed class RuntimeConfigurationTests : IDisposable
     }
 
     [Fact]
-    public void RuntimeLookup_SeesUnsavedEditsWithoutReplacingTheInstance()
+    public void Lookup_SeesUnsavedEditsInPlace()
     {
         _configuration.CreateProfile("Alt");
         _configuration.ActivateProfile("Alt");
@@ -77,7 +77,7 @@ public sealed class RuntimeConfigurationTests : IDisposable
     }
 
     [Fact]
-    public void OldInstanceCleanup_DoesNotClearReplacement()
+    public void OldInstanceCleanup_KeepsReplacement()
     {
         Configuration replacement = new();
         Configuration.InitializeRuntime(replacement);

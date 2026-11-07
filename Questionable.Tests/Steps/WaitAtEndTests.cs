@@ -20,7 +20,7 @@ public sealed class WaitAtEndTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void WaitDelay_UsesConfiguredDamageInterruption(bool interruptOnDamage)
+    public void WaitDelay_UsesDamageSetting(bool interruptOnDamage)
     {
         WaitAtEnd.WaitDelay task = new() { InterruptOnDamage = interruptOnDamage };
         WaitAtEnd.WaitDelayExecutor executor = new();
@@ -36,7 +36,7 @@ public sealed class WaitAtEndTests
     [InlineData(true, true, true)]
     [InlineData(false, true, false)]
     [InlineData(true, true, false)]
-    public void QuestWaitDamageStartsCombatBeforeReplayingConversationUnlessInFlight(bool turnIn, bool inFlight, bool inCombat)
+    public void QuestWaitDamage_CombatBeforeReplay(bool turnIn, bool inFlight, bool inCombat)
     {
         var condition = Substitute.For<ICondition>();
         condition[ConditionFlag.InCombat].Returns(inCombat);
@@ -91,7 +91,7 @@ public sealed class WaitAtEndTests
     [InlineData(true, false, true)]
     [InlineData(true, true, false)]
     [InlineData(true, true, true)]
-    public void EarlyDamageChecksCombatAfterRecoveryBeforeReplayingQuestWait(bool turnIn, bool mounted, bool entersCombat)
+    public void EarlyDamage_ChecksCombatBeforeReplay(bool turnIn, bool mounted, bool entersCombat)
     {
         var condition = Substitute.For<ICondition>();
         condition[ConditionFlag.Mounted].Returns(mounted);
@@ -155,7 +155,7 @@ public sealed class WaitAtEndTests
     }
 
     [Fact]
-    public void LateCombatCheckSkipsWhenCombatEndedBeforeDecision()
+    public void LateCombatCheck_SkipsIfCombatEnded()
     {
         var condition = Substitute.For<ICondition>();
         condition[ConditionFlag.InCombat].Returns(true);
@@ -170,7 +170,7 @@ public sealed class WaitAtEndTests
     }
 
     [Fact]
-    public void AlreadyInCombatMountedInterruptionKeepsImmediateUnmountAndCombatOrder()
+    public void MountedInCombat_UnmountsThenFights()
     {
         var condition = Substitute.For<ICondition>();
         condition[ConditionFlag.InCombat].Returns(true);
@@ -229,7 +229,7 @@ public sealed class WaitAtEndTests
     [InlineData(nameof(ETaskResult.RetryStep), true)]
     [InlineData(nameof(ETaskResult.End), false)]
     [InlineData(nameof(ETaskResult.End), true)]
-    public void UpdateThatStopsOrReplacesTheQueueDoesNotProcessItsStaleResult(string result, bool replace)
+    public void QueueChangedInUpdate_DropsStaleResult(string result, bool replace)
     {
         using var fixture = new TaskRunnerFixture();
         var controller = fixture.Controller;

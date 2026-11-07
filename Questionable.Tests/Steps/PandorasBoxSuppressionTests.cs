@@ -26,7 +26,7 @@ public sealed class PandorasBoxSuppressionTests
         suppression.Update(active, providerInstalled: true, IsEnabled, SetEnabled);
 
     [Fact]
-    public void PausesOnlyEnabledFeaturesAndRestoresThemAfterTheRun()
+    public void EnabledFeatures_PausedThenRestored()
     {
         var suppression = Create();
 
@@ -43,7 +43,7 @@ public sealed class PandorasBoxSuppressionTests
     }
 
     [Fact]
-    public void UnavailableAtRunStartIsRetriedInsteadOfGivingUp()
+    public void UnavailableAtStart_IsRetried()
     {
         var suppression = Create();
         _available = false;
@@ -81,7 +81,7 @@ public sealed class PandorasBoxSuppressionTests
     }
 
     [Fact]
-    public void NextRun_DoesNotReadPausedFeatureAsUserChoice()
+    public void NextRun_PausedFeatureIsNotUserChoice()
     {
         var suppression = Create();
         Update(suppression, active: true);

@@ -28,7 +28,7 @@ public sealed class PathDataUpdaterLifetimeTests
     }
 
     [Fact]
-    public async Task DisposeDuringManifestCancelsAndDrainsWithoutSaving()
+    public async Task DisposeInManifest_DrainsWithoutSaving()
     {
         var started = Signal();
         bool cancelled = false;
@@ -51,7 +51,7 @@ public sealed class PathDataUpdaterLifetimeTests
     }
 
     [Fact]
-    public async Task DisposeDuringBundleDownloadPreservesInstalledBundle()
+    public async Task DisposeInDownload_KeepsInstalledBundle()
     {
         var downloading = Signal();
         await using var context = new Context(async (request, token) =>
@@ -75,7 +75,7 @@ public sealed class PathDataUpdaterLifetimeTests
     }
 
     [Fact]
-    public async Task DisposeDuringRetryCancelsDelayAndDoesNotClearSavedVersion()
+    public async Task DisposeInRetry_KeepsSavedVersion()
     {
         var waiting = Signal();
         int requests = 0;
@@ -102,7 +102,7 @@ public sealed class PathDataUpdaterLifetimeTests
     }
 
     [Fact]
-    public async Task QueuedReloadBecomesNoOpAfterDisposeWithoutBlockingDrain()
+    public async Task QueuedReload_SkippedAfterDispose()
     {
         var queued = new TaskCompletionSource<Action>(TaskCreationOptions.RunContinuationsAsynchronously);
         var frameworkCompletion = Signal();
@@ -124,7 +124,7 @@ public sealed class PathDataUpdaterLifetimeTests
     }
 
     [Fact]
-    public async Task LateDownloadCompletionCannotInstallAfterDispose()
+    public async Task LateDownload_NotInstalledAfterDispose()
     {
         var downloading = Signal();
         var release = Signal();
@@ -147,7 +147,7 @@ public sealed class PathDataUpdaterLifetimeTests
     }
 
     [Fact]
-    public async Task DisposeBeforeStartAndRepeatedDisposePreventAllRequests()
+    public async Task EarlyOrRepeatedDispose_SendsNoRequests()
     {
         int requests = 0;
         await using var context = new Context((request, _) =>
@@ -196,7 +196,7 @@ public sealed class PathDataUpdaterLifetimeTests
     }
 
     [Fact]
-    public async Task UpToDateCheckStillSavesWithoutDownloadingOrReloading()
+    public async Task UpToDate_SavesWithoutDownloading()
     {
         int requests = 0;
         await using var context = new Context((_, _) =>

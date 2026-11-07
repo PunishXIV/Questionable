@@ -6,13 +6,13 @@ using Confirmation = Questionable.Controller.GameUi.YesNoChoiceHandler.QuestBatt
 
 namespace Questionable.Tests.Steps;
 
-public sealed class SoloDutyConfirmationTests
+public sealed class QuestBattleConfirmationTests
 {
     private const string Prompt = "Duty calls. Commence battle for 'In from the Cold'?";
     private static readonly DateTime RequestedAt = DateTime.UnixEpoch;
 
     [Fact]
-    public void ReadyMatchingPrompt_ConfirmsOnceAfterInitialDifficultyDelay()
+    public void ReadyPrompt_ConfirmsOnceAfterDelay()
     {
         var quest = CreateProgress();
         var confirmation = new Confirmation(quest, Prompt, RequestedAt);
@@ -52,7 +52,7 @@ public sealed class SoloDutyConfirmationTests
     }
 
     [Fact]
-    public void UnrelatedPrompt_CancelsInsteadOfAcceptingItOrReusingTheRequest()
+    public void UnrelatedPrompt_Cancels()
     {
         var quest = CreateProgress();
         var confirmation = new Confirmation(quest, Prompt, RequestedAt);
@@ -82,7 +82,7 @@ public sealed class SoloDutyConfirmationTests
     [InlineData("next step")]
     [InlineData("same step restarted")]
     [InlineData("no quest")]
-    public void ChangedQuestOrStep_CancelsTheOldConfirmation(string change)
+    public void ChangedQuestOrStep_Cancels(string change)
     {
         QuestController.QuestProgress? quest = CreateProgress();
         var confirmation = new Confirmation(quest, Prompt, RequestedAt);
@@ -113,7 +113,7 @@ public sealed class SoloDutyConfirmationTests
     }
 
     [Fact]
-    public void ExpiredConfirmation_DoesNotClickALatePrompt()
+    public void Expired_DoesNotClickLatePrompt()
     {
         var quest = CreateProgress();
         var confirmation = new Confirmation(quest, Prompt, RequestedAt);
@@ -125,7 +125,7 @@ public sealed class SoloDutyConfirmationTests
     }
 
     [Fact]
-    public void RepeatedChecks_AreThrottledWhileWaitingForReadiness()
+    public void RepeatedChecks_AreThrottled()
     {
         var quest = CreateProgress();
         var confirmation = new Confirmation(quest, Prompt, RequestedAt);

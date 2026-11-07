@@ -6,7 +6,7 @@ namespace Questionable.Tests.Steps;
 public sealed class YesAlreadyIpcTests
 {
     [Fact]
-    public void EnabledAtStartupIsTurnedOffForTheRunAndBackOnAfterwards()
+    public void Enabled_OffForRunThenBackOn()
     {
         var (set, owned) = YesAlreadyIpc.DecideToggle(hasActiveQuest: true, isEnabled: true, disabledByQuestionable: false);
         Assert.Equal(false, set);

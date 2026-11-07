@@ -35,7 +35,7 @@ public sealed class QuestAcceptanceStopTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void AlreadyAcceptedSelectionIsNotNewlyAccepted(bool repeatable)
+    public void AcceptedSelection_IsNotNewlyAccepted(bool repeatable)
     {
         var next = Progress(2881, repeatable);
         _acceptance.Select(next, isAccepted: true);
@@ -47,7 +47,7 @@ public sealed class QuestAcceptanceStopTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void SelectionAcceptedAfterItWasMadeIsReportedOnce(bool repeatable)
+    public void LaterAcceptance_IsReportedOnce(bool repeatable)
     {
         var next = Progress(2881, repeatable);
         _acceptance.Select(next, isAccepted: false);
@@ -73,7 +73,7 @@ public sealed class QuestAcceptanceStopTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void ReplacingOrClearingTheSelectionDiscardsItsExpectation(bool clearFirst)
+    public void ChangedSelection_DropsExpectation(bool clearFirst)
     {
         var first = Progress(2881);
         _acceptance.Select(first, isAccepted: false);
@@ -94,7 +94,7 @@ public sealed class QuestAcceptanceStopTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void SelectingTheSameQuestAgainIsANewSelection(bool resolveStale)
+    public void SameQuestAgain_IsNewSelection(bool resolveStale)
     {
         var first = Progress(2881);
         var second = new QuestController.QuestProgress(first.Quest);
@@ -129,7 +129,7 @@ public sealed class QuestAcceptanceStopTests
     [InlineData("observer")]
     [InlineData("executor")]
     [InlineData("handoff")]
-    public void AcceptanceIsReportedOnceWhicheverDetectionPointSeesItFirst(string first)
+    public void Acceptance_ReportedOnceFromAnyPoint(string first)
     {
         var next = Progress(2881);
         _acceptance.Select(next, isAccepted: false);
@@ -160,7 +160,7 @@ public sealed class QuestAcceptanceStopTests
     [InlineData(2552)] // Own MSQ acceptance before its sequence changes.
     [InlineData(2881)] // Side quest picked up while an MSQ is active.
     [InlineData(253)] // Class quest picked up while another quest is active.
-    public void ExpectedAcceptanceIsObservedBeforeItsWaitRuns(ushort accepting)
+    public void ExpectedAcceptance_SeenBeforeWait(ushort accepting)
     {
         _acceptance.StopAfterNextAccept = true;
         QuestId expected = new(accepting);
@@ -183,7 +183,7 @@ public sealed class QuestAcceptanceStopTests
     }
 
     [Fact]
-    public void ActiveAcceptanceWaitIsObservedAfterItLeavesTheQueue()
+    public void ActiveWait_SeenAfterLeavingQueue()
     {
         QuestId expected = new(2881);
         Queue(new WaitAtEnd.QuestAccepted(expected));
@@ -197,7 +197,7 @@ public sealed class QuestAcceptanceStopTests
     }
 
     [Fact]
-    public void AnUnrelatedAcceptanceDoesNotConsumeAPendingOne()
+    public void UnrelatedAcceptance_KeepsPending()
     {
         QuestId expected = new(253);
         Queue(new WaitAtEnd.QuestAccepted(expected));
@@ -211,7 +211,7 @@ public sealed class QuestAcceptanceStopTests
     }
 
     [Fact]
-    public void AlreadyAcceptedOptionalPickupIsNotANewAcceptance()
+    public void AcceptedPickup_IsNotNewAcceptance()
     {
         Queue(new WaitAtEnd.QuestAccepted(new QuestId(2881)), accepted: true);
         List<ElementId> accepted = [];
@@ -236,7 +236,7 @@ public sealed class QuestAcceptanceStopTests
     }
 
     [Fact]
-    public void AStopDuringObservationEndsTheRestOfThePlan()
+    public void StopWhileObserving_EndsPlan()
     {
         Queue(new WaitAtEnd.QuestAccepted(new QuestId(2881)));
         Queue(new WaitAtEnd.QuestAccepted(new QuestId(253)));
@@ -252,7 +252,7 @@ public sealed class QuestAcceptanceStopTests
     }
 
     [Fact]
-    public void ObservedAcceptanceCannotBeReusedAfterArmingTheToggle()
+    public void ObservedAcceptance_NotReusedAfterToggle()
     {
         Queue(new WaitAtEnd.QuestAccepted(new QuestId(2881)));
         List<ElementId> accepted = [];
@@ -304,7 +304,7 @@ public sealed class QuestAcceptanceStopTests
     [InlineData(false, true, false)]
     [InlineData(true, false, false)]
     [InlineData(true, true, true)]
-    public void ConfiguredStopRequiresEnabledMatchingQuest(bool enabled, bool matching, bool expected)
+    public void ConfiguredStop_NeedsEnabledMatch(bool enabled, bool matching, bool expected)
     {
         _configuration.Stop.Enabled = enabled;
         _configuration.Stop.QuestsToStopWhenAccepted.Add(new QuestId(2881));
@@ -354,7 +354,7 @@ public sealed class QuestAcceptanceWiringTests : IDisposable
     [InlineData(false, true)]
     [InlineData(true, false)]
     [InlineData(true, true)]
-    public void AlreadyAcceptedNextQuestHandsOffWithoutReporting(bool singleQuest, bool repeatable)
+    public void AcceptedNextQuest_HandsOffSilently(bool singleQuest, bool repeatable)
     {
         var quest = QuestTestData.CreateQuest(new QuestId(2881));
         quest.Info.IsRepeatable.Returns(repeatable);
@@ -378,7 +378,7 @@ public sealed class QuestAcceptanceWiringTests : IDisposable
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void NextQuestAcceptedAfterSelectionHandsOffAndReportsOnce(bool singleQuest)
+    public void LaterNextQuest_HandsOffReportsOnce(bool singleQuest)
     {
         var quest = QuestTestData.CreateQuest(new QuestId(2881));
         _controller.AutomationType = singleQuest ? QuestController.EAutomationType.SingleQuestA : QuestController.EAutomationType.Automatic;
@@ -397,7 +397,7 @@ public sealed class QuestAcceptanceWiringTests : IDisposable
     }
 
     [Fact]
-    public void SelectingAStartedQuestRegistersNoAcceptance()
+    public void StartedQuest_RegistersNoAcceptance()
     {
         _controller.StopAfterNextAccept = true;
         _controller.SelectStartedQuest(QuestTestData.CreateQuest(new QuestId(2881)), sequence: 1);
@@ -445,7 +445,7 @@ public sealed class QuestAcceptanceWiringTests : IDisposable
     }
 
     [Fact]
-    public void WaitExecutorReportConsumesTheNextQuestExpectation()
+    public void WaitReport_ConsumesNextQuestExpectation()
     {
         _controller.AutomationType = QuestController.EAutomationType.Manual;
         var quest = QuestTestData.CreateQuest(new QuestId(2881));
