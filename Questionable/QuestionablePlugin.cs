@@ -177,7 +177,7 @@ public sealed class QuestionablePlugin(
         var configuration = savedConfig ?? new Configuration();
         if (!configuration.AutoRedeemOffResetApplied)
         {
-            configuration.ApplyAutoRedeemRewardItemsInitialReset();
+            configuration.ResetAutoRedeem();
             configuration.AutoRedeemOffResetApplied = true;
             pluginInterface.SavePluginConfig(configuration);
         }
@@ -212,7 +212,7 @@ public sealed class QuestionablePlugin(
             new Lazy<OperationCoordinator>(sp.GetRequiredService<OperationCoordinator>));
 
         var serviceProvider = serviceCollection.BuildServiceProvider();
-        _lifetime.OwnServices(serviceProvider);
+        _lifetime.SetServices(serviceProvider);
         Initialize(serviceProvider);
     }
 

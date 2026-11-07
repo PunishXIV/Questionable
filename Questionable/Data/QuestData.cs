@@ -23,7 +23,7 @@ internal sealed class QuestData
             [4057] = new MountsPrerequisite(189, 192, 205, 217, 226, 238, 249),
             [4795] = new MountsPrerequisite(261, 262, 293, 306, 315, 325, 332),
             [5469] = new MountsPrerequisite(345, 346, 363, 389, 407, 422, 444),
-            [576] = new ChocoboRacingRankPrerequisite(40),
+            [576] = new ChocoboRankPrerequisite(40),
             [4081] = new AchievementPrerequisite(2819),
             [3195] = new UnlockLinkPrerequisite(113),
             [2387] = new AchievementPrerequisite(1580),
@@ -182,7 +182,7 @@ internal sealed class QuestData
     private static readonly IReadOnlyList<uint> TankRoleQuestChapters = [136, 154, 178];
     private static readonly IReadOnlyList<uint> HealerRoleQuestChapters = [137, 155, 179];
     private static readonly IReadOnlyList<uint> MeleeRoleQuestChapters = [138, 156, 180];
-    private static readonly IReadOnlyList<uint> PhysicalRangedRoleQuestChapters = [138, 157, 181];
+    private static readonly IReadOnlyList<uint> RangedRoleQuestChapters = [138, 157, 181];
     private static readonly IReadOnlyList<uint> CasterRoleQuestChapters = [139, 158, 182];
 
     public static readonly IReadOnlyList<IReadOnlyList<uint>> AllRoleQuestChapters =
@@ -190,7 +190,7 @@ internal sealed class QuestData
         TankRoleQuestChapters,
         HealerRoleQuestChapters,
         MeleeRoleQuestChapters,
-        PhysicalRangedRoleQuestChapters,
+        RangedRoleQuestChapters,
         CasterRoleQuestChapters
     ];
 
@@ -521,36 +521,36 @@ internal sealed class QuestData
     public List<QuestInfo> GetClassJobQuests(Job classJob, bool includeRoleQuests = false)
     {
         if (!JobToClassQuestChapterIds.TryGetValue(classJob, out var chapterIds))
-            chapterIds = LogUnsupportedClassJobAndReturnEmpty(classJob);
+            chapterIds = LogUnsupportedJob(classJob);
 
         if (includeRoleQuests)
-            chapterIds = [.. chapterIds, .. GetRoleQuestIds(classJob)];
+            chapterIds = [.. chapterIds, .. GetRoleChapterIds(classJob)];
 
-        return GetQuestsInNewGamePlusChapters(chapterIds);
+        return GetChapterQuests(chapterIds);
     }
 
-    private ImmutableList<uint> LogUnsupportedClassJobAndReturnEmpty(Job classJob)
+    private ImmutableList<uint> LogUnsupportedJob(Job classJob)
     {
         _pluginLog?.Debug("Ignoring unsupported class job in GetClassJobQuests: {ClassJob}", classJob);
         return [];
     }
 
-    public List<QuestInfo> GetRoleQuests(Job referenceClassJob) => GetQuestsInNewGamePlusChapters(GetRoleQuestIds(referenceClassJob).ToImmutableList());
+    public List<QuestInfo> GetRoleQuests(Job classJob) => GetChapterQuests(GetRoleChapterIds(classJob).ToImmutableList());
 
-    private static IEnumerable<uint> GetRoleQuestIds(Job classJob)
+    private static IEnumerable<uint> GetRoleChapterIds(Job classJob)
     {
         return classJob switch
         {
             var _ when classJob.IsTank() => TankRoleQuestChapters,
             var _ when classJob.IsHealer() => HealerRoleQuestChapters,
             var _ when classJob.IsMelee() => MeleeRoleQuestChapters,
-            var _ when classJob.IsPhysicalRanged() => PhysicalRangedRoleQuestChapters,
+            var _ when classJob.IsPhysicalRanged() => RangedRoleQuestChapters,
             var _ when classJob.IsCaster() && classJob != Job.BLU => CasterRoleQuestChapters,
             var _ => []
         };
     }
 
-    private List<QuestInfo> GetQuestsInNewGamePlusChapters(ImmutableList<uint> chapterIds)
+    private List<QuestInfo> GetChapterQuests(ImmutableList<uint> chapterIds)
     {
         return _quests.Values
             .Where(x => x is QuestInfo)

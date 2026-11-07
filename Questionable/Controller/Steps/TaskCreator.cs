@@ -76,8 +76,8 @@ internal sealed class TaskCreator
                 .Cast<QuestBattle.Start>()
                 .FirstOrDefault();
             if (questBattleTask != null &&
-                _territoryData.TryGetContentFinderCondition(questBattleTask.CfcId,
-                    out TerritoryData.ContentFinderConditionData? cfcData))
+                _territoryData.TryGetCfc(questBattleTask.CfcId,
+                    out TerritoryData.CfcData? cfcData))
             {
                 // Resume queued solo duties in their instance instead of repeating travel steps.
                 if (_clientState.TerritoryType == cfcData.TerritoryId)

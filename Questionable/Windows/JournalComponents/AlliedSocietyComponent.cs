@@ -106,10 +106,10 @@ internal sealed class AlliedSocietyComponent
 
         foreach (EAlliedSociety alliedSociety in alliedSocietyFunctions.GetAlliedSocieties(!configuration.General.HideThingsNotAvailable))
         {
-            List<IQuestInfo> quests = alliedSocietyFunctions.GetAvailableAlliedSocietyQuests(alliedSociety)
+            List<IQuestInfo> quests = alliedSocietyFunctions.GetAvailableQuests(alliedSociety)
                 .Select(x => questData.GetQuestInfo(x))
                 .ToList();
-            (EAlliedSocietyRank rank, ushort currentRep, ushort neededRep) = questFunctions.GetAlliedSocietyRankAndRep(alliedSociety);
+            (EAlliedSocietyRank rank, ushort currentRep, ushort neededRep) = questFunctions.GetRankAndReputation(alliedSociety);
 
             string rep = neededRep != 0 ? $"({rank} {currentRep}/{neededRep}) " : "";
             string label = $"{rep}{alliedSociety}###AlliedSociety{(int)alliedSociety}";

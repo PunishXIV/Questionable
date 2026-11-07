@@ -182,7 +182,7 @@ internal sealed class MovementController
                     return;
                 }
                 logger.LogInformation("Navigating via route (XZ:{Distance}) [{Route}]",
-                    navPoints[0].DistanceTo_XZ(navPoints[^1]),
+                    navPoints[0].DistanceToXZ(navPoints[^1]),
                     string.Join(" → ", pathfindResult.Select(x => x.ToString("G5", CultureInfo.InvariantCulture))));
 
                 ThrowIfPathfindingFailed();

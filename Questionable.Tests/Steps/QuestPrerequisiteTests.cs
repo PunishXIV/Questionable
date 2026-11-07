@@ -20,7 +20,7 @@ public sealed class QuestPrerequisiteTests
 
         Assert.Equal(expected.Order(), QuestData.SpecialPrerequisites.Keys.Order());
         Assert.Equal(achievements, Assert.IsType<AchievementPrerequisite>(QuestData.SpecialPrerequisites[5459]).AchievementIds);
-        Assert.Equal(40, Assert.IsType<ChocoboRacingRankPrerequisite>(QuestData.SpecialPrerequisites[576]).Rank);
+        Assert.Equal(40, Assert.IsType<ChocoboRankPrerequisite>(QuestData.SpecialPrerequisites[576]).Rank);
         Assert.Equal(113, Assert.IsType<UnlockLinkPrerequisite>(QuestData.SpecialPrerequisites[3195]).UnlockLinkId);
         Assert.Equal(75, Assert.IsType<DomanEnclavePrerequisite>(QuestData.SpecialPrerequisites[3153]).Milestone);
         Assert.Equal(7, Assert.IsType<MountsPrerequisite>(QuestData.SpecialPrerequisites[5469]).MountIds.Length);
@@ -57,7 +57,7 @@ public sealed class QuestPrerequisiteTests
     {
         _state.ChocoboRacingRank = rank;
 
-        string? reason = new ChocoboRacingRankPrerequisite(40).GetUnmetReason(_state);
+        string? reason = new ChocoboRankPrerequisite(40).GetUnmetReason(_state);
 
         Assert.Equal(met ? null : "Needs chocobo racing rank 40", reason);
     }

@@ -192,7 +192,7 @@ internal sealed class CommandHandler : IDisposable
                 break;
 
             case "which":
-                _questSelectionWindow.OpenForTarget(_targetManager.Target, GameFunctions.GetBaseID(_targetManager.Target));
+                _questSelectionWindow.OpenForTarget(_targetManager.Target, GameFunctions.GetBaseId(_targetManager.Target));
                 break;
 
             case "z":

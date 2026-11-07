@@ -54,8 +54,8 @@ internal static class Duty
                 unsafe
                 {
                     PlayerState* playerState = PlayerState.Instance();
-                    if (playerState != null && territoryData.TryGetContentFinderCondition(step.DutyOptions.ContentFinderConditionId,
-                                                                   out TerritoryData.ContentFinderConditionData? cfcData) &&
+                    if (playerState != null && territoryData.TryGetCfc(step.DutyOptions.ContentFinderConditionId,
+                                                                   out TerritoryData.CfcData? cfcData) &&
                             playerState->CurrentLevel - 20 >= cfcData.ClassJobLevelSync &&
                             !cfcData.ContentType.Equals(EContentType.Trials))
                         dutyMode = Mode.Regular;
@@ -125,7 +125,7 @@ internal static class Duty
         protected override bool Start()
         {
             _operationId = null;
-            if (!territoryData.TryGetContentFinderCondition(Task.CfcId, out var cfcData))
+            if (!territoryData.TryGetCfc(Task.CfcId, out var cfcData))
                 throw new TaskException("Failed to get territory ID for content finder condition");
 
             // Otherwise AutoDuty keeps queueing and the duty finder keeps refusing.

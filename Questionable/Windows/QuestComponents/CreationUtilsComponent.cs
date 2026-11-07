@@ -56,7 +56,7 @@ internal sealed class CreationUtilsComponent
         string territoryName = TerritoryData.GetNameAndId(clientState.TerritoryType);
         ImGui.Text(territoryName);
 
-        if (gameFunctions.IsFlyingUnlockedInCurrentZone())
+        if (gameFunctions.IsFlyingUnlockedHere())
         {
             ImGui.SameLine();
             ImGui.Text(SeIconChar.BotanistSprout.ToIconString());
@@ -232,13 +232,13 @@ internal sealed class CreationUtilsComponent
                 ImGui.SetTooltip(_L("Interaction type detected from the target's nameplate icon."));
 
             ImGui.Text(_LF("  ({0}; {1}{2})",
-                                target.ObjectKind, GameFunctions.GetBaseID(target), nameId));
+                                target.ObjectKind, GameFunctions.GetBaseId(target), nameId));
 
             if (objectTable[0] != null)
             {
                 ImGui.Text(_LF("Distance: {0:F2} ({1}y)",
                     (target.Position - objectTable[0]!.Position).Length(),
-                    Math.Floor(target.Position.DistanceTo_XZ(objectTable[0]!.Position)) - 1));
+                    Math.Floor(target.Position.DistanceToXZ(objectTable[0]!.Position)) - 1));
                 ImGui.SameLine();
 
                 float verticalDistance = target.Position.Y - objectTable[0]!.Position.Y;
@@ -268,7 +268,7 @@ internal sealed class CreationUtilsComponent
             ImGui.Text($"<{debugOverlay.SavedPos.Value.X:F3},{debugOverlay.SavedPos.Value.Y:F3},{debugOverlay.SavedPos.Value.Z:F3}>");
             ImGui.Text(_LF("Distance: {0:F2} ({1}y)",
                 (debugOverlay.SavedPos.Value - pos).Length(),
-                Math.Floor(debugOverlay.SavedPos.Value.DistanceTo_XZ(pos)) - 1));
+                Math.Floor(debugOverlay.SavedPos.Value.DistanceToXZ(pos)) - 1));
             ImGui.SameLine();
 
             float verticalDistance = debugOverlay.SavedPos.Value.Y - pos.Y;
@@ -297,7 +297,7 @@ internal sealed class CreationUtilsComponent
             ImGui.SameLine();
         }
 
-        uint targetId = GameFunctions.GetBaseID(target);
+        uint targetId = GameFunctions.GetBaseId(target);
         if (target != null)
         {
             using (ImRaii.Disabled(!questData.IsIssuerOfAnyQuest(targetId)))
@@ -333,10 +333,10 @@ internal sealed class CreationUtilsComponent
                 {
                     if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Bullseye, _L("To Target")))
                     {
-                        movementController.NavigateTo(EMovementType.DebugWindow, GameFunctions.GetBaseID(target),
+                        movementController.NavigateTo(EMovementType.DebugWindow, GameFunctions.GetBaseId(target),
                             target.Position, new()
                             {
-                                Fly = condition[ConditionFlag.Mounted] && gameFunctions.IsFlyingUnlockedInCurrentZone(),
+                                Fly = condition[ConditionFlag.Mounted] && gameFunctions.IsFlyingUnlockedHere(),
                                 Sprint = true,
                             });
                     }
@@ -400,7 +400,7 @@ internal sealed class CreationUtilsComponent
         {
             string positionJson =
                 $$"""
-                  "DataId": {{GameFunctions.GetBaseID(target)}},
+                  "DataId": {{GameFunctions.GetBaseId(target)}},
                             "Position": {
                               "X": {{position.X.ToString(CultureInfo.InvariantCulture)}},
                               "Y": {{position.Y.ToString(CultureInfo.InvariantCulture)}},
@@ -437,7 +437,7 @@ internal sealed class CreationUtilsComponent
         {
             if (target.ObjectKind == ObjectKind.Aetheryte)
             {
-                EAetheryteLocation location = (EAetheryteLocation)GameFunctions.GetBaseID(target);
+                EAetheryteLocation location = (EAetheryteLocation)GameFunctions.GetBaseId(target);
                 ImGui.SetClipboardText(string.Create(CultureInfo.InvariantCulture,
                     $"{{EAetheryteLocation.{location}, new({target.Position.X}f, {target.Position.Y}f, {target.Position.Z}f)}},"));
             }

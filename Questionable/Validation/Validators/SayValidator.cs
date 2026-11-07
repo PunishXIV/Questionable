@@ -9,9 +9,9 @@ internal sealed class SayValidator(ExcelFunctions excelFunctions) : IQuestValida
 
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
-        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) in quest.AllSteps().Where(x => x.Step.InteractionType == EInteractionType.Say))
+        foreach ((QuestSequence sequence, int stepId, QuestStep step) in quest.AllSteps().Where(x => x.Step.InteractionType == EInteractionType.Say))
         {
-            ChatMessage? chatMessage = Step.ChatMessage;
+            ChatMessage? chatMessage = step.ChatMessage;
             if (chatMessage == null)
                 continue;
 
@@ -25,8 +25,8 @@ internal sealed class SayValidator(ExcelFunctions excelFunctions) : IQuestValida
                 yield return new()
                 {
                     ElementId = quest.Id,
-                    Sequence = Sequence.Sequence,
-                    Step = StepId,
+                    Sequence = sequence.Sequence,
+                    Step = stepId,
                     Type = EIssueType.InvalidChatMessage,
                     Severity = EIssueSeverity.Error,
                     Description = _LF("Invalid chat message: {0}", excelString.Value)

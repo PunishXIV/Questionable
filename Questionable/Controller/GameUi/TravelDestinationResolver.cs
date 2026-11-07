@@ -62,8 +62,8 @@ internal sealed class TravelDestinationResolver(
             .Where(x => x.RowId > 0 && x.TerritoryType.RowId == targetTerritoryId);
         foreach (Warp entry in warps)
         {
-            string excelName = entry.Name.WithCertainMacroCodeReplacements();
-            string excelQuestion = entry.Question.WithCertainMacroCodeReplacements();
+            string excelName = entry.Name.WithMacrosReplaced();
+            string excelQuestion = entry.Question.WithMacrosReplaced();
 
             if (!string.IsNullOrEmpty(excelQuestion) && GameFunctions.GameStringEquals(excelQuestion, actualPrompt))
             {

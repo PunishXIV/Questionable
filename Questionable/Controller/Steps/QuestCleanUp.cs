@@ -15,7 +15,7 @@ internal static class QuestCleanUp
                 return null;
 
             if (GameFunctions.GetMountId() is { } mountId &&
-                alliedSocietyData.Mounts.TryGetValue(mountId, out AlliedSocietyMountConfiguration? mountConfiguration))
+                alliedSocietyData.Mounts.TryGetValue(mountId, out AlliedSocietyMount? mountConfiguration))
             {
                 logger.LogInformation("We are on a known allied society mount with id = {MountId}", mountId);
 

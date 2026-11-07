@@ -570,7 +570,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 return;
             }
 
-            if (_gameFunctions.IsOccupied() && !_gameFunctions.IsOccupiedWithCustomDeliveryNpc(questToRun.Quest))
+            if (_gameFunctions.IsOccupied() && !_gameFunctions.IsInCustomDelivery(questToRun.Quest))
             {
                 DebugState = "Occupied";
                 return;
@@ -964,7 +964,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (_gameFunctions.IsOccupied() && provider?.CanUpdateWhileOccupied != true &&
             // Outcome polling resets its grace timer before returning while occupied.
             _taskQueue.CurrentTaskExecutor is not QuestBattle.WaitForOutcomeExecutor &&
-            !_gameFunctions.IsOccupiedWithCustomDeliveryNpc(CurrentQuest?.Quest))
+            !_gameFunctions.IsInCustomDelivery(CurrentQuest?.Quest))
             return;
 
         if (StopBeforeTeleport &&
@@ -1306,7 +1306,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             StopBeforeTeleport)
             return false;
 
-        ElementId? priorityQuestId = _questFunctions.NextPriorityQuestsThatCanBeAccepted
+        ElementId? priorityQuestId = _questFunctions.NextPriorityQuests
             .Where(x => x.IsAvailable)
             .Select(x => x.QuestId)
             .FirstOrDefault();

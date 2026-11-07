@@ -10,18 +10,18 @@ internal sealed class UniqueStartStopValidator : IQuestValidator
             yield break;
 
         List<(QuestSequence Sequence, int StepId, QuestStep Step)> questAccepts =
-            FindQuestStepsWithInteractionType(quest, [EInteractionType.AcceptQuest])
+            FindStepsOfType(quest, [EInteractionType.AcceptQuest])
                 .Where(x => x.Step.PickUpQuestId == null)
                 .ToList();
-        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) in questAccepts)
+        foreach ((QuestSequence sequence, int stepId, QuestStep step) in questAccepts)
         {
-            if (Sequence.Sequence != 0 || StepId != quest.FindSequence(0)!.Steps.Count - 1)
+            if (sequence.Sequence != 0 || stepId != quest.FindSequence(0)!.Steps.Count - 1)
             {
                 yield return new()
                 {
                     ElementId = quest.Id,
-                    Sequence = Sequence.Sequence,
-                    Step = StepId,
+                    Sequence = sequence.Sequence,
+                    Step = stepId,
                     Type = EIssueType.UnexpectedAcceptQuestStep,
                     Severity = EIssueSeverity.Error,
                     Description = _L("Unexpected AcceptQuest step")
@@ -43,18 +43,18 @@ internal sealed class UniqueStartStopValidator : IQuestValidator
         }
 
         List<(QuestSequence Sequence, int StepId, QuestStep Step)> questCompletes =
-            FindQuestStepsWithInteractionType(quest, [EInteractionType.CompleteQuest])
+            FindStepsOfType(quest, [EInteractionType.CompleteQuest])
                 .Where(x => x.Step.TurnInQuestId == null)
                 .ToList();
-        foreach ((QuestSequence Sequence, int StepId, QuestStep Step) in questCompletes)
+        foreach ((QuestSequence sequence, int stepId, QuestStep step) in questCompletes)
         {
-            if (Sequence.Sequence != 255 || StepId != quest.FindSequence(255)!.Steps.Count - 1)
+            if (sequence.Sequence != 255 || stepId != quest.FindSequence(255)!.Steps.Count - 1)
             {
                 yield return new()
                 {
                     ElementId = quest.Id,
-                    Sequence = Sequence.Sequence,
-                    Step = StepId,
+                    Sequence = sequence.Sequence,
+                    Step = stepId,
                     Type = EIssueType.UnexpectedCompleteQuestStep,
                     Severity = EIssueSeverity.Error,
                     Description = _L("Unexpected CompleteQuest step")
@@ -76,6 +76,6 @@ internal sealed class UniqueStartStopValidator : IQuestValidator
         }
     }
 
-    private static IEnumerable<(QuestSequence Sequence, int StepId, QuestStep Step)> FindQuestStepsWithInteractionType(
-        Quest quest, List<EInteractionType> interactionType) => quest.AllSteps().Where(x => interactionType.Contains(x.Step.InteractionType));
+    private static IEnumerable<(QuestSequence Sequence, int StepId, QuestStep Step)> FindStepsOfType(
+        Quest quest, List<EInteractionType> types) => quest.AllSteps().Where(x => types.Contains(x.Step.InteractionType));
 }

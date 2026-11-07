@@ -1,16 +1,16 @@
 using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
-[RegisterSingleton<IQuestValidator, SinglePlayerInstanceValidator>(Duplicate = DuplicateStrategy.Append)]
-internal sealed class SinglePlayerInstanceValidator(TerritoryData territoryData) : IQuestValidator
+[RegisterSingleton<IQuestValidator, QuestBattleValidator>(Duplicate = DuplicateStrategy.Append)]
+internal sealed class QuestBattleValidator(TerritoryData territoryData) : IQuestValidator
 {
-    private readonly Dictionary<ElementId, List<byte>> _questIdToDutyIndexes = territoryData.GetAllQuestsWithQuestBattles()
+    private readonly Dictionary<ElementId, List<byte>> _battleIndexes = territoryData.GetAllQuestBattles()
         .GroupBy(x => x.QuestId)
         .ToDictionary(x => x.Key, x => x.Select(y => y.Index).ToList());
 
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
-        if (_questIdToDutyIndexes.TryGetValue(quest.Id, out List<byte>? indexes))
+        if (_battleIndexes.TryGetValue(quest.Id, out List<byte>? indexes))
         {
             foreach (byte index in indexes)
             {

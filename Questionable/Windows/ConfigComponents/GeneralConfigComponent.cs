@@ -50,7 +50,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         _dataManager = dataManager;
         _itemBlacklistSelector = new(dataManager);
 
-        _sortedClassJobs = new(() => [.. classJobUtils.SortedClassJobs.Select(x => x.ClassJob)]);
+        _sortedClassJobs = new(() => [.. classJobUtils.SortedJobs.Select(x => x.ClassJob)]);
         _mounts = new(() => BuildMounts(dataManager));
         _combatJobs = new(() => BuildJobList(
             Enum.GetValues<Job>().Where(x => x != Job.ADV && !x.IsCrafter() && !x.IsGatherer() && !x.IsClass()),
@@ -521,7 +521,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     ImGui.Text(_L("This affects the following dungeons and raids:"));
                     foreach ((uint CfcId, ElementId QuestId, int Sequence) lowPriorityCfc in _questRegistry.LowPriorityCfcQuests)
                     {
-                        if (_territoryData.TryGetContentFinderCondition(lowPriorityCfc.CfcId, out TerritoryData.ContentFinderConditionData? cfcData))
+                        if (_territoryData.TryGetCfc(lowPriorityCfc.CfcId, out TerritoryData.CfcData? cfcData))
                             ImGui.BulletText($"{cfcData.Name}");
                     }
                 }

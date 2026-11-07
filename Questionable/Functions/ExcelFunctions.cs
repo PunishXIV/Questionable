@@ -22,12 +22,12 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
             _logger.LogWarning("Could not find dialogue text for key '{Key}' in sheet '{Sheet}'", key, excelSheetName);
             return new(string.Empty);
         }
-        _logger.LogDebug($"Resolved {key} to '{seString.Value.WithCertainMacroCodeReplacements()}");
+        _logger.LogDebug($"Resolved {key} to '{seString.Value.WithMacrosReplaced()}");
 
         if (isRegex)
             return new(seString.Value.ToRegex());
 
-        return new(seString.Value.WithCertainMacroCodeReplacements());
+        return new(seString.Value.WithMacrosReplaced());
     }
 
     public ReadOnlySeString? GetRawDialogueText(Quest? currentQuest, string? excelSheetName, string key)
@@ -60,14 +60,14 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
 
     public StringOrRegex GetDialogueTextByRowId(string? excelSheet, uint rowId, bool isRegex)
     {
-        ReadOnlySeString? seString = GetRawDialogueTextByRowId(excelSheet, rowId);
+        ReadOnlySeString? seString = GetRawDialogueByRowId(excelSheet, rowId);
         if (isRegex)
             return new(seString?.ToRegex());
 
         return new(seString?.ToDalamudString().ToString());
     }
 
-    public ReadOnlySeString? GetRawDialogueTextByRowId(string? excelSheet, uint rowId)
+    public ReadOnlySeString? GetRawDialogueByRowId(string? excelSheet, uint rowId)
     {
         // Support raw sheets for dialogue text lookup by RowId
         // quest, custom, cut_scene, and dungeon sheets all use QuestDialogueText
@@ -88,38 +88,38 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
 
         if (string.Equals(excelSheet, "GimmickYesNo", StringComparison.Ordinal))
         {
-            GimmickYesNo? questRow = _dataManager.GetExcelSheet<GimmickYesNo>().GetRowOrDefault(rowId);
-            return questRow?.YesButton;
+            GimmickYesNo? row = _dataManager.GetExcelSheet<GimmickYesNo>().GetRowOrDefault(rowId);
+            return row?.YesButton;
         }
         if (string.Equals(excelSheet, "Warp", StringComparison.Ordinal))
         {
-            Warp? questRow = _dataManager.GetExcelSheet<Warp>().GetRowOrDefault(rowId);
-            return questRow?.Name;
+            Warp? row = _dataManager.GetExcelSheet<Warp>().GetRowOrDefault(rowId);
+            return row?.Name;
         }
         if (string.Equals(excelSheet, "Addon", StringComparison.Ordinal))
         {
-            Addon? questRow = _dataManager.GetExcelSheet<Addon>().GetRowOrDefault(rowId);
-            return questRow?.Text;
+            Addon? row = _dataManager.GetExcelSheet<Addon>().GetRowOrDefault(rowId);
+            return row?.Text;
         }
         if (string.Equals(excelSheet, "EventPathMove", StringComparison.Ordinal))
         {
-            EventPathMove? questRow = _dataManager.GetExcelSheet<EventPathMove>().GetRowOrDefault(rowId);
-            return questRow?.Unknown0;
+            EventPathMove? row = _dataManager.GetExcelSheet<EventPathMove>().GetRowOrDefault(rowId);
+            return row?.Unknown0;
         }
         if (string.Equals(excelSheet, "GilShop", StringComparison.Ordinal))
         {
-            GilShop? questRow = _dataManager.GetExcelSheet<GilShop>().GetRowOrDefault(rowId);
-            return questRow?.Name;
+            GilShop? row = _dataManager.GetExcelSheet<GilShop>().GetRowOrDefault(rowId);
+            return row?.Name;
         }
         if (string.Equals(excelSheet, "ContentTalk", StringComparison.Ordinal))
         {
-            ContentTalk? questRow = _dataManager.GetExcelSheet<ContentTalk>().GetRowOrDefault(rowId);
-            return questRow?.Text;
+            ContentTalk? row = _dataManager.GetExcelSheet<ContentTalk>().GetRowOrDefault(rowId);
+            return row?.Text;
         }
         if (string.Equals(excelSheet, "SpecialShop", StringComparison.Ordinal))
         {
-            SpecialShop? questRow = _dataManager.GetExcelSheet<SpecialShop>().GetRowOrDefault(rowId);
-            return questRow?.Name;
+            SpecialShop? row = _dataManager.GetExcelSheet<SpecialShop>().GetRowOrDefault(rowId);
+            return row?.Name;
         }
 
         throw new ArgumentOutOfRangeException(nameof(excelSheet), $"Unsupported excel sheet {excelSheet}");

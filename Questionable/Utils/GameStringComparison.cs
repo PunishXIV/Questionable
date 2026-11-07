@@ -4,7 +4,7 @@ namespace Questionable.Utils;
 
 internal static partial class GameStringComparison
 {
-    // Excel text can retain decoration macros that addon text readers have already stripped.
+    // Excel text can still contain decoration macros that addon text readers have already stripped.
     [GeneratedRegex("<[^>]+>", RegexOptions.Compiled, matchTimeoutMilliseconds: 1000)]
     private static partial Regex MacroLiteralRegex();
 

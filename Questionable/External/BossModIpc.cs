@@ -480,13 +480,13 @@ internal sealed class BossModIpc : Ipc, IDisposable
             return false;
 
         dutyOptions ??= new();
-        if (!_territoryData.TryGetContentFinderConditionForSoloInstance(questId, dutyOptions.Index, out TerritoryData.ContentFinderConditionData? cfcData))
+        if (!_territoryData.TryGetQuestBattleCfc(questId, dutyOptions.Index, out TerritoryData.CfcData? cfcData))
             return false;
 
-        if (_configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Contains(cfcData.ContentFinderConditionId))
+        if (_configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Contains(cfcData.Id))
             return false;
 
-        if (_configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Contains(cfcData.ContentFinderConditionId))
+        if (_configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Contains(cfcData.Id))
             return true;
 
         return dutyOptions.Enabled;

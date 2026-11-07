@@ -17,7 +17,7 @@ internal static class PathDataBundle
     public static string GetDirectory(IDalamudPluginInterface pluginInterface) =>
         Path.Combine(pluginInterface.ConfigDirectory.FullName, "PathData");
 
-    public static string GetBundlePath(IDalamudPluginInterface pluginInterface) =>
+    public static string GetFilePath(IDalamudPluginInterface pluginInterface) =>
         Path.Combine(GetDirectory(pluginInterface), "bundle.zip");
 
     public static PathDataManifest? ReadManifest(ZipArchive archive)

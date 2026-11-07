@@ -189,7 +189,7 @@ internal sealed class QuestRegistry
     // Bundles override compiled paths but not user paths; malformed entries are skipped.
     private bool LoadFromBundle()
     {
-        string bundlePath = PathDataBundle.GetBundlePath(_pluginInterface);
+        string bundlePath = PathDataBundle.GetFilePath(_pluginInterface);
         if (!File.Exists(bundlePath))
             return false;
 
@@ -260,10 +260,10 @@ internal sealed class QuestRegistry
                     }
                 }
                 else if (step.InteractionType == EInteractionType.SinglePlayerDuty &&
-                         _territoryData.TryGetContentFinderConditionForSoloInstance(quest.Id,
-                             step.SinglePlayerDutyIndex, out TerritoryData.ContentFinderConditionData? cfcData))
+                         _territoryData.TryGetQuestBattleCfc(quest.Id,
+                             step.SinglePlayerDutyIndex, out TerritoryData.CfcData? cfcData))
                 {
-                    _cfcSteps[cfcData.ContentFinderConditionId] = (quest.Id, step);
+                    _cfcSteps[cfcData.Id] = (quest.Id, step);
                 }
             }
         }

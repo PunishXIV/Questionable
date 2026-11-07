@@ -12,7 +12,7 @@ internal static class CleanUpOtherQuests
             if (step.InteractionType != EInteractionType.CleanUpOtherQuests)
                 return null;
 
-            var priorityQuests = questFunctions.NextPriorityQuestsThatCanBeAccepted;
+            var priorityQuests = questFunctions.NextPriorityQuests;
             if (priorityQuests.Count == 0)
                 return null;
 

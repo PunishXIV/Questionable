@@ -172,7 +172,7 @@ internal sealed class ContextMenuController : IDisposable
             return;
         }
 
-        ushort collectability = _gatheringData.GetRecommendedCollectability(itemId);
+        ushort collectability = _gatheringData.GetTargetCollectability(itemId);
         int quantityToGather = collectability > 0 ? 6 : int.MaxValue;
         if (collectability == 0)
             return;

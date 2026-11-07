@@ -60,10 +60,10 @@ internal static class QuestBattle
                 !bossModIpc.CanRunQuestBattle(quest.Id, step.SinglePlayerDutyOptions))
                 yield break;
 
-            if (!territoryData.TryGetContentFinderConditionForSoloInstance(quest.Id, step.SinglePlayerDutyIndex, out var content))
+            if (!territoryData.TryGetQuestBattleCfc(quest.Id, step.SinglePlayerDutyIndex, out var content))
                 throw new TaskException("Failed to resolve the solo duty from quest data.");
 
-            foreach (var task in CreateDutyTasks(content.ContentFinderConditionId, quest.Id, sequence.Sequence))
+            foreach (var task in CreateDutyTasks(content.Id, quest.Id, sequence.Sequence))
                 yield return task;
         }
 

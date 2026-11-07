@@ -18,7 +18,7 @@ namespace Questionable.Functions;
 [RegisterSingleton<IQuestGameState, GameQuestState>]
 internal sealed unsafe class GameQuestState(
     AetheryteFunctions aetheryteFunctions,
-    AlliedSocietyQuestFunctions alliedSocietyQuestFunctions,
+    AlliedSocietyQuestFunctions alliedSocietyQuests,
     IClientState clientState,
     IObjectTable objectTable,
     IGameGuiAdapter gameGui) : IQuestGameState
@@ -86,12 +86,12 @@ internal sealed unsafe class GameQuestState(
 
     public bool IsReadyToTurnIn(string questName)
     {
-        ToDoListStringArray* toDoListSA = ToDoListStringArray.Instance();
-        ToDoListNumberArray* toDoListNA = ToDoListNumberArray.Instance();
-        for (int i = 0; i < toDoListNA->QuestTypeIcon.Length; i++)
+        ToDoListStringArray* toDoStrings = ToDoListStringArray.Instance();
+        ToDoListNumberArray* toDoNumbers = ToDoListNumberArray.Instance();
+        for (int i = 0; i < toDoNumbers->QuestTypeIcon.Length; i++)
         {
-            if (questName == Encoding.UTF8.GetString(toDoListSA->QuestTexts[i].AsSpan()))
-                return toDoListNA->QuestTypeIcon[i] == TurnInIcon;
+            if (questName == Encoding.UTF8.GetString(toDoStrings->QuestTexts[i].AsSpan()))
+                return toDoNumbers->QuestTypeIcon[i] == TurnInIcon;
         }
 
         return false;
@@ -119,11 +119,11 @@ internal sealed unsafe class GameQuestState(
     public byte GrandCompanyRank => PlayerState.Instance()->GetGrandCompanyRank();
     public byte DeliveryLevel => PlayerState.Instance()->DeliveryLevel;
     public byte GetAlliedSocietyRank(byte alliedSociety) => PlayerState.Instance()->GetBeastTribeRank(alliedSociety);
-    public ushort GetAlliedSocietyReputation(byte alliedSociety) => PlayerState.Instance()->GetBeastTribeCurrentReputation(alliedSociety);
-    public ushort GetAlliedSocietyNeededReputation(byte alliedSociety) => PlayerState.Instance()->GetBeastTribeNeededReputation(alliedSociety);
+    public ushort GetReputation(byte alliedSociety) => PlayerState.Instance()->GetBeastTribeCurrentReputation(alliedSociety);
+    public ushort GetNeededReputation(byte alliedSociety) => PlayerState.Instance()->GetBeastTribeNeededReputation(alliedSociety);
 
-    public IReadOnlyCollection<QuestId> GetAvailableAlliedSocietyQuests(EAlliedSociety alliedSociety) =>
-        alliedSocietyQuestFunctions.GetAvailableAlliedSocietyQuests(alliedSociety);
+    public IReadOnlyCollection<QuestId> GetAvailableSocietyQuests(EAlliedSociety alliedSociety) =>
+        alliedSocietyQuests.GetAvailableQuests(alliedSociety);
 
     public bool HasRetainers => RetainerManager.Instance()->MaxRetainerEntitlement != 0;
     public bool IsInstanceContentCompleted(ushort instanceContentId) => UIState.IsInstanceContentCompleted(instanceContentId);

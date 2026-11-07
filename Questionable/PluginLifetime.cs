@@ -43,11 +43,11 @@ internal sealed class PluginLifetime : IAsyncDisposable
         }
     }
 
-    internal void OwnServices(IAsyncDisposable services)
+    internal void SetServices(IAsyncDisposable services)
     {
         ObjectDisposedException.ThrowIf(_disposed, this);
         if (_services != null)
-            throw new InvalidOperationException("Plugin services are already owned.");
+            throw new InvalidOperationException("Plugin services are already set.");
         _services = services;
     }
 

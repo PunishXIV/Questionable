@@ -27,7 +27,7 @@ public sealed class CraftingRequirementTests
     [InlineData(268, 4712u, 1, EItemQuality.HQ)]
     public void QuestItems_ContainVerifiedRequirements(ushort questId, uint itemId, int itemCount, EItemQuality quality)
     {
-        var items = QuestCraftingRequirements.GetQuestItems(new QuestId(questId));
+        var items = QuestCraftingRequirements.GetItems(new QuestId(questId));
 
         Assert.Equal(new CraftingItem(itemId, itemCount, quality), Assert.Single(items, item => item.ItemId == itemId));
     }
@@ -59,7 +59,7 @@ public sealed class CraftingRequirementTests
         var id = new QuestId(questId);
         var requested = new CraftingItem(itemId, 3, EItemQuality.Any);
 
-        Assert.Equal(requested, Assert.Single(QuestCraftingRequirements.GetQuestItems(id)));
+        Assert.Equal(requested, Assert.Single(QuestCraftingRequirements.GetItems(id)));
         Assert.Equal(requested, QuestCraftingRequirements.ResolveItem(id, requested));
         Assert.Equal(requested, Assert.Single(Craft.GetItemTargets(CreateCraftTask(id, requested))));
     }
@@ -114,7 +114,7 @@ public sealed class CraftingRequirementTests
         var id = new SatisfactionSupplyNpcId(648);
         var requested = new CraftingItem(4599, 1, EItemQuality.Any);
 
-        Assert.Empty(QuestCraftingRequirements.GetQuestItems(id));
+        Assert.Empty(QuestCraftingRequirements.GetItems(id));
         Assert.Equal(requested, QuestCraftingRequirements.ResolveItem(id, requested));
         Assert.Equal(requested, Assert.Single(Craft.GetItemTargets(CreateCraftTask(id, requested))));
     }
@@ -135,7 +135,7 @@ public sealed class CraftingRequirementTests
 
         var target = QuestCraftingRequirements.ResolveItem(id, requested);
 
-        Assert.Equal(expected, Assert.Single(QuestCraftingRequirements.GetQuestItems(id)));
+        Assert.Equal(expected, Assert.Single(QuestCraftingRequirements.GetItems(id)));
         Assert.Equal(expected, target);
         Assert.Equal(expected, Assert.Single(Craft.GetItemTargets(CreateCraftTask(id, requested))));
         Assert.False(Craft.AreItemsSatisfied([target], item => Craft.CountMatchingItems(item.Quality, 1, 0, 0)));
@@ -152,7 +152,7 @@ public sealed class CraftingRequirementTests
 
         var target = QuestCraftingRequirements.ResolveItem(id, requested);
 
-        Assert.Equal(requested, Assert.Single(QuestCraftingRequirements.GetQuestItems(id), item => item.ItemId == itemId));
+        Assert.Equal(requested, Assert.Single(QuestCraftingRequirements.GetItems(id), item => item.ItemId == itemId));
         Assert.Equal(requested, target);
         Assert.Equal(requested, Assert.Single(Craft.GetItemTargets(CreateCraftTask(id, requested))));
         Assert.True(Craft.AreItemsSatisfied([target], item => Craft.CountMatchingItems(item.Quality, 1, 0, 0)));

@@ -165,7 +165,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
             }
         }
 
-        // Apply emotes first: explicit to-do text is stronger evidence than item ownership.
+        // Apply emotes first: explicit to-do text is stronger evidence than carrying the item.
         ApplyEmote(quest, sequence, number);
 
         if (hint != null)

@@ -6,7 +6,7 @@ public enum GameCommand
 
     AbandonQuest = 800,
 
-    StartSoloQuestBattle = 823,
+    StartQuestBattle = 823,
 
     QuestRedo = 824,
 }

@@ -20,7 +20,7 @@ internal static class SendNotification
                     new(step.InteractionType, step.Comment),
                 EInteractionType.Duty when !autoDuty.CanRunDuty(step.DutyOptions) =>
                     new(step.InteractionType, step.DutyOptions?.ContentFinderConditionId is { } cfcId
-                        ? territoryData.GetContentFinderCondition(cfcId)?.Name
+                        ? territoryData.GetCfc(cfcId)?.Name
                         : step.Comment),
                 EInteractionType.SinglePlayerDuty when !bossModIpc.CanRunQuestBattle(quest.Id, step.SinglePlayerDutyOptions) =>
                     new Task(step.InteractionType, quest.Info.Name),

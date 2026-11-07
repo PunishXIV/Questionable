@@ -53,10 +53,10 @@ internal sealed class FakeQuestGameState : IQuestGameState
     public byte DeliveryLevel { get; set; }
     public Dictionary<byte, (byte Rank, ushort Reputation, ushort Needed)> AlliedSocieties { get; } = [];
     public byte GetAlliedSocietyRank(byte alliedSociety) => AlliedSocieties.GetValueOrDefault(alliedSociety).Rank;
-    public ushort GetAlliedSocietyReputation(byte alliedSociety) => AlliedSocieties.GetValueOrDefault(alliedSociety).Reputation;
-    public ushort GetAlliedSocietyNeededReputation(byte alliedSociety) => AlliedSocieties.GetValueOrDefault(alliedSociety).Needed;
+    public ushort GetReputation(byte alliedSociety) => AlliedSocieties.GetValueOrDefault(alliedSociety).Reputation;
+    public ushort GetNeededReputation(byte alliedSociety) => AlliedSocieties.GetValueOrDefault(alliedSociety).Needed;
 
-    public IReadOnlyCollection<QuestId> GetAvailableAlliedSocietyQuests(EAlliedSociety alliedSociety) =>
+    public IReadOnlyCollection<QuestId> GetAvailableSocietyQuests(EAlliedSociety alliedSociety) =>
         AvailableAlliedSocietyQuests.GetValueOrDefault(alliedSociety) ?? [];
 
     public bool HasRetainers { get; set; } = true;

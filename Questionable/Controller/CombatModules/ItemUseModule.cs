@@ -97,11 +97,11 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
             return;
         }
 
-        if (_combatData.KillEnemyDataIds.Contains(GameFunctions.GetBaseID(nextTarget)) ||
-            _combatData.ComplexCombatDatas.Any(x => x.DataId == GameFunctions.GetBaseID(nextTarget) &&
+        if (_combatData.KillEnemyDataIds.Contains(GameFunctions.GetBaseId(nextTarget)) ||
+            _combatData.ComplexCombatDatas.Any(x => x.DataId == GameFunctions.GetBaseId(nextTarget) &&
                                                     (x.NameId == null || (nextTarget is ICharacter character && x.NameId == character.NameId))))
         {
-            if (nextTarget.Position.DistanceTo_XZ(Svc.Objects[0]!.Position) > 3f)
+            if (nextTarget.Position.DistanceToXZ(Svc.Objects[0]!.Position) > 3f)
             {
                 logger.LogInformation("Too far from target, moving closer");
                 movementController.NavigateTo(EMovementType.Combat, nextTarget.BaseId, nextTarget.Position, new() { StopDistance = 3f });

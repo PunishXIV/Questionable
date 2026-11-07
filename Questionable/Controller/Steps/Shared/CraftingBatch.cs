@@ -23,7 +23,7 @@ internal static class CraftingBatch
             crafts[^1].StepId - crafts[0].StepId + 1 != crafts.Count)
             return null;
 
-        IReadOnlyList<CraftingItem> requirements = QuestCraftingRequirements.GetQuestItems(task.Quest.Id);
+        IReadOnlyList<CraftingItem> requirements = QuestCraftingRequirements.GetItems(task.Quest.Id);
         if (requirements.Count == 0 || !requiredItemIds.SetEquals(requirements.Select(x => x.ItemId)))
             return null;
 

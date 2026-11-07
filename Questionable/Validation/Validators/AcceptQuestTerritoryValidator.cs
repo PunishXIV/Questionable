@@ -9,10 +9,10 @@ namespace Questionable.Validation.Validators;
 internal sealed class AcceptQuestTerritoryValidator(IAetheryteTerritoryProvider aetheryteData) : IQuestValidator
 {
     private readonly IAetheryteTerritoryProvider _aetheryteData = aetheryteData;
-    private static readonly HashSet<uint> CharacterStartingTerritories = [181, 182, 183];
+    private static readonly HashSet<uint> StartingTerritories = [181, 182, 183];
 
     // These territories are handled by custom code in AetheryteShortcut.CreateAllTasks.
-    private static readonly HashSet<uint> AetheryteShortcutTerritories = AetheryteShortcut.Territories;
+    private static readonly HashSet<uint> ShortcutTerritories = AetheryteShortcut.Territories;
 
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
@@ -37,10 +37,10 @@ internal sealed class AcceptQuestTerritoryValidator(IAetheryteTerritoryProvider 
             if (sequence0.Steps.Any(x => x.TargetTerritoryId == step.TerritoryId))
                 continue;
 
-            if (CharacterStartingTerritories.Contains(step.TerritoryId))
+            if (StartingTerritories.Contains(step.TerritoryId))
                 continue;
 
-            if (AetheryteShortcutTerritories.Contains(step.TerritoryId))
+            if (ShortcutTerritories.Contains(step.TerritoryId))
                 continue;
 
             yield return new ValidationIssue

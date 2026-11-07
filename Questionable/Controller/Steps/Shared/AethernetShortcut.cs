@@ -211,7 +211,7 @@ internal static class AethernetShortcut
                 var _ => 5f
             };
 
-            bool isGoldSaucerShard = aetheryteData.IsGoldSaucerAetheryte(Task.From) &&
+            bool isGoldSaucerShard = aetheryteData.IsGoldSaucer(Task.From) &&
                                             !AetheryteConverter.IsLargeAetheryte(Task.From);
             movementController.NavigateTo(EMovementType.Quest, (uint)Task.From, aetheryteData.Locations[Task.From], new()
             {
@@ -281,10 +281,10 @@ internal static class AethernetShortcut
 
             if (aetheryteData.IsAirshipLanding(Task.To))
             {
-                if (aetheryteData.CalculateAirshipLandingDistance(position.Value, clientState.TerritoryType, Task.To) > 5)
+                if (aetheryteData.CalculateAirshipDistance(position.Value, clientState.TerritoryType, Task.To) > 5)
                     return ETaskResult.StillRunning;
             }
-            else if (aetheryteData.IsCityAetheryte(Task.To) || aetheryteData.IsGoldSaucerAetheryte(Task.To))
+            else if (aetheryteData.IsCity(Task.To) || aetheryteData.IsGoldSaucer(Task.To))
             {
                 if (aetheryteData.CalculateDistance(position.Value, clientState.TerritoryType, Task.To) > 20)
                     return ETaskResult.StillRunning;

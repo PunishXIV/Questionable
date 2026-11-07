@@ -14,7 +14,7 @@ internal sealed class ClassJobUtils
     private readonly ReadOnlyDictionary<Job, sbyte> _classJobToExpArrayIndex;
     private readonly Configuration _configuration;
 
-    public readonly ReadOnlyCollection<(Job ClassJob, int Category)> SortedClassJobs;
+    public readonly ReadOnlyCollection<(Job ClassJob, int Category)> SortedJobs;
 
     public ClassJobUtils(
         Configuration configuration,
@@ -27,7 +27,7 @@ internal sealed class ClassJobUtils
             .ToDictionary(x => (Job)x.RowId, x => x.ExpArrayIndex)
             .AsReadOnly();
 
-        SortedClassJobs = dataManager.GetExcelSheet<ClassJob>()
+        SortedJobs = dataManager.GetExcelSheet<ClassJob>()
             .Select(x => (ClassJob: (Job)x.RowId, Priority: x.UIPriority))
             .OrderBy(x => x.Priority)
             .Select(x => (x.ClassJob, x.Priority / 10))
@@ -198,7 +198,7 @@ internal sealed class ClassJobUtils
         return Job.ADV;
     }
 
-    private static readonly Dictionary<Job, (Job, ushort)> ClassToJobStoneData = new() {
+    private static readonly Dictionary<Job, (Job, ushort)> JobStones = new() {
                 { Job.GLA, (Job.PLD, 4542) },
                 { Job.PGL, (Job.MNK, 4543) },
                 { Job.MRD, (Job.WAR, 4544) },
@@ -211,17 +211,17 @@ internal sealed class ClassJobUtils
             };
     public static (Job?, ushort?) ClassToJobStone(Job classJob)
     {
-        if (ClassToJobStoneData.TryGetValue(classJob, out var value))
+        if (JobStones.TryGetValue(classJob, out var value))
         {
             (var job, var item) = value;
-            bool unlocked = false;
+            bool hasStone = false;
             unsafe
             {
                 InventoryManager* inventoryManager = InventoryManager.Instance();
                 if (inventoryManager->GetInventoryItemCount(item) > 0)
-                    unlocked = true;
+                    hasStone = true;
             }
-            if (unlocked)
+            if (hasStone)
             {
                 return (job, item);
             }
@@ -229,7 +229,7 @@ internal sealed class ClassJobUtils
         return (null, null);
     }
 
-    public unsafe bool SwitchClassJob(Job classJob)
+    public unsafe bool SwitchJob(Job classJob)
     {
         if (PlayerState.Instance()->CurrentClassJobId == (uint)classJob)
             return true;

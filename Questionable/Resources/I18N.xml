@@ -892,7 +892,7 @@
     <!--<Value lang="ko">잘못된 채팅 메시지: {0}</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Validation/Validators/SinglePlayerInstanceValidator.cs -->
+    <!-- Found in: ../Questionable/Validation/Validators/QuestBattleValidator.cs -->
     <Key>Single player instance {0} not used</Key>
     <Value lang="en">Single player instance {0} not used</Value>
     <Value lang="ja-jp">シングルプレイヤーインスタンス {0} は使用されていません</Value>
@@ -901,7 +901,7 @@
     <!--<Value lang="ko">싱글 플레이어 인스턴스 {0}이(가) 사용되지 않았습니다</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Validation/Validators/UniqueSinglePlayerInstanceValidator.cs -->
+    <!-- Found in: ../Questionable/Validation/Validators/UniqueQuestBattleValidator.cs -->
     <Key>Duplicate singleplayer duty index: {0}</Key>
     <Value lang="en">Duplicate singleplayer duty index: {0}</Value>
     <Value lang="ja-jp">シングルプレイヤーのデューティインデックスが重複: {0}</Value>

@@ -12,7 +12,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         "github.com",
     ];
     private static readonly HashSet<string> AllowedHosts = new(Domains, StringComparer.OrdinalIgnoreCase);
-    private const string RepositoryUrl = "/PunishXIV/Questionable";
+    private const string RepositoryPath = "/PunishXIV/Questionable";
 
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly Configuration _configuration;
@@ -167,7 +167,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         if (_configuration.PathData.BundlePluginVersion == _pluginVersion)
             return;
 
-        string bundlePath = PathDataBundle.GetBundlePath(_pluginInterface);
+        string bundlePath = PathDataBundle.GetFilePath(_pluginInterface);
         if (File.Exists(bundlePath))
         {
             try
@@ -185,7 +185,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         _configuration.PathData.BundlePluginVersion = null;
     }
 
-    private async Task RetryAfterDelay(int retryCount = 1)
+    private async Task RetryAfterDelayAsync(int retryCount = 1)
     {
         _shutdownToken.ThrowIfCancellationRequested();
         if (retryCount >= 10)
@@ -193,8 +193,8 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
             Status = _L("Update check failed; will retry next launch");
             return;
         }
-        int delayMs = Math.Min(1000 * (1 << retryCount), 60_000);
-        await _delay(TimeSpan.FromMilliseconds(delayMs), _shutdownToken).ConfigureAwait(false);
+        int delayMilliseconds = Math.Min(1000 * (1 << retryCount), 60_000);
+        await _delay(TimeSpan.FromMilliseconds(delayMilliseconds), _shutdownToken).ConfigureAwait(false);
         WhileActive(() =>
         {
             _configuration.PathData.InstalledDataVersion = 0;
@@ -212,7 +212,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         using HttpClient http = _createHttpClient();
 
         string host = Domains[retryCount % Domains.Length];
-        string manifestUrl = $"https://{host}{RepositoryUrl}/releases/download/paths-{_channel}/manifest-{_channel}.json";
+        string manifestUrl = $"https://{host}{RepositoryPath}/releases/download/paths-{_channel}/manifest-{_channel}.json";
         _logger.LogDebug($"Requesting path updates from {manifestUrl}");
         string manifestJson;
         PathDataManifest? manifest;
@@ -225,7 +225,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         {
             _logger.LogWarning(e, "Failed to fetch the path data manifest; retrying");
             Status = _L("Update check failed") + $" ({retryCount})";
-            await RetryAfterDelay(retryCount).ConfigureAwait(false);
+            await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }
 
@@ -233,7 +233,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         {
             _logger.LogWarning("manifest was null; retrying");
             Status = _L("Update check failed") + $" ({retryCount})";
-            await RetryAfterDelay(retryCount).ConfigureAwait(false);
+            await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }
 
@@ -273,7 +273,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         {
             Status = _L("Update check failed: bundle download URL is invalid");
             _logger.LogWarning("Bundle URL had invalid domain: {Url}", manifest.BundleUrl);
-            await RetryAfterDelay(retryCount).ConfigureAwait(false);
+            await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }
 
@@ -281,7 +281,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         {
             _logger.LogWarning("Path data manifest has no bundle URL; retrying");
             Status = _L("Update check failed") + $" ({retryCount})";
-            await RetryAfterDelay(retryCount).ConfigureAwait(false);
+            await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }
 
@@ -295,7 +295,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         {
             _logger.LogWarning(e, "Failed to download the path data bundle; retrying");
             Status = _L("Download failed") + $" ({retryCount})";
-            await RetryAfterDelay(retryCount).ConfigureAwait(false);
+            await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }
 
@@ -306,13 +306,13 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
             {
                 _logger.LogWarning("Path data bundle checksum mismatch; retrying");
                 Status = _L("Download failed (checksum mismatch)") + $" ({retryCount})";
-                await RetryAfterDelay(retryCount).ConfigureAwait(false);
+                await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
                 return;
             }
         }
 
         // Atomic install: write to a temp file, then move into place.
-        string bundlePath = PathDataBundle.GetBundlePath(_pluginInterface);
+        string bundlePath = PathDataBundle.GetFilePath(_pluginInterface);
         string tempPath = bundlePath + $".{Guid.NewGuid():N}.tmp";
         try
         {
@@ -330,7 +330,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         {
             _logger.LogWarning(e, "Failed to install the downloaded path data bundle; retrying");
             Status = _L("Install failed") + $" ({retryCount})";
-            await RetryAfterDelay(retryCount).ConfigureAwait(false);
+            await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }
         finally

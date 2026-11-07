@@ -20,7 +20,7 @@ internal static class QuestStepCapture
 
     public static QuestStep CreateStepFromTarget(IGameObject target, uint territoryType)
     {
-        return new QuestStep(GuessInteractionType(target), GameFunctions.GetBaseID(target), target.Position,
+        return new QuestStep(GuessInteractionType(target), GameFunctions.GetBaseId(target), target.Position,
             territoryType)
         {
             Fly = GameFunctions.IsFlyingUnlocked(territoryType) ? true : null

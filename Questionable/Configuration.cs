@@ -52,12 +52,12 @@ internal sealed class Configuration : IPluginConfiguration
     internal bool IsPluginSetupComplete() => PluginSetupCompleteVersion == PluginSetupVersion;
     internal void MarkPluginSetupComplete() => PluginSetupCompleteVersion = PluginSetupVersion;
 
-    [JsonIgnore] public GeneralConfiguration General => _activeProfileGeneral ?? _general;
-    [JsonIgnore] public StopConfiguration Stop => _activeProfileStop ?? _stop;
-    [JsonIgnore] public DutyConfiguration Duties => _activeProfileDuties ?? _duties;
-    [JsonIgnore] public SinglePlayerDutyConfiguration SinglePlayerDuties => _activeProfileSinglePlayerDuties ?? _singlePlayerDuties;
-    [JsonIgnore] public NotificationConfiguration Notifications => _activeProfileNotifications ?? _notifications;
-    [JsonIgnore] public AdvancedConfiguration Advanced => _activeProfileAdvanced ?? _advanced;
+    [JsonIgnore] public GeneralConfiguration General => _activeGeneral ?? _general;
+    [JsonIgnore] public StopConfiguration Stop => _activeStop ?? _stop;
+    [JsonIgnore] public DutyConfiguration Duties => _activeDuties ?? _duties;
+    [JsonIgnore] public SinglePlayerDutyConfiguration SinglePlayerDuties => _activeQuestBattles ?? _singlePlayerDuties;
+    [JsonIgnore] public NotificationConfiguration Notifications => _activeNotifications ?? _notifications;
+    [JsonIgnore] public AdvancedConfiguration Advanced => _activeAdvanced ?? _advanced;
 
     internal GeneralConfiguration BaseGeneral => _general;
     internal StopConfiguration BaseStop => _stop;
@@ -82,12 +82,12 @@ internal sealed class Configuration : IPluginConfiguration
             LanguageChanged?.Invoke(General.Language);
     }
 
-    [JsonIgnore] private GeneralConfiguration? _activeProfileGeneral;
-    [JsonIgnore] private StopConfiguration? _activeProfileStop;
-    [JsonIgnore] private DutyConfiguration? _activeProfileDuties;
-    [JsonIgnore] private SinglePlayerDutyConfiguration? _activeProfileSinglePlayerDuties;
-    [JsonIgnore] private NotificationConfiguration? _activeProfileNotifications;
-    [JsonIgnore] private AdvancedConfiguration? _activeProfileAdvanced;
+    [JsonIgnore] private GeneralConfiguration? _activeGeneral;
+    [JsonIgnore] private StopConfiguration? _activeStop;
+    [JsonIgnore] private DutyConfiguration? _activeDuties;
+    [JsonIgnore] private SinglePlayerDutyConfiguration? _activeQuestBattles;
+    [JsonIgnore] private NotificationConfiguration? _activeNotifications;
+    [JsonIgnore] private AdvancedConfiguration? _activeAdvanced;
 
     internal void ActivateForCharacter(string contentId)
     {
@@ -117,12 +117,12 @@ internal sealed class Configuration : IPluginConfiguration
         string previousLanguage = General.Language;
         CaptureActiveProfile();
         ActiveProfileName = null;
-        _activeProfileGeneral = null;
-        _activeProfileStop = null;
-        _activeProfileDuties = null;
-        _activeProfileSinglePlayerDuties = null;
-        _activeProfileNotifications = null;
-        _activeProfileAdvanced = null;
+        _activeGeneral = null;
+        _activeStop = null;
+        _activeDuties = null;
+        _activeQuestBattles = null;
+        _activeNotifications = null;
+        _activeAdvanced = null;
         NotifyLanguageChanged(previousLanguage);
     }
 
@@ -133,12 +133,12 @@ internal sealed class Configuration : IPluginConfiguration
         string previousLanguage = General.Language;
         CaptureActiveProfile();
         ActiveProfileName = profileName;
-        _activeProfileGeneral = MergeSection(_general, patches, "General");
-        _activeProfileStop = MergeSection(_stop, patches, "Stop");
-        _activeProfileDuties = MergeSection(_duties, patches, "Duties");
-        _activeProfileSinglePlayerDuties = MergeSection(_singlePlayerDuties, patches, "SinglePlayerDuties");
-        _activeProfileNotifications = MergeSection(_notifications, patches, "Notifications");
-        _activeProfileAdvanced = MergeSection(_advanced, patches, "Advanced");
+        _activeGeneral = MergeSection(_general, patches, "General");
+        _activeStop = MergeSection(_stop, patches, "Stop");
+        _activeDuties = MergeSection(_duties, patches, "Duties");
+        _activeQuestBattles = MergeSection(_singlePlayerDuties, patches, "SinglePlayerDuties");
+        _activeNotifications = MergeSection(_notifications, patches, "Notifications");
+        _activeAdvanced = MergeSection(_advanced, patches, "Advanced");
         NotifyLanguageChanged(previousLanguage);
     }
 
@@ -164,12 +164,12 @@ internal sealed class Configuration : IPluginConfiguration
         if (ActiveProfileName == null || !Profiles.TryGetValue(ActiveProfileName, out var patches))
             return;
 
-        CapturePatch(patches, "General", _general, _activeProfileGeneral);
-        CapturePatch(patches, "Stop", _stop, _activeProfileStop);
-        CapturePatch(patches, "Duties", _duties, _activeProfileDuties);
-        CapturePatch(patches, "SinglePlayerDuties", _singlePlayerDuties, _activeProfileSinglePlayerDuties);
-        CapturePatch(patches, "Notifications", _notifications, _activeProfileNotifications);
-        CapturePatch(patches, "Advanced", _advanced, _activeProfileAdvanced);
+        CapturePatch(patches, "General", _general, _activeGeneral);
+        CapturePatch(patches, "Stop", _stop, _activeStop);
+        CapturePatch(patches, "Duties", _duties, _activeDuties);
+        CapturePatch(patches, "SinglePlayerDuties", _singlePlayerDuties, _activeQuestBattles);
+        CapturePatch(patches, "Notifications", _notifications, _activeNotifications);
+        CapturePatch(patches, "Advanced", _advanced, _activeAdvanced);
     }
 
     private static void CapturePatch<T>(Dictionary<string, JObject> patches, string sectionKey, T @base, T? active)
@@ -369,7 +369,7 @@ internal sealed class Configuration : IPluginConfiguration
         public HashSet<uint> AutoRedeemItemBlacklist { get; set; } = [];
     }
 
-    internal void ApplyAutoRedeemRewardItemsInitialReset()
+    internal void ResetAutoRedeem()
     {
         _advanced.AutoRedeemRewardItems = false;
 

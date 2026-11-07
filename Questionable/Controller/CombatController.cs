@@ -369,7 +369,7 @@ internal sealed class CombatController : IDisposable
                         gameObjectStruct->NamePlateIconId == 0)
                         continue;
 
-                    if (complexCombatData[i].DataId == GameFunctions.GetBaseID(battleNpc) &&
+                    if (complexCombatData[i].DataId == GameFunctions.GetBaseId(battleNpc) &&
                         (complexCombatData[i].NameId == null || complexCombatData[i].NameId == battleNpc.NameId))
                     {
                         return (100, "CCD");
@@ -379,7 +379,7 @@ internal sealed class CombatController : IDisposable
             else
             {
                 if ((!expectQuestMarker || gameObjectStruct->NamePlateIconId != 0 || _currentFight.Data.SpawnType == EEnemySpawnType.FateEnemies) &&
-                    _currentFight.Data.KillEnemyDataIds.Contains(GameFunctions.GetBaseID(battleNpc)))
+                    _currentFight.Data.KillEnemyDataIds.Contains(GameFunctions.GetBaseId(battleNpc)))
                 {
                     if (_currentFight.Data.SpawnType == EEnemySpawnType.FateEnemies && !PlayerState.Instance()->IsLevelSynced && EzThrottler.Throttle("lsync", miliseconds: 1000))
                         _chatFunctions.ExecuteCommand("/lsync");
@@ -420,7 +420,7 @@ internal sealed class CombatController : IDisposable
                 _currentFight.Data.CompletedComplexDatas.Contains(i))
                 continue;
 
-            if (condition.DataId != GameFunctions.GetBaseID(battleNpc) ||
+            if (condition.DataId != GameFunctions.GetBaseId(battleNpc) ||
                 (condition.NameId != null && condition.NameId != battleNpc.NameId))
                 continue;
 
@@ -516,13 +516,13 @@ internal sealed class CombatController : IDisposable
             if (!useNavmesh)
             {
                 _logger.LogInformation("Moving to {TargetName} ({DataId}) to attack", gameObject.Name,
-                    GameFunctions.GetBaseID(gameObject));
+                    GameFunctions.GetBaseId(gameObject));
                 _movementController.NavigateTo(EMovementType.Combat, dataId: null, [gameObject.Position], options);
             }
             else
             {
                 _logger.LogInformation("Moving to {TargetName} ({DataId}) to attack (with navmesh)", gameObject.Name,
-                    GameFunctions.GetBaseID(gameObject));
+                    GameFunctions.GetBaseId(gameObject));
                 _movementController.NavigateTo(EMovementType.Combat, dataId: null, gameObject.Position, options);
             }
         }

@@ -83,7 +83,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent
 
     public void Reload(object? sender = null, EventArgs? e = null)
     {
-        List<ElementId> questsWithMultipleBattles = _territoryData.GetAllQuestsWithQuestBattles()
+        List<ElementId> questsWithMultipleBattles = _territoryData.GetAllQuestBattles()
             .GroupBy(x => x.QuestId)
             .Where(x => x.Skip(1).Any())
             .Select(x => x.Key)
@@ -116,7 +116,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent
             .ToDictionary(x => x.ClassJob, _ => new List<BattleInfo>());
         List<BattleInfo> otherRoleQuestBattles = [];
 
-        foreach ((ElementId questId, byte index, TerritoryData.ContentFinderConditionData cfcData) in _territoryData.GetAllQuestsWithQuestBattles())
+        foreach ((ElementId questId, byte index, TerritoryData.CfcData cfcData) in _territoryData.GetAllQuestBattles())
         {
             IQuestInfo questInfo = _questData.GetQuestInfo(questId);
             (bool enabled, SinglePlayerDutyOptions options) = FindDutyOptions(questId, index);
@@ -127,7 +127,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent
 
             if (questsWithMultipleBattles.Contains(questId))
                 name += _LF(" (Part {0})", options.Index + 1);
-            else if (cfcData.ContentFinderConditionId is 674 or 691)
+            else if (cfcData.Id is 674 or 691)
                 name += _L(" (Melee/Phys. Ranged)");
 
             BattleInfo battle = new(name, questInfo, cfcData, options, enabled);
@@ -435,7 +435,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent
             return;
 
         int oldPriority = 0;
-        foreach ((Job classJob, int priority) in _classJobUtils.SortedClassJobs)
+        foreach ((Job classJob, int priority) in _classJobUtils.SortedJobs)
         {
             if (classJob.IsCrafter() || classJob.IsGatherer())
                 continue;
@@ -850,14 +850,14 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent
     (
         string Name,
         IQuestInfo QuestInfo,
-        TerritoryData.ContentFinderConditionData CfcData,
+        TerritoryData.CfcData CfcData,
         SinglePlayerDutyOptions Options,
         bool Enabled)
     {
         public EExpansionVersion Expansion => QuestInfo.Expansion;
         public uint JournalGenreId => QuestInfo.JournalGenre ?? uint.MaxValue;
         public ushort SortKey => QuestInfo.SortKey;
-        public uint CfcId => CfcData.ContentFinderConditionId;
+        public uint CfcId => CfcData.Id;
         public uint TerritoryId => CfcData.TerritoryId;
         public byte Index => Options.Index;
         public bool EnabledByDefault => Options.Enabled;

@@ -19,7 +19,7 @@ public sealed class SoloDutyMetadataTests
     [InlineData("INSTANCEDUNGEON_NAME0", 11u, false, 0)]
     public void Discovery_UsesQuestInstructionsAndSeasonalMetadata(string instruction, uint? instanceType, bool expected, byte expectedIndex)
     {
-        Assert.Equal(expected, TerritoryData.TryGetSoloDutyIndex(instruction, instanceType, out byte index));
+        Assert.Equal(expected, TerritoryData.TryGetQuestBattleIndex(instruction, instanceType, out byte index));
         Assert.Equal(expectedIndex, index);
     }
 }

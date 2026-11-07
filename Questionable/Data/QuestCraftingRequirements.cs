@@ -10,12 +10,12 @@ internal static class QuestCraftingRequirements
             .Select(x => x.ItemId)
             .ToHashSet();
 
-    internal static IReadOnlyList<CraftingItem> GetQuestItems(ElementId questId) =>
-        questId is QuestId && QuestItems.TryGetValue(questId.Value, out var items) ? items : [];
+    internal static IReadOnlyList<CraftingItem> GetItems(ElementId questId) =>
+        questId is QuestId && Items.TryGetValue(questId.Value, out var items) ? items : [];
 
     internal static CraftingItem ResolveItem(ElementId questId, CraftingItem requested)
     {
-        CraftingItem? required = GetQuestItems(questId).FirstOrDefault(x => x.ItemId == requested.ItemId);
+        CraftingItem? required = GetItems(questId).FirstOrDefault(x => x.ItemId == requested.ItemId);
         return required == null ? requested : requested with
         {
             ItemCount = Math.Max(requested.ItemCount, required.ItemCount),
@@ -28,14 +28,14 @@ internal static class QuestCraftingRequirements
         questId is QuestId && (questId.Value, sequence) is
             (139, 255) or (140, 255) or (141, 2) or (142, 255) or (168, 255) or (205, 255) or
             (2044, 255) or (2045, 255) or (2046, 255) or (2047, 3)
-            ? GetQuestItems(questId)
+            ? GetItems(questId)
             : [];
 
     // Reviewed requirements for shipped crafting quests, from the QuestRequiredItem.csv embedded in
     // LuminaSupplemental.Excel 4.3.3. This is local data, not a runtime dependency on that package or Artisan.
     // Level-5 counts include Artisan's correction, cross-checked against our existing paths.
     // WVR 590 and the seven Namazu additions were verified in installed quest Lua (2026.10.16).
-    private static readonly Dictionary<ushort, IReadOnlyList<CraftingItem>> QuestItems =
+    private static readonly Dictionary<ushort, IReadOnlyList<CraftingItem>> Items =
         new()
     {
         [51] = [new(5280, 1, EItemQuality.HQ)],

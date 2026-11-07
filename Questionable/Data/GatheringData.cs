@@ -66,7 +66,7 @@ internal sealed class GatheringData
         var _ => false
     };
 
-    public ushort GetRecommendedCollectability(uint itemId) => _itemIdToCollectability.GetValueOrDefault(itemId);
+    public ushort GetTargetCollectability(uint itemId) => _itemIdToCollectability.GetValueOrDefault(itemId);
 
     public bool TryGetCustomDeliveryNpc(uint itemId, out uint npcId) => _npcForCustomDeliveries.TryGetValue(itemId, out npcId);
 }

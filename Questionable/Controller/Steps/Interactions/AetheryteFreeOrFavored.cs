@@ -35,7 +35,7 @@ internal static class AetheryteFreeOrFavored
             if (!aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation))
                 throw new TaskException($"Aetheryte {Task.AetheryteLocation} is not attuned");
 
-            if (aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(Task.AetheryteLocation) ==
+            if (aetheryteFunctions.CanRegisterFreeOrFavored(Task.AetheryteLocation) ==
                 AetheryteRegistrationResult.NotPossible)
             {
                 logger.LogInformation("Could not register aetheryte {AetheryteLocation} as free or favored",
@@ -50,7 +50,7 @@ internal static class AetheryteFreeOrFavored
 
         public override ETaskResult Update()
         {
-            return aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(Task.AetheryteLocation) ==
+            return aetheryteFunctions.CanRegisterFreeOrFavored(Task.AetheryteLocation) ==
                    AetheryteRegistrationResult.NotPossible
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;

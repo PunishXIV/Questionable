@@ -42,7 +42,7 @@ internal sealed partial class ActiveQuestComponent
 {
     [GeneratedRegex(@"\s\s+", RegexOptions.IgnoreCase, matchTimeoutMilliseconds: 1000, "en-US")]
     private static partial Regex MultipleWhitespaceRegex();
-    private List<PriorityQuestInfo> priorityQuests => questFunctions.NextPriorityQuestsThatCanBeAccepted;
+    private List<PriorityQuestInfo> priorityQuests => questFunctions.NextPriorityQuests;
     private bool anyAvailable;
     private bool anyUnavailable;
 
@@ -542,7 +542,7 @@ internal sealed partial class ActiveQuestComponent
                         ImGui.SameLine();
                         QstWidgets.Chip($"{acceptedJob}", QstTheme.Accent);
                         if (ImGui.IsItemClicked())
-                            classJobUtils.SwitchClassJob(acceptedJob);
+                            classJobUtils.SwitchJob(acceptedJob);
                         if (ImGui.IsItemHovered())
                             ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
                     }

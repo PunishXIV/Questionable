@@ -27,9 +27,9 @@ internal static class QuestPathWriter
             Modifiers =
             {
                 NoEmptyCollectionModifier,
-                AlwaysSerializeAttributeModifier,
+                AlwaysSerializeModifier,
                 DefaultTrueModifier,
-                IgnoreWhenDefaultInstanceModifier
+                SkipDefaultObjectModifier
             }
         }
     };
@@ -106,7 +106,7 @@ internal static class QuestPathWriter
         Array.Exists(type.GetInterfaces(),
             x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ICollection<>));
 
-    private static void AlwaysSerializeAttributeModifier(JsonTypeInfo typeInfo)
+    private static void AlwaysSerializeModifier(JsonTypeInfo typeInfo)
     {
         foreach (JsonPropertyInfo property in typeInfo.Properties)
         {
@@ -132,7 +132,7 @@ internal static class QuestPathWriter
         }
     }
 
-    private static void IgnoreWhenDefaultInstanceModifier(JsonTypeInfo typeInfo)
+    private static void SkipDefaultObjectModifier(JsonTypeInfo typeInfo)
     {
         foreach (JsonPropertyInfo property in typeInfo.Properties)
         {

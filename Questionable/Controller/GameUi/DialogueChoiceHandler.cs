@@ -317,8 +317,8 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
             }
 
             if (favoredAetherytes.Any(x =>
-                _aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(x) ==
-                AetheryteRegistrationResult.SecurityTokenFreeDestinationAvailable))
+                _aetheryteFunctions.CanRegisterFreeOrFavored(x) ==
+                AetheryteRegistrationResult.FreeDestination))
             {
                 _logger.LogInformation("Adding security token aetheryte unlock dialogue choice");
                 dialogueChoices.Add(new(quest, new()
@@ -332,8 +332,8 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                 }));
             }
             else if (favoredAetherytes.Any(x =>
-                _aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(x) ==
-                AetheryteRegistrationResult.FavoredDestinationAvailable))
+                _aetheryteFunctions.CanRegisterFreeOrFavored(x) ==
+                AetheryteRegistrationResult.FavoredDestination))
             {
                 _logger.LogInformation("Adding favored aetheryte unlock dialogue choice");
                 dialogueChoices.Add(new(quest, new()
@@ -375,7 +375,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
         IGameObject? target = _targetManager.Target;
         if (target != null)
         {
-            foreach (IQuestInfo questInfo in _questData.GetAllByIssuerDataId(GameFunctions.GetBaseID(target)).Where(x => x.QuestId is QuestId))
+            foreach (IQuestInfo questInfo in _questData.GetAllByIssuerDataId(GameFunctions.GetBaseId(target)).Where(x => x.QuestId is QuestId))
             {
                 if (_questFunctions.IsReadyToAcceptQuest(questInfo.QuestId) &&
                     _questRegistry.TryGetQuest(questInfo.QuestId, out Quest? knownQuest))
@@ -432,11 +432,11 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                 continue;
             }
 
-            if (dialogueChoice.DataId != null && dialogueChoice.DataId != GameFunctions.GetBaseID(_targetManager.Target))
+            if (dialogueChoice.DataId != null && dialogueChoice.DataId != GameFunctions.GetBaseId(_targetManager.Target))
             {
                 _logger.LogDebug(
                     "Skipping entry in DialogueChoice expecting target dataId {ExpectedDataId}, actual target is {ActualTargetId}",
-                    dialogueChoice.DataId, GameFunctions.GetBaseID(_targetManager.Target));
+                    dialogueChoice.DataId, GameFunctions.GetBaseId(_targetManager.Target));
                 continue;
             }
 

@@ -29,7 +29,7 @@ public sealed class PluginLifetimeTests
         Exception observed = await Assert.ThrowsAsync<InvalidOperationException>(() => lifetime.InitializeAsync(() =>
         {
             var services = registrations.BuildServiceProvider();
-            lifetime.OwnServices(services);
+            lifetime.SetServices(services);
             eventSource = services.GetRequiredService<EventSource>();
             updater = services.GetRequiredService<AsyncService>();
             services.GetRequiredService<FailedInitializer>();
@@ -78,7 +78,7 @@ public sealed class PluginLifetimeTests
         Exception observed = await Assert.ThrowsAsync<InvalidOperationException>(() => lifetime.InitializeAsync(() =>
         {
             var services = registrations.BuildServiceProvider();
-            lifetime.OwnServices(services);
+            lifetime.SetServices(services);
             services.GetRequiredService<ThrowingService>();
             throw original;
         }, () =>
@@ -121,7 +121,7 @@ public sealed class PluginLifetimeTests
         await lifetime.InitializeAsync(() =>
         {
             var services = registrations.BuildServiceProvider();
-            lifetime.OwnServices(services);
+            lifetime.SetServices(services);
             updater = services.GetRequiredService<AsyncService>();
             return Task.CompletedTask;
         }, () =>
@@ -169,7 +169,7 @@ public sealed class PluginLifetimeTests
         Task load = lifetime.InitializeAsync(async () =>
         {
             var services = registrations.BuildServiceProvider();
-            lifetime.OwnServices(services);
+            lifetime.SetServices(services);
             services.GetRequiredService<AsyncService>();
             initializationStarted.SetResult();
             await finishInitialization.Task.WaitAsync(TimeSpan.FromSeconds(5));
@@ -203,7 +203,7 @@ public sealed class PluginLifetimeTests
             initializationStarted.SetResult();
             await finishInitialization.Task.WaitAsync(TimeSpan.FromSeconds(5));
             var services = registrations.BuildServiceProvider();
-            lifetime.OwnServices(services);
+            lifetime.SetServices(services);
             services.GetRequiredService<AsyncService>();
         }, () => ValueTask.CompletedTask, () => events.Add("globals"), _ => { }, CancellationToken.None);
 

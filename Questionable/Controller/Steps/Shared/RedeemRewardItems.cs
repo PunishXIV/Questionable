@@ -90,7 +90,7 @@ internal static class RedeemRewardItems
                 if (item == null)
                     continue;
 
-                ItemReward? redeemable = ItemReward.CreateFromItem(item.Value, new QuestId(0));
+                ItemReward? redeemable = ItemReward.Create(item.Value, new QuestId(0));
                 if (redeemable != null)
                     TryAdd(redeemable);
             }

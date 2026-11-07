@@ -123,13 +123,13 @@ internal sealed class DalamudInitializer : IDisposable
             _questController.RecordNavigationFailure(e);
             _logger.LogError(e, "Navigation failed ({Reason}), quest {Quest}, NeverFly:{NeverFly}",
                 e.Reason, _questController.CurrentQuest?.ToString(), _configuration.Advanced.NeverFly);
-            _chatGui.PrintError(GetPathfindingFailureMessage(e.Reason, _configuration.Advanced.NeverFly),
+            _chatGui.PrintError(GetPathfindingError(e.Reason, _configuration.Advanced.NeverFly),
                 CommandHandler.MessageTag, CommandHandler.TagColor);
             _questController.Stop(_L("Pathfinding failed"));
         }
     }
 
-    internal static string GetPathfindingFailureMessage(MovementController.PathfindingFailureReason reason, bool neverFly) => reason switch
+    internal static string GetPathfindingError(MovementController.PathfindingFailureReason reason, bool neverFly) => reason switch
     {
         MovementController.PathfindingFailureReason.MovementDisabled =>
             _L("Navigation stopped because movement is disabled in vnavmesh. Re-enable it when you are ready, then resume QST."),
@@ -142,7 +142,7 @@ internal sealed class DalamudInitializer : IDisposable
         MovementController.PathfindingFailureReason.MovementBlocked =>
             _L("Navigation stopped because another plugin is travelling or vnavmesh has a pending movement request. Wait for that activity to finish before resuming QST."),
         MovementController.PathfindingFailureReason.Unavailable =>
-            _L("Navigation stopped because vnavmesh's IPC is unavailable. Check that vnavmesh is loaded, then resume QST."),
+            _L("Navigation stopped because vnavmesh is not available. Check that vnavmesh is loaded, then resume QST."),
         MovementController.PathfindingFailureReason.TimedOut =>
             _L("Navigation stopped because pathfinding exceeded 30 seconds. If this keeps happening, use Stuck? to copy troubleshooting information and include the /xllog error."),
         MovementController.PathfindingFailureReason.Cancelled =>

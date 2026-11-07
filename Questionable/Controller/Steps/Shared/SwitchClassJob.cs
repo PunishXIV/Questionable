@@ -34,7 +34,7 @@ internal static class SwitchClassJob
     {
         protected override unsafe bool StartInternal()
         {
-            var result = classJobUtils.SwitchClassJob(Task.ClassJob);
+            var result = classJobUtils.SwitchJob(Task.ClassJob);
             if (!result)
                 throw new TaskException($"No gearset found for {Task.ClassJob}");
             return !result;

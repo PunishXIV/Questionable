@@ -15,9 +15,9 @@ internal sealed class AetherCurrentData(IDataManager dataManager)
                     .ToImmutableList()
             );
 
-    public bool IsValidAetherCurrent(uint territoryId, uint aetherCurrentId)
+    public bool IsValid(uint territoryId, uint currentId)
     {
         return _overworldCurrents.TryGetValue(territoryId, out ImmutableList<uint>? currentIds) &&
-               currentIds.Contains(aetherCurrentId);
+               currentIds.Contains(currentId);
     }
 }

@@ -3,6 +3,6 @@
 public enum AetheryteRegistrationResult
 {
     NotPossible,
-    SecurityTokenFreeDestinationAvailable,
-    FavoredDestinationAvailable
+    FreeDestination,
+    FavoredDestination
 }

@@ -34,9 +34,9 @@ internal interface IQuestGameState : IPrerequisiteState
     byte GrandCompanyRank { get; }
     byte DeliveryLevel { get; }
     byte GetAlliedSocietyRank(byte alliedSociety);
-    ushort GetAlliedSocietyReputation(byte alliedSociety);
-    ushort GetAlliedSocietyNeededReputation(byte alliedSociety);
-    IReadOnlyCollection<QuestId> GetAvailableAlliedSocietyQuests(EAlliedSociety alliedSociety);
+    ushort GetReputation(byte alliedSociety);
+    ushort GetNeededReputation(byte alliedSociety);
+    IReadOnlyCollection<QuestId> GetAvailableSocietyQuests(EAlliedSociety alliedSociety);
 
     bool HasRetainers { get; }
     bool IsInstanceContentCompleted(ushort instanceContentId);

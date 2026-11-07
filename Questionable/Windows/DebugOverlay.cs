@@ -159,7 +159,7 @@ internal sealed class DebugOverlay : Window
             (int priority, string reason) = _combatController.GetKillPriority(npc);
             // Combat targets move too quickly for smoothing.
             ImGui.GetWindowDrawList().AddText(screenPos + new Vector2(10, -8), priority > 0 ? 0xFF00FF00 : 0xFFFFFFFF,
-                $"{npc.Name}/{npc.GameObjectId:X}, {GameFunctions.GetBaseID(npc)}, {priority} - {reason}, {Vector3.Distance(npc.Position, _objectTable[0]!.Position):N2}, {npc.IsTargetable}");
+                $"{npc.Name}/{npc.GameObjectId:X}, {GameFunctions.GetBaseId(npc)}, {priority} - {reason}, {Vector3.Distance(npc.Position, _objectTable[0]!.Position):N2}, {npc.IsTargetable}");
         }
     }
 

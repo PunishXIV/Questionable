@@ -17,32 +17,32 @@ internal sealed class QuestProgressInfo
         ClassJob = (Job)questWork.AcceptClassJob;
         Tooltip = "";
 
-        Span<byte> qw = questWork.Variables; // 6 bytes
-        string repr = "";
-        for (int i = 0; i < qw.Length; ++i)
+        Span<byte> bytes = questWork.Variables; // 6 bytes
+        string text = "";
+        for (int i = 0; i < bytes.Length; ++i)
         {
-            byte thisbyte = qw[i];
-            Tooltip += $"{Convert.ToString(thisbyte, 2).PadLeft(8).Replace(" ", "0", StringComparison.InvariantCulture)}\n";
-            int upper = thisbyte >> 4;
-            int lower = thisbyte & 0xF;
+            byte value = bytes[i];
+            Tooltip += $"{Convert.ToString(value, 2).PadLeft(8).Replace(" ", "0", StringComparison.InvariantCulture)}\n";
+            int upper = value >> 4;
+            int lower = value & 0xF;
             if (upper != 0 || lower != 0)
             {
-                repr += "(";
+                text += "(";
                 if (upper != 0)
-                    repr += $"{upper}H";
+                    text += $"{upper}H";
                 if (lower != 0)
-                    repr += $"{lower}L";
-                repr += ") ";
+                    text += $"{lower}L";
+                text += ") ";
             }
             else
-                repr += "(-) ";
+                text += "(-) ";
 
             if (i % 2 == 1)
-                repr += "   ";
+                text += "   ";
         }
 
         // Combat progress increments per kill and resets when the sequence advances; kills across waves count together.
-        _asString = $"QW: {repr.Trim()}";
+        _asString = $"QW: {text.Trim()}";
     }
 
     public ElementId Id { get; }

@@ -272,7 +272,7 @@ internal static class SkipCondition
             if (skipConditions.DutiesUnlocked.Count > 0)
             {
                 if (skipConditions.DutiesUnlocked.All(x =>
-                        gameFunctions.ContentFinderConditionToContentId.TryGetValue(x, out var contentId) &&
+                        gameFunctions.CfcToContentId.TryGetValue(x, out var contentId) &&
                         UIState.IsInstanceContentUnlocked(contentId)))
                     return true;
             }
@@ -285,7 +285,7 @@ internal static class SkipCondition
             if (skipConditions.DutiesCompleted.Count > 0)
             {
                 if (skipConditions.DutiesCompleted.All(x =>
-                        gameFunctions.ContentFinderConditionToContentId.TryGetValue(x, out var contentId) &&
+                        gameFunctions.CfcToContentId.TryGetValue(x, out var contentId) &&
                         UIState.IsInstanceContentCompleted(contentId)))
                     return true;
             }
@@ -357,7 +357,7 @@ internal static class SkipCondition
                 {
                     Aetheryte: { } favoredAetheryte, InteractionType: EInteractionType.RegisterFreeOrFavoredAetheryte
                 } &&
-                aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(favoredAetheryte) is AetheryteRegistrationResult.NotPossible)
+                aetheryteFunctions.CanRegisterFreeOrFavored(favoredAetheryte) is AetheryteRegistrationResult.NotPossible)
             {
                 logger.LogInformation("Skipping step, already registered all possible free or favored aetherytes");
                 return true;

@@ -22,7 +22,7 @@ internal sealed class QuestGameData : IDisposable
     private const char QuestRepeatableIcon = (char)0xE0BF;
 
     private readonly GameData _gameData;
-    private readonly bool _ownsGameData;
+    private readonly bool _disposeGameData;
     private readonly Lazy<ILookup<uint, Level>> _levelsByObject;
     private readonly Lazy<IReadOnlyList<AetheryteEntry>> _aetherytes;
     private readonly Lazy<ILookup<uint, uint>> _followers;
@@ -39,20 +39,20 @@ internal sealed class QuestGameData : IDisposable
         {
             PanicOnSheetChecksumMismatch = false,
             DefaultExcelLanguage = Language.English
-        }), ownsGameData: true)
+        }), disposeGameData: true)
     {
     }
 
     // Borrows Dalamud's GameData, so it must not be disposed here.
     internal QuestGameData(GameData gameData)
-        : this(gameData, ownsGameData: false)
+        : this(gameData, disposeGameData: false)
     {
     }
 
-    private QuestGameData(GameData gameData, bool ownsGameData)
+    private QuestGameData(GameData gameData, bool disposeGameData)
     {
         _gameData = gameData;
-        _ownsGameData = ownsGameData;
+        _disposeGameData = disposeGameData;
 
         _levelsByObject = new Lazy<ILookup<uint, Level>>(BuildLevelIndex);
         _aetherytes = new Lazy<IReadOnlyList<AetheryteEntry>>(BuildAetheryteIndex);
@@ -80,7 +80,7 @@ internal sealed class QuestGameData : IDisposable
 
     public void Dispose()
     {
-        if (_ownsGameData)
+        if (_disposeGameData)
             _gameData.Dispose();
     }
 
@@ -511,7 +511,7 @@ internal sealed class QuestGameData : IDisposable
                     _ => null
                 };
 
-                if (aetheryteId is not { } id2 || id2 == 0)
+                if (aetheryteId is not { } rowId || rowId == 0)
                     continue;
 
                 float scale = map.SizeFactor / 100f;
@@ -521,10 +521,10 @@ internal sealed class QuestGameData : IDisposable
 
                 // Region maps repeat a zone's markers; the map covering the aetheryte's own territory wins.
                 bool preferred = map.TerritoryType.RowId != 0 &&
-                                 map.TerritoryType.RowId == aetherytes.GetRowOrDefault(id2)?.Territory.RowId;
+                                 map.TerritoryType.RowId == aetherytes.GetRowOrDefault(rowId)?.Territory.RowId;
 
-                if (preferred || !positions.ContainsKey(id2))
-                    positions[id2] = world;
+                if (preferred || !positions.ContainsKey(rowId))
+                    positions[rowId] = world;
             }
         }
 

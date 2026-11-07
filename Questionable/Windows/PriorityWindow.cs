@@ -119,7 +119,7 @@ internal sealed class PriorityWindow : LWindow
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Upload, _L("Export to Clipboard")))
                 ExportToClipboard();
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Check, _L("Remove finished Quests")))
-                _questController.PriorityManager.RemoveCompleted(_questFunctions.IsQuestFinishedForPriorityRemoval, _questFunctions.IsQuestAccepted);
+                _questController.PriorityManager.RemoveCompleted(_questFunctions.IsPriorityQuestDone, _questFunctions.IsQuestAccepted);
             ImGui.SameLine();
 
             using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))

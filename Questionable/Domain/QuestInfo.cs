@@ -47,9 +47,9 @@ internal sealed class QuestInfo : IQuestInfo
         PreviousQuests =
             new List<PreviousQuestInfo>
                 {
-                    new(ReplaceOldQuestIds(QQuestId.FromRowId(quest.PreviousQuest[0].RowId)), quest.Unknown7),
-                    new(ReplaceOldQuestIds(QQuestId.FromRowId(quest.PreviousQuest[1].RowId))),
-                    new(ReplaceOldQuestIds(QQuestId.FromRowId(quest.PreviousQuest[2].RowId)))
+                    new(ReplaceOldQuestId(QQuestId.FromRowId(quest.PreviousQuest[0].RowId)), quest.Unknown7),
+                    new(ReplaceOldQuestId(QQuestId.FromRowId(quest.PreviousQuest[1].RowId))),
+                    new(ReplaceOldQuestId(QQuestId.FromRowId(quest.PreviousQuest[2].RowId)))
                 }
                 .Where(x => x.QuestId.Value != 0)
                 .ToImmutableList();
@@ -101,12 +101,12 @@ internal sealed class QuestInfo : IQuestInfo
             .Where(x => x != null)
             .Cast<Item>()
             .Where(x => x.IsUntradable)
-            .Select(x => ItemReward.CreateFromItem(x, QuestId))
+            .Select(x => ItemReward.Create(x, QuestId))
             .Where(x => x != null)
             .Cast<ItemReward>()
             .ToList();
         TripleTriadCardRewards = tripleTriadCardItems
-            .Select(item => ItemReward.CreateFromItem(item, QuestId))
+            .Select(item => ItemReward.Create(item, QuestId))
             .OfType<ItemReward>().ToList();
         Expansion = (EExpansionVersion)quest.Expansion.RowId;
         AvailableIcon = quest.EventIconType.ValueNullable?.NpcIconAvailable + 1;
@@ -172,7 +172,7 @@ internal sealed class QuestInfo : IQuestInfo
         .Replace("?", "", StringComparison.Ordinal)
         .TrimStart(SeIconChar.QuestSync.ToIconChar(), SeIconChar.QuestRepeatable.ToIconChar(), ' ');
 
-    private static QuestId ReplaceOldQuestIds(QuestId questId)
+    private static QuestId ReplaceOldQuestId(QuestId questId)
     {
         return questId.Value switch
         {
@@ -181,15 +181,15 @@ internal sealed class QuestInfo : IQuestInfo
         };
     }
 
-    public void AddPreviousQuest(PreviousQuestInfo questId) => PreviousQuests = [.. PreviousQuests, questId];
+    public void AddPreviousQuest(PreviousQuestInfo previous) => PreviousQuests = [.. PreviousQuests, previous];
 
-    public void AddQuestLocks(EQuestJoin questJoin, params QuestId[] questId)
+    public void AddQuestLocks(EQuestJoin join, params QuestId[] questIds)
     {
-        if (QuestLocks.Count > 0 && QuestLockJoin != questJoin)
+        if (QuestLocks.Count > 0 && QuestLockJoin != join)
             throw new InvalidOperationException();
 
-        QuestLockJoin = questJoin;
-        QuestLocks = [.. QuestLocks, .. questId];
+        QuestLockJoin = join;
+        QuestLocks = [.. QuestLocks, .. questIds];
     }
 
     public readonly struct SheetLevel(Level level)
@@ -201,14 +201,14 @@ internal sealed class QuestInfo : IQuestInfo
         public readonly float Z => Position.Z;
         public readonly TerritoryType Territory => Svc.Data.GetExcelSheet<TerritoryType>().GetRow(level.Territory.RowId);
         public readonly Map Map => Svc.Data.GetExcelSheet<Map>().GetRow(level.Map.RowId);
-        public readonly Vector3 Game => new(
+        public readonly Vector3 MapCoords => new(
                 WorldPositionToMapCoord(X, Map.SizeFactor, Map.OffsetX),
                 0f,
                 WorldPositionToMapCoord(Z, Map.SizeFactor, Map.OffsetY)
         );
-        public override string? ToString() => $"SheetLevel({X:F2}, {Y:F2}, {Z:F2}, {Territory.RowId}, {Map.RowId}, {Game})";
-        private static float WorldPositionToMapCoord(float v, ushort scale, short offset)
-            => 41f * ((MathF.Truncate(v) + offset) * (scale / 100f) + 1024f - 1) / 2048f / (scale / 100f) + 1;
+        public override string? ToString() => $"SheetLevel({X:F2}, {Y:F2}, {Z:F2}, {Territory.RowId}, {Map.RowId}, {MapCoords})";
+        private static float WorldPositionToMapCoord(float value, ushort scale, short offset)
+            => 41f * ((MathF.Truncate(value) + offset) * (scale / 100f) + 1024f - 1) / 2048f / (scale / 100f) + 1;
     }
 
     public enum EGrandCompanyRank

@@ -77,7 +77,7 @@ internal sealed class QuestSelectionWindow : LWindow
     {
         if (gameObject != null)
         {
-            targetId = GameFunctions.GetBaseID(gameObject);
+            targetId = GameFunctions.GetBaseId(gameObject);
             string targetName = gameObject.Name.ToString();
 
             WindowName = _LF("Quests starting with {0}", targetName) + $"[{targetId}]{WindowId}";

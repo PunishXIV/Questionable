@@ -31,12 +31,12 @@ internal sealed unsafe partial class GameFunctions
     ILogger<GameFunctions> logger,
     HighlightObject highlightObject)
 {
-    internal readonly ReadOnlyDictionary<uint, uint> ContentFinderConditionToContentId = Svc.Data.GetExcelSheet<ContentFinderCondition>()
+    internal readonly ReadOnlyDictionary<uint, uint> CfcToContentId = Svc.Data.GetExcelSheet<ContentFinderCondition>()
         .Where(x => x.RowId > 0 && x.Content.RowId > 0)
         .ToDictionary(x => x.RowId, x => x.Content.RowId)
         .AsReadOnly();
 
-    private static readonly ReadOnlyDictionary<uint, uint> _territoryToAetherCurrentCompFlgSet = Svc.Data.GetExcelSheet<TerritoryType>()
+    private static readonly ReadOnlyDictionary<uint, uint> _aetherCurrentSetIds = Svc.Data.GetExcelSheet<TerritoryType>()
         .Where(x => x.RowId > 0 && x.AetherCurrentCompFlgSet.RowId > 0)
         .ToDictionary(x => x.RowId, x => x.AetherCurrentCompFlgSet.RowId)
         .AsReadOnly();
@@ -56,7 +56,7 @@ internal sealed unsafe partial class GameFunctions
 
         PlayerState* playerState = PlayerState.Instance();
         return playerState != null &&
-               _territoryToAetherCurrentCompFlgSet.TryGetValue(territoryId, out uint aetherCurrentCompFlgSet) &&
+               _aetherCurrentSetIds.TryGetValue(territoryId, out uint aetherCurrentCompFlgSet) &&
                playerState->IsAetherCurrentZoneComplete(aetherCurrentCompFlgSet);
     }
 
@@ -69,7 +69,7 @@ internal sealed unsafe partial class GameFunctions
         return null;
     }
 
-    public bool IsFlyingUnlockedInCurrentZone() => IsFlyingUnlocked(clientState.TerritoryType);
+    public bool IsFlyingUnlockedHere() => IsFlyingUnlocked(clientState.TerritoryType);
 
     public bool IsAetherCurrentUnlocked(uint aetherCurrentId)
     {
@@ -91,9 +91,9 @@ internal sealed unsafe partial class GameFunctions
             if (gameObject is { ObjectKind: ObjectKind.GatheringPoint, IsTargetable: false })
                 continue;
 
-            if (GetBaseID(gameObject) == dataId && (kind == null || kind.Value == gameObject.ObjectKind))
+            if (GetBaseId(gameObject) == dataId && (kind == null || kind.Value == gameObject.ObjectKind))
             {
-                highlightObject.AddHighlight(GetBaseID(gameObject));
+                highlightObject.AddHighlight(GetBaseId(gameObject));
                 return gameObject;
             }
         }
@@ -114,7 +114,7 @@ internal sealed unsafe partial class GameFunctions
 
     public bool InteractWith(IGameObject gameObject)
     {
-        logger.LogInformation("Setting target with {DataId} to {ObjectId}", GetBaseID(gameObject), gameObject.EntityId);
+        logger.LogInformation("Setting target with {DataId} to {ObjectId}", GetBaseId(gameObject), gameObject.EntityId);
         targetManager.Target = null;
         targetManager.Target = gameObject;
 
@@ -269,9 +269,9 @@ internal sealed unsafe partial class GameFunctions
 
     public bool HasStatusPreventingMount()
     {
-        if (condition[ConditionFlag.Swimming] && !IsFlyingUnlockedInCurrentZone())
+        if (condition[ConditionFlag.Swimming] && !IsFlyingUnlockedHere())
         {
-            logger.LogDebug("Swimming && !IsFlyingUnlockedInCurrentZone");
+            logger.LogDebug("Swimming && !IsFlyingUnlockedHere");
             return true;
         }
 
@@ -292,17 +292,17 @@ internal sealed unsafe partial class GameFunctions
             return true;
         }
 
-        if (HasCharacterStatusPreventingMountOrSprint())
+        if (IsMountOrSprintBlocked())
         {
-            logger.LogDebug("HasCharacterStatusPreventingMountOrSprint");
+            logger.LogDebug("IsMountOrSprintBlocked");
             return true;
         }
         return false;
     }
 
-    public bool HasStatusPreventingSprint() => HasCharacterStatusPreventingMountOrSprint();
+    public bool HasStatusPreventingSprint() => IsMountOrSprintBlocked();
 
-    internal bool HasCharacterStatusPreventingMountOrSprint()
+    internal bool IsMountOrSprintBlocked()
     {
         return HasStatus(565) || // Transfiguration
                HasStatus(416) || // Transparent
@@ -386,23 +386,23 @@ internal sealed unsafe partial class GameFunctions
         return false;
     }
 
-    public void OpenDutyFinder(uint contentFinderConditionId = 0, uint contentId = 0)
+    public void OpenDutyFinder(uint cfcId = 0, uint contentId = 0)
     {
-        if (contentId != 0 || ContentFinderConditionToContentId.TryGetValue(contentFinderConditionId, out contentId))
+        if (contentId != 0 || CfcToContentId.TryGetValue(cfcId, out contentId))
         {
             if (UIState.IsInstanceContentUnlocked(contentId))
-                AgentContentsFinder.Instance()->OpenRegularDuty(contentFinderConditionId);
+                AgentContentsFinder.Instance()->OpenRegularDuty(cfcId);
             else
             {
                 logger.LogError(
                     "Trying to access a locked duty (cf: {ContentFinderId}, content: {ContentId})",
-                    contentFinderConditionId, contentId);
+                    cfcId, contentId);
             }
         }
         else
         {
             logger.LogError("Could not find content for content finder condition (cf: {ContentFinderId})",
-                contentFinderConditionId);
+                cfcId);
         }
     }
 
@@ -425,10 +425,10 @@ internal sealed unsafe partial class GameFunctions
         if (b == null)
             return false;
 
-        var _a = GameStringComparison.Normalize(a);
-        var _b = GameStringComparison.Normalize(b);
-        var eq = _a == _b;
-        Svc.Log.Verbose($"GameStringEquals: {_a} {(eq ? "==" : "!=")} {_b}");
+        var normalA = GameStringComparison.Normalize(a);
+        var normalB = GameStringComparison.Normalize(b);
+        var eq = normalA == normalB;
+        Svc.Log.Verbose($"GameStringEquals: {normalA} {(eq ? "==" : "!=")} {normalB}");
         return eq;
     }
 
@@ -460,12 +460,12 @@ internal sealed unsafe partial class GameFunctions
                condition[ConditionFlag.Jumping] || condition[ConditionFlag.Mounting71];
     }
 
-    public bool IsOccupiedWithCustomDeliveryNpc(Quest? currentQuest)
+    public bool IsInCustomDelivery(Quest? currentQuest)
     {
         if (currentQuest is not { Info: SatisfactionSupplyInfo })
             return false;
 
-        if (targetManager.Target == null || GetBaseID(targetManager.Target) != currentQuest.Info.IssuerDataId)
+        if (targetManager.Target == null || GetBaseId(targetManager.Target) != currentQuest.Info.IssuerDataId)
             return false;
 
         if (!AgentSatisfactionSupply.Instance()->IsAgentActive())
@@ -521,7 +521,7 @@ internal sealed unsafe partial class GameFunctions
         return slots;
     }
 
-    public static uint GetBaseID(IGameObject? obj)
+    public static uint GetBaseId(IGameObject? obj)
     {
         if (obj == null)
             return 0;
@@ -538,14 +538,14 @@ internal sealed unsafe partial class GameFunctions
             return null;
         }
 
-        List<uint> unlockedUnlockLinks = [];
+        List<uint> unlockedLinks = [];
         foreach ((int index, bool isUnlocked) in uiState->UnlockLinksBitArray)
         {
             if (isUnlocked)
-                unlockedUnlockLinks.Add((uint)index);
+                unlockedLinks.Add((uint)index);
         }
 
-        logger.LogInformation("Unlocked unlock links: {UnlockedUnlockLinks}", string.Join(", ", unlockedUnlockLinks));
-        return unlockedUnlockLinks;
+        logger.LogInformation("Unlocked unlock links: {UnlockedUnlockLinks}", string.Join(", ", unlockedLinks));
+        return unlockedLinks;
     }
 }

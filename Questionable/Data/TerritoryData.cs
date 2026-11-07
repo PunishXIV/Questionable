@@ -11,10 +11,10 @@ namespace Questionable.Data;
 [RegisterSingleton]
 internal sealed class TerritoryData
 {
-    private readonly ImmutableDictionary<uint, ContentFinderConditionData> _contentFinderConditions;
+    private readonly ImmutableDictionary<uint, CfcData> _cfcs;
     private readonly ImmutableDictionary<uint, uint> _dutyTerritories;
     private readonly ImmutableDictionary<uint, string> _instanceNames;
-    private readonly ImmutableDictionary<(ElementId QuestId, byte Index), uint> _questBattlesToContentFinderCondition;
+    private readonly ImmutableDictionary<(ElementId QuestId, byte Index), uint> _questBattleCfcs;
     private readonly ImmutableHashSet<uint> _territoriesWithMount;
     private readonly ImmutableDictionary<uint, string> _territoryNames;
 
@@ -47,17 +47,17 @@ internal sealed class TerritoryData
             .Where(x => x.RowId > 0 && x.Content.RowId != 0 && x.ContentLinkType == 1 && x.ContentType.RowId != 6)
             .ToImmutableDictionary(x => x.Content.RowId, x => x.Name.ToDalamudString().ToString());
 
-        _contentFinderConditions = dataManager.GetExcelSheet<ContentFinderCondition>()
+        _cfcs = dataManager.GetExcelSheet<ContentFinderCondition>()
             .Where(x => x.RowId > 0 && x.Content.RowId != 0 && x.ContentLinkType is 1 or 5 && x.ContentType.RowId != 6)
-            .Select(x => new ContentFinderConditionData(x, dataManager.Language))
-            .ToImmutableDictionary(x => x.ContentFinderConditionId, x => x);
+            .Select(x => new CfcData(x, dataManager.Language))
+            .ToImmutableDictionary(x => x.Id, x => x);
 
-        _questBattlesToContentFinderCondition = dataManager.GetExcelSheet<Quest>()
+        _questBattleCfcs = dataManager.GetExcelSheet<Quest>()
             .Where(x => x is { RowId: > 0, IssuerLocation.RowId: > 0 })
             .SelectMany(quest => GetQuestBattles(dataManager, quest))
             .Select(x => (x.QuestId, x.Index,
-                CfcId: LookupContentFinderConditionForQuestBattle(dataManager, x.QuestBattleId)))
-            .Where(x => x.CfcId != 0 && _contentFinderConditions.ContainsKey(x.CfcId))
+                CfcId: LookupQuestBattleCfc(dataManager, x.QuestBattleId)))
+            .Where(x => x.CfcId != 0 && _cfcs.ContainsKey(x.CfcId))
             .Distinct()
             .ToImmutableDictionary(x => (x.QuestId, x.Index), x => x.CfcId);
     }
@@ -82,22 +82,22 @@ internal sealed class TerritoryData
 
     public string? GetInstanceName(ushort instanceId) => _instanceNames.GetValueOrDefault(instanceId);
 
-    public ContentFinderConditionData? GetContentFinderCondition(uint cfcId) => _contentFinderConditions.GetValueOrDefault(cfcId);
+    public CfcData? GetCfc(uint cfcId) => _cfcs.GetValueOrDefault(cfcId);
 
-    public bool TryGetContentFinderCondition(uint cfcId,
-        [NotNullWhen(true)] out ContentFinderConditionData? contentFinderConditionData) => _contentFinderConditions.TryGetValue(cfcId, out contentFinderConditionData);
+    public bool TryGetCfc(uint cfcId,
+        [NotNullWhen(true)] out CfcData? cfcData) => _cfcs.TryGetValue(cfcId, out cfcData);
 
-    public bool TryGetContentFinderConditionForSoloInstance(ElementId questId, byte index,
-        [NotNullWhen(true)] out ContentFinderConditionData? contentFinderConditionData)
+    public bool TryGetQuestBattleCfc(ElementId questId, byte index,
+        [NotNullWhen(true)] out CfcData? cfcData)
     {
-        if (_questBattlesToContentFinderCondition.TryGetValue((questId, index), out uint cfcId))
-            return _contentFinderConditions.TryGetValue(cfcId, out contentFinderConditionData);
+        if (_questBattleCfcs.TryGetValue((questId, index), out uint cfcId))
+            return _cfcs.TryGetValue(cfcId, out cfcData);
 
-        contentFinderConditionData = null;
+        cfcData = null;
         return false;
     }
 
-    public IEnumerable<(ElementId QuestId, byte Index, ContentFinderConditionData Data)> GetAllQuestsWithQuestBattles() => _questBattlesToContentFinderCondition.Select(x => (x.Key.QuestId, x.Key.Index, _contentFinderConditions[x.Value]));
+    public IEnumerable<(ElementId QuestId, byte Index, CfcData Data)> GetAllQuestBattles() => _questBattleCfcs.Select(x => (x.Key.QuestId, x.Key.Index, _cfcs[x.Value]));
 
     private static string FixName(string name, ClientLanguage language)
     {
@@ -111,24 +111,24 @@ internal sealed class TerritoryData
     {
         HashSet<byte> questBattleIndexes = [];
         List<(byte Index, uint Id)> seasonalDuties = [];
-        foreach (Quest.QuestParamsStruct t in quest.QuestParams)
+        foreach (Quest.QuestParamsStruct param in quest.QuestParams)
         {
-            if (t.ScriptInstruction.IsEmpty)
+            if (param.ScriptInstruction.IsEmpty)
                 break;
 
-            string instruction = t.ScriptInstruction.ToString();
+            string instruction = param.ScriptInstruction.ToString();
             uint? instanceType = instruction.StartsWith("INSTANCEDUNGEON", StringComparison.Ordinal)
-                ? dataManager.GetExcelSheet<InstanceContent>().GetRowOrDefault(t.ScriptArg)?.InstanceContentType.RowId
+                ? dataManager.GetExcelSheet<InstanceContent>().GetRowOrDefault(param.ScriptArg)?.InstanceContentType.RowId
                 : null;
-            if (TryGetSoloDutyIndex(instruction, instanceType, out byte index))
+            if (TryGetQuestBattleIndex(instruction, instanceType, out byte index))
             {
                 if (instruction.StartsWith("QUESTBATTLE", StringComparison.Ordinal))
                 {
                     if (questBattleIndexes.Add(index))
-                        yield return (QuestId.FromRowId(quest.RowId), index, t.ScriptArg);
+                        yield return (QuestId.FromRowId(quest.RowId), index, param.ScriptArg);
                 }
                 else
-                    seasonalDuties.Add((index, t.ScriptArg));
+                    seasonalDuties.Add((index, param.ScriptArg));
             }
         }
         foreach (var duty in seasonalDuties)
@@ -136,7 +136,7 @@ internal sealed class TerritoryData
                 yield return (QuestId.FromRowId(quest.RowId), duty.Index, duty.Id);
     }
 
-    internal static bool TryGetSoloDutyIndex(string instruction, uint? instanceType, out byte index)
+    internal static bool TryGetQuestBattleIndex(string instruction, uint? instanceType, out byte index)
     {
         index = 0;
         const string questBattle = "QUESTBATTLE";
@@ -152,15 +152,15 @@ internal sealed class TerritoryData
         return byte.TryParse(instruction.AsSpan(prefix.Length), NumberStyles.None, CultureInfo.InvariantCulture, out index);
     }
 
-    private static uint LookupContentFinderConditionForQuestBattle(IDataManager dataManager, uint questBattleId)
+    private static uint LookupQuestBattleCfc(IDataManager dataManager, uint questBattleId)
     {
         uint cfcId = dataManager.GetExcelSheet<QuestBattleResident>().GetRowOrDefault(questBattleId)?.SoloDuty.RowId ?? 0;
         return cfcId != 0 ? cfcId : dataManager.GetExcelSheet<InstanceContent>().GetRowOrDefault(questBattleId)?.ContentFinderCondition.RowId ?? 0;
     }
 
-    public sealed record ContentFinderConditionData
+    public sealed record CfcData
     (
-        uint ContentFinderConditionId,
+        uint Id,
         string Name,
         uint TerritoryId,
         ushort RequiredItemLevel,
@@ -168,7 +168,7 @@ internal sealed class TerritoryData
         EContentType? ContentType,
         byte RequiredLevel = 0)
     {
-        public ContentFinderConditionData(ContentFinderCondition condition, ClientLanguage clientLanguage)
+        public CfcData(ContentFinderCondition condition, ClientLanguage clientLanguage)
             : this(condition.RowId, FixName(condition.Name.ToDalamudString().ToString(), clientLanguage),
                 condition.TerritoryType.RowId, condition.ItemLevelRequired, condition.ClassJobLevelSync,
                 (EContentType?)condition.ContentType.ValueNullable?.RowId, condition.ClassJobLevelRequired)

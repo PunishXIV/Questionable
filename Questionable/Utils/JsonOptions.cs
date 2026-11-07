@@ -16,7 +16,7 @@ internal static class JsonOptions
         WriteIndented = true,
         TypeInfoResolver = new DefaultJsonTypeInfoResolver
         {
-            Modifiers = { NoEmptyCollectionModifier, AlwaysSerializeAttributeModifier, DefaultTrueModifier, IgnoreWhenDefaultInstanceModifier }
+            Modifiers = { NoEmptyCollectionModifier, AlwaysSerializeModifier, DefaultTrueModifier, SkipDefaultObjectModifier }
         }
     };
     internal static void NoEmptyCollectionModifier(JsonTypeInfo typeInfo)
@@ -24,10 +24,10 @@ internal static class JsonOptions
         foreach (JsonPropertyInfo property in typeInfo.Properties)
         {
             if (typeof(ICollection).IsAssignableFrom(property.PropertyType))
-                property.ShouldSerialize = (_, val) => val is ICollection { Count: > 0 };
+                property.ShouldSerialize = (_, value) => value is ICollection { Count: > 0 };
         }
     }
-    internal static void AlwaysSerializeAttributeModifier(JsonTypeInfo typeInfo)
+    internal static void AlwaysSerializeModifier(JsonTypeInfo typeInfo)
     {
         foreach (JsonPropertyInfo property in typeInfo.Properties)
         {
@@ -47,11 +47,11 @@ internal static class JsonOptions
                     .GetCustomAttributes(typeof(DefaultTrueAttribute), inherit: false)
                     .Length > 0)
             {
-                property.ShouldSerialize = (_, val) => val is false;
+                property.ShouldSerialize = (_, value) => value is false;
             }
         }
     }
-    internal static void IgnoreWhenDefaultInstanceModifier(JsonTypeInfo typeInfo)
+    internal static void SkipDefaultObjectModifier(JsonTypeInfo typeInfo)
     {
         foreach (JsonPropertyInfo property in typeInfo.Properties)
         {
@@ -66,8 +66,8 @@ internal static class JsonOptions
 
             string defaultJson = JsonSerializer.Serialize(defaultInstance, Default);
 
-            property.ShouldSerialize = (_, val) =>
-                JsonSerializer.Serialize(val, Default) != defaultJson;
+            property.ShouldSerialize = (_, value) =>
+                JsonSerializer.Serialize(value, Default) != defaultJson;
         }
     }
 }

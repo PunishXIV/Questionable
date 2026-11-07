@@ -31,7 +31,7 @@ internal sealed record MountsPrerequisite(params ushort[] MountIds) : QuestPrere
     }
 }
 
-internal sealed record ChocoboRacingRankPrerequisite(byte Rank) : QuestPrerequisite
+internal sealed record ChocoboRankPrerequisite(byte Rank) : QuestPrerequisite
 {
     public override string? GetUnmetReason(IPrerequisiteState state) =>
         state.ChocoboRacingRank >= Rank ? null : _LF("Needs chocobo racing rank {0}", Rank);

@@ -94,7 +94,7 @@ internal sealed unsafe class AetheryteFunctions
                 playerState->FreeAetherytePSPlus == (uint)aetheryteLocation);
     }
 
-    public AetheryteRegistrationResult CanRegisterFreeOrFavoriteAetheryte(EAetheryteLocation aetheryteLocation)
+    public AetheryteRegistrationResult CanRegisterFreeOrFavored(EAetheryteLocation aetheryteLocation)
     {
         PlayerState* playerState = PlayerState.Instance();
         if (playerState == null)
@@ -105,7 +105,7 @@ internal sealed unsafe class AetheryteFunctions
         if (IsFreeAetheryte(aetheryteLocation))
             return AetheryteRegistrationResult.NotPossible;
 
-        bool freeFavoredSlotsAvailable = false;
+        bool hasFreeSlot = false;
         for (int i = 0; i < playerState->FavouriteAetheryteCount; i++)
         {
             if (playerState->FavouriteAetherytes[i] == (ushort)aetheryteLocation)
@@ -113,7 +113,7 @@ internal sealed unsafe class AetheryteFunctions
 
             if (playerState->FavouriteAetherytes[i] == 0)
             {
-                freeFavoredSlotsAvailable = true;
+                hasFreeSlot = true;
                 break;
             }
         }
@@ -122,11 +122,11 @@ internal sealed unsafe class AetheryteFunctions
         if (playerState->IsPlayerStateFlagSet(PlayerStateFlag.IsLoginSecurityToken) &&
             playerState->FreeAetheryteId == 0)
         {
-            return AetheryteRegistrationResult.SecurityTokenFreeDestinationAvailable;
+            return AetheryteRegistrationResult.FreeDestination;
         }
 
-        return freeFavoredSlotsAvailable
-            ? AetheryteRegistrationResult.FavoredDestinationAvailable
+        return hasFreeSlot
+            ? AetheryteRegistrationResult.FavoredDestination
             : AetheryteRegistrationResult.NotPossible;
     }
 }

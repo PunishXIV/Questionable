@@ -269,8 +269,8 @@ internal sealed class QuestJournalUtils
         var mapLink = new MapLinkPayload(
             location.Territory.RowId,
             location.Map.RowId,
-            location.Game.X,
-            location.Game.Z
+            location.MapCoords.X,
+            location.MapCoords.Z
         );
         var _ = gameGui.OpenMapWithMapLink(mapLink);
         if (!teleport)
@@ -284,7 +284,7 @@ internal sealed class QuestJournalUtils
                 VerticalStopDistance = 5f,
             });
         else
-            if (aetheryteData.NearestAetheryteTo(location.Territory.RowId, location.Position) is { } aetheryte)
+            if (aetheryteData.NearestTo(location.Territory.RowId, location.Position) is { } aetheryte)
                 aetheryteFunctions.TeleportAetheryte(aetheryte);
     }
 

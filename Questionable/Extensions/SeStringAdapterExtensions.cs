@@ -5,12 +5,12 @@ namespace Questionable.Extensions;
 
 internal static class SeStringAdapterExtensions
 {
-    public static string WithCertainMacroCodeReplacements(this SeString? str)
+    public static string WithMacrosReplaced(this SeString? text)
     {
-        if (str == null)
+        if (text == null)
             return string.Empty;
 
-        ReadOnlySeString seString = new(str.Encode());
-        return seString.WithCertainMacroCodeReplacements();
+        ReadOnlySeString seString = new(text.Encode());
+        return seString.WithMacrosReplaced();
     }
 }

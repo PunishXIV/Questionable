@@ -42,7 +42,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
             {
                 Expansion = (EExpansionVersion)x.TerritoryType.Value.ExVersion.RowId,
                 CfcId = x.RowId,
-                Name = territoryData.GetContentFinderCondition(x.RowId)?.Name ?? _L("?"),
+                Name = territoryData.GetCfc(x.RowId)?.Name ?? _L("?"),
                 TerritoryId = x.TerritoryType.RowId,
                 ContentType = (EContentType)x.ContentType.RowId,
                 Level = x.ClassJobLevelRequired,

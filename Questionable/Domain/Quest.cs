@@ -19,7 +19,7 @@ internal sealed class Quest
 
     public QuestInfo GetQuestInfo() => (QuestInfo)Info;
 
-    public QuestSequence? FindSequence(byte currentSequence) => Root.QuestSequence.SingleOrDefault(seq => seq.Sequence == currentSequence);
+    public QuestSequence? FindSequence(byte sequence) => Root.QuestSequence.SingleOrDefault(seq => seq.Sequence == sequence);
 
     public IEnumerable<QuestSequence> AllSequences() => Root.QuestSequence;
 

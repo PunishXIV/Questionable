@@ -119,7 +119,7 @@ internal static class AetheryteShortcut
                 else if (Territories.Skip(2).Take(4).Contains(step.TerritoryId))
                 {
                     var neighbourId = CityNeighbourTerritory(step.TerritoryId);
-                    EAetheryteLocation? nearest = aetheryteData.NearestAetheryteTo(neighbourId, new());
+                    EAetheryteLocation? nearest = aetheryteData.NearestTo(neighbourId, new());
                     EAetheryteLocation? aethernetTarget = new List<EAetheryteLocation?>() {
                         EAetheryteLocation.LimsaAftcastle,
                         EAetheryteLocation.UldahGoldsmith,
@@ -236,7 +236,7 @@ internal static class AetheryteShortcut
                 }
             }
 
-            if (gameFunctions.HasCharacterStatusPreventingMountOrSprint()) // Transporting
+            if (gameFunctions.IsMountOrSprintBlocked()) // Transporting
             {
                 logger.LogInformation("Skipping aetheryte teleport, character is busy.");
                 return true;
@@ -249,12 +249,12 @@ internal static class AetheryteShortcut
         private bool ShouldSkipNoTarget(QuestStep step, out EAetheryteLocation? shortcut)
         {
             EAetheryteLocation? nearest = step.Position != null
-                ? aetheryteData.NearestAetheryteTo(step.TerritoryId, step.Position)
+                ? aetheryteData.NearestTo(step.TerritoryId, step.Position)
                 : null;
             if (nearest == null && step.Position != null && step.AethernetShortcut is { } aethernetShortcut)
-                nearest = aetheryteData.NearestAetheryteTo(
+                nearest = aetheryteData.NearestTo(
                     aetheryteData.TerritoryIds[aethernetShortcut.From], step.Position);
-            nearest ??= aetheryteData.NearestAetheryteTo(step.TerritoryId, position: null);
+            nearest ??= aetheryteData.NearestTo(step.TerritoryId, position: null);
             shortcut = step.AetheryteShortcut ?? nearest;
 
             if (shortcut == null)
@@ -471,8 +471,8 @@ internal static class AetheryteShortcut
                 logger.LogDebug(
                     "target direct: {DirectDistance}. target if tp: {TpDistance} target direct XZ: {DirectXZ}. target tp XZ: {TpXZ}, target if aethernet: {AethernetDistance}",
                     directDistance, teleportTimeDistance + aetheryteDistance,
-                    playerPosition.DistanceTo_XZ(targetPosition),
-                    targetPosition.DistanceTo_XZ(Task.ResolvedAetheryte.Position(aetheryteData)),
+                    playerPosition.DistanceToXZ(targetPosition),
+                    targetPosition.DistanceToXZ(Task.ResolvedAetheryte.Position(aetheryteData)),
                     aethernetDistance + teleportTimeDistance);
                 if (directDistance < aethernetDistance + teleportTimeDistance)
                 {
@@ -485,8 +485,8 @@ internal static class AetheryteShortcut
                 logger.LogDebug(
                     "target direct: {DirectDistance}. target if tp: {TpDistance} target direct XZ: {DirectXZ}. target tp XZ: {TpXZ}",
                     directDistance, teleportTimeDistance + aetheryteDistance,
-                    playerPosition.DistanceTo_XZ(targetPosition),
-                    targetPosition.DistanceTo_XZ(Task.ResolvedAetheryte.Position(aetheryteData)));
+                    playerPosition.DistanceToXZ(targetPosition),
+                    targetPosition.DistanceToXZ(Task.ResolvedAetheryte.Position(aetheryteData)));
                 if (directDistance < teleportTimeDistance + aetheryteDistance)
                 {
                     logger.LogInformation("Skipping aetheryte shortcut, it's a shorter distance to walk there");

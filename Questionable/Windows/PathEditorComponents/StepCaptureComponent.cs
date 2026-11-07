@@ -27,7 +27,7 @@ internal sealed class StepCaptureComponent(
                 EInteractionType guessedType = QuestStepCapture.GuessInteractionType(target);
                 ImGui.TextUnformatted(target.Name.ToString());
                 ImGui.SameLine();
-                QstWidgets.Chip(GameFunctions.GetBaseID(target).ToString(CultureInfo.InvariantCulture), QstTheme.Info);
+                QstWidgets.Chip(GameFunctions.GetBaseId(target).ToString(CultureInfo.InvariantCulture), QstTheme.Info);
                 ImGui.SameLine();
                 if (QstWidgets.Chip(guessedType.ToString(), QstTheme.Accent))
                     ImGui.SetTooltip(_L("Interaction type detected from the target's nameplate icon."));

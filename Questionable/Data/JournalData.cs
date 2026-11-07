@@ -45,8 +45,8 @@ internal sealed class JournalData
         );
         genres = genres.Append(instantGenre).ToList();
 
-        Genre collabQuests = genres.Where(g => g.Id.Equals(GenreCollaborationQuests)).Single();
-        collabQuests.Quests.Add(((ushort[])[
+        Genre collabGenre = genres.Where(g => g.Id.Equals(GenreCollaborationQuests)).Single();
+        collabGenre.Quests.Add(((ushort[])[
             1153, 1154, 1155, 1156, // ffxiii 2013
             1287, // ffxi 2014
             1288, // dqx
@@ -57,7 +57,7 @@ internal sealed class JournalData
             4801, // fall guys
         ]).FromNumericListOfQuests().Select(q => questData.GetQuestInfo(q)).ToArray());
 
-        Dictionary<QuestId, uint> questReassignPairs = new() {
+        Dictionary<QuestId, uint> reassignments = new() {
             { new(432), GenreSpecialQuests }, // arr ex mount
             { new(1550), GenreSpecialQuests }, // hw ex mount
             { new(3200), GenreSpecialQuests }, // stb ex mount
@@ -65,13 +65,13 @@ internal sealed class JournalData
             { new(4795), GenreSpecialQuests }, // ew ex mount
             { new(5469), GenreSpecialQuests }, // dt ex mount
         };
-        foreach (var kvp in questReassignPairs)
+        foreach (var kvp in reassignments)
         {
             var info = questData.GetQuestInfo(kvp.Key);
-            foreach (var _g in genres)
-                _g.Quests.Remove(info);
-            Genre genreAdd = genres.Where(g => g.Id.Equals(kvp.Value)).Single();
-            genreAdd.Quests.Add(questData.GetQuestInfo(kvp.Key));
+            foreach (var genre in genres)
+                genre.Quests.Remove(info);
+            Genre target = genres.Where(g => g.Id.Equals(kvp.Value)).Single();
+            target.Quests.Add(questData.GetQuestInfo(kvp.Key));
         }
 
         Genres = genres.ToList();

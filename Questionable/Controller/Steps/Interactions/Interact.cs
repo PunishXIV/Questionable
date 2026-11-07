@@ -312,7 +312,7 @@ internal static class Interact
                         candidate = job;
                     }
 
-                    if (!classJobUtils.SwitchClassJob(candidate) && !_reportedWrongJob)
+                    if (!classJobUtils.SwitchJob(candidate) && !_reportedWrongJob)
                         throw new Exception(_LF("_JobGearsetError", candidate.ToFriendlyString(), Task.Quest.Info.Name));
                     logger.LogInformation($"Switched from {playerJob} to {candidate}");
 
@@ -332,7 +332,7 @@ internal static class Interact
                 {
                     logger.LogInformation("Quest {QuestId} should be continued as {RequiredJob}, switching from {CurrentJob}",
                         Task.Quest.Id, requiredJob, (Job)completionPlayer.ClassJob.Value.RowId);
-                    if (!classJobUtils.SwitchClassJob(requiredJob))
+                    if (!classJobUtils.SwitchJob(requiredJob))
                     {
                         chatGui.PrintError(_LF(
                             "Quest {0} should be continued as {1}, but you do not have a gearset for that job.",

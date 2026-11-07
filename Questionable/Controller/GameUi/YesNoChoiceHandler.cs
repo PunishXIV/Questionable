@@ -238,8 +238,8 @@ internal sealed class YesNoChoiceHandler : IDisposable
     {
         if (step is { InteractionType: EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: { } aetheryteLocation })
         {
-            AetheryteRegistrationResult registrationResult = _aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(aetheryteLocation);
-            if (registrationResult == AetheryteRegistrationResult.SecurityTokenFreeDestinationAvailable)
+            AetheryteRegistrationResult registrationResult = _aetheryteFunctions.CanRegisterFreeOrFavored(aetheryteLocation);
+            if (registrationResult == AetheryteRegistrationResult.FreeDestination)
             {
                 dialogueChoices =
                 [
@@ -253,7 +253,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
                     }
                 ];
             }
-            else if (registrationResult == AetheryteRegistrationResult.FavoredDestinationAvailable)
+            else if (registrationResult == AetheryteRegistrationResult.FavoredDestination)
             {
                 dialogueChoices =
                 [
@@ -283,11 +283,11 @@ internal sealed class YesNoChoiceHandler : IDisposable
                 return true;
             }
 
-            if (dialogueChoice.DataId != null && dialogueChoice.DataId != GameFunctions.GetBaseID(_targetManager.Target))
+            if (dialogueChoice.DataId != null && dialogueChoice.DataId != GameFunctions.GetBaseId(_targetManager.Target))
             {
                 _logger.LogDebug(
                     "Skipping entry in DialogueChoice expecting target dataId {ExpectedDataId}, actual target is {ActualTargetId}",
-                    dialogueChoice.DataId, GameFunctions.GetBaseID(_targetManager.Target));
+                    dialogueChoice.DataId, GameFunctions.GetBaseId(_targetManager.Target));
                 continue;
             }
 
@@ -349,9 +349,9 @@ internal sealed class YesNoChoiceHandler : IDisposable
         byte difficulty = _configuration.SinglePlayerDuties.RetryDifficulty;
         _logger.LogInformation("Requesting solo quest battle at difficulty {Difficulty}", difficulty);
 
-        if (!GameMain.ExecuteCommand((int)GameCommand.StartSoloQuestBattle, difficulty))
+        if (!GameMain.ExecuteCommand((int)GameCommand.StartQuestBattle, difficulty))
         {
-            _logger.LogInformation("StartSoloQuestBattle was rejected; confirming Yes (Normal)");
+            _logger.LogInformation("StartQuestBattle was rejected; confirming Yes (Normal)");
             addonSelectYesno->AtkUnitBase.FireCallbackInt(0);
             return;
         }
@@ -401,7 +401,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
                 return;
             case QuestBattleConfirmation.Result.Confirm:
                 _questBattleConfirmation = null;
-                _logger.LogInformation("StartSoloQuestBattle did not enter the duty; confirming Yes (Normal)");
+                _logger.LogInformation("StartQuestBattle did not enter the duty; confirming Yes (Normal)");
                 addon->AtkUnitBase.FireCallbackInt(0);
                 return;
             default:

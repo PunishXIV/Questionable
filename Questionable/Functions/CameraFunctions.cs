@@ -14,8 +14,8 @@ internal sealed unsafe class CameraFunctions : IDisposable
 
     [Signature("48 8B C4 53 48 81 EC ?? ?? ?? ?? 44 0F 29 50 ??")]
     private readonly Hook<RMICameraDelegate> _rmiCameraHook = null!;
-    private float DesiredAltitude;
-    private float DesiredAzimuth;
+    private float _desiredAltitude;
+    private float _desiredAzimuth;
 
     public CameraFunctions(IGameInteropProvider gameInteropProvider, ILogger<CameraFunctions> logger, IObjectTable objectTable, IFramework framework)
     {
@@ -65,15 +65,15 @@ internal sealed unsafe class CameraFunctions : IDisposable
         if (_objectTable[0] == null)
             return;
         Vector3 diff = pos - _objectTable[0]!.Position;
-        DesiredAzimuth = MathF.Atan2(diff.X, diff.Z) + Deg2Rad(180);
-        DesiredAltitude = Deg2Rad(-30);
+        _desiredAzimuth = MathF.Atan2(diff.X, diff.Z) + Deg2Rad(180);
+        _desiredAltitude = Deg2Rad(-30);
     }
 
     private void RMICameraDetour(Camera* self, int inputMode, float speedH, float speedV)
     {
         _rmiCameraHook.Original(self, inputMode, speedH, speedV);
-        float deltaH = Normalized(DesiredAzimuth - self->DirH);
-        float deltaV = Normalized(DesiredAltitude - self->DirV);
+        float deltaH = Normalized(_desiredAzimuth - self->DirH);
+        float deltaV = Normalized(_desiredAltitude - self->DirV);
         float maxH = Deg2Rad(180);
         float maxV = Deg2Rad(180);
         self->InputDeltaH = Math.Clamp(deltaH, -maxH, maxH);

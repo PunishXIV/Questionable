@@ -8,8 +8,8 @@ namespace Questionable.Data;
 [RegisterSingleton]
 internal sealed class AlliedSocietyData
 {
-    public ReadOnlyDictionary<ushort, AlliedSocietyMountConfiguration> Mounts { get; } =
-        new Dictionary<ushort, AlliedSocietyMountConfiguration>
+    public ReadOnlyDictionary<ushort, AlliedSocietyMount> Mounts { get; } =
+        new Dictionary<ushort, AlliedSocietyMount>
         {
             { 23, new([1008327, 1005848, 1005860, 1005581], EAetheryteLocation.SouthernThanalanLittleAlaMhigo) }, // amaljaa
             { 24, new([1052562, 1008332], EAetheryteLocation.EastShroudHawthorneHut) }, // sylphs
@@ -29,7 +29,7 @@ internal sealed class AlliedSocietyData
             { 369, new([1051798], EAetheryteLocation.KozamaukaDockPoga) }, //pelu
             { 391, new([1052562], EAetheryteLocation.YakTelMamook) }, //mamook
         }.AsReadOnly();
-    public EAlliedSociety GetCommonAlliedSocietyTurnIn(ElementId elementId)
+    public EAlliedSociety GetCommonTurnIn(ElementId elementId)
     {
         if (elementId is QuestId questId)
         {
@@ -63,7 +63,7 @@ internal sealed class AlliedSocietyData
         return EAlliedSociety.None;
     }
 
-    public void GetCommonAlliedSocietyNpcs(EAlliedSociety alliedSociety, out uint[] normalNpcs, out uint[] mountNpcs)
+    public void GetCommonNpcs(EAlliedSociety alliedSociety, out uint[] normalNpcs, out uint[] mountNpcs)
     {
         if (alliedSociety == EAlliedSociety.Ixal)
         {

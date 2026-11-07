@@ -36,7 +36,7 @@ internal sealed class UiUtils(
 
         if (questFunctions.IsQuestAccepted(elementId))
             return (QstTheme.Amber, FontAwesomeIcon.PersonWalkingArrowRight, _L("Active"));
-        if (elementId is QuestId questId && questFunctions.IsDailyAlliedSocietyQuestAndAvailableToday(questId))
+        if (elementId is QuestId questId && questFunctions.IsSocietyDailyAvailable(questId))
         {
             if (!questFunctions.IsReadyToAcceptQuest(questId))
                 return (QstTheme.Success, FontAwesomeIcon.Check, _L("Complete"));

@@ -49,7 +49,7 @@ internal sealed class ARealmRebornComponent
                 if (!UIState.IsInstanceContentCompleted(instanceId) &&
                     UIState.IsInstanceContentUnlocked(instanceId))
                 {
-                    gameFunctions.OpenDutyFinder(contentFinderConditionId: RequiredPrimalInstances[instanceId]);
+                    gameFunctions.OpenDutyFinder(cfcId: RequiredPrimalInstances[instanceId]);
                     break;
                 }
             }

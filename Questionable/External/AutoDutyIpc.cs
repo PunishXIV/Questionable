@@ -138,8 +138,8 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
             _logger, "Unable to query AutoDuty for path in territory {TerritoryType}", data.TerritoryId);
     }
 
-    private TerritoryData.ContentFinderConditionData? FindContent(uint cfcId) =>
-        _territoryData.TryGetContentFinderCondition(cfcId, out var data) ? data : null;
+    private TerritoryData.CfcData? FindContent(uint cfcId) =>
+        _territoryData.TryGetCfc(cfcId, out var data) ? data : null;
 
     public void StartDuty(uint cfcId, Duty.Mode dutyMode, bool pathEnabled = true)
     {

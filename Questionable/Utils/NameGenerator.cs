@@ -18,27 +18,27 @@ internal static class NameGenerator
                                                                  where p.Name.EndsWith("Male") && !p.Name.Contains("Lalafell") && !p.Name.Contains("SeaWolf") && !p.Name.Contains("Viera")
                                                                  select p).ToList();
 
-    private static string? _generateFirstName;
-    private static DateTime _generateFirstNameUpdated = DateTime.MinValue;
+    private static string? _firstName;
+    private static DateTime _firstNameUpdated = DateTime.MinValue;
     internal static string GenerateFirstName(bool fast = false)
     {
-        if (_generateFirstName == null || (DateTime.Now - _generateFirstNameUpdated).TotalMilliseconds > (fast ? 50 : 500))
+        if (_firstName == null || (DateTime.Now - _firstNameUpdated).TotalMilliseconds > (fast ? 50 : 500))
         {
-            _generateFirstName = Rand.NextBool() ? GetMasculineName() : GetFeminineName();
-            _generateFirstNameUpdated = DateTime.Now;
+            _firstName = Rand.NextBool() ? GetMasculineName() : GetFeminineName();
+            _firstNameUpdated = DateTime.Now;
         }
-        return _generateFirstName;
+        return _firstName;
     }
 
     internal static string GetFeminineName()
     {
         ExcelSheet<CharaMakeName> nameSheet = Svc.Data.GetExcelSheet<CharaMakeName>();
-        int nameRowAmount = nameSheet.Count;
-        PropertyInfo randomLastNameColumn = FemaleFirstNames[Rand.Next(FemaleFirstNames.Count)];
+        int rowCount = nameSheet.Count;
+        PropertyInfo nameColumn = FemaleFirstNames[Rand.Next(FemaleFirstNames.Count)];
         string firstName = "";
         do
         {
-            if (randomLastNameColumn.GetValue(nameSheet.GetRow((uint)Rand.Next(nameRowAmount))) is ReadOnlySeString value)
+            if (nameColumn.GetValue(nameSheet.GetRow((uint)Rand.Next(rowCount))) is ReadOnlySeString value)
                 firstName = value.ExtractText();
         }
         while (string.IsNullOrEmpty(firstName) || firstName == "Ilcum");
@@ -48,12 +48,12 @@ internal static class NameGenerator
     internal static string GetMasculineName()
     {
         ExcelSheet<CharaMakeName> nameSheet = Svc.Data.GetExcelSheet<CharaMakeName>();
-        int nameRowAmount = nameSheet.Count;
-        PropertyInfo randomLastNameColumn = MaleFirstNames[Rand.Next(MaleFirstNames.Count)];
+        int rowCount = nameSheet.Count;
+        PropertyInfo nameColumn = MaleFirstNames[Rand.Next(MaleFirstNames.Count)];
         string firstName = "";
         do
         {
-            if (randomLastNameColumn.GetValue(nameSheet.GetRow((uint)Rand.Next(nameRowAmount))) is ReadOnlySeString value)
+            if (nameColumn.GetValue(nameSheet.GetRow((uint)Rand.Next(rowCount))) is ReadOnlySeString value)
                 firstName = value.ExtractText();
         }
         while (string.IsNullOrEmpty(firstName));
