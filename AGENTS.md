@@ -40,6 +40,23 @@ From `CONTRIBUTING.md`: Questionable does not want scope creep. Before writing c
 - **Formatting.** If you run `dotnet format`, run it once against `Questionable.sln` with `-p:DalamudLibPath=...` and `--severity info`, matching CI. Do not add `--verify-no-changes` semantics to unrelated PRs.
 - **Commit messages and PR bodies** should describe what changed and why, in the human's voice, and must include the AI-usage disclosure noted above.
 
+## Naming
+
+Applies to new and changed code in `Questionable` and `Questionable.Tests`.
+
+- **Short and plain.** Aim for 25 characters or fewer in plugin code. Use everyday words, not jargon such as *owned*, *owner*, *reconcile*, *retain*, *submit* or *detach*.
+- **Don't repeat context.** A nested type or member drops words its container already says: `Craft.Executor`, not `Craft.CraftTaskExecutor`. A container with one task uses `Task` + `Executor`; with several, pair `XTask` with `XExecutor`.
+- **Abbreviations.** Only `Cfc` (ContentFinderCondition), `Ipc`, `Id` and `Ui`, in that casing (`QuestId`, not `QuestID`). Spell everything else out (`MainScenario`, not `Msq`).
+- **Quest battles.** Call solo duties `QuestBattle` in plugin code. Model names such as `EInteractionType.SinglePlayerDuty` stay as they are.
+- **Tests.** Name test methods `Subject_Result` in 40 characters or fewer, e.g. `RejectedCancel_RetriesSamePurchase`. Name a test class after the type it tests (`OperationCoordinatorTests`).
+- **Never rename** these; saved data, other plugins or the game depend on them:
+  - `Configuration` properties and nested config classes (Dalamud's serializer stores type names).
+  - Public names in `Questionable.Model` and the other projects, and JSON property names.
+  - `QuestionableIpc` endpoints and bare `[EzIPC]`/`[EzIPCEvent]` members.
+  - Enum values saved or sent to other plugins by name.
+  - I18N keys, ImGui IDs and window names.
+  - Names from Dalamud, Lumina and FFXIVClientStructs.
+
 ## When to stop and hand back
 
 Per `CONTRIBUTING.md`: *"If you reach the point where you feel unwilling or unable to do the above, please close your issue or pull request."* Agents should surface this to the user when:
