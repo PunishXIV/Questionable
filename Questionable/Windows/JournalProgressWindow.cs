@@ -6,7 +6,7 @@ namespace Questionable.Windows;
 [RegisterSingleton]
 internal sealed class JournalProgressWindow : LWindow, IDisposable
 {
-    private readonly AlliedSocietyJournalComponent _alliedSocietyJournalComponent;
+    private readonly AlliedSocietyComponent _alliedSocietyComponent;
     private readonly IClientState _clientState;
     private readonly QuestJournalComponent _questJournalComponent;
     private readonly QuestRegistry _questRegistry;
@@ -16,14 +16,14 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
     public JournalProgressWindow(
         QuestJournalComponent questJournalComponent,
         QuestRewardComponent questRewardComponent,
-        AlliedSocietyJournalComponent alliedSocietyJournalComponent,
+        AlliedSocietyComponent alliedSocietyComponent,
         RedoComponent redoComponent,
         QuestRegistry questRegistry,
         IClientState clientState)
         : base(_L("Journal Progress") + "###QuestionableJournalProgress", ImGuiWindowFlags.AlwaysVerticalScrollbar)
     {
         _questJournalComponent = questJournalComponent;
-        _alliedSocietyJournalComponent = alliedSocietyJournalComponent;
+        _alliedSocietyComponent = alliedSocietyComponent;
         _questRewardComponent = questRewardComponent;
         _redoComponent = redoComponent;
         _questRegistry = questRegistry;
@@ -49,7 +49,7 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
     private void OnQuestsReloaded(object? sender, EventArgs e)
     {
         _questJournalComponent.RefreshCounts();
-        _questRewardComponent.RefreshCounts();
+        _questRewardComponent.ClearCache();
     }
 
     public override void OnOpen()
@@ -64,9 +64,9 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
         if (!tabBar)
             return;
 
-        _questJournalComponent.DrawQuests();
-        _alliedSocietyJournalComponent.DrawAlliedSocietyQuests();
-        _questRewardComponent.DrawItemRewards();
-        _redoComponent.DrawRedoChapters();
+        _questJournalComponent.DrawTab();
+        _alliedSocietyComponent.DrawTab();
+        _questRewardComponent.DrawTab();
+        _redoComponent.DrawTab();
     }
 }

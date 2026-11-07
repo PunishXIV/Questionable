@@ -29,7 +29,7 @@ internal sealed class QuestSelectionWindow : LWindow
     private readonly UiUtils _uiUtils;
     private readonly DraftQuestPathService _draftQuestPathService;
     private List<IQuestInfo> _offeredQuests = [];
-    private bool _onlyAvailableQuests = true;
+    private bool _onlyOffered = true;
 
     private List<IQuestInfo> _quests = [];
 
@@ -83,9 +83,9 @@ internal sealed class QuestSelectionWindow : LWindow
             WindowName = _LF("Quests starting with {0}", targetName) + $"[{targetId}]{WindowId}";
 
             _quests = _questData.GetAllByIssuerDataId(targetId);
-            if (_gameGui.TryGetAddonByName("SelectIconString", out AddonSelectIconString* addonSelectIconString))
+            if (_gameGui.TryGetAddonByName("SelectIconString", out AddonSelectIconString* addon))
             {
-                List<string?> answers = DialogueChoiceHandler.GetChoices(addonSelectIconString);
+                List<string?> answers = DialogueChoiceHandler.GetChoices(addon);
                 _offeredQuests = _quests
                     .Where(x => answers.Any(y => GameFunctions.GameStringEquals(x.Name, y)))
                     .ToList();
@@ -111,8 +111,8 @@ internal sealed class QuestSelectionWindow : LWindow
         _quests = _questRegistry.AllQuests
             .Where(x => x.FindSequence(0)?.FindStep(0)?.TerritoryId == territoryId &&
                         !_questFunctions.IsQuestUnobtainable(x.Id) &&
-                        x.Id is QuestId qId &&
-                        !_questFunctions.IsDailyAlliedSocietyQuest(qId))
+                        x.Id is QuestId id &&
+                        !_questFunctions.IsDailyAlliedSocietyQuest(id))
             .Select(x => _questData.GetQuestInfo(x.Id))
             .ToList();
 
@@ -136,7 +136,7 @@ internal sealed class QuestSelectionWindow : LWindow
     public override void DrawContent()
     {
         if (_offeredQuests.Count != 0)
-            ImGui.Checkbox(_L("Only show quests currently offered"), ref _onlyAvailableQuests);
+            ImGui.Checkbox(_L("Only show quests currently offered"), ref _onlyOffered);
 
         using ImRaii.TableDisposable table = ImRaii.Table("QuestSelection", 4, ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollY);
         if (!table)
@@ -161,7 +161,7 @@ internal sealed class QuestSelectionWindow : LWindow
         ImGui.TableSetupColumn(_L("Actions"), ImGuiTableColumnFlags.WidthFixed, actionIconSize);
         ImGui.TableHeadersRow();
 
-        foreach (IQuestInfo quest in (_offeredQuests.Count != 0 && _onlyAvailableQuests) ? _offeredQuests : _quests)
+        foreach (IQuestInfo quest in (_offeredQuests.Count != 0 && _onlyOffered) ? _offeredQuests : _quests)
         {
             ImGui.TableNextRow();
 

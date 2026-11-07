@@ -346,7 +346,7 @@ internal sealed class CommandHandler : IDisposable
         switch (parts[0])
         {
             case "eventquests":
-                var eventQuests = _eventInfoComponent.GetCurrentlyActiveEventQuests().Select(q => q.ToString()).ToArray();
+                var eventQuests = _eventInfoComponent.GetActiveQuests().Select(q => q.ToString()).ToArray();
                 if (eventQuests.Length > 0)
                     _chatGui.Print(string.Join(", ", eventQuests));
                 else

@@ -20,7 +20,7 @@ internal sealed class ConfigWindow
     private readonly ProfileController _profileController;
     private readonly ProfilesConfigComponent _profilesConfigComponent;
     private readonly IDalamudPluginInterface _pluginInterface;
-    private readonly SinglePlayerDutyConfigComponent _singlePlayerDutyConfigComponent;
+    private readonly QuestBattleConfigComponent _questBattleConfig;
     private readonly StopConditionComponent _stopConditionComponent;
 
     public ConfigWindow(
@@ -30,7 +30,7 @@ internal sealed class ConfigWindow
     ProfilesConfigComponent profilesConfigComponent,
     ProfileController profileController,
     DutyConfigComponent dutyConfigComponent,
-    SinglePlayerDutyConfigComponent singlePlayerDutyConfigComponent,
+    QuestBattleConfigComponent questBattleConfig,
     StopConditionComponent stopConditionComponent,
     NotificationConfigComponent notificationConfigComponent,
     DebugConfigComponent debugConfigComponent,
@@ -45,7 +45,7 @@ internal sealed class ConfigWindow
         _profilesConfigComponent = profilesConfigComponent;
         _profileController = profileController;
         _pluginInterface = pluginInterface;
-        _singlePlayerDutyConfigComponent = singlePlayerDutyConfigComponent;
+        _questBattleConfig = questBattleConfig;
         _stopConditionComponent = stopConditionComponent;
 
         Size = new Vector2(400, 400);
@@ -94,7 +94,7 @@ internal sealed class ConfigWindow
         _generalConfigComponent.DrawTab();
         _pluginConfigComponent.DrawTab();
         _dutyConfigComponent.DrawTab();
-        _singlePlayerDutyConfigComponent.DrawTab();
+        _questBattleConfig.DrawTab();
         _stopConditionComponent.DrawTab();
         _notificationConfigComponent.DrawTab();
         _profilesConfigComponent.DrawTab();

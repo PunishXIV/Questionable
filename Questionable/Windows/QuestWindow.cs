@@ -23,7 +23,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
 
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly QuestController _questController;
-    private readonly QuickAccessButtonsComponent _quickAccessButtonsComponent;
+    private readonly QuickAccessComponent _quickAccessComponent;
     private readonly RemainingTasksComponent _remainingTasksComponent;
     private readonly ReportWarningComponent _reportWarningComponent;
     private readonly TerritoryData _territoryData;
@@ -41,7 +41,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         ARealmRebornComponent aRealmRebornComponent,
         EventInfoComponent eventInfoComponent,
         CreationUtilsComponent creationUtilsComponent,
-        QuickAccessButtonsComponent quickAccessButtonsComponent,
+        QuickAccessComponent quickAccessComponent,
         RemainingTasksComponent remainingTasksComponent,
         ReportWarningComponent reportWarningComponent,
         IFramework framework,
@@ -61,7 +61,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         _aRealmRebornComponent = aRealmRebornComponent;
         _eventInfoComponent = eventInfoComponent;
         _creationUtilsComponent = creationUtilsComponent;
-        _quickAccessButtonsComponent = quickAccessButtonsComponent;
+        _quickAccessComponent = quickAccessComponent;
         _remainingTasksComponent = remainingTasksComponent;
         _reportWarningComponent = reportWarningComponent;
         _framework = framework;
@@ -119,7 +119,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                 }
             });
 
-        _quickAccessButtonsComponent.Reload += OnReload;
+        _quickAccessComponent.Reload += OnReload;
         _questController.IsQuestWindowOpenFunction = () => IsOpen;
     }
     public bool IsMinimized { get; set; }
@@ -176,7 +176,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             _activeQuestComponent.Draw(IsMinimized);
             if (!IsMinimized)
             {
-                _quickAccessButtonsComponent.Draw();
+                _quickAccessComponent.Draw();
 
                 if (_aRealmRebornComponent.ShouldDraw
                     && QstWidgets.SectionHeader(_L("A Realm Reborn"), "ARealmReborn"))

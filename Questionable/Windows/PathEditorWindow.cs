@@ -42,7 +42,7 @@ internal sealed class PathEditorWindow : LWindow
             MinimumSize = new Vector2(640, 360)
         };
 
-        _questSelector.QuestSelected = quest =>
+        _questSelector.OnSelect = quest =>
         {
             if (_session.Dirty && _session.QuestId != null && _session.QuestId != quest.Id)
                 _pendingQuestId = quest.Id;

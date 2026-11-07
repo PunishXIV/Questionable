@@ -28,11 +28,11 @@ internal sealed class GeneralConfigComponent : ConfigComponent
     private uint? _itemToRemove;
     private readonly Lazy<List<Job>> _sortedClassJobs;
     private readonly Lazy<(uint[] Ids, string[] Names)> _mounts;
-    private readonly Lazy<(Job[] Ids, string[] Names)> _classJobs;
+    private readonly Lazy<(Job[] Ids, string[] Names)> _combatJobs;
     private readonly Lazy<(Job[] Ids, string[] Names)> _craftJobs;
     private readonly Lazy<(Job[] Ids, string[] Names)> _gatherJobs;
-    private string _mountSearchString = string.Empty;
-    private string _langSearchString = string.Empty;
+    private string _mountSearch = string.Empty;
+    private string _languageSearch = string.Empty;
 
     public GeneralConfigComponent(
         IDalamudPluginInterface pluginInterface,
@@ -52,7 +52,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
         _sortedClassJobs = new(() => [.. classJobUtils.SortedClassJobs.Select(x => x.ClassJob)]);
         _mounts = new(() => BuildMounts(dataManager));
-        _classJobs = new(() => BuildJobList(
+        _combatJobs = new(() => BuildJobList(
             Enum.GetValues<Job>().Where(x => x != Job.ADV && !x.IsCrafter() && !x.IsGatherer() && !x.IsClass()),
             prependDefault: true));
         _craftJobs = new(() => BuildJobList(
@@ -106,7 +106,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         };
         string language = Configuration.General.Language;
         if (ImGuiComponentsLocal.DrawSearchableCombo(_L("Language"), languages.Keys.ToArray(), languages.Values.ToArray(),
-            Configuration.General.Language, ref _langSearchString, ref language))
+            Configuration.General.Language, ref _languageSearch, ref language))
         {
             Configuration.SetLanguage(language);
             Save();
@@ -118,7 +118,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             uint mountId = Configuration.General.MountId;
             ImGui.SetNextItemWidth(size.X / 2);
             if (ImGuiComponentsLocal.DrawSearchableCombo(_L("Preferred Mount"), mountIds, mountNames,
-                Configuration.General.MountId, ref _mountSearchString, ref mountId))
+                Configuration.General.MountId, ref _mountSearch, ref mountId))
             {
                 Configuration.General.MountId = mountId;
                 Save();
@@ -133,9 +133,9 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
-            (Job[] classJobIds, string[] classJobNames) = _classJobs.Value;
+            (Job[] combatJobIds, string[] combatJobNames) = _combatJobs.Value;
             ImGui.SetNextItemWidth(size.X / 2);
-            DrawComboOption(_L("Preferred Combat Job"), classJobIds, classJobNames,
+            DrawComboOption(_L("Preferred Combat Job"), combatJobIds, combatJobNames,
                 () => Configuration.General.CombatJob,
                 v => Configuration.General.CombatJob = v);
 
@@ -174,14 +174,14 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             string chocoboName = Configuration.General.ChocoboName;
             ImGui.SetNextItemWidth(size.X / 2);
-            var genName = NameGenerator.GenerateFirstName(fast: grandCompany == 0);
-            if (ImGui.InputTextEx(_L("Chocobo name"), genName, ref chocoboName, 20))
+            var randomName = NameGenerator.GenerateFirstName(fast: grandCompany == 0);
+            if (ImGui.InputTextEx(_L("Chocobo name"), randomName, ref chocoboName, 20))
                 Configuration.General.ChocoboName = chocoboName;
 
             if (ImGui.IsItemDeactivatedAfterEdit())
             {
                 if (string.IsNullOrWhiteSpace(Configuration.General.ChocoboName))
-                    Configuration.General.ChocoboName = genName;
+                    Configuration.General.ChocoboName = randomName;
                 Save();
             }
 
@@ -214,19 +214,19 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     }
                 }
 
-                bool showIncompleteSeasonalEvents = Configuration.General.ShowIncompleteSeasonalEvents;
-                if (ImGui.Checkbox(_L("Show details for incomplete seasonal events"), ref showIncompleteSeasonalEvents))
+                bool showIncompleteEvents = Configuration.General.ShowIncompleteSeasonalEvents;
+                if (ImGui.Checkbox(_L("Show details for incomplete seasonal events"), ref showIncompleteEvents))
                 {
-                    Configuration.General.ShowIncompleteSeasonalEvents = showIncompleteSeasonalEvents;
+                    Configuration.General.ShowIncompleteSeasonalEvents = showIncompleteEvents;
                     Save();
                 }
 
-                using (ImRaii.Disabled(!showIncompleteSeasonalEvents))
+                using (ImRaii.Disabled(!showIncompleteEvents))
                 {
-                    bool showCompleteSeasonalEvents = Configuration.General.ShowCompleteSeasonalEvents;
-                    if (ImGui.Checkbox(_L("Continue showing completed seasonal events"), ref showCompleteSeasonalEvents))
+                    bool showCompleteEvents = Configuration.General.ShowCompleteSeasonalEvents;
+                    if (ImGui.Checkbox(_L("Continue showing completed seasonal events"), ref showCompleteEvents))
                     {
-                        Configuration.General.ShowCompleteSeasonalEvents = showCompleteSeasonalEvents;
+                        Configuration.General.ShowCompleteSeasonalEvents = showCompleteEvents;
                         Save();
                     }
                 }
@@ -519,9 +519,9 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
                     ImGui.Separator();
                     ImGui.Text(_L("This affects the following dungeons and raids:"));
-                    foreach ((uint ContentFinderConditionId, ElementId QuestId, int Sequence) lowPriorityCfc in _questRegistry.LowPriorityCfcQuests)
+                    foreach ((uint CfcId, ElementId QuestId, int Sequence) lowPriorityCfc in _questRegistry.LowPriorityCfcQuests)
                     {
-                        if (_territoryData.TryGetContentFinderCondition(lowPriorityCfc.ContentFinderConditionId, out TerritoryData.ContentFinderConditionData? cfcData))
+                        if (_territoryData.TryGetContentFinderCondition(lowPriorityCfc.CfcId, out TerritoryData.ContentFinderConditionData? cfcData))
                             ImGui.BulletText($"{cfcData.Name}");
                     }
                 }
@@ -560,7 +560,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                         "Items on this list are never opened automatically. Add venture coffers, Grand Company coffers, or anything else you want to keep closed."));
 
                     HashSet<uint> blacklist = Configuration.Advanced.AutoRedeemItemBlacklist;
-                    _itemBlacklistSelector.ItemSelected = itemId =>
+                    _itemBlacklistSelector.OnSelect = itemId =>
                     {
                         if (blacklist.Add(itemId))
                             Save();

@@ -115,7 +115,7 @@ internal sealed class StepFormComponent
         }
 
         DrawValidationHints(step);
-        DrawStepActions(session);
+        DrawActions(session);
         DrawJsonPreview(step);
     }
 
@@ -139,7 +139,7 @@ internal sealed class StepFormComponent
         ImGui.TextColored(color, text);
     }
 
-    private static void DrawStepActions(PathEditorSession session)
+    private static void DrawActions(PathEditorSession session)
     {
         QuestSequence? sequence = session.SelectedSequence;
         QuestStep? step = session.SelectedStep;
@@ -149,7 +149,7 @@ internal sealed class StepFormComponent
         ImGui.Spacing();
         if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Copy, _L("Duplicate")))
         {
-            sequence.Steps.Insert(session.SelectedStepIndex + 1, CloneStep(step));
+            sequence.Steps.Insert(session.SelectedStepIndex + 1, Clone(step));
             session.SelectedStepIndex++;
             session.Dirty = true;
         }
@@ -181,7 +181,7 @@ internal sealed class StepFormComponent
         }
     }
 
-    private static QuestStep CloneStep(QuestStep step)
+    private static QuestStep Clone(QuestStep step)
     {
         return JsonSerializer.SerializeToNode(step, JsonOptions.Default)!.Deserialize<QuestStep>()!;
     }

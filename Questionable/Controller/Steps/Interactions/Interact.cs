@@ -45,7 +45,7 @@ internal static class Interact
                     bossModIpc.CanRunQuestBattle(quest.Id, step.SinglePlayerDutyOptions))
                     yield return new QuestBattle.LeaveParty();
 
-                if (step.InteractionType is EInteractionType.AcceptQuest && sequence.Sequence > 0 && redoUtil.IsRedoActive())
+                if (step.InteractionType is EInteractionType.AcceptQuest && sequence.Sequence > 0 && redoUtil.IsActive())
                 {
                     // Can't accept other quests during NG+
                     yield break;

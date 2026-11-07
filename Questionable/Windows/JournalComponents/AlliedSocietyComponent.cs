@@ -9,11 +9,11 @@ using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.JournalComponents;
 
 [RegisterSingleton]
-internal sealed class AlliedSocietyJournalComponent
+internal sealed class AlliedSocietyComponent
 (
     QuestFunctions questFunctions,
     QuestController questController,
-    AlliedSocietyQuestFunctions alliedSocietyQuestFunctions,
+    AlliedSocietyQuestFunctions alliedSocietyFunctions,
     QuestData questData,
     QuestRegistry questRegistry,
     QuestJournalUtils questJournalUtils,
@@ -25,7 +25,7 @@ internal sealed class AlliedSocietyJournalComponent
     uint _unchecked;
     uint _incomplete;
     private const int DaysUnchecked = 7;
-    public void DrawAlliedSocietyQuests()
+    public void DrawTab()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Allied Societies"));
         if (!tab)
@@ -39,8 +39,8 @@ internal sealed class AlliedSocietyJournalComponent
         ImGui.SameLine();
 
         bool preventQuestCompletion = configuration.Advanced.PreventQuestCompletion;
-        bool abandonQuestBeforeCompletion = configuration.Advanced.AbandonQuestBeforeCompletion;
-        bool removeFromPriorityWhenAbandoned = configuration.Advanced.RemoveFromPriorityWhenAbandoned;
+        bool abandonBeforeComplete = configuration.Advanced.AbandonQuestBeforeCompletion;
+        bool removeWhenAbandoned = configuration.Advanced.RemoveFromPriorityWhenAbandoned;
         bool runCommandAfterStop = configuration.Stop.RunCommandAfterStop;
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Stop, preventQuestCompletion ? QstTheme.Accent : null))
         {
@@ -51,18 +51,18 @@ internal sealed class AlliedSocietyJournalComponent
             ImGui.SetTooltip(_L("Prevent quest completion"));
 
         ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Ban, abandonQuestBeforeCompletion ? QstTheme.Accent : null))
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Ban, abandonBeforeComplete ? QstTheme.Accent : null))
         {
-            configuration.Advanced.AbandonQuestBeforeCompletion = !abandonQuestBeforeCompletion;
+            configuration.Advanced.AbandonQuestBeforeCompletion = !abandonBeforeComplete;
             pluginInterface.SavePluginConfig(configuration);
         }
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip(_L("Abandon quest before completion"));
 
         ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Trash, removeFromPriorityWhenAbandoned ? QstTheme.Accent : null))
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Trash, removeWhenAbandoned ? QstTheme.Accent : null))
         {
-            configuration.Advanced.RemoveFromPriorityWhenAbandoned = !removeFromPriorityWhenAbandoned;
+            configuration.Advanced.RemoveFromPriorityWhenAbandoned = !removeWhenAbandoned;
             pluginInterface.SavePluginConfig(configuration);
         }
         if (ImGui.IsItemHovered())
@@ -104,9 +104,9 @@ internal sealed class AlliedSocietyJournalComponent
         _unchecked = 0;
         _incomplete = 0;
 
-        foreach (EAlliedSociety alliedSociety in alliedSocietyQuestFunctions.GetAlliedSocieties(!configuration.General.HideThingsNotAvailable))
+        foreach (EAlliedSociety alliedSociety in alliedSocietyFunctions.GetAlliedSocieties(!configuration.General.HideThingsNotAvailable))
         {
-            List<IQuestInfo> quests = alliedSocietyQuestFunctions.GetAvailableAlliedSocietyQuests(alliedSociety)
+            List<IQuestInfo> quests = alliedSocietyFunctions.GetAvailableAlliedSocietyQuests(alliedSociety)
                 .Select(x => questData.GetQuestInfo(x))
                 .ToList();
             (EAlliedSocietyRank rank, ushort currentRep, ushort neededRep) = questFunctions.GetAlliedSocietyRankAndRep(alliedSociety);
@@ -147,7 +147,7 @@ internal sealed class AlliedSocietyJournalComponent
                 }
             }
 
-            questJournalUtils.ShowQuestGroupContextMenu($"DrawAlliedSocietyQuests{alliedSociety}", quests);
+            questJournalUtils.ShowGroupContextMenu($"DrawAlliedSocietyQuests{alliedSociety}", quests);
 
             if (!isOpen)
                 continue;
@@ -161,7 +161,7 @@ internal sealed class AlliedSocietyJournalComponent
                         continue;
 
                     ImGui.Text($"{(EAlliedSocietyRank)i}");
-                    questJournalUtils.ShowQuestGroupContextMenu($"DrawAlliedSocietyQuests{alliedSociety}/{(EAlliedSocietyRank)i}", questsByRank);
+                    questJournalUtils.ShowGroupContextMenu($"DrawAlliedSocietyQuests{alliedSociety}/{(EAlliedSocietyRank)i}", questsByRank);
                     foreach (IQuestInfo quest in questsByRank)
                         DrawQuest((QuestInfo)quest, addPending, neededRep != 0);
                 }
@@ -208,7 +208,7 @@ internal sealed class AlliedSocietyJournalComponent
         if (addPending && (color.Equals(QstTheme.Accent) || color.Equals(QstTheme.Accent)))
             questController.PriorityManager.Add(questInfo.QuestId);
 
-        questJournalUtils.ShowContextMenu(questInfo, quest, nameof(AlliedSocietyJournalComponent));
+        questJournalUtils.ShowContextMenu(questInfo, quest, nameof(AlliedSocietyComponent));
 
         if (quest != null)
         {

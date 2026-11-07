@@ -54,7 +54,7 @@ internal sealed class EventInfoComponent
             [new QuestId(434), new QuestId(5466)],
             EndsAtUtc: AtDailyReset(2027, 2, 23),
             StartsAtUtc: AtDailyReset(2026, 10, 27),
-            staysActive: true
+            StaysActive: true
         ),
     ];
 
@@ -69,11 +69,11 @@ internal sealed class EventInfoComponent
             (x.QuestIds.All(ShouldShowQuest) ||
             x.StartsAtUtc < DateTime.UtcNow)))
         {
-            DrawEventQuest(eventQuest);
+            DrawEvent(eventQuest);
         }
     }
 
-    private void DrawEventQuest(EventQuest eventQuest)
+    private void DrawEvent(EventQuest eventQuest)
     {
         ImGui.Text(eventQuest.Name);
         if (eventQuest.StartsAtUtc != null && eventQuest.StartsAtUtc.Value >= DateTime.UtcNow)
@@ -112,10 +112,10 @@ internal sealed class EventInfoComponent
             {
                 string questName = questData.GetQuestInfo(questId).Name;
 
-                bool priority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle);
+                bool addPriority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle);
                 if (ImGui.IsItemHovered())
                     ImGui.SetTooltip(_L("Add to priority quests"));
-                if (priority)
+                if (addPriority)
                     questController.PriorityManager.Add(questId);
                 ImGui.SameLine();
                 if (startableQuests.Contains(questId) &&
@@ -128,8 +128,8 @@ internal sealed class EventInfoComponent
                 {
                     ImGui.SetCursorPosX(ImGui.GetCursorPosX());
 
-                    (Vector4 Color, FontAwesomeIcon Icon, string Status) = uiUtils.GetQuestStyle(questId);
-                    if (uiUtils.ChecklistItem(questName, Color, Icon, ImGui.GetStyle().FramePadding.X))
+                    (Vector4 color, FontAwesomeIcon icon, string _) = uiUtils.GetQuestStyle(questId);
+                    if (uiUtils.ChecklistItem(questName, color, icon, ImGui.GetStyle().FramePadding.X))
                         questTooltipComponent.Draw(questData.GetQuestInfo(questId));
                 }
             }
@@ -144,13 +144,13 @@ internal sealed class EventInfoComponent
         // if event start time is in the future, event is complete
         if (eventQuest.StartsAtUtc != null && eventQuest.StartsAtUtc > DateTime.UtcNow)
             return false;
-        if (eventQuest.staysActive)
+        if (eventQuest.StaysActive)
             return true;
 
         return eventQuest.QuestIds.Any(ShouldShowQuest);
     }
 
-    public IEnumerable<ElementId> GetCurrentlyActiveEventQuests()
+    public IEnumerable<ElementId> GetActiveQuests()
     {
         return EventQuests
             .Where(x =>
@@ -160,11 +160,11 @@ internal sealed class EventInfoComponent
             .SelectMany(x => x.QuestIds);
     }
 
-    private bool ShouldShowQuest(ElementId elementId)
+    private bool ShouldShowQuest(ElementId questId)
     {
-        return !questFunctions.IsQuestUnobtainable(elementId) &&
-               (configuration.General.ShowCompleteSeasonalEvents || !questFunctions.IsQuestComplete(elementId));
+        return !questFunctions.IsQuestUnobtainable(questId) &&
+               (configuration.General.ShowCompleteSeasonalEvents || !questFunctions.IsQuestComplete(questId));
     }
 
-    internal sealed record EventQuest(string Name, List<ElementId> QuestIds, DateTime EndsAtUtc, DateTime? StartsAtUtc = null, bool staysActive = false);
+    internal sealed record EventQuest(string Name, List<ElementId> QuestIds, DateTime EndsAtUtc, DateTime? StartsAtUtc = null, bool StaysActive = false);
 }

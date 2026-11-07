@@ -16,7 +16,7 @@ internal sealed class StopConditionComponent : ConfigComponent
     private readonly QuestSelector _completeQuestSelector;
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
-    private Vector2 Size;
+    private Vector2 _contentSize;
 
     public StopConditionComponent(
         IDalamudPluginInterface pluginInterface,
@@ -39,7 +39,7 @@ internal sealed class StopConditionComponent : ConfigComponent
         _completeQuestSelector.SuggestionPredicate = quest => configuration.Stop.QuestsToStopAfter.All(x => x != quest.Id);
         _completeQuestSelector.DefaultPredicate = quest =>
             quest.Info.IsMainScenarioQuest && questFunctions.IsQuestAccepted(quest.Id);
-        _completeQuestSelector.QuestSelected = quest =>
+        _completeQuestSelector.OnSelect = quest =>
         {
             configuration.Stop.QuestsToStopAfter.Add(quest.Id);
             Save();
@@ -50,7 +50,7 @@ internal sealed class StopConditionComponent : ConfigComponent
             SuggestionPredicate = quest => configuration.Stop.QuestsToStopWhenAccepted.All(x => x != quest.Id),
             DefaultPredicate = quest =>
                     quest.Info.IsMainScenarioQuest && !questFunctions.IsQuestAcceptedOrComplete(quest.Id),
-            QuestSelected = quest =>
+            OnSelect = quest =>
                 {
                     configuration.Stop.QuestsToStopWhenAccepted.Add(quest.Id);
                     Save();
@@ -63,8 +63,8 @@ internal sealed class StopConditionComponent : ConfigComponent
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Stop") + "###StopConditionns");
         if (!tab)
             return;
-        Size = ImGui.GetWindowContentRegionMax();
-        var wrap = ImRaii.TextWrapPos(Size.X + 10);
+        _contentSize = ImGui.GetWindowContentRegionMax();
+        var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
 
         bool runCommand = Configuration.Stop.RunCommandAfterStop;
         if (ImGui.Checkbox(_L("Run command when Questionable finishes automatic questing"), ref runCommand))
@@ -130,10 +130,10 @@ internal sealed class StopConditionComponent : ConfigComponent
 
         ImGui.Separator();
 
-        bool removeWhenCompleteConditionMet = Configuration.Stop.RemoveWhenCompleteConditionMet;
-        if (ImGui.Checkbox(_L("Remove from list after complete"), ref removeWhenCompleteConditionMet))
+        bool removeOnComplete = Configuration.Stop.RemoveWhenCompleteConditionMet;
+        if (ImGui.Checkbox(_L("Remove from list after complete"), ref removeOnComplete))
         {
-            Configuration.Stop.RemoveWhenCompleteConditionMet = removeWhenCompleteConditionMet;
+            Configuration.Stop.RemoveWhenCompleteConditionMet = removeOnComplete;
             Save();
         }
 
@@ -190,12 +190,12 @@ internal sealed class StopConditionComponent : ConfigComponent
 
                 using (ImRaii.PushId($"Quest{questId}"))
                 {
-                    (Vector4 Color, FontAwesomeIcon Icon, string Status) = _uiUtils.GetQuestStyle(questId);
+                    (Vector4 color, FontAwesomeIcon icon, string _) = _uiUtils.GetQuestStyle(questId);
                     bool hovered;
                     using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                     {
                         ImGui.AlignTextToFramePadding();
-                        ImGui.TextColored(Color, Icon.ToIconString());
+                        ImGui.TextColored(color, icon.ToIconString());
                         hovered = ImGui.IsItemHovered();
                     }
 

@@ -40,8 +40,8 @@ internal sealed class ARealmRebornComponent
         bool complete = UIState.IsInstanceContentCompleted(RequiredPrimalInstances.Keys.Last());
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle))
         {
-            foreach (ushort qId in new ushort[] { 1048, 1157, 1158 })
-                if (questRegistry.TryGetQuest(new QuestId(qId), out var quest) &&
+            foreach (ushort questId in new ushort[] { 1048, 1157, 1158 })
+                if (questRegistry.TryGetQuest(new QuestId(questId), out var quest) &&
                         !questFunctions.IsQuestComplete(quest.Id))
                     questController.PriorityManager.Add(quest);
             foreach (ushort instanceId in RequiredPrimalInstances.Keys)
@@ -75,9 +75,9 @@ internal sealed class ARealmRebornComponent
         bool complete = questFunctions.IsQuestComplete(QuestData.CrystalTowerQuests[^1]);
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle))
         {
-            foreach (QuestId qId in QuestData.CrystalTowerQuests)
-                if (questRegistry.TryGetQuest(qId, out var quest) &&
-                        !questFunctions.IsQuestComplete(qId))
+            foreach (QuestId questId in QuestData.CrystalTowerQuests)
+                if (questRegistry.TryGetQuest(questId, out var quest) &&
+                        !questFunctions.IsQuestComplete(questId))
                     questController.PriorityManager.Add(quest);
         }
         if (ImGui.IsItemHovered())

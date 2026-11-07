@@ -23,7 +23,7 @@ internal sealed class PriorityWindow : LWindow
     private const string ClipboardPrefix = "qst:priority:";
     private const string LegacyClipboardPrefix = "qst:v1:";
     private const char ClipboardSeparator = ';';
-    private readonly string JobQuestsPresetName = _L("Job Quests");
+    private readonly string _jobQuestsPreset = _L("Job Quests");
     private readonly IChatGui _chatGui;
 
     private readonly Configuration _configuration;
@@ -65,7 +65,7 @@ internal sealed class PriorityWindow : LWindow
             !questFunctions.IsQuestUnobtainable(quest.Id) &&
             questController.PriorityManager.Quests.All(x => x.Id != quest.Id);
         _questSelector.DefaultPredicate = quest => questFunctions.IsQuestAccepted(quest.Id);
-        _questSelector.QuestSelected = quest => _questController.PriorityManager.Add(quest);
+        _questSelector.OnSelect = quest => _questController.PriorityManager.Add(quest);
 
         Size = new Vector2(400, 400);
         SizeCondition = ImGuiCond.Once;
@@ -79,8 +79,8 @@ internal sealed class PriorityWindow : LWindow
     public override unsafe void DrawContent()
     {
         Job currentJob = (Job)(PlayerState.Instance()->CurrentClassJobId);
-        if (_lastKnownJob != null && currentJob != _lastKnownJob && _selectedPresetName == JobQuestsPresetName)
-            LoadPreset(JobQuestsPresetName);
+        if (_lastKnownJob != null && currentJob != _lastKnownJob && _selectedPresetName == _jobQuestsPreset)
+            LoadPreset(_jobQuestsPreset);
         _lastKnownJob = currentJob;
 
         if (QstWidgets.SectionHeader(_L("Explanation"), "PriorityExplanation", defaultOpen: false))
@@ -150,12 +150,12 @@ internal sealed class PriorityWindow : LWindow
             Quest quest = priorityQuests[i];
             using (ImRaii.PushId($"Quest{quest.Id}"))
             {
-                (Vector4 Color, FontAwesomeIcon Icon, string Status) = _uiUtils.GetQuestStyle(quest.Id);
+                (Vector4 color, FontAwesomeIcon icon, string _) = _uiUtils.GetQuestStyle(quest.Id);
                 bool hovered;
                 using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                 {
                     ImGui.AlignTextToFramePadding();
-                    ImGui.TextColored(Color, Icon.ToIconString());
+                    ImGui.TextColored(color, icon.ToIconString());
                     hovered = ImGui.IsItemHovered();
                 }
 
@@ -187,14 +187,14 @@ internal sealed class PriorityWindow : LWindow
                 {
                     using (ImRaii.PushFont(UiBuilder.IconFont))
                     {
-                        int _pad = 8;
+                        int padCount = 8;
 
                         ImGui.SameLine(ImGui.GetContentRegionAvail().X +
                                        ImGui.GetStyle().WindowPadding.X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.ArrowsUpDown.ToIconString()).X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.Edit.ToIconString()).X -
-                                       ImGui.GetStyle().FramePadding.X * _pad -
+                                       ImGui.GetStyle().FramePadding.X * padCount -
                                        ImGui.GetStyle().ItemSpacing.X);
                     }
 
@@ -215,13 +215,13 @@ internal sealed class PriorityWindow : LWindow
                 {
                     using (ImRaii.PushFont(UiBuilder.IconFont))
                     {
-                        int _pad = 6;
+                        int padCount = 6;
 
                         ImGui.SameLine(ImGui.GetContentRegionAvail().X +
                                        ImGui.GetStyle().WindowPadding.X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.Times.ToIconString()).X -
                                        ImGui.CalcTextSize(FontAwesomeIcon.Edit.ToIconString()).X -
-                                       ImGui.GetStyle().FramePadding.X * _pad);
+                                       ImGui.GetStyle().FramePadding.X * padCount);
                     }
                 }
 
@@ -295,10 +295,10 @@ internal sealed class PriorityWindow : LWindow
     private static List<ElementId> ParseClipboardItems()
     {
         string clipboardText = ImGui.GetClipboardText().Trim();
-        return DecodeQuestPriority(clipboardText);
+        return DecodeQuests(clipboardText);
     }
 
-    public static List<ElementId> DecodeQuestPriority(string clipboardText)
+    public static List<ElementId> DecodeQuests(string clipboardText)
     {
         List<ElementId> clipboardItems = [];
         try
@@ -332,7 +332,7 @@ internal sealed class PriorityWindow : LWindow
         return clipboardItems;
     }
 
-    public string EncodeQuestPriority()
+    public string EncodeQuests()
     {
         return ClipboardPrefix + Convert.ToBase64String(Encoding.UTF8.GetBytes(
             string.Join(ClipboardSeparator, _questController.PriorityManager.Quests.Select(x => x.Id.ToString()))));
@@ -340,12 +340,12 @@ internal sealed class PriorityWindow : LWindow
 
     private void ExportToClipboard()
     {
-        string clipboardText = EncodeQuestPriority();
+        string clipboardText = EncodeQuests();
         ImGui.SetClipboardText(clipboardText);
         _chatGui.Print(_L("Copied quests to clipboard."), CommandHandler.MessageTag, CommandHandler.TagColor);
     }
 
-    private void ImportFromClipboard(List<ElementId> questElements) => _questController.PriorityManager.Import(questElements);
+    private void ImportFromClipboard(List<ElementId> questIds) => _questController.PriorityManager.Import(questIds);
 
     private void DrawPresets()
     {
@@ -455,11 +455,11 @@ internal sealed class PriorityWindow : LWindow
         if (_builtInPresets != null)
             return _builtInPresets;
 
-        List<ElementId> gilList = ((ushort[])[
+        List<ElementId> gilQuests = ((ushort[])[
             835, 903, 916, 918, 919, 920, 929, 928, 930, 931, 932, 945, 1010, 1011, 1015, 1017, 1019, 1553, 1021, 1023,
             1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033, 1034, 1035
         ]).FromNumericListOfQuests();
-        List<ElementId> DoHDoLUnlocks = ((ushort[])[
+        List<ElementId> dohDolUnlocks = ((ushort[])[
             152,  // desynth
             639,  // melding
             3018, 1422, // craft glamour prisms (blocks the other)
@@ -469,7 +469,7 @@ internal sealed class PriorityWindow : LWindow
             2098, // collectables lv60
             1551, // zhloe custom delivery
         ]).FromNumericListOfQuests();
-        List<ElementId> postARRUnlocks = ((ushort[])[
+        List<ElementId> postArrUnlocks = ((ushort[])[
             // don't add DoH/DoL unlocks to this
             434, 435, 488, 3081, 3201, 437, 489, 436,  // gold saucer
             1212, 565, // unlock LB, then second part of 436 ^, then unlock rest of housing districts
@@ -508,7 +508,7 @@ internal sealed class PriorityWindow : LWindow
             1048,1157,1158,1194,1195,1196,1197,1198,1412,1413,1530,90, // primal EX
             1008, 1009, 1012, 433, // urth's fount chain
         ]).FromNumericListOfQuests();
-        List<ElementId> postHWUnlocks = ((ushort[])[
+        List<ElementId> postHwUnlocks = ((ushort[])[
             2248, // hullbreaker hard
             2201, // sirius hard
             2282, // lost city amdapor hard
@@ -582,19 +582,19 @@ internal sealed class PriorityWindow : LWindow
         ]).FromNumericListOfQuests();
         var aetherCurrents = _T<Addon>(2445);
         var roleQuests = _T<JournalCategory>(95);
-        var gilQuestsList = _questData.GetQuestsWithItemReward(onlyAvailable: true, 5825, 5826, 27994);
-        var questHealthPercent = _questData.GetQuestsMatching(q =>
+        var gilSackQuests = _questData.GetQuestsWithItemReward(onlyAvailable: true, 5825, 5826, 27994);
+        var healthPercentQuests = _questData.GetQuestsMatching(q =>
             _questRegistry.TryGetQuest(q.QuestId, out var quest) &&
             quest.AllSteps().Any(a => a.Step.CombatItemUse?.Condition is ECombatItemUseCondition.HealthPercent), onlyAvailable: false);
         _builtInPresets = new(StringComparer.Ordinal)
         {
-            [JobQuestsPresetName] = [], // Job Quests
+            [_jobQuestsPreset] = [], // Job Quests
             [_T<ContentRoulette>(8)] = ((ushort[])[4959, 5013, 5014]).FromNumericListOfQuests(), // Level Cap Dungeons
-            [_L("Gil (set TextAdvance to prefer Gil sacks)")] = gilList,
+            [_L("Gil (set TextAdvance to prefer Gil sacks)")] = gilQuests,
             [_L("Unlock all jobs")] = jobUnlocks,
-            [_L("DoH/DoL unlocks")] = DoHDoLUnlocks,
-            [_L("Post-ARR unlocks")] = postARRUnlocks,
-            [_L("Post-HW unlocks")] = postHWUnlocks,
+            [_L("DoH/DoL unlocks")] = dohDolUnlocks,
+            [_L("Post-ARR unlocks")] = postArrUnlocks,
+            [_L("Post-HW unlocks")] = postHwUnlocks,
             [_T<Addon>(455)] = unlockLeves, // Levequests
             [_T<JournalGenre>(94)] = QuestData.DeliveryMoogleQuests.ToList(), // Delivery Moogle Quests
             [_T<JournalCategory>(16)] = QuestData.HardModePrimals.Cast<ElementId>().ToList(), // Primals
@@ -611,8 +611,8 @@ internal sealed class PriorityWindow : LWindow
             [$"{roleQuests}: {_T<Addon>(1084)}"] = _questData.GetRoleQuests(Job.MNK).Select(x => x.QuestId).ToList(),
             [$"{roleQuests}: {_T<Addon>(1085)}"] = _questData.GetRoleQuests(Job.BRD).Select(x => x.QuestId).ToList(),
             [$"{roleQuests}: {_T<Addon>(1086)}"] = _questData.GetRoleQuests(Job.BLM).Select(x => x.QuestId).ToList(),
-            ["Experimental: Available quests rewarding silver/gold gil sacks"] = gilQuestsList,
-            ["Experimental: Quests that require a mob to be damaged to a certain health%"] = questHealthPercent,
+            ["Experimental: Available quests rewarding silver/gold gil sacks"] = gilSackQuests,
+            ["Experimental: Quests that require a mob to be damaged to a certain health%"] = healthPercentQuests,
         };
 
         return _builtInPresets;
@@ -632,7 +632,7 @@ internal sealed class PriorityWindow : LWindow
         if (!_configuration.Priority.AddPresetsToList)
             _questController.PriorityManager.Clear();
 
-        if (name == JobQuestsPresetName)
+        if (name == _jobQuestsPreset)
         {
             _questController.PriorityManager.Import(GetCurrentJobQuests());
             return;

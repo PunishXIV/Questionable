@@ -57,7 +57,7 @@ internal sealed class OneTimeSetupWindow : LWindow
         }
         else if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, _L("Install all required plugins")))
         {
-            _pluginConfigComponent.InstallMissingRequiredPlugins();
+            _pluginConfigComponent.InstallMissingPlugins();
         }
 
         ImGui.SameLine();

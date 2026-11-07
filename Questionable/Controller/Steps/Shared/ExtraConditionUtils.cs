@@ -26,8 +26,8 @@ internal sealed class ExtraConditionUtils(IClientState clientState, IObjectTable
             EExtraSkipCondition.NotRoguesGuild => territoryType == 129 && position.Y > -115,
             EExtraSkipCondition.DockStorehouse => territoryType == 137 && position.Y <= -20,
             EExtraSkipCondition.CostaDelSol => territoryType == 137 && position.Z > 55 && position.X > 165,
-            EExtraSkipCondition.NewGamePlus => redoUtil.IsRedoActive(),
-            EExtraSkipCondition.NotNewGamePlus => !redoUtil.IsRedoActive(),
+            EExtraSkipCondition.NewGamePlus => redoUtil.IsActive(),
+            EExtraSkipCondition.NotNewGamePlus => !redoUtil.IsActive(),
             var _ => throw new ArgumentOutOfRangeException(nameof(skipCondition), skipCondition, message: null)
         };
     }

@@ -223,7 +223,7 @@ public sealed class QuestionablePlugin(
         // plugin version, so the registry doesn't pick up a stale one.
         _pathDataUpdater = serviceProvider.GetRequiredService<PathDataUpdater>();
         serviceProvider.GetRequiredService<QuestRegistry>().Reload();
-        serviceProvider.GetRequiredService<SinglePlayerDutyConfigComponent>().Reload();
+        serviceProvider.GetRequiredService<QuestBattleConfigComponent>().Reload();
         serviceProvider.GetRequiredService<ProfileController>();
         _questController = serviceProvider.GetRequiredService<QuestController>();
         // MovementController.Dispose reads this; resolve it now so unloading never reaches into a disposed container.

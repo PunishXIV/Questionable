@@ -42,9 +42,9 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
 
     private void LoadWindowConfig()
     {
-        if (this is IPersistableWindowConfig pwc)
+        if (this is IPersistableWindowConfig persistable)
         {
-            WindowConfig? config = pwc.WindowConfig;
+            WindowConfig? config = persistable.WindowConfig;
             if (config != null)
             {
                 if (AllowPinning)
@@ -62,9 +62,9 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
 
     private void UpdateWindowConfig()
     {
-        if (this is IPersistableWindowConfig pwc && !ImGui.IsAnyMouseDown())
+        if (this is IPersistableWindowConfig persistable && !ImGui.IsAnyMouseDown())
         {
-            WindowConfig? config = pwc.WindowConfig;
+            WindowConfig? config = persistable.WindowConfig;
             if (config != null)
             {
                 bool changed = false;
@@ -87,7 +87,7 @@ public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiW
                 }
 
                 if (changed)
-                    pwc.SaveWindowConfig();
+                    persistable.SaveWindowConfig();
             }
         }
     }

@@ -121,7 +121,7 @@ internal sealed class DebugOverlay : Window
         }
     }
 
-    private void DrawStep(string counter, QuestStep step, Vector3 position, uint color)
+    private void DrawStep(string label, QuestStep step, Vector3 position, uint color)
     {
         if (step.Disabled || step.TerritoryId != _clientState.TerritoryType)
             return;
@@ -139,7 +139,7 @@ internal sealed class DebugOverlay : Window
         Vector2 smoothedPos = GetSmoothedScreenPos(position.GetHashCode(), screenPos);
         ImGui.GetWindowDrawList().AddCircleFilled(smoothedPos, 3f, color);
         ImGui.GetWindowDrawList().AddText(smoothedPos + new Vector2(10, -8), color,
-            $"{counter}: {step.InteractionType} {step.DataId ?? '-'}\n{position.ToString("G5", CultureInfo.InvariantCulture)} [{(position - _objectTable[0]!.Position).Length():N2}]\n{step.Comment}");
+            $"{label}: {step.InteractionType} {step.DataId ?? '-'}\n{position.ToString("G5", CultureInfo.InvariantCulture)} [{(position - _objectTable[0]!.Position).Length():N2}]\n{step.Comment}");
     }
 
     private void DrawCombatTargets()
@@ -147,19 +147,19 @@ internal sealed class DebugOverlay : Window
         if (!_combatController.IsRunning)
             return;
 
-        foreach (IGameObject x in _objectTable.Skip(1))
+        foreach (IGameObject npc in _objectTable.Skip(1))
         {
-            if (x is not IBattleNpc)
+            if (npc is not IBattleNpc)
                 continue;
 
-            bool visible = _gameGui.WorldToScreen(x.Position, out Vector2 screenPos);
+            bool visible = _gameGui.WorldToScreen(npc.Position, out Vector2 screenPos);
             if (!visible)
                 continue;
 
-            (int priority, string reason) = _combatController.GetKillPriority(x);
+            (int priority, string reason) = _combatController.GetKillPriority(npc);
             // Combat targets move too quickly for smoothing.
             ImGui.GetWindowDrawList().AddText(screenPos + new Vector2(10, -8), priority > 0 ? 0xFF00FF00 : 0xFFFFFFFF,
-                $"{x.Name}/{x.GameObjectId:X}, {GameFunctions.GetBaseID(x)}, {priority} - {reason}, {Vector3.Distance(x.Position, _objectTable[0]!.Position):N2}, {x.IsTargetable}");
+                $"{npc.Name}/{npc.GameObjectId:X}, {GameFunctions.GetBaseID(npc)}, {priority} - {reason}, {Vector3.Distance(npc.Position, _objectTable[0]!.Position):N2}, {npc.IsTargetable}");
         }
     }
 

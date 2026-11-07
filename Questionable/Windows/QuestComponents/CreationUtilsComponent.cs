@@ -65,23 +65,23 @@ internal sealed class CreationUtilsComponent
         if (configuration.Advanced.AdditionalStatusInformation)
         {
             ImGui.Spacing();
-            QuestReference q = questFunctions.GetCurrentQuest();
-            ImGui.Text(_LF("QST prio: {0} → {1}", q.CurrentQuest?.ToString() ?? "", q.Sequence));
-            Quest? simQ = questController.SimulatedQuest?.Quest;
-            if (simQ != null)
-                ImGui.Text(_LF("Sim: {0} → {1}", simQ.Id, questController.SimulatedQuest?.Sequence.ToString(CultureInfo.InvariantCulture) ?? ""));
+            QuestReference current = questFunctions.GetCurrentQuest();
+            ImGui.Text(_LF("QST prio: {0} → {1}", current.CurrentQuest?.ToString() ?? "", current.Sequence));
+            Quest? simQuest = questController.SimulatedQuest?.Quest;
+            if (simQuest != null)
+                ImGui.Text(_LF("Sim: {0} → {1}", simQuest.Id, questController.SimulatedQuest?.Sequence.ToString(CultureInfo.InvariantCulture) ?? ""));
             unsafe
             {
                 if (configuration.Advanced.ShowNewGamePlus)
                 {
-                    uint qid = q.CurrentQuest?.Value ?? 0;
-                    if (simQ != null)
-                        qid = simQ.Id.Value;
+                    uint questId = current.CurrentQuest?.Value ?? 0;
+                    if (simQuest != null)
+                        questId = simQuest.Id.Value;
 
-                    RedoIndex chapter = redoUtil.GetChapter((ushort)qid);
-                    string isSim = simQ != null ? " (sim)" : "";
+                    RedoIndex chapter = redoUtil.GetChapter((ushort)questId);
+                    string simSuffix = simQuest != null ? " (sim)" : "";
                     if (chapter.Index != -1)
-                        ImGui.Text(_LF("NG+{0}: {1}", isSim, chapter));
+                        ImGui.Text(_LF("NG+{0}: {1}", simSuffix, chapter));
                 }
 
                 if (configuration.Advanced.ShowDailies || configuration.Advanced.ShowTracked)
@@ -176,8 +176,8 @@ internal sealed class CreationUtilsComponent
                 if (configuration.Advanced.ShowHoveredItem)
                 {
                     ulong hoveredItemId = gameGui.HoveredItem;
-                    string hq = hoveredItemId >= 1000000 && hoveredItemId < 2000000 ? ((char)SeIconChar.HighQuality).ToString() : "";
-                    ImGui.Text(_LF("Hovered Item: {0}", !hq.IsNullOrEmpty() ? hoveredItemId % 1000000 : hoveredItemId) + hq);
+                    string hqSuffix = hoveredItemId >= 1000000 && hoveredItemId < 2000000 ? ((char)SeIconChar.HighQuality).ToString() : "";
+                    ImGui.Text(_LF("Hovered Item: {0}", !hqSuffix.IsNullOrEmpty() ? hoveredItemId % 1000000 : hoveredItemId) + hqSuffix);
                 }
             }
         }
@@ -198,18 +198,18 @@ internal sealed class CreationUtilsComponent
         DrawSavedDetails();
     }
 
-    internal void DrawPathEditorButton(ElementId? currentQuest, bool sameLine = false)
+    internal void DrawPathEditorButton(ElementId? questId, bool sameLine = false)
     {
-        using (ImRaii.Disabled(currentQuest == null))
+        using (ImRaii.Disabled(questId == null))
         {
-            if (currentQuest != null)
+            if (questId != null)
             {
                 if (sameLine)
                     ImGui.SameLine();
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
-                    pathEditorWindow.Open(currentQuest);
+                    pathEditorWindow.Open(questId);
                 else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
-                    questRegistry.OpenEditor(currentQuest.Value);
+                    questRegistry.OpenEditor(questId.Value);
             }
         }
 
@@ -364,31 +364,31 @@ internal sealed class CreationUtilsComponent
         }
     }
 
-    private readonly HashSet<uint> chocoboStands = dataManager.GetExcelSheet<Lumina.Excel.Sheets.ChocoboTaxiStand>().Select(x => x.RowId).ToHashSet();
-    private uint? IsChocobokeep(IGameObject target)
+    private readonly HashSet<uint> taxiStandIds = dataManager.GetExcelSheet<Lumina.Excel.Sheets.ChocoboTaxiStand>().Select(x => x.RowId).ToHashSet();
+    private uint? GetTaxiStandId(IGameObject target)
     {
         if (target.ObjectKind == ObjectKind.EventNpc)
         {
             if (!dataManager.GetExcelSheet<Lumina.Excel.Sheets.ENpcBase>().TryGetRow(target.BaseId, out var row))
                 return null;
 
-            return row.ENpcData.Where(x => chocoboStands.Contains(x.RowId)).FirstOrNull()?.RowId;
+            return row.ENpcData.Where(x => taxiStandIds.Contains(x.RowId)).FirstOrNull()?.RowId;
         }
         if (target.ObjectKind == ObjectKind.EventObj)
         {
             if (!dataManager.GetExcelSheet<Lumina.Excel.Sheets.EObj>().TryGetRow(target.BaseId, out var row))
                 return null;
 
-            return chocoboStands.Contains(row.Data.RowId) ? row.Data.RowId : null;
+            return taxiStandIds.Contains(row.Data.RowId) ? row.Data.RowId : null;
         }
         return null;
     }
 
     private void DrawCopyButton(IGameObject target)
     {
-        var targetPos = target.Position;
+        var position = target.Position;
         if (objectTable[0] != null)
-            targetPos = objectTable[0]!.Position;
+            position = objectTable[0]!.Position;
         bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
         if (ImGui.IsItemHovered())
         {
@@ -398,39 +398,39 @@ internal sealed class CreationUtilsComponent
 
         if (copy)
         {
-            string pos =
+            string positionJson =
                 $$"""
                   "DataId": {{GameFunctions.GetBaseID(target)}},
                             "Position": {
-                              "X": {{targetPos.X.ToString(CultureInfo.InvariantCulture)}},
-                              "Y": {{targetPos.Y.ToString(CultureInfo.InvariantCulture)}},
-                              "Z": {{targetPos.Z.ToString(CultureInfo.InvariantCulture)}}
+                              "X": {{position.X.ToString(CultureInfo.InvariantCulture)}},
+                              "Y": {{position.Y.ToString(CultureInfo.InvariantCulture)}},
+                              "Z": {{position.Z.ToString(CultureInfo.InvariantCulture)}}
                             },
                   """;
-            uint? chocobokeep = IsChocobokeep(target);
-            string interactionType = chocobokeep != null ? "UnlockTaxiStand" : QuestStepCapture.GuessInteractionType(target).ToString();
-            string territoryIntType =
+            uint? taxiStandId = GetTaxiStandId(target);
+            string interactionType = taxiStandId != null ? "UnlockTaxiStand" : QuestStepCapture.GuessInteractionType(target).ToString();
+            string stepJson =
                 $$"""
 
                             "TerritoryId": {{clientState.TerritoryType}},
                             "StopDistance": 1,
                             "InteractionType": "{{interactionType}}"
-                  """ + (chocobokeep == null && GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ?
+                  """ + (taxiStandId == null && GameFunctions.IsFlyingUnlocked(clientState.TerritoryType) ?
                 $$"""
                   ,
                             "Fly": true
-                  """ : "") + (chocobokeep != null ?
+                  """ : "") + (taxiStandId != null ?
                 $$"""
                   ,
-                            "TaxiStandId": {{chocobokeep}}
+                            "TaxiStandId": {{taxiStandId}}
                   """ : "");
             if (target.ObjectKind == ObjectKind.GatheringPoint)
             {
-                ImGui.SetClipboardText(pos);
+                ImGui.SetClipboardText(positionJson);
             }
             else
             {
-                ImGui.SetClipboardText(pos + territoryIntType);
+                ImGui.SetClipboardText(positionJson + stepJson);
             }
         }
         else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))

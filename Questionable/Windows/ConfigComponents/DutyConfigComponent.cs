@@ -12,13 +12,13 @@ namespace Questionable.Windows.ConfigComponents;
 [RegisterSingleton]
 internal sealed class DutyConfigComponent : ConfigComponent
 {
-    private const string DutyClipboardPrefix = "qst:duty:";
+    private const string ClipboardPrefix = "qst:duty:";
     private readonly AutoDutyProvider _autoDuty;
-    private readonly Dictionary<EExpansionVersion, List<DutyInfo>> _contentFinderConditionNames;
-    private bool runInstancedContentWithAutoDuty;
+    private readonly Dictionary<EExpansionVersion, List<DutyInfo>> _dutiesByExpansion;
+    private bool _useAutoDuty;
 
     private readonly QuestRegistry _questRegistry;
-    private Vector2 Size;
+    private Vector2 _contentSize;
 
     public DutyConfigComponent(
         IDalamudPluginInterface pluginInterface,
@@ -32,7 +32,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
         _questRegistry = questRegistry;
         _autoDuty = autoDuty;
 
-        _contentFinderConditionNames = dataManager.GetExcelSheet<DawnContent>()
+        _dutiesByExpansion = dataManager.GetExcelSheet<DawnContent>()
             .Where(x => x is { RowId: > 0, Unknown16: false })
             .OrderBy(x => x.Unknown15) // SortKey for the support UI
             .Select(x => x.Content.ValueNullable)
@@ -60,13 +60,13 @@ internal sealed class DutyConfigComponent : ConfigComponent
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Duties") + "###Duties");
         if (!tab)
             return;
-        Size = ImGui.GetWindowContentRegionMax();
-        var wrap = ImRaii.TextWrapPos(Size.X + 10);
+        _contentSize = ImGui.GetWindowContentRegionMax();
+        var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
 
-        runInstancedContentWithAutoDuty = Configuration.Duties.RunInstancedContentWithAutoDuty;
-        if (ImGui.Checkbox(_L("Run instanced content with AutoDuty and BossMod"), ref runInstancedContentWithAutoDuty))
+        _useAutoDuty = Configuration.Duties.RunInstancedContentWithAutoDuty;
+        if (ImGui.Checkbox(_L("Run instanced content with AutoDuty and BossMod"), ref _useAutoDuty))
         {
-            Configuration.Duties.RunInstancedContentWithAutoDuty = runInstancedContentWithAutoDuty;
+            Configuration.Duties.RunInstancedContentWithAutoDuty = _useAutoDuty;
             Save();
         }
 
@@ -74,7 +74,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
         ImGuiComponents.HelpMarker(
             _L("The combat module used for this is configured by AutoDuty, ignoring whichever selection you've made in Questionable's \"General\" configuration."));
 
-        using (ImRaii.Disabled(!runInstancedContentWithAutoDuty))
+        using (ImRaii.Disabled(!_useAutoDuty))
         {
             bool runUnsynced = Configuration.Duties.RunUnsynced;
             if (ImGui.Checkbox(_L("Run content unsynced where safe"), ref runUnsynced))
@@ -93,7 +93,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
         ImGui.Separator();
 
-        using (ImRaii.Disabled(!runInstancedContentWithAutoDuty))
+        using (ImRaii.Disabled(!_useAutoDuty))
         {
             ImGui.Text(
                 _L("Questionable includes a default list of duties that work if AutoDuty and BossMod are installed."));
@@ -107,7 +107,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
             DrawEnableAllButton();
             ImGui.SameLine();
             DrawResetButton();
-            if (Size.X > 500)
+            if (_contentSize.X > 500)
                 ImGui.SameLine();
             DrawClipboardButtons();
         }
@@ -125,7 +125,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
     private void DrawExpansionSection(EExpansionVersion expansion)
     {
-        (int enabledCount, int totalCount) = GetDutyCountsForExpansion(expansion);
+        (int enabledCount, int totalCount) = GetDutyCounts(expansion);
 
         string headerText = totalCount > 0
             ? $"{expansion.ToFriendlyString()} ({enabledCount}/{totalCount})"
@@ -137,18 +137,18 @@ internal sealed class DutyConfigComponent : ConfigComponent
         ImGui.SetNextItemOpen(wasOpen, ImGuiCond.Always);
         bool isOpen = ImGui.CollapsingHeader(headerText);
 
-        UpdateExpansionHeaderState(expansionKey, isOpen, wasOpen);
+        UpdateHeaderState(expansionKey, isOpen, wasOpen);
 
         if (!isOpen)
             return;
 
-        if (!_contentFinderConditionNames.TryGetValue(expansion, out List<DutyInfo>? cfcNames))
+        if (!_dutiesByExpansion.TryGetValue(expansion, out List<DutyInfo>? duties))
             return;
 
-        DrawDutyTable(expansion, cfcNames);
+        DrawDutyTable(expansion, duties);
     }
 
-    private void UpdateExpansionHeaderState(string expansionKey, bool isOpen, bool wasOpen)
+    private void UpdateHeaderState(string expansionKey, bool isOpen, bool wasOpen)
     {
         if (isOpen == wasOpen)
             return;
@@ -157,7 +157,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
         Save();
     }
 
-    private void DrawDutyTable(EExpansionVersion expansion, List<DutyInfo> cfcNames)
+    private void DrawDutyTable(EExpansionVersion expansion, List<DutyInfo> duties)
     {
         using ImRaii.TableDisposable table = ImRaii.Table($"Duties{expansion}", 2, ImGuiTableFlags.SizingFixedFit);
         if (!table)
@@ -166,7 +166,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
         ImGui.TableSetupColumn(_L("Name"), ImGuiTableColumnFlags.WidthStretch);
         ImGui.TableSetupColumn(_L("Options"), ImGuiTableColumnFlags.WidthFixed, 200f);
 
-        foreach (DutyInfo dutyInfo in cfcNames)
+        foreach (DutyInfo dutyInfo in duties)
         {
             if (!_questRegistry.TryGetDutyByCfcId(dutyInfo.CfcId, out DutyOptions? dutyOptions))
                 continue;
@@ -194,7 +194,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
         if (ImGui.IsItemHovered() && Configuration.Advanced.AdditionalStatusInformation)
             DrawDutyDebugTooltip(dutyInfo);
 
-        if (runInstancedContentWithAutoDuty && !_autoDuty.HasPath(dutyInfo.CfcId))
+        if (_useAutoDuty && !_autoDuty.HasPath(dutyInfo.CfcId))
         {
             ImGuiComponents.HelpMarker(_L("This duty is not supported by AutoDuty"),
                 FontAwesomeIcon.Times, QstTheme.Danger);
@@ -247,15 +247,15 @@ internal sealed class DutyConfigComponent : ConfigComponent
         else if (value == 2)
             Configuration.Duties.BlacklistedDutyCfcIds.Add(cfcId);
     }
-    private (int enabledCount, int totalCount) GetDutyCountsForExpansion(EExpansionVersion expansion)
+    private (int enabledCount, int totalCount) GetDutyCounts(EExpansionVersion expansion)
     {
-        if (!_contentFinderConditionNames.TryGetValue(expansion, out List<DutyInfo>? cfcNames))
+        if (!_dutiesByExpansion.TryGetValue(expansion, out List<DutyInfo>? duties))
             return (0, 0);
 
         int enabledCount = 0;
         int totalCount = 0;
 
-        foreach ((uint cfcId, uint _, string _, EContentType _) in cfcNames)
+        foreach ((uint cfcId, uint _, string _, EContentType _) in duties)
         {
             if (_questRegistry.TryGetDutyByCfcId(cfcId, out DutyOptions? dutyOptions))
             {
@@ -279,9 +279,9 @@ internal sealed class DutyConfigComponent : ConfigComponent
             Configuration.Duties.BlacklistedDutyCfcIds.Clear();
             Configuration.Duties.WhitelistedDutyCfcIds.Clear();
 
-            foreach (List<DutyInfo> cfcNames in _contentFinderConditionNames.Values)
+            foreach (List<DutyInfo> duties in _dutiesByExpansion.Values)
             {
-                foreach ((uint cfcId, uint _, string _, EContentType _) in cfcNames)
+                foreach ((uint cfcId, uint _, string _, EContentType _) in duties)
                 {
                     if (_questRegistry.TryGetDutyByCfcId(cfcId, out DutyOptions? _))
                         Configuration.Duties.WhitelistedDutyCfcIds.Add(cfcId);
@@ -306,7 +306,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
                     Configuration.Duties.WhitelistedDutyCfcIds.Select(x => $"{DutyWhitelistPrefix}{x}");
                 IEnumerable<string> blacklisted =
                     Configuration.Duties.BlacklistedDutyCfcIds.Select(x => $"{DutyBlacklistPrefix}{x}");
-                string text = DutyClipboardPrefix + Convert.ToBase64String(Encoding.UTF8.GetBytes(
+                string text = ClipboardPrefix + Convert.ToBase64String(Encoding.UTF8.GetBytes(
                     string.Join(DutyClipboardSeparator, whitelisted.Concat(blacklisted))));
                 ImGui.SetClipboardText(text);
             }
@@ -316,11 +316,11 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
         string clipboardText = ImGui.GetClipboardText().Trim();
         using (ImRaii.Disabled(string.IsNullOrEmpty(clipboardText) ||
-                               !clipboardText.StartsWith(DutyClipboardPrefix, StringComparison.InvariantCulture)))
+                               !clipboardText.StartsWith(ClipboardPrefix, StringComparison.InvariantCulture)))
         {
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Paste, _L("Import from Clipboard")))
             {
-                clipboardText = clipboardText.Substring(DutyClipboardPrefix.Length);
+                clipboardText = clipboardText.Substring(ClipboardPrefix.Length);
                 string text = Encoding.UTF8.GetString(Convert.FromBase64String(clipboardText));
 
                 Configuration.Duties.WhitelistedDutyCfcIds.Clear();

@@ -87,7 +87,7 @@ internal sealed class QuestionableIpc : IDisposable
         _getActiveEventQuests =
             pluginInterface.GetIpcProvider<List<string>>(IpcGetCurrentlyActiveEventQuests);
         _getActiveEventQuests.RegisterFunc(() =>
-            [.. eventInfoComponent.GetCurrentlyActiveEventQuests().Select(q => q.ToString())]);
+            [.. eventInfoComponent.GetActiveQuests().Select(q => q.ToString())]);
 
         _startQuest = pluginInterface.GetIpcProvider<string, bool>(IpcStartQuest);
         _startQuest.RegisterFunc(questId => StartQuest(questId, single: false));
@@ -126,7 +126,7 @@ internal sealed class QuestionableIpc : IDisposable
         _insertQuestPriority.RegisterFunc(InsertQuestPriority);
 
         _exportQuestPriority = pluginInterface.GetIpcProvider<string>(IpcExportQuestPriority);
-        _exportQuestPriority.RegisterFunc(priorityWindow.EncodeQuestPriority);
+        _exportQuestPriority.RegisterFunc(priorityWindow.EncodeQuests);
 
         _startGathering = pluginInterface.GetIpcProvider<uint, uint, byte, int, bool>(IpcStartGathering);
         _startGathering.RegisterFunc(StartGathering);
@@ -279,7 +279,7 @@ internal sealed class QuestionableIpc : IDisposable
     private bool ImportQuestPriority(string encodedQuestPriority)
     {
         _logger.LogDebug("ImportQuestPriority({EncodedQuestPriority})", encodedQuestPriority);
-        List<ElementId> questElements = PriorityWindow.DecodeQuestPriority(encodedQuestPriority);
+        List<ElementId> questElements = PriorityWindow.DecodeQuests(encodedQuestPriority);
         _questController.PriorityManager.Import(questElements);
         return true;
     }

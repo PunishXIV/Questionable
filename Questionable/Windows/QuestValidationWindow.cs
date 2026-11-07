@@ -68,19 +68,19 @@ internal sealed class QuestValidationWindow : LWindow
         ImGui.TableSetupColumn(_L("Issue"), ImGuiTableColumnFlags.WidthStretch, 1.0f);
         ImGui.TableHeadersRow();
 
-        foreach (ValidationIssue validationIssue in _questValidator.Issues.OrderBy(i => i.Description, StringComparer.OrdinalIgnoreCase))
+        foreach (ValidationIssue issue in _questValidator.Issues.OrderBy(i => i.Description, StringComparer.OrdinalIgnoreCase))
         {
             if (!_filter.IsNullOrEmpty() &&
-                validationIssue.ElementId != null &&
-                !validationIssue.ElementId.Value.ToString(CultureInfo.InvariantCulture).Contains(_filter) &&
-                !validationIssue.Description.Contains(_filter))
+                issue.ElementId != null &&
+                !issue.ElementId.Value.ToString(CultureInfo.InvariantCulture).Contains(_filter) &&
+                !issue.Description.Contains(_filter))
                 continue;
             ImGui.TableNextRow();
             if (ImGui.TableNextColumn())
             {
-                if (validationIssue.ElementId != null)
+                if (issue.ElementId != null)
                 {
-                    IQuestInfo quest = _questData.GetQuestInfo(validationIssue.ElementId);
+                    IQuestInfo quest = _questData.GetQuestInfo(issue.ElementId);
                     bool copy = ImGuiComponentsLocal.IconButton($"###ValidationWindowCopy{quest.QuestId.Value}", FontAwesomeIcon.Copy);
                     if (ImGui.IsItemHovered())
                         ImGui.SetTooltip(_L("Copy as file name"));
@@ -111,34 +111,34 @@ internal sealed class QuestValidationWindow : LWindow
 
             if (ImGui.TableNextColumn())
             {
-                if (validationIssue.ElementId != null &&
-                    _questData.GetQuestInfo(validationIssue.ElementId) is { QuestId.Value: var id, SimplifiedName: var name } qInfo)
+                if (issue.ElementId != null &&
+                    _questData.GetQuestInfo(issue.ElementId) is { QuestId.Value: var id, SimplifiedName: var name } info)
                 {
                     ImGui.TextUnformatted($"{id} {name}");
                     if (ImGui.IsItemHovered())
-                        _questTooltipComponent.Draw(qInfo);
+                        _questTooltipComponent.Draw(info);
                 }
             }
 
             if (ImGui.TableNextColumn())
             {
-                if (validationIssue.Type is EIssueType.InvalidAcceptQuestTerritory && validationIssue.TerritoryId != null)
-                    ImGui.TextUnformatted(TerritoryData.GetNameAndId(validationIssue.TerritoryId.Value));
-                else if (validationIssue.AlliedSociety != Model.Common.EAlliedSociety.None)
-                    ImGui.TextUnformatted(validationIssue.AlliedSociety.ToString());
+                if (issue.Type is EIssueType.InvalidAcceptQuestTerritory && issue.TerritoryId != null)
+                    ImGui.TextUnformatted(TerritoryData.GetNameAndId(issue.TerritoryId.Value));
+                else if (issue.AlliedSociety != Model.Common.EAlliedSociety.None)
+                    ImGui.TextUnformatted(issue.AlliedSociety.ToString());
             }
 
             if (ImGui.TableNextColumn())
-                ImGui.TextUnformatted(validationIssue.Sequence?.ToString(CultureInfo.InvariantCulture) ?? string.Empty);
+                ImGui.TextUnformatted(issue.Sequence?.ToString(CultureInfo.InvariantCulture) ?? string.Empty);
 
             if (ImGui.TableNextColumn())
-                ImGui.TextUnformatted(validationIssue.Step?.ToString(CultureInfo.InvariantCulture) ?? string.Empty);
+                ImGui.TextUnformatted(issue.Step?.ToString(CultureInfo.InvariantCulture) ?? string.Empty);
 
             if (ImGui.TableNextColumn())
             {
                 using (_ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                 {
-                    if (validationIssue.Severity == EIssueSeverity.Error)
+                    if (issue.Severity == EIssueSeverity.Error)
                     {
                         using ImRaii.ColorDisposable color = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Danger);
                         ImGui.TextUnformatted(FontAwesomeIcon.ExclamationTriangle.ToIconString());
@@ -151,7 +151,7 @@ internal sealed class QuestValidationWindow : LWindow
                 }
 
                 ImGui.SameLine();
-                ImGui.TextUnformatted(validationIssue.Description);
+                ImGui.TextUnformatted(issue.Description);
             }
         }
     }

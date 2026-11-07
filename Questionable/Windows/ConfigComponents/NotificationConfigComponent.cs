@@ -30,13 +30,13 @@ internal sealed class NotificationConfigComponent
         {
             using (ImRaii.PushIndent())
             {
-                XivChatType[] xivChatTypes = Enum.GetValues<XivChatType>()
+                XivChatType[] chatTypes = Enum.GetValues<XivChatType>()
                     .Where(x => x != XivChatType.StandardEmote)
                     .ToArray();
-                string[] chatTypeNames = xivChatTypes
+                string[] chatTypeNames = chatTypes
                     .Select(t => t.GetAttribute<XivChatTypeInfoAttribute>()?.FancyName ?? t.ToString())
                     .ToArray();
-                DrawComboOption(_L("Chat channel"), xivChatTypes, chatTypeNames,
+                DrawComboOption(_L("Chat channel"), chatTypes, chatTypeNames,
                     () => Configuration.Notifications.ChatType,
                     v => Configuration.Notifications.ChatType = v);
 

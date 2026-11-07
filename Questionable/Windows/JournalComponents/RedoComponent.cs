@@ -21,16 +21,16 @@ internal sealed class RedoComponent
     UiUtils uiUtils)
 {
     private bool _hideDone;
-    private readonly Dictionary<QuestRedoChapterUI, (int Supported, int Completed, int Total)> _redoCount = [];
+    private readonly Dictionary<QuestRedoChapterUI, (int Supported, int Completed, int Total)> _counts = [];
     private string _filter = "";
-    public void DrawRedoChapters()
+    public void DrawTab()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("New Game+"));
         if (!tab)
             return;
 
         // Prevent ng+ activation if ng+ unlock quest is incomplete
-        if (redoUtil.Disabled)
+        if (redoUtil.IsLocked)
         {
             bool locked = true;
             if (redoUtil.UnlockQuest != null)
@@ -50,11 +50,11 @@ internal sealed class RedoComponent
                 ImGui.Text(_L("New Game+ has not been unlocked on this character"));
         }
 
-        using (ImRaii.Disabled(!redoUtil.IsRedoActive()))
+        using (ImRaii.Disabled(!redoUtil.IsActive()))
         {
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Ban, _L("Stop NG+")))
-                if (!redoUtil.Disabled)
-                    redoUtil.SendRedoCommand(redoChapter: RedoChapter.Off);
+                if (!redoUtil.IsLocked)
+                    redoUtil.SendCommand(redoChapter: RedoChapter.Off);
         }
         if (configuration.Advanced.Debug)
         {
@@ -73,8 +73,8 @@ internal sealed class RedoComponent
         ImGui.SameLine();
         ImGui.Text(_L("Active:"));
         ImGui.SameLine();
-        redoUtil.TryGetActiveRedoChapter(out var questRedoChapter);
-        ImGui.Text(questRedoChapter?.ChapterName.ToString() ?? ("None"));
+        redoUtil.TryGetActiveChapter(out var activeChapter);
+        ImGui.Text(activeChapter?.ChapterName.ToString() ?? ("None"));
         ImGui.SameLine();
         ImGui.SetNextItemWidth(230 * ImGui.GetIO().FontGlobalScale);
         _ = ImGui.InputTextWithHint("###RedoComponentFilter", _L("Filter NG+ categories"), ref _filter, maxLength: 20);
@@ -87,14 +87,14 @@ internal sealed class RedoComponent
         ImGui.TableSetupColumn(_L("Supported"), ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
         ImGui.TableSetupColumn(_L("Completed"), ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
         ImGui.TableHeadersRow();
-        foreach ((QuestRedoChapterUI chapter, RedoCache redoCache) in redoUtil.RedoData)
+        foreach ((QuestRedoChapterUI chapter, RedoCache redoCache) in redoUtil.Chapters)
         {
-            var _preTotal = redoCache.Quests.Count;
-            if (_preTotal == 0)
+            var questCount = redoCache.Quests.Count;
+            if (questCount == 0)
                 continue;
-            var chapterName = redoCache.ChapterUi.ChapterName.ToString() ?? "";
+            var chapterName = redoCache.Chapter.ChapterName.ToString() ?? "";
             chapterName = chapterName.Length > 0 ? chapterName : _L("???");
-            string? categoryName = redoCache.ChapterUi.UITab.Value.Text.ToString();
+            string? categoryName = redoCache.Chapter.UITab.Value.Text.ToString();
             categoryName = categoryName != null && categoryName.Length > 0 ? $"{categoryName}: " : "";
             if (!_filter.IsNullOrEmpty() &&
                 !chapterName.Contains(_filter, StringComparison.InvariantCultureIgnoreCase) &&
@@ -102,47 +102,47 @@ internal sealed class RedoComponent
                 continue;
 
             bool showAnyway = false;
-            var checkQuests = redoCache.Quests.Select(q =>
+            var uncheckedQuests = redoCache.Quests.Select(q =>
             {
-                var qid = new QuestId((ushort)q.RowId);
-                bool unobtainable = questData.TryGetQuestInfo(qid, out var qInfo) && questFunctions.IsQuestUnobtainable(qid);
-                questRegistry.TryGetQuest(qid, out Domain.Quest? quest);
-                if (qInfo != null && quest != null && (quest.Root.LastChecked.Date == null ||
+                var questId = new QuestId((ushort)q.RowId);
+                bool unobtainable = questData.TryGetQuestInfo(questId, out var info) && questFunctions.IsQuestUnobtainable(questId);
+                questRegistry.TryGetQuest(questId, out Domain.Quest? quest);
+                if (info != null && quest != null && (quest.Root.LastChecked.Date == null ||
                         (quest.Root.LastChecked.Date != null &&
                          quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 60)) &&
                         !unobtainable)
                     return quest;
-                if (!unobtainable && qInfo != null && quest == null)
+                if (!unobtainable && info != null && quest == null)
                     showAnyway = true;
                 return null;
             }).OfType<Domain.Quest>().ToArray();
-            if (checkQuests.Length == 0 && _hideDone && !showAnyway)
+            if (uncheckedQuests.Length == 0 && _hideDone && !showAnyway)
                 continue;
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
-            ImRaii.ColorDisposable? disposable = null;
-            if (checkQuests.Length > 0)
-                disposable = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent);
+            ImRaii.ColorDisposable? color = null;
+            if (uncheckedQuests.Length > 0)
+                color = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent);
             bool open = ImGui.TreeNodeEx($"{chapter.RowId}", ImGuiTreeNodeFlags.SpanFullWidth, $"{categoryName}{chapterName}");
-            disposable?.Dispose();
-            if (checkQuests.Length > 0 && checkQuests[0] != null && ImGui.IsItemHovered())
+            color?.Dispose();
+            if (uncheckedQuests.Length > 0 && uncheckedQuests[0] != null && ImGui.IsItemHovered())
             {
                 using var _ = ImRaii.Tooltip();
-                var index = redoUtil.GetChapter(checkQuests[0]!.Id.Value);
+                var index = redoUtil.GetChapter(uncheckedQuests[0]!.Id.Value);
                 ImGui.Text(_LF("({0}) Unchecked: #{1}{2} ({3}/{4})",
-                    chapter.RowId, index.SimplifiedIndex, (checkQuests.Length > 1 ? "+" : ""), checkQuests.Length, redoCache.Quests.Count));
+                    chapter.RowId, index.SimplifiedIndex, (uncheckedQuests.Length > 1 ? "+" : ""), uncheckedQuests.Length, redoCache.Quests.Count));
                 using var __ = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent);
-                ImGui.Text(string.Join('\n', checkQuests.Select(q => $"{q?.Info.SimplifiedName} ({q?.Id})")));
+                ImGui.Text(string.Join('\n', uncheckedQuests.Select(q => $"{q?.Info.SimplifiedName} ({q?.Id})")));
             }
 
-            ShowQuestGroupContextMenu($"DrawRedoChapter{chapter.RowId}",
+            ShowGroupContextMenu($"DrawRedoChapter{chapter.RowId}",
                 redoCache.Quests.Select(q =>
                 {
-                    questData.TryGetQuestInfo(new QuestId((ushort)q.RowId), out IQuestInfo? qInfo);
-                    return qInfo;
+                    questData.TryGetQuestInfo(new QuestId((ushort)q.RowId), out IQuestInfo? info);
+                    return info;
                 }).OfType<IQuestInfo>().ToList(), redoCache, categoryName.StartsWith("???") || chapterName.StartsWith("???"));
 
-            if (_redoCount.TryGetValue(chapter, out (int Supported, int Completed, int Total) result))
+            if (_counts.TryGetValue(chapter, out (int Supported, int Completed, int Total) result))
             {
                 ImGui.TableNextColumn();
                 QuestJournalComponent.DrawCount(result.Supported, result.Total);
@@ -153,19 +153,19 @@ internal sealed class RedoComponent
             {
                 ImGui.TableNextColumn();
                 ImGui.TableNextColumn();
-                QuestJournalComponent.DrawCount(0, _preTotal);
+                QuestJournalComponent.DrawCount(0, questCount);
             }
             if (open)
             {
-                int _supported = 0;
-                int _completed = 0;
-                int _total = 0;
+                int supported = 0;
+                int completed = 0;
+                int total = 0;
                 foreach (var q in redoCache.Quests)
                 {
-                    var qid = new QuestId((ushort)q.RowId);
-                    questData.TryGetQuestInfo(qid, out IQuestInfo? qInfo);
-                    if (qInfo != null)
-                        questJournalComponent.DrawQuest(qInfo);
+                    var questId = new QuestId((ushort)q.RowId);
+                    questData.TryGetQuestInfo(questId, out IQuestInfo? info);
+                    if (info != null)
+                        questJournalComponent.DrawQuest(info);
                     else
                     {
                         ImGui.TableNextRow();
@@ -177,28 +177,28 @@ internal sealed class RedoComponent
                             ImGui.SetTooltip(_L("This quest is not supported."));
                         ImGui.TableNextColumn();
                     }
-                    if (questRegistry.TryGetQuest(qid, out Domain.Quest? quest))
+                    if (questRegistry.TryGetQuest(questId, out Domain.Quest? quest))
                     {
-                        _supported += 1;
+                        supported += 1;
                         if (questFunctions.IsQuestComplete(quest.Id))
-                            _completed += 1;
+                            completed += 1;
                     }
-                    if (qInfo != null && !questFunctions.IsQuestUnobtainable(qid))
-                        _total += 1;
+                    if (info != null && !questFunctions.IsQuestUnobtainable(questId))
+                        total += 1;
                 }
-                if (!_redoCount.TryGetValue(chapter, out var _result) || _result.Supported != _supported || _result.Completed != _completed)
-                    _redoCount[chapter] = (_supported > _total ? _total : _supported, _completed, _total);
+                if (!_counts.TryGetValue(chapter, out var cached) || cached.Supported != supported || cached.Completed != completed)
+                    _counts[chapter] = (supported > total ? total : supported, completed, total);
                 ImGui.TreePop();
             }
         }
     }
 
-    public void ShowQuestGroupContextMenu(string note, List<IQuestInfo> quests, RedoCache redoCache, bool startDisabled)
+    public void ShowGroupContextMenu(string id, List<IQuestInfo> quests, RedoCache redoCache, bool hideStart)
     {
         if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
-            ImGui.OpenPopup($"##QuestGroupPopup{note}");
+            ImGui.OpenPopup($"##QuestGroupPopup{id}");
 
-        using ImRaii.PopupDisposable popup = ImRaii.Popup($"##QuestGroupPopup{note}");
+        using ImRaii.PopupDisposable popup = ImRaii.Popup($"##QuestGroupPopup{id}");
         if (!popup)
             return;
 
@@ -219,23 +219,23 @@ internal sealed class RedoComponent
             if (quests.Count >= 1)
                 questController.SimulateQuest(quests[0], 0, 0);
 
-        if (configuration.Advanced.Debug && !startDisabled)
+        if (configuration.Advanced.Debug && !hideStart)
         {
-            bool redoActive = redoUtil.IsRedoActive();
+            bool redoActive = redoUtil.IsActive();
             using (ImRaii.Disabled(redoActive))
             {
-                if (ImGui.MenuItem(_L("Start NG+ here")) && redoCache.ChapterUi.RowId != 0)
+                if (ImGui.MenuItem(_L("Start NG+ here")) && redoCache.Chapter.RowId != 0)
                 {
-                    if (!redoUtil.Disabled)
+                    if (!redoUtil.IsLocked)
                         if (redoActive) // safeguard
-                            redoUtil.SendRedoCommand(redoChapter: RedoChapter.Off);
+                            redoUtil.SendCommand(redoChapter: RedoChapter.Off);
                         else
-                            redoUtil.SendRedoCommand(questRedoChapter: redoCache.ChapterUi);
+                            redoUtil.SendCommand(questRedoChapter: redoCache.Chapter);
                 }
             }
             if (redoActive && ImGui.MenuItem(_L("Stop NG+")))
-                if (!redoUtil.Disabled)
-                    redoUtil.SendRedoCommand(redoChapter: RedoChapter.Off);
+                if (!redoUtil.IsLocked)
+                    redoUtil.SendCommand(redoChapter: RedoChapter.Off);
         }
 
     }

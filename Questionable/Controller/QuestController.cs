@@ -80,7 +80,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private readonly QuestRegistry _questRegistry;
     private readonly QuestPriorityManager _priorityManager;
     private readonly QuestProgressTracker _tracker;
-    private readonly SinglePlayerDutyConfigComponent _questBattleConfig;
+    private readonly QuestBattleConfigComponent _questBattleConfig;
     private readonly QuestStopPolicy _stopPolicy;
     private readonly TaskCreator _taskCreator;
     private readonly IToastGui _toastGui;
@@ -123,7 +123,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         TaskToastClassifier toastClassifier,
         NotificationMasterIpc notificationMasterIpc,
         IGameGuiAdapter gameGui,
-        SinglePlayerDutyConfigComponent questBattleConfig,
+        QuestBattleConfigComponent questBattleConfig,
         QuestStopPolicy stopPolicy,
         AlliedSocietyQuestFunctions alliedSocietyQuests)
         : base(chatGui, condition, serviceProvider, interruptHandler, toastClassifier,

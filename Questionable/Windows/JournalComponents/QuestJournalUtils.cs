@@ -25,7 +25,7 @@ internal sealed class QuestJournalUtils
     RedoUtil redoUtil,
     DraftQuestPathService draftQuestPathService)
 {
-    public void ShowContextMenu(IQuestInfo questInfo, Quest? quest, string label)
+    public void ShowContextMenu(IQuestInfo questInfo, Quest? quest, string source)
     {
         List<IQuestInfo> prereqs = [];
         if (questFunctions.prereqCache.TryGetValue(questInfo.QuestId.Value, out HashSet<IQuestInfo>? value))
@@ -44,7 +44,7 @@ internal sealed class QuestJournalUtils
             return;
 
         bool inPriority = quest != null && questController.PriorityManager.Contains(quest);
-        if (label != nameof(PriorityWindow) || inPriority)
+        if (source != nameof(PriorityWindow) || inPriority)
         {
             using (ImRaii.Disabled(disabled: true))
             {
@@ -53,7 +53,7 @@ internal sealed class QuestJournalUtils
 
             using (ImRaii.PushIndent())
             {
-                if (label != nameof(PriorityWindow))
+                if (source != nameof(PriorityWindow))
                 {
                     using (ImRaii.Disabled(quest == null))
                     {
@@ -67,17 +67,17 @@ internal sealed class QuestJournalUtils
                     {
                         if (ImGui.MenuItem(_L("Add all to Priority Quests")) && quest != null)
                         {
-                            foreach (var qInfo in prereqs)
-                                if (!questFunctions.IsQuestUnobtainable(qInfo.QuestId) && !questFunctions.IsQuestComplete(qInfo.QuestId))
-                                    questController.PriorityManager.Add(qInfo.QuestId);
+                            foreach (var prereq in prereqs)
+                                if (!questFunctions.IsQuestUnobtainable(prereq.QuestId) && !questFunctions.IsQuestComplete(prereq.QuestId))
+                                    questController.PriorityManager.Add(prereq.QuestId);
                             questController.PriorityManager.Add(quest.Id);
                         }
 
                         if (ImGui.MenuItem(_L("Add all to Priority Quests as Accept Only")) && quest != null)
                         {
-                            foreach (var qInfo in prereqs)
-                                if (!questFunctions.IsQuestUnobtainable(qInfo.QuestId) && !questFunctions.IsQuestComplete(qInfo.QuestId))
-                                    questController.PriorityManager.MarkAcceptOnly(qInfo.QuestId);
+                            foreach (var prereq in prereqs)
+                                if (!questFunctions.IsQuestUnobtainable(prereq.QuestId) && !questFunctions.IsQuestComplete(prereq.QuestId))
+                                    questController.PriorityManager.MarkAcceptOnly(prereq.QuestId);
                             questController.PriorityManager.MarkAcceptOnly(quest.Id);
                         }
                     }
@@ -110,7 +110,7 @@ internal sealed class QuestJournalUtils
                 if (ImGui.MenuItem(_L("Start as next quest")))
                 {
                     questController.SetNextQuest(quest);
-                    questController.Start(label);
+                    questController.Start(source);
                 }
 
                 if (ImGui.MenuItem(_L("Set as next quest")))
@@ -119,11 +119,11 @@ internal sealed class QuestJournalUtils
 
             if (ImGui.MenuItem(_L("Locate quest issuer")))
             {
-                MoveToQuestLocation(questInfo, teleport: false);
+                MoveToIssuer(questInfo, teleport: false);
             }
 
-            bool openInQuestMap = commandManager.Commands.ContainsKey("/questinfo");
-            using (ImRaii.Disabled(questInfo.QuestId is not QuestId || !openInQuestMap))
+            bool hasQuestMap = commandManager.Commands.ContainsKey("/questinfo");
+            using (ImRaii.Disabled(questInfo.QuestId is not QuestId || !hasQuestMap))
             {
                 if (ImGui.MenuItem(_L("View in Quest Map")))
                     if (commandManager.Commands.ContainsKey("/questgraph"))
@@ -139,19 +139,19 @@ internal sealed class QuestJournalUtils
             if (configuration.Advanced.Debug)
             {
                 RedoIndex redoIndex = redoUtil.GetChapter(questInfo.QuestId.Value);
-                bool redoActive = redoUtil.IsRedoActive();
+                bool redoActive = redoUtil.IsActive();
                 using (ImRaii.Disabled(redoActive || redoIndex.Chapter.RowId == 0 || redoIndex.Chapter.ChapterName.ToString().Length == 0))
                 {
                     if (ImGui.MenuItem(_L("Start NG+ here")))
                     {
                         if (redoActive) // safeguard
-                            redoUtil.SendRedoCommand(redoChapter: RedoChapter.Off);
+                            redoUtil.SendCommand(redoChapter: RedoChapter.Off);
                         else
-                            redoUtil.SendRedoCommand(questRedoChapter: redoIndex.Chapter);
+                            redoUtil.SendCommand(questRedoChapter: redoIndex.Chapter);
                     }
                 }
                 if (redoActive && ImGui.MenuItem(_L("Stop NG+")))
-                    redoUtil.SendRedoCommand(redoChapter: RedoChapter.Off);
+                    redoUtil.SendCommand(redoChapter: RedoChapter.Off);
             }
         }
 
@@ -201,7 +201,7 @@ internal sealed class QuestJournalUtils
         }
     }
 
-    internal static void ShowFilterContextMenu(QuestJournalComponent journalUi)
+    internal static void ShowFilterContextMenu(QuestJournalComponent journal)
     {
         if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Filter, ("Filter")))
             ImGui.OpenPopup("##QuestFilters");
@@ -210,23 +210,23 @@ internal sealed class QuestJournalUtils
         if (!popup)
             return;
 
-        if (ImGui.Checkbox(_L("Show only Available Quests"), ref journalUi.Filter.AvailableOnly) ||
-            ImGui.Checkbox(_L("Show only Blue Quests"), ref journalUi.Filter.BlueOnly) ||
-            ImGui.Checkbox(_L("Hide Quests Without Path"), ref journalUi.Filter.HideNoPaths) ||
-            ImGui.Checkbox(_L("Hide Completed Quests"), ref journalUi.Filter.HideCompleted) ||
-            ImGui.Checkbox(_L("Hide Unobtainable Quests"), ref journalUi.Filter.HideUnobtainable) ||
-            ImGui.Checkbox(_L("Hide Repeatable Quests"), ref journalUi.Filter.HideRepeatable))
+        if (ImGui.Checkbox(_L("Show only Available Quests"), ref journal.Filter.AvailableOnly) ||
+            ImGui.Checkbox(_L("Show only Blue Quests"), ref journal.Filter.BlueOnly) ||
+            ImGui.Checkbox(_L("Hide Quests Without Path"), ref journal.Filter.HideNoPaths) ||
+            ImGui.Checkbox(_L("Hide Completed Quests"), ref journal.Filter.HideCompleted) ||
+            ImGui.Checkbox(_L("Hide Unobtainable Quests"), ref journal.Filter.HideUnobtainable) ||
+            ImGui.Checkbox(_L("Hide Repeatable Quests"), ref journal.Filter.HideRepeatable))
         {
-            journalUi.UpdateFilter();
+            journal.UpdateFilter();
         }
     }
 
-    public void ShowQuestGroupContextMenu(string note, List<IQuestInfo> quests)
+    public void ShowGroupContextMenu(string id, List<IQuestInfo> quests)
     {
         if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
-            ImGui.OpenPopup($"##QuestGroupPopup{note}");
+            ImGui.OpenPopup($"##QuestGroupPopup{id}");
 
-        using ImRaii.PopupDisposable popup = ImRaii.Popup($"##QuestGroupPopup{note}");
+        using ImRaii.PopupDisposable popup = ImRaii.Popup($"##QuestGroupPopup{id}");
         if (!popup)
             return;
 
@@ -262,7 +262,7 @@ internal sealed class QuestJournalUtils
                 questController.SimulateQuest(quests[0], 0, 0);
     }
 
-    public void MoveToQuestLocation(IQuestInfo questInfo, bool teleport = true)
+    public void MoveToIssuer(IQuestInfo questInfo, bool teleport = true)
     {
         var location = ((QuestInfo)questInfo).IssuerLocation;
         Svc.Log.Debug(location.ToString() ?? "SheetLevel()");

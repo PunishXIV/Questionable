@@ -9,7 +9,7 @@ using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.QuestComponents;
 
 [RegisterSingleton]
-internal sealed class QuickAccessButtonsComponent
+internal sealed class QuickAccessComponent
 (
     QuestController questController,
     MovementController movementController,
@@ -40,12 +40,12 @@ internal sealed class QuickAccessButtonsComponent
         ImGui.SameLine();
         DrawRebuildNavmeshButton();
         ImGui.SameLine();
-        DrawClearVBMMapsButton();
+        DrawClearObstaclesButton();
 
         if (pluginInterface.IsDev)
         {
             ImGui.SameLine();
-            DrawValidationIssuesButton();
+            DrawValidationButton();
         }
     }
 
@@ -111,14 +111,14 @@ internal sealed class QuickAccessButtonsComponent
             commandManager.ProcessCommand("/vnav rebuild");
     }
 
-    internal void DrawClearVBMMapsButton(bool showLabel = false)
+    internal void DrawClearObstaclesButton(bool showLabel = false)
     {
-        bool isNavmeshAvailable = commandManager.Commands.ContainsKey("/vbm");
-        string tooltip = isNavmeshAvailable
+        bool isBossModAvailable = commandManager.Commands.ContainsKey("/vbm");
+        string tooltip = isBossModAvailable
             ? _L("Clear BossMod obstacle maps to fix pathfinding issues. Hold CTRL to enable this button")
             : _L("VBM is not available. Please install it first.");
         if (QstWidgets.RailButton(FontAwesomeIcon.Directions, _L("Clear VBM obstacle maps"), tooltip,
-                enabled: isNavmeshAvailable && ImGui.IsKeyDown(ImGuiKey.ModCtrl),
+                enabled: isBossModAvailable && ImGui.IsKeyDown(ImGuiKey.ModCtrl),
                 showLabel: showLabel))
             bossModIpc.ClearObstacleMaps();
     }
@@ -142,11 +142,11 @@ internal sealed class QuickAccessButtonsComponent
     internal void DrawTroubleshootingButton(bool showLabel = false, bool highlighted = false)
     {
         QuestController.QuestProgress? questProgress = questController.CurrentQuest;
-        bool isRunning = highlighted || questController.IsRunning;
+        bool highlight = highlighted || questController.IsRunning;
         bool leftClicked = QstWidgets.RailButton(FontAwesomeIcon.Handshake,
             _L("Stuck?"),
             _L("Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard"),
-            tint: isRunning ? QstTheme.Accent : null,
+            tint: highlight ? QstTheme.Accent : null,
             enabled: objectTable[0] != null,
             showLabel: showLabel);
         bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
@@ -168,15 +168,15 @@ internal sealed class QuickAccessButtonsComponent
                 SortedDictionary<string, string>? plugins = [];
                 try
                 {
-                    JsonNode? dalTrouble = JsonNode.Parse(
+                    JsonNode? dalamudReport = JsonNode.Parse(
                             File.ReadAllText(Path.Join(pluginInterface.DalamudAssetDirectory.Parent?.Parent?.FullName, "dalamud.troubleshooting.json"))
                         );
-                    var pluginNames = dalTrouble?["PluginStates"]
+                    var pluginNames = dalamudReport?["PluginStates"]
                         .Deserialize<SortedDictionary<string, string>>()
                         ?.Where(kvp => kvp.Value == "Loaded")
                         .Select(kvp => kvp.Key)
                         .ToHashSet(StringComparer.Ordinal);
-                    plugins = new(dalTrouble?["LoadedPlugins"]
+                    plugins = new(dalamudReport?["LoadedPlugins"]
                         ?.AsArray()
                         .Where(node =>
                             node?["InstalledFromUrl"]?.GetValue<string>() is { Length: > 0 } &&
@@ -226,7 +226,7 @@ internal sealed class QuickAccessButtonsComponent
             troubleshooting["LastNavigationFailure"] = failure;
     }
 
-    internal void DrawValidationIssuesButton(bool showLabel = false)
+    internal void DrawValidationButton(bool showLabel = false)
     {
         bool running = questRegistry.ValidationRunning;
         int errorCount = questRegistry.ValidationErrorCount;

@@ -965,7 +965,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalProgressWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Journal Progress</Key>
     <Value lang="en">Journal Progress</Value>
     <Value lang="ja-jp">ジャーナル進捗</Value>
@@ -1011,7 +1011,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
     <Key>Priority Quests</Key>
     <Value lang="en">Priority Quests</Value>
@@ -1086,7 +1086,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <Key>Import from Clipboard</Key>
     <Value lang="en">Import from Clipboard</Value>
@@ -1126,7 +1126,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
@@ -1374,7 +1374,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestValidationWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Quest Validation</Key>
     <Value lang="en">Quest Validation</Value>
     <Value lang="ja-jp">クエスト検証</Value>
@@ -1385,7 +1385,7 @@
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestValidationWindow.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Quest</Key>
     <Value lang="en">Quest</Value>
     <Value lang="ja-jp">クエスト</Value>
@@ -1745,7 +1745,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Prevent quest completion</Key>
     <Value lang="en">Prevent quest completion</Value>
@@ -1780,7 +1780,7 @@
     <Value lang="zh-tw">Questionable 會把物品放入瓦丘梅奇梅奇的交納視窗，但不會點擊「交納」，因此任務不會被消耗。關閉視窗並再次與NPC對話即可重試。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Abandon quest before completion</Key>
     <Value lang="en">Abandon quest before completion</Value>
@@ -1790,7 +1790,7 @@
     <!--<Value lang="ko">완료 전에 퀘스트 포기</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
     <Key>Remove from priority when abandoned</Key>
     <Value lang="en">Remove from priority when abandoned</Value>
@@ -1991,7 +1991,7 @@
     <!--<Value lang="ko">각 던전/시험의 설정을 개별적으로 재정의할 수 있습니다:</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <Key>Options</Key>
     <Value lang="en">Options</Value>
@@ -2001,7 +2001,7 @@
     <!--<Value lang="ko">옵션</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <Key>TerritoryId: {0}</Key>
     <Value lang="en">TerritoryId: {0}</Value>
@@ -2011,7 +2011,7 @@
     <!--<Value lang="ko">TerritoryId: {0}</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <Key>ContentFinderConditionId: {0}</Key>
     <Value lang="en">ContentFinderConditionId: {0}</Value>
@@ -2030,7 +2030,7 @@
     <!--<Value lang="ko">이 임무는 AutoDuty에서 지원되지 않습니다</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <Key>Enable All</Key>
     <Value lang="en">Enable All</Value>
@@ -2049,7 +2049,7 @@
     <!--<Value lang="ko">모든 임무를 활성화합니다. 사용자는 자신의 책임 하에 사용하십시오.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <Key>Export to clipboard</Key>
     <Value lang="en">Export to clipboard</Value>
@@ -2059,7 +2059,7 @@
     <!--<Value lang="ko">클립보드로 내보내기</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/DutyConfigComponent.cs -->
     <Key>Reset to default</Key>
     <Value lang="en">Reset to default</Value>
@@ -2739,7 +2739,7 @@
     <!--<Value lang="ko">프로필</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Tank Role Quests</Key>
     <Value lang="en">Tank Role Quests</Value>
     <Value lang="ja-jp">タンクロールクエスト</Value>
@@ -2748,7 +2748,7 @@
     <!--<Value lang="ko">탱크 역할 퀘스트</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Healer Role Quests</Key>
     <Value lang="en">Healer Role Quests</Value>
     <Value lang="ja-jp">ヒーラーロールクエスト</Value>
@@ -2757,7 +2757,7 @@
     <!--<Value lang="ko">힐러 역할 퀘스트</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Melee Role Quests</Key>
     <Value lang="en">Melee Role Quests</Value>
     <Value lang="ja-jp">メレーロールクエスト</Value>
@@ -2766,7 +2766,7 @@
     <!--<Value lang="ko">근접 역할 퀘스트</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Physical Ranged Role Quests</Key>
     <Value lang="en">Physical Ranged Role Quests</Value>
     <Value lang="ja-jp">レンジロールクエスト</Value>
@@ -2775,7 +2775,7 @@
     <!--<Value lang="ko">물리 원거리 역할 퀘스트</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Magical Ranged Role Quests</Key>
     <Value lang="en">Magical Ranged Role Quests</Value>
     <Value lang="ja-jp">キャスターロールクエスト</Value>
@@ -2784,7 +2784,7 @@
     <!--<Value lang="ko">마법 원거리 역할 퀘스트</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key> ({0})</Key>
     <Value lang="en"> ({0})</Value>
     <Value lang="ja-jp"> ({0})</Value>
@@ -2793,7 +2793,7 @@
     <!--<Value lang="ko"> ({0})</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key> (Part {0})</Key>
     <Value lang="en"> (Part {0})</Value>
     <Value lang="ja-jp"> (第{0}部)</Value>
@@ -2802,7 +2802,7 @@
     <!--<Value lang="ko"> (파트 {0})</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key> (Melee/Phys. Ranged)</Key>
     <Value lang="en"> (Melee/Phys. Ranged)</Value>
     <Value lang="ja-jp"> (メレー/レンジ)</Value>
@@ -2811,7 +2811,7 @@
     <!--<Value lang="ko"> (근접/물리 원거리)</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Quest Battles</Key>
     <Value lang="en">Quest Battles</Value>
     <Value lang="ja-jp">クエストバトル</Value>
@@ -2820,7 +2820,7 @@
     <Value lang="ko">퀘스트 전투</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Run quest battles with BossMod</Key>
     <Value lang="en">Run quest battles with BossMod</Value>
     <Value lang="ja-jp">BossModでクエストバトルを実行</Value>
@@ -2829,7 +2829,7 @@
     <!--<Value lang="ko">BossMod로 퀘스트 전투 실행</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Notes:</Key>
     <Value lang="en">Notes:</Value>
     <Value lang="ja-jp">注意：</Value>
@@ -2837,7 +2837,7 @@
     <Value lang="zh-tw">注意：</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Will always use BossMod for combat (ignoring the configured combat module).</Key>
     <Value lang="en">Will always use BossMod for combat (ignoring the configured combat module).</Value>
     <Value lang="ja-jp">戦闘では常にBossModを使用します（設定済みの戦闘モジュールは無視）。</Value>
@@ -2846,7 +2846,7 @@
     <!--<Value lang="ko">전투에서는 항상 BossMod를 사용합니다(설정된 전투 모듈 무시).</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Retries after a failed attempt always start at 'Very Easy' difficulty. The first attempt may start at 'Normal'.</Key>
     <Value lang="en">Retries after a failed attempt always start at 'Very Easy' difficulty. The first attempt may start at 'Normal'.</Value>
     <Value lang="ja-jp">バトルに失敗して再挑戦する場合、常に「Very Easy」難易度で開始されます。初回は「Normal」で開始される場合があります。</Value>
@@ -2855,7 +2855,7 @@
     <!--<Value lang="ko">실패한 전투를 다시 시도하는 경우, 항상 '매우 쉬움' 난이도로 시작됩니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Questionable includes a default list of quest battles that work if BossMod is installed.</Key>
     <Value lang="en">Questionable includes a default list of quest battles that work if BossMod is installed.</Value>
     <Value lang="ja-jp">BossModがインストールされている場合に動作するクエストバトルのデフォルトリストが含まれています。</Value>
@@ -2864,7 +2864,7 @@
     <!--<Value lang="ko">Questionable에는 BossMod가 설치되어 있는 경우 작동하는 기본 퀘스트 전투 목록이 포함되어 있습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>The included list of quest battles can change with each update.</Key>
     <Value lang="en">The included list of quest battles can change with each update.</Value>
     <Value lang="ja-jp">含まれるクエストバトルリストはアップデートごとに変更される場合があります。</Value>
@@ -2873,7 +2873,7 @@
     <!--<Value lang="ko">포함된 퀘스트 전투 목록은 업데이트마다 변경될 수 있습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>You can override the settings for each individual quest battle:</Key>
     <Value lang="en">You can override the settings for each individual quest battle:</Value>
     <Value lang="ja-jp">各クエストバトルの設定を個別に上書きできます：</Value>
@@ -2882,7 +2882,7 @@
     <!--<Value lang="ko">각 개별 퀘스트 전투에 대한 설정을 재정의할 수 있습니다:</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Main Scenario Quests ({0}/{1})</Key>
     <Value lang="en">Main Scenario Quests ({0}/{1})</Value>
     <Value lang="ja-jp">メインシナリオクエスト ({0}/{1})</Value>
@@ -2891,7 +2891,7 @@
     <!--<Value lang="ko">메인 시나리오 퀘스트 ({0}/{1})</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Limsa Lominsa</Key>
     <Value lang="en">Limsa Lominsa</Value>
     <Value lang="ja-jp">リムサ・ロミンサ</Value>
@@ -2900,7 +2900,7 @@
     <!--<Value lang="ko">림사 로민사</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Gridania</Key>
     <Value lang="en">Gridania</Value>
     <Value lang="ja-jp">グリダニア</Value>
@@ -2909,7 +2909,7 @@
     <!--<Value lang="ko">그리다니아</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Ul'dah</Key>
     <Value lang="en">Ul'dah</Value>
     <Value lang="ja-jp">ウルダハ</Value>
@@ -2918,7 +2918,7 @@
     <!--<Value lang="ko">울다하</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Uldah</Key>
     <Value lang="en">Uldah</Value>
     <Value lang="ja-jp">ウルダハ</Value>
@@ -2927,7 +2927,7 @@
     <!--<Value lang="ko">울다하</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Class/Job Quests ({0}/{1})</Key>
     <Value lang="en">Class/Job Quests ({0}/{1})</Value>
     <Value lang="ja-jp">クラス/ジョブクエスト ({0}/{1})</Value>
@@ -2936,7 +2936,7 @@
     <!--<Value lang="ko">클래스/잡 퀘스트 ({0}/{1})</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Role Quests ({0}/{1})</Key>
     <Value lang="en">Role Quests ({0}/{1})</Value>
     <Value lang="ja-jp">ロールクエスト ({0}/{1})</Value>
@@ -2945,7 +2945,7 @@
     <!--<Value lang="ko">역할 퀘스트 ({0}/{1})</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>General Role Quests ({0}/{1})</Key>
     <Value lang="en">General Role Quests ({0}/{1})</Value>
     <Value lang="ja-jp">一般ロールクエスト ({0}/{1})</Value>
@@ -2954,7 +2954,7 @@
     <!--<Value lang="ko">일반 역할 퀘스트 ({0}/{1})</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Other Quests ({0}/{1})</Key>
     <Value lang="en">Other Quests ({0}/{1})</Value>
     <Value lang="ja-jp">その他のクエスト ({0}/{1})</Value>
@@ -2963,7 +2963,7 @@
     <!--<Value lang="ko">기타 퀘스트 ({0}/{1})</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Questionable doesn't include support for this quest yet.</Key>
     <Value lang="en">Questionable doesn't include support for this quest yet.</Value>
     <Value lang="ja-jp">このクエストはまだQuestionableに対応していません。</Value>
@@ -2972,7 +2972,7 @@
     <!--<Value lang="ko">Questionable은 아직 이 퀘스트를 지원하지 않습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>Enable all of the quest battles, use at your own risk.</Key>
     <Value lang="en">Enable all of the quest battles, use at your own risk.</Value>
     <Value lang="ja-jp">すべてのクエストバトルを有効にします。自己責任でご使用ください。</Value>
@@ -3055,7 +3055,7 @@
     <!--<Value lang="ko">아래에서 선택한 퀘스트 중 하나라도 수락하면 중단:</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <Key>Allied Societies</Key>
     <Value lang="en">Allied Societies</Value>
     <Value lang="ja-jp">友好部族</Value>
@@ -3064,7 +3064,7 @@
     <!--<Value lang="ko">동맹 사회</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <Key>Add</Key>
     <Value lang="en">Add</Value>
     <Value lang="ja-jp">追加</Value>
@@ -3073,7 +3073,7 @@
     <!--<Value lang="ko">추가</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <Key>Add unchecked quests (from expanded categories) to prio</Key>
     <Value lang="en">Add unchecked quests (from expanded categories) to prio</Value>
     <Value lang="ja-jp">展開したカテゴリの未チェッククエストを優先リストに追加</Value>
@@ -3082,7 +3082,7 @@
     <!--<Value lang="ko">확장된 카테고리에서 선택되지 않은 퀘스트를 우선 순위에 추가</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <Key>Allowances: {0}/12</Key>
     <Value lang="en">Allowances: {0}/12</Value>
     <Value lang="ja-jp">割り当て: {0}/12</Value>
@@ -3091,7 +3091,7 @@
     <!--<Value lang="ko">할당량: {0}/12</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <Key>Quests marked with yellow have not been completed once yet on this character.</Key>
     <Value lang="en">Quests marked with yellow have not been completed once yet on this character.</Value>
     <Value lang="ja-jp">黄色でマークされたクエストはこのキャラクターでまだ一度も完了していません。</Value>
@@ -3100,7 +3100,7 @@
     <!--<Value lang="ko">노란색으로 표시된 퀘스트는 이 캐릭터에서 아직 한 번도 완료되지 않았습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <Key>Unchecked: {0}</Key>
     <Value lang="en">Unchecked: {0}</Value>
     <Value lang="ja-jp">未チェック: {0}</Value>
@@ -3109,7 +3109,7 @@
     <!--<Value lang="ko">선택되지 않음: {0}</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalComponent.cs -->
     <Key>This quest is in Priority Quests.</Key>
     <Value lang="en">This quest is in Priority Quests.</Value>
@@ -4260,7 +4260,7 @@
     <!--<Value lang="ko">잠금 해제：</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Configure priority quests which will be done as soon as possible.</Key>
     <Value lang="en">Configure priority quests which will be done as soon as possible.</Value>
     <Value lang="ja-jp">可能な限り早く実行される優先クエストを設定します。</Value>
@@ -4269,7 +4269,7 @@
     <!--<Value lang="ko">가능한 한 빨리 수행될 우선 순위 퀘스트를 구성합니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Rebuild Navmesh</Key>
     <Value lang="en">Rebuild Navmesh</Value>
     <Value lang="ja-jp">ナビメッシュを再構築</Value>
@@ -4278,7 +4278,7 @@
     <Value lang="ko">Navmesh 다시빌드</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>vnavmesh is not available. Please install it first.</Key>
     <Value lang="en">vnavmesh is not available. Please install it first.</Value>
     <Value lang="ja-jp">vnavmeshが利用できません。先にインストールしてください。</Value>
@@ -4287,7 +4287,7 @@
     <!--<Value lang="ko">vnavmesh를 사용할 수 없습니다. 먼저 설치하십시오.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Hold CTRL to enable this button. Rebuilding the navmesh will take some time.</Key>
     <Value lang="en">Hold CTRL to enable this button. Rebuilding the navmesh will take some time.</Value>
     <Value lang="ja-jp">このボタンを有効にするにはCTRLを押したままにしてください。ナビメッシュの再構築には時間がかかります。</Value>
@@ -4296,7 +4296,7 @@
     <!--<Value lang="ko">이 버튼을 활성화하려면 CTRL 키를 누른 상태로 유지하십시오. 내비메시를 재구성하는 데는 다소 시간이 걸립니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Reload Data</Key>
     <Value lang="en">Reload Data</Value>
     <Value lang="ja-jp">データを再読み込み</Value>
@@ -4305,7 +4305,7 @@
     <Value lang="ko">데이터 새로고침</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Stuck?</Key>
     <Value lang="en">Stuck?</Value>
     <Value lang="ja-jp">スタックしていますか？</Value>
@@ -4314,7 +4314,7 @@
     <Value lang="ko">끼었나요?</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard</Key>
     <Value lang="en">Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard</Value>
     <Value lang="ja-jp">左クリック：トラブルシューティング情報をクリップボードにコピー\n右クリック：完了済みクエストリストをクリップボードにコピー</Value>
@@ -4627,7 +4627,7 @@
     <!--<Value lang="ko">AcceptQuest 지역 {0}에는 에테라이트가 없으며, 텔레포트 바로 가기도 설정되어 있지 않습니다</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
     <Key>Run command when Questionable finishes automatic questing</Key>
     <Value lang="en">Run command when Questionable finishes automatic questing</Value>
@@ -4927,7 +4927,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/RedoComponent.cs -->
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <Key>Quests marked with orange need to be reported as working or not via the LastChecked system. Ask Aly for more details!</Key>
     <Value lang="en">Quests marked with orange need to be reported as working or not via the LastChecked system. Ask Aly for more details!</Value>
     <Value lang="ja-jp">オレンジ色でマークされたクエストは、LastCheckedシステムで動作確認の報告が必要です。詳細はAlyに聞いてください！</Value>
@@ -4963,7 +4963,7 @@
     <Value lang="ko">Stylist가 설치되어 있지 않습니다.</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/SinglePlayerDutyConfigComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/QuestBattleConfigComponent.cs -->
     <Key>BossMod forks (such as Reborn) are NOT COMPATIBLE with Questionable.</Key>
     <Value lang="en">BossMod forks (such as Reborn) are NOT COMPATIBLE with Questionable.</Value>
     <Value lang="ja-jp">BossModのフォーク（Rebornなど）はQuestionableと互換性がありません。</Value>
@@ -5578,7 +5578,7 @@
     <!--<Value lang="ko">GC 등급: {0} (#{1} &gt;= #{2})</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Quest validation: {0} errors, {1} infos</Key>
     <Value lang="en">Quest validation: {0} errors, {1} infos</Value>
     <Value lang="ja-jp">クエスト検証: エラー {0} 件、情報 {1} 件</Value>
@@ -5632,7 +5632,7 @@
     <Value lang="ko">지원하는 퀘스트 없음</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Reset sequence progess and reload quest data from disk</Key>
     <Value lang="en">Reset sequence progess and reload quest data from disk</Value>
     <Value lang="ja-jp">シーケンスの進行状況をリセットし、ディスクからクエストデータを再読み込みします</Value>
@@ -5641,7 +5641,7 @@
     <!--<Value lang="ko">시퀀스 진행 상황을 재설정하고 디스크에서 퀘스트 데이터를 다시 로드</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Utility to browse quest data used by this plugin</Key>
     <Value lang="en">Utility to browse quest data used by this plugin</Value>
     <Value lang="ja-jp">このプラグインで使用されるクエストデータを閲覧するためのユーティリティ</Value>
@@ -5677,7 +5677,7 @@
     <!--<Value lang="ko">이 퀘스트는 수락되었지만 저널에 숨겨져 있습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Clear BossMod obstacle maps to fix pathfinding issues. Hold CTRL to enable this button</Key>
     <Value lang="en">Clear BossMod obstacle maps to fix pathfinding issues. Hold CTRL to enable this button</Value>
     <Value lang="ja-jp">経路探索の問題を修正するためにBossModの障害物マップをクリアします。CTRLを押したままにするとこのボタンが有効になります</Value>
@@ -5686,7 +5686,7 @@
     <!--<Value lang="ko">경로 탐색 문제를 해결하기 위해 BossMod 장애물 지도를 지웁니다. 이 버튼을 활성화하려면 CTRL을 누르고 있습니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>VBM is not available. Please install it first.</Key>
     <Value lang="en">VBM is not available. Please install it first.</Value>
     <Value lang="ja-jp">VBMが利用できません。先にインストールしてください。</Value>
@@ -5695,7 +5695,7 @@
     <!--<Value lang="ko">VBM을 사용할 수 없습니다. 먼저 설치하십시오.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Clear VBM obstacle maps</Key>
     <Value lang="en">Clear VBM obstacle maps</Value>
     <Value lang="ja-jp">VBMの障害物マップをクリア</Value>
@@ -5722,7 +5722,7 @@
     <!--<Value lang="ko">수락만 — 대기 중인 퀘스트가 완료되기 전에 수락됩니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <Key>Accepted; completion follows the normal quest order.</Key>
     <Value lang="en">Accepted; completion follows the normal quest order.</Value>
     <Value lang="ja-jp">受注済み; 通常のクエスト順序で完了します。</Value>
@@ -5731,7 +5731,7 @@
     <!--<Value lang="ko">수락됨; 완료는 일반 퀘스트 순서를 따릅니다.</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyJournalComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
     <Key>Queued to be accepted</Key>
     <Value lang="en">Queued to be accepted</Value>
     <Value lang="ja-jp">受注待ちキューに追加済み</Value>
@@ -6031,7 +6031,7 @@
   <Entry>
     <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>No open quests to clean up.</Key>
     <Value lang="en">No open quests to clean up.</Value>
     <Value lang="ja-jp">クリーンアップ対象の受注中クエストがありません。</Value>
@@ -6040,7 +6040,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/CommandHandler.cs -->
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Added {0} open quest(s) to the priority list:</Key>
     <Value lang="en">Added {0} open quest(s) to the priority list:</Value>
     <Value lang="ja-jp">受注中のクエスト {0} 件を優先リストに追加しました：</Value>
@@ -6049,7 +6049,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Clean Up</Key>
     <Value lang="en">Clean Up</Value>
     <Value lang="ja-jp">クリーンアップ</Value>
@@ -6130,7 +6130,7 @@
     <Value lang="zh-tw">儲存/清除目前位置為參考點</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Unavailable while not logged in.</Key>
     <Value lang="en">Unavailable while not logged in.</Value>
     <Value lang="ja-jp">ログインしていない間は利用できません。</Value>
@@ -6138,7 +6138,7 @@
     <Value lang="zh-tw">未登入時不可用</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>No open quests in your journal that Questionable knows how to continue.</Key>
     <Value lang="en">No open quests in your journal that Questionable knows how to continue.</Value>
     <Value lang="ja-jp">Questionableが対応している受注中のクエストがジャーナルにありません。</Value>
@@ -6146,7 +6146,7 @@
     <Value lang="zh-tw">日誌中沒有 Questionable 可繼續的已接取任務。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>All {0} open quest(s) are already in your priority list.</Key>
     <Value lang="en">All {0} open quest(s) are already in your priority list.</Value>
     <Value lang="ja-jp">受注中のクエスト {0} 件はすでに優先リストに含まれています。</Value>
@@ -6154,7 +6154,7 @@
     <Value lang="zh-tw">所有 {0} 個已接取的任務都已在優先列表中。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Queue the {0} quest(s) you already have open, finished ones first.</Key>
     <Value lang="en">Queue the {0} quest(s) you already have open, finished ones first.</Value>
     <Value lang="ja-jp">受注中のクエスト {0} 件をキューに追加します。完了済みのものが優先されます。</Value>
@@ -6162,7 +6162,7 @@
     <Value lang="zh-tw">將已接取的 {0} 個任務加入佇列，已完成的排在前面。</Value>
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessButtonsComponent.cs -->
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
     <Key>Long or blocked quests are queued too - check the priority list afterwards.</Key>
     <Value lang="en">Long or blocked quests are queued too - check the priority list afterwards.</Value>
     <Value lang="ja-jp">時間のかかるクエストやブロックされているクエストもキューに追加できます。後で優先リストを確認してください。</Value>

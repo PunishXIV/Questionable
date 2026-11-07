@@ -15,7 +15,7 @@ internal sealed class ReportWarningComponent(Configuration configuration)
         ImGui.TextColored(QstTheme.Danger, "Future message");
         ImGui.TextWrapped("As of version xxxx, QST includes a feature where you can click the " +
                           "! button next to the quest progress buttons to report an issue with the current quest. " +
-                          "This message is to notify you that if you choose to make use of this new feature and submit a " +
+                          "This message is to notify you that if you choose to make use of this new feature and send a " +
                           "bug report, QST will automatically capture and upload the following information:");
         ImGui.BulletText("List of all enabled plugins and their version numbers");
         ImGui.BulletText("The last ten actions taken by QST");

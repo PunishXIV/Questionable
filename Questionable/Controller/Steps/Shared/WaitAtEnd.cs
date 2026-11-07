@@ -84,7 +84,7 @@ internal static class WaitAtEnd
                         WaitDelay delay = new(TimeSpan.FromSeconds(1));
                         if (step.PickUpQuestId != null)
                         {
-                            if (redoUtil.IsRedoActive()) // Can't accept other quests during NG+
+                            if (redoUtil.IsActive()) // Can't accept other quests during NG+
                                 return [delay, Next(quest, sequence)];
                             return [accept, delay, Next(quest, sequence)];
                         }

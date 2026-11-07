@@ -119,11 +119,11 @@ internal sealed class DebugConfigComponent
                     }
                 }
 
-                bool additionalStatusInformation = DrawCheckbox(_L("Draw additional status information"),
+                bool showStatusInfo = DrawCheckbox(_L("Draw additional status information"),
                     () => Configuration.Advanced.AdditionalStatusInformation,
                     value => Configuration.Advanced.AdditionalStatusInformation = value);
 
-                if (additionalStatusInformation)
+                if (showStatusInfo)
                 {
                     using (ImRaii.PushIndent())
                     {
@@ -186,20 +186,20 @@ internal sealed class DebugConfigComponent
                 ImGui.SameLine();
                 ImGuiComponents.HelpMarker(_L("Questionable puts the items into the Wachumeqimeqi delivery window but doesn't press Deliver, so the quest isn't used up. Close the window and talk to the NPC again to retry."));
 
-                bool abandonQuestBeforeCompletion = Configuration.Advanced.AbandonQuestBeforeCompletion;
-                bool removeFromPriorityWhenAbandoned = Configuration.Advanced.RemoveFromPriorityWhenAbandoned;
-                if (ImGui.Checkbox(_L("Abandon quest before completion"), ref abandonQuestBeforeCompletion))
+                bool abandonBeforeComplete = Configuration.Advanced.AbandonQuestBeforeCompletion;
+                bool removeOnAbandon = Configuration.Advanced.RemoveFromPriorityWhenAbandoned;
+                if (ImGui.Checkbox(_L("Abandon quest before completion"), ref abandonBeforeComplete))
                 {
-                    Configuration.Advanced.AbandonQuestBeforeCompletion = abandonQuestBeforeCompletion;
+                    Configuration.Advanced.AbandonQuestBeforeCompletion = abandonBeforeComplete;
                     Save();
                 }
 
                 ImGui.SameLine();
                 ImGuiComponents.HelpMarker(_L("When enabled, Questionable will attempt to send an AbandonQuest command to the server when it arrives at the CompleteQuest step. " +
                     "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed."));
-                if (ImGui.Checkbox(_L("Remove from priority when abandoned"), ref removeFromPriorityWhenAbandoned))
+                if (ImGui.Checkbox(_L("Remove from priority when abandoned"), ref removeOnAbandon))
                 {
-                    Configuration.Advanced.RemoveFromPriorityWhenAbandoned = removeFromPriorityWhenAbandoned;
+                    Configuration.Advanced.RemoveFromPriorityWhenAbandoned = removeOnAbandon;
                     Save();
                 }
 

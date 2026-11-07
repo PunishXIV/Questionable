@@ -16,22 +16,22 @@ internal sealed class UiUtils(
     public unsafe (Vector4 Color, FontAwesomeIcon Icon, string Status) GetQuestStyle(ElementId elementId)
     {
         string lockedReason = string.Empty;
-        IQuestInfo? qInfo = null;
-        questFunctions.prereqCache.TryGetValue(elementId.Value, out var prereqValue);
+        IQuestInfo? info = null;
+        questFunctions.prereqCache.TryGetValue(elementId.Value, out var prerequisites);
         if (questFunctions.IsQuestLocked(elementId) is (bool isLocked, string[] reasons) && isLocked)
             lockedReason = string.Join("\n  ", reasons);
-        else if (questData.TryGetQuestInfo(elementId, out qInfo) && qInfo is IQuestInfo questInfo &&
+        else if (questData.TryGetQuestInfo(elementId, out info) && info is IQuestInfo questInfo &&
                 questInfo.PreviousQuestJoin is EQuestJoin.All)
         {
-            List<string> preReasons = [];
-            if (prereqValue != null)
-                foreach (IQuestInfo q in prereqValue)
-                    if (questFunctions.IsQuestLocked(q.QuestId) is (bool qIsLocked, string[] _reasons) && qIsLocked &&
-                        !questFunctions.IsQuestUnobtainable(q.QuestId))
-                        foreach (string _reason in _reasons)
-                            preReasons.Add($"{q.QuestId.Value}: {_reason}");
-            if (preReasons.Count != 0)
-                lockedReason = _L("Prev quest") + $" ({preReasons[0]}{(preReasons.Count > 1 ? $" +{preReasons.Count - 1}" : "")})";
+            List<string> blockers = [];
+            if (prerequisites != null)
+                foreach (IQuestInfo previous in prerequisites)
+                    if (questFunctions.IsQuestLocked(previous.QuestId) is (bool previousLocked, string[] previousReasons) && previousLocked &&
+                        !questFunctions.IsQuestUnobtainable(previous.QuestId))
+                        foreach (string reason in previousReasons)
+                            blockers.Add($"{previous.QuestId.Value}: {reason}");
+            if (blockers.Count != 0)
+                lockedReason = _L("Prev quest") + $" ({blockers[0]}{(blockers.Count > 1 ? $" +{blockers.Count - 1}" : "")})";
         }
 
         if (questFunctions.IsQuestAccepted(elementId))
@@ -52,7 +52,7 @@ internal sealed class UiUtils(
             return (QstTheme.TextMuted, FontAwesomeIcon.Minus, _L("Unobtainable"));
         if (!string.IsNullOrEmpty(lockedReason))
             return (QstTheme.Danger, FontAwesomeIcon.Times, $"{_L("Locked")}:\n  {lockedReason}");
-        if (prereqValue == null)
+        if (prerequisites == null)
             return (QstTheme.Info, FontAwesomeIcon.QuestionCircle, _L("Available(?)"));
 
         return (QstTheme.Amber, FontAwesomeIcon.Running, _L("Available"));

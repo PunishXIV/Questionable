@@ -12,7 +12,7 @@ public sealed class NavigationFailureReportTests
     public void ReportWithoutFailureKeepsExistingFieldsAndOmitsFailureSection()
     {
         Dictionary<string, object?> report = new() { ["Quest"] = "current quest" };
-        QuickAccessButtonsComponent.AddNavigationFailure(report, null);
+        QuickAccessComponent.AddNavigationFailure(report, null);
         using var json = JsonDocument.Parse(JsonSerializer.Serialize(report, JsonOptions.Default));
         Assert.Equal("current quest", json.RootElement.GetProperty("Quest").GetString());
         Assert.False(json.RootElement.TryGetProperty("LastNavigationFailure", out _));
@@ -48,7 +48,7 @@ public sealed class NavigationFailureReportTests
             }
             """, JsonOptions.Default)!;
         Dictionary<string, object?> report = new() { ["Quest"] = "a different quest" };
-        QuickAccessButtonsComponent.AddNavigationFailure(report, failure);
+        QuickAccessComponent.AddNavigationFailure(report, failure);
 
         using var json = JsonDocument.Parse(JsonSerializer.Serialize(report, JsonOptions.Default));
         Assert.Equal("a different quest", json.RootElement.GetProperty("Quest").GetString());
