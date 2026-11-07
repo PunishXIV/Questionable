@@ -91,14 +91,14 @@ internal sealed class MovementOverrideController(IClientState clientState, ILogg
     // Blacklists navmesh points the game cannot traverse, such as the HF Outskirts aetheryte.
     public (List<Vector3>, bool) AdjustPath(List<Vector3> navPoints)
     {
-        foreach (IBlacklistedLocation blacklistedArea in BlacklistedLocations)
+        foreach (IBlacklistedLocation location in BlacklistedLocations)
         {
-            if (_clientState.TerritoryType != blacklistedArea.TerritoryId)
+            if (_clientState.TerritoryType != location.TerritoryId)
                 continue;
 
             for (int i = 0; i < navPoints.Count; ++i)
             {
-                AlternateLocation? alternateLocation = blacklistedArea.AdjustPoint(navPoints[i]);
+                AlternateLocation? alternateLocation = location.AdjustPoint(navPoints[i]);
 
                 if (alternateLocation != null)
                 {

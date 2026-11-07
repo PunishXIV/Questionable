@@ -405,7 +405,7 @@ internal static class SkipCondition
             if (questWork != null)
             {
                 if (QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags) &&
-                    QuestWorkUtils.MatchesQuestWork(step.CompletionQuestVariablesFlags, questWork))
+                    QuestWorkUtils.Matches(step.CompletionQuestVariablesFlags, questWork))
                 {
                     logger.LogInformation("Skipping step, as quest variables match (step is complete)");
                     return true;
@@ -413,7 +413,7 @@ internal static class SkipCondition
 
                 if (step is { SkipConditions.StepIf: { } conditions })
                 {
-                    if (QuestWorkUtils.MatchesQuestWork(conditions.CompletionQuestVariablesFlags, questWork))
+                    if (QuestWorkUtils.Matches(conditions.CompletionQuestVariablesFlags, questWork))
                     {
                         logger.LogInformation("Skipping step, as quest variables match (step can be skipped)");
                         return true;
@@ -422,7 +422,7 @@ internal static class SkipCondition
 
                 if (step is { RequiredQuestVariables: { } requiredQuestVariables })
                 {
-                    if (!QuestWorkUtils.MatchesRequiredQuestWorkConfig(requiredQuestVariables, questWork, logger))
+                    if (!QuestWorkUtils.MatchesRequired(requiredQuestVariables, questWork, logger))
                     {
                         logger.LogInformation("Skipping step, as required variables do not match");
                         return true;

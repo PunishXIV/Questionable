@@ -157,7 +157,7 @@ internal static class Fish
     {
         // Matching quest flags count as done even for quests whose fish are consumed or are key items.
         if (task.HasCompletionFlags && gameState.GetQuestProgressInfo(task.Quest.Id) is { } work &&
-            QuestWorkUtils.MatchesQuestWork(task.CompletionFlags, work))
+            QuestWorkUtils.Matches(task.CompletionFlags, work))
             return true;
         if (task.GatheredItem is not { } item)
             return false;

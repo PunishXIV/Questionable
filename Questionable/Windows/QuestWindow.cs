@@ -205,7 +205,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     internal void Reload()
     {
         _questController.Reload();
-        _ = _framework.RunOnTick(_interactionUiController.HandleCurrentDialogueChoices,
+        _ = _framework.RunOnTick(_interactionUiController.CheckOpenDialogues,
             TimeSpan.FromMilliseconds(200));
     }
 }

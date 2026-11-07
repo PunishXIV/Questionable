@@ -11,12 +11,12 @@ internal interface ICombatModule
 
     bool Stop();
 
-    // Temporary item-use pauses retain ownership and the user's original provider state.
+    // Temporary item-use pauses keep control and the user's original provider state.
     bool Pause();
 
     bool Resume();
 
-    // Called even while moving or waiting for a target. Local combat modules need no ownership check.
+    // Called even while moving or waiting for a target. Local combat modules need no control check.
     void VerifyActive() { }
 
     void Update(IGameObject nextTarget);

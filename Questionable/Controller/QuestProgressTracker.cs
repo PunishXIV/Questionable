@@ -100,13 +100,13 @@ internal sealed class QuestProgressTracker(
         PendingQuest = quest;
     }
 
-    public (QuestSequence? Sequence, QuestStep? Step, bool createTasks) GetNextStep()
+    public (QuestSequence? Sequence, QuestStep? Step, bool CreateTasks) GetNextStep()
     {
         if (CurrentQuest == null)
             return (null, null, false);
 
-        Quest q = CurrentQuest.Quest;
-        QuestSequence? seq = q.FindSequence(CurrentQuest.Sequence);
+        Quest quest = CurrentQuest.Quest;
+        QuestSequence? seq = quest.FindSequence(CurrentQuest.Sequence);
         if (seq == null)
             return (null, null, true);
 

@@ -25,19 +25,19 @@ internal sealed class MovementController
     AetheryteData aetheryteData,
     IChatGui chatGui,
     IFramework framework,
-    Lazy<ExternalOperationCoordinator> externalOperations,
+    Lazy<OperationCoordinator> externalOperations,
     Lazy<QuestController> questController,
     ILogger<MovementController> logger) : IDisposable
 {
-    public const float DefaultVerticalInteractionDistance = 1.95f;
+    public const float DefaultVerticalDistance = 1.95f;
 
     [SuppressMessage("Usage", "CA2213:Disposable fields should be disposed",
-        Justification = "Dispose dispatches Stop to the framework thread. ResetPathfinding detaches the CTS and CancelAndDisposeAsync disposes it after cancellation callbacks finish.")]
+        Justification = "Dispose runs Stop on the framework thread. ResetPathfinding drops the CTS and CancelAndDisposeAsync disposes it after cancellation callbacks finish.")]
     private CancellationTokenSource? _cancellationTokenSource;
     private Task<List<Vector3>>? _pathfindTask;
-    private bool _hasSubmittedRoute;
+    private bool _hasStartedRoute;
     private long? _pathfindingStartedAt;
-    private long? _providerDiagnosticsUpdatedAt;
+    private long? _diagnosticsUpdatedAt;
     private bool? _movementAllowed;
     private bool? _simpleMoveInProgress;
     private bool? _pathfindInProgress;
@@ -68,7 +68,7 @@ internal sealed class MovementController
 
     public bool IsSimpleMoveInProgress()
     {
-        RefreshProviderDiagnostics(force: true);
+        RefreshDiagnostics(force: true);
         return _simpleMoveInProgress == true;
     }
 
@@ -78,18 +78,18 @@ internal sealed class MovementController
     public bool IsPathfinding => _pathfindTask is { IsCompleted: false } || _simpleMoveSeenAt != null;
     public DestinationData? Destination { get; set; }
     public NavigationFailureSnapshot? LastFailure { get; private set; }
-    public DateTime MovementStartedAt { get; private set; } = DateTime.Now;
+    public DateTime StartedAt { get; private set; } = DateTime.Now;
     public int BuiltNavmeshPercent => navmeshIpc.GetBuildProgress();
     private DateTime? _landAndRetryTimeout;
-    private DestinationData? _previousDestinationData;
-    private bool HasExternalMovementOperation => externalOperations.Value.HasMovingOperation;
+    private DestinationData? _previousDestination;
+    private bool HasMovingOperation => externalOperations.Value.HasMovingOperation;
 
     public void Dispose() => IpcInvoke.TryOnFrameworkThread(framework, Stop, logger);
 
     public void Update()
     {
-        if (!CanSubmitMovement(Destination != null || _pathfindTask != null || _previousDestinationData != null,
-            refreshProviderDiagnostics: false, waitForSimpleMove: true))
+        if (!CanNavigate(Destination != null || _pathfindTask != null || _previousDestination != null,
+            refreshDiagnostics: false, waitForSimpleMove: true))
             return;
 
         ThrowIfPathfindingFailed();
@@ -98,11 +98,11 @@ internal sealed class MovementController
         {
             var failure = CreateFailure(PathfindingFailureReason.StatusUnavailable,
                 "Unable to determine navmesh movement status");
-            ClearLocalMovement();
+            ClearLocalState();
             throw failure;
         }
 
-        if (_landAndRetryTimeout != null && _previousDestinationData != null)
+        if (_landAndRetryTimeout != null && _previousDestination != null)
         {
             if (condition[ConditionFlag.InFlight])
             {
@@ -116,8 +116,8 @@ internal sealed class MovementController
                 return;
             }
 
-            var retry = _previousDestinationData;
-            _previousDestinationData = null;
+            var retry = _previousDestination;
+            _previousDestination = null;
             _landAndRetryTimeout = null;
             NavigateTo(retry);
             return;
@@ -134,7 +134,7 @@ internal sealed class MovementController
                     {
                         chatGui.Print(_L("vnavmesh was not able to find a path. Attempting to land, then trying again."),
                             CommandHandler.MessageTag, CommandHandler.TagColor);
-                        _previousDestinationData = Destination;
+                        _previousDestination = Destination;
                         _landAndRetryTimeout = DateTime.Now.AddSeconds(10);
                         ResetPathfinding();
                         LandExecutor.TryLanding();
@@ -174,11 +174,11 @@ internal sealed class MovementController
                     {
                         var failure = CreateFailure(PathfindingFailureReason.NoRoute,
                             "Pathfinding returned no movement waypoints before reaching the destination");
-                        ClearLocalMovement();
+                        ClearLocalState();
                         throw failure;
                     }
-                    ClearLocalMovement();
-                    MovementStartedAt = DateTime.Now;
+                    ClearLocalState();
+                    StartedAt = DateTime.Now;
                     return;
                 }
                 logger.LogInformation("Navigating via route (XZ:{Distance}) [{Route}]",
@@ -186,7 +186,7 @@ internal sealed class MovementController
                     string.Join(" → ", pathfindResult.Select(x => x.ToString("G5", CultureInfo.InvariantCulture))));
 
                 ThrowIfPathfindingFailed();
-                if (!SubmitMovement(navPoints, Destination.IsFlying))
+                if (!StartRoute(navPoints, Destination.IsFlying))
                     return;
             }
         }
@@ -235,7 +235,7 @@ internal sealed class MovementController
                     if (gameObject is ICharacter or IEventObj)
                     {
                         if (Math.Abs(localPlayerPosition.Y - gameObject.Position.Y) <
-                            DefaultVerticalInteractionDistance)
+                            DefaultVerticalDistance)
                         {
                             Stop();
                         }
@@ -249,7 +249,7 @@ internal sealed class MovementController
                         else
                         {
                             if (Math.Abs(localPlayerPosition.Y - gameObject.Position.Y) <
-                                DefaultVerticalInteractionDistance)
+                                DefaultVerticalDistance)
                             {
                                 Stop();
                             }
@@ -280,7 +280,7 @@ internal sealed class MovementController
 
     private void Restart(DestinationData destination)
     {
-        if (!CanSubmitMovement())
+        if (!CanNavigate())
             return;
 
         Stop();
@@ -310,17 +310,17 @@ internal sealed class MovementController
         Destination = new(type, dataId, to,
             options.StopDistance ?? (QuestStep.DefaultStopDistance - 0.2f),
             options.Fly, options.Sprint,
-            options.VerticalStopDistance ?? DefaultVerticalInteractionDistance,
+            options.VerticalStopDistance ?? DefaultVerticalDistance,
             options.Land, useNavmesh);
-        MovementStartedAt = DateTime.MaxValue;
+        StartedAt = DateTime.MaxValue;
     }
 
     public void NavigateTo(DestinationData destination) =>
-        NavigateTo(destination.MovementType, destination.DataId, destination.Position, NavigationOptions.FromDestinationData(destination));
+        NavigateTo(destination.MovementType, destination.DataId, destination.Position, NavigationOptions.FromDestination(destination));
 
     public void NavigateTo(EMovementType type, uint? dataId, Vector3 to, NavigationOptions options)
     {
-        if (!CanSubmitMovement(isNewRequest: true))
+        if (!CanNavigate(isNewRequest: true))
             return;
 
         bool fly = options.Fly || condition[ConditionFlag.Diving];
@@ -360,7 +360,7 @@ internal sealed class MovementController
 
     internal void StartPathfinding(Vector3 from, Vector3 to, bool fly)
     {
-        if (!CanSubmitMovement())
+        if (!CanNavigate())
             return;
 
         ResetPathfinding();
@@ -394,7 +394,7 @@ internal sealed class MovementController
         {
             var exception = CreateFailure(PathfindingFailureReason.TimedOut,
                 "Pathfinding timed out after 30 seconds", failure);
-            ClearLocalMovement();
+            ClearLocalState();
             throw exception;
         }
 
@@ -407,21 +407,21 @@ internal sealed class MovementController
                 _ => PathfindingFailureReason.ProviderFault,
             };
             var exception = CreateFailure(reason, "Unable to complete pathfinding task", failure);
-            ClearLocalMovement();
+            ClearLocalState();
             throw exception;
         }
     }
 
     public void NavigateTo(EMovementType type, uint? dataId, List<Vector3> to, NavigationOptions options)
     {
-        if (!CanSubmitMovement(isNewRequest: true))
+        if (!CanNavigate(isNewRequest: true))
             return;
 
         if (to.Count == 0)
         {
             var failure = CreateFailure(PathfindingFailureReason.NoRoute,
                 "Cannot navigate without movement waypoints", isNewRequest: true);
-            ClearLocalMovement();
+            ClearLocalState();
             throw failure;
         }
 
@@ -433,52 +433,52 @@ internal sealed class MovementController
         PrepareNavigation(type, dataId, to[^1], effective, useNavmesh: false);
 
         logger.LogInformation("Moving to {Destination}", Destination);
-        SubmitMovement(to, fly);
+        StartRoute(to, fly);
     }
 
-    private void RefreshProviderDiagnostics(bool force)
+    private void RefreshDiagnostics(bool force)
     {
         long now = PathfindingClock();
-        if (!force && _providerDiagnosticsUpdatedAt is long updatedAt && now - updatedAt < 250)
+        if (!force && _diagnosticsUpdatedAt is long updatedAt && now - updatedAt < 250)
             return;
 
         _movementAllowed = navmeshIpc.GetMovementAllowed();
         _simpleMoveInProgress = navmeshIpc.GetSimpleMoveInProgress();
         _pathfindInProgress = navmeshIpc.GetPathfindInProgress();
         _queuedPathfinds = navmeshIpc.GetQueuedPathfinds();
-        _providerDiagnosticsUpdatedAt = now;
+        _diagnosticsUpdatedAt = now;
     }
 
-    private bool CanSubmitMovement(bool hasRequest = true, bool isNewRequest = false,
-        bool refreshProviderDiagnostics = true, bool waitForSimpleMove = false)
+    private bool CanNavigate(bool hasRequest = true, bool isNewRequest = false,
+        bool refreshDiagnostics = true, bool waitForSimpleMove = false)
     {
-        if (HasExternalMovementOperation)
+        if (HasMovingOperation)
         {
-            ClearLocalMovement();
+            ClearLocalState();
             return false;
         }
 
         if (!hasRequest)
             return true;
 
-        bool providerHasWork = HasExternalMovementProviderWork();
-        // A provider query may have reconciled a retained operation in the meantime.
-        if (HasExternalMovementOperation)
+        bool providerHasWork = ProviderMayBeMoving();
+        // A provider query may have finished a pending operation in the meantime.
+        if (HasMovingOperation)
         {
-            ClearLocalMovement();
+            ClearLocalState();
             return false;
         }
 
         // Updates use a short-lived cache; missing optional IPC stays unknown and does not disable navigation.
-        RefreshProviderDiagnostics(refreshProviderDiagnostics);
+        RefreshDiagnostics(refreshDiagnostics);
         if (_movementAllowed == false)
         {
             var disabled = CreateFailure(PathfindingFailureReason.MovementDisabled,
                 "Movement is disabled in vnavmesh", isNewRequest: isNewRequest);
             // Disabling movement only pauses vnav's route; clear it so re-enabling can't resume it after cleanup.
-            if (_hasSubmittedRoute && !providerHasWork && _simpleMoveInProgress != true)
+            if (_hasStartedRoute && !providerHasWork && _simpleMoveInProgress != true)
                 navmeshIpc.Stop();
-            ClearLocalMovement();
+            ClearLocalState();
             throw disabled;
         }
 
@@ -489,7 +489,7 @@ internal sealed class MovementController
         }
 
         // vnav re-paths a stuck route through SimpleMove by itself; give our running route time for that to finish.
-        if (waitForSimpleMove && !providerHasWork && _hasSubmittedRoute)
+        if (waitForSimpleMove && !providerHasWork && _hasStartedRoute)
         {
             long now = PathfindingClock();
             _simpleMoveSeenAt ??= now;
@@ -501,13 +501,13 @@ internal sealed class MovementController
             _simpleMoveInProgress == true
                 ? "Navigation blocked by pending vnavmesh SimpleMove work"
                 : "Navigation blocked by an external movement provider", isNewRequest: isNewRequest);
-        ClearLocalMovement();
+        ClearLocalState();
         throw failure;
     }
 
-    internal bool SubmitMovement(List<Vector3> points, bool fly)
+    internal bool StartRoute(List<Vector3> points, bool fly)
     {
-        if (!CanSubmitMovement())
+        if (!CanNavigate())
             return false;
 
         try
@@ -518,17 +518,17 @@ internal sealed class MovementController
         {
             var failure = CreateFailure(PathfindingFailureReason.StartFailed,
                 "Unable to start navmesh movement", e);
-            ClearLocalMovement();
+            ClearLocalState();
             throw failure;
         }
 
-        _hasSubmittedRoute = true;
-        MovementStartedAt = DateTime.Now;
+        _hasStartedRoute = true;
+        StartedAt = DateTime.Now;
         ResetPathfinding();
         return true;
     }
 
-    public void RecordFailure(PathfindingFailedException exception, string? quest = null, string? task = null)
+    public void RecordFailure(PathfindingException exception, string? quest = null, string? task = null)
     {
         NavigationFailureSnapshot snapshot = exception.Snapshot ?? CaptureFailure(exception, Destination);
         snapshot = snapshot with { Quest = quest ?? snapshot.Quest, Task = task ?? snapshot.Task };
@@ -536,24 +536,24 @@ internal sealed class MovementController
         LastFailure = snapshot;
     }
 
-    internal void RecordFailureWithDestination(PathfindingFailedException exception, DestinationData fallbackDestination)
+    internal void RecordFailureWithDestination(PathfindingException exception, DestinationData fallbackDestination)
     {
         exception.Snapshot ??= CaptureFailure(exception, Destination ?? fallbackDestination);
         RecordFailure(exception);
     }
 
-    private PathfindingFailedException CreateFailure(PathfindingFailureReason reason, string message,
+    private PathfindingException CreateFailure(PathfindingFailureReason reason, string message,
         Exception? innerException = null, bool isNewRequest = false)
     {
-        var exception = new PathfindingFailedException(reason, message, innerException);
-        // A rejected initial submission has not replaced the previous request yet.
-        exception.Snapshot = CaptureFailure(exception, isNewRequest ? null : Destination ?? _previousDestinationData,
+        var exception = new PathfindingException(reason, message, innerException);
+        // A rejected first request has not replaced the previous one yet.
+        exception.Snapshot = CaptureFailure(exception, isNewRequest ? null : Destination ?? _previousDestination,
             includeElapsed: !isNewRequest);
         RecordFailure(exception);
         return exception;
     }
 
-    private NavigationFailureSnapshot CaptureFailure(PathfindingFailedException exception,
+    private NavigationFailureSnapshot CaptureFailure(PathfindingException exception,
         DestinationData? destination, bool includeElapsed = true) => new()
     {
         TimestampUtc = DateTimeOffset.UtcNow,
@@ -605,7 +605,7 @@ internal sealed class MovementController
         _pathfindTask = null;
         _pathfindingStartedAt = null;
 
-        // Observe late faults from detached work without touching controller state.
+        // Observe late faults from abandoned work without touching controller state.
         if (task != null)
             _ = task.ContinueWith(static completed => { _ = completed.Exception; },
                 CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted | TaskContinuationOptions.ExecuteSynchronously,
@@ -639,7 +639,7 @@ internal sealed class MovementController
         if (Destination == null)
             throw new InvalidOperationException("Destination is null");
 
-        if (DateTime.Now - MovementStartedAt <= TimeSpan.FromSeconds(5))
+        if (DateTime.Now - StartedAt <= TimeSpan.FromSeconds(5))
             return false;
 
         Vector3 nextWaypoint = navPoints.FirstOrDefault();
@@ -724,15 +724,15 @@ internal sealed class MovementController
         }
     }
 
-    private bool HasExternalMovementProviderWork() => externalOperations.Value.MayBeMovingCharacter();
+    private bool ProviderMayBeMoving() => externalOperations.Value.MayBeMovingCharacter();
 
     public void Stop()
     {
-        bool providerHasWork = HasExternalMovementOperation || HasExternalMovementProviderWork() ||
-            HasExternalMovementOperation || navmeshIpc.GetSimpleMoveInProgress() == true;
-        ClearLocalMovement();
-        // Leave provider-owned travel alone, including a pending SimpleMove that can't be cancelled safely.
-        if (providerHasWork || HasExternalMovementOperation)
+        bool providerHasWork = HasMovingOperation || ProviderMayBeMoving() ||
+            HasMovingOperation || navmeshIpc.GetSimpleMoveInProgress() == true;
+        ClearLocalState();
+        // Leave a provider's travel alone, including a pending SimpleMove that can't be cancelled safely.
+        if (providerHasWork || HasMovingOperation)
             return;
 
         navmeshIpc.Stop();
@@ -744,11 +744,11 @@ internal sealed class MovementController
         }
     }
 
-    private void ClearLocalMovement()
+    private void ClearLocalState()
     {
-        _hasSubmittedRoute = false;
+        _hasStartedRoute = false;
         Destination = null;
-        _previousDestinationData = null;
+        _previousDestination = null;
         _landAndRetryTimeout = null;
         _simpleMoveSeenAt = null;
         ResetPathfinding();
@@ -786,14 +786,14 @@ internal sealed class MovementController
         public float? StopDistance { get; init; }
         public float? VerticalStopDistance { get; init; }
         public bool Land { get; init; }
-        public static NavigationOptions FromDestinationData(DestinationData destData) =>
+        public static NavigationOptions FromDestination(DestinationData destination) =>
             new()
             {
-                Fly = destData.IsFlying,
-                Sprint = destData.CanSprint,
-                StopDistance = destData.StopDistance,
-                VerticalStopDistance = destData.VerticalStopDistance,
-                Land = destData.Land
+                Fly = destination.IsFlying,
+                Sprint = destination.CanSprint,
+                StopDistance = destination.StopDistance,
+                VerticalStopDistance = destination.VerticalStopDistance,
+                Land = destination.Land
             };
     }
 
@@ -813,27 +813,27 @@ internal sealed class MovementController
         MovementDisabled,
     }
 
-    public sealed class PathfindingFailedException : Exception
+    public sealed class PathfindingException : Exception
     {
         public PathfindingFailureReason Reason { get; }
         internal NavigationFailureSnapshot? Snapshot { get; set; }
 
-        public PathfindingFailedException(PathfindingFailureReason reason, string message, Exception? innerException = null)
+        public PathfindingException(PathfindingFailureReason reason, string message, Exception? innerException = null)
             : base(message, innerException)
         {
             Reason = reason;
         }
 
-        public PathfindingFailedException()
+        public PathfindingException()
         {
         }
 
-        public PathfindingFailedException(string message)
+        public PathfindingException(string message)
             : base(message)
         {
         }
 
-        public PathfindingFailedException(string message, Exception innerException)
+        public PathfindingException(string message, Exception innerException)
             : base(message, innerException)
         {
         }

@@ -257,7 +257,7 @@ internal static class AethernetShortcut
 
             if (_moving)
             {
-                DateTime movementStartedAt = movementController.MovementStartedAt;
+                DateTime movementStartedAt = movementController.StartedAt;
                 if (movementStartedAt == DateTime.MaxValue || movementStartedAt.AddSeconds(2) >= DateTime.Now)
                     return ETaskResult.StillRunning;
 

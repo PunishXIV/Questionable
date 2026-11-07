@@ -21,7 +21,7 @@ namespace Questionable.Windows.QuestComponents;
 internal sealed partial class ActiveQuestComponent
 (
     QuestController questController,
-    ExternalOperationCoordinator externalOperations,
+    OperationCoordinator externalOperations,
     MovementController movementController,
     CombatController combatController,
     GatheringController gatheringController,
@@ -760,7 +760,7 @@ internal sealed partial class ActiveQuestComponent
         {
             ImGui.SameLine();
             bool anyStopArmed = questController.StopAfterCurrentQuest
-                                || questController.StopAfterAcceptingNextQuest
+                                || questController.StopAfterNextAccept
                                 || questController.StopBeforeTeleport;
             using (QstWidgets.SegmentGroup(anyStopArmed))
             {
@@ -771,10 +771,10 @@ internal sealed partial class ActiveQuestComponent
 
                 ImGui.SameLine();
 
-                if (QstWidgets.SegmentToggle(FontAwesomeIcon.Check, questController.StopAfterAcceptingNextQuest,
+                if (QstWidgets.SegmentToggle(FontAwesomeIcon.Check, questController.StopAfterNextAccept,
                         _L("Cancel scheduled stop after accepting the next quest."),
                         _L("Stop after accepting the next quest.")))
-                    questController.StopAfterAcceptingNextQuest = !questController.StopAfterAcceptingNextQuest;
+                    questController.StopAfterNextAccept = !questController.StopAfterNextAccept;
 
                 ImGui.SameLine();
 
@@ -891,7 +891,7 @@ internal sealed partial class ActiveQuestComponent
             (text, color) = (_L("Combat"), QstTheme.Accent);
         else if (questController.IsRunning
                  && (questController.StopAfterCurrentQuest
-                     || questController.StopAfterAcceptingNextQuest
+                     || questController.StopAfterNextAccept
                      || questController.StopBeforeTeleport))
             (text, color) = (_L("Stopping"), QstTheme.Amber);
         else if (questController.IsRunning)

@@ -84,7 +84,7 @@ internal sealed class StopConditionComponent : ConfigComponent
                 Configuration.Stop.CommandAfterStop = "/li auto";
             Save();
         }
-        ImGuiComponentsLocal.HelpMarker("Excludes these stop reasons:", QuestStopPolicy.CommandExceptions.ToArray());
+        ImGuiComponentsLocal.HelpMarker("Excludes these stop reasons:", QuestStopPolicy.ExcludedStopReasons.ToArray());
 
         ImGui.Separator();
 

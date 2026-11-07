@@ -243,7 +243,7 @@ internal sealed class CreationUtilsComponent
 
                 float verticalDistance = target.Position.Y - objectTable[0]!.Position.Y;
                 string verticalDistanceText = _LF("Y: {0:F2}", verticalDistance);
-                if (Math.Abs(verticalDistance) >= MovementController.DefaultVerticalInteractionDistance)
+                if (Math.Abs(verticalDistance) >= MovementController.DefaultVerticalDistance)
                     ImGui.TextColored(QstTheme.Accent, verticalDistanceText);
                 else
                     ImGui.Text(verticalDistanceText);
@@ -273,7 +273,7 @@ internal sealed class CreationUtilsComponent
 
             float verticalDistance = debugOverlay.SavedPos.Value.Y - pos.Y;
             string verticalDistanceText = _LF("Y: {0:F2}", verticalDistance);
-            if (Math.Abs(verticalDistance) >= MovementController.DefaultVerticalInteractionDistance)
+            if (Math.Abs(verticalDistance) >= MovementController.DefaultVerticalDistance)
                 ImGui.TextColored(QstTheme.Accent, verticalDistanceText);
             else
                 ImGui.Text(verticalDistanceText);

@@ -519,7 +519,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
                     ImGui.Separator();
                     ImGui.Text(_L("This affects the following dungeons and raids:"));
-                    foreach ((uint ContentFinderConditionId, ElementId QuestId, int Sequence) lowPriorityCfc in _questRegistry.LowPriorityContentFinderConditionQuests)
+                    foreach ((uint ContentFinderConditionId, ElementId QuestId, int Sequence) lowPriorityCfc in _questRegistry.LowPriorityCfcQuests)
                     {
                         if (_territoryData.TryGetContentFinderCondition(lowPriorityCfc.ContentFinderConditionId, out TerritoryData.ContentFinderConditionData? cfcData))
                             ImGui.BulletText($"{cfcData.Name}");

@@ -168,7 +168,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
         foreach (DutyInfo dutyInfo in cfcNames)
         {
-            if (!_questRegistry.TryGetDutyByContentFinderConditionId(dutyInfo.CfcId, out DutyOptions? dutyOptions))
+            if (!_questRegistry.TryGetDutyByCfcId(dutyInfo.CfcId, out DutyOptions? dutyOptions))
                 continue;
 
             DrawDutyRow(dutyInfo, dutyOptions);
@@ -257,7 +257,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
         foreach ((uint cfcId, uint _, string _, EContentType _) in cfcNames)
         {
-            if (_questRegistry.TryGetDutyByContentFinderConditionId(cfcId, out DutyOptions? dutyOptions))
+            if (_questRegistry.TryGetDutyByCfcId(cfcId, out DutyOptions? dutyOptions))
             {
                 totalCount++;
 
@@ -283,7 +283,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
             {
                 foreach ((uint cfcId, uint _, string _, EContentType _) in cfcNames)
                 {
-                    if (_questRegistry.TryGetDutyByContentFinderConditionId(cfcId, out DutyOptions? _))
+                    if (_questRegistry.TryGetDutyByCfcId(cfcId, out DutyOptions? _))
                         Configuration.Duties.WhitelistedDutyCfcIds.Add(cfcId);
                 }
             }

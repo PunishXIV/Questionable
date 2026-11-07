@@ -58,7 +58,7 @@ internal static class Craft
         QuestWorkUtils.HasCompletionFlags(task.Step.CompletionQuestVariablesFlags) &&
         (questComplete || questWork != null &&
             (questWork.Sequence > task.Sequence ||
-             questWork.Sequence == task.Sequence && QuestWorkUtils.MatchesQuestWork(task.Step.CompletionQuestVariablesFlags, questWork)));
+             questWork.Sequence == task.Sequence && QuestWorkUtils.Matches(task.Step.CompletionQuestVariablesFlags, questWork)));
 
     internal static IReadOnlyList<CraftingItem> GetItemTargets(Task task) => HasItemTarget(task)
         ? [QuestCraftingRequirements.ResolveItem(task.Quest.Id,

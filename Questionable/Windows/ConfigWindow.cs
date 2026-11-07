@@ -75,7 +75,7 @@ internal sealed class ConfigWindow
     public void SaveWindowConfig() => _pluginInterface.SavePluginConfig(_configuration);
 
     // the profiles tab may have switched profiles for editing; go back to the one this character uses
-    public override void OnClose() => _profileController.ActivateForCurrentCharacter();
+    public override void OnClose() => _profileController.ActivateCharacterProfile();
 
     public override void DrawContent()
     {

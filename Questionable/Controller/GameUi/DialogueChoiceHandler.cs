@@ -73,40 +73,40 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
         _dataManager = dataManager;
 
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "SelectString", SelectStringPostSetup);
-        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "CutSceneSelectString", CutsceneSelectStringPostSetup);
+        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "CutSceneSelectString", CutsceneStringPostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "SelectIconString", SelectIconStringPostSetup);
     }
 
     public void Dispose()
     {
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "SelectIconString", SelectIconStringPostSetup);
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "CutSceneSelectString", CutsceneSelectStringPostSetup);
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "CutSceneSelectString", CutsceneStringPostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "SelectString", SelectStringPostSetup);
     }
 
-    private bool ShouldHandleUiInteractions =>
+    private bool ShouldHandleUi =>
         !_questController.HasExternalOperation &&
         (_questController.IsRunning || _territoryData.IsQuestBattleInstance(_clientState.TerritoryType));
 
     private unsafe void SelectStringPostSetup(AddonEvent type, AddonArgs args)
     {
-        if (!ShouldHandleUiInteractions)
+        if (!ShouldHandleUi)
             return;
 
         HandleSelectString((AddonSelectString*)args.Addon.Address, checkAllSteps: false);
     }
 
-    private unsafe void CutsceneSelectStringPostSetup(AddonEvent type, AddonArgs args)
+    private unsafe void CutsceneStringPostSetup(AddonEvent type, AddonArgs args)
     {
-        if (!ShouldHandleUiInteractions)
+        if (!ShouldHandleUi)
             return;
 
-        HandleCutsceneSelectString((AddonCutSceneSelectString*)args.Addon.Address, checkAllSteps: false);
+        HandleCutsceneString((AddonCutSceneSelectString*)args.Addon.Address, checkAllSteps: false);
     }
 
     private unsafe void SelectIconStringPostSetup(AddonEvent type, AddonArgs args)
     {
-        if (!ShouldHandleUiInteractions)
+        if (!ShouldHandleUi)
             return;
 
         HandleSelectIconString((AddonSelectIconString*)args.Addon.Address, checkAllSteps: false);
@@ -127,7 +127,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
         if (_gameGui.TryGetAddonByName("CutSceneSelectString", out AddonCutSceneSelectString* addonCutSceneSelectString))
         {
             _logger.LogInformation("CutSceneSelectString window is open");
-            HandleCutsceneSelectString(addonCutSceneSelectString, checkAllSteps: true);
+            HandleCutsceneString(addonCutSceneSelectString, checkAllSteps: true);
         }
 
         if (_gameGui.TryGetAddonByName("SelectIconString", out AddonSelectIconString* addonSelectIconString))
@@ -155,7 +155,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
         }
     }
 
-    private unsafe void HandleCutsceneSelectString(AddonCutSceneSelectString* addonCutSceneSelectString,
+    private unsafe void HandleCutsceneString(AddonCutSceneSelectString* addonCutSceneSelectString,
         bool checkAllSteps)
     {
         string? actualPrompt = AtkValueAdapter.ReadString(addonCutSceneSelectString->AtkUnitBase.AtkValues[2]);
@@ -250,7 +250,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
         {
             Quest quest = currentQuest.Quest;
             bool isTaxiStandUnlock = false;
-            List<EAetheryteLocation> freeOrFavoredAetheryteRegistrations = [];
+            List<EAetheryteLocation> favoredAetherytes = [];
             if (checkAllSteps)
             {
                 QuestSequence? sequence = currentQuest.FindSequence();
@@ -260,7 +260,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
 
                 isTaxiStandUnlock = sequence?.Steps.Any(x => x.InteractionType == EInteractionType.UnlockTaxiStand) ??
                                     false;
-                freeOrFavoredAetheryteRegistrations = sequence?.Steps
+                favoredAetherytes = sequence?.Steps
                                                           .Where(x => x is
                                                           {
                                                               InteractionType: EInteractionType
@@ -298,7 +298,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                     }
 
                     if (step is { InteractionType: EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: { } aetheryte })
-                        freeOrFavoredAetheryteRegistrations = [aetheryte];
+                        favoredAetherytes = [aetheryte];
 
                     isTaxiStandUnlock = step.InteractionType == EInteractionType.UnlockTaxiStand;
                 }
@@ -316,7 +316,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                 }));
             }
 
-            if (freeOrFavoredAetheryteRegistrations.Any(x =>
+            if (favoredAetherytes.Any(x =>
                 _aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(x) ==
                 AetheryteRegistrationResult.SecurityTokenFreeDestinationAvailable))
             {
@@ -331,7 +331,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                     AnswerIsRegularExpression = true
                 }));
             }
-            else if (freeOrFavoredAetheryteRegistrations.Any(x =>
+            else if (favoredAetherytes.Any(x =>
                 _aetheryteFunctions.CanRegisterFreeOrFavoriteAetheryte(x) ==
                 AetheryteRegistrationResult.FavoredDestinationAvailable))
             {
@@ -347,7 +347,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                 }));
             }
 
-            ushort? targetTerritoryId = _travelDestinationResolver.FindTargetTerritoryFromQuestStep(currentQuest);
+            ushort? targetTerritoryId = _travelDestinationResolver.FindTargetTerritory(currentQuest);
             if (targetTerritoryId != null)
             {
                 foreach (string? answer in answers)
@@ -468,12 +468,12 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                     answers[i], excelAnswer);
                 if (DialogueReferenceResolver.IsMatch(answers[i], excelAnswer))
                 {
-                    string notif = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} '{answers[i]}'";
+                    string message = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} '{answers[i]}'";
                     if (!_configuration.General.DontShowAnswerSuggestions)
                     {
                         if (_configuration.General.DontSkipCutscenes)
-                            _toastGui.ShowQuest(notif);
-                        _chatGui.Print(notif, CommandHandler.MessageTag, CommandHandler.TagColor);
+                            _toastGui.ShowQuest(message);
+                        _chatGui.Print(message, CommandHandler.MessageTag, CommandHandler.TagColor);
                     }
                     _logger.LogInformation("Returning {Index}: '{Answer}' for '{Prompt}'",
                         i, answers[i], actualPrompt);
@@ -513,7 +513,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                     if (PromptRegex.IsMatch(text.Key.ToMacroString()))
                         lastPrompt = text.Key.ToMacroString();
                     if (AnswerRegex.IsMatch(text.Key.ToMacroString()))
-                        if (yesNoArray.Any(s => s.EqualsIgnoreCase(text.Value.ToMacroString())))
+                        if (YesNoAnswers.Any(s => s.EqualsIgnoreCase(text.Value.ToMacroString())))
                             _logger.LogDebug($@"{{""Prompt"":""{lastPrompt}"",""Yes"":true,""Type"":""YesNo""}}");
                         else
                             _logger.LogDebug($@"{text.Value.ToMacroString()} {{""Prompt"":""{lastPrompt}"",""Answer"":""{text.Key.ToMacroString()}"",""Type"":""List""}}");
@@ -542,5 +542,5 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
     [GeneratedRegex(@"^TEXT_.*?_\d{5}_A\d")]
     private static partial Regex AnswerRegex { get; }
 
-    internal static readonly string[] yesNoArray = new string[] { "yes", "no" };
+    internal static readonly string[] YesNoAnswers = new string[] { "yes", "no" };
 }

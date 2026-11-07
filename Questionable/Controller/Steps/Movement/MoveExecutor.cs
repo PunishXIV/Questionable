@@ -56,18 +56,18 @@ internal sealed class MoveExecutor
         {
             return UpdateMovement();
         }
-        catch (MovementController.PathfindingFailedException e)
+        catch (MovementController.PathfindingException e)
         {
             RecordFailure(e);
             throw;
         }
     }
 
-    private void RecordFailure(MovementController.PathfindingFailedException exception) =>
+    private void RecordFailure(MovementController.PathfindingException exception) =>
         _movementController.RecordFailureWithDestination(exception, new(
             EMovementType.Quest, Task.DataId, Task.Destination,
             Task.StopDistance ?? QuestStep.DefaultStopDistance, Task.Fly, Task.Sprint ?? false,
-            MovementController.DefaultVerticalInteractionDistance, Task.Land, !Task.DisableNavmesh));
+            MovementController.DefaultVerticalDistance, Task.Land, !Task.DisableNavmesh));
 
     private ETaskResult UpdateMovement()
     {
@@ -87,13 +87,13 @@ internal sealed class MoveExecutor
 
         bool? running = _movementController.GetPathRunning();
         if (running == null)
-            throw new MovementController.PathfindingFailedException(
+            throw new MovementController.PathfindingException(
                 MovementController.PathfindingFailureReason.StatusUnavailable,
                 "Unable to verify whether navigation is still running; movement will not be retried");
         if (running == true)
             return ETaskResult.StillRunning;
 
-        DateTime movementStartedAt = _movementController.MovementStartedAt;
+        DateTime movementStartedAt = _movementController.StartedAt;
         if (movementStartedAt == DateTime.MaxValue || movementStartedAt.AddSeconds(2) >= DateTime.Now)
             return ETaskResult.StillRunning;
 
@@ -106,7 +106,7 @@ internal sealed class MoveExecutor
             if (DateTime.Now - _navmeshWaitStartedAt < NavmeshReloadTimeout)
                 return ETaskResult.StillRunning;
 
-            throw new MovementController.PathfindingFailedException(
+            throw new MovementController.PathfindingException(
                 MovementController.PathfindingFailureReason.NotArrived,
                 "Movement stopped and vnavmesh did not finish loading its navmesh");
         }
@@ -156,7 +156,7 @@ internal sealed class MoveExecutor
             return true;
 
         if (!canRestart)
-            throw new MovementController.PathfindingFailedException(
+            throw new MovementController.PathfindingException(
                 MovementController.PathfindingFailureReason.NotArrived,
                 "Movement stopped before reaching the destination");
 
@@ -213,7 +213,7 @@ internal sealed class MoveExecutor
         {
             return StartMovement();
         }
-        catch (MovementController.PathfindingFailedException e)
+        catch (MovementController.PathfindingException e)
         {
             RecordFailure(e);
             throw;

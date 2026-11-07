@@ -162,7 +162,7 @@ public sealed class QuestAcceptanceStopTests
     [InlineData(253)] // Class quest picked up while another quest is active.
     public void ExpectedAcceptanceIsObservedBeforeItsWaitRuns(ushort accepting)
     {
-        _acceptance.StopAfterAcceptingNextQuest = true;
+        _acceptance.StopAfterNextAccept = true;
         QuestId expected = new(accepting);
         Queue(new WaitAtEnd.WaitDelay());
         Queue(new WaitAtEnd.QuestAccepted(expected));
@@ -262,7 +262,7 @@ public sealed class QuestAcceptanceStopTests
             Assert.False(_acceptance.ShouldStop(id, isAccepted: true, isManual: false, out _));
         });
 
-        _acceptance.StopAfterAcceptingNextQuest = true;
+        _acceptance.StopAfterNextAccept = true;
         _acceptance.ObserveQueued(_queue, _ => true, accepted.Add);
 
         Assert.False(_acceptance.TryConsumeQueued(new QuestId(2881)));
@@ -277,11 +277,11 @@ public sealed class QuestAcceptanceStopTests
         QuestId nextQuest = new(2881);
         _configuration.Stop.Enabled = configured;
         _configuration.Stop.QuestsToStopWhenAccepted.Add(nextQuest);
-        _acceptance.StopAfterAcceptingNextQuest = !configured;
+        _acceptance.StopAfterNextAccept = !configured;
 
         Assert.False(_acceptance.ShouldStop(nextQuest, isAccepted: false, isManual: false, out bool configStop));
         Assert.False(configStop);
-        Assert.Equal(!configured, _acceptance.StopAfterAcceptingNextQuest);
+        Assert.Equal(!configured, _acceptance.StopAfterNextAccept);
 
         Assert.True(_acceptance.ShouldStop(nextQuest, isAccepted: true, isManual: false, out configStop));
         Assert.Equal(configured, configStop);
@@ -293,7 +293,7 @@ public sealed class QuestAcceptanceStopTests
     [InlineData(2552)]
     public void StopAfterAcceptIncludesAnyAcceptedQuest(ushort accepted)
     {
-        _acceptance.StopAfterAcceptingNextQuest = true;
+        _acceptance.StopAfterNextAccept = true;
 
         Assert.True(_acceptance.ShouldStop(new QuestId(accepted), isAccepted: true, isManual: false, out bool configStop));
         Assert.False(configStop);
@@ -317,7 +317,7 @@ public sealed class QuestAcceptanceStopTests
     [Fact]
     public void ManualModeDoesNotApplyAcceptanceStops()
     {
-        _acceptance.StopAfterAcceptingNextQuest = true;
+        _acceptance.StopAfterNextAccept = true;
         _configuration.Stop.Enabled = true;
         _configuration.Stop.QuestsToStopWhenAccepted.Add(new QuestId(2881));
 
@@ -359,7 +359,7 @@ public sealed class QuestAcceptanceWiringTests : IDisposable
         var quest = QuestTestData.CreateQuest(new QuestId(2881));
         quest.Info.IsRepeatable.Returns(repeatable);
         _controller.AutomationType = singleQuest ? QuestController.EAutomationType.SingleQuestA : QuestController.EAutomationType.Automatic;
-        _controller.StopAfterAcceptingNextQuest = true;
+        _controller.StopAfterNextAccept = true;
         _controller.SelectNextQuest(quest, isAccepted: true);
         var selected = _controller.NextQuest;
         List<ElementId> accepted = [];
@@ -368,7 +368,7 @@ public sealed class QuestAcceptanceWiringTests : IDisposable
 
         Assert.Empty(accepted);
         Assert.Null(_controller.NextQuest);
-        Assert.True(_controller.StopAfterAcceptingNextQuest);
+        Assert.True(_controller.StopAfterNextAccept);
         Assert.Equal(singleQuest ? QuestController.EAutomationType.SingleQuestB : QuestController.EAutomationType.Automatic,
             _controller.AutomationType);
         if (singleQuest)
@@ -399,22 +399,22 @@ public sealed class QuestAcceptanceWiringTests : IDisposable
     [Fact]
     public void SelectingAStartedQuestRegistersNoAcceptance()
     {
-        _controller.StopAfterAcceptingNextQuest = true;
+        _controller.StopAfterNextAccept = true;
         _controller.SelectStartedQuest(QuestTestData.CreateQuest(new QuestId(2881)), sequence: 1);
         List<ElementId> accepted = [];
 
         _acceptance.ObserveQueued(_queue, _ => true, accepted.Add);
 
         Assert.Empty(accepted);
-        Assert.True(_controller.StopAfterAcceptingNextQuest);
+        Assert.True(_controller.StopAfterNextAccept);
         Assert.Equal(QuestController.EAutomationType.Automatic, _controller.AutomationType);
     }
 
     [Fact]
     public void QueuedWaitsAreTrackedAsTheyAreEnqueued()
     {
-        _controller.EnqueueQuestTask(new WaitAtEnd.QuestAccepted(new QuestId(2881)), _ => false);
-        _controller.EnqueueQuestTask(new WaitAtEnd.QuestAccepted(new QuestId(253)), _ => true);
+        _controller.EnqueueTask(new WaitAtEnd.QuestAccepted(new QuestId(2881)), _ => false);
+        _controller.EnqueueTask(new WaitAtEnd.QuestAccepted(new QuestId(253)), _ => true);
         List<ElementId> accepted = [];
 
         _acceptance.ObserveQueued(_queue, _ => true, accepted.Add);
@@ -429,8 +429,8 @@ public sealed class QuestAcceptanceWiringTests : IDisposable
         var quest = QuestTestData.CreateQuest(new QuestId(2881));
         _controller.SelectNextQuest(quest, isAccepted: false);
         var selected = _controller.NextQuest!;
-        _controller.EnqueueQuestTask(new WaitAtEnd.QuestAccepted(quest.Id), _ => false);
-        _controller.StopAfterAcceptingNextQuest = true;
+        _controller.EnqueueTask(new WaitAtEnd.QuestAccepted(quest.Id), _ => false);
+        _controller.StopAfterNextAccept = true;
 
         _controller.Stop("test");
 
@@ -440,7 +440,7 @@ public sealed class QuestAcceptanceWiringTests : IDisposable
         Assert.False(_acceptance.TryConsumeQueued(quest.Id));
         Assert.True(_acceptance.TryResolve(selected, isAccepted: true, isComplete: false, out bool newlyAccepted));
         Assert.False(newlyAccepted);
-        Assert.False(_controller.StopAfterAcceptingNextQuest);
+        Assert.False(_controller.StopAfterNextAccept);
         Assert.Null(_controller.NextQuest);
     }
 
@@ -450,9 +450,9 @@ public sealed class QuestAcceptanceWiringTests : IDisposable
         _controller.AutomationType = QuestController.EAutomationType.Manual;
         var quest = QuestTestData.CreateQuest(new QuestId(2881));
         _controller.SelectNextQuest(quest, isAccepted: false);
-        _controller.EnqueueQuestTask(new WaitAtEnd.QuestAccepted(quest.Id), _ => false);
+        _controller.EnqueueTask(new WaitAtEnd.QuestAccepted(quest.Id), _ => false);
 
-        _controller.TryStopOnExpectedQuestAccepted(quest.Id);
+        _controller.TryStopOnQueuedAccept(quest.Id);
 
         Assert.True(_controller.ResolveNextQuest(isAccepted: true, isComplete: false,
             _ => Assert.Fail("Acceptance was reported twice")));

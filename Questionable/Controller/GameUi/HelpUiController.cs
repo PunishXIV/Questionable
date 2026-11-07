@@ -25,11 +25,11 @@ internal sealed class HelpUiController : IDisposable
         _framework = framework;
         _logger = logger;
 
-        _questController.AutomationTypeChanged += CloseHelpWindowsWhenStartingQuests;
+        _questController.AutomationTypeChanged += CloseHelpWindows;
 
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "AkatsukiNote", UnendingCodexPostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "ContentsTutorial", ContentsTutorialPostSetup);
-        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "MultipleHelpWindow", MultipleHelpWindowPostSetup);
+        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "MultipleHelpWindow", MultipleHelpPostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "JobHudNotice", JobHudNoticePostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "Guide", GuidePostSetup);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "EventTutorial", EventTutorialPostSetup);
@@ -46,14 +46,14 @@ internal sealed class HelpUiController : IDisposable
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "EventTutorial", EventTutorialPostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "Guide", GuidePostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "JobHudNotice", JobHudNoticePostSetup);
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "MultipleHelpWindow", MultipleHelpWindowPostSetup);
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "MultipleHelpWindow", MultipleHelpPostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "ContentsTutorial", ContentsTutorialPostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "AkatsukiNote", UnendingCodexPostSetup);
 
-        _questController.AutomationTypeChanged -= CloseHelpWindowsWhenStartingQuests;
+        _questController.AutomationTypeChanged -= CloseHelpWindows;
     }
 
-    private unsafe void CloseHelpWindowsWhenStartingQuests(object sender, QuestController.EAutomationType e)
+    private unsafe void CloseHelpWindows(object sender, QuestController.EAutomationType e)
     {
         if (e is QuestController.EAutomationType.Manual)
             return;
@@ -128,7 +128,7 @@ internal sealed class HelpUiController : IDisposable
     }
 
     // The game can open this when Duty Finder is first opened during Sastasha.
-    private unsafe void MultipleHelpWindowPostSetup(AddonEvent type, AddonArgs args)
+    private unsafe void MultipleHelpPostSetup(AddonEvent type, AddonArgs args)
     {
         if (_questController.StartedQuest?.Quest.Id.Value == 245)
         {

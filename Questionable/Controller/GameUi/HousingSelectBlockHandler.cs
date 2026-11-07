@@ -26,19 +26,19 @@ internal sealed class HousingSelectBlockHandler : IDisposable
         _clientState = clientState;
         _logger = logger;
 
-        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "HousingSelectBlock", HousingSelectBlockPostSetup);
+        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "HousingSelectBlock", OnPostSetup);
     }
 
     public void Dispose() =>
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "HousingSelectBlock", HousingSelectBlockPostSetup);
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "HousingSelectBlock", OnPostSetup);
 
-    private bool ShouldHandleUiInteractions =>
+    private bool ShouldHandleUi =>
         _questController.IsRunning ||
         _territoryData.IsQuestBattleInstance(_clientState.TerritoryType);
 
-    private unsafe void HousingSelectBlockPostSetup(AddonEvent type, AddonArgs args)
+    private unsafe void OnPostSetup(AddonEvent type, AddonArgs args)
     {
-        if (!ShouldHandleUiInteractions)
+        if (!ShouldHandleUi)
             return;
 
         _logger.LogInformation("Confirming selected housing ward");

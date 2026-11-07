@@ -21,7 +21,7 @@ internal sealed unsafe class ProfileController : IDisposable
         _clientState.Login += OnLogin;
         _clientState.Logout += OnLogout;
         if (_clientState.IsLoggedIn)
-            _framework.RunOnFrameworkThread(ActivateForCurrentCharacter);
+            _framework.RunOnFrameworkThread(ActivateCharacterProfile);
     }
 
     public static string? CurrentContentId
@@ -35,7 +35,7 @@ internal sealed unsafe class ProfileController : IDisposable
         }
     }
 
-    public void ActivateForCurrentCharacter()
+    public void ActivateCharacterProfile()
     {
         string? contentId = CurrentContentId;
         if (contentId == null)
@@ -46,7 +46,7 @@ internal sealed unsafe class ProfileController : IDisposable
         _logger.LogInformation("Using settings profile: {Profile}", _configuration.ActiveProfileName ?? "default");
     }
 
-    private void OnLogin() => _framework.RunOnFrameworkThread(ActivateForCurrentCharacter);
+    private void OnLogin() => _framework.RunOnFrameworkThread(ActivateCharacterProfile);
 
     private void OnLogout(int type, int code) => _configuration.ClearActiveProfile();
 

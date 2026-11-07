@@ -161,7 +161,7 @@ internal sealed class QuestFunctions
 
         if (configuration.General.SkipLowPriorityDuties && trackedQuests.Count > 0)
         {
-            IReadOnlyList<(uint ContentFinderConditionId, ElementId QuestId, int Sequence)> lowPriorityQuests = catalog.LowPriorityContentFinderConditionQuests;
+            IReadOnlyList<(uint CfcId, ElementId QuestId, int Sequence)> lowPriorityQuests = catalog.LowPriorityCfcQuests;
             trackedQuests.RemoveAll(x => lowPriorityQuests.Any(y => x.Quest == y.QuestId && x.Sequence == y.Sequence));
         }
 

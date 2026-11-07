@@ -39,7 +39,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly ITargetManager _targetManager;
     private readonly ILogger<CommandHandler> _logger;
 
-    private IReadOnlyList<uint> _previouslyUnlockedUnlockLinks = [];
+    private IReadOnlyList<uint> _lastUnlockLinks = [];
 
     public CommandHandler(
         ICommandManager commandManager,
@@ -232,17 +232,17 @@ internal sealed class CommandHandler : IDisposable
             case "d2qwh":
                 if (parts.Length < 2)
                     break;
-                string highOutp = D2QW(parts.Skip(1).ToArray(), High: true);
-                ImGui.SetClipboardText(highOutp);
-                _chatGui.Print(highOutp);
+                string highText = FormatQuestWork(parts.Skip(1).ToArray(), high: true);
+                ImGui.SetClipboardText(highText);
+                _chatGui.Print(highText);
                 break;
 
             case "d2qwl":
                 if (parts.Length < 2)
                     break;
-                string lowOutp = D2QW(parts.Skip(1).ToArray());
-                ImGui.SetClipboardText(lowOutp);
-                _chatGui.Print(lowOutp);
+                string lowText = FormatQuestWork(parts.Skip(1).ToArray());
+                ImGui.SetClipboardText(lowText);
+                _chatGui.Print(lowText);
                 break;
 
             case "gen":
@@ -263,8 +263,8 @@ internal sealed class CommandHandler : IDisposable
                 ushort rewardsId = 2772;
                 if (parts.Length > 1)
                     rewardsId = ushort.Parse(parts[1], CultureInfo.InvariantCulture);
-                if (_questData.TryGetQuestInfo(new QuestId(rewardsId), out var qInfo) &&
-                    qInfo is QuestInfo questInfo &&
+                if (_questData.TryGetQuestInfo(new QuestId(rewardsId), out var info) &&
+                    info is QuestInfo questInfo &&
                     questInfo.ItemRewards.Concat(questInfo.TripleTriadCardRewards).Select(x => x.ToString()) is var rewards &&
                     rewards.ToArray().Length != 0)
                     _chatGui.Print($"{string.Join(',', rewards)}", MessageTag, TagColor);
@@ -275,8 +275,8 @@ internal sealed class CommandHandler : IDisposable
             case "tname":
                 if (parts.Length == 1)
                     break;
-                var tnameId = uint.Parse(parts[1], CultureInfo.InvariantCulture);
-                _chatGui.Print($"{TerritoryData.GetNameAndId(tnameId)}");
+                var territoryId = uint.Parse(parts[1], CultureInfo.InvariantCulture);
+                _chatGui.Print($"{TerritoryData.GetNameAndId(territoryId)}");
                 break;
 
             case "titlebarpill":
@@ -322,19 +322,19 @@ internal sealed class CommandHandler : IDisposable
     }
 
     [SuppressMessage("Globalization", "CA1305")]
-    private static string D2QW(string[] parts, bool High = false)
+    private static string FormatQuestWork(string[] parts, bool high = false)
     {
-        List<string> outp = [];
+        List<string> values = [];
         foreach (string part in parts)
         {
             byte d = byte.Parse(part.RemoveOtherChars("0123456789"), CultureInfo.InvariantCulture);
-            QuestWorkValue qw = new(d);
-            string value = $" {{\"{(High ? "High" : "Low")}\": {(High ? qw.High : qw.Low)}}}";
-            if (!outp.Contains(value))
-                outp.Add(value);
+            QuestWorkValue work = new(d);
+            string value = $" {{\"{(high ? "High" : "Low")}\": {(high ? work.High : work.Low)}}}";
+            if (!values.Contains(value))
+                values.Add(value);
         }
 
-        return outp.Join(",");
+        return values.Join(",");
     }
 
     private void ProcessDebugCommand(string command, string arguments)
@@ -353,16 +353,16 @@ internal sealed class CommandHandler : IDisposable
                     _chatGui.Print("There are no active event quests.", MessageTag, TagColor);
                 break;
             case "unlock-links":
-                IReadOnlyList<uint>? unlockedUnlockLinks = _gameFunctions.GetUnlockLinks();
-                if (unlockedUnlockLinks != null)
+                IReadOnlyList<uint>? unlockLinks = _gameFunctions.GetUnlockLinks();
+                if (unlockLinks != null)
                 {
-                    _chatGui.Print(_LF("Saved {0} unlock links to log.", unlockedUnlockLinks.Count), MessageTag, TagColor);
+                    _chatGui.Print(_LF("Saved {0} unlock links to log.", unlockLinks.Count), MessageTag, TagColor);
 
-                    List<uint> newUnlockLinks = unlockedUnlockLinks.Except(_previouslyUnlockedUnlockLinks).ToList();
-                    if (_previouslyUnlockedUnlockLinks.Count > 0 && newUnlockLinks.Count > 0)
+                    List<uint> newUnlockLinks = unlockLinks.Except(_lastUnlockLinks).ToList();
+                    if (_lastUnlockLinks.Count > 0 && newUnlockLinks.Count > 0)
                         _chatGui.Print(_LF("New unlock links: {0}", string.Join(", ", newUnlockLinks)), MessageTag, TagColor);
 
-                    _previouslyUnlockedUnlockLinks = unlockedUnlockLinks;
+                    _lastUnlockLinks = unlockLinks;
                 }
                 else
                     _chatGui.PrintError(_L("Could not query unlock links."), MessageTag, TagColor);
@@ -548,5 +548,5 @@ internal sealed class CommandHandler : IDisposable
             _chatGui.Print(_L("You are not mounted."), MessageTag, TagColor);
     }
 
-    private void OnLogout(int type, int code) => _previouslyUnlockedUnlockLinks = [];
+    private void OnLogout(int type, int code) => _lastUnlockLinks = [];
 }

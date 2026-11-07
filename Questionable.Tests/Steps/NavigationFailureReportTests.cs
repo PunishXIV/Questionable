@@ -26,7 +26,7 @@ public sealed class NavigationFailureReportTests
               "TimestampUtc": "2026-11-01T12:00:00+00:00",
               "Reason": "TimedOut",
               "Message": "Pathfinding timed out after 30 seconds",
-              "ExceptionType": "PathfindingFailedException",
+              "ExceptionType": "PathfindingException",
               "InnerExceptionType": "InvalidOperationException",
               "InnerExceptionMessage": "Provider diagnostic",
               "TerritoryId": 958,

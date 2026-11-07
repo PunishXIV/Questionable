@@ -22,7 +22,7 @@ namespace Questionable.Controller;
 [RegisterSingleton]
 internal sealed class QuestController : MiniTaskController<QuestController>, IExternalOperationHost, IQuestRecoveryHost
 {
-    public delegate void AutomationTypeChangedEventHandler(object sender, EAutomationType e);
+    public delegate void AutomationChangedHandler(object sender, EAutomationType e);
 
     public enum EAutomationType
     {
@@ -41,7 +41,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         Simulated
     }
 
-    private const int CompletedStepValue = QuestStepPlanner.CompletedStep;
+    private const int CompletedStep = QuestStepPlanner.CompletedStep;
 
     // Extra grace after the game's animation lock.
     private const float AnimationLockGraceSeconds = 1f;
@@ -51,12 +51,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private const uint CollectableItemIdOffset = 500_000;
 
     // The quest-accept addon can fail to appear at sequence 0/step 0.
-    private const int QuestAcceptStalledTimeoutSeconds = 15;
+    private const int AcceptStallSeconds = 15;
 
     private readonly QuestAcceptanceController _acceptance;
     private readonly QuestSelectionController _selection;
     private IQuestSelectionState? _selectionState;
-    private readonly AlliedSocietyQuestFunctions _alliedSocietyQuestFunctions;
+    private readonly AlliedSocietyQuestFunctions _alliedSocietyQuests;
     private readonly IChatGui _chatGui;
     private readonly IClientState _clientState;
     private readonly CombatController _combatController;
@@ -65,9 +65,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private readonly GameFunctions _gameFunctions;
     private readonly IGameGuiAdapter _gameGui;
     private readonly GatheringController _gatheringController;
-    private readonly ExternalOperationCoordinator _externalOperations;
+    private readonly OperationCoordinator _externalOperations;
     private readonly QuestRecoveryController _recovery;
-    private readonly QuestBattle.RetryCounter _soloDutyRetries;
+    private readonly QuestBattle.RetryCounter _questBattleRetries;
     private readonly HighlightObject _highlightObject;
     private readonly IKeyState _keyState;
     private readonly ILogger<QuestController> _logger;
@@ -80,7 +80,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private readonly QuestRegistry _questRegistry;
     private readonly QuestPriorityManager _priorityManager;
     private readonly QuestProgressTracker _tracker;
-    private readonly SinglePlayerDutyConfigComponent _singlePlayerDutyConfigComponent;
+    private readonly SinglePlayerDutyConfigComponent _questBattleConfig;
     private readonly QuestStopPolicy _stopPolicy;
     private readonly TaskCreator _taskCreator;
     private readonly IToastGui _toastGui;
@@ -101,11 +101,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         MovementController movementController,
         CombatController combatController,
         GatheringController gatheringController,
-        ExternalOperationCoordinator externalOperations,
+        OperationCoordinator externalOperations,
         QuestRecoveryController recovery,
         QuestAcceptanceController acceptance,
         QuestSelectionController selection,
-        QuestBattle.RetryCounter soloDutyRetries,
+        QuestBattle.RetryCounter questBattleRetries,
         ILogger<QuestController> logger,
         HighlightObject highlightObject,
         QuestRegistry questRegistry,
@@ -123,9 +123,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         TaskToastClassifier toastClassifier,
         NotificationMasterIpc notificationMasterIpc,
         IGameGuiAdapter gameGui,
-        SinglePlayerDutyConfigComponent singlePlayerDutyConfigComponent,
+        SinglePlayerDutyConfigComponent questBattleConfig,
         QuestStopPolicy stopPolicy,
-        AlliedSocietyQuestFunctions alliedSocietyQuestFunctions)
+        AlliedSocietyQuestFunctions alliedSocietyQuests)
         : base(chatGui, condition, serviceProvider, interruptHandler, toastClassifier,
             notificationMasterIpc.NotifyOnFailure, logger)
     {
@@ -141,7 +141,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _recovery = recovery;
         _acceptance = acceptance;
         _selection = selection;
-        _soloDutyRetries = soloDutyRetries;
+        _questBattleRetries = questBattleRetries;
         _questRegistry = questRegistry;
         _priorityManager = priorityManager;
         _tracker = tracker;
@@ -152,9 +152,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _toastGui = toastGui;
         _configuration = configuration;
         _taskCreator = taskCreator;
-        _singlePlayerDutyConfigComponent = singlePlayerDutyConfigComponent;
+        _questBattleConfig = questBattleConfig;
         _stopPolicy = stopPolicy;
-        _alliedSocietyQuestFunctions = alliedSocietyQuestFunctions;
+        _alliedSocietyQuests = alliedSocietyQuests;
         _logger = logger;
         _highlightObject = highlightObject;
         _notificationMasterIpc = notificationMasterIpc;
@@ -236,10 +236,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     public QuestPriorityManager PriorityManager => _priorityManager;
 
     public bool StopAfterCurrentQuest { get; set; }
-    public bool StopAfterAcceptingNextQuest
+    public bool StopAfterNextAccept
     {
-        get => _acceptance.StopAfterAcceptingNextQuest;
-        set => _acceptance.StopAfterAcceptingNextQuest = value;
+        get => _acceptance.StopAfterNextAccept;
+        set => _acceptance.StopAfterNextAccept = value;
     }
 
     public bool StopBeforeTeleport { get; set; }
@@ -250,8 +250,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     public Func<bool>? IsQuestWindowOpenFunction { private get; set; } = () => true;
 
     public bool IsRunning => !_taskQueue.AllTasksComplete;
-    public bool HasExternalOperation => _externalOperations.HasExternalOperation;
-    private string? ExternalOperationBlockReason => _externalOperations.BlockReason;
+    public bool HasExternalOperation => _externalOperations.HasOperation;
+    private string? ExternalBlockReason => _externalOperations.BlockReason;
     ITaskExecutor? IExternalOperationHost.CurrentExecutor => _taskQueue.CurrentTaskExecutor;
     bool IExternalOperationHost.IsActive => IsRunning || AutomationType != EAutomationType.Manual;
     string? IExternalOperationHost.Status { set => DebugState = value; }
@@ -270,7 +270,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     public bool IsQuestingStopped => _recovery.IsQuestingStopped(this);
 
-    public event AutomationTypeChangedEventHandler? AutomationTypeChanged;
+    public event AutomationChangedHandler? AutomationTypeChanged;
 
     public void Reload()
     {
@@ -281,15 +281,15 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
             _logger.LogInformation("Reload, resetting curent quest progress");
 
-            ResetInternalState();
+            ResetState();
 
             _questRegistry.Reload();
-            _singlePlayerDutyConfigComponent.Reload();
-            _alliedSocietyQuestFunctions.Reload();
+            _questBattleConfig.Reload();
+            _alliedSocietyQuests.Reload();
         }
     }
 
-    private void ResetInternalState()
+    private void ResetState()
     {
         _acceptance.ClearSelection();
         _tracker.Reset();
@@ -301,7 +301,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     public void Update()
     {
         // Success can replace the outcome task before its next update; observe it independently.
-        _soloDutyRetries.Observe(_clientState.IsLoggedIn ? ProfileController.CurrentContentId : null,
+        _questBattleRetries.Observe(_clientState.IsLoggedIn ? ProfileController.CurrentContentId : null,
             questId => _questFunctions.GetQuestProgressInfo(questId)?.Sequence);
 
         if (_externalOperations.Update(this))
@@ -349,8 +349,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
         if (!HasExternalOperation && AutomationType == EAutomationType.Automatic &&
             (_taskQueue.AllTasksComplete || _taskQueue.CurrentTaskExecutor?.CurrentTask is WaitAtEnd.QuestAccepted)
-            && CurrentQuest is { Sequence: 0, Step: 0 } or { Sequence: 0, Step: CompletedStepValue }
-            && DateTime.Now >= CurrentQuest.StepProgress.StartedAt.AddSeconds(QuestAcceptStalledTimeoutSeconds))
+            && CurrentQuest is { Sequence: 0, Step: 0 } or { Sequence: 0, Step: CompletedStep }
+            && DateTime.Now >= CurrentQuest.StepProgress.StartedAt.AddSeconds(AcceptStallSeconds))
         {
             lock (_progressLock)
             {
@@ -379,7 +379,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     {
         lock (_progressLock)
         {
-            // Let the owning executor verify its objective before quest or sequence changes discard it.
+            // Let the running executor verify its objective before quest or sequence changes discard it.
             if (HasExternalOperation)
                 return;
 
@@ -387,7 +387,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
             if (!_clientState.IsLoggedIn)
             {
-                ResetInternalState();
+                ResetState();
                 DebugState = "Not logged in";
                 return;
             }
@@ -424,7 +424,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
             // Queue currently available accept-only priority quests before completing any.
             if (QuestSelectionController.ShouldQueueAcceptOnly(Slots, AutomationType))
-                TryQueueNextAcceptOnlyQuest();
+                TryQueueAcceptOnly();
 
             // Honor the stop-after toggle before starting queued or priority quests.
             EStopPoint? stopPoint = _selection.GetStopPoint(StartedQuest, StopAfterCurrentQuest, SelectionState);
@@ -643,13 +643,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             _logger.LogInformation("Resuming at sequence {Sequence} step {Step}", StartedQuest.Sequence, StartedQuest.Step);
     }
 
-    internal void EnqueueQuestTask(ITask task, Func<ElementId, bool> isAccepted)
+    internal void EnqueueTask(ITask task, Func<ElementId, bool> isAccepted)
     {
         _acceptance.TrackQueued(task, isAccepted);
         _taskQueue.Enqueue(task);
     }
 
-    public (QuestSequence? Sequence, QuestStep? Step, bool createTasks) GetNextStep() => _tracker.GetNextStep();
+    public (QuestSequence? Sequence, QuestStep? Step, bool CreateTasks) GetNextStep() => _tracker.GetNextStep();
 
     public void IncreaseStepCount(ElementId? questId, int? sequence, bool shouldContinue = false)
     {
@@ -708,7 +708,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         GatheringQuest = null;
     }
 
-    public void TryStopOnExpectedQuestAccepted(ElementId questId)
+    public void TryStopOnQueuedAccept(ElementId questId)
     {
         if (_acceptance.TryConsumeQueued(questId))
             TryStopOnQuestAccepted(questId);
@@ -751,14 +751,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private void Stop(string label, bool clearQuest, string? policyReason = null)
     {
         StopAfterCurrentQuest = false;
-        StopAfterAcceptingNextQuest = false;
+        StopAfterNextAccept = false;
         StopBeforeTeleport = false;
         _recovery.Reset();
         _highlightObject.SetHighlight([]);
         using IDisposable? scope = _logger.BeginScope($"Stop/{label}");
         bool wasRunning = IsRunning || AutomationType != EAutomationType.Manual;
         bool wasAutomatic = AutomationType == EAutomationType.Automatic;
-        // Owned operations still need cleanup even if the executor already detached.
+        // Plugin work still needs cleanup even if its executor is already gone.
         ClearTasksInternal();
         if (!wasRunning)
             return;
@@ -787,11 +787,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         }
     }
 
-    public void StopAllDueToConditionFailed(string label)
+    public void StopAll(string label)
     {
         bool hadExternalOperation = HasExternalOperation;
         Stop(label);
-        // Our own movement is already stopped; a retained external request doesn't allow stopping a manual route.
+        // Our own movement is already stopped; a plugin request still running doesn't allow stopping a manual route.
         if (hadExternalOperation || HasExternalOperation)
             return;
 
@@ -823,7 +823,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return;
         }
 
-        if (CurrentQuest?.Step is >= 0 and < CompletedStepValue)
+        if (CurrentQuest?.Step is >= 0 and < CompletedStep)
             ExecuteNextStep();
         else
             _logger.LogInformation("Couldn't execute next step during Stop() call");
@@ -845,7 +845,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         : null;
     bool IQuestRecoveryHost.ClearTasks() => ClearTasksInternal();
     void IQuestRecoveryHost.StopMovement() => _movementController.Stop();
-    void IQuestRecoveryHost.StopAll(string reason) => StopAllDueToConditionFailed(reason);
     void IQuestRecoveryHost.RetryCurrentStep() => ExecuteNextStep();
     void IQuestRecoveryHost.ReportDeathLimit(int deaths) =>
         _chatGui.PrintError($"You died {deaths} times, manual intervention needed.", CommandHandler.MessageTag, CommandHandler.TagColor);
@@ -939,7 +938,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (CanPrepareQuestTasks())
             return true;
 
-        string reason = ExternalOperationBlockReason ?? DebugState ??
+        string reason = ExternalBlockReason ?? DebugState ??
             _L("Check the external operation before restarting.");
         _logger.LogWarning("Quest start {Label} blocked: {Reason}", label, reason);
         _chatGui.PrintError(reason, CommandHandler.MessageTag, CommandHandler.TagColor);
@@ -954,15 +953,15 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (!_externalOperations.CanUpdateTask(_taskQueue.CurrentTaskExecutor))
             return;
 
-        // The owning executor must still verify external work that occupies the player.
-        IOperationProvider? owner = _externalOperations.GetOwner(_taskQueue.CurrentTaskExecutor);
-        if (owner != null &&
+        // The current executor must still check plugin work that occupies the player.
+        IOperationProvider? provider = _externalOperations.GetProvider(_taskQueue.CurrentTaskExecutor);
+        if (provider != null &&
             (!_clientState.IsLoggedIn || _objectTable[0] == null ||
              _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51] ||
              _gameFunctions.IsLoadingScreenVisible()))
             return;
 
-        if (_gameFunctions.IsOccupied() && owner?.CanUpdateWhileOccupied != true &&
+        if (_gameFunctions.IsOccupied() && provider?.CanUpdateWhileOccupied != true &&
             // Outcome polling resets its grace timer before returning while occupied.
             _taskQueue.CurrentTaskExecutor is not QuestBattle.WaitForOutcomeExecutor &&
             !_gameFunctions.IsOccupiedWithCustomDeliveryNpc(CurrentQuest?.Quest))
@@ -988,11 +987,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     protected override void OnTaskFailure(Exception exception, ITask task)
     {
-        if (exception is MovementController.PathfindingFailedException navigationFailure)
+        if (exception is MovementController.PathfindingException navigationFailure)
             RecordNavigationFailure(navigationFailure, task.ToString());
     }
 
-    internal void RecordNavigationFailure(MovementController.PathfindingFailedException failure, string? task = null) =>
+    internal void RecordNavigationFailure(MovementController.PathfindingException failure, string? task = null) =>
         _movementController.RecordFailure(failure, CurrentQuest?.ToString(),
             task ?? _taskQueue.CurrentTaskExecutor?.CurrentTask.ToString());
 
@@ -1077,7 +1076,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return;
         }
 
-        if (AutomationType == EAutomationType.Automatic && TryQueueNextAcceptOnlyQuest())
+        if (AutomationType == EAutomationType.Automatic && TryQueueAcceptOnly())
             _logger.LogInformation("Accepting queued accept-only quests before other work");
 
         if (TryPickPriorityQuest())
@@ -1110,7 +1109,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         try
         {
             foreach (ITask task in _taskCreator.CreateTasks(CurrentQuest.Quest, CurrentQuest.Sequence, seq, step))
-                EnqueueQuestTask(task, _questFunctions.IsQuestAccepted);
+                EnqueueTask(task, _questFunctions.IsQuestAccepted);
         }
         catch (Exception e)
         {
@@ -1129,16 +1128,16 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             : $"- (+{_taskQueue.RemainingTasks.Count()})";
     }
 
-    public bool HasCurrentTaskExecutorMatching<T>([NotNullWhen(true)] out T? task)
+    public bool HasExecutorMatching<T>([NotNullWhen(true)] out T? executor)
     where T : class, ITaskExecutor
     {
         if (_taskQueue.CurrentTaskExecutor is T t)
         {
-            task = t;
+            executor = t;
             return true;
         }
 
-        task = null;
+        executor = null;
         return false;
     }
 
@@ -1155,7 +1154,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         return false;
     }
 
-    public void Skip(ElementId elementId, byte currentQuestSequence)
+    public void Skip(ElementId elementId, byte sequence)
     {
         lock (_progressLock)
         {
@@ -1181,13 +1180,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 if (_taskQueue.AllTasksComplete)
                 {
                     Stop("Skip", clearQuest: false);
-                    IncreaseStepCount(elementId, currentQuestSequence);
+                    IncreaseStepCount(elementId, sequence);
                 }
             }
             else
             {
                 Stop("SkipNx", clearQuest: false);
-                IncreaseStepCount(elementId, currentQuestSequence);
+                IncreaseStepCount(elementId, sequence);
             }
         }
     }
@@ -1253,7 +1252,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     }
 
     // Accept-only priorities run sequence 0, then remain for normal completion.
-    private bool TryQueueNextAcceptOnlyQuest()
+    private bool TryQueueAcceptOnly()
     {
         if (!_priorityManager.HasPendingAcceptOnly)
             return false;
@@ -1303,7 +1302,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             GatheringQuest != null ||
             SimulatedQuest != null ||
             StopAfterCurrentQuest ||
-            StopAfterAcceptingNextQuest ||
+            StopAfterNextAccept ||
             StopBeforeTeleport)
             return false;
 

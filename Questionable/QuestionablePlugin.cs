@@ -209,7 +209,7 @@ public sealed class QuestionablePlugin(
         serviceCollection.AddSingleton(sp => new Lazy<QuestController>(sp.GetRequiredService<QuestController>));
         // Same for MovementController <-> operation providers (combat cleanup needs CombatController, which moves).
         serviceCollection.AddSingleton(sp =>
-            new Lazy<ExternalOperationCoordinator>(sp.GetRequiredService<ExternalOperationCoordinator>));
+            new Lazy<OperationCoordinator>(sp.GetRequiredService<OperationCoordinator>));
 
         var serviceProvider = serviceCollection.BuildServiceProvider();
         _lifetime.OwnServices(serviceProvider);
@@ -227,7 +227,7 @@ public sealed class QuestionablePlugin(
         serviceProvider.GetRequiredService<ProfileController>();
         _questController = serviceProvider.GetRequiredService<QuestController>();
         // MovementController.Dispose reads this; resolve it now so unloading never reaches into a disposed container.
-        _ = serviceProvider.GetRequiredService<Lazy<ExternalOperationCoordinator>>().Value;
+        _ = serviceProvider.GetRequiredService<Lazy<OperationCoordinator>>().Value;
         serviceProvider.GetRequiredService<CommandHandler>();
         serviceProvider.GetRequiredService<ContextMenuController>();
         serviceProvider.GetRequiredService<CraftworksSupplyController>();

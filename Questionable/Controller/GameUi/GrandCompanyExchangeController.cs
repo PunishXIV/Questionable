@@ -23,7 +23,7 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
 
     private readonly QuestController _questController;
     private readonly IAddonLifecycle _addonLifecycle;
-    private readonly IGameGuiAdapter _gameGuiAdapter;
+    private readonly IGameGuiAdapter _gameGui;
     private readonly IFramework _framework;
 
     private EState _state = EState.Idle;
@@ -33,12 +33,12 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
     public GrandCompanyExchangeController(
         QuestController questController,
         IAddonLifecycle addonLifecycle,
-        IGameGuiAdapter gameGuiAdapter,
+        IGameGuiAdapter gameGui,
         IFramework framework)
     {
         _questController = questController;
         _addonLifecycle = addonLifecycle;
-        _gameGuiAdapter = gameGuiAdapter;
+        _gameGui = gameGui;
         _framework = framework;
 
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, AddonName, OnPostSetup);
@@ -138,7 +138,7 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
 
     private void CloseWindow()
     {
-        if (_gameGuiAdapter.TryGetAddonByName(AddonName, out AtkUnitBase* addon))
+        if (_gameGui.TryGetAddonByName(AddonName, out AtkUnitBase* addon))
             addon->FireCallbackInt(-1);
     }
 

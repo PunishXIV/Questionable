@@ -57,7 +57,7 @@ public sealed class ExternalOperationCoordinatorTests
         Assert.False(fixture.Coordinator.Update(host));
 
         Assert.False(fixture.Combat.HasPendingCleanup);
-        Assert.False(fixture.Coordinator.HasExternalOperation);
+        Assert.False(fixture.Coordinator.HasOperation);
         Assert.False(host.IsActive);
     }
 
@@ -148,9 +148,9 @@ public sealed class ExternalOperationCoordinatorTests
         var clash = Substitute.For<IOperationProvider>();
         clash.Order.Returns(fixture.Providers[0].Order);
 
-        Assert.Throws<InvalidOperationException>(() => new ExternalOperationCoordinator(
+        Assert.Throws<InvalidOperationException>(() => new OperationCoordinator(
             [.. fixture.Providers, clash], fixture.Movement,
-            NullLogger<ExternalOperationCoordinator>.Instance));
+            NullLogger<OperationCoordinator>.Instance));
     }
 
     [Fact]
@@ -189,7 +189,7 @@ public sealed class ExternalOperationCoordinatorTests
         var host = new Host();
 
         Assert.Equal("Added", fixture.Coordinator.Providers[^1].Name);
-        Assert.True(fixture.Coordinator.HasExternalOperation);
+        Assert.True(fixture.Coordinator.HasOperation);
         Assert.True(fixture.Coordinator.HasMovingOperation);
         Assert.True(fixture.Coordinator.MayBeMovingCharacter());
         Assert.Equal("Added provider is busy.", fixture.Coordinator.BlockReason);
@@ -230,15 +230,15 @@ public sealed class ExternalOperationCoordinatorTests
         var craft = new Craft.Executor(Substitute.For<IDataManager>(), fixture.Artisan,
             NullLogger<Craft.Executor>.Instance, null!, fixture.Crafting);
 
-        IOperationProvider? purchaseOwner = fixture.Coordinator.GetOwner(buy);
-        IOperationProvider? craftOwner = fixture.Coordinator.GetOwner(craft);
+        IOperationProvider? purchaseOwner = fixture.Coordinator.GetProvider(buy);
+        IOperationProvider? craftOwner = fixture.Coordinator.GetProvider(craft);
 
         Assert.Equal("Knightshopper", purchaseOwner?.Name);
         Assert.True(purchaseOwner!.CanUpdateWhileOccupied);
         Assert.Equal("Artisan", craftOwner?.Name);
         Assert.Equal(crafting, craftOwner!.CanUpdateWhileOccupied);
-        Assert.Null(fixture.Coordinator.GetOwner(null));
-        Assert.Null(fixture.Coordinator.GetOwner(new WaitAtEnd.NextStepOrSequenceExecutor()));
+        Assert.Null(fixture.Coordinator.GetProvider(null));
+        Assert.Null(fixture.Coordinator.GetProvider(new WaitAtEnd.NextStepOrSequenceExecutor()));
     }
 
     [Fact]

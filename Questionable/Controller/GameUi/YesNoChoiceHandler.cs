@@ -39,7 +39,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
     private readonly Regex _hqTradeRegex;
     private readonly Regex _fcInviteRegex;
     private readonly Regex[] _overCapRegexes;
-    private SoloDutyConfirmation? _soloDutyConfirmation;
+    private QuestBattleConfirmation? _questBattleConfirmation;
 
     public YesNoChoiceHandler(
         IAddonLifecycle addonLifecycle,
@@ -93,35 +93,35 @@ internal sealed class YesNoChoiceHandler : IDisposable
             .ToArray();
 
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "SelectYesno", SelectYesnoPostSetup);
-        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "DifficultySelectYesNo", DifficultySelectYesNoPostSetup);
-        _framework.Update += ConfirmNormalIfDutyDidNotStart;
+        _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "DifficultySelectYesNo", DifficultyPostSetup);
+        _framework.Update += ConfirmNormalFallback;
         _questController.AutomationTypeChanged += OnAutomationTypeChanged;
     }
 
     public void Dispose()
     {
-        _soloDutyConfirmation = null;
-        _framework.Update -= ConfirmNormalIfDutyDidNotStart;
+        _questBattleConfirmation = null;
+        _framework.Update -= ConfirmNormalFallback;
         _questController.AutomationTypeChanged -= OnAutomationTypeChanged;
-        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "DifficultySelectYesNo", DifficultySelectYesNoPostSetup);
+        _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "DifficultySelectYesNo", DifficultyPostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "SelectYesno", SelectYesnoPostSetup);
     }
 
-    private bool ShouldHandleUiInteractions =>
+    private bool ShouldHandleUi =>
         !_questController.HasExternalOperation &&
         (_questController.IsRunning || _territoryData.IsQuestBattleInstance(_clientState.TerritoryType));
 
     private unsafe void SelectYesnoPostSetup(AddonEvent type, AddonArgs args)
     {
-        if (!ShouldHandleUiInteractions)
+        if (!ShouldHandleUi)
             return;
 
         HandleSelectYesno((AddonSelectYesno*)args.Addon.Address, checkAllSteps: false);
     }
 
-    private unsafe void DifficultySelectYesNoPostSetup(AddonEvent type, AddonArgs args)
+    private unsafe void DifficultyPostSetup(AddonEvent type, AddonArgs args)
     {
-        HandleDifficultySelectYesNo((AtkUnitBase*)args.Addon.Address, checkAllSteps: false);
+        HandleDifficultyYesNo((AtkUnitBase*)args.Addon.Address, checkAllSteps: false);
     }
 
     // The initial sweep bypasses the interaction gate.
@@ -136,10 +136,10 @@ internal sealed class YesNoChoiceHandler : IDisposable
             HandleSelectYesno(addonSelectYesno, checkAllSteps: true);
         }
 
-        if (_gameGui.TryGetAddonByName("DifficultySelectYesNo", out AtkUnitBase* addonDifficultySelectYesNo))
+        if (_gameGui.TryGetAddonByName("DifficultySelectYesNo", out AtkUnitBase* difficultyAddon))
         {
             _logger.LogInformation("DifficultySelectYesNo window is open");
-            HandleDifficultySelectYesNo(addonDifficultySelectYesNo, checkAllSteps: true);
+            HandleDifficultyYesNo(difficultyAddon, checkAllSteps: true);
         }
     }
 
@@ -300,12 +300,12 @@ internal sealed class YesNoChoiceHandler : IDisposable
                 continue;
             }
 
-            string notif = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} {(dialogueChoice.Yes ? "Yes" : "No")}";
+            string message = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} {(dialogueChoice.Yes ? "Yes" : "No")}";
             if (!_configuration.General.DontShowAnswerSuggestions)
             {
                 if (_configuration.General.DontSkipCutscenes)
-                    _toastGui.ShowQuest(notif);
-                _chatGui.Print(notif, CommandHandler.MessageTag, CommandHandler.TagColor);
+                    _toastGui.ShowQuest(message);
+                _chatGui.Print(message, CommandHandler.MessageTag, CommandHandler.TagColor);
             }
             _logger.LogInformation("Returning {YesNo} for '{Prompt}'", dialogueChoice.Yes ? "Yes" : "No", actualPrompt);
             if (!_configuration.General.DontSkipCutscenes)
@@ -313,16 +313,16 @@ internal sealed class YesNoChoiceHandler : IDisposable
             return true;
         }
 
-        if (CheckSinglePlayerDutyYesNo(quest.Id, step))
+        if (IsQuestBattleYesNo(quest.Id, step))
         {
-            ConfirmSinglePlayerDutyStart(addonSelectYesno, quest, step!, actualPrompt);
+            ConfirmQuestBattle(addonSelectYesno, quest, step!, actualPrompt);
             return true;
         }
 
         return false;
     }
 
-    private bool CheckSinglePlayerDutyYesNo(ElementId questId, QuestStep? step)
+    private bool IsQuestBattleYesNo(ElementId questId, QuestStep? step)
     {
         if (step is { InteractionType: EInteractionType.SinglePlayerDuty } &&
             _bossModIpc.CanRunQuestBattle(questId, step.SinglePlayerDutyOptions))
@@ -336,16 +336,16 @@ internal sealed class YesNoChoiceHandler : IDisposable
     }
 
     // 823 requests the configured difficulty. Click Yes (Normal) if the duty does not start.
-    private unsafe void ConfirmSinglePlayerDutyStart(AddonSelectYesno* addonSelectYesno, Quest quest,
+    private unsafe void ConfirmQuestBattle(AddonSelectYesno* addonSelectYesno, Quest quest,
         QuestStep step, string actualPrompt)
     {
         QuestController.QuestProgress? currentQuest = _questController.StartedQuest;
         if (currentQuest == null || currentQuest.Quest.Id != quest.Id || currentQuest.FindStep() != step)
             return;
-        if (_soloDutyConfirmation is { } pending && pending.IsCurrent(currentQuest) && pending.Prompt == actualPrompt)
+        if (_questBattleConfirmation is { } pending && pending.IsCurrent(currentQuest) && pending.Prompt == actualPrompt)
             return;
 
-        _soloDutyConfirmation = null;
+        _questBattleConfirmation = null;
         byte difficulty = _configuration.SinglePlayerDuties.RetryDifficulty;
         _logger.LogInformation("Requesting solo quest battle at difficulty {Difficulty}", difficulty);
 
@@ -356,25 +356,25 @@ internal sealed class YesNoChoiceHandler : IDisposable
             return;
         }
 
-        _soloDutyConfirmation = new SoloDutyConfirmation(currentQuest, actualPrompt, DateTime.UtcNow);
+        _questBattleConfirmation = new QuestBattleConfirmation(currentQuest, actualPrompt, DateTime.UtcNow);
     }
 
     private void OnAutomationTypeChanged(object sender, QuestController.EAutomationType automationType)
     {
         if (automationType == QuestController.EAutomationType.Manual)
-            _soloDutyConfirmation = null;
+            _questBattleConfirmation = null;
     }
 
-    private unsafe void ConfirmNormalIfDutyDidNotStart(IFramework framework)
+    private unsafe void ConfirmNormalFallback(IFramework framework)
     {
-        if (_soloDutyConfirmation is not { } confirmation)
+        if (_questBattleConfirmation is not { } confirmation)
             return;
 
         QuestController.QuestProgress? currentQuest = _questController.StartedQuest;
         if (!_questController.IsRunning || _questController.HasExternalOperation ||
             _condition[ConditionFlag.BoundByDuty] || !confirmation.IsCurrent(currentQuest))
         {
-            _soloDutyConfirmation = null;
+            _questBattleConfirmation = null;
             return;
         }
 
@@ -397,22 +397,22 @@ internal sealed class YesNoChoiceHandler : IDisposable
 
         switch (confirmation.Check(now, currentQuest, prompt, ready, loading))
         {
-            case SoloDutyConfirmation.Result.Wait:
+            case QuestBattleConfirmation.Result.Wait:
                 return;
-            case SoloDutyConfirmation.Result.Confirm:
-                _soloDutyConfirmation = null;
+            case QuestBattleConfirmation.Result.Confirm:
+                _questBattleConfirmation = null;
                 _logger.LogInformation("StartSoloQuestBattle did not enter the duty; confirming Yes (Normal)");
                 addon->AtkUnitBase.FireCallbackInt(0);
                 return;
             default:
-                _soloDutyConfirmation = null;
+                _questBattleConfirmation = null;
                 _logger.LogInformation("Solo duty confirmation expired or its quest/dialog changed; leaving the dialog untouched");
                 return;
         }
     }
 
-    // Keep the fallback across cutscenes without retaining an addon pointer or replaying command 823.
-    internal sealed class SoloDutyConfirmation(QuestController.QuestProgress quest, string prompt, DateTime requestedAt)
+    // Keep the fallback across cutscenes without keeping an addon pointer or replaying command 823.
+    internal sealed class QuestBattleConfirmation(QuestController.QuestProgress quest, string prompt, DateTime requestedAt)
     {
         internal enum Result
         {
@@ -500,7 +500,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
             return true;
         }
 
-        ushort? targetTerritoryId = _travelDestinationResolver.FindTargetTerritoryFromQuestStep(currentQuest);
+        ushort? targetTerritoryId = _travelDestinationResolver.FindTargetTerritory(currentQuest);
         if (targetTerritoryId != null &&
             _travelDestinationResolver.TryFindWarp(targetTerritoryId.Value, actualPrompt, out uint? warpId, out string? warpText))
         {
@@ -512,7 +512,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
         return false;
     }
 
-    private unsafe void HandleDifficultySelectYesNo(AtkUnitBase* addonDifficultySelectYesNo, bool checkAllSteps)
+    private unsafe void HandleDifficultyYesNo(AtkUnitBase* difficultyAddon, bool checkAllSteps)
     {
         if (!_questController.IsRunning || _questController.HasExternalOperation)
             return;
@@ -526,12 +526,12 @@ internal sealed class YesNoChoiceHandler : IDisposable
         if (checkAllSteps)
         {
             QuestSequence? sequence = currentQuest.FindSequence();
-            autoConfirm = sequence != null && sequence.Steps.Any(step => CheckSinglePlayerDutyYesNo(quest.Id, step));
+            autoConfirm = sequence != null && sequence.Steps.Any(step => IsQuestBattleYesNo(quest.Id, step));
         }
         else
         {
             QuestStep? step = currentQuest.FindStep();
-            autoConfirm = step != null && CheckSinglePlayerDutyYesNo(quest.Id, step);
+            autoConfirm = step != null && IsQuestBattleYesNo(quest.Id, step);
         }
 
         if (autoConfirm)
@@ -542,7 +542,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
                 new() { Type = AtkValueType.Int, Int = 0 },
                 new() { Type = AtkValueType.Int, Int = _configuration.SinglePlayerDuties.RetryDifficulty }
             };
-            addonDifficultySelectYesNo->FireCallback(2, selectChoice);
+            difficultyAddon->FireCallback(2, selectChoice);
         }
     }
 }

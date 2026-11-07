@@ -30,7 +30,7 @@ internal sealed class ExternalOperationFixture : IDisposable
     public CombatController Combat { get; }
     public GatheringController GatheringController { get; }
     public MovementController Movement { get; }
-    public ExternalOperationCoordinator Coordinator { get; }
+    public OperationCoordinator Coordinator { get; }
     private readonly AutoDutyProvider _dutyProvider;
 
     public ExternalOperationFixture(IEnumerable<ICombatModule>? combatModules = null,
@@ -50,7 +50,7 @@ internal sealed class ExternalOperationFixture : IDisposable
         BossMod = new(new Configuration(), null!, Substitute.For<ICommandManager>());
         Navmesh = new(NullLogger<NavmeshIpc>.Instance);
         Movement = new(Navmesh, Client, null!, null!, Condition, null!, Objects,
-            null!, Substitute.For<IChatGui>(), Framework, new Lazy<ExternalOperationCoordinator>(() => Coordinator!),
+            null!, Substitute.For<IChatGui>(), Framework, new Lazy<OperationCoordinator>(() => Coordinator!),
             null!, NullLogger<MovementController>.Instance);
         Combat = new(combatModules ?? [], Movement, Substitute.For<ITargetManager>(), Objects,
             Condition, Client, null!, null!, Framework, NullLogger<CombatController>.Instance);
@@ -68,7 +68,7 @@ internal sealed class ExternalOperationFixture : IDisposable
             new KnightshopperProvider(Knightshopper, Purchase, GilShop),
             .. extraProviders ?? [],
         ];
-        Coordinator = new(Providers, Movement, NullLogger<ExternalOperationCoordinator>.Instance);
+        Coordinator = new(Providers, Movement, NullLogger<OperationCoordinator>.Instance);
     }
 
     public IReadOnlyList<IOperationProvider> Providers { get; }

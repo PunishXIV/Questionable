@@ -9,7 +9,7 @@ internal sealed class TravelDestinationResolver(
     IDataManager dataManager,
     ILogger<TravelDestinationResolver> logger)
 {
-    public ushort? FindTargetTerritoryFromQuestStep(QuestController.QuestProgress currentQuest)
+    public ushort? FindTargetTerritory(QuestController.QuestProgress currentQuest)
     {
         // this can be triggered either manually (in which case we should increase the step counter), or automatically
         // (in which case it is ~1 frame later, and the step counter has already been increased)

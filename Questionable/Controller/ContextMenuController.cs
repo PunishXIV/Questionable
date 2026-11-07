@@ -24,7 +24,7 @@ internal sealed class ContextMenuController : IDisposable
     private readonly QuestFunctions _questFunctions;
     private readonly Configuration _configuration;
 
-    private IEnumerable<ulong> DisabledCharacterIds = [];
+    private IEnumerable<ulong> _disabledCharacterIds = [];
 
     public ContextMenuController(
         IContextMenu contextMenu,
@@ -60,11 +60,11 @@ internal sealed class ContextMenuController : IDisposable
         if (args.AddonName != null)
             return;
 
-        if (TryGetHoveredCharacterId(args, out var characterNullable) && characterNullable is AddonMaster._CharaSelectListMenu.Character character)
+        if (TryGetHoveredCharacter(args, out var hovered) && hovered is AddonMaster._CharaSelectListMenu.Character character)
         {
-            args.AddMenuItem(CreateMenuItem_CharaSelectListMenu(character));
+            args.AddMenuItem(CreateCharacterItem(character));
         }
-        else if (TryGetHoveredSatisfactionSupplyItemId(out var itemId))
+        else if (TryGetHoveredSupplyItem(out var itemId))
         {
             if (itemId > 1_000_000)
                 itemId -= 1_000_000;
@@ -74,8 +74,8 @@ internal sealed class ContextMenuController : IDisposable
 
             if (_gatheringData.TryGetCustomDeliveryNpc(itemId, out uint npcId))
             {
-                AddContextMenuEntry_SatisfactionSupply(args, itemId, npcId, Job.MIN, "Mine");
-                AddContextMenuEntry_SatisfactionSupply(args, itemId, npcId, Job.BTN, "Harvest");
+                AddGatherItem(args, itemId, npcId, Job.MIN, "Mine");
+                AddGatherItem(args, itemId, npcId, Job.BTN, "Harvest");
             }
             else
                 _logger.LogDebug("No custom delivery NPC found for item {ItemId}.", itemId);
@@ -83,7 +83,7 @@ internal sealed class ContextMenuController : IDisposable
 
     }
 
-    private unsafe bool TryGetHoveredSatisfactionSupplyItemId(out uint hoveredItem)
+    private unsafe bool TryGetHoveredSupplyItem(out uint hoveredItem)
     {
         hoveredItem = 0;
         AgentSatisfactionSupply* agent = AgentSatisfactionSupply.Instance();
@@ -102,26 +102,26 @@ internal sealed class ContextMenuController : IDisposable
     private static int TurnInsToNextRank(ushort current, ushort max, int maxTurnIns) =>
         max == 0 ? maxTurnIns : maxTurnIns * (max - current) / max;
 
-    private static bool TryGetHoveredCharacterId(
+    private static bool TryGetHoveredCharacter(
         IMenuOpenedArgs args,
         out AddonMaster._CharaSelectListMenu.Character? character)
     {
         character = null;
-        if (GenericHelpers.TryGetAddonMaster<AddonMaster._CharaSelectListMenu>(out var m))
-            if (args.Target is MenuTargetDefault target && m.Characters.TryGetFirst(x => x.IsSelected, out var chara))
-                character = chara;
+        if (GenericHelpers.TryGetAddonMaster<AddonMaster._CharaSelectListMenu>(out var menu))
+            if (args.Target is MenuTargetDefault target && menu.Characters.TryGetFirst(x => x.IsSelected, out var selected))
+                character = selected;
         return character != null;
     }
 
     private void DisableCharacterId(ulong characterId)
     {
-        DisabledCharacterIds = DisabledCharacterIds.Append(characterId);
+        _disabledCharacterIds = _disabledCharacterIds.Append(characterId);
     }
 
-    private unsafe MenuItem CreateMenuItem_CharaSelectListMenu(
+    private unsafe MenuItem CreateCharacterItem(
         AddonMaster._CharaSelectListMenu.Character character)
     {
-        bool characterDisabled = DisabledCharacterIds.Contains(character.Entry->ContentId);
+        bool characterDisabled = _disabledCharacterIds.Contains(character.Entry->ContentId);
         string characterId = $"FFXIV_CHR{character.Entry->ContentId:X16}";
         return new()
         {
@@ -159,7 +159,7 @@ internal sealed class ContextMenuController : IDisposable
         };
     }
 
-    private unsafe void AddContextMenuEntry_SatisfactionSupply(IMenuOpenedArgs args, uint itemId, uint npcId, Job classJob,
+    private unsafe void AddGatherItem(IMenuOpenedArgs args, uint itemId, uint npcId, Job classJob,
         string verb)
     {
         Job currentClassJob = (Job)PlayerState.Instance()->CurrentClassJobId;
@@ -177,33 +177,33 @@ internal sealed class ContextMenuController : IDisposable
         if (collectability == 0)
             return;
 
-        AgentSatisfactionSupply* agentSatisfactionSupply = AgentSatisfactionSupply.Instance();
-        if (agentSatisfactionSupply->IsAgentActive())
+        AgentSatisfactionSupply* agent = AgentSatisfactionSupply.Instance();
+        if (agent->IsAgentActive())
         {
-            int maxTurnIns = agentSatisfactionSupply->NpcInfo.SatisfactionRank == 1 ? 3 : 6;
-            quantityToGather = Math.Min(agentSatisfactionSupply->NpcData.RemainingAllowances,
-                TurnInsToNextRank(agentSatisfactionSupply->NpcData.SatisfactionCur,
-                    agentSatisfactionSupply->NpcData.SatisfactionMax, maxTurnIns));
+            int maxTurnIns = agent->NpcInfo.SatisfactionRank == 1 ? 3 : 6;
+            quantityToGather = Math.Min(agent->NpcData.RemainingAllowances,
+                TurnInsToNextRank(agent->NpcData.SatisfactionCur,
+                    agent->NpcData.SatisfactionMax, maxTurnIns));
         }
         if (_configuration.Advanced.Debug)
             quantityToGather = 1;
 
-        string lockedReasonn = string.Empty;
+        string lockedReason = string.Empty;
         if (!_configuration.Advanced.Debug)
         {
             if (!_questFunctions.IsClassJobUnlocked(classJob))
-                lockedReasonn = $"{classJob} not unlocked";
+                lockedReason = $"{classJob} not unlocked";
             else if (quantityToGather == 0)
-                lockedReasonn = "No allowances";
+                lockedReason = "No allowances";
             else if (quantityToGather > GameFunctions.GetFreeInventorySlots())
-                lockedReasonn = "Inventory full";
+                lockedReason = "Inventory full";
             else if (_gameFunctions.IsOccupied())
-                lockedReasonn = "Can't be used while interacting";
+                lockedReason = "Can't be used while interacting";
         }
 
         string name = $"{verb} with Questionable";
-        if (!string.IsNullOrEmpty(lockedReasonn))
-            name += $" ({lockedReasonn})";
+        if (!string.IsNullOrEmpty(lockedReason))
+            name += $" ({lockedReason})";
 
         args.AddMenuItem(new()
         {
@@ -211,7 +211,7 @@ internal sealed class ContextMenuController : IDisposable
             PrefixColor = 52,
             Name = name,
             OnClicked = _ => _questController.StartGathering(npcId, itemId, classJob, quantityToGather, collectability),
-            IsEnabled = string.IsNullOrEmpty(lockedReasonn)
+            IsEnabled = string.IsNullOrEmpty(lockedReason)
         });
     }
 }

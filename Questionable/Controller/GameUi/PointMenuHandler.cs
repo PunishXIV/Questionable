@@ -36,13 +36,13 @@ internal sealed class PointMenuHandler : IDisposable
     public void Dispose() =>
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "PointMenu", PointMenuPostSetup);
 
-    private bool ShouldHandleUiInteractions =>
+    private bool ShouldHandleUi =>
         _questController.IsRunning ||
         _territoryData.IsQuestBattleInstance(_clientState.TerritoryType);
 
     private unsafe void PointMenuPostSetup(AddonEvent type, AddonArgs args)
     {
-        if (!ShouldHandleUiInteractions)
+        if (!ShouldHandleUi)
             return;
 
         HandlePointMenu((AtkUnitBase*)args.Addon.Address);

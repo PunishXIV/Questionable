@@ -7,8 +7,8 @@ namespace Questionable.Controller;
 internal sealed class TaskToastClassifier
 {
     private readonly string? _eventCanceledText;
-    private readonly Regex _actionCanceledText;
-    private readonly string? _cantExecuteDueToStatusText;
+    private readonly Regex _actionCanceledRegex;
+    private readonly string? _statusBlockedText;
 
     public TaskToastClassifier(IDataManager dataManager)
         : this(DataManagerAdapter.GetString<LogMessage>(dataManager, 1318, x => x.Text),
@@ -17,16 +17,16 @@ internal sealed class TaskToastClassifier
     {
     }
 
-    internal TaskToastClassifier(string? eventCanceledText, Regex actionCanceledText, string? cantExecuteDueToStatusText)
+    internal TaskToastClassifier(string? eventCanceledText, Regex actionCanceledRegex, string? statusBlockedText)
     {
         _eventCanceledText = eventCanceledText;
-        _actionCanceledText = actionCanceledText;
-        _cantExecuteDueToStatusText = cantExecuteDueToStatusText;
+        _actionCanceledRegex = actionCanceledRegex;
+        _statusBlockedText = statusBlockedText;
     }
 
-    public bool IsActionCancellation(string text) => _actionCanceledText.IsMatch(text);
+    public bool IsActionCancellation(string text) => _actionCanceledRegex.IsMatch(text);
 
     public bool IsEventOrStatusCancellation(string text) =>
-        GameStringComparison.AreEqual(_cantExecuteDueToStatusText, text) ||
+        GameStringComparison.AreEqual(_statusBlockedText, text) ||
         GameStringComparison.AreEqual(_eventCanceledText, text);
 }

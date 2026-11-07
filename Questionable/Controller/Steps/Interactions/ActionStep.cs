@@ -199,7 +199,7 @@ internal static class ActionStep
 
             QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(Task.Quest!.Id);
             return questWork != null &&
-                   QuestWorkUtils.MatchesQuestWork(Task.CompletionFlags!, questWork)
+                   QuestWorkUtils.Matches(Task.CompletionFlags!, questWork)
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
         }

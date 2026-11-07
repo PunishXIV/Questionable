@@ -17,7 +17,7 @@ internal interface IQuestCatalog
 
     bool TryGetQuest(ElementId questId, [NotNullWhen(true)] out Quest? quest);
     bool IsKnownQuest(ElementId questId);
-    IReadOnlyList<(uint ContentFinderConditionId, ElementId QuestId, int Sequence)> LowPriorityContentFinderConditionQuests { get; }
+    IReadOnlyList<(uint CfcId, ElementId QuestId, int Sequence)> LowPriorityCfcQuests { get; }
     IReadOnlyList<QuestInfo> GetKnownClassJobQuests(Job classJob);
 
     (ushort UnlockQuestId, int ExpArrayIndex) GetClassJobUnlock(Job classJob);
@@ -37,8 +37,8 @@ internal sealed class QuestCatalog(QuestData questData, QuestRegistry questRegis
     public bool TryGetQuest(ElementId questId, [NotNullWhen(true)] out Quest? quest) => questRegistry.TryGetQuest(questId, out quest);
     public bool IsKnownQuest(ElementId questId) => questRegistry.IsKnownQuest(questId);
 
-    public IReadOnlyList<(uint ContentFinderConditionId, ElementId QuestId, int Sequence)> LowPriorityContentFinderConditionQuests =>
-        questRegistry.LowPriorityContentFinderConditionQuests;
+    public IReadOnlyList<(uint CfcId, ElementId QuestId, int Sequence)> LowPriorityCfcQuests =>
+        questRegistry.LowPriorityCfcQuests;
 
     public IReadOnlyList<QuestInfo> GetKnownClassJobQuests(Job classJob) => questRegistry.GetKnownClassJobQuests(classJob);
 

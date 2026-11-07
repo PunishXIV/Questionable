@@ -110,9 +110,9 @@ internal sealed class QuestPriorityManager(
         _acceptOnly.Clear();
     }
 
-    public void Import(IEnumerable<ElementId> questElements)
+    public void Import(IEnumerable<ElementId> questIds)
     {
-        foreach (ElementId elementId in questElements)
+        foreach (ElementId elementId in questIds)
         {
             Add(elementId);
         }

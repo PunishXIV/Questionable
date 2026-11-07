@@ -234,7 +234,7 @@ internal static class Interact
             {
                 QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(Quest.Id);
 
-                if (questWork != null && QuestWorkUtils.MatchesQuestWork(Task.CompletionFlags, questWork))
+                if (questWork != null && QuestWorkUtils.Matches(Task.CompletionFlags, questWork))
                     return ETaskResult.TaskComplete;
             }
             else if (ProgressContext != null)

@@ -11,7 +11,7 @@ internal sealed class PartyWatchDog : IDisposable
     private readonly ILogger<PartyWatchDog> _logger;
     private readonly QuestController _questController;
 
-    private uint? _uncheckedTeritoryId;
+    private uint? _uncheckedTerritoryId;
 
     public PartyWatchDog(QuestController questController, IClientState clientState, IChatGui chatGui,
         ILogger<PartyWatchDog> logger)
@@ -21,12 +21,12 @@ internal sealed class PartyWatchDog : IDisposable
         _chatGui = chatGui;
         _logger = logger;
 
-        _clientState.TerritoryChanged += TerritoryChanged;
+        _clientState.TerritoryChanged += OnTerritoryChanged;
     }
 
-    public void Dispose() => _clientState.TerritoryChanged -= TerritoryChanged;
+    public void Dispose() => _clientState.TerritoryChanged -= OnTerritoryChanged;
 
-    private unsafe void TerritoryChanged(uint newTerritoryId)
+    private unsafe void OnTerritoryChanged(uint newTerritoryId)
     {
         TerritoryIntendedUseEnum intendedUse = (TerritoryIntendedUseEnum)GameMain.Instance()->CurrentTerritoryIntendedUseId;
         switch (intendedUse)
@@ -64,7 +64,7 @@ internal sealed class PartyWatchDog : IDisposable
             case TerritoryIntendedUseEnum.Seasonal_Event_2:
             case TerritoryIntendedUseEnum.Criterion_Duty:
             case TerritoryIntendedUseEnum.Criterion_Savage_Duty:
-                _uncheckedTeritoryId = newTerritoryId;
+                _uncheckedTerritoryId = newTerritoryId;
                 _logger.LogInformation("Will check territory {TerritoryId} after loading", newTerritoryId);
                 break;
         }
@@ -72,7 +72,7 @@ internal sealed class PartyWatchDog : IDisposable
 
     public unsafe void Update()
     {
-        if (_uncheckedTeritoryId == _clientState.TerritoryType && GameMain.Instance()->TerritoryLoadState == 2)
+        if (_uncheckedTerritoryId == _clientState.TerritoryType && GameMain.Instance()->TerritoryLoadState == 2)
         {
             GroupManager* groupManager = GroupManager.Instance();
             if (groupManager == null)
@@ -81,11 +81,11 @@ internal sealed class PartyWatchDog : IDisposable
             byte memberCount = groupManager->MainGroup.MemberCount;
             bool isInAlliance = groupManager->MainGroup.IsAlliance;
             _logger.LogDebug("Territory {TerritoryId} with {MemberCount} members, alliance: {IsInAlliance}",
-                _uncheckedTeritoryId, memberCount, isInAlliance);
+                _uncheckedTerritoryId, memberCount, isInAlliance);
             if (memberCount > 1 || isInAlliance)
                 StopIfRunning("Other party members present");
 
-            _uncheckedTeritoryId = null;
+            _uncheckedTerritoryId = null;
         }
     }
 

@@ -13,7 +13,7 @@ internal sealed class QuestAcceptanceController(Configuration configuration)
     // so selecting the same quest again starts a new expectation.
     private QuestController.QuestProgress? _selectedNext;
 
-    public bool StopAfterAcceptingNextQuest { get; set; }
+    public bool StopAfterNextAccept { get; set; }
 
     public void TrackQueued(ITask task, Func<ElementId, bool> isAccepted)
     {
@@ -74,7 +74,7 @@ internal sealed class QuestAcceptanceController(Configuration configuration)
 
         configStop = configuration.Stop.Enabled &&
                      configuration.Stop.QuestsToStopWhenAccepted.Any(x => x == questId);
-        return configStop || StopAfterAcceptingNextQuest;
+        return configStop || StopAfterNextAccept;
     }
 
     private static bool IsQueued(TaskQueue queue, ElementId questId) =>

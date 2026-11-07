@@ -327,7 +327,7 @@ internal sealed class QuestionableIpc : IDisposable
     private bool Stop(string label)
     {
         _logger.LogDebug("Stop({Label})", label);
-        _questController.StopAllDueToConditionFailed($"IPC: {label}");
+        _questController.StopAll($"IPC: {label}");
         return true;
     }
 

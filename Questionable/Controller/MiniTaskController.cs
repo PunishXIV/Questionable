@@ -12,7 +12,7 @@ internal abstract class MiniTaskController<T> : IDisposable
 {
     private readonly IChatGui _chatGui;
     private readonly ICondition _condition;
-    private readonly ITaskInterruptionSource _interruptHandler;
+    private readonly ITaskInterruptionSource _interrupts;
     private readonly TaskToastClassifier _toastClassifier;
     private readonly Action<string> _notifyOnFailure;
     private readonly ILogger<T> _logger;
@@ -21,28 +21,28 @@ internal abstract class MiniTaskController<T> : IDisposable
     protected readonly TaskQueue _taskQueue;
 
     protected MiniTaskController(IChatGui chatGui, ICondition condition, IServiceProvider serviceProvider,
-        ITaskInterruptionSource interruptHandler, TaskToastClassifier toastClassifier,
+        ITaskInterruptionSource interrupts, TaskToastClassifier toastClassifier,
         Action<string> notifyOnFailure, ILogger<T> logger)
     {
         _chatGui = chatGui;
         _logger = logger;
         _taskQueue = new TaskQueue(logger);
         _serviceProvider = serviceProvider;
-        _interruptHandler = interruptHandler;
+        _interrupts = interrupts;
         _toastClassifier = toastClassifier;
         _notifyOnFailure = notifyOnFailure;
         _condition = condition;
 
         try
         {
-            _interruptHandler.Interrupted += HandleInterruption;
+            _interrupts.Interrupted += HandleInterruption;
         }
         catch
         {
             try
             {
                 // An event accessor can attach the handler before reporting a failure.
-                UnsubscribeFromInterruptions();
+                Unsubscribe();
             }
             catch (Exception cleanupError)
             {
@@ -52,14 +52,14 @@ internal abstract class MiniTaskController<T> : IDisposable
         }
     }
 
-    public virtual void Dispose() => UnsubscribeFromInterruptions();
+    public virtual void Dispose() => Unsubscribe();
 
-    private void UnsubscribeFromInterruptions()
+    private void Unsubscribe()
     {
         if (_disposed)
             return;
         _disposed = true;
-        _interruptHandler.Interrupted -= HandleInterruption;
+        _interrupts.Interrupted -= HandleInterruption;
     }
 
     // Lets derived controllers hold back new tasks without stopping the current executor.

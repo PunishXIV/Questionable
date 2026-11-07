@@ -42,7 +42,7 @@ internal sealed class CombatCleanupProvider(
         if (!_statusPoll.IsRunning || _statusPoll.Elapsed >= TimeSpan.FromMilliseconds(250))
         {
             _statusPoll.Restart();
-            combatController.TryRetryCleanup();
+            combatController.RetryCleanup();
             try
             {
                 // Solo duties keep local movement/interaction tasks between BossMod activations.
@@ -79,7 +79,7 @@ internal sealed class CombatCleanupProvider(
     {
         if (host.IsActive || !bossModIpc.TryConfirmStopped())
             return false;
-        combatController.TryRetryCleanup();
+        combatController.RetryCleanup();
         host.Status = context.BlockReason;
         return true;
     }

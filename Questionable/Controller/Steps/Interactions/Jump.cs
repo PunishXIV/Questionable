@@ -71,7 +71,7 @@ internal static class Jump
             if (movementController.IsPathfinding || movementController.IsPathRunning)
                 return ETaskResult.StillRunning;
 
-            DateTime movementStartedAt = movementController.MovementStartedAt;
+            DateTime movementStartedAt = movementController.StartedAt;
             if (movementStartedAt == DateTime.MaxValue || movementStartedAt.AddSeconds(1) >= DateTime.Now)
                 return ETaskResult.StillRunning;
 

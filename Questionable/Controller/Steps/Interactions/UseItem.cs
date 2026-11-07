@@ -200,7 +200,7 @@ internal static class UseItem
             {
                 QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(realQuestId);
                 if (questWork != null &&
-                    QuestWorkUtils.MatchesQuestWork(CompletionFlags, questWork))
+                    QuestWorkUtils.Matches(CompletionFlags, questWork))
                     return ETaskResult.TaskComplete;
             }
 

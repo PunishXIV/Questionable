@@ -14,7 +14,7 @@ public sealed class MovementCompletionTests
         bool canRestart = true;
         Assert.True(MoveExecutor.ShouldRestartAfterStop(task, 958, Vector3.Zero, ref canRestart));
         Assert.False(canRestart);
-        var error = Assert.Throws<MovementController.PathfindingFailedException>(() =>
+        var error = Assert.Throws<MovementController.PathfindingException>(() =>
             MoveExecutor.ShouldRestartAfterStop(task, 958, Vector3.Zero, ref canRestart));
         Assert.Equal(MovementController.PathfindingFailureReason.NotArrived, error.Reason);
     }
@@ -24,7 +24,7 @@ public sealed class MovementCompletionTests
     {
         MoveTask task = new(958, new Vector3(100, 0, 0), RestartNavigation: false);
         bool canRestart = task.RestartNavigation;
-        Assert.Throws<MovementController.PathfindingFailedException>(() =>
+        Assert.Throws<MovementController.PathfindingException>(() =>
             MoveExecutor.ShouldRestartAfterStop(task, 958, Vector3.Zero, ref canRestart));
     }
 
@@ -83,7 +83,7 @@ public sealed class MovementCompletionTests
     {
         MoveTask task = new(958, Vector3.Zero, StopDistance: 2f);
         bool canRestart = false;
-        Assert.Throws<MovementController.PathfindingFailedException>(() =>
+        Assert.Throws<MovementController.PathfindingException>(() =>
             MoveExecutor.ShouldRestartAfterStop(task, 958, new Vector3(0, 8, 0), ref canRestart));
     }
 

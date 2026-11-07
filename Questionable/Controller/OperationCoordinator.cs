@@ -1,16 +1,16 @@
 namespace Questionable.Controller;
 
 [RegisterSingleton]
-internal sealed class ExternalOperationCoordinator : IOperationContext
+internal sealed class OperationCoordinator : IOperationContext
 {
     private readonly IReadOnlyList<IOperationProvider> _providers;
     private readonly MovementController _movementController;
-    private readonly ILogger<ExternalOperationCoordinator> _logger;
+    private readonly ILogger<OperationCoordinator> _logger;
 
-    public ExternalOperationCoordinator(
+    public OperationCoordinator(
         IEnumerable<IOperationProvider> providers,
         MovementController movementController,
-        ILogger<ExternalOperationCoordinator> logger)
+        ILogger<OperationCoordinator> logger)
     {
         _providers = providers.OrderBy(x => x.Order).ToList();
         IOperationProvider? duplicate = _providers.GroupBy(x => x.Order).FirstOrDefault(x => x.Count() > 1)?.First();
@@ -21,20 +21,20 @@ internal sealed class ExternalOperationCoordinator : IOperationContext
     }
 
     public IReadOnlyList<IOperationProvider> Providers => _providers;
-    public bool HasExternalOperation => _providers.Any(x => x.HasOperation);
+    public bool HasOperation => _providers.Any(x => x.HasOperation);
     public string? BlockReason => _providers.Select(x => x.BlockReason).FirstOrDefault(x => x != null);
 
     public bool HasMovingOperation => _providers.Any(x => x.MovesCharacter && x.HasOperation);
 
     public bool MayBeMovingCharacter() => _providers.Any(x => x.MayBeMovingCharacter());
 
-    public IOperationProvider? GetOwner(ITaskExecutor? executor) => _providers.FirstOrDefault(x => x.HandlesExecutor(executor));
+    public IOperationProvider? GetProvider(ITaskExecutor? executor) => _providers.FirstOrDefault(x => x.HandlesExecutor(executor));
 
     public bool HandlesPlayerDeath(ITaskExecutor? executor) => _providers.Any(x => x.HandlesPlayerDeath(executor));
 
     public bool Update(IExternalOperationHost host)
     {
-        // Reconcile retained work even while stopped, occupied or logged out. Each provider sees the executor
+        // Check unfinished plugin work even while stopped, occupied or logged out. Each provider sees the executor
         // as earlier providers left it.
         bool blocked = false;
         foreach (IOperationProvider provider in _providers)
@@ -49,14 +49,14 @@ internal sealed class ExternalOperationCoordinator : IOperationContext
             provider.Abandon();
         bool success = resetQueue();
 
-        // Provider work is cleaned up even when its executor has already detached.
+        // Provider work is cleaned up even when its executor is already gone.
         foreach (IOperationProvider provider in _providers)
             success &= provider.Cancel(this);
         if (stopMovement)
             success &= TryCleanup(_movementController.Stop, "movement");
 
         // A provider can still be cleaning up without having failed; don't queue replacements yet.
-        return success && !HasExternalOperation;
+        return success && !HasOperation;
     }
 
     bool IOperationContext.TryCleanup(Action cleanup, string operation) => TryCleanup(cleanup, operation);
@@ -78,7 +78,7 @@ internal sealed class ExternalOperationCoordinator : IOperationContext
     public bool CanPrepareQuestTasks(out string? reason)
     {
         reason = null;
-        if (HasExternalOperation)
+        if (HasOperation)
             return false;
 
         reason = _providers.Select(x => x.GetStartBlockReason()).FirstOrDefault(x => x != null);

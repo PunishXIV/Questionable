@@ -20,11 +20,11 @@ namespace Questionable.Controller;
 internal sealed class QuestRegistry
 {
     private readonly IChatGui _chatGui;
-    private readonly Dictionary<uint, (ElementId QuestId, QuestStep Step)> _contentFinderConditionIds = [];
+    private readonly Dictionary<uint, (ElementId QuestId, QuestStep Step)> _cfcSteps = [];
     private readonly IDataManager _dataManager;
     private readonly JsonSchemaValidator _jsonSchemaValidator;
     private readonly ILogger<QuestRegistry> _logger;
-    private readonly List<(uint ContentFinderConditionId, ElementId QuestId, int Sequence)> _lowPriorityContentFinderConditionQuests = [];
+    private readonly List<(uint CfcId, ElementId QuestId, int Sequence)> _lowPriorityCfcQuests = [];
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly QuestData _questData;
     private readonly Dictionary<ElementId, Quest> _quests = [];
@@ -74,8 +74,8 @@ internal sealed class QuestRegistry
     public int ValidationIssueCount => _questValidator.IssueCount;
     public int ValidationErrorCount => _questValidator.ErrorCount;
 
-    public IReadOnlyList<(uint ContentFinderConditionId, ElementId QuestId, int Sequence)>
-        LowPriorityContentFinderConditionQuests => _lowPriorityContentFinderConditionQuests;
+    public IReadOnlyList<(uint CfcId, ElementId QuestId, int Sequence)>
+        LowPriorityCfcQuests => _lowPriorityCfcQuests;
 
     public event EventHandler? Reloaded;
 
@@ -83,10 +83,10 @@ internal sealed class QuestRegistry
     {
         _questValidator.Reset();
         _quests.Clear();
-        _contentFinderConditionIds.Clear();
-        _lowPriorityContentFinderConditionQuests.Clear();
+        _cfcSteps.Clear();
+        _lowPriorityCfcQuests.Clear();
 
-        if (!LoadQuestsFromDownloadedBundle())
+        if (!LoadFromBundle())
             _logger.LogWarning("Bundled quests were not loaded, we have no quests!");
         if (_configuration.Advanced.Debug || Svc.PluginInterface.IsDev
 #if DEBUG
@@ -94,7 +94,7 @@ internal sealed class QuestRegistry
 #endif
         )
         {
-            LoadQuestsFromProjectDirectory();
+            LoadFromProject();
 
             try
             {
@@ -128,7 +128,7 @@ internal sealed class QuestRegistry
     }
 
     [Conditional("RELEASE")]
-    private void LoadQuestsFromAssembly()
+    private void LoadFromAssembly()
     {
         _logger.LogInformation("Loading quests from assembly");
 
@@ -155,7 +155,7 @@ internal sealed class QuestRegistry
         _logger.LogInformation("Loaded {Count} quests from assembly", _quests.Count);
     }
 
-    private void LoadQuestsFromProjectDirectory()
+    private void LoadFromProject()
     {
         DirectoryInfo? solutionDirectory = _pluginInterface.AssemblyLocation.Directory?.Parent?.Parent;
         if (solutionDirectory != null)
@@ -187,7 +187,7 @@ internal sealed class QuestRegistry
     }
 
     // Bundles override compiled paths but not user paths; malformed entries are skipped.
-    private bool LoadQuestsFromDownloadedBundle()
+    private bool LoadFromBundle()
     {
         string bundlePath = PathDataBundle.GetBundlePath(_pluginInterface);
         if (!File.Exists(bundlePath))
@@ -252,10 +252,10 @@ internal sealed class QuestRegistry
             {
                 if (step is { InteractionType: EInteractionType.Duty, DutyOptions: { } dutyOptions })
                 {
-                    _contentFinderConditionIds[dutyOptions.ContentFinderConditionId] = (quest.Id, step);
+                    _cfcSteps[dutyOptions.ContentFinderConditionId] = (quest.Id, step);
                     if (dutyOptions.LowPriority)
                     {
-                        _lowPriorityContentFinderConditionQuests.Add((dutyOptions.ContentFinderConditionId,
+                        _lowPriorityCfcQuests.Add((dutyOptions.ContentFinderConditionId,
                             quest.Id, sequence.Sequence));
                     }
                 }
@@ -263,7 +263,7 @@ internal sealed class QuestRegistry
                          _territoryData.TryGetContentFinderConditionForSoloInstance(quest.Id,
                              step.SinglePlayerDutyIndex, out TerritoryData.ContentFinderConditionData? cfcData))
                 {
-                    _contentFinderConditionIds[cfcData.ContentFinderConditionId] = (quest.Id, step);
+                    _cfcSteps[cfcData.ContentFinderConditionId] = (quest.Id, step);
                 }
             }
         }
@@ -363,9 +363,9 @@ internal sealed class QuestRegistry
             .ToList();
     }
 
-    public bool TryGetDutyByContentFinderConditionId(uint cfcId, [NotNullWhen(true)] out DutyOptions? dutyOptions)
+    public bool TryGetDutyByCfcId(uint cfcId, [NotNullWhen(true)] out DutyOptions? dutyOptions)
     {
-        if (_contentFinderConditionIds.TryGetValue(cfcId, out (ElementId QuestId, QuestStep Step) value))
+        if (_cfcSteps.TryGetValue(cfcId, out (ElementId QuestId, QuestStep Step) value))
         {
             dutyOptions = value.Step.DutyOptions;
             return dutyOptions != null;
@@ -478,12 +478,12 @@ internal sealed class QuestRegistry
         return path;
     }
     public static (bool, FileInfo?, string) CreatePath(IQuestInfo info) => CreatePath((QuestInfo)info);
-    public static (bool, FileInfo?, string) CreatePath(QuestInfo info, Quest? quest = null, bool dryrun = false)
+    public static (bool, FileInfo?, string) CreatePath(QuestInfo info, Quest? quest = null, bool dryRun = false)
     {
         var path = GetFullPath(info);
         if (path == null)
             return (false, null, "No directory path returned");
-        if (!dryrun)
+        if (!dryRun)
         {
             var dirName = Path.GetDirectoryName(path);
             if (dirName == null)
@@ -492,14 +492,14 @@ internal sealed class QuestRegistry
         }
         FileInfo file = new(path);
         FileStream? stream = null;
-        if (!dryrun)
+        if (!dryRun)
             if (!file.Exists)
                 stream = file.Create();
         stream ??= file.OpenRead();
         if (stream.Length > 0)
             return (true, file, "Path already exists");
         stream.Dispose();
-        if (!dryrun)
+        if (!dryRun)
         {
             JsonObject? jsonNode;
             JsonObject newNode;
@@ -528,7 +528,7 @@ internal sealed class QuestRegistry
             });
             newNode.WriteTo(writer, JsonOptions.Default);
         }
-        return (true, file, $"File created{(dryrun ? " (dry run)" : "")}");
+        return (true, file, $"File created{(dryRun ? " (dry run)" : "")}");
     }
 
     public static (bool Success, string Message) SaveUserPath(QuestInfo info, QuestRoot root)

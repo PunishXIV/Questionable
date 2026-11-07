@@ -61,7 +61,7 @@ internal sealed class InteractionUiController : IDisposable
             if (!recovery.InitialSweepDone)
             {
                 recovery.InitialSweepDone = true;
-                HandleCurrentDialogueChoices();
+                CheckOpenDialogues();
                 return;
             }
             if (_yesNoChoiceHandler.TryHandleStartupDialogue())
@@ -94,7 +94,7 @@ internal sealed class InteractionUiController : IDisposable
         }
     }
 
-    internal void HandleCurrentDialogueChoices()
+    internal void CheckOpenDialogues()
     {
         _dialogueChoiceHandler.CheckExisting();
         _yesNoChoiceHandler.CheckExisting();

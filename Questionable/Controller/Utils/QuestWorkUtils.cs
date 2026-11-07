@@ -3,16 +3,16 @@ namespace Questionable.Controller.Utils;
 
 internal static class QuestWorkUtils
 {
-    public static bool HasCompletionFlags(IList<QuestWorkValue?> completionQuestVariablesFlags) => completionQuestVariablesFlags.Count == 6 && completionQuestVariablesFlags.Any(x => x != null && (x.High != 0 || x.Low != 0));
+    public static bool HasCompletionFlags(IList<QuestWorkValue?> completionFlags) => completionFlags.Count == 6 && completionFlags.Any(x => x != null && (x.High != 0 || x.Low != 0));
 
-    public static bool MatchesQuestWork(IList<QuestWorkValue?> completionQuestVariablesFlags, QuestProgressInfo questProgressInfo)
+    public static bool Matches(IList<QuestWorkValue?> completionFlags, QuestProgressInfo questProgressInfo)
     {
-        if (!HasCompletionFlags(completionQuestVariablesFlags) || questProgressInfo.Variables.Count != 6)
+        if (!HasCompletionFlags(completionFlags) || questProgressInfo.Variables.Count != 6)
             return false;
 
         for (int i = 0; i < questProgressInfo.Variables.Count; ++i)
         {
-            QuestWorkValue? check = completionQuestVariablesFlags[i];
+            QuestWorkValue? check = completionFlags[i];
             if (check == null)
                 continue;
 
@@ -49,7 +49,7 @@ internal static class QuestWorkUtils
         return true;
     }
 
-    public static bool MatchesRequiredQuestWorkConfig(List<List<QuestWorkValue>?> requiredQuestVariables,
+    public static bool MatchesRequired(List<List<QuestWorkValue>?> requiredQuestVariables,
         QuestProgressInfo questWork, ILogger logger)
     {
         if (requiredQuestVariables.Count != 6 || requiredQuestVariables.All(x => x == null || x.Count == 0))

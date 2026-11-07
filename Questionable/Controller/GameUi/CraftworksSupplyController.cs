@@ -29,35 +29,35 @@ internal sealed class CraftworksSupplyController : IDisposable
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "ContextIconMenu", ContextIconMenuPostOpen);
         _addonLifecycle.RegisterListener(AddonEvent.PostRefresh, "ContextIconMenu", ContextIconMenuPostOpen);
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, "BankaCraftworksSupply",
-            BankaCraftworksSupplyPostUpdate);
+            SupplyPostSetup);
     }
 
-    private bool ShouldHandleUiInteractions => _questController.IsRunning;
+    private bool ShouldHandleUi => _questController.IsRunning;
 
     public void Dispose()
     {
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "BankaCraftworksSupply",
-            BankaCraftworksSupplyPostUpdate);
+            SupplyPostSetup);
         _addonLifecycle.UnregisterListener(AddonEvent.PostRefresh, "ContextIconMenu", ContextIconMenuPostOpen);
         _addonLifecycle.UnregisterListener(AddonEvent.PostSetup, "ContextIconMenu", ContextIconMenuPostOpen);
     }
 
-    private unsafe void BankaCraftworksSupplyPostUpdate(AddonEvent type, AddonArgs args)
+    private unsafe void SupplyPostSetup(AddonEvent type, AddonArgs args)
     {
-        if (!ShouldHandleUiInteractions)
+        if (!ShouldHandleUi)
             return;
 
         AtkUnitBase* addon = (AtkUnitBase*)args.Addon.Address;
-        InteractWithBankaCraftworksSupply(addon);
+        HandleSupply(addon);
     }
 
-    private unsafe void InteractWithBankaCraftworksSupply()
+    private unsafe void HandleSupply()
     {
         if (_gameGui.TryGetAddonByName("BankaCraftworksSupply", out AtkUnitBase* addon))
-            InteractWithBankaCraftworksSupply(addon);
+            HandleSupply(addon);
     }
 
-    private unsafe void InteractWithBankaCraftworksSupply(AtkUnitBase* addon)
+    private unsafe void HandleSupply(AtkUnitBase* addon)
     {
         AddonMaster.BankaCraftworksSupply master = new(addon);
         if (master.FirstUnfilledSlot is { } slot)
@@ -78,17 +78,17 @@ internal sealed class CraftworksSupplyController : IDisposable
     // TODO: confirm on a real delivery that the item is picked with the cursor outside the game window.
     private unsafe void ContextIconMenuPostOpen(AddonEvent type, AddonArgs args)
     {
-        if (!ShouldHandleUiInteractions)
+        if (!ShouldHandleUi)
             return;
         
         _framework.RunOnTick(() =>
         {
-            if (ShouldHandleUiInteractions && _gameGui.TryGetAddonByName("ContextIconMenu", out AtkUnitBase* addon))
-                PickItemForCraftworksSupply((AddonContextIconMenu*)addon);
+            if (ShouldHandleUi && _gameGui.TryGetAddonByName("ContextIconMenu", out AtkUnitBase* addon))
+                PickSupplyItem((AddonContextIconMenu*)addon);
         });
     }
 
-    private unsafe void PickItemForCraftworksSupply(AddonContextIconMenu* addonContextIconMenu)
+    private unsafe void PickSupplyItem(AddonContextIconMenu* addonContextIconMenu)
     {
         if (!addonContextIconMenu->IsVisible)
             return;
@@ -113,7 +113,7 @@ internal sealed class CraftworksSupplyController : IDisposable
             addonContextIconMenu->Close(fireCallback: true);
 
             if (parentAddon->NameString == "BankaCraftworksSupply")
-                _framework.RunOnTick(InteractWithBankaCraftworksSupply, TimeSpan.FromMilliseconds(50));
+                _framework.RunOnTick(HandleSupply, TimeSpan.FromMilliseconds(50));
         }
         else
             _logger.LogTrace("Ignoring contextmenu event for {AddonName}", parentAddon->NameString);

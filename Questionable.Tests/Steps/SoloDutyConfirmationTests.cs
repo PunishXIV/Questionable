@@ -2,7 +2,7 @@ using Questionable.Controller;
 using Questionable.Model.Questing;
 using Questionable.Tests.TestData;
 using Xunit;
-using Confirmation = Questionable.Controller.GameUi.YesNoChoiceHandler.SoloDutyConfirmation;
+using Confirmation = Questionable.Controller.GameUi.YesNoChoiceHandler.QuestBattleConfirmation;
 
 namespace Questionable.Tests.Steps;
 

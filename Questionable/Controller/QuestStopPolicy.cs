@@ -5,7 +5,7 @@ internal sealed class QuestStopPolicy
 {
     internal const string UiStopReason = "UI stop";
 
-    public static IReadOnlyList<string> CommandExceptions { get; } = Array.AsReadOnly<string>([UiStopReason, "ESC pressed"]);
+    public static IReadOnlyList<string> ExcludedStopReasons { get; } = Array.AsReadOnly<string>([UiStopReason, "ESC pressed"]);
 
     private readonly Configuration _configuration;
     private readonly Action<string> _notify;
@@ -29,7 +29,7 @@ internal sealed class QuestStopPolicy
 
     public void Apply(string label, bool wasAutomatic)
     {
-        if (!wasAutomatic || CommandExceptions.Any(x => label.Equals(x, StringComparison.OrdinalIgnoreCase)))
+        if (!wasAutomatic || ExcludedStopReasons.Any(x => label.Equals(x, StringComparison.OrdinalIgnoreCase)))
             return;
 
         TryRun(() => _notify(_L("Automatic questing has stopped.")), "stop notification");

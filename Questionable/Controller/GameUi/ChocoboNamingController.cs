@@ -16,7 +16,7 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
     private readonly QuestController _questController;
     private readonly Configuration _configuration;
     private readonly IAddonLifecycle _addonLifecycle;
-    private readonly IGameGuiAdapter _gameGuiAdapter;
+    private readonly IGameGuiAdapter _gameGui;
     private readonly IFramework _framework;
 
     private bool _namePending;
@@ -27,13 +27,13 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
         QuestController questController,
         Configuration configuration,
         IAddonLifecycle addonLifecycle,
-        IGameGuiAdapter gameGuiAdapter,
+        IGameGuiAdapter gameGui,
         IFramework framework)
     {
         _questController = questController;
         _configuration = configuration;
         _addonLifecycle = addonLifecycle;
-        _gameGuiAdapter = gameGuiAdapter;
+        _gameGui = gameGui;
         _framework = framework;
 
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, AddonName, OnPostSetup);
@@ -69,7 +69,7 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
 
             // Confirm the InputString dialog: [0 = OK, name, ""]. A "Name your chocobo?"
             // SelectYesno follows, which YesNoChoiceHandler accepts via IsAwaitingYesNo.
-            if (_gameGuiAdapter.TryGetAddonByName(AddonName, out AtkUnitBase* addon))
+            if (_gameGui.TryGetAddonByName(AddonName, out AtkUnitBase* addon))
             {
                 Callback.Fire(addon, updateState: true, 0, GetConfiguredName(), "");
                 IsAwaitingYesNo = true;
@@ -88,10 +88,10 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
     private string GetConfiguredName()
     {
         string name = (_configuration.General.ChocoboName ?? string.Empty).Trim();
-        return IsValidChocoboName(name) ? name : NameGenerator.GenerateFirstName();
+        return IsValidName(name) ? name : NameGenerator.GenerateFirstName();
     }
 
-    private static bool IsValidChocoboName(string name)
+    private static bool IsValidName(string name)
     {
         if (name.Length is < 2 or > 20)
             return false;

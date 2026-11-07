@@ -29,7 +29,7 @@ internal sealed class CombatController : IDisposable
     private readonly ChatFunctions _chatFunctions;
     private readonly IClientState _clientState;
 
-    private readonly List<ICombatModule> _combatModules;
+    private readonly List<ICombatModule> _modules;
     private readonly ICondition _condition;
     private readonly ILogger<CombatController> _logger;
     private readonly MovementController _movementController;
@@ -57,9 +57,9 @@ internal sealed class CombatController : IDisposable
         IFramework framework,
         ILogger<CombatController> logger)
     {
-        _combatModules = [.. combatModules];
+        _modules = [.. combatModules];
         logger.LogInformation("Combat modules registered (in order): {Modules}",
-            string.Join(", ", _combatModules.Select(x => x.GetType().Name)));
+            string.Join(", ", _modules.Select(x => x.GetType().Name)));
         _movementController = movementController;
         _targetManager = targetManager;
         _objectTable = objectTable;
@@ -70,7 +70,7 @@ internal sealed class CombatController : IDisposable
         _framework = framework;
         _logger = logger;
 
-        _clientState.TerritoryChanged += TerritoryChanged;
+        _clientState.TerritoryChanged += OnTerritoryChanged;
     }
 
     public bool IsRunning => _currentFight != null;
@@ -79,7 +79,7 @@ internal sealed class CombatController : IDisposable
 
     public void Dispose()
     {
-        _clientState.TerritoryChanged -= TerritoryChanged;
+        _clientState.TerritoryChanged -= OnTerritoryChanged;
         IpcInvoke.TryOnFrameworkThread(_framework, () => Stop(_L("Dispose")), _logger);
     }
 
@@ -93,13 +93,13 @@ internal sealed class CombatController : IDisposable
 
         ICombatModule? combatModule = null;
         if (combatData.CombatItemUse != null)
-            combatModule = _combatModules.OfType<ItemUseModule>().FirstOrDefault(x => x.CanHandleFight(combatData));
-        combatModule ??= _combatModules.FirstOrDefault(x => x.CanHandleFight(combatData));
+            combatModule = _modules.OfType<ItemUseModule>().FirstOrDefault(x => x.CanHandleFight(combatData));
+        combatModule ??= _modules.FirstOrDefault(x => x.CanHandleFight(combatData));
         if (combatModule == null)
             throw new TaskException("No combat module is available for this fight.");
         _logger.LogInformation($"Combat module: {combatModule}");
 
-        // Retain ownership before calling a provider: a throwing/rejected start can still acquire resources.
+        // Record cleanup before calling a provider: a throwing or rejected start can still take resources.
         _pendingCleanup = combatModule;
         try
         {
@@ -114,7 +114,7 @@ internal sealed class CombatController : IDisposable
             };
             _wasInCombat =
                 combatData.SpawnType is EEnemySpawnType.QuestInterruption or EEnemySpawnType.FinishCombatIfAny;
-            UpdateLastTargetAndQuestVariables(target: null);
+            TrackTargetAndVariables(target: null);
             _pendingCleanup = null;
             return true;
         }
@@ -154,7 +154,7 @@ internal sealed class CombatController : IDisposable
 
         if (_movementController.IsPathfinding ||
             _movementController.IsPathRunning ||
-            _movementController.MovementStartedAt > DateTime.Now.AddSeconds(-1))
+            _movementController.StartedAt > DateTime.Now.AddSeconds(-1))
             return EStatus.Moving;
 
         // Overworld enemies are variable; instanced or area spawns have fixed enemies.
@@ -180,7 +180,7 @@ internal sealed class CombatController : IDisposable
                             if (questProgressInfo != null &&
                                 questProgressInfo.Sequence == _currentFight.Data.Sequence &&
                                 QuestWorkUtils.HasCompletionFlags(_currentFight.Data.CompletionQuestVariablesFlags) &&
-                                QuestWorkUtils.MatchesQuestWork(_currentFight.Data.CompletionQuestVariablesFlags,
+                                QuestWorkUtils.Matches(_currentFight.Data.CompletionQuestVariablesFlags,
                                     questProgressInfo))
                                 return EStatus.InCombat;
 
@@ -188,7 +188,7 @@ internal sealed class CombatController : IDisposable
                                                                  questProgressInfo.Sequence == _currentFight.Data.Sequence &&
                                                                  _previousQuestVariables != null &&
                                                                  !questProgressInfo.Variables.SequenceEqual(_previousQuestVariables))
-                                UpdateLastTargetAndQuestVariables(target: null);
+                                TrackTargetAndVariables(target: null);
                             else
                                 return EStatus.InCombat;
                         }
@@ -274,7 +274,7 @@ internal sealed class CombatController : IDisposable
                 {
                     QuestProgressInfo? questWork = _questFunctions.GetQuestProgressInfo(questId);
                     if (questWork != null &&
-                        QuestWorkUtils.MatchesQuestWork(condition.CompletionQuestVariablesFlags, questWork))
+                        QuestWorkUtils.Matches(condition.CompletionQuestVariablesFlags, questWork))
                     {
                         _logger.LogInformation("Complex combat condition fulfilled: QuestWork matches");
                         _currentFight.Data.CompletedComplexDatas.Add(i);
@@ -541,19 +541,19 @@ internal sealed class CombatController : IDisposable
 
         direction = Vector3.Normalize(direction);
 
-        Vector3 originVect = new(sourcePos.X, sourcePos.Y, sourcePos.Z);
-        Vector3 directionVect = new(direction.X, direction.Y, direction.Z);
+        Vector3 origin = new(sourcePos.X, sourcePos.Y, sourcePos.Z);
+        Vector3 rayDirection = new(direction.X, direction.Y, direction.Z);
 
         RaycastHit hit;
         int* flags = stackalloc int[] { 0x4000, 0, 0x4000, 0 };
-        bool isLoSBlocked =
-            Framework.Instance()->BGCollisionModule->RaycastMaterialFilter(&hit, &originVect, &directionVect, distance,
+        bool isBlocked =
+            Framework.Instance()->BGCollisionModule->RaycastMaterialFilter(&hit, &origin, &rayDirection, distance,
                 1, flags);
 
-        return !isLoSBlocked;
+        return !isBlocked;
     }
 
-    private void UpdateLastTargetAndQuestVariables(IGameObject? target)
+    private void TrackTargetAndVariables(IGameObject? target)
     {
         _lastTargetId = target?.GameObjectId;
         _previousQuestVariables = _currentFight!.Data.ElementId != null
@@ -572,10 +572,10 @@ internal sealed class CombatController : IDisposable
             _logger.LogInformation("Stopping current fight");
             _pendingCleanup = fight.Module;
         }
-        TryRetryCleanup();
+        RetryCleanup();
     }
 
-    public void TryRetryCleanup()
+    public void RetryCleanup()
     {
         if (_pendingCleanup == null)
             return;
@@ -596,13 +596,13 @@ internal sealed class CombatController : IDisposable
             BlockReason = $"Combat cleanup failed: {e.Message}";
             if (!_cleanupFailureLogged)
             {
-                _logger.LogWarning(e, "Could not release combat control; retaining cleanup for retry");
+                _logger.LogWarning(e, "Could not release combat control; keeping cleanup for retry");
                 _cleanupFailureLogged = true;
             }
         }
     }
 
-    private void TerritoryChanged(uint territoryId) => Stop(_L("TerritoryChanged"));
+    private void OnTerritoryChanged(uint territoryId) => Stop(_L("TerritoryChanged"));
 
     private sealed class CurrentFight
     {

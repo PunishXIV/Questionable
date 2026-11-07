@@ -10,7 +10,7 @@ internal interface IQuestRecoveryHost
     bool IsLoggedIn { get; }
     bool EscapeRequested { get; }
     bool IsUnconscious { get; }
-    // AutoDuty and BossMod solo duties manage their own death and retry behavior.
+    // AutoDuty and Boss Mod quest battles handle death and retries themselves.
     bool ProviderHandlesDeath { get; }
     bool HasExternalOperation { get; }
     bool IsZoning { get; }

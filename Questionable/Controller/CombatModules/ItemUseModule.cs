@@ -14,7 +14,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
     private DateTime _continueAt;
 
     private ICombatModule? _delegate;
-    private bool _isDoingRotation;
+    private bool _rotationRunning;
 
     public string Name => _delegate?.Name ?? "Item use";
 
@@ -34,17 +34,17 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
         _combatData = combatData;
         if (_delegate == null || !_delegate.Start(combatData))
             throw new TaskException("Unable to start rotation for combat item use.");
-        _isDoingRotation = true;
+        _rotationRunning = true;
         _continueAt = DateTime.Now;
         return true;
     }
 
     public bool Stop()
     {
-        // A failed start or an item-use pause may still own partial provider state.
+        // A failed start or an item-use pause may still leave partial provider state.
         if (_delegate != null && !_delegate.Stop())
             return false;
-        _isDoingRotation = false;
+        _rotationRunning = false;
         _combatData = null;
         _delegate = null;
         _continueAt = DateTime.Now;
@@ -61,14 +61,14 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
     {
         if (_delegate == null || _combatData == null || !_delegate.Resume())
             throw new TaskException("Unable to start rotation for combat item use.");
-        _isDoingRotation = true;
+        _rotationRunning = true;
     }
 
     internal void StopRotation()
     {
         if (_delegate == null || !_delegate.Pause())
             throw new TaskException("Waiting for rotation to stop before using a combat item.");
-        _isDoingRotation = false;
+        _rotationRunning = false;
     }
 
     public bool Pause()
@@ -108,7 +108,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
                 _continueAt = DateTime.Now.AddSeconds(1);
                 return;
             }
-            if (_isDoingRotation)
+            if (_rotationRunning)
             {
                 unsafe
                 {
@@ -145,7 +145,7 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
                 StartRotation();
             }
         }
-        else if (_isDoingRotation)
+        else if (_rotationRunning)
             _delegate.Update(nextTarget);
     }
 

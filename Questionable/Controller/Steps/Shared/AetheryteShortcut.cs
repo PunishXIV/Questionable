@@ -335,7 +335,7 @@ internal static class AetheryteShortcut
             {
                 QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(elementId);
                 if (questWork != null &&
-                    !QuestWorkUtils.MatchesRequiredQuestWorkConfig(step.RequiredQuestVariables, questWork, logger))
+                    !QuestWorkUtils.MatchesRequired(step.RequiredQuestVariables, questWork, logger))
                 {
                     logger.LogInformation("Skipping aetheryte teleport, as required variables do not match");
                     return true;

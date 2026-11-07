@@ -188,7 +188,7 @@ internal static class WaitAtEnd
         {
             QuestProgressInfo? questWork = gameState.GetQuestProgressInfo(Task.Quest);
             return questWork != null &&
-                   QuestWorkUtils.MatchesQuestWork(Task.Step.CompletionQuestVariablesFlags, questWork)
+                   QuestWorkUtils.Matches(Task.Step.CompletionQuestVariablesFlags, questWork)
                 ? ETaskResult.TaskComplete
                 : ETaskResult.StillRunning;
         }
@@ -234,7 +234,7 @@ internal static class WaitAtEnd
             if (!questFunctions.IsQuestAccepted(Task.ElementId))
                 return ETaskResult.StillRunning;
 
-            questController.TryStopOnExpectedQuestAccepted(Task.ElementId);
+            questController.TryStopOnQueuedAccept(Task.ElementId);
             return ETaskResult.TaskComplete;
         }
 

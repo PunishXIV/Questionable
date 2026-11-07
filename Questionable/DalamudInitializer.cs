@@ -118,7 +118,7 @@ internal sealed class DalamudInitializer : IDisposable
         {
             _movementController.Update();
         }
-        catch (MovementController.PathfindingFailedException e)
+        catch (MovementController.PathfindingException e)
         {
             _questController.RecordNavigationFailure(e);
             _logger.LogError(e, "Navigation failed ({Reason}), quest {Quest}, NeverFly:{NeverFly}",
