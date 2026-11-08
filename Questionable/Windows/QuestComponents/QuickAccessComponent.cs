@@ -148,13 +148,12 @@ internal sealed class QuickAccessComponent
             journalProgressWindow.ToggleOrUncollapse();
     }
 
-    internal void DrawTroubleshootingButton(bool showLabel = false, bool highlighted = false)
+    internal void DrawTroubleshootingButton(bool showLabel = false)
     {
-        bool highlight = highlighted || questController.IsRunning;
         bool leftClicked = QstWidgets.RailButton(FontAwesomeIcon.LifeRing,
             _L("Stuck?"),
             _L("Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard"),
-            tint: highlight ? QstTheme.Accent : null,
+            tint: QstTheme.SpecialButton,
             enabled: objectTable[0] != null,
             showLabel: showLabel);
         bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
