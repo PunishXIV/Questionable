@@ -230,18 +230,7 @@ internal sealed class QuestJournalUtils
         if (!popup)
             return;
 
-        if (ImGui.MenuItem(_L("Add all to Priority Quests")))
-        {
-            foreach (IQuestInfo quest in quests)
-                if (!questFunctions.IsQuestUnobtainable(quest.QuestId) && !questFunctions.IsQuestComplete(quest.QuestId))
-                    questController.PriorityManager.Add(quest.QuestId);
-        }
-
-        if (ImGui.MenuItem(_L("Remove all from Priority Quests")))
-        {
-            foreach (IQuestInfo quest in quests)
-                questController.PriorityManager.Remove(quest.QuestId);
-        }
+        DrawPriorityItems(quests);
 
         // Queue the group's accept steps before any completions, unlike the normal priority flow.
         if (ImGui.MenuItem(_L("Accept all quests")))
@@ -260,6 +249,22 @@ internal sealed class QuestJournalUtils
         if (ImGui.MenuItem(_L("Sim first quest")))
             if (quests.Count >= 1)
                 questController.SimulateQuest(quests[0], 0, 0);
+    }
+
+    public void DrawPriorityItems(List<IQuestInfo> quests)
+    {
+        if (ImGui.MenuItem(_L("Add all to Priority Quests")))
+        {
+            foreach (IQuestInfo quest in quests)
+                if (!questFunctions.IsQuestUnobtainable(quest.QuestId) && !questFunctions.IsQuestComplete(quest.QuestId))
+                    questController.PriorityManager.Add(quest.QuestId);
+        }
+
+        if (ImGui.MenuItem(_L("Remove all from Priority Quests")))
+        {
+            foreach (IQuestInfo quest in quests)
+                questController.PriorityManager.Remove(quest.QuestId);
+        }
     }
 
     public void MoveToIssuer(IQuestInfo questInfo, bool teleport = true)

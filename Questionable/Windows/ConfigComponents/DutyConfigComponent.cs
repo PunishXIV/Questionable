@@ -1,4 +1,3 @@
-using System.Text;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
@@ -106,10 +105,11 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
             DrawEnableAllButton();
             ImGui.SameLine();
-            DrawResetButton();
+            DrawResetButton(Configuration.Duties.WhitelistedDutyCfcIds, Configuration.Duties.BlacklistedDutyCfcIds);
             if (_contentSize.X > 500)
                 ImGui.SameLine();
-            DrawClipboardButtons();
+            DrawClipboardButtons(ClipboardPrefix, Configuration.Duties.WhitelistedDutyCfcIds,
+                Configuration.Duties.BlacklistedDutyCfcIds);
         }
     }
 
@@ -293,74 +293,6 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip(_L("Enable all of the duties, use at your own risk."));
-    }
-
-    private void DrawClipboardButtons()
-    {
-        using (ImRaii.Disabled(Configuration.Duties.WhitelistedDutyCfcIds.Count +
-            Configuration.Duties.BlacklistedDutyCfcIds.Count == 0))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Copy, _L("Export to clipboard")))
-            {
-                IEnumerable<string> whitelisted =
-                    Configuration.Duties.WhitelistedDutyCfcIds.Select(x => $"{DutyWhitelistPrefix}{x}");
-                IEnumerable<string> blacklisted =
-                    Configuration.Duties.BlacklistedDutyCfcIds.Select(x => $"{DutyBlacklistPrefix}{x}");
-                string text = ClipboardPrefix + Convert.ToBase64String(Encoding.UTF8.GetBytes(
-                    string.Join(DutyClipboardSeparator, whitelisted.Concat(blacklisted))));
-                ImGui.SetClipboardText(text);
-            }
-        }
-
-        ImGui.SameLine();
-
-        string clipboardText = ImGui.GetClipboardText().Trim();
-        using (ImRaii.Disabled(string.IsNullOrEmpty(clipboardText) ||
-                               !clipboardText.StartsWith(ClipboardPrefix, StringComparison.InvariantCulture)))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Paste, _L("Import from Clipboard")))
-            {
-                clipboardText = clipboardText.Substring(ClipboardPrefix.Length);
-                string text = Encoding.UTF8.GetString(Convert.FromBase64String(clipboardText));
-
-                Configuration.Duties.WhitelistedDutyCfcIds.Clear();
-                Configuration.Duties.BlacklistedDutyCfcIds.Clear();
-                foreach (string part in text.Split(DutyClipboardSeparator))
-                {
-                    if (part.StartsWith(DutyWhitelistPrefix) &&
-                        uint.TryParse(part.AsSpan(1), CultureInfo.InvariantCulture,
-                            out uint whitelistedCfcId))
-                    {
-                        Configuration.Duties.WhitelistedDutyCfcIds.Add(whitelistedCfcId);
-                    }
-
-                    if (part.StartsWith(DutyBlacklistPrefix) &&
-                        uint.TryParse(part.AsSpan(1), CultureInfo.InvariantCulture,
-                            out uint blacklistedCfcId))
-                    {
-                        Configuration.Duties.BlacklistedDutyCfcIds.Add(blacklistedCfcId);
-                    }
-                }
-
-                Save();
-            }
-        }
-    }
-
-    private void DrawResetButton()
-    {
-        using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Undo, _L("Reset to default")))
-            {
-                Configuration.Duties.WhitelistedDutyCfcIds.Clear();
-                Configuration.Duties.BlacklistedDutyCfcIds.Clear();
-                Save();
-            }
-        }
-
-        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
     }
 
     private sealed record DutyInfo(uint CfcId, uint TerritoryId, string Name, EContentType ContentType);

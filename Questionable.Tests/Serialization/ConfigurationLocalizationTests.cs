@@ -1,4 +1,5 @@
 using Questionable.Controller;
+using Questionable.Windows.ConfigComponents;
 using Xunit;
 
 namespace Questionable.Tests.Serialization;
@@ -227,5 +228,40 @@ public sealed class ConfigurationLocalizationTests
         configuration.ActivateProfile(name);
         configuration.SetLanguage(language);
         configuration.ClearActiveProfile();
+    }
+}
+
+public sealed class ConfigComponentTests
+{
+    private const string Saved = "qst:duty:KzE7KzI7LTM=";
+
+    [Fact]
+    public void Export_KeepsSavedFormat()
+    {
+        Assert.Equal(Saved, ConfigComponent.ExportCfcIds("qst:duty:", [1, 2], [3]));
+    }
+
+    [Fact]
+    public void Import_ReplacesBothLists()
+    {
+        HashSet<uint> whitelisted = [7];
+        HashSet<uint> blacklisted = [8];
+
+        ConfigComponent.ImportCfcIds(Saved["qst:duty:".Length..], whitelisted, blacklisted);
+
+        Assert.Equal([1u, 2u], whitelisted);
+        Assert.Equal([3u], blacklisted);
+    }
+
+    [Fact]
+    public void Import_SkipsUnreadableParts()
+    {
+        HashSet<uint> whitelisted = [];
+        HashSet<uint> blacklisted = [];
+
+        ConfigComponent.ImportCfcIds("K2FiYzstOys0O3g1Oy02OzsrNDI5NDk2NzI5Ng==", whitelisted, blacklisted);
+
+        Assert.Equal([4u], whitelisted);
+        Assert.Equal([6u], blacklisted);
     }
 }

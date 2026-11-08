@@ -10,7 +10,6 @@ namespace Questionable.Windows.ConfigComponents;
 internal sealed class StopConditionComponent : ConfigComponent
 {
     private readonly IClientState _clientState;
-    private readonly IDalamudPluginInterface _pluginInterface;
     private readonly QuestRegistry _questRegistry;
     private readonly QuestSelector _acceptQuestSelector;
     private readonly QuestSelector _completeQuestSelector;
@@ -29,7 +28,6 @@ internal sealed class StopConditionComponent : ConfigComponent
         Configuration configuration)
         : base(pluginInterface, configuration)
     {
-        _pluginInterface = pluginInterface;
         _questRegistry = questRegistry;
         _questTooltipComponent = questTooltipComponent;
         _uiUtils = uiUtils;
@@ -190,21 +188,7 @@ internal sealed class StopConditionComponent : ConfigComponent
 
                 using (ImRaii.PushId($"Quest{questId}"))
                 {
-                    (Vector4 color, FontAwesomeIcon icon, string _) = _uiUtils.GetQuestStyle(questId);
-                    bool hovered;
-                    using (IDisposable _ = _pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-                    {
-                        ImGui.AlignTextToFramePadding();
-                        ImGui.TextColored(color, icon.ToIconString());
-                        hovered = ImGui.IsItemHovered();
-                    }
-
-                    ImGui.SameLine();
-                    ImGui.AlignTextToFramePadding();
-                    ImGui.Text(quest.Info.Name);
-                    hovered |= ImGui.IsItemHovered();
-
-                    if (hovered)
+                    if (_uiUtils.DrawQuestRow(questId, quest.Info.Name))
                         _questTooltipComponent.Draw(quest.Info);
 
                     using (ImRaii.PushFont(UiBuilder.IconFont))

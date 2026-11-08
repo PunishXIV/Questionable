@@ -13,6 +13,7 @@ internal sealed class RedoComponent
     RedoUtil redoUtil,
     QuestController questController,
     QuestJournalComponent questJournalComponent,
+    QuestJournalUtils questJournalUtils,
     QuestTooltipComponent questTooltipComponent,
     QuestData questData,
     QuestRegistry questRegistry,
@@ -202,18 +203,7 @@ internal sealed class RedoComponent
         if (!popup)
             return;
 
-        if (ImGui.MenuItem(_L("Add all to Priority Quests")))
-        {
-            foreach (IQuestInfo quest in quests)
-                if (!questFunctions.IsQuestUnobtainable(quest.QuestId) && !questFunctions.IsQuestComplete(quest.QuestId))
-                    questController.PriorityManager.Add(quest.QuestId);
-        }
-
-        if (ImGui.MenuItem(_L("Remove all from Priority Quests")))
-        {
-            foreach (IQuestInfo quest in quests)
-                questController.PriorityManager.Remove(quest.QuestId);
-        }
+        questJournalUtils.DrawPriorityItems(quests);
 
         if (ImGui.MenuItem(_L("Sim first quest")))
             if (quests.Count >= 1)

@@ -1,6 +1,5 @@
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
-using System.Text;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Components;
@@ -302,10 +301,12 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
 
             DrawEnableAllButton();
             ImGui.SameLine();
-            DrawResetButton();
+            DrawResetButton(Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds,
+                Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds);
             if (_contentSize.X > 500)
                 ImGui.SameLine();
-            DrawClipboardButtons();
+            DrawClipboardButtons(ClipboardPrefix, Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds,
+                Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds);
         }
     }
 
@@ -672,74 +673,6 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
 
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip(_L("Enable all of the quest battles, use at your own risk."));
-    }
-
-    private void DrawClipboardButtons()
-    {
-        using (ImRaii.Disabled(Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Count +
-            Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Count == 0))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Copy, _L("Export to clipboard")))
-            {
-                IEnumerable<string> whitelisted =
-                    Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Select(x => $"{DutyWhitelistPrefix}{x}");
-                IEnumerable<string> blacklisted =
-                    Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Select(x => $"{DutyBlacklistPrefix}{x}");
-                string text = ClipboardPrefix + Convert.ToBase64String(Encoding.UTF8.GetBytes(
-                    string.Join(DutyClipboardSeparator, whitelisted.Concat(blacklisted))));
-                ImGui.SetClipboardText(text);
-            }
-        }
-
-        ImGui.SameLine();
-
-        string clipboardText = ImGui.GetClipboardText().Trim();
-        using (ImRaii.Disabled(string.IsNullOrEmpty(clipboardText) ||
-                               !clipboardText.StartsWith(ClipboardPrefix, StringComparison.InvariantCulture)))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Paste, _L("Import from Clipboard")))
-            {
-                clipboardText = clipboardText.Substring(ClipboardPrefix.Length);
-                string text = Encoding.UTF8.GetString(Convert.FromBase64String(clipboardText));
-
-                Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Clear();
-                Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Clear();
-                foreach (string part in text.Split(DutyClipboardSeparator))
-                {
-                    if (part.StartsWith(DutyWhitelistPrefix) &&
-                        uint.TryParse(part.AsSpan(start: 1), CultureInfo.InvariantCulture,
-                            out uint whitelistedCfcId))
-                    {
-                        Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Add(whitelistedCfcId);
-                    }
-
-                    if (part.StartsWith(DutyBlacklistPrefix) &&
-                        uint.TryParse(part.AsSpan(start: 1), CultureInfo.InvariantCulture,
-                            out uint blacklistedCfcId))
-                    {
-                        Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Add(blacklistedCfcId);
-                    }
-                }
-
-                Save();
-            }
-        }
-    }
-
-    private void DrawResetButton()
-    {
-        using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Undo, _L("Reset to default")))
-            {
-                Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds.Clear();
-                Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds.Clear();
-                Save();
-            }
-        }
-
-        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
     }
 
     private IEnumerable<BattleInfo> GetEnabledBattles()

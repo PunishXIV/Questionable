@@ -68,6 +68,24 @@ internal sealed class UiUtils(
         return (QstTheme.Danger, FontAwesomeIcon.Lock);
     }
 
+    public bool DrawQuestRow(ElementId questId, string name)
+    {
+        (Vector4 color, FontAwesomeIcon icon, string _) = GetQuestStyle(questId);
+        bool hovered;
+        using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+        {
+            ImGui.AlignTextToFramePadding();
+            ImGui.TextColored(color, icon.ToIconString());
+            hovered = ImGui.IsItemHovered();
+        }
+
+        ImGui.SameLine();
+        ImGui.AlignTextToFramePadding();
+        ImGui.Text(name);
+        hovered |= ImGui.IsItemHovered();
+        return hovered;
+    }
+
     public bool ChecklistItem(string text, Vector4 color, FontAwesomeIcon icon, float extraPadding = 0, uint? iconOverride = null, Action? onClick = null)
     {
         if (extraPadding > 0)

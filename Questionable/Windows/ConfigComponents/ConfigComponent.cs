@@ -1,3 +1,4 @@
+using System.Text;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text;
 using Dalamud.Interface;
@@ -8,9 +9,9 @@ namespace Questionable.Windows.ConfigComponents;
 
 internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration)
 {
-    protected const char DutyClipboardSeparator = ';';
-    protected const char DutyWhitelistPrefix = '+';
-    protected const char DutyBlacklistPrefix = '-';
+    private const char DutyClipboardSeparator = ';';
+    private const char DutyWhitelistPrefix = '+';
+    private const char DutyBlacklistPrefix = '-';
 
     private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
 
@@ -103,5 +104,73 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
             _L("While testing, the following issues have been found:"));
         foreach (string note in notes)
             ImGui.BulletText(note);
+    }
+
+    protected void DrawClipboardButtons(string prefix, HashSet<uint> whitelisted, HashSet<uint> blacklisted)
+    {
+        using (ImRaii.Disabled(whitelisted.Count + blacklisted.Count == 0))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Copy, _L("Export to clipboard")))
+                ImGui.SetClipboardText(ExportCfcIds(prefix, whitelisted, blacklisted));
+        }
+
+        ImGui.SameLine();
+
+        string clipboardText = ImGui.GetClipboardText().Trim();
+        using (ImRaii.Disabled(string.IsNullOrEmpty(clipboardText) ||
+                               !clipboardText.StartsWith(prefix, StringComparison.InvariantCulture)))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Paste, _L("Import from Clipboard")))
+            {
+                ImportCfcIds(clipboardText.Substring(prefix.Length), whitelisted, blacklisted);
+                Save();
+            }
+        }
+    }
+
+    protected void DrawResetButton(HashSet<uint> whitelisted, HashSet<uint> blacklisted)
+    {
+        using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Undo, _L("Reset to default")))
+            {
+                whitelisted.Clear();
+                blacklisted.Clear();
+                Save();
+            }
+        }
+
+        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+            ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
+    }
+
+    internal static string ExportCfcIds(string prefix, HashSet<uint> whitelisted, HashSet<uint> blacklisted)
+    {
+        IEnumerable<string> white = whitelisted.Select(x => $"{DutyWhitelistPrefix}{x}");
+        IEnumerable<string> black = blacklisted.Select(x => $"{DutyBlacklistPrefix}{x}");
+        return prefix + Convert.ToBase64String(Encoding.UTF8.GetBytes(
+            string.Join(DutyClipboardSeparator, white.Concat(black))));
+    }
+
+    internal static void ImportCfcIds(string encoded, HashSet<uint> whitelisted, HashSet<uint> blacklisted)
+    {
+        string text = Encoding.UTF8.GetString(Convert.FromBase64String(encoded));
+
+        whitelisted.Clear();
+        blacklisted.Clear();
+        foreach (string part in text.Split(DutyClipboardSeparator))
+        {
+            if (part.StartsWith(DutyWhitelistPrefix) &&
+                uint.TryParse(part.AsSpan(1), CultureInfo.InvariantCulture, out uint whitelistedCfcId))
+            {
+                whitelisted.Add(whitelistedCfcId);
+            }
+
+            if (part.StartsWith(DutyBlacklistPrefix) &&
+                uint.TryParse(part.AsSpan(1), CultureInfo.InvariantCulture, out uint blacklistedCfcId))
+            {
+                blacklisted.Add(blacklistedCfcId);
+            }
+        }
     }
 }
