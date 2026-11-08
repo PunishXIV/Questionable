@@ -217,7 +217,7 @@ internal sealed class BossModIpc : Ipc, IDisposable
     public void VerifyPreset()
     {
         if (_session is not { } session)
-            throw new TaskException("Questionable no longer owns a BossMod preset.");
+            throw new TaskException("Questionable's BossMod preset is no longer active.");
         if (session.Stopping)
             throw new TaskException(session.Reason!);
         try

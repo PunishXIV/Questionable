@@ -152,7 +152,7 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
             throw new TaskException("AutoDuty is unavailable or busy; refusing to replace its work.");
         var game = ReadGameState();
         if (!game.Available || !game.Idle || game.InQueue || game.Loading || game.InDuty)
-            throw new TaskException("Cannot start AutoDuty while native duty, queue or movement is active.");
+            throw new TaskException("Can't start AutoDuty while you're in a duty or queue, or moving.");
 
         Guid id = Operation.BeginRequest(data.TerritoryId);
         _loggedSwitchBackFailure = false;
@@ -179,7 +179,7 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
             ApplySetting("DutyConfig.AutoExitDuty", "True");
             if (_ipc.GetStopped() != true)
             {
-                Operation.RequireConfirmation("AutoDuty became busy during configuration; its work is not owned");
+                Operation.RequireConfirmation("AutoDuty started something else during setup; check it before restarting");
                 throw new TaskException("AutoDuty became busy during configuration.");
             }
             Operation.MarkRunRequested();
@@ -190,7 +190,7 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
         catch (Exception e)
         {
             Operation.RequireConfirmation(Operation.RunRequested
-                ? "AutoDuty submission is uncertain; check its work before restarting"
+                ? "AutoDuty may not have started the duty; check it before restarting"
                 : "AutoDuty configuration failed; its profile will be switched back while idle");
             throw new TaskException(_LF("Unable to run content with AutoDuty: {0}", e.Message), e);
         }
