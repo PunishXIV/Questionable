@@ -520,7 +520,7 @@ internal sealed class CommandHandler : IDisposable
 
     private void CleanUpOpenQuests()
     {
-        IReadOnlyList<Quest> added = _questController.QueueOpenQuests();
+        IReadOnlyList<Quest> added = _questController.PriorityManager.QueueOpenQuests(_questFunctions.OpenQuests);
         if (added.Count == 0)
         {
             _chatGui.Print(_L("No open quests to clean up."), MessageTag, TagColor);

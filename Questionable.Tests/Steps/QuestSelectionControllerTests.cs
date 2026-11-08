@@ -2,10 +2,12 @@ using NSubstitute;
 using Questionable.Controller;
 using Questionable.Domain;
 using Questionable.Functions;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Tests.TestData;
 using Xunit;
 using EAutomationType = Questionable.Controller.QuestController.EAutomationType;
+using ECurrentQuestType = Questionable.Controller.QuestController.ECurrentQuestType;
 using QuestProgress = Questionable.Controller.QuestController.QuestProgress;
 
 namespace Questionable.Tests.Steps;
@@ -239,6 +241,92 @@ public sealed class QuestSelectionControllerTests
         Assert.Equal(0, QuestSelectionController.ResumeOrStart(displaced, displaced.Quest, 2).Step);
         Assert.Equal(0, QuestSelectionController.ResumeOrStart(displaced, NewQuest(11), 255).Step);
         Assert.Equal(0, QuestSelectionController.ResumeOrStart(null, displaced.Quest, 255).Step);
+    }
+
+    private static (QuestProgress Progress, ECurrentQuestType Type)? Details(ushort id = 500, bool interruptible = true,
+        byte sequence = 1, int step = 0, EAlliedSociety society = EAlliedSociety.None, bool shortcut = true,
+        SkipConditions? skip = null, ECurrentQuestType type = ECurrentQuestType.Normal)
+    {
+        QuestStep NewStep() => new()
+        {
+            AetheryteShortcut = shortcut ? default(EAetheryteLocation) : null,
+            SkipConditions = skip,
+        };
+
+        Quest quest = QuestTestData.CreateQuest(new QuestId(id), QuestTestData.Seq(sequence, NewStep(), NewStep()));
+        quest.Root.Interruptible = interruptible;
+        quest.Info.AlliedSociety.Returns(society);
+        return (new QuestProgress(quest, sequence, step), type);
+    }
+
+    private static bool Interruptible((QuestProgress Progress, ECurrentQuestType Type)? details,
+        EAutomationType automation = EAutomationType.Automatic, bool hasExternalOperation = false,
+        bool isPriority = false) =>
+        QuestSelectionController.IsInterruptible(details, automation, hasExternalOperation, _ => isPriority);
+
+    [Fact]
+    public void Interruptible_FirstStepWithShortcut()
+    {
+        Assert.True(Interruptible(Details()));
+    }
+
+    [Fact]
+    public void Interruptible_FalseForEachBlocker()
+    {
+        Assert.False(Interruptible(Details(), hasExternalOperation: true));
+        Assert.False(Interruptible(Details(), EAutomationType.SingleQuestA));
+        Assert.False(Interruptible(Details(), EAutomationType.SingleQuestB));
+        Assert.False(Interruptible(null));
+        Assert.False(Interruptible(Details(type: ECurrentQuestType.Simulated)));
+        Assert.False(Interruptible(Details(interruptible: false)));
+        Assert.False(Interruptible(Details(sequence: 0)));
+        Assert.False(Interruptible(Details(), isPriority: true));
+        Assert.False(Interruptible(Details(id: 1048)));
+        Assert.False(Interruptible(Details(society: EAlliedSociety.Amaljaa)));
+        Assert.False(Interruptible(Details(step: 1)));
+        Assert.False(Interruptible(Details(shortcut: false)));
+    }
+
+    [Fact]
+    public void Interruptible_FalseIfShortcutCanBeSkipped()
+    {
+        Assert.False(Interruptible(Details(skip: new() { AetheryteShortcutIf = new() { QuestsCompleted = [new QuestId(1)] } })));
+        Assert.False(Interruptible(Details(skip: new() { AetheryteShortcutIf = new() { QuestsAccepted = [new QuestId(1)] } })));
+        Assert.True(Interruptible(Details(skip: new() { AetheryteShortcutIf = new() })));
+    }
+
+    [Fact]
+    public void Pick_FirstAvailablePriority()
+    {
+        ElementId? picked = QuestSelectionController.PickPriorityQuest(Slots(), false,
+            () => [new PriorityQuestInfo(new QuestId(1), "locked"), new PriorityQuestInfo(new QuestId(2)), new PriorityQuestInfo(new QuestId(3))]);
+
+        Assert.Equal(new QuestId(2), picked);
+    }
+
+    [Fact]
+    public void Pick_NoneAvailable_ReturnsNull()
+    {
+        Assert.Null(QuestSelectionController.PickPriorityQuest(Slots(), false,
+            () => [new PriorityQuestInfo(new QuestId(1), "locked")]));
+    }
+
+    [Fact]
+    public void Pick_SameAsStarted_ReturnsNull()
+    {
+        Assert.Null(QuestSelectionController.PickPriorityQuest(Slots(started: Progress(2)), false,
+            () => [new PriorityQuestInfo(new QuestId(2))]));
+    }
+
+    [Fact]
+    public void Pick_BlockedNeverReadsList()
+    {
+        IEnumerable<PriorityQuestInfo> Unread() => throw new InvalidOperationException();
+
+        Assert.Null(QuestSelectionController.PickPriorityQuest(Slots(next: Progress(2)), false, Unread));
+        Assert.Null(QuestSelectionController.PickPriorityQuest(Slots(gathering: Progress(2)), false, Unread));
+        Assert.Null(QuestSelectionController.PickPriorityQuest(Slots(simulated: Progress(2)), false, Unread));
+        Assert.Null(QuestSelectionController.PickPriorityQuest(Slots(), true, Unread));
     }
 
     private sealed class FakeState : IQuestSelectionState

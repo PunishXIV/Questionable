@@ -1,6 +1,10 @@
+using Questionable.Data;
+using Questionable.Functions;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Quest = Questionable.Domain.Quest;
 using EAutomationType = Questionable.Controller.QuestController.EAutomationType;
+using ECurrentQuestType = Questionable.Controller.QuestController.ECurrentQuestType;
 using QuestProgress = Questionable.Controller.QuestController.QuestProgress;
 
 namespace Questionable.Controller;
@@ -44,6 +48,61 @@ internal sealed class QuestSelectionController(Configuration configuration)
     // Leaving a duty, or a quest that can't be resumed from elsewhere (e.g. the ferry-only Isles of Umbre), strands the player.
     internal static bool CanSwitchToPriorityQuest(QuestProgress? started, ElementId priorityQuestId, bool inDuty) =>
         started == null || started.Quest.Id == priorityQuestId || (!inDuty && started.Quest.Root.Interruptible);
+
+    public static bool IsInterruptible((QuestProgress Progress, ECurrentQuestType Type)? details,
+        EAutomationType automation, bool hasExternalOperation, Func<Quest, bool> isPriority)
+    {
+        if (hasExternalOperation)
+            return false;
+
+        if (automation is EAutomationType.SingleQuestA or EAutomationType.SingleQuestB)
+            return false;
+
+        if (details == null)
+            return false;
+
+        (QuestProgress currentQuest, ECurrentQuestType type) = details.Value;
+        if (type != ECurrentQuestType.Normal || !currentQuest.Quest.Root.Interruptible || currentQuest.Sequence == 0)
+            return false;
+
+        if (isPriority(currentQuest.Quest))
+            return false;
+
+        // "ifrit bleeds, we can kill it" isn't listed as priority quest, as we accept it during the MSQ 'Moving On'
+        // the rest are priority quests, but that's fine here
+        if (QuestData.HardModePrimals.Contains(currentQuest.Quest.Id))
+            return false;
+
+        if (currentQuest.Quest.Info.AlliedSociety != EAlliedSociety.None)
+            return false;
+
+        if (currentQuest.Step > 0)
+            return false;
+
+        QuestStep? currentStep = currentQuest.FindStep();
+        return currentStep?.AetheryteShortcut != null &&
+               (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsCompleted.Count ?? 0) == 0 &&
+               (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsAccepted.Count ?? 0) == 0;
+    }
+
+    // The list is only read once nothing else blocks the switch.
+    public static ElementId? PickPriorityQuest(QuestSlots slots, bool stopRequested,
+        Func<IEnumerable<PriorityQuestInfo>> priorityQuests)
+    {
+        if (slots.Next != null || slots.Gathering != null || slots.Simulated != null || stopRequested)
+            return null;
+
+        ElementId? questId = priorityQuests()
+            .Where(x => x.IsAvailable)
+            .Select(x => x.QuestId)
+            .FirstOrDefault();
+
+        // don't start a second priority quest until the first one is resolved
+        if (questId == null || (slots.Started != null && questId == slots.Started.Quest.Id))
+            return null;
+
+        return questId;
+    }
 
     private sealed class SimulatedRule : IQuestRule
     {

@@ -277,7 +277,7 @@ internal sealed class PriorityWindow : LWindow
 
     private void AddOpenQuests()
     {
-        IReadOnlyList<Quest> added = _questController.QueueOpenQuests();
+        IReadOnlyList<Quest> added = _questController.PriorityManager.QueueOpenQuests(_questFunctions.OpenQuests);
         _chatGui.Print(
             added.Count == 0
                 ? _L("No open quests to clean up.")

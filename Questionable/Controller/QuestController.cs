@@ -1186,42 +1186,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             CancelCurrentTask();
     }
 
-    public bool IsInterruptible()
-    {
-        if (HasExternalOperation)
-            return false;
-
-        if (AutomationType is EAutomationType.SingleQuestA or EAutomationType.SingleQuestB)
-            return false;
-
-        (QuestProgress Progress, ECurrentQuestType Type)? details = CurrentQuestDetails;
-        if (details == null)
-            return false;
-
-        (QuestProgress currentQuest, ECurrentQuestType type) = details.Value;
-        if (type != ECurrentQuestType.Normal || !currentQuest.Quest.Root.Interruptible || currentQuest.Sequence == 0)
-            return false;
-
-        if (_priorityManager.Contains(currentQuest.Quest))
-            return false;
-
-        // "ifrit bleeds, we can kill it" isn't listed as priority quest, as we accept it during the MSQ 'Moving On'
-        // the rest are priority quests, but that's fine here
-        if (QuestData.HardModePrimals.Contains(currentQuest.Quest.Id))
-            return false;
-
-        if (currentQuest.Quest.Info.AlliedSociety != EAlliedSociety.None)
-            return false;
-
-        if (currentQuest.Step > 0)
-            return false;
-
-        QuestStep? currentStep = currentQuest.FindStep();
-        return currentStep?.AetheryteShortcut != null &&
-               (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsCompleted.Count ?? 0) == 0 &&
-               (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsAccepted.Count ?? 0) == 0;
-    }
-
     private QuestSlots Slots => new(StartedQuest, NextQuest, GatheringQuest, SimulatedQuest);
     private IQuestSelectionState SelectionState => _selectionState ??= new SelectionStateAdapter(this);
 
@@ -1258,53 +1222,16 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         return true;
     }
 
-    public IReadOnlyList<Quest> QueueOpenQuests()
+    private bool TryPickPriorityQuest()
     {
-        List<Quest> added = [];
-        foreach (ElementId questId in _questFunctions.OpenQuests)
-        {
-            if (_priorityManager.Contains(questId))
-                continue;
-
-            if (!_questRegistry.TryGetQuest(questId, out Quest? quest))
-                continue;
-
-            _priorityManager.Add(quest);
-            added.Add(quest);
-        }
-
-        if (added.Count > 0)
-        {
-            _logger.LogInformation("Clean up: queued {Count} open quest(s): {QuestIds}",
-                added.Count, string.Join(", ", added.Select(x => x.Id)));
-        }
-
-        return added;
-    }
-
-    public bool TryPickPriorityQuest()
-    {
-        if (!IsInterruptible() ||
-            NextQuest != null ||
-            GatheringQuest != null ||
-            SimulatedQuest != null ||
-            StopAfterCurrentQuest ||
-            StopAfterNextAccept ||
-            StopBeforeTeleport)
+        if (!QuestSelectionController.IsInterruptible(CurrentQuestDetails, AutomationType, HasExternalOperation,
+                _priorityManager.Contains))
             return false;
 
-        ElementId? priorityQuestId = _questFunctions.NextPriorityQuests
-            .Where(x => x.IsAvailable)
-            .Select(x => x.QuestId)
-            .FirstOrDefault();
-        if (priorityQuestId == null)
-            return false;
-
-        // don't start a second priority quest until the first one is resolved
-        if (StartedQuest != null && priorityQuestId == StartedQuest.Quest.Id)
-            return false;
-
-        if (_questRegistry.TryGetQuest(priorityQuestId, out Quest? quest))
+        ElementId? questId = QuestSelectionController.PickPriorityQuest(Slots,
+            StopAfterCurrentQuest || StopAfterNextAccept || StopBeforeTeleport,
+            () => _questFunctions.NextPriorityQuests);
+        if (questId != null && _questRegistry.TryGetQuest(questId, out Quest? quest))
         {
             SetNextQuest(quest);
             return true;

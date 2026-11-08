@@ -96,7 +96,7 @@ internal sealed class QuickAccessComponent
 
     internal void QueueOpenQuests()
     {
-        IReadOnlyList<Quest> added = questController.QueueOpenQuests();
+        IReadOnlyList<Quest> added = questController.PriorityManager.QueueOpenQuests(questFunctions.OpenQuests);
         if (added.Count == 0)
         {
             chatGui.Print(_L("No open quests to clean up."), CommandHandler.MessageTag, CommandHandler.TagColor);

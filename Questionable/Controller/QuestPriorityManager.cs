@@ -34,6 +34,30 @@ internal sealed class QuestPriorityManager(
 
     public void ClearAcceptOnly(ElementId elementId) => _acceptOnly.Remove(elementId);
 
+    public IReadOnlyList<Quest> QueueOpenQuests(IEnumerable<ElementId> openQuests)
+    {
+        List<Quest> added = [];
+        foreach (ElementId questId in openQuests)
+        {
+            if (Contains(questId))
+                continue;
+
+            if (!questRegistry.TryGetQuest(questId, out Quest? quest))
+                continue;
+
+            Add(quest);
+            added.Add(quest);
+        }
+
+        if (added.Count > 0)
+        {
+            logger.LogInformation("Clean up: queued {Count} open quest(s): {QuestIds}",
+                added.Count, string.Join(", ", added.Select(x => x.Id)));
+        }
+
+        return added;
+    }
+
     public bool Contains(Quest quest) => _quests.Any(q => q.Id == quest.Id);
 
     public bool Contains(ElementId elementId) => _quests.Any(q => q.Id == elementId);
