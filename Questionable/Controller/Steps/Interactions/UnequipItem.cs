@@ -30,27 +30,12 @@ internal static class UnequipItem
         IDataManager dataManager,
         ILogger<Executor> logger) : EquipmentSlots.GearExecutor<Task>(dataManager)
     {
-        private static readonly InventoryType[] ArmoryInventoryTypes =
-        [
-            InventoryType.ArmoryMainHand,
-            InventoryType.ArmoryOffHand,
-            InventoryType.ArmoryHead,
-            InventoryType.ArmoryBody,
-            InventoryType.ArmoryHands,
-            InventoryType.ArmoryLegs,
-            InventoryType.ArmoryFeets,
-            InventoryType.ArmoryEar,
-            InventoryType.ArmoryNeck,
-            InventoryType.ArmoryWrist,
-            InventoryType.ArmoryRings,
-        ];
-
         protected override uint ItemId => Task.ItemId;
         protected override string FailureText => "Unable to unequip gear.";
 
         protected override void CheckItem(Item item)
         {
-            if (GetArmoryInventoryType(item) == null)
+            if (EquipmentSlots.ArmoryFor(item.EquipSlotCategory.RowId) == null)
                 throw new InvalidOperationException("Item has no armory destination");
         }
 
@@ -65,7 +50,7 @@ internal static class UnequipItem
                 return;
             }
 
-            InventoryType armoryType = GetArmoryInventoryType(Item)!.Value;
+            InventoryType armoryType = EquipmentSlots.ArmoryFor(Item.EquipSlotCategory.RowId)!.Value;
             InventoryContainer* armoryContainer = inventoryManager->GetInventoryContainer(armoryType);
             if (armoryContainer == null)
                 return;
@@ -93,15 +78,5 @@ internal static class UnequipItem
                 return;
             }
         }
-
-        private static InventoryType? GetArmoryInventoryType(Item item) =>
-            item.EquipSlotCategory.RowId switch
-            {
-                >= 1 and <= 11 => ArmoryInventoryTypes[item.EquipSlotCategory.RowId - 1],
-                12 => InventoryType.ArmoryRings,
-                13 => InventoryType.ArmoryMainHand,
-                17 => InventoryType.ArmorySoulCrystal,
-                _ => null
-            };
     }
 }

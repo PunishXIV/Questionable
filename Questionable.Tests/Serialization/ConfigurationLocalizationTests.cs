@@ -242,12 +242,30 @@ public sealed class ConfigComponentTests
     }
 
     [Fact]
+    public void Decode_ReadsSavedFormat()
+    {
+        Assert.Equal("+1;+2;-3", ConfigComponent.DecodeCfcIds(Saved, "qst:duty:"));
+    }
+
+    [Fact]
+    public void Decode_BadBase64_ReturnsNull()
+    {
+        Assert.Null(ConfigComponent.DecodeCfcIds("qst:duty:!!!", "qst:duty:"));
+    }
+
+    [Fact]
+    public void Decode_OtherPrefix_ReturnsNull()
+    {
+        Assert.Null(ConfigComponent.DecodeCfcIds(Saved, "qst:single:"));
+    }
+
+    [Fact]
     public void Import_ReplacesBothLists()
     {
         HashSet<uint> whitelisted = [7];
         HashSet<uint> blacklisted = [8];
 
-        ConfigComponent.ImportCfcIds(Saved["qst:duty:".Length..], whitelisted, blacklisted);
+        ConfigComponent.ImportCfcIds("+1;+2;-3", whitelisted, blacklisted);
 
         Assert.Equal([1u, 2u], whitelisted);
         Assert.Equal([3u], blacklisted);
@@ -259,7 +277,7 @@ public sealed class ConfigComponentTests
         HashSet<uint> whitelisted = [];
         HashSet<uint> blacklisted = [];
 
-        ConfigComponent.ImportCfcIds("K2FiYzstOys0O3g1Oy02OzsrNDI5NDk2NzI5Ng==", whitelisted, blacklisted);
+        ConfigComponent.ImportCfcIds("+abc;-;+4;x5;-6;;+4294967296", whitelisted, blacklisted);
 
         Assert.Equal([4u], whitelisted);
         Assert.Equal([6u], blacklisted);

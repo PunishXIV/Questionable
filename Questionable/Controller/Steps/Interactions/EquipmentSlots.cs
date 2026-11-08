@@ -16,6 +16,25 @@ internal static class EquipmentSlots
             _ => null
         };
 
+    // Category 6 is waist, which has no armory chest.
+    public static InventoryType? ArmoryFor(uint categoryId) =>
+        categoryId switch
+        {
+            1 or 13 => InventoryType.ArmoryMainHand,
+            2 => InventoryType.ArmoryOffHand,
+            3 => InventoryType.ArmoryHead,
+            4 => InventoryType.ArmoryBody,
+            5 => InventoryType.ArmoryHands,
+            7 => InventoryType.ArmoryLegs,
+            8 => InventoryType.ArmoryFeets,
+            9 => InventoryType.ArmoryEar,
+            10 => InventoryType.ArmoryNeck,
+            11 => InventoryType.ArmoryWrist,
+            12 => InventoryType.ArmoryRings,
+            17 => InventoryType.ArmorySoulCrystal,
+            _ => null
+        };
+
     public static unsafe bool IsEquipped(InventoryManager* inventoryManager, List<ushort> slots, uint itemId)
     {
         foreach (ushort slot in slots)

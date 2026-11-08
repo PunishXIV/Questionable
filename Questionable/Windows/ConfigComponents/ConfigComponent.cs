@@ -116,13 +116,12 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
 
         ImGui.SameLine();
 
-        string clipboardText = ImGui.GetClipboardText().Trim();
-        using (ImRaii.Disabled(string.IsNullOrEmpty(clipboardText) ||
-                               !clipboardText.StartsWith(prefix, StringComparison.InvariantCulture)))
+        string? decoded = DecodeCfcIds(ImGui.GetClipboardText().Trim(), prefix);
+        using (ImRaii.Disabled(decoded == null))
         {
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Paste, _L("Import from Clipboard")))
             {
-                ImportCfcIds(clipboardText.Substring(prefix.Length), whitelisted, blacklisted);
+                ImportCfcIds(decoded!, whitelisted, blacklisted);
                 Save();
             }
         }
@@ -152,10 +151,20 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
             string.Join(DutyClipboardSeparator, white.Concat(black))));
     }
 
-    internal static void ImportCfcIds(string encoded, HashSet<uint> whitelisted, HashSet<uint> blacklisted)
+    internal static string? DecodeCfcIds(string clipboardText, string prefix)
     {
-        string text = Encoding.UTF8.GetString(Convert.FromBase64String(encoded));
+        if (!clipboardText.StartsWith(prefix, StringComparison.InvariantCulture))
+            return null;
 
+        string encoded = clipboardText.Substring(prefix.Length);
+        byte[] bytes = new byte[encoded.Length];
+        return Convert.TryFromBase64String(encoded, bytes, out int length)
+            ? Encoding.UTF8.GetString(bytes, 0, length)
+            : null;
+    }
+
+    internal static void ImportCfcIds(string text, HashSet<uint> whitelisted, HashSet<uint> blacklisted)
+    {
         whitelisted.Clear();
         blacklisted.Clear();
         foreach (string part in text.Split(DutyClipboardSeparator))

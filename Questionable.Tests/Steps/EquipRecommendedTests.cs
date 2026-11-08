@@ -1,3 +1,4 @@
+using FFXIVClientStructs.FFXIV.Client.Game;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -81,4 +82,28 @@ public sealed class EquipRecommendedTests
         ++_requests;
         return true;
     });
+}
+
+public sealed class EquipmentSlotsTests
+{
+    [Theory]
+    [InlineData(1u, InventoryType.ArmoryMainHand)]
+    [InlineData(2u, InventoryType.ArmoryOffHand)]
+    [InlineData(3u, InventoryType.ArmoryHead)]
+    [InlineData(4u, InventoryType.ArmoryBody)]
+    [InlineData(5u, InventoryType.ArmoryHands)]
+    [InlineData(6u, null)]
+    [InlineData(7u, InventoryType.ArmoryLegs)]
+    [InlineData(8u, InventoryType.ArmoryFeets)]
+    [InlineData(9u, InventoryType.ArmoryEar)]
+    [InlineData(10u, InventoryType.ArmoryNeck)]
+    [InlineData(11u, InventoryType.ArmoryWrist)]
+    [InlineData(12u, InventoryType.ArmoryRings)]
+    [InlineData(13u, InventoryType.ArmoryMainHand)]
+    [InlineData(14u, null)]
+    [InlineData(17u, InventoryType.ArmorySoulCrystal)]
+    public void ArmoryFor_MatchesSlotCategory(uint categoryId, InventoryType? expected)
+    {
+        Assert.Equal(expected, EquipmentSlots.ArmoryFor(categoryId));
+    }
 }
