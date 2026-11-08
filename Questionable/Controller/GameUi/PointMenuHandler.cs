@@ -9,7 +9,7 @@ namespace Questionable.Controller.GameUi;
 internal sealed class PointMenuHandler : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly QuestController _questController;
     private readonly TerritoryData _territoryData;
     private readonly IClientState _clientState;
@@ -17,7 +17,7 @@ internal sealed class PointMenuHandler : IDisposable
 
     public PointMenuHandler(
         IAddonLifecycle addonLifecycle,
-        IGameGuiAdapter gameGui,
+        GameGuiAdapter gameGui,
         QuestController questController,
         TerritoryData territoryData,
         IClientState clientState,

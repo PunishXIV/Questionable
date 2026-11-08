@@ -25,7 +25,7 @@ internal sealed unsafe partial class GameFunctions
     ITargetManager targetManager,
     ICondition condition,
     IClientState clientState,
-    IGameGuiAdapter gameGui,
+    GameGuiAdapter gameGui,
     Configuration configuration,
     QuestFunctions questFunctions,
     ILogger<GameFunctions> logger,

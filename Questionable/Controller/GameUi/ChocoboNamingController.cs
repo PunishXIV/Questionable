@@ -16,7 +16,7 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
     private readonly QuestController _questController;
     private readonly Configuration _configuration;
     private readonly IAddonLifecycle _addonLifecycle;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly IFramework _framework;
 
     private bool _namePending;
@@ -27,7 +27,7 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
         QuestController questController,
         Configuration configuration,
         IAddonLifecycle addonLifecycle,
-        IGameGuiAdapter gameGui,
+        GameGuiAdapter gameGui,
         IFramework framework)
     {
         _questController = questController;

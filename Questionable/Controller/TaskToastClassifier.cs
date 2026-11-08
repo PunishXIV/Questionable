@@ -11,9 +11,9 @@ internal sealed class TaskToastClassifier
     private readonly string? _statusBlockedText;
 
     public TaskToastClassifier(IDataManager dataManager)
-        : this(DataManagerAdapter.GetString<LogMessage>(dataManager, 1318, x => x.Text),
-            DataManagerAdapter.GetRegex<LogMessage>(dataManager, 1314, x => x.Text)!,
-            DataManagerAdapter.GetString<LogMessage>(dataManager, 7728, x => x.Text))
+        : this(dataManager.GetString<LogMessage>(1318, x => x.Text),
+            dataManager.GetRegex<LogMessage>(1314, x => x.Text)!,
+            dataManager.GetString<LogMessage>(7728, x => x.Text))
     {
     }
 

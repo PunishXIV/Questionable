@@ -11,12 +11,12 @@ internal sealed class CraftworksSupplyController : IDisposable
     private readonly IAddonLifecycle _addonLifecycle;
     private readonly Configuration _configuration;
     private readonly IFramework _framework;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly ILogger<CraftworksSupplyController> _logger;
     private readonly QuestController _questController;
 
     public CraftworksSupplyController(QuestController questController, IAddonLifecycle addonLifecycle,
-        IGameGuiAdapter gameGui, IFramework framework, Configuration configuration,
+        GameGuiAdapter gameGui, IFramework framework, Configuration configuration,
         ILogger<CraftworksSupplyController> logger)
     {
         _configuration = configuration;

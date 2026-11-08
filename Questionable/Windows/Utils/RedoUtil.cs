@@ -14,7 +14,7 @@ internal unsafe sealed class RedoUtil
 {
     internal readonly Dictionary<Sheets.QuestRedoChapterUI, RedoCache> Chapters = [];
     internal readonly AgentInterface* QuestRedoHud;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
     private readonly ILogger<RedoUtil> _logger;
@@ -50,7 +50,7 @@ internal unsafe sealed class RedoUtil
         }
     }
 
-    public RedoUtil(IGameGuiAdapter gameGui, QuestRegistry questRegistry, QuestFunctions questFunctions, ILogger<RedoUtil> logger)
+    public RedoUtil(GameGuiAdapter gameGui, QuestRegistry questRegistry, QuestFunctions questFunctions, ILogger<RedoUtil> logger)
     {
         _gameGui = gameGui;
         _questFunctions = questFunctions;

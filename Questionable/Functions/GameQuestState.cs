@@ -21,7 +21,7 @@ internal sealed unsafe class GameQuestState(
     AlliedSocietyQuestFunctions alliedSocietyQuests,
     IClientState clientState,
     IObjectTable objectTable,
-    IGameGuiAdapter gameGui) : IQuestGameState
+    GameGuiAdapter gameGui) : IQuestGameState
 {
     private const int TurnInIcon = 71025;
 

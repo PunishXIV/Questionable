@@ -23,7 +23,7 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
 
     private readonly QuestController _questController;
     private readonly IAddonLifecycle _addonLifecycle;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly IFramework _framework;
 
     private EState _state = EState.Idle;
@@ -33,7 +33,7 @@ internal sealed unsafe class GrandCompanyExchangeController : IDisposable
     public GrandCompanyExchangeController(
         QuestController questController,
         IAddonLifecycle addonLifecycle,
-        IGameGuiAdapter gameGui,
+        GameGuiAdapter gameGui,
         IFramework framework)
     {
         _questController = questController;

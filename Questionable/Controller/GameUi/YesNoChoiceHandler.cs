@@ -16,7 +16,7 @@ namespace Questionable.Controller.GameUi;
 internal sealed class YesNoChoiceHandler : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly QuestController _questController;
     private readonly AetheryteFunctions _aetheryteFunctions;
     private readonly BossModIpc _bossModIpc;
@@ -43,7 +43,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
 
     public YesNoChoiceHandler(
         IAddonLifecycle addonLifecycle,
-        IGameGuiAdapter gameGui,
+        GameGuiAdapter gameGui,
         QuestController questController,
         AetheryteFunctions aetheryteFunctions,
         BossModIpc bossModIpc,
@@ -82,13 +82,13 @@ internal sealed class YesNoChoiceHandler : IDisposable
         _condition = condition;
         _logger = logger;
 
-        _returnRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 196, addon => addon.Text, pluginLog)!;
-        _ticketRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 102686, addon => addon.Text, pluginLog)!;
-        _hqTradeRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 102434, addon => addon.Text, pluginLog)!;
-        _fcInviteRegex = DataManagerAdapter.GetRegex<Addon>(dataManager, 2873, addon => addon.Text, pluginLog)!;
+        _returnRegex = dataManager.GetRegex<Addon>(196, addon => addon.Text, pluginLog)!;
+        _ticketRegex = dataManager.GetRegex<Addon>(102686, addon => addon.Text, pluginLog)!;
+        _hqTradeRegex = dataManager.GetRegex<Addon>(102434, addon => addon.Text, pluginLog)!;
+        _fcInviteRegex = dataManager.GetRegex<Addon>(2873, addon => addon.Text, pluginLog)!;
         // Gil, company seals, tomestones and their combinations.
         _overCapRegexes = new uint[] { 4474, 4605, 4606, 4607, 4609, 5648, 5841 }
-            .Select(row => DataManagerAdapter.GetRegex<Addon>(dataManager, row, addon => addon.Text, pluginLog))
+            .Select(row => dataManager.GetRegex<Addon>(row, addon => addon.Text, pluginLog))
             .OfType<Regex>()
             .ToArray();
 

@@ -63,7 +63,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private readonly ICondition _condition;
     private readonly Configuration _configuration;
     private readonly GameFunctions _gameFunctions;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly GatheringController _gatheringController;
     private readonly OperationCoordinator _externalOperations;
     private readonly QuestRecoveryController _recovery;
@@ -122,7 +122,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         InterruptHandler interruptHandler,
         TaskToastClassifier toastClassifier,
         NotificationMasterIpc notificationMasterIpc,
-        IGameGuiAdapter gameGui,
+        GameGuiAdapter gameGui,
         QuestBattleConfigComponent questBattleConfig,
         QuestStopPolicy stopPolicy,
         AlliedSocietyQuestFunctions alliedSocietyQuests)

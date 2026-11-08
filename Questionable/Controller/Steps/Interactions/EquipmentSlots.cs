@@ -30,7 +30,7 @@ internal static class EquipmentSlots
 
     public static bool IsArmoryFullToast(IDataManager dataManager, SeString message) =>
         GameFunctions.GameStringEquals(message.TextValue,
-            DataManagerAdapter.GetString<LogMessage>(dataManager, 709, x => x.Text));
+            dataManager.GetString<LogMessage>(709, x => x.Text));
 
     public static unsafe bool TryFindFirstEmptySlot(InventoryContainer* container, out ushort slot)
     {

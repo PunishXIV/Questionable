@@ -61,7 +61,7 @@ internal static class QuestCleanUp
         }
     }
 
-    internal sealed class CloseAddonFactory(IGameGuiAdapter gameGui) : ITaskFactory
+    internal sealed class CloseAddonFactory(GameGuiAdapter gameGui) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -80,7 +80,7 @@ internal static class QuestCleanUp
         public override string ToString() => $"CloseAddon({AddonName})";
     }
 
-    internal sealed class CloseAddonExecutor(IGameGuiAdapter gameGui) : TaskExecutor<CloseAddonTask>
+    internal sealed class CloseAddonExecutor(GameGuiAdapter gameGui) : TaskExecutor<CloseAddonTask>
     {
         protected override unsafe bool Start()
         {

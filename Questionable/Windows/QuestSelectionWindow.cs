@@ -16,7 +16,7 @@ internal sealed class QuestSelectionWindow : LWindow
     private const string WindowId = "###QuestionableQuestSelection";
     private readonly IChatGui _chatGui;
     private readonly IClientState _clientState;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly QuestController _questController;
     private readonly QuestData _questData;
@@ -35,7 +35,7 @@ internal sealed class QuestSelectionWindow : LWindow
 
     public QuestSelectionWindow(
         QuestData questData,
-        IGameGuiAdapter gameGui,
+        GameGuiAdapter gameGui,
         IChatGui chatGui,
         QuestFunctions questFunctions,
         QuestController questController,

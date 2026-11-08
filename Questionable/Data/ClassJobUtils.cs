@@ -83,10 +83,10 @@ internal sealed class ClassJobUtils
             EExtendedClassJob.Pictomancer => [Job.PCT],
             EExtendedClassJob.Beastmaster => [Job.BST],
 
-            EExtendedClassJob.DoW => Enum.GetValues<Job>().Where(GameDataAdapter.DealsPhysicalDamage),
-            EExtendedClassJob.DoM => Enum.GetValues<Job>().Where(GameDataAdapter.DealsMagicDamage),
-            EExtendedClassJob.DoH => Enum.GetValues<Job>().Where(GameDataAdapter.IsCrafter),
-            EExtendedClassJob.DoL => Enum.GetValues<Job>().Where(GameDataAdapter.IsGatherer),
+            EExtendedClassJob.DoW => Enum.GetValues<Job>().Where(JobExtensions.DealsPhysicalDamage),
+            EExtendedClassJob.DoM => Enum.GetValues<Job>().Where(JobExtensions.DealsMagicDamage),
+            EExtendedClassJob.DoH => Enum.GetValues<Job>().Where(JobExtensions.IsCrafter),
+            EExtendedClassJob.DoL => Enum.GetValues<Job>().Where(JobExtensions.IsGatherer),
             EExtendedClassJob.ConfiguredCombatJob => LookupConfiguredJob(EExtendedClassJob.ConfiguredCombatJob) is var combatJob &&
                                                      combatJob != Job.ADV
                 ? [combatJob]
@@ -131,7 +131,7 @@ internal sealed class ClassJobUtils
                 return configuredJob;
 
             Job baseClass = Enum.GetValues<Job>()
-                .SingleOrDefault(x => GameDataAdapter.IsClass(x) && GameDataAdapter.AsJob(x) == configuredJob);
+                .SingleOrDefault(x => x.IsClass() && x.AsJob() == configuredJob);
             if (baseClass != Job.ADV && jobsWithGearSet.Contains(baseClass))
                 return baseClass;
         }
@@ -141,12 +141,12 @@ internal sealed class ClassJobUtils
             .ThenByDescending(x => x.ItemLevel)
             .ThenByDescending(x => x.ClassJob switch
             {
-                var _ when GameDataAdapter.IsClass(x.ClassJob) => 0,
-                var _ when GameDataAdapter.IsCaster(x.ClassJob) => 50,
-                var _ when GameDataAdapter.IsPhysicalRanged(x.ClassJob) => 40,
-                var _ when GameDataAdapter.IsMelee(x.ClassJob) => 30,
-                var _ when GameDataAdapter.IsTank(x.ClassJob) => 20,
-                var _ when GameDataAdapter.IsHealer(x.ClassJob) => 10,
+                var _ when x.ClassJob.IsClass() => 0,
+                var _ when x.ClassJob.IsCaster() => 50,
+                var _ when x.ClassJob.IsPhysicalRanged() => 40,
+                var _ when x.ClassJob.IsMelee() => 30,
+                var _ when x.ClassJob.IsTank() => 20,
+                var _ when x.ClassJob.IsHealer() => 10,
                 var _ => 0
             })
             .Select(x => x.ClassJob)
@@ -169,7 +169,7 @@ internal sealed class ClassJobUtils
             if (gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists))
             {
                 Job classJob = (Job)gearset->ClassJob;
-                if (combatOnly && (GameDataAdapter.IsCrafter(classJob) || GameDataAdapter.IsGatherer(classJob)))
+                if (combatOnly && (classJob.IsCrafter() || classJob.IsGatherer()))
                     continue;
 
                 short level = playerState->ClassJobLevels[_classJobToExpArrayIndex[classJob]];

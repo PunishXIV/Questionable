@@ -15,7 +15,7 @@ namespace Questionable.Controller.GameUi;
 internal sealed partial class DialogueChoiceHandler : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly QuestController _questController;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
@@ -35,7 +35,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
 
     public DialogueChoiceHandler(
         IAddonLifecycle addonLifecycle,
-        IGameGuiAdapter gameGui,
+        GameGuiAdapter gameGui,
         QuestController questController,
         QuestFunctions questFunctions,
         QuestRegistry questRegistry,

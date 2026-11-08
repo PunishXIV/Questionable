@@ -2,8 +2,8 @@
 using FFXIVClientStructs.FFXIV.Component.GUI;
 namespace Questionable.Utils;
 
-[RegisterSingleton<IGameGuiAdapter, GameGuiAdapter>]
-internal sealed unsafe class GameGuiAdapter(IGameGui gameGui) : IGameGuiAdapter
+[RegisterSingleton]
+internal sealed unsafe class GameGuiAdapter(IGameGui gameGui)
 {
     public bool TryGetAddonByName(string name, out AtkUnitBase* addon)
     {

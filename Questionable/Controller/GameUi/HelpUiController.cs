@@ -8,14 +8,14 @@ internal sealed class HelpUiController : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;
     private readonly IFramework _framework;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly ILogger<HelpUiController> _logger;
     private readonly QuestController _questController;
 
     public HelpUiController(
         QuestController questController,
         IAddonLifecycle addonLifecycle,
-        IGameGuiAdapter gameGui,
+        GameGuiAdapter gameGui,
         IFramework framework,
         ILogger<HelpUiController> logger)
     {

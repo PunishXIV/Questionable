@@ -15,7 +15,7 @@ internal sealed class ContextMenuController : IDisposable
 {
     private readonly IContextMenu _contextMenu;
     private readonly GameFunctions _gameFunctions;
-    private readonly IGameGuiAdapter _gameGui;
+    private readonly GameGuiAdapter _gameGui;
     private readonly GatheringData _gatheringData;
     private readonly GatherChillIpc _gatherChillIpc;
     private readonly ILogger<ContextMenuController> _logger;
@@ -33,7 +33,7 @@ internal sealed class ContextMenuController : IDisposable
         GameFunctions gameFunctions,
         QuestFunctions questFunctions,
         Configuration configuration,
-        IGameGuiAdapter gameGui,
+        GameGuiAdapter gameGui,
         ILogger<ContextMenuController> logger)
     {
         _contextMenu = contextMenu;

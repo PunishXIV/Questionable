@@ -25,7 +25,7 @@ internal sealed class MoveExecutor
             _movementController.Stop();
     }
 
-    private readonly string _cannotExecuteAtThisTime = DataManagerAdapter.GetString<LogMessage>(dataManager, 579, x => x.Text)!;
+    private readonly string _cannotExecuteAtThisTime = dataManager.GetString<LogMessage>(579, x => x.Text)!;
     private readonly IClientState _clientState = clientState;
     private readonly ICondition _condition = condition;
     private readonly ILogger<MoveExecutor> _logger = logger;

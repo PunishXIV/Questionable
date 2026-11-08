@@ -14,7 +14,7 @@ internal sealed class InteractionUiController : IDisposable
 
     public InteractionUiController(
         QuestController questController,
-        IGameGuiAdapter gameGui,
+        GameGuiAdapter gameGui,
         DialogueChoiceHandler dialogueChoiceHandler,
         YesNoChoiceHandler yesNoChoiceHandler,
         PointMenuHandler pointMenuHandler,
