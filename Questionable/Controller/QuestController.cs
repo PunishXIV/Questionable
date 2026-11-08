@@ -763,7 +763,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (!wasRunning)
             return;
 
-        _logger.LogInformation("Stopping automatic questing");
+        _logger.LogInformation("Stopping automatic questing: {Label}", label);
         AutomationType = EAutomationType.Manual;
         if (clearQuest)
         {

@@ -143,6 +143,8 @@ public sealed class QuestionablePlugin(
         serviceCollection.AddLogging(builder => builder.SetMinimumLevel(LogLevel.Trace)
             .ClearProviders()
             .AddDalamudLogger(pluginLog, t => LogCategory(t, namespaces)));
+        serviceCollection.AddSingleton<RecentLog>();
+        serviceCollection.AddSingleton<ILoggerProvider>(x => x.GetRequiredService<RecentLog>());
 
         // Dalamud services supplied to the plugin constructor - Injectio can't discover these.
         serviceCollection.AddSingleton<IAsyncDalamudPlugin>(this);

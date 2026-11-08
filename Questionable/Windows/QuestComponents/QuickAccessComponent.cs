@@ -1,6 +1,6 @@
 using System.Text.Json;
-using System.Text.Json.Nodes;
 using Dalamud.Bindings.ImGui;
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Interface;
 using Questionable.Controller.Steps.Shared;
@@ -22,9 +22,18 @@ internal sealed class QuickAccessComponent
     ICommandManager commandManager,
     IObjectTable objectTable,
     IClientState clientState,
+    ICondition condition,
+    ITargetManager targetManager,
+    RecentLog recentLog,
     IChatGui chatGui,
     IDalamudPluginInterface pluginInterface)
 {
+    private static readonly HashSet<string> ReportedPlugins = new(StringComparer.Ordinal)
+    {
+        "Artisan", "AutoDuty", "Automaton", "BossMod", "BossModReborn", "GatherChill", "Knightshopper", "Lifestream",
+        "Mogmail", "PandorasBox", "RotationSolver", "SelectString", "Stylist", "TextAdvance", "vnavmesh", "WahTools",
+        "WrathCombo", "YesAlready",
+    };
 
     public event EventHandler? Reload;
 
@@ -141,7 +150,6 @@ internal sealed class QuickAccessComponent
 
     internal void DrawTroubleshootingButton(bool showLabel = false, bool highlighted = false)
     {
-        QuestController.QuestProgress? questProgress = questController.CurrentQuest;
         bool highlight = highlighted || questController.IsRunning;
         bool leftClicked = QstWidgets.RailButton(FontAwesomeIcon.Handshake,
             _L("Stuck?"),
@@ -150,80 +158,81 @@ internal sealed class QuickAccessComponent
             enabled: objectTable[0] != null,
             showLabel: showLabel);
         bool rightClicked = ImGui.IsItemClicked(ImGuiMouseButton.Right);
-        if (leftClicked || rightClicked)
+        if (rightClicked)
         {
-            string output = "";
-            List<LogQuestCompletion.QuestCompletion> questCompletions = LogQuestCompletion.ReadLog();
-            if (rightClicked)
-            {
-                output = JsonSerializer.Serialize(questCompletions, JsonOptions.Default);
-                ImGui.SetClipboardText(output);
-                chatGui.Print(_L("List of completed quests has been copied to clipboard. Please paste it to this discord channel, and then run " +
+            ImGui.SetClipboardText(JsonSerializer.Serialize(LogQuestCompletion.ReadLog(), JsonOptions.Default));
+            chatGui.Print(_L("List of completed quests has been copied to clipboard. Please paste it to this discord channel, and then run " +
                         "'/qst clearlog' to reset the log.") + "\nhttps://discord.com/channels/1001823907193552978/1447612869431656508/1447612869431656508",
-                        CommandHandler.MessageTag, CommandHandler.TagColor);
-            }
-            else
-            {
-                // Dalamud troubleshooting json is written after plugin manager changes; we can't access the data from dalamud directly
-                SortedDictionary<string, string>? plugins = [];
-                try
-                {
-                    JsonNode? dalamudReport = JsonNode.Parse(
-                            File.ReadAllText(Path.Join(pluginInterface.DalamudAssetDirectory.Parent?.Parent?.FullName, "dalamud.troubleshooting.json"))
-                        );
-                    var pluginNames = dalamudReport?["PluginStates"]
-                        .Deserialize<SortedDictionary<string, string>>()
-                        ?.Where(kvp => kvp.Value == "Loaded")
-                        .Select(kvp => kvp.Key)
-                        .ToHashSet(StringComparer.Ordinal);
-                    plugins = new(dalamudReport?["LoadedPlugins"]
-                        ?.AsArray()
-                        .Where(node =>
-                            node?["InstalledFromUrl"]?.GetValue<string>() is { Length: > 0 } &&
-                            node?["InternalName"]?.GetValue<string>() is { } name &&
-                            pluginNames?.Contains(name) == true)
-                        .ToDictionary(
-                            node => node!["Name"]!.GetValue<string>(),
-                            node => node!["AssemblyVersion"]!.GetValue<string>() ?? "unknown"
-                            , StringComparer.Ordinal) ?? [], StringComparer.Ordinal);
-                }
-                catch (Exception) { }
-                Configuration config = Configuration.Instance();
-                IPlayerCharacter player = (IPlayerCharacter)objectTable[0]!;
-                Dictionary<string, object?> troubleshooting = new(StringComparer.Ordinal){
-                    { "LoadedPlugins", plugins },
-                    { "QST", new Dictionary<string,string>(StringComparer.Ordinal){
-                        { "Version", CommandHandler.MessageTag },
-                        { "Debug", config.Advanced.Debug.ToString() }
-                    } },
-                    { "Configuration", config },
-                    { "CompletedQuests", questCompletions.Count },
-                    { "Quest", new Dictionary<string,object?>(StringComparer.Ordinal){
-                        { "ToString", questProgress?.ToString() },
-                        { "QW", questProgress != null ? questFunctions.GetQuestProgressInfo(questProgress.Quest.Id)?.ToString() : "Error: questProgress is null" },
-                        { "Source", questProgress?.Quest.Source }
-                    }},
-                    { "Character", new Dictionary<string,object>(StringComparer.Ordinal){
-                        { "ClassJob", (EExtendedClassJob?)player.ClassJob.RowId },
-                        { "Level", player.Level },
-                        { "Position", player.Position.ToInternalString() },
-                        { "Territory", TerritoryData.GetNameAndId(clientState.TerritoryType) }
-                    }},
-                };
-                AddNavigationFailure(troubleshooting, movementController.LastFailure);
-                output = JsonSerializer.Serialize(troubleshooting, JsonOptions.Default);
-                ImGui.SetClipboardText(output);
-                chatGui.Print(_L("Troubleshooting information has been copied to clipboard. " +
-                    "Please create a new thread in #questionable-issues in https://discord.gg/punishxiv describing the problem and pasting this troubleshooting information."),
-                    CommandHandler.MessageTag, CommandHandler.TagColor);
-            }
+                CommandHandler.MessageTag, CommandHandler.TagColor);
+        }
+        else if (leftClicked)
+        {
+            ImGui.SetClipboardText(BuildReport());
+            chatGui.Print(_L("Troubleshooting information has been copied to clipboard. " +
+                "Please create a new thread in #questionable-issues in https://discord.gg/punishxiv describing the problem and pasting this troubleshooting information."),
+                CommandHandler.MessageTag, CommandHandler.TagColor);
         }
     }
 
-    internal static void AddNavigationFailure(Dictionary<string, object?> troubleshooting, NavigationFailureSnapshot? failure)
+    private string BuildReport()
     {
-        if (failure != null)
-            troubleshooting["LastNavigationFailure"] = failure;
+        Configuration config = Configuration.Instance();
+        IPlayerCharacter player = (IPlayerCharacter)objectTable[0]!;
+        QuestController.QuestProgress? progress = questController.CurrentQuest;
+        QuestStep? step = progress?.FindStep();
+
+        List<string?> facts =
+        [
+            $"{CommandHandler.MessageTag}{(pluginInterface.IsDev ? " dev" : "")} | paths {config.PathData.InstalledDataVersion} | client {clientState.ClientLanguage} | ui {config.General.Language} | profile: {(config.ActiveProfileName != null ? "yes" : "no")}",
+            progress == null
+                ? "Quest: none"
+                : $"Quest: {progress.Quest.Id} {progress.Quest.Info.Name} | seq {progress.Sequence} step {progress.Step} | source: {progress.Quest.Source}",
+            progress == null ? null : step == null
+                ? "Step: no path data for this step"
+                : $"Step: {step.InteractionType}, target {step.DataId?.ToString(CultureInfo.InvariantCulture) ?? "none"}, territory {TerritoryData.GetNameAndId(step.TerritoryId)}",
+            progress == null ? null : $"Game quest state: {questFunctions.GetQuestProgressInfo(progress.Quest.Id)?.ToString() ?? "not accepted"}",
+            $"State: {questController.AutomationType}, {(questController.IsRunning ? "running" : "idle")} | task: {questController.ToStatString()} | status: {questController.DebugState ?? "-"} | executor: {questController.CurrentTaskState ?? "-"}{(questController.HasExternalOperation ? " | plugin operation active" : "")}",
+            $"Character: {player.ClassJob.Value.Abbreviation} {player.Level} | {TerritoryData.GetNameAndId(clientState.TerritoryType)} | {player.Position.ToInternalString()} | target {targetManager.Target?.BaseId.ToString(CultureInfo.InvariantCulture) ?? "none"} | flags: {DescribeConditions()}",
+            DescribePlugins(),
+            TroubleshootingReport.DescribeFailure(movementController.LastFailure, DateTimeOffset.UtcNow),
+        ];
+
+        return TroubleshootingReport.Build(new()
+        {
+            Facts = facts.OfType<string>().ToList(),
+            Settings = TroubleshootingReport.ChangedSettings(config),
+            Log = recentLog.GetEntries(),
+            PrivateTexts = [player.Name.TextValue, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Environment.UserName],
+            NowUtc = DateTime.UtcNow,
+        });
+    }
+
+    private string DescribeConditions()
+    {
+        (ConditionFlag Flag, string Name)[] flags =
+        [
+            (ConditionFlag.Mounted, "mounted"),
+            (ConditionFlag.InFlight, "flying"),
+            (ConditionFlag.InCombat, "combat"),
+            (ConditionFlag.BoundByDuty, "duty"),
+            (ConditionFlag.BetweenAreas, "loading"),
+            (ConditionFlag.Casting, "casting"),
+            (ConditionFlag.OccupiedInQuestEvent, "quest event"),
+            (ConditionFlag.OccupiedInEvent, "event"),
+            (ConditionFlag.WatchingCutscene, "cutscene"),
+        ];
+        string active = string.Join(", ", flags.Where(x => condition[x.Flag]).Select(x => x.Name));
+        return active.Length == 0 ? "none" : active;
+    }
+
+    private string DescribePlugins()
+    {
+        List<IExposedPlugin> loaded = pluginInterface.InstalledPlugins.Where(x => x.IsLoaded).ToList();
+        IEnumerable<string> related = loaded
+            .Where(x => ReportedPlugins.Contains(x.InternalName))
+            .OrderBy(x => x.InternalName, StringComparer.Ordinal)
+            .Select(x => $"{x.InternalName} {x.Version}");
+        return $"Plugins: {string.Join(", ", related)} ({loaded.Count} loaded)";
     }
 
     internal void DrawValidationButton(bool showLabel = false)
