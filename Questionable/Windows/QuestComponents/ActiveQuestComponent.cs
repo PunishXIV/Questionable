@@ -772,14 +772,14 @@ internal sealed partial class ActiveQuestComponent
 
                 ImGui.SameLine();
 
-                if (QstWidgets.SegmentToggle(FontAwesomeIcon.ClipboardCheck, questController.StopAfterNextAccept,
+                if (QstWidgets.SegmentToggle(FontAwesomeIcon.Exclamation, questController.StopAfterNextAccept,
                         _L("Cancel scheduled stop after accepting the next quest."),
                         _L("Stop after accepting the next quest.")))
                     questController.StopAfterNextAccept = !questController.StopAfterNextAccept;
 
                 ImGui.SameLine();
 
-                if (QstWidgets.SegmentToggle(FontAwesomeIcon.PlaneDeparture, questController.StopBeforeTeleport,
+                if (QstWidgets.SegmentToggle(FontAwesomeIcon.Gem, questController.StopBeforeTeleport,
                         _L("Cancel scheduled stop before teleport."),
                         _L("Stop before the next aetheryte teleport or item use.")))
                     questController.StopBeforeTeleport = !questController.StopBeforeTeleport;
