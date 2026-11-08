@@ -1,5 +1,4 @@
-﻿using Dalamud.Game.Text.SeStringHandling;
-using FFXIVClientStructs.FFXIV.Client.Game;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Questing;
 using Quest = Questionable.Domain.Quest;
@@ -29,10 +28,8 @@ internal static class UnequipItem
     internal sealed class Executor
     (
         IDataManager dataManager,
-        ILogger<Executor> logger) : TaskExecutor<Task>, IToastAware
+        ILogger<Executor> logger) : EquipmentSlots.GearExecutor<Task>(dataManager)
     {
-        private const int MaxAttempts = 3;
-
         private static readonly InventoryType[] ArmoryInventoryTypes =
         [
             InventoryType.ArmoryMainHand,
@@ -48,74 +45,32 @@ internal static class UnequipItem
             InventoryType.ArmoryRings,
         ];
 
-        private int _attempts;
-        private DateTime _continueAt = DateTime.MaxValue;
-        private Item? _item;
-        private List<ushort> _targetSlots = null!;
+        protected override uint ItemId => Task.ItemId;
+        protected override string FailureText => "Unable to unequip gear.";
 
-        public override unsafe ETaskResult Update()
+        protected override void CheckItem(Item item)
         {
-            if (DateTime.Now < _continueAt)
-                return ETaskResult.StillRunning;
-
-            InventoryManager* inventoryManager = InventoryManager.Instance();
-            if (inventoryManager == null)
-                return ETaskResult.StillRunning;
-
-            if (!EquipmentSlots.IsEquipped(inventoryManager, _targetSlots, Task.ItemId))
-                return ETaskResult.TaskComplete;
-
-            Unequip();
-            _continueAt = DateTime.Now.AddSeconds(1);
-            return ETaskResult.StillRunning;
-        }
-
-        public bool OnErrorToast(SeString message)
-        {
-            if (EquipmentSlots.IsArmoryFullToast(dataManager, message))
-                _attempts = MaxAttempts;
-
-            return false;
-        }
-
-        public override bool ShouldInterruptOnDamage() => true;
-
-        protected override bool Start()
-        {
-            _item = dataManager.GetExcelSheet<Item>().GetRowOrDefault(Task.ItemId) ??
-                    throw new ArgumentOutOfRangeException(nameof(Task.ItemId));
-            _targetSlots = EquipmentSlots.For(_item.Value) ?? throw new InvalidOperationException("Not a piece of equipment");
-
-            if (GetArmoryInventoryType(_item.Value) == null)
+            if (GetArmoryInventoryType(item) == null)
                 throw new InvalidOperationException("Item has no armory destination");
-
-            Unequip();
-            _continueAt = DateTime.Now.AddSeconds(1);
-            return true;
         }
 
-        private unsafe void Unequip()
+        protected override unsafe bool IsDone(InventoryManager* inventoryManager) =>
+            !EquipmentSlots.IsEquipped(inventoryManager, TargetSlots, Task.ItemId);
+
+        protected override unsafe void Move(InventoryManager* inventoryManager)
         {
-            ++_attempts;
-            if (_attempts > MaxAttempts)
-                throw new TaskException("Unable to unequip gear.");
-
-            InventoryManager* inventoryManager = InventoryManager.Instance();
-            if (inventoryManager == null)
-                return;
-
-            if (!EquipmentSlots.IsEquipped(inventoryManager, _targetSlots, Task.ItemId))
+            if (IsDone(inventoryManager))
             {
-                logger.LogInformation("Already unequipped {Item}, skipping step", _item?.Name.ToString());
+                logger.LogInformation("Already unequipped {Item}, skipping step", Item.Name.ToString());
                 return;
             }
 
-            InventoryType armoryType = GetArmoryInventoryType(_item!.Value)!.Value;
+            InventoryType armoryType = GetArmoryInventoryType(Item)!.Value;
             InventoryContainer* armoryContainer = inventoryManager->GetInventoryContainer(armoryType);
             if (armoryContainer == null)
                 return;
 
-            foreach (ushort equippedSlot in _targetSlots)
+            foreach (ushort equippedSlot in TargetSlots)
             {
                 InventoryItem* itemSlot = inventoryManager->GetInventorySlot(InventoryType.EquippedItems, equippedSlot);
                 if (itemSlot == null || itemSlot->ItemId != Task.ItemId)

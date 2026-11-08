@@ -47,4 +47,78 @@ internal static class EquipmentSlots
         slot = 0;
         return false;
     }
+
+    internal abstract class GearExecutor<TTask>(IDataManager dataManager) : TaskExecutor<TTask>, IToastAware
+    where TTask : class, ITask
+    {
+        private const int MaxAttempts = 3;
+
+        private int _attempts;
+        private DateTime _continueAt = DateTime.MaxValue;
+
+        protected Item Item { get; private set; }
+        protected List<ushort> TargetSlots { get; private set; } = null!;
+        protected abstract uint ItemId { get; }
+        protected abstract string FailureText { get; }
+
+        public override unsafe ETaskResult Update()
+        {
+            if (DateTime.Now < _continueAt)
+                return ETaskResult.StillRunning;
+
+            InventoryManager* inventoryManager = InventoryManager.Instance();
+            if (inventoryManager == null)
+                return ETaskResult.StillRunning;
+
+            if (IsDone(inventoryManager))
+                return ETaskResult.TaskComplete;
+
+            TryMove();
+            _continueAt = DateTime.Now.AddSeconds(1);
+            return ETaskResult.StillRunning;
+        }
+
+        public bool OnErrorToast(SeString message)
+        {
+            if (IsArmoryFullToast(dataManager, message))
+                _attempts = MaxAttempts;
+
+            return false;
+        }
+
+        public override bool ShouldInterruptOnDamage() => true;
+
+        protected override bool Start()
+        {
+            Item = dataManager.GetExcelSheet<Item>().GetRowOrDefault(ItemId) ??
+                   throw new ArgumentOutOfRangeException(nameof(ItemId));
+            TargetSlots = For(Item) ?? throw new InvalidOperationException("Not a piece of equipment");
+            CheckItem(Item);
+
+            TryMove();
+            _continueAt = DateTime.Now.AddSeconds(1);
+            return true;
+        }
+
+        protected virtual void CheckItem(Item item)
+        {
+        }
+
+        protected abstract unsafe bool IsDone(InventoryManager* inventoryManager);
+
+        protected abstract unsafe void Move(InventoryManager* inventoryManager);
+
+        private unsafe void TryMove()
+        {
+            ++_attempts;
+            if (_attempts > MaxAttempts)
+                throw new TaskException(FailureText);
+
+            InventoryManager* inventoryManager = InventoryManager.Instance();
+            if (inventoryManager == null)
+                return;
+
+            Move(inventoryManager);
+        }
+    }
 }

@@ -1,6 +1,4 @@
-﻿using Dalamud.Game.Text.SeStringHandling;
-using FFXIVClientStructs.FFXIV.Client.Game;
-using Lumina.Excel.Sheets;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using Questionable.Model.Questing;
 using Quest = Questionable.Domain.Quest;
 
@@ -29,10 +27,8 @@ internal static class EquipItem
     internal sealed class Executor
     (
         IDataManager dataManager,
-        ILogger<Executor> logger) : TaskExecutor<Task>, IToastAware
+        ILogger<Executor> logger) : EquipmentSlots.GearExecutor<Task>(dataManager)
     {
-        private const int MaxAttempts = 3;
-
         private static readonly IReadOnlyList<InventoryType> SourceInventoryTypes =
         [
             InventoryType.ArmoryMainHand,
@@ -56,65 +52,20 @@ internal static class EquipItem
             InventoryType.Inventory4
         ];
 
-        private int _attempts;
-        private DateTime _continueAt = DateTime.MaxValue;
-        private Item? _item;
-        private List<ushort> _targetSlots = null!;
+        protected override uint ItemId => Task.ItemId;
+        protected override string FailureText => "Unable to equip gear.";
 
-        public override unsafe ETaskResult Update()
+        protected override unsafe bool IsDone(InventoryManager* inventoryManager) =>
+            EquipmentSlots.IsEquipped(inventoryManager, TargetSlots, Task.ItemId);
+
+        protected override unsafe void Move(InventoryManager* inventoryManager)
         {
-            if (DateTime.Now < _continueAt)
-                return ETaskResult.StillRunning;
-
-            InventoryManager* inventoryManager = InventoryManager.Instance();
-            if (inventoryManager == null)
-                return ETaskResult.StillRunning;
-
-            if (EquipmentSlots.IsEquipped(inventoryManager, _targetSlots, Task.ItemId))
-                return ETaskResult.TaskComplete;
-
-            Equip();
-            _continueAt = DateTime.Now.AddSeconds(1);
-            return ETaskResult.StillRunning;
-        }
-
-        public bool OnErrorToast(SeString message)
-        {
-            if (EquipmentSlots.IsArmoryFullToast(dataManager, message))
-                _attempts = MaxAttempts;
-
-            return false;
-        }
-
-        public override bool ShouldInterruptOnDamage() => true;
-
-        protected override bool Start()
-        {
-            _item = dataManager.GetExcelSheet<Item>().GetRowOrDefault(Task.ItemId) ??
-                    throw new ArgumentOutOfRangeException(nameof(Task.ItemId));
-            _targetSlots = EquipmentSlots.For(_item.Value) ?? throw new InvalidOperationException("Not a piece of equipment");
-
-            Equip();
-            _continueAt = DateTime.Now.AddSeconds(1);
-            return true;
-        }
-
-        private unsafe void Equip()
-        {
-            ++_attempts;
-            if (_attempts > MaxAttempts)
-                throw new TaskException("Unable to equip gear.");
-
-            InventoryManager* inventoryManager = InventoryManager.Instance();
-            if (inventoryManager == null)
-                return;
-
             if (inventoryManager->GetInventoryContainer(InventoryType.EquippedItems) == null)
                 return;
 
-            if (EquipmentSlots.IsEquipped(inventoryManager, _targetSlots, Task.ItemId))
+            if (IsDone(inventoryManager))
             {
-                logger.LogInformation("Already equipped {Item}, skipping step", _item?.Name.ToString());
+                logger.LogInformation("Already equipped {Item}, skipping step", Item.Name.ToString());
                 return;
             }
 
@@ -136,13 +87,13 @@ internal static class EquipItem
                     if (sourceItem == null || sourceItem->ItemId != Task.ItemId)
                         continue;
 
-                    ushort targetSlot = _targetSlots
+                    ushort targetSlot = TargetSlots
                         .Where(x =>
                         {
                             InventoryItem* itemSlot = inventoryManager->GetInventorySlot(InventoryType.EquippedItems, x);
                             return itemSlot == null || itemSlot->ItemId == 0;
                         })
-                        .Concat(_targetSlots).First();
+                        .Concat(TargetSlots).First();
 
                     logger.LogInformation(
                         "Equipping item from {SourceInventory}, {SourceSlot} to {TargetInventory}, {TargetSlot}",
