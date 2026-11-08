@@ -242,6 +242,8 @@ internal sealed partial class ActiveQuestComponent
                 questController.Stop(_L("Manual (no active quest)"));
                 gatheringController.Stop(_L("Manual (no active quest)"));
             }
+            if (ImGui.IsItemHovered())
+                ImGui.SetTooltip(_L("Stop all actions now."));
 
             ImGui.SameLine();
             quickAccessComponent.DrawTroubleshootingButton(showLabel: true, highlighted: true);
@@ -770,14 +772,14 @@ internal sealed partial class ActiveQuestComponent
 
                 ImGui.SameLine();
 
-                if (QstWidgets.SegmentToggle(FontAwesomeIcon.Check, questController.StopAfterNextAccept,
+                if (QstWidgets.SegmentToggle(FontAwesomeIcon.ClipboardCheck, questController.StopAfterNextAccept,
                         _L("Cancel scheduled stop after accepting the next quest."),
                         _L("Stop after accepting the next quest.")))
                     questController.StopAfterNextAccept = !questController.StopAfterNextAccept;
 
                 ImGui.SameLine();
 
-                if (QstWidgets.SegmentToggle(FontAwesomeIcon.MapMarkerAlt, questController.StopBeforeTeleport,
+                if (QstWidgets.SegmentToggle(FontAwesomeIcon.PlaneDeparture, questController.StopBeforeTeleport,
                         _L("Cancel scheduled stop before teleport."),
                         _L("Stop before the next aetheryte teleport or item use.")))
                     questController.StopBeforeTeleport = !questController.StopBeforeTeleport;

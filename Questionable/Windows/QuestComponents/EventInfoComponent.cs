@@ -112,7 +112,7 @@ internal sealed class EventInfoComponent
             {
                 string questName = questData.GetQuestInfo(questId).Name;
 
-                bool addPriority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle);
+                bool addPriority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.AngleDoubleUp);
                 if (ImGui.IsItemHovered())
                     ImGui.SetTooltip(_L("Add to priority quests"));
                 if (addPriority)

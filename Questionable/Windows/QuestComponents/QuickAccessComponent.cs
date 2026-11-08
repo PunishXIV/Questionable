@@ -60,7 +60,7 @@ internal sealed class QuickAccessComponent
 
     internal void DrawPriorityQuestsButton(bool showLabel = false)
     {
-        if (QstWidgets.RailButton(FontAwesomeIcon.ExclamationCircle,
+        if (QstWidgets.RailButton(FontAwesomeIcon.AngleDoubleUp,
                 _L("Priority Quests"),
                 _L("Configure priority quests which will be done as soon as possible."),
                 enabled: objectTable[0] != null,
@@ -114,7 +114,7 @@ internal sealed class QuickAccessComponent
         string tooltip = isNavmeshAvailable
             ? _L("Hold CTRL to enable this button. Rebuilding the navmesh will take some time.")
             : _L("vnavmesh is not available. Please install it first.");
-        if (QstWidgets.RailButton(FontAwesomeIcon.GlobeEurope, _L("Rebuild Navmesh"), tooltip,
+        if (QstWidgets.RailButton(FontAwesomeIcon.Route, _L("Rebuild Navmesh"), tooltip,
                 enabled: isNavmeshAvailable && ImGui.IsKeyDown(ImGuiKey.ModCtrl),
                 showLabel: showLabel))
             commandManager.ProcessCommand("/vnav rebuild");
@@ -126,7 +126,7 @@ internal sealed class QuickAccessComponent
         string tooltip = isBossModAvailable
             ? _L("Clear BossMod obstacle maps to fix pathfinding issues. Hold CTRL to enable this button")
             : _L("VBM is not available. Please install it first.");
-        if (QstWidgets.RailButton(FontAwesomeIcon.Directions, _L("Clear VBM obstacle maps"), tooltip,
+        if (QstWidgets.RailButton(FontAwesomeIcon.RoadBarrier, _L("Clear VBM obstacle maps"), tooltip,
                 enabled: isBossModAvailable && ImGui.IsKeyDown(ImGuiKey.ModCtrl),
                 showLabel: showLabel))
             bossModIpc.ClearObstacleMaps();
@@ -151,7 +151,7 @@ internal sealed class QuickAccessComponent
     internal void DrawTroubleshootingButton(bool showLabel = false, bool highlighted = false)
     {
         bool highlight = highlighted || questController.IsRunning;
-        bool leftClicked = QstWidgets.RailButton(FontAwesomeIcon.Handshake,
+        bool leftClicked = QstWidgets.RailButton(FontAwesomeIcon.LifeRing,
             _L("Stuck?"),
             _L("Left click: Copy troubleshooting information to clipboard\nRight click: Copy list of completed quests to clipboard"),
             tint: highlight ? QstTheme.Accent : null,

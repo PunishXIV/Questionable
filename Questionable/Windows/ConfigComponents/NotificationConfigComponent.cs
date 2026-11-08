@@ -47,7 +47,7 @@ internal sealed class NotificationConfigComponent
                 ImGui.SameLine();
                 using (ImRaii.Disabled(!notificationMasterIpc.Enabled))
                 {
-                    if (ImGuiComponentsLocal.IconButtonWithText(Dalamud.Interface.FontAwesomeIcon.NotesMedical, _L("Test")))
+                    if (ImGuiComponentsLocal.IconButtonWithText(Dalamud.Interface.FontAwesomeIcon.Bell, _L("Test")))
                         notificationMasterIpc.Notify(_L("Test message"));
                     bool showTrayMessage = Configuration.Notifications.ShowTrayMessage;
                     if (ImGui.Checkbox(_L("Show tray notification"), ref showTrayMessage))

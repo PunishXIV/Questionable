@@ -52,7 +52,7 @@ internal sealed class RedoComponent
 
         using (ImRaii.Disabled(!redoUtil.IsActive()))
         {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Ban, _L("Stop NG+")))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Stop, _L("Stop NG+")))
                 if (!redoUtil.IsLocked)
                     redoUtil.SendCommand(redoChapter: RedoChapter.Off);
         }

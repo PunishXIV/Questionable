@@ -221,7 +221,7 @@ internal sealed class QuestSelectionWindow : LWindow
 
                 if (knownQuest != null)
                 {
-                    bool priority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle);
+                    bool priority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.AngleDoubleUp);
                     if (ImGui.IsItemHovered())
                         ImGui.SetTooltip(_L("Add to priority quests"));
                     if (priority)

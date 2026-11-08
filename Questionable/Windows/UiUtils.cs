@@ -51,7 +51,7 @@ internal sealed class UiUtils(
         if (questFunctions.IsQuestUnobtainable(elementId))
             return (QstTheme.TextMuted, FontAwesomeIcon.Minus, _L("Unobtainable"));
         if (!string.IsNullOrEmpty(lockedReason))
-            return (QstTheme.Danger, FontAwesomeIcon.Times, $"{_L("Locked")}:\n  {lockedReason}");
+            return (QstTheme.Danger, FontAwesomeIcon.Lock, $"{_L("Locked")}:\n  {lockedReason}");
         if (prerequisites == null)
             return (QstTheme.Info, FontAwesomeIcon.QuestionCircle, _L("Available(?)"));
 
@@ -65,7 +65,7 @@ internal sealed class UiUtils(
         if (UIState.IsInstanceContentUnlocked(instanceId))
             return (QstTheme.Amber, FontAwesomeIcon.Running);
 
-        return (QstTheme.Danger, FontAwesomeIcon.Times);
+        return (QstTheme.Danger, FontAwesomeIcon.Lock);
     }
 
     public bool ChecklistItem(string text, Vector4 color, FontAwesomeIcon icon, float extraPadding = 0, uint? iconOverride = null, Action? onClick = null)

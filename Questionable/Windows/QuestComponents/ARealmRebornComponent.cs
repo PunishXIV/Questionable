@@ -38,7 +38,7 @@ internal sealed class ARealmRebornComponent
     private void DrawPrimals()
     {
         bool complete = UIState.IsInstanceContentCompleted(RequiredPrimalInstances.Keys.Last());
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle))
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.AngleDoubleUp))
         {
             foreach (ushort questId in new ushort[] { 1048, 1157, 1158 })
                 if (questRegistry.TryGetQuest(new QuestId(questId), out var quest) &&
@@ -73,7 +73,7 @@ internal sealed class ARealmRebornComponent
     private void DrawAllianceRaids()
     {
         bool complete = questFunctions.IsQuestComplete(QuestData.CrystalTowerQuests[^1]);
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle))
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.AngleDoubleUp))
         {
             foreach (QuestId questId in QuestData.CrystalTowerQuests)
                 if (questRegistry.TryGetQuest(questId, out var quest) &&

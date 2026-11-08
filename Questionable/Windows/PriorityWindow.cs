@@ -110,15 +110,15 @@ internal sealed class PriorityWindow : LWindow
         List<ElementId> clipboardItems = ParseClipboardItems();
         using (ImRaii.Disabled(clipboardItems.Count == 0))
         {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, _L("Import from Clipboard")))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Paste, _L("Import from Clipboard")))
                 ImportFromClipboard(clipboardItems);
         }
         ImGui.SameLine();
         using (ImRaii.Disabled(_questController.PriorityManager.IsEmpty))
         {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Upload, _L("Export to Clipboard")))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Copy, _L("Export to Clipboard")))
                 ExportToClipboard();
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Check, _L("Remove finished Quests")))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Eraser, _L("Remove finished Quests")))
                 _questController.PriorityManager.RemoveCompleted(_questFunctions.IsPriorityQuestDone, _questFunctions.IsQuestAccepted);
             ImGui.SameLine();
 
@@ -206,6 +206,9 @@ internal sealed class PriorityWindow : LWindow
                     else
                         ImGuiComponentsLocal.IconButton("##Move", FontAwesomeIcon.ArrowsUpDown);
 
+                    if (ImGui.IsItemHovered())
+                        ImGui.SetTooltip(_L("Drag to change the order"));
+
                     if (_draggedItem == null && ImGui.IsItemActive() && ImGui.IsMouseDragging(ImGuiMouseButton.Left))
                         _draggedItem = quest.Id;
 
@@ -227,10 +230,14 @@ internal sealed class PriorityWindow : LWindow
 
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
                     (bool success, string filename) = QuestRegistry.OpenEditor(quest.Info);
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip(_L("Edit quest path"));
                 ImGui.SameLine();
 
                 if (ImGuiComponentsLocal.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
                     itemToRemove = quest;
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip(_L("Remove from priority quests"));
             }
 
             Vector2 bottomRight = new(topLeft.X + width,
@@ -425,6 +432,8 @@ internal sealed class PriorityWindow : LWindow
         ImGui.SameLine();
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Redo))
             _builtInPresets = null;
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip(_L("Reload presets"));
 
         bool isUserPreset = _selectedPresetName != null && userPresets.ContainsKey(_selectedPresetName);
         if (isUserPreset)

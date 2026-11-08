@@ -304,7 +304,7 @@ internal sealed class QuestJournalUtils
             iconOverride = questInfo.AvailableIcon;
         if (icon is FontAwesomeIcon.PersonWalkingArrowRight)
             iconOverride = questInfo.ActiveIcon;
-        if (icon is FontAwesomeIcon.Times)
+        if (icon is FontAwesomeIcon.Lock)
             iconOverride = questInfo.InvalidIcon;
         if (icon is FontAwesomeIcon.Check)
             iconOverride = questInfo.CompleteIcon;

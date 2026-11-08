@@ -51,7 +51,7 @@ internal sealed class AlliedSocietyComponent
             ImGui.SetTooltip(_L("Prevent quest completion"));
 
         ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Ban, abandonBeforeComplete ? QstTheme.Accent : null))
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.SignOutAlt, abandonBeforeComplete ? QstTheme.Accent : null))
         {
             configuration.Advanced.AbandonQuestBeforeCompletion = !abandonBeforeComplete;
             pluginInterface.SavePluginConfig(configuration);
@@ -60,7 +60,7 @@ internal sealed class AlliedSocietyComponent
             ImGui.SetTooltip(_L("Abandon quest before completion"));
 
         ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Trash, removeWhenAbandoned ? QstTheme.Accent : null))
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MinusCircle, removeWhenAbandoned ? QstTheme.Accent : null))
         {
             configuration.Advanced.RemoveFromPriorityWhenAbandoned = !removeWhenAbandoned;
             pluginInterface.SavePluginConfig(configuration);
@@ -69,7 +69,7 @@ internal sealed class AlliedSocietyComponent
             ImGui.SetTooltip(_L("Remove from priority when abandoned"));
 
         ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Home, runCommandAfterStop ? QstTheme.Accent : null))
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Terminal, runCommandAfterStop ? QstTheme.Accent : null))
         {
             configuration.Stop.RunCommandAfterStop = !runCommandAfterStop;
             pluginInterface.SavePluginConfig(configuration);
@@ -221,7 +221,7 @@ internal sealed class AlliedSocietyComponent
                 using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                     ImGui.TextColored(
                         acceptOnly ? (accepted ? QstTheme.Success : QstTheme.Accent) : QstTheme.Amber,
-                        (acceptOnly ? FontAwesomeIcon.Inbox : FontAwesomeIcon.ExclamationCircle).ToIconString());
+                        (acceptOnly ? FontAwesomeIcon.Inbox : FontAwesomeIcon.AngleDoubleUp).ToIconString());
                 if (ImGui.IsItemHovered())
                     ImGui.SetTooltip(acceptOnly
                         ? (accepted

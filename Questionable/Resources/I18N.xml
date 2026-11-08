@@ -1097,6 +1097,21 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <Key>Drag to change the order</Key>
+    <Value lang="en">Drag to change the order</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <Key>Remove from priority quests</Key>
+    <Value lang="en">Remove from priority quests</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
+    <Key>Reload presets</Key>
+    <Value lang="en">Reload presets</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>Clear All</Key>
@@ -4445,6 +4460,7 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/QuestJournalUtils.cs -->
+    <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
     <Key>Edit quest path</Key>
     <Value lang="en">Edit quest path</Value>
     <Value lang="ja-jp">クエストパスを編集</Value>
