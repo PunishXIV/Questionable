@@ -158,7 +158,7 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
 
         string encoded = clipboardText.Substring(prefix.Length);
         byte[] bytes = new byte[encoded.Length];
-        return Convert.TryFromBase64String(encoded, bytes, out int length)
+        return Convert.TryFromBase64String(encoded, bytes, out int length) && length > 0
             ? Encoding.UTF8.GetString(bytes, 0, length)
             : null;
     }

@@ -254,6 +254,12 @@ public sealed class ConfigComponentTests
     }
 
     [Fact]
+    public void Decode_PrefixOnly_ReturnsNull()
+    {
+        Assert.Null(ConfigComponent.DecodeCfcIds("qst:duty:", "qst:duty:"));
+    }
+
+    [Fact]
     public void Decode_OtherPrefix_ReturnsNull()
     {
         Assert.Null(ConfigComponent.DecodeCfcIds(Saved, "qst:single:"));
