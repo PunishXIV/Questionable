@@ -13,7 +13,6 @@ namespace Questionable.Controller;
 [RegisterSingleton]
 internal sealed class ContextMenuController : IDisposable
 {
-    private readonly IClientState _clientState;
     private readonly IContextMenu _contextMenu;
     private readonly GameFunctions _gameFunctions;
     private readonly IGameGuiAdapter _gameGui;
@@ -35,7 +34,6 @@ internal sealed class ContextMenuController : IDisposable
         QuestFunctions questFunctions,
         Configuration configuration,
         IGameGuiAdapter gameGui,
-        IClientState clientState,
         ILogger<ContextMenuController> logger)
     {
         _contextMenu = contextMenu;
@@ -46,7 +44,6 @@ internal sealed class ContextMenuController : IDisposable
         _questFunctions = questFunctions;
         _configuration = configuration;
         _gameGui = gameGui;
-        _clientState = clientState;
         _logger = logger;
 
         _contextMenu.OnMenuOpened += MenuOpened;

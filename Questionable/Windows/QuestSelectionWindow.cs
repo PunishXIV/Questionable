@@ -48,7 +48,7 @@ internal sealed class QuestSelectionWindow : LWindow
         QuestTooltipComponent questTooltipComponent,
         QuestJournalUtils questJournalUtils,
         IServiceProvider serviceProvider)
-        : base(_L("Quest Selection") + "{WindowId}")
+        : base(_L("Quest Selection") + WindowId)
     {
         _questData = questData;
         _gameGui = gameGui;

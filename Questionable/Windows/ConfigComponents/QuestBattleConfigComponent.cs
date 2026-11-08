@@ -15,7 +15,7 @@ using Quest = Questionable.Domain.Quest;
 namespace Questionable.Windows.ConfigComponents;
 
 [RegisterSingleton]
-internal sealed class QuestBattleConfigComponent : ConfigComponent
+internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
 {
     private const string ClipboardPrefix = "qst:single:";
 
@@ -245,7 +245,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent
         if (!tab)
             return;
         _contentSize = ImGui.GetWindowContentRegionMax();
-        var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
+        using var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
 
         bool useBossMod = Configuration.SinglePlayerDuties.RunSoloInstancesWithBossMod;
         if (ImGui.Checkbox(_L("Run quest battles with BossMod"), ref useBossMod))

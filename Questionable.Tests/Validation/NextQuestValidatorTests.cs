@@ -1,3 +1,7 @@
+using Dalamud.Plugin.Services;
+using Microsoft.Extensions.Logging.Abstractions;
+using NSubstitute;
+using Questionable.Functions;
 using Questionable.Model.Questing;
 using Questionable.Validation;
 using Questionable.Validation.Validators;
@@ -58,5 +62,28 @@ public sealed class NextQuestValidatorTests
         var issues = _validator.Validate(quest).ToList();
 
         Assert.Single(issues);
+    }
+}
+
+public sealed class DialogueChoiceValidatorTests
+{
+    private readonly DialogueChoiceValidator _validator = new(
+        new ExcelFunctions(Substitute.For<IDataManager>(), NullLogger<ExcelFunctions>.Instance));
+
+    [Fact]
+    public void InvalidRowId_ReturnsError()
+    {
+        var step = new QuestStep
+        {
+            DialogueChoices = [new DialogueChoice { ExcelSheet = "quest/000/test", Prompt = ExcelRef.FromRowId(5) }]
+        };
+        var quest = CreateQuest(new QuestId(123), Seq(0, step));
+
+        var issues = _validator.Validate(quest).ToList();
+
+        Assert.Single(issues);
+        Assert.Equal(EIssueType.InvalidExcelRef, issues[0].Type);
+        Assert.Equal(EIssueSeverity.Error, issues[0].Severity);
+        Assert.Contains("5", issues[0].Description, StringComparison.Ordinal);
     }
 }

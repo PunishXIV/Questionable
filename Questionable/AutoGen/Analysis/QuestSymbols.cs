@@ -75,9 +75,6 @@ internal sealed class QuestSymbols
         return only;
     }
 
-    internal uint? LevelRow(string symbol) =>
-        symbol.StartsWith("LOC_", StringComparison.Ordinal) ? Value(symbol) : null;
-
     internal IEnumerable<uint> LevelRowsFor(string actorSymbol)
     {
         string suffix = actorSymbol switch
@@ -101,9 +98,4 @@ internal sealed class QuestSymbols
                 yield return value;
         }
     }
-
-    internal IEnumerable<string> DutySymbols =>
-        _values.Keys.Where(x =>
-            x.StartsWith("QUESTBATTLE", StringComparison.Ordinal) ||
-            x.StartsWith("INSTANCEDUNGEON", StringComparison.Ordinal));
 }

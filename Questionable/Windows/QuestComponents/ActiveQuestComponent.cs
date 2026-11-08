@@ -139,7 +139,6 @@ internal sealed partial class ActiveQuestComponent
                 {
                     string stats = questController.ToStatString();
                     float lineHeight = ImGui.GetTextLineHeightWithSpacing();
-                    Vector2 cursorStart = ImGui.GetCursorPos();
                     if (!string.IsNullOrWhiteSpace(stats))
                     {
                         using ImRaii.DisabledDisposable _ = ImRaii.Disabled();
@@ -153,7 +152,7 @@ internal sealed partial class ActiveQuestComponent
                 if (builtNavmeshPercent > 100)
                 {
                     navmeshBarColor = QstTheme.Amber;
-                    builtNavmeshPercent %= builtNavmeshPercent;
+                    builtNavmeshPercent %= 100;
                 }
                 if (builtNavmeshPercent == 0)
                     builtNavmeshPercent = 100;
@@ -280,9 +279,9 @@ internal sealed partial class ActiveQuestComponent
         }
 
 #if REPORTING
-        if (!_configuration.General.ReportsDisabled)
+        if (!configuration.General.ReportsDisabled)
         {
-            Vector4? reportButtonColor = _configuration.General.DismissedReportWarning ? null : QstTheme.Danger;
+            Vector4? reportButtonColor = configuration.General.DismissedReportWarning ? null : QstTheme.Danger;
             ImGui.SameLine();
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle, reportButtonColor))
             {

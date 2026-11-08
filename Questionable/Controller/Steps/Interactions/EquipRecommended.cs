@@ -41,7 +41,6 @@ internal static class EquipRecommended
                 unsafe
                 {
                     InventoryManager* inventoryManager = InventoryManager.Instance();
-                    InventoryContainer* equippedContainer = inventoryManager->GetInventoryContainer(InventoryType.ArmorySoulCrystal);
                     if (inventoryManager->GetItemCountInContainer(jobStone, InventoryType.ArmorySoulCrystal) != 0)
                         hasJobStone = true;
                 }

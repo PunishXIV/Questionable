@@ -34,7 +34,6 @@ internal sealed class CommandHandler : IDisposable
     private readonly QuestValidationWindow _questValidationWindow;
     private readonly QuestWindow _questWindow;
     private readonly QuestData _questData;
-    private readonly TerritoryData _territoryData;
     private readonly EventInfoComponent _eventInfoComponent;
     private readonly ITargetManager _targetManager;
     private readonly ILogger<CommandHandler> _logger;
@@ -62,7 +61,6 @@ internal sealed class CommandHandler : IDisposable
         IClientState clientState,
         Configuration configuration,
         QuestData questData,
-        TerritoryData territoryData,
         EventInfoComponent eventInfoComponent,
         ILogger<CommandHandler> logger)
     {
@@ -86,7 +84,6 @@ internal sealed class CommandHandler : IDisposable
         _clientState = clientState;
         _configuration = configuration;
         _questData = questData;
-        _territoryData = territoryData;
         _eventInfoComponent = eventInfoComponent;
         _logger = logger;
 

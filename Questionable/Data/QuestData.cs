@@ -149,17 +149,6 @@ internal sealed class QuestData
             1821,1824,1831,1832,1863,1864,1865,1866,1867,1868,1872,1878,1881,1882,1879,1883,1884,1880,1871,
             2320
         ]).FromNumericListOfQuests();
-    public static readonly IReadOnlyList<ElementId> CollaborationQuests = (
-        (ushort[])[
-            1153, 1154, 1155, 1156, // ffxiii 2013
-            1287, // ffxi 2014
-            1288, // dqx
-            2141, // yokai
-            2206, // ffxi 2015
-            3158, 3159, 3160, // ffxv
-            4796, 4797, 4798, // ffxvi
-            4801, // fall guys
-        ]).FromNumericListOfQuests();
 
     public static readonly Dictionary<EAetheryteLocation, (char Letter, ushort[] QuestIds)> AethernetUnlockQuests = new()
     {

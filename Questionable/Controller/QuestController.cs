@@ -1128,19 +1128,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             : $"- (+{_taskQueue.RemainingTasks.Count()})";
     }
 
-    public bool HasExecutorMatching<T>([NotNullWhen(true)] out T? executor)
-    where T : class, ITaskExecutor
-    {
-        if (_taskQueue.CurrentTaskExecutor is T t)
-        {
-            executor = t;
-            return true;
-        }
-
-        executor = null;
-        return false;
-    }
-
     public bool HasCurrentTaskMatching<T>([NotNullWhen(true)] out T? task)
     where T : class, ITask
     {

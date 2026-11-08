@@ -256,12 +256,6 @@ internal sealed class BossModIpc : Ipc, IDisposable
             throw new TaskException(CleanupReason!);
     }
 
-    public void Cleanup()
-    {
-        if (!StopPreset())
-            throw new TaskException(CleanupReason!);
-    }
-
     public bool PausePreset() => SetPaused(paused: true);
 
     public bool ResumePreset() => SetPaused(paused: false);

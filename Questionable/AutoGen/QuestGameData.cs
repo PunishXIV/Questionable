@@ -25,7 +25,6 @@ internal sealed class QuestGameData : IDisposable
     private readonly bool _disposeGameData;
     private readonly Lazy<ILookup<uint, Level>> _levelsByObject;
     private readonly Lazy<IReadOnlyList<AetheryteEntry>> _aetherytes;
-    private readonly Lazy<ILookup<uint, uint>> _followers;
     private readonly Lazy<Dictionary<string, EEmote>> _emotesByCommand;
 
     // Cache layer data per territory; a quest touches few zones.
@@ -56,15 +55,11 @@ internal sealed class QuestGameData : IDisposable
 
         _levelsByObject = new Lazy<ILookup<uint, Level>>(BuildLevelIndex);
         _aetherytes = new Lazy<IReadOnlyList<AetheryteEntry>>(BuildAetheryteIndex);
-        _followers = new Lazy<ILookup<uint, uint>>(BuildFollowerIndex);
         _emotesByCommand = new Lazy<Dictionary<string, EEmote>>(BuildEmoteIndex);
     }
 
     internal ExcelSheet<Quest> Quests => _gameData.GetExcelSheet<Quest>()
                                        ?? throw new InvalidOperationException("Quest sheet unavailable.");
-
-    internal string GameVersion =>
-        _gameData.Repositories.TryGetValue("ffxiv", out var repository) ? repository.Version : "unknown";
 
     internal Quest? FindByQuestId(ushort questId)
     {
@@ -91,53 +86,6 @@ internal sealed class QuestGameData : IDisposable
             if (previous.RowId != 0 && Quests.GetRowOrDefault(previous.RowId) is { } row && !row.Name.IsEmpty)
                 yield return row;
         }
-    }
-
-    internal IEnumerable<Quest> NextQuests(Quest quest)
-    {
-        foreach (uint rowId in _followers.Value[quest.RowId])
-        {
-            if (Quests.GetRowOrDefault(rowId) is { } row && !row.Name.IsEmpty)
-                yield return row;
-        }
-    }
-
-    private ILookup<uint, uint> BuildFollowerIndex()
-    {
-        List<(uint Previous, uint Next)> edges = [];
-        foreach (Quest quest in Quests)
-        {
-            if (quest.Name.IsEmpty)
-                continue;
-
-            foreach (var previous in quest.PreviousQuest)
-            {
-                if (previous.RowId != 0)
-                    edges.Add((previous.RowId, quest.RowId));
-            }
-        }
-
-        return edges.ToLookup(x => x.Previous, x => x.Next);
-    }
-
-    internal IReadOnlyList<Quest> FindByName(string name)
-    {
-        List<Quest> exact = [];
-        List<Quest> partial = [];
-
-        foreach (Quest quest in Quests)
-        {
-            string questName = TrimJournalIcons(quest.Name.ExtractText());
-            if (questName.Length == 0)
-                continue;
-
-            if (string.Equals(questName, name, StringComparison.OrdinalIgnoreCase))
-                exact.Add(quest);
-            else if (questName.Contains(name, StringComparison.OrdinalIgnoreCase))
-                partial.Add(quest);
-        }
-
-        return exact.Count > 0 ? exact : partial;
     }
 
     internal static string QuestName(Quest quest) => TrimJournalIcons(quest.Name.ExtractText());
@@ -247,12 +195,6 @@ internal sealed class QuestGameData : IDisposable
     {
         TerritoryType? territory = _gameData.GetExcelSheet<TerritoryType>()?.GetRowOrDefault(territoryId);
         return territory is { AetherCurrentCompFlgSet.RowId: > 0 };
-    }
-
-    internal string TerritoryName(uint territoryId)
-    {
-        TerritoryType? territory = _gameData.GetExcelSheet<TerritoryType>()?.GetRowOrDefault(territoryId);
-        return territory?.PlaceName.ValueNullable?.Name.ExtractText() ?? $"#{territoryId}";
     }
 
     internal IReadOnlyList<string> TodoTexts(Quest quest)

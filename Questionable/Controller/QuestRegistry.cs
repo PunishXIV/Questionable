@@ -21,7 +21,6 @@ internal sealed class QuestRegistry
 {
     private readonly IChatGui _chatGui;
     private readonly Dictionary<uint, (ElementId QuestId, QuestStep Step)> _cfcSteps = [];
-    private readonly IDataManager _dataManager;
     private readonly JsonSchemaValidator _jsonSchemaValidator;
     private readonly ILogger<QuestRegistry> _logger;
     private readonly List<(uint CfcId, ElementId QuestId, int Sequence)> _lowPriorityCfcQuests = [];
@@ -45,7 +44,6 @@ internal sealed class QuestRegistry
         TerritoryData territoryData,
         Configuration configuration,
         DraftQuestPathService draftQuestPathService,
-        IDataManager dataManager,
         IChatGui chatGui)
     {
         _pluginInterface = pluginInterface;
@@ -55,7 +53,6 @@ internal sealed class QuestRegistry
         _logger = logger;
         _territoryData = territoryData;
         _chatGui = chatGui;
-        _dataManager = dataManager;
         _configuration = configuration;
         _draftQuestPathService = draftQuestPathService;
         _reloadDataIpc = _pluginInterface.GetIpcProvider<object>("Questionable.ReloadData");
@@ -125,34 +122,6 @@ internal sealed class QuestRegistry
         {
             _characterExpansion = (EExpansionVersion)PlayerState.Instance()->MaxExpansion;
         }
-    }
-
-    [Conditional("RELEASE")]
-    private void LoadFromAssembly()
-    {
-        _logger.LogInformation("Loading quests from assembly");
-
-        foreach ((ElementId questId, QuestRoot questRoot) in AssemblyQuestLoader.Quests)
-        {
-            try
-            {
-                IQuestInfo questInfo = _questData.GetQuestInfo(questId);
-                Quest quest = new()
-                {
-                    Id = questId,
-                    Root = questRoot,
-                    Info = questInfo,
-                    Source = Quest.ESource.Assembly
-                };
-                _quests[quest.Id] = quest;
-            }
-            catch (Exception e)
-            {
-                _logger.LogWarning("Not loading unknown quest {QuestId} from assembly: {Message}", questId, e.Message);
-            }
-        }
-
-        _logger.LogInformation("Loaded {Count} quests from assembly", _quests.Count);
     }
 
     private void LoadFromProject()

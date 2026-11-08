@@ -31,17 +31,11 @@ internal sealed class QuestScriptAnalysis
 
     internal IReadOnlyDictionary<byte, SequenceHint> Hints => _hints;
 
-    internal IReadOnlyList<string> AcceptScenes => _acceptScenes;
-
-    internal IReadOnlyList<string> CompleteScenes => _completeScenes;
-
     internal bool HasScript { get; private init; }
 
     // Only declared by quests where you use the item on something, not by ones that hand it to an NPC.
     internal bool UsesEventItems { get; private set; }
 
-    private readonly List<string> _acceptScenes = [];
-    private readonly List<string> _completeScenes = [];
 
     internal static QuestScriptAnalysis Empty() => new() { HasScript = false };
 
@@ -65,15 +59,6 @@ internal sealed class QuestScriptAnalysis
                     isHeldItems: string.Equals(name, "GetEventItems", StringComparison.OrdinalIgnoreCase),
                     isUsableItems: isUsableItems);
             }
-
-            if (!name.StartsWith("OnScene", StringComparison.Ordinal))
-                continue;
-
-            HashSet<string> called = [.. LuaSymbolWalk.Deep(function)];
-            if (called.Contains("QuestOffer") || called.Contains("QuestAccepted"))
-                analysis._acceptScenes.Add(name);
-            if (called.Contains("QuestCompleted") || called.Contains("QuestReward"))
-                analysis._completeScenes.Add(name);
         }
 
         analysis.KeepBestSupportedTargets();

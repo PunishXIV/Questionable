@@ -671,9 +671,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         return null;
     }
 
-    private static bool IsQuestGiver(Quest quest, uint? dataId) =>
-        dataId is { } id && id != 0 && (id == quest.IssuerStart.RowId || id == quest.TargetEnd.RowId);
-
     private static int TodoQty(Quest quest, byte number)
     {
         foreach (var todo in quest.TodoParams)

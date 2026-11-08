@@ -64,7 +64,7 @@ internal sealed class StopConditionComponent : ConfigComponent
         if (!tab)
             return;
         _contentSize = ImGui.GetWindowContentRegionMax();
-        var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
+        using var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
 
         bool runCommand = Configuration.Stop.RunCommandAfterStop;
         if (ImGui.Checkbox(_L("Run command when Questionable finishes automatic questing"), ref runCommand))

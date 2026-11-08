@@ -13,7 +13,7 @@ internal static class ImGuiComponentsLocal
                    [CallerFilePath] string file = "",
                  [CallerLineNumber] int line = 0)
     {
-        return IconButton(icon, defaultColor: null, activeColor: null, hoveredColor: null, size: null, file, line, id);
+        return IconButton(icon, defaultColor, activeColor: null, hoveredColor: null, size: null, file, line, id);
     }
     internal static bool IconButton(FontAwesomeIcon icon,
                    [CallerFilePath] string file = "",

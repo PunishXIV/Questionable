@@ -61,7 +61,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
         if (!tab)
             return;
         _contentSize = ImGui.GetWindowContentRegionMax();
-        var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
+        using var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
 
         _useAutoDuty = Configuration.Duties.RunInstancedContentWithAutoDuty;
         if (ImGui.Checkbox(_L("Run instanced content with AutoDuty and BossMod"), ref _useAutoDuty))
@@ -341,6 +341,8 @@ internal sealed class DutyConfigComponent : ConfigComponent
                         Configuration.Duties.BlacklistedDutyCfcIds.Add(blacklistedCfcId);
                     }
                 }
+
+                Save();
             }
         }
     }

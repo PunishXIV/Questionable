@@ -3,12 +3,27 @@ using Lumina.Excel.Sheets;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 using Questionable.Data;
+using Questionable.Domain;
+using Questionable.Model.Questing;
 using Xunit;
 
 namespace Questionable.Tests.AutoGen;
 
 public sealed class SheetLookupTests(GameDataFixture fixture) : IClassFixture<GameDataFixture>
 {
+    [GameDataFact]
+    public void ItemReward_ToStringGivesTypeAndName()
+    {
+        Assert.True(fixture.Available, "Game data is required for sheet lookup parity checks.");
+        var mountItem = fixture.GameData!.Quests.Module.GetSheet<Item>()
+            .First(item => item.ItemAction.Value.Action.RowId == 1322);
+
+        var reward = ItemReward.Create(mountItem, new QuestId(1));
+
+        Assert.NotNull(reward);
+        Assert.Equal($"Mount: {reward.Name}", reward.ToString());
+    }
+
     [GameDataFact]
     public void CardRewards_KeepItemsAndOrder()
     {

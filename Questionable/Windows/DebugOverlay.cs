@@ -215,9 +215,14 @@ internal sealed class DebugOverlay : Window
         var marker = agentMap->FlagMapMarkers[0];
         if (marker.TerritoryId != _clientState.TerritoryType)
             return;
-        if (!_flagFloorPos.TryGetValue(new(marker.XFloat, marker.YFloat), out float height))
+        Vector2 flagKey = new(marker.XFloat, marker.YFloat);
+        if (!_flagFloorPos.TryGetValue(flagKey, out float height))
         {
-            height = _navmeshIpc.GetPointOnFloor(new Vector3(marker.XFloat, 1024, marker.YFloat), unlandable: true)?.Y ?? 0;
+            Vector3? floor = _navmeshIpc.GetPointOnFloor(new Vector3(marker.XFloat, 1024, marker.YFloat), unlandable: true);
+            height = floor?.Y ?? 0;
+            // no navmesh yet: keep asking rather than caching a height of 0
+            if (floor != null)
+                _flagFloorPos[flagKey] = height;
         }
         Vector3 flagPos = new(marker.XFloat, height, marker.YFloat);
         bool visible = _gameGui.WorldToScreen(flagPos, out Vector2 screenPos);

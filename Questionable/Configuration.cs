@@ -60,10 +60,6 @@ internal sealed class Configuration : IPluginConfiguration
     [JsonIgnore] public AdvancedConfiguration Advanced => _activeAdvanced ?? _advanced;
 
     internal GeneralConfiguration BaseGeneral => _general;
-    internal StopConfiguration BaseStop => _stop;
-    internal DutyConfiguration BaseDuties => _duties;
-    internal SinglePlayerDutyConfiguration BaseSinglePlayerDuties => _singlePlayerDuties;
-    internal NotificationConfiguration BaseNotifications => _notifications;
     internal AdvancedConfiguration BaseAdvanced => _advanced;
 
     #region Character Profiles

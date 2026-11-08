@@ -729,10 +729,10 @@ internal sealed class MovementController
     public void Stop()
     {
         bool providerHasWork = HasMovingOperation || ProviderMayBeMoving() ||
-            HasMovingOperation || navmeshIpc.GetSimpleMoveInProgress() == true;
+            navmeshIpc.GetSimpleMoveInProgress() == true;
         ClearLocalState();
         // Leave a provider's travel alone, including a pending SimpleMove that can't be cancelled safely.
-        if (providerHasWork || HasMovingOperation)
+        if (providerHasWork)
             return;
 
         navmeshIpc.Stop();

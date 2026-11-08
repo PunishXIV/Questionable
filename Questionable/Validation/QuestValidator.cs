@@ -1,5 +1,4 @@
-﻿using Questionable.Model.Common;
-using Questionable.Model.Questing;
+﻿using Questionable.Model.Questing;
 using static Questionable.Utils.CacheUtils;
 namespace Questionable.Validation;
 
@@ -45,7 +44,6 @@ internal sealed class QuestValidator
                 _issues.Clear();
 
                 List<ValidationIssue> issues = [];
-                Dictionary<EAlliedSociety, int> disabledSocietyQuests = [];
                 foreach (Quest quest in quests)
                 {
                     foreach (IQuestValidator validator in _validators)
@@ -75,7 +73,6 @@ internal sealed class QuestValidator
                     .ThenBy(x => x.Sequence)
                     .ThenBy(x => x.Step)
                     .ThenBy(x => x.Description)
-                    .Concat(DisabledSocietyIssues(disabledSocietyQuests))
                     .ToList();
             }
             catch (Exception e)
@@ -87,20 +84,4 @@ internal sealed class QuestValidator
     }
 
     public List<ValidationIssue> GetIssues(ElementId elementId) => _issues.Where(x => x.ElementId == elementId).ToList();
-
-    private static IEnumerable<ValidationIssue> DisabledSocietyIssues(Dictionary<EAlliedSociety, int> disabledTribeQuests)
-    {
-        return disabledTribeQuests
-            .OrderBy(x => x.Key)
-            .Select(x => new ValidationIssue
-            {
-                ElementId = null,
-                Sequence = null,
-                Step = null,
-                AlliedSociety = x.Key,
-                Type = EIssueType.QuestDisabled,
-                Severity = EIssueSeverity.None,
-                Description = _LF("{0} disabled quest(s)", x.Value)
-            });
-    }
 }

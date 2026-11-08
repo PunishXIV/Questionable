@@ -65,7 +65,7 @@ internal sealed class DialogueChoiceValidator(ExcelFunctions excelFunctions) : I
                     Step = stepId,
                     Type = EIssueType.InvalidExcelRef,
                     Severity = EIssueSeverity.Error,
-                    Description = _LF("{0} invalid: {1} → {2}", label, excelSheet?.ToString() ?? "", excelRef.AsKey())
+                    Description = _LF("{0} invalid: {1} → {2}", label, excelSheet?.ToString() ?? "", excelRef.AsRowId())
                 };
             }
         }

@@ -114,7 +114,7 @@ internal sealed class CombatController : IDisposable
             };
             _wasInCombat =
                 combatData.SpawnType is EEnemySpawnType.QuestInterruption or EEnemySpawnType.FinishCombatIfAny;
-            TrackTargetAndVariables(target: null);
+            ResetTracking();
             _pendingCleanup = null;
             return true;
         }
@@ -188,7 +188,7 @@ internal sealed class CombatController : IDisposable
                                                                  questProgressInfo.Sequence == _currentFight.Data.Sequence &&
                                                                  _previousQuestVariables != null &&
                                                                  !questProgressInfo.Variables.SequenceEqual(_previousQuestVariables))
-                                TrackTargetAndVariables(target: null);
+                                ResetTracking();
                             else
                                 return EStatus.InCombat;
                         }
@@ -553,9 +553,9 @@ internal sealed class CombatController : IDisposable
         return !isBlocked;
     }
 
-    private void TrackTargetAndVariables(IGameObject? target)
+    private void ResetTracking()
     {
-        _lastTargetId = target?.GameObjectId;
+        _lastTargetId = null;
         _previousQuestVariables = _currentFight!.Data.ElementId != null
             ? _questFunctions.GetQuestProgressInfo(_currentFight.Data.ElementId)?.Variables
             : null;

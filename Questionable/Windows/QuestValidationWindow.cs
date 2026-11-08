@@ -124,8 +124,6 @@ internal sealed class QuestValidationWindow : LWindow
             {
                 if (issue.Type is EIssueType.InvalidAcceptQuestTerritory && issue.TerritoryId != null)
                     ImGui.TextUnformatted(TerritoryData.GetNameAndId(issue.TerritoryId.Value));
-                else if (issue.AlliedSociety != Model.Common.EAlliedSociety.None)
-                    ImGui.TextUnformatted(issue.AlliedSociety.ToString());
             }
 
             if (ImGui.TableNextColumn())

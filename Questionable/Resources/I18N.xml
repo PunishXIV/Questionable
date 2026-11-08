@@ -775,15 +775,6 @@
     <!--<Value lang="ko">에테라이트가 잠금 상태입니다: {0}</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Validation/QuestValidator.cs -->
-    <Key>{0} disabled quest(s)</Key>
-    <Value lang="en">{0} disabled quest(s)</Value>
-    <Value lang="ja-jp">{0} 件のクエストが無効</Value>
-    <Value lang="zh-cn">{0} 个已禁用的任务</Value>
-    <Value lang="zh-tw">{0} 個已停用的任務</Value>
-    <!--<Value lang="ko">{0}개의 비활성화된 퀘스트</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Validation/Validators/AethernetShortcutValidator.cs -->
     <Key>Invalid aethernet shortcut: {0} to {1}</Key>
     <Value lang="en">Invalid aethernet shortcut: {0} to {1}</Value>
@@ -827,15 +818,6 @@
     <Value lang="zh-cn">序列重复</Value>
     <Value lang="zh-tw">序列重複</Value>
     <!--<Value lang="ko">시퀀스가 중복되었습니다</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Validation/Validators/ClassQuestShouldHaveShortcutValidator.cs -->
-    <Key>Class quest should have an aetheryte shortcut to be done automatically</Key>
-    <Value lang="en">Class quest should have an aetheryte shortcut to be done automatically</Value>
-    <Value lang="ja-jp">クラスクエストを自動実行するにはエーテライトショートカットが必要です</Value>
-    <Value lang="zh-cn">自动执行职业任务需要以太之光捷径</Value>
-    <Value lang="zh-tw">自動執行職業任務需要乙太之光捷徑</Value>
-    <!--<Value lang="ko">직업 퀘스트를 자동으로 완료하려면 에테라이트 바로가기가 필요합니다</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Validation/Validators/CompletionFlagsValidator.cs -->
