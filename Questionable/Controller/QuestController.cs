@@ -376,64 +376,15 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 return;
             }
 
-            // Observe expected acceptances before quest selection or a sequence change replaces the queue.
-            bool wasRunning = AutomationType != EAutomationType.Manual;
-            _acceptance.ObserveQueued(_taskQueue, _questFunctions.IsQuestAccepted, TryStopOnQuestAccepted);
-            if (wasRunning && AutomationType == EAutomationType.Manual)
+            if (UpdateAcceptedQuests())
                 return;
-
-            if (PendingQuest != null)
-            {
-                if (!_questFunctions.IsQuestAccepted(PendingQuest.Quest.Id))
-                {
-                    DebugState = $"Waiting for Leve {PendingQuest.Quest.Id}";
-                    return;
-                }
-
-                StartedQuest = PendingQuest;
-                PendingQuest = null;
-                TryStopOnQuestAccepted(StartedQuest.Quest.Id);
-                if (AutomationType == EAutomationType.Manual)
-                    return;
-                CheckNextTasks("Pending quest accepted");
-            }
-
-            if (SimulatedQuest == null && NextQuest != null)
-            {
-                bool accepted = _questFunctions.IsQuestAccepted(NextQuest.Quest.Id);
-                bool completed = !NextQuest.Quest.Info.IsRepeatable && _questFunctions.IsQuestComplete(NextQuest.Quest.Id);
-                if (ResolveNextQuest(accepted, completed, TryStopOnQuestAccepted) && AutomationType == EAutomationType.Manual)
-                    return;
-            }
 
             // Queue currently available accept-only priority quests before completing any.
             if (QuestSelectionController.ShouldQueueAcceptOnly(Slots, AutomationType))
                 TryQueueAcceptOnly();
 
-            // Honor the stop-after toggle before starting queued or priority quests.
-            EStopPoint? stopPoint = _selection.GetStopPoint(StartedQuest, StopAfterCurrentQuest, SelectionState);
-            if (StartedQuest != null && stopPoint != null)
-            {
-                if (stopPoint == EStopPoint.Configured)
-                {
-                    ElementId questId = StartedQuest.Quest.Id;
-                    _stopPolicy.ReportStopPoint(StartedQuest.Quest);
-                    StartedQuest = null;
-                    Stop($"Stopping point [{questId}] reached");
-                    if (_configuration.Stop.RemoveWhenCompleteConditionMet)
-                        _configuration.Stop.QuestsToStopAfter.Remove(questId);
-                    return;
-                }
-
-                if (stopPoint == EStopPoint.AfterCurrentQuest)
-                {
-                    ElementId questId = StartedQuest.Quest.Id;
-                    _stopPolicy.ReportStopAfterQuest(StartedQuest.Quest);
-                    StartedQuest = null;
-                    Stop($"Stop after quest [{questId}]");
-                    return;
-                }
-            }
+            if (TryStopAtStopPoint())
+                return;
 
             if (QuestSelectionController.ShouldHoldStartedQuest(StartedQuest, SelectionState.BetweenAreas))
             {
@@ -443,160 +394,254 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
             QuestChoice choice = QuestSelectionController.Choose(new QuestSelectionContext(Slots, _priorityManager.Quests,
                 _priorityManager.IsAcceptOnly, AutomationType, SelectionState));
-            QuestProgress? questToRun;
-            byte currentSequence = choice.Sequence;
-            if (choice.Progress != null)
-            {
-                questToRun = choice.Progress;
-                if (choice.Source != EQuestSource.Simulated &&
-                    questToRun.Step == 0 &&
-                    _taskQueue.AllTasksComplete &&
-                    AutomationType == EAutomationType.Automatic)
-                    ExecuteNextStep();
-            }
-            else
-            {
-                ElementId? currentQuestId = choice.QuestId;
-                MainScenarioQuestState msqState = choice.MsqState;
-                if (currentQuestId == null || currentQuestId.Value == 0)
-                {
-                    if (StartedQuest != null)
-                    {
-                        if (msqState == MainScenarioQuestState.Unavailable)
-                        {
-                            return;
-                        }
-
-                        if (msqState == MainScenarioQuestState.LoadingScreen)
-                        {
-                            return;
-                        }
-
-                        _logger.LogInformation("No current quest, resetting data [CQI: {CurrrentQuestData}], [CQ: {QuestData}], [MSQ: {MsqData}]", _questFunctions.GetCurrentQuestInternal(allowNewMsq: true), _questFunctions.GetCurrentQuest(), _questFunctions.GetMainScenarioQuest());
-                        StartedQuest = null;
-                        Stop("Resetting current quest");
-                    }
-
-                    questToRun = null;
-                }
-                else if (StartedQuest == null || StartedQuest.Quest.Id != currentQuestId)
-                {
-                    if (_questRegistry.TryGetQuest(currentQuestId, out Quest? quest))
-                    {
-                        SelectStartedQuest(quest, currentSequence);
-                        if (_configuration.Advanced.Debug && _configuration.Advanced.OpenEditor &&
-                            (quest.Root.LastChecked.Date == null || (quest.Root.LastChecked.Since(DateTime.Now) is { } since && since.TotalDays > 30)))
-                        {
-                            (bool success, string msg) = QuestRegistry.OpenEditor(StartedQuest.Quest.Info);
-                            _logger.LogDebug("OpenEditor {Success}: {Msg}", success, msg);
-                        }
-
-                        if (AutomationType == EAutomationType.Manual)
-                            return;
-
-                        unsafe
-                        {
-                            int playerLevel = PlayerState.Instance()->CurrentLevel;
-                            if (QuestSelectionController.IsLevelTooHigh(playerLevel, quest))
-                            {
-                                _stopPolicy.ReportLevelTooLow(quest.Info, playerLevel);
-                                Stop("Quest level too high");
-                            }
-                            else
-                            {
-                                if (AutomationType == EAutomationType.SingleQuestB)
-                                {
-                                    _logger.LogInformation("Single quest is finished");
-                                    AutomationType = EAutomationType.Manual;
-                                }
-
-                                CheckNextTasks("Different Quest");
-                            }
-                        }
-                    }
-                    else if (StartedQuest != null)
-                    {
-                        _logger.LogInformation("No active quest anymore? Not sure what happened...");
-                        StartedQuest = null;
-                        Stop("No active Quest");
-                    }
-
-                    return;
-                }
-                else
-                    questToRun = StartedQuest;
-            }
+            if (!TryGetQuestToRun(choice, out QuestProgress? questToRun))
+                return;
 
             if (questToRun == null)
             {
-                DebugState = "No quest active";
-                if (AutomationType != EAutomationType.Manual &&
-                    _questFunctions.GetLevelLockedMainScenarioQuest() is var (lockedMsq, playerLevel))
-                {
-                    _stopPolicy.ReportMainScenarioLocked(lockedMsq, playerLevel);
-                }
-
-                Stop("No quest active");
+                StopWithNoQuest();
                 return;
             }
 
-            if (_gameFunctions.IsOccupied() && !_gameFunctions.IsInCustomDelivery(questToRun.Quest))
-            {
-                DebugState = "Occupied";
+            if (IsWaitingToRun(questToRun))
                 return;
-            }
 
-            if (_movementController.IsPathfinding)
-            {
-                DebugState = "Pathfinding is running";
-                return;
-            }
-
-            if (_movementController.IsPathRunning)
-            {
-                DebugState = "Path is running";
-                return;
-            }
-
-            if (DateTime.Now < _safeAnimationEnd)
-            {
-                DebugState = "Waiting for Animation";
-                return;
-            }
-
-            if (questToRun.Sequence != currentSequence)
+            if (questToRun.Sequence != choice.Sequence)
             {
                 _highlightObject.SetHighlight([]);
-                questToRun.SetSequence(currentSequence);
+                questToRun.SetSequence(choice.Sequence);
                 CheckNextTasks(
                     $"New sequence {questToRun == StartedQuest}/{_questFunctions.GetCurrentQuestInternal(allowNewMsq: true)}");
             }
 
-            switch (QuestStepPlanner.CheckStep(questToRun))
+            CheckQuestStep(questToRun);
+        }
+    }
+
+    // True ends this update.
+    private bool UpdateAcceptedQuests()
+    {
+        // Observe expected acceptances before quest selection or a sequence change replaces the queue.
+        bool wasRunning = AutomationType != EAutomationType.Manual;
+        _acceptance.ObserveQueued(_taskQueue, _questFunctions.IsQuestAccepted, TryStopOnQuestAccepted);
+        if (wasRunning && AutomationType == EAutomationType.Manual)
+            return true;
+
+        if (PendingQuest != null)
+        {
+            if (!_questFunctions.IsQuestAccepted(PendingQuest.Quest.Id))
             {
-                case EStepState.UnknownSequence:
-                    DebugState = $"Sequence {questToRun.Sequence} not found";
-                    if (AutomationType != EAutomationType.Manual)
-                        _stopPolicy.ReportNoSequence(questToRun);
-                    Stop("Unknown sequence");
-                    return;
-
-                case EStepState.Completed:
-                    DebugState = "Step completed";
-                    if (!_taskQueue.AllTasksComplete)
-                        CheckNextTasks("Step complete");
-                    return;
-
-                case EStepState.UnknownStep:
-                    DebugState = "Step not found";
-                    if (AutomationType != EAutomationType.Manual)
-                        _stopPolicy.ReportNoStep(questToRun);
-                    Stop("Unknown step");
-                    return;
+                DebugState = $"Waiting for Leve {PendingQuest.Quest.Id}";
+                return true;
             }
 
-            DebugState = null;
+            StartedQuest = PendingQuest;
+            PendingQuest = null;
+            TryStopOnQuestAccepted(StartedQuest.Quest.Id);
+            if (AutomationType == EAutomationType.Manual)
+                return true;
+            CheckNextTasks("Pending quest accepted");
         }
+
+        if (SimulatedQuest == null && NextQuest != null)
+        {
+            bool accepted = _questFunctions.IsQuestAccepted(NextQuest.Quest.Id);
+            bool completed = !NextQuest.Quest.Info.IsRepeatable && _questFunctions.IsQuestComplete(NextQuest.Quest.Id);
+            if (ResolveNextQuest(accepted, completed, TryStopOnQuestAccepted) && AutomationType == EAutomationType.Manual)
+                return true;
+        }
+
+        return false;
+    }
+
+    private bool TryStopAtStopPoint()
+    {
+        // Honor the stop-after toggle before starting queued or priority quests.
+        EStopPoint? stopPoint = _selection.GetStopPoint(StartedQuest, StopAfterCurrentQuest, SelectionState);
+        if (StartedQuest != null && stopPoint != null)
+        {
+            if (stopPoint == EStopPoint.Configured)
+            {
+                ElementId questId = StartedQuest.Quest.Id;
+                _stopPolicy.ReportStopPoint(StartedQuest.Quest);
+                StartedQuest = null;
+                Stop($"Stopping point [{questId}] reached");
+                if (_configuration.Stop.RemoveWhenCompleteConditionMet)
+                    _configuration.Stop.QuestsToStopAfter.Remove(questId);
+                return true;
+            }
+
+            if (stopPoint == EStopPoint.AfterCurrentQuest)
+            {
+                ElementId questId = StartedQuest.Quest.Id;
+                _stopPolicy.ReportStopAfterQuest(StartedQuest.Quest);
+                StartedQuest = null;
+                Stop($"Stop after quest [{questId}]");
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    // False ends this update. A null quest with true means there is nothing left to run.
+    private bool TryGetQuestToRun(QuestChoice choice, out QuestProgress? questToRun)
+    {
+        questToRun = choice.Progress;
+        if (questToRun != null)
+        {
+            if (choice.Source != EQuestSource.Simulated &&
+                questToRun.Step == 0 &&
+                _taskQueue.AllTasksComplete &&
+                AutomationType == EAutomationType.Automatic)
+                ExecuteNextStep();
+            return true;
+        }
+
+        ElementId? currentQuestId = choice.QuestId;
+        MainScenarioQuestState msqState = choice.MsqState;
+        if (currentQuestId == null || currentQuestId.Value == 0)
+        {
+            if (StartedQuest != null)
+            {
+                if (msqState == MainScenarioQuestState.Unavailable)
+                {
+                    return false;
+                }
+
+                if (msqState == MainScenarioQuestState.LoadingScreen)
+                {
+                    return false;
+                }
+
+                _logger.LogInformation("No current quest, resetting data [CQI: {CurrrentQuestData}], [CQ: {QuestData}], [MSQ: {MsqData}]", _questFunctions.GetCurrentQuestInternal(allowNewMsq: true), _questFunctions.GetCurrentQuest(), _questFunctions.GetMainScenarioQuest());
+                StartedQuest = null;
+                Stop("Resetting current quest");
+            }
+
+            return true;
+        }
+
+        if (StartedQuest == null || StartedQuest.Quest.Id != currentQuestId)
+        {
+            SwitchToQuest(currentQuestId, choice.Sequence);
+            return false;
+        }
+
+        questToRun = StartedQuest;
+        return true;
+    }
+
+    private void SwitchToQuest(ElementId questId, byte sequence)
+    {
+        if (_questRegistry.TryGetQuest(questId, out Quest? quest))
+        {
+            SelectStartedQuest(quest, sequence);
+            if (_configuration.Advanced.Debug && _configuration.Advanced.OpenEditor &&
+                (quest.Root.LastChecked.Date == null || (quest.Root.LastChecked.Since(DateTime.Now) is { } since && since.TotalDays > 30)))
+            {
+                (bool success, string msg) = QuestRegistry.OpenEditor(StartedQuest.Quest.Info);
+                _logger.LogDebug("OpenEditor {Success}: {Msg}", success, msg);
+            }
+
+            if (AutomationType == EAutomationType.Manual)
+                return;
+
+            unsafe
+            {
+                int playerLevel = PlayerState.Instance()->CurrentLevel;
+                if (QuestSelectionController.IsLevelTooHigh(playerLevel, quest))
+                {
+                    _stopPolicy.ReportLevelTooLow(quest.Info, playerLevel);
+                    Stop("Quest level too high");
+                }
+                else
+                {
+                    if (AutomationType == EAutomationType.SingleQuestB)
+                    {
+                        _logger.LogInformation("Single quest is finished");
+                        AutomationType = EAutomationType.Manual;
+                    }
+
+                    CheckNextTasks("Different Quest");
+                }
+            }
+        }
+        else if (StartedQuest != null)
+        {
+            _logger.LogInformation("No active quest anymore? Not sure what happened...");
+            StartedQuest = null;
+            Stop("No active Quest");
+        }
+    }
+
+    private void StopWithNoQuest()
+    {
+        DebugState = "No quest active";
+        if (AutomationType != EAutomationType.Manual &&
+            _questFunctions.GetLevelLockedMainScenarioQuest() is var (lockedMsq, playerLevel))
+        {
+            _stopPolicy.ReportMainScenarioLocked(lockedMsq, playerLevel);
+        }
+
+        Stop("No quest active");
+    }
+
+    private bool IsWaitingToRun(QuestProgress questToRun)
+    {
+        if (_gameFunctions.IsOccupied() && !_gameFunctions.IsInCustomDelivery(questToRun.Quest))
+        {
+            DebugState = "Occupied";
+            return true;
+        }
+
+        if (_movementController.IsPathfinding)
+        {
+            DebugState = "Pathfinding is running";
+            return true;
+        }
+
+        if (_movementController.IsPathRunning)
+        {
+            DebugState = "Path is running";
+            return true;
+        }
+
+        if (DateTime.Now < _safeAnimationEnd)
+        {
+            DebugState = "Waiting for Animation";
+            return true;
+        }
+
+        return false;
+    }
+
+    private void CheckQuestStep(QuestProgress questToRun)
+    {
+        switch (QuestStepPlanner.CheckStep(questToRun))
+        {
+            case EStepState.UnknownSequence:
+                DebugState = $"Sequence {questToRun.Sequence} not found";
+                if (AutomationType != EAutomationType.Manual)
+                    _stopPolicy.ReportNoSequence(questToRun);
+                Stop("Unknown sequence");
+                return;
+
+            case EStepState.Completed:
+                DebugState = "Step completed";
+                if (!_taskQueue.AllTasksComplete)
+                    CheckNextTasks("Step complete");
+                return;
+
+            case EStepState.UnknownStep:
+                DebugState = "Step not found";
+                if (AutomationType != EAutomationType.Manual)
+                    _stopPolicy.ReportNoStep(questToRun);
+                Stop("Unknown step");
+                return;
+        }
+
+        DebugState = null;
     }
 
     [MemberNotNull(nameof(StartedQuest))]
