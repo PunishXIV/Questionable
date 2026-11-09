@@ -11,14 +11,9 @@ internal sealed class QuestJournalComponent
     JournalData journalData,
     QuestRegistry questRegistry,
     QuestFunctions questFunctions,
-    UiUtils uiUtils,
-    QuestTooltipComponent questTooltipComponent,
-    IDalamudPluginInterface pluginInterface,
     QuestJournalUtils questJournalUtils,
-    QuestValidator questValidator,
-    QuestController questController,
-    RedoUtil redoUtil,
-    Configuration configuration)
+    JournalTable journalTable,
+    RedoUtil redoUtil)
 {
     private readonly Dictionary<JournalData.Category, Counts> _categoryCounts = [];
     private readonly Dictionary<JournalData.Genre, Counts> _genreCounts = [];
@@ -92,14 +87,9 @@ internal sealed class QuestJournalComponent
 
         if (_filteredSections.Count > 0)
         {
-            using ImRaii.TableDisposable table = ImRaii.Table("Quests", 3, ImGuiTableFlags.NoSavedSettings);
+            using ImRaii.TableDisposable table = journalTable.Begin("Quests");
             if (!table)
                 return;
-
-            ImGui.TableSetupColumn(_L("Name"), ImGuiTableColumnFlags.NoHide);
-            ImGui.TableSetupColumn(_L("Supported"), ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
-            ImGui.TableSetupColumn(_L("Completed"), ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
-            ImGui.TableHeadersRow();
 
             foreach (FilteredSection section in _filteredSections)
                 DrawSection(section);
@@ -117,17 +107,13 @@ internal sealed class QuestJournalComponent
         if (total == 0)
             return;
 
-        ImGui.TableNextRow();
-        ImGui.TableNextColumn();
+        JournalTable.BeginRow();
 
         if (_applyOpenState)
             ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
         bool open = ImGui.TreeNodeEx(section.Section.Name, ImGuiTreeNodeFlags.SpanFullWidth);
 
-        ImGui.TableNextColumn();
-        DrawCount(available, total);
-        ImGui.TableNextColumn();
-        DrawCount(completed, obtainable);
+        journalTable.Counts(available, total, completed, obtainable);
 
         if (open)
         {
@@ -145,17 +131,13 @@ internal sealed class QuestJournalComponent
         if (total == 0)
             return;
 
-        ImGui.TableNextRow();
-        ImGui.TableNextColumn();
+        JournalTable.BeginRow();
 
         if (_applyOpenState)
             ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
         bool open = ImGui.TreeNodeEx(category.Category.Name, ImGuiTreeNodeFlags.SpanFullWidth);
 
-        ImGui.TableNextColumn();
-        DrawCount(available, total);
-        ImGui.TableNextColumn();
-        DrawCount(completed, obtainable);
+        journalTable.Counts(available, total, completed, obtainable);
 
         if (open)
         {
@@ -172,8 +154,7 @@ internal sealed class QuestJournalComponent
         if (total == 0)
             return;
 
-        ImGui.TableNextRow();
-        ImGui.TableNextColumn();
+        JournalTable.BeginRow();
 
         string genreName = genre.Genre.Name;
         if (genre.Genre.Id != JournalData.GenreInstantQuests && questRegistry.TryGetQuest(genre.Quests[0].QuestId, out Quest? firstQuest))
@@ -189,156 +170,17 @@ internal sealed class QuestJournalComponent
 
         questJournalUtils.ShowGroupContextMenu($"DrawGenre{genre.Genre.Id}", genre.Quests);
 
-        ImGui.TableNextColumn();
-        DrawCount(supported, total);
-        ImGui.TableNextColumn();
-        DrawCount(completed, obtainable);
+        journalTable.Counts(supported, total, completed, obtainable);
 
         if (open)
         {
             foreach (IQuestInfo quest in genre.Quests)
-                DrawQuest(quest);
+            {
+                journalTable.QuestRow(quest, nameof(QuestJournalComponent));
+                _resultCount++;
+            }
 
             ImGui.TreePop();
-        }
-    }
-
-    internal void DrawQuest(IQuestInfo questInfo) => DrawQuest((QuestInfo)questInfo);
-
-    internal void DrawQuest(QuestInfo questInfo)
-    {
-        bool fate = false;
-        string lastChecked = "";
-        string lastCheckedLong = "";
-        string questDescription = $"{questInfo.Name} ({questInfo.QuestId})";
-        if (questRegistry.TryGetQuest(questInfo.QuestId, out Quest? quest))
-        {
-            if (quest.Root.LastChecked.Date != null)
-            {
-                lastCheckedLong = "\n" + _LF("Last checked: {0}", quest.Root.LastChecked);
-                int daysSince = (int)quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays;
-                if (daysSince >= 0 && daysSince < 7)
-                    lastChecked = $"{daysSince}d";
-                else if (daysSince >= 7)
-                    lastChecked = $"{daysSince / 7}w";
-            }
-            RedoIndex redoIndex = redoUtil.GetChapter(quest.Id.Value);
-            if (redoIndex.Index == 0)
-                questDescription = $"{questDescription}   ({redoIndex.Chapter.ChapterName})";
-
-            if ((quest.Root.Comment ?? "").Contains("FATE"))
-                fate = true;
-        }
-
-        ImGui.TableNextRow();
-        ImGui.TableNextColumn();
-        ImGui.TreeNodeEx(questDescription,
-            ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
-
-        if (ImGui.IsItemHovered())
-        {
-            ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-            questTooltipComponent.Draw(questInfo);
-        }
-
-        if (ImGui.IsItemClicked())
-            questJournalUtils.MoveToIssuer(questInfo);
-
-        questJournalUtils.ShowContextMenu(questInfo, quest, nameof(QuestJournalComponent));
-
-        if (quest != null && questController.PriorityManager.Contains(quest))
-        {
-            ImGui.SameLine();
-            using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-                ImGui.TextColored(QstTheme.Amber, FontAwesomeIcon.AngleDoubleUp.ToIconString());
-            if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("This quest is in Priority Quests."));
-        }
-
-        ImGui.TableNextColumn();
-        float spacing;
-        using (IDisposable font = pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-        {
-            spacing = ImGui.GetColumnWidth() / 2 - ImGui.CalcTextSize(FontAwesomeIcon.Check.ToIconString()).X;
-        }
-
-        ImGui.SetCursorPosX(ImGui.GetCursorPosX() + spacing);
-        string defaultReason;
-        string reason = defaultReason = _L("<no reason specified>");
-        if (quest != null)
-            reason = (quest.Root.Comment ?? defaultReason).Split('\n', 2)[0];
-        string addendum = lastCheckedLong + (!reason.Equals(defaultReason, StringComparison.Ordinal) ? "\n" + _LF("Reason: {0}", reason) : "");
-
-        if (QuestFunctions.IsQuestRemoved(questInfo.QuestId))
-        {
-            if (uiUtils.ChecklistItem(lastChecked, QstTheme.TextMuted, FontAwesomeIcon.Minus))
-                ImGui.SetTooltip(_L("This quest is not available.") + addendum);
-        }
-        else if (fate)
-        {
-            if (uiUtils.ChecklistItem(lastChecked, QstTheme.Accent, FontAwesomeIcon.ExclamationTriangle))
-                ImGui.SetTooltip(_L("This quest requires completing a FATE.") + addendum);
-        }
-        else if (quest is { Root.Disabled: false })
-        {
-            List<ValidationIssue> issues = questValidator.GetIssues(quest.Id);
-            if (issues.Any(x => x.Severity == EIssueSeverity.Error))
-            {
-                if (uiUtils.ChecklistItem(lastChecked, QstTheme.Danger, FontAwesomeIcon.ExclamationTriangle))
-                    ImGui.SetTooltip(_L("This quest could not be loaded.") + addendum);
-            }
-            else if (issues.Count > 0)
-            {
-                if (uiUtils.ChecklistItem(lastChecked, QstTheme.Info, FontAwesomeIcon.InfoCircle))
-                    ImGui.SetTooltip(_L("This quest had validation issues.") + addendum);
-            }
-            else if (uiUtils.ChecklistItem(lastChecked, complete: true))
-                ImGui.SetTooltip(_L("This quest is supported.") + addendum);
-        }
-        else
-        {
-            if (quest == null)
-                reason = ("No quest path.");
-            if (uiUtils.ChecklistItem(lastChecked, complete: false))
-                ImGui.SetTooltip(_L("This quest is not yet supported.") + addendum);
-        }
-        if (configuration.Stop.QuestsToStopWhenAccepted.Contains(questInfo.QuestId) || configuration.Stop.QuestsToStopAfter.Contains(questInfo.QuestId))
-        {
-            ImGui.SameLine();
-            using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-                ImGui.TextColored(QstTheme.Amber, FontAwesomeIcon.StopCircle.ToIconString());
-            if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("This quest is in Stop Conditions."));
-        }
-
-        ImGui.TableNextColumn();
-        (Vector4 color, FontAwesomeIcon icon, string text) = uiUtils.GetQuestStyle(questInfo.QuestId);
-        uint? iconOverride = QuestJournalUtils.GetIconOverride(questInfo, icon);
-        if (uiUtils.ChecklistItem(text.Split(':')[0], color, icon, iconOverride: iconOverride))
-            ImGui.SetTooltip(text);
-
-        _resultCount++;
-    }
-
-    internal static void DrawCount(int count, int total)
-    {
-        string widest = 9999.ToString(CultureInfo.CurrentCulture);
-        using var monoFont = ImRaii.PushFont(UiBuilder.MonoFont);
-
-        if (total == 0)
-            ImGui.TextColored(QstTheme.TextMuted, $"{" ".PadLeft(widest.Length)} - {" ".PadRight(widest.Length)}");
-        else if (count == 0)
-        {
-            ImGui.TextUnformatted($"{"-".PadLeft(widest.Length)} / {total.ToString(CultureInfo.CurrentCulture).PadRight(widest.Length)}?");
-        }
-        else
-        {
-            string text =
-                $"{count.ToString(CultureInfo.CurrentCulture).PadLeft(widest.Length)} / {total.ToString(CultureInfo.CurrentCulture).PadRight(widest.Length)}";
-            if (count == total)
-                ImGui.TextColored(QstTheme.Success, text);
-            else
-                ImGui.TextUnformatted(text);
         }
     }
 

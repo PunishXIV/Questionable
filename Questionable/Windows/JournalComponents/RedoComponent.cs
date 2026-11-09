@@ -13,7 +13,7 @@ internal sealed class RedoComponent
     RedoUtil redoUtil,
     QuestController questController,
     QuestStarter questStarter,
-    QuestJournalComponent questJournalComponent,
+    JournalTable journalTable,
     QuestJournalUtils questJournalUtils,
     QuestTooltipComponent questTooltipComponent,
     QuestData questData,
@@ -81,14 +81,10 @@ internal sealed class RedoComponent
         ImGui.SetNextItemWidth(230 * ImGui.GetIO().FontGlobalScale);
         _ = ImGui.InputTextWithHint("###RedoComponentFilter", _L("Filter NG+ categories"), ref _filter, maxLength: 20);
 
-        using ImRaii.TableDisposable table = ImRaii.Table("RedoTable", 3, ImGuiTableFlags.NoSavedSettings);
+        using ImRaii.TableDisposable table = journalTable.Begin("RedoTable");
         if (!table)
             return;
 
-        ImGui.TableSetupColumn(_L("Name"), ImGuiTableColumnFlags.NoHide);
-        ImGui.TableSetupColumn(_L("Supported"), ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
-        ImGui.TableSetupColumn(_L("Completed"), ImGuiTableColumnFlags.WidthFixed, 100 * ImGui.GetIO().FontGlobalScale);
-        ImGui.TableHeadersRow();
         foreach ((QuestRedoChapterUI chapter, RedoCache redoCache) in redoUtil.Chapters)
         {
             var questCount = redoCache.Quests.Count;
@@ -145,18 +141,9 @@ internal sealed class RedoComponent
                 }).OfType<IQuestInfo>().ToList(), redoCache, categoryName.StartsWith("???") || chapterName.StartsWith("???"));
 
             if (_counts.TryGetValue(chapter, out (int Supported, int Completed, int Total) result))
-            {
-                ImGui.TableNextColumn();
-                QuestJournalComponent.DrawCount(result.Supported, result.Total);
-                ImGui.TableNextColumn();
-                QuestJournalComponent.DrawCount(result.Completed, result.Total);
-            }
+                journalTable.Counts(result.Supported, result.Total, result.Completed, result.Total);
             else
-            {
-                ImGui.TableNextColumn();
-                ImGui.TableNextColumn();
-                QuestJournalComponent.DrawCount(0, questCount);
-            }
+                journalTable.Counts(0, 0, 0, questCount);
             if (open)
             {
                 int supported = 0;
@@ -167,7 +154,7 @@ internal sealed class RedoComponent
                     var questId = new QuestId((ushort)q.RowId);
                     questData.TryGetQuestInfo(questId, out IQuestInfo? info);
                     if (info != null)
-                        questJournalComponent.DrawQuest(info);
+                        journalTable.QuestRow(info, nameof(RedoComponent));
                     else
                     {
                         ImGui.TableNextRow();
