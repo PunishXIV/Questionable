@@ -528,16 +528,27 @@ internal sealed class PriorityWindow : LWindow
             2386, // gubal hard
             2402, // sohm al hard
         ]).FromNumericListOfQuests();
+        // Highest unlock level first: a new 80 job meets the level of every unlock after it.
         List<ElementId> jobUnlocks = ((ushort[])[
+            4854,4855, // Pictomancer (80)
+            4848,4849, // Viper (80)
+            4067,4068, // Sage (70)
+            4073,4074, // Reaper (70)
+            3261,3262, // Gunbreaker (60)
+            3249,3250, // Dancer (60)
+            5490,5491, // Beastmaster (50)
+            3192,3193, // Blue Mage (50)
+            2559,2560, // Samurai (50)
+            2576,2577, // Red Mage (50)
+            2109,1696,1697, // Machinist (50)
+            2110,2053,2054, // Dark Knight (50)
+            2123,2012,2013, // Astrologian (50)
             181,131,219, // Archer
             180,132,218, // Lancer
             182,133,211, // Conjurer
             184,138,205, // Carpenter
             188,105,209, // Leatherworker
             193,3,208, // Botanist
-            3261,3262, // Gunbreaker
-            4854,4855, // Pictomancer
-            5490,5491, // Beastmaster
             179,310,312, // Marauder
             451,452,454, // Arcanist
             101,102,104, // Rogue
@@ -545,9 +556,6 @@ internal sealed class PriorityWindow : LWindow
             185,291,292, // Blacksmith
             186,273,274, // Armorer
             191,271,254, // Culinarian
-            3249,3250, // Dancer
-            3192,3193, // Blue Mage
-            4067,4068, // Sage
             177,285,286, // Gladiator
             183,344,346, // Thaumaturge
             178,532,553, // Pugilist
@@ -555,13 +563,6 @@ internal sealed class PriorityWindow : LWindow
             189,534,535, // Weaver
             190,575,577, // Alchemist
             192,597,599, // Miner
-            2559,2560, // Samurai
-            2576,2577, // Red Mage
-            4073,4074, // Reaper
-            4848,4849, // Viper
-            2109,1696,1697, // Machinist
-            2110,2053,2054, // Dark Knight
-            2123,2012,2013, // Astrologian
         ]).FromNumericListOfQuests();
         List<ElementId> unlockCustomDeliveries = ((ushort[])[
             2095,2097,2098,1551,                                // zhloe aliapoh

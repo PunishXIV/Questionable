@@ -222,7 +222,7 @@ internal sealed class QuestJournalUtils
         }
     }
 
-    public void ShowGroupContextMenu(string id, List<IQuestInfo> quests)
+    public void ShowGroupContextMenu(string id, List<IQuestInfo> quests, Func<List<IQuestInfo>>? highestRank = null)
     {
         if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
             ImGui.OpenPopup($"##QuestGroupPopup{id}");
@@ -232,6 +232,15 @@ internal sealed class QuestJournalUtils
             return;
 
         DrawPriorityItems(quests);
+
+        if (highestRank?.Invoke() is { } highestRankQuests)
+        {
+            using (ImRaii.Disabled(highestRankQuests.Count == 0))
+            {
+                if (ImGui.MenuItem(_L("Add highest rank to Priority Quests")))
+                    AddToPriority(highestRankQuests);
+            }
+        }
 
         // Queue the group's accept steps before any completions, unlike the normal priority flow.
         if (ImGui.MenuItem(_L("Accept all quests")))
@@ -255,17 +264,20 @@ internal sealed class QuestJournalUtils
     public void DrawPriorityItems(List<IQuestInfo> quests)
     {
         if (ImGui.MenuItem(_L("Add all to Priority Quests")))
-        {
-            foreach (IQuestInfo quest in quests)
-                if (!questFunctions.IsQuestUnobtainable(quest.QuestId) && !questFunctions.IsQuestComplete(quest.QuestId))
-                    questController.PriorityManager.Add(quest.QuestId);
-        }
+            AddToPriority(quests);
 
         if (ImGui.MenuItem(_L("Remove all from Priority Quests")))
         {
             foreach (IQuestInfo quest in quests)
                 questController.PriorityManager.Remove(quest.QuestId);
         }
+    }
+
+    private void AddToPriority(IEnumerable<IQuestInfo> quests)
+    {
+        foreach (IQuestInfo quest in quests)
+            if (!questFunctions.IsQuestUnobtainable(quest.QuestId) && !questFunctions.IsQuestComplete(quest.QuestId))
+                questController.PriorityManager.Add(quest.QuestId);
     }
 
     public void MoveToIssuer(IQuestInfo questInfo, bool teleport = true)

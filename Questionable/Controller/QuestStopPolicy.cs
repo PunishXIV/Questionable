@@ -1,4 +1,5 @@
 using Questionable.Controller.Steps;
+using Questionable.Model.Common;
 using Quest = Questionable.Domain.Quest;
 using QuestProgress = Questionable.Controller.QuestController.QuestProgress;
 
@@ -70,6 +71,13 @@ internal sealed class QuestStopPolicy
     {
         string stopping = _L("Stopping before teleport as requested.");
         _logger.LogInformation("{Stopping} (upcoming task: {Task})", stopping, nextTask);
+        PrintAndNotify(stopping);
+    }
+
+    public void ReportStopAfterAttune(EAetheryteLocation aetheryte)
+    {
+        string stopping = _L("Attuned to the aetheryte, stopping as requested.");
+        _logger.LogInformation("{Stopping} (aetheryte: {Aetheryte})", stopping, aetheryte);
         PrintAndNotify(stopping);
     }
 

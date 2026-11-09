@@ -231,6 +231,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     }
 
     public bool StopBeforeTeleport { get; set; }
+    public bool StopAfterAttune { get; set; }
+
+    // Set when an attune finishes; the stop waits for the next update so the step isn't cut mid-task.
+    internal bool AttuneStopDue { get; private set; }
 
     public string? DebugState { get; private set; }
 
@@ -758,6 +762,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         StopAfterCurrentQuest = false;
         StopAfterNextAccept = false;
         StopBeforeTeleport = false;
+        StopAfterAttune = false;
+        AttuneStopDue = false;
         _recovery.Reset();
         _highlightObject.SetHighlight([]);
         using IDisposable? scope = _logger.BeginScope($"Stop/{label}");
@@ -938,6 +944,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             !_gameFunctions.IsInCustomDelivery(CurrentQuest?.Quest))
             return;
 
+        if (AttuneStopDue)
+        {
+            _movementController.Stop();
+            Stop("Stop after attune");
+            return;
+        }
+
         if (StopBeforeTeleport)
         {
             _taskQueue.TryPeek(out ITask? nextTask);
@@ -968,6 +981,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (task is WaitAtEnd.QuestCompleted)
             SimulatedQuest = StartedQuest = null;
 
+        // Only a finished attune counts: already-attuned aetherytes get no task, and shards are a different task.
+        if (StopAfterAttune && task is Aetheryte.Attune attune)
+        {
+            _stopPolicy.ReportStopAfterAttune(attune.AetheryteLocation);
+            AttuneStopDue = true;
+        }
     }
 
     protected override void OnNextStep(ILastTask task) => IncreaseStepCount(task.ElementId, task.Sequence, shouldContinue: true);
@@ -1154,7 +1173,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return false;
 
         ElementId? questId = QuestSelectionController.PickPriorityQuest(Slots,
-            StopAfterCurrentQuest || StopAfterNextAccept || StopBeforeTeleport,
+            StopAfterCurrentQuest || StopAfterNextAccept || StopBeforeTeleport || StopAfterAttune,
             () => _questFunctions.NextPriorityQuests);
         if (questId != null && _questRegistry.TryGetQuest(questId, out Quest? quest))
         {

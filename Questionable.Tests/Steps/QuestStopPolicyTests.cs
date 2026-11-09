@@ -5,6 +5,7 @@ using Dalamud.Plugin.Services;
 using Questionable.Controller;
 using Questionable.Controller.Steps;
 using Questionable.Domain;
+using Questionable.Model.Common;
 using Questionable.Model.Questing;
 using Questionable.Tests.TestData;
 using Xunit;
@@ -119,9 +120,10 @@ public sealed class QuestStopPolicyTests
         reports.Policy.ReportLevelReached(90);
         reports.Policy.ReportStopAfterQuest(TestQuest());
         reports.Policy.ReportStopBeforeTeleport(Substitute.For<ITask>());
+        reports.Policy.ReportStopAfterAttune(EAetheryteLocation.Limsa);
 
         Assert.Equal(["Reached or exceeded target level 50.", "Completed quest 'Test', stopping as requested.",
-            "Stopping before teleport as requested."], reports.Printed);
+            "Stopping before teleport as requested.", "Attuned to the aetheryte, stopping as requested."], reports.Printed);
         Assert.Equal(setting ? reports.Printed : [], reports.Notified);
     }
 

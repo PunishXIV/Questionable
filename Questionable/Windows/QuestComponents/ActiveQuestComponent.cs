@@ -783,7 +783,8 @@ internal sealed partial class ActiveQuestComponent
             ImGui.SameLine();
             bool anyStopArmed = questController.StopAfterCurrentQuest
                                 || questController.StopAfterNextAccept
-                                || questController.StopBeforeTeleport;
+                                || questController.StopBeforeTeleport
+                                || questController.StopAfterAttune;
             using (QstWidgets.SegmentGroup(anyStopArmed))
             {
                 if (QstWidgets.SegmentToggle(FontAwesomeIcon.FlagCheckered, questController.StopAfterCurrentQuest,
@@ -804,6 +805,13 @@ internal sealed partial class ActiveQuestComponent
                         _L("Cancel scheduled stop before teleport."),
                         _L("Stop before the next aetheryte teleport or item use.")))
                     questController.StopBeforeTeleport = !questController.StopBeforeTeleport;
+
+                ImGui.SameLine();
+
+                if (QstWidgets.SegmentToggle(FontAwesomeIcon.MapMarkerAlt, questController.StopAfterAttune,
+                        _L("Cancel scheduled stop after attuning."),
+                        _L("Stop after attuning to the next aetheryte.")))
+                    questController.StopAfterAttune = !questController.StopAfterAttune;
             }
         }
     }
@@ -914,7 +922,8 @@ internal sealed partial class ActiveQuestComponent
         else if (questController.IsRunning
                  && (questController.StopAfterCurrentQuest
                      || questController.StopAfterNextAccept
-                     || questController.StopBeforeTeleport))
+                     || questController.StopBeforeTeleport
+                     || questController.StopAfterAttune))
             (text, color) = (_L("Stopping"), QstTheme.Amber);
         else if (questController.IsRunning)
             (text, color) = (_L("Running"), QstTheme.Success);

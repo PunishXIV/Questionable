@@ -157,6 +157,14 @@ internal sealed class AlliedSocietyQuestFunctions
         return available.Select(x => (QuestId)x.QuestId).ToList();
     }
 
+    // Rank None marks a society's story quests, not its dailies.
+    internal static EAlliedSocietyRank? GetHighestRank(IEnumerable<EAlliedSocietyRank> questRanks,
+        EAlliedSocietyRank currentRank)
+    {
+        EAlliedSocietyRank[] ranks = [.. questRanks.Where(x => x != EAlliedSocietyRank.None && x <= currentRank)];
+        return ranks.Length > 0 ? ranks.Max() : null;
+    }
+
     private static bool IsEligible(QuestInfo questInfo, EAlliedSocietyRank currentRank, bool rankedUp) =>
         rankedUp ? questInfo.AlliedSocietyRank == currentRank : questInfo.AlliedSocietyRank <= currentRank;
 

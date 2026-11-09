@@ -147,7 +147,8 @@ internal sealed class AlliedSocietyComponent
                 }
             }
 
-            questJournalUtils.ShowGroupContextMenu($"DrawAlliedSocietyQuests{alliedSociety}", quests);
+            questJournalUtils.ShowGroupContextMenu($"DrawAlliedSocietyQuests{alliedSociety}", quests,
+                () => GetHighestRankQuests(quests, rank));
 
             if (!isOpen)
                 continue;
@@ -172,6 +173,13 @@ internal sealed class AlliedSocietyComponent
                     DrawQuest((QuestInfo)quest, addPending, neededRep != 0);
             }
         }
+    }
+
+    private static List<IQuestInfo> GetHighestRankQuests(List<IQuestInfo> quests, EAlliedSocietyRank currentRank)
+    {
+        EAlliedSocietyRank? highest = AlliedSocietyQuestFunctions.GetHighestRank(
+            quests.Select(x => ((QuestInfo)x).AlliedSocietyRank), currentRank);
+        return [.. quests.Where(x => ((QuestInfo)x).AlliedSocietyRank == highest && !x.QuestId.Value.Equals(1569))];
     }
 
     private void DrawQuest(QuestInfo questInfo, bool addPending = false, bool showRepValue = false)
