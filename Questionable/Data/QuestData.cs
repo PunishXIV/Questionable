@@ -150,6 +150,14 @@ internal sealed class QuestData
             2320
         ]).FromNumericListOfQuests();
 
+    // Story quests come first, so the rank goes up before dailies and rep doesn't cap.
+    public static readonly IReadOnlyList<ElementId> PelupeluQuests = GetQuestRange(5193, 5226);
+    public static readonly IReadOnlyList<ElementId> MamoolJaQuests = GetQuestRange(5255, 5288);
+    public static readonly IReadOnlyList<ElementId> YokHuyQuests = GetQuestRange(5330, 5363);
+
+    private static List<ElementId> GetQuestRange(ushort first, ushort last) =>
+        Enumerable.Range(first, last - first + 1).Select(x => (ushort)x).ToArray().FromNumericListOfQuests();
+
     public static readonly Dictionary<EAetheryteLocation, (char Letter, ushort[] QuestIds)> AethernetUnlockQuests = new()
     {
         [EAetheryteLocation.Gridania] = ('g', [85, 12, 124, 546, 528]),

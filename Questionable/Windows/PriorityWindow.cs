@@ -602,6 +602,9 @@ internal sealed class PriorityWindow : LWindow
             [_T<JournalCategory>(18)] = QuestData.CrystalTowerQuests.Cast<ElementId>().ToList(), // Crystal Tower
             [_T<Addon>(5700)] = unlockCustomDeliveries, // Custom Deliveries
             [$"{_T<AchievementCategory>(37)}: {_T<BeastTribe>(8).Titleize()}"] = QuestData.UnlockMoogleSocietyQuests.ToList(), // Moogles
+            [$"{_T<AchievementCategory>(37)}: {_T<BeastTribe>(18).Titleize()}"] = QuestData.PelupeluQuests.ToList(),
+            [$"{_T<AchievementCategory>(37)}: {_T<BeastTribe>(19).Titleize()}"] = QuestData.MamoolJaQuests.ToList(),
+            [$"{_T<AchievementCategory>(37)}: {_T<BeastTribe>(20).Titleize()}"] = QuestData.YokHuyQuests.ToList(),
             [$"{aetherCurrents}: {_T<ExVersion>(1)}"] = GetAetherCurrentQuests(397, 398, 399, 400, 401), // Aether Currents
             [$"{aetherCurrents}: {_T<ExVersion>(2)}"] = GetAetherCurrentQuests(612, 613, 614, 620, 621, 622),
             [$"{aetherCurrents}: {_T<ExVersion>(3)}"] = GetAetherCurrentQuests(813, 814, 815, 816, 817, 818),
