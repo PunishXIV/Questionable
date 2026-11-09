@@ -45,12 +45,15 @@ internal sealed class JournalTable(
     {
         _repColumn = repColumn;
         _markStale = markStale;
-        ImRaii.TableDisposable table = ImRaii.Table(id, repColumn ? 4 : 3, ImGuiTableFlags.NoSavedSettings);
+        ImRaii.TableDisposable table = ImRaii.Table(id, repColumn ? 7 : 6, ImGuiTableFlags.NoSavedSettings);
         if (!table)
             return table;
 
         float scale = ImGui.GetIO().FontGlobalScale;
         ImGui.TableSetupColumn(_L("Name"), ImGuiTableColumnFlags.NoHide);
+        ImGui.TableSetupColumn(_L("Level"), ImGuiTableColumnFlags.WidthFixed, 45 * scale);
+        ImGui.TableSetupColumn(_L("XP"), ImGuiTableColumnFlags.WidthFixed, 90 * scale);
+        ImGui.TableSetupColumn(_L("Gil"), ImGuiTableColumnFlags.WidthFixed, 75 * scale);
         if (repColumn)
             ImGui.TableSetupColumn(_L("Reputation"), ImGuiTableColumnFlags.WidthFixed, 70 * scale);
         ImGui.TableSetupColumn(_L("Supported"), ImGuiTableColumnFlags.WidthFixed, 100 * scale);
@@ -68,12 +71,17 @@ internal sealed class JournalTable(
 
     public void Counts(int supported, int total, int completed, int obtainable)
     {
-        if (_repColumn)
-            ImGui.TableNextColumn();
-        ImGui.TableNextColumn();
+        SupportedCell();
         DrawCount(supported, total);
         ImGui.TableNextColumn();
         DrawCount(completed, obtainable);
+    }
+
+    // Moves a header row past the reward columns to Supported.
+    public void SupportedCell()
+    {
+        for (int i = _repColumn ? 5 : 4; i > 0; --i)
+            ImGui.TableNextColumn();
     }
 
     // label and unlocked replace the quest's name and completion, for rows that stand for a quest reward.
@@ -95,6 +103,17 @@ internal sealed class JournalTable(
 
         questJournalUtils.ShowContextMenu(questInfo, quest, source);
         DrawPriorityMarker(quest);
+
+        QuestInfo? info = questInfo as QuestInfo;
+        ImGui.TableNextColumn();
+        if (info != null)
+            ImGui.TextUnformatted(info.Level.ToString(CultureInfo.CurrentCulture));
+        ImGui.TableNextColumn();
+        if (info is { Experience: > 0 })
+            ImGui.TextUnformatted(info.Experience.ToString("N0", CultureInfo.CurrentCulture));
+        ImGui.TableNextColumn();
+        if (info is { Gil: > 0 })
+            ImGui.TextUnformatted(info.Gil.ToString("N0", CultureInfo.CurrentCulture));
 
         if (_repColumn)
         {

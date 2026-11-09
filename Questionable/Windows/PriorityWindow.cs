@@ -109,6 +109,7 @@ internal sealed class PriorityWindow : LWindow
             ImGui.SetTooltip(_L("When off, quests added here wait until the current quest is done.\nTurns back on when the plugin restarts."));
         _questSelector.DrawSelection();
         DrawQuestList();
+        DrawRewardTotal();
 
         DrawCleanUpButton();
 
@@ -142,6 +143,18 @@ internal sealed class PriorityWindow : LWindow
                     _questController.PriorityManager.ClearAllAcceptOnly();
             }
         }
+    }
+
+    private void DrawRewardTotal()
+    {
+        if (_questController.PriorityManager.IsEmpty)
+            return;
+
+        (ulong experience, ulong gil) = _questController.PriorityManager.GetRewardTotals(_questFunctions.IsPriorityQuestDone);
+        ImGui.TextUnformatted(_LF("Total: {0} XP, {1} gil",
+            experience.ToString("N0", CultureInfo.CurrentCulture), gil.ToString("N0", CultureInfo.CurrentCulture)));
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip(_L("Quests still to do. Synced quests (most society dailies) scale XP to your level."));
     }
 
     private void DrawQuestList()

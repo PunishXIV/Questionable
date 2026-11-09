@@ -4,6 +4,7 @@ using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging.Abstractions;
 using NSubstitute;
 using Questionable.Controller;
+using Questionable.Domain;
 using Questionable.Model.Questing;
 using Questionable.Tests.TestData;
 using Xunit;
@@ -30,13 +31,28 @@ public sealed class QuestPriorityManagerTests
         Assert.Equal([First, Second, Third], manager.Quests.Select(x => x.Id.Value));
     }
 
-    private static QuestPriorityManager CreateManager()
+    [Fact]
+    public void RewardTotals_SkipQuestsDone()
+    {
+        QuestPriorityManager manager = CreateManager(id => TestQuestInfo.Create(id, $"Q{id}", 1)
+            .With(nameof(QuestInfo.Experience), (uint)id * 10)
+            .With(nameof(QuestInfo.Gil), (uint)id));
+        manager.Add(new QuestId(First));
+        manager.Add(new QuestId(Second));
+        manager.Add(new QuestId(Third));
+
+        Assert.Equal((10_020UL, 1_002UL), manager.GetRewardTotals(x => x.Value == Second));
+        Assert.Equal((0UL, 0UL), manager.GetRewardTotals(_ => true));
+    }
+
+    private static QuestPriorityManager CreateManager(Func<ushort, QuestInfo>? createInfo = null)
     {
         FakeQuestCatalog catalog = new();
         Dictionary<ElementId, Quest> quests = [];
         foreach (ushort id in new[] { First, Second, Third })
         {
-            Quest quest = catalog.Add(TestQuestInfo.Create(id, $"Q{id}", 1), QuestTestData.Seq(0, new QuestStep()));
+            QuestInfo info = createInfo?.Invoke(id) ?? TestQuestInfo.Create(id, $"Q{id}", 1);
+            Quest quest = catalog.Add(info, QuestTestData.Seq(0, new QuestStep()));
             quests[quest.Id] = quest;
         }
 

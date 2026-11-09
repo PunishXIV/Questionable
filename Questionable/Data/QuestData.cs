@@ -258,13 +258,17 @@ internal sealed class QuestData
 
         ILookup<uint, Item> cardItemsByQuest = CreateCardRewardLookup(
             dataManager.GetExcelSheet<TripleTriadCardResident>(), dataManager.GetExcelSheet<Item>());
+        ExcelSheet<ParamGrow> paramGrow = dataManager.GetExcelSheet<ParamGrow>();
 
         List<IQuestInfo> quests =
         [
             ..dataManager.GetExcelSheet<Quest>()
                 .Where(x => x.RowId > 0 && x.IssuerLocation.RowId > 0)
                 .Select(x => new QuestInfo(x, questChapters.GetValueOrDefault(x.RowId),
-                    startingCities.GetValueOrDefault(x.RowId), journalGenreOverrides, cardItemsByQuest[x.RowId])),
+                    startingCities.GetValueOrDefault(x.RowId), journalGenreOverrides, cardItemsByQuest[x.RowId],
+                    paramGrow.GetRowOrDefault(x.ClassJobLevel[0]) is { } grow
+                        ? QuestInfo.ScaleExperience(x.ExpFactor, grow.ScaledQuestXP, grow.QuestExpModifier)
+                        : 0)),
             ..dataManager.GetExcelSheet<SatisfactionNpc>()
                 .Where(x => x is { RowId: > 0, Npc.RowId: > 0 })
                 .Select(x => new SatisfactionSupplyInfo(x))

@@ -12,10 +12,16 @@ namespace Questionable.Domain;
 
 internal sealed class QuestInfo : IQuestInfo
 {
+    // The formula XIVAPI uses, with ParamGrow at the quest's level. Synced quests (HW+ society dailies) scale to your level instead.
+    internal static uint ScaleExperience(ushort expFactor, ushort scaledQuestXp, byte questExpModifier) =>
+        (uint)((ulong)expFactor * scaledQuestXp * questExpModifier / 100);
+
     public QuestInfo(ExcelQuest quest, uint newGamePlusChapter, byte startingCity, JournalGenreOverrides journalGenreOverrides,
-        IEnumerable<Item> tripleTriadCardItems)
+        IEnumerable<Item> tripleTriadCardItems, uint experience)
     {
         QuestId = QQuestId.FromRowId(quest.RowId);
+        Experience = experience;
+        Gil = quest.GilReward;
 
         string suffix = QuestId.Value switch
         {
@@ -133,6 +139,8 @@ internal sealed class QuestInfo : IQuestInfo
     public byte AlliedSocietyQuestGroup { get; }
     public EAlliedSocietyRank AlliedSocietyRank { get; }
     public ushort SocietyRepValue { get; }
+    public uint Experience { get; }
+    public uint Gil { get; }
     public bool IsSeasonalEvent { get; }
     public uint NewGamePlusChapter { get; }
     public byte StartingCity { get; set; }

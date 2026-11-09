@@ -161,7 +161,7 @@ internal sealed class RedoComponent
                         ImGui.TableNextColumn();
                         ImGui.TreeNodeEx($"{q.Name} ({(ushort)q.RowId})",
                             ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
-                        ImGui.TableNextColumn();
+                        journalTable.SupportedCell();
                         if (uiUtils.ChecklistItem("", QstTheme.TextMuted, FontAwesomeIcon.Minus))
                             ImGui.SetTooltip(_L("This quest is not supported."));
                         ImGui.TableNextColumn();

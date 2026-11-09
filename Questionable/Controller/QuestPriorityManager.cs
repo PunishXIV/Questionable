@@ -63,6 +63,21 @@ internal sealed class QuestPriorityManager(
         return added;
     }
 
+    public (ulong Experience, ulong Gil) GetRewardTotals(Func<ElementId, bool> isDone)
+    {
+        ulong experience = 0, gil = 0;
+        foreach (Quest quest in _quests.Where(x => !isDone(x.Id)))
+        {
+            if (quest.Info is QuestInfo info)
+            {
+                experience += info.Experience;
+                gil += info.Gil;
+            }
+        }
+
+        return (experience, gil);
+    }
+
     public bool Contains(Quest quest) => _quests.Any(q => q.Id == quest.Id);
 
     public bool Contains(ElementId elementId) => _quests.Any(q => q.Id == elementId);
