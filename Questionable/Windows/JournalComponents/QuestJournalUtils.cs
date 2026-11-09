@@ -13,6 +13,7 @@ namespace Questionable.Windows.JournalComponents;
 internal sealed class QuestJournalUtils
 (
     QuestController questController,
+    QuestStarter questStarter,
     QuestFunctions questFunctions,
     ICommandManager commandManager,
     Configuration configuration,
@@ -110,7 +111,7 @@ internal sealed class QuestJournalUtils
                 if (ImGui.MenuItem(_L("Start as next quest")))
                 {
                     questController.SetNextQuest(quest);
-                    questController.Start(source);
+                    questStarter.Start(source);
                 }
 
                 if (ImGui.MenuItem(_L("Set as next quest")))
@@ -197,7 +198,7 @@ internal sealed class QuestJournalUtils
             }
 
             if (ImGui.MenuItem(_L("Sim quest")))
-                questController.SimulateQuest(questInfo, 0, 0);
+                questStarter.SimulateQuest(questInfo, 0, 0);
         }
     }
 
@@ -248,7 +249,7 @@ internal sealed class QuestJournalUtils
 
         if (ImGui.MenuItem(_L("Sim first quest")))
             if (quests.Count >= 1)
-                questController.SimulateQuest(quests[0], 0, 0);
+                questStarter.SimulateQuest(quests[0], 0, 0);
     }
 
     public void DrawPriorityItems(List<IQuestInfo> quests)

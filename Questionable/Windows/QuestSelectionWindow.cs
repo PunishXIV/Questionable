@@ -19,6 +19,7 @@ internal sealed class QuestSelectionWindow : LWindow
     private readonly GameGuiAdapter _gameGui;
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly QuestController _questController;
+    private readonly QuestStarter _questStarter;
     private readonly QuestData _questData;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
@@ -39,6 +40,7 @@ internal sealed class QuestSelectionWindow : LWindow
         IChatGui chatGui,
         QuestFunctions questFunctions,
         QuestController questController,
+        QuestStarter questStarter,
         QuestRegistry questRegistry,
         IDalamudPluginInterface pluginInterface,
         TerritoryData territoryData,
@@ -55,6 +57,7 @@ internal sealed class QuestSelectionWindow : LWindow
         _chatGui = chatGui;
         _questFunctions = questFunctions;
         _questController = questController;
+        _questStarter = questStarter;
         _questRegistry = questRegistry;
         _pluginInterface = pluginInterface;
         _territoryData = territoryData;
@@ -258,7 +261,7 @@ internal sealed class QuestSelectionWindow : LWindow
                         if (startNextQuest)
                         {
                             _questController.SetNextQuest(knownQuest);
-                            _questController.Start("QuestSelectionWindow");
+                            _questStarter.Start("QuestSelectionWindow");
                         }
                         ImGui.SameLine();
 

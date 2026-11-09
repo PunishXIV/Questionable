@@ -14,6 +14,7 @@ internal sealed class EventInfoComponent
     QuestFunctions questFunctions,
     UiUtils uiUtils,
     QuestController questController,
+    QuestStarter questStarter,
     QuestTooltipComponent questTooltipComponent,
     Configuration configuration)
 {
@@ -121,7 +122,7 @@ internal sealed class EventInfoComponent
                 if (startableQuests.Contains(questId) &&
                     questRegistry.TryGetQuest(questId, out Quest? quest))
                 {
-                    if (ImGuiComponentsLocal.QuestNotice(questController, quest))
+                    if (ImGuiComponentsLocal.QuestNotice(questController, questStarter, quest))
                         questTooltipComponent.Draw(quest.Info);
                 }
                 else

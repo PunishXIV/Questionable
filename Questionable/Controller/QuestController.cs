@@ -4,7 +4,6 @@ using Dalamud.Game.ClientState.Keys;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.Gui.Toast;
 using Dalamud.Game.Text.SeStringHandling;
-using ECommons.ExcelServices;
 using ECommons.GameFunctions;
 using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Client.Game;
@@ -46,10 +45,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     // Extra grace after the game's animation lock.
     private const float AnimationLockGraceSeconds = 1f;
 
-    private const uint HighQualityItemIdOffset = 1_000_000;
-
-    private const uint CollectableItemIdOffset = 500_000;
-
     // The quest-accept addon can fail to appear at sequence 0/step 0.
     private const int AcceptStallSeconds = 15;
 
@@ -75,7 +70,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private readonly IObjectTable _objectTable;
 
     private readonly Lock _progressLock = new();
-    private readonly QuestData _questData;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
     private readonly QuestPriorityManager _priorityManager;
@@ -111,7 +105,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         QuestRegistry questRegistry,
         QuestPriorityManager priorityManager,
         QuestProgressTracker tracker,
-        QuestData questData,
         IKeyState keyState,
         IChatGui chatGui,
         ICondition condition,
@@ -145,7 +138,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _questRegistry = questRegistry;
         _priorityManager = priorityManager;
         _tracker = tracker;
-        _questData = questData;
         _keyState = keyState;
         _chatGui = chatGui;
         _condition = condition;
@@ -251,7 +243,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     public bool IsRunning => !_taskQueue.AllTasksComplete;
     public bool HasExternalOperation => _externalOperations.HasOperation;
-    private string? ExternalBlockReason => _externalOperations.BlockReason;
+    internal string? ExternalBlockReason => _externalOperations.BlockReason;
     ITaskExecutor? IExternalOperationHost.CurrentExecutor => _taskQueue.CurrentTaskExecutor;
     bool IExternalOperationHost.IsActive => IsRunning || AutomationType != EAutomationType.Manual;
     string? IExternalOperationHost.Status { set => DebugState = value; }
@@ -859,27 +851,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         return true;
     }
 
-    public void SimulateQuest(IQuestInfo? questInfo, byte sequence, int step)
-    {
-        if (CanStartNextTask())
-            _tracker.SimulateQuest(questInfo, sequence, step);
-    }
-
-    public void SimulateQuest(Quest? quest, byte sequence, int step)
-    {
-        if (CanStartNextTask())
-            _tracker.SimulateQuest(quest, sequence, step);
-    }
-
-    public void StopSimulate()
-    {
-        if (HasExternalOperation)
-            Stop("Stop simulation during external operation");
-        if (HasExternalOperation)
-            return;
-        _tracker.StopSimulate();
-    }
-
     public void SetNextQuest(Quest? quest)
     {
         if (CanStartNextTask())
@@ -925,24 +896,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     protected override bool CanStartNextTask() => !HasExternalOperation;
 
-    private bool CanPrepareQuestTasks()
+    internal bool CanPrepareQuestTasks()
     {
         bool ready = _externalOperations.CanPrepareQuestTasks(out string? reason);
         if (reason != null)
             DebugState = reason;
         return ready;
-    }
-
-    public bool CanStartQuest(string label)
-    {
-        if (CanPrepareQuestTasks())
-            return true;
-
-        string reason = ExternalBlockReason ?? DebugState ??
-            _L("Check the external operation before restarting.");
-        _logger.LogWarning("Quest start {Label} blocked: {Reason}", label, reason);
-        _chatGui.PrintError(reason, CommandHandler.MessageTag, CommandHandler.TagColor);
-        return false;
     }
 
     // A manual provider stop clears only its block; it never resumes questing.
@@ -1017,51 +976,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         CheckNextTasks("RetryStep");
     }
 
-    public void Start(string label)
-    {
-        if (!CanStartQuest(label))
-            return;
-
-        using IDisposable? scope = _logger.BeginScope($"Q/{label}");
-        RedeemRewardItems.ResetAttemptedItems();
-        AutomationType = EAutomationType.Automatic;
-        ExecuteNextStep();
-    }
-
-    public void StartGatheringQuest(string label)
-    {
-        if (!CanStartQuest(label))
-            return;
-
-        using IDisposable? scope = _logger.BeginScope($"GQ/{label}");
-        RedeemRewardItems.ResetAttemptedItems();
-        AutomationType = EAutomationType.GatheringOnly;
-        ExecuteNextStep();
-    }
-
-    public void StartSingleQuest(string label)
-    {
-        if (!CanStartQuest(label))
-            return;
-
-        using IDisposable? scope = _logger.BeginScope($"SQ/{label}");
-        RedeemRewardItems.ResetAttemptedItems();
-        AutomationType = EAutomationType.SingleQuestA;
-        ExecuteNextStep();
-    }
-
-    public void StartSingleStep(string label)
-    {
-        if (!CanStartQuest(label))
-            return;
-
-        using IDisposable? scope = _logger.BeginScope($"SS/{label}");
-        RedeemRewardItems.ResetAttemptedItems();
-        AutomationType = EAutomationType.Manual;
-        ExecuteNextStep();
-    }
-
-    private void ExecuteNextStep()
+    internal void ExecuteNextStep()
     {
         // Factories and movement cleanup can have side effects before an executor starts.
         if (!CanPrepareQuestTasks())
@@ -1262,50 +1177,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return;
 
         base.HandleInterruption(sender, e);
-    }
-
-    public bool StartGathering(uint npcId, uint itemId, Job classJob, int quantity = 1, ushort collectability = 0)
-    {
-        if (!CanStartQuest("SatisfactionSupply prepare gathering"))
-            return false;
-
-        if (itemId > HighQualityItemIdOffset)
-            itemId -= HighQualityItemIdOffset;
-
-        if (itemId >= CollectableItemIdOffset)
-            itemId -= CollectableItemIdOffset;
-
-        SatisfactionSupplyInfo info = (SatisfactionSupplyInfo)_questData.GetAllByIssuerDataId(npcId)
-            .Single(x => x is SatisfactionSupplyInfo);
-        if (_questRegistry.TryGetQuest(info.QuestId, out Quest? quest))
-        {
-            QuestSequence sequence = quest.FindSequence(0)!;
-
-            QuestStep switchClassStep = sequence.Steps.Single(x => x.InteractionType == EInteractionType.SwitchClass);
-            switchClassStep.TargetClass = classJob switch
-            {
-                Job.MIN => EExtendedClassJob.Miner,
-                Job.BTN => EExtendedClassJob.Botanist,
-                var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, message: null)
-            };
-
-            QuestStep gatherStep = sequence.Steps.Single(x => x.InteractionType == EInteractionType.Gather);
-            gatherStep.ItemsToGather =
-            [
-                new()
-                {
-                    ItemId = itemId,
-                    ItemCount = quantity,
-                    Collectability = collectability
-                }
-            ];
-            SetGatheringQuest(quest);
-            StartGatheringQuest("SatisfactionSupply prepare gathering");
-            return true;
-        }
-
-        _chatGui.PrintError($"No associated quest ({info.QuestId}).", "Questionable");
-        return false;
     }
 
     internal void UnsafeEnqueueManualTask(ITask task) =>

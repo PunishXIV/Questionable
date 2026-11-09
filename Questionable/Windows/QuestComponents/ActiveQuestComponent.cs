@@ -21,6 +21,7 @@ namespace Questionable.Windows.QuestComponents;
 internal sealed partial class ActiveQuestComponent
 (
     QuestController questController,
+    QuestStarter questStarter,
     OperationCoordinator operations,
     MovementController movementController,
     CombatController combatController,
@@ -685,13 +686,13 @@ internal sealed partial class ActiveQuestComponent
                 if (questProgressInfo == null)
                     questController.SetNextQuest(currentQuest.Quest);
 
-                questController.Start(_L("UI start"));
+                questStarter.Start(_L("UI start"));
             }
 
             ImGui.SameLine();
 
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.StepForward, _L("Step")))
-                questController.StartSingleStep(_L("UI step"));
+                questStarter.StartSingleStep(_L("UI step"));
             if (ImGui.IsItemHovered())
                 ImGui.SetTooltip(_L("Execute next step and then stop."));
         }
@@ -872,7 +873,7 @@ internal sealed partial class ActiveQuestComponent
             if (ImGui.Button(_L("Clear sim")))
             {
                 bool hadExternalOperation = questController.HasExternalOperation;
-                questController.StopSimulate();
+                questStarter.StopSimulate();
 
                 if (!hadExternalOperation && !questController.HasExternalOperation)
                     movementController.Stop();

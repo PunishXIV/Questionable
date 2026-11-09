@@ -170,12 +170,12 @@ internal static class ImGuiComponentsLocal
         }
     }
 
-    public static bool QuestNotice(QuestController questController, Quest quest, string? label = null)
+    public static bool QuestNotice(QuestController questController, QuestStarter questStarter, Quest quest, string? label = null)
     {
         if (IconButton(FontAwesomeIcon.Play))
         {
             questController.SetNextQuest(quest);
-            questController.Start(_L("QuestNotice"));
+            questStarter.Start(_L("QuestNotice"));
         }
 
         bool hovered = ImGui.IsItemHovered();

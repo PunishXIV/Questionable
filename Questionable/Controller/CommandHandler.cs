@@ -28,6 +28,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly OneTimeSetupWindow _oneTimeSetupWindow;
     private readonly PriorityWindow _priorityWindow;
     private readonly QuestController _questController;
+    private readonly QuestStarter _questStarter;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
     private readonly QuestSelectionWindow _questSelectionWindow;
@@ -44,6 +45,7 @@ internal sealed class CommandHandler : IDisposable
         ICommandManager commandManager,
         IChatGui chatGui,
         QuestController questController,
+        QuestStarter questStarter,
         MovementController movementController,
         QuestRegistry questRegistry,
         ConfigWindow configWindow,
@@ -67,6 +69,7 @@ internal sealed class CommandHandler : IDisposable
         _commandManager = commandManager;
         _chatGui = chatGui;
         _questController = questController;
+        _questStarter = questStarter;
         _movementController = movementController;
         _questRegistry = questRegistry;
         _configWindow = configWindow;
@@ -163,7 +166,7 @@ internal sealed class CommandHandler : IDisposable
 
             case "start":
                 _questWindow.IsOpenAndUncollapsed = true;
-                _questController.Start(_L("Start command"));
+                _questStarter.Start(_L("Start command"));
                 break;
 
             case "stop":
@@ -503,7 +506,7 @@ internal sealed class CommandHandler : IDisposable
                     }
                 }
 
-                _questController.SimulateQuest(quest, sequenceId, stepId);
+                _questStarter.SimulateQuest(quest, sequenceId, stepId);
                 _chatGui.Print(_LF("Simulating quest {0} ({1}).", questId, quest.Info.Name), MessageTag, TagColor);
             }
             else
@@ -511,7 +514,7 @@ internal sealed class CommandHandler : IDisposable
         }
         else
         {
-            _questController.StopSimulate();
+            _questStarter.StopSimulate();
             _chatGui.Print(_questController.SimulatedQuest == null
                 ? _L("Cleared simulated quest.")
                 : _L("Wait for the external operation to stop, then clear the simulated quest again."), MessageTag, TagColor);

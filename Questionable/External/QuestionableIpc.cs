@@ -48,6 +48,7 @@ internal sealed class QuestionableIpc : IDisposable
     private readonly ILogger<QuestionableIpc> _logger;
 
     private readonly QuestController _questController;
+    private readonly QuestStarter _questStarter;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
     private readonly ICallGateProvider<uint, string> _redoLookup;
@@ -61,6 +62,7 @@ internal sealed class QuestionableIpc : IDisposable
 
     public QuestionableIpc(
         QuestController questController,
+        QuestStarter questStarter,
         EventInfoComponent eventInfoComponent,
         QuestRegistry questRegistry,
         QuestFunctions questFunctions,
@@ -70,6 +72,7 @@ internal sealed class QuestionableIpc : IDisposable
         IDalamudPluginInterface pluginInterface)
     {
         _questController = questController;
+        _questStarter = questStarter;
         _questRegistry = questRegistry;
         _questFunctions = questFunctions;
         _logger = logger;
@@ -175,7 +178,7 @@ internal sealed class QuestionableIpc : IDisposable
     private bool StartQuest(string questId, bool single)
     {
         _logger.LogDebug("StartQuest({QuestId},{Single})", questId, single);
-        if (!_questController.CanStartQuest("IPCQuestSelection"))
+        if (!_questStarter.CanStartQuest("IPCQuestSelection"))
             return false;
 
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
@@ -183,9 +186,9 @@ internal sealed class QuestionableIpc : IDisposable
         {
             _questController.SetNextQuest(quest);
             if (single)
-                _questController.StartSingleQuest("IPCQuestSelection");
+                _questStarter.StartSingleQuest("IPCQuestSelection");
             else
-                _questController.Start("IPCQuestSelection");
+                _questStarter.Start("IPCQuestSelection");
             return true;
         }
 
@@ -321,7 +324,7 @@ internal sealed class QuestionableIpc : IDisposable
     {
         _logger.LogDebug("StartGatheringComplex({NpcId},{ItemId},{ClassJob},{Quantity},{Collectability})",
             npcId, itemId, classJob, quantity, collectability);
-        return _questController.StartGathering(npcId, itemId, (Job)classJob, quantity, collectability);
+        return _questStarter.StartGathering(npcId, itemId, (Job)classJob, quantity, collectability);
     }
 
     private bool Stop(string label)

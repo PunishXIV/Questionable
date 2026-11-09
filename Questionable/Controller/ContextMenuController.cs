@@ -19,7 +19,7 @@ internal sealed class ContextMenuController : IDisposable
     private readonly GatheringData _gatheringData;
     private readonly GatherChillIpc _gatherChillIpc;
     private readonly ILogger<ContextMenuController> _logger;
-    private readonly QuestController _questController;
+    private readonly QuestStarter _questStarter;
     private readonly QuestFunctions _questFunctions;
     private readonly Configuration _configuration;
 
@@ -27,7 +27,7 @@ internal sealed class ContextMenuController : IDisposable
 
     public ContextMenuController(
         IContextMenu contextMenu,
-        QuestController questController,
+        QuestStarter questStarter,
         GatherChillIpc gatherChillIpc,
         GatheringData gatheringData,
         GameFunctions gameFunctions,
@@ -37,7 +37,7 @@ internal sealed class ContextMenuController : IDisposable
         ILogger<ContextMenuController> logger)
     {
         _contextMenu = contextMenu;
-        _questController = questController;
+        _questStarter = questStarter;
         _gatherChillIpc = gatherChillIpc;
         _gatheringData = gatheringData;
         _gameFunctions = gameFunctions;
@@ -207,7 +207,7 @@ internal sealed class ContextMenuController : IDisposable
             Prefix = SeIconChar.Hyadelyn,
             PrefixColor = 52,
             Name = name,
-            OnClicked = _ => _questController.StartGathering(npcId, itemId, classJob, quantityToGather, collectability),
+            OnClicked = _ => _questStarter.StartGathering(npcId, itemId, classJob, quantityToGather, collectability),
             IsEnabled = string.IsNullOrEmpty(lockedReason)
         });
     }

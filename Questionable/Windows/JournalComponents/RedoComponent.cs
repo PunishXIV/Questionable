@@ -12,6 +12,7 @@ internal sealed class RedoComponent
 (
     RedoUtil redoUtil,
     QuestController questController,
+    QuestStarter questStarter,
     QuestJournalComponent questJournalComponent,
     QuestJournalUtils questJournalUtils,
     QuestTooltipComponent questTooltipComponent,
@@ -40,7 +41,7 @@ internal sealed class RedoComponent
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Play, _L("Unlock NG+")))
             {
                 questController.SetNextQuest(redoUtil.UnlockQuest);
-                questController.StartSingleQuest("Unlock NG+");
+                questStarter.StartSingleQuest("Unlock NG+");
             }
             if (ImGui.IsItemHovered() && redoUtil.UnlockQuest != null)
                 questTooltipComponent.Draw(redoUtil.UnlockQuest.Info);
@@ -207,7 +208,7 @@ internal sealed class RedoComponent
 
         if (ImGui.MenuItem(_L("Sim first quest")))
             if (quests.Count >= 1)
-                questController.SimulateQuest(quests[0], 0, 0);
+                questStarter.SimulateQuest(quests[0], 0, 0);
 
         if (configuration.Advanced.Debug && !hideStart)
         {
