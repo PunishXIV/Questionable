@@ -74,14 +74,35 @@ internal sealed class JournalData
             target.Quests.Add(questData.GetQuestInfo(kvp.Key));
         }
 
-        Genres = genres.ToList();
+        Section other = CreateOtherSection(questData.GetAll(), _T<Addon>(2445), x => _T<ExVersion>((uint)x));
+        Genres = [.. genres, .. other.Categories.SelectMany(x => x.Genres)];
         Categories = dataManager.GetExcelSheet<JournalCategory>()
             .Where(x => x.RowId > 0)
-            .Select(x => new Category(x, Genres.Where(y => y.CategoryId == x.RowId).ToList()))
+            .Select(x => new Category(x, genres.Where(y => y.CategoryId == x.RowId).ToList()))
+            .Concat(other.Categories)
             .ToList();
         Sections = dataManager.GetExcelSheet<JournalSection>()
             .Select(x => new Section(x, Categories.Where(y => y.SectionId == x.RowId).ToList()))
+            .Append(other)
             .ToList();
+    }
+
+    // QST's own list entries have no place in the game's journal, so they get a last section of their own.
+    internal static Section CreateOtherSection(IEnumerable<IQuestInfo> entries, string aetherCurrents,
+        Func<EExpansionVersion, string> expansionName)
+    {
+        List<IQuestInfo> all = [.. entries];
+        List<Genre> currentGenres = [.. all.OfType<AetherCurrentZoneInfo>()
+            .GroupBy(x => x.Expansion)
+            .OrderBy(x => x.Key)
+            .Select(x => new Genre(GenreAetherCurrents - (uint)x.Key, expansionName(x.Key), CategoryAetherCurrents,
+                [.. x.OrderBy(y => y.SortKey)]))];
+        Genre fantasia = new(GenreFantasia, _L("Fantasia"), CategoryFantasia, [.. all.OfType<UnlockLinkQuestInfo>()]);
+        return new Section(SectionOther, _L("Other"),
+        [
+            new Category(CategoryAetherCurrents, aetherCurrents, SectionOther, currentGenres),
+            new Category(CategoryFantasia, _L("Fantasia"), SectionOther, [fantasia]),
+        ]);
     }
     public const uint CategorySpecialQuests = 98;
     public const uint GenreSpecialQuests = 251;
@@ -90,6 +111,11 @@ internal sealed class JournalData
     public const uint GenreStartingInGridania = uint.MaxValue - 2;
     public const uint GenreStartingInLimsa = uint.MaxValue - 3;
     public const uint GenreInstantQuests = uint.MaxValue - 4;
+    public const uint GenreFantasia = uint.MaxValue - 5;
+    public const uint GenreAetherCurrents = uint.MaxValue - 20;
+    public const uint CategoryAetherCurrents = uint.MaxValue - 1;
+    public const uint CategoryFantasia = uint.MaxValue - 2;
+    public const uint SectionOther = uint.MaxValue - 1;
 
     public List<Genre> Genres { get; }
     public List<Category> Categories { get; }
@@ -119,18 +145,28 @@ internal sealed class JournalData
         public List<IQuestInfo> Quests { get; }
     }
 
-    internal sealed class Category(JournalCategory journalCategory, IReadOnlyList<Genre> genres)
+    internal sealed class Category(uint id, string name, uint sectionId, IReadOnlyList<Genre> genres)
     {
-        public uint Id { get; } = journalCategory.RowId;
-        public string Name { get; } = journalCategory.Name.ToString();
-        public uint SectionId { get; } = journalCategory.JournalSection.RowId;
+        public Category(JournalCategory journalCategory, IReadOnlyList<Genre> genres)
+            : this(journalCategory.RowId, journalCategory.Name.ToString(), journalCategory.JournalSection.RowId, genres)
+        {
+        }
+
+        public uint Id { get; } = id;
+        public string Name { get; } = name;
+        public uint SectionId { get; } = sectionId;
         public IReadOnlyList<Genre> Genres { get; } = genres;
     }
 
-    internal sealed class Section(JournalSection journalSection, IReadOnlyList<Category> categories)
+    internal sealed class Section(uint id, string name, IReadOnlyList<Category> categories)
     {
-        public uint Id { get; } = journalSection.RowId;
-        public string Name { get; } = journalSection.Name.ToString();
+        public Section(JournalSection journalSection, IReadOnlyList<Category> categories)
+            : this(journalSection.RowId, journalSection.Name.ToString(), categories)
+        {
+        }
+
+        public uint Id { get; } = id;
+        public string Name { get; } = name;
         public IReadOnlyList<Category> Categories { get; } = categories;
     }
 }

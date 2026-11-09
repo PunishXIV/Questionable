@@ -23,6 +23,19 @@ internal sealed class QuestTooltipComponent
     Configuration configuration)
 {
 
+    // List entries that aren't game quests (aether current zones, Fantasias) have none of the quest details.
+    private void DrawEntry(IQuestInfo entry)
+    {
+        (Vector4 color, FontAwesomeIcon _, string status) = uiUtils.GetQuestStyle(entry.QuestId);
+        ImGui.Text(entry.Name);
+        ImGui.TextColored(color, status);
+        if (entry is AetherCurrentZoneInfo zone)
+        {
+            int attuned = zone.CurrentIds.Count - questFunctions.GetMissingAetherCurrents((AetherCurrentId)zone.QuestId).Count;
+            ImGui.Text(_LF("Field aether currents attuned: {0}/{1}", attuned, zone.CurrentIds.Count));
+        }
+    }
+
     public void Draw(IQuestInfo questInfo)
     {
         using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
@@ -31,7 +44,12 @@ internal sealed class QuestTooltipComponent
 
     public void DrawInner(IQuestInfo questInfo, bool showItemRewards)
     {
-        QuestInfo info = (QuestInfo)questInfo;
+        if (questInfo is not QuestInfo info)
+        {
+            DrawEntry(questInfo);
+            return;
+        }
+
         unsafe
         {
             string levelText = $"{SeIconChar.LevelEn.ToIconString()}{questInfo.Level}";

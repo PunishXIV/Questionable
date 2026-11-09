@@ -282,7 +282,10 @@ internal sealed class QuestJournalUtils
 
     public void MoveToIssuer(IQuestInfo questInfo, bool teleport = true)
     {
-        var location = ((QuestInfo)questInfo).IssuerLocation;
+        if (questInfo is not QuestInfo info)
+            return;
+
+        var location = info.IssuerLocation;
         Svc.Log.Debug(location.ToString() ?? "SheetLevel()");
         var mapLink = new MapLinkPayload(
             location.Territory.RowId,

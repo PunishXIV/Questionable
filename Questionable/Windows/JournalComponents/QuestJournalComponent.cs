@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
+using Questionable.Model.Questing;
 using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.JournalComponents;
 
@@ -157,7 +158,8 @@ internal sealed class QuestJournalComponent
         JournalTable.BeginRow();
 
         string genreName = genre.Genre.Name;
-        if (genre.Genre.Id != JournalData.GenreInstantQuests && questRegistry.TryGetQuest(genre.Quests[0].QuestId, out Quest? firstQuest))
+        if (genre.Genre.Id != JournalData.GenreInstantQuests && genre.Quests[0].QuestId is QuestId &&
+            questRegistry.TryGetQuest(genre.Quests[0].QuestId, out Quest? firstQuest))
         {
             RedoIndex redoIndex = redoUtil.GetChapter(firstQuest.Id.Value);
             if (redoIndex.Index != -1)
@@ -330,7 +332,8 @@ internal sealed class QuestJournalComponent
         if (filter.AvailableOnly && !questFunctions.IsReadyToAcceptQuest(questInfo.QuestId))
             return false;
 
-        if (filter.BlueOnly && ((QuestInfo)questInfo).AvailableIcon is uint icon && !Enumerable.Range(40, 10).Contains((int)icon % 100))
+        if (filter.BlueOnly && (questInfo is not QuestInfo info ||
+                                (info.AvailableIcon is uint icon && !Enumerable.Range(40, 10).Contains((int)icon % 100))))
             return false;
 
         if (filter.HideNoPaths &&

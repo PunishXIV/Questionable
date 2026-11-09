@@ -98,7 +98,7 @@ internal sealed class JournalTable(
             DrawTooltip(questInfo, label != null);
         }
 
-        if (ImGui.IsItemClicked())
+        if (ImGui.IsItemClicked() && questInfo is QuestInfo)
             questJournalUtils.MoveToIssuer(questInfo);
 
         questJournalUtils.ShowContextMenu(questInfo, quest, source);
@@ -153,7 +153,7 @@ internal sealed class JournalTable(
     private string GetName(IQuestInfo questInfo, Quest? quest)
     {
         string name = $"{questInfo.Name} ({questInfo.QuestId})";
-        if (quest != null && redoUtil.GetChapter(quest.Id.Value) is { Index: 0 } redoIndex)
+        if (quest is { Id: QuestId } && redoUtil.GetChapter(quest.Id.Value) is { Index: 0 } redoIndex)
             name = $"{name}   ({redoIndex.Chapter.ChapterName})";
         return name;
     }

@@ -529,6 +529,8 @@ internal sealed class QuestData
         }
     }
 
+    public IEnumerable<IQuestInfo> GetAll() => _quests.Values;
+
     public IQuestInfo GetQuestInfo(ElementId elementId) => _quests[elementId] ?? throw new ArgumentOutOfRangeException(nameof(elementId));
 
     public bool TryGetQuestInfo(ElementId elementId, [NotNullWhen(true)] out IQuestInfo? questInfo) => _quests.TryGetValue(elementId, out questInfo);
