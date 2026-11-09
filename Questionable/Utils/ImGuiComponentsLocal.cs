@@ -102,6 +102,7 @@ internal static class ImGuiComponentsLocal
             ImGui.SetKeyboardFocusHere();
         ImGui.InputTextWithHint("##filter", "Search...", ref searchString, 256);
 
+        bool picked = false;
         // The option list lives in its own fixed-height scrollable child so the search box above
         // stays pinned and visible; SetItemDefaultFocus() then scrolls the child, not the popup.
         int visibleRows = Math.Clamp(labels.Length, 1, 12);
@@ -131,6 +132,7 @@ internal static class ImGuiComponentsLocal
                     {
                         selected = values[i];
                         searchString = string.Empty;
+                        picked = true;
                     }
 
                     if (isSelected)
@@ -139,7 +141,7 @@ internal static class ImGuiComponentsLocal
             }
         }
 
-        return true;
+        return picked;
     }
 
     public static void HelpMarker(string helpText, string[]? bullets) => HelpMarker(helpText, FontAwesomeIcon.InfoCircle, bullets: bullets);
