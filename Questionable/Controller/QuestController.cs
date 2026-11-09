@@ -631,6 +631,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 DebugState = "Step completed";
                 if (!_taskQueue.AllTasksComplete)
                     CheckNextTasks("Step complete");
+                else if (AutomationType != EAutomationType.Manual && questToRun.Quest.Id is AetherCurrentId zoneId &&
+                         _questFunctions.GetMissingAetherCurrents(zoneId) is { Count: > 0 } missing)
+                {
+                    _stopPolicy.ReportMissingCurrents(questToRun.Quest, missing);
+                    Stop("Aether currents missing");
+                }
                 return;
 
             case EStepState.UnknownStep:

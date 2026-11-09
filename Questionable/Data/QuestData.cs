@@ -144,6 +144,40 @@ internal sealed class QuestData
             1210,
             1204
         ]).FromNumericListOfQuests();
+    // The MSQ quests that pass each zone's field currents; the zone entry opens once all of them are done.
+    internal static readonly IReadOnlyDictionary<ushort, ushort[]> AetherCurrentZoneQuests = new Dictionary<ushort, ushort[]>
+    {
+        [397] = [1604, 1606, 1608],
+        [398] = [1609, 1610, 1615, 1617],
+        [399] = [1655, 1659],
+        [400] = [1622, 1626, 1627, 1628],
+        [401] = [1644, 1645, 1646, 1647],
+        [612] = [2447, 2531, 2532],
+        [613] = [2478, 2480, 2482, 2488],
+        [614] = [2494, 2497, 2935],
+        [620] = [2456, 2458, 2536, 2546],
+        [621] = [2550, 2551, 2552],
+        [622] = [2504, 2509, 2514, 2630],
+        [813] = [3300, 3304],
+        [814] = [3283, 3285, 3639, 3642],
+        [815] = [3291, 3295, 3611, 3613, 3620],
+        [816] = [3312, 3316, 3318, 3320],
+        [817] = [3324, 3329, 3333, 3340],
+        [818] = [3648, 3649, 3651, 3652],
+        [956] = [4362, 4364, 4447],
+        [957] = [4371, 4375, 4413, 4414],
+        [958] = [4384, 4385, 4390, 4395],
+        [959] = [4402, 4406],
+        [960] = [4456, 4458, 4459],
+        [961] = [4425, 4427, 4433],
+        [1187] = [4873, 4874, 4875, 4876, 4890, 4891, 4894],
+        [1188] = [4868, 4869, 4880, 4881, 4887],
+        [1189] = [4897, 4899, 4902, 4904, 4905, 4906],
+        [1190] = [4912, 4914, 4924],
+        [1191] = [4927, 4930, 4931, 4938, 4939, 4940],
+        [1192] = [4950, 4951, 4952, 4953, 4955, 4957, 4958],
+    };
+
     public static readonly IReadOnlyList<ElementId> UnlockMoogleSocietyQuests = (
         (ushort[])[
             1821,1824,1831,1832,1863,1864,1865,1866,1867,1868,1872,1878,1881,1882,1879,1883,1884,1880,1871,
@@ -258,6 +292,14 @@ internal sealed class QuestData
 
         quests.Add(new UnlockLinkQuestInfo(new(506), _L("Patch 7.2 Fantasia"), issuerDataId: 1052475));
         quests.Add(new UnlockLinkQuestInfo(new(568), _L("Patch 7.3 Fantasia"), issuerDataId: 1052475));
+        quests.AddRange(dataManager.GetExcelSheet<AetherCurrentCompFlgSet>()
+            .Where(x => x.Territory.IsValid && AetherCurrentZoneQuests.ContainsKey((ushort)x.Territory.RowId))
+            .Select(x => new AetherCurrentZoneInfo(
+                new AetherCurrentId((ushort)x.Territory.RowId),
+                $"{_T<Addon>(2445)}: {x.Territory.Value.PlaceName.Value.Name}",
+                (EExpansionVersion)x.Territory.Value.ExVersion.RowId,
+                [.. x.AetherCurrents.Where(y => y.RowId > 0 && y.Value.Quest.RowId == 0).Select(y => y.RowId)],
+                [.. AetherCurrentZoneQuests[(ushort)x.Territory.RowId].Select(q => new PreviousQuestInfo(new QuestId(q)))])));
 
         _quests = quests.ToDictionary(x => x.QuestId, x => x);
 

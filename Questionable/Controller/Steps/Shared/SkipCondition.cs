@@ -20,7 +20,7 @@ internal static class SkipCondition
             : target;
     }
 
-    internal sealed class Factory(Configuration configuration) : SimpleTaskFactory
+    internal sealed class Factory : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -36,7 +36,7 @@ internal static class SkipCondition
                 step.NextQuestId == null &&
                 step.RequiredCurrentJob.Count == 0 &&
                 step.RequiredQuestAcceptedJob.Count == 0 &&
-                !(step.InteractionType == EInteractionType.AttuneAetherCurrent && configuration.Advanced.SkipAetherCurrents))
+                step.InteractionType != EInteractionType.AttuneAetherCurrent)
             {
                 return null;
             }
@@ -108,7 +108,7 @@ internal static class SkipCondition
             if (CheckAetheryte(step, skipConditions))
                 return true;
 
-            if (CheckAetherCurrent(step))
+            if (CheckAetherCurrent(elementId, step))
                 return true;
 
             if (CheckQuestWork(elementId, step))
@@ -380,17 +380,16 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckAetherCurrent(QuestStep step)
+        private bool CheckAetherCurrent(ElementId elementId, QuestStep step)
         {
-            if (step is { InteractionType: EInteractionType.AttuneAetherCurrent } &&
-                configuration.Advanced.SkipAetherCurrents)
+            if (ShouldSkipForSetting(elementId, step, configuration.Advanced.SkipAetherCurrents))
             {
                 logger.LogInformation("Skipping step, as aether currents should be skipped");
                 return true;
             }
 
-            if (step is { DataId: not null, InteractionType: EInteractionType.AttuneAetherCurrent } &&
-                gameFunctions.IsAetherCurrentUnlocked(step.DataId.Value))
+            if (step is { AetherCurrentId: { } currentId, InteractionType: EInteractionType.AttuneAetherCurrent } &&
+                gameFunctions.IsAetherCurrentUnlocked(currentId))
             {
                 logger.LogInformation("Skipping step, as current is unlocked");
                 return true;
@@ -398,6 +397,11 @@ internal static class SkipCondition
 
             return false;
         }
+
+        // A zone entry exists to collect currents, so the setting only skips them inside quests.
+        internal static bool ShouldSkipForSetting(ElementId elementId, QuestStep step, bool skipAetherCurrents) =>
+            skipAetherCurrents && step.InteractionType == EInteractionType.AttuneAetherCurrent &&
+            elementId is not AetherCurrentId;
 
         private bool CheckQuestWork(ElementId elementId, QuestStep step)
         {

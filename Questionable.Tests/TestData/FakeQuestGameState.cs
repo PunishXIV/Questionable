@@ -21,6 +21,7 @@ internal sealed class FakeQuestGameState : IQuestGameState
     public HashSet<ushort> DailyCompleted { get; } = [];
     public Dictionary<ushort, byte> Sequences { get; } = [];
     public HashSet<ushort> UnlockLinks { get; } = [];
+    public HashSet<uint> AetherCurrents { get; } = [];
     public HashSet<ushort> CompletedInstances { get; } = [];
     public HashSet<EAetheryteLocation> LockedAetherytes { get; } = [];
     public Dictionary<EAlliedSociety, List<QuestId>> AvailableAlliedSocietyQuests { get; } = [];
@@ -79,6 +80,7 @@ internal sealed class FakeQuestGameState : IQuestGameState
     public bool IsAchievementComplete(int[] achievementIds) => false;
     public bool IsMountUnlocked(ushort mountId) => false;
     public bool IsUnlockLinkUnlocked(ushort unlockLinkId) => UnlockLinks.Contains(unlockLinkId);
+    public bool IsAetherCurrentUnlocked(uint aetherCurrentId) => AetherCurrents.Contains(aetherCurrentId);
     public string AchievementName(int achievementId) => $"A{achievementId}";
     public string MountName(ushort mountId) => $"M{mountId}";
 }
@@ -87,7 +89,7 @@ internal sealed class FakeQuestCatalog : IQuestCatalog
 {
     private readonly Dictionary<ElementId, Quest> _quests = [];
 
-    public Quest Add(QuestInfo info, params QuestSequence[] sequences)
+    public Quest Add(IQuestInfo info, params QuestSequence[] sequences)
     {
         var quest = new Quest
         {

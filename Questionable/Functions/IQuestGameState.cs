@@ -42,6 +42,7 @@ internal interface IQuestGameState : IPrerequisiteState
     bool IsInstanceContentCompleted(ushort instanceContentId);
     bool IsFestivalActive(ushort festivalId, ushort? phase);
     bool IsAetheryteUnlocked(EAetheryteLocation aetheryte);
+    bool IsAetherCurrentUnlocked(uint aetherCurrentId);
     bool IsTeleportUnlocked { get; }
     int Gil { get; }
     IReadOnlyDictionary<uint, uint>? TeleportCosts { get; }

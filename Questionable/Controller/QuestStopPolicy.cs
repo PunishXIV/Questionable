@@ -104,6 +104,16 @@ internal sealed class QuestStopPolicy
         PrintError(_LF("Stopped: no path for '{0}' sequence {1} step {2}. Try Reload Data or report it with Stuck?",
             progress.Quest.Info.Name, progress.Sequence, progress.Step));
 
+    public void ReportMissingCurrents(Quest quest, IReadOnlyList<uint> missing)
+    {
+        _logger.LogWarning("Aether currents not attuned in {Zone}: {Currents}", quest.Info.Name,
+            string.Join(", ", quest.AllSteps()
+                .Where(x => x.Step.AetherCurrentId is { } id && missing.Contains(id))
+                .Select(x => $"{x.Step.AetherCurrentId} at {x.Step.Position}")));
+        PrintError(_LF("Stopped: {0} aether current(s) in '{1}' are still not attuned. See /xllog for where they are.",
+            missing.Count, quest.Info.Name));
+    }
+
     public void ReportDeathLimit(int deaths) =>
         PrintError($"You died {deaths} times, manual intervention needed.");
 

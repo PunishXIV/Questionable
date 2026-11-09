@@ -646,7 +646,7 @@ internal sealed class QuestFunctions
             return false;
         if (elementId is AlliedSocietyDailyId)
             return false;
-        if (elementId is UnlockLinkId)
+        if (elementId is UnlockLinkId or AetherCurrentId)
             return false;
 
         throw new ArgumentOutOfRangeException(nameof(elementId));
@@ -664,9 +664,14 @@ internal sealed class QuestFunctions
             return false;
         if (elementId is UnlockLinkId unlockLinkId)
             return IsUnlockLinkUnlocked(unlockLinkId);
+        if (elementId is AetherCurrentId zoneId)
+            return GetMissingAetherCurrents(zoneId).Count == 0;
 
         throw new ArgumentOutOfRangeException(nameof(elementId));
     }
+
+    public IReadOnlyList<uint> GetMissingAetherCurrents(AetherCurrentId zoneId) =>
+        [.. ((AetherCurrentZoneInfo)catalog.GetQuestInfo(zoneId)).CurrentIds.Where(x => !state.IsAetherCurrentUnlocked(x))];
 
     public bool IsQuestComplete(QuestId questId) => state.IsQuestComplete(questId.Value);
 
@@ -694,6 +699,8 @@ internal sealed class QuestFunctions
             return (IsQuestLocked(alliedSocietyDailyId), null);
         if (elementId is UnlockLinkId unlockLinkId)
             return (IsQuestLocked(unlockLinkId), null);
+        if (elementId is AetherCurrentId zoneId)
+            return (!ArePreviousQuestsMet(catalog.GetQuestInfo(zoneId), extraCompletedQuest), null);
 
         throw new ArgumentOutOfRangeException(nameof(elementId));
     }

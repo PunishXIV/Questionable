@@ -222,6 +222,7 @@ internal sealed unsafe class GameQuestState(
     public bool IsAchievementComplete(int[] achievementIds) => _achievements.IsComplete(achievementIds);
     public bool IsMountUnlocked(ushort mountId) => PlayerState.Instance()->IsMountUnlocked(mountId);
     public bool IsUnlockLinkUnlocked(ushort unlockLinkId) => UIState.Instance()->IsUnlockLinkUnlocked(unlockLinkId);
+    public bool IsAetherCurrentUnlocked(uint aetherCurrentId) => PlayerState.Instance()->IsAetherCurrentUnlocked(aetherCurrentId);
     public string AchievementName(int achievementId) => _T<Lumina.Excel.Sheets.Achievement>((uint)achievementId);
     public string MountName(ushort mountId) => _T<Mount>(mountId);
 }
