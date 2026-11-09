@@ -1,0 +1,58 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2006218,
+          "Position": {
+            "X": -775.26514,
+            "Y": 123.73535,
+            "Z": 243.70178
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "The Churning Mists - Zenith",
+          "AetherCurrentId": 2818101
+        },
+        {
+          "DataId": 2006217,
+          "Position": {
+            "X": -93.7973,
+            "Y": -6.7597656,
+            "Z": 223.83447
+          },
+          "StopDistance": 5,
+          "TerritoryId": 400,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818100
+        },
+        {
+          "DataId": 2006224,
+          "Position": {
+            "X": 340.01672,
+            "Y": -25.375793,
+            "Z": -130.54095
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818107
+        },
+        {
+          "DataId": 2006216,
+          "Position": {
+            "X": 421.1642,
+            "Y": -43.05859,
+            "Z": 661.7684
+          },
+          "TerritoryId": 400,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818099
+        }
+      ]
+    }
+  ]
+}

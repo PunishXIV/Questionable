@@ -1,0 +1,80 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2010062,
+          "Position": {
+            "X": 432.45593,
+            "Y": 90.440186,
+            "Z": -770.4128
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Il Mheg - Wolekdorf",
+          "AetherCurrentId": 2818276
+        },
+        {
+          "Position": {
+            "X": 21.853422,
+            "Y": 111.3742,
+            "Z": -847.6101
+          },
+          "TerritoryId": 816,
+          "InteractionType": "Jump",
+          "JumpDestination": {
+            "Position": {
+              "X": 18.00289,
+              "Y": 111.8963,
+              "Z": -847.90894
+            },
+            "DelaySeconds": 0.1
+          },
+          "SkipConditions": {
+            "StepIf": {
+              "AetherCurrentUnlocked": 2818273
+            }
+          }
+        },
+        {
+          "DataId": 2010059,
+          "Position": {
+            "X": 12.832764,
+            "Y": 110.73462,
+            "Z": -851.25507
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818273,
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2010063,
+          "Position": {
+            "X": -9.018127,
+            "Y": 89.28052,
+            "Z": -247.66925
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818277
+        },
+        {
+          "DataId": 2010056,
+          "Position": {
+            "X": -231.4141,
+            "Y": 4.701926,
+            "Z": 160.8437
+          },
+          "TerritoryId": 816,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818270
+        }
+      ]
+    }
+  ]
+}

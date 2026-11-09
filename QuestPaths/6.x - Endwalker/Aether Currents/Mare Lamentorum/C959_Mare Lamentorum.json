@@ -1,0 +1,58 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2012013,
+          "Position": {
+            "X": 29.1046,
+            "Y": -47.739,
+            "Z": -550.4077
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
+          "AetherCurrentId": 2818362
+        },
+        {
+          "DataId": 2012012,
+          "Position": {
+            "X": 316.39575,
+            "Y": -154.98596,
+            "Z": -595.5444
+          },
+          "StopDistance": 3,
+          "TerritoryId": 959,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818361
+        },
+        {
+          "DataId": 2012010,
+          "Position": {
+            "X": 42.58789,
+            "Y": 124.01001,
+            "Z": -167.04059
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818359
+        },
+        {
+          "DataId": 2012011,
+          "Position": {
+            "X": -482.7497,
+            "Y": -154.95538,
+            "Z": -595.72754
+          },
+          "TerritoryId": 959,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818360
+        }
+      ]
+    }
+  ]
+}

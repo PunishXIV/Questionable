@@ -1,0 +1,123 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2013980,
+          "Position": {
+            "X": -559.5941,
+            "Y": -6.0273438,
+            "Z": -508.53745
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Living Memory - Leynode Aero",
+          "AetherCurrentId": 2818482
+        },
+        {
+          "DataId": 2013983,
+          "Position": {
+            "X": -484.18402,
+            "Y": 37.979614,
+            "Z": -50.003845
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818488
+        },
+        {
+          "DataId": 2013974,
+          "Position": {
+            "X": -698.8785,
+            "Y": 0.99176025,
+            "Z": 472.00732
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818479
+        },
+        {
+          "DataId": 2013976,
+          "Position": {
+            "X": -516.6858,
+            "Y": 0.045776367,
+            "Z": 680.99475
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818483
+        },
+        {
+          "DataId": 2013977,
+          "Position": {
+            "X": 232.349,
+            "Y": -0.015319824,
+            "Z": 544.4877
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818484
+        },
+        {
+          "DataId": 2013978,
+          "Position": {
+            "X": 627.5271,
+            "Y": 9.048584,
+            "Z": 637.72034
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818485
+        },
+        {
+          "DataId": 2013975,
+          "Position": {
+            "X": 753.3696,
+            "Y": 45.09243,
+            "Z": 347.0511
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818480
+        },
+        {
+          "DataId": 2013982,
+          "Position": {
+            "X": 169.57349,
+            "Y": 29.220947,
+            "Z": -308.0644
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818487
+        },
+        {
+          "DataId": 2013981,
+          "Position": {
+            "X": 315.20557,
+            "Y": 43.71704,
+            "Z": -539.3302
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818486
+        },
+        {
+          "DataId": 2013979,
+          "Position": {
+            "X": 509.69702,
+            "Y": 36.972534,
+            "Z": -648.82886
+          },
+          "TerritoryId": 1192,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818481
+        }
+      ]
+    }
+  ]
+}

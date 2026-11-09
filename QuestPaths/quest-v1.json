@@ -335,6 +335,10 @@
                 "AetheryteUnlocked": {
                   "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
                 },
+                "AetherCurrentUnlocked": {
+                  "description": "Skip this step if this aether current is attuned",
+                  "type": "integer"
+                },
                 "NearPosition": {
                   "type": "object",
                   "properties": {

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2006201,
+          "Position": {
+            "X": -480.30823,
+            "Y": -5.996826,
+            "Z": -425.28424
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
+          "AetherCurrentId": 2818074
+        },
+        {
+          "DataId": 2006197,
+          "Position": {
+            "X": 433.52405,
+            "Y": -47.776062,
+            "Z": -286.24402
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818070
+        },
+        {
+          "DataId": 2006195,
+          "Position": {
+            "X": 765.0111,
+            "Y": -15.85179,
+            "Z": 289.082
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818068
+        },
+        {
+          "DataId": 2006204,
+          "Position": {
+            "X": 406.75964,
+            "Y": -89.79938,
+            "Z": 686.6101
+          },
+          "TerritoryId": 398,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818077
+        }
+      ]
+    }
+  ]
+}

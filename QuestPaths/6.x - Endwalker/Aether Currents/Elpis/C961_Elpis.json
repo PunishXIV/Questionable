@@ -1,0 +1,73 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": -734.30804,
+            "Y": -28.391644,
+            "Z": 432.59787
+          },
+          "TerritoryId": 961,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Elpis - Twelve Wonders",
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "AetherCurrentUnlocked": 2818375
+            }
+          }
+        },
+        {
+          "DataId": 2012021,
+          "Position": {
+            "X": -754.757,
+            "Y": -36.02661,
+            "Z": 411.12378
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818375,
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2012026,
+          "Position": {
+            "X": -555.6268,
+            "Y": 158.09863,
+            "Z": 172.41162
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818380
+        },
+        {
+          "DataId": 2012025,
+          "Position": {
+            "X": -402.945,
+            "Y": 327.7484,
+            "Z": -691.3405
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818379
+        },
+        {
+          "DataId": 2012020,
+          "Position": {
+            "X": 628.2388,
+            "Y": 8.316829,
+            "Z": 107.9021
+          },
+          "TerritoryId": 961,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818374
+        }
+      ]
+    }
+  ]
+}

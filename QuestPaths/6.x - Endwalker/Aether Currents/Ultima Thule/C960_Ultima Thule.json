@@ -1,0 +1,73 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 48.215565,
+            "Y": 269.00882,
+            "Z": -703.63995
+          },
+          "TerritoryId": 960,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
+          "Mount": true,
+          "SkipConditions": {
+            "StepIf": {
+              "AetherCurrentUnlocked": 2818390
+            }
+          }
+        },
+        {
+          "DataId": 2012031,
+          "Position": {
+            "X": 13.107483,
+            "Y": 275.56262,
+            "Z": -756.40497
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818390,
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2012030,
+          "Position": {
+            "X": -333.547,
+            "Y": 270.83228,
+            "Z": -361.50153
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818389
+        },
+        {
+          "DataId": 2012033,
+          "Position": {
+            "X": 539.26904,
+            "Y": 437.9796,
+            "Z": 239.39868
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818392
+        },
+        {
+          "DataId": 2012032,
+          "Position": {
+            "X": 661.76843,
+            "Y": 439.96326,
+            "Z": 411.73413
+          },
+          "TerritoryId": 960,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818391
+        }
+      ]
+    }
+  ]
+}

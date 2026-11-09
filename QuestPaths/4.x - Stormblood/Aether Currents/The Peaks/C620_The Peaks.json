@@ -1,0 +1,57 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2007976,
+          "Position": {
+            "X": 202.86865,
+            "Y": 133.89783,
+            "Z": -753.1395
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Peaks - Ala Gannha",
+          "AetherCurrentId": 2818149
+        },
+        {
+          "DataId": 2007978,
+          "Position": {
+            "X": -271.2597,
+            "Y": 157.91565,
+            "Z": -280.2625
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818151
+        },
+        {
+          "DataId": 2007981,
+          "Position": {
+            "X": -485.22168,
+            "Y": 304.46313,
+            "Z": 247.39441
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818154
+        },
+        {
+          "DataId": 2007984,
+          "Position": {
+            "X": 146.6239,
+            "Y": 303.7307,
+            "Z": 460.80713
+          },
+          "TerritoryId": 620,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818157
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2011980,
+          "Position": {
+            "X": 346.51697,
+            "Y": 209.3385,
+            "Z": -767.7577
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Labyrinthos - Archeion",
+          "AetherCurrentId": 2818314
+        },
+        {
+          "DataId": 2011981,
+          "Position": {
+            "X": 748.53125,
+            "Y": 106.7063,
+            "Z": 66.75818
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818315
+        },
+        {
+          "Position": {
+            "X": -102.94707,
+            "Y": -29.933468,
+            "Z": 674.6727
+          },
+          "TerritoryId": 956,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "AetherCurrentUnlocked": 2818317
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -120.48093,
+            "Y": -21.96263,
+            "Z": 685.2332
+          },
+          "TerritoryId": 956,
+          "InteractionType": "Jump",
+          "DisableNavmesh": true,
+          "JumpDestination": {
+            "Position": {
+              "X": -124.55376,
+              "Y": -19.659834,
+              "Z": 686.864
+            },
+            "StopDistance": 0.5,
+            "DelaySeconds": 0.25
+          },
+          "SkipConditions": {
+            "StepIf": {
+              "AetherCurrentUnlocked": 2818317
+            }
+          }
+        },
+        {
+          "DataId": 2011986,
+          "Position": {
+            "X": -128.06903,
+            "Y": -20.523438,
+            "Z": 676.7223
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818317,
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2011985,
+          "Position": {
+            "X": -547.7532,
+            "Y": -18.051514,
+            "Z": 661.86
+          },
+          "TerritoryId": 956,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818316
+        }
+      ]
+    }
+  ]
+}

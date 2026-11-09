@@ -1,0 +1,57 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2010038,
+          "Position": {
+            "X": -651.1788,
+            "Y": -0.015319824,
+            "Z": 588.4031
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Kholusia - Wright",
+          "AetherCurrentId": 2818242
+        },
+        {
+          "DataId": 2010042,
+          "Position": {
+            "X": -62.912964,
+            "Y": 345.11328,
+            "Z": -16.556091
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818246
+        },
+        {
+          "DataId": 2010041,
+          "Position": {
+            "X": 623.7429,
+            "Y": 285.93872,
+            "Z": -555.26056
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818245
+        },
+        {
+          "DataId": 2010034,
+          "Position": {
+            "X": 650.5377,
+            "Y": 0.3508911,
+            "Z": 556.38965
+          },
+          "TerritoryId": 814,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818238
+        }
+      ]
+    }
+  ]
+}

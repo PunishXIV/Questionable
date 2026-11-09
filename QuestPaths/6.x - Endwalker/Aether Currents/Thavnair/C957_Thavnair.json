@@ -1,0 +1,87 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "Position": {
+            "X": 543.0377,
+            "Y": 15.147404,
+            "Z": -147.8739
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "AetheryteShortcut": "Thavnair - Palaka's Stand",
+          "SkipConditions": {
+            "StepIf": {
+              "AetherCurrentUnlocked": 2818332
+            }
+          }
+        },
+        {
+          "DataId": 2011996,
+          "Position": {
+            "X": 550.01135,
+            "Y": 25.467285,
+            "Z": -159.1059
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818332,
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2011995,
+          "Position": {
+            "X": 118.45581,
+            "Y": 4.92865,
+            "Z": -343.89258
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818331
+        },
+        {
+          "Position": {
+            "X": -78.47051,
+            "Y": 99.96379,
+            "Z": -711.17303
+          },
+          "TerritoryId": 957,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "AetherCurrentUnlocked": 2818330
+            }
+          }
+        },
+        {
+          "DataId": 2011991,
+          "Position": {
+            "X": -49.271423,
+            "Y": 94.0719,
+            "Z": -710.7805
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818330,
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2011990,
+          "Position": {
+            "X": -176.10437,
+            "Y": 21.530457,
+            "Z": 537.8346
+          },
+          "TerritoryId": 957,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818329
+        }
+      ]
+    }
+  ]
+}

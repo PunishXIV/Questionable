@@ -1,0 +1,57 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2008008,
+          "Position": {
+            "X": 163.5614,
+            "Y": 144.60962,
+            "Z": -11.917358
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Yanxia - Namai",
+          "AetherCurrentId": 2818196
+        },
+        {
+          "DataId": 2008007,
+          "Position": {
+            "X": 497.27625,
+            "Y": 16.342407,
+            "Z": 402.48718
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818195
+        },
+        {
+          "DataId": 2008011,
+          "Position": {
+            "X": 457.51123,
+            "Y": 32.36438,
+            "Z": 822.4154
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818199
+        },
+        {
+          "DataId": 2008013,
+          "Position": {
+            "X": -97.428955,
+            "Y": 13.260071,
+            "Z": 563.714
+          },
+          "TerritoryId": 614,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818201
+        }
+      ]
+    }
+  ]
+}

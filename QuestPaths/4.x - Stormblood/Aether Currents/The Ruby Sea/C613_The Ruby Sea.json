@@ -1,0 +1,57 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2007999,
+          "Position": {
+            "X": 21.286316,
+            "Y": 24.002441,
+            "Z": -623.621
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Ruby Sea - Onokoro",
+          "AetherCurrentId": 2818182
+        },
+        {
+          "DataId": 2008002,
+          "Position": {
+            "X": 694.7584,
+            "Y": 1.9073486,
+            "Z": -53.48291
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818185
+        },
+        {
+          "DataId": 2007995,
+          "Position": {
+            "X": 423.54468,
+            "Y": 15.823547,
+            "Z": 801.541
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818178
+        },
+        {
+          "DataId": 2008004,
+          "Position": {
+            "X": -805.7832,
+            "Y": 36.575806,
+            "Z": 235.18726
+          },
+          "TerritoryId": 613,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818187
+        }
+      ]
+    }
+  ]
+}

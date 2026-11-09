@@ -625,10 +625,12 @@ internal sealed class PriorityWindow : LWindow
     private static List<ElementId> GetAetherCurrentQuests(params uint[] territories)
     {
         return territories
-            .Where(QuestData.AetherCurrentQuestsByTerritory.ContainsKey)
-            .SelectMany(t => QuestData.AetherCurrentQuestsByTerritory[t])
-            .Cast<ElementId>()
+            .SelectMany(t => GetZoneEntry(t).Concat(QuestData.AetherCurrentQuestsByTerritory.GetValueOrDefault(t, [])))
             .ToList();
+
+        // The zone's field currents come right before its current quests.
+        static IEnumerable<ElementId> GetZoneEntry(uint territory) =>
+            QuestData.AetherCurrentZoneQuests.ContainsKey((ushort)territory) ? [new AetherCurrentId((ushort)territory)] : [];
     }
 
     private void LoadPreset(string name)

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2012005,
+          "Position": {
+            "X": 382.1621,
+            "Y": 25.894531,
+            "Z": -482.20038
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Garlemald - Tertium",
+          "AetherCurrentId": 2818349
+        },
+        {
+          "DataId": 2012006,
+          "Position": {
+            "X": -602.04474,
+            "Y": 34.286987,
+            "Z": -325.85645
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818350
+        },
+        {
+          "Position": {
+            "X": -210.6673,
+            "Y": 15.799101,
+            "Z": 451.78333
+          },
+          "TerritoryId": 958,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "AetherCurrentUnlocked": 2818344
+            }
+          }
+        },
+        {
+          "DataId": 2012000,
+          "Position": {
+            "X": -184.22223,
+            "Y": 31.937134,
+            "Z": 423.6056
+          },
+          "StopDistance": 5,
+          "TerritoryId": 958,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818344,
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2012001,
+          "Position": {
+            "X": 194.81189,
+            "Y": -12.863403,
+            "Z": 644.28174
+          },
+          "TerritoryId": 958,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818345
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2007965,
+          "Position": {
+            "X": -487.26636,
+            "Y": 76.70703,
+            "Z": -249.56134
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Fringes - Castrum Oriens",
+          "AetherCurrentId": 2818133
+        },
+        {
+          "DataId": 2007967,
+          "Position": {
+            "X": 155.84033,
+            "Y": 53.3302,
+            "Z": -499.44305
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818135
+        },
+        {
+          "DataId": 2007971,
+          "Position": {
+            "X": 322.59094,
+            "Y": 88.97534,
+            "Z": 10.513428
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818139
+        },
+        {
+          "DataId": 2007972,
+          "Position": {
+            "X": 743.00745,
+            "Y": 180.98718,
+            "Z": -214.06885
+          },
+          "TerritoryId": 612,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818140
+        }
+      ]
+    }
+  ]
+}

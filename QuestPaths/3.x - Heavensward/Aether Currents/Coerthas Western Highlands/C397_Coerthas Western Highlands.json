@@ -1,0 +1,57 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2005536,
+          "Position": {
+            "X": 402.0293,
+            "Y": 191.51587,
+            "Z": 561.4252
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
+          "AetherCurrentId": 2818053
+        },
+        {
+          "DataId": 2006189,
+          "Position": {
+            "X": -332.90613,
+            "Y": 126.81775,
+            "Z": -29.953552
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818057
+        },
+        {
+          "DataId": 2006190,
+          "Position": {
+            "X": -660.15106,
+            "Y": 135.51526,
+            "Z": -376.63843
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818058
+        },
+        {
+          "DataId": 2006187,
+          "Position": {
+            "X": 424.94836,
+            "Y": 164.29382,
+            "Z": -536.9192
+          },
+          "TerritoryId": 397,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818055
+        }
+      ]
+    }
+  ]
+}

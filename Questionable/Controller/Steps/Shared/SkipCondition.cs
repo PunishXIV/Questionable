@@ -108,7 +108,7 @@ internal static class SkipCondition
             if (CheckAetheryte(step, skipConditions))
                 return true;
 
-            if (CheckAetherCurrent(elementId, step))
+            if (CheckAetherCurrent(elementId, step, skipConditions))
                 return true;
 
             if (CheckQuestWork(elementId, step))
@@ -380,7 +380,7 @@ internal static class SkipCondition
             return false;
         }
 
-        private bool CheckAetherCurrent(ElementId elementId, QuestStep step)
+        private bool CheckAetherCurrent(ElementId elementId, QuestStep step, SkipStepConditions skipConditions)
         {
             if (ShouldSkipForSetting(elementId, step, configuration.Advanced.SkipAetherCurrents))
             {
@@ -392,6 +392,13 @@ internal static class SkipCondition
                 gameFunctions.IsAetherCurrentUnlocked(currentId))
             {
                 logger.LogInformation("Skipping step, as current is unlocked");
+                return true;
+            }
+
+            if (skipConditions.AetherCurrentUnlocked is { } waypointCurrent &&
+                gameFunctions.IsAetherCurrentUnlocked(waypointCurrent))
+            {
+                logger.LogInformation("Skipping step, as the current it leads to is unlocked");
                 return true;
             }
 

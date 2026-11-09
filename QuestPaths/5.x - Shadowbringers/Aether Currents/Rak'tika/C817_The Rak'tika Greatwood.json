@@ -1,0 +1,102 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2010073,
+          "Position": {
+            "X": 681.1168,
+            "Y": -39.2005,
+            "Z": -262.77563
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Rak'tika - Fanow",
+          "AetherCurrentId": 2818292
+        },
+        {
+          "DataId": 2010069,
+          "Position": {
+            "X": 338.6129,
+            "Y": 24.12439,
+            "Z": 203.17383
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818288
+        },
+        {
+          "Position": {
+            "X": -138.85619,
+            "Y": -3.036951,
+            "Z": 54.482983
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "AetherCurrentUnlocked": 2818285
+            }
+          }
+        },
+        {
+          "DataId": 2010066,
+          "Position": {
+            "X": -141.58856,
+            "Y": -0.9003296,
+            "Z": 49.759644
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818285,
+          "DisableNavmesh": true
+        },
+        {
+          "Position": {
+            "X": -391.96292,
+            "Y": 6.3778677,
+            "Z": 509.45285
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "AetherCurrentUnlocked": 2818283
+            }
+          }
+        },
+        {
+          "Position": {
+            "X": -398.71173,
+            "Y": 6.5935116,
+            "Z": 505.39233
+          },
+          "TerritoryId": 817,
+          "InteractionType": "WalkTo",
+          "DisableNavmesh": true,
+          "SkipConditions": {
+            "StepIf": {
+              "AetherCurrentUnlocked": 2818283
+            }
+          }
+        },
+        {
+          "DataId": 2010064,
+          "Position": {
+            "X": -405.9548,
+            "Y": 7.1691,
+            "Z": 506.5442
+          },
+          "TerritoryId": 817,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818283,
+          "DisableNavmesh": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2006210,
+          "Position": {
+            "X": -487.48004,
+            "Y": 144.64026,
+            "Z": -285.359
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Idyllshire",
+          "AetherCurrentId": 2818088
+        },
+        {
+          "DataId": 2006208,
+          "Position": {
+            "X": 98.89368,
+            "Y": 73.07532,
+            "Z": -174.36487
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818086
+        },
+        {
+          "DataId": 2006205,
+          "Position": {
+            "X": 729.21326,
+            "Y": 134.93542,
+            "Z": 150.89636
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818083
+        },
+        {
+          "DataId": 2006214,
+          "Position": {
+            "X": -452.38422,
+            "Y": 138.10938,
+            "Z": 678.18713
+          },
+          "TerritoryId": 399,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818092
+        }
+      ]
+    }
+  ]
+}

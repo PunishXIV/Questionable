@@ -80,6 +80,9 @@ internal static class SkipConditionsExtensions
                             Assignment(nameof(SkipStepConditions.AetheryteUnlocked),
                                     skipStepConditions.AetheryteUnlocked, emptyStep.AetheryteUnlocked)
                                 .AsSyntaxNodeOrToken(),
+                            Assignment(nameof(SkipStepConditions.AetherCurrentUnlocked),
+                                    skipStepConditions.AetherCurrentUnlocked, emptyStep.AetherCurrentUnlocked)
+                                .AsSyntaxNodeOrToken(),
                             Assignment(nameof(SkipStepConditions.NearPosition),
                                     skipStepConditions.NearPosition, emptyStep.NearPosition)
                                 .AsSyntaxNodeOrToken(),

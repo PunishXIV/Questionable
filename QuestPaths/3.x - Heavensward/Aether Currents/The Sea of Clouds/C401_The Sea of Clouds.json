@@ -1,0 +1,80 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2006228,
+          "Position": {
+            "X": -747.097,
+            "Y": -57.09793,
+            "Z": 163.8361
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
+          "AetherCurrentId": 2818116
+        },
+        {
+          "Position": {
+            "X": -756.4804,
+            "Y": -13.877342,
+            "Z": -121.33485
+          },
+          "TerritoryId": 401,
+          "InteractionType": "Jump",
+          "StopDistance": 1,
+          "JumpDestination": {
+            "Position": {
+              "X": -759.4263,
+              "Y": -9.201294,
+              "Z": -110.85681
+            }
+          },
+          "SkipConditions": {
+            "StepIf": {
+              "AetherCurrentUnlocked": 2818117
+            }
+          }
+        },
+        {
+          "DataId": 2006229,
+          "Position": {
+            "X": -759.4263,
+            "Y": -9.201294,
+            "Z": -110.85681
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818117,
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2006234,
+          "Position": {
+            "X": -564.8127,
+            "Y": -36.68513,
+            "Z": -349.0807
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818122
+        },
+        {
+          "DataId": 2006231,
+          "Position": {
+            "X": -180.34644,
+            "Y": -14.938599,
+            "Z": -543.1144
+          },
+          "TerritoryId": 401,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818119
+        }
+      ]
+    }
+  ]
+}

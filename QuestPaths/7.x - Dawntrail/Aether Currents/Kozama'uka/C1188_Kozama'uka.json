@@ -1,0 +1,123 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2013937,
+          "Position": {
+            "X": 918.15063,
+            "Y": 10.116699,
+            "Z": -404.10468
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Kozama'uka - Dock Poga",
+          "AetherCurrentId": 2818424
+        },
+        {
+          "DataId": 2013938,
+          "Position": {
+            "X": 516.80774,
+            "Y": 17.959839,
+            "Z": -348.0431
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818425
+        },
+        {
+          "DataId": 2013934,
+          "Position": {
+            "X": 299.48877,
+            "Y": 1.3884888,
+            "Z": -688.4413
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818419
+        },
+        {
+          "DataId": 2013936,
+          "Position": {
+            "X": -638.056,
+            "Y": 6.5460815,
+            "Z": -486.50342
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818423
+        },
+        {
+          "DataId": 2013935,
+          "Position": {
+            "X": -599.57275,
+            "Y": 5.142273,
+            "Z": -179.46143
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818420
+        },
+        {
+          "DataId": 2013941,
+          "Position": {
+            "X": -754.11615,
+            "Y": 138.68921,
+            "Z": 122.66724
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818426
+        },
+        {
+          "DataId": 2013939,
+          "Position": {
+            "X": -294.20923,
+            "Y": 110.73462,
+            "Z": 640.00903
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818421
+        },
+        {
+          "DataId": 2013942,
+          "Position": {
+            "X": 130.44934,
+            "Y": 115.15979,
+            "Z": 522.9114
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818427
+        },
+        {
+          "DataId": 2013940,
+          "Position": {
+            "X": 48.966187,
+            "Y": 111.31445,
+            "Z": 287.15955
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818422
+        },
+        {
+          "DataId": 2013943,
+          "Position": {
+            "X": 485.89294,
+            "Y": 121.3855,
+            "Z": 831.29626
+          },
+          "TerritoryId": 1188,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818428
+        }
+      ]
+    }
+  ]
+}

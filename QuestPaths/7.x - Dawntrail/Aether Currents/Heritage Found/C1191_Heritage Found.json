@@ -1,0 +1,124 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2013972,
+          "Position": {
+            "X": -29.007446,
+            "Y": 71.42737,
+            "Z": 335.37793
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Heritage Found - Electrope Strike",
+          "AetherCurrentId": 2818472
+        },
+        {
+          "DataId": 2013964,
+          "Position": {
+            "X": 397.8789,
+            "Y": 145.34216,
+            "Z": 224.2008
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818464
+        },
+        {
+          "DataId": 2013967,
+          "Position": {
+            "X": 606.83594,
+            "Y": 127.55017,
+            "Z": -190.3869
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818469
+        },
+        {
+          "DataId": 2013968,
+          "Position": {
+            "X": 685.96924,
+            "Y": 139.17749,
+            "Z": -516.5637
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818470
+        },
+        {
+          "DataId": 2013965,
+          "Position": {
+            "X": 204.57764,
+            "Y": 58.182617,
+            "Z": -678.49243
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818465
+        },
+        {
+          "DataId": 2013966,
+          "Position": {
+            "X": 77.53113,
+            "Y": 93.095215,
+            "Z": -144.9455
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818468
+        },
+        {
+          "DataId": 2013971,
+          "Position": {
+            "X": -286.15247,
+            "Y": 59.464355,
+            "Z": -263.6302
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818471
+        },
+        {
+          "DataId": 2013969,
+          "Position": {
+            "X": -585.41235,
+            "Y": 20.157104,
+            "Z": -469.44385
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818466
+        },
+        {
+          "DataId": 2013970,
+          "Position": {
+            "X": -600.09155,
+            "Y": 2.2124634,
+            "Z": 267.4143
+          },
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818467
+        },
+        {
+          "DataId": 2013973,
+          "Position": {
+            "X": -457.66388,
+            "Y": -13.412781,
+            "Z": 693.1105
+          },
+          "StopDistance": 4.5,
+          "TerritoryId": 1191,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818473
+        }
+      ]
+    }
+  ]
+}

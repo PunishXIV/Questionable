@@ -1,0 +1,138 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2013933,
+          "Position": {
+            "X": 398.79456,
+            "Y": 85.9845,
+            "Z": 261.3717
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
+          "AetherCurrentId": 2818413
+        },
+        {
+          "Position": {
+            "X": 380.3574,
+            "Y": 59.728928,
+            "Z": -3.9185147
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "WalkTo",
+          "SkipConditions": {
+            "StepIf": {
+              "AetherCurrentUnlocked": 2818412
+            }
+          }
+        },
+        {
+          "DataId": 2013932,
+          "Position": {
+            "X": 368.33752,
+            "Y": 61.05127,
+            "Z": -9.2317505
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818412,
+          "DisableNavmesh": true
+        },
+        {
+          "DataId": 2013924,
+          "Position": {
+            "X": 353.56665,
+            "Y": -107.71344,
+            "Z": -238.81903
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818404
+        },
+        {
+          "DataId": 2013927,
+          "Position": {
+            "X": 414.7555,
+            "Y": -141.03918,
+            "Z": -681.0254
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818409
+        },
+        {
+          "DataId": 2013928,
+          "Position": {
+            "X": -134.59985,
+            "Y": -93.06476,
+            "Z": -582.9404
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818410
+        },
+        {
+          "DataId": 2013925,
+          "Position": {
+            "X": -458.30475,
+            "Y": -29.678833,
+            "Z": -493.9193
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818405
+        },
+        {
+          "DataId": 2013926,
+          "Position": {
+            "X": -202.80768,
+            "Y": -72.129456,
+            "Z": -199.02344
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818408
+        },
+        {
+          "DataId": 2013929,
+          "Position": {
+            "X": -198.47418,
+            "Y": 23.11737,
+            "Z": -56.565247
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818406
+        },
+        {
+          "DataId": 2013930,
+          "Position": {
+            "X": -812.8939,
+            "Y": 57.480713,
+            "Z": 105.485596
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818407
+        },
+        {
+          "DataId": 2013931,
+          "Position": {
+            "X": 70.17627,
+            "Y": 0.6560669,
+            "Z": 746.4254
+          },
+          "TerritoryId": 1187,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818411
+        }
+      ]
+    }
+  ]
+}

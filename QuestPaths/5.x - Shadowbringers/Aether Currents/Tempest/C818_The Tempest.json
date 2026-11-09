@@ -1,0 +1,57 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kagekazu",
+  "Comment": "Field aether currents only, built from the MSQ attune steps.",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 2010079,
+          "Position": {
+            "X": 339.1012,
+            "Y": 298.6953,
+            "Z": -280.01837
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetheryteShortcut": "Tempest - Ondo Cups",
+          "AetherCurrentId": 2818303
+        },
+        {
+          "DataId": 2010076,
+          "Position": {
+            "X": 50.18689,
+            "Y": 380.0868,
+            "Z": -512.0775
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818300
+        },
+        {
+          "DataId": 2010074,
+          "Position": {
+            "X": 358.20544,
+            "Y": 396.536,
+            "Z": -715.90753
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818298
+        },
+        {
+          "DataId": 2010083,
+          "Position": {
+            "X": -774.25806,
+            "Y": 63.1875,
+            "Z": -97.73407
+          },
+          "TerritoryId": 818,
+          "InteractionType": "AttuneAetherCurrent",
+          "AetherCurrentId": 2818307
+        }
+      ]
+    }
+  ]
+}
