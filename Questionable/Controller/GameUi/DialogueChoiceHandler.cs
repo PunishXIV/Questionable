@@ -250,131 +250,175 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                                                       _questController.GatheringQuest ??
                                                       _questController.StartedQuest;
         if (currentQuest != null)
-        {
-            Quest quest = currentQuest.Quest;
-            bool isTaxiStandUnlock = false;
-            List<EAetheryteLocation> favoredAetherytes = [];
-            if (checkAllSteps)
-            {
-                QuestSequence? sequence = currentQuest.FindSequence();
-                IEnumerable<DialogueChoice>? choices = sequence?.Steps.SelectMany(x => x.DialogueChoices);
-                if (choices != null)
-                    dialogueChoices.AddRange(choices.Select(x => new DialogueChoiceInfo(quest, x)));
-
-                isTaxiStandUnlock = sequence?.Steps.Any(x => x.InteractionType == EInteractionType.UnlockTaxiStand) ??
-                                    false;
-                favoredAetherytes = sequence?.Steps
-                                                          .Where(x => x is
-                                                          {
-                                                              InteractionType: EInteractionType
-                                                                  .RegisterFreeOrFavoredAetheryte,
-                                                              Aetheryte: not null
-                                                          })
-                                                          .Select(x => x.Aetheryte!.Value).ToList()
-                                                      ?? [];
-            }
-            else
-            {
-                QuestStep? step = null;
-                if (_territoryData.IsQuestBattleInstance(_clientState.TerritoryType))
-                {
-                    step = currentQuest.FindSequence()?.Steps
-                        .FirstOrDefault(x => x.InteractionType == EInteractionType.SinglePlayerDuty);
-                }
-
-                step ??= currentQuest.FindStep();
-
-                if (step == null)
-                    _logger.LogDebug("Ignoring current quest dialogue choices, no active step");
-                else
-                {
-                    dialogueChoices.AddRange(step.DialogueChoices.Select(x => new DialogueChoiceInfo(quest, x)));
-                    if (step.PurchaseMenu != null)
-                    {
-                        dialogueChoices.Add(new(quest, new()
-                        {
-                            Type = EDialogChoiceType.List,
-                            ExcelSheet = step.PurchaseMenu.ExcelSheet,
-                            Prompt = null,
-                            Answer = step.PurchaseMenu.Key
-                        }));
-                    }
-
-                    if (step is { InteractionType: EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: { } aetheryte })
-                        favoredAetherytes = [aetheryte];
-
-                    isTaxiStandUnlock = step.InteractionType == EInteractionType.UnlockTaxiStand;
-                }
-            }
-
-            if (isTaxiStandUnlock)
-            {
-                _logger.LogInformation("Adding chocobo taxi stand unlock dialogue choices");
-                dialogueChoices.Add(new(quest, new()
-                {
-                    Type = EDialogChoiceType.List,
-                    ExcelSheet = "transport/ChocoboTaxiStand",
-                    Prompt = ExcelRef.FromKey("TEXT_CHOCOBOTAXISTAND_00000_Q1_000_1"),
-                    Answer = ExcelRef.FromKey("TEXT_CHOCOBOTAXISTAND_00000_A1_000_3")
-                }));
-            }
-
-            if (favoredAetherytes.Any(x =>
-                _aetheryteFunctions.CanRegisterFreeOrFavored(x) ==
-                AetheryteRegistrationResult.FreeDestination))
-            {
-                _logger.LogInformation("Adding security token aetheryte unlock dialogue choice");
-                dialogueChoices.Add(new(quest, new()
-                {
-                    Type = EDialogChoiceType.List,
-                    ExcelSheet = "transport/Aetheryte",
-                    Prompt = ExcelRef.FromKey("TEXT_AETHERYTE_MAINMENU_TITLE"),
-                    PromptIsRegularExpression = true,
-                    Answer = ExcelRef.FromKey("TEXT_AETHERYTE_REGISTER_TOKEN_FAVORITE"),
-                    AnswerIsRegularExpression = true
-                }));
-            }
-            else if (favoredAetherytes.Any(x =>
-                _aetheryteFunctions.CanRegisterFreeOrFavored(x) ==
-                AetheryteRegistrationResult.FavoredDestination))
-            {
-                _logger.LogInformation("Adding favored aetheryte unlock dialogue choice");
-                dialogueChoices.Add(new(quest, new()
-                {
-                    Type = EDialogChoiceType.List,
-                    ExcelSheet = "transport/Aetheryte",
-                    Prompt = ExcelRef.FromKey("TEXT_AETHERYTE_MAINMENU_TITLE"),
-                    PromptIsRegularExpression = true,
-                    Answer = ExcelRef.FromKey("TEXT_AETHERYTE_REGISTER_FAVORITE"),
-                    AnswerIsRegularExpression = true
-                }));
-            }
-
-            ushort? targetTerritoryId = _travelDestinationResolver.FindTargetTerritory(currentQuest);
-            if (targetTerritoryId != null)
-            {
-                foreach (string? answer in answers)
-                {
-                    if (answer == null)
-                        continue;
-
-                    if (_travelDestinationResolver.TryFindWarp(targetTerritoryId.Value, answer, out uint? warpId, out string? warpText))
-                    {
-                        _logger.LogInformation("Adding warp {Id}, {Prompt}", warpId, warpText);
-                        dialogueChoices.Add(new(quest, new()
-                        {
-                            Type = EDialogChoiceType.List,
-                            ExcelSheet = null,
-                            Prompt = null,
-                            Answer = ExcelRef.FromSheetValue(warpText)
-                        }));
-                    }
-                }
-            }
-        }
+            AddCurrentQuestChoices(currentQuest, answers, checkAllSteps, dialogueChoices);
         else
             _logger.LogDebug("Ignoring current quest dialogue choices, no active quest");
 
+        AddTargetQuestChoices(dialogueChoices);
+
+        if (dialogueChoices.Count == 0)
+        {
+            _logger.LogDebug("No dialogue choices to check");
+            ReportPrompts(currentQuest?.Quest);
+            return null;
+        }
+
+        foreach ((Quest? quest, DialogueChoice dialogueChoice) in dialogueChoices)
+        {
+            if (!TryGetExpectedAnswer(quest, dialogueChoice, actualPrompt, out StringOrRegex? excelAnswer))
+                continue;
+
+            for (int i = 0; i < answers.Count; ++i)
+            {
+                _logger.LogDebug("Checking if {ActualAnswer} == {ExpectedAnswer}",
+                    answers[i], excelAnswer);
+                if (DialogueReferenceResolver.IsMatch(answers[i], excelAnswer))
+                    return UseAnswer(quest, actualPrompt, answers[i], i);
+            }
+        }
+
+        _logger.LogInformation("No matching answer found for {Prompt}.", actualPrompt);
+        return null;
+    }
+
+    private void AddCurrentQuestChoices(QuestController.QuestProgress currentQuest, List<string?> answers, bool checkAllSteps,
+        List<DialogueChoiceInfo> dialogueChoices)
+    {
+        Quest quest = currentQuest.Quest;
+        bool isTaxiStandUnlock = false;
+        List<EAetheryteLocation> favoredAetherytes = [];
+        if (checkAllSteps)
+        {
+            QuestSequence? sequence = currentQuest.FindSequence();
+            IEnumerable<DialogueChoice>? choices = sequence?.Steps.SelectMany(x => x.DialogueChoices);
+            if (choices != null)
+                dialogueChoices.AddRange(choices.Select(x => new DialogueChoiceInfo(quest, x)));
+
+            isTaxiStandUnlock = sequence?.Steps.Any(x => x.InteractionType == EInteractionType.UnlockTaxiStand) ??
+                                false;
+            favoredAetherytes = sequence?.Steps
+                                                      .Where(x => x is
+                                                      {
+                                                          InteractionType: EInteractionType
+                                                              .RegisterFreeOrFavoredAetheryte,
+                                                          Aetheryte: not null
+                                                      })
+                                                      .Select(x => x.Aetheryte!.Value).ToList()
+                                                  ?? [];
+        }
+        else
+        {
+            QuestStep? step = null;
+            if (_territoryData.IsQuestBattleInstance(_clientState.TerritoryType))
+            {
+                step = currentQuest.FindSequence()?.Steps
+                    .FirstOrDefault(x => x.InteractionType == EInteractionType.SinglePlayerDuty);
+            }
+
+            step ??= currentQuest.FindStep();
+
+            if (step == null)
+                _logger.LogDebug("Ignoring current quest dialogue choices, no active step");
+            else
+            {
+                dialogueChoices.AddRange(step.DialogueChoices.Select(x => new DialogueChoiceInfo(quest, x)));
+                if (step.PurchaseMenu != null)
+                {
+                    dialogueChoices.Add(new(quest, new()
+                    {
+                        Type = EDialogChoiceType.List,
+                        ExcelSheet = step.PurchaseMenu.ExcelSheet,
+                        Prompt = null,
+                        Answer = step.PurchaseMenu.Key
+                    }));
+                }
+
+                if (step is { InteractionType: EInteractionType.RegisterFreeOrFavoredAetheryte, Aetheryte: { } aetheryte })
+                    favoredAetherytes = [aetheryte];
+
+                isTaxiStandUnlock = step.InteractionType == EInteractionType.UnlockTaxiStand;
+            }
+        }
+
+        AddUnlockChoices(quest, isTaxiStandUnlock, favoredAetherytes, dialogueChoices);
+        AddWarpChoices(currentQuest, answers, dialogueChoices);
+    }
+
+    private void AddUnlockChoices(Quest quest, bool isTaxiStandUnlock, List<EAetheryteLocation> favoredAetherytes,
+        List<DialogueChoiceInfo> dialogueChoices)
+    {
+        if (isTaxiStandUnlock)
+        {
+            _logger.LogInformation("Adding chocobo taxi stand unlock dialogue choices");
+            dialogueChoices.Add(new(quest, new()
+            {
+                Type = EDialogChoiceType.List,
+                ExcelSheet = "transport/ChocoboTaxiStand",
+                Prompt = ExcelRef.FromKey("TEXT_CHOCOBOTAXISTAND_00000_Q1_000_1"),
+                Answer = ExcelRef.FromKey("TEXT_CHOCOBOTAXISTAND_00000_A1_000_3")
+            }));
+        }
+
+        if (favoredAetherytes.Any(x =>
+            _aetheryteFunctions.CanRegisterFreeOrFavored(x) ==
+            AetheryteRegistrationResult.FreeDestination))
+        {
+            _logger.LogInformation("Adding security token aetheryte unlock dialogue choice");
+            dialogueChoices.Add(new(quest, new()
+            {
+                Type = EDialogChoiceType.List,
+                ExcelSheet = "transport/Aetheryte",
+                Prompt = ExcelRef.FromKey("TEXT_AETHERYTE_MAINMENU_TITLE"),
+                PromptIsRegularExpression = true,
+                Answer = ExcelRef.FromKey("TEXT_AETHERYTE_REGISTER_TOKEN_FAVORITE"),
+                AnswerIsRegularExpression = true
+            }));
+        }
+        else if (favoredAetherytes.Any(x =>
+            _aetheryteFunctions.CanRegisterFreeOrFavored(x) ==
+            AetheryteRegistrationResult.FavoredDestination))
+        {
+            _logger.LogInformation("Adding favored aetheryte unlock dialogue choice");
+            dialogueChoices.Add(new(quest, new()
+            {
+                Type = EDialogChoiceType.List,
+                ExcelSheet = "transport/Aetheryte",
+                Prompt = ExcelRef.FromKey("TEXT_AETHERYTE_MAINMENU_TITLE"),
+                PromptIsRegularExpression = true,
+                Answer = ExcelRef.FromKey("TEXT_AETHERYTE_REGISTER_FAVORITE"),
+                AnswerIsRegularExpression = true
+            }));
+        }
+    }
+
+    private void AddWarpChoices(QuestController.QuestProgress currentQuest, List<string?> answers,
+        List<DialogueChoiceInfo> dialogueChoices)
+    {
+        ushort? targetTerritoryId = _travelDestinationResolver.FindTargetTerritory(currentQuest);
+        if (targetTerritoryId != null)
+        {
+            foreach (string? answer in answers)
+            {
+                if (answer == null)
+                    continue;
+
+                if (_travelDestinationResolver.TryFindWarp(targetTerritoryId.Value, answer, out uint? warpId, out string? warpText))
+                {
+                    _logger.LogInformation("Adding warp {Id}, {Prompt}", warpId, warpText);
+                    dialogueChoices.Add(new(currentQuest.Quest, new()
+                    {
+                        Type = EDialogChoiceType.List,
+                        ExcelSheet = null,
+                        Prompt = null,
+                        Answer = ExcelRef.FromSheetValue(warpText)
+                    }));
+                }
+            }
+        }
+    }
+
+    private void AddTargetQuestChoices(List<DialogueChoiceInfo> dialogueChoices)
+    {
         IGameObject? target = _targetManager.Target;
         if (target != null)
         {
@@ -396,109 +440,99 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                 }
             }
         }
+    }
 
-        if (dialogueChoices.Count == 0)
+    // False skips this choice. The answer can still be null when the choice applies.
+    private bool TryGetExpectedAnswer(Quest? quest, DialogueChoice dialogueChoice, string? actualPrompt,
+        out StringOrRegex? excelAnswer)
+    {
+        excelAnswer = null;
+        if (dialogueChoice.Type != EDialogChoiceType.List)
+            return false;
+
+        if (dialogueChoice.SpecialCondition == "NoDutyActions")
         {
-            _logger.LogDebug("No dialogue choices to check");
-            ReportPrompts(currentQuest?.Quest);
-            return null;
-        }
-
-        foreach ((Quest? quest, DialogueChoice dialogueChoice) in dialogueChoices)
-        {
-            if (dialogueChoice.Type != EDialogChoiceType.List)
-                continue;
-
-            if (dialogueChoice.SpecialCondition == "NoDutyActions")
+            try
             {
-                try
+                unsafe
                 {
-                    unsafe
+                    if (RaptureHotbarModule.Instance()->DutyActionsPresent)
                     {
-                        if (RaptureHotbarModule.Instance()->DutyActionsPresent)
-                        {
-                            _logger.LogInformation("NoDutyActions: actions present, skipping dialogue choice");
-                            continue;
-                        }
+                        _logger.LogInformation("NoDutyActions: actions present, skipping dialogue choice");
+                        return false;
                     }
                 }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Failed to check for duty actions");
-                    continue;
-                }
             }
-
-            if (dialogueChoice.Answer == null)
+            catch (Exception ex)
             {
-                _logger.LogDebug("Ignoring entry in DialogueChoices, no answer");
-                continue;
-            }
-
-            if (dialogueChoice.DataId != null && dialogueChoice.DataId != GameFunctions.GetBaseId(_targetManager.Target))
-            {
-                _logger.LogDebug(
-                    "Skipping entry in DialogueChoice expecting target dataId {ExpectedDataId}, actual target is {ActualTargetId}",
-                    dialogueChoice.DataId, GameFunctions.GetBaseId(_targetManager.Target));
-                continue;
-            }
-
-            StringOrRegex? excelPrompt = _dialogueReferenceResolver.Resolve(quest, dialogueChoice.ExcelSheet, dialogueChoice.Prompt,
-                dialogueChoice.PromptIsRegularExpression);
-            StringOrRegex? excelAnswer = _dialogueReferenceResolver.Resolve(quest, dialogueChoice.ExcelSheet, dialogueChoice.Answer,
-                dialogueChoice.AnswerIsRegularExpression);
-
-            if (actualPrompt == null && excelPrompt != null)
-            {
-                _logger.LogInformation("Unexpected excelPrompt: {ExcelPrompt}", excelPrompt);
-                continue;
-            }
-
-            if (actualPrompt != null &&
-                (excelPrompt == null || !DialogueReferenceResolver.IsMatch(actualPrompt, excelPrompt)))
-            {
-                _logger.LogInformation("Unexpected excelPrompt: {ExcelPrompt}, actualPrompt: {ActualPrompt}",
-                    excelPrompt, actualPrompt);
-                continue;
-            }
-
-            if (excelAnswer?.GetString() is string answer && answer.Contains(@"\<click>"))
-                excelAnswer = new(answer.Replace(@"\<click>", "<click>"));
-
-            for (int i = 0; i < answers.Count; ++i)
-            {
-                _logger.LogDebug("Checking if {ActualAnswer} == {ExpectedAnswer}",
-                    answers[i], excelAnswer);
-                if (DialogueReferenceResolver.IsMatch(answers[i], excelAnswer))
-                {
-                    string message = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} '{answers[i]}'";
-                    if (!_configuration.General.DontShowAnswerSuggestions)
-                    {
-                        if (_configuration.General.DontSkipCutscenes)
-                            _toastGui.ShowQuest(message);
-                        _chatGui.Print(message, CommandHandler.MessageTag, CommandHandler.TagColor);
-                    }
-                    _logger.LogInformation("Returning {Index}: '{Answer}' for '{Prompt}'",
-                        i, answers[i], actualPrompt);
-
-                    // ensure we only open the dialog once
-                    if (quest?.Id is SatisfactionSupplyNpcId)
-                    {
-                        if (_questController.GatheringQuest == null ||
-                            _questController.GatheringQuest.Sequence == 255)
-                            return null;
-
-                        _questController.GatheringQuest.SetSequence(1);
-                        _questStarter.StartGatheringQuest("SatisfactionSupply turn in");
-                    }
-
-                    return i;
-                }
+                _logger.LogError(ex, "Failed to check for duty actions");
+                return false;
             }
         }
 
-        _logger.LogInformation("No matching answer found for {Prompt}.", actualPrompt);
-        return null;
+        if (dialogueChoice.Answer == null)
+        {
+            _logger.LogDebug("Ignoring entry in DialogueChoices, no answer");
+            return false;
+        }
+
+        if (dialogueChoice.DataId != null && dialogueChoice.DataId != GameFunctions.GetBaseId(_targetManager.Target))
+        {
+            _logger.LogDebug(
+                "Skipping entry in DialogueChoice expecting target dataId {ExpectedDataId}, actual target is {ActualTargetId}",
+                dialogueChoice.DataId, GameFunctions.GetBaseId(_targetManager.Target));
+            return false;
+        }
+
+        StringOrRegex? excelPrompt = _dialogueReferenceResolver.Resolve(quest, dialogueChoice.ExcelSheet, dialogueChoice.Prompt,
+            dialogueChoice.PromptIsRegularExpression);
+        excelAnswer = _dialogueReferenceResolver.Resolve(quest, dialogueChoice.ExcelSheet, dialogueChoice.Answer,
+            dialogueChoice.AnswerIsRegularExpression);
+
+        if (actualPrompt == null && excelPrompt != null)
+        {
+            _logger.LogInformation("Unexpected excelPrompt: {ExcelPrompt}", excelPrompt);
+            return false;
+        }
+
+        if (actualPrompt != null &&
+            (excelPrompt == null || !DialogueReferenceResolver.IsMatch(actualPrompt, excelPrompt)))
+        {
+            _logger.LogInformation("Unexpected excelPrompt: {ExcelPrompt}, actualPrompt: {ActualPrompt}",
+                excelPrompt, actualPrompt);
+            return false;
+        }
+
+        if (excelAnswer?.GetString() is string answer && answer.Contains(@"\<click>"))
+            excelAnswer = new(answer.Replace(@"\<click>", "<click>"));
+
+        return true;
+    }
+
+    private int? UseAnswer(Quest? quest, string? actualPrompt, string? answer, int index)
+    {
+        string message = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} '{answer}'";
+        if (!_configuration.General.DontShowAnswerSuggestions)
+        {
+            if (_configuration.General.DontSkipCutscenes)
+                _toastGui.ShowQuest(message);
+            _chatGui.Print(message, CommandHandler.MessageTag, CommandHandler.TagColor);
+        }
+        _logger.LogInformation("Returning {Index}: '{Answer}' for '{Prompt}'",
+            index, answer, actualPrompt);
+
+        // ensure we only open the dialog once
+        if (quest?.Id is SatisfactionSupplyNpcId)
+        {
+            if (_questController.GatheringQuest == null ||
+                _questController.GatheringQuest.Sequence == 255)
+                return null;
+
+            _questController.GatheringQuest.SetSequence(1);
+            _questStarter.StartGatheringQuest("SatisfactionSupply turn in");
+        }
+
+        return index;
     }
 
     private void ReportPrompts(Quest? currentQuest)
