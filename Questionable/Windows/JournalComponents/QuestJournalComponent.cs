@@ -24,6 +24,7 @@ internal sealed class QuestJournalComponent
     private readonly Dictionary<JournalData.Genre, Counts> _genreCounts = [];
     private readonly Dictionary<JournalData.Section, Counts> _sectionCounts = [];
 
+    private readonly JournalRefresh _refresh = new(TimeSpan.FromSeconds(2));
     private List<FilteredSection> _filteredSections = [];
 
     internal FilterOptions Filter { get; } = new();
@@ -37,6 +38,9 @@ internal sealed class QuestJournalComponent
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Quests"));
         if (!tab)
             return;
+
+        if (_refresh.Tick(DateTime.Now, RecountChanged))
+            ApplyFilter();
 
         if (QstWidgets.SectionHeader(_L("Explanation"), "JournalExplanation", defaultOpen: false))
         {
@@ -340,12 +344,22 @@ internal sealed class QuestJournalComponent
 
     public void UpdateFilter()
     {
+        ApplyFilter();
+        RefreshCounts();
+    }
+
+    private void ApplyFilter() =>
         _filteredSections = journalData.Sections
             .Select(x => FilterSection(x, Filter))
             .Where(x => x.Categories.Count > 0)
             .ToList();
 
+    private bool RecountChanged()
+    {
+        Dictionary<JournalData.Genre, Counts> before = new(_genreCounts);
         RefreshCounts();
+        return before.Count != _genreCounts.Count ||
+               _genreCounts.Any(x => !before.TryGetValue(x.Key, out Counts? old) || old != x.Value);
     }
 
     private FilteredSection FilterSection(JournalData.Section section, FilterOptions filter)
