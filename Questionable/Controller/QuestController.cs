@@ -932,15 +932,16 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             !_gameFunctions.IsInCustomDelivery(CurrentQuest?.Quest))
             return;
 
-        if (StopBeforeTeleport &&
-            _taskQueue.CurrentTaskExecutor == null &&
-            _taskQueue.TryPeek(out ITask? nextTask) &&
-            TeleportTaskDetector.IsUpcomingTeleport(nextTask, _clientState.TerritoryType))
+        if (StopBeforeTeleport)
         {
-            _stopPolicy.ReportStopBeforeTeleport(nextTask);
-            _movementController.Stop();
-            Stop("Stop before teleport");
-            return;
+            _taskQueue.TryPeek(out ITask? nextTask);
+            if (TeleportTaskDetector.GetUpcoming(_taskQueue.CurrentTaskExecutor, nextTask) is { } teleport)
+            {
+                _stopPolicy.ReportStopBeforeTeleport(teleport);
+                _movementController.Stop();
+                Stop("Stop before teleport");
+                return;
+            }
         }
 
         base.UpdateCurrentTask();

@@ -184,6 +184,8 @@ internal static class AetheryteShortcut
         private bool _societyPause;
         private uint _overrideTerritoryId;
 
+        internal bool HasTeleported => _teleported;
+
         protected override bool Start() => !ShouldSkipTeleport();
 
         public override ETaskResult Update()

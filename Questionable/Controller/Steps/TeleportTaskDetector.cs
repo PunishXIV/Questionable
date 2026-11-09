@@ -1,23 +1,14 @@
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Common;
 
 namespace Questionable.Controller.Steps;
 
 internal static class TeleportTaskDetector
 {
-    public static bool IsUpcomingTeleport(ITask task, uint currentTerritoryId)
+    public static ITask? GetUpcoming(ITaskExecutor? current, ITask? next) => current switch
     {
-        if (task is AetheryteShortcut.Task aetheryte)
-        {
-            if (aetheryte.ExpectedTerritoryId != currentTerritoryId)
-                return true;
-
-            // Same-territory shortcuts with an explicit aetheryte still cast Teleport when the
-            // player is far from the destination (e.g. In from the Cold → Camp Broken Glass).
-            return aetheryte.TargetAetheryte != EAetheryteLocation.None;
-        }
-
-        return task is UseItem.IUseTask;
-    }
+        AetheryteShortcut.Executor { HasTeleported: false } => current.CurrentTask,
+        null when next is UseItem.IUseTask => next,
+        _ => null,
+    };
 }
