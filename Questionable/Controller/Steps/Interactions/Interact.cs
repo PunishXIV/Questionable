@@ -33,6 +33,12 @@ internal static class Interact
         return acceptableJobs.Contains(preferred) ? preferred : fallback;
     }
 
+    internal const int MaxUnmountTries = 3;
+
+    // A mount the game won't let you leave still gets the interaction once the tries run out.
+    internal static bool ShouldUnmount(bool mounted, bool isGatheringPoint, int tries) =>
+        mounted && !isGatheringPoint && tries < MaxUnmountTries;
+
     internal sealed class Factory(AutomatonIpc automatonIpc, BossModIpc bossModIpc, Configuration configuration, RedoUtil redoUtil,
         GilShopData gilShopData) : ITaskFactory
     {
@@ -158,6 +164,8 @@ internal static class Interact
         private EInteractionState _interactionState = EInteractionState.None;
         private bool _needsFacing;
         private bool _needsUnmount;
+        private int _unmountTries;
+        private bool _reportedStillMounted;
         private bool _reportedNoObject;
         private string? _loggedAcceptableJobs;
         private bool _reportedWrongJob;
@@ -354,6 +362,27 @@ internal static class Interact
                 return ETaskResult.StillRunning;
             }
 
+            // The game's own dismount on interact can pass for the finished interaction, so get off the mount first.
+            bool mounted = condition[ConditionFlag.Mounted];
+            bool isGatheringPoint = gameObject.ObjectKind == ObjectKind.GatheringPoint;
+            if (ShouldUnmount(mounted, isGatheringPoint, _unmountTries))
+            {
+                if (_unmountTries == 0)
+                    logger.LogInformation("Unmounting before interacting with {DataId}", Task.DataId);
+
+                _unmountTries++;
+                gameFunctions.Unmount();
+                _continueAt = DateTime.Now.AddSeconds(1);
+                return ETaskResult.StillRunning;
+            }
+
+            if (mounted && !isGatheringPoint && !_reportedStillMounted)
+            {
+                logger.LogWarning("Still mounted after {Tries} tries, interacting with {DataId} anyway",
+                    _unmountTries, Task.DataId);
+                _reportedStillMounted = true;
+            }
+
             TriggerInteraction(gameObject);
             return ETaskResult.StillRunning;
         }
@@ -379,6 +408,8 @@ internal static class Interact
         {
             InteractionType = Task.InteractionType;
             _loggedAcceptableJobs = null;
+            _unmountTries = 0;
+            _reportedStillMounted = false;
 
             _needsFacing = true;
             IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
