@@ -130,6 +130,12 @@ internal sealed class PriorityWindow : LWindow
 
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
                 ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
+
+            using (ImRaii.Disabled(!_questController.PriorityManager.HasPendingAcceptOnly))
+            {
+                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Inbox, _L("Change all to normal priority")))
+                    _questController.PriorityManager.ClearAllAcceptOnly();
+            }
         }
     }
 

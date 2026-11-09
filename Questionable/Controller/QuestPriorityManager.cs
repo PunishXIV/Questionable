@@ -34,6 +34,8 @@ internal sealed class QuestPriorityManager(
 
     public void ClearAcceptOnly(ElementId elementId) => _acceptOnly.Remove(elementId);
 
+    public void ClearAllAcceptOnly() => _acceptOnly.Clear();
+
     public IReadOnlyList<Quest> QueueOpenQuests(IEnumerable<ElementId> openQuests)
     {
         List<Quest> added = [];
