@@ -39,13 +39,13 @@ internal sealed class QuickAccessComponent
 
     public void Draw()
     {
-        DrawReloadDataButton();
-        ImGui.SameLine();
         DrawPriorityQuestsButton();
+        ImGui.SameLine();
+        DrawJournalProgressButton();
         ImGui.SameLine();
         DrawCleanUpButton();
         ImGui.SameLine();
-        DrawJournalProgressButton();
+        DrawReloadDataButton();
         ImGui.SameLine();
         DrawRebuildNavmeshButton();
         ImGui.SameLine();

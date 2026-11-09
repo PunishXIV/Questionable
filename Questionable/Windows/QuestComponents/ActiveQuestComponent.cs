@@ -734,11 +734,11 @@ internal sealed partial class ActiveQuestComponent
 
         if (isMinimized)
         {
-            quickAccessComponent.DrawReloadDataButton();
-            ImGui.SameLine();
             quickAccessComponent.DrawPriorityQuestsButton();
             ImGui.SameLine();
             quickAccessComponent.DrawJournalProgressButton();
+            ImGui.SameLine();
+            quickAccessComponent.DrawReloadDataButton();
         }
         else
         {

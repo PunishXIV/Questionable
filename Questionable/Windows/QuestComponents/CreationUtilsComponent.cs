@@ -47,19 +47,23 @@ internal sealed class CreationUtilsComponent
         if (objectTable[0] == null)
             return;
 
-        using (ImRaii.PushFont(UiBuilder.IconFont))
+        // Pathmaker info; the status lines below have their own toggles.
+        if (configuration.Advanced.Debug)
         {
-            ImGui.TextColored(QstTheme.TextMuted, FontAwesomeIcon.MapMarkerAlt.ToIconString());
-        }
+            using (ImRaii.PushFont(UiBuilder.IconFont))
+            {
+                ImGui.TextColored(QstTheme.TextMuted, FontAwesomeIcon.MapMarkerAlt.ToIconString());
+            }
 
-        ImGui.SameLine();
-        string territoryName = TerritoryData.GetNameAndId(clientState.TerritoryType);
-        ImGui.Text(territoryName);
-
-        if (gameFunctions.IsFlyingUnlockedHere())
-        {
             ImGui.SameLine();
-            ImGui.Text(SeIconChar.BotanistSprout.ToIconString());
+            string territoryName = TerritoryData.GetNameAndId(clientState.TerritoryType);
+            ImGui.Text(territoryName);
+
+            if (gameFunctions.IsFlyingUnlockedHere())
+            {
+                ImGui.SameLine();
+                ImGui.Text(SeIconChar.BotanistSprout.ToIconString());
+            }
         }
 
         if (configuration.Advanced.AdditionalStatusInformation)
@@ -182,20 +186,24 @@ internal sealed class CreationUtilsComponent
             }
         }
 
-        if (targetManager.Target != null)
+        bool debug = configuration.Advanced.Debug;
+        IGameObject? target = targetManager.Target;
+        if (debug)
         {
-            DrawCopyButton(targetManager.Target);
+            if (target != null)
+                DrawCopyButton(target);
+            else
+                DrawCopyButton();
             ImGui.SameLine();
-            DrawInteractionButtons(targetManager.Target);
-            DrawTargetDetails(targetManager.Target);
         }
-        else
+
+        DrawInteractionButtons(target);
+        if (debug)
         {
-            DrawCopyButton();
-            ImGui.SameLine();
-            DrawInteractionButtons();
+            if (target != null)
+                DrawTargetDetails(target);
+            DrawSavedDetails();
         }
-        DrawSavedDetails();
     }
 
     internal void DrawPathEditorButton(ElementId? questId, bool sameLine = false)
@@ -280,9 +288,9 @@ internal sealed class CreationUtilsComponent
         }
     }
 
-    private unsafe void DrawInteractionButtons(IGameObject? target = null)
+    private unsafe void DrawInteractionButtons(IGameObject? target)
     {
-        if (objectTable[0] != null)
+        if (configuration.Advanced.Debug && objectTable[0] != null)
         {
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MapPin))
             {
