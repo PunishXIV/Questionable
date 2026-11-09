@@ -40,6 +40,7 @@ internal sealed class Configuration : IPluginConfiguration
     public WindowConfig ConfigWindowConfig { get; } = new();
     public PriorityConfiguration Priority { get; } = new();
     public PathDataConfiguration PathData { get; } = new();
+    public JournalConfiguration Journal { get; } = new();
     public int Version { get; set; } = PluginConfigVersion;
 
     public bool AutoRedeemOffResetApplied { get; set; }
@@ -384,6 +385,16 @@ internal sealed class Configuration : IPluginConfiguration
     {
         public Dictionary<string, List<string>> Presets { get; set; } = [];
         public bool AddPresetsToList { get; set; }
+    }
+
+    internal sealed class JournalConfiguration
+    {
+        public bool AvailableOnly { get; set; }
+        public bool BlueOnly { get; set; }
+        public bool HideNoPaths { get; set; }
+        public bool HideCompleted { get; set; }
+        public bool HideUnobtainable { get; set; }
+        public bool HideRepeatable { get; set; }
     }
 
     internal sealed class PathDataConfiguration

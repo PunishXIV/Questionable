@@ -14,7 +14,9 @@ internal sealed class QuestJournalComponent
     QuestFunctions questFunctions,
     QuestJournalUtils questJournalUtils,
     JournalTable journalTable,
-    RedoUtil redoUtil)
+    RedoUtil redoUtil,
+    Configuration configuration,
+    IDalamudPluginInterface pluginInterface)
 {
     private readonly Dictionary<JournalData.Category, Counts> _categoryCounts = [];
     private readonly Dictionary<JournalData.Genre, Counts> _genreCounts = [];
@@ -23,7 +25,7 @@ internal sealed class QuestJournalComponent
     private readonly JournalRefresh _refresh = new(TimeSpan.FromSeconds(2));
     private List<FilteredSection> _filteredSections = [];
 
-    internal FilterOptions Filter { get; } = new();
+    internal FilterOptions Filter { get; } = FilterOptions.From(configuration.Journal);
 
     private bool _allOpen;
     private bool _applyOpenState = true;
@@ -184,6 +186,12 @@ internal sealed class QuestJournalComponent
 
             ImGui.TreePop();
         }
+    }
+
+    internal void SaveFilter()
+    {
+        Filter.SaveTo(configuration.Journal);
+        pluginInterface.SavePluginConfig(configuration);
     }
 
     public void UpdateFilter()
@@ -374,6 +382,27 @@ internal sealed class QuestJournalComponent
         public bool HideUnobtainable;
         public bool HideRepeatable;
         public string SearchText = string.Empty;
+
+        // The search text isn't saved, so the journal reopens unfiltered by name.
+        public static FilterOptions From(Configuration.JournalConfiguration saved) => new()
+        {
+            AvailableOnly = saved.AvailableOnly,
+            BlueOnly = saved.BlueOnly,
+            HideNoPaths = saved.HideNoPaths,
+            HideCompleted = saved.HideCompleted,
+            HideUnobtainable = saved.HideUnobtainable,
+            HideRepeatable = saved.HideRepeatable,
+        };
+
+        public void SaveTo(Configuration.JournalConfiguration saved)
+        {
+            saved.AvailableOnly = AvailableOnly;
+            saved.BlueOnly = BlueOnly;
+            saved.HideNoPaths = HideNoPaths;
+            saved.HideCompleted = HideCompleted;
+            saved.HideUnobtainable = HideUnobtainable;
+            saved.HideRepeatable = HideRepeatable;
+        }
 
         public FilterOptions WithoutName()
         {

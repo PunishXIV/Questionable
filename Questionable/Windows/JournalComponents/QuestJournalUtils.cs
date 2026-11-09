@@ -219,6 +219,7 @@ internal sealed class QuestJournalUtils
             ImGui.Checkbox(_L("Hide Repeatable Quests"), ref journal.Filter.HideRepeatable))
         {
             journal.UpdateFilter();
+            journal.SaveFilter();
         }
     }
 
