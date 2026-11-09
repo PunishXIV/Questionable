@@ -1,6 +1,8 @@
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging.Abstractions;
+using NSubstitute;
 using Questionable.Controller;
 using Questionable.Controller.Steps;
 using Questionable.Controller.Utils;
@@ -29,7 +31,7 @@ internal static class TestQuestController
         Set(controller, "_selection", new QuestSelectionController(configuration));
         Set(controller, "_recovery", recovery ?? new QuestRecoveryController(NullLogger<QuestRecoveryController>.Instance));
         Set(controller, "_stopPolicy", stopPolicy ??
-            new QuestStopPolicy(configuration, _ => { }, _ => { }, NullLogger<QuestStopPolicy>.Instance));
+            new QuestStopPolicy(configuration, _ => { }, _ => { }, _ => { }, Substitute.For<IChatGui>(), NullLogger<QuestStopPolicy>.Instance));
         Set(controller, "_tracker", tracker ??
             new QuestProgressTracker(null!, null!, highlight!, NullLogger<QuestProgressTracker>.Instance));
         if (highlight != null)

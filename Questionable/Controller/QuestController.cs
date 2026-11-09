@@ -52,7 +52,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private readonly QuestSelectionController _selection;
     private IQuestSelectionState? _selectionState;
     private readonly AlliedSocietyQuestFunctions _alliedSocietyQuests;
-    private readonly IChatGui _chatGui;
     private readonly IClientState _clientState;
     private readonly CombatController _combatController;
     private readonly ICondition _condition;
@@ -78,7 +77,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private readonly QuestStopPolicy _stopPolicy;
     private readonly TaskCreator _taskCreator;
     private readonly IToastGui _toastGui;
-    private readonly NotificationMasterIpc _notificationMasterIpc;
     private bool _disposed;
     private EAutomationType _automationType;
 
@@ -139,7 +137,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _priorityManager = priorityManager;
         _tracker = tracker;
         _keyState = keyState;
-        _chatGui = chatGui;
         _condition = condition;
         _toastGui = toastGui;
         _configuration = configuration;
@@ -149,7 +146,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _alliedSocietyQuests = alliedSocietyQuests;
         _logger = logger;
         _highlightObject = highlightObject;
-        _notificationMasterIpc = notificationMasterIpc;
 
         try
         {
@@ -328,11 +324,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 short currentLevel = PlayerState.Instance()->CurrentLevel;
                 if (currentLevel >= _configuration.Stop.TargetLevel && IsRunning)
                 {
-                    _logger.LogInformation("Reached level stop condition (level: {CurrentLevel}, target: {TargetLevel})", currentLevel, _configuration.Stop.TargetLevel);
-                    var msg = _LF("Reached or exceeded target level {0}.", _configuration.Stop.TargetLevel);
-                    _chatGui.Print(msg, CommandHandler.MessageTag, CommandHandler.TagColor);
-                    if (_configuration.Notifications.NotifyOnStopCondition)
-                        _notificationMasterIpc.Notify(msg);
+                    _stopPolicy.ReportLevelReached(currentLevel);
                     Stop($"Level stop condition reached [{currentLevel}]");
                     return;
                 }
@@ -425,10 +417,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 if (stopPoint == EStopPoint.Configured)
                 {
                     ElementId questId = StartedQuest.Quest.Id;
-                    _logger.LogInformation("Reached stopping point (quest: {QuestId})", questId);
-                    var msg = _LF("Completed quest '{0}', which is configured as a stopping point.", StartedQuest.Quest.Info.Name);
-                    _chatGui.Print(msg, CommandHandler.MessageTag, CommandHandler.TagColor);
-                    _notificationMasterIpc.Notify(msg);
+                    _stopPolicy.ReportStopPoint(StartedQuest.Quest);
                     StartedQuest = null;
                     Stop($"Stopping point [{questId}] reached");
                     if (_configuration.Stop.RemoveWhenCompleteConditionMet)
@@ -439,11 +428,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 if (stopPoint == EStopPoint.AfterCurrentQuest)
                 {
                     ElementId questId = StartedQuest.Quest.Id;
-                    _logger.LogInformation("Stopping after current quest as requested (quest: {QuestId})", questId);
-                    var msg = _LF("Completed quest '{0}', stopping as requested.", StartedQuest.Quest.Info.Name);
-                    _chatGui.Print(msg, CommandHandler.MessageTag, CommandHandler.TagColor);
-                    if (_configuration.Notifications.NotifyOnStopCondition)
-                        _notificationMasterIpc.Notify(msg);
+                    _stopPolicy.ReportStopAfterQuest(StartedQuest.Quest);
                     StartedQuest = null;
                     Stop($"Stop after quest [{questId}]");
                     return;
@@ -514,11 +499,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                             int playerLevel = PlayerState.Instance()->CurrentLevel;
                             if (QuestSelectionController.IsLevelTooHigh(playerLevel, quest))
                             {
-                                _logger.LogInformation(
-                                    "Stopping automation, player level ({PlayerLevel}) < quest level ({QuestLevel}",
-                                    playerLevel, quest.Info.Level);
-                                _chatGui.Print(_LF("Stopped: '{0}' needs level {1} (you're level {2}).",
-                                    quest.Info.Name, quest.Info.Level, playerLevel), CommandHandler.MessageTag, CommandHandler.TagColor);
+                                _stopPolicy.ReportLevelTooLow(quest.Info, playerLevel);
                                 Stop("Quest level too high");
                             }
                             else
@@ -552,10 +533,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 if (AutomationType != EAutomationType.Manual &&
                     _questFunctions.GetLevelLockedMainScenarioQuest() is var (lockedMsq, playerLevel))
                 {
-                    _logger.LogInformation("Stopping automation, next MSQ {QuestId} needs level {QuestLevel} (player level {PlayerLevel})",
-                        lockedMsq.QuestId, lockedMsq.Level, playerLevel);
-                    _chatGui.Print(_LF("Stopped: '{0}' needs level {1} (you're level {2}).",
-                        lockedMsq.Name, lockedMsq.Level, playerLevel), CommandHandler.MessageTag, CommandHandler.TagColor);
+                    _stopPolicy.ReportMainScenarioLocked(lockedMsq, playerLevel);
                 }
 
                 Stop("No quest active");
@@ -599,8 +577,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 case EStepState.UnknownSequence:
                     DebugState = $"Sequence {questToRun.Sequence} not found";
                     if (AutomationType != EAutomationType.Manual)
-                        _chatGui.PrintError(_LF("Stopped: no path for '{0}' sequence {1}. Try Reload Data or report it with Stuck?",
-                            questToRun.Quest.Info.Name, questToRun.Sequence), CommandHandler.MessageTag, CommandHandler.TagColor);
+                        _stopPolicy.ReportNoSequence(questToRun);
                     Stop("Unknown sequence");
                     return;
 
@@ -613,8 +590,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 case EStepState.UnknownStep:
                     DebugState = "Step not found";
                     if (AutomationType != EAutomationType.Manual)
-                        _chatGui.PrintError(_LF("Stopped: no path for '{0}' sequence {1} step {2}. Try Reload Data or report it with Stuck?",
-                            questToRun.Quest.Info.Name, questToRun.Sequence, questToRun.Step), CommandHandler.MessageTag, CommandHandler.TagColor);
+                        _stopPolicy.ReportNoStep(questToRun);
                     Stop("Unknown step");
                     return;
             }
@@ -716,21 +692,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return;
 
         if (_questRegistry.TryGetQuest(questId, out Quest? quest))
-        {
-            _logger.LogInformation("Reached accept stopping point (quest: {QuestId})", questId);
-            if (configStop)
-            {
-                _chatGui.Print(
-                    $"Accepted quest '{quest.Info.Name}', which is configured as a stopping point.",
-                    CommandHandler.MessageTag, CommandHandler.TagColor);
-            }
-            else
-            {
-                _chatGui.Print(
-                    $"Accepted quest '{quest.Info.Name}', stopping as requested.",
-                    CommandHandler.MessageTag, CommandHandler.TagColor);
-            }
-        }
+            _stopPolicy.ReportAcceptStop(quest, configStop);
 
         StartedQuest = null;
         Stop(configStop ? $"Accept stopping point [{questId}] reached" : $"Stop after accept [{questId}]");
@@ -838,8 +800,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     bool IQuestRecoveryHost.ClearTasks() => ClearTasksInternal();
     void IQuestRecoveryHost.StopMovement() => _movementController.Stop();
     void IQuestRecoveryHost.RetryCurrentStep() => ExecuteNextStep();
-    void IQuestRecoveryHost.ReportDeathLimit(int deaths) =>
-        _chatGui.PrintError($"You died {deaths} times, manual intervention needed.", CommandHandler.MessageTag, CommandHandler.TagColor);
+    void IQuestRecoveryHost.ReportDeathLimit(int deaths) => _stopPolicy.ReportDeathLimit(deaths);
 
     unsafe bool IQuestRecoveryHost.TryConfirmReturnPrompt()
     {
@@ -931,11 +892,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             _taskQueue.TryPeek(out ITask? nextTask) &&
             TeleportTaskDetector.IsUpcomingTeleport(nextTask, _clientState.TerritoryType))
         {
-            string stopping = _L("Stopping before teleport as requested.");
-            _logger.LogInformation("{Stopping} (upcoming task: {Task})", stopping, nextTask);
-            _chatGui.Print(stopping, CommandHandler.MessageTag, CommandHandler.TagColor);
-            if (_configuration.Notifications.NotifyOnStopCondition)
-                _notificationMasterIpc.Notify(stopping);
+            _stopPolicy.ReportStopBeforeTeleport(nextTask);
             _movementController.Stop();
             Stop("Stop before teleport");
             return;
@@ -1028,10 +985,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "Failed to create tasks [{QuestId}, {Sequence}, {Step}]",
-                    CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
-            _chatGui.PrintError("Failed to start next task sequence, please check /xllog for details.", CommandHandler.MessageTag, CommandHandler.TagColor);
-            _notificationMasterIpc.NotifyOnFailure(_L("Failed to start next task sequence, stopping.") + " " + _L("Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button."));
+            _stopPolicy.ReportTasksFailed(e, CurrentQuest);
             Stop("Tasks failed to create");
         }
     }

@@ -100,8 +100,8 @@ public sealed class QuestTaskQueueTests
             configuration.Stop.RunCommandAfterStop = true;
             configuration.Stop.CommandAfterStop = "/after-stop";
             Controller = TestQuestController.Create(Queue, _operations, _highlight, tracker, configuration,
-                stopPolicy: new QuestStopPolicy(configuration, _ => StopEffects.Add("notify"),
-                    StopEffects.Add, NullLogger<QuestStopPolicy>.Instance));
+                stopPolicy: new QuestStopPolicy(configuration, _ => StopEffects.Add("notify"), _ => { },
+                    StopEffects.Add, Substitute.For<IChatGui>(), NullLogger<QuestStopPolicy>.Instance));
             Controller.AutomationType = automatic
                 ? QuestController.EAutomationType.Automatic
                 : QuestController.EAutomationType.Manual;

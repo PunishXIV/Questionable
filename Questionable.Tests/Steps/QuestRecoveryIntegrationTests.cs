@@ -81,8 +81,8 @@ public sealed class QuestRecoveryIntegrationTests
         configuration.Stop.CommandAfterStop = "/after-stop";
         List<string> stopEffects = [];
         var controller = TestQuestController.Create(queue, operations, highlight, configuration: configuration,
-            recovery: recovery, stopPolicy: new QuestStopPolicy(configuration, _ => stopEffects.Add("notify"),
-                stopEffects.Add, NullLogger<QuestStopPolicy>.Instance));
+            recovery: recovery, stopPolicy: new QuestStopPolicy(configuration, _ => stopEffects.Add("notify"), _ => { },
+                stopEffects.Add, Substitute.For<IChatGui>(), NullLogger<QuestStopPolicy>.Instance));
         if (uiLabel != null)
             controller.AutomationType = QuestController.EAutomationType.Automatic;
         controller.IsQuestWindowOpenFunction = () => false;
