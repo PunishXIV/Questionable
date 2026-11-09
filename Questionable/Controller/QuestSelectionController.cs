@@ -85,6 +85,18 @@ internal sealed class QuestSelectionController(Configuration configuration)
                (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsAccepted.Count ?? 0) == 0;
     }
 
+    // A finished quest only counts once it's no longer accepted (repeatables). After a stop there's no started quest,
+    // so an accepted journal quest counts instead.
+    internal static bool IsOtherQuestRunning(QuestProgress? started, ElementId priorityQuestId, IQuestSelectionState state,
+        Func<ElementId?> journalQuest)
+    {
+        if (started != null)
+            return started.Quest.Id != priorityQuestId &&
+                   (!state.IsComplete(started.Quest.Id) || state.IsAccepted(started.Quest.Id));
+
+        return journalQuest() is { } questId && questId != priorityQuestId && state.IsAccepted(questId);
+    }
+
     // The list is only read once nothing else blocks the switch.
     public static ElementId? PickPriorityQuest(QuestSlots slots, bool stopRequested,
         Func<IEnumerable<PriorityQuestInfo>> priorityQuests)
@@ -135,6 +147,10 @@ internal sealed class QuestSelectionController(Configuration configuration)
             if (candidate == null || !CanSwitchToPriorityQuest(context.Slots.Started, candidate.Id, context.State.InDuty))
                 return null;
 
+            if (!context.CanInterrupt &&
+                IsOtherQuestRunning(context.Slots.Started, candidate.Id, context.State, () => context.Current.CurrentQuest))
+                return null;
+
             return new(EQuestSource.Priority, null, candidate.Id, context.State.GetSequence(candidate.Id),
                 context.Current.State);
         }
@@ -171,7 +187,8 @@ internal sealed class QuestSelectionContext(
     IReadOnlyList<Quest> priorityQuests,
     Func<ElementId, bool> isAcceptOnly,
     EAutomationType automation,
-    IQuestSelectionState state)
+    IQuestSelectionState state,
+    bool canInterrupt = true)
 {
     private QuestReference? _current;
 
@@ -179,6 +196,7 @@ internal sealed class QuestSelectionContext(
     public IReadOnlyList<Quest> PriorityQuests => priorityQuests;
     public Func<ElementId, bool> IsAcceptOnly => isAcceptOnly;
     public IQuestSelectionState State => state;
+    public bool CanInterrupt => canInterrupt;
     public QuestReference Current => _current ??= state.GetCurrentQuest(allowNewMsq: automation != EAutomationType.SingleQuestB);
 }
 

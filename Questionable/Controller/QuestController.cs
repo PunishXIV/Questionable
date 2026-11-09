@@ -393,7 +393,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             }
 
             QuestChoice choice = QuestSelectionController.Choose(new QuestSelectionContext(Slots, _priorityManager.Quests,
-                _priorityManager.IsAcceptOnly, AutomationType, SelectionState));
+                _priorityManager.IsAcceptOnly, AutomationType, SelectionState, _priorityManager.CanInterrupt));
             if (!TryGetQuestToRun(choice, out QuestProgress? questToRun))
                 return;
 
@@ -1137,6 +1137,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         // which would reset the accept sequence every step boundary and loop it forever before it ever reaches the Interact/accept step.
         if (NextQuest?.Quest.Id == next.Id)
             return true;
+
+        if (!_priorityManager.CanInterrupt && QuestSelectionController.IsOtherQuestRunning(StartedQuest, next.Id,
+                SelectionState, () => SelectionState.GetCurrentQuest(allowNewMsq: true).CurrentQuest))
+            return false;
 
         _logger.LogInformation("Accept-all: queueing {QuestId} to be accepted before other work", next.Id);
         SetNextQuest(next);

@@ -35,6 +35,10 @@ public sealed class QuestSelectionControllerTests
     private QuestChoice Choose(QuestSlots slots, EAutomationType automation = EAutomationType.Automatic, params Quest[] priority) =>
         QuestSelectionController.Choose(new QuestSelectionContext(slots, priority, _acceptOnly.Contains, automation, _state));
 
+    private QuestChoice ChooseWaiting(QuestSlots slots, params Quest[] priority) =>
+        QuestSelectionController.Choose(new QuestSelectionContext(slots, priority, _acceptOnly.Contains,
+            EAutomationType.Automatic, _state, canInterrupt: false));
+
     private static QuestSlots Slots(QuestProgress? started = null, QuestProgress? next = null, QuestProgress? gathering = null,
         QuestProgress? simulated = null) => new(started, next, gathering, simulated);
 
@@ -147,6 +151,42 @@ public sealed class QuestSelectionControllerTests
         _state.InDuty = inDuty;
 
         Assert.Equal((EQuestSource)expected, Choose(Slots(started: Progress(70, interruptible: interruptible)), priority: [priority]).Source);
+    }
+
+    [Fact]
+    public void NoInterrupt_WaitsForStartedQuest()
+    {
+        Quest priority = NewQuest(10);
+        QuestProgress started = Progress(70);
+        _state.Ready.Add(priority.Id);
+
+        Assert.Equal(EQuestSource.Journal, ChooseWaiting(Slots(started: started), priority).Source);
+        _state.Complete.Add(started.Quest.Id);
+        _state.Accepted.Add(started.Quest.Id); // a completed repeatable picked up again
+        Assert.Equal(EQuestSource.Journal, ChooseWaiting(Slots(started: started), priority).Source);
+        _state.Accepted.Remove(started.Quest.Id);
+        Assert.Equal(EQuestSource.Priority, ChooseWaiting(Slots(started: started), priority).Source);
+    }
+
+    [Fact]
+    public void NoInterrupt_KeepsRunningPriority()
+    {
+        Quest priority = NewQuest(10);
+        _state.Accepted.Add(priority.Id);
+
+        Assert.Equal(EQuestSource.Priority, ChooseWaiting(Slots(started: new(priority, 1)), priority).Source);
+    }
+
+    [Fact]
+    public void NoInterrupt_AfterStopWaitsForJournal()
+    {
+        Quest priority = NewQuest(10);
+        _state.Ready.Add(priority.Id);
+        _state.Current = new QuestReference(new QuestId(70), 1, MainScenarioQuestState.Available);
+
+        Assert.Equal(EQuestSource.Priority, ChooseWaiting(Slots(), priority).Source);
+        _state.Accepted.Add(new QuestId(70));
+        Assert.Equal(EQuestSource.Journal, ChooseWaiting(Slots(), priority).Source);
     }
 
     [Theory]

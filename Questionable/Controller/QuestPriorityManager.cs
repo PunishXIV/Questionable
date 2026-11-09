@@ -16,6 +16,9 @@ internal sealed class QuestPriorityManager(
     private readonly HashSet<ElementId> _acceptOnly = [];
 
     public IReadOnlyList<Quest> Quests => _quests;
+
+    // Session only: off holds the list until the running quest is done.
+    public bool CanInterrupt { get; set; } = true;
     public int Count => _quests.Count;
     public bool IsEmpty => _quests.Count == 0;
 

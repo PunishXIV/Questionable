@@ -102,6 +102,11 @@ internal sealed class PriorityWindow : LWindow
         ImGui.Separator();
         ImGui.Spacing();
         ImGui.Text(_L("Quests to do first:"));
+        bool canInterrupt = _questController.PriorityManager.CanInterrupt;
+        if (ImGui.Checkbox(_L("Interrupt the current quest"), ref canInterrupt))
+            _questController.PriorityManager.CanInterrupt = canInterrupt;
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip(_L("When off, quests added here wait until the current quest is done.\nTurns back on when the plugin restarts."));
         _questSelector.DrawSelection();
         DrawQuestList();
 
