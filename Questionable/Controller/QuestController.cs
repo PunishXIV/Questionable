@@ -71,6 +71,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private readonly QuestProgressTracker _tracker;
     private readonly QuestBattleConfigComponent _questBattleConfig;
     private readonly QuestStopPolicy _stopPolicy;
+    private readonly StuckWatch _stuckWatch;
     private readonly TaskCreator _taskCreator;
     private readonly IToastGui _toastGui;
     private bool _disposed;
@@ -112,6 +113,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         GameGuiAdapter gameGui,
         QuestBattleConfigComponent questBattleConfig,
         QuestStopPolicy stopPolicy,
+        StuckWatch stuckWatch,
         AlliedSocietyQuestFunctions alliedSocietyQuests)
         : base(chatGui, condition, serviceProvider, interruptHandler, toastClassifier,
             notificationMasterIpc.NotifyOnFailure, logger)
@@ -139,6 +141,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _taskCreator = taskCreator;
         _questBattleConfig = questBattleConfig;
         _stopPolicy = stopPolicy;
+        _stuckWatch = stuckWatch;
         _alliedSocietyQuests = alliedSocietyQuests;
         _logger = logger;
         _highlightObject = highlightObject;
@@ -346,6 +349,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return;
         }
 
+        if (UpdateStuckWatch())
+            return;
+
         try
         {
             UpdateCurrentTask();
@@ -358,6 +364,49 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     }
 
     internal bool UpdateStopAndDeath() => _recovery.Update(this);
+
+    private bool UpdateStuckWatch()
+    {
+        Configuration.GeneralConfiguration general = _configuration.General;
+        if (!general.AutoStepRefreshEnabled || AutomationType != EAutomationType.Automatic || !IsRunning ||
+            CurrentQuest is not { } current || _objectTable[0] is not { } player)
+        {
+            _stuckWatch.Reset();
+            return false;
+        }
+
+        int delay = Math.Clamp(general.AutoStepRefreshDelaySeconds, 30, 180);
+        int maxTries = Math.Clamp(general.AutoStepRefreshMaxTries, 1, 10);
+        ITask? task = _taskQueue.CurrentTaskExecutor?.CurrentTask;
+        bool paused = IsStuckPaused() || !StuckWatch.CanRetry(current.FindStep()?.InteractionType, task);
+        StuckWatch.EResult result = _stuckWatch.Update((current.Quest.Id, current.Sequence, current.Step),
+            task, player.Position, paused, TimeSpan.FromSeconds(delay), maxTries);
+        switch (result)
+        {
+            case StuckWatch.EResult.Retry:
+                _stopPolicy.ReportStuckRetry(current, delay, _stuckWatch.Tries, maxTries);
+                ExecuteNextStep();
+                return true;
+            case StuckWatch.EResult.Stop:
+                _stopPolicy.ReportStuckLimit(current.Quest, maxTries);
+                _stuckWatch.Reset();
+                Stop("Stuck after retries");
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private bool IsStuckPaused() =>
+        HasExternalOperation || _recovery.IsRecovering || DateTime.Now < _safeAnimationEnd ||
+        _condition[ConditionFlag.InCombat] || _condition[ConditionFlag.Unconscious] ||
+        _condition[ConditionFlag.BoundByDuty] || _condition[ConditionFlag.BoundByDuty56] ||
+        _condition[ConditionFlag.BoundByDuty95] || _condition[ConditionFlag.InDeepDungeon] ||
+        _condition[ConditionFlag.WatchingCutscene] || _condition[ConditionFlag.WatchingCutscene78] ||
+        _condition[ConditionFlag.OccupiedInCutSceneEvent] ||
+        _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51] ||
+        _condition[ConditionFlag.Crafting] || _condition[ConditionFlag.Gathering] || _condition[ConditionFlag.Fishing] ||
+        _gameFunctions.IsOccupied();
 
     private void UpdateCurrentQuest()
     {

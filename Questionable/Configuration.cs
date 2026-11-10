@@ -39,6 +39,7 @@ internal sealed class Configuration : IPluginConfiguration
     public int Version { get; set; } = PluginConfigVersion;
 
     public bool AutoRedeemOffResetApplied { get; set; }
+    public bool StepRefreshResetApplied { get; set; }
 
     public Dictionary<string, Dictionary<string, JObject>> Profiles { get; set; } = [];
 
@@ -272,6 +273,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool ClaimMail { get; set; }
         public bool AutoStepRefreshEnabled { get; set; }
         public int AutoStepRefreshDelaySeconds { get; set; } = 30;
+        public int AutoStepRefreshMaxTries { get; set; } = 3;
     }
 
     internal sealed class StopConfiguration
@@ -373,6 +375,22 @@ internal sealed class Configuration : IPluginConfiguration
             advancedPatch.Remove(nameof(AdvancedConfiguration.AutoRedeemRewardItems));
             if (!advancedPatch.HasValues)
                 profile.Remove(nameof(Advanced));
+        }
+    }
+
+    // The old auto refresh was hidden in 2025 with some users' saved value still on.
+    internal void ResetAutoStepRefresh()
+    {
+        _general.AutoStepRefreshEnabled = false;
+
+        foreach (Dictionary<string, JObject> profile in Profiles.Values)
+        {
+            if (!profile.TryGetValue(nameof(General), out JObject? generalPatch))
+                continue;
+
+            generalPatch.Remove(nameof(GeneralConfiguration.AutoStepRefreshEnabled));
+            if (!generalPatch.HasValues)
+                profile.Remove(nameof(General));
         }
     }
 

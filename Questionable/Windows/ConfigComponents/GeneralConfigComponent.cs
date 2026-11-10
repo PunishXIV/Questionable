@@ -462,47 +462,49 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Configuration.General.IgnoreNextQuestIfPrioSet = ignoreNextQuestIfPrioSet;
                 Save();
             }
-#if false
-        ImGui.Spacing();
-        bool autoStepRefreshEnabled = Configuration.General.AutoStepRefreshEnabled;
-        if (ImGui.Checkbox(_L("Automatically refresh quest steps when stuck (WIP see tooltip)"), ref autoStepRefreshEnabled))
-        {
-            Configuration.General.AutoStepRefreshEnabled = autoStepRefreshEnabled;
-            Save();
-        }
 
-        ImGui.SameLine();
-        using (ImRaii.PushFont(UiBuilder.IconFont))
-        {
-            ImGui.TextDisabled(FontAwesomeIcon.InfoCircle.ToIconString());
-        }
-
-        if (ImGui.IsItemHovered())
-        {
-            using (ImRaii.Tooltip())
+            bool autoStepRefreshEnabled = Configuration.General.AutoStepRefreshEnabled;
+            if (ImGui.Checkbox(_L("Retry the current step when stuck"), ref autoStepRefreshEnabled))
             {
-                ImGui.Text(_L("Questionable will automatically refresh a quest step if it appears to be stuck after the configured delay."));
-                ImGui.Text(_L("This helps resume automated quest completion when interruptions occur."));
-                ImGui.Text(_L("WIP feature, rather than remove it, this is a warning that it isn't fully complete."));
-            }
-        }
-
-        using (ImRaii.Disabled(!autoStepRefreshEnabled))
-        {
-            ImGui.Indent();
-            int autoStepRefreshDelay = Configuration.General.AutoStepRefreshDelaySeconds;
-            ImGui.SetNextItemWidth(150f);
-            if (ImGui.SliderInt(_L("Refresh delay (seconds)"), ref autoStepRefreshDelay, 30, 180))
-            {
-                Configuration.General.AutoStepRefreshDelaySeconds = autoStepRefreshDelay;
+                Configuration.General.AutoStepRefreshEnabled = autoStepRefreshEnabled;
                 Save();
             }
 
-            ImGui.TextColored(new System.Numerics.Vector4(0.7f, 0.7f, 0.7f, 1.0f),
-                _LF("Quest steps will refresh automatically after {0} seconds if no progress is made.", autoStepRefreshDelay));
-            ImGui.Unindent();
-        }
-#endif
+            ImGui.SameLine();
+            using (ImRaii.PushFont(UiBuilder.IconFont))
+            {
+                ImGui.TextDisabled(FontAwesomeIcon.InfoCircle.ToIconString());
+            }
+
+            if (ImGui.IsItemHovered())
+            {
+                using (ImRaii.Tooltip())
+                {
+                    ImGui.Text(_L("If you haven't moved and the step hasn't changed for the set time, Questionable retries the step."));
+                    ImGui.Text(_L("Only movement and simple interactions (talking, attuning, emotes) are retried."));
+                    ImGui.Text(_L("Combat, cutscenes, dialogs and duties pause the timer."));
+                }
+            }
+
+            using (ImRaii.Disabled(!autoStepRefreshEnabled))
+            using (ImRaii.PushIndent())
+            {
+                int autoStepRefreshDelay = Configuration.General.AutoStepRefreshDelaySeconds;
+                ImGui.SetNextItemWidth(150f);
+                if (ImGui.SliderInt(_L("Retry after (seconds)"), ref autoStepRefreshDelay, 30, 180))
+                {
+                    Configuration.General.AutoStepRefreshDelaySeconds = autoStepRefreshDelay;
+                    Save();
+                }
+
+                int autoStepRefreshMaxTries = Configuration.General.AutoStepRefreshMaxTries;
+                ImGui.SetNextItemWidth(150f);
+                if (ImGui.SliderInt(_L("Retries before stopping"), ref autoStepRefreshMaxTries, 1, 10))
+                {
+                    Configuration.General.AutoStepRefreshMaxTries = autoStepRefreshMaxTries;
+                    Save();
+                }
+            }
         }
     }
 

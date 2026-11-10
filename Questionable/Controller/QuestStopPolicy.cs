@@ -120,6 +120,20 @@ internal sealed class QuestStopPolicy
             missing.Count, quest.Info.Name));
     }
 
+    public void ReportStuckRetry(QuestProgress current, int seconds, int attempt, int maxTries)
+    {
+        _logger.LogInformation("No progress for {Seconds} s, retrying step ({Attempt}/{Max}) [{QuestId}, {Sequence}, {Step}]",
+            seconds, attempt, maxTries, current.Quest.Id, current.Sequence, current.Step);
+        Print(_LF("No progress for {0} s, retrying the step ({1}/{2}).", seconds, attempt, maxTries));
+    }
+
+    public void ReportStuckLimit(Quest quest, int retries)
+    {
+        _logger.LogWarning("Still stuck after {Retries} retries (quest: {QuestId})", retries, quest.Id);
+        PrintError(_LF("Stopped: still stuck on '{0}' after {1} retries. Report it with Stuck? if it keeps happening.",
+            quest.Info.Name, retries));
+    }
+
     public void ReportDeathLimit(int deaths) =>
         PrintError($"You died {deaths} times, manual intervention needed.");
 
