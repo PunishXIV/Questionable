@@ -305,6 +305,8 @@ internal sealed class Configuration : IPluginConfiguration
     internal sealed class SinglePlayerDutyConfiguration
     {
         public bool RunSoloInstancesWithBossMod { get; set; }
+        public bool RetryOnFailure { get; set; } = true;
+        public int MaxAttempts { get; set; } = 5;
 
         [SuppressMessage("Performance", "CA1822", Justification = "Will be fixed when no longer WIP")]
         public byte RetryDifficulty => 2;

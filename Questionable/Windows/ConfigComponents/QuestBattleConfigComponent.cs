@@ -271,6 +271,28 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
 #endif
         }
 
+        using (ImRaii.Disabled(!useBossMod))
+        {
+            bool retryOnFailure = Configuration.SinglePlayerDuties.RetryOnFailure;
+            if (ImGui.Checkbox(_L("Retry a failed quest battle"), ref retryOnFailure))
+            {
+                Configuration.SinglePlayerDuties.RetryOnFailure = retryOnFailure;
+                Save();
+            }
+
+            using (ImRaii.Disabled(!retryOnFailure))
+            using (ImRaii.PushIndent())
+            {
+                int maxAttempts = Math.Clamp(Configuration.SinglePlayerDuties.MaxAttempts, 2, 10);
+                ImGui.SetNextItemWidth(150f);
+                if (ImGui.SliderInt(_L("Attempts before stopping"), ref maxAttempts, 2, 10))
+                {
+                    Configuration.SinglePlayerDuties.MaxAttempts = maxAttempts;
+                    Save();
+                }
+            }
+        }
+
         ImGui.Separator();
 
         using (ImRaii.Disabled(!useBossMod))

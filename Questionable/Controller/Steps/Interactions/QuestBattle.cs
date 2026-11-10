@@ -8,7 +8,7 @@ namespace Questionable.Controller.Steps.Interactions;
 
 internal static class QuestBattle
 {
-    internal const int MaxRetries = 5;
+    internal static int AttemptLimit(bool retry, int maxAttempts) => retry ? Math.Clamp(maxAttempts, 2, 10) : 1;
 
     internal sealed class RetryCounter
     {
@@ -222,6 +222,7 @@ internal static class QuestBattle
         ICondition condition,
         IChatGui chatGui,
         RetryCounter retryCounter,
+        Configuration configuration,
         ILogger<WaitForOutcomeExecutor> logger,
         IQuestGameState gameState)
         : TaskExecutor<WaitForOutcome>, IDebugStateProvider
@@ -263,13 +264,17 @@ internal static class QuestBattle
 
             int failures = retryCounter.Record(ProfileController.CurrentContentId,
                 Task.QuestId, Task.CfcId, Task.StartSequence);
-            if (failures >= MaxRetries)
+            int limit = AttemptLimit(configuration.SinglePlayerDuties.RetryOnFailure,
+                configuration.SinglePlayerDuties.MaxAttempts);
+            if (failures >= limit)
             {
                 logger.LogError(
                     "SinglePlayerDuty {Cfc} failed {Failures} times — stopping",
                     Task.CfcId, failures);
                 chatGui.PrintError(
-                    $"You failed this instance {MaxRetries} times, Questionable is stopping. Please check it manually and report any issues to the instance.",
+                    failures == 1
+                        ? _L("Stopped: the quest battle failed. Try it manually, and report it if it keeps failing.")
+                        : _LF("Stopped: the quest battle failed {0} times. Try it manually, and report it if it keeps failing.", failures),
                     CommandHandler.MessageTag, CommandHandler.TagColor);
                 retryCounter.Clear();
                 return ETaskResult.End;
@@ -277,7 +282,7 @@ internal static class QuestBattle
 
             logger.LogWarning(
                 "SinglePlayerDuty {Cfc} appears to have failed (attempt {Failures}/{Max}, no quest progress {Seconds}s after leaving instance) — retrying step",
-                Task.CfcId, failures, MaxRetries, GracePeriod.TotalSeconds);
+                Task.CfcId, failures, limit, GracePeriod.TotalSeconds);
             return ETaskResult.RetryStep;
         }
 

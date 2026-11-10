@@ -118,7 +118,10 @@ internal sealed class PriorityWindow : LWindow
             string removeLabel = _L("Remove Finished Quests");
             SameLineIfFits(FontAwesomeIcon.Eraser, removeLabel);
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Eraser, removeLabel))
-                _questController.PriorityManager.RemoveCompleted(_questFunctions.IsPriorityQuestDone, _questFunctions.IsQuestAccepted);
+                _questController.PriorityManager.RemoveCompleted(
+                    x => _questFunctions.IsPriorityQuestDone(x) ||
+                         (!_questFunctions.IsQuestAccepted(x) && _questFunctions.IsQuestUnobtainable(x)),
+                    _questFunctions.IsQuestAccepted);
 
             string clearLabel = _L("Clear All");
             SameLineIfFits(FontAwesomeIcon.Trash, clearLabel);
