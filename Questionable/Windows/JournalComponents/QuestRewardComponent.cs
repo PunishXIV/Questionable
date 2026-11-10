@@ -2,6 +2,7 @@ using Dalamud.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
 using Questionable.Model.Common.Converter;
+using Questionable.Model.Questing.Converter;
 namespace Questionable.Windows.JournalComponents;
 
 [RegisterSingleton]
@@ -147,10 +148,8 @@ internal sealed class QuestRewardComponent
                 continue;
             if (_hideCompleted && aetheryteFunctions.IsAetheryteUnlocked(aetheryteLocation))
                 continue;
-            if (!AetheryteConverter.Values.TryGetValue(aetheryteLocation, out string? aetheryteName))
-                aetheryteName = aetheryteLocation.ToString();
             JournalTable.BeginRow();
-            ImGui.Text(aetheryteName);
+            ImGui.Text(AetheryteName(aetheryteLocation));
             if (ImGui.IsItemHovered() && aetheryteData.TerritoryIds.TryGetValue(aetheryteLocation, out var territoryId))
             {
                 ImGui.SetTooltip(TerritoryData.GetNameAndId(territoryId));
@@ -225,6 +224,12 @@ internal sealed class QuestRewardComponent
         if (total == 0)
             DrawNoResults();
     }
+
+    internal static string AetheryteName(EAetheryteLocation location) =>
+        AetheryteConverter.Values.TryGetValue(location, out string? name) ||
+        AethernetShardConverter.Values.TryGetValue(location, out name)
+            ? name
+            : location.ToString();
 
     private static void DrawNoResults()
     {
