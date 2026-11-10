@@ -36,13 +36,22 @@ internal sealed class JournalTable(
     public static bool IsStale(QuestRoot? root, DateTime now) =>
         root != null && (root.LastChecked.Date == null || root.LastChecked.Since(now)!.Value.TotalDays > StaleDays);
 
-    public ImRaii.TableDisposable Begin(string id, bool repColumn = false, bool markStale = false)
+    // pinHeader makes the table scroll instead of the window, so the header row stays in view.
+    // Only for a table that is the last thing on its tab: it takes the remaining height.
+    public ImRaii.TableDisposable Begin(string id, bool repColumn = false, bool markStale = false,
+        bool pinHeader = false)
     {
         _repColumn = repColumn;
         _markStale = markStale;
-        ImRaii.TableDisposable table = ImRaii.Table(id, repColumn ? 7 : 6, ImGuiTableFlags.NoSavedSettings);
+        ImGuiTableFlags flags = ImGuiTableFlags.NoSavedSettings;
+        if (pinHeader)
+            flags |= ImGuiTableFlags.ScrollY;
+        ImRaii.TableDisposable table = ImRaii.Table(id, repColumn ? 7 : 6, flags);
         if (!table)
             return table;
+
+        if (pinHeader)
+            ImGui.TableSetupScrollFreeze(0, 1);
 
         float scale = ImGui.GetIO().FontGlobalScale;
         ImGui.TableSetupColumn(_L("Name"), ImGuiTableColumnFlags.NoHide);
@@ -62,6 +71,25 @@ internal sealed class JournalTable(
     {
         ImGui.TableNextRow();
         ImGui.TableNextColumn();
+    }
+
+    // A group row's Level, XP and Gil cells are empty, so its name may run across them
+    // instead of being cut off at the Name column.
+    public WideNameEnd WideName()
+    {
+        ImGui.TableSetColumnIndex(_repColumn ? 5 : 4);
+        float right = ImGui.GetCursorScreenPos().X - ImGui.GetStyle().CellPadding.X;
+        ImGui.TableSetColumnIndex(0);
+
+        // Keeps the top and bottom of the current clip, so rows still slide under a pinned header.
+        ImDrawListPtr drawList = ImGui.GetWindowDrawList();
+        ImGui.PushClipRect(drawList.GetClipRectMin(), new Vector2(right, drawList.GetClipRectMax().Y), false);
+        return default;
+    }
+
+    internal readonly struct WideNameEnd : IDisposable
+    {
+        public void Dispose() => ImGui.PopClipRect();
     }
 
     public void Counts(int supported, int total, int completed, int obtainable)
@@ -195,11 +223,15 @@ internal sealed class JournalTable(
         if (quest?.Root.LastChecked.Date != null)
         {
             lastCheckedLong = "\n" + _LF("Last checked: {0}", quest.Root.LastChecked);
-            int daysSince = (int)quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays;
-            if (daysSince >= 0 && daysSince < 7)
-                lastChecked = $"{daysSince}d";
-            else if (daysSince >= 7)
-                lastChecked = $"{daysSince / 7}w";
+            // The short age is for path checkers; everyone else gets the date in the tooltip.
+            if (configuration.Advanced.Debug)
+            {
+                int daysSince = (int)quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays;
+                if (daysSince >= 0 && daysSince < 7)
+                    lastChecked = $"{daysSince}d";
+                else if (daysSince >= 7)
+                    lastChecked = $"{daysSince / 7}w";
+            }
         }
 
         float spacing;

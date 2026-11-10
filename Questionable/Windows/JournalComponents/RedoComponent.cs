@@ -75,7 +75,7 @@ internal sealed class RedoComponent
         ImGui.SetNextItemWidth(230 * ImGui.GetIO().FontGlobalScale);
         _ = ImGui.InputTextWithHint("###RedoComponentFilter", _L("Filter NG+ categories"), ref _filter, maxLength: 20);
 
-        using ImRaii.TableDisposable table = journalTable.Begin("RedoTable");
+        using ImRaii.TableDisposable table = journalTable.Begin("RedoTable", pinHeader: true);
         if (!table)
             return;
 
@@ -115,7 +115,9 @@ internal sealed class RedoComponent
             ImRaii.ColorDisposable? color = null;
             if (uncheckedQuests.Length > 0)
                 color = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent);
-            bool open = ImGui.TreeNodeEx($"{chapter.RowId}", ImGuiTreeNodeFlags.SpanFullWidth, $"{categoryName}{chapterName}");
+            bool open;
+            using (journalTable.WideName())
+                open = ImGui.TreeNodeEx($"{chapter.RowId}", ImGuiTreeNodeFlags.SpanFullWidth, $"{categoryName}{chapterName}");
             color?.Dispose();
             if (uncheckedQuests.Length > 0 && uncheckedQuests[0] != null && ImGui.IsItemHovered())
             {

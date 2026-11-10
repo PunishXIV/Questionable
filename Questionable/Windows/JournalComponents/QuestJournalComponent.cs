@@ -41,7 +41,7 @@ internal sealed class QuestJournalComponent
             ImGui.BulletText(_L("'Completed' lists quests your current character has completed."));
             ImGui.BulletText(
                 _L("Not all quests can be completed even if they're listed as available, e.g. starting city quest chains."));
-            ImGui.BulletText(_L("The text in the Supported column indicates the last time a quest path was reported to work perfectly."));
+            ImGui.BulletText(_L("Hover the Supported column to see when a quest path was last reported to work."));
             ImGui.TextColoredWrapped(QstTheme.Amber, _L("Quests can be added to Priority Quests, either individually or by group, with the right click menu."));
 
             ImGui.Spacing();
@@ -84,7 +84,7 @@ internal sealed class QuestJournalComponent
 
         if (_filteredSections.Count > 0)
         {
-            using ImRaii.TableDisposable table = journalTable.Begin("Quests");
+            using ImRaii.TableDisposable table = journalTable.Begin("Quests", pinHeader: true);
             if (!table)
                 return;
 
@@ -108,7 +108,9 @@ internal sealed class QuestJournalComponent
 
         if (_applyOpenState)
             ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
-        bool open = ImGui.TreeNodeEx(section.Section.Name, ImGuiTreeNodeFlags.SpanFullWidth);
+        bool open;
+        using (journalTable.WideName())
+            open = ImGui.TreeNodeEx(section.Section.Name, ImGuiTreeNodeFlags.SpanFullWidth);
 
         journalTable.Counts(available, total, completed, obtainable);
 
@@ -132,7 +134,9 @@ internal sealed class QuestJournalComponent
 
         if (_applyOpenState)
             ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
-        bool open = ImGui.TreeNodeEx(category.Category.Name, ImGuiTreeNodeFlags.SpanFullWidth);
+        bool open;
+        using (journalTable.WideName())
+            open = ImGui.TreeNodeEx(category.Category.Name, ImGuiTreeNodeFlags.SpanFullWidth);
 
         journalTable.Counts(available, total, completed, obtainable);
 
@@ -164,7 +168,9 @@ internal sealed class QuestJournalComponent
 
         if (_applyOpenState)
             ImGui.SetNextItemOpen(_allOpen, ImGuiCond.Always);
-        bool open = ImGui.TreeNodeEx(genreName, ImGuiTreeNodeFlags.SpanFullWidth);
+        bool open;
+        using (journalTable.WideName())
+            open = ImGui.TreeNodeEx(genreName, ImGuiTreeNodeFlags.SpanFullWidth);
 
         questJournalUtils.ShowGroupContextMenu($"DrawGenre{genre.Genre.Id}", genre.Quests);
 

@@ -17,7 +17,7 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
         RedoComponent redoComponent,
         QuestRegistry questRegistry,
         IClientState clientState)
-        : base(_L("Journal Progress") + "###QuestionableJournalProgress", ImGuiWindowFlags.AlwaysVerticalScrollbar)
+        : base(_L("Journal Progress") + "###QuestionableJournalProgress")
     {
         _questJournalComponent = questJournalComponent;
         _alliedSocietyComponent = alliedSocietyComponent;
