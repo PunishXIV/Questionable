@@ -90,12 +90,7 @@ internal abstract class MiniTaskController<T> : IDisposable
         catch (Exception e)
         {
             OnTaskFailure(e, currentExecutor.CurrentTask);
-            _logger.LogError(e, "Failed to update task {TaskName}",
-                currentExecutor.CurrentTask.ToString());
-            // Game messages already end in a period.
-            var msg = _LF("Could not complete '{0}': {1}.", currentExecutor.CurrentTask, e.Message.TrimEnd('.'));
-            _chatGui.PrintError(
-                _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
+            string msg = ReportFailure(e, currentExecutor.CurrentTask, starting: false);
             Stop("Task failed to update");
             _notifyOnFailure(msg);
             return;
@@ -208,13 +203,34 @@ internal abstract class MiniTaskController<T> : IDisposable
         catch (Exception e)
         {
             OnTaskFailure(e, task);
-            _logger.LogError(e, "Failed to start task {TaskName}", task.ToString());
-            var msg = _LF("Failed to start task '{0}'", task);
-            _chatGui.PrintError(
-                _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
+            string msg = ReportFailure(e, task, starting: true);
             Stop("Task failed to start");
             _notifyOnFailure(msg);
         }
+    }
+
+    private string ReportFailure(Exception e, ITask task, bool starting)
+    {
+        if (e is NeedsPlayerException)
+        {
+            _logger.LogInformation("{TaskName} needs the player: {Reason}", task.ToString(), e.Message);
+            _chatGui.Print(e.Message, CommandHandler.MessageTag, CommandHandler.TagColor);
+            return e.Message;
+        }
+
+        if (starting)
+            _logger.LogError(e, "Failed to start task {TaskName}", task.ToString());
+        else
+            _logger.LogError(e, "Failed to update task {TaskName}", task.ToString());
+
+        // Game messages already end in a period.
+        string reason = e.Message.TrimEnd('.');
+        string msg = starting
+            ? _LF("Could not start '{0}': {1}.", task, reason)
+            : _LF("Could not complete '{0}': {1}.", task, reason);
+        _chatGui.PrintError(
+            _LF("{0} Please check /xllog for more details.", msg), CommandHandler.MessageTag, CommandHandler.TagColor);
+        return msg;
     }
 
     protected virtual void OnTaskFailure(Exception exception, ITask task)

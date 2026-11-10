@@ -25,11 +25,8 @@ internal sealed class TaskCreator
         if (!configuration.Advanced.Debug && quest.Root.Disabled && sequenceNumber.Equals(1))
         {
             var reason = (quest.Root.Comment ?? "<no reason specified>").Split('\n', 2)[0];
-            _chatGui.PrintError($"The quest '{quest.Info.Name}' has been marked as Disabled for the following reason: {reason}",
-                CommandHandler.MessageTag, CommandHandler.TagColor);
-            _chatGui.PrintError("We recommend you complete this quest manually, as the provided path may not run successfully.",
-                CommandHandler.MessageTag, CommandHandler.TagColor);
-            _chatGui.PrintError("Thank you for your patience as we expand QST's support to include this quest in a future update.",
+            _chatGui.Print(_LF("'{0}' is marked as disabled: {1}. Complete it manually; its path may not run correctly.",
+                    quest.Info.Name, reason.TrimEnd('.')),
                 CommandHandler.MessageTag, CommandHandler.TagColor);
         }
 

@@ -26,7 +26,7 @@ internal sealed class QuestStarter(
         string reason = questController.ExternalBlockReason ?? questController.DebugState ??
             _L("Check the external operation before restarting.");
         logger.LogWarning("Quest start {Label} blocked: {Reason}", label, reason);
-        chatGui.PrintError(reason, CommandHandler.MessageTag, CommandHandler.TagColor);
+        chatGui.Print(reason, CommandHandler.MessageTag, CommandHandler.TagColor);
         return false;
     }
 

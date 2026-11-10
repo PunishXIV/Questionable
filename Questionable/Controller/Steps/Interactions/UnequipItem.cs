@@ -64,7 +64,7 @@ internal static class UnequipItem
                 {
                     logger.LogWarning("Armory container {ArmoryType} is full, cannot unequip item {ItemId}",
                         armoryType, Task.ItemId);
-                    throw new TaskException("Unable to unequip gear - armory chest is full.");
+                    throw new NeedsPlayerException("Unable to unequip gear - armory chest is full.");
                 }
 
                 logger.LogInformation(

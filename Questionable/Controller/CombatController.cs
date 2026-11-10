@@ -92,7 +92,7 @@ internal sealed class CombatController : IDisposable
             combatModule = _modules.OfType<ItemUseModule>().FirstOrDefault(x => x.CanHandleFight(combatData));
         combatModule ??= _modules.FirstOrDefault(x => x.CanHandleFight(combatData));
         if (combatModule == null)
-            throw new TaskException("No combat module is available for this fight.");
+            throw new NeedsPlayerException("No combat module is available for this fight.");
         _logger.LogInformation($"Combat module: {combatModule}");
 
         // Record cleanup before calling a provider: a throwing or rejected start can still take resources.

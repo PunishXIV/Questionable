@@ -37,7 +37,7 @@ public sealed class EquipRecommendedTests
         _clock.Advance(TimeSpan.FromMilliseconds(29999));
         Assert.Equal(ETaskResult.StillRunning, Update(busy: true));
         _clock.Advance(TimeSpan.FromMilliseconds(1));
-        var error = Assert.Throws<TaskException>(() => Update(busy: true));
+        var error = Assert.Throws<NeedsPlayerException>(() => Update(busy: true));
 
         Assert.Contains("Stylist stayed busy for 30 seconds", error.Message);
         Assert.Contains("restart Questionable", error.Message);
@@ -57,7 +57,7 @@ public sealed class EquipRecommendedTests
         _clock.Advance(TimeSpan.FromSeconds(29));
         Assert.Equal(ETaskResult.StillRunning, Update(busy: true));
         _clock.Advance(TimeSpan.FromSeconds(1));
-        Assert.Throws<TaskException>(() => Update(busy: true));
+        Assert.Throws<NeedsPlayerException>(() => Update(busy: true));
         Assert.Equal(1, _requests);
     }
 
@@ -67,7 +67,7 @@ public sealed class EquipRecommendedTests
         Update(busy: false);
         Update(busy: true);
         _clock.Advance(TimeSpan.FromSeconds(30));
-        Assert.Throws<TaskException>(() => Update(busy: true));
+        Assert.Throws<NeedsPlayerException>(() => Update(busy: true));
 
         // Exercise Start's reset without calling native gear modules.
         _condition[ConditionFlag.InCombat].Returns(true);

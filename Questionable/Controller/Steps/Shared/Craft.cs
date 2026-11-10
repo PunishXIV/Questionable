@@ -117,7 +117,7 @@ internal static class Craft
         public bool Update(ArtisanStatus status, bool objectiveMet, TimeSpan elapsed)
         {
             if (status == ArtisanStatus.Paused)
-                throw new TaskException("Artisan is paused or has a stop request; cancel its work manually before restarting Questionable");
+                throw new NeedsPlayerException("Artisan is paused or has a stop request; cancel its work manually before restarting Questionable");
 
             if (status == ArtisanStatus.Busy)
             {
@@ -130,7 +130,7 @@ internal static class Craft
             {
                 _idleSince = null;
                 if (!_observedBusy && elapsed >= StartTimeout)
-                    throw new TaskException("Artisan work remained queued without starting for 15 seconds; cancel queued work manually before restarting");
+                    throw new NeedsPlayerException("Artisan work remained queued without starting for 15 seconds; cancel queued work manually before restarting");
                 return false;
             }
 

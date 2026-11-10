@@ -31,7 +31,7 @@ internal static class AetheryteFreeOrFavored
         protected override bool Start()
         {
             if (!aetheryteFunctions.IsAetheryteUnlocked(Task.AetheryteLocation))
-                throw new TaskException($"Aetheryte {Task.AetheryteLocation} is not attuned");
+                throw new NeedsPlayerException($"Aetheryte {Task.AetheryteLocation} is not attuned");
 
             if (aetheryteFunctions.CanRegisterFreeOrFavored(Task.AetheryteLocation) ==
                 AetheryteRegistrationResult.NotPossible)

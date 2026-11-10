@@ -57,10 +57,10 @@ internal static class Purchase
                 throw new TaskException("A gil shop cannot supply the required HQ quest item");
 
             if (!_knightshopperIpc.IsReady())
-                throw new TaskException("Knightshopper is required for buying quest items, but isn't installed, enabled or up to date");
+                throw new NeedsPlayerException("Knightshopper is required for buying quest items, but isn't installed, enabled or up to date");
 
             if (_knightshopperIpc.GetBusy() != false)
-                throw new TaskException("Knightshopper is busy or unavailable; finish its current work before buying quest items");
+                throw new NeedsPlayerException("Knightshopper is busy or unavailable; finish its current work before buying quest items");
 
             // Drop pending Questionable paths before the provider takes over navigation.
             _movementController.Stop();

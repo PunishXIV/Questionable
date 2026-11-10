@@ -72,7 +72,7 @@ internal static class Fish
             if (HasCompletedObjectives(Task, _gameState))
                 return false;
             if (Task.GatheredItem is not { } item)
-                throw new TaskException("This fishing step has no fish for Feesh to catch. Fish manually, then restart Questionable.");
+                throw new NeedsPlayerException("This fishing step has no fish for Feesh to catch. Fish manually, then restart Questionable.");
             if (UnsupportedReason(item) is { } reason)
                 throw new TaskException(reason);
 

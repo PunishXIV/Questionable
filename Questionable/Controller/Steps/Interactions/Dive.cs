@@ -63,7 +63,7 @@ internal static class Dive
                 return ETaskResult.TaskComplete;
 
             if (_attempts >= 3)
-                throw new TaskException("Please dive manually.");
+                throw new NeedsPlayerException("Please dive manually.");
 
             PerformDive();
             _attempts++;

@@ -260,7 +260,7 @@ internal static class AetheryteShortcut
                 logger.LogInformation("Skipping aetheryte shortcut, null result. step:{Step}, nearest:{Nearest}",
                     step.AetheryteShortcut, nearest);
                 if (step.AethernetShortcut == null && clientState.TerritoryType != step.TerritoryId)
-                    chatGui.PrintError("Questionable could not automatically find an unlocked aetheryte destination in " +
+                    chatGui.Print("Questionable could not automatically find an unlocked aetheryte destination in " +
                         $"{TerritoryData.GetNameAndId(step.TerritoryId)}, waiting until you manually navigate there.",
                         CommandHandler.MessageTag, CommandHandler.TagColor);
                 return true;
@@ -500,7 +500,7 @@ internal static class AetheryteShortcut
             if (!aetheryteFunctions.CanTeleport(Task.ResolvedAetheryte))
             {
                 if (!aetheryteFunctions.IsTeleportUnlocked())
-                    throw new TaskException("Teleport is not unlocked, attune to any aetheryte first.");
+                    throw new NeedsPlayerException("Teleport is not unlocked, attune to any aetheryte first.");
 
                 _continueAt = DateTime.Now.AddSeconds(1);
                 logger.LogTrace("Waiting for teleport cooldown...");
@@ -511,7 +511,7 @@ internal static class AetheryteShortcut
 
             if (!aetheryteFunctions.IsAetheryteUnlocked(Task.ResolvedAetheryte))
             {
-                throw new TaskException("Aetheryte is not unlocked");
+                throw new NeedsPlayerException("Aetheryte is not unlocked");
             }
 
             if (!_societyPause && Task.ElementId != null && questRegistry.TryGetQuest(Task.ElementId, out Quest? quest) && quest.Info.AlliedSociety != EAlliedSociety.None)

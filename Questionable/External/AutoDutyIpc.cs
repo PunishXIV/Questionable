@@ -144,13 +144,13 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
         if (HasOperation)
             throw new TaskException(BlockReason!);
         if (!CanRunDuty(new DutyOptions { ContentFinderConditionId = cfcId, Enabled = pathEnabled }))
-            throw new TaskException("AutoDuty is disabled or this duty is excluded or unsupported.");
+            throw new NeedsPlayerException("AutoDuty is disabled or this duty is excluded or unsupported.");
         var data = FindContent(cfcId) ?? throw new TaskException($"Unknown ContentFinderConditionId {cfcId}");
         if (_ipc.GetStopped() != true)
-            throw new TaskException("AutoDuty is unavailable or busy; refusing to replace its work.");
+            throw new NeedsPlayerException("AutoDuty is unavailable or busy; refusing to replace its work.");
         var game = ReadGameState();
         if (!game.Available || !game.Idle || game.InQueue || game.Loading || game.InDuty)
-            throw new TaskException("Can't start AutoDuty while you're in a duty or queue, or moving.");
+            throw new NeedsPlayerException("Can't start AutoDuty while you're in a duty or queue, or moving.");
 
         Guid id = Operation.BeginRequest(data.TerritoryId);
         _loggedSwitchBackFailure = false;
@@ -162,7 +162,7 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
         catch (Exception e) when (IpcInvoke.IsMissing(e))
         {
             Operation.RejectRequest(id);
-            throw new TaskException("Update AutoDuty: this version can't run duties in a separate Questionable profile.", e);
+            throw new NeedsPlayerException("Update AutoDuty: this version can't run duties in a separate Questionable profile.", e);
         }
         catch (Exception e)
         {

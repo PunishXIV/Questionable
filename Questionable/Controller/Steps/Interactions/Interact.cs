@@ -398,9 +398,9 @@ internal static class Interact
                         Task.Quest.Id, requiredJob, (Job)completionPlayer.ClassJob.Value.RowId);
                     if (!classJobUtils.SwitchJob(requiredJob))
                     {
-                        chatGui.PrintError(_LF(
+                        chatGui.Print(_LF(
                             "Quest {0} should be continued as {1}, but you do not have a gearset for that job.",
-                            Task.Quest.Info.Name, requiredJob));
+                            Task.Quest.Info.Name, requiredJob), CommandHandler.MessageTag, CommandHandler.TagColor);
                         _reportedWrongJob = true;
                     }
 

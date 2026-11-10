@@ -51,7 +51,7 @@ internal static class CreateGearset
             if (gearsetId < 0)
             {
                 logger.LogError("Failed to create gearset (all slots may be full)");
-                throw new TaskException("Failed to create gearset - all slots may be full");
+                throw new NeedsPlayerException("Failed to create gearset - all slots may be full");
             }
 
             logger.LogInformation("Successfully created gearset in slot {GearsetId}", gearsetId);

@@ -76,7 +76,7 @@ internal static class AethernetShortcut
                 !aetheryteFunctions.IsAetheryteUnlocked(Task.To))
             {
                 if (clientState.TerritoryType != aetheryteData.TerritoryIds[Task.To])
-                    throw new TaskException($"Aethernet shortcut not unlocked (from: {Task.From}, to: {Task.To})");
+                    throw new NeedsPlayerException($"Aethernet shortcut not unlocked (from: {Task.From}, to: {Task.To})");
 
                 logger.LogWarning(
                     "Aethernet shortcut not unlocked (from: {FromAetheryte}, to: {ToAetheryte}), skipping as we are already in the destination territory",

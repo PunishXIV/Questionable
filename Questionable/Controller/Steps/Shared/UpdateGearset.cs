@@ -76,7 +76,7 @@ internal static class UpdateGearset
                 if (!found)
                 {
                     logger.LogError("No gearset found for {ClassJob}", Task.TargetClass.Value);
-                    throw new TaskException($"No gearset found for {Task.TargetClass.Value}");
+                    throw new NeedsPlayerException($"No gearset found for {Task.TargetClass.Value}");
                 }
             }
             else
@@ -86,7 +86,7 @@ internal static class UpdateGearset
                 if (gearsetId < 0)
                 {
                     logger.LogError("No gearset is currently equipped");
-                    throw new TaskException("No gearset is currently equipped");
+                    throw new NeedsPlayerException("No gearset is currently equipped");
                 }
 
                 logger.LogInformation("Updating currently equipped gearset {GearsetId}", gearsetId);

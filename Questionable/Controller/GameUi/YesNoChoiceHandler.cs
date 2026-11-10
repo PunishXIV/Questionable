@@ -484,7 +484,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
             else
             {
                 _logger.LogInformation("Reward would go over the currency cap, stopping: {Prompt}", actualPrompt);
-                _chatGui.PrintError(_L("Stopped: this reward would go over a currency cap. Spend some first, or allow it in the settings."), CommandHandler.MessageTag, CommandHandler.TagColor);
+                _chatGui.Print(_L("Stopped: this reward would go over a currency cap. Spend some first, or allow it in the settings."), CommandHandler.MessageTag, CommandHandler.TagColor);
                 _questController.Stop("Currency over cap");
             }
 

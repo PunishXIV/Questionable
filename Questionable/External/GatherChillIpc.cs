@@ -225,9 +225,9 @@ internal sealed class GatheringController(
             return false;
 
         if (!gatherChillIpc.IsReady())
-            throw new TaskException("Gather n Chill is required for gathering, but isn't installed, enabled or up to date");
+            throw new NeedsPlayerException("Gather n Chill is required for gathering, but isn't installed, enabled or up to date");
         if (gatherChillIpc.GetBusy() != false)
-            throw new TaskException("Gather n Chill is busy or unavailable; finish its current work before gathering quest items");
+            throw new NeedsPlayerException("Gather n Chill is busy or unavailable; finish its current work before gathering quest items");
         if (!gatherChillIpc.CanGather(request.ItemId))
             throw new TaskException($"Gather n Chill can't gather item {request.ItemId}");
 

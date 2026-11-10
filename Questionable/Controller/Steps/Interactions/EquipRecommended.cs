@@ -147,7 +147,7 @@ internal static class EquipRecommended
                 _stylistBusySince ??= _clock.GetTimestamp();
                 // Stylist may still be changing equipment; do not start a competing Vanilla update.
                 if (_clock.GetElapsedTime(_stylistBusySince.Value) >= TimeSpan.FromSeconds(30))
-                    throw new TaskException("Stylist stayed busy for 30 seconds. Finish or stop its work, then restart Questionable.");
+                    throw new NeedsPlayerException("Stylist stayed busy for 30 seconds. Finish or stop its work, then restart Questionable.");
                 return ETaskResult.StillRunning;
             }
 

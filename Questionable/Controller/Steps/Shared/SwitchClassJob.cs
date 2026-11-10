@@ -34,7 +34,7 @@ internal static class SwitchClassJob
         {
             var result = classJobUtils.SwitchJob(Task.ClassJob);
             if (!result)
-                throw new TaskException($"No gearset found for {Task.ClassJob}");
+                throw new NeedsPlayerException($"No gearset found for {Task.ClassJob}");
             return !result;
         }
 

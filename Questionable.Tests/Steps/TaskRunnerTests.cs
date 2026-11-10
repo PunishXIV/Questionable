@@ -53,8 +53,8 @@ public sealed class TaskRunnerTests
             Assert.Same(expected, failure.Error);
         Assert.Single(fixture.Log.Entries, x => x.Level == LogLevel.Error && ReferenceEquals(x.Exception, failure.Error));
         var chat = Assert.Single(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "PrintError");
-        Assert.Contains("Failed to start task", chat.GetArguments()[0]!.ToString());
-        Assert.Contains("Failed to start task", Assert.Single(fixture.Notifications));
+        Assert.Contains("Could not start", chat.GetArguments()[0]!.ToString());
+        Assert.Contains("Could not start", Assert.Single(fixture.Notifications));
         Assert.True(fixture.Queue.AllTasksComplete);
         Assert.Equal(0, fixture.Controller.CompletedTasks);
         if (skipping)
@@ -112,6 +112,41 @@ public sealed class TaskRunnerTests
         Assert.Contains("update failed", Assert.Single(fixture.Notifications));
         Assert.Single(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "PrintError");
         Assert.True(fixture.Queue.AllTasksComplete);
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void NeedsPlayer_StopsWithoutError(bool starting)
+    {
+        var expected = new NeedsPlayerException("Attune to the aetheryte first.");
+        var task = new WaitAtEnd.WaitDelay();
+        var executor = Substitute.For<ITaskExecutor>();
+        executor.CurrentTask.Returns(task);
+        ServiceCollection registrations = [];
+        registrations.AddKeyedTransient<ITaskExecutor>(typeof(WaitAtEnd.WaitDelay), (_, _) => executor);
+        using var provider = registrations.BuildServiceProvider();
+        using var fixture = new TaskRunnerFixture(provider: provider);
+        if (starting)
+        {
+            executor.Start(task).Returns(_ => throw expected);
+            fixture.Queue.Enqueue(task);
+        }
+        else
+        {
+            executor.Start(task).Returns(true);
+            executor.Update().Returns(_ => throw expected);
+            Assert.True(fixture.Queue.StartTask(executor, task));
+        }
+
+        fixture.Controller.Tick();
+
+        Assert.Equal(starting ? "Task failed to start" : "Task failed to update", Assert.Single(fixture.Controller.Stops));
+        Assert.Equal("Attune to the aetheryte first.", Assert.Single(fixture.Notifications));
+        Assert.DoesNotContain(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "PrintError");
+        var chat = Assert.Single(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "Print");
+        Assert.Equal("Attune to the aetheryte first.", chat.GetArguments()[0]!.ToString());
+        Assert.DoesNotContain(fixture.Log.Entries, x => x.Level == LogLevel.Error);
     }
 
     [Fact]

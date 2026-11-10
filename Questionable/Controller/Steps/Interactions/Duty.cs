@@ -89,32 +89,12 @@ internal static class Duty
         AutoDutyProvider autoDuty,
         TerritoryData territoryData,
         Configuration configuration,
-        GameFunctions gameFunctions,
-        IChatGui chatGui,
-        SendNotification.Executor sendNotificationExecutor) : TaskExecutor<StartAutoDutyTask>, IStoppable
+        GameFunctions gameFunctions) : TaskExecutor<StartAutoDutyTask>, IStoppable
     {
         private Guid? _operationId;
-        private bool _needsPlayer;
-
-        private void Notify(string text)
-        {
-            if (!sendNotificationExecutor.Start(new SendNotification.Task(EInteractionType.Duty, text)))
-                chatGui.PrintError(text, CommandHandler.MessageTag, CommandHandler.TagColor);
-        }
-
-        // The player has to act; that isn't a failure, so the run ends without an error.
-        private bool EndQuietly(string text)
-        {
-            Notify(text);
-            _needsPlayer = true;
-            return true;
-        }
 
         public override ETaskResult Update()
         {
-            if (_needsPlayer)
-                return ETaskResult.End;
-
             var operation = autoDuty.Operation;
             if (_operationId == null || operation.Id != _operationId)
                 throw new TaskException("AutoDuty is no longer running Questionable's duty.");
@@ -141,19 +121,18 @@ internal static class Duty
         protected override bool Start()
         {
             _operationId = null;
-            _needsPlayer = false;
             if (!territoryData.TryGetCfc(Task.CfcId, out var cfcData))
                 throw new TaskException("Failed to get territory ID for content finder condition");
 
             // Otherwise AutoDuty keeps queueing and the duty finder keeps refusing.
             if (GetPlayerLevel() is { } playerLevel && playerLevel > 0 && cfcData.RequiredLevel > playerLevel)
-                return EndQuietly(_LF("Stopped: '{0}' needs level {1} (you're level {2}).",
+                throw new NeedsPlayerException(_LF("Stopped: '{0}' needs level {1} (you're level {2}).",
                     cfcData.Name, cfcData.RequiredLevel, playerLevel));
 
             Mode dutyMode = Task.Mode;
             short currentItemLevel = GetItemLevel(gearStatsCalculator) ?? throw new TaskException("Equipped items unavailable");
             if (cfcData.RequiredItemLevel > currentItemLevel)
-                return EndQuietly(
+                throw new NeedsPlayerException(
                     $"Could not use AutoDuty to queue for {cfcData.Name}, required item level: {cfcData.RequiredItemLevel}, current item level: {currentItemLevel}.");
             if (dutyMode == Mode.Regular &&
                 (!Task.AllowUnsync || !configuration.Duties.RunUnsynced))
@@ -166,7 +145,7 @@ internal static class Duty
             if (NeedsDutyFinder(dutyMode, territoryData.HasDutySupport(Task.CfcId)))
             {
                 gameFunctions.OpenDutyFinder(Task.CfcId);
-                return EndQuietly(_LF("Stopped: '{0}' has no Duty Support. Queue for it in the Duty Finder, then start again.",
+                throw new NeedsPlayerException(_LF("Stopped: '{0}' has no Duty Support. Queue for it in the Duty Finder, then start again.",
                     cfcData.Name));
             }
 

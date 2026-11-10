@@ -122,11 +122,19 @@ internal sealed class DalamudInitializer : IDisposable
             _questController.RecordNavigationFailure(e);
             _logger.LogError(e, "Navigation failed ({Reason}), quest {Quest}, NeverFly:{NeverFly}",
                 e.Reason, _questController.CurrentQuest?.ToString(), _configuration.Advanced.NeverFly);
-            _chatGui.PrintError(GetPathfindingError(e.Reason, _configuration.Advanced.NeverFly),
-                CommandHandler.MessageTag, CommandHandler.TagColor);
+            string text = GetPathfindingError(e.Reason, _configuration.Advanced.NeverFly);
+            if (IsPlayerCaused(e.Reason))
+                _chatGui.Print(text, CommandHandler.MessageTag, CommandHandler.TagColor);
+            else
+                _chatGui.PrintError(text, CommandHandler.MessageTag, CommandHandler.TagColor);
             _questController.Stop(_L("Pathfinding failed"));
         }
     }
+
+    // Movement the player or another plugin paused isn't a failed path.
+    internal static bool IsPlayerCaused(MovementController.PathfindingFailureReason reason) =>
+        reason is MovementController.PathfindingFailureReason.MovementDisabled
+            or MovementController.PathfindingFailureReason.MovementBlocked;
 
     internal static string GetPathfindingError(MovementController.PathfindingFailureReason reason, bool neverFly) => reason switch
     {
