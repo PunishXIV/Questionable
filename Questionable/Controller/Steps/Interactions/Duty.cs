@@ -94,6 +94,7 @@ internal static class Duty
         SendNotification.Executor sendNotificationExecutor) : TaskExecutor<StartAutoDutyTask>, IStoppable
     {
         private Guid? _operationId;
+        private bool _needsPlayer;
 
         private void Notify(string text)
         {
@@ -103,6 +104,9 @@ internal static class Duty
 
         public override ETaskResult Update()
         {
+            if (_needsPlayer)
+                return ETaskResult.End;
+
             var operation = autoDuty.Operation;
             if (_operationId == null || operation.Id != _operationId)
                 throw new TaskException("AutoDuty is no longer running Questionable's duty.");
@@ -129,6 +133,7 @@ internal static class Duty
         protected override bool Start()
         {
             _operationId = null;
+            _needsPlayer = false;
             if (!territoryData.TryGetCfc(Task.CfcId, out var cfcData))
                 throw new TaskException("Failed to get territory ID for content finder condition");
 
@@ -160,11 +165,12 @@ internal static class Duty
 
             if (NeedsDutyFinder(dutyMode, territoryData.HasDutySupport(Task.CfcId)))
             {
-                string errorText = _LF("Stopped: '{0}' has no Duty Support. Queue for it in the Duty Finder, then start again.",
-                    cfcData.Name);
-                Notify(errorText);
+                // Not a failure, so end the run quietly instead of throwing.
+                Notify(_LF("Stopped: '{0}' has no Duty Support. Queue for it in the Duty Finder, then start again.",
+                    cfcData.Name));
                 gameFunctions.OpenDutyFinder(Task.CfcId);
-                throw new TaskException(errorText);
+                _needsPlayer = true;
+                return true;
             }
 
             Guid? previousId = autoDuty.Operation.Id;

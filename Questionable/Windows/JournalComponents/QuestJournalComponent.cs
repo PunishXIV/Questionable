@@ -242,8 +242,17 @@ internal sealed class QuestJournalComponent
         return new(category, filteredGenres.Where(x => x.Quests.Count > 0).ToList());
     }
 
+    // Hide Completed also hides a group once nothing obtainable is left in it.
+    internal static bool NothingLeft(IEnumerable<ElementId> quests, Func<ElementId, bool> isComplete,
+        Func<ElementId, bool> isUnobtainable) =>
+        quests.All(x => isComplete(x) || isUnobtainable(x));
+
     private FilteredGenre FilterGenre(JournalData.Genre genre, FilterOptions filter)
     {
+        if (filter.HideCompleted && NothingLeft(genre.Quests.Select(x => x.QuestId),
+                questFunctions.IsQuestComplete, x => questFunctions.IsQuestUnobtainable(x)))
+            return new(genre, []);
+
         IEnumerable<IQuestInfo> filteredQuests;
         if (IsNameMatch(filter, genre.Name))
         {
