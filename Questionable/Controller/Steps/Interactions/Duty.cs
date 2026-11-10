@@ -102,6 +102,14 @@ internal static class Duty
                 chatGui.PrintError(text, CommandHandler.MessageTag, CommandHandler.TagColor);
         }
 
+        // The player has to act; that isn't a failure, so the run ends without an error.
+        private bool EndQuietly(string text)
+        {
+            Notify(text);
+            _needsPlayer = true;
+            return true;
+        }
+
         public override ETaskResult Update()
         {
             if (_needsPlayer)
@@ -139,22 +147,14 @@ internal static class Duty
 
             // Otherwise AutoDuty keeps queueing and the duty finder keeps refusing.
             if (GetPlayerLevel() is { } playerLevel && playerLevel > 0 && cfcData.RequiredLevel > playerLevel)
-            {
-                string errorText = _LF("Stopped: '{0}' needs level {1} (you're level {2}).",
-                    cfcData.Name, cfcData.RequiredLevel, playerLevel);
-                Notify(errorText);
-                throw new TaskException(errorText);
-            }
+                return EndQuietly(_LF("Stopped: '{0}' needs level {1} (you're level {2}).",
+                    cfcData.Name, cfcData.RequiredLevel, playerLevel));
 
             Mode dutyMode = Task.Mode;
             short currentItemLevel = GetItemLevel(gearStatsCalculator) ?? throw new TaskException("Equipped items unavailable");
             if (cfcData.RequiredItemLevel > currentItemLevel)
-            {
-                string errorText =
-                    $"Could not use AutoDuty to queue for {cfcData.Name}, required item level: {cfcData.RequiredItemLevel}, current item level: {currentItemLevel}.";
-                Notify(errorText);
-                throw new TaskException(errorText);
-            }
+                return EndQuietly(
+                    $"Could not use AutoDuty to queue for {cfcData.Name}, required item level: {cfcData.RequiredItemLevel}, current item level: {currentItemLevel}.");
             if (dutyMode == Mode.Regular &&
                 (!Task.AllowUnsync || !configuration.Duties.RunUnsynced))
                 dutyMode = Mode.Support;
@@ -165,12 +165,9 @@ internal static class Duty
 
             if (NeedsDutyFinder(dutyMode, territoryData.HasDutySupport(Task.CfcId)))
             {
-                // Not a failure, so end the run quietly instead of throwing.
-                Notify(_LF("Stopped: '{0}' has no Duty Support. Queue for it in the Duty Finder, then start again.",
-                    cfcData.Name));
                 gameFunctions.OpenDutyFinder(Task.CfcId);
-                _needsPlayer = true;
-                return true;
+                return EndQuietly(_LF("Stopped: '{0}' has no Duty Support. Queue for it in the Duty Finder, then start again.",
+                    cfcData.Name));
             }
 
             Guid? previousId = autoDuty.Operation.Id;
