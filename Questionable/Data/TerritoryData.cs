@@ -12,6 +12,7 @@ internal sealed class TerritoryData
     private readonly ImmutableDictionary<uint, uint> _dutyTerritories;
     private readonly ImmutableDictionary<uint, string> _instanceNames;
     private readonly ImmutableDictionary<(ElementId QuestId, byte Index), uint> _questBattleCfcs;
+    private readonly ImmutableHashSet<uint> _supportCfcs;
     private readonly ImmutableHashSet<uint> _territoriesWithMount;
     private readonly ImmutableDictionary<uint, string> _territoryNames;
 
@@ -49,6 +50,11 @@ internal sealed class TerritoryData
             .Select(x => new CfcData(x, dataManager.Language))
             .ToImmutableDictionary(x => x.Id, x => x);
 
+        _supportCfcs = dataManager.GetExcelSheet<DawnContent>()
+            .Where(x => x.RowId > 0 && x.Content.RowId != 0)
+            .Select(x => x.Content.RowId)
+            .ToImmutableHashSet();
+
         _questBattleCfcs = dataManager.GetExcelSheet<Quest>()
             .Where(x => x is { RowId: > 0, IssuerLocation.RowId: > 0 })
             .SelectMany(quest => GetQuestBattles(dataManager, quest))
@@ -83,6 +89,8 @@ internal sealed class TerritoryData
 
     public bool TryGetCfc(uint cfcId,
         [NotNullWhen(true)] out CfcData? cfcData) => _cfcs.TryGetValue(cfcId, out cfcData);
+
+    public bool HasDutySupport(uint cfcId) => _supportCfcs.Contains(cfcId);
 
     public bool TryGetQuestBattleCfc(ElementId questId, byte index,
         [NotNullWhen(true)] out CfcData? cfcData)

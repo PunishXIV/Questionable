@@ -20,6 +20,13 @@ internal static class Duty
         NoviceHall = 1 << 7
     }
 
+    // AutoDuty would wait forever on a Duty Support queue the duty doesn't have.
+    internal static bool NeedsDutyFinder(Mode mode, bool hasSupport) => mode == Mode.Support && !hasSupport;
+
+    // Solo unsynced trials can fail on their mechanics, so they keep Duty Support where they have it.
+    internal static bool CanUnsync(EContentType? contentType, bool hasSupport) =>
+        contentType != EContentType.Trials || !hasSupport;
+
     internal sealed class Factory(AutoDutyProvider autoDuty, TerritoryData territoryData, Configuration configuration) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -53,7 +60,7 @@ internal static class Duty
                     if (playerState != null && territoryData.TryGetCfc(step.DutyOptions.ContentFinderConditionId,
                                                                    out TerritoryData.CfcData? cfcData) &&
                             playerState->CurrentLevel - 20 >= cfcData.ClassJobLevelSync &&
-                            !cfcData.ContentType.Equals(EContentType.Trials))
+                            CanUnsync(cfcData.ContentType, territoryData.HasDutySupport(cfcData.Id)))
                         dutyMode = Mode.Regular;
                 }
             }
@@ -82,6 +89,7 @@ internal static class Duty
         AutoDutyProvider autoDuty,
         TerritoryData territoryData,
         Configuration configuration,
+        GameFunctions gameFunctions,
         IChatGui chatGui,
         SendNotification.Executor sendNotificationExecutor) : TaskExecutor<StartAutoDutyTask>, IStoppable
     {
@@ -147,8 +155,17 @@ internal static class Duty
                 dutyMode = Mode.Support;
             if (Task.AllowUnsync && configuration.Duties.RunUnsynced &&
                 dutyMode == Mode.Support && currentItemLevel - 200 >= cfcData.RequiredItemLevel &&
-                !cfcData.ContentType.Equals(EContentType.Trials))
+                CanUnsync(cfcData.ContentType, territoryData.HasDutySupport(cfcData.Id)))
                 dutyMode = Mode.Regular;
+
+            if (NeedsDutyFinder(dutyMode, territoryData.HasDutySupport(Task.CfcId)))
+            {
+                string errorText = _LF("Stopped: '{0}' has no Duty Support. Queue for it in the Duty Finder, then start again.",
+                    cfcData.Name);
+                Notify(errorText);
+                gameFunctions.OpenDutyFinder(Task.CfcId);
+                throw new TaskException(errorText);
+            }
 
             Guid? previousId = autoDuty.Operation.Id;
             try

@@ -489,7 +489,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             using (ImRaii.Disabled(!autoStepRefreshEnabled))
             using (ImRaii.PushIndent())
             {
-                int autoStepRefreshDelay = Configuration.General.AutoStepRefreshDelaySeconds;
+                int autoStepRefreshDelay = Math.Clamp(Configuration.General.AutoStepRefreshDelaySeconds, 30, 180);
                 ImGui.SetNextItemWidth(150f);
                 if (ImGui.SliderInt(_L("Retry after (seconds)"), ref autoStepRefreshDelay, 30, 180))
                 {
