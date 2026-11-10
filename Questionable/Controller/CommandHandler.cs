@@ -265,9 +265,12 @@ internal sealed class CommandHandler : IDisposable
                 _chatGui.PrintError(_L("Completions log has been cleared"));
                 break;
 
-            case "@debugmode":
+            case "debug":
+            case "debugmode":
                 _configuration.Advanced.Debug = !_configuration.Advanced.Debug;
                 _configuration.Save();
+                _chatGui.Print(_configuration.Advanced.Debug ? _L("Debug mode enabled.") : _L("Debug mode disabled."),
+                    MessageTag, TagColor);
                 break;
 
             case "rewards":

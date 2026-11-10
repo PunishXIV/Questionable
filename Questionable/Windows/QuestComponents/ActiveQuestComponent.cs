@@ -707,12 +707,16 @@ internal sealed partial class ActiveQuestComponent
                 questStarter.Start(_L("UI start"));
             }
 
-            ImGui.SameLine();
+            // Step is for path makers; its icon reads like Skip to everyone else.
+            if (configuration.Advanced.Debug)
+            {
+                ImGui.SameLine();
 
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.StepForward, _L("Step")))
-                questStarter.StartSingleStep(_L("UI step"));
-            if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Execute next step and then stop."));
+                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.StepForward, _L("Step")))
+                    questStarter.StartSingleStep(_L("UI step"));
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip(_L("Execute next step and then stop."));
+            }
         }
 
         ImGui.SameLine();
