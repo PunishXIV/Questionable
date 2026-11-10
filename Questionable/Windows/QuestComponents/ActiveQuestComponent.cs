@@ -801,7 +801,7 @@ internal sealed partial class ActiveQuestComponent
 
                 if (QstWidgets.SegmentToggle(FontAwesomeIcon.Gem, questController.StopBeforeTeleport,
                         _L("Cancel scheduled stop before teleport."),
-                        _L("Stop before the next aetheryte teleport or item use.")))
+                        _L("Stop before the next teleport (aetheryte or Vesper Bay ticket).")))
                     questController.StopBeforeTeleport = !questController.StopBeforeTeleport;
 
                 ImGui.SameLine();

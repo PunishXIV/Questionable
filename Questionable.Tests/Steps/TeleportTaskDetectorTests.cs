@@ -5,6 +5,7 @@ using Questionable.Controller.Steps;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Model.Common;
+using Questionable.Model.Questing;
 using Xunit;
 
 namespace Questionable.Tests.Steps;
@@ -26,19 +27,30 @@ public sealed class TeleportTaskDetectorTests
         Assert.Null(TeleportTaskDetector.GetUpcoming(null, Shortcut));
 
     [Fact]
-    public void QueuedItem_IsUpcoming()
+    public void QueuedTicket_IsUpcoming()
     {
-        UseItem.IUseTask item = Substitute.For<UseItem.IUseTask>();
-        Assert.Same(item, TeleportTaskDetector.GetUpcoming(null, item));
+        UseItem.IUseTask ticket = Item(QuestStep.VesperBayAetheryteTicket);
+        Assert.Same(ticket, TeleportTaskDetector.GetUpcoming(null, ticket));
     }
 
     [Fact]
-    public void ItemBehindRunningTask_IsNotUpcoming() =>
-        Assert.Null(TeleportTaskDetector.GetUpcoming(Substitute.For<ITaskExecutor>(), Substitute.For<UseItem.IUseTask>()));
+    public void QueuedQuestItem_IsNotUpcoming() =>
+        Assert.Null(TeleportTaskDetector.GetUpcoming(null, Item(2001234)));
+
+    [Fact]
+    public void TicketBehindRunningTask_NotUpcoming() =>
+        Assert.Null(TeleportTaskDetector.GetUpcoming(Substitute.For<ITaskExecutor>(), Item(QuestStep.VesperBayAetheryteTicket)));
 
     [Fact]
     public void OtherTask_IsNotUpcoming() =>
         Assert.Null(TeleportTaskDetector.GetUpcoming(null, Substitute.For<ITask>()));
+
+    private static UseItem.IUseTask Item(uint itemId)
+    {
+        UseItem.IUseTask item = Substitute.For<UseItem.IUseTask>();
+        item.ItemId.Returns(itemId);
+        return item;
+    }
 
     private static AetheryteShortcut.Executor StartedShortcut(bool cast)
     {
