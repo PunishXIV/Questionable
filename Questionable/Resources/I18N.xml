@@ -1087,8 +1087,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->
-    <Key>Remove finished Quests</Key>
-    <Value lang="en">Remove finished Quests</Value>
+    <Key>Remove Finished Quests</Key>
+    <Value lang="en">Remove Finished Quests</Value>
     <Value lang="ja-jp">完了済みクエストを削除</Value>
     <Value lang="zh-cn">移除已完成的任务</Value>
     <Value lang="zh-tw">移除已完成的任務</Value>
@@ -5625,8 +5625,8 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
-    <Key>Reset sequence progess and reload quest data from disk</Key>
-    <Value lang="en">Reset sequence progess and reload quest data from disk</Value>
+    <Key>Reset sequence progress and reload quest data from disk</Key>
+    <Value lang="en">Reset sequence progress and reload quest data from disk</Value>
     <Value lang="ja-jp">シーケンスの進行状況をリセットし、ディスクからクエストデータを再読み込みします</Value>
     <Value lang="zh-cn">重置序列进度并从磁盘重新加载任务数据</Value>
     <Value lang="zh-tw">重置序列進度並從磁碟重新載入任務資料</Value>
@@ -5679,21 +5679,21 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
-    <Key>VBM is not available. Please install it first.</Key>
-    <Value lang="en">VBM is not available. Please install it first.</Value>
-    <Value lang="ja-jp">VBMが利用できません。先にインストールしてください。</Value>
-    <Value lang="zh-cn">VBM 不可用。请先安装它。</Value>
-    <Value lang="zh-tw">VBM 不可用。請先安裝它。</Value>
-    <!--<Value lang="ko">VBM을 사용할 수 없습니다. 먼저 설치하십시오.</Value>-->
+    <Key>BossMod is not available. Please install it first.</Key>
+    <Value lang="en">BossMod is not available. Please install it first.</Value>
+    <Value lang="ja-jp">BossModが利用できません。先にインストールしてください。</Value>
+    <Value lang="zh-cn">BossMod 不可用。请先安装它。</Value>
+    <Value lang="zh-tw">BossMod 不可用。請先安裝它。</Value>
+    <!--<Value lang="ko">BossMod을 사용할 수 없습니다. 먼저 설치하십시오.</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/QuestComponents/QuickAccessComponent.cs -->
-    <Key>Clear VBM obstacle maps</Key>
-    <Value lang="en">Clear VBM obstacle maps</Value>
-    <Value lang="ja-jp">VBMの障害物マップをクリア</Value>
-    <Value lang="zh-cn">清除 VBM 障碍物地图</Value>
-    <Value lang="zh-tw">清除 VBM 障礙物地圖</Value>
-    <!--<Value lang="ko">VBM 장애물 지도를 지웁니다.</Value>-->
+    <Key>Clear BossMod obstacle maps</Key>
+    <Value lang="en">Clear BossMod obstacle maps</Value>
+    <Value lang="ja-jp">BossModの障害物マップをクリア</Value>
+    <Value lang="zh-cn">清除 BossMod 障碍物地图</Value>
+    <Value lang="zh-tw">清除 BossMod 障礙物地圖</Value>
+    <!--<Value lang="ko">BossMod 장애물 지도를 지웁니다.</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/PriorityWindow.cs -->

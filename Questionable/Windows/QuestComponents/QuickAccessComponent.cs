@@ -87,8 +87,8 @@ internal sealed class QuickAccessComponent
         bool isBossModAvailable = commandManager.Commands.ContainsKey("/vbm");
         string tooltip = isBossModAvailable
             ? _L("Clear BossMod obstacle maps to fix pathfinding issues. Hold CTRL to enable this button")
-            : _L("VBM is not available. Please install it first.");
-        if (QstWidgets.RailButton(FontAwesomeIcon.RoadBarrier, _L("Clear VBM obstacle maps"), tooltip,
+            : _L("BossMod is not available. Please install it first.");
+        if (QstWidgets.RailButton(FontAwesomeIcon.RoadBarrier, _L("Clear BossMod obstacle maps"), tooltip,
                 enabled: isBossModAvailable && ImGui.IsKeyDown(ImGuiKey.ModCtrl),
                 showLabel: showLabel))
             bossModIpc.ClearObstacleMaps();
@@ -97,7 +97,7 @@ internal sealed class QuickAccessComponent
     internal void DrawReloadDataButton(bool showLabel = false)
     {
         if (QstWidgets.RailButton(FontAwesomeIcon.RedoAlt, _L("Reload Data"),
-                _L("Reset sequence progess and reload quest data from disk"),
+                _L("Reset sequence progress and reload quest data from disk"),
                 showLabel: showLabel))
             Reload?.Invoke(this, EventArgs.Empty);
     }

@@ -190,7 +190,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                         QstWidgets.SectionHeader(_L("Remaining Tasks"), "RemainingTasks", count: _remainingTasksComponent.Tasks.Count))
                     _remainingTasksComponent.Draw();
 
-                if (QstWidgets.SectionHeader(_L("Path Tools"), "PathTools", defaultOpen: false))
+                if (QstWidgets.SectionHeader(_L("Target Tools"), "PathTools", defaultOpen: false))
                     _creationUtilsComponent.Draw();
             }
         }

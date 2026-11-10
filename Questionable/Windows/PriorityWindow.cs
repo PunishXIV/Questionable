@@ -99,6 +99,10 @@ internal sealed class PriorityWindow : LWindow
             ImGui.TextWrapped(
                 _L("If you don't have any active MSQ quest and there is no Priority Quest added here, " +
                 "it will always try to pick up the next quest in the MSQ first."));
+            ImGui.Spacing();
+            QstWidgets.BulletTextWrapped(_L("Quests marked 'Accept only' are picked up first, but not done from this list."));
+            QstWidgets.BulletTextWrapped(
+                _L("With 'Interrupt the current quest' off, quests added here wait until the current quest is done."));
         }
 
         DrawPresets();
@@ -118,7 +122,7 @@ internal sealed class PriorityWindow : LWindow
         _openQuestCleanUp.DrawButton();
         using (ImRaii.Disabled(_questController.PriorityManager.IsEmpty))
         {
-            string removeLabel = _L("Remove finished Quests");
+            string removeLabel = _L("Remove Finished Quests");
             SameLineIfFits(FontAwesomeIcon.Eraser, removeLabel);
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Eraser, removeLabel))
                 _questController.PriorityManager.RemoveCompleted(_questFunctions.IsPriorityQuestDone, _questFunctions.IsQuestAccepted);
@@ -136,7 +140,7 @@ internal sealed class PriorityWindow : LWindow
         }
 
         if (_questController.PriorityManager.HasPendingAcceptOnly &&
-            ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Inbox, _L("Change all to normal priority")))
+            ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Inbox, _L("Change All to Normal Priority")))
             _questController.PriorityManager.ClearAllAcceptOnly();
     }
 
