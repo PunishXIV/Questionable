@@ -35,12 +35,7 @@
           "TerritoryId": 621,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
-            "Enabled": false,
-            "TestedBossModVersion": "0.1.1.8",
-            "Notes": [
-              "AI doesn't target boss",
-              "AI doesn't heal NPCs"
-            ]
+            "Enabled": true
           }
         }
       ]
