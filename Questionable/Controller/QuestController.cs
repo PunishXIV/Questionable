@@ -1184,7 +1184,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             controller._questFunctions.IsReadyToAcceptQuest(questId, ignoreLevel);
         public bool HasClassJobAtQuestLevel(ElementId questId) => controller._questFunctions.HasClassJobAtQuestLevel(questId);
         public byte GetSequence(ElementId questId) => controller._questFunctions.GetQuestProgressInfo(questId)?.Sequence ?? 0;
-        public QuestReference GetCurrentQuest(bool allowNewMsq) => controller._questFunctions.GetCurrentQuest(allowNewMsq);
+        public QuestReference GetCurrentQuest(bool allowNewMsq, bool skipPriority = false) =>
+            controller._questFunctions.GetCurrentQuest(allowNewMsq, skipPriority);
     }
 
     // Accept-only priorities run sequence 0, then remain for normal completion.
@@ -1203,7 +1204,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return true;
 
         if (!_priorityManager.CanInterrupt && QuestSelectionController.IsOtherQuestRunning(StartedQuest, next.Id,
-                SelectionState, () => SelectionState.GetCurrentQuest(allowNewMsq: true).CurrentQuest))
+                SelectionState, () => SelectionState.GetCurrentQuest(allowNewMsq: true, skipPriority: true).CurrentQuest))
             return false;
 
         _logger.LogInformation("Accept-all: queueing {QuestId} to be accepted before other work", next.Id);
@@ -1213,7 +1214,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     private bool TryPickPriorityQuest()
     {
-        if (!QuestSelectionController.IsInterruptible(CurrentQuestDetails, AutomationType, HasExternalOperation,
+        if (!_priorityManager.CanInterrupt || !QuestSelectionController.IsInterruptible(CurrentQuestDetails, AutomationType, HasExternalOperation,
                 _priorityManager.Contains))
             return false;
 

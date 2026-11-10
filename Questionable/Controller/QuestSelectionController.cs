@@ -82,11 +82,13 @@ internal sealed class QuestSelectionController(Configuration configuration)
     }
 
     // A finished quest only counts once it's no longer accepted (repeatables). After a stop there's no started quest,
-    // so an accepted journal quest counts instead.
+    // so an accepted journal quest counts instead. A priority quest picked while interrupting was on, but not yet
+    // accepted, doesn't count as started either.
     internal static bool IsOtherQuestRunning(QuestProgress? started, ElementId priorityQuestId, IQuestSelectionState state,
         Func<ElementId?> journalQuest)
     {
-        if (started != null)
+        bool onlyPicked = started?.Quest.Id == priorityQuestId && !state.IsAccepted(priorityQuestId);
+        if (started != null && !onlyPicked)
             return started.Quest.Id != priorityQuestId &&
                    (!state.IsComplete(started.Quest.Id) || state.IsAccepted(started.Quest.Id));
 
@@ -173,7 +175,7 @@ internal interface IQuestSelectionState
     bool IsReadyToAccept(ElementId questId, bool ignoreLevel = false);
     bool HasClassJobAtQuestLevel(ElementId questId);
     byte GetSequence(ElementId questId);
-    QuestReference GetCurrentQuest(bool allowNewMsq);
+    QuestReference GetCurrentQuest(bool allowNewMsq, bool skipPriority = false);
 }
 
 internal sealed record QuestSlots(QuestProgress? Started, QuestProgress? Next, QuestProgress? Gathering, QuestProgress? Simulated);
@@ -193,7 +195,9 @@ internal sealed class QuestSelectionContext(
     public Func<ElementId, bool> IsAcceptOnly => isAcceptOnly;
     public IQuestSelectionState State => state;
     public bool CanInterrupt => canInterrupt;
-    public QuestReference Current => _current ??= state.GetCurrentQuest(allowNewMsq: automation != EAutomationType.SingleQuestB);
+    // The journal lookup puts priority quests ahead of an accepted MSQ; with interrupting off the MSQ has to win.
+    public QuestReference Current => _current ??= state.GetCurrentQuest(
+        allowNewMsq: automation != EAutomationType.SingleQuestB, skipPriority: !canInterrupt);
 }
 
 internal enum EQuestSource

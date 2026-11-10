@@ -43,10 +43,10 @@ internal sealed class QuestFunctions
     }
 
     private ushort? _randomCompanyQuest;
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "<Pending>")]
-    public QuestReference GetCurrentQuest(bool allowNewMsq = true)
+    [SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "<Pending>")]
+    public QuestReference GetCurrentQuest(bool allowNewMsq = true, bool skipPriority = false)
     {
-        QuestReference internalQuest = GetCurrentQuestInternal(allowNewMsq);
+        QuestReference internalQuest = GetCurrentQuestInternal(allowNewMsq, skipPriority);
         (ElementId? currentQuest, byte sequence, MainScenarioQuestState questState) = internalQuest;
 
         if (currentQuest == null || currentQuest.Value == 0)
@@ -125,7 +125,7 @@ internal sealed class QuestFunctions
         return internalQuest;
     }
 
-    public QuestReference GetCurrentQuestInternal(bool allowNewMsq)
+    public QuestReference GetCurrentQuestInternal(bool allowNewMsq, bool skipPriority = false)
     {
         if (!state.HasQuestManager)
             return QuestReference.NoQuest(MainScenarioQuestState.Unavailable);
@@ -214,7 +214,7 @@ internal sealed class QuestFunctions
             return new(firstTrackedQuest, firstTrackedSequence, msqQuest.State);
         }
 
-        ElementId? priorityQuest = NextPriorityQuests
+        ElementId? priorityQuest = skipPriority ? null : NextPriorityQuests
             .Where(x => x.IsAvailable)
             .Select(x => x.QuestId)
             .FirstOrDefault();

@@ -178,6 +178,36 @@ public sealed class QuestSelectionControllerTests
     }
 
     [Fact]
+    public void NoInterrupt_AcceptedMsqBeatsPriority()
+    {
+        Quest priority = NewQuest(10);
+        var msq = new QuestId(70);
+        _state.Ready.Add(priority.Id);
+        _state.Accepted.Add(msq);
+        _state.Current = new QuestReference(priority.Id, 0, MainScenarioQuestState.Available);
+        _state.WithoutPriority = new QuestReference(msq, 1, MainScenarioQuestState.Available);
+
+        QuestChoice waiting = ChooseWaiting(Slots(), priority);
+        Assert.Equal(EQuestSource.Journal, waiting.Source);
+        Assert.Equal(msq, waiting.QuestId);
+        Assert.Equal(EQuestSource.Priority, Choose(Slots(), priority: priority).Source);
+    }
+
+    [Fact]
+    public void NoInterrupt_PickedPriorityYieldsToMsq()
+    {
+        Quest priority = NewQuest(10);
+        var msq = new QuestId(70);
+        _state.Ready.Add(priority.Id);
+        _state.Accepted.Add(msq);
+        _state.WithoutPriority = new QuestReference(msq, 1, MainScenarioQuestState.Available);
+
+        QuestChoice waiting = ChooseWaiting(Slots(started: new(priority, 0)), priority);
+        Assert.Equal(EQuestSource.Journal, waiting.Source);
+        Assert.Equal(msq, waiting.QuestId);
+    }
+
+    [Fact]
     public void NoInterrupt_AfterStopWaitsForJournal()
     {
         Quest priority = NewQuest(10);
@@ -380,6 +410,7 @@ public sealed class QuestSelectionControllerTests
         public HashSet<ElementId> ClassJob { get; } = [];
         public Dictionary<ElementId, byte> Sequences { get; } = [];
         public QuestReference Current { get; set; } = QuestReference.NoQuest(MainScenarioQuestState.Available);
+        public QuestReference? WithoutPriority { get; set; }
         public int CurrentQueries { get; private set; }
         public bool? LastAllowNewMsq { get; private set; }
 
@@ -392,11 +423,11 @@ public sealed class QuestSelectionControllerTests
         public bool HasClassJobAtQuestLevel(ElementId questId) => ClassJob.Contains(questId);
         public byte GetSequence(ElementId questId) => Sequences.GetValueOrDefault(questId);
 
-        public QuestReference GetCurrentQuest(bool allowNewMsq)
+        public QuestReference GetCurrentQuest(bool allowNewMsq, bool skipPriority = false)
         {
             CurrentQueries++;
             LastAllowNewMsq = allowNewMsq;
-            return Current;
+            return skipPriority && WithoutPriority != null ? WithoutPriority : Current;
         }
     }
 }
