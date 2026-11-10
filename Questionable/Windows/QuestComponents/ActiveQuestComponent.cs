@@ -730,6 +730,7 @@ internal sealed partial class ActiveQuestComponent
         ImGui.SameLine();
         quickAccessComponent.DrawTroubleshootingButton(showLabel: true);
 
+        bool rowEmpty = false;
         if (isMinimized)
         {
             quickAccessComponent.DrawPriorityQuestsButton();
@@ -740,15 +741,12 @@ internal sealed partial class ActiveQuestComponent
         }
         else
         {
-            bool lastStep = currentStep ==
-                            currentQuest.FindSequence()?.Steps.LastOrDefault();
-            bool colored = currentStep != null
-                           && !lastStep
-                           && currentStep.InteractionType == EInteractionType.Instruction
-                           && questController.HasCurrentTaskMatching(out WaitAtEnd.NextStepOrSequence? _);
-
-            using (ImRaii.Disabled(lastStep))
+            rowEmpty = true;
+            // Hidden on a sequence's last step, where skipping only leaves QST waiting for the game.
+            if (QuestController.CanSkipStep(currentQuest))
             {
+                bool colored = currentStep is { InteractionType: EInteractionType.Instruction }
+                               && questController.HasCurrentTaskMatching(out WaitAtEnd.NextStepOrSequence? _);
                 using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.Success, colored))
                 {
                     if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ArrowCircleRight, _L("Skip")))
@@ -757,15 +755,18 @@ internal sealed partial class ActiveQuestComponent
                             movementController.Stop();
                         questController.Skip(currentQuest.Quest.Id, currentQuest.Sequence);
                     }
-
-                    if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(_L("Skip the current step of the quest path."));
                 }
+
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip(_L("Skip the current step of the quest path."));
+                rowEmpty = false;
             }
 
             if (commandManager.Commands.ContainsKey("/questinfo"))
             {
-                ImGui.SameLine();
+                if (!rowEmpty)
+                    ImGui.SameLine();
+                rowEmpty = false;
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Atlas))
                     commandManager.ProcessCommand($"/questinfo {currentQuest.Quest.Id}");
                 if (ImGui.IsItemClicked(ImGuiMouseButton.Right) && commandManager.Commands.ContainsKey("/questgraph"))
@@ -778,7 +779,8 @@ internal sealed partial class ActiveQuestComponent
 
         using (ImRaii.Disabled(!questController.IsRunning))
         {
-            ImGui.SameLine();
+            if (!rowEmpty)
+                ImGui.SameLine();
             bool anyStopArmed = questController.StopAfterCurrentQuest
                                 || questController.StopAfterNextAccept
                                 || questController.StopBeforeTeleport

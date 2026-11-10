@@ -1126,6 +1126,22 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         return false;
     }
 
+    // The last step of a sequence moves on with the game; skipping it would only leave QST waiting.
+    internal static bool CanSkipStep(QuestProgress? current) =>
+        current != null && current.FindStep() != current.FindSequence()?.Steps.LastOrDefault();
+
+    public bool CanSkipStep() => CanSkipStep(CurrentQuest);
+
+    public void SkipStep()
+    {
+        if (CurrentQuest is not { } current || !CanSkipStep(current))
+            return;
+
+        if (!HasExternalOperation)
+            _movementController.Stop();
+        Skip(current.Quest.Id, current.Sequence);
+    }
+
     public void Skip(ElementId elementId, byte sequence)
     {
         lock (_progressLock)

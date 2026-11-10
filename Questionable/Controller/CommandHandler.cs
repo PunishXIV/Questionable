@@ -132,6 +132,7 @@ internal sealed class CommandHandler : IDisposable
                 _chatGui.Print(_L("/qst start - starts doing quests"), MessageTag, TagColor);
                 _chatGui.Print(_L("/qst stop - stops doing quests"), MessageTag, TagColor);
                 _chatGui.Print(_L("/qst reload - reload all quest data"), MessageTag, TagColor);
+                _chatGui.Print(_L("/qst skipstep - skips the current quest step, e.g. one you finished by hand"), MessageTag, TagColor);
                 break;
 
             case "ha":
@@ -144,6 +145,7 @@ internal sealed class CommandHandler : IDisposable
                 _chatGui.Print(_L("/qst start - starts doing quests"), MessageTag, TagColor);
                 _chatGui.Print(_L("/qst stop - stops doing quests"), MessageTag, TagColor);
                 _chatGui.Print(_L("/qst reload - reload all quest data"), MessageTag, TagColor);
+                _chatGui.Print(_L("/qst skipstep - skips the current quest step, e.g. one you finished by hand"), MessageTag, TagColor);
                 _chatGui.Print(_L("/qst do <questId> - highlights the specified quest in the debug overlay (requires debug overlay to be enabled)"), MessageTag, TagColor);
                 _chatGui.Print(_L("/qst do - clears the highlighted quest in the debug overlay (requires debug overlay to be enabled)"), MessageTag, TagColor);
                 _chatGui.Print(_L("/qst next <questId> - sets the next quest to do (or clears it if no questId is specified)"), MessageTag, TagColor);
@@ -177,6 +179,15 @@ internal sealed class CommandHandler : IDisposable
 
             case "reload":
                 _questWindow.Reload();
+                break;
+
+            case "skipstep":
+                if (_questController.CurrentQuest == null)
+                    _chatGui.PrintError(_L("There's no current quest."), MessageTag, TagColor);
+                else if (!_questController.CanSkipStep())
+                    _chatGui.PrintError(_L("The last step of a sequence can't be skipped; the game moves the quest on once it's done."), MessageTag, TagColor);
+                else
+                    _questController.SkipStep();
                 break;
 
             case "do":
