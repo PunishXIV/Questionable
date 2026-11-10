@@ -5,6 +5,7 @@ using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Model.Questing;
+using Questionable.Windows.Common;
 using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller;
@@ -36,6 +37,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly QuestWindow _questWindow;
     private readonly QuestData _questData;
     private readonly EventInfoComponent _eventInfoComponent;
+    private readonly OpenQuestCleanUp _openQuestCleanUp;
     private readonly ITargetManager _targetManager;
     private readonly ILogger<CommandHandler> _logger;
 
@@ -64,6 +66,7 @@ internal sealed class CommandHandler : IDisposable
         Configuration configuration,
         QuestData questData,
         EventInfoComponent eventInfoComponent,
+        OpenQuestCleanUp openQuestCleanUp,
         ILogger<CommandHandler> logger)
     {
         _commandManager = commandManager;
@@ -88,6 +91,7 @@ internal sealed class CommandHandler : IDisposable
         _configuration = configuration;
         _questData = questData;
         _eventInfoComponent = eventInfoComponent;
+        _openQuestCleanUp = openQuestCleanUp;
         _logger = logger;
 
         _clientState.Logout += OnLogout;
@@ -214,7 +218,7 @@ internal sealed class CommandHandler : IDisposable
                 break;
 
             case "cleanup":
-                CleanUpOpenQuests();
+                _openQuestCleanUp.Run();
                 break;
 
             case "mountid":
@@ -519,19 +523,6 @@ internal sealed class CommandHandler : IDisposable
                 ? _L("Cleared simulated quest.")
                 : _L("Wait for the external operation to stop, then clear the simulated quest again."), MessageTag, TagColor);
         }
-    }
-
-    private void CleanUpOpenQuests()
-    {
-        IReadOnlyList<Quest> added = _questController.PriorityManager.QueueOpenQuests(_questFunctions.OpenQuests);
-        if (added.Count == 0)
-        {
-            _chatGui.Print(_L("No open quests to clean up."), MessageTag, TagColor);
-            return;
-        }
-
-        _chatGui.Print(_LF("Added {0} open quest(s) to the priority list:", added.Count) + " " +
-                       string.Join(", ", added.Select(x => x.Info.Name)), MessageTag, TagColor);
     }
 
     private void PrintMountId()

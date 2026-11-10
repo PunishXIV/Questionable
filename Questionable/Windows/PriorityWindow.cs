@@ -1,6 +1,7 @@
 using System.Text;
 using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
+using Dalamud.Interface.Components;
 using Dalamud.Interface.Utility.Raii;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
@@ -37,6 +38,7 @@ internal sealed class PriorityWindow : LWindow
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
     private readonly QuestJournalUtils _questJournalUtils;
+    private readonly OpenQuestCleanUp _openQuestCleanUp;
     private Dictionary<string, List<ElementId>>? _builtInPresets;
     private ElementId? _draggedItem;
     private Job? _lastKnownJob;
@@ -45,7 +47,8 @@ internal sealed class PriorityWindow : LWindow
 
     public PriorityWindow(QuestController questController, QuestFunctions questFunctions, QuestSelector questSelector,
         QuestTooltipComponent questTooltipComponent, UiUtils uiUtils, IChatGui chatGui, QuestRegistry questRegistry,
-        IDalamudPluginInterface pluginInterface, Configuration configuration, QuestData questData, QuestJournalUtils questJournalUtils)
+        IDalamudPluginInterface pluginInterface, Configuration configuration, QuestData questData, QuestJournalUtils questJournalUtils,
+        OpenQuestCleanUp openQuestCleanUp)
         : base(_L("Priority Quests") + "###QuestionableQuestPriority")
     {
         _questController = questController;
@@ -59,6 +62,7 @@ internal sealed class PriorityWindow : LWindow
         _configuration = configuration;
         _questData = questData;
         _questJournalUtils = questJournalUtils;
+        _openQuestCleanUp = openQuestCleanUp;
 
         _questSelector.SuggestionPredicate = quest =>
             !quest.Info.IsMainScenarioQuest &&
@@ -111,38 +115,37 @@ internal sealed class PriorityWindow : LWindow
         DrawQuestList();
         DrawRewardTotal();
 
-        DrawCleanUpButton();
-
-        List<ElementId> clipboardItems = ParseClipboardItems();
-        using (ImRaii.Disabled(clipboardItems.Count == 0))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Paste, _L("Import from Clipboard")))
-                ImportFromClipboard(clipboardItems);
-        }
-        ImGui.SameLine();
+        _openQuestCleanUp.DrawButton();
         using (ImRaii.Disabled(_questController.PriorityManager.IsEmpty))
         {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Copy, _L("Export to Clipboard")))
-                ExportToClipboard();
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Eraser, _L("Remove finished Quests")))
+            string removeLabel = _L("Remove finished Quests");
+            SameLineIfFits(FontAwesomeIcon.Eraser, removeLabel);
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Eraser, removeLabel))
                 _questController.PriorityManager.RemoveCompleted(_questFunctions.IsPriorityQuestDone, _questFunctions.IsQuestAccepted);
-            ImGui.SameLine();
 
+            string clearLabel = _L("Clear All");
+            SameLineIfFits(FontAwesomeIcon.Trash, clearLabel);
             using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
             {
-                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, _L("Clear All")))
+                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, clearLabel))
                     _questController.PriorityManager.Clear();
             }
 
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
                 ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
-
-            using (ImRaii.Disabled(!_questController.PriorityManager.HasPendingAcceptOnly))
-            {
-                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Inbox, _L("Change all to normal priority")))
-                    _questController.PriorityManager.ClearAllAcceptOnly();
-            }
         }
+
+        if (_questController.PriorityManager.HasPendingAcceptOnly &&
+            ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Inbox, _L("Change all to normal priority")))
+            _questController.PriorityManager.ClearAllAcceptOnly();
+    }
+
+    private static void SameLineIfFits(FontAwesomeIcon icon, string label)
+    {
+        float right = ImGui.GetCursorScreenPos().X + ImGui.GetContentRegionAvail().X;
+        float width = ImGuiComponents.GetIconButtonWithTextWidth(icon, label);
+        if (ImGui.GetItemRectMax().X + ImGui.GetStyle().ItemSpacing.X + width <= right)
+            ImGui.SameLine();
     }
 
     private void DrawRewardTotal()
@@ -279,34 +282,6 @@ internal sealed class PriorityWindow : LWindow
 
         if (itemToAdd != null)
             _questController.PriorityManager.Move(priorityQuests.IndexOf(itemToAdd), indexToAdd);
-    }
-
-    private void DrawCleanUpButton()
-    {
-        int openQuestCount = _questFunctions.OpenQuests.Count(x => !_questController.PriorityManager.Contains(x));
-        using (ImRaii.Disabled(openQuestCount == 0))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Broom, _L("Clean Up")))
-                AddOpenQuests();
-        }
-
-        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-        {
-            ImGui.SetTooltip(openQuestCount == 0
-                ? _L("Every open quest Questionable can continue is already in this list.")
-                : _LF("Add the {0} quest(s) you already have open to this list, finished ones first.",
-                    openQuestCount));
-        }
-    }
-
-    private void AddOpenQuests()
-    {
-        IReadOnlyList<Quest> added = _questController.PriorityManager.QueueOpenQuests(_questFunctions.OpenQuests);
-        _chatGui.Print(
-            added.Count == 0
-                ? _L("No open quests to clean up.")
-                : _LF("Added {0} open quest(s) to the priority list.", added.Count),
-            CommandHandler.MessageTag, CommandHandler.TagColor);
     }
 
     private static List<ElementId> ParseClipboardItems()
@@ -467,6 +442,20 @@ internal sealed class PriorityWindow : LWindow
             ImGui.TextColored(QstTheme.Danger, _L("Cannot overwrite a built-in preset."));
         else if (nameExists)
             ImGui.TextColored(QstTheme.Amber, _L("Hold CTRL to overwrite existing preset."));
+
+        ImGui.Spacing();
+        List<ElementId> clipboardItems = ParseClipboardItems();
+        using (ImRaii.Disabled(clipboardItems.Count == 0))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Paste, _L("Import from Clipboard")))
+                ImportFromClipboard(clipboardItems);
+        }
+        ImGui.SameLine();
+        using (ImRaii.Disabled(noQuests))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Copy, _L("Export to Clipboard")))
+                ExportToClipboard();
+        }
     }
 
     private Dictionary<string, List<ElementId>> GetOrCreateBuiltInPresets()
