@@ -40,142 +40,10 @@ internal sealed class CreationUtilsComponent
 
         // Pathmaker info; the status lines below have their own toggles.
         if (configuration.Advanced.Debug)
-        {
-            using (ImRaii.PushFont(UiBuilder.IconFont))
-            {
-                ImGui.TextColored(QstTheme.TextMuted, FontAwesomeIcon.MapMarkerAlt.ToIconString());
-            }
-
-            ImGui.SameLine();
-            string territoryName = TerritoryData.GetNameAndId(clientState.TerritoryType);
-            ImGui.Text(territoryName);
-
-            if (gameFunctions.IsFlyingUnlockedHere())
-            {
-                ImGui.SameLine();
-                ImGui.Text(SeIconChar.BotanistSprout.ToIconString());
-            }
-        }
+            DrawZone();
 
         if (configuration.Advanced.AdditionalStatusInformation)
-        {
-            ImGui.Spacing();
-            QuestReference current = questFunctions.GetCurrentQuest();
-            ImGui.Text(_LF("QST prio: {0} → {1}", current.CurrentQuest?.ToString() ?? "", current.Sequence));
-            Quest? simQuest = questController.SimulatedQuest?.Quest;
-            if (simQuest != null)
-                ImGui.Text(_LF("Sim: {0} → {1}", simQuest.Id, questController.SimulatedQuest?.Sequence.ToString(CultureInfo.InvariantCulture) ?? ""));
-            unsafe
-            {
-                if (configuration.Advanced.ShowNewGamePlus)
-                {
-                    uint questId = current.CurrentQuest?.Value ?? 0;
-                    if (simQuest != null)
-                        questId = simQuest.Id.Value;
-
-                    RedoIndex chapter = redoUtil.GetChapter((ushort)questId);
-                    string simSuffix = simQuest != null ? " (sim)" : "";
-                    if (chapter.Index != -1)
-                        ImGui.Text(_LF("NG+{0}: {1}", simSuffix, chapter));
-                }
-
-                if (configuration.Advanced.ShowDailies || configuration.Advanced.ShowTracked)
-                {
-                    QuestManager* questManager = QuestManager.Instance();
-                    if (questManager != null)
-                    {
-                        if (configuration.Advanced.ShowTracked)
-                        {
-                            for (int i = questManager->TrackedQuests.Length - 1; i >= 0; --i)
-                            {
-                                TrackingWork trackedQuest = questManager->TrackedQuests[i];
-                                switch (trackedQuest.QuestType)
-                                {
-                                    default:
-                                        if (trackedQuest.QuestType != 0 || trackedQuest.Index != 0)
-                                            ImGui.Text(_LF("Tracked Quest {0}: {1}, {2}", i, trackedQuest.QuestType, trackedQuest.Index));
-                                        break;
-
-                                    case 1:
-                                        ImGui.Text(
-                                            _LF("Tracked Quest: {0} → {1}",
-                                                    questManager->NormalQuests[trackedQuest.Index].QuestId,
-                                                    questManager->NormalQuests[trackedQuest.Index].Sequence));
-                                        break;
-
-                                    case 2:
-                                        break;
-                                }
-                            }
-                        }
-
-                        if (configuration.Advanced.ShowDailies)
-                        {
-                            for (int i = 0; i < questManager->DailyQuests.Length; ++i)
-                            {
-                                DailyQuestWork dailyQuest = questManager->DailyQuests[i];
-                                if (dailyQuest.QuestId != 0 && !dailyQuest.IsCompleted)
-                                {
-                                    ImGui.Text(_LF("Daily Quest {0}: {1}, C:{2}", i, dailyQuest.QuestId, dailyQuest.IsCompleted));
-                                    if (questRegistry.TryGetQuest(new QuestId(dailyQuest.QuestId), out Quest? quest))
-                                    {
-                                        if (ImGui.IsItemHovered())
-                                        {
-                                            ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-                                            ImGui.SetTooltip($"{quest.Info.Name} ({quest.Info.AlliedSociety})");
-                                        }
-
-                                        if (ImGui.IsItemClicked())
-                                        {
-                                            questController.PriorityManager.Add(quest.Id);
-                                            if (!priorityWindow.IsOpen)
-                                                priorityWindow.ToggleOrUncollapse();
-                                            priorityWindow.BringToFront();
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-                if (configuration.Advanced.ShowDirector)
-                {
-                    Director* director = UIState.Instance()->DirectorTodo.Director;
-                    if (director != null)
-                    {
-                        ImGui.Spacing();
-                        ImGui.Text(_LF("Director: {0}", director->ContentId));
-                        ImGui.Text(_LF("Seq: {0}", director->Sequence));
-                        ImGui.Text(_LF("Ico: {0}", director->IconId));
-                        if (director->EventHandlerInfo != null)
-                        {
-                            ImGui.Text($"  EHI CI: {director->Info.EventId.ContentId}");
-                            ImGui.Text($"  EHI EI: {director->Info.EventId.Id}");
-                            ImGui.Text($"  EHI EEI: {director->Info.EventId.EntryId}");
-                            ImGui.Text($"  EHI F: {director->Info.Flags}");
-                        }
-                    }
-                }
-
-                if (configuration.Advanced.ShowActionManager)
-                {
-                    ImGui.Spacing();
-                    ActionManager* actionManager = ActionManager.Instance();
-                    ImGui.Text(
-                        $"A1: {actionManager->CastActionId} ({actionManager->LastUsedActionSequence} → {actionManager->LastHandledActionSequence})");
-                    ImGui.Text($"A2: {actionManager->CastTimeElapsed} / {actionManager->CastTimeTotal}");
-                    ImGui.Text($"PC: {questController.TaskQueue.CurrentTaskExecutor?.ProgressContext}");
-                }
-
-                if (configuration.Advanced.ShowHoveredItem)
-                {
-                    ulong hoveredItemId = gameGui.HoveredItem;
-                    string hqSuffix = hoveredItemId >= 1000000 && hoveredItemId < 2000000 ? ((char)SeIconChar.HighQuality).ToString() : "";
-                    ImGui.Text(_LF("Hovered Item: {0}", !hqSuffix.IsNullOrEmpty() ? hoveredItemId % 1000000 : hoveredItemId) + hqSuffix);
-                }
-            }
-        }
+            DrawStatusLines();
 
         bool debug = configuration.Advanced.Debug;
         IGameObject? target = targetManager.Target;
@@ -194,6 +62,144 @@ internal sealed class CreationUtilsComponent
             if (target != null)
                 DrawTargetDetails(target);
             DrawSavedDetails();
+        }
+    }
+
+    private void DrawZone()
+    {
+        using (ImRaii.PushFont(UiBuilder.IconFont))
+        {
+            ImGui.TextColored(QstTheme.TextMuted, FontAwesomeIcon.MapMarkerAlt.ToIconString());
+        }
+
+        ImGui.SameLine();
+        string territoryName = TerritoryData.GetNameAndId(clientState.TerritoryType);
+        ImGui.Text(territoryName);
+
+        if (gameFunctions.IsFlyingUnlockedHere())
+        {
+            ImGui.SameLine();
+            ImGui.Text(SeIconChar.BotanistSprout.ToIconString());
+        }
+    }
+
+    private void DrawStatusLines()
+    {
+        ImGui.Spacing();
+        QuestReference current = questFunctions.GetCurrentQuest();
+        ImGui.Text(_LF("QST prio: {0} → {1}", current.CurrentQuest?.ToString() ?? "", current.Sequence));
+        Quest? simQuest = questController.SimulatedQuest?.Quest;
+        if (simQuest != null)
+            ImGui.Text(_LF("Sim: {0} → {1}", simQuest.Id, questController.SimulatedQuest?.Sequence.ToString(CultureInfo.InvariantCulture) ?? ""));
+        unsafe
+        {
+            if (configuration.Advanced.ShowNewGamePlus)
+            {
+                uint questId = current.CurrentQuest?.Value ?? 0;
+                if (simQuest != null)
+                    questId = simQuest.Id.Value;
+
+                RedoIndex chapter = redoUtil.GetChapter((ushort)questId);
+                string simSuffix = simQuest != null ? " (sim)" : "";
+                if (chapter.Index != -1)
+                    ImGui.Text(_LF("NG+{0}: {1}", simSuffix, chapter));
+            }
+
+            if (configuration.Advanced.ShowDailies || configuration.Advanced.ShowTracked)
+            {
+                QuestManager* questManager = QuestManager.Instance();
+                if (questManager != null)
+                {
+                    if (configuration.Advanced.ShowTracked)
+                    {
+                        for (int i = questManager->TrackedQuests.Length - 1; i >= 0; --i)
+                        {
+                            TrackingWork trackedQuest = questManager->TrackedQuests[i];
+                            switch (trackedQuest.QuestType)
+                            {
+                                default:
+                                    if (trackedQuest.QuestType != 0 || trackedQuest.Index != 0)
+                                        ImGui.Text(_LF("Tracked Quest {0}: {1}, {2}", i, trackedQuest.QuestType, trackedQuest.Index));
+                                    break;
+
+                                case 1:
+                                    ImGui.Text(
+                                        _LF("Tracked Quest: {0} → {1}",
+                                                questManager->NormalQuests[trackedQuest.Index].QuestId,
+                                                questManager->NormalQuests[trackedQuest.Index].Sequence));
+                                    break;
+
+                                case 2:
+                                    break;
+                            }
+                        }
+                    }
+
+                    if (configuration.Advanced.ShowDailies)
+                    {
+                        for (int i = 0; i < questManager->DailyQuests.Length; ++i)
+                        {
+                            DailyQuestWork dailyQuest = questManager->DailyQuests[i];
+                            if (dailyQuest.QuestId != 0 && !dailyQuest.IsCompleted)
+                            {
+                                ImGui.Text(_LF("Daily Quest {0}: {1}, C:{2}", i, dailyQuest.QuestId, dailyQuest.IsCompleted));
+                                if (questRegistry.TryGetQuest(new QuestId(dailyQuest.QuestId), out Quest? quest))
+                                {
+                                    if (ImGui.IsItemHovered())
+                                    {
+                                        ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+                                        ImGui.SetTooltip($"{quest.Info.Name} ({quest.Info.AlliedSociety})");
+                                    }
+
+                                    if (ImGui.IsItemClicked())
+                                    {
+                                        questController.PriorityManager.Add(quest.Id);
+                                        if (!priorityWindow.IsOpen)
+                                            priorityWindow.ToggleOrUncollapse();
+                                        priorityWindow.BringToFront();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (configuration.Advanced.ShowDirector)
+            {
+                Director* director = UIState.Instance()->DirectorTodo.Director;
+                if (director != null)
+                {
+                    ImGui.Spacing();
+                    ImGui.Text(_LF("Director: {0}", director->ContentId));
+                    ImGui.Text(_LF("Seq: {0}", director->Sequence));
+                    ImGui.Text(_LF("Ico: {0}", director->IconId));
+                    if (director->EventHandlerInfo != null)
+                    {
+                        ImGui.Text($"  EHI CI: {director->Info.EventId.ContentId}");
+                        ImGui.Text($"  EHI EI: {director->Info.EventId.Id}");
+                        ImGui.Text($"  EHI EEI: {director->Info.EventId.EntryId}");
+                        ImGui.Text($"  EHI F: {director->Info.Flags}");
+                    }
+                }
+            }
+
+            if (configuration.Advanced.ShowActionManager)
+            {
+                ImGui.Spacing();
+                ActionManager* actionManager = ActionManager.Instance();
+                ImGui.Text(
+                    $"A1: {actionManager->CastActionId} ({actionManager->LastUsedActionSequence} → {actionManager->LastHandledActionSequence})");
+                ImGui.Text($"A2: {actionManager->CastTimeElapsed} / {actionManager->CastTimeTotal}");
+                ImGui.Text($"PC: {questController.TaskQueue.CurrentTaskExecutor?.ProgressContext}");
+            }
+
+            if (configuration.Advanced.ShowHoveredItem)
+            {
+                ulong hoveredItemId = gameGui.HoveredItem;
+                string hqSuffix = hoveredItemId >= 1000000 && hoveredItemId < 2000000 ? ((char)SeIconChar.HighQuality).ToString() : "";
+                ImGui.Text(_LF("Hovered Item: {0}", !hqSuffix.IsNullOrEmpty() ? hoveredItemId % 1000000 : hoveredItemId) + hqSuffix);
+            }
         }
     }
 
