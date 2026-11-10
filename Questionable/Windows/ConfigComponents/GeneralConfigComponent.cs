@@ -1,5 +1,6 @@
 using ECommons.ExcelServices;
 using ECommons.ImGuiMethods;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 namespace Questionable.Windows.ConfigComponents;
@@ -21,6 +22,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
     private uint? _itemToRemove;
     private readonly Lazy<List<Job>> _sortedClassJobs;
     private readonly Lazy<(uint[] Ids, string[] Names)> _mounts;
+    private (ulong ContentId, ushort Owned, uint[] Ids, string[] Names)? _ownedMounts;
     private readonly Lazy<(Job[] Ids, string[] Names)> _combatJobs;
     private readonly Lazy<(Job[] Ids, string[] Names)> _craftJobs;
     private readonly Lazy<(Job[] Ids, string[] Names)> _gatherJobs;
@@ -67,6 +69,37 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         uint[] ids = [DefaultMount.Id, .. mounts.Select(x => x.MountId)];
         string[] names = [DefaultMount.Name, .. mounts.Select(x => x.Name)];
         return (ids, names);
+    }
+  
+    private unsafe (uint[] Ids, string[] Names) GetOwnedMounts()
+    {
+        (uint[] ids, string[] names) = _mounts.Value;
+        PlayerState* playerState = PlayerState.Instance();
+        if (playerState == null || !playerState->IsLoaded)
+            return (ids, names);
+
+        if (_ownedMounts is not { } cached ||
+            cached.ContentId != playerState->ContentId ||
+            cached.Owned != playerState->NumOwnedMounts)
+        {
+            (uint[] ownedIds, string[] ownedNames) = KeepOwned(ids, names, id => PlayerState.Instance()->IsMountUnlocked(id));
+            cached = (playerState->ContentId, playerState->NumOwnedMounts, ownedIds, ownedNames);
+            _ownedMounts = cached;
+        }
+
+        return (cached.Ids, cached.Names);
+    }
+
+    internal static (uint[] Ids, string[] Names) KeepOwned(uint[] ids, string[] names, Func<uint, bool> isOwned)
+    {
+        List<int> keep = [];
+        for (int i = 0; i < ids.Length; i++)
+        {
+            if (ids[i] == DefaultMount.Id || isOwned(ids[i]))
+                keep.Add(i);
+        }
+
+        return ([.. keep.Select(i => ids[i])], [.. keep.Select(i => names[i])]);
     }
 
     private (Job[] Ids, string[] Names) BuildJobList(IEnumerable<Job> source, bool prependDefault)
@@ -153,7 +186,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         if (!QstWidgets.SectionHeader(_L("Preferences"), "Preferences", defaultOpen: false))
             return;
 
-        (uint[] mountIds, string[] mountNames) = _mounts.Value;
+        (uint[] mountIds, string[] mountNames) = GetOwnedMounts();
         uint mountId = Configuration.General.MountId;
         ImGui.SetNextItemWidth(size.X / 2);
         if (ImGuiComponentsLocal.DrawSearchableCombo(_L("Preferred Mount"), mountIds, mountNames,

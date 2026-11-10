@@ -289,3 +289,25 @@ public sealed class ConfigComponentTests
         Assert.Equal([6u], blacklisted);
     }
 }
+
+public sealed class GeneralConfigComponentTests
+{
+    [Fact]
+    public void OwnedMounts_KeepRouletteAndOrder()
+    {
+        (uint[] ids, string[] names) = GeneralConfigComponent.KeepOwned(
+            [0, 5, 7, 9], ["Roulette", "Bird", "Wolf", "Cat"], id => id is 9 or 5);
+
+        Assert.Equal([0u, 5u, 9u], ids);
+        Assert.Equal(["Roulette", "Bird", "Cat"], names);
+    }
+
+    [Fact]
+    public void NoOwnedMounts_OnlyRoulette()
+    {
+        (uint[] ids, string[] names) = GeneralConfigComponent.KeepOwned([0, 5], ["Roulette", "Bird"], _ => false);
+
+        Assert.Equal([0u], ids);
+        Assert.Equal(["Roulette"], names);
+    }
+}
