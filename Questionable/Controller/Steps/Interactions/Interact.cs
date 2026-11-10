@@ -178,6 +178,75 @@ internal static class Interact
             if (DateTime.Now <= _continueAt)
                 return ETaskResult.StillRunning;
 
+            UnequipJobStone();
+            if (GetEarlyResult() is { } earlyResult)
+                return earlyResult;
+
+            IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
+            if (gameObject == null)
+            {
+                if (!_reportedNoObject)
+                {
+                    logger.LogDebug("gameObject is null");
+                    _reportedNoObject = true;
+                }
+
+                return ETaskResult.StillRunning;
+            }
+
+            _reportedNoObject = false;
+
+            if (_needsFacing)
+            {
+                logger.LogInformation("Facing target");
+                cameraFunctions.Face(gameObject.Position);
+                _continueAt = DateTime.Now.AddSeconds(0.2);
+                _needsFacing = false;
+                return ETaskResult.StillRunning;
+            }
+
+            if (SwitchToAcceptJob() is { } acceptResult)
+                return acceptResult;
+
+            if (SwitchToQuestJob() is { } questJobResult)
+                return questJobResult;
+
+            bool isTargetable = gameObject.IsTargetable;
+            bool hasAnyMarker = HasAnyMarker(gameObject);
+            if (!isTargetable || !hasAnyMarker)
+            {
+                if (EzThrottler.Throttle("skipTarget", miliseconds: 1000))
+                    logger.LogDebug($"IsTargetable: {isTargetable} / HasAnyMarker: {hasAnyMarker}");
+                return ETaskResult.StillRunning;
+            }
+
+            // The game's own dismount on interact can pass for the finished interaction, so get off the mount first.
+            bool mounted = condition[ConditionFlag.Mounted];
+            bool isGatheringPoint = gameObject.ObjectKind == ObjectKind.GatheringPoint;
+            if (ShouldUnmount(mounted, isGatheringPoint, _unmountTries))
+            {
+                if (_unmountTries == 0)
+                    logger.LogInformation("Unmounting before interacting with {DataId}", Task.DataId);
+
+                _unmountTries++;
+                gameFunctions.Unmount();
+                _continueAt = DateTime.Now.AddSeconds(1);
+                return ETaskResult.StillRunning;
+            }
+
+            if (mounted && !isGatheringPoint && !_reportedStillMounted)
+            {
+                logger.LogWarning("Still mounted after {Tries} tries, interacting with {DataId} anyway",
+                    _unmountTries, Task.DataId);
+                _reportedStillMounted = true;
+            }
+
+            TriggerInteraction(gameObject);
+            return ETaskResult.StillRunning;
+        }
+
+        private void UnequipJobStone()
+        {
             if (_unequipItem != 0)
             {
                 logger.LogDebug($"unequipping item {_unequipItem}");
@@ -201,6 +270,10 @@ internal static class Interact
                 }
                 _unequipItem = 0;
             }
+        }
+
+        private ETaskResult? GetEarlyResult()
+        {
             if (_needsUnmount)
             {
                 if (condition[ConditionFlag.Mounted])
@@ -257,29 +330,11 @@ internal static class Interact
                 }
             }
 
-            IGameObject? gameObject = gameFunctions.FindObjectByDataId(Task.DataId);
-            if (gameObject == null)
-            {
-                if (!_reportedNoObject)
-                {
-                    logger.LogDebug("gameObject is null");
-                    _reportedNoObject = true;
-                }
+            return null;
+        }
 
-                return ETaskResult.StillRunning;
-            }
-
-            _reportedNoObject = false;
-
-            if (_needsFacing)
-            {
-                logger.LogInformation("Facing target");
-                cameraFunctions.Face(gameObject.Position);
-                _continueAt = DateTime.Now.AddSeconds(0.2);
-                _needsFacing = false;
-                return ETaskResult.StillRunning;
-            }
-
+        private ETaskResult? SwitchToAcceptJob()
+        {
             if (!_reportedWrongJob &&
                 objectTable[0] is IPlayerCharacter player &&
                 Task.Quest != null &&
@@ -325,6 +380,11 @@ internal static class Interact
                 }
             }
 
+            return null;
+        }
+
+        private ETaskResult? SwitchToQuestJob()
+        {
             // Accepted class/job quests must be progressed on their original class; switch back before interacting.
             if (!_reportedWrongJob && Task.Quest != null &&
                 InteractionType is EInteractionType.CompleteQuest or EInteractionType.Interact &&
@@ -349,38 +409,7 @@ internal static class Interact
                 }
             }
 
-            bool isTargetable = gameObject.IsTargetable;
-            bool hasAnyMarker = HasAnyMarker(gameObject);
-            if (!isTargetable || !hasAnyMarker)
-            {
-                if (EzThrottler.Throttle("skipTarget", miliseconds: 1000))
-                    logger.LogDebug($"IsTargetable: {isTargetable} / HasAnyMarker: {hasAnyMarker}");
-                return ETaskResult.StillRunning;
-            }
-
-            // The game's own dismount on interact can pass for the finished interaction, so get off the mount first.
-            bool mounted = condition[ConditionFlag.Mounted];
-            bool isGatheringPoint = gameObject.ObjectKind == ObjectKind.GatheringPoint;
-            if (ShouldUnmount(mounted, isGatheringPoint, _unmountTries))
-            {
-                if (_unmountTries == 0)
-                    logger.LogInformation("Unmounting before interacting with {DataId}", Task.DataId);
-
-                _unmountTries++;
-                gameFunctions.Unmount();
-                _continueAt = DateTime.Now.AddSeconds(1);
-                return ETaskResult.StillRunning;
-            }
-
-            if (mounted && !isGatheringPoint && !_reportedStillMounted)
-            {
-                logger.LogWarning("Still mounted after {Tries} tries, interacting with {DataId} anyway",
-                    _unmountTries, Task.DataId);
-                _reportedStillMounted = true;
-            }
-
-            TriggerInteraction(gameObject);
-            return ETaskResult.StillRunning;
+            return null;
         }
 
         public void OnConditionChange(ConditionFlag flag, bool value)

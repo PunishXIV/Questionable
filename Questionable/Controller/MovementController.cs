@@ -97,6 +97,22 @@ internal sealed class MovementController
             throw failure;
         }
 
+        if (RetryAfterLanding())
+            return;
+        if (HandlePathResult())
+            return;
+
+        if (questController.Value.IsQuestingStopped)
+        {
+            return;
+        }
+
+        UpdateRunningPath();
+    }
+
+    // True when Update should stop for this frame.
+    private bool RetryAfterLanding()
+    {
         if (_landAndRetryTimeout != null && _previousDestination != null)
         {
             if (condition[ConditionFlag.InFlight])
@@ -108,15 +124,22 @@ internal sealed class MovementController
                     Stop();
                     throw failure;
                 }
-                return;
+                return true;
             }
 
             var retry = _previousDestination;
             _previousDestination = null;
             _landAndRetryTimeout = null;
             NavigateTo(retry);
-            return;
+            return true;
         }
+
+        return false;
+    }
+
+    // True when Update should stop for this frame.
+    private bool HandlePathResult()
+    {
         if (_pathfindTask != null && Destination != null)
         {
             if (_pathfindTask.IsCompletedSuccessfully)
@@ -133,7 +156,7 @@ internal sealed class MovementController
                         _landAndRetryTimeout = DateTime.Now.AddSeconds(10);
                         ResetPathfinding();
                         LandExecutor.TryLanding();
-                        return;
+                        return true;
                     }
                     var failure = CreateFailure(PathfindingFailureReason.NoRoute,
                         "Pathfinding complete, got 0 points");
@@ -154,7 +177,7 @@ internal sealed class MovementController
                             navPoints[^1], Destination.Position);
 
                         StartPathfinding(navPoints[^1], Destination.Position, Destination.IsFlying);
-                        return;
+                        return true;
                     }
                 }
 
@@ -174,7 +197,7 @@ internal sealed class MovementController
                     }
                     ClearLocalState();
                     StartedAt = DateTime.Now;
-                    return;
+                    return true;
                 }
                 logger.LogInformation("Navigating via route (XZ:{Distance}) [{Route}]",
                     navPoints[0].DistanceToXZ(navPoints[^1]),
@@ -182,15 +205,15 @@ internal sealed class MovementController
 
                 ThrowIfPathfindingFailed();
                 if (!StartRoute(navPoints, Destination.IsFlying))
-                    return;
+                    return true;
             }
         }
 
-        if (questController.Value.IsQuestingStopped)
-        {
-            return;
-        }
+        return false;
+    }
 
+    private void UpdateRunningPath()
+    {
         if (IsPathRunning && Destination != null)
         {
             if (gameFunctions.IsLoadingScreenVisible())
