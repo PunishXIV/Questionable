@@ -1,8 +1,4 @@
-﻿using Dalamud.Game.ClientState.Conditions;
-using Questionable.Controller.Steps.Common;
-using Questionable.Model.Common;
-using Questionable.Model.Common.Converter;
-using Questionable.Model.Questing;
+﻿using Questionable.Model.Common.Converter;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class AethernetShortcut

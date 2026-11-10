@@ -1,9 +1,6 @@
 ﻿using System.Runtime.InteropServices;
-using Dalamud.Game.ClientState.Conditions;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Control;
-using Questionable.Controller.Steps.Common;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Dive

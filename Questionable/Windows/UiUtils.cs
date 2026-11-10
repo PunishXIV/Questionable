@@ -1,9 +1,4 @@
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
-using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows;
 
 [RegisterSingleton]

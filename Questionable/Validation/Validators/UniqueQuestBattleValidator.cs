@@ -1,4 +1,3 @@
-using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
 [RegisterSingleton<IQuestValidator, UniqueQuestBattleValidator>(Duplicate = DuplicateStrategy.Append)]

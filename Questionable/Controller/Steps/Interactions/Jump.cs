@@ -1,7 +1,4 @@
-﻿using Dalamud.Game.ClientState.Conditions;
-using FFXIVClientStructs.FFXIV.Client.Game;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Jump

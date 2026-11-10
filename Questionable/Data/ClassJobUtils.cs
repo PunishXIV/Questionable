@@ -5,7 +5,6 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
 namespace Questionable.Data;
 
 [RegisterSingleton]

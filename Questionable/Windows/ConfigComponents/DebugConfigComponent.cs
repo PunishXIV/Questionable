@@ -1,9 +1,5 @@
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface.Components;
-using Dalamud.Interface.Utility.Raii;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using Questionable.AutoGen.Plugin;
-using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.ConfigComponents;
 
 [RegisterSingleton]

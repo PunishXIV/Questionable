@@ -1,6 +1,5 @@
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
 using static Questionable.Controller.Steps.ITaskExecutor;
 using Quest = Questionable.Domain.Quest;
 

@@ -1,7 +1,6 @@
 ﻿using Dalamud.Plugin.Ipc;
 using ECommons.ExcelServices;
 using JetBrains.Annotations;
-using Questionable.Model.Questing;
 namespace Questionable.External;
 
 [RegisterSingleton]

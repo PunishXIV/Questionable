@@ -1,4 +1,3 @@
-using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Movement;
 
 internal sealed record MoveTask

@@ -1,7 +1,5 @@
 ﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 namespace Questionable.Functions;
 
 [RegisterSingleton]

@@ -1,8 +1,6 @@
-using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.Text.SeStringHandling;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Questing;
 using static Questionable.Controller.Steps.ITaskExecutor;
 using MountStep = Questionable.Controller.Steps.Common.MountStep;
 

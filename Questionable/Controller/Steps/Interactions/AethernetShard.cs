@@ -1,6 +1,4 @@
-﻿using Questionable.Model.Common;
-using Questionable.Model.Questing;
-using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
+﻿using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
 
 namespace Questionable.Controller.Steps.Interactions;
 

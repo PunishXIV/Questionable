@@ -1,5 +1,4 @@
-﻿using Questionable.Model.Questing;
-namespace Questionable.Controller.Steps.Common;
+﻿namespace Questionable.Controller.Steps.Common;
 
 internal static class NextQuest
 {

@@ -1,7 +1,5 @@
 ﻿using Dalamud.Game.ClientState.Objects.Enums;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Aetheryte

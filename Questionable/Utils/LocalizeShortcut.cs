@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Lumina.Excel.Sheets;
+﻿using Lumina.Excel.Sheets;
 
 namespace Questionable.Utils;
 

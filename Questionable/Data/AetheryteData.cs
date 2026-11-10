@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Common;
 namespace Questionable.Data;
 
 [RegisterSingleton]

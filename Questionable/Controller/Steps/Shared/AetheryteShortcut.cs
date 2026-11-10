@@ -1,10 +1,6 @@
-﻿using Dalamud.Game.ClientState.Conditions;
-using FFXIVClientStructs.FFXIV.Client.Game;
-using Questionable.Controller.Steps.Common;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Movement;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class AetheryteShortcut

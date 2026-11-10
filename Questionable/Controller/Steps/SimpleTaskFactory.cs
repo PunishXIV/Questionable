@@ -1,5 +1,4 @@
-﻿using Questionable.Model.Questing;
-namespace Questionable.Controller.Steps;
+﻿namespace Questionable.Controller.Steps;
 
 internal abstract class SimpleTaskFactory : ITaskFactory
 {

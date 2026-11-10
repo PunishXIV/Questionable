@@ -1,4 +1,3 @@
-using Dalamud.Game.ClientState.Objects.Types;
 namespace Questionable.Controller.Steps.Movement;
 
 internal sealed class WaitForNearDataIdExecutor

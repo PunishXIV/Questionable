@@ -1,5 +1,4 @@
-﻿using Questionable.Model.Questing;
-using static Questionable.Controller.Steps.Common.NextQuest;
+﻿using static Questionable.Controller.Steps.Common.NextQuest;
 
 namespace Questionable.Controller.Steps.Shared;
 

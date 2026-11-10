@@ -1,6 +1,4 @@
-﻿using Questionable.Model.Common;
-using Questionable.Model.Questing;
-namespace Questionable.Validation.Validators;
+﻿namespace Questionable.Validation.Validators;
 
 [RegisterSingleton<IQuestValidator, AethernetShortcutValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class AethernetShortcutValidator(AetheryteData aetheryteData) : IQuestValidator

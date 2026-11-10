@@ -1,5 +1,4 @@
 ﻿using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
 namespace Questionable.Data;
 
 [RegisterSingleton]

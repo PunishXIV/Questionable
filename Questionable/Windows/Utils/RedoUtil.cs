@@ -1,11 +1,9 @@
-﻿using System.Diagnostics;
-using Dalamud.Memory;
+﻿using Dalamud.Memory;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
 using Lumina.Text.ReadOnly;
-using Questionable.Model.Questing;
 using Sheets = Lumina.Excel.Sheets;
 namespace Questionable.Windows.Utils;
 

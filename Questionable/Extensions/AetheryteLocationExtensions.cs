@@ -1,5 +1,4 @@
 ﻿using System.Runtime.CompilerServices;
-using Questionable.Model.Common;
 
 namespace Questionable.Extensions;
 

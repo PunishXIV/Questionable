@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using Lumina.Text.ReadOnly;
 namespace Questionable.Data;
 

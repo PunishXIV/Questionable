@@ -1,14 +1,7 @@
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
-using Dalamud.Interface.Components;
-using Dalamud.Interface.Utility.Raii;
 using ECommons.ExcelServices;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
-using Questionable.Windows.Common.Ui;
 using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Windows.ConfigComponents;

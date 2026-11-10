@@ -1,12 +1,5 @@
-using System.Diagnostics;
-using Dalamud.Bindings.ImGui;
 using Dalamud.Game.Text.SeStringHandling.Payloads;
-using Dalamud.Interface;
-using Dalamud.Interface.Utility.Raii;
 using Questionable.AutoGen.Plugin;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
-using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.JournalComponents;
 
 [RegisterSingleton]

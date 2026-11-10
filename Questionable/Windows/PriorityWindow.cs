@@ -1,14 +1,7 @@
 using System.Text;
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
-using Dalamud.Interface.Components;
-using Dalamud.Interface.Utility.Raii;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Humanizer;
-using Questionable.Model.Questing;
-using Questionable.Windows.Common;
-using Questionable.Windows.Common.Ui;
 using AchievementCategory = Lumina.Excel.Sheets.AchievementCategory;
 using Addon = Lumina.Excel.Sheets.Addon;
 using BeastTribe = Lumina.Excel.Sheets.BeastTribe;

@@ -1,5 +1,4 @@
-﻿using Questionable.Model.Questing;
-namespace Questionable.Controller.Utils;
+﻿namespace Questionable.Controller.Utils;
 
 internal static class QuestWorkUtils
 {

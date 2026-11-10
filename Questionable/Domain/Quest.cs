@@ -1,5 +1,4 @@
-﻿using Questionable.Model.Questing;
-namespace Questionable.Domain;
+﻿namespace Questionable.Domain;
 
 internal sealed class Quest
 {

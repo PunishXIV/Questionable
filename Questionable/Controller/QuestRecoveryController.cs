@@ -1,5 +1,3 @@
-using Questionable.Model.Questing;
-
 namespace Questionable.Controller;
 
 [RegisterSingleton]

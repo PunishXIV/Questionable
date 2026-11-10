@@ -1,5 +1,3 @@
-using Questionable.Model.Questing;
-
 namespace Questionable.Data;
 
 internal static class QuestCraftingRequirements

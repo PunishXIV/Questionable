@@ -2,7 +2,6 @@
 // Initial version reviewed and owned by @alydevs
 
 using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
 [RegisterSingleton<IQuestValidator, AcceptQuestTerritoryValidator>(Duplicate = DuplicateStrategy.Append)]

@@ -1,7 +1,6 @@
 ﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Gathering;
 
 internal static class TurnInDelivery

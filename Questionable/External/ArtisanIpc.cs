@@ -1,8 +1,5 @@
-﻿using System.Diagnostics;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Plugin.Ipc.Exceptions;
+﻿using Dalamud.Plugin.Ipc.Exceptions;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Questing;
 using static Questionable.External.IPCUtils;
 
 namespace Questionable.External;

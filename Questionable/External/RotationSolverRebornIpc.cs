@@ -1,9 +1,7 @@
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.Loader;
-using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Ipc;
-using Questionable.Model.Common;
 
 namespace Questionable.External;
 

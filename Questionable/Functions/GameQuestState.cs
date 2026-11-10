@@ -9,8 +9,6 @@ using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Client.UI.Arrays;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 using Achievement = FFXIVClientStructs.FFXIV.Client.Game.UI.Achievement;
 
 namespace Questionable.Functions;

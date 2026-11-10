@@ -1,6 +1,5 @@
 using FFXIVClientStructs.FFXIV.Client.Game;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Questing;
 using static Questionable.External.IPCUtils;
 
 namespace Questionable.External;

@@ -1,7 +1,5 @@
 using System.Collections.Immutable;
 using ECommons.ExcelServices;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 namespace Questionable.Domain;
 
 // A zone's field aether currents, run from the priority list like a quest.

@@ -8,8 +8,6 @@ using Lumina.Data.Parsing.Layer;
 using Lumina.Excel.Sheets;
 using Questionable.AutoGen.Generation;
 using Questionable.AutoGen.Lua;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 using Questionable.Model.Questing.Converter;
 using Quest = Lumina.Excel.Sheets.Quest;
 

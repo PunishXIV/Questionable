@@ -1,11 +1,7 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Dalamud.Bindings.ImGui;
-using FFXIVClientStructs.FFXIV.Client.Game;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Questing;
-using Questionable.Windows.Common;
 using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller;

@@ -1,8 +1,6 @@
 ﻿using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
-using Questionable.Controller.Steps.Common;
 using Questionable.Controller.Steps.Interactions;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class SwitchClassJob

@@ -1,9 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Dalamud.Bindings.ImGui;
-using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.ClientState.Objects.Types;
-using FFXIVClientStructs.FFXIV.Client.UI.Agent;
-using Questionable.Model.Questing;
+﻿using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 namespace Questionable.Windows;
 
 [RegisterSingleton]

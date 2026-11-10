@@ -1,4 +1,3 @@
-using Dalamud.Game.ClientState.Conditions;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 namespace Questionable.Controller.Steps.Movement;

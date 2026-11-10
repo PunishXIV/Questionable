@@ -1,9 +1,5 @@
-﻿using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
-using Dalamud.Interface.Utility.Raii;
-using Humanizer;
+﻿using Humanizer;
 using Humanizer.Localisation;
-using Questionable.Model.Questing;
 namespace Questionable.Windows.QuestComponents;
 
 [RegisterSingleton]

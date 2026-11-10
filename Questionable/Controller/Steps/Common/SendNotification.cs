@@ -1,6 +1,4 @@
-﻿using Dalamud.Game.Text;
-using Dalamud.Game.Text.SeStringHandling;
-using Questionable.Model.Questing;
+﻿using Dalamud.Game.Text.SeStringHandling;
 namespace Questionable.Controller.Steps.Common;
 
 internal static class SendNotification

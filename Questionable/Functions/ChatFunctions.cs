@@ -1,8 +1,6 @@
 using System.Collections.ObjectModel;
-using Dalamud.Game.ClientState.Objects.Types;
 using ECommons.Automation;
 using Lumina.Excel.Sheets;
-using Questionable.Model.Questing;
 
 namespace Questionable.Functions;
 

@@ -1,6 +1,4 @@
-using Dalamud.Game.ClientState.Conditions;
 using Questionable.Controller.Steps.Interactions;
-using Questionable.Model.Questing;
 using static Questionable.External.IPCUtils;
 
 namespace Questionable.External;

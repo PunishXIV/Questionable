@@ -1,5 +1,4 @@
-﻿using Questionable.Model.Questing;
-namespace Questionable.Validation.Validators;
+﻿namespace Questionable.Validation.Validators;
 
 [RegisterSingleton<IQuestValidator, CompletionFlagsValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class CompletionFlagsValidator : IQuestValidator

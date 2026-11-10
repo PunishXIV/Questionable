@@ -1,7 +1,4 @@
-﻿using Dalamud.Game.ClientState.Conditions;
-using Questionable.Controller.Steps.Common;
-using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Questing;
+﻿using Questionable.Controller.Steps.Shared;
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Combat

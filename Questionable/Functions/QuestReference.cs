@@ -1,5 +1,3 @@
-using Questionable.Model.Questing;
-
 namespace Questionable.Functions;
 
 public sealed record QuestReference(ElementId? CurrentQuest, byte Sequence, MainScenarioQuestState State)

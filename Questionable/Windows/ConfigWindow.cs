@@ -1,10 +1,4 @@
-﻿using System.Diagnostics;
-using Dalamud.Bindings.ImGui;
-using Dalamud.Interface;
-using Dalamud.Interface.Utility.Raii;
-using PunishLib.ImGuiMethods;
-using Questionable.Windows.Common;
-using Questionable.Windows.Common.Ui;
+﻿using PunishLib.ImGuiMethods;
 namespace Questionable.Windows;
 
 [RegisterSingleton]

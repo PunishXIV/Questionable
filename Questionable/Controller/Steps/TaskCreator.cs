@@ -1,6 +1,5 @@
 ﻿using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Shared;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.Steps;
 
 [RegisterSingleton]

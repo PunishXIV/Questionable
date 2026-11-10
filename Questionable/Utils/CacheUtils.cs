@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace Questionable.Utils;
+﻿namespace Questionable.Utils;
 
 internal class CacheUtils
 {

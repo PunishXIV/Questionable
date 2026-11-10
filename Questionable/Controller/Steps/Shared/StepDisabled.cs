@@ -1,5 +1,4 @@
-﻿using Questionable.Model.Questing;
-namespace Questionable.Controller.Steps.Shared;
+﻿namespace Questionable.Controller.Steps.Shared;
 
 internal static class StepDisabled
 {

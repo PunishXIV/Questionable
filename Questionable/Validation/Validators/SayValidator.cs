@@ -1,5 +1,4 @@
 using Lumina.Text.ReadOnly;
-using Questionable.Model.Questing;
 namespace Questionable.Validation.Validators;
 
 [RegisterSingleton<IQuestValidator, SayValidator>(Duplicate = DuplicateStrategy.Append)]

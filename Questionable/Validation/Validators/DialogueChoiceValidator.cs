@@ -1,5 +1,4 @@
-﻿using Questionable.Model.Questing;
-namespace Questionable.Validation.Validators;
+﻿namespace Questionable.Validation.Validators;
 
 [RegisterSingleton<IQuestValidator, DialogueChoiceValidator>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class DialogueChoiceValidator(ExcelFunctions excelFunctions) : IQuestValidator

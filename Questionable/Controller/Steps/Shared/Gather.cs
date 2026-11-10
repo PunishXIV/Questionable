@@ -1,7 +1,4 @@
-﻿using Dalamud.Game.Text;
-using Questionable.Controller.Steps.Common;
-using Questionable.Model.Questing;
-using static Questionable.Controller.Steps.ITaskExecutor;
+﻿using static Questionable.Controller.Steps.ITaskExecutor;
 
 namespace Questionable.Controller.Steps.Shared;
 

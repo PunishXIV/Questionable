@@ -1,4 +1,3 @@
-using Questionable.Model.Questing;
 using ECurrentQuestType = Questionable.Controller.QuestController.ECurrentQuestType;
 using QuestProgress = Questionable.Controller.QuestController.QuestProgress;
 

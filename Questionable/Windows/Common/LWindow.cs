@@ -1,5 +1,3 @@
-using Dalamud.Bindings.ImGui;
-using Questionable.Windows.Common.Ui;
 namespace Questionable.Windows.Common;
 
 public abstract class LWindow(string windowName, ImGuiWindowFlags flags = ImGuiWindowFlags.None, bool forceMainWindow = false) : Window(windowName, flags, forceMainWindow)

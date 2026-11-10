@@ -1,10 +1,6 @@
-﻿using Dalamud.Game.ClientState.Conditions;
-using Dalamud.Game.ClientState.Objects.Types;
-using FFXIVClientStructs.FFXIV.Client.Game;
+﻿using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Character;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 namespace Questionable.Controller.CombatModules;
 
 [RegisterSingleton<ICombatModule, ItemUseModule>(Duplicate = DuplicateStrategy.Append)]

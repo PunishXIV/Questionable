@@ -1,8 +1,5 @@
 using System.Collections.ObjectModel;
-using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin.Ipc.Exceptions;
-using Questionable.Model.Common;
-using Questionable.Model.Questing;
 using static Questionable.External.IPCUtils;
 
 namespace Questionable.External;

@@ -1,6 +1,4 @@
-using Dalamud.Game.ClientState.Objects.Types;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
-using Questionable.Model.Questing;
 
 namespace Questionable.Windows.Utils;
 

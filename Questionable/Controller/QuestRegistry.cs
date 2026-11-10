@@ -1,5 +1,3 @@
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.IO.Compression;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -9,7 +7,6 @@ using FFXIVClientStructs.FFXIV.Application.Network.WorkDefinitions;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.AutoGen.Plugin;
-using Questionable.Model.Questing;
 using Questionable.QuestPaths;
 using static Questionable.Domain.QuestInfo;
 using static Questionable.Utils.CacheUtils;

@@ -1,6 +1,4 @@
-﻿using Questionable.Controller.Steps.Common;
-using Questionable.Model.Questing;
-namespace Questionable.Controller.Steps.Interactions;
+﻿namespace Questionable.Controller.Steps.Interactions;
 
 internal static class Say
 {

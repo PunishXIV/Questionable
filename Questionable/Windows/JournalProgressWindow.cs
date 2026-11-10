@@ -1,7 +1,4 @@
-﻿using Dalamud.Bindings.ImGui;
-using Dalamud.Interface.Utility.Raii;
-using Questionable.Windows.Common;
-namespace Questionable.Windows;
+﻿namespace Questionable.Windows;
 
 [RegisterSingleton]
 internal sealed class JournalProgressWindow : LWindow, IDisposable
