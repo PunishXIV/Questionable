@@ -92,7 +92,7 @@ internal sealed class CommandHandler : IDisposable
 
         _clientState.Logout += OnLogout;
         // Shown in the plugin installer; the Debug-only commands stay out of it.
-        string[] help = [_L("Opens the Questing window"), .. BasicHelp(), .. MoreHelp()];
+        string[] help = [_L("Opens the Questing window"), .. HelpLines()];
         _commandManager.AddHandler("/qst", new(ProcessCommand)
         {
             HelpMessage = string.Join($"{Environment.NewLine}\t", help)
@@ -124,14 +124,12 @@ internal sealed class CommandHandler : IDisposable
 
         switch (parts[0])
         {
+            // help-all used to be the long list; it stays as an unlisted alias.
             case "h":
             case "help":
-                PrintHelp(BasicHelp());
-                break;
-
             case "ha":
             case "help-all":
-                PrintHelp([.. BasicHelp(), .. MoreHelp()]);
+                PrintHelp(HelpLines());
                 if (_configuration.Advanced.Debug)
                 {
                     _chatGui.Print(_L("/qst do <questId> - highlights the specified quest in the debug overlay (requires debug overlay to be enabled)"), MessageTag, TagColor);
@@ -327,19 +325,14 @@ internal sealed class CommandHandler : IDisposable
         }
     }
 
-    private static string[] BasicHelp() =>
+    private static string[] HelpLines() =>
     [
-        _L("/qst help - displays simplified commands"),
-        _L("/qst help-all - displays all available commands"),
+        _L("/qst help - lists these commands"),
         _L("/qst config - opens the configuration window"),
         _L("/qst start - starts doing quests"),
         _L("/qst stop - stops doing quests"),
         _L("/qst reload - reload all quest data"),
         _L("/qst skipstep - skips the current quest step, e.g. one you finished by hand"),
-    ];
-
-    private static string[] MoreHelp() =>
-    [
         _L("/qst next <questId> - sets the next quest to do (or clears it if no questId is specified)"),
         _L("/qst which - shows all quests starting with your selected target"),
         _L("/qst zone - shows all quests starting in the current zone (only includes quests with a known quest path, and currently visible unaccepted quests)"),
