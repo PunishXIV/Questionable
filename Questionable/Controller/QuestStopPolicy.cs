@@ -1,3 +1,4 @@
+using EEndAction = Questionable.Configuration.EEndAction;
 using Quest = Questionable.Domain.Quest;
 using QuestProgress = Questionable.Controller.QuestController.QuestProgress;
 
@@ -18,9 +19,9 @@ internal sealed class QuestStopPolicy
     private readonly ILogger<QuestStopPolicy> _logger;
 
     public QuestStopPolicy(Configuration configuration, NotificationMasterIpc notifications,
-        ICommandManager commands, IChatGui chatGui, ILogger<QuestStopPolicy> logger)
+        ICommandManager commands, ChatFunctions chatFunctions, IChatGui chatGui, ILogger<QuestStopPolicy> logger)
         : this(configuration, notifications.NotifyOnFailure, notifications.Notify,
-            command => commands.ProcessCommand(command), chatGui, logger)
+            command => Run(command, commands.ProcessCommand, chatFunctions.ExecuteCommand), chatGui, logger)
     {
     }
 
@@ -35,14 +36,51 @@ internal sealed class QuestStopPolicy
         _logger = logger;
     }
 
-    public void Apply(string label, bool wasAutomatic)
+    // A finished run reached its goal or a stop the user asked for; anything else is a problem stop.
+    public void Apply(string label, bool wasAutomatic, bool finished = false, EEndAction? endAction = null)
     {
         if (!wasAutomatic || ExcludedStopReasons.Any(x => label.Equals(x, StringComparison.OrdinalIgnoreCase)))
             return;
 
         TryRun(() => _notifyOnFailure(_L("Automatic questing has stopped.")), "stop notification");
-        if (_configuration.Stop is { RunCommandAfterStop: true } stop && stop.CommandAfterStop.StartsWith('/'))
-            TryRun(() => _runCommand(stop.CommandAfterStop), "stop command");
+
+        Configuration.StopConfiguration stop = _configuration.Stop;
+        if (!finished && !stop.RunAfterProblemStop)
+            return;
+
+        if (stop.RunCommandAfterStop)
+        {
+            foreach (string command in GetCommands(stop.CommandAfterStop))
+                TryRun(() => _runCommand(command), "stop command");
+        }
+
+        if (GetCommand(endAction ?? stop.EndAction) is { } endCommand)
+            TryRun(() => _runCommand(endCommand), "end action");
+    }
+
+    internal static IEnumerable<string> GetCommands(string text) =>
+        text.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .Where(x => x.StartsWith('/'));
+
+    internal static string? GetCommand(EEndAction action) => action switch
+    {
+        EEndAction.LogOut => "/logout",
+        EEndAction.CloseGame => "/shutdown",
+        _ => null,
+    };
+
+    internal static string GetName(EEndAction action) => action switch
+    {
+        EEndAction.LogOut => _L("Log out"),
+        EEndAction.CloseGame => _L("Close the game"),
+        _ => _L("Nothing"),
+    };
+
+    // Dalamud only knows plugin commands; everything else goes to the game's chat box.
+    internal static void Run(string command, Func<string, bool> runPlugin, Action<string> runGame)
+    {
+        if (!runPlugin(command))
+            runGame(command);
     }
 
     public void ReportLevelReached(short currentLevel)

@@ -232,6 +232,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     public bool StopBeforeTeleport { get; set; }
     public bool StopAfterAttune { get; set; }
 
+    // Replaces the saved end action for this run only.
+    public Configuration.EEndAction? EndActionOnce { get; set; }
+
     // Set when an attune finishes; the stop waits for the next update so the step isn't cut mid-task.
     internal bool AttuneStopDue { get; private set; }
 
@@ -328,7 +331,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 if (currentLevel >= _configuration.Stop.TargetLevel && IsRunning)
                 {
                     _stopPolicy.ReportLevelReached(currentLevel);
-                    Stop($"Level stop condition reached [{currentLevel}]");
+                    StopFinished($"Level stop condition reached [{currentLevel}]");
                     return;
                 }
             }
@@ -514,7 +517,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 ElementId questId = StartedQuest.Quest.Id;
                 _stopPolicy.ReportStopPoint(StartedQuest.Quest);
                 StartedQuest = null;
-                Stop($"Stopping point [{questId}] reached");
+                StopFinished($"Stopping point [{questId}] reached");
                 if (_configuration.Stop.RemoveWhenCompleteConditionMet)
                     _configuration.Stop.QuestsToStopAfter.Remove(questId);
                 return true;
@@ -525,7 +528,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 ElementId questId = StartedQuest.Quest.Id;
                 _stopPolicy.ReportStopAfterQuest(StartedQuest.Quest);
                 StartedQuest = null;
-                Stop($"Stop after quest [{questId}]");
+                StopFinished($"Stop after quest [{questId}]");
                 return true;
             }
         }
@@ -602,7 +605,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 if (QuestSelectionController.IsLevelTooHigh(playerLevel, quest))
                 {
                     _stopPolicy.ReportLevelTooLow(quest.Info, playerLevel);
-                    Stop("Quest level too high");
+                    StopFinished("Quest level too high");
                 }
                 else
                 {
@@ -633,7 +636,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             _stopPolicy.ReportMainScenarioLocked(lockedMsq, playerLevel);
         }
 
-        Stop("No quest active");
+        StopFinished("No quest active");
     }
 
     private bool IsWaitingToRun(QuestProgress questToRun)
@@ -795,15 +798,19 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             _stopPolicy.ReportAcceptStop(quest, configStop);
 
         StartedQuest = null;
-        Stop(configStop ? $"Accept stopping point [{questId}] reached" : $"Stop after accept [{questId}]");
+        StopFinished(configStop ? $"Accept stopping point [{questId}] reached" : $"Stop after accept [{questId}]");
     }
 
     public override void Stop(string label) => Stop(label, clearQuest: true);
 
     public void StopFromUi(string label) => Stop(label, clearQuest: true, policyReason: QuestStopPolicy.UiStopReason);
 
-    private void Stop(string label, bool clearQuest, string? policyReason = null)
+    internal void StopFinished(string label) => Stop(label, clearQuest: true, finished: true);
+
+    private void Stop(string label, bool clearQuest, string? policyReason = null, bool finished = false)
     {
+        Configuration.EEndAction? endAction = EndActionOnce;
+        EndActionOnce = null;
         StopAfterCurrentQuest = false;
         StopAfterNextAccept = false;
         StopBeforeTeleport = false;
@@ -829,7 +836,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         }
         _lastTaskUpdate = DateTime.Now;
 
-        _stopPolicy.Apply(policyReason ?? label, wasAutomatic);
+        _stopPolicy.Apply(policyReason ?? label, wasAutomatic, finished, endAction);
         unsafe
         {
             if (_objectTable[0] is IPlayerCharacter player)
@@ -992,7 +999,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (AttuneStopDue)
         {
             _movementController.Stop();
-            Stop("Stop after attune");
+            StopFinished("Stop after attune");
             return;
         }
 
@@ -1003,7 +1010,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             {
                 _stopPolicy.ReportStopBeforeTeleport(teleport);
                 _movementController.Stop();
-                Stop("Stop before teleport");
+                StopFinished("Stop before teleport");
                 return;
             }
         }
@@ -1077,7 +1084,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             {
                 _logger.LogInformation("Completed delivery quest");
                 SetGatheringQuest(quest: null);
-                Stop("Gathering quest complete");
+                StopFinished("Gathering quest complete");
             }
             else
             {

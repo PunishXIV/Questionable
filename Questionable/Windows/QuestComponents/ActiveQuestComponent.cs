@@ -822,7 +822,36 @@ internal sealed partial class ActiveQuestComponent
                         _L("Cancel scheduled stop after attuning."),
                         _L("Stop after attuning to the next aetheryte.")))
                     questController.StopAfterAttune = !questController.StopAfterAttune;
+
+                ImGui.SameLine();
+
+                Configuration.EEndAction endAction = questController.EndActionOnce ?? configuration.Stop.EndAction;
+                string endTooltip = _LF("When this run ends: {0}. Click to change it for this run only.",
+                    QuestStopPolicy.GetName(endAction));
+                if (QstWidgets.SegmentToggle(FontAwesomeIcon.PowerOff, questController.EndActionOnce != null,
+                        endTooltip, endTooltip))
+                    ImGui.OpenPopup("##EndAction");
             }
+        }
+
+        DrawEndActionMenu();
+    }
+
+    private void DrawEndActionMenu()
+    {
+        using ImRaii.PopupDisposable popup = ImRaii.Popup("##EndAction");
+        if (!popup)
+            return;
+
+        ImGui.TextDisabled(_L("When this run ends"));
+        if (ImGui.MenuItem(_LF("Stop tab setting ({0})", QuestStopPolicy.GetName(configuration.Stop.EndAction)),
+                string.Empty, questController.EndActionOnce == null))
+            questController.EndActionOnce = null;
+
+        foreach (Configuration.EEndAction action in Enum.GetValues<Configuration.EEndAction>())
+        {
+            if (ImGui.MenuItem(QuestStopPolicy.GetName(action), string.Empty, questController.EndActionOnce == action))
+                questController.EndActionOnce = action;
         }
     }
 

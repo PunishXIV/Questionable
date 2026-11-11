@@ -191,11 +191,18 @@ public sealed class QuestionablePlugin(
             pluginInterface.SavePluginConfig(configuration);
         }
 
+        if (!configuration.ProblemStopApplied)
+        {
+            configuration.KeepProblemStop();
+            configuration.ProblemStopApplied = true;
+            pluginInterface.SavePluginConfig(configuration);
+        }
+
         serviceCollection.AddSingleton(configuration);
         _runtimeConfiguration = configuration;
         Configuration.InitializeRuntime(configuration);
-        Questionable.Utils.LocalizeShortcut.Initialize(configuration, dataManager, clientState);
-        Windows.Common.Ui.QstTheme.Initialize(configuration);
+        LocalizeShortcut.Initialize(configuration, dataManager, clientState);
+        QstTheme.Initialize(configuration);
 
         // Injectio-discovered registrations: every class carrying [RegisterSingleton]/[RegisterTransient],
         // and the [RegisterServices] task-registration module in ServiceCollectionExtensions.

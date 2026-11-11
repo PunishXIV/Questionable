@@ -74,6 +74,32 @@ public sealed class QuestTaskQueueTests
         Assert.Equal(["notify", "/after-stop"], context.StopEffects);
     }
 
+    [Theory]
+    [InlineData(null, "/logout")]
+    [InlineData(2, "/shutdown")]
+    public void FinishedStop_RunsEndActions(int? picked, string expected)
+    {
+        using var context = new SkipTestContext(automatic: true, stepCount: 1, problemStops: false);
+        context.Controller.EndActionOnce = (Configuration.EEndAction?)picked;
+
+        context.Controller.StopFinished("No quest active");
+
+        Assert.Equal(["notify", "/after-stop", expected], context.StopEffects);
+        Assert.Null(context.Controller.EndActionOnce);
+    }
+
+    [Fact]
+    public void ProblemStop_DropsOneTimePick()
+    {
+        using var context = new SkipTestContext(automatic: true, stepCount: 1, problemStops: false);
+        context.Controller.EndActionOnce = Configuration.EEndAction.CloseGame;
+
+        context.Controller.Stop("Task failed to update");
+
+        Assert.Equal(["notify"], context.StopEffects);
+        Assert.Null(context.Controller.EndActionOnce);
+    }
+
     private sealed class SkipTestContext : IDisposable
     {
         private readonly ExternalOperationFixture _operations = new();
@@ -84,7 +110,7 @@ public sealed class QuestTaskQueueTests
         public TaskQueue Queue { get; } = new(NullLogger.Instance);
         public List<string> StopEffects { get; } = [];
 
-        public SkipTestContext(bool automatic, int stepCount)
+        public SkipTestContext(bool automatic, int stepCount, bool problemStops = true)
         {
             _highlight = new HighlightObject(_operations.Framework, new(), _operations.Condition, _operations.Objects,
                 Substitute.For<IDataManager>(), NullLogger<HighlightObject>.Instance);
@@ -98,6 +124,8 @@ public sealed class QuestTaskQueueTests
 
             var configuration = new Configuration();
             configuration.Stop.RunCommandAfterStop = true;
+            configuration.Stop.RunAfterProblemStop = problemStops;
+            configuration.Stop.EndAction = problemStops ? Configuration.EEndAction.None : Configuration.EEndAction.LogOut;
             configuration.Stop.CommandAfterStop = "/after-stop";
             Controller = TestQuestController.Create(Queue, _operations, _highlight, tracker, configuration,
                 stopPolicy: new QuestStopPolicy(configuration, _ => StopEffects.Add("notify"), _ => { },

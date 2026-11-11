@@ -11,6 +11,7 @@ internal sealed class StopConditionComponent : ConfigComponent
     private readonly QuestSelector _completeQuestSelector;
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
+    private readonly Configuration.EEndAction[] _endActions = Enum.GetValues<Configuration.EEndAction>();
     private Vector2 _contentSize;
 
     public StopConditionComponent(
@@ -67,7 +68,9 @@ internal sealed class StopConditionComponent : ConfigComponent
             Save();
         }
         string command = Configuration.Stop.CommandAfterStop;
-        if (ImGui.InputText(_L("Command"), ref command, 128))
+        Vector2 commandSize = new(ImGui.CalcItemWidth(),
+            ImGui.GetTextLineHeight() * 3 + ImGui.GetStyle().FramePadding.Y * 2);
+        if (ImGui.InputTextMultiline(_L("Command"), ref command, 512, commandSize))
         {
             Configuration.Stop.CommandAfterStop = command;
             Save();
@@ -78,7 +81,18 @@ internal sealed class StopConditionComponent : ConfigComponent
                 Configuration.Stop.CommandAfterStop = "/li auto";
             Save();
         }
-        ImGuiComponentsLocal.HelpMarker("Excludes these stop reasons:", QuestStopPolicy.ExcludedStopReasons.ToArray());
+        ImGuiComponentsLocal.HelpMarker(
+            _L("One command per line. Plugin commands and game commands both work. Never runs after these stops:"),
+            QuestStopPolicy.ExcludedStopReasons.ToArray());
+
+        DrawComboOption(_L("Then"), _endActions, _endActions.Select(QuestStopPolicy.GetName).ToArray(),
+            () => Configuration.Stop.EndAction, x => Configuration.Stop.EndAction = x);
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(_L("Runs after the commands. The game shows its own countdown, which you can cancel."));
+
+        DrawCheckbox(_L("Also after a problem stop (stuck, too many deaths, missing path)"),
+            () => Configuration.Stop.RunAfterProblemStop, x => Configuration.Stop.RunAfterProblemStop = x,
+            _L("Off: the commands and the final action only run when a run finished: nothing left to do, a stop condition below, or one of the stop buttons in the main window."));
 
         ImGui.Separator();
 

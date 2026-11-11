@@ -71,6 +71,68 @@ public sealed class QuestStopPolicyTests
     }
 
     [Theory]
+    [InlineData(false, false, false)]
+    [InlineData(false, true, true)]
+    [InlineData(true, false, true)]
+    [InlineData(true, true, true)]
+    public void EndActions_NeedFinishedOrSetting(bool finished, bool afterProblems, bool expected)
+    {
+        var configuration = Config();
+        configuration.Stop.RunAfterProblemStop = afterProblems;
+        configuration.Stop.EndAction = Configuration.EEndAction.LogOut;
+
+        Assert.Equal(expected ? ["notify", "/after-stop", "/logout"] : ["notify"],
+            Apply(configuration, finished));
+    }
+
+    [Fact]
+    public void Commands_RunOnePerLine()
+    {
+        var configuration = Config();
+        configuration.Stop.CommandAfterStop = "/one\r\n\n  /two arg  \nthree\n/four";
+
+        Assert.Equal(["notify", "/one", "/two arg", "/four"], Apply(configuration, finished: true));
+    }
+
+    [Theory]
+    [InlineData(0, null, null)]
+    [InlineData(1, null, "/logout")]
+    [InlineData(2, null, "/shutdown")]
+    [InlineData(1, 0, null)]
+    [InlineData(0, 2, "/shutdown")]
+    public void EndAction_PickBeatsSetting(int saved, int? picked, string? expected)
+    {
+        var configuration = Config();
+        configuration.Stop.RunCommandAfterStop = false;
+        configuration.Stop.EndAction = (Configuration.EEndAction)saved;
+
+        Assert.Equal(expected == null ? ["notify"] : ["notify", expected],
+            Apply(configuration, finished: true, (Configuration.EEndAction?)picked));
+    }
+
+    [Theory]
+    [InlineData(true, false)]
+    [InlineData(false, true)]
+    public void Run_UsesGameWhenNoPlugin(bool pluginHandles, bool expectGame)
+    {
+        List<string> game = [];
+
+        QuestStopPolicy.Run("/logout", _ => pluginHandles, game.Add);
+
+        Assert.Equal(expectGame ? ["/logout"] : [], game);
+    }
+
+    private static List<string> Apply(Configuration configuration, bool finished,
+        Configuration.EEndAction? picked = null)
+    {
+        List<string> effects = [];
+        var policy = new QuestStopPolicy(configuration, _ => effects.Add("notify"), _ => { }, effects.Add,
+            Substitute.For<IChatGui>(), NullLogger<QuestStopPolicy>.Instance);
+        policy.Apply("Skip", true, finished, picked);
+        return effects;
+    }
+
+    [Theory]
     [InlineData(true, false)]
     [InlineData(false, true)]
     [InlineData(true, true)]
@@ -220,6 +282,7 @@ public sealed class QuestStopPolicyTests
     {
         var configuration = new Configuration();
         configuration.Stop.RunCommandAfterStop = true;
+        configuration.Stop.RunAfterProblemStop = true;
         configuration.Stop.CommandAfterStop = "/after-stop";
         return configuration;
     }

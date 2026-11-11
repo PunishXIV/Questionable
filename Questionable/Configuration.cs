@@ -40,6 +40,7 @@ internal sealed class Configuration : IPluginConfiguration
 
     public bool AutoRedeemOffResetApplied { get; set; }
     public bool StepRefreshResetApplied { get; set; }
+    public bool ProblemStopApplied { get; set; }
 
     public Dictionary<string, Dictionary<string, JObject>> Profiles { get; set; } = [];
 
@@ -292,6 +293,15 @@ internal sealed class Configuration : IPluginConfiguration
         public bool RunCommandAfterStop { get; set; }
         public string CommandAfterStop { get; set; } = "/li auto";
         public bool RemoveWhenCompleteConditionMet { get; set; }
+        public bool RunAfterProblemStop { get; set; }
+        public EEndAction EndAction { get; set; }
+    }
+
+    internal enum EEndAction
+    {
+        None,
+        LogOut,
+        CloseGame,
     }
 
     internal sealed class DutyConfiguration
@@ -395,6 +405,20 @@ internal sealed class Configuration : IPluginConfiguration
             generalPatch.Remove(nameof(GeneralConfiguration.AutoStepRefreshEnabled));
             if (!generalPatch.HasValues)
                 profile.Remove(nameof(General));
+        }
+    }
+
+    // The stop command used to run after problem stops too; keep that for setups that already use it.
+    internal void KeepProblemStop()
+    {
+        _stop.RunAfterProblemStop = _stop.RunCommandAfterStop;
+
+        foreach (Dictionary<string, JObject> profile in Profiles.Values)
+        {
+            if (profile.TryGetValue(nameof(Stop), out JObject? stopPatch) &&
+                stopPatch.Value<bool?>(nameof(StopConfiguration.RunCommandAfterStop)) is { } runCommand &&
+                runCommand != _stop.RunAfterProblemStop)
+                stopPatch[nameof(StopConfiguration.RunAfterProblemStop)] = runCommand;
         }
     }
 
