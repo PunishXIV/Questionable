@@ -21,6 +21,14 @@ internal sealed class QuestJournalUtils
 {
     public void ShowContextMenu(IQuestInfo questInfo, Quest? quest, string source)
     {
+        if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
+            ImGui.OpenPopup($"##QuestPopup{questInfo.QuestId}");
+
+        using ImRaii.PopupDisposable popup = ImRaii.Popup($"##QuestPopup{questInfo.QuestId}");
+        if (!popup)
+            return;
+
+        // Only worked out while the menu is open: this runs for every row on every frame.
         List<IQuestInfo> prereqs = [];
         if (questFunctions.prereqCache.TryGetValue(questInfo.QuestId.Value, out HashSet<IQuestInfo>? value))
             prereqs = value.Where(q => !questFunctions.IsQuestComplete(q.QuestId)).ToList();
@@ -30,12 +38,6 @@ internal sealed class QuestJournalUtils
             var yCount = questFunctions.prereqCache.TryGetValue(y.QuestId.Value, out var yList) ? yList.Count : 0;
             return xCount.CompareTo(yCount);
         }));
-        if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
-            ImGui.OpenPopup($"##QuestPopup{questInfo.QuestId}");
-
-        using ImRaii.PopupDisposable popup = ImRaii.Popup($"##QuestPopup{questInfo.QuestId}");
-        if (!popup)
-            return;
 
         bool inPriority = quest != null && questController.PriorityManager.Contains(quest);
         if (source != nameof(PriorityWindow) || inPriority)
@@ -99,7 +101,8 @@ internal sealed class QuestJournalUtils
 
         using (ImRaii.PushIndent())
         {
-            using (ImRaii.Disabled(!questFunctions.IsReadyToAcceptQuest(questInfo.QuestId)))
+            // Without a path there is nothing to set, and Start would just run whatever is current.
+            using (ImRaii.Disabled(quest == null || !questFunctions.IsReadyToAcceptQuest(questInfo.QuestId)))
             {
                 if (ImGui.MenuItem(_L("Start as next quest")))
                 {
@@ -156,13 +159,15 @@ internal sealed class QuestJournalUtils
 
         using (ImRaii.PushIndent())
         {
-            if (ImGui.MenuItem(_L("Add to Stop condition (on complete)")))
+            if (ImGui.MenuItem(_L("Add to Stop condition (on complete)")) &&
+                !configuration.Stop.QuestsToStopAfter.Contains(questInfo.QuestId))
             {
                 configuration.Stop.QuestsToStopAfter.Add(questInfo.QuestId);
                 pluginInterface.SavePluginConfig(configuration);
             }
 
-            if (ImGui.MenuItem(_L("Add to Stop condition (on accept)")))
+            if (ImGui.MenuItem(_L("Add to Stop condition (on accept)")) &&
+                !configuration.Stop.QuestsToStopWhenAccepted.Contains(questInfo.QuestId))
             {
                 configuration.Stop.QuestsToStopWhenAccepted.Add(questInfo.QuestId);
                 pluginInterface.SavePluginConfig(configuration);

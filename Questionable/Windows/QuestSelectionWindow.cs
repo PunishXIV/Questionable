@@ -131,8 +131,23 @@ internal sealed class QuestSelectionWindow : LWindow
 
     public override void DrawContent()
     {
+        List<IQuestInfo> shown = (_offeredQuests.Count != 0 && _onlyOffered) ? _offeredQuests : _quests;
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.AngleDoubleUp, _L("Add all to Priority Quests")))
+        {
+            // Quests without a path are skipped by the priority list itself.
+            foreach (IQuestInfo quest in shown)
+                if (!_questFunctions.IsQuestComplete(quest.QuestId) && !_questFunctions.IsQuestUnobtainable(quest.QuestId))
+                    _questController.PriorityManager.Add(quest.QuestId);
+        }
+
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip(_L("Adds every quest in this list that has a path and isn't completed yet."));
+
         if (_offeredQuests.Count != 0)
+        {
+            ImGui.SameLine();
             ImGui.Checkbox(_L("Only show quests currently offered"), ref _onlyOffered);
+        }
 
         using ImRaii.TableDisposable table = ImRaii.Table("QuestSelection", 4, ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollY);
         if (!table)
@@ -157,7 +172,7 @@ internal sealed class QuestSelectionWindow : LWindow
         ImGui.TableSetupColumn(_L("Actions"), ImGuiTableColumnFlags.WidthFixed, actionIconSize);
         ImGui.TableHeadersRow();
 
-        foreach (IQuestInfo quest in (_offeredQuests.Count != 0 && _onlyOffered) ? _offeredQuests : _quests)
+        foreach (IQuestInfo quest in shown)
         {
             ImGui.TableNextRow();
 
@@ -185,7 +200,9 @@ internal sealed class QuestSelectionWindow : LWindow
                 if (ImGui.IsItemHovered())
                     _questTooltipComponent.Draw(quest);
 
-                if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
+                // The menu has to be drawn every frame to stay open; the id keeps this cell's menu
+                // apart from the name cell's.
+                using (ImRaii.PushId("Icon"))
                     _questJournalUtils.ShowContextMenu(quest, knownQuest, nameof(QuestSelectionWindow));
             }
 
@@ -205,7 +222,7 @@ internal sealed class QuestSelectionWindow : LWindow
                 if (ImGui.IsItemHovered())
                     _questTooltipComponent.Draw(quest);
 
-                if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
+                using (ImRaii.PushId("Name"))
                     _questJournalUtils.ShowContextMenu(quest, knownQuest, nameof(QuestSelectionWindow));
             }
 
