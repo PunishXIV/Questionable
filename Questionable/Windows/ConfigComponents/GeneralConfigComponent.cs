@@ -275,7 +275,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
         ImGui.SameLine();
         ImGuiComponents.HelpMarker(
-            _L("Uses Gysahl Greens in the open world when your chocobo isn't out or has under five minutes left. Needs 'My Feisty Little Chocobo' done and Gysahl Greens in your inventory. Pandora's Box \"Auto-Summon Chocobo\" stays paused while Questionable runs."));
+            _L("Uses Gysahl Greens in the open world when your chocobo isn't out or has under five minutes left. Needs 'My Feisty Little Chocobo' done. When you run out of Gysahl Greens, Knightshopper buys 99 more. Pandora's Box \"Auto-Summon Chocobo\" stays paused while Questionable runs."));
     }
 
     private void DrawUi()

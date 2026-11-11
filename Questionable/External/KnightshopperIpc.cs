@@ -8,7 +8,6 @@ internal sealed class KnightshopperIpc : Ipc, IDisposable
 {
     private const int MinimumApiVersion = 2;
 
-    private const int GilCurrency = 2;
 
     public enum EStartResult
     {
@@ -57,7 +56,7 @@ internal sealed class KnightshopperIpc : Ipc, IDisposable
     }
 
     // quantity is the total to own afterwards, not the amount to buy.
-    public EStartResult BuyWithGil(uint itemId, uint quantity, out Guid operationId, out string message)
+    public EStartResult Buy(int currency, uint itemId, uint quantity, out Guid operationId, out string message)
     {
         operationId = Guid.Empty;
         message = "";
@@ -75,8 +74,9 @@ internal sealed class KnightshopperIpc : Ipc, IDisposable
         Guid id = _operation.BeginRequest();
         try
         {
-            _logger.LogInformation("Asking Knightshopper to buy {ItemId} up to {Quantity}", itemId, quantity);
-            (int result, operationId, message) = _startItems(GilCurrency, [(itemId, quantity)]);
+            _logger.LogInformation("Asking Knightshopper to buy {ItemId} up to {Quantity} with currency {Currency}",
+                itemId, quantity, currency);
+            (int result, operationId, message) = _startItems(currency, [(itemId, quantity)]);
             if (result == (int)EStartResult.Started)
             {
                 _operation.AcceptRequest(id, operationId);
@@ -166,7 +166,8 @@ internal sealed class KnightshopperIpc : Ipc, IDisposable
 internal sealed class KnightshopperProvider(
     KnightshopperIpc knightshopperIpc,
     PurchaseState operation,
-    GilShopData gilShopData) : PluginOperationProvider(operation)
+    GilShopData gilShopData,
+    TomestoneShopData tomestoneShopData) : PluginOperationProvider(operation)
 {
     public override int Order => 200;
     public override string Name => "Knightshopper";
@@ -184,7 +185,8 @@ internal sealed class KnightshopperProvider(
     }
 
     // Walk steps before a purchase keep their travel; only the purchase step's own travel is skipped.
-    public override bool HandlesTravel(QuestStep step) => Purchase.IsHandledByKnightshopper(step, gilShopData);
+    public override bool HandlesTravel(QuestStep step) =>
+        Purchase.IsHandledByKnightshopper(step, gilShopData, tomestoneShopData);
 
     public override OperationStatusView? GetStatusView() => StatusView(
         _L("Check Knightshopper before restarting."),

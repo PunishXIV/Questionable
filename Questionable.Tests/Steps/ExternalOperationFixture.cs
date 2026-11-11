@@ -65,7 +65,7 @@ internal sealed class ExternalOperationFixture : IDisposable
             new ArtisanProvider(Artisan, Crafting, Condition, NullLogger<ArtisanProvider>.Instance),
             _dutyProvider,
             new GatherChillProvider(Gather, Gathering),
-            new KnightshopperProvider(Knightshopper, Purchase, GilShop),
+            new KnightshopperProvider(Knightshopper, Purchase, GilShop, new(Substitute.For<IDataManager>())),
             .. extraProviders ?? [],
         ];
         Coordinator = new(Providers, Movement, NullLogger<OperationCoordinator>.Instance);

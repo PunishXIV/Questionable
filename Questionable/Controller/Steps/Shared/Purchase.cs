@@ -3,27 +3,46 @@ using static Questionable.Controller.Steps.ITaskExecutor;
 
 namespace Questionable.Controller.Steps.Shared;
 
-// Knightshopper chooses the vendor and travels for gil purchases.
+// Knightshopper chooses the vendor and travels for gil and tomestone purchases.
 internal static class Purchase
 {
-    // Non-gil currencies stay with the quest path.
-    public static bool IsHandledByKnightshopper(QuestStep step, GilShopData gilShopData) =>
-        step is { InteractionType: EInteractionType.PurchaseItem, ItemId: { } itemId } &&
-        step.PurchaseMenu?.ExcelSheet != "SpecialShop" &&
-        gilShopData.IsSoldForGil(itemId);
+    // Knightshopper's currency ids, from the IPC docs it ships with.
+    internal const int Gil = 2;
+    internal const int Tomestone = 7;
 
-    internal sealed class Factory(GilShopData gilShopData) : ITaskFactory
+    // Null leaves the purchase to the quest path: special shops that take anything but tomestones.
+    public static int? GetCurrency(QuestStep step, GilShopData gilShopData, TomestoneShopData tomestoneShopData)
+    {
+        if (step is not { InteractionType: EInteractionType.PurchaseItem, ItemId: { } itemId })
+            return null;
+
+        if (step.PurchaseMenu?.ExcelSheet == "SpecialShop")
+            return step.PurchaseMenu.Key is { Type: ExcelRef.EType.RowId } shop &&
+                   tomestoneShopData.IsSoldForTomestones(shop.AsRowId(), itemId)
+                ? Tomestone
+                : null;
+
+        return gilShopData.IsSoldForGil(itemId) ? Gil : null;
+    }
+
+    public static bool IsHandledByKnightshopper(QuestStep step, GilShopData gilShopData,
+        TomestoneShopData tomestoneShopData) =>
+        GetCurrency(step, gilShopData, tomestoneShopData) != null;
+
+    internal sealed class Factory(GilShopData gilShopData, TomestoneShopData tomestoneShopData) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (!IsHandledByKnightshopper(step, gilShopData))
+            if (GetCurrency(step, gilShopData, tomestoneShopData) is not { } currency)
                 return [];
 
-            return [new BuyTask(step.ItemId!.Value, Math.Max(1, step.ItemCount.GetValueOrDefault(1)), step.ItemQuality)];
+            return [new BuyTask(step.ItemId!.Value, Math.Max(1, step.ItemCount.GetValueOrDefault(1)), step.ItemQuality,
+                currency)];
         }
     }
 
-    internal sealed record BuyTask(uint ItemId, int ItemCount, EItemQuality Quality = EItemQuality.Any) : ITask
+    internal sealed record BuyTask(uint ItemId, int ItemCount, EItemQuality Quality = EItemQuality.Any,
+        int Currency = Gil) : ITask
     {
         public override string ToString() => $"Buy({ItemCount}x {ItemId})";
     }
@@ -54,7 +73,7 @@ internal static class Purchase
                 return false;
 
             if (Task.Quality == EItemQuality.HQ)
-                throw new TaskException("A gil shop cannot supply the required HQ quest item");
+                throw new TaskException("A shop cannot supply the required HQ quest item");
 
             if (!_knightshopperIpc.IsReady())
                 throw new NeedsPlayerException("Knightshopper is required for buying quest items, but isn't installed, enabled or up to date");
@@ -65,7 +84,7 @@ internal static class Purchase
             // Drop pending Questionable paths before the provider takes over navigation.
             _movementController.Stop();
             KnightshopperIpc.EStartResult result =
-                _knightshopperIpc.BuyWithGil(Task.ItemId, (uint)Task.ItemCount, out _, out string message);
+                _knightshopperIpc.Buy(Task.Currency, Task.ItemId, (uint)Task.ItemCount, out _, out string message);
             if (result is KnightshopperIpc.EStartResult.Started or KnightshopperIpc.EStartResult.Uncertain)
                 _operationId = _state.Id;
             return result switch

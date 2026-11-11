@@ -10,26 +10,36 @@ internal static class SummonChocobo
 
     private const uint GysahlGreens = 4868;
     private const ushort UnlockQuest = 1162; // My Feisty Little Chocobo
-    private const uint OpenWorld = 1; // TerritoryIntendedUse; the companion can't be called in towns or duties
+    private const uint Town = 0; // TerritoryIntendedUse
+    private const uint OpenWorld = 1; // the companion can't be called in towns or duties
+    private const int RestockTo = 99;
 
     // One try per window, so a place that refuses the summon doesn't cost a dismount on every step.
     private static readonly TimeSpan RetryAfter = TimeSpan.FromMinutes(2);
     private static DateTime _retryAt = DateTime.MinValue;
     private static bool _warnedNoGreens;
 
+    // A failed purchase stops the run with Knightshopper's reason; don't walk into it again right away.
+    private static readonly TimeSpan RestockRetryAfter = TimeSpan.FromMinutes(30);
+    private static DateTime _restockRetryAt = DateTime.MinValue;
+
     internal static bool ShouldSummon(bool enabled, bool unlocked, bool openWorld, float timeLeft, int greens) =>
         enabled && unlocked && openWorld && greens > 0 && timeLeft < TopUpBelowSeconds;
+
+    internal static bool ShouldRestock(bool enabled, bool unlocked, bool townOrOpenWorld, int greens, bool canBuy) =>
+        enabled && unlocked && townOrOpenWorld && greens == 0 && canBuy;
 
     internal sealed class Factory(
         Configuration configuration,
         QuestFunctions questFunctions,
         IDataManager dataManager,
         IClientState clientState,
-        IChatGui chatGui) : ITaskFactory
+        IChatGui chatGui,
+        KnightshopperIpc knightshopperIpc) : ITaskFactory
     {
         public unsafe IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (!configuration.General.SummonChocobo || DateTime.Now < _retryAt)
+            if (!configuration.General.SummonChocobo)
                 return [];
 
             InventoryManager* inventoryManager = InventoryManager.Instance();
@@ -38,25 +48,57 @@ internal static class SummonChocobo
                 return [];
 
             bool unlocked = questFunctions.IsQuestComplete(new QuestId(UnlockQuest));
-            bool openWorld = dataManager.GetExcelSheet<TerritoryType>().GetRowOrDefault(clientState.TerritoryType)
-                ?.TerritoryIntendedUse.RowId == OpenWorld;
+            uint? zoneUse = dataManager.GetExcelSheet<TerritoryType>().GetRowOrDefault(clientState.TerritoryType)
+                ?.TerritoryIntendedUse.RowId;
+            bool openWorld = zoneUse == OpenWorld;
             float timeLeft = uiState->Buddy.CompanionInfo.TimeLeft;
             int greens = inventoryManager->GetInventoryItemCount(GysahlGreens);
 
-            if (greens > 0)
-                _warnedNoGreens = false;
-            else if (!_warnedNoGreens && ShouldSummon(enabled: true, unlocked, openWorld, timeLeft, greens: 1))
+            if (greens == 0)
             {
-                _warnedNoGreens = true;
-                chatGui.Print(_L("You're out of Gysahl Greens, so your chocobo wasn't called. Buy some to keep it out."),
-                    CommandHandler.MessageTag, CommandHandler.TagColor);
+                if (DateTime.Now >= _restockRetryAt &&
+                    ShouldRestock(enabled: true, unlocked, openWorld || zoneUse == Town, greens, CanBuy(inventoryManager)))
+                {
+                    _restockRetryAt = DateTime.Now.Add(RestockRetryAfter);
+                    // Knightshopper may leave us in another zone, so the step is planned again afterwards.
+                    return [new Purchase.BuyTask(GysahlGreens, RestockTo), new Restocked()];
+                }
+
+                if (!_warnedNoGreens && ShouldSummon(enabled: true, unlocked, openWorld, timeLeft, greens: 1))
+                {
+                    _warnedNoGreens = true;
+                    chatGui.Print(_L("You're out of Gysahl Greens, so your chocobo wasn't called. Buy some to keep it out."),
+                        CommandHandler.MessageTag, CommandHandler.TagColor);
+                }
+
+                return [];
             }
 
-            if (!ShouldSummon(enabled: true, unlocked, openWorld, timeLeft, greens))
+            _warnedNoGreens = false;
+            if (DateTime.Now < _retryAt || !ShouldSummon(enabled: true, unlocked, openWorld, timeLeft, greens))
                 return [];
 
             return [new MountStep.UnmountTask(), new Task()];
         }
+
+        private unsafe bool CanBuy(InventoryManager* inventoryManager)
+        {
+            uint price = dataManager.GetExcelSheet<Item>().GetRowOrDefault(GysahlGreens)?.PriceMid ?? 0;
+            return price > 0 && inventoryManager->GetGil() >= price * RestockTo &&
+                   knightshopperIpc.IsReady() && knightshopperIpc.GetBusy() == false;
+        }
+    }
+
+    internal sealed record Restocked : ITask
+    {
+        public override string ToString() => "PlanStepAgain";
+    }
+
+    internal sealed class RestockedExecutor : TaskExecutor<Restocked>
+    {
+        protected override bool Start() => true;
+        public override ETaskResult Update() => ETaskResult.RetryStep;
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     internal sealed record Task : ITask

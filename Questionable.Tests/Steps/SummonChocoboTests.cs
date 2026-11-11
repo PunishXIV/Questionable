@@ -29,4 +29,27 @@ public sealed class SummonChocoboTests
 
     [Fact]
     public void NoGreens_NeverCalls() => Assert.False(ShouldSummon(greens: 0));
+
+    private static bool ShouldRestock(bool enabled = true, bool unlocked = true, bool townOrOpenWorld = true,
+        int greens = 0, bool canBuy = true) =>
+        SummonChocobo.ShouldRestock(enabled, unlocked, townOrOpenWorld, greens, canBuy);
+
+    [Fact]
+    public void OutOfGreens_Restocks() => Assert.True(ShouldRestock());
+
+    [Fact]
+    public void GreensLeft_NoRestock() => Assert.False(ShouldRestock(greens: 1));
+
+    [Fact]
+    public void CannotBuy_NoRestock() => Assert.False(ShouldRestock(canBuy: false));
+
+    [Fact]
+    public void InDuty_NoRestock() => Assert.False(ShouldRestock(townOrOpenWorld: false));
+
+    [Fact]
+    public void RestockNeedsSettingAndQuest()
+    {
+        Assert.False(ShouldRestock(enabled: false));
+        Assert.False(ShouldRestock(unlocked: false));
+    }
 }
