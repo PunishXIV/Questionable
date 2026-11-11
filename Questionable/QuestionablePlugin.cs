@@ -133,7 +133,7 @@ public sealed class QuestionablePlugin(
         WrathIPCWrapper.Init(pluginInterface);
         PunishLibMain.Init(pluginInterface, "Questionable", new AboutPlugin()
         {
-            Developer = "alydev",
+            Developer = "alydev and Kagekazu",
             Sponsor = "https://ko-fi.com/alydev"
         });
 
