@@ -23,9 +23,13 @@ internal static class Duty
     // AutoDuty would wait forever on a Duty Support queue the duty doesn't have.
     internal static bool NeedsDutyFinder(Mode mode, bool hasSupport) => mode == Mode.Support && !hasSupport;
 
-    // Solo unsynced trials can fail on their mechanics, so they keep Duty Support where they have it.
-    internal static bool CanUnsync(EContentType? contentType, bool hasSupport) =>
-        contentType != EContentType.Trials || !hasSupport;
+    internal const int MinLevelGap = 10;
+    internal const int MaxLevelGap = 30;
+
+    // How far above a duty's sync level the player has to be before it runs unsynced. Trials count too;
+    // one that can't be soloed gets "CanUnsync": false in its path.
+    internal static bool MeetsLevelGap(int playerLevel, int syncLevel, int gap) =>
+        playerLevel - Math.Clamp(gap, MinLevelGap, MaxLevelGap) >= syncLevel;
 
     internal sealed class Factory(AutoDutyProvider autoDuty, TerritoryData territoryData, Configuration configuration) : ITaskFactory
     {
@@ -59,8 +63,8 @@ internal static class Duty
                     PlayerState* playerState = PlayerState.Instance();
                     if (playerState != null && territoryData.TryGetCfc(step.DutyOptions.ContentFinderConditionId,
                                                                    out TerritoryData.CfcData? cfcData) &&
-                            playerState->CurrentLevel - 20 >= cfcData.ClassJobLevelSync &&
-                            CanUnsync(cfcData.ContentType, territoryData.HasDutySupport(cfcData.Id)))
+                            MeetsLevelGap(playerState->CurrentLevel, cfcData.ClassJobLevelSync,
+                                configuration.Duties.UnsyncLevelGap))
                         dutyMode = Mode.Regular;
                 }
             }
@@ -138,8 +142,7 @@ internal static class Duty
                 (!Task.AllowUnsync || !configuration.Duties.RunUnsynced))
                 dutyMode = Mode.Support;
             if (Task.AllowUnsync && configuration.Duties.RunUnsynced &&
-                dutyMode == Mode.Support && currentItemLevel - 200 >= cfcData.RequiredItemLevel &&
-                CanUnsync(cfcData.ContentType, territoryData.HasDutySupport(cfcData.Id)))
+                dutyMode == Mode.Support && currentItemLevel - 200 >= cfcData.RequiredItemLevel)
                 dutyMode = Mode.Regular;
 
             if (NeedsDutyFinder(dutyMode, territoryData.HasDutySupport(Task.CfcId)))

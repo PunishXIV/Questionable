@@ -297,6 +297,7 @@ internal sealed class Configuration : IPluginConfiguration
     {
         public bool RunInstancedContentWithAutoDuty { get; set; }
         public bool RunUnsynced { get; set; } = true;
+        public int UnsyncLevelGap { get; set; } = 15;
         public HashSet<uint> WhitelistedDutyCfcIds { get; set; } = [];
         public HashSet<uint> BlacklistedDutyCfcIds { get; set; } = [];
         public Dictionary<string, bool> ExpansionHeaderStates { get; set; } = [];

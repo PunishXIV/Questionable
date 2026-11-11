@@ -1,5 +1,4 @@
 using Questionable.Controller.Steps.Interactions;
-using Questionable.Model.Common;
 using Xunit;
 
 namespace Questionable.Tests.Steps;
@@ -22,15 +21,20 @@ public sealed class DutyModeTests
     public void VariantWithoutSupport_RunsInAutoDuty() =>
         Assert.False(Duty.NeedsDutyFinder(Duty.Mode.Variant, hasSupport: false));
 
-    [Fact]
-    public void TrialWithSupport_StaysSynced() =>
-        Assert.False(Duty.CanUnsync(EContentType.Trials, hasSupport: true));
+    [Theory]
+    [InlineData(65, 50, 15, true)]
+    [InlineData(64, 50, 15, false)]
+    [InlineData(60, 50, 10, true)]
+    [InlineData(59, 50, 10, false)]
+    [InlineData(100, 90, 15, false)]
+    public void LevelGap_DecidesUnsync(int level, int syncLevel, int gap, bool expected) =>
+        Assert.Equal(expected, Duty.MeetsLevelGap(level, syncLevel, gap));
 
-    [Fact]
-    public void TrialWithoutSupport_CanUnsync() =>
-        Assert.True(Duty.CanUnsync(EContentType.Trials, hasSupport: false));
-
-    [Fact]
-    public void DungeonWithSupport_CanUnsync() =>
-        Assert.True(Duty.CanUnsync(EContentType.Dungeons, hasSupport: true));
+    [Theory]
+    [InlineData(60, 0, true)]
+    [InlineData(59, 0, false)]
+    [InlineData(80, 99, true)]
+    [InlineData(79, 99, false)]
+    public void SavedGap_IsClamped(int level, int gap, bool expected) =>
+        Assert.Equal(expected, Duty.MeetsLevelGap(level, syncLevel: 50, gap));
 }

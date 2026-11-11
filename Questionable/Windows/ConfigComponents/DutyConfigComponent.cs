@@ -1,4 +1,5 @@
 using Lumina.Excel.Sheets;
+using Questionable.Controller.Steps.Interactions;
 namespace Questionable.Windows.ConfigComponents;
 
 [RegisterSingleton]
@@ -74,13 +75,24 @@ internal sealed class DutyConfigComponent : ConfigComponent
                 Configuration.Duties.RunUnsynced = runUnsynced;
                 Save();
             }
+            int levelGap = Math.Clamp(Configuration.Duties.UnsyncLevelGap, Duty.MinLevelGap, Duty.MaxLevelGap);
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(
-                _L("If the level of your current job is greater than 15 levels above a duty's sync level, or if your average item level is greater than 100 over " +
-                "a duty's required item level, Questionable will ask AutoDuty to run it solo as an Unrestricted Party.") + " " +
-                _L("Trials that have Duty Support keep using it; only trials without it are run this way."));
+                _LF("If your current job is at least {0} levels above a duty's sync level, or your average item level is at least 200 above " +
+                    "its required item level, Questionable asks AutoDuty to run it solo as an Unrestricted Party. This includes trials.", levelGap));
             ImGui.SameLine();
             ImGui.TextColored(QstTheme.Danger, _L("Experimental feature"));
+
+            using (ImRaii.Disabled(!runUnsynced))
+            using (ImRaii.PushIndent())
+            {
+                ImGui.SetNextItemWidth(150f);
+                if (ImGui.SliderInt(_L("Levels above a duty before it runs unsynced"), ref levelGap, Duty.MinLevelGap, Duty.MaxLevelGap))
+                {
+                    Configuration.Duties.UnsyncLevelGap = levelGap;
+                    Save();
+                }
+            }
         }
 
         ImGui.Separator();
