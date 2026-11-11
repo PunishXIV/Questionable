@@ -14,8 +14,17 @@ internal sealed class AlliedSocietyComponent
     Configuration configuration,
     IDalamudPluginInterface pluginInterface)
 {
+    private readonly Dictionary<EAlliedSociety, EType?> _types = [];
     uint _unchecked;
     uint _incomplete;
+
+    internal enum EType
+    {
+        Combat,
+        Crafting,
+        Gathering,
+        CraftingAndGathering,
+    }
     public void DrawTab()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Allied Societies"));
@@ -115,7 +124,8 @@ internal sealed class AlliedSocietyComponent
         (EAlliedSocietyRank rank, ushort currentRep, ushort neededRep) = questFunctions.GetRankAndReputation(alliedSociety);
 
         string rep = neededRep != 0 ? $"({rank} {currentRep}/{neededRep}) " : "";
-        string label = $"{rep}{alliedSociety}###AlliedSociety{(int)alliedSociety}";
+        string type = TypeName(alliedSociety) is { } typeName ? $" - {typeName}" : "";
+        string label = $"{rep}{alliedSociety}{type}###AlliedSociety{(int)alliedSociety}";
         bool isOpen;
 
         using (ImRaii.Disabled(quests.Count == 0))
@@ -181,6 +191,55 @@ internal sealed class AlliedSocietyComponent
             foreach (IQuestInfo quest in quests)
                 DrawQuest(quest, addPending);
         }
+    }
+
+    private string? TypeName(EAlliedSociety society)
+    {
+        if (!_types.TryGetValue(society, out EType? type))
+        {
+            List<QuestInfo> quests = questData.GetAllByAlliedSociety(society);
+            List<QuestInfo> dailies = quests.Where(x => x.IsRepeatable).ToList();
+            type = GetSocietyType((dailies.Count > 0 ? dailies : quests)
+                .Where(x => x.ClassJobs.Count > 0)
+                .Select(x => (x.ClassJobs.Any(y => !y.IsCrafter() && !y.IsGatherer()),
+                    x.ClassJobs.Any(y => y.IsCrafter()), x.ClassJobs.Any(y => y.IsGatherer()))));
+            _types[society] = type;
+        }
+
+        return type switch
+        {
+            EType.Combat => _L("Combat"),
+            EType.Crafting => _L("Crafting"),
+            EType.Gathering => _L("Gathering"),
+            EType.CraftingAndGathering => _L("Crafting & Gathering"),
+            _ => null,
+        };
+    }
+
+    // Each entry says which kinds of job one quest accepts. Judged per quest, so one odd quest
+    // doesn't change a society's type.
+    internal static EType? GetSocietyType(IEnumerable<(bool Combat, bool Crafter, bool Gatherer)> quests)
+    {
+        int combat = 0, crafting = 0, gathering = 0, mixed = 0;
+        foreach ((bool anyCombat, bool crafter, bool gatherer) in quests)
+        {
+            if (anyCombat)
+                ++combat;
+            else if (crafter && gatherer)
+                ++mixed;
+            else if (crafter)
+                ++crafting;
+            else if (gatherer)
+                ++gathering;
+        }
+
+        if (combat + crafting + gathering + mixed == 0)
+            return null;
+        if (combat >= crafting + gathering + mixed)
+            return EType.Combat;
+        if (mixed > 0 || (crafting > 0 && gathering > 0))
+            return EType.CraftingAndGathering;
+        return crafting > 0 ? EType.Crafting : EType.Gathering;
     }
 
     private static List<IQuestInfo> GetHighestRankQuests(List<IQuestInfo> quests, EAlliedSocietyRank currentRank)

@@ -216,6 +216,8 @@ internal sealed class QuestRewardComponent
                 if (_hideCompleted && complete)
                     continue;
                 string name = isEventQuest ? $"{item.Name} {SeIconChar.Clock.ToIconString()}" : item.Name;
+                // One quest can give several items; without this their rows share one right-click menu.
+                using var id = ImRaii.PushId((int)item.ItemId);
                 journalTable.QuestRow(questInfo, nameof(QuestRewardComponent), name, complete);
                 total++;
             }
