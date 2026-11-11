@@ -251,7 +251,7 @@ internal sealed class QuestSelectionWindow : LWindow
 
                 bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_L("Copy as file name"));
+                    ImGui.SetTooltip(_L("Left click: Copy as file name\nRight click: Copy without .json"));
                 if (copy)
                     CopyToClipboard(quest, suffix: true);
                 else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))

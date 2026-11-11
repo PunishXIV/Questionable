@@ -35,7 +35,6 @@ internal sealed class CommandHandler : IDisposable
     private readonly EventInfoComponent _eventInfoComponent;
     private readonly OpenQuestCleanUp _openQuestCleanUp;
     private readonly ITargetManager _targetManager;
-    private readonly ILogger<CommandHandler> _logger;
 
     private IReadOnlyList<uint> _lastUnlockLinks = [];
 
@@ -62,8 +61,7 @@ internal sealed class CommandHandler : IDisposable
         Configuration configuration,
         QuestData questData,
         EventInfoComponent eventInfoComponent,
-        OpenQuestCleanUp openQuestCleanUp,
-        ILogger<CommandHandler> logger)
+        OpenQuestCleanUp openQuestCleanUp)
     {
         _commandManager = commandManager;
         _chatGui = chatGui;
@@ -88,7 +86,6 @@ internal sealed class CommandHandler : IDisposable
         _questData = questData;
         _eventInfoComponent = eventInfoComponent;
         _openQuestCleanUp = openQuestCleanUp;
-        _logger = logger;
 
         _clientState.Logout += OnLogout;
         // Shown in the plugin installer; the Debug-only commands stay out of it.
@@ -289,30 +286,7 @@ internal sealed class CommandHandler : IDisposable
                 break;
 
             case "redeem":
-                bool dry = false;
-                if (parts.Length > 1 && parts[1].EqualsIgnoreCaseAny("dry"))
-                    dry = true;
-                if (_questController.IsRunning)
-                {
-                    _chatGui.PrintError("Busy!", MessageTag, TagColor);
-                    break;
-                }
-                RedeemRewardItems.ResetAttemptedItems();
-                var tasks = RedeemRewardItems.CreateTasks(_questData, _dataManager, overrideConfig: true);
-                if (tasks.Count == 0)
-                {
-                    _chatGui.Print("Nothing to redeem.", MessageTag, TagColor);
-                    break;
-                }
-                if (!dry)
-                    foreach (ITask task in tasks)
-                        _questController.UnsafeEnqueueManualTask(task);
-                _chatGui.Print($"Redeeming {tasks.Count - 1} item{(tasks.Count != 2 ? "s" : "")}", MessageTag, TagColor);
-                if (dry)
-                    foreach (ITask task in tasks)
-                        if (task is RedeemRewardItems.Task redeemTask)
-                            _chatGui.Print(redeemTask.ItemReward.Name, MessageTag, TagColor);
-                _logger.LogInformation("Tasks created by /qst redeem: {Tasks}", string.Join(", ", tasks.Select(x => x.ToString())));
+                _questStarter.RedeemRewards(dry: parts.Length > 1 && parts[1].EqualsIgnoreCaseAny("dry"));
                 break;
 
             case "":

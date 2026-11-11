@@ -174,6 +174,10 @@ internal sealed class QuestJournalUtils
             }
         }
 
+        // The rest is for writing and checking paths.
+        if (!configuration.Advanced.Debug)
+            return;
+
         using (ImRaii.Disabled(disabled: true))
         {
             var _ = ImGui.MenuItem(_L("Path data"));
@@ -255,7 +259,7 @@ internal sealed class QuestJournalUtils
             }
         }
 
-        if (ImGui.MenuItem(_L("Sim first quest")))
+        if (configuration.Advanced.Debug && ImGui.MenuItem(_L("Sim first quest")))
             if (quests.Count >= 1)
                 questStarter.SimulateQuest(quests[0], 0, 0);
     }

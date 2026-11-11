@@ -11,6 +11,7 @@ internal sealed class QuestStarter(
     QuestProgressTracker tracker,
     QuestRegistry questRegistry,
     QuestData questData,
+    IDataManager dataManager,
     IChatGui chatGui,
     ILogger<QuestStarter> logger)
 {
@@ -128,6 +129,34 @@ internal sealed class QuestStarter(
     {
         if (!questController.HasExternalOperation)
             tracker.SimulateQuest(quest, sequence, step);
+    }
+
+    // Uses the reward items in the inventory once, whatever the auto-redeem setting says.
+    public void RedeemRewards(bool dry = false)
+    {
+        if (questController.IsRunning)
+        {
+            chatGui.PrintError("Busy!", CommandHandler.MessageTag, CommandHandler.TagColor);
+            return;
+        }
+
+        RedeemRewardItems.ResetAttemptedItems();
+        List<ITask> tasks = RedeemRewardItems.CreateTasks(questData, dataManager, overrideConfig: true);
+        if (tasks.Count == 0)
+        {
+            chatGui.Print("Nothing to redeem.", CommandHandler.MessageTag, CommandHandler.TagColor);
+            return;
+        }
+
+        if (!dry)
+            foreach (ITask task in tasks)
+                questController.UnsafeEnqueueManualTask(task);
+        chatGui.Print($"Redeeming {tasks.Count - 1} item{(tasks.Count != 2 ? "s" : "")}", CommandHandler.MessageTag, CommandHandler.TagColor);
+        if (dry)
+            foreach (ITask task in tasks)
+                if (task is RedeemRewardItems.Task redeemTask)
+                    chatGui.Print(redeemTask.ItemReward.Name, CommandHandler.MessageTag, CommandHandler.TagColor);
+        logger.LogInformation("Tasks created by redeem: {Tasks}", string.Join(", ", tasks.Select(x => x.ToString())));
     }
 
     public void StopSimulate()

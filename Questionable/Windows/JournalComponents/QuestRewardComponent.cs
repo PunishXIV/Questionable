@@ -20,6 +20,7 @@ internal sealed class QuestRewardComponent
     private bool _showEventRewards;
     private bool _hideUnobtainable;
     private bool _hideCompleted;
+    private List<QuestInfo>? _mentorQuests;
     private volatile uint _generation;
     private OrderedDictionary<EAetheryteLocation, List<QuestInfo>> _aetheryteUnlocks = [];
     private enum ELoadState { NotStarted, Loading, Ready }
@@ -50,6 +51,7 @@ internal sealed class QuestRewardComponent
         DrawChocoboPorterGroup();
         DrawGroup(_L("Duties"), EItemRewardType.Duty);
         DrawGroup(_L("Fashion Accessories"), EItemRewardType.FashionAccessory);
+        DrawMentorRoulette();
         DrawGroup(_L("Minions"), EItemRewardType.Minion);
         DrawGroup(_L("Mounts"), EItemRewardType.Mount);
         DrawGroup(_L("Orchestrion Rolls"), EItemRewardType.OrchestrionRoll);
@@ -188,17 +190,7 @@ internal sealed class QuestRewardComponent
                            ((QuestInfo)x.Info).CfcUnlock != null &&
                            !questFunctions.IsQuestUnobtainable(x.Id))
                     .OrderBy(x => x.Id.Value).ToList();
-            foreach (QuestInfo info in dutyQuests.Select(x => (QuestInfo)x.Info))
-            {
-                ContentFinderCondition cfc = info.CfcUnlock!.Value;
-                if (cfc.Name.ByteLength == 0)
-                    continue;
-                bool complete = questFunctions.IsQuestComplete(info.QuestId);
-                if (_hideCompleted && complete)
-                    continue;
-                journalTable.QuestRow(info, nameof(QuestRewardComponent), $"{cfc.Name.ToDalamudString()} ({cfc.RowId})", complete);
-                total++;
-            }
+            total = DrawDutyRows(dutyQuests.Select(x => (QuestInfo)x.Info));
         }
         else
         {
@@ -225,6 +217,44 @@ internal sealed class QuestRewardComponent
 
         if (total == 0)
             DrawNoResults();
+    }
+
+    private void DrawMentorRoulette()
+    {
+        if (!ImGui.CollapsingHeader(_L("Mentor Roulette") + "###RewardMentorRoulette"))
+            return;
+
+        using ImRaii.TableDisposable table = journalTable.Begin("RewardMentorRoulette");
+        if (!table)
+            return;
+
+        // Unlike Duties, this also lists unlock quests without a path, so nothing is missing from the list.
+        _mentorQuests ??=
+        [
+            .. questData.GetAll().OfType<QuestInfo>()
+                .Where(x => x.QuestId is QuestId && x.CfcUnlock is { MentorRoulette: true })
+                .OrderBy(x => x.QuestId.Value)
+        ];
+        if (DrawDutyRows(_mentorQuests.Where(x => !questFunctions.IsQuestUnobtainable(x.QuestId))) == 0)
+            DrawNoResults();
+    }
+
+    private int DrawDutyRows(IEnumerable<QuestInfo> quests)
+    {
+        int total = 0;
+        foreach (QuestInfo info in quests)
+        {
+            ContentFinderCondition cfc = info.CfcUnlock!.Value;
+            if (cfc.Name.ByteLength == 0)
+                continue;
+            bool complete = questFunctions.IsQuestComplete(info.QuestId);
+            if (_hideCompleted && complete)
+                continue;
+            journalTable.QuestRow(info, nameof(QuestRewardComponent), $"{cfc.Name.ToDalamudString()} ({cfc.RowId})", complete);
+            total++;
+        }
+
+        return total;
     }
 
     internal static string AetheryteName(EAetheryteLocation location) =>

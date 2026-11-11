@@ -189,7 +189,7 @@ internal sealed class RedoComponent
 
         questJournalUtils.DrawPriorityItems(quests);
 
-        if (ImGui.MenuItem(_L("Sim first quest")))
+        if (configuration.Advanced.Debug && ImGui.MenuItem(_L("Sim first quest")))
             if (quests.Count >= 1)
                 questStarter.SimulateQuest(quests[0], 0, 0);
 

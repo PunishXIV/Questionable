@@ -7,6 +7,7 @@ namespace Questionable.Windows.QuestComponents;
 internal sealed class QuickAccessComponent
 (
     QuestController questController,
+    QuestStarter questStarter,
     MovementController movementController,
     QuestFunctions questFunctions,
     QuestRegistry questRegistry,
@@ -41,6 +42,8 @@ internal sealed class QuickAccessComponent
         ImGui.SameLine();
         openQuestCleanUp.DrawRailButton();
         ImGui.SameLine();
+        DrawRedeemButton();
+        ImGui.SameLine();
         DrawReloadDataButton();
         ImGui.SameLine();
         DrawRebuildNavmeshButton();
@@ -62,6 +65,16 @@ internal sealed class QuickAccessComponent
                 enabled: objectTable[0] != null,
                 showLabel: showLabel))
             priorityWindow.ToggleOrUncollapse();
+    }
+
+    internal void DrawRedeemButton(bool showLabel = false)
+    {
+        if (QstWidgets.RailButton(FontAwesomeIcon.Gift,
+                _L("Redeem Reward Items"),
+                _L("Use the reward items in your inventory now, such as mounts, minions and orchestrion rolls.\nSkips items on the auto-redeem blacklist. Same as /qst redeem."),
+                enabled: objectTable[0] != null && !questController.IsRunning,
+                showLabel: showLabel))
+            questStarter.RedeemRewards();
     }
 
     internal void DrawRebuildNavmeshButton(bool showLabel = false)

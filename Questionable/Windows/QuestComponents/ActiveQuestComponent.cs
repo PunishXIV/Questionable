@@ -291,6 +291,8 @@ internal sealed partial class ActiveQuestComponent
             quickAccessComponent.DrawPriorityQuestsButton();
             ImGui.SameLine();
             quickAccessComponent.DrawJournalProgressButton();
+            ImGui.SameLine();
+            quickAccessComponent.DrawRedeemButton();
         }
     }
 
@@ -741,6 +743,8 @@ internal sealed partial class ActiveQuestComponent
             ImGui.SameLine();
             quickAccessComponent.DrawJournalProgressButton();
             ImGui.SameLine();
+            quickAccessComponent.DrawRedeemButton();
+            ImGui.SameLine();
             quickAccessComponent.DrawReloadDataButton();
         }
         else
@@ -777,7 +781,9 @@ internal sealed partial class ActiveQuestComponent
                     commandManager.ProcessCommand($"/questgraph {currentQuest.Quest.Id}");
 
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_LF("Show information about '{0}' in Quest Map plugin.", currentQuest.Quest.Info.Name));
+                    ImGui.SetTooltip(commandManager.Commands.ContainsKey("/questgraph")
+                        ? _LF("Left click: Show information about '{0}' in Quest Map plugin.\nRight click: Show its quest graph.", currentQuest.Quest.Info.Name)
+                        : _LF("Show information about '{0}' in Quest Map plugin.", currentQuest.Quest.Info.Name));
             }
         }
 
