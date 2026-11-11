@@ -33,6 +33,10 @@ internal sealed class QuestSelectionController(Configuration configuration)
 
     public static bool IsLevelTooHigh(int playerLevel, Quest quest) => playerLevel < quest.Info.Level;
 
+    // Busy means in a duty or waiting on another plugin: the stop waits so neither is left half done.
+    public static bool IsLevelStopDue(int level, int target, bool running, bool busy) =>
+        running && !busy && level >= target;
+
     // Quest state read during a teleport can briefly offer another quest (e.g. a priority quest).
     internal static bool ShouldHoldStartedQuest(QuestProgress? started, bool betweenAreas) => started != null && betweenAreas;
 

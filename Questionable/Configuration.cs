@@ -295,6 +295,29 @@ internal sealed class Configuration : IPluginConfiguration
         public bool RemoveWhenCompleteConditionMet { get; set; }
         public bool RunAfterProblemStop { get; set; }
         public EEndAction EndAction { get; set; }
+
+        // A list, so a profile replaces it as a whole when merged.
+        public List<StopPreset> PresetsAfterQuest { get; set; } = [];
+
+        internal string? GetPreset(ElementId questId)
+        {
+            string id = questId.ToString();
+            return PresetsAfterQuest.FirstOrDefault(x => x.QuestId == id)?.Preset;
+        }
+
+        internal void SetPreset(ElementId questId, string? preset)
+        {
+            string id = questId.ToString();
+            PresetsAfterQuest.RemoveAll(x => x.QuestId == id);
+            if (preset != null)
+                PresetsAfterQuest.Add(new StopPreset { QuestId = id, Preset = preset });
+        }
+    }
+
+    internal sealed class StopPreset
+    {
+        public string QuestId { get; set; } = string.Empty;
+        public string Preset { get; set; } = string.Empty;
     }
 
     internal enum EEndAction

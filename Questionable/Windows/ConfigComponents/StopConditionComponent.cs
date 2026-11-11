@@ -1,4 +1,5 @@
 using Dalamud.Interface.Colors;
+using Dalamud.Interface.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 namespace Questionable.Windows.ConfigComponents;
 
@@ -11,6 +12,7 @@ internal sealed class StopConditionComponent : ConfigComponent
     private readonly QuestSelector _completeQuestSelector;
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
+    private readonly PriorityPresets _presets;
     private readonly Configuration.EEndAction[] _endActions = Enum.GetValues<Configuration.EEndAction>();
     private Vector2 _contentSize;
 
@@ -21,6 +23,7 @@ internal sealed class StopConditionComponent : ConfigComponent
         QuestRegistry questRegistry,
         QuestTooltipComponent questTooltipComponent,
         UiUtils uiUtils,
+        PriorityPresets presets,
         IClientState clientState,
         Configuration configuration)
         : base(pluginInterface, configuration)
@@ -28,6 +31,7 @@ internal sealed class StopConditionComponent : ConfigComponent
         _questRegistry = questRegistry;
         _questTooltipComponent = questTooltipComponent;
         _uiUtils = uiUtils;
+        _presets = presets;
         _clientState = clientState;
 
         _completeQuestSelector = questSelector;
@@ -150,7 +154,12 @@ internal sealed class StopConditionComponent : ConfigComponent
             "Complete",
             _completeQuestSelector,
             Configuration.Stop.QuestsToStopAfter,
-            () => Configuration.Stop.QuestsToStopAfter.Clear());
+            () =>
+            {
+                Configuration.Stop.QuestsToStopAfter.Clear();
+                Configuration.Stop.PresetsAfterQuest.Clear();
+            },
+            withPreset: true);
 
         ImGui.Separator();
 
@@ -166,7 +175,7 @@ internal sealed class StopConditionComponent : ConfigComponent
     }
 
     private void DrawQuestStopSection(string label, string sectionId, QuestSelector selector, List<ElementId> quests,
-        Action clearAll)
+        Action clearAll, bool withPreset = false)
     {
         using (ImRaii.PushId(sectionId))
         {
@@ -198,6 +207,12 @@ internal sealed class StopConditionComponent : ConfigComponent
 
                 using (ImRaii.PushId($"Quest{questId}"))
                 {
+                    if (withPreset)
+                    {
+                        DrawPresetCombo(questId);
+                        ImGui.SameLine();
+                    }
+
                     if (_uiUtils.DrawQuestRow(questId, quest.Info.Name))
                         _questTooltipComponent.Draw(quest.Info);
 
@@ -217,8 +232,57 @@ internal sealed class StopConditionComponent : ConfigComponent
             if (itemToRemove != null)
             {
                 quests.Remove(itemToRemove.Id);
+                if (withPreset)
+                    Configuration.Stop.SetPreset(itemToRemove.Id, null);
                 Save();
             }
+        }
+    }
+
+    private void DrawPresetCombo(ElementId questId)
+    {
+        string? presetId = Configuration.Stop.GetPreset(questId);
+        string stop = _L("Stop");
+        string preview = presetId == null ? stop : _presets.GetName(presetId) ?? _L("(missing preset)");
+
+        ImGui.SetNextItemWidth(170 * ImGuiHelpers.GlobalScale);
+        bool open = ImGui.BeginCombo("##Preset", preview, ImGuiComboFlags.HeightLarge);
+        if (!open && ImGui.IsItemHovered())
+            ImGui.SetTooltip(_L("When this quest completes: stop, or add a preset to the priority quests and keep going."));
+        if (!open)
+            return;
+
+        string? picked = presetId;
+        if (ImGui.Selectable(stop, presetId == null))
+            picked = null;
+
+        if (Configuration.Priority.Presets.Count > 0)
+        {
+            ImGui.Separator();
+            ImGui.TextDisabled(_L("Custom"));
+            foreach (string name in Configuration.Priority.Presets.Keys)
+            {
+                string id = PriorityPresets.CustomPrefix + name;
+                if (ImGui.Selectable(name, presetId == id))
+                    picked = id;
+            }
+        }
+
+        ImGui.Separator();
+        ImGui.TextDisabled(_L("Built-in"));
+        foreach (PriorityPresets.Preset preset in _presets.BuiltIn)
+        {
+            string id = PriorityPresets.BuiltInPrefix + preset.Key;
+            if (ImGui.Selectable(preset.Name, presetId == id))
+                picked = id;
+        }
+
+        ImGui.EndCombo();
+
+        if (picked != presetId)
+        {
+            Configuration.Stop.SetPreset(questId, picked);
+            Save();
         }
     }
 }

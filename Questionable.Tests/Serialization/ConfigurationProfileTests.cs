@@ -7,6 +7,26 @@ namespace Questionable.Tests.Serialization;
 public sealed class ConfigurationProfileTests
 {
     [Fact]
+    public void ProfilePreset_RemovalSticks()
+    {
+        Configuration configuration = new();
+        Questionable.Model.Questing.QuestId quest = new(500);
+        configuration.Stop.SetPreset(quest, "custom:Mine");
+        configuration.CreateProfile("Alt");
+        configuration.ActivateProfile("Alt");
+        Assert.Equal("custom:Mine", configuration.Stop.GetPreset(quest));
+
+        configuration.Stop.SetPreset(quest, null);
+        configuration.CaptureActiveProfile();
+        configuration.ClearActiveProfile();
+        configuration.ActivateProfile("Alt");
+
+        Assert.Null(configuration.Stop.GetPreset(quest));
+        configuration.ClearActiveProfile();
+        Assert.Equal("custom:Mine", configuration.Stop.GetPreset(quest));
+    }
+
+    [Fact]
     public void ProfileEdit_StoresSparsePatch()
     {
         Configuration configuration = new();

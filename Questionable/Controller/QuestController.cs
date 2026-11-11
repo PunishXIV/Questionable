@@ -72,6 +72,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private readonly QuestBattleConfigComponent _questBattleConfig;
     private readonly QuestStopPolicy _stopPolicy;
     private readonly StuckWatch _stuckWatch;
+    private readonly PriorityPresets _presets;
     private readonly TaskCreator _taskCreator;
     private readonly IToastGui _toastGui;
     private bool _disposed;
@@ -114,6 +115,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         QuestBattleConfigComponent questBattleConfig,
         QuestStopPolicy stopPolicy,
         StuckWatch stuckWatch,
+        PriorityPresets presets,
         AlliedSocietyQuestFunctions alliedSocietyQuests)
         : base(chatGui, condition, serviceProvider, interruptHandler, toastClassifier,
             notificationMasterIpc.NotifyOnFailure, logger)
@@ -142,6 +144,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _questBattleConfig = questBattleConfig;
         _stopPolicy = stopPolicy;
         _stuckWatch = stuckWatch;
+        _presets = presets;
         _alliedSocietyQuests = alliedSocietyQuests;
         _logger = logger;
         _highlightObject = highlightObject;
@@ -328,7 +331,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             unsafe
             {
                 short currentLevel = PlayerState.Instance()->CurrentLevel;
-                if (currentLevel >= _configuration.Stop.TargetLevel && IsRunning)
+                if (QuestSelectionController.IsLevelStopDue(currentLevel, _configuration.Stop.TargetLevel, IsRunning,
+                        HasExternalOperation || SelectionState.InDuty))
                 {
                     _stopPolicy.ReportLevelReached(currentLevel);
                     StopFinished($"Level stop condition reached [{currentLevel}]");
@@ -510,6 +514,18 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     {
         // Honor the stop-after toggle before starting queued or priority quests.
         EStopPoint? stopPoint = _selection.GetStopPoint(StartedQuest, StopAfterCurrentQuest, SelectionState);
+        if (StartedQuest != null && stopPoint == EStopPoint.Configured && TryLoadPreset(StartedQuest.Quest))
+        {
+            if (!StopAfterCurrentQuest)
+            {
+                // Left as started, the finished quest can keep the preset's quests from being picked.
+                StartedQuest = null;
+                return false;
+            }
+
+            stopPoint = EStopPoint.AfterCurrentQuest;
+        }
+
         if (StartedQuest != null && stopPoint != null)
         {
             if (stopPoint == EStopPoint.Configured)
@@ -519,7 +535,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 StartedQuest = null;
                 StopFinished($"Stopping point [{questId}] reached");
                 if (_configuration.Stop.RemoveWhenCompleteConditionMet)
+                {
                     _configuration.Stop.QuestsToStopAfter.Remove(questId);
+                    _configuration.Stop.SetPreset(questId, null);
+                }
                 return true;
             }
 
@@ -534,6 +553,30 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         }
 
         return false;
+    }
+
+    // A stop point with a preset queues that preset and lets the run continue.
+    private bool TryLoadPreset(Quest quest)
+    {
+        Configuration.StopConfiguration stop = _configuration.Stop;
+        if (stop.GetPreset(quest.Id) is not { } presetId)
+            return false;
+
+        if (!_presets.TryGetById(presetId, out string? name, out List<ElementId>? quests))
+        {
+            _stopPolicy.ReportPresetMissing(quest);
+            return false;
+        }
+
+        _priorityManager.Import(quests);
+        _stopPolicy.ReportPresetLoaded(quest, name, StopAfterCurrentQuest);
+        if (stop.RemoveWhenCompleteConditionMet)
+        {
+            stop.QuestsToStopAfter.Remove(quest.Id);
+            stop.SetPreset(quest.Id, null);
+        }
+
+        return true;
     }
 
     // False ends this update. A null quest with true means there is nothing left to run.
@@ -1084,7 +1127,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             {
                 _logger.LogInformation("Completed delivery quest");
                 SetGatheringQuest(quest: null);
-                StopFinished("Gathering quest complete");
+                Stop("Gathering quest complete");
             }
             else
             {

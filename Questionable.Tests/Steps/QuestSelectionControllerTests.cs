@@ -292,6 +292,15 @@ public sealed class QuestSelectionControllerTests
         Assert.Equal(expected, QuestSelectionController.IsLevelTooHigh(playerLevel, NewQuest(10, questLevel)));
     }
 
+    [Theory]
+    [InlineData(50, true, false, true)]
+    [InlineData(51, true, false, true)]
+    [InlineData(49, true, false, false)]
+    [InlineData(50, false, false, false)]
+    [InlineData(50, true, true, false)]
+    public void LevelStop_WaitsWhileBusy(int level, bool running, bool busy, bool expected) =>
+        Assert.Equal(expected, QuestSelectionController.IsLevelStopDue(level, 50, running, busy));
+
     [Fact]
     public void StartedQuest_HeldOnlyWhileLoading()
     {

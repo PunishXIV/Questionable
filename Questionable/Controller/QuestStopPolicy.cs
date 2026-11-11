@@ -97,6 +97,18 @@ internal sealed class QuestStopPolicy
         _notify(msg);
     }
 
+    public void ReportPresetLoaded(Quest quest, string preset, bool stopping)
+    {
+        _logger.LogInformation("Stop point queued preset {Preset} (quest: {QuestId}, stopping: {Stopping})",
+            preset, quest.Id, stopping);
+        PrintAndNotify(stopping
+            ? _LF("Completed quest '{0}', preset '{1}' is queued for the next start.", quest.Info.Name, preset)
+            : _LF("Completed quest '{0}', continuing with preset '{1}'.", quest.Info.Name, preset));
+    }
+
+    public void ReportPresetMissing(Quest quest) =>
+        PrintError(_LF("The preset chosen for '{0}' no longer exists, stopping instead.", quest.Info.Name));
+
     public void ReportStopAfterQuest(Quest quest)
     {
         _logger.LogInformation("Stopping after current quest as requested (quest: {QuestId})", quest.Id);
