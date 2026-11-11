@@ -56,6 +56,9 @@ internal static class ServiceCollectionExtensions
             .AddTaskFactoryAndExecutor<SkipCondition.Task, SkipCondition.Factory, SkipCondition.Executor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<RedeemRewardItems.Task, RedeemRewardItems.Factory, RedeemRewardItems.Executor>();
+        // Before class changes and travel, while the character is still on foot from the last step.
+        serviceCollection
+            .AddTaskFactoryAndExecutor<SummonChocobo.Task, SummonChocobo.Factory, SummonChocobo.Executor>();
         serviceCollection.AddTaskFactoryAndExecutor<SwitchClassJob.Task, SwitchClassJob.Factory,
             SwitchClassJob.Executor>();
         serviceCollection.AddTaskFactoryAndExecutor<CreateGearset.Task, CreateGearset.Factory,

@@ -245,6 +245,7 @@ internal sealed class Configuration : IPluginConfiguration
         public Job GatheringJob { get; set; } = Job.MIN;
         public EGearsetUpdateSource GearsetUpdateSource { get; set; } = EGearsetUpdateSource.Vanilla;
         public string ChocoboName { get; set; } = string.Empty;
+        public bool SummonChocobo { get; set; }
         public string DisplayName { get; set; } = "Anonymous";
         public bool UseEscToCancelQuesting { get; set; } = true;
         public bool UseQuestionableTheme { get; set; } = true;

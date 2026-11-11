@@ -265,6 +265,17 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 ImGui.Text(_L("Generates a random name if invalid or left blank."));
             }
         }
+
+        bool summonChocobo = Configuration.General.SummonChocobo;
+        if (ImGui.Checkbox(_L("Keep your chocobo companion out"), ref summonChocobo))
+        {
+            Configuration.General.SummonChocobo = summonChocobo;
+            Save();
+        }
+
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(
+            _L("Uses Gysahl Greens in the open world when your chocobo isn't out or has under five minutes left. Needs 'My Feisty Little Chocobo' done and Gysahl Greens in your inventory. Pandora's Box \"Auto-Summon Chocobo\" stays paused while Questionable runs."));
     }
 
     private void DrawUi()
