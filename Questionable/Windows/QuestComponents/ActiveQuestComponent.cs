@@ -14,6 +14,7 @@ internal sealed partial class ActiveQuestComponent
 (
     QuestController questController,
     QuestStarter questStarter,
+    CharacterRun characterRun,
     OperationCoordinator operations,
     MovementController movementController,
     CombatController combatController,
@@ -42,6 +43,7 @@ internal sealed partial class ActiveQuestComponent
     public unsafe void Draw(bool isMinimized)
     {
         DrawOperations();
+        DrawCharacterRun();
 
         (QuestController.QuestProgress Progress, QuestController.ECurrentQuestType Type)? currentQuestDetails = questController.CurrentQuestDetails;
         QuestController.QuestProgress? currentQuest = currentQuestDetails?.Progress;
@@ -106,6 +108,19 @@ internal sealed partial class ActiveQuestComponent
                 ImGui.SetTooltip("Report issue to QST developers");
         }
 #endif
+    }
+
+    private void DrawCharacterRun()
+    {
+        if (characterRun.Status is not { } status)
+            return;
+
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Times))
+            characterRun.Cancel();
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip(_L("Cancel the character list. Questing on the current character keeps going."));
+        ImGui.SameLine();
+        ImGui.TextColored(QstTheme.Accent, status);
     }
 
     private void DrawCurrentQuest(QuestController.QuestProgress currentQuest, QuestController.ECurrentQuestType? currentQuestType, bool isMinimized)
@@ -709,6 +724,15 @@ internal sealed partial class ActiveQuestComponent
                 questStarter.Start(_L("UI start"));
             }
 
+            if (configuration.Characters.EnabledIds.Count > 0 && !characterRun.IsActive)
+            {
+                ImGui.SameLine();
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Users))
+                    characterRun.Start();
+                if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                    ImGui.SetTooltip(_L("Start on all ticked characters (Characters tab in the settings)."));
+            }
+
             // Step is for path makers; its icon reads like Skip to everyone else.
             if (configuration.Advanced.Debug)
             {
@@ -729,6 +753,7 @@ internal sealed partial class ActiveQuestComponent
                 movementController.Stop();
             questController.StopFromUi(_L("UI stop"));
             gatheringController.Stop(_L("UI stop"));
+            characterRun.Cancel();
         }
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip(_L("Stop all actions now."));

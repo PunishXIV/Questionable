@@ -85,6 +85,35 @@ public sealed class QuestStopPolicyTests
             Apply(configuration, finished));
     }
 
+    [Theory]
+    [InlineData("Skip", true, true, true, "notify,/after-stop")]
+    [InlineData("Skip", true, true, false, "notify,/after-stop,/logout")]
+    [InlineData("Skip", false, false, true, "notify")]
+    [InlineData("UI stop", true, false, true, "")]
+    public void ListRun_HoldsFinalAction(string label, bool finished, bool expectedAsk, bool moreCharacters,
+        string expected)
+    {
+        var configuration = Config();
+        configuration.Stop.RunAfterProblemStop = false;
+        configuration.Stop.EndAction = Configuration.EEndAction.LogOut;
+        List<string> effects = [];
+        List<bool> asked = [];
+        var policy = new QuestStopPolicy(configuration, _ => effects.Add("notify"), _ => { }, effects.Add,
+            Substitute.For<IChatGui>(), NullLogger<QuestStopPolicy>.Instance)
+        {
+            StopHandler = canContinue =>
+            {
+                asked.Add(canContinue);
+                return canContinue && moreCharacters;
+            },
+        };
+
+        policy.Apply(label, true, finished);
+
+        Assert.Equal([expectedAsk], asked);
+        Assert.Equal(expected, string.Join(',', effects));
+    }
+
     [Fact]
     public void Commands_RunOnePerLine()
     {

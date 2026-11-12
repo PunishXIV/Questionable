@@ -65,6 +65,7 @@ internal sealed class StopConditionComponent : ConfigComponent
         _contentSize = ImGui.GetWindowContentRegionMax();
         using var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
 
+        ImGui.Text(_L("When a run ends:"));
         bool runCommand = Configuration.Stop.RunCommandAfterStop;
         if (ImGui.Checkbox(_L("Run command when Questionable finishes automatic questing"), ref runCommand))
         {
@@ -72,8 +73,9 @@ internal sealed class StopConditionComponent : ConfigComponent
             Save();
         }
         string command = Configuration.Stop.CommandAfterStop;
+        // One line tall, growing with each command added.
         Vector2 commandSize = new(ImGui.CalcItemWidth(),
-            ImGui.GetTextLineHeight() * 3 + ImGui.GetStyle().FramePadding.Y * 2);
+            ImGui.GetTextLineHeight() * (command.Count(c => c == '\n') + 1) + ImGui.GetStyle().FramePadding.Y * 2);
         if (ImGui.InputTextMultiline(_L("Command"), ref command, 512, commandSize))
         {
             Configuration.Stop.CommandAfterStop = command;
@@ -86,17 +88,17 @@ internal sealed class StopConditionComponent : ConfigComponent
             Save();
         }
         ImGuiComponentsLocal.HelpMarker(
-            _L("One command per line. Plugin commands and game commands both work. Never runs after these stops:"),
+            _L("Press Enter for another command, one per line. Plugin commands and game commands both work. Never runs after these stops:"),
             QuestStopPolicy.ExcludedStopReasons.ToArray());
 
-        DrawComboOption(_L("Then"), _endActions, _endActions.Select(QuestStopPolicy.GetName).ToArray(),
+        DrawComboOption(_L("After that"), _endActions, _endActions.Select(QuestStopPolicy.GetName).ToArray(),
             () => Configuration.Stop.EndAction, x => Configuration.Stop.EndAction = x);
         ImGui.SameLine();
-        ImGuiComponents.HelpMarker(_L("Runs after the commands. The game shows its own countdown, which you can cancel."));
+        ImGuiComponents.HelpMarker(_L("What Questionable does once the commands have run. The game shows its own countdown, which you can cancel. With a character list, this waits for the last character."));
 
-        DrawCheckbox(_L("Also after a problem stop (stuck, too many deaths, missing path)"),
+        DrawCheckbox(_L("Do this after a problem stop too (stuck, too many deaths, missing path)"),
             () => Configuration.Stop.RunAfterProblemStop, x => Configuration.Stop.RunAfterProblemStop = x,
-            _L("Off: the commands and the final action only run when a run finished: nothing left to do, a stop condition below, or one of the stop buttons in the main window."));
+            _L("Off: the commands and the action above only run when a run finished: nothing left to do, a stop condition below, or one of the stop buttons in the main window. A character list also stops at a character that hit a problem."));
 
         ImGui.Separator();
 

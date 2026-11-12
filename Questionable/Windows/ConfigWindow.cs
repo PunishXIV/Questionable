@@ -6,6 +6,7 @@ internal sealed class ConfigWindow
  : LWindow, IPersistableWindowConfig
 {
     private readonly Configuration _configuration;
+    private readonly CharactersConfigComponent _charactersConfigComponent;
     private readonly DebugConfigComponent _debugConfigComponent;
     private readonly DutyConfigComponent _dutyConfigComponent;
     private readonly GeneralConfigComponent _generalConfigComponent;
@@ -22,6 +23,7 @@ internal sealed class ConfigWindow
     GeneralConfigComponent generalConfigComponent,
     PluginConfigComponent pluginConfigComponent,
     ProfilesConfigComponent profilesConfigComponent,
+    CharactersConfigComponent charactersConfigComponent,
     ProfileController profileController,
     DutyConfigComponent dutyConfigComponent,
     QuestBattleConfigComponent questBattleConfig,
@@ -31,6 +33,7 @@ internal sealed class ConfigWindow
     Configuration configuration) : base(_L("Config - Questionable") + "###QuestionableConfig")
     {
         _configuration = configuration;
+        _charactersConfigComponent = charactersConfigComponent;
         _debugConfigComponent = debugConfigComponent;
         _dutyConfigComponent = dutyConfigComponent;
         _generalConfigComponent = generalConfigComponent;
@@ -92,6 +95,7 @@ internal sealed class ConfigWindow
         _stopConditionComponent.DrawTab();
         _notificationConfigComponent.DrawTab();
         _profilesConfigComponent.DrawTab();
+        _charactersConfigComponent.DrawTab();
         _debugConfigComponent.DrawTab();
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("About") + "###QuestionableConfigTabs");
         if (!tab)

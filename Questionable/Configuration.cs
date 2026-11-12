@@ -34,6 +34,7 @@ internal sealed class Configuration : IPluginConfiguration
     public WindowConfig DebugWindowConfig { get; } = new();
     public WindowConfig ConfigWindowConfig { get; } = new();
     public PriorityConfiguration Priority { get; } = new();
+    public CharacterConfiguration Characters { get; } = new();
     public PathDataConfiguration PathData { get; } = new();
     public JournalConfiguration Journal { get; } = new();
     public int Version { get; set; } = PluginConfigVersion;
@@ -312,6 +313,12 @@ internal sealed class Configuration : IPluginConfiguration
             if (preset != null)
                 PresetsAfterQuest.Add(new StopPreset { QuestId = id, Preset = preset });
         }
+    }
+
+    internal sealed class CharacterConfiguration
+    {
+        // Content ids ticked for a run over several characters.
+        public List<ulong> EnabledIds { get; set; } = [];
     }
 
     internal sealed class StopPreset

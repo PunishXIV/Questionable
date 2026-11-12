@@ -534,7 +534,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 _stopPolicy.ReportStopPoint(StartedQuest.Quest);
                 StartedQuest = null;
                 StopFinished($"Stopping point [{questId}] reached");
-                if (_configuration.Stop.RemoveWhenCompleteConditionMet)
+                if (_configuration.Stop.RemoveWhenCompleteConditionMet && !_stopPolicy.IsListRun)
                 {
                     _configuration.Stop.QuestsToStopAfter.Remove(questId);
                     _configuration.Stop.SetPreset(questId, null);
@@ -570,7 +570,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
         _priorityManager.Import(quests);
         _stopPolicy.ReportPresetLoaded(quest, name, StopAfterCurrentQuest);
-        if (stop.RemoveWhenCompleteConditionMet)
+        // The next characters of a list run need the same stop quest.
+        if (stop.RemoveWhenCompleteConditionMet && !_stopPolicy.IsListRun)
         {
             stop.QuestsToStopAfter.Remove(quest.Id);
             stop.SetPreset(quest.Id, null);

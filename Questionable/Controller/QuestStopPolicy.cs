@@ -36,23 +36,41 @@ internal sealed class QuestStopPolicy
         _logger = logger;
     }
 
+    // Set by the character list run. It gets whether the end actions apply to this stop, and answers
+    // true when another character is up next, so the final action waits for the last one.
+    internal Func<bool, bool>? StopHandler { get; set; }
+
+    internal bool IsListRun { get; set; }
+
     // A finished run reached its goal or a stop the user asked for; anything else is a problem stop.
     public void Apply(string label, bool wasAutomatic, bool finished = false, EEndAction? endAction = null)
     {
-        if (!wasAutomatic || ExcludedStopReasons.Any(x => label.Equals(x, StringComparison.OrdinalIgnoreCase)))
+        if (!wasAutomatic)
             return;
+
+        if (ExcludedStopReasons.Any(x => label.Equals(x, StringComparison.OrdinalIgnoreCase)))
+        {
+            StopHandler?.Invoke(false);
+            return;
+        }
 
         TryRun(() => _notifyOnFailure(_L("Automatic questing has stopped.")), "stop notification");
 
         Configuration.StopConfiguration stop = _configuration.Stop;
         if (!finished && !stop.RunAfterProblemStop)
+        {
+            StopHandler?.Invoke(false);
             return;
+        }
 
         if (stop.RunCommandAfterStop)
         {
             foreach (string command in GetCommands(stop.CommandAfterStop))
                 TryRun(() => _runCommand(command), "stop command");
         }
+
+        if (StopHandler?.Invoke(true) == true)
+            return;
 
         if (GetCommand(endAction ?? stop.EndAction) is { } endCommand)
             TryRun(() => _runCommand(endCommand), "end action");
