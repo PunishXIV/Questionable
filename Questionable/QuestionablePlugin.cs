@@ -238,7 +238,7 @@ public sealed class QuestionablePlugin(
         // Resolve before the registry loads — its constructor discards a bundle left by an older
         // plugin version, so the registry doesn't pick up a stale one.
         _pathDataUpdater = serviceProvider.GetRequiredService<PathDataUpdater>();
-        serviceProvider.GetRequiredService<QuestRegistry>().Reload();
+        serviceProvider.GetRequiredService<QuestRegistry>().Reload(projectInBackground: true);
         serviceProvider.GetRequiredService<QuestBattleConfigComponent>().Reload();
         serviceProvider.GetRequiredService<ProfileController>();
         _questController = serviceProvider.GetRequiredService<QuestController>();

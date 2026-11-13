@@ -21,6 +21,7 @@ public sealed class StopPresetTests
     private readonly QuestPriorityManager _priority;
     private readonly QuestController _controller;
     private readonly IChatGui _chat = Substitute.For<IChatGui>();
+    private int _saves;
 
     public StopPresetTests()
     {
@@ -39,7 +40,7 @@ public sealed class StopPresetTests
         _configuration.Stop.QuestsToStopAfter.Add(new QuestId(Stop));
         _controller = TestQuestController.Create(configuration: _configuration,
             stopPolicy: new QuestStopPolicy(_configuration, _ => { }, _ => { }, _ => { }, _chat,
-                NullLogger<QuestStopPolicy>.Instance));
+                NullLogger<QuestStopPolicy>.Instance, () => _saves++));
         TestQuestController.Set(_controller, "_priorityManager", _priority);
         TestQuestController.Set(_controller, "_presets", new PriorityPresets(_configuration, null!, null!, null!));
     }
@@ -114,5 +115,6 @@ public sealed class StopPresetTests
 
         Assert.Empty(_configuration.Stop.QuestsToStopAfter);
         Assert.Empty(_configuration.Stop.PresetsAfterQuest);
+        Assert.Equal(1, _saves);
     }
 }

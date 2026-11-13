@@ -241,6 +241,27 @@ public sealed class OperationCoordinatorTests
         Assert.Null(fixture.Coordinator.GetProvider(new WaitAtEnd.NextStepOrSequenceExecutor()));
     }
 
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void Purchase_OptionalFailureSkips(bool optional)
+    {
+        using var fixture = new ExternalOperationFixture();
+        // Another purchase in progress makes the start fail before the inventory is read.
+        fixture.Purchase.BeginRequest();
+        IChatGui chat = Substitute.For<IChatGui>();
+        var buy = new Purchase.BuyExecutor(fixture.Knightshopper, fixture.Purchase, fixture.Movement, chat);
+        Purchase.BuyTask task = new(4868, 99, Optional: optional);
+
+        if (optional)
+        {
+            Assert.False(buy.Start(task));
+            Assert.Single(chat.ReceivedCalls(), call => call.GetMethodInfo().Name == nameof(IChatGui.Print));
+        }
+        else
+            Assert.ThrowsAny<TaskException>(() => buy.Start(task));
+    }
+
     [Fact]
     public void MovementSeesMovingWorkButNotCrafting()
     {

@@ -14,9 +14,10 @@ using Sheets = Lumina.Excel.Sheets;
 namespace Questionable.Controller;
 
 [RegisterSingleton]
-internal sealed class QuestRegistry
+internal sealed class QuestRegistry : IDisposable
 {
     private readonly IChatGui _chatGui;
+    private readonly IFramework _framework;
     private readonly Dictionary<uint, (ElementId QuestId, QuestStep Step)> _cfcSteps = [];
     private readonly JsonSchemaValidator _jsonSchemaValidator;
     private readonly ILogger<QuestRegistry> _logger;
@@ -31,6 +32,7 @@ internal sealed class QuestRegistry
     private readonly ICallGateProvider<object> _reloadDataIpc;
     private readonly TerritoryData _territoryData;
     private EExpansionVersion _characterExpansion;
+    private CancellationTokenSource? _projectLoad;
 
     public QuestRegistry(
         IDalamudPluginInterface pluginInterface,
@@ -41,8 +43,10 @@ internal sealed class QuestRegistry
         TerritoryData territoryData,
         Configuration configuration,
         DraftQuestPathService draftQuestPathService,
+        IFramework framework,
         IChatGui chatGui)
     {
+        _framework = framework;
         _pluginInterface = pluginInterface;
         _questData = questData;
         _questValidator = questValidator;
@@ -73,8 +77,13 @@ internal sealed class QuestRegistry
 
     public event EventHandler? Reloaded;
 
-    public void Reload()
+    public void Reload() => Reload(projectInBackground: false);
+
+    // At game start, reading the project folder can take longer than Dalamud waits for a plugin to load.
+    public void Reload(bool projectInBackground)
     {
+        _projectLoad?.Cancel();
+        _projectLoad = null;
         _questValidator.Reset();
         _quests.Clear();
         _cfcSteps.Clear();
@@ -88,20 +97,42 @@ internal sealed class QuestRegistry
 #endif
         )
         {
-            LoadFromProject();
-
-            try
+            // The user folder overrides project paths, so in the background case it waits for them.
+            if (projectInBackground && GetProjectDirectory() is { } projectDirectory)
+                StartProjectLoad(projectDirectory);
+            else
             {
-                var _ = LoadFromDirectory(new(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "Quests")),
-                    Quest.ESource.UserDirectory);
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e,
-                    "Failed to load all quests from user directory (some may have been successfully loaded)");
+                LoadFromProject();
+                LoadFromUserDirectory();
             }
         }
 
+        FinishReload();
+    }
+
+    public void Dispose()
+    {
+        _projectLoad?.Cancel();
+        _projectLoad?.Dispose();
+        _projectLoad = null;
+    }
+
+    private void LoadFromUserDirectory()
+    {
+        try
+        {
+            var _ = LoadFromDirectory(new(Path.Combine(_pluginInterface.ConfigDirectory.FullName, "Quests")),
+                Quest.ESource.UserDirectory);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e,
+                "Failed to load all quests from user directory (some may have been successfully loaded)");
+        }
+    }
+
+    private void FinishReload()
+    {
         LoadCfcIds();
         ValidateQuests();
         Reloaded?.Invoke(this, EventArgs.Empty);
@@ -150,6 +181,92 @@ internal sealed class QuestRegistry
                 }
             }
         }
+    }
+
+    private DirectoryInfo? GetProjectDirectory()
+    {
+        DirectoryInfo? solutionDirectory = _pluginInterface.AssemblyLocation.Directory?.Parent?.Parent;
+        if (solutionDirectory == null)
+            return null;
+
+        DirectoryInfo directory = new(Path.Combine(solutionDirectory.FullName, "QuestPaths"));
+        return directory.Exists ? directory : null;
+    }
+
+    private void StartProjectLoad(DirectoryInfo projectDirectory)
+    {
+        CancellationTokenSource load = new();
+        CancellationToken token = load.Token;
+        _projectLoad = load;
+        _logger.LogInformation("Loading quests from the project directory in the background");
+        _ = Task.Run(async () =>
+        {
+            try
+            {
+                List<ParsedQuest> quests = ReadProject(projectDirectory, token);
+                await _framework.RunOnFrameworkThread(() => ApplyProject(quests, load)).ConfigureAwait(false);
+            }
+            catch (OperationCanceledException)
+            {
+            }
+            catch (Exception e) when (!token.IsCancellationRequested)
+            {
+                _logger.LogError(e, "Failed to load quests from project directory");
+                _ = _framework.RunOnFrameworkThread(() => _chatGui.PrintError(
+                    $"Unable to load quests from the project folder - {e.GetType().Name}: {e.Message}",
+                    CommandHandler.MessageTag, CommandHandler.TagColor));
+            }
+        }, token);
+    }
+
+    // Reading thousands of separate files is the slow part at game start, so it stays off the game thread.
+    internal static List<ParsedQuest> ReadProject(DirectoryInfo projectDirectory, CancellationToken token)
+    {
+        List<ParsedQuest> quests = [];
+        foreach (string expansionFolder in ExpansionData.ExpansionFolders.Values)
+        {
+            DirectoryInfo directory = new(Path.Combine(projectDirectory.FullName, expansionFolder));
+            if (directory.Exists)
+                ReadDirectory(directory, quests, token);
+        }
+
+        return quests;
+    }
+
+    private static void ReadDirectory(DirectoryInfo directory, List<ParsedQuest> quests, CancellationToken token)
+    {
+        foreach (FileInfo fileInfo in directory.GetFiles("*.json"))
+        {
+            token.ThrowIfCancellationRequested();
+            try
+            {
+                using FileStream stream = new(fileInfo.FullName, FileMode.Open, FileAccess.Read);
+                if (ParseQuest(fileInfo.Name, stream) is { } quest)
+                    quests.Add(quest);
+            }
+            catch (Exception e) when (e is not OperationCanceledException)
+            {
+                throw new InvalidDataException($"Unable to load file {fileInfo.FullName}", e);
+            }
+        }
+
+        foreach (DirectoryInfo childDirectory in directory.GetDirectories())
+            ReadDirectory(childDirectory, quests, token);
+    }
+
+    // A newer reload or an unload drops a result that arrives late.
+    private void ApplyProject(List<ParsedQuest> quests, CancellationTokenSource load)
+    {
+        if (_projectLoad != load || load.IsCancellationRequested)
+            return;
+
+        _projectLoad = null;
+        load.Dispose();
+        foreach (ParsedQuest quest in quests)
+            AddQuest(quest, Quest.ESource.ProjectDirectory);
+        _logger.LogInformation("Loaded {Count} quests from project directory", quests.Count);
+        LoadFromUserDirectory();
+        FinishReload();
     }
 
     // Bundles override compiled paths but not user paths; malformed entries are skipped.
@@ -245,27 +362,36 @@ internal sealed class QuestRegistry
     {
         if (source == Quest.ESource.UserDirectory)
             _logger.LogTrace("Loading quest from '{FileName}'", fileName);
+        if (ParseQuest(fileName, stream) is { } quest)
+            AddQuest(quest, source);
+    }
+
+    internal sealed record ParsedQuest(ElementId QuestId, JsonNode Node, QuestRoot Root);
+
+    private static ParsedQuest? ParseQuest(string fileName, Stream stream)
+    {
         ElementId? questId = ExtractQuestIdFromName(fileName);
         if (questId == null)
-            return;
+            return null;
 
         JsonNode questNode = JsonNode.Parse(stream)!;
+        return new ParsedQuest(questId, questNode, questNode.Deserialize<QuestRoot>()!);
+    }
 
+    private void AddQuest(ParsedQuest parsed, Quest.ESource source)
+    {
         // Downloaded bundles are trusted (CI-validated + checksum-verified); only runtime-loaded
         // hand-authored data is schema-validated here.
         if (source != Quest.ESource.DownloadedBundle)
-            _jsonSchemaValidator.Enqueue(questId, questNode);
+            _jsonSchemaValidator.Enqueue(parsed.QuestId, parsed.Node);
 
-        QuestRoot questRoot = questNode.Deserialize<QuestRoot>()!;
-        IQuestInfo questInfo = _questData.GetQuestInfo(questId);
-        Quest quest = new()
+        _quests[parsed.QuestId] = new Quest
         {
-            Id = questId,
-            Root = questRoot,
-            Info = questInfo,
+            Id = parsed.QuestId,
+            Root = parsed.Root,
+            Info = _questData.GetQuestInfo(parsed.QuestId),
             Source = source
         };
-        _quests[quest.Id] = quest;
     }
 
     private uint LoadFromDirectory(DirectoryInfo directory, Quest.ESource source,

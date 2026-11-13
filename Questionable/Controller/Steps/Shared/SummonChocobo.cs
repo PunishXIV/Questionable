@@ -19,7 +19,7 @@ internal static class SummonChocobo
     private static DateTime _retryAt = DateTime.MinValue;
     private static bool _warnedNoGreens;
 
-    // A failed purchase stops the run with Knightshopper's reason; don't walk into it again right away.
+    // A failed restock is skipped with Knightshopper's reason; don't walk to the vendor again right away.
     private static readonly TimeSpan RestockRetryAfter = TimeSpan.FromMinutes(30);
     private static DateTime _restockRetryAt = DateTime.MinValue;
 
@@ -61,7 +61,7 @@ internal static class SummonChocobo
                 {
                     _restockRetryAt = DateTime.Now.Add(RestockRetryAfter);
                     // Knightshopper may leave us in another zone, so the step is planned again afterwards.
-                    return [new Purchase.BuyTask(GysahlGreens, RestockTo), new Restocked()];
+                    return [new Purchase.BuyTask(GysahlGreens, RestockTo, Optional: true), new Restocked()];
                 }
 
                 if (!_warnedNoGreens && ShouldSummon(enabled: true, unlocked, openWorld, timeLeft, greens: 1))

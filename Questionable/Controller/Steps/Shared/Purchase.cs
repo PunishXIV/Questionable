@@ -1,5 +1,6 @@
 using FFXIVClientStructs.FFXIV.Client.Game;
 using static Questionable.Controller.Steps.ITaskExecutor;
+using LuminaItem = Lumina.Excel.Sheets.Item;
 
 namespace Questionable.Controller.Steps.Shared;
 
@@ -41,8 +42,9 @@ internal static class Purchase
         }
     }
 
+    // An optional purchase (the Gysahl Greens restock) is skipped with a chat line instead of stopping the run.
     internal sealed record BuyTask(uint ItemId, int ItemCount, EItemQuality Quality = EItemQuality.Any,
-        int Currency = Gil) : ITask
+        int Currency = Gil, bool Optional = false) : ITask
     {
         public override string ToString() => $"Buy({ItemCount}x {ItemId})";
     }
@@ -52,21 +54,64 @@ internal static class Purchase
         private readonly KnightshopperIpc _knightshopperIpc;
         private readonly PurchaseState _state;
         private readonly MovementController _movementController;
+        private readonly IChatGui? _chatGui;
+        private readonly IDataManager? _dataManager;
+        private readonly ILogger<BuyExecutor>? _logger;
         private Guid? _operationId;
         private long? _completedAt;
 
         public BuyExecutor(KnightshopperIpc knightshopperIpc, PurchaseState state,
-            MovementController movementController)
+            MovementController movementController, IChatGui? chatGui = null, IDataManager? dataManager = null,
+            ILogger<BuyExecutor>? logger = null)
         {
             _knightshopperIpc = knightshopperIpc;
             _state = state;
             _movementController = movementController;
+            _chatGui = chatGui;
+            _dataManager = dataManager;
+            _logger = logger;
         }
 
         protected override bool Start()
         {
             _operationId = null;
             _completedAt = null;
+            try
+            {
+                return StartBuying();
+            }
+            catch (TaskException e) when (Task.Optional)
+            {
+                Skip(e);
+                return false;
+            }
+        }
+
+        public override ETaskResult Update()
+        {
+            try
+            {
+                return UpdateBuying();
+            }
+            catch (TaskException e) when (Task.Optional && !_state.NeedsConfirmation)
+            {
+                StopNow();
+                Skip(e);
+                return ETaskResult.TaskComplete;
+            }
+        }
+
+        private void Skip(TaskException e)
+        {
+            string item = _dataManager?.GetExcelSheet<LuminaItem>().GetRowOrDefault(Task.ItemId)?.Name.ExtractText()
+                          ?? Task.ItemId.ToString(CultureInfo.InvariantCulture);
+            _logger?.LogWarning("Skipped buying {Count}x {Item}: {Reason}", Task.ItemCount, item, e.Message);
+            _chatGui?.Print(_LF("Skipped buying {0}: {1}", item, e.Message), CommandHandler.MessageTag,
+                CommandHandler.TagColor);
+        }
+
+        private bool StartBuying()
+        {
             if (_state.HasOperation)
                 throw new TaskException(_state.BlockReason!);
             if (CountInInventory(Task) >= Task.ItemCount)
@@ -97,7 +142,7 @@ internal static class Purchase
             };
         }
 
-        public override ETaskResult Update()
+        private ETaskResult UpdateBuying()
         {
             if (!_operationId.HasValue || _state.Id != _operationId || _state.NeedsConfirmation)
                 throw new TaskException(_state.BlockReason ?? "Knightshopper is no longer buying for Questionable");

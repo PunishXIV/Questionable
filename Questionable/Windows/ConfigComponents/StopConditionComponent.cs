@@ -65,42 +65,14 @@ internal sealed class StopConditionComponent : ConfigComponent
         _contentSize = ImGui.GetWindowContentRegionMax();
         using var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
 
-        ImGui.Text(_L("When a run ends:"));
-        bool runCommand = Configuration.Stop.RunCommandAfterStop;
-        if (ImGui.Checkbox(_L("Run command when Questionable finishes automatic questing"), ref runCommand))
-        {
-            Configuration.Stop.RunCommandAfterStop = runCommand;
-            Save();
-        }
-        string command = Configuration.Stop.CommandAfterStop;
-        // One line tall, growing with each command added.
-        Vector2 commandSize = new(ImGui.CalcItemWidth(),
-            ImGui.GetTextLineHeight() * (command.Count(c => c == '\n') + 1) + ImGui.GetStyle().FramePadding.Y * 2);
-        if (ImGui.InputTextMultiline(_L("Command"), ref command, 512, commandSize))
-        {
-            Configuration.Stop.CommandAfterStop = command;
-            Save();
-        }
-        if (ImGui.IsItemDeactivatedAfterEdit())
-        {
-            if (string.IsNullOrWhiteSpace(Configuration.Stop.CommandAfterStop))
-                Configuration.Stop.CommandAfterStop = "/li auto";
-            Save();
-        }
-        ImGuiComponentsLocal.HelpMarker(
-            _L("Press Enter for another command, one per line. Plugin commands and game commands both work. Never runs after these stops:"),
-            QuestStopPolicy.ExcludedStopReasons.ToArray());
-
-        DrawComboOption(_L("After that"), _endActions, _endActions.Select(QuestStopPolicy.GetName).ToArray(),
-            () => Configuration.Stop.EndAction, x => Configuration.Stop.EndAction = x);
-        ImGui.SameLine();
-        ImGuiComponents.HelpMarker(_L("What Questionable does once the commands have run. The game shows its own countdown, which you can cancel. With a character list, this waits for the last character."));
-
-        DrawCheckbox(_L("Do this after a problem stop too (stuck, too many deaths, missing path)"),
-            () => Configuration.Stop.RunAfterProblemStop, x => Configuration.Stop.RunAfterProblemStop = x,
-            _L("Off: the commands and the action above only run when a run finished: nothing left to do, a stop condition below, or one of the stop buttons in the main window. A character list also stops at a character that hit a problem."));
-
+        DrawConditions();
         ImGui.Separator();
+        DrawAfterStop();
+    }
+
+    private void DrawConditions()
+    {
+        ImGui.TextColored(QstTheme.Accent, _L("Stop the run when"));
 
         bool enabled = Configuration.Stop.Enabled;
         if (ImGui.Checkbox(_L("Stop Questionable when any of the conditions below are met"), ref enabled))
@@ -109,23 +81,20 @@ internal sealed class StopConditionComponent : ConfigComponent
             Save();
         }
 
-        ImGui.Separator();
-
-        if (!enabled)
-            ImGui.PushStyleColor(ImGuiCol.Text, ImGuiColors.DalamudGrey);
-
-        ImGui.Text(_L("Stop when character level reaches:"));
+        using ImRaii.ColorDisposable muted = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudGrey, !enabled);
+        using var indent = ImRaii.PushIndent();
 
         bool levelToStopAfter = Configuration.Stop.LevelToStopAfter;
-        if (ImGui.Checkbox(_L("Enable level stop condition"), ref levelToStopAfter))
+        if (ImGui.Checkbox(_L("Stop at level"), ref levelToStopAfter))
         {
             Configuration.Stop.LevelToStopAfter = levelToStopAfter;
             Save();
         }
 
+        ImGui.SameLine();
         int targetLevel = Configuration.Stop.TargetLevel;
-        ImGui.SetNextItemWidth(100);
-        if (ImGui.InputInt(_L("Stop at level"), ref targetLevel, 1, 5))
+        ImGui.SetNextItemWidth(100 * ImGuiHelpers.GlobalScale);
+        if (ImGui.InputInt("##TargetLevel", ref targetLevel, 1, 5))
         {
             Configuration.Stop.TargetLevel = Math.Max(1, Math.Min(100, targetLevel));
             Save();
@@ -142,14 +111,7 @@ internal sealed class StopConditionComponent : ConfigComponent
             }
         }
 
-        ImGui.Separator();
-
-        bool removeOnComplete = Configuration.Stop.RemoveWhenCompleteConditionMet;
-        if (ImGui.Checkbox(_L("Remove from list after complete"), ref removeOnComplete))
-        {
-            Configuration.Stop.RemoveWhenCompleteConditionMet = removeOnComplete;
-            Save();
-        }
+        ImGui.Spacing();
 
         DrawQuestStopSection(
             _L("Stop when completing any of the quests selected below:"),
@@ -163,7 +125,14 @@ internal sealed class StopConditionComponent : ConfigComponent
             },
             withPreset: true);
 
-        ImGui.Separator();
+        bool removeOnComplete = Configuration.Stop.RemoveWhenCompleteConditionMet;
+        if (ImGui.Checkbox(_L("Remove from list after complete"), ref removeOnComplete))
+        {
+            Configuration.Stop.RemoveWhenCompleteConditionMet = removeOnComplete;
+            Save();
+        }
+
+        ImGui.Spacing();
 
         DrawQuestStopSection(
             _L("Stop when accepting any of the quests selected below:"),
@@ -171,9 +140,52 @@ internal sealed class StopConditionComponent : ConfigComponent
             _acceptQuestSelector,
             Configuration.Stop.QuestsToStopWhenAccepted,
             () => Configuration.Stop.QuestsToStopWhenAccepted.Clear());
+    }
 
-        if (!enabled)
-            ImGui.PopStyleColor();
+    private void DrawAfterStop()
+    {
+        ImGui.TextColored(QstTheme.Accent, _L("After the run stops"));
+
+        bool runCommand = Configuration.Stop.RunCommandAfterStop;
+        if (ImGui.Checkbox(_L("Run command when Questionable finishes automatic questing"), ref runCommand))
+        {
+            Configuration.Stop.RunCommandAfterStop = runCommand;
+            Save();
+        }
+
+        using var indent = ImRaii.PushIndent();
+
+        string command = Configuration.Stop.CommandAfterStop;
+        // One line tall, growing with each command added.
+        Vector2 commandSize = new(ImGui.CalcItemWidth(),
+            ImGui.GetTextLineHeight() * (command.Count(c => c == '\n') + 1) + ImGui.GetStyle().FramePadding.Y * 2);
+        if (ImGui.InputTextMultiline("##Command", ref command, 512, commandSize))
+        {
+            Configuration.Stop.CommandAfterStop = command;
+            Save();
+        }
+        if (ImGui.IsItemDeactivatedAfterEdit())
+        {
+            if (string.IsNullOrWhiteSpace(Configuration.Stop.CommandAfterStop))
+                Configuration.Stop.CommandAfterStop = "/li auto";
+            Save();
+        }
+        ImGuiComponentsLocal.HelpMarker(
+            _L("Press Enter for another command, one per line. Plugin commands and game commands both work. Never runs after these stops:"),
+            QuestStopPolicy.ExcludedStopReasons.ToArray());
+
+        ImGui.AlignTextToFramePadding();
+        ImGui.TextUnformatted(_L("After that"));
+        ImGui.SameLine();
+        ImGui.SetNextItemWidth(200 * ImGuiHelpers.GlobalScale);
+        DrawComboOption("##EndAction", _endActions, _endActions.Select(QuestStopPolicy.GetName).ToArray(),
+            () => Configuration.Stop.EndAction, x => Configuration.Stop.EndAction = x);
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(_L("What Questionable does once the commands have run. The game shows its own countdown, which you can cancel. With a character list, this waits for the last character."));
+
+        DrawCheckbox(_L("Do this after a problem stop too (stuck, too many deaths, missing path)"),
+            () => Configuration.Stop.RunAfterProblemStop, x => Configuration.Stop.RunAfterProblemStop = x,
+            _L("Off: the commands and the action above only run when a run finished: nothing left to do, a stop condition above, or one of the stop buttons in the main window. A character list also stops at a character that hit a problem."));
     }
 
     private void DrawQuestStopSection(string label, string sectionId, QuestSelector selector, List<ElementId> quests,

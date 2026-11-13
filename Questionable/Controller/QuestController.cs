@@ -535,10 +535,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 StartedQuest = null;
                 StopFinished($"Stopping point [{questId}] reached");
                 if (_configuration.Stop.RemoveWhenCompleteConditionMet && !_stopPolicy.IsListRun)
-                {
-                    _configuration.Stop.QuestsToStopAfter.Remove(questId);
-                    _configuration.Stop.SetPreset(questId, null);
-                }
+                    _stopPolicy.RemoveStopQuest(questId);
                 return true;
             }
 
@@ -572,10 +569,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _stopPolicy.ReportPresetLoaded(quest, name, StopAfterCurrentQuest);
         // The next characters of a list run need the same stop quest.
         if (stop.RemoveWhenCompleteConditionMet && !_stopPolicy.IsListRun)
-        {
-            stop.QuestsToStopAfter.Remove(quest.Id);
-            stop.SetPreset(quest.Id, null);
-        }
+            _stopPolicy.RemoveStopQuest(quest.Id);
 
         return true;
     }

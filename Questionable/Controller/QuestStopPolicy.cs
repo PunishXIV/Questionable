@@ -17,16 +17,19 @@ internal sealed class QuestStopPolicy
     private readonly Action<string> _runCommand;
     private readonly IChatGui _chatGui;
     private readonly ILogger<QuestStopPolicy> _logger;
+    private readonly Action? _saveConfig;
 
     public QuestStopPolicy(Configuration configuration, NotificationMasterIpc notifications,
-        ICommandManager commands, ChatFunctions chatFunctions, IChatGui chatGui, ILogger<QuestStopPolicy> logger)
+        ICommandManager commands, ChatFunctions chatFunctions, IDalamudPluginInterface pluginInterface,
+        IChatGui chatGui, ILogger<QuestStopPolicy> logger)
         : this(configuration, notifications.NotifyOnFailure, notifications.Notify,
-            command => Run(command, commands.ProcessCommand, chatFunctions.ExecuteCommand), chatGui, logger)
+            command => Run(command, commands.ProcessCommand, chatFunctions.ExecuteCommand), chatGui, logger,
+            () => pluginInterface.SavePluginConfig(configuration))
     {
     }
 
     internal QuestStopPolicy(Configuration configuration, Action<string> notifyOnFailure, Action<string> notify,
-        Action<string> runCommand, IChatGui chatGui, ILogger<QuestStopPolicy> logger)
+        Action<string> runCommand, IChatGui chatGui, ILogger<QuestStopPolicy> logger, Action? saveConfig = null)
     {
         _configuration = configuration;
         _notifyOnFailure = notifyOnFailure;
@@ -34,6 +37,22 @@ internal sealed class QuestStopPolicy
         _runCommand = runCommand;
         _chatGui = chatGui;
         _logger = logger;
+        _saveConfig = saveConfig;
+    }
+
+    // Saved right away; otherwise the quest comes back after a reload unless another setting is saved first.
+    internal void RemoveStopQuest(ElementId questId)
+    {
+        _configuration.Stop.QuestsToStopAfter.Remove(questId);
+        _configuration.Stop.SetPreset(questId, null);
+        try
+        {
+            _saveConfig?.Invoke();
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, "Unable to save the stop list");
+        }
     }
 
     // Set by the character list run. It gets whether the end actions apply to this stop, and answers

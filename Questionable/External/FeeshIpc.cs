@@ -3,26 +3,25 @@ using static Questionable.External.IPCUtils;
 
 namespace Questionable.External;
 
+// WahTools runs every IPC catch under one shared owner, so its release and stop reach other plugins' catches too.
 [RegisterSingleton]
 internal sealed class FeeshIpc : Ipc, IDisposable
 {
-    internal const string CallerName = "Questionable";
-
     private readonly ILogger<FeeshIpc> _logger;
     private readonly FishingState _operation;
     private readonly IFramework _framework;
-    private readonly Dictionary<uint, long> _pendingReleases = [];
     private readonly object _catchDoneLock = new();
     private readonly EzIPCDisposalToken[] _disposalTokens;
     private bool? _catchDoneResult;
+    private uint? _requestedFish;
     private uint? _heldFish;
+    private long? _releaseTriedAt;
 
     [EzIPC("IsBusy")] private readonly Func<bool> _isBusy = null!;
-    [EzIPC("Feesh.TaggedStand")] private readonly Func<uint, string> _taggedStand = null!;
-    [EzIPC("Feesh.Catch")] private readonly Func<string, uint, int, bool, bool> _catch = null!;
-    [EzIPC("Feesh.Catching")] private readonly Func<string> _catching = null!;
-    [EzIPC("Feesh.CancelCatch")] private readonly Func<string, bool> _cancelCatch = null!;
-    [EzIPC("Feesh.ReleaseCatch")] private readonly Func<string, uint, bool> _releaseCatch = null!;
+    [EzIPC("Feesh.Catch")] private readonly Func<uint, int, bool> _catch = null!;
+    [EzIPC("Feesh.CatchStatus")] private readonly Func<string> _catchStatus = null!;
+    [EzIPC("Feesh.Stop")] private readonly Func<bool> _stop = null!;
+    [EzIPC("Feesh.ReleaseHeldFish")] private readonly Func<bool> _releaseHeldFish = null!;
 
     public FeeshIpc(ILogger<FeeshIpc> logger, FishingState operation, IFramework framework)
     {
@@ -36,22 +35,10 @@ internal sealed class FeeshIpc : Ipc, IDisposable
     public override string InternalName => "WahTools";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     public override bool IsReady() => IsAvailable();
-    public bool IsAvailable() => ReadCatching() != null;
+    public bool IsAvailable() => ReadStatus() != null;
     public bool? GetBusy() => Read(_isBusy);
 
-    public bool CanCatch(uint fishId)
-    {
-        try
-        {
-            return !string.IsNullOrEmpty(_taggedStand(fishId));
-        }
-        catch (Exception e)
-        {
-            _logger.LogDebug(e, "Unable to ask Feesh where to catch {FishId}", fishId);
-            return false;
-        }
-    }
-
+    // Catch takes how many more to catch, and keeps them from being discarded until released.
     public FeeshStartResult StartCatch(uint fishId, int additionalCount, out string message)
     {
         message = "";
@@ -66,19 +53,23 @@ internal sealed class FeeshIpc : Ipc, IDisposable
 
         Guid id = _operation.BeginRequest();
         lock (_catchDoneLock)
+        {
             _catchDoneResult = null;
+            _requestedFish = fishId;
+        }
+
         try
         {
             _logger.LogInformation("Requesting {Count} additional {FishId} from Feesh", additionalCount, fishId);
-            if (!_catch(CallerName, fishId, additionalCount, true))
+            if (!_catch(fishId, additionalCount))
             {
                 _operation.RejectRequest(id);
                 return GetBusy() == true ? FeeshStartResult.Busy : FeeshStartResult.Refused;
             }
 
             _operation.AcceptCatch(id);
-            // The new job now needs Questionable's hold on this fish; an old release must not remove it.
-            _pendingReleases.Remove(fishId);
+            // A release still retrying from an earlier catch would drop this one's hold.
+            _releaseTriedAt = null;
             _heldFish = fishId;
             return FeeshStartResult.Started;
         }
@@ -86,7 +77,7 @@ internal sealed class FeeshIpc : Ipc, IDisposable
         {
             _logger.LogWarning(e, "Feesh catch submission has an uncertain result");
             _operation.MarkUncertain(id);
-            _pendingReleases.Remove(fishId);
+            _releaseTriedAt = null;
             _heldFish = fishId;
             message = e.Message;
             return FeeshStartResult.Uncertain;
@@ -95,16 +86,17 @@ internal sealed class FeeshIpc : Ipc, IDisposable
 
     public void PollOperation()
     {
-        RetryPendingReleases();
+        RetryRelease();
         if (_operation.Id is not { } id)
             return;
 
-        string? text = ReadCatching();
+        string? text = ReadStatus();
+        EFeeshJobState state = ParseState(text);
         bool? catchDone;
         lock (_catchDoneLock)
             catchDone = _catchDoneResult;
-        _operation.ObserveCatch(id, ParseState(text), text ?? "Feesh is unavailable", catchDone, GetBusy());
-        SendStop();
+        _operation.ObserveCatch(id, state, text ?? "Feesh is unavailable", catchDone, GetBusy());
+        SendStop(state);
         if (_operation.NeedsConfirmation)
             ObserveIdle();
     }
@@ -112,58 +104,58 @@ internal sealed class FeeshIpc : Ipc, IDisposable
     public void RequestStop()
     {
         _operation.RequestStop();
-        SendStop();
+        SendStop(ParseState(ReadStatus()));
     }
 
     public void CancelWork()
     {
-        RetryPendingReleases();
+        RetryRelease();
         if (!_operation.HasOperation)
             return;
         _operation.Abandon();
         RequestStop();
-        if (_heldFish is { } fishId)
-            ReleaseCatch(fishId);
+        if (_heldFish != null)
+            ReleaseHeldFish();
     }
 
     public void ObserveIdle() => _operation.ObserveIdle(GetBusy());
 
-    public void ReleaseCatch(uint fishId)
+    public void ReleaseHeldFish()
     {
-        if (_heldFish == fishId)
-            _heldFish = null;
-        TryReleaseCatch(fishId);
+        _heldFish = null;
+        _releaseTriedAt = TimeProvider.System.GetTimestamp();
+        TryRelease();
     }
 
-    private void TryReleaseCatch(uint fishId)
+    private void TryRelease()
     {
-        _pendingReleases[fishId] = TimeProvider.System.GetTimestamp();
         try
         {
-            // False means Questionable no longer holds the fish, which also completes cleanup.
-            _releaseCatch(CallerName, fishId);
-            _pendingReleases.Remove(fishId);
+            // False means nothing is held any more, which also completes cleanup.
+            _releaseHeldFish();
+            _releaseTriedAt = null;
         }
         catch (Exception e)
         {
-            _logger.LogDebug(e, "Unable to release Feesh's hold on {FishId}", fishId);
+            _logger.LogDebug(e, "Unable to release Feesh's held fish");
         }
     }
 
-    // QuestController stops polling once the job is released, but its hold cleanup can still be pending.
-    private void OnFrameworkUpdate(IFramework framework) => RetryPendingReleases();
+    // QuestController stops polling once the job is released, but the release can still be pending.
+    private void OnFrameworkUpdate(IFramework framework) => RetryRelease();
 
-    private void RetryPendingReleases(bool force = false)
+    private void RetryRelease(bool force = false)
     {
-        if (_pendingReleases.Count == 0)
+        if (_releaseTriedAt is not { } lastAttempt)
             return;
-        foreach (var (fishId, lastAttempt) in _pendingReleases.ToArray())
-        {
-            if (force || TimeProvider.System.GetElapsedTime(lastAttempt) >= TimeSpan.FromSeconds(2))
-                TryReleaseCatch(fishId);
-        }
+        if (!force && TimeProvider.System.GetElapsedTime(lastAttempt) < TimeSpan.FromSeconds(2))
+            return;
+
+        _releaseTriedAt = TimeProvider.System.GetTimestamp();
+        TryRelease();
     }
 
+    // CatchStatus: "Idle", "fishing <progress>", "finishing <progress>", then "done|partial|failed|stopped <progress>[: why]".
     internal static EFeeshJobState ParseState(string? text)
     {
         if (text == null)
@@ -176,6 +168,7 @@ internal sealed class FeeshIpc : Ipc, IDisposable
         return trimmed[..end].ToUpperInvariant() switch
         {
             "" when trimmed.Length == 0 => EFeeshJobState.None,
+            "IDLE" => EFeeshJobState.None,
             "FISHING" => EFeeshJobState.Fishing,
             "FINISHING" => EFeeshJobState.Finishing,
             "DONE" => EFeeshJobState.Done,
@@ -188,34 +181,42 @@ internal sealed class FeeshIpc : Ipc, IDisposable
     }
 
     [EzIPCEvent("Feesh.CatchDone")]
-    private void OnCatchDone(string caller, bool done)
+    private void OnCatchDone(uint fishId, bool done)
     {
-        if (caller != CallerName)
-            return;
-        // May arrive off the framework thread; the next poll applies it.
+        // May arrive off the framework thread; the next poll applies it. Other plugins' catches report here too.
         lock (_catchDoneLock)
-            _catchDoneResult = done;
+        {
+            if (fishId == _requestedFish)
+                _catchDoneResult = done;
+        }
     }
 
-    private void SendStop()
+    // Stop ends everything Feesh is doing, so it's only sent while a catch job is running.
+    private void SendStop(EFeeshJobState state)
     {
         if (!_operation.TryBeginStop(out Guid id))
             return;
+        if (state is not (EFeeshJobState.Fishing or EFeeshJobState.Finishing))
+        {
+            _operation.ObserveStop(id, true);
+            return;
+        }
+
         try
         {
-            _operation.ObserveStop(id, _cancelCatch(CallerName));
+            _operation.ObserveStop(id, _stop());
         }
         catch (Exception e)
         {
-            _logger.LogDebug(e, "Unable to cancel Feesh catch job {Id}", id);
+            _logger.LogDebug(e, "Unable to stop Feesh catch job {Id}", id);
         }
     }
 
-    private string? ReadCatching()
+    private string? ReadStatus()
     {
         try
         {
-            return _catching() ?? "";
+            return _catchStatus() ?? "";
         }
         catch (Exception)
         {
@@ -239,15 +240,11 @@ internal sealed class FeeshIpc : Ipc, IDisposable
     {
         _framework.Update -= OnFrameworkUpdate;
         IPCSubscriber.DisposeAll(_disposalTokens);
-        IpcInvoke.TryOnFrameworkThread(_framework, () => RetryPendingReleases(force: true), _logger);
+        IpcInvoke.TryOnFrameworkThread(_framework, () => RetryRelease(force: true), _logger);
 
         // Framework unloading can skip both the final retry and the controller's cancellation.
-        var remainingHolds = _pendingReleases.Keys.ToHashSet();
-        if (_heldFish is { } fishId)
-            remainingHolds.Add(fishId);
-        if (remainingHolds.Count > 0)
-            _logger.LogWarning("Feesh holds could not be released before unloading: {FishIds}. Release them in WahTools.",
-                string.Join(", ", remainingHolds));
+        if (_heldFish != null || _releaseTriedAt != null)
+            _logger.LogWarning("Feesh still keeps fish caught for Questionable. Release them in WahTools.");
     }
 }
 
@@ -406,7 +403,7 @@ internal sealed class FishingState(TimeProvider? timeProvider = null)
     public bool TryBeginStop(out Guid id)
     {
         id = Id.GetValueOrDefault();
-        // CancelCatch only ends our own job, so it is safe after a lost start reply.
+        // FeeshIpc only sends Stop while a catch job is running, so this is safe after a lost start reply.
         if (!HasOperation || IsFinished || !(StopRequested || IsAbandoned) || _stopAccepted ||
             (_lastStopAttempt is { } last && _clock.GetElapsedTime(last) < TimeSpan.FromSeconds(2)))
             return false;
