@@ -296,6 +296,8 @@ internal sealed class Configuration : IPluginConfiguration
         public bool RemoveWhenCompleteConditionMet { get; set; }
         public bool RunAfterProblemStop { get; set; }
         public EEndAction EndAction { get; set; }
+        public EDestination Destination { get; set; }
+        public int WaitSeconds { get; set; }
 
         // A list, so a profile replaces it as a whole when merged.
         public List<StopPreset> PresetsAfterQuest { get; set; } = [];
@@ -332,6 +334,19 @@ internal sealed class Configuration : IPluginConfiguration
         None,
         LogOut,
         CloseGame,
+    }
+
+    // Where Lifestream takes the character after a run; each maps to a /li command.
+    internal enum EDestination
+    {
+        None,
+        HomeWorld,
+        Auto,
+        Inn,
+        PrivateEstate,
+        FreeCompany,
+        Apartment,
+        GrandCompany,
     }
 
     internal sealed class DutyConfiguration

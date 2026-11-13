@@ -14,6 +14,7 @@ internal sealed class StopConditionComponent : ConfigComponent
     private readonly UiUtils _uiUtils;
     private readonly PriorityPresets _presets;
     private readonly Configuration.EEndAction[] _endActions = Enum.GetValues<Configuration.EEndAction>();
+    private readonly Configuration.EDestination[] _destinations = Enum.GetValues<Configuration.EDestination>();
     private Vector2 _contentSize;
 
     public StopConditionComponent(
@@ -146,6 +147,15 @@ internal sealed class StopConditionComponent : ConfigComponent
     {
         ImGui.TextColored(QstTheme.Accent, _L("After the run stops"));
 
+        ImGui.AlignTextToFramePadding();
+        ImGui.TextUnformatted(_L("Go to"));
+        ImGui.SameLine();
+        ImGui.SetNextItemWidth(200 * ImGuiHelpers.GlobalScale);
+        DrawComboOption("##Destination", _destinations, _destinations.Select(QuestStopPolicy.GetName).ToArray(),
+            () => Configuration.Stop.Destination, x => Configuration.Stop.Destination = x);
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(_L("Travels there with Lifestream first. The commands below wait until you have arrived."));
+
         bool runCommand = Configuration.Stop.RunCommandAfterStop;
         if (ImGui.Checkbox(_L("Run command when Questionable finishes automatic questing"), ref runCommand))
         {
@@ -153,26 +163,42 @@ internal sealed class StopConditionComponent : ConfigComponent
             Save();
         }
 
-        using var indent = ImRaii.PushIndent();
+        using (ImRaii.PushIndent())
+        {
+            string command = Configuration.Stop.CommandAfterStop;
+            // One line tall, growing with each command added.
+            Vector2 commandSize = new(ImGui.CalcItemWidth(),
+                ImGui.GetTextLineHeight() * (command.Count(c => c == '\n') + 1) + ImGui.GetStyle().FramePadding.Y * 2);
+            if (ImGui.InputTextMultiline("##Command", ref command, 512, commandSize))
+            {
+                Configuration.Stop.CommandAfterStop = command;
+                Save();
+            }
+            if (ImGui.IsItemDeactivatedAfterEdit())
+            {
+                if (string.IsNullOrWhiteSpace(Configuration.Stop.CommandAfterStop))
+                    Configuration.Stop.CommandAfterStop = "/li auto";
+                Save();
+            }
+            ImGuiComponentsLocal.HelpMarker(
+                _L("Press Enter for another command, one per line. Plugin commands and game commands both work. Never runs after these stops:"),
+                QuestStopPolicy.ExcludedStopReasons.ToArray());
+        }
 
-        string command = Configuration.Stop.CommandAfterStop;
-        // One line tall, growing with each command added.
-        Vector2 commandSize = new(ImGui.CalcItemWidth(),
-            ImGui.GetTextLineHeight() * (command.Count(c => c == '\n') + 1) + ImGui.GetStyle().FramePadding.Y * 2);
-        if (ImGui.InputTextMultiline("##Command", ref command, 512, commandSize))
+        ImGui.AlignTextToFramePadding();
+        ImGui.TextUnformatted(_L("Wait"));
+        ImGui.SameLine();
+        int wait = Configuration.Stop.WaitSeconds;
+        ImGui.SetNextItemWidth(100 * ImGuiHelpers.GlobalScale);
+        if (ImGui.InputInt("##WaitSeconds", ref wait, 5, 30))
         {
-            Configuration.Stop.CommandAfterStop = command;
+            Configuration.Stop.WaitSeconds = Math.Clamp(wait, 0, QuestStopPolicy.MaxWaitSeconds);
             Save();
         }
-        if (ImGui.IsItemDeactivatedAfterEdit())
-        {
-            if (string.IsNullOrWhiteSpace(Configuration.Stop.CommandAfterStop))
-                Configuration.Stop.CommandAfterStop = "/li auto";
-            Save();
-        }
-        ImGuiComponentsLocal.HelpMarker(
-            _L("Press Enter for another command, one per line. Plugin commands and game commands both work. Never runs after these stops:"),
-            QuestStopPolicy.ExcludedStopReasons.ToArray());
+        ImGui.SameLine();
+        ImGui.TextUnformatted(_L("seconds before the next step"));
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(_L("For SND scripts or commands that keep running: Questionable waits this long after the commands before logging out, closing the game or switching to the next character. Lifestream travel is waited for on its own."));
 
         ImGui.AlignTextToFramePadding();
         ImGui.TextUnformatted(_L("After that"));
@@ -185,7 +211,7 @@ internal sealed class StopConditionComponent : ConfigComponent
 
         DrawCheckbox(_L("Do this after a problem stop too (stuck, too many deaths, missing path)"),
             () => Configuration.Stop.RunAfterProblemStop, x => Configuration.Stop.RunAfterProblemStop = x,
-            _L("Off: the commands and the action above only run when a run finished: nothing left to do, a stop condition above, or one of the stop buttons in the main window. A character list also stops at a character that hit a problem."));
+            _L("Off: travel, the commands and the action above only run when a run finished: nothing left to do, a stop condition above, or one of the stop buttons in the main window. A character list also stops at a character that hit a problem."));
     }
 
     private void DrawQuestStopSection(string label, string sectionId, QuestSelector selector, List<ElementId> quests,

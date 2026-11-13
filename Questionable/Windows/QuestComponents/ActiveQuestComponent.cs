@@ -15,6 +15,7 @@ internal sealed partial class ActiveQuestComponent
     QuestController questController,
     QuestStarter questStarter,
     CharacterRun characterRun,
+    QuestStopPolicy stopPolicy,
     OperationCoordinator operations,
     MovementController movementController,
     CombatController combatController,
@@ -112,6 +113,20 @@ internal sealed partial class ActiveQuestComponent
 
     private void DrawCharacterRun()
     {
+        if (stopPolicy.EndingStatus is { } ending)
+        {
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Times))
+            {
+                stopPolicy.CancelEnding();
+                characterRun.Cancel();
+            }
+
+            if (ImGui.IsItemHovered())
+                ImGui.SetTooltip(_L("Cancel what is left after the run: travel, commands, logging out or the next character."));
+            ImGui.SameLine();
+            ImGui.TextColored(QstTheme.Amber, ending);
+        }
+
         if (characterRun.Status is not { } status)
             return;
 
@@ -754,6 +769,7 @@ internal sealed partial class ActiveQuestComponent
             questController.StopFromUi(_L("UI stop"));
             gatheringController.Stop(_L("UI stop"));
             characterRun.Cancel();
+            stopPolicy.CancelEnding();
         }
         if (ImGui.IsItemHovered())
             ImGui.SetTooltip(_L("Stop all actions now."));

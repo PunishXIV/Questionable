@@ -9,13 +9,10 @@ internal sealed class GatherChillIpc : Ipc, IDisposable
 {
     internal const string CallerName = "Questionable";
 
-    private const int MinimumApiVersion = 3;
-
     private readonly ILogger<GatherChillIpc> _logger;
     private readonly GatheringState _operation;
     private readonly EzIPCDisposalToken[] _disposalTokens;
 
-    [EzIPC("ApiVersion")] private readonly Func<int> _apiVersion = null!;
     [EzIPC("IsBusy")] private readonly Func<bool> _isBusy = null!;
     [EzIPC("CanGather")] private readonly Func<uint, bool> _canGather = null!;
     [EzIPC("StartJob")] private readonly Func<string, uint, int, (int, Guid, string)> _startJob = null!;
@@ -31,9 +28,9 @@ internal sealed class GatherChillIpc : Ipc, IDisposable
 
     public override string InternalName => "GatherChill";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
-    // Older providers can still be moving the character even though we cannot submit jobs to them.
-    public bool IsAvailable() => Read(() => _apiVersion() > 0) == true;
-    public override bool IsReady() => Read(() => _apiVersion() >= MinimumApiVersion) == true;
+    // Only the current Gather n Chill is supported; answering at all means it is loaded.
+    public bool IsAvailable() => GetBusy() != null;
+    public override bool IsReady() => IsAvailable();
     public bool? GetBusy() => Read(_isBusy);
     public bool CanGather(uint itemId) => Read(() => _canGather(itemId)) == true;
 
@@ -111,7 +108,7 @@ internal sealed class GatherChillIpc : Ipc, IDisposable
         }
     }
 
-    public void ObserveIdle() => _operation.ObserveIdle(IsReady() ? GetBusy() : null);
+    public void ObserveIdle() => _operation.ObserveIdle(GetBusy());
 
     private (ExternalOperationStatus State, string Message) GetJob(Guid jobId)
     {

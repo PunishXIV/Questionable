@@ -163,6 +163,8 @@ internal sealed class CharacterRun : IDisposable
 
     private void Update(IFramework framework)
     {
+        // The run end (travel, commands, wait, final action) is driven from here too.
+        _stopPolicy.Update(DateTime.Now);
         if (State is EState.Idle or EState.Questing)
             return;
 
@@ -181,6 +183,13 @@ internal sealed class CharacterRun : IDisposable
         switch (State)
         {
             case EState.Leaving:
+                // Travel, commands and the wait come first, and can take longer than one step's time limit.
+                if (_stopPolicy.IsEnding)
+                {
+                    _deadline = now + Timeout;
+                    return;
+                }
+
                 if (_lifestream.IsBusy || !_autoRetainer.CanRelog)
                     return;
 

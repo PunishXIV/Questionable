@@ -11,6 +11,7 @@ internal sealed class QuestStarter(
     QuestProgressTracker tracker,
     QuestRegistry questRegistry,
     QuestData questData,
+    QuestStopPolicy stopPolicy,
     IDataManager dataManager,
     IChatGui chatGui,
     ILogger<QuestStarter> logger)
@@ -38,6 +39,7 @@ internal sealed class QuestStarter(
 
         using IDisposable? scope = logger.BeginScope($"Q/{label}");
         RedeemRewardItems.ResetAttemptedItems();
+        stopPolicy.CancelEnding();
         questController.AutomationType = EAutomationType.Automatic;
         questController.ExecuteNextStep();
     }
@@ -49,6 +51,7 @@ internal sealed class QuestStarter(
 
         using IDisposable? scope = logger.BeginScope($"GQ/{label}");
         RedeemRewardItems.ResetAttemptedItems();
+        stopPolicy.CancelEnding();
         questController.AutomationType = EAutomationType.GatheringOnly;
         questController.ExecuteNextStep();
     }
@@ -60,6 +63,7 @@ internal sealed class QuestStarter(
 
         using IDisposable? scope = logger.BeginScope($"SQ/{label}");
         RedeemRewardItems.ResetAttemptedItems();
+        stopPolicy.CancelEnding();
         questController.AutomationType = EAutomationType.SingleQuestA;
         questController.ExecuteNextStep();
     }
@@ -71,6 +75,7 @@ internal sealed class QuestStarter(
 
         using IDisposable? scope = logger.BeginScope($"SS/{label}");
         RedeemRewardItems.ResetAttemptedItems();
+        stopPolicy.CancelEnding();
         questController.AutomationType = EAutomationType.Manual;
         questController.ExecuteNextStep();
     }
@@ -141,6 +146,7 @@ internal sealed class QuestStarter(
         }
 
         RedeemRewardItems.ResetAttemptedItems();
+        stopPolicy.CancelEnding();
         List<ITask> tasks = RedeemRewardItems.CreateTasks(questData, dataManager, overrideConfig: true);
         if (tasks.Count == 0)
         {

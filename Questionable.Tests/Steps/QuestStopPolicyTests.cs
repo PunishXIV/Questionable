@@ -114,6 +114,86 @@ public sealed class QuestStopPolicyTests
         Assert.Equal(expected, string.Join(',', effects));
     }
 
+    private static (QuestStopPolicy Policy, List<string> Effects) Ending(Configuration configuration,
+        Func<bool>? isTraveling = null)
+    {
+        List<string> effects = [];
+        var policy = new QuestStopPolicy(configuration, _ => effects.Add("notify"), _ => { }, effects.Add,
+            Substitute.For<IChatGui>(), NullLogger<QuestStopPolicy>.Instance, isTraveling: isTraveling);
+        return (policy, effects);
+    }
+
+    [Fact]
+    public void Destination_WaitsForArrival()
+    {
+        var configuration = Config();
+        configuration.Stop.Destination = Configuration.EDestination.Inn;
+        configuration.Stop.EndAction = Configuration.EEndAction.LogOut;
+        bool traveling = true;
+        var (policy, effects) = Ending(configuration, () => traveling);
+
+        policy.Apply("Skip", true, finished: true);
+        policy.Update(DateTime.Now.AddSeconds(10));
+        Assert.Equal(["notify", "/li inn"], effects);
+
+        traveling = false;
+        policy.Update(DateTime.Now.AddSeconds(10));
+        Assert.Equal(["notify", "/li inn", "/after-stop", "/logout"], effects);
+        Assert.False(policy.IsEnding);
+    }
+
+    [Fact]
+    public void Wait_HoldsFinalAction()
+    {
+        var configuration = Config();
+        configuration.Stop.WaitSeconds = 30;
+        configuration.Stop.EndAction = Configuration.EEndAction.LogOut;
+        var (policy, effects) = Ending(configuration);
+
+        policy.Apply("Skip", true, finished: true);
+        policy.Update(DateTime.Now.AddSeconds(10));
+        Assert.Equal(["notify", "/after-stop"], effects);
+
+        policy.Update(DateTime.Now.AddSeconds(31));
+        Assert.Equal(["notify", "/after-stop", "/logout"], effects);
+    }
+
+    [Fact]
+    public void Wait_SkippedWhenNothingFollows()
+    {
+        var configuration = Config();
+        configuration.Stop.WaitSeconds = 30;
+        var (policy, _) = Ending(configuration);
+
+        policy.Apply("Skip", true, finished: true);
+
+        Assert.False(policy.IsEnding);
+    }
+
+    [Fact]
+    public void CancelEnding_DropsFinalAction()
+    {
+        var configuration = Config();
+        configuration.Stop.WaitSeconds = 30;
+        configuration.Stop.EndAction = Configuration.EEndAction.CloseGame;
+        var (policy, effects) = Ending(configuration);
+
+        policy.Apply("Skip", true, finished: true);
+        policy.CancelEnding();
+        policy.Update(DateTime.Now.AddSeconds(60));
+
+        Assert.Equal(["notify", "/after-stop"], effects);
+    }
+
+    [Theory]
+    [InlineData(0, null)]
+    [InlineData(1, "/li")]
+    [InlineData(2, "/li auto")]
+    [InlineData(3, "/li inn")]
+    [InlineData(6, "/li apt")]
+    public void Destination_MapsToLifestream(int destination, string? expected) =>
+        Assert.Equal(expected, QuestStopPolicy.GetCommand((Configuration.EDestination)destination));
+
     [Fact]
     public void Commands_RunOnePerLine()
     {

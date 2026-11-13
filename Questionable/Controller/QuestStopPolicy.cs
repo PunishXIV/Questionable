@@ -1,3 +1,4 @@
+using EDestination = Questionable.Configuration.EDestination;
 using EEndAction = Questionable.Configuration.EEndAction;
 using Quest = Questionable.Domain.Quest;
 using QuestProgress = Questionable.Controller.QuestController.QuestProgress;
@@ -7,6 +8,11 @@ namespace Questionable.Controller;
 [RegisterSingleton]
 internal sealed class QuestStopPolicy
 {
+    internal const int MaxWaitSeconds = 3600;
+
+    // Lifestream needs a moment before it reports itself busy.
+    private static readonly TimeSpan TravelStart = TimeSpan.FromSeconds(3);
+
     internal const string UiStopReason = "UI stop";
 
     public static IReadOnlyList<string> ExcludedStopReasons { get; } = Array.AsReadOnly<string>([UiStopReason, "ESC pressed"]);
@@ -18,19 +24,23 @@ internal sealed class QuestStopPolicy
     private readonly IChatGui _chatGui;
     private readonly ILogger<QuestStopPolicy> _logger;
     private readonly Action? _saveConfig;
+    private readonly Func<bool> _isTraveling;
+    private Ending? _ending;
 
     public QuestStopPolicy(Configuration configuration, NotificationMasterIpc notifications,
         ICommandManager commands, ChatFunctions chatFunctions, IDalamudPluginInterface pluginInterface,
-        IChatGui chatGui, ILogger<QuestStopPolicy> logger)
+        LifestreamIpc lifestream, IChatGui chatGui, ILogger<QuestStopPolicy> logger)
         : this(configuration, notifications.NotifyOnFailure, notifications.Notify,
             command => Run(command, commands.ProcessCommand, chatFunctions.ExecuteCommand), chatGui, logger,
-            () => pluginInterface.SavePluginConfig(configuration))
+            () => pluginInterface.SavePluginConfig(configuration), () => lifestream.IsBusy)
     {
     }
 
     internal QuestStopPolicy(Configuration configuration, Action<string> notifyOnFailure, Action<string> notify,
-        Action<string> runCommand, IChatGui chatGui, ILogger<QuestStopPolicy> logger, Action? saveConfig = null)
+        Action<string> runCommand, IChatGui chatGui, ILogger<QuestStopPolicy> logger, Action? saveConfig = null,
+        Func<bool>? isTraveling = null)
     {
+        _isTraveling = isTraveling ?? (() => false);
         _configuration = configuration;
         _notifyOnFailure = notifyOnFailure;
         _notify = notify;
@@ -82,17 +92,86 @@ internal sealed class QuestStopPolicy
             return;
         }
 
-        if (stop.RunCommandAfterStop)
-        {
-            foreach (string command in GetCommands(stop.CommandAfterStop))
-                TryRun(() => _runCommand(command), "stop command");
-        }
+        bool nextCharacter = StopHandler?.Invoke(true) == true;
+        EEndAction action = endAction ?? stop.EndAction;
+        string? final = nextCharacter ? null : GetCommand(action);
+        string? travel = GetCommand(stop.Destination);
+        DateTime now = DateTime.Now;
+        if (travel != null)
+            TryRun(() => _runCommand(travel), "travel");
 
-        if (StopHandler?.Invoke(true) == true)
+        _ending = new Ending
+        {
+            Commands = stop.RunCommandAfterStop ? [.. GetCommands(stop.CommandAfterStop)] : [],
+            Final = final,
+            Next = nextCharacter ? _L("the next character") : final != null ? GetName(action) : null,
+            ReadyAt = travel != null ? now + TravelStart : now,
+            // With nothing after the commands there is nothing to wait for.
+            Wait = final != null || nextCharacter
+                ? TimeSpan.FromSeconds(Math.Clamp(stop.WaitSeconds, 0, MaxWaitSeconds))
+                : TimeSpan.Zero,
+        };
+        Update(now);
+    }
+
+    internal bool IsEnding => _ending != null;
+
+    public string? EndingStatus
+    {
+        get
+        {
+            if (_ending is not { } ending)
+                return null;
+            if (!ending.CommandsSent)
+                return _L("Run ended: travelling first.");
+            if (ending.Next == null)
+                return _L("Run ended: waiting for travel to finish.");
+
+            int seconds = (int)Math.Ceiling((ending.ReadyAt - DateTime.Now).TotalSeconds);
+            return seconds > 0
+                ? _LF("Run ended: {0} in {1} s.", ending.Next, seconds)
+                : _LF("Run ended: {0} after travel.", ending.Next);
+        }
+    }
+
+    public void CancelEnding()
+    {
+        if (_ending == null)
             return;
 
-        if (GetCommand(endAction ?? stop.EndAction) is { } endCommand)
-            TryRun(() => _runCommand(endCommand), "end action");
+        _logger.LogInformation("Run end cancelled");
+        _ending = null;
+    }
+
+    // Travel first, then the commands, then the wait and the final action, each only once nothing is travelling.
+    // CharacterRun calls this every frame.
+    internal void Update(DateTime now)
+    {
+        while (_ending is { } ending && now >= ending.ReadyAt && !_isTraveling())
+        {
+            if (!ending.CommandsSent)
+            {
+                ending.CommandsSent = true;
+                foreach (string command in ending.Commands)
+                    TryRun(() => _runCommand(command), "stop command");
+                ending.ReadyAt = now + ending.Wait;
+                continue;
+            }
+
+            _ending = null;
+            if (ending.Final is { } final)
+                TryRun(() => _runCommand(final), "end action");
+        }
+    }
+
+    private sealed class Ending
+    {
+        public required List<string> Commands { get; init; }
+        public string? Final { get; init; }
+        public string? Next { get; init; }
+        public required DateTime ReadyAt { get; set; }
+        public TimeSpan Wait { get; init; }
+        public bool CommandsSent { get; set; }
     }
 
     internal static IEnumerable<string> GetCommands(string text) =>
@@ -111,6 +190,30 @@ internal sealed class QuestStopPolicy
         EEndAction.LogOut => _L("Log out"),
         EEndAction.CloseGame => _L("Close the game"),
         _ => _L("Nothing"),
+    };
+
+    internal static string? GetCommand(EDestination destination) => destination switch
+    {
+        EDestination.HomeWorld => "/li",
+        EDestination.Auto => "/li auto",
+        EDestination.Inn => "/li inn",
+        EDestination.PrivateEstate => "/li home",
+        EDestination.FreeCompany => "/li fc",
+        EDestination.Apartment => "/li apt",
+        EDestination.GrandCompany => "/li gc",
+        _ => null,
+    };
+
+    internal static string GetName(EDestination destination) => destination switch
+    {
+        EDestination.HomeWorld => _L("Home world"),
+        EDestination.Auto => _L("Lifestream's /li auto"),
+        EDestination.Inn => _L("Inn room"),
+        EDestination.PrivateEstate => _L("Private estate"),
+        EDestination.FreeCompany => _L("Free Company estate"),
+        EDestination.Apartment => _L("Apartment"),
+        EDestination.GrandCompany => _L("Grand Company"),
+        _ => _L("Stay here"),
     };
 
     // Dalamud only knows plugin commands; everything else goes to the game's chat box.

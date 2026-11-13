@@ -6,9 +6,6 @@ namespace Questionable.External;
 [RegisterSingleton]
 internal sealed class KnightshopperIpc : Ipc, IDisposable
 {
-    private const int MinimumApiVersion = 2;
-
-
     public enum EStartResult
     {
         Uncertain = -1,
@@ -28,7 +25,6 @@ internal sealed class KnightshopperIpc : Ipc, IDisposable
     private readonly PurchaseState _operation;
     private readonly EzIPCDisposalToken[] _disposalTokens;
 
-    [EzIPC("ApiVersion")] private readonly Func<int> _apiVersion = null!;
     [EzIPC("IsBusy")] private readonly Func<bool> _isBusy = null!;
     [EzIPC("Purchase.StartItems")] private readonly Func<int, (uint ItemId, uint Quantity)[], (int, Guid, string)> _startItems = null!;
     [EzIPC("Purchase.GetStatus")] private readonly Func<Guid, (int, int, int, uint, string)> _getStatus = null!;
@@ -43,17 +39,8 @@ internal sealed class KnightshopperIpc : Ipc, IDisposable
 
     public override string InternalName => "Knightshopper";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
-    public override bool IsReady()
-    {
-        try
-        {
-            return _apiVersion() >= MinimumApiVersion;
-        }
-        catch (Exception)
-        {
-            return false;
-        }
-    }
+    // Only the current Knightshopper is supported; answering at all means it is loaded.
+    public override bool IsReady() => GetBusy() != null;
 
     // quantity is the total to own afterwards, not the amount to buy.
     public EStartResult Buy(int currency, uint itemId, uint quantity, out Guid operationId, out string message)
