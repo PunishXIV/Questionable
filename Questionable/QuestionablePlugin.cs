@@ -198,6 +198,13 @@ public sealed class QuestionablePlugin(
             pluginInterface.SavePluginConfig(configuration);
         }
 
+        if (!configuration.ClaimMailOnApplied)
+        {
+            configuration.TurnOnClaimMail();
+            configuration.ClaimMailOnApplied = true;
+            pluginInterface.SavePluginConfig(configuration);
+        }
+
         serviceCollection.AddSingleton(configuration);
         _runtimeConfiguration = configuration;
         Configuration.InitializeRuntime(configuration);

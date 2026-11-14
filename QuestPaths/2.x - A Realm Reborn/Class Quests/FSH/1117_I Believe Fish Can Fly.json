@@ -116,7 +116,7 @@
           "InteractionType": "WalkTo"
         },
         {
-          "Comment": "Fish for 5x Cloud Cutter\nThis fish prefers Blizzard or Snow weather.\nAutohook will attempt to use Fish Eyes (Lv 57) if it is unlocked\nBest chances between 08:00-14:00 ET",
+          "Comment": "Fish for 5x Cloud Cutter\nThis fish prefers Blizzard or Snow weather.\nBest chances between 08:00-14:00 ET",
           "TerritoryId": 155,
           "InteractionType": "Fish",
           "ItemsToGather": [

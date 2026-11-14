@@ -44,6 +44,7 @@ internal sealed class Configuration : IPluginConfiguration
     public bool AutoRedeemOffResetApplied { get; set; }
     public bool StepRefreshResetApplied { get; set; }
     public bool ProblemStopApplied { get; set; }
+    public bool ClaimMailOnApplied { get; set; }
 
     public Dictionary<string, Dictionary<string, JObject>> Profiles { get; set; } = [];
 
@@ -273,7 +274,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool SameJobThroughoutQuest { get; set; }
         public bool IgnoreNextQuestIfPrioSet { get; set; }
         public bool TitleBarPillCenter { get; set; } = true;
-        public bool ClaimMail { get; set; }
+        public bool ClaimMail { get; set; } = true;
         public bool AutoStepRefreshEnabled { get; set; }
         public int AutoStepRefreshDelaySeconds { get; set; } = 30;
         public int AutoStepRefreshMaxTries { get; set; } = 3;
@@ -481,6 +482,22 @@ internal sealed class Configuration : IPluginConfiguration
                 stopPatch.Value<bool?>(nameof(StopConfiguration.RunCommandAfterStop)) is { } runCommand &&
                 runCommand != _stop.RunAfterProblemStop)
                 stopPatch[nameof(StopConfiguration.RunAfterProblemStop)] = runCommand;
+        }
+    }
+
+    // Claiming reward mail was saved as off while it had no setting; it is on by default now.
+    internal void TurnOnClaimMail()
+    {
+        _general.ClaimMail = true;
+
+        foreach (Dictionary<string, JObject> profile in Profiles.Values)
+        {
+            if (!profile.TryGetValue(nameof(General), out JObject? generalPatch))
+                continue;
+
+            generalPatch.Remove(nameof(GeneralConfiguration.ClaimMail));
+            if (!generalPatch.HasValues)
+                profile.Remove(nameof(General));
         }
     }
 

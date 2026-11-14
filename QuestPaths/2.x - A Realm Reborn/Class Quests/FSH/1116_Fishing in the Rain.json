@@ -113,7 +113,7 @@
           "InteractionType": "WalkTo"
         },
         {
-          "Comment": "Fish for 5x Raincaller\nThis fish is only available during Rain or Snow weather.\nAutohook will attempt to use Fish Eyes (Lv 57) if it is unlocked\nWill only autocast if either Fish Eyes is on or in the right weather",
+          "Comment": "Fish for 5x Raincaller\nThis fish is only available during Rain or Snow weather.",
           "TerritoryId": 132,
           "InteractionType": "Fish",
           "ItemsToGather": [

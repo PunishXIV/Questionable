@@ -459,6 +459,17 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             ImGuiComponents.HelpMarker(
                 _L("Between quests, Questionable fetches the free job gear for your current job from Grenoldt (level 80, The Tempest), Varsarudh (level 89, Old Sharlayan) or Mewazunte (level 99, Tuliyollal) once its shop is unlocked and the set beats what you wear, then equips your best gear. Each set is fetched once per character and job."));
 
+            bool claimMail = Configuration.General.ClaimMail;
+            if (ImGui.Checkbox(_L("Claim Mog Station and reward mail"), ref claimMail))
+            {
+                Configuration.General.ClaimMail = claimMail;
+                Save();
+            }
+
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker(
+                _L("Between quests, when Mog Station or reward mail is waiting, Questionable goes to a delivery moogle and has Mogmail claim it and delete the emptied letters. Mogmail's own Auto Pop setting decides whether claimed items get used. Needs the Mogmail plugin."));
+
             bool autoStepRefreshEnabled = Configuration.General.AutoStepRefreshEnabled;
             if (ImGui.Checkbox(_L("Retry the current step when stuck"), ref autoStepRefreshEnabled))
             {

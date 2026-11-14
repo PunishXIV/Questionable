@@ -1,7 +1,7 @@
 using Quest = Questionable.Domain.Quest;
 namespace Questionable.Controller.Steps.Shared;
 
-// Detours that can leave the zone (job gear, the Gysahl Greens restock) only start right before a quest is
+// Detours that can leave the zone (job gear, reward mail, the Gysahl Greens restock) only start right before a quest is
 // accepted: nothing is in progress, and planning the accept step again walks back to the quest giver.
 // A step with only a DataId never walks back (MoveTo waits for the object instead).
 internal static class BetweenQuests

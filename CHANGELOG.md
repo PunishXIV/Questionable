@@ -1,1 +1,27 @@
+- Feature: Questionable 2.0, rebuilt from the ground up -Kage
 - Feature: Configuration profiles -Kage
+- Feature: Quest on several characters in a row: tick characters (from AutoRetainer) in the Profiles tab, and when a stop condition is met Questionable logs in to the next one -Kage
+- Feature: Choose what happens when a run ends: run commands, travel somewhere with Lifestream, wait, then do nothing, log out or close the game -Kage
+  - Feature: A stop quest can switch to a priority preset and keep going instead of stopping -Kage
+- Feature: Community quest results: if you agree, Questionable shares whether each quest path worked, and the quest window and journal show how often a path worked for others ("19/20 worked") -Kage
+  - Feature: The ! button next to the quest buttons reports how a quest went, and a problem stop offers a "Send a report" link in chat -Kage
+- Feature: Collects the free job gear at levels 80, 89 and 99 between quests and puts on your best gear -Kage
+- Feature: Claims waiting Mog Station and reward mail at a delivery moogle between quests (needs Mogmail) -Kage
+- Feature: Keeps your chocobo companion out, and buys more Gysahl Greens when you run out (needs Knightshopper) -Kage
+- Feature: Retries the current step a few times when stuck before stopping -Kage
+- Feature: Duties without Duty Support open the Duty Finder or run unsynced; a slider sets how many levels above a duty you need to go unsynced -Kage
+- Feature: Journal Progress: XP and gil columns, saved filters, pinned headers and "Hide Completed Quests" -Kage
+- Feature: Priority Quests: a switch for whether priority quests interrupt the current one, "Change All to Normal Priority", an XP and gil total, Dawntrail tribe presets, field aether currents, "Unlock All Jobs" by level and "Add highest rank" for allied societies -Kage
+- Feature: Stop at the next aetheryte you attune to -Kage
+- Feature: "Redeem Reward Items" button in the quest window, and /qst redeem -Kage
+- Feature: Mentor Roulette section on the Unlocks tab: every duty in the roulette with the quest that unlocks it -Kage
+- Feature: /qst zone window: "Add all to Priority Quests" -Kage
+- Feature: /qst skipstep skips a step you finished by hand -Kage
+- Change: Other plugins now do more of the work: gathering through Gather & Chill, fishing through Feesh (WahTools) instead of AutoHook, buying quest items through Knightshopper, dungeons through AutoDuty and quest battles through Boss Mod's own modules -Kage
+- Change: The settings window is down to six tabs, and the Plugins tab lists every helper plugin in one table with install buttons and a button to open its settings -Kage
+- Change: Problems you can fix yourself show as plain chat messages instead of red errors -Kage
+- Change: Quest battles retry up to 5 times (a setting) -Kage
+- Change: Path-editing commands and menu items only show with Debug on -Kage
+- Change: Import and export of quest battle and duty settings removed -Kage
+- Bug fix: The quest window no longer opens by itself during a duty -Kage
+- Bug fix: No more stalls when Questionable has to dismount before talking to someone -Kage

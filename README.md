@@ -126,11 +126,32 @@ Pandora's Box is a tweak collection plugin. Questionable uses it for the "Auto A
 - ### [Artisan](https://github.com/PunishXIV/Artisan)
 Artisan is a plugin for automating crafting. Questionable uses it for quests that involve crafting.
 
-- ### [Autohook](https://github.com/PunishXIV/Autohook)
-Autohook is a plugin for automating fishing. Questionable uses it for quests that involve fishing.
+- ### [WahTools](https://git.wahapp.com/wah/WahTools)
+WahTools is a collection of tools, including Feesh for automated fishing. Questionable uses Feesh for quests that involve fishing.
 
-- ### [AutoDuty](https://github.com/ffxivcode/AutoDuty)
+- ### [Mogmail](https://github.com/Nexaii/Mogmail)
+Mogmail claims mail attachments in bulk. Between quests, Questionable uses it to claim waiting Mog Station and reward mail at a delivery moogle.
+
+- ### [AutoDuty](https://github.com/erdelf/AutoDuty)
 AutoDuty is a plugin that serves as a tool to assist in the creation and following of paths through dungeons and duties. Questionable uses it to automate the completion of duties that are required for certain quests.
+
+- ### [Gather & Chill](https://github.com/LeontopodiumNivale14/Gather-Chill)
+Gather & Chill is a plugin for automating gathering. Questionable uses it for quests that involve gathering.
+
+- ### [Knightshopper](https://github.com/Knightmore)
+Knightshopper is a plugin for buying items from shops. Questionable uses it to buy items that quests ask for. Allow Questionable in Knightshopper's IPC settings.
+
+- ### [Stylist](https://github.com/NightmareXIV/Stylist)
+Stylist is a plugin for managing gear. Questionable can use it to equip gear upgrades.
+
+- ### [NotificationMaster](https://github.com/NightmareXIV/NotificationMaster)
+NotificationMaster sends notifications outside the game, so you know when Questionable stops or needs you.
+
+- ### [SelectString](https://github.com/NightmareXIV/SelectString)
+SelectString lets you pick menu choices with number keys.
+
+- ### [QuestMap](https://github.com/GemPlugins/QuestMap)
+QuestMap lets you browse quests and their rewards.
 
 </section><br>
 
@@ -175,6 +196,10 @@ This can be done through `/xlplugins` in the chat.
 <td align="left">Opens the Questing window.</td>
 </tr>
 <tr>
+<td align="left"><code>/qst help</code></td>
+<td align="left">Lists all commands in chat.</td>
+</tr>
+<tr>
 <td align="left"><code>/qst config</code></td>
 <td align="left">Opens the Configuration window.</td>
 </tr>
@@ -187,6 +212,14 @@ This can be done through `/xlplugins` in the chat.
 <td align="left">Stops doing quests.</td>
 </tr>
 <tr>
+<td align="left"><code>/qst skipstep</code></td>
+<td align="left">Skips the current quest step, e.g. one you finished by hand.</td>
+</tr>
+<tr>
+<td align="left"><code>/qst next &lt;questId&gt;</code></td>
+<td align="left">Sets the next quest to do (clears it without a quest ID).</td>
+</tr>
+<tr>
 <td align="left"><code>/qst reload</code></td>
 <td align="left">Reloads all quests data.</td>
 </tr>
@@ -197,6 +230,34 @@ This can be done through `/xlplugins` in the chat.
 <tr>
 <td align="left"><code>/qst zone</code></td>
 <td align="left">Shows all quests starting with your current zone.<br> (<b>NOTE</b>: This only includes quests with a valid quest path and are currently visible &amp; unaccepted.)</td>
+</tr>
+<tr>
+<td align="left"><code>/qst journal</code></td>
+<td align="left">Opens the Journal Progress window: which quests Questionable supports.</td>
+</tr>
+<tr>
+<td align="left"><code>/qst priority</code></td>
+<td align="left">Opens the Priority window.</td>
+</tr>
+<tr>
+<td align="left"><code>/qst validation</code></td>
+<td align="left">Opens the Quest Validation window.</td>
+</tr>
+<tr>
+<td align="left"><code>/qst cleanup</code></td>
+<td align="left">Adds every quest you already have open to the priority list, finished ones first.</td>
+</tr>
+<tr>
+<td align="left"><code>/qst redeem</code></td>
+<td align="left">Redeems all reward items in your inventory.</td>
+</tr>
+<tr>
+<td align="left"><code>/qst handle-interrupt</code></td>
+<td align="left">Makes Questionable handle queued interrupts now, e.g. after you start combat yourself.</td>
+</tr>
+<tr>
+<td align="left"><code>/qst clearlog</code></td>
+<td align="left">Clears the quest completion log.</td>
 </tr>
 </tbody>
 </table>
