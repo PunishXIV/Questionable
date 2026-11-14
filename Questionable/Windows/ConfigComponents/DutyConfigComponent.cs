@@ -5,7 +5,6 @@ namespace Questionable.Windows.ConfigComponents;
 [RegisterSingleton]
 internal sealed class DutyConfigComponent : ConfigComponent
 {
-    private const string ClipboardPrefix = "qst:duty:";
     private readonly AutoDutyProvider _autoDuty;
     private readonly Dictionary<EExpansionVersion, List<DutyInfo>> _dutiesByExpansion;
     private bool _useAutoDuty;
@@ -57,7 +56,8 @@ internal sealed class DutyConfigComponent : ConfigComponent
         using var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
 
         _useAutoDuty = Configuration.Duties.RunInstancedContentWithAutoDuty;
-        if (ImGui.Checkbox(_L("Run instanced content with AutoDuty and BossMod"), ref _useAutoDuty))
+        // The old label stays as the ImGui ID.
+        if (ImGui.Checkbox(_L("Run duties with AutoDuty") + "###Run instanced content with AutoDuty and BossMod", ref _useAutoDuty))
         {
             Configuration.Duties.RunInstancedContentWithAutoDuty = _useAutoDuty;
             Save();
@@ -65,7 +65,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
         ImGui.SameLine();
         ImGuiComponents.HelpMarker(
-            _L("The combat module used for this is configured by AutoDuty, ignoring whichever selection you've made in Questionable's \"General\" configuration."));
+            _L("AutoDuty runs the duty with its own settings, including which rotation plugin to use. The combat plugin picked in General isn't used."));
 
         using (ImRaii.Disabled(!_useAutoDuty))
         {
@@ -99,22 +99,12 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
         using (ImRaii.Disabled(!_useAutoDuty))
         {
-            ImGui.Text(
-                _L("Questionable includes a default list of duties that work if AutoDuty and BossMod are installed."));
-
-
-            ImGui.Separator();
-            ImGui.Text(_L("You can override the settings for each individual dungeon/trial:"));
+            ImGui.TextUnformatted(
+                _L("Every duty with Duty Support runs by default. Set one to Disabled to do it yourself."));
 
             DrawConfigTable();
 
-            DrawEnableAllButton();
-            ImGui.SameLine();
             DrawResetButton(Configuration.Duties.WhitelistedDutyCfcIds, Configuration.Duties.BlacklistedDutyCfcIds);
-            if (_contentSize.X > 500)
-                ImGui.SameLine();
-            DrawClipboardButtons(ClipboardPrefix, Configuration.Duties.WhitelistedDutyCfcIds,
-                Configuration.Duties.BlacklistedDutyCfcIds);
         }
     }
 
@@ -131,10 +121,10 @@ internal sealed class DutyConfigComponent : ConfigComponent
     private void DrawExpansionSection(EExpansionVersion expansion)
     {
         (int enabledCount, int totalCount) = GetDutyCounts(expansion);
+        if (totalCount == 0)
+            return;
 
-        string headerText = totalCount > 0
-            ? $"{expansion.ToFriendlyString()} ({enabledCount}/{totalCount})"
-            : expansion.ToFriendlyString();
+        string headerText = $"{expansion.ToFriendlyString()} ({enabledCount}/{totalCount})";
 
         string expansionKey = expansion.ToString();
         bool wasOpen = Configuration.Duties.ExpansionHeaderStates.GetValueOrDefault(expansionKey, defaultValue: false);
@@ -275,29 +265,6 @@ internal sealed class DutyConfigComponent : ConfigComponent
         }
 
         return (enabledCount, totalCount);
-    }
-
-    private void DrawEnableAllButton()
-    {
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.CheckCircle, _L("Enable All")))
-        {
-            Configuration.Duties.BlacklistedDutyCfcIds.Clear();
-            Configuration.Duties.WhitelistedDutyCfcIds.Clear();
-
-            foreach (List<DutyInfo> duties in _dutiesByExpansion.Values)
-            {
-                foreach ((uint cfcId, uint _, string _, EContentType _) in duties)
-                {
-                    if (_questRegistry.TryGetDutyByCfcId(cfcId, out DutyOptions? _))
-                        Configuration.Duties.WhitelistedDutyCfcIds.Add(cfcId);
-                }
-            }
-
-            Save();
-        }
-
-        if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Enable all of the duties, use at your own risk."));
     }
 
     private sealed record DutyInfo(uint CfcId, uint TerritoryId, string Name, EContentType ContentType);

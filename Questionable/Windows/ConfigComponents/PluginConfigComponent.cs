@@ -137,7 +137,7 @@ internal sealed class PluginConfigComponent
             "/feesh"),
         new("CBT (formerly known as Automaton)",
             "Automaton",
-            _L("Automaton is a collection of automation-related tweaks."),
+            _L("CBT is a collection of automation-related tweaks."),
             new("https://github.com/Jaksuhn/Automaton"),
             new("https://puni.sh/api/repository/croizat"),
             "/cbt",
@@ -188,9 +188,12 @@ internal sealed class PluginConfigComponent
             "/quests"),
     ];
 
+    internal bool IsOpen { get; private set; }
+
     public override void DrawTab()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Dependencies") + "###Plugins");
+        IsOpen = tab;
         if (!tab)
             return;
 
@@ -222,7 +225,7 @@ internal sealed class PluginConfigComponent
 
         allRequiredInstalled = !HasMissingRequiredPlugins() && IsCombatPluginReady();
         ImGui.SetNextItemOpen(isOpen: true, ImGuiCond.Once);
-        if (QstWidgets.SectionHeader(_L("Required plugins:"), "RequiredPlugins", defaultOpen: false))
+        if (QstWidgets.SectionHeader(_L("Required plugins"), "RequiredPlugins", defaultOpen: false))
         {
             using (ImRaii.PushIndent())
             {
@@ -232,7 +235,7 @@ internal sealed class PluginConfigComponent
             }
         }
 
-        if (QstWidgets.SectionHeader(_L("Rotation/Automation plugins:"), "RotationPlugins", defaultOpen: true))
+        if (QstWidgets.SectionHeader(_L("Rotation/Automation plugins"), "RotationPlugins", defaultOpen: true))
         {
             using (ImRaii.Disabled(_combatController.IsRunning))
             {
@@ -257,7 +260,7 @@ internal sealed class PluginConfigComponent
             }
         }
 
-        if (QstWidgets.SectionHeader(_L("Recommended/niche plugins:"), "NichePlugins", defaultOpen: false))
+        if (QstWidgets.SectionHeader(_L("Recommended/niche plugins"), "NichePlugins", defaultOpen: false))
         {
             using (ImRaii.PushIndent())
             {

@@ -9,7 +9,6 @@ namespace Questionable.Windows.ConfigComponents;
 [RegisterSingleton]
 internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
 {
-    private const string ClipboardPrefix = "qst:single:";
 
     private static readonly List<(Job ClassJob, string Name)> RoleQuestCategories =
     [
@@ -22,7 +21,6 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
     private Vector2 _contentSize;
 
 #if false
-    private readonly string[] _retryDifficulties = [_L("Normal"), _L("Easy"), _L("Very Easy")];
 #endif
 
     private readonly TerritoryData _territoryData;
@@ -246,30 +244,9 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
             Save();
         }
 
-        using (ImRaii.PushIndent(ImGui.GetFrameHeight() + ImGui.GetStyle().ItemInnerSpacing.X))
-        {
-            using (_ = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Danger))
-            {
-                ImGui.TextUnformatted(_L("Notes:"));
-                ImGui.BulletText(_L("Will always use BossMod for combat (ignoring the configured combat module)."));
-                ImGui.BulletText(_L("Retries after a failed attempt always start at 'Very Easy' difficulty. The first attempt may start at 'Normal'."));
-                ImGui.BulletText(_L("BossMod forks (such as Reborn) are NOT COMPATIBLE with Questionable."));
-            }
-
-#if false
-            using (ImRaii.Disabled(!useBossMod))
-            {
-                ImGui.Spacing();
-                int retryDifficulty = Configuration.SinglePlayerDuties.RetryDifficulty;
-                if (ImGui.Combo(_L("Difficulty when retrying a quest battle"), ref retryDifficulty, _retryDifficulties,
-                        _retryDifficulties.Length))
-                {
-                    Configuration.SinglePlayerDuties.RetryDifficulty = (byte)retryDifficulty;
-                    Save();
-                }
-            }
-#endif
-        }
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(
+            _L("BossMod fights every quest battle, whichever combat plugin you picked in General. BossMod forks (such as Reborn) don't work with Questionable."));
 
         using (ImRaii.Disabled(!useBossMod))
         {
@@ -279,6 +256,9 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
                 Configuration.SinglePlayerDuties.RetryOnFailure = retryOnFailure;
                 Save();
             }
+
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker(_L("Retries start at 'Very Easy'. The first attempt may start at 'Normal'."));
 
             using (ImRaii.Disabled(!retryOnFailure))
             using (ImRaii.PushIndent())
@@ -297,13 +277,8 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
 
         using (ImRaii.Disabled(!useBossMod))
         {
-            ImGui.Text(
-                _L("Questionable includes a default list of quest battles that work if BossMod is installed."));
-            ImGui.Text(_L("The included list of quest battles can change with each update."));
-
-            ImGui.Separator();
-            ImGui.Text(_L("You can override the settings for each individual quest battle:"));
-
+            ImGui.TextUnformatted(
+                _L("Questionable comes with a list of quest battles that work with BossMod, and updates can change it. Set a quest battle to Enabled or Disabled to override the list."));
 
             using ImRaii.TabBarDisposable tabBar = ImRaii.TabBar("QuestionableConfigTabs");
             if (tabBar)
@@ -317,10 +292,6 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
             DrawEnableAllButton();
             ImGui.SameLine();
             DrawResetButton(Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds,
-                Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds);
-            if (_contentSize.X > 500)
-                ImGui.SameLine();
-            DrawClipboardButtons(ClipboardPrefix, Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds,
                 Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds);
         }
     }

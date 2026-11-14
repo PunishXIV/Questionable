@@ -294,7 +294,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool LevelToStopAfter { get; set; }
         public int TargetLevel { get; set; } = 50;
         public bool RunCommandAfterStop { get; set; }
-        public string CommandAfterStop { get; set; } = "/li auto";
+        public string CommandAfterStop { get; set; } = "";
         public bool RemoveWhenCompleteConditionMet { get; set; }
         public bool RunAfterProblemStop { get; set; }
         public EEndAction EndAction { get; set; }

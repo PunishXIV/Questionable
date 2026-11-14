@@ -175,11 +175,7 @@ internal sealed class StopConditionComponent : ConfigComponent
                 Save();
             }
             if (ImGui.IsItemDeactivatedAfterEdit())
-            {
-                if (string.IsNullOrWhiteSpace(Configuration.Stop.CommandAfterStop))
-                    Configuration.Stop.CommandAfterStop = "/li auto";
                 Save();
-            }
             ImGuiComponentsLocal.HelpMarker(
                 _L("Press Enter for another command, one per line. Plugin commands and game commands both work. Never runs after these stops:"),
                 QuestStopPolicy.ExcludedStopReasons.ToArray());

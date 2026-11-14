@@ -17,6 +17,7 @@ internal sealed class ConfigWindow
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly QuestBattleConfigComponent _questBattleConfig;
     private readonly StopConditionComponent _stopConditionComponent;
+    private bool _hideProfileBanner;
 
     public ConfigWindow(
     IDalamudPluginInterface pluginInterface,
@@ -76,7 +77,7 @@ internal sealed class ConfigWindow
 
     public override void DrawContent()
     {
-        if (_configuration.Profiles.Count > 0)
+        if (_configuration.Profiles.Count > 0 && !_hideProfileBanner)
         {
             if (_configuration.ActiveProfileName is { } profileName)
                 ImGui.TextColored(QstTheme.Amber, _LF("Editing profile '{0}': changes only apply to this profile.", profileName));
@@ -97,9 +98,15 @@ internal sealed class ConfigWindow
         _notificationConfigComponent.DrawTab();
         _pluginConfigComponent.DrawTab();
         _debugConfigComponent.DrawTab();
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("About") + "###QuestionableConfigTabs");
-        if (!tab)
-            return;
-        AboutTab.Draw("Questionable");
+        bool aboutOpen;
+        using (ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("About") + "###QuestionableConfigTabs"))
+        {
+            aboutOpen = tab;
+            if (tab)
+                AboutTab.Draw("Questionable");
+        }
+
+        // Neither tab holds profile settings. The tab is only known after drawing, so this lags one frame.
+        _hideProfileBanner = aboutOpen || _pluginConfigComponent.IsOpen;
     }
 }

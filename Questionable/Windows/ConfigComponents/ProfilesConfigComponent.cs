@@ -21,10 +21,13 @@ internal sealed class ProfilesConfigComponent
         ImGui.TextWrapped(_L("A profile lets a character use different settings. It only stores what you change while editing it; everything else follows the default settings."));
         ImGui.Separator();
 
+        ImGui.TextColored(QstTheme.Accent, _L("This character"));
         DrawCharacterProfile();
         ImGui.Separator();
+        ImGui.TextColored(QstTheme.Accent, _L("Edit a profile"));
         DrawEditedProfile();
         ImGui.Separator();
+        ImGui.TextColored(QstTheme.Accent, _L("New profile"));
         DrawCreateProfile();
     }
 

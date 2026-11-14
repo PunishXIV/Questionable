@@ -51,7 +51,7 @@ internal sealed class DebugConfigComponent
 
         string displayName = Configuration.General.DisplayName;
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X / 2);
-        if (ImGui.InputText(_L("Display name"), ref displayName, 20))
+        if (ImGui.InputText(_L("Author name for quest paths") + "###Display name", ref displayName, 20))
             Configuration.General.DisplayName = displayName;
 
         if (ImGui.IsItemDeactivatedAfterEdit())

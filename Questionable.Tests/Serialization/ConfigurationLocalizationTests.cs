@@ -231,65 +231,6 @@ public sealed class ConfigurationLocalizationTests
     }
 }
 
-public sealed class ConfigComponentTests
-{
-    private const string Saved = "qst:duty:KzE7KzI7LTM=";
-
-    [Fact]
-    public void Export_KeepsSavedFormat()
-    {
-        Assert.Equal(Saved, ConfigComponent.ExportCfcIds("qst:duty:", [1, 2], [3]));
-    }
-
-    [Fact]
-    public void Decode_ReadsSavedFormat()
-    {
-        Assert.Equal("+1;+2;-3", ConfigComponent.DecodeCfcIds(Saved, "qst:duty:"));
-    }
-
-    [Fact]
-    public void Decode_BadBase64_ReturnsNull()
-    {
-        Assert.Null(ConfigComponent.DecodeCfcIds("qst:duty:!!!", "qst:duty:"));
-    }
-
-    [Fact]
-    public void Decode_PrefixOnly_ReturnsNull()
-    {
-        Assert.Null(ConfigComponent.DecodeCfcIds("qst:duty:", "qst:duty:"));
-    }
-
-    [Fact]
-    public void Decode_OtherPrefix_ReturnsNull()
-    {
-        Assert.Null(ConfigComponent.DecodeCfcIds(Saved, "qst:single:"));
-    }
-
-    [Fact]
-    public void Import_ReplacesBothLists()
-    {
-        HashSet<uint> whitelisted = [7];
-        HashSet<uint> blacklisted = [8];
-
-        ConfigComponent.ImportCfcIds("+1;+2;-3", whitelisted, blacklisted);
-
-        Assert.Equal([1u, 2u], whitelisted);
-        Assert.Equal([3u], blacklisted);
-    }
-
-    [Fact]
-    public void Import_SkipsUnreadableParts()
-    {
-        HashSet<uint> whitelisted = [];
-        HashSet<uint> blacklisted = [];
-
-        ConfigComponent.ImportCfcIds("+abc;-;+4;x5;-6;;+4294967296", whitelisted, blacklisted);
-
-        Assert.Equal([4u], whitelisted);
-        Assert.Equal([6u], blacklisted);
-    }
-}
-
 public sealed class GeneralConfigComponentTests
 {
     [Fact]

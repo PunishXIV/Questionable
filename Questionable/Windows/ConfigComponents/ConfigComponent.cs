@@ -1,12 +1,7 @@
-using System.Text;
 namespace Questionable.Windows.ConfigComponents;
 
 internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface, Configuration configuration)
 {
-    private const char DutyClipboardSeparator = ';';
-    private const char DutyWhitelistPrefix = '+';
-    private const char DutyBlacklistPrefix = '-';
-
     private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
 
     protected readonly string[] SupportedCfcOptions =
@@ -100,27 +95,6 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
             ImGui.BulletText(note);
     }
 
-    protected void DrawClipboardButtons(string prefix, HashSet<uint> whitelisted, HashSet<uint> blacklisted)
-    {
-        using (ImRaii.Disabled(whitelisted.Count + blacklisted.Count == 0))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Copy, _L("Export to clipboard")))
-                ImGui.SetClipboardText(ExportCfcIds(prefix, whitelisted, blacklisted));
-        }
-
-        ImGui.SameLine();
-
-        string? decoded = DecodeCfcIds(ImGui.GetClipboardText().Trim(), prefix);
-        using (ImRaii.Disabled(decoded == null))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Paste, _L("Import from Clipboard")))
-            {
-                ImportCfcIds(decoded!, whitelisted, blacklisted);
-                Save();
-            }
-        }
-    }
-
     protected void DrawResetButton(HashSet<uint> whitelisted, HashSet<uint> blacklisted)
     {
         using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
@@ -135,45 +109,5 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
             ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
-    }
-
-    internal static string ExportCfcIds(string prefix, HashSet<uint> whitelisted, HashSet<uint> blacklisted)
-    {
-        IEnumerable<string> white = whitelisted.Select(x => $"{DutyWhitelistPrefix}{x}");
-        IEnumerable<string> black = blacklisted.Select(x => $"{DutyBlacklistPrefix}{x}");
-        return prefix + Convert.ToBase64String(Encoding.UTF8.GetBytes(
-            string.Join(DutyClipboardSeparator, white.Concat(black))));
-    }
-
-    internal static string? DecodeCfcIds(string clipboardText, string prefix)
-    {
-        if (!clipboardText.StartsWith(prefix, StringComparison.InvariantCulture))
-            return null;
-
-        string encoded = clipboardText.Substring(prefix.Length);
-        byte[] bytes = new byte[encoded.Length];
-        return Convert.TryFromBase64String(encoded, bytes, out int length) && length > 0
-            ? Encoding.UTF8.GetString(bytes, 0, length)
-            : null;
-    }
-
-    internal static void ImportCfcIds(string text, HashSet<uint> whitelisted, HashSet<uint> blacklisted)
-    {
-        whitelisted.Clear();
-        blacklisted.Clear();
-        foreach (string part in text.Split(DutyClipboardSeparator))
-        {
-            if (part.StartsWith(DutyWhitelistPrefix) &&
-                uint.TryParse(part.AsSpan(1), CultureInfo.InvariantCulture, out uint whitelistedCfcId))
-            {
-                whitelisted.Add(whitelistedCfcId);
-            }
-
-            if (part.StartsWith(DutyBlacklistPrefix) &&
-                uint.TryParse(part.AsSpan(1), CultureInfo.InvariantCulture, out uint blacklistedCfcId))
-            {
-                blacklisted.Add(blacklistedCfcId);
-            }
-        }
     }
 }

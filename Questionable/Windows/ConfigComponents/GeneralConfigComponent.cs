@@ -233,7 +233,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         {
             EGearsetUpdateSource gearsetSource = Configuration.General.GearsetUpdateSource;
             ImGui.SetNextItemWidth(size.X / 2);
-            if (ImGuiEx.EnumCombo(_L("Preferred Gear Upgrade Source"), ref gearsetSource))
+            if (ImGuiEx.EnumCombo(_L("Equip gear with") + "###Preferred Gear Upgrade Source", ref gearsetSource))
             {
                 Configuration.General.GearsetUpdateSource = gearsetSource;
                 Save();
@@ -265,28 +265,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 ImGui.Text(_L("Generates a random name if invalid or left blank."));
             }
         }
-
-        bool summonChocobo = Configuration.General.SummonChocobo;
-        if (ImGui.Checkbox(_L("Keep your chocobo companion out"), ref summonChocobo))
-        {
-            Configuration.General.SummonChocobo = summonChocobo;
-            Save();
-        }
-
-        ImGui.SameLine();
-        ImGuiComponents.HelpMarker(
-            _L("Uses Gysahl Greens in the open world when your chocobo isn't out or has under five minutes left. Needs 'My Feisty Little Chocobo' done. When you run out of Gysahl Greens, Knightshopper buys 99 more. Pandora's Box \"Auto-Summon Chocobo\" stays paused while Questionable runs."));
-
-        bool collectJobGear = Configuration.General.CollectJobGear;
-        if (ImGui.Checkbox(_L("Collect free job gear"), ref collectJobGear))
-        {
-            Configuration.General.CollectJobGear = collectJobGear;
-            Save();
-        }
-
-        ImGui.SameLine();
-        ImGuiComponents.HelpMarker(
-            _L("Between quests, Questionable fetches the free job gear for your current job from Grenoldt (level 80, The Tempest), Varsarudh (level 89, Old Sharlayan) or Mewazunte (level 99, Tuliyollal) once its shop is unlocked and the set beats what you wear, then equips your best gear. Each set is fetched once per character and job."));
     }
 
     private void DrawUi()
@@ -420,7 +398,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 bool dontSkipCutscenes = Configuration.General.DontSkipCutscenes;
                 using (ImRaii.PushIndent())
                 {
-                    if (ImGui.Checkbox(_L("but don't skip cutscenes or dialogue"), ref dontSkipCutscenes))
+                    if (ImGui.Checkbox(_L("Don't skip cutscenes or dialogue") + "###but don't skip cutscenes or dialogue", ref dontSkipCutscenes))
                     {
                         Configuration.General.DontSkipCutscenes = dontSkipCutscenes;
                         Save();
@@ -484,6 +462,28 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Configuration.General.IgnoreNextQuestIfPrioSet = ignoreNextQuestIfPrioSet;
                 Save();
             }
+
+            bool summonChocobo = Configuration.General.SummonChocobo;
+            if (ImGui.Checkbox(_L("Keep your chocobo companion out"), ref summonChocobo))
+            {
+                Configuration.General.SummonChocobo = summonChocobo;
+                Save();
+            }
+
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker(
+                _L("Uses Gysahl Greens in the open world when your chocobo isn't out or has under five minutes left. Needs 'My Feisty Little Chocobo' done. When you run out of Gysahl Greens, Knightshopper buys 99 more. Pandora's Box \"Auto-Summon Chocobo\" stays paused while Questionable runs."));
+
+            bool collectJobGear = Configuration.General.CollectJobGear;
+            if (ImGui.Checkbox(_L("Collect free job gear"), ref collectJobGear))
+            {
+                Configuration.General.CollectJobGear = collectJobGear;
+                Save();
+            }
+
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker(
+                _L("Between quests, Questionable fetches the free job gear for your current job from Grenoldt (level 80, The Tempest), Varsarudh (level 89, Old Sharlayan) or Mewazunte (level 99, Tuliyollal) once its shop is unlocked and the set beats what you wear, then equips your best gear. Each set is fetched once per character and job."));
 
             bool autoStepRefreshEnabled = Configuration.General.AutoStepRefreshEnabled;
             if (ImGui.Checkbox(_L("Retry the current step when stuck"), ref autoStepRefreshEnabled))
