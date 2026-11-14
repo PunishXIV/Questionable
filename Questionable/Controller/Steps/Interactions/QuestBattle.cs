@@ -224,7 +224,8 @@ internal static class QuestBattle
         RetryCounter retryCounter,
         Configuration configuration,
         ILogger<WaitForOutcomeExecutor> logger,
-        IQuestGameState gameState)
+        IQuestGameState gameState,
+        QuestReporter reporter)
         : TaskExecutor<WaitForOutcome>, IDebugStateProvider
     {
         private static readonly TimeSpan GracePeriod = TimeSpan.FromSeconds(15);
@@ -277,6 +278,7 @@ internal static class QuestBattle
                         : _LF("Stopped: the quest battle failed {0} times. Try it manually, and report it if it keeps failing.", failures),
                     CommandHandler.MessageTag, CommandHandler.TagColor);
                 retryCounter.Clear();
+                reporter.Problem(EProblemKind.QuestBattle);
                 return ETaskResult.End;
             }
 

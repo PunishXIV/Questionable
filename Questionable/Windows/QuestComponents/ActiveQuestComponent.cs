@@ -33,6 +33,7 @@ internal sealed partial class ActiveQuestComponent
     CreationUtilsComponent creationUtilsComponent,
     ClassJobUtils classJobUtils,
     GameIcons gameIcons,
+    QuestReporter questReporter,
     ILogger<ActiveQuestComponent> logger)
 {
     [GeneratedRegex(@"\s\s+", RegexOptions.IgnoreCase, matchTimeoutMilliseconds: 1000, "en-US")]
@@ -96,19 +97,57 @@ internal sealed partial class ActiveQuestComponent
                 ImGui.SetTooltip(inDuty ? _L("Ask the game to leave this duty") : _L("Ask the game to abandon this quest"));
         }
 
-#if REPORTING
-        if (!configuration.General.ReportsDisabled)
+        if (currentQuest != null)
         {
-            Vector4? reportButtonColor = configuration.General.DismissedReportWarning ? null : QstTheme.Danger;
             ImGui.SameLine();
-            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle, reportButtonColor))
-            {
-            }
-
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle))
+                ImGui.OpenPopup("##QuestReport");
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip("Report issue to QST developers");
+                ImGui.SetTooltip(_L("Report how this quest's path went"));
+            DrawReportPopup(currentQuest);
         }
-#endif
+    }
+
+    private void DrawReportPopup(QuestController.QuestProgress currentQuest)
+    {
+        using ImRaii.PopupDisposable popup = ImRaii.Popup("##QuestReport");
+        if (!popup)
+            return;
+
+        ImGui.TextColored(QstTheme.TextMuted, _L("How did this quest's path go?"));
+        ImGui.Separator();
+        (EProblemKind? Kind, string Label)[] choices =
+        [
+            (null, _L("It worked")),
+            (EProblemKind.Stuck, _L("Got stuck")),
+            (EProblemKind.WrongTarget, _L("Wrong target or NPC")),
+            (EProblemKind.QuestBattle, _L("Quest battle failed")),
+            (EProblemKind.MissingPath, _L("A step is missing")),
+            (EProblemKind.Other, _L("Something else")),
+        ];
+        foreach ((EProblemKind? kind, string label) in choices)
+        {
+            if (!ImGui.MenuItem(label))
+                continue;
+
+            chatGui.Print(questReporter.SendManual(currentQuest, kind, questController.RecentTasks)
+                    ? _L("Thanks, your report was sent.")
+                    : _L("This quest can't be reported: its path isn't from Questionable's published path data."),
+                CommandHandler.MessageTag, CommandHandler.TagColor);
+        }
+    }
+
+    private void DrawCommunityChip(Quest quest)
+    {
+        if (questReporter.CountsFor(quest) is not { } counts)
+            return;
+
+        ImGui.SameLine();
+        QstWidgets.Chip(_LF("{0}/{1} worked", counts.Worked, counts.Total),
+            QstTheme.ForRate(counts.Worked, counts.Total));
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip(_LF("Community reports for this quest's current path: {0} of {1} runs worked.",
+                counts.Worked, counts.Total));
     }
 
     private void DrawCharacterRun()
@@ -422,6 +461,7 @@ internal sealed partial class ActiveQuestComponent
 
         DrawPatchChip(currentQuest);
         DrawStepChips(metaSequence, currentQuest.Step);
+        DrawCommunityChip(currentQuest.Quest);
 
         if (configuration.Advanced.Debug)
         {

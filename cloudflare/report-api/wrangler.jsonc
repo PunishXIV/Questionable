@@ -1,0 +1,47 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "qst-reports",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-11-01",
+	"workers_dev": true,
+	"preview_urls": false,
+	"observability": {
+		"enabled": true,
+		"logs": {
+			"enabled": true,
+			"head_sampling_rate": 1
+		}
+	},
+	// Daily clean-up of old reports.
+	"triggers": {
+		"crons": [
+			"17 3 * * *"
+		]
+	},
+	"ratelimits": [
+		{
+			"name": "REPORT_IP_LIMITER",
+			"namespace_id": "2001",
+			"simple": {
+				"limit": 30,
+				"period": 60
+			}
+		},
+		{
+			"name": "ADMIN_IP_LIMITER",
+			"namespace_id": "2002",
+			"simple": {
+				"limit": 30,
+				"period": 60
+			}
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "qst-reports",
+			"database_id": "6470f0a2-6c98-473d-a46b-f934c69d2fc2",
+			"migrations_dir": "migrations"
+		}
+	]
+}

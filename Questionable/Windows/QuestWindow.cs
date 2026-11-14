@@ -149,13 +149,12 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     {
         try
         {
-#if REPORTING
-            if (!_configuration.General.DismissedReportWarning)
+            if (_configuration.Reports.Share == null)
             {
                 _reportWarningComponent.Draw();
                 ImGui.Separator();
             }
-#endif
+
             string notice = "";
             if (_bossModIpc.IsRebornInstalled())
                 notice = _L("Questionable is not compatible with BossMod Reborn!");

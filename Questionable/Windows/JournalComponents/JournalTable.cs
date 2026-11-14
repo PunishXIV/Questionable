@@ -11,6 +11,7 @@ internal sealed class JournalTable(
     QuestValidator questValidator,
     QuestController questController,
     RedoUtil redoUtil,
+    QuestReporter questReporter,
     Configuration configuration)
 {
     private const int StaleDays = 7;
@@ -273,6 +274,14 @@ internal sealed class JournalTable(
                 if (uiUtils.ChecklistItem(lastChecked, complete: false))
                     ImGui.SetTooltip(_L("This quest is not yet supported.") + addendum);
                 break;
+        }
+
+        if (quest != null && questReporter.CountsFor(quest) is { } counts)
+        {
+            ImGui.SameLine();
+            ImGui.TextColored(QstTheme.ForRate(counts.Worked, counts.Total), $"{counts.Worked}/{counts.Total}");
+            if (ImGui.IsItemHovered())
+                ImGui.SetTooltip(_LF("Community reports for this path: {0} of {1} runs worked.", counts.Worked, counts.Total));
         }
 
         if (configuration.Stop.QuestsToStopWhenAccepted.Contains(questInfo.QuestId) ||

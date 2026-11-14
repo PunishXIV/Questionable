@@ -16,6 +16,7 @@ internal sealed class QuestJournalUtils
     MovementController movementController,
     IGameGui gameGui,
     PathEditorWindow pathEditorWindow,
+    QuestReportsWindow questReportsWindow,
     RedoUtil redoUtil,
     DraftQuestPathService draftQuestPathService)
 {
@@ -187,6 +188,9 @@ internal sealed class QuestJournalUtils
         {
             if (ImGui.MenuItem(_L("Open in Path Editor")))
                 pathEditorWindow.Open(questInfo.QuestId);
+
+            if (configuration.Reports.AdminToken.Length > 0 && ImGui.MenuItem(_L("Community reports")))
+                questReportsWindow.Open(questInfo);
 
             if (ImGui.MenuItem(_L("Edit quest path")))
                 (bool success, string filename) = QuestRegistry.OpenEditor(questInfo);

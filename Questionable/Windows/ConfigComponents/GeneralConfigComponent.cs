@@ -145,38 +145,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
         DrawUi();
 
-#if REPORTING
-        ImGui.Separator();
-        ImGui.Text(_L("Bug Report"));
-        using (ImRaii.PushIndent())
-        {
-            bool reportOptOut = Configuration.General.ReportsDisabled;
-            if (ImGui.Checkbox(_L("Opt out of bug reports"), ref reportOptOut))
-            {
-                Configuration.General.ReportsDisabled = reportOptOut;
-                Configuration.General.DismissedReportWarning = true;
-                Save();
-            }
-
-            bool dismissedReportWarning = Configuration.General.DismissedReportWarning;
-            if (ImGui.Checkbox(_L("Hide Report warning"), ref dismissedReportWarning))
-            {
-                Configuration.General.DismissedReportWarning = dismissedReportWarning;
-                Save();
-            }
-
-            if (!reportOptOut)
-            {
-                string reportMessage = Configuration.General.ReportMessage;
-                if (ImGui.InputText(_L("Report message"), ref reportMessage, 256))
-                {
-                    Configuration.General.ReportMessage = reportMessage;
-                    Save();
-                }
-            }
-        }
-#endif
-
         DrawQuesting();
 
         DrawOptionalQuests();
@@ -533,6 +501,16 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     Save();
                 }
             }
+
+            bool shareResults = Configuration.Reports.Share == true;
+            if (ImGui.Checkbox(_L("Share quest results to help fix paths"), ref shareResults))
+            {
+                Configuration.Reports.Share = shareResults;
+                Save();
+            }
+
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker(_L("After each quest Questionable runs, it sends whether the path worked. If it stopped, also the step, what went wrong, plugin versions and its last ten actions. Never your character's name, account or IP address. Kept for 180 days."));
         }
     }
 
@@ -704,6 +682,16 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(_L("Downloads newer quest/gathering paths without needing a full plugin update."));
+
+            bool showCounts = Configuration.Reports.ShowCounts;
+            if (ImGui.Checkbox(_L("Show community quest results"), ref showCounts))
+            {
+                Configuration.Reports.ShowCounts = showCounts;
+                Save();
+            }
+
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker(_LF("Downloads how often each quest's path worked for other players, shown from {0} reports. Sends nothing about you.", QuestReporter.MinReports));
 
             if (ImGui.Button(_L("Check for path updates now")))
                 _pathDataUpdater.CheckForUpdatesManually();

@@ -36,6 +36,7 @@ internal sealed class Configuration : IPluginConfiguration
     public PriorityConfiguration Priority { get; } = new();
     public CharacterConfiguration Characters { get; } = new();
     public JobGearConfiguration JobGear { get; } = new();
+    public ReportConfiguration Reports { get; } = new();
     public PathDataConfiguration PathData { get; } = new();
     public JournalConfiguration Journal { get; } = new();
     public int Version { get; set; } = PluginConfigVersion;
@@ -272,9 +273,6 @@ internal sealed class Configuration : IPluginConfiguration
         public bool SameJobThroughoutQuest { get; set; }
         public bool IgnoreNextQuestIfPrioSet { get; set; }
         public bool TitleBarPillCenter { get; set; } = true;
-        public bool DismissedReportWarning { get; set; }
-        public bool ReportsDisabled { get; set; }
-        public string ReportMessage { get; set; } = "";
         public bool ClaimMail { get; set; }
         public bool AutoStepRefreshEnabled { get; set; }
         public int AutoStepRefreshDelaySeconds { get; set; } = 30;
@@ -317,6 +315,16 @@ internal sealed class Configuration : IPluginConfiguration
             if (preset != null)
                 PresetsAfterQuest.Add(new StopPreset { QuestId = id, Preset = preset });
         }
+    }
+
+    // Outside the profiles: the player's answer and the admin token belong to this install.
+    internal sealed class ReportConfiguration
+    {
+        // Null until the player answered the one-time question.
+        public bool? Share { get; set; }
+        public bool ShowCounts { get; set; } = true;
+        public string AdminToken { get; set; } = string.Empty;
+        public bool ReportProjectPaths { get; set; }
     }
 
     // Outside the profile sections, so each character keeps its own record.

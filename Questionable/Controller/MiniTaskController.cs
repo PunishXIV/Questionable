@@ -194,11 +194,20 @@ internal abstract class MiniTaskController<T> : IDisposable
         }
     }
 
+    // Created on first use: tests build controllers without running constructors.
+    private Queue<string>? _recentTasks;
+
+    // The last few started tasks, for problem reports.
+    internal IReadOnlyList<string> RecentTasks => _recentTasks is { } tasks ? [.. tasks] : [];
+
     private void StartTask(ITask task)
     {
         try
         {
             _logger.LogInformation("Starting task {TaskName}", task.ToString());
+            (_recentTasks ??= new()).Enqueue(task.ToString() ?? string.Empty);
+            while (_recentTasks.Count > 10)
+                _recentTasks.Dequeue();
             ITaskExecutor taskExecutor = _serviceProvider.GetRequiredKeyedService<ITaskExecutor>(task.GetType());
             if (!_taskQueue.StartTask(taskExecutor, task))
                 _logger.LogTrace("Task {TaskName} was skipped", task.ToString());

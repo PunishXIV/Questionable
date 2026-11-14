@@ -383,12 +383,22 @@ internal sealed class PluginConfigComponent
                 sameLine = true;
             }
 
-            if (plugin.ConfigCommand is { } command && command.StartsWith('/'))
+            // Without a known command, ask the plugin itself to open its settings (or its main window).
+            bool hasCommand = plugin.ConfigCommand is { } command && command.StartsWith('/');
+            if (hasCommand || installedPlugin!.HasConfigUi || installedPlugin.HasMainUi)
             {
                 if (sameLine)
                     ImGui.SameLine();
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Cog, allDetailsOk ? null : QstTheme.Accent))
-                    _commandManager.ProcessCommand(command);
+                {
+                    if (hasCommand)
+                        _commandManager.ProcessCommand(plugin.ConfigCommand!);
+                    else if (installedPlugin!.HasConfigUi)
+                        installedPlugin.OpenConfigUi();
+                    else
+                        installedPlugin!.OpenMainUi();
+                }
+
                 if (ImGui.IsItemHovered())
                     ImGui.SetTooltip(_L("Open Config"));
             }

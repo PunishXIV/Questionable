@@ -98,7 +98,7 @@ internal sealed class PathEditorWindow : LWindow
 
         using (ImRaii.Disabled(!_session.Dirty || _session.Info == null || _session.WorkingRoot == null))
         {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Save, _L("Save"), QstTheme.Success))
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Save, _L("Save"), QstTheme.SuccessButton))
                 Save();
         }
 

@@ -16,6 +16,7 @@ internal static class QstTheme
     public static readonly Vector4 Info = Rgb(111, 174, 230);
     public static readonly Vector4 Special = Rgb(181, 144, 232);
     public static readonly Vector4 SpecialButton = Rgb(112, 72, 180);
+    public static readonly Vector4 SuccessButton = Rgb(44, 122, 70);
 
     private static readonly Vector4 ThemeText = Rgb(224, 224, 224);
     private static readonly Vector4 ThemeTextMuted = Rgb(156, 163, 175);
@@ -51,6 +52,9 @@ internal static class QstTheme
     public static readonly Vector4 RaisedActive = Rgb(88, 88, 88);
 
     public static Vector4 WithAlpha(Vector4 color, float alpha) => color with { W = alpha };
+
+    public static Vector4 ForRate(int worked, int total) =>
+        ((float)worked / total) switch { >= 0.8f => Success, >= 0.5f => Amber, _ => Danger };
 
     public static uint ToU32(Vector4 color) => ImGui.ColorConvertFloat4ToU32(color);
 

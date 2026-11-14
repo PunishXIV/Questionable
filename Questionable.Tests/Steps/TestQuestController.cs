@@ -33,6 +33,8 @@ internal static class TestQuestController
         Set(controller, "_stuckWatch", new StuckWatch());
         Set(controller, "_stopPolicy", stopPolicy ??
             new QuestStopPolicy(configuration, _ => { }, _ => { }, _ => { }, Substitute.For<IChatGui>(), NullLogger<QuestStopPolicy>.Instance));
+        Set(controller, "_reports", new QuestReporter(configuration, _ => Task.FromResult(true),
+            () => Task.FromResult<Dictionary<string, Dictionary<string, int[]>>?>(null), () => null, NullLogger.Instance));
         Set(controller, "_tracker", tracker ??
             new QuestProgressTracker(null!, null!, highlight!, NullLogger<QuestProgressTracker>.Instance));
         if (highlight != null)

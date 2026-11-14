@@ -71,6 +71,25 @@ internal sealed class DebugConfigComponent
             }
         }
 
+        if (Configuration.Advanced.Debug)
+        {
+            ImGui.Separator();
+            string adminToken = Configuration.Reports.AdminToken;
+            ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X / 2);
+            if (ImGui.InputText(_L("Report admin token"), ref adminToken, 128, ImGuiInputTextFlags.Password))
+            {
+                Configuration.Reports.AdminToken = adminToken.Trim();
+                Save();
+            }
+
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker(_L("Lets you read problem reports from a quest's right-click menu (Community reports). Each admin has their own token."));
+
+            DrawCheckbox(_L("Report project-folder paths too (testing)"),
+                () => Configuration.Reports.ReportProjectPaths,
+                value => Configuration.Reports.ReportProjectPaths = value);
+        }
+
         ImGui.Separator();
 
         DrawInformation();

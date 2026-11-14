@@ -71,6 +71,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private readonly QuestProgressTracker _tracker;
     private readonly QuestBattleConfigComponent _questBattleConfig;
     private readonly QuestStopPolicy _stopPolicy;
+    private readonly QuestReporter _reports;
     private readonly StuckWatch _stuckWatch;
     private readonly PriorityPresets _presets;
     private readonly TaskCreator _taskCreator;
@@ -117,7 +118,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         QuestStopPolicy stopPolicy,
         StuckWatch stuckWatch,
         PriorityPresets presets,
-        AlliedSocietyQuestFunctions alliedSocietyQuests)
+        AlliedSocietyQuestFunctions alliedSocietyQuests,
+        QuestReporter reports)
         : base(chatGui, condition, serviceProvider, interruptHandler, toastClassifier,
             notificationMasterIpc.NotifyOnFailure, logger)
     {
@@ -147,6 +149,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _stuckWatch = stuckWatch;
         _presets = presets;
         _alliedSocietyQuests = alliedSocietyQuests;
+        _reports = reports;
         _logger = logger;
         _highlightObject = highlightObject;
 
@@ -397,6 +400,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 return true;
             case StuckWatch.EResult.Stop:
                 _stopPolicy.ReportStuckLimit(current.Quest, maxTries);
+                _reports.Problem(EProblemKind.Stuck);
                 _stuckWatch.Reset();
                 Stop("Stuck after retries");
                 return true;
@@ -722,7 +726,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             case EStepState.UnknownSequence:
                 DebugState = $"Sequence {questToRun.Sequence} not found";
                 if (AutomationType != EAutomationType.Manual)
+                {
                     _stopPolicy.ReportNoSequence(questToRun);
+                    _reports.Problem(EProblemKind.MissingPath);
+                }
                 Stop("Unknown sequence");
                 return;
 
@@ -741,7 +748,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             case EStepState.UnknownStep:
                 DebugState = "Step not found";
                 if (AutomationType != EAutomationType.Manual)
+                {
                     _stopPolicy.ReportNoStep(questToRun);
+                    _reports.Problem(EProblemKind.MissingPath);
+                }
                 Stop("Unknown step");
                 return;
         }
@@ -868,8 +878,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         using IDisposable? scope = _logger.BeginScope($"Stop/{label}");
         bool wasRunning = IsRunning || AutomationType != EAutomationType.Manual;
         bool wasAutomatic = AutomationType == EAutomationType.Automatic;
+        QuestProgress? stoppedAt = wasRunning && IsQuestRun() && SimulatedQuest == null ? StartedQuest : null;
         // Plugin work still needs cleanup even if its executor is already gone.
         ClearTasksInternal();
+        _reports.Stopped(stoppedAt, policyReason ?? label, RecentTasks);
         if (!wasRunning)
             return;
 
@@ -956,7 +968,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     bool IQuestRecoveryHost.ClearTasks() => ClearTasksInternal();
     void IQuestRecoveryHost.StopMovement() => _movementController.Stop();
     void IQuestRecoveryHost.RetryCurrentStep() => ExecuteNextStep();
-    void IQuestRecoveryHost.ReportDeathLimit(int deaths) => _stopPolicy.ReportDeathLimit(deaths);
+    void IQuestRecoveryHost.ReportDeathLimit(int deaths)
+    {
+        _stopPolicy.ReportDeathLimit(deaths);
+        _reports.Problem(EProblemKind.Deaths);
+    }
 
     unsafe bool IQuestRecoveryHost.TryConfirmReturnPrompt()
     {
@@ -1079,8 +1095,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     protected override void OnTaskComplete(ITask task)
     {
-        if (task is WaitAtEnd.QuestCompleted)
+        if (task is WaitAtEnd.QuestCompleted completed)
+        {
+            if (SimulatedQuest == null && IsQuestRun() &&
+                _questRegistry.TryGetQuest(completed.ElementId, out Quest? quest))
+                _reports.Completed(quest);
             SimulatedQuest = StartedQuest = null;
+        }
 
         // Only a finished attune counts: already-attuned aetherytes get no task, and shards are a different task.
         if (StopAfterAttune && task is Aetheryte.Attune attune)
@@ -1089,6 +1110,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             AttuneStopDue = true;
         }
     }
+
+    // Runs QST drove itself; not Step, Sim or manual tasks.
+    private bool IsQuestRun() =>
+        AutomationType is EAutomationType.Automatic or EAutomationType.SingleQuestA or EAutomationType.SingleQuestB;
 
     protected override void OnNextStep(ILastTask task) => IncreaseStepCount(task.ElementId, task.Sequence, shouldContinue: true);
 
@@ -1158,6 +1183,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         catch (Exception e)
         {
             _stopPolicy.ReportTasksFailed(e, CurrentQuest);
+            _reports.Problem(EProblemKind.Other);
             Stop("Tasks failed to create");
         }
     }
