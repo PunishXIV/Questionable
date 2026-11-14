@@ -20,9 +20,6 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
     ];
     private Vector2 _contentSize;
 
-#if false
-#endif
-
     private readonly TerritoryData _territoryData;
     private readonly QuestRegistry _questRegistry;
     private readonly QuestData _questData;

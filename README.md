@@ -129,6 +129,9 @@ Artisan is a plugin for automating crafting. Questionable uses it for quests tha
 - ### [WahTools](https://git.wahapp.com/wah/WahTools)
 WahTools is a collection of tools, including Feesh for automated fishing. Questionable uses Feesh for quests that involve fishing.
 
+- ### [AutoRetainer](https://github.com/PunishXIV/AutoRetainer)
+AutoRetainer manages retainers and switches characters. Questionable uses its character list and relogging to quest on several characters in a row.
+
 - ### [Mogmail](https://github.com/Nexaii/Mogmail)
 Mogmail claims mail attachments in bulk. Between quests, Questionable uses it to claim waiting Mog Station and reward mail at a delivery moogle.
 

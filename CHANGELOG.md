@@ -7,8 +7,8 @@
   - Feature: The ! button next to the quest buttons reports how a quest went, and a problem stop offers a "Send a report" link in chat -Kage
 - Feature: Collects the free job gear at levels 80, 89 and 99 between quests and puts on your best gear -Kage
 - Feature: Claims waiting Mog Station and reward mail at a delivery moogle between quests (needs Mogmail) -Kage
-- Feature: Keeps your chocobo companion out, and buys more Gysahl Greens when you run out (needs Knightshopper) -Kage
-- Feature: Retries the current step a few times when stuck before stopping -Kage
+- Feature: Option to keep your chocobo companion out, buying more Gysahl Greens when you run out (needs Knightshopper) -Kage
+- Feature: Option to retry the current step a few times when stuck before stopping -Kage
 - Feature: Duties without Duty Support open the Duty Finder or run unsynced; a slider sets how many levels above a duty you need to go unsynced -Kage
 - Feature: Journal Progress: XP and gil columns, saved filters, pinned headers and "Hide Completed Quests" -Kage
 - Feature: Priority Quests: a switch for whether priority quests interrupt the current one, "Change All to Normal Priority", an XP and gil total, Dawntrail tribe presets, field aether currents, "Unlock All Jobs" by level and "Add highest rank" for allied societies -Kage

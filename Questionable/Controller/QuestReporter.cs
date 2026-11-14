@@ -21,7 +21,8 @@ internal sealed class QuestReporter
 
     // Plugins whose version helps reproduce a problem; the Worker accepts up to 12 entries.
     private static readonly string[] TrackedPlugins =
-        ["BossMod", "vnavmesh", "TextAdvance", "Lifestream", "AutoDuty", "WrathCombo", "RotationSolver"];
+        ["BossMod", "vnavmesh", "TextAdvance", "Lifestream", "AutoDuty", "WrathCombo", "RotationSolver", "GatherChill",
+            "Knightshopper", "WahTools"];
 
     private readonly Configuration _configuration;
     private readonly Func<ReportApi.Body, Task<bool>> _send;

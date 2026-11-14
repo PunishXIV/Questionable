@@ -27,7 +27,7 @@ internal sealed class QuickAccessComponent
 {
     private static readonly HashSet<string> ReportedPlugins = new(StringComparer.Ordinal)
     {
-        "Artisan", "AutoDuty", "Automaton", "BossMod", "BossModReborn", "GatherChill", "Knightshopper", "Lifestream",
+        "Artisan", "AutoDuty", "AutoRetainer", "Automaton", "BossMod", "BossModReborn", "GatherChill", "Knightshopper", "Lifestream",
         "Mogmail", "PandorasBox", "RotationSolver", "SelectString", "Stylist", "TextAdvance", "vnavmesh", "WahTools",
         "WrathCombo", "YesAlready",
     };

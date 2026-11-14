@@ -367,7 +367,7 @@ public sealed class QuestSelectionControllerTests
     }
 
     [Fact]
-    public void Interruptible_FalseIfShortcutCanBeSkipped()
+    public void Interruptible_FalseIfShortcutSkippable()
     {
         Assert.False(Interruptible(Details(skip: new() { AetheryteShortcutIf = new() { QuestsCompleted = [new QuestId(1)] } })));
         Assert.False(Interruptible(Details(skip: new() { AetheryteShortcutIf = new() { QuestsAccepted = [new QuestId(1)] } })));
