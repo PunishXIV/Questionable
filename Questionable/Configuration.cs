@@ -35,6 +35,7 @@ internal sealed class Configuration : IPluginConfiguration
     public WindowConfig ConfigWindowConfig { get; } = new();
     public PriorityConfiguration Priority { get; } = new();
     public CharacterConfiguration Characters { get; } = new();
+    public JobGearConfiguration JobGear { get; } = new();
     public PathDataConfiguration PathData { get; } = new();
     public JournalConfiguration Journal { get; } = new();
     public int Version { get; set; } = PluginConfigVersion;
@@ -248,6 +249,7 @@ internal sealed class Configuration : IPluginConfiguration
         public EGearsetUpdateSource GearsetUpdateSource { get; set; } = EGearsetUpdateSource.Vanilla;
         public string ChocoboName { get; set; } = string.Empty;
         public bool SummonChocobo { get; set; }
+        public bool CollectJobGear { get; set; } = true;
         public string DisplayName { get; set; } = "Anonymous";
         public bool UseEscToCancelQuesting { get; set; } = true;
         public bool UseQuestionableTheme { get; set; } = true;
@@ -315,6 +317,13 @@ internal sealed class Configuration : IPluginConfiguration
             if (preset != null)
                 PresetsAfterQuest.Add(new StopPreset { QuestId = id, Preset = preset });
         }
+    }
+
+    // Outside the profile sections, so each character keeps its own record.
+    internal sealed class JobGearConfiguration
+    {
+        // Content id to the sets already collected, as "<job>:<level>".
+        public Dictionary<string, List<string>> Collected { get; set; } = [];
     }
 
     internal sealed class CharacterConfiguration

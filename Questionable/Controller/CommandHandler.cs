@@ -133,6 +133,7 @@ internal sealed class CommandHandler : IDisposable
                     _chatGui.Print(_L("/qst do - clears the highlighted quest in the debug overlay (requires debug overlay to be enabled)"), MessageTag, TagColor);
                     _chatGui.Print(_L("/qst sim <questId> [sequence] [step] - simulates the specified quest (or clears it if no questId is specified)"), MessageTag, TagColor);
                     _chatGui.Print(_L("/qst mountid - prints information about your current mount"), MessageTag, TagColor);
+                    _chatGui.Print(_L("/qst jobgear [80|89|99] - collects the free job gear for your current job now, even if you have better gear"), MessageTag, TagColor);
                 }
 
                 break;
@@ -285,6 +286,13 @@ internal sealed class CommandHandler : IDisposable
                 _configuration.Save();
                 break;
 
+            case "jobgear":
+                _questStarter.CollectJobGear(
+                    parts.Length > 1 && int.TryParse(parts[1], NumberStyles.None, CultureInfo.InvariantCulture, out int gearLevel)
+                        ? gearLevel
+                        : null);
+                break;
+
             case "redeem":
                 _questStarter.RedeemRewards(dry: parts.Length > 1 && parts[1].EqualsIgnoreCaseAny("dry"));
                 break;
@@ -329,7 +337,7 @@ internal sealed class CommandHandler : IDisposable
 
     // Tools for writing and checking quest paths; without Debug they answer like an unknown command.
     internal static bool NeedsDebug(string subcommand) =>
-        subcommand is "do" or "sim" or "mountid" or "gen" or "d2qwh" or "d2qwl" or "rewards" or "tname";
+        subcommand is "do" or "sim" or "mountid" or "gen" or "d2qwh" or "d2qwl" or "rewards" or "tname" or "jobgear";
 
     private void PrintUnknown(string subcommand) =>
         _chatGui.PrintError(_LF("Unknown subcommand {0}", subcommand), MessageTag, TagColor);

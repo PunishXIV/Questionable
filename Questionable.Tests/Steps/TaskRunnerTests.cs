@@ -17,6 +17,48 @@ namespace Questionable.Tests.Steps;
 
 public sealed class TaskRunnerTests
 {
+    private sealed record Probe : ITask;
+
+    private sealed class GroupEnd : IOptionalGroupEnd
+    {
+        public bool RetryStep => true;
+        public List<Exception> Failures { get; } = [];
+        public void OnFailed(Exception exception) => Failures.Add(exception);
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void OptionalGroupFailure_RetriesStep(bool failOnStart)
+    {
+        var expected = new InvalidOperationException("shop closed");
+        var executor = Substitute.For<ITaskExecutor>();
+        if (failOnStart)
+            executor.Start(Arg.Any<ITask>()).Returns(_ => throw expected);
+        else
+        {
+            executor.Start(Arg.Any<ITask>()).Returns(true);
+            executor.Update().Returns(_ => throw expected);
+        }
+
+        ServiceCollection registrations = [];
+        registrations.AddKeyedTransient<ITaskExecutor>(typeof(Probe), (_, _) => executor);
+        using var provider = registrations.BuildServiceProvider();
+        using var fixture = new TaskRunnerFixture(provider: provider);
+        GroupEnd end = new();
+        fixture.Queue.Enqueue(new Probe());
+        fixture.Queue.Enqueue(end);
+
+        fixture.Controller.Tick();
+        if (!failOnStart)
+            fixture.Controller.Tick();
+
+        Assert.Same(expected, Assert.Single(end.Failures));
+        Assert.Equal("RetryStep not supported", Assert.Single(fixture.Controller.Stops));
+        Assert.DoesNotContain(fixture.Chat.ReceivedCalls(), x => x.GetMethodInfo().Name == "PrintError");
+        Assert.Empty(fixture.Notifications);
+    }
+
     [Theory]
     [InlineData(false, "missing")]
     [InlineData(false, "factory")]

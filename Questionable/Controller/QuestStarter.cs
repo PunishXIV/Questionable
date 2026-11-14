@@ -12,6 +12,7 @@ internal sealed class QuestStarter(
     QuestRegistry questRegistry,
     QuestData questData,
     QuestStopPolicy stopPolicy,
+    JobGear.Factory jobGear,
     IDataManager dataManager,
     IChatGui chatGui,
     ILogger<QuestStarter> logger)
@@ -163,6 +164,27 @@ internal sealed class QuestStarter(
                 if (task is RedeemRewardItems.Task redeemTask)
                     chatGui.Print(redeemTask.ItemReward.Name, CommandHandler.MessageTag, CommandHandler.TagColor);
         logger.LogInformation("Tasks created by redeem: {Tasks}", string.Join(", ", tasks.Select(x => x.ToString())));
+    }
+
+    // For testing the job gear pickup without levelling a character (see JobGear.Factory.CreateTasks).
+    public void CollectJobGear(int? level)
+    {
+        if (questController.IsRunning)
+        {
+            chatGui.PrintError("Busy!", CommandHandler.MessageTag, CommandHandler.TagColor);
+            return;
+        }
+
+        if (ProfileController.CurrentContentId is not { } contentId)
+            return;
+
+        stopPolicy.CancelEnding();
+        List<ITask> tasks = jobGear.CreateTasks(contentId, level, force: true, out string reason);
+        if (reason.Length > 0)
+            chatGui.Print(reason, CommandHandler.MessageTag, CommandHandler.TagColor);
+        foreach (ITask task in tasks)
+            questController.UnsafeEnqueueManualTask(task);
+        logger.LogInformation("Tasks created by jobgear: {Tasks}", string.Join(", ", tasks.Select(x => x.ToString())));
     }
 
     public void StopSimulate()

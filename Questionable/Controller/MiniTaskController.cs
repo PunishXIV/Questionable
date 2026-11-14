@@ -89,6 +89,9 @@ internal abstract class MiniTaskController<T> : IDisposable
         }
         catch (Exception e)
         {
+            if (TryFailOptionalGroup(e, currentExecutor.CurrentTask))
+                return;
+
             OnTaskFailure(e, currentExecutor.CurrentTask);
             string msg = ReportFailure(e, currentExecutor.CurrentTask, starting: false);
             Stop("Task failed to update");
@@ -202,11 +205,39 @@ internal abstract class MiniTaskController<T> : IDisposable
         }
         catch (Exception e)
         {
+            if (TryFailOptionalGroup(e, task))
+                return;
+
             OnTaskFailure(e, task);
             string msg = ReportFailure(e, task, starting: true);
             Stop("Task failed to start");
             _notifyOnFailure(msg);
         }
+    }
+
+    private bool TryFailOptionalGroup(Exception e, ITask task)
+    {
+        if (_taskQueue.RemainingTasks.OfType<IOptionalGroupEnd>().FirstOrDefault() is not { } groupEnd)
+            return false;
+
+        _logger.LogWarning(e, "Optional task {TaskName} failed, dropping the rest of its group", task);
+        OnTaskFailure(e, task);
+        groupEnd.OnFailed(e);
+        if (groupEnd.RetryStep && !CanStartNextTask())
+        {
+            Stop("Retry blocked");
+            return true;
+        }
+
+        if (!_taskQueue.Reset())
+        {
+            Stop("Task cancellation failed");
+            return true;
+        }
+
+        if (groupEnd.RetryStep)
+            OnRetryStep();
+        return true;
     }
 
     private string ReportFailure(Exception e, ITask task, bool starting)

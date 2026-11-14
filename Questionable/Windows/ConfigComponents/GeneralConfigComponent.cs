@@ -276,6 +276,17 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         ImGui.SameLine();
         ImGuiComponents.HelpMarker(
             _L("Uses Gysahl Greens in the open world when your chocobo isn't out or has under five minutes left. Needs 'My Feisty Little Chocobo' done. When you run out of Gysahl Greens, Knightshopper buys 99 more. Pandora's Box \"Auto-Summon Chocobo\" stays paused while Questionable runs."));
+
+        bool collectJobGear = Configuration.General.CollectJobGear;
+        if (ImGui.Checkbox(_L("Collect free job gear"), ref collectJobGear))
+        {
+            Configuration.General.CollectJobGear = collectJobGear;
+            Save();
+        }
+
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(
+            _L("Between quests, Questionable fetches the free job gear for your current job from Grenoldt (level 80, The Tempest), Varsarudh (level 89, Old Sharlayan) or Mewazunte (level 99, Tuliyollal) once its shop is unlocked and the set beats what you wear, then equips your best gear. Each set is fetched once per character and job."));
     }
 
     private void DrawUi()
