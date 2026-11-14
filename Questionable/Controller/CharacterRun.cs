@@ -90,6 +90,10 @@ internal sealed class CharacterRun : IDisposable
         }
     }
 
+    // Play and /qst start go through the list when this character is ticked.
+    public bool StartsList => !IsActive && CurrentId is { } id && _configuration.Characters.EnabledIds.Contains(id) &&
+                              _autoRetainer.IsReady();
+
     private static ulong? CurrentId =>
         ulong.TryParse(ProfileController.CurrentContentId, CultureInfo.InvariantCulture, out ulong id) ? id : null;
 
@@ -119,7 +123,7 @@ internal sealed class CharacterRun : IDisposable
         List<Character> queue = GetQueue(_autoRetainer.GetCharacters(), _configuration.Characters.EnabledIds, CurrentId);
         if (queue.Count == 0)
         {
-            PrintError(_L("Tick at least one character on the Characters tab first."));
+            PrintError(_L("Tick at least one character on the Profiles tab first."));
             return;
         }
 

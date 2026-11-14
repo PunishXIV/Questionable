@@ -207,7 +207,7 @@ internal sealed class QuestStopPolicy
     internal static string GetName(EDestination destination) => destination switch
     {
         EDestination.HomeWorld => _L("Home world"),
-        EDestination.Auto => _L("Lifestream's /li auto"),
+        EDestination.Auto => _L("Home (Lifestream's /li auto)"),
         EDestination.Inn => _L("Inn room"),
         EDestination.PrivateEstate => _L("Private estate"),
         EDestination.FreeCompany => _L("Free Company estate"),

@@ -14,7 +14,12 @@ internal sealed class StopConditionComponent : ConfigComponent
     private readonly UiUtils _uiUtils;
     private readonly PriorityPresets _presets;
     private readonly Configuration.EEndAction[] _endActions = Enum.GetValues<Configuration.EEndAction>();
-    private readonly Configuration.EDestination[] _destinations = Enum.GetValues<Configuration.EDestination>();
+    // Lifestream's /li auto picks the estate, apartment or inn from its own settings.
+    private static readonly Configuration.EDestination[] Destinations =
+    [
+        Configuration.EDestination.None, Configuration.EDestination.HomeWorld,
+        Configuration.EDestination.Auto, Configuration.EDestination.GrandCompany,
+    ];
     private Vector2 _contentSize;
 
     public StopConditionComponent(
@@ -37,8 +42,10 @@ internal sealed class StopConditionComponent : ConfigComponent
 
         _completeQuestSelector = questSelector;
         _completeQuestSelector.SuggestionPredicate = quest => configuration.Stop.QuestsToStopAfter.All(x => x != quest.Id);
+        // Both lists default to the main scenario quests still ahead of this character.
         _completeQuestSelector.DefaultPredicate = quest =>
-            quest.Info.IsMainScenarioQuest && questFunctions.IsQuestAccepted(quest.Id);
+            quest.Info.IsMainScenarioQuest && !questFunctions.IsQuestComplete(quest.Id) &&
+            !questFunctions.IsQuestUnobtainable(quest.Id);
         _completeQuestSelector.OnSelect = quest =>
         {
             configuration.Stop.QuestsToStopAfter.Add(quest.Id);
@@ -49,7 +56,8 @@ internal sealed class StopConditionComponent : ConfigComponent
         {
             SuggestionPredicate = quest => configuration.Stop.QuestsToStopWhenAccepted.All(x => x != quest.Id),
             DefaultPredicate = quest =>
-                    quest.Info.IsMainScenarioQuest && !questFunctions.IsQuestAcceptedOrComplete(quest.Id),
+                    quest.Info.IsMainScenarioQuest && !questFunctions.IsQuestAcceptedOrComplete(quest.Id) &&
+                    !questFunctions.IsQuestUnobtainable(quest.Id),
             OnSelect = quest =>
                 {
                     configuration.Stop.QuestsToStopWhenAccepted.Add(quest.Id);
@@ -151,7 +159,11 @@ internal sealed class StopConditionComponent : ConfigComponent
         ImGui.TextUnformatted(_L("Go to"));
         ImGui.SameLine();
         ImGui.SetNextItemWidth(200 * ImGuiHelpers.GlobalScale);
-        DrawComboOption("##Destination", _destinations, _destinations.Select(QuestStopPolicy.GetName).ToArray(),
+        // A saved pick that is no longer offered stays listed, so it isn't reset.
+        Configuration.EDestination[] destinations = Destinations.Contains(Configuration.Stop.Destination)
+            ? Destinations
+            : [.. Destinations, Configuration.Stop.Destination];
+        DrawComboOption("##Destination", destinations, destinations.Select(QuestStopPolicy.GetName).ToArray(),
             () => Configuration.Stop.Destination, x => Configuration.Stop.Destination = x);
         ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("Travels there with Lifestream first. The commands below wait until you have arrived."));

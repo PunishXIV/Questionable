@@ -26,6 +26,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly PriorityWindow _priorityWindow;
     private readonly QuestController _questController;
     private readonly QuestStarter _questStarter;
+    private readonly CharacterRun _characterRun;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
     private readonly QuestSelectionWindow _questSelectionWindow;
@@ -43,6 +44,7 @@ internal sealed class CommandHandler : IDisposable
         IChatGui chatGui,
         QuestController questController,
         QuestStarter questStarter,
+        CharacterRun characterRun,
         MovementController movementController,
         QuestRegistry questRegistry,
         ConfigWindow configWindow,
@@ -67,6 +69,7 @@ internal sealed class CommandHandler : IDisposable
         _chatGui = chatGui;
         _questController = questController;
         _questStarter = questStarter;
+        _characterRun = characterRun;
         _movementController = movementController;
         _questRegistry = questRegistry;
         _configWindow = configWindow;
@@ -145,7 +148,10 @@ internal sealed class CommandHandler : IDisposable
 
             case "start":
                 _questWindow.IsOpenAndUncollapsed = true;
-                _questStarter.Start(_L("Start command"));
+                if (_characterRun.StartsList)
+                    _characterRun.Start();
+                else
+                    _questStarter.Start(_L("Start command"));
                 break;
 
             case "stop":

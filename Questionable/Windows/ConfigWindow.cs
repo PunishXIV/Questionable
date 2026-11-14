@@ -6,7 +6,6 @@ internal sealed class ConfigWindow
  : LWindow, IPersistableWindowConfig
 {
     private readonly Configuration _configuration;
-    private readonly CharactersConfigComponent _charactersConfigComponent;
     private readonly DebugConfigComponent _debugConfigComponent;
     private readonly DutyConfigComponent _dutyConfigComponent;
     private readonly GeneralConfigComponent _generalConfigComponent;
@@ -24,7 +23,6 @@ internal sealed class ConfigWindow
     GeneralConfigComponent generalConfigComponent,
     PluginConfigComponent pluginConfigComponent,
     ProfilesConfigComponent profilesConfigComponent,
-    CharactersConfigComponent charactersConfigComponent,
     ProfileController profileController,
     DutyConfigComponent dutyConfigComponent,
     QuestBattleConfigComponent questBattleConfig,
@@ -34,7 +32,6 @@ internal sealed class ConfigWindow
     Configuration configuration) : base(_L("Config - Questionable") + "###QuestionableConfig")
     {
         _configuration = configuration;
-        _charactersConfigComponent = charactersConfigComponent;
         _debugConfigComponent = debugConfigComponent;
         _dutyConfigComponent = dutyConfigComponent;
         _generalConfigComponent = generalConfigComponent;
@@ -91,7 +88,6 @@ internal sealed class ConfigWindow
 
         _generalConfigComponent.DrawTab();
         _profilesConfigComponent.DrawTab();
-        _charactersConfigComponent.DrawTab();
         _dutyConfigComponent.DrawTab();
         _questBattleConfig.DrawTab();
         _stopConditionComponent.DrawTab();
@@ -106,7 +102,7 @@ internal sealed class ConfigWindow
                 AboutTab.Draw("Questionable");
         }
 
-        // Neither tab holds profile settings. The tab is only known after drawing, so this lags one frame.
-        _hideProfileBanner = aboutOpen || _pluginConfigComponent.IsOpen;
+        // None of these tabs holds profile settings. The tab is only known after drawing, so this lags one frame.
+        _hideProfileBanner = aboutOpen || _pluginConfigComponent.IsOpen || _profilesConfigComponent.IsOpen;
     }
 }

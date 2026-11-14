@@ -736,17 +736,14 @@ internal sealed partial class ActiveQuestComponent
                 if (questProgressInfo == null)
                     questController.SetNextQuest(currentQuest.Quest);
 
-                questStarter.Start(_L("UI start"));
+                if (characterRun.StartsList)
+                    characterRun.Start();
+                else
+                    questStarter.Start(_L("UI start"));
             }
 
-            if (configuration.Characters.EnabledIds.Count > 0 && !characterRun.IsActive)
-            {
-                ImGui.SameLine();
-                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Users))
-                    characterRun.Start();
-                if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                    ImGui.SetTooltip(_L("Start on all ticked characters (Characters tab in the settings)."));
-            }
+            if (characterRun.StartsList && ImGui.IsItemHovered())
+                ImGui.SetTooltip(_L("This character is ticked on the Profiles tab: when its run ends, Questionable switches to the next ticked character."));
 
             // Step is for path makers; its icon reads like Skip to everyone else.
             if (configuration.Advanced.Debug)
