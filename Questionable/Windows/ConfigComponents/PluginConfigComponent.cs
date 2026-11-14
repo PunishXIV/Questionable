@@ -1,3 +1,4 @@
+using Dalamud.Interface.Utility;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using Dalamud.Interface.Textures.TextureWraps;
@@ -11,7 +12,6 @@ internal sealed class PluginConfigComponent
     IDalamudPluginInterface pluginInterface,
     Configuration configuration,
     CombatController combatController,
-    UiUtils uiUtils,
     ICommandManager commandManager,
     IChatGui chatGui,
     IFramework framework,
@@ -37,7 +37,6 @@ internal sealed class PluginConfigComponent
     private readonly IDalamudPluginInterface _pluginInterface = pluginInterface;
     private readonly Configuration _configuration = configuration;
     private readonly CombatController _combatController = combatController;
-    private readonly UiUtils _uiUtils = uiUtils;
     private readonly ICommandManager _commandManager = commandManager;
     private readonly IChatGui _chatGui = chatGui;
     private readonly IFramework _framework = framework;
@@ -52,7 +51,7 @@ internal sealed class PluginConfigComponent
                 ECombatModule.BossMod,
                 new("Boss Mod",
                     "BossMod",
-                    "Automates all kinds of combat and interaction in overworld and duty content",
+                    _L("Combat and boss mechanics"),
                     new("https://github.com/awgil/ffxiv_bossmod"),
                     new("https://puni.sh/api/repository/veyn"),
                     "/vbm")
@@ -61,7 +60,7 @@ internal sealed class PluginConfigComponent
                 ECombatModule.WrathCombo,
                 new("Wrath Combo",
                     "WrathCombo",
-                    string.Empty,
+                    _L("Combat rotations (compatibility)"),
                     new("https://github.com/PunishXIV/WrathCombo"),
                     new(PunishRepositoryUrl),
                     "/wrath",
@@ -71,7 +70,7 @@ internal sealed class PluginConfigComponent
                 ECombatModule.RotationSolverReborn,
                 new("Rotation Solver Reborn",
                     "RotationSolver",
-                    string.Empty,
+                    _L("Combat rotations (compatibility)"),
                     new("https://github.com/FFXIV-CombatReborn/RotationSolverReborn"),
                     new(
                         "https://raw.githubusercontent.com/FFXIV-CombatReborn/CombatRebornRepo/main/pluginmaster.json"),
@@ -83,20 +82,20 @@ internal sealed class PluginConfigComponent
     [
         new("vnavmesh",
             "vnavmesh",
-            _L("vnavmesh handles the navigation within a zone, moving your character to the next quest-related objective."),
+            _L("Moving to quest objectives"),
             new("https://github.com/awgil/ffxiv_navmesh/"),
             new("https://puni.sh/api/repository/veyn"),
             "/vnav"),
         new("Lifestream",
             "Lifestream",
-            _L("Used to travel to aethernet shards in cities."),
+            _L("Aethernet and world travel"),
             new("https://github.com/NightmareXIV/Lifestream"),
             new(NightmareXivRepositoryUrl),
             "/lifestream",
             MirrorUrls: NightmareXivMirrors),
         new("TextAdvance",
             "TextAdvance",
-            _L("Automatically accepts and turns in quests, skips cutscenes and dialogue."),
+            _L("Accepting and turning in quests, skipping dialogue"),
             new("https://github.com/NightmareXIV/TextAdvance"),
             new(NightmareXivRepositoryUrl),
             "/at c",
@@ -107,37 +106,37 @@ internal sealed class PluginConfigComponent
     [
         new("Artisan",
             "Artisan",
-            _L("Automates crafting"),
+            _L("Crafting quests"),
             new("https://github.com/PunishXIV/Artisan"),
             new(PunishRepositoryUrl),
             "/artisan",
             MirrorUrls: PunishMirrors),
         new("Gather & Chill",
             "GatherChill",
-            _L("Required for gathering quests and the gathering journal"),
+            _L("Gathering quests and the gathering journal"),
             new("https://github.com/LeontopodiumNivale14/Gather-Chill"),
             new("https://puni.sh/api/repository/ice"),
             "/gatherchill"),
         new("Knightshopper",
             "Knightshopper",
-            _L("Required for buying quest items from vendors. Allow Questionable in its IPC settings."),
+            _L("Buying quest items (allow Questionable in its IPC settings)"),
             new("https://github.com/Knightmore"),
             new("https://puni.sh/api/repository/knightmore")),
         new("AutoDuty",
             "AutoDuty",
-            _L("Automates duties"),
+            _L("Dungeons and trials"),
             new("https://github.com/erdelf/AutoDuty"),
             new("https://puni.sh/api/repository/erdelf"),
             "/ad"),
         new("WahTools",
             "WahTools",
-            _L("Required for fishing quests (Feesh)"),
+            _L("Fishing quests (Feesh)"),
             new("https://git.wahapp.com/wah/WahTools"),
             new("https://puni.sh/api/repository/wah"),
             "/feesh"),
         new("CBT (formerly known as Automaton)",
             "Automaton",
-            _L("CBT is a collection of automation-related tweaks."),
+            _L("Stormblood sniping tasks"),
             new("https://github.com/Jaksuhn/Automaton"),
             new("https://puni.sh/api/repository/croizat"),
             "/cbt",
@@ -149,13 +148,13 @@ internal sealed class PluginConfigComponent
             ]),
         new("NotificationMaster",
             "NotificationMaster",
-            _L("Sends a configurable out-of-game notification if a quest requires manual actions."),
+            _L("Notifications outside the game"),
             new("https://github.com/NightmareXIV/NotificationMaster"),
             null,
             "/pnotify"),
         new("Pandora's Box",
             "PandorasBox",
-            _L("Pandora's Box is a collection of tweaks."),
+            _L("Active time maneuvers"),
             new("https://github.com/PunishXIV/PandorasBox"),
             new(PunishRepositoryUrl),
             "/pandora",
@@ -168,21 +167,21 @@ internal sealed class PluginConfigComponent
             MirrorUrls: PunishMirrors),
         new("Stylist",
             "Stylist",
-            _L("Gear manager"),
+            _L("Equipping gear upgrades"),
             new("https://github.com/NightmareXIV/Stylist"),
             new(NightmareXivRepositoryUrl),
             "/stylist c",
             MirrorUrls: NightmareXivMirrors),
         new("SelectString",
             "SelectString",
-            "Select items in menus via 0-9 keys rather than mouse",
+            _L("Menu choices with number keys"),
             new("https://github.com/NightmareXIV/SelectString"),
             new(NightmareXivRepositoryUrl),
             "/ss",
             MirrorUrls: NightmareXivMirrors),
         new("QuestMap",
             "QuestMap",
-            "Explore quests and their rewards.",
+            _L("Browsing quests and rewards"),
             new("https://github.com/GemPlugins/QuestMap"),
             null,
             "/quests"),
@@ -192,7 +191,7 @@ internal sealed class PluginConfigComponent
 
     public override void DrawTab()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Dependencies") + "###Plugins");
+        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Plugins") + "###Plugins");
         IsOpen = tab;
         if (!tab)
             return;
@@ -200,228 +199,207 @@ internal sealed class PluginConfigComponent
         Draw(out bool allRequiredInstalled);
 
         ImGui.Spacing();
-        ImGui.Separator();
-        ImGui.Spacing();
-
         if (allRequiredInstalled)
             ImGui.TextColored(QstTheme.Success, _L("All required plugins are installed."));
         else
-        {
-            ImGui.TextColored(QstTheme.Danger,
-                _L("Required plugins are missing, Questionable will not work properly."));
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, _L("Install all required plugins")))
-                InstallMissingPlugins();
-        }
+            ImGui.TextColored(QstTheme.Danger, _L("Required plugins are missing, Questionable will not work properly."));
     }
 
-    public void Draw(out bool allRequiredInstalled)
+    // The setup window asks for the combat plugin here; otherwise it is picked on the General tab.
+    public void Draw(out bool allRequiredInstalled, bool combatPicker = false)
     {
-        float checklistPadding;
-        using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-        {
-            checklistPadding = ImGui.CalcTextSize(FontAwesomeIcon.Check.ToIconString()).X +
-                               ImGui.GetStyle().ItemSpacing.X;
-        }
-
         allRequiredInstalled = !HasMissingRequiredPlugins() && IsCombatPluginReady();
-        ImGui.SetNextItemOpen(isOpen: true, ImGuiCond.Once);
-        if (QstWidgets.SectionHeader(_L("Required plugins"), "RequiredPlugins", defaultOpen: false))
+        if (combatPicker)
         {
-            using (ImRaii.PushIndent())
-            {
-                DrawInstallAllButton();
-                foreach (PluginInfo plugin in RequiredPlugins)
-                    DrawPlugin(plugin, checklistPadding);
-            }
+            ImGui.SetNextItemWidth(250 * ImGuiHelpers.GlobalScale);
+            DrawCombatPicker();
+            ImGui.Separator();
         }
 
-        if (QstWidgets.SectionHeader(_L("Rotation/Automation plugins"), "RotationPlugins", defaultOpen: true))
-        {
-            using (ImRaii.Disabled(_combatController.IsRunning))
-            {
-                using (ImRaii.PushIndent())
-                {
-                    if (ImGui.RadioButton(_L("No rotation/combat plugin\n(combat must be done manually)"),
-                        _configuration.General.CombatModule == ECombatModule.None))
-                    {
-                        _configuration.General.CombatModule = ECombatModule.None;
-                        _pluginInterface.SavePluginConfig(_configuration);
-                    }
+        // The chosen combat plugin counts as required.
+        ECombatModule combatModule = _configuration.General.CombatModule;
+        List<PluginInfo> required = [.. RequiredPlugins];
+        if (combatModule != ECombatModule.None)
+            required.Add(CombatPlugins[combatModule]);
+        List<PluginInfo> optional =
+            [.. CombatPlugins.Where(x => x.Key != combatModule).Select(x => x.Value), .. _recommendedPlugins];
 
-                    DrawCombatPlugin(ECombatModule.BossMod, checklistPadding);
-                }
-
-                ImGui.TextWrapped(_L("The following rotation/combat plugin(s) are provided for compatibility and testing purposes:"));
-                using (ImRaii.PushIndent())
-                {
-                    DrawCombatPlugin(ECombatModule.WrathCombo, checklistPadding);
-                    DrawCombatPlugin(ECombatModule.RotationSolverReborn, checklistPadding);
-                }
-            }
-        }
-
-        if (QstWidgets.SectionHeader(_L("Recommended/niche plugins"), "NichePlugins", defaultOpen: false))
-        {
-            using (ImRaii.PushIndent())
-            {
-                foreach (PluginInfo plugin in _recommendedPlugins)
-                    DrawPlugin(plugin, checklistPadding);
-            }
-        }
+        // The setup window sizes itself to its content, so the table needs a width of its own there.
+        DrawTable(required, optional, combatPicker ? 620 * ImGuiHelpers.GlobalScale : 0);
     }
 
-    private void AddConfigClickable(IExposedPlugin? installedPlugin, PluginInfo plugin)
+    internal void DrawCombatPicker()
     {
-        if (installedPlugin != null && plugin.ConfigCommand != null && plugin.ConfigCommand.StartsWith('/'))
+        ECombatModule[] modules =
+            [ECombatModule.None, ECombatModule.BossMod, ECombatModule.WrathCombo, ECombatModule.RotationSolverReborn];
+        string[] labels =
+            [.. modules.Select(x => x == ECombatModule.None ? _L("None (fight yourself)") : CombatPlugins[x].DisplayName)];
+        using (ImRaii.Disabled(_combatController.IsRunning))
         {
-            if (ImGui.IsItemHovered())
+            int index = Math.Max(0, Array.IndexOf(modules, _configuration.General.CombatModule));
+            if (ImGui.Combo(_L("Combat plugin") + "###CombatPlugin", ref index, labels, labels.Length))
             {
-                ImGui.SetTooltip(_L("Open Config"));
-                ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-            }
-            if (ImGui.IsItemClicked())
-                _commandManager.ProcessCommand(plugin.ConfigCommand);
-
-        }
-    }
-
-    private bool DrawPlugin(PluginInfo plugin, float checklistPadding)
-    {
-        using (ImRaii.PushId("plugin_" + plugin.DisplayName))
-        {
-            IExposedPlugin? installedPlugin = FindInstalledPlugin(plugin, requireLoaded: false);
-            bool isLoaded = installedPlugin is { IsLoaded: true };
-            string label = plugin.DisplayName;
-            if (installedPlugin != null)
-                label += $" v{installedPlugin.Version}";
-
-            ImGui.BeginGroup();
-            if (installedPlugin != null && installedPlugin.InternalName.Equals("vnavmesh", StringComparison.Ordinal) && (installedPlugin.Manifest.Author.Contains("AtmoOmen")))
-                plugin = new(
-                    plugin.DisplayName,
-                    plugin.InternalName,
-                    plugin.Details,
-                    new("https://github.com/AtmoOmen/ffxiv_navmesh-cn"),
-                    new("https://gh.atmoomen.top/DalamudPlugins/main/pluginmaster.json"),
-                    plugin.ConfigCommand
-                );
-            _uiUtils.ChecklistItem(label, isLoaded);
-
-            DrawPluginDetails(plugin, checklistPadding, installedPlugin);
-            ImGui.EndGroup();
-            AddConfigClickable(installedPlugin, plugin);
-            return isLoaded;
-        }
-    }
-
-    private bool DrawCombatPlugin(ECombatModule combatModule, float checklistPadding)
-    {
-        ImGui.Spacing();
-
-        PluginInfo plugin = CombatPlugins[combatModule];
-        using (ImRaii.PushId("plugin_" + plugin.DisplayName))
-        {
-            IExposedPlugin? installedPlugin = FindInstalledPlugin(plugin, requireLoaded: false);
-            bool isLoaded = installedPlugin is { IsLoaded: true };
-            string label = plugin.DisplayName;
-            if (installedPlugin != null)
-                label += $" v{installedPlugin.Version}";
-
-            if (ImGui.RadioButton(label, _configuration.General.CombatModule == combatModule))
-            {
-                _configuration.General.CombatModule = combatModule;
+                _configuration.General.CombatModule = modules[index];
                 _pluginInterface.SavePluginConfig(_configuration);
             }
+        }
 
-            ImGui.SameLine(0);
-            using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(_L("Questionable is built and tested with Boss Mod. Wrath Combo and Rotation Solver Reborn are there for compatibility and testing."));
+
+        if (!IsCombatPluginReady())
+            ImGui.TextColored(QstTheme.Danger, _LF("{0} isn't installed or loaded; install it on the Plugins tab.",
+                CombatPlugins[_configuration.General.CombatModule].DisplayName));
+    }
+
+    // One table, so both groups line up.
+    private void DrawTable(List<PluginInfo> required, List<PluginInfo> optional, float width)
+    {
+        using ImRaii.TableDisposable table = ImRaii.Table("Plugins", 3,
+            ImGuiTableFlags.RowBg | ImGuiTableFlags.BordersInnerH | ImGuiTableFlags.SizingStretchProp,
+            new Vector2(width, 0));
+        if (!table)
+            return;
+
+        ImGui.TableSetupColumn("##Status", ImGuiTableColumnFlags.WidthFixed, ImGui.GetFrameHeight());
+        ImGui.TableSetupColumn("##Plugin", ImGuiTableColumnFlags.WidthStretch);
+        ImGui.TableSetupColumn("##Actions", ImGuiTableColumnFlags.WidthFixed);
+
+        DrawGroup(_L("Required"), required, installAll: true);
+        DrawGroup(_L("Optional"), optional, installAll: false);
+    }
+
+    private void DrawGroup(string label, List<PluginInfo> plugins, bool installAll)
+    {
+        ImGui.TableNextRow();
+        ImGui.TableNextColumn();
+        ImGui.TableNextColumn();
+        ImGui.AlignTextToFramePadding();
+        ImGui.TextColored(QstTheme.Accent, label);
+        ImGui.TableNextColumn();
+        if (installAll && HasMissingRequiredPlugins())
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, _L("Install all required plugins")))
+                InstallMissingPlugins();
+            if (ImGui.IsItemHovered())
+                ImGui.SetTooltip(_L("Adds missing repositories and installs required plugins."));
+        }
+
+        foreach (PluginInfo plugin in plugins)
+            DrawRow(plugin);
+    }
+
+    private void DrawRow(PluginInfo plugin)
+    {
+        using ImRaii.IdDisposable id = ImRaii.PushId("plugin_" + plugin.DisplayName);
+        IExposedPlugin? installedPlugin = FindInstalledPlugin(plugin, requireLoaded: false);
+        bool isLoaded = installedPlugin is { IsLoaded: true };
+        if (installedPlugin != null && installedPlugin.InternalName.Equals("vnavmesh", StringComparison.Ordinal) &&
+            installedPlugin.Manifest.Author.Contains("AtmoOmen"))
+            plugin = new(
+                plugin.DisplayName,
+                plugin.InternalName,
+                plugin.Details,
+                new("https://github.com/AtmoOmen/ffxiv_navmesh-cn"),
+                new("https://gh.atmoomen.top/DalamudPlugins/main/pluginmaster.json"),
+                plugin.ConfigCommand
+            );
+
+        bool allDetailsOk = plugin.DetailsToCheck?.All(x => x.Predicate()) ?? true;
+
+        ImGui.TableNextRow();
+        ImGui.TableNextColumn();
+        DrawStatus(isLoaded);
+
+        ImGui.TableNextColumn();
+        ImGui.AlignTextToFramePadding();
+        ImGui.TextUnformatted(installedPlugin != null
+            ? $"{plugin.DisplayName} v{installedPlugin.Version}"
+            : plugin.DisplayName);
+        if (installedPlugin != null && !isLoaded)
+            ImGui.TextColored(QstTheme.Amber, _L("Installed but not loaded"));
+        else
+            DrawNote(plugin.Details);
+
+        ImGui.TableNextColumn();
+        DrawActions(plugin, installedPlugin, isLoaded, allDetailsOk);
+
+        if (plugin.DetailsToCheck == null)
+            return;
+
+        foreach (PluginDetailInfo detail in plugin.DetailsToCheck)
+        {
+            ImGui.TableNextRow();
+            ImGui.TableNextColumn();
+            ImGui.TableNextColumn();
+            using (ImRaii.PushIndent())
             {
-                Vector4 iconColor = isLoaded ? QstTheme.Success : QstTheme.Danger;
-                FontAwesomeIcon icon = isLoaded ? FontAwesomeIcon.Check : FontAwesomeIcon.Times;
-
-                ImGui.AlignTextToFramePadding();
-                ImGui.TextColored(iconColor, icon.ToIconString());
+                DrawStatus(isLoaded && detail.Predicate());
+                ImGui.SameLine();
+                ImGui.TextUnformatted(detail.DisplayName);
+                DrawNote(detail.Details);
             }
-            AddConfigClickable(installedPlugin, plugin);
 
-            DrawPluginDetails(plugin, checklistPadding, installedPlugin, blurb: false);
-            return isLoaded || _configuration.General.CombatModule != combatModule;
+            ImGui.TableNextColumn();
         }
     }
 
-    private void DrawPluginDetails(PluginInfo plugin, float checklistPadding, IExposedPlugin? installedPlugin,
-        bool blurb = true)
+    private static void DrawNote(string text)
     {
-        bool isLoaded = installedPlugin is { IsLoaded: true };
-        using (ImRaii.PushIndent(checklistPadding))
+        if (string.IsNullOrEmpty(text))
+            return;
+
+        using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.TextMuted))
+            ImGui.TextWrapped(text);
+    }
+
+    private void DrawStatus(bool ok)
+    {
+        using (_pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
         {
-            if (!string.IsNullOrEmpty(plugin.Details) && blurb)
-                ImGui.TextWrapped(plugin.Details);
+            ImGui.AlignTextToFramePadding();
+            ImGui.TextColored(ok ? QstTheme.Success : QstTheme.Danger,
+                (ok ? FontAwesomeIcon.Check : FontAwesomeIcon.Times).ToIconString());
+        }
+    }
 
-            bool allDetailsOk = true;
-            if (plugin.DetailsToCheck != null)
+    private void DrawActions(PluginInfo plugin, IExposedPlugin? installedPlugin, bool isLoaded, bool allDetailsOk)
+    {
+        if (isLoaded)
+        {
+            bool sameLine = false;
+            if (!allDetailsOk && CanEnableOptions(plugin))
             {
-                foreach (PluginDetailInfo detail in plugin.DetailsToCheck)
+                bool enabling = _enablingOptions.Contains(plugin.InternalName);
+                using (ImRaii.Disabled(enabling))
                 {
-                    bool detailOk = detail.Predicate();
-                    allDetailsOk &= detailOk;
-
-                    _uiUtils.ChecklistItem(detail.DisplayName, isLoaded && detailOk);
-                    if (!string.IsNullOrEmpty(detail.Details))
-                    {
-                        using (ImRaii.PushIndent(checklistPadding))
-                        {
-                            ImGui.TextWrapped(detail.Details);
-                        }
-                    }
-                }
-            }
-
-            ImGui.Spacing();
-
-            if (isLoaded)
-            {
-                bool canEnableRecommended = !allDetailsOk && CanEnableOptions(plugin);
-                if (canEnableRecommended)
-                {
-                    bool enabling = _enablingOptions.Contains(plugin.InternalName);
-                    using (ImRaii.Disabled(enabling))
-                    {
-                        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ToggleOn,
-                                enabling ? _L("Enabling...") : _L("Enable recommended options")))
-                            StartEnableOptions(plugin);
-                    }
-
-                    if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(_LF("Enable the recommended options for {0}.", plugin.DisplayName));
+                    if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.ToggleOn,
+                            enabling ? _L("Enabling...") : _L("Enable recommended options")))
+                        StartEnableOptions(plugin);
                 }
 
-                if (!allDetailsOk && plugin.ConfigCommand != null && plugin.ConfigCommand.StartsWith('/'))
-                {
-                    if (canEnableRecommended)
-                        ImGui.SameLine();
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip(_LF("Enable the recommended options for {0}.", plugin.DisplayName));
+                sameLine = true;
+            }
 
-                    ImRaii.ColorDisposable? color = null;
-                    if (!allDetailsOk)
-                        color = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent);
-                    if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Cog))
-                        _commandManager.ProcessCommand(plugin.ConfigCommand);
-                    color?.Dispose();
-                    if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(_L("Open Config"));
-                }
-            }
-            else if (installedPlugin != null)
+            if (plugin.ConfigCommand is { } command && command.StartsWith('/'))
             {
-                ImGui.TextColored(QstTheme.Amber, _L("Installed but not loaded"));
-                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Plug, _L("Open installer")))
-                    _pluginInterface.OpenPluginInstallerTo(PluginInstallerOpenKind.InstalledPlugins, plugin.DisplayName);
-            }
-            else
-            {
-                DrawInstallButtons(plugin);
+                if (sameLine)
+                    ImGui.SameLine();
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Cog, allDetailsOk ? null : QstTheme.Accent))
+                    _commandManager.ProcessCommand(command);
+                if (ImGui.IsItemHovered())
+                    ImGui.SetTooltip(_L("Open Config"));
             }
         }
+        else if (installedPlugin != null)
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Plug, _L("Open installer")))
+                _pluginInterface.OpenPluginInstallerTo(PluginInstallerOpenKind.InstalledPlugins, plugin.DisplayName);
+        }
+        else
+            DrawInstallButtons(plugin);
     }
 
     public void InstallMissingPlugins()
@@ -460,20 +438,6 @@ internal sealed class PluginConfigComponent
         ECombatModule combatModule = _configuration.General.CombatModule;
         return combatModule == ECombatModule.None
                || FindInstalledPlugin(CombatPlugins[combatModule], requireLoaded: true) != null;
-    }
-
-    private void DrawInstallAllButton()
-    {
-        if (!HasMissingRequiredPlugins())
-            return;
-
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, _L("Install all required plugins")))
-            InstallMissingPlugins();
-
-        if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Adds missing repositories and installs required plugins."));
-
-        ImGui.Spacing();
     }
 
     private void DrawInstallButtons(PluginInfo plugin)

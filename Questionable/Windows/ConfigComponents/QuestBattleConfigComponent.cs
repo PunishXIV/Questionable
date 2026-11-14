@@ -229,11 +229,8 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
         return _LF("{0} \u203B {1}", categoryName, genreName);
     }
 
-    public override void DrawTab()
+    public void DrawSection()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Quest Battles") + "###QuestBattles");
-        if (!tab)
-            return;
         _contentSize = ImGui.GetWindowContentRegionMax();
         using var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
 

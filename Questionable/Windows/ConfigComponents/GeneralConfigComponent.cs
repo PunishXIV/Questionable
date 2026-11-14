@@ -19,6 +19,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
     private readonly PathDataUpdater _pathDataUpdater;
     private readonly IDataManager _dataManager;
     private readonly ItemBlacklistSelector _itemBlacklistSelector;
+    private readonly PluginConfigComponent _plugins;
     private uint? _itemToRemove;
     private readonly Lazy<List<Job>> _sortedClassJobs;
     private readonly Lazy<(uint[] Ids, string[] Names)> _mounts;
@@ -36,9 +37,11 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         ClassJobUtils classJobUtils,
         QuestRegistry questRegistry,
         TerritoryData territoryData,
-        PathDataUpdater pathDataUpdater)
+        PathDataUpdater pathDataUpdater,
+        PluginConfigComponent plugins)
         : base(pluginInterface, configuration)
     {
+        _plugins = plugins;
         _questRegistry = questRegistry;
         _territoryData = territoryData;
         _pathDataUpdater = pathDataUpdater;
@@ -204,6 +207,9 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             Configuration.General.GrandCompany = (GrandCompany)grandCompany;
             Save();
         }
+
+        ImGui.SetNextItemWidth(size.X / 2);
+        _plugins.DrawCombatPicker();
 
         (Job[] combatJobIds, string[] combatJobNames) = _combatJobs.Value;
         ImGui.SetNextItemWidth(size.X / 2);

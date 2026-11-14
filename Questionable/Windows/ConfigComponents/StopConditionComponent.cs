@@ -13,6 +13,7 @@ internal sealed class StopConditionComponent : ConfigComponent
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
     private readonly PriorityPresets _presets;
+    private readonly NotificationConfigComponent _notifications;
     private readonly Configuration.EEndAction[] _endActions = Enum.GetValues<Configuration.EEndAction>();
     // Lifestream's /li auto picks the estate, apartment or inn from its own settings.
     private static readonly Configuration.EDestination[] Destinations =
@@ -31,6 +32,7 @@ internal sealed class StopConditionComponent : ConfigComponent
         UiUtils uiUtils,
         PriorityPresets presets,
         IClientState clientState,
+        NotificationConfigComponent notifications,
         Configuration configuration)
         : base(pluginInterface, configuration)
     {
@@ -38,6 +40,7 @@ internal sealed class StopConditionComponent : ConfigComponent
         _questTooltipComponent = questTooltipComponent;
         _uiUtils = uiUtils;
         _presets = presets;
+        _notifications = notifications;
         _clientState = clientState;
 
         _completeQuestSelector = questSelector;
@@ -77,6 +80,9 @@ internal sealed class StopConditionComponent : ConfigComponent
         DrawConditions();
         ImGui.Separator();
         DrawAfterStop();
+        ImGui.Separator();
+        ImGui.TextColored(QstTheme.Accent, _L("Notifications"));
+        _notifications.DrawSection();
     }
 
     private void DrawConditions()

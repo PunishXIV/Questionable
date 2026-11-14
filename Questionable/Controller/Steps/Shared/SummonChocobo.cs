@@ -35,6 +35,8 @@ internal static class SummonChocobo
         IDataManager dataManager,
         IClientState clientState,
         IChatGui chatGui,
+        ICondition condition,
+        GameFunctions gameFunctions,
         KnightshopperIpc knightshopperIpc) : ITaskFactory
     {
         public unsafe IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -56,15 +58,18 @@ internal static class SummonChocobo
 
             if (greens == 0)
             {
+                bool canBuy = CanBuy(inventoryManager);
                 if (DateTime.Now >= _restockRetryAt &&
-                    ShouldRestock(enabled: true, unlocked, openWorld || zoneUse == Town, greens, CanBuy(inventoryManager)))
+                    ShouldRestock(enabled: true, unlocked, openWorld || zoneUse == Town, greens, canBuy) &&
+                    BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions))
                 {
                     _restockRetryAt = DateTime.Now.Add(RestockRetryAfter);
                     // Knightshopper may leave us in another zone, so the step is planned again afterwards.
                     return [new Purchase.BuyTask(GysahlGreens, RestockTo, Optional: true), new Restocked()];
                 }
 
-                if (!_warnedNoGreens && ShouldSummon(enabled: true, unlocked, openWorld, timeLeft, greens: 1))
+                // Out of greens with a restock coming before the next quest isn't worth a message.
+                if (!canBuy && !_warnedNoGreens && ShouldSummon(enabled: true, unlocked, openWorld, timeLeft, greens: 1))
                 {
                     _warnedNoGreens = true;
                     chatGui.Print(_L("You're out of Gysahl Greens, so your chocobo wasn't called. Buy some to keep it out."),

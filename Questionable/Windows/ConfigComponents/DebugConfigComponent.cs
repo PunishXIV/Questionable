@@ -1,4 +1,5 @@
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
+using PunishLib.ImGuiMethods;
 using Questionable.AutoGen.Plugin;
 namespace Questionable.Windows.ConfigComponents;
 
@@ -76,6 +77,10 @@ internal sealed class DebugConfigComponent
 
         ImGui.Separator();
         DrawTesting();
+
+        ImGui.Separator();
+        if (QstWidgets.SectionHeader(_L("About"), "AboutQuestionable", defaultOpen: false))
+            AboutTab.Draw("Questionable");
     }
 
     private void DrawInformation()

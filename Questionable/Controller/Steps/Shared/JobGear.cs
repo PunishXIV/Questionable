@@ -59,10 +59,8 @@ internal static class JobGear
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            // Between quests only: nothing is in progress, and the accept step's position leads back afterwards.
             if (!configuration.General.CollectJobGear ||
-                step is not { InteractionType: EInteractionType.AcceptQuest, Position: not null } ||
-                questFunctions.IsQuestAccepted(quest.Id) || IsBusy() ||
+                !BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions) ||
                 ProfileController.CurrentContentId is not { } contentId)
                 return [];
 
@@ -151,13 +149,6 @@ internal static class JobGear
             yield return new MoveTask(step, vendor.Position);
         }
 
-        private bool IsBusy() =>
-            condition[ConditionFlag.InCombat] || condition[ConditionFlag.BoundByDuty] ||
-            condition[ConditionFlag.BoundByDuty56] || condition[ConditionFlag.BoundByDuty95] ||
-            condition[ConditionFlag.BetweenAreas] || condition[ConditionFlag.BetweenAreas51] ||
-            condition[ConditionFlag.OccupiedInCutSceneEvent] || condition[ConditionFlag.WatchingCutscene] ||
-            condition[ConditionFlag.Crafting] || condition[ConditionFlag.Gathering] ||
-            condition[ConditionFlag.Fishing] || gameFunctions.IsOccupied();
     }
 
     internal sealed record Take(uint NpcId, string ShopName, IReadOnlyList<uint> Items, string ContentId, int Level)

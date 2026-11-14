@@ -31,7 +31,7 @@ internal sealed class OneTimeSetupWindow : LWindow
 
     public override void DrawContent()
     {
-        _pluginConfigComponent.Draw(out bool allRequiredInstalled);
+        _pluginConfigComponent.Draw(out bool allRequiredInstalled, combatPicker: true);
 
         ImGui.Spacing();
         ImGui.Separator();

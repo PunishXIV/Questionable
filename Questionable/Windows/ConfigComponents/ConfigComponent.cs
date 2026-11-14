@@ -20,7 +20,9 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
 
     protected Configuration Configuration { get; } = configuration;
 
-    public abstract void DrawTab();
+    public virtual void DrawTab()
+    {
+    }
 
     protected void Save() => _pluginInterface.SavePluginConfig(Configuration);
 

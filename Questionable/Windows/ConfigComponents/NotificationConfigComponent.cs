@@ -9,12 +9,8 @@ internal sealed class NotificationConfigComponent
     NotificationMasterIpc notificationMasterIpc) : ConfigComponent(pluginInterface, configuration)
 {
 
-    public override void DrawTab()
+    public void DrawSection()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Notifications") + "###Notifications");
-        if (!tab)
-            return;
-
         bool enabled = Configuration.Notifications.Enabled;
         if (ImGui.Checkbox(_L("Enable notifications when manual interaction is required"), ref enabled))
         {

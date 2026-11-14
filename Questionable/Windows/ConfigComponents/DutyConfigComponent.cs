@@ -10,6 +10,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
     private bool _useAutoDuty;
 
     private readonly QuestRegistry _questRegistry;
+    private readonly QuestBattleConfigComponent _questBattles;
     private Vector2 _contentSize;
 
     public DutyConfigComponent(
@@ -18,11 +19,13 @@ internal sealed class DutyConfigComponent : ConfigComponent
         IDataManager dataManager,
         QuestRegistry questRegistry,
         AutoDutyProvider autoDuty,
-        TerritoryData territoryData)
+        TerritoryData territoryData,
+        QuestBattleConfigComponent questBattles)
         : base(pluginInterface, configuration)
     {
         _questRegistry = questRegistry;
         _autoDuty = autoDuty;
+        _questBattles = questBattles;
 
         _dutiesByExpansion = dataManager.GetExcelSheet<DawnContent>()
             .Where(x => x is { RowId: > 0, Unknown16: false })
@@ -52,6 +55,15 @@ internal sealed class DutyConfigComponent : ConfigComponent
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Duties") + "###Duties");
         if (!tab)
             return;
+
+        if (QstWidgets.SectionHeader(_L("Dungeons & trials"), "DutyList"))
+            DrawDuties();
+        if (QstWidgets.SectionHeader(_L("Quest battles"), "QuestBattleList"))
+            _questBattles.DrawSection();
+    }
+
+    private void DrawDuties()
+    {
         _contentSize = ImGui.GetWindowContentRegionMax();
         using var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
 

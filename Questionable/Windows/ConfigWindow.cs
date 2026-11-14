@@ -1,5 +1,4 @@
-﻿using PunishLib.ImGuiMethods;
-namespace Questionable.Windows;
+﻿namespace Questionable.Windows;
 
 [RegisterSingleton]
 internal sealed class ConfigWindow
@@ -9,12 +8,10 @@ internal sealed class ConfigWindow
     private readonly DebugConfigComponent _debugConfigComponent;
     private readonly DutyConfigComponent _dutyConfigComponent;
     private readonly GeneralConfigComponent _generalConfigComponent;
-    private readonly NotificationConfigComponent _notificationConfigComponent;
     private readonly PluginConfigComponent _pluginConfigComponent;
     private readonly ProfileController _profileController;
     private readonly ProfilesConfigComponent _profilesConfigComponent;
     private readonly IDalamudPluginInterface _pluginInterface;
-    private readonly QuestBattleConfigComponent _questBattleConfig;
     private readonly StopConditionComponent _stopConditionComponent;
     private bool _hideProfileBanner;
 
@@ -25,9 +22,7 @@ internal sealed class ConfigWindow
     ProfilesConfigComponent profilesConfigComponent,
     ProfileController profileController,
     DutyConfigComponent dutyConfigComponent,
-    QuestBattleConfigComponent questBattleConfig,
     StopConditionComponent stopConditionComponent,
-    NotificationConfigComponent notificationConfigComponent,
     DebugConfigComponent debugConfigComponent,
     Configuration configuration) : base(_L("Config - Questionable") + "###QuestionableConfig")
     {
@@ -35,12 +30,10 @@ internal sealed class ConfigWindow
         _debugConfigComponent = debugConfigComponent;
         _dutyConfigComponent = dutyConfigComponent;
         _generalConfigComponent = generalConfigComponent;
-        _notificationConfigComponent = notificationConfigComponent;
         _pluginConfigComponent = pluginConfigComponent;
         _profilesConfigComponent = profilesConfigComponent;
         _profileController = profileController;
         _pluginInterface = pluginInterface;
-        _questBattleConfig = questBattleConfig;
         _stopConditionComponent = stopConditionComponent;
 
         Size = new Vector2(400, 400);
@@ -89,20 +82,11 @@ internal sealed class ConfigWindow
         _generalConfigComponent.DrawTab();
         _profilesConfigComponent.DrawTab();
         _dutyConfigComponent.DrawTab();
-        _questBattleConfig.DrawTab();
         _stopConditionComponent.DrawTab();
-        _notificationConfigComponent.DrawTab();
         _pluginConfigComponent.DrawTab();
         _debugConfigComponent.DrawTab();
-        bool aboutOpen;
-        using (ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("About") + "###QuestionableConfigTabs"))
-        {
-            aboutOpen = tab;
-            if (tab)
-                AboutTab.Draw("Questionable");
-        }
 
-        // None of these tabs holds profile settings. The tab is only known after drawing, so this lags one frame.
-        _hideProfileBanner = aboutOpen || _pluginConfigComponent.IsOpen || _profilesConfigComponent.IsOpen;
+        // Neither tab holds profile settings. The tab is only known after drawing, so this lags one frame.
+        _hideProfileBanner = _pluginConfigComponent.IsOpen || _profilesConfigComponent.IsOpen;
     }
 }
