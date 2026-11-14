@@ -2,6 +2,7 @@ using ECommons.ExcelServices;
 using ECommons.UIHelpers.AddonMasterImplementations;
 using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Movement;
@@ -176,6 +177,7 @@ internal static class JobGear
         private static readonly TimeSpan GiveUpAfter = TimeSpan.FromSeconds(60);
         private DateTime _giveUpAt;
         private DateTime _nextTry;
+        private bool _collected;
 
         protected override bool Start()
         {
@@ -190,10 +192,20 @@ internal static class JobGear
             List<uint> missing = Missing(Task.Items);
             if (missing.Count == 0)
             {
-                Finish();
-                Remember(configuration, Task.ContentId, (Job)PlayerState.Instance()->CurrentClassJobId, Task.Level);
-                pluginInterface.SavePluginConfig(configuration);
-                logger.LogInformation("Collected level {Level} job gear", Task.Level);
+                if (!_collected)
+                {
+                    _collected = true;
+                    _giveUpAt = DateTime.Now + GiveUpAfter;
+                    Remember(configuration, Task.ContentId, (Job)PlayerState.Instance()->CurrentClassJobId, Task.Level);
+                    pluginInterface.SavePluginConfig(configuration);
+                    logger.LogInformation("Collected level {Level} job gear", Task.Level);
+                }
+
+                // An open shop keeps the player occupied, which pauses the tasks after this one.
+                if (CloseShop() && DateTime.Now < _giveUpAt)
+                    return ETaskResult.StillRunning;
+
+                Active = false;
                 return ETaskResult.TaskComplete;
             }
 
@@ -213,39 +225,15 @@ internal static class JobGear
                 return ETaskResult.StillRunning;
             }
 
-            if (GenericHelpers.TryGetAddonMaster<AddonMaster.ShopExchangeCurrencyDialog>(out var dialog) &&
-                dialog.IsAddonReady)
-            {
-                dialog.Exchange();
-                return ETaskResult.StillRunning;
-            }
+            if (GenericHelpers.TryGetAddonByName<AtkUnitBase>("FreeShop", out var freeShop) &&
+                GenericHelpers.IsAddonReady(freeShop))
+                return TakeFromFreeShop(missing);
 
-            if (GenericHelpers.TryGetAddonMaster<AddonMaster.ShopExchangeCurrency>(out var shop) && shop.IsAddonReady)
-            {
-                var item = shop.BasicShopItems.FirstOrDefault(x => missing.Contains(x.ItemId)) ??
-                           throw new TaskException($"item {missing[0]} isn't in '{Task.ShopName}'");
-                logger.LogInformation("Taking {ItemId} from {Shop}", item.ItemId, Task.ShopName);
-                item.Select(1);
-                return ETaskResult.StillRunning;
-            }
-
-            if (GenericHelpers.TryGetAddonByName<AtkUnitBase>("ShopExchangeItem", out var itemShop) &&
-                GenericHelpers.IsAddonReady(itemShop))
-                throw new TaskException("the vendor opened a shop window Questionable can't use yet (ShopExchangeItem)");
-
+            // NPCs with several options open one menu or the other.
+            if (GenericHelpers.TryGetAddonMaster<AddonMaster.SelectIconString>(out var iconMenu) && iconMenu.IsAddonReady)
+                return PickShop(iconMenu.Base, [.. iconMenu.Entries.Select(x => x.Text)]);
             if (GenericHelpers.TryGetAddonMaster<AddonMaster.SelectString>(out var menu) && menu.IsAddonReady)
-            {
-                foreach (AddonMaster.SelectString.Entry entry in menu.Entries)
-                {
-                    if (entry.Text.Trim() == Task.ShopName.Trim())
-                    {
-                        entry.Select();
-                        return ETaskResult.StillRunning;
-                    }
-                }
-
-                throw new TaskException($"the vendor's menu has no '{Task.ShopName}' ({string.Join(", ", menu.Entries.Select(x => x.Text))})");
-            }
+                return PickShop(menu.Base, [.. menu.Entries.Select(x => x.Text)]);
 
             // TextAdvance moves the vendor's talk along.
             if (condition[ConditionFlag.OccupiedInEvent] || condition[ConditionFlag.OccupiedInQuestEvent])
@@ -266,13 +254,71 @@ internal static class JobGear
             return ETaskResult.StillRunning;
         }
 
+        // The job gear vendors open the free "Rewards" shop; DailyRoutines' OptimizedFreeShop claims the same way.
+        private unsafe ETaskResult TakeFromFreeShop(List<uint> missing)
+        {
+            AgentFreeShop* agent = AgentFreeShop.Instance();
+            if (agent == null || !agent->AgentInterface.IsAgentActive() || agent->IsInteractionBlocked ||
+                agent->IsLoadingItems)
+                return ETaskResult.StillRunning;
+
+            for (int i = 0; i < agent->ItemCount; i++)
+            {
+                var item = agent->Items[i];
+                if (!missing.Contains(item.ItemId))
+                    continue;
+                if (item.IsOwned || item.IsUnavailable)
+                    throw new TaskException($"the shop won't hand out item {item.ItemId} (owned: {item.IsOwned})");
+
+                logger.LogInformation("Taking {ItemId} from {Shop}", item.ItemId, Task.ShopName);
+                AtkValue result = new();
+                AtkValue* values = stackalloc AtkValue[2];
+                values[0].Type = AtkValueType.Int;
+                values[0].Int = 0;
+                values[1].Type = AtkValueType.Int;
+                values[1].Int = i;
+                agent->AgentInterface.ReceiveEvent(&result, values, 2, 0);
+                _nextTry = DateTime.Now.AddSeconds(1);
+                return ETaskResult.StillRunning;
+            }
+
+            throw new TaskException($"item {missing[0]} isn't in '{Task.ShopName}'");
+        }
+
+        private unsafe ETaskResult PickShop(AtkUnitBase* addon, List<string> entries)
+        {
+            int index = entries.FindIndex(x => GameFunctions.GameStringEquals(x, Task.ShopName));
+            if (index < 0)
+                throw new TaskException($"the vendor's menu has no '{Task.ShopName}' ({string.Join(", ", entries)})");
+
+            logger.LogInformation("Picking {Shop} in the vendor's menu", Task.ShopName);
+            addon->FireCallbackInt(index);
+            _nextTry = DateTime.Now.AddSeconds(2);
+            return ETaskResult.StillRunning;
+        }
+
         public void StopNow() => Finish();
+
+        // Close(true) leaves the shop open; the callback closes it.
+        private unsafe bool CloseShop()
+        {
+            if (!GenericHelpers.TryGetAddonByName<AtkUnitBase>("FreeShop", out var freeShop) || !freeShop->IsVisible)
+                return false;
+
+            if (DateTime.Now >= _nextTry)
+            {
+                _nextTry = DateTime.Now.AddSeconds(1);
+                freeShop->FireCallbackInt(-1);
+            }
+
+            return true;
+        }
 
         private static unsafe void Finish()
         {
             Active = false;
-            if (GenericHelpers.TryGetAddonMaster<AddonMaster.ShopExchangeCurrency>(out var shop) && shop.IsAddonReady)
-                shop.Base->Close(true);
+            if (GenericHelpers.TryGetAddonByName<AtkUnitBase>("FreeShop", out var freeShop) && freeShop->IsVisible)
+                freeShop->FireCallbackInt(-1);
         }
 
         public override bool ShouldInterruptOnDamage() => false;

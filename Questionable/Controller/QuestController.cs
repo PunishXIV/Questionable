@@ -77,6 +77,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private readonly IToastGui _toastGui;
     private bool _disposed;
     private EAutomationType _automationType;
+    private bool _manualTasks;
 
     private DateTime _lastTaskUpdate = DateTime.Now;
 
@@ -455,6 +456,14 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
             if (questToRun == null)
             {
+                // /qst redeem and /qst jobgear queue tasks while no quest is active.
+                _manualTasks &= IsRunning;
+                if (_manualTasks && AutomationType == EAutomationType.Manual)
+                {
+                    DebugState = "Manual tasks";
+                    return;
+                }
+
                 StopWithNoQuest();
                 return;
             }
@@ -1031,6 +1040,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (_gameFunctions.IsOccupied() && provider?.CanUpdateWhileOccupied != true &&
             // Outcome polling resets its grace timer before returning while occupied.
             _taskQueue.CurrentTaskExecutor is not QuestBattle.WaitForOutcomeExecutor &&
+            // The job gear shop is open (and the player occupied) while it takes the pieces.
+            _taskQueue.CurrentTaskExecutor is not JobGear.TakeExecutor &&
             !_gameFunctions.IsInCustomDelivery(CurrentQuest?.Quest))
             return;
 
@@ -1315,8 +1326,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         base.HandleInterruption(sender, e);
     }
 
-    internal void UnsafeEnqueueManualTask(ITask task) =>
+    internal void UnsafeEnqueueManualTask(ITask task)
+    {
+        _manualTasks = true;
         _taskQueue.Enqueue(task);
+    }
 
     public override void Dispose()
     {
