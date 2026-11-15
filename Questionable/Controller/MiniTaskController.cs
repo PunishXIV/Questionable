@@ -60,7 +60,6 @@ internal abstract class MiniTaskController<T> : IDisposable
         _interrupts.Interrupted -= HandleInterruption;
     }
 
-    // Lets derived controllers hold back new tasks without stopping the current executor.
     protected virtual bool CanStartNextTask() => true;
 
     protected virtual void UpdateCurrentTask()
@@ -197,7 +196,6 @@ internal abstract class MiniTaskController<T> : IDisposable
     // Created on first use: tests build controllers without running constructors.
     private Queue<string>? _recentTasks;
 
-    // The last few started tasks, for problem reports.
     internal IReadOnlyList<string> RecentTasks => _recentTasks is { } tasks ? [.. tasks] : [];
 
     private void StartTask(ITask task)

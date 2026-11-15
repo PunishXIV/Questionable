@@ -146,7 +146,7 @@ internal sealed unsafe class InterruptHandler : IDisposable, ITaskInterruptionSo
         ComboSucceed = 28,
         Retaliation = 29,
         Knockback = 32,
-        Attract1 = 33, //Here is an issue bout knockback. some is 32 some is 33.
+        Attract1 = 33, // Some knockbacks use 33 instead of 32.
         Attract2 = 34,
         Mount = 40,
         FullResistStatus = 52,

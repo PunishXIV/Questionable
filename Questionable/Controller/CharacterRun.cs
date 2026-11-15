@@ -3,8 +3,7 @@ using EAutomationType = Questionable.Controller.QuestController.EAutomationType;
 
 namespace Questionable.Controller;
 
-// Runs automatic questing on the ticked AutoRetainer characters, one after another.
-[RegisterSingleton]
+    [RegisterSingleton]
 internal sealed class CharacterRun : IDisposable
 {
     internal enum EState
@@ -90,7 +89,6 @@ internal sealed class CharacterRun : IDisposable
         }
     }
 
-    // Play and /qst start go through the list when this character is ticked.
     public bool StartsList => !IsActive && CurrentId is { } id && _configuration.Characters.EnabledIds.Contains(id) &&
                               _autoRetainer.IsReady();
 
@@ -146,7 +144,6 @@ internal sealed class CharacterRun : IDisposable
             End(_L("Character list cancelled."));
     }
 
-    // Called for every automatic stop; true means another character is up next.
     private bool OnStop(bool canContinue)
     {
         if (State != EState.Questing)
@@ -167,7 +164,6 @@ internal sealed class CharacterRun : IDisposable
 
     private void Update(IFramework framework)
     {
-        // The run end (travel, commands, wait, final action) is driven from here too.
         _stopPolicy.Update(DateTime.Now);
         if (State is EState.Idle or EState.Questing)
             return;

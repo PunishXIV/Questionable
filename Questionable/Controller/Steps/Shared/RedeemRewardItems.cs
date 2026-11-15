@@ -109,8 +109,7 @@ internal static class RedeemRewardItems
     {
         private static readonly TimeSpan MinimumCastTime = TimeSpan.FromSeconds(4);
 
-        // Don't block the queue forever if we never reach a usable state (e.g. stuck in combat)
-        // or if the item never actually gets consumed.
+        // Don't block the queue forever when the item never becomes usable or never gets consumed.
         private static readonly TimeSpan GiveUpAfter = TimeSpan.FromSeconds(30);
 
         private DateTime _giveUpAt;
@@ -200,9 +199,7 @@ internal static class RedeemRewardItems
                 return ETaskResult.StillRunning;
             }
 
-            // UseItem() can report success without actually consuming the item (e.g. a transient
-            // "cannot use right now"). If the count didn't drop, try again until it does or we give up,
-            // so we don't silently skip items in a multi-reward batch.
+            // UseItem can report success without consuming the item; retry until the count drops so no reward is skipped.
             if (inventoryManager->GetInventoryItemCount(Task.ItemReward.ItemId) >= _itemCountBeforeUse && !timedOut)
             {
                 _usedItem = false;

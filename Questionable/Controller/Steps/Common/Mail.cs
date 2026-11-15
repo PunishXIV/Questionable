@@ -130,7 +130,6 @@ internal static class Mail
         public override string ToString() => "ClaimMail";
     }
 
-    // Opens the mailbox, has Mogmail claim and delete, waits for it (and any Auto Pop), then closes the mailbox.
     internal sealed class TakeExecutor(
         MogmailIpc mogmail,
         GameFunctions gameFunctions,

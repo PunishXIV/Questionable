@@ -3,7 +3,6 @@ using QuestProgress = Questionable.Controller.QuestController.QuestProgress;
 
 namespace Questionable.Controller;
 
-// Decides what the current quest step means and where it goes next; QuestController applies the result.
 internal static class QuestStepPlanner
 {
     public const int CompletedStep = 255;

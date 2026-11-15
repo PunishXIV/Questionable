@@ -10,7 +10,6 @@ using static Questionable.Controller.Steps.ITaskExecutor;
 using Quest = Questionable.Domain.Quest;
 namespace Questionable.Controller.Steps.Shared;
 
-// Collects the free job gear for the current job between quests, then puts on the best gear.
 internal static class JobGear
 {
     private static readonly TimeSpan RetryAfter = TimeSpan.FromMinutes(30);
@@ -157,7 +156,6 @@ internal static class JobGear
         public override string ToString() => $"JobGear({Level})";
     }
 
-    // Talks to the vendor, picks the role's shop in the menu and takes each missing piece.
     internal sealed class TakeExecutor(
         GameFunctions gameFunctions,
         ICondition condition,
@@ -328,7 +326,6 @@ internal static class JobGear
         public override string ToString() => "JobGearDone";
     }
 
-    // Plans the accept step again, which walks back to the quest giver.
     internal sealed class DoneExecutor : TaskExecutor<Done>
     {
         protected override bool Start() => true;

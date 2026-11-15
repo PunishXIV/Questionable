@@ -239,7 +239,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     public bool StopBeforeTeleport { get; set; }
     public bool StopAfterAttune { get; set; }
 
-    // Replaces the saved end action for this run only.
     public Configuration.EEndAction? EndActionOnce { get; set; }
 
     // Set when an attune finishes; the stop waits for the next update so the step isn't cut mid-task.
@@ -1111,7 +1110,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         }
     }
 
-    // Runs QST drove itself; not Step, Sim or manual tasks.
     private bool IsQuestRun() =>
         AutomationType is EAutomationType.Automatic or EAutomationType.SingleQuestA or EAutomationType.SingleQuestB;
 

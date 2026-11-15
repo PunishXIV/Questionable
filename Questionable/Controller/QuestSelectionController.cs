@@ -5,7 +5,6 @@ using QuestProgress = Questionable.Controller.QuestController.QuestProgress;
 
 namespace Questionable.Controller;
 
-/// <summary>Decides which quest runs and when questing stops; QuestController reads the game and applies the result.</summary>
 [RegisterSingleton]
 internal sealed class QuestSelectionController(Configuration configuration)
 {

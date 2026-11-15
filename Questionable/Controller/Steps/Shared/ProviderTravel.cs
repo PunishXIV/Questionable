@@ -1,6 +1,5 @@
 namespace Questionable.Controller.Steps.Shared;
 
-// Providers that travel themselves take over the related travel steps.
 internal static class ProviderTravel
 {
     public static bool IsHandled(QuestSequence sequence, QuestStep step, IEnumerable<IOperationProvider> providers)

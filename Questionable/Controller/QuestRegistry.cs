@@ -732,8 +732,8 @@ internal sealed class QuestRegistry : IDisposable
     {
         foreach (FileInfo file in root.GetFiles())
         {
-            if (file.Name.Equals(filename, StringComparison.OrdinalIgnoreCase) || // if filename match case insensitive
-                file.Name.StartsWith(filename[..(filename.IndexOf('_') + 1)])) // if ID at start of filename match
+            if (file.Name.Equals(filename, StringComparison.OrdinalIgnoreCase) ||
+                file.Name.StartsWith(filename[..(filename.IndexOf('_') + 1)]))
                 return file;
         }
 

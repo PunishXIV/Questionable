@@ -321,10 +321,7 @@ internal sealed class MoveExecutor
             {
                 _logger.LogInformation("MountDuringMovement implicitly complete (shouldn't mount anymore)");
                 _mountDuringMovement = null;
-                return null;
             }
-
-            return null; // still keep moving
         }
 
         return null;

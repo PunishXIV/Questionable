@@ -39,7 +39,6 @@ internal sealed class HighlightObject : IDisposable
 
     private void OnFrameworkUpdate(IFramework framework)
     {
-        //we want to update every 300 ms
         if (DateTime.Now - _lastUpdateTime <= TimeSpan.FromMilliseconds(300))
             return;
 
