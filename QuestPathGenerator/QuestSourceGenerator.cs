@@ -16,11 +16,6 @@ using static Questionable.QuestPathGenerator.RoslynShortcuts;
 
 namespace Questionable.QuestPathGenerator;
 
-/// <summary>
-///     A sample source generator that creates C# classes based on the text file (in this case, Domain Driven Design
-///     ubiquitous language registry).
-///     When using a simple text file as a baseline, we can create a non-incremental source generator.
-/// </summary>
 [Generator]
 [SuppressMessage("MicrosoftCodeAnalysisReleaseTracking", "RS2008")]
 public class QuestSourceGenerator : ISourceGenerator
@@ -34,12 +29,10 @@ public class QuestSourceGenerator : ISourceGenerator
 
     public void Initialize(GeneratorInitializationContext context)
     {
-        // No initialization required for this generator.
     }
 
     public void Execute(GeneratorExecutionContext context)
     {
-        // Find schema definition
         AdditionalText? questSchema =
             context.AdditionalFiles.SingleOrDefault(x => Path.GetFileName(x.Path) == "quest-v1.json");
         if (questSchema != null)
@@ -124,7 +117,6 @@ public class QuestSourceGenerator : ISourceGenerator
                                         .WithMembers(List<MemberDeclarationSyntax>(methods))))))
                 .NormalizeWhitespace();
 
-        // Add the source code to the compilation.
         context.AddSource("AssemblyQuestLoader.g.cs", code.ToFullString());
     }
 

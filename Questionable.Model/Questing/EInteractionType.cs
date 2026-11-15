@@ -37,9 +37,7 @@ public enum EInteractionType
     SwitchClass,
     UnlockTaxiStand,
 
-    /// <summary>
-    ///     Needs to be manually continued.
-    /// </summary>
+    // Needs to be manually continued.
     Instruction,
 
     AcceptQuest,

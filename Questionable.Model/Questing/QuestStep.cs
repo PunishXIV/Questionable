@@ -52,14 +52,8 @@ public sealed class QuestStep
     public EItemQuality ItemQuality { get; set; } = EItemQuality.Any;
     public string? Comment { get; set; }
 
-    /// <summary>
-    ///     Only used when attuning to an aetheryte.
-    /// </summary>
     public EAetheryteLocation? Aetheryte { get; set; }
 
-    /// <summary>
-    ///     Only used when attuning to an aethernet shard.
-    /// </summary>
     [JsonConverter(typeof(AethernetShardConverter))]
     public EAetheryteLocation? AethernetShard { get; set; }
 
@@ -123,9 +117,7 @@ public sealed class QuestStep
         };
     }
 
-    /// <summary>
-    ///     Only relevant for the step 0 in sequence 0: Whether this step is valid for teleporting to it.
-    /// </summary>
+    // Only sequence 0, step 0 may be a priority teleport destination.
     public bool IsTeleportableForPriorityQuests()
     {
         if (AetheryteShortcut != null || AethernetShortcut?.From != null)

@@ -10,9 +10,7 @@ public sealed class QuestRoot
     [JsonConverter(typeof(StringListOrValueConverter))]
     public List<string> Author { get; set; } = new();
 
-    /// <summary>
-    ///     This is only relevant for release builds.
-    /// </summary>
+    // Only relevant for release builds.
     public bool Disabled { get; set; }
 
     [DefaultTrue]

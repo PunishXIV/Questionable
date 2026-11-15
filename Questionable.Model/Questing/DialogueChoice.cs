@@ -20,13 +20,9 @@ public sealed class DialogueChoice
     public bool PromptIsRegularExpression { get; set; }
     public bool AnswerIsRegularExpression { get; set; }
 
-    /// <summary>
-    ///     If set, only applies when focusing the given target id.
-    /// </summary>
+    // If set, the choice only applies while targeting this object.
     public uint? DataId { get; set; }
 
-    /// <summary>
-    ///     Used for 'In from the Cold'.
-    /// </summary>
+    // Used for In from the Cold.
     public string? SpecialCondition { get; set; }
 }

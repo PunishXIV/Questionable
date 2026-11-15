@@ -10,20 +10,14 @@ public enum EExtraSkipCondition
     WakingSandsSolar,
     RisingStonesSolar,
 
-    /// <summary>
-    ///     Location for ROG quests in Limsa Lominsa; located far underneath the actual lower decks.
-    /// </summary>
+    // ROG quest location far beneath the actual lower decks.
     RoguesGuild,
     NotRoguesGuild,
 
-    /// <summary>
-    ///     Location for NIN quests in Eastern La Noscea; located far underneath the actual zone.
-    /// </summary>
+    // NIN quest location far beneath the actual zone.
     DockStorehouse,
 
-    /// <summary>
-    /// True if player is on Costa Del Sol side of Eastern La Noscea, false if on Wineport side
-    /// </summary>
+    // True on the Costa Del Sol side of Eastern La Noscea; false on the Wineport side.
     CostaDelSol,
     NewGamePlus,
     NotNewGamePlus,

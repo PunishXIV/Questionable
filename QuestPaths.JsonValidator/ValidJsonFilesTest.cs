@@ -57,10 +57,7 @@ public sealed partial class ValidJsonFilesTest
         }
     }
 
-    /// <summary>
-    /// Decodes <c>\uXXXX</c> escapes that System.Text.Json's default HTML-safe encoder produces
-    /// (e.g. <c>"</c> as <c>\u0022</c>, <c>'</c> as <c>\u0027</c>) so error messages render readably.
-    /// </summary>
+    // System.Text.Json's HTML-safe escapes make validation errors unreadable.
     private static string Unescape(string value) =>
         UnicodeEscapeRegex().Replace(value, match => ((char)Convert.ToInt32(match.Groups[1].Value, 16)).ToString());
     [GeneratedRegex(@"\\u([0-9a-fA-F]{4})", RegexOptions.CultureInvariant, matchTimeoutMilliseconds: 1000)]
