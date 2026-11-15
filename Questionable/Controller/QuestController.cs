@@ -1055,8 +1055,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (_gameFunctions.IsOccupied() && provider?.CanUpdateWhileOccupied != true &&
             // Outcome polling resets its grace timer before returning while occupied.
             _taskQueue.CurrentTaskExecutor is not QuestBattle.WaitForOutcomeExecutor &&
-            // The job gear shop is open (and the player occupied) while it takes the pieces.
+            // The job gear shop and the mailbox are open (and the player occupied) while they're used.
             _taskQueue.CurrentTaskExecutor is not JobGear.TakeExecutor &&
+            _taskQueue.CurrentTaskExecutor is not Mail.TakeExecutor &&
             !_gameFunctions.IsInCustomDelivery(CurrentQuest?.Quest))
             return;
 

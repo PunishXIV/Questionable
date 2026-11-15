@@ -101,10 +101,13 @@ internal static class Purchase
             }
         }
 
+        private string ItemName() =>
+            _dataManager?.GetExcelSheet<LuminaItem>().GetRowOrDefault(Task.ItemId)?.Name.ExtractText()
+            ?? Task.ItemId.ToString(CultureInfo.InvariantCulture);
+
         private void Skip(TaskException e)
         {
-            string item = _dataManager?.GetExcelSheet<LuminaItem>().GetRowOrDefault(Task.ItemId)?.Name.ExtractText()
-                          ?? Task.ItemId.ToString(CultureInfo.InvariantCulture);
+            string item = ItemName();
             _logger?.LogWarning("Skipped buying {Count}x {Item}: {Reason}", Task.ItemCount, item, e.Message);
             _chatGui?.Print(_LF("Skipped buying {0}: {1}", item, e.Message), CommandHandler.MessageTag,
                 CommandHandler.TagColor);
@@ -114,11 +117,15 @@ internal static class Purchase
         {
             if (_state.HasOperation)
                 throw new TaskException(_state.BlockReason!);
-            if (CountInInventory(Task) >= Task.ItemCount)
+            int owned = CountInInventory(Task);
+            if (owned >= Task.ItemCount)
                 return false;
 
             if (Task.Quality == EItemQuality.HQ)
                 throw new TaskException("A shop cannot supply the required HQ quest item");
+
+            if (Task.Currency == Gil)
+                CheckGil(Task.ItemCount - owned);
 
             if (!_knightshopperIpc.IsReady())
                 throw new NeedsPlayerException("Knightshopper is required for buying quest items, but isn't installed, enabled or up to date");
@@ -175,6 +182,18 @@ internal static class Purchase
             }
         }
 
+        // Knightshopper reports a purchase it couldn't afford as finished, which hides the reason.
+        private unsafe void CheckGil(int count)
+        {
+            uint price = _dataManager?.GetExcelSheet<LuminaItem>().GetRowOrDefault(Task.ItemId)?.PriceMid ?? 0;
+            InventoryManager* inventoryManager = InventoryManager.Instance();
+            if (price == 0 || inventoryManager == null)
+                return;
+
+            if (GilShortage(price, count, inventoryManager->GetGil(), ItemName()) is { } reason)
+                throw new NeedsPlayerException(reason);
+        }
+
         public void StopNow()
         {
             if (_operationId.HasValue && _state.Id == _operationId)
@@ -189,10 +208,17 @@ internal static class Purchase
             if (inventoryManager == null)
                 throw new TaskException("Inventory is unavailable; cannot verify the purchase");
 
+            // Bought gear can be equipped as an upgrade right away; it still counts as bought.
             return CountItems(task.Quality,
-                inventoryManager->GetInventoryItemCount(task.ItemId, isHq: false, checkEquipped: false),
-                inventoryManager->GetInventoryItemCount(task.ItemId, isHq: true, checkEquipped: false));
+                inventoryManager->GetInventoryItemCount(task.ItemId, isHq: false, checkEquipped: true),
+                inventoryManager->GetInventoryItemCount(task.ItemId, isHq: true, checkEquipped: true));
         }
+    }
+
+    internal static string? GilShortage(uint price, int count, uint gil, string item)
+    {
+        long need = (long)price * count;
+        return need > gil ? $"Not enough gil to buy {count}x {item}: it costs {need} gil and you have {gil}." : null;
     }
 
     internal static int CountItems(EItemQuality quality, int normal, int high) => quality switch
