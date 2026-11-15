@@ -39,6 +39,7 @@ internal static class Fish
 
     internal sealed class Executor : TaskExecutor<Task>, IStoppable
     {
+        private static readonly TimeSpan StopAfter = TimeSpan.FromSeconds(10);
         private readonly FeeshIpc _feeshIpc;
         private readonly FishingState _state;
         private readonly IDataManager _dataManager;
@@ -46,6 +47,7 @@ internal static class Fish
         private readonly IQuestGameState _gameState;
         private Guid? _operationId;
         private long? _completedAt;
+        private long? _objectivesMetAt;
 
         public Executor(FeeshIpc feeshIpc, FishingState state, IDataManager dataManager,
             ILogger<Executor> logger, IQuestGameState gameState)
@@ -66,6 +68,7 @@ internal static class Fish
         {
             _operationId = null;
             _completedAt = null;
+            _objectivesMetAt = null;
             if (_state.HasOperation)
                 throw new TaskException(_state.BlockReason!);
             if (HasCompletedObjectives(Task, _gameState))
@@ -107,16 +110,17 @@ internal static class Fish
 
             if (_state.IsFinished)
             {
-                // Cancelled after the quest flags were met still counts as done.
-                bool ended = _state.Status is ExternalOperationStatus.Succeeded or ExternalOperationStatus.Cancelled;
-                if (ended && HasCompletedObjectives(Task, _gameState))
+                // The quest flags decide: the stop QST sends once they are met ends Feesh's job as stopped, which
+                // reads as failed, and Feesh's own count can lag one fish behind.
+                if (HasCompletedObjectives(Task, _gameState))
                 {
                     Release();
                     return ETaskResult.TaskComplete;
                 }
 
+                // The quest flags can trail the last catch.
                 _completedAt ??= TimeProvider.System.GetTimestamp();
-                if (ended && TimeProvider.System.GetElapsedTime(_completedAt.Value) < TimeSpan.FromSeconds(2))
+                if (TimeProvider.System.GetElapsedTime(_completedAt.Value) < TimeSpan.FromSeconds(2))
                     return ETaskResult.StillRunning;
                 string message = _state.Message;
                 Release();
@@ -125,8 +129,15 @@ internal static class Fish
 
             if (_state.NeedsConfirmation)
                 throw new TaskException(_state.BlockReason!);
+            // Feesh normally ends by itself right after the last catch; stopping it first shows "stopped by hand".
+            // The late stop is for Feesh counting differently from the quest and fishing on.
             if (HasCompletedObjectives(Task, _gameState) && !_state.StopRequested)
-                _feeshIpc.RequestStop();
+            {
+                _objectivesMetAt ??= TimeProvider.System.GetTimestamp();
+                if (TimeProvider.System.GetElapsedTime(_objectivesMetAt.Value) >= StopAfter)
+                    _feeshIpc.RequestStop();
+            }
+
             return ETaskResult.StillRunning;
         }
 
