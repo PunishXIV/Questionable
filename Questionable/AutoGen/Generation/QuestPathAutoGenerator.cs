@@ -610,7 +610,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
 
         if (existing != null)
         {
-            // Keep the note that explains where the step came from, and say what it turned into.
             _provenance[step] = _provenance.TryGetValue(step, out string? note)
                 ? $"{note}; {provenance}"
                 : provenance;

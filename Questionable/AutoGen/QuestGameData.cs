@@ -25,7 +25,6 @@ internal sealed class QuestGameData : IDisposable
     private readonly Lazy<IReadOnlyList<AetheryteEntry>> _aetherytes;
     private readonly Lazy<Dictionary<string, EEmote>> _emotesByCommand;
 
-    // Cache layer data per territory; a quest touches few zones.
     private readonly Dictionary<uint, Dictionary<uint, List<Vector3>>> _layerPlacements = [];
 
     // Quest actors are usually in planevent; map-marker actors can be in the other files.
