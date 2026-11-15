@@ -69,8 +69,7 @@
             "Z": -555.0164
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -92,15 +91,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -9.783533,
-            "Y": -49.589592,
-            "Z": -339.60205
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
         {
           "Position": {
             "X": -72.39724,

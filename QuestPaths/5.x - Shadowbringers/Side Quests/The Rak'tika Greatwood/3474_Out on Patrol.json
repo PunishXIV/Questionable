@@ -98,26 +98,6 @@
         },
         {
           "Position": {
-            "X": -592.69855,
-            "Y": -92.30932,
-            "Z": 311.9579
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -592.3887,
-            "Y": -92.6507,
-            "Z": 330.95844
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
             "X": -593.06824,
             "Y": -82.50561,
             "Z": 422.3752

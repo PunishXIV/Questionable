@@ -63,16 +63,6 @@
         },
         {
           "Position": {
-            "X": 110.578125,
-            "Y": 23.611277,
-            "Z": -617.7367
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1
-        },
-        {
-          "Position": {
             "X": 125.817085,
             "Y": 23.503817,
             "Z": -718.88574
@@ -81,16 +71,6 @@
           "InteractionType": "WalkTo",
           "StopDistance": 1,
           "Fly": true
-        },
-        {
-          "Position": {
-            "X": 133.8054,
-            "Y": 23.573988,
-            "Z": -718.9776
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1
         },
         {
           "Position": {

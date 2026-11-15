@@ -78,23 +78,13 @@
             "Z": -200.64093
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": 398.03082,
-            "Y": 6.081707,
-            "Z": -206.11922
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1041402,
           "Position": {

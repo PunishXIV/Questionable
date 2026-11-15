@@ -127,68 +127,9 @@
         },
         {
           "Position": {
-            "X": 71.55255,
-            "Y": 59.83099,
-            "Z": -516.4647
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
             "X": 111.73484,
             "Y": 23.613834,
             "Z": -611.87823
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 109.77451,
-            "Y": 23.459608,
-            "Z": -619.86304
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 84.102905,
-            "Y": 28.170393,
-            "Z": -716.35504
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 161.06644,
-            "Y": 26.61216,
-            "Z": -712.6371
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 176.3917,
-            "Y": 29.076319,
-            "Z": -652.8805
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 143.06934,
-            "Y": 23.642702,
-            "Z": -656.43506
           },
           "TerritoryId": 180,
           "InteractionType": "WalkTo",

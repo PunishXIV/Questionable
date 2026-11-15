@@ -43,7 +43,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -141,7 +140,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "DisableNavmesh": true,
           "NextQuestId": 490
         }
       ]

@@ -525,8 +525,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "The cat appears to have grown tired",
@@ -538,8 +537,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         }
       ]
     },

@@ -14,6 +14,12 @@ public sealed class CommandHandlerTests
     [InlineData("d2qwl")]
     [InlineData("rewards")]
     [InlineData("tname")]
+    [InlineData("navcheck")]
+    [InlineData("eventquests")]
+    [InlineData("unlock-links")]
+    [InlineData("taxi")]
+    [InlineData("festivals")]
+    [InlineData("loc")]
     public void PathTools_NeedDebug(string subcommand) => Assert.True(CommandHandler.NeedsDebug(subcommand));
 
     [Theory]

@@ -163,8 +163,7 @@
           "StopDistance": 0.5,
           "TerritoryId": 820,
           "InteractionType": "Emote",
-          "Emote": "dance",
-          "DisableNavmesh": true
+          "Emote": "dance"
         }
       ]
     },

@@ -22,16 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 539.7576,
-            "Y": -36.65,
-            "Z": -237.16893
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
-          "$": "tries to fly through subway car roof otherwise"
-        },
-        {
           "DataId": 2012049,
           "Position": {
             "X": 301.86914,

@@ -61,8 +61,7 @@
             "Z": 569.0242
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,8 +75,7 @@
             "Z": 562.5401
           },
           "TerritoryId": 961,
-          "InteractionType": "None",
-          "DisableNavmesh": true
+          "InteractionType": "None"
         },
         {
           "DataId": 1037969,

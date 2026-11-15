@@ -48,15 +48,6 @@
           "PickUpQuestId": 2673
         },
         {
-          "Position": {
-            "X": 553.3004,
-            "Y": 0.94003797,
-            "Z": 833.7598
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1019915,
           "Position": {
             "X": 576.5315,
@@ -110,15 +101,6 @@
     {
       "Sequence": 5,
       "Steps": [
-        {
-          "Position": {
-            "X": -462.84192,
-            "Y": -0.3000002,
-            "Z": -533.4066
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1019925,
           "Position": {

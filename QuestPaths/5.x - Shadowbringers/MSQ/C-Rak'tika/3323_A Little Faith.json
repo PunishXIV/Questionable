@@ -84,8 +84,7 @@
           },
           "StopDistance": 0.5,
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },

@@ -78,8 +78,7 @@
           },
           "TerritoryId": 1192,
           "InteractionType": "UseItem",
-          "ItemId": 2003566,
-          "DisableNavmesh": true
+          "ItemId": 2003566
         }
       ]
     },

@@ -41,8 +41,7 @@
           "TerritoryId": 1190,
           "InteractionType": "UseItem",
           "ItemId": 2003590,
-          "Fly": true,
-          "DisableNavmesh": true
+          "Fly": true
         }
       ]
     },

@@ -53,7 +53,6 @@
           "InteractionType": "AcceptQuest",
           "StopDistance": 4,
           "Fly": true,
-          "DisableNavmesh": true,
           "AetheryteShortcut": "Urqopacha - Worlar's Echo"
         }
       ]
@@ -552,7 +551,6 @@
           "InteractionType": "Interact",
           "StopDistance": 4,
           "Fly": true,
-          "DisableNavmesh": true,
           "AetheryteShortcut": "Urqopacha - Worlar's Echo"
         }
       ]
@@ -618,8 +616,7 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "CompleteQuest",
-          "StopDistance": 4,
-          "DisableNavmesh": true
+          "StopDistance": 4
         }
       ]
     }

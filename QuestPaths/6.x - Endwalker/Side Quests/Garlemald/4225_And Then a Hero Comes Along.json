@@ -22,16 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 541.0247,
-            "Y": -36.65,
-            "Z": -244.85428
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
-          "$": "let's not get stuck on ceilings, now"
-        },
-        {
           "DataId": 2011973,
           "Position": {
             "X": 370.5653,

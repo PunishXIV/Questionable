@@ -225,8 +225,7 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "Fly": true,
-          "DisableNavmesh": true
+          "Fly": true
         }
       ]
     },
@@ -250,16 +249,6 @@
             "X": -592.0902,
             "Y": -92.86652,
             "Z": 321.9379
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -592.63586,
-            "Y": -92.44665,
-            "Z": 331.28445
           },
           "TerritoryId": 817,
           "InteractionType": "WalkTo",

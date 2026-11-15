@@ -200,7 +200,6 @@
           "StopDistance": 6,
           "TerritoryId": 959,
           "InteractionType": "Say",
-          "DisableNavmesh": true,
           "ChatMessage": {
             "Key": "TEXT_AKTKZE002_04241_SYSTEM_000_010"
           },

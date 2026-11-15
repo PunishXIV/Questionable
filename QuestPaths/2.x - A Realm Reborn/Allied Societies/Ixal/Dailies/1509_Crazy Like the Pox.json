@@ -71,7 +71,6 @@
           },
           "TerritoryId": 156,
           "StopDistance": 1,
-          "DisableNavmesh": true,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Mor Dhona"
         }
@@ -185,7 +184,6 @@
           },
           "TerritoryId": 156,
           "StopDistance": 1,
-          "DisableNavmesh": true,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Mor Dhona"
         }

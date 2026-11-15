@@ -36,6 +36,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly EventInfoComponent _eventInfoComponent;
     private readonly OpenQuestCleanUp _openQuestCleanUp;
     private readonly ITargetManager _targetManager;
+    private readonly RouteCheck _routeCheck;
 
     private IReadOnlyList<uint> _lastUnlockLinks = [];
 
@@ -63,7 +64,8 @@ internal sealed class CommandHandler : IDisposable
         Configuration configuration,
         QuestData questData,
         EventInfoComponent eventInfoComponent,
-        OpenQuestCleanUp openQuestCleanUp)
+        OpenQuestCleanUp openQuestCleanUp,
+        RouteCheck routeCheck)
     {
         _commandManager = commandManager;
         _chatGui = chatGui;
@@ -89,6 +91,7 @@ internal sealed class CommandHandler : IDisposable
         _questData = questData;
         _eventInfoComponent = eventInfoComponent;
         _openQuestCleanUp = openQuestCleanUp;
+        _routeCheck = routeCheck;
 
         _clientState.Logout += OnLogout;
         // Shown in the plugin installer; the Debug-only commands stay out of it.
@@ -97,15 +100,10 @@ internal sealed class CommandHandler : IDisposable
         {
             HelpMessage = string.Join($"{Environment.NewLine}\t", help)
         });
-        _commandManager.AddHandler("/qst@", new(ProcessDebugCommand)
-        {
-            ShowInHelp = false
-        });
     }
 
     public void Dispose()
     {
-        _commandManager.RemoveHandler("/qst@");
         _commandManager.RemoveHandler("/qst");
         _clientState.Logout -= OnLogout;
     }
@@ -299,90 +297,17 @@ internal sealed class CommandHandler : IDisposable
                         : null);
                 break;
 
-            case "redeem":
-                _questStarter.RedeemRewards(dry: parts.Length > 1 && parts[1].EqualsIgnoreCaseAny("dry"));
+            case "navcheck":
+                if (parts.Length > 1 && parts[1] == "zones")
+                    _routeCheck.PrintZones();
+                else if (parts.Length > 1 && parts[1] == "all")
+                    _routeCheck.StartAll();
+                else if (parts.Length > 1 && parts[1] == "stop")
+                    _routeCheck.Stop();
+                else
+                    _routeCheck.Start();
                 break;
 
-            case "":
-                _questWindow.ToggleOrUncollapse();
-                break;
-
-            default:
-                PrintUnknown(parts[0]);
-                break;
-        }
-    }
-
-    private static string[] HelpLines() =>
-    [
-        _L("/qst help - lists these commands"),
-        _L("/qst config - opens the configuration window"),
-        _L("/qst start - starts doing quests"),
-        _L("/qst stop - stops doing quests"),
-        _L("/qst reload - reload all quest data"),
-        _L("/qst skipstep - skips the current quest step, e.g. one you finished by hand"),
-        _L("/qst next <questId> - sets the next quest to do (or clears it if no questId is specified)"),
-        _L("/qst which - shows all quests starting with your selected target"),
-        _L("/qst zone - shows all quests starting in the current zone (only includes quests with a known quest path, and currently visible unaccepted quests)"),
-        _L("/qst journal - toggles the Journal Progress window"),
-        _L("/qst priority - toggles the Priority window"),
-        _L("/qst validation - toggles the Quest Validation window"),
-        _L("/qst cleanup - adds every quest you already have open to the priority list, finished ones first"),
-        _L("/qst handle-interrupt - makes Questionable handle queued interrupts immediately (useful if you manually start combat)"),
-        _L("/qst clearlog - clears QuestCompletionLog.json"),
-        _L("/qst redeem - Redeem all reward items in inventory"),
-    ];
-
-    private void PrintHelp(string[] lines)
-    {
-        _chatGui.Print(_L("Available commands:"), MessageTag, TagColor);
-        _chatGui.Print(_L("/qst - toggles the Questing window"), MessageTag, TagColor);
-        foreach (string line in lines)
-            _chatGui.Print(line, MessageTag, TagColor);
-    }
-
-    // Tools for writing and checking quest paths; without Debug they answer like an unknown command.
-    internal static bool NeedsDebug(string subcommand) =>
-        subcommand is "do" or "sim" or "mountid" or "gen" or "d2qwh" or "d2qwl" or "rewards" or "tname" or "jobgear";
-
-    private void PrintUnknown(string subcommand) =>
-        _chatGui.PrintError(_LF("Unknown subcommand {0}", subcommand), MessageTag, TagColor);
-
-    private void PrintNotNumber(string value) =>
-        _chatGui.PrintError(_LF("'{0}' is not a number.", value), MessageTag, TagColor);
-
-    [SuppressMessage("Globalization", "CA1305")]
-    private static string FormatQuestWork(string[] parts, bool high = false)
-    {
-        List<string> values = [];
-        foreach (string part in parts)
-        {
-            if (!byte.TryParse(part.RemoveOtherChars("0123456789"), NumberStyles.None, CultureInfo.InvariantCulture, out byte d))
-                continue;
-
-            QuestWorkValue work = new(d);
-            string value = $" {{\"{(high ? "High" : "Low")}\": {(high ? work.High : work.Low)}}}";
-            if (!values.Contains(value))
-                values.Add(value);
-        }
-
-        return values.Join(",");
-    }
-
-    private void ProcessDebugCommand(string command, string arguments)
-    {
-        if (OpenSetupIfNeeded(arguments))
-            return;
-
-        string[] parts = arguments.Split(' ');
-        if (!_configuration.Advanced.Debug)
-        {
-            PrintUnknown(parts[0]);
-            return;
-        }
-
-        switch (parts[0])
-        {
             case "eventquests":
                 var eventQuests = _eventInfoComponent.GetActiveQuests().Select(q => q.ToString()).ToArray();
                 if (eventQuests.Length > 0)
@@ -390,6 +315,7 @@ internal sealed class CommandHandler : IDisposable
                 else
                     _chatGui.Print("There are no active event quests.", MessageTag, TagColor);
                 break;
+
             case "unlock-links":
                 IReadOnlyList<uint>? unlockLinks = _gameFunctions.GetUnlockLinks();
                 if (unlockLinks != null)
@@ -455,10 +381,75 @@ internal sealed class CommandHandler : IDisposable
                 _chatGui.Print(_L("This setting takes effect after the plugin is reloaded."));
                 break;
 
+            case "redeem":
+                _questStarter.RedeemRewards(dry: parts.Length > 1 && parts[1].EqualsIgnoreCaseAny("dry"));
+                break;
+
+            case "":
+                _questWindow.ToggleOrUncollapse();
+                break;
+
             default:
                 PrintUnknown(parts[0]);
                 break;
         }
+    }
+
+    private static string[] HelpLines() =>
+    [
+        _L("/qst help - lists these commands"),
+        _L("/qst config - opens the configuration window"),
+        _L("/qst start - starts doing quests"),
+        _L("/qst stop - stops doing quests"),
+        _L("/qst reload - reload all quest data"),
+        _L("/qst skipstep - skips the current quest step, e.g. one you finished by hand"),
+        _L("/qst next <questId> - sets the next quest to do (or clears it if no questId is specified)"),
+        _L("/qst which - shows all quests starting with your selected target"),
+        _L("/qst zone - shows all quests starting in the current zone (only includes quests with a known quest path, and currently visible unaccepted quests)"),
+        _L("/qst journal - toggles the Journal Progress window"),
+        _L("/qst priority - toggles the Priority window"),
+        _L("/qst validation - toggles the Quest Validation window"),
+        _L("/qst cleanup - adds every quest you already have open to the priority list, finished ones first"),
+        _L("/qst handle-interrupt - makes Questionable handle queued interrupts immediately (useful if you manually start combat)"),
+        _L("/qst clearlog - clears QuestCompletionLog.json"),
+        _L("/qst redeem - Redeem all reward items in inventory"),
+    ];
+
+    private void PrintHelp(string[] lines)
+    {
+        _chatGui.Print(_L("Available commands:"), MessageTag, TagColor);
+        _chatGui.Print(_L("/qst - toggles the Questing window"), MessageTag, TagColor);
+        foreach (string line in lines)
+            _chatGui.Print(line, MessageTag, TagColor);
+    }
+
+    // Debug tools; without Debug they answer like an unknown command.
+    internal static bool NeedsDebug(string subcommand) =>
+        subcommand is "do" or "sim" or "mountid" or "gen" or "d2qwh" or "d2qwl" or "rewards" or "tname" or "jobgear" or
+            "navcheck" or "eventquests" or "unlock-links" or "taxi" or "festivals" or "loc";
+
+    private void PrintUnknown(string subcommand) =>
+        _chatGui.PrintError(_LF("Unknown subcommand {0}", subcommand), MessageTag, TagColor);
+
+    private void PrintNotNumber(string value) =>
+        _chatGui.PrintError(_LF("'{0}' is not a number.", value), MessageTag, TagColor);
+
+    [SuppressMessage("Globalization", "CA1305")]
+    private static string FormatQuestWork(string[] parts, bool high = false)
+    {
+        List<string> values = [];
+        foreach (string part in parts)
+        {
+            if (!byte.TryParse(part.RemoveOtherChars("0123456789"), NumberStyles.None, CultureInfo.InvariantCulture, out byte d))
+                continue;
+
+            QuestWorkValue work = new(d);
+            string value = $" {{\"{(high ? "High" : "Low")}\": {(high ? work.High : work.Low)}}}";
+            if (!values.Contains(value))
+                values.Add(value);
+        }
+
+        return values.Join(",");
     }
 
     private bool OpenSetupIfNeeded(string arguments)

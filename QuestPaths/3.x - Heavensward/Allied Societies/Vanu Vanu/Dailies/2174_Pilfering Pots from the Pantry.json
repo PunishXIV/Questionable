@@ -50,16 +50,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": {
-            "X": 854.9438,
-            "Y": -47.979717,
-            "Z": 7.933328
-          },
-          "TerritoryId": 401,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2006653,
           "Position": {
             "X": 860.2273,

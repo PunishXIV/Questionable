@@ -203,7 +203,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "UseItem",
-          "DisableNavmesh": true,
           "ItemId": 2001117,
           "CompletionQuestVariablesFlags": [
             null,
@@ -247,8 +246,7 @@
             "Z": 283.71094
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },

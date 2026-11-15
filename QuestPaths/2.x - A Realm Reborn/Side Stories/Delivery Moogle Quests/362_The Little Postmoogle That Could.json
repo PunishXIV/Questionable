@@ -83,17 +83,6 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Position": {
-            "X": -166.19086,
-            "Y": 8.399985,
-            "Z": -64.10584
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "$": "Buscarron SE steps"
-        },
-        {
           "DataId": 1010815,
           "Position": {
             "X": -168.26129,

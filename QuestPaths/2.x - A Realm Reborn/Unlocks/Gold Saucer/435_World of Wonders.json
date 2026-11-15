@@ -176,15 +176,6 @@
           "StopDistance": 7
         },
         {
-          "Position": {
-            "X": 111.36922,
-            "Y": 13.000123,
-            "Z": -24.209782
-          },
-          "TerritoryId": 144,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1011079,
           "Position": {
             "X": 125.078125,

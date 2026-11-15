@@ -129,7 +129,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,2],
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}, {"Low": 5}
@@ -146,7 +145,6 @@
           "TerritoryId": 146,
           "InteractionType": "Interact",
           "StopDistance": 1,
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,1],
           "RequiredQuestVariables": [null,[
             {"Low": 3}, {"Low": 4}, {"Low": 5}
@@ -172,7 +170,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,4],
           "RequiredQuestVariables": [null,[
             {"Low": 3}, {"Low": 4}, {"Low": 5}

@@ -46,7 +46,6 @@
           "TerritoryId": 1188,
           "InteractionType": "Interact",
           "Fly": true,
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {

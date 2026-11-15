@@ -56,7 +56,6 @@
           "TerritoryId": 816,
           "InteractionType": "Interact",
           "StopDistance": 0.25,
-          "DisableNavmesh": true,
           "Fly": true
         }
       ]

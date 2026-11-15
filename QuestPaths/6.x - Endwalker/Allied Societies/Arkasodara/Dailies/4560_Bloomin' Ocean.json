@@ -44,7 +44,6 @@
           "TerritoryId": 957,
           "InteractionType": "Interact",
           "Fly": true,
-          "DisableNavmesh": true,
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 4}
             ],null,null,null,null
@@ -60,7 +59,6 @@
           "TerritoryId": 957,
           "InteractionType": "Interact",
           "Fly": true,
-          "DisableNavmesh": true,
           "RequiredQuestVariables": [null,[
             {"Low": 2}, {"Low": 3}
             ],null,null,null,null

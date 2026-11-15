@@ -126,7 +126,6 @@
           "StopDistance": 4,
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
           "$.0": "[1]",
           "$.1": "QuestVariables if done first: 1 0 0 0 0 128"

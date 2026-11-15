@@ -107,7 +107,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {

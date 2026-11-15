@@ -48,7 +48,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",

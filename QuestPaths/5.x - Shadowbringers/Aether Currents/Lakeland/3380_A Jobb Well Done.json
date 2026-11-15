@@ -154,24 +154,6 @@
           "DisableNavmesh": true
         },
         {
-          "Position": {
-            "X": 781.0609,
-            "Y": 23.037855,
-            "Z": -51.803383
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 805.13293,
-            "Y": 23.037834,
-            "Z": -45.432808
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1027341,
           "Position": {
             "X": 805.35596,

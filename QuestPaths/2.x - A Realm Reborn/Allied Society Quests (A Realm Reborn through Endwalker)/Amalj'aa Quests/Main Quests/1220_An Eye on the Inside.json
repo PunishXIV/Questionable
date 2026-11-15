@@ -35,17 +35,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "$": "Cave navigation",
-          "Position": {
-            "X": 107.37293,
-            "Y": 14.995779,
-            "Z": -361.19995
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": false
-        },
-        {
           "DataId": 1006217,
           "Position": {
             "X": -181.047,
@@ -127,17 +116,6 @@
     {
       "Sequence": 6,
       "Steps": [
-        {
-          "$": "Cave navigation",
-          "Position": {
-            "X": 107.37293,
-            "Y": 14.995779,
-            "Z": -361.19995
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1005553,
           "Position": {
@@ -303,17 +281,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "$": "Cave navigation",
-          "Position": {
-            "X": 107.37293,
-            "Y": 14.995779,
-            "Z": -361.19995
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1005553,
           "Position": {

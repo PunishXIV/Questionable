@@ -80,17 +80,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 107.40087,
-            "Y": 15.010546,
-            "Z": -360.9872
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "$": "Southern Thanalan, Hamujj Gah Cave"
-        },
-        {
           "DataId": 1005553,
           "Position": {
             "X": 122.6062,

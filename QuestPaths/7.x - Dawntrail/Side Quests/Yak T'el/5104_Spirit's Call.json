@@ -72,8 +72,7 @@
             "Z": 78.95244
           },
           "TerritoryId": 1189,
-          "InteractionType": "WaitForNpcAtPosition",
-          "DisableNavmesh": true
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1051053,
@@ -83,8 +82,7 @@
             "Z": 31.171473
           },
           "TerritoryId": 1189,
-          "InteractionType": "WaitForNpcAtPosition",
-          "DisableNavmesh": true
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1051053,
@@ -94,8 +92,7 @@
             "Z": -57.818764
           },
           "TerritoryId": 1189,
-          "InteractionType": "WaitForNpcAtPosition",
-          "DisableNavmesh": true
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "Position": {

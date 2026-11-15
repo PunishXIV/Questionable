@@ -96,8 +96,7 @@
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKZD019_03426_SYSTEM_100_020"
-          },
-          "DisableNavmesh": true
+          }
         }
       ]
     },

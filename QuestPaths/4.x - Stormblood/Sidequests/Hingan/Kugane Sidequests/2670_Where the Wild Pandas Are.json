@@ -112,7 +112,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Jump",
-          "DisableNavmesh": true,
           "JumpDestination": {
             "Position": {
               "X": -56.66354,

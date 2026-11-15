@@ -84,15 +84,6 @@
           "Mount": true
         },
         {
-          "Position": {
-            "X": -48.166317,
-            "Y": -0.8113563,
-            "Z": 374.09103
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2012076,
           "Position": {
             "X": -31.265808,

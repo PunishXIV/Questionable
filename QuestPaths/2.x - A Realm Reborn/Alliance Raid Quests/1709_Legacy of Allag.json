@@ -287,8 +287,7 @@
           ],
           "$": "0 0  0 0  0 0 -> 16 17  0 0  0 128",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
-          "Fly": true,
-          "DisableNavmesh": true
+          "Fly": true
         },
         {
           "DataId": 2000078,

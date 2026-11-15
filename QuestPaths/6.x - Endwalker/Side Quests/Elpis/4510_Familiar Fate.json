@@ -41,8 +41,7 @@
             "Z": 107.03581
           },
           "TerritoryId": 961,
-          "InteractionType": "None",
-          "DisableNavmesh": true
+          "InteractionType": "None"
         },
         {
           "DataId": 1041366,
@@ -103,7 +102,6 @@
           },
           "TerritoryId": 961,
           "InteractionType": "None",
-          "DisableNavmesh": true,
           "Fly": true
         },
         {

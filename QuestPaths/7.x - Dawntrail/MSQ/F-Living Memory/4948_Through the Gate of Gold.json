@@ -139,16 +139,6 @@
           "DisableNavmesh": true
         },
         {
-          "Position": {
-            "X": 3.7348669,
-            "Y": 50.12495,
-            "Z": 660.56006
-          },
-          "TerritoryId": 1192,
-          "InteractionType": "WalkTo",
-          "$": "Leynode Mnemo to Meso Terminal waypoint"
-        },
-        {
           "DataId": 1047837,
           "Position": {
             "X": -0.045776367,

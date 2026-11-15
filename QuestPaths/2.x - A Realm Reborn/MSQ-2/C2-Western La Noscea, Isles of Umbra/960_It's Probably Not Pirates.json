@@ -108,16 +108,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 293.98203,
-            "Y": -24.988865,
-            "Z": 240.63774
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "$": "Aleport Crates"
-        },
-        {
           "DataId": 1006497,
           "Position": {
             "X": 321.1565,

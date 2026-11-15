@@ -79,16 +79,6 @@
       "Steps": [
         {
           "Position": {
-            "X": -96.72436,
-            "Y": 60.086643,
-            "Z": -602.3445
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
             "X": -109.40343,
             "Y": 60.039776,
             "Z": -612.03217

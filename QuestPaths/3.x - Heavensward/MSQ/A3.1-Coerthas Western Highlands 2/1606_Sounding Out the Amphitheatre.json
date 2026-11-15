@@ -79,7 +79,6 @@
           },
           "TerritoryId": 397,
           "InteractionType": "SinglePlayerDuty",
-          "DisableNavmesh": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.292"

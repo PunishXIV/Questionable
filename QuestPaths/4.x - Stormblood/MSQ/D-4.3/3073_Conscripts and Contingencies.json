@@ -76,8 +76,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
-          "DisableNavmesh": true
+          "Fly": true
         },
         {
           "Position": {

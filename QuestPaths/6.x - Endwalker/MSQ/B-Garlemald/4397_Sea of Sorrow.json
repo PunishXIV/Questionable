@@ -117,15 +117,6 @@
           "NpcWaitDistance": 15
         },
         {
-          "Position": {
-            "X": -50.280434,
-            "Y": 42.36871,
-            "Z": 467.25403
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1039985,
           "Position": {
             "X": 19.588282,
@@ -146,24 +137,6 @@
           "TerritoryId": 959,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 15
-        },
-        {
-          "Position": {
-            "X": 118.55694,
-            "Y": 46.506252,
-            "Z": 456.90314
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 131.81705,
-            "Y": 54.55443,
-            "Z": 468.51056
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1039986,

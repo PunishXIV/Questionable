@@ -45,7 +45,6 @@
           "StopDistance": 7,
           "TerritoryId": 399,
           "InteractionType": "AcceptQuest",
-          "DisableNavmesh": true,
           "AethernetShortcut": [
             "[Idyllshire] Aetheryte Plaza",
             "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"

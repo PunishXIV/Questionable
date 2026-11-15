@@ -53,7 +53,9 @@ internal sealed class BossModIpc : Ipc, IDisposable
         _disposalTokens = EzIPC.Init(this, PluginName, SafeWrapper.None);
     }
 
+    private readonly HashSet<string> _written = [];
     private Session? _session;
+    private bool _removePending;
     private bool _rebornInstalled;
 
     public bool HasQuestBattle => _session is { IsQuestBattle: true };
@@ -85,6 +87,7 @@ internal sealed class BossModIpc : Ipc, IDisposable
 
         // The old BossMod is gone; don't restore its snapshot into the new one.
         _session = null;
+        TryRemovePresets();
         return true;
     }
 
@@ -119,24 +122,48 @@ internal sealed class BossModIpc : Ipc, IDisposable
         return _rebornInstalled;
     }
 
-    public PresetDefinition AddPreset(EPreset preset) => AddPreset(PresetDefinitions[preset]);
-    public PresetDefinition AddPreset(PresetDefinition definition, bool bulk = false)
+    private PresetDefinition AddPreset(EPreset preset)
     {
-        if (!bulk)
-            ClearObstacleMaps();
-        if (_getPreset(definition.Name) == null && !_createPreset(definition.Content, true))
-            throw new TaskException($"BossMod rejected creation of preset '{definition.Name}'.");
+        PresetDefinition definition = PresetDefinitions[preset];
+        ClearObstacleMaps();
+        // The first use writes QST's copy over a leftover or edited one; later uses only replace a missing one.
+        if (!_written.Contains(definition.Name) || _getPreset(definition.Name) == null)
+        {
+            if (!_createPreset(definition.Content, true))
+                throw new TaskException($"BossMod rejected creation of preset '{definition.Name}'.");
+            _written.Add(definition.Name);
+        }
         return definition;
     }
 
-    public void AddAllPresets(bool delete = false)
+    // Not per fight: every BossMod create or delete rewrites its whole preset file.
+    public void RemovePresets()
     {
-        ClearObstacleMaps();
-        foreach (PresetDefinition definition in PresetDefinitions.Values)
+        _removePending = true;
+        TryRemovePresets();
+    }
+
+    public void KeepPresets() => _removePending = false;
+
+    private void TryRemovePresets()
+    {
+        if (!_removePending || _session != null)
+            return;
+        try
         {
-            if (delete)
-                _deletePreset(definition.Name);
-            AddPreset(definition, bulk: true);
+            if (_written.Count > 0)
+            {
+                // Still active after cleanup means it was the user's own active preset before QST started.
+                List<string> active = _getActivePresets();
+                foreach (string name in _written.Where(x => !active.Contains(x)))
+                    _deletePreset(name);
+                _written.Clear();
+            }
+            _removePending = false;
+        }
+        catch (Exception)
+        {
+            // Retried after the next cleanup.
         }
     }
 
@@ -335,6 +362,7 @@ internal sealed class BossModIpc : Ipc, IDisposable
         if (session.ProviderLost || session.ControlLost || session.PresetPending || !settingsRestored)
             return false;
         _session = null;
+        TryRemovePresets();
         return true;
     }
 
@@ -512,8 +540,6 @@ internal sealed class BossModModule
 {
     public string Name => "Boss Mod";
 
-    private bool _justLoaded = true;
-
     public bool CanHandleFight(CombatController.CombatData combatData)
     {
         if (configuration.General.CombatModule != ECombatModule.BossMod)
@@ -526,11 +552,6 @@ internal sealed class BossModModule
     {
         try
         {
-            if (_justLoaded)
-            {
-                bossModIpc.AddAllPresets(delete: true);
-                _justLoaded = false;
-            }
             bossModIpc.SetActivePreset(BossModIpc.EPreset.Overworld);
             return true;
         }
@@ -566,5 +587,33 @@ internal sealed class BossModModule
 
     public bool CanAttack(IBattleNpc target) => true;
 
-    public void Dispose() => IpcInvoke.TryOnFrameworkThread(framework, () => Stop(), logger);
+    public void Dispose() => IpcInvoke.TryOnFrameworkThread(framework, () =>
+    {
+        Stop();
+        bossModIpc.RemovePresets();
+    }, logger);
+}
+
+[RegisterSingleton]
+internal sealed class BossModPresetCleanup : IDisposable
+{
+    private readonly QuestController _questController;
+    private readonly BossModIpc _bossModIpc;
+
+    public BossModPresetCleanup(QuestController questController, BossModIpc bossModIpc)
+    {
+        _questController = questController;
+        _bossModIpc = bossModIpc;
+        _questController.AutomationTypeChanged += OnAutomationTypeChanged;
+    }
+
+    public void Dispose() => _questController.AutomationTypeChanged -= OnAutomationTypeChanged;
+
+    private void OnAutomationTypeChanged(object sender, QuestController.EAutomationType automationType)
+    {
+        if (automationType == QuestController.EAutomationType.Manual)
+            _bossModIpc.RemovePresets();
+        else
+            _bossModIpc.KeepPresets();
+    }
 }

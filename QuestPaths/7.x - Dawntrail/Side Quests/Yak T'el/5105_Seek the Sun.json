@@ -40,7 +40,6 @@
           "StopDistance": 5,
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]

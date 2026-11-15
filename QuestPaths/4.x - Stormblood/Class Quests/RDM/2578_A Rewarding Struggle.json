@@ -130,16 +130,6 @@
       "Steps": [
         {
           "Position": {
-            "X": -408.92343,
-            "Y": 23.167036,
-            "Z": -351.16223
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "$": "Vesper Bay Gate"
-        },
-        {
-          "Position": {
             "X": -375.8867,
             "Y": 23,
             "Z": -352.31714
@@ -165,15 +155,6 @@
     {
       "Sequence": 7,
       "Steps": [
-        {
-          "Position": {
-            "X": -375.8867,
-            "Y": 23,
-            "Z": -352.31714
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo"
-        },
         {
           "Position": {
             "X": -408.92343,

@@ -101,15 +101,6 @@
         },
         {
           "Position": {
-            "X": 291.3423,
-            "Y": 268.31516,
-            "Z": -346.18488
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
             "X": 277.46622,
             "Y": 262.43375,
             "Z": -328.6956
@@ -191,15 +182,6 @@
     {
       "Sequence": 8,
       "Steps": [
-        {
-          "Position": {
-            "X": -634.109,
-            "Y": 98.06235,
-            "Z": -336.91452
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo"
-        },
         {
           "Position": {
             "X": -789.7743,
