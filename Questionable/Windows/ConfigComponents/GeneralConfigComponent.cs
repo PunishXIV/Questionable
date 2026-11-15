@@ -470,6 +470,17 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             ImGuiComponents.HelpMarker(
                 _L("Between quests, when Mog Station or reward mail is waiting, Questionable goes to a delivery moogle and has Mogmail claim it and delete the emptied letters. Mogmail's own Auto Pop setting decides whether claimed items get used. Needs the Mogmail plugin."));
 
+            bool runNoviceHall = Configuration.General.RunNoviceHall;
+            if (ImGui.Checkbox(_L("Run the Hall of the Novice for the Neophyte's Ring"), ref runNoviceHall))
+            {
+                Configuration.General.RunNoviceHall = runNoviceHall;
+                Save();
+            }
+
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker(
+                _L("Between quests, while your class is level 49 to 59 and you don't have the Neophyte's Ring, Questionable has AutoDuty run the three new Hall of the Novice exercises. The ring gives 30% more EXP up to level 60. Needs AutoDuty with duties turned on."));
+
             bool autoStepRefreshEnabled = Configuration.General.AutoStepRefreshEnabled;
             if (ImGui.Checkbox(_L("Retry the current step when stuck"), ref autoStepRefreshEnabled))
             {

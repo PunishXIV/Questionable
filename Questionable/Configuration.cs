@@ -275,6 +275,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool IgnoreNextQuestIfPrioSet { get; set; }
         public bool TitleBarPillCenter { get; set; } = true;
         public bool ClaimMail { get; set; } = true;
+        public bool RunNoviceHall { get; set; } = true;
         public bool AutoStepRefreshEnabled { get; set; }
         public int AutoStepRefreshDelaySeconds { get; set; } = 30;
         public int AutoStepRefreshMaxTries { get; set; } = 3;

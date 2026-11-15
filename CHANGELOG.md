@@ -7,6 +7,7 @@
   - Feature: The ! button next to the quest buttons reports how a quest went, and a problem stop offers a "Send a report" link in chat -Kage
 - Feature: Collects the free job gear at levels 80, 89 and 99 between quests and puts on your best gear -Kage
 - Feature: Claims waiting Mog Station and reward mail at a delivery moogle between quests (needs Mogmail) -Kage
+- Feature: Runs the three new Hall of the Novice exercises between quests at levels 49 to 59 to get the Neophyte's Ring, which gives 30% more EXP up to level 60 (needs AutoDuty) -Kage
 - Feature: Option to keep your chocobo companion out, buying more Gysahl Greens when you run out (needs Knightshopper) -Kage
 - Feature: Option to retry the current step a few times when stuck before stopping -Kage
 - Feature: Duties without Duty Support open the Duty Finder or run unsynced; a slider sets how many levels above a duty you need to go unsynced -Kage

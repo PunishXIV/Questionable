@@ -152,7 +152,7 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
         if (!game.Available || !game.Idle || game.InQueue || game.Loading || game.InDuty)
             throw new NeedsPlayerException("Can't start AutoDuty while you're in a duty or queue, or moving.");
 
-        Guid id = Operation.BeginRequest(data.TerritoryId);
+        Guid id = Operation.BeginRequest(data.TerritoryId, exitIsDone: dutyMode == Duty.Mode.NoviceHall);
         _loggedSwitchBackFailure = false;
         try
         {
@@ -305,6 +305,7 @@ internal sealed class AutoDutyState(TimeProvider? timeProvider = null)
     private bool _observedStop;
     private bool _profileSwitchedBack;
     private bool? _stopped;
+    private bool _exitIsDone;
 
     public uint TerritoryId { get; private set; }
     public bool RunRequested { get; private set; }
@@ -314,10 +315,12 @@ internal sealed class AutoDutyState(TimeProvider? timeProvider = null)
     public bool CanSwitchProfileBack => HasOperation && _stopped == true && IdleSettled &&
         (NeedsConfirmation || _observedStop || !RunRequested);
 
-    public Guid BeginRequest(uint territoryId)
+    // Hall of the Novice exercises may not report a duty completion; leaving one counts as done.
+    public Guid BeginRequest(uint territoryId, bool exitIsDone = false)
     {
         Guid id = base.BeginRequest();
         TerritoryId = territoryId;
+        _exitIsDone = exitIsDone;
         RunRequested = ObservedRunning = EnteredDuty = DutyCompleted = false;
         _stopAttempted = _observedStop = _profileSwitchedBack = false;
         _stopped = null;
@@ -414,9 +417,10 @@ internal sealed class AutoDutyState(TimeProvider? timeProvider = null)
     {
         if (!_profileSwitchedBack || !CanSwitchProfileBack || NeedsConfirmation)
             return;
+        bool done = EnteredDuty && (DutyCompleted || _exitIsDone);
         SetStatus(IsAbandoned ? ExternalOperationStatus.Cancelled :
-            EnteredDuty && DutyCompleted ? ExternalOperationStatus.Succeeded : ExternalOperationStatus.Failed,
-            EnteredDuty && DutyCompleted ? "Duty completed and exited" : "AutoDuty stopped without verified duty completion");
+            done ? ExternalOperationStatus.Succeeded : ExternalOperationStatus.Failed,
+            done ? "Duty completed and exited" : "AutoDuty stopped without verified duty completion");
     }
 
     private void SetStatus(ExternalOperationStatus status, string message)
