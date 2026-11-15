@@ -116,7 +116,6 @@
     },
     {
       "Sequence": 255,
-      "Comment": "If you purchase the fish from the marketboard, click Skip until it is disabled, then click Play",
       "Steps": [
         {
           "Position": {
@@ -164,11 +163,7 @@
           "ItemsToGather": [
             {
               "ItemId": 12829,
-              "ItemCount": 1,
-              "FishingOptions": {
-                "BaitId": 12704,
-                "Preset": "AH9_G7EdAJwFdlvHyzDtYNBGaSAIehp6IyTpXJ0iopNxLZ34IjwNxHFDSLXLuVL2JvpTAnkMwmzCpUDbp2Tp6iudPv9r2o7S3MngUBJ9HnCWvP1/Q2vF1rQNpRV7jsHH4xks0jXhUOqqUEngSHSI89b75qeelgnjTR/IL0F6asW4FhL5QPnQ9LLrEDVsIIAQUbE6dl97ZIhkPSASNo/wAxJIXW8+WVwuwe8H/aeaTudPtaCtaMl6A8CSduoZH9HL31EVcPm4iuBNXY2hyoiJqsSIoIU9l+7tR3k+Jpj+6iX6D/apKkKKMG70YGyt5t7Vl5VJDYhZs9XGVy3/uu49gJR6kMZkMRrPNHSJO8ji/oDg1h0o2CC3As1ZvePeuqMgkhC6g9zdxhBuZxG9DzNyEEJpQgDv8Qr0lBk2zrKl1z9g0nyg8KIARZJSEZ1+eP3PRRZNz0heLxlS9FHQNbejYKnJ2g6awHzuWmkplCctPL+C1A8VIRbijOPKmDYz8mW7MoAV6hHSAWbhNmpunUQIHVJptkxVITKI3Hn6/gH7QxUzBDstSFnFWNUYzBagZgwkXwTlzqfQW+DVItSX5dhVgjdleE7uyQkNpBab7sLl6jHCmALaKILsl05LeslqD1GXiIAg54Y4gOLoyAPOs1HJAihnjUpo6QFpWMODXZIpxbxLjc+HablsyHkqC3tJaZFyNySL03Cbv/3iZZdirLoxx8qWEqK2KsM2HibrSo3yxnlDtMS3hmbPR9O17EkynzSPBePa5fD3C0o483X9Z4HUzdM83UDyt3rMMnLCnSWqIU6w4iGConuYZhzIwiCldklJ3zxinnBTl+woH8rw7x7mytxIICC2bhMbtq2bRA/5Be8f3ROIGAA5I+cbxcFwfVaLv/ugsxLBwAEHkGRfggD6Ahb8+GNgnG2eBedvmIxll2bW5s870S5SsIdRH46T4K4DeLh52uXNVQ6aoaVOJ+eyt8hOCniX+zLuPTdyXzyTYP7iHozuwWVNnCLCSIKpkP0rNifbJZ4dvTSm/stGF8ubdRJrsjduVAUcrBatWKSsCliazcU/zTikvATHiNz3KifWpRzHTXcsVZuVvDSMRrwt6uLClDIOJMZCkyS4Vq02kzUtq7lZyf3jdweWfmfbZOfBZl+RYUvAczF3B82attztbHbVbJcDN2r5mIqZmlbkNOd/ecBxyXA6LPoGRzkYz/lLLGa62S/a0I5ALlvDLNW0E8e0wZ2zkz5NII6IrS2M8Hv1Y5eTG5D93zWH1KIX3+KL1YfifSjF0oRE0umbasI+4O5xgyqbOsP51UyuZjeDQkxWP6kyfGQfs1uLXh4jNY4hSRDxHlz+dKUNoxGSm/ibGYllzbFPrltwGtPAKWhanAKixcmfETWLo7HLLmmq513WwVonG0aSSSdli0L1g+Eg70Ahb/DzzyJw+Q4WTj9r8JYvNpr3yLcOcbI+wVPgUB2s5Bunv4Cv75LcmuKkggE="
-              }
+              "ItemCount": 1
             }
           ]
         },

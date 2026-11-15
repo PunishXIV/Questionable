@@ -117,10 +117,7 @@
           "ItemsToGather": [
             {
               "ItemId": 26751,
-              "ItemCount": 1,
-              "FishingOptions": {
-                "BaitId": 27583
-              }
+              "ItemCount": 1
             }
           ]
         },

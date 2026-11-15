@@ -120,11 +120,7 @@
           "ItemsToGather": [
             {
               "ItemId": 43915,
-              "ItemCount": 1,
-              "FishingOptions": {
-                "BaitId": 43852,
-                "HookType": { "Normal": { "Strong": true } }
-              }
+              "ItemCount": 1
             }
           ]
         },

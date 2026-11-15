@@ -78,11 +78,7 @@
             {
               "ItemId": 43905,
               "ItemCount": 6,
-              "Collectability": 433,
-              "FishingOptions": {
-                "BaitId": 43852,
-                "HookType": { "Normal": { "Strong": true } }
-              }
+              "Collectability": 433
             }
           ],
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}

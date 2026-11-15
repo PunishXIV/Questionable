@@ -62,11 +62,7 @@
             {
               "ItemId": 35604,
               "ItemCount": 6,
-              "Collectability": 70,
-              "FishingOptions": {
-                "BaitId": 36588,
-                "HookType": { "Normal": { "Weak": true } }
-              }
+              "Collectability": 70
             }
           ],
           "AethernetShortcut": [

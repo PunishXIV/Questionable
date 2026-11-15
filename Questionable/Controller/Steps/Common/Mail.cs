@@ -76,7 +76,8 @@ internal static class Mail
             HashSet<uint> moogleIds = MoogleIds(dataManager);
             if (objectTable.FirstOrDefault(x => moogleIds.Contains(x.BaseId)) is { } nearby)
             {
-                logger.LogInformation("Claiming reward mail at the delivery moogle in this zone");
+                logger.LogInformation("Claiming {Count} reward letters at the delivery moogle in this zone",
+                    MogmailIpc.RewardLetters);
                 return Claim(new Moogle(EAetheryteLocation.None, nearby.BaseId, clientState.TerritoryType, nearby.Position), null);
             }
 
@@ -88,7 +89,8 @@ internal static class Mail
                 return [];
             }
 
-            logger.LogInformation("Claiming reward mail at the delivery moogle in {City}", route.Moogle.City);
+            logger.LogInformation("Claiming {Count} reward letters at the delivery moogle in {City}",
+                MogmailIpc.RewardLetters, route.Moogle.City);
             return Claim(route.Moogle, route.Shard);
         }
 
@@ -218,6 +220,7 @@ internal static class Mail
                 return ETaskResult.StillRunning;
 
             Finish();
+            logger.LogInformation("{Count} reward letters left after claiming", MogmailIpc.RewardLetters);
             if (MogmailIpc.RewardLetters is > 0)
             {
                 _retryAt = DateTime.Now + RetryAfter;

@@ -13,6 +13,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
     private readonly IFramework _framework;
     private readonly InteractionUiController _interactionUiController;
     private readonly TitleBarButton _minimizeButton;
+    private bool _isMinimized;
     private readonly IObjectTable _objectTable;
 
     private readonly IDalamudPluginInterface _pluginInterface;
@@ -80,7 +81,6 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             {
                 IsOpenAndUncollapsed = true;
                 IsMinimized = !IsMinimized;
-                _minimizeButton!.Icon = IsMinimized ? FontAwesomeIcon.WindowMaximize : FontAwesomeIcon.Minus;
             },
             AvailableClickthrough = true
         };
@@ -116,7 +116,16 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
         _quickAccessComponent.Reload += OnReload;
         _questController.IsQuestWindowOpenFunction = () => IsOpen;
     }
-    public bool IsMinimized { get; set; }
+    // Start minimized sets this directly, so the button icon follows the property, not the click.
+    public bool IsMinimized
+    {
+        get => _isMinimized;
+        set
+        {
+            _isMinimized = value;
+            _minimizeButton.Icon = value ? FontAwesomeIcon.WindowMaximize : FontAwesomeIcon.Minus;
+        }
+    }
 
     public WindowConfig WindowConfig => _configuration.DebugWindowConfig;
 

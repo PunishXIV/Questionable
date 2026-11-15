@@ -25,6 +25,8 @@ internal static class SkipCondition
             if (skipConditions is { Never: true })
                 return null;
 
+            IReadOnlyList<GatheredItem> fishAhead = Fish.FishAhead(sequence, step);
+
             if ((skipConditions == null || !skipConditions.HasSkipConditions()) &&
                 !QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags) &&
                 step.RequiredQuestVariables.Count == 0 &&
@@ -33,12 +35,13 @@ internal static class SkipCondition
                 step.NextQuestId == null &&
                 step.RequiredCurrentJob.Count == 0 &&
                 step.RequiredQuestAcceptedJob.Count == 0 &&
-                step.InteractionType != EInteractionType.AttuneAetherCurrent)
+                step.InteractionType != EInteractionType.AttuneAetherCurrent &&
+                fishAhead.Count == 0)
             {
                 return null;
             }
 
-            return new Task(step, skipConditions ?? new(), quest.Id);
+            return new Task(step, skipConditions ?? new(), quest.Id, fishAhead);
         }
     }
 
@@ -46,10 +49,13 @@ internal static class SkipCondition
     (
         QuestStep Step,
         SkipStepConditions SkipConditions,
-        ElementId ElementId) : ITask
+        ElementId ElementId,
+        IReadOnlyList<GatheredItem>? FishAhead = null) : ITask
     {
         public override string ToString() => "CheckSkip";
     }
+
+    private const uint FishingTackle = 33;
 
     internal sealed class Executor
     (
@@ -62,7 +68,8 @@ internal static class SkipCondition
         IObjectTable objectTable,
         ICondition condition,
         ExtraConditionUtils extraConditionUtils,
-        ClassJobUtils classJobUtils) : TaskExecutor<Task>
+        ClassJobUtils classJobUtils,
+        IDataManager dataManager) : TaskExecutor<Task>
     {
         protected override bool Start()
         {
@@ -71,6 +78,9 @@ internal static class SkipCondition
             ElementId elementId = Task.ElementId;
 
             logger.LogInformation("Checking skip conditions; {ConfiguredConditions}", string.Join(",", skipConditions));
+
+            if (CheckFishInBags(step))
+                return true;
 
             if (CheckFlying(step, skipConditions))
                 return true;
@@ -132,6 +142,23 @@ internal static class SkipCondition
 
             return false;
         }
+
+        // Only bait purchases go; a purchase the quest itself needs stays.
+        private bool CheckFishInBags(QuestStep step)
+        {
+            if (Task.FishAhead is not { Count: > 0 } fish ||
+                fish.Any(x => Fish.CountEligibleInInventory(x) < x.ItemCount))
+                return false;
+            if (step.InteractionType == EInteractionType.PurchaseItem &&
+                (step.ItemId is not { } itemId || !IsFishingTackle(itemId)))
+                return false;
+
+            logger.LogInformation("Skipping step, the fish it leads to are already in the inventory");
+            return true;
+        }
+
+        private bool IsFishingTackle(uint itemId) =>
+            dataManager.GetExcelSheet<Lumina.Excel.Sheets.Item>().GetRowOrDefault(itemId)?.ItemUICategory.RowId == FishingTackle;
 
         private bool CheckFlying(QuestStep step, SkipStepConditions skipConditions)
         {

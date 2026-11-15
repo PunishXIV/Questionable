@@ -60,11 +60,7 @@
             {
               "ItemId": 43906,
               "ItemCount": 6,
-              "Collectability": 433,
-              "FishingOptions": {
-                "BaitId": 43857,
-                "HookType": { "Normal": { "Strong": true } }
-              }
+              "Collectability": 433
             }
           ]
         },

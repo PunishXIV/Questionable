@@ -49,7 +49,6 @@
     },
     {
       "Sequence": 255,
-      "Comment": "If you purchase the fish from the marketboard, click Skip until it is disabled, then click Play",
       "Steps": [
         {
           "DataId": 1011228,
@@ -99,15 +98,7 @@
           "ItemsToGather": [
             {
               "ItemId": 12713,
-              "ItemCount": 3,
-              "FishingOptions": {
-                "BaitId": 12704,
-                "HookType": {
-                  "Normal": {
-                    "Weak": true
-                  }
-                }
-              }
+              "ItemCount": 3
             }
           ]
         },

@@ -156,6 +156,36 @@ internal static class Fish
         public override bool ShouldInterruptOnDamage() => false;
     }
 
+    // Buying bait and walking to the spot only serve the fishing steps right after them; with those fish already
+    // in the bags (e.g. bought on the market board) they can be skipped.
+    internal static IReadOnlyList<GatheredItem> FishAhead(QuestSequence sequence, QuestStep step)
+    {
+        int index = sequence.Steps.IndexOf(step);
+        if (index < 0 || !IsFishLeadIn(step))
+            return [];
+
+        List<GatheredItem> fish = [];
+        bool sawFish = false;
+        foreach (QuestStep next in sequence.Steps.Skip(index + 1))
+        {
+            if (next.InteractionType == EInteractionType.Fish)
+            {
+                if (next.ItemsToGather.Count == 0)
+                    return [];
+                fish.AddRange(next.ItemsToGather);
+                sawFish = true;
+            }
+            else if (sawFish || !IsFishLeadIn(next))
+                break;
+        }
+
+        return fish;
+    }
+
+    private static bool IsFishLeadIn(QuestStep step) =>
+        step.InteractionType is EInteractionType.PurchaseItem or EInteractionType.WalkTo &&
+        !QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags);
+
     internal static bool ObjectivesSatisfied(Task task, bool matchesQuestWork, int eligibleItemCount) =>
         task.HasCompletionFlags && matchesQuestWork ||
         task.GatheredItem is { } item && eligibleItemCount >= item.ItemCount;
@@ -171,7 +201,7 @@ internal static class Fish
         return ObjectivesSatisfied(task, false, CountEligibleInInventory(item));
     }
 
-    private static unsafe int CountEligibleInInventory(GatheredItem item)
+    internal static unsafe int CountEligibleInInventory(GatheredItem item)
     {
         if (item.ItemId == 0 || item.ItemCount <= 0 || item.Collectability > short.MaxValue)
             throw new TaskException("Invalid fishing item requirement");

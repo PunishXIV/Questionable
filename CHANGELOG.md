@@ -8,6 +8,8 @@
 - Feature: Collects the free job gear at levels 80, 89 and 99 between quests and puts on your best gear -Kage
 - Feature: Claims waiting Mog Station and reward mail at a delivery moogle between quests (needs Mogmail) -Kage
 - Feature: Runs the three new Hall of the Novice exercises between quests at levels 49 to 59 to get the Neophyte's Ring, which gives 30% more EXP up to level 60 (needs AutoDuty) -Kage
+- Feature: Uses a Vesper Bay ticket when the next step is in Vesper Bay or the Waking Sands and you're somewhere else -Kage
+- Feature: Fishing quests skip buying bait and fishing when the fish are already in your bags, e.g. bought on the market board -Kage
 - Feature: Option to keep your chocobo companion out, buying more Gysahl Greens when you run out (needs Knightshopper) -Kage
 - Feature: Option to retry the current step a few times when stuck before stopping -Kage
 - Feature: Duties without Duty Support open the Duty Finder or run unsynced; a slider sets how many levels above a duty you need to go unsynced -Kage
@@ -26,3 +28,5 @@
 - Change: Import and export of quest battle and duty settings removed -Kage
 - Bug fix: The quest window no longer opens by itself during a duty -Kage
 - Bug fix: No more stalls when Questionable has to dismount before talking to someone -Kage
+- Bug fix: Steps that start from another zone teleport there again instead of stopping with "no route" -Kage
+- Bug fix: With "Start minimized" on, the quest window shows the right minimize button -Kage
