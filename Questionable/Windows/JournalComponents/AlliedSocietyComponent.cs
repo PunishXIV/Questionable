@@ -131,23 +131,23 @@ internal sealed class AlliedSocietyComponent
         using (ImRaii.Disabled(quests.Count == 0))
         {
             // Ignore Ixal Deliverance and FATE quests when flagging unchecked paths.
-            if (debug && quests.Any(x => !x.QuestId.Value.Equals(1569) && ( // is not the Ixal delivery quest "Deliverance", and
-                    !questRegistry.TryGetQuest(x.QuestId, out Quest? quest) || // is not a valid quest in the registry, or
-                    (quest.Root.Disabled && quest.Root.Comment == null) || // is disabled without a comment explaining why, or
+            if (debug && quests.Any(x => !x.QuestId.Value.Equals(1569) && ( // Ixal delivery quest "Deliverance"
+                    !questRegistry.TryGetQuest(x.QuestId, out Quest? quest) ||
+                    (quest.Root.Disabled && quest.Root.Comment == null) ||
                     (quest.Root.LastChecked.Date != null &&
-                        JournalTable.IsStale(quest.Root, DateTime.Now) && // has not been reported checked in more than a week, and
-                        !(quest.Root.Comment ?? "").Contains("FATE") // is not a FATE quest, we don't care that much
+                        JournalTable.IsStale(quest.Root, DateTime.Now) &&
+                        !(quest.Root.Comment ?? "").Contains("FATE") // FATE quests matter less
                     )
                 )
             ))
             {
-                using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent)) // highlight the category orange
+                using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent))
                 {
                     isOpen = ImGui.CollapsingHeader(label);
                 }
                 _unchecked += 1;
             }
-            else if (quests.Any(x => !questFunctions.IsQuestComplete(x.QuestId))) // if the character has not completed a quest in this category
+            else if (quests.Any(x => !questFunctions.IsQuestComplete(x.QuestId)))
             {
                 using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.Amber))
                 {

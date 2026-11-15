@@ -142,7 +142,7 @@ internal sealed class QuestJournalUtils
                 {
                     if (ImGui.MenuItem(_L("Start NG+ here")))
                     {
-                        if (redoActive) // safeguard
+            if (redoActive)
                             redoUtil.SendCommand(redoChapter: RedoChapter.Off);
                         else
                             redoUtil.SendCommand(questRedoChapter: redoIndex.Chapter);

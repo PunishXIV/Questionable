@@ -2,7 +2,6 @@ using System.Collections.Immutable;
 using ECommons.ExcelServices;
 namespace Questionable.Domain;
 
-// A zone's field aether currents, run from the priority list like a quest.
 internal sealed class AetherCurrentZoneInfo(
     AetherCurrentId zoneId,
     string name,

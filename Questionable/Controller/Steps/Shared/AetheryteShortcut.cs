@@ -7,10 +7,28 @@ internal static class AetheryteShortcut
 {
     public static HashSet<uint> Territories = [212, 351, 128, 131, 133, 419];
 
+    private const uint WesternThanalan = 140;
+    private const uint WakingSands = 212;
+    internal static readonly Vector3 VesperBayLanding = new(-408.92343f, 23.167036f, -351.16223f);
+
+    // Vesper Bay has no aetheryte and Horizon is a long walk from it; inside the zone the usual checks decide.
+    internal static bool TakesVesperBayTicket(EAetheryteLocation aetheryte, uint playerTerritory,
+        uint stepTerritory, Vector3? target, float horizonDistance, int tickets) =>
+        aetheryte == EAetheryteLocation.WesternThanalanHorizon && tickets > 0 &&
+        playerTerritory is not (WesternThanalan or WakingSands) &&
+        (stepTerritory == WakingSands ||
+         stepTerritory == WesternThanalan && target is { } position &&
+         Vector3.Distance(position, VesperBayLanding) < horizonDistance);
+
     // Limsa Upper Decks (128) pairs with Lower Decks (129); the other city parts pair with the zone before them.
     // Teleporting would leave the zone the step happens in, e.g. Mor Dhona from inside The Rising Stones.
     internal static bool IsAlreadyInStepTerritory(uint playerTerritory, uint stepTerritory, uint teleportTerritory) =>
         playerTerritory == stepTerritory && teleportTerritory != stepTerritory;
+
+    // Outside the step's zone a teleport is the only way there; Mount only matters once in it.
+    internal static bool KeepsStepMount(QuestStep step, uint playerTerritory) =>
+        playerTerritory == step.TerritoryId &&
+        (step.Mount != null || step.Action is { } action && action.RequiresMount());
 
     internal static uint CityNeighbourTerritory(uint territoryId) => territoryId != 128 ? territoryId - 1 : territoryId + 1;
 
@@ -173,16 +191,53 @@ internal static class AetheryteShortcut
         ICondition condition,
         AetheryteData aetheryteData,
         ExtraConditionUtils extraConditionUtils,
-        QuestRegistry questRegistry) : TaskExecutor<Task>
+        QuestRegistry questRegistry) : TaskExecutor<Task>, ITaskExecutor.IExtraTaskCreator
     {
+        private const int TicketTries = 3;
         private DateTime _continueAt;
         private bool _teleported;
+        private bool _byTicket;
+        private int _ticketTries;
         private bool _societyPause;
         private uint _overrideTerritoryId;
 
         internal bool HasTeleported => _teleported;
 
-        protected override bool Start() => !ShouldSkipTeleport();
+        protected override bool Start()
+        {
+            if (ShouldSkipTeleport())
+                return false;
+
+            _byTicket = TakesTicket();
+            _ticketTries = 0;
+            return true;
+        }
+
+        private unsafe bool TakesTicket()
+        {
+            if (Task.Step is not { } step)
+                return false;
+
+            float horizonDistance = step.Position is { } position
+                ? aetheryteData.CalculateDistance(position, step.TerritoryId, EAetheryteLocation.WesternThanalanHorizon)
+                : float.MaxValue;
+            int tickets = InventoryManager.Instance()->GetInventoryItemCount(QuestStep.VesperBayAetheryteTicket);
+            return TakesVesperBayTicket(Task.ResolvedAetheryte, clientState.TerritoryType, step.TerritoryId,
+                step.Position, horizonDistance, tickets);
+        }
+
+        public IEnumerable<ITask> CreateExtraTasks() =>
+        [
+            new MoveTask(
+                TerritoryId: WesternThanalan,
+                VesperBayLanding,
+                Mount: null,
+                StopDistance: 0.25f,
+                DataId: null,
+                DisableNavmesh: true,
+                Sprint: false,
+                InteractionType: EInteractionType.WalkTo)
+        ];
 
         public override ETaskResult Update()
         {
@@ -196,7 +251,7 @@ internal static class AetheryteShortcut
             }
 
             if (clientState.TerritoryType == _overrideTerritoryId || clientState.TerritoryType == Task.ExpectedTerritoryId)
-                return ETaskResult.TaskComplete;
+                return _byTicket ? ETaskResult.CreateNewTasks : ETaskResult.TaskComplete;
 
             return ETaskResult.StillRunning;
         }
@@ -267,16 +322,9 @@ internal static class AetheryteShortcut
             }
 
             _overrideTerritoryId = aetheryteData.TerritoryIds[shortcut.Value];
-            if (step.Mount is { } mount)
+            if (KeepsStepMount(step, clientState.TerritoryType))
             {
-                logger.LogInformation("Skipping aetheryte shortcut, Mount is set as {Mount}. step:{Step}, nearest:{Nearest}",
-                    mount, step.AetheryteShortcut, nearest);
-                return true;
-            }
-
-            if (step.Action is { } action && action.RequiresMount())
-            {
-                logger.LogInformation("Skipping aetheryte shortcut, step action requires mount. step:{Step}, nearest:{Nearest}",
+                logger.LogInformation("Skipping aetheryte shortcut, the step sets Mount or its action needs one. step:{Step}, nearest:{Nearest}",
                     step.AetheryteShortcut, nearest);
                 return true;
             }
@@ -497,6 +545,9 @@ internal static class AetheryteShortcut
 
         private bool DoTeleport()
         {
+            if (_byTicket && UseTicket() is { } used)
+                return used;
+
             if (!aetheryteFunctions.CanTeleport(Task.ResolvedAetheryte))
             {
                 if (!aetheryteFunctions.IsTeleportUnlocked())
@@ -531,6 +582,29 @@ internal static class AetheryteShortcut
             }
 
             throw new TaskException("Unable to teleport to aetheryte");
+        }
+
+        // Null falls back to teleporting to Horizon.
+        private bool? UseTicket()
+        {
+            ProgressContext = InteractionProgressContext.FromActionUseOrDefault(() =>
+                gameFunctions.UseItem(QuestStep.VesperBayAetheryteTicket));
+            if (ProgressContext != null)
+            {
+                _continueAt = DateTime.Now.AddSeconds(8);
+                logger.LogInformation("Travelling via Vesper Bay ticket...");
+                return true;
+            }
+
+            if (++_ticketTries < TicketTries)
+            {
+                _continueAt = DateTime.Now.AddSeconds(1);
+                return false;
+            }
+
+            logger.LogInformation("Vesper Bay ticket couldn't be used, teleporting to Horizon instead");
+            _byTicket = false;
+            return null;
         }
 
         public override bool WasInterrupted() => condition[ConditionFlag.InCombat] || base.WasInterrupted();

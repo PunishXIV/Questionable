@@ -446,7 +446,7 @@ internal sealed partial class ActiveQuestComponent
         bool preventQuestCompletion = configuration.Advanced.PreventQuestCompletion;
 
         bool showStopClock = hasLevelCondition || hasCompleteConditions || hasAcceptConditions || preventQuestCompletion;
-        bool showPriorityCrystal = true; //anyAvailable || anyUnavailable;
+        bool showPriorityCrystal = true;
 
         DrawQuestTitle(currentQuest, startedQuest, iconOverride);
 

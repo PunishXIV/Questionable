@@ -4,7 +4,6 @@ using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Functions;
 
-// Quest data QuestFunctions looks up: sheet info, loaded paths and the ClassJob sheet.
 internal interface IQuestCatalog
 {
     bool TryGetQuestInfo(ElementId elementId, [NotNullWhen(true)] out IQuestInfo? questInfo);

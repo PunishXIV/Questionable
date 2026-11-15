@@ -14,7 +14,6 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
         }, fallback: false);
     private static readonly ImmutableHashSet<string> ConflictingFeatures = new HashSet<string>
     {
-        // Actions
         "Auto-Meditation",
         "Auto-Motif (Out of Combat)",
         "Auto-Mount after Combat",
@@ -25,10 +24,8 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
         "Auto-Summon Chocobo",
         "Auto-Sync FATEs",
 
-        // Targets
         "Auto-interact with Gathering Nodes",
 
-        // Other
         "Pandora Quick Gather"
     }.ToImmutableHashSet();
     private readonly IClientState _clientState;

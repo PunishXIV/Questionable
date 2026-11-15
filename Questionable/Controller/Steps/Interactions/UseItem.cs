@@ -50,7 +50,7 @@ internal static class UseItem
                         nextPosition),
                     new MoveTask(
                         TerritoryId: 140,
-                        new(-408.92343f, 23.167036f, -351.16223f),
+                        AetheryteShortcut.VesperBayLanding,
                         Mount: null,
                         StopDistance: 0.25f,
                         DataId: null,

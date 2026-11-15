@@ -201,7 +201,7 @@ internal sealed class RedoComponent
                 if (ImGui.MenuItem(_L("Start NG+ here")) && redoCache.Chapter.RowId != 0)
                 {
                     if (!redoUtil.IsLocked)
-                        if (redoActive) // safeguard
+                        if (redoActive)
                             redoUtil.SendCommand(redoChapter: RedoChapter.Off);
                         else
                             redoUtil.SendCommand(questRedoChapter: redoCache.Chapter);

@@ -1,6 +1,5 @@
 namespace Questionable.Windows;
 
-// Problem reports for one quest, for admins with a token (Advanced, Debug on).
 [RegisterSingleton]
 internal sealed class QuestReportsWindow : LWindow
 {

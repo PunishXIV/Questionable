@@ -146,7 +146,6 @@ internal sealed class QuestFunctions
 
         // Use the quests in the same order as they're shown in the to-do list, e.g. if the MSQ is the first item,
         // do the MSQ; if a side quest is the first item do that side quest.
-        //
         // If no quests are marked as 'priority', accepting a new quest adds it to the top of the list.
         List<(ElementId Quest, byte Sequence)> trackedQuests = [];
         foreach (ushort trackedQuestId in state.TrackedQuestIds)
