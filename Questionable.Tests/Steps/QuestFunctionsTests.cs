@@ -257,6 +257,67 @@ public sealed class QuestFunctionsTests
         Assert.Equal(new QuestId(expected), _functions.GetCurrentQuestInternal(allowNewMsq: true).CurrentQuest);
     }
 
+    // Only 1222 is on the to-do list; 1223 and 1224 are accepted but untracked. 1224 starts with a class switch
+    // in another zone, but its stage happens here.
+    [Theory]
+    [InlineData(147u, 1223)]
+    [InlineData(148u, 1224)]
+    [InlineData(999u, 1223)]
+    public void SocietyDailies_UntrackedCount(uint territory, ushort expected)
+    {
+        _catalog.Add(TestQuestInfo.Create(1222), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 1, new(1, 0, 0), 146)));
+        _catalog.Add(TestQuestInfo.Create(1223), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 2, new(1, 0, 0), 147)));
+        _catalog.Add(TestQuestInfo.Create(1224), QuestTestData.Seq(1,
+            new QuestStep(EInteractionType.SwitchClass, null, null, 400),
+            new QuestStep(EInteractionType.Interact, 3, new(1, 0, 0), 148)));
+        _catalog.Add(TestQuestInfo.Create(1225), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 4, new(1, 0, 0), 147)));
+        _state.Guide = new(EScenarioGuideState.Ready, 0);
+        _state.TrackedQuestIds = [1222];
+        _state.NormalQuests = [(1222, 1, false), (1223, 1, false), (1224, 1, false), (1225, 1, false)];
+        foreach (ushort id in new ushort[] { 1222, 1223, 1224, 1225 })
+            _state.Sequences[id] = 1;
+        _state.TerritoryType = territory;
+
+        Assert.Equal(new QuestId(expected), _functions.GetCurrentQuestInternal(allowNewMsq: true).CurrentQuest);
+    }
+
+    // Ixal 1518 only talks to an Ixal npc in Coerthas (155); 1503 fights in North Shroud (154).
+    [Theory]
+    [InlineData(154u, 1503)]
+    [InlineData(155u, 1518)]
+    public void SocietyNpcTalk_OnlyInThisZone(uint territory, ushort expected)
+    {
+        _catalog.Add(TestQuestInfo.Create(1518), QuestTestData.Seq(1,
+            new QuestStep(EInteractionType.WalkTo, null, new(1, 0, 0), 155),
+            new QuestStep(EInteractionType.Interact, 1009219, new(2, 0, 0), 155)));
+        _catalog.Add(TestQuestInfo.Create(1503), QuestTestData.Seq(1,
+            new QuestStep(EInteractionType.Combat, null, new(3, 0, 0), 154)));
+        _state.Guide = new(EScenarioGuideState.Ready, 0);
+        _state.TrackedQuestIds = [1518, 1503];
+        _state.Sequences[1518] = 1;
+        _state.Sequences[1503] = 1;
+        _state.TerritoryType = territory;
+
+        Assert.Equal(new QuestId(expected), _functions.GetCurrentQuestInternal(allowNewMsq: true).CurrentQuest);
+    }
+
+    // 1223 has its materials (stage 255, craft not done); it beats 1222's stage in this zone.
+    [Fact]
+    public void SocietyCraft_BeforeOtherDailies()
+    {
+        _catalog.Add(TestQuestInfo.Create(1222), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 1, new(1, 0, 0), 146)));
+        _catalog.Add(TestQuestInfo.Create(1223), QuestTestData.Seq(255,
+            new QuestStep(EInteractionType.Craft, null, null, 147),
+            new QuestStep(EInteractionType.CompleteQuest, 2, new(2, 0, 0), 147)));
+        _state.Guide = new(EScenarioGuideState.Ready, 0);
+        _state.TrackedQuestIds = [1222, 1223];
+        _state.Sequences[1222] = 1;
+        _state.Sequences[1223] = 255;
+        _state.TerritoryType = 146;
+
+        Assert.Equal(new QuestId(1223), _functions.GetCurrentQuestInternal(allowNewMsq: true).CurrentQuest);
+    }
+
     [Fact]
     public void EmptyGuide_FallsBackToReadyQuest()
     {

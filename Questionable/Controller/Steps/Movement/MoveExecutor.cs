@@ -13,6 +13,8 @@ internal sealed class MoveExecutor
     ICondition condition,
     IDataManager dataManager,
     MountStep.MountEvaluator mountEvaluator,
+    Configuration configuration,
+    NavmeshIpc navmesh,
     IServiceProvider serviceProvider) : TaskExecutor<MoveTask>, IToastAware, ITaskExecutor.IStoppable
 {
     public void StopNow()
@@ -35,6 +37,7 @@ internal sealed class MoveExecutor
     private DateTime? _navmeshWaitStartedAt;
     private long? _simpleMoveWaitStartedAt;
     private DateTime _nextMountCheckAt;
+    private Task<List<Vector3>>? _groundCheck;
 
     // First builds of a large zone can take a while; WaitNavmesh itself has no limit.
     private static readonly TimeSpan NavmeshReloadTimeout = TimeSpan.FromMinutes(2);
@@ -67,6 +70,26 @@ internal sealed class MoveExecutor
 
     private ETaskResult UpdateMovement()
     {
+        if (_groundCheck is { } groundCheck)
+        {
+            if (!groundCheck.IsCompleted)
+                return ETaskResult.StillRunning;
+
+            _groundCheck = null;
+            bool walk = groundCheck.IsCompletedSuccessfully && _objectTable[0] is { } walker &&
+                        ReachesOnFoot(walker.Position, groundCheck.Result, _destination,
+                            Task.StopDistance ?? QuestStep.DefaultStopDistance, configuration.General.MountDistance);
+            if (walk)
+            {
+                _logger.LogInformation("Walking instead of flying, the target is close and reachable on foot");
+                Task = Task with { Fly = false, Land = false };
+                PrepareMovementIfNeeded();
+            }
+
+            StartAutoMount(flies: !walk);
+            return ETaskResult.StillRunning;
+        }
+
         if (UpdateMountState() is { } mountStateResult)
             return mountStateResult;
 
@@ -243,39 +266,69 @@ internal sealed class MoveExecutor
             if (!_unmountBeforeMovement.Value.Executor.Start(unmountTask))
                 _unmountBeforeMovement = null;
         }
-        else
+        else if (!Task.DisableNavmesh)
         {
-            if (!Task.DisableNavmesh)
+            bool flies = actualDistance > stopDistance && Task.Fly && GameFunctions.IsFlyingUnlocked(Task.TerritoryId);
+            if (flies && position is { } from && IsShortHop(actualDistance, configuration.General.MountDistance) &&
+                _clientState.TerritoryType == Task.TerritoryId)
             {
-                MountStep.EMountIf mountIf =
-                    actualDistance > stopDistance && Task.Fly &&
-                    GameFunctions.IsFlyingUnlocked(Task.TerritoryId)
-                        ? MountStep.EMountIf.Always
-                        : MountStep.EMountIf.AwayFromPosition;
-                MountStep.MountTask mountTask = new(Task.TerritoryId, mountIf, _destination);
-                DateTime retryAt = DateTime.Now;
-                (MountStep.MountExecutor Executor, MountStep.MountTask)? mount;
-
-                if (_mountEvaluator.Evaluate(mountTask, dryRun: true, ref retryAt) != MountStep.MountResult.DontMount)
-                {
-                    mount = (_serviceProvider.GetRequiredService<MountStep.MountExecutor>(), mountTask);
-                    mount.Value.Executor.Start(mountTask);
-                }
-                else
-                    mount = null;
-
-                if (Task.Fly)
-                    _mountBeforeMovement = mount;
-                else
-                    _mountDuringMovement = mount;
+                // Decided in Update once vnav says whether the target can be walked to.
+                _groundCheck = navmesh.Pathfind(from, _destination, fly: false, CancellationToken.None);
+                return true;
             }
+
+            StartAutoMount(flies);
+            return true;
         }
 
-        if (_mountBeforeMovement == null &&
-            _unmountBeforeMovement == null &&
-            _startAction != null)
-            _startAction();
+        StartIfNoMountStep();
         return true;
+    }
+
+    private void StartAutoMount(bool flies)
+    {
+        MountStep.MountTask mountTask = new(Task.TerritoryId,
+            flies ? MountStep.EMountIf.Always : MountStep.EMountIf.AwayFromPosition, _destination);
+        DateTime retryAt = DateTime.Now;
+        (MountStep.MountExecutor Executor, MountStep.MountTask)? mount = null;
+        if (_mountEvaluator.Evaluate(mountTask, dryRun: true, ref retryAt) != MountStep.MountResult.DontMount)
+        {
+            mount = (_serviceProvider.GetRequiredService<MountStep.MountExecutor>(), mountTask);
+            mount.Value.Executor.Start(mountTask);
+        }
+
+        if (Task.Fly)
+            _mountBeforeMovement = mount;
+        else
+            _mountDuringMovement = mount;
+
+        StartIfNoMountStep();
+    }
+
+    private void StartIfNoMountStep()
+    {
+        if (_mountBeforeMovement == null && _unmountBeforeMovement == null && _startAction != null)
+            _startAction();
+    }
+
+    internal static bool IsShortHop(float distance, int mountDistance) => distance < mountDistance;
+
+    // vnav returns a path to the nearest point it can reach, so only one that ends at the target counts.
+    internal static bool ReachesOnFoot(Vector3 from, IReadOnlyList<Vector3> path, Vector3 destination, float stopDistance,
+        float maxLength)
+    {
+        if (path.Count == 0)
+            return false;
+
+        Vector3 end = path[^1];
+        if (Vector2.Distance(new(end.X, end.Z), new(destination.X, destination.Z)) > stopDistance + 0.5f ||
+            Math.Abs(end.Y - destination.Y) > MovementController.DefaultVerticalDistance)
+            return false;
+
+        float length = Vector3.Distance(from, path[0]);
+        for (int i = 1; i < path.Count; i++)
+            length += Vector3.Distance(path[i - 1], path[i]);
+        return length <= maxLength;
     }
 
     private ETaskResult? UpdateMountState()

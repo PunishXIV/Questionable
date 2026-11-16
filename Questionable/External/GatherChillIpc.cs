@@ -278,6 +278,10 @@ internal sealed class GatheringController(
         if (inventoryManager == null)
             throw new TaskException("Inventory is unavailable; cannot verify gathering");
 
+        // Quest-only items (EventItem ids) sit in Key Items, which the normal count skips.
+        if (request.ItemId >= EventItemStart)
+            return inventoryManager->GetItemCountInContainer(request.ItemId, InventoryType.KeyItems);
+
         int collectables = inventoryManager->GetInventoryItemCount(request.ItemId + 500_000,
             checkEquipped: false, minCollectability: (short)request.Collectability);
         if (request.Collectability > 0)
@@ -286,6 +290,8 @@ internal sealed class GatheringController(
         return collectables + inventoryManager->GetInventoryItemCount(request.ItemId, checkEquipped: false) +
             inventoryManager->GetInventoryItemCount(request.ItemId, isHq: true, checkEquipped: false);
     }
+
+    private const uint EventItemStart = 2_000_000;
 
     public sealed record Request(uint ItemId, int Quantity, ushort Collectability = 0);
 }

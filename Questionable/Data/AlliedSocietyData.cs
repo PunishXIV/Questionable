@@ -33,8 +33,7 @@ internal sealed class AlliedSocietyData
             return questId.Value switch
             {
                 >= 1222 and <= 1251 => EAlliedSociety.Amaljaa, //ARR
-                // Back on for a test run (2026-11-16); turned off in March as "designed to be done sequentially, don't
-                // craft until 255" with no failure recorded.
+                // Their craft materials come with a timed buff; batching is safe because a waiting craft goes first.
                 >= 1494 and <= 1523 => EAlliedSociety.Ixal,
                 >= 1566 and <= 1568 => EAlliedSociety.Ixal,
                 >= 1325 and <= 1344 => EAlliedSociety.Kobolds, // Kobolds 1364-1373

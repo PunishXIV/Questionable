@@ -171,12 +171,19 @@ internal sealed class QuestFunctions
                 alliedSocietyData.GetCommonTurnIn(firstTrackedQuest);
             if (firstTrackedAlliedSociety != EAlliedSociety.None)
             {
-                List<(ElementId Quest, byte Sequence)> sameSocietyQuests = trackedQuests.Skip(1)
-                    .Where(quest =>
-                        alliedSocietyData.GetCommonTurnIn(quest.Quest) == firstTrackedAlliedSociety)
-                    .ToList();
+                // The to-do list only tracks a few quests; the society's other accepted dailies count too.
+                List<(ElementId Quest, byte Sequence)> sameSocietyQuests = [.. trackedQuests.Skip(1)
+                    .Concat(state.NormalQuests.Where(x => !x.IsHidden)
+                        .Select(x => (Quest: (ElementId)new QuestId(x.QuestId), x.Sequence)))
+                    .Where(quest => quest.Quest != firstTrackedQuest && catalog.IsKnownQuest(quest.Quest) &&
+                                    alliedSocietyData.GetCommonTurnIn(quest.Quest) == firstTrackedAlliedSociety)
+                    .DistinctBy(x => x.Quest)];
                 if (sameSocietyQuests.Count > 0)
                 {
+                    // Craft materials come with a timed buff (Ixal); craft before going off to another daily.
+                    if (GetWaitingCraft([(firstTrackedQuest, firstTrackedSequence), .. sameSocietyQuests]) is { } craft)
+                        return new(craft.Quest, craft.Sequence, msqQuest.State);
+
                     if (firstTrackedSequence == 255)
                     {
                         // only quests that aren't ready to be turned in, the ones in this zone first
@@ -203,7 +210,9 @@ internal sealed class QuestFunctions
                         if (normalNpcs.Length > 0)
                         {
                             (ElementId, byte)? talkToNormalNpcs = sameSocietyQuests
-                                .Where(x => x.Sequence < 255 && IsInteractSequence(x.Quest, x.Sequence, normalNpcs))
+                                // Ixal's npcs stand in other zones; only the ones here are a quick stop.
+                                .Where(x => x.Sequence < 255 && IsInteractSequence(x.Quest, x.Sequence, normalNpcs) &&
+                                            StageZone(x.Quest, x.Sequence) == state.TerritoryType)
                                 .Cast<(ElementId, byte)?>()
                                 .FirstOrDefault();
                             if (talkToNormalNpcs != null)
@@ -367,11 +376,40 @@ internal sealed class QuestFunctions
         return mountId != 0 && alliedSocietyData.Mounts.ContainsKey(mountId);
     }
 
-    // The first quest whose current stage happens in this zone, else the first one.
-    private (ElementId Quest, byte Sequence) PreferThisZone(List<(ElementId Quest, byte Sequence)> quests) =>
-        quests.FirstOrDefault(x => catalog.TryGetQuest(x.Quest, out Quest? quest) &&
-                                   quest.FindSequence(x.Sequence)?.Steps.FirstOrDefault()?.TerritoryId == state.TerritoryType,
-            quests[0]);
+    private (ElementId Quest, byte Sequence)? GetWaitingCraft(List<(ElementId Quest, byte Sequence)> quests)
+    {
+        foreach ((ElementId questId, byte sequence) in quests)
+        {
+            if (sequence == 255 && catalog.TryGetQuest(questId, out Quest? quest) &&
+                quest.FindSequence(255)?.Steps.Any(x => x.InteractionType == EInteractionType.Craft) == true &&
+                !IsReadyToCompleteQuest(quest))
+                return (questId, sequence);
+        }
+
+        return null;
+    }
+
+    // This zone first, else the zone with the most of them, so each zone is finished before moving on.
+    private (ElementId Quest, byte Sequence) PreferThisZone(List<(ElementId Quest, byte Sequence)> quests)
+    {
+        List<((ElementId Quest, byte Sequence) Entry, uint? Zone)> zones =
+            [.. quests.Select(x => (x, StageZone(x.Quest, x.Sequence)))];
+        foreach (((ElementId Quest, byte Sequence) entry, uint? zone) in zones)
+        {
+            if (zone == state.TerritoryType)
+                return entry;
+        }
+
+        return zones.GroupBy(x => x.Zone).OrderByDescending(x => x.Count()).First().First().Entry;
+    }
+
+    // Class switches carry no place of their own, so the stage happens where the first step with a position is.
+    private uint? StageZone(ElementId questId, byte sequence)
+    {
+        if (!catalog.TryGetQuest(questId, out Quest? quest) || quest.FindSequence(sequence) is not { } stage)
+            return null;
+        return (stage.Steps.FirstOrDefault(x => x.Position != null) ?? stage.Steps.FirstOrDefault())?.TerritoryId;
+    }
 
     private bool IsReadyToCompleteQuest(Quest quest) => state.IsReadyToTurnIn(quest.Info.Name);
 

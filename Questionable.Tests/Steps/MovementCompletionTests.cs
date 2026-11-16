@@ -110,4 +110,24 @@ public sealed class MovementCompletionTests
         Assert.True(MoveExecutor.ShouldRecheckMount(now.AddSeconds(0.5), ref nextCheckAt));
         Assert.False(MoveExecutor.ShouldRecheckMount(now.AddSeconds(0.9), ref nextCheckAt));
     }
+
+    [Theory]
+    [InlineData(11f, 50, true)]
+    [InlineData(60f, 50, false)]
+    [InlineData(11f, 0, false)]
+    public void ShortHop_UsesSetting(float distance, int setting, bool shortHop) =>
+        Assert.Equal(shortHop, MoveExecutor.IsShortHop(distance, setting));
+
+    // Player at the origin, giver 10 y away on a 12 y high ledge.
+    [Theory]
+    [InlineData(10f, 12f, 50f, true)]
+    [InlineData(6f, 0f, 50f, false)]
+    [InlineData(10f, 0f, 50f, false)]
+    [InlineData(10f, 12f, 15f, false)]
+    public void GroundPath_MustEndAtTarget(float endX, float endY, float maxLength, bool walk)
+    {
+        Vector3 giver = new(10, 12, 0);
+        Vector3[] path = [new(0, 0, 20), new(endX, endY, 0)];
+        Assert.Equal(walk, MoveExecutor.ReachesOnFoot(Vector3.Zero, path, giver, 1f, maxLength));
+    }
 }

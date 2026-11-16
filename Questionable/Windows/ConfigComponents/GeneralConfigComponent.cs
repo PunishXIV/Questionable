@@ -167,6 +167,18 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             Save();
         }
 
+        int mountDistance = Configuration.General.MountDistance;
+        ImGui.SetNextItemWidth(size.X / 2);
+        if (ImGui.SliderInt(_L("Walk instead of mounting within (yalms)"), ref mountDistance, 0, 200))
+        {
+            Configuration.General.MountDistance = mountDistance;
+            Save();
+        }
+
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(
+            _L("Closer than this, Questionable walks instead of calling your mount. Steps that would fly still fly when the place can't be reached on foot. 0 always mounts."));
+
         int grandCompany = (int)Configuration.General.GrandCompany;
         ImGui.SetNextItemWidth(size.X / 2);
         if (ImGui.Combo(_L("Preferred Grand Company"), ref grandCompany, _grandCompanyNames,

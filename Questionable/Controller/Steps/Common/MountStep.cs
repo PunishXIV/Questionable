@@ -35,6 +35,7 @@ internal static class MountStep
         TerritoryData territoryData,
         IClientState clientState,
         IObjectTable objectTable,
+        Configuration configuration,
         ILogger<MountEvaluator> logger)
     {
         public unsafe MountResult Evaluate(MountTask task, bool dryRun, ref DateTime retryAt)
@@ -65,7 +66,7 @@ internal static class MountStep
             {
                 Vector3 playerPosition = objectTable[0]?.Position ?? Vector3.Zero;
                 float distance = System.Numerics.Vector3.Distance(playerPosition, task.Position.GetValueOrDefault());
-                if (task.TerritoryId == clientState.TerritoryType && distance < MountDistance &&
+                if (task.TerritoryId == clientState.TerritoryType && distance < configuration.General.MountDistance &&
                     !condition[ConditionFlag.Diving])
                 {
                     logger.Log(logLevel, "Not using mount, as we're close to the target");
