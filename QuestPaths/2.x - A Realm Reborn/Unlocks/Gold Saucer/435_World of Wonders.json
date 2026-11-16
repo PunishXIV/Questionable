@@ -10,6 +10,38 @@
       "Sequence": 0,
       "Steps": [
         {
+          "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
+          "DataId": 1004433,
+          "Position": {
+            "X": -23.605713,
+            "Y": 83.19999,
+            "Z": -2.3041382
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Airship Landing"
+          ],
+          "TargetTerritoryId": 144,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                130,
+                144,
+                388
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                144,
+                388
+              ],
+              "AetheryteUnlocked": "Gold Saucer"
+            }
+          }
+        },
+        {
           "DataId": 1011022,
           "Position": {
             "X": -38.895264,
@@ -25,6 +57,38 @@
     {
       "Sequence": 1,
       "Steps": [
+        {
+          "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
+          "DataId": 1004433,
+          "Position": {
+            "X": -23.605713,
+            "Y": 83.19999,
+            "Z": -2.3041382
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Airship Landing"
+          ],
+          "TargetTerritoryId": 144,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                130,
+                144,
+                388
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                144,
+                388
+              ],
+              "AetheryteUnlocked": "Gold Saucer"
+            }
+          }
+        },
         {
           "TerritoryId": 144,
           "InteractionType": "AttuneAethernetShard",
@@ -48,6 +112,38 @@
       "Sequence": 2,
       "Steps": [
         {
+          "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
+          "DataId": 1004433,
+          "Position": {
+            "X": -23.605713,
+            "Y": 83.19999,
+            "Z": -2.3041382
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Airship Landing"
+          ],
+          "TargetTerritoryId": 144,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                130,
+                144,
+                388
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                144,
+                388
+              ],
+              "AetheryteUnlocked": "Gold Saucer"
+            }
+          }
+        },
+        {
           "DataId": 1011038,
           "Position": {
             "X": -58.884644,
@@ -64,6 +160,38 @@
       "Sequence": 3,
       "Steps": [
         {
+          "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
+          "DataId": 1004433,
+          "Position": {
+            "X": -23.605713,
+            "Y": 83.19999,
+            "Z": -2.3041382
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Airship Landing"
+          ],
+          "TargetTerritoryId": 144,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                130,
+                144,
+                388
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                144,
+                388
+              ],
+              "AetheryteUnlocked": "Gold Saucer"
+            }
+          }
+        },
+        {
           "DataId": 1010478,
           "Position": {
             "X": -99.19891,
@@ -79,6 +207,38 @@
       "Sequence": 4,
       "Steps": [
         {
+          "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
+          "DataId": 1004433,
+          "Position": {
+            "X": -23.605713,
+            "Y": 83.19999,
+            "Z": -2.3041382
+          },
+          "TerritoryId": 130,
+          "InteractionType": "Interact",
+          "AethernetShortcut": [
+            "[Ul'dah] Aetheryte Plaza",
+            "[Ul'dah] Airship Landing"
+          ],
+          "TargetTerritoryId": 144,
+          "SkipConditions": {
+            "AetheryteShortcutIf": {
+              "InTerritory": [
+                130,
+                144,
+                388
+              ]
+            },
+            "StepIf": {
+              "InTerritory": [
+                144,
+                388
+              ],
+              "AetheryteUnlocked": "Gold Saucer"
+            }
+          }
+        },
+        {
           "DataId": 1011044,
           "Position": {
             "X": -84.45868,
@@ -87,7 +247,14 @@
           },
           "TerritoryId": 144,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 388
+          "TargetTerritoryId": 388,
+          "SkipConditions": {
+            "StepIf": {
+              "InTerritory": [
+                388
+              ]
+            }
+          }
         },
         {
           "TerritoryId": 388,

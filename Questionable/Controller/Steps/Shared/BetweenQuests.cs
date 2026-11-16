@@ -11,7 +11,7 @@ internal static class BetweenQuests
 
     internal static bool CanDetour(Quest quest, QuestStep step, QuestFunctions questFunctions, ICondition condition,
         GameFunctions gameFunctions, QuestPriorityManager priorityManager) =>
-        IsAcceptStep(step, questFunctions.IsQuestAccepted(quest.Id)) && !IsBusy(condition, gameFunctions) &&
+        !priorityManager.IsDailiesRun && IsAcceptStep(step, questFunctions.IsQuestAccepted(quest.Id)) && !IsBusy(condition, gameFunctions) &&
         !IsAcceptAllUnderway([.. priorityManager.AcceptOnlyQuests.Select(x => x.Id)], questFunctions.IsQuestAccepted,
             x => questFunctions.IsReadyToAcceptQuest(x, ignoreLevel: true));
 

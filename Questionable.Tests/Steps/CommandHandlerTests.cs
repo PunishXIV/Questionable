@@ -28,6 +28,7 @@ public sealed class CommandHandlerTests
     [InlineData("help-all")]
     [InlineData("config")]
     [InlineData("start")]
+    [InlineData("dailies")]
     [InlineData("stop")]
     [InlineData("reload")]
     [InlineData("skipstep")]

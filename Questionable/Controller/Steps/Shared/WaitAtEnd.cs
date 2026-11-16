@@ -243,11 +243,14 @@ internal static class WaitAtEnd
         public override string ToString() => $"WaitQuestComplete({ElementId})";
     }
 
-    internal sealed class QuestCompletedExecutor(QuestFunctions questFunctions) : TaskExecutor<QuestCompleted>
+    internal sealed class QuestCompletedExecutor(QuestFunctions questFunctions, QuestPriorityManager priorityManager)
+        : TaskExecutor<QuestCompleted>
     {
         protected override bool Start() => true;
 
-        public override ETaskResult Update() => questFunctions.IsQuestComplete(Task.ElementId) ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
+        public override ETaskResult Update() =>
+            (priorityManager.IsDailiesRun ? questFunctions.IsPriorityQuestDone(Task.ElementId) : questFunctions.IsQuestComplete(Task.ElementId))
+                ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
 
         public override bool ShouldInterruptOnDamage() => true;
     }

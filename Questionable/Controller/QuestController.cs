@@ -79,6 +79,160 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private bool _disposed;
     private EAutomationType _automationType;
     private bool _manualTasks;
+    private IDailiesRun? _dailies;
+    private HashSet<ElementId>? _dailyAccepted;
+    private bool _retryDaily;
+    private DateTime? _dailyMissingSince;
+
+    public bool IsDailiesRun => _dailies != null;
+
+    internal bool BeginDailies(IDailiesRun run)
+    {
+        if (_dailies != null || !_clientState.IsLoggedIn || IsRunning || HasExternalOperation ||
+            SimulatedQuest != null || !CanPrepareQuestTasks())
+            return false;
+
+        StartedQuest = NextQuest = GatheringQuest = PendingQuest = null;
+        _tracker.DisplacedQuest = null;
+        _dailies = run;
+        _dailyAccepted = [];
+        _dailyMissingSince = null;
+        _retryDaily = false;
+        _priorityManager.IsDailiesRun = true;
+        return true;
+    }
+
+    private void NoteDailyAccepted(ElementId id)
+    {
+        if (_dailies != null && (_dailyAccepted ??= []).Add(id))
+            _dailies.Accepted(id);
+    }
+
+    private void NoteDailyCompleted(ElementId id)
+    {
+        _dailyMissingSince = null;
+        if (_dailies != null && _dailyAccepted?.Remove(id) == true)
+            _dailies.Completed(id);
+    }
+
+    private bool ObserveDaily()
+    {
+        if (_dailies == null || StartedQuest is not { } current)
+            return false;
+        ElementId id = current.Quest.Id;
+        bool wasAccepted = _dailyAccepted?.Contains(id) == true;
+        if (_questFunctions.IsQuestAccepted(id))
+        {
+            _dailyMissingSince = null;
+            NoteDailyAccepted(id);
+            return !wasAccepted;
+        }
+        if (!wasAccepted)
+            return false;
+        // Daily completion uses today's flag, not the permanent repeatable completion bit.
+        if (_questFunctions.IsPriorityQuestDone(id))
+        {
+            NoteDailyCompleted(id);
+            return true;
+        }
+
+        // Accepted and completed state can arrive in separate game updates. Do not replan in between.
+        _dailyMissingSince ??= DateTime.UtcNow;
+        if (DateTime.UtcNow < _dailyMissingSince.Value.AddSeconds(2))
+            return false;
+
+        Stop("Daily quest is no longer accepted");
+        return true;
+    }
+
+    private void UpdateDailiesQuest()
+    {
+        if (QuestSelectionController.ShouldHoldStartedQuest(StartedQuest, SelectionState.BetweenAreas))
+            return;
+        bool changed = ObserveDaily();
+        if (_dailies == null || _dailyMissingSince != null || TryStopAtStopPoint())
+            return;
+        if (StartedQuest is { } current && SelectionState.GetSequence(current.Quest.Id) != current.Sequence)
+            changed = true;
+        if (changed || _taskQueue.AllTasksComplete)
+            ExecuteNextStep();
+    }
+
+    private bool ChooseDaily()
+    {
+        if (_dailies == null)
+            return false;
+        ObserveDaily();
+        if (_dailies == null || _dailyMissingSince != null)
+            return false;
+
+        // A route decision is safe at a sequence boundary, not between movement/interact steps of one sequence.
+        bool hold = StartedQuest is { Step: > 0 } current &&
+                    SelectionState.GetSequence(current.Quest.Id) == current.Sequence &&
+                    (_questFunctions.IsQuestAccepted(current.Quest.Id) || current.Sequence == 0);
+        Quest? quest = _retryDaily || hold ? StartedQuest?.Quest : _dailies.Choose(StartedQuest);
+        _retryDaily = false;
+        if (quest == null)
+        {
+            if (_dailies.StopReason is { } reason)
+                Stop(reason);
+            else
+            {
+                FinishDailies(true);
+                StopFinished("Dailies finished");
+            }
+            return false;
+        }
+
+        byte sequence = SelectionState.GetSequence(quest.Id);
+        if (StartedQuest?.Quest.Id != quest.Id)
+            SelectStartedQuest(quest, sequence);
+        else if (StartedQuest.Sequence != sequence)
+            StartedQuest.SetSequence(sequence);
+        if (_questFunctions.IsQuestAccepted(quest.Id))
+            NoteDailyAccepted(quest.Id);
+        return true;
+    }
+
+    private bool TryDailyFailure(string reason)
+    {
+        if (_dailies == null || AutomationType != EAutomationType.Automatic ||
+            !_clientState.IsLoggedIn || CurrentQuest is not { } current ||
+            HasExternalOperation || !CanPrepareQuestTasks() || !ClearTasksInternal())
+            return false;
+
+        EDailiesFailure action = _dailies.Fail(current.Quest.Id, reason);
+        _stuckWatch.Reset();
+        if (action == EDailiesFailure.Stop)
+            return false;
+
+        if (action == EDailiesFailure.Retry)
+        {
+            current.SetStep(current.Step);
+            _retryDaily = true;
+        }
+        else
+        {
+            StartedQuest = NextQuest = null;
+            _tracker.DisplacedQuest = null;
+        }
+        // Resume on the next framework tick, never recursively inside a failed factory or executor.
+        return true;
+    }
+
+    private IDailiesRun? DetachDailies()
+    {
+        IDailiesRun? run = _dailies;
+        _dailies = null;
+        _dailyAccepted?.Clear();
+        _dailyMissingSince = null;
+        _retryDaily = false;
+        if (run != null)
+            _priorityManager.IsDailiesRun = false;
+        return run;
+    }
+
+    private void FinishDailies(bool completed) => DetachDailies()?.Finish(completed);
 
     private DateTime _lastTaskUpdate = DateTime.Now;
 
@@ -179,6 +333,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         {
             if (value == _automationType)
                 return;
+
+            if (_automationType == EAutomationType.Automatic && value != EAutomationType.Automatic)
+                FinishDailies(false);
 
             _logger.LogInformation("Setting automation type to {NewAutomationType} (previous: {OldAutomationType})",
                 value, _automationType);
@@ -291,6 +448,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     private void ResetState()
     {
+        FinishDailies(false);
         _acceptance.ClearSelection();
         _tracker.Reset();
         _safeAnimationEnd = DateTime.MinValue;
@@ -300,6 +458,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     public void Update()
     {
+        // End the scoped run even if a provider is still settling or the normal update is paused.
+        if (_dailies != null && !_clientState.IsLoggedIn)
+            Stop("Logged out during dailies");
         // Success can replace the outcome task before its next update; observe it independently.
         _questBattleRetries.Observe(_clientState.IsLoggedIn ? ProfileController.CurrentContentId : null,
             questId => _questFunctions.GetQuestProgressInfo(questId)?.Sequence);
@@ -329,6 +490,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (UpdateStopAndDeath())
             return;
 
+        if (_dailyMissingSince != null)
+            return;
+
         if (_configuration.Stop.Enabled && _configuration.Stop.LevelToStopAfter)
         {
             unsafe
@@ -349,6 +513,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             && CurrentQuest is { Sequence: 0, Step: 0 } or { Sequence: 0, Step: CompletedStep }
             && DateTime.Now >= CurrentQuest.StepProgress.StartedAt.AddSeconds(AcceptStallSeconds))
         {
+            if (_dailies != null)
+            {
+                if (!TryDailyFailure("Quest acceptance did not finish"))
+                    Stop("Daily acceptance retry blocked");
+                return;
+            }
             lock (_progressLock)
             {
                 _logger.LogWarning("Quest accept apparently didn't work out, resetting progress");
@@ -386,7 +556,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         }
 
         int delay = Math.Clamp(general.AutoStepRefreshDelaySeconds, 30, 180);
-        int maxTries = Math.Clamp(general.AutoStepRefreshMaxTries, 1, 10);
+        int maxTries = _dailies != null ? 1 : Math.Clamp(general.AutoStepRefreshMaxTries, 1, 10);
         ITask? task = _taskQueue.CurrentTaskExecutor?.CurrentTask;
         bool paused = IsStuckPaused() || !StuckWatch.CanRetry(current.FindStep()?.InteractionType, task);
         StuckWatch.EResult result = _stuckWatch.Update((current.Quest.Id, current.Sequence, current.Step),
@@ -394,6 +564,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         switch (result)
         {
             case StuckWatch.EResult.Retry:
+                if (_dailies != null)
+                {
+                    if (!TryDailyFailure("No progress on the current step"))
+                        Stop("Daily retry blocked");
+                    return true;
+                }
                 _stopPolicy.ReportStuckRetry(current, delay, _stuckWatch.Tries, maxTries);
                 ExecuteNextStep();
                 return true;
@@ -401,6 +577,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 _stopPolicy.ReportStuckLimit(current.Quest, maxTries);
                 _reports.Problem(EProblemKind.Stuck);
                 _stuckWatch.Reset();
+                if (TryDailyFailure("Stuck after retries"))
+                    return true;
                 Stop("Stuck after retries");
                 return true;
             default:
@@ -438,6 +616,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
             if (UpdateAcceptedQuests())
                 return;
+
+            if (_dailies != null)
+            {
+                UpdateDailiesQuest();
+                return;
+            }
 
             // Queue currently available accept-only priority quests before completing any.
             if (QuestSelectionController.ShouldQueueAcceptOnly(Slots, AutomationType))
@@ -828,6 +1012,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     // Unloading must not stop automation or show notifications.
     internal void Shutdown()
     {
+        DetachDailies();
         ClearTasksInternal();
         AutomationType = EAutomationType.Manual;
         StartedQuest = null;
@@ -843,6 +1028,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     public void TryStopOnQuestAccepted(ElementId questId)
     {
+        NoteDailyAccepted(questId);
         if (AutomationType == EAutomationType.Manual)
             return;
 
@@ -865,6 +1051,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     private void Stop(string label, bool clearQuest, string? policyReason = null, bool finished = false)
     {
+        FinishDailies(false);
         Configuration.EEndAction? endAction = EndActionOnce;
         EndActionOnce = null;
         StopAfterCurrentQuest = false;
@@ -1089,6 +1276,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             RecordNavigationFailure(navigationFailure, task.ToString());
     }
 
+    protected override bool TryHandleTaskFailure(Exception exception, ITask task) =>
+        CanRetryDaily(exception) && TryDailyFailure(exception.Message);
+
+    internal static bool CanRetryDaily(Exception exception) =>
+        exception is not NeedsPlayerException &&
+        exception is TaskException or MovementController.PathfindingException;
+
     internal void RecordNavigationFailure(MovementController.PathfindingException failure, string? task = null) =>
         _movementController.RecordFailure(failure, CurrentQuest?.ToString(),
             task ?? _taskQueue.CurrentTaskExecutor?.CurrentTask.ToString());
@@ -1097,6 +1291,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     {
         if (task is WaitAtEnd.QuestCompleted completed)
         {
+            if (_dailies != null && !_questFunctions.IsPriorityQuestDone(completed.ElementId))
+                return;
+            NoteDailyCompleted(completed.ElementId);
             if (SimulatedQuest == null && IsQuestRun() &&
                 _questRegistry.TryGetQuest(completed.ElementId, out Quest? quest))
                 _reports.Completed(quest);
@@ -1144,10 +1341,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return;
         }
 
-        if (AutomationType == EAutomationType.Automatic && TryQueueAcceptOnly())
+        if (_dailies != null && !ChooseDaily())
+            return;
+
+        if (_dailies == null && AutomationType == EAutomationType.Automatic && TryQueueAcceptOnly())
             _logger.LogInformation("Accepting queued accept-only quests before other work");
 
-        if (TryPickPriorityQuest())
+        if (_dailies == null && TryPickPriorityQuest())
             _logger.LogInformation("Using priority quest over current quest");
 
         (QuestSequence? seq, QuestStep? step, bool createTasks) = GetNextStep();
@@ -1183,6 +1383,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         {
             _stopPolicy.ReportTasksFailed(e, CurrentQuest);
             _reports.Problem(EProblemKind.Other);
+            if (CanRetryDaily(e) && TryDailyFailure(e.Message))
+                return;
             Stop("Tasks failed to create");
         }
     }
@@ -1288,6 +1490,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     // Accept-only priorities run sequence 0, then remain for normal completion.
     private bool TryQueueAcceptOnly()
     {
+        if (_dailies != null)
+            return false;
         if (!_priorityManager.HasPendingAcceptOnly)
             return false;
 
@@ -1320,6 +1524,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     private bool TryPickPriorityQuest()
     {
+        if (_dailies != null)
+            return false;
         if (!_priorityManager.CanInterrupt || !QuestSelectionController.IsInterruptible(CurrentQuestDetails, AutomationType, HasExternalOperation,
                 _priorityManager.Contains))
             return false;
@@ -1376,6 +1582,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     {
         if (_disposed)
             return;
+        DetachDailies();
         _disposed = true;
         try
         {

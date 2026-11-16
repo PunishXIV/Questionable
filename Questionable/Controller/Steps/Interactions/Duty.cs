@@ -93,12 +93,20 @@ internal static class Duty
         AutoDutyProvider autoDuty,
         TerritoryData territoryData,
         Configuration configuration,
-        GameFunctions gameFunctions) : TaskExecutor<StartAutoDutyTask>, IStoppable
+        GameFunctions gameFunctions,
+        ICondition condition) : TaskExecutor<StartAutoDutyTask>, IStoppable
     {
         private Guid? _operationId;
 
         public override ETaskResult Update()
         {
+            if (_operationId == null)
+            {
+                if (condition[ConditionFlag.InCombat])
+                    return ETaskResult.StillRunning;
+                StartDuty();
+            }
+
             var operation = autoDuty.Operation;
             if (_operationId == null || operation.Id != _operationId)
                 throw new TaskException("AutoDuty is no longer running Questionable's duty.");
@@ -121,10 +129,22 @@ internal static class Duty
                 autoDuty.CancelRun();
         }
 
-        public override bool ShouldInterruptOnDamage() => false;
+        public override bool ShouldInterruptOnDamage() => _operationId == null;
+
+        public override bool WasInterrupted() => _operationId == null &&
+            (condition[ConditionFlag.InCombat] || base.WasInterrupted());
+
         protected override bool Start()
         {
             _operationId = null;
+            // Keep QST's combat and death handling until AutoDuty can take over.
+            if (!condition[ConditionFlag.InCombat])
+                StartDuty();
+            return true;
+        }
+
+        private void StartDuty()
+        {
             if (!territoryData.TryGetCfc(Task.CfcId, out var cfcData))
                 throw new TaskException("Failed to get territory ID for content finder condition");
 
@@ -163,7 +183,6 @@ internal static class Duty
                 if (previousId == null)
                     _operationId = autoDuty.Operation.Id;
             }
-            return true;
         }
 
         private static unsafe short? GetPlayerLevel()

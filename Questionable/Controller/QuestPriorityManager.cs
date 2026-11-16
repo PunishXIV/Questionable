@@ -18,6 +18,7 @@ internal sealed class QuestPriorityManager(
 
     // Session only: off holds the list until the running quest is done.
     public bool CanInterrupt { get; set; } = true;
+    public bool IsDailiesRun { get; set; }
     public int Count => _quests.Count;
     public bool IsEmpty => _quests.Count == 0;
 

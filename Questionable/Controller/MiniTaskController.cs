@@ -93,6 +93,8 @@ internal abstract class MiniTaskController<T> : IDisposable
 
             OnTaskFailure(e, currentExecutor.CurrentTask);
             string msg = ReportFailure(e, currentExecutor.CurrentTask, starting: false);
+            if (!_taskQueue.CancelFailed && TryHandleTaskFailure(e, currentExecutor.CurrentTask))
+                return;
             Stop("Task failed to update");
             _notifyOnFailure(msg);
             return;
@@ -217,6 +219,8 @@ internal abstract class MiniTaskController<T> : IDisposable
 
             OnTaskFailure(e, task);
             string msg = ReportFailure(e, task, starting: true);
+            if (!_taskQueue.CancelFailed && TryHandleTaskFailure(e, task))
+                return;
             Stop("Task failed to start");
             _notifyOnFailure(msg);
         }
@@ -274,6 +278,8 @@ internal abstract class MiniTaskController<T> : IDisposable
     protected virtual void OnTaskFailure(Exception exception, ITask task)
     {
     }
+
+    protected virtual bool TryHandleTaskFailure(Exception exception, ITask task) => false;
 
     protected virtual void OnTaskComplete(ITask task)
     {

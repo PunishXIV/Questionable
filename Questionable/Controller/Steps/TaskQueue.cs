@@ -5,6 +5,7 @@ internal sealed class TaskQueue(ILogger logger)
     private readonly List<ITask> _completedTasks = [];
     private readonly List<ITask> _tasks = [];
     public ITaskExecutor? CurrentTaskExecutor { get; set; }
+    public bool CancelFailed { get; private set; }
 
     public IEnumerable<ITask> RemainingTasks => _tasks;
     public bool AllTasksComplete => CurrentTaskExecutor == null && _tasks.Count == 0;
@@ -55,6 +56,7 @@ internal sealed class TaskQueue(ILogger logger)
 
     public bool CancelCurrentTask()
     {
+        CancelFailed = false;
         ITaskExecutor? executor = CurrentTaskExecutor;
         // Clear it before calling external code, including reentrant or throwing cleanup.
         CurrentTaskExecutor = null;
@@ -66,6 +68,7 @@ internal sealed class TaskQueue(ILogger logger)
         }
         catch (Exception e)
         {
+            CancelFailed = true;
             logger.LogError(e, "Failed to cancel task {ExecutorType}", executor?.GetType().FullName?.Split('.')[^1].Replace('+', '.'));
             return false;
         }

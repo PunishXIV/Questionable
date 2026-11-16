@@ -12,6 +12,7 @@ internal sealed class AlliedSocietyComponent
     QuestJournalUtils questJournalUtils,
     JournalTable journalTable,
     Configuration configuration,
+    DailiesController dailiesController,
     IDalamudPluginInterface pluginInterface)
 {
     private readonly Dictionary<EAlliedSociety, EType?> _types = [];
@@ -59,8 +60,78 @@ internal sealed class AlliedSocietyComponent
         _unchecked = 0;
         _incomplete = 0;
 
+        DrawDailies();
+
         foreach (EAlliedSociety alliedSociety in alliedSocietyFunctions.GetAlliedSocieties(!configuration.General.HideThingsNotAvailable))
             DrawSociety(alliedSociety, addPending, debug);
+    }
+
+    private void DrawDailies()
+    {
+        List<EAlliedSociety> societies = configuration.Dailies.Societies;
+        using (ImRaii.Disabled(societies.Count == 0 || !dailiesController.CanStart))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Play, _L("Do dailies")))
+                dailiesController.Start();
+        }
+
+        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+            ImGui.SetTooltip(societies.Count == 0
+                ? _L("Tick the societies to include with the box in front of their name.")
+                : _L("Accepts the ticked societies' dailies, top of the list first until the allowances run out. Highest-rank quests are picked first, including maxed societies. Starts the normal quest run; other quests may also run."));
+
+        using var disabled = ImRaii.Disabled(questController.IsRunning);
+        for (int i = 0; i < societies.Count; i++)
+        {
+            EAlliedSociety society = societies[i];
+            using (ImRaii.Disabled(i == 0))
+            {
+                if (ImGuiComponentsLocal.IconButton($"DailiesUp{(int)society}", FontAwesomeIcon.ArrowUp))
+                {
+                    MoveDaily(i, i - 1);
+                    return;
+                }
+            }
+
+            ImGui.SameLine();
+            using (ImRaii.Disabled(i == societies.Count - 1))
+            {
+                if (ImGuiComponentsLocal.IconButton($"DailiesDown{(int)society}", FontAwesomeIcon.ArrowDown))
+                {
+                    MoveDaily(i, i + 1);
+                    return;
+                }
+            }
+
+            ImGui.SameLine();
+            ImGui.Text($"{i + 1}. {society}");
+        }
+    }
+
+    private void MoveDaily(int from, int to)
+    {
+        List<EAlliedSociety> societies = configuration.Dailies.Societies;
+        (societies[from], societies[to]) = (societies[to], societies[from]);
+        pluginInterface.SavePluginConfig(configuration);
+    }
+
+    private void DrawDailyCheckbox(EAlliedSociety alliedSociety)
+    {
+        using var disabled = ImRaii.Disabled(questController.IsRunning);
+        List<EAlliedSociety> societies = configuration.Dailies.Societies;
+        bool ticked = societies.Contains(alliedSociety);
+        if (ImGui.Checkbox($"##Dailies{(int)alliedSociety}", ref ticked))
+        {
+            if (ticked)
+                societies.Add(alliedSociety);
+            else
+                societies.RemoveAll(x => x == alliedSociety);
+            pluginInterface.SavePluginConfig(configuration);
+        }
+
+        if (ImGui.IsItemHovered())
+            ImGui.SetTooltip(_L("Include in Do dailies"));
+        ImGui.SameLine();
     }
 
     // Path checker tools; true when "Add" was pressed this frame.
@@ -128,6 +199,7 @@ internal sealed class AlliedSocietyComponent
         string label = $"{rep}{alliedSociety}{type}###AlliedSociety{(int)alliedSociety}";
         bool isOpen;
 
+        DrawDailyCheckbox(alliedSociety);
         using (ImRaii.Disabled(quests.Count == 0))
         {
             // Ignore Ixal Deliverance and FATE quests when flagging unchecked paths.

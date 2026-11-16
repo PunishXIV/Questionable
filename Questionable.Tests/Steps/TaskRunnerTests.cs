@@ -17,6 +17,61 @@ namespace Questionable.Tests.Steps;
 
 public sealed class TaskRunnerTests
 {
+    [Fact]
+    public void FailedCleanup_PreventsFailureHandler()
+    {
+        var task = new WaitAtEnd.WaitDelay();
+        var executor = Substitute.For<ITaskExecutor, IStoppable>();
+        executor.CurrentTask.Returns(task);
+        executor.Start(task).Returns(_ => throw new TaskException("start failed"));
+        ((IStoppable)executor).When(x => x.StopNow()).Do(_ => throw new InvalidOperationException("cleanup failed"));
+        ServiceCollection services = [];
+        services.AddKeyedTransient<ITaskExecutor>(typeof(WaitAtEnd.WaitDelay), (_, _) => executor);
+        using var provider = services.BuildServiceProvider();
+        using var fixture = new TaskRunnerFixture(provider: provider);
+        fixture.Controller.HandleFailure = (_, _) => throw new Exception("must not retry after failed cleanup");
+        fixture.Queue.Enqueue(task);
+        fixture.Controller.Tick();
+        Assert.Equal("Task failed to start", Assert.Single(fixture.Controller.Stops));
+        Assert.Single(fixture.Notifications);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void HandledFailure_DoesNotStop(bool starting)
+    {
+        var task = new WaitAtEnd.WaitDelay();
+        var executor = Substitute.For<ITaskExecutor>();
+        var error = new TaskException("retry this daily");
+        executor.CurrentTask.Returns(task);
+        executor.Start(task).Returns(_ => starting ? throw error : true);
+        executor.Update().Returns(_ => throw error);
+        ServiceCollection services = [];
+        services.AddKeyedTransient<ITaskExecutor>(typeof(WaitAtEnd.WaitDelay), (_, _) => executor);
+        using var provider = services.BuildServiceProvider();
+        using var fixture = new TaskRunnerFixture(provider: provider);
+        int handled = 0;
+        fixture.Controller.HandleFailure = (failure, failedTask) =>
+        {
+            Assert.Same(error, failure);
+            Assert.Same(task, failedTask);
+            handled++;
+            return fixture.Queue.Reset();
+        };
+        fixture.Queue.Enqueue(task);
+
+        fixture.Controller.Tick();
+        if (!starting)
+            fixture.Controller.Tick();
+
+        Assert.Equal(1, handled);
+        Assert.Single(fixture.Controller.Failures);
+        Assert.Empty(fixture.Controller.Stops);
+        Assert.Empty(fixture.Notifications);
+        Assert.True(fixture.Queue.AllTasksComplete);
+    }
+
     private sealed record Probe : ITask;
 
     private sealed class GroupEnd : IOptionalGroupEnd

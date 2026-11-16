@@ -177,12 +177,20 @@ internal sealed class QuestionableIpc : IDisposable
     private bool StartQuest(string questId, bool single)
     {
         _logger.LogDebug("StartQuest({QuestId},{Single})", questId, single);
-        if (!_questStarter.CanStartQuest("IPCQuestSelection"))
-            return false;
-
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.TryGetQuest(elementId, out Quest? quest))
         {
+            // An unavailable single quest must not activate the normal journal/MSQ fallback.
+            if (single && !_questFunctions.IsQuestAccepted(elementId) &&
+                !_questFunctions.IsReadyToAcceptQuest(elementId))
+            {
+                _logger.LogWarning("Cannot start single quest {QuestId}: it is neither accepted nor ready to accept", questId);
+                return false;
+            }
+
+            if (!_questStarter.CanStartQuest("IPCQuestSelection"))
+                return false;
+
             _questController.SetNextQuest(quest);
             if (single)
                 _questStarter.StartSingleQuest("IPCQuestSelection");

@@ -48,7 +48,7 @@ internal sealed class EventInfoComponent
         // FFVII Keybound Brawlers
         new(
             $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(200)} {DateTime.UtcNow.Year}",
-            [new QuestId(434), new QuestId(5466)],
+            [new QuestId(434), new QuestId(435), new QuestId(5466)],
             EndsAtUtc: AtDailyReset(2027, 2, 23),
             StartsAtUtc: AtDailyReset(2026, 10, 27),
             StaysActive: true
@@ -147,14 +147,21 @@ internal sealed class EventInfoComponent
         return eventQuest.QuestIds.Any(ShouldShowQuest);
     }
 
-    public IEnumerable<ElementId> GetActiveQuests()
+    public IEnumerable<ElementId> GetActiveQuests() => GetActiveQuests(EventQuests, DateTime.UtcNow,
+        questFunctions.IsQuestAccepted, questFunctions.IsQuestComplete, x => questFunctions.IsQuestUnobtainable(x));
+
+    internal static IEnumerable<ElementId> GetActiveQuests(IEnumerable<EventQuest> events, DateTime now,
+        Func<ElementId, bool> isAccepted, Func<ElementId, bool> isComplete, Func<ElementId, bool> isUnobtainable)
     {
-        return EventQuests
+        // This is an automation queue, independent of whether the UI shows completed quests.
+        // Keep later prerequisites even when they cannot be accepted until the preceding quest finishes.
+        return events
             .Where(x =>
-                (x.StartsAtUtc == null || x.StartsAtUtc < DateTime.UtcNow) &&
-                x.EndsAtUtc >= DateTime.UtcNow &&
-                x.QuestIds.Any(ShouldShowQuest))
-            .SelectMany(x => x.QuestIds);
+                (x.StartsAtUtc == null || x.StartsAtUtc < now) &&
+                x.EndsAtUtc >= now)
+            .SelectMany(x => x.QuestIds)
+            .Where(x => isAccepted(x) || (!isComplete(x) && !isUnobtainable(x)))
+            .Distinct();
     }
 
     private bool ShouldShowQuest(ElementId questId)

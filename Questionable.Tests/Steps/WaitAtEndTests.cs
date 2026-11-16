@@ -47,7 +47,7 @@ public sealed class WaitAtEndTests
             ? new WaitAtEnd.QuestCompleted(questId)
             : new WaitAtEnd.QuestAccepted(questId);
         ITaskExecutor executor = turnIn
-            ? new WaitAtEnd.QuestCompletedExecutor(null!)
+            ? new WaitAtEnd.QuestCompletedExecutor(null!, null!)
             : new WaitAtEnd.QuestAcceptedExecutor(null!, null!);
         Interact.Task interaction = new(100, null,
             turnIn ? EInteractionType.CompleteQuest : EInteractionType.AcceptQuest);
@@ -111,7 +111,7 @@ public sealed class WaitAtEndTests
             ? new WaitAtEnd.QuestCompleted(new QuestId(123))
             : new WaitAtEnd.QuestAccepted(new QuestId(123));
         ITaskExecutor executor = turnIn
-            ? new WaitAtEnd.QuestCompletedExecutor(null!)
+            ? new WaitAtEnd.QuestCompletedExecutor(null!, null!)
             : new WaitAtEnd.QuestAcceptedExecutor(null!, null!);
         queue.Enqueue(wait);
         Assert.True(queue.TryDequeue(out ITask? current));

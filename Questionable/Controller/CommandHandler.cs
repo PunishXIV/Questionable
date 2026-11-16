@@ -37,6 +37,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly OpenQuestCleanUp _openQuestCleanUp;
     private readonly ITargetManager _targetManager;
     private readonly RouteCheck _routeCheck;
+    private readonly DailiesController _dailiesController;
 
     private IReadOnlyList<uint> _lastUnlockLinks = [];
 
@@ -65,8 +66,10 @@ internal sealed class CommandHandler : IDisposable
         QuestData questData,
         EventInfoComponent eventInfoComponent,
         OpenQuestCleanUp openQuestCleanUp,
-        RouteCheck routeCheck)
+        RouteCheck routeCheck,
+        DailiesController dailiesController)
     {
+        _dailiesController = dailiesController;
         _commandManager = commandManager;
         _chatGui = chatGui;
         _questController = questController;
@@ -150,6 +153,11 @@ internal sealed class CommandHandler : IDisposable
                     _characterRun.Start();
                 else
                     _questStarter.Start(_L("Start command"));
+                break;
+
+            case "dailies":
+                _questWindow.IsOpenAndUncollapsed = true;
+                _dailiesController.Start();
                 break;
 
             case "stop":
@@ -401,6 +409,7 @@ internal sealed class CommandHandler : IDisposable
         _L("/qst config - opens the configuration window"),
         _L("/qst start - starts doing quests"),
         _L("/qst stop - stops doing quests"),
+        _L("/qst dailies - accepts and does the allied society dailies ticked in the journal"),
         _L("/qst reload - reload all quest data"),
         _L("/qst skipstep - skips the current quest step, e.g. one you finished by hand"),
         _L("/qst next <questId> - sets the next quest to do (or clears it if no questId is specified)"),

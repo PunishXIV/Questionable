@@ -150,7 +150,7 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
             throw new NeedsPlayerException("AutoDuty is unavailable or busy; refusing to replace its work.");
         var game = ReadGameState();
         if (!game.Available || !game.Idle || game.InQueue || game.Loading || game.InDuty)
-            throw new NeedsPlayerException("Can't start AutoDuty while you're in a duty or queue, or moving.");
+            throw new NeedsPlayerException("Can't start AutoDuty while you're in combat, in a duty or queue, or moving.");
 
         Guid id = Operation.BeginRequest(data.TerritoryId, exitIsDone: dutyMode == Duty.Mode.NoviceHall);
         _loggedSwitchBackFailure = false;

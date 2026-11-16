@@ -1,4 +1,5 @@
 using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.UI.Misc;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Plugin.Services;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -75,6 +76,147 @@ public sealed class EquipRecommendedTests
         Assert.Equal(ETaskResult.StillRunning, Update(busy: true));
         Assert.Equal(ETaskResult.StillRunning, Update(busy: false));
         Assert.Equal(2, _requests);
+    }
+
+    [Fact]
+    public void UnchangedGear_MatchesSavedSet()
+    {
+        var saved = new RaptureGearsetModule.GearsetEntry { ClassJob = 31 };
+        var equipped = new InventoryItem[14];
+        for (int slot = 0; slot < equipped.Length; ++slot)
+        {
+            saved.Items[slot].ItemId = (uint)(100 + slot);
+            equipped[slot].ItemId = (uint)(100 + slot);
+        }
+
+        Assert.True(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+    }
+
+    [Fact]
+    public void DurabilityLoss_DoesNotNeedSave()
+    {
+        var saved = new RaptureGearsetModule.GearsetEntry { ClassJob = 31 };
+        var equipped = new InventoryItem[14];
+        saved.Items[0].ItemId = equipped[0].ItemId = 123;
+        equipped[0].Condition = 30000;
+        Assert.True(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+        equipped[0].Condition = 29000;
+        Assert.True(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    [InlineData(2)]
+    [InlineData(3)]
+    [InlineData(4)]
+    [InlineData(5)]
+    [InlineData(6)]
+    [InlineData(7)]
+    [InlineData(8)]
+    [InlineData(9)]
+    [InlineData(10)]
+    [InlineData(11)]
+    [InlineData(12)]
+    [InlineData(13)]
+    public void ChangedSlot_NeedsSave(int slot)
+    {
+        var saved = new RaptureGearsetModule.GearsetEntry { ClassJob = 31 };
+        var equipped = new InventoryItem[14];
+        equipped[slot].ItemId = 123;
+        Assert.False(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+        saved.Items[slot].ItemId = 123;
+        Assert.True(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+        equipped[slot].ItemId = 0;
+        Assert.False(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+    }
+
+    [Fact]
+    public void ChangedJob_NeedsSave()
+    {
+        var saved = new RaptureGearsetModule.GearsetEntry { ClassJob = 31 };
+        Assert.False(EquipRecommended.GearsetMatches(ref saved, new InventoryItem[14], 8));
+    }
+
+    [Fact]
+    public void Quality_MatchesEncodedSavedId()
+    {
+        var saved = new RaptureGearsetModule.GearsetEntry { ClassJob = 31 };
+        var equipped = new InventoryItem[14];
+        saved.Items[0].ItemId = 123;
+        equipped[0].ItemId = 123;
+        equipped[0].Flags = InventoryItem.ItemFlags.HighQuality;
+        Assert.False(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+        saved.Items[0].ItemId = 1_000_123;
+        Assert.True(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void AppearanceChange_NeedsSave(int field)
+    {
+        var saved = new RaptureGearsetModule.GearsetEntry { ClassJob = 31 };
+        var equipped = new InventoryItem[14];
+        saved.Items[0].ItemId = equipped[0].ItemId = 123;
+        if (field == 0)
+            equipped[0].GlamourId = 456;
+        else
+            equipped[0].Stains[field - 1] = 7;
+        Assert.False(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+        saved.Items[0].GlamourId = equipped[0].GlamourId;
+        saved.Items[0].Stain0Id = equipped[0].Stains[0];
+        saved.Items[0].Stain1Id = equipped[0].Stains[1];
+        Assert.True(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    [InlineData(2)]
+    [InlineData(3)]
+    [InlineData(4)]
+    public void MateriaChange_NeedsSave(int slot)
+    {
+        var saved = new RaptureGearsetModule.GearsetEntry { ClassJob = 31 };
+        var equipped = new InventoryItem[14];
+        saved.Items[0].ItemId = equipped[0].ItemId = 123;
+        equipped[0].Materia[slot] = 13;
+        Assert.False(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+        saved.Items[0].Materia[slot] = 13;
+        Assert.True(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+        equipped[0].MateriaGrades[slot] = 5;
+        Assert.False(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+        saved.Items[0].MateriaGrades[slot] = 5;
+        Assert.True(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+    }
+
+    [Fact]
+    public void EmptySlots_IgnoreUnusedFields()
+    {
+        var saved = new RaptureGearsetModule.GearsetEntry { ClassJob = 31 };
+        var equipped = new InventoryItem[14];
+        equipped[0].Flags = InventoryItem.ItemFlags.HighQuality;
+        equipped[0].GlamourId = 456;
+        saved.Items[0].Stain0Id = 7;
+        Assert.True(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
+    }
+
+    [Fact]
+    public void IncompleteEquipment_NeedsSave()
+    {
+        var saved = new RaptureGearsetModule.GearsetEntry { ClassJob = 31 };
+        Assert.False(EquipRecommended.GearsetMatches(ref saved, new InventoryItem[13], 31));
+    }
+
+    [Fact]
+    public void SymbolicEquipment_NeedsSave()
+    {
+        var saved = new RaptureGearsetModule.GearsetEntry { ClassJob = 31 };
+        var equipped = new InventoryItem[14];
+        equipped[0].IsSymbolic = true;
+        Assert.False(EquipRecommended.GearsetMatches(ref saved, equipped, 31));
     }
 
     private ETaskResult Update(bool busy) => _executor.UpdateStylist(busy, () =>

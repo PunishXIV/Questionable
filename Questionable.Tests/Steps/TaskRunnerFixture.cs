@@ -47,10 +47,12 @@ internal sealed class TaskRunnerFixture : IDisposable
         public int CompletedTasks { get; private set; }
         public List<string> Stops { get; } = [];
         public List<(Exception Error, ITask Task)> Failures { get; } = [];
+        public Func<Exception, ITask, bool>? HandleFailure { get; set; }
         public void Tick() => UpdateCurrentTask();
         protected override bool CanStartNextTask() => AllowNewTasks;
         protected override void OnTaskComplete(ITask task) => ++CompletedTasks;
         protected override void OnTaskFailure(Exception exception, ITask task) => Failures.Add((exception, task));
+        protected override bool TryHandleTaskFailure(Exception exception, ITask task) => HandleFailure?.Invoke(exception, task) == true;
         public override void Stop(string label)
         {
             Stops.Add(label);
