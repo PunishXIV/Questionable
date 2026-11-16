@@ -21,6 +21,7 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
     private readonly QuestController _questController;
     private bool _hasControl;
     private bool _sentDontSkipCutscenes;
+    private bool _sentCompleteQuests;
 
     public TextAdvanceIpc(IDalamudPluginInterface pluginInterface, IFramework framework,
         QuestController questController, Configuration configuration)
@@ -46,23 +47,30 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
         bool hasActiveQuest = _questController.IsRunning ||
                               _questController.AutomationType != QuestController.EAutomationType.Manual;
         bool dontSkipCutscenes = _configuration.General.DontSkipCutscenes;
+        QuestController.QuestProgress? progress = _questController.CurrentQuest;
+        bool completeQuests = CompletesQuestHere(progress?.FindStep(),
+            progress?.Quest.Info is QuestInfo { CompletesInstantly: true });
         // A missing or unloading TextAdvance must not throw from every framework update.
         if (_configuration.General.ConfigureTextAdvance && hasActiveQuest)
         {
-            if (_hasControl && dontSkipCutscenes != _sentDontSkipCutscenes)
+            if (_hasControl && (dontSkipCutscenes != _sentDontSkipCutscenes || completeQuests != _sentCompleteQuests))
             {
                 // TextAdvance accepts updated settings from the same requester. Keep control
                 // throughout so its normal auto-interact/cutscene settings cannot take over.
                 if (IpcInvoke.SafeFunc(() => _enableExternalControl(
-                        _pluginName, CreateConfig(dontSkipCutscenes)), fallback: false))
+                        _pluginName, CreateConfig(dontSkipCutscenes, completeQuests)), fallback: false))
+                {
                     _sentDontSkipCutscenes = dontSkipCutscenes;
+                    _sentCompleteQuests = completeQuests;
+                }
             }
             else if (IpcInvoke.SafeFunc<bool?>(() => _isInExternalControl(), fallback: null) == false &&
                      IpcInvoke.SafeFunc(() => _enableExternalControl(
-                         _pluginName, CreateConfig(dontSkipCutscenes)), fallback: false))
+                         _pluginName, CreateConfig(dontSkipCutscenes, completeQuests)), fallback: false))
             {
                 _hasControl = true;
                 _sentDontSkipCutscenes = dontSkipCutscenes;
+                _sentCompleteQuests = completeQuests;
             }
         }
         else
@@ -76,10 +84,15 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
         }
     }
 
-    private static ExternalTerritoryConfig CreateConfig(bool dontSkipCutscenes) => new()
+    // Talking to a giver for a middle step would otherwise turn in another finished quest of theirs.
+    internal static bool CompletesQuestHere(QuestStep? step, bool completesInstantly) =>
+        step == null || step.InteractionType == EInteractionType.CompleteQuest || step.TurnInQuestId != null ||
+        (step.InteractionType == EInteractionType.AcceptQuest && completesInstantly);
+
+    private static ExternalTerritoryConfig CreateConfig(bool dontSkipCutscenes, bool completeQuests) => new()
     {
         EnableQuestAccept = true,
-        EnableQuestComplete = true,
+        EnableQuestComplete = completeQuests,
         EnableRewardPick = true,
         EnableRequestHandin = true,
         EnableCutsceneEsc = !dontSkipCutscenes,

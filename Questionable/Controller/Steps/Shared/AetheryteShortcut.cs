@@ -162,7 +162,7 @@ internal static class AetheryteShortcut
             {
                 yield return new Task(step, quest.Id, step.AetheryteShortcut.Value,
                     aetheryteData.TerritoryIds[step.AetheryteShortcut.Value]);
-                yield return new WaitAtEnd.WaitDelay();
+                yield return new WaitAfterTeleport();
 
                 if (MoveAwayExecutor.AppliesTo(step.AetheryteShortcut.Value) &&
                     step.AethernetShortcut?.From != step.AetheryteShortcut.Value)
@@ -174,6 +174,25 @@ internal static class AetheryteShortcut
                 }
             }
         }
+    }
+
+    internal sealed record WaitAfterTeleport : ITask
+    {
+        public override string ToString() => "Wait(after teleport)";
+    }
+
+    // Executors are transient, so the teleport executor leaves its result here for the wait that follows it.
+    internal sealed class WaitAfterTeleportExecutor : DelayedTaskExecutor<WaitAfterTeleport>
+    {
+        internal static bool LastTeleported { get; set; }
+
+        protected override bool StartInternal()
+        {
+            Delay = TimeSpan.FromMilliseconds(750);
+            return LastTeleported;
+        }
+
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     // A following aethernet shortcut can use a territory other than the step's.
@@ -214,6 +233,7 @@ internal static class AetheryteShortcut
 
         protected override bool Start()
         {
+            WaitAfterTeleportExecutor.LastTeleported = false;
             if (ShouldSkipTeleport())
                 return false;
 
@@ -256,6 +276,7 @@ internal static class AetheryteShortcut
             if (!_teleported)
             {
                 _teleported = DoTeleport();
+                WaitAfterTeleportExecutor.LastTeleported = _teleported;
                 return ETaskResult.StillRunning;
             }
 

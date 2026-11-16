@@ -37,6 +37,7 @@ internal sealed class FakeQuestGameState : IQuestGameState
             : null;
 
     public bool IsDailyQuestCompleted(ushort questId) => DailyCompleted.Contains(questId);
+    public uint SocietyAllowances { get; set; } = 12;
     public IReadOnlyList<ushort> TrackedQuestIds { get; set; } = [];
     public IReadOnlyList<(ushort QuestId, byte Sequence, bool IsHidden)> NormalQuests { get; set; } = [];
     public bool IsReadyToTurnIn(string questName) => false;

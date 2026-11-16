@@ -14,6 +14,7 @@ internal interface IQuestGameState : IPrerequisiteState
     QuestProgressInfo? GetQuestProgressInfo(ElementId elementId) =>
         elementId is QuestId questId ? GetQuestProgress(questId.Value) : null;
     bool IsDailyQuestCompleted(ushort questId);
+    uint SocietyAllowances { get; }
 
     // Normal quests in to-do list order.
     IReadOnlyList<ushort> TrackedQuestIds { get; }

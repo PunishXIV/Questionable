@@ -15,8 +15,13 @@ internal sealed class QuestSelectionController(Configuration configuration)
         slots.Simulated == null && slots.Next == null && slots.Gathering == null &&
         (automation == EAutomationType.Automatic || slots.Started == null);
 
-    public static Quest? PickAcceptOnly(IEnumerable<Quest> acceptOnlyQuests, IQuestSelectionState state) =>
-        acceptOnlyQuests.FirstOrDefault(x => state.IsReadyToAccept(x.Id, ignoreLevel: true) && state.HasClassJobAtQuestLevel(x.Id));
+    // Highest society rank first, so the daily limit isn't spent on the lowest-paying quests; then this zone first.
+    public static Quest? PickAcceptOnly(IEnumerable<Quest> acceptOnlyQuests, IQuestSelectionState state, uint? territory = null) =>
+        acceptOnlyQuests
+            .Where(x => state.IsReadyToAccept(x.Id, ignoreLevel: true) && state.HasClassJobAtQuestLevel(x.Id))
+            .OrderByDescending(x => x.Info is QuestInfo info ? info.AlliedSocietyRank : EAlliedSocietyRank.None)
+            .ThenBy(x => x.FindSequence(0)?.FindStep(0)?.TerritoryId == territory ? 0 : 1)
+            .FirstOrDefault();
 
     // Completed repeatables can still be accepted, so the quest must be both complete and no longer accepted.
     public EStopPoint? GetStopPoint(QuestProgress? started, bool stopAfterCurrentQuest, IQuestSelectionState state)

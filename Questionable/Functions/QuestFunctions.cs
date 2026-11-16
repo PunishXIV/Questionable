@@ -179,11 +179,13 @@ internal sealed class QuestFunctions
                 {
                     if (firstTrackedSequence == 255)
                     {
-                        foreach ((ElementId questId, byte sequence) in sameSocietyQuests)
+                        // only quests that aren't ready to be turned in, the ones in this zone first
+                        List<(ElementId Quest, byte Sequence)> unfinished = [.. sameSocietyQuests.Where(x =>
+                            x.Sequence != 255 || (catalog.TryGetQuest(x.Quest, out Quest? quest) && !IsReadyToCompleteQuest(quest)))];
+                        if (unfinished.Count > 0)
                         {
-                            // only if the other quest isn't ready to be turned in
-                            if (sequence != 255 || (catalog.TryGetQuest(questId, out Quest? quest) && !IsReadyToCompleteQuest(quest)))
-                                return new(questId, sequence, msqQuest.State);
+                            (ElementId questId, byte sequence) = PreferThisZone(unfinished);
+                            return new(questId, sequence, msqQuest.State);
                         }
                     }
                     else if (!IsOnAlliedSocietyMount())
@@ -208,6 +210,9 @@ internal sealed class QuestFunctions
                                 return new(talkToNormalNpcs.Value.Item1, talkToNormalNpcs.Value.Item2, msqQuest.State);
                         }
 
+                        // Finish what's in this zone before travelling for another of the society's dailies.
+                        (ElementId questId, byte sequence) = PreferThisZone([.. sameSocietyQuests.Where(x => x.Sequence < 255)]);
+                        return new(questId, sequence, msqQuest.State);
                     }
                 }
             }
@@ -361,6 +366,12 @@ internal sealed class QuestFunctions
         ushort mountId = state.CurrentMountId;
         return mountId != 0 && alliedSocietyData.Mounts.ContainsKey(mountId);
     }
+
+    // The first quest whose current stage happens in this zone, else the first one.
+    private (ElementId Quest, byte Sequence) PreferThisZone(List<(ElementId Quest, byte Sequence)> quests) =>
+        quests.FirstOrDefault(x => catalog.TryGetQuest(x.Quest, out Quest? quest) &&
+                                   quest.FindSequence(x.Sequence)?.Steps.FirstOrDefault()?.TerritoryId == state.TerritoryType,
+            quests[0]);
 
     private bool IsReadyToCompleteQuest(Quest quest) => state.IsReadyToTurnIn(quest.Info.Name);
 
@@ -630,7 +641,7 @@ internal sealed class QuestFunctions
 
             if (questId is QuestId qId && IsDailyAlliedSocietyQuest(qId))
             {
-                if (state.IsDailyQuestCompleted(questId.Value))
+                if (state.IsDailyQuestCompleted(questId.Value) || state.SocietyAllowances == 0)
                     return false;
 
                 if (!IsSocietyDailyAvailable(qId))
@@ -858,6 +869,9 @@ internal sealed class QuestFunctions
         QuestInfo questInfo = (QuestInfo)catalog.GetQuestInfo(questId);
         return questInfo.AlliedSociety != EAlliedSociety.None && questInfo.IsRepeatable;
     }
+
+    public bool IsOutOfSocietyAllowances(ElementId questId) =>
+        questId is QuestId qId && IsDailyAlliedSocietyQuest(qId) && state.SocietyAllowances == 0;
 
     public bool IsSocietyDailyAvailable(QuestId questId)
     {

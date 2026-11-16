@@ -239,7 +239,7 @@ internal sealed class ClassJobUtils
             for (int i = 0; i < 100; ++i)
             {
                 RaptureGearsetModule.GearsetEntry* gearset = gearsetModule->GetGearset(i);
-                if (gearset->ClassJob == (byte)classJob)
+                if (gearset->Flags.HasFlag(RaptureGearsetModule.GearsetFlag.Exists) && gearset->ClassJob == (byte)classJob)
                 {
                     gearsetModule->EquipGearset(gearset->Id);
                     return true;

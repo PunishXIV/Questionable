@@ -65,12 +65,13 @@ internal static class Mail
         ICondition condition,
         IObjectTable objectTable,
         IDataManager dataManager,
+        QuestPriorityManager priorityManager,
         ILogger<Factory> logger) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (!configuration.General.ClaimMail || DateTime.Now < _retryAt || MogmailIpc.RewardLetters is not > 0 ||
-                !BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions) || !mogmail.IsInstalled)
+                !BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions, priorityManager) || !mogmail.IsInstalled)
                 return [];
 
             HashSet<uint> moogleIds = MoogleIds(dataManager);

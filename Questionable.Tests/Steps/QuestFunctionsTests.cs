@@ -134,6 +134,21 @@ public sealed class QuestFunctionsTests
     }
 
     [Theory]
+    [InlineData(1u, true)]
+    [InlineData(0u, false)]
+    public void SocietyDaily_NeedsAnAllowance(uint allowances, bool ready)
+    {
+        _catalog.Add(TestQuestInfo.Create(1222)
+            .With(nameof(QuestInfo.AlliedSociety), EAlliedSociety.Amaljaa)
+            .With(nameof(QuestInfo.IsRepeatable), true));
+        _state.AvailableAlliedSocietyQuests[EAlliedSociety.Amaljaa] = [new QuestId(1222)];
+        _state.SocietyAllowances = allowances;
+
+        Assert.Equal(ready, _functions.IsReadyToAcceptQuest(new QuestId(1222)));
+        Assert.Equal(!ready, _functions.IsOutOfSocietyAllowances(new QuestId(1222)));
+    }
+
+    [Theory]
     [InlineData(49, false, false)]
     [InlineData(49, true, true)]
     [InlineData(50, false, true)]
@@ -223,6 +238,23 @@ public sealed class QuestFunctionsTests
         GuideShows(10);
         _state.HasPlayer = false;
         Assert.Equal(MainScenarioQuestState.LoadingScreen, _functions.GetMainScenarioQuest().Item1.State);
+    }
+
+    // Amalj'aa dailies 1222 and 1223, both in progress; the one whose stage is in this zone goes first.
+    [Theory]
+    [InlineData(147u, 1223)]
+    [InlineData(999u, 1222)]
+    public void SocietyDailies_ThisZoneFirst(uint territory, ushort expected)
+    {
+        _catalog.Add(TestQuestInfo.Create(1222), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 1, null, 146)));
+        _catalog.Add(TestQuestInfo.Create(1223), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 2, null, 147)));
+        _state.Guide = new(EScenarioGuideState.Ready, 0);
+        _state.TrackedQuestIds = [1222, 1223];
+        _state.Sequences[1222] = 1;
+        _state.Sequences[1223] = 1;
+        _state.TerritoryType = territory;
+
+        Assert.Equal(new QuestId(expected), _functions.GetCurrentQuestInternal(allowNewMsq: true).CurrentQuest);
     }
 
     [Fact]

@@ -54,12 +54,13 @@ internal static class JobGear
         ICondition condition,
         IDalamudPluginInterface pluginInterface,
         IChatGui chatGui,
+        QuestPriorityManager priorityManager,
         ILogger<Factory> logger) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (!configuration.General.CollectJobGear ||
-                !BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions) ||
+                !BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions, priorityManager) ||
                 ProfileController.CurrentContentId is not { } contentId)
                 return [];
 

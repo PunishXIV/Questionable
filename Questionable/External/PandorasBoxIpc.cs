@@ -12,13 +12,15 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
         {
             return GetVersion() != null && _getFeatureEnabled(ConflictingFeatures.First()) != null;
         }, fallback: false);
+    
     private static readonly ImmutableHashSet<string> ConflictingFeatures = new HashSet<string>
     {
         "Auto-Meditation",
         "Auto-Motif (Out of Combat)",
-        "Auto-Mount after Combat",
+        "Auto-Mount After Combat",
         "Auto-Mount after Gathering",
-        "Auto-Peleton",
+        "Auto-Mount on Zone Change",
+        "Auto-Peloton",
         "Auto-Sprint in Sanctuaries",
         "Auto-select Turn-ins",
         "Auto-Summon Chocobo",
@@ -38,7 +40,6 @@ internal sealed class PandorasBoxIpc : Ipc, IDisposable
     [EzIPC("SetFeatureEnabled")] private readonly Action<string, bool> _setFeatureEnabled = null!;
     private readonly EzIPCDisposalToken[] _disposalTokens;
     private readonly TerritoryData _territoryData;
-
     private readonly FeatureSuppression _suppression;
     private bool _loggedIpcError;
 

@@ -42,6 +42,7 @@ internal sealed unsafe class GameQuestState(
     }
 
     public bool IsDailyQuestCompleted(ushort questId) => QuestManager.Instance()->IsDailyQuestCompleted(questId);
+    public uint SocietyAllowances => QuestManager.Instance()->GetBeastTribeAllowance();
 
     public IReadOnlyList<ushort> TrackedQuestIds
     {

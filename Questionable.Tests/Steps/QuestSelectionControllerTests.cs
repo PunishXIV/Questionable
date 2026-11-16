@@ -252,6 +252,38 @@ public sealed class QuestSelectionControllerTests
         Assert.Null(QuestSelectionController.PickAcceptOnly([wrongClass, notReady], _state));
     }
 
+    [Fact]
+    public void AcceptOnly_PrefersThisZone()
+    {
+        Quest elsewhere = QuestTestData.CreateQuest(new QuestId(13),
+            QuestTestData.Seq(0, new QuestStep(EInteractionType.AcceptQuest, 1, null, 140)));
+        Quest here = QuestTestData.CreateQuest(new QuestId(14),
+            QuestTestData.Seq(0, new QuestStep(EInteractionType.AcceptQuest, 2, null, 146)));
+        _state.ReadyIgnoringLevel.UnionWith([elsewhere.Id, here.Id]);
+        _state.ClassJob.UnionWith([elsewhere.Id, here.Id]);
+
+        Assert.Same(here, QuestSelectionController.PickAcceptOnly([elsewhere, here], _state, 146));
+        Assert.Same(elsewhere, QuestSelectionController.PickAcceptOnly([elsewhere, here], _state, 999));
+    }
+
+    [Fact]
+    public void AcceptOnly_HighestRankFirst()
+    {
+        Quest Ranked(ushort id, EAlliedSocietyRank rank, uint territory) => new()
+        {
+            Id = new QuestId(id),
+            Source = Quest.ESource.Assembly,
+            Root = new QuestRoot { QuestSequence = [QuestTestData.Seq(0, new QuestStep(EInteractionType.AcceptQuest, id, null, territory))] },
+            Info = TestQuestInfo.Create(id).With(nameof(QuestInfo.AlliedSocietyRank), rank),
+        };
+        Quest neutralHere = Ranked(1494, EAlliedSocietyRank.Neutral, 146);
+        Quest honored = Ranked(1521, EAlliedSocietyRank.Honored, 140);
+        _state.ReadyIgnoringLevel.UnionWith([neutralHere.Id, honored.Id]);
+        _state.ClassJob.UnionWith([neutralHere.Id, honored.Id]);
+
+        Assert.Same(honored, QuestSelectionController.PickAcceptOnly([neutralHere, honored], _state, 146));
+    }
+
     [Theory]
     [InlineData(true, true, false, (int)EStopPoint.Configured)]
     [InlineData(true, true, true, (int)EStopPoint.Configured)]

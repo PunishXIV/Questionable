@@ -37,7 +37,8 @@ internal static class SummonChocobo
         IChatGui chatGui,
         ICondition condition,
         GameFunctions gameFunctions,
-        KnightshopperIpc knightshopperIpc) : ITaskFactory
+        KnightshopperIpc knightshopperIpc,
+        QuestPriorityManager priorityManager) : ITaskFactory
     {
         public unsafe IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -61,7 +62,7 @@ internal static class SummonChocobo
                 bool canBuy = CanBuy(inventoryManager);
                 if (DateTime.Now >= _restockRetryAt &&
                     ShouldRestock(enabled: true, unlocked, openWorld || zoneUse == Town, greens, canBuy) &&
-                    BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions))
+                    BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions, priorityManager))
                 {
                     _restockRetryAt = DateTime.Now.Add(RestockRetryAfter);
                     // Knightshopper may leave us in another zone, so the step is planned again afterwards.

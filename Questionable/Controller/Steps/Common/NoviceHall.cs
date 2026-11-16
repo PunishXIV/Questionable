@@ -37,12 +37,13 @@ internal static class NoviceHall
         QuestFunctions questFunctions,
         GameFunctions gameFunctions,
         ICondition condition,
+        QuestPriorityManager priorityManager,
         ILogger<Factory> logger) : ITaskFactory
     {
         public unsafe IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (!configuration.General.RunNoviceHall || DateTime.Now < _retryAt ||
-                !BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions))
+                !BetweenQuests.CanDetour(quest, step, questFunctions, condition, gameFunctions, priorityManager))
                 return [];
 
             PlayerState* playerState = PlayerState.Instance();

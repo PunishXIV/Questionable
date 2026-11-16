@@ -85,6 +85,7 @@ internal static class ServiceCollectionExtensions
         serviceCollection
             .AddTaskFactoryAndExecutor<AetheryteShortcut.Task, AetheryteShortcut.Factory,
                 AetheryteShortcut.Executor>();
+        serviceCollection.AddTaskExecutor<AetheryteShortcut.WaitAfterTeleport, AetheryteShortcut.WaitAfterTeleportExecutor>();
         serviceCollection
             .AddTaskExecutor<AetheryteShortcut.MoveAway,
                 AetheryteShortcut.MoveAwayExecutor>();

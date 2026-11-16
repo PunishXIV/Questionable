@@ -1291,9 +1291,18 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (!_priorityManager.HasPendingAcceptOnly)
             return false;
 
-        Quest? next = QuestSelectionController.PickAcceptOnly(_priorityManager.AcceptOnlyQuests, SelectionState);
+        Quest? next = QuestSelectionController.PickAcceptOnly(_priorityManager.AcceptOnlyQuests, SelectionState,
+            _clientState.TerritoryType);
         if (next == null)
+        {
+            // Out of allowances the rest can't be accepted today; drop them so they don't come back tomorrow.
+            foreach (Quest quest in _priorityManager.AcceptOnlyQuests.Where(x => _questFunctions.IsOutOfSocietyAllowances(x.Id)).ToList())
+            {
+                _logger.LogInformation("Accept-all: no society allowances left, dropping {QuestId}", quest.Id);
+                _priorityManager.Remove(quest);
+            }
             return false;
+        }
 
         // We are already trying to accept this quest: don't call SetNextQuest again. It rebuilds NextQuest with Step = 0,
         // which would reset the accept sequence every step boundary and loop it forever before it ever reaches the Interact/accept step.

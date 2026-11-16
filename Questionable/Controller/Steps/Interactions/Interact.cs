@@ -342,7 +342,11 @@ internal static class Interact
                 InteractionType == EInteractionType.AcceptQuest)
             {
                 var jobGearSets = classJobUtils.GetJobGearSets(combatOnly: false);
-                List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs.Where(x => jobGearSets.Count == 0 || jobGearSets.Any(v => v.ClassJob.Equals(x)))];
+                // Best gearset first, so "Auto" and other fallbacks take it rather than the quest's first listed job.
+                List<Job> acceptableJobs = [.. Task.Quest.Info.ClassJobs
+                    .Where(x => jobGearSets.Count == 0 || jobGearSets.Any(v => v.ClassJob.Equals(x)))
+                    .OrderByDescending(x => jobGearSets.Where(v => v.ClassJob.Equals(x)).Select(v => (int)v.Level).DefaultIfEmpty().Max())
+                    .ThenByDescending(x => jobGearSets.Where(v => v.ClassJob.Equals(x)).Select(v => (int)v.ItemLevel).DefaultIfEmpty().Max())];
                 // Runs every frame while waiting for the target.
                 string acceptableJobsText = string.Join(',', acceptableJobs);
                 if (acceptableJobsText != _loggedAcceptableJobs)

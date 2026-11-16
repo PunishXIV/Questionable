@@ -33,8 +33,10 @@ internal sealed class AlliedSocietyData
             return questId.Value switch
             {
                 >= 1222 and <= 1251 => EAlliedSociety.Amaljaa, //ARR
-                //>= 1494 and <= 1523 => EAlliedSociety.Ixal, // Ixal also has 1566,1567,1568
-                //>= 1566 and <= 1568 => EAlliedSociety.Ixal, // Ixal quests seem designed to be done sequentially and dont craft til 255
+                // Back on for a test run (2026-11-16); turned off in March as "designed to be done sequentially, don't
+                // craft until 255" with no failure recorded.
+                >= 1494 and <= 1523 => EAlliedSociety.Ixal,
+                >= 1566 and <= 1568 => EAlliedSociety.Ixal,
                 >= 1325 and <= 1344 => EAlliedSociety.Kobolds, // Kobolds 1364-1373
                 >= 1364 and <= 1373 => EAlliedSociety.Kobolds,
                 >= 1257 and <= 1286 and not 1257 => EAlliedSociety.Sylphs,

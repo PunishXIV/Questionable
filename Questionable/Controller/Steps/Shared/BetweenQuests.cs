@@ -10,8 +10,15 @@ internal static class BetweenQuests
         step is { InteractionType: EInteractionType.AcceptQuest, Position: not null } && !questAccepted;
 
     internal static bool CanDetour(Quest quest, QuestStep step, QuestFunctions questFunctions, ICondition condition,
-        GameFunctions gameFunctions) =>
-        IsAcceptStep(step, questFunctions.IsQuestAccepted(quest.Id)) && !IsBusy(condition, gameFunctions);
+        GameFunctions gameFunctions, QuestPriorityManager priorityManager) =>
+        IsAcceptStep(step, questFunctions.IsQuestAccepted(quest.Id)) && !IsBusy(condition, gameFunctions) &&
+        !IsAcceptAllUnderway([.. priorityManager.AcceptOnlyQuests.Select(x => x.Id)], questFunctions.IsQuestAccepted,
+            x => questFunctions.IsReadyToAcceptQuest(x, ignoreLevel: true));
+
+    // Once Accept All has taken a quest, the rest wait at the same givers; leaving now means coming back.
+    internal static bool IsAcceptAllUnderway(IReadOnlyList<ElementId> acceptOnly, Func<ElementId, bool> isAccepted,
+        Func<ElementId, bool> isReady) =>
+        acceptOnly.Any(isAccepted) && acceptOnly.Any(isReady);
 
     private static bool IsBusy(ICondition condition, GameFunctions gameFunctions) =>
         condition[ConditionFlag.InCombat] || condition[ConditionFlag.BoundByDuty] ||
