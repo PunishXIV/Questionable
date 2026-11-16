@@ -139,7 +139,9 @@ internal sealed class QuestFunctions
         if (msqQuest.CurrentQuest != null && !IsQuestAccepted(msqQuest.CurrentQuest))
         {
             if (allowNewMsq)
-                return msqQuest;
+                return !skipPriority && GetClassQuestBeforeMsq(msqQuest.CurrentQuest) is { } classQuest
+                    ? new(classQuest, state.GetQuestSequence(classQuest.Value), msqQuest.State)
+                    : msqQuest;
 
             msqQuest = QuestReference.NoQuest(msqQuest.State);
         }
@@ -464,6 +466,36 @@ internal sealed class QuestFunctions
             })
             .ToList();
     }
+
+    // Kept until done, so walking into the story quest's zone doesn't hand the run back to it halfway.
+    private (ElementId Msq, ElementId Quest)? _classQuestFirst;
+
+    private ElementId? GetClassQuestBeforeMsq(ElementId msq)
+    {
+        if (_classQuestFirst is { } kept && kept.Msq == msq &&
+            (IsQuestAccepted(kept.Quest) || NextPriorityQuests.Any(x => x.QuestId == kept.Quest && x.IsAvailable)))
+            return kept.Quest;
+        _classQuestFirst = null;
+
+        List<ElementId> available = NextPriorityQuests.Where(x => x.IsAvailable).Select(x => x.QuestId).ToList();
+        if (available.Count == 0)
+            return null;
+
+        List<ElementId> classQuests = GetPriorityQuests(onlyClassAndRoleQuests: true);
+        QuestStep? msqStart = catalog.TryGetQuest(msq, out Quest? msqData) ? msqData.FindSequence(0)?.FindStep(0) : null;
+        ElementId? pick = available.FirstOrDefault(x => classQuests.Contains(x) && IsFreeClassQuestDetour(x, msqStart));
+        if (pick != null)
+        {
+            _classQuestFirst = (msq, pick);
+            Svc.Log.Information($"Doing class quest {pick} before story quest {msq}");
+        }
+
+        return pick;
+    }
+
+    public bool IsFreeClassQuestDetour(ElementId questId, QuestStep? teleportStep) =>
+        catalog.TryGetQuest(questId, out Quest? quest) && quest.FindSequence(0)?.FindStep(0) is { } start &&
+        QuestSelectionController.IsFreeClassQuestDetour(start, state.TerritoryType, teleportStep);
 
     private bool CanBeDoneWithoutTeleport(Quest quest)
     {

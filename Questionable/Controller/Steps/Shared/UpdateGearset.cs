@@ -28,7 +28,7 @@ internal static class UpdateGearset
     (
         IClientState clientState,
         ICondition condition,
-        ILogger<Executor> logger) : DelayedTaskExecutor<Task>
+        ILogger<Executor> logger) : DelayedTaskExecutor<Task>(TimeSpan.FromSeconds(1))
     {
         protected override unsafe bool StartInternal()
         {

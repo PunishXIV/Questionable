@@ -84,6 +84,27 @@ internal sealed class QuestSelectionController(Configuration configuration)
                (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsAccepted.Count ?? 0) == 0;
     }
 
+    // Both halves of a city are one aethernet hop apart.
+    private static readonly uint[][] Cities = [[128, 129], [130, 131], [132, 133], [418, 419]];
+
+    internal static bool IsSameCity(uint a, uint? b) =>
+        a == b || Cities.Any(x => x.Contains(a) && b is { } other && x.Contains(other));
+
+    // A class quest adds no paid trip if it starts in the city we're in, or where the next teleport goes anyway.
+    internal static bool IsFreeClassQuestDetour(QuestStep classStart, uint? territory, QuestStep? teleportStep)
+    {
+        if (IsSameCity(classStart.TerritoryId, territory))
+            return true;
+        if (teleportStep is not { AetheryteShortcut: not null } || IsSameCity(teleportStep.TerritoryId, territory))
+            return false;
+
+        SkipAetheryteCondition? skip = teleportStep.SkipConditions?.AetheryteShortcutIf;
+        bool teleports = skip == null ||
+                         (skip.QuestsCompleted.Count == 0 && skip.QuestsAccepted.Count == 0 &&
+                          !skip.InTerritory.Contains(territory ?? 0));
+        return teleports && IsSameCity(classStart.TerritoryId, teleportStep.TerritoryId);
+    }
+
     // A finished quest only counts once it's no longer accepted (repeatables). After a stop there's no started quest,
     // so an accepted journal quest counts instead. A priority quest picked while interrupting was on, but not yet
     // accepted, doesn't count as started either.

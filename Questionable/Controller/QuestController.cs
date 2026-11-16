@@ -1315,9 +1315,15 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 _priorityManager.Contains))
             return false;
 
+        QuestStep? teleportStep = CurrentQuestDetails?.Progress.FindStep();
         ElementId? questId = QuestSelectionController.PickPriorityQuest(Slots,
             StopAfterCurrentQuest || StopAfterNextAccept || StopBeforeTeleport || StopAfterAttune,
-            () => _questFunctions.NextPriorityQuests);
+            () =>
+            {
+                List<ElementId> classQuests = _questFunctions.GetPriorityQuests(onlyClassAndRoleQuests: true);
+                return _questFunctions.NextPriorityQuests.Where(x =>
+                    !classQuests.Contains(x.QuestId) || _questFunctions.IsFreeClassQuestDetour(x.QuestId, teleportStep));
+            });
         if (questId != null && _questRegistry.TryGetQuest(questId, out Quest? quest))
         {
             SetNextQuest(quest);

@@ -59,6 +59,7 @@ internal static class AetheryteShortcut
                     yield break;
                 if (step.TerritoryId == 1) // unused territory ID, used to disable auto teleports as a gross hack
                     yield break;
+                bool travelled = false;
                 bool matches(EExtraSkipCondition condition, Vector3 position) =>
                     extraConditionUtils.Matches(condition, position, step.TerritoryId);
                 if (step.TerritoryId == 212) // Waking Sands
@@ -67,6 +68,7 @@ internal static class AetheryteShortcut
                     bool inTerritory = clientState.TerritoryType == 212;
                     if (!inTerritory)
                     {
+                        travelled = true;
                         yield return new Task(step, quest.Id, EAetheryteLocation.WesternThanalanHorizon, 140);
                         yield return new MoveTask(
                             TerritoryId: 140,
@@ -80,6 +82,7 @@ internal static class AetheryteShortcut
                     if (step.Position != null && matches(EExtraSkipCondition.WakingSandsSolar, step.Position.Value) &&
                         (!inTerritory || objectTable[0] != null && !matches(EExtraSkipCondition.WakingSandsSolar, objectTable[0]!.Position)))
                     {
+                        travelled = true;
                         yield return new MoveTask(
                             TerritoryId: 212,
                             Destination: new(23.23944f, 2.090454f, -0.015319824f),
@@ -89,6 +92,7 @@ internal static class AetheryteShortcut
                     if (step.Position != null && !matches(EExtraSkipCondition.WakingSandsSolar, step.Position.Value) &&
                         inTerritory && objectTable[0] != null && matches(EExtraSkipCondition.WakingSandsSolar, objectTable[0]!.Position))
                     {
+                        travelled = true;
                         yield return new MoveTask(
                             TerritoryId: 212,
                             Destination: new(25.497803f, 2.090454f, -0.015319824f),
@@ -102,6 +106,7 @@ internal static class AetheryteShortcut
                     bool inTerritory = clientState.TerritoryType == 351;
                     if (!inTerritory)
                     {
+                        travelled = true;
                         yield return new Task(step, quest.Id, EAetheryteLocation.MorDhona, 156);
                         yield return new MoveTask(
                             TerritoryId: 156,
@@ -113,6 +118,7 @@ internal static class AetheryteShortcut
                     if (step.Position != null && matches(EExtraSkipCondition.RisingStonesSolar, step.Position.Value) &&
                         (!inTerritory || objectTable[0] != null && !matches(EExtraSkipCondition.RisingStonesSolar, objectTable[0]!.Position)))
                     {
+                        travelled = true;
                         yield return new MoveTask(
                          TerritoryId: 351,
                          Destination: new(-0.015319824f, -1.0223389f, -26.779602f),
@@ -122,6 +128,7 @@ internal static class AetheryteShortcut
                     if (step.Position != null && !matches(EExtraSkipCondition.RisingStonesSolar, step.Position.Value) &&
                         inTerritory && objectTable[0] != null && matches(EExtraSkipCondition.RisingStonesSolar, objectTable[0]!.Position))
                     {
+                        travelled = true;
                         yield return new MoveTask(
                             TerritoryId: 351,
                             Destination: new(-0.015319824f, -1.0223389f, -29.251587f),
@@ -143,11 +150,13 @@ internal static class AetheryteShortcut
                     if (nearest is { } teleportDest && aethernetTarget is { } aethernetDest &&
                         ShouldEnterByAethernet(sequence, step, clientState.TerritoryType))
                     {
+                        travelled = true;
                         yield return new Task(step, quest.Id, teleportDest, neighbourId);
                         yield return new AethernetShortcut.Task(teleportDest, aethernetDest);
                     }
                 }
-                yield return new WaitAtEnd.WaitDelay();
+                if (travelled)
+                    yield return new WaitAtEnd.WaitDelay();
             }
             else
             {

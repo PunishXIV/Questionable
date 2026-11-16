@@ -301,6 +301,51 @@ public sealed class QuestSelectionControllerTests
     public void LevelStop_WaitsWhileBusy(int level, bool running, bool busy, bool expected) =>
         Assert.Equal(expected, QuestSelectionController.IsLevelStopDue(level, 50, running, busy));
 
+    private static QuestStep Start(uint territory, EAetheryteLocation? shortcut = null) =>
+        new(EInteractionType.AcceptQuest, 1, null, territory) { AetheryteShortcut = shortcut };
+
+    // Here is Eastern Thanalan (145); the class quest starts in the given zone; the next step teleports to the other.
+    [Theory]
+    [InlineData(145u, 140u, false, true)]
+    [InlineData(128u, 129u, true, true)]
+    [InlineData(140u, 140u, true, true)]
+    [InlineData(140u, 129u, true, false)]
+    [InlineData(140u, 140u, false, false)]
+    public void ClassQuestDetour_FreeWhenNoExtraTrip(uint classTerritory, uint teleportTerritory, bool teleports,
+        bool expected)
+    {
+        QuestStep teleportStep = Start(teleportTerritory, teleports ? EAetheryteLocation.Limsa : null);
+        Assert.Equal(expected, QuestSelectionController.IsFreeClassQuestDetour(Start(classTerritory), 145, teleportStep));
+    }
+
+    [Fact]
+    public void ClassQuestDetour_FreeAnywhereInThisCity() =>
+        Assert.True(QuestSelectionController.IsFreeClassQuestDetour(Start(128), 129, null));
+
+    [Fact]
+    public void ClassQuestDetour_NotIfTeleportMaySkip()
+    {
+        QuestStep teleportStep = Start(140, EAetheryteLocation.Uldah);
+        teleportStep.SkipConditions = new() { AetheryteShortcutIf = new() { QuestsCompleted = [new QuestId(1)] } };
+        Assert.False(QuestSelectionController.IsFreeClassQuestDetour(Start(140), 145, teleportStep));
+    }
+
+    [Fact]
+    public void ClassQuestDetour_NotIfSkippedHere()
+    {
+        QuestStep teleportStep = Start(140, EAetheryteLocation.Uldah);
+        teleportStep.SkipConditions = new() { AetheryteShortcutIf = new() { InTerritory = [145] } };
+        Assert.False(QuestSelectionController.IsFreeClassQuestDetour(Start(140), 145, teleportStep));
+    }
+
+    [Theory]
+    [InlineData(128u, 129u, true)]
+    [InlineData(131u, 130u, true)]
+    [InlineData(128u, 130u, false)]
+    [InlineData(140u, 140u, true)]
+    public void SameCity_CoversBothHalves(uint a, uint b, bool expected) =>
+        Assert.Equal(expected, QuestSelectionController.IsSameCity(a, b));
+
     [Fact]
     public void StartedQuest_HeldOnlyWhileLoading()
     {

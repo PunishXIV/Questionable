@@ -28,20 +28,25 @@ internal static class SwitchClassJob
         public override string ToString() => $"SwitchJob({ClassJob})";
     }
 
-    internal sealed class Executor(ClassJobUtils classJobUtils) : DelayedTaskExecutor<Task>
+    // Waits for the game to report the new job, so the next step doesn't run on the old one.
+    internal sealed class Executor(ClassJobUtils classJobUtils) : DelayedTaskExecutor<Task>(TimeSpan.Zero)
     {
         protected override unsafe bool StartInternal()
         {
-            var result = classJobUtils.SwitchJob(Task.ClassJob);
-            if (!result)
+            if (!classJobUtils.SwitchJob(Task.ClassJob))
                 throw new NeedsPlayerException($"No gearset found for {Task.ClassJob}");
-            return !result;
+            return true;
         }
+
+        private DateTime? _giveUpAt;
 
         protected unsafe override ETaskResult UpdateInternal()
         {
             if (PlayerState.Instance()->CurrentClassJobId == (uint)Task.ClassJob)
                 return ETaskResult.TaskComplete;
+            _giveUpAt ??= DateTime.Now.AddSeconds(15);
+            if (DateTime.Now > _giveUpAt)
+                throw new TaskException($"Could not switch to {Task.ClassJob}");
             if (EzThrottler.Throttle("SwitchJob"))
                 StartInternal();
             return ETaskResult.StillRunning;
