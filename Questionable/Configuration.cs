@@ -39,6 +39,7 @@ internal sealed class Configuration : IPluginConfiguration
     public ReportConfiguration Reports { get; } = new();
     public PathDataConfiguration PathData { get; } = new();
     public JournalConfiguration Journal { get; } = new();
+    public DailiesConfiguration Dailies { get; } = new();
     public int Version { get; set; } = PluginConfigVersion;
 
     public bool AutoRedeemOffResetApplied { get; set; }
@@ -517,6 +518,12 @@ internal sealed class Configuration : IPluginConfiguration
         public bool HideCompleted { get; set; }
         public bool HideUnobtainable { get; set; }
         public bool HideRepeatable { get; set; }
+    }
+
+    internal sealed class DailiesConfiguration
+    {
+        // In order; the first societies get the daily allowances.
+        public List<EAlliedSociety> Societies { get; set; } = [];
     }
 
     internal sealed class PathDataConfiguration

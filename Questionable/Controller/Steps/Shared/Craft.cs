@@ -31,14 +31,21 @@ internal static class Craft
         public override string ToString() => "Wait(Artisan)";
     }
 
+    internal static void ThrowIfHeld(ArtisanStatus status)
+    {
+        if (status == ArtisanStatus.Stopped)
+            throw new NeedsPlayerException("Artisan has a stop request (it sets one when you queue for a duty); reload Artisan or turn on its resume-after-duty option, then restart Questionable");
+        if (status == ArtisanStatus.Paused)
+            throw new NeedsPlayerException("Artisan's crafting list is paused; resume or cancel it, then restart Questionable");
+    }
+
     internal static readonly TimeSpan SettleTime = TimeSpan.FromSeconds(1);
     internal static readonly TimeSpan WaitTimeout = TimeSpan.FromSeconds(30);
 
     // Artisan isn't idle for a moment after a quest dialog, or while it solves a recipe another plugin just opened.
     internal static bool IsSettled(ArtisanStatus status, ref TimeSpan? idleSince, TimeSpan elapsed)
     {
-        if (status == ArtisanStatus.Paused)
-            throw new NeedsPlayerException("Artisan is paused or has a stop request; cancel its work manually before restarting Questionable");
+        ThrowIfHeld(status);
         if (status == ArtisanStatus.Unavailable)
             return true;
         if (status == ArtisanStatus.Idle)
@@ -172,8 +179,7 @@ internal static class Craft
 
         public bool Update(ArtisanStatus status, bool objectiveMet, TimeSpan elapsed)
         {
-            if (status == ArtisanStatus.Paused)
-                throw new NeedsPlayerException("Artisan is paused or has a stop request; cancel its work manually before restarting Questionable");
+            ThrowIfHeld(status);
 
             if (status == ArtisanStatus.Busy)
             {
@@ -232,8 +238,10 @@ internal static class Craft
                     .Select(x => (x.ScriptInstruction.ExtractText(), x.ScriptArg)));
             }
 
-            IReadOnlyList<CraftingItem>? listTargets = CraftingBatch.Resolve(Task, requiredItemIds);
-            if ((listTargets != null && AreItemsSatisfied(listTargets, CountInInventory)) || IsObjectiveMet())
+            // Quest-given materials (Ixal) mean the craft is still due; items left from an abandoned attempt don't count.
+            bool questMaterials = hasItemTarget && questFunctions.HasCraftMaterials(Task.ItemId!.Value);
+            IReadOnlyList<CraftingItem>? listTargets = questMaterials ? null : CraftingBatch.Resolve(Task, requiredItemIds);
+            if (!questMaterials && ((listTargets != null && AreItemsSatisfied(listTargets, CountInInventory)) || IsObjectiveMet()))
             {
                 logger.LogInformation("Craft objective is already met for {QuestId}", Task.Quest.Id);
                 return false;
@@ -286,8 +294,17 @@ internal static class Craft
                             throw new TaskException($"Recipe {recipeId} does not exist");
             CraftingItem target = _itemTargets.Single();
             int startingItemCount = _previousCounts[0];
+            int crafts;
+            if (questMaterials)
+            {
+                crafts = MaterialCrafts(recipe);
+                target = target with { ItemCount = startingItemCount + crafts * recipe.AmountResult };
+                _itemTargets = [target];
+            }
+            else
+                crafts = GetCraftCount(target.ItemCount - startingItemCount, recipe.AmountResult);
+
             int remainingItemCount = target.ItemCount - startingItemCount;
-            int crafts = GetCraftCount(remainingItemCount, recipe.AmountResult);
             logger.LogInformation(
                 "Starting craft for item {ItemId} with recipe {RecipeId} for {RemainingItemCount} items (quality: {Quality}, in inventory: {InventoryCount})",
                 Task.ItemId, recipeId, remainingItemCount, target.Quality, startingItemCount);
@@ -376,6 +393,26 @@ internal static class Craft
                 return false;
             QuestProgressInfo? questWork = questFunctions.GetQuestProgressInfo(Task.Quest.Id);
             return IsQuestObjectiveMet(Task, questFunctions.IsQuestComplete(Task.Quest.Id), questWork);
+        }
+
+        private static unsafe int MaterialCrafts(Recipe recipe)
+        {
+            int crafts = int.MaxValue;
+            for (int i = 0; i < 6; i++)
+            {
+                uint ingredient = recipe.Ingredient[i].RowId;
+                byte amount = recipe.AmountIngredient[i];
+                if (ingredient == 0 || amount == 0)
+                    continue;
+                InventoryManager* inventoryManager = InventoryManager.Instance();
+                int owned = inventoryManager->GetInventoryItemCount(ingredient, isHq: false, checkEquipped: false) +
+                            inventoryManager->GetInventoryItemCount(ingredient, isHq: true, checkEquipped: false);
+                crafts = Math.Min(crafts, owned / amount);
+            }
+
+            return crafts == int.MaxValue || crafts == 0
+                ? throw new TaskException("The quest's craft materials are gone; check your inventory before restarting")
+                : crafts;
         }
 
         private static unsafe int CountInInventory(CraftingItem item)

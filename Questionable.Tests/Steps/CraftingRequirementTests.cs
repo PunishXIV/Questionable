@@ -44,6 +44,16 @@ public sealed class CraftingRequirementTests
         Assert.Throws<NeedsPlayerException>(() => Craft.IsSettled(ArtisanStatus.Paused, ref idleSince, TimeSpan.Zero));
     }
 
+    [Fact]
+    public void ArtisanStop_NamesStopRequest()
+    {
+        TimeSpan? idleSince = null;
+        var stopped = Assert.Throws<NeedsPlayerException>(() => Craft.IsSettled(ArtisanStatus.Stopped, ref idleSince, TimeSpan.Zero));
+        var paused = Assert.Throws<NeedsPlayerException>(() => Craft.IsSettled(ArtisanStatus.Paused, ref idleSince, TimeSpan.Zero));
+        Assert.Contains("stop request", stopped.Message, StringComparison.Ordinal);
+        Assert.Contains("list is paused", paused.Message, StringComparison.Ordinal);
+    }
+
     [Theory]
     [InlineData(648, 4599u, 3, EItemQuality.HQ)]
     [InlineData(257, 4640u, 2, EItemQuality.Any)]

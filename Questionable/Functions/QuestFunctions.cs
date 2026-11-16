@@ -381,13 +381,17 @@ internal sealed class QuestFunctions
         foreach ((ElementId questId, byte sequence) in quests)
         {
             if (sequence == 255 && catalog.TryGetQuest(questId, out Quest? quest) &&
-                quest.FindSequence(255)?.Steps.Any(x => x.InteractionType == EInteractionType.Craft) == true &&
-                !IsReadyToCompleteQuest(quest))
+                quest.FindSequence(255)?.Steps.FirstOrDefault(x => x.InteractionType == EInteractionType.Craft) is { ItemId: { } itemId } &&
+                HasCraftMaterials(itemId))
                 return (questId, sequence);
         }
 
         return null;
     }
+
+    // The quest's materials are used up by the craft. The to-do icon changes with your job, and crafted
+    // items left over from an abandoned attempt don't count for the quest, so neither can tell.
+    public bool HasCraftMaterials(uint itemId) => state.HasCraftMaterials(itemId);
 
     // This zone first, else the zone with the most of them, so each zone is finished before moving on.
     private (ElementId Quest, byte Sequence) PreferThisZone(List<(ElementId Quest, byte Sequence)> quests)
@@ -907,6 +911,8 @@ internal sealed class QuestFunctions
         QuestInfo questInfo = (QuestInfo)catalog.GetQuestInfo(questId);
         return questInfo.AlliedSociety != EAlliedSociety.None && questInfo.IsRepeatable;
     }
+
+    public uint SocietyAllowances => state.SocietyAllowances;
 
     public bool IsOutOfSocietyAllowances(ElementId questId) =>
         questId is QuestId qId && IsDailyAlliedSocietyQuest(qId) && state.SocietyAllowances == 0;

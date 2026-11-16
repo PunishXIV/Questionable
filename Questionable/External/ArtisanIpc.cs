@@ -116,7 +116,9 @@ internal sealed class ArtisanIpc : Ipc, IDisposable
         try
         {
             // Never clear another caller's stop request or resume its paused list.
-            if (_getStopRequest() || _isListPaused())
+            if (_getStopRequest())
+                return ArtisanStatus.Stopped;
+            if (_isListPaused())
                 return ArtisanStatus.Paused;
             if (_isListRunning() || _getEnduranceStatus())
                 return ArtisanStatus.Busy;
@@ -150,6 +152,8 @@ internal enum ArtisanStatus
     Queued,
     Busy,
     Paused,
+    // Artisan sets this itself when you queue for a duty and only clears it after the duty if its resume option is on.
+    Stopped,
 }
 
 // Artisan cannot identify or cancel requests, so uncertain work requires user confirmation.

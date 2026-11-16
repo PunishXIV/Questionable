@@ -19,6 +19,7 @@ internal sealed unsafe class GameQuestState(
     AlliedSocietyQuestFunctions alliedSocietyQuests,
     IClientState clientState,
     IObjectTable objectTable,
+    IDataManager dataManager,
     GameGuiAdapter gameGui) : IQuestGameState
 {
     private const int TurnInIcon = 71025;
@@ -91,6 +92,32 @@ internal sealed unsafe class GameQuestState(
         {
             if (questName == Encoding.UTF8.GetString(toDoStrings->QuestTexts[i].AsSpan()))
                 return toDoNumbers->QuestTypeIcon[i] == TurnInIcon;
+        }
+
+        return false;
+    }
+
+    public bool HasCraftMaterials(uint itemId)
+    {
+        if (dataManager.GetExcelSheet<RecipeLookup>().GetRowOrDefault(itemId) is not { } lookup)
+            return false;
+
+        foreach (RowRef<Recipe> recipeRef in (RowRef<Recipe>[])
+                 [lookup.CRP, lookup.BSM, lookup.ARM, lookup.GSM, lookup.LTW, lookup.WVR, lookup.ALC, lookup.CUL])
+        {
+            if (recipeRef.RowId == 0 || recipeRef.ValueNullable is not { } recipe)
+                continue;
+
+            // The first six slots are items; the last two are crystals.
+            for (int i = 0; i < 6; i++)
+            {
+                uint ingredient = recipe.Ingredient[i].RowId;
+                InventoryManager* inventoryManager = InventoryManager.Instance();
+                if (ingredient != 0 && recipe.AmountIngredient[i] > 0 &&
+                    inventoryManager->GetInventoryItemCount(ingredient) +
+                    inventoryManager->GetInventoryItemCount(ingredient, isHq: true) >= recipe.AmountIngredient[i])
+                    return true;
+            }
         }
 
         return false;

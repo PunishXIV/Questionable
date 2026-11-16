@@ -307,14 +307,34 @@ public sealed class QuestFunctionsTests
     {
         _catalog.Add(TestQuestInfo.Create(1222), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 1, new(1, 0, 0), 146)));
         _catalog.Add(TestQuestInfo.Create(1223), QuestTestData.Seq(255,
-            new QuestStep(EInteractionType.Craft, null, null, 147),
+            new QuestStep(EInteractionType.Craft, null, null, 147) { ItemId = 8105, ItemCount = 4 },
             new QuestStep(EInteractionType.CompleteQuest, 2, new(2, 0, 0), 147)));
         _state.Guide = new(EScenarioGuideState.Ready, 0);
         _state.TrackedQuestIds = [1222, 1223];
         _state.Sequences[1222] = 1;
         _state.Sequences[1223] = 255;
         _state.TerritoryType = 146;
+        _state.CraftMaterials.Add(8105);
 
+        Assert.Equal(new QuestId(1223), _functions.GetCurrentQuestInternal(allowNewMsq: true).CurrentQuest);
+    }
+
+    [Fact]
+    public void SocietyCraft_WaitsOnlyWithMaterials()
+    {
+        _catalog.Add(TestQuestInfo.Create(1222), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 1, new(1, 0, 0), 146)));
+        _catalog.Add(TestQuestInfo.Create(1223), QuestTestData.Seq(255,
+            new QuestStep(EInteractionType.Craft, null, null, 147) { ItemId = 8106, ItemCount = 4, ItemQuality = EItemQuality.HQ },
+            new QuestStep(EInteractionType.CompleteQuest, 2, new(2, 0, 0), 147)));
+        _state.Guide = new(EScenarioGuideState.Ready, 0);
+        _state.TrackedQuestIds = [1223, 1222];
+        _state.Sequences[1222] = 1;
+        _state.Sequences[1223] = 255;
+        _state.TerritoryType = 146;
+
+        Assert.Equal(new QuestId(1222), _functions.GetCurrentQuestInternal(allowNewMsq: true).CurrentQuest);
+
+        _state.CraftMaterials.Add(8106);
         Assert.Equal(new QuestId(1223), _functions.GetCurrentQuestInternal(allowNewMsq: true).CurrentQuest);
     }
 

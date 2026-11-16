@@ -41,6 +41,8 @@ internal sealed class FakeQuestGameState : IQuestGameState
     public IReadOnlyList<ushort> TrackedQuestIds { get; set; } = [];
     public IReadOnlyList<(ushort QuestId, byte Sequence, bool IsHidden)> NormalQuests { get; set; } = [];
     public bool IsReadyToTurnIn(string questName) => false;
+    public HashSet<uint> CraftMaterials { get; } = [];
+    public bool HasCraftMaterials(uint itemId) => CraftMaterials.Contains(itemId);
 
     public short CurrentLevel { get; set; } = 100;
     public short MaxLevel { get; set; } = 100;
