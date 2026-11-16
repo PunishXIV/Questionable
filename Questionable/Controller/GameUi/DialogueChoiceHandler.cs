@@ -243,9 +243,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
     {
         List<DialogueChoiceInfo> dialogueChoices = [];
 
-        QuestController.QuestProgress? currentQuest = _questController.SimulatedQuest ??
-                                                      _questController.GatheringQuest ??
-                                                      _questController.StartedQuest;
+        QuestController.QuestProgress? currentQuest = _questController.CurrentQuest;
         if (currentQuest != null)
             AddCurrentQuestChoices(currentQuest, answers, checkAllSteps, dialogueChoices);
         else

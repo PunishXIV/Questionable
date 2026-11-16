@@ -107,7 +107,8 @@ internal sealed class EventInfoComponent
 
             using (ImRaii.PushId($"##EventQuestSelection{questId}"))
             {
-                string questName = questData.GetQuestInfo(questId).Name;
+                IQuestInfo questInfo = questData.GetQuestInfo(questId);
+                string questName = questInfo.Name;
 
                 bool addPriority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.AngleDoubleUp);
                 if (ImGui.IsItemHovered())
@@ -127,7 +128,13 @@ internal sealed class EventInfoComponent
 
                     (Vector4 color, FontAwesomeIcon icon, string _) = uiUtils.GetQuestStyle(questId);
                     if (uiUtils.ChecklistItem(questName, color, icon, ImGui.GetStyle().FramePadding.X))
-                        questTooltipComponent.Draw(questData.GetQuestInfo(questId));
+                        questTooltipComponent.Draw(questInfo);
+                }
+
+                if (questInfo is QuestInfo { IsSeasonalEvent: false })
+                {
+                    ImGui.SameLine();
+                    ImGui.TextDisabled(_L("(Prerequisite)"));
                 }
             }
         }
