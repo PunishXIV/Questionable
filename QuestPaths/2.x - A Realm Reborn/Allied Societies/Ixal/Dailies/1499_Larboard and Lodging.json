@@ -25,7 +25,7 @@
       "Sequence": 1,
       "Steps": [
         {
-          "TerritoryId": 400,
+          "TerritoryId": 154,
           "InteractionType": "SwitchClass",
           "TargetClass": "Miner"
         },

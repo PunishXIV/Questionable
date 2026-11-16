@@ -1,4 +1,6 @@
+using Questionable.Controller.Steps;
 using Questionable.Controller.Steps.Shared;
+using Questionable.External;
 using Questionable.Data;
 using Questionable.Domain;
 using Questionable.Model.Questing;
@@ -19,6 +21,27 @@ public sealed class CraftingRequirementTests
         Assert.False(Craft.AreItemsSatisfied([target], _ => matchingItems));
         Assert.Equal(target, SkipCondition.GetItemTarget(task.Quest.Id, task.Step));
         Assert.Equal(2, Craft.GetCraftCount(target.ItemCount - matchingItems, yield: 1));
+    }
+
+    [Fact]
+    public void ArtisanWait_NeedsSteadyIdle()
+    {
+        TimeSpan? idleSince = null;
+        TimeSpan ms(int x) => TimeSpan.FromMilliseconds(x);
+
+        Assert.False(Craft.IsSettled(ArtisanStatus.Queued, ref idleSince, ms(0)));
+        Assert.False(Craft.IsSettled(ArtisanStatus.Idle, ref idleSince, ms(100)));
+        Assert.False(Craft.IsSettled(ArtisanStatus.Busy, ref idleSince, ms(600)));
+        Assert.False(Craft.IsSettled(ArtisanStatus.Idle, ref idleSince, ms(700)));
+        Assert.True(Craft.IsSettled(ArtisanStatus.Idle, ref idleSince, ms(1700)));
+    }
+
+    [Fact]
+    public void ArtisanWait_GivesUpWhenBusy()
+    {
+        TimeSpan? idleSince = null;
+        Assert.Throws<TaskException>(() => Craft.IsSettled(ArtisanStatus.Busy, ref idleSince, Craft.WaitTimeout));
+        Assert.Throws<NeedsPlayerException>(() => Craft.IsSettled(ArtisanStatus.Paused, ref idleSince, TimeSpan.Zero));
     }
 
     [Theory]

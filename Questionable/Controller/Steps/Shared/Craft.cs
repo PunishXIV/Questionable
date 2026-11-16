@@ -20,9 +20,65 @@ internal static class Craft
             return
             [
                 new MountStep.UnmountTask(),
+                new WaitTask(),
                 new Task(quest, sequence.Sequence, step)
             ];
         }
+    }
+
+    internal sealed record WaitTask : ITask
+    {
+        public override string ToString() => "Wait(Artisan)";
+    }
+
+    internal static readonly TimeSpan SettleTime = TimeSpan.FromSeconds(1);
+    internal static readonly TimeSpan WaitTimeout = TimeSpan.FromSeconds(30);
+
+    // Artisan isn't idle for a moment after a quest dialog, or while it solves a recipe another plugin just opened.
+    internal static bool IsSettled(ArtisanStatus status, ref TimeSpan? idleSince, TimeSpan elapsed)
+    {
+        if (status == ArtisanStatus.Paused)
+            throw new NeedsPlayerException("Artisan is paused or has a stop request; cancel its work manually before restarting Questionable");
+        if (status == ArtisanStatus.Unavailable)
+            return true;
+        if (status == ArtisanStatus.Idle)
+        {
+            idleSince ??= elapsed;
+            if (elapsed - idleSince.Value >= SettleTime)
+                return true;
+        }
+        else
+            idleSince = null;
+
+        if (elapsed >= WaitTimeout)
+            throw new TaskException($"Artisan stayed {status} for 30 seconds; turn off Endurance or its list, then restart Questionable");
+        return false;
+    }
+
+    internal sealed class WaitExecutor(ArtisanIpc artisanIpc, ILogger<WaitExecutor> logger) : TaskExecutor<WaitTask>
+    {
+        private readonly Stopwatch _elapsed = new();
+        private TimeSpan? _idleSince;
+        private ArtisanStatus? _lastStatus;
+
+        protected override bool Start()
+        {
+            _elapsed.Restart();
+            _idleSince = null;
+            _lastStatus = null;
+            return true;
+        }
+
+        public override ETaskResult Update()
+        {
+            ArtisanStatus status = artisanIpc.GetStatus();
+            if (status != _lastStatus && status != ArtisanStatus.Idle)
+                logger.LogInformation("Waiting for Artisan to finish ({Status}) before crafting", status);
+            _lastStatus = status;
+            return IsSettled(status, ref _idleSince, _elapsed.Elapsed) ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
+        }
+
+        public override bool ShouldInterruptOnDamage() => false;
     }
 
     internal sealed record Task

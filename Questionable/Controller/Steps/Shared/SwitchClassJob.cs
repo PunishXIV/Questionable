@@ -23,6 +23,14 @@ internal static class SwitchClassJob
         }
     }
 
+    // The switch an earlier step of this sequence made; another quest may have changed the job since.
+    internal static QuestStep? EarlierSwitch(QuestSequence sequence, QuestStep step) =>
+        step.InteractionType == EInteractionType.SwitchClass
+            ? null
+            : sequence.Steps.Take(sequence.Steps.IndexOf(step)).LastOrDefault(x => x.InteractionType == EInteractionType.SwitchClass);
+
+    internal static unsafe bool IsCurrentJob(Job job) => PlayerState.Instance()->CurrentClassJobId == (uint)job;
+
     internal sealed record Task(Job ClassJob) : ITask
     {
         public override string ToString() => $"SwitchJob({ClassJob})";

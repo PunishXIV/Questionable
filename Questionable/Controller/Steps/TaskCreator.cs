@@ -48,7 +48,8 @@ internal sealed class TaskCreator
         else
         {
             using IServiceScope scope = _serviceProvider.CreateScope();
-            newTasks = scope.ServiceProvider.GetRequiredService<IEnumerable<ITaskFactory>>()
+            List<ITaskFactory> factories = scope.ServiceProvider.GetRequiredService<IEnumerable<ITaskFactory>>().ToList();
+            newTasks = factories
                 .SelectMany(x =>
                 {
                     List<ITask> tasks = x.CreateAllTasks(quest, sequence, step).ToList();
@@ -105,6 +106,18 @@ internal sealed class TaskCreator
                 _logger.LogInformation("Next actual task: {NextTask}, total tasks left: {RemainingTaskCount}",
                     newTasks.FirstOrDefault(),
                     newTasks.Count);
+            }
+
+            if (SwitchClassJob.EarlierSwitch(sequence, step) is { } switchStep)
+            {
+                List<ITask> switchTasks = factories.OfType<SwitchClassJob.Factory>().Single()
+                    .CreateAllTasks(quest, sequence, switchStep).ToList();
+                if (switchTasks.OfType<SwitchClassJob.Task>().FirstOrDefault() is { } switchTask &&
+                    !SwitchClassJob.IsCurrentJob(switchTask.ClassJob))
+                {
+                    _logger.LogInformation("Job changed since this sequence switched to {Job}, switching back", switchTask.ClassJob);
+                    newTasks.InsertRange(0, switchTasks);
+                }
             }
         }
 

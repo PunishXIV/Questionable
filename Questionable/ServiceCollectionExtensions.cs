@@ -140,6 +140,7 @@ internal static class ServiceCollectionExtensions
             .AddTaskFactoryAndExecutor<EquipRecommended.EquipTask, EquipRecommended.Factory,
                 EquipRecommended.EquipExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<Craft.Task, Craft.Factory, Craft.Executor>();
+        serviceCollection.AddTaskExecutor<Craft.WaitTask, Craft.WaitExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<Purchase.BuyTask, Purchase.Factory, Purchase.BuyExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<Fish.Task, Fish.Factory, Fish.Executor>();
         serviceCollection
