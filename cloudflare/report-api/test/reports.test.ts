@@ -221,6 +221,13 @@ async function page(): Promise<AdminPage> {
 }
 
 describe("report status", () => {
+  it("serves the status page", async () => {
+    const response = await exports.default.fetch("https://reports.test/");
+    expect(response.status).toBe(200);
+    expect(response.headers.get("Content-Type")).toContain("text/html");
+    expect(await response.text()).toContain("fetch(\"/v2/status\")");
+  });
+
   it("rate-limits fresh reads", async () => {
     let last = 0;
     for (let i = 0; i < 31; i++) {

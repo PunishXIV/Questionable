@@ -1,3 +1,4 @@
+import { DASHBOARD } from "./dashboard";
 import { validateReport } from "./validate";
 import { getCachedStatus, getReportPage, resetStatusCache, resolveReport, verifyPath } from "./status";
 
@@ -144,6 +145,17 @@ export default {
     try {
       if (url.pathname === "/v1/reports" && request.method === "POST") {
         return await postReport(request, env);
+      }
+
+      if (url.pathname === "/" && request.method === "GET") {
+        return new Response(DASHBOARD, {
+          headers: {
+            "Content-Type": "text/html; charset=utf-8",
+            "Cache-Control": "public, max-age=3600",
+            "Content-Security-Policy": "default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; " +
+              "connect-src 'self' https://v2.xivapi.com",
+          },
+        });
       }
 
       if (url.pathname === "/v2/status" && request.method === "GET") {
