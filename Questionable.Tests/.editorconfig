@@ -1,0 +1,4 @@
+[*.cs]
+
+# xUnit runs tests on its own sync context and warns against ConfigureAwait(false) (xUnit1030).
+dotnet_diagnostic.CA2007.severity = none

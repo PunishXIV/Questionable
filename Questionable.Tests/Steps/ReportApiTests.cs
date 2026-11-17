@@ -18,8 +18,11 @@ public sealed class ReportApiTests
             send(request);
     }
 
+    // ReportApi owns the client and the client owns the handler; each test disposes the ReportApi.
+#pragma warning disable CA2000
     private static ReportApi Api(Func<HttpRequestMessage, Task<HttpResponseMessage>> send) =>
         new(NullLogger<ReportApi>.Instance, new HttpClient(new Handler(send)) { BaseAddress = new Uri(ReportApi.BaseUrl) });
+#pragma warning restore CA2000
 
     private static Task<HttpResponseMessage> Response(string body, HttpStatusCode code = HttpStatusCode.OK) =>
         Task.FromResult(new HttpResponseMessage(code) { Content = new StringContent(body, Encoding.UTF8, "application/json") });

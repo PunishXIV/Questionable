@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Questionable.Tests.Steps;
 
-public sealed class BossModIpcTests
+public sealed class BossModIpcTests : IDisposable
 {
     private const BindingFlags Flags = BindingFlags.Instance | BindingFlags.NonPublic;
 
@@ -15,6 +15,8 @@ public sealed class BossModIpcTests
     private readonly List<string> _active = [];
     private readonly List<string> _created = [];
     private readonly List<string> _deleted = [];
+
+    public void Dispose() => _ipc.Dispose();
 
     public BossModIpcTests()
     {

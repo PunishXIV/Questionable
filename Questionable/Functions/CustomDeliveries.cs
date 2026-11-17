@@ -7,16 +7,6 @@ using UIState = FFXIVClientStructs.FFXIV.Client.Game.UI.UIState;
 using GameFramework = FFXIVClientStructs.FFXIV.Client.System.Framework.Framework;
 namespace Questionable.Functions;
 
-internal readonly record struct DeliveryRequest(uint ItemId, bool Bonus, int Satisfaction);
-
-internal sealed record DeliveryNpc(uint RowId, string Name, bool Unlocked, int Rank, int SatisfactionCur,
-    int SatisfactionMax, int Used, int Max, uint AchievementCur, uint AchievementMax, DeliveryRequest[] Requests)
-{
-    public int TurnInsLeft(Configuration.EDeliveryItem item) =>
-        CustomDeliveries.TurnInsLeft(Max - Used, SatisfactionCur, SatisfactionMax,
-            Requests.Length > (int)item ? Requests[(int)item].Satisfaction : 0);
-}
-
 // The request, bonus and achievement maths are from Satisfy by veyn, used with permission.
 [RegisterSingleton]
 internal sealed unsafe class CustomDeliveries : IDisposable
@@ -227,4 +217,14 @@ internal sealed unsafe class CustomDeliveries : IDisposable
 
         return res;
     }
+}
+
+internal readonly record struct DeliveryRequest(uint ItemId, bool Bonus, int Satisfaction);
+
+internal sealed record DeliveryNpc(uint RowId, string Name, bool Unlocked, int Rank, int SatisfactionCur,
+    int SatisfactionMax, int Used, int Max, uint AchievementCur, uint AchievementMax, DeliveryRequest[] Requests)
+{
+    public int TurnInsLeft(Configuration.EDeliveryItem item) =>
+        CustomDeliveries.TurnInsLeft(Max - Used, SatisfactionCur, SatisfactionMax,
+            Requests.Length > (int)item ? Requests[(int)item].Satisfaction : 0);
 }
