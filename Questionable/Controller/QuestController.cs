@@ -136,7 +136,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
         // Accepted and completed state can arrive in separate game updates. Do not replan in between.
         _dailyMissingSince ??= DateTime.UtcNow;
-        if (DateTime.UtcNow < _dailyMissingSince.Value.AddSeconds(2))
+        if (DateTime.UtcNow < _dailyMissingSince.Value.AddSeconds(10))
             return false;
 
         Stop("Daily quest is no longer accepted");

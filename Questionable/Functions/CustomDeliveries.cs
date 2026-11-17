@@ -20,6 +20,7 @@ internal sealed unsafe class CustomDeliveries : IDisposable
     // Achievement progress isn't sent while delivering, so keep the count from before this week's deliveries.
     private readonly Dictionary<uint, (uint Start, uint Max)> _achievements = [];
     private Dictionary<uint, uint>? _achievementIds;
+    private readonly HashSet<uint> _asked = [];
 
     public CustomDeliveries(IDataManager dataManager, IClientState clientState, IFramework framework,
         IGameInteropProvider gameInteropProvider, ILogger<CustomDeliveries> logger)
@@ -93,8 +94,9 @@ internal sealed unsafe class CustomDeliveries : IDisposable
 
             int used = inst->UsedAllowances[index];
             uint achievementId = AchievementIds().GetValueOrDefault(row.RowId);
-            if (!_achievements.TryGetValue(achievementId, out var achievement) && achievementId != 0 && rank > 0)
-                RequestAchievement(achievementId);
+            if (!_achievements.TryGetValue(achievementId, out var achievement) && achievementId != 0 && rank > 0 &&
+                !_asked.Contains(achievementId) && RequestAchievement(achievementId))
+                _asked.Add(achievementId);
 
             result.Add(new(row.RowId, row.Npc.Value.Singular.ToString(),
                 QuestManager.IsQuestComplete(row.QuestRequired.RowId), rank, inst->Satisfaction[index],
@@ -105,11 +107,13 @@ internal sealed unsafe class CustomDeliveries : IDisposable
         return result;
     }
 
-    private static void RequestAchievement(uint id)
+    private static bool RequestAchievement(uint id)
     {
         UIState* ui = UIState.Instance();
-        if (ui->PlayerState.IsLoaded && ui->Achievement.ProgressRequestState != GameAchievement.AchievementState.Requested)
-            ui->Achievement.RequestAchievementProgress(id);
+        if (!ui->PlayerState.IsLoaded || ui->Achievement.ProgressRequestState == GameAchievement.AchievementState.Requested)
+            return false;
+        ui->Achievement.RequestAchievementProgress(id);
+        return true;
     }
 
     private void OnAchievementProgress(GameAchievement* self, uint id, uint current, uint max)
@@ -158,7 +162,11 @@ internal sealed unsafe class CustomDeliveries : IDisposable
         return _achievementIds;
     }
 
-    private void OnLogout(int type, int code) => _achievements.Clear();
+    private void OnLogout(int type, int code)
+    {
+        _achievements.Clear();
+        _asked.Clear();
+    }
 
     // See SatisfactionSupplyManager.setCurrentNpc; the bonus rotates weekly.
     private int BonusGuaranteeRow(SatisfactionSupplyManager* inst)

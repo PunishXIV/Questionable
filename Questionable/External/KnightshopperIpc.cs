@@ -154,7 +154,8 @@ internal sealed class KnightshopperProvider(
     KnightshopperIpc knightshopperIpc,
     PurchaseState operation,
     GilShopData gilShopData,
-    TomestoneShopData tomestoneShopData) : PluginOperationProvider(operation)
+    TomestoneShopData tomestoneShopData,
+    SealShopData sealShopData) : PluginOperationProvider(operation)
 {
     public override int Order => 200;
     public override string Name => "Knightshopper";
@@ -173,7 +174,7 @@ internal sealed class KnightshopperProvider(
 
     // Walk steps before a purchase keep their travel; only the purchase step's own travel is skipped.
     public override bool HandlesTravel(QuestStep step) =>
-        Purchase.IsHandledByKnightshopper(step, gilShopData, tomestoneShopData);
+        Purchase.IsHandledByKnightshopper(step, gilShopData, tomestoneShopData, sealShopData);
 
     public override OperationStatusView? GetStatusView() => StatusView(
         _L("Check Knightshopper before restarting."),

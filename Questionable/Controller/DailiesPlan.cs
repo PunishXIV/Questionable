@@ -6,6 +6,7 @@ internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies)
         EAlliedSocietyRank Rank, byte Sequence, uint Territory, Vector3? Position, bool CraftReady = false,
         string? BlockReason = null, bool KeepCurrent = false);
 
+    private readonly EAlliedSociety[] _order = [.. societies];
     private readonly Dictionary<QuestId, int> _attempts = [];
     private readonly HashSet<QuestId> _seen = [];
     private readonly HashSet<QuestId> _accepted = [];
@@ -91,7 +92,7 @@ internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies)
         entries.OrderBy(x => x.Territory == territory ? 0 : 1)
             .ThenBy(x => x.Territory == territory && position is { } here && x.Position is { } there
                 ? Vector3.DistanceSquared(here, there) : float.MaxValue)
-            .ThenBy(x => Array.IndexOf(societies.ToArray(), x.Society));
+            .ThenBy(x => Array.IndexOf(_order, x.Society));
 
     private Entry Pick(Entry entry)
     {

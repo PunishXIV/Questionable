@@ -13,6 +13,9 @@ internal sealed class CustomDeliveryComponent(
     IDataManager dataManager,
     IDalamudPluginInterface pluginInterface)
 {
+    private List<DeliveryNpc> _rows = [];
+    private long _rowsAt;
+
     public void DrawTab()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Custom Deliveries"));
@@ -42,7 +45,12 @@ internal sealed class CustomDeliveryComponent(
         ImGui.SameLine();
         ImGui.TextUnformatted(_LF("Deliveries left this week: {0}/12", CustomDeliveries.WeeklyLeft));
 
-        List<DeliveryNpc> rows = deliveries.GetNpcs();
+        if (Environment.TickCount64 - _rowsAt >= 1000)
+        {
+            _rows = deliveries.GetNpcs();
+            _rowsAt = Environment.TickCount64;
+        }
+        List<DeliveryNpc> rows = _rows;
 
         ImGui.TextDisabled(_L("Deliver: what Satisfy does for that NPC (craft, gather or fish). Amber items are this week's bonus."));
 

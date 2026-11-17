@@ -3,7 +3,7 @@ using EAutomationType = Questionable.Controller.QuestController.EAutomationType;
 
 namespace Questionable.Controller;
 
-    [RegisterSingleton]
+[RegisterSingleton]
 internal sealed class CharacterRun : IDisposable
 {
     internal enum EState
@@ -190,7 +190,13 @@ internal sealed class CharacterRun : IDisposable
                     return;
                 }
 
-                if (_lifestream.IsBusy || !_autoRetainer.CanRelog)
+                if (_lifestream.IsBusy)
+                {
+                    _deadline = now + Timeout;
+                    return;
+                }
+
+                if (!_autoRetainer.CanRelog)
                     return;
 
                 if (_autoRetainer.Relog(target))

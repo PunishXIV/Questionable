@@ -262,7 +262,6 @@ public sealed class QuestionablePlugin(
         serviceProvider.GetRequiredService<HousingSelectBlockHandler>();
         serviceProvider.GetRequiredService<YesNoChoiceHandler>();
         serviceProvider.GetRequiredService<DialogueChoiceHandler>();
-        serviceProvider.GetRequiredService<GrandCompanyExchangeController>();
         serviceProvider.GetRequiredService<ChocoboNamingController>();
         serviceProvider.GetRequiredService<QuestionableIpc>();
         _initializer = serviceProvider.GetRequiredService<DalamudInitializer>();

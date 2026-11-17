@@ -37,7 +37,8 @@ internal static class Interact
 
     internal sealed class Factory(AutomatonIpc automatonIpc, BossModIpc bossModIpc, Configuration configuration, RedoUtil redoUtil,
         GilShopData gilShopData,
-        TomestoneShopData tomestoneShopData) : ITaskFactory
+        TomestoneShopData tomestoneShopData,
+        SealShopData sealShopData) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -79,7 +80,7 @@ internal static class Interact
             }
             else if (step.InteractionType == EInteractionType.PurchaseItem)
             {
-                if (step.DataId == null || Purchase.IsHandledByKnightshopper(step, gilShopData, tomestoneShopData))
+                if (step.DataId == null || Purchase.IsHandledByKnightshopper(step, gilShopData, tomestoneShopData, sealShopData))
                     yield break;
             }
             else if (step.InteractionType == EInteractionType.Snipe)

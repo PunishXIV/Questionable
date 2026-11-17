@@ -21,7 +21,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
     private readonly TerritoryData _territoryData;
     private readonly IClientState _clientState;
     private readonly ITargetManager _targetManager;
-    private readonly GrandCompanyExchangeController _grandCompanyExchangeController;
     private readonly ChocoboNamingController _chocoboNamingController;
     private readonly Configuration _configuration;
     private readonly IChatGui _chatGui;
@@ -48,7 +47,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
         TerritoryData territoryData,
         IClientState clientState,
         ITargetManager targetManager,
-        GrandCompanyExchangeController grandCompanyExchangeController,
         ChocoboNamingController chocoboNamingController,
         Configuration configuration,
         IChatGui chatGui,
@@ -69,7 +67,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
         _territoryData = territoryData;
         _clientState = clientState;
         _targetManager = targetManager;
-        _grandCompanyExchangeController = grandCompanyExchangeController;
         _chocoboNamingController = chocoboNamingController;
         _configuration = configuration;
         _chatGui = chatGui;
@@ -148,14 +145,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
             return;
 
         _logger.LogTrace("Prompt: '{Prompt}'", actualPrompt);
-        if (_grandCompanyExchangeController.IsAwaitingYesNo)
-        {
-            _logger.LogInformation("Confirming Grand Company exchange purchase");
-            new AddonMaster.SelectYesno(addonSelectYesno).Yes();
-            _grandCompanyExchangeController.IsAwaitingYesNo = false;
-            return;
-        }
-
         if (_chocoboNamingController.IsAwaitingYesNo)
         {
             _logger.LogInformation("Confirming chocobo name");

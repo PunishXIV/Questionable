@@ -71,7 +71,7 @@ public sealed class DailiesRunTests
         if (today)
             context.State.DailyCompleted.Add(123);
         else
-            TestQuestController.Set(context.Controller, "_dailyMissingSince", DateTime.UtcNow.AddSeconds(-3));
+            TestQuestController.Set(context.Controller, "_dailyMissingSince", DateTime.UtcNow.AddSeconds(-11));
 
         Assert.True(context.Invoke("ObserveDaily"));
 

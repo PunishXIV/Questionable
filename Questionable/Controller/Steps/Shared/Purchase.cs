@@ -4,15 +4,17 @@ using LuminaItem = Lumina.Excel.Sheets.Item;
 
 namespace Questionable.Controller.Steps.Shared;
 
-// Knightshopper chooses the vendor and travels for gil and tomestone purchases.
+// Knightshopper chooses the vendor and travels for gil, company seal and tomestone purchases.
 internal static class Purchase
 {
     // Knightshopper's currency ids, from the IPC docs it ships with.
+    internal const int CompanySeals = 1;
     internal const int Gil = 2;
     internal const int Tomestone = 7;
 
     // Null leaves the purchase to the quest path: special shops that take anything but tomestones.
-    public static int? GetCurrency(QuestStep step, GilShopData gilShopData, TomestoneShopData tomestoneShopData)
+    public static int? GetCurrency(QuestStep step, GilShopData gilShopData, TomestoneShopData tomestoneShopData,
+        SealShopData sealShopData)
     {
         if (step is not { InteractionType: EInteractionType.PurchaseItem, ItemId: { } itemId })
             return null;
@@ -23,18 +25,21 @@ internal static class Purchase
                 ? Tomestone
                 : null;
 
-        return gilShopData.IsSoldForGil(itemId) ? Gil : null;
+        if (gilShopData.IsSoldForGil(itemId))
+            return Gil;
+        return sealShopData.IsSoldForSeals(itemId) ? CompanySeals : null;
     }
 
     public static bool IsHandledByKnightshopper(QuestStep step, GilShopData gilShopData,
-        TomestoneShopData tomestoneShopData) =>
-        GetCurrency(step, gilShopData, tomestoneShopData) != null;
+        TomestoneShopData tomestoneShopData, SealShopData sealShopData) =>
+        GetCurrency(step, gilShopData, tomestoneShopData, sealShopData) != null;
 
-    internal sealed class Factory(GilShopData gilShopData, TomestoneShopData tomestoneShopData) : ITaskFactory
+    internal sealed class Factory(GilShopData gilShopData, TomestoneShopData tomestoneShopData,
+        SealShopData sealShopData) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
-            if (GetCurrency(step, gilShopData, tomestoneShopData) is not { } currency)
+            if (GetCurrency(step, gilShopData, tomestoneShopData, sealShopData) is not { } currency)
                 return [];
 
             return [new BuyTask(step.ItemId!.Value, Math.Max(1, step.ItemCount.GetValueOrDefault(1)), step.ItemQuality,
@@ -145,6 +150,8 @@ internal static class Purchase
                 KnightshopperIpc.EStartResult.EmptyList when CountInInventory(Task) >= Task.ItemCount => false,
                 KnightshopperIpc.EStartResult.NotAllowed => throw new TaskException(
                     "Knightshopper blocked the purchase. Enable its IPC permissions and add Questionable to its allowed plugins."),
+                KnightshopperIpc.EStartResult.InvalidCurrency when Task.Currency == CompanySeals => throw new TaskException(
+                    "This Knightshopper version can't buy with company seals. Update Knightshopper, then restart Questionable."),
                 var _ => throw new TaskException($"Knightshopper didn't buy {Task.ItemCount}x {Task.ItemId} ({result}): {message}")
             };
         }
