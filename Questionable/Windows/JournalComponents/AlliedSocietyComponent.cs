@@ -17,6 +17,7 @@ internal sealed class AlliedSocietyComponent
     IDalamudPluginInterface pluginInterface)
 {
     private readonly Dictionary<EAlliedSociety, EType?> _types = [];
+    private readonly DragOrder<EAlliedSociety> _dailiesDrag = new();
     uint _needsAttention;
     uint _incomplete;
 
@@ -84,43 +85,20 @@ internal sealed class AlliedSocietyComponent
         using var disabled = ImRaii.Disabled(questController.IsRunning);
         for (int i = 0; i < societies.Count; i++)
         {
-            EAlliedSociety society = societies[i];
-            using (ImRaii.Disabled(i == 0))
-            {
-                if (ImGuiComponentsLocal.IconButton($"DailiesUp{(int)society}", FontAwesomeIcon.ArrowUp))
-                {
-                    MoveDaily(i, i - 1);
-                    return;
-                }
-            }
-
+            _dailiesDrag.Handle(societies[i], enabled: societies.Count > 1);
             ImGui.SameLine();
-            using (ImRaii.Disabled(i == societies.Count - 1))
-            {
-                if (ImGuiComponentsLocal.IconButton($"DailiesDown{(int)society}", FontAwesomeIcon.ArrowDown))
-                {
-                    MoveDaily(i, i + 1);
-                    return;
-                }
-            }
-
-            ImGui.SameLine();
-            ImGui.Text($"{i + 1}. {society}");
+            ImGui.Text($"{i + 1}. {societies[i]}");
         }
+
+        if (_dailiesDrag.End(societies))
+            pluginInterface.SavePluginConfig(configuration);
     }
 
     // Report colours only when they say something; unknown (no reports yet) keeps the normal colours.
     internal static Vector4? HeaderColor(bool debug, bool showReports, bool missing, EReportState state, bool incomplete) =>
         debug && missing && state != EReportState.Problems ? QstTheme.Accent :
-        debug && showReports && state != EReportState.Unknown ? ReportUi.Color(state) :
+        showReports && state != EReportState.Unknown ? ReportUi.Color(state) :
         incomplete ? QstTheme.Amber : null;
-
-    private void MoveDaily(int from, int to)
-    {
-        List<EAlliedSociety> societies = configuration.Dailies.Societies;
-        (societies[from], societies[to]) = (societies[to], societies[from]);
-        pluginInterface.SavePluginConfig(configuration);
-    }
 
     private void DrawDailyCheckbox(EAlliedSociety alliedSociety)
     {
@@ -208,16 +186,13 @@ internal sealed class AlliedSocietyComponent
 
         List<(string Name, ReportStatus Status)> reports = [];
         List<string> missing = [];
-        if (debug)
+        foreach (IQuestInfo info in quests.Where(x => x.QuestId.Value != 1569))
         {
-            foreach (IQuestInfo info in quests.Where(x => x.QuestId.Value != 1569))
-            {
-                if (!questRegistry.TryGetQuest(info.QuestId, out Quest? path) ||
-                    (path.Root.Disabled && path.Root.Comment == null))
-                    missing.Add(info.Name);
-                else if (!path.Root.Disabled && !(path.Root.Comment ?? "").Contains("FATE", StringComparison.Ordinal))
-                    reports.Add((info.Name, questReporter.StatusFor(path)));
-            }
+            if (!questRegistry.TryGetQuest(info.QuestId, out Quest? path) ||
+                (path.Root.Disabled && path.Root.Comment == null))
+                missing.Add(info.Name);
+            else if (!path.Root.Disabled && !(path.Root.Comment ?? "").Contains("FATE", StringComparison.Ordinal))
+                reports.Add((info.Name, questReporter.StatusFor(path)));
         }
         ReportStatus group = ReportStatus.Worst(reports.Select(x => x.Status));
         if (missing.Count > 0 || reports.Any(x => x.Status.NeedsAttention))
@@ -236,10 +211,10 @@ internal sealed class AlliedSocietyComponent
             push?.Dispose();
         }
 
-        if (debug && ImGui.IsItemHovered() && (reports.Count > 0 || missing.Count > 0))
+        if (ImGui.IsItemHovered() && (debug ? reports.Count > 0 || missing.Count > 0 : configuration.Reports.ShowCounts && group.State != EReportState.Unknown))
         {
             string details = ReportUi.GroupDescription(reports);
-            if (missing.Count > 0)
+            if (debug && missing.Count > 0)
                 details += "\n" + _LF("Missing or disabled paths: {0}", string.Join(", ", missing));
             ReportUi.Tooltip(details);
         }

@@ -22,7 +22,7 @@ internal sealed class PriorityWindow : LWindow
     private readonly UiUtils _uiUtils;
     private readonly QuestJournalUtils _questJournalUtils;
     private readonly OpenQuestCleanUp _openQuestCleanUp;
-    private ElementId? _draggedItem;
+    private readonly DragOrder<ElementId> _drag = new();
     private Job? _lastKnownJob;
     private string _presetName = string.Empty;
     private string? _selectedPresetName;
@@ -152,16 +152,8 @@ internal sealed class PriorityWindow : LWindow
     {
         List<Quest> priorityQuests = [.. _questController.PriorityManager.Quests];
         Quest? itemToRemove = null;
-        Quest? itemToAdd = null;
-        int indexToAdd = 0;
-
-        float width = ImGui.GetContentRegionAvail().X;
-        List<(Vector2 TopLeft, Vector2 BottomRight)> itemPositions = [];
-
         for (int i = 0; i < priorityQuests.Count; ++i)
         {
-            Vector2 topLeft = ImGui.GetCursorScreenPos() +
-                              new Vector2(0, -ImGui.GetStyle().ItemSpacing.Y / 2);
             Quest quest = priorityQuests[i];
             using (ImRaii.PushId($"Quest{quest.Id}"))
             {
@@ -199,20 +191,7 @@ internal sealed class PriorityWindow : LWindow
                                        ImGui.GetStyle().ItemSpacing.X);
                     }
 
-                    if (_draggedItem == quest.Id)
-                    {
-                        ImGuiComponentsLocal.IconButton("##Move", FontAwesomeIcon.ArrowsUpDown,
-                            ImGui.ColorConvertU32ToFloat4(ImGui.GetColorU32(ImGuiCol.ButtonActive)));
-                    }
-                    else
-                        ImGuiComponentsLocal.IconButton("##Move", FontAwesomeIcon.ArrowsUpDown);
-
-                    if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(_L("Drag to change the order"));
-
-                    if (_draggedItem == null && ImGui.IsItemActive() && ImGui.IsMouseDragging(ImGuiMouseButton.Left))
-                        _draggedItem = quest.Id;
-
+                    _drag.Handle(quest.Id);
                     ImGui.SameLine();
                 }
                 else
@@ -240,36 +219,13 @@ internal sealed class PriorityWindow : LWindow
                 if (ImGui.IsItemHovered())
                     ImGui.SetTooltip(_L("Remove from priority quests"));
             }
-
-            Vector2 bottomRight = new(topLeft.X + width,
-                ImGui.GetCursorScreenPos().Y - ImGui.GetStyle().ItemSpacing.Y + 2);
-            itemPositions.Add((topLeft, bottomRight));
         }
 
-        if (!ImGui.IsMouseDragging(ImGuiMouseButton.Left))
-            _draggedItem = null;
-        else if (_draggedItem != null)
-        {
-            Quest draggedItem = priorityQuests.Single(x => x.Id == _draggedItem);
-            int oldIndex = priorityQuests.IndexOf(draggedItem);
-
-            (Vector2 topLeft, Vector2 bottomRight) = itemPositions[oldIndex];
-            ImGui.GetWindowDrawList().AddRect(topLeft, bottomRight, ImGui.GetColorU32(QstTheme.TextMuted), 3f,
-                ImDrawFlags.RoundCornersAll);
-
-            int newIndex = itemPositions.FindIndex(x => ImGui.IsMouseHoveringRect(x.TopLeft, x.BottomRight, clip: true));
-            if (newIndex >= 0 && oldIndex != newIndex)
-            {
-                itemToAdd = priorityQuests.Single(x => x.Id == _draggedItem);
-                indexToAdd = newIndex;
-            }
-        }
-
+        bool move = _drag.End(out int from, out int to);
         if (itemToRemove != null)
             _questController.PriorityManager.Remove(itemToRemove);
-
-        if (itemToAdd != null)
-            _questController.PriorityManager.Move(priorityQuests.IndexOf(itemToAdd), indexToAdd);
+        else if (move)
+            _questController.PriorityManager.Move(from, to);
     }
 
     private static List<ElementId> ParseClipboardItems()

@@ -5,6 +5,7 @@
   - Feature: A stop quest can switch to a priority preset and keep going instead of stopping -Kage
 - Feature: Community quest results: if you agree, Questionable shares whether each quest path worked, and the quest window and journal show how often a path worked for others ("19/20 worked") -Kage
   - Feature: The ! button next to the quest buttons reports how a quest went, and a problem stop offers a "Send a report" link in chat -Kage
+  - Feature: Journal quest names turn red, orange or green when others reported problems, need a review or had it working -Kage
 - Feature: Collects the free job gear at levels 80, 89 and 99 between quests and puts on your best gear -Kage
 - Feature: Claims waiting Mog Station and reward mail at a delivery moogle between quests (needs Mogmail) -Kage
 - Feature: Runs the three new Hall of the Novice exercises between quests at levels 49 to 59 to get the Neophyte's Ring, which gives 30% more EXP up to level 60 (needs AutoDuty) -Kage
@@ -17,10 +18,14 @@
 - Feature: Priority Quests: a switch for whether priority quests interrupt the current one, "Change All to Normal Priority", an XP and gil total, Dawntrail tribe presets, field aether currents, "Unlock All Jobs" by level and "Add highest rank" for allied societies -Kage
 - Feature: Stop at the next aetheryte you attune to -Kage
 - Feature: "Redeem Reward Items" button in the quest window, and /qst redeem -Kage
+- Feature: Do dailies: tick allied societies in the journal and Questionable accepts and does their dailies in your order, highest rank first, until your allowances run out; also /qst dailies -Kage
+- Feature: Custom Deliveries tab in Journal Progress: every NPC's rank, satisfaction, turn-ins left, achievement progress and this week's requested items with the bonus marked; tick and order NPCs and pick craft, gather or fish for each, then "Do deliveries", the quest window button or /qst deliveries has Satisfy do them in that order (needs Satisfy) -Kage
 - Feature: Mentor Roulette section on the Unlocks tab: every duty in the roulette with the quest that unlocks it -Kage
 - Feature: /qst zone window: "Add all to Priority Quests" -Kage
 - Feature: /qst skipstep skips a step you finished by hand -Kage
 - Change: Other plugins now do more of the work: gathering through Gather & Chill, fishing through Feesh (WahTools) instead of AutoHook, buying quest items through Knightshopper, dungeons through AutoDuty and quest battles through Boss Mod's own modules -Kage
+- Change: The "Mine/Harvest with Questionable" option in the custom delivery window is gone; use the Custom Deliveries button instead -Kage
+- Change: Sahagin dailies are done together before turning them in, like the other allied societies -Kage
 - Change: The settings window is down to six tabs, and the Plugins tab lists every helper plugin in one table with install buttons and a button to open its settings -Kage
 - Change: Problems you can fix yourself show as plain chat messages instead of red errors -Kage
 - Change: Quest battles retry up to 5 times (a setting) -Kage

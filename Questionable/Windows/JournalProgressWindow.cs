@@ -4,6 +4,7 @@
 internal sealed class JournalProgressWindow : LWindow, IDisposable
 {
     private readonly AlliedSocietyComponent _alliedSocietyComponent;
+    private readonly CustomDeliveryComponent _customDeliveryComponent;
     private readonly IClientState _clientState;
     private readonly QuestJournalComponent _questJournalComponent;
     private readonly QuestRegistry _questRegistry;
@@ -14,6 +15,7 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
         QuestJournalComponent questJournalComponent,
         QuestRewardComponent questRewardComponent,
         AlliedSocietyComponent alliedSocietyComponent,
+        CustomDeliveryComponent customDeliveryComponent,
         RedoComponent redoComponent,
         QuestRegistry questRegistry,
         IClientState clientState)
@@ -21,6 +23,7 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
     {
         _questJournalComponent = questJournalComponent;
         _alliedSocietyComponent = alliedSocietyComponent;
+        _customDeliveryComponent = customDeliveryComponent;
         _questRewardComponent = questRewardComponent;
         _redoComponent = redoComponent;
         _questRegistry = questRegistry;
@@ -63,6 +66,7 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
 
         _questJournalComponent.DrawTab();
         _alliedSocietyComponent.DrawTab();
+        _customDeliveryComponent.DrawTab();
         _questRewardComponent.DrawTab();
         _redoComponent.DrawTab();
     }

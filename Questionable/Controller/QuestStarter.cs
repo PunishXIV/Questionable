@@ -1,4 +1,3 @@
-using Lumina.Excel.Sheets;
 using Questionable.Controller.Steps.Shared;
 using EAutomationType = Questionable.Controller.QuestController.EAutomationType;
 using Quest = Questionable.Domain.Quest;
@@ -107,7 +106,7 @@ internal sealed class QuestStarter(
         logger.LogInformation("Tasks created by redeem: {Tasks}", string.Join(", ", tasks.Select(x => x.ToString())));
     }
 
-    // Satisfy refuses NPCs that are locked or have no deliveries left, so every NPC is queued.
+    // Satisfy refuses NPCs that are locked or done, and any once the 12 weekly deliveries are used up.
     public void RunCustomDeliveries()
     {
         if (questController.IsRunning)
@@ -123,11 +122,19 @@ internal sealed class QuestStarter(
             return;
         }
 
+        List<uint> npcs = configuration.General.DeliveryNpcs;
+        if (npcs.Count == 0)
+        {
+            chatGui.Print(_L("Tick the NPCs to deliver to in Journal Progress, Custom Deliveries tab."),
+                CommandHandler.MessageTag, CommandHandler.TagColor);
+            return;
+        }
+
         stopPolicy.CancelEnding();
-        Configuration.EDeliveryItem item = configuration.General.DeliveryItem;
-        foreach (SatisfactionNpc npc in dataManager.GetExcelSheet<SatisfactionNpc>().Where(x => x.RowId > 0 && x.Npc.RowId > 0))
-            questController.UnsafeEnqueueManualTask(new CustomDelivery.Task(npc.RowId, item));
-        logger.LogInformation("Queued custom deliveries ({Item}) for Satisfy", item);
+        foreach (uint npc in npcs)
+            questController.UnsafeEnqueueManualTask(new CustomDelivery.Task(npc, configuration.General.DeliveryItemFor(npc)));
+        logger.LogInformation("Queued custom deliveries for Satisfy: {Npcs}",
+            string.Join(", ", npcs.Select(x => $"{x} {configuration.General.DeliveryItemFor(x)}")));
     }
 
     // For testing the job gear pickup without levelling a character (see JobGear.Factory.CreateTasks).

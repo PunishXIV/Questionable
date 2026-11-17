@@ -277,7 +277,12 @@ internal sealed class Configuration : IPluginConfiguration
         public bool IgnoreNextQuestIfPrioSet { get; set; }
         public bool TitleBarPillCenter { get; set; } = true;
         public bool ClaimMail { get; set; } = true;
-        public EDeliveryItem DeliveryItem { get; set; } = EDeliveryItem.Gather;
+        // SatisfactionNpc row ids in order; the first ones get the 12 weekly deliveries.
+        public List<uint> DeliveryNpcs { get; set; } = [];
+        // Per SatisfactionNpc row id; Gather when missing.
+        public Dictionary<uint, EDeliveryItem> DeliveryItems { get; set; } = [];
+
+        public EDeliveryItem DeliveryItemFor(uint npc) => DeliveryItems.GetValueOrDefault(npc, EDeliveryItem.Gather);
         public bool RunNoviceHall { get; set; } = true;
         public bool AutoStepRefreshEnabled { get; set; }
         public int AutoStepRefreshDelaySeconds { get; set; } = 30;

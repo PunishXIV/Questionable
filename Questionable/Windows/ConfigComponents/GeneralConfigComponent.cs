@@ -482,18 +482,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             ImGuiComponents.HelpMarker(
                 _L("Between quests, when Mog Station or reward mail is waiting, Questionable goes to a delivery moogle and has Mogmail claim it and delete the emptied letters. Mogmail's own Auto Pop setting decides whether claimed items get used. Needs the Mogmail plugin."));
 
-            int deliveryItem = (int)Configuration.General.DeliveryItem;
-            string[] deliveryItems = [_L("Craft"), _L("Gather"), _L("Fish")];
-            if (ImGui.Combo(_L("Custom delivery item"), ref deliveryItem, deliveryItems, deliveryItems.Length))
-            {
-                Configuration.General.DeliveryItem = (Configuration.EDeliveryItem)deliveryItem;
-                Save();
-            }
-
-            ImGui.SameLine();
-            ImGuiComponents.HelpMarker(
-                _L("Which of the three requested items the Custom Deliveries button has Satisfy do for each NPC. Satisfy crafts with Artisan, gathers with Gather & Chill and fishes on its own. Needs the Satisfy plugin."));
-
             bool runNoviceHall = Configuration.General.RunNoviceHall;
             if (ImGui.Checkbox(_L("Run the Hall of the Novice for the Neophyte's Ring"), ref runNoviceHall))
             {

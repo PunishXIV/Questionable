@@ -47,6 +47,8 @@ public sealed class AlliedSocietyComponentTests
         Assert.Null(AlliedSocietyComponent.HeaderColor(true, true, false, EReportState.Unknown, false));
         Assert.Equal(QstTheme.Danger, AlliedSocietyComponent.HeaderColor(true, true, false, EReportState.Problems, true));
         Assert.Equal(QstTheme.Accent, AlliedSocietyComponent.HeaderColor(true, true, true, EReportState.Unknown, false));
-        Assert.Equal(QstTheme.Amber, AlliedSocietyComponent.HeaderColor(false, true, true, EReportState.Problems, true));
+        Assert.Equal(QstTheme.Danger, AlliedSocietyComponent.HeaderColor(false, true, true, EReportState.Problems, true));
+        Assert.Equal(QstTheme.Amber, AlliedSocietyComponent.HeaderColor(false, false, false, EReportState.Problems, true));
+        Assert.Equal(QstTheme.Amber, AlliedSocietyComponent.HeaderColor(false, true, true, EReportState.Unknown, true));
     }
 }

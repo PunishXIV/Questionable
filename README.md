@@ -135,6 +135,9 @@ AutoRetainer manages retainers and switches characters. Questionable uses its ch
 - ### [Mogmail](https://github.com/Nexaii/Mogmail)
 Mogmail claims mail attachments in bulk. Between quests, Questionable uses it to claim waiting Mog Station and reward mail at a delivery moogle.
 
+- ### [Satisfy](https://github.com/awgil/ffxiv_satisfy)
+Satisfy automates custom deliveries: it crafts, gathers or fishes the requested items and turns them in. Questionable's Custom Deliveries button and /qst deliveries have it do this week's deliveries.
+
 - ### [AutoDuty](https://github.com/erdelf/AutoDuty)
 AutoDuty is a plugin that serves as a tool to assist in the creation and following of paths through dungeons and duties. Questionable uses it to automate the completion of duties that are required for certain quests.
 
@@ -253,6 +256,14 @@ This can be done through `/xlplugins` in the chat.
 <tr>
 <td align="left"><code>/qst redeem</code></td>
 <td align="left">Redeems all reward items in your inventory.</td>
+</tr>
+<tr>
+<td align="left"><code>/qst dailies</code></td>
+<td align="left">Accepts and does the allied society dailies ticked in the journal.</td>
+</tr>
+<tr>
+<td align="left"><code>/qst deliveries</code></td>
+<td align="left">Has Satisfy do this week's custom deliveries.</td>
 </tr>
 <tr>
 <td align="left"><code>/qst handle-interrupt</code></td>
