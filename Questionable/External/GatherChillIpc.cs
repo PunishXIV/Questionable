@@ -209,6 +209,7 @@ internal sealed class GatheringController(
     }
 
     private Request? _request;
+    private long? _shortSince;
 
     public bool Start(Request request, out Guid? id)
     {
@@ -230,6 +231,7 @@ internal sealed class GatheringController(
 
         movementController.Stop();
         _request = request;
+        _shortSince = null;
         GatherStartResult result = gatherChillIpc.StartRequest(request.ItemId, remaining, out string message);
         if (result is GatherStartResult.Started or GatherStartResult.Uncertain)
             id = operation.Id;
@@ -251,8 +253,16 @@ internal sealed class GatheringController(
         ExternalOperationStatus status = operation.Status;
         string message = operation.Message;
         bool satisfied = status == ExternalOperationStatus.Succeeded && GetItemCount(request) >= request.Quantity;
+        if (!satisfied && status == ExternalOperationStatus.Succeeded)
+        {
+            // The last gathered item can reach the bags after Gather n Chill reports success.
+            _shortSince ??= TimeProvider.System.GetTimestamp();
+            if (TimeProvider.System.GetElapsedTime(_shortSince.Value) < TimeSpan.FromSeconds(2))
+                return EStatus.Gathering;
+        }
         operation.TryClearFinished(id);
         _request = null;
+        _shortSince = null;
         if (satisfied)
             return EStatus.Complete;
 

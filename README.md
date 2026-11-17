@@ -266,6 +266,10 @@ This can be done through `/xlplugins` in the chat.
 <td align="left">Has Satisfy do this week's custom deliveries.</td>
 </tr>
 <tr>
+<td align="left"><code>/qst jobgear [80|89|99]</code></td>
+<td align="left">Collects the free job gear for your current job now, even if you have better gear.</td>
+</tr>
+<tr>
 <td align="left"><code>/qst handle-interrupt</code></td>
 <td align="left">Makes Questionable handle queued interrupts now, e.g. after you start combat yourself.</td>
 </tr>

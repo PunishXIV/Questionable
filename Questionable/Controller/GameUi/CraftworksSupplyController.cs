@@ -111,9 +111,7 @@ internal sealed class CraftworksSupplyController : IDisposable
             };
             addonContextIconMenu->FireCallback(5, selectSlot);
             addonContextIconMenu->Close(fireCallback: true);
-
-            if (parentAddon->NameString == "BankaCraftworksSupply")
-                _framework.RunOnTick(HandleSupply, TimeSpan.FromMilliseconds(50));
+            _framework.RunOnTick(HandleSupply, TimeSpan.FromMilliseconds(50));
         }
         else
             _logger.LogTrace("Ignoring contextmenu event for {AddonName}", parentAddon->NameString);
