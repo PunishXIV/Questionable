@@ -46,43 +46,6 @@ internal sealed class ReportApi : IDisposable
         }
     }
 
-    public async Task<Dictionary<string, Dictionary<string, int[]>>?> GetCountsAsync()
-    {
-        try
-        {
-            CountsReply? reply = await _http.GetFromJsonAsync<CountsReply>("/v1/counts", Json).ConfigureAwait(false);
-            return reply?.Quests;
-        }
-        catch (Exception e) when (e is HttpRequestException or TaskCanceledException or JsonException)
-        {
-            logger.LogWarning("Could not load community quest results: {Message}", e.Message);
-            return null;
-        }
-    }
-
-    public async Task<List<AdminReport>?> GetAdminReportsAsync(string quest, string token)
-    {
-        try
-        {
-            using HttpRequestMessage request = new(HttpMethod.Get, $"/v1/admin/reports?quest={Uri.EscapeDataString(quest)}");
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            using HttpResponseMessage response = await _http.SendAsync(request).ConfigureAwait(false);
-            if (!response.IsSuccessStatusCode)
-            {
-                logger.LogWarning("Admin reports for {Quest} were refused: {Status}", quest, (int)response.StatusCode);
-                return null;
-            }
-
-            AdminReply? reply = await response.Content.ReadFromJsonAsync<AdminReply>(Json).ConfigureAwait(false);
-            return reply?.Reports;
-        }
-        catch (Exception e) when (e is HttpRequestException or TaskCanceledException or JsonException)
-        {
-            logger.LogWarning("Could not load admin reports for {Quest}: {Message}", quest, e.Message);
-            return null;
-        }
-    }
-
     public async Task<StatusReply?> GetStatusAsync(bool fresh = false)
     {
         try
@@ -216,8 +179,4 @@ internal sealed class ReportApi : IDisposable
 
     internal sealed record PathReports(int Worked, int Total, int RecentWorked, int RecentProblems,
         long? LastReportAt, long? LastWorkedAt, long? FifthWorkedAt, long? LastProblemAt, long? VerifiedAt);
-
-    private sealed record CountsReply(Dictionary<string, Dictionary<string, int[]>>? Quests);
-
-    private sealed record AdminReply(List<AdminReport>? Reports);
 }

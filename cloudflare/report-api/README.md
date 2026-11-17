@@ -47,9 +47,7 @@ PowerShell for a random salt: `$b = [byte[]]::new(32); [Security.Cryptography.Ra
 | Route | Who | |
 | --- | --- | --- |
 | `POST /v1/reports` | players | `{ character, quest, path, outcome: "worked" \| "problem", kind?, sequence?, step?, versions?, actions? }`. 30 per minute per IP. |
-| `GET /v1/counts` | anyone | `{ quests: { "<quest>": { "<path>": [worked, total] } } }`, cached for 10 minutes. |
-| `GET /v1/admin/reports?quest=<quest>` | admins | Problem reports for a quest, newest first. `Authorization: Bearer <token>`. |
-| `GET /v2/status` | anyone | `{ at, quests: { "<quest>": { "<path>": status } } }`; timestamps are Unix milliseconds. No character or admin identities. Shared cache for 10 minutes. `?fresh=1` bypasses it after an admin action or a newly reported problem. |
+| `GET /v2/status` | anyone | `{ at, quests: { "<quest>": { "<path>": status } } }`; timestamps are Unix milliseconds. No character or admin identities. Shared cache for 10 minutes. `?fresh=1` bypasses it after an admin action or a newly reported problem; 30 per minute per IP. |
 | `GET /v2/admin/reports?quest=<quest>` | admins | `{ snapshot, reports }`, including historical problem reports, report IDs, resolution time/admin and whether each is the current meaningful report for that character/path. |
 | `POST /v2/admin/resolve` | admins | `{ quest, id }`; resolves that report ID only, preserving history. |
 | `POST /v2/admin/verify` | admins | `{ quest, path, snapshot }`; records verification and atomically resolves that path's problems through the viewed snapshot. Newer reports stay open. |
@@ -58,13 +56,13 @@ Problem kinds: `stuck`, `deaths`, `questBattle`, `missingPath`, `playerStopped`,
 
 The v2 status has `worked`, `total`, `recentWorked`, `recentProblems`, `lastReportAt`, `lastWorkedAt`, `fifthWorkedAt`, `lastProblemAt` and `verifiedAt`. Missing timestamps are null. Recent counts use an inclusive 30-day window. A manual stop is ignored before choosing each character's latest meaningful report, so it cannot erase earlier evidence. Resolved problems remain in the totals/history but are not unresolved problems and never become successful runs.
 
-The client gives recent unresolved problems priority over verification, then uses five recent successful character reports or a verification within 30 days for green. Older or insufficient reports are orange; no evidence is grey. `fifthWorkedAt` and `lastProblemAt` let the client age those decisions accurately between refreshes. Historical v1 responses keep their existing format and meaning, including manual stops and resolved problems.
+The client gives recent unresolved problems priority over verification, then uses five recent successful character reports or a verification within 30 days for green. Older or insufficient reports are orange; no evidence is grey. `fifthWorkedAt` and `lastProblemAt` let the client age those decisions accurately between refreshes.
 
 Status aggregation reads each character/path's latest meaningful pointer, not the full 180-day event history. Ordinary reads share the 10-minute cache; a new successful run does not force every client to rebuild it. Fresh reads are not cached and do not overwrite shared snapshots, so a delayed cache rebuild cannot replace the acting admin's response. Mutations also invalidate the current location's status cache; other locations age out normally.
 
 ## Upgrade an existing deployment
 
-Apply migration `0002_report_status.sql` before deploying the updated Worker, then deploy the matching plugin client. The migration backfills existing reports and adds triggers that also capture writes from the old Worker during rollout; v1 routes remain compatible. The new client must treat a missing v2 endpoint as unavailable data, not an empty report set.
+Apply migration `0002_report_status.sql` before deploying the updated Worker, then deploy the matching plugin client. The migration backfills existing reports and adds triggers that also capture writes from the old Worker during rollout. The new client must treat a missing v2 endpoint as unavailable data, not an empty report set.
 
 Use `npm run db:migrate:local` and the tests below for local verification. Remote migration and deployment are separate maintainer actions; neither is part of mirror validation.
 

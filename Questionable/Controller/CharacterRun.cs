@@ -184,13 +184,7 @@ internal sealed class CharacterRun : IDisposable
         {
             case EState.Leaving:
                 // Travel, commands and the wait come first, and can take longer than one step's time limit.
-                if (_stopPolicy.IsEnding)
-                {
-                    _deadline = now + Timeout;
-                    return;
-                }
-
-                if (_lifestream.IsBusy)
+                if (_stopPolicy.IsEnding || _lifestream.IsBusy)
                 {
                     _deadline = now + Timeout;
                     return;

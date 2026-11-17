@@ -195,12 +195,6 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         }
         int delayMilliseconds = Math.Min(1000 * (1 << retryCount), 60_000);
         await _delay(TimeSpan.FromMilliseconds(delayMilliseconds), _shutdownToken).ConfigureAwait(false);
-        WhileActive(() =>
-        {
-            _configuration.PathData.InstalledDataVersion = 0;
-            _configuration.PathData.BundlePluginVersion = null;
-            Save();
-        });
         retryCount++;
         await CheckForUpdatesAsync(retryCount).ConfigureAwait(false);
     }
@@ -273,14 +267,6 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         {
             Status = _L("Update check failed: bundle download URL is invalid");
             _logger.LogWarning("Bundle URL had invalid domain: {Url}", manifest.BundleUrl);
-            await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
-            return;
-        }
-
-        if (string.IsNullOrEmpty(manifest.BundleUrl))
-        {
-            _logger.LogWarning("Path data manifest has no bundle URL; retrying");
-            Status = _L("Update check failed") + $" ({retryCount})";
             await RetryAfterDelayAsync(retryCount).ConfigureAwait(false);
             return;
         }

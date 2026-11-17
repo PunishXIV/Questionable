@@ -2,16 +2,10 @@ import { validateReport } from "./validate";
 import { getCachedStatus, getReportPage, resetStatusCache, resolveReport, verifyPath } from "./status";
 
 const MAX_BODY_BYTES = 8 * 1024;
-const COUNTS_TTL_SECONDS = 600;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const RETENTION_DAYS = 180;
 // Reports for a quest path are dropped this long after a newer path for the same quest first appeared.
 const REPLACED_PATH_DAYS = 30;
-const ADMIN_REPORT_LIMIT = 200;
-
-// Stable internal URL: the Cache API keys on requests, and workers.dev has no zone cache of its own.
-const COUNTS_CACHE_KEY = "https://qst-reports.internal/v1/counts";
-let memoryCounts: { body: string; expiresAt: number } | null = null;
 
 function json(body: unknown, status = 200, headers: Record<string, string> = {}): Response {
   return new Response(JSON.stringify(body), {
@@ -93,45 +87,6 @@ async function postReport(request: Request, env: Env): Promise<Response> {
   return json({ ok: true });
 }
 
-function countsResponse(body: string): Response {
-  return new Response(body, {
-    headers: { "Content-Type": "application/json", "Cache-Control": `public, max-age=${COUNTS_TTL_SECONDS}` },
-  });
-}
-
-async function getCounts(env: Env, ctx: ExecutionContext): Promise<Response> {
-  if (memoryCounts && memoryCounts.expiresAt > Date.now()) {
-    return countsResponse(memoryCounts.body);
-  }
-
-  const cached = await caches.default.match(COUNTS_CACHE_KEY);
-  if (cached) {
-    return cached;
-  }
-
-  const { results } = await env.DB.prepare(`
-    SELECT quest_id, path_hash, SUM(worked) AS worked, COUNT(*) AS total
-    FROM reports GROUP BY quest_id, path_hash`)
-    .all<{ quest_id: string; path_hash: string; worked: number; total: number }>();
-
-  // { quests: { "1190": { "<path>": [worked, total] } } }; the client picks the path it runs.
-  const quests: Record<string, Record<string, [number, number]>> = {};
-  for (const row of results) {
-    (quests[row.quest_id] ??= {})[row.path_hash] = [row.worked, row.total];
-  }
-
-  const body = JSON.stringify({ quests });
-  memoryCounts = { body, expiresAt: Date.now() + COUNTS_TTL_SECONDS * 1000 };
-  ctx.waitUntil(caches.default.put(COUNTS_CACHE_KEY, countsResponse(body)));
-  return countsResponse(body);
-}
-
-// Tests post reports and read counts in the same isolate.
-export async function resetCountsCache(): Promise<void> {
-  memoryCounts = null;
-  await caches.default.delete(COUNTS_CACHE_KEY);
-}
-
 async function findAdmin(request: Request, env: Env): Promise<string | null> {
   const header = request.headers.get("Authorization");
   if (!header?.startsWith("Bearer ")) {
@@ -143,46 +98,6 @@ async function findAdmin(request: Request, env: Env): Promise<string | null> {
     .bind(tokenHash)
     .first<{ name: string }>();
   return admin?.name ?? null;
-}
-
-async function getAdminReports(request: Request, env: Env, url: URL): Promise<Response> {
-  const limited = await rateLimited(env.ADMIN_IP_LIMITER, request);
-  if (limited) {
-    return limited;
-  }
-
-  const admin = await findAdmin(request, env);
-  if (!admin) {
-    return json({ error: "unauthorized" }, 401);
-  }
-
-  const quest = url.searchParams.get("quest");
-  if (!quest || quest.length > 16) {
-    return json({ error: "quest" }, 400);
-  }
-
-  console.log(`admin ${admin} read reports for quest ${quest}`);
-  const { results } = await env.DB.prepare(`
-    SELECT path_hash, kind, sequence, step, versions, actions, created_at
-    FROM reports WHERE quest_id = ? AND worked = 0
-    ORDER BY created_at DESC LIMIT ?`)
-    .bind(quest, ADMIN_REPORT_LIMIT)
-    .all<{
-      path_hash: string; kind: string; sequence: number | null; step: number | null;
-      versions: string | null; actions: string | null; created_at: number;
-    }>();
-
-  return json({
-    reports: results.map(row => ({
-      path: row.path_hash,
-      kind: row.kind,
-      sequence: row.sequence,
-      step: row.step,
-      versions: row.versions ? JSON.parse(row.versions) : null,
-      actions: row.actions ? JSON.parse(row.actions) : null,
-      at: row.created_at,
-    })),
-  });
 }
 
 export async function prune(env: Env, now: number): Promise<void> {
@@ -231,16 +146,10 @@ export default {
         return await postReport(request, env);
       }
 
-      if (url.pathname === "/v1/counts" && request.method === "GET") {
-        return await getCounts(env, ctx);
-      }
-
-      if (url.pathname === "/v1/admin/reports" && request.method === "GET") {
-        return await getAdminReports(request, env, url);
-      }
-
       if (url.pathname === "/v2/status" && request.method === "GET") {
-        return await getCachedStatus(env, ctx, url.searchParams.get("fresh") === "1");
+        const fresh = url.searchParams.get("fresh") === "1";
+        const limited = fresh ? await rateLimited(env.ADMIN_IP_LIMITER, request) : null;
+        return limited ?? await getCachedStatus(env, ctx, fresh);
       }
 
       if (url.pathname.startsWith("/v2/admin/")) {

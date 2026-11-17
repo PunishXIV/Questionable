@@ -1,7 +1,7 @@
 import { env, exports } from "cloudflare:workers";
 import { createScheduledController } from "cloudflare:test";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import worker, { prune, resetCountsCache } from "../src/index";
+import worker, { prune } from "../src/index";
 import { getStatus, resetStatusCache, type PathStatus } from "../src/status";
 
 const CHARACTER_A = "a".repeat(64);
@@ -26,9 +26,8 @@ function report(character: string, path: string, outcome: "worked" | "problem", 
 }
 
 async function counts(): Promise<Counts> {
-  const response = await exports.default.fetch("https://reports.test/v1/counts");
-  expect(response.status).toBe(200);
-  return ((await response.json()) as { quests: Counts }).quests;
+  return Object.fromEntries(Object.entries((await status()).quests).map(([quest, paths]) =>
+    [quest, Object.fromEntries(Object.entries(paths).map(([path, s]) => [path, [s.worked, s.total]]))]));
 }
 
 async function sha256Hex(text: string): Promise<string> {
@@ -44,7 +43,6 @@ beforeEach(async () => {
     env.DB.prepare("DELETE FROM paths"),
     env.DB.prepare("DELETE FROM admins"),
   ]);
-  await resetCountsCache();
   await resetStatusCache();
 });
 
@@ -108,8 +106,8 @@ describe("admin reports", () => {
   }
 
   function read(token?: string) {
-    return exports.default.fetch("https://reports.test/v1/admin/reports?quest=1190", {
-      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    return exports.default.fetch("https://reports.test/v2/admin/reports?quest=1190", {
+      headers: { "CF-Connecting-IP": `admin-${++requestNumber}`, ...(token ? { Authorization: `Bearer ${token}` } : {}) },
     });
   }
 
@@ -194,7 +192,9 @@ type AdminPage = {
 
 async function status(now?: number): Promise<StatusReply> {
   const response = now === undefined
-    ? await exports.default.fetch("https://reports.test/v2/status?fresh=1")
+    ? await exports.default.fetch("https://reports.test/v2/status?fresh=1", {
+      headers: { "CF-Connecting-IP": `status-${++requestNumber}` },
+    })
     : await getStatus(env, now);
   expect(response.status).toBe(200);
   expect(response.headers.get("Cache-Control")).toBe("no-store");
@@ -221,6 +221,16 @@ async function page(): Promise<AdminPage> {
 }
 
 describe("report status", () => {
+  it("rate-limits fresh reads", async () => {
+    let last = 0;
+    for (let i = 0; i < 31; i++) {
+      last = (await exports.default.fetch("https://reports.test/v2/status?fresh=1", {
+        headers: { "CF-Connecting-IP": "flood" },
+      })).status;
+    }
+    expect(last).toBe(429);
+  });
+
   it("keeps the query-start watermark when an older read finishes late", async () => {
     const started = 1_000 * DAY;
     const clock = vi.spyOn(Date, "now").mockReturnValue(started);
@@ -273,7 +283,6 @@ describe("report status", () => {
     expect(health[PATH_1]).toMatchObject({ worked: 0, total: 1, recentWorked: 0, recentProblems: 1 });
     expect(health[PATH_1].lastProblemAt).not.toBeNull();
     expect(health[PATH_2]).toBeUndefined();
-    expect(await counts()).toEqual({ "1190": { [PATH_1]: [0, 1], [PATH_2]: [0, 1] } });
   });
 
   it("keeps concurrent submissions and latest pointers consistent", async () => {
@@ -358,10 +367,6 @@ describe("admin status actions", () => {
     expect(resolved.resolvedBy).toBe("kage");
     expect(resolved.current).toBe(true);
     expect(await counts()).toEqual({ "1190": { [PATH_1]: [0, 1] } });
-    const legacy = await exports.default.fetch("https://reports.test/v1/admin/reports?quest=1190", {
-      headers: { Authorization: "Bearer status-token" },
-    });
-    expect((await legacy.json() as { reports: unknown[] }).reports).toHaveLength(1);
   });
 
   it("preserves resolved history when the same character reports a new problem", async () => {

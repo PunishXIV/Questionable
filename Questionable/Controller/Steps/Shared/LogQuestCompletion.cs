@@ -16,7 +16,6 @@ internal static class LogQuestCompletion
     (
         IClientState clientState,
         IObjectTable objectTable,
-        IDalamudPluginInterface pluginInterface,
         ILogger<Executor> logger) : TaskExecutor<Task>
     {
         protected override bool Start()
@@ -37,12 +36,13 @@ internal static class LogQuestCompletion
             if (Task.Quest == null)
                 return;
             logger.LogInformation($"Logging quest completion: {Task.Quest?.Id.Value}");
-            string path = Path.Combine(pluginInterface.ConfigDirectory.FullName, "QuestCompletionLog.json");
             List<QuestCompletion> data = ReadLog();
             QuestInfo? info = (QuestInfo?)Task.Quest?.Info;
+            string quest = $"{info?.QuestId}_{info?.SimplifiedName}";
+            data.RemoveAll(x => x.Quest == quest);
             data.Add(new()
             {
-                Quest = $"{info?.QuestId}_{info?.SimplifiedName}",
+                Quest = quest,
                 LastChecked = DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
             });
             WriteLog(data);

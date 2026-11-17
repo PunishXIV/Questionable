@@ -102,6 +102,23 @@ public sealed class PathDataUpdaterLifetimeTests
     }
 
     [Fact]
+    public async Task OfflineRetries_KeepSavedVersion()
+    {
+        int requests = 0;
+        await using var context = new Context((_, _) =>
+        {
+            Interlocked.Increment(ref requests);
+            throw new HttpRequestException("offline");
+        }, delay: (_, _) => Task.CompletedTask);
+        context.Updater.CheckForUpdatesManually();
+        await context.Updater.UpdateTask.WaitAsync(TimeSpan.FromSeconds(5));
+
+        Assert.Equal(10, requests);
+        Assert.Equal(1, context.Config.PathData.InstalledDataVersion);
+        Assert.NotNull(context.Config.PathData.BundlePluginVersion);
+    }
+
+    [Fact]
     public async Task QueuedReload_SkippedAfterDispose()
     {
         var queued = new TaskCompletionSource<Action>(TaskCreationOptions.RunContinuationsAsynchronously);
