@@ -54,7 +54,7 @@ internal sealed class JournalTable(
         if (repColumn)
             ImGui.TableSetupColumn(_L("Reputation"), ImGuiTableColumnFlags.WidthFixed, 70 * scale);
         ImGui.TableSetupColumn(_L("Supported"), ImGuiTableColumnFlags.WidthFixed, 100 * scale);
-        ImGui.TableSetupColumn(_L("Completed"), ImGuiTableColumnFlags.WidthFixed, 100 * scale);
+        ImGui.TableSetupColumn(_L("Completed"), ImGuiTableColumnFlags.WidthFixed, 125 * scale);
         ImGui.TableHeadersRow();
         return table;
     }
@@ -105,9 +105,11 @@ internal sealed class JournalTable(
     {
         questRegistry.TryGetQuest(questInfo.QuestId, out Quest? quest);
 
+        EReportState state = quest != null ? questReporter.StatusFor(quest).State : EReportState.Unknown;
         BeginRow();
-        ImGui.TreeNodeEx(label ?? GetName(questInfo, quest),
-            ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
+        using (ImRaii.PushColor(ImGuiCol.Text, ReportUi.Color(state), state != EReportState.Unknown))
+            ImGui.TreeNodeEx(label ?? GetName(questInfo, quest),
+                ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
         if (ImGui.IsItemHovered())
         {
             ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
@@ -211,8 +213,6 @@ internal sealed class JournalTable(
 
     private void DrawSupport(IQuestInfo questInfo, Quest? quest)
     {
-        ReportStatus? status = quest != null ? questReporter.StatusFor(quest) : null;
-
         float spacing;
         using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
             spacing = ImGui.GetColumnWidth() / 2 - ImGui.CalcTextSize(FontAwesomeIcon.Check.ToIconString()).X;
@@ -251,15 +251,6 @@ internal sealed class JournalTable(
                 if (uiUtils.ChecklistItem("", complete: false))
                     ImGui.SetTooltip(_L("This quest is not yet supported.") + addendum);
                 break;
-        }
-
-        if (status is { Reason: not EReportReason.Disabled })
-        {
-            ImGui.SameLine();
-            using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
-                ImGui.TextColored(ReportUi.Color(status), FontAwesomeIcon.Circle.ToIconString());
-            if (ImGui.IsItemHovered())
-                ReportUi.Tooltip(ReportUi.Description(status));
         }
 
         if (configuration.Stop.QuestsToStopWhenAccepted.Contains(questInfo.QuestId) ||

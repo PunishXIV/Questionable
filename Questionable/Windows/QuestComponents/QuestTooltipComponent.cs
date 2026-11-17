@@ -104,7 +104,7 @@ internal sealed class QuestTooltipComponent
                 ImGui.Text(_LF("NG+: {0}", redoIndex));
 
             ReportStatus status = questReporter.StatusFor(quest);
-            if (status.Reason != EReportReason.Disabled)
+            if (status.State != EReportState.Unknown)
             {
                 using var wrap = ImRaii.TextWrapPos(ImGui.GetFontSize() * 35);
                 ImGui.TextColored(ReportUi.Color(status), ReportUi.Description(status));

@@ -40,7 +40,6 @@ internal static class ReportUi
             if (reports.VerifiedAt is { } verified)
                 text += "\n" + _LF("Verified working: {0}", Date(verified));
         }
-        text += "\n" + _L("Green needs five recent successful character reports or admin verification. Reports and verification become old after 30 days. Unresolved problems take priority; manual stops do not count.");
         return text;
     }
 
