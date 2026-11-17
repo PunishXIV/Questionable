@@ -824,7 +824,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         {
             SelectStartedQuest(quest, sequence);
             if (_configuration.Advanced.Debug && _configuration.Advanced.OpenEditor &&
-                (quest.Root.LastChecked.Date == null || (quest.Root.LastChecked.Since(DateTime.Now) is { } since && since.TotalDays > 30)))
+                _reports.StatusFor(quest).NeedsAttention)
             {
                 (bool success, string msg) = QuestRegistry.OpenEditor(StartedQuest.Quest.Info);
                 _logger.LogDebug("OpenEditor {Success}: {Msg}", success, msg);
@@ -1494,6 +1494,13 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return false;
         if (!_priorityManager.HasPendingAcceptOnly)
             return false;
+
+        // A disabled society path is never picked; left queued it would hold off between-quest detours.
+        foreach (Quest quest in _priorityManager.AcceptOnlyQuests.Where(x => !QuestFunctions.CanQueueSociety(x)).ToList())
+        {
+            _logger.LogInformation("Accept-all: {QuestId} has a disabled path, dropping it", quest.Id);
+            _priorityManager.Remove(quest);
+        }
 
         Quest? next = QuestSelectionController.PickAcceptOnly(_priorityManager.AcceptOnlyQuests, SelectionState,
             _clientState.TerritoryType);

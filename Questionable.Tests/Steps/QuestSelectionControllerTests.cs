@@ -240,6 +240,32 @@ public sealed class QuestSelectionControllerTests
     }
 
     [Fact]
+    public void AcceptOnly_SkipsDisabledSociety()
+    {
+        Quest disabled = NewQuest(1336);
+        disabled.Info.AlliedSociety.Returns(EAlliedSociety.Kobolds);
+        disabled.Root.Disabled = true;
+        Quest supported = NewQuest(1325);
+        supported.Info.AlliedSociety.Returns(EAlliedSociety.Kobolds);
+        _state.ReadyIgnoringLevel.UnionWith([disabled.Id, supported.Id]);
+        _state.ClassJob.UnionWith([disabled.Id, supported.Id]);
+
+        Assert.Same(supported, QuestSelectionController.PickAcceptOnly([disabled, supported], _state));
+        Assert.Null(QuestSelectionController.PickAcceptOnly([disabled], _state));
+    }
+
+    [Fact]
+    public void AcceptOnly_KeepsOtherQuestPolicy()
+    {
+        Quest quest = NewQuest(200);
+        quest.Root.Disabled = true;
+        _state.ReadyIgnoringLevel.Add(quest.Id);
+        _state.ClassJob.Add(quest.Id);
+
+        Assert.Same(quest, QuestSelectionController.PickAcceptOnly([quest], _state));
+    }
+
+    [Fact]
     public void AcceptOnly_PicksFirstReadyForClass()
     {
         Quest wrongClass = NewQuest(10);

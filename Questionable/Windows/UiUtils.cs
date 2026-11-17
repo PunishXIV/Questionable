@@ -5,7 +5,7 @@ namespace Questionable.Windows;
 internal sealed class UiUtils(
     QuestFunctions questFunctions,
     IDalamudPluginInterface pluginInterface,
-    QuestData questData,
+    IQuestCatalog catalog,
     GameIcons gameIcons)
 {
     public unsafe (Vector4 Color, FontAwesomeIcon Icon, string Status) GetQuestStyle(ElementId elementId)
@@ -15,7 +15,7 @@ internal sealed class UiUtils(
         questFunctions.prereqCache.TryGetValue(elementId.Value, out var prerequisites);
         if (questFunctions.IsQuestLocked(elementId) is (bool isLocked, string[] reasons) && isLocked)
             lockedReason = string.Join("\n  ", reasons);
-        else if (questData.TryGetQuestInfo(elementId, out info) && info is IQuestInfo questInfo &&
+        else if (catalog.TryGetQuestInfo(elementId, out info) && info is IQuestInfo questInfo &&
                 questInfo.PreviousQuestJoin is EQuestJoin.All)
         {
             List<string> blockers = [];
@@ -31,10 +31,20 @@ internal sealed class UiUtils(
 
         if (questFunctions.IsQuestAccepted(elementId))
             return (QstTheme.Amber, FontAwesomeIcon.PersonWalkingArrowRight, _L("Active"));
-        if (elementId is QuestId questId && questFunctions.IsSocietyDailyAvailable(questId))
+        if (elementId is QuestId questId && questFunctions.IsDailyAlliedSocietyQuest(questId))
         {
-            if (!questFunctions.IsReadyToAcceptQuest(questId))
+            if (questFunctions.IsPriorityQuestDone(questId))
                 return (QstTheme.Success, FontAwesomeIcon.Check, _L("Complete"));
+            if (questFunctions.IsQuestUnobtainable(questId))
+                return (QstTheme.TextMuted, FontAwesomeIcon.Minus, _L("Unobtainable"));
+            if (!string.IsNullOrEmpty(lockedReason))
+                return (QstTheme.Danger, FontAwesomeIcon.Lock, $"{_L("Locked")}:\n  {lockedReason}");
+            if (questFunctions.IsOutOfSocietyAllowances(questId))
+                return (QstTheme.Danger, FontAwesomeIcon.Lock, _L("No allowances: no daily allowances remaining"));
+            if (!questFunctions.IsReadyToAcceptQuest(questId))
+                return (QstTheme.Danger, FontAwesomeIcon.Lock,
+                    questFunctions.IsReadyToAcceptQuest(questId, ignoreLevel: true)
+                        ? _L("Level too low: current job level too low") : _L("Unavailable"));
             if (questFunctions.IsQuestComplete(questId))
                 return (QstTheme.Info, FontAwesomeIcon.Running, _L("Available"));
 

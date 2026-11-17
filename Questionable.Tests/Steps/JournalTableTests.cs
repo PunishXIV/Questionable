@@ -7,8 +7,6 @@ namespace Questionable.Tests.Steps;
 
 public sealed class JournalTableTests
 {
-    private static readonly DateTime Now = new(2026, 11, 9);
-
     private static QuestRoot Root(bool disabled = false, string? comment = null, string? checkedOn = null) => new()
     {
         Author = ["test"],
@@ -46,12 +44,4 @@ public sealed class JournalTableTests
         Assert.Equal(EPathSupport.Supported, Support(Root()));
     }
 
-    [Fact]
-    public void Stale_AfterAWeekOrNeverChecked()
-    {
-        Assert.True(JournalTable.IsStale(Root(), Now));
-        Assert.True(JournalTable.IsStale(Root(checkedOn: "2026-11-01"), Now));
-        Assert.False(JournalTable.IsStale(Root(checkedOn: "2026-11-02"), Now));
-        Assert.False(JournalTable.IsStale(null, Now));
-    }
 }

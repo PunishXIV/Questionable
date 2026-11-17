@@ -6,27 +6,48 @@ internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies)
 {
     internal sealed record Entry(QuestId Id, EAlliedSociety Society, bool Daily, bool Accepted, bool Ready,
         EAlliedSocietyRank Rank, byte Sequence, uint Territory, Vector3? Position, bool CraftReady = false,
-        string? BlockReason = null);
+        string? BlockReason = null, bool KeepCurrent = false);
 
     private readonly Dictionary<QuestId, int> _attempts = [];
     private readonly HashSet<QuestId> _seen = [];
+    private readonly HashSet<QuestId> _accepted = [];
     private readonly HashSet<QuestId> _stories = [];
     private EAlliedSociety? _society;
     public HashSet<QuestId> Completed { get; } = [];
     public Dictionary<QuestId, string> Skipped { get; } = [];
+    public Dictionary<QuestId, string> Blocked { get; } = [];
     public string? StopReason { get; private set; }
 
     public Entry? Choose(IReadOnlyList<Entry> entries, int allowances, uint territory, Vector3? position,
         ElementId? current = null)
     {
         List<Entry> available = [.. entries.Where(x => societies.Contains(x.Society) &&
-            !Completed.Contains(x.Id) && !Skipped.ContainsKey(x.Id) && (x.Accepted || x.Ready))];
+            !Completed.Contains(x.Id) && !Skipped.ContainsKey(x.Id) &&
+            _attempts.GetValueOrDefault(x.Id) < 2 && (x.Accepted || x.Ready || x.BlockReason != null))];
         foreach (Entry entry in available.Where(x => x.Accepted))
+        {
             _seen.Add(entry.Id);
+            _accepted.Add(entry.Id);
+            Blocked.Remove(entry.Id);
+        }
+
+        foreach (Entry entry in available.Where(x => !x.Accepted))
+        {
+            if (entry.BlockReason != null)
+                Blocked[entry.Id] = entry.BlockReason;
+            else
+                Blocked.Remove(entry.Id);
+        }
+
+        // Mounts and non-interruptible paths must reach their safe end before even a rank-up detour.
+        Entry? held = available.FirstOrDefault(x => x.Id == current && x.Accepted &&
+            x.KeepCurrent && x.BlockReason == null);
+        if (held != null)
+            return Pick(held);
 
         // Finish a rank-up already underway; ordinary dailies may change at sequence boundaries.
         Entry? story = available.FirstOrDefault(x => !x.Daily && x.Accepted && x.Id == current);
-        story ??= Travel(available.Where(x => !x.Daily), territory, position).FirstOrDefault();
+        story ??= Travel(available.Where(x => !x.Daily && (x.Accepted || x.Ready)), territory, position).FirstOrDefault();
         if (story != null)
         {
             _stories.Add(story.Id);
@@ -81,13 +102,19 @@ internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies)
     private Entry Pick(Entry entry)
     {
         _seen.Add(entry.Id);
+        if (!entry.Daily)
+            _stories.Add(entry.Id);
         return entry;
     }
 
     public void Accepted(ElementId id)
     {
         if (id is QuestId questId)
+        {
             _seen.Add(questId);
+            _accepted.Add(questId);
+            Blocked.Remove(questId);
+        }
     }
 
     public void Complete(ElementId id)
@@ -109,11 +136,16 @@ internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies)
         _attempts[questId] = attempt;
         if (attempt == 1)
             return EDailiesFailure.Retry;
-        Skipped[questId] = reason;
+        if (_accepted.Contains(questId))
+            Skipped[questId] = reason;
+        else
+            Blocked[questId] = reason;
         return EDailiesFailure.Skip;
     }
 
+    public bool WasAccepted(ElementId id) => id is QuestId questId && _accepted.Contains(questId);
+
     public int FinishedDailies => Completed.Count(x => !_stories.Contains(x));
     public int FinishedStories => Completed.Count(_stories.Contains);
-    public int Unfinished => _seen.Count(x => !Completed.Contains(x));
+    public int Unfinished => _accepted.Count(x => !Completed.Contains(x));
 }

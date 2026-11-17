@@ -22,6 +22,7 @@ internal sealed class DailiesController(
     private const ushort IxalDelivery = 1569;
     private DailiesPlan? _plan;
     private EAlliedSociety[] _societies = [];
+    private readonly Dictionary<EAlliedSociety, string> _societyReasons = [];
 
     public string? StopReason => _plan?.StopReason;
 
@@ -48,6 +49,7 @@ internal sealed class DailiesController(
             return;
 
         _societies = [.. societies.Distinct()];
+        _societyReasons.Clear();
         _plan = new(_societies);
         if (!questController.BeginDailies(this))
         {
@@ -69,7 +71,11 @@ internal sealed class DailiesController(
         foreach (EAlliedSociety society in _societies)
         {
             if (questFunctions.GetRankAndReputation(society).Item1 == EAlliedSocietyRank.None)
+            {
+                _societyReasons[society] = _L("Society is not unlocked.");
                 continue; // Unlock quests belong to a later slice.
+            }
+            _societyReasons.Remove(society);
             foreach (QuestInfo info in questData.GetAllByAlliedSociety(society))
             {
                 QuestId id = (QuestId)info.QuestId;
@@ -77,24 +83,26 @@ internal sealed class DailiesController(
                     AlliedSocietyQuestFunctions.UnlockQuests.GetValueOrDefault(society) == id.Value)
                     continue;
                 bool accepted = questFunctions.IsQuestAccepted(id);
-                bool ready = questFunctions.IsReadyToAcceptQuest(id, ignoreLevel: true) &&
-                             questFunctions.HasClassJobAtQuestLevel(id);
-                if (!accepted && !ready)
-                    continue;
                 questRegistry.TryGetQuest(id, out Quest? quest);
+                bool ready = questFunctions.IsReadyToAcceptQuest(id, ignoreLevel: true);
+                string? unavailable = !accepted && !ready ? questFunctions.GetDailyBlock(id) : null;
+                if (!accepted && !ready && unavailable == null)
+                    continue;
                 byte sequence = accepted ? gameState.GetQuestSequence(id.Value) : (byte)0;
                 QuestSequence? stage = quest?.FindSequence(sequence);
                 QuestStep? target = stage?.Steps.FirstOrDefault(x => x.Position != null) ?? stage?.Steps.FirstOrDefault();
                 bool craftReady = accepted && sequence == 255 && stage?.Steps.Any(x =>
                     x.InteractionType == EInteractionType.Craft && x.ItemId is { } itemId &&
                     questFunctions.HasCraftMaterials(itemId)) == true;
-                string? blocked = quest == null ? _LF("No quest path for {0}.", info.Name) : null;
+                bool hasJob = questFunctions.HasClassJobAtQuestLevel(id);
+                string? blocked = unavailable ?? GetBlockReason(quest, info, accepted, hasJob);
                 if (!info.IsRepeatable && quest != null && quest.AllSteps().Any(x =>
                     x.Sequence.Sequence >= sequence && x.Step.InteractionType == EInteractionType.SinglePlayerDuty &&
                     !bossMod.CanRunQuestBattle(id, x.Step.SinglePlayerDutyOptions)))
                     blocked = _LF("Do dailies stopped: the rank-up quest {0} has a quest battle that cannot run automatically. Complete it manually, then start dailies again.", info.Name);
-                entries.Add(new(id, society, info.IsRepeatable, accepted, ready, info.AlliedSocietyRank,
-                    sequence, target?.TerritoryId ?? 0, target?.Position, craftReady, blocked));
+                entries.Add(new(id, society, info.IsRepeatable, accepted, ready && hasJob, info.AlliedSocietyRank,
+                    sequence, target?.TerritoryId ?? 0, target?.Position, craftReady, blocked,
+                    current?.Quest.Id == id && accepted && quest != null && questFunctions.KeepDaily(quest, sequence)));
             }
         }
         DailiesPlan.Entry? next = _plan.Choose(entries, (int)questFunctions.SocietyAllowances,
@@ -107,6 +115,11 @@ internal sealed class DailiesController(
     public void Accepted(ElementId id) => _plan?.Accepted(id);
     public void Completed(ElementId id) => _plan?.Complete(id);
 
+    internal static string? GetBlockReason(Quest? quest, QuestInfo info, bool accepted, bool hasJob) =>
+        quest == null ? _LF("No quest path for {0}.", info.Name) :
+        quest.Root.Disabled ? _LF("{0} has a disabled quest path; complete it manually.", info.Name) :
+        !accepted && !hasJob ? _LF("No suitable job at level {0} for {1}.", info.Level, info.Name) : null;
+
     public EDailiesFailure Fail(ElementId id, string reason)
     {
         EDailiesFailure result = _plan?.Fail(id, reason) ?? EDailiesFailure.Stop;
@@ -114,7 +127,10 @@ internal sealed class DailiesController(
         if (result == EDailiesFailure.Retry)
             chatGui.Print(_LF("Do dailies: retrying {0} once. {1}", name, reason), CommandHandler.MessageTag, CommandHandler.TagColor);
         else if (result == EDailiesFailure.Skip)
-            chatGui.Print(_LF("Do dailies: leaving {0} unfinished and continuing. {1}", name, reason), CommandHandler.MessageTag, CommandHandler.TagColor);
+            chatGui.Print(_plan?.WasAccepted(id) == true
+                ? _LF("Do dailies: leaving {0} unfinished and continuing. {1}", name, reason)
+                : _LF("Do dailies: skipping {0} before accepting it. {1}", name, reason),
+                CommandHandler.MessageTag, CommandHandler.TagColor);
         return result;
     }
 
@@ -125,12 +141,18 @@ internal sealed class DailiesController(
         if (plan == null)
             return;
         string status = completed ? _L("finished") : _L("stopped");
-        chatGui.Print(_LF("Do dailies {0}: {1} dailies and {2} rank-up quests completed; {3} left unfinished.",
-            status, plan.FinishedDailies, plan.FinishedStories, plan.Unfinished), CommandHandler.MessageTag, CommandHandler.TagColor);
+        chatGui.Print(_LF("Do dailies {0}: {1} dailies and {2} rank-up quests completed; {3} left unfinished; {4} not accepted.",
+            status, plan.FinishedDailies, plan.FinishedStories, plan.Unfinished, plan.Blocked.Count),
+            CommandHandler.MessageTag, CommandHandler.TagColor);
         foreach ((QuestId id, string reason) in plan.Skipped)
             chatGui.Print(_LF("{0}: {1}", questData.GetQuestInfo(id).Name, reason), CommandHandler.MessageTag, CommandHandler.TagColor);
-        logger.LogInformation("Dailies {Status}: {Dailies} dailies, {Stories} rank-ups, {Skipped} skipped",
-            status, plan.FinishedDailies, plan.FinishedStories, plan.Skipped.Count);
+        foreach ((QuestId id, string reason) in plan.Blocked)
+            chatGui.Print(_LF("Not accepted - {0}: {1}", questData.GetQuestInfo(id).Name, reason),
+                CommandHandler.MessageTag, CommandHandler.TagColor);
+        foreach ((EAlliedSociety society, string reason) in _societyReasons)
+            chatGui.Print(_LF("{0}: {1}", society, reason), CommandHandler.MessageTag, CommandHandler.TagColor);
+        logger.LogInformation("Dailies {Status}: {Dailies} dailies, {Stories} rank-ups, {Skipped} skipped, {Blocked} not accepted",
+            status, plan.FinishedDailies, plan.FinishedStories, plan.Skipped.Count, plan.Blocked.Count);
     }
 
     // List order decides who gets the allowances; within a society the highest rank pays the most.

@@ -4,6 +4,11 @@ namespace Questionable.Controller.Steps;
 
 internal static class QuestCleanUp
 {
+    // Enemy 8593 came with the original mount rule; no current path fights it.
+    internal static bool UsesSocietyMount(Quest quest) =>
+        quest.AllSteps().Any(x => (x.Step.Action is { } action && action.RequiresMount()) ||
+            (x.Step.InteractionType == EInteractionType.Combat && x.Step.KillEnemyDataIds.Contains(8593)));
+
     internal sealed class CheckAlliedSocietyMount(AetheryteData aetheryteData, AlliedSocietyData alliedSocietyData, ILogger<CheckAlliedSocietyMount> logger) : SimpleTaskFactory
     {
         public override ITask? CreateTask(Quest quest, QuestSequence sequence, QuestStep step)
@@ -34,8 +39,7 @@ internal static class QuestCleanUp
                     return teleportTask;
                 }
 
-                if (!quest.AllSteps().Any(x => (x.Step.Action is { } action && action.RequiresMount()) ||
-                    (x.Step.InteractionType == EInteractionType.Combat && x.Step.KillEnemyDataIds.Contains(8593))))
+                if (!UsesSocietyMount(quest))
                 {
                     logger.LogInformation("Quest doesn't use any mount actions, unmounting");
                     return new MountStep.UnmountTask();

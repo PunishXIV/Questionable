@@ -18,6 +18,8 @@ internal sealed class QuestReporter
     private const int MaxActionLength = 160;
     private const uint ReportLinkId = 1;
     private static readonly TimeSpan CountsMaxAge = TimeSpan.FromHours(1);
+    private static readonly TimeSpan RetryDelay = TimeSpan.FromMinutes(1);
+    private static readonly TimeSpan FreshWindow = TimeSpan.FromMinutes(15);
 
     // Plugins whose version helps reproduce a problem; the Worker accepts up to 12 entries.
     private static readonly string[] TrackedPlugins =
@@ -26,7 +28,8 @@ internal sealed class QuestReporter
 
     private readonly Configuration _configuration;
     private readonly Func<ReportApi.Body, Task<bool>> _send;
-    private readonly Func<Task<Dictionary<string, Dictionary<string, int[]>>?>> _fetchCounts;
+    private readonly Func<bool, Task<ReportApi.StatusReply?>> _fetchStatus;
+    private readonly Func<DateTimeOffset> _now;
     private readonly Func<string?> _character;
     private readonly ILogger _logger;
     private readonly IDalamudPluginInterface? _pluginInterface;
@@ -36,24 +39,39 @@ internal sealed class QuestReporter
     private readonly HashSet<ElementId> _problemSent = [];
     private EProblemKind? _pending;
     private ReportApi.Body? _offered;
-    private Dictionary<string, Dictionary<string, int[]>> _counts = [];
-    private DateTime _countsCheckedAt = DateTime.MinValue;
-    private int _fetching;
+    private readonly object _statusLock = new();
+    private ReportApi.StatusReply? _status;
+    private EReportFetch _fetchState = EReportFetch.Loading;
+    private DateTimeOffset _statusCheckedAt = DateTimeOffset.MinValue;
+    private Task? _statusTask;
+    private int _generation;
+    private bool _freshStatus;
+    private long _statusAt;
+    private long _freshAt;
+    private DateTimeOffset _freshUntil = DateTimeOffset.MinValue;
 
     public QuestReporter(Configuration configuration, ReportApi api, IDalamudPluginInterface pluginInterface,
         IChatGui chatGui, ILogger<QuestReporter> logger)
-        : this(configuration, api.SendAsync, api.GetCountsAsync, () => ProfileController.CurrentContentId, logger,
+        : this(configuration, api.SendAsync, api.GetStatusAsync, () => ProfileController.CurrentContentId, logger,
             pluginInterface, chatGui)
     {
     }
 
     internal QuestReporter(Configuration configuration, Func<ReportApi.Body, Task<bool>> send,
-        Func<Task<Dictionary<string, Dictionary<string, int[]>>?>> fetchCounts, Func<string?> character,
-        ILogger logger, IDalamudPluginInterface? pluginInterface = null, IChatGui? chatGui = null)
+        Func<Task<ReportApi.StatusReply?>> fetchStatus, Func<string?> character,
+        ILogger logger, IDalamudPluginInterface? pluginInterface = null, IChatGui? chatGui = null,
+        Func<DateTimeOffset>? now = null)
+        : this(configuration, send, _ => fetchStatus(), character, logger, pluginInterface, chatGui, now) { }
+
+    internal QuestReporter(Configuration configuration, Func<ReportApi.Body, Task<bool>> send,
+        Func<bool, Task<ReportApi.StatusReply?>> fetchStatus, Func<string?> character,
+        ILogger logger, IDalamudPluginInterface? pluginInterface = null, IChatGui? chatGui = null,
+        Func<DateTimeOffset>? now = null)
     {
         _configuration = configuration;
         _send = send;
-        _fetchCounts = fetchCounts;
+        _fetchStatus = fetchStatus;
+        _now = now ?? (() => DateTimeOffset.UtcNow);
         _character = character;
         _logger = logger;
         _pluginInterface = pluginInterface;
@@ -103,19 +121,24 @@ internal sealed class QuestReporter
         return true;
     }
 
-    public (int Worked, int Total)? CountsFor(Quest quest)
+    public ReportStatus StatusFor(Quest quest)
     {
         if (!_configuration.Reports.ShowCounts)
-            return null;
+            return ReportStatus.Evaluate(null, EReportFetch.Disabled, _now());
 
-        RefreshCounts();
-        if (!_counts.TryGetValue(quest.Id.ToString(), out Dictionary<string, int[]>? paths) ||
-            Fingerprint(quest) is not { } path ||
-            !paths.TryGetValue(path, out int[]? counts) || counts is not [int worked, int total] ||
-            total < MinReports)
-            return null;
+        _ = RefreshStatusAsync();
+        lock (_statusLock)
+        {
+            if (_fetchState != EReportFetch.Ready)
+                return ReportStatus.Evaluate(null, _fetchState, _now());
+            if (PathFor(quest) is not { } path)
+                return ReportStatus.Evaluate(null, EReportFetch.Failed, _now());
 
-        return (worked, total);
+            ReportApi.PathReports? reports = null;
+            if (_status?.Quests.TryGetValue(quest.Id.ToString(), out var paths) == true)
+                paths.TryGetValue(path, out reports);
+            return ReportStatus.Evaluate(reports, EReportFetch.Ready, _now());
+        }
     }
 
     private static EProblemKind? StopKind(EProblemKind? pending, string reason) =>
@@ -151,7 +174,7 @@ internal sealed class QuestReporter
     {
         bool projectPaths = _configuration.Advanced.Debug && _configuration.Reports.ReportProjectPaths;
         if (!CanReport(quest.Source, projectPaths) || _character() is not { } character ||
-            Fingerprint(quest) is not { } path)
+            PathFor(quest) is not { } path)
             return null;
 
         string hash = CharacterHash(character);
@@ -163,7 +186,7 @@ internal sealed class QuestReporter
             [.. recentTasks.TakeLast(MaxActions).Select(Clean)]);
     }
 
-    private string? Fingerprint(Quest quest)
+    public string? PathFor(Quest quest)
     {
         string fingerprint = _fingerprints.GetValue(quest.Root, root =>
         {
@@ -210,7 +233,12 @@ internal sealed class QuestReporter
         try
         {
             if (await _send(body).ConfigureAwait(false))
+            {
+                // A success only moves green after five; waiting for the hourly refresh is fine.
+                if (body.Outcome == "problem" && body.Kind != "playerStopped")
+                    Invalidate();
                 _logger.LogInformation("Sent quest report for {Quest}: {Outcome} {Kind}", body.Quest, body.Outcome, body.Kind);
+            }
         }
         catch (Exception e)
         {
@@ -243,28 +271,86 @@ internal sealed class QuestReporter
         _chatGui?.Print(_L("Thanks, your report was sent."), CommandHandler.MessageTag, CommandHandler.TagColor);
     }
 
-    private void RefreshCounts()
+    public void Invalidate(bool fresh = true)
     {
-        if (DateTime.Now - _countsCheckedAt < CountsMaxAge || Interlocked.Exchange(ref _fetching, 1) == 1)
-            return;
-
-        _countsCheckedAt = DateTime.Now;
-        _ = Task.Run(async () =>
+        lock (_statusLock)
         {
-            try
+            // Keep showing the current data until the refetch lands; a failed refetch still clears it.
+            ++_generation;
+            _statusTask = null;
+            _statusCheckedAt = DateTimeOffset.MinValue;
+            _freshStatus |= fresh;
+            if (fresh)
+                _freshUntil = _now() + FreshWindow;
+        }
+    }
+
+    internal Task RefreshStatusAsync()
+    {
+        if (!_configuration.Reports.ShowCounts)
+            return Task.CompletedTask;
+
+        lock (_statusLock)
+        {
+            if (_statusTask != null)
+                return _statusTask;
+            TimeSpan maxAge = _fetchState == EReportFetch.Failed ? RetryDelay : CountsMaxAge;
+            if (_now() - _statusCheckedAt < maxAge)
+                return Task.CompletedTask;
+
+            int generation = _generation;
+            // Cover the shared cache lifetime and clock skew after an admin action or new problem.
+            bool fresh = _freshStatus || _now() < _freshUntil;
+            long newest = _statusAt;
+            long freshAt = _freshAt;
+            _statusCheckedAt = _now();
+            _statusTask = Task.Run(async () =>
             {
-                if (await _fetchCounts().ConfigureAwait(false) is { } counts)
-                    _counts = counts;
-            }
-            catch (Exception e)
-            {
-                _logger.LogWarning(e, "Could not load community quest results");
-            }
-            finally
-            {
-                Interlocked.Exchange(ref _fetching, 0);
-            }
-        });
+                ReportApi.StatusReply? status = null;
+                bool valid = false;
+                bool needsFresh = fresh;
+                try
+                {
+                    status = ReportApi.CleanStatus(await _fetchStatus(fresh).ConfigureAwait(false), _now());
+                    valid = status != null;
+                    if (valid && !fresh && (status!.At < newest || status.At <= freshAt))
+                    {
+                        // A shared cache can predate our last admin action or problem report.
+                        needsFresh = true;
+                        status = ReportApi.CleanStatus(await _fetchStatus(true).ConfigureAwait(false), _now());
+                        valid = status != null;
+                    }
+                    valid &= status != null && status.At >= newest;
+                }
+                catch (Exception e)
+                {
+                    valid = false;
+                    _logger.LogWarning(e, "Could not load community quest results");
+                }
+
+                lock (_statusLock)
+                {
+                    // A response started before a report/admin action must not overwrite its refresh.
+                    if (generation != _generation)
+                        return;
+                    _status = valid ? status : null;
+                    _fetchState = valid ? EReportFetch.Ready : EReportFetch.Failed;
+                    if (valid)
+                    {
+                        _freshStatus = false;
+                        _statusAt = status!.At;
+                        if (needsFresh)
+                            _freshAt = Math.Max(_freshAt, status.At);
+                        else if (status.At > _freshAt)
+                            _freshAt = 0;
+                    }
+                    else
+                        _freshStatus |= needsFresh;
+                    _statusTask = null;
+                }
+            });
+            return _statusTask;
+        }
     }
 }
 

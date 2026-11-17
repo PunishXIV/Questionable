@@ -13,7 +13,8 @@ internal sealed class QuestTooltipComponent
     QuestFunctions questFunctions,
     UiUtils uiUtils,
     RedoUtil redoUtil,
-    Configuration configuration)
+    Configuration configuration,
+    QuestReporter questReporter)
 {
 
     // List entries that aren't game quests (aether current zones, Fantasias) have none of the quest details.
@@ -102,8 +103,12 @@ internal sealed class QuestTooltipComponent
             if (redoIndex.Index != -1)
                 ImGui.Text(_LF("NG+: {0}", redoIndex));
 
-            if (quest.Root.LastChecked.Date != null)
-                ImGui.Text(_LF("Last checked: {0} by {1}", quest.Root.LastChecked.Date, quest.Root.LastChecked.Username ?? ""));
+            ReportStatus status = questReporter.StatusFor(quest);
+            if (status.Reason != EReportReason.Disabled)
+            {
+                using var wrap = ImRaii.TextWrapPos(ImGui.GetFontSize() * 35);
+                ImGui.TextColored(ReportUi.Color(status), ReportUi.Description(status));
+            }
         }
         else
         {

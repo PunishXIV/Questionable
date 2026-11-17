@@ -376,6 +376,42 @@ internal sealed class QuestFunctions
         return mountId != 0 && alliedSocietyData.Mounts.ContainsKey(mountId);
     }
 
+    public bool KeepDaily(Quest quest, byte sequence)
+    {
+        if (!IsQuestAccepted(quest.Id))
+            return false;
+        if (!quest.Root.Interruptible)
+            return true;
+        if (!alliedSocietyData.Mounts.TryGetValue(state.CurrentMountId, out AlliedSocietyMount? mount))
+            return false;
+
+        // Keep the mount's quest through its turn-in cleanup, but do not attach an unrelated mount to it.
+        return quest.AllSteps().Any(x => x.Sequence.Sequence > 0 && x.Sequence.Sequence < sequence &&
+                   x.Step.DataId is { } dataId && mount.IssuerDataIds.Contains(dataId)) &&
+               Controller.Steps.QuestCleanUp.UsesSocietyMount(quest);
+    }
+
+    public bool CanQueueSociety(ElementId questId) =>
+        catalog.TryGetQuestInfo(questId, out IQuestInfo? info) &&
+        (info.AlliedSociety == EAlliedSociety.None ||
+         catalog.TryGetQuest(questId, out Quest? quest) && CanQueueSociety(quest));
+
+    internal static bool CanQueueSociety(Quest quest) =>
+        quest.Info.AlliedSociety == EAlliedSociety.None || !quest.Root.Disabled;
+
+    public string? GetDailyBlock(QuestId questId)
+    {
+        if (!IsDailyAlliedSocietyQuest(questId) || IsQuestAccepted(questId) || IsPriorityQuestDone(questId) ||
+            SocietyAllowances == 0 || !IsSocietyDailyAvailable(questId) ||
+            IsReadyToAcceptQuest(questId, ignoreLevel: true))
+            return null;
+
+        var (_, reasons) = IsQuestLocked(questId);
+        return reasons is { Length: > 0 }
+            ? string.Join(", ", reasons)
+            : _L("Quest is unavailable for this character.");
+    }
+
     private (ElementId Quest, byte Sequence)? GetWaitingCraft(List<(ElementId Quest, byte Sequence)> quests)
     {
         foreach ((ElementId questId, byte sequence) in quests)
@@ -676,7 +712,10 @@ internal sealed class QuestFunctions
     public bool IsReadyToAcceptQuest(ElementId questId, bool ignoreLevel = false)
     {
         catalog.TryGetQuest(questId, out Quest? quest);
-        if (quest is { Info.IsRepeatable: true })
+        IQuestInfo? info = quest?.Info;
+        if (info == null)
+            catalog.TryGetQuestInfo(questId, out info);
+        if (info is { IsRepeatable: true })
         {
             if (IsQuestAccepted(questId))
                 return false;

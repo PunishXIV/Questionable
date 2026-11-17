@@ -1,3 +1,5 @@
+using Questionable.Controller;
+using Questionable.Windows.Common.Ui;
 using Questionable.Windows.JournalComponents;
 using Xunit;
 using EType = Questionable.Windows.JournalComponents.AlliedSocietyComponent.EType;
@@ -37,4 +39,14 @@ public sealed class AlliedSocietyComponentTests
 
     [Fact]
     public void NoQuests_HasNoType() => Assert.Null(TypeOf());
+
+    [Fact]
+    public void UnknownReports_KeepNormalColour()
+    {
+        Assert.Equal(QstTheme.Amber, AlliedSocietyComponent.HeaderColor(true, true, false, EReportState.Unknown, true));
+        Assert.Null(AlliedSocietyComponent.HeaderColor(true, true, false, EReportState.Unknown, false));
+        Assert.Equal(QstTheme.Danger, AlliedSocietyComponent.HeaderColor(true, true, false, EReportState.Problems, true));
+        Assert.Equal(QstTheme.Accent, AlliedSocietyComponent.HeaderColor(true, true, true, EReportState.Unknown, false));
+        Assert.Equal(QstTheme.Amber, AlliedSocietyComponent.HeaderColor(false, true, true, EReportState.Problems, true));
+    }
 }

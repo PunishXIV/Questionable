@@ -26,8 +26,8 @@ export type Validation = { ok: true; report: Report } | { ok: false; error: stri
 
 const CHARACTER = /^[0-9a-f]{64}$/;
 // QST element ids (ElementId.ToString): "1190", "S12", "U3", "N4", "C5", "A5x3".
-const QUEST = /^[A-Z]?\d{1,7}(x\d{1,3})?$/;
-const PATH = /^[0-9a-f]{16}$/;
+export const QUEST = /^[A-Z]?\d{1,7}(x\d{1,3})?$/;
+export const PATH = /^[0-9a-f]{16}$/;
 const VERSION_KEY = /^[A-Za-z0-9 ._&'()-]{1,40}$/;
 const PRINTABLE = /^[\x20-\x7E]*$/;
 

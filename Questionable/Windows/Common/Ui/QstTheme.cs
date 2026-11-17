@@ -53,9 +53,6 @@ internal static class QstTheme
 
     public static Vector4 WithAlpha(Vector4 color, float alpha) => color with { W = alpha };
 
-    public static Vector4 ForRate(int worked, int total) =>
-        ((float)worked / total) switch { >= 0.8f => Success, >= 0.5f => Amber, _ => Danger };
-
     public static uint ToU32(Vector4 color) => ImGui.ColorConvertFloat4ToU32(color);
 
     public static WindowStyleScope? PushWindowStyle() => Enabled ? new() : null;

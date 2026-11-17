@@ -14,11 +14,8 @@ internal sealed class JournalTable(
     QuestReporter questReporter,
     Configuration configuration)
 {
-    private const int StaleDays = 7;
-
     // Journal tables are never nested, so the open table's optional columns are kept here for its rows.
     private bool _repColumn;
-    private bool _markStale;
 
     public static EPathSupport GetSupport(bool removed, QuestRoot? root, IReadOnlyCollection<EIssueSeverity> issues)
     {
@@ -33,17 +30,12 @@ internal sealed class JournalTable(
         return issues.Count > 0 ? EPathSupport.Issues : EPathSupport.Supported;
     }
 
-    // A path nobody has reported working within a week, for path checkers.
-    public static bool IsStale(QuestRoot? root, DateTime now) =>
-        root != null && (root.LastChecked.Date == null || root.LastChecked.Since(now)!.Value.TotalDays > StaleDays);
-
     // pinHeader makes the table scroll instead of the window, so the header row stays in view.
     // Only for a table that is the last thing on its tab: it takes the remaining height.
-    public ImRaii.TableDisposable Begin(string id, bool repColumn = false, bool markStale = false,
+    public ImRaii.TableDisposable Begin(string id, bool repColumn = false,
         bool pinHeader = false)
     {
         _repColumn = repColumn;
-        _markStale = markStale;
         ImGuiTableFlags flags = ImGuiTableFlags.NoSavedSettings;
         if (pinHeader)
             flags |= ImGuiTableFlags.ScrollY;
@@ -219,21 +211,7 @@ internal sealed class JournalTable(
 
     private void DrawSupport(IQuestInfo questInfo, Quest? quest)
     {
-        string lastChecked = "";
-        string lastCheckedLong = "";
-        if (quest?.Root.LastChecked.Date != null)
-        {
-            lastCheckedLong = "\n" + _LF("Last checked: {0}", quest.Root.LastChecked);
-            // The short age is for path checkers; everyone else gets the date in the tooltip.
-            if (configuration.Advanced.Debug)
-            {
-                int daysSince = (int)quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays;
-                if (daysSince >= 0 && daysSince < 7)
-                    lastChecked = $"{daysSince}d";
-                else if (daysSince >= 7)
-                    lastChecked = $"{daysSince / 7}w";
-            }
-        }
+        ReportStatus? status = quest != null ? questReporter.StatusFor(quest) : null;
 
         float spacing;
         using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
@@ -242,7 +220,7 @@ internal sealed class JournalTable(
 
         string defaultReason = _L("<no reason specified>");
         string reason = quest != null ? (quest.Root.Comment ?? defaultReason).Split('\n', 2)[0] : defaultReason;
-        string addendum = lastCheckedLong + (!reason.Equals(defaultReason, StringComparison.Ordinal) ? "\n" + _LF("Reason: {0}", reason) : "");
+        string addendum = !reason.Equals(defaultReason, StringComparison.Ordinal) ? "\n" + _LF("Reason: {0}", reason) : "";
 
         List<EIssueSeverity> issues = quest is { Root.Disabled: false }
             ? [.. questValidator.GetIssues(quest.Id).Select(x => x.Severity)]
@@ -250,38 +228,38 @@ internal sealed class JournalTable(
         switch (GetSupport(QuestFunctions.IsQuestRemoved(questInfo.QuestId), quest?.Root, issues))
         {
             case EPathSupport.Removed:
-                if (uiUtils.ChecklistItem(lastChecked, QstTheme.TextMuted, FontAwesomeIcon.Minus))
+                if (uiUtils.ChecklistItem("", QstTheme.TextMuted, FontAwesomeIcon.Minus))
                     ImGui.SetTooltip(_L("This quest is not available.") + addendum);
                 break;
             case EPathSupport.Fate:
-                if (uiUtils.ChecklistItem(lastChecked, QstTheme.Accent, FontAwesomeIcon.ExclamationTriangle))
+                if (uiUtils.ChecklistItem("", QstTheme.Accent, FontAwesomeIcon.ExclamationTriangle))
                     ImGui.SetTooltip(_L("This quest requires completing a FATE.") + addendum);
                 break;
             case EPathSupport.LoadError:
-                if (uiUtils.ChecklistItem(lastChecked, QstTheme.Danger, FontAwesomeIcon.ExclamationTriangle))
+                if (uiUtils.ChecklistItem("", QstTheme.Danger, FontAwesomeIcon.ExclamationTriangle))
                     ImGui.SetTooltip(_L("This quest could not be loaded.") + addendum);
                 break;
             case EPathSupport.Issues:
-                if (uiUtils.ChecklistItem(lastChecked, QstTheme.Info, FontAwesomeIcon.InfoCircle))
+                if (uiUtils.ChecklistItem("", QstTheme.Info, FontAwesomeIcon.InfoCircle))
                     ImGui.SetTooltip(_L("This quest had validation issues.") + addendum);
                 break;
             case EPathSupport.Supported:
-                bool stale = _markStale && IsStale(quest?.Root, DateTime.Now);
-                if (uiUtils.ChecklistItem(lastChecked, complete: true, stale ? QstTheme.Accent : null))
+                if (uiUtils.ChecklistItem("", complete: true))
                     ImGui.SetTooltip(_L("This quest is supported.") + addendum);
                 break;
             default:
-                if (uiUtils.ChecklistItem(lastChecked, complete: false))
+                if (uiUtils.ChecklistItem("", complete: false))
                     ImGui.SetTooltip(_L("This quest is not yet supported.") + addendum);
                 break;
         }
 
-        if (quest != null && questReporter.CountsFor(quest) is { } counts)
+        if (status is { Reason: not EReportReason.Disabled })
         {
             ImGui.SameLine();
-            ImGui.TextColored(QstTheme.ForRate(counts.Worked, counts.Total), $"{counts.Worked}/{counts.Total}");
+            using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
+                ImGui.TextColored(ReportUi.Color(status), FontAwesomeIcon.Circle.ToIconString());
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_LF("Community reports for this path: {0} of {1} runs worked.", counts.Worked, counts.Total));
+                ReportUi.Tooltip(ReportUi.Description(status));
         }
 
         if (configuration.Stop.QuestsToStopWhenAccepted.Contains(questInfo.QuestId) ||

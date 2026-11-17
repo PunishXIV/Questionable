@@ -18,6 +18,7 @@ internal sealed class QuestSelectionController(Configuration configuration)
     // Highest society rank first, so the daily limit isn't spent on the lowest-paying quests; then this zone first.
     public static Quest? PickAcceptOnly(IEnumerable<Quest> acceptOnlyQuests, IQuestSelectionState state, uint? territory = null) =>
         acceptOnlyQuests
+            .Where(QuestFunctions.CanQueueSociety)
             .Where(x => state.IsReadyToAccept(x.Id, ignoreLevel: true) && state.HasClassJobAtQuestLevel(x.Id))
             .OrderByDescending(x => x.Info is QuestInfo info ? info.AlliedSocietyRank : EAlliedSocietyRank.None)
             .ThenBy(x => x.FindSequence(0)?.FindStep(0)?.TerritoryId == territory ? 0 : 1)

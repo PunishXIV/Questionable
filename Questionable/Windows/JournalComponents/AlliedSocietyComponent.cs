@@ -13,10 +13,11 @@ internal sealed class AlliedSocietyComponent
     JournalTable journalTable,
     Configuration configuration,
     DailiesController dailiesController,
+    QuestReporter questReporter,
     IDalamudPluginInterface pluginInterface)
 {
     private readonly Dictionary<EAlliedSociety, EType?> _types = [];
-    uint _unchecked;
+    uint _needsAttention;
     uint _incomplete;
 
     internal enum EType
@@ -48,16 +49,16 @@ internal sealed class AlliedSocietyComponent
                                        FontAwesomeIcon.InfoCircle, QstTheme.Amber);
         }
 
-        if (debug && _unchecked > 0)
+        if (debug && _needsAttention > 0)
         {
             ImGui.SameLine();
-            ImGuiComponents.HelpMarker(_L("Quests marked with orange need to be reported as working or not via the LastChecked system. Ask Aly for more details!"),
+            ImGuiComponents.HelpMarker(_L("Societies needing tests: reported issues, old or insufficient reports, unreported paths, or missing paths. Hover a society for details. Unavailable reports do not add quests to the testing queue."),
                                        FontAwesomeIcon.InfoCircle, QstTheme.Accent);
             ImGui.SameLine();
-            ImGui.Text(_LF("Unchecked: {0}", _unchecked));
+            ImGui.Text(_LF("Needs attention: {0}", _needsAttention));
         }
 
-        _unchecked = 0;
+        _needsAttention = 0;
         _incomplete = 0;
 
         DrawDailies();
@@ -78,7 +79,7 @@ internal sealed class AlliedSocietyComponent
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
             ImGui.SetTooltip(societies.Count == 0
                 ? _L("Tick the societies to include with the box in front of their name.")
-                : _L("Accepts the ticked societies' dailies, top of the list first until the allowances run out. Highest-rank quests are picked first, including maxed societies. Starts the normal quest run; other quests may also run."));
+                : _L("Runs only the ticked societies. List order decides who gets the daily allowances, highest-rank quests first, including maxed societies. Rank-ups run first when it is safe to switch; travel order decides which society to visit next."));
 
         using var disabled = ImRaii.Disabled(questController.IsRunning);
         for (int i = 0; i < societies.Count; i++)
@@ -107,6 +108,12 @@ internal sealed class AlliedSocietyComponent
             ImGui.Text($"{i + 1}. {society}");
         }
     }
+
+    // Report colours only when they say something; unknown (no reports yet) keeps the normal colours.
+    internal static Vector4? HeaderColor(bool debug, bool showReports, bool missing, EReportState state, bool incomplete) =>
+        debug && missing && state != EReportState.Problems ? QstTheme.Accent :
+        debug && showReports && state != EReportState.Unknown ? ReportUi.Color(state) :
+        incomplete ? QstTheme.Amber : null;
 
     private void MoveDaily(int from, int to)
     {
@@ -138,10 +145,10 @@ internal sealed class AlliedSocietyComponent
     private bool DrawTesterTools()
     {
         bool addPending = false;
-        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Plus, _L("Add")))
+        if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Plus, _L("Add for testing")))
             addPending = true;
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Add unchecked quests (from expanded categories) to prio"));
+            ImGui.SetTooltip(_L("Add quests needing attention from expanded categories to priority. Includes unreported paths once report data has loaded."));
         ImGui.SameLine();
 
         bool preventQuestCompletion = configuration.Advanced.PreventQuestCompletion;
@@ -199,37 +206,42 @@ internal sealed class AlliedSocietyComponent
         string label = $"{rep}{alliedSociety}{type}###AlliedSociety{(int)alliedSociety}";
         bool isOpen;
 
+        List<(string Name, ReportStatus Status)> reports = [];
+        List<string> missing = [];
+        if (debug)
+        {
+            foreach (IQuestInfo info in quests.Where(x => x.QuestId.Value != 1569))
+            {
+                if (!questRegistry.TryGetQuest(info.QuestId, out Quest? path) ||
+                    (path.Root.Disabled && path.Root.Comment == null))
+                    missing.Add(info.Name);
+                else if (!path.Root.Disabled && !(path.Root.Comment ?? "").Contains("FATE", StringComparison.Ordinal))
+                    reports.Add((info.Name, questReporter.StatusFor(path)));
+            }
+        }
+        ReportStatus group = ReportStatus.Worst(reports.Select(x => x.Status));
+        if (missing.Count > 0 || reports.Any(x => x.Status.NeedsAttention))
+            _needsAttention++;
+
+        bool incomplete = quests.Any(x => !questFunctions.IsQuestComplete(x.QuestId));
+        if (incomplete)
+            _incomplete++;
+        Vector4? color = HeaderColor(debug, configuration.Reports.ShowCounts, missing.Count > 0, group.State, incomplete);
+
         DrawDailyCheckbox(alliedSociety);
         using (ImRaii.Disabled(quests.Count == 0))
         {
-            // Ignore Ixal Deliverance and FATE quests when flagging unchecked paths.
-            if (debug && quests.Any(x => !x.QuestId.Value.Equals(1569) && ( // Ixal delivery quest "Deliverance"
-                    !questRegistry.TryGetQuest(x.QuestId, out Quest? quest) ||
-                    (quest.Root.Disabled && quest.Root.Comment == null) ||
-                    (quest.Root.LastChecked.Date != null &&
-                        JournalTable.IsStale(quest.Root, DateTime.Now) &&
-                        !(quest.Root.Comment ?? "").Contains("FATE") // FATE quests matter less
-                    )
-                )
-            ))
-            {
-                using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent))
-                {
-                    isOpen = ImGui.CollapsingHeader(label);
-                }
-                _unchecked += 1;
-            }
-            else if (quests.Any(x => !questFunctions.IsQuestComplete(x.QuestId)))
-            {
-                using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.Amber))
-                {
-                    isOpen = ImGui.CollapsingHeader(label);
-                }
-            }
-            else
-            {
-                isOpen = ImGui.CollapsingHeader(label);
-            }
+            ImRaii.ColorDisposable? push = color is { } c ? ImRaii.PushColor(ImGuiCol.Text, c) : null;
+            isOpen = ImGui.CollapsingHeader(label);
+            push?.Dispose();
+        }
+
+        if (debug && ImGui.IsItemHovered() && (reports.Count > 0 || missing.Count > 0))
+        {
+            string details = ReportUi.GroupDescription(reports);
+            if (missing.Count > 0)
+                details += "\n" + _LF("Missing or disabled paths: {0}", string.Join(", ", missing));
+            ReportUi.Tooltip(details);
         }
 
         questJournalUtils.ShowGroupContextMenu($"DrawAlliedSocietyQuests{alliedSociety}", quests,
@@ -239,7 +251,7 @@ internal sealed class AlliedSocietyComponent
             return;
 
         using ImRaii.TableDisposable table = journalTable.Begin($"AlliedSociety{(int)alliedSociety}",
-            repColumn: neededRep != 0, markStale: debug);
+            repColumn: neededRep != 0);
         if (!table)
             return;
 
@@ -324,7 +336,8 @@ internal sealed class AlliedSocietyComponent
     private void DrawQuest(IQuestInfo questInfo, bool addPending)
     {
         journalTable.QuestRow(questInfo, nameof(AlliedSocietyComponent));
-        if (addPending && questRegistry.TryGetQuest(questInfo.QuestId, out Quest? quest) && JournalTable.IsStale(quest.Root, DateTime.Now))
+        if (addPending && questRegistry.TryGetQuest(questInfo.QuestId, out Quest? quest) &&
+            questReporter.StatusFor(quest).NeedsAttention)
             questController.PriorityManager.Add(questInfo.QuestId);
     }
 }

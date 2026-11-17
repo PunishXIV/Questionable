@@ -1,4 +1,5 @@
 import { validateReport } from "./validate";
+import { getCachedStatus, getReportPage, resetStatusCache, resolveReport, verifyPath } from "./status";
 
 const MAX_BODY_BYTES = 8 * 1024;
 const COUNTS_TTL_SECONDS = 600;
@@ -188,6 +189,8 @@ export async function prune(env: Env, now: number): Promise<void> {
   const replacedBefore = now - REPLACED_PATH_DAYS * DAY_MS;
   await env.DB.batch([
     env.DB.prepare("DELETE FROM reports WHERE created_at < ?").bind(now - RETENTION_DAYS * DAY_MS),
+    env.DB.prepare("DELETE FROM report_events WHERE created_at < ?").bind(now - RETENTION_DAYS * DAY_MS),
+    env.DB.prepare("DELETE FROM verifications WHERE verified_at < ?").bind(now - RETENTION_DAYS * DAY_MS),
     // A path counts as replaced once a newer path for the same quest has been around long enough.
     env.DB.prepare(`
       DELETE FROM reports WHERE EXISTS (
@@ -196,9 +199,28 @@ export async function prune(env: Env, now: number): Promise<void> {
         WHERE old.quest_id = reports.quest_id AND old.path_hash = reports.path_hash
           AND newer.first_seen < ?)`)
       .bind(replacedBefore),
-    env.DB.prepare("DELETE FROM paths WHERE NOT EXISTS (SELECT 1 FROM reports WHERE reports.quest_id = paths.quest_id AND reports.path_hash = paths.path_hash) AND first_seen < ?")
+    env.DB.prepare(`
+      DELETE FROM report_events WHERE EXISTS (
+        SELECT 1 FROM paths old JOIN paths newer
+          ON newer.quest_id = old.quest_id AND newer.first_seen > old.first_seen
+        WHERE old.quest_id = report_events.quest_id AND old.path_hash = report_events.path_hash
+          AND newer.first_seen < ?)`)
+      .bind(replacedBefore),
+    env.DB.prepare(`
+      DELETE FROM verifications WHERE EXISTS (
+        SELECT 1 FROM paths old JOIN paths newer
+          ON newer.quest_id = old.quest_id AND newer.first_seen > old.first_seen
+        WHERE old.quest_id = verifications.quest_id AND old.path_hash = verifications.path_hash
+          AND newer.first_seen < ?)`)
+      .bind(replacedBefore),
+    env.DB.prepare(`DELETE FROM paths
+      WHERE NOT EXISTS (SELECT 1 FROM reports WHERE reports.quest_id = paths.quest_id AND reports.path_hash = paths.path_hash)
+        AND NOT EXISTS (SELECT 1 FROM report_events WHERE report_events.quest_id = paths.quest_id AND report_events.path_hash = paths.path_hash)
+        AND NOT EXISTS (SELECT 1 FROM verifications WHERE verifications.quest_id = paths.quest_id AND verifications.path_hash = paths.path_hash)
+        AND first_seen < ?`)
       .bind(now - RETENTION_DAYS * DAY_MS),
   ]);
+  await resetStatusCache();
 }
 
 export default {
@@ -215,6 +237,39 @@ export default {
 
       if (url.pathname === "/v1/admin/reports" && request.method === "GET") {
         return await getAdminReports(request, env, url);
+      }
+
+      if (url.pathname === "/v2/status" && request.method === "GET") {
+        return await getCachedStatus(env, ctx, url.searchParams.get("fresh") === "1");
+      }
+
+      if (url.pathname.startsWith("/v2/admin/")) {
+        const limited = await rateLimited(env.ADMIN_IP_LIMITER, request);
+        if (limited) {
+          return limited;
+        }
+        const admin = await findAdmin(request, env);
+        if (!admin) {
+          return json({ error: "unauthorized" }, 401);
+        }
+        if (url.pathname === "/v2/admin/reports" && request.method === "GET") {
+          return await getReportPage(env, url.searchParams.get("quest"));
+        }
+        if (request.method === "POST" && (url.pathname === "/v2/admin/resolve" || url.pathname === "/v2/admin/verify")) {
+          const text = await readBody(request);
+          if (text === null) {
+            return json({ error: "too large" }, 413);
+          }
+          let body: unknown;
+          try {
+            body = JSON.parse(text);
+          } catch {
+            return json({ error: "invalid json" }, 400);
+          }
+          return url.pathname.endsWith("/resolve")
+            ? await resolveReport(env, admin, body)
+            : await verifyPath(env, admin, body);
+        }
       }
 
       return json({ error: "not found" }, 404);

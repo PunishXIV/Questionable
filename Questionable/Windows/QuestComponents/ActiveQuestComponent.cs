@@ -139,15 +139,15 @@ internal sealed partial class ActiveQuestComponent
 
     private void DrawCommunityChip(Quest quest)
     {
-        if (questReporter.CountsFor(quest) is not { } counts)
+        // No data is the normal case for most paths; a chip saying so on every quest is noise.
+        ReportStatus status = questReporter.StatusFor(quest);
+        if (status.State == EReportState.Unknown)
             return;
 
         ImGui.SameLine();
-        QstWidgets.Chip(_LF("{0}/{1} worked", counts.Worked, counts.Total),
-            QstTheme.ForRate(counts.Worked, counts.Total));
+        QstWidgets.Chip(ReportUi.Label(status), ReportUi.Color(status));
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_LF("Community reports for this quest's current path: {0} of {1} runs worked.",
-                counts.Worked, counts.Total));
+            ReportUi.Tooltip(ReportUi.Description(status));
     }
 
     private void DrawCharacterRun()

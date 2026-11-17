@@ -20,7 +20,7 @@ public sealed class QuestReporterTests
         {
             _sent.Add(body);
             return Task.FromResult(true);
-        }, () => Task.FromResult<Dictionary<string, Dictionary<string, int[]>>?>(null), () => character,
+        }, () => Task.FromResult<ReportApi.StatusReply?>(null), () => character,
             NullLogger.Instance);
 
     private static Quest MakeQuest(Quest.ESource source = Quest.ESource.DownloadedBundle, uint dataId = 1)
@@ -179,5 +179,291 @@ public sealed class QuestReporterTests
         Assert.False(Reporter(character: null).SendManual(new QuestProgress(MakeQuest()), null, []));
 
         Assert.Empty(_sent);
+    }
+
+    private static readonly DateTimeOffset Now = new(2026, 11, 16, 12, 0, 0, TimeSpan.Zero);
+
+    private static ReportApi.StatusReply Reply(Quest quest, bool problem = false)
+    {
+        long at = Now.ToUnixTimeMilliseconds();
+        return new(at, new()
+        {
+            [quest.Id.ToString()] = new()
+            {
+                [QuestReporter.Fingerprint(quest.Root)] = new(5, problem ? 6 : 5, 5, problem ? 1 : 0,
+                    at, at, at, problem ? at : null, null)
+            }
+        });
+    }
+
+    private QuestReporter StatusReporter(Func<Task<ReportApi.StatusReply?>> fetch,
+        Func<DateTimeOffset>? now = null) => new(_configuration, _ => Task.FromResult(true), fetch,
+        () => "12345", NullLogger.Instance, now: now ?? (() => Now));
+
+    [Fact]
+    public async Task Status_UsesExactCurrentPath()
+    {
+        Quest quest = MakeQuest();
+        QuestReporter reporter = StatusReporter(() => Task.FromResult<ReportApi.StatusReply?>(Reply(quest)));
+        await reporter.RefreshStatusAsync();
+        Assert.Equal(EReportState.Working, reporter.StatusFor(quest).State);
+        Assert.Equal(EReportReason.NoReports, reporter.StatusFor(MakeQuest(dataId: 2)).Reason);
+        Assert.True(reporter.StatusFor(MakeQuest(dataId: 2)).NeedsAttention);
+    }
+
+    [Fact]
+    public async Task EmptyReply_IsKnownUnreported()
+    {
+        QuestReporter reporter = StatusReporter(() => Task.FromResult<ReportApi.StatusReply?>(new(Now.ToUnixTimeMilliseconds(), [])));
+        await reporter.RefreshStatusAsync();
+        Assert.Equal(EReportReason.NoReports, reporter.StatusFor(MakeQuest()).Reason);
+        Assert.True(reporter.StatusFor(MakeQuest()).NeedsAttention);
+    }
+
+    [Fact]
+    public async Task FailedRefresh_DropsOldGreen()
+    {
+        Quest quest = MakeQuest();
+        DateTimeOffset now = Now;
+        int calls = 0;
+        QuestReporter reporter = StatusReporter(() => Task.FromResult(++calls == 1 ? Reply(quest) : null), () => now);
+        await reporter.RefreshStatusAsync();
+        Assert.Equal(EReportState.Working, reporter.StatusFor(quest).State);
+
+        now = now.AddHours(1);
+        await reporter.RefreshStatusAsync();
+        ReportStatus status = reporter.StatusFor(quest);
+        Assert.Equal(EReportReason.Unavailable, status.Reason);
+        Assert.False(status.NeedsAttention);
+        Assert.Null(status.Reports);
+        Assert.Equal(2, calls);
+    }
+
+    [Fact]
+    public async Task FailedRefresh_RetriesAfterMinute()
+    {
+        DateTimeOffset now = Now;
+        int calls = 0;
+        QuestReporter reporter = StatusReporter(() =>
+        {
+            ++calls;
+            return Task.FromResult<ReportApi.StatusReply?>(null);
+        }, () => now);
+        await reporter.RefreshStatusAsync();
+        await reporter.RefreshStatusAsync();
+        Assert.Equal(1, calls);
+        now = now.AddMinutes(1);
+        await reporter.RefreshStatusAsync();
+        Assert.Equal(2, calls);
+    }
+
+    [Fact]
+    public async Task Loading_DoesNotQueueEverything()
+    {
+        var pending = new TaskCompletionSource<ReportApi.StatusReply?>(TaskCreationOptions.RunContinuationsAsynchronously);
+        QuestReporter reporter = StatusReporter(() => pending.Task);
+        Task fetch = reporter.RefreshStatusAsync();
+        ReportStatus status = reporter.StatusFor(MakeQuest());
+        Assert.Equal(EReportReason.Loading, status.Reason);
+        Assert.False(status.NeedsAttention);
+        pending.SetResult(new(Now.ToUnixTimeMilliseconds(), []));
+        await fetch;
+    }
+
+    [Fact]
+    public async Task Refetch_KeepsDataUntilItLands()
+    {
+        Quest quest = MakeQuest();
+        var pending = new TaskCompletionSource<ReportApi.StatusReply?>(TaskCreationOptions.RunContinuationsAsynchronously);
+        int calls = 0;
+        QuestReporter reporter = StatusReporter(() => ++calls == 1 ? Task.FromResult<ReportApi.StatusReply?>(Reply(quest)) : pending.Task);
+        await reporter.RefreshStatusAsync();
+        reporter.Invalidate();
+        Task refetch = reporter.RefreshStatusAsync();
+        Assert.Equal(EReportState.Working, reporter.StatusFor(quest).State);
+        pending.SetResult(null);
+        await refetch;
+        Assert.Equal(EReportReason.Unavailable, reporter.StatusFor(quest).Reason);
+    }
+
+    [Fact]
+    public async Task Disabled_DoesNotFetchOrQueue()
+    {
+        _configuration.Reports.ShowCounts = false;
+        int calls = 0;
+        QuestReporter reporter = StatusReporter(() =>
+        {
+            ++calls;
+            return Task.FromResult<ReportApi.StatusReply?>(Reply(MakeQuest()));
+        });
+        await reporter.RefreshStatusAsync();
+        Assert.Equal(EReportReason.Disabled, reporter.StatusFor(MakeQuest()).Reason);
+        Assert.False(reporter.StatusFor(MakeQuest()).NeedsAttention);
+        Assert.Equal(0, calls);
+    }
+
+    [Fact]
+    public async Task Invalidate_IgnoresOlderResponse()
+    {
+        var first = new TaskCompletionSource<ReportApi.StatusReply?>(TaskCreationOptions.RunContinuationsAsynchronously);
+        var second = new TaskCompletionSource<ReportApi.StatusReply?>(TaskCreationOptions.RunContinuationsAsynchronously);
+        int calls = 0;
+        var started = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        QuestReporter reporter = StatusReporter(() =>
+        {
+            if (Interlocked.Increment(ref calls) == 1)
+            {
+                started.SetResult();
+                return first.Task;
+            }
+            return second.Task;
+        });
+        Task oldFetch = reporter.RefreshStatusAsync();
+        await started.Task;
+        reporter.Invalidate();
+        Task newFetch = reporter.RefreshStatusAsync();
+        second.SetResult(new(Now.ToUnixTimeMilliseconds(), []));
+        await newFetch;
+        first.SetResult(Reply(MakeQuest()));
+        await oldFetch;
+        Assert.Equal(EReportReason.NoReports, reporter.StatusFor(MakeQuest()).Reason);
+    }
+
+    [Fact]
+    public async Task BadReply_IsUnavailable()
+    {
+        QuestReporter reporter = StatusReporter(() => Task.FromResult<ReportApi.StatusReply?>(new(0, [])));
+        await reporter.RefreshStatusAsync();
+        Assert.Equal(EReportReason.Unavailable, reporter.StatusFor(MakeQuest()).Reason);
+        Assert.False(reporter.StatusFor(MakeQuest()).NeedsAttention);
+    }
+
+    [Fact]
+    public async Task Invalidate_FetchesFreshUntilSuccess()
+    {
+        List<bool> requests = [];
+        DateTimeOffset now = Now;
+        var reporter = new QuestReporter(_configuration, _ => Task.FromResult(true), fresh =>
+        {
+            requests.Add(fresh);
+            return Task.FromResult<ReportApi.StatusReply?>(requests.Count == 2 ? null :
+                Reply(MakeQuest()) with { At = now.ToUnixTimeMilliseconds() });
+        }, () => "12345", NullLogger.Instance, now: () => now);
+        await reporter.RefreshStatusAsync();
+        reporter.Invalidate();
+        await reporter.RefreshStatusAsync();
+        now = now.AddMinutes(1);
+        await reporter.RefreshStatusAsync();
+        now = now.AddHours(1);
+        await reporter.RefreshStatusAsync();
+        Assert.Equal([false, true, true, false], requests);
+    }
+
+    [Fact]
+    public async Task Invalidate_DoesNotDowngradeFresh()
+    {
+        List<bool> requests = [];
+        DateTimeOffset now = Now;
+        var reporter = new QuestReporter(_configuration, _ => Task.FromResult(true), fresh =>
+        {
+            requests.Add(fresh);
+            return Task.FromResult<ReportApi.StatusReply?>(Reply(MakeQuest()) with { At = now.ToUnixTimeMilliseconds() });
+        }, () => "12345", NullLogger.Instance, now: () => now);
+        reporter.Invalidate();
+        reporter.Invalidate(fresh: false);
+        await reporter.RefreshStatusAsync();
+        now = now.AddMinutes(16);
+        reporter.Invalidate(fresh: false);
+        await reporter.RefreshStatusAsync();
+        Assert.Equal([true, false], requests);
+    }
+
+    [Theory]
+    [InlineData(null, false)]
+    [InlineData((int)EProblemKind.PlayerStopped, false)]
+    [InlineData((int)EProblemKind.Stuck, true)]
+    public async Task OwnReport_FreshOnlyForProblem(int? kind, bool expected)
+    {
+        bool? freshRequested = null;
+        var reporter = new QuestReporter(_configuration, _ => Task.FromResult(true), fresh =>
+        {
+            freshRequested = fresh;
+            return Task.FromResult<ReportApi.StatusReply?>(Reply(MakeQuest()));
+        }, () => "12345", NullLogger.Instance, now: () => Now);
+        reporter.SendManual(new(MakeQuest()), kind is { } number ? (EProblemKind)number : null, []);
+        await reporter.RefreshStatusAsync();
+        Assert.Equal(expected, freshRequested);
+    }
+
+    [Theory]
+    [InlineData(-1000)]
+    [InlineData(0)]
+    public async Task OldCache_RefetchesOnceFresh(int age)
+    {
+        Quest quest = MakeQuest();
+        DateTimeOffset now = Now;
+        ReportApi.StatusReply newer = Reply(quest, problem: true);
+        ReportApi.StatusReply older = Reply(quest) with { At = newer.At + age };
+        List<bool> requests = [];
+        var reporter = new QuestReporter(_configuration, _ => Task.FromResult(true), fresh =>
+        {
+            requests.Add(fresh);
+            return Task.FromResult<ReportApi.StatusReply?>(requests.Count == 2 ? older : newer);
+        }, () => "12345", NullLogger.Instance, now: () => now);
+        reporter.Invalidate();
+        await reporter.RefreshStatusAsync();
+        now = now.AddMinutes(16);
+        reporter.Invalidate(fresh: false);
+        await reporter.RefreshStatusAsync();
+        Assert.Equal([true, false, true], requests);
+        Assert.Equal(EReportState.Problems, reporter.StatusFor(quest).State);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task OlderFresh_DoesNotRegress(bool failure)
+    {
+        Quest quest = MakeQuest();
+        DateTimeOffset now = Now;
+        ReportApi.StatusReply newer = Reply(quest, problem: true);
+        ReportApi.StatusReply older = Reply(quest) with { At = newer.At - 1000 };
+        List<bool> requests = [];
+        var reporter = new QuestReporter(_configuration, _ => Task.FromResult(true), fresh =>
+        {
+            requests.Add(fresh);
+            return Task.FromResult<ReportApi.StatusReply?>(requests.Count == 1 ? newer :
+                requests.Count == 3 && failure ? null : older);
+        }, () => "12345", NullLogger.Instance, now: () => now);
+        reporter.Invalidate();
+        await reporter.RefreshStatusAsync();
+        now = now.AddMinutes(16);
+        reporter.Invalidate(fresh: false);
+        await reporter.RefreshStatusAsync();
+        Assert.Equal([true, false, true], requests);
+        Assert.Equal(EReportReason.Unavailable, reporter.StatusFor(quest).Reason);
+        Assert.False(reporter.StatusFor(quest).NeedsAttention);
+    }
+
+    [Fact]
+    public async Task FreshAction_IgnoresAheadCache()
+    {
+        Quest quest = MakeQuest();
+        DateTimeOffset now = Now;
+        ReportApi.StatusReply current = Reply(quest, problem: true);
+        ReportApi.StatusReply aheadCache = Reply(quest) with { At = current.At + 60000 };
+        List<bool> requests = [];
+        var reporter = new QuestReporter(_configuration, _ => Task.FromResult(true), fresh =>
+        {
+            requests.Add(fresh);
+            return Task.FromResult<ReportApi.StatusReply?>(fresh ? current : aheadCache);
+        }, () => "12345", NullLogger.Instance, now: () => now);
+        reporter.Invalidate();
+        await reporter.RefreshStatusAsync();
+        now = now.AddMinutes(1);
+        reporter.Invalidate(fresh: false);
+        await reporter.RefreshStatusAsync();
+        Assert.Equal([true, true], requests);
+        Assert.Equal(EReportState.Problems, reporter.StatusFor(quest).State);
     }
 }

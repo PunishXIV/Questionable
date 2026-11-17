@@ -16,6 +16,68 @@ public sealed class DailiesPlanTests
             accepted ? sequence : (byte)0, zone, new Vector3(x, 0, 0));
 
     [Fact]
+    public void LowLevelStory_DoesNotStopDailies()
+    {
+        var plan = new DailiesPlan([EAlliedSociety.Ixal]);
+        var story = Daily(1) with { Daily = false, Ready = false, BlockReason = "No suitable job" };
+        var daily = Daily(2);
+
+        Assert.Equal(daily, plan.Choose([story, daily], 12, 154, Vector3.Zero));
+        Assert.Single(plan.Blocked);
+        Assert.Null(plan.StopReason);
+        Assert.Equal(0, plan.Unfinished);
+    }
+
+    [Fact]
+    public void Blocked_DoesNotSpendAllowance()
+    {
+        var plan = new DailiesPlan([EAlliedSociety.Ixal]);
+        var blocked = Daily(1) with { BlockReason = "disabled" };
+        var supported = Daily(2);
+
+        Assert.Equal(supported, plan.Choose([blocked, supported], 1, 154, Vector3.Zero));
+        Assert.Equal("disabled", plan.Blocked[blocked.Id]);
+        Assert.Empty(plan.Skipped);
+        Assert.Equal(0, plan.Unfinished);
+    }
+
+    [Fact]
+    public void Blocked_EmptyPlanStillExplains()
+    {
+        var plan = new DailiesPlan([EAlliedSociety.Ixal]);
+        var blocked = Daily(1) with { BlockReason = "missing path" };
+
+        Assert.Null(plan.Choose([blocked], 12, 154, Vector3.Zero));
+        Assert.Single(plan.Blocked);
+        Assert.Equal(0, plan.Unfinished);
+        Assert.Null(plan.StopReason);
+    }
+
+    [Fact]
+    public void NoOffer_IsNotAReportedFailure()
+    {
+        var plan = new DailiesPlan([EAlliedSociety.Ixal]);
+        Assert.Null(plan.Choose([Daily(1) with { Ready = false }], 12, 154, Vector3.Zero));
+        Assert.Empty(plan.Blocked);
+        Assert.Empty(plan.Skipped);
+        Assert.Equal(0, plan.Unfinished);
+    }
+
+    [Fact]
+    public void FailedAccept_IsNotUnfinished()
+    {
+        var plan = new DailiesPlan([EAlliedSociety.Ixal]);
+        var daily = Daily(1);
+        plan.Choose([daily], 12, 154, Vector3.Zero);
+        Assert.Equal(EDailiesFailure.Retry, plan.Fail(daily.Id, "accept failed"));
+        Assert.Equal(EDailiesFailure.Skip, plan.Fail(daily.Id, "accept failed"));
+        Assert.Null(plan.Choose([daily], 12, 154, Vector3.Zero));
+        Assert.Single(plan.Blocked);
+        Assert.Empty(plan.Skipped);
+        Assert.Equal(0, plan.Unfinished);
+    }
+
+    [Fact]
     public void Travel_DoesNotChangeAllowances()
     {
         var entries = new[] { Daily(1, zone: 155), Daily(2, EAlliedSociety.Kobolds, zone: 180) };

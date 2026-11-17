@@ -725,7 +725,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             }
 
             ImGui.SameLine();
-            ImGuiComponents.HelpMarker(_LF("Downloads how often each quest's path worked for other players, shown from {0} reports. Sends nothing about you.", QuestReporter.MinReports));
+            ImGuiComponents.HelpMarker(_L("Downloads recent reports and admin verification for quest paths. Green means five successful character reports or admin verification within 30 days; orange needs more or newer reports, red has unresolved problems, and grey has no reports or unavailable data. Sends nothing about you."));
 
             if (ImGui.Button(_L("Check for path updates now")))
                 _pathDataUpdater.CheckForUpdatesManually();

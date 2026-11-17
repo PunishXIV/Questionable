@@ -14,6 +14,7 @@ internal sealed class RedoComponent
     QuestRegistry questRegistry,
     QuestFunctions questFunctions,
     Configuration configuration,
+    QuestReporter questReporter,
     UiUtils uiUtils)
 {
     private bool _hideDone;
@@ -61,10 +62,10 @@ internal sealed class RedoComponent
                 _hideDone = !_hideDone;
             }
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Hide chapters that have been completely checked"));
+                ImGui.SetTooltip(_L("Hide chapters whose paths all have current working reports or admin verification"));
         }
         ImGui.SameLine();
-        ImGuiComponents.HelpMarker(_L("Quests marked with orange need to be reported as working or not via the LastChecked system. Ask Aly for more details!"),
+        ImGuiComponents.HelpMarker(_L("Red has unresolved problems; orange needs more or newer reports; green is recently reported or verified working; grey has no reports or unavailable data. Hover a chapter for details."),
                                    FontAwesomeIcon.InfoCircle, QstTheme.Accent);
         ImGui.SameLine();
         ImGui.Text(_L("Active:"));
@@ -94,39 +95,38 @@ internal sealed class RedoComponent
                 continue;
 
             bool showAnyway = false;
-            var uncheckedQuests = redoCache.Quests.Select(q =>
+            List<(string Name, ReportStatus Status)> reports = [];
+            foreach (var q in redoCache.Quests)
             {
                 var questId = new QuestId((ushort)q.RowId);
                 bool unobtainable = questData.TryGetQuestInfo(questId, out var info) && questFunctions.IsQuestUnobtainable(questId);
                 questRegistry.TryGetQuest(questId, out Domain.Quest? quest);
-                if (info != null && quest != null && (quest.Root.LastChecked.Date == null ||
-                        (quest.Root.LastChecked.Date != null &&
-                         quest.Root.LastChecked.Since(DateTime.Now)!.Value.TotalDays > 60)) &&
-                        !unobtainable)
-                    return quest;
-                if (!unobtainable && info != null && quest == null)
+                if (unobtainable || info == null)
+                    continue;
+                if (quest is not { Root.Disabled: false })
                     showAnyway = true;
-                return null;
-            }).OfType<Domain.Quest>().ToArray();
-            if (uncheckedQuests.Length == 0 && _hideDone && !showAnyway)
+                else
+                    reports.Add((info.Name, questReporter.StatusFor(quest)));
+            }
+            ReportStatus group = ReportStatus.Worst(reports.Select(x => x.Status));
+            if ((reports.Count == 0 || group.State == EReportState.Working) && _hideDone && !showAnyway)
                 continue;
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
             ImRaii.ColorDisposable? color = null;
-            if (uncheckedQuests.Length > 0)
-                color = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent);
+            if (AlliedSocietyComponent.HeaderColor(true, configuration.Reports.ShowCounts, showAnyway, group.State,
+                    incomplete: false) is { } chapterColor)
+                color = ImRaii.PushColor(ImGuiCol.Text, chapterColor);
             bool open;
             using (journalTable.WideName())
                 open = ImGui.TreeNodeEx($"{chapter.RowId}", ImGuiTreeNodeFlags.SpanFullWidth, $"{categoryName}{chapterName}");
             color?.Dispose();
-            if (uncheckedQuests.Length > 0 && uncheckedQuests[0] != null && ImGui.IsItemHovered())
+            if (ImGui.IsItemHovered() && (reports.Count > 0 || showAnyway))
             {
-                using var _ = ImRaii.Tooltip();
-                var index = redoUtil.GetChapter(uncheckedQuests[0]!.Id.Value);
-                ImGui.Text(_LF("({0}) Unchecked: #{1}{2} ({3}/{4})",
-                    chapter.RowId, index.SimplifiedIndex, (uncheckedQuests.Length > 1 ? "+" : ""), uncheckedQuests.Length, redoCache.Quests.Count));
-                using var __ = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Accent);
-                ImGui.Text(string.Join('\n', uncheckedQuests.Select(q => $"{q?.Info.SimplifiedName} ({q?.Id})")));
+                string details = ReportUi.GroupDescription(reports);
+                if (showAnyway)
+                    details += "\n" + _L("This chapter also has missing or disabled paths.");
+                ReportUi.Tooltip(details);
             }
 
             ShowGroupContextMenu($"DrawRedoChapter{chapter.RowId}",
