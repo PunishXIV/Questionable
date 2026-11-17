@@ -1,4 +1,4 @@
-﻿using Dalamud.Game.Gui.Toast;
+using Dalamud.Game.Gui.Toast;
 using Dalamud.Game.Text.SeStringHandling;
 using I18N.DotNet;
 using Lumina.Excel.Sheets;
@@ -11,7 +11,6 @@ internal sealed class DalamudInitializer : IDisposable
     private readonly ConfigurationLocalization _configurationLocalization;
     private readonly ConfigWindow _configWindow;
     private readonly IFramework _framework;
-    private readonly HighlightObject _highlightObject;
     private readonly ILogger<DalamudInitializer> _logger;
     private readonly MovementController _movementController;
     private readonly OneTimeSetupWindow _oneTimeSetupWindow;
@@ -44,7 +43,6 @@ internal sealed class DalamudInitializer : IDisposable
         IChatGui chatGui,
         IToastGui toastGui,
         Configuration configuration,
-        HighlightObject highlightObject,
         PartyWatchDog partyWatchDog,
         ILogger<DalamudInitializer> logger)
     {
@@ -59,7 +57,6 @@ internal sealed class DalamudInitializer : IDisposable
         _chatGui = chatGui;
         _toastGui = toastGui;
         _configuration = configuration;
-        _highlightObject = highlightObject;
         _partyWatchDog = partyWatchDog;
         _logger = logger;
         _configurationLocalization = new(configuration, SetupI18N);

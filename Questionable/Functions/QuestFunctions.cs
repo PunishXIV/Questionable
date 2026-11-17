@@ -1104,15 +1104,6 @@ internal sealed class QuestFunctions
         return false;
     }
 
-    public bool IsClassJobUnlocked(Job classJob)
-    {
-        (ushort questId, int expArrayIndex) = catalog.GetClassJobUnlock(classJob);
-        if (questId != 0)
-            return IsQuestComplete(new QuestId(questId));
-
-        IReadOnlyList<short> levels = state.ClassJobLevels;
-        return expArrayIndex >= 0 && expArrayIndex < levels.Count && levels[expArrayIndex] > 0;
-    }
 
     public bool HasClassJobAtQuestLevel(ElementId questId)
     {

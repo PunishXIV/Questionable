@@ -265,7 +265,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
                 _logger.LogDebug("Checking if {ActualAnswer} == {ExpectedAnswer}",
                     answers[i], excelAnswer);
                 if (DialogueReferenceResolver.IsMatch(answers[i], excelAnswer))
-                    return UseAnswer(quest, actualPrompt, answers[i], i);
+                    return UseAnswer(actualPrompt, answers[i], i);
             }
         }
 
@@ -501,7 +501,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
         return true;
     }
 
-    private int? UseAnswer(Quest? quest, string? actualPrompt, string? answer, int index)
+    private int? UseAnswer(string? actualPrompt, string? answer, int index)
     {
         string message = $"Question: '{actualPrompt}', {(_configuration.General.DontSkipCutscenes ? "scripted:" : "answering")} '{answer}'";
         if (!_configuration.General.DontShowAnswerSuggestions)

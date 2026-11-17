@@ -11,11 +11,10 @@ internal sealed class UiUtils(
     public unsafe (Vector4 Color, FontAwesomeIcon Icon, string Status) GetQuestStyle(ElementId elementId)
     {
         string lockedReason = string.Empty;
-        IQuestInfo? info = null;
         questFunctions.prereqCache.TryGetValue(elementId.Value, out var prerequisites);
         if (questFunctions.IsQuestLocked(elementId) is (bool isLocked, string[] reasons) && isLocked)
             lockedReason = string.Join("\n  ", reasons);
-        else if (catalog.TryGetQuestInfo(elementId, out info) && info is IQuestInfo questInfo &&
+        else if (catalog.TryGetQuestInfo(elementId, out IQuestInfo? questInfo) &&
                 questInfo.PreviousQuestJoin is EQuestJoin.All)
         {
             List<string> blockers = [];

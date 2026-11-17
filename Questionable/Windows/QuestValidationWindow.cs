@@ -5,7 +5,6 @@ namespace Questionable.Windows;
 internal sealed class QuestValidationWindow : LWindow
 {
     private readonly IDalamudPluginInterface _pluginInterface;
-    private readonly QuestController _questController;
     private readonly QuestData _questData;
     private readonly QuestValidator _questValidator;
     private readonly QuestTooltipComponent _questTooltipComponent;
@@ -16,7 +15,6 @@ internal sealed class QuestValidationWindow : LWindow
     public QuestValidationWindow(
         QuestValidator questValidator,
         QuestData questData,
-        QuestController questController,
         QuestTooltipComponent questTooltipComponent,
         RedoUtil redoUtil,
         PathEditorWindow pathEditorWindow,
@@ -25,7 +23,6 @@ internal sealed class QuestValidationWindow : LWindow
     {
         _questValidator = questValidator;
         _questData = questData;
-        _questController = questController;
         _pluginInterface = pluginInterface;
         _questTooltipComponent = questTooltipComponent;
         _redoUtil = redoUtil;

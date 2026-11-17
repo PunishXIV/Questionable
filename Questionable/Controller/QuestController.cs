@@ -644,7 +644,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 return;
             }
 
-            if (IsWaitingToRun(questToRun))
+            if (IsWaitingToRun())
                 return;
 
             if (questToRun.Sequence != choice.Sequence)
@@ -862,7 +862,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         StopFinished("No quest active");
     }
 
-    private bool IsWaitingToRun(QuestProgress questToRun)
+    private bool IsWaitingToRun()
     {
         if (_gameFunctions.IsOccupied())
         {

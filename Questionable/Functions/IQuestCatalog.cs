@@ -1,5 +1,4 @@
 using ECommons.ExcelServices;
-using Lumina.Excel.Sheets;
 using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Functions;
@@ -16,12 +15,10 @@ internal interface IQuestCatalog
     bool IsKnownQuest(ElementId questId);
     IReadOnlyList<(uint CfcId, ElementId QuestId, int Sequence)> LowPriorityCfcQuests { get; }
     IReadOnlyList<QuestInfo> GetKnownClassJobQuests(Job classJob);
-
-    (ushort UnlockQuestId, int ExpArrayIndex) GetClassJobUnlock(Job classJob);
 }
 
 [RegisterSingleton<IQuestCatalog, QuestCatalog>]
-internal sealed class QuestCatalog(QuestData questData, QuestRegistry questRegistry, IDataManager dataManager) : IQuestCatalog
+internal sealed class QuestCatalog(QuestData questData, QuestRegistry questRegistry) : IQuestCatalog
 {
     public bool TryGetQuestInfo(ElementId elementId, [NotNullWhen(true)] out IQuestInfo? questInfo) =>
         questData.TryGetQuestInfo(elementId, out questInfo);
@@ -38,10 +35,4 @@ internal sealed class QuestCatalog(QuestData questData, QuestRegistry questRegis
         questRegistry.LowPriorityCfcQuests;
 
     public IReadOnlyList<QuestInfo> GetKnownClassJobQuests(Job classJob) => questRegistry.GetKnownClassJobQuests(classJob);
-
-    public (ushort UnlockQuestId, int ExpArrayIndex) GetClassJobUnlock(Job classJob)
-    {
-        ClassJob row = dataManager.GetExcelSheet<ClassJob>().GetRow((uint)classJob);
-        return ((ushort)row.UnlockQuest.RowId, row.ExpArrayIndex);
-    }
 }

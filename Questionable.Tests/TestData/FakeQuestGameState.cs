@@ -120,7 +120,6 @@ internal sealed class FakeQuestCatalog : IQuestCatalog
     public bool IsKnownQuest(ElementId questId) => _quests.ContainsKey(questId);
     public IReadOnlyList<(uint CfcId, ElementId QuestId, int Sequence)> LowPriorityCfcQuests => [];
     public IReadOnlyList<QuestInfo> GetKnownClassJobQuests(Job classJob) => [];
-    public (ushort UnlockQuestId, int ExpArrayIndex) GetClassJobUnlock(Job classJob) => (0, 0);
 }
 
 // QuestInfo is normally built from a Lumina row; tests fill its backing fields directly.

@@ -7,9 +7,9 @@ export const DASHBOARD = `<!doctype html>
 <title>QST Path Status</title>
 <style>
   :root { color-scheme: light dark; --bg: #f6f6f4; --card: #fff; --text: #1d1d1b; --muted: #6b6b66; --line: #e2e2dc;
-    --red: #c2410c; --amber: #b45309; --green: #15803d; }
+    --red: #dc2626; --amber: #b45309; --green: #15803d; }
   @media (prefers-color-scheme: dark) { :root { --bg: #161615; --card: #20201e; --text: #ecece8; --muted: #9a9a93;
-    --line: #34342f; --red: #fb923c; --amber: #fbbf24; --green: #4ade80; } }
+    --line: #34342f; --red: #f87171; --amber: #fbbf24; --green: #4ade80; } }
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, sans-serif; }
   main { max-width: 980px; margin: 0 auto; padding: 24px 16px 48px; }
