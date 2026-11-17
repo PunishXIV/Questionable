@@ -168,7 +168,7 @@ internal sealed class QuestFunctions
             // if we have multiple quests to turn in for an allied society, try and complete all of them
             (ElementId firstTrackedQuest, byte firstTrackedSequence) = trackedQuests[0];
             EAlliedSociety firstTrackedAlliedSociety =
-                alliedSocietyData.GetCommonTurnIn(firstTrackedQuest);
+                CommonTurnIn(firstTrackedQuest);
             if (firstTrackedAlliedSociety != EAlliedSociety.None)
             {
                 // The to-do list only tracks a few quests; the society's other accepted dailies count too.
@@ -176,7 +176,7 @@ internal sealed class QuestFunctions
                     .Concat(state.NormalQuests.Where(x => !x.IsHidden)
                         .Select(x => (Quest: (ElementId)new QuestId(x.QuestId), x.Sequence)))
                     .Where(quest => quest.Quest != firstTrackedQuest && catalog.IsKnownQuest(quest.Quest) &&
-                                    alliedSocietyData.GetCommonTurnIn(quest.Quest) == firstTrackedAlliedSociety)
+                                    CommonTurnIn(quest.Quest) == firstTrackedAlliedSociety)
                     .DistinctBy(x => x.Quest)];
                 if (sameSocietyQuests.Count > 0)
                 {
@@ -186,7 +186,6 @@ internal sealed class QuestFunctions
 
                     if (firstTrackedSequence == 255)
                     {
-                        // only quests that aren't ready to be turned in, the ones in this zone first
                         List<(ElementId Quest, byte Sequence)> unfinished = [.. sameSocietyQuests.Where(x =>
                             x.Sequence != 255 || (catalog.TryGetQuest(x.Quest, out Quest? quest) && !IsReadyToCompleteQuest(quest)))];
                         if (unfinished.Count > 0)
@@ -219,7 +218,6 @@ internal sealed class QuestFunctions
                                 return new(talkToNormalNpcs.Value.Item1, talkToNormalNpcs.Value.Item2, msqQuest.State);
                         }
 
-                        // Finish what's in this zone before travelling for another of the society's dailies.
                         (ElementId questId, byte sequence) = PreferThisZone([.. sameSocietyQuests.Where(x => x.Sequence < 255)]);
                         return new(questId, sequence, msqQuest.State);
                     }
@@ -385,7 +383,6 @@ internal sealed class QuestFunctions
         if (!alliedSocietyData.Mounts.TryGetValue(state.CurrentMountId, out AlliedSocietyMount? mount))
             return false;
 
-        // Keep the mount's quest through its turn-in cleanup, but do not attach an unrelated mount to it.
         return quest.AllSteps().Any(x => x.Sequence.Sequence > 0 && x.Sequence.Sequence < sequence &&
                    x.Step.DataId is { } dataId && mount.IssuerDataIds.Contains(dataId)) &&
                Controller.Steps.QuestCleanUp.UsesSocietyMount(quest);
@@ -429,7 +426,6 @@ internal sealed class QuestFunctions
     // items left over from an abandoned attempt don't count for the quest, so neither can tell.
     public bool HasCraftMaterials(uint itemId) => state.HasCraftMaterials(itemId);
 
-    // This zone first, else the zone with the most of them, so each zone is finished before moving on.
     private (ElementId Quest, byte Sequence) PreferThisZone(List<(ElementId Quest, byte Sequence)> quests)
     {
         List<((ElementId Quest, byte Sequence) Entry, uint? Zone)> zones =
@@ -443,7 +439,6 @@ internal sealed class QuestFunctions
         return zones.GroupBy(x => x.Zone).OrderByDescending(x => x.Count()).First().First().Entry;
     }
 
-    // Class switches carry no place of their own, so the stage happens where the first step with a position is.
     private uint? StageZone(ElementId questId, byte sequence)
     {
         if (!catalog.TryGetQuest(questId, out Quest? quest) || quest.FindSequence(sequence) is not { } stage)
@@ -457,6 +452,9 @@ internal sealed class QuestFunctions
 
     public List<ElementId> OpenQuests => _openQuests.Get(GetOpenQuests);
 
+    private EAlliedSociety CommonTurnIn(ElementId id) =>
+        alliedSocietyData.GetCommonTurnIn(catalog.TryGetQuestInfo(id, out IQuestInfo? info) ? info : null);
+
     private List<ElementId> GetOpenQuests()
     {
         List<(ElementId QuestId, byte Sequence)> openQuests = [];
@@ -467,7 +465,7 @@ internal sealed class QuestFunctions
 
             QuestId questId = new(normalQuestId);
 
-            if (alliedSocietyData.GetCommonTurnIn(questId) != EAlliedSociety.None)
+            if (CommonTurnIn(questId) != EAlliedSociety.None)
                 continue;
 
             if (catalog.TryGetQuest(questId, out Quest? quest) &&
@@ -556,7 +554,6 @@ internal sealed class QuestFunctions
             .ToList();
     }
 
-    // Kept until done, so walking into the story quest's zone doesn't hand the run back to it halfway.
     private (ElementId Msq, ElementId Quest)? _classQuestFirst;
 
     private ElementId? GetClassQuestBeforeMsq(ElementId msq)

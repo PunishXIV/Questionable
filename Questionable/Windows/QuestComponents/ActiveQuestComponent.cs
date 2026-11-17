@@ -139,7 +139,6 @@ internal sealed partial class ActiveQuestComponent
 
     private void DrawCommunityChip(Quest quest)
     {
-        // No data is the normal case for most paths; a chip saying so on every quest is noise.
         ReportStatus status = questReporter.StatusFor(quest);
         if (status.State == EReportState.Unknown)
             return;

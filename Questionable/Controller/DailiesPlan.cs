@@ -1,5 +1,3 @@
-// Authored with LLM assistance, changes must be reviewed and owned by a human.
-// Initial version reviewed and owned by @Kagekazu
 namespace Questionable.Controller;
 
 internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies)
@@ -39,13 +37,11 @@ internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies)
                 Blocked.Remove(entry.Id);
         }
 
-        // Mounts and non-interruptible paths must reach their safe end before even a rank-up detour.
         Entry? held = available.FirstOrDefault(x => x.Id == current && x.Accepted &&
             x.KeepCurrent && x.BlockReason == null);
         if (held != null)
             return Pick(held);
 
-        // Finish a rank-up already underway; ordinary dailies may change at sequence boundaries.
         Entry? story = available.FirstOrDefault(x => !x.Daily && x.Accepted && x.Id == current);
         story ??= Travel(available.Where(x => !x.Daily && (x.Accepted || x.Ready)), territory, position).FirstOrDefault();
         if (story != null)
@@ -59,7 +55,6 @@ internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies)
             return Pick(story);
         }
 
-        // Preference order allocates allowances; route order never changes who receives them.
         List<QuestId> planned = DailiesController.Plan(societies,
             society => available.Where(x => x.Society == society && x.Daily && !x.Accepted && x.Ready && x.BlockReason == null)
                 .Select(x => (x.Id, x.Rank)), _ => true, allowances);
@@ -84,7 +79,6 @@ internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies)
         if (accept != null)
             return Pick(accept);
 
-        // Finish work before the shared turn-in, grouping stages in the same zone.
         List<Entry> unfinished = [.. batch.Where(x => x.Sequence != 255)];
         List<Entry> stages = unfinished.Count > 0 ? unfinished : batch;
         uint zone = stages.Any(x => x.Territory == territory)

@@ -20,7 +20,6 @@ internal interface IQuestGameState : IPrerequisiteState
     IReadOnlyList<ushort> TrackedQuestIds { get; }
     IReadOnlyList<(ushort QuestId, byte Sequence, bool IsHidden)> NormalQuests { get; }
     bool IsReadyToTurnIn(string questName);
-    // Whether the bags hold the materials for one craft of this item.
     bool HasCraftMaterials(uint itemId);
 
     short CurrentLevel { get; }

@@ -160,8 +160,6 @@ internal sealed class EventInfoComponent
     internal static IEnumerable<ElementId> GetActiveQuests(IEnumerable<EventQuest> events, DateTime now,
         Func<ElementId, bool> isAccepted, Func<ElementId, bool> isComplete, Func<ElementId, bool> isUnobtainable)
     {
-        // This is an automation queue, independent of whether the UI shows completed quests.
-        // Keep later prerequisites even when they cannot be accepted until the preceding quest finishes.
         return events
             .Where(x =>
                 (x.StartsAtUtc == null || x.StartsAtUtc < now) &&

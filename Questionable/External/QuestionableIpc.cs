@@ -167,7 +167,6 @@ internal sealed class QuestionableIpc : IDisposable
         if (ElementId.TryFromString(questId, out ElementId? elementId) && elementId != null &&
             _questRegistry.TryGetQuest(elementId, out Quest? quest))
         {
-            // An unavailable single quest must not activate the normal journal/MSQ fallback.
             if (single && !_questFunctions.IsQuestAccepted(elementId) &&
                 !_questFunctions.IsReadyToAcceptQuest(elementId))
             {

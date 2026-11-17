@@ -22,6 +22,10 @@ public sealed class QuestFunctionsTests
         _functions = new QuestFunctions(_catalog, _state, new AlliedSocietyData(), new Configuration(), Substitute.For<IChatGui>());
     }
 
+    private static QuestInfo Daily(ushort id, EAlliedSociety society) => TestQuestInfo.Create(id)
+        .With(nameof(QuestInfo.AlliedSociety), society)
+        .With(nameof(QuestInfo.IsRepeatable), true);
+
     private string[] LockReasons(ushort questId) => _functions.IsQuestLocked(new QuestId(questId)).reasons!;
 
     [Fact]
@@ -246,8 +250,8 @@ public sealed class QuestFunctionsTests
     [InlineData(999u, 1222)]
     public void SocietyDailies_ThisZoneFirst(uint territory, ushort expected)
     {
-        _catalog.Add(TestQuestInfo.Create(1222), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 1, null, 146)));
-        _catalog.Add(TestQuestInfo.Create(1223), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 2, null, 147)));
+        _catalog.Add(Daily(1222, EAlliedSociety.Amaljaa), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 1, null, 146)));
+        _catalog.Add(Daily(1223, EAlliedSociety.Amaljaa), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 2, null, 147)));
         _state.Guide = new(EScenarioGuideState.Ready, 0);
         _state.TrackedQuestIds = [1222, 1223];
         _state.Sequences[1222] = 1;
@@ -265,12 +269,12 @@ public sealed class QuestFunctionsTests
     [InlineData(999u, 1223)]
     public void SocietyDailies_UntrackedCount(uint territory, ushort expected)
     {
-        _catalog.Add(TestQuestInfo.Create(1222), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 1, new(1, 0, 0), 146)));
-        _catalog.Add(TestQuestInfo.Create(1223), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 2, new(1, 0, 0), 147)));
-        _catalog.Add(TestQuestInfo.Create(1224), QuestTestData.Seq(1,
+        _catalog.Add(Daily(1222, EAlliedSociety.Amaljaa), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 1, new(1, 0, 0), 146)));
+        _catalog.Add(Daily(1223, EAlliedSociety.Amaljaa), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 2, new(1, 0, 0), 147)));
+        _catalog.Add(Daily(1224, EAlliedSociety.Amaljaa), QuestTestData.Seq(1,
             new QuestStep(EInteractionType.SwitchClass, null, null, 400),
             new QuestStep(EInteractionType.Interact, 3, new(1, 0, 0), 148)));
-        _catalog.Add(TestQuestInfo.Create(1225), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 4, new(1, 0, 0), 147)));
+        _catalog.Add(Daily(1225, EAlliedSociety.Amaljaa), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 4, new(1, 0, 0), 147)));
         _state.Guide = new(EScenarioGuideState.Ready, 0);
         _state.TrackedQuestIds = [1222];
         _state.NormalQuests = [(1222, 1, false), (1223, 1, false), (1224, 1, false), (1225, 1, false)];
@@ -287,10 +291,10 @@ public sealed class QuestFunctionsTests
     [InlineData(155u, 1518)]
     public void SocietyNpcTalk_OnlyInThisZone(uint territory, ushort expected)
     {
-        _catalog.Add(TestQuestInfo.Create(1518), QuestTestData.Seq(1,
+        _catalog.Add(Daily(1518, EAlliedSociety.Ixal), QuestTestData.Seq(1,
             new QuestStep(EInteractionType.WalkTo, null, new(1, 0, 0), 155),
             new QuestStep(EInteractionType.Interact, 1009219, new(2, 0, 0), 155)));
-        _catalog.Add(TestQuestInfo.Create(1503), QuestTestData.Seq(1,
+        _catalog.Add(Daily(1503, EAlliedSociety.Ixal), QuestTestData.Seq(1,
             new QuestStep(EInteractionType.Combat, null, new(3, 0, 0), 154)));
         _state.Guide = new(EScenarioGuideState.Ready, 0);
         _state.TrackedQuestIds = [1518, 1503];
@@ -305,8 +309,8 @@ public sealed class QuestFunctionsTests
     [Fact]
     public void SocietyCraft_BeforeOtherDailies()
     {
-        _catalog.Add(TestQuestInfo.Create(1222), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 1, new(1, 0, 0), 146)));
-        _catalog.Add(TestQuestInfo.Create(1223), QuestTestData.Seq(255,
+        _catalog.Add(Daily(1222, EAlliedSociety.Amaljaa), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 1, new(1, 0, 0), 146)));
+        _catalog.Add(Daily(1223, EAlliedSociety.Amaljaa), QuestTestData.Seq(255,
             new QuestStep(EInteractionType.Craft, null, null, 147) { ItemId = 8105, ItemCount = 4 },
             new QuestStep(EInteractionType.CompleteQuest, 2, new(2, 0, 0), 147)));
         _state.Guide = new(EScenarioGuideState.Ready, 0);
@@ -322,8 +326,8 @@ public sealed class QuestFunctionsTests
     [Fact]
     public void SocietyCraft_WaitsOnlyWithMaterials()
     {
-        _catalog.Add(TestQuestInfo.Create(1222), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 1, new(1, 0, 0), 146)));
-        _catalog.Add(TestQuestInfo.Create(1223), QuestTestData.Seq(255,
+        _catalog.Add(Daily(1222, EAlliedSociety.Amaljaa), QuestTestData.Seq(1, new QuestStep(EInteractionType.Interact, 1, new(1, 0, 0), 146)));
+        _catalog.Add(Daily(1223, EAlliedSociety.Amaljaa), QuestTestData.Seq(255,
             new QuestStep(EInteractionType.Craft, null, null, 147) { ItemId = 8106, ItemCount = 4, ItemQuality = EItemQuality.HQ },
             new QuestStep(EInteractionType.CompleteQuest, 2, new(2, 0, 0), 147)));
         _state.Guide = new(EScenarioGuideState.Ready, 0);

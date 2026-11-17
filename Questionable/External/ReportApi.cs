@@ -150,7 +150,6 @@ internal sealed class ReportApi : IDisposable
         }
     }
 
-    // A bad reply is unusable; a bad row is dropped so it can't hide every other quest's status.
     internal static StatusReply? CleanStatus(StatusReply? reply, DateTimeOffset? now = null)
     {
         long latest = (now ?? DateTimeOffset.UtcNow).AddMinutes(5).ToUnixTimeMilliseconds();

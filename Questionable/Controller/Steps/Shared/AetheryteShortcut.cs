@@ -181,7 +181,6 @@ internal static class AetheryteShortcut
         public override string ToString() => "Wait(after teleport)";
     }
 
-    // Executors are transient, so the teleport executor leaves its result here for the wait that follows it.
     internal sealed class WaitAfterTeleportExecutor : DelayedTaskExecutor<WaitAfterTeleport>
     {
         internal static bool LastTeleported { get; set; }

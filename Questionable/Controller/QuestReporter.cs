@@ -234,7 +234,6 @@ internal sealed class QuestReporter
         {
             if (await _send(body).ConfigureAwait(false))
             {
-                // A success only moves green after five; waiting for the hourly refresh is fine.
                 if (body.Outcome == "problem" && body.Kind != "playerStopped")
                     Invalidate();
                 _logger.LogInformation("Sent quest report for {Quest}: {Outcome} {Kind}", body.Quest, body.Outcome, body.Kind);
@@ -275,7 +274,6 @@ internal sealed class QuestReporter
     {
         lock (_statusLock)
         {
-            // Keep showing the current data until the refetch lands; a failed refetch still clears it.
             ++_generation;
             _statusTask = null;
             _statusCheckedAt = DateTimeOffset.MinValue;
@@ -299,7 +297,6 @@ internal sealed class QuestReporter
                 return Task.CompletedTask;
 
             int generation = _generation;
-            // Cover the shared cache lifetime and clock skew after an admin action or new problem.
             bool fresh = _freshStatus || _now() < _freshUntil;
             long newest = _statusAt;
             long freshAt = _freshAt;
@@ -315,7 +312,6 @@ internal sealed class QuestReporter
                     valid = status != null;
                     if (valid && !fresh && (status!.At < newest || status.At <= freshAt))
                     {
-                        // A shared cache can predate our last admin action or problem report.
                         needsFresh = true;
                         status = ReportApi.CleanStatus(await _fetchStatus(true).ConfigureAwait(false), _now());
                         valid = status != null;
@@ -330,7 +326,6 @@ internal sealed class QuestReporter
 
                 lock (_statusLock)
                 {
-                    // A response started before a report/admin action must not overwrite its refresh.
                     if (generation != _generation)
                         return;
                     _status = valid ? status : null;

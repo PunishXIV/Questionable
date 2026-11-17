@@ -164,7 +164,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (_dailies == null || _dailyMissingSince != null)
             return false;
 
-        // A route decision is safe at a sequence boundary, not between movement/interact steps of one sequence.
         bool hold = StartedQuest is { Step: > 0 } current &&
                     SelectionState.GetSequence(current.Quest.Id) == current.Sequence &&
                     (_questFunctions.IsQuestAccepted(current.Quest.Id) || current.Sequence == 0);
@@ -214,7 +213,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             StartedQuest = NextQuest = null;
             _tracker.DisplacedQuest = null;
         }
-        // Resume on the next framework tick, never recursively inside a failed factory or executor.
         return true;
     }
 
@@ -450,7 +448,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     public void Update()
     {
-        // End the scoped run even if a provider is still settling or the normal update is paused.
         if (_dailies != null && !_clientState.IsLoggedIn)
             Stop("Logged out during dailies");
         // Success can replace the outcome task before its next update; observe it independently.
@@ -1469,7 +1466,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (!_priorityManager.HasPendingAcceptOnly)
             return false;
 
-        // A disabled society path is never picked; left queued it would hold off between-quest detours.
         foreach (Quest quest in _priorityManager.AcceptOnlyQuests.Where(x => !QuestFunctions.CanQueueSociety(x)).ToList())
         {
             _logger.LogInformation("Accept-all: {QuestId} has a disabled path, dropping it", quest.Id);
@@ -1480,7 +1476,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             _clientState.TerritoryType);
         if (next == null)
         {
-            // Out of allowances the rest can't be accepted today; drop them so they don't come back tomorrow.
             foreach (Quest quest in _priorityManager.AcceptOnlyQuests.Where(x => _questFunctions.IsOutOfSocietyAllowances(x.Id)).ToList())
             {
                 _logger.LogInformation("Accept-all: no society allowances left, dropping {QuestId}", quest.Id);

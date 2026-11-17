@@ -15,7 +15,6 @@ internal sealed class QuestSelectionController(Configuration configuration)
         slots.Simulated == null && slots.Next == null &&
         (automation == EAutomationType.Automatic || slots.Started == null);
 
-    // Highest society rank first, so the daily limit isn't spent on the lowest-paying quests; then this zone first.
     public static Quest? PickAcceptOnly(IEnumerable<Quest> acceptOnlyQuests, IQuestSelectionState state, uint? territory = null) =>
         acceptOnlyQuests
             .Where(QuestFunctions.CanQueueSociety)
@@ -96,7 +95,6 @@ internal sealed class QuestSelectionController(Configuration configuration)
     internal static bool IsSameCity(uint a, uint? b) =>
         a == b || Cities.Any(x => x.Contains(a) && b is { } other && x.Contains(other));
 
-    // A class quest adds no paid trip if it starts in the city we're in, or where the next teleport goes anyway.
     internal static bool IsFreeClassQuestDetour(QuestStep classStart, uint? territory, QuestStep? teleportStep)
     {
         if (IsSameCity(classStart.TerritoryId, territory))

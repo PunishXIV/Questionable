@@ -277,9 +277,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool IgnoreNextQuestIfPrioSet { get; set; }
         public bool TitleBarPillCenter { get; set; } = true;
         public bool ClaimMail { get; set; } = true;
-        // Ticked SatisfactionNpc row ids, sorted; the first ones get the 12 weekly deliveries.
         public List<uint> DeliveryNpcs { get; set; } = [];
-        // Per SatisfactionNpc row id; Gather when missing.
         public Dictionary<uint, EDeliveryItem> DeliveryItems { get; set; } = [];
 
         public EDeliveryItem DeliveryItemFor(uint npc) => DeliveryItems.GetValueOrDefault(npc, EDeliveryItem.Gather);
@@ -536,7 +534,6 @@ internal sealed class Configuration : IPluginConfiguration
 
     internal sealed class DailiesConfiguration
     {
-        // In order; the first societies get the daily allowances.
         public List<EAlliedSociety> Societies { get; set; } = [];
     }
 

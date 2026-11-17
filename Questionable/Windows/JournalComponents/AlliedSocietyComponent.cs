@@ -94,7 +94,6 @@ internal sealed class AlliedSocietyComponent
             pluginInterface.SavePluginConfig(configuration);
     }
 
-    // Report colours only when they say something; unknown (no reports yet) keeps the normal colours.
     internal static Vector4? HeaderColor(bool debug, bool showReports, bool missing, EReportState state, bool incomplete) =>
         debug && missing && state != EReportState.Problems ? QstTheme.Accent :
         showReports && state != EReportState.Unknown ? ReportUi.Color(state) :

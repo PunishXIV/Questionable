@@ -1,6 +1,5 @@
 namespace Questionable.Windows.Common;
 
-// One handle per row: drag it and the row follows the mouse.
 internal sealed class DragOrder<T> where T : notnull
 {
     private readonly List<(T Key, float Top, float Bottom)> _rows = [];
@@ -32,7 +31,6 @@ internal sealed class DragOrder<T> where T : notnull
         _rows.Add((key, ImGui.GetItemRectMin().Y - pad, ImGui.GetItemRectMax().Y + pad));
     }
 
-    // Call after the rows; true when the dragged row is over another row this frame.
     public bool End(out int from, out int to)
     {
         from = to = -1;

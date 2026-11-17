@@ -79,7 +79,6 @@ internal sealed class DailiesController(
                 continue;
             }
 
-            // A locked society only offers its unlock quest; it runs first, like a rank-up.
             IEnumerable<QuestInfo> quests = locked
                 ? [(QuestInfo)questData.GetQuestInfo(new QuestId(unlock))]
                 : questData.GetAllByAlliedSociety(society);
@@ -172,7 +171,6 @@ internal sealed class DailiesController(
             status, plan.FinishedDailies, plan.FinishedStories, plan.Skipped.Count, plan.Blocked.Count);
     }
 
-    // List order decides who gets the allowances; within a society the highest rank pays the most.
     internal static List<QuestId> Plan(IReadOnlyList<EAlliedSociety> societies,
         Func<EAlliedSociety, IEnumerable<(QuestId Id, EAlliedSocietyRank Rank)>> dailies,
         Func<QuestId, bool> canAccept, int allowances)

@@ -26,41 +26,14 @@ internal sealed class AlliedSocietyData
             { 369, new([1051798], EAetheryteLocation.KozamaukaDockPoga) }, //pelu
             { 391, new([1052562], EAetheryteLocation.YakTelMamook) }, //mamook
         }.AsReadOnly();
-    public EAlliedSociety GetCommonTurnIn(ElementId elementId)
-    {
-        if (elementId is QuestId questId)
-        {
-            return questId.Value switch
-            {
-                >= 1222 and <= 1251 => EAlliedSociety.Amaljaa, //ARR
-                // Their craft materials come with a timed buff; batching is safe because a waiting craft goes first.
-                >= 1494 and <= 1523 => EAlliedSociety.Ixal,
-                >= 1566 and <= 1568 => EAlliedSociety.Ixal,
-                >= 1325 and <= 1344 => EAlliedSociety.Kobolds, // Kobolds 1364-1373
-                >= 1364 and <= 1373 => EAlliedSociety.Kobolds,
-                >= 1257 and <= 1286 and not 1257 => EAlliedSociety.Sylphs,
-                >= 1379 and <= 1409 and not 1389 => EAlliedSociety.Sahagin, // 1389 is a dungeon unlock
-                >= 2171 and <= 2200 => EAlliedSociety.VanuVanu, //HW
-                >= 2261 and <= 2280 => EAlliedSociety.Vath,
-                >= 2290 and <= 2319 => EAlliedSociety.Moogles,
-                >= 3042 and <= 3069 => EAlliedSociety.Ananta, //Storm 
-                >= 2979 and <= 3002 => EAlliedSociety.Kojin,
-                >= 3103 and <= 3130 => EAlliedSociety.Namazu,
-                >= 3902 and <= 3929 => EAlliedSociety.Dwarves, //SB
-                >= 3689 and <= 3716 => EAlliedSociety.Pixies,
-                >= 3806 and <= 3833 => EAlliedSociety.Qitari,
-                >= 4551 and <= 4578 => EAlliedSociety.Arkasodara, //EW
-                >= 4687 and <= 4714 => EAlliedSociety.Loporrits,
-                >= 4607 and <= 4634 => EAlliedSociety.Omicrons,
-                >= 5199 and <= 5226 => EAlliedSociety.Pelupelu, //Dawn
-                >= 5261 and <= 5288 => EAlliedSociety.MamoolJa,
-                >= 5336 and <= 5363 => EAlliedSociety.YokHuy,
-                var _ => EAlliedSociety.None
-            };
-        }
+    // Sylph 1257 has always been left out; Ixal 1569 Deliverance isn't a normal daily.
+    private static readonly ushort[] NotBatched = [1257, 1569];
 
-        return EAlliedSociety.None;
-    }
+    public EAlliedSociety GetCommonTurnIn(IQuestInfo? info) =>
+        info is QuestInfo { IsRepeatable: true, AlliedSociety: not EAlliedSociety.None, QuestId: QuestId id } quest &&
+        !NotBatched.Contains(id.Value)
+            ? quest.AlliedSociety
+            : EAlliedSociety.None;
 
     public void GetCommonNpcs(EAlliedSociety alliedSociety, out uint[] normalNpcs, out uint[] mountNpcs)
     {

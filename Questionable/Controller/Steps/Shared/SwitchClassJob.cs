@@ -23,7 +23,6 @@ internal static class SwitchClassJob
         }
     }
 
-    // The switch an earlier step of this sequence made; another quest may have changed the job since.
     internal static QuestStep? EarlierSwitch(QuestSequence sequence, QuestStep step) =>
         step.InteractionType == EInteractionType.SwitchClass
             ? null

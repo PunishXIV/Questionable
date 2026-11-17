@@ -272,7 +272,6 @@ internal sealed class MoveExecutor
             if (flies && position is { } from && IsShortHop(actualDistance, configuration.General.MountDistance) &&
                 _clientState.TerritoryType == Task.TerritoryId)
             {
-                // Decided in Update once vnav says whether the target can be walked to.
                 _groundCheck = navmesh.Pathfind(from, _destination, fly: false, CancellationToken.None);
                 return true;
             }

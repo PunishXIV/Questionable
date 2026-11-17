@@ -114,7 +114,6 @@ internal sealed class QuestReportsWindow : LWindow
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
                 ImGui.SetTooltip(_L("Verify the currently installed path for 30 days and resolve problems recorded when this view was loaded. Later reports remain open. Only use this after testing the fix."));
         }
-        // Verification is per path version; players only have the published one.
         if (view.Local)
             ImGui.TextColored(QstTheme.Amber,
                 _L("This path is loaded from your project folder. Only verify it once the same version is published."));

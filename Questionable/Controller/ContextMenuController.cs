@@ -67,7 +67,6 @@ internal sealed class ContextMenuController : IDisposable
                         return;
                     }
                     string homeWorld = ExcelWorldHelper.GetName(character.HomeWorld);
-                    // An empty marker file names the folder's character.
                     try
                     {
                         File.Create(Path.Combine(path, $"_{character.Name}@{homeWorld}")).Dispose();

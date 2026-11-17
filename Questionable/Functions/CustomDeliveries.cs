@@ -43,7 +43,6 @@ internal sealed unsafe class CustomDeliveries : IDisposable
     // The 12 weekly deliveries are shared by every NPC.
     public static int WeeklyLeft => SatisfactionSupplyManager.Instance()->GetRemainingAllowances();
 
-    // Satisfy's RemainingTurnins: this week's deliveries, or fewer when the next rank needs fewer.
     internal static int TurnInsLeft(int left, int current, int needed, int perTurnIn) =>
         needed > current && perTurnIn > 0
             ? Math.Min(left, (int)Math.Ceiling((needed - current) / (float)perTurnIn))
