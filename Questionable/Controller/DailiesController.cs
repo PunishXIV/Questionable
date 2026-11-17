@@ -56,7 +56,7 @@ internal sealed class DailiesController(
             _plan = null;
             return;
         }
-        chatGui.Print(_L("Do dailies: checking rank-ups, then running selected societies in travel order."),
+        chatGui.Print(_L("Do dailies: checking unlocks and rank-ups, then running selected societies in travel order."),
             CommandHandler.MessageTag, CommandHandler.TagColor);
         questStarter.Start(_L("Do dailies"));
         if (questController.IsDailiesRun && questController.AutomationType != QuestController.EAutomationType.Automatic)
@@ -70,21 +70,33 @@ internal sealed class DailiesController(
         List<DailiesPlan.Entry> entries = [];
         foreach (EAlliedSociety society in _societies)
         {
-            if (questFunctions.GetRankAndReputation(society).Item1 == EAlliedSocietyRank.None)
+            _societyReasons.Remove(society);
+            ushort unlock = AlliedSocietyQuestFunctions.UnlockQuests.GetValueOrDefault(society);
+            bool locked = questFunctions.GetRankAndReputation(society).Item1 == EAlliedSocietyRank.None;
+            if (locked && (unlock == 0 || questFunctions.IsQuestComplete(new QuestId(unlock))))
             {
                 _societyReasons[society] = _L("Society is not unlocked.");
-                continue; // Unlock quests belong to a later slice.
+                continue;
             }
-            _societyReasons.Remove(society);
-            foreach (QuestInfo info in questData.GetAllByAlliedSociety(society))
+
+            // A locked society only offers its unlock quest; it runs first, like a rank-up.
+            IEnumerable<QuestInfo> quests = locked
+                ? [(QuestInfo)questData.GetQuestInfo(new QuestId(unlock))]
+                : questData.GetAllByAlliedSociety(society);
+            foreach (QuestInfo info in quests)
             {
                 QuestId id = (QuestId)info.QuestId;
-                if (id.Value == IxalDelivery ||
-                    AlliedSocietyQuestFunctions.UnlockQuests.GetValueOrDefault(society) == id.Value)
+                if (id.Value == IxalDelivery || (!locked && unlock == id.Value))
                     continue;
                 bool accepted = questFunctions.IsQuestAccepted(id);
                 questRegistry.TryGetQuest(id, out Quest? quest);
                 bool ready = questFunctions.IsReadyToAcceptQuest(id, ignoreLevel: true);
+                if (locked && !accepted && !ready)
+                {
+                    _societyReasons[society] = UnlockReason(info.Name, questFunctions.IsQuestLocked(id).reasons);
+                    continue;
+                }
+
                 string? unavailable = !accepted && !ready ? questFunctions.GetDailyBlock(id) : null;
                 if (!accepted && !ready && unavailable == null)
                     continue;
@@ -115,6 +127,11 @@ internal sealed class DailiesController(
     public void Accepted(ElementId id) => _plan?.Accepted(id);
     public void Completed(ElementId id) => _plan?.Complete(id);
 
+    internal static string UnlockReason(string name, IReadOnlyCollection<string>? missing) =>
+        missing is { Count: > 0 }
+            ? _LF("Not unlocked yet; its unlock quest {0} needs: {1}", name, string.Join(", ", missing))
+            : _LF("Not unlocked yet; its unlock quest {0} can't be accepted yet.", name);
+
     internal static string? GetBlockReason(Quest? quest, QuestInfo info, bool accepted, bool hasJob) =>
         quest == null ? _LF("No quest path for {0}.", info.Name) :
         quest.Root.Disabled ? _LF("{0} has a disabled quest path; complete it manually.", info.Name) :
@@ -141,7 +158,7 @@ internal sealed class DailiesController(
         if (plan == null)
             return;
         string status = completed ? _L("finished") : _L("stopped");
-        chatGui.Print(_LF("Do dailies {0}: {1} dailies and {2} rank-up quests completed; {3} left unfinished; {4} not accepted.",
+        chatGui.Print(_LF("Do dailies {0}: {1} dailies and {2} unlock or rank-up quests completed; {3} left unfinished; {4} not accepted.",
             status, plan.FinishedDailies, plan.FinishedStories, plan.Unfinished, plan.Blocked.Count),
             CommandHandler.MessageTag, CommandHandler.TagColor);
         foreach ((QuestId id, string reason) in plan.Skipped)

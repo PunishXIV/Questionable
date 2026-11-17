@@ -243,4 +243,13 @@ public sealed class DailiesSafetyTests
         Assert.Null(DailiesController.GetBlockReason(quest, info, true, false));
         Assert.Null(DailiesController.GetBlockReason(quest, info, false, true));
     }
+
+    [Fact]
+    public void UnlockReason_NamesQuestAndMissing()
+    {
+        string reason = DailiesController.UnlockReason("Peace for Thanalan", ["Prev: Into the Sands"]);
+        Assert.Contains("Peace for Thanalan", reason);
+        Assert.Contains("Into the Sands", reason);
+        Assert.Contains("can't be accepted", DailiesController.UnlockReason("Peace for Thanalan", []));
+    }
 }

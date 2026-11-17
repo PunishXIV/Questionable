@@ -80,7 +80,7 @@ internal sealed class AlliedSocietyComponent
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
             ImGui.SetTooltip(societies.Count == 0
                 ? _L("Tick the societies to include with the box in front of their name.")
-                : _L("Runs only the ticked societies. List order decides who gets the daily allowances, highest-rank quests first, including maxed societies. Rank-ups run first when it is safe to switch; travel order decides which society to visit next."));
+                : _L("Runs only the ticked societies. List order decides who gets the daily allowances, highest-rank quests first, including maxed societies. Unlock and rank-up quests run first when it is safe to switch; travel order decides which society to visit next."));
 
         using var disabled = ImRaii.Disabled(questController.IsRunning);
         for (int i = 0; i < societies.Count; i++)

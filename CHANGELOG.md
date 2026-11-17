@@ -18,7 +18,7 @@
 - Feature: Priority Quests: a switch for whether priority quests interrupt the current one, "Change All to Normal Priority", an XP and gil total, Dawntrail tribe presets, field aether currents, "Unlock All Jobs" by level and "Add highest rank" for allied societies -Kage
 - Feature: Stop at the next aetheryte you attune to -Kage
 - Feature: "Redeem Reward Items" button in the quest window, and /qst redeem -Kage
-- Feature: Do dailies: tick allied societies in the journal and Questionable accepts and does their dailies in your order, highest rank first, until your allowances run out; also /qst dailies -Kage
+- Feature: Do dailies: tick allied societies in the journal and Questionable accepts and does their dailies in your order, highest rank first, until your allowances run out; a society you haven't unlocked yet gets its unlock quest done first, or you're told what it still needs; also /qst dailies -Kage
 - Feature: Custom Deliveries tab in Journal Progress: every NPC's rank, satisfaction, turn-ins left, achievement progress and this week's requested items with the bonus marked; tick NPCs and pick craft, gather or fish for each, then "Do deliveries", the quest window button or /qst deliveries has Satisfy do them (needs Satisfy) -Kage
 - Feature: Mentor Roulette section on the Unlocks tab: every duty in the roulette with the quest that unlocks it -Kage
 - Feature: /qst zone window: "Add all to Priority Quests" -Kage
