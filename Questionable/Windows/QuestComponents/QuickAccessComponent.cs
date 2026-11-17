@@ -16,6 +16,7 @@ internal sealed class QuickAccessComponent
     PriorityWindow priorityWindow,
     OpenQuestCleanUp openQuestCleanUp,
     BossModIpc bossModIpc,
+    SatisfyIpc satisfy,
     ICommandManager commandManager,
     IObjectTable objectTable,
     IClientState clientState,
@@ -28,7 +29,7 @@ internal sealed class QuickAccessComponent
     private static readonly HashSet<string> ReportedPlugins = new(StringComparer.Ordinal)
     {
         "Artisan", "AutoDuty", "AutoRetainer", "Automaton", "BossMod", "BossModReborn", "GatherChill", "Knightshopper", "Lifestream",
-        "Mogmail", "PandorasBox", "RotationSolver", "SelectString", "Stylist", "TextAdvance", "vnavmesh", "WahTools",
+        "Mogmail", "PandorasBox", "RotationSolver", "SelectString", "Stylist", "TextAdvance", "vnavmesh", "vsatisfy", "WahTools",
         "WrathCombo", "YesAlready",
     };
 
@@ -43,6 +44,8 @@ internal sealed class QuickAccessComponent
         openQuestCleanUp.DrawRailButton();
         ImGui.SameLine();
         DrawRedeemButton();
+        ImGui.SameLine();
+        DrawDeliveriesButton();
         ImGui.SameLine();
         DrawReloadDataButton();
         ImGui.SameLine();
@@ -75,6 +78,16 @@ internal sealed class QuickAccessComponent
                 enabled: objectTable[0] != null && !questController.IsRunning,
                 showLabel: showLabel))
             questStarter.RedeemRewards();
+    }
+
+    private void DrawDeliveriesButton()
+    {
+        string tooltip = satisfy.IsInstalled
+            ? _L("Has Satisfy do this week's custom deliveries, one NPC after another. Pick craft, gather or fish in the settings. Same as /qst deliveries.")
+            : _L("Satisfy (vsatisfy) is not available. Please install it first.");
+        if (QstWidgets.RailButton(FontAwesomeIcon.Truck, _L("Custom Deliveries"), tooltip,
+                enabled: objectTable[0] != null && !questController.IsRunning && satisfy.IsInstalled))
+            questStarter.RunCustomDeliveries();
     }
 
     internal void DrawRebuildNavmeshButton(bool showLabel = false)

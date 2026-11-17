@@ -16,16 +16,6 @@ public sealed class UniqueStartStopValidatorTests
         new() { InteractionType = type, PickUpQuestId = pickUpQuestId, TurnInQuestId = turnInQuestId };
 
     [Fact]
-    public void SatisfactionSupplyQuest_ReturnsNoIssues()
-    {
-        var quest = CreateQuest(new SatisfactionSupplyNpcId(1),
-            Seq(0, Step(EInteractionType.WalkTo)),
-            Seq(255, Step(EInteractionType.WalkTo)));
-
-        Assert.Empty(_validator.Validate(quest));
-    }
-
-    [Fact]
     public void AlliedSocietyDailyQuest_ReturnsNoIssues()
     {
         var quest = CreateQuest(new AlliedSocietyDailyId(1),

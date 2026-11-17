@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
-  "Comment": "Crafted Item:\n 2x Grilled Dodo\nWill buy from Jossy",
+  "Comment": "Crafted Item:\n 2x Grilled Dodo\nBuys the ingredients",
   "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-14"},
   "QuestSequence": [
     {

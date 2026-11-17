@@ -12,7 +12,6 @@ internal sealed class QuestProgressTracker(
     public QuestController.QuestProgress? StartedQuest { get; set; }
     public QuestController.QuestProgress? SimulatedQuest { get; set; }
     public QuestController.QuestProgress? NextQuest { get; set; }
-    public QuestController.QuestProgress? GatheringQuest { get; set; }
 
     // Leve acceptance is delayed.
     public QuestController.QuestProgress? PendingQuest { get; set; }
@@ -28,8 +27,6 @@ internal sealed class QuestProgressTracker(
                 return (SimulatedQuest, QuestController.ECurrentQuestType.Simulated);
             if (NextQuest != null && questFunctions.IsReadyToAcceptQuest(NextQuest.Quest.Id))
                 return (NextQuest, QuestController.ECurrentQuestType.Next);
-            if (GatheringQuest != null)
-                return (GatheringQuest, QuestController.ECurrentQuestType.Gathering);
             if (StartedQuest != null)
                 return (StartedQuest, QuestController.ECurrentQuestType.Normal);
 
@@ -43,7 +40,6 @@ internal sealed class QuestProgressTracker(
     {
         StartedQuest = null;
         NextQuest = null;
-        GatheringQuest = null;
         PendingQuest = null;
         SimulatedQuest = null;
         DisplacedQuest = null;
@@ -80,16 +76,6 @@ internal sealed class QuestProgressTracker(
             NextQuest = new(quest);
         else
             NextQuest = null;
-    }
-
-    public void SetGatheringQuest(Quest? quest)
-    {
-        highlightObject.SetHighlight([]);
-        logger.LogInformation("GatheringQuest: {QuestId}", quest?.Id);
-        if (quest != null)
-            GatheringQuest = new(quest);
-        else
-            GatheringQuest = null;
     }
 
     public void SetPendingQuest(QuestController.QuestProgress? quest)

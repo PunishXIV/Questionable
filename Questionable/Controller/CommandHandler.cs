@@ -393,6 +393,10 @@ internal sealed class CommandHandler : IDisposable
                 _questStarter.RedeemRewards(dry: parts.Length > 1 && parts[1].EqualsIgnoreCaseAny("dry"));
                 break;
 
+            case "deliveries":
+                _questStarter.RunCustomDeliveries();
+                break;
+
             case "":
                 _questWindow.ToggleOrUncollapse();
                 break;
@@ -422,6 +426,7 @@ internal sealed class CommandHandler : IDisposable
         _L("/qst handle-interrupt - makes Questionable handle queued interrupts immediately (useful if you manually start combat)"),
         _L("/qst clearlog - clears QuestCompletionLog.json"),
         _L("/qst redeem - Redeem all reward items in inventory"),
+        _L("/qst deliveries - Has Satisfy do this week's custom deliveries"),
     ];
 
     private void PrintHelp(string[] lines)

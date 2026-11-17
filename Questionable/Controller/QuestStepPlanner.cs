@@ -1,4 +1,3 @@
-using ECurrentQuestType = Questionable.Controller.QuestController.ECurrentQuestType;
 using QuestProgress = Questionable.Controller.QuestController.QuestProgress;
 
 namespace Questionable.Controller;
@@ -30,9 +29,6 @@ internal static class QuestStepPlanner
             return new(EStepAdvance.OtherSequence);
         return new(EStepAdvance.Advanced, current.Step + 1 < sequence.Steps.Count ? current.Step + 1 : CompletedStep);
     }
-
-    public static bool IsGatheringDeliveryDone((QuestProgress Progress, ECurrentQuestType Type)? details) =>
-        details is { Progress: { Quest.Id: SatisfactionSupplyNpcId, Sequence: 1, Step: CompletedStep }, Type: ECurrentQuestType.Gathering };
 }
 
 internal enum EStepState

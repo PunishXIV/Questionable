@@ -397,17 +397,6 @@ internal sealed partial class ActiveQuestComponent
                     currentQuest.Step));
             DrawPriorityCrystal();
         }
-        else if (currentQuestType == QuestController.ECurrentQuestType.Gathering)
-        {
-            using ImRaii.ColorDisposable _ = ImRaii.PushColor(ImGuiCol.Text, QstTheme.Amber);
-            ImGui.TextUnformatted(_LF("Gathering: ") +
-                _LF("{0} ({1}) / {2} / {3}",
-                    Shorten(currentQuest.Quest.Info.Name),
-                    currentQuest.Quest.Id,
-                    currentQuest.Sequence,
-                    currentQuest.Step));
-            DrawPriorityCrystal();
-        }
         else
         {
             QuestController.QuestProgress? startedQuest = questController.StartedQuest;

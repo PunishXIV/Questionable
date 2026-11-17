@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
-  "Comment": "Crafted Item:\n 1x Grilled Trout\nWill buy from Jossy/Fishmonger",
+  "Comment": "Crafted Item:\n 1x Grilled Trout\nBuys the ingredients",
   "LastChecked": {"Username": "okonomiyaki", "Date": "2026-07-14"},
   "QuestSequence": [
     {

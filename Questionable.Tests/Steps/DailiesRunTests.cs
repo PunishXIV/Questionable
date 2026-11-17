@@ -158,7 +158,6 @@ public sealed class DailiesRunTests
     [InlineData(0)]
     [InlineData(2)]
     [InlineData(3)]
-    [InlineData(4)]
     public void ModeChange_EndsRunOnce(int mode)
     {
         using var context = new Context();

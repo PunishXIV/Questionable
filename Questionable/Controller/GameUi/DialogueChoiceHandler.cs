@@ -14,7 +14,6 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
     private readonly IAddonLifecycle _addonLifecycle;
     private readonly GameGuiAdapter _gameGui;
     private readonly QuestController _questController;
-    private readonly QuestStarter _questStarter;
     private readonly QuestFunctions _questFunctions;
     private readonly QuestRegistry _questRegistry;
     private readonly QuestData _questData;
@@ -35,7 +34,6 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
         IAddonLifecycle addonLifecycle,
         GameGuiAdapter gameGui,
         QuestController questController,
-        QuestStarter questStarter,
         QuestFunctions questFunctions,
         QuestRegistry questRegistry,
         QuestData questData,
@@ -55,7 +53,6 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
         _addonLifecycle = addonLifecycle;
         _gameGui = gameGui;
         _questController = questController;
-        _questStarter = questStarter;
         _questFunctions = questFunctions;
         _questRegistry = questRegistry;
         _questData = questData;
@@ -515,18 +512,6 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
         }
         _logger.LogInformation("Returning {Index}: '{Answer}' for '{Prompt}'",
             index, answer, actualPrompt);
-
-        // ensure we only open the dialog once
-        if (quest?.Id is SatisfactionSupplyNpcId)
-        {
-            if (_questController.GatheringQuest == null ||
-                _questController.GatheringQuest.Sequence == 255)
-                return null;
-
-            _questController.GatheringQuest.SetSequence(1);
-            _questStarter.StartGatheringQuest("SatisfactionSupply turn in");
-        }
-
         return index;
     }
 

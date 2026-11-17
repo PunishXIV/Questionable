@@ -1,5 +1,4 @@
 ﻿using Dalamud.Plugin.Ipc;
-using ECommons.ExcelServices;
 using JetBrains.Annotations;
 namespace Questionable.External;
 
@@ -23,8 +22,6 @@ internal sealed class QuestionableIpc : IDisposable
     private const string IpcAddQuestPriority = "Questionable.AddQuestPriority";
     private const string IpcInsertQuestPriority = "Questionable.InsertQuestPriority";
     private const string IpcExportQuestPriority = "Questionable.ExportQuestPriority";
-    private const string IpcStartGathering = "Questionable.StartGathering";
-    private const string IpcStartGatheringComplex = "Questionable.StartGatheringComplex";
     private const string IpcStop = "Questionable.Stop";
     private const string IpcRedoLookup = "Questionable.RedoLookup";
     private const string IpcRedoLookupIndex = "Questionable.RedoLookupIndex";
@@ -53,8 +50,6 @@ internal sealed class QuestionableIpc : IDisposable
     private readonly ICallGateProvider<uint, string> _redoLookup;
     private readonly ICallGateProvider<uint, Tuple<string, int>> _redoLookupIndex;
     private readonly RedoUtil _redoUtil;
-    private readonly ICallGateProvider<uint, uint, byte, int, bool> _startGathering;
-    private readonly ICallGateProvider<uint, uint, byte, int, ushort, bool> _startGatheringComplex;
     private readonly ICallGateProvider<string, bool> _startQuest;
     private readonly ICallGateProvider<string, bool> _startSingleQuest;
     private readonly ICallGateProvider<string, bool> _stop;
@@ -130,12 +125,6 @@ internal sealed class QuestionableIpc : IDisposable
         _exportQuestPriority = pluginInterface.GetIpcProvider<string>(IpcExportQuestPriority);
         _exportQuestPriority.RegisterFunc(priorityWindow.EncodeQuests);
 
-        _startGathering = pluginInterface.GetIpcProvider<uint, uint, byte, int, bool>(IpcStartGathering);
-        _startGathering.RegisterFunc(StartGathering);
-
-        _startGatheringComplex = pluginInterface.GetIpcProvider<uint, uint, byte, int, ushort, bool>(IpcStartGatheringComplex);
-        _startGatheringComplex.RegisterFunc(StartGatheringComplex);
-
         _stop = pluginInterface.GetIpcProvider<string, bool>(IpcStop);
         _stop.RegisterFunc(Stop);
 
@@ -167,8 +156,6 @@ internal sealed class QuestionableIpc : IDisposable
         _clearQuestPriority.UnregisterFunc();
         _insertQuestPriority.UnregisterFunc();
         _exportQuestPriority.UnregisterFunc();
-        _startGathering.UnregisterFunc();
-        _startGatheringComplex.UnregisterFunc();
         _stop.UnregisterFunc();
         _redoLookup.UnregisterFunc();
         _redoLookupIndex.UnregisterFunc();
@@ -323,15 +310,6 @@ internal sealed class QuestionableIpc : IDisposable
         }
 
         return true;
-    }
-
-    private bool StartGathering(uint npcId, uint itemId, byte classJob, int quantity) => StartGatheringComplex(npcId, itemId, classJob, quantity);
-
-    private bool StartGatheringComplex(uint npcId, uint itemId, byte classJob = ((byte)Job.MIN), int quantity = 1, ushort collectability = 0)
-    {
-        _logger.LogDebug("StartGatheringComplex({NpcId},{ItemId},{ClassJob},{Quantity},{Collectability})",
-            npcId, itemId, classJob, quantity, collectability);
-        return _questStarter.StartGathering(npcId, itemId, (Job)classJob, quantity, collectability);
     }
 
     private bool Stop(string label)

@@ -1,5 +1,4 @@
 ﻿using JetBrains.Annotations;
-using Questionable.Controller.Steps.Gathering;
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Movement;
 using Questionable.Controller.Steps.Shared;
@@ -143,9 +142,7 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskExecutor<Craft.WaitTask, Craft.WaitExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<Purchase.BuyTask, Purchase.Factory, Purchase.BuyExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<Fish.Task, Fish.Factory, Fish.Executor>();
-        serviceCollection
-            .AddTaskFactoryAndExecutor<TurnInDelivery.Task, TurnInDelivery.Factory,
-                TurnInDelivery.Executor>();
+        serviceCollection.AddTaskExecutor<CustomDelivery.Task, CustomDelivery.Executor>();
 
         serviceCollection.AddSingleton<QuestBattle.RetryCounter>();
         serviceCollection.AddTaskFactory<QuestBattle.Factory>();

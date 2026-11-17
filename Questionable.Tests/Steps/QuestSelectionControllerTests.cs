@@ -39,8 +39,8 @@ public sealed class QuestSelectionControllerTests
         QuestSelectionController.Choose(new QuestSelectionContext(slots, priority, _acceptOnly.Contains,
             EAutomationType.Automatic, _state, canInterrupt: false));
 
-    private static QuestSlots Slots(QuestProgress? started = null, QuestProgress? next = null, QuestProgress? gathering = null,
-        QuestProgress? simulated = null) => new(started, next, gathering, simulated);
+    private static QuestSlots Slots(QuestProgress? started = null, QuestProgress? next = null,
+        QuestProgress? simulated = null) => new(started, next, simulated);
 
     [Fact]
     public void SimulatedBeatsEveryOtherSource()
@@ -48,7 +48,7 @@ public sealed class QuestSelectionControllerTests
         QuestProgress simulated = Progress(1, sequence: 3);
         _state.Ready.Add(new QuestId(2));
 
-        QuestChoice choice = Choose(Slots(next: Progress(2), gathering: Progress(3), simulated: simulated), priority: [NewQuest(4)]);
+        QuestChoice choice = Choose(Slots(next: Progress(2), simulated: simulated), priority: [NewQuest(4)]);
 
         Assert.Equal(EQuestSource.Simulated, choice.Source);
         Assert.Same(simulated, choice.Progress);
@@ -60,12 +60,11 @@ public sealed class QuestSelectionControllerTests
     public void NextRunsOnlyOnceItCanBeAccepted()
     {
         QuestProgress next = Progress(2);
-        QuestProgress gathering = Progress(3);
 
-        Assert.Equal(EQuestSource.Gathering, Choose(Slots(next: next, gathering: gathering)).Source);
+        Assert.Equal(EQuestSource.Journal, Choose(Slots(next: next)).Source);
 
         _state.Ready.Add(next.Quest.Id);
-        QuestChoice choice = Choose(Slots(next: next, gathering: gathering));
+        QuestChoice choice = Choose(Slots(next: next));
         Assert.Equal(EQuestSource.Next, choice.Source);
         Assert.Same(next, choice.Progress);
     }
@@ -235,7 +234,6 @@ public sealed class QuestSelectionControllerTests
     public void AcceptOnlyQueueWaitsForOtherSlots()
     {
         Assert.False(QuestSelectionController.ShouldQueueAcceptOnly(Slots(next: Progress(1)), EAutomationType.Automatic));
-        Assert.False(QuestSelectionController.ShouldQueueAcceptOnly(Slots(gathering: Progress(1)), EAutomationType.Automatic));
         Assert.False(QuestSelectionController.ShouldQueueAcceptOnly(Slots(simulated: Progress(1)), EAutomationType.Automatic));
     }
 
@@ -506,7 +504,6 @@ public sealed class QuestSelectionControllerTests
         IEnumerable<PriorityQuestInfo> Unread() => throw new InvalidOperationException();
 
         Assert.Null(QuestSelectionController.PickPriorityQuest(Slots(next: Progress(2)), false, Unread));
-        Assert.Null(QuestSelectionController.PickPriorityQuest(Slots(gathering: Progress(2)), false, Unread));
         Assert.Null(QuestSelectionController.PickPriorityQuest(Slots(simulated: Progress(2)), false, Unread));
         Assert.Null(QuestSelectionController.PickPriorityQuest(Slots(), true, Unread));
     }

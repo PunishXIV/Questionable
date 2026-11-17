@@ -10,7 +10,6 @@ using Action = Lumina.Excel.Sheets.Action;
 using BattleChara = FFXIVClientStructs.FFXIV.Client.Game.Character.BattleChara;
 using ContentFinderCondition = Lumina.Excel.Sheets.ContentFinderCondition;
 using ObjectKind = Dalamud.Game.ClientState.Objects.Enums.ObjectKind;
-using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Functions;
 
@@ -454,24 +453,6 @@ internal sealed unsafe partial class GameFunctions
                condition[ConditionFlag.BetweenAreas] || condition[ConditionFlag.BetweenAreas51] ||
                condition[ConditionFlag.Jumping61] || condition[ConditionFlag.ExecutingGatheringAction] ||
                condition[ConditionFlag.Jumping] || condition[ConditionFlag.Mounting71];
-    }
-
-    public bool IsInCustomDelivery(Quest? currentQuest)
-    {
-        if (currentQuest is not { Info: SatisfactionSupplyInfo })
-            return false;
-
-        if (targetManager.Target == null || GetBaseId(targetManager.Target) != currentQuest.Info.IssuerDataId)
-            return false;
-
-        if (!AgentSatisfactionSupply.Instance()->IsAgentActive())
-            return false;
-
-        HashSet<ConditionFlag> flags = condition.AsReadOnlySet().ToHashSet();
-        flags.Remove(ConditionFlag.InDutyQueue); // irrelevant
-        return flags.Count == 2 &&
-               flags.Contains(ConditionFlag.NormalConditions) &&
-               flags.Contains(ConditionFlag.OccupiedInQuestEvent);
     }
 
     public bool IsLoadingScreenVisible()

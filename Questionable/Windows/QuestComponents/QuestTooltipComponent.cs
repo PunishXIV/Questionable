@@ -97,7 +97,7 @@ internal sealed class QuestTooltipComponent
                 ImGui.Text(_LF("Authors: {0}", string.Join(", ", quest.Root.Author)));
 
             if (quest.Root.Comment != null)
-                ImGui.Text(_LF("Comment: {0}", quest.Root.Comment.Split('\n', 2)[0]));
+                ImGui.Text(_LF("Comment: {0}", quest.Root.Comment));
 
             RedoIndex redoIndex = redoUtil.GetChapter(quest.Id.Value);
             if (redoIndex.Index != -1)

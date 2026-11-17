@@ -23,7 +23,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     {
         Manual,
         Automatic,
-        GatheringOnly,
         SingleQuestA,
         SingleQuestB
     }
@@ -32,7 +31,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     {
         Normal,
         Next,
-        Gathering,
         Simulated
     }
 
@@ -92,7 +90,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             SimulatedQuest != null || !CanPrepareQuestTasks())
             return false;
 
-        StartedQuest = NextQuest = GatheringQuest = PendingQuest = null;
+        StartedQuest = NextQuest = PendingQuest = null;
         _tracker.DisplacedQuest = null;
         _dailies = run;
         _dailyAccepted = [];
@@ -369,12 +367,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             if (value == null)
                 _acceptance.ClearSelection();
         }
-    }
-
-    public QuestProgress? GatheringQuest
-    {
-        get => _tracker.GatheringQuest;
-        private set => _tracker.GatheringQuest = value;
     }
 
     // Leve acceptance is delayed.
@@ -875,7 +867,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     private bool IsWaitingToRun(QuestProgress questToRun)
     {
-        if (_gameFunctions.IsOccupied() && !_gameFunctions.IsInCustomDelivery(questToRun.Quest))
+        if (_gameFunctions.IsOccupied())
         {
             DebugState = "Occupied";
             return true;
@@ -1017,7 +1009,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         AutomationType = EAutomationType.Manual;
         StartedQuest = null;
         NextQuest = null;
-        GatheringQuest = null;
     }
 
     public void TryStopOnQueuedAccept(ElementId questId)
@@ -1077,7 +1068,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         {
             StartedQuest = null;
             NextQuest = null;
-            GatheringQuest = null;
         }
         _lastTaskUpdate = DateTime.Now;
 
@@ -1201,12 +1191,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         return true;
     }
 
-    public void SetGatheringQuest(Quest? quest)
-    {
-        if (CanStartNextTask())
-            _tracker.SetGatheringQuest(quest);
-    }
-
     public void SetPendingQuest(QuestProgress? quest)
     {
         if (CanStartNextTask())
@@ -1244,8 +1228,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             _taskQueue.CurrentTaskExecutor is not QuestBattle.WaitForOutcomeExecutor &&
             // The job gear shop and the mailbox are open (and the player occupied) while they're used.
             _taskQueue.CurrentTaskExecutor is not JobGear.TakeExecutor &&
-            _taskQueue.CurrentTaskExecutor is not Mail.TakeExecutor &&
-            !_gameFunctions.IsInCustomDelivery(CurrentQuest?.Quest))
+            _taskQueue.CurrentTaskExecutor is not Mail.TakeExecutor)
             return;
 
         if (AttuneStopDue)
@@ -1353,18 +1336,9 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         (QuestSequence? seq, QuestStep? step, bool createTasks) = GetNextStep();
         if (CurrentQuest == null || seq == null)
         {
-            if (QuestStepPlanner.IsGatheringDeliveryDone(CurrentQuestDetails))
-            {
-                _logger.LogInformation("Completed delivery quest");
-                SetGatheringQuest(quest: null);
-                Stop("Gathering quest complete");
-            }
-            else
-            {
-                _logger.LogWarning(
-                    "Could not retrieve next quest step, not doing anything [{QuestId}, {Sequence}, {Step}]",
-                    CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
-            }
+            _logger.LogWarning(
+                "Could not retrieve next quest step, not doing anything [{QuestId}, {Sequence}, {Step}]",
+                CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
 
             if (CurrentQuest == null || !createTasks)
                 return;
@@ -1470,7 +1444,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             CancelCurrentTask();
     }
 
-    private QuestSlots Slots => new(StartedQuest, NextQuest, GatheringQuest, SimulatedQuest);
+    private QuestSlots Slots => new(StartedQuest, NextQuest, SimulatedQuest);
     private IQuestSelectionState SelectionState => _selectionState ??= new SelectionStateAdapter(this);
 
     private sealed class SelectionStateAdapter(QuestController controller) : IQuestSelectionState

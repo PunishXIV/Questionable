@@ -1,4 +1,4 @@
-using ECommons.ExcelServices;
+using Lumina.Excel.Sheets;
 using Questionable.Controller.Steps.Shared;
 using EAutomationType = Questionable.Controller.QuestController.EAutomationType;
 using Quest = Questionable.Domain.Quest;
@@ -9,18 +9,15 @@ namespace Questionable.Controller;
 internal sealed class QuestStarter(
     QuestController questController,
     QuestProgressTracker tracker,
-    QuestRegistry questRegistry,
     QuestData questData,
     QuestStopPolicy stopPolicy,
     JobGear.Factory jobGear,
+    SatisfyIpc satisfy,
+    Configuration configuration,
     IDataManager dataManager,
     IChatGui chatGui,
     ILogger<QuestStarter> logger)
 {
-    private const uint HighQualityItemIdOffset = 1_000_000;
-
-    private const uint CollectableItemIdOffset = 500_000;
-
     public bool CanStartQuest(string label)
     {
         if (questController.CanPrepareQuestTasks())
@@ -42,18 +39,6 @@ internal sealed class QuestStarter(
         RedeemRewardItems.ResetAttemptedItems();
         stopPolicy.CancelEnding();
         questController.AutomationType = EAutomationType.Automatic;
-        questController.ExecuteNextStep();
-    }
-
-    public void StartGatheringQuest(string label)
-    {
-        if (!CanStartQuest(label))
-            return;
-
-        using IDisposable? scope = logger.BeginScope($"GQ/{label}");
-        RedeemRewardItems.ResetAttemptedItems();
-        stopPolicy.CancelEnding();
-        questController.AutomationType = EAutomationType.GatheringOnly;
         questController.ExecuteNextStep();
     }
 
@@ -79,50 +64,6 @@ internal sealed class QuestStarter(
         stopPolicy.CancelEnding();
         questController.AutomationType = EAutomationType.Manual;
         questController.ExecuteNextStep();
-    }
-
-    public bool StartGathering(uint npcId, uint itemId, Job classJob, int quantity = 1, ushort collectability = 0)
-    {
-        if (!CanStartQuest("SatisfactionSupply prepare gathering"))
-            return false;
-
-        if (itemId > HighQualityItemIdOffset)
-            itemId -= HighQualityItemIdOffset;
-
-        if (itemId >= CollectableItemIdOffset)
-            itemId -= CollectableItemIdOffset;
-
-        SatisfactionSupplyInfo info = (SatisfactionSupplyInfo)questData.GetAllByIssuerDataId(npcId)
-            .Single(x => x is SatisfactionSupplyInfo);
-        if (questRegistry.TryGetQuest(info.QuestId, out Quest? quest))
-        {
-            QuestSequence sequence = quest.FindSequence(0)!;
-
-            QuestStep switchClassStep = sequence.Steps.Single(x => x.InteractionType == EInteractionType.SwitchClass);
-            switchClassStep.TargetClass = classJob switch
-            {
-                Job.MIN => EExtendedClassJob.Miner,
-                Job.BTN => EExtendedClassJob.Botanist,
-                var _ => throw new ArgumentOutOfRangeException(nameof(classJob), classJob, message: null)
-            };
-
-            QuestStep gatherStep = sequence.Steps.Single(x => x.InteractionType == EInteractionType.Gather);
-            gatherStep.ItemsToGather =
-            [
-                new()
-                {
-                    ItemId = itemId,
-                    ItemCount = quantity,
-                    Collectability = collectability
-                }
-            ];
-            questController.SetGatheringQuest(quest);
-            StartGatheringQuest("SatisfactionSupply prepare gathering");
-            return true;
-        }
-
-        chatGui.PrintError($"No associated quest ({info.QuestId}).", "Questionable");
-        return false;
     }
 
     public void SimulateQuest(IQuestInfo? questInfo, byte sequence, int step)
@@ -164,6 +105,29 @@ internal sealed class QuestStarter(
                 if (task is RedeemRewardItems.Task redeemTask)
                     chatGui.Print(redeemTask.ItemReward.Name, CommandHandler.MessageTag, CommandHandler.TagColor);
         logger.LogInformation("Tasks created by redeem: {Tasks}", string.Join(", ", tasks.Select(x => x.ToString())));
+    }
+
+    // Satisfy refuses NPCs that are locked or have no deliveries left, so every NPC is queued.
+    public void RunCustomDeliveries()
+    {
+        if (questController.IsRunning)
+        {
+            chatGui.PrintError("Busy!", CommandHandler.MessageTag, CommandHandler.TagColor);
+            return;
+        }
+
+        if (!satisfy.IsInstalled)
+        {
+            chatGui.PrintError(_L("Custom deliveries need the Satisfy plugin (vsatisfy)."), CommandHandler.MessageTag,
+                CommandHandler.TagColor);
+            return;
+        }
+
+        stopPolicy.CancelEnding();
+        Configuration.EDeliveryItem item = configuration.General.DeliveryItem;
+        foreach (SatisfactionNpc npc in dataManager.GetExcelSheet<SatisfactionNpc>().Where(x => x.RowId > 0 && x.Npc.RowId > 0))
+            questController.UnsafeEnqueueManualTask(new CustomDelivery.Task(npc.RowId, item));
+        logger.LogInformation("Queued custom deliveries ({Item}) for Satisfy", item);
     }
 
     // For testing the job gear pickup without levelling a character (see JobGear.Factory.CreateTasks).

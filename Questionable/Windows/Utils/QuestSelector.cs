@@ -33,7 +33,7 @@ internal sealed class QuestSelector(QuestRegistry questRegistry)
                     matches = MatchesName;
 
                 foundQuests = questRegistry.AllQuests
-                    .Where(x => x.Id is not SatisfactionSupplyNpcId and not AlliedSocietyDailyId)
+                    .Where(x => x.Id is not AlliedSocietyDailyId)
                     .Where(matches);
             }
             else

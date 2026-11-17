@@ -277,6 +277,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool IgnoreNextQuestIfPrioSet { get; set; }
         public bool TitleBarPillCenter { get; set; } = true;
         public bool ClaimMail { get; set; } = true;
+        public EDeliveryItem DeliveryItem { get; set; } = EDeliveryItem.Gather;
         public bool RunNoviceHall { get; set; } = true;
         public bool AutoStepRefreshEnabled { get; set; }
         public int AutoStepRefreshDelaySeconds { get; set; } = 30;
@@ -348,6 +349,14 @@ internal sealed class Configuration : IPluginConfiguration
     {
         public string QuestId { get; set; } = string.Empty;
         public string Preset { get; set; } = string.Empty;
+    }
+
+    // Values are Satisfy's run kinds: 0 craft, 1 gather, 2 fish.
+    internal enum EDeliveryItem
+    {
+        Craft,
+        Gather,
+        Fish,
     }
 
     internal enum EEndAction

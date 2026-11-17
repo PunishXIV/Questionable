@@ -1,7 +1,4 @@
-using Dalamud.Plugin.Services;
 using Lumina.Excel.Sheets;
-using Microsoft.Extensions.Logging.Abstractions;
-using NSubstitute;
 using Questionable.Data;
 using Questionable.Domain;
 using Questionable.Model.Questing;
@@ -44,34 +41,5 @@ public sealed class SheetLookupTests(GameDataFixture fixture) : IClassFixture<Ga
             Assert.Equal(expected, indexed[questId].Select(item => item.RowId));
         }
         Assert.Empty(indexed[uint.MaxValue]);
-    }
-
-    [GameDataFact]
-    public void CustomDelivery_KeepsOldMappings()
-    {
-        Assert.True(fixture.Available, "Game data is required for sheet lookup parity checks.");
-        var excel = fixture.GameData!.Quests.Module;
-        var supplies = excel.GetSubrowSheet<SatisfactionSupply>();
-        var npcs = excel.GetSheet<SatisfactionNpc>();
-        var dataManager = Substitute.For<IDataManager>();
-        dataManager.GetExcelSheet<GatheringItem>().Returns(excel.GetSheet<GatheringItem>());
-        dataManager.GetExcelSheet<GatheringPointBase>().Returns(excel.GetSheet<GatheringPointBase>());
-        dataManager.GetExcelSheet<SatisfactionNpc>().Returns(npcs);
-        dataManager.GetSubrowExcelSheet<SatisfactionSupply>().Returns(supplies);
-        var data = new GatheringData(dataManager, NullLogger<GatheringData>.Instance);
-
-        var expected = npcs.Where(npc => npc.RowId > 0)
-            .SelectMany(npc => supplies.Flatten()
-                .Where(supply => supply.RowId == npc.SatisfactionNpcParams[^1].SupplyIndex)
-                .Select(supply => (ItemId: supply.Item.RowId, NpcId: npc.Npc.RowId)))
-            .Where(pair => pair.ItemId > 0).Distinct()
-            .ToDictionary(pair => pair.ItemId, pair => pair.NpcId);
-
-        foreach (var item in excel.GetSheet<Item>())
-        {
-            bool found = data.TryGetCustomDeliveryNpc(item.RowId, out uint npcId);
-            Assert.Equal(expected.TryGetValue(item.RowId, out uint expectedNpcId), found);
-            Assert.Equal(expectedNpcId, npcId);
-        }
     }
 }

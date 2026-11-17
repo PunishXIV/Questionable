@@ -266,9 +266,6 @@ internal sealed class QuestData
                     paramGrow.GetRowOrDefault(x.ClassJobLevel[0]) is { } grow
                         ? QuestInfo.ScaleExperience(x.ExpFactor, grow.ScaledQuestXP, grow.QuestExpModifier)
                         : 0)),
-            ..dataManager.GetExcelSheet<SatisfactionNpc>()
-                .Where(x => x is { RowId: > 0, Npc.RowId: > 0 })
-                .Select(x => new SatisfactionSupplyInfo(x))
         ];
 
         quests.AddRange(

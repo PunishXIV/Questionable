@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
   "Author": "Kiarra",
-  "Comment": "Crafted Item:\n 1x Meat Miq'abob\nAutocraft requires:\n 1x Dodo Tenderloin,\n 1x Paprika,\n 1x Ruby Tomato,\n 1x Table Salt\nWill buy from Jossy",
+  "Comment": "Crafted Item:\n 1x Meat Miq'abob\nAutocraft requires:\n 1x Dodo Tenderloin,\n 1x Paprika,\n 1x Ruby Tomato,\n 1x Table Salt\nBuys the ingredients",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {

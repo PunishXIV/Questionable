@@ -112,7 +112,7 @@ internal static class Interact
                 step.DataId.Value,
                 quest,
                 step.InteractionType,
-                step.TargetTerritoryId != null || quest.Id is SatisfactionSupplyNpcId ||
+                step.TargetTerritoryId != null ||
                 step.SkipConditions is { StepIf.Never: true } || step.InteractionType == EInteractionType.PurchaseItem || step.DataId == 1052475,
                 step.PickUpItemId,
                 step.TaxiStandId,

@@ -55,18 +55,4 @@ public sealed class QuestStepPlannerTests
         Assert.Equal(EStepAdvance.OtherSequence, QuestStepPlanner.Advance(progress, sequence, step, QuestId, 2).Kind);
         Assert.Equal(EStepAdvance.Advanced, QuestStepPlanner.Advance(progress, sequence, step, QuestId, 1).Kind);
     }
-
-    [Fact]
-    public void GatherDelivery_DoneAfterTurnIn()
-    {
-        ElementId npc = new SatisfactionSupplyNpcId(1);
-        var gathering = QuestController.ECurrentQuestType.Gathering;
-
-        Assert.True(QuestStepPlanner.IsGatheringDeliveryDone((Progress(1, 255, id: npc), gathering)));
-        Assert.False(QuestStepPlanner.IsGatheringDeliveryDone((Progress(1, 0, id: npc), gathering)));
-        Assert.False(QuestStepPlanner.IsGatheringDeliveryDone((Progress(2, 255, id: npc), gathering)));
-        Assert.False(QuestStepPlanner.IsGatheringDeliveryDone((Progress(1, 255, id: npc), QuestController.ECurrentQuestType.Normal)));
-        Assert.False(QuestStepPlanner.IsGatheringDeliveryDone((Progress(1, 255), gathering)));
-        Assert.False(QuestStepPlanner.IsGatheringDeliveryDone(null));
-    }
 }

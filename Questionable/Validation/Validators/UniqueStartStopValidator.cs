@@ -5,7 +5,7 @@ internal sealed class UniqueStartStopValidator : IQuestValidator
 {
     public IEnumerable<ValidationIssue> Validate(Quest quest)
     {
-        if (quest.Id is SatisfactionSupplyNpcId or AlliedSocietyDailyId or AetherCurrentId)
+        if (quest.Id is AlliedSocietyDailyId or AetherCurrentId)
             yield break;
 
         List<(QuestSequence Sequence, int StepId, QuestStep Step)> questAccepts =

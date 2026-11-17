@@ -762,8 +762,6 @@ internal sealed class QuestFunctions
     {
         if (elementId is QuestId questId)
             return IsQuestAccepted(questId);
-        if (elementId is SatisfactionSupplyNpcId)
-            return false;
         if (elementId is AlliedSocietyDailyId)
             return false;
         if (elementId is UnlockLinkId or AetherCurrentId)
@@ -778,8 +776,6 @@ internal sealed class QuestFunctions
     {
         if (elementId is QuestId questId)
             return IsQuestComplete(questId);
-        if (elementId is SatisfactionSupplyNpcId)
-            return false;
         if (elementId is AlliedSocietyDailyId)
             return false;
         if (elementId is UnlockLinkId unlockLinkId)
@@ -813,8 +809,6 @@ internal sealed class QuestFunctions
     {
         if (elementId is QuestId questId)
             return IsQuestLocked(questId, extraCompletedQuest);
-        if (elementId is SatisfactionSupplyNpcId satisfactionSupplyNpcId)
-            return (IsQuestLocked(satisfactionSupplyNpcId), null);
         if (elementId is AlliedSocietyDailyId alliedSocietyDailyId)
             return (IsQuestLocked(alliedSocietyDailyId), null);
         if (elementId is UnlockLinkId unlockLinkId)
@@ -928,13 +922,6 @@ internal sealed class QuestFunctions
             lockedReason.Add(_L("Limited time event"));
 
         return (lockedReason.Count > 0, lockedReason.ToArray());
-    }
-
-
-    private bool IsQuestLocked(SatisfactionSupplyNpcId satisfactionSupplyNpcId)
-    {
-        SatisfactionSupplyInfo questInfo = (SatisfactionSupplyInfo)catalog.GetQuestInfo(satisfactionSupplyNpcId);
-        return !ArePreviousQuestsMet(questInfo, extraCompletedQuest: null);
     }
 
     private bool IsQuestLocked(AlliedSocietyDailyId alliedSocietyDailyId)

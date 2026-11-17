@@ -9,10 +9,10 @@ namespace Questionable.Controller;
 internal sealed class QuestSelectionController(Configuration configuration)
 {
     private static readonly IQuestRule[] Rules =
-        [new SimulatedRule(), new NextRule(), new GatheringRule(), new PriorityRule(), new JournalRule()];
+        [new SimulatedRule(), new NextRule(), new PriorityRule(), new JournalRule()];
 
     public static bool ShouldQueueAcceptOnly(QuestSlots slots, EAutomationType automation) =>
-        slots.Simulated == null && slots.Next == null && slots.Gathering == null &&
+        slots.Simulated == null && slots.Next == null &&
         (automation == EAutomationType.Automatic || slots.Started == null);
 
     // Highest society rank first, so the daily limit isn't spent on the lowest-paying quests; then this zone first.
@@ -129,7 +129,7 @@ internal sealed class QuestSelectionController(Configuration configuration)
     public static ElementId? PickPriorityQuest(QuestSlots slots, bool stopRequested,
         Func<IEnumerable<PriorityQuestInfo>> priorityQuests)
     {
-        if (slots.Next != null || slots.Gathering != null || slots.Simulated != null || stopRequested)
+        if (slots.Next != null || slots.Simulated != null || stopRequested)
             return null;
 
         ElementId? questId = priorityQuests()
@@ -156,12 +156,6 @@ internal sealed class QuestSelectionController(Configuration configuration)
             context.Slots.Next is { } quest && context.State.IsReadyToAccept(quest.Quest.Id)
                 ? QuestChoice.ForSlot(EQuestSource.Next, quest)
                 : null;
-    }
-
-    private sealed class GatheringRule : IQuestRule
-    {
-        public QuestChoice? Offer(QuestSelectionContext context) =>
-            context.Slots.Gathering is { } quest ? QuestChoice.ForSlot(EQuestSource.Gathering, quest) : null;
     }
 
     // Only the first eligible priority quest is considered; if it can't take over, the journal's quest runs.
@@ -208,7 +202,7 @@ internal interface IQuestSelectionState
     QuestReference GetCurrentQuest(bool allowNewMsq, bool skipPriority = false);
 }
 
-internal sealed record QuestSlots(QuestProgress? Started, QuestProgress? Next, QuestProgress? Gathering, QuestProgress? Simulated);
+internal sealed record QuestSlots(QuestProgress? Started, QuestProgress? Next, QuestProgress? Simulated);
 
 internal sealed class QuestSelectionContext(
     QuestSlots slots,
@@ -234,7 +228,6 @@ internal enum EQuestSource
 {
     Simulated,
     Next,
-    Gathering,
     Priority,
     Journal,
 }
