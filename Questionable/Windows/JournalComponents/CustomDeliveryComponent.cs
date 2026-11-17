@@ -13,8 +13,6 @@ internal sealed class CustomDeliveryComponent(
     IDataManager dataManager,
     IDalamudPluginInterface pluginInterface)
 {
-    private readonly DragOrder<uint> _drag = new();
-
     public void DrawTab()
     {
         using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Custom Deliveries"));
@@ -39,21 +37,16 @@ internal sealed class CustomDeliveryComponent(
                 ? _L("Needs the Satisfy plugin (vsatisfy).")
                 : order.Count == 0
                     ? _L("Tick the NPCs to include with the box in front of their name.")
-                    : _L("Satisfy does the ticked NPCs in list order until this week's deliveries run out. Same as /qst deliveries."));
+                    : _L("Satisfy does the ticked NPCs from top to bottom until this week's deliveries run out. Same as /qst deliveries."));
 
         ImGui.SameLine();
         ImGui.TextUnformatted(_LF("Deliveries left this week: {0}/12", CustomDeliveries.WeeklyLeft));
 
-        List<DeliveryNpc> npcs = deliveries.GetNpcs();
-        List<DeliveryNpc> rows =
-        [
-            .. order.SelectMany(id => npcs.Where(x => x.RowId == id)),
-            .. npcs.Where(x => !order.Contains(x.RowId)),
-        ];
+        List<DeliveryNpc> rows = deliveries.GetNpcs();
 
-        ImGui.TextDisabled(_L("Click the craft, gather or fish item Satisfy should deliver to each NPC."));
+        ImGui.TextDisabled(_L("Deliver: what Satisfy does for that NPC (craft, gather or fish). Amber items are this week's bonus."));
 
-        using ImRaii.TableDisposable table = ImRaii.Table("CustomDeliveries", 8,
+        using ImRaii.TableDisposable table = ImRaii.Table("CustomDeliveries", 9,
             ImGuiTableFlags.RowBg | ImGuiTableFlags.BordersInnerH | ImGuiTableFlags.SizingFixedFit);
         if (!table)
             return;
@@ -63,6 +56,7 @@ internal sealed class CustomDeliveryComponent(
         ImGui.TableSetupColumn(_L("Satisfaction"));
         ImGui.TableSetupColumn(_L("Turn-ins"));
         ImGui.TableSetupColumn(_L("Achievement"));
+        ImGui.TableSetupColumn(_L("Deliver"));
         ImGui.TableSetupColumn(_L("Craft"));
         ImGui.TableSetupColumn(_L("Gather"));
         ImGui.TableSetupColumn(_L("Fish"));
@@ -73,15 +67,12 @@ internal sealed class CustomDeliveryComponent(
         {
             ImGui.TableNextRow();
             ImGui.TableNextColumn();
-            if (DrawOrder(order, npc.RowId))
-                return;
+            DrawTick(order, npc.RowId);
             ImGui.SameLine();
-            int index = order.IndexOf(npc.RowId);
-            string name = index >= 0 ? $"{index + 1}. {npc.Name}" : npc.Name;
             if (npc.Unlocked)
-                ImGui.TextUnformatted(name);
+                ImGui.TextUnformatted(npc.Name);
             else
-                ImGui.TextDisabled(name);
+                ImGui.TextDisabled(npc.Name);
 
             ImGui.TableNextColumn();
             ImGui.TextUnformatted(npc.Unlocked ? $"{npc.Rank}/5" : "-");
@@ -100,58 +91,67 @@ internal sealed class CustomDeliveryComponent(
             ImGui.TableNextColumn();
             if (npc.AchievementMax > 0)
             {
-                using (ImRaii.PushColor(ImGuiCol.PlotHistogram, QstTheme.Amber))
-                    ImGui.ProgressBar((float)npc.AchievementCur / npc.AchievementMax,
-                        new Vector2(110 * ImGuiHelpers.GlobalScale, 0), $"{npc.AchievementCur}/{npc.AchievementMax}");
-                if (ImGui.IsItemHovered() && npc.Max > 0)
+                ImGui.TextUnformatted($"{npc.AchievementCur}/{npc.AchievementMax}");
+                bool hovered = ImGui.IsItemHovered();
+                QstWidgets.ThinProgressBar((float)npc.AchievementCur / npc.AchievementMax, QstTheme.Amber);
+                if (hovered && npc.Max > 0)
                     ImGui.SetTooltip(_LF("{0:0.0} weeks to go", (npc.AchievementMax - npc.AchievementCur) / (float)npc.Max));
             }
+
+            ImGui.TableNextColumn();
+            DrawChoice(npc.RowId, chosen);
 
             for (int slot = 0; slot < 3; slot++)
             {
                 ImGui.TableNextColumn();
                 if (slot < npc.Requests.Length && npc.Requests[slot].ItemId != 0)
-                    DrawRequest(npc, slot, chosen);
+                    DrawRequest(npc.Requests[slot], (int)chosen == slot);
             }
         }
 
-        if (_drag.End(order))
-            pluginInterface.SavePluginConfig(configuration);
     }
 
-    // Returns true when the list changed, so the rest of this frame's rows are skipped.
-    private bool DrawOrder(List<uint> order, uint id)
+    private void DrawTick(List<uint> ticked, uint id)
     {
-        int index = order.IndexOf(id);
-        bool ticked = index >= 0;
-        if (ImGui.Checkbox($"##DeliveryNpc{id}", ref ticked))
-        {
-            if (ticked)
-                order.Add(id);
-            else
-                order.Remove(id);
-            pluginInterface.SavePluginConfig(configuration);
-            return true;
-        }
+        bool on = ticked.Contains(id);
+        if (!ImGui.Checkbox($"##DeliveryNpc{id}", ref on))
+            return;
 
-        ImGui.SameLine();
-        _drag.Handle(id, enabled: ticked && order.Count > 1);
-        return false;
+        if (on)
+            ticked.Add(id);
+        else
+            ticked.Remove(id);
+        ticked.Sort();
+        pluginInterface.SavePluginConfig(configuration);
     }
 
-    private void DrawRequest(DeliveryNpc npc, int slot, Configuration.EDeliveryItem chosen)
+    private void DrawChoice(uint npc, Configuration.EDeliveryItem chosen)
     {
-        DeliveryRequest request = npc.Requests[slot];
-        string name = dataManager.GetExcelSheet<Item>().GetRowOrDefault(request.ItemId)?.Name.ToString() ?? request.ItemId.ToString(CultureInfo.InvariantCulture);
-        using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.Amber, request.Bonus))
+        (FontAwesomeIcon Icon, string Name)[] kinds =
+            [(FontAwesomeIcon.Hammer, _L("Craft")), (FontAwesomeIcon.Leaf, _L("Gather")), (FontAwesomeIcon.Fish, _L("Fish"))];
+        using var id = ImRaii.PushId($"DeliveryChoice{npc}");
+        using var spacing = ImRaii.PushStyle(ImGuiStyleVar.ItemSpacing,
+            new Vector2(1f * ImGuiHelpers.GlobalScale, ImGui.GetStyle().ItemSpacing.Y));
+        for (int slot = 0; slot < kinds.Length; slot++)
         {
-            if (ImGui.Selectable($"{name}##Delivery{npc.RowId}_{slot}", (int)chosen == slot))
+            if (slot > 0)
+                ImGui.SameLine();
+            using var slotId = ImRaii.PushId(slot);
+            if (QstWidgets.SegmentToggle(kinds[slot].Icon, (int)chosen == slot,
+                    _LF("Satisfy delivers the {0} item.", kinds[slot].Name),
+                    _LF("Deliver the {0} item instead.", kinds[slot].Name)))
             {
-                configuration.General.DeliveryItems[npc.RowId] = (Configuration.EDeliveryItem)slot;
+                configuration.General.DeliveryItems[npc] = (Configuration.EDeliveryItem)slot;
                 pluginInterface.SavePluginConfig(configuration);
             }
         }
+    }
 
+    private void DrawRequest(DeliveryRequest request, bool picked)
+    {
+        string name = dataManager.GetExcelSheet<Item>().GetRowOrDefault(request.ItemId)?.Name.ToString() ?? request.ItemId.ToString(CultureInfo.InvariantCulture);
+        ImGui.TextColored(request.Bonus ? QstTheme.WithAlpha(QstTheme.Amber, picked ? 1f : 0.55f)
+            : picked ? QstTheme.Text : QstTheme.TextMuted, name);
         if (request.Bonus && ImGui.IsItemHovered())
             ImGui.SetTooltip(_L("Bonus this week"));
     }

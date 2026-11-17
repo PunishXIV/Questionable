@@ -83,7 +83,7 @@ internal sealed class QuickAccessComponent
     private void DrawDeliveriesButton()
     {
         string tooltip = satisfy.IsInstalled
-            ? _L("Has Satisfy do this week's custom deliveries for the NPCs ticked in Journal Progress, Custom Deliveries tab, in that order. Same as /qst deliveries.")
+            ? _L("Has Satisfy do this week's custom deliveries for the NPCs ticked in Journal Progress, Custom Deliveries tab. Same as /qst deliveries.")
             : _L("Satisfy (vsatisfy) is not available. Please install it first.");
         if (QstWidgets.RailButton(FontAwesomeIcon.Truck, _L("Custom Deliveries"), tooltip,
                 enabled: objectTable[0] != null && !questController.IsRunning && satisfy.IsInstalled))

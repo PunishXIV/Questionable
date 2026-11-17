@@ -19,7 +19,7 @@
 - Feature: Stop at the next aetheryte you attune to -Kage
 - Feature: "Redeem Reward Items" button in the quest window, and /qst redeem -Kage
 - Feature: Do dailies: tick allied societies in the journal and Questionable accepts and does their dailies in your order, highest rank first, until your allowances run out; also /qst dailies -Kage
-- Feature: Custom Deliveries tab in Journal Progress: every NPC's rank, satisfaction, turn-ins left, achievement progress and this week's requested items with the bonus marked; tick and order NPCs and pick craft, gather or fish for each, then "Do deliveries", the quest window button or /qst deliveries has Satisfy do them in that order (needs Satisfy) -Kage
+- Feature: Custom Deliveries tab in Journal Progress: every NPC's rank, satisfaction, turn-ins left, achievement progress and this week's requested items with the bonus marked; tick NPCs and pick craft, gather or fish for each, then "Do deliveries", the quest window button or /qst deliveries has Satisfy do them (needs Satisfy) -Kage
 - Feature: Mentor Roulette section on the Unlocks tab: every duty in the roulette with the quest that unlocks it -Kage
 - Feature: /qst zone window: "Add all to Priority Quests" -Kage
 - Feature: /qst skipstep skips a step you finished by hand -Kage

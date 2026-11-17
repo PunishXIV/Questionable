@@ -131,7 +131,7 @@ internal sealed class QuestStarter(
         }
 
         stopPolicy.CancelEnding();
-        foreach (uint npc in npcs)
+        foreach (uint npc in npcs.Order())
             questController.UnsafeEnqueueManualTask(new CustomDelivery.Task(npc, configuration.General.DeliveryItemFor(npc)));
         logger.LogInformation("Queued custom deliveries for Satisfy: {Npcs}",
             string.Join(", ", npcs.Select(x => $"{x} {configuration.General.DeliveryItemFor(x)}")));

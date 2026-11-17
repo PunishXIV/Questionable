@@ -57,6 +57,15 @@ Applies to new and changed code in `Questionable` and `Questionable.Tests`.
   - I18N keys, ImGui IDs and window names.
   - Names from Dalamud, Lumina and FFXIVClientStructs.
 
+## UI consistency
+
+Applies to every window, tab and widget in `Questionable`, without the human having to ask.
+
+- **Every card, button, toggle, dropdown and bar looks the same everywhere.** Reuse `QstWidgets` (`Card`, `Chip`, `RailButton`, `SegmentToggle`, `ThinProgressBar`, ...), the `ImGuiComponentsLocal` icon buttons and `QstTheme` colours (`Text`, `TextMuted`, `Amber`, `Accent`, ...).
+- **Look before you draw.** Search how QST already draws that kind of thing and copy it. Don't style a raw ImGui widget inline when a house version exists (e.g. a plain `ImGui.ProgressBar`, a `Selectable` used as a button, hand-picked alpha for muted text).
+- **One meaning per colour or highlight.** Don't make one element carry several signals (picked, bonus, clickable) through overlapping colours and backgrounds.
+- **Nothing fits?** Propose a new widget in `QstWidgets` rather than one-off styling.
+
 ## When to stop and hand back
 
 Per `CONTRIBUTING.md`: *"If you reach the point where you feel unwilling or unable to do the above, please close your issue or pull request."* Agents should surface this to the user when:
