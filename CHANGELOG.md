@@ -1,37 +1,24 @@
 - Feature: Questionable 2.0, rebuilt from the ground up -Kage
 - Feature: Configuration profiles -Kage
-- Feature: Quest on several characters in a row: tick characters (from AutoRetainer) in the Profiles tab, and when a stop condition is met Questionable logs in to the next one -Kage
-- Feature: Choose what happens when a run ends: run commands, travel somewhere with Lifestream, wait, then do nothing, log out or close the game -Kage
-  - Feature: A stop quest can switch to a priority preset and keep going instead of stopping -Kage
-- Feature: Community quest results: if you agree, Questionable shares whether each quest path worked, and the quest window and journal show how often a path worked for others ("19/20 worked") -Kage
-  - Feature: The ! button next to the quest buttons reports how a quest went, and a problem stop offers a "Send a report" link in chat -Kage
-  - Feature: Journal quest names turn red, orange or green when others reported problems, need a review or had it working -Kage
-- Feature: Collects the free job gear at levels 80, 89 and 99 between quests and puts on your best gear -Kage
-- Feature: Claims waiting Mog Station and reward mail at a delivery moogle between quests (needs Mogmail) -Kage
-- Feature: Runs the three new Hall of the Novice exercises between quests at levels 49 to 59 to get the Neophyte's Ring, which gives 30% more EXP up to level 60 (needs AutoDuty) -Kage
-- Feature: Uses a Vesper Bay ticket when the next step is in Vesper Bay or the Waking Sands and you're somewhere else -Kage
-- Feature: Fishing quests skip buying bait and fishing when the fish are already in your bags, e.g. bought on the market board -Kage
-- Feature: Option to keep your chocobo companion out, buying more Gysahl Greens when you run out (needs Knightshopper) -Kage
-- Feature: Option to retry the current step a few times when stuck before stopping -Kage
-- Feature: Duties without Duty Support open the Duty Finder or run unsynced; a slider sets how many levels above a duty you need to go unsynced -Kage
-- Feature: Journal Progress: XP and gil columns, saved filters, pinned headers and "Hide Completed Quests" -Kage
-- Feature: Priority Quests: a switch for whether priority quests interrupt the current one, "Change All to Normal Priority", an XP and gil total, Dawntrail tribe presets, field aether currents, "Unlock All Jobs" by level and "Add highest rank" for allied societies -Kage
-- Feature: Stop at the next aetheryte you attune to -Kage
-- Feature: "Redeem Reward Items" button in the quest window, and /qst redeem -Kage
-- Feature: Do dailies: tick allied societies in the journal and Questionable accepts and does their dailies in your order, highest rank first, until your allowances run out; a society you haven't unlocked yet gets its unlock quest done first, or you're told what it still needs; also /qst dailies -Kage
-- Feature: Custom Deliveries tab in Journal Progress: every NPC's rank, satisfaction, turn-ins left, achievement progress and this week's requested items with the bonus marked; tick NPCs and pick craft, gather or fish for each, then "Do deliveries", the quest window button or /qst deliveries has Satisfy do them (needs Satisfy) -Kage
-- Feature: Mentor Roulette section on the Unlocks tab: every duty in the roulette with the quest that unlocks it -Kage
-- Feature: /qst zone window: "Add all to Priority Quests" -Kage
-- Feature: /qst skipstep skips a step you finished by hand -Kage
-- Change: Other plugins now do more of the work: gathering through Gather & Chill, fishing through Feesh (WahTools) instead of AutoHook, buying quest items through Knightshopper, dungeons through AutoDuty and quest battles through Boss Mod's own modules -Kage
-- Change: The "Mine/Harvest with Questionable" option in the custom delivery window is gone; use the Custom Deliveries button instead -Kage
-- Change: Sahagin dailies are done together before turning them in, like the other allied societies -Kage
-- Change: The settings window is down to six tabs, and the Plugins tab lists every helper plugin in one table with install buttons and a button to open its settings -Kage
+- Feature: Quest on several characters in a row (AutoRetainer characters, Profiles tab) -Kage
+- Feature: Choose what happens when a run ends: run commands, travel with Lifestream, wait, log out or close the game; a stop quest can also switch to a priority preset -Kage
+- Feature: Community quest results: if you opt in, the quest window and journal show how often a path worked for others ("19/20 worked"), journal names are coloured by reports, and the ! button sends a report -Kage
+- Feature: Do dailies: tick allied societies in the journal and Questionable does their dailies, unlocking a society first when needed (/qst dailies) -Kage
+- Feature: Custom Deliveries tab: every NPC's progress and this week's items; Satisfy does the ticked ones (/qst deliveries, needs Satisfy) -Kage
+- Feature: Between quests: collects the free job gear at 80, 89 and 99, claims Mog Station mail (needs Mogmail) and runs the new Hall of the Novice for the Neophyte's Ring (needs AutoDuty) -Kage
+- Feature: Uses Vesper Bay tickets, keeps your chocobo out (needs Knightshopper) and skips fishing when you already have the fish -Kage
+- Feature: Option to retry a stuck step before stopping -Kage
+- Feature: Duties without Duty Support open the Duty Finder or run unsynced (the level gap is a setting) -Kage
+- Feature: Journal Progress: XP and gil columns, saved filters, "Hide Completed Quests" and Mentor Roulette unlocks -Kage
+- Feature: Priority Quests: interrupt switch, XP and gil total, and more presets (Dawntrail tribes, field aether currents, "Unlock All Jobs", highest society rank) -Kage
+- Feature: Stop at the next aetheryte, "Redeem Reward Items" (/qst redeem), /qst skipstep and "Add all to Priority Quests" in /qst zone -Kage
+- Change: Other plugins do more of the work: Gather & Chill, Feesh (replaces AutoHook), Knightshopper, AutoDuty and Boss Mod's quest battle modules -Kage
+- Change: Settings are down to six tabs; the Plugins tab lists every helper plugin with install and settings buttons -Kage
+- Change: Sahagin dailies are batched like the other societies -Kage
 - Change: Problems you can fix yourself show as plain chat messages instead of red errors -Kage
 - Change: Quest battles retry up to 5 times (a setting) -Kage
-- Change: Path-editing commands and menu items only show with Debug on -Kage
-- Change: Import and export of quest battle and duty settings removed -Kage
+- Change: Removed "Mine/Harvest with Questionable" (use Custom Deliveries) and quest battle/duty settings import/export; path-editing tools need Debug -Kage
 - Bug fix: The quest window no longer opens by itself during a duty -Kage
-- Bug fix: No more stalls when Questionable has to dismount before talking to someone -Kage
-- Bug fix: Steps that start from another zone teleport there again instead of stopping with "no route" -Kage
-- Bug fix: With "Start minimized" on, the quest window shows the right minimize button -Kage
+- Bug fix: No more stalls when dismounting to talk to someone -Kage
+- Bug fix: Steps that start in another zone teleport there instead of stopping with "no route" -Kage
+- Bug fix: "Start minimized" shows the right minimize button -Kage
