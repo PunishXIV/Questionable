@@ -145,7 +145,6 @@ internal static class JobGear
             };
             if (clientState.TerritoryType != vendor.TerritoryId)
                 yield return new AetheryteShortcut.Task(step, null, EAetheryteLocation.None, vendor.TerritoryId);
-            yield return new WaitNavmesh.Task();
             yield return new MoveTask(step, vendor.Position);
         }
 

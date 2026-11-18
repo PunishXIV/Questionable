@@ -25,7 +25,6 @@ internal sealed class CreationUtilsComponent
     IClientState clientState,
     IObjectTable objectTable,
     ITargetManager targetManager,
-    ICondition condition,
     IGameGui gameGui,
     IDataManager dataManager,
     Configuration configuration,
@@ -332,24 +331,20 @@ internal sealed class CreationUtilsComponent
         if (target != null)
         {
             ImGui.SameLine();
-            using (ImRaii.Disabled(!movementController.IsNavmeshReady || gameFunctions.IsOccupied()))
+            using (ImRaii.Disabled(gameFunctions.IsOccupied()))
             {
-                if (!movementController.IsPathfinding)
+                if (!movementController.IsPathRunning)
                 {
                     if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Bullseye, _L("To Target")))
                     {
                         movementController.NavigateTo(EMovementType.DebugWindow, GameFunctions.GetBaseId(target),
-                            target.Position, new()
-                            {
-                                Fly = condition[ConditionFlag.Mounted] && gameFunctions.IsFlyingUnlockedHere(),
-                                Sprint = true,
-                            });
+                            target.Position, new());
                     }
                 }
                 else
                 {
                     if (ImGui.Button(_L("Cancel pathfinding")))
-                        movementController.ResetPathfinding();
+                        movementController.Stop();
                 }
             }
             ImGui.SameLine();

@@ -14,14 +14,12 @@ internal sealed class DebugOverlay : Window
     private readonly IObjectTable _objectTable;
     private readonly QuestController _questController;
     private readonly QuestRegistry _questRegistry;
-    private readonly NavmeshIpc _navmeshIpc;
     internal Vector3? SavedPos;
     internal readonly Dictionary<int, Vector2> ScreenPosCache = [];
 
     public DebugOverlay(QuestController questController, QuestRegistry questRegistry, IGameGui gameGui,
         IClientState clientState, ICondition condition, AetheryteData aetheryteData, IObjectTable objectTable,
-        CombatController combatController, Configuration configuration, HighlightObject highlightObject,
-        NavmeshIpc navmeshIpc)
+        CombatController combatController, Configuration configuration, HighlightObject highlightObject)
         : base(_L("Questionable Debug Overlay") + "###QuestionableDebugOverlay",
             ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoBackground |
             ImGuiWindowFlags.NoInputs | ImGuiWindowFlags.NoSavedSettings, forceMainWindow: true)
@@ -36,7 +34,6 @@ internal sealed class DebugOverlay : Window
         _combatController = combatController;
         _configuration = configuration;
         _highlightObject = highlightObject;
-        _navmeshIpc = navmeshIpc;
 
         Position = Vector2.Zero;
         PositionCondition = ImGuiCond.Always;
@@ -199,7 +196,6 @@ internal sealed class DebugOverlay : Window
             $"SavedPos\n{SavedPos.Value.ToString("G5", CultureInfo.InvariantCulture)} [{(SavedPos.Value - _objectTable[0]!.Position).Length():N2}]");
     }
 
-    readonly Dictionary<Vector2, float> _flagFloorPos = [];
     private unsafe void DrawFlagPos()
     {
         if (!_configuration.Advanced.DebugOverlay || !_configuration.Advanced.ShowFlagPos)
@@ -210,16 +206,8 @@ internal sealed class DebugOverlay : Window
         var marker = agentMap->FlagMapMarkers[0];
         if (marker.TerritoryId != _clientState.TerritoryType)
             return;
-        Vector2 flagKey = new(marker.XFloat, marker.YFloat);
-        if (!_flagFloorPos.TryGetValue(flagKey, out float height))
-        {
-            Vector3? floor = _navmeshIpc.GetPointOnFloor(new Vector3(marker.XFloat, 1024, marker.YFloat), unlandable: true);
-            height = floor?.Y ?? 0;
-            // no navmesh yet: keep asking rather than caching a height of 0
-            if (floor != null)
-                _flagFloorPos[flagKey] = height;
-        }
-        Vector3 flagPos = new(marker.XFloat, height, marker.YFloat);
+        // The map flag has no height; the player's is close enough for a debug marker.
+        Vector3 flagPos = new(marker.XFloat, _objectTable[0]!.Position.Y, marker.YFloat);
         bool visible = _gameGui.WorldToScreen(flagPos, out Vector2 screenPos);
         if (!visible)
             return;

@@ -1,4 +1,5 @@
-﻿using Questionable.Model.Common.Converter;
+﻿using Questionable.Controller.Steps.Movement;
+using Questionable.Model.Common.Converter;
 namespace Questionable.Controller.Steps.Shared;
 
 internal static class AethernetShortcut
@@ -7,16 +8,18 @@ internal static class AethernetShortcut
     (
         AetheryteData aetheryteData,
         IClientState clientState,
-        IEnumerable<IOperationProvider> operationProviders)
+        IEnumerable<IOperationProvider> operationProviders,
+        TerritoryData territoryData)
         : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
             if (step.AethernetShortcut == null ||
-                ProviderTravel.IsHandled(sequence, step, operationProviders))
+                ProviderTravel.IsHandled(sequence, step, operationProviders) ||
+                Travel.CanTravel(step, clientState.TerritoryType, territoryData) &&
+                (step.Position != null || clientState.TerritoryType != step.TerritoryId))
                 yield break;
 
-            yield return new WaitNavmesh.Task();
             yield return new Task(step.AethernetShortcut.From, step.AethernetShortcut.To,
                 step.SkipConditions?.AethernetShortcutIf ?? new());
 
@@ -191,7 +194,6 @@ internal static class AethernetShortcut
             _moving = true;
             movementController.NavigateTo(EMovementType.Quest, (uint)Task.From, closestPoint, new()
             {
-                Sprint = true,
                 StopDistance = 0.25f,
             });
         }
@@ -211,7 +213,6 @@ internal static class AethernetShortcut
                                             !AetheryteConverter.IsLargeAetheryte(Task.From);
             movementController.NavigateTo(EMovementType.Quest, (uint)Task.From, aetheryteData.Locations[Task.From], new()
             {
-                Sprint = true,
                 StopDistance = distance,
                 VerticalStopDistance = isGoldSaucerShard ? 5f : null,
             });
@@ -257,7 +258,7 @@ internal static class AethernetShortcut
                 if (movementStartedAt == DateTime.MaxValue || movementStartedAt.AddSeconds(2) >= DateTime.Now)
                     return ETaskResult.StillRunning;
 
-                if (!movementController.IsPathfinding && !movementController.IsPathRunning)
+                if (!movementController.IsPathRunning)
                     _moving = false;
 
                 return ETaskResult.StillRunning;

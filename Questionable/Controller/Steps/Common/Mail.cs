@@ -120,7 +120,6 @@ internal static class Mail
                     tasks.Add(new Shared.AethernetShortcut.Task(moogle.City, to));
             }
 
-            tasks.Add(new WaitNavmesh.Task());
             tasks.Add(new MoveTask(step, moogle.Position));
             tasks.Add(new Take(moogle.NpcId));
             tasks.Add(new Done());

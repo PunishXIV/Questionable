@@ -65,7 +65,7 @@ internal static class Jump
 
         public override ETaskResult Update()
         {
-            if (movementController.IsPathfinding || movementController.IsPathRunning)
+            if (movementController.IsPathRunning)
                 return ETaskResult.StillRunning;
 
             DateTime movementStartedAt = movementController.StartedAt;

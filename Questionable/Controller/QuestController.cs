@@ -870,12 +870,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return true;
         }
 
-        if (_movementController.IsPathfinding)
-        {
-            DebugState = "Pathfinding is running";
-            return true;
-        }
-
         if (_movementController.IsPathRunning)
         {
             DebugState = "Path is running";

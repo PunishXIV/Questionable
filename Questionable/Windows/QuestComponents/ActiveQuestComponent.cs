@@ -251,17 +251,6 @@ internal sealed partial class ActiveQuestComponent
                 }
             }
 
-            var builtNavmeshPercent = movementController.BuiltNavmeshPercent;
-            var navmeshBarColor = QstTheme.Success;
-            if (builtNavmeshPercent > 100)
-            {
-                navmeshBarColor = QstTheme.Amber;
-                builtNavmeshPercent %= 100;
-            }
-            if (builtNavmeshPercent == 0)
-                builtNavmeshPercent = 100;
-            QstWidgets.ThinProgressBar((float)builtNavmeshPercent / 100, navmeshBarColor);
-
             DrawQuestButtons(currentQuest, currentStep, questWork, isMinimized);
         }
         catch (Exception e)

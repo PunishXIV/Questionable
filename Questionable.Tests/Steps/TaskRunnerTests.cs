@@ -444,7 +444,7 @@ public sealed class TaskRunnerTests
     {
         using var operations = new ExternalOperationFixture();
         using var fixture = new TaskRunnerFixture();
-        ITaskExecutor executor = new QuestBattle.WaitForExitExecutor(operations.BossMod, operations.Movement);
+        ITaskExecutor executor = new QuestBattle.WaitForExitExecutor(operations.BossMod);
         ITask task = new QuestBattle.WaitForExit(42);
         Assert.True(fixture.Queue.StartTask(executor, task));
         SeString message = "Event canceled.";

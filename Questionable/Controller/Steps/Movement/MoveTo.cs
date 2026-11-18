@@ -9,6 +9,7 @@ internal static class MoveTo
         IObjectTable objectTable,
         AetheryteData aetheryteData,
         IEnumerable<IOperationProvider> operationProviders,
+        TerritoryData territoryData,
         ILogger<Factory> logger) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
@@ -46,7 +47,16 @@ internal static class MoveTo
                 yield break;
             }
 
-            if (clientState.TerritoryType != step.TerritoryId)
+            bool inZone = clientState.TerritoryType == step.TerritoryId;
+            if (Travel.CanTravel(step, clientState.TerritoryType, territoryData))
+            {
+                yield return new Travel.Task(step.TerritoryId, destination, Travel.TalkTarget(step));
+                if (step is { Fly: true, Land: true })
+                    yield return new LandTask();
+                yield break;
+            }
+
+            if (!inZone)
             {
                 yield return new AetheryteShortcut.Task(step, quest.Id, EAetheryteLocation.None, step.TerritoryId);
                 if (step.AethernetShortcut is { })
@@ -61,9 +71,6 @@ internal static class MoveTo
             else
                 yield return new WaitCondition.Task(() => clientState.TerritoryType == step.TerritoryId,
                     $"Wait(territoro: {TerritoryData.GetNameAndId(step.TerritoryId)})");
-
-            if (!step.DisableNavmesh)
-                yield return new WaitNavmesh.Task();
 
             yield return new MoveTask(step, destination);
 

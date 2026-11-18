@@ -19,36 +19,31 @@ public sealed class NavigationFailureReportTests
         NavigationFailureSnapshot failure = new()
         {
             TimestampUtc = Now.AddMinutes(-2),
-            Reason = "TimedOut",
-            Message = "Pathfinding timed out after 30 seconds",
+            Reason = "ProviderFault",
+            Message = "MappingTheRealm could not finish the route",
             InnerExceptionType = "InvalidOperationException",
             InnerExceptionMessage = "Provider diagnostic",
             TerritoryId = 958,
             PlayerPosition = "1.25 2.5 3.75",
             Destination = "10 20 30",
             DataId = 1039882,
-            Fly = false,
-            NavmeshVersion = "1.2.3.14",
-            FloorPoint = "10 19 30",
-            NearestReachablePoint = "11 20 30",
             Quest = "4387_A Way Forward / 5 / 0",
             Task = "MoveTo(10, 20, 30)",
         };
 
         string text = TroubleshootingReport.DescribeFailure(failure, Now)!;
 
-        Assert.StartsWith("Last navigation failure (2m ago): TimedOut", text, StringComparison.Ordinal);
+        Assert.StartsWith("Last navigation failure (2m ago): ProviderFault", text, StringComparison.Ordinal);
         foreach (string expected in new[]
                  {
-                     "Pathfinding timed out after 30 seconds", "quest 4387_A Way Forward / 5 / 0",
+                     "MappingTheRealm could not finish the route", "quest 4387_A Way Forward / 5 / 0",
                      "task MoveTo(10, 20, 30)", "territory 958", "from 1.25 2.5 3.75 to 10 20 30",
-                     "target 1039882", "floor 10 19 30", "reachable 11 20 30", "vnav 1.2.3.14",
+                     "target 1039882",
                      "InvalidOperationException: Provider diagnostic",
                  })
         {
             Assert.Contains(expected, text, StringComparison.Ordinal);
         }
-        Assert.DoesNotContain("flying", text, StringComparison.Ordinal);
     }
 }
 

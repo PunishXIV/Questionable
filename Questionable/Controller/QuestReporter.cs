@@ -21,10 +21,11 @@ internal sealed class QuestReporter
     private static readonly TimeSpan RetryDelay = TimeSpan.FromMinutes(1);
     private static readonly TimeSpan FreshWindow = TimeSpan.FromMinutes(15);
 
-    // Plugins whose version helps reproduce a problem; the Worker accepts up to 12 entries.
+    // Plugins whose version helps reproduce a problem; the Worker accepts up to 16 entries,
+    // including Questionable and Paths.
     private static readonly string[] TrackedPlugins =
         ["BossMod", "vnavmesh", "TextAdvance", "Lifestream", "AutoDuty", "WrathCombo", "RotationSolver", "GatherChill",
-            "Knightshopper", "WahTools"];
+            "Knightshopper", "WahTools", "MappingTheRealm"];
 
     private readonly Configuration _configuration;
     private readonly Func<ReportApi.Body, Task<bool>> _send;

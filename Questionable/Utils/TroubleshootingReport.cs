@@ -68,10 +68,6 @@ internal static class TroubleshootingReport
             $"territory {failure.TerritoryId}",
             $"from {failure.PlayerPosition} to {failure.Destination}",
             failure.DataId == null ? null : $"target {failure.DataId}",
-            failure.Fly == true ? "flying" : null,
-            failure.FloorPoint == null ? null : $"floor {failure.FloorPoint}",
-            failure.NearestReachablePoint == null ? null : $"reachable {failure.NearestReachablePoint}",
-            failure.NavmeshVersion == null ? null : $"vnav {failure.NavmeshVersion}",
             failure.InnerExceptionMessage == null ? null : $"{failure.InnerExceptionType}: {failure.InnerExceptionMessage}",
         ];
         return string.Join(" | ", parts.OfType<string>());

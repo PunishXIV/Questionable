@@ -44,6 +44,7 @@ internal static class AetheryteShortcut
         IObjectTable objectTable,
         ExtraConditionUtils extraConditionUtils,
         IEnumerable<IOperationProvider> operationProviders,
+        TerritoryData territoryData,
         ILogger<AetheryteShortcut.Factory> logger)
         : ITaskFactory
     {
@@ -51,6 +52,14 @@ internal static class AetheryteShortcut
         {
             if (ProviderTravel.IsHandled(sequence, step, operationProviders))
                 yield break;
+
+            if (Travel.CanTravel(step, clientState.TerritoryType, territoryData) &&
+                (step.Position != null || clientState.TerritoryType != step.TerritoryId))
+            {
+                if (step.Position == null && (step.AetheryteShortcut != null || Territories.Contains(step.TerritoryId)))
+                    yield return new Travel.Task(step.TerritoryId, null, null);
+                yield break;
+            }
 
             if (step.AetheryteShortcut == null)
             {
@@ -72,8 +81,7 @@ internal static class AetheryteShortcut
                         yield return new Task(step, quest.Id, EAetheryteLocation.WesternThanalanHorizon, 140);
                         yield return new MoveTask(
                             TerritoryId: 140,
-                            Destination: new(-492.96475f, 20.999884f, -380.82272f),
-                            Fly: true);
+                            Destination: new(-492.96475f, 20.999884f, -380.82272f));
                         yield return new MoveTask(
                             TerritoryId: 140,
                             Destination: new(-480.9181f, 18.00103f, -386.862f));
@@ -85,8 +93,7 @@ internal static class AetheryteShortcut
                         travelled = true;
                         yield return new MoveTask(
                             TerritoryId: 212,
-                            Destination: new(23.23944f, 2.090454f, -0.015319824f),
-                            Sprint: true);
+                            Destination: new(23.23944f, 2.090454f, -0.015319824f));
                         yield return new Interact.Task(2001715, quest, EInteractionType.Interact);
                     }
                     if (step.Position != null && !matches(EExtraSkipCondition.WakingSandsSolar, step.Position.Value) &&
@@ -95,8 +102,7 @@ internal static class AetheryteShortcut
                         travelled = true;
                         yield return new MoveTask(
                             TerritoryId: 212,
-                            Destination: new(25.497803f, 2.090454f, -0.015319824f),
-                            Sprint: true);
+                            Destination: new(25.497803f, 2.090454f, -0.015319824f));
                         yield return new Interact.Task(2001717, quest, EInteractionType.Interact);
                     }
                 }
@@ -110,8 +116,7 @@ internal static class AetheryteShortcut
                         yield return new Task(step, quest.Id, EAetheryteLocation.MorDhona, 156);
                         yield return new MoveTask(
                             TerritoryId: 156,
-                            Destination: new(21.133728f, 22.323914f, -631.281f),
-                            Sprint: true);
+                            Destination: new(21.133728f, 22.323914f, -631.281f));
                         yield return new Interact.Task(2002881, quest, EInteractionType.Interact);
                         yield return new WaitAtEnd.TerritoryEntered(351);
                     }
@@ -121,8 +126,7 @@ internal static class AetheryteShortcut
                         travelled = true;
                         yield return new MoveTask(
                          TerritoryId: 351,
-                         Destination: new(-0.015319824f, -1.0223389f, -26.779602f),
-                            Sprint: true);
+                         Destination: new(-0.015319824f, -1.0223389f, -26.779602f));
                         yield return new Interact.Task(2002878, quest, EInteractionType.Interact);
                     }
                     if (step.Position != null && !matches(EExtraSkipCondition.RisingStonesSolar, step.Position.Value) &&
@@ -131,8 +135,7 @@ internal static class AetheryteShortcut
                         travelled = true;
                         yield return new MoveTask(
                             TerritoryId: 351,
-                            Destination: new(-0.015319824f, -1.0223389f, -29.251587f),
-                            Sprint: true);
+                            Destination: new(-0.015319824f, -1.0223389f, -29.251587f));
                         yield return new Interact.Task(2002880, quest, EInteractionType.Interact);
                     }
                 }
@@ -259,11 +262,8 @@ internal static class AetheryteShortcut
             new MoveTask(
                 TerritoryId: WesternThanalan,
                 VesperBayLanding,
-                Mount: null,
                 StopDistance: 0.25f,
                 DataId: null,
-                DisableNavmesh: true,
-                Sprint: false,
                 InteractionType: EInteractionType.WalkTo)
         ];
 
@@ -677,8 +677,7 @@ internal static class AetheryteShortcut
             Vector3 closestPoint = AetherytesToMoveFrom[Task.TargetAetheryte]
                 .MinBy(x => Vector3.Distance(x, playerPosition));
             MoveTask task = new(aetheryteData.TerritoryIds[Task.TargetAetheryte],
-                closestPoint, Mount: false, 0.25f, DisableNavmesh: true,
-                InteractionType: EInteractionType.None, RestartNavigation: false);
+                closestPoint, 0.25f);
             return moveExecutor.Start(task);
         }
 

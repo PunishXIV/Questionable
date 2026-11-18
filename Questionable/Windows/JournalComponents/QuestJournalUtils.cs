@@ -307,8 +307,6 @@ internal sealed class QuestJournalUtils
         if (location.Territory.RowId.Equals(Svc.ClientState.TerritoryType))
             movementController.NavigateTo(EMovementType.None, questInfo.IssuerDataId, location.Position, new()
             {
-                Fly = GameFunctions.IsFlyingUnlocked(location.Territory.RowId),
-                Sprint = true,
                 StopDistance = 20f,
                 VerticalStopDistance = 5f,
             });

@@ -23,6 +23,7 @@ internal sealed class ExternalOperationFixture : IDisposable
     public AutoDutyIpc AutoDuty { get; }
     public BossModIpc BossMod { get; }
     public NavmeshIpc Navmesh { get; }
+    public MappingTheRealmIpc MappingTheRealm { get; } = new(NullLogger<MappingTheRealmIpc>.Instance);
     public CraftingState Crafting { get; }
     public PurchaseState Purchase { get; }
     public GatheringState Gathering { get; }
@@ -48,10 +49,9 @@ internal sealed class ExternalOperationFixture : IDisposable
         Feesh = new(NullLogger<FeeshIpc>.Instance, Fishing, Framework);
         AutoDuty = new();
         BossMod = new(new Configuration(), null!, Substitute.For<ICommandManager>());
-        Navmesh = new(NullLogger<NavmeshIpc>.Instance);
-        Movement = new(Navmesh, Client, null!, null!, Condition, null!, Objects,
-            null!, Substitute.For<IChatGui>(), Framework, new Lazy<OperationCoordinator>(() => Coordinator!),
-            null!, NullLogger<MovementController>.Instance);
+        Navmesh = new();
+        Movement = new(MappingTheRealm, Client, null!, null!, Objects,
+            Framework, new Lazy<OperationCoordinator>(() => Coordinator!), NullLogger<MovementController>.Instance);
         Combat = new(combatModules ?? [], Movement, Substitute.For<ITargetManager>(), Objects,
             Condition, Client, null!, null!, Framework, NullLogger<CombatController>.Instance);
         GatheringController = new(Gather, Gathering, Movement);
@@ -83,5 +83,6 @@ internal sealed class ExternalOperationFixture : IDisposable
         Combat.Dispose();
         _dutyProvider.Dispose();
         Feesh.Dispose();
+        MappingTheRealm.Dispose();
     }
 }

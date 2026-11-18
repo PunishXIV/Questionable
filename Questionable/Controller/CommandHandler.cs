@@ -36,7 +36,6 @@ internal sealed class CommandHandler : IDisposable
     private readonly EventInfoComponent _eventInfoComponent;
     private readonly OpenQuestCleanUp _openQuestCleanUp;
     private readonly ITargetManager _targetManager;
-    private readonly RouteCheck _routeCheck;
     private readonly DailiesController _dailiesController;
 
     private IReadOnlyList<uint> _lastUnlockLinks = [];
@@ -66,7 +65,6 @@ internal sealed class CommandHandler : IDisposable
         QuestData questData,
         EventInfoComponent eventInfoComponent,
         OpenQuestCleanUp openQuestCleanUp,
-        RouteCheck routeCheck,
         DailiesController dailiesController)
     {
         _dailiesController = dailiesController;
@@ -94,7 +92,6 @@ internal sealed class CommandHandler : IDisposable
         _questData = questData;
         _eventInfoComponent = eventInfoComponent;
         _openQuestCleanUp = openQuestCleanUp;
-        _routeCheck = routeCheck;
 
         _clientState.Logout += OnLogout;
         // Shown in the plugin installer; the Debug-only commands stay out of it.
@@ -305,17 +302,6 @@ internal sealed class CommandHandler : IDisposable
                         : null);
                 break;
 
-            case "navcheck":
-                if (parts.Length > 1 && parts[1] == "zones")
-                    _routeCheck.PrintZones();
-                else if (parts.Length > 1 && parts[1] == "all")
-                    _routeCheck.StartAll();
-                else if (parts.Length > 1 && parts[1] == "stop")
-                    _routeCheck.Stop();
-                else
-                    _routeCheck.Start();
-                break;
-
             case "eventquests":
                 var eventQuests = _eventInfoComponent.GetActiveQuests().Select(q => q.ToString()).ToArray();
                 if (eventQuests.Length > 0)
@@ -440,7 +426,7 @@ internal sealed class CommandHandler : IDisposable
     // Debug tools; without Debug they answer like an unknown command.
     internal static bool NeedsDebug(string subcommand) =>
         subcommand is "do" or "sim" or "mountid" or "gen" or "d2qwh" or "d2qwl" or "rewards" or "tname" or "jobgear" or
-            "navcheck" or "eventquests" or "unlock-links" or "taxi" or "festivals" or "loc";
+            "eventquests" or "unlock-links" or "taxi" or "festivals" or "loc";
 
     private void PrintUnknown(string subcommand) =>
         _chatGui.PrintError(_LF("Unknown subcommand {0}", subcommand), MessageTag, TagColor);

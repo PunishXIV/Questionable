@@ -95,6 +95,7 @@ internal static class ServiceCollectionExtensions
         serviceCollection
             .AddTaskFactoryAndExecutor<WaitAtStart.WaitDelay, WaitAtStart.Factory, WaitAtStart.WaitDelayExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<MoveTask, MoveTo.Factory, MoveExecutor>();
+        serviceCollection.AddTaskExecutor<Travel.Task, Travel.Executor>();
         serviceCollection.AddTaskExecutor<WaitForNearDataId, WaitForNearDataIdExecutor>();
         serviceCollection.AddTaskExecutor<LandTask, LandExecutor>();
         serviceCollection
@@ -158,7 +159,6 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskExecutor<QuestBattle.DisableAi, QuestBattle.DisableAiExecutor>();
 
         serviceCollection.AddTaskExecutor<WaitCondition.Task, WaitCondition.Executor>();
-        serviceCollection.AddTaskExecutor<WaitNavmesh.Task, WaitNavmesh.Executor>();
         serviceCollection.AddTaskFactory<WaitAtEnd.Factory>();
         serviceCollection.AddTaskExecutor<WaitAtEnd.WaitDelay, WaitAtEnd.WaitDelayExecutor>();
         serviceCollection.AddTaskExecutor<WaitAtEnd.NextStepOrSequence, WaitAtEnd.NextStepOrSequenceExecutor>();

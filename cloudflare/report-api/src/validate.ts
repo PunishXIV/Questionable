@@ -31,7 +31,7 @@ export const PATH = /^[0-9a-f]{16}$/;
 const VERSION_KEY = /^[A-Za-z0-9 ._&'()-]{1,40}$/;
 const PRINTABLE = /^[\x20-\x7E]*$/;
 
-const MAX_VERSIONS = 12;
+const MAX_VERSIONS = 16;
 const MAX_VERSION_LENGTH = 32;
 const MAX_ACTIONS = 10;
 const MAX_ACTION_LENGTH = 160;

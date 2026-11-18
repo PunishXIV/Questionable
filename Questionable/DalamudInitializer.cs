@@ -121,7 +121,7 @@ internal sealed class DalamudInitializer : IDisposable
             _questController.RecordNavigationFailure(e);
             _logger.LogError(e, "Navigation failed ({Reason}), quest {Quest}, NeverFly:{NeverFly}",
                 e.Reason, _questController.CurrentQuest?.ToString(), _configuration.Advanced.NeverFly);
-            string text = GetPathfindingError(e.Reason, _configuration.Advanced.NeverFly);
+            string text = GetPathfindingError(e.Reason);
             if (IsPlayerCaused(e.Reason))
                 _chatGui.Print(text, CommandHandler.MessageTag, CommandHandler.TagColor);
             else
@@ -130,36 +130,19 @@ internal sealed class DalamudInitializer : IDisposable
         }
     }
 
-    // Movement the player or another plugin paused isn't a failed path.
+    // Movement another plugin is doing isn't a failed path.
     internal static bool IsPlayerCaused(MovementController.PathfindingFailureReason reason) =>
-        reason is MovementController.PathfindingFailureReason.MovementDisabled
-            or MovementController.PathfindingFailureReason.MovementBlocked;
+        reason is MovementController.PathfindingFailureReason.MovementBlocked;
 
-    internal static string GetPathfindingError(MovementController.PathfindingFailureReason reason, bool neverFly) => reason switch
+    internal static string GetPathfindingError(MovementController.PathfindingFailureReason reason) => reason switch
     {
-        MovementController.PathfindingFailureReason.MovementDisabled =>
-            _L("Navigation stopped because movement is disabled in vnavmesh. Re-enable it when you are ready, then resume QST."),
-        MovementController.PathfindingFailureReason.StatusUnavailable =>
-            _L("Navigation stopped because vnavmesh's movement status could not be checked. Check that vnavmesh is loaded before resuming QST."),
-        MovementController.PathfindingFailureReason.StartFailed =>
-            _L("Navigation could not be started. Check /xllog for the underlying error before resuming QST."),
-        MovementController.PathfindingFailureReason.NotArrived =>
-            _L("Movement stopped before reaching the destination. Use Stuck? to copy troubleshooting information if this keeps happening."),
         MovementController.PathfindingFailureReason.MovementBlocked =>
-            _L("Navigation stopped because another plugin is travelling or vnavmesh has a pending movement request. Wait for that activity to finish before resuming QST."),
+            _L("Navigation stopped because another plugin is moving your character. Wait for it to finish before resuming QST."),
         MovementController.PathfindingFailureReason.Unavailable =>
-            _L("Navigation stopped because vnavmesh is not available. Check that vnavmesh is loaded, then resume QST."),
-        MovementController.PathfindingFailureReason.TimedOut =>
-            _L("Navigation stopped because pathfinding exceeded 30 seconds. If this keeps happening, use Stuck? to copy troubleshooting information and include the /xllog error."),
+            _L("Navigation stopped because MappingTheRealm is not available. Install or enable it on the Plugins tab, then resume QST."),
         MovementController.PathfindingFailureReason.Cancelled =>
-            _L("Navigation stopped because vnavmesh cancelled the pathfinding request. Resume QST when navigation is available."),
-        MovementController.PathfindingFailureReason.NoRoute when neverFly =>
-            _L("vnavmesh returned no route. Flying is disabled in QST config > Advanced; enable it if this route requires flying."),
-        MovementController.PathfindingFailureReason.NoRoute =>
-            _L("vnavmesh returned no route from your current position. If this keeps happening, use Stuck? to copy troubleshooting information and describe where you became stuck."),
-        MovementController.PathfindingFailureReason.LandingFailed =>
-            _L("Navigation stopped because landing did not complete. Land in a suitable place, then resume QST."),
-        _ => _L("Navigation failed. Check /xllog for the underlying error; include it with the Stuck? troubleshooting information if you report the problem."),
+            _L("Navigation stopped because MappingTheRealm cancelled the route. Resume QST when you're ready."),
+        _ => _L("MappingTheRealm couldn't finish the route. Use Stuck? to copy troubleshooting information if this keeps happening."),
     };
 
     private void OnToast(ref SeString message, ref ToastOptions options, ref bool isHandled) => _logger.LogTrace("Normal Toast: {Message}", message);

@@ -32,7 +32,6 @@ global using Microsoft.Extensions.Logging;
 global using Questionable.Controller;
 global using Questionable.Controller.CombatModules;
 global using Questionable.Controller.GameUi;
-global using Questionable.Controller.NavigationOverrides;
 global using Questionable.Controller.Operations;
 global using Questionable.Controller.Steps;
 global using Questionable.Controller.Steps.Common;

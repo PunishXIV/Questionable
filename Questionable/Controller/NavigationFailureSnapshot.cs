@@ -12,16 +12,8 @@ internal sealed record NavigationFailureSnapshot
     public string? PlayerPosition { get; init; }
     public string? Destination { get; init; }
     public uint? DataId { get; init; }
-    public bool? Fly { get; init; }
     public float? StopDistance { get; init; }
     public double? ElapsedMilliseconds { get; init; }
-    public string? NavmeshVersion { get; init; }
-    public bool? MovementAllowed { get; init; }
-    public bool? SimpleMoveInProgress { get; init; }
-    public bool? PathfindInProgress { get; init; }
-    public int? QueuedPathfinds { get; init; }
-    public string? FloorPoint { get; init; }
-    public string? NearestReachablePoint { get; init; }
     public string? Quest { get; init; }
     public string? Task { get; init; }
 }

@@ -155,18 +155,9 @@ internal static class QuestBattle
 
     internal sealed class WaitForExitExecutor
     (
-        BossModIpc bossModIpc,
-        MovementController movementController)
-        : TaskExecutor<WaitForExit>, IStoppable, IDebugStateProvider
+        BossModIpc bossModIpc)
+        : TaskExecutor<WaitForExit>, IStoppable
     {
-        public string? GetDebugState()
-        {
-            if (!movementController.IsNavmeshReady)
-                return $"Navmesh: {movementController.BuiltNavmeshPercent}%";
-
-            return null;
-        }
-
         public override unsafe ETaskResult Update()
         {
             bossModIpc.PollQuestBattle();

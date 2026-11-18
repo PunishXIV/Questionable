@@ -51,11 +51,8 @@ internal static class UseItem
                     new MoveTask(
                         TerritoryId: 140,
                         AetheryteShortcut.VesperBayLanding,
-                        Mount: null,
                         StopDistance: 0.25f,
                         DataId: null,
-                        DisableNavmesh: true,
-                        Sprint: false,
                         InteractionType: EInteractionType.WalkTo)
                 ];
             }
@@ -103,7 +100,7 @@ internal static class UseItem
             yield return new AetheryteShortcut.Task(Step: null, ElementId: null, EAetheryteLocation.Limsa, territoryId);
             yield return new AethernetShortcut.Task(EAetheryteLocation.Limsa, EAetheryteLocation.LimsaArcanist);
             yield return new WaitAtEnd.WaitDelay();
-            yield return new MoveTask(territoryId, destination, DataId: npcId, Sprint: false,
+            yield return new MoveTask(territoryId, destination, DataId: npcId,
                 InteractionType: EInteractionType.WalkTo);
             yield return new Interact.Task(npcId, Quest: null, EInteractionType.None, SkipMarkerCheck: true);
         }

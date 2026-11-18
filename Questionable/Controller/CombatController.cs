@@ -148,8 +148,7 @@ internal sealed class CombatController : IDisposable
             return EStatus.Complete;
         CountKillOfLastTarget();
 
-        if (_movementController.IsPathfinding ||
-            _movementController.IsPathRunning ||
+        if (_movementController.IsPathRunning ||
             _movementController.StartedAt > DateTime.Now.AddSeconds(-1))
             return EStatus.Moving;
 
@@ -471,7 +470,7 @@ internal sealed class CombatController : IDisposable
 
     private bool IsMovingOrShouldMove(IGameObject gameObject)
     {
-        if (_movementController.IsPathfinding || _movementController.IsPathRunning)
+        if (_movementController.IsPathRunning)
             return true;
 
         if (DateTime.Now > _currentFight!.LastDistanceCheck.AddSeconds(10))
