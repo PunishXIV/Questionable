@@ -86,6 +86,11 @@ internal sealed class PluginConfigComponent
             new("https://github.com/awgil/ffxiv_navmesh/"),
             new("https://puni.sh/api/repository/veyn"),
             "/vnav"),
+        new("MappingTheRealm",
+            "MappingTheRealm",
+            _L("Travel between zones"),
+            new("https://github.com/Knightmore"),
+            new("https://puni.sh/api/repository/knightmore")),
         new("Lifestream",
             "Lifestream",
             _L("Aethernet and world travel"),
@@ -104,11 +109,6 @@ internal sealed class PluginConfigComponent
 
     private readonly IReadOnlyList<PluginInfo> _recommendedPlugins =
     [
-        new("MappingTheRealm",
-            "MappingTheRealm",
-            _L("Travel between zones"),
-            new("https://github.com/Knightmore"),
-            new("https://puni.sh/api/repository/knightmore")),
         new("Artisan",
             "Artisan",
             _L("Crafting quests"),

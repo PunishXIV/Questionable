@@ -17,7 +17,7 @@
 - Feature: Journal Progress: XP and gil columns, saved filters, "Hide Completed Quests" and Mentor Roulette unlocks -Kage
 - Feature: Priority Quests: interrupt switch, XP and gil total, and more presets (Dawntrail tribes, field aether currents, "Unlock All Jobs", highest society rank) -Kage
 - Feature: Stop at the next aetheryte, "Redeem Reward Items" (/qst redeem), /qst skipstep and "Add all to Priority Quests" in /qst zone -Kage
-- Change: Travel between zones uses MappingTheRealm -Kage
+- Change: Travel between zones uses MappingTheRealm, which is now a required plugin -Kage
 - Change: Other plugins do more of the work: Gather & Chill, Feesh (replaces AutoHook), Knightshopper (also the chocobo license from your Grand Company), AutoDuty and Boss Mod's quest battle modules -Kage
 - Change: Settings are down to six tabs; the Plugins tab lists every helper plugin with install and settings buttons -Kage
 - Change: Sahagin dailies are batched like the other societies -Kage
