@@ -33,12 +33,14 @@ internal static class Travel
     {
         private Route? _route;
         private bool _started;
+        private bool _arrived;
 
         protected override bool Start()
         {
             _route = null;
             _started = false;
-            if (Task.Position == null && clientState.TerritoryType == Task.TerritoryId)
+            _arrived = clientState.TerritoryType == Task.TerritoryId;
+            if (Task.Position == null && _arrived)
                 return false;
 
             if (!mappingTheRealm.IsReady())
@@ -46,18 +48,27 @@ internal static class Travel
 
             // A route from a stopped run can still be moving; Stop only cancels routes Questionable started.
             mappingTheRealm.Stop();
-            _route = mappingTheRealm.Travel(Task.TerritoryId, Task.ById && Task.DataId != null ? null : Task.Position, Task.DataId);
+            Go();
             return true;
         }
 
+        private void Go() =>
+            _route = mappingTheRealm.Travel(Task.TerritoryId, Task.ById && Task.DataId != null ? null : Task.Position, Task.DataId);
+
         public override ETaskResult Update()
         {
-            // 1.0.0.2's PathToTerritory aims at the zone gate in the old zone (129 -> 128 became "T129, gate 2210434")
-            // and fails once the gate moves the player, so a zone-only leg ends on arrival.
-            if (Task.Position == null && Task.DataId == null && clientState.TerritoryType == Task.TerritoryId)
+            // 1.0.0.2 plans a cross-zone route to the zone gate in the old zone (129 -> 128 became "T129, gate 2210434")
+            // and fails once the gate moves the player, so a leg ends or starts over on arrival.
+            if (!_arrived && clientState.TerritoryType == Task.TerritoryId)
             {
+                _arrived = true;
                 mappingTheRealm.Stop();
-                return ETaskResult.TaskComplete;
+                if (Task.Position == null && Task.DataId == null)
+                    return ETaskResult.TaskComplete;
+
+                _started = false;
+                Go();
+                return ETaskResult.StillRunning;
             }
 
             if (mappingTheRealm.GetPathing() == true)
