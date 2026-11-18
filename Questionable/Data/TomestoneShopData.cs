@@ -12,6 +12,20 @@ internal sealed class TomestoneShopData(IDataManager dataManager)
         .. dataManager.GetExcelSheet<TomestonesItem>().Select(x => x.Tomestones.RowId).Where(x => x != 0)
     ]);
 
+    private readonly Lazy<IReadOnlyList<uint>> _items = new(() =>
+    [
+        .. dataManager.GetExcelSheet<SpecialShop>()
+            .Where(shop => shop.UseCurrencyType == TomestoneShopType)
+            .SelectMany(shop => shop.Item)
+            .Where(entry => entry.ItemCosts.Any(x => x.ItemCost.RowId != 0))
+            .SelectMany(entry => entry.ReceiveItems.Select(x => x.Item.RowId))
+            .Where(x => x != 0)
+            .Distinct()
+    ]);
+
+    // Every item a tomestone shop sells.
+    public IReadOnlyList<uint> Items => _items.Value;
+
     public bool IsSoldForTomestones(uint shopId, uint itemId)
     {
         if (dataManager.GetExcelSheet<SpecialShop>().GetRowOrDefault(shopId) is not { } shop)

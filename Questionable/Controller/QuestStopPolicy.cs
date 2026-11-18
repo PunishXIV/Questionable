@@ -285,6 +285,9 @@ internal sealed class QuestStopPolicy
         PrintLevelStop(quest, playerLevel);
     }
 
+    public void ReportOnlySetAsideLeft(int count) =>
+        Print(_LF("Stopped: the {0} quest(s) left wait on a duty you run yourself. Run it, then press Start.", count));
+
     public void ReportMainScenarioLocked(IQuestInfo quest, int playerLevel)
     {
         _logger.LogInformation("Stopping automation, next MSQ {QuestId} needs level {QuestLevel} (player level {PlayerLevel})",

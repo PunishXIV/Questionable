@@ -147,7 +147,8 @@ internal sealed class QuestSelectionController(Configuration configuration)
     private sealed class NextRule : IQuestRule
     {
         public QuestChoice? Offer(QuestSelectionContext context) =>
-            context.Slots.Next is { } quest && context.State.IsReadyToAccept(quest.Quest.Id)
+            context.Slots.Next is { } quest && context.State.IsReadyToAccept(quest.Quest.Id) &&
+            !SetAsideQuests.Contains(quest.Quest.Id, quest.Sequence)
                 ? QuestChoice.ForSlot(EQuestSource.Next, quest)
                 : null;
     }
@@ -158,7 +159,7 @@ internal sealed class QuestSelectionController(Configuration configuration)
         public QuestChoice? Offer(QuestSelectionContext context)
         {
             Quest? candidate = context.PriorityQuests
-                .Where(x => !context.IsAcceptOnly(x.Id))
+                .Where(x => !context.IsAcceptOnly(x.Id) && !SetAsideQuests.Contains(x.Id, context.State.GetSequence(x.Id)))
                 .FirstOrDefault(x => context.State.IsReadyToAccept(x.Id, ignoreLevel: true) || context.State.IsAccepted(x.Id));
             if (candidate == null || !CanSwitchToPriorityQuest(context.Slots.Started, candidate.Id, context.State.InDuty))
                 return null;

@@ -1,0 +1,139 @@
+using ECommons.ExcelServices;
+using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using Lumina.Excel.Sheets;
+using Questionable.Controller.Steps.Shared;
+using static Questionable.Controller.Steps.ITaskExecutor;
+
+namespace Questionable.Controller.Steps.Interactions;
+
+// When the story is too high: AutoDuty dungeon runs for level, tomestone accessories and then runs for item level.
+[RegisterSingleton]
+internal sealed class StoryCatchUp(
+    AutoDutyProvider autoDuty,
+    TerritoryData territoryData,
+    TomestoneShopData tomestoneShopData,
+    GearStatsCalculator gearStats,
+    Configuration configuration,
+    IDataManager dataManager,
+    IChatGui chatGui,
+    ILogger<StoryCatchUp> logger)
+{
+    private const int MaxRunsWithoutGain = 5;
+    private const int EarSlot = 8, NeckSlot = 9, WristSlot = 10, RingSlot = 11, OtherRingSlot = 12;
+    private readonly HashSet<uint> _boughtFor = [];
+    private readonly Dictionary<uint, (int Runs, int ItemLevel)> _gearRuns = [];
+
+    public bool Enabled => configuration.Duties.CatchUpForStory && configuration.Duties.RunInstancedContentWithAutoDuty;
+
+    // The highest Duty Support dungeon the player can enter that AutoDuty has a path for.
+    internal static TerritoryData.CfcData? PickDungeon(IEnumerable<TerritoryData.CfcData> duties, int playerLevel,
+        Func<uint, bool> hasSupport, Func<uint, bool> hasPath) =>
+        duties
+            .Where(x => x.ContentType == EContentType.Dungeons && x.RequiredLevel > 0 && x.RequiredLevel <= playerLevel &&
+                        hasSupport(x.Id))
+            .OrderByDescending(x => x.RequiredLevel)
+            .ThenByDescending(x => x.ClassJobLevelSync)
+            .FirstOrDefault(x => hasPath(x.Id));
+
+    internal sealed record Accessory(uint ItemId, int Slot, int ItemLevel);
+
+    // Per slot the best offered piece, kept only when it beats what's worn there.
+    internal static List<uint> PickAccessories(IEnumerable<Accessory> offered, Func<int, int> wornLevel) =>
+        offered.GroupBy(x => x.Slot)
+            .Select(x => x.MaxBy(y => y.ItemLevel)!)
+            .Where(x => x.ItemLevel > wornLevel(x.Slot))
+            .Select(x => x.ItemId)
+            .ToList();
+
+    public ITask? LevelRun(string reason, int playerLevel)
+    {
+        if (PickDungeon(territoryData.AllCfcs, playerLevel, territoryData.HasDutySupport, autoDuty.HasPath) is not { } dungeon)
+        {
+            logger.LogInformation("No dungeon to level in at level {Level}", playerLevel);
+            return null;
+        }
+
+        chatGui.Print(_LF("{0}: running '{1}' with AutoDuty to catch up.", reason, dungeon.Name),
+            CommandHandler.MessageTag, CommandHandler.TagColor);
+        return new Duty.StartAutoDutyTask(dungeon.Id, Duty.Mode.Support);
+    }
+
+    // Null lets the duty's own item level check stop as before.
+    public List<ITask>? GearUp(TerritoryData.CfcData duty, int playerLevel, short itemLevel)
+    {
+        string reason = _LF("'{0}' needs item level {1} (you have {2})", duty.Name, duty.RequiredItemLevel, itemLevel);
+        if (_boughtFor.Add(duty.Id) && AccessoryBuys(playerLevel) is { Count: > 0 } buys)
+        {
+            chatGui.Print(_LF("{0}: buying {1} accessories with tomestones.", reason, buys.Count),
+                CommandHandler.MessageTag, CommandHandler.TagColor);
+            return [.. buys, new EquipRecommended.EquipTask(), new Replan()];
+        }
+
+        (int runs, int lastItemLevel) = _gearRuns.GetValueOrDefault(duty.Id, (0, itemLevel));
+        if (itemLevel > lastItemLevel)
+            runs = 0;
+        if (runs >= MaxRunsWithoutGain)
+            return null;
+
+        if (LevelRun(reason, playerLevel) is not { } run)
+            return null;
+
+        _gearRuns[duty.Id] = (runs + 1, itemLevel);
+        return [run, new EquipRecommended.EquipTask(), new Replan()];
+    }
+
+    public short? ItemLevel() => Duty.StartAutoDutyExecutor.GetItemLevel(gearStats);
+
+    private unsafe List<ITask> AccessoryBuys(int playerLevel)
+    {
+        Job job = (Job)PlayerState.Instance()->CurrentClassJobId;
+        InventoryContainer* equipped = InventoryManager.Instance()->GetInventoryContainer(InventoryType.EquippedItems);
+        if (equipped == null)
+            return [];
+
+        var items = dataManager.GetExcelSheet<Item>();
+        List<Accessory> offered = [];
+        foreach (uint itemId in tomestoneShopData.Items)
+        {
+            if (items.GetRowOrDefault(itemId) is not { } item || item.LevelEquip > playerLevel ||
+                item.ClassJobCategory.RowId == 0 || !item.ClassJobCategory.Value.IsJobInCategory(job) ||
+                AccessorySlot(item) is not { } slot)
+                continue;
+            offered.Add(new(itemId, slot, (int)item.LevelItem.RowId));
+        }
+
+        int WornLevel(int slot)
+        {
+            int Level(int i) => equipped->Items[i].ItemId is var id and not 0
+                ? (int)(items.GetRowOrDefault(id)?.LevelItem.RowId ?? 0)
+                : 0;
+            return slot == RingSlot ? Math.Min(Level(RingSlot), Level(OtherRingSlot)) : Level(slot);
+        }
+
+        return [.. PickAccessories(offered, WornLevel)
+            .Select(x => new Purchase.BuyTask(x, 1, EItemQuality.Any, Purchase.Tomestone, Optional: true))];
+    }
+
+    private static int? AccessorySlot(Item item) => item.EquipSlotCategory.ValueNullable switch
+    {
+        { Ears: > 0 } => EarSlot,
+        { Neck: > 0 } => NeckSlot,
+        { Wrists: > 0 } => WristSlot,
+        { FingerL: > 0 } or { FingerR: > 0 } => RingSlot,
+        _ => null,
+    };
+
+    // Plans the step again, so the duty is checked with the new level or gear.
+    internal sealed record Replan : ITask
+    {
+        public override string ToString() => "CatchUpReplan";
+    }
+
+    internal sealed class ReplanExecutor : TaskExecutor<Replan>
+    {
+        protected override bool Start() => true;
+        public override ETaskResult Update() => ETaskResult.RetryStep;
+        public override bool ShouldInterruptOnDamage() => false;
+    }
+}

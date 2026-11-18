@@ -240,6 +240,16 @@ internal sealed class Configuration : IPluginConfiguration
     #endregion
 
     #region Variables
+    // Saved by name in RewardOrder and RewardRulesOff.
+    internal enum ERewardRule
+    {
+        UnownedCollectible,
+        GearUpgrade,
+        Coffer,
+        AllaganPieces,
+        VendorValue,
+    }
+
     internal sealed class GeneralConfiguration
     {
         public string Language { get; set; } = "en";
@@ -256,6 +266,7 @@ internal sealed class Configuration : IPluginConfiguration
         public bool CollectJobGear { get; set; } = true;
         public string DisplayName { get; set; } = "Anonymous";
         public bool UseEscToCancelQuesting { get; set; } = true;
+        public bool StopOnPlayerMove { get; set; }
         public bool UseQuestionableTheme { get; set; } = true;
         public bool ShowIncompleteSeasonalEvents { get; set; } = true;
         public bool ShowCompleteSeasonalEvents { get; set; }
@@ -285,6 +296,11 @@ internal sealed class Configuration : IPluginConfiguration
         public bool AutoStepRefreshEnabled { get; set; }
         public int AutoStepRefreshDelaySeconds { get; set; } = 30;
         public int AutoStepRefreshMaxTries { get; set; } = 3;
+        public int DeathLimit { get; set; } = 5;
+        public List<ERewardRule> RewardOrder { get; set; } = [];
+        public HashSet<ERewardRule> RewardRulesOff { get; set; } = [];
+        public bool RepairGear { get; set; } = true;
+        public int RepairBelowPercent { get; set; } = 30;
     }
 
     internal sealed class StopConfiguration
@@ -387,6 +403,8 @@ internal sealed class Configuration : IPluginConfiguration
         public bool RunInstancedContentWithAutoDuty { get; set; }
         public bool RunUnsynced { get; set; } = true;
         public int UnsyncLevelGap { get; set; } = 15;
+        public bool SetAsideManualDuties { get; set; } = true;
+        public bool CatchUpForStory { get; set; }
         public HashSet<uint> WhitelistedDutyCfcIds { get; set; } = [];
         public HashSet<uint> BlacklistedDutyCfcIds { get; set; } = [];
         public Dictionary<string, bool> ExpansionHeaderStates { get; set; } = [];
@@ -414,6 +432,8 @@ internal sealed class Configuration : IPluginConfiguration
         public bool FlashTaskbar { get; set; }
         public bool NotifyOnStopCondition { get; set; }
         public bool NotifyOnCriticalFailure { get; set; } = true;
+        public string Sound { get; set; } = string.Empty;
+        public bool OnlyWhenUnfocused { get; set; }
     }
 
     internal sealed class AdvancedConfiguration

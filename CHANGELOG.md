@@ -8,6 +8,11 @@
 - Feature: Between quests: collects the free job gear at 80, 89 and 99, claims Mog Station mail (needs Mogmail) and runs the new Hall of the Novice for the Neophyte's Ring (needs AutoDuty) -Kage
 - Feature: Uses Vesper Bay tickets, keeps your chocobo out (needs Knightshopper) and skips fishing when you already have the fish -Kage
 - Feature: Option to retry a stuck step before stopping -Kage
+- Feature: Repairs worn gear between quests, with Dark Matter or at your Grand Company's mender -Kage
+- Feature: Picks quest rewards by rules you can reorder: new mounts, minions and other collectibles first, then gear upgrades, coffers, Allagan pieces and the best sale price -Kage
+- Feature: Quests waiting on a duty you run yourself are set aside while Questionable carries on with other quests -Kage
+- Feature: Optional catch-up when the story is too high: AutoDuty dungeons for levels, tomestone accessories and dungeons for item level -Kage
+- Feature: Stop when you move your character, a setting for deaths before stopping, and notification sounds that can play only while the game is in the background -Kage
 - Feature: Duties without Duty Support open the Duty Finder or run unsynced (the level gap is a setting) -Kage
 - Feature: Journal Progress: XP and gil columns, saved filters, "Hide Completed Quests" and Mentor Roulette unlocks -Kage
 - Feature: Priority Quests: interrupt switch, XP and gil total, and more presets (Dawntrail tribes, field aether currents, "Unlock All Jobs", highest society rank) -Kage

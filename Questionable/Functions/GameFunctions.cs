@@ -3,6 +3,8 @@ using FFXIVClientStructs.FFXIV.Client.Game;
 using FFXIVClientStructs.FFXIV.Client.Game.Control;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
+using FFXIVClientStructs.FFXIV.Client.System.Input;
+using FFXIVClientStructs.FFXIV.Client.UI;
 using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using FFXIVClientStructs.FFXIV.Component.GUI;
 using Lumina.Excel.Sheets;
@@ -36,6 +38,19 @@ internal sealed unsafe partial class GameFunctions
         .Where(x => x.RowId > 0 && x.AetherCurrentCompFlgSet.RowId > 0)
         .ToDictionary(x => x.RowId, x => x.AetherCurrentCompFlgSet.RowId)
         .AsReadOnly();
+
+    // Input ids follow the player's keybinds; typing in chat doesn't count.
+    public static bool IsMovementInputHeld()
+    {
+        UIInputData* input = UIInputData.Instance();
+        RaptureAtkModule* atkModule = RaptureAtkModule.Instance();
+        if (input == null || atkModule == null || atkModule->IsTextInputActive())
+            return false;
+
+        return input->IsInputIdDown(InputId.MOVE_FORE) || input->IsInputIdDown(InputId.MOVE_BACK) ||
+               input->IsInputIdDown(InputId.MOVE_LEFT) || input->IsInputIdDown(InputId.MOVE_RIGHT) ||
+               input->IsInputIdDown(InputId.MOVE_STRIFE_L) || input->IsInputIdDown(InputId.MOVE_STRIFE_R);
+    }
 
     public static bool IsFlyingUnlocked(uint territoryId)
     {

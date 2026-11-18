@@ -87,6 +87,8 @@ internal sealed class TerritoryData
 
     public CfcData? GetCfc(uint cfcId) => _cfcs.GetValueOrDefault(cfcId);
 
+    public IEnumerable<CfcData> AllCfcs => _cfcs.Values;
+
     public bool TryGetCfc(uint cfcId,
         [NotNullWhen(true)] out CfcData? cfcData) => _cfcs.TryGetValue(cfcId, out cfcData);
 

@@ -22,6 +22,18 @@ public sealed class QuestDeathRecoveryTests
     }
 
     [Theory]
+    [InlineData(true, true)]
+    [InlineData(false, false)]
+    public void PlayerMove_StopsOnlyWhileRunning(bool running, bool stops)
+    {
+        var host = new RecoveryHost { HasQueuedTasks = running, PlayerMoved = true };
+
+        Assert.Equal(stops, host.Recovery.Update(host));
+
+        Assert.Equal(stops ? ["stop-all:Player moved"] : [], host.Effects);
+    }
+
+    [Theory]
     [InlineData(false)]
     [InlineData(true)]
     public void EscapeCancelsRecoveryWithAnEmptyQueue(bool revived)
@@ -327,6 +339,7 @@ public sealed class QuestDeathRecoveryTests
         public bool EscapeEnabled { get; set; } = true;
         public bool EscapePressed { get; set; }
         public bool EscapeRequested => EscapeEnabled && EscapePressed;
+        public bool PlayerMoved { get; set; }
         public bool IsUnconscious { get; set; }
         public bool ProviderHandlesDeath { get; set; }
         public bool HasExternalOperation { get; set; }

@@ -23,7 +23,7 @@ internal sealed class ExternalOperationFixture : IDisposable
     public AutoDutyIpc AutoDuty { get; }
     public BossModIpc BossMod { get; }
     public NavmeshIpc Navmesh { get; }
-    public MappingTheRealmIpc MappingTheRealm { get; } = new(NullLogger<MappingTheRealmIpc>.Instance);
+    public MappingTheRealmIpc MappingTheRealm { get; }
     public CraftingState Crafting { get; }
     public PurchaseState Purchase { get; }
     public GatheringState Gathering { get; }
@@ -50,6 +50,7 @@ internal sealed class ExternalOperationFixture : IDisposable
         AutoDuty = new();
         BossMod = new(new Configuration(), null!, Substitute.For<ICommandManager>());
         Navmesh = new();
+        MappingTheRealm = new(NullLogger<MappingTheRealmIpc>.Instance);
         Movement = new(MappingTheRealm, Client, null!, null!, Objects,
             Framework, new Lazy<OperationCoordinator>(() => Coordinator!), NullLogger<MovementController>.Instance);
         Combat = new(combatModules ?? [], Movement, Substitute.For<ITargetManager>(), Objects,

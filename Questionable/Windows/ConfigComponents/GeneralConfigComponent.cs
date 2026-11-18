@@ -405,6 +405,15 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
 
+            bool stopOnPlayerMove = Configuration.General.StopOnPlayerMove;
+            if (ImGui.Checkbox(_L("Stop when you move your character"), ref stopOnPlayerMove))
+            {
+                Configuration.General.StopOnPlayerMove = stopOnPlayerMove;
+                Save();
+            }
+
+            ImGuiComponents.HelpMarker(_L("Pressing a movement key while Questionable runs stops it. Typing in chat doesn't count."));
+
             bool useTickets = Configuration.General.UseTickets;
             if (ImGui.Checkbox(_L("Use aetheryte tickets where available"), ref useTickets))
             {
@@ -471,6 +480,31 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             ImGuiComponents.HelpMarker(
                 _L("Between quests, Questionable fetches the free job gear for your current job from Grenoldt (level 80, The Tempest), Varsarudh (level 89, Old Sharlayan) or Mewazunte (level 99, Tuliyollal) once its shop is unlocked and the set beats what you wear, then equips your best gear. Each set is fetched once per character and job."));
 
+            bool repairGear = Configuration.General.RepairGear;
+            if (ImGui.Checkbox(_L("Repair gear"), ref repairGear))
+            {
+                Configuration.General.RepairGear = repairGear;
+                Save();
+            }
+
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker(
+                _L("Between quests, Questionable repairs gear below the set condition: with Dark Matter when one of your crafters can, otherwise at your Grand Company's mender (or your starting city's) for gil."));
+
+            using (ImRaii.Disabled(!repairGear))
+            using (ImRaii.PushIndent())
+            {
+                int repairBelow = Math.Clamp(Configuration.General.RepairBelowPercent, 1, 99);
+                ImGui.SetNextItemWidth(150f);
+                if (ImGui.SliderInt(_L("Repair below condition (%)"), ref repairBelow, 1, 99))
+                {
+                    Configuration.General.RepairBelowPercent = repairBelow;
+                    Save();
+                }
+            }
+
+            DrawRewardRules();
+
             bool claimMail = Configuration.General.ClaimMail;
             if (ImGui.Checkbox(_L("Claim Mog Station and reward mail"), ref claimMail))
             {
@@ -535,6 +569,16 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                     Save();
                 }
             }
+
+            int deathLimit = Math.Clamp(Configuration.General.DeathLimit, 1, 10);
+            ImGui.SetNextItemWidth(150f);
+            if (ImGui.SliderInt(_L("Deaths on one step before stopping"), ref deathLimit, 1, 10))
+            {
+                Configuration.General.DeathLimit = deathLimit;
+                Save();
+            }
+
+            ImGuiComponents.HelpMarker(_L("After a death Questionable returns and retries the step; it stops once you die this many times on the same step."));
 
             bool shareResults = Configuration.Reports.Share == true;
             if (ImGui.Checkbox(_L("Share quest results to help fix paths"), ref shareResults))
@@ -611,6 +655,61 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             }
         }
     }
+
+    private void DrawRewardRules()
+    {
+        ImGui.Text(_L("Quest reward choice"));
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(_L("When a quest lets you choose a reward, the first ticked rule that matches wins. If none matches, Questionable takes the highest vendor value, then the first option. Needs \"Configure TextAdvance\"."));
+
+        List<Configuration.ERewardRule> order = Configuration.General.RewardOrder
+            .Concat(RewardPickHandler.DefaultOrder).Distinct().ToList();
+        using ImRaii.IndentDisposable indent = ImRaii.PushIndent();
+        for (int i = 0; i < order.Count; i++)
+        {
+            Configuration.ERewardRule rule = order[i];
+            using ImRaii.IdDisposable id = ImRaii.PushId((int)rule);
+            using (ImRaii.Disabled(i == 0))
+            {
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ArrowUp))
+                    MoveRewardRule(order, i, i - 1);
+            }
+
+            ImGui.SameLine();
+            using (ImRaii.Disabled(i == order.Count - 1))
+            {
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ArrowDown))
+                    MoveRewardRule(order, i, i + 1);
+            }
+
+            ImGui.SameLine();
+            bool enabled = !Configuration.General.RewardRulesOff.Contains(rule);
+            if (ImGui.Checkbox(RewardRuleLabel(rule), ref enabled))
+            {
+                if (enabled)
+                    Configuration.General.RewardRulesOff.Remove(rule);
+                else
+                    Configuration.General.RewardRulesOff.Add(rule);
+                Save();
+            }
+        }
+    }
+
+    private void MoveRewardRule(List<Configuration.ERewardRule> order, int from, int to)
+    {
+        (order[from], order[to]) = (order[to], order[from]);
+        Configuration.General.RewardOrder = order;
+        Save();
+    }
+
+    private static string RewardRuleLabel(Configuration.ERewardRule rule) => rule switch
+    {
+        Configuration.ERewardRule.UnownedCollectible => _L("Unowned collectible (mount, minion, orchestrion roll, card, fashion accessory)"),
+        Configuration.ERewardRule.GearUpgrade => _L("Gear upgrade for your current job"),
+        Configuration.ERewardRule.Coffer => _L("Gear coffer for your current job"),
+        Configuration.ERewardRule.AllaganPieces => _L("Allagan pieces (sold for gil)"),
+        _ => _L("Highest vendor value"),
+    };
 
     // The settings store "skip", so a ticked box means the quest is picked up.
     private void DrawPickUp(string label, Func<bool> getSkip, Action<bool> setSkip, string help) =>

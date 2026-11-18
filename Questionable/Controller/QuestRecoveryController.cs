@@ -1,9 +1,12 @@
 namespace Questionable.Controller;
 
 [RegisterSingleton]
-internal sealed class QuestRecoveryController(ILogger<QuestRecoveryController> logger, TimeProvider? timeProvider = null)
+internal sealed class QuestRecoveryController(
+    ILogger<QuestRecoveryController> logger,
+    TimeProvider? timeProvider = null,
+    Configuration? configuration = null)
 {
-    private const int MaxConsecutiveDeaths = 5;
+    private int MaxConsecutiveDeaths => Math.Clamp(configuration?.General.DeathLimit ?? 5, 1, 10);
     private static readonly TimeSpan RespawnGrace = TimeSpan.FromSeconds(3);
     private static readonly TimeSpan ReturnConfirmInterval = TimeSpan.FromMilliseconds(500);
     private readonly TimeProvider _clock = timeProvider ?? TimeProvider.System;
@@ -25,10 +28,19 @@ internal sealed class QuestRecoveryController(ILogger<QuestRecoveryController> l
             return true;
         }
 
-        if (host.EscapeRequested && (host.HasQueuedTasks || IsRecovering))
+        if (host.HasQueuedTasks || IsRecovering)
         {
-            Stop(host, "ESC pressed", all: true);
-            return true;
+            if (host.EscapeRequested)
+            {
+                Stop(host, "ESC pressed", all: true);
+                return true;
+            }
+
+            if (host.PlayerMoved)
+            {
+                Stop(host, "Player moved", all: true);
+                return true;
+            }
         }
 
         if (host.IsUnconscious)

@@ -56,6 +56,9 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddTaskFactory<JobGear.Factory>();
         serviceCollection.AddTaskExecutor<JobGear.Take, JobGear.TakeExecutor>();
         serviceCollection.AddTaskExecutor<JobGear.Done, JobGear.DoneExecutor>();
+        serviceCollection.AddTaskFactory<Repair.Factory>();
+        serviceCollection.AddTaskExecutor<Repair.Take, Repair.TakeExecutor>();
+        serviceCollection.AddTaskExecutor<Repair.Done, Repair.DoneExecutor>();
         serviceCollection.AddTaskFactory<Mail.Factory>();
         serviceCollection.AddTaskExecutor<Mail.Take, Mail.TakeExecutor>();
         serviceCollection.AddTaskExecutor<Mail.Done, Mail.DoneExecutor>();
@@ -106,6 +109,8 @@ internal static class ServiceCollectionExtensions
             .AddTaskFactoryAndExecutor<Duty.OpenDutyFinderTask, Duty.Factory, Duty.OpenDutyFinderExecutor>();
         serviceCollection.AddTaskExecutor<Duty.StartAutoDutyTask, Duty.StartAutoDutyExecutor>();
         serviceCollection.AddTaskExecutor<Duty.OpenVariantDFTask, Duty.OpenVariantDFExecutor>();
+        serviceCollection.AddTaskExecutor<Duty.SetAsideTask, Duty.SetAsideExecutor>();
+        serviceCollection.AddTaskExecutor<StoryCatchUp.Replan, StoryCatchUp.ReplanExecutor>();
         serviceCollection.AddTaskFactory<Emote.Factory>();
         serviceCollection.AddTaskExecutor<Emote.UseOnObject, Emote.UseOnObjectExecutor>();
         serviceCollection.AddTaskExecutor<Emote.UseOnSelf, Emote.UseOnSelfExecutor>();

@@ -93,7 +93,8 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
     {
         EnableQuestAccept = true,
         EnableQuestComplete = completeQuests,
-        EnableRewardPick = true,
+        // RewardPickHandler picks while Questionable controls TextAdvance.
+        EnableRewardPick = false,
         EnableRequestHandin = true,
         EnableCutsceneEsc = !dontSkipCutscenes,
         EnableCutsceneSkipConfirm = !dontSkipCutscenes,

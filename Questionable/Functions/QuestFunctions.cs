@@ -133,7 +133,8 @@ internal sealed class QuestFunctions
         // always prioritize accepting MSQ quests, to make sure we don't turn in one MSQ quest and then go off to do
         // side quests until the end of time.
         (QuestReference msqQuest, string? _) = GetMainScenarioQuest();
-        if (msqQuest.CurrentQuest != null && !catalog.IsKnownQuest(msqQuest.CurrentQuest))
+        if (msqQuest.CurrentQuest != null && !catalog.IsKnownQuest(msqQuest.CurrentQuest) ||
+            SetAsideQuests.Contains(msqQuest.CurrentQuest, msqQuest.Sequence))
             msqQuest = QuestReference.NoQuest(msqQuest.State);
 
         if (msqQuest.CurrentQuest != null && !IsQuestAccepted(msqQuest.CurrentQuest))
@@ -153,8 +154,9 @@ internal sealed class QuestFunctions
         foreach (ushort trackedQuestId in state.TrackedQuestIds)
         {
             ElementId currentQuest = new QuestId(trackedQuestId);
-            if (catalog.IsKnownQuest(currentQuest))
-                trackedQuests.Add((currentQuest, state.GetQuestSequence(trackedQuestId)));
+            byte sequence = state.GetQuestSequence(trackedQuestId);
+            if (catalog.IsKnownQuest(currentQuest) && !SetAsideQuests.Contains(currentQuest, sequence))
+                trackedQuests.Add((currentQuest, sequence));
         }
 
         if (configuration.General.SkipLowPriorityDuties && trackedQuests.Count > 0)
@@ -228,7 +230,7 @@ internal sealed class QuestFunctions
         }
 
         ElementId? priorityQuest = skipPriority ? null : NextPriorityQuests
-            .Where(x => x.IsAvailable)
+            .Where(x => x.IsAvailable && !SetAsideQuests.Contains(x.QuestId, state.GetQuestSequence(x.QuestId.Value)))
             .Select(x => x.QuestId)
             .FirstOrDefault();
         if (priorityQuest != null)
@@ -570,6 +572,8 @@ internal sealed class QuestFunctions
 
         return pick;
     }
+
+    public byte GetQuestSequence(ElementId questId) => state.GetQuestSequence(questId.Value);
 
     public bool IsFreeClassQuestDetour(ElementId questId, QuestStep? teleportStep) =>
         catalog.TryGetQuest(questId, out Quest? quest) && quest.FindSequence(0)?.FindStep(0) is { } start &&

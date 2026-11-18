@@ -23,10 +23,12 @@ internal static class Travel
         : TaskExecutor<Task>, IStoppable
     {
         private Route? _route;
+        private bool _started;
 
         protected override bool Start()
         {
             _route = null;
+            _started = false;
             if (Task.Position == null && clientState.TerritoryType == Task.TerritoryId)
                 return false;
 
@@ -41,26 +43,27 @@ internal static class Travel
 
         public override ETaskResult Update()
         {
-            // MappingTheRealm 1.0.0.0 can stay on "Planning route" after the character has arrived.
-            if (HasArrived())
+            if (mappingTheRealm.GetPathing() == true)
             {
+                _started = true;
+                if (!HasArrived())
+                    return ETaskResult.StillRunning;
+
                 mappingTheRealm.Stop();
                 return ETaskResult.TaskComplete;
             }
 
-            // The route's task can finish when the move is handed over, while the character is still walking.
-            if (_route is not { IsCompleted: true } route || mappingTheRealm.GetPathing() == true)
-                return ETaskResult.StillRunning;
-
-            if (route.IsFaulted)
+            if (_route is { IsFaulted: true } faulted)
                 throw new TaskException(
-                    $"MappingTheRealm couldn't reach {TerritoryData.GetNameAndId(Task.TerritoryId)}: {route.Exception!.GetBaseException().Message}");
-            if (route.IsCanceled)
+                    $"MappingTheRealm couldn't reach {TerritoryData.GetNameAndId(Task.TerritoryId)}: {faulted.Exception!.GetBaseException().Message}");
+            if (_route is { IsCanceled: true })
                 throw new TaskException("MappingTheRealm's route was cancelled");
-            return ETaskResult.TaskComplete;
+
+            // IsPathing reads false for a moment before the route starts.
+            return _started || _route is { IsCompleted: true } ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
         }
 
-        // An NPC can be talked to from a few yalms away.
+        // shortcut: MappingTheRealm 1.0.0.0 can stay on "Planning route" after arriving; delete once it ends the route itself.
         private bool HasArrived()
         {
             if (clientState.TerritoryType != Task.TerritoryId)

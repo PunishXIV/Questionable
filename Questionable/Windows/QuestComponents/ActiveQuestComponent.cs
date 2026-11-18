@@ -73,6 +73,7 @@ internal sealed partial class ActiveQuestComponent
             DrawCurrentQuest(currentQuest, currentQuestType, isMinimized);
         else
             DrawNoQuest(isMinimized);
+        DrawSetAside();
 
         if (configuration.Advanced.Debug)
         {
@@ -262,6 +263,23 @@ internal sealed partial class ActiveQuestComponent
         }
 
         DrawSimulationControls();
+    }
+
+    private void DrawSetAside()
+    {
+        if (SetAsideQuests.All.Count == 0)
+            return;
+
+        if (!QstWidgets.Chip(_LF("{0} set aside", SetAsideQuests.All.Count), QstTheme.Amber))
+            return;
+
+        ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
+        IEnumerable<string> names = SetAsideQuests.All.Keys
+            .Select(x => questRegistry.TryGetQuest(x, out Quest? quest) ? quest.Info.Name : x.ToString());
+        ImGui.SetTooltip(string.Join("\n", names) + "\n\n" +
+                         _L("These wait on a duty you run yourself. Click to bring them back."));
+        if (ImGui.IsItemClicked())
+            SetAsideQuests.Clear();
     }
 
     private unsafe void DrawNoQuest(bool isMinimized)

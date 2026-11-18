@@ -258,6 +258,7 @@ public sealed class QuestionablePlugin(
         serviceProvider.GetRequiredService<HelpUiController>();
         serviceProvider.GetRequiredService<PointMenuHandler>();
         serviceProvider.GetRequiredService<HousingSelectBlockHandler>();
+        serviceProvider.GetRequiredService<RewardPickHandler>();
         serviceProvider.GetRequiredService<YesNoChoiceHandler>();
         serviceProvider.GetRequiredService<DialogueChoiceHandler>();
         serviceProvider.GetRequiredService<ChocoboNamingController>();

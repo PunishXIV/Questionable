@@ -71,6 +71,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     private readonly QuestStopPolicy _stopPolicy;
     private readonly QuestReporter _reports;
     private readonly StuckWatch _stuckWatch;
+    private readonly StoryCatchUp _storyCatchUp;
     private readonly PriorityPresets _presets;
     private readonly TaskCreator _taskCreator;
     private readonly IToastGui _toastGui;
@@ -267,6 +268,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         QuestBattleConfigComponent questBattleConfig,
         QuestStopPolicy stopPolicy,
         StuckWatch stuckWatch,
+        StoryCatchUp storyCatchUp,
         PriorityPresets presets,
         AlliedSocietyQuestFunctions alliedSocietyQuests,
         QuestReporter reports)
@@ -297,6 +299,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         _questBattleConfig = questBattleConfig;
         _stopPolicy = stopPolicy;
         _stuckWatch = stuckWatch;
+        _storyCatchUp = storyCatchUp;
         _presets = presets;
         _alliedSocietyQuests = alliedSocietyQuests;
         _reports = reports;
@@ -856,8 +859,23 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (AutomationType != EAutomationType.Manual &&
             _questFunctions.GetLevelLockedMainScenarioQuest() is var (lockedMsq, playerLevel))
         {
+            if (_storyCatchUp?.Enabled == true)
+            {
+                // A levelling run is queued or running; the next update checks the level again.
+                if (IsRunning)
+                    return;
+                if (_storyCatchUp.LevelRun(_LF("'{0}' needs level {1} (you're level {2})", lockedMsq.Name, lockedMsq.Level, playerLevel),
+                        playerLevel) is { } run)
+                {
+                    _taskQueue.Enqueue(run);
+                    return;
+                }
+            }
+
             _stopPolicy.ReportMainScenarioLocked(lockedMsq, playerLevel);
         }
+        else if (AutomationType != EAutomationType.Manual && SetAsideQuests.All.Count > 0)
+            _stopPolicy.ReportOnlySetAsideLeft(SetAsideQuests.All.Count);
 
         StopFinished("No quest active");
     }
@@ -1125,6 +1143,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
     bool IQuestRecoveryHost.IsLoggedIn => _clientState.IsLoggedIn;
     bool IQuestRecoveryHost.EscapeRequested =>
         _configuration.General.UseEscToCancelQuesting && _keyState[VirtualKey.ESCAPE];
+    bool IQuestRecoveryHost.PlayerMoved => _configuration.General.StopOnPlayerMove && GameFunctions.IsMovementInputHeld();
     bool IQuestRecoveryHost.IsUnconscious => _condition[ConditionFlag.Unconscious];
     bool IQuestRecoveryHost.ProviderHandlesDeath => _externalOperations.HandlesPlayerDeath(_taskQueue.CurrentTaskExecutor);
     bool IQuestRecoveryHost.IsZoning => _condition[ConditionFlag.BetweenAreas] || _condition[ConditionFlag.BetweenAreas51];
@@ -1219,7 +1238,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             _taskQueue.CurrentTaskExecutor is not QuestBattle.WaitForOutcomeExecutor &&
             // The job gear shop and the mailbox are open (and the player occupied) while they're used.
             _taskQueue.CurrentTaskExecutor is not JobGear.TakeExecutor &&
-            _taskQueue.CurrentTaskExecutor is not Mail.TakeExecutor)
+            _taskQueue.CurrentTaskExecutor is not Mail.TakeExecutor &&
+            _taskQueue.CurrentTaskExecutor is not Repair.TakeExecutor)
             return;
 
         if (AttuneStopDue)
@@ -1507,7 +1527,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             {
                 List<ElementId> classQuests = _questFunctions.GetPriorityQuests(onlyClassAndRoleQuests: true);
                 return _questFunctions.NextPriorityQuests.Where(x =>
-                    !classQuests.Contains(x.QuestId) || _questFunctions.IsFreeClassQuestDetour(x.QuestId, teleportStep));
+                    !SetAsideQuests.Contains(x.QuestId, _questFunctions.GetQuestSequence(x.QuestId)) &&
+                    (!classQuests.Contains(x.QuestId) || _questFunctions.IsFreeClassQuestDetour(x.QuestId, teleportStep)));
             });
         if (questId != null && _questRegistry.TryGetQuest(questId, out Quest? quest))
         {

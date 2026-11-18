@@ -79,8 +79,30 @@ internal sealed class DutyConfigComponent : ConfigComponent
         ImGuiComponents.HelpMarker(
             _L("AutoDuty runs the duty with its own settings, including which rotation plugin to use. The combat plugin picked in General isn't used."));
 
+        bool setAside = Configuration.Duties.SetAsideManualDuties;
+        if (ImGui.Checkbox(_L("Set aside quests waiting on a duty you run yourself"), ref setAside))
+        {
+            Configuration.Duties.SetAsideManualDuties = setAside;
+            Save();
+        }
+
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(
+            _L("When Questionable can't run a quest's duty, it opens the Duty Finder, sets the quest aside and carries on with other quests. Once you've run the duty, the quest comes back on its own."));
+
         using (ImRaii.Disabled(!_useAutoDuty))
         {
+            bool catchUp = Configuration.Duties.CatchUpForStory;
+            if (ImGui.Checkbox(_L("Catch up when the story is too high"), ref catchUp))
+            {
+                Configuration.Duties.CatchUpForStory = catchUp;
+                Save();
+            }
+
+            ImGui.SameLine();
+            ImGuiComponents.HelpMarker(
+                _L("When the next story quest or its duty needs a higher level, AutoDuty runs the highest Duty Support dungeon you can enter until you reach it. When the item level is short, Questionable first buys the best accessories your job can wear with tomestones (Knightshopper), then runs dungeons; it stops after 5 runs that don't raise your item level."));
+
             bool runUnsynced = Configuration.Duties.RunUnsynced;
             if (ImGui.Checkbox(_L("Run content unsynced where safe"), ref runUnsynced))
             {

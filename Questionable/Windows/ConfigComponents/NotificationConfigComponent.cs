@@ -32,6 +32,25 @@ internal sealed class NotificationConfigComponent
                     () => Configuration.Notifications.ChatType,
                     v => Configuration.Notifications.ChatType = v);
 
+                string[] sounds = ["", .. GetSounds()];
+                string[] soundNames = [_L("None"), .. sounds.Skip(1).Select(Path.GetFileNameWithoutExtension).Cast<string>()];
+                DrawComboOption(_L("Sound"), sounds, soundNames,
+                    () => Configuration.Notifications.Sound,
+                    v => Configuration.Notifications.Sound = v);
+                ImGui.SameLine();
+                using (ImRaii.Disabled(string.IsNullOrEmpty(Configuration.Notifications.Sound)))
+                {
+                    if (ImGuiComponentsLocal.IconButtonWithText(Dalamud.Interface.FontAwesomeIcon.Play, _L("Test")))
+                        NotificationMasterIpc.PlaySound(Configuration.Notifications.Sound);
+                }
+
+                bool onlyWhenUnfocused = Configuration.Notifications.OnlyWhenUnfocused;
+                if (ImGui.Checkbox(_L("Only when the game is not focused"), ref onlyWhenUnfocused))
+                {
+                    Configuration.Notifications.OnlyWhenUnfocused = onlyWhenUnfocused;
+                    Save();
+                }
+
                 ImGui.Separator();
                 ImGui.Text(_L("NotificationMaster settings"));
                 ImGui.SameLine();
@@ -68,6 +87,25 @@ internal sealed class NotificationConfigComponent
                     Save();
                 }
             }
+        }
+    }
+
+    private string[]? _sounds;
+
+    private string[] GetSounds()
+    {
+        try
+        {
+            return _sounds ??= Directory.GetFiles(NotificationMasterIpc.SoundFolder, "*.wav")
+                .Select(Path.GetFileName).Cast<string>().Order(StringComparer.OrdinalIgnoreCase).ToArray();
+        }
+        catch (IOException)
+        {
+            return _sounds = [];
+        }
+        catch (UnauthorizedAccessException)
+        {
+            return _sounds = [];
         }
     }
 }

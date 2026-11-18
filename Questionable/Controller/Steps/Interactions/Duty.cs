@@ -31,7 +31,8 @@ internal static class Duty
     internal static bool MeetsLevelGap(int playerLevel, int syncLevel, int gap) =>
         playerLevel - Math.Clamp(gap, MinLevelGap, MaxLevelGap) >= syncLevel;
 
-    internal sealed class Factory(AutoDutyProvider autoDuty, TerritoryData territoryData, Configuration configuration) : ITaskFactory
+    internal sealed class Factory(AutoDutyProvider autoDuty, TerritoryData territoryData, Configuration configuration,
+        StoryCatchUp storyCatchUp) : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -47,6 +48,16 @@ internal static class Duty
                     yield return new OpenVariantDFTask(step.DutyOptions.ContentFinderConditionId);
                 else if (!step.DutyOptions.LowPriority)
                     yield return new OpenDutyFinderTask(step.DutyOptions.ContentFinderConditionId);
+                if (configuration.Duties.SetAsideManualDuties)
+                    yield return new SetAsideTask(quest.Id, sequence.Sequence, step.DutyOptions.ContentFinderConditionId);
+                yield break;
+            }
+
+            if (storyCatchUp.Enabled && territoryData.TryGetCfc(step.DutyOptions.ContentFinderConditionId, out TerritoryData.CfcData? duty) &&
+                StartAutoDutyExecutor.GetPlayerLevel() is { } level and > 0 && CatchUp(duty, level) is { } catchUp)
+            {
+                foreach (ITask task in catchUp)
+                    yield return task;
                 yield break;
             }
 
@@ -74,6 +85,19 @@ internal static class Duty
 
             if (!QuestWorkUtils.HasCompletionFlags(step.CompletionQuestVariablesFlags))
                 yield return new WaitAtEnd.NextStepOrSequence();
+        }
+
+        private List<ITask>? CatchUp(TerritoryData.CfcData duty, int level)
+        {
+            if (duty.RequiredLevel > level)
+                return storyCatchUp.LevelRun(_LF("'{0}' needs level {1} (you're level {2})", duty.Name, duty.RequiredLevel, level),
+                    level) is { } run
+                    ? [run, new StoryCatchUp.Replan()]
+                    : null;
+
+            return storyCatchUp.ItemLevel() is { } itemLevel && duty.RequiredItemLevel > itemLevel
+                ? storyCatchUp.GearUp(duty, level, itemLevel)
+                : null;
         }
     }
 
@@ -185,13 +209,13 @@ internal static class Duty
             }
         }
 
-        private static unsafe short? GetPlayerLevel()
+        internal static unsafe short? GetPlayerLevel()
         {
             PlayerState* playerState = PlayerState.Instance();
             return playerState == null ? null : playerState->CurrentLevel;
         }
 
-        private static unsafe short? GetItemLevel(GearStatsCalculator gearStatsCalculator)
+        internal static unsafe short? GetItemLevel(GearStatsCalculator gearStatsCalculator)
         {
             InventoryManager* inventoryManager = InventoryManager.Instance();
             if (inventoryManager == null)
@@ -245,6 +269,30 @@ internal static class Duty
         }
 
         public override ETaskResult Update() => ETaskResult.TaskComplete;
+
+        public override bool ShouldInterruptOnDamage() => false;
+    }
+
+    internal sealed record SetAsideTask(ElementId QuestId, byte Sequence, uint CfcId) : ITask
+    {
+        public override string ToString() => $"SetAside({QuestId}, {CfcId})";
+    }
+
+    // Selection skips the quest from the next update on, which replaces the queue with the next quest's tasks.
+    internal sealed class SetAsideExecutor(TerritoryData territoryData, IChatGui chatGui, ILogger<SetAsideExecutor> logger)
+        : TaskExecutor<SetAsideTask>
+    {
+        protected override bool Start()
+        {
+            SetAsideQuests.Add(Task.QuestId, Task.Sequence);
+            string duty = territoryData.GetCfc(Task.CfcId)?.Name ?? Task.CfcId.ToString(CultureInfo.InvariantCulture);
+            logger.LogInformation("Setting {QuestId} aside, it waits on {Duty}", Task.QuestId, duty);
+            chatGui.Print(_LF("Setting this quest aside: run '{0}' yourself. Questionable carries on with other quests and comes back once it's done.", duty),
+                CommandHandler.MessageTag, CommandHandler.TagColor);
+            return true;
+        }
+
+        public override ETaskResult Update() => ETaskResult.StillRunning;
 
         public override bool ShouldInterruptOnDamage() => false;
     }
