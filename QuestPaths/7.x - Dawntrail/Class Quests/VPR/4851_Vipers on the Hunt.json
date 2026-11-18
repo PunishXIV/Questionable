@@ -171,8 +171,7 @@
           "TerritoryId": 612,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
-          "Mount": false,
-          "Sprint": true
+          "Mount": false
         }
       ]
     },

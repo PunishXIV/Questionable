@@ -529,9 +529,6 @@ internal sealed class QuestFunctions
                 }
                 else
                 {
-                    if (!firstStep.IsTeleportableForPriorityQuests())
-                        return new(x, _L("Can't teleport to start"));
-
                     int teleportCosts = GetTeleportCost(quest);
                     if (gil < teleportCosts)
                     {
@@ -542,12 +539,7 @@ internal sealed class QuestFunctions
 
                 EAetheryteLocation? firstLockedAetheryte = GetFirstLockedAetheryte(quest);
                 if (firstLockedAetheryte != null)
-                {
-                    // if quest requires white wolf gate, and unlock quest is available, don't report locked
-                    if (firstLockedAetheryte == EAetheryteLocation.GridaniaWhiteWolfGate && IsReadyToAcceptQuest(new QuestId(802)))
-                        return new(x);
                     return new(x, _LF("Aetheryte locked: {0}", firstLockedAetheryte));
-                }
 
                 return new PriorityQuestInfo(x);
             })
@@ -583,73 +575,72 @@ internal sealed class QuestFunctions
         catalog.TryGetQuest(questId, out Quest? quest) && quest.FindSequence(0)?.FindStep(0) is { } start &&
         QuestSelectionController.IsFreeClassQuestDetour(start, state.TerritoryType, teleportStep);
 
-    private bool CanBeDoneWithoutTeleport(Quest quest)
+    // Every move into another zone, starting where the player is; a door step's TargetTerritoryId moves us too.
+    private IEnumerable<(uint From, uint To)> ZoneChanges(Quest quest)
     {
-        uint? currentTerritory = state.TerritoryType;
-        bool isFirstStep = true;
+        uint current = state.TerritoryType;
         foreach ((QuestSequence _, int _, QuestStep step) in quest.AllSteps())
         {
-            if (isFirstStep && step.TerritoryId != currentTerritory)
-                return false;
-            if (step.AetheryteShortcut != null && step.TerritoryId != currentTerritory)
-                return false;
-
-            currentTerritory = step.TargetTerritoryId ?? step.TerritoryId;
-            isFirstStep = false;
+            // territory 1 marks steps that never travel
+            if (step.TerritoryId is 0 or 1)
+                continue;
+            if (step.TerritoryId != current)
+                yield return (current, step.TerritoryId);
+            current = step.TargetTerritoryId ?? step.TerritoryId;
         }
-
-        return true;
     }
+
+    private bool IsWalk((uint From, uint To) change) => state.RegionOf(change.From) == state.RegionOf(change.To);
+
+    internal bool CanBeDoneWithoutTeleport(Quest quest) => ZoneChanges(quest).All(IsWalk);
 
     internal EAetheryteLocation? GetFirstLockedAetheryte(Quest quest)
     {
-        // aetherytes attuned by an earlier step of the same quest don't count as locked
-        HashSet<EAetheryteLocation> attunedByQuest = [];
-        foreach ((QuestSequence _, int _, QuestStep step) in quest.AllSteps())
+        HashSet<EAetheryteLocation> attunedByQuest =
+        [
+            .. quest.AllSteps()
+                .Select(x => x.Step)
+                .Where(x => x is { InteractionType: EInteractionType.AttuneAetheryte, Aetheryte: not null })
+                .Select(x => x.Aetheryte!.Value)
+        ];
+
+        foreach ((uint From, uint To) change in ZoneChanges(quest).Where(x => !IsWalk(x)))
         {
-            if (step is { InteractionType: EInteractionType.AttuneAetheryte, Aetheryte: { } aetheryte })
-                attunedByQuest.Add(aetheryte);
-            if (step is { InteractionType: EInteractionType.AttuneAethernetShard, AethernetShard: { } aethernetShard })
-                attunedByQuest.Add(aethernetShard);
-
-            if (step.AetheryteShortcut is { } aetheryteShortcut && IsLocked(aetheryteShortcut) &&
-                step.SkipConditions?.AetheryteShortcutIf?.AetheryteLocked != aetheryteShortcut)
-                return aetheryteShortcut;
-
-            if (step.AethernetShortcut is { } aethernetShortcut)
-            {
-                if (IsLocked(aethernetShortcut.From))
-                    return aethernetShortcut.From;
-                if (IsLocked(aethernetShortcut.To))
-                    return aethernetShortcut.To;
-            }
+            IReadOnlyList<EAetheryteLocation> aetherytes = state.AetherytesIn(change.To);
+            if (aetherytes.Count > 0 && aetherytes.All(x => !state.IsAetheryteUnlocked(x) && !attunedByQuest.Contains(x)))
+                return aetherytes[0];
         }
 
         return null;
-
-        bool IsLocked(EAetheryteLocation location) =>
-            !state.IsAetheryteUnlocked(location) && !attunedByQuest.Contains(location);
     }
 
     private string _lastCostLog = string.Empty;
-    private int GetTeleportCost(Quest quest)
-    {
-        List<EAetheryteLocation> teleportTargets = quest.AllSteps()
-            .Where(x => x.Step.AetheryteShortcut != null)
-            .Select(x => x.Step.AetheryteShortcut!.Value)
-            .ToList();
-        if (teleportTargets.Count == 0)
-            return 0;
 
+    // Overestimates: MappingTheRealm may walk some of these instead of teleporting.
+    internal int GetTeleportCost(Quest quest)
+    {
         if (state.TeleportCosts is not { } teleportCosts)
             return 0;
 
-        var msg = $"TeleportCosts: {string.Join('+', teleportTargets)} " +
-            $"({string.Join(", ", teleportCosts.Where(x => teleportTargets.Contains((EAetheryteLocation)x.Key)).Select(x => $"{(EAetheryteLocation)x.Key}={x.Value}"))})";
+        List<(EAetheryteLocation Aetheryte, uint Cost)> teleports =
+        [
+            .. ZoneChanges(quest)
+                .Where(x => !QuestSelectionController.IsSameCity(x.From, x.To))
+                .Select(x => state.AetherytesIn(x.To)
+                    .Where(a => teleportCosts.ContainsKey((uint)a))
+                    .Select(a => (a, teleportCosts[(uint)a]))
+                    .OrderBy(a => a.Item2)
+                    .FirstOrDefault())
+                .Where(x => x.Item2 > 0)
+        ];
+        if (teleports.Count == 0)
+            return 0;
+
+        var msg = $"TeleportCosts: {string.Join(", ", teleports.Select(x => $"{x.Aetheryte}={x.Cost}"))}";
         if (msg != _lastCostLog)
             Svc.Log.Debug(msg);
         _lastCostLog = msg;
-        return teleportTargets.Sum(x => (int)teleportCosts.GetValueOrDefault((uint)x, 200u));
+        return teleports.Sum(x => (int)x.Cost);
     }
 
     public List<ElementId> GetPriorityQuests(bool onlyClassAndRoleQuests = false)
@@ -894,18 +885,7 @@ internal sealed class QuestFunctions
 
         if (catalog.TryGetQuest(questId, out Quest? quest) &&
             GetFirstLockedAetheryte(quest) is EAetheryteLocation firstLockedAetheryte)
-        {
-            if (firstLockedAetheryte.TrySpecialAethernet(out EAetheryteLocation? cityState) &&
-                cityState is EAetheryteLocation loc)
-            {
-                if (QuestData.AethernetUnlockQuests.TryGetValue(loc, out var entry) &&
-                        !entry.QuestIds.FromNumericListOfQuests()
-                        .Any(q => q == questId || IsQuestAcceptedOrComplete(q)))
-                    lockedReason.Add(_LF("Aethernet locked ({0}): {1}", entry.Letter, firstLockedAetheryte));
-            }
-            else
-                lockedReason.Add(_LF("Aetheryte locked: {0}", firstLockedAetheryte));
-        }
+            lockedReason.Add(_LF("Aetheryte locked: {0}", firstLockedAetheryte));
 
         if (QuestData.SpecialPrerequisites.TryGetValue(questId.Value, out QuestPrerequisite? prerequisite) &&
             prerequisite.GetUnmetReason(state) is { } unmetReason)

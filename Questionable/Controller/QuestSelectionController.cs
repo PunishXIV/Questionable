@@ -83,10 +83,12 @@ internal sealed class QuestSelectionController(Configuration configuration)
         if (currentQuest.Step > 0)
             return false;
 
-        QuestStep? currentStep = currentQuest.FindStep();
-        return currentStep?.AetheryteShortcut != null &&
-               (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsCompleted.Count ?? 0) == 0 &&
-               (currentStep.SkipConditions?.AetheryteShortcutIf?.QuestsAccepted.Count ?? 0) == 0;
+        // Leaving the zone the previous sequence ended in anyway, so a detour costs no extra trip.
+        QuestStep? previous = currentQuest.Quest.Root.QuestSequence
+            .Where(x => x.Sequence < currentQuest.Sequence)
+            .MaxBy(x => x.Sequence)?.Steps.LastOrDefault();
+        return currentQuest.FindStep() is { } currentStep && previous != null &&
+               currentStep.TerritoryId != (previous.TargetTerritoryId ?? previous.TerritoryId);
     }
 
     // Both halves of a city are one aethernet hop apart.
@@ -99,14 +101,8 @@ internal sealed class QuestSelectionController(Configuration configuration)
     {
         if (IsSameCity(classStart.TerritoryId, territory))
             return true;
-        if (teleportStep is not { AetheryteShortcut: not null } || IsSameCity(teleportStep.TerritoryId, territory))
-            return false;
-
-        SkipAetheryteCondition? skip = teleportStep.SkipConditions?.AetheryteShortcutIf;
-        bool teleports = skip == null ||
-                         (skip.QuestsCompleted.Count == 0 && skip.QuestsAccepted.Count == 0 &&
-                          !skip.InTerritory.Contains(territory ?? 0));
-        return teleports && IsSameCity(classStart.TerritoryId, teleportStep.TerritoryId);
+        return teleportStep != null && !IsSameCity(teleportStep.TerritoryId, territory) &&
+               IsSameCity(classStart.TerritoryId, teleportStep.TerritoryId);
     }
 
     // A finished quest only counts once it's no longer accepted (repeatables). After a stop there's no started quest,

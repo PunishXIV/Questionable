@@ -75,7 +75,6 @@
           "TerritoryId": 962,
           "StopDistance": 1,
           "InteractionType": "Interact",
-          "Sprint": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {

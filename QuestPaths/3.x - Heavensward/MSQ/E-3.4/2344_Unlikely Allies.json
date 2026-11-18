@@ -90,7 +90,6 @@
           "TerritoryId": 180,
           "InteractionType": "Interact",
           "Mount": false,
-          "DisableNavmesh": true,
           "DelaySecondsAtStart": 1
         }
       ]

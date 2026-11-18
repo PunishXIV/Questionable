@@ -54,7 +54,6 @@
           },
           "TerritoryId": 139,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "Upper La Noscea - Camp Bronze Lake"

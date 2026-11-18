@@ -36,8 +36,7 @@
           "TerritoryId": 957,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -47,8 +46,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -59,8 +57,7 @@
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 4,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -70,8 +67,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -82,8 +78,7 @@
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 4,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 1040656,
@@ -96,8 +91,7 @@
           "TerritoryId": 957,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 6,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         }
       ]
     },
@@ -113,8 +107,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         }
       ]
     },

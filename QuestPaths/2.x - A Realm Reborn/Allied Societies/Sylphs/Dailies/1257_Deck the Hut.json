@@ -153,8 +153,7 @@
             "Z": 299.5493
           },
           "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2003155,
@@ -191,8 +190,7 @@
             "Z": 284.51855
           },
           "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2003156,
@@ -225,8 +223,7 @@
             "Z": 284.51855
           },
           "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -235,8 +232,7 @@
             "Z": 285.5684
           },
           "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1000540,

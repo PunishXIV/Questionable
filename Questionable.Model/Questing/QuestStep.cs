@@ -116,16 +116,4 @@ public sealed class QuestStep
             var _ => DefaultStopDistance
         };
     }
-
-    // Only sequence 0, step 0 may be a priority teleport destination.
-    public bool IsTeleportableForPriorityQuests()
-    {
-        if (AetheryteShortcut != null || AethernetShortcut?.From != null)
-            return true;
-
-        if (InteractionType == EInteractionType.UseItem && ItemId == VesperBayAetheryteTicket)
-            return true;
-
-        return false;
-    }
 }

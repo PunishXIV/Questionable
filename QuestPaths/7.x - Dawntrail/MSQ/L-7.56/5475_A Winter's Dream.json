@@ -80,7 +80,6 @@
           },
           "TerritoryId": 1364,
           "InteractionType": "CompleteQuest",
-          "DisableNavmesh": true,
           "$": "auto: todo turn-in -> 1058862 (Alphinaud)"
         }
       ]

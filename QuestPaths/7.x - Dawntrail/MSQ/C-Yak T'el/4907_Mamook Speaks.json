@@ -113,7 +113,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "Mount": true,
           "SkipConditions": {
             "StepIf": {

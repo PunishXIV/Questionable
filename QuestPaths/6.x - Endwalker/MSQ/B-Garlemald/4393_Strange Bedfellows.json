@@ -66,8 +66,7 @@
           "StopDistance": 7,
           "TerritoryId": 958,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Garlemald - Tertium",
-          "DisableNavmesh": true
+          "Aetheryte": "Garlemald - Tertium"
         },
         {
           "DataId": 1037716,
@@ -123,7 +122,6 @@
           "TerritoryId": 958,
           "InteractionType": "WalkTo",
           "Mount": true,
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
@@ -248,7 +246,6 @@
             "ItemId": 2003231,
             "Condition": "Incapacitated"
           },
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16],
           "$.0": "[4]"
         }

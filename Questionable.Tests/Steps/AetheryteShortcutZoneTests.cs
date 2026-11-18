@@ -18,17 +18,6 @@ public sealed class AetheryteShortcutZoneTests
         Assert.Equal(skip, AetheryteShortcut.IsAlreadyInStepTerritory(player, step, teleport));
     }
 
-    [Theory]
-    [InlineData(130u, false, false)]
-    [InlineData(130u, true, false)]
-    [InlineData(140u, false, true)]
-    [InlineData(140u, true, true)]
-    public void MountStep_TeleportsFromOtherZone(uint player, bool mount, bool keep)
-    {
-        var step = new QuestStep { TerritoryId = 140, Mount = mount };
-        Assert.Equal(keep, AetheryteShortcut.KeepsStepMount(step, player));
-    }
-
     private static readonly Vector3 QuestGiver = new(-441.6f, 23.7f, -359f);
 
     [Theory]
@@ -50,8 +39,4 @@ public sealed class AetheryteShortcutZoneTests
     public void OtherAetheryte_NoTicket() =>
         Assert.False(AetheryteShortcut.TakesVesperBayTicket(
             EAetheryteLocation.Limsa, 177, 140, QuestGiver, horizonDistance: 480, 1));
-
-    [Fact]
-    public void NoMount_DoesNotKeepMount() =>
-        Assert.False(AetheryteShortcut.KeepsStepMount(new QuestStep { TerritoryId = 140 }, 140));
 }

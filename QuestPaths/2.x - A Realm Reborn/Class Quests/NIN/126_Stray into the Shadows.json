@@ -141,7 +141,6 @@
           "StopDistance": 0.5,
           "TerritoryId": 128,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {

@@ -14,7 +14,6 @@
             "Z": 421.00647
           },
           "TerritoryId": 137,
-          "RestartNavigationIfCancelled": false,
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "Fly": true,
@@ -58,8 +57,7 @@
           },
           "TerritoryId": 137,
           "InteractionType": "WalkTo",
-          "Mount": false,
-          "DisableNavmesh": true
+          "Mount": false
         },
         {
           "Position": {
@@ -71,7 +69,6 @@
           "InteractionType": "WalkTo",
           "Comment": "Flying up a bit to help with pathing",
           "Mount": true,
-          "DisableNavmesh": true,
           "SkipConditions": { "StepIf": { "Flying": "Locked" } }
         },
         {
@@ -121,7 +118,6 @@
             "Z": 421.00647
           },
           "TerritoryId": 137,
-          "RestartNavigationIfCancelled": false,
           "InteractionType": "WalkTo",
           "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "Fly": true,

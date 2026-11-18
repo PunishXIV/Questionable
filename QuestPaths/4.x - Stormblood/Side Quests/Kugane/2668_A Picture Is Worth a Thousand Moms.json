@@ -32,8 +32,7 @@
           "AethernetShortcut": [
             "[Kugane] Thavnairian Consulate",
             "[Kugane] Shiokaze Hostelry"
-          ],
-          "RestartNavigationIfCancelled": false
+          ]
         },
         {
           "Position": {
@@ -117,7 +116,6 @@
             },
             "StopDistance": 0.5
           },
-          "RestartNavigationIfCancelled": false,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]

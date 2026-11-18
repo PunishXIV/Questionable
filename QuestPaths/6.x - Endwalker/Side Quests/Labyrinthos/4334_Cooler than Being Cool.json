@@ -30,8 +30,7 @@
           },
           "TerritoryId": 956,
           "InteractionType": "AcceptQuest",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         }
       ]
     },
@@ -49,8 +48,7 @@
           "AetheryteShortcut": "Labyrinthos - Aporia",
           "Fly": true,
           "Land": true,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -99,8 +97,7 @@
           },
           "TerritoryId": 956,
           "InteractionType": "CompleteQuest",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         }
       ]
     }

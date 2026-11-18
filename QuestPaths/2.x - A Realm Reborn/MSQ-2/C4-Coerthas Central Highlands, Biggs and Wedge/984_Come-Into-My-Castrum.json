@@ -55,7 +55,6 @@
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
           "$": "Monument Tower (outside)",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {

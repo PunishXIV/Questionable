@@ -98,7 +98,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Combat",
-          "DisableNavmesh": true,
           "ItemId": 2000620,
           "EnemySpawnType": "AfterItemUse",
           "KillEnemyDataIds": [40],

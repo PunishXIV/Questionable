@@ -41,7 +41,6 @@
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
           "StopDistance": 0.25,
-          "DisableNavmesh": true,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -53,7 +52,6 @@
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
           "StopDistance": 0.25,
-          "DisableNavmesh": true,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -65,7 +63,6 @@
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
           "StopDistance": 0.25,
-          "DisableNavmesh": true,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -84,7 +81,6 @@
             }
           },
           "StopDistance": 0.25,
-          "DisableNavmesh": true,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -103,7 +99,6 @@
             }
           },
           "StopDistance": 0.25,
-          "DisableNavmesh": true,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -115,7 +110,6 @@
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
           "StopDistance": 0.25,
-          "DisableNavmesh": true,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -127,7 +121,6 @@
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
           "StopDistance": 0.25,
-          "DisableNavmesh": true,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -139,7 +132,6 @@
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
           "StopDistance": 0.25,
-          "DisableNavmesh": true,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -158,7 +150,6 @@
             }
           },
           "StopDistance": 0.25,
-          "DisableNavmesh": true,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -203,7 +194,6 @@
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
           "StopDistance": 0.25,
-          "DisableNavmesh": true,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -215,7 +205,6 @@
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
           "StopDistance": 0.25,
-          "DisableNavmesh": true,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {

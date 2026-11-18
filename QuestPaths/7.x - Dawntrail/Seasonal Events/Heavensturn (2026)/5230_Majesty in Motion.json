@@ -70,8 +70,7 @@
           },
           "TerritoryId": 134,
           "InteractionType": "Interact",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         }
       ]
     },
@@ -87,8 +86,7 @@
           },
           "TerritoryId": 134,
           "InteractionType": "Interact",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 1051874,
@@ -99,8 +97,7 @@
           },
           "TerritoryId": 134,
           "InteractionType": "Interact",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         }
       ]
     },
@@ -116,8 +113,7 @@
           },
           "TerritoryId": 134,
           "InteractionType": "Interact",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 1051875,
@@ -128,8 +124,7 @@
           },
           "TerritoryId": 134,
           "InteractionType": "Interact",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         }
       ]
     },

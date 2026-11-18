@@ -244,8 +244,7 @@
             "Z": 337.33798
           },
           "TerritoryId": 928,
-          "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2011274,
@@ -270,8 +269,7 @@
             "Z": 273.0655
           },
           "TerritoryId": 928,
-          "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 928,
@@ -318,8 +316,7 @@
             "Z": 72.87652
           },
           "TerritoryId": 928,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -328,8 +325,7 @@
             "Z": 31.767477
           },
           "TerritoryId": 928,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2011234,
@@ -349,8 +345,7 @@
             "Z": -115.379684
           },
           "TerritoryId": 928,
-          "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 928,
@@ -404,8 +399,7 @@
             "Z": -329.79776
           },
           "TerritoryId": 928,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -415,7 +409,6 @@
           },
           "TerritoryId": 928,
           "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false,
           "DelaySecondsAtStart": 2
         },
         {
@@ -445,8 +438,7 @@
             "Z": -336.8385
           },
           "TerritoryId": 928,
-          "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 928,
@@ -484,8 +476,7 @@
             "Z": -313.43954
           },
           "TerritoryId": 928,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -542,8 +533,7 @@
             "Z": -313.35168
           },
           "TerritoryId": 928,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2011275,

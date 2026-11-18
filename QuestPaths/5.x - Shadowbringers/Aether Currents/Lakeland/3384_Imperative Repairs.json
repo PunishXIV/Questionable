@@ -44,7 +44,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "Comment": "Tower Bottom Platform 1",
           "SkipConditions": {
             "StepIf": {

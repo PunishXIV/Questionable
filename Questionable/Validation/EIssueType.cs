@@ -19,6 +19,5 @@ public enum EIssueType
     InvalidExcelRef,
     DuplicateSinglePlayerInstance,
     UnusedSinglePlayerInstance,
-    InvalidChatMessage,
-    InvalidAcceptQuestTerritory
+    InvalidChatMessage
 }

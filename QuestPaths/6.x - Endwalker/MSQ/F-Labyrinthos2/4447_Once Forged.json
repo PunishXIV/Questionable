@@ -122,7 +122,6 @@
           },
           "TerritoryId": 956,
           "InteractionType": "Jump",
-          "DisableNavmesh": true,
           "JumpDestination": {
             "Position": {
               "X": -124.55376,
@@ -152,8 +151,7 @@
           },
           "TerritoryId": 956,
           "InteractionType": "WalkTo",
-          "Mount": true,
-          "DisableNavmesh": true
+          "Mount": true
         },
         {
           "DataId": 1040455,

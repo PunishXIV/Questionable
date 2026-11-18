@@ -37,6 +37,7 @@ internal sealed class CommandHandler : IDisposable
     private readonly OpenQuestCleanUp _openQuestCleanUp;
     private readonly ITargetManager _targetManager;
     private readonly DailiesController _dailiesController;
+    private readonly NavCheck _navCheck;
 
     private IReadOnlyList<uint> _lastUnlockLinks = [];
 
@@ -65,9 +66,11 @@ internal sealed class CommandHandler : IDisposable
         QuestData questData,
         EventInfoComponent eventInfoComponent,
         OpenQuestCleanUp openQuestCleanUp,
-        DailiesController dailiesController)
+        DailiesController dailiesController,
+        NavCheck navCheck)
     {
         _dailiesController = dailiesController;
+        _navCheck = navCheck;
         _commandManager = commandManager;
         _chatGui = chatGui;
         _questController = questController;
@@ -302,6 +305,21 @@ internal sealed class CommandHandler : IDisposable
                         : null);
                 break;
 
+            case "navcheck":
+                if (parts.Length > 1 && parts[1] == "stop")
+                    _navCheck.Stop();
+                else if (parts.Length > 1 && parts[1] == "all")
+                    _navCheck.Start(_questRegistry.AllQuests.ToList(), "all");
+                else if (parts.Length > 1 && ElementId.TryFromString(parts[1], out ElementId? navQuestId) &&
+                         navQuestId != null && _questRegistry.TryGetQuest(navQuestId, out Quest? navQuest))
+                    _navCheck.Start([navQuest], navQuestId.ToString());
+                else if (parts.Length == 1 && _questController.CurrentQuest?.Quest is { } currentQuest)
+                    _navCheck.Start([currentQuest], currentQuest.Id.ToString());
+                else
+                    _chatGui.PrintError("Usage: /qst navcheck [questId|all|stop] (no argument checks the current quest)",
+                        MessageTag, TagColor);
+                break;
+
             case "eventquests":
                 var eventQuests = _eventInfoComponent.GetActiveQuests().Select(q => q.ToString()).ToArray();
                 if (eventQuests.Length > 0)
@@ -426,7 +444,7 @@ internal sealed class CommandHandler : IDisposable
     // Debug tools; without Debug they answer like an unknown command.
     internal static bool NeedsDebug(string subcommand) =>
         subcommand is "do" or "sim" or "mountid" or "gen" or "d2qwh" or "d2qwl" or "rewards" or "tname" or "jobgear" or
-            "eventquests" or "unlock-links" or "taxi" or "festivals" or "loc";
+            "navcheck" or "eventquests" or "unlock-links" or "taxi" or "festivals" or "loc";
 
     private void PrintUnknown(string subcommand) =>
         _chatGui.PrintError(_LF("Unknown subcommand {0}", subcommand), MessageTag, TagColor);

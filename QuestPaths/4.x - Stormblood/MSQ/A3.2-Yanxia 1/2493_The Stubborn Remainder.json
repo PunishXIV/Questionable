@@ -38,7 +38,6 @@
           "InteractionType": "WalkTo",
           "Fly": true,
           "StopDistance": 0.25,
-          "RestartNavigationIfCancelled": false,
           "SkipConditions": {"StepIf": {"InTerritory": [681]}}
         },
         {

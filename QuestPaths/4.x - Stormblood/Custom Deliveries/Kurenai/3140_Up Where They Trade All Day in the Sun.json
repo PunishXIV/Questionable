@@ -29,7 +29,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false,
           "Mount": true
         },
         {
@@ -40,8 +39,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "$": "Sui-no-Sato, NE outside",
-          "RestartNavigationIfCancelled": false
+          "$": "Sui-no-Sato, NE outside"
         },
         {
           "DataId": 1025966,

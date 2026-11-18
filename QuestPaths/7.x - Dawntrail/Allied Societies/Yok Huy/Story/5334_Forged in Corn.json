@@ -122,7 +122,6 @@
           "TerritoryId": 1297,
           "InteractionType": "WalkTo",
           "Mount": true,
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -147,7 +146,6 @@
           "TerritoryId": 1297,
           "InteractionType": "WalkTo",
           "Mount": true,
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -172,8 +170,7 @@
           },
           "TerritoryId": 1297,
           "InteractionType": "Interact",
-          "Mount": true,
-          "DisableNavmesh": true
+          "Mount": true
         }
       ]
     },
@@ -242,7 +239,6 @@
           "TerritoryId": 1297,
           "InteractionType": "WalkTo",
           "Mount": true,
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -268,8 +264,7 @@
           "TerritoryId": 1297,
           "InteractionType": "Interact",
           "StopDistance": 4,
-          "Mount": true,
-          "DisableNavmesh": true
+          "Mount": true
         }
       ]
     },
@@ -338,8 +333,7 @@
           },
           "TerritoryId": 1297,
           "InteractionType": "Interact",
-          "StopDistance": 4,
-          "DisableNavmesh": true
+          "StopDistance": 4
         }
       ]
     },
@@ -408,7 +402,6 @@
           "TerritoryId": 1297,
           "InteractionType": "WalkTo",
           "Mount": true,
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -433,7 +426,6 @@
           "TerritoryId": 1297,
           "InteractionType": "WalkTo",
           "Mount": true,
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -458,8 +450,7 @@
           },
           "TerritoryId": 1297,
           "InteractionType": "Interact",
-          "StopDistance": 4,
-          "DisableNavmesh": true
+          "StopDistance": 4
         }
       ]
     },

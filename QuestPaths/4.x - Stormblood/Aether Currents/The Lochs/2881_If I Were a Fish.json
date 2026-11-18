@@ -71,9 +71,7 @@
           "StopDistance": 0.5,
           "TerritoryId": 621,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "Mount": true,
-          "RestartNavigationIfCancelled": false
+          "Mount": true
         },
         {
           "DataId": 1023174,

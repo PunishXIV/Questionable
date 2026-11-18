@@ -26,8 +26,7 @@
             "Z": 481.4984
           },
           "TerritoryId": 1162,
-          "InteractionType": "AcceptQuest",
-          "DisableNavmesh": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -56,7 +55,6 @@
           "TerritoryId": 1162,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1077,
-          "DisableNavmesh": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -93,7 +91,6 @@
           "TerritoryId": 1162,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1077,
-          "DisableNavmesh": true,
           "SkipConditions": {"StepIf": {"InTerritory": [1077]}}
         },
         {
@@ -134,7 +131,6 @@
           "TerritoryId": 1162,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1077,
-          "DisableNavmesh": true,
           "SkipConditions": {"StepIf": {"InTerritory": [1077]}}
         },
         {
@@ -214,8 +210,7 @@
             "Z": -490.95905
           },
           "TerritoryId": 959,
-          "InteractionType": "CompleteQuest",
-          "DisableNavmesh": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

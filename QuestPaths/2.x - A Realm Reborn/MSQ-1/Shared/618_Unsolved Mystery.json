@@ -133,7 +133,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Forgotten Springs"}}
         },
         {

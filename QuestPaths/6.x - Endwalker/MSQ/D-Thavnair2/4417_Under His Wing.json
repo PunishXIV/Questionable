@@ -56,8 +56,7 @@
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
           "Comment": "Travel to Radz-at-Han",
-          "TargetTerritoryId": 963,
-          "DisableNavmesh": true
+          "TargetTerritoryId": 963
         },
         {
           "DataId": 1040354,

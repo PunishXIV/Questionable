@@ -95,7 +95,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WalkTo",
-          "Sprint": false,
           "Mount": false
         },
         {
@@ -106,7 +105,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WalkTo",
-          "Sprint": false,
           "Mount": false
         },
         {
@@ -118,7 +116,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WaitForNpcAtPosition",
-          "Sprint": false,
           "Mount": false,
           "StopDistance": 50,
           "NpcWaitDistance": 3
@@ -131,7 +128,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WalkTo",
-          "Sprint": false,
           "Mount": false
         },
         {
@@ -143,7 +139,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WaitForNpcAtPosition",
-          "Sprint": false,
           "Mount": false,
           "StopDistance": 50,
           "NpcWaitDistance": 3
@@ -156,7 +151,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WalkTo",
-          "Sprint": false,
           "Mount": false
         },
         {
@@ -168,7 +162,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WaitForNpcAtPosition",
-          "Sprint": false,
           "Mount": false,
           "StopDistance": 50,
           "NpcWaitDistance": 3
@@ -182,7 +175,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WaitForNpcAtPosition",
-          "Sprint": false,
           "Mount": false,
           "StopDistance": 50,
           "NpcWaitDistance": 3
@@ -195,7 +187,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WalkTo",
-          "Sprint": false,
           "Mount": false,
           "DelaySecondsAtStart": 8
         },
@@ -208,7 +199,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WaitForNpcAtPosition",
-          "Sprint": false,
           "Mount": false,
           "StopDistance": 50
         },
@@ -222,10 +212,8 @@
           "StopDistance": 4,
           "TerritoryId": 958,
           "InteractionType": "WalkTo",
-          "Sprint": false,
           "Mount": false,
-          "DelaySecondsAtStart": 5,
-          "RestartNavigationIfCancelled": false
+          "DelaySecondsAtStart": 5
         }
       ]
     },

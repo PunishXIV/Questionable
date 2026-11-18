@@ -70,9 +70,7 @@
             "Z": 331.34665
           },
           "TerritoryId": 877,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "RestartNavigationIfCancelled": false
+          "InteractionType": "WalkTo"
         }
       ]
     },
@@ -88,8 +86,7 @@
           },
           "StopDistance": 5,
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "DisableNavmesh": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

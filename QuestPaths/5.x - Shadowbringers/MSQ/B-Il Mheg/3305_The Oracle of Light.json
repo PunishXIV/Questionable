@@ -90,7 +90,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "Mount": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
@@ -103,7 +102,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "Mount": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         }
@@ -189,7 +187,6 @@
               "Flying": "Unlocked"
             }
           },
-          "DisableNavmesh": true,
           "Comment": "Tower Bottom Platform 1"
         },
         {
@@ -220,7 +217,6 @@
               "Flying": "Unlocked"
             }
           },
-          "DisableNavmesh": true,
           "Comment": "Wooden Skywalk Platform 1"
         },
         {
@@ -236,7 +232,6 @@
               "Flying": "Unlocked"
             }
           },
-          "DisableNavmesh": true,
           "Comment": "Wooden Skywalk Platform 2"
         },
         {
@@ -252,7 +247,6 @@
               "Flying": "Unlocked"
             }
           },
-          "DisableNavmesh": true,
           "Comment": "Wooden Skywalk Platform 3"
         },
         {
@@ -268,7 +262,6 @@
               "Flying": "Unlocked"
             }
           },
-          "DisableNavmesh": true,
           "Comment": "Wooden Skywalk Platform 4"
         },
         {
@@ -284,7 +277,6 @@
               "Flying": "Unlocked"
             }
           },
-          "DisableNavmesh": true,
           "Comment": "Wooden Skywalk Top"
         },
         {
@@ -299,8 +291,7 @@
             "StepIf": {
               "Flying": "Unlocked"
             }
-          },
-          "DisableNavmesh": true
+          }
         },
         {
           "Position": {
@@ -328,8 +319,7 @@
             "StepIf": {
               "Flying": "Unlocked"
             }
-          },
-          "DisableNavmesh": true
+          }
         },
         {
           "Position": {
@@ -376,8 +366,7 @@
             "Z": 697.444
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "DisableNavmesh": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

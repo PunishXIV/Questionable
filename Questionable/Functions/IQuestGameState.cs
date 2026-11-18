@@ -46,6 +46,9 @@ internal interface IQuestGameState : IPrerequisiteState
     bool IsTeleportUnlocked { get; }
     int Gil { get; }
     IReadOnlyDictionary<uint, uint>? TeleportCosts { get; }
+    IReadOnlyList<EAetheryteLocation> AetherytesIn(uint territoryId);
+    // Zones in one region are walkable from each other (city halves, a city and its neighbouring zones).
+    uint RegionOf(uint territoryId);
 
     uint TerritoryType { get; }
     bool HasPlayer { get; }

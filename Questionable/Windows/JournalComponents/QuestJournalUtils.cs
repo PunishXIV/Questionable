@@ -11,8 +11,6 @@ internal sealed class QuestJournalUtils
     ICommandManager commandManager,
     Configuration configuration,
     IDalamudPluginInterface pluginInterface,
-    AetheryteData aetheryteData,
-    AetheryteFunctions aetheryteFunctions,
     MovementController movementController,
     IGameGui gameGui,
     PathEditorWindow pathEditorWindow,
@@ -304,15 +302,11 @@ internal sealed class QuestJournalUtils
         var _ = gameGui.OpenMapWithMapLink(mapLink);
         if (!teleport)
             return;
-        if (location.Territory.RowId.Equals(Svc.ClientState.TerritoryType))
-            movementController.NavigateTo(EMovementType.None, questInfo.IssuerDataId, location.Position, new()
-            {
-                StopDistance = 20f,
-                VerticalStopDistance = 5f,
-            });
-        else
-            if (aetheryteData.NearestTo(location.Territory.RowId, location.Position) is { } aetheryte)
-                aetheryteFunctions.TeleportAetheryte(aetheryte);
+        movementController.NavigateTo(EMovementType.None, questInfo.IssuerDataId, location.Position, new()
+        {
+            StopDistance = 20f,
+            VerticalStopDistance = 5f,
+        }, location.Territory.RowId);
     }
 
     public static uint? GetIconOverride(QuestInfo questInfo, FontAwesomeIcon? icon = null, Vector4? color = null)

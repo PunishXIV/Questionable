@@ -70,6 +70,10 @@ internal sealed class FakeQuestGameState : IQuestGameState
     public bool IsTeleportUnlocked { get; set; } = true;
     public int Gil { get; set; } = 100_000;
     public IReadOnlyDictionary<uint, uint>? TeleportCosts { get; set; }
+    public Dictionary<uint, List<EAetheryteLocation>> Aetherytes { get; } = [];
+    public IReadOnlyList<EAetheryteLocation> AetherytesIn(uint territoryId) => Aetherytes.GetValueOrDefault(territoryId) ?? [];
+    public Dictionary<uint, uint> Regions { get; } = [];
+    public uint RegionOf(uint territoryId) => Regions.GetValueOrDefault(territoryId, territoryId);
     public uint TerritoryType { get; set; }
     public bool HasPlayer { get; set; } = true;
     public ushort CurrentMountId { get; set; }

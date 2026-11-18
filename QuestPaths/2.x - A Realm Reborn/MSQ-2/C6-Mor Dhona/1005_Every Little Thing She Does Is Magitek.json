@@ -124,7 +124,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "$": "Camp Revenant's Toll (top)"
         },
         {
@@ -148,8 +147,7 @@
             "Z": -595.8602
           },
           "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {

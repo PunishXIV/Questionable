@@ -98,8 +98,7 @@
             "Z": -190.31772
           },
           "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2010032,
@@ -110,8 +109,7 @@
           },
           "TerritoryId": 813,
           "InteractionType": "AttuneAetherCurrent",
-          "AetherCurrentId": 2818231,
-          "DisableNavmesh": true
+          "AetherCurrentId": 2818231
         },
         {
           "TerritoryId": 813,

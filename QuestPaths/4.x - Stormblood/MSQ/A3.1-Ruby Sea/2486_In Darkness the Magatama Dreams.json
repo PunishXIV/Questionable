@@ -49,7 +49,6 @@
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
           "$": "Sui-no-Sato, NE inside",
-          "RestartNavigationIfCancelled": false,
           "SkipConditions": {"StepIf": {"Diving": true}}
         },
         {

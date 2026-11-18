@@ -29,7 +29,7 @@ internal static class QuestCleanUp
                     return null;
                 }
 
-                EAetheryteLocation targetAetheryte = step.AetheryteShortcut ?? mountConfiguration.ClosestAetheryte;
+                EAetheryteLocation targetAetheryte = mountConfiguration.ClosestAetheryte;
                 AetheryteShortcut.Task teleportTask = new(Step: null, quest.Id, targetAetheryte, aetheryteData.TerritoryIds[targetAetheryte]);
 
                 // turn-in step can never be done while mounted on an allied society mount

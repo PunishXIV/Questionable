@@ -95,7 +95,6 @@
           "TerritoryId": 180,
           "InteractionType": "WalkTo",
           "StopDistance": 1,
-          "DisableNavmesh": true,
           "Fly": true
         },
         {
@@ -107,7 +106,6 @@
           "TerritoryId": 180,
           "InteractionType": "WalkTo",
           "StopDistance": 1,
-          "DisableNavmesh": true,
           "Fly": true
         },
         {

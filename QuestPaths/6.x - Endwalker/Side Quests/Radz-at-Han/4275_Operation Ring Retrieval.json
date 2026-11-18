@@ -43,8 +43,7 @@
           },
           "TerritoryId": 963,
           "InteractionType": "WalkTo",
-          "DelaySecondsAtStart": 2,
-          "Sprint": false
+          "DelaySecondsAtStart": 2
         },
         {
           "DataId": 1041515,
@@ -55,8 +54,7 @@
           },
           "StopDistance": 100,
           "TerritoryId": 963,
-          "InteractionType": "WaitForNpcAtPosition",
-          "Sprint": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "Position": {
@@ -65,8 +63,7 @@
             "Z": 20.657598
           },
           "TerritoryId": 963,
-          "InteractionType": "WalkTo",
-          "Sprint": false
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1041515,
@@ -77,8 +74,7 @@
           },
           "StopDistance": 100,
           "TerritoryId": 963,
-          "InteractionType": "WaitForNpcAtPosition",
-          "Sprint": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "Position": {
@@ -87,8 +83,7 @@
             "Z": 27.903757
           },
           "TerritoryId": 963,
-          "InteractionType": "WalkTo",
-          "Sprint": false
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1041515,
@@ -99,8 +94,7 @@
           },
           "StopDistance": 100,
           "TerritoryId": 963,
-          "InteractionType": "WaitForNpcAtPosition",
-          "Sprint": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "Position": {
@@ -110,8 +104,7 @@
           },
           "TerritoryId": 963,
           "InteractionType": "WalkTo",
-          "DelaySecondsAtStart": 2,
-          "Sprint": false
+          "DelaySecondsAtStart": 2
         },
         {
           "DataId": 1041515,
@@ -122,8 +115,7 @@
           },
           "StopDistance": 100,
           "TerritoryId": 963,
-          "InteractionType": "WaitForNpcAtPosition",
-          "Sprint": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1041514,
@@ -135,8 +127,7 @@
           "StopDistance": 2,
           "TerritoryId": 963,
           "InteractionType": "WalkTo",
-          "DelaySecondsAtStart": 8,
-          "Sprint": false
+          "DelaySecondsAtStart": 8
         }
       ]
     },

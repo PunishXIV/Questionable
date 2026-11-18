@@ -59,7 +59,6 @@
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
           "$": "NW Skyfire Locks door (inside)",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [
@@ -110,8 +109,7 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "$": "NW Skyfire Locks door (outside)",
-          "DisableNavmesh": true
+          "$": "NW Skyfire Locks door (outside)"
         },
         {
           "Position": {

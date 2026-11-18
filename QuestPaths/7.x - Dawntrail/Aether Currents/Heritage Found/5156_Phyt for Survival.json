@@ -100,8 +100,7 @@
               "IgnoreQuestMarker": true
             }
           ],
-          "CombatDelaySecondsAtStart": 2,
-          "DisableNavmesh": true
+          "CombatDelaySecondsAtStart": 2
         },
         {
           "Position": {
@@ -122,7 +121,6 @@
           "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
-          "DisableNavmesh": true,
           "NpcWaitDistance": 5
         },
         {
@@ -135,7 +133,6 @@
           "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
-          "DisableNavmesh": true,
           "NpcWaitDistance": 5
         },
         {
@@ -148,7 +145,6 @@
           "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
-          "DisableNavmesh": true,
           "NpcWaitDistance": 5
         },
         {
@@ -161,7 +157,6 @@
           "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
-          "DisableNavmesh": true,
           "NpcWaitDistance": 5
         },
         {

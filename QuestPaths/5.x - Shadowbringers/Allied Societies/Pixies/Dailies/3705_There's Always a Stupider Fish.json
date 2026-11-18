@@ -43,7 +43,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "RequiredQuestVariables": [null,[
               2
             ],null,null,null,null
@@ -58,7 +57,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "RequiredQuestVariables": [null,[
               3
             ],null,null,null,null
@@ -73,7 +71,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "RequiredQuestVariables": [null,[
               1
             ],null,null,null,null

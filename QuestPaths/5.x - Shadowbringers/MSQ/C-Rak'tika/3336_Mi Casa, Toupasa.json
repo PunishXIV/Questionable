@@ -70,8 +70,7 @@
             "Z": -713.26447
           },
           "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2010218,
@@ -120,8 +119,7 @@
             "Z": -760.07153
           },
           "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -148,8 +146,7 @@
             "Z": -831.1932
           },
           "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -158,8 +155,7 @@
             "Z": -864.8363
           },
           "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -186,8 +182,7 @@
             "Z": -882.98535
           },
           "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2010217,

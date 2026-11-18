@@ -220,10 +220,8 @@ public sealed class QuestionablePlugin(
         serviceCollection.AddSingleton(sp =>
             new QuestGameData(sp.GetRequiredService<IDataManager>().GameData));
 
-        // Same-instance forwards: AetheryteData and JsonSchemaValidator each satisfy an additional
-        // service registration that must resolve to the singleton already registered above, not to
-        // a second independently-constructed instance.
-        serviceCollection.AddSingleton<IAetheryteTerritoryProvider>(sp => sp.GetRequiredService<AetheryteData>());
+        // Same-instance forward: JsonSchemaValidator also satisfies IQuestValidator and must resolve to the
+        // singleton already registered above, not to a second independently-constructed instance.
         serviceCollection.AddSingleton<IQuestValidator>(sp => sp.GetRequiredService<JsonSchemaValidator>());
 
         // Breaks the QuestController <-> MovementController ctor cycle without handing MovementController

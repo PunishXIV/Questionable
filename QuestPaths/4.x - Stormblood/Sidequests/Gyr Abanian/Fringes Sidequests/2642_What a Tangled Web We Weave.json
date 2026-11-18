@@ -95,7 +95,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Combat",
-          "DisableNavmesh": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [7507],
           "$": "auto: lua enemies spawn here -> 7507"

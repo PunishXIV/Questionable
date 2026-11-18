@@ -184,8 +184,7 @@
             "Z": 123.2643
           },
           "TerritoryId": 628,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -194,14 +193,12 @@
             "Z": 145.54941
           },
           "TerritoryId": 628,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 628,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Kugane] Pier #1",
-          "DisableNavmesh": true
+          "AethernetShard": "[Kugane] Pier #1"
         },
         {
           "TerritoryId": 628,

@@ -70,8 +70,7 @@
             "Z": 695.46045
           },
           "TerritoryId": 1191,
-          "InteractionType": "CompleteQuest",
-          "DisableNavmesh": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -63,8 +63,7 @@
           "TerritoryId": 956,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 1,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -87,8 +86,7 @@
           "TerritoryId": 956,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 1,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -111,8 +109,7 @@
           "TerritoryId": 956,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 1,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         }
       ]
     },

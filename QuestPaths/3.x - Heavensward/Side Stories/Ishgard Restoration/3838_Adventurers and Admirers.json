@@ -54,8 +54,7 @@
             "Z": 48.996704
           },
           "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "Sprint": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -160,8 +159,7 @@
             "Z": 48.996704
           },
           "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "Sprint": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -214,8 +212,7 @@
             "Z": 83.9093
           },
           "TerritoryId": 886,
-          "InteractionType": "CompleteQuest",
-          "Sprint": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

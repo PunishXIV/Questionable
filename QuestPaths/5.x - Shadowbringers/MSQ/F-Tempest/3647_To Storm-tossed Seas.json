@@ -53,7 +53,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
@@ -110,7 +109,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -120,8 +118,7 @@
             "Z": 744.7277
           },
           "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2010137,
@@ -147,7 +144,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "Mount": true
         },
         {
@@ -211,8 +207,7 @@
           },
           "StopDistance": 5,
           "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "DisableNavmesh": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

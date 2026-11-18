@@ -109,7 +109,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "AetheryteShortcut": "Mor Dhona",
           "SkipConditions": {
             "StepIf": {

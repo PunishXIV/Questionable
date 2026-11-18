@@ -166,7 +166,8 @@ public sealed class DailiesSafetyTests
         _catalog.Add(TestQuestInfo.Create(1495)
                 .With(nameof(QuestInfo.AlliedSociety), EAlliedSociety.Ixal)
                 .With(nameof(QuestInfo.IsRepeatable), true),
-            QuestTestData.Seq(0, new QuestStep { AetheryteShortcut = EAetheryteLocation.CoerthasCentralHighlandsCampDragonhead }));
+            QuestTestData.Seq(0, new QuestStep { TerritoryId = 155 }));
+        _state.Aetherytes[155] = [EAetheryteLocation.CoerthasCentralHighlandsCampDragonhead];
         _state.AvailableAlliedSocietyQuests[EAlliedSociety.Ixal] = [id];
         _state.LockedAetherytes.Add(EAetheryteLocation.CoerthasCentralHighlandsCampDragonhead);
 

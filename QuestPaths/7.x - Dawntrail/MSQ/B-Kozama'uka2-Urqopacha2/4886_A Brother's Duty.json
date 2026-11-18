@@ -403,8 +403,7 @@
           "TerritoryId": 1188,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 1,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 1046659,
@@ -415,8 +414,7 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "WalkTo",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 1046659,
@@ -427,8 +425,7 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "WalkTo",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 2013617,
@@ -439,8 +436,7 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "WalkTo",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         }
       ]
     },

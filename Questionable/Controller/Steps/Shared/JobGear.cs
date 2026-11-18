@@ -50,7 +50,6 @@ internal static class JobGear
         JobGearData jobGearData,
         GearStatsCalculator gearStats,
         GameFunctions gameFunctions,
-        IClientState clientState,
         ICondition condition,
         IDalamudPluginInterface pluginInterface,
         IChatGui chatGui,
@@ -130,22 +129,11 @@ internal static class JobGear
             reason = $"Collecting the level {choice.Level} set for {job} from {chosen.ShopName} ({missing.Count} pieces).";
             return
             [
-                .. Travel(chosen.Vendor),
+                new Travel.Task(chosen.Vendor.TerritoryId, chosen.Vendor.Position, chosen.Vendor.NpcId),
                 new Take(chosen.Vendor.NpcId, chosen.ShopName, chosen.Items, contentId, choice.Level),
                 new EquipRecommended.EquipTask(),
                 new Done(key, RetryStep: !force),
             ];
-        }
-
-        private IEnumerable<ITask> Travel(JobGearData.Vendor vendor)
-        {
-            QuestStep step = new(EInteractionType.Interact, vendor.NpcId, vendor.Position, vendor.TerritoryId)
-            {
-                StopDistance = 3
-            };
-            if (clientState.TerritoryType != vendor.TerritoryId)
-                yield return new AetheryteShortcut.Task(step, null, EAetheryteLocation.None, vendor.TerritoryId);
-            yield return new MoveTask(step, vendor.Position);
         }
 
     }

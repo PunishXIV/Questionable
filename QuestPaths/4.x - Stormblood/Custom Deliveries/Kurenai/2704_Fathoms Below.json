@@ -14,8 +14,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "RestartNavigationIfCancelled": false
+          "AetheryteShortcut": "Ruby Sea - Tamamizu"
         },
         {
           "Position": {
@@ -25,8 +24,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "$": "Sui-no-Sato, NE outside",
-          "RestartNavigationIfCancelled": false
+          "$": "Sui-no-Sato, NE outside"
         },
         {
           "DataId": 1023280,

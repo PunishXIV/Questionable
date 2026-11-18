@@ -49,8 +49,7 @@
             "Z": -117.162285
           },
           "TerritoryId": 1186,
-          "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 1186,

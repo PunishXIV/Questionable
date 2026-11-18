@@ -72,8 +72,7 @@
           "TerritoryId": 613,
           "InteractionType": "Interact",
           "$": "0 16 0 0 0 64 -> 16 32 0 0 0 192",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
-          "DisableNavmesh": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1019992,

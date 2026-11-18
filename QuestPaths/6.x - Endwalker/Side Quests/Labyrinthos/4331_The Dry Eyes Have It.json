@@ -53,8 +53,7 @@
           "TerritoryId": 956,
           "InteractionType": "Emote",
           "Emote": "pet",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         }
       ]
     },
@@ -72,8 +71,7 @@
           "InteractionType": "UseItem",
           "ItemId": 2003321,
           "DelaySecondsAtStart": 1,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         }
       ]
     },

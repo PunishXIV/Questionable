@@ -24,8 +24,7 @@
             "Z": -578.24066
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "DisableNavmesh": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

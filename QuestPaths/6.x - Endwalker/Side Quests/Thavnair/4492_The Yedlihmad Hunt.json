@@ -79,8 +79,7 @@
           "TerritoryId": 957,
           "InteractionType": "WaitForNpcAtPosition",
           "StopDistance": 100,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -90,8 +89,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 1041390,
@@ -103,8 +101,7 @@
           "TerritoryId": 957,
           "InteractionType": "WaitForNpcAtPosition",
           "StopDistance": 100,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -114,8 +111,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 1041390,
@@ -127,8 +123,7 @@
           "TerritoryId": 957,
           "InteractionType": "WaitForNpcAtPosition",
           "StopDistance": 100,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -138,8 +133,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {

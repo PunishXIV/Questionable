@@ -33,7 +33,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false,
           "Fly": true
         },
         {
@@ -45,7 +44,6 @@
           "TerritoryId": 613,
           "StopDistance": 0.25,
           "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false,
           "Fly": true
         },
         {

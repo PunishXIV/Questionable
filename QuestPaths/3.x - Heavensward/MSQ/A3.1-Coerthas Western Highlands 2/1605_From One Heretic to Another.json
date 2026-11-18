@@ -39,8 +39,7 @@
           },
           "TerritoryId": 397,
           "InteractionType": "WalkTo",
-          "$": "Gorgagne Mills (inside)",
-          "DisableNavmesh": true
+          "$": "Gorgagne Mills (inside)"
         },
         {
           "DataId": 2005432,

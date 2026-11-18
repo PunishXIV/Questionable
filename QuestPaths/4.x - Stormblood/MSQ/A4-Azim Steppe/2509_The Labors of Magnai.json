@@ -92,8 +92,7 @@
             "Z": 23.111439
           },
           "TerritoryId": 622,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -115,7 +114,6 @@
           "TerritoryId": 622,
           "InteractionType": "Interact",
           "$": "QW: 0 0    0 0    0 0 -> QW: 1 16    0 0    0 32",
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {

@@ -135,8 +135,7 @@
             "Z": -352.31714
           },
           "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2008219,
@@ -163,8 +162,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
-          "$": "Vesper Bay Gate",
-          "DisableNavmesh": true
+          "$": "Vesper Bay Gate"
         },
         {
           "DataId": 1021453,

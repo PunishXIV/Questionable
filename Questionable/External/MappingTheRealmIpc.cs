@@ -13,6 +13,7 @@ internal sealed class MappingTheRealmIpc : Ipc, IDisposable
     [EzIPC("PathToTerritory")] private readonly Func<uint, Task> _pathToTerritory = null!;
     [EzIPC("PathTo")] private readonly Func<uint, Vector3, Task> _pathTo = null!;
     [EzIPC("PathToInteractable")] private readonly Func<uint, Vector3, uint, Task> _pathToInteractable = null!;
+    [EzIPC("CanReach")] private readonly Func<uint, Vector3, CancellationToken, Task<bool>> _canReach = null!;
     [EzIPC("Stop")] private readonly Action _stop = null!;
 
     public MappingTheRealmIpc(ILogger<MappingTheRealmIpc> logger)
@@ -42,6 +43,9 @@ internal sealed class MappingTheRealmIpc : Ipc, IDisposable
             return Task.FromException(e);
         }
     }
+
+    public Task<bool> CanReach(uint territoryId, Vector3 position, CancellationToken token) =>
+        _canReach(territoryId, position, token);
 
     // Only cancels a route Questionable started.
     public void Stop() => IpcInvoke.SafeAction(() => _stop(), _logger, "Could not stop MappingTheRealm");

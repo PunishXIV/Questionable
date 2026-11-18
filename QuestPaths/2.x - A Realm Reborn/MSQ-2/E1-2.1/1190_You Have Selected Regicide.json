@@ -110,8 +110,7 @@
               "MinimumKillCount": 1
             }
           ],
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -130,8 +129,7 @@
               "MinimumKillCount": 3
             }
           ],
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -150,8 +148,7 @@
               "MinimumKillCount": 1
             }
           ],
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -170,8 +167,7 @@
               "MinimumKillCount": 2
             }
           ],
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 2482,
@@ -184,8 +180,7 @@
           "TerritoryId": 152,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -210,7 +205,6 @@
             }
           ],
           "Mount": false,
-          "Sprint": false,
           "CombatDelaySecondsAtStart": 3
         },
         {
@@ -224,7 +218,6 @@
           "StopDistance": 1,
           "InteractionType": "WaitForNpcAtPosition",
           "Mount": false,
-          "Sprint": false,
           "NpcWaitDistance": 5
         },
         {
@@ -238,7 +231,6 @@
           "TerritoryId": 152,
           "InteractionType": "WaitForNpcAtPosition",
           "Mount": false,
-          "Sprint": false,
           "NpcWaitDistance": 5
         },
         {

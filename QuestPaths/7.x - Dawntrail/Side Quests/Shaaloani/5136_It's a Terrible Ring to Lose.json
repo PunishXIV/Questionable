@@ -56,8 +56,7 @@
             "Z": -219.92828
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -73,8 +72,7 @@
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
           "Mount": true,
-          "Fly": true,
-          "DisableNavmesh": true
+          "Fly": true
         },
         {
           "DataId": 1050652,

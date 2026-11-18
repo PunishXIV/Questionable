@@ -82,7 +82,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "Mount": true
         },
         {

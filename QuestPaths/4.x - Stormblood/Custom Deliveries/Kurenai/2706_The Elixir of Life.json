@@ -81,8 +81,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "Mount": true,
-          "RestartNavigationIfCancelled": false
+          "Mount": true
         },
         {
           "Position": {
@@ -93,7 +92,6 @@
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
           "$": "Exile, outside",
-          "RestartNavigationIfCancelled": false,
           "Fly": true
         },
         {
@@ -120,7 +118,6 @@
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
           "$": "Exile, outside",
-          "RestartNavigationIfCancelled": false,
           "Fly": true,
           "SkipConditions": {
             "StepIf": {
@@ -180,8 +177,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "Mount": true,
-          "RestartNavigationIfCancelled": false
+          "Mount": true
         },
         {
           "Position": {
@@ -191,7 +187,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "DelaySecondsAtStart": 2
         },
         {
@@ -203,7 +198,6 @@
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
           "$": "Sui-no-Sato, SW outside",
-          "RestartNavigationIfCancelled": false,
           "Fly": true
         },
         {

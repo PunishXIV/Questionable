@@ -70,7 +70,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "Comment": "For some reason navmesh wanders off through the whole area"
         },
         {

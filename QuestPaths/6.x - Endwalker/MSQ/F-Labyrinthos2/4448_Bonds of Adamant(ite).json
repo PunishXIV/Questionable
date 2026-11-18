@@ -130,8 +130,7 @@
             "Z": 301.63266
           },
           "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false
+          "InteractionType": "WalkTo"
         }
       ]
     },

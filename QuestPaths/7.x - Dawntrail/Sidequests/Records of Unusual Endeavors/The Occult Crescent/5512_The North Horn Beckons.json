@@ -31,7 +31,6 @@
           },
           "TerritoryId": 1346,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "Comment": "Attune zone aetheryte"
         },
         {
@@ -43,7 +42,6 @@
           },
           "TerritoryId": 1346,
           "InteractionType": "AcceptQuest",
-          "DisableNavmesh": true,
           "$": "auto: issuer 1059627 (Ketenramm)"
         }
       ]
@@ -60,7 +58,6 @@
           },
           "TerritoryId": 1346,
           "InteractionType": "CompleteQuest",
-          "DisableNavmesh": true,
           "$": "auto: todo turn-in -> 1059626 (Archive)"
         }
       ]

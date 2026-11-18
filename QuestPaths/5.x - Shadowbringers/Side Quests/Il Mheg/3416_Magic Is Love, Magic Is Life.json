@@ -64,7 +64,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "None",
-          "DisableNavmesh": true,
           "Fly": true
         },
         {
@@ -124,7 +123,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "None",
-          "DisableNavmesh": true,
           "Fly": true
         },
         {

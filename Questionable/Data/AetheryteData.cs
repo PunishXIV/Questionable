@@ -3,10 +3,8 @@ using Lumina.Excel.Sheets;
 namespace Questionable.Data;
 
 [RegisterSingleton]
-internal sealed class AetheryteData : IAetheryteTerritoryProvider
+internal sealed class AetheryteData
 {
-    IReadOnlyCollection<uint> IAetheryteTerritoryProvider.AetheryteTerritoryIds => TerritoryIds.Values;
-
     public AetheryteData(IDataManager dataManager)
     {
         Dictionary<EAetheryteLocation, uint> territoryIds = [];

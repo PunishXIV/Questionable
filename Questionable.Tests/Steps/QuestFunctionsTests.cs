@@ -99,11 +99,12 @@ public sealed class QuestFunctionsTests
     [Fact]
     public void LockedAetheryte_LocksUnlessAttuned()
     {
-        var shortcut = new QuestStep { TerritoryId = 956, AetheryteShortcut = EAetheryteLocation.LabyrinthosAporia };
-        _catalog.Add(TestQuestInfo.Create(1), QuestTestData.Seq(0, shortcut));
+        var step = new QuestStep { TerritoryId = 956 };
+        _catalog.Add(TestQuestInfo.Create(1), QuestTestData.Seq(0, step));
         _catalog.Add(TestQuestInfo.Create(2), QuestTestData.Seq(0,
             new QuestStep { InteractionType = EInteractionType.AttuneAetheryte, Aetheryte = EAetheryteLocation.LabyrinthosAporia },
-            shortcut));
+            step));
+        _state.Aetherytes[956] = [EAetheryteLocation.LabyrinthosAporia];
         _state.LockedAetherytes.Add(EAetheryteLocation.LabyrinthosAporia);
 
         Assert.Equal(["Aetheryte locked: LabyrinthosAporia"], LockReasons(1));
@@ -111,15 +112,50 @@ public sealed class QuestFunctionsTests
     }
 
     [Fact]
-    public void LockedAethernet_NamedUntilQuestStarts()
+    public void LockedAetheryte_WalkInRegionIsFine()
     {
-        _catalog.Add(TestQuestInfo.Create(1), QuestTestData.Seq(0,
-            new QuestStep { TerritoryId = 129, AetheryteShortcut = EAetheryteLocation.LimsaZephyrGate }));
-        _state.LockedAetherytes.Add(EAetheryteLocation.LimsaZephyrGate);
+        _catalog.Add(TestQuestInfo.Create(1), QuestTestData.Seq(0, new QuestStep { TerritoryId = 134 }));
+        _state.TerritoryType = 128;
+        _state.Regions[128] = _state.Regions[134] = 22;
+        _state.Aetherytes[134] = [EAetheryteLocation.MiddleLaNosceaSummerfordFarms];
+        _state.LockedAetherytes.Add(EAetheryteLocation.MiddleLaNosceaSummerfordFarms);
 
-        Assert.Equal(["Aethernet locked (l): LimsaZephyrGate"], LockReasons(1));
-        _state.Accepted.Add(108);
         Assert.Empty(LockReasons(1));
+    }
+
+    private static Quest Travels(params QuestStep[] steps) =>
+        QuestTestData.CreateQuest(new QuestId(1), QuestTestData.Seq(0, steps));
+
+    [Fact]
+    public void WithoutTeleport_OnlyWithinRegion()
+    {
+        _state.TerritoryType = 132;
+        _state.Regions[132] = _state.Regions[133] = _state.Regions[148] = 23;
+        QuestStep[] shroud = [new() { TerritoryId = 133 }, new() { TerritoryId = 148 }];
+
+        Assert.True(_functions.CanBeDoneWithoutTeleport(Travels(shroud)));
+        Assert.False(_functions.CanBeDoneWithoutTeleport(Travels([.. shroud, new() { TerritoryId = 130 }])));
+    }
+
+    [Fact]
+    public void TeleportCost_CheapestPerZoneChange()
+    {
+        _state.TerritoryType = 132;
+        _state.Aetherytes[140] = [EAetheryteLocation.WesternThanalanHorizon];
+        _state.Aetherytes[130] = [EAetheryteLocation.Uldah];
+        _state.Aetherytes[133] = [EAetheryteLocation.Gridania];
+        _state.TeleportCosts = new Dictionary<uint, uint>
+        {
+            [(uint)EAetheryteLocation.WesternThanalanHorizon] = 300,
+            [(uint)EAetheryteLocation.Uldah] = 200,
+        };
+
+        // 132 -> 133 and 130 -> 131 are city halves.
+        Assert.Equal(500, _functions.GetTeleportCost(Travels(
+            new() { TerritoryId = 133 }, new() { TerritoryId = 140 }, new() { TerritoryId = 130 }, new() { TerritoryId = 131 })));
+        // A door step already lands in 130.
+        Assert.Equal(300, _functions.GetTeleportCost(Travels(
+            new() { TerritoryId = 140, TargetTerritoryId = 130 }, new() { TerritoryId = 130 })));
     }
 
     [Theory]

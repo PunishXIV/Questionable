@@ -357,42 +357,22 @@ public sealed class QuestSelectionControllerTests
     public void LevelStop_WaitsWhileBusy(int level, bool running, bool busy, bool expected) =>
         Assert.Equal(expected, QuestSelectionController.IsLevelStopDue(level, 50, running, busy));
 
-    private static QuestStep Start(uint territory, EAetheryteLocation? shortcut = null) =>
-        new(EInteractionType.AcceptQuest, 1, null, territory) { AetheryteShortcut = shortcut };
+    private static QuestStep Start(uint territory) => new(EInteractionType.AcceptQuest, 1, null, territory);
 
-    // Here is Eastern Thanalan (145); the class quest starts in the given zone; the next step teleports to the other.
+    // Here is Eastern Thanalan (145); the class quest starts in the given zone; the next story step is in the other.
     [Theory]
-    [InlineData(145u, 140u, false, true)]
-    [InlineData(128u, 129u, true, true)]
-    [InlineData(140u, 140u, true, true)]
-    [InlineData(140u, 129u, true, false)]
-    [InlineData(140u, 140u, false, false)]
-    public void ClassQuestDetour_FreeWhenNoExtraTrip(uint classTerritory, uint teleportTerritory, bool teleports,
-        bool expected)
-    {
-        QuestStep teleportStep = Start(teleportTerritory, teleports ? EAetheryteLocation.Limsa : null);
-        Assert.Equal(expected, QuestSelectionController.IsFreeClassQuestDetour(Start(classTerritory), 145, teleportStep));
-    }
+    [InlineData(145u, 140u, true)]
+    [InlineData(128u, 129u, true)]
+    [InlineData(140u, 140u, true)]
+    [InlineData(140u, 129u, false)]
+    [InlineData(140u, 145u, false)]
+    public void ClassQuestDetour_FreeWhenNoExtraTrip(uint classTerritory, uint nextTerritory, bool expected) =>
+        Assert.Equal(expected,
+            QuestSelectionController.IsFreeClassQuestDetour(Start(classTerritory), 145, Start(nextTerritory)));
 
     [Fact]
     public void ClassQuestDetour_FreeAnywhereInThisCity() =>
         Assert.True(QuestSelectionController.IsFreeClassQuestDetour(Start(128), 129, null));
-
-    [Fact]
-    public void ClassQuestDetour_NotIfTeleportMaySkip()
-    {
-        QuestStep teleportStep = Start(140, EAetheryteLocation.Uldah);
-        teleportStep.SkipConditions = new() { AetheryteShortcutIf = new() { QuestsCompleted = [new QuestId(1)] } };
-        Assert.False(QuestSelectionController.IsFreeClassQuestDetour(Start(140), 145, teleportStep));
-    }
-
-    [Fact]
-    public void ClassQuestDetour_NotIfSkippedHere()
-    {
-        QuestStep teleportStep = Start(140, EAetheryteLocation.Uldah);
-        teleportStep.SkipConditions = new() { AetheryteShortcutIf = new() { InTerritory = [145] } };
-        Assert.False(QuestSelectionController.IsFreeClassQuestDetour(Start(140), 145, teleportStep));
-    }
 
     [Theory]
     [InlineData(128u, 129u, true)]
@@ -424,16 +404,17 @@ public sealed class QuestSelectionControllerTests
     }
 
     private static (QuestProgress Progress, ECurrentQuestType Type)? Details(ushort id = 500, bool interruptible = true,
-        byte sequence = 1, int step = 0, EAlliedSociety society = EAlliedSociety.None, bool shortcut = true,
-        SkipConditions? skip = null, ECurrentQuestType type = ECurrentQuestType.Normal)
+        byte sequence = 1, int step = 0, EAlliedSociety society = EAlliedSociety.None, uint previousZone = 100,
+        ushort? previousTarget = null, ECurrentQuestType type = ECurrentQuestType.Normal)
     {
-        QuestStep NewStep() => new()
-        {
-            AetheryteShortcut = shortcut ? default(EAetheryteLocation) : null,
-            SkipConditions = skip,
-        };
+        QuestStep NewStep() => new() { TerritoryId = 200 };
 
-        Quest quest = QuestTestData.CreateQuest(new QuestId(id), QuestTestData.Seq(sequence, NewStep(), NewStep()));
+        QuestSequence current = QuestTestData.Seq(sequence, NewStep(), NewStep());
+        QuestSequence[] sequences = sequence == 0
+            ? [current]
+            : [QuestTestData.Seq((byte)(sequence - 1),
+                new QuestStep { TerritoryId = previousZone, TargetTerritoryId = previousTarget }), current];
+        Quest quest = QuestTestData.CreateQuest(new QuestId(id), sequences);
         quest.Root.Interruptible = interruptible;
         quest.Info.AlliedSociety.Returns(society);
         return (new QuestProgress(quest, sequence, step), type);
@@ -445,7 +426,7 @@ public sealed class QuestSelectionControllerTests
         QuestSelectionController.IsInterruptible(details, automation, hasExternalOperation, _ => isPriority);
 
     [Fact]
-    public void Interruptible_FirstStepWithShortcut()
+    public void Interruptible_FirstStepLeavesZone()
     {
         Assert.True(Interruptible(Details()));
     }
@@ -464,16 +445,12 @@ public sealed class QuestSelectionControllerTests
         Assert.False(Interruptible(Details(id: 1048)));
         Assert.False(Interruptible(Details(society: EAlliedSociety.Amaljaa)));
         Assert.False(Interruptible(Details(step: 1)));
-        Assert.False(Interruptible(Details(shortcut: false)));
+        Assert.False(Interruptible(Details(previousZone: 200)));
     }
 
     [Fact]
-    public void Interruptible_FalseIfShortcutSkippable()
-    {
-        Assert.False(Interruptible(Details(skip: new() { AetheryteShortcutIf = new() { QuestsCompleted = [new QuestId(1)] } })));
-        Assert.False(Interruptible(Details(skip: new() { AetheryteShortcutIf = new() { QuestsAccepted = [new QuestId(1)] } })));
-        Assert.True(Interruptible(Details(skip: new() { AetheryteShortcutIf = new() })));
-    }
+    public void Interruptible_FalseAfterDoorIntoZone() =>
+        Assert.False(Interruptible(Details(previousTarget: 200)));
 
     [Fact]
     public void Pick_FirstAvailablePriority()

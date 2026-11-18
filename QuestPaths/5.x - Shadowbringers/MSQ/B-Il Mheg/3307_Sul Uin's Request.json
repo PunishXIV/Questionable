@@ -56,7 +56,6 @@
           "TerritoryId": 816,
           "InteractionType": "UseItem",
           "ItemId": 2002534,
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -67,7 +66,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]

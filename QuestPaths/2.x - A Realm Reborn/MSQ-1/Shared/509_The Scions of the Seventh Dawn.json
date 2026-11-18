@@ -72,8 +72,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
-          "$": "Vesper Bay Gate",
-          "DisableNavmesh": true
+          "$": "Vesper Bay Gate"
         },
         {
           "$": "Unlock Vesper Bay taxi",

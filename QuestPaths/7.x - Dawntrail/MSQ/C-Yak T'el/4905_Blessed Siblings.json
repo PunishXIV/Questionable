@@ -46,7 +46,6 @@
           "TerritoryId": 1189,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818436,
-          "DisableNavmesh": true,
           "Mount": true
         },
         {
@@ -57,7 +56,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "Mount": true
         },
         {

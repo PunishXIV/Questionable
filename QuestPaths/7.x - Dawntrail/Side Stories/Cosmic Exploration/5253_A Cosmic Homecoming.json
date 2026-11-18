@@ -67,8 +67,7 @@
           },
           "TerritoryId": 1237,
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 5254,
-          "DisableNavmesh": true
+          "NextQuestId": 5254
         }
       ]
     }

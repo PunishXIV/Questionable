@@ -130,7 +130,6 @@
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
           "Mount": true,
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,8],

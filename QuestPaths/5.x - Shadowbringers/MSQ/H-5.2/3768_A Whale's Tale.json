@@ -53,7 +53,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
@@ -139,7 +138,6 @@
           "InteractionType": "WalkTo",
           "Mount": true,
           "Fly": true,
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -155,7 +153,6 @@
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -171,7 +168,6 @@
           "StopDistance": 1,
           "TerritoryId": 813,
           "InteractionType": "Dive",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
@@ -203,7 +199,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "$.1": "QuestVariables if done first: 1 0 0 0 0 64",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
@@ -254,9 +249,7 @@
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
           "Mount": true,
-          "Fly": true,
-          "DisableNavmesh": true,
-          "RestartNavigationIfCancelled": false
+          "Fly": true
         },
         {
           "Position": {
@@ -354,7 +347,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"

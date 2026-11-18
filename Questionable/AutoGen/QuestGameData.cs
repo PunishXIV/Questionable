@@ -22,7 +22,6 @@ internal sealed class QuestGameData : IDisposable
     private readonly GameData _gameData;
     private readonly bool _disposeGameData;
     private readonly Lazy<ILookup<uint, Level>> _levelsByObject;
-    private readonly Lazy<IReadOnlyList<AetheryteEntry>> _aetherytes;
     private readonly Lazy<Dictionary<string, EEmote>> _emotesByCommand;
 
     private readonly Dictionary<uint, Dictionary<uint, List<Vector3>>> _layerPlacements = [];
@@ -51,7 +50,6 @@ internal sealed class QuestGameData : IDisposable
         _disposeGameData = disposeGameData;
 
         _levelsByObject = new Lazy<ILookup<uint, Level>>(BuildLevelIndex);
-        _aetherytes = new Lazy<IReadOnlyList<AetheryteEntry>>(BuildAetheryteIndex);
         _emotesByCommand = new Lazy<Dictionary<string, EEmote>>(BuildEmoteIndex);
     }
 
@@ -188,12 +186,6 @@ internal sealed class QuestGameData : IDisposable
         return level is { Territory.RowId: > 0 } ? level : null;
     }
 
-    internal bool TerritorySupportsFlight(uint territoryId)
-    {
-        TerritoryType? territory = _gameData.GetExcelSheet<TerritoryType>()?.GetRowOrDefault(territoryId);
-        return territory is { AetherCurrentCompFlgSet.RowId: > 0 };
-    }
-
     internal IReadOnlyList<string> TodoTexts(Quest quest)
     {
         string id = quest.Id.ExtractText();
@@ -282,100 +274,6 @@ internal sealed class QuestGameData : IDisposable
         return _gameData.GetExcelSheet<ENpcResident>()?.GetRowOrDefault(dataId)?.Singular.ExtractText() ?? string.Empty;
     }
 
-    internal TravelShortcut? ResolveTravel(uint territoryId, Vector3 position)
-    {
-        Vector2 target = new(position.X, position.Z);
-
-        List<AetheryteEntry> mainAetherytes = InTerritory(territoryId, main: true);
-        (AetheryteEntry? aetheryte, bool aetheryteConfident) = Choose(mainAetherytes, target);
-        if (aetheryte != null)
-        {
-            return new TravelShortcut(aetheryte.Value.Location, Aethernet: null,
-                aetheryteConfident ? null : Ambiguity(aetheryte.Value, mainAetherytes));
-        }
-
-        List<AetheryteEntry> shards = InTerritory(territoryId, main: false);
-        (AetheryteEntry? shard, bool shardConfident) = Choose(shards, target);
-        if (shard == null)
-            return null;
-
-        // Reach the shard from whichever aetheryte anchors its aethernet group.
-        AetheryteEntry? hub = _aetherytes.Value
-            .Cast<AetheryteEntry?>()
-            .FirstOrDefault(x => x!.Value.IsMainAetheryte &&
-                                 x.Value.AethernetGroup != 0 &&
-                                 x.Value.AethernetGroup == shard.Value.AethernetGroup);
-
-        if (hub is not { } origin || !IsAethernetEndpoint(origin.Location) ||
-            !IsAethernetEndpoint(shard.Value.Location))
-            return null;
-
-        // Always emit the hop, even when the shard is a guess: the plugin cannot path between zones, so landing
-        // at the wrong shard inside the target zone still works out, whereas stopping at the hub strands it.
-        return new TravelShortcut(
-            origin.Location,
-            new AethernetShortcut { From = origin.Location, To = shard.Value.Location },
-            shardConfident ? null : Ambiguity(shard.Value, shards));
-    }
-
-    private static (AetheryteEntry? Entry, bool Confident) Choose(List<AetheryteEntry> candidates, Vector2 target)
-    {
-        switch (candidates.Count)
-        {
-            case 0:
-                return (null, false);
-            case 1:
-                return (candidates[0], true);
-        }
-
-        // Some entries are never drawn on a map (airship landings, the Idyllshire gates). Choosing among the
-        // ones that are placed is fine; it is only a guess when none of them are.
-        List<AetheryteEntry> placed = [.. candidates.Where(x => x.Position != null)];
-        if (placed.Count == 0)
-            return (candidates[0], false);
-
-        AetheryteEntry best = placed[0];
-        float bestDistance = Vector2.Distance(best.Position!.Value, target);
-        foreach (AetheryteEntry entry in placed.Skip(1))
-        {
-            float distance = Vector2.Distance(entry.Position!.Value, target);
-            if (distance >= bestDistance)
-                continue;
-
-            bestDistance = distance;
-            best = entry;
-        }
-
-        return (best, true);
-    }
-
-    private static string Ambiguity(AetheryteEntry chosen, List<AetheryteEntry> candidates)
-    {
-        string others = string.Join(", ", candidates
-            .Where(x => x.Location != chosen.Location)
-            .Select(x => x.Location));
-
-        return $"guessed {chosen.Location} - none of this zone's shards are placed on a map, " +
-               $"so verify it against {others}";
-    }
-
-    internal Vector2? AetherytePosition(EAetheryteLocation location)
-    {
-        foreach (AetheryteEntry entry in _aetherytes.Value)
-        {
-            if (entry.Location == location)
-                return entry.Position;
-        }
-
-        return null;
-    }
-
-    private List<AetheryteEntry> InTerritory(uint territoryId, bool main) =>
-        [.. _aetherytes.Value.Where(x => x.TerritoryId == territoryId && x.IsMainAetheryte == main)];
-
-    private static bool IsAethernetEndpoint(EAetheryteLocation location) =>
-        AethernetShardConverter.Values.ContainsKey(location);
-
     private ILookup<uint, Level> BuildLevelIndex()
     {
         ExcelSheet<Level>? levels = _gameData.GetExcelSheet<Level>();
@@ -386,94 +284,4 @@ internal sealed class QuestGameData : IDisposable
             .Where(x => x.Object.RowId != 0 && x.Territory.RowId != 0)
             .ToLookup(x => x.Object.RowId);
     }
-
-    private List<AetheryteEntry> BuildAetheryteIndex()
-    {
-        ExcelSheet<Aetheryte>? aetherytes = _gameData.GetExcelSheet<Aetheryte>();
-        if (aetherytes == null)
-            return [];
-
-        Dictionary<uint, Vector2> positions = BuildAetherytePositions(aetherytes);
-
-        List<AetheryteEntry> entries = [];
-        foreach (EAetheryteLocation location in Enum.GetValues<EAetheryteLocation>())
-        {
-            if (location == EAetheryteLocation.None)
-                continue;
-
-            Aetheryte? aetheryte = aetherytes.GetRowOrDefault((uint)location);
-            if (aetheryte is not { Territory.RowId: > 0 })
-                continue;
-
-            entries.Add(new AetheryteEntry(
-                location,
-                aetheryte.Value.Territory.RowId,
-                aetheryte.Value.AethernetGroup,
-                aetheryte.Value.IsAetheryte,
-                positions.TryGetValue((uint)location, out Vector2 position) ? position : null));
-        }
-
-        return entries;
-    }
-
-    // The Level rows the Aetheryte sheet points at no longer exist; MapMarker still has every aetheryte
-    // (DataType 3) and aethernet shard (DataType 4), in map pixels.
-    private Dictionary<uint, Vector2> BuildAetherytePositions(ExcelSheet<Aetheryte> aetherytes)
-    {
-        ExcelSheet<Map>? maps = _gameData.GetExcelSheet<Map>();
-        SubrowExcelSheet<MapMarker>? markers = _gameData.GetSubrowExcelSheet<MapMarker>();
-        if (maps == null || markers == null)
-            return [];
-
-        Dictionary<uint, uint> aetheryteByAethernetName = [];
-        foreach (Aetheryte aetheryte in aetherytes)
-        {
-            if (aetheryte.AethernetName.RowId != 0)
-                aetheryteByAethernetName[aetheryte.AethernetName.RowId] = aetheryte.RowId;
-        }
-
-        Dictionary<uint, Vector2> positions = [];
-        foreach (Map map in maps)
-        {
-            if (map.MapMarkerRange == 0 || map.SizeFactor == 0)
-                continue;
-
-            if (!markers.TryGetRow(map.MapMarkerRange, out SubrowCollection<MapMarker> group))
-                continue;
-
-            foreach (MapMarker marker in group)
-            {
-                uint? aetheryteId = marker.DataType switch
-                {
-                    3 => marker.DataKey.RowId,
-                    4 when aetheryteByAethernetName.TryGetValue(marker.DataKey.RowId, out uint id) => id,
-                    _ => null
-                };
-
-                if (aetheryteId is not { } rowId || rowId == 0)
-                    continue;
-
-                float scale = map.SizeFactor / 100f;
-                Vector2 world = new(
-                    (marker.X - 1024f) / scale - map.OffsetX,
-                    (marker.Y - 1024f) / scale - map.OffsetY);
-
-                // Region maps repeat a zone's markers; the map covering the aetheryte's own territory wins.
-                bool preferred = map.TerritoryType.RowId != 0 &&
-                                 map.TerritoryType.RowId == aetherytes.GetRowOrDefault(rowId)?.Territory.RowId;
-
-                if (preferred || !positions.ContainsKey(rowId))
-                    positions[rowId] = world;
-            }
-        }
-
-        return positions;
-    }
-
-    private readonly record struct AetheryteEntry(
-        EAetheryteLocation Location,
-        uint TerritoryId,
-        ushort AethernetGroup,
-        bool IsMainAetheryte,
-        Vector2? Position);
 }

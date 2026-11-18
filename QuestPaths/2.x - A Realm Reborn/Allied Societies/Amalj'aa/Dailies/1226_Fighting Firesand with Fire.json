@@ -70,7 +70,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -93,7 +92,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -116,7 +114,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {

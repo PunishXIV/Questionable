@@ -132,7 +132,6 @@
           },
           "TerritoryId": 204,
           "InteractionType": "CompleteQuest",
-          "DisableNavmesh": true,
           "NextQuestId": 1009
         }
       ]

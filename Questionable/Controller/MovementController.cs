@@ -56,7 +56,7 @@ internal sealed class MovementController
     // MappingTheRealm goes to the exact point; a step's stop distance ends the route early.
     private bool HasArrived(DestinationData destination)
     {
-        if (objectTable[0]?.Position is not { } position ||
+        if (clientState.TerritoryType != destination.TerritoryId || objectTable[0]?.Position is not { } position ||
             (position - destination.Position).Length() >= destination.StopDistance)
             return false;
 
@@ -75,7 +75,7 @@ internal sealed class MovementController
     public void NavigateTo(EMovementType type, uint? dataId, List<Vector3> to, NavigationOptions options) =>
         NavigateTo(type, dataId, to[^1], options);
 
-    public void NavigateTo(EMovementType type, uint? dataId, Vector3 to, NavigationOptions options)
+    public void NavigateTo(EMovementType type, uint? dataId, Vector3 to, NavigationOptions options, uint? territoryId = null)
     {
         if (!CanNavigate())
             return;
@@ -83,7 +83,8 @@ internal sealed class MovementController
         if (_route is { IsCompleted: false })
             mappingTheRealm.Stop();
 
-        Destination = new(type, dataId, to,
+        uint territory = territoryId ?? clientState.TerritoryType;
+        Destination = new(type, dataId, territory, to,
             options.StopDistance ?? (QuestStep.DefaultStopDistance - 0.2f),
             options.VerticalStopDistance ?? DefaultVerticalDistance);
 
@@ -101,7 +102,7 @@ internal sealed class MovementController
         }
 
         logger.LogInformation("Moving to {Destination}", Destination);
-        _route = mappingTheRealm.Travel(clientState.TerritoryType, to, null);
+        _route = mappingTheRealm.Travel(territory, to, null);
         StartedAt = DateTime.Now;
     }
 
@@ -192,6 +193,7 @@ internal sealed class MovementController
     public sealed record DestinationData(
         EMovementType MovementType,
         uint? DataId,
+        uint TerritoryId,
         Vector3 Position,
         float StopDistance,
         float VerticalStopDistance);

@@ -114,7 +114,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"

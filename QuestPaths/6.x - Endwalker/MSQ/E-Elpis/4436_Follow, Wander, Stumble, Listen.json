@@ -45,8 +45,7 @@
           },
           "TerritoryId": 961,
           "InteractionType": "WalkTo",
-          "Mount": true,
-          "DisableNavmesh": true
+          "Mount": true
         },
         {
           "DataId": 2012169,

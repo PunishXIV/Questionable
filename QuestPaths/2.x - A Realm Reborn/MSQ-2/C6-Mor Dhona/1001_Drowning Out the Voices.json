@@ -160,7 +160,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "$": "Camp Revenant's Toll (top)",
           "$2": "TODO Unsure if this can be reached without flying, or needs more nav"
         },
@@ -173,7 +172,6 @@
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
           "$": "Camp Revenant's Toll (after jump)",
-          "DisableNavmesh": true,
           "Mount": false
         },
         {

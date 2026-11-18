@@ -15,7 +15,6 @@
           "TerritoryId": 820,
           "InteractionType": "AcceptQuest",
           "AetheryteShortcut": "Eulmore",
-          "Sprint": true,
           "SkipConditions": {
             "AetheryteShortcutIf": {
               "NearPosition": {
@@ -66,7 +65,6 @@
           },
           "TerritoryId": 820,
           "InteractionType": "Interact",
-          "Sprint": true,
           "AethernetShortcut": [
             "[Eulmore] Aetheryte Plaza",
             "[Eulmore] The Mainstay"
@@ -86,7 +84,6 @@
           },
           "TerritoryId": 820,
           "InteractionType": "CompleteQuest",
-          "Sprint": true,
           "AethernetShortcut": [
             "[Eulmore] The Mainstay",
             "[Eulmore] Aetheryte Plaza"

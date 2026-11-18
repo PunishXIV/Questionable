@@ -76,7 +76,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "Fly": true,
           "DialogueChoices": [
             {
@@ -241,7 +240,6 @@
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "DisableNavmesh": true,
           "Mount": true
         },
         {
@@ -271,9 +269,7 @@
             "Z": 340.31
           },
           "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "RestartNavigationIfCancelled": false
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -282,8 +278,7 @@
             "Z": 324.28143
           },
           "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1029223,

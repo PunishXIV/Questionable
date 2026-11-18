@@ -124,7 +124,6 @@
           "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "Jump",
-          "DisableNavmesh": true,
           "Mount": false,
           "$": "Southeast",
           "JumpDestination": {
@@ -164,7 +163,6 @@
           "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -208,7 +206,6 @@
           "InteractionType": "Jump",
           "Mount": false,
           "$": "Southwest",
-          "DisableNavmesh": true,
           "JumpDestination": {
             "Position": {
               "X": 137.4466,
@@ -236,7 +233,6 @@
           "StopDistance": 0.25,
           "Mount": false,
           "$": "Southwest",
-          "DisableNavmesh": true,
           "JumpDestination": {
             "Position": {
               "X": 126.889496,
@@ -274,7 +270,6 @@
           "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -343,7 +338,6 @@
           "InteractionType": "Jump",
           "StopDistance": 0.25,
           "Mount": false,
-          "DisableNavmesh": true,
           "$": "Northwest",
           "JumpDestination": {
             "Position": {
@@ -371,7 +365,6 @@
           "TerritoryId": 817,
           "InteractionType": "Jump",
           "Mount": false,
-          "DisableNavmesh": true,
           "$": "Northwest",
           "JumpDestination": {
             "Position": {
@@ -410,7 +403,6 @@
           "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -454,7 +446,6 @@
           "InteractionType": "Jump",
           "Mount": false,
           "$": "Northwest",
-          "DisableNavmesh": true,
           "JumpDestination": {
             "Position": {
               "X": 205.8763,
@@ -482,7 +473,6 @@
           "InteractionType": "Jump",
           "Mount": false,
           "$": "Northwest",
-          "DisableNavmesh": true,
           "JumpDestination": {
             "Position": {
               "X": 206.98875,
@@ -510,7 +500,6 @@
           "InteractionType": "Jump",
           "Mount": false,
           "$": "Northwest",
-          "DisableNavmesh": true,
           "JumpDestination": {
             "Position": {
               "X": 218.92114,
@@ -552,7 +541,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "Mount": true
         },
         {

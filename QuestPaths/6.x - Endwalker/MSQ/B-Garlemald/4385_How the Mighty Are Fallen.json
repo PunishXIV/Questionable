@@ -140,8 +140,7 @@
           },
           "TerritoryId": 958,
           "InteractionType": "Interact",
-          "Mount": false,
-          "RestartNavigationIfCancelled": false
+          "Mount": false
         }
       ]
     },

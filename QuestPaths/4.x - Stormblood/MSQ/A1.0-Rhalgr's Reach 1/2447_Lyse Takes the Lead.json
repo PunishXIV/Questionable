@@ -109,7 +109,6 @@
           "TerritoryId": 612,
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 635,
-          "DisableNavmesh": true,
           "$": "Navmesh rebuilds here because the wall disappears, this skips waiting for that rebuild until later"
         }
       ]

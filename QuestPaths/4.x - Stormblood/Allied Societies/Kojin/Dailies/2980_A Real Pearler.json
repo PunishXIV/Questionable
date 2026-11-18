@@ -33,8 +33,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "RestartNavigationIfCancelled": false
+          "Fly": true
         },
         {
           "DataId": 2009094,

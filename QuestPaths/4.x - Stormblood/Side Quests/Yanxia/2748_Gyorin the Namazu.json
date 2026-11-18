@@ -70,8 +70,7 @@
             "Z": 578.5466
           },
           "TerritoryId": 614,
-          "InteractionType": "Dive",
-          "DisableNavmesh": true
+          "InteractionType": "Dive"
         },
         {
           "DataId": 2008799,
@@ -97,9 +96,7 @@
             "Z": 578.5466
           },
           "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
-          "RestartNavigationIfCancelled": false
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {

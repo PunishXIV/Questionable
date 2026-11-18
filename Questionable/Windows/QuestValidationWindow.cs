@@ -45,7 +45,7 @@ internal sealed class QuestValidationWindow : LWindow
 
         _ = ImGui.InputTextWithHint("Filter###QuestValidationFilter", _L("Filter quest validation results"), ref _filter, maxLength: 20);
 
-        using ImRaii.TableDisposable table = ImRaii.Table("QuestSelection", 6, ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollY);
+        using ImRaii.TableDisposable table = ImRaii.Table("QuestSelection", 5, ImGuiTableFlags.Borders | ImGuiTableFlags.ScrollY);
         if (!table)
         {
             ImGui.Text("Not table");
@@ -54,7 +54,6 @@ internal sealed class QuestValidationWindow : LWindow
 
         ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthFixed, 90);
         ImGui.TableSetupColumn(_L("Quest"), ImGuiTableColumnFlags.WidthFixed, 125);
-        ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthFixed, 200);
         ImGui.TableSetupColumn(_L("Seq"), ImGuiTableColumnFlags.WidthFixed, 5);
         ImGui.TableSetupColumn(_L("Step"), ImGuiTableColumnFlags.WidthFixed, 5);
         ImGui.TableSetupColumn(_L("Issue"), ImGuiTableColumnFlags.WidthStretch, 1.0f);
@@ -110,12 +109,6 @@ internal sealed class QuestValidationWindow : LWindow
                     if (ImGui.IsItemHovered())
                         _questTooltipComponent.Draw(info);
                 }
-            }
-
-            if (ImGui.TableNextColumn())
-            {
-                if (issue.Type is EIssueType.InvalidAcceptQuestTerritory && issue.TerritoryId != null)
-                    ImGui.TextUnformatted(TerritoryData.GetNameAndId(issue.TerritoryId.Value));
             }
 
             if (ImGui.TableNextColumn())

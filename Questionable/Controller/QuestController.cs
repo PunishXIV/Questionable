@@ -1232,7 +1232,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         if (StopBeforeTeleport)
         {
             _taskQueue.TryPeek(out ITask? nextTask);
-            if (TeleportTaskDetector.GetUpcoming(_taskQueue.CurrentTaskExecutor, nextTask) is { } teleport)
+            if (TeleportTaskDetector.GetUpcoming(_taskQueue.CurrentTaskExecutor, nextTask, _clientState.TerritoryType) is { } teleport)
             {
                 _stopPolicy.ReportStopBeforeTeleport(teleport);
                 _movementController.Stop();

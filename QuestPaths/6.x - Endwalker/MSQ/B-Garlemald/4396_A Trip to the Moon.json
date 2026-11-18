@@ -62,8 +62,7 @@
           "TerritoryId": 959,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Mare Lamentorum - Sinus Lacrimarum",
-          "Mount": true,
-          "DisableNavmesh": true
+          "Mount": true
         },
         {
           "DataId": 1039977,

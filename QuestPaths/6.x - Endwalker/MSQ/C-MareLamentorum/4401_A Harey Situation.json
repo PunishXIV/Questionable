@@ -29,8 +29,7 @@
           },
           "TerritoryId": 959,
           "InteractionType": "WalkTo",
-          "Mount": true,
-          "DisableNavmesh": true
+          "Mount": true
         },
         {
           "DataId": 1038897,
@@ -107,8 +106,7 @@
             "Z": -367.6591
           },
           "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1038903,

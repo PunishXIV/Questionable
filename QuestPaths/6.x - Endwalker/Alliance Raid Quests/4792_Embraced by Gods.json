@@ -120,8 +120,7 @@
           },
           "TerritoryId": 135,
           "InteractionType": "WaitForNpcAtPosition",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 1045996,
@@ -133,8 +132,7 @@
           "StopDistance": 10,
           "TerritoryId": 135,
           "InteractionType": "WaitForNpcAtPosition",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 1045998,
@@ -146,8 +144,7 @@
           "StopDistance": 1,
           "TerritoryId": 135,
           "InteractionType": "WalkTo",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         }
       ]
     },

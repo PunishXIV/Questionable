@@ -141,7 +141,6 @@
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
           "$": "Vesper Bay Gate",
-          "DisableNavmesh": true,
           "Mount": true,
           "SkipConditions": {
             "StepIf": {

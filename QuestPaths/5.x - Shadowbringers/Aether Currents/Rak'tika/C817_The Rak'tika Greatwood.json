@@ -76,7 +76,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "AetherCurrentUnlocked": 2818283

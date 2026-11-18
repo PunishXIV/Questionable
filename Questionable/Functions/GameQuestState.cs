@@ -16,6 +16,7 @@ namespace Questionable.Functions;
 [RegisterSingleton<IQuestGameState, GameQuestState>]
 internal sealed unsafe class GameQuestState(
     AetheryteFunctions aetheryteFunctions,
+    AetheryteData aetheryteData,
     AlliedSocietyQuestFunctions alliedSocietyQuests,
     IClientState clientState,
     IObjectTable objectTable,
@@ -184,6 +185,17 @@ internal sealed unsafe class GameQuestState(
             return costs;
         }
     }
+
+    public IReadOnlyList<EAetheryteLocation> AetherytesIn(uint territoryId) => _aetherytesByTerritory.Value[territoryId].ToList();
+
+    private readonly Lazy<ILookup<uint, EAetheryteLocation>> _aetherytesByTerritory = new(() => aetheryteData.TerritoryIds
+        .Where(x => !x.Key.IsAethernetShard())
+        .ToLookup(x => x.Value, x => x.Key));
+
+    public uint RegionOf(uint territoryId) =>
+        dataManager.GetExcelSheet<Lumina.Excel.Sheets.TerritoryType>().GetRowOrDefault(territoryId)?.PlaceNameRegion.RowId is { } region and > 0
+            ? region
+            : territoryId;
 
     public uint TerritoryType => clientState.TerritoryType;
     public bool HasPlayer => objectTable[0] != null;

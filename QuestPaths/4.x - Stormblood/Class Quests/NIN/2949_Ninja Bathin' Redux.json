@@ -85,7 +85,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
@@ -200,8 +199,7 @@
             "Z": -156.03827
           },
           "TerritoryId": 628,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2008933,
@@ -211,8 +209,7 @@
             "Z": -143.3891
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -226,8 +223,7 @@
             "Z": -144.91388
           },
           "TerritoryId": 628,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2008934,

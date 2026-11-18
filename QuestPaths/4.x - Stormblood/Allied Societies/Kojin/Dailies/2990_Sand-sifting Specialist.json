@@ -73,8 +73,6 @@
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "DisableNavmesh": true,
-          "RestartNavigationIfCancelled": false,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {

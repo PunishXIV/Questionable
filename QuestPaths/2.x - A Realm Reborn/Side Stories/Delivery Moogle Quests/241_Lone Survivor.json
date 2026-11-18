@@ -140,8 +140,7 @@
           },
           "TerritoryId": 135,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "RestartNavigationIfCancelled": true
+          "Fly": true
         }
       ]
     },

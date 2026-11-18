@@ -49,7 +49,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false,
           "Fly": true,
           "SkipConditions": {"StepIf": {"Diving": true}}
         },

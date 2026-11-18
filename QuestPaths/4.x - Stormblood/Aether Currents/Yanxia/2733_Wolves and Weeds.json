@@ -56,7 +56,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "Mount": true
         },
         {
@@ -137,7 +136,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "Mount": true
         }
       ]
@@ -154,7 +152,6 @@
           "TerritoryId": 614,
           "InteractionType": "WalkTo",
           "StopDistance": 0.25,
-          "DisableNavmesh": true,
           "Mount": true
         },
         {

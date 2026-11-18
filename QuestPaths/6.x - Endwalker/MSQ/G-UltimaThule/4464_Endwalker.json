@@ -14,8 +14,7 @@
             "Z": 4.2266846
           },
           "TerritoryId": 960,
-          "InteractionType": "AcceptQuest",
-          "DisableNavmesh": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -85,8 +84,7 @@
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.294"
-          },
-          "DisableNavmesh": true
+          }
         }
       ]
     },

@@ -56,8 +56,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "0/12",
@@ -68,8 +67,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "0/12",
@@ -80,8 +78,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "1/12 Loop start!",
@@ -92,8 +89,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "1/12",
@@ -104,8 +100,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "1/12",
@@ -116,8 +111,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "2/12",
@@ -128,8 +122,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "2/12",
@@ -140,8 +133,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "2/12",
@@ -152,8 +144,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "3/12",
@@ -164,8 +155,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "3/12",
@@ -176,8 +166,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "3/12",
@@ -188,8 +177,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "4/12",
@@ -200,8 +188,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "4/12",
@@ -212,8 +199,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "4/12",
@@ -224,8 +210,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "5/12",
@@ -236,8 +221,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "5/12",
@@ -248,8 +232,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "5/12",
@@ -260,8 +243,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "6/12",
@@ -272,8 +254,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "6/12",
@@ -284,8 +265,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "6/12",
@@ -296,8 +276,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "7/12",
@@ -308,8 +287,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "7/12",
@@ -320,8 +298,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "7/12",
@@ -332,8 +309,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "8/12",
@@ -344,8 +320,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "8/12",
@@ -356,8 +331,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "8/12",
@@ -368,8 +342,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "9/12",
@@ -380,8 +353,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "9/12",
@@ -392,8 +364,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "9/12",
@@ -404,8 +375,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "10/12",
@@ -416,8 +386,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "10/12",
@@ -428,8 +397,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "10/12",
@@ -440,8 +408,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "11/12",
@@ -452,8 +419,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "11/12",
@@ -464,8 +430,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "11/12",
@@ -476,8 +441,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "12/12",
@@ -488,8 +452,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "12/12",
@@ -500,8 +463,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "The cat appears to have grown tired",
@@ -512,8 +474,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "DisableNavmesh": true
+          "StopDistance": 0.25
         },
         {
           "Comment": "The cat appears to have grown tired",

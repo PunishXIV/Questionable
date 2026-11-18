@@ -29,7 +29,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "AetherCurrentUnlocked": 2818231
@@ -45,8 +44,7 @@
           },
           "TerritoryId": 813,
           "InteractionType": "AttuneAetherCurrent",
-          "AetherCurrentId": 2818231,
-          "DisableNavmesh": true
+          "AetherCurrentId": 2818231
         },
         {
           "DataId": 2010031,

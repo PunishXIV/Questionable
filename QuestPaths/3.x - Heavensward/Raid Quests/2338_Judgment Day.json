@@ -68,8 +68,7 @@
           "StopDistance": 7,
           "TerritoryId": 399,
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 2339,
-          "DisableNavmesh": true
+          "NextQuestId": 2339
         }
       ]
     }

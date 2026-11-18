@@ -111,8 +111,7 @@
           "TerritoryId": 614,
           "InteractionType": "WalkTo",
           "Fly": true,
-          "StopDistance": 0.25,
-          "RestartNavigationIfCancelled": false
+          "StopDistance": 0.25
         },
         {
           "DataId": 1020007,

@@ -17,6 +17,7 @@ public sealed class CommandHandlerTests
     [InlineData("eventquests")]
     [InlineData("unlock-links")]
     [InlineData("taxi")]
+    [InlineData("navcheck")]
     [InlineData("festivals")]
     [InlineData("loc")]
     public void PathTools_NeedDebug(string subcommand) => Assert.True(CommandHandler.NeedsDebug(subcommand));

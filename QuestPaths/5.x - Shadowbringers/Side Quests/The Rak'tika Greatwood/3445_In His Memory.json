@@ -90,8 +90,7 @@
           },
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -107,8 +106,7 @@
             11114,
             11115
           ],
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 2009794,

@@ -36,7 +36,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false,
           "Mount": true
         },
         {

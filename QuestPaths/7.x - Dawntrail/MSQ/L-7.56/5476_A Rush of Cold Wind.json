@@ -56,7 +56,6 @@
           },
           "TerritoryId": 1364,
           "InteractionType": "AcceptQuest",
-          "DisableNavmesh": true,
           "$": "auto: issuer 1058863 (Estinien)"
         }
       ]
@@ -162,7 +161,6 @@
           },
           "TerritoryId": 1364,
           "InteractionType": "CompleteQuest",
-          "DisableNavmesh": true,
           "$": "auto: todo turn-in -> 1058866 (Alphinaud)"
         }
       ]

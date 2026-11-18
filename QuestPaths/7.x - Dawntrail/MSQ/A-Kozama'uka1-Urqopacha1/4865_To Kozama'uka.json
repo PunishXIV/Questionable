@@ -48,8 +48,7 @@
             "Z": -791.56177
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },

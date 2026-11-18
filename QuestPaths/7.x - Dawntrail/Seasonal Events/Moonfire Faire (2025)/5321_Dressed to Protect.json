@@ -130,7 +130,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -213,8 +212,7 @@
             "Z": 394.3694
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },

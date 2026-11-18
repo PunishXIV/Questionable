@@ -6,7 +6,6 @@ internal sealed record ValidationIssue
     public required ElementId? ElementId { get; init; }
     public required byte? Sequence { get; init; }
     public required int? Step { get; init; }
-    public uint? TerritoryId { get; set; }
     [JsonConverter(typeof(IssueTypeConverter))]
     public required EIssueType Type { get; init; }
     [JsonConverter(typeof(IssueSeverityConverter))]

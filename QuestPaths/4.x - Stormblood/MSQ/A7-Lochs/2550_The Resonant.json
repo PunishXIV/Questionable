@@ -50,8 +50,7 @@
             "Z": 755.10895
           },
           "TerritoryId": 621,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1021712,
@@ -101,8 +100,7 @@
           },
           "TerritoryId": 621,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "RestartNavigationIfCancelled": false
+          "StopDistance": 0.25
         },
         {
           "Position": {
@@ -112,7 +110,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "StopDistance": 0.25
         },
         {

@@ -43,7 +43,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -111,7 +110,6 @@
           "StopDistance": 0.25,
           "TerritoryId": 400,
           "InteractionType": "Jump",
-          "DisableNavmesh": true,
           "JumpDestination": {
             "Position": {
               "X": -441.0496,
@@ -135,7 +133,6 @@
           "StopDistance": 0.5,
           "TerritoryId": 400,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -166,8 +163,7 @@
           },
           "TerritoryId": 400,
           "InteractionType": "WalkTo",
-          "Mount": true,
-          "DisableNavmesh": true
+          "Mount": true
         },
         {
           "DataId": 1013420,

@@ -92,8 +92,7 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "AttuneAetherCurrent",
-          "AetherCurrentId": 2818457,
-          "DisableNavmesh": true
+          "AetherCurrentId": 2818457
         },
         {
           "Position": {
@@ -102,8 +101,7 @@
             "Z": -126.13759
           },
           "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1050656,
@@ -128,8 +126,7 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -140,7 +137,6 @@
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
           "Mount": false,
-          "Sprint": false,
           "DelaySecondsAtStart": 3
         },
         {
@@ -152,7 +148,6 @@
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
           "Mount": false,
-          "Sprint": false,
           "DelaySecondsAtStart": 3
         },
         {
@@ -164,7 +159,6 @@
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
           "Mount": false,
-          "Sprint": false,
           "DelaySecondsAtStart": 3
         },
         {
@@ -175,8 +169,7 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 17739,
@@ -189,8 +182,7 @@
           "TerritoryId": 1190,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 4,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 2014057,

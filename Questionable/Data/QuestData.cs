@@ -189,24 +189,6 @@ internal sealed class QuestData
     private static List<ElementId> GetQuestRange(ushort first, ushort last) =>
         Enumerable.Range(first, last - first + 1).Select(x => (ushort)x).ToArray().FromNumericListOfQuests();
 
-    public static readonly Dictionary<EAetheryteLocation, (char Letter, ushort[] QuestIds)> AethernetUnlockQuests = new()
-    {
-        [EAetheryteLocation.Gridania] = ('g', [85, 12, 124, 546, 528]),
-        [EAetheryteLocation.Limsa] = ('l', [108, 109, 507, 528]),
-        [EAetheryteLocation.Uldah] = ('u', [568, 569, 570, 546, 507]),
-        [EAetheryteLocation.Ishgard] = ('i', [1580]),
-        [EAetheryteLocation.Idyllshire] = ('y', [1656]),
-        [EAetheryteLocation.RhalgrsReach] = ('r', [2448]),
-        [EAetheryteLocation.Kugane] = ('k', [2475]),
-        [EAetheryteLocation.DomanEnclave] = ('d', [3026]),
-        [EAetheryteLocation.Crystarium] = ('c', [3282]),
-        [EAetheryteLocation.Eulmore] = ('e', [3289]),
-        [EAetheryteLocation.OldSharlayan] = ('s', [4359]),
-        [EAetheryteLocation.RadzAtHan] = ('z', [4418]),
-        [EAetheryteLocation.Tuliyollal] = ('t', [4878]),
-        [EAetheryteLocation.SolutionNine] = ('n', [4937]),
-    };
-
     private static readonly IReadOnlyList<uint> TankRoleQuestChapters = [136, 154, 178];
     private static readonly IReadOnlyList<uint> HealerRoleQuestChapters = [137, 155, 179];
     private static readonly IReadOnlyList<uint> MeleeRoleQuestChapters = [138, 156, 180];

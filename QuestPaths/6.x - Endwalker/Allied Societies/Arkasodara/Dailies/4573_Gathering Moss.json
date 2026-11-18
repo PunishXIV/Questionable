@@ -47,7 +47,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "DisableNavmesh": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -87,7 +86,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "Mount": true,
           "Fly": true
         },

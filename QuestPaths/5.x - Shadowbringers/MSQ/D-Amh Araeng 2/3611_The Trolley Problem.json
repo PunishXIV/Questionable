@@ -70,8 +70,7 @@
           },
           "TerritoryId": 815,
           "InteractionType": "AttuneAetherCurrent",
-          "AetherCurrentId": 2818259,
-          "DisableNavmesh": true
+          "AetherCurrentId": 2818259
         },
         {
           "Position": {
@@ -80,8 +79,7 @@
             "Z": -244.7952
           },
           "TerritoryId": 815,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 815,

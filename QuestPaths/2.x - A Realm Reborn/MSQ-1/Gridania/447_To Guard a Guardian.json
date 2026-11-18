@@ -52,8 +52,7 @@
           },
           "StopDistance": 7,
           "TerritoryId": 204,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -116,8 +115,7 @@
           },
           "StopDistance": 7,
           "TerritoryId": 204,
-          "InteractionType": "CompleteQuest",
-          "DisableNavmesh": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

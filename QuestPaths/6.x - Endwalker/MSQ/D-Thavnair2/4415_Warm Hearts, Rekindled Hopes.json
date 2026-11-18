@@ -44,8 +44,7 @@
             "Z": 141.25269
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,8 +60,7 @@
           },
           "StopDistance": 1,
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,7 +75,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "Mount": true
         },
         {
@@ -87,8 +84,7 @@
             "Z": 150.66217
           },
           "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1039052,

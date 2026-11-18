@@ -108,7 +108,6 @@
             "Z": 848.7831
           },
           "StopDistance": 7,
-          "DisableNavmesh": true,
           "TerritoryId": 1192,
           "InteractionType": "Interact"
         }
@@ -135,8 +134,7 @@
         {
           "TerritoryId": 1192,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Living Memory - Leynode Mnemo",
-          "DisableNavmesh": true
+          "Aetheryte": "Living Memory - Leynode Mnemo"
         },
         {
           "DataId": 1047837,

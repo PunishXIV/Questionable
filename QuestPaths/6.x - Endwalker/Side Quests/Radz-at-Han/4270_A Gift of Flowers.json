@@ -108,8 +108,7 @@
           },
           "StopDistance": 2,
           "TerritoryId": 963,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1037469,

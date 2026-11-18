@@ -69,7 +69,6 @@
           "KillEnemyDataIds": [
             27
           ],
-          "Sprint": false,
           "Mount": false
         },
         {
@@ -85,7 +84,6 @@
           "KillEnemyDataIds": [
             27
           ],
-          "Sprint": false,
           "Mount": false
         },
         {
@@ -100,7 +98,6 @@
           "KillEnemyDataIds": [
             27
           ],
-          "Sprint": false,
           "Mount": false
         },
         {
@@ -115,7 +112,6 @@
           "KillEnemyDataIds": [
             403
           ],
-          "Sprint": false,
           "Mount": false
         },
         {
@@ -126,7 +122,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "WalkTo",
-          "Sprint": false,
           "Mount": false
         },
         {
@@ -141,7 +136,6 @@
           "KillEnemyDataIds": [
             403
           ],
-          "Sprint": false,
           "Mount": false
         },
         {
@@ -152,7 +146,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "WalkTo",
-          "Sprint": false,
           "Mount": false
         },
         {
@@ -167,7 +160,6 @@
           "KillEnemyDataIds": [
             48
           ],
-          "Sprint": false,
           "Mount": false
         },
         {
@@ -182,7 +174,6 @@
           "KillEnemyDataIds": [
             24
           ],
-          "Sprint": false,
           "Mount": false
         },
         {
@@ -206,7 +197,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "Interact",
-          "Sprint": false,
           "Mount": false
         }
       ]

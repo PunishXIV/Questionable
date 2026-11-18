@@ -22,7 +22,7 @@ internal static class Mail
 
     internal sealed record Moogle(EAetheryteLocation City, uint NpcId, uint TerritoryId, Vector3 Position);
 
-    // From the zones' event layouts. New Gridania and Limsa's Lower Decks have none, so two need the aethernet.
+    // From the zones' event layouts; New Gridania and Limsa's Lower Decks have none.
     internal static readonly Moogle[] CityMoogles =
     [
         new(EAetheryteLocation.Limsa, 1003567, 128, new(18.515f, 44.5f, 159.012f)),
@@ -30,22 +30,10 @@ internal static class Mail
         new(EAetheryteLocation.Uldah, 1005989, 130, new(-24.632f, 10.056f, -60.799f)),
     ];
 
-    // The starting city first (1 Limsa, 2 Gridania, 3 Ul'dah), then the others; the first fully unlocked route wins.
-    internal static (Moogle Moogle, EAetheryteLocation? Shard)? ChooseRoute(byte startTown,
-        Func<Moogle, EAetheryteLocation?> shardFor, Func<Moogle, bool> needsShard, Func<EAetheryteLocation, bool> unlocked)
-    {
-        foreach (Moogle moogle in CityMoogles.OrderBy(x => Array.IndexOf(CityMoogles, x) + 1 == startTown ? 0 : 1))
-        {
-            if (!unlocked(moogle.City))
-                continue;
-            if (!needsShard(moogle))
-                return (moogle, null);
-            if (shardFor(moogle) is { } shard && unlocked(shard))
-                return (moogle, shard);
-        }
-
-        return null;
-    }
+    // The starting city first (1 Limsa, 2 Gridania, 3 Ul'dah), then the others; the first unlocked city wins.
+    internal static Moogle? ChooseRoute(byte startTown, Func<EAetheryteLocation, bool> unlocked) =>
+        CityMoogles.OrderBy(x => Array.IndexOf(CityMoogles, x) + 1 == startTown ? 0 : 1)
+            .FirstOrDefault(x => unlocked(x.City));
 
     private static HashSet<uint> MoogleIds(IDataManager dataManager) =>
         _moogleIds ??= dataManager.GetExcelSheet<ENpcBase>()
@@ -58,7 +46,6 @@ internal static class Mail
         MogmailIpc mogmail,
         QuestFunctions questFunctions,
         AetheryteFunctions aetheryteFunctions,
-        AetheryteData aetheryteData,
         GameFunctions gameFunctions,
         IQuestGameState gameState,
         IClientState clientState,
@@ -79,11 +66,10 @@ internal static class Mail
             {
                 logger.LogInformation("Claiming {Count} reward letters at the delivery moogle in this zone",
                     MogmailIpc.RewardLetters);
-                return Claim(new Moogle(EAetheryteLocation.None, nearby.BaseId, clientState.TerritoryType, nearby.Position), null);
+                return Claim(new Moogle(EAetheryteLocation.None, nearby.BaseId, clientState.TerritoryType, nearby.Position));
             }
 
-            if (ChooseRoute(gameState.StartTown, ShardFor, NeedsShard, aetheryteFunctions.IsAetheryteUnlocked) is not
-                { } route)
+            if (ChooseRoute(gameState.StartTown, aetheryteFunctions.IsAetheryteUnlocked) is not { } moogle)
             {
                 logger.LogInformation("Reward mail is waiting, but no delivery moogle can be reached yet");
                 _retryAt = DateTime.Now + RetryAfter;
@@ -91,40 +77,12 @@ internal static class Mail
             }
 
             logger.LogInformation("Claiming {Count} reward letters at the delivery moogle in {City}",
-                MogmailIpc.RewardLetters, route.Moogle.City);
-            return Claim(route.Moogle, route.Shard);
+                MogmailIpc.RewardLetters, moogle.City);
+            return Claim(moogle);
         }
 
-        private bool NeedsShard(Moogle moogle) => aetheryteData.TerritoryIds[moogle.City] != moogle.TerritoryId;
-
-        private EAetheryteLocation? ShardFor(Moogle moogle) =>
-            aetheryteData.TerritoryIds
-                .Where(x => x.Value == moogle.TerritoryId && x.Key.IsAethernetShard() &&
-                            aetheryteData.Locations.ContainsKey(x.Key))
-                .Select(x => (EAetheryteLocation?)x.Key)
-                .MinBy(x => Vector3.Distance(aetheryteData.Locations[x!.Value], moogle.Position));
-
-        private List<ITask> Claim(Moogle moogle, EAetheryteLocation? shard)
-        {
-            QuestStep step = new(EInteractionType.Interact, moogle.NpcId, moogle.Position, moogle.TerritoryId)
-            {
-                StopDistance = 3
-            };
-            List<ITask> tasks = [];
-            if (clientState.TerritoryType != moogle.TerritoryId && moogle.City != EAetheryteLocation.None)
-            {
-                uint cityTerritory = aetheryteData.TerritoryIds[moogle.City];
-                if (clientState.TerritoryType != cityTerritory)
-                    tasks.Add(new AetheryteShortcut.Task(step, null, moogle.City, cityTerritory));
-                if (shard is { } to)
-                    tasks.Add(new Shared.AethernetShortcut.Task(moogle.City, to));
-            }
-
-            tasks.Add(new MoveTask(step, moogle.Position));
-            tasks.Add(new Take(moogle.NpcId));
-            tasks.Add(new Done());
-            return tasks;
-        }
+        private static List<ITask> Claim(Moogle moogle) =>
+            [new Travel.Task(moogle.TerritoryId, moogle.Position, moogle.NpcId), new Take(moogle.NpcId), new Done()];
     }
 
     internal sealed record Take(uint NpcId) : ITask

@@ -42,8 +42,7 @@
           },
           "TerritoryId": 816,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "DisableNavmesh": true
+          "Fly": true
         },
         {
           "DataId": 2010865,

@@ -94,7 +94,6 @@
           },
           "TerritoryId": 339,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "NotInTerritory": [
@@ -112,7 +111,6 @@
           "TerritoryId": 339,
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 135,
-          "DisableNavmesh": true,
           "DialogueChoices": [
             {
               "Type": "List",

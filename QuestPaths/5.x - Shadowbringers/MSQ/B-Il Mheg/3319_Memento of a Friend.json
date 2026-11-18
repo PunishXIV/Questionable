@@ -50,8 +50,7 @@
             "Z": -505.97192
           },
           "TerritoryId": 816,
-          "InteractionType": "Dive",
-          "DisableNavmesh": true
+          "InteractionType": "Dive"
         },
         {
           "DataId": 2009837,

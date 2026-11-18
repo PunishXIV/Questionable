@@ -53,8 +53,7 @@
             "Z": 337.33798
           },
           "TerritoryId": 928,
-          "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -64,7 +63,6 @@
           },
           "TerritoryId": 928,
           "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false,
           "DelaySecondsAtStart": 2
         },
         {
@@ -93,8 +91,7 @@
             "Z": 72.87652
           },
           "TerritoryId": 928,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -103,8 +100,7 @@
             "Z": 31.767477
           },
           "TerritoryId": 928,
-          "InteractionType": "WalkTo",
-          "DisableNavmesh": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2011234,
@@ -124,8 +120,7 @@
             "Z": -115.379684
           },
           "TerritoryId": 928,
-          "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -135,7 +130,6 @@
           },
           "TerritoryId": 928,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "DelaySecondsAtStart": 2
         },
         {
@@ -146,7 +140,6 @@
           },
           "TerritoryId": 928,
           "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false,
           "DelaySecondsAtStart": 2
         },
         {
@@ -157,7 +150,6 @@
           },
           "TerritoryId": 928,
           "InteractionType": "WalkTo",
-          "RestartNavigationIfCancelled": false,
           "DelaySecondsAtStart": 2
         },
         {

@@ -47,8 +47,7 @@
           "TerritoryId": 961,
           "InteractionType": "None",
           "DelaySecondsAtStart": 4,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -58,7 +57,6 @@
           },
           "TerritoryId": 961,
           "Mount": false,
-          "Sprint": false,
           "DelaySecondsAtStart": 2,
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
@@ -76,7 +74,6 @@
           "TerritoryId": 961,
           "DelaySecondsAtStart": 5,
           "Mount": false,
-          "Sprint": false,
           "InteractionType": "Interact"
         }
       ]
@@ -93,7 +90,6 @@
           },
           "TerritoryId": 961,
           "Mount": false,
-          "Sprint": false,
           "InteractionType": "None"
         },
         {
@@ -104,7 +100,6 @@
           },
           "TerritoryId": 961,
           "Mount": false,
-          "Sprint": false,
           "InteractionType": "None"
         },
         {
@@ -115,7 +110,6 @@
           },
           "TerritoryId": 961,
           "Mount": false,
-          "Sprint": false,
           "InteractionType": "None"
         },
         {
@@ -126,7 +120,6 @@
           },
           "TerritoryId": 961,
           "Mount": false,
-          "Sprint": false,
           "InteractionType": "None"
         },
         {
@@ -137,7 +130,6 @@
           },
           "TerritoryId": 961,
           "Mount": false,
-          "Sprint": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "DelaySecondsAtStart": 3,
@@ -157,7 +149,6 @@
           "TerritoryId": 961,
           "DelaySecondsAtStart": 3,
           "Mount": false,
-          "Sprint": false,
           "InteractionType": "Interact"
         }
       ]
@@ -173,7 +164,6 @@
           },
           "TerritoryId": 961,
           "Mount": false,
-          "Sprint": false,
           "InteractionType": "None"
         },
         {
@@ -184,7 +174,6 @@
           },
           "TerritoryId": 961,
           "Mount": false,
-          "Sprint": false,
           "InteractionType": "None"
         },
         {
@@ -196,7 +185,6 @@
           "DelaySecondsAtStart": 3,
           "TerritoryId": 961,
           "Mount": false,
-          "Sprint": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
@@ -213,7 +201,6 @@
           "TerritoryId": 961,
           "DelaySecondsAtStart": 3,
           "Mount": false,
-          "Sprint": false,
           "InteractionType": "Interact"
         }
       ]
@@ -230,7 +217,6 @@
           },
           "TerritoryId": 961,
           "Mount": false,
-          "Sprint": false,
           "InteractionType": "Interact"
         }
       ]

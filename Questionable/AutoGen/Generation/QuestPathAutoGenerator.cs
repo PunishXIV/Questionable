@@ -48,11 +48,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         sequences.Add(BuildCompleteSequence(quest, symbols, analysis));
         ApplyEventItemUses(quest, symbols, analysis, sequences);
 
-        if (ApplyTravel(sequences))
-        {
-            notes.Add("Some zones had no reachable aetheryte or aethernet shard; add those shortcuts by hand.");
-        }
-
         int emptySequences = sequences.Count(x => x.Steps.Count == 0);
         if (emptySequences > 0)
             notes.Add($"{emptySequences} sequence(s) had no derivable target and were written without steps.");
@@ -802,81 +797,11 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         return sequence;
     }
 
-    private bool ApplyTravel(List<QuestSequence> sequences)
-    {
-        bool needsManualShortcut = false;
-        QuestStep? previousStep = null;
-
-        foreach (QuestSequence sequence in sequences)
-        {
-            uint previousTerritory = 0;
-
-            foreach (QuestStep step in sequence.Steps)
-            {
-                if (step.TerritoryId != previousTerritory)
-                {
-                    previousTerritory = step.TerritoryId;
-
-                    TravelShortcut? travel = step.Position is { } position
-                        ? gameData.ResolveTravel(step.TerritoryId, position)
-                        : null;
-
-                    if (travel == null)
-                    {
-                        needsManualShortcut = true;
-                    }
-                    else
-                    {
-                        step.AetheryteShortcut = travel.Aetheryte;
-                        step.AethernetShortcut = travel.Aethernet;
-
-                        if (travel.Caveat != null)
-                        {
-                            needsManualShortcut = true;
-                            if (_provenance.TryGetValue(step, out string? existing))
-                                _provenance[step] = $"{existing}; travel: {travel.Caveat}";
-                        }
-                    }
-                }
-
-                // Decided after the shortcut, because where the step is travelled from depends on it.
-                if (gameData.TerritorySupportsFlight(step.TerritoryId) && IsWorthFlying(step, previousStep))
-                    step.Fly = true;
-
-                previousStep = step;
-            }
-        }
-
-        return needsManualShortcut;
-    }
-
     private void Note(QuestStep step, string provenance) => _provenance[step] = provenance;
 
     // Level rows without an object can sit just under the floor, and vnavmesh fails on a point below the mesh.
     // QuestRegistry.CreateQuestRoot uses 30 for the same reason.
     private const float AreaHeightPadding = 30f;
-
-    private const float MinimumFlightDistance = MountStep.MountDistance;
-
-    private bool IsWorthFlying(QuestStep step, QuestStep? previousStep)
-    {
-        if (step.Position is not { } destination)
-            return true;
-
-        Vector2? origin = null;
-        if (step.AethernetShortcut is { } aethernet)
-            origin = gameData.AetherytePosition(aethernet.To);
-        else if (step.AetheryteShortcut is { } aetheryte)
-            origin = gameData.AetherytePosition(aetheryte);
-        else if (previousStep is { Position: { } previousPosition } &&
-                 previousStep.TerritoryId == step.TerritoryId)
-            origin = new Vector2(previousPosition.X, previousPosition.Z);
-
-        if (origin is not { } from)
-            return true;
-
-        return Vector2.Distance(from, new Vector2(destination.X, destination.Z)) >= MinimumFlightDistance;
-    }
 
     private static Vector3 Position(Level level) => new(level.X, level.Y, level.Z);
 

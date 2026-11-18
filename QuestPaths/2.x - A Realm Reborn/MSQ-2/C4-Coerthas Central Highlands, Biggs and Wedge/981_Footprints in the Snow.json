@@ -114,8 +114,7 @@
           },
           "StopDistance": 7,
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "DisableNavmesh": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -140,8 +139,7 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "$": "Monument Tower (inside)",
-          "DisableNavmesh": true
+          "$": "Monument Tower (inside)"
         },
         {
           "DataId": 1006521,

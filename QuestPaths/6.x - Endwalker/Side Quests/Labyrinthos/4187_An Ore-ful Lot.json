@@ -93,8 +93,7 @@
               "Yes": true
             }
           ],
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -105,7 +104,6 @@
           "TerritoryId": 956,
           "InteractionType": "WalkTo",
           "Mount": false,
-          "Sprint": false,
           "Comment": "Follow the lightly built lab assistant."
         },
         {
@@ -117,8 +115,7 @@
           "TerritoryId": 956,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 20,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -129,8 +126,7 @@
           "TerritoryId": 956,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 20,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "Position": {
@@ -141,8 +137,7 @@
           "TerritoryId": 956,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 20,
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         },
         {
           "DataId": 1039335,
@@ -153,8 +148,7 @@
           },
           "TerritoryId": 956,
           "InteractionType": "Interact",
-          "Mount": false,
-          "Sprint": false
+          "Mount": false
         }
       ]
     },

@@ -109,8 +109,7 @@
           },
           "TerritoryId": 816,
           "InteractionType": "AttuneAetherCurrent",
-          "AetherCurrentId": 2818273,
-          "DisableNavmesh": true
+          "AetherCurrentId": 2818273
         },
         {
           "Position": {
@@ -120,7 +119,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "Mount": true
         },
         {
@@ -185,7 +183,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [
@@ -207,7 +204,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "WalkTo",
-          "DisableNavmesh": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [
@@ -283,7 +279,6 @@
           "StopDistance": 0.25,
           "TerritoryId": 816,
           "InteractionType": "Jump",
-          "DisableNavmesh": true,
           "Mount": false,
           "JumpDestination": {
             "Position": {
@@ -315,7 +310,6 @@
           "StopDistance": 0.5,
           "TerritoryId": 816,
           "InteractionType": "Jump",
-          "DisableNavmesh": true,
           "JumpDestination": {
             "Position": {
               "X": 539.31104,
@@ -346,7 +340,6 @@
           "StopDistance": 0.5,
           "TerritoryId": 816,
           "InteractionType": "Jump",
-          "DisableNavmesh": true,
           "JumpDestination": {
             "Position": {
               "X": 542.8287,
@@ -377,7 +370,6 @@
           "StopDistance": 0.5,
           "TerritoryId": 816,
           "InteractionType": "Jump",
-          "DisableNavmesh": true,
           "JumpDestination": {
             "Position": {
               "X": 547.785,
