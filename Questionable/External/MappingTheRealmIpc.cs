@@ -13,6 +13,7 @@ internal sealed class MappingTheRealmIpc : Ipc, IDisposable
     [EzIPC("PathToTerritory")] private readonly Func<uint, Task> _pathToTerritory = null!;
     [EzIPC("PathTo")] private readonly Func<uint, Vector3, Task> _pathTo = null!;
     [EzIPC("PathToInteractable")] private readonly Func<uint, Vector3, uint, Task> _pathToInteractable = null!;
+    [EzIPC("PathToInteractableById")] private readonly Func<uint, uint, Task> _pathToInteractableById = null!;
     [EzIPC("CanReach")] private readonly Func<uint, Vector3, CancellationToken, Task<bool>> _canReach = null!;
     [EzIPC("Stop")] private readonly Action _stop = null!;
 
@@ -34,9 +35,13 @@ internal sealed class MappingTheRealmIpc : Ipc, IDisposable
     {
         try
         {
-            return position is not { } at ? _pathToTerritory(territoryId)
-                : dataId is { } id ? _pathToInteractable(territoryId, at, id)
-                : _pathTo(territoryId, at);
+            return (position, dataId) switch
+            {
+                ({ } at, { } id) => _pathToInteractable(territoryId, at, id),
+                ({ } at, _) => _pathTo(territoryId, at),
+                (_, { } id) => _pathToInteractableById(territoryId, id),
+                _ => _pathToTerritory(territoryId),
+            };
         }
         catch (Exception e)
         {

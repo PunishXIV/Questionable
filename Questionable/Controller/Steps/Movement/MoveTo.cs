@@ -43,8 +43,8 @@ internal static class MoveTo
             List<ITask> tasks = [];
             if (clientState.TerritoryType != step.TerritoryId &&
                 Travel.CanTravel(step, clientState.TerritoryType, territoryData) &&
-                (Travel.TalkTarget(step) != null || PlaceBoundTerritories.Contains(step.TerritoryId)))
-                tasks.Add(new Travel.Task(step.TerritoryId, null, null));
+                (Travel.InteractTarget(step) != null || PlaceBoundTerritories.Contains(step.TerritoryId)))
+                tasks.Add(new Travel.Task(step.TerritoryId, null, Travel.InteractTarget(step)));
             if (step is { DataId: not null, StopDistance: not null })
                 tasks.Add(new WaitForNearDataId(step.DataId.Value, step.StopDistance.Value));
             return tasks;
@@ -61,7 +61,7 @@ internal static class MoveTo
             }
 
             yield return Travel.CanTravel(step, clientState.TerritoryType, territoryData)
-                ? new Travel.Task(step.TerritoryId, destination, Travel.TalkTarget(step), Travel.EntersZoneFirst(step))
+                ? new Travel.Task(step.TerritoryId, destination, Travel.InteractTarget(step), Travel.GoesById(step))
                 : new MoveTask(step, destination);
         }
     }

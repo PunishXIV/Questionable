@@ -10,20 +10,20 @@ internal static class Travel
         step.TerritoryId != 1 && (territoryId == step.TerritoryId || !territoryData.IsDutyInstance(step.TerritoryId));
 
     // An aetheryte's base id is its Aetheryte row; its own position is inside the crystal.
-    internal static uint? TalkTarget(QuestStep step) => step.InteractionType switch
+    internal static uint? InteractTarget(QuestStep step) => step.InteractionType switch
     {
-        EInteractionType.Interact or EInteractionType.AcceptQuest or EInteractionType.CompleteQuest => step.DataId,
         EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte => (uint?)step.Aetheryte,
         EInteractionType.AttuneAethernetShard => (uint?)step.AethernetShard,
-        _ => null,
+        EInteractionType.WalkTo or EInteractionType.Jump => null,
+        _ => step.DataId,
     };
 
-    // MappingTheRealm only routes across zones to interactables it knows; aetherytes and shards aren't among them.
-    internal static bool EntersZoneFirst(QuestStep step) =>
+    // MappingTheRealm 1.0.0.1's PathToInteractable didn't route across zones to aetherytes and shards; by id does.
+    internal static bool GoesById(QuestStep step) =>
         step.InteractionType is EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte
             or EInteractionType.AttuneAethernetShard;
 
-    internal sealed record Task(uint TerritoryId, Vector3? Position, uint? DataId, bool ZoneFirst = false) : ITask
+    internal sealed record Task(uint TerritoryId, Vector3? Position, uint? DataId, bool ById = false) : ITask
     {
         public override string ToString() => $"Travel({TerritoryData.GetNameAndId(TerritoryId)})";
     }
@@ -31,14 +31,8 @@ internal static class Travel
     internal sealed class Executor(MappingTheRealmIpc mappingTheRealm, IClientState clientState)
         : TaskExecutor<Task>, IStoppable
     {
-        // Event objects (2000000 and up) need you closer than MappingTheRealm 1.0.0.1's "in range", e.g. 2001563.
-        private const uint FirstEventObject = 2_000_000;
-
         private Route? _route;
         private bool _started;
-        private bool _zoneFirst;
-
-        private uint? Target => Task.DataId is < FirstEventObject ? Task.DataId : null;
 
         protected override bool Start()
         {
@@ -52,27 +46,18 @@ internal static class Travel
 
             // A route from a stopped run can still be moving; Stop only cancels routes Questionable started.
             mappingTheRealm.Stop();
-            _zoneFirst = Task.ZoneFirst && Target != null && clientState.TerritoryType != Task.TerritoryId;
-            _route = _zoneFirst
-                ? mappingTheRealm.Travel(Task.TerritoryId, null, null)
-                : mappingTheRealm.Travel(Task.TerritoryId, Task.Position, Target);
+            _route = mappingTheRealm.Travel(Task.TerritoryId, Task.ById && Task.DataId != null ? null : Task.Position, Task.DataId);
             return true;
         }
 
         public override ETaskResult Update()
         {
-            // 1.0.0.1's PathToTerritory aims at the zone gate in the old zone (129 -> 128 became "T129, gate 2210434")
+            // 1.0.0.2's PathToTerritory aims at the zone gate in the old zone (129 -> 128 became "T129, gate 2210434")
             // and fails once the gate moves the player, so a zone-only leg ends on arrival.
-            if ((Task.Position == null || _zoneFirst) && clientState.TerritoryType == Task.TerritoryId)
+            if (Task.Position == null && Task.DataId == null && clientState.TerritoryType == Task.TerritoryId)
             {
                 mappingTheRealm.Stop();
-                if (!_zoneFirst)
-                    return ETaskResult.TaskComplete;
-
-                _zoneFirst = false;
-                _started = false;
-                _route = mappingTheRealm.Travel(Task.TerritoryId, Task.Position, Target);
-                return ETaskResult.StillRunning;
+                return ETaskResult.TaskComplete;
             }
 
             if (mappingTheRealm.GetPathing() == true)
