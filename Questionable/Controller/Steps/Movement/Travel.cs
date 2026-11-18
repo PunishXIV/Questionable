@@ -9,19 +9,26 @@ internal static class Travel
     internal static bool CanTravel(QuestStep step, uint territoryId, TerritoryData territoryData) =>
         step.TerritoryId != 1 && (territoryId == step.TerritoryId || !territoryData.IsDutyInstance(step.TerritoryId));
 
-    internal static uint? TalkTarget(QuestStep step) =>
-        step.InteractionType is EInteractionType.Interact or EInteractionType.AcceptQuest or EInteractionType.CompleteQuest
-            ? step.DataId
-            : null;
+    // An aetheryte's base id is its Aetheryte row; its own position is inside the crystal.
+    internal static uint? TalkTarget(QuestStep step) => step.InteractionType switch
+    {
+        EInteractionType.Interact or EInteractionType.AcceptQuest or EInteractionType.CompleteQuest => step.DataId,
+        EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte => (uint?)step.Aetheryte,
+        EInteractionType.AttuneAethernetShard => (uint?)step.AethernetShard,
+        _ => null,
+    };
 
     internal sealed record Task(uint TerritoryId, Vector3? Position, uint? DataId) : ITask
     {
         public override string ToString() => $"Travel({TerritoryData.GetNameAndId(TerritoryId)})";
     }
 
-    internal sealed class Executor(MappingTheRealmIpc mappingTheRealm, IClientState clientState, IObjectTable objectTable)
+    internal sealed class Executor(MappingTheRealmIpc mappingTheRealm, IClientState clientState)
         : TaskExecutor<Task>, IStoppable
     {
+        // Event objects (2000000 and up) need you closer than MappingTheRealm 1.0.0.1's "in range", e.g. 2001563.
+        private const uint FirstEventObject = 2_000_000;
+
         private Route? _route;
         private bool _started;
 
@@ -37,7 +44,8 @@ internal static class Travel
 
             // A route from a stopped run can still be moving; Stop only cancels routes Questionable started.
             mappingTheRealm.Stop();
-            _route = mappingTheRealm.Travel(Task.TerritoryId, Task.Position, Task.DataId);
+            uint? npc = Task.DataId is < FirstEventObject ? Task.DataId : null;
+            _route = mappingTheRealm.Travel(Task.TerritoryId, Task.Position, npc);
             return true;
         }
 
@@ -46,11 +54,7 @@ internal static class Travel
             if (mappingTheRealm.GetPathing() == true)
             {
                 _started = true;
-                if (!HasArrived())
-                    return ETaskResult.StillRunning;
-
-                mappingTheRealm.Stop();
-                return ETaskResult.TaskComplete;
+                return ETaskResult.StillRunning;
             }
 
             if (_route is { IsFaulted: true } faulted)
@@ -61,17 +65,6 @@ internal static class Travel
 
             // IsPathing reads false for a moment before the route starts.
             return _started || _route is { IsCompleted: true } ? ETaskResult.TaskComplete : ETaskResult.StillRunning;
-        }
-
-        // shortcut: MappingTheRealm 1.0.0.0 can stay on "Planning route" after arriving; delete once it ends the route itself.
-        private bool HasArrived()
-        {
-            if (clientState.TerritoryType != Task.TerritoryId)
-                return false;
-            if (Task.Position is not { } destination)
-                return true;
-            return objectTable[0]?.Position is { } position &&
-                   Vector3.Distance(position, destination) < (Task.DataId != null ? 5f : QuestStep.DefaultStopDistance);
         }
 
         public void StopNow()
