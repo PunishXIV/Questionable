@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006273,
-          "Position": {
-            "X": 619.7284,
-            "Y": 23.936245,
-            "Z": 456.43982
-          },
-          "TerritoryId": 137,
+          "Position": [619.7284, 23.936245, 456.43982],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1006273 (Gegeruju)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006320,
-          "Position": {
-            "X": 466.19223,
-            "Y": 11.9579115,
-            "Z": 156.63432
-          },
-          "TerritoryId": 137,
+          "Position": [466.19223, 11.9579115, 156.63432],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1006320 (pitiless poacher)"
         }
@@ -37,15 +29,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 2002066,
-          "Position": {
-            "X": 458.183,
-            "Y": 12.3571,
-            "Z": 163.043
-          },
-          "TerritoryId": 137,
+          "Position": [458.183, 12.3571, 163.043],
           "InteractionType": "UseItem",
           "ItemId": 2000661,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
@@ -53,12 +41,7 @@
         },
         {
           "DataId": 2002065,
-          "Position": {
-            "X": 458.549,
-            "Y": 12.6106,
-            "Z": 190.478
-          },
-          "TerritoryId": 137,
+          "Position": [458.549, 12.6106, 190.478],
           "InteractionType": "UseItem",
           "ItemId": 2000661,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
@@ -66,12 +49,7 @@
         },
         {
           "DataId": 2002064,
-          "Position": {
-            "X": 458.457,
-            "Y": 12.8984,
-            "Z": 216.846
-          },
-          "TerritoryId": 137,
+          "Position": [458.457, 12.8984, 216.846],
           "InteractionType": "UseItem",
           "ItemId": 2000661,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
@@ -79,12 +57,7 @@
         },
         {
           "DataId": 2002677,
-          "Position": {
-            "X": 446.421,
-            "Y": 13.9017,
-            "Z": 239.545
-          },
-          "TerritoryId": 137,
+          "Position": [446.421, 13.9017, 239.545],
           "InteractionType": "UseItem",
           "ItemId": 2000661,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
@@ -94,15 +67,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006320,
-          "Position": {
-            "X": 466.19223,
-            "Y": 11.9579115,
-            "Z": 156.63432
-          },
-          "TerritoryId": 137,
+          "Position": [466.19223, 11.9579115, 156.63432],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1006320 (pitiless poacher)"
         }
@@ -110,15 +79,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1006273,
-          "Position": {
-            "X": 619.7284,
-            "Y": 23.936245,
-            "Z": 456.43982
-          },
-          "TerritoryId": 137,
+          "Position": [619.7284, 23.936245, 456.43982],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1006273 (Gegeruju)"
         }

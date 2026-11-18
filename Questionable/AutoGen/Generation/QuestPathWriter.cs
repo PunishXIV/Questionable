@@ -13,8 +13,6 @@ namespace Questionable.AutoGen.Generation;
 
 internal static class QuestPathWriter
 {
-    private const string SchemaUrl = "https://qstxiv.github.io/schema/quest-v1.json";
-
     private static readonly JsonSerializerOptions Options = new()
     {
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
@@ -45,15 +43,9 @@ internal static class QuestPathWriter
 
     internal static string Serialize(QuestPathResult result)
     {
-        JsonObject serialized = (JsonObject)JsonSerializer.SerializeToNode(result.Root, Options)!;
-
-        JsonObject output = new() { ["$schema"] = SchemaUrl };
-        foreach ((string key, JsonNode? value) in serialized)
-            output[key] = value?.DeepClone();
-
+        JsonObject output = (JsonObject)JsonSerializer.SerializeToNode(result.Root, Options)!;
         InjectDevComments(output, result);
-
-        return output.ToJsonString(Options);
+        return QuestPathJson.Write(output, Options);
     }
 
     internal static bool Exists(Quest quest, string directory) =>

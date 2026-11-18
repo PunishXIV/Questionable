@@ -1,87 +1,61 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": ["pot0to","ShermTank"],
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001708,
-          "Position": {
-            "X": -250.3548,
-            "Y": 18,
-            "Z": 80.88806
-          },
-          "TerritoryId": 130,
+          "Position": [-250.3548, 18, 80.88806],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001712,
-          "Position": {
-            "X": -241.50458,
-            "Y": 19.57727,
-            "Z": 84.64172
-          },
-          "TerritoryId": 130,
+          "Position": [-241.50458, 19.57727, 84.64172],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1002305,
-          "Position": {
-            "X": 14.419739,
-            "Y": 22.157166,
-            "Z": 72.3125
-          },
-          "TerritoryId": 140,
+          "Position": [14.419739, 22.157166, 72.3125],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1002324,
-          "Position": {
-            "X": 113.57544,
-            "Y": 17.536886,
-            "Z": 31.153059
-          },
-          "TerritoryId": 140,
+          "Position": [113.57544, 17.536886, 31.153059],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "DataId": 1002322,
-          "Position": {
-            "X": 116.89929,
-            "Y": 17.536886,
-            "Z": 12.954895
-          },
-          "TerritoryId": 140,
+          "Position": [116.89929, 17.536886, 12.954895],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 1002323,
-          "Position": {
-            "X": 132.43298,
-            "Y": 21.104982,
-            "Z": 9.018005
-          },
-          "TerritoryId": 140,
+          "Position": [132.43298, 21.104982, 9.018005],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         }
@@ -89,58 +63,36 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 140,
       "Steps": [
         {
           "$": "Need this extra step to path around the rock, otherwise it gets stuck",
-          "Position": {
-            "X": 103.20799,
-            "Y": 17.536886,
-            "Z": 38.734856
-          },
-          "TerritoryId": 140,
+          "Position": [103.20799, 17.536886, 38.734856],
           "InteractionType": "WalkTo",
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
-          "Position": {
-            "X": 100.875496,
-            "Y": 17.536884,
-            "Z": 45.384903
-          },
-          "TerritoryId": 140,
+          "Position": [100.875496, 17.536884, 45.384903],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": 94.09375,
-              "Y": 21.432512,
-              "Z": 48.76599
-            }
+            "Position": [94.09375, 21.432512, 48.76599]
           },
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
           "DataId": 1002305,
-          "Position": {
-            "X": 14.419739,
-            "Y": 22.157166,
-            "Z": 72.3125
-          },
-          "TerritoryId": 140,
+          "Position": [14.419739, 22.157166, 72.3125],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 2001472,
-          "Position": {
-            "X": 150.71338,
-            "Y": 18.783813,
-            "Z": -5.7526855
-          },
-          "TerritoryId": 140,
+          "Position": [150.71338, 18.783813, -5.7526855],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
@@ -154,88 +106,58 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 140,
       "Steps": [
         {
           "$": "Need this extra step to path around the rock, otherwise it gets stuck",
-          "Position": {
-            "X": 103.20799,
-            "Y": 17.536886,
-            "Z": 38.734856
-          },
-          "TerritoryId": 140,
+          "Position": [103.20799, 17.536886, 38.734856],
           "InteractionType": "WalkTo",
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
-          "Position": {
-            "X": 100.875496,
-            "Y": 17.536884,
-            "Z": 45.384903
-          },
-          "TerritoryId": 140,
+          "Position": [100.875496, 17.536884, 45.384903],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": 94.09375,
-              "Y": 21.432512,
-              "Z": 48.76599
-            }
+            "Position": [94.09375, 21.432512, 48.76599]
           },
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
           "DataId": 1002305,
-          "Position": {
-            "X": 14.419739,
-            "Y": 22.157166,
-            "Z": 72.3125
-          },
-          "TerritoryId": 140,
+          "Position": [14.419739, 22.157166, 72.3125],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 2001474,
-          "Position": {
-            "X": 96.238525,
-            "Y": 16.952698,
-            "Z": 188.83032
-          },
-          "TerritoryId": 140,
+          "Position": [96.238525, 16.952698, 188.83032],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 8,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001712,
-          "Position": {
-            "X": -241.50458,
-            "Y": 19.57727,
-            "Z": 84.64172
-          },
-          "TerritoryId": 130,
+          "Position": [-241.50458, 19.57727, 84.64172],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001708,
-          "Position": {
-            "X": -250.3548,
-            "Y": 18,
-            "Z": 80.88806
-          },
-          "TerritoryId": 130,
+          "Position": [-250.3548, 18, 80.88806],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 352
         }

@@ -1,28 +1,24 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032643,
-          "Position": {
-            "X": 788.5046,
-            "Y": -45.827076,
-            "Z": -216.96419
-          },
-          "TerritoryId": 817,
+          "Position": [788.5046, -45.827076, -216.96419],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "TerritoryId": 817,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -35,7 +31,6 @@
           ]
         },
         {
-          "TerritoryId": 817,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -49,12 +44,7 @@
         },
         {
           "DataId": 1032643,
-          "Position": {
-            "X": 788.5046,
-            "Y": -45.827076,
-            "Z": -216.96419
-          },
-          "TerritoryId": 817,
+          "Position": [788.5046, -45.827076, -216.96419],
           "InteractionType": "CompleteQuest"
         }
       ]

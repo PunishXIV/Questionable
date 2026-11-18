@@ -1,45 +1,33 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "JerryWester",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1006573,
-          "Position": {
-            "X": -43.717102,
-            "Y": 84,
-            "Z": 2.1514893
-          },
-          "TerritoryId": 130,
+          "Position": [-43.717102, 84, 2.1514893],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1004434,
-          "Position": {
-            "X": -27.17633,
-            "Y": 83.19999,
-            "Z": 2.304016
-          },
-          "TerritoryId": 130,
+          "Position": [-27.17633, 83.19999, 2.304016],
           "InteractionType": "Interact",
           "TargetTerritoryId": 130,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
-                "Position": {
-                  "X": -43.289856,
-                  "Y": 84,
-                  "Z": 2.8533936
-                },
+                "Position": [-43.289856, 84, 2.8533936],
                 "TerritoryId": 130,
                 "MaximumDistance": 10
               }
@@ -47,23 +35,8 @@
           }
         },
         {
-          "DataId": 1004339,
-          "Position": {
-            "X": -25.986206,
-            "Y": 81.799995,
-            "Z": -31.99823
-          },
-          "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 131
-        },
-        {
           "DataId": 1001821,
-          "Position": {
-            "X": -24.124573,
-            "Y": 38.000004,
-            "Z": 85.31323
-          },
+          "Position": [-24.124573, 38.000004, 85.31323],
           "TerritoryId": 131,
           "InteractionType": "Interact"
         }
@@ -71,37 +44,24 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -492.96475,
-            "Y": 20.999884,
-            "Z": -380.82272
-          },
-          "TerritoryId": 140,
+          "Position": [-492.96475, 20.999884, -380.82272],
           "InteractionType": "WalkTo",
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
         {
           "DataId": 2001711,
-          "Position": {
-            "X": -480.9181,
-            "Y": 18.00103,
-            "Z": -386.862
-          },
-          "TerritoryId": 140,
+          "Position": [-480.9181, 18.00103, -386.862],
           "InteractionType": "Interact",
           "TargetTerritoryId": 212,
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
         {
           "DataId": 2001715,
-          "Position": {
-            "X": 23.23944,
-            "Y": 2.090454,
-            "Z": -0.015319824
-          },
+          "Position": [23.23944, 2.090454, -0.015319824],
           "TerritoryId": 212,
           "InteractionType": "Interact",
           "TargetTerritoryId": 212,
@@ -113,11 +73,7 @@
         },
         {
           "DataId": 1006690,
-          "Position": {
-            "X": 39.261353,
-            "Y": 1.2148079,
-            "Z": 0.8086548
-          },
+          "Position": [39.261353, 1.2148079, 0.8086548],
           "TerritoryId": 212,
           "InteractionType": "CompleteQuest"
         }

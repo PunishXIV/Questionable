@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002658,
-          "Position": {
-            "X": 312.493,
-            "Y": 75.9426,
-            "Z": -308.204
-          },
-          "TerritoryId": 135,
+          "Position": [312.493, 75.9426, -308.204],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1002658 (Broenruht)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 2001500,
-          "Position": {
-            "X": 278.79,
-            "Y": 74.9491,
-            "Z": -307.793
-          },
-          "TerritoryId": 135,
+          "Position": [278.79, 74.9491, -307.793],
           "InteractionType": "UseItem",
           "ItemId": 2000440,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
@@ -37,12 +29,7 @@
         },
         {
           "DataId": 2001501,
-          "Position": {
-            "X": 270.25,
-            "Y": 73.624,
-            "Z": -263.29
-          },
-          "TerritoryId": 135,
+          "Position": [270.25, 73.624, -263.29],
           "InteractionType": "Combat",
           "ItemId": 2000440,
           "EnemySpawnType": "AfterItemUse",
@@ -54,12 +41,7 @@
         },
         {
           "DataId": 2001502,
-          "Position": {
-            "X": 294.39,
-            "Y": 73.2362,
-            "Z": -270.22
-          },
-          "TerritoryId": 135,
+          "Position": [294.39, 73.2362, -270.22],
           "InteractionType": "Combat",
           "ItemId": 2000440,
           "EnemySpawnType": "AfterItemUse",
@@ -73,15 +55,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002658,
-          "Position": {
-            "X": 312.493,
-            "Y": 75.9426,
-            "Z": -308.204
-          },
-          "TerritoryId": 135,
+          "Position": [312.493, 75.9426, -308.204],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1002658 (Broenruht)"
         }

@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000640,
-          "Position": {
-            "X": 320.543,
-            "Y": -5.8932,
-            "Z": -79.8655
-          },
-          "TerritoryId": 154,
+          "Position": [320.543, -5.8932, -79.8655],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1000640 (Eadbert)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 2000008,
-          "Position": {
-            "X": 400,
-            "Y": -4.95893,
-            "Z": 79.5273
-          },
-          "TerritoryId": 154,
+          "Position": [400, -4.95893, 79.5273],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -41,15 +33,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000640,
-          "Position": {
-            "X": 320.543,
-            "Y": -5.8932,
-            "Z": -79.8655
-          },
-          "TerritoryId": 154,
+          "Position": [320.543, -5.8932, -79.8655],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 99,
           "$": "auto: todo turn-in -> 1000640 (Eadbert)"

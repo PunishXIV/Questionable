@@ -1,33 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1003929,
-          "Position": {
-            "X": -378.65265,
-            "Y": -55.75492,
-            "Z": 106.79785
-          },
-          "TerritoryId": 145,
+          "Position": [-378.65265, -55.75492, 106.79785],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 145,
       "Steps": [
         {
-          "Position": {
-            "X": -338.71124,
-            "Y": -37.497707,
-            "Z": 243.90338
-          },
-          "TerritoryId": 145,
+          "Position": [-338.71124, -37.497707, 243.90338],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -36,34 +28,19 @@
         },
         {
           "DataId": 1003943,
-          "Position": {
-            "X": -335.1645,
-            "Y": -37.195824,
-            "Z": 242.20642
-          },
-          "TerritoryId": 145,
+          "Position": [-335.1645, -37.195824, 242.20642],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1003944,
-          "Position": {
-            "X": -335.71375,
-            "Y": -37.370598,
-            "Z": 245.31921
-          },
-          "TerritoryId": 145,
+          "Position": [-335.71375, -37.370598, 245.31921],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1003942,
-          "Position": {
-            "X": -341.81738,
-            "Y": -37.60504,
-            "Z": 243.42712
-          },
-          "TerritoryId": 145,
+          "Position": [-341.81738, -37.60504, 243.42712],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
@@ -71,31 +48,15 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": -171.46503,
-            "Y": -46.504063,
-            "Z": 491.88867
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 146,
-          "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Little Ala Mhigo"}}
-        },
-        {
-          "Position": {
-            "X": -47.50145,
-            "Y": 16.362688,
-            "Z": -439.62503
-          },
-          "TerritoryId": 146,
+          "Position": [-47.50145, 16.362688, -439.62503],
           "InteractionType": "WalkTo",
           "$": "vnav sometimes attempts to walk to the aetheryte using exactly one waypoint between zone boundary and aetheryte, which means walking into walls",
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Little Ala Mhigo"}}
         },
         {
-          "TerritoryId": 146,
           "InteractionType": "AttuneAetheryte",
           "StopDistance": 7,
           "Aetheryte": "Southern Thanalan - Little Ala Mhigo",
@@ -103,71 +64,41 @@
         },
         {
           "DataId": 1004412,
-          "Position": {
-            "X": -176.2265,
-            "Y": 26.903078,
-            "Z": -411.64264
-          },
-          "TerritoryId": 146,
+          "Position": [-176.2265, 26.903078, -411.64264],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179664
         },
         {
-          "Position": {
-            "X": -180.60515,
-            "Y": 17.857697,
-            "Z": -278.74887
-          },
-          "TerritoryId": 146,
+          "Position": [-180.60515, 17.857697, -278.74887],
           "InteractionType": "WalkTo",
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Forgotten Springs"}}
         },
         {
-          "Position": {
-            "X": -183.61136,
-            "Y": 3.5857017,
-            "Z": -248.78667
-          },
-          "TerritoryId": 146,
+          "Position": [-183.61136, 3.5857017, -248.78667],
           "InteractionType": "WalkTo",
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Forgotten Springs"}}
         },
         {
           "DataId": 1004596,
-          "Position": {
-            "X": -471.27496,
-            "Y": -2.650424,
-            "Z": 95.628296
-          },
-          "TerritoryId": 146,
+          "Position": [-471.27496, -2.650424, 95.628296],
           "InteractionType": "Interact",
           "TargetTerritoryId": 146,
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Forgotten Springs"}}
         },
         {
-          "TerritoryId": 146,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Southern Thanalan - Forgotten Springs",
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Southern Thanalan - Forgotten Springs"}}
         },
         {
           "DataId": 1004413,
-          "Position": {
-            "X": -309.22406,
-            "Y": 7.3784404,
-            "Z": 417.83777
-          },
-          "TerritoryId": 146,
+          "Position": [-309.22406, 7.3784404, 417.83777],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179665
         },
         {
           "DataId": 1003929,
-          "Position": {
-            "X": -378.65265,
-            "Y": -55.75492,
-            "Z": 106.79785
-          },
+          "Position": [-378.65265, -55.75492, 106.79785],
           "TerritoryId": 145,
           "InteractionType": "CompleteQuest"
         }

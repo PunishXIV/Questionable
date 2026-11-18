@@ -1,33 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1003898,
-          "Position": {
-            "X": -109.91083,
-            "Y": 4.500089,
-            "Z": -73.80792
-          },
-          "TerritoryId": 130,
+          "Position": [-109.91083, 4.500089, -73.80792],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "Position": {
-            "X": 21.239477,
-            "Y": 1.7467635,
-            "Z": 261.17734
-          },
-          "TerritoryId": 141,
+          "Position": [21.239477, 1.7467635, 261.17734],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [{ "DataId": 205, "MinimumKillCount": 5 }]
@@ -36,14 +28,10 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 141,
       "Steps": [
         {
-          "Position": {
-            "X": -118.17538,
-            "Y": 18.35357,
-            "Z": 341.3039
-          },
-          "TerritoryId": 141,
+          "Position": [-118.17538, 18.35357, 341.3039],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -55,11 +43,7 @@
         },
         {
           "DataId": 1003898,
-          "Position": {
-            "X": -109.91083,
-            "Y": 4.500089,
-            "Z": -73.80792
-          },
+          "Position": [-109.91083, 4.500089, -73.80792],
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest"
         }

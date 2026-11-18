@@ -1,41 +1,28 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1027673,
-          "Position": {
-            "X": -106.43583,
-            "Y": 108.39998,
-            "Z": -840.68567
-          },
-          "TerritoryId": 816,
+          "Position": [-106.43583, 108.39998, -840.68567],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "Position": {
-            "X": -354.8902,
-            "Y": 47.989246,
-            "Z": 495.83212
-          },
-          "TerritoryId": 816,
+          "Position": [-354.8902, 47.989246, 495.83212],
           "InteractionType": "None"
         },
         {
-          "Position": {
-            "X": -725.7799,
-            "Y": 93.38933,
-            "Z": 569.39484
-          },
-          "TerritoryId": 816,
+          "Position": [-725.7799, 93.38933, 569.39484],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "CompletionQuestVariablesFlags": [null,null,
@@ -51,12 +38,7 @@
           ]
         },
         {
-          "Position": {
-            "X": -150.93805,
-            "Y": 13.96408,
-            "Z": 376.68124
-          },
-          "TerritoryId": 816,
+          "Position": [-150.93805, 13.96408, 376.68124],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "CompletionQuestVariablesFlags": [null,null,
@@ -71,12 +53,7 @@
         },
         {
           "DataId": 10252,
-          "Position": {
-            "X": -119.04461,
-            "Y": 97.54629,
-            "Z": -173.52538
-          },
-          "TerritoryId": 816,
+          "Position": [-119.04461, 97.54629, -173.52538],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "CompletionQuestVariablesFlags": [null,null,
@@ -93,15 +70,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1027673,
-          "Position": {
-            "X": -106.43583,
-            "Y": 108.39998,
-            "Z": -840.68567
-          },
-          "TerritoryId": 816,
+          "Position": [-106.43583, 108.39998, -840.68567],
           "InteractionType": "CompleteQuest"
         }
       ]

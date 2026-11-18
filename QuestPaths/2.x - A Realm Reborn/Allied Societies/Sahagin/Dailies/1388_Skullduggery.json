@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005938,
-          "Position": {
-            "X": -220.7218,
-            "Y": -40.720844,
-            "Z": 37.247192
-          },
-          "TerritoryId": 138,
+          "Position": [-220.7218, -40.720844, 37.247192],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1008794,
-          "Position": {
-            "X": -111.80292,
-            "Y": -23.317877,
-            "Z": 82.07825
-          },
-          "TerritoryId": 138,
+          "Position": [-111.80292, -23.317877, 82.07825],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -39,12 +31,7 @@
         },
         {
           "DataId": 1008793,
-          "Position": {
-            "X": -55.436035,
-            "Y": -24.903355,
-            "Z": 36.75891
-          },
-          "TerritoryId": 138,
+          "Position": [-55.436035, -24.903355, 36.75891],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -55,12 +42,7 @@
         },
         {
           "DataId": 1008796,
-          "Position": {
-            "X": 46.066895,
-            "Y": -14.420642,
-            "Z": 55.008667
-          },
-          "TerritoryId": 138,
+          "Position": [46.066895, -14.420642, 55.008667],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -71,12 +53,7 @@
         },
         {
           "DataId": 1008795,
-          "Position": {
-            "X": 92.851074,
-            "Y": -14.358462,
-            "Z": 32.028687
-          },
-          "TerritoryId": 138,
+          "Position": [92.851074, -14.358462, 32.028687],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -89,15 +66,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005938,
-          "Position": {
-            "X": -220.7218,
-            "Y": -40.720844,
-            "Z": 37.247192
-          },
-          "TerritoryId": 138,
+          "Position": [-220.7218, -40.720844, 37.247192],
           "InteractionType": "CompleteQuest"
         }
       ]

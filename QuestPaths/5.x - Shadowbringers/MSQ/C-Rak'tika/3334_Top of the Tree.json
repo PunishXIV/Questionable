@@ -1,98 +1,65 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1030374,
-          "Position": {
-            "X": 452.93335,
-            "Y": 18.97871,
-            "Z": -56.961975
-          },
-          "TerritoryId": 817,
+          "Position": [452.93335, 18.97871, -56.961975],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029231,
-          "Position": {
-            "X": 453.05554,
-            "Y": 33.66181,
-            "Z": -156.9696
-          },
-          "TerritoryId": 817,
+          "Position": [453.05554, 33.66181, -156.9696],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1027711,
-          "Position": {
-            "X": 429.86182,
-            "Y": 34.051743,
-            "Z": -114.85474
-          },
-          "TerritoryId": 817,
+          "Position": [429.86182, 34.051743, -114.85474],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1027717,
-          "Position": {
-            "X": 334.18774,
-            "Y": 7.960762,
-            "Z": -141.46643
-          },
-          "TerritoryId": 817,
+          "Position": [334.18774, 7.960762, -141.46643],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "TerritoryId": 817,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Rak'tika - Fanow"
         },
         {
           "DataId": 1027710,
-          "Position": {
-            "X": 506.52307,
-            "Y": -6.5944357,
-            "Z": -267.628
-          },
-          "TerritoryId": 817,
+          "Position": [506.52307, -6.5944357, -267.628],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179717
         },
         {
           "DataId": 1027719,
-          "Position": {
-            "X": 303.5172,
-            "Y": 34.242825,
-            "Z": -146.65448
-          },
-          "TerritoryId": 817,
+          "Position": [303.5172, 34.242825, -146.65448],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
           "DataId": 1027712,
-          "Position": {
-            "X": 454.1847,
-            "Y": 6.955061,
-            "Z": -193.07245
-          },
-          "TerritoryId": 817,
+          "Position": [454.1847, 6.955061, -193.07245],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
@@ -100,15 +67,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029231,
-          "Position": {
-            "X": 453.05554,
-            "Y": 33.66181,
-            "Z": -156.9696
-          },
-          "TerritoryId": 817,
+          "Position": [453.05554, 33.66181, -156.9696],
           "InteractionType": "CompleteQuest"
         }
       ]

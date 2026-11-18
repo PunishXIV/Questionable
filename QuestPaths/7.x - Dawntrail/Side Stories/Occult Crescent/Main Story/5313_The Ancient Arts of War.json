@@ -1,29 +1,21 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1278,
       "Steps": [
         {
           "DataId": 1053611,
-          "Position": {
-            "X": -77.958374,
-            "Y": 5,
-            "Z": -15.396423
-          },
-          "TerritoryId": 1278,
+          "Position": [-77.958374, 5, -15.396423],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1252,
           "Comment": "This requires queueing into Occult Crescent: South Horn, so isn't started automatically"
         },
         {
           "DataId": 1053796,
-          "Position": {
-            "X": 868.10095,
-            "Y": 72.75855,
-            "Z": -677.3938
-          },
+          "Position": [868.10095, 72.75855, -677.3938],
           "TerritoryId": 1252,
           "InteractionType": "AcceptQuest",
           "Comment": "This requires queueing into Occult Crescent: South Horn AND equipping a phantom job, so isn't started automatically"
@@ -32,15 +24,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1252,
       "Steps": [
         {
           "DataId": 1053800,
-          "Position": {
-            "X": 822.8733,
-            "Y": 72.673935,
-            "Z": -678.7671
-          },
-          "TerritoryId": 1252,
+          "Position": [822.8733, 72.673935, -678.7671],
           "InteractionType": "CompleteQuest"
         }
       ]

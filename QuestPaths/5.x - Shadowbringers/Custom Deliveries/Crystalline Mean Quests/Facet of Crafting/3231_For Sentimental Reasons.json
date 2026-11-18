@@ -1,49 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1027234,
-          "Position": {
-            "X": 10.2387085,
-            "Y": 20.185999,
-            "Z": -138.2315
-          },
-          "TerritoryId": 819,
+          "Position": [10.2387085, 20.185999, -138.2315],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1028438,
-          "Position": {
-            "X": -55.832825,
-            "Y": 3.9998174,
-            "Z": 198.6571
-          },
-          "TerritoryId": 819,
+          "Position": [-55.832825, 3.9998174, 198.6571],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1027234,
-          "Position": {
-            "X": 10.2387085,
-            "Y": 20.185999,
-            "Z": -138.2315
-          },
-          "TerritoryId": 819,
+          "Position": [10.2387085, 20.185999, -138.2315],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -57,21 +45,16 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Steps": [
         {
-          "TerritoryId": 819,
           "InteractionType": "Craft",
           "ItemId": 27245,
           "ItemCount": 1
         },
         {
           "DataId": 1027234,
-          "Position": {
-            "X": 10.2387085,
-            "Y": 20.185999,
-            "Z": -138.2315
-          },
-          "TerritoryId": 819,
+          "Position": [10.2387085, 20.185999, -138.2315],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,32 +1,24 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "croizat",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1006717,
-          "Position": {
-            "X": -236.2555,
-            "Y": 51.499146,
-            "Z": -193.13348
-          },
-          "TerritoryId": 152,
+          "Position": [-236.2555, 51.499146, -193.13348],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "Position": {
-            "X": -9.741034,
-            "Y": 18.766914,
-            "Z": -0.8730635
-          },
-          "TerritoryId": 152,
+          "Position": [-9.741034, 18.766914, -0.8730635],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -42,15 +34,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1006717,
-          "Position": {
-            "X": -236.2555,
-            "Y": 51.499146,
-            "Z": -193.13348
-          },
-          "TerritoryId": 152,
+          "Position": [-236.2555, 51.499146, -193.13348],
           "InteractionType": "CompleteQuest"
         }
       ]

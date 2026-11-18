@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1030500,
-          "Position": {
-            "X": 302.672,
-            "Y": 1.44958,
-            "Z": -217.281
-          },
-          "TerritoryId": 815,
+          "Position": [302.672, 1.44958, -217.281],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1030500 (flea-bitten scavenger)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1030501,
-          "Position": {
-            "X": 369.636,
-            "Y": -10.4015,
-            "Z": -146.008
-          },
-          "TerritoryId": 815,
+          "Position": [369.636, -10.4015, -146.008],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1030501 (flea-bitten scavenger)"
         }
@@ -37,15 +29,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 2010130,
-          "Position": {
-            "X": 423.742,
-            "Y": -23.9445,
-            "Z": -14.8134
-          },
-          "TerritoryId": 815,
+          "Position": [423.742, -23.9445, -14.8134],
           "InteractionType": "UseItem",
           "GroundTarget": true,
           "ItemId": 2002619,
@@ -55,15 +43,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 2010129,
-          "Position": {
-            "X": 425.853,
-            "Y": -24.0622,
-            "Z": -15.4388
-          },
-          "TerritoryId": 815,
+          "Position": [425.853, -24.0622, -15.4388],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
           "ItemId": 2002620,
@@ -71,12 +55,7 @@
         },
         {
           "DataId": 2010127,
-          "Position": {
-            "X": 421.959,
-            "Y": -23.9277,
-            "Z": -17.4994
-          },
-          "TerritoryId": 815,
+          "Position": [421.959, -23.9277, -17.4994],
           "InteractionType": "Interact",
           "ItemId": 2002620,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
@@ -84,12 +63,7 @@
         },
         {
           "DataId": 2010126,
-          "Position": {
-            "X": 420.256,
-            "Y": -23.9158,
-            "Z": -14.5775
-          },
-          "TerritoryId": 815,
+          "Position": [420.256, -23.9158, -14.5775],
           "InteractionType": "Interact",
           "ItemId": 2002620,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
@@ -97,12 +71,7 @@
         },
         {
           "DataId": 2010128,
-          "Position": {
-            "X": 423.87,
-            "Y": -23.7693,
-            "Z": -12.0355
-          },
-          "TerritoryId": 815,
+          "Position": [423.87, -23.7693, -12.0355],
           "InteractionType": "Interact",
           "ItemId": 2002620,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
@@ -112,15 +81,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1030501,
-          "Position": {
-            "X": 369.636,
-            "Y": -10.4015,
-            "Z": -146.008
-          },
-          "TerritoryId": 815,
+          "Position": [369.636, -10.4015, -146.008],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1030501 (flea-bitten scavenger); hands over ITEM1=2002620"
         }
@@ -128,15 +93,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1030502,
-          "Position": {
-            "X": 191.953,
-            "Y": 7.15583,
-            "Z": -275.526
-          },
-          "TerritoryId": 815,
+          "Position": [191.953, 7.15583, -275.526],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1030502 (flea-bitten scavenger)"
         }

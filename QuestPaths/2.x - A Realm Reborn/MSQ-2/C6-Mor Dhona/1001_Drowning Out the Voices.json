@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006535,
-          "Position": {
-            "X": 26.901611,
-            "Y": 20.543928,
-            "Z": -687.4037
-          },
-          "TerritoryId": 156,
+          "Position": [26.901611, 20.543928, -687.4037],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "$": "'Invalid target' messages can just be bad positioning?",
       "Steps": [
         {
-          "Position": {
-            "X": -148.50606,
-            "Y": -0.6686005,
-            "Z": -615.3246
-          },
-          "TerritoryId": 156,
+          "Position": [-148.50606, -0.6686005, -615.3246],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -38,12 +30,7 @@
         },
         {
           "DataId": 2002232,
-          "Position": {
-            "X": -146.92914,
-            "Y": 0.47296143,
-            "Z": -616.0525
-          },
-          "TerritoryId": 156,
+          "Position": [-146.92914, 0.47296143, -616.0525],
           "InteractionType": "Combat",
           "DelaySecondsAtStart": 2,
           "EnemySpawnType": "AfterItemUse",
@@ -56,24 +43,14 @@
         },
         {
           "DataId": 2002233,
-          "Position": {
-            "X": -202.07526,
-            "Y": 3.8909912,
-            "Z": -625.90985
-          },
-          "TerritoryId": 156,
+          "Position": [-202.07526, 3.8909912, -625.90985],
           "InteractionType": "UseItem",
           "ItemId": 2000766,
           "$": "QW: 32 16 1 16 0 80",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": {
-            "X": -219.34567,
-            "Y": 4.551038,
-            "Z": -637.8296
-          },
-          "TerritoryId": 156,
+          "Position": [-219.34567, 4.551038, -637.8296],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -83,24 +60,14 @@
         },
         {
           "DataId": 2002234,
-          "Position": {
-            "X": -216.81549,
-            "Y": 5.6915283,
-            "Z": -637.4762
-          },
-          "TerritoryId": 156,
+          "Position": [-216.81549, 5.6915283, -637.4762],
           "InteractionType": "UseItem",
           "ItemId": 2000766,
           "$": "48 17 1 16 0 88",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
         },
         {
-          "Position": {
-            "X": -196.89899,
-            "Y": 5.426553,
-            "Z": -658.71454
-          },
-          "TerritoryId": 156,
+          "Position": [-196.89899, 5.426553, -658.71454],
           "InteractionType": "WalkTo",
           "Comment": "Avoids pit",
           "SkipConditions": {
@@ -110,12 +77,7 @@
           }
         },
         {
-          "Position": {
-            "X": -170.45108,
-            "Y": 3.23747,
-            "Z": -656.8099
-          },
-          "TerritoryId": 156,
+          "Position": [-170.45108, 3.23747, -656.8099],
           "InteractionType": "WalkTo",
           "Comment": "Move into LOS",
           "SkipConditions": {
@@ -126,12 +88,7 @@
         },
         {
           "DataId": 2002230,
-          "Position": {
-            "X": -171.52673,
-            "Y": 4.0131226,
-            "Z": -655.787
-          },
-          "TerritoryId": 156,
+          "Position": [-171.52673, 4.0131226, -655.787],
           "InteractionType": "Combat",
           "DelaySecondsAtStart": 2,
           "EnemySpawnType": "AfterItemUse",
@@ -143,23 +100,13 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
-          "Position": {
-            "X": -175.24794,
-            "Y": 10.096513,
-            "Z": -605.4419
-          },
-          "TerritoryId": 156,
+          "Position": [-175.24794, 10.096513, -605.4419],
           "InteractionType": "WalkTo",
           "$": "Camp Revenant's Toll (after jump)"
         },
         {
           "DataId": 2002231,
-          "Position": {
-            "X": -174.91425,
-            "Y": 10.757568,
-            "Z": -603.8148
-          },
-          "TerritoryId": 156,
+          "Position": [-174.91425, 10.757568, -603.8148],
           "InteractionType": "UseItem",
           "ItemId": 2000766,
           "DelaySecondsAtStart": 2
@@ -168,15 +115,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006535,
-          "Position": {
-            "X": 26.901611,
-            "Y": 20.543928,
-            "Z": -687.4037
-          },
-          "TerritoryId": 156,
+          "Position": [26.901611, 20.543928, -687.4037],
           "InteractionType": "CompleteQuest"
         }
       ]

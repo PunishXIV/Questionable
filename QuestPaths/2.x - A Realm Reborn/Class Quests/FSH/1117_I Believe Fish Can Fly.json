@@ -1,52 +1,40 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Raitono",
   "Comment": "This fish prefers Blizzard or Snow weather.\nBest chances between 08:00-14:00 ET",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1000857,
-          "Position": {
-            "X": -165.27,
-            "Y": 5.23383,
-            "Z": 164.294
-          },
-          "TerritoryId": 129,
+          "Position": [-165.27, 5.23383, 164.294],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "Comment": "Speak with Sybell",
           "DataId": 1003629,
-          "Position": {
-            "X": -171.89,
-            "Y": 4,
-            "Z": 175.33
-          },
-          "TerritoryId": 129,
+          "Position": [-171.89, 4, 175.33],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 129,
       "Steps": [
         {
           "Comment": "Purchase bait",
           "DataId": 1003254,
-          "Position": {
-            "X": -246.52553,
-            "Y": 16.2,
-            "Z": 39.870853
-          },
-          "TerritoryId": 129,
+          "Position": [-246.52553, 16.2, 39.870853],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -65,11 +53,7 @@
         {
           "Comment": "Speak with Firminnant at Whitebrim Front",
           "DataId": 1006804,
-          "Position": {
-            "X": -387.618,
-            "Y": 208.528,
-            "Z": -257.508
-          },
+          "Position": [-387.618, 208.528, -257.508],
           "TerritoryId": 155,
           "InteractionType": "Interact"
         }
@@ -77,19 +61,14 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": -378.0664,
-            "Y": 197.74948,
-            "Z": -324.8373
-          },
-          "TerritoryId": 155,
+          "Position": [-378.0664, 197.74948, -324.8373],
           "InteractionType": "WalkTo"
         },
         {
           "Comment": "Fish for 5x Cloud Cutter\nThis fish prefers Blizzard or Snow weather.\nBest chances between 08:00-14:00 ET",
-          "TerritoryId": 155,
           "InteractionType": "Fish",
           "ItemsToGather": [
             {
@@ -101,11 +80,7 @@
         {
           "Comment": "Deliver Cloud Cutters to Sisipu",
           "DataId": 1000857,
-          "Position": {
-            "X": -165.27,
-            "Y": 5.23383,
-            "Z": 164.294
-          },
+          "Position": [-165.27, 5.23383, 164.294],
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1118

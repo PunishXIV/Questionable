@@ -1,39 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1006241,
-          "Position": {
-            "X": 17.349426,
-            "Y": -44.86564,
-            "Z": 262.745
-          },
-          "TerritoryId": 154,
+          "Position": [17.349426, -44.86564, 262.745],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "TerritoryId": 154,
           "InteractionType": "AttuneAetheryte",
           "StopDistance": 5,
           "Aetheryte": "North Shroud - Fallgourd Float"
         },
         {
-          "Position": {
-            "X": -276.81464,
-            "Y": -56.335888,
-            "Z": 302.93182
-          },
-          "TerritoryId": 154,
+          "Position": [-276.81464, -56.335888, 302.93182],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -47,15 +38,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1006241,
-          "Position": {
-            "X": 17.349426,
-            "Y": -44.86564,
-            "Z": 262.745
-          },
-          "TerritoryId": 154,
+          "Position": [17.349426, -44.86564, 262.745],
           "InteractionType": "CompleteQuest"
         }
       ]

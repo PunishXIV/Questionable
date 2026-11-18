@@ -1,29 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1027230,
-          "Position": {
-            "X": 117.997925,
-            "Y": 14.649025,
-            "Z": 7.156433
-          },
-          "TerritoryId": 819,
+          "Position": [117.997925, 14.649025, 7.156433],
           "InteractionType": "Interact",
           "TargetTerritoryId": 844
         },
         {
           "DataId": 1028923,
-          "Position": {
-            "X": -0.015319824,
-            "Y": -1.0530548E-13,
-            "Z": -6.0273438
-          },
+          "Position": [-0.015319824, -1.0530548E-13, -6.0273438],
           "TerritoryId": 844,
           "InteractionType": "AcceptQuest"
         }
@@ -31,41 +23,28 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1027265,
-          "Position": {
-            "X": 55.868057,
-            "Y": 36.197685,
-            "Z": -175.88983
-          },
-          "TerritoryId": 819,
+          "Position": [55.868057, 36.197685, -175.88983],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179721
         },
         {
           "DataId": 1027854,
-          "Position": {
-            "X": 40.57373,
-            "Y": 36.197685,
-            "Z": -160.23505
-          },
-          "TerritoryId": 819,
+          "Position": [40.57373, 36.197685, -160.23505],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1027854,
-          "Position": {
-            "X": 40.57373,
-            "Y": 36.197685,
-            "Z": -160.23505
-          },
-          "TerritoryId": 819,
+          "Position": [40.57373, 36.197685, -160.23505],
           "InteractionType": "Interact"
         }
       ]
@@ -75,71 +54,50 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1028961,
-          "Position": {
-            "X": 662.50085,
-            "Y": -48.533764,
-            "Z": -652.8573
-          },
-          "TerritoryId": 815,
+          "Position": [662.50085, -48.533764, -652.8573],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 2010044,
-          "Position": {
-            "X": 446.0669,
-            "Y": -60.56305,
-            "Z": -523.7049
-          },
-          "TerritoryId": 815,
+          "Position": [446.0669, -60.56305, -523.7049],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818253
         },
         {
           "DataId": 1028962,
-          "Position": {
-            "X": 477.71423,
-            "Y": -50.54957,
-            "Z": -509.88025
-          },
-          "TerritoryId": 815,
+          "Position": [477.71423, -50.54957, -509.88025],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 2009842,
-          "Position": {
-            "X": 484.2754,
-            "Y": -51.95703,
-            "Z": -512.50476
-          },
-          "TerritoryId": 815,
+          "Position": [484.2754, -51.95703, -512.50476],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1028963,
-          "Position": {
-            "X": 327.0465,
-            "Y": 1.4685787,
-            "Z": -296.4676
-          },
-          "TerritoryId": 815,
+          "Position": [327.0465, 1.4685787, -296.4676],
           "InteractionType": "CompleteQuest"
         }
       ]

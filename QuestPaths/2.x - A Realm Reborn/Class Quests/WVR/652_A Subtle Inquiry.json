@@ -1,45 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Woolen Tights HQ\nAutocraft requires:\n 2x Undyed Woolen Cloth,\n 1x Woolen Yarn",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1003818,
-          "Position": {
-            "X": 157.36621,
-            "Y": 7.7920074,
-            "Z": 98.924194
-          },
-          "TerritoryId": 131,
+          "Position": [157.36621, 7.7920074, 98.924194],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1003918,
-          "Position": {
-            "X": 2.0598755,
-            "Y": 15.000007,
-            "Z": 6.8207397
-          },
-          "TerritoryId": 131,
+          "Position": [2.0598755, 15.000007, 6.8207397],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 3413,
           "ItemCount": 1,
           "SkipConditions": {
@@ -52,12 +44,7 @@
         },
         {
           "DataId": 1003818,
-          "Position": {
-            "X": 157.36621,
-            "Y": 7.7920074,
-            "Z": 98.924194
-          },
-          "TerritoryId": 131,
+          "Position": [157.36621, 7.7920074, 98.924194],
           "InteractionType": "CompleteQuest"
         }
       ]

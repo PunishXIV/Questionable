@@ -1,18 +1,14 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -492.96475,
-            "Y": 20.999884,
-            "Z": -380.82272
-          },
-          "TerritoryId": 140,
+          "Position": [-492.96475, 20.999884, -380.82272],
           "InteractionType": "WalkTo",
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": {
@@ -23,12 +19,7 @@
         },
         {
           "DataId": 2001711,
-          "Position": {
-            "X": -480.9181,
-            "Y": 18.00103,
-            "Z": -386.862
-          },
-          "TerritoryId": 140,
+          "Position": [-480.9181, 18.00103, -386.862],
           "InteractionType": "Interact",
           "TargetTerritoryId": 212,
           "SkipConditions": {
@@ -39,11 +30,7 @@
         },
         {
           "DataId": 1007478,
-          "Position": {
-            "X": -2.822998,
-            "Y": -3.0000014,
-            "Z": -56.229553
-          },
+          "Position": [-2.822998, -3.0000014, -56.229553],
           "TerritoryId": 212,
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest"
@@ -52,39 +39,31 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006444,
-          "Position": {
-            "X": -432.9748,
-            "Y": 233.47266,
-            "Z": -199.6643
-          },
-          "TerritoryId": 155,
+          "Position": [-432.9748, 233.47266, -199.6643],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1010054,
-          "Position": {
-            "X": -916.6552,
-            "Y": 229.3692,
-            "Z": -6.4240723
-          },
-          "TerritoryId": 155,
+          "Position": [-916.6552, 229.3692, -6.4240723],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "TerritoryId": 155,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 80,
@@ -96,52 +75,35 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006444,
-          "Position": {
-            "X": -432.9748,
-            "Y": 233.47266,
-            "Z": -199.6643
-          },
-          "TerritoryId": 155,
+          "Position": [-432.9748, 233.47266, -199.6643],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -492.96475,
-            "Y": 20.999884,
-            "Z": -380.82272
-          },
-          "TerritoryId": 140,
+          "Position": [-492.96475, 20.999884, -380.82272],
           "InteractionType": "WalkTo",
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
         {
           "DataId": 2001711,
-          "Position": {
-            "X": -480.9181,
-            "Y": 18.00103,
-            "Z": -386.862
-          },
-          "TerritoryId": 140,
+          "Position": [-480.9181, 18.00103, -386.862],
           "InteractionType": "Interact",
           "TargetTerritoryId": 212,
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
         {
           "DataId": 1007478,
-          "Position": {
-            "X": -2.822998,
-            "Y": -3.0000014,
-            "Z": -56.229553
-          },
+          "Position": [-2.822998, -3.0000014, -56.229553],
           "TerritoryId": 212,
           "InteractionType": "CompleteQuest"
         }

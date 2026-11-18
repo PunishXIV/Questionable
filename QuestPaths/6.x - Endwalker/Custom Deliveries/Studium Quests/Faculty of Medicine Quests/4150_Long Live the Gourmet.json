@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039220,
-          "Position": {
-            "X": -287.15,
-            "Y": 21.846,
-            "Z": -150.752
-          },
-          "TerritoryId": 962,
+          "Position": [-287.15, 21.846, -150.752],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -28,15 +24,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039229,
-          "Position": {
-            "X": 172.586,
-            "Y": 5.76694,
-            "Z": 602.996
-          },
-          "TerritoryId": 957,
+          "Position": [172.586, 5.76694, 602.996],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1039229 (Debroye)"
         }
@@ -44,15 +36,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1039230,
-          "Position": {
-            "X": -12.849,
-            "Y": -2,
-            "Z": 89.7766
-          },
-          "TerritoryId": 963,
+          "Position": [-12.849, -2, 89.7766],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1039230 (Debroye)"
         }
@@ -60,15 +48,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1039231,
-          "Position": {
-            "X": 131.548,
-            "Y": 4.78412,
-            "Z": -164.207
-          },
-          "TerritoryId": 963,
+          "Position": [131.548, 4.78412, -164.207],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1039231 (apprentice alchemist)"
         }
@@ -76,15 +60,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1039232,
-          "Position": {
-            "X": 87.2466,
-            "Y": -24.6933,
-            "Z": -219.061
-          },
-          "TerritoryId": 963,
+          "Position": [87.2466, -24.6933, -219.061],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1039232 (amiable alchemist)"
         }
@@ -92,15 +72,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1039230,
-          "Position": {
-            "X": -13.850028,
-            "Y": 3.0150015,
-            "Z": -215.53165
-          },
-          "TerritoryId": 963,
+          "Position": [-13.850028, 3.0150015, -215.53165],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -115,20 +91,16 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 962,
       "Steps": [
         {
-          "TerritoryId": 962,
           "InteractionType": "Craft",
           "ItemId": 35844,
           "ItemCount": 1
         },
         {
           "DataId": 1039233,
-          "Position": {
-            "X": -9.61604,
-            "Y": 3.03,
-            "Z": -214.05
-          },
+          "Position": [-9.61604, 3.03, -214.05],
           "TerritoryId": 963,
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1039233 (Debroye); npc trade"
@@ -137,15 +109,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039220,
-          "Position": {
-            "X": -287.15,
-            "Y": 21.846,
-            "Z": -150.752
-          },
-          "TerritoryId": 962,
+          "Position": [-287.15, 21.846, -150.752],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1039220 (Debroye)"
         }

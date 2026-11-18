@@ -1,44 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1006193,
-          "Position": {
-            "X": -334.0658,
-            "Y": -0.81366825,
-            "Z": 148.91272
-          },
-          "TerritoryId": 139,
+          "Position": [-334.0658, -0.81366825, 148.91272],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1003586,
-          "Position": {
-            "X": -342.12262,
-            "Y": -1.0249884,
-            "Z": 111.46704
-          },
-          "TerritoryId": 139,
+          "Position": [-342.12262, -1.0249884, 111.46704],
           "InteractionType": "Interact",
           "TargetTerritoryId": 139
         },
         {
-          "Position": {
-            "X": 296.80457,
-            "Y": -2.532362,
-            "Z": 206.61223
-          },
-          "TerritoryId": 139,
+          "Position": [296.80457, -2.532362, 206.61223],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -47,12 +34,7 @@
           }
         },
         {
-          "Position": {
-            "X": 371.05414,
-            "Y": -3.4,
-            "Z": 126.733376
-          },
-          "TerritoryId": 139,
+          "Position": [371.05414, -3.4, 126.733376],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -61,33 +43,14 @@
           }
         },
         {
-          "TerritoryId": 139,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Upper La Noscea - Camp Bronze Lake"
         },
         {
           "DataId": 1002716,
-          "Position": {
-            "X": 413.35156,
-            "Y": 4.109605,
-            "Z": 88.7312
-          },
-          "TerritoryId": 139,
+          "Position": [413.35156, 4.109605, 88.7312],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179674
-        },
-        {
-          "Position": {
-            "X": 716.7476,
-            "Y": 0.4639219,
-            "Z": 215.16513
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 137,
-          "SkipConditions": {
-            "StepIf": { "AetheryteUnlocked": "Eastern La Noscea - Wineport" }
-          }
         },
         {
           "TerritoryId": 137,
@@ -99,22 +62,14 @@
         },
         {
           "DataId": 1002717,
-          "Position": {
-            "X": 12.924377,
-            "Y": 69.64043,
-            "Z": 21.316772
-          },
+          "Position": [12.924377, 69.64043, 21.316772],
           "TerritoryId": 137,
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179673
         },
         {
           "DataId": 1003589,
-          "Position": {
-            "X": 20.462341,
-            "Y": 34.07887,
-            "Z": 222.156
-          },
+          "Position": [20.462341, 34.07887, 222.156],
           "TerritoryId": 137,
           "InteractionType": "Interact",
           "TargetTerritoryId": 137,
@@ -133,22 +88,14 @@
         },
         {
           "DataId": 1002718,
-          "Position": {
-            "X": 423.72778,
-            "Y": 18.523344,
-            "Z": 448.56934
-          },
+          "Position": [423.72778, 18.523344, 448.56934],
           "TerritoryId": 137,
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179677
         },
         {
           "DataId": 1000590,
-          "Position": {
-            "X": -165.9419,
-            "Y": 9.869227,
-            "Z": -81.34589
-          },
+          "Position": [-165.9419, 9.869227, -81.34589],
           "TerritoryId": 153,
           "InteractionType": "CompleteQuest"
         }

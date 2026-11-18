@@ -1,94 +1,61 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": ["plogon_enjoyer","alydev"],
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024217,
-          "Position": {
-            "X": 391.94043,
-            "Y": -119.58932,
-            "Z": -235.04329
-          },
-          "TerritoryId": 613,
+          "Position": [391.94043, -119.58932, -235.04329],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 2009130,
-          "Position": {
-            "X": 14.572327,
-            "Y": -0.07635498,
-            "Z": -352.86487
-          },
-          "TerritoryId": 613,
+          "Position": [14.572327, -0.07635498, -352.86487],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null, [{"Low": 5}, {"Low": 6}, {"Low": 7}, {"Low": 8}], null, null, null, null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 2009132,
-          "Position": {
-            "X": -48.69159,
-            "Y": -0.045776367,
-            "Z": -312.1844
-          },
-          "TerritoryId": 613,
+          "Position": [-48.69159, -0.045776367, -312.1844],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null, [{"Low": 3}, {"Low": 4}, {"Low": 7}, {"Low": 8}], null, null, null, null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
           "DataId": 2009129,
-          "Position": {
-            "X": 320.39355,
-            "Y": -0.07635498,
-            "Z": 2.7313232
-          },
-          "TerritoryId": 613,
+          "Position": [320.39355, -0.07635498, 2.7313232],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null, [{"Low": 1}, {"Low": 2}, {"Low": 3}, {"Low": 4}], null, null, null, null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 2009134,
-          "Position": {
-            "X": 284.99268,
-            "Y": -0.19836426,
-            "Z": -28.000305
-          },
-          "TerritoryId": 613,
+          "Position": [284.99268, -0.19836426, -28.000305],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null, [{"Low": 2}, {"Low": 4}, {"Low": 6}, {"Low": 8}], null, null, null, null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 4}]
         },
         {
           "DataId": 2009131,
-          "Position": {
-            "X": 90.13501,
-            "Y": -0.045776367,
-            "Z": 177.50818
-          },
-          "TerritoryId": 613,
+          "Position": [90.13501, -0.045776367, 177.50818],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null, [{"Low": 1}, {"Low": 2}, {"Low": 5}, {"Low": 6}], null, null, null, null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "DataId": 2009133,
-          "Position": {
-            "X": 23.941406,
-            "Y": -0.19836426,
-            "Z": 192.70618
-          },
-          "TerritoryId": 613,
+          "Position": [23.941406, -0.19836426, 192.70618],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null, [{"Low": 1}, {"Low": 3}, {"Low": 5}, {"Low": 7}], null, null, null, null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
@@ -97,15 +64,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024217,
-          "Position": {
-            "X": 391.94043,
-            "Y": -119.58932,
-            "Z": -235.04329
-          },
-          "TerritoryId": 613,
+          "Position": [391.94043, -119.58932, -235.04329],
           "InteractionType": "CompleteQuest"
         }
       ]

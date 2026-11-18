@@ -1,60 +1,48 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Aurum Regis Cylinder // Autocraft requires: 1x Aurum Regis Nugget, 1x Cloud Mica Whetstone",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1012528,
-          "Position": {
-            "X": -57.41974,
-            "Y": 18.504038,
-            "Z": 66.544556
-          },
-          "TerritoryId": 131,
+          "Position": [-57.41974, 18.504038, 66.544556],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
+          "Position": [-25.162231, 12.199998, 110.795654],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1012536,
-          "Position": {
-            "X": -38.68164,
-            "Y": 13.499997,
-            "Z": 119.21863
-          },
-          "TerritoryId": 131,
+          "Position": [-38.68164, 13.499997, 119.21863],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 131,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 131,
           "ItemId": 12644,
           "ItemCount": 1,
           "SkipConditions": {
@@ -67,12 +55,7 @@
         },
         {
           "DataId": 1004093,
-          "Position": {
-            "X": -25.162231,
-            "Y": 12.199998,
-            "Z": 110.795654
-          },
-          "TerritoryId": 131,
+          "Position": [-25.162231, 12.199998, 110.795654],
           "InteractionType": "Interact",
           "AllowHighQuality": true
         }
@@ -80,15 +63,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1012528,
-          "Position": {
-            "X": -57.41974,
-            "Y": 18.504038,
-            "Z": 66.544556
-          },
-          "TerritoryId": 131,
+          "Position": [-57.41974, 18.504038, 66.544556],
           "InteractionType": "CompleteQuest"
         }
       ]

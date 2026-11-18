@@ -1,87 +1,72 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "TerritoryId": 135,
           "InteractionType": "EquipItem",
           "ItemId": 47470,
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 135,
           "InteractionType": "CreateGearset",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 135,
           "InteractionType": "UseItem",
           "ItemId": 52649,
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 135,
           "InteractionType": "EquipItem",
           "ItemId": 47472,
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 135,
           "InteractionType": "EquipItem",
           "ItemId": 50727,
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 135,
           "InteractionType": "EquipItem",
           "ItemId": 50728,
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 135,
           "InteractionType": "EquipItem",
           "ItemId": 50729,
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 135,
           "InteractionType": "EquipItem",
           "ItemId": 50730,
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 135,
           "InteractionType": "EquipItem",
           "ItemId": 50731,
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 135,
           "InteractionType": "UseItem",
           "ItemId": 49805,
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 135,
           "InteractionType": "EquipRecommended",
           "SkipConditions": {"StepIf": {"Item": {"NotInInventory": true}, "ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 135,
           "InteractionType": "UpdateGearset",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1059767,
-          "Position": {
-            "X": -302.822,
-            "Y": 63.4842,
-            "Z": -257.193
-          },
+          "Position": [-302.822, 63.4842, -257.193],
           "TerritoryId": 148,
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1059767 (J'yhuh Tia)"
@@ -90,15 +75,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1059322,
-          "Position": {
-            "X": 121.773,
-            "Y": -6.99881,
-            "Z": -86.3509
-          },
-          "TerritoryId": 148,
+          "Position": [121.773, -6.99881, -86.3509],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1059322 (wary Wailer)"
         }
@@ -106,15 +87,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1059323,
-          "Position": {
-            "X": 119.923,
-            "Y": -7.00342,
-            "Z": -87.4736
-          },
-          "TerritoryId": 148,
+          "Position": [119.923, -7.00342, -87.4736],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
         }
@@ -122,16 +99,12 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 148,
       "Steps": [
         {
           "Comment": "Assign Cu Sith to first battlehorn, summon, then interact with J'yhuh Tia",
           "DataId": 1059323,
-          "Position": {
-            "X": 119.923,
-            "Y": -7.00342,
-            "Z": -87.4736
-          },
-          "TerritoryId": 148,
+          "Position": [119.923, -7.00342, -87.4736],
           "InteractionType": "WaitForManualProgress",
           "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
         }
@@ -139,16 +112,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 148,
       "Steps": [
         {
           "Comment": "* Attack nearby Lv1 mobs with Smash Axe until level 2\n* Use Capture on a Ground Squirrel nearby\n* Travel to Middle La Noscea and use Capture on a Lost Lamb.\n* The next quest after this requires Lv16 to complete. You can reach this by capturing other nearby creatures, although on a non-preferred world you may need to do some grinding to be able to reach the minimum level to capture each one:\n - Pugil, Puk Hatchling, Bogy, Tiny Mandragora, Wounded Aurochs\n* Go through the cave to the south, capture:\n - Cave Bat, Wild Dodo, Galago, Nesting Buzzard, Rivertoad\n* On a preferred world, this will get you to Lv10. Return to Middle La Noscea, head north, and capture:\n - Megalocrab, Wespe\n* Return to Bentbranch Meadows, capture:\n - Roselet, Black Eft, Anole, Diremite, Treant Sapling\n* On a preferred world, you should be at or near Lv16. If you need more exp, travel to Horizon and capture:\n - Sabotender (near Ul'dah gate), Rusty Coblyn, Thickshell, Scaphite\n* Travel to Central Thanalan, capture:\n - Spriggan Graverobber\n* If you've reached Lv16, you may also want to travel to Aleport and capture:\n - Killer Mantis, Rothlyt Pelican\n* At this point you have 27/50 of the Bestiary complete and should be around Lv16-17.",
           "DataId": 1059323,
-          "Position": {
-            "X": 119.923,
-            "Y": -7.00342,
-            "Z": -87.4736
-          },
-          "TerritoryId": 148,
+          "Position": [119.923, -7.00342, -87.4736],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5492,
           "$": "auto: todo turn-in -> 1059323 (J'yhuh Tia)"

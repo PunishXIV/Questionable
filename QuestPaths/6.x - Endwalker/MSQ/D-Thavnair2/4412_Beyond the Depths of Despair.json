@@ -1,64 +1,48 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1039004,
-          "Position": {
-            "X": -158.80066,
-            "Y": 23.999973,
-            "Z": 112.291016
-          },
-          "TerritoryId": 963,
+          "Position": [-158.80066, 23.999973, 112.291016],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1039005,
-          "Position": {
-            "X": -207.7821,
-            "Y": 36,
-            "Z": 76.798584
-          },
-          "TerritoryId": 963,
+          "Position": [-207.7821, 36, 76.798584],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039007,
-          "Position": {
-            "X": 499.87024,
-            "Y": 51.57471,
-            "Z": -597.1924
-          },
-          "TerritoryId": 957,
+          "Position": [499.87024, 51.57471, -597.1924],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2012197,
-          "Position": {
-            "X": 454.06262,
-            "Y": 29.251465,
-            "Z": -491.3253
-          },
-          "TerritoryId": 957,
+          "Position": [454.06262, 29.251465, -491.3253],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -69,15 +53,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2012198,
-          "Position": {
-            "X": 391.07336,
-            "Y": 14.389221,
-            "Z": -444.29694
-          },
-          "TerritoryId": 957,
+          "Position": [391.07336, 14.389221, -444.29694],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -89,68 +69,44 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039010,
-          "Position": {
-            "X": 382.71155,
-            "Y": 3.1168795,
-            "Z": -270.4662
-          },
-          "TerritoryId": 957,
+          "Position": [382.71155, 3.1168795, -270.4662],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039014,
-          "Position": {
-            "X": 367.33044,
-            "Y": 3.1168795,
-            "Z": -247.6997
-          },
-          "TerritoryId": 957,
+          "Position": [367.33044, 3.1168795, -247.6997],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 1039015,
-          "Position": {
-            "X": 369.10046,
-            "Y": 3.1168795,
-            "Z": -247.39453
-          },
-          "TerritoryId": 957,
+          "Position": [369.10046, 3.1168795, -247.39453],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 1039017,
-          "Position": {
-            "X": 391.77527,
-            "Y": 3.3857868,
-            "Z": -207.75165
-          },
-          "TerritoryId": 957,
+          "Position": [391.77527, 3.3857868, -207.75165],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
-          "TerritoryId": 957,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Thavnair - Palaka's Stand"
         },
         {
           "DataId": 1039016,
-          "Position": {
-            "X": 438.22375,
-            "Y": 3.1179183,
-            "Z": -224.10931
-          },
-          "TerritoryId": 957,
+          "Position": [438.22375, 3.1179183, -224.10931],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         }
@@ -158,15 +114,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1039020,
-          "Position": {
-            "X": 430.8689,
-            "Y": 3.1168795,
-            "Z": -251.33142
-          },
-          "TerritoryId": 957,
+          "Position": [430.8689, 3.1168795, -251.33142],
           "InteractionType": "CompleteQuest"
         }
       ]

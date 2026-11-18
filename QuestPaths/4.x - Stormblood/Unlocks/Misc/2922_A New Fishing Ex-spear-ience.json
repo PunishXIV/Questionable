@@ -1,39 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 613,
       "Steps": [
         {
           "InteractionType": "SwitchClass",
-          "TargetClass": "Fisher",
-          "TerritoryId": 613
+          "TargetClass": "Fisher"
         },
         {
           "DataId": 1021362,
-          "Position": {
-            "X": 374.77686,
-            "Y": -119.99256,
-            "Z": -277.05804
-          },
-          "TerritoryId": 613,
+          "Position": [374.77686, -119.99256, -277.05804],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1023621,
-          "Position": {
-            "X": 294.1786,
-            "Y": -98.435974,
-            "Z": -413.35162
-          },
-          "TerritoryId": 613,
+          "Position": [294.1786, -98.435974, -413.35162],
           "InteractionType": "CompleteQuest"
         }
       ]

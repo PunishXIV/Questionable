@@ -1,79 +1,59 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1051712,
-          "Position": {
-            "X": 12.344482,
-            "Y": -14,
-            "Z": 96.17761
-          },
-          "TerritoryId": 1185,
+          "Position": [12.344482, -14, 96.17761],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 2014421,
-          "Position": {
-            "X": -65.72064,
-            "Y": 2.39563,
-            "Z": -400.22894
-          },
-          "TerritoryId": 1188,
+          "Position": [-65.72064, 2.39563, -400.22894],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051713,
-          "Position": {
-            "X": -67.88745,
-            "Y": 2.4000018,
-            "Z": -399.64905
-          },
-          "TerritoryId": 1188,
+          "Position": [-67.88745, 2.4000018, -399.64905],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051713,
-          "Position": {
-            "X": -67.88745,
-            "Y": 2.4000018,
-            "Z": -399.64905
-          },
-          "TerritoryId": 1188,
+          "Position": [-67.88745, 2.4000018, -399.64905],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051718,
-          "Position": {
-            "X": 62.210938,
-            "Y": 0.7218611,
-            "Z": -333.94366
-          },
-          "TerritoryId": 1188,
+          "Position": [62.210938, 0.7218611, -333.94366],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -87,15 +67,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051719,
-          "Position": {
-            "X": -42.923706,
-            "Y": 21.48239,
-            "Z": -88.76172
-          },
-          "TerritoryId": 1188,
+          "Position": [-42.923706, 21.48239, -88.76172],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -109,15 +85,11 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051720,
-          "Position": {
-            "X": -183.45923,
-            "Y": 0.39999998,
-            "Z": -73.74689
-          },
-          "TerritoryId": 1188,
+          "Position": [-183.45923, 0.39999998, -73.74689],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -131,29 +103,21 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051859,
-          "Position": {
-            "X": -73.411194,
-            "Y": 2.4000018,
-            "Z": -398.61145
-          },
-          "TerritoryId": 1188,
+          "Position": [-73.411194, 2.4000018, -398.61145],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1188,
       "Steps": [
         {
-          "Position": {
-            "X": 780.3438,
-            "Y": 13.823656,
-            "Z": -238.32625
-          },
-          "TerritoryId": 1188,
+          "Position": [780.3438, 13.823656, -238.32625],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -162,7 +126,6 @@
           }
         },
         {
-          "TerritoryId": 1188,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Kozama'uka - Dock Poga",
           "SkipConditions": {
@@ -173,12 +136,7 @@
         },
         {
           "DataId": 1051721,
-          "Position": {
-            "X": 737.5753,
-            "Y": 8.14118,
-            "Z": -278.0957
-          },
-          "TerritoryId": 1188,
+          "Position": [737.5753, 8.14118, -278.0957],
           "InteractionType": "CompleteQuest"
         }
       ]

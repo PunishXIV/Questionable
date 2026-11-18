@@ -1,35 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Raitono",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1013250,
-          "Position": {
-            "X": 100.358,
-            "Y": 15,
-            "Z": 24.3203
-          },
-          "TerritoryId": 418,
+          "Position": [100.358, 15, 24.3203],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
           "Comment": "Speak with Ansaulme at Falcon's Nest",
           "DataId": 1013252,
-          "Position": {
-            "X": 459.637,
-            "Y": 200.238,
-            "Z": 665.892
-          },
-          "TerritoryId": 397,
+          "Position": [459.637, 200.238, 665.892],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -43,15 +35,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1011228,
-          "Position": {
-            "X": 501.53958,
-            "Y": 212.58333,
-            "Z": 718.69556
-          },
-          "TerritoryId": 397,
+          "Position": [501.53958, 212.58333, 718.69556],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -69,12 +57,7 @@
         },
         {
           "Comment": "Catch 3x Icepicks",
-          "Position": {
-            "X": 270.45355,
-            "Y": 175.35352,
-            "Z": -176.7691
-          },
-          "TerritoryId": 397,
+          "Position": [270.45355, 175.35352, -176.7691],
           "InteractionType": "Fish",
           "ItemsToGather": [
             {
@@ -85,12 +68,7 @@
         },
         {
           "DataId": 1013252,
-          "Position": {
-            "X": 459.637,
-            "Y": 200.238,
-            "Z": 665.892
-          },
-          "TerritoryId": 397,
+          "Position": [459.637, 200.238, 665.892],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2087
         }

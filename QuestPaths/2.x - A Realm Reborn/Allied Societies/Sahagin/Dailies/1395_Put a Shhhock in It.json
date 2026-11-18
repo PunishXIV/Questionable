@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005939,
-          "Position": {
-              "X": -246.27802,
-              "Y": -41.834713,
-              "Z": 53.050713
-          },
-          "TerritoryId": 138,
+          "Position": [-246.27802, -41.834713, 53.050713],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 2003821,
-          "Position": {
-            "X": -242.8999,
-            "Y": -42.22433,
-            "Z": -216.83488
-          },
-          "TerritoryId": 138,
+          "Position": [-242.8999, -42.22433, -216.83488],
           "InteractionType": "UseItem",
           "ItemId": 2001264,
           "CompletionQuestVariablesFlags": [null,null,null,null,
@@ -38,12 +30,7 @@
         },
         {
           "DataId": 2003822,
-          "Position": {
-            "X": -224.68553,
-            "Y": -42.17016,
-            "Z": -233.9118
-          },
-          "TerritoryId": 138,
+          "Position": [-224.68553, -42.17016, -233.9118],
           "InteractionType": "UseItem",
           "ItemId": 2001264,
           "CompletionQuestVariablesFlags": [null,null,null,null,
@@ -53,12 +40,7 @@
         },
         {
           "DataId": 2003825,
-          "Position": {
-            "X": -214.86618,
-            "Y": -41.93481,
-            "Z": -218.10408
-          },
-          "TerritoryId": 138,
+          "Position": [-214.86618, -41.93481, -218.10408],
           "InteractionType": "UseItem",
           "ItemId": 2001264,
           "CompletionQuestVariablesFlags": [null,null,null,null,
@@ -68,12 +50,7 @@
         },
         {
           "DataId": 2003823,
-          "Position": {
-            "X": -192.86952,
-            "Y": -41.93693,
-            "Z": -238.99954
-          },
-          "TerritoryId": 138,
+          "Position": [-192.86952, -41.93693, -238.99954],
           "InteractionType": "UseItem",
           "ItemId": 2001264,
           "CompletionQuestVariablesFlags": [null,null,null,null,
@@ -83,12 +60,7 @@
         },
         {
           "DataId": 2003824,
-          "Position": {
-            "X": -181.80664,
-            "Y": -41.135357,
-            "Z": -216.36395
-          },
-          "TerritoryId": 138,
+          "Position": [-181.80664, -41.135357, -216.36395],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001264,
@@ -104,15 +76,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005939,
-          "Position": {
-              "X": -246.27802,
-              "Y": -41.834713,
-              "Z": 53.050713
-          },
-          "TerritoryId": 138,
+          "Position": [-246.27802, -41.834713, 53.050713],
           "InteractionType": "CompleteQuest"
         }
       ]

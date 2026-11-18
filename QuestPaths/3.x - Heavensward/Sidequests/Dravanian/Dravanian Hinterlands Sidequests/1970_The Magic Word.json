@@ -1,30 +1,22 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 2005336,
-          "Position": {
-            "X": -488.38312,
-            "Y": 137.788,
-            "Z": 740.4025
-          },
-          "TerritoryId": 399,
+          "Position": [-488.38312, 137.788, 740.4025],
           "InteractionType": "Interact",
           "TargetTerritoryId": 463,
           "SkipConditions": { "StepIf": { "InTerritory": [463] } }
         },
         {
           "DataId": 1012141,
-          "Position": {
-            "X": 35.7081,
-            "Y": 38.4297,
-            "Z": 13.0011
-          },
+          "Position": [35.7081, 38.4297, 13.0011],
           "TerritoryId": 463,
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1012141 (Saro Roggo)"
@@ -33,15 +25,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 463,
       "Steps": [
         {
           "DataId": 1012139,
-          "Position": {
-            "X": 15.7866,
-            "Y": 38.4297,
-            "Z": 18.1888
-          },
-          "TerritoryId": 463,
+          "Position": [15.7866, 38.4297, 18.1888],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1012139 (straightforward broom)"
         }
@@ -49,15 +37,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 463,
       "Steps": [
         {
           "DataId": 1012140,
-          "Position": {
-            "X": -3.43521,
-            "Y": 37.4297,
-            "Z": -6.60358
-          },
-          "TerritoryId": 463,
+          "Position": [-3.43521, 37.4297, -6.60358],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1012140 (statuesque broom)"
         }
@@ -65,15 +49,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 463,
       "Steps": [
         {
           "DataId": 1013711,
-          "Position": {
-            "X": -3.07311,
-            "Y": 38.4289,
-            "Z": 9.24209
-          },
-          "TerritoryId": 463,
+          "Position": [-3.07311, 38.4289, 9.24209],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1013711 (self-possessed broom)"
         }
@@ -81,15 +61,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 463,
       "Steps": [
         {
           "DataId": 1012141,
-          "Position": {
-            "X": 35.7081,
-            "Y": 38.4297,
-            "Z": 13.0011
-          },
-          "TerritoryId": 463,
+          "Position": [35.7081, 38.4297, 13.0011],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1012141 (Saro Roggo)"
         }
@@ -97,26 +73,18 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 463,
       "Steps": [
         {
           "DataId": 2005337,
-          "Position": {
-            "X": 7.736328,
-            "Y": 38.92566,
-            "Z": -51.010986
-          },
-          "TerritoryId": 463,
+          "Position": [7.736328, 38.92566, -51.010986],
           "InteractionType": "Interact",
           "TargetTerritoryId": 399,
           "SkipConditions": { "StepIf": { "InTerritory": [399, 478] } }
         },
         {
           "DataId": 2006080,
-          "Position": {
-            "X": -81.7397,
-            "Y": 152.541,
-            "Z": 747.877
-          },
+          "Position": [-81.7397, 152.541, 747.877],
           "TerritoryId": 399,
           "InteractionType": "Say",
           "ChatMessage": { "Key": "TEXT_HEAVNZ905_01970_SAY_000_000" }
@@ -125,38 +93,26 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1014289,
-          "Position": {
-            "X": -73.7929,
-            "Y": 152.727,
-            "Z": 747.916
-          },
-          "TerritoryId": 399,
+          "Position": [-73.7929, 152.727, 747.916],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 399,
       "Steps": [
         {
-          "Position": {
-            "X": -74.60284,
-            "Y": 152.42711,
-            "Z": 735.8858
-          },
-          "TerritoryId": 399,
+          "Position": [-74.60284, 152.42711, 735.8858],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
-                "Position": {
-                  "X": -73.7929,
-                  "Y": 152.727,
-                  "Z": 747.916
-                },
+                "Position": [-73.7929, 152.727, 747.916],
                 "TerritoryId": 399,
                 "MaximumDistance": 10
               }
@@ -165,23 +121,14 @@
         },
         {
           "DataId": 2005336,
-          "Position": {
-            "X": -488.38312,
-            "Y": 137.788,
-            "Z": 740.4025
-          },
-          "TerritoryId": 399,
+          "Position": [-488.38312, 137.788, 740.4025],
           "InteractionType": "Interact",
           "TargetTerritoryId": 463,
           "SkipConditions": { "StepIf": { "InTerritory": [463] } }
         },
         {
           "DataId": 1012141,
-          "Position": {
-            "X": 35.7081,
-            "Y": 38.4297,
-            "Z": 13.0011
-          },
+          "Position": [35.7081, 38.4297, 13.0011],
           "TerritoryId": 463,
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1012141 (Saro Roggo)"

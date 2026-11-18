@@ -1,39 +1,30 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Censored",
   "Disabled": true,
   "Comment": "This is a FATE Allied Society Quest\nThere are other FATEs that spawn in the\narea that may need to be cleared first\nbefore the correct FATE will spawn.\nThis quest requires manual interaction.",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "TerritoryId": 138,
           "InteractionType": "Instruction",
           "Comment": "This quest path is disabled. By continuing, you acknowledge that it is currently unsupported."
         },
         {
           "DataId": 1005939,
-          "Position": {
-              "X": -246.27802,
-              "Y": -41.834713,
-              "Z": 53.050713
-          },
-          "TerritoryId": 138,
+          "Position": [-246.27802, -41.834713, 53.050713],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-              "X": -184.87889,
-              "Y": -42.2752,
-              "Z": -253.50372
-          },
-          "TerritoryId": 138,
+          "Position": [-184.87889, -42.2752, -253.50372],
           "InteractionType": "Combat",
           "Comment": "FATE must complete to acquire Coral Band [7804]",
           "EnemySpawnType": "FateEnemies",
@@ -49,12 +40,7 @@
         },
         {
           "DataId": 1005939,
-          "Position": {
-              "X": -246.27802,
-              "Y": -41.834713,
-              "Z": 53.050713
-          },
-          "TerritoryId": 138,
+          "Position": [-246.27802, -41.834713, 53.050713],
           "InteractionType": "CompleteQuest"
         }
       ]

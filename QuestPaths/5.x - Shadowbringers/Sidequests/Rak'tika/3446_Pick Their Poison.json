@@ -1,27 +1,19 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": -310.43918,
-            "Y": 7.1430855,
-            "Z": 705.8183
-          },
-          "TerritoryId": 817,
+          "Position": [-310.43918, 7.1430855, 705.8183],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": -301.534,
-                  "Y": 8.68231,
-                  "Z": 711.299
-                },
+                "Position": [-301.534, 8.68231, 711.299],
                 "TerritoryId": 817,
                 "MaximumDistance": 10
               }
@@ -30,35 +22,22 @@
         },
         {
           "DataId": 1029024,
-          "Position": {
-            "X": -301.534,
-            "Y": 8.68231,
-            "Z": 711.299
-          },
-          "TerritoryId": 817,
+          "Position": [-301.534, 8.68231, 711.299],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": -310.43918,
-            "Y": 7.1430855,
-            "Z": 705.8183
-          },
-          "TerritoryId": 817,
+          "Position": [-310.43918, 7.1430855, 705.8183],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
-                "Position": {
-                  "X": -310.43918,
-                  "Y": 7.1430855,
-                  "Z": 705.8183
-                },
+                "Position": [-310.43918, 7.1430855, 705.8183],
                 "TerritoryId": 817,
                 "MaximumDistance": 20
               }
@@ -67,12 +46,7 @@
         },
         {
           "DataId": 2009929,
-          "Position": {
-            "X": -341.848,
-            "Y": 1.72418,
-            "Z": 577.264
-          },
-          "TerritoryId": 817,
+          "Position": [-341.848, 1.72418, 577.264],
           "InteractionType": "UseItem",
           "ItemId": 2002540,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
@@ -80,12 +54,7 @@
         },
         {
           "DataId": 2009930,
-          "Position": {
-            "X": -344.778,
-            "Y": 1.66321,
-            "Z": 547.722
-          },
-          "TerritoryId": 817,
+          "Position": [-344.778, 1.66321, 547.722],
           "InteractionType": "UseItem",
           "ItemId": 2002540,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
@@ -93,12 +62,7 @@
         },
         {
           "DataId": 2009931,
-          "Position": {
-            "X": -375.174,
-            "Y": 1.60217,
-            "Z": 510.735
-          },
-          "TerritoryId": 817,
+          "Position": [-375.174, 1.60217, 510.735],
           "InteractionType": "UseItem",
           "ItemId": 2002540,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
@@ -108,15 +72,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029881,
-          "Position": {
-            "X": -431.632,
-            "Y": 0.808655,
-            "Z": 628.015
-          },
-          "TerritoryId": 817,
+          "Position": [-431.632, 0.808655, 628.015],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1029881 (Karnes)"
         }
@@ -124,15 +84,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029883,
-          "Position": {
-            "X": -130.378,
-            "Y": -16.542,
-            "Z": 316.755
-          },
-          "TerritoryId": 817,
+          "Position": [-130.378, -16.542, 316.755],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1029883 (Karnes)"
         }

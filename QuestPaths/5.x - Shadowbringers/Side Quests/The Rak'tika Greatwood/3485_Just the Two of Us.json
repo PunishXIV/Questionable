@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Saputello",
   "$": "Authored with LLM assistance, changes must be reviewed and owned by a human.\nInitial version reviewed and owned by @qianzhouyi2",
   "LastChecked": {
@@ -9,63 +9,41 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": 462.96976,
-            "Y": 17.897255,
-            "Z": -48.859463
-          },
-          "TerritoryId": 817,
+          "Position": [462.96976, 17.897255, -48.859463],
           "InteractionType": "None"
         },
         {
           "DataId": 1031405,
-          "Position": {
-            "X": 456.9314,
-            "Y": 18.978712,
-            "Z": -73.10602
-          },
-          "TerritoryId": 817,
+          "Position": [456.9314, 18.978712, -73.10602],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031406,
-          "Position": {
-            "X": 39.2919,
-            "Y": 8.4,
-            "Z": 365.316
-          },
-          "TerritoryId": 817,
+          "Position": [39.2919, 8.4, 365.316],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": 462.96976,
-            "Y": 17.897255,
-            "Z": -48.859463
-          },
-          "TerritoryId": 817,
+          "Position": [462.96976, 17.897255, -48.859463],
           "InteractionType": "None"
         },
         {
           "DataId": 1031405,
-          "Position": {
-            "X": 456.9314,
-            "Y": 18.978712,
-            "Z": -73.10602
-          },
-          "TerritoryId": 817,
+          "Position": [456.9314, 18.978712, -73.10602],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

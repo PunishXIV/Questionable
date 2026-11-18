@@ -1,54 +1,37 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "ShermTank", "Date": "2026-07-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 146,
       "Steps": [
         {
           "$": "Walk to outside of building first - only needed if you have flying",
-          "Position": {
-            "X": -346.46524,
-            "Y": 8.5170555,
-            "Z": 420.88474
-          },
-          "TerritoryId": 146,
+          "Position": [-346.46524, 8.5170555, 420.88474],
           "InteractionType": "WalkTo",
           "SkipConditions": { "StepIf": { "Flying": "Locked" } }
         },
         {
           "DataId": 1006288,
-          "Position": {
-            "X": -361.40997,
-            "Y": 8.46532,
-            "Z": 426.13855
-          },
-          "TerritoryId": 146,
+          "Position": [-361.40997, 8.46532, 426.13855],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "$": "Walk out of building, if in it",
-          "Position": {
-            "X": -346.46524,
-            "Y": 8.5170555,
-            "Z": 420.88474
-          },
-          "TerritoryId": 146,
+          "Position": [-346.46524, 8.5170555, 420.88474],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
-                "Position": {
-                  "X": -346.46524,
-                  "Y": 8.5170555,
-                  "Z": 420.88474
-                },
+                "Position": [-346.46524, 8.5170555, 420.88474],
                 "TerritoryId": 146,
                 "MaximumDistance": 15
               }
@@ -56,12 +39,7 @@
           }
         },
         {
-          "Position": {
-            "X": -407.2645,
-            "Y": 7.170804,
-            "Z": 527.3589
-          },
-          "TerritoryId": 146,
+          "Position": [-407.2645, 7.170804, 527.3589],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [{ "DataId": 42, "MinimumKillCount": 6 }]
@@ -70,41 +48,28 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1006288,
-          "Position": {
-            "X": -361.409,
-            "Y": 8.46533,
-            "Z": 426.146
-          },
-          "TerritoryId": 146,
+          "Position": [-361.409, 8.46533, 426.146],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
           "$": "Walk to outside of building first - only needed if you have flying",
-          "Position": {
-            "X": -346.46524,
-            "Y": 8.5170555,
-            "Z": 420.88474
-          },
-          "TerritoryId": 146,
+          "Position": [-346.46524, 8.5170555, 420.88474],
           "InteractionType": "WalkTo",
           "SkipConditions": { "StepIf": { "Flying": "Locked" } }
         },
         {
           "DataId": 1006288,
-          "Position": {
-            "X": -361.40997,
-            "Y": 8.46532,
-            "Z": 426.13855
-          },
-          "TerritoryId": 146,
+          "Position": [-361.40997, 8.46532, 426.13855],
           "InteractionType": "CompleteQuest"
         }
       ]

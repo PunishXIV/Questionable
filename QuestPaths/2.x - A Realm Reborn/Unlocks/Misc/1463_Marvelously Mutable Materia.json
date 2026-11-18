@@ -1,35 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 141,
       "Steps": [
         {
           "$": "May need possible consideration for non-flying route to avoid a possible A-rank?",
           "DataId": 1001428,
-          "Position": {
-            "X": 116.80774,
-            "Y": 30.907087,
-            "Z": -359.63995
-          },
-          "TerritoryId": 141,
+          "Position": [116.80774, 30.907087, -359.63995],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1001425,
-          "Position": {
-            "X": 115.12927,
-            "Y": 31.876099,
-            "Z": -392.2027
-          },
-          "TerritoryId": 141,
+          "Position": [115.12927, 31.876099, -392.2027],
           "InteractionType": "CompleteQuest"
         }
       ]

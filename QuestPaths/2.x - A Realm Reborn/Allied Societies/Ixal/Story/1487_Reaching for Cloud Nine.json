@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": ["liza", "ShermTank"],
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1009199,
-          "Position": {
-            "X": 149.43152,
-            "Y": -18.140299,
-            "Z": 99.22937
-          },
-          "TerritoryId": 154,
+          "Position": [149.43152, -18.140299, 99.22937],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -27,48 +23,39 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1009594,
-          "Position": {
-            "X": -22.568176,
-            "Y": -48.098206,
-            "Z": 289.66187
-          },
-          "TerritoryId": 154,
+          "Position": [-22.568176, -48.098206, 289.66187],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1009218,
-          "Position": {
-            "X": -4.264094,
-            "Y": -40.94998,
-            "Z": 178.43575
-          },
-          "TerritoryId": 154,
+          "Position": [-4.264094, -40.94998, 178.43575],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 154,
       "Steps": [
         {
           "Comment": "Equip Ehcatl Wristgloves (required for ixal crafts)",
           "$": "Artisan should do this implicitly, but for unlocking the Ixal we just want to make sure",
           "InteractionType": "EquipItem",
-          "ItemId": 8568,
-          "TerritoryId": 154
+          "ItemId": 8568
         },
         {
           "Comment": "Talk to NPC to reapply facility status if it falls off.\nNote: You must not leave the zone.",
           "InteractionType": "Craft",
-          "TerritoryId": 154,
           "ItemId": 8129,
           "ItemCount": 1,
           "SkipConditions": {
@@ -81,12 +68,7 @@
         },
         {
           "DataId": 1009595,
-          "Position": {
-            "X": -2.8534546,
-            "Y": -40.94998,
-            "Z": 178.72888
-          },
-          "TerritoryId": 154,
+          "Position": [-2.8534546, -40.94998, 178.72888],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -100,30 +82,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1009199,
-          "Position": {
-            "X": 149.43152,
-            "Y": -18.140299,
-            "Z": 99.22937
-          },
-          "TerritoryId": 154,
+          "Position": [149.43152, -18.140299, 99.22937],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1009199,
-          "Position": {
-            "X": 149.43152,
-            "Y": -18.140299,
-            "Z": 99.22937
-          },
-          "TerritoryId": 154,
+          "Position": [149.43152, -18.140299, 99.22937],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

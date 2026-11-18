@@ -1,63 +1,47 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1046290,
-          "Position": {
-            "X": -114.091736,
-            "Y": 20,
-            "Z": 111.436646
-          },
-          "TerritoryId": 129,
+          "Position": [-114.091736, 20, 111.436646],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1047092,
-          "Position": {
-            "X": 297.38306,
-            "Y": -33.02986,
-            "Z": 284.99268
-          },
-          "TerritoryId": 138,
+          "Position": [297.38306, -33.02986, 284.99268],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1046297,
-          "Position": {
-            "X": 211.68835,
-            "Y": -25.006758,
-            "Z": 230.85376
-          },
-          "TerritoryId": 138,
+          "Position": [211.68835, -25.006758, 230.85376],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": 465.86716,
-            "Y": 11.231914,
-            "Z": 326.10486
-          },
-          "TerritoryId": 138,
+          "Position": [465.86716, 11.231914, 326.10486],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -69,30 +53,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1046302,
-          "Position": {
-            "X": 465.50684,
-            "Y": 11.444184,
-            "Z": 330.89185
-          },
-          "TerritoryId": 138,
+          "Position": [465.50684, 11.444184, 330.89185],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1046303,
-          "Position": {
-            "X": 462.39404,
-            "Y": 11.569952,
-            "Z": 329.57947
-          },
-          "TerritoryId": 138,
+          "Position": [462.39404, 11.569952, 329.57947],
           "InteractionType": "Action",
           "Action": "Esuna"
         }
@@ -100,15 +76,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1046290,
-          "Position": {
-            "X": -114.091736,
-            "Y": 20,
-            "Z": 111.436646
-          },
-          "TerritoryId": 129,
+          "Position": [-114.091736, 20, 111.436646],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4826
         }

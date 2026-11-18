@@ -1,58 +1,34 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "pot0to",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "TerritoryId": 153,
           "InteractionType": "EquipItem",
           "ItemId": 4546
         },
         {
-          "TerritoryId": 153,
           "InteractionType": "UpdateGearset"
         },
         {
           "DataId": 1006750,
-          "Position": {
-            "X": 16.464417,
-            "Y": 6.750492,
-            "Z": -7.3396606
-          },
-          "TerritoryId": 153,
+          "Position": [16.464417, 6.750492, -7.3396606],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "Position": {
-            "X": 570.48596,
-            "Y": 96.46625,
-            "Z": -526.59546
-          },
-          "TerritoryId": 135,
-          "TargetTerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Eastern La Noscea - Wineport"
-            }
-          }
-        },
-        {
           "DataId": 2002366,
-          "Position": {
-            "X": -143.0534,
-            "Y": 68.192505,
-            "Z": 586.1448
-          },
+          "Position": [-143.0534, 68.192505, 586.1448],
           "TerritoryId": 137,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
@@ -64,27 +40,19 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "Disabled": true,
           "Comment": "Pick up bard performance quest",
           "DataId": 1003063,
-          "Position": {
-            "X": -37.979797,
-            "Y": 7.439375,
-            "Z": -139.60486
-          },
-          "TerritoryId": 133,
+          "Position": [-37.979797, 7.439375, -139.60486],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 3019
         },
         {
           "DataId": 1006750,
-          "Position": {
-            "X": 16.464417,
-            "Y": 6.750492,
-            "Z": -7.3396606
-          },
+          "Position": [16.464417, 6.750492, -7.3396606],
           "TerritoryId": 153,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1087

@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030800,
-          "Position": {
-            "X": -396.68878,
-            "Y": 417.51825,
-            "Z": -657.9232
-          },
-          "TerritoryId": 814,
+          "Position": [-396.68878, 417.51825, -657.9232],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -32,30 +28,22 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030782,
-          "Position": {
-            "X": -191.18036,
-            "Y": 362.9854,
-            "Z": -292.83594
-          },
-          "TerritoryId": 814,
+          "Position": [-191.18036, 362.9854, -292.83594],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030784,
-          "Position": {
-            "X": -407.8584,
-            "Y": 362.59058,
-            "Z": -289.5705
-          },
-          "TerritoryId": 814,
+          "Position": [-407.8584, 362.59058, -289.5705],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -66,30 +54,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030784,
-          "Position": {
-            "X": -407.8584,
-            "Y": 362.59058,
-            "Z": -289.5705
-          },
-          "TerritoryId": 814,
+          "Position": [-407.8584, 362.59058, -289.5705],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1030786,
-          "Position": {
-            "X": -519.646,
-            "Y": 392.919,
-            "Z": -482.71918
-          },
-          "TerritoryId": 814,
+          "Position": [-519.646, 392.919, -482.71918],
           "InteractionType": "CompleteQuest",
           "Emote": "rally",
           "NextQuestId": 3559

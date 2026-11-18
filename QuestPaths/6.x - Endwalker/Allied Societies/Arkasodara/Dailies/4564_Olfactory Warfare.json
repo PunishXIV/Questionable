@@ -1,48 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
+          "Position": [-66.02582, 39.994705, 321.06494],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042302,
-          "Position": {
-            "X": -102.43384,
-            "Y": 40.00001,
-            "Z": 331.89893
-          },
-          "TerritoryId": 957,
+          "Position": [-102.43384, 40.00001, 331.89893],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
-          "Position": {
-            "X": 86.44138,
-            "Y": 38.836067,
-            "Z": 375.43958
-          },
-          "TerritoryId": 957,
+          "Position": [86.44138, 38.836067, 375.43958],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -52,23 +40,13 @@
         },
         {
           "DataId": 2012887,
-          "Position": {
-            "X": 90.71484,
-            "Y": 38.70359,
-            "Z": 377.7981
-          },
-          "TerritoryId": 957,
+          "Position": [90.71484, 38.70359, 377.7981],
           "InteractionType": "Action",
           "Action": "Yellow Gulal",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": {
-            "X": -73.42284,
-            "Y": 50.283375,
-            "Z": 165.20433
-          },
-          "TerritoryId": 957,
+          "Position": [-73.42284, 50.283375, 165.20433],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -78,23 +56,13 @@
         },
         {
           "DataId": 2012888,
-          "Position": {
-            "X": -74.2962,
-            "Y": 50.095337,
-            "Z": 160.41797
-          },
-          "TerritoryId": 957,
+          "Position": [-74.2962, 50.095337, 160.41797],
           "InteractionType": "Action",
           "Action": "Yellow Gulal",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": {
-            "X": -195.75089,
-            "Y": 35.536575,
-            "Z": 98.20429
-          },
-          "TerritoryId": 957,
+          "Position": [-195.75089, 35.536575, 98.20429],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -104,12 +72,7 @@
         },
         {
           "DataId": 2012889,
-          "Position": {
-            "X": -197.9859,
-            "Y": 36.209595,
-            "Z": 94.102295
-          },
-          "TerritoryId": 957,
+          "Position": [-197.9859, 36.209595, 94.102295],
           "InteractionType": "Action",
           "Action": "Yellow Gulal",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -118,15 +81,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042301,
-          "Position": {
-            "X": -66.02582,
-            "Y": 39.994705,
-            "Z": 321.06494
-          },
-          "TerritoryId": 957,
+          "Position": [-66.02582, 39.994705, 321.06494],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,75 +1,54 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1040401,
-          "Position": {
-            "X": 374.83777,
-            "Y": 79.691376,
-            "Z": 298.08484
-          },
-          "TerritoryId": 956,
+          "Position": [374.83777, 79.691376, 298.08484],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1041667,
-          "Position": {
-            "X": 443.96118,
-            "Y": 65.162,
-            "Z": -105.4552
-          },
-          "TerritoryId": 956,
+          "Position": [443.96118, 65.162, -105.4552],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 4480
         },
         {
           "DataId": 1039687,
-          "Position": {
-            "X": -18.875488,
-            "Y": -31.53043,
-            "Z": -76.98181
-          },
-          "TerritoryId": 956,
+          "Position": [-18.875488, -31.53043, -76.98181],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1040409,
-          "Position": {
-            "X": -99.076904,
-            "Y": -28.516306,
-            "Z": -60.013794
-          },
-          "TerritoryId": 956,
+          "Position": [-99.076904, -28.516306, -60.013794],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1040422,
-          "Position": {
-            "X": -37.125244,
-            "Y": -29.530075,
-            "Z": -169.14624
-          },
-          "TerritoryId": 956,
+          "Position": [-37.125244, -29.530075, -169.14624],
           "InteractionType": "Interact",
           "Comment": "Distracted Researcher",
           "CompletionQuestVariablesFlags": [null,null,null,null,2,null],
@@ -78,12 +57,7 @@
         },
         {
           "DataId": 1040416,
-          "Position": {
-            "X": 3.0670166,
-            "Y": -29.530357,
-            "Z": -126.17688
-          },
-          "TerritoryId": 956,
+          "Position": [3.0670166, -29.530357, -126.17688],
           "InteractionType": "Interact",
           "Comment": "Hyperventilating Engineer",
           "CompletionQuestVariablesFlags": [null,null,null,null,128,null],
@@ -92,12 +66,7 @@
         },
         {
           "DataId": 1040420,
-          "Position": {
-            "X": 40.634766,
-            "Y": -17.53038,
-            "Z": -69.62695
-          },
-          "TerritoryId": 956,
+          "Position": [40.634766, -17.53038, -69.62695],
           "InteractionType": "Interact",
           "Comment": "Harried Aetherologist",
           "CompletionQuestVariablesFlags": [null,null,null,null,8,null],
@@ -106,12 +75,7 @@
         },
         {
           "DataId": 1040421,
-          "Position": {
-            "X": 48.142212,
-            "Y": -31.53043,
-            "Z": -48.111755
-          },
-          "TerritoryId": 956,
+          "Position": [48.142212, -31.53043, -48.111755],
           "InteractionType": "Interact",
           "Comment": "Grimacing Naturalist",
           "CompletionQuestVariablesFlags": [null,null,null,null,4,null],
@@ -120,12 +84,7 @@
         },
         {
           "DataId": 1040417,
-          "Position": {
-            "X": 59.311768,
-            "Y": -29.530416,
-            "Z": -24.429688
-          },
-          "TerritoryId": 956,
+          "Position": [59.311768, -29.530416, -24.429688],
           "InteractionType": "Interact",
           "Comment": "Ponderous Mathematician",
           "CompletionQuestVariablesFlags": [null,null,null,null,64,null],
@@ -134,12 +93,7 @@
         },
         {
           "DataId": 1040418,
-          "Position": {
-            "X": -19.394226,
-            "Y": -29.530432,
-            "Z": 10.299805
-          },
-          "TerritoryId": 956,
+          "Position": [-19.394226, -29.530432, 10.299805],
           "InteractionType": "Interact",
           "Comment": "Despondent Engineer",
           "CompletionQuestVariablesFlags": [null,null,null,null,32,null],
@@ -148,12 +102,7 @@
         },
         {
           "DataId": 1040423,
-          "Position": {
-            "X": -22.232422,
-            "Y": -31.530355,
-            "Z": 38.071167
-          },
-          "TerritoryId": 956,
+          "Position": [-22.232422, -31.530355, 38.071167],
           "InteractionType": "Interact",
           "Comment": "Skeptical Researcher",
           "CompletionQuestVariablesFlags": [null,null,null,null,1,null],
@@ -162,12 +111,7 @@
         },
         {
           "DataId": 1040419,
-          "Position": {
-            "X": -15.762573,
-            "Y": -31.530432,
-            "Z": -51.59082
-          },
-          "TerritoryId": 956,
+          "Position": [-15.762573, -31.530432, -51.59082],
           "InteractionType": "Interact",
           "Comment": "Anxious Engineer",
           "CompletionQuestVariablesFlags": [null,null,null,null,16,null],
@@ -178,45 +122,33 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1040436,
-          "Position": {
-            "X": -78.26355,
-            "Y": -29.53,
-            "Z": -58.854065
-          },
-          "TerritoryId": 956,
+          "Position": [-78.26355, -29.53, -58.854065],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 2012220,
-          "Position": {
-            "X": -74.418274,
-            "Y": -29.58728,
-            "Z": -53.23877
-          },
-          "TerritoryId": 956,
+          "Position": [-74.418274, -29.58728, -53.23877],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1040436,
-          "Position": {
-            "X": -78.26355,
-            "Y": -29.53,
-            "Z": -58.854065
-          },
-          "TerritoryId": 956,
+          "Position": [-78.26355, -29.53, -58.854065],
           "InteractionType": "CompleteQuest"
         }
       ]

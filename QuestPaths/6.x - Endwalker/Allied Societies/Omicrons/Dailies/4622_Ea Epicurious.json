@@ -1,29 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 2013072,
-          "Position": {
-            "X": 456.65674,
-            "Y": 438.04077,
-            "Z": 310.2312
-          },
-          "TerritoryId": 960,
+          "Position": [456.65674, 438.04077, 310.2312],
           "InteractionType": "Interact",
           "TargetTerritoryId": 960,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
+                "Position": [314.9004, 481.99442, 148.11926],
                 "TerritoryId": 960,
                 "MaximumDistance": 26
               }
@@ -32,21 +24,16 @@
         },
         {
           "DataId": 1043417,
-          "Position": {
-            "X": 314.9004,
-            "Y": 481.99442,
-            "Z": 148.11926
-          },
-          "TerritoryId": 960,
+          "Position": [314.9004, 481.99442, 148.11926],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "TerritoryId": 960,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -59,7 +46,6 @@
           ]
         },
         {
-          "TerritoryId": 960,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -73,37 +59,24 @@
         },
         {
           "DataId": 1044064,
-          "Position": {
-            "X": 86.503296,
-            "Y": 269.08234,
-            "Z": -515.0683
-          },
-          "TerritoryId": 960,
+          "Position": [86.503296, 269.08234, -515.0683],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 2013072,
-          "Position": {
-            "X": 456.65674,
-            "Y": 438.04077,
-            "Z": 310.2312
-          },
-          "TerritoryId": 960,
+          "Position": [456.65674, 438.04077, 310.2312],
           "InteractionType": "Interact",
           "TargetTerritoryId": 960,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
+                "Position": [314.9004, 481.99442, 148.11926],
                 "TerritoryId": 960,
                 "MaximumDistance": 26
               }
@@ -112,12 +85,7 @@
         },
         {
           "DataId": 1043417,
-          "Position": {
-            "X": 314.9004,
-            "Y": 481.99442,
-            "Z": 148.11926
-          },
-          "TerritoryId": 960,
+          "Position": [314.9004, 481.99442, 148.11926],
           "InteractionType": "CompleteQuest"
         }
       ]

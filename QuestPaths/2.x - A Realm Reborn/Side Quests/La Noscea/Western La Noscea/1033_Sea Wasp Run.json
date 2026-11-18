@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1006626,
-          "Position": {
-            "X": 26.565918,
-            "Y": -10.28117,
-            "Z": -83.390564
-          },
-          "TerritoryId": 138,
+          "Position": [26.565918, -10.28117, -83.390564],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1006627,
-          "Position": {
-            "X": -97.0932,
-            "Y": -25.002052,
-            "Z": 66.72766
-          },
-          "TerritoryId": 138,
+          "Position": [-97.0932, -25.002052, 66.72766],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 1034,
           "SkipConditions": {
@@ -43,12 +35,7 @@
           }
         },
         {
-          "Position": {
-            "X": -350.9165,
-            "Y": -39.204124,
-            "Z": -221.48236
-          },
-          "TerritoryId": 138,
+          "Position": [-350.9165, -39.204124, -221.48236],
           "Comment": "7 mobs spawn at once, have to wait for respawn",
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
@@ -60,15 +47,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1006626,
-          "Position": {
-            "X": 26.565918,
-            "Y": -10.28117,
-            "Z": -83.390564
-          },
-          "TerritoryId": 138,
+          "Position": [26.565918, -10.28117, -83.390564],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,63 +1,35 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": ["liza", "Friendly"],
   "LastChecked": {"Username": "alydev", "Date": "2026-09-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000168,
-          "Position": {
-            "X": -75.48645,
-            "Y": -0.5013741,
-            "Z": -5.081299
-          },
-          "TerritoryId": 132,
+          "Position": [-75.48645, -0.5013741, -5.081299],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
           "Comment": "Clearing normal unlock quest",
           "DataId": 1005021,
-          "Position": {
-            "X": -472.49567,
-            "Y": 23.008797,
-            "Z": -355.00116
-          },
+          "Position": [-472.49567, 23.008797, -355.00116],
           "TerritoryId": 140,
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 1014,
           "SkipConditions": { "StepIf": { "QuestsCompleted": [1014] } }
         },
         {
-          "Position": {
-            "X": 123.6,
-            "Y": 31.6,
-            "Z": -768.8
-          },
-          "TerritoryId": 156,
+          "Position": [123.6, 31.6, -768.8],
           "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteLocked": "Mor Dhona",
-              "InTerritory": [155]
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": 129.3,
-            "Y": 31.71,
-            "Z": -774.87
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 155,
           "SkipConditions": {
             "StepIf": {
               "AetheryteLocked": "Mor Dhona",
@@ -67,11 +39,7 @@
         },
         {
           "DataId": 1007625,
-          "Position": {
-            "X": -354.1772,
-            "Y": 214.60808,
-            "Z": 692.65283
-          },
+          "Position": [-354.1772, 214.60808, 692.65283],
           "TerritoryId": 155,
           "InteractionType": "Interact"
         }
@@ -79,9 +47,9 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "TerritoryId": 155,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 5,
@@ -92,15 +60,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000168,
-          "Position": {
-            "X": -75.48645,
-            "Y": -0.5013741,
-            "Z": -5.081299
-          },
-          "TerritoryId": 132,
+          "Position": [-75.48645, -0.5013741, -5.081299],
           "InteractionType": "CompleteQuest"
         }
       ]

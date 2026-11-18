@@ -1,42 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "Comment": "Only Turn 13 is required for the next quest to unlock",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -492.96475,
-            "Y": 20.999884,
-            "Z": -380.82272
-          },
-          "TerritoryId": 140,
+          "Position": [-492.96475, 20.999884, -380.82272],
           "InteractionType": "WalkTo",
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
         {
           "DataId": 2001711,
-          "Position": {
-            "X": -480.9181,
-            "Y": 18.00103,
-            "Z": -386.862
-          },
-          "TerritoryId": 140,
+          "Position": [-480.9181, 18.00103, -386.862],
           "InteractionType": "Interact",
           "TargetTerritoryId": 212,
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
         {
           "DataId": 1007478,
-          "Position": {
-            "X": -2.822998,
-            "Y": -3.0000014,
-            "Z": -56.229553
-          },
+          "Position": [-2.822998, -3.0000014, -56.229553],
           "TerritoryId": 212,
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest"
@@ -45,75 +32,55 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1009769,
-          "Position": {
-            "X": 430.6858,
-            "Y": 3.26411,
-            "Z": 171.58765
-          },
-          "TerritoryId": 145,
+          "Position": [430.6858, 3.26411, 171.58765],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1009770,
-          "Position": {
-            "X": 469.5963,
-            "Y": -3.4332886,
-            "Z": -781.1856
-          },
-          "TerritoryId": 156,
+          "Position": [469.5963, -3.4332886, -781.1856],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1009771,
-          "Position": {
-            "X": -71.61066,
-            "Y": 48.96479,
-            "Z": -52.048523
-          },
-          "TerritoryId": 147,
+          "Position": [-71.61066, 48.96479, -52.048523],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1009772,
-          "Position": {
-            "X": -67.12445,
-            "Y": 71.293205,
-            "Z": -190.96667
-          },
-          "TerritoryId": 147,
+          "Position": [-67.12445, 71.293205, -190.96667],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1009768,
-          "Position": {
-            "X": -103.868225,
-            "Y": 51.873333,
-            "Z": -58.365784
-          },
-          "TerritoryId": 147,
+          "Position": [-103.868225, 51.873333, -58.365784],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 44
         }

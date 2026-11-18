@@ -1,18 +1,14 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1027695,
-          "Position": {
-            "X": 441.64185,
-            "Y": 89.80711,
-            "Z": -653.43713
-          },
-          "TerritoryId": 816,
+          "Position": [441.64185, 89.80711, -653.43713],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -26,115 +22,82 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1031287,
-          "Position": {
-            "X": 378.71362,
-            "Y": 87.640625,
-            "Z": -643.4272
-          },
-          "TerritoryId": 816,
+          "Position": [378.71362, 87.640625, -643.4272],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1031288,
-          "Position": {
-            "X": -242.02338,
-            "Y": 22.781544,
-            "Z": 401.87683
-          },
-          "TerritoryId": 816,
+          "Position": [-242.02338, 22.781544, 401.87683],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1031290,
-          "Position": {
-            "X": -508.17123,
-            "Y": 69.79544,
-            "Z": 520.2562
-          },
-          "TerritoryId": 816,
+          "Position": [-508.17123, 69.79544, 520.2562],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1031290,
-          "Position": {
-            "X": -508.17123,
-            "Y": 69.79544,
-            "Z": 520.2562
-          },
-          "TerritoryId": 816,
+          "Position": [-508.17123, 69.79544, 520.2562],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 2010639,
-          "Position": {
-            "X": -625.57416,
-            "Y": 49.362915,
-            "Z": 345.3269
-          },
-          "TerritoryId": 816,
+          "Position": [-625.57416, 49.362915, 345.3269],
           "InteractionType": "Interact"
         },
         {
           "DataId": 2010640,
-          "Position": {
-            "X": -427.02374,
-            "Y": 21.530457,
-            "Z": 216.6322
-          },
-          "TerritoryId": 816,
+          "Position": [-427.02374, 21.530457, 216.6322],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 816,
       "Steps": [
         {
           "$": "Ideally, we could remove the transparent effect to fly in this step. I'm not sure if that's currently possible",
           "DataId": 1031290,
-          "Position": {
-            "X": -508.17123,
-            "Y": 69.79544,
-            "Z": 520.2562
-          },
-          "TerritoryId": 816,
+          "Position": [-508.17123, 69.79544, 520.2562],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "Position": {
-            "X": -777.891,
-            "Y": 47.54754,
-            "Z": 163.27303
-          },
-          "TerritoryId": 816,
+          "Position": [-777.891, 47.54754, 163.27303],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -145,30 +108,22 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1031297,
-          "Position": {
-            "X": -777.4319,
-            "Y": 47.349903,
-            "Z": 165.78918
-          },
-          "TerritoryId": 816,
+          "Position": [-777.4319, 47.349903, 165.78918],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1027695,
-          "Position": {
-            "X": 441.64185,
-            "Y": 89.80711,
-            "Z": -653.43713
-          },
-          "TerritoryId": 816,
+          "Position": [441.64185, 89.80711, -653.43713],
           "InteractionType": "CompleteQuest"
         }
       ]

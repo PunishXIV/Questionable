@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041770,
-          "Position": {
-            "X": 157.30518,
-            "Y": 23.164677,
-            "Z": -415.36584
-          },
-          "TerritoryId": 958,
+          "Position": [157.30518, 23.164677, -415.36584],
           "InteractionType": "AcceptQuest",
           "$": "you should be right next to it, but if you aren't..."
         }
@@ -21,25 +17,16 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
-          "Position": {
-            "X": 41.035896,
-            "Y": 10.8,
-            "Z": -515.99097
-          },
-          "TerritoryId": 958,
+          "Position": [41.035896, 10.8, -515.99097],
           "InteractionType": "WalkTo",
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
           "DataId": 1041771,
-          "Position": {
-            "X": -157.67151,
-            "Y": 10.8,
-            "Z": -530.6325
-          },
-          "TerritoryId": 958,
+          "Position": [-157.67151, 10.8, -530.6325],
           "InteractionType": "Interact",
           "$": "there's an underpass flypathing that /looks/ like it should get stuck, but doesn't. not sure if WoL size and/or mount would make it stuck; YMMV"
         }
@@ -47,45 +34,33 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041773,
-          "Position": {
-            "X": -78.446655,
-            "Y": 10.5,
-            "Z": -590.08167
-          },
-          "TerritoryId": 958,
+          "Position": [-78.446655, 10.5, -590.08167],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041774,
-          "Position": {
-            "X": -44.815796,
-            "Y": 10.8,
-            "Z": -614.40454
-          },
-          "TerritoryId": 958,
+          "Position": [-44.815796, 10.8, -614.40454],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041767,
-          "Position": {
-            "X": 541.03906,
-            "Y": -36.65,
-            "Z": -132.46362
-          },
-          "TerritoryId": 958,
+          "Position": [541.03906, -36.65, -132.46362],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

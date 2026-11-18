@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1006209,
-          "Position": {
-            "X": -67.08886,
-            "Y": -20.296291,
-            "Z": -3.9321687
-          },
-          "TerritoryId": 145,
+          "Position": [-67.08886, -20.296291, -3.9321687],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1006209 (Helmhart)"
         }
@@ -21,14 +17,10 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 145,
       "Steps": [
         {
-          "Position": {
-            "X": 427.52316,
-            "Y": 7.1359015,
-            "Z": 149.2
-          },
-          "TerritoryId": 145,
+          "Position": [427.52316, 7.1359015, 149.2],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
@@ -40,15 +32,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1006209,
-          "Position": {
-            "X": -67.08886,
-            "Y": -20.296291,
-            "Z": -3.9321687
-          },
-          "TerritoryId": 145,
+          "Position": [-67.08886, -20.296291, -3.9321687],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1006209 (Helmhart); hands over ITEM0=2000743"
         }
@@ -56,15 +44,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1006209,
-          "Position": {
-            "X": -67.08886,
-            "Y": -20.296291,
-            "Z": -3.9321687
-          },
-          "TerritoryId": 145,
+          "Position": [-67.08886, -20.296291, -3.9321687],
           "InteractionType": "CompleteQuest",
           "ItemId": 2000976,
           "$": "auto: todo turn-in -> 1006209 (Helmhart)"

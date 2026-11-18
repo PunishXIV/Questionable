@@ -1,70 +1,54 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 129,
       "Steps": [
         {
-          "TerritoryId": 129,
           "InteractionType": "UnequipItem",
           "ItemId": 4549
         },
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 129,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 129,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 129,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1000895,
-          "Position": {
-            "X": -335.74432,
-            "Y": 12.899764,
-            "Z": 1.3884888
-          },
-          "TerritoryId": 129,
+          "Position": [-335.74432, 12.899764, 1.3884888],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1006757,
-          "Position": {
-            "X": -4.4709473,
-            "Y": 44.999886,
-            "Z": -250.56848
-          },
-          "TerritoryId": 128,
+          "Position": [-4.4709473, 44.999886, -250.56848],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1007835,
-          "Position": {
-            "X": -8.011047,
-            "Y": 40.667355,
-            "Z": 192.76721
-          },
-          "TerritoryId": 137,
+          "Position": [-8.011047, 40.667355, 192.76721],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true
@@ -74,30 +58,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1007836,
-          "Position": {
-            "X": 31.3573,
-            "Y": 34.078865,
-            "Z": 222.76636
-          },
-          "TerritoryId": 137,
+          "Position": [31.3573, 34.078865, 222.76636],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1006757,
-          "Position": {
-            "X": -4.4709473,
-            "Y": 44.999886,
-            "Z": -250.56848
-          },
-          "TerritoryId": 128,
+          "Position": [-4.4709473, 44.999886, -250.56848],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1098
         }

@@ -1,57 +1,41 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": ["plogon_enjoyer", "alydev"],
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1005550,
-          "Position": {
-            "X": 105.27197,
-            "Y": 15.359643,
-            "Z": -357.3816
-          },
-          "TerritoryId": 146,
+          "Position": [105.27197, 15.359643, -357.3816],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1008327,
-          "Position": {
-            "X": 45.303955,
-            "Y": 4,
-            "Z": -345.11334
-          },
-          "TerritoryId": 146,
+          "Position": [45.303955, 4, -345.11334],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": 36.66458,
-            "Y": 3.396969,
-            "Z": -345.4249
-          },
-          "TerritoryId": 146,
+          "Position": [36.66458, 3.396969, -345.4249],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
-                "Position": {
-                  "X": 45.303955,
-                  "Y": 4,
-                  "Z": -345.11334
-                },
+                "Position": [45.303955, 4, -345.11334],
                 "TerritoryId": 146,
                 "MaximumDistance": 10
               }
@@ -59,21 +43,12 @@
           }
         },
         {
-          "Position": {
-            "X": 33.486458,
-            "Y": 3.4602835,
-            "Z": -302.47876
-          },
-          "TerritoryId": 146,
+          "Position": [33.486458, 3.4602835, -302.47876],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
-                "Position": {
-                  "X": 36.66458,
-                  "Y": 3.396969,
-                  "Z": -345.4249
-                },
+                "Position": [36.66458, 3.396969, -345.4249],
                 "TerritoryId": 146,
                 "MaximumDistance": 10
               }
@@ -81,21 +56,12 @@
           }
         },
         {
-          "Position": {
-            "X": -14.683247,
-            "Y": -0.5704321,
-            "Z": -221.74307
-          },
-          "TerritoryId": 146,
+          "Position": [-14.683247, -0.5704321, -221.74307],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
-                "Position": {
-                  "X": 33.486458,
-                  "Y": 3.4602835,
-                  "Z": -302.47876
-                },
+                "Position": [33.486458, 3.4602835, -302.47876],
                 "TerritoryId": 146,
                 "MaximumDistance": 10
               }
@@ -103,21 +69,12 @@
           }
         },
         {
-          "Position": {
-            "X": -23.071724,
-            "Y": -0.45480216,
-            "Z": -182.84273
-          },
-          "TerritoryId": 146,
+          "Position": [-23.071724, -0.45480216, -182.84273],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
-                "Position": {
-                  "X": -14.683247,
-                  "Y": -0.5704321,
-                  "Z": -221.74307
-                },
+                "Position": [-14.683247, -0.5704321, -221.74307],
                 "TerritoryId": 146,
                 "MaximumDistance": 10
               }
@@ -126,12 +83,7 @@
         },
         {
           "DataId": 2003127,
-          "Position": {
-            "X": -75.51697,
-            "Y": -2.1820679,
-            "Z": -73.47223
-          },
-          "TerritoryId": 146,
+          "Position": [-75.51697, -2.1820679, -73.47223],
           "InteractionType": "Action",
           "Action": "Fiery Breath",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128],
@@ -146,12 +98,7 @@
         },
         {
           "DataId": 2003133,
-          "Position": {
-            "X": -69.0166,
-            "Y": -2.7924194,
-            "Z": -17.776794
-          },
-          "TerritoryId": 146,
+          "Position": [-69.0166, -2.7924194, -17.776794],
           "InteractionType": "Action",
           "Action": "Fiery Breath",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 2],
@@ -166,12 +113,7 @@
         },
         {
           "DataId": 2003128,
-          "Position": {
-            "X": -201.5564,
-            "Y": 2.9754639,
-            "Z": -223.37689
-          },
-          "TerritoryId": 146,
+          "Position": [-201.5564, 2.9754639, -223.37689],
           "InteractionType": "Action",
           "Action": "Fiery Breath",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64],
@@ -186,12 +128,7 @@
         },
         {
           "DataId": 2003132,
-          "Position": {
-            "X": -153.30743,
-            "Y": -0.25946045,
-            "Z": 55.313843
-          },
-          "TerritoryId": 146,
+          "Position": [-153.30743, -0.25946045, 55.313843],
           "InteractionType": "Action",
           "Action": "Fiery Breath",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 4],
@@ -206,12 +143,7 @@
         },
         {
           "DataId": 2003129,
-          "Position": {
-            "X": -192.6452,
-            "Y": 6.6071167,
-            "Z": 48.386353
-          },
-          "TerritoryId": 146,
+          "Position": [-192.6452, 6.6071167, 48.386353],
           "InteractionType": "Action",
           "Action": "Fiery Breath",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32],
@@ -226,12 +158,7 @@
         },
         {
           "DataId": 2003130,
-          "Position": {
-            "X": -237.995,
-            "Y": 6.94281,
-            "Z": 168.10852
-          },
-          "TerritoryId": 146,
+          "Position": [-237.995, 6.94281, 168.10852],
           "InteractionType": "Action",
           "Action": "Fiery Breath",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 16],
@@ -246,12 +173,7 @@
         },
         {
           "DataId": 2003131,
-          "Position": {
-            "X": -230.09082,
-            "Y": 7.675232,
-            "Z": 229.14465
-          },
-          "TerritoryId": 146,
+          "Position": [-230.09082, 7.675232, 229.14465],
           "InteractionType": "Action",
           "Action": "Fiery Breath",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 8],
@@ -268,15 +190,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1005550,
-          "Position": {
-            "X": 105.27197,
-            "Y": 15.359643,
-            "Z": -357.3816
-          },
-          "TerritoryId": 146,
+          "Position": [105.27197, 15.359643, -357.3816],
           "InteractionType": "CompleteQuest"
         }
       ]

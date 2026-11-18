@@ -1,44 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1013582,
-          "Position": {
-            "X": 59.220215,
-            "Y": -50.888588,
-            "Z": -130.23578
-          },
-          "TerritoryId": 398,
+          "Position": [59.220215, -50.888588, -130.23578],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": 70.535545,
-            "Y": -49.45454,
-            "Z": -149.54617
-          },
-          "TerritoryId": 398,
+          "Position": [70.535545, -49.45454, -149.54617],
           "InteractionType": "WalkTo",
           "$": "Loth ast Vath navmesh workaround"
         },
         {
           "DataId": 1012639,
-          "Position": {
-            "X": 190.50879,
-            "Y": -118.35855,
-            "Z": 567.7118
-          },
-          "TerritoryId": 398,
+          "Position": [190.50879, -118.35855, 567.7118],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -52,29 +39,21 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1013192,
-          "Position": {
-            "X": 236.6521,
-            "Y": -118.15404,
-            "Z": 564.4159
-          },
-          "TerritoryId": 398,
+          "Position": [236.6521, -118.15404, 564.4159],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": 263.7836,
-            "Y": -97.12261,
-            "Z": 614.4929
-          },
-          "TerritoryId": 398,
+          "Position": [263.7836, -97.12261, 614.4929],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -90,26 +69,17 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 2006204,
-          "Position": {
-            "X": 406.75964,
-            "Y": -89.79938,
-            "Z": 686.6101
-          },
-          "TerritoryId": 398,
+          "Position": [406.75964, -89.79938, 686.6101],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818077
         },
         {
           "DataId": 2006423,
-          "Position": {
-            "X": 394.3694,
-            "Y": -93.98035,
-            "Z": 731.80725
-          },
-          "TerritoryId": 398,
+          "Position": [394.3694, -93.98035, 731.80725],
           "InteractionType": "CompleteQuest"
         }
       ]

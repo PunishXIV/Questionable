@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": [
     "JerryWester",
     "Kiarra"
@@ -8,65 +8,48 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006725,
-          "Position": {
-            "X": 446.82983,
-            "Y": -5.306207,
-            "Z": -465.72064
-          },
-          "TerritoryId": 156,
+          "Position": [446.82983, -5.306207, -465.72064],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 2002927,
-          "Position": {
-            "X": 572.3506,
-            "Y": -0.045776367,
-            "Z": -260.51727
-          },
-          "TerritoryId": 156,
+          "Position": [572.3506, -0.045776367, -260.51727],
           "InteractionType": "Interact",
           "TargetTerritoryId": 156
         },
         {
           "DataId": 1011638,
-          "Position": {
-            "X": 664.8203,
-            "Y": -1.1951543,
-            "Z": -106.523315
-          },
-          "TerritoryId": 156,
+          "Position": [664.8203, -1.1951543, -106.523315],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1011640,
-          "Position": {
-            "X": 732.0515,
-            "Y": 15.33271,
-            "Z": -68.65039
-          },
-          "TerritoryId": 156,
+          "Position": [732.0515, 15.33271, -68.65039],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "TerritoryId": 156,
           "InteractionType": "Duty",
           "Comment": "The ARR Alliance Raids must be completed to progress to Heavensward.\nWorld of Darkness can be completed by one max level player or a light party, but they must form an Alliance Raid with three parties of at least one person each to enter.",
           "DutyOptions": {
@@ -79,23 +62,15 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 445.96164,
-            "Y": -5.3604937,
-            "Z": -466.67636
-          },
-          "TerritoryId": 156,
+          "Position": [445.96164, -5.3604937, -466.67636],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 40.024292,
-                  "Y": 24.002441,
-                  "Z": -668.0247
-                },
+                "Position": [40.024292, 24.002441, -668.0247],
                 "TerritoryId": 156,
                 "MaximumDistance": 30
               }
@@ -104,12 +79,7 @@
         },
         {
           "DataId": 1006725,
-          "Position": {
-            "X": 446.82983,
-            "Y": -5.306207,
-            "Z": -465.72064
-          },
-          "TerritoryId": 156,
+          "Position": [446.82983, -5.306207, -465.72064],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 495
         }

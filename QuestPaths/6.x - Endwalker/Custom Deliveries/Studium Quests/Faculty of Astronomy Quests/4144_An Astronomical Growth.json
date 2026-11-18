@@ -1,20 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "Comment": "Autocraft requires:\n6x Integral Lumber\n6x AR-Caean Velvet\n6x Ophiotauros Leather",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038525,
-          "Position": {
-            "X": -296.547,
-            "Y": 21.846,
-            "Z": -162.13
-          },
-          "TerritoryId": 962,
+          "Position": [-296.547, 21.846, -162.13],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1038525 (Jude)"
         }
@@ -22,9 +18,9 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
-          "TerritoryId": 962,
           "InteractionType": "Craft",
           "ItemId": 35595,
           "ItemCount": 6,
@@ -32,12 +28,7 @@
         },
         {
           "DataId": 1038525,
-          "Position": {
-            "X": -296.547,
-            "Y": 21.846,
-            "Z": -162.13
-          },
-          "TerritoryId": 962,
+          "Position": [-296.547, 21.846, -162.13],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1038525 (Jude)"
         }

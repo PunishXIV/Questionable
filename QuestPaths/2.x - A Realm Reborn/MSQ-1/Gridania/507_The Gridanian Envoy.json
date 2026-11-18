@@ -1,29 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000460,
-          "Position": {
-            "X": -159.41101,
-            "Y": 4.054107,
-            "Z": -4.1047363
-          },
-          "TerritoryId": 133,
+          "Position": [-159.41101, 4.054107, -4.1047363],
           "InteractionType": "Interact",
           "TargetTerritoryId": 205
         },
         {
           "DataId": 1003027,
-          "Position": {
-            "X": 4.8981323,
-            "Y": -1.92944,
-            "Z": -0.19836426
-          },
+          "Position": [4.8981323, -1.92944, -0.19836426],
           "TerritoryId": 205,
           "InteractionType": "AcceptQuest"
         }
@@ -31,25 +23,17 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 205,
       "Steps": [
         {
           "DataId": 2001216,
-          "Position": {
-            "X": 45.87172,
-            "Y": 7.763558,
-            "Z": 47.41661
-          },
-          "TerritoryId": 205,
+          "Position": [45.87172, 7.763558, 47.41661],
           "InteractionType": "Interact",
           "TargetTerritoryId": 133
         },
         {
           "DataId": 1000100,
-          "Position": {
-            "X": 25.872286,
-            "Y": -8.000001,
-            "Z": 115.7687
-          },
+          "Position": [25.872286, -8.000001, 115.7687],
           "TerritoryId": 132,
           "InteractionType": "Interact"
         }
@@ -57,15 +41,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000106,
-          "Position": {
-            "X": 29.007324,
-            "Y": -19.000002,
-            "Z": 105.485596
-          },
-          "TerritoryId": 132,
+          "Position": [29.007324, -19.000002, 105.485596],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -79,15 +59,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 2001666,
-          "Position": {
-            "X": 7.179191,
-            "Y": -21.93796,
-            "Z": 124.1005
-          },
-          "TerritoryId": 132,
+          "Position": [7.179191, -21.93796, 124.1005],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -101,15 +77,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1002703,
-          "Position": {
-            "X": -12.375122,
-            "Y": 91.499985,
-            "Z": -0.5340576
-          },
-          "TerritoryId": 128,
+          "Position": [-12.375122, 91.499985, -0.5340576],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -122,27 +94,18 @@
         },
         {
           "DataId": 1002693,
-          "Position": {
-            "X": -6.515625,
-            "Y": 91.49996,
-            "Z": -13.656921
-          },
-          "TerritoryId": 128,
+          "Position": [-6.515625, 91.49996, -13.656921],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1003583,
-          "Position": {
-            "X": -7.248047,
-            "Y": 91.49999,
-            "Z": -16.128845
-          },
-          "TerritoryId": 128,
+          "Position": [-7.248047, 91.49999, -16.128845],
           "InteractionType": "Interact",
           "TargetTerritoryId": 129,
           "DialogueChoices": [
@@ -156,11 +119,7 @@
         },
         {
           "DataId": 1001029,
-          "Position": {
-            "X": 9.170593,
-            "Y": 20.999403,
-            "Z": -15.213318
-          },
+          "Position": [9.170593, 20.999403, -15.213318],
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -168,42 +127,27 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 129,
       "Steps": [
         {
-          "TerritoryId": 129,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Limsa Lominsa"
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "RegisterFreeOrFavoredAetheryte",
           "Aetheryte": "Limsa Lominsa"
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Limsa Lominsa] Hawkers' Alley"
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Limsa Lominsa] Arcanists' Guild"
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Limsa Lominsa] Fishermen's Guild"
-        },
-        {
-          "Position": {
-            "X": -83.8817,
-            "Y": 18.475962,
-            "Z": -29.903847
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 128,
-          "Comment": "Walk to Culinarians' Guild"
         },
         {
           "TerritoryId": 128,
@@ -222,11 +166,7 @@
         },
         {
           "DataId": 1002695,
-          "Position": {
-            "X": -25.92511,
-            "Y": 91.999954,
-            "Z": -3.6774292
-          },
+          "Position": [-25.92511, 91.999954, -3.6774292],
           "TerritoryId": 128,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -241,15 +181,11 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 2001669,
-          "Position": {
-            "X": -11.12384,
-            "Y": 92.0271,
-            "Z": 17.166382
-          },
-          "TerritoryId": 128,
+          "Position": [-11.12384, 92.0271, 17.166382],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -263,15 +199,11 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1004434,
-          "Position": {
-            "X": -27.17633,
-            "Y": 83.19998,
-            "Z": 2.304016
-          },
-          "TerritoryId": 130,
+          "Position": [-27.17633, 83.19998, 2.304016],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -284,26 +216,18 @@
         },
         {
           "DataId": 1004336,
-          "Position": {
-            "X": -12.619263,
-            "Y": 82.99987,
-            "Z": 4.562378
-          },
-          "TerritoryId": 130,
+          "Position": [-12.619263, 82.99987, 4.562378],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1004339,
-          "Position": {
-            "X": -25.986206,
-            "Y": 81.799995,
-            "Z": -31.99823
-          },
+          "Position": [-25.986206, 81.799995, -31.99823],
           "TerritoryId": 130,
           "InteractionType": "Interact",
           "TargetTerritoryId": 131,
@@ -317,18 +241,12 @@
           ]
         },
         {
-          "TerritoryId": 131,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ul'dah] The Chamber of Rule"
         },
         {
           "DataId": 1001821,
-          "Position": {
-            "X": -24.124573,
-            "Y": 38.000004,
-            "Z": 85.31323
-          },
-          "TerritoryId": 131,
+          "Position": [-24.124573, 38.000004, 85.31323],
           "InteractionType": "CompleteQuest"
         }
       ]

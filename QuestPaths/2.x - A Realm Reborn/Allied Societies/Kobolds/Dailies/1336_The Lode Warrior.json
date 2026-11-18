@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Censored",
   "Disabled": true,
   "Comment": "This is a FATE Allied Society Quest\nThere are other FATEs that spawn in the\narea that may need to be cleared first\nbefore the correct FATE will spawn.\nThis quest requires manual interaction.",
@@ -7,34 +7,25 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "TerritoryId": 180,
           "InteractionType": "Instruction",
           "Comment": "This quest path is disabled. By continuing, you acknowledge that it is currently unsupported."
         },
         {
           "DataId": 1005929,
-          "Position": {
-            "X": 21.560913,
-            "Y": 16.342407,
-            "Z": -183.76447
-          },
-          "TerritoryId": 180,
+          "Position": [21.560913, 16.342407, -183.76447],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": 92.81918,
-            "Y": 55.511665,
-            "Z": -464.93253
-          },
-          "TerritoryId": 180,
+          "Position": [92.81918, 55.511665, -464.93253],
           "InteractionType": "Combat",
           "EnemySpawnType": "FateEnemies",
           "ItemId": 7797,
@@ -51,12 +42,7 @@
         },
         {
           "DataId": 1005929,
-          "Position": {
-            "X": 21.560913,
-            "Y": 16.342407,
-            "Z": -183.76447
-          },
-          "TerritoryId": 180,
+          "Position": [21.560913, 16.342407, -183.76447],
           "InteractionType": "CompleteQuest"
         }
       ]

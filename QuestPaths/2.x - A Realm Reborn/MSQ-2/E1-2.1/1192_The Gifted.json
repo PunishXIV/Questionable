@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 212,
       "Steps": [
         {
           "DataId": 1006693,
-          "Position": {
-            "X": 39.29187,
-            "Y": 1.2148079,
-            "Z": 0.8086548
-          },
-          "TerritoryId": 212,
+          "Position": [39.29187, 1.2148079, 0.8086548],
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest"
         }
@@ -21,43 +17,31 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 212,
       "Steps": [
         {
           "DataId": 1007478,
-          "Position": {
-            "X": -2.822998,
-            "Y": -3.0000014,
-            "Z": -56.229553
-          },
-          "TerritoryId": 212,
+          "Position": [-2.822998, -3.0000014, -56.229553],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -461.71686,
-            "Y": 23.192137,
-            "Z": -369.12787
-          },
-          "TerritoryId": 140,
+          "Position": [-461.71686, 23.192137, -369.12787],
           "InteractionType": "WalkTo"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -470.87872,
-            "Y": 22.698383,
-            "Z": -439.40274
-          },
-          "TerritoryId": 140,
+          "Position": [-470.87872, 22.698383, -439.40274],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [2477]
@@ -66,14 +50,10 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -386.44818,
-            "Y": 24.74541,
-            "Z": -501.20456
-          },
-          "TerritoryId": 140,
+          "Position": [-386.44818, 24.74541, -501.20456],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [2478]
@@ -82,14 +62,10 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -366.75403,
-            "Y": 16.426182,
-            "Z": -628.9341
-          },
-          "TerritoryId": 140,
+          "Position": [-366.75403, 16.426182, -628.9341],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [2479]
@@ -98,14 +74,10 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -327.01913,
-            "Y": 14.785374,
-            "Z": -780.03625
-          },
-          "TerritoryId": 140,
+          "Position": [-327.01913, 14.785374, -780.03625],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [2480, 2481]
@@ -114,52 +86,35 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1007751,
-          "Position": {
-            "X": -325.185,
-            "Y": 14.7073965,
-            "Z": -784.3595
-          },
-          "TerritoryId": 140,
+          "Position": [-325.185, 14.7073965, -784.3595],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -492.96475,
-            "Y": 20.999884,
-            "Z": -380.82272
-          },
-          "TerritoryId": 140,
+          "Position": [-492.96475, 20.999884, -380.82272],
           "InteractionType": "WalkTo",
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
         {
           "DataId": 2001711,
-          "Position": {
-            "X": -480.9181,
-            "Y": 18.00103,
-            "Z": -386.862
-          },
-          "TerritoryId": 140,
+          "Position": [-480.9181, 18.00103, -386.862],
           "InteractionType": "Interact",
           "TargetTerritoryId": 212,
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
         {
           "DataId": 2001715,
-          "Position": {
-            "X": 23.23944,
-            "Y": 2.090454,
-            "Z": -0.015319824
-          },
+          "Position": [23.23944, 2.090454, -0.015319824],
           "TerritoryId": 212,
           "InteractionType": "Interact",
           "TargetTerritoryId": 212,
@@ -171,11 +126,7 @@
         },
         {
           "DataId": 1006693,
-          "Position": {
-            "X": 39.29187,
-            "Y": 1.2148079,
-            "Z": 0.8086548
-          },
+          "Position": [39.29187, 1.2148079, 0.8086548],
           "TerritoryId": 212,
           "InteractionType": "CompleteQuest"
         }

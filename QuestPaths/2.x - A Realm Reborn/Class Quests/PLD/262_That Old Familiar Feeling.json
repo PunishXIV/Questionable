@@ -1,36 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": ["Cacahuetes","ShermTank"],
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
+          "Position": [-94.529724, 6.4999976, 39.81079],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 141,
       "Steps": [
         {
           "$": "Unlock Central Thanalan Taxi Stand",
           "DataId": 1001607,
-          "Position": {
-            "X": -2.7314453,
-            "Y": -2.055717,
-            "Z": -158.52606
-          },
-          "TerritoryId": 141,
+          "Position": [-2.7314453, -2.055717, -158.52606],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179662,
           "SkipConditions": {
@@ -41,7 +33,6 @@
         },
         {
           "$": "Attune to Central Thanalan Aetheryte",
-          "TerritoryId": 141,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Central Thanalan - Black Brush Station",
           "SkipConditions": {
@@ -51,32 +42,9 @@
           }
         },
         {
-          "$": "Walk To Eastern Thanalan. Should teleport to Black Brush and skip preceding steps if Black Brush unlocked",
-          "Position": {
-            "X": 454.0109,
-            "Y": -17.999832,
-            "Z": -183.1808
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 145,
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "Eastern Thanalan - Camp Drybone",
-              "InTerritory": [
-                130
-              ]
-            }
-          }
-        },
-        {
           "$": "Unlock Camp Drybone Taxi",
           "DataId": 1003935,
-          "Position": {
-            "X": -423.2395,
-            "Y": -39.060455,
-            "Z": 112.2301
-          },
+          "Position": [-423.2395, -39.060455, 112.2301],
           "TerritoryId": 145,
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179663,
@@ -100,11 +68,7 @@
         {
           "$": "All preceding steps should be skipped if you have Black Brush and Camp Drybone aetherytes unlocked",
           "DataId": 1004224,
-          "Position": {
-            "X": -220.93542,
-            "Y": -38.407475,
-            "Z": 63.91992
-          },
+          "Position": [-220.93542, -38.407475, 63.91992],
           "TerritoryId": 145,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
@@ -116,45 +80,33 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1004224,
-          "Position": {
-            "X": -220.93542,
-            "Y": -38.407475,
-            "Z": 63.91992
-          },
-          "TerritoryId": 145,
+          "Position": [-220.93542, -38.407475, 63.91992],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
+          "Position": [-94.529724, 6.4999976, 39.81079],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1004091,
-          "Position": {
-            "X": 24.12439,
-            "Y": 7.1999984,
-            "Z": -102.76953
-          },
-          "TerritoryId": 130,
+          "Position": [24.12439, 7.1999984, -102.76953],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true}
         }
@@ -162,15 +114,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
+          "Position": [-94.529724, 6.4999976, 39.81079],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 263
         }

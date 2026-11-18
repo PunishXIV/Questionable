@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005940,
-          "Position": {
-            "X": -226.12347,
-            "Y": -40.48583,
-            "Z": 57.083984
-          },
-          "TerritoryId": 138,
+          "Position": [-226.12347, -40.48583, 57.083984],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Comment": "Doesn't work if the FATE Watch Your Tongue is active,\nas all the normal mob spawns are FATE mobs instead",
       "Steps": [
         {
-          "Position": {
-            "X": -423.56384,
-            "Y": -40.76118,
-            "Z": -220.52809
-          },
-          "TerritoryId": 138,
+          "Position": [-423.56384, -40.76118, -220.52809],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -62,15 +54,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005940,
-          "Position": {
-            "X": -226.12347,
-            "Y": -40.48583,
-            "Z": 57.083984
-          },
-          "TerritoryId": 138,
+          "Position": [-226.12347, -40.48583, 57.083984],
           "InteractionType": "CompleteQuest"
         }
       ]

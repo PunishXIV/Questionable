@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1052560,
-          "Position": {
-            "X": 589.3186,
-            "Y": -142.89168,
-            "Z": 729.4575
-          },
-          "TerritoryId": 1189,
+          "Position": [589.3186, -142.89168, 729.4575],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1052572,
-          "Position": {
-            "X": 642.2064,
-            "Y": -137.17401,
-            "Z": 557.76294
-          },
-          "TerritoryId": 1189,
+          "Position": [642.2064, -137.17401, 557.76294],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANMAM115_05275_SAYTODO_000_030"
@@ -37,12 +29,7 @@
         },
         {
           "DataId": 1052573,
-          "Position": {
-            "X": 686.8544,
-            "Y": -137.174,
-            "Z": 513.72546
-          },
-          "TerritoryId": 1189,
+          "Position": [686.8544, -137.174, 513.72546],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANMAM115_05275_SAYTODO_000_030"
@@ -51,12 +38,7 @@
         },
         {
           "DataId": 1052574,
-          "Position": {
-            "X": 584.4967,
-            "Y": -142.49187,
-            "Z": 484.2754
-          },
-          "TerritoryId": 1189,
+          "Position": [584.4967, -142.49187, 484.2754],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANMAM115_05275_SAYTODO_000_030"
@@ -67,15 +49,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1052560,
-          "Position": {
-            "X": 589.3186,
-            "Y": -142.89168,
-            "Z": 729.4575
-          },
-          "TerritoryId": 1189,
+          "Position": [589.3186, -142.89168, 729.4575],
           "InteractionType": "CompleteQuest"
         }
       ]

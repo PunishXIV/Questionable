@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1020476,
-          "Position": {
-            "X": 147.75305,
-            "Y": 14.775722,
-            "Z": 91.721924
-          },
-          "TerritoryId": 628,
+          "Position": [147.75305, 14.775722, 91.721924],
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -23,91 +19,66 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 639,
       "Steps": [
         {
           "DataId": 1020464,
-          "Position": {
-            "X": 0.045776367,
-            "Y": 0,
-            "Z": -2.3041382
-          },
-          "TerritoryId": 639,
+          "Position": [0.045776367, 0, -2.3041382],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 2008134,
-          "Position": {
-            "X": -0.015319824,
-            "Y": 1.1443481,
-            "Z": 13.504211
-          },
+          "Position": [-0.015319824, 1.1443481, 13.504211],
           "TerritoryId": 639,
           "InteractionType": "Interact",
           "TargetTerritoryId": 628
         },
         {
-          "TerritoryId": 628,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Kugane] Sekiseigumi Barracks"
         },
         {
           "DataId": 1020481,
-          "Position": {
-            "X": 125.596924,
-            "Y": 14.804411,
-            "Z": -102.861084
-          },
-          "TerritoryId": 628,
+          "Position": [125.596924, 14.804411, -102.861084],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 2007910,
-          "Position": {
-            "X": 125.322266,
-            "Y": 14.358704,
-            "Z": -100.48071
-          },
-          "TerritoryId": 628,
+          "Position": [125.322266, 14.358704, -100.48071],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 2008333,
-          "Position": {
-            "X": 125.41394,
-            "Y": 14.358704,
-            "Z": -100.51117
-          },
-          "TerritoryId": 628,
+          "Position": [125.41394, 14.358704, -100.51117],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1020483,
-          "Position": {
-            "X": 127.79431,
-            "Y": 14.650923,
-            "Z": -101.701416
-          },
-          "TerritoryId": 628,
+          "Position": [127.79431, 14.650923, -101.701416],
           "InteractionType": "CompleteQuest"
         }
       ]

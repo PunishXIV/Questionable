@@ -1,18 +1,14 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1025846,
-          "Position": {
-            "X": -2.00187,
-            "Y": 3.03082,
-            "Z": -611.336
-          },
-          "TerritoryId": 613,
+          "Position": [-2.00187, 3.03082, -611.336],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1025846 (Kyusei)"
         }
@@ -20,15 +16,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 2009515,
-          "Position": {
-            "X": 123.561,
-            "Y": 4.5389,
-            "Z": -738.615
-          },
-          "TerritoryId": 613,
+          "Position": [123.561, 4.5389, -738.615],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 2009515 (destination)"
         }
@@ -36,26 +28,17 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 2009516,
-          "Position": {
-            "X": -214.266,
-            "Y": 31.7235,
-            "Z": -850.389
-          },
-          "TerritoryId": 613,
+          "Position": [-214.266, 31.7235, -850.389],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 2009516 (Ten-thousand-year Pine)"
         },
         {
           "DataId": 2009572,
-          "Position": {
-            "X": -178.025,
-            "Y": 1.72418,
-            "Z": -891.597
-          },
-          "TerritoryId": 613,
+          "Position": [-178.025, 1.72418, -891.597],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 2009572 (winding path)"
         }
@@ -63,15 +46,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1025846,
-          "Position": {
-            "X": -2.00187,
-            "Y": 3.03082,
-            "Z": -611.336
-          },
-          "TerritoryId": 613,
+          "Position": [-2.00187, 3.03082, -611.336],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1025846 (Kyusei)"
         }

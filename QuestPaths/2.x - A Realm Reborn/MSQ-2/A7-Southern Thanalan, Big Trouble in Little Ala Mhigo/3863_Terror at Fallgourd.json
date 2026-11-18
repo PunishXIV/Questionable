@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 212,
       "Steps": [
         {
           "DataId": 1006688,
-          "Position": {
-            "X": 39.29187,
-            "Y": 1.2148079,
-            "Z": 0.8086548
-          },
-          "TerritoryId": 212,
+          "Position": [39.29187, 1.2148079, 0.8086548],
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest"
         }
@@ -21,21 +17,18 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 212,
       "Steps": [
         {
           "DataId": 1007417,
-          "Position": {
-            "X": 1.2359009,
-            "Y": -3.0000014,
-            "Z": -57.66388
-          },
-          "TerritoryId": 212,
+          "Position": [1.2359009, -3.0000014, -57.66388],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 154,
       "Steps": [
         {
           "TerritoryId": 132,
@@ -50,49 +43,30 @@
         },
         {
           "DataId": 1002985,
-          "Position": {
-            "X": 320.57666,
-            "Y": -6.266033,
-            "Z": -72.80078
-          },
-          "TerritoryId": 154,
+          "Position": [320.57666, -6.266033, -72.80078],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179655
         },
         {
           "DataId": 1002984,
-          "Position": {
-            "X": 1.2054443,
-            "Y": -46.518444,
-            "Z": 238.5747
-          },
-          "TerritoryId": 154,
+          "Position": [1.2054443, -46.518444, 238.5747],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179656
         },
         {
           "DataId": 1006240,
-          "Position": {
-            "X": 14.389221,
-            "Y": -44.86571,
-            "Z": 262.65344
-          },
-          "TerritoryId": 154,
+          "Position": [14.389221, -44.86571, 262.65344],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1006240,
-          "Position": {
-            "X": 14.389221,
-            "Y": -44.86571,
-            "Z": 262.65344
-          },
-          "TerritoryId": 154,
+          "Position": [14.389221, -44.86571, 262.65344],
           "InteractionType": "CompleteQuest",
           "Emote": "soothe"
         }

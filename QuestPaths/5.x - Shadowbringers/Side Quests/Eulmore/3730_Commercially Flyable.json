@@ -1,33 +1,25 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Censored",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1031802,
-          "Position": {
-            "X": 48.264282,
-            "Y": 82.001656,
-            "Z": -56.6568
-          },
-          "TerritoryId": 820,
+          "Position": [48.264282, 82.001656, -56.6568],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1031801,
-          "Position": {
-            "X": 52.8114,
-            "Y": 83.001076,
-            "Z": -65.38495
-          },
-          "TerritoryId": 820,
+          "Position": [52.8114, 83.001076, -65.38495],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -41,30 +33,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1029978,
-          "Position": {
-            "X": -7.522766,
-            "Y": 23,
-            "Z": 14.755432
-          },
-          "TerritoryId": 820,
+          "Position": [-7.522766, 23, 14.755432],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 820,
       "Steps": [
         {
           "DataId": 1031801,
-          "Position": {
-            "X": 52.8114,
-            "Y": 83.001076,
-            "Z": -65.38495
-          },
-          "TerritoryId": 820,
+          "Position": [52.8114, 83.001076, -65.38495],
           "InteractionType": "CompleteQuest"
         }
       ]

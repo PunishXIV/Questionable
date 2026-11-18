@@ -1,48 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "kaiser",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1039249,
-          "Position": {
-            "X": 0.3508911,
-            "Y": 210.99998,
-            "Z": -17.746277
-          },
-          "TerritoryId": 478,
+          "Position": [0.3508911, 210.99998, -17.746277],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012133,
-          "Position": {
-            "X": -26.840637,
-            "Y": 206.49944,
-            "Z": 28.67163
-          },
-          "TerritoryId": 478,
+          "Position": [-26.840637, 206.49944, 28.67163],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 399,
       "Steps": [
         {
-          "Position": {
-            "X": -501.8255,
-            "Y": 147.54488,
-            "Z": -191.78416
-          },
-          "TerritoryId": 399,
+          "Position": [-501.8255, 147.54488, -191.78416],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -56,15 +44,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1039282,
-          "Position": {
-            "X": -504.87527,
-            "Y": 147.53165,
-            "Z": -199.17603
-          },
-          "TerritoryId": 399,
+          "Position": [-504.87527, 147.53165, -199.17603],
           "InteractionType": "Action",
           "Action": "Diagnosis",
           "Comment": "This might get stuck if we are high level and killed the mob too fast?, we ended up locking ourselves on eukrasia aura, Diagnosis can't be casted!"
@@ -73,14 +57,10 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 399,
       "Steps": [
         {
-          "Position": {
-            "X": -383.24777,
-            "Y": 147.98257,
-            "Z": 52.931572
-          },
-          "TerritoryId": 399,
+          "Position": [-383.24777, 147.98257, 52.931572],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -94,30 +74,22 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1039284,
-          "Position": {
-            "X": -382.49792,
-            "Y": 147.96011,
-            "Z": 47.53174
-          },
-          "TerritoryId": 399,
+          "Position": [-382.49792, 147.96011, 47.53174],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1039249,
-          "Position": {
-            "X": 0.3508911,
-            "Y": 210.99998,
-            "Z": -17.746277
-          },
-          "TerritoryId": 478,
+          "Position": [0.3508911, 210.99998, -17.746277],
           "InteractionType": "CompleteQuest"
         }
       ]

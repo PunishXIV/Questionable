@@ -1,44 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1003550,
-          "Position": {
-            "X": 76.85962,
-            "Y": 39.99632,
-            "Z": 78.99597
-          },
-          "TerritoryId": 128,
+          "Position": [76.85962, 39.99632, 78.99597],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "$": "Main/Backup path setup breaks if user starts QST while on the airship landing, but this shouldn't happen in most cases",
           "DataId": 1016103,
-          "Position": {
-            "X": -23.025879,
-            "Y": 91.999985,
-            "Z": -9.567444
-          },
-          "TerritoryId": 128,
+          "Position": [-23.025879, 91.999985, -9.567444],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 128,
       "Steps": [
         {
-          "TerritoryId": 128,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 40,
@@ -49,25 +41,17 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1003584,
-          "Position": {
-            "X": 317.43335,
-            "Y": -36.325005,
-            "Z": 352.86487
-          },
-          "TerritoryId": 138,
+          "Position": [317.43335, -36.325005, 352.86487],
           "InteractionType": "Interact",
           "TargetTerritoryId": 138,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": -259.0232,
-                  "Y": -40.444656,
-                  "Z": 456.90884
-                },
+                "Position": [-259.0232, -40.444656, 456.90884],
                 "TerritoryId": 138,
                 "MaximumDistance": 200
               }
@@ -76,27 +60,18 @@
         },
         {
           "DataId": 1016105,
-          "Position": {
-            "X": -267.99426,
-            "Y": -40.891766,
-            "Z": 443.86963
-          },
-          "TerritoryId": 138,
+          "Position": [-267.99426, -40.891766, 443.86963],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1016104,
-          "Position": {
-            "X": 241.474,
-            "Y": -24.999445,
-            "Z": 244.67834
-          },
-          "TerritoryId": 138,
+          "Position": [241.474, -24.999445, 244.67834],
           "InteractionType": "CompleteQuest"
         }
       ]

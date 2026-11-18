@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002233,
-          "Position": {
-            "X": 225.36,
-            "Y": 14.096,
-            "Z": 621.027
-          },
-          "TerritoryId": 135,
+          "Position": [225.36, 14.096, 621.027],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1002233 (Wafufu)"
         }
@@ -21,51 +17,32 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002453,
-          "Position": {
-            "X": 335.347,
-            "Y": 32.2696,
-            "Z": 644.556
-          },
-          "TerritoryId": 135,
+          "Position": [335.347, 32.2696, 644.556],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo location -> 1002453 (Lyngstyrm)"
         },
         {
           "DataId": 2000763,
-          "Position": {
-            "X": 287.165,
-            "Y": 32.204,
-            "Z": 607.054
-          },
-          "TerritoryId": 135,
+          "Position": [287.165, 32.204, 607.054],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
           "$": "auto: todo location -> 2000763 (packed lunch)"
         },
         {
           "DataId": 1002455,
-          "Position": {
-            "X": 200.183,
-            "Y": 8.97365,
-            "Z": 616.052
-          },
-          "TerritoryId": 135,
+          "Position": [200.183, 8.97365, 616.052],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo location -> 1002455 (Maetimynd)"
         },
         {
           "DataId": 2000762,
-          "Position": {
-            "X": 217.341,
-            "Y": 8.9734,
-            "Z": 606.443
-          },
-          "TerritoryId": 135,
+          "Position": [217.341, 8.9734, 606.443],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
           "$": "auto: todo location -> 2000762 (packed lunch)"
@@ -74,15 +51,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002233,
-          "Position": {
-            "X": 225.36,
-            "Y": 14.096,
-            "Z": 621.027
-          },
-          "TerritoryId": 135,
+          "Position": [225.36, 14.096, 621.027],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1002233 (Wafufu)"
         }

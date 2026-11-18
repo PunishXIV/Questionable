@@ -1,50 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Raitono",
   "Comment": "This fish is only available during Rain or Snow weather.",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1000857,
-          "Position": {
-            "X": -165.27,
-            "Y": 5.23383,
-            "Z": 164.294
-          },
-          "TerritoryId": 129,
+          "Position": [-165.27, 5.23383, 164.294],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "Comment": "Speak with Sybell",
           "DataId": 1003629,
-          "Position": {
-            "X": -171.89,
-            "Y": 4,
-            "Z": 175.33
-          },
-          "TerritoryId": 129,
+          "Position": [-171.89, 4, 175.33],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000218,
-          "Position": {
-            "X": 162.30566,
-            "Y": 15.699917,
-            "Z": -60.756577
-          },
+          "Position": [162.30566, 15.699917, -60.756577],
           "TerritoryId": 133,
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
@@ -62,17 +51,11 @@
           }
         },
         {
-          "Position": {
-            "X": 82.39691,
-            "Y": -8.09201,
-            "Z": 125.62314
-          },
-          "TerritoryId": 132,
+          "Position": [82.39691, -8.09201, 125.62314],
           "InteractionType": "WalkTo"
         },
         {
           "Comment": "Fish for 5x Raincaller\nThis fish is only available during Rain or Snow weather.",
-          "TerritoryId": 132,
           "InteractionType": "Fish",
           "ItemsToGather": [
             {
@@ -84,11 +67,7 @@
         {
           "Comment": "Deliver Raincallers to Sybell",
           "DataId": 1003629,
-          "Position": {
-            "X": -171.89,
-            "Y": 4,
-            "Z": 175.33
-          },
+          "Position": [-171.89, 4, 175.33],
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1117

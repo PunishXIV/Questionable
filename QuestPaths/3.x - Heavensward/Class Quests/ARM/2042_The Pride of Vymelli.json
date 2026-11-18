@@ -1,75 +1,59 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Gezah",
   "Comment": "!!Crafting requires Master Armorer III!! Crafted Item: 1x Adamantite Lorica of Fending HQ // Autocraft requires: 3x Adamantite Nugget, 1x Amphiptere Leather, 1x Adamantite Rivets, 2x Grade 1 Vitality Dissolvent",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1001001,
-          "Position": {
-            "X": -56.443176,
-            "Y": 39.974316,
-            "Z": 178.72888
-          },
-          "TerritoryId": 128,
+          "Position": [-56.443176, 39.974316, 178.72888],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1013925,
-          "Position": {
-            "X": -23.27002,
-            "Y": 40.000355,
-            "Z": 4.7455444
-          },
-          "TerritoryId": 128,
+          "Position": [-23.27002, 40.000355, 4.7455444],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1013790,
-          "Position": {
-            "X": -93.614136,
-            "Y": 6.500004,
-            "Z": 31.418213
-          },
-          "TerritoryId": 131,
+          "Position": [-93.614136, 6.500004, 31.418213],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1012527,
-          "Position": {
-            "X": 1.1443481,
-            "Y": 7.599999,
-            "Z": 153.09375
-          },
-          "TerritoryId": 131,
+          "Position": [1.1443481, 7.599999, 153.09375],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 128,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
           "ItemId": 10682,
           "ItemCount": 1,
           "SkipConditions": {
@@ -82,27 +66,18 @@
         },
         {
           "DataId": 1001001,
-          "Position": {
-            "X": -56.443176,
-            "Y": 39.974316,
-            "Z": 178.72888
-          },
-          "TerritoryId": 128,
+          "Position": [-56.443176, 39.974316, 178.72888],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1013791,
-          "Position": {
-            "X": 6.4850464,
-            "Y": 20.333344,
-            "Z": 1.0527954
-          },
-          "TerritoryId": 129,
+          "Position": [6.4850464, 20.333344, 1.0527954],
           "InteractionType": "CompleteQuest"
         }
       ]

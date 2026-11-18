@@ -1,18 +1,14 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1037950,
-          "Position": {
-            "X": 191.02759,
-            "Y": 7.3858566,
-            "Z": 314.50354
-          },
-          "TerritoryId": 961,
+          "Position": [191.02759, 7.3858566, 314.50354],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -26,49 +22,31 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 2012314,
-          "Position": {
-            "X": -57.38922,
-            "Y": -17.47168,
-            "Z": 523.5217
-          },
-          "TerritoryId": 961,
+          "Position": [-57.38922, -17.47168, 523.5217],
           "InteractionType": "Interact"
         },
         {
           "DataId": 2012275,
-          "Position": {
-            "X": -207.11072,
-            "Y": -32.547546,
-            "Z": 511.0094
-          },
-          "TerritoryId": 961,
+          "Position": [-207.11072, -32.547546, 511.0094],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 961,
       "Steps": [
         {
-          "Position": {
-            "X": -150.05045,
-            "Y": -27.86394,
-            "Z": 467.34567
-          },
-          "TerritoryId": 961,
+          "Position": [-150.05045, -27.86394, 467.34567],
           "InteractionType": "None"
         },
         {
           "DataId": 1037950,
-          "Position": {
-            "X": 191.02759,
-            "Y": 7.3858566,
-            "Z": 314.50354
-          },
-          "TerritoryId": 961,
+          "Position": [191.02759, 7.3858566, 314.50354],
           "InteractionType": "CompleteQuest"
         }
       ]

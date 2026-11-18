@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1006340,
-          "Position": {
-            "X": -498.8327,
-            "Y": 19.027954,
-            "Z": -376.69952
-          },
-          "TerritoryId": 140,
+          "Position": [-498.8327, 19.027954, -376.69952],
           "InteractionType": "AcceptQuest",
           "$": "Flying pathing is a bit wonky since quest giver is on a corner; just walk"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1006356,
-          "Position": {
-            "X": 208.51453,
-            "Y": -2.0489888,
-            "Z": 78.50769
-          },
-          "TerritoryId": 139,
+          "Position": [208.51453, -2.0489888, 78.50769],
           "InteractionType": "CompleteQuest"
         }
       ]

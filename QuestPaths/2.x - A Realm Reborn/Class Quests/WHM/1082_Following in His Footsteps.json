@@ -1,37 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": -146.86935,
-            "Y": 8.006159,
-            "Z": 268.78055
-          },
-          "TerritoryId": 153,
+          "Position": [-146.86935, 8.006159, 268.78055],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -137.77051,
-              "Y": 7.7094107,
-              "Z": 275.28036
-            },
+            "Position": [-137.77051, 7.7094107, 275.28036],
             "DelaySeconds": 0.75
           },
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked",
               "NearPosition": {
-                "Position": {
-                  "X": -139.45221,
-                  "Y": 8.712891,
-                  "Z": 281.69678
-                },
+                "Position": [-139.45221, 8.712891, 281.69678],
                 "MaximumDistance": 3,
                 "TerritoryId": 153
               }
@@ -39,12 +27,7 @@
           }
         },
         {
-          "Position": {
-            "X": -139.04318,
-            "Y": 8.522301,
-            "Z": 280.0128
-          },
-          "TerritoryId": 153,
+          "Position": [-139.04318, 8.522301, 280.0128],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -54,26 +37,17 @@
         },
         {
           "DataId": 1006751,
-          "Position": {
-            "X": -139.45221,
-            "Y": 8.712891,
-            "Z": 281.69678
-          },
-          "TerritoryId": 153,
+          "Position": [-139.45221, 8.712891, 281.69678],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": -346.83008,
-            "Y": -37.93451,
-            "Z": -236.64346
-          },
-          "TerritoryId": 138,
+          "Position": [-346.83008, -37.93451, -236.64346],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -91,12 +65,7 @@
         },
         {
           "DataId": 2002396,
-          "Position": {
-            "X": -347.34113,
-            "Y": -36.240234,
-            "Z": -249.6529
-          },
-          "TerritoryId": 138,
+          "Position": [-347.34113, -36.240234, -249.6529],
           "InteractionType": "Emote",
           "Emote": "pray",
           "$": "0 0 17 16 0 0 -> 17 0 1 16 0 128",
@@ -111,11 +80,7 @@
         },
         {
           "DataId": 2002397,
-          "Position": {
-            "X": -339.46753,
-            "Y": -15.06073,
-            "Z": -403.21973
-          },
+          "Position": [-339.46753, -15.06073, -403.21973],
           "TerritoryId": 156,
           "InteractionType": "Emote",
           "Emote": "pray",
@@ -130,21 +95,8 @@
           ]
         },
         {
-          "Position": {
-            "X": -26.738379,
-            "Y": 33,
-            "Z": -495.80618
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2002398,
-          "Position": {
-            "X": -253.46765,
-            "Y": 60.68506,
-            "Z": -43.90027
-          },
+          "Position": [-253.46765, 60.68506, -43.90027],
           "TerritoryId": 147,
           "InteractionType": "Emote",
           "Emote": "pray",
@@ -162,32 +114,20 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": -146.86935,
-            "Y": 8.006159,
-            "Z": 268.78055
-          },
-          "TerritoryId": 153,
+          "Position": [-146.86935, 8.006159, 268.78055],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -137.77051,
-              "Y": 7.7094107,
-              "Z": 275.28036
-            },
+            "Position": [-137.77051, 7.7094107, 275.28036],
             "DelaySeconds": 0.75
           },
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked",
               "NearPosition": {
-                "Position": {
-                  "X": -139.45221,
-                  "Y": 8.712891,
-                  "Z": 281.69678
-                },
+                "Position": [-139.45221, 8.712891, 281.69678],
                 "MaximumDistance": 3,
                 "TerritoryId": 153
               }
@@ -195,12 +135,7 @@
           }
         },
         {
-          "Position": {
-            "X": -139.04318,
-            "Y": 8.522301,
-            "Z": 280.0128
-          },
-          "TerritoryId": 153,
+          "Position": [-139.04318, 8.522301, 280.0128],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -210,59 +145,38 @@
         },
         {
           "DataId": 1006751,
-          "Position": {
-            "X": -139.45221,
-            "Y": 8.712891,
-            "Z": 281.69678
-          },
-          "TerritoryId": 153,
+          "Position": [-139.45221, 8.712891, 281.69678],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 2002399,
-          "Position": {
-            "X": 107.83545,
-            "Y": 7.7057495,
-            "Z": -45.15149
-          },
-          "TerritoryId": 154,
+          "Position": [107.83545, 7.7057495, -45.15149],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": -146.86935,
-            "Y": 8.006159,
-            "Z": 268.78055
-          },
-          "TerritoryId": 153,
+          "Position": [-146.86935, 8.006159, 268.78055],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -137.77051,
-              "Y": 7.7094107,
-              "Z": 275.28036
-            },
+            "Position": [-137.77051, 7.7094107, 275.28036],
             "DelaySeconds": 0.75
           },
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked",
               "NearPosition": {
-                "Position": {
-                  "X": -139.45221,
-                  "Y": 8.712891,
-                  "Z": 281.69678
-                },
+                "Position": [-139.45221, 8.712891, 281.69678],
                 "MaximumDistance": 3,
                 "TerritoryId": 153
               }
@@ -270,12 +184,7 @@
           }
         },
         {
-          "Position": {
-            "X": -139.04318,
-            "Y": 8.522301,
-            "Z": 280.0128
-          },
-          "TerritoryId": 153,
+          "Position": [-139.04318, 8.522301, 280.0128],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -285,36 +194,18 @@
         },
         {
           "DataId": 1006751,
-          "Position": {
-            "X": -139.45221,
-            "Y": 8.712891,
-            "Z": 281.69678
-          },
-          "TerritoryId": 153,
+          "Position": [-139.45221, 8.712891, 281.69678],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 139,
       "Steps": [
         {
-          "Position": {
-            "X": 286.73157,
-            "Y": 42.137627,
-            "Z": -202.96959
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 180
-        },
-        {
           "DataId": 2002400,
-          "Position": {
-            "X": 117.32654,
-            "Y": 75.394775,
-            "Z": -246.54004
-          },
+          "Position": [117.32654, 75.394775, -246.54004],
           "TerritoryId": 180,
           "InteractionType": "Emote",
           "Emote": "pray"
@@ -323,32 +214,20 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": -146.86935,
-            "Y": 8.006159,
-            "Z": 268.78055
-          },
-          "TerritoryId": 153,
+          "Position": [-146.86935, 8.006159, 268.78055],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -137.77051,
-              "Y": 7.7094107,
-              "Z": 275.28036
-            },
+            "Position": [-137.77051, 7.7094107, 275.28036],
             "DelaySeconds": 0.75
           },
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked",
               "NearPosition": {
-                "Position": {
-                  "X": -139.45221,
-                  "Y": 8.712891,
-                  "Z": 281.69678
-                },
+                "Position": [-139.45221, 8.712891, 281.69678],
                 "MaximumDistance": 3,
                 "TerritoryId": 153
               }
@@ -356,12 +235,7 @@
           }
         },
         {
-          "Position": {
-            "X": -139.04318,
-            "Y": 8.522301,
-            "Z": 280.0128
-          },
-          "TerritoryId": 153,
+          "Position": [-139.04318, 8.522301, 280.0128],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -371,12 +245,7 @@
         },
         {
           "DataId": 1006751,
-          "Position": {
-            "X": -139.45221,
-            "Y": 8.712891,
-            "Z": 281.69678
-          },
-          "TerritoryId": 153,
+          "Position": [-139.45221, 8.712891, 281.69678],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1083
         }

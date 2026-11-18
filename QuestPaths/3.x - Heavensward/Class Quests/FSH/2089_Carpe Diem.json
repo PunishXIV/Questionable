@@ -1,65 +1,49 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": ["alydev", "ShermTank"],
   "LastChecked": {"Username": "alydev", "Date": "2026-09-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1013250,
-          "Position": {
-            "X": 100.358,
-            "Y": 15,
-            "Z": 24.3203
-          },
-          "TerritoryId": 418,
+          "Position": [100.358, 15, 24.3203],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1013824,
-          "Position": {
-            "X": 441.313,
-            "Y": -29.3427,
-            "Z": 218.143
-          },
-          "TerritoryId": 400,
+          "Position": [441.313, -29.3427, 218.143],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1013250,
-          "Position": {
-            "X": 100.358,
-            "Y": 15,
-            "Z": 24.3203
-          },
-          "TerritoryId": 418,
+          "Position": [100.358, 15, 24.3203],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 397,
       "Steps": [
         {
           "Comment": "Purchase bait",
           "DataId": 1011228,
-          "Position": {
-            "X": 501.53958,
-            "Y": 212.58333,
-            "Z": 718.69556
-          },
-          "TerritoryId": 397,
+          "Position": [501.53958, 212.58333, 718.69556],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -77,11 +61,7 @@
         },
         {
           "DataId": 1013827,
-          "Position": {
-            "X": -253.07086,
-            "Y": -185.13464,
-            "Z": 691.5845
-          },
+          "Position": [-253.07086, -185.13464, 691.5845],
           "TerritoryId": 401,
           "InteractionType": "Interact"
         }
@@ -89,38 +69,26 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 401,
       "Steps": [
         {
           "DataId": 1013829,
-          "Position": {
-            "X": 420.24866,
-            "Y": -186.51733,
-            "Z": 814.20605
-          },
-          "TerritoryId": 401,
+          "Position": [420.24866, -186.51733, 814.20605],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 401,
       "Steps": [
         {
-          "Position": {
-            "X": 420.24866,
-            "Y": -186.51733,
-            "Z": 814.20605
-          },
-          "TerritoryId": 401,
+          "Position": [420.24866, -186.51733, 814.20605],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 417.26984,
-                  "Y": -187.08115,
-                  "Z": 827.8439
-                },
+                "Position": [417.26984, -187.08115, 827.8439],
                 "TerritoryId": 401,
                 "MaximumDistance": 20
               }
@@ -129,12 +97,7 @@
         },
         {
           "Comment": "Fish for 1x Catkiller\nThis fish is only available during Clear Skies or Fair Skies weather.",
-          "Position": {
-            "X": 417.26984,
-            "Y": -187.08115,
-            "Z": 827.8439
-          },
-          "TerritoryId": 401,
+          "Position": [417.26984, -187.08115, 827.8439],
           "InteractionType": "Fish",
           "ItemsToGather": [
             {
@@ -145,12 +108,7 @@
         },
         {
           "DataId": 1013830,
-          "Position": {
-            "X": 400.77,
-            "Y": -123.263,
-            "Z": 674.971
-          },
-          "TerritoryId": 401,
+          "Position": [400.77, -123.263, 674.971],
           "InteractionType": "CompleteQuest"
         }
       ]

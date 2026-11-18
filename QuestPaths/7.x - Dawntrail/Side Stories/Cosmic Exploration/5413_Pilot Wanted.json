@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {
     "Username": "alydev",
@@ -8,15 +8,11 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1052581,
-          "Position": {
-            "X": 27.232807,
-            "Y": -137.41669,
-            "Z": -411.65918
-          },
-          "TerritoryId": 959,
+          "Position": [27.232807, -137.41669, -411.65918],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1291,
           "Comment": "Select the destination Phaenna (#2)",
@@ -31,11 +27,7 @@
         },
         {
           "DataId": 1053337,
-          "Position": {
-            "X": 234.97363,
-            "Y": 59.500084,
-            "Z": -448.78314
-          },
+          "Position": [234.97363, 59.500084, -448.78314],
           "TerritoryId": 1291,
           "InteractionType": "AcceptQuest"
         }
@@ -43,15 +35,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1291,
       "Steps": [
         {
           "DataId": 1053337,
-          "Position": {
-            "X": 234.97363,
-            "Y": 59.500084,
-            "Z": -448.78314
-          },
-          "TerritoryId": 1291,
+          "Position": [234.97363, 59.500084, -448.78314],
           "InteractionType": "Interact",
           "Comment": "Go get some water and a snack, it'll be a minute or two.",
           "DialogueChoices": [
@@ -66,15 +54,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1291,
       "Steps": [
         {
           "DataId": 1053337,
-          "Position": {
-            "X": 234.97363,
-            "Y": 59.500084,
-            "Z": -448.78314
-          },
-          "TerritoryId": 1291,
+          "Position": [234.97363, 59.500084, -448.78314],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

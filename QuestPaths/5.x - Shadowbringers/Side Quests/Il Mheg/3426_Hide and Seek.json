@@ -1,78 +1,51 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Clockwise Starr",
   "LastChecked": {"Username": "chika", "Date": "2026-07-30"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1031521,
-          "Position": {
-            "X": -419.30273,
-            "Y": 60.306217,
-            "Z": 498.16125
-          },
-          "TerritoryId": 816,
+          "Position": [-419.30273, 60.306217, 498.16125],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "$": "Wolekdorf is slightly closer, but not worth TP",
           "DataId": 1031522,
-          "Position": {
-            "X": 676.2949,
-            "Y": 186.37202,
-            "Z": 323.5066
-          },
-          "TerritoryId": 816,
+          "Position": [676.2949, 186.37202, 323.5066],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
           "$": "Make pathfinding a bit easier",
-          "Position": {
-            "X": 543.39996,
-            "Y": 189.17812,
-            "Z": 136.01952
-          },
-          "TerritoryId": 816,
+          "Position": [543.39996, 189.17812, 136.01952],
           "InteractionType": "None"
         },
         {
-          "Position": {
-            "X": 495.16104,
-            "Y": 152.8019,
-            "Z": 61.648518
-          },
-          "TerritoryId": 816,
+          "Position": [495.16104, 152.8019, 61.648518],
           "InteractionType": "None"
         },
         {
-          "Position": {
-            "X": 499.35895,
-            "Y": 147.40627,
-            "Z": 58.37402
-          },
-          "TerritoryId": 816,
+          "Position": [499.35895, 147.40627, 58.37402],
           "InteractionType": "None"
         },
         {
           "DataId": 1031526,
-          "Position": {
-            "X": 536.1256,
-            "Y": 149.64941,
-            "Z": 13.565186
-          },
-          "TerritoryId": 816,
+          "Position": [536.1256, 149.64941, 13.565186],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKZD019_03426_SYSTEM_100_020"
@@ -82,39 +55,26 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "Position": {
-            "X": 493.37753,
-            "Y": 150.0216,
-            "Z": 60.386654
-          },
-          "TerritoryId": 816,
+          "Position": [493.37753, 150.0216, 60.386654],
           "InteractionType": "None"
         },
         {
           "DataId": 1031522,
-          "Position": {
-            "X": 676.2949,
-            "Y": 186.37202,
-            "Z": 323.5066
-          },
-          "TerritoryId": 816,
+          "Position": [676.2949, 186.37202, 323.5066],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1031521,
-          "Position": {
-            "X": -419.30273,
-            "Y": 60.306217,
-            "Z": 498.16125
-          },
-          "TerritoryId": 816,
+          "Position": [-419.30273, 60.306217, 498.16125],
           "InteractionType": "CompleteQuest"
         }
       ]

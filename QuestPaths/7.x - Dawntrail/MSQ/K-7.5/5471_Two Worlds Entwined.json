@@ -1,29 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 2011936,
-          "Position": {
-            "X": -108.56799,
-            "Y": 5.0201416,
-            "Z": 4.5318604
-          },
-          "TerritoryId": 962,
+          "Position": [-108.56799, 5.0201416, 4.5318604],
           "InteractionType": "Interact",
           "TargetTerritoryId": 987
         },
         {
           "DataId": 1058790,
-          "Position": {
-            "X": -1.1750488,
-            "Y": 1.9073486E-06,
-            "Z": -0.289917
-          },
+          "Position": [-1.1750488, 1.9073486E-06, -0.289917],
           "TerritoryId": 987,
           "InteractionType": "AcceptQuest"
         }
@@ -31,24 +23,20 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1058791,
-          "Position": {
-            "X": 531.6395,
-            "Y": -36.65,
-            "Z": -231.49463
-          },
-          "TerritoryId": 958,
+          "Position": [531.6395, -36.65, -231.49463],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 958,
       "Steps": [
         {
-          "TerritoryId": 958,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 1011,
@@ -63,15 +51,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1058801,
-          "Position": {
-            "X": 533.4706,
-            "Y": -36.65,
-            "Z": -228.56494
-          },
-          "TerritoryId": 958,
+          "Position": [533.4706, -36.65, -228.56494],
           "InteractionType": "CompleteQuest"
         }
       ]

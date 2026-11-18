@@ -1,35 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000254,
-          "Position": {
-            "X": 157.7019,
-            "Y": 15.900381,
-            "Z": -270.34418
-          },
-          "TerritoryId": 133,
+          "Position": [157.7019, 15.900381, -270.34418],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 2000977,
-          "Position": {
-            "X": 157.5188,
-            "Y": 16.189758,
-            "Z": -273.64008
-          },
-          "TerritoryId": 133,
+          "Position": [157.5188, 16.189758, -273.64008],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Index": 0,
@@ -41,15 +33,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000254,
-          "Position": {
-            "X": 157.7019,
-            "Y": 15.900381,
-            "Z": -270.34418
-          },
-          "TerritoryId": 133,
+          "Position": [157.7019, 15.900381, -270.34418],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -63,29 +51,10 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 133,
       "Steps": [
         {
-          "DataId": 1001263,
-          "Position": {
-            "X": 181.41443,
-            "Y": -2.3519497,
-            "Z": -240.40594
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 152,
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "East Shroud - Hawthorne Hut"
-            }
-          }
-        },
-        {
-          "Position": {
-            "X": -131.39551,
-            "Y": -1.8032382,
-            "Z": 173.32715
-          },
+          "Position": [-131.39551, -1.8032382, 173.32715],
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
@@ -100,30 +69,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2000089,
-          "Position": {
-            "X": -238.66644,
-            "Y": 11.856201,
-            "Z": 29.007324
-          },
-          "TerritoryId": 152,
+          "Position": [-238.66644, 11.856201, 29.007324],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2000978,
-          "Position": {
-            "X": -238.94104,
-            "Y": 11.550964,
-            "Z": 29.06836
-          },
-          "TerritoryId": 152,
+          "Position": [-238.94104, 11.550964, 29.06836],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Index": 1,
@@ -135,15 +96,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000254,
-          "Position": {
-            "X": 157.7019,
-            "Y": 15.900381,
-            "Z": -270.34418
-          },
-          "TerritoryId": 133,
+          "Position": [157.7019, 15.900381, -270.34418],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 438
         }

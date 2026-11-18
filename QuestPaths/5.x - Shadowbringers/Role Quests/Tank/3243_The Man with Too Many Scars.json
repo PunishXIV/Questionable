@@ -1,55 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1029900,
-          "Position": {
-            "X": -35.385742,
-            "Y": 3.9998174,
-            "Z": 251.75854
-          },
-          "TerritoryId": 819,
+          "Position": [-35.385742, 3.9998174, 251.75854],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1029890,
-          "Position": {
-            "X": 738.796,
-            "Y": 22.936495,
-            "Z": 406.21033
-          },
-          "TerritoryId": 813,
+          "Position": [738.796, 22.936495, 406.21033],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "Position": {
-            "X": 447.0961,
-            "Y": 13.008003,
-            "Z": 210.91484
-          },
-          "TerritoryId": 813,
+          "Position": [447.0961, 13.008003, 210.91484],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": 448.69727,
-              "Y": 13.393556,
-              "Z": 205.00368
-            }
+            "Position": [448.69727, 13.393556, 205.00368]
           },
           "SkipConditions": {
             "StepIf": {
@@ -59,12 +43,7 @@
         },
         {
           "DataId": 2009942,
-          "Position": {
-            "X": 453.4828,
-            "Y": 13.626221,
-            "Z": 189.44067
-          },
-          "TerritoryId": 813,
+          "Position": [453.4828, 13.626221, 189.44067],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -75,29 +54,21 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1029891,
-          "Position": {
-            "X": 445.27344,
-            "Y": 13.409448,
-            "Z": 204.42505
-          },
-          "TerritoryId": 813,
+          "Position": [445.27344, 13.409448, 204.42505],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "Position": {
-            "X": 412.249,
-            "Y": 7.472949,
-            "Z": 187.34154
-          },
-          "TerritoryId": 813,
+          "Position": [412.249, 7.472949, 187.34154],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -107,12 +78,7 @@
         },
         {
           "DataId": 2009943,
-          "Position": {
-            "X": 633.6614,
-            "Y": 21.377869,
-            "Z": -267.93323
-          },
-          "TerritoryId": 813,
+          "Position": [633.6614, 21.377869, -267.93323],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -123,30 +89,22 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1029892,
-          "Position": {
-            "X": 635.1262,
-            "Y": 20.257477,
-            "Z": -249.22565
-          },
-          "TerritoryId": 813,
+          "Position": [635.1262, 20.257477, -249.22565],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1029889,
-          "Position": {
-            "X": -35.385742,
-            "Y": 3.9998174,
-            "Z": 251.75854
-          },
-          "TerritoryId": 819,
+          "Position": [-35.385742, 3.9998174, 251.75854],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3244
         }

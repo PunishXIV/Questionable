@@ -1,49 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051711,
-          "Position": {
-            "X": 770.7179,
-            "Y": 12.84657,
-            "Z": -263.99634
-          },
-          "TerritoryId": 1188,
+          "Position": [770.7179, 12.84657, -263.99634],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051798,
-          "Position": {
-            "X": 897.734,
-            "Y": 6.8223433,
-            "Z": -285.1759
-          },
-          "TerritoryId": 1188,
+          "Position": [897.734, 6.8223433, -285.1759],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1052328,
-          "Position": {
-            "X": 171.6792,
-            "Y": 16.762953,
-            "Z": -112.44379
-          },
-          "TerritoryId": 1188,
+          "Position": [171.6792, 16.762953, -112.44379],
           "InteractionType": "Action",
           "Action": "Bosom Brook",
           "RequiredQuestVariables": [null,null,[
@@ -52,12 +40,7 @@
         },
         {
           "DataId": 1052329,
-          "Position": {
-            "X": 216.7544,
-            "Y": 16.31888,
-            "Z": -99.687195
-          },
-          "TerritoryId": 1188,
+          "Position": [216.7544, 16.31888, -99.687195],
           "InteractionType": "Action",
           "Action": "Bosom Brook",
           "RequiredQuestVariables": [null,null,[
@@ -66,12 +49,7 @@
         },
         {
           "DataId": 1052327,
-          "Position": {
-            "X": 186.38892,
-            "Y": 21.742897,
-            "Z": -74.47931
-          },
-          "TerritoryId": 1188,
+          "Position": [186.38892, 21.742897, -74.47931],
           "InteractionType": "Action",
           "Action": "Bosom Brook",
           "RequiredQuestVariables": [null,null,[
@@ -82,15 +60,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051711,
-          "Position": {
-            "X": 770.7179,
-            "Y": 12.84657,
-            "Z": -263.99634
-          },
-          "TerritoryId": 1188,
+          "Position": [770.7179, 12.84657, -263.99634],
           "InteractionType": "CompleteQuest"
         }
       ]

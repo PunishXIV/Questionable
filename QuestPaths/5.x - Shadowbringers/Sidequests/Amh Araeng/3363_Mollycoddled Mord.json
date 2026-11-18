@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1027879,
-          "Position": {
-            "X": 321.474,
-            "Y": 1.48004,
-            "Z": -277.762
-          },
-          "TerritoryId": 815,
+          "Position": [321.474, 1.48004, -277.762],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1027879 (Ghin Gin)"
         }
@@ -21,14 +17,10 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 815,
       "Steps": [
         {
-          "Position": {
-            "X": 411.544,
-            "Y": -31.1231,
-            "Z": -413.118
-          },
-          "TerritoryId": 815,
+          "Position": [411.544, -31.1231, -413.118],
           "InteractionType": "UseItem",
           "GroundTarget": true,
           "ItemId": 2002622,
@@ -38,14 +30,10 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 815,
       "Steps": [
         {
-          "Position": {
-            "X": 576.706,
-            "Y": -56.2161,
-            "Z": -583.608
-          },
-          "TerritoryId": 815,
+          "Position": [576.706, -56.2161, -583.608],
           "InteractionType": "UseItem",
           "GroundTarget": true,
           "ItemId": 2002622,
@@ -55,15 +43,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 1027865,
-          "Position": {
-            "X": 669.9928,
-            "Y": -41.975555,
-            "Z": -666.3531
-          },
-          "TerritoryId": 815,
+          "Position": [669.9928, -41.975555, -666.3531],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1027865 (Thaymoth)"
         }

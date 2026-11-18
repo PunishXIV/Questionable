@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Kiarra",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1052581,
-          "Position": {
-            "X": 27.232807,
-            "Y": -137.41669,
-            "Z": -411.65918
-          },
-          "TerritoryId": 959,
+          "Position": [27.232807, -137.41669, -411.65918],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1310,
           "Comment": "Select the destination Oizys (#3)",
@@ -28,11 +24,7 @@
         },
         {
           "DataId": 1053347,
-          "Position": {
-            "X": -214.03827,
-            "Y": 0.49999455,
-            "Z": 67.429565
-          },
+          "Position": [-214.03827, 0.49999455, 67.429565],
           "TerritoryId": 1310,
           "InteractionType": "AcceptQuest"
         }
@@ -40,88 +32,65 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1310,
       "Steps": [
         {
           "DataId": 1053350,
-          "Position": {
-            "X": -212.90918,
-            "Y": 0.49999422,
-            "Z": 66.33093
-          },
-          "TerritoryId": 1310,
+          "Position": [-212.90918, 0.49999422, 66.33093],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1310,
       "Steps": [
         {
-          "Position": {
-            "X": -150.87642,
-            "Y": 0.4999528,
-            "Z": -32.872852
-          },
-          "TerritoryId": 1310,
+          "Position": [-150.87642, 0.4999528, -32.872852],
           "InteractionType": "WalkTo"
         },
         {
           "DataId": 1053350,
-          "TerritoryId": 1310,
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1310,
       "Steps": [
         {
-          "Position": {
-            "X": 178.9768,
-            "Y": -1.0270685,
-            "Z": -53.013298
-          },
-          "TerritoryId": 1310,
+          "Position": [178.9768, -1.0270685, -53.013298],
           "InteractionType": "WalkTo"
         },
         {
           "DataId": 1053350,
-          "TerritoryId": 1310,
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1310,
       "Steps": [
         {
-          "Position": {
-            "X": 378.45917,
-            "Y": 150.62898,
-            "Z": 529.2559
-          },
-          "TerritoryId": 1310,
+          "Position": [378.45917, 150.62898, 529.2559],
           "InteractionType": "WalkTo"
         },
         {
           "DataId": 1053350,
-          "TerritoryId": 1310,
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1310,
       "Steps": [
         {
           "DataId": 2015098,
-          "Position": {
-            "X": 573.8816,
-            "Y": 130.9777,
-            "Z": 178.3217
-          },
+          "Position": [573.8816, 130.9777, 178.3217],
           "Comment": "Click the 7 arrows other than Namingway",
-          "TerritoryId": 1310,
           "InteractionType": "Interact",
           "PointMenuChoices": [
             0,
@@ -149,21 +118,16 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1310,
       "Steps": [
         {
-          "TerritoryId": 1310,
           "InteractionType": "Action",
           "Action": "Duty Action I",
           "$": "Stellar Return"
         },
         {
           "DataId": 1053349,
-          "Position": {
-            "X": -214.03827,
-            "Y": 0.49999455,
-            "Z": 67.429565
-          },
-          "TerritoryId": 1310,
+          "Position": [-214.03827, 0.49999455, 67.429565],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5483
         }

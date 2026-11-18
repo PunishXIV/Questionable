@@ -1,30 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Holy Cedar Composite Bow HQ // Autocraft requires: 1x Holy Cedar Lumber, 1x Cedar Branch, 2x Mythrite Ingot, 1x Rainbow Thread, 1x Wyvern Leather",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012498,
-          "Position": {
-            "X": 96.57422,
-            "Y": -20.020874,
-            "Z": 64.7135
-          },
-          "TerritoryId": 418,
+          "Position": [96.57422, -20.020874, 64.7135],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 418,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 418,
           "ItemId": 10611,
           "ItemCount": 1,
           "SkipConditions": {
@@ -37,42 +33,29 @@
         },
         {
           "DataId": 1012498,
-          "Position": {
-            "X": 96.57422,
-            "Y": -20.0208747,
-            "Z": 64.7135
-          },
-          "TerritoryId": 418,
+          "Position": [96.57422, -20.0208747, 64.7135],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012501,
-          "Position": {
-            "X": -141.55798,
-            "Y": 19.063187,
-            "Z": -13.260071
-          },
-          "TerritoryId": 418,
+          "Position": [-141.55798, 19.063187, -13.260071],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012498,
-          "Position": {
-            "X": 96.57422,
-            "Y": -20.020874,
-            "Z": 64.7135
-          },
-          "TerritoryId": 418,
+          "Position": [96.57422, -20.020874, 64.7135],
           "InteractionType": "CompleteQuest"
         }
       ]

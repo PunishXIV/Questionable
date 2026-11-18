@@ -1,44 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 30.917934,
-            "Y": 20.495003,
-            "Z": -656.1909
-          },
-          "TerritoryId": 156,
+          "Position": [30.917934, 20.495003, -656.1909],
           "InteractionType": "WalkTo",
           "$": "Rising Stones Door"
         },
         {
           "DataId": 1005524,
-          "Position": {
-            "X": 27.29834,
-            "Y": 21.271448,
-            "Z": -635.98083
-          },
-          "TerritoryId": 156,
+          "Position": [27.29834, 21.271448, -635.98083],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1002285,
-          "Position": {
-            "X": 326.46667,
-            "Y": 63,
-            "Z": -231.64728
-          },
-          "TerritoryId": 140,
+          "Position": [326.46667, 63, -231.64728],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002454,
-          "Position": {
-            "X": 284.779,
-            "Y": 6.33921,
-            "Z": 615.198
-          },
-          "TerritoryId": 135,
+          "Position": [284.779, 6.33921, 615.198],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1002454 (Hezzkhezl)"
         }
@@ -21,14 +17,10 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "Position": {
-            "X": -57.538162,
-            "Y": 41.046314,
-            "Z": 571.29395
-          },
-          "TerritoryId": 135,
+          "Position": [-57.538162, 41.046314, 571.29395],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -45,15 +37,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002454,
-          "Position": {
-            "X": 284.779,
-            "Y": 6.33921,
-            "Z": 615.198
-          },
-          "TerritoryId": 135,
+          "Position": [284.779, 6.33921, 615.198],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1002454 (Hezzkhezl)"
         }

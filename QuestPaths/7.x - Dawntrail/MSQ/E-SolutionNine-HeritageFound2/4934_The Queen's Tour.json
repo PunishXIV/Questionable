@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1048062,
-          "Position": {
-            "X": -136.43097,
-            "Y": 0.22516371,
-            "Z": -44.235962
-          },
-          "TerritoryId": 1186,
+          "Position": [-136.43097, 0.22516371, -44.235962],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1048233,
-          "Position": {
-            "X": -163.86664,
-            "Y": 0.9219522,
-            "Z": -51.529785
-          },
-          "TerritoryId": 1186,
+          "Position": [-163.86664, 0.9219522, -51.529785],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -50,50 +42,37 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1048066,
-          "Position": {
-            "X": -162.55438,
-            "Y": 0.92195225,
-            "Z": -52.384216
-          },
-          "TerritoryId": 1186,
+          "Position": [-162.55438, 0.92195225, -52.384216],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1048065,
-          "Position": {
-            "X": -163.83618,
-            "Y": 0.9219523,
-            "Z": -51.499268
-          },
-          "TerritoryId": 1186,
+          "Position": [-163.83618, 0.9219523, -51.499268],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1186,
       "Steps": [
         {
-          "TerritoryId": 1186,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Solution Nine] Nexus Arcade"
         },
         {
           "DataId": 1048065,
-          "Position": {
-            "X": -320.34818,
-            "Y": 9.519508,
-            "Z": -6.9244547
-          },
-          "TerritoryId": 1186,
+          "Position": [-320.34818, 9.519508, -6.9244547],
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 3
         }
@@ -101,50 +80,37 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1048065,
-          "Position": {
-            "X": -369.83575,
-            "Y": 14.000001,
-            "Z": 133.25919
-          },
-          "TerritoryId": 1186,
+          "Position": [-369.83575, 14.000001, 133.25919],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1186,
       "Steps": [
         {
-          "TerritoryId": 1186,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Solution Nine] Residential Sector"
         },
         {
           "DataId": 1048065,
-          "Position": {
-            "X": -401.3925,
-            "Y": 13.999998,
-            "Z": 273.74304
-          },
-          "TerritoryId": 1186,
+          "Position": [-401.3925, 13.999998, 273.74304],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1048067,
-          "Position": {
-            "X": -403.9826,
-            "Y": 13.999998,
-            "Z": 275.8678
-          },
-          "TerritoryId": 1186,
+          "Position": [-403.9826, 13.999998, 275.8678],
           "InteractionType": "CompleteQuest"
         }
       ]

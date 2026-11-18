@@ -1,55 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024217,
-          "Position": {
-            "X": 391.94043,
-            "Y": -119.58932,
-            "Z": -235.04329
-          },
-          "TerritoryId": 613,
+          "Position": [391.94043, -119.58932, -235.04329],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
-          "Position": {
-            "X": -848.8846,
-            "Y": 36.0507,
-            "Z": 300.73306
-          },
-          "TerritoryId": 613,
+          "Position": [-848.8846, 36.0507, 300.73306],
           "InteractionType": "UseItem",
           "ItemId": 2002422,
           "GroundTarget": true
         },
         {
-          "Position": {
-            "X": -842.2923,
-            "Y": 36.053864,
-            "Z": 319.94763
-          },
-          "TerritoryId": 613,
+          "Position": [-842.2923, 36.053864, 319.94763],
           "InteractionType": "UseItem",
           "ItemId": 2002422,
           "GroundTarget": true
         },
         {
-          "Position": {
-            "X": -873.57074,
-            "Y": 36.01944,
-            "Z": 318.8049
-          },
-          "TerritoryId": 613,
+          "Position": [-873.57074, 36.01944, 318.8049],
           "InteractionType": "UseItem",
           "ItemId": 2002422,
           "GroundTarget": true
@@ -58,15 +40,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024217,
-          "Position": {
-            "X": 391.94043,
-            "Y": -119.58932,
-            "Z": -235.04329
-          },
-          "TerritoryId": 613,
+          "Position": [391.94043, -119.58932, -235.04329],
           "InteractionType": "CompleteQuest"
         }
       ]

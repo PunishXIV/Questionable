@@ -1,19 +1,15 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Kiarra",
   "Comment": "Becomes available after acquiring all StB EX mounts",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1026860,
-          "Position": {
-            "X": 18.478638,
-            "Y": 0.0000029802322,
-            "Z": -63.401245
-          },
-          "TerritoryId": 628,
+          "Position": [18.478638, 0.0000029802322, -63.401245],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -27,41 +23,28 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1026861,
-          "Position": {
-            "X": 458.5182,
-            "Y": 69.204285,
-            "Z": -63.797974
-          },
-          "TerritoryId": 614,
+          "Position": [458.5182, 69.204285, -63.797974],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 2009663,
-          "Position": {
-            "X": 180.89563,
-            "Y": 144.51819,
-            "Z": -8.835022
-          },
-          "TerritoryId": 614,
+          "Position": [180.89563, 144.51819, -8.835022],
           "InteractionType": "UseItem",
           "ItemId": 2002496
         },
         {
           "DataId": 2009663,
-          "Position": {
-            "X": 180.89563,
-            "Y": 144.51819,
-            "Z": -8.835022
-          },
-          "TerritoryId": 614,
+          "Position": [180.89563, 144.51819, -8.835022],
           "InteractionType": "CompleteQuest"
         }
       ]

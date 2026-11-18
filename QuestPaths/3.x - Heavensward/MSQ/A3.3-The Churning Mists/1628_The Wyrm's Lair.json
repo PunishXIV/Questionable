@@ -1,33 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1012694,
-          "Position": {
-            "X": -758.32764,
-            "Y": 123.72873,
-            "Z": 210.74231
-          },
-          "TerritoryId": 400,
+          "Position": [-758.32764, 123.72873, 210.74231],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": -455.00378,
-            "Y": 43.619022,
-            "Z": 403.64548
-          },
-          "TerritoryId": 400,
+          "Position": [-455.00378, 43.619022, 403.64548],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -39,14 +31,10 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": 149.1435,
-            "Y": -23.289272,
-            "Z": 177.45946
-          },
-          "TerritoryId": 400,
+          "Position": [149.1435, -23.289272, 177.45946],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -57,25 +45,16 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 2006224,
-          "Position": {
-            "X": 340.01672,
-            "Y": -25.375793,
-            "Z": -130.54095
-          },
-          "TerritoryId": 400,
+          "Position": [340.01672, -25.375793, -130.54095],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818107
         },
         {
-          "Position": {
-            "X": 396.12845,
-            "Y": -29.186422,
-            "Z": -142.568
-          },
-          "TerritoryId": 400,
+          "Position": [396.12845, -29.186422, -142.568],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -86,15 +65,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1012698,
-          "Position": {
-            "X": 569.17664,
-            "Y": -1.1916885,
-            "Z": -370.22968
-          },
-          "TerritoryId": 400,
+          "Position": [569.17664, -1.1916885, -370.22968],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,35 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000254,
-          "Position": {
-            "X": 157.7019,
-            "Y": 15.900381,
-            "Z": -270.34418
-          },
-          "TerritoryId": 133,
+          "Position": [157.7019, 15.900381, -270.34418],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 2000911,
-          "Position": {
-            "X": 261.82947,
-            "Y": -11.795227,
-            "Z": -161.36414
-          },
-          "TerritoryId": 148,
+          "Position": [261.82947, -11.795227, -161.36414],
           "InteractionType": "Combat",
           "ItemId": 2000230,
           "EnemySpawnType": "AfterItemUse",
@@ -40,12 +32,7 @@
         },
         {
           "DataId": 2000910,
-          "Position": {
-            "X": 266.31567,
-            "Y": -11.795227,
-            "Z": -174.88367
-          },
-          "TerritoryId": 148,
+          "Position": [266.31567, -11.795227, -174.88367],
           "InteractionType": "Combat",
           "ItemId": 2000230,
           "EnemySpawnType": "AfterItemUse",
@@ -58,30 +45,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000254,
-          "Position": {
-            "X": 157.7019,
-            "Y": 15.900381,
-            "Z": -270.34418
-          },
-          "TerritoryId": 133,
+          "Position": [157.7019, 15.900381, -270.34418],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 2000914,
-          "Position": {
-            "X": 302.2965,
-            "Y": 2.090454,
-            "Z": 88.0293
-          },
-          "TerritoryId": 148,
+          "Position": [302.2965, 2.090454, 88.0293],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -91,12 +70,7 @@
         },
         {
           "DataId": 2000916,
-          "Position": {
-            "X": 305.4093,
-            "Y": 4.501404,
-            "Z": 103.990234
-          },
-          "TerritoryId": 148,
+          "Position": [305.4093, 4.501404, 103.990234],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -106,12 +80,7 @@
         },
         {
           "DataId": 2000915,
-          "Position": {
-            "X": 327.10767,
-            "Y": 3.7078857,
-            "Z": 93.64453
-          },
-          "TerritoryId": 148,
+          "Position": [327.10767, 3.7078857, 93.64453],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -123,30 +92,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000251,
-          "Position": {
-            "X": 147.08167,
-            "Y": 15.5,
-            "Z": -267.99426
-          },
-          "TerritoryId": 133,
+          "Position": [147.08167, 15.5, -267.99426],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000254,
-          "Position": {
-            "X": 157.7019,
-            "Y": 15.900381,
-            "Z": -270.34418
-          },
-          "TerritoryId": 133,
+          "Position": [157.7019, 15.900381, -270.34418],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 35
         }

@@ -1,64 +1,48 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Titanium Hoplon HQ // Autocraft requires: 3x Titanium Ingot, 1x Hallowed Chestnut Lumber, 1x Titanium Rivets",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1001001,
-          "Position": {
-            "X": -56.443176,
-            "Y": 39.974316,
-            "Z": 178.72888
-          },
-          "TerritoryId": 128,
+          "Position": [-56.443176, 39.974316, 178.72888],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1012518,
-          "Position": {
-            "X": -24.917969,
-            "Y": 40.000427,
-            "Z": 4.989685
-          },
-          "TerritoryId": 128,
+          "Position": [-24.917969, 40.000427, 4.989685],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1012521,
-          "Position": {
-            "X": -128.55731,
-            "Y": 304.1538,
-            "Z": -295.82666
-          },
-          "TerritoryId": 155,
+          "Position": [-128.55731, 304.1538, -295.82666],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 419,
       "Steps": [
         {
-          "Position": {
-            "X": -162.90991,
-            "Y": 14.95313,
-            "Z": -186.35255
-          },
-          "TerritoryId": 419,
+          "Position": [-162.90991, 14.95313, -186.35255],
           "InteractionType": "Emote",
           "Emote": "pray"
         }
@@ -66,25 +50,21 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1012521,
-          "Position": {
-            "X": -128.55731,
-            "Y": 304.1538,
-            "Z": -295.82666
-          },
-          "TerritoryId": 155,
+          "Position": [-128.55731, 304.1538, -295.82666],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 128,
           "ItemId": 10667,
           "ItemCount": 1,
           "SkipConditions": {
@@ -97,12 +77,7 @@
         },
         {
           "DataId": 1012518,
-          "Position": {
-            "X": -24.917969,
-            "Y": 40.000427,
-            "Z": 4.989685
-          },
-          "TerritoryId": 128,
+          "Position": [-24.917969, 40.000427, 4.989685],
           "InteractionType": "CompleteQuest"
         }
       ]

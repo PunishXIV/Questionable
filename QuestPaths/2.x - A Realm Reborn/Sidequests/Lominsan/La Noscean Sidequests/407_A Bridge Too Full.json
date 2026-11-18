@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002231,
-          "Position": {
-            "X": 102.251,
-            "Y": 68.1552,
-            "Z": 328.939
-          },
-          "TerritoryId": 135,
+          "Position": [102.251, 68.1552, 328.939],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1002231 (Doesrael)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002447,
-          "Position": {
-            "X": 113.565,
-            "Y": 68.1552,
-            "Z": 376.228
-          },
-          "TerritoryId": 135,
+          "Position": [113.565, 68.1552, 376.228],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1002447 (Wyrstmaga)"
         }
@@ -37,27 +29,18 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002449,
-          "Position": {
-            "X": 41.7608,
-            "Y": 71.3016,
-            "Z": 389.651
-          },
-          "TerritoryId": 135,
+          "Position": [41.7608, 71.3016, 389.651],
           "InteractionType": "Emote",
           "Emote": "soothe",
           "$": "auto: todo location -> 1002449 (irate coachman); todo says \"/soothe the irate coachmen.\""
         },
         {
           "DataId": 1002450,
-          "Position": {
-            "X": 42.8446,
-            "Y": 71.3016,
-            "Z": 389.042
-          },
-          "TerritoryId": 135,
+          "Position": [42.8446, 71.3016, 389.042],
           "InteractionType": "Emote",
           "Emote": "soothe",
           "$": "auto: todo location -> 1002450 (irate coachman); todo says \"/soothe the irate coachmen.\""
@@ -66,15 +49,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002447,
-          "Position": {
-            "X": 113.565,
-            "Y": 68.1552,
-            "Z": 376.228
-          },
-          "TerritoryId": 135,
+          "Position": [113.565, 68.1552, 376.228],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1002447 (Wyrstmaga)"
         }
@@ -82,15 +61,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002231,
-          "Position": {
-            "X": 102.251,
-            "Y": 68.1552,
-            "Z": 328.939
-          },
-          "TerritoryId": 135,
+          "Position": [102.251, 68.1552, 328.939],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1002231 (Doesrael)"
         }

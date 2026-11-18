@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {
     "Username": "alydev",
@@ -8,15 +8,11 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1052581,
-          "Position": {
-            "X": 27.232807,
-            "Y": -137.41669,
-            "Z": -411.65918
-          },
-          "TerritoryId": 959,
+          "Position": [27.232807, -137.41669, -411.65918],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1291,
           "Comment": "Select the destination Phaenna (#2)",
@@ -31,11 +27,7 @@
         },
         {
           "DataId": 1053331,
-          "Position": {
-            "X": 350.5454,
-            "Y": 52.612267,
-            "Z": -438.40698
-          },
+          "Position": [350.5454, 52.612267, -438.40698],
           "TerritoryId": 1291,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
@@ -50,60 +42,44 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1291,
       "Steps": [
         {
           "DataId": 1053341,
-          "Position": {
-            "X": 349.01953,
-            "Y": 52.612263,
-            "Z": -438.98682
-          },
-          "TerritoryId": 1291,
+          "Position": [349.01953, 52.612263, -438.98682],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1291,
       "Steps": [
         {
           "DataId": 1053341,
-          "Position": {
-            "X": 401.22586,
-            "Y": 65.49994,
-            "Z": -516.17633
-          },
-          "TerritoryId": 1291,
+          "Position": [401.22586, 65.49994, -516.17633],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1291,
       "Steps": [
         {
           "DataId": 1053341,
-          "Position": {
-            "X": 313.30792,
-            "Y": 53.05,
-            "Z": -101.33872
-          },
-          "TerritoryId": 1291,
+          "Position": [313.30792, 53.05, -101.33872],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1291,
       "Steps": [
         {
           "DataId": 1053342,
-          "Position": {
-            "X": 310.17004,
-            "Y": 53.05,
-            "Z": -98.40552
-          },
-          "TerritoryId": 1291,
+          "Position": [310.17004, 53.05, -98.40552],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -142,21 +118,16 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1291,
       "Steps": [
         {
-          "TerritoryId": 1291,
           "InteractionType": "Action",
           "Action": "Duty Action I",
           "$": "Stellar Return"
         },
         {
           "DataId": 1053331,
-          "Position": {
-            "X": 350.5454,
-            "Y": 52.612267,
-            "Z": -438.40698
-          },
-          "TerritoryId": 1291,
+          "Position": [350.5454, 52.612267, -438.40698],
           "InteractionType": "CompleteQuest"
         }
       ]

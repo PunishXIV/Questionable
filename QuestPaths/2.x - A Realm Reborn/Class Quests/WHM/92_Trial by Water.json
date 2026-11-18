@@ -1,48 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000692,
-          "Position": {
-            "X": -258.8083,
-            "Y": -5.7735243,
-            "Z": -27.267883
-          },
-          "TerritoryId": 133,
+          "Position": [-258.8083, -5.7735243, -27.267883],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
-          "DataId": 1001263,
-          "Position": {
-            "X": 181.41443,
-            "Y": -2.3519497,
-            "Z": -240.40594
-          },
-          "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 152,
-          "SkipConditions": {
-            "StepIf": {
-              "AetheryteUnlocked": "East Shroud - Hawthorne Hut",
-              "InTerritory": [
-                152
-              ]
-            }
-          }
-        },
-        {
-          "TerritoryId": 152,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "East Shroud - Hawthorne Hut",
           "SkipConditions": {
@@ -53,12 +30,7 @@
         },
         {
           "DataId": 2000889,
-          "Position": {
-            "X": -276.93604,
-            "Y": 11.734131,
-            "Z": 367.20825
-          },
-          "TerritoryId": 152,
+          "Position": [-276.93604, 11.734131, 367.20825],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2000121,
@@ -70,45 +42,33 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1000561,
-          "Position": {
-            "X": -230.18237,
-            "Y": 3.544826,
-            "Z": 279.07214
-          },
-          "TerritoryId": 152,
+          "Position": [-230.18237, 3.544826, 279.07214],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1000619,
-          "Position": {
-            "X": -209.0639,
-            "Y": 22.813372,
-            "Z": 245.34973
-          },
-          "TerritoryId": 152,
+          "Position": [-209.0639, 22.813372, 245.34973],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1003001,
-          "Position": {
-            "X": -234.33282,
-            "Y": 18.310072,
-            "Z": 245.68542
-          },
-          "TerritoryId": 152,
+          "Position": [-234.33282, 18.310072, 245.68542],
           "InteractionType": "Action",
           "Action": "Cure"
         }
@@ -116,30 +76,22 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1003057,
-          "Position": {
-            "X": -237.6593,
-            "Y": 17.850079,
-            "Z": 243.48816
-          },
-          "TerritoryId": 152,
+          "Position": [-237.6593, 17.850079, 243.48816],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1001213,
-          "Position": {
-            "X": -66.056335,
-            "Y": -7.982843,
-            "Z": 231.15894
-          },
-          "TerritoryId": 152,
+          "Position": [-66.056335, -7.982843, 231.15894],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
@@ -150,30 +102,22 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1003006,
-          "Position": {
-            "X": -76.64612,
-            "Y": -9.205922,
-            "Z": 283.22266
-          },
-          "TerritoryId": 152,
+          "Position": [-76.64612, -9.205922, 283.22266],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000692,
-          "Position": {
-            "X": -258.8083,
-            "Y": -5.7735243,
-            "Z": -27.267883
-          },
-          "TerritoryId": 133,
+          "Position": [-258.8083, -5.7735243, -27.267883],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 93
         }

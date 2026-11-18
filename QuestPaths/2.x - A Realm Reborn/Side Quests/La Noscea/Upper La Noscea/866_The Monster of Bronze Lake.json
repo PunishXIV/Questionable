@@ -1,33 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1006332,
-          "Position": {
-            "X": 426.96265,
-            "Y": 8.373348,
-            "Z": 20.004517
-          },
-          "TerritoryId": 139,
+          "Position": [426.96265, 8.373348, 20.004517],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 139,
       "Steps": [
         {
-          "Position": {
-            "X": 317.71744,
-            "Y": -3.1370237,
-            "Z": 62.031395
-          },
-          "TerritoryId": 139,
+          "Position": [317.71744, -3.1370237, 62.031395],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
@@ -38,32 +30,24 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 139,
       "Steps": [
         {
           "$": "Don't be intimidated by Godbert, just imagine him in his underwe- oh no",
           "DataId": 1006339,
-          "Position": {
-            "X": 496.57434,
-            "Y": 16.560684,
-            "Z": 64.530396
-          },
-          "TerritoryId": 139,
+          "Position": [496.57434, 16.560684, 64.530396],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 139,
       "Steps": [
         {
           "$": "Pour the salamander oil on Godbert, and remember that generosity is a virtue",
           "DataId": 1006339,
-          "Position": {
-            "X": 496.57434,
-            "Y": 16.560684,
-            "Z": 64.530396
-          },
-          "TerritoryId": 139,
+          "Position": [496.57434, 16.560684, 64.530396],
           "InteractionType": "UseItem",
           "ItemId": 2000673
         }
@@ -71,17 +55,13 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 139,
       "$": "Aetheryte shortcut & skip is needed to cause a micro-wait; without it the step seems to have trouble using items",
       "Steps": [
         {
           "$": "Unfortunately, there is still plenty more of Godbert in need of oiling",
           "DataId": 1006339,
-          "Position": {
-            "X": 496.57434,
-            "Y": 16.560684,
-            "Z": 64.530396
-          },
-          "TerritoryId": 139,
+          "Position": [496.57434, 16.560684, 64.530396],
           "InteractionType": "UseItem",
           "ItemId": 2000673
         }
@@ -89,47 +69,35 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 139,
       "Steps": [
         {
           "$": "Knead the oil into Godbert's weary flesh",
           "DataId": 1006339,
-          "Position": {
-            "X": 496.57434,
-            "Y": 16.560684,
-            "Z": 64.530396
-          },
-          "TerritoryId": 139,
+          "Position": [496.57434, 16.560684, 64.530396],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 139,
       "Steps": [
         {
           "$": "Keep working those knots out of Godbert's tense muscles",
           "DataId": 1006339,
-          "Position": {
-            "X": 496.57434,
-            "Y": 16.560684,
-            "Z": 64.530396
-          },
-          "TerritoryId": 139,
+          "Position": [496.57434, 16.560684, 64.530396],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 139,
       "Steps": [
         {
           "DataId": 1006332,
-          "Position": {
-            "X": 426.96265,
-            "Y": 8.373348,
-            "Z": 20.004517
-          },
-          "TerritoryId": 139,
+          "Position": [426.96265, 8.373348, 20.004517],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 868,
           "$": "Next quest: 'The Adventure of the Fainting Goldsmith'."

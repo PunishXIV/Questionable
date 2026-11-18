@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,30 +8,22 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029874,
-          "Position": {
-            "X": -29.0446,
-            "Y": -25.0005,
-            "Z": 286.103
-          },
-          "TerritoryId": 817,
+          "Position": [-29.0446, -25.0005, 286.103],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029875,
-          "Position": {
-            "X": -511.116,
-            "Y": 0,
-            "Z": 262.62
-          },
-          "TerritoryId": 817,
+          "Position": [-511.116, 0, 262.62],
           "InteractionType": "Snipe",
           "Comment": "Use the blowgun on the razor-tusked swine"
         }
@@ -39,45 +31,33 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029875,
-          "Position": {
-            "X": -511.116,
-            "Y": 0,
-            "Z": 262.62
-          },
-          "TerritoryId": 817,
+          "Position": [-511.116, 0, 262.62],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 2010621,
-          "Position": {
-            "X": -563.888,
-            "Y": 1.06593,
-            "Z": 164.296
-          },
-          "TerritoryId": 817,
+          "Position": [-563.888, 1.06593, 164.296],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029874,
-          "Position": {
-            "X": -29.0446,
-            "Y": -25.0005,
-            "Z": 286.103
-          },
-          "TerritoryId": 817,
+          "Position": [-29.0446, -25.0005, 286.103],
           "InteractionType": "CompleteQuest"
         }
       ]

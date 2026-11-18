@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038551,
-          "Position": {
-            "X": -348.539,
-            "Y": 21.846,
-            "Z": -79.9565
-          },
-          "TerritoryId": 962,
+          "Position": [-348.539, 21.846, -79.9565],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1038551 (T'laqa Tia)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1037054,
-          "Position": {
-            "X": 79.11792,
-            "Y": 5.1499996,
-            "Z": -46.52478
-          },
-          "TerritoryId": 962,
+          "Position": [79.11792, 5.1499996, -46.52478],
           "InteractionType": "PurchaseItem",
           "ItemId": 36589,
           "ItemCount": 99,
@@ -42,12 +34,7 @@
         },
         {
           "DataId": 1038553,
-          "Position": {
-            "X": -117.204,
-            "Y": -16.1593,
-            "Z": 183.001
-          },
-          "TerritoryId": 962,
+          "Position": [-117.204, -16.1593, 183.001],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1038553 (T'laqa Tia)"
         }
@@ -55,15 +42,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 2011753,
-          "Position": {
-            "X": -345.963,
-            "Y": 21.8356,
-            "Z": -81.6981
-          },
-          "TerritoryId": 962,
+          "Position": [-345.963, 21.8356, -81.6981],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 2011753 (destination)"
         }
@@ -71,15 +54,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1038569,
-          "Position": {
-            "X": 159.772,
-            "Y": 5.50929,
-            "Z": 599.157
-          },
-          "TerritoryId": 957,
+          "Position": [159.772, 5.50929, 599.157],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1038569 (T'laqa Tia)"
         }
@@ -87,39 +66,25 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1038566,
-          "Position": {
-            "X": 211.4368,
-            "Y": 9.768845,
-            "Z": 556.4662
-          },
-          "TerritoryId": 957,
+          "Position": [211.4368, 9.768845, 556.4662],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo area 14y from lua ACTOR11 -> 1038566 (preoccupied alchemist)"
         },
         {
           "DataId": 1038568,
-          "Position": {
-            "X": 206.9044,
-            "Y": 15.13672,
-            "Z": 520.7289
-          },
-          "TerritoryId": 957,
+          "Position": [206.9044, 15.13672, 520.7289],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
           "$": "auto: todo area 13y from lua ACTOR13 -> 1038568 (merchant)"
         },
         {
           "DataId": 1038567,
-          "Position": {
-            "X": 212.9792,
-            "Y": -1.192093e-7,
-            "Z": 718.4195
-          },
-          "TerritoryId": 957,
+          "Position": [212.9792, -1.192093e-7, 718.4195],
           "InteractionType": "Interact",
           "$": "auto: todo area 16y from lua ACTOR12 -> 1038567 (fisherman)"
         }
@@ -127,15 +92,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1038569,
-          "Position": {
-            "X": 159.772,
-            "Y": 5.50929,
-            "Z": 599.157
-          },
-          "TerritoryId": 957,
+          "Position": [159.772, 5.50929, 599.157],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1038569 (T'laqa Tia)"
         }
@@ -143,15 +104,12 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1037054,
           "Comment": "Bait not in inventory, purchasing",
-          "Position": {
-            "X": 79.11792,
-            "Y": 5.1499996,
-            "Z": -46.52478
-          },
+          "Position": [79.11792, 5.1499996, -46.52478],
           "TerritoryId": 962,
           "InteractionType": "PurchaseItem",
           "ItemId": 36589,
@@ -163,12 +121,7 @@
           }
         },
         {
-          "Position": {
-            "X": 382.83023,
-            "Y": 4.2018614,
-            "Z": -54.77434
-          },
-          "TerritoryId": 957,
+          "Position": [382.83023, 4.2018614, -54.77434],
           "InteractionType": "Fish",
           "ItemsToGather": [
             {
@@ -179,12 +132,7 @@
         },
         {
           "DataId": 1038569,
-          "Position": {
-            "X": 159.772,
-            "Y": 5.50929,
-            "Z": 599.157
-          },
-          "TerritoryId": 957,
+          "Position": [159.772, 5.50929, 599.157],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1038569 (T'laqa Tia); npc trade"
         }
@@ -192,15 +140,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038551,
-          "Position": {
-            "X": -348.539,
-            "Y": 21.846,
-            "Z": -79.9565
-          },
-          "TerritoryId": 962,
+          "Position": [-348.539, 21.846, -79.9565],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1038551 (T'laqa Tia)"
         }

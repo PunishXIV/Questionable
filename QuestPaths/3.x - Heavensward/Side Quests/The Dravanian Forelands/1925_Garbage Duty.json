@@ -1,28 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 398,
       "Steps": [
         {
           "$": "Path to Hervoix",
-          "Position": {
-            "X": 453.9474,
-            "Y": -51.141403,
-            "Z": 19.29933
-          },
-          "TerritoryId": 398,
+          "Position": [453.9474, -51.141403, 19.29933],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 455.5581,
-                  "Y": -51.141403,
-                  "Z": 21.591492
-                },
+                "Position": [455.5581, -51.141403, 21.591492],
                 "TerritoryId": 398,
                 "MaximumDistance": 5
               }
@@ -32,51 +24,34 @@
         {
           "$": "Hervoix",
           "DataId": 1014502,
-          "Position": {
-            "X": 455.5581,
-            "Y": -51.141403,
-            "Z": 21.591492
-          },
-          "TerritoryId": 398,
+          "Position": [455.5581, -51.141403, 21.591492],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1011932,
-          "Position": {
-            "X": 685.96924,
-            "Y": -24.382862,
-            "Z": -269.06238
-          },
-          "TerritoryId": 398,
+          "Position": [685.96924, -24.382862, -269.06238],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "$": "Fly near target",
-          "Position": {
-            "X": 650.8948,
-            "Y": -24.096365,
-            "Z": -479.5361
-          },
-          "TerritoryId": 398,
+          "Position": [650.8948, -24.096365, -479.5361],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 650.8948,
-                  "Y": -24.096365,
-                  "Z": -479.5361
-                },
+                "Position": [650.8948, -24.096365, -479.5361],
                 "TerritoryId": 398,
                 "MaximumDistance": 15
               }
@@ -85,12 +60,7 @@
         },
         {
           "DataId": 1014505,
-          "Position": {
-            "X": 661.3717,
-            "Y": -24.312466,
-            "Z": -472.1599
-          },
-          "TerritoryId": 398,
+          "Position": [661.3717, -24.312466, -472.1599],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -101,24 +71,16 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 398,
       "Steps": [
         {
           "$": "Fly near target",
-          "Position": {
-            "X": 650.8948,
-            "Y": -24.096365,
-            "Z": -479.5361
-          },
-          "TerritoryId": 398,
+          "Position": [650.8948, -24.096365, -479.5361],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 650.8948,
-                  "Y": -24.096365,
-                  "Z": -479.5361
-                },
+                "Position": [650.8948, -24.096365, -479.5361],
                 "TerritoryId": 398,
                 "MaximumDistance": 15
               }
@@ -127,27 +89,18 @@
         },
         {
           "DataId": 1014505,
-          "Position": {
-            "X": 661.3717,
-            "Y": -24.312466,
-            "Z": -472.1599
-          },
-          "TerritoryId": 398,
+          "Position": [661.3717, -24.312466, -472.1599],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1014502,
-          "Position": {
-            "X": 455.5581,
-            "Y": -51.141403,
-            "Z": 21.591492
-          },
-          "TerritoryId": 398,
+          "Position": [455.5581, -51.141403, 21.591492],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1926,
           "$": "Next Quest: 'A Hunter's True Nature'."

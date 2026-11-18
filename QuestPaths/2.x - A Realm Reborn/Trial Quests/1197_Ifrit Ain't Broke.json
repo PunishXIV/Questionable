@@ -1,18 +1,14 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -492.96475,
-            "Y": 20.999884,
-            "Z": -380.82272
-          },
-          "TerritoryId": 140,
+          "Position": [-492.96475, 20.999884, -380.82272],
           "InteractionType": "WalkTo",
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": {
@@ -23,12 +19,7 @@
         },
         {
           "DataId": 2001711,
-          "Position": {
-            "X": -480.9181,
-            "Y": 18.00103,
-            "Z": -386.862
-          },
-          "TerritoryId": 140,
+          "Position": [-480.9181, 18.00103, -386.862],
           "InteractionType": "Interact",
           "TargetTerritoryId": 212,
           "SkipConditions": {
@@ -39,11 +30,7 @@
         },
         {
           "DataId": 1007478,
-          "Position": {
-            "X": -2.822998,
-            "Y": -3.0000014,
-            "Z": -56.229553
-          },
+          "Position": [-2.822998, -3.0000014, -56.229553],
           "TerritoryId": 212,
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest"
@@ -52,39 +39,31 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1004576,
-          "Position": {
-            "X": -141.64954,
-            "Y": 4.1,
-            "Z": -114.67157
-          },
-          "TerritoryId": 130,
+          "Position": [-141.64954, 4.1, -114.67157],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 2003458,
-          "Position": {
-            "X": 694.3617,
-            "Y": 7.9193726,
-            "Z": -80.1557
-          },
-          "TerritoryId": 146,
+          "Position": [694.3617, 7.9193726, -80.1557],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "TerritoryId": 146,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 63,
@@ -99,52 +78,35 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1004576,
-          "Position": {
-            "X": -141.64954,
-            "Y": 4.1,
-            "Z": -114.67157
-          },
-          "TerritoryId": 130,
+          "Position": [-141.64954, 4.1, -114.67157],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -492.96475,
-            "Y": 20.999884,
-            "Z": -380.82272
-          },
-          "TerritoryId": 140,
+          "Position": [-492.96475, 20.999884, -380.82272],
           "InteractionType": "WalkTo",
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
         {
           "DataId": 2001711,
-          "Position": {
-            "X": -480.9181,
-            "Y": 18.00103,
-            "Z": -386.862
-          },
-          "TerritoryId": 140,
+          "Position": [-480.9181, 18.00103, -386.862],
           "InteractionType": "Interact",
           "TargetTerritoryId": 212,
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
         {
           "DataId": 1007478,
-          "Position": {
-            "X": -2.822998,
-            "Y": -3.0000014,
-            "Z": -56.229553
-          },
+          "Position": [-2.822998, -3.0000014, -56.229553],
           "TerritoryId": 212,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1198

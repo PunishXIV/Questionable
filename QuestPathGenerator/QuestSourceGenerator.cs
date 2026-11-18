@@ -34,7 +34,7 @@ public class QuestSourceGenerator : ISourceGenerator
     public void Execute(GeneratorExecutionContext context)
     {
         AdditionalText? questSchema =
-            context.AdditionalFiles.SingleOrDefault(x => Path.GetFileName(x.Path) == "quest-v1.json");
+            context.AdditionalFiles.SingleOrDefault(x => Path.GetFileName(x.Path) == "quest-v2.json");
         if (questSchema != null)
             GenerateQuestSource(context, questSchema);
     }

@@ -1,39 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 819,
       "Comment": "Requires FSH",
       "Steps": [
         {
-          "TerritoryId": 819,
           "InteractionType": "SwitchClass",
           "TargetClass": "Fisher"
         },
         {
           "DataId": 1027237,
-          "Position": {
-            "X": -8.957031,
-            "Y": 20.186,
-            "Z": -119.18823
-          },
-          "TerritoryId": 819,
+          "Position": [-8.957031, 20.186, -119.18823],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "Position": {
-            "X": 55.589294,
-            "Y": 2.0276523,
-            "Z": 669.1557
-          },
-          "TerritoryId": 813,
+          "Position": [55.589294, 2.0276523, 669.1557],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -43,12 +34,7 @@
           "$": "bridges have navmesh problems"
         },
         {
-          "Position": {
-            "X": 20.713037,
-            "Y": 1.7985868,
-            "Z": 675.3628
-          },
-          "TerritoryId": 813,
+          "Position": [20.713037, 1.7985868, 675.3628],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -58,43 +44,30 @@
         },
         {
           "DataId": 2009924,
-          "Position": {
-            "X": 16.922241,
-            "Y": 2.304016,
-            "Z": 669.8862
-          },
-          "TerritoryId": 813,
+          "Position": [16.922241, 2.304016, 669.8862],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1028472,
-          "Position": {
-            "X": -66.819336,
-            "Y": -36.75,
-            "Z": -273.27386
-          },
-          "TerritoryId": 819,
+          "Position": [-66.819336, -36.75, -273.27386],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 819,
       "Comment": "Fishing turn-ins will need to be done manually",
       "Steps": [
         {
           "DataId": 1027237,
-          "Position": {
-            "X": -8.957031,
-            "Y": 20.186,
-            "Z": -119.18823
-          },
-          "TerritoryId": 819,
+          "Position": [-8.957031, 20.186, -119.18823],
           "InteractionType": "CompleteQuest",
           "$": "No next quest, since that requires turn-ins before being available"
         }

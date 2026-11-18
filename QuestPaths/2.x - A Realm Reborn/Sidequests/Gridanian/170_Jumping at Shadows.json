@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000629,
-          "Position": {
-            "X": 345.51,
-            "Y": -5.56958,
-            "Z": 343.892
-          },
-          "TerritoryId": 154,
+          "Position": [345.51, -5.56958, 343.892],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1000629 (Bodwine)"
         }
@@ -21,14 +17,10 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "Position": {
-            "X": 255.883,
-            "Y": -1.1046009,
-            "Z": 280.503
-          },
-          "TerritoryId": 154,
+          "Position": [255.883, -1.1046009, 280.503],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [9],
@@ -38,15 +30,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000629,
-          "Position": {
-            "X": 345.51,
-            "Y": -5.56958,
-            "Z": 343.892
-          },
-          "TerritoryId": 154,
+          "Position": [345.51, -5.56958, 343.892],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 171,
           "$": "auto: todo turn-in -> 1000629 (Bodwine)"

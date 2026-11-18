@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1005552,
-          "Position": {
-            "X": 86.92553,
-            "Y": 15.260843,
-            "Z": -355.6889
-          },
-          "TerritoryId": 146,
+          "Position": [86.92553, 15.260843, -355.6889],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 2003214,
-          "Position": {
-            "X": 186.38892,
-            "Y": 8.132996,
-            "Z": 122.0874
-          },
-          "TerritoryId": 146,
+          "Position": [186.38892, 8.132996, 122.0874],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -48,12 +40,7 @@
         },
         {
           "DataId": 2003213,
-          "Position": {
-            "X": 211.10852,
-            "Y": 8.010925,
-            "Z": 92.454346
-          },
-          "TerritoryId": 146,
+          "Position": [211.10852, 8.010925, 92.454346],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -73,12 +60,7 @@
         },
         {
           "DataId": 2003215,
-          "Position": {
-            "X": 399.0692,
-            "Y": 13.290527,
-            "Z": -100.572266
-          },
-          "TerritoryId": 146,
+          "Position": [399.0692, 13.290527, -100.572266],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -98,12 +80,7 @@
         },
         {
           "DataId": 2003216,
-          "Position": {
-            "X": 446.95203,
-            "Y": 18.57019,
-            "Z": -83.81781
-          },
-          "TerritoryId": 146,
+          "Position": [446.95203, 18.57019, -83.81781],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -125,12 +102,7 @@
         },
         {
           "DataId": 2003219,
-          "Position": {
-            "X": 477.1953,
-            "Y": 9.353699,
-            "Z": -138.3841
-          },
-          "TerritoryId": 146,
+          "Position": [477.1953, 9.353699, -138.3841],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -152,12 +124,7 @@
         },
         {
           "DataId": 2003217,
-          "Position": {
-            "X": 610.3456,
-            "Y": 5.4473877,
-            "Z": -79.30121
-          },
-          "TerritoryId": 146,
+          "Position": [610.3456, 5.4473877, -79.30121],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -177,12 +144,7 @@
         },
         {
           "DataId": 2003218,
-          "Position": {
-            "X": 654.4746,
-            "Y": 7.1259155,
-            "Z": -66.056335
-          },
-          "TerritoryId": 146,
+          "Position": [654.4746, 7.1259155, -66.056335],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -204,15 +166,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1005552,
-          "Position": {
-            "X": 86.92553,
-            "Y": 15.260843,
-            "Z": -355.6889
-          },
-          "TerritoryId": 146,
+          "Position": [86.92553, 15.260843, -355.6889],
           "InteractionType": "CompleteQuest"
         }
       ]

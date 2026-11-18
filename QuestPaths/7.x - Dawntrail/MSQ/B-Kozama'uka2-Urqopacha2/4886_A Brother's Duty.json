@@ -1,48 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1046878,
-          "Position": {
-            "X": 542.53455,
-            "Y": 116.722374,
-            "Z": 153.58203
-          },
-          "TerritoryId": 1188,
+          "Position": [542.53455, 116.722374, 153.58203],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 2013610,
-          "Position": {
-            "X": 454.7036,
-            "Y": 112.077515,
-            "Z": 163.25623
-          },
-          "TerritoryId": 1188,
+          "Position": [454.7036, 112.077515, 163.25623],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1188,
       "Steps": [
         {
-          "Position": {
-            "X": 169.65424,
-            "Y": 110.795235,
-            "Z": 256.5983
-          },
-          "TerritoryId": 1188,
+          "Position": [169.65424, 110.795235, 256.5983],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -55,316 +43,181 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1046653,
-          "Position": {
-            "X": 160.29602,
-            "Y": 111.00074,
-            "Z": 258.83875
-          },
-          "TerritoryId": 1188,
+          "Position": [160.29602, 111.00074, 258.83875],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 2013612,
-          "Position": {
-            "X": 317.95215,
-            "Y": 115.92273,
-            "Z": 229.96863
-          },
-          "TerritoryId": 1188,
+          "Position": [317.95215, 115.92273, 229.96863],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1046654,
-          "Position": {
-            "X": 367.16077,
-            "Y": 109.99999,
-            "Z": 285.20248
-          },
-          "TerritoryId": 1188,
+          "Position": [367.16077, 109.99999, 285.20248],
           "InteractionType": "WalkTo"
         },
         {
           "DataId": 1046654,
-          "Position": {
-            "X": 373.7373,
-            "Y": 109.940544,
-            "Z": 292.05542
-          },
-          "TerritoryId": 1188,
+          "Position": [373.7373, 109.940544, 292.05542],
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 1
         },
         {
           "DataId": 1046654,
-          "Position": {
-            "X": 401.49612,
-            "Y": 110.34416,
-            "Z": 358.39096
-          },
-          "TerritoryId": 1188,
+          "Position": [401.49612, 110.34416, 358.39096],
           "InteractionType": "WalkTo"
         },
         {
           "DataId": 1046654,
-          "Position": {
-            "X": 405.0139,
-            "Y": 110.18579,
-            "Z": 363.32675
-          },
-          "TerritoryId": 1188,
+          "Position": [405.0139, 110.18579, 363.32675],
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 1
         },
         {
           "DataId": 1046654,
-          "Position": {
-            "X": 431.14557,
-            "Y": 110.30115,
-            "Z": 445.72592
-          },
-          "TerritoryId": 1188,
+          "Position": [431.14557, 110.30115, 445.72592],
           "InteractionType": "WalkTo",
           "NpcWaitDistance": 1
         },
         {
           "DataId": 1046654,
-          "Position": {
-            "X": 432.67133,
-            "Y": 111.30688,
-            "Z": 454.02933
-          },
-          "TerritoryId": 1188,
+          "Position": [432.67133, 111.30688, 454.02933],
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 1
         },
         {
           "DataId": 1046654,
-          "Position": {
-            "X": 414.60312,
-            "Y": 111.47869,
-            "Z": 583.3106
-          },
-          "TerritoryId": 1188,
+          "Position": [414.60312, 111.47869, 583.3106],
           "InteractionType": "WalkTo"
         },
         {
           "DataId": 1046654,
-          "Position": {
-            "X": 407.84457,
-            "Y": 111.124214,
-            "Z": 596.85754
-          },
-          "TerritoryId": 1188,
+          "Position": [407.84457, 111.124214, 596.85754],
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 1
         },
         {
           "DataId": 1046654,
-          "Position": {
-            "X": 337.6815,
-            "Y": 110.679726,
-            "Z": 659.7985
-          },
-          "TerritoryId": 1188,
+          "Position": [337.6815, 110.679726, 659.7985],
           "InteractionType": "WalkTo"
         },
         {
           "DataId": 1046654,
-          "Position": {
-            "X": 329.07404,
-            "Y": 110.1352,
-            "Z": 664.1191
-          },
-          "TerritoryId": 1188,
+          "Position": [329.07404, 110.1352, 664.1191],
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 1
         },
         {
           "DataId": 1046654,
-          "Position": {
-            "X": 260.1857,
-            "Y": 113.90375,
-            "Z": 718.9069
-          },
-          "TerritoryId": 1188,
+          "Position": [260.1857, 113.90375, 718.9069],
           "InteractionType": "WalkTo"
         },
         {
           "DataId": 1046654,
-          "Position": {
-            "X": 263.2977,
-            "Y": 115.22446,
-            "Z": 726.2601
-          },
-          "TerritoryId": 1188,
+          "Position": [263.2977, 115.22446, 726.2601],
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 1
         },
         {
           "DataId": 1046654,
-          "Position": {
-            "X": 302.6931,
-            "Y": 117.88865,
-            "Z": 758.6998
-          },
-          "TerritoryId": 1188,
+          "Position": [302.6931, 117.88865, 758.6998],
           "InteractionType": "WalkTo"
         },
         {
           "DataId": 1046654,
-          "Position": {
-            "X": 309.86523,
-            "Y": 118.87516,
-            "Z": 761.77924
-          },
-          "TerritoryId": 1188,
+          "Position": [309.86523, 118.87516, 761.77924],
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 1
         },
         {
           "DataId": 2013614,
-          "Position": {
-            "X": 336.99548,
-            "Y": 123.21655,
-            "Z": 778.6526
-          },
-          "TerritoryId": 1188,
+          "Position": [336.99548, 123.21655, 778.6526],
           "InteractionType": "WalkTo"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1046659,
-          "Position": {
-            "X": 381.548,
-            "Y": 121.013245,
-            "Z": 762.6797
-          },
-          "TerritoryId": 1188,
+          "Position": [381.548, 121.013245, 762.6797],
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1046659,
-          "Position": {
-            "X": 413.78464,
-            "Y": 117.67805,
-            "Z": 753.82654
-          },
-          "TerritoryId": 1188,
+          "Position": [413.78464, 117.67805, 753.82654],
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1046659,
-          "Position": {
-            "X": 430.26556,
-            "Y": 117.201416,
-            "Z": 746.65106
-          },
-          "TerritoryId": 1188,
+          "Position": [430.26556, 117.201416, 746.65106],
           "InteractionType": "WaitForNpcAtPosition",
           "DelaySecondsAtStart": 2
         },
         {
           "DataId": 1046659,
-          "Position": {
-            "X": 454.3518,
-            "Y": 117.324524,
-            "Z": 740.7899
-          },
-          "TerritoryId": 1188,
+          "Position": [454.3518, 117.324524, 740.7899],
           "InteractionType": "WaitForNpcAtPosition",
           "DelaySecondsAtStart": 2
         },
         {
-          "Position": {
-            "X": 494.93594,
-            "Y": 119.74193,
-            "Z": 718.53876
-          },
-          "TerritoryId": 1188,
+          "Position": [494.93594, 119.74193, 718.53876],
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 10
         },
         {
           "DataId": 1046659,
-          "Position": {
-            "X": 528.67334,
-            "Y": 121.77753,
-            "Z": 734.24115
-          },
-          "TerritoryId": 1188,
+          "Position": [528.67334, 121.77753, 734.24115],
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1046659,
-          "Position": {
-            "X": 541.26227,
-            "Y": 122.58829,
-            "Z": 731.3827
-          },
-          "TerritoryId": 1188,
+          "Position": [541.26227, 122.58829, 731.3827],
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 1
         },
         {
           "DataId": 1046659,
-          "Position": {
-            "X": 639.90125,
-            "Y": 118.65023,
-            "Z": 708.77124
-          },
-          "TerritoryId": 1188,
+          "Position": [639.90125, 118.65023, 708.77124],
           "InteractionType": "WalkTo"
         },
         {
           "DataId": 1046659,
-          "Position": {
-            "X": 671.42,
-            "Y": 118.15654,
-            "Z": 670.4708
-          },
-          "TerritoryId": 1188,
+          "Position": [671.42, 118.15654, 670.4708],
           "InteractionType": "WalkTo"
         },
         {
           "DataId": 2013617,
-          "Position": {
-            "X": 682.8259,
-            "Y": 116.96033,
-            "Z": 646.44836
-          },
-          "TerritoryId": 1188,
+          "Position": [682.8259, 116.96033, 646.44836],
           "InteractionType": "WalkTo"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1046661,
-          "Position": {
-            "X": 609.5215,
-            "Y": 119.490036,
-            "Z": 187.48755
-          },
-          "TerritoryId": 1188,
+          "Position": [609.5215, 119.490036, 187.48755],
           "InteractionType": "CompleteQuest"
         }
       ]

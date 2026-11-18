@@ -1,18 +1,14 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Kagekazu",
   "Comment": "Field aether currents only, built from the MSQ attune steps.",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 815,
       "Steps": [
         {
-          "Position": {
-            "X": -341.64484,
-            "Y": 46.191288,
-            "Z": -244.7952
-          },
-          "TerritoryId": 815,
+          "Position": [-341.64484, 46.191288, -244.7952],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -22,45 +18,25 @@
         },
         {
           "DataId": 2010050,
-          "Position": {
-            "X": -343.80103,
-            "Y": 46.98242,
-            "Z": -235.43152
-          },
-          "TerritoryId": 815,
+          "Position": [-343.80103, 46.98242, -235.43152],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818259
         },
         {
           "DataId": 2010044,
-          "Position": {
-            "X": 446.0669,
-            "Y": -60.56305,
-            "Z": -523.7049
-          },
-          "TerritoryId": 815,
+          "Position": [446.0669, -60.56305, -523.7049],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818253
         },
         {
           "DataId": 2010047,
-          "Position": {
-            "X": 344.6554,
-            "Y": -66.54462,
-            "Z": 538.9332
-          },
-          "TerritoryId": 815,
+          "Position": [344.6554, -66.54462, 538.9332],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818256
         },
         {
           "DataId": 2010052,
-          "Position": {
-            "X": 158.804,
-            "Y": -61.09476,
-            "Z": 674.8915
-          },
-          "TerritoryId": 815,
+          "Position": [158.804, -61.09476, 674.8915],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818261
         }

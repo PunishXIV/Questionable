@@ -1,18 +1,14 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1027691,
-          "Position": {
-            "X": 416.80017,
-            "Y": 87.947784,
-            "Z": -751.09485
-          },
-          "TerritoryId": 816,
+          "Position": [416.80017, 87.947784, -751.09485],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -26,25 +22,16 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "$": "Attempt to avoid Garden Crocota combat",
-          "Position": {
-            "X": 602.7202,
-            "Y": 123.73922,
-            "Z": -860.4524
-          },
-          "TerritoryId": 816,
+          "Position": [602.7202, 123.73922, -860.4524],
           "InteractionType": "None"
         },
         {
           "DataId": 2010721,
-          "Position": {
-            "X": 600.4271,
-            "Y": 111.283936,
-            "Z": -857.8469
-          },
-          "TerritoryId": 816,
+          "Position": [600.4271, 111.283936, -857.8469],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -53,12 +40,7 @@
         },
         {
           "DataId": 2010718,
-          "Position": {
-            "X": 620.2639,
-            "Y": 109.147705,
-            "Z": -871.1223
-          },
-          "TerritoryId": 816,
+          "Position": [620.2639, 109.147705, -871.1223],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -67,12 +49,7 @@
         },
         {
           "DataId": 2010719,
-          "Position": {
-            "X": 642.75574,
-            "Y": 109.941284,
-            "Z": -827.4815
-          },
-          "TerritoryId": 816,
+          "Position": [642.75574, 109.941284, -827.4815],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -81,12 +58,7 @@
         },
         {
           "DataId": 2010720,
-          "Position": {
-            "X": 625.4824,
-            "Y": 109.69714,
-            "Z": -824.9485
-          },
-          "TerritoryId": 816,
+          "Position": [625.4824, 109.69714, -824.9485],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -97,15 +69,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1027691,
-          "Position": {
-            "X": 416.80017,
-            "Y": 87.947784,
-            "Z": -751.09485
-          },
-          "TerritoryId": 816,
+          "Position": [416.80017, 87.947784, -751.09485],
           "InteractionType": "CompleteQuest"
         }
       ]

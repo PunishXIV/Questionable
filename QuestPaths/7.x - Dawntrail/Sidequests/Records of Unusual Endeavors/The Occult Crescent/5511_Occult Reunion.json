@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1053805,
-          "Position": {
-            "X": 193.093,
-            "Y": -17.9643,
-            "Z": 45.0256
-          },
-          "TerritoryId": 1185,
+          "Position": [193.093, -17.9643, 45.0256],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1053805 (expedition messenger)"
         }
@@ -21,26 +17,18 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 2014671,
-          "Position": {
-            "X": 206.31714,
-            "Y": -17.990417,
-            "Z": 63.309692
-          },
-          "TerritoryId": 1185,
+          "Position": [206.31714, -17.990417, 63.309692],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1278,
           "SkipConditions": {"StepIf": {"NotInTerritory": [1185]}}
         },
         {
           "DataId": 1059648,
-          "Position": {
-            "X": 0.694185,
-            "Y": 0,
-            "Z": -21.1229
-          },
+          "Position": [0.694185, 0, -21.1229],
           "TerritoryId": 1278,
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1059648 (Ketenramm)"
@@ -49,15 +37,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1278,
       "Steps": [
         {
           "DataId": 1053611,
-          "Position": {
-            "X": -77.9279,
-            "Y": 4.98969,
-            "Z": -15.3653
-          },
-          "TerritoryId": 1278,
+          "Position": [-77.9279, 4.98969, -15.3653],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1053611 (Jeffroy)"
         }

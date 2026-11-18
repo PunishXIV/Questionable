@@ -1,80 +1,56 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047097,
-          "Position": {
-            "X": 190.598,
-            "Y": -14,
-            "Z": 12.218
-          },
-          "TerritoryId": 1185,
+          "Position": [190.598, -14, 12.218],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1049441,
-          "Position": {
-            "X": -215.86938,
-            "Y": 34.99913,
-            "Z": -627.2221
-          },
-          "TerritoryId": 1191,
+          "Position": [-215.86938, 34.99913, -627.2221],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "DataId": 1049439,
-          "Position": {
-            "X": -219.78186,
-            "Y": 34.999146,
-            "Z": -647.54144
-          },
-          "TerritoryId": 1191,
+          "Position": [-219.78186, 34.999146, -647.54144],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 1049440,
-          "Position": {
-            "X": -285.32843,
-            "Y": 37.00003,
-            "Z": -574.15125
-          },
-          "TerritoryId": 1191,
+          "Position": [-285.32843, 37.00003, -574.15125],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1191,
       "Steps": [
         {
-          "TerritoryId": 1191,
           "StopDistance": 5,
           "InteractionType": "Instruction",
           "Comment": "Purchase a Popper Lure (or 5) from:\n* Scrip Exchange (Purple Gatherer's)\n* Mesouaidonque (Cosmocredit)\nThen click Skip"
         },
         {
-          "Position": {
-            "X": -692.9564,
-            "Y": -13.798596,
-            "Z": 611.2574
-          },
-          "TerritoryId": 1191,
+          "Position": [-692.9564, -13.798596, 611.2574],
           "InteractionType": "WalkTo"
         },
         {
-          "TerritoryId": 1191,
           "InteractionType": "Fish",
           "ItemsToGather": [
             {
@@ -85,11 +61,7 @@
         },
         {
           "DataId": 1047097,
-          "Position": {
-            "X": 190.56995,
-            "Y": -14,
-            "Z": 12.191956
-          },
+          "Position": [190.56995, -14, 12.191956],
           "TerritoryId": 1185,
           "InteractionType": "Interact"
         }
@@ -97,15 +69,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047096,
-          "Position": {
-            "X": 190.615,
-            "Y": -14,
-            "Z": 12.4277
-          },
-          "TerritoryId": 1185,
+          "Position": [190.615, -14, 12.4277],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

@@ -1,40 +1,31 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 147,
       "Steps": [
         {
           "$": "Switch to combat job",
           "InteractionType": "SwitchClass",
-          "TargetClass": "ConfiguredCombatJob",
-          "TerritoryId": 147
+          "TargetClass": "ConfiguredCombatJob"
         },
         {
           "Comment": "Accept Trial Leve",
           "DataId": 1002398,
-          "Position": {
-            "X": 34.8973,
-            "Y": 4.92865,
-            "Z": 396.719
-          },
-          "TerritoryId": 147,
+          "Position": [34.8973, 4.92865, 396.719],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 147,
       "Steps": [
         {
-          "Position": {
-            "X": 12.30949,
-            "Y": 4.2688856,
-            "Z": 298.0603
-          },
-          "TerritoryId": 147,
+          "Position": [12.30949, 4.2688856, 298.0603],
           "InteractionType": "Instruction",
           "Comment": "Complete the Trial Levequest\nComplete manually or can use Battlevest"
         }
@@ -42,15 +33,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1002398,
-          "Position": {
-            "X": 34.8973,
-            "Y": 4.92865,
-            "Z": 396.719
-          },
-          "TerritoryId": 147,
+          "Position": [34.8973, 4.92865, 396.719],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,19 +1,15 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Kiarra",
   "LastChecked": { "Username": "ShermTank", "Date": "2026-05-26" },
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1043621,
-          "Position": {
-            "X": 174.12073,
-            "Y": 14.095924,
-            "Z": 667.5669
-          },
-          "TerritoryId": 135,
+          "Position": [174.12073, 14.095924, 667.5669],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1055,
           "DialogueChoices": [
@@ -33,11 +29,7 @@
         },
         {
           "DataId": 1044156,
-          "Position": {
-            "X": -276.3562,
-            "Y": 39.993896,
-            "Z": 224.26172
-          },
+          "Position": [-276.3562, 39.993896, 224.26172],
           "TerritoryId": 1055,
           "InteractionType": "AcceptQuest"
         }
@@ -45,15 +37,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1055,
       "Steps": [
         {
           "DataId": 2013035,
-          "Position": {
-            "X": -389.85278,
-            "Y": 3.250122,
-            "Z": 238.36108
-          },
-          "TerritoryId": 1055,
+          "Position": [-389.85278, 3.250122, 238.36108],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1005552,
-          "Position": {
-            "X": 86.92553,
-            "Y": 15.260843,
-            "Z": -355.6889
-          },
-          "TerritoryId": 146,
+          "Position": [86.92553, 15.260843, -355.6889],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "$": "There's a fortune teller that walks in a circle, moved the position so we don't get stuck following them forever without attacking",
-          "Position": {
-            "X": 552.81537,
-            "Y": 7.599618,
-            "Z": -90.76926
-          },
-          "TerritoryId": 146,
+          "Position": [552.81537, 7.599618, -90.76926],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -43,30 +35,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 2002918,
-          "Position": {
-            "X": 483.98703,
-            "Y": 9.217022,
-            "Z": -162.10231
-          },
-          "TerritoryId": 146,
+          "Position": [483.98703, 9.217022, -162.10231],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1005552,
-          "Position": {
-            "X": 86.92553,
-            "Y": 15.260843,
-            "Z": -355.6889
-          },
-          "TerritoryId": 146,
+          "Position": [86.92553, 15.260843, -355.6889],
           "InteractionType": "CompleteQuest"
         }
       ]

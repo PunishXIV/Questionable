@@ -1,43 +1,35 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1023612,
-          "Position": {
-            "X": 135.51526,
-            "Y": 12,
-            "Z": 107.04199
-          },
-          "TerritoryId": 628,
+          "Position": [135.51526, 12, 107.04199],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1023613,
-          "Position": {
-            "X": 71.12219,
-            "Y": -7.8500767,
-            "Z": -251.66705
-          },
-          "TerritoryId": 628,
+          "Position": [71.12219, -7.8500767, -251.66705],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 628,
       "Steps": [
         {
-          "TerritoryId": 628,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 262,
@@ -48,15 +40,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1023612,
-          "Position": {
-            "X": 135.51526,
-            "Y": 12,
-            "Z": 107.04199
-          },
-          "TerritoryId": 628,
+          "Position": [135.51526, 12, 107.04199],
           "InteractionType": "CompleteQuest"
         }
       ]

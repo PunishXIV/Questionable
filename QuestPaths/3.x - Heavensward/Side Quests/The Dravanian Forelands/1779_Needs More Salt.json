@@ -1,28 +1,20 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 398,
       "Steps": [
         {
           "$": "Path to building/Marchechamp",
-          "Position": {
-            "X": 471.40442,
-            "Y": -51.141407,
-            "Z": 36.84344
-          },
-          "TerritoryId": 398,
+          "Position": [471.40442, -51.141407, 36.84344],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 470.02356,
-                  "Y": -49.89133,
-                  "Z": 20.370789
-                },
+                "Position": [470.02356, -49.89133, 20.370789],
                 "TerritoryId": 398,
                 "MaximumDistance": 10
               }
@@ -32,36 +24,23 @@
         {
           "$": "Marcechamp",
           "DataId": 1011916,
-          "Position": {
-            "X": 470.02356,
-            "Y": -49.89133,
-            "Z": 20.370789
-          },
-          "TerritoryId": 398,
+          "Position": [470.02356, -49.89133, 20.370789],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
           "$": "Path out of building",
-          "Position": {
-            "X": 471.40442,
-            "Y": -51.141407,
-            "Z": 36.84344
-          },
-          "TerritoryId": 398,
+          "Position": [471.40442, -51.141407, 36.84344],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
-                "Position": {
-                  "X": 470.02356,
-                  "Y": -49.89133,
-                  "Z": 20.370789
-                },
+                "Position": [470.02356, -49.89133, 20.370789],
                 "TerritoryId": 398,
                 "MaximumDistance": 5
               }
@@ -71,12 +50,7 @@
         {
           "$": "West",
           "DataId": 2005603,
-          "Position": {
-            "X": 641.90125,
-            "Y": -34.13446,
-            "Z": 332.0515
-          },
-          "TerritoryId": 398,
+          "Position": [641.90125, -34.13446, 332.0515],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001609,
@@ -88,12 +62,7 @@
         {
           "$": "Northeast",
           "DataId": 2005605,
-          "Position": {
-            "X": 663.4164,
-            "Y": -32.48651,
-            "Z": 321.37012
-          },
-          "TerritoryId": 398,
+          "Position": [663.4164, -32.48651, 321.37012],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001609,
@@ -105,12 +74,7 @@
         {
           "$": "Southeast",
           "DataId": 2005604,
-          "Position": {
-            "X": 665.3695,
-            "Y": -30.71643,
-            "Z": 340.6881
-          },
-          "TerritoryId": 398,
+          "Position": [665.3695, -30.71643, 340.6881],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001609,
@@ -123,16 +87,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "$": "Marcechamp",
           "DataId": 1011916,
-          "Position": {
-            "X": 470.02356,
-            "Y": -49.89133,
-            "Z": 20.370789
-          },
-          "TerritoryId": 398,
+          "Position": [470.02356, -49.89133, 20.370789],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1780
         }

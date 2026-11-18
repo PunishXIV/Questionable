@@ -1,38 +1,29 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 1002626,
-          "Position": {
-            "X": 207.2633,
-            "Y": 112.860374,
-            "Z": -222.43079
-          },
-          "TerritoryId": 134,
+          "Position": [207.2633, 112.860374, -222.43079],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 134,
       "Steps": [
         {
-          "TerritoryId": 134,
           "InteractionType": "EquipRecommended"
         },
         {
           "DataId": 1003257,
-          "Position": {
-            "X": 201.70898,
-            "Y": 98.422874,
-            "Z": -206.10364
-          },
-          "TerritoryId": 134,
+          "Position": [201.70898, 98.422874, -206.10364],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -53,12 +44,7 @@
         },
         {
           "DataId": 1003257,
-          "Position": {
-            "X": 201.70898,
-            "Y": 98.422874,
-            "Z": -206.10364
-          },
-          "TerritoryId": 134,
+          "Position": [201.70898, 98.422874, -206.10364],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -71,7 +57,6 @@
           ]
         },
         {
-          "TerritoryId": 134,
           "InteractionType": "EquipItem",
           "ItemId": 2653,
           "SkipConditions": {
@@ -83,7 +68,6 @@
           }
         },
         {
-          "TerritoryId": 134,
           "InteractionType": "EquipItem",
           "ItemId": 2655,
           "SkipConditions": {
@@ -96,12 +80,7 @@
         },
         {
           "DataId": 1002626,
-          "Position": {
-            "X": 207.2633,
-            "Y": 112.860374,
-            "Z": -222.43079
-          },
-          "TerritoryId": 134,
+          "Position": [207.2633, 112.860374, -222.43079],
           "InteractionType": "CompleteQuest",
           "Comment": "All starting gear (except the hat) is ilvl 5 already"
         }

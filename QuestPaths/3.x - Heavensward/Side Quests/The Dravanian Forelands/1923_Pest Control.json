@@ -1,29 +1,21 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "Comment": "Choice of Chocobo Dyeing rewards.\nYou may want to disable RewardPick (RP)\nin TextAdvance to choose what you want.",
   "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 398,
       "Steps": [
         {
           "$": "Path to Hervoix",
-          "Position": {
-            "X": 453.9474,
-            "Y": -51.141403,
-            "Z": 19.29933
-          },
-          "TerritoryId": 398,
+          "Position": [453.9474, -51.141403, 19.29933],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 455.5581,
-                  "Y": -51.141403,
-                  "Z": 21.591492
-                },
+                "Position": [455.5581, -51.141403, 21.591492],
                 "TerritoryId": 398,
                 "MaximumDistance": 5
               }
@@ -33,51 +25,34 @@
         {
           "$": "Hervoix",
           "DataId": 1014502,
-          "Position": {
-            "X": 455.5581,
-            "Y": -51.141403,
-            "Z": 21.591492
-          },
-          "TerritoryId": 398,
+          "Position": [455.5581, -51.141403, 21.591492],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1011924,
-          "Position": {
-            "X": 849.0576,
-            "Y": -37.669926,
-            "Z": -39.56665
-          },
-          "TerritoryId": 398,
+          "Position": [849.0576, -37.669926, -39.56665],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "$": "Fly to area",
-          "Position": {
-            "X": 840.0293,
-            "Y": -32.40285,
-            "Z": -309.73672
-          },
-          "TerritoryId": 398,
+          "Position": [840.0293, -32.40285, -309.73672],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 840.0293,
-                  "Y": -32.40285,
-                  "Z": -309.73672
-                },
+                "Position": [840.0293, -32.40285, -309.73672],
                 "TerritoryId": 398,
                 "MaximumDistance": 5
               }
@@ -86,12 +61,7 @@
         },
         {
           "$": "Combat",
-          "Position": {
-            "X": 839.72797,
-            "Y": -31.559177,
-            "Z": -319.8049
-          },
-          "TerritoryId": 398,
+          "Position": [839.72797, -31.559177, -319.8049],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -103,15 +73,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1014502,
-          "Position": {
-            "X": 455.5581,
-            "Y": -51.141403,
-            "Z": 21.591492
-          },
-          "TerritoryId": 398,
+          "Position": [455.5581, -51.141403, 21.591492],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1924,
           "$": "This is one of three quests unlocked by 1922; will do other quests in index order (1924, 1925)"

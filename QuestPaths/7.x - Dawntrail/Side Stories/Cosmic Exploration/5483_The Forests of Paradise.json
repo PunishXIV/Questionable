@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1052581,
-          "Position": {
-            "X": 27.232807,
-            "Y": -137.41669,
-            "Z": -411.65918
-          },
-          "TerritoryId": 959,
+          "Position": [27.232807, -137.41669, -411.65918],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1310,
           "Comment": "Select the destination Oizys (#3)",
@@ -28,11 +24,7 @@
         },
         {
           "DataId": 1053349,
-          "Position": {
-            "X": -214.03827,
-            "Y": 0.49999455,
-            "Z": 67.429565
-          },
+          "Position": [-214.03827, 0.49999455, 67.429565],
           "TerritoryId": 1310,
           "InteractionType": "AcceptQuest"
         }
@@ -40,15 +32,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1310,
       "Steps": [
         {
           "DataId": 1052644,
-          "Position": {
-            "X": -204.42517,
-            "Y": 0.49999294,
-            "Z": 66.48352
-          },
-          "TerritoryId": 1310,
+          "Position": [-204.42517, 0.49999294, 66.48352],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -62,15 +50,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1319,
       "Steps": [
         {
           "DataId": 1056831,
-          "Position": {
-            "X": 363.302,
-            "Y": 204.1391,
-            "Z": 397.8484
-          },
-          "TerritoryId": 1319,
+          "Position": [363.302, 204.1391, 397.8484],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5484
         }

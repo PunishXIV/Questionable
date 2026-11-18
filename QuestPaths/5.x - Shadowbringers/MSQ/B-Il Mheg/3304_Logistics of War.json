@@ -1,119 +1,84 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 819,
       "Steps": [
         {
           "DataId": 1027246,
-          "Position": {
-            "X": -136.98022,
-            "Y": 0,
-            "Z": -73.777466
-          },
-          "TerritoryId": 819,
+          "Position": [-136.98022, 0, -73.777466],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1028945,
-          "Position": {
-            "X": 588.55554,
-            "Y": 9.151089,
-            "Z": 342.7328
-          },
-          "TerritoryId": 813,
+          "Position": [588.55554, 9.151089, 342.7328],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "Position": {
-            "X": -163.7502,
-            "Y": 5.7616043,
-            "Z": -84.08555
-          },
-          "TerritoryId": 813,
+          "Position": [-163.7502, 5.7616043, -84.08555],
           "InteractionType": "WalkTo"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 813,
       "Steps": [
         {
-          "Position": {
-            "X": -621.27985,
-            "Y": 56.75789,
-            "Z": -151.14738
-          },
-          "TerritoryId": 813,
+          "Position": [-621.27985, 56.75789, -151.14738],
           "InteractionType": "WalkTo"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1027395,
-          "Position": {
-            "X": -618.06665,
-            "Y": 56.75789,
-            "Z": -148.24146
-          },
-          "TerritoryId": 813,
+          "Position": [-618.06665, 56.75789, -148.24146],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 2010032,
-          "Position": {
-            "X": -619.6537,
-            "Y": 51.499146,
-            "Z": -199.11499
-          },
-          "TerritoryId": 813,
+          "Position": [-619.6537, 51.499146, -199.11499],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818231
         },
         {
-          "TerritoryId": 813,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Lakeland - Ostall Imperative"
         },
         {
           "DataId": 1028312,
-          "Position": {
-            "X": -589.01355,
-            "Y": 67.179344,
-            "Z": -173.84613
-          },
-          "TerritoryId": 813,
+          "Position": [-589.01355, 67.179344, -173.84613],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179722
         },
         {
           "DataId": 1028947,
-          "Position": {
-            "X": -648.9509,
-            "Y": 64.32663,
-            "Z": -271.65643
-          },
-          "TerritoryId": 813,
+          "Position": [-648.9509, 64.32663, -271.65643],
           "InteractionType": "CompleteQuest"
         }
       ]

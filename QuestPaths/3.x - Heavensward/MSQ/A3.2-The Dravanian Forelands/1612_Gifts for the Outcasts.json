@@ -1,65 +1,47 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1012628,
-          "Position": {
-            "X": -247.63867,
-            "Y": -30.290216,
-            "Z": 109.391846
-          },
-          "TerritoryId": 398,
+          "Position": [-247.63867, -30.290216, 109.391846],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "TerritoryId": 398,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "The Dravanian Forelands - Anyx Trine",
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "The Dravanian Forelands - Anyx Trine"}}
         },
         {
           "DataId": 2005696,
-          "Position": {
-            "X": -209.36908,
-            "Y": -35.41626,
-            "Z": 162.92053
-          },
-          "TerritoryId": 398,
+          "Position": [-209.36908, -35.41626, 162.92053],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179688
         },
         {
           "DataId": 1011916,
-          "Position": {
-            "X": 470.02356,
-            "Y": -49.89133,
-            "Z": 20.370789
-          },
-          "TerritoryId": 398,
+          "Position": [470.02356, -49.89133, 20.370789],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": 290.04944,
-            "Y": -65.506195,
-            "Z": 2.676069
-          },
-          "TerritoryId": 398,
+          "Position": [290.04944, -65.506195, 2.676069],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -75,15 +57,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1012629,
-          "Position": {
-            "X": 200,
-            "Y": -55.462486,
-            "Z": -233.44781
-          },
-          "TerritoryId": 398,
+          "Position": [200, -55.462486, -233.44781],
           "InteractionType": "CompleteQuest"
         }
       ]

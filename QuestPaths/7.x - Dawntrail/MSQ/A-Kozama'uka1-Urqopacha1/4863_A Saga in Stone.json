@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1046511,
-          "Position": {
-            "X": -196.58203,
-            "Y": -5.0000086,
-            "Z": 127.18384
-          },
-          "TerritoryId": 1185,
+          "Position": [-196.58203, -5.0000086, 127.18384],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 2013593,
-          "Position": {
-            "X": -195.75806,
-            "Y": -4.928711,
-            "Z": 129.80847
-          },
-          "TerritoryId": 1185,
+          "Position": [-195.75806, -4.928711, 129.80847],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -62,85 +54,61 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1185,
       "Steps": [
         {
-          "TerritoryId": 1185,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Tuliyollal] The For'ard Cabins"
         },
         {
           "DataId": 1046512,
-          "Position": {
-            "X": -46.433228,
-            "Y": -6.080007,
-            "Z": 161.08948
-          },
-          "TerritoryId": 1185,
+          "Position": [-46.433228, -6.080007, 161.08948],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1046521,
-          "Position": {
-            "X": -46.616333,
-            "Y": -17.97287,
-            "Z": 180.3158
-          },
-          "TerritoryId": 1185,
+          "Position": [-46.616333, -17.97287, 180.3158],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1046515,
-          "Position": {
-            "X": -44.90735,
-            "Y": -10.000009,
-            "Z": 138.71973
-          },
-          "TerritoryId": 1185,
+          "Position": [-44.90735, -10.000009, 138.71973],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
-          "TerritoryId": 1185,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Tuliyollal] Bayside Bevy Marketplace"
         },
         {
-          "Position": {
-            "X": -68.179695,
-            "Y": 85.001854,
-            "Z": -56.396465
-          },
-          "TerritoryId": 1185,
+          "Position": [-68.179695, 85.001854, -56.396465],
           "InteractionType": "WalkTo",
           "Comment": "Resplentend Quarter Lamp nav"
         },
         {
-          "TerritoryId": 1185,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Tuliyollal] Vollok Shoonsa"
         },
         {
           "DataId": 1046517,
-          "Position": {
-            "X": -178.97314,
-            "Y": 120.749985,
-            "Z": -320.21063
-          },
-          "TerritoryId": 1185,
+          "Position": [-178.97314, 120.749985, -320.21063],
           "InteractionType": "CompleteQuest"
         }
       ]

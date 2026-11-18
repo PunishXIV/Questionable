@@ -1,36 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Raitono",
   "Comment": "This fish prefers Heat Waves weather",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-20"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1000857,
-          "Position": {
-            "X": -165.27,
-            "Y": 5.23383,
-            "Z": 164.294
-          },
-          "TerritoryId": 129,
+          "Position": [-165.27, 5.23383, 164.294],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "Comment": "Purchase bait",
           "DataId": 1003254,
-          "Position": {
-            "X": -246.52553,
-            "Y": 16.2,
-            "Z": 39.870853
-          },
-          "TerritoryId": 129,
+          "Position": [-246.52553, 16.2, 39.870853],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -48,11 +40,7 @@
         },
         {
           "DataId": 1004962,
-          "Position": {
-            "X": -300.27448,
-            "Y": 7.4016953,
-            "Z": 409.55316
-          },
+          "Position": [-300.27448, 7.4016953, 409.55316],
           "TerritoryId": 146,
           "InteractionType": "Interact"
         }
@@ -60,19 +48,14 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": 176.34221,
-            "Y": -1.1806471,
-            "Z": 736.2771
-          },
-          "TerritoryId": 146,
+          "Position": [176.34221, -1.1806471, 736.2771],
           "InteractionType": "WalkTo"
         },
         {
           "Comment": "Fish for 1x Desert Catfish",
-          "TerritoryId": 146,
           "InteractionType": "Fish",
           "ItemsToGather": [
             {
@@ -83,11 +66,7 @@
         },
         {
           "DataId": 1003628,
-          "Position": {
-            "X": -184.75,
-            "Y": 4,
-            "Z": 169.295
-          },
+          "Position": [-184.75, 4, 169.295],
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1116

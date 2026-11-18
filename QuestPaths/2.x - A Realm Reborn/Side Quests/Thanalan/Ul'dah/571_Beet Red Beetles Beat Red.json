@@ -1,32 +1,24 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1003896,
-          "Position": {
-            "X": -96.1471,
-            "Y": 6.54607,
-            "Z": 21.2863
-          },
-          "TerritoryId": 131,
+          "Position": [-96.1471, 6.54607, 21.2863],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": 358.55273,
-            "Y": 74.743355,
-            "Z": 161.29245
-          },
-          "TerritoryId": 140,
+          "Position": [358.55273, 74.743355, 161.29245],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -40,15 +32,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1003896,
-          "Position": {
-            "X": -96.17767,
-            "Y": 6.5999684,
-            "Z": 21.286316
-          },
-          "TerritoryId": 131,
+          "Position": [-96.17767, 6.5999684, 21.286316],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {
     "Username": "alydev",
@@ -8,15 +8,11 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1052581,
-          "Position": {
-            "X": 27.232807,
-            "Y": -137.41669,
-            "Z": -411.65918
-          },
-          "TerritoryId": 959,
+          "Position": [27.232807, -137.41669, -411.65918],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1291,
           "Comment": "Select the destination Phaenna (#2)",
@@ -31,11 +27,7 @@
         },
         {
           "DataId": 1053331,
-          "Position": {
-            "X": 350.5454,
-            "Y": 52.612267,
-            "Z": -438.40698
-          },
+          "Position": [350.5454, 52.612267, -438.40698],
           "TerritoryId": 1291,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
@@ -50,15 +42,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1291,
       "Steps": [
         {
           "DataId": 1053332,
-          "Position": {
-            "X": 446.98242,
-            "Y": 59.965904,
-            "Z": -479.81995
-          },
-          "TerritoryId": 1291,
+          "Position": [446.98242, 59.965904, -479.81995],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -72,15 +60,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1291,
       "Steps": [
         {
           "DataId": 1053331,
-          "Position": {
-            "X": 350.5454,
-            "Y": 52.612267,
-            "Z": -438.40698
-          },
-          "TerritoryId": 1291,
+          "Position": [350.5454, 52.612267, -438.40698],
           "InteractionType": "CompleteQuest"
         }
       ]

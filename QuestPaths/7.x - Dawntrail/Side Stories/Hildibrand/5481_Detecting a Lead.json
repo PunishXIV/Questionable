@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1053655,
-          "Position": {
-            "X": 231.675,
-            "Y": 50.7362,
-            "Z": 210.254
-          },
-          "TerritoryId": 1186,
+          "Position": [231.675, 50.7362, 210.254],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1053655 (Hardiboiled)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1054748,
-          "Position": {
-            "X": 441.55,
-            "Y": 59.9832,
-            "Z": 88.9143
-          },
-          "TerritoryId": 1186,
+          "Position": [441.55, 59.9832, 88.9143],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1054748 (Mymond)"
         }
@@ -37,15 +29,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1058941,
-          "Position": {
-            "X": -246.869,
-            "Y": 39.0238,
-            "Z": -482.382
-          },
-          "TerritoryId": 1191,
+          "Position": [-246.869, 39.0238, -482.382],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1058941 (Circine)"
         }
@@ -53,15 +41,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1058957,
-          "Position": {
-            "X": -252.342,
-            "Y": 37,
-            "Z": -495.573
-          },
-          "TerritoryId": 1191,
+          "Position": [-252.342, 37, -495.573],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1058957 (Hardiboiled)",
           "DialogueChoices": [
@@ -76,15 +60,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1049153,
-          "Position": {
-            "X": 246.654,
-            "Y": 51.4681,
-            "Z": 158.062
-          },
-          "TerritoryId": 1186,
+          "Position": [246.654, 51.4681, 158.062],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1049153 (Saralla)"
         }
@@ -92,15 +72,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1058952,
-          "Position": {
-            "X": -323.236,
-            "Y": 4.58961,
-            "Z": -47.1466
-          },
-          "TerritoryId": 1186,
+          "Position": [-323.236, 4.58961, -47.1466],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1058952 (Hardiboiled)"
         }
@@ -108,15 +84,11 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 2015339,
-          "Position": {
-            "X": -327.098,
-            "Y": 5.82137,
-            "Z": -45.9825
-          },
-          "TerritoryId": 1186,
+          "Position": [-327.098, 5.82137, -45.9825],
           "InteractionType": "Say",
           "ChatMessage": {"Key": "TEXT_CHRHDB951_05481_SAYTODO_000_135"},
           "$": "auto: todo location -> 2015339 (data terminal)"
@@ -125,15 +97,11 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1058952,
-          "Position": {
-            "X": -323.236,
-            "Y": 4.58961,
-            "Z": -47.1466
-          },
-          "TerritoryId": 1186,
+          "Position": [-323.236, 4.58961, -47.1466],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1058952 (Hardiboiled)"
         }
@@ -141,15 +109,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1058957,
-          "Position": {
-            "X": -252.342,
-            "Y": 37,
-            "Z": -495.573
-          },
-          "TerritoryId": 1191,
+          "Position": [-252.342, 37, -495.573],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1058957 (Hardiboiled)"
         }

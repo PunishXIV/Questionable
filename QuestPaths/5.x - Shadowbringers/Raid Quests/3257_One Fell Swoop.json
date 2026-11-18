@@ -1,40 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 815,
       "Steps": [
         {
           "DataId": 2009985,
-          "Position": {
-            "X": 385.0918,
-            "Y": -63.279236,
-            "Z": 511.49768
-          },
-          "TerritoryId": 815,
+          "Position": [385.0918, -63.279236, 511.49768],
           "InteractionType": "Interact",
           "TargetTerritoryId": 878,
           "SkipConditions": {"StepIf": {"InTerritory": [857]}}
         },
         {
           "DataId": 2009981,
-          "Position": {
-            "X": -14.66394,
-            "Y": -2.609314,
-            "Z": 23.819275
-          },
+          "Position": [-14.66394, -2.609314, 23.819275],
           "TerritoryId": 878,
           "InteractionType": "Interact",
           "TargetTerritoryId": 857
         },
         {
           "DataId": 1030110,
-          "Position": {
-            "X": 99.99231,
-            "Y": -7.687662E-13,
-            "Z": 92.51538
-          },
+          "Position": [99.99231, -7.687662E-13, 92.51538],
           "TerritoryId": 857,
           "InteractionType": "AcceptQuest"
         }
@@ -42,9 +30,9 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 878,
       "Steps": [
         {
-          "TerritoryId": 878,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 684,
@@ -55,15 +43,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 857,
       "Steps": [
         {
           "DataId": 1030110,
-          "Position": {
-            "X": 99.99231,
-            "Y": -7.687662E-13,
-            "Z": 92.51538
-          },
-          "TerritoryId": 857,
+          "Position": [99.99231, -7.687662E-13, 92.51538],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3258
         }

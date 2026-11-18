@@ -1,78 +1,58 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1031025,
-          "Position": {
-            "X": -79.75891,
-            "Y": 37.968338,
-            "Z": -531.8532
-          },
-          "TerritoryId": 816,
+          "Position": [-79.75891, 37.968338, -531.8532],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1027695,
-          "Position": {
-            "X": 441.64185,
-            "Y": 89.80711,
-            "Z": -653.43713
-          },
-          "TerritoryId": 816,
+          "Position": [441.64185, 89.80711, -653.43713],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1031028,
-          "Position": {
-            "X": 435.04993,
-            "Y": 89.67002,
-            "Z": -654.2916
-          },
-          "TerritoryId": 816,
+          "Position": [435.04993, 89.67002, -654.2916],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 2010484,
-          "Position": {
-            "X": 204.91333,
-            "Y": 73.502686,
-            "Z": -756.466
-          },
-          "TerritoryId": 816,
+          "Position": [204.91333, 73.502686, -756.466],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1030716,
-          "Position": {
-            "X": 37.76599,
-            "Y": 53.890167,
-            "Z": -649.2866
-          },
-          "TerritoryId": 816,
+          "Position": [37.76599, 53.890167, -649.2866],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3430
         }

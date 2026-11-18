@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": [
     "liza",
     "alydev"
@@ -8,38 +8,26 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1052560,
-          "Position": {
-            "X": 589.3186,
-            "Y": -142.89168,
-            "Z": 729.4575
-          },
-          "TerritoryId": 1189,
+          "Position": [589.3186, -142.89168, 729.4575],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "Position": {
-            "X": -669.549,
-            "Y": -165.500,
-            "Z": 374.399
-          },
-          "TerritoryId": 1189,
+          "Position": [-669.549, -165.500, 374.399],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": -669.549,
-                  "Y": -165.500,
-                  "Z": 374.399
-                },
+                "Position": [-669.549, -165.500, 374.399],
                 "TerritoryId": 1189,
                 "MaximumDistance": 100
               }
@@ -47,7 +35,6 @@
           }
         },
         {
-          "TerritoryId": 1189,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -67,7 +54,6 @@
           }
         },
         {
-          "TerritoryId": 1189,
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Botanist"
@@ -88,12 +74,7 @@
         },
         {
           "DataId": 1052560,
-          "Position": {
-            "X": 589.3186,
-            "Y": -142.89168,
-            "Z": 729.4575
-          },
-          "TerritoryId": 1189,
+          "Position": [589.3186, -142.89168, 729.4575],
           "InteractionType": "CompleteQuest"
         }
       ]

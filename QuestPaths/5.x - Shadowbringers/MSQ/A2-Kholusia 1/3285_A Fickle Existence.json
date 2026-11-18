@@ -1,65 +1,47 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1029814,
-          "Position": {
-            "X": 165.78918,
-            "Y": 41.141296,
-            "Z": 676.9663
-          },
-          "TerritoryId": 814,
+          "Position": [165.78918, 41.141296, 676.9663],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 814,
       "Steps": [
         {
-          "TerritoryId": 814,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Kholusia - Wright"
         },
         {
           "DataId": 1027431,
-          "Position": {
-            "X": -236.95734,
-            "Y": 21.472721,
-            "Z": 346.79175
-          },
-          "TerritoryId": 814,
+          "Position": [-236.95734, 21.472721, 346.79175],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179711
         },
         {
           "DataId": 1027516,
-          "Position": {
-            "X": -266.0716,
-            "Y": 21.746891,
-            "Z": 376.7909
-          },
-          "TerritoryId": 814,
+          "Position": [-266.0716, 21.746891, 376.7909],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 2009963,
-          "Position": {
-            "X": -276.17303,
-            "Y": 17.807251,
-            "Z": 656.9772
-          },
-          "TerritoryId": 814,
+          "Position": [-276.17303, 17.807251, 656.9772],
           "InteractionType": "Snipe",
           "Comment": "Click the guy in front of (or near) the light house stairs"
         }
@@ -67,71 +49,50 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1029818,
-          "Position": {
-            "X": -322.46893,
-            "Y": 21.33508,
-            "Z": 777.4623
-          },
-          "TerritoryId": 814,
+          "Position": [-322.46893, 21.33508, 777.4623],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1029819,
-          "Position": {
-            "X": -635.6756,
-            "Y": 0.22940278,
-            "Z": 571.313
-          },
-          "TerritoryId": 814,
+          "Position": [-635.6756, 0.22940278, 571.313],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 1029844,
-          "Position": {
-            "X": -638.11707,
-            "Y": 0.2956289,
-            "Z": 571.5265
-          },
-          "TerritoryId": 814,
+          "Position": [-638.11707, 0.2956289, 571.5265],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 814,
       "Steps": [
         {
           "DataId": 2010038,
-          "Position": {
-            "X": -651.1788,
-            "Y": -0.015319824,
-            "Z": 588.4031
-          },
-          "TerritoryId": 814,
+          "Position": [-651.1788, -0.015319824, 588.4031],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818242
         },
         {
           "DataId": 1029823,
-          "Position": {
-            "X": -330.40363,
-            "Y": 19.081778,
-            "Z": 389.27283
-          },
-          "TerritoryId": 814,
+          "Position": [-330.40363, 19.081778, 389.27283],
           "InteractionType": "CompleteQuest"
         }
       ]

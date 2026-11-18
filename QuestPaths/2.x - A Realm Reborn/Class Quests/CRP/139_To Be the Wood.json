@@ -1,36 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 3x Square Maple Shield\nAutocraft requires:\n 3x Maple Lumber,\n 6x Bronze Rivets",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
-          "TerritoryId": 132,
+          "Position": [-44.87683, -1.2500024, 56.839844],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "$": "Maple Log",
           "DataId": 1000392,
-          "Position": {
-            "X": -17.746277,
-            "Y": -3.25,
-            "Z": 43.35083
-          },
-          "TerritoryId": 132,
+          "Position": [-17.746277, -3.25, 43.35083],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -49,12 +41,7 @@
         {
           "$": "Bronze Rivets",
           "DataId": 1000392,
-          "Position": {
-            "X": -17.746277,
-            "Y": -3.25,
-            "Z": 43.35083
-          },
-          "TerritoryId": 132,
+          "Position": [-17.746277, -3.25, 43.35083],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -71,17 +58,11 @@
           }
         },
         {
-          "InteractionType": "Craft",
-          "TerritoryId": 132
+          "InteractionType": "Craft"
         },
         {
           "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
-          "TerritoryId": 132,
+          "Position": [-44.87683, -1.2500024, 56.839844],
           "InteractionType": "CompleteQuest",
           "AllowHighQuality": true
         }

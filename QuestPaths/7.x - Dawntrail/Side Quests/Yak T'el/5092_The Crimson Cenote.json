@@ -1,32 +1,24 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1051057,
-          "Position": {
-            "X": -343.67902,
-            "Y": 18.885578,
-            "Z": -404.22675
-          },
-          "TerritoryId": 1189,
+          "Position": [-343.67902, 18.885578, -404.22675],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
-          "Position": {
-            "X": 158.97704,
-            "Y": 0.80940175,
-            "Z": -773.5188
-          },
-          "TerritoryId": 1189,
+          "Position": [158.97704, 0.80940175, -773.5188],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -37,30 +29,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1051058,
-          "Position": {
-            "X": 159.47205,
-            "Y": 0.81595546,
-            "Z": -770.19916
-          },
-          "TerritoryId": 1189,
+          "Position": [159.47205, 0.81595546, -770.19916],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1051057,
-          "Position": {
-            "X": -343.67902,
-            "Y": 18.885578,
-            "Z": -404.22675
-          },
-          "TerritoryId": 1189,
+          "Position": [-343.67902, 18.885578, -404.22675],
           "InteractionType": "CompleteQuest"
         }
       ]

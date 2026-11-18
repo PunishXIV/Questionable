@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005929,
-          "Position": {
-            "X": 21.560913,
-            "Y": 16.342407,
-            "Z": -183.76447
-          },
-          "TerritoryId": 180,
+          "Position": [21.560913, 16.342407, -183.76447],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2003782,
-          "Position": {
-            "X": 65.35437,
-            "Y": 55.61914,
-            "Z": -450.7973
-          },
-          "TerritoryId": 180,
+          "Position": [65.35437, 55.61914, -450.7973],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001256,
@@ -39,12 +31,7 @@
         },
         {
           "DataId": 2003781,
-          "Position": {
-            "X": 78.446655,
-            "Y": 55.61914,
-            "Z": -470.0542
-          },
-          "TerritoryId": 180,
+          "Position": [78.446655, 55.61914, -470.0542],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001256,
@@ -56,15 +43,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005929,
-          "Position": {
-            "X": 21.560913,
-            "Y": 16.342407,
-            "Z": -183.76447
-          },
-          "TerritoryId": 180,
+          "Position": [21.560913, 16.342407, -183.76447],
           "InteractionType": "CompleteQuest"
         }
       ]

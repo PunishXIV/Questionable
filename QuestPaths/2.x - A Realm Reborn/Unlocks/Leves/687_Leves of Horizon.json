@@ -1,57 +1,44 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "Comment": "!!! Requires manual acceptance and running of Trial Leve !!!",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "$": "Switch to combat job",
           "InteractionType": "SwitchClass",
-          "TargetClass": "ConfiguredCombatJob",
-          "TerritoryId": 130
+          "TargetClass": "ConfiguredCombatJob"
         },
         {
           "DataId": 1001794,
-          "Position": {
-            "X": 42.0224,
-            "Y": 8.00998,
-            "Z": -107.562
-          },
-          "TerritoryId": 130,
+          "Position": [42.0224, 8.00998, -107.562],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 140,
       "Steps": [
         {
           "Comment": "Accept Trial Leve",
           "$": "Leve: What Peistes Crave",
           "DataId": 1001796,
-          "Position": {
-            "X": 85.1833,
-            "Y": 46.0034,
-            "Z": -245.824
-          },
-          "TerritoryId": 140,
+          "Position": [85.1833, 46.0034, -245.824],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 140,
       "Steps": [
         {
-          "Position": {
-            "X": -146.04796,
-            "Y": 15.468151,
-            "Z": -259.95544
-          },
-          "TerritoryId": 140,
+          "Position": [-146.04796, 15.468151, -259.95544],
           "InteractionType": "Instruction",
           "Comment": "Complete the Trial Levequest\nComplete manually or can use Battlevest"
         }
@@ -59,15 +46,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1001796,
-          "Position": {
-            "X": 85.1833,
-            "Y": 46.0034,
-            "Z": -245.824
-          },
-          "TerritoryId": 140,
+          "Position": [85.1833, 46.0034, -245.824],
           "InteractionType": "CompleteQuest"
         }
       ]

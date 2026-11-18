@@ -590,32 +590,9 @@ internal sealed class QuestRegistry : IDisposable
         stream.Dispose();
         if (!dryRun)
         {
-            JsonObject? jsonNode;
-            JsonObject newNode;
-            if (quest == null)
-            {
-                jsonNode = (JsonObject)JsonSerializer.SerializeToNode(CreateQuestRoot(info), JsonOptions.Default)!;
-                newNode = new()
-                {
-                    {
-                        "$schema",
-                        "https://qstxiv.github.io/schema/quest-v1.json"
-                    }
-                };
-                foreach ((string key, JsonNode? value) in jsonNode)
-                    newNode.Add(key, value?.DeepClone());
-            }
-            else
-            {
-                newNode = (JsonObject)JsonSerializer.SerializeToNode(quest.Root, JsonOptions.Default)!;
-            }
-            using FileStream writeStream = file.OpenWrite();
-            using Utf8JsonWriter writer = new(writeStream, new()
-            {
-                Encoder = JsonOptions.Default.Encoder,
-                Indented = JsonOptions.Default.WriteIndented
-            });
-            newNode.WriteTo(writer, JsonOptions.Default);
+            JsonObject node = (JsonObject)JsonSerializer.SerializeToNode(quest?.Root ?? CreateQuestRoot(info),
+                JsonOptions.Default)!;
+            File.WriteAllText(file.FullName, QuestPathJson.Write(node, JsonOptions.Default));
         }
         return (true, file, $"File created{(dryRun ? " (dry run)" : "")}");
     }
@@ -627,25 +604,7 @@ internal sealed class QuestRegistry : IDisposable
         string path = Path.Combine(directory, GetFilename(info));
 
         JsonObject serialized = (JsonObject)JsonSerializer.SerializeToNode(root, JsonOptions.Default)!;
-        JsonObject withSchema = new()
-        {
-            {
-                "$schema",
-                "https://qstxiv.github.io/schema/quest-v1.json"
-            }
-        };
-        foreach ((string key, JsonNode? value) in serialized)
-            withSchema.Add(key, value?.DeepClone());
-
-        using (FileStream stream = new(path, FileMode.Create))
-        using (Utf8JsonWriter writer = new(stream, new()
-        {
-            Encoder = JsonOptions.Default.Encoder,
-            Indented = JsonOptions.Default.WriteIndented
-        }))
-        {
-            withSchema.WriteTo(writer, JsonOptions.Default);
-        }
+        File.WriteAllText(path, QuestPathJson.Write(serialized, JsonOptions.Default));
 
         Svc.Log.Information($"Saved user quest path to {path}");
         return (true, path);

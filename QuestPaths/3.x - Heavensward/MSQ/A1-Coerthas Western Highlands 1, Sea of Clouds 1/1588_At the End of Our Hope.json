@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1012344,
-          "Position": {
-            "X": 84.18396,
-            "Y": 117.19698,
-            "Z": 150.31653
-          },
-          "TerritoryId": 397,
+          "Position": [84.18396, 117.19698, 150.31653],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 2005408,
-          "Position": {
-            "X": 103.77649,
-            "Y": 102.311646,
-            "Z": -42.404846
-          },
-          "TerritoryId": 397,
+          "Position": [103.77649, 102.311646, -42.404846],
           "InteractionType": "SinglePlayerDuty",
           "Comment": "Walk straight to Gorgagne Mills basement, ignore footprints",
           "SinglePlayerDutyOptions": {
@@ -40,15 +32,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1012348,
-          "Position": {
-            "X": 465.01855,
-            "Y": 162.58325,
-            "Z": -522.9115
-          },
-          "TerritoryId": 397,
+          "Position": [465.01855, 162.58325, -522.9115],
           "InteractionType": "CompleteQuest"
         }
       ]

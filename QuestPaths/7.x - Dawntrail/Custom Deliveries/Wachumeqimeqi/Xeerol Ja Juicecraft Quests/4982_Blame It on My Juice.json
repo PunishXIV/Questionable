@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047109,
-          "Position": {
-            "X": 155.056,
-            "Y": -13.98,
-            "Z": 2.99969
-          },
-          "TerritoryId": 1185,
+          "Position": [155.056, -13.98, 2.99969],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1047109 (Xeerol Ja)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047110,
-          "Position": {
-            "X": -35.4151,
-            "Y": -10,
-            "Z": 126.733
-          },
-          "TerritoryId": 1185,
+          "Position": [-35.4151, -10, 126.733],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047110 (Halnaruk)"
         }
@@ -37,15 +29,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047109,
-          "Position": {
-            "X": 155.056,
-            "Y": -13.98,
-            "Z": 2.99969
-          },
-          "TerritoryId": 1185,
+          "Position": [155.056, -13.98, 2.99969],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4983,
           "$": "auto: todo turn-in -> 1047109 (Xeerol Ja)"

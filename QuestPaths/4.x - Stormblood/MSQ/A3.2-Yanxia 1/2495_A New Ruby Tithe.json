@@ -1,101 +1,71 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1020020,
-          "Position": {
-            "X": 397.75684,
-            "Y": 72.835175,
-            "Z": -97.06268
-          },
-          "TerritoryId": 614,
+          "Position": [397.75684, 72.835175, -97.06268],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 2007838,
-          "Position": {
-            "X": 418.4176,
-            "Y": 68.0094,
-            "Z": -135.4544
-          },
-          "TerritoryId": 614,
+          "Position": [418.4176, 68.0094, -135.4544],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1020022,
-          "Position": {
-            "X": 418.0514,
-            "Y": 68.0285,
-            "Z": -133.89801
-          },
-          "TerritoryId": 614,
+          "Position": [418.0514, 68.0285, -133.89801],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1019316,
-          "Position": {
-            "X": 434.89734,
-            "Y": 68.02076,
-            "Z": -125.01721
-          },
-          "TerritoryId": 614,
+          "Position": [434.89734, 68.02076, -125.01721],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 2733
         },
         {
           "DataId": 1019313,
-          "Position": {
-            "X": 465.26282,
-            "Y": 58.52148,
-            "Z": -171.09949
-          },
-          "TerritoryId": 614,
+          "Position": [465.26282, 58.52148, -171.09949],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 2730
         },
         {
           "DataId": 1020024,
-          "Position": {
-            "X": 534.2335,
-            "Y": 84.80294,
-            "Z": 111.13135
-          },
-          "TerritoryId": 614,
+          "Position": [534.2335, 84.80294, 111.13135],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1020282,
-          "Position": {
-            "X": 498.83264,
-            "Y": 78.04988,
-            "Z": 147.23425
-          },
-          "TerritoryId": 614,
+          "Position": [498.83264, 78.04988, 147.23425],
           "InteractionType": "Snipe",
           "Comment": "Snipe soldiers"
         }
@@ -103,15 +73,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 2007835,
-          "Position": {
-            "X": 535.2406,
-            "Y": 54.48987,
-            "Z": 237.04883
-          },
-          "TerritoryId": 614,
+          "Position": [535.2406, 54.48987, 237.04883],
           "InteractionType": "Snipe",
           "Comment": "Snipe soldiers"
         }
@@ -119,30 +85,22 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1020025,
-          "Position": {
-            "X": 303.60876,
-            "Y": 16.701138,
-            "Z": 584.71045
-          },
-          "TerritoryId": 614,
+          "Position": [303.60876, 16.701138, 584.71045],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 2007915,
-          "Position": {
-            "X": 329.67102,
-            "Y": 32.97461,
-            "Z": 603.2959
-          },
-          "TerritoryId": 614,
+          "Position": [329.67102, 32.97461, 603.2959],
           "InteractionType": "Snipe",
           "Comment": "Snipe soldiers"
         }
@@ -150,30 +108,22 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1020025,
-          "Position": {
-            "X": 303.60876,
-            "Y": 16.701138,
-            "Z": 584.71045
-          },
-          "TerritoryId": 614,
+          "Position": [303.60876, 16.701138, 584.71045],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 614,
       "Steps": [
         {
           "DataId": 1020283,
-          "Position": {
-            "X": 406.27136,
-            "Y": 14.6418705,
-            "Z": 626.1234
-          },
-          "TerritoryId": 614,
+          "Position": [406.27136, 14.6418705, 626.1234],
           "InteractionType": "CompleteQuest"
         }
       ]

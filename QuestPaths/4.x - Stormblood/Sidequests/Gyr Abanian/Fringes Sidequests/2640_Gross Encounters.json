@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1019519,
-          "Position": {
-            "X": -613.092,
-            "Y": 129.992,
-            "Z": -529.839
-          },
-          "TerritoryId": 612,
+          "Position": [-613.092, 129.992, -529.839],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1019519 (Serpent Marshal Brookstone)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1022059,
-          "Position": {
-            "X": -266.838,
-            "Y": 60.4484,
-            "Z": -457.523
-          },
-          "TerritoryId": 612,
+          "Position": [-266.838, 60.4484, -457.523],
           "InteractionType": "Interact",
           "$": "auto: lua ACTOR1 -> 1022059 (flame recruit)"
         }
@@ -37,15 +29,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1022060,
-          "Position": {
-            "X": -234.823,
-            "Y": 42.3231,
-            "Z": -235.552
-          },
-          "TerritoryId": 612,
+          "Position": [-234.823, 42.3231, -235.552],
           "InteractionType": "Interact",
           "$": "auto: lua ACTOR2 -> 1022060 (serpent recruit)"
         }
@@ -53,15 +41,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 2008814,
-          "Position": {
-            "X": 199.632,
-            "Y": 54.1052,
-            "Z": -529.507
-          },
-          "TerritoryId": 612,
+          "Position": [199.632, 54.1052, -529.507],
           "InteractionType": "Interact",
           "$": "auto: lua EOBJECT0 -> 2008814 (destination)"
         }
@@ -69,14 +53,10 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": 196.033,
-            "Y": 61.2987,
-            "Z": -612.299
-          },
-          "TerritoryId": 612,
+          "Position": [196.033, 61.2987, -612.299],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -88,15 +68,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1019519,
-          "Position": {
-            "X": -613.092,
-            "Y": 129.992,
-            "Z": -529.839
-          },
-          "TerritoryId": 612,
+          "Position": [-613.092, 129.992, -529.839],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1019519 (Serpent Marshal Brookstone)"
         }

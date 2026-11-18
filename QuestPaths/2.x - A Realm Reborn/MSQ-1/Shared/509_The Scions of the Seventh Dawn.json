@@ -1,104 +1,68 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001353,
-          "Position": {
-            "X": 21.072632,
-            "Y": 7.45,
-            "Z": -78.78235
-          },
-          "TerritoryId": 130,
+          "Position": [21.072632, 7.45, -78.78235],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 1004019,
-          "Position": {
-            "X": -335.9579,
-            "Y": 13.983717,
-            "Z": -99.65674
-          },
-          "TerritoryId": 140,
+          "Position": [-335.9579, 13.983717, -99.65674],
           "InteractionType": "Interact",
           "TargetTerritoryId": 140
         },
         {
           "DataId": 1002295,
-          "Position": {
-            "X": -246.08228,
-            "Y": 32.44368,
-            "Z": 383.84058
-          },
-          "TerritoryId": 140,
+          "Position": [-246.08228, 32.44368, 383.84058],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179661
         },
         {
           "DataId": 1002039,
-          "Position": {
-            "X": -298.7564,
-            "Y": 13.983702,
-            "Z": 303.36462
-          },
-          "TerritoryId": 140,
+          "Position": [-298.7564, 13.983702, 303.36462],
           "InteractionType": "Interact",
           "TargetTerritoryId": 140
         },
         {
           "$": "Unlock Vesper Bay taxi",
           "DataId": 1004036,
-          "Position": {
-            "X": -415.7931,
-            "Y": 23.11398,
-            "Z": -335.71375
-          },
-          "TerritoryId": 140,
+          "Position": [-415.7931, 23.11398, -335.71375],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179660
         },
         {
           "DataId": 1004603,
-          "Position": {
-            "X": -489.8299,
-            "Y": 21.48999,
-            "Z": -381.97913
-          },
-          "TerritoryId": 140,
+          "Position": [-489.8299, 21.48999, -381.97913],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 140,
       "Steps": [
         {
           "DataId": 2001711,
-          "Position": {
-            "X": -480.9181,
-            "Y": 18.00103,
-            "Z": -386.862
-          },
-          "TerritoryId": 140,
+          "Position": [-480.9181, 18.00103, -386.862],
           "InteractionType": "Interact",
           "TargetTerritoryId": 212
         },
         {
           "DataId": 1005012,
-          "Position": {
-            "X": 22.507019,
-            "Y": 0.9999986,
-            "Z": -2.02948
-          },
+          "Position": [22.507019, 0.9999986, -2.02948],
           "TerritoryId": 212,
           "InteractionType": "CompleteQuest"
         }

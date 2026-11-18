@@ -1,85 +1,64 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040014,
-          "Position": {
-            "X": 368.88684,
-            "Y": -1.1050489,
-            "Z": 158.0376
-          },
-          "TerritoryId": 961,
+          "Position": [368.88684, -1.1050489, 158.0376],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040015,
-          "Position": {
-            "X": 225.78772,
-            "Y": 7.3858566,
-            "Z": 201.37329
-          },
-          "TerritoryId": 961,
+          "Position": [225.78772, 7.3858566, 201.37329],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 961,
       "Steps": [
         {
           "StopDistance": 6,
-          "TerritoryId": 961,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Elpis - Anagnorisis"
         },
         {
           "DataId": 1040018,
-          "Position": {
-            "X": 156.45068,
-            "Y": 17.339952,
-            "Z": 53.665894
-          },
-          "TerritoryId": 961,
+          "Position": [156.45068, 17.339952, 53.665894],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040019,
-          "Position": {
-            "X": 148.66858,
-            "Y": 16.93996,
-            "Z": 35.477173
-          },
-          "TerritoryId": 961,
+          "Position": [148.66858, 16.93996, 35.477173],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040023,
-          "Position": {
-            "X": 152.54431,
-            "Y": 16.385857,
-            "Z": 73.258545
-          },
-          "TerritoryId": 961,
+          "Position": [152.54431, 16.385857, 73.258545],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -93,15 +72,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040970,
-          "Position": {
-            "X": 146.13562,
-            "Y": 10.385858,
-            "Z": 121.47705
-          },
-          "TerritoryId": 961,
+          "Position": [146.13562, 10.385858, 121.47705],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -115,30 +90,22 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040025,
-          "Position": {
-            "X": 171.83179,
-            "Y": 8.3426,
-            "Z": 180.62097
-          },
-          "TerritoryId": 961,
+          "Position": [171.83179, 8.3426, 180.62097],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040971,
-          "Position": {
-            "X": 92.851074,
-            "Y": 10.665586,
-            "Z": 107.133545
-          },
-          "TerritoryId": 961,
+          "Position": [92.851074, 10.665586, 107.133545],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -152,15 +119,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040027,
-          "Position": {
-            "X": 151.75085,
-            "Y": 17.339958,
-            "Z": 51.255005
-          },
-          "TerritoryId": 961,
+          "Position": [151.75085, 17.339958, 51.255005],
           "InteractionType": "CompleteQuest"
         }
       ]

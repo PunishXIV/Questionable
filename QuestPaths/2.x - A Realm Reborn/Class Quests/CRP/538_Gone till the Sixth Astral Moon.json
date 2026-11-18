@@ -1,60 +1,48 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item:\n 1x Cobalt Halberd HQ,\n 1x Jade Crook HQ,\n 1x Yew Longbow HQ\nAutocraft requires:\n 1x Cobalt Ingot,\n 1x Silver Ingot,\n 1x Oak Lumber,\n 1x Boar Leather,\n 1x Mahogany Lumber,\n 1x Jadeite,\n 1x Spoken Blood,\n 1x Horn Glue,\n 1x Rosewood Lumber,\n 2x Yew Branch,\n 1x Raptor Sinew,\n 1x Clove Oil",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
-          "TerritoryId": 132,
+          "Position": [-44.87683, -1.2500024, 56.839844],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000162,
-          "Position": {
-            "X": -77.958374,
-            "Y": -3.6953027,
-            "Z": 53.08606
-          },
-          "TerritoryId": 132,
+          "Position": [-77.958374, -3.6953027, 53.08606],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000125,
-          "Position": {
-            "X": -56.26001,
-            "Y": -0.50339824,
-            "Z": -0.16790771
-          },
-          "TerritoryId": 132,
+          "Position": [-56.26001, -0.50339824, -0.16790771],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 132,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 132,
           "ItemId": 1937,
           "ItemCount": 1,
           "SkipConditions": {
@@ -67,7 +55,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 132,
           "ItemId": 1862,
           "ItemCount": 1,
           "SkipConditions": {
@@ -80,7 +67,6 @@
         },
         {
           "InteractionType": "Craft",
-          "TerritoryId": 132,
           "ItemId": 2039,
           "ItemCount": 1,
           "SkipConditions": {
@@ -93,42 +79,29 @@
         },
         {
           "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
-          "TerritoryId": 132,
+          "Position": [-44.87683, -1.2500024, 56.839844],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000125,
-          "Position": {
-            "X": -56.26001,
-            "Y": -0.50339824,
-            "Z": -0.16790771
-          },
-          "TerritoryId": 132,
+          "Position": [-56.26001, -0.50339824, -0.16790771],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000153,
-          "Position": {
-            "X": -44.87683,
-            "Y": -1.2500024,
-            "Z": 56.839844
-          },
-          "TerritoryId": 132,
+          "Position": [-44.87683, -1.2500024, 56.839844],
           "InteractionType": "CompleteQuest"
         }
       ]

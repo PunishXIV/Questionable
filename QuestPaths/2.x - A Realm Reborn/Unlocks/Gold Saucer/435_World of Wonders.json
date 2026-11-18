@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": [
     "liza",
     "JerryWester"
@@ -8,16 +8,12 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
           "DataId": 1004433,
-          "Position": {
-            "X": -23.605713,
-            "Y": 83.19999,
-            "Z": -2.3041382
-          },
-          "TerritoryId": 130,
+          "Position": [-23.605713, 83.19999, -2.3041382],
           "InteractionType": "Interact",
           "TargetTerritoryId": 144,
           "SkipConditions": {
@@ -32,11 +28,7 @@
         },
         {
           "DataId": 1011022,
-          "Position": {
-            "X": -38.895264,
-            "Y": -2.7930364E-06,
-            "Z": 97.33728
-          },
+          "Position": [-38.895264, -2.7930364E-06, 97.33728],
           "TerritoryId": 144,
           "InteractionType": "AcceptQuest"
         }
@@ -44,15 +36,12 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 144,
       "Steps": [
         {
           "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
           "DataId": 1004433,
-          "Position": {
-            "X": -23.605713,
-            "Y": 83.19999,
-            "Z": -2.3041382
-          },
+          "Position": [-23.605713, 83.19999, -2.3041382],
           "TerritoryId": 130,
           "InteractionType": "Interact",
           "TargetTerritoryId": 144,
@@ -67,35 +56,25 @@
           }
         },
         {
-          "TerritoryId": 144,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gold Saucer] Entrance & Card Squares",
           "StopDistance": 7
         },
         {
           "DataId": 1010448,
-          "Position": {
-            "X": -54.00177,
-            "Y": 1.6000003,
-            "Z": 30.685791
-          },
-          "TerritoryId": 144,
+          "Position": [-54.00177, 1.6000003, 30.685791],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 130,
       "Steps": [
         {
           "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
           "DataId": 1004433,
-          "Position": {
-            "X": -23.605713,
-            "Y": 83.19999,
-            "Z": -2.3041382
-          },
-          "TerritoryId": 130,
+          "Position": [-23.605713, 83.19999, -2.3041382],
           "InteractionType": "Interact",
           "TargetTerritoryId": 144,
           "SkipConditions": {
@@ -110,11 +89,7 @@
         },
         {
           "DataId": 1011038,
-          "Position": {
-            "X": -58.884644,
-            "Y": 1.6000003,
-            "Z": 27.634033
-          },
+          "Position": [-58.884644, 1.6000003, 27.634033],
           "TerritoryId": 144,
           "InteractionType": "Interact"
         }
@@ -122,16 +97,12 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 130,
       "Steps": [
         {
           "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
           "DataId": 1004433,
-          "Position": {
-            "X": -23.605713,
-            "Y": 83.19999,
-            "Z": -2.3041382
-          },
-          "TerritoryId": 130,
+          "Position": [-23.605713, 83.19999, -2.3041382],
           "InteractionType": "Interact",
           "TargetTerritoryId": 144,
           "SkipConditions": {
@@ -146,11 +117,7 @@
         },
         {
           "DataId": 1010478,
-          "Position": {
-            "X": -99.19891,
-            "Y": -0.86297023,
-            "Z": 66.11731
-          },
+          "Position": [-99.19891, -0.86297023, 66.11731],
           "TerritoryId": 144,
           "InteractionType": "Interact"
         }
@@ -158,15 +125,12 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 144,
       "Steps": [
         {
           "$": "Return by airship until the Gold Saucer aetheryte is unlocked",
           "DataId": 1004433,
-          "Position": {
-            "X": -23.605713,
-            "Y": 83.19999,
-            "Z": -2.3041382
-          },
+          "Position": [-23.605713, 83.19999, -2.3041382],
           "TerritoryId": 130,
           "InteractionType": "Interact",
           "TargetTerritoryId": 144,
@@ -182,12 +146,7 @@
         },
         {
           "DataId": 1011044,
-          "Position": {
-            "X": -84.45868,
-            "Y": 3.7690625E-06,
-            "Z": 29.06836
-          },
-          "TerritoryId": 144,
+          "Position": [-84.45868, 3.7690625E-06, 29.06836],
           "InteractionType": "Interact",
           "TargetTerritoryId": 388,
           "SkipConditions": {
@@ -211,94 +170,66 @@
           "StopDistance": 7
         },
         {
-          "TerritoryId": 144,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Gold Saucer",
           "DelaySecondsAtStart": 3
         },
         {
           "DataId": 1011080,
-          "Position": {
-            "X": 21.530457,
-            "Y": 3.9997296,
-            "Z": 39.902344
-          },
-          "TerritoryId": 144,
+          "Position": [21.530457, 3.9997296, 39.902344],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 144,
       "Steps": [
         {
-          "Position": {
-            "X": 46.78062,
-            "Y": 11.798187,
-            "Z": 20.328043
-          },
-          "TerritoryId": 144,
+          "Position": [46.78062, 11.798187, 20.328043],
           "InteractionType": "WalkTo"
         },
         {
-          "TerritoryId": 144,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gold Saucer] Wonder Square West",
           "StopDistance": 7,
           "DelaySecondsAtStart": 3
         },
         {
-          "TerritoryId": 144,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gold Saucer] Wonder Square East",
           "StopDistance": 7
         },
         {
-          "TerritoryId": 144,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gold Saucer] Event Square",
           "StopDistance": 7,
           "DelaySecondsAtStart": 3
         },
         {
-          "Position": {
-            "X": 122.973015,
-            "Y": -0.5100681,
-            "Z": -50.024624
-          },
-          "TerritoryId": 144,
+          "Position": [122.973015, -0.5100681, -50.024624],
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 3
         },
         {
-          "TerritoryId": 144,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gold Saucer] Cactpot Board",
           "StopDistance": 7
         },
         {
           "DataId": 1011079,
-          "Position": {
-            "X": 125.078125,
-            "Y": 13.000635,
-            "Z": -13.778931
-          },
-          "TerritoryId": 144,
+          "Position": [125.078125, 13.000635, -13.778931],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 144,
       "Steps": [
         {
           "DataId": 1011084,
-          "Position": {
-            "X": -12.527649,
-            "Y": 3.2546434,
-            "Z": -73.16705
-          },
-          "TerritoryId": 144,
+          "Position": [-12.527649, 3.2546434, -73.16705],
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 3
         }
@@ -306,21 +237,16 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 144,
       "Steps": [
         {
-          "TerritoryId": 144,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gold Saucer] Round Square",
           "StopDistance": 7
         },
         {
           "DataId": 1010448,
-          "Position": {
-            "X": -54.00177,
-            "Y": 1.6000003,
-            "Z": 30.685791
-          },
-          "TerritoryId": 144,
+          "Position": [-54.00177, 1.6000003, 30.685791],
           "InteractionType": "CompleteQuest",
           "DelaySecondsAtStart": 3
         }

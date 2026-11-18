@@ -1,103 +1,78 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-09-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1040261,
-          "Position": {
-            "X": -377.61505,
-            "Y": 45.002518,
-            "Z": -29.922974
-          },
-          "TerritoryId": 963,
+          "Position": [-377.61505, 45.002518, -29.922974],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1040262,
-          "Position": {
-            "X": -237.01843,
-            "Y": 36,
-            "Z": 58.976074
-          },
-          "TerritoryId": 963,
+          "Position": [-237.01843, 36, 58.976074],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 963,
       "Steps": [
         {
-          "TerritoryId": 963,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Radz-at-Han] Ruveydah Fibers"
         },
         {
           "DataId": 1040264,
-          "Position": {
-            "X": -106.49274,
-            "Y": 30.999998,
-            "Z": -14.54187
-          },
-          "TerritoryId": 963,
+          "Position": [-106.49274, 30.999998, -14.54187],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1040266,
-          "Position": {
-            "X": 3.982544,
-            "Y": -2.9207662E-05,
-            "Z": 0.99176025
-          },
-          "TerritoryId": 963,
+          "Position": [3.982544, -2.9207662E-05, 0.99176025],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 963,
       "Steps": [
         {
           "DataId": 1040268,
-          "Position": {
-            "X": 87.5105,
-            "Y": 1.8631812,
-            "Z": -121.41614
-          },
-          "TerritoryId": 963,
+          "Position": [87.5105, 1.8631812, -121.41614],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 963,
       "Steps": [
         {
-          "TerritoryId": 963,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Radz-at-Han] The High Crucible of Al-Kimiya"
         },
         {
           "DataId": 1040276,
-          "Position": {
-            "X": -99.076904,
-            "Y": 3.9334679,
-            "Z": 1.3884888
-          },
+          "Position": [-99.076904, 3.9334679, 1.3884888],
           "TerritoryId": 962,
           "InteractionType": "Interact"
         }
@@ -105,15 +80,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038588,
-          "Position": {
-            "X": -101.76245,
-            "Y": 4.357494,
-            "Z": 0.7476196
-          },
-          "TerritoryId": 962,
+          "Position": [-101.76245, 4.357494, 0.7476196],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

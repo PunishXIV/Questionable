@@ -1,60 +1,48 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Gezah",
   "Comment": "!!Requires Manual Melding!! Crafted Item:\n 1x Cobalt Winglet HQ with 1x Savage Might Materia III\nAutocraft requires:\n 2x Cobalt Ingot,\n 1x Mahogany Lumber,\n 1x Horn Glue,\n 1x Sunrise Tellin",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000997,
-          "Position": {
-            "X": -31.265808,
-            "Y": 44.5,
-            "Z": 185.53442
-          },
-          "TerritoryId": 128,
+          "Position": [-31.265808, 44.5, 185.53442],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1001005,
-          "Position": {
-            "X": -52.35376,
-            "Y": 42.500134,
-            "Z": 211.5968
-          },
-          "TerritoryId": 128,
+          "Position": [-52.35376, 42.500134, 211.5968],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1005177,
-          "Position": {
-            "X": 25.070557,
-            "Y": 31.99998,
-            "Z": 32.455933
-          },
-          "TerritoryId": 128,
+          "Position": [25.070557, 31.99998, 32.455933],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 129,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 129,
           "ItemId": 1663,
           "ItemCount": 1,
           "SkipConditions": {
@@ -67,11 +55,7 @@
         },
         {
           "DataId": 1001005,
-          "Position": {
-            "X": -52.35376,
-            "Y": 42.500134,
-            "Z": 211.5968
-          },
+          "Position": [-52.35376, 42.500134, 211.5968],
           "TerritoryId": 128,
           "InteractionType": "Interact"
         }
@@ -79,30 +63,22 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1005178,
-          "Position": {
-            "X": -42.37433,
-            "Y": 42.499935,
-            "Z": 204.11987
-          },
-          "TerritoryId": 128,
+          "Position": [-42.37433, 42.499935, 204.11987],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000997,
-          "Position": {
-            "X": -31.265808,
-            "Y": 44.5,
-            "Z": 185.53442
-          },
-          "TerritoryId": 128,
+          "Position": [-31.265808, 44.5, 185.53442],
           "InteractionType": "CompleteQuest"
         }
       ]

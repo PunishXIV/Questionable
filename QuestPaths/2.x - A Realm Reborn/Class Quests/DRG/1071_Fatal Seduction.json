@@ -1,35 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1006748,
-          "Position": {
-            "X": 217.88354,
-            "Y": 222,
-            "Z": 345.3269
-          },
-          "TerritoryId": 155,
+          "Position": [217.88354, 222, 345.3269],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2002425,
-          "Position": {
-            "X": 96.69641,
-            "Y": 356.3744,
-            "Z": -257.2519
-          },
-          "TerritoryId": 155,
+          "Position": [96.69641, 356.3744, -257.2519],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -40,14 +32,10 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
-          "Position": {
-            "X": 215.65454,
-            "Y": 222.1,
-            "Z": 345.1806
-          },
-          "TerritoryId": 155,
+          "Position": [215.65454, 222.1, 345.1806],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -58,12 +46,7 @@
         },
         {
           "DataId": 1006748,
-          "Position": {
-            "X": 217.88354,
-            "Y": 222,
-            "Z": 345.3269
-          },
-          "TerritoryId": 155,
+          "Position": [217.88354, 222, 345.3269],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1072
         }

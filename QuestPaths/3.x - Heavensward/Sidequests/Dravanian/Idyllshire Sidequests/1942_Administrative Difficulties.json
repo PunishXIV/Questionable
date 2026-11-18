@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012097,
-          "Position": {
-            "X": 73.368,
-            "Y": 205.873,
-            "Z": 23.4836
-          },
-          "TerritoryId": 478,
+          "Position": [73.368, 205.873, 23.4836],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1012097 (Slowfix)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012133,
-          "Position": {
-            "X": -26.8102,
-            "Y": 206.47,
-            "Z": 28.6716
-          },
-          "TerritoryId": 478,
+          "Position": [-26.8102, 206.47, 28.6716],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1012133 (Midnight Dew)"
         }
@@ -37,15 +29,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1012133,
-          "Position": {
-            "X": 300.668,
-            "Y": 68.4309,
-            "Z": -149.941
-          },
-          "TerritoryId": 399,
+          "Position": [300.668, 68.4309, -149.941],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -56,15 +44,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1014332,
-          "Position": {
-            "X": 302.478,
-            "Y": 68.2588,
-            "Z": -151.692
-          },
-          "TerritoryId": 399,
+          "Position": [302.478, 68.2588, -151.692],
           "InteractionType": "CompleteQuest"
         }
       ]

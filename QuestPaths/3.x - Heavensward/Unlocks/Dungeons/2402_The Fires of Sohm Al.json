@@ -1,43 +1,35 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": { "Username": "alydev", "Date": "2026-08-26" },
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1018427,
-          "Position": {
-            "X": -72.98395,
-            "Y": 195.24638,
-            "Z": 115.983765
-          },
-          "TerritoryId": 478,
+          "Position": [-72.98395, 195.24638, 115.983765],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1018429,
-          "Position": {
-            "X": 169.54297,
-            "Y": -64.3624,
-            "Z": 703.7003
-          },
-          "TerritoryId": 400,
+          "Position": [169.54297, -64.3624, 703.7003],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "TerritoryId": 400,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 221,
@@ -48,39 +40,12 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 398,
       "Steps": [
-        {
-          "DataId": 1011946,
-          "Position": {
-            "X": -692.798,
-            "Y": 5.084,
-            "Z": -841.061
-          },
-          "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 400,
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -692.798,
-                  "Y": 5.084,
-                  "Z": -841.061
-                },
-                "TerritoryId": 398,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
         {
           "$": "Dungeon spits you out at the base of Sohm Al, but interaction with Solemn Dragon to warp up there seems to be not working at this time",
           "DataId": 1018429,
-          "Position": {
-            "X": 169.54297,
-            "Y": -64.3624,
-            "Z": 703.7003
-          },
+          "Position": [169.54297, -64.3624, 703.7003],
           "TerritoryId": 400,
           "InteractionType": "CompleteQuest"
         }

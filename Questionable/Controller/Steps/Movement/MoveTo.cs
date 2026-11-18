@@ -20,6 +20,11 @@ internal static class MoveTo
             if (ProviderTravel.IsHandled(sequence, step, operationProviders))
                 return [];
 
+            // A walk onto a zone line zones the player mid-route, which MappingTheRealm counts as a failed move.
+            if (step is { InteractionType: EInteractionType.WalkTo, TargetTerritoryId: { } nextZone } &&
+                nextZone != step.TerritoryId && Travel.CanTravel(step, clientState.TerritoryType, territoryData))
+                return [new Travel.Task(nextZone, null, null)];
+
             if (step.Position != null)
                 return CreateMoveTasks(step, step.Position.Value);
             if (step is
@@ -56,7 +61,7 @@ internal static class MoveTo
             }
 
             yield return Travel.CanTravel(step, clientState.TerritoryType, territoryData)
-                ? new Travel.Task(step.TerritoryId, destination, Travel.TalkTarget(step))
+                ? new Travel.Task(step.TerritoryId, destination, Travel.TalkTarget(step), Travel.EntersZoneFirst(step))
                 : new MoveTask(step, destination);
         }
     }

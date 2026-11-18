@@ -1,33 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1039520,
-          "Position": {
-            "X": -287.8615,
-            "Y": -143.50005,
-            "Z": -520.28687
-          },
-          "TerritoryId": 959,
+          "Position": [-287.8615, -143.50005, -520.28687],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "Position": {
-            "X": -348.90564,
-            "Y": -161.8501,
-            "Z": -651.4007
-          },
-          "TerritoryId": 959,
+          "Position": [-348.90564, -161.8501, -651.4007],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -36,19 +28,10 @@
           }
         },
         {
-          "Position": {
-            "X": -348.90564,
-            "Y": -161.8501,
-            "Z": -651.4007
-          },
-          "TerritoryId": 959,
+          "Position": [-348.90564, -161.8501, -651.4007],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -344.52225,
-              "Y": -160.40424,
-              "Z": -654.19385
-            }
+            "Position": [-344.52225, -160.40424, -654.19385]
           },
           "Comment": "Platform 1",
           "SkipConditions": {
@@ -58,19 +41,10 @@
           }
         },
         {
-          "Position": {
-            "X": -344.52225,
-            "Y": -160.40424,
-            "Z": -654.19385
-          },
-          "TerritoryId": 959,
+          "Position": [-344.52225, -160.40424, -654.19385],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -342.69867,
-              "Y": -158.90424,
-              "Z": -651.2852
-            },
+            "Position": [-342.69867, -158.90424, -651.2852],
             "DelaySeconds": 0.25
           },
           "Comment": "Platform 2",
@@ -81,19 +55,10 @@
           }
         },
         {
-          "Position": {
-            "X": -342.69867,
-            "Y": -158.90424,
-            "Z": -651.2852
-          },
-          "TerritoryId": 959,
+          "Position": [-342.69867, -158.90424, -651.2852],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -341.018,
-              "Y": -157.40425,
-              "Z": -649.38934
-            },
+            "Position": [-341.018, -157.40425, -649.38934],
             "DelaySeconds": 0.25
           },
           "Comment": "Platform 3",
@@ -104,19 +69,10 @@
           }
         },
         {
-          "Position": {
-            "X": -341.018,
-            "Y": -157.40425,
-            "Z": -649.38934
-          },
-          "TerritoryId": 959,
+          "Position": [-341.018, -157.40425, -649.38934],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -338.68277,
-              "Y": -155.90424,
-              "Z": -646.8163
-            },
+            "Position": [-338.68277, -155.90424, -646.8163],
             "DelaySeconds": 0.25
           },
           "Comment": "Platform 4",
@@ -127,19 +83,10 @@
           }
         },
         {
-          "Position": {
-            "X": -338.68277,
-            "Y": -155.90424,
-            "Z": -646.8163
-          },
-          "TerritoryId": 959,
+          "Position": [-338.68277, -155.90424, -646.8163],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -335.60294,
-              "Y": -154.40422,
-              "Z": -646.18335
-            },
+            "Position": [-335.60294, -154.40422, -646.18335],
             "DelaySeconds": 0.25
           },
           "Comment": "Platform 5",
@@ -150,19 +97,10 @@
           }
         },
         {
-          "Position": {
-            "X": -335.60294,
-            "Y": -154.40422,
-            "Z": -646.18335
-          },
-          "TerritoryId": 959,
+          "Position": [-335.60294, -154.40422, -646.18335],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -332.4621,
-              "Y": -152.90424,
-              "Z": -645.4033
-            },
+            "Position": [-332.4621, -152.90424, -645.4033],
             "DelaySeconds": 0.25
           },
           "Comment": "Platform 6",
@@ -173,12 +111,7 @@
           }
         },
         {
-          "Position": {
-            "X": -329.84186,
-            "Y": -152.24591,
-            "Z": -649.0854
-          },
-          "TerritoryId": 959,
+          "Position": [-329.84186, -152.24591, -649.0854],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -188,12 +121,7 @@
         },
         {
           "DataId": 1041789,
-          "Position": {
-            "X": -329.3355,
-            "Y": -151.26128,
-            "Z": -657.2519
-          },
-          "TerritoryId": 959,
+          "Position": [-329.3355, -151.26128, -657.2519],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_AKTKZE002_04241_SYSTEM_000_010"
@@ -202,12 +130,7 @@
         },
         {
           "DataId": 1041790,
-          "Position": {
-            "X": -482.01727,
-            "Y": -167.50002,
-            "Z": -545.6169
-          },
-          "TerritoryId": 959,
+          "Position": [-482.01727, -167.50002, -545.6169],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_AKTKZE002_04241_SYSTEM_000_010"
@@ -215,19 +138,10 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": {
-            "X": -438.33246,
-            "Y": -168.00002,
-            "Z": -420.43494
-          },
-          "TerritoryId": 959,
+          "Position": [-438.33246, -168.00002, -420.43494],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -438.3488,
-              "Y": -166.55414,
-              "Z": -415.94168
-            },
+            "Position": [-438.3488, -166.55414, -415.94168],
             "DelaySeconds": 0.25
           },
           "Comment": "Platform 1",
@@ -238,19 +152,10 @@
           }
         },
         {
-          "Position": {
-            "X": -438.3488,
-            "Y": -166.55414,
-            "Z": -415.94168
-          },
-          "TerritoryId": 959,
+          "Position": [-438.3488, -166.55414, -415.94168],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -436.71103,
-              "Y": -165.05412,
-              "Z": -413.06158
-            },
+            "Position": [-436.71103, -165.05412, -413.06158],
             "DelaySeconds": 0.25
           },
           "Comment": "Platform 2",
@@ -261,19 +166,10 @@
           }
         },
         {
-          "Position": {
-            "X": -436.71103,
-            "Y": -165.05412,
-            "Z": -413.06158
-          },
-          "TerritoryId": 959,
+          "Position": [-436.71103, -165.05412, -413.06158],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -434.92825,
-              "Y": -163.55417,
-              "Z": -411.54132
-            },
+            "Position": [-434.92825, -163.55417, -411.54132],
             "DelaySeconds": 0.25
           },
           "Comment": "Platform 3",
@@ -284,19 +180,10 @@
           }
         },
         {
-          "Position": {
-            "X": -434.92825,
-            "Y": -163.55417,
-            "Z": -411.54132
-          },
-          "TerritoryId": 959,
+          "Position": [-434.92825, -163.55417, -411.54132],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -432.17563,
-              "Y": -162.05412,
-              "Z": -409.53986
-            },
+            "Position": [-432.17563, -162.05412, -409.53986],
             "DelaySeconds": 0.25
           },
           "Comment": "Platform 4",
@@ -307,19 +194,10 @@
           }
         },
         {
-          "Position": {
-            "X": -432.17563,
-            "Y": -162.05412,
-            "Z": -409.53986
-          },
-          "TerritoryId": 959,
+          "Position": [-432.17563, -162.05412, -409.53986],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -429.1173,
-              "Y": -160.55412,
-              "Z": -408.93143
-            },
+            "Position": [-429.1173, -160.55412, -408.93143],
             "DelaySeconds": 0.25
           },
           "Comment": "Platform 5",
@@ -330,19 +208,10 @@
           }
         },
         {
-          "Position": {
-            "X": -429.1173,
-            "Y": -160.55412,
-            "Z": -408.93143
-          },
-          "TerritoryId": 959,
+          "Position": [-429.1173, -160.55412, -408.93143],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -425.56998,
-              "Y": -159.05414,
-              "Z": -408.56833
-            },
+            "Position": [-425.56998, -159.05414, -408.56833],
             "DelaySeconds": 0.25
           },
           "Comment": "Platform 6",
@@ -354,12 +223,7 @@
         },
         {
           "DataId": 1041791,
-          "Position": {
-            "X": -409.87262,
-            "Y": -158.89125,
-            "Z": -426.68805
-          },
-          "TerritoryId": 959,
+          "Position": [-409.87262, -158.89125, -426.68805],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_AKTKZE002_04241_SYSTEM_000_010"
@@ -370,15 +234,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1039520,
-          "Position": {
-            "X": -287.8615,
-            "Y": -143.50005,
-            "Z": -520.28687
-          },
-          "TerritoryId": 959,
+          "Position": [-287.8615, -143.50005, -520.28687],
           "InteractionType": "CompleteQuest"
         }
       ]

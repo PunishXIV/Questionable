@@ -1,35 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
+          "Position": [-94.529724, 6.4999976, 39.81079],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001285,
-          "Position": {
-            "X": -68.77246,
-            "Y": 4.0411124,
-            "Z": -126.51257
-          },
-          "TerritoryId": 130,
+          "Position": [-68.77246, 4.0411124, -126.51257],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -43,14 +35,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 146,
       "Comment": "if Bump and Grind fate is up, probably going to end up dying here\nConsider buying better gear or waiting for fate to end",
       "Steps": [
         {
-          "Position": {
-            "X": 235.23369,
-            "Y": 2.747214,
-            "Z": 673.64215
-          },
+          "Position": [235.23369, 2.747214, 673.64215],
           "TerritoryId": 141,
           "InteractionType": "WalkTo",
           "SkipConditions": {
@@ -60,7 +49,6 @@
           }
         },
         {
-          "TerritoryId": 146,
           "Aetheryte": "Southern Thanalan - Little Ala Mhigo",
           "InteractionType": "AttuneAetheryte",
           "SkipConditions": {
@@ -70,17 +58,11 @@
           }
         },
         {
-          "TerritoryId": 146,
           "InteractionType": "EquipRecommended"
         },
         {
           "DataId": 2001455,
-          "Position": {
-            "X": 28.091797,
-            "Y": 6.9733276,
-            "Z": -611.2917
-          },
-          "TerritoryId": 146,
+          "Position": [28.091797, 6.9733276, -611.2917],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,
@@ -93,12 +75,7 @@
         },
         {
           "DataId": 2001435,
-          "Position": {
-            "X": 101.823364,
-            "Y": 7.248047,
-            "Z": -534.56934
-          },
-          "TerritoryId": 146,
+          "Position": [101.823364, 7.248047, -534.56934],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,
@@ -113,23 +90,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": 164.75665,
-            "Y": 3.3963587,
-            "Z": -585.49005
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
+          "Position": [-94.529724, 6.4999976, 39.81079],
           "TerritoryId": 131,
           "InteractionType": "Interact"
         }
@@ -137,15 +102,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 1004142,
-          "Position": {
-            "X": -19.97406,
-            "Y": -30.999985,
-            "Z": -33.951355
-          },
-          "TerritoryId": 145,
+          "Position": [-19.97406, -30.999985, -33.951355],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
@@ -159,15 +120,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1001739,
-          "Position": {
-            "X": -94.529724,
-            "Y": 6.4999976,
-            "Z": 39.81079
-          },
-          "TerritoryId": 131,
+          "Position": [-94.529724, 6.4999976, 39.81079],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1055
         }

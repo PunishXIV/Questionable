@@ -1,25 +1,22 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": ["liza", "alydev"],
   "LastChecked": {"Username": "alydev", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 182,
       "Steps": [
         {
           "DataId": 1003988,
-          "Position": {
-            "X": 21.072632,
-            "Y": 7.45,
-            "Z": -78.84338
-          },
-          "TerritoryId": 182,
+          "Position": [21.072632, 7.45, -78.84338],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 131,
       "Steps": [
         {
           "TerritoryId": 130,
@@ -27,72 +24,40 @@
           "AethernetShard": "[Ul'dah] Adventurers' Guild"
         },
         {
-          "$": "Walk to zone border",
-          "Position": {
-            "X": 95.43315,
-            "Y": 4,
-            "Z": -105.26365
-          },
-          "TerritoryId": 130,
-          "InteractionType": "WalkTo"
-        },
-        {
           "$": "Speak with Seseroga",
           "DataId": 1003908,
-          "Position": {
-            "X": 137.95679,
-            "Y": 4.041112,
-            "Z": -41.09259
-          },
-          "TerritoryId": 131,
+          "Position": [137.95679, 4.041112, -41.09259],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "$": "Activate all aethernet shards",
-          "TerritoryId": 131,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ul'dah] Sapphire Avenue Exchange"
         },
         {
-          "TerritoryId": 131,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ul'dah] Weavers' Guild"
         },
         {
-          "TerritoryId": 131,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ul'dah] Miners' Guild"
         },
         {
-          "TerritoryId": 131,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ul'dah] Goldsmiths' Guild"
         },
         {
-          "TerritoryId": 131,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ul'dah] Gladiators' Guild"
         },
         {
-          "TerritoryId": 131,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ul'dah] The Chamber of Rule"
         },
         {
-          "TerritoryId": 131,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ul'dah] Alchemists' Guild"
-        },
-        {
-          "$": "Go back to gladiator guild, walk to zone border",
-          "Position": {
-            "X": -112.64317,
-            "Y": 7.734872,
-            "Z": 9.960203
-          },
-          "TerritoryId": 131,
-          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 130,
@@ -113,12 +78,7 @@
         {
           "$": "Class guild",
           "DataId": 1002277,
-          "Position": {
-            "X": -97.550964,
-            "Y": 7.05,
-            "Z": 23.605652
-          },
-          "TerritoryId": 131,
+          "Position": [-97.550964, 7.05, 23.605652],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
@@ -126,15 +86,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1002277,
-          "Position": {
-            "X": -97.550964,
-            "Y": 7.05,
-            "Z": 23.605652
-          },
-          "TerritoryId": 131,
+          "Position": [-97.550964, 7.05, 23.605652],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 253,
           "DialogueChoices": [
@@ -148,11 +104,7 @@
         },
         {
           "DataId": 1001353,
-          "Position": {
-            "X": 21.072632,
-            "Y": 7.45,
-            "Z": -78.78235
-          },
+          "Position": [21.072632, 7.45, -78.78235],
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest"
         }

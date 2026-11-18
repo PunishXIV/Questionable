@@ -1,84 +1,56 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": ["liza", "alydev"],
   "LastChecked": {"Username": "erdelf", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 181,
       "Steps": [
         {
           "DataId": 1002697,
-          "Position": {
-            "X": 20.279175,
-            "Y": 40.19993,
-            "Z": -6.1189575
-          },
-          "TerritoryId": 181,
+          "Position": [20.279175, 40.19993, -6.1189575],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1002698,
-          "Position": {
-            "X": 8.499207,
-            "Y": 39.505493,
-            "Z": 3.5552979
-          },
+          "Position": [8.499207, 39.505493, 3.5552979],
           "TerritoryId": 181,
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 111
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Limsa Lominsa",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "RegisterFreeOrFavoredAetheryte",
           "Aetheryte": "Limsa Lominsa"
         },
         {
           "DataId": 1001217,
-          "Position": {
-            "X": -140.85602,
-            "Y": 18.199999,
-            "Z": 17.013733
-          },
-          "TerritoryId": 129,
+          "Position": [-140.85602, 18.199999, 17.013733],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Limsa Lominsa] Hawkers' Alley"
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Limsa Lominsa] Arcanists' Guild"
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Limsa Lominsa] Fishermen's Guild"
-        },
-        {
-          "Position": {
-            "X": -90.39562,
-            "Y": 22.249847,
-            "Z": 116.80034
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 128,
-          "Comment": "Walk to Aftcastle"
         },
         {
           "TerritoryId": 128,
@@ -97,11 +69,7 @@
         },
         {
           "DataId": 1000926,
-          "Position": {
-            "X": -10.055725,
-            "Y": 44.999794,
-            "Z": -245.80762
-          },
+          "Position": [-10.055725, 44.999794, -245.80762],
           "TerritoryId": 128,
           "InteractionType": "Interact",
           "Comment": "MRD Receptionist",
@@ -111,15 +79,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000926,
-          "Position": {
-            "X": -10.055725,
-            "Y": 44.999794,
-            "Z": -245.80762
-          },
-          "TerritoryId": 128,
+          "Position": [-10.055725, 44.999794, -245.80762],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 311,
           "SkipConditions": {
@@ -132,12 +96,7 @@
         },
         {
           "DataId": 1000972,
-          "Position": {
-            "X": 20.279175,
-            "Y": 40.19993,
-            "Z": -6.1189575
-          },
-          "TerritoryId": 128,
+          "Position": [20.279175, 40.19993, -6.1189575],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047120,
-          "Position": {
-            "X": 165.852,
-            "Y": -13.98,
-            "Z": 18.3505
-          },
-          "TerritoryId": 1185,
+          "Position": [165.852, -13.98, 18.3505],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1047120 (Pameka)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047130,
-          "Position": {
-            "X": -57.0852,
-            "Y": -17.9729,
-            "Z": 176.686
-          },
-          "TerritoryId": 1185,
+          "Position": [-57.0852, -17.9729, 176.686],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047130 (Zemoweni)"
         }
@@ -37,9 +29,9 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1185,
       "Steps": [
         {
-          "TerritoryId": 1185,
           "InteractionType": "Craft",
           "ItemId": 43910,
           "ItemCount": 1,
@@ -51,23 +43,13 @@
         },
         {
           "DataId": 1047120,
-          "Position": {
-            "X": 165.852,
-            "Y": -13.98,
-            "Z": 18.3505
-          },
-          "TerritoryId": 1185,
+          "Position": [165.852, -13.98, 18.3505],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047120 (Pameka); npc trade"
         },
         {
           "DataId": 1047122,
-          "Position": {
-            "X": 164.08,
-            "Y": -14,
-            "Z": 16.113
-          },
-          "TerritoryId": 1185,
+          "Position": [164.08, -14, 16.113],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047122 (Zemoweni); npc trade"
         }
@@ -75,15 +57,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 2013895,
-          "Position": {
-            "X": -50.4449,
-            "Y": -6.08132,
-            "Z": 177.148
-          },
-          "TerritoryId": 1185,
+          "Position": [-50.4449, -6.08132, 177.148],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 2013895 (destination)"
         }
@@ -91,15 +69,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047169,
-          "Position": {
-            "X": -52.0579,
-            "Y": -6.08132,
-            "Z": 176.094
-          },
-          "TerritoryId": 1185,
+          "Position": [-52.0579, -6.08132, 176.094],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047169 (Zemoweni)"
         }
@@ -107,15 +81,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047120,
-          "Position": {
-            "X": 165.852,
-            "Y": -13.98,
-            "Z": 18.3505
-          },
-          "TerritoryId": 1185,
+          "Position": [165.852, -13.98, 18.3505],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1047120 (Pameka)"
         }

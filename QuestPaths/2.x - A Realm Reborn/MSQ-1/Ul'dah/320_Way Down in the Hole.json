@@ -1,82 +1,55 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1001578,
-          "Position": {
-            "X": -35.446716,
-            "Y": -2.057618,
-            "Z": -154.95538
-          },
-          "TerritoryId": 141,
+          "Position": [-35.446716, -2.057618, -154.95538],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1002947,
-          "Position": {
-            "X": -95.71985,
-            "Y": -11.35,
-            "Z": -44.449524
-          },
-          "TerritoryId": 141,
+          "Position": [-95.71985, -11.35, -44.449524],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1002949,
-          "Position": {
-            "X": -82.71924,
-            "Y": -11.350104,
-            "Z": -36.66742
-          },
-          "TerritoryId": 141,
+          "Position": [-82.71924, -11.350104, -36.66742],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 1002948,
-          "Position": {
-            "X": -80.46088,
-            "Y": -12.785964,
-            "Z": -39.44464
-          },
-          "TerritoryId": 141,
+          "Position": [-80.46088, -12.785964, -39.44464],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
           "DataId": 1002950,
-          "Position": {
-            "X": -80.76605,
-            "Y": -12.819771,
-            "Z": -34.439636
-          },
-          "TerritoryId": 141,
+          "Position": [-80.76605, -12.819771, -34.439636],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 1002951,
-          "Position": {
-            "X": -80.094604,
-            "Y": -12.790767,
-            "Z": -33.463074
-          },
-          "TerritoryId": 141,
+          "Position": [-80.094604, -12.790767, -33.463074],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
         }
@@ -84,30 +57,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1002947,
-          "Position": {
-            "X": -95.71985,
-            "Y": -11.35,
-            "Z": -44.449524
-          },
-          "TerritoryId": 141,
+          "Position": [-95.71985, -11.35, -44.449524],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1002955,
-          "Position": {
-            "X": -228.47339,
-            "Y": -30.853842,
-            "Z": 117.29602
-          },
-          "TerritoryId": 141,
+          "Position": [-228.47339, -30.853842, 117.29602],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
@@ -121,42 +86,29 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 141,
       "Steps": [
         {
           "DataId": 1002947,
-          "Position": {
-            "X": -95.71985,
-            "Y": -11.35,
-            "Z": -44.449524
-          },
-          "TerritoryId": 141,
+          "Position": [-95.71985, -11.35, -44.449524],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "Comment": "Taking sidequest to ensure we have\nenough XP for lv10",
           "DataId": 1003898,
-          "Position": {
-            "X": -109.91083,
-            "Y": 4.500089,
-            "Z": -73.80792
-          },
-          "TerritoryId": 130,
+          "Position": [-109.91083, 4.500089, -73.80792],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 163
         },
         {
           "DataId": 1001353,
-          "Position": {
-            "X": 21.072632,
-            "Y": 7.45,
-            "Z": -78.78235
-          },
-          "TerritoryId": 130,
+          "Position": [21.072632, 7.45, -78.78235],
           "InteractionType": "CompleteQuest"
         }
       ]

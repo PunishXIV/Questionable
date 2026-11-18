@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1019520,
-          "Position": {
-            "X": -630.64,
-            "Y": 130.175,
-            "Z": -527.306
-          },
-          "TerritoryId": 612,
+          "Position": [-630.64, 130.175, -527.306],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1019520 (Quincompaix)"
         }
@@ -21,39 +17,25 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1019517,
-          "Position": {
-            "X": -652.979,
-            "Y": 129.9,
-            "Z": -510.643
-          },
-          "TerritoryId": 612,
+          "Position": [-652.979, 129.9, -510.643],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo location -> 1019517 (Loezkirz)"
         },
         {
           "DataId": 1019518,
-          "Position": {
-            "X": -601.099,
-            "Y": 129.992,
-            "Z": -487.48
-          },
-          "TerritoryId": 612,
+          "Position": [-601.099, 129.992, -487.48],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo location -> 1019518 (Kakalai)"
         },
         {
           "DataId": 1019522,
-          "Position": {
-            "X": -625.91,
-            "Y": 130.068,
-            "Z": -493.98
-          },
-          "TerritoryId": 612,
+          "Position": [-625.91, 130.068, -493.98],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
           "$": "auto: todo location -> 1019522 (Pip)"
@@ -62,15 +44,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1019520,
-          "Position": {
-            "X": -630.64,
-            "Y": 130.175,
-            "Z": -527.306
-          },
-          "TerritoryId": 612,
+          "Position": [-630.64, 130.175, -527.306],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1019520 (Quincompaix)"
         }
@@ -78,47 +56,28 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 2008078,
-          "Position": {
-            "X": -529.68335,
-            "Y": 96.96605,
-            "Z": -307.01376
-          },
-          "TerritoryId": 612,
+          "Position": [-529.68335, 96.96605, -307.01376],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 2008079,
-          "Position": {
-            "X": -536.7033,
-            "Y": 97.32079,
-            "Z": -245.64116
-          },
-          "TerritoryId": 612,
+          "Position": [-536.7033, 97.32079, -245.64116],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 2008080,
-          "Position": {
-            "X": -580.419,
-            "Y": 112.235,
-            "Z": -284.635
-          },
-          "TerritoryId": 612,
+          "Position": [-580.419, 112.235, -284.635],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
-          "Position": {
-            "X": -163.75185,
-            "Y": 58.571022,
-            "Z": -668.9964
-          },
-          "TerritoryId": 612,
+          "Position": [-163.75185, 58.571022, -668.9964],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [7444]
@@ -127,15 +86,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1019520,
-          "Position": {
-            "X": -630.64,
-            "Y": 130.175,
-            "Z": -527.306
-          },
-          "TerritoryId": 612,
+          "Position": [-630.64, 130.175, -527.306],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1019520 (Quincompaix)"
         }

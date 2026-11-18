@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1005565,
-          "Position": {
-            "X": 22.4921,
-            "Y": -6.20406,
-            "Z": 252.559
-          },
-          "TerritoryId": 152,
+          "Position": [22.4921, -6.20406, 252.559],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1005565 (Voyce)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1005564,
-          "Position": {
-            "X": 48.2232,
-            "Y": 6.07347,
-            "Z": 247.809
-          },
-          "TerritoryId": 152,
+          "Position": [48.2232, 6.07347, 247.809],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1005564 (Olmxio)"
         }
@@ -37,45 +29,26 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2003330,
-          "Position": {
-            "X": 197.31433,
-            "Y": 8.377136,
-            "Z": 176.59265
-          },
-          "TerritoryId": 152,
+          "Position": [197.31433, 8.377136, 176.59265],
           "InteractionType": "Interact"
         },
         {
           "DataId": 2003331,
-          "Position": {
-            "X": 235.76709,
-            "Y": -1.6022339,
-            "Z": 104.600464
-          },
-          "TerritoryId": 152,
+          "Position": [235.76709, -1.6022339, 104.600464],
           "InteractionType": "Interact"
         },
         {
           "DataId": 2003333,
-          "Position": {
-            "X": 261.92102,
-            "Y": -7.0649414,
-            "Z": 3.4332886
-          },
-          "TerritoryId": 152,
+          "Position": [261.92102, -7.0649414, 3.4332886],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1005571,
-          "Position": {
-            "X": 247.832,
-            "Y": -5.22096,
-            "Z": -54.2283
-          },
-          "TerritoryId": 152,
+          "Position": [247.832, -5.22096, -54.2283],
           "InteractionType": "Interact",
           "$": "auto: lua ACTOR2 -> 1005571 (sluggish sylph)"
         }
@@ -83,15 +56,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2002865,
-          "Position": {
-            "X": 259.774,
-            "Y": -8.68669,
-            "Z": -81.5746
-          },
-          "TerritoryId": 152,
+          "Position": [259.774, -8.68669, -81.5746],
           "InteractionType": "Interact",
           "$": "auto: lua EOBJECT4 -> 2002865 (sylph podling)"
         }
@@ -99,45 +68,26 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2003334,
-          "Position": {
-            "X": 240.55835,
-            "Y": -5.294922,
-            "Z": -47.80658
-          },
-          "TerritoryId": 152,
+          "Position": [240.55835, -5.294922, -47.80658],
           "InteractionType": "Interact"
         },
         {
           "DataId": 2003459,
-          "Position": {
-            "X": 205.46265,
-            "Y": -1.5411987,
-            "Z": 90.836914
-          },
-          "TerritoryId": 152,
+          "Position": [205.46265, -1.5411987, 90.836914],
           "InteractionType": "Interact"
         },
         {
           "DataId": 2003461,
-          "Position": {
-            "X": 68.61975,
-            "Y": 4.8981323,
-            "Z": 183.79492
-          },
-          "TerritoryId": 152,
+          "Position": [68.61975, 4.8981323, 183.79492],
           "InteractionType": "Interact"
         },
         {
           "DataId": 2003035,
-          "Position": {
-            "X": 21.3656,
-            "Y": -6.2328,
-            "Z": 251.566
-          },
-          "TerritoryId": 152,
+          "Position": [21.3656, -6.2328, 251.566],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 2003035 (destination)"
         }
@@ -145,15 +95,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1005565,
-          "Position": {
-            "X": 22.4921,
-            "Y": -6.20406,
-            "Z": 252.559
-          },
-          "TerritoryId": 152,
+          "Position": [22.4921, -6.20406, 252.559],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1005565 (Voyce)"
         }

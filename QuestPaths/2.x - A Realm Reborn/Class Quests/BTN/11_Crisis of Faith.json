@@ -1,32 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000815,
-          "Position": {
-            "X": -233.9361,
-            "Y": 6.668152,
-            "Z": -171.03839
-          },
-          "TerritoryId": 133,
+          "Position": [-233.9361, 6.668152, -171.03839],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 133,
       "Steps": [
         {
-          "TerritoryId": 133,
           "InteractionType": "EquipRecommended"
         },
         {
-          "TerritoryId": 133,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -44,42 +39,29 @@
         },
         {
           "DataId": 1000815,
-          "Position": {
-            "X": -233.9361,
-            "Y": 6.668152,
-            "Z": -171.03839
-          },
-          "TerritoryId": 133,
+          "Position": [-233.9361, 6.668152, -171.03839],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000775,
-          "Position": {
-            "X": -240.92468,
-            "Y": 7.9999995,
-            "Z": -145.67792
-          },
-          "TerritoryId": 133,
+          "Position": [-240.92468, 7.9999995, -145.67792],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000815,
-          "Position": {
-            "X": -233.9361,
-            "Y": 6.668152,
-            "Z": -171.03839
-          },
-          "TerritoryId": 133,
+          "Position": [-233.9361, 6.668152, -171.03839],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 12
         }

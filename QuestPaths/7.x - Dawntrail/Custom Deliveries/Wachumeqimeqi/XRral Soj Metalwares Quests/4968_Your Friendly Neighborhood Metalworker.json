@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047135,
-          "Position": {
-            "X": 180.407,
-            "Y": -13.9926,
-            "Z": 1.98725
-          },
-          "TerritoryId": 1185,
+          "Position": [180.407, -13.9926, 1.98725],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1047135 (Rral Soj)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047136,
-          "Position": {
-            "X": 1.25696,
-            "Y": -10,
-            "Z": 158.245
-          },
-          "TerritoryId": 1185,
+          "Position": [1.25696, -10, 158.245],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047136 (Papawni)"
         }
@@ -37,23 +29,15 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
-          "Position": {
-            "X": -9.894745,
-            "Y": -10.00001,
-            "Z": 139.20522
-          },
-          "TerritoryId": 1185,
+          "Position": [-9.894745, -10.00001, 139.20522],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": 180.407,
-                  "Y": -13.9926,
-                  "Z": 1.98725
-                },
+                "Position": [180.407, -13.9926, 1.98725],
                 "TerritoryId": 1185,
                 "MaximumDistance": 20
               }
@@ -62,12 +46,7 @@
         },
         {
           "DataId": 1047135,
-          "Position": {
-            "X": 180.407,
-            "Y": -13.9926,
-            "Z": 1.98725
-          },
-          "TerritoryId": 1185,
+          "Position": [180.407, -13.9926, 1.98725],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1047135 (Rral Soj)"
         }

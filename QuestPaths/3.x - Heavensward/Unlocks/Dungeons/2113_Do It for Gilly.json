@@ -1,58 +1,46 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012153,
-          "Position": {
-            "X": 168.44421,
-            "Y": -14.348959,
-            "Z": 49.576538
-          },
-          "TerritoryId": 419,
+          "Position": [168.44421, -14.348959, 49.576538],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 1015104,
-          "Position": {
-            "X": -63.58441,
-            "Y": 271.23285,
-            "Z": -4.8982544
-          },
-          "TerritoryId": 402,
+          "Position": [-63.58441, 271.23285, -4.8982544],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 2005561,
-          "Position": {
-            "X": 206.40869,
-            "Y": 21.774597,
-            "Z": 558.77014
-          },
-          "TerritoryId": 402,
+          "Position": [206.40869, 21.774597, 558.77014],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 402,
       "Steps": [
         {
-          "TerritoryId": 402,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 35,
@@ -63,15 +51,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 1015104,
-          "Position": {
-            "X": -63.58441,
-            "Y": 271.23285,
-            "Z": -4.8982544
-          },
-          "TerritoryId": 402,
+          "Position": [-63.58441, 271.23285, -4.8982544],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3077,
           "$": "Next quest: Fractal Continuum Hard unlock quest 'An Unwanted Truth'. Technically this only requires dungeon completion, not quest completion, but you will have completed the dungeon in order to complete this quest."

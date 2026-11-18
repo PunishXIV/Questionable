@@ -1,50 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1009212,
-          "Position": {
-            "X": 151.29321,
-            "Y": -9.752633,
-            "Z": 79.697754
-          },
-          "TerritoryId": 154,
+          "Position": [151.29321, -9.752633, 79.697754],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "Position": {
-            "X": 18.913702,
-            "Y": -50.22517,
-            "Z": 533.0378
-          },
-          "TerritoryId": 154,
-          "TargetTerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "InTerritory": [
-                148
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1009634,
-          "Position": {
-            "X": -410.1778,
-            "Y": 64.43958,
-            "Z": -244.00702
-          },
+          "Position": [-410.1778, 64.43958, -244.00702],
           "TerritoryId": 148,
           "InteractionType": "Say",
           "ChatMessage": {
@@ -55,36 +31,27 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1009218,
-          "Position": {
-            "X": -4.264094,
-            "Y": -40.94998,
-            "Z": 178.43575
-          },
-          "TerritoryId": 154,
+          "Position": [-4.264094, -40.94998, 178.43575],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "TerritoryId": 154,
           "InteractionType": "Craft",
           "ItemId": 8098,
           "ItemCount": 1
         },
         {
           "DataId": 1009212,
-          "Position": {
-            "X": 151.29321,
-            "Y": -9.752633,
-            "Z": 79.697754
-          },
-          "TerritoryId": 154,
+          "Position": [151.29321, -9.752633, 79.697754],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,20 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": ["alydev", "ShermTank"],
   "LastChecked": {"Username": "alydev", "Date": "2026-09-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 129,
       "Steps": [
         {
           "Comment": "Purchase bait",
           "DataId": 1005422,
-          "Position": {
-            "X": -397.6349,
-            "Y": 3.099996,
-            "Z": 80.979614
-          },
-          "TerritoryId": 129,
+          "Position": [-397.6349, 3.099996, 80.979614],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -32,11 +28,7 @@
         },
         {
           "DataId": 1013250,
-          "Position": {
-            "X": 100.358,
-            "Y": 15,
-            "Z": 24.3203
-          },
+          "Position": [100.358, 15, 24.3203],
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest"
         }
@@ -44,44 +36,32 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1013254,
-          "Position": {
-            "X": 523.641,
-            "Y": -51.424,
-            "Z": 62.559
-          },
-          "TerritoryId": 398,
+          "Position": [523.641, -51.424, 62.559],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 398,
       "Steps": [
         {
           "DataId": 1013256,
-          "Position": {
-            "X": 560.587,
-            "Y": -21.2981,
-            "Z": -557.122
-          },
-          "TerritoryId": 398,
+          "Position": [560.587, -21.2981, -557.122],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 398,
       "Steps": [
         {
-          "Position": {
-            "X": 566.5044,
-            "Y": -26.253891,
-            "Z": -566.8326
-          },
-          "TerritoryId": 398,
+          "Position": [566.5044, -26.253891, -566.8326],
           "InteractionType": "Fish",
           "ItemsToGather": [
             {
@@ -92,27 +72,18 @@
         },
         {
           "DataId": 1013254,
-          "Position": {
-            "X": 523.6133,
-            "Y": -51.424004,
-            "Z": 62.546753
-          },
-          "TerritoryId": 398,
+          "Position": [523.6133, -51.424004, 62.546753],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1013250,
-          "Position": {
-            "X": 100.358,
-            "Y": 15,
-            "Z": 24.3203
-          },
-          "TerritoryId": 418,
+          "Position": [100.358, 15, 24.3203],
           "InteractionType": "CompleteQuest"
         }
       ]

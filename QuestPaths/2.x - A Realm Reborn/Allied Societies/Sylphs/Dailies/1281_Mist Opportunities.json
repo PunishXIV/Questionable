@@ -1,55 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1005563,
-          "Position": {
-            "X": 48.874634,
-            "Y": 6.0734596,
-            "Z": 251.17871
-          },
-          "TerritoryId": 152,
+          "Position": [48.874634, 6.0734596, 251.17871],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1005885,
-          "Position": {
-            "X": 244.40369,
-            "Y": -5.6428905,
-            "Z": -55.161438
-          },
-          "TerritoryId": 152,
+          "Position": [244.40369, -5.6428905, -55.161438],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Comment": "Transparent effect not required for this quest",
       "Steps": [
         {
-          "TerritoryId": 152,
           "InteractionType": "StatusOff",
           "Status": "Transparent"
         },
         {
           "DataId": 2003280,
-          "Position": {
-            "X": 364.43127,
-            "Y": -16.769714,
-            "Z": -238.48328
-          },
-          "TerritoryId": 152,
+          "Position": [364.43127, -16.769714, -238.48328],
           "InteractionType": "UseItem",
           "ItemId": 2001183,
           "RequiredQuestVariables": [null,null,null,[
@@ -59,12 +46,7 @@
         },
         {
           "DataId": 2003281,
-          "Position": {
-            "X": 218.4939,
-            "Y": -19.668945,
-            "Z": -404.77612
-          },
-          "TerritoryId": 152,
+          "Position": [218.4939, -19.668945, -404.77612],
           "InteractionType": "UseItem",
           "ItemId": 2001183,
           "RequiredQuestVariables": [null,null,null,[
@@ -74,12 +56,7 @@
         },
         {
           "DataId": 2003283,
-          "Position": {
-            "X": 144.8844,
-            "Y": -28.305542,
-            "Z": -224.93329
-          },
-          "TerritoryId": 152,
+          "Position": [144.8844, -28.305542, -224.93329],
           "InteractionType": "UseItem",
           "ItemId": 2001183,
           "RequiredQuestVariables": [null,null,null,[
@@ -89,12 +66,7 @@
         },
         {
           "DataId": 2003282,
-          "Position": {
-            "X": 121.29382,
-            "Y": -25.28424,
-            "Z": -348.37878
-          },
-          "TerritoryId": 152,
+          "Position": [121.29382, -25.28424, -348.37878],
           "InteractionType": "UseItem",
           "ItemId": 2001183,
           "RequiredQuestVariables": [null,null,null,[
@@ -106,15 +78,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1005563,
-          "Position": {
-            "X": 48.874634,
-            "Y": 6.0734596,
-            "Z": 251.17871
-          },
-          "TerritoryId": 152,
+          "Position": [48.874634, 6.0734596, 251.17871],
           "InteractionType": "CompleteQuest"
         }
       ]

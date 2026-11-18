@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038551,
-          "Position": {
-            "X": -348.539,
-            "Y": 21.846,
-            "Z": -79.9565
-          },
-          "TerritoryId": 962,
+          "Position": [-348.539, 21.846, -79.9565],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1038551 (T'laqa Tia)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 2011754,
-          "Position": {
-            "X": -212.711,
-            "Y": 10.4605,
-            "Z": -5.29958
-          },
-          "TerritoryId": 962,
+          "Position": [-212.711, 10.4605, -5.29958],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 2011754 (destination)"
         }
@@ -37,15 +29,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038560,
-          "Position": {
-            "X": -76.7107,
-            "Y": -133,
-            "Z": -573.11
-          },
-          "TerritoryId": 959,
+          "Position": [-76.7107, -133, -573.11],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1038560 (knowledgeable Loporrit)"
         }
@@ -53,16 +41,12 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 959,
       "Steps": [
         {
           "Comment": "Purchase 99x Grey Worm",
           "DataId": 1037791,
-          "Position": {
-            "X": -19.882507,
-            "Y": -132.94641,
-            "Z": -461.3871
-          },
-          "TerritoryId": 959,
+          "Position": [-19.882507, -132.94641, -461.3871],
           "InteractionType": "PurchaseItem",
           "ItemId": 36594,
           "ItemCount": 99,
@@ -73,12 +57,7 @@
           }
         },
         {
-          "Position": {
-            "X": 10.105398,
-            "Y": 23.641565,
-            "Z": 459.77737
-          },
-          "TerritoryId": 959,
+          "Position": [10.105398, 23.641565, 459.77737],
           "InteractionType": "Fish",
           "ItemsToGather": [
             {
@@ -89,11 +68,7 @@
         },
         {
           "DataId": 1038551,
-          "Position": {
-            "X": -348.539,
-            "Y": 21.846,
-            "Z": -79.9565
-          },
+          "Position": [-348.539, 21.846, -79.9565],
           "TerritoryId": 962,
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1038551 (T'laqa Tia); npc trade"
@@ -102,15 +77,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1038561,
-          "Position": {
-            "X": -364.826,
-            "Y": 22.3,
-            "Z": -122.307
-          },
-          "TerritoryId": 962,
+          "Position": [-364.826, 22.3, -122.307],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1038561 (Studium staff)"
         }
@@ -118,15 +89,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039239,
-          "Position": {
-            "X": -348.494,
-            "Y": 21.846,
-            "Z": -80.185
-          },
-          "TerritoryId": 962,
+          "Position": [-348.494, 21.846, -80.185],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1039239 (T'laqa Tia)"
         }

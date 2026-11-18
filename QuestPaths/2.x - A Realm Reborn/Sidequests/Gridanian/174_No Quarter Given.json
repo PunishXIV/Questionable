@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000612,
-          "Position": {
-            "X": 357.983,
-            "Y": 8.93414,
-            "Z": 214.492
-          },
-          "TerritoryId": 154,
+          "Position": [357.983, 8.93414, 214.492],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1000612 (Guithrit)"
         }
@@ -21,14 +17,10 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "Position": {
-            "X": 233.923,
-            "Y": -1.0883999,
-            "Z": 230.038
-          },
-          "TerritoryId": 154,
+          "Position": [233.923, -1.0883999, 230.038],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
@@ -42,15 +34,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1000612,
-          "Position": {
-            "X": 357.983,
-            "Y": 8.93414,
-            "Z": 214.492
-          },
-          "TerritoryId": 154,
+          "Position": [357.983, 8.93414, 214.492],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1000612 (Guithrit)"
         }

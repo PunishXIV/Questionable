@@ -1,33 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Iskierka", "Date": "2026-06-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1006287,
-          "Position": {
-            "X": -354.66547,
-            "Y": 8.469922,
-            "Z": 416.80017
-          },
-          "TerritoryId": 146,
+          "Position": [-354.66547, 8.469922, 416.80017],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": -347.53528,
-            "Y": 8.5170555,
-            "Z": 420.7671
-          },
-          "TerritoryId": 146,
+          "Position": [-347.53528, 8.5170555, 420.7671],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -36,12 +28,7 @@
           }
         },
         {
-          "Position": {
-            "X": -452.6925,
-            "Y": 7.386449,
-            "Z": 579.44867
-          },
-          "TerritoryId": 146,
+          "Position": [-452.6925, 7.386449, 579.44867],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -51,26 +38,17 @@
         },
         {
           "DataId": 1006289,
-          "Position": {
-            "X": -454.36792,
-            "Y": 7.3196526,
-            "Z": 580.3158
-          },
-          "TerritoryId": 146,
+          "Position": [-454.36792, 7.3196526, 580.3158],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
-          "Position": {
-            "X": -347.53528,
-            "Y": 8.5170555,
-            "Z": 420.7671
-          },
-          "TerritoryId": 146,
+          "Position": [-347.53528, 8.5170555, 420.7671],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -80,12 +58,7 @@
         },
         {
           "DataId": 1006287,
-          "Position": {
-            "X": -354.66547,
-            "Y": 8.469922,
-            "Z": 416.80017
-          },
-          "TerritoryId": 146,
+          "Position": [-354.66547, 8.469922, 416.80017],
           "InteractionType": "CompleteQuest"
         }
       ]

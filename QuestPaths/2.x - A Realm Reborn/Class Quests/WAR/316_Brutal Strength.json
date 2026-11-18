@@ -1,45 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000927,
-          "Position": {
-            "X": -1.2055054,
-            "Y": 44.999886,
-            "Z": -255.8786
-          },
-          "TerritoryId": 128,
+          "Position": [-1.2055054, 44.999886, -255.8786],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
-          "DataId": 1000868,
-          "Position": {
-            "X": -192.00433,
-            "Y": 0.9999907,
-            "Z": 211.68835
-          },
-          "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "TargetTerritoryId": 138
-        },
-        {
           "DataId": 1002110,
-          "Position": {
-            "X": 319.84436,
-            "Y": -31.898647,
-            "Z": 273.51794
-          },
+          "Position": [319.84436, -31.898647, 273.51794],
           "TerritoryId": 138,
           "InteractionType": "Interact"
         }
@@ -47,19 +29,14 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "TerritoryId": 138,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Western La Noscea - Aleport"
         },
         {
-          "Position": {
-            "X": 139.18224,
-            "Y": -20.931536,
-            "Z": 139.35034
-          },
-          "TerritoryId": 138,
+          "Position": [139.18224, -20.931536, 139.35034],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -69,12 +46,7 @@
         },
         {
           "DataId": 2000288,
-          "Position": {
-            "X": 99.22937,
-            "Y": -14.2977295,
-            "Z": 141.86316
-          },
-          "TerritoryId": 138,
+          "Position": [99.22937, -14.2977295, 141.86316],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -85,36 +57,24 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000927,
-          "Position": {
-            "X": -1.2055054,
-            "Y": 44.999886,
-            "Z": -255.8786
-          },
-          "TerritoryId": 128,
+          "Position": [-1.2055054, 44.999886, -255.8786],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 134,
       "Steps": [
         {
-          "Position": {
-            "X": -182.58467,
-            "Y": 39.786213,
-            "Z": -46.777275
-          },
-          "TerritoryId": 134,
+          "Position": [-182.58467, 39.786213, -46.777275],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": -192.3236,
-              "Y": 41.73779,
-              "Z": -49.477997
-            }
+            "Position": [-192.3236, 41.73779, -49.477997]
           },
           "SkipConditions": {
             "StepIf": {
@@ -124,27 +84,18 @@
         },
         {
           "DataId": 1002111,
-          "Position": {
-            "X": -206.80554,
-            "Y": 41.757885,
-            "Z": -39.627747
-          },
-          "TerritoryId": 134,
+          "Position": [-206.80554, 41.757885, -39.627747],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 2001486,
-          "Position": {
-            "X": -225.33002,
-            "Y": 42.191162,
-            "Z": -35.202576
-          },
-          "TerritoryId": 134,
+          "Position": [-225.33002, 42.191162, -35.202576],
           "InteractionType": "Action",
           "Action": "Heavy Swing"
         }
@@ -152,30 +103,22 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 134,
       "Steps": [
         {
           "DataId": 1002111,
-          "Position": {
-            "X": -206.80554,
-            "Y": 41.757885,
-            "Z": -39.627747
-          },
-          "TerritoryId": 134,
+          "Position": [-206.80554, 41.757885, -39.627747],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000927,
-          "Position": {
-            "X": -1.2055054,
-            "Y": 44.999886,
-            "Z": -255.8786
-          },
-          "TerritoryId": 128,
+          "Position": [-1.2055054, 44.999886, -255.8786],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 317
         }

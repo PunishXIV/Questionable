@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,41 +8,28 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1037567,
-          "Position": {
-            "X": 42.4048,
-            "Y": -28.5492,
-            "Z": 44.2664
-          },
-          "TerritoryId": 956,
+          "Position": [42.4048, -28.5492, 44.2664],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 2012254,
-          "Position": {
-            "X": -618.86,
-            "Y": -4.26108,
-            "Z": -121.019
-          },
-          "TerritoryId": 956,
+          "Position": [-618.86, -4.26108, -121.019],
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 1
         },
         {
           "DataId": 14090,
-          "Position": {
-            "X": -626.465,
-            "Y": -3.74359,
-            "Z": -127.515
-          },
-          "TerritoryId": 956,
+          "Position": [-626.465, -3.74359, -127.515],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2003263,
@@ -54,15 +41,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 956,
       "Steps": [
         {
           "DataId": 1037567,
-          "Position": {
-            "X": 42.4048,
-            "Y": -28.5492,
-            "Z": 44.2664
-          },
-          "TerritoryId": 956,
+          "Position": [42.4048, -28.5492, 44.2664],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

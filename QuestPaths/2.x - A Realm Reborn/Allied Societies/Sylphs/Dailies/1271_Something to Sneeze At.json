@@ -1,59 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1005562,
-          "Position": {
-            "X": 36.850464,
-            "Y": -4.8778634,
-            "Z": 249.19507
-          },
-          "TerritoryId": 152,
+          "Position": [36.850464, -4.8778634, 249.19507],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1008334,
-          "Position": {
-            "X": 184.64929,
-            "Y": 9.065049,
-            "Z": 197.28381
-          },
-          "TerritoryId": 152,
+          "Position": [184.64929, 9.065049, 197.28381],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1052562,
-          "Position": {
-            "X": 184.64929,
-            "Y": 9.065049,
-            "Z": 197.28381
-          },
-          "TerritoryId": 152,
+          "Position": [184.64929, 9.065049, 197.28381],
           "InteractionType": "None"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 2003249,
-          "Position": {
-            "X": 360.6775,
-            "Y": -17.563171,
-            "Z": -128.06903
-          },
-          "TerritoryId": 152,
+          "Position": [360.6775, -17.563171, -128.06903],
           "InteractionType": "Action",
           "Action": "Big Sneeze",
           "RequiredQuestVariables": [null,null,null,[
@@ -62,12 +45,7 @@
         },
         {
           "DataId": 2003251,
-          "Position": {
-            "X": 442.34375,
-            "Y": -17.990417,
-            "Z": -200.3357
-          },
-          "TerritoryId": 152,
+          "Position": [442.34375, -17.990417, -200.3357],
           "InteractionType": "Action",
           "Action": "Big Sneeze",
           "RequiredQuestVariables": [null,null,null,[
@@ -76,12 +54,7 @@
         },
         {
           "DataId": 2003252,
-          "Position": {
-            "X": 406.08826,
-            "Y": -16.983276,
-            "Z": -254.99353
-          },
-          "TerritoryId": 152,
+          "Position": [406.08826, -16.983276, -254.99353],
           "InteractionType": "Action",
           "Action": "Big Sneeze",
           "RequiredQuestVariables": [null,null,null,[
@@ -90,12 +63,7 @@
         },
         {
           "DataId": 2003250,
-          "Position": {
-            "X": 323.7506,
-            "Y": -17.990417,
-            "Z": -217.60895
-          },
-          "TerritoryId": 152,
+          "Position": [323.7506, -17.990417, -217.60895],
           "InteractionType": "Action",
           "Action": "Big Sneeze",
           "RequiredQuestVariables": [null,null,null,[
@@ -104,12 +72,7 @@
         },
         {
           "DataId": 2003253,
-          "Position": {
-            "X": 295.67407,
-            "Y": -20.157227,
-            "Z": -297.74933
-          },
-          "TerritoryId": 152,
+          "Position": [295.67407, -20.157227, -297.74933],
           "InteractionType": "Action",
           "Action": "Big Sneeze",
           "RequiredQuestVariables": [null,null,null,[
@@ -120,15 +83,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 152,
       "Steps": [
         {
           "DataId": 1005562,
-          "Position": {
-            "X": 36.850464,
-            "Y": -4.8778634,
-            "Z": 249.19507
-          },
-          "TerritoryId": 152,
+          "Position": [36.850464, -4.8778634, 249.19507],
           "InteractionType": "CompleteQuest"
         }
       ]

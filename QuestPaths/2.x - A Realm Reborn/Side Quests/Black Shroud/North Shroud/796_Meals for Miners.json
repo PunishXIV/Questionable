@@ -1,69 +1,47 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "croizat",
   "LastChecked": {"Username": "erdelf", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1002804,
-          "Position": {
-            "X": -26.586267,
-            "Y": -40.705082,
-            "Z": 174.59982
-          },
-          "TerritoryId": 154,
+          "Position": [-26.586267, -40.705082, 174.59982],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1006253,
-          "Position": {
-            "X": -251.6366,
-            "Y": -31.279873,
-            "Z": 383.62695
-          },
-          "TerritoryId": 154,
+          "Position": [-251.6366, -31.279873, 383.62695],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1006258,
-          "Position": {
-            "X": -246.479,
-            "Y": -31.537203,
-            "Z": 392.5382
-          },
-          "TerritoryId": 154,
+          "Position": [-246.479, -31.537203, 392.5382],
           "InteractionType": "Interact"
         },
         {
           "DataId": 1006254,
-          "Position": {
-            "X": -244.52588,
-            "Y": -31.265808,
-            "Z": 392.3551
-          },
-          "TerritoryId": 154,
+          "Position": [-244.52588, -31.265808, 392.3551],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1002804,
-          "Position": {
-            "X": -26.586267,
-            "Y": -40.705082,
-            "Z": 174.59982
-          },
-          "TerritoryId": 154,
+          "Position": [-26.586267, -40.705082, 174.59982],
           "InteractionType": "CompleteQuest"
         }
       ]

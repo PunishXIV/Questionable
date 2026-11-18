@@ -1,50 +1,38 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "Comment": "These summons hit quite hard, recommend gear upgrade to ilvl 255+ (The Sirensong Sea drops ilvl 260 gear)",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-17"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1006756,
-          "Position": {
-            "X": -16.891846,
-            "Y": 10.17425,
-            "Z": -246.87573
-          },
-          "TerritoryId": 133,
+          "Position": [-16.891846, 10.17425, -246.87573],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1022765,
-          "Position": {
-            "X": 49.66809,
-            "Y": 3.9999626,
-            "Z": 429.22095
-          },
-          "TerritoryId": 147,
+          "Position": [49.66809, 3.9999626, 429.22095],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1022770,
-          "Position": {
-            "X": 82.38342,
-            "Y": 14.362329,
-            "Z": 221.20996
-          },
-          "TerritoryId": 147,
+          "Position": [82.38342, 14.362329, 221.20996],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -55,15 +43,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1022772,
-          "Position": {
-            "X": 87.907104,
-            "Y": 14.713098,
-            "Z": 222.03394
-          },
-          "TerritoryId": 147,
+          "Position": [87.907104, 14.713098, 222.03394],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -74,15 +58,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1022772,
-          "Position": {
-            "X": 87.907104,
-            "Y": 14.713098,
-            "Z": 222.03394
-          },
-          "TerritoryId": 147,
+          "Position": [87.907104, 14.713098, 222.03394],
           "DelaySecondsAtStart":10,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
@@ -94,30 +74,22 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 147,
       "Steps": [
         {
           "DataId": 1022773,
-          "Position": {
-            "X": 74.66235,
-            "Y": 14.033362,
-            "Z": 228.5343
-          },
-          "TerritoryId": 147,
+          "Position": [74.66235, 14.033362, 228.5343],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1006756,
-          "Position": {
-            "X": -16.891846,
-            "Y": 10.17425,
-            "Z": -246.87573
-          },
-          "TerritoryId": 133,
+          "Position": [-16.891846, 10.17425, -246.87573],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2627
         }

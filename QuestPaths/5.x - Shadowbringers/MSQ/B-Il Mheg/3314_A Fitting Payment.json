@@ -1,64 +1,46 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1029564,
-          "Position": {
-            "X": -143.26697,
-            "Y": 100.184166,
-            "Z": -848.90515
-          },
-          "TerritoryId": 816,
+          "Position": [-143.26697, 100.184166, -848.90515],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "TerritoryId": 816,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Il Mheg - Pla Enni"
         },
         {
           "DataId": 2010637,
-          "Position": {
-            "X": 50.30896,
-            "Y": 101.73181,
-            "Z": -850.6142
-          },
-          "TerritoryId": 816,
+          "Position": [50.30896, 101.73181, -850.6142],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179714
         },
         {
           "DataId": 1029572,
-          "Position": {
-            "X": -44.022278,
-            "Y": 104.915054,
-            "Z": -856.53467
-          },
-          "TerritoryId": 816,
+          "Position": [-44.022278, 104.915054, -856.53467],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "Position": {
-            "X": -121.60927,
-            "Y": 57.405594,
-            "Z": -669.88385
-          },
-          "TerritoryId": 816,
+          "Position": [-121.60927, 57.405594, -669.88385],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
@@ -69,15 +51,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1029572,
-          "Position": {
-            "X": -44.022278,
-            "Y": 104.915054,
-            "Z": -856.53467
-          },
-          "TerritoryId": 816,
+          "Position": [-44.022278, 104.915054, -856.53467],
           "InteractionType": "CompleteQuest"
         }
       ]

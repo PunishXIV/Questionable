@@ -1,78 +1,58 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Censored",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1033543,
-          "Position": {
-            "X": 113.38977,
-            "Y": -20,
-            "Z": -0.96136475
-          },
-          "TerritoryId": 886,
+          "Position": [113.38977, -20, -0.96136475],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1033784,
-          "Position": {
-            "X": 154.00928,
-            "Y": -50,
-            "Z": 67.73474
-          },
-          "TerritoryId": 886,
+          "Position": [154.00928, -50, 67.73474],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1033789,
-          "Position": {
-            "X": -701.83875,
-            "Y": 83.7986,
-            "Z": 229.99915
-          },
-          "TerritoryId": 400,
+          "Position": [-701.83875, 83.7986, 229.99915],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1033789,
-          "Position": {
-            "X": -701.83875,
-            "Y": 83.7986,
-            "Z": 229.99915
-          },
-          "TerritoryId": 400,
+          "Position": [-701.83875, 83.7986, 229.99915],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 886,
       "Steps": [
         {
           "DataId": 1033922,
-          "Position": {
-            "X": 113.38977,
-            "Y": -20,
-            "Z": -0.9918823
-          },
-          "TerritoryId": 886,
+          "Position": [113.38977, -20, -0.9918823],
           "InteractionType": "CompleteQuest"
         }
       ]

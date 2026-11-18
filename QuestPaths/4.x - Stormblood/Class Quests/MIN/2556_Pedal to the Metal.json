@@ -1,49 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-28"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1019863,
-          "Position": {
-            "X": 53.94055,
-            "Y": 207.1718,
-            "Z": -7.2786255
-          },
-          "TerritoryId": 478,
+          "Position": [53.94055, 207.1718, -7.2786255],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1019864,
-          "Position": {
-            "X": 82.38342,
-            "Y": 214.1,
-            "Z": -91.99664
-          },
-          "TerritoryId": 478,
+          "Position": [82.38342, 214.1, -91.99664],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1020989,
-          "Position": {
-            "X": 84.91638,
-            "Y": 213.1,
-            "Z": -80.06415
-          },
-          "TerritoryId": 478,
+          "Position": [84.91638, 213.1, -80.06415],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -52,12 +40,7 @@
         },
         {
           "DataId": 1019865,
-          "Position": {
-            "X": 57.724854,
-            "Y": 214.18024,
-            "Z": -74.6319
-          },
-          "TerritoryId": 478,
+          "Position": [57.724854, 214.18024, -74.6319],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -68,39 +51,31 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1019864,
-          "Position": {
-            "X": 82.38342,
-            "Y": 214.1,
-            "Z": -91.99664
-          },
-          "TerritoryId": 478,
+          "Position": [82.38342, 214.1, -91.99664],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1019866,
-          "Position": {
-            "X": -65.812195,
-            "Y": 206.50021,
-            "Z": 4.3792725
-          },
-          "TerritoryId": 478,
+          "Position": [-65.812195, 206.50021, 4.3792725],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "TerritoryId": 612,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -118,11 +93,7 @@
         },
         {
           "DataId": 1019864,
-          "Position": {
-            "X": 82.38342,
-            "Y": 214.1,
-            "Z": -91.99664
-          },
+          "Position": [82.38342, 214.1, -91.99664],
           "TerritoryId": 478,
           "InteractionType": "Interact"
         }
@@ -130,30 +101,22 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1019864,
-          "Position": {
-            "X": 82.38342,
-            "Y": 214.1,
-            "Z": -91.99664
-          },
-          "TerritoryId": 478,
+          "Position": [82.38342, 214.1, -91.99664],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1019863,
-          "Position": {
-            "X": 53.94055,
-            "Y": 207.1718,
-            "Z": -7.2786255
-          },
-          "TerritoryId": 478,
+          "Position": [53.94055, 207.1718, -7.2786255],
           "InteractionType": "CompleteQuest"
         }
       ]

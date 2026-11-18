@@ -1,19 +1,15 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "Comment": "This quest path is automatically generated and untested. Please report in Discord whether it works.",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1278,
       "Steps": [
         {
           "DataId": 1059640,
-          "Position": {
-            "X": -3.95461,
-            "Y": 30.02,
-            "Z": -65.864
-          },
-          "TerritoryId": 1278,
+          "Position": [-3.95461, 30.02, -65.864],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1059640 (Ketenramm)"
         }
@@ -21,26 +17,18 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1278,
       "Steps": [
         {
           "DataId": 1053611,
-          "Position": {
-            "X": -77.958374,
-            "Y": 5,
-            "Z": -15.396423
-          },
-          "TerritoryId": 1278,
+          "Position": [-77.958374, 5, -15.396423],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1346,
           "Comment": "This requires queueing into Occult Crescent: North Horn, so isn't started automatically"
         },
         {
           "DataId": 1059627,
-          "Position": {
-            "X": 875.578,
-            "Y": 258.5,
-            "Z": 864.439
-          },
+          "Position": [875.578, 258.5, 864.439],
           "TerritoryId": 1346,
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1059627 (Ketenramm)"
@@ -49,44 +37,25 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1346,
       "Steps": [
         {
-          "Position": {
-            "X": 875.578,
-            "Y": 258.5,
-            "Z": 864.439
-          },
-          "TerritoryId": 1346,
+          "Position": [875.578, 258.5, 864.439],
           "InteractionType": "Instruction",
           "Comment": "By continuing, you acknowledge the risk of being killed in one hit and losing Knowledge Level during automatic completion of this quest.\nAll steps in this quest path are for reference only and should never be left unattended."
         },
         {
-          "Position": {
-            "X": 803.04175,
-            "Y": 61.25,
-            "Z": -556.47906
-          },
-          "TerritoryId": 1346,
+          "Position": [803.04175, 61.25, -556.47906],
           "InteractionType": "WaitForManualProgress",
           "Comment": "Complete critical encounter"
         },
         {
-          "Position": {
-            "X": -196.34914,
-            "Y": 18.200039,
-            "Z": -53.35111
-          },
-          "TerritoryId": 1346,
+          "Position": [-196.34914, 18.200039, -53.35111],
           "InteractionType": "WaitForManualProgress",
           "Comment": "Complete critical encounter"
         },
         {
-          "Position": {
-            "X": -522.34454,
-            "Y": 123.4291,
-            "Z": -646.3351
-          },
-          "TerritoryId": 1346,
+          "Position": [-522.34454, 123.4291, -646.3351],
           "InteractionType": "WaitForManualProgress",
           "Comment": "Complete critical encounter"
         }
@@ -94,15 +63,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1346,
       "Steps": [
         {
           "DataId": 1059627,
-          "Position": {
-            "X": 875.578,
-            "Y": 258.5,
-            "Z": 864.439
-          },
-          "TerritoryId": 1346,
+          "Position": [875.578, 258.5, 864.439],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1059627 (Ketenramm)"
         }
@@ -110,15 +75,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1346,
       "Steps": [
         {
           "DataId": 2015450,
-          "Position": {
-            "X": -290.681,
-            "Y": 9.83041,
-            "Z": 424.358
-          },
-          "TerritoryId": 1346,
+          "Position": [-290.681, 9.83041, 424.358],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 2015450 (confluence)"
         }
@@ -126,15 +87,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1346,
       "Steps": [
         {
           "DataId": 1059627,
-          "Position": {
-            "X": 875.578,
-            "Y": 258.5,
-            "Z": 864.439
-          },
-          "TerritoryId": 1346,
+          "Position": [875.578, 258.5, 864.439],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1059627 (Ketenramm)"
         }

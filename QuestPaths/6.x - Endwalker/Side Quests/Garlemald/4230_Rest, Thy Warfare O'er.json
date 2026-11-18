@@ -1,43 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1040645,
-          "Position": {
-            "X": 485.2522,
-            "Y": 10.800001,
-            "Z": -456.32104
-          },
-          "TerritoryId": 958,
+          "Position": [485.2522, 10.800001, -456.32104],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
-          "Position": {
-            "X": -340.87164,
-            "Y": 10.803238,
-            "Z": -694.511
-          },
-          "TerritoryId": 958,
+          "Position": [-340.87164, 10.803238, -694.511],
           "InteractionType": "WalkTo",
           "$": "need to land on the road to avoid awkward flypathing through the burned buildings."
         },
         {
-          "Position": {
-            "X": -310.5188,
-            "Y": 10.813947,
-            "Z": -720.8323
-          },
-          "TerritoryId": 958,
+          "Position": [-310.5188, 10.813947, -720.8323],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -46,12 +33,7 @@
         },
         {
           "DataId": 14102,
-          "Position": {
-            "X": -313.222,
-            "Y": 10.821807,
-            "Z": -720.4852
-          },
-          "TerritoryId": 958,
+          "Position": [-313.222, 10.821807, -720.4852],
           "InteractionType": "UseItem",
           "ItemId": 2003208
         }
@@ -59,30 +41,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1040629,
-          "Position": {
-            "X": -310.47534,
-            "Y": 10.815676,
-            "Z": -720.2411
-          },
-          "TerritoryId": 958,
+          "Position": [-310.47534, 10.815676, -720.2411],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1040645,
-          "Position": {
-            "X": 485.2522,
-            "Y": 10.800001,
-            "Z": -456.32104
-          },
-          "TerritoryId": 958,
+          "Position": [485.2522, 10.800001, -456.32104],
           "InteractionType": "CompleteQuest"
         }
       ]

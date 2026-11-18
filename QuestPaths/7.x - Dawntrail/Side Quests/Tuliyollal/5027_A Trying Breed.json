@@ -1,46 +1,33 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "jigain", "Date": "2026-06-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1051043,
-          "Position": {
-            "X": -276.99707,
-            "Y": 1.9748375E-05,
-            "Z": 71.97681
-          },
-          "TerritoryId": 1185,
+          "Position": [-276.99707, 1.9748375E-05, 71.97681],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1051044,
-          "Position": {
-            "X": -307.6372,
-            "Y": 3,
-            "Z": -50.8584
-          },
-          "TerritoryId": 1185,
+          "Position": [-307.6372, 3, -50.8584],
           "InteractionType": "Emote",
           "Emote": "soothe",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1051045,
-          "Position": {
-            "X": -49.42401,
-            "Y": -2.7939677E-09,
-            "Z": 16.647583
-          },
-          "TerritoryId": 1185,
+          "Position": [-49.42401, -2.7939677E-09, 16.647583],
           "InteractionType": "Emote",
           "Emote": "soothe",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -49,15 +36,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1051043,
-          "Position": {
-            "X": -276.99707,
-            "Y": 1.9748375E-05,
-            "Z": 71.97681
-          },
-          "TerritoryId": 1185,
+          "Position": [-276.99707, 1.9748375E-05, 71.97681],
           "InteractionType": "CompleteQuest"
         }
       ]

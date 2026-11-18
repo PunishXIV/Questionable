@@ -1,18 +1,14 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Censored",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1025721,
-          "Position": {
-            "X": -75.94415,
-            "Y": 11.800039,
-            "Z": -115.617676
-          },
-          "TerritoryId": 628,
+          "Position": [-75.94415, 11.800039, -115.617676],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -26,15 +22,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1025721,
-          "Position": {
-            "X": -75.94415,
-            "Y": 11.800039,
-            "Z": -115.617676
-          },
-          "TerritoryId": 628,
+          "Position": [-75.94415, 11.800039, -115.617676],
           "InteractionType": "CompleteQuest"
         }
       ]

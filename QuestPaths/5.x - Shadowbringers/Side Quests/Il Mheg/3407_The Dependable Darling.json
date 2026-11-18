@@ -1,18 +1,14 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1030838,
-          "Position": {
-            "X": -285.90833,
-            "Y": 40.324036,
-            "Z": 444.41882
-          },
-          "TerritoryId": 816,
+          "Position": [-285.90833, 40.324036, 444.41882],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -26,29 +22,21 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1030721,
-          "Position": {
-            "X": -626.2455,
-            "Y": 52.029984,
-            "Z": 368.73413
-          },
-          "TerritoryId": 816,
+          "Position": [-626.2455, 52.029984, 368.73413],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 816,
       "Steps": [
         {
-          "Position": {
-            "X": -909.4109,
-            "Y": 35.300686,
-            "Z": 300.0915
-          },
-          "TerritoryId": 816,
+          "Position": [-909.4109, 35.300686, 300.0915],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [11109]
@@ -57,30 +45,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1030846,
-          "Position": {
-            "X": -910.94836,
-            "Y": 35.31905,
-            "Z": 301.16724
-          },
-          "TerritoryId": 816,
+          "Position": [-910.94836, 35.31905, 301.16724],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 816,
       "Steps": [
         {
           "DataId": 1030838,
-          "Position": {
-            "X": -285.90833,
-            "Y": 40.324036,
-            "Z": 444.41882
-          },
-          "TerritoryId": 816,
+          "Position": [-285.90833, 40.324036, 444.41882],
           "InteractionType": "CompleteQuest"
         }
       ]

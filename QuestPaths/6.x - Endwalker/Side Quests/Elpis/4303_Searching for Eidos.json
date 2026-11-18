@@ -1,33 +1,25 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1037993,
-          "Position": {
-            "X": -548.94336,
-            "Y": 167.30136,
-            "Z": -245.47186
-          },
-          "TerritoryId": 961,
+          "Position": [-548.94336, 167.30136, -245.47186],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1040870,
-          "Position": {
-            "X": -367.84924,
-            "Y": 163.7856,
-            "Z": -378.0728
-          },
-          "TerritoryId": 961,
+          "Position": [-367.84924, 163.7856, -378.0728],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2003253,
@@ -39,15 +31,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1037993,
-          "Position": {
-            "X": -548.94336,
-            "Y": 167.30136,
-            "Z": -245.47186
-          },
-          "TerritoryId": 961,
+          "Position": [-548.94336, 167.30136, -245.47186],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

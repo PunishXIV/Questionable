@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,45 +8,33 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031416,
-          "Position": {
-            "X": 343.70935,
-            "Y": 7.494513,
-            "Z": -126.05481
-          },
-          "TerritoryId": 817,
+          "Position": [343.70935, 7.494513, -126.05481],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031392,
-          "Position": {
-            "X": 147.9972,
-            "Y": -9.294524,
-            "Z": 357.90027
-          },
-          "TerritoryId": 817,
+          "Position": [147.9972, -9.294524, 357.90027],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031393,
-          "Position": {
-            "X": 147.17322,
-            "Y": -9.212592,
-            "Z": 357.1068
-          },
-          "TerritoryId": 817,
+          "Position": [147.17322, -9.212592, 357.1068],
           "InteractionType": "UseItem",
           "ItemId": 2002883
         }
@@ -54,15 +42,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1031416,
-          "Position": {
-            "X": 343.70935,
-            "Y": 7.494513,
-            "Z": -126.05481
-          },
-          "TerritoryId": 817,
+          "Position": [343.70935, 7.494513, -126.05481],
           "InteractionType": "CompleteQuest"
         }
       ]

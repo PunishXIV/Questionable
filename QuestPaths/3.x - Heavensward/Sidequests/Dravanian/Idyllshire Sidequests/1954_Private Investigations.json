@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012134,
-          "Position": {
-            "X": 6.14935,
-            "Y": 206.073,
-            "Z": 98.5583
-          },
-          "TerritoryId": 478,
+          "Position": [6.14935, 206.073, 98.5583],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1012134 (Notched Bone)"
         }
@@ -21,45 +17,33 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1014352,
-          "Position": {
-            "X": -521.556,
-            "Y": 146.198,
-            "Z": -367.135
-          },
-          "TerritoryId": 399,
+          "Position": [-521.556, 146.198, -367.135],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1014354,
-          "Position": {
-            "X": -515.058,
-            "Y": 153.32,
-            "Z": -162.222
-          },
-          "TerritoryId": 399,
+          "Position": [-515.058, 153.32, -162.222],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012134,
-          "Position": {
-            "X": 6.14935,
-            "Y": 206.073,
-            "Z": 98.5583
-          },
-          "TerritoryId": 478,
+          "Position": [6.14935, 206.073, 98.5583],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1012134 (Notched Bone)"
         }

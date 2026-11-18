@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012133,
-          "Position": {
-            "X": -26.8102,
-            "Y": 206.47,
-            "Z": 28.6716
-          },
-          "TerritoryId": 478,
+          "Position": [-26.8102, 206.47, 28.6716],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1012133 (Midnight Dew)"
         }
@@ -21,30 +17,22 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1013644,
-          "Position": {
-            "X": 91.90525,
-            "Y": 65.11965,
-            "Z": -182.77684
-          },
-          "TerritoryId": 399,
+          "Position": [91.90525, 65.11965, -182.77684],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012133,
-          "Position": {
-            "X": -26.8102,
-            "Y": 206.47,
-            "Z": 28.6716
-          },
-          "TerritoryId": 478,
+          "Position": [-26.8102, 206.47, 28.6716],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1012133 (Midnight Dew)"
         }

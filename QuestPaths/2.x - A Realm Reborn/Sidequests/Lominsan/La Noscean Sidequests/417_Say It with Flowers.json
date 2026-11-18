@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002445,
-          "Position": {
-            "X": 136.85,
-            "Y": 58.9528,
-            "Z": 937.438
-          },
-          "TerritoryId": 135,
+          "Position": [136.85, 58.9528, 937.438],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1002445 (Rostnzeh)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 2000775,
-          "Position": {
-            "X": 34.754475,
-            "Y": 48.102093,
-            "Z": 718.8136
-          },
-          "TerritoryId": 135,
+          "Position": [34.754475, 48.102093, 718.8136],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 2000775 (La Noscean lilybell); spawns enemies 22"
         }
@@ -37,15 +29,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1002237,
-          "Position": {
-            "X": 167.559,
-            "Y": 14.0959,
-            "Z": 683.925
-          },
-          "TerritoryId": 135,
+          "Position": [167.559, 14.0959, 683.925],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1002237 (Ghimthota)"
         }

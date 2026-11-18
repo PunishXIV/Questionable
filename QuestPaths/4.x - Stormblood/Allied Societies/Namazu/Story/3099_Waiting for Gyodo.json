@@ -1,33 +1,25 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Theo",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025601,
-          "Position": {
-            "X": -766.7506,
-            "Y": 127.43907,
-            "Z": 91.11157
-          },
-          "TerritoryId": 622,
+          "Position": [-766.7506, 127.43907, 91.11157],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 2009487,
-          "Position": {
-            "X": 9.048584,
-            "Y": 10.788086,
-            "Z": -0.015319824
-          },
-          "TerritoryId": 628,
+          "Position": [9.048584, 10.788086, -0.015319824],
           "InteractionType": "UseItem",
           "ItemId": 2002473
         }
@@ -35,52 +27,39 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 628,
       "Steps": [
         {
           "DataId": 1025705,
-          "Position": {
-            "X": -40.116028,
-            "Y": -2.2548056,
-            "Z": 44.693604
-          },
-          "TerritoryId": 628,
+          "Position": [-40.116028, -2.2548056, 44.693604],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025707,
-          "Position": {
-            "X": -747.8599,
-            "Y": 127.457695,
-            "Z": 91.203125
-          },
-          "TerritoryId": 622,
+          "Position": [-747.8599, 127.457695, 91.203125],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025609,
-          "Position": {
-            "X": -770.4738,
-            "Y": 127.42798,
-            "Z": 85.28259
-          },
-          "TerritoryId": 622,
+          "Position": [-770.4738, 127.42798, 85.28259],
           "InteractionType": "Interact",
           "RequiredQuestAcceptedJob": [
             "DoH"
           ]
         },
         {
-          "TerritoryId": 622,
           "InteractionType": "Craft",
           "ItemId": 22722,
           "ItemCount": 2,
@@ -89,7 +68,6 @@
           ]
         },
         {
-          "TerritoryId": 622,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -102,7 +80,6 @@
           ]
         },
         {
-          "TerritoryId": 622,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -116,54 +93,36 @@
         },
         {
           "DataId": 1025708,
-          "Position": {
-            "X": -746.6392,
-            "Y": 127.458954,
-            "Z": 91.63037
-          },
-          "TerritoryId": 622,
+          "Position": [-746.6392, 127.458954, 91.63037],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025707,
-          "Position": {
-            "X": -747.8599,
-            "Y": 127.457695,
-            "Z": 91.203125
-          },
-          "TerritoryId": 622,
+          "Position": [-747.8599, 127.457695, 91.203125],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1026018,
-          "Position": {
-            "X": -728.2368,
-            "Y": 127.378174,
-            "Z": 110.7041
-          },
-          "TerritoryId": 622,
+          "Position": [-728.2368, 127.378174, 110.7041],
           "InteractionType": "Action",
           "Action": "Wasshoi",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1025709,
-          "Position": {
-            "X": -761.86774,
-            "Y": 127.25556,
-            "Z": 137.52954
-          },
-          "TerritoryId": 622,
+          "Position": [-761.86774, 127.25556, 137.52954],
           "InteractionType": "Action",
           "Action": "Wasshoi",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -172,15 +131,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025707,
-          "Position": {
-            "X": -747.8599,
-            "Y": 127.457695,
-            "Z": 91.203125
-          },
-          "TerritoryId": 622,
+          "Position": [-747.8599, 127.457695, 91.203125],
           "InteractionType": "CompleteQuest"
         }
       ]

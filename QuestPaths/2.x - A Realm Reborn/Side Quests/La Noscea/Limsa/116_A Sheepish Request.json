@@ -1,48 +1,36 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "UcanPatates",
   "LastChecked": {"Username": "chika", "Date": "2026-07-25"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1000959,
-          "Position": {
-            "X": -65.62909,
-            "Y": 41.999985,
-            "Z": -139.45221
-          },
-          "TerritoryId": 128,
+          "Position": [-65.62909, 41.999985, -139.45221],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 129,
       "Steps": [
         {
           "DataId": 1003603,
-          "Position": {
-            "X": 20.34021,
-            "Y": 20,
-            "Z": 4.3182373
-          },
-          "TerritoryId": 129,
+          "Position": [20.34021, 20, 4.3182373],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 129,
       "Steps": [
         {
-          "Position": {
-            "X": 64.20255,
-            "Y": 19.94936,
-            "Z": 1.0639327
-          },
-          "TerritoryId": 129,
+          "Position": [64.20255, 19.94936, 1.0639327],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -54,11 +42,7 @@
         },
         {
           "DataId": 338,
-          "Position": {
-            "X": 130.05261,
-            "Y": 51.719154,
-            "Z": 185.6565
-          },
+          "Position": [130.05261, 51.719154, 185.6565],
           "TerritoryId": 134,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
@@ -79,14 +63,10 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 134,
       "Steps": [
         {
-          "Position": {
-            "X": -57.281883,
-            "Y": 33.088005,
-            "Z": 160.24603
-          },
-          "TerritoryId": 134,
+          "Position": [-57.281883, 33.088005, 160.24603],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -98,11 +78,7 @@
         },
         {
           "DataId": 1000959,
-          "Position": {
-            "X": -65.62909,
-            "Y": 41.999985,
-            "Z": -139.45221
-          },
+          "Position": [-65.62909, 41.999985, -139.45221],
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest"
         }

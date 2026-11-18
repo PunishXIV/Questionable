@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Clockwise Starr",
   "LastChecked": {
     "Username": "Clockwise Starr",
@@ -8,94 +8,63 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1031224,
-          "Position": {
-            "X": 692.19495,
-            "Y": 21.276964,
-            "Z": -115.55658
-          },
-          "TerritoryId": 813,
+          "Position": [692.19495, 21.276964, -115.55658],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1031225,
-          "Position": {
-            "X": 233.56982,
-            "Y": 134.83134,
-            "Z": -207.01917
-          },
-          "TerritoryId": 813,
+          "Position": [233.56982, 134.83134, -207.01917],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 813,
       "Steps": [
         {
           "$": "Go to parapet to avoid awkward landing",
-          "Position": {
-            "X": 32.79174,
-            "Y": 161.10403,
-            "Z": -238.76346
-          },
-          "TerritoryId": 813,
+          "Position": [32.79174, 161.10403, -238.76346],
           "InteractionType": "None"
         },
         {
           "DataId": 2010710,
-          "Position": {
-            "X": 39.108765,
-            "Y": 163.65295,
-            "Z": -236.59119
-          },
-          "TerritoryId": 813,
+          "Position": [39.108765, 163.65295, -236.59119],
           "InteractionType": "Interact",
           "$": "QW: 0 0 0 0 0 0 -> QW: 1(1) 0 0 0 0 32",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 2010708,
-          "Position": {
-            "X": -0.869812,
-            "Y": 157.45776,
-            "Z": -340.71875
-          },
-          "TerritoryId": 813,
+          "Position": [-0.869812, 157.45776, -340.71875],
           "InteractionType": "Interact",
           "$": "QW: 1(1) 0 0 0 0 32 -> QW: 2(2) 0 0 0 0 160",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
           "DataId": 2010709,
-          "Position": {
-            "X": 132.52454,
-            "Y": 157.67139,
-            "Z": -352.28503
-          },
-          "TerritoryId": 813,
+          "Position": [132.52454, 157.67139, -352.28503],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1031226,
-          "Position": {
-            "X": 174.12073,
-            "Y": 139.0552,
-            "Z": -382.68103
-          },
-          "TerritoryId": 813,
+          "Position": [174.12073, 139.0552, -382.68103],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -109,15 +78,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 813,
       "Steps": [
         {
           "DataId": 1031224,
-          "Position": {
-            "X": 692.19495,
-            "Y": 21.276964,
-            "Z": -115.55658
-          },
-          "TerritoryId": 813,
+          "Position": [692.19495, 21.276964, -115.55658],
           "InteractionType": "CompleteQuest"
         }
       ]

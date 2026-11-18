@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-05"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047135,
-          "Position": {
-            "X": 180.407,
-            "Y": -13.9926,
-            "Z": 1.98725
-          },
-          "TerritoryId": 1185,
+          "Position": [180.407, -13.9926, 1.98725],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1047135 (Rral Soj)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047143,
-          "Position": {
-            "X": 11.2867,
-            "Y": 80,
-            "Z": -91.8325
-          },
-          "TerritoryId": 1185,
+          "Position": [11.2867, 80, -91.8325],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047143 (palace seer)"
         }
@@ -37,15 +29,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047135,
-          "Position": {
-            "X": 180.407,
-            "Y": -13.9926,
-            "Z": 1.98725
-          },
-          "TerritoryId": 1185,
+          "Position": [180.407, -13.9926, 1.98725],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047135 (Rral Soj)"
         }
@@ -53,20 +41,16 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1188,
       "Steps": [
         {
-          "TerritoryId": 1188,
           "InteractionType": "Craft",
           "ItemId": 43908,
           "ItemCount": 1
         },
         {
           "DataId": 1047135,
-          "Position": {
-            "X": 180.407,
-            "Y": -13.9926,
-            "Z": 1.98725
-          },
+          "Position": [180.407, -13.9926, 1.98725],
           "TerritoryId": 1185,
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047135 (Rral Soj); npc trade"
@@ -75,15 +59,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047135,
-          "Position": {
-            "X": 180.407,
-            "Y": -13.9926,
-            "Z": 1.98725
-          },
-          "TerritoryId": 1185,
+          "Position": [180.407, -13.9926, 1.98725],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1047135 (Rral Soj)"
         }

@@ -1,79 +1,59 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1047561,
-          "Position": {
-            "X": -519.4324,
-            "Y": 28.767723,
-            "Z": -419.24164
-          },
-          "TerritoryId": 1189,
+          "Position": [-519.4324, 28.767723, -419.24164],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1047563,
-          "Position": {
-            "X": -433.06635,
-            "Y": 18.428335,
-            "Z": -392.32477
-          },
-          "TerritoryId": 1189,
+          "Position": [-433.06635, 18.428335, -392.32477],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1047566,
-          "Position": {
-            "X": -531.9143,
-            "Y": 28.760696,
-            "Z": -428.54968
-          },
-          "TerritoryId": 1189,
+          "Position": [-531.9143, 28.760696, -428.54968],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1047566,
-          "Position": {
-            "X": -531.9143,
-            "Y": 28.760696,
-            "Z": -428.54968
-          },
-          "TerritoryId": 1189,
+          "Position": [-531.9143, 28.760696, -428.54968],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1189,
       "Steps": [
         {
           "DataId": 1047569,
-          "Position": {
-            "X": -589.56287,
-            "Y": 1.1820383,
-            "Z": -403.7995
-          },
-          "TerritoryId": 1189,
+          "Position": [-589.56287, 1.1820383, -403.7995],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,18 +1,14 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042300,
-          "Position": {
-            "X": -76.82922,
-            "Y": 39.977543,
-            "Z": 309.98706
-          },
-          "TerritoryId": 957,
+          "Position": [-76.82922, 39.977543, 309.98706],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -26,30 +22,22 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 2012929,
-          "Position": {
-            "X": -73.74689,
-            "Y": 39.96338,
-            "Z": 321.58386
-          },
-          "TerritoryId": 957,
+          "Position": [-73.74689, 39.96338, 321.58386],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1042300,
-          "Position": {
-            "X": -76.82922,
-            "Y": 39.977543,
-            "Z": 309.98706
-          },
-          "TerritoryId": 957,
+          "Position": [-76.82922, 39.977543, 309.98706],
           "InteractionType": "CompleteQuest"
         }
       ]

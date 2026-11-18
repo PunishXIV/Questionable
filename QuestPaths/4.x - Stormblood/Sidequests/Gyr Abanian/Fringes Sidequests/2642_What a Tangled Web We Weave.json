@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1021654,
-          "Position": {
-            "X": -620.124,
-            "Y": 130.205,
-            "Z": -480.908
-          },
-          "TerritoryId": 612,
+          "Position": [-620.124, 130.205, -480.908],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1021654 (Resistance fighter)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1021655,
-          "Position": {
-            "X": -256.825,
-            "Y": 44.6326,
-            "Z": -303.7
-          },
-          "TerritoryId": 612,
+          "Position": [-256.825, 44.6326, -303.7],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1021655 (Resistance fighter)"
         }
@@ -37,15 +29,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 2008260,
-          "Position": {
-            "X": -272.328,
-            "Y": 43.5339,
-            "Z": -292.042
-          },
-          "TerritoryId": 612,
+          "Position": [-272.328, 43.5339, -292.042],
           "InteractionType": "UseItem",
           "ItemId": 2002184,
           "$": "auto: todo location -> 2008260 (destination); use item ITEM0=2002184 on it"
@@ -54,15 +42,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1021655,
-          "Position": {
-            "X": -256.825,
-            "Y": 44.6326,
-            "Z": -303.7
-          },
-          "TerritoryId": 612,
+          "Position": [-256.825, 44.6326, -303.7],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1021655 (Resistance fighter)"
         }
@@ -70,14 +54,10 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 612,
       "Steps": [
         {
-          "Position": {
-            "X": -278.45758,
-            "Y": 18.711428,
-            "Z": -291.00757
-          },
-          "TerritoryId": 612,
+          "Position": [-278.45758, 18.711428, -291.00757],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [7507],
@@ -87,15 +67,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1021655,
-          "Position": {
-            "X": -256.825,
-            "Y": 44.6326,
-            "Z": -303.7
-          },
-          "TerritoryId": 612,
+          "Position": [-256.825, 44.6326, -303.7],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1021655 (Resistance fighter)"
         }
@@ -103,15 +79,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 612,
       "Steps": [
         {
           "DataId": 1021654,
-          "Position": {
-            "X": -620.124,
-            "Y": 130.205,
-            "Z": -480.908
-          },
-          "TerritoryId": 612,
+          "Position": [-620.124, 130.205, -480.908],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1021654 (Resistance fighter)"
         }

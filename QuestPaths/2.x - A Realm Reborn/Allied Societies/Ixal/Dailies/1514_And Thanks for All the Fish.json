@@ -1,36 +1,28 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "Comment": "Buys 99 Moth Pupa",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1009213,
-          "Position": {
-            "X": 162.01082,
-            "Y": -4.7442336,
-            "Z": 64.199814
-          },
-          "TerritoryId": 154,
+          "Position": [162.01082, -4.7442336, 64.199814],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 154,
       "Steps": [
         {
           "Comment": "Buy 99 Moth Pupa",
           "DataId": 1000718,
-          "Position": {
-            "X": 332.23462,
-            "Y": -5.5506706,
-            "Z": 332.47876
-          },
-          "TerritoryId": 154,
+          "Position": [332.23462, -5.5506706, 332.47876],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -47,22 +39,13 @@
           }
         },
         {
-          "Position": {
-            "X": -369.33804,
-            "Y": -4.500569,
-            "Z": 183.48431
-          },
-          "TerritoryId": 154,
+          "Position": [-369.33804, -4.500569, 183.48431],
           "InteractionType": "WalkTo",
           "Comment": "Move to next zone",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": -55.165855,
-                  "Y": 199.67697,
-                  "Z": 470.63123
-                },
+                "Position": [-55.165855, 199.67697, 470.63123],
                 "TerritoryId": 155,
                 "MaximumDistance": 200
               }
@@ -71,11 +54,7 @@
         },
         {
           "$": "QW: (-) (1H1L) (-) (-) (-) (-)",
-          "Position": {
-            "X": -55.165855,
-            "Y": 199.67697,
-            "Z": 470.63123
-          },
+          "Position": [-55.165855, 199.67697, 470.63123],
           "TerritoryId": 155,
           "InteractionType": "Fish",
           "Comment": "Fish for 1x Saint Carp (!!) using Moth Pupa",
@@ -91,33 +70,28 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 155,
       "Steps": [
         {
           "Comment": "Switch back to quest class",
           "InteractionType": "SwitchClass",
           "TargetClass": "QuestStartJob",
-          "TerritoryId": 155,
           "DelaySecondsAtStart": 1
         },
         {
           "Comment": "Give materials to quest NPC",
           "DataId": 1009219,
-          "Position": {
-            "X": 251.11768,
-            "Y": 222,
-            "Z": 366.2317
-          },
-          "TerritoryId": 155,
+          "Position": [251.11768, 222, 366.2317],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 155,
       "Steps": [
         {
           "Comment": "Craft 2x HQ Cockpit Exterior Component",
-          "TerritoryId": 155,
           "InteractionType": "Craft",
           "ItemId": 8100,
           "ItemCount": 2,
@@ -126,11 +100,7 @@
         {
           "Comment": "Complete quest",
           "DataId": 1009213,
-          "Position": {
-            "X": 162.01082,
-            "Y": -4.7442336,
-            "Z": 64.199814
-          },
+          "Position": [162.01082, -4.7442336, 64.199814],
           "TerritoryId": 154,
           "InteractionType": "CompleteQuest"
         }

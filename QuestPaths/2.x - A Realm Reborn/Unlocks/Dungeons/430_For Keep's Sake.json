@@ -1,59 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 30.917934,
-            "Y": 20.495003,
-            "Z": -656.1909
-          },
-          "TerritoryId": 156,
+          "Position": [30.917934, 20.495003, -656.1909],
           "InteractionType": "WalkTo",
           "$": "Rising Stones Door"
         },
         {
           "DataId": 1005523,
-          "Position": {
-            "X": 35.446655,
-            "Y": 21.252728,
-            "Z": -643.76294
-          },
-          "TerritoryId": 156,
+          "Position": [35.446655, 21.252728, -643.76294],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1002755,
-          "Position": {
-            "X": -218.70758,
-            "Y": 20.92322,
-            "Z": 336.07996
-          },
-          "TerritoryId": 153,
+          "Position": [-218.70758, 20.92322, 336.07996],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 153,
       "Steps": [
         {
           "$": "Need to move slightly out of the way so that flying pathing doesn't get caught on the tent.",
-          "Position": {
-            "X": -216.62369,
-            "Y": 20.914747,
-            "Z": 342.7406
-          },
-          "TerritoryId": 153,
+          "Position": [-216.62369, 20.914747, 342.7406],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -61,11 +44,7 @@
                 153
               ],
               "NotNearPosition": {
-                "Position": {
-                  "X": -216.62369,
-                  "Y": 20.914747,
-                  "Z": 342.7406
-                },
+                "Position": [-216.62369, 20.914747, 342.7406],
                 "TerritoryId": 153,
                 "MaximumDistance": 10
               }
@@ -74,21 +53,16 @@
         },
         {
           "DataId": 1007574,
-          "Position": {
-            "X": 163.40881,
-            "Y": 37.62593,
-            "Z": 175.03625
-          },
-          "TerritoryId": 153,
+          "Position": [163.40881, 37.62593, 175.03625],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "TerritoryId": 153,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 29,
@@ -100,15 +74,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1002755,
-          "Position": {
-            "X": -218.70758,
-            "Y": 20.92322,
-            "Z": 336.07996
-          },
-          "TerritoryId": 153,
+          "Position": [-218.70758, 20.92322, 336.07996],
           "InteractionType": "CompleteQuest"
         }
       ]

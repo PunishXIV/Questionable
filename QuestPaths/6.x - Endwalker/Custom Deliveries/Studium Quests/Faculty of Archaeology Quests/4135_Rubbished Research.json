@@ -1,20 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "Comment": "Autocraft requires:\n12x Bismuth Ingot\n6x Phrygian Gold Ingot",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039203,
-          "Position": {
-            "X": -277.689,
-            "Y": 21.846,
-            "Z": -139.064
-          },
-          "TerritoryId": 962,
+          "Position": [-277.689, 21.846, -139.064],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1039203 (Rurusha)"
         }
@@ -22,9 +18,9 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
-          "TerritoryId": 962,
           "InteractionType": "Craft",
           "ItemId": 35590,
           "ItemCount": 6,
@@ -32,12 +28,7 @@
         },
         {
           "DataId": 1039203,
-          "Position": {
-            "X": -277.689,
-            "Y": 21.846,
-            "Z": -139.064
-          },
-          "TerritoryId": 962,
+          "Position": [-277.689, 21.846, -139.064],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1039203 (Rurusha)"
         }

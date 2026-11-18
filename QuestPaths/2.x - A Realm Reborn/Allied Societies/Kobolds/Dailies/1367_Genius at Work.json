@@ -1,42 +1,30 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005930,
-          "Position": {
-            "X": 12.558105,
-            "Y": 16.159302,
-            "Z": -176.5622
-          },
-          "TerritoryId": 180,
+          "Position": [12.558105, 16.159302, -176.5622],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
-          "Position": {
-            "X": 112.85902,
-            "Y": 23.394411,
-            "Z": -608.57007
-          },
-          "TerritoryId": 180,
+          "Position": [112.85902, 23.394411, -608.57007],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
-                "Position": {
-                  "X": 12.558105,
-                  "Y": 16.159302,
-                  "Z": -176.5622
-                },
+                "Position": [12.558105, 16.159302, -176.5622],
                 "TerritoryId": 180,
                 "MaximumDistance": 200
               }
@@ -45,86 +33,53 @@
         },
         {
           "DataId": 2003753,
-          "Position": {
-            "X": 18.875366,
-            "Y": 25.558838,
-            "Z": -594.11005
-          },
-          "TerritoryId": 180,
+          "Position": [18.875366, 25.558838, -594.11005],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 2003755,
-          "Position": {
-            "X": 15.854065,
-            "Y": 26.810059,
-            "Z": -648.188
-          },
-          "TerritoryId": 180,
+          "Position": [15.854065, 26.810059, -648.188],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
         },
         {
           "DataId": 2003752,
-          "Position": {
-            "X": -2.2125854,
-            "Y": 24.2771,
-            "Z": -722.31635
-          },
-          "TerritoryId": 180,
+          "Position": [-2.2125854, 24.2771, -722.31635],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
           "DataId": 2003754,
-          "Position": {
-            "X": 86.56433,
-            "Y": 24.215942,
-            "Z": -822.1714
-          },
-          "TerritoryId": 180,
+          "Position": [86.56433, 24.215942, -822.1714],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 2003756,
-          "Position": {
-            "X": 167.22351,
-            "Y": 24.76538,
-            "Z": -814.48083
-          },
-          "TerritoryId": 180,
+          "Position": [167.22351, 24.76538, -814.48083],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005932,
-          "Position": {
-            "X": -1.236023,
-            "Y": 33.38838,
-            "Z": -244.19019
-          },
-          "TerritoryId": 180,
+          "Position": [-1.236023, 33.38838, -244.19019],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 1005930,
-          "Position": {
-            "X": 12.558105,
-            "Y": 16.159302,
-            "Z": -176.5622
-          },
-          "TerritoryId": 180,
+          "Position": [12.558105, 16.159302, -176.5622],
           "InteractionType": "CompleteQuest"
         }
       ]

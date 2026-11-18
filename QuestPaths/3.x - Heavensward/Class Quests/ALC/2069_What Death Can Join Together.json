@@ -1,105 +1,81 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Gezah",
   "Comment": "!!Crafting requires Master Alchemist III!! Crafted Item: 1x Noble Gold HQ // Autocraft requires: 1x Enchanted Aurum Regis Ink, 2x Aurum Regis Nugget, 2x Hardsilver Ingot, 1x Chrysolite, 1x Mormorion",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1012558,
-          "Position": {
-            "X": 76.89014,
-            "Y": 22.236717,
-            "Z": -640.4364
-          },
-          "TerritoryId": 156,
+          "Position": [76.89014, 22.236717, -640.4364],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1013676,
-          "Position": {
-            "X": 414.20605,
-            "Y": -6.1064634,
-            "Z": -445.94495
-          },
-          "TerritoryId": 156,
+          "Position": [414.20605, -6.1064634, -445.94495],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1013677,
-          "Position": {
-            "X": 241.90125,
-            "Y": 1.3774036,
-            "Z": -568.0171
-          },
-          "TerritoryId": 156,
+          "Position": [241.90125, 1.3774036, -568.0171],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1012558,
-          "Position": {
-            "X": 76.89014,
-            "Y": 22.236717,
-            "Z": -640.4364
-          },
-          "TerritoryId": 156,
+          "Position": [76.89014, 22.236717, -640.4364],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1002299,
-          "Position": {
-            "X": -103.62651,
-            "Y": 41.50014,
-            "Z": 120.44341
-          },
-          "TerritoryId": 131,
+          "Position": [-103.62651, 41.50014, 120.44341],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1012558,
-          "Position": {
-            "X": 76.89014,
-            "Y": 22.236717,
-            "Z": -640.4364
-          },
-          "TerritoryId": 156,
+          "Position": [76.89014, 22.236717, -640.4364],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 156,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 156,
           "ItemId": 10651,
           "ItemCount": 1,
           "SkipConditions": {
@@ -112,27 +88,18 @@
         },
         {
           "DataId": 1012558,
-          "Position": {
-            "X": 76.89014,
-            "Y": 22.236717,
-            "Z": -640.4364
-          },
-          "TerritoryId": 156,
+          "Position": [76.89014, 22.236717, -640.4364],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1012558,
-          "Position": {
-            "X": 76.89014,
-            "Y": 22.236717,
-            "Z": -640.4364
-          },
-          "TerritoryId": 156,
+          "Position": [76.89014, 22.236717, -640.4364],
           "InteractionType": "CompleteQuest"
         }
       ]

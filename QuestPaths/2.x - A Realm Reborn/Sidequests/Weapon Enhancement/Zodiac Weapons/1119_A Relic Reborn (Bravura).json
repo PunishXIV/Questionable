@@ -1,90 +1,65 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-14"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "TerritoryId": 154,
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 180,
       "Steps": [
         {
           "DataId": 2002491,
-          "Position": {
-            "X": 160.05188,
-            "Y": 22.75116,
-            "Z": -694.0261
-          },
-          "TerritoryId": 180,
+          "Position": [160.05188, 22.75116, -694.0261],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "TerritoryId": 154,
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "TerritoryId": 154,
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "Instruction",
           "Comment": "Craft/purchase off marketboard a Barbarian's Bardiche and meld 2 Battledance Materia III to it."
         },
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "InteractionType": "Interact",
-          "TerritoryId": 154
+          "Position": [440.60822, -0.9374456, -63.35452],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 2003993,
-          "Position": {
-            "X": 532.5856,
-            "Y": 350.60657,
-            "Z": -710.99414
-          },
-          "TerritoryId": 155,
+          "Position": [532.5856, 350.60657, -710.99414],
           "InteractionType": "Interact",
           "SkipConditions": { "StepIf": { "DutiesUnlocked": [74] } }
         },
@@ -101,46 +76,34 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "InteractionType": "Interact",
-          "TerritoryId": 154
+          "Position": [440.60822, -0.9374456, -63.35452],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1001304,
-          "Position": {
-            "X": 25.589355,
-            "Y": 29,
-            "Z": -825.37573
-          },
-          "TerritoryId": 156,
+          "Position": [25.589355, 29, -825.37573],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 140,
       "Comment": "Amdapor Keep requires completing The Aurum Vale",
       "Steps": [
         {
           "DataId": 1005021,
-          "Position": {
-            "X": -472.49567,
-            "Y": 23.008797,
-            "Z": -355.00116
-          },
-          "TerritoryId": 140,
+          "Position": [-472.49567, 23.008797, -355.00116],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 1014,
           "SkipConditions": {
@@ -161,12 +124,7 @@
         },
         {
           "DataId": 1005021,
-          "Position": {
-            "X": -472.49567,
-            "Y": 23.008797,
-            "Z": -355.00116
-          },
-          "TerritoryId": 140,
+          "Position": [-472.49567, 23.008797, -355.00116],
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 1135,
           "SkipConditions": {
@@ -186,49 +144,37 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1001304,
-          "Position": {
-            "X": 25.589355,
-            "Y": 29,
-            "Z": -825.37573
-          },
-          "TerritoryId": 156,
+          "Position": [25.589355, 29, -825.37573],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 9,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "InteractionType": "Interact",
-          "TerritoryId": 154
+          "Position": [440.60822, -0.9374456, -63.35452],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 10,
+      "TerritoryId": 1,
       "Comment": "This will eventually finish, but it's very inefficient with how combat target selection currently works",
       "Steps": [
         {
           "InteractionType": "EquipItem",
-          "ItemId": 1805,
-          "TerritoryId": 1
+          "ItemId": 1805
         },
         {
-          "Position": {
-            "X": 84.38764,
-            "Y": 38.756195,
-            "Z": -584.26355
-          },
+          "Position": [84.38764, 38.756195, -584.26355],
           "TerritoryId": 180,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
@@ -278,34 +224,26 @@
     },
     {
       "Sequence": 11,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "InteractionType": "Interact",
-          "TerritoryId": 154
+          "Position": [440.60822, -0.9374456, -63.35452],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 12,
+      "TerritoryId": 1,
       "Steps": [
         {
           "InteractionType": "EquipItem",
-          "ItemId": 1805,
-          "TerritoryId": 1
+          "ItemId": 1805
         },
         {
           "DataId": 2003994,
-          "Position": {
-            "X": -336.8429,
-            "Y": -22.38501,
-            "Z": 435.59924
-          },
+          "Position": [-336.8429, -22.38501, 435.59924],
           "TerritoryId": 145,
           "InteractionType": "Interact",
           "SkipConditions": { "StepIf": { "DutiesUnlocked": [75] } }
@@ -323,43 +261,34 @@
     },
     {
       "Sequence": 13,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "InteractionType": "Interact",
-          "TerritoryId": 154
+          "Position": [440.60822, -0.9374456, -63.35452],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 14,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "TerritoryId": 154,
           "InteractionType": "EquipRecommended"
         },
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "InteractionType": "Interact",
-          "TerritoryId": 154
+          "Position": [440.60822, -0.9374456, -63.35452],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 15,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "TerritoryId": 154,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 59,
@@ -370,9 +299,9 @@
     },
     {
       "Sequence": 16,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "TerritoryId": 154,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 61,
@@ -383,9 +312,9 @@
     },
     {
       "Sequence": 17,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "TerritoryId": 154,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 60,
@@ -396,31 +325,23 @@
     },
     {
       "Sequence": 18,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "InteractionType": "Interact",
-          "TerritoryId": 154
+          "Position": [440.60822, -0.9374456, -63.35452],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "Comment": "Purchase:\n1x Radz-at-Han Quenching Oil",
           "DataId": 1008119,
-          "Position": {
-            "X": 63.164406,
-            "Y": 31.28805,
-            "Z": -737.32965
-          },
-          "TerritoryId": 156,
+          "Position": [63.164406, 31.28805, -737.32965],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "SpecialShop",
@@ -439,12 +360,7 @@
         {
           "Comment": "Purchase:\n3x Thavnairian Mist",
           "DataId": 1008119,
-          "Position": {
-            "X": 63.164406,
-            "Y": 31.28805,
-            "Z": -737.32965
-          },
-          "TerritoryId": 156,
+          "Position": [63.164406, 31.28805, -737.32965],
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "SpecialShop",
@@ -462,11 +378,7 @@
         },
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "CompleteQuest",
           "TerritoryId": 154
         }

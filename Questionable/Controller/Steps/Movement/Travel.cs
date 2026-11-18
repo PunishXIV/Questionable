@@ -18,7 +18,12 @@ internal static class Travel
         _ => null,
     };
 
-    internal sealed record Task(uint TerritoryId, Vector3? Position, uint? DataId) : ITask
+    // MappingTheRealm only routes across zones to interactables it knows; aetherytes and shards aren't among them.
+    internal static bool EntersZoneFirst(QuestStep step) =>
+        step.InteractionType is EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte
+            or EInteractionType.AttuneAethernetShard;
+
+    internal sealed record Task(uint TerritoryId, Vector3? Position, uint? DataId, bool ZoneFirst = false) : ITask
     {
         public override string ToString() => $"Travel({TerritoryData.GetNameAndId(TerritoryId)})";
     }
@@ -31,6 +36,9 @@ internal static class Travel
 
         private Route? _route;
         private bool _started;
+        private bool _zoneFirst;
+
+        private uint? Target => Task.DataId is < FirstEventObject ? Task.DataId : null;
 
         protected override bool Start()
         {
@@ -44,13 +52,29 @@ internal static class Travel
 
             // A route from a stopped run can still be moving; Stop only cancels routes Questionable started.
             mappingTheRealm.Stop();
-            uint? npc = Task.DataId is < FirstEventObject ? Task.DataId : null;
-            _route = mappingTheRealm.Travel(Task.TerritoryId, Task.Position, npc);
+            _zoneFirst = Task.ZoneFirst && Target != null && clientState.TerritoryType != Task.TerritoryId;
+            _route = _zoneFirst
+                ? mappingTheRealm.Travel(Task.TerritoryId, null, null)
+                : mappingTheRealm.Travel(Task.TerritoryId, Task.Position, Target);
             return true;
         }
 
         public override ETaskResult Update()
         {
+            // 1.0.0.1's PathToTerritory aims at the zone gate in the old zone (129 -> 128 became "T129, gate 2210434")
+            // and fails once the gate moves the player, so a zone-only leg ends on arrival.
+            if ((Task.Position == null || _zoneFirst) && clientState.TerritoryType == Task.TerritoryId)
+            {
+                mappingTheRealm.Stop();
+                if (!_zoneFirst)
+                    return ETaskResult.TaskComplete;
+
+                _zoneFirst = false;
+                _started = false;
+                _route = mappingTheRealm.Travel(Task.TerritoryId, Task.Position, Target);
+                return ETaskResult.StillRunning;
+            }
+
             if (mappingTheRealm.GetPathing() == true)
             {
                 _started = true;

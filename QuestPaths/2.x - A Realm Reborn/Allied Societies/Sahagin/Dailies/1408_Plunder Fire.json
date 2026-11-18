@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005940,
-          "Position": {
-            "X": -226.12347,
-            "Y": -40.48583,
-            "Z": 57.083984
-          },
-          "TerritoryId": 138,
+          "Position": [-226.12347, -40.48583, 57.083984],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005946,
-          "Position": {
-            "X": -239.27673,
-            "Y": -42.130188,
-            "Z": 15.213196
-          },
-          "TerritoryId": 138,
+          "Position": [-239.27673, -42.130188, 15.213196],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -40,11 +32,7 @@
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": -929.015,
-                  "Y": -29.770386,
-                  "Z": 842.8624
-                },
+                "Position": [-929.015, -29.770386, 842.8624],
                 "TerritoryId": 138,
                 "MaximumDistance": 50
               }
@@ -53,12 +41,7 @@
         },
         {
           "DataId": 2004016,
-          "Position": {
-            "X": -939.1165,
-            "Y": -31.784546,
-            "Z": 846.0364
-          },
-          "TerritoryId": 138,
+          "Position": [-939.1165, -31.784546, 846.0364],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001292,
@@ -67,12 +50,7 @@
         },
         {
           "DataId": 2004019,
-          "Position": {
-            "X": -929.015,
-            "Y": -29.770386,
-            "Z": 842.8624
-          },
-          "TerritoryId": 138,
+          "Position": [-929.015, -29.770386, 842.8624],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001292,
@@ -81,12 +59,7 @@
         },
         {
           "DataId": 2004017,
-          "Position": {
-            "X": -931.6091,
-            "Y": -30.289246,
-            "Z": 829.34314
-          },
-          "TerritoryId": 138,
+          "Position": [-931.6091, -30.289246, 829.34314],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001292,
@@ -95,12 +68,7 @@
         },
         {
           "DataId": 2004018,
-          "Position": {
-            "X": -917.57074,
-            "Y": -31.75409,
-            "Z": 823.14795
-          },
-          "TerritoryId": 138,
+          "Position": [-917.57074, -31.75409, 823.14795],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001292,
@@ -111,25 +79,17 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 2004015,
-          "Position": {
-            "X": -924.4068,
-            "Y": -33.432617,
-            "Z": 842.31323
-          },
-          "TerritoryId": 138,
+          "Position": [-924.4068, -33.432617, 842.31323],
           "InteractionType": "Interact",
           "TargetTerritoryId": 138,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
-                "Position": {
-                  "X": -226.12347,
-                  "Y": -40.48583,
-                  "Z": 57.083984
-                },
+                "Position": [-226.12347, -40.48583, 57.083984],
                 "TerritoryId": 138,
                 "MaximumDistance": 50
               }
@@ -138,12 +98,7 @@
         },
         {
           "DataId": 1005940,
-          "Position": {
-            "X": -226.12347,
-            "Y": -40.48583,
-            "Z": 57.083984
-          },
-          "TerritoryId": 138,
+          "Position": [-226.12347, -40.48583, 57.083984],
           "InteractionType": "CompleteQuest"
         }
       ]

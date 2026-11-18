@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1013713,
-          "Position": {
-            "X": -20.6975,
-            "Y": 211.345,
-            "Z": -28.2675
-          },
-          "TerritoryId": 478,
+          "Position": [-20.6975, 211.345, -28.2675],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1013713 (Rowena)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 402,
       "Steps": [
         {
           "DataId": 1016135,
-          "Position": {
-            "X": -754.696,
-            "Y": -182.971,
-            "Z": -550.744
-          },
-          "TerritoryId": 402,
+          "Position": [-754.696, -182.971, -550.744],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1016135 (Ardashir)"
         }

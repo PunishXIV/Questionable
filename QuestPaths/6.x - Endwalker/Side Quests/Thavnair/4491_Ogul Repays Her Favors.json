@@ -1,78 +1,58 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1041341,
-          "Position": {
-            "X": -122.75885,
-            "Y": 1.2757957,
-            "Z": 616.5408
-          },
-          "TerritoryId": 957,
+          "Position": [-122.75885, 1.2757957, 616.5408],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1041332,
-          "Position": {
-            "X": 194.68982,
-            "Y": 14.118598,
-            "Z": 485.9845
-          },
-          "TerritoryId": 957,
+          "Position": [194.68982, 14.118598, 485.9845],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1041347,
-          "Position": {
-            "X": 171.40454,
-            "Y": 4.763736,
-            "Z": 670.7103
-          },
-          "TerritoryId": 957,
+          "Position": [171.40454, 4.763736, 670.7103],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1041348,
-          "Position": {
-            "X": 176.83679,
-            "Y": 10.170378,
-            "Z": 549.0044
-          },
-          "TerritoryId": 957,
+          "Position": [176.83679, 10.170378, 549.0044],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 957,
       "Steps": [
         {
-          "Position": {
-            "X": 217.2226,
-            "Y": 10.08736,
-            "Z": 604.91754
-          },
-          "TerritoryId": 957,
+          "Position": [217.2226, 10.08736, 604.91754],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -82,33 +62,18 @@
         },
         {
           "DataId": 1037655,
-          "Position": {
-            "X": 218.73804,
-            "Y": 10.087359,
-            "Z": 605.249
-          },
-          "TerritoryId": 957,
+          "Position": [218.73804, 10.087359, 605.249],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1037656,
-          "Position": {
-            "X": 208.1482,
-            "Y": 4.5989733,
-            "Z": 672.0835
-          },
-          "TerritoryId": 957,
+          "Position": [208.1482, 4.5989733, 672.0835],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": {
-            "X": 161.044,
-            "Y": 1.8294137,
-            "Z": 708.1364
-          },
-          "TerritoryId": 957,
+          "Position": [161.044, 1.8294137, 708.1364],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -118,12 +83,7 @@
         },
         {
           "DataId": 1037708,
-          "Position": {
-            "X": 160.84534,
-            "Y": 1.8294137,
-            "Z": 710.68884
-          },
-          "TerritoryId": 957,
+          "Position": [160.84534, 1.8294137, 710.68884],
           "InteractionType": "Interact",
           "SkipConditions": {
             "StepIf": {
@@ -135,15 +95,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 957,
       "Steps": [
         {
           "DataId": 1041389,
-          "Position": {
-            "X": 192.79773,
-            "Y": 14.118593,
-            "Z": 487.6936
-          },
-          "TerritoryId": 957,
+          "Position": [192.79773, 14.118593, 487.6936],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4492
         }

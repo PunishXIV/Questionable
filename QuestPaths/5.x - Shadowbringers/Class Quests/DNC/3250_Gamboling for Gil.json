@@ -1,13 +1,13 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Fifi",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-12"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 129,
       "Steps": [
         {
-          "TerritoryId": 129,
           "InteractionType": "EquipItem",
           "ItemId": 27358,
           "SkipConditions": {
@@ -19,12 +19,10 @@
           }
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "CreateGearset",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "UseItem",
           "ItemId": 27267,
           "SkipConditions": {
@@ -36,7 +34,6 @@
           }
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "EquipItem",
           "ItemId": 27261,
           "SkipConditions": {
@@ -48,7 +45,6 @@
           }
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "EquipItem",
           "ItemId": 27262,
           "SkipConditions": {
@@ -60,7 +56,6 @@
           }
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "EquipItem",
           "ItemId": 27263,
           "SkipConditions": {
@@ -72,7 +67,6 @@
           }
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "EquipItem",
           "ItemId": 27264,
           "SkipConditions": {
@@ -84,7 +78,6 @@
           }
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "EquipItem",
           "ItemId": 27265,
           "SkipConditions": {
@@ -96,53 +89,38 @@
           }
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "EquipRecommended",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 129,
           "InteractionType": "UpdateGearset",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1028724,
-          "Position": {
-            "X": -104.32593,
-            "Y": 5.999999,
-            "Z": 195.94104
-          },
-          "TerritoryId": 129,
+          "Position": [-104.32593, 5.999999, 195.94104],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1028730,
-          "Position": {
-            "X": 594.3236,
-            "Y": 23.968584,
-            "Z": 457.69434
-          },
-          "TerritoryId": 137,
+          "Position": [594.3236, 23.968584, 457.69434],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1028736,
-          "Position": {
-            "X": 481.65088,
-            "Y": 16.414907,
-            "Z": 447.95898
-          },
-          "TerritoryId": 137,
+          "Position": [481.65088, 16.414907, 447.95898],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true
@@ -152,15 +130,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 137,
       "Steps": [
         {
           "DataId": 1028735,
-          "Position": {
-            "X": 480.18604,
-            "Y": 16.432398,
-            "Z": 447.8064
-          },
-          "TerritoryId": 137,
+          "Position": [480.18604, 16.432398, 447.8064],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-13"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1003359,
-          "Position": {
-            "X": 263.691,
-            "Y": -4.19629,
-            "Z": 202.167
-          },
-          "TerritoryId": 138,
+          "Position": [263.691, -4.19629, 202.167],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1003359 (S'nairoh)"
         }
@@ -21,31 +17,18 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": 263.62125,
-            "Y": -5.2462654,
-            "Z": 207.80981
-          },
-          "TerritoryId": 138,
+          "Position": [263.62125, -5.2462654, 207.80981],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": 265.9542,
-              "Y": -22.750002,
-              "Z": 221.74113
-            }
+            "Position": [265.9542, -22.750002, 221.74113]
           }
         },
         {
           "DataId": 341,
-          "Position": {
-            "X": 306.4469,
-            "Y": -20.906496,
-            "Z": 162.89001
-          },
-          "TerritoryId": 138,
+          "Position": [306.4469, -20.906496, 162.89001],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [341],
@@ -55,15 +38,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1003359,
-          "Position": {
-            "X": 263.691,
-            "Y": -4.19629,
-            "Z": 202.167
-          },
-          "TerritoryId": 138,
+          "Position": [263.691, -4.19629, 202.167],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1003359 (S'nairoh)"
         }

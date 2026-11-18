@@ -1,58 +1,41 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Clockwise Starr",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041103,
-          "Position": {
-            "X": -637.20154,
-            "Y": 162.75209,
-            "Z": -161.51685
-          },
-          "TerritoryId": 961,
+          "Position": [-637.20154, 162.75209, -161.51685],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 961,
       "Steps": [
         {
           "$": "Prevent vnavmesh from getting stuck on rock.",
-          "Position": {
-            "X": -714.6946,
-            "Y": 153.37344,
-            "Z": 90.81024
-          },
-          "TerritoryId": 961,
+          "Position": [-714.6946, 153.37344, 90.81024],
           "InteractionType": "None"
         },
         {
           "DataId": 2012589,
-          "Position": {
-            "X": -711.1162,
-            "Y": 152.72742,
-            "Z": 89.86035
-          },
-          "TerritoryId": 961,
+          "Position": [-711.1162, 152.72742, 89.86035],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 961,
       "Steps": [
         {
           "DataId": 1041103,
-          "Position": {
-            "X": -637.20154,
-            "Y": 162.75209,
-            "Z": -161.51685
-          },
-          "TerritoryId": 961,
+          "Position": [-637.20154, 162.75209, -161.51685],
           "InteractionType": "CompleteQuest"
         }
       ]

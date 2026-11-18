@@ -1,20 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "$": "Unlocks visiting other players' Island Sanctuary; not available once you unlock your own",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1043621,
-          "Position": {
-            "X": 174.12073,
-            "Y": 14.095924,
-            "Z": 667.5669
-          },
-          "TerritoryId": 135,
+          "Position": [174.12073, 14.095924, 667.5669],
           "InteractionType": "AcceptQuest"
         }
       ]

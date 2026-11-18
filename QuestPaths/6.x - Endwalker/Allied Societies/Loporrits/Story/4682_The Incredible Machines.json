@@ -1,94 +1,68 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "kaiser",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "Position": {
-            "X": -193.89642,
-            "Y": -49.19972,
-            "Z": -262.13477
-          },
-          "TerritoryId": 959,
+          "Position": [-193.89642, -49.19972, -262.13477],
           "InteractionType": "None"
         }
         ,
         {
           "DataId": 1044402,
-          "Position": {
-            "X": -193.89642,
-            "Y": -49.19972,
-            "Z": -262.13477
-          },
-          "TerritoryId": 959,
+          "Position": [-193.89642, -49.19972, -262.13477],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1044924,
-          "Position": {
-            "X": 344.625,
-            "Y": -168.00002,
-            "Z": -403.89105
-          },
-          "TerritoryId": 959,
+          "Position": [344.625, -168.00002, -403.89105],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1044926,
-          "Position": {
-            "X": 500.96887,
-            "Y": -164.43474,
-            "Z": -698.3902
-          },
-          "TerritoryId": 959,
+          "Position": [500.96887, -164.43474, -698.3902],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1044928,
-          "Position": {
-            "X": -172.74744,
-            "Y": -49.199722,
-            "Z": -250.8736
-          },
-          "TerritoryId": 959,
+          "Position": [-172.74744, -49.199722, -250.8736],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "TerritoryId": 959,
           "InteractionType": "Craft",
           "ItemId": 38845,
           "ItemCount": 2
         },
         {
           "DataId": 1044928,
-          "Position": {
-            "X": -172.74744,
-            "Y": -49.199722,
-            "Z": -250.8736
-          },
-          "TerritoryId": 959,
+          "Position": [-172.74744, -49.199722, -250.8736],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024217,
-          "Position": {
-            "X": 391.94043,
-            "Y": -119.58932,
-            "Z": -235.04329
-          },
-          "TerritoryId": 613,
+          "Position": [391.94043, -119.58932, -235.04329],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 2009094,
-          "Position": {
-            "X": 211.078,
-            "Y": -135.14917,
-            "Z": 56.168457
-          },
-          "TerritoryId": 613,
+          "Position": [211.078, -135.14917, 56.168457],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 3}, {"Low": 5}, {"Low": 6}, {"Low": 7}, {"Low": 8}, {"Low": 10}
@@ -36,12 +28,7 @@
         },
         {
           "DataId": 2009095,
-          "Position": {
-            "X": 163.0426,
-            "Y": -148.05829,
-            "Z": 72.28198
-          },
-          "TerritoryId": 613,
+          "Position": [163.0426, -148.05829, 72.28198],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null, [
             {"Low": 2}, {"Low": 9}, {"Low": 5}
@@ -49,12 +36,7 @@
         },
         {
           "DataId": 2009096,
-          "Position": {
-            "X": 134.23352,
-            "Y": -161.21161,
-            "Z": 70.450806
-          },
-          "TerritoryId": 613,
+          "Position": [134.23352, -161.21161, 70.450806],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null, [
             {"Low": 8}, {"Low": 5}
@@ -62,12 +44,7 @@
         },
         {
           "DataId": 2009080,
-          "Position": {
-            "X": 196.27673,
-            "Y": -146.685,
-            "Z": 40.45166
-          },
-          "TerritoryId": 613,
+          "Position": [196.27673, -146.685, 40.45166],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null, [
             {"Low": 3}, {"Low": 4}, {"Low": 10}
@@ -75,12 +52,7 @@
         },
         {
           "DataId": 2009081,
-          "Position": {
-            "X": 151.56775,
-            "Y": -168.1087,
-            "Z": 49.454468
-          },
-          "TerritoryId": 613,
+          "Position": [151.56775, -168.1087, 49.454468],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null, [
             {"Low": 6}, {"Low": 7}, {"Low": 8}, {"Low": 10}
@@ -88,12 +60,7 @@
         },
         {
           "DataId": 2009082,
-          "Position": {
-            "X": 141.86316,
-            "Y": -170.30597,
-            "Z": 96.75745
-          },
-          "TerritoryId": 613,
+          "Position": [141.86316, -170.30597, 96.75745],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
             {"Low": 2}, {"Low": 1}, {"Low": 4}, {"Low": 3}, {"Low": 6}
@@ -101,12 +68,7 @@
         },
         {
           "DataId": 2009083,
-          "Position": {
-            "X": 165.08728,
-            "Y": -143.54169,
-            "Z": 116.227905
-          },
-          "TerritoryId": 613,
+          "Position": [165.08728, -143.54169, 116.227905],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,[
             {"Low": 9}, {"Low": 1}, {"Low": 4}, {"Low": 7}
@@ -114,12 +76,7 @@
         },
         {
           "DataId": 2009084,
-          "Position": {
-            "X": 173.81543,
-            "Y": -167.3457,
-            "Z": 114.61047
-          },
-          "TerritoryId": 613,
+          "Position": [173.81543, -167.3457, 114.61047],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null, [
             {"Low": 2}, {"Low": 9}
@@ -129,30 +86,22 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024460,
-          "Position": {
-            "X": 873.9298,
-            "Y": 1.1792068,
-            "Z": 851.9568
-          },
-          "TerritoryId": 613,
+          "Position": [873.9298, 1.1792068, 851.9568],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 613,
       "Steps": [
         {
           "DataId": 1024217,
-          "Position": {
-            "X": 391.94043,
-            "Y": -119.58932,
-            "Z": -235.04329
-          },
-          "TerritoryId": 613,
+          "Position": [391.94043, -119.58932, -235.04329],
           "InteractionType": "CompleteQuest"
         }
       ]

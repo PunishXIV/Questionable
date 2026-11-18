@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1038043,
-          "Position": {
-            "X": 470.4203,
-            "Y": 437.00183,
-            "Z": 315.81592
-          },
-          "TerritoryId": 960,
+          "Position": [470.4203, 437.00183, 315.81592],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -27,30 +23,17 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "Position": {
-            "X": 588.5607,
-            "Y": 437.99976,
-            "Z": 299.7425
-          },
-          "TerritoryId": 960,
+          "Position": [588.5607, 437.99976, 299.7425],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": 602.4677,
-              "Y": 438.6276,
-              "Z": 297.1612
-            }
+            "Position": [602.4677, 438.6276, 297.1612]
           }
         },
         {
-          "Position": {
-            "X": 656.94653,
-            "Y": 437.98502,
-            "Z": 302.6322
-          },
-          "TerritoryId": 960,
+          "Position": [656.94653, 437.98502, 302.6322],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -65,15 +48,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1038043,
-          "Position": {
-            "X": 470.4203,
-            "Y": 437.00183,
-            "Z": 315.81592
-          },
-          "TerritoryId": 960,
+          "Position": [470.4203, 437.00183, 315.81592],
           "InteractionType": "CompleteQuest"
         }
       ]

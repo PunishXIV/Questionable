@@ -1,20 +1,16 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "kaiser",
   "LastChecked": {"Username": "alydev", "Date": "2026-11-06"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 134,
       "Steps": [
         {
           "InteractionType": "UseItem",
           "ItemId": 35873,
-          "Position": {
-            "X": -25.441345,
-            "Y": 42.597717,
-            "Z": 162.65016
-          },
-          "TerritoryId": 134,
+          "Position": [-25.441345, 42.597717, 162.65016],
           "Comment": "Try to use the coffer Bookwyrm's Attire Coffer (IL 385)",
           "SkipConditions": {
             "StepIf": {
@@ -25,7 +21,6 @@
           }
         },
         {
-          "TerritoryId": 134,
           "InteractionType": "EquipItem",
           "ItemId": 35778,
           "Comment": "Try to Equip Stonegold Milpreves",
@@ -38,7 +33,6 @@
           }
         },
         {
-          "TerritoryId": 134,
           "InteractionType": "EquipItem",
           "ItemId": 36015,
           "SkipConditions": {
@@ -50,7 +44,6 @@
           }
         },
         {
-          "TerritoryId": 134,
           "InteractionType": "EquipItem",
           "ItemId": 36016,
           "SkipConditions": {
@@ -62,7 +55,6 @@
           }
         },
         {
-          "TerritoryId": 134,
           "InteractionType": "EquipItem",
           "ItemId": 36017,
           "SkipConditions": {
@@ -74,7 +66,6 @@
           }
         },
         {
-          "TerritoryId": 134,
           "InteractionType": "EquipItem",
           "ItemId": 36018,
           "SkipConditions": {
@@ -86,7 +77,6 @@
           }
         },
         {
-          "TerritoryId": 134,
           "InteractionType": "EquipItem",
           "ItemId": 36019,
           "SkipConditions": {
@@ -98,118 +88,86 @@
           }
         },
         {
-          "TerritoryId": 134,
           "InteractionType": "CreateGearset",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 134,
           "InteractionType": "EquipRecommended",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
-          "TerritoryId": 134,
           "InteractionType": "UpdateGearset",
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1039265,
-          "Position": {
-            "X": -27.542603,
-            "Y": 42.597717,
-            "Z": 163.7445
-          },
-          "TerritoryId": 134,
+          "Position": [-27.542603, 42.597717, 163.7445],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1039244,
-          "Position": {
-            "X": 62.05847,
-            "Y": 207,
-            "Z": 49.332397
-          },
-          "TerritoryId": 478,
+          "Position": [62.05847, 207, 49.332397],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 2011759,
-          "Position": {
-            "X": 20.065613,
-            "Y": 215.44214,
-            "Z": -108.171265
-          },
-          "TerritoryId": 478,
+          "Position": [20.065613, 215.44214, -108.171265],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1039246,
-          "Position": {
-            "X": 71.64111,
-            "Y": 213.03185,
-            "Z": -110.7348
-          },
-          "TerritoryId": 478,
+          "Position": [71.64111, 213.03185, -110.7348],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1039247,
-          "Position": {
-            "X": 68.7113,
-            "Y": 212.84532,
-            "Z": -109.9718
-          },
-          "TerritoryId": 478,
+          "Position": [68.7113, 212.84532, -109.9718],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1039248,
-          "Position": {
-            "X": -612.2988,
-            "Y": 146.86842,
-            "Z": 42.435303
-          },
-          "TerritoryId": 399,
+          "Position": [-612.2988, 146.86842, 42.435303],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1039248,
-          "Position": {
-            "X": -612.2988,
-            "Y": 146.86842,
-            "Z": 42.435303
-          },
-          "TerritoryId": 399,
+          "Position": [-612.2988, 146.86842, 42.435303],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true}
         }
@@ -220,30 +178,22 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1039248,
-          "Position": {
-            "X": -612.2988,
-            "Y": 146.86842,
-            "Z": 42.435303
-          },
-          "TerritoryId": 399,
+          "Position": [-612.2988, 146.86842, 42.435303],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1039249,
-          "Position": {
-            "X": 0.3508911,
-            "Y": 210.99998,
-            "Z": -17.746277
-          },
-          "TerritoryId": 478,
+          "Position": [0.3508911, 210.99998, -17.746277],
           "InteractionType": "CompleteQuest"
         }
       ]

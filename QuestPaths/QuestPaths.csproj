@@ -18,12 +18,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="quest-v1.json" />
-        <EmbeddedResource Include="quest-v1.json">
+        <None Remove="quest-v2.json" />
+        <EmbeddedResource Include="quest-v2.json">
             <LogicalName>Questionable.QuestPaths.QuestSchema</LogicalName>
         </EmbeddedResource>
         <AdditionalFiles Include="4.x - Stormblood\Class Quests\BTN\2623_The White Death.json" />
-        <AdditionalFiles Include="quest-v1.json" />
+        <AdditionalFiles Include="quest-v2.json" />
         <AdditionalFiles Include="..\Questionable.Model\common-aethernetshard.json" />
         <AdditionalFiles Include="..\Questionable.Model\common-aetheryte.json" />
         <AdditionalFiles Include="..\Questionable.Model\common-classjob.json" />

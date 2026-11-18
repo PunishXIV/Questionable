@@ -1,52 +1,33 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Kagekazu",
   "Comment": "Field aether currents only, built from the MSQ attune steps.",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 2006210,
-          "Position": {
-            "X": -487.48004,
-            "Y": 144.64026,
-            "Z": -285.359
-          },
-          "TerritoryId": 399,
+          "Position": [-487.48004, 144.64026, -285.359],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818088
         },
         {
           "DataId": 2006208,
-          "Position": {
-            "X": 98.89368,
-            "Y": 73.07532,
-            "Z": -174.36487
-          },
-          "TerritoryId": 399,
+          "Position": [98.89368, 73.07532, -174.36487],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818086
         },
         {
           "DataId": 2006205,
-          "Position": {
-            "X": 729.21326,
-            "Y": 134.93542,
-            "Z": 150.89636
-          },
-          "TerritoryId": 399,
+          "Position": [729.21326, 134.93542, 150.89636],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818083
         },
         {
           "DataId": 2006214,
-          "Position": {
-            "X": -452.38422,
-            "Y": 138.10938,
-            "Z": 678.18713
-          },
-          "TerritoryId": 399,
+          "Position": [-452.38422, 138.10938, 678.18713],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818092
         }

@@ -1,14 +1,14 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 148,
       "Steps": [
         {
           "InteractionType": "AttuneAetheryte",
-          "TerritoryId": 148,
           "Aetheryte": "Central Shroud - Bentbranch Meadows",
           "SkipConditions": {
             "StepIf": {
@@ -18,53 +18,35 @@
         },
         {
           "DataId": 1000478,
-          "Position": {
-            "X": 11.642578,
-            "Y": -1.0223389,
-            "Z": 21.072632
-          },
-          "TerritoryId": 148,
+          "Position": [11.642578, -1.0223389, 21.072632],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1002980,
-          "Position": {
-            "X": 22.934265,
-            "Y": -8,
-            "Z": 84.97742
-          },
-          "TerritoryId": 148,
+          "Position": [22.934265, -8, 84.97742],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179657
         },
         {
           "DataId": 1005530,
-          "Position": {
-            "X": 186.57202,
-            "Y": -32.23455,
-            "Z": 327.8706
-          },
-          "TerritoryId": 148,
+          "Position": [186.57202, -32.23455, 327.8706],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1005656,
-          "Position": {
-            "X": 200.3357,
-            "Y": -32.043697,
-            "Z": 323.7506
-          },
-          "TerritoryId": 148,
+          "Position": [200.3357, -32.043697, 323.7506],
           "InteractionType": "Interact",
           "TargetTerritoryId": 340,
           "DialogueChoices": [
@@ -80,30 +62,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 340,
       "Steps": [
         {
           "DataId": 1005879,
-          "Position": {
-            "X": 0.8086548,
-            "Y": 2.8884888,
-            "Z": 181.99426
-          },
-          "TerritoryId": 340,
+          "Position": [0.8086548, 2.8884888, 181.99426],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 148,
       "Steps": [
         {
           "DataId": 1000478,
-          "Position": {
-            "X": 11.642578,
-            "Y": -1.0223389,
-            "Z": 21.072632
-          },
-          "TerritoryId": 148,
+          "Position": [11.642578, -1.0223389, 21.072632],
           "InteractionType": "CompleteQuest"
         }
       ]

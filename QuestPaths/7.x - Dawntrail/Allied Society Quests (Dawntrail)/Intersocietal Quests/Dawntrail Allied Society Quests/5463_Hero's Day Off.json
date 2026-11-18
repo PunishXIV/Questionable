@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "chika", "Date": "2026-08-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051710,
-          "Position": {
-            "X": 822.629,
-            "Y": 17.1026,
-            "Z": -263.203
-          },
-          "TerritoryId": 1188,
+          "Position": [822.629, 17.1026, -263.203],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -28,15 +24,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1058503,
-          "Position": {
-            "X": 833.939,
-            "Y": 13.4497,
-            "Z": -213.192
-          },
-          "TerritoryId": 1188,
+          "Position": [833.939, 13.4497, -213.192],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1058503 (Genuhanu)"
         }
@@ -44,15 +36,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1188,
       "Steps": [
         {
           "DataId": 1051741,
-          "Position": {
-            "X": 746.6151,
-            "Y": 15.431517,
-            "Z": -201.82928
-          },
-          "TerritoryId": 1188,
+          "Position": [746.6151, 15.431517, -201.82928],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1051741 (Wawkesa)"
         }
@@ -60,15 +48,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1058504,
-          "Position": {
-            "X": 582.611,
-            "Y": -54.4927,
-            "Z": 8.24307
-          },
-          "TerritoryId": 1187,
+          "Position": [582.611, -54.4927, 8.24307],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1058504 (Liplu); hands over ITEM0=2003817"
         }
@@ -76,15 +60,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1058508,
-          "Position": {
-            "X": 586.797,
-            "Y": -54.6228,
-            "Z": 10.0136
-          },
-          "TerritoryId": 1187,
+          "Position": [586.797, -54.6228, 10.0136],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -99,15 +79,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1058510,
-          "Position": {
-            "X": 575.261,
-            "Y": -54.3527,
-            "Z": 13.0362
-          },
-          "TerritoryId": 1187,
+          "Position": [575.261, -54.3527, 13.0362],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -122,15 +98,11 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1058515,
-          "Position": {
-            "X": 552.492,
-            "Y": -54.4577,
-            "Z": 33.3884
-          },
-          "TerritoryId": 1187,
+          "Position": [552.492, -54.4577, 33.3884],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1058515 (Ruvoll Ja)"
         }
@@ -138,15 +110,11 @@
     },
     {
       "Sequence": 7,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1058511,
-          "Position": {
-            "X": 562.886,
-            "Y": -54.4577,
-            "Z": 32.1492
-          },
-          "TerritoryId": 1187,
+          "Position": [562.886, -54.4577, 32.1492],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1058511 (Fahrafahr)"
         }
@@ -154,15 +122,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1058510,
-          "Position": {
-            "X": 575.261,
-            "Y": -54.3527,
-            "Z": 13.0362
-          },
-          "TerritoryId": 1187,
+          "Position": [575.261, -54.3527, 13.0362],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1058510 (Liplu)"
         }

@@ -1,98 +1,73 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "Saionji", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1041891,
-          "Position": {
-            "X": -11.886841,
-            "Y": -16.246998,
-            "Z": 126.26831
-          },
-          "TerritoryId": 962,
+          "Position": [-11.886841, -16.246998, 126.26831],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 956,
       "Steps": [
         {
           "$": "Currently only implemented with flying unlocked. Future devs, need interaction with lift operator for grounded.",
-          "Position": {
-            "X": -505.21997,
-            "Y": -192.11905,
-            "Z": 301.68753
-          },
-          "TerritoryId": 956,
+          "Position": [-505.21997, -192.11905, 301.68753],
           "InteractionType": "WalkTo"
         },
         {
           "DataId": 1041892,
-          "Position": {
-            "X": -350.3014,
-            "Y": -224.2927,
-            "Z": 309.71228
-          },
-          "TerritoryId": 956,
+          "Position": [-350.3014, -224.2927, 309.71228],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1041893,
-          "Position": {
-            "X": -390.85986,
-            "Y": 80.782646,
-            "Z": 605.4321
-          },
-          "TerritoryId": 960,
+          "Position": [-390.85986, 80.782646, 605.4321],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1041894,
-          "Position": {
-            "X": 472.83118,
-            "Y": 438,
-            "Z": 281.60522
-          },
-          "TerritoryId": 960,
+          "Position": [472.83118, 438, 281.60522],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1041904,
-          "Position": {
-            "X": 665.40015,
-            "Y": 440.4633,
-            "Z": 366.32324
-          },
-          "TerritoryId": 960,
+          "Position": [665.40015, 440.4633, 366.32324],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 960,
       "Steps": [
         {
-          "TerritoryId": 960,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 784,
@@ -103,31 +78,23 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 960,
       "Steps": [
         {
           "DataId": 1041904,
-          "Position": {
-            "X": 665.40015,
-            "Y": 440.4633,
-            "Z": 366.32324
-          },
-          "TerritoryId": 960,
+          "Position": [665.40015, 440.4633, 366.32324],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 960,
       "$": "Currently only implemented with flying unlocked. Future devs, need interaction with portal for grounded.",
       "Steps": [
         {
           "DataId": 1041896,
-          "Position": {
-            "X": 200.48828,
-            "Y": 567.50006,
-            "Z": 242.78625
-          },
-          "TerritoryId": 960,
+          "Position": [200.48828, 567.50006, 242.78625],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4601
         }

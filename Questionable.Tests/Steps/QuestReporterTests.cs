@@ -44,7 +44,7 @@ public sealed class QuestReporterTests
     public void Fingerprint_EveryPublishedPath()
     {
         DirectoryInfo? directory = new(AppContext.BaseDirectory);
-        while (directory != null && !File.Exists(Path.Combine(directory.FullName, "QuestPaths", "quest-v1.json")))
+        while (directory != null && !File.Exists(Path.Combine(directory.FullName, "QuestPaths", "quest-v2.json")))
             directory = directory.Parent;
         Assert.NotNull(directory);
 
@@ -52,7 +52,7 @@ public sealed class QuestReporterTests
         foreach (string file in Directory.EnumerateFiles(Path.Combine(directory.FullName, "QuestPaths"), "*.json",
                      SearchOption.AllDirectories))
         {
-            if (Path.GetFileName(file).StartsWith("quest-v1", StringComparison.Ordinal) ||
+            if (Path.GetFileName(file).StartsWith("quest-v2", StringComparison.Ordinal) ||
                 file.Contains($"{Path.DirectorySeparatorChar}schema", StringComparison.OrdinalIgnoreCase))
                 continue;
 

@@ -1,83 +1,62 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "pot0to",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "TerritoryId": 154,
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 2002499,
-          "Position": {
-            "X": -319.17297,
-            "Y": -36.636963,
-            "Z": -278.73657
-          },
-          "TerritoryId": 138,
+          "Position": [-319.17297, -36.636963, -278.73657],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "TerritoryId": 154,
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "TerritoryId": 154,
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "Instruction",
           "Comment": "Craft/purchase off marketboard an Erudite's Picatrix of Healing and meld 2 Quicktongue Materia III to it."
         },
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "InteractionType": "Interact",
-          "TerritoryId": 154
+          "Position": [440.60822, -0.9374456, -63.35452],
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "TerritoryId": 154,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 74,
@@ -89,39 +68,31 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "TerritoryId": 154,
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1001304,
-          "Position": {
-            "X": 25.589355,
-            "Y": 29,
-            "Z": -825.37573
-          },
-          "TerritoryId": 156,
+          "Position": [25.589355, 29, -825.37573],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "TerritoryId": 154,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 14,
@@ -133,50 +104,37 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1001304,
-          "Position": {
-            "X": 25.589355,
-            "Y": 29,
-            "Z": -825.37573
-          },
-          "TerritoryId": 156,
+          "Position": [25.589355, 29, -825.37573],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 9,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "TerritoryId": 154,
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 10,
+      "TerritoryId": 138,
       "Steps": [
         {
           "InteractionType": "EquipItem",
-          "ItemId": 2192,
-          "TerritoryId": 138
+          "ItemId": 2192
         },
         {
           "DataId": 768,
-          "Position": {
-            "X": -317.9305,
-            "Y": -39.35494,
-            "Z": -298.3956
-          },
-          "TerritoryId": 138,
+          "Position": [-317.9305, -39.35494, -298.3956],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
@@ -197,24 +155,20 @@
     },
     {
       "Sequence": 11,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "TerritoryId": 154,
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 12,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "TerritoryId": 154,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 75,
@@ -226,43 +180,34 @@
     },
     {
       "Sequence": 13,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "TerritoryId": 154,
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 14,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "TerritoryId": 154,
           "InteractionType": "EquipRecommended"
         },
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "TerritoryId": 154,
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 15,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "TerritoryId": 154,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 59,
@@ -273,9 +218,9 @@
     },
     {
       "Sequence": 16,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "TerritoryId": 154,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 61,
@@ -286,9 +231,9 @@
     },
     {
       "Sequence": 17,
+      "TerritoryId": 154,
       "Steps": [
         {
-          "TerritoryId": 154,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 60,
@@ -299,30 +244,22 @@
     },
     {
       "Sequence": 18,
+      "TerritoryId": 154,
       "Steps": [
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
-          "TerritoryId": 154,
+          "Position": [440.60822, -0.9374456, -63.35452],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1008119,
-          "Position": {
-            "X": 62.333008,
-            "Y": 31.28805,
-            "Z": -739.98627
-          },
-          "TerritoryId": 156,
+          "Position": [62.333008, 31.28805, -739.98627],
           "InteractionType": "PurchaseItem",
           "ItemId": 6267,
           "ItemCount": 1,
@@ -336,11 +273,7 @@
         },
         {
           "DataId": 1003075,
-          "Position": {
-            "X": 440.60822,
-            "Y": -0.9374456,
-            "Z": -63.35452
-          },
+          "Position": [440.60822, -0.9374456, -63.35452],
           "TerritoryId": 154,
           "InteractionType": "CompleteQuest"
         }

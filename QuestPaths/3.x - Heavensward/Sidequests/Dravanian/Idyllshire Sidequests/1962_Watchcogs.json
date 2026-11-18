@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012100,
-          "Position": {
-            "X": 106.737,
-            "Y": 207.263,
-            "Z": 85.4047
-          },
-          "TerritoryId": 478,
+          "Position": [106.737, 207.263, 85.4047],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1012100 (Woolnix)"
         }
@@ -21,30 +17,22 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1013650,
-          "Position": {
-            "X": -521.493,
-            "Y": 153.463,
-            "Z": -64.155
-          },
-          "TerritoryId": 399,
+          "Position": [-521.493, 153.463, -64.155],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1012100,
-          "Position": {
-            "X": -492.734,
-            "Y": 154.834,
-            "Z": -55.6373
-          },
-          "TerritoryId": 399,
+          "Position": [-492.734, 154.834, -55.6373],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -56,30 +44,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 399,
       "Steps": [
         {
           "DataId": 1013650,
-          "Position": {
-            "X": -521.493,
-            "Y": 153.463,
-            "Z": -64.155
-          },
-          "TerritoryId": 399,
+          "Position": [-521.493, 153.463, -64.155],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 478,
       "Steps": [
         {
           "DataId": 1012100,
-          "Position": {
-            "X": 106.737,
-            "Y": 207.263,
-            "Z": 85.4047
-          },
-          "TerritoryId": 478,
+          "Position": [106.737, 207.263, 85.4047],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1012100 (Woolnix)"
         }

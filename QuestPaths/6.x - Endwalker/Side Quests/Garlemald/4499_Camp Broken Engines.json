@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "goatzone",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041755,
-          "Position": {
-            "X": -340.35254,
-            "Y": 22,
-            "Z": 502.037
-          },
-          "TerritoryId": 958,
+          "Position": [-340.35254, 22, 502.037],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -27,15 +23,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 2012620,
-          "Position": {
-            "X": 64.68298,
-            "Y": -14.358765,
-            "Z": 395.22388
-          },
-          "TerritoryId": 958,
+          "Position": [64.68298, -14.358765, 395.22388],
           "InteractionType": "Interact",
           "$": "multi option, this one is correct so we can skip the rest"
         }
@@ -43,15 +35,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 958,
       "Steps": [
         {
           "DataId": 1041754,
-          "Position": {
-            "X": -340.84082,
-            "Y": 22,
-            "Z": 500.57214
-          },
-          "TerritoryId": 958,
+          "Position": [-340.84082, 22, 500.57214],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4500
         }

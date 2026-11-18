@@ -1,55 +1,42 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Kiarra",
   "Comment": "Crafted Item: 1x Morel Salad HQ, 1x Deep-Friend okeanis HQ, 1x Marron Glace HQ\nAutocrafting requires:\n1x Abalathian Rock Salt\n3x Birch Sap\n4x Cinderfoot Olive\n1x Cooking Sherry\n1x Dalamud Popoto\n3x Dark Chestnut\n2x Emerald Beans\n5x Highland Wheat\n1x La Noscean Lettuce(Jossy)\n2x Morel\n3x Okeanis Tail\n1x Sesame Seeds\n1x Young Cieldalaes Spinach",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 128,
       "Steps": [
         {
-          "TerritoryId": 128,
           "InteractionType": "SwitchClass",
           "TargetClass": "Culinarian"
         },
         {
           "DataId": 1012568,
-          "Position": {
-            "X": 69.71838,
-            "Y": 44.399895,
-            "Z": 135.9425
-          },
-          "TerritoryId": 128,
+          "Position": [69.71838, 44.399895, 135.9425],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1012575,
-          "Position": {
-            "X": -84.42822,
-            "Y": 40.99998,
-            "Z": -136.79718
-          },
-          "TerritoryId": 128,
+          "Position": [-84.42822, 40.99998, -136.79718],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1012568,
-          "Position": {
-            "X": 69.71838,
-            "Y": 44.399895,
-            "Z": 135.9425
-          },
-          "TerritoryId": 128,
+          "Position": [69.71838, 44.399895, 135.9425],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -73,19 +60,14 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 128,
       "Steps": [
         {
-          "InteractionType": "Craft",
-          "TerritoryId": 128
+          "InteractionType": "Craft"
         },
         {
           "DataId": 1012576,
-          "Position": {
-            "X": -80.91864,
-            "Y": 40.99999,
-            "Z": -139.3302
-          },
-          "TerritoryId": 128,
+          "Position": [-80.91864, 40.99999, -139.3302],
           "InteractionType": "Interact",
           "AllowHighQuality": true
         }
@@ -93,15 +75,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1012568,
-          "Position": {
-            "X": 69.71838,
-            "Y": 44.399895,
-            "Z": 135.9425
-          },
-          "TerritoryId": 128,
+          "Position": [69.71838, 44.399895, 135.9425],
           "InteractionType": "CompleteQuest"
         }
       ]

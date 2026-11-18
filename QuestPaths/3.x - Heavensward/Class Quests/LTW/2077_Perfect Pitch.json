@@ -1,60 +1,48 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Gezah",
   "Comment": "Crafted Item: 1x Dhalmelskin Leggings of Scouting HQ // Autocraft requires: 2x Dhalmel Leather, 1x Ramie Cloth, 1x Titanium Nugget, 1x Rubber",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012538,
-          "Position": {
-            "X": -259.083,
-            "Y": -20.034918,
-            "Z": -84.397705
-          },
-          "TerritoryId": 419,
+          "Position": [-259.083, -20.034918, -84.397705],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012542,
-          "Position": {
-            "X": -119.06616,
-            "Y": -12.634913,
-            "Z": -14.145203
-          },
-          "TerritoryId": 419,
+          "Position": [-119.06616, -12.634913, -14.145203],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012538,
-          "Position": {
-            "X": -259.083,
-            "Y": -20.034918,
-            "Z": -84.397705
-          },
-          "TerritoryId": 419,
+          "Position": [-259.083, -20.034918, -84.397705],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 419,
       "Steps": [
         {
           "InteractionType": "Craft",
-          "TerritoryId": 419,
           "ItemId": 10875,
           "ItemCount": 1,
           "SkipConditions": {
@@ -67,42 +55,29 @@
         },
         {
           "DataId": 1012538,
-          "Position": {
-            "X": -259.083,
-            "Y": -20.034918,
-            "Z": -84.397705
-          },
-          "TerritoryId": 419,
+          "Position": [-259.083, -20.034918, -84.397705],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012544,
-          "Position": {
-            "X": 100.541626,
-            "Y": 15.137732,
-            "Z": 44.571533
-          },
-          "TerritoryId": 418,
+          "Position": [100.541626, 15.137732, 44.571533],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012538,
-          "Position": {
-            "X": -259.083,
-            "Y": -20.034918,
-            "Z": -84.397705
-          },
-          "TerritoryId": 419,
+          "Position": [-259.083, -20.034918, -84.397705],
           "InteractionType": "CompleteQuest"
         }
       ]

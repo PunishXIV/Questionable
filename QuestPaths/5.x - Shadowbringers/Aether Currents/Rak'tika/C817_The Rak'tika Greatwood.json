@@ -1,40 +1,26 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Kagekazu",
   "Comment": "Field aether currents only, built from the MSQ attune steps.",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 2010073,
-          "Position": {
-            "X": 681.1168,
-            "Y": -39.2005,
-            "Z": -262.77563
-          },
-          "TerritoryId": 817,
+          "Position": [681.1168, -39.2005, -262.77563],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818292
         },
         {
           "DataId": 2010069,
-          "Position": {
-            "X": 338.6129,
-            "Y": 24.12439,
-            "Z": 203.17383
-          },
-          "TerritoryId": 817,
+          "Position": [338.6129, 24.12439, 203.17383],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818288
         },
         {
-          "Position": {
-            "X": -138.85619,
-            "Y": -3.036951,
-            "Z": 54.482983
-          },
-          "TerritoryId": 817,
+          "Position": [-138.85619, -3.036951, 54.482983],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -44,22 +30,12 @@
         },
         {
           "DataId": 2010066,
-          "Position": {
-            "X": -141.58856,
-            "Y": -0.9003296,
-            "Z": 49.759644
-          },
-          "TerritoryId": 817,
+          "Position": [-141.58856, -0.9003296, 49.759644],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818285
         },
         {
-          "Position": {
-            "X": -391.96292,
-            "Y": 6.3778677,
-            "Z": 509.45285
-          },
-          "TerritoryId": 817,
+          "Position": [-391.96292, 6.3778677, 509.45285],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -68,12 +44,7 @@
           }
         },
         {
-          "Position": {
-            "X": -398.71173,
-            "Y": 6.5935116,
-            "Z": 505.39233
-          },
-          "TerritoryId": 817,
+          "Position": [-398.71173, 6.5935116, 505.39233],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -83,12 +54,7 @@
         },
         {
           "DataId": 2010064,
-          "Position": {
-            "X": -405.9548,
-            "Y": 7.1691,
-            "Z": 506.5442
-          },
-          "TerritoryId": 817,
+          "Position": [-405.9548, 7.1691, 506.5442],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818283
         }

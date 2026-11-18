@@ -1,49 +1,37 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-23"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1006752,
-          "Position": {
-            "X": 87.5105,
-            "Y": 18,
-            "Z": 113.725464
-          },
-          "TerritoryId": 131,
+          "Position": [87.5105, 18, 113.725464],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1008543,
-          "Position": {
-            "X": -360.00616,
-            "Y": 1.2644191,
-            "Z": 459.83057
-          },
-          "TerritoryId": 153,
+          "Position": [-360.00616, 1.2644191, 459.83057],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2007872,
-          "Position": {
-            "X": -275.62378,
-            "Y": 4.8675537,
-            "Z": 523.76587
-          },
-          "TerritoryId": 153,
+          "Position": [-275.62378, 4.8675537, 523.76587],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterAction",
           "Action": "Fire III",
@@ -54,12 +42,7 @@
         },
         {
           "DataId": 2007873,
-          "Position": {
-            "X": -298.909,
-            "Y": 11.825684,
-            "Z": 567.46765
-          },
-          "TerritoryId": 153,
+          "Position": [-298.909, 11.825684, 567.46765],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterAction",
           "Action": "Fire III",
@@ -70,12 +53,7 @@
         },
         {
           "DataId": 2007874,
-          "Position": {
-            "X": -310.5974,
-            "Y": 12.344482,
-            "Z": 645.777
-          },
-          "TerritoryId": 153,
+          "Position": [-310.5974, 12.344482, 645.777],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterAction",
           "Action": "Fire III",
@@ -88,30 +66,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1020964,
-          "Position": {
-            "X": -348.50085,
-            "Y": 0.22347936,
-            "Z": 454.45935
-          },
-          "TerritoryId": 153,
+          "Position": [-348.50085, 0.22347936, 454.45935],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 131,
       "Steps": [
         {
           "DataId": 1020966,
-          "Position": {
-            "X": 87.47986,
-            "Y": 18,
-            "Z": 113.69495
-          },
-          "TerritoryId": 131,
+          "Position": [87.47986, 18, 113.69495],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2590
         }

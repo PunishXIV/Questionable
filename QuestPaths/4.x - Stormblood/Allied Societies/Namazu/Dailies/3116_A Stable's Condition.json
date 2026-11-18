@@ -1,34 +1,26 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "plogon_enjoyer",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025602,
-          "Position": {
-            "X": -778.2559,
-            "Y": 127.80886,
-            "Z": 98.54055
-          },
-          "TerritoryId": 622,
+          "Position": [-778.2559, 127.80886, 98.54055],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025925,
-          "Position": {
-            "X": -702.17444,
-            "Y": 127.5686,
-            "Z": 112.291016
-          },
-          "TerritoryId": 622,
+          "Position": [-702.17444, 127.5686, 112.291016],
           "InteractionType": "Interact",
           "TargetTerritoryId": 622,
           "SkipConditions": {
@@ -39,12 +31,7 @@
         },
         {
           "DataId": 1025797,
-          "Position": {
-            "X": -364.7975,
-            "Y": 76.98169,
-            "Z": -579.2172
-          },
-          "TerritoryId": 622,
+          "Position": [-364.7975, 76.98169, -579.2172],
           "InteractionType": "Interact",
           "SkipConditions": {
             "StepIf": {
@@ -54,12 +41,7 @@
         },
         {
           "DataId": 1025797,
-          "Position": {
-            "X": -364.7975,
-            "Y": 76.98169,
-            "Z": -579.2172
-          },
-          "TerritoryId": 622,
+          "Position": [-364.7975, 76.98169, -579.2172],
           "InteractionType": "Interact",
           "SkipConditions": {
             "StepIf": {
@@ -71,22 +53,17 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 622,
       "Steps": [
         {
           "DataId": 1025798,
-          "Position": {
-            "X": -366.2318,
-            "Y": 76.98169,
-            "Z": -580.31586
-          },
-          "TerritoryId": 622,
+          "Position": [-366.2318, 76.98169, -580.31586],
           "InteractionType": "Interact",
           "RequiredQuestAcceptedJob": [
             "DoH"
           ]
         },
         {
-          "TerritoryId": 622,
           "InteractionType": "Craft",
           "ItemId": 22736,
           "ItemCount": 2,
@@ -95,7 +72,6 @@
           ]
         },
         {
-          "TerritoryId": 622,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -108,7 +84,6 @@
           ]
         },
         {
-          "TerritoryId": 622,
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -122,12 +97,7 @@
         },
         {
           "DataId": 1025602,
-          "Position": {
-            "X": -778.2559,
-            "Y": 127.80886,
-            "Z": 98.54055
-          },
-          "TerritoryId": 622,
+          "Position": [-778.2559, 127.80886, 98.54055],
           "InteractionType": "CompleteQuest"
         }
       ]

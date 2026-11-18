@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "JerryWester",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 155,
       "Steps": [
         {
           "DataId": 1009973,
-          "Position": {
-            "X": 264.91187,
-            "Y": 302.26236,
-            "Z": -223.71259
-          },
-          "TerritoryId": 155,
+          "Position": [264.91187, 302.26236, -223.71259],
           "InteractionType": "Interact",
           "TargetTerritoryId": 395,
           "SkipConditions": {
@@ -22,11 +18,7 @@
         },
         {
           "DataId": 1010925,
-          "Position": {
-            "X": -1.4191895,
-            "Y": 0.014982708,
-            "Z": -0.07635498
-          },
+          "Position": [-1.4191895, 0.014982708, -0.07635498],
           "TerritoryId": 395,
           "InteractionType": "AcceptQuest"
         }
@@ -34,42 +26,30 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 395,
       "Steps": [
         {
           "DataId": 1012308,
-          "Position": {
-            "X": -3.1281738,
-            "Y": 0,
-            "Z": 2.822876
-          },
-          "TerritoryId": 395,
+          "Position": [-3.1281738, 0, 2.822876],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 395,
       "$": "Starting point after ARR skip",
       "Steps": [
         {
           "DataId": 2004781,
-          "Position": {
-            "X": -4,
-            "Y": 1.2,
-            "Z": 11
-          },
-          "TerritoryId": 395,
+          "Position": [-4, 1.2, 11],
           "InteractionType": "Interact",
           "TargetTerritoryId": 155,
           "SkipConditions": {"StepIf": {"InTerritory": [155]}}
         },
         {
           "DataId": 1012309,
-          "Position": {
-            "X": -163.89722,
-            "Y": 304.1538,
-            "Z": -333.05872
-          },
+          "Position": [-163.89722, 304.1538, -333.05872],
           "TerritoryId": 155,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -87,21 +67,18 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 418,
       "Steps": [
         {
           "DataId": 1012310,
-          "Position": {
-            "X": -10.269409,
-            "Y": 1.2791281,
-            "Z": 83.42102
-          },
-          "TerritoryId": 418,
+          "Position": [-10.269409, 1.2791281, 83.42102],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
           "TerritoryId": 418,
@@ -124,48 +101,28 @@
           "AethernetShard": "[Ishgard] The Forgotten Knight"
         },
         {
-          "Position": {
-            "X": 53.15989,
-            "Y": 30.584269,
-            "Z": -82.98525
-          },
-          "TerritoryId": 418,
-          "InteractionType": "WalkTo",
-          "TargetTerritoryId": 419
-        },
-        {
-          "TerritoryId": 419,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ishgard] Athenaeum Astrologicum"
         },
         {
-          "TerritoryId": 419,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ishgard] The Tribunal"
         },
         {
-          "TerritoryId": 419,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ishgard] Saint Reymanaud's Cathedral"
         },
         {
-          "TerritoryId": 419,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ishgard] The Jeweled Crozier"
         },
         {
-          "TerritoryId": 419,
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Ishgard] The Last Vigil"
         },
         {
           "DataId": 1012313,
-          "Position": {
-            "X": 15.609924,
-            "Y": 16.009666,
-            "Z": -6.515625
-          },
-          "TerritoryId": 419,
+          "Position": [15.609924, 16.009666, -6.515625],
           "InteractionType": "CompleteQuest"
         }
       ]

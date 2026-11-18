@@ -1,46 +1,33 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-10"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005938,
-          "Position": {
-            "X": -220.7218,
-            "Y": -40.720844,
-            "Z": 37.247192
-          },
-          "TerritoryId": 138,
+          "Position": [-220.7218, -40.720844, 37.247192],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 2003871,
-          "Position": {
-            "X": -126.93988,
-            "Y": -27.084778,
-            "Z": 29.800781
-          },
-          "TerritoryId": 138,
+          "Position": [-126.93988, -27.084778, 29.800781],
           "InteractionType": "UseItem",
           "ItemId": 2001273,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 2003872,
-          "Position": {
-            "X": -22.354492,
-            "Y": -14.999634,
-            "Z": -101.51831
-          },
-          "TerritoryId": 138,
+          "Position": [-22.354492, -14.999634, -101.51831],
           "InteractionType": "UseItem",
           "ItemId": 2001273,
           "RequiredQuestVariables": [null,null,null,null,null,[
@@ -52,15 +39,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005938,
-          "Position": {
-            "X": -220.7218,
-            "Y": -40.720844,
-            "Z": 37.247192
-          },
-          "TerritoryId": 138,
+          "Position": [-220.7218, -40.720844, 37.247192],
           "InteractionType": "CompleteQuest"
         }
       ]

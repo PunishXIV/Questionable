@@ -1,79 +1,57 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1047395,
-          "Position": {
-            "X": 283.07007,
-            "Y": 63.313274,
-            "Z": -169.23785
-          },
-          "TerritoryId": 1191,
+          "Position": [283.07007, 63.313274, -169.23785],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1047396,
-          "Position": {
-            "X": 33.035767,
-            "Y": 33.442226,
-            "Z": -262.47046
-          },
-          "TerritoryId": 1191,
+          "Position": [33.035767, 33.442226, -262.47046],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1191,
       "Steps": [
         {
-          "Position": {
-            "X": -56.819763,
-            "Y": 28.072628,
-            "Z": -399.17023
-          },
-          "TerritoryId": 1191,
+          "Position": [-56.819763, 28.072628, -399.17023],
           "InteractionType": "WalkTo",
           "$": "Outskirts Navmesh workaround"
         },
         {
           "DataId": 1047397,
-          "Position": {
-            "X": -149.03491,
-            "Y": 25.971825,
-            "Z": -500.63324
-          },
-          "TerritoryId": 1191,
+          "Position": [-149.03491, 25.971825, -500.63324],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1191,
       "Steps": [
         {
-          "TerritoryId": 1191,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Heritage Found - The Outskirts"
         },
         {
           "DataId": 1047403,
-          "Position": {
-            "X": -177.72192,
-            "Y": 28,
-            "Z": -542.9313
-          },
-          "TerritoryId": 1191,
+          "Position": [-177.72192, 28, -542.9313],
           "InteractionType": "CompleteQuest"
         }
       ]

@@ -1,68 +1,51 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
-          "Position": {
-            "X": 30.917934,
-            "Y": 20.495003,
-            "Z": -656.1909
-          },
-          "TerritoryId": 156,
+          "Position": [30.917934, 20.495003, -656.1909],
           "InteractionType": "WalkTo",
           "$": "Rising Stones Door"
         },
         {
           "DataId": 1006975,
-          "Position": {
-            "X": 32.822144,
-            "Y": 21.25273,
-            "Z": -635.46204
-          },
-          "TerritoryId": 156,
+          "Position": [32.822144, 21.25273, -635.46204],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1009231,
-          "Position": {
-            "X": -9.140198,
-            "Y": 31.999979,
-            "Z": -40.08551
-          },
-          "TerritoryId": 128,
+          "Position": [-9.140198, 31.999979, -40.08551],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 135,
       "Steps": [
         {
           "DataId": 1009382,
-          "Position": {
-            "X": 275.1659,
-            "Y": 4.3723025,
-            "Z": 729.15234
-          },
-          "TerritoryId": 135,
+          "Position": [275.1659, 4.3723025, 729.15234],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 135,
       "Steps": [
         {
-          "TerritoryId": 135,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 23,
@@ -74,15 +57,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 128,
       "Steps": [
         {
           "DataId": 1009231,
-          "Position": {
-            "X": -9.140198,
-            "Y": 31.999979,
-            "Z": -40.08551
-          },
-          "TerritoryId": 128,
+          "Position": [-9.140198, 31.999979, -40.08551],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2248
         }

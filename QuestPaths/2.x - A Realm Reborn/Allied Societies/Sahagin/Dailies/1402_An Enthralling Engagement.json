@@ -1,35 +1,27 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Censored",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-03"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005940,
-          "Position": {
-            "X": -226.12347,
-            "Y": -40.48583,
-            "Z": 57.083984
-          },
-          "TerritoryId": 138,
+          "Position": [-226.12347, -40.48583, 57.083984],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
           "Comment": "1 thrall",
           "DataId": 1008810,
-          "Position": {
-            "X": -374.62427,
-            "Y": -39.424538,
-            "Z": -351.46106
-          },
-          "TerritoryId": 138,
+          "Position": [-374.62427, -39.424538, -351.46106],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -43,12 +35,7 @@
         {
           "Comment": "2 thrall",
           "DataId": 1008809,
-          "Position": {
-            "X": -368.58167,
-            "Y": -39.582714,
-            "Z": -356.71014
-          },
-          "TerritoryId": 138,
+          "Position": [-368.58167, -39.582714, -356.71014],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -62,12 +49,7 @@
         {
           "Comment": "2 normal",
           "DataId": 1008814,
-          "Position": {
-            "X": -368.58167,
-            "Y": -39.582714,
-            "Z": -356.71014
-          },
-          "TerritoryId": 138,
+          "Position": [-368.58167, -39.582714, -356.71014],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 3},{"High": 5},{"High": 6}
@@ -77,12 +59,7 @@
         {
           "Comment": "3 thrall",
           "DataId": 1008812,
-          "Position": {
-            "X": -363.42413,
-            "Y": -39.34171,
-            "Z": -362.75275
-          },
-          "TerritoryId": 138,
+          "Position": [-363.42413, -39.34171, -362.75275],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -96,12 +73,7 @@
         {
           "Comment": "4 thrall",
           "DataId": 1008808,
-          "Position": {
-            "X": -360.28082,
-            "Y": -39.216816,
-            "Z": -369.28363
-          },
-          "TerritoryId": 138,
+          "Position": [-360.28082, -39.216816, -369.28363],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -115,12 +87,7 @@
         {
           "Comment": "4 normal",
           "DataId": 1008813,
-          "Position": {
-            "X": -360.28082,
-            "Y": -39.216816,
-            "Z": -369.28363
-          },
-          "TerritoryId": 138,
+          "Position": [-360.28082, -39.216816, -369.28363],
           "InteractionType": "Interact",
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 2},{"High": 4},{"High": 6}
@@ -130,12 +97,7 @@
         {
           "Comment": "5 thrall",
           "DataId": 1008811,
-          "Position": {
-            "X": -355.3979,
-            "Y": -38.487797,
-            "Z": -378.62213
-          },
-          "TerritoryId": 138,
+          "Position": [-355.3979, -38.487797, -378.62213],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -150,15 +112,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1005940,
-          "Position": {
-            "X": -226.12347,
-            "Y": -40.48583,
-            "Z": 57.083984
-          },
-          "TerritoryId": 138,
+          "Position": [-226.12347, -40.48583, 57.083984],
           "InteractionType": "CompleteQuest"
         }
       ]

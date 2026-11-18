@@ -1,19 +1,15 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "Comment": "This quest path is automatically generated and untested. Please report in Discord whether it works.",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1278,
       "Steps": [
         {
           "DataId": 1053803,
-          "Position": {
-            "X": 0.843973,
-            "Y": 0,
-            "Z": -20.7418
-          },
-          "TerritoryId": 1278,
+          "Position": [0.843973, 0, -20.7418],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1053803 (Ketenramm)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1053805,
-          "Position": {
-            "X": 193.093,
-            "Y": -17.9643,
-            "Z": 45.0256
-          },
-          "TerritoryId": 1185,
+          "Position": [193.093, -17.9643, 45.0256],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1053805 (expedition messenger)"
         }

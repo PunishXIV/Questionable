@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-31"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039203,
-          "Position": {
-            "X": -277.689,
-            "Y": 21.846,
-            "Z": -139.064
-          },
-          "TerritoryId": 962,
+          "Position": [-277.689, 21.846, -139.064],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1039203 (Rurusha)"
         }
@@ -21,21 +17,16 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 962,
       "Steps": [
         {
-          "TerritoryId": 962,
           "InteractionType": "Craft",
           "ItemId": 35838,
           "ItemCount": 1
         },
         {
           "DataId": 1039203,
-          "Position": {
-            "X": -277.689,
-            "Y": 21.846,
-            "Z": -139.064
-          },
-          "TerritoryId": 962,
+          "Position": [-277.689, 21.846, -139.064],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1039203 (Rurusha); npc trade"
         }
@@ -43,15 +34,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039217,
-          "Position": {
-            "X": -322.814,
-            "Y": 22.3,
-            "Z": -172.634
-          },
-          "TerritoryId": 962,
+          "Position": [-322.814, 22.3, -172.634],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1039217 (Namono Tayamono)"
         }
@@ -59,15 +46,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 962,
       "Steps": [
         {
           "DataId": 1039203,
-          "Position": {
-            "X": -277.689,
-            "Y": 21.846,
-            "Z": -139.064
-          },
-          "TerritoryId": 962,
+          "Position": [-277.689, 21.846, -139.064],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1039203 (Rurusha)"
         }

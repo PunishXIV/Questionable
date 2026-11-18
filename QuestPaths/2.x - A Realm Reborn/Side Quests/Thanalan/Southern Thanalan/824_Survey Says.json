@@ -1,54 +1,37 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "ShermTank",
   "LastChecked": {"Username": "ShermTank", "Date": "2026-07-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 146,
       "Steps": [
         {
           "$": "Walk to outside of building first - only needed if you have flying",
-          "Position": {
-            "X": -346.46524,
-            "Y": 8.5170555,
-            "Z": 420.88474
-          },
-          "TerritoryId": 146,
+          "Position": [-346.46524, 8.5170555, 420.88474],
           "InteractionType": "WalkTo",
           "SkipConditions": { "StepIf": { "Flying": "Locked" } }
         },
         {
           "DataId": 1006288,
-          "Position": {
-            "X": -361.40997,
-            "Y": 8.46532,
-            "Z": 426.13855
-          },
-          "TerritoryId": 146,
+          "Position": [-361.40997, 8.46532, 426.13855],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 146,
       "Steps": [
         {
           "$": "Walk out of building, if in it",
-          "Position": {
-            "X": -346.46524,
-            "Y": 8.5170555,
-            "Z": 420.88474
-          },
-          "TerritoryId": 146,
+          "Position": [-346.46524, 8.5170555, 420.88474],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
-                "Position": {
-                  "X": -346.46524,
-                  "Y": 8.5170555,
-                  "Z": 420.88474
-                },
+                "Position": [-346.46524, 8.5170555, 420.88474],
                 "TerritoryId": 146,
                 "MaximumDistance": 15
               }
@@ -58,23 +41,13 @@
         {
           "$": "Drifting Cloud",
           "DataId": 1006291,
-          "Position": {
-            "X": -269.4591,
-            "Y": 7.368076,
-            "Z": 420.5232
-          },
-          "TerritoryId": 146,
+          "Position": [-269.4591, 7.368076, 420.5232],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "$": "Walk to outside of building if you have flying unlocked",
-          "Position": {
-            "X": -339.96478,
-            "Y": 7.181939,
-            "Z": 369.13275
-          },
-          "TerritoryId": 146,
+          "Position": [-339.96478, 7.181939, 369.13275],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -84,12 +57,7 @@
           }
         },
         {
-          "Position": {
-            "X": -335.16415,
-            "Y": 9.101427,
-            "Z": 353.49564
-          },
-          "TerritoryId": 146,
+          "Position": [-335.16415, 9.101427, 353.49564],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -100,32 +68,18 @@
         {
           "$": "Sidimund",
           "DataId": 1006292,
-          "Position": {
-            "X": -333.33337,
-            "Y": 9.101427,
-            "Z": 352.25452
-          },
-          "TerritoryId": 146,
+          "Position": [-333.33337, 9.101427, 352.25452],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "$": "Walk out of building, if you're in it",
-          "Position": {
-            "X": -339.96478,
-            "Y": 7.181939,
-            "Z": 369.13275
-          },
-          "TerritoryId": 146,
+          "Position": [-339.96478, 7.181939, 369.13275],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
-                "Position": {
-                  "X": -340.09122,
-                  "Y": 8.88795,
-                  "Z": 365.16626
-                },
+                "Position": [-340.09122, 8.88795, 365.16626],
                 "TerritoryId": 146,
                 "MaximumDistance": 15
               }
@@ -135,12 +89,7 @@
         {
           "$": "Riridesu",
           "DataId": 1006290,
-          "Position": {
-            "X": -347.24957,
-            "Y": 2.3546066,
-            "Z": 265.73584
-          },
-          "TerritoryId": 146,
+          "Position": [-347.24957, 2.3546066, 265.73584],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
@@ -148,15 +97,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 146,
       "Steps": [
         {
           "DataId": 1006288,
-          "Position": {
-            "X": -361.40997,
-            "Y": 8.46532,
-            "Z": 426.13855
-          },
-          "TerritoryId": 146,
+          "Position": [-361.40997, 8.46532, 426.13855],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 825
         }

@@ -1,74 +1,53 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1009813,
-          "Position": {
-            "X": 55.436035,
-            "Y": 31.187548,
-            "Z": -763.42413
-          },
-          "TerritoryId": 156,
+          "Position": [55.436035, 31.187548, -763.42413],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1009812,
-          "Position": {
-            "X": 74.08252,
-            "Y": 30.549389,
-            "Z": -720.9735
-          },
-          "TerritoryId": 156,
+          "Position": [74.08252, 30.549389, -720.9735],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1006530,
-          "Position": {
-            "X": 21.927185,
-            "Y": 20.746975,
-            "Z": -682.06305
-          },
-          "TerritoryId": 156,
+          "Position": [21.927185, 20.746975, -682.06305],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1009825,
-          "Position": {
-            "X": 86.07605,
-            "Y": 28.34813,
-            "Z": -622.18665
-          },
-          "TerritoryId": 156,
+          "Position": [86.07605, 28.34813, -622.18665],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
-          "Position": {
-            "X": 30.917934,
-            "Y": 20.495003,
-            "Z": -656.1909
-          },
-          "TerritoryId": 156,
+          "Position": [30.917934, 20.495003, -656.1909],
           "InteractionType": "WalkTo",
           "$": "Rising Stones Door",
           "SkipConditions": {
@@ -79,22 +58,12 @@
         },
         {
           "DataId": 1009826,
-          "Position": {
-            "X": 29.160034,
-            "Y": 21.252728,
-            "Z": -642.51166
-          },
-          "TerritoryId": 156,
+          "Position": [29.160034, 21.252728, -642.51166],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
-          "Position": {
-            "X": 18.883974,
-            "Y": 53.583996,
-            "Z": -702.24194
-          },
-          "TerritoryId": 156,
+          "Position": [18.883974, 53.583996, -702.24194],
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -104,23 +73,13 @@
         },
         {
           "DataId": 1009823,
-          "Position": {
-            "X": 16.983276,
-            "Y": 53.614998,
-            "Z": -703.3341
-          },
-          "TerritoryId": 156,
+          "Position": [16.983276, 53.614998, -703.3341],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "DataId": 1009824,
-          "Position": {
-            "X": 22.262878,
-            "Y": 28.999968,
-            "Z": -780.85
-          },
-          "TerritoryId": 156,
+          "Position": [22.262878, 28.999968, -780.85],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
@@ -128,15 +87,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 156,
       "Steps": [
         {
           "DataId": 1009813,
-          "Position": {
-            "X": 55.436035,
-            "Y": 31.187548,
-            "Z": -763.42413
-          },
-          "TerritoryId": 156,
+          "Position": [55.436035, 31.187548, -763.42413],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 100
         }

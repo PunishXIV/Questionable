@@ -1,5 +1,5 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Saputello",
   "LastChecked": {
     "Username": "Saputello",
@@ -8,29 +8,21 @@
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1027745,
-          "Position": {
-            "X": -132.076,
-            "Y": -23.3466,
-            "Z": 229.641
-          },
-          "TerritoryId": 817,
+          "Position": [-132.076, -23.3466, 229.641],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "Position": {
-            "X": -215.018,
-            "Y": 28.3467,
-            "Z": -97.5255
-          },
-          "TerritoryId": 817,
+          "Position": [-215.018, 28.3467, -97.5255],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -43,15 +35,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1027745,
-          "Position": {
-            "X": -132.076,
-            "Y": -23.3466,
-            "Z": 229.641
-          },
-          "TerritoryId": 817,
+          "Position": [-132.076, -23.3466, 229.641],
           "InteractionType": "CompleteQuest"
         }
       ]

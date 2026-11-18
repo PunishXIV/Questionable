@@ -1,72 +1,50 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "pot0to",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-10-08"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001708,
-          "Position": {
-            "X": -250.3548,
-            "Y": 18,
-            "Z": 80.88806
-          },
-          "TerritoryId": 130,
+          "Position": [-250.3548, 18, 80.88806],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001711,
-          "Position": {
-            "X": -241.62665,
-            "Y": 18.8,
-            "Z": 83.32947
-          },
-          "TerritoryId": 130,
+          "Position": [-241.62665, 18.8, 83.32947],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1002301,
-          "Position": {
-            "X": -178.2102,
-            "Y": 18,
-            "Z": 61.41748
-          },
-          "TerritoryId": 130,
+          "Position": [-178.2102, 18, 61.41748],
           "InteractionType": "Emote",
           "Emote": "cry"
         },
         {
           "DataId": 1002300,
-          "Position": {
-            "X": -176.9284,
-            "Y": 18,
-            "Z": 62.363525
-          },
-          "TerritoryId": 130,
+          "Position": [-176.9284, 18, 62.363525],
           "InteractionType": "Emote",
           "Emote": "cry"
         },
         {
           "DataId": 1002302,
-          "Position": {
-            "X": -176.71478,
-            "Y": 18,
-            "Z": 64.34729
-          },
-          "TerritoryId": 130,
+          "Position": [-176.71478, 18, 64.34729],
           "InteractionType": "Emote",
           "Emote": "cry"
         }
@@ -74,30 +52,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001711,
-          "Position": {
-            "X": -241.62665,
-            "Y": 18.8,
-            "Z": 83.32947
-          },
-          "TerritoryId": 130,
+          "Position": [-241.62665, 18.8, 83.32947],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 145,
       "Steps": [
         {
           "DataId": 2001470,
-          "Position": {
-            "X": -24.887512,
-            "Y": -25.345276,
-            "Z": 321.94995
-          },
-          "TerritoryId": 145,
+          "Position": [-24.887512, -25.345276, 321.94995],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
@@ -111,15 +81,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 130,
       "Steps": [
         {
           "DataId": 1001711,
-          "Position": {
-            "X": -241.62665,
-            "Y": 18.8,
-            "Z": 83.32947
-          },
-          "TerritoryId": 130,
+          "Position": [-241.62665, 18.8, 83.32947],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

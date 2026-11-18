@@ -1,50 +1,39 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Cacahuetes",
   "Interruptible": false,
   "LastChecked": {"Username": "alydev", "Date": "2026-08-26"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000197,
-          "Position": {
-            "X": 201.31226,
-            "Y": -3.1634123e-15,
-            "Z": 43.900146
-          },
-          "TerritoryId": 132,
+          "Position": [201.31226, -3.1634123e-15, 43.900146],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 132,
       "Steps": [
         {
           "InteractionType": "CreateGearset",
-          "TerritoryId": 132,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "EquipRecommended",
-          "TerritoryId": 132,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "InteractionType": "UpdateGearset",
-          "TerritoryId": 132,
           "SkipConditions": {"StepIf": {"ExtraCondition": "NewGamePlus"}}
         },
         {
           "DataId": 1000200,
-          "Position": {
-            "X": 209.55212,
-            "Y": 0.9999819,
-            "Z": 35.01941
-          },
-          "TerritoryId": 132,
+          "Position": [209.55212, 0.9999819, 35.01941],
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -58,14 +47,10 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 148,
       "Steps": [
         {
-          "Position": {
-            "X": 97.18397,
-            "Y": 17.128555,
-            "Z": -269.5008
-          },
-          "TerritoryId": 148,
+          "Position": [97.18397, 17.128555, -269.5008],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -83,12 +68,7 @@
           "$": "0 0  0 0  0 0 -> 19 0  0 0  0 0"
         },
         {
-          "Position": {
-            "X": 119.449745,
-            "Y": 17.399649,
-            "Z": -259.6467
-          },
-          "TerritoryId": 148,
+          "Position": [119.449745, 17.399649, -259.6467],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -110,12 +90,7 @@
           "$": "19 0  0 0  0 0 -> 35 48  0 0  0 0"
         },
         {
-          "Position": {
-            "X": 126.943115,
-            "Y": 2.910592,
-            "Z": -180.54787
-          },
-          "TerritoryId": 148,
+          "Position": [126.943115, 2.910592, -180.54787],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -140,15 +115,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 132,
       "Steps": [
         {
           "DataId": 1000200,
-          "Position": {
-            "X": 209.55212,
-            "Y": 0.9999819,
-            "Z": 35.01941
-          },
-          "TerritoryId": 132,
+          "Position": [209.55212, 0.9999819, 35.01941],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 46
         }

@@ -1,73 +1,51 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "kaiser",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012222,
-          "Position": {
-            "X": 202.38037,
-            "Y": -5.3999662,
-            "Z": -58.9151
-          },
-          "TerritoryId": 419,
+          "Position": [202.38037, -5.3999662, -58.9151],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1015168,
-          "Position": {
-            "X": -266.01056,
-            "Y": 126.407364,
-            "Z": -0.045776367
-          },
-          "TerritoryId": 397,
+          "Position": [-266.01056, 126.407364, -0.045776367],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1015169,
-          "Position": {
-            "X": -311.42145,
-            "Y": 126.83597,
-            "Z": 3.4942627
-          },
-          "TerritoryId": 397,
+          "Position": [-311.42145, 126.83597, 3.4942627],
           "InteractionType": "Action",
           "Action": "Aspected Benefic",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
           "DataId": 1015171,
-          "Position": {
-            "X": -320.02753,
-            "Y": 126.52038,
-            "Z": -14.023071
-          },
-          "TerritoryId": 397,
+          "Position": [-320.02753, 126.52038, -14.023071],
           "InteractionType": "Action",
           "Action": "Aspected Benefic",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
           "DataId": 1015170,
-          "Position": {
-            "X": -296.86432,
-            "Y": 125.87531,
-            "Z": -14.389343
-          },
-          "TerritoryId": 397,
+          "Position": [-296.86432, 125.87531, -14.389343],
           "InteractionType": "Action",
           "Action": "Aspected Benefic",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
@@ -76,30 +54,22 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1015163,
-          "Position": {
-            "X": -310.0786,
-            "Y": 125.02021,
-            "Z": -25.192688
-          },
-          "TerritoryId": 397,
+          "Position": [-310.0786, 125.02021, -25.192688],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 397,
       "Steps": [
         {
           "DataId": 1015178,
-          "Position": {
-            "X": -310.0786,
-            "Y": 125.02021,
-            "Z": -25.192688
-          },
-          "TerritoryId": 397,
+          "Position": [-310.0786, 125.02021, -25.192688],
           "InteractionType": "Action",
           "Action": "Aspected Benefic"
         }
@@ -107,15 +77,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 419,
       "Steps": [
         {
           "DataId": 1012222,
-          "Position": {
-            "X": 202.38037,
-            "Y": -5.3999662,
-            "Z": -58.9151
-          },
-          "TerritoryId": 419,
+          "Position": [202.38037, -5.3999662, -58.9151],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2023
         }

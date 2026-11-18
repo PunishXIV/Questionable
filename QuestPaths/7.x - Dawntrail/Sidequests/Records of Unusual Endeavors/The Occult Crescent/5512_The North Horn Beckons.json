@@ -1,18 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-09"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1346,
       "Steps": [
         {
           "DataId": 1053611,
-          "Position": {
-            "X": -77.958374,
-            "Y": 5,
-            "Z": -15.396423
-          },
+          "Position": [-77.958374, 5, -15.396423],
           "TerritoryId": 1278,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1346,
@@ -20,23 +17,13 @@
         },
         {
           "DataId": 2015429,
-          "Position": {
-            "X": 882.8706,
-            "Y": 258.5,
-            "Z": 878.4737
-          },
-          "TerritoryId": 1346,
+          "Position": [882.8706, 258.5, 878.4737],
           "InteractionType": "Interact",
           "Comment": "Attune zone aetheryte"
         },
         {
           "DataId": 1059627,
-          "Position": {
-            "X": 875.578,
-            "Y": 258.5,
-            "Z": 864.439
-          },
-          "TerritoryId": 1346,
+          "Position": [875.578, 258.5, 864.439],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1059627 (Ketenramm)"
         }
@@ -44,15 +31,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1346,
       "Steps": [
         {
           "DataId": 1059626,
-          "Position": {
-            "X": 877.365,
-            "Y": 258.5,
-            "Z": 865.178
-          },
-          "TerritoryId": 1346,
+          "Position": [877.365, 258.5, 865.178],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1059626 (Archive)"
         }

@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Kiarra",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-19"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1052581,
-          "Position": {
-            "X": 27.232807,
-            "Y": -137.41669,
-            "Z": -411.65918
-          },
-          "TerritoryId": 959,
+          "Position": [27.232807, -137.41669, -411.65918],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1319,
           "Comment": "Select the destination Auxesia (#4)",
@@ -28,11 +24,7 @@
         },
         {
           "DataId": 1056837,
-          "Position": {
-            "X": 363.332,
-            "Y": 204.139,
-            "Z": 397.851
-          },
+          "Position": [363.332, 204.139, 397.851],
           "TerritoryId": 1319,
           "InteractionType": "AcceptQuest"
         }
@@ -40,45 +32,33 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1319,
       "Steps": [
         {
           "DataId": 1056838,
-          "Position": {
-            "X": 303.374,
-            "Y": 205.667,
-            "Z": 358.069
-          },
-          "TerritoryId": 1319,
+          "Position": [303.374, 205.667, 358.069],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1056841,
-          "Position": {
-            "X": 64.5304,
-            "Y": 118.373,
-            "Z": -766.781
-          },
-          "TerritoryId": 620,
+          "Position": [64.5304, 118.373, -766.781],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1056843,
-          "Position": {
-            "X": 108.4458,
-            "Y": 118.15579,
-            "Z": -713.8933
-          },
-          "TerritoryId": 620,
+          "Position": [108.4458, 118.15579, -713.8933],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,
@@ -93,12 +73,7 @@
         },
         {
           "DataId": 1056844,
-          "Position": {
-            "X": 121.50757,
-            "Y": 118.15579,
-            "Z": -700.0076
-          },
-          "TerritoryId": 620,
+          "Position": [121.50757, 118.15579, -700.0076],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,
@@ -113,12 +88,7 @@
         },
         {
           "DataId": 1056842,
-          "Position": {
-            "X": 151.6289,
-            "Y": 118.1753,
-            "Z": -716.0602
-          },
-          "TerritoryId": 620,
+          "Position": [151.6289, 118.1753, -716.0602],
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [
             null,
@@ -135,80 +105,60 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1056845,
-          "Position": {
-            "X": 165.20935,
-            "Y": 118.15579,
-            "Z": -723.93384
-          },
-          "TerritoryId": 620,
+          "Position": [165.20935, 118.15579, -723.93384],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1056847,
-          "Position": {
-            "X": -276.44775,
-            "Y": 257.52652,
-            "Z": 725.21545
-          },
-          "TerritoryId": 620,
+          "Position": [-276.44775, 257.52652, 725.21545],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 1056848,
-          "Position": {
-            "X": 144.94531,
-            "Y": 118.22037,
-            "Z": -687.0985
-          },
-          "TerritoryId": 620,
+          "Position": [144.94531, 118.22037, -687.0985],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 620,
       "Steps": [
         {
           "DataId": 2015411,
-          "Position": {
-            "X": 295.0183,
-            "Y": 126.6934,
-            "Z": -481.1837
-          },
-          "TerritoryId": 620,
+          "Position": [295.0183, 126.6934, -481.1837],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "TerritoryId": 959,
           "DataId": 175,
           "InteractionType": "Interact",
           "Comment": "Click Travel to Auxesia"
         },
         {
           "DataId": 1056850,
-          "Position": {
-            "X": 361.899,
-            "Y": 204.139,
-            "Z": 398.779
-          },
+          "Position": [361.899, 204.139, 398.779],
           "TerritoryId": 1319,
           "InteractionType": "CompleteQuest"
         }

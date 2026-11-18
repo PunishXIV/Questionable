@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-07-29"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 1058957,
-          "Position": {
-            "X": -252.342,
-            "Y": 37,
-            "Z": -495.573
-          },
-          "TerritoryId": 1191,
+          "Position": [-252.342, 37, -495.573],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1058957 (Hardiboiled)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1191,
       "Steps": [
         {
           "DataId": 2015340,
-          "Position": {
-            "X": 218.085,
-            "Y": 88.3212,
-            "Z": 633.312
-          },
-          "TerritoryId": 1191,
+          "Position": [218.085, 88.3212, 633.312],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": false
@@ -43,15 +35,11 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1254,
       "Steps": [
         {
           "DataId": 1058959,
-          "Position": {
-            "X": 95.6384,
-            "Y": 12.04,
-            "Z": 147.112
-          },
-          "TerritoryId": 1254,
+          "Position": [95.6384, 12.04, 147.112],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1058959 (Hardiboiled)"
         }
@@ -59,15 +47,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1186,
       "Steps": [
         {
           "DataId": 1058961,
-          "Position": {
-            "X": 233.506,
-            "Y": 50.7499,
-            "Z": 210.164
-          },
-          "TerritoryId": 1186,
+          "Position": [233.506, 50.7499, 210.164],
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1058961 (Noirshu)"
         }

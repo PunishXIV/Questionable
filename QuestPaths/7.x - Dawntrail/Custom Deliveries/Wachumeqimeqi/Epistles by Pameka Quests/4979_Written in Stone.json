@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-24"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047120,
-          "Position": {
-            "X": 165.852,
-            "Y": -13.98,
-            "Z": 18.3505
-          },
-          "TerritoryId": 1185,
+          "Position": [165.852, -13.98, 18.3505],
           "InteractionType": "AcceptQuest",
           "$": "auto: issuer 1047120 (Pameka)"
         }
@@ -21,15 +17,11 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 2013893,
-          "Position": {
-            "X": 55.7246,
-            "Y": 47,
-            "Z": -366.848
-          },
-          "TerritoryId": 1185,
+          "Position": [55.7246, 47, -366.848],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 2013893 (destination)"
         }
@@ -37,15 +29,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1047123,
-          "Position": {
-            "X": 525.586,
-            "Y": 105.124,
-            "Z": 660.617
-          },
-          "TerritoryId": 1187,
+          "Position": [525.586, 105.124, 660.617],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047123 (Pameka)"
         }
@@ -53,48 +41,29 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1047124,
-          "Position": {
-            "X": 493.326,
-            "Y": 111.135,
-            "Z": 589.152
-          },
-          "TerritoryId": 1187,
+          "Position": [493.326, 111.135, 589.152],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047124 (young Yok Huy)"
         },
         {
           "DataId": 1047125,
-          "Position": {
-            "X": 449.68,
-            "Y": 120.235,
-            "Z": 560.905
-          },
-          "TerritoryId": 1187,
+          "Position": [449.68, 120.235, 560.905],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047125 (severe Yok Huy)"
         },
         {
           "DataId": 1047126,
-          "Position": {
-            "X": 367.574,
-            "Y": 129.046,
-            "Z": 635.218
-          },
-          "TerritoryId": 1187,
+          "Position": [367.574, 129.046, 635.218],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047126 (drowsy Yok Huy)"
         },
         {
           "DataId": 1047123,
-          "Position": {
-            "X": 525.586,
-            "Y": 105.124,
-            "Z": 660.617
-          },
-          "TerritoryId": 1187,
+          "Position": [525.586, 105.124, 660.617],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047123 (Pameka)"
         }
@@ -102,15 +71,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1047127,
-          "Position": {
-            "X": 526.232,
-            "Y": 111.135,
-            "Z": 730.117
-          },
-          "TerritoryId": 1187,
+          "Position": [526.232, 111.135, 730.117],
           "InteractionType": "Interact",
           "$": "auto: lua ACTOR5 -> 1047127 (Yok Huy stonemason)"
         }
@@ -118,15 +83,11 @@
     },
     {
       "Sequence": 5,
+      "TerritoryId": 1187,
       "Steps": [
         {
           "DataId": 1047128,
-          "Position": {
-            "X": 521.977,
-            "Y": 111.135,
-            "Z": 730.943
-          },
-          "TerritoryId": 1187,
+          "Position": [521.977, 111.135, 730.943],
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047128 (Pameka)"
         }
@@ -134,9 +95,9 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 1185,
       "Steps": [
         {
-          "TerritoryId": 1185,
           "InteractionType": "Craft",
           "ItemId": 43909,
           "ItemCount": 1,
@@ -148,11 +109,7 @@
         },
         {
           "DataId": 1047128,
-          "Position": {
-            "X": 521.977,
-            "Y": 111.135,
-            "Z": 730.943
-          },
+          "Position": [521.977, 111.135, 730.943],
           "TerritoryId": 1187,
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1047128 (Pameka); npc trade"
@@ -161,15 +118,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1047120,
-          "Position": {
-            "X": 165.852,
-            "Y": -13.98,
-            "Z": 18.3505
-          },
-          "TerritoryId": 1185,
+          "Position": [165.852, -13.98, 18.3505],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4980,
           "$": "auto: todo turn-in -> 1047120 (Pameka)"

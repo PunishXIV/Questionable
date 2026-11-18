@@ -1,33 +1,25 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": ["WigglyMuffin", "alydev"],
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 1278,
       "Steps": [
         {
           "DataId": 1039457,
-          "Position": {
-            "X": 25.802979,
-            "Y": 0,
-            "Z": 13.38208
-          },
-          "TerritoryId": 1278,
+          "Position": [25.802979, 0, 13.38208],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1278,
       "Steps": [
         {
           "DataId": 1039456,
-          "Position": {
-            "X": 28.854736,
-            "Y": 0,
-            "Z": 13.351624
-          },
-          "TerritoryId": 1278,
+          "Position": [28.854736, 0, 13.351624],
           "InteractionType": "Emote",
           "Emote": "doubt"
         }
@@ -35,14 +27,11 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1185,
       "Steps": [
         {
           "DataId": 1048933,
-          "Position": {
-            "X": -381.5824,
-            "Y": 23.535583,
-            "Z": -436.94214
-          },
+          "Position": [-381.5824, 23.535583, -436.94214],
           "TerritoryId": 1189,
           "InteractionType": "PurchaseItem",
           "ItemId": 46852,
@@ -57,12 +46,7 @@
         },
         {
           "DataId": 1048382,
-          "Position": {
-            "X": -9.597961,
-            "Y": -9.628479,
-            "Z": 90.34863
-          },
-          "TerritoryId": 1185,
+          "Position": [-9.597961, -9.628479, 90.34863],
           "InteractionType": "PurchaseItem",
           "ItemId": 46854,
           "ItemCount": 1,
@@ -78,7 +62,6 @@
           "InteractionType": "Craft",
           "ItemId": 46855,
           "ItemCount": 1,
-          "TerritoryId": 1185,
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -91,7 +74,6 @@
           "InteractionType": "Craft",
           "ItemId": 46856,
           "ItemCount": 1,
-          "TerritoryId": 1185,
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -104,7 +86,6 @@
           "InteractionType": "Craft",
           "ItemId": 46857,
           "ItemCount": 1,
-          "TerritoryId": 1185,
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -115,26 +96,16 @@
         },
         {
           "DataId": 2014671,
-          "Position": {
-            "X": 206.31714,
-            "Y": -17.990417,
-            "Z": 63.309692
-          },
-          "TerritoryId": 1185,
+          "Position": [206.31714, -17.990417, 63.309692],
           "InteractionType": "Interact"
         },
         {
           "InteractionType": "SwitchClass",
-          "TargetClass": "ConfiguredCombatJob",
-          "TerritoryId": 1185
+          "TargetClass": "ConfiguredCombatJob"
         },
         {
           "DataId": 1053908,
-          "Position": {
-            "X": 28.854736,
-            "Y": 0,
-            "Z": 13.351624
-          },
+          "Position": [28.854736, 0, 13.351624],
           "TerritoryId": 1278,
           "InteractionType": "Interact"
         }
@@ -142,21 +113,16 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1278,
       "Steps": [
         {
           "DataId": 2014937,
-          "Position": {
-            "X": 27.60829,
-            "Y": 0,
-            "Z": 11.74576
-          },
-          "TerritoryId": 1278,
+          "Position": [27.60829, 0, 11.74576],
           "InteractionType": "Interact",
           "NextQuestId": 5381
         },
         {
-          "InteractionType": "CompleteQuest",
-          "TerritoryId": 1278
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

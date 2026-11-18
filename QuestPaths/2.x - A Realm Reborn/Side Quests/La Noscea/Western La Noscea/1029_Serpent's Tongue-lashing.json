@@ -1,33 +1,25 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-22"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1006615,
-          "Position": {
-            "X": 69.962524,
-            "Y": -3.1182308,
-            "Z": 52.658813
-          },
-          "TerritoryId": 138,
+          "Position": [69.962524, -3.1182308, 52.658813],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 138,
       "Steps": [
         {
-          "Position": {
-            "X": -436.22018,
-            "Y": -40.76637,
-            "Z": -226.32536
-          },
-          "TerritoryId": 138,
+          "Position": [-436.22018, -40.76637, -226.32536],
           "InteractionType": "Combat",
           "Comment": "If FATE is up, might take a while for\nnon-FATE mobs to respawn",
           "EnemySpawnType": "OverworldEnemies",
@@ -50,15 +42,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 138,
       "Steps": [
         {
           "DataId": 1006615,
-          "Position": {
-            "X": 69.962524,
-            "Y": -3.1182308,
-            "Z": 52.658813
-          },
-          "TerritoryId": 138,
+          "Position": [69.962524, -3.1182308, 52.658813],
           "InteractionType": "CompleteQuest"
         }
       ]

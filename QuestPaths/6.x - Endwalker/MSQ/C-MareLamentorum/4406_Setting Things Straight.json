@@ -1,60 +1,43 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038935,
-          "Position": {
-            "X": 68.5282,
-            "Y": 75.72459,
-            "Z": -23.51416
-          },
-          "TerritoryId": 959,
+          "Position": [68.5282, 75.72459, -23.51416],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 2012010,
-          "Position": {
-            "X": 42.58789,
-            "Y": 124.01001,
-            "Z": -167.04059
-          },
-          "TerritoryId": 959,
+          "Position": [42.58789, 124.01001, -167.04059],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818359
         },
         {
           "DataId": 1038936,
-          "Position": {
-            "X": 191.48547,
-            "Y": 93.90228,
-            "Z": -54.306885
-          },
-          "TerritoryId": 959,
+          "Position": [191.48547, 93.90228, -54.306885],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 2012235,
-          "Position": {
-            "X": 183.30652,
-            "Y": 87.20532,
-            "Z": -30.47229
-          },
-          "TerritoryId": 959,
+          "Position": [183.30652, 87.20532, -30.47229],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
@@ -67,88 +50,58 @@
     },
     {
       "Sequence": 3,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 2012433,
-          "Position": {
-            "X": 183.30652,
-            "Y": 87.17468,
-            "Z": -30.380737
-          },
-          "TerritoryId": 959,
+          "Position": [183.30652, 87.17468, -30.380737],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038936,
-          "Position": {
-            "X": 191.48547,
-            "Y": 93.90228,
-            "Z": -54.306885
-          },
-          "TerritoryId": 959,
+          "Position": [191.48547, 93.90228, -54.306885],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "Position": {
-            "X": 304.50522,
-            "Y": -144,
-            "Z": -558.8681
-          },
-          "TerritoryId": 959,
+          "Position": [304.50522, -144, -558.8681],
           "InteractionType": "Jump",
           "JumpDestination": {
-            "Position": {
-              "X": 315.84082,
-              "Y": -156.2339,
-              "Z": -577.15063
-            },
+            "Position": [315.84082, -156.2339, -577.15063],
             "StopDistance": 5
           }
         },
         {
           "DataId": 2012012,
-          "Position": {
-            "X": 316.39575,
-            "Y": -154.98596,
-            "Z": -595.5444
-          },
-          "TerritoryId": 959,
+          "Position": [316.39575, -154.98596, -595.5444],
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818361
         },
         {
           "DataId": 1038937,
-          "Position": {
-            "X": 381.7959,
-            "Y": -168.00002,
-            "Z": -594.62885
-          },
-          "TerritoryId": 959,
+          "Position": [381.7959, -168.00002, -594.62885],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 2012337,
-          "Position": {
-            "X": 466.8496,
-            "Y": -168.01715,
-            "Z": -654.13904
-          },
-          "TerritoryId": 959,
+          "Position": [466.8496, -168.01715, -654.13904],
           "InteractionType": "Snipe",
           "Comment": "Find \"Runninway?\""
         }
@@ -156,15 +109,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038944,
-          "Position": {
-            "X": 361.65405,
-            "Y": -168.00002,
-            "Z": -628.19867
-          },
-          "TerritoryId": 959,
+          "Position": [361.65405, -168.00002, -628.19867],
           "InteractionType": "CompleteQuest"
         }
       ]

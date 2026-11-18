@@ -1,61 +1,44 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-18"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032643,
-          "Position": {
-            "X": 788.5046,
-            "Y": -45.827076,
-            "Z": -216.96419
-          },
-          "TerritoryId": 817,
+          "Position": [788.5046, -45.827076, -216.96419],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032663,
-          "Position": {
-            "X": 792.62604,
-            "Y": -45.80807,
-            "Z": -189.18097
-          },
-          "TerritoryId": 817,
+          "Position": [792.62604, -45.80807, -189.18097],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032829,
-          "Position": {
-            "X": 488.3954,
-            "Y": 34.798103,
-            "Z": 232.37964
-          },
-          "TerritoryId": 817,
+          "Position": [488.3954, 34.798103, 232.37964],
           "InteractionType": "Action",
           "Action": "Peculiar Light",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1032828,
-          "Position": {
-            "X": 352.16296,
-            "Y": 28.242743,
-            "Z": 303.2119
-          },
-          "TerritoryId": 817,
+          "Position": [352.16296, 28.242743, 303.2119],
           "InteractionType": "Action",
           "Action": "Peculiar Light",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -64,15 +47,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1032643,
-          "Position": {
-            "X": 788.5046,
-            "Y": -45.827076,
-            "Z": -216.96419
-          },
-          "TerritoryId": 817,
+          "Position": [788.5046, -45.827076, -216.96419],
           "InteractionType": "CompleteQuest"
         }
       ]

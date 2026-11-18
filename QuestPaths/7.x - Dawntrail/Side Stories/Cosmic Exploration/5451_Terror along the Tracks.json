@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "alydev",
   "LastChecked": {"Username": "alydev", "Date": "2026-06-02"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1052581,
-          "Position": {
-            "X": 27.232807,
-            "Y": -137.41669,
-            "Z": -411.65918
-          },
-          "TerritoryId": 959,
+          "Position": [27.232807, -137.41669, -411.65918],
           "InteractionType": "Interact",
           "TargetTerritoryId": 1310,
           "Comment": "Select the destination Oizys (#3)",
@@ -28,11 +24,7 @@
         },
         {
           "DataId": 1053359,
-          "Position": {
-            "X": -274.86078,
-            "Y": 0.3795071,
-            "Z": 130.57141
-          },
+          "Position": [-274.86078, 0.3795071, 130.57141],
           "TerritoryId": 1310,
           "InteractionType": "AcceptQuest"
         }
@@ -40,66 +32,49 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 1310,
       "Steps": [
         {
           "DataId": 2015114,
-          "Position": {
-            "X": -460.9984,
-            "Y": 102.9374,
-            "Z": 759.4024
-          },
-          "TerritoryId": 1310,
+          "Position": [-460.9984, 102.9374, 759.4024],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 1310,
       "Steps": [
         {
           "DataId": 2015115,
-          "Position": {
-            "X": -531.3907,
-            "Y": 24.55894,
-            "Z": 104.0778
-          },
-          "TerritoryId": 1310,
+          "Position": [-531.3907, 24.55894, 104.0778],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 1310,
       "Steps": [
         {
           "DataId": 2015116,
-          "Position": {
-            "X": -464.1945,
-            "Y": -103.4464,
-            "Z": -749.404
-          },
-          "TerritoryId": 1310,
+          "Position": [-464.1945, -103.4464, -749.404],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 1310,
       "Steps": [
         {
-          "TerritoryId": 1310,
           "InteractionType": "Action",
           "Action": "Duty Action I",
           "$": "Stellar Return"
         },
         {
           "DataId": 1053359,
-          "Position": {
-            "X": -274.86078,
-            "Y": 0.3795071,
-            "Z": 130.57141
-          },
-          "TerritoryId": 1310,
+          "Position": [-274.86078, 0.3795071, 130.57141],
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

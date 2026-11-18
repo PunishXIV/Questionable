@@ -1,19 +1,15 @@
 ﻿{
-	"$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+	"$schema": "https://qstxiv.github.io/schema/quest-v2.json",
 	"Author": "goatzone",
 	"LastChecked": {"Username": "alydev", "Date": "2026-09-21"},
   "QuestSequence": [
 		{
 			"Sequence": 0,
+			"TerritoryId": 141,
 			"Steps": [
 				{
 					"DataId": 1003995,
-					"Position": {
-						"X": 75.33374,
-						"Y": 2.135708,
-						"Z": 316.33472
-					},
-					"TerritoryId": 141,
+					"Position": [75.33374, 2.135708, 316.33472],
 					"InteractionType": "AcceptQuest",
 					"$":"you could swap this shortcut out for black brush station, just figured it worked once."
 				}
@@ -21,39 +17,25 @@
 		},
 		{
 			"Sequence": 1,
+			"TerritoryId": 397,
 			"Steps": [
 				{
 					"DataId": 1011237,
-					"Position": {
-						"X": 447.3181,
-						"Y": 212.53984,
-						"Z": 725.00183
-					},
-					"TerritoryId": 397,
+					"Position": [447.3181, 212.53984, 725.00183],
 					"InteractionType": "Interact",
 					"CompletionQuestVariablesFlags": [null, null, null, null, null, 32],
 					"$": "0 0 0 0 0 0 -> 1 0 0 0 0 32"
 				},
 				{
 					"DataId": 1011233,
-					"Position": {
-            "X": 517.557,
-            "Y": 217.95152,
-            "Z": 770.0725
-          },
-          "TerritoryId": 397,
+					"Position": [517.557, 217.95152, 770.0725],
           "InteractionType": "Interact",
 					"CompletionQuestVariablesFlags": [null, null, null, null, null, 128],
 					"$": "1 0 0 0 0 32 -> 2 0 0 0 0 160"
 				},
 				{
 					"DataId": 1011235,
-					"Position": {
-						"X": 522.54517,
-						"Y": 228.3512,
-						"Z": 723.5675
-					},
-					"TerritoryId": 397,
+					"Position": [522.54517, 228.3512, 723.5675],
 					"InteractionType": "Interact",
 					"CompletionQuestVariablesFlags": [null, null, null, null, null, 64],
 					"$": "if done as second step, 1 0 0 0 0 32 -> 2 0 0 0 0 96"
@@ -62,29 +44,21 @@
 		},
 		{
 			"Sequence": 2,
+			"TerritoryId": 397,
 			"Steps": [
 				{
 					"DataId": 1014052,
-					"Position": {
-						"X": 458.12158,
-						"Y": 200.23763,
-						"Z": 658.0757
-					},
-					"TerritoryId": 397,
+					"Position": [458.12158, 200.23763, 658.0757],
 					"InteractionType": "Interact"
 				}
 			]
 		},
 		{
 			"Sequence": 3,
+			"TerritoryId": 397,
 			"Steps": [
 				{
-					"Position": {
-						"X": 50.883884,
-						"Y": 124.41451,
-						"Z": 174.64914
-					},
-					"TerritoryId": 397,
+					"Position": [50.883884, 124.41451, 174.64914],
 					"InteractionType": "Combat",
 					"EnemySpawnType": "AutoOnEnterArea",
 					"KillEnemyDataIds": [5043, 4619],
@@ -99,27 +73,18 @@
 				},
 				{
 					"DataId": 1014053,
-					"Position": {
-						"X": 48.966187,
-						"Y": 124.34676,
-						"Z": 175.73816
-					},
-					"TerritoryId": 397,
+					"Position": [48.966187, 124.34676, 175.73816],
 					"InteractionType": "Interact"
 				}
 			]
 		},
 		{
 			"Sequence": 255,
+			"TerritoryId": 397,
 			"Steps": [
 				{
 					"DataId": 1014054,
-					"Position": {
-						"X": 509.17822,
-						"Y": 212.5399,
-						"Z": 695.796
-					},
-					"TerritoryId": 397,
+					"Position": [509.17822, 212.5399, 695.796],
 					"InteractionType": "CompleteQuest",
 					"NextQuestId": 2034
 				}

@@ -1,32 +1,24 @@
 {
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "croizat",
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1000594,
-          "Position": {
-            "X": -167.92554,
-            "Y": 9.869228,
-            "Z": -76.70715
-          },
-          "TerritoryId": 153,
+          "Position": [-167.92554, 9.869228, -76.70715],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 153,
       "Steps": [
         {
-          "Position": {
-            "X": -167.31592,
-            "Y": 5.486305,
-            "Z": 15.132226
-          },
-          "TerritoryId": 153,
+          "Position": [-167.31592, 5.486305, 15.132226],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -40,12 +32,7 @@
           "CompletionQuestVariablesFlags": [null,4,null,null,null,null]
         },
         {
-          "Position": {
-            "X": -119.055,
-            "Y": 4.8576365,
-            "Z": -28.191822
-          },
-          "TerritoryId": 153,
+          "Position": [-119.055, 4.8576365, -28.191822],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -62,45 +49,33 @@
     },
     {
       "Sequence": 2,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2002258,
-          "Position": {
-            "X": 42.923584,
-            "Y": 4.2266846,
-            "Z": 48.05066
-          },
-          "TerritoryId": 153,
+          "Position": [42.923584, 4.2266846, 48.05066],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2002258,
-          "Position": {
-            "X": 42.923584,
-            "Y": 4.2266846,
-            "Z": 48.05066
-          },
-          "TerritoryId": 153,
+          "Position": [42.923584, 4.2266846, 48.05066],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 2002258,
-          "Position": {
-            "X": 42.923584,
-            "Y": 4.2266846,
-            "Z": 48.05066
-          },
-          "TerritoryId": 153,
+          "Position": [42.923584, 4.2266846, 48.05066],
           "InteractionType": "Emote",
           "Emote": "kneel"
         }
@@ -108,15 +83,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 153,
       "Steps": [
         {
           "DataId": 1000594,
-          "Position": {
-            "X": -167.92554,
-            "Y": 9.869228,
-            "Z": -76.70715
-          },
-          "TerritoryId": 153,
+          "Position": [-167.92554, 9.869228, -76.70715],
           "InteractionType": "CompleteQuest"
         }
       ]

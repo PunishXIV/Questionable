@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "Cacahuetes",
   "LastChecked": {"Username": "alydev", "Date": "2026-09-15"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 133,
       "Steps": [
         {
           "DataId": 1000294,
-          "Position": {
-            "X": -238.05603,
-            "Y": 8,
-            "Z": -142.93127
-          },
-          "TerritoryId": 133,
+          "Position": [-238.05603, 8, -142.93127],
           "DialogueChoices": [
             {
               "Type": "YesNo",

@@ -1,19 +1,15 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-07"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029194,
-          "Position": {
-            "X": -37.216797,
-            "Y": -18.920458,
-            "Z": 336.62915
-          },
-          "TerritoryId": 817,
+          "Position": [-37.216797, -18.920458, 336.62915],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -27,61 +23,43 @@
     },
     {
       "Sequence": 1,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029197,
-          "Position": {
-            "X": -87.87671,
-            "Y": -19.022131,
-            "Z": 298.20703
-          },
-          "TerritoryId": 817,
+          "Position": [-87.87671, -19.022131, 298.20703],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 817,
       "Steps": [
         {
-          "TerritoryId": 817,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Rak'tika - Slitherbough"
         },
         {
           "DataId": 1027740,
-          "Position": {
-            "X": -105.9129,
-            "Y": -18.247393,
-            "Z": 271.10706
-          },
-          "TerritoryId": 817,
+          "Position": [-105.9129, -18.247393, 271.10706],
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179718
         },
         {
           "DataId": 1029198,
-          "Position": {
-            "X": -118.18121,
-            "Y": -19.713022,
-            "Z": 385.51917
-          },
-          "TerritoryId": 817,
+          "Position": [-118.18121, -19.713022, 385.51917],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029198,
-          "Position": {
-            "X": -118.18121,
-            "Y": -19.713022,
-            "Z": 385.51917
-          },
-          "TerritoryId": 817,
+          "Position": [-118.18121, -19.713022, 385.51917],
           "InteractionType": "Emote",
           "Emote": "kneel"
         }
@@ -89,15 +67,11 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1030382,
-          "Position": {
-            "X": -113.11517,
-            "Y": -18.484627,
-            "Z": 324.20837
-          },
-          "TerritoryId": 817,
+          "Position": [-113.11517, -18.484627, 324.20837],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKMC104_03325_SYSTEM_000_110"
@@ -106,12 +80,7 @@
         },
         {
           "DataId": 1027463,
-          "Position": {
-            "X": -130.26636,
-            "Y": -18.486685,
-            "Z": 246.57043
-          },
-          "TerritoryId": 817,
+          "Position": [-130.26636, -18.486685, 246.57043],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKMC104_03325_SYSTEM_000_110"
@@ -120,12 +89,7 @@
         },
         {
           "DataId": 1027750,
-          "Position": {
-            "X": -24.734924,
-            "Y": -25.324257,
-            "Z": 305.5924
-          },
-          "TerritoryId": 817,
+          "Position": [-24.734924, -25.324257, 305.5924],
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKMC104_03325_SYSTEM_000_110"
@@ -136,15 +100,11 @@
     },
     {
       "Sequence": 255,
+      "TerritoryId": 817,
       "Steps": [
         {
           "DataId": 1029199,
-          "Position": {
-            "X": -116.71625,
-            "Y": -19.706732,
-            "Z": 386.49573
-          },
-          "TerritoryId": 817,
+          "Position": [-116.71625, -19.706732, 386.49573],
           "InteractionType": "CompleteQuest"
         }
       ]

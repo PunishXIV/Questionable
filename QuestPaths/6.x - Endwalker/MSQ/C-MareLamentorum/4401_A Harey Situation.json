@@ -1,84 +1,63 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-08-16"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038894,
-          "Position": {
-            "X": 2.670288,
-            "Y": -49.8925,
-            "Z": -366.0487
-          },
-          "TerritoryId": 959,
+          "Position": [2.670288, -49.8925, -366.0487],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038897,
-          "Position": {
-            "X": 30.838379,
-            "Y": -132.94641,
-            "Z": -435.47723
-          },
-          "TerritoryId": 959,
+          "Position": [30.838379, -132.94641, -435.47723],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 959,
       "Steps": [
         {
-          "TerritoryId": 959,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Mare Lamentorum - Bestways Burrow"
         },
         {
           "DataId": 1038901,
-          "Position": {
-            "X": 120.531006,
-            "Y": -132.86647,
-            "Z": -555.0164
-          },
-          "TerritoryId": 959,
+          "Position": [120.531006, -132.86647, -555.0164],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038902,
-          "Position": {
-            "X": -124.864624,
-            "Y": -132.87448,
-            "Z": -471.91577
-          },
-          "TerritoryId": 959,
+          "Position": [-124.864624, -132.87448, -471.91577],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 959,
       "Steps": [
         {
           "DataId": 1038903,
-          "Position": {
-            "X": -17.95996,
-            "Y": -47.192066,
-            "Z": -494.31604
-          },
-          "TerritoryId": 959,
+          "Position": [-17.95996, -47.192066, -494.31604],
           "InteractionType": "CompleteQuest"
         }
       ]

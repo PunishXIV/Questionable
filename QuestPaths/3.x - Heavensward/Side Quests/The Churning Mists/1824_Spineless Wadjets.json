@@ -1,63 +1,47 @@
 ﻿{
-  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "$schema": "https://qstxiv.github.io/schema/quest-v2.json",
   "Author": "liza",
   "LastChecked": {"Username": "alydev", "Date": "2026-10-01"},
   "QuestSequence": [
     {
       "Sequence": 0,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1014429,
-          "Position": {
-            "X": -77.34796,
-            "Y": -8.655561,
-            "Z": 165.23987
-          },
-          "TerritoryId": 400,
+          "Position": [-77.34796, -8.655561, 165.23987],
           "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1014431,
-          "Position": {
-            "X": -77.37854,
-            "Y": -8.6555605,
-            "Z": 166.36902
-          },
-          "TerritoryId": 400,
+          "Position": [-77.37854, -8.6555605, 166.36902],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1014430,
-          "Position": {
-            "X": 357.90027,
-            "Y": -29.897694,
-            "Z": -105.21106
-          },
-          "TerritoryId": 400,
+          "Position": [357.90027, -29.897694, -105.21106],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": 318.27338,
-            "Y": -29.677633,
-            "Z": -148.89816
-          },
-          "TerritoryId": 400,
+          "Position": [318.27338, -29.677633, -148.89816],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -71,29 +55,21 @@
     },
     {
       "Sequence": 4,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1014430,
-          "Position": {
-            "X": 357.90027,
-            "Y": -29.897694,
-            "Z": -105.21106
-          },
-          "TerritoryId": 400,
+          "Position": [357.90027, -29.897694, -105.21106],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": 293.52023,
-            "Y": -30.697027,
-            "Z": -167.88272
-          },
-          "TerritoryId": 400,
+          "Position": [293.52023, -30.697027, -167.88272],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -107,29 +83,21 @@
     },
     {
       "Sequence": 6,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1014430,
-          "Position": {
-            "X": 357.90027,
-            "Y": -29.897694,
-            "Z": -105.21106
-          },
-          "TerritoryId": 400,
+          "Position": [357.90027, -29.897694, -105.21106],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
+      "TerritoryId": 400,
       "Steps": [
         {
-          "Position": {
-            "X": 226.58783,
-            "Y": -36.917496,
-            "Z": -100.45467
-          },
-          "TerritoryId": 400,
+          "Position": [226.58783, -36.917496, -100.45467],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -143,30 +111,22 @@
     },
     {
       "Sequence": 8,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1014430,
-          "Position": {
-            "X": 357.90027,
-            "Y": -29.897694,
-            "Z": -105.21106
-          },
-          "TerritoryId": 400,
+          "Position": [357.90027, -29.897694, -105.21106],
           "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
+      "TerritoryId": 400,
       "Steps": [
         {
           "DataId": 1014431,
-          "Position": {
-            "X": -77.37854,
-            "Y": -8.6555605,
-            "Z": 166.36902
-          },
-          "TerritoryId": 400,
+          "Position": [-77.37854, -8.6555605, 166.36902],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1831
         }
