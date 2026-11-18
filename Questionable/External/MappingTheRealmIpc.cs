@@ -14,6 +14,7 @@ internal sealed class MappingTheRealmIpc : Ipc, IDisposable
     [EzIPC("PathTo")] private readonly Func<uint, Vector3, Task> _pathTo = null!;
     [EzIPC("PathToInteractable")] private readonly Func<uint, Vector3, uint, Task> _pathToInteractable = null!;
     [EzIPC("PathToInteractableById")] private readonly Func<uint, uint, Task> _pathToInteractableById = null!;
+    [EzIPC("PathToInteractableWithRange")] private readonly Func<uint, Vector3, uint, float, Task> _pathToInteractableWithRange = null!;
     [EzIPC("CanReach")] private readonly Func<uint, Vector3, CancellationToken, Task<bool>> _canReach = null!;
     [EzIPC("Stop")] private readonly Action _stop = null!;
 
@@ -27,16 +28,17 @@ internal sealed class MappingTheRealmIpc : Ipc, IDisposable
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
     public override bool IsReady() => IpcInvoke.SafeFunc<int?>(() => _apiVersion(), null) != null;
 
-    // Any plugin's route, not only ours. 1.0.0.0 has no IsPathing yet, which reads as null.
+    // Any plugin's route, not only ours.
     public bool? GetPathing() => IpcInvoke.SafeFunc<bool?>(() => _isPathing(), null);
 
-    // The task ends when the player arrives, or faults with MappingTheRealm's reason.
-    public Task Travel(uint territoryId, Vector3? position, uint? dataId)
+    // A range above 0 is yalms to the loaded object; 0 is the game's interaction range.
+    public Task Travel(uint territoryId, Vector3? position, uint? dataId, float range = 0)
     {
         try
         {
             return (position, dataId) switch
             {
+                ({ } at, { } id) when range > 0 => _pathToInteractableWithRange(territoryId, at, id, range),
                 ({ } at, { } id) => _pathToInteractable(territoryId, at, id),
                 ({ } at, _) => _pathTo(territoryId, at),
                 (_, { } id) => _pathToInteractableById(territoryId, id),

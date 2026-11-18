@@ -18,12 +18,15 @@ internal static class Travel
         _ => step.DataId,
     };
 
-    // MappingTheRealm 1.0.0.1's PathToInteractable didn't route across zones to aetherytes and shards; by id does.
+    // MappingTheRealm's PathToInteractable doesn't route across zones to aetherytes and shards.
     internal static bool GoesById(QuestStep step) =>
         step.InteractionType is EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte
             or EInteractionType.AttuneAethernetShard;
 
-    internal sealed record Task(uint TerritoryId, Vector3? Position, uint? DataId, bool ById = false) : ITask
+    // Skills need attack range; MappingTheRealm otherwise stops at interaction range (rock 2001481).
+    internal static float StopRange(QuestStep step) => step.InteractionType == EInteractionType.Action ? 3f : 0;
+
+    internal sealed record Task(uint TerritoryId, Vector3? Position, uint? DataId, bool ById = false, float Range = 0) : ITask
     {
         public override string ToString() => $"Travel({TerritoryData.GetNameAndId(TerritoryId)})";
     }
@@ -53,12 +56,11 @@ internal static class Travel
         }
 
         private void Go() =>
-            _route = mappingTheRealm.Travel(Task.TerritoryId, Task.ById && Task.DataId != null ? null : Task.Position, Task.DataId);
+            _route = mappingTheRealm.Travel(Task.TerritoryId, Task.ById && Task.DataId != null ? null : Task.Position, Task.DataId, Task.Range);
 
         public override ETaskResult Update()
         {
-            // 1.0.0.2 plans a cross-zone route to the zone gate in the old zone (129 -> 128 became "T129, gate 2210434")
-            // and fails once the gate moves the player, so a leg ends or starts over on arrival.
+            // MappingTheRealm fails a cross-zone route once a zone gate moves the player (129 -> 128, gate 2210434).
             if (!_arrived && clientState.TerritoryType == Task.TerritoryId)
             {
                 _arrived = true;

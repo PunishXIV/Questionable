@@ -557,13 +557,12 @@ internal sealed class QuestFunctions
             return kept.Quest;
         _classQuestFirst = null;
 
-        List<ElementId> available = NextPriorityQuests.Where(x => x.IsAvailable).Select(x => x.QuestId).ToList();
-        if (available.Count == 0)
-            return null;
-
         List<ElementId> classQuests = GetPriorityQuests(onlyClassAndRoleQuests: true);
         QuestStep? msqStart = catalog.TryGetQuest(msq, out Quest? msqData) ? msqData.FindSequence(0)?.FindStep(0) : null;
-        ElementId? pick = available.FirstOrDefault(x => classQuests.Contains(x) && IsFreeClassQuestDetour(x, msqStart));
+        ElementId? pick = classQuests.FirstOrDefault(IsQuestAccepted) ?? NextPriorityQuests
+            .Where(x => x.IsAvailable && classQuests.Contains(x.QuestId) && IsFreeClassQuestDetour(x.QuestId, msqStart))
+            .Select(x => x.QuestId)
+            .FirstOrDefault();
         if (pick != null)
         {
             _classQuestFirst = (msq, pick);

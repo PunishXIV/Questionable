@@ -1,4 +1,5 @@
 using Dalamud.Plugin.Services;
+using ECommons.ExcelServices;
 using NSubstitute;
 using Questionable.Data;
 using Questionable.Domain;
@@ -252,6 +253,18 @@ public sealed class QuestFunctionsTests
             Assert.Equal("Low level", reason);
         ushort? lockedLevel = available ? null : (ushort)89;
         Assert.Equal(lockedLevel, _functions.GetLevelLockedMainScenarioQuest()?.Quest.Level);
+    }
+
+    [Fact]
+    public void AcceptedClassQuest_BeforeNewMsq()
+    {
+        GuideShows(462);
+        _state.CurrentClassJobId = (byte)Job.MRD;
+        _catalog.ClassJobQuests.Add((QuestInfo)_catalog.Add(TestQuestInfo.Create(313)).Info);
+        Assert.Equal(new QuestId(462), _functions.GetCurrentQuestInternal(allowNewMsq: true).CurrentQuest);
+
+        _state.Accepted.Add(313);
+        Assert.Equal(new QuestId(313), _functions.GetCurrentQuestInternal(allowNewMsq: true).CurrentQuest);
     }
 
     [Fact]
