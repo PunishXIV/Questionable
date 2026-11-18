@@ -44,26 +44,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": 21.067955,
-            "Y": -197.78902,
-            "Z": -155.23956
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "$": "Sui-no-Sato, NE inside"
-        },
-        {
-          "Position": {
-            "X": -238.47687,
-            "Y": -192.81738,
-            "Z": 329.51413
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "$": "To shorten pathfinding time, not strictly necessary"
-        },
-        {
           "DataId": 1023293,
           "Position": {
             "X": -957.15265,
@@ -71,8 +51,7 @@
             "Z": 756.83215
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -100,34 +79,13 @@
             "Z": 756.83215
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "StopDistance": 8
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 322.1539,
-            "Y": -121.22571,
-            "Z": -314.2446
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu"
-        },
-        {
-          "Position": {
-            "X": 22.288645,
-            "Y": -196.2301,
-            "Z": -155.5739
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "$": "Sui-no-Sato, NE outside"
-        },
         {
           "DataId": 1023280,
           "Position": {

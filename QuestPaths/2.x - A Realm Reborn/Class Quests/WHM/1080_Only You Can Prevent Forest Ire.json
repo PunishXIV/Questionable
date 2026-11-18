@@ -13,9 +13,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -48,7 +46,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -110,11 +107,6 @@
           "KillEnemyDataIds": [
             1937
           ],
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] White Wolf Gate (Central Shroud)"
-          ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null]
@@ -140,9 +132,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -175,7 +165,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"

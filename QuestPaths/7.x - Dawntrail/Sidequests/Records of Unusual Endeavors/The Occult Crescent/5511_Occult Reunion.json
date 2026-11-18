@@ -15,10 +15,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: issuer 1053805 (expedition messenger)"
         }
       ]
@@ -47,10 +43,6 @@
           },
           "TerritoryId": 1278,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Phantom Village"
-          ],
           "$": "auto: todo location -> 1059648 (Ketenramm)"
         }
       ]
@@ -67,11 +59,6 @@
           },
           "TerritoryId": 1278,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Phantom Village"
-          ],
           "$": "auto: todo turn-in -> 1053611 (Jeffroy)"
         }
       ]

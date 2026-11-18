@@ -14,8 +14,7 @@
             "Z": 11.673096
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,28 +29,13 @@
             "Z": 214.46558
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 264.54797,
-            "Y": -14.2467,
-            "Z": 56.094566
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2004442,
           "Position": {
@@ -75,8 +59,7 @@
             "Z": 214.46558
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,8 +74,7 @@
             "Z": 27.572998
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,8 +90,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
           "NextQuestId": 1487
         }
       ]

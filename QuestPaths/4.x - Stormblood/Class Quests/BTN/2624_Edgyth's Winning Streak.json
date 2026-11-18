@@ -14,12 +14,7 @@
             "Z": -90.77594
           },
           "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] West Idyllshire"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,11 +29,7 @@
             "Z": -171.03839
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -53,8 +44,7 @@
             "Z": -483.32953
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,8 +59,7 @@
             "Z": 695.52136
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Ghiri"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -153,12 +142,7 @@
             "Z": -90.77594
           },
           "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] West Idyllshire"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

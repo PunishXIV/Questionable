@@ -14,9 +14,7 @@
             "Z": -404.1352
           },
           "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": -635.2484
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2006642,
@@ -44,8 +41,7 @@
           "TerritoryId": 401,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [5236],
-          "Fly": true
+          "KillEnemyDataIds": [5236]
         },
         {
           "DataId": 2006640,
@@ -55,8 +51,7 @@
             "Z": -637.90344
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2006641,
@@ -68,8 +63,7 @@
           "TerritoryId": 401,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [5236],
-          "Fly": true
+          "KillEnemyDataIds": [5236]
         }
       ]
     },
@@ -84,9 +78,7 @@
             "Z": -404.1352
           },
           "TerritoryId": 401,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

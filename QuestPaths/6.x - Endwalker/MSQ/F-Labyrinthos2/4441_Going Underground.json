@@ -13,7 +13,6 @@
             "Y": 40.2,
             "Z": -234.21082
           },
-          "StopDistance": 5,
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
             "Z": -453.42188
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Archeion"
+          "InteractionType": "Interact"
         }
       ]
     },

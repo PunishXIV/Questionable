@@ -15,9 +15,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "AcceptQuest",
-          "StopDistance": 4,
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "$": "auto: issuer 1030397 (Ghun Gun)"
         }
       ]
@@ -34,8 +31,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
           "$": "auto: todo location -> 1030401 (Jamial)"
         }
       ]
@@ -52,8 +47,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
           "$": "auto: lua EOBJECT0 -> 2010013 (destination)"
         }
       ]
@@ -70,7 +63,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
           "$": "auto: todo location -> 1030402 (Ghun Gun); hands over ITEM0=2002585"
         }
       ]
@@ -87,8 +79,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
           "$": "auto: todo location -> 1030403 (Jamial)"
         }
       ]
@@ -105,7 +95,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
           "$": "auto: lua EOBJECT1 -> 2010014 (destination)"
         }
       ]
@@ -122,7 +111,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
           "$": "auto: todo turn-in -> 1030404 (Ghun Gun)"
         }
       ]

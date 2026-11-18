@@ -46,8 +46,7 @@
             "Z": 246.72314
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -123,7 +122,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "Fly": true,
           "TargetTerritoryId": 960,
           "DialogueChoices": [
             {

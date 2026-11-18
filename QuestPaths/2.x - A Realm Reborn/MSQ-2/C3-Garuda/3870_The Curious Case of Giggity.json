@@ -14,8 +14,7 @@
             "Z": 276.5697
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,7 @@
             "Z": -149.98096
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -72,13 +67,7 @@
           "ItemId": 2003019,
           "KillEnemyDataIds": [
             1894
-          ],
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] White Wolf Gate (Central Shroud)"
-          ],
-          "StopDistance": 4,
-          "IgnoreDistanceToObject": true
+          ]
         }
       ]
     },
@@ -102,11 +91,7 @@
             "Z": -149.98096
           },
           "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

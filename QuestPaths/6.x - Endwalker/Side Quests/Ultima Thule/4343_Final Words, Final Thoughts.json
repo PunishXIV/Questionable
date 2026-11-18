@@ -13,22 +13,7 @@
             "Z": -664.7898
           },
           "TerritoryId": 960,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 161.39453,
-                  "Y": 269.02884,
-                  "Z": -664.7898
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 100
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,22 +29,7 @@
             "Z": -664.7898
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 161.39453,
-                  "Y": 269.02884,
-                  "Z": -664.7898
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 100
-              }
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -168,22 +138,7 @@
               "Type": "List",
               "Answer": "TEXT_AKTKZJ007_04343_A1_000_001"
             }
-          ],
-          "Fly": true,
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 161.39453,
-                  "Y": 269.02884,
-                  "Z": -664.7898
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 100
-              }
-            }
-          }
+          ]
         }
       ]
     }

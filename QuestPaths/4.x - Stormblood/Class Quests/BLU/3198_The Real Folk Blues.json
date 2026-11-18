@@ -13,20 +13,8 @@
             "Y": 14.005002,
             "Z": 88.70068
           },
-          "StopDistance": 5,
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,8 +29,7 @@
             "Z": -29.800903
           },
           "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -57,11 +44,7 @@
             "Z": 90.440186
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

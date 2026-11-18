@@ -14,11 +14,7 @@
             "Z": 24.3203
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,9 +30,7 @@
             "Z": 665.892
           },
           "TerritoryId": 397,
-          "Fly": true,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -58,7 +52,6 @@
             "Z": 718.69556
           },
           "TerritoryId": 397,
-          "Fly": true,
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -73,18 +66,6 @@
               }
             }
           }
-        },
-        {
-          "Position": {
-            "X": 270.45355,
-            "Y": 175.35352,
-            "Z": -176.7691
-          },
-          "TerritoryId": 397,
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true,
-          "Land": true,
-          "InteractionType": "WalkTo"
         },
         {
           "Comment": "Catch 3x Icepicks",
@@ -109,9 +90,7 @@
             "Y": 200.238,
             "Z": 665.892
           },
-          "Fly": true,
           "TerritoryId": 397,
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2087
         }

@@ -14,9 +14,7 @@
             "Z": 321.06494
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,24 +29,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] The Gate of First Sight (Thavnair)"
-          ],
-          "Fly": true,
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -78.12948,
-                  "Y": 89.78411,
-                  "Z": -666.6682
-                },
-                "TerritoryId": 957,
-                "MaximumDistance": 100
-              }
-            },
             "StepIf": {
               "CompletionQuestVariablesFlags": [
                 null,
@@ -68,7 +49,6 @@
             "Y": 89.90596,
             "Z": -666.0411
           },
-          "StopDistance": 7,
           "TerritoryId": 957,
           "InteractionType": "Emote",
           "Emote": "doubt",
@@ -91,7 +71,6 @@
           "TerritoryId": 957,
           "InteractionType": "Emote",
           "Emote": "doubt",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -111,7 +90,6 @@
           "TerritoryId": 957,
           "InteractionType": "Emote",
           "Emote": "doubt",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -134,9 +112,7 @@
             "Z": 321.06494
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -29,8 +29,7 @@
             "Z": -496.2692
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,7 +44,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -60,8 +58,7 @@
             "Z": -515.55664
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,9 +73,7 @@
             "Z": -584.2832
           },
           "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

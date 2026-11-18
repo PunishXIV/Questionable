@@ -14,21 +14,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -285.90833,
-                  "Y": 40.324036,
-                  "Z": 444.41882
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "List",
@@ -54,8 +39,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             11155
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 2010366,
@@ -69,8 +53,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             11155
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 2010367,
@@ -96,9 +79,7 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "$": "Stop distance to avoid sacks on ground",
-          "StopDistance": 1.0,
-          "Fly": true
+          "$": "Stop distance to avoid sacks on ground"
         }
       ]
     },
@@ -113,8 +94,7 @@
             "Z": -28.366577
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -129,9 +109,7 @@
             "Z": 444.41882
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -147,21 +125,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -285.90833,
-                  "Y": 40.324036,
-                  "Z": 444.41882
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          },
           "NextQuestId": 3406
         }
       ]

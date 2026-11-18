@@ -44,8 +44,7 @@
             "Z": -145.22015
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,8 +59,7 @@
             "Z": -170.30597
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,8 +74,7 @@
             "Z": -163.74463
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -92,8 +89,7 @@
             "Z": -35.90454
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,8 +104,7 @@
             "Z": -53.97119
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -139,8 +134,7 @@
             "Z": 272.9381
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Stilltide"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -154,7 +148,6 @@
             "Y": 299.67776,
             "Z": -184.22223
           },
-          "StopDistance": 5,
           "TerritoryId": 814,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -178,8 +171,7 @@
             "Z": -224.93329
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -194,8 +186,7 @@
             "Z": -175.55511
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -210,7 +201,6 @@
           },
           "TerritoryId": 814,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "InTerritory": [
@@ -236,15 +226,6 @@
               ]
             }
           }
-        },
-        {
-          "Position": {
-            "X": -352.89597,
-            "Y": 106.840775,
-            "Z": 337.33798
-          },
-          "TerritoryId": 928,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2011274,
@@ -292,42 +273,6 @@
           }
         },
         {
-          "Position": {
-            "X": -234.40671,
-            "Y": 30,
-            "Z": 168.78214
-          },
-          "TerritoryId": 928,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -237.90593,
-            "Y": 36.4109,
-            "Z": 107.25123
-          },
-          "TerritoryId": 928,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -264.81836,
-            "Y": 20.597822,
-            "Z": 72.87652
-          },
-          "TerritoryId": 928,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -233.77907,
-            "Y": -3.860001,
-            "Z": 31.767477
-          },
-          "TerritoryId": 928,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2011234,
           "Position": {
             "X": -230.12134,
@@ -368,22 +313,12 @@
           }
         },
         {
-          "Position": {
-            "X": -229.93883,
-            "Y": -150.49908,
-            "Z": -219.08035
-          },
-          "TerritoryId": 928,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2011111,
           "Position": {
             "X": -227.34424,
             "Y": -149.06543,
             "Z": -320.75995
           },
-          "StopDistance": 1,
           "TerritoryId": 928,
           "InteractionType": "Interact",
           "SkipConditions": {
@@ -391,15 +326,6 @@
               "NotTargetable": true
             }
           }
-        },
-        {
-          "Position": {
-            "X": -229.96237,
-            "Y": -168.28922,
-            "Z": -329.79776
-          },
-          "TerritoryId": 928,
-          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -461,33 +387,6 @@
           }
         },
         {
-          "Position": {
-            "X": -367.89325,
-            "Y": -241.31789,
-            "Z": -313.52274
-          },
-          "TerritoryId": 928,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -374.37668,
-            "Y": -244.75201,
-            "Z": -313.43954
-          },
-          "TerritoryId": 928,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -374.10797,
-            "Y": -244.75217,
-            "Z": -318.6855
-          },
-          "TerritoryId": 928,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2011113,
           "Position": {
             "X": -372.85425,
@@ -518,31 +417,12 @@
           }
         },
         {
-          "Position": {
-            "X": -358.27484,
-            "Y": -244.75198,
-            "Z": -312.8948
-          },
-          "TerritoryId": 928,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -364.58334,
-            "Y": -241.318,
-            "Z": -313.35168
-          },
-          "TerritoryId": 928,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2011275,
           "Position": {
             "X": -366.50647,
             "Y": -241.32147,
             "Z": -311.57397
           },
-          "StopDistance": 1,
           "TerritoryId": 928,
           "InteractionType": "Interact"
         }
@@ -557,7 +437,6 @@
             "Y": -241.32147,
             "Z": -311.57397
           },
-          "StopDistance": 0.5,
           "TerritoryId": 928,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -576,7 +455,6 @@
             "Y": -249.80548,
             "Z": -318.89832
           },
-          "StopDistance": 1,
           "TerritoryId": 928,
           "InteractionType": "Interact",
           "SkipConditions": {
@@ -610,15 +488,6 @@
               "NotTargetable": true
             }
           }
-        },
-        {
-          "Position": {
-            "X": 199.90454,
-            "Y": -500.00003,
-            "Z": -476.80316
-          },
-          "TerritoryId": 928,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2011117,
@@ -685,7 +554,6 @@
           },
           "TerritoryId": 814,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 4034
         }
       ]

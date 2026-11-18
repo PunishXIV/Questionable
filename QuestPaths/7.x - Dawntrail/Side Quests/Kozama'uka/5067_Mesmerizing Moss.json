@@ -33,8 +33,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             17659
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -48,7 +47,6 @@
             "Y": 0.4,
             "Z": -41.519836
           },
-          "StopDistance": 7,
           "TerritoryId": 1188,
           "InteractionType": "Interact"
         }
@@ -65,9 +63,7 @@
             "Z": -431.47937
           },
           "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

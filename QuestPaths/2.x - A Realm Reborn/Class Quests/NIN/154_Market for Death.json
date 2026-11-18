@@ -16,12 +16,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "RoguesGuild"
@@ -35,7 +30,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest"
         }
@@ -44,17 +38,6 @@
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 408.68936,
-            "Y": 29.246174,
-            "Z": -8.903874
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
-        },
         {
           "Position": {
             "X": 410.07083,
@@ -71,7 +54,6 @@
             "Y": -2.0159357,
             "Z": 48.819775
           },
-          "StopDistance": 1,
           "TerritoryId": 139,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -108,7 +90,6 @@
             "Y": -2.369183,
             "Z": 55.954834
           },
-          "StopDistance": 7,
           "TerritoryId": 139,
           "InteractionType": "Interact"
         }
@@ -125,9 +106,7 @@
             "Z": -327.93164
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -143,11 +122,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "TargetTerritoryId": 129
         },
         {
           "DataId": 1009943,
@@ -156,7 +131,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 155

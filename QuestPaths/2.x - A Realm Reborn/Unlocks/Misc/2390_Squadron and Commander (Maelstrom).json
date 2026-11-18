@@ -20,19 +20,7 @@
               "Prompt": "TEXT_COMLIM101_02390_Q1_000_000",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128,
-                129
-              ]
-            }
-          }
+          ]
         }
       ]
     }

@@ -17,8 +17,7 @@
             "Z": 282.856
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,8 +31,7 @@
             "Z": 86.88705
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "DataId": 2010610,
@@ -43,8 +41,7 @@
             "Z": 85.74036
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "Position": {
@@ -53,8 +50,7 @@
             "Z": 65.81899
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "DataId": 2010611,
@@ -64,8 +60,7 @@
             "Z": 65.659546
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "Position": {
@@ -74,8 +69,7 @@
             "Z": 31.589968
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "DataId": 2010612,
@@ -89,8 +83,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             11118
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -105,9 +98,7 @@
             "Z": 282.856
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,16 +14,7 @@
             "Z": 113.725464
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [131]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,13 +27,10 @@
             "Y": -61.73199,
             "Z": 370.57892
           },
-          "StopDistance": 0.5,
           "TerritoryId": 154,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [4360],
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "KillEnemyDataIds": [4360]
         }
       ]
     },
@@ -73,10 +61,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",

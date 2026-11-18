@@ -35,8 +35,7 @@
               "Prompt": "TEXT_BANOMI002_04602_Q5_000_000",
               "Yes": true
             }
-          ],
-          "Mount": true
+          ]
         },
         {
           "DataId": 1043586,
@@ -46,8 +45,7 @@
             "Z": 246.72314
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,9 +61,7 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "TargetTerritoryId": 960,
-          "Fly": true
+          "TargetTerritoryId": 960
         },
         {
           "DataId": 1043527,
@@ -101,8 +97,7 @@
             "Z": 341.5122
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1043530,
@@ -112,8 +107,7 @@
             "Z": 319.53918
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -128,8 +122,7 @@
             "Z": 324.84924
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -144,9 +137,7 @@
             "Z": -607.72107
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -161,8 +152,7 @@
             "Z": -523.7049
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -204,9 +194,7 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "TargetTerritoryId": 960,
-          "Mount": true
+          "TargetTerritoryId": 960
         },
         {
           "DataId": 1043865,
@@ -217,8 +205,7 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "Fly": true
+          "TargetTerritoryId": 960
         },
         {
           "DataId": 1043585,
@@ -228,8 +215,7 @@
             "Z": 246.87573
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -251,8 +237,7 @@
               "Prompt": "TEXT_BANOMI002_04602_Q2_000_000",
               "Yes": true
             }
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 1043951,

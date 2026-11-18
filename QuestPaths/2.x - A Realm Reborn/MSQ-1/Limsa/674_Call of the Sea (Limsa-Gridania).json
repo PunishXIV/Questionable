@@ -41,11 +41,7 @@
               "Z": -13.443354
             },
             "StopDistance": 5
-          },
-          "AethernetShortcut": [
-            "[Ul'dah] Alchemists' Guild",
-            "[Ul'dah] The Chamber of Rule"
-          ]
+          }
         },
         {
           "TerritoryId": 131,
@@ -110,11 +106,7 @@
             "Z": -6.1189575
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

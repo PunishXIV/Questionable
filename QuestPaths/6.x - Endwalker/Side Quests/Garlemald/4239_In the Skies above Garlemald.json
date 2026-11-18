@@ -29,8 +29,7 @@
             "Z": 90.89795
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -68,8 +67,7 @@
             "Z": 385.00024
           },
           "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

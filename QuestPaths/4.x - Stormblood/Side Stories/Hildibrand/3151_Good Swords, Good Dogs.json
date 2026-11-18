@@ -13,7 +13,6 @@
             "Y": -7.469796,
             "Z": -262.7146
           },
-          "StopDistance": 5,
           "TerritoryId": 628,
           "InteractionType": "AcceptQuest"
         }
@@ -30,13 +29,7 @@
             "Z": 861.90576
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ],
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,8 +44,7 @@
             "Z": 722.0111
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,9 +59,7 @@
             "Z": 780.69727
           },
           "TerritoryId": 613,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -100,11 +90,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Rakuza District"
-          ],
           "NextQuestId": 3167
         }
       ]

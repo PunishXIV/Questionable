@@ -13,18 +13,7 @@
             "Z": -88.39557
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -86,10 +75,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "NextQuestId": 5185
         }
       ]

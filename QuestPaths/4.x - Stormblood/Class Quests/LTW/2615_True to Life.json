@@ -17,24 +17,7 @@
 				"Z": -124.4068
 			},
 			"TerritoryId": 133,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Gridania",
-			"AethernetShortcut":
-			[
-			"[Gridania] Aetheryte Plaza",
-			"[Gridania] Leatherworkers' Guild & Shaded Bower"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					132,
-					133
-					]
-				}
-			}
+			"InteractionType": "AcceptQuest"
 		}
 		]
 	},
@@ -52,7 +35,6 @@
 			},
 			"TerritoryId": 612,
 			"InteractionType": "Interact",
-			"AetheryteShortcut": "Fringes - Castrum Oriens",
 			"DialogueChoices":
 			[
 			{
@@ -68,18 +50,6 @@
 		"Sequence": 2,
 		"Steps":
 		[
-		{
-			"Position":
-			{
-				"X": 493.13318,
-				"Y": 126.47594,
-				"Z": -213.07019
-			},
-			"TerritoryId": 612,
-			"InteractionType": "WalkTo",
-			"Fly": true,
-			"AetheryteShortcut": "Fringes - Peering Stones"
-		},
 		{
 			"DataId": 1020948,
 			"Position":
@@ -97,17 +67,6 @@
 		"Sequence": 3,
 		"Steps":
 		[
-		{
-			"Position":
-			{
-				"X": 444.92487,
-				"Y": 112.083015,
-				"Z": -218.98393
-			},
-			"TerritoryId": 612,
-			"InteractionType": "WalkTo",
-			"Fly": true
-		},
 		{
 			"DataId": 1020949,
 			"Position":
@@ -142,13 +101,7 @@
 				"Z": -124.4068
 			},
 			"TerritoryId": 133,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Gridania",
-			"AethernetShortcut":
-			[
-			"[Gridania] Aetheryte Plaza",
-			"[Gridania] Leatherworkers' Guild & Shaded Bower"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},

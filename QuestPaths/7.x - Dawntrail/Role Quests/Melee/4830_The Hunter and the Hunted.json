@@ -14,8 +14,7 @@
             "Z": 198.68762
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,11 +30,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Shiokaze Hostelry"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -103,11 +97,7 @@
             "Z": -129.62543
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] Rakuza District"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -122,11 +112,7 @@
             "Z": 43.411865
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Rakuza District",
-            "[Kugane] Kogane Dori Markets"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -142,10 +128,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Kugane] Kogane Dori Markets",
-            "[Kugane] Sekiseigumi Barracks"
-          ],
           "NextQuestId": 4831
         }
       ]

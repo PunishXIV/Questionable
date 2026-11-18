@@ -13,7 +13,6 @@
             "Y": -168,
             "Z": -657.7402
           },
-          "StopDistance": 7,
           "TerritoryId": 959,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
             "Z": -512.2606
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,7 +83,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "WalkTo",
-          "Mount": false,
           "DelaySecondsAtStart": 2
         },
         {
@@ -97,19 +94,7 @@
           },
           "TerritoryId": 959,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 3,
-          "StopDistance": 100,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 10.73667,
-            "Y": -5.0926046,
-            "Z": -171.87782
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "NpcWaitDistance": 3
         },
         {
           "DataId": 1038933,
@@ -120,19 +105,7 @@
           },
           "TerritoryId": 959,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 3,
-          "StopDistance": 100,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": -25.210857,
-            "Y": 26.867788,
-            "Z": -109.43445
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "NpcWaitDistance": 3
         },
         {
           "DataId": 1038933,
@@ -143,9 +116,7 @@
           },
           "TerritoryId": 959,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 3,
-          "StopDistance": 100,
-          "Mount": false
+          "NpcWaitDistance": 3
         },
         {
           "Position": {
@@ -155,7 +126,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "WalkTo",
-          "Mount": false,
           "DelaySecondsAtStart": 1
         }
       ]
@@ -170,7 +140,6 @@
             "Y": 75.72459,
             "Z": -23.51416
           },
-          "StopDistance": 5,
           "TerritoryId": 959,
           "InteractionType": "CompleteQuest"
         }

@@ -14,12 +14,7 @@
             "Z": -146.92914
           },
           "TerritoryId": 399,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,20 +29,7 @@
             "Z": 62.302612
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                399
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -75,13 +57,7 @@
             "Z": 62.302612
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "StopDistance": 6,
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,9 +72,7 @@
             "Z": 31.72351
           },
           "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "Mount": true,
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

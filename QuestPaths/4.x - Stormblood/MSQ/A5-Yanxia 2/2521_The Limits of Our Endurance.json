@@ -14,8 +14,7 @@
             "Z": -382.8031
           },
           "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yanxia - House of the Fierce"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -414.99963
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,9 +44,7 @@
             "Z": -171.31305
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yanxia - Namai"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,8 +59,7 @@
             "Z": 206.43921
           },
           "TerritoryId": 614,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

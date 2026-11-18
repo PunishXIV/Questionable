@@ -14,8 +14,7 @@
             "Z": -18.509216
           },
           "TerritoryId": 145,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 103.80713
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -53,8 +51,7 @@
             372,
             364,
             2844
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -69,8 +66,7 @@
             "Z": 162.46277
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

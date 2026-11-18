@@ -13,7 +13,6 @@
             "Y": 30.118057,
             "Z": 282.73438
           },
-          "StopDistance": 7,
           "TerritoryId": 814,
           "InteractionType": "AcceptQuest"
         }
@@ -43,7 +42,6 @@
             "Y": 31.93622,
             "Z": 203.53125
           },
-          "StopDistance": 1,
           "TerritoryId": 814,
           "InteractionType": "WalkTo"
         }
@@ -58,7 +56,6 @@
             "Y": 31.93622,
             "Z": 203.53125
           },
-          "StopDistance": 1,
           "TerritoryId": 814,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -78,7 +75,6 @@
             "Y": 31.93621,
             "Z": 202.01416
           },
-          "StopDistance": 7,
           "TerritoryId": 814,
           "InteractionType": "Interact"
         }
@@ -109,7 +105,6 @@
             "Y": 41.141296,
             "Z": 676.9663
           },
-          "StopDistance": 7,
           "TerritoryId": 814,
           "InteractionType": "Interact"
         }

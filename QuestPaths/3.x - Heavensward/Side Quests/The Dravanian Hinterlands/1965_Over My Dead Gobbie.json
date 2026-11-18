@@ -14,10 +14,7 @@
             "Z": 191.08862
           },
           "TerritoryId": 399,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 0.25,
-          "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza","[Idyllshire] Prologue Gate (Western Hinterlands)"]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,9 +29,7 @@
             "Z": 327.19922
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 0.25
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,9 +44,7 @@
             "Z": 349.35522
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 0.25
+          "InteractionType": "Interact"
         },
         {
           "DataId": 5049,
@@ -62,8 +55,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Combat",
-          "Fly": true,
-          "StopDistance": 0.25,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             5046,
@@ -83,9 +74,7 @@
             "Z": 349.35522
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 0.25
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -100,9 +89,7 @@
             "Z": 327.19922
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 0.25
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -117,8 +104,7 @@
             "Z": 28.67163
           },
           "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

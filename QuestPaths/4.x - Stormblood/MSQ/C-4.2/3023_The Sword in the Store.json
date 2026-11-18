@@ -13,10 +13,8 @@
             "Y": 10.503965,
             "Z": -213.76367
           },
-          "StopDistance": 5,
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,11 +29,7 @@
             "Z": 52.262085
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Rakuza District",
-            "[Kugane] Kogane Dori Markets"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,11 +44,7 @@
             "Z": -80.857605
           },
           "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Kugane] Kogane Dori Markets",
-            "[Kugane] Aetheryte Plaza"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

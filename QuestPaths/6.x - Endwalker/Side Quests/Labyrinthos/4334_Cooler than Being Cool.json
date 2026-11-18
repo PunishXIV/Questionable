@@ -10,18 +10,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": -681.62787,
-            "Y": -27.599773,
-            "Z": 302.4099
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Labyrinthos - Aporia",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1037593,
           "Position": {
             "X": -628.167,
@@ -29,27 +17,13 @@
             "Z": 308.615
           },
           "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "Mount": false
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -681.62787,
-            "Y": -27.599773,
-            "Z": 302.4099
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Labyrinthos - Aporia",
-          "Fly": true,
-          "Land": true,
-          "Mount": false
-        },
         {
           "Position": {
             "X": -234.355,
@@ -67,27 +41,13 @@
               "RewardItemId": 2003322,
               "RewardItemCount": 2
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -681.62787,
-            "Y": -27.599773,
-            "Z": 302.4099
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Labyrinthos - Aporia",
-          "Fly": true,
-          "Land": true
-        },
         {
           "DataId": 1037593,
           "Position": {
@@ -96,8 +56,7 @@
             "Z": 308.615
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "Mount": false
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

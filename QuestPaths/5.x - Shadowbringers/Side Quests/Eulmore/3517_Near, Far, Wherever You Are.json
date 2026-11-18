@@ -26,15 +26,12 @@
             "Y": 4.5417395,
             "Z": 602.9981
           },
-          "StopDistance": 0.5,
           "TerritoryId": 814,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             11087
-          ],
-          "AetheryteShortcut": "Kholusia - Stilltide",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -48,7 +45,6 @@
             "Y": 5.363723,
             "Z": 600.3967
           },
-          "StopDistance": 7,
           "TerritoryId": 814,
           "InteractionType": "Interact"
         }
@@ -65,12 +61,7 @@
             "Z": -124.4068
           },
           "TerritoryId": 820,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eulmore",
-          "AethernetShortcut": [
-            "[Eulmore] Aetheryte Plaza",
-            "[Eulmore] The Glory Gate"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

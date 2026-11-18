@@ -27,11 +27,9 @@
             "Y": 359.27356,
             "Z": -192.76727
           },
-          "StopDistance": 2,
           "TerritoryId": 818,
           "InteractionType": "UseItem",
-          "ItemId": 2002595,
-          "Fly": true
+          "ItemId": 2002595
         }
       ]
     },
@@ -91,8 +89,7 @@
             "Z": -258.71674
           },
           "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

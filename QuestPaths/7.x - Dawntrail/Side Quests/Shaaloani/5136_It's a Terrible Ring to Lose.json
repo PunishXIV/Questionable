@@ -13,8 +13,7 @@
             "Z": -441.42828
           },
           "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -23,25 +22,13 @@
       "Steps": [
         {
           "Position": {
-            "X": 528.5589,
-            "Y": -18.217268,
-            "Z": -243.5277
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "Fly": true
-        },
-        {
-          "Position": {
             "X": 557.73425,
             "Y": -71.68169,
             "Z": -220.66245
           },
           "TerritoryId": 1190,
           "InteractionType": "UseItem",
-          "ItemId": 2003590,
-          "Fly": true
+          "ItemId": 2003590
         }
       ]
     },
@@ -64,17 +51,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 528.5589,
-            "Y": -18.217268,
-            "Z": -243.5277
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "Fly": true
-        },
-        {
           "DataId": 1050652,
           "Position": {
             "X": 622.4917,
@@ -82,8 +58,7 @@
             "Z": -441.42828
           },
           "TerritoryId": 1190,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

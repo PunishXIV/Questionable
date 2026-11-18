@@ -30,8 +30,7 @@
             "Z": -477.928
           },
           "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +45,7 @@
             "Z": -0.0220977
           },
           "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,8 +60,7 @@
             "Z": -0.0220977
           },
           "TerritoryId": 402,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

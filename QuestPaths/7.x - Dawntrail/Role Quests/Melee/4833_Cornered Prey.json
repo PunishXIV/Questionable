@@ -14,8 +14,7 @@
             "Z": -52.018066
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,12 +29,7 @@
             "Z": 773.0067
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] The Ruby Price"
-          ],
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,8 +50,7 @@
             17617,
             17618,
             17619
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -72,8 +65,7 @@
             "Z": 561.27246
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,11 +81,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ],
           "NextQuestId": 4834
         }
       ]

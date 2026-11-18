@@ -13,8 +13,7 @@
             "Z": -617.42584
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -28,10 +27,8 @@
             "Y": -26.29132,
             "Z": -437.46094
           },
-          "StopDistance": 1,
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Fly": true,
           "TargetTerritoryId": 1061
         },
         {
@@ -79,9 +76,7 @@
             "Z": 607.9956
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -95,11 +90,8 @@
             "Y": -26.29132,
             "Z": -437.46094
           },
-          "StopDistance": 1,
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "TargetTerritoryId": 1061
         }
       ]
@@ -114,7 +106,6 @@
             "Y": 0.099999696,
             "Z": -11.215393
           },
-          "StopDistance": 5,
           "TerritoryId": 1061,
           "InteractionType": "Interact"
         }

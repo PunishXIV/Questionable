@@ -14,9 +14,7 @@
             "Z": -7.3396606
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Quarrymill"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,11 +29,7 @@
             "Z": 73.59424
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,9 +44,7 @@
             "Z": 341.6953
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -70,8 +62,7 @@
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKBC005_03214_SYSTEM_000_999"
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -89,8 +80,7 @@
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_LUCKBC005_03214_SYSTEM_000_999"
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -104,13 +94,8 @@
             "Y": -18.800003,
             "Z": 95.26196
           },
-          "StopDistance": 7,
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -124,7 +109,6 @@
             "Y": -18.800003,
             "Z": 95.26196
           },
-          "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest"
         }

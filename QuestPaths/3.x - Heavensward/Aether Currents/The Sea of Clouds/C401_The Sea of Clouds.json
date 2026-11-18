@@ -15,7 +15,6 @@
           },
           "TerritoryId": 401,
           "InteractionType": "AttuneAetherCurrent",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
           "AetherCurrentId": 2818116
         },
         {
@@ -26,7 +25,6 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Jump",
-          "StopDistance": 1,
           "JumpDestination": {
             "Position": {
               "X": -759.4263,

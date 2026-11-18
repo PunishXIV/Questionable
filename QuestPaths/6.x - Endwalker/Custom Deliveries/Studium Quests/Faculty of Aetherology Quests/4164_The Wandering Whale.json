@@ -15,10 +15,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: issuer 1038551 (T'laqa Tia)"
         }
       ]
@@ -35,10 +31,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] Aetheryte Plaza"
-          ],
           "ItemId": 36589,
           "ItemCount": 99,
           "SkipConditions": {
@@ -57,11 +49,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ],
           "$": "auto: todo location -> 1038553 (T'laqa Tia)"
         }
       ]
@@ -78,10 +65,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Scholar's Harbor",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: todo location -> 2011753 (destination)"
         }
       ]
@@ -98,8 +81,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
           "$": "auto: todo location -> 1038569 (T'laqa Tia)"
         }
       ]
@@ -116,7 +97,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo area 14y from lua ACTOR11 -> 1038566 (preoccupied alchemist)"
         },
@@ -129,7 +109,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
           "$": "auto: todo area 13y from lua ACTOR13 -> 1038568 (merchant)"
         },
@@ -142,7 +121,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo area 16y from lua ACTOR12 -> 1038567 (fisherman)"
         }
       ]
@@ -159,7 +137,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 1038569 (T'laqa Tia)"
         }
       ]
@@ -177,10 +154,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] Aetheryte Plaza"
-          ],
           "ItemId": 36589,
           "ItemCount": 99,
           "SkipConditions": {
@@ -197,8 +170,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Fish",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true,
           "ItemsToGather": [
             {
               "ItemId": 35849,
@@ -215,7 +186,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
           "$": "auto: todo location -> 1038569 (T'laqa Tia); npc trade"
         }
       ]
@@ -232,10 +202,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: todo turn-in -> 1038551 (T'laqa Tia)"
         }
       ]

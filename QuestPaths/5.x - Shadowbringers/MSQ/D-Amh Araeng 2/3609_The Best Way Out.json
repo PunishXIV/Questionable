@@ -61,7 +61,6 @@
             "Y": 0,
             "Z": 1.5106201
           },
-          "StopDistance": 7,
           "TerritoryId": 844,
           "InteractionType": "Interact"
         }
@@ -78,8 +77,7 @@
             "Z": -0.38153076
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -103,8 +101,7 @@
             "Z": 636.71313
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -119,8 +116,7 @@
             "Z": 854.2457
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

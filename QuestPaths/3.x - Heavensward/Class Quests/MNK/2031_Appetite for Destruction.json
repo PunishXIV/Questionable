@@ -14,8 +14,7 @@
             "Z": -682.76495
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +30,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_JOBMNK600_02031_Q1_000_000",
@@ -71,7 +68,6 @@
             "Y": 12.685881,
             "Z": -260.91406
           },
-          "StopDistance": 4,
           "TerritoryId": 146,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2426

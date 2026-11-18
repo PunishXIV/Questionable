@@ -15,8 +15,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 6,
           "$": "again, if you happen to be at an aetheryte, very far without flyspeed"
         }
       ]
@@ -39,8 +37,7 @@
               "Prompt": "TEXT_AKTKZC009_04218_Q1_000_000",
               "Answer": "TEXT_AKTKZC009_04218_A1_000_001"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -71,8 +68,7 @@
             "Z": 650.8429
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -87,8 +83,7 @@
             "Z": 460.80713
           },
           "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

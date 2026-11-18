@@ -22,24 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": -289.72092,
-            "Y": 24.054262,
-            "Z": 489.63916
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -313.92142,
-            "Y": 21.75836,
-            "Z": 472.20667
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2005700,
           "Position": {
             "X": -521.2329,
@@ -88,7 +70,6 @@
             "Y": 123.72873,
             "Z": 210.74231
           },
-          "StopDistance": 7,
           "TerritoryId": 400,
           "InteractionType": "CompleteQuest"
         }

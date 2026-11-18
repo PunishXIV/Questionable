@@ -13,7 +13,6 @@
             "Y": 22.996977,
             "Z": -475.21173
           },
-          "StopDistance": 7,
           "TerritoryId": 140,
           "InteractionType": "AcceptQuest"
         }
@@ -29,8 +28,7 @@
             "Z": -495.80618
           },
           "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 147,

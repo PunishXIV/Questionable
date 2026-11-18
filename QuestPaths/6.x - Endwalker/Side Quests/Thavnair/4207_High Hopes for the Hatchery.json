@@ -13,10 +13,8 @@
             "Y": 5.362214,
             "Z": 37.582886
           },
-          "StopDistance": 0.5,
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": -555.3826
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -118,15 +115,6 @@
           "DelaySecondsAtStart": 3
         },
         {
-          "Position": {
-            "X": -475.0877,
-            "Y": 73.24273,
-            "Z": -512.62787
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2011967,
           "Position": {
             "X": -476.92078,
@@ -164,8 +152,7 @@
             "Z": -555.3826
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -179,11 +166,8 @@
             "Y": 5.362214,
             "Z": 37.582886
           },
-          "StopDistance": 0.5,
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Great Work",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

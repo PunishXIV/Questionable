@@ -15,18 +15,7 @@
             "Z": -270.34418
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -59,8 +48,7 @@
               "Prompt": "TEXT_CLSLNC003_00055_Q1_000_1",
               "Answer": "TEXT_CLSLNC003_00055_A1_000_1"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -109,8 +97,7 @@
             "Z": 284.89175
           },
           "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2000920,
@@ -121,7 +108,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -140,11 +126,7 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 56,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ]
+          "NextQuestId": 56
         }
       ]
     }

@@ -15,7 +15,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "$": "auto: issuer 1026870 (Noctis)"
         }
       ]
@@ -32,8 +31,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: lua ACTOR2 -> 1026868 (Noctis)"
         }
       ]
@@ -50,11 +47,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "$": "auto: todo location -> 1026867 (Kipih Jakkya)"
         }
       ]
@@ -72,10 +64,6 @@
           "TerritoryId": 132,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true},
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Airship Landing"
-          ],
           "$": "auto: todo location -> 1026869 (Kipih Jakkya)"
         }
       ]
@@ -92,7 +80,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
           "$": "auto: lua ACTOR3 -> 1026869 (Kipih Jakkya)"
         }
       ]
@@ -109,7 +96,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
           "$": "auto: todo turn-in -> 1026869 (Kipih Jakkya)"
         }
       ]

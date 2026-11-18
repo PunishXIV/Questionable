@@ -14,8 +14,7 @@
             "Z": 5.416931
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,7 @@
             "Z": 45.426025
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,7 +46,6 @@
           "TerritoryId": 131,
           "InteractionType": "UseItem",
           "ItemId": 2001459,
-          "IgnoreDistanceToObject": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -64,7 +58,6 @@
           "TerritoryId": 131,
           "InteractionType": "UseItem",
           "ItemId": 2001459,
-          "IgnoreDistanceToObject": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
@@ -197,10 +190,8 @@
             "Y": 16.059729,
             "Z": 276.30084
           },
-          "StopDistance": 0.5,
           "TerritoryId": 141,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             2853,

@@ -14,17 +14,7 @@
             "Z": -262.13477
           },
           "TerritoryId": 959,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                959
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,10 +29,7 @@
             "Z": 531.3954
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "Fly": true,
-          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -57,7 +44,6 @@
             "Z": -288.4718
           },
           "TerritoryId": 959,
-          "StopDistance": 5,
           "InteractionType": "Interact"
         }
       ]

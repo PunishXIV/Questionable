@@ -64,7 +64,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             20058

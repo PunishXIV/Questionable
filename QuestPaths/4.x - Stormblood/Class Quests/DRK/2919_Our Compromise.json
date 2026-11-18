@@ -14,11 +14,7 @@
             "Z": 40.787354
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,11 +30,6 @@
           },
           "TerritoryId": 635,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Western Rhalgr's Reach"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -122,8 +113,7 @@
             "Z": -669.9474
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -138,8 +128,7 @@
             "Z": -626.3676
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -173,11 +162,7 @@
             "Z": 40.787354
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -192,11 +177,7 @@
             "Z": 36.972534
           },
           "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Last Vigil"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

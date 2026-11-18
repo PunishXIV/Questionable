@@ -13,7 +13,6 @@
             "Y": 40.836124,
             "Z": -508.50693
           },
-          "StopDistance": 7,
           "TerritoryId": 622,
           "InteractionType": "AcceptQuest"
         }
@@ -30,26 +29,13 @@
             "Z": 63.61487
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 12.142036,
-            "Y": 121,
-            "Z": 63.4195
-          },
-          "TerritoryId": 622,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "Fly": true
-        },
         {
           "DataId": 1019424,
           "Position": {
@@ -74,9 +60,7 @@
             "Z": 632.1354
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,8 +75,7 @@
             "Z": 816.8002
           },
           "TerritoryId": 622,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

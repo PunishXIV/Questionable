@@ -29,11 +29,7 @@
             "Z": -139.63531
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Meghaduta",
-            "[Radz-at-Han] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,8 +44,7 @@
             "Z": -15.243774
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Old Sharlayan"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,11 +59,7 @@
             "Z": -189.59338
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -83,11 +74,7 @@
             "Z": -159.2279
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] The Leveilleur Estate"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -101,13 +88,8 @@
             "Y": 3.8989394,
             "Z": 1.0696089
           },
-          "StopDistance": 0.25,
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Leveilleur Estate",
-            "[Old Sharlayan] The Baldesion Annex"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

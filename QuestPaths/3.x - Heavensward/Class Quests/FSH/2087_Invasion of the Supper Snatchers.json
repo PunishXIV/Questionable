@@ -16,10 +16,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ],
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
             "Key": 263015
@@ -42,11 +38,7 @@
             "Z": 24.3203
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -61,8 +53,7 @@
             "Z": 62.559
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,8 +68,7 @@
             "Z": -557.122
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,7 +83,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Fish",
-          "Fly": true,
           "ItemsToGather": [
             {
               "ItemId": 12769,
@@ -109,9 +98,7 @@
             "Z": 62.546753
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -126,11 +113,7 @@
             "Z": 24.3203
           },
           "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

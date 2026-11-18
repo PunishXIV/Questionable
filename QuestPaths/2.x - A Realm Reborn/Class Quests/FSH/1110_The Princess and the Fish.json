@@ -15,18 +15,7 @@
             "Z": 164.294
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,10 +24,6 @@
       "Steps": [
         {
           "Comment": "Buy 1x Princess Trout",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -69,10 +54,6 @@
             "Z": 164.294
           },
           "TerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1111
         }

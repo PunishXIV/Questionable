@@ -14,8 +14,7 @@
             "Z": 628.3817
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,13 +30,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] The Gate of First Sight (Thavnair)"
-          ],
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -70,12 +63,7 @@
             "Z": 194.72034
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

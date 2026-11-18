@@ -17,23 +17,7 @@
 				"Z": -147.93628
 			},
 			"TerritoryId": 628,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Kugane",
-			"AethernetShortcut":
-			[
-			"[Kugane] Aetheryte Plaza",
-			"[Kugane] Rakuza District"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					628
-					]
-				}
-			}
+			"InteractionType": "AcceptQuest"
 		}
 		]
 	},
@@ -84,12 +68,7 @@
 				"Z": 161.69983
 			},
 			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Rakuza District",
-			"[Kugane] Pier #1"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -106,12 +85,7 @@
 				"Z": -147.93628
 			},
 			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Pier #1",
-			"[Kugane] Rakuza District"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},

@@ -28,8 +28,7 @@
             "Z": 176.98938
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Many Fires"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -44,8 +43,7 @@
             "Z": 342.9159
           },
           "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Earthenshire"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

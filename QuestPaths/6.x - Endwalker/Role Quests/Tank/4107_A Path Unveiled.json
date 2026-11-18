@@ -14,8 +14,7 @@
             "Z": 5.0201416
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -63,8 +62,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "SinglePlayerDuty",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": false
           }
@@ -101,10 +98,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -141,12 +134,7 @@
             "Z": -74.69299
           },
           "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

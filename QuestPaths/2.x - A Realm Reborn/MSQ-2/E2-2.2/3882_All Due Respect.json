@@ -14,8 +14,7 @@
             "Z": -80.03363
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -682.06305
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "Interact"
         }
       ]
     },

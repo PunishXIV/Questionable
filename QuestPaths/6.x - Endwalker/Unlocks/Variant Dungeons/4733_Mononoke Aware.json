@@ -14,12 +14,7 @@
             "Z": 107.80493
           },
           "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,12 +29,7 @@
             "Z": -174.6701
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Bokairo Inn"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -54,8 +44,7 @@
             "Z": -121.049866
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "StopDistance": 4
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,12 +69,7 @@
             "Z": -121.049866
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Bokairo Inn"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -100,12 +84,7 @@
             "Z": 107.80493
           },
           "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

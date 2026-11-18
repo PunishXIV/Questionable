@@ -14,11 +14,7 @@
             "Z": 47.287598
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,8 +30,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -58,7 +52,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -75,7 +68,6 @@
             "Y": 9.73618,
             "Z": 672.7245
           },
-          "StopDistance": 5,
           "TerritoryId": 135,
           "InteractionType": "Interact"
         }
@@ -92,9 +84,7 @@
             "Z": 583.82544
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -110,7 +100,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",

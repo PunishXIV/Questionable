@@ -14,22 +14,7 @@
             "Z": -182.78784
           },
           "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yanxia - Namai",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 472.4036,
-                  "Y": 58.568016,
-                  "Z": -181.87
-                },
-                "TerritoryId": 614,
-                "MaximumDistance": 50
-              }
-            }
-          },
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,8 +29,7 @@
             "Z": -194.9035
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,8 +44,7 @@
             "Z": -146.74603
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,7 +59,6 @@
             "Z": -16.586609
           },
           "TerritoryId": 614,
-          "Fly": true,
           "InteractionType": "Emote",
           "Emote": "psych"
         }
@@ -93,8 +75,7 @@
             "Z": -106.30963
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -110,21 +91,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yanxia - Namai",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 435.81787,
-                  "Y": 68.84845,
-                  "Z": -94.02999
-                },
-                "TerritoryId": 614,
-                "MaximumDistance": 150
-              }
-            }
-          },
-          "Fly": true,
           "NextQuestId": 2738
         }
       ]

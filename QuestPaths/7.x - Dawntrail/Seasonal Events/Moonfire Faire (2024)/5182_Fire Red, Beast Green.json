@@ -13,18 +13,7 @@
             "Z": 131.33435
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,19 +29,12 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol",
               "InTerritory": [
                 137
               ]
-            },
-            "AethernetShortcutIf": {
-              "AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol"
             }
           },
           "TargetTerritoryId": 137
@@ -68,24 +50,12 @@
           }
         },
         {
-          "Position": {
-            "X": 732.0986,
-            "Y": 11.349089,
-            "Z": 262.19138
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true
-        },
-        {
           "DataId": 1050817,
           "Position": {
             "X": 735.25586,
             "Y": 11.306824,
             "Z": 261.8601
           },
-          "StopDistance": 5,
           "TerritoryId": 137,
           "InteractionType": "Interact"
         }
@@ -101,10 +71,8 @@
             "Y": 9.601691,
             "Z": 202.86865
           },
-          "StopDistance": 5,
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -119,8 +87,7 @@
             "Z": 246.29578
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -158,7 +125,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",

@@ -45,11 +45,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "UnlockTaxiStand",
-          "TaxiStandId": 1179659,
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ]
+          "TaxiStandId": 1179659
         },
         {
           "TerritoryId": 140,
@@ -96,11 +92,7 @@
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.292"
-          },
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          }
         }
       ]
     },

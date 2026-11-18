@@ -14,9 +14,7 @@
             "Z": -3.9321687
           },
           "TerritoryId": 145,
-          "StopDistance": 1,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "$": "auto: issuer 1006209 (Helmhart)"
         }
       ]
@@ -32,7 +30,6 @@
           },
           "TerritoryId": 145,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             203
@@ -52,9 +49,7 @@
             "Z": -3.9321687
           },
           "TerritoryId": 145,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 1006209 (Helmhart); hands over ITEM0=2000600"
         }
       ]
@@ -70,10 +65,8 @@
             "Z": -3.9321687
           },
           "TerritoryId": 145,
-          "StopDistance": 1,
           "InteractionType": "CompleteQuest",
           "ItemId": 2000975,
-          "Fly": true,
           "$": "auto: todo turn-in -> 1006209 (Helmhart)"
         }
       ]

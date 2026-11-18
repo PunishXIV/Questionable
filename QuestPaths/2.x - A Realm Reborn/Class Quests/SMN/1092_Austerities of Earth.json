@@ -10,18 +10,7 @@
         {
           "TerritoryId": 133,
           "InteractionType": "EquipItem",
-          "ItemId": 4549,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "ItemId": 4549
         },
         {
           "TerritoryId": 133,
@@ -51,9 +40,7 @@
           },
           "TerritoryId": 154,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -67,7 +54,6 @@
             "Y": -78.85388,
             "Z": 444.8767
           },
-          "StopDistance": 7,
           "TerritoryId": 154,
           "InteractionType": "Interact"
         }
@@ -85,10 +71,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "NextQuestId": 1093
         }
       ]

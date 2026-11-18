@@ -13,23 +13,7 @@
             "Z": -656.09216
           },
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 481.95605,
-                  "Y": 90.43779,
-                  "Z": -656.09216
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -47,8 +31,7 @@
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             10261
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -63,23 +46,7 @@
             "Z": -656.09216
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 481.95605,
-                  "Y": 90.43779,
-                  "Z": -656.09216
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

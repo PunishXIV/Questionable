@@ -13,15 +13,7 @@
             "Z": -204.978
           },
           "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Leveilleur Estate"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [962] }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

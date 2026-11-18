@@ -14,18 +14,7 @@
             "Z": -0.3204956
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -119,9 +108,7 @@
             "Z": 635.7976
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -135,14 +122,12 @@
             "Y": 46.92151,
             "Z": 541.22217
           },
-          "StopDistance": 0.5,
           "TerritoryId": 135,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             11128
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -159,7 +144,6 @@
             11129,
             11130
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -175,8 +159,7 @@
             "Z": 431.63184
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -191,8 +174,7 @@
             "Z": -322.43848
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -223,10 +205,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "NextQuestId": 3265
         }
       ]

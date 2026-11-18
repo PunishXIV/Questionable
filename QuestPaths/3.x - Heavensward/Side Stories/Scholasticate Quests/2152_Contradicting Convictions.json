@@ -14,18 +14,7 @@
             "Z": -90.98956
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -55,11 +44,7 @@
             "Z": 52.414673
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] The Brume"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -75,10 +60,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] The Jeweled Crozier"
-          ],
           "NextQuestId": 2153
         }
       ]

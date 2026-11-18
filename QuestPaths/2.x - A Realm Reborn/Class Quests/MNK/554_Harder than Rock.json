@@ -15,24 +15,13 @@
             "Z": -42.404846
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -73.40663,
-            "Y": 0.60187495,
-            "Z": -59.04644
-          },
-          "TerritoryId": 130,
-          "InteractionType": "WalkTo",
-          "$": "Sometimes the pathing gets blocked coming from Hamon"
-        },
         {
           "DataId": 2001285,
           "Position": {
@@ -75,10 +64,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -105,11 +90,7 @@
             "Z": -42.404846
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Thaumaturges' Guild",
-            "[Ul'dah] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -125,12 +106,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Action",
-          "Action": "Bootshine",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ],
-          "Fly": true
+          "Action": "Bootshine"
         },
         {
           "Position": {
@@ -155,8 +131,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Action",
-          "Action": "Bootshine",
-          "Fly": true
+          "Action": "Bootshine"
         },
         {
           "Position": {
@@ -181,8 +156,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Action",
-          "Action": "Bootshine",
-          "Fly": true
+          "Action": "Bootshine"
         },
         {
           "Position": {
@@ -207,8 +181,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Action",
-          "Action": "Bootshine",
-          "Fly": true
+          "Action": "Bootshine"
         },
         {
           "Position": {
@@ -237,7 +210,6 @@
             "Z": -42.404846
           },
           "TerritoryId": 130,
-          "AetheryteShortcut": "Ul'dah",
           "InteractionType": "CompleteQuest"
         }
       ]

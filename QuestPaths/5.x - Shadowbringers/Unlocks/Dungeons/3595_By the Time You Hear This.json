@@ -13,8 +13,7 @@
             "Z": -14.023071
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,11 +28,7 @@
             "Z": -31.784546
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

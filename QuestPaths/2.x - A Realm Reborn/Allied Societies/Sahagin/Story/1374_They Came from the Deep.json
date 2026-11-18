@@ -10,10 +10,6 @@
           "TerritoryId": 129,
           "TargetTerritoryId": 128,
           "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "SkipConditions": {
             "StepIf": {
               "InTerritory": [
@@ -45,9 +41,7 @@
             "Z": 251.45337
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,7 +55,6 @@
             "Y": 8.979649,
             "Z": 259.38806
           },
-          "StopDistance": 7,
           "TerritoryId": 137,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
@@ -73,7 +66,6 @@
             "Y": 8.931801,
             "Z": 254.32202
           },
-          "StopDistance": 7,
           "TerritoryId": 137,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -138,24 +130,12 @@
       "Sequence": 5,
       "Steps": [
         {
-          "Position": {
-            "X": -204.7492,
-            "Y": -41.732693,
-            "Z": 21.867413
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
-        },
-        {
           "DataId": 1008916,
           "Position": {
             "X": -207.44641,
             "Y": -42.06953,
             "Z": 22.140747
           },
-          "StopDistance": 5,
           "TerritoryId": 138,
           "InteractionType": "Interact"
         }
@@ -173,8 +153,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true,
           "NextQuestId": 1375
         }
       ]

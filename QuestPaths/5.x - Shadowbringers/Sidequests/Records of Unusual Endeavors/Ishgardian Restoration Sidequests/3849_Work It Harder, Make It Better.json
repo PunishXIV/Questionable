@@ -15,10 +15,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "$": "auto: issuer 1032898 (Neillemard)"
         }
       ]
@@ -34,12 +30,7 @@
             "Z": -55.254734
           },
           "TerritoryId": 418,
-          "StopDistance": 1,
           "InteractionType": "Instruction",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "Comment": "Craft/gather required items to upgrade to Dragonsung tool (check Denys for which items you need)"
         },
         {
@@ -51,10 +42,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "NextQuestId": 3892,
           "$": "auto: todo turn-in -> 1032899 (Nimie)"
         }

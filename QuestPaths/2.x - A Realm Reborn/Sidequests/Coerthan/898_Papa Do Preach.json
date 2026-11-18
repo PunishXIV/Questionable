@@ -13,10 +13,8 @@
             "Y": 310.024,
             "Z": -298.045
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,10 +28,8 @@
             "Y": 348.103,
             "Z": -756.671
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,9 +44,7 @@
             "Z": -697.21075
           },
           "TerritoryId": 155,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,7 +59,6 @@
             "Z": -696.0708
           },
           "TerritoryId": 155,
-          "StopDistance": 4,
           "InteractionType": "Interact"
         }
       ]
@@ -80,10 +73,8 @@
             "Y": 348.103,
             "Z": -756.671
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -97,11 +88,8 @@
             "Y": 310.024,
             "Z": -298.045
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

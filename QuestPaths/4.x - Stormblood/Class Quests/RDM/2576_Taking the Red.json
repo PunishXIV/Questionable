@@ -15,17 +15,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "List",
@@ -46,11 +35,7 @@
             "Z": 43.372593
           },
           "TerritoryId": 131,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ]
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1021426,
@@ -60,8 +45,7 @@
             "Z": 559.65515
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -75,7 +59,6 @@
             "Y": 5.2929487,
             "Z": 558.9531
           },
-          "StopDistance": 7,
           "TerritoryId": 141,
           "InteractionType": "Interact"
         }
@@ -91,8 +74,7 @@
             "Z": 562.2148
           },
           "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1021435,
@@ -109,18 +91,6 @@
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": -77.95643,
-            "Y": -12.787907,
-            "Z": -45.044247
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true,
-          "$": "Coffer & Coffin (outside)"
-        },
         {
           "DataId": 1021438,
           "Position": {

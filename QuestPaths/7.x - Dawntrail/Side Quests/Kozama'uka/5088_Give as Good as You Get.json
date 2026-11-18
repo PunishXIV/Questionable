@@ -35,8 +35,7 @@
             "Z": 338.88757
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,8 +68,7 @@
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17662
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -84,7 +82,6 @@
             "Y": 129.29285,
             "Z": 240.7721
           },
-          "StopDistance": 7,
           "TerritoryId": 1188,
           "InteractionType": "Interact"
         }
@@ -101,8 +98,7 @@
             "Z": 721.3396
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -118,8 +114,7 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 5089,
-          "AetheryteShortcut": "Kozama'uka - Earthenshire"
+          "NextQuestId": 5089
         }
       ]
     }

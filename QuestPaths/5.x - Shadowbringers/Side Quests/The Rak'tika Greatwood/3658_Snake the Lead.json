@@ -29,8 +29,7 @@
             "Z": -181.53668
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,7 +45,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
           "NextQuestId": 3659
         }
       ]

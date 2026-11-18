@@ -13,7 +13,6 @@
             "Y": 24.378597,
             "Z": -6.6987915
           },
-          "StopDistance": 7,
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest"
         }
@@ -31,11 +30,7 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Last Vigil"
-          ]
+          "TargetTerritoryId": 433
         }
       ]
     },
@@ -61,11 +56,7 @@
             "Z": -40.787415
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,8 +71,7 @@
             "Z": 790.2189
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -138,27 +128,6 @@
       "Steps": [
         {
           "Position": {
-            "X": 454.75964,
-            "Y": 164.27075,
-            "Z": -535.00354
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "$": "Gorgagne Mills (outside)",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": 454.9128,
-            "Y": 164.30827,
-            "Z": -542.1735
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "$": "Gorgagne Mills (inside)"
-        },
-        {
-          "Position": {
             "X": 455.6516,
             "Y": 157.40831,
             "Z": -546.16815
@@ -176,27 +145,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 454.9128,
-            "Y": 164.30827,
-            "Z": -542.1735
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "$": "Gorgagne Mills (inside)",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": 454.75964,
-            "Y": 164.27075,
-            "Z": -535.00354
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "$": "Gorgagne Mills (outside)"
-        },
         {
           "DataId": 1012592,
           "Position": {

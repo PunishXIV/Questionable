@@ -14,9 +14,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -38,11 +35,8 @@
             "Y": 56.113926,
             "Z": 236.25537
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -61,8 +55,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             8588
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -92,9 +85,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -116,11 +106,8 @@
             "Y": 56.113926,
             "Z": 236.25537
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

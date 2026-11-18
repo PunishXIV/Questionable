@@ -45,8 +45,7 @@
             "Z": 360.06702
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,8 +60,7 @@
             "Z": 47.989624
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -111,8 +109,7 @@
             "Z": 169.72607
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -162,8 +159,7 @@
             "Z": 459.3728
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -212,8 +208,7 @@
             "Z": 360.06702
           },
           "TerritoryId": 153,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

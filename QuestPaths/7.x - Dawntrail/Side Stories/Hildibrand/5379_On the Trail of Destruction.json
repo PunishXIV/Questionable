@@ -13,9 +13,7 @@
             "Z": -137.28546
           },
           "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +28,7 @@
             "Z": 247.11987
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,9 +43,7 @@
             "Z": 247.11987
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,8 +58,7 @@
             "Z": 303.42554
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,8 +73,7 @@
             "Z": 336.7207
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,8 +88,7 @@
             "Z": 402.7008
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -112,20 +103,13 @@
             "Z": 529.9
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
       "Steps": [
-        {
-          "TerritoryId": 1190,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
-        },
         {
           "DataId": 2014867,
           "Position": {
@@ -135,7 +119,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -156,7 +139,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -176,8 +158,7 @@
             "Z": 624.567
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -192,39 +173,13 @@
             "Z": 658.50305
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 9,
       "Steps": [
-        {
-          "Position": {
-            "X": 474.54605,
-            "Y": 3.0852077,
-            "Z": 465.45132
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 488.0598,
-                  "Y": 3.2202392,
-                  "Z": 484.03137
-                },
-                "TerritoryId": 1190,
-                "MaximumDistance": 150
-              }
-            }
-          }
-        },
         {
           "DataId": 1051501,
           "Position": {
@@ -248,9 +203,7 @@
             "Z": 484.03137
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -266,13 +219,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 5446,
-          "Fly": true,
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ]
+          "NextQuestId": 5446
         }
       ]
     }

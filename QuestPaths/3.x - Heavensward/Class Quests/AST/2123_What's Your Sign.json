@@ -15,16 +15,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [419]
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

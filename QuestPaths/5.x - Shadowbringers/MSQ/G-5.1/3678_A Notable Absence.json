@@ -42,10 +42,6 @@
           },
           "TerritoryId": 820,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Aetheryte Plaza",
-            "[Eulmore] Southeast Derelicts"
-          ],
           "$.1": "QuestValues if done after [1]: 32 17 16 16 0 160",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
@@ -58,10 +54,6 @@
           },
           "TerritoryId": 820,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Southeast Derelicts",
-            "[Eulmore] The Glory Gate"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -77,7 +69,6 @@
             "Z": -54.08564
           },
           "TerritoryId": 820,
-          "StopDistance": 1,
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179713
         },

@@ -14,8 +14,7 @@
               "Z": -427.81726
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,8 +36,7 @@
               "DataId": 2259,
               "MinimumKillCount": 1
             }
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 2260,

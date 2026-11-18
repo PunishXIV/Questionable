@@ -14,10 +14,7 @@
             "Z": -6.1189575
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] The Aftcastle"],
-          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [128]}}
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -50,11 +47,7 @@
             "Z": 208.66711
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -68,7 +61,6 @@
             "Y": 0.9999907,
             "Z": 211.68835
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "TargetTerritoryId": 138,
@@ -119,8 +111,7 @@
             "Z": 17.135864
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -141,7 +132,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "UnlockTaxiStand",
-          "AetheryteShortcut": "Western La Noscea - Swiftperch",
           "TaxiStandId": 1179671
         },
         {
@@ -165,11 +155,7 @@
             "Z": -6.1189575
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

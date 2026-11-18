@@ -30,7 +30,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "CombatItemUse": {
             "Condition": "Health%",
@@ -55,8 +54,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "Fly": true,
           "SkipConditions": {"StepIf": {"Flying": "Locked"}}
         },
         {

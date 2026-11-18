@@ -14,9 +14,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -38,11 +35,8 @@
             "Y": 56.113926,
             "Z": 236.25537
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -58,12 +52,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Fringes Gate"
-          ],
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 3}, {"Low": 4}
             ],null,null,null,null
@@ -79,7 +67,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 2}, {"Low": 4}, {"Low": 5}
             ],null,null,null,null
@@ -95,7 +82,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}, {"Low": 3}, {"Low": 5}
             ],null,null,null,null
@@ -111,7 +97,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}, {"Low": 3}, {"Low": 4}
             ],null,null,null,null
@@ -127,7 +112,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 5}
             ],null,null,null,null
@@ -147,9 +131,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -171,11 +152,8 @@
             "Y": 56.113926,
             "Z": 236.25537
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

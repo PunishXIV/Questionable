@@ -13,7 +13,6 @@
             "Y": -6.5553393,
             "Z": -226.30658
           },
-          "StopDistance": 7,
           "TerritoryId": 817,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
             "Z": -471.00024
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -44,7 +42,6 @@
             "Y": -20,
             "Z": -481.85556
           },
-          "StopDistance": 0.5,
           "TerritoryId": 817,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -64,7 +61,6 @@
             "Y": -20,
             "Z": -471.00024
           },
-          "StopDistance": 5,
           "TerritoryId": 817,
           "InteractionType": "Interact"
         }
@@ -82,7 +78,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 3482
         }
       ]

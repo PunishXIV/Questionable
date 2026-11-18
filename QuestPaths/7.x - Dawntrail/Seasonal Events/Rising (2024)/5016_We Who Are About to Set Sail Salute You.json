@@ -12,20 +12,8 @@
             "Y": 44.499992,
             "Z": 125.200195
           },
-          "StopDistance": 5,
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,11 +28,7 @@
             "Z": -206.71399
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Marauders' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,8 +43,7 @@
             "Z": -205.8595
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "StopDistance": 5
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -75,11 +58,7 @@
             "Z": 185.35132
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,7 +72,6 @@
             "Y": 40.999958,
             "Z": 184.67993
           },
-          "StopDistance": 5,
           "TerritoryId": 128,
           "InteractionType": "Interact"
         }
@@ -109,7 +87,6 @@
             "Y": 40.999916,
             "Z": 186.3584
           },
-          "StopDistance": 7,
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [

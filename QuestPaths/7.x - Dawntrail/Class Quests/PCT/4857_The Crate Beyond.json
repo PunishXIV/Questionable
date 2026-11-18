@@ -14,9 +14,7 @@
             "Z": -254.26111
           },
           "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Mount": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,12 +30,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "UseItem",
-          "ItemId": 2003500,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ]
+          "ItemId": 2003500
         }
       ]
     },
@@ -53,11 +46,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] The Ruby Price"
-          ],
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -87,7 +75,6 @@
               "DataId": 17629
             }
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -106,7 +93,6 @@
               "DataId": 17629
             }
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -124,8 +110,7 @@
             {
               "DataId": 17629
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -140,8 +125,7 @@
             "Z": 770.9315
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -157,11 +141,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ],
           "NextQuestId": 4858
         }
       ]

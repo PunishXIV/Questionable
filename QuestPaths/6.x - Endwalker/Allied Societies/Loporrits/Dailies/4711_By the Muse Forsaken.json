@@ -15,23 +15,8 @@
           },
           "TerritoryId": 959,
           "TargetTerritoryId": 959,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -201.89743,
-                  "Y": -49.149708,
-                  "Z": -273.6312
-                },
-                "TerritoryId": 959,
-                "MaximumDistance": 100
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -69,8 +54,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
           "RequiredQuestVariables": [null,null,[
             {"High": 1}
             ],null,null,null],
@@ -91,8 +74,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
           "RequiredQuestVariables": [null,null,[
             {"High": 2}
             ],null,null,null],
@@ -113,8 +94,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 3}
             ],null,null,null],
@@ -140,23 +119,8 @@
           },
           "TerritoryId": 959,
           "TargetTerritoryId": 959,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -201.89743,
-                  "Y": -49.149708,
-                  "Z": -273.6312
-                },
-                "TerritoryId": 959,
-                "MaximumDistance": 100
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {

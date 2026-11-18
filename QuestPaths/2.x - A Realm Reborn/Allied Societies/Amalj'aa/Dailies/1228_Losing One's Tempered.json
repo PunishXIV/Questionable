@@ -14,9 +14,7 @@
             "Z": -357.3816
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,7 +31,6 @@
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
           "KillEnemyDataIds": [79],
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -42,7 +39,6 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 2},{"Low": 5}
           ],null],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
@@ -55,7 +51,6 @@
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
           "KillEnemyDataIds": [80],
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 3},{"Low": 4},{"Low": 5}
@@ -64,7 +59,6 @@
             "Condition": "Incapacitated",
             "ItemId": 2001191
           },
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
@@ -85,7 +79,6 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 4},{"Low": 5}
           ],null],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
@@ -106,7 +99,6 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 3}
           ],null],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
         },
         {
@@ -127,7 +119,6 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1},{"Low": 2},{"Low": 3}
           ],null],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 4}]
         },
         {
@@ -148,7 +139,6 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1},{"Low": 2},{"Low": 4}
           ],null],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 2}]
         },
         {
@@ -169,7 +159,6 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1}
           ],null],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         }
       ]
@@ -185,9 +174,7 @@
             "Z": -357.3816
           },
           "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,9 +14,7 @@
             "Z": -169.97028
           },
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 222.52222
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,7 +44,6 @@
             "Z": 53.72693
           },
           "TerritoryId": 398,
-          "Fly": true,
           "InteractionType": "Interact"
         }
       ]
@@ -65,7 +60,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -91,7 +85,6 @@
           "KillEnemyDataIds": [
             5543
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -106,7 +99,6 @@
           "KillEnemyDataIds": [
             5543
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -122,8 +114,7 @@
             "Z": -70.42041
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -153,8 +144,7 @@
             "Z": 53.72693
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -169,9 +159,7 @@
             "Z": -139.05548
           },
           "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

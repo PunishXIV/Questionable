@@ -41,18 +41,7 @@
             "Z": 157.42725
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Miners' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -84,19 +73,7 @@
             "Z": 157.42725
           },
           "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Miners' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

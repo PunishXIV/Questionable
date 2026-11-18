@@ -14,22 +14,7 @@
             "Z": -65.14081
           },
           "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -53.635498,
-                  "Y": -29.497286,
-                  "Z": -65.14081
-                },
-                "MaximumDistance": 30,
-                "TerritoryId": 956
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,9 +29,7 @@
             "Z": 280.38452
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Labyrinthos - Aporia"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,28 +45,13 @@
           },
           "TerritoryId": 956,
           "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
           "DialogueChoices": [
             {
               "Type": "YesNo",
               "Prompt": "TEXT_SUBCTS606_04816_Q2_000_055",
               "Yes": true
             }
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -53.635498,
-                  "Y": -29.497286,
-                  "Z": -65.14081
-                },
-                "MaximumDistance": 30,
-                "TerritoryId": 956
-              }
-            }
-          }
+          ]
         }
       ]
     },
@@ -98,22 +66,7 @@
             "Z": -65.14081
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -53.635498,
-                  "Y": -29.497286,
-                  "Z": -65.14081
-                },
-                "MaximumDistance": 30,
-                "TerritoryId": 956
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

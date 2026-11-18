@@ -15,20 +15,11 @@
           "TerritoryId": 131,
           "InteractionType": "UseItem",
           "ItemId": 43537,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
                 "NotInInventory": true
               }
-            },
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
             }
           }
         },
@@ -142,11 +133,7 @@
             "Z": -135.69855
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -186,8 +173,7 @@
             "Z": 434.531
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -221,8 +207,7 @@
             "Z": -99.77875
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "Interact"
         }
       ]
     },

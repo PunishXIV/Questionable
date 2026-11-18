@@ -45,8 +45,7 @@
             "Z": 453.97107
           },
           "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,9 +61,7 @@
           },
           "TerritoryId": 147,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "Fly": true,
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -78,7 +75,6 @@
             "Y": 71.617355,
             "Z": -132.52466
           },
-          "StopDistance": 5,
           "TerritoryId": 147,
           "InteractionType": "CompleteQuest"
         }

@@ -13,7 +13,6 @@
             "Y": -17.44166,
             "Z": 707.3014
           },
-          "StopDistance": 5,
           "TerritoryId": 958,
           "InteractionType": "AcceptQuest"
         }
@@ -30,12 +29,7 @@
             "Z": -64.89667
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Meghaduta"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -73,7 +67,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {

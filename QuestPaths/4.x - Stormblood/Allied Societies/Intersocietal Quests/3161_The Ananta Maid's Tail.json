@@ -13,8 +13,7 @@
             "Z": -72.55664
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,11 +28,7 @@
             "Z": -52.84204
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Shiokaze Hostelry"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,11 +58,7 @@
             "Z": -176.47064
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] Bokairo Inn"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -119,11 +110,7 @@
             "Z": -103.50195
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Bokairo Inn",
-            "[Kugane] Rakuza District"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -138,11 +125,7 @@
             "Z": 62.42456
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Rakuza District",
-            "[Kugane] Kogane Dori Markets"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

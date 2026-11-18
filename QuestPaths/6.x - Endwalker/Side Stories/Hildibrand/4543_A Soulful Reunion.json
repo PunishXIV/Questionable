@@ -13,7 +13,6 @@
             "Y": 12.445339,
             "Z": 228.44275
           },
-          "StopDistance": 5,
           "TerritoryId": 813,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
@@ -37,12 +36,7 @@
             "Z": -254.53583
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Cabinet of Curiosity"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -57,12 +51,7 @@
             "Z": 36.240112
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Kama"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -147,7 +136,6 @@
             "Y": 27,
             "Z": 36.584843
           },
-          "StopDistance": 0.5,
           "TerritoryId": 963,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -181,9 +169,7 @@
             "Z": 365.7129
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -197,7 +183,6 @@
             "Y": 1.1651754,
             "Z": 379.23242
           },
-          "StopDistance": 5,
           "TerritoryId": 957,
           "InteractionType": "Interact"
         }
@@ -215,7 +200,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
           "NextQuestId": 4641
         }
       ]

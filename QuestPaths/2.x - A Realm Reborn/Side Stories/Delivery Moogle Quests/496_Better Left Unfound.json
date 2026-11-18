@@ -14,8 +14,7 @@
             "Z": 5.416931
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 339.49792
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": 454.24573
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,7 +76,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -102,8 +98,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true,
           "NextQuestId": 362
         }
       ]

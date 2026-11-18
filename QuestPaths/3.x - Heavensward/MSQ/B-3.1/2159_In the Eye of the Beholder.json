@@ -14,8 +14,7 @@
             "Z": 700.8926
           },
           "TerritoryId": 399,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza","[Idyllshire] Prologue Gate (Western Hinterlands)"]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -46,8 +45,7 @@
             "Z": 70.725464
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -114,8 +112,7 @@
             "Z": -235.95032
           },
           "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

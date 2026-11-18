@@ -12,11 +12,8 @@
             "Y": -26.29132,
             "Z": -437.46094
           },
-          "StopDistance": 1,
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "TargetTerritoryId": 1061
         },
         {
@@ -26,7 +23,6 @@
             "Y": 0.0999997,
             "Z": -0.83929443
           },
-          "StopDistance": 5,
           "TerritoryId": 1061,
           "InteractionType": "AcceptQuest"
         }
@@ -58,8 +54,7 @@
             "Z": -40.665344
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -73,10 +68,8 @@
             "Y": 6.6376343,
             "Z": -78.81293
           },
-          "StopDistance": 5,
           "TerritoryId": 635,
           "InteractionType": "Interact",
-          "IgnoreDistanceToObject": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -99,10 +92,6 @@
           },
           "TerritoryId": 635,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Western Rhalgr's Reach",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -132,7 +121,6 @@
             "Y": 2.745737,
             "Z": -39.505676
           },
-          "StopDistance": 5,
           "TerritoryId": 635,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4539

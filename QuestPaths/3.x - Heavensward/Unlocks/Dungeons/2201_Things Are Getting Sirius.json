@@ -14,40 +14,13 @@
             "Z": 78.99597
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "$": "Main Path; should be used after accepting quest. Skip if not in upper decks.",
-          "TerritoryId": 128,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Airship Landing"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotInTerritory": [
-                128
-              ]
-            }
-          }
-        },
         {
           "$": "Main/Backup path setup breaks if user starts QST while on the airship landing, but this shouldn't happen in most cases",
           "DataId": 1016103,
@@ -57,11 +30,7 @@
             "Z": -9.567444
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,14 +60,7 @@
           "TerritoryId": 138,
           "InteractionType": "Interact",
           "TargetTerritoryId": 138,
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                138
-              ]
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -120,8 +82,7 @@
             "Z": 443.86963
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -136,9 +97,7 @@
             "Z": 244.67834
           },
           "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

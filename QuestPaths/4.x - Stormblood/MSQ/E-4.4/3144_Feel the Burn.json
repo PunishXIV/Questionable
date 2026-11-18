@@ -47,9 +47,7 @@
             "Z": -531.2734
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yanxia - House of the Fierce"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,7 +77,6 @@
             "Y": -4.178714,
             "Z": 87.296875
           },
-          "StopDistance": 7,
           "TerritoryId": 759,
           "InteractionType": "CompleteQuest"
         }

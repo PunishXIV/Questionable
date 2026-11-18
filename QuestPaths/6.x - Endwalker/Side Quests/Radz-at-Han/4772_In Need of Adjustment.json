@@ -14,12 +14,7 @@
             "Z": -201.67853
           },
           "TerritoryId": 963,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] The High Crucible of Al-Kimiya"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,10 +31,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": [
-            "[Radz-at-Han] The High Crucible of Al-Kimiya",
-            "[Radz-at-Han] Aetheryte Plaza"
-          ],
           "ItemId": 40322,
           "ItemCount": 3,
           "SkipConditions": {
@@ -58,12 +49,7 @@
             "Z": -201.67853
           },
           "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] The High Crucible of Al-Kimiya"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

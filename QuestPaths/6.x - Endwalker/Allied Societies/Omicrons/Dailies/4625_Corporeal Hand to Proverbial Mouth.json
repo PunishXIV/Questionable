@@ -16,19 +16,7 @@
           "TerritoryId": 960,
           "InteractionType": "Interact",
           "TargetTerritoryId": 960,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -50,8 +38,7 @@
             "Z": 148.11926
           },
           "TerritoryId": 960,
-          "InteractionType": "AcceptQuest",
-          "Mount": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -67,10 +54,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
           "SkipConditions": {"StepIf": {"InTerritory": [1073]}},
           "TargetTerritoryId": 1073
         },
@@ -108,9 +91,7 @@
             "Z": -654.6273
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -127,19 +108,7 @@
           "TerritoryId": 960,
           "InteractionType": "Interact",
           "TargetTerritoryId": 960,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -161,8 +130,7 @@
             "Z": 148.11926
           },
           "TerritoryId": 960,
-          "InteractionType": "CompleteQuest",
-          "Mount": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

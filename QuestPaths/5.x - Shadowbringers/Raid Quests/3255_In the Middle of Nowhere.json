@@ -14,8 +14,7 @@
             "Z": 55.954834
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +29,7 @@
             "Z": 511.2229
           },
           "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

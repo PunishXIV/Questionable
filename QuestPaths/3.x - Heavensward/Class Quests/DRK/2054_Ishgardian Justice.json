@@ -10,10 +10,6 @@
           "TerritoryId": 418,
           "InteractionType": "EquipItem",
           "ItemId": 10400,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -74,7 +70,6 @@
             "Y": -20.020876,
             "Z": 69.840576
           },
-          "StopDistance": 7,
           "TerritoryId": 418,
           "InteractionType": "Interact"
         }

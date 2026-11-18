@@ -16,9 +16,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -57,9 +54,7 @@
             "Z": 132.24988
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -75,15 +70,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                398
-              ]
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -137,14 +124,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Mount": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                398
-              ]
-            },
             "StepIf": {
               "Flying": "Unlocked"
             }
@@ -271,7 +251,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 1927,
           "$": "Next Quest: 'Smells Like Team Spirit'"
         }

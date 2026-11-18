@@ -14,16 +14,7 @@
             "Z": 185.53442
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [128, 129]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -103,11 +94,7 @@
             "Z": 185.53442
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

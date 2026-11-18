@@ -14,8 +14,7 @@
             "Z": 763.7291
           },
           "TerritoryId": 397,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -50,16 +49,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": {
-            "X": 522.6554,
-            "Y": 228.37697,
-            "Z": 752.68335
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1016570,
           "Position": {
             "X": 520.0122,
@@ -80,7 +69,6 @@
           },
           "TerritoryId": 397,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -96,8 +84,7 @@
             "Z": 754.20764
           },
           "TerritoryId": 397,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

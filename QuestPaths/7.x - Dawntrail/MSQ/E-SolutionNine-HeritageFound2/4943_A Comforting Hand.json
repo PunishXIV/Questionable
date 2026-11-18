@@ -13,13 +13,8 @@
             "Y": 70.0001,
             "Z": 8.316162
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] True Vue"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -82,7 +77,6 @@
             "Y": -3.0733645e-8,
             "Z": 5.5389404
           },
-          "StopDistance": 7,
           "TerritoryId": 1207,
           "InteractionType": "Interact"
         }
@@ -128,7 +122,6 @@
             "Y": 0,
             "Z": 2.6397705
           },
-          "StopDistance": 5,
           "TerritoryId": 1207,
           "InteractionType": "CompleteQuest"
         }

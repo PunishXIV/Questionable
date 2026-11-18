@@ -13,7 +13,6 @@
             "Y": 10,
             "Z": 5.935669
           },
-          "StopDistance": 7,
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest"
         }
@@ -30,9 +29,7 @@
             "Z": 493.88867
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,7 +43,6 @@
             "Y": 19.026453,
             "Z": 581.62805
           },
-          "StopDistance": 5,
           "TerritoryId": 146,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -74,8 +70,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             18178
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -105,8 +100,7 @@
             "Z": 897.94763
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

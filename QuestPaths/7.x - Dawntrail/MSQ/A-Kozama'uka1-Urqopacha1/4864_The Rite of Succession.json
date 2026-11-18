@@ -13,7 +13,6 @@
             "Y": 120.79523,
             "Z": -318.37952
           },
-          "StopDistance": 5,
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest"
         }
@@ -29,7 +28,6 @@
             "Y": 95.49999,
             "Z": -100.75531
           },
-          "StopDistance": 5,
           "TerritoryId": 1185,
           "InteractionType": "Interact"
         }
@@ -46,11 +44,7 @@
             "Z": 121.29382
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Vollok Shoonsa",
-            "[Tuliyollal] The For'ard Cabins"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -81,10 +75,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] The For'ard Cabins",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

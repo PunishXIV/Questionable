@@ -14,8 +14,7 @@
             "Z": 487.26624
           },
           "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,11 +44,7 @@
             "Z": -23.178528
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,11 +60,7 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] The Last Vigil"
-          ]
+          "TargetTerritoryId": 433
         },
         {
           "DataId": 1012329,

@@ -29,8 +29,7 @@
             "Z": -417.41058
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - House of the Fierce"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,16 +76,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 175.34885,
-            "Y": 5.16971,
-            "Z": -419.04416
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1020519,
           "Position": {

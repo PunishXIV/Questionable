@@ -14,12 +14,7 @@
             "Z": -93.114334
           },
           "TerritoryId": 962,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -49,7 +44,6 @@
             "Z": -104.60672
           },
           "TerritoryId": 962,
-          "StopDistance": 1,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
@@ -61,7 +55,6 @@
             "Z": -81.91817
           },
           "TerritoryId": 962,
-          "StopDistance": 1,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
         },
@@ -73,7 +66,6 @@
             "Z": -137.7259
           },
           "TerritoryId": 962,
-          "StopDistance": 1,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
@@ -85,7 +77,6 @@
             "Z": -149.0461
           },
           "TerritoryId": 962,
-          "StopDistance": 1,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
@@ -112,7 +103,6 @@
             "Z": -93.114334
           },
           "TerritoryId": 962,
-          "StopDistance": 1,
           "InteractionType": "Interact"
         }
       ]
@@ -128,11 +118,7 @@
             "Z": 121.690674
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -147,8 +133,7 @@
             "Z": -116.746826
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": ["[Old Sharlayan] Scholar's Harbor","[Old Sharlayan] The Studium"]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -163,7 +148,6 @@
             "Z": -91.3111
           },
           "TerritoryId": 962,
-          "StopDistance": 5,
           "InteractionType": "CompleteQuest"
         }
       ]

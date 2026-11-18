@@ -14,8 +14,7 @@
             "Z": 13.9314575
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,7 @@
             "Z": -4.1047363
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,8 +59,7 @@
             "Z": -655.57336
           },
           "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

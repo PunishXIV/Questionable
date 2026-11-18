@@ -15,8 +15,6 @@
           },
           "TerritoryId": 134,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
           "$": "auto: issuer 1003242 (W'dhovaka)"
         }
       ]
@@ -32,8 +30,6 @@
           },
           "TerritoryId": 134,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             326
@@ -54,9 +50,6 @@
           },
           "TerritoryId": 134,
           "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "Fly": true,
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
           "$": "auto: todo turn-in -> 1003242 (W'dhovaka)"
         }
       ]

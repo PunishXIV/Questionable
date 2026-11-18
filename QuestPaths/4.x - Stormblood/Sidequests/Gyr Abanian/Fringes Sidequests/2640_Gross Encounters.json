@@ -15,7 +15,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: issuer 1019519 (Serpent Marshal Brookstone)"
         }
       ]
@@ -32,8 +31,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: lua ACTOR1 -> 1022059 (flame recruit)"
         }
       ]
@@ -50,8 +47,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: lua ACTOR2 -> 1022060 (serpent recruit)"
         }
       ]
@@ -68,8 +63,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "$": "auto: lua EOBJECT0 -> 2008814 (destination)"
         }
       ]
@@ -85,8 +78,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7506
@@ -107,7 +98,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo turn-in -> 1019519 (Serpent Marshal Brookstone)"
         }
       ]

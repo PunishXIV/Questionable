@@ -14,8 +14,7 @@
             "Z": -103.44098
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,7 @@
             "Z": -10.940796
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

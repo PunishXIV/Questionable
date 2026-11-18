@@ -19,7 +19,6 @@
           "TerritoryId": 959,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1291,
-          "Fly": true,
           "Comment": "Select the destination Phaenna (#2)",
           "DialogueChoices": [
             {
@@ -60,15 +59,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 193.92294,
-            "Y": 51.0539,
-            "Z": -435.92035
-          },
-          "TerritoryId": 1291,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1053329,
           "Position": {

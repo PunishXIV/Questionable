@@ -14,19 +14,7 @@
             "Z": 133.1654
           },
           "TerritoryId": 140,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ],
-          "AetheryteShortcut": "Ul'dah",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                140
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,8 +29,7 @@
             "Z": 232.47119
           },
           "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -121,19 +108,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "DelaySecondsAtStart": 3,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                140
-              ]
-            }
-          }
+          "DelaySecondsAtStart": 3
         }
       ]
     }

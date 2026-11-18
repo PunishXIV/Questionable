@@ -29,11 +29,7 @@
             "Z": -23.971985
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,24 +81,13 @@
             "Z": 660.151
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Moghome"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 379.64865,
-            "Y": -69.42944,
-            "Z": 695.1956
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "$": "Moglin"
-        },
         {
           "DataId": 1012077,
           "Position": {
@@ -111,9 +96,7 @@
             "Z": 700.86194
           },
           "TerritoryId": 400,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 8,
-          "IgnoreDistanceToObject": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

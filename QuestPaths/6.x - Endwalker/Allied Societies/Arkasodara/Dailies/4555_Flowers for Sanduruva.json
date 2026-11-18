@@ -14,9 +14,7 @@
             "Z": 321.06494
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +29,6 @@
             "Z": 624.10913
           },
           "TerritoryId": 957,
-          "Fly": true,
           "InteractionType": "Interact",
           "SkipConditions": {
             "StepIf": {
@@ -55,7 +52,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -129,8 +125,7 @@
             "Z": 321.06494
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

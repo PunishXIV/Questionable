@@ -12,7 +12,6 @@
             "Y": 9.578133,
             "Z": 297.59656
           },
-          "StopDistance": 5,
           "TerritoryId": 137,
           "InteractionType": "AcceptQuest"
         }
@@ -31,7 +30,6 @@
           "TerritoryId": 137,
           "InteractionType": "Emote",
           "Emote": "uchiwasshoi",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -44,7 +42,6 @@
           "TerritoryId": 137,
           "InteractionType": "Emote",
           "Emote": "uchiwasshoi",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -60,24 +57,13 @@
             "Z": 294.81946
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 732.0986,
-            "Y": 11.349089,
-            "Z": 262.19138
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1050817,
           "Position": {
@@ -87,7 +73,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "CompleteQuest",
-          "StopDistance": 5,
           "DialogueChoices": [
             {
               "Type": "List",

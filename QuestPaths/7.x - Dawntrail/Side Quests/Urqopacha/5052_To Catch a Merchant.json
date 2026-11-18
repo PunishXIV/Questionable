@@ -14,22 +14,7 @@
             "Z": -420.49292
           },
           "TerritoryId": 1187,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 383.29138,
-                  "Y": -154.50243,
-                  "Z": -420.49292
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,9 +29,7 @@
             "Z": -178.63745
           },
           "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,9 +44,7 @@
             "Z": 49.54602
           },
           "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -78,9 +59,7 @@
             "Z": 37.00305
           },
           "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,21 +75,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 383.29138,
-                  "Y": -154.50243,
-                  "Z": -420.49292
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 150
-              }
-            }
-          },
           "NextQuestId": 5053
         }
       ]

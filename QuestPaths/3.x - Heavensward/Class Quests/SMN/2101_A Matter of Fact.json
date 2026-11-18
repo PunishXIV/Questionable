@@ -14,18 +14,7 @@
             "Z": -246.87573
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,8 +29,7 @@
             "Z": 112.38269
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -107,7 +95,6 @@
             "Y": -36.84067,
             "Z": 26.942286
           },
-          "StopDistance": 0.5,
           "TerritoryId": 145,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -115,7 +102,6 @@
             4777,
             4778
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null]
@@ -144,7 +130,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "NextQuestId": 2102
         }
       ]

@@ -30,15 +30,7 @@
           },
           "TerritoryId": 959,
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 4240,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "QuestsCompleted": [
-                4240
-              ]
-            }
-          }
+          "PickUpQuestId": 4240
         },
         {
           "DataId": 1039520,
@@ -59,8 +51,7 @@
             "Z": -504.26492
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -127,7 +118,6 @@
             "Y": -167.50227,
             "Z": -511.4072
           },
-          "StopDistance": 0.25,
           "TerritoryId": 959,
           "InteractionType": "Interact"
         }
@@ -143,7 +133,6 @@
             "Y": -167.50174,
             "Z": -526.3702
           },
-          "StopDistance": 0.25,
           "TerritoryId": 959,
           "InteractionType": "Interact"
         }
@@ -159,7 +148,6 @@
             "Y": -167.50163,
             "Z": -577.03906
           },
-          "StopDistance": 0.25,
           "TerritoryId": 959,
           "InteractionType": "Interact"
         }
@@ -175,7 +163,6 @@
             "Y": -167.50163,
             "Z": -594.92847
           },
-          "StopDistance": 0.25,
           "TerritoryId": 959,
           "InteractionType": "Interact"
         }
@@ -191,7 +178,6 @@
             "Y": -167.50217,
             "Z": -659.45184
           },
-          "StopDistance": 0.25,
           "TerritoryId": 959,
           "InteractionType": "Interact"
         }
@@ -207,7 +193,6 @@
             "Y": -168.00002,
             "Z": -656.58044
           },
-          "StopDistance": 7,
           "TerritoryId": 959,
           "InteractionType": "CompleteQuest"
         }

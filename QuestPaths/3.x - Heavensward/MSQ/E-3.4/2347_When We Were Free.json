@@ -13,10 +13,8 @@
             "Y": 27.660244,
             "Z": -397.72644
           },
-          "StopDistance": 5,
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,7 +42,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "Mount": true,
           "$": "1 0 0 0 0 32 -> 2 0 0 0 0 160",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
@@ -57,7 +54,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -96,16 +92,6 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Position": {
-            "X": -58.848705,
-            "Y": 26.173487,
-            "Z": -385.86462
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "$": "Little Ala Mhigo eastern gate"
-        },
-        {
           "DataId": 1017756,
           "Position": {
             "X": 181.96375,
@@ -113,8 +99,7 @@
             "Z": -446.82996
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

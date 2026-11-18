@@ -14,8 +14,7 @@
             "Z": -478.78235
           },
           "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,15 +34,6 @@
           "AetherCurrentId": 2818452
         },
         {
-          "Position": {
-            "X": 616.9261,
-            "Y": -17.458832,
-            "Z": -435.18936
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2013961,
           "Position": {
             "X": 645.5939,
@@ -53,15 +43,6 @@
           "TerritoryId": 1190,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818456
-        },
-        {
-          "Position": {
-            "X": 659.8994,
-            "Y": -16.525915,
-            "Z": -173.6375
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2013963,
@@ -75,15 +56,6 @@
           "AetherCurrentId": 2818458
         },
         {
-          "Position": {
-            "X": 198.9425,
-            "Y": 6.210067,
-            "Z": -53.1092
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2013962,
           "Position": {
             "X": 183.88635,
@@ -93,15 +65,6 @@
           "TerritoryId": 1190,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818457
-        },
-        {
-          "Position": {
-            "X": 290.40674,
-            "Y": -11.14023,
-            "Z": -126.13759
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1050656,
@@ -120,23 +83,12 @@
       "Steps": [
         {
           "Position": {
-            "X": 400.57977,
-            "Y": -18.2,
-            "Z": -244.50037
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "Mount": false
-        },
-        {
-          "Position": {
             "X": 379.76282,
             "Y": -18.2,
             "Z": -293.1074
           },
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
-          "Mount": false,
           "DelaySecondsAtStart": 3
         },
         {
@@ -147,7 +99,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
-          "Mount": false,
           "DelaySecondsAtStart": 3
         },
         {
@@ -158,18 +109,7 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
-          "Mount": false,
           "DelaySecondsAtStart": 3
-        },
-        {
-          "Position": {
-            "X": 386.26978,
-            "Y": -18.2,
-            "Z": -454.76865
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "Mount": false
         },
         {
           "DataId": 17739,
@@ -178,11 +118,9 @@
             "Y": -15.274292,
             "Z": -476.0052
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1190,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 4,
-          "Mount": false
+          "NpcWaitDistance": 4
         },
         {
           "DataId": 2014057,
@@ -206,7 +144,6 @@
             "Y": -15.566031,
             "Z": -478.78235
           },
-          "StopDistance": 5,
           "TerritoryId": 1190,
           "InteractionType": "CompleteQuest"
         }

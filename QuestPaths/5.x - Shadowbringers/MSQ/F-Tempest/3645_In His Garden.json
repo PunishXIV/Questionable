@@ -29,11 +29,7 @@
             "Z": -86.86963
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Crystalline Mean",
-            "[Crystarium] Temenos Rookery"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -74,10 +70,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] Temenos Rookery",
-            "[Crystarium] The Cabinet of Curiosity"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -89,11 +81,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Amaro Launch"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -102,14 +89,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "TerritoryId": 819,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] Tessellation (Lakeland)"
-          ]
-        },
-        {
           "Position": {
             "X": 608.7031,
             "Y": 12.602462,
@@ -117,7 +96,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"

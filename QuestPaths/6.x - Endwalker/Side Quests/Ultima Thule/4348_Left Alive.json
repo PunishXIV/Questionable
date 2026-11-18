@@ -13,23 +13,7 @@
             "Z": 324.33044
           },
           "TerritoryId": 960,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 5,
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -574.30383,
-                  "Y": 77.29004,
-                  "Z": 324.33044
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,7 +29,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -64,7 +47,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -87,8 +69,7 @@
             "Z": 537.52954
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -103,23 +84,7 @@
             "Z": 324.33044
           },
           "TerritoryId": 960,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "StopDistance": 5,
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -574.30383,
-                  "Y": 77.29004,
-                  "Z": 324.33044
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

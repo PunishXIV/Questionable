@@ -13,10 +13,8 @@
             "Y": 46.99734,
             "Z": 32.547485
           },
-          "StopDistance": 7,
           "TerritoryId": 147,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": -225.17743
           },
           "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -211,7 +208,6 @@
             "Y": 88,
             "Z": -225.17743
           },
-          "StopDistance": 7,
           "TerritoryId": 147,
           "InteractionType": "CompleteQuest"
         }

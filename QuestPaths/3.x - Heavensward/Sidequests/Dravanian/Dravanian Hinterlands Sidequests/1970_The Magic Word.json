@@ -14,14 +14,8 @@
             "Z": 740.4025
           },
           "TerritoryId": 399,
-          "StopDistance": 1,
           "InteractionType": "Interact",
           "TargetTerritoryId": 463,
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
           "SkipConditions": { "StepIf": { "InTerritory": [463] } }
         },
         {
@@ -125,12 +119,7 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Say",
-          "ChatMessage": { "Key": "TEXT_HEAVNZ905_01970_SAY_000_000" },
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ]
+          "ChatMessage": { "Key": "TEXT_HEAVNZ905_01970_SAY_000_000" }
         }
       ]
     },
@@ -145,11 +134,7 @@
             "Z": 747.916
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -186,14 +171,8 @@
             "Z": 740.4025
           },
           "TerritoryId": 399,
-          "StopDistance": 1,
           "InteractionType": "Interact",
           "TargetTerritoryId": 463,
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
           "SkipConditions": { "StepIf": { "InTerritory": [463] } }
         },
         {

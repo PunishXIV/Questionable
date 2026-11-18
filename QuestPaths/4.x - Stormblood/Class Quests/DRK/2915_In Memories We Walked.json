@@ -15,10 +15,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -40,11 +36,7 @@
             "Z": 37.00305
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Last Vigil"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,11 +51,7 @@
             "Z": -13.595825
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,11 +96,7 @@
             "Z": -65.07977
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Tribunal"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -127,9 +111,7 @@
             "Z": 683.25305
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -144,8 +126,7 @@
             "Z": 419.7909
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -177,8 +158,6 @@
           },
           "TerritoryId": 397,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true,
           "NextQuestId": 2916
         }
       ]

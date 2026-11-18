@@ -15,7 +15,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Radz-at-Han",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -75,11 +74,7 @@
             "Z": 36.057007
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Kama"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,28 +88,14 @@
             "Y": 3.9998171,
             "Z": 204.24194
           },
-          "StopDistance": 5,
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "TerritoryId": 819,
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] Tessellation (Lakeland)"
-          ],
-          "InteractionType": "None"
-        },
         {
           "Position": {
             "X": 55.589294,
@@ -167,7 +148,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -177,10 +157,8 @@
             "Y": 9.572956,
             "Z": 708.3999
           },
-          "StopDistance": 1,
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -192,8 +170,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -297,7 +273,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 4543
         }
       ]

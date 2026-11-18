@@ -13,11 +13,7 @@
             "Z": 3.4942627
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,11 +28,7 @@
             "Z": -22.62915
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,11 +43,7 @@
             "Z": -164.08032
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

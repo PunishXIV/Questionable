@@ -34,7 +34,6 @@
             "Y": -4.4899712E-13,
             "Z": 95.59766
           },
-          "StopDistance": 6,
           "TerritoryId": 1093,
           "InteractionType": "AcceptQuest"
         }
@@ -92,8 +91,7 @@
             "Z": 301.9912
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Aporia"
+          "InteractionType": "Interact"
         }
       ]
     },

@@ -13,7 +13,6 @@
             "Y": -12.716527,
             "Z": 216.7544
           },
-          "StopDistance": 5,
           "TerritoryId": 1192,
           "InteractionType": "AcceptQuest"
         }
@@ -31,15 +30,9 @@
           },
           "TerritoryId": 1192,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo",
           "TargetTerritoryId": 1192,
           "SkipConditions": {
             "StepIf": {
-              "QuestsCompleted": [
-                5176
-              ]
-            },
-            "AetheryteShortcutIf": {
               "QuestsCompleted": [
                 5176
               ]
@@ -65,8 +58,7 @@
             "Z": 753.1699
           },
           "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -121,7 +113,6 @@
             "Y": 26.972605,
             "Z": -296.37604
           },
-          "StopDistance": 7,
           "TerritoryId": 1192,
           "InteractionType": "CompleteQuest"
         }

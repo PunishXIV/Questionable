@@ -15,8 +15,7 @@
             "Z": 74.47925
           },
           "TerritoryId": 137,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,9 +34,7 @@
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.292"
-          },
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "Fly": true
+          }
         }
       ]
     },
@@ -67,9 +64,7 @@
             "Z": 74.47925
           },
           "TerritoryId": 137,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

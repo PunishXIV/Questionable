@@ -13,10 +13,8 @@
             "Y": -3.968323E-12,
             "Z": -19.821533
           },
-          "StopDistance": 5,
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,11 +29,7 @@
             "Z": -75.76111
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Western Rhalgr's Reach",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,15 +45,7 @@
           },
           "TerritoryId": 620,
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 2655,
-          "AetheryteShortcut": "Peaks - Ala Gannha",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "QuestsCompleted": [
-                2655
-              ]
-            }
-          }
+          "PickUpQuestId": 2655
         },
         {
           "DataId": 1020432,
@@ -69,8 +55,7 @@
             "Z": -481.68158
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "InteractionType": "Interact"
         }
       ]
     },

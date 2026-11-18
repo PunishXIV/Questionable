@@ -29,8 +29,7 @@
             "Z": 29.3125
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,11 +44,7 @@
             "Z": 2.456604
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,11 +59,7 @@
             "Z": 33.279907
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

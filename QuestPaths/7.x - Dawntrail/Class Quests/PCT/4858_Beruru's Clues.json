@@ -14,12 +14,7 @@
             "Z": -77.37854
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,8 +30,7 @@
           },
           "TerritoryId": 130,
           "InteractionType": "UseItem",
-          "ItemId": 2003503,
-          "AetheryteShortcut": "Ul'dah"
+          "ItemId": 2003503
         }
       ]
     },
@@ -51,11 +45,7 @@
             "Z": 45.303955
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -68,7 +58,6 @@
             "Y": -32,
             "Z": 92.85731
           },
-          "StopDistance": 0.5,
           "TerritoryId": 141,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -82,12 +71,7 @@
             17638,
             17639,
             17640
-          ],
-          "AethernetShortcut": [
-            "[Ul'dah] Thaumaturges' Guild",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -102,11 +86,7 @@
             "Z": 46.73828
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -120,7 +100,6 @@
             "Y": 14.005,
             "Z": 45.303955
           },
-          "StopDistance": 5,
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [

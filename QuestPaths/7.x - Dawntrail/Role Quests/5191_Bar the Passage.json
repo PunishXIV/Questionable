@@ -30,11 +30,7 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AethernetShortcut": [
-            "[Tuliyollal] The For'ard Cabins",
-            "[Tuliyollal] Xak Tural Skygate (Shaaloani)"
-          ]
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -67,12 +63,7 @@
             "Z": 182.7268
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] The For'ard Cabins"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -101,7 +92,6 @@
             "Y": -19.762682,
             "Z": 221.72876
           },
-          "StopDistance": 5,
           "TerritoryId": 1185,
           "InteractionType": "Interact"
         }
@@ -117,7 +107,6 @@
             "Y": -19.928413,
             "Z": 224.90259
           },
-          "StopDistance": 5,
           "TerritoryId": 1185,
           "InteractionType": "Interact"
         }
@@ -133,7 +122,6 @@
             "Y": -19.784014,
             "Z": 224.17017
           },
-          "StopDistance": 5,
           "TerritoryId": 1185,
           "InteractionType": "Interact"
         }
@@ -158,22 +146,12 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": -44.643284,
-            "Y": -17.972864,
-            "Z": 203.87883
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1046521,
           "Position": {
             "X": -46.616333,
             "Y": -17.97287,
             "Z": 180.3158
           },
-          "StopDistance": 5,
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest"
         }

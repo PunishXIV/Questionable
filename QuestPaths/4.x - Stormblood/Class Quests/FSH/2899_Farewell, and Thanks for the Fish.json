@@ -13,10 +13,8 @@
             "Y": 3.9999998,
             "Z": 200.34163
           },
-          "StopDistance": 1,
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": -457.276
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,7 +61,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "PurchaseItem",
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
             "Key": 262876
@@ -87,14 +83,12 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Fish",
-          "StopDistance": 0.25,
           "ItemsToGather": [
             {
               "ItemId": 17952,
               "ItemCount": 5
             }
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 1021416,
@@ -104,8 +98,7 @@
             "Z": -457.276
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

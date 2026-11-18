@@ -43,8 +43,7 @@
             "Z": -84.08555
           },
           "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "WalkTo"
         }
       ]
     },
@@ -58,8 +57,7 @@
             "Z": -151.14738
           },
           "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "WalkTo"
         }
       ]
     },
@@ -73,7 +71,6 @@
             "Y": 56.75789,
             "Z": -148.24146
           },
-          "StopDistance": 5,
           "TerritoryId": 813,
           "InteractionType": "Interact"
         }
@@ -82,24 +79,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -655.08356,
-            "Y": 52.60457,
-            "Z": -186.09218
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -628.89685,
-            "Y": 52.60457,
-            "Z": -190.31772
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 2010032,
           "Position": {
@@ -126,15 +105,6 @@
           "TerritoryId": 813,
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179722
-        },
-        {
-          "Position": {
-            "X": -694.6047,
-            "Y": 50.939487,
-            "Z": -270.97464
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1028947,

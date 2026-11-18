@@ -13,7 +13,6 @@
             "Y": -1.9957249,
             "Z": -43.22882
           },
-          "StopDistance": 7,
           "TerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -23,27 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": -523.8519,
-            "Y": 22.025784,
-            "Z": -512.0333
-          },
-          "TerritoryId": 402,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Azys Lla - Helix",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -231.93713,
-            "Y": 303.47726,
-            "Z": -311.9725
-          },
-          "TerritoryId": 402,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1016631,
           "Position": {
             "X": 209.12476,
@@ -51,8 +29,7 @@
             "Z": -4.3793945
           },
           "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,7 +56,6 @@
             "Y": -1.9957249,
             "Z": -43.22882
           },
-          "StopDistance": 7,
           "TerritoryId": 351,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2288

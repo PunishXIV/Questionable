@@ -7,27 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 145,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
           "Position": {
             "X": -492.96475,
             "Y": 20.999884,
@@ -35,7 +14,6 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": {
             "StepIf": {
@@ -83,8 +61,7 @@
             "Z": -5.081299
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -99,9 +76,7 @@
             "Z": -35.385742
           },
           "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

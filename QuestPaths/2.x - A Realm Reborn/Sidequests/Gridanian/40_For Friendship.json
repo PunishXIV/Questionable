@@ -13,10 +13,8 @@
             "Y": -3.70067,
             "Z": 53.1166
           },
-          "StopDistance": 2,
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +28,9 @@
             "Y": -3.28353,
             "Z": 38.2862
           },
-          "StopDistance": 2,
           "TerritoryId": 132,
           "InteractionType": "Emote",
-          "Emote": "bow",
-          "Fly": true
+          "Emote": "bow"
         }
       ]
     },
@@ -48,10 +44,8 @@
             "Y": -3.70067,
             "Z": 53.1166
           },
-          "StopDistance": 2,
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,11 +59,9 @@
             "Y": -3.28353,
             "Z": 38.2862
           },
-          "StopDistance": 2,
           "TerritoryId": 132,
           "InteractionType": "Emote",
-          "Emote": "joy",
-          "Fly": true
+          "Emote": "joy"
         }
       ]
     },
@@ -83,10 +75,8 @@
             "Y": -3.70067,
             "Z": 53.1166
           },
-          "StopDistance": 2,
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -100,11 +90,9 @@
             "Y": -3.28353,
             "Z": 38.2862
           },
-          "StopDistance": 2,
           "TerritoryId": 132,
           "InteractionType": "Emote",
-          "Emote": "dance",
-          "Fly": true
+          "Emote": "dance"
         }
       ]
     },
@@ -118,10 +106,8 @@
             "Y": -3.70067,
             "Z": 53.1166
           },
-          "StopDistance": 2,
           "TerritoryId": 132,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

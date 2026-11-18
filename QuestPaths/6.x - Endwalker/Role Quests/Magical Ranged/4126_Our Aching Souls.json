@@ -15,11 +15,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -41,8 +36,7 @@
             "Z": 45.303955
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -57,11 +51,7 @@
             "Z": -167.92554
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,9 +81,7 @@
             "Z": -545.7695
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -106,14 +94,12 @@
             "Y": 184.83743,
             "Z": -453.5654
           },
-          "StopDistance": 0.5,
           "TerritoryId": 397,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             14025
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -128,8 +114,7 @@
             "Z": -544.0299
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -145,10 +130,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

@@ -15,17 +15,7 @@
             "Z": -25.833557
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,28 +30,13 @@
             "Z": 185.53442
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 442.77185,
-            "Y": -0.9374202,
-            "Z": -63.946045
-          },
-          "TerritoryId": 154,
-          "Fly": true,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
-        },
         {
           "DataId": 1003075,
           "Position": {
@@ -128,16 +103,7 @@
             "Z": -25.833557
           },
           "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

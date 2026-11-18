@@ -14,11 +14,7 @@
             "Z": 47.287598
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,9 +29,7 @@
             "Z": 157.64087
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -83,7 +77,6 @@
           },
           "TerritoryId": 145,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -104,10 +97,8 @@
             "Y": -28.35069,
             "Z": 324.75757
           },
-          "StopDistance": 2,
           "TerritoryId": 145,
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -124,7 +115,6 @@
             "Y": -31.365185,
             "Z": 310.68884
           },
-          "StopDistance": 7,
           "TerritoryId": 145,
           "InteractionType": "Interact"
         }
@@ -141,8 +131,7 @@
             "Z": 106.79785
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "InteractionType": "Interact"
         }
       ]
     },

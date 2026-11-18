@@ -14,12 +14,7 @@
             "Z": 210.25403
           },
           "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -54,9 +49,7 @@
           "KillEnemyDataIds": [
             19348
           ],
-          "ItemId": 2003807,
-          "Fly": true,
-          "AetheryteShortcut": "Heritage Found - Electrope Strike"
+          "ItemId": 2003807
         }
       ]
     },
@@ -71,12 +64,7 @@
             "Z": 290.5775
           },
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,11 +79,7 @@
             "Z": -61.112427
           },
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Neon Stein",
-            "[Solution Nine] Nexus Arcade"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

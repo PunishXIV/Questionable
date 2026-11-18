@@ -15,8 +15,7 @@
             "Z": -42.404846
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -46,9 +45,7 @@
             "Z": -359.76202
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -73,26 +70,6 @@
             null,
             16
           ]
-        },
-        {
-          "Position": {
-            "X": -258.89648,
-            "Y": 26.681297,
-            "Z": -322.03738
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -102.12759,
-            "Y": 14.866777,
-            "Z": -187.7578
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 2001523,
@@ -130,8 +107,7 @@
             null,
             null,
             32
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 2001522,
@@ -143,7 +119,6 @@
           "TerritoryId": 146,
           "InteractionType": "UseItem",
           "ItemId": 2000409,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -167,8 +142,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "SinglePlayerDuty",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -187,7 +160,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "NextQuestId": 567
         }
       ]

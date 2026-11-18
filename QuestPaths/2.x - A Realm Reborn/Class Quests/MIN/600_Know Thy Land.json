@@ -14,18 +14,7 @@
             "Z": 157.42725
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Miners' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -53,11 +42,7 @@
                 "NotInInventory": false
               }
             }
-          },
-          "AethernetShortcut": [
-            "[Ul'dah] Miners' Guild",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          }
         },
         {
           "DataId": 1002298,
@@ -67,20 +52,7 @@
             "Z": 157.42725
           },
           "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
-          "AethernetShortcut": [
-            "[Ul'dah] Goldsmiths' Guild",
-            "[Ul'dah] Miners' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

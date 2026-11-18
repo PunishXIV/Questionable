@@ -52,16 +52,6 @@
           "SkipConditions": {"StepIf": {"Diving": true}}
         },
         {
-          "Position": {
-            "X": -17.380053,
-            "Y": -117.42155,
-            "Z": -92.01053
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "$": "Go around Sui-no-Sato"
-        },
-        {
           "DataId": 1019978,
           "Position": {
             "X": -227.86298,
@@ -69,8 +59,7 @@
             "Z": 185.74805
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,8 +74,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "UseItem",
-          "StopDistance": 1,
-          "Fly": true,
           "ItemId": 2002243
         }
       ]
@@ -102,8 +89,7 @@
             "Z": 221.51514
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Mount": false
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -118,8 +104,7 @@
             "Z": 185.74805
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

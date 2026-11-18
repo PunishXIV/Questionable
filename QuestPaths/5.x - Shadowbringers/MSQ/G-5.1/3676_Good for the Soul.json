@@ -51,8 +51,7 @@
             "Z": -235.46198
           },
           "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Twine"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,10 +79,8 @@
             "Y": 42.282715,
             "Z": -470.48145
           },
-          "StopDistance": 1,
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -133,7 +130,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -154,7 +150,6 @@
             "Y": -27.966003,
             "Z": 304.12744
           },
-          "StopDistance": 6,
           "TerritoryId": 815,
           "InteractionType": "CompleteQuest"
         }

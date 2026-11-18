@@ -14,9 +14,7 @@
             "Z": 456.43982
           },
           "TerritoryId": 137,
-          "StopDistance": 1,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "$": "auto: issuer 1006273 (Gegeruju)"
         }
       ]
@@ -32,7 +30,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -58,7 +55,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             1891
@@ -78,9 +74,7 @@
             "Z": 456.43982
           },
           "TerritoryId": 137,
-          "StopDistance": 1,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "$": "auto: todo turn-in -> 1006273 (Gegeruju)"
         }
       ]

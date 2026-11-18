@@ -14,9 +14,7 @@
             "Z": 99.22937
           },
           "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": 135.42383
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,10 +58,8 @@
             "Y": -40.705082,
             "Z": 174.59982
           },
-          "StopDistance": 1,
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -87,15 +82,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": -31.151138,
-            "Y": -40.708473,
-            "Z": 195.69182
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1009199,
           "Position": {
             "X": 149.43152,
@@ -103,9 +89,7 @@
             "Z": 99.22937
           },
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

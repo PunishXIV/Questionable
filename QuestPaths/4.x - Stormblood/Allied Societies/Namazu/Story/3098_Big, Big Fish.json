@@ -14,9 +14,7 @@
             "Z": 91.11157
           },
           "TerritoryId": 622,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1025601,
@@ -33,17 +31,6 @@
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -283.0104,
-            "Y": 17.31996,
-            "Z": 508.54376
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Yanxia - Namai",
-          "Fly": true
-        },
         {
           "DataId": 1025702,
           "Position": {
@@ -90,8 +77,7 @@
             "Z": 91.11157
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -169,9 +155,7 @@
             "Z": 99.99231
           },
           "TerritoryId": 622,
-          "InteractionType": "CompleteQuest",
-          "Mount": true,
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

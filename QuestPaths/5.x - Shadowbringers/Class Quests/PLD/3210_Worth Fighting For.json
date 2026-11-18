@@ -14,16 +14,7 @@
             "Z": -2.4262085
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [130, 131]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -38,11 +29,7 @@
             "Z": 39.81079
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] The Chamber of Rule",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -57,12 +44,7 @@
             "Z": 228.19861
           },
           "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,11 +59,7 @@
             "Z": 39.81079
           },
           "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

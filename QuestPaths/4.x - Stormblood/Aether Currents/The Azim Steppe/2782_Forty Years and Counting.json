@@ -14,21 +14,7 @@
             "Z": 95.994385
           },
           "TerritoryId": 622,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 79.24011,
-                  "Y": 114.90497,
-                  "Z": 95.994385
-                },
-                "TerritoryId": 622,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -80,7 +66,6 @@
             "Y": 115.464966,
             "Z": -48.05072
           },
-          "StopDistance": 4,
           "TerritoryId": 622,
           "InteractionType": "Interact",
           "$": "QW: 1 16    0 0    0 128 -> QW: 2 32    0 0    0 192",

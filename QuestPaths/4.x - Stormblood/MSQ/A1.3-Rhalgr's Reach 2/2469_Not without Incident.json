@@ -14,8 +14,7 @@
             "Z": -648.73737
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,7 @@
             "Z": 38.712036
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,7 +43,6 @@
             "Y": 8.000015,
             "Z": 45.822754
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -102,7 +96,6 @@
             "Y": -6.9999976,
             "Z": -58.884644
           },
-          "StopDistance": 6,
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest"
         }

@@ -13,10 +13,8 @@
             "Y": 130,
             "Z": -522.17896
           },
-          "StopDistance": 5,
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -38,8 +36,7 @@
             "Z": -534.59985
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -74,9 +71,7 @@
             "Z": -534.59985
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -114,7 +109,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
           "NextQuestId": 2894
         }
       ]

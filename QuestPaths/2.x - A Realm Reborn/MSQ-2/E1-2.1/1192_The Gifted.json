@@ -38,34 +38,13 @@
       "Sequence": 2,
       "Steps": [
         {
-          "TerritoryId": 212,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
           "Position": {
             "X": -461.71686,
             "Y": 23.192137,
             "Z": -369.12787
           },
           "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "WalkTo"
         }
       ]
     },
@@ -78,12 +57,10 @@
             "Y": 22.698383,
             "Z": -439.40274
           },
-          "StopDistance": 0.25,
           "TerritoryId": 140,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [2477],
-          "Fly": true
+          "KillEnemyDataIds": [2477]
         }
       ]
     },
@@ -96,12 +73,10 @@
             "Y": 24.74541,
             "Z": -501.20456
           },
-          "StopDistance": 0.25,
           "TerritoryId": 140,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [2478],
-          "Fly": true
+          "KillEnemyDataIds": [2478]
         }
       ]
     },
@@ -114,12 +89,10 @@
             "Y": 16.426182,
             "Z": -628.9341
           },
-          "StopDistance": 0.25,
           "TerritoryId": 140,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [2479],
-          "Fly": true
+          "KillEnemyDataIds": [2479]
         }
       ]
     },
@@ -132,12 +105,10 @@
             "Y": 14.785374,
             "Z": -780.03625
           },
-          "StopDistance": 0.25,
           "TerritoryId": 140,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [2480, 2481],
-          "Fly": true
+          "KillEnemyDataIds": [2480, 2481]
         }
       ]
     },
@@ -160,27 +131,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "TerritoryId": 140,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
           "Position": {
             "X": -492.96475,
             "Y": 20.999884,
@@ -188,7 +138,6 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },

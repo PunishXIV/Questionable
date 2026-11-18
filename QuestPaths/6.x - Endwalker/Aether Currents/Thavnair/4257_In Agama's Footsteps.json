@@ -48,7 +48,6 @@
           "KillEnemyDataIds": [
             14114
           ],
-          "Mount": false,
           "DelaySecondsAtStart": 3
         },
         {
@@ -58,11 +57,9 @@
             "Y": 13.173893,
             "Z": -239.1983
           },
-          "StopDistance": 1,
           "TerritoryId": 957,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 4,
-          "Mount": false,
           "DelaySecondsAtStart": 3
         },
         {

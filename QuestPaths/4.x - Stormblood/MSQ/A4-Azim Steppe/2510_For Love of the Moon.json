@@ -13,10 +13,8 @@
             "Y": 121.12067,
             "Z": 62.088867
           },
-          "StopDistance": 7,
           "TerritoryId": 622,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -90,16 +88,6 @@
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": -45.269917,
-            "Y": 114.904976,
-            "Z": 30.628508
-          },
-          "TerritoryId": 622,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
         {
           "DataId": 1019426,
           "Position": {

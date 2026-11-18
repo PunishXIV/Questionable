@@ -14,36 +14,13 @@
             "Z": -114.67157
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Comment": "Clearing normal unlock quest",
-          "TerritoryId": 1,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "Item": { "NotInInventory": true },
-              "QuestsCompleted": [1014]
-            }
-          }
-        },
         {
           "Comment": "Clearing normal unlock quest",
           "DataId": 1005021,
@@ -65,13 +42,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "Mor Dhona",
-              "InTerritory": [155]
-            },
             "StepIf": {
               "AetheryteLocked": "Mor Dhona",
               "InTerritory": [155]
@@ -102,9 +73,7 @@
             "Z": 692.65283
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -132,8 +101,7 @@
             "Z": -114.67157
           },
           "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

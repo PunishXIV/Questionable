@@ -14,12 +14,7 @@
             "Z": 55.77173
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Kogane Dori Markets"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

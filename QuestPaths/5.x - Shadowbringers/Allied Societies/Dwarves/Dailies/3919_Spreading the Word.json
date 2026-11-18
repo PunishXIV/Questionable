@@ -14,9 +14,7 @@
             "Z": -423.87152
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 29.007324
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,9 +60,7 @@
             "Z": -423.87152
           },
           "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

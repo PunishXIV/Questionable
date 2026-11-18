@@ -14,12 +14,7 @@
             "Z": -138.2315
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,11 +29,7 @@
             "Z": 198.6571
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Crystalline Mean",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,10 +51,6 @@
               "Type": "List",
               "Answer": "TEXT_LUCKLA202_03231_A1_000_002"
             }
-          ],
-          "AethernetShortcut": [
-            "[Crystarium] Musica Universalis Markets",
-            "[Crystarium] The Crystalline Mean"
           ]
         }
       ]

@@ -14,12 +14,7 @@
             "Z": -90.77594
           },
           "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] West Idyllshire"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,11 +29,7 @@
             "Z": -171.03839
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -53,12 +44,7 @@
             "Z": -86.35089
           },
           "TerritoryId": 478,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] West Idyllshire"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -139,8 +125,7 @@
             "Z": -92.57648
           },
           "TerritoryId": 478,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "Interact"
         }
       ]
     },

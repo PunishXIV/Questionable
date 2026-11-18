@@ -15,11 +15,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 987,
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Baldesion Annex"
-          ]
+          "TargetTerritoryId": 987
         },
         {
           "DataId": 1040291,
@@ -28,7 +24,6 @@
             "Y": 1.9073486E-06,
             "Z": 1.5715942
           },
-          "StopDistance": 5,
           "TerritoryId": 987,
           "InteractionType": "AcceptQuest"
         }
@@ -45,7 +40,6 @@
             "Z": -569.8787
           },
           "TerritoryId": 957,
-          "AetheryteShortcut": "Thavnair - Great Work",
           "InteractionType": "Interact"
         }
       ]

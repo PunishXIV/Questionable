@@ -14,19 +14,7 @@
             "Z": -166.97955
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                419
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -122,9 +110,7 @@
             "Z": -537.0108
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -140,11 +126,7 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 427,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ]
+          "TargetTerritoryId": 427
         },
         {
           "DataId": 1017874,

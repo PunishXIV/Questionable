@@ -14,8 +14,7 @@
             "Z": -96.23871
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 466.14783
           },
           "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,10 +43,8 @@
             "Y": 5.722107,
             "Z": 290.8827
           },
-          "StopDistance": 1,
           "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,7 +57,6 @@
             "Y": 5.0408907,
             "Z": 280.2135
           },
-          "StopDistance": 0.5,
           "TerritoryId": 147,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -82,7 +77,6 @@
             "Y": 4.983316,
             "Z": 284.38232
           },
-          "StopDistance": 7,
           "TerritoryId": 147,
           "InteractionType": "Interact"
         }
@@ -100,7 +94,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "NextQuestId": 2104
         }
       ]

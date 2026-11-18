@@ -13,7 +13,6 @@
             "Y": 69.02547,
             "Z": 515.06824
           },
-          "StopDistance": 5,
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
             "Z": 60.227295
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,11 +44,7 @@
             "Z": 94.92627
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,7 +90,6 @@
           },
           "TerritoryId": 635,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rhalgr's Reach",
           "NextQuestId": 3031
         }
       ]

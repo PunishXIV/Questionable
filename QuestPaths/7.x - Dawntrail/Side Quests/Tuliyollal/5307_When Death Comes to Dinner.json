@@ -14,8 +14,7 @@
             "Z": 95.56726
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,7 +43,6 @@
             "Y": -10.00001,
             "Z": 57.288975
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1185,
           "InteractionType": "Interact"
         }

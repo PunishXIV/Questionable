@@ -6,7 +6,6 @@ using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Movement;
 using Questionable.Controller.Steps.Shared;
 using Questionable.Model.Common;
-using Questionable.Model.Questing;
 using Xunit;
 
 namespace Questionable.Tests.Steps;
@@ -14,7 +13,7 @@ namespace Questionable.Tests.Steps;
 public sealed class TeleportTaskDetectorTests
 {
     private const uint Here = 129;
-    private static readonly AetheryteShortcut.Task Shortcut = new(null, null, EAetheryteLocation.Limsa, 129);
+    private static readonly AetheryteShortcut.Task Shortcut = new(null, EAetheryteLocation.Limsa, 129);
 
     [Fact]
     public void StartedShortcut_IsUpcoming() =>
@@ -40,19 +39,8 @@ public sealed class TeleportTaskDetectorTests
         Assert.Null(TeleportTaskDetector.GetUpcoming(null, new Travel.Task(Here, System.Numerics.Vector3.One, null), Here));
 
     [Fact]
-    public void QueuedTicket_IsUpcoming()
-    {
-        UseItem.IUseTask ticket = Item(QuestStep.VesperBayAetheryteTicket);
-        Assert.Same(ticket, TeleportTaskDetector.GetUpcoming(null, ticket, Here));
-    }
-
-    [Fact]
     public void QueuedQuestItem_IsNotUpcoming() =>
         Assert.Null(TeleportTaskDetector.GetUpcoming(null, Item(2001234), Here));
-
-    [Fact]
-    public void TicketBehindRunningTask_NotUpcoming() =>
-        Assert.Null(TeleportTaskDetector.GetUpcoming(Substitute.For<ITaskExecutor>(), Item(QuestStep.VesperBayAetheryteTicket), Here));
 
     [Fact]
     public void OtherTask_IsNotUpcoming() =>

@@ -13,7 +13,6 @@
             "Y": 122.122025,
             "Z": 340.93237
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "AcceptQuest"
         }
@@ -45,8 +44,7 @@
             "Z": 236.25537
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Many Fires"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,7 +58,6 @@
             "Y": 115.180565,
             "Z": 236.59106
           },
-          "StopDistance": 4,
           "TerritoryId": 1188,
           "InteractionType": "Interact"
         },
@@ -93,7 +90,6 @@
             "Y": 119.49004,
             "Z": 189.44067
           },
-          "StopDistance": 1,
           "TerritoryId": 1188,
           "InteractionType": "WalkTo"
         }
@@ -135,7 +131,6 @@
             "Y": 119.490036,
             "Z": 156.90845
           },
-          "StopDistance": 1,
           "TerritoryId": 1188,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 2
@@ -200,7 +195,6 @@
             "Y": 115.55489,
             "Z": 165.23987
           },
-          "StopDistance": 1,
           "TerritoryId": 1188,
           "InteractionType": "WalkTo"
         }
@@ -232,7 +226,6 @@
             "Y": 116.722374,
             "Z": 153.58203
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "CompleteQuest"
         }

@@ -30,8 +30,7 @@
           },
           "TerritoryId": 140,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 140,
-          "AetheryteShortcut": "Western Thanalan - Horizon"
+          "TargetTerritoryId": 140
         },
         {
           "DataId": 1002295,
@@ -54,25 +53,6 @@
           "TerritoryId": 140,
           "InteractionType": "Interact",
           "TargetTerritoryId": 140
-        },
-        {
-          "Position": {
-            "X": -396.50018,
-            "Y": 23,
-            "Z": -351.0944
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -408.92343,
-            "Y": 23.167036,
-            "Z": -351.16223
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "$": "Vesper Bay Gate"
         },
         {
           "$": "Unlock Vesper Bay taxi",
@@ -101,15 +81,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -493.3852,
-            "Y": 21,
-            "Z": -382.50455
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 2001711,
           "Position": {

@@ -15,18 +15,7 @@
             "Z": 164.294
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -49,30 +38,16 @@
           },
           "ItemId": 2604,
           "ItemCount": 99,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
                 "NotInInventory": false
               }
-            },
-            "AetheryteShortcutIf": {
-              "Item": {
-                "NotInInventory": false
-              },
-              "InTerritory": [
-                129
-              ]
             }
           }
         },
         {
           "DataId": 1004962,
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "Position": {
             "X": -300.27448,
             "Y": 7.4016953,
@@ -87,22 +62,13 @@
       "Sequence": 255,
       "Steps": [
         {
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "Position": {
             "X": 176.34221,
             "Y": -1.1806471,
             "Z": 736.2771
           },
           "TerritoryId": 146,
-          "Fly": true,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                146
-              ]
-            }
-          }
+          "InteractionType": "WalkTo"
         },
         {
           "Comment": "Fish for 1x Desert Catfish",
@@ -116,11 +82,6 @@
           ]
         },
         {
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "DataId": 1003628,
           "Position": {
             "X": -184.75,

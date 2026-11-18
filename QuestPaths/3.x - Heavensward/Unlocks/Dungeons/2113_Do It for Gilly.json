@@ -14,18 +14,7 @@
             "Z": 49.576538
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,41 +29,13 @@
             "Z": -4.8982544
           },
           "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Azys Lla - Helix",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                402
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 207.80292,
-            "Y": 21.783838,
-            "Z": 556.45264
-          },
-          "TerritoryId": 402,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Azys Lla - Helix",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                402
-              ]
-            }
-          }
-        },
         {
           "DataId": 2005561,
           "Position": {
@@ -83,9 +44,7 @@
             "Z": 558.77014
           },
           "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "Fly": false,
-          "Mount": false
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -114,15 +73,6 @@
           },
           "TerritoryId": 402,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Azys Lla - Helix",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                402
-              ]
-            }
-          },
           "NextQuestId": 3077,
           "$": "Next quest: Fractal Continuum Hard unlock quest 'An Unwanted Truth'. Technically this only requires dungeon completion, not quest completion, but you will have completed the dungeon in order to complete this quest."
         }

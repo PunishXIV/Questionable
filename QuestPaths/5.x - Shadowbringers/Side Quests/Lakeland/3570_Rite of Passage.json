@@ -10,7 +10,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1028316,
           "Position": {
             "X": 99.68713,
@@ -18,21 +17,7 @@
             "Z": 617.4562
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 99.68713,
-                  "Y": 0.14360762,
-                  "Z": 617.4562
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 950
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,7 +25,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "AetheryteShortcut": "Lakeland - Ostall Imperative",
           "DataId": 1031097,
           "Position": {
             "X": -640.7416,
@@ -55,8 +39,7 @@
               "Prompt": "TEXT_LUCKZJ007_03570_Q1_000_000",
               "Answer": "TEXT_LUCKZJ007_03570_A1_000_001"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -72,7 +55,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "QW: 0 0 0 0 0 0 -> QW: 16 1(1) 16 0 0 128",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
@@ -85,7 +67,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "QW: 16 1(1) 16 0 0 128 -> QW: 32 17(1) 16 16 0 160",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
@@ -97,8 +78,7 @@
             "Z": 154.19238
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -113,8 +93,7 @@
             "Z": 76.06616
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -129,8 +108,7 @@
             "Z": 617.4562
           },
           "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,7 +15,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "SkipConditions": { "StepIf": { "Flying": "Locked" } }
         },
         {
@@ -26,8 +25,7 @@
             "Z": 426.13855
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "Fly": false
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,7 +41,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "Fly": false,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -68,8 +65,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -81,8 +76,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked",
@@ -98,7 +91,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "Fly": false,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -115,8 +107,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "Fly": false,
-          "StopDistance": 3,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -128,7 +118,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "Fly": false,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -153,7 +142,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]

@@ -14,10 +14,7 @@
             "Z": 251.17871
           },
           "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,8 +41,7 @@
               "NameId": 162,
               "MinimumKillCount": 2
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -60,10 +56,7 @@
             "Z": 251.17871
           },
           "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

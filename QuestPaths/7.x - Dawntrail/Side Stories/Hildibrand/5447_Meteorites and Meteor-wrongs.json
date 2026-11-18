@@ -14,12 +14,7 @@
             "Z": 24.795776
           },
           "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Nexus Arcade"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,9 +29,7 @@
             "Z": -640.1007
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,9 +44,7 @@
             "Z": 495.29248
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,7 +60,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -88,7 +78,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -107,7 +96,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -130,8 +118,7 @@
             "Z": 494.255
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -146,8 +133,7 @@
             "Z": 443.093
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -162,8 +148,7 @@
             "Z": 335.6374
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -178,8 +163,7 @@
             "Z": 78.17385
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -194,9 +178,7 @@
             "Z": 19.394226
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

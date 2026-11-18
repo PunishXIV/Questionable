@@ -13,7 +13,6 @@
             "Y": 122.54732,
             "Z": 523.4912
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
           "InteractionType": "AcceptQuest"
         }
@@ -31,8 +30,7 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Emote",
-          "Emote": "soothe",
-          "Fly": true
+          "Emote": "soothe"
         }
       ]
     },
@@ -64,11 +62,8 @@
             "Y": 122.54732,
             "Z": 523.4912
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

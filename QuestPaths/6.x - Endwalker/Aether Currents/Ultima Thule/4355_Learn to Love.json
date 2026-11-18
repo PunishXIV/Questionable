@@ -64,15 +64,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 674.91565,
-            "Y": 440.4633,
-            "Z": 404.94272
-          },
-          "TerritoryId": 960,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2012032,
           "Position": {
             "X": 661.76843,
@@ -91,8 +82,7 @@
             "Z": 307.17932
           },
           "TerritoryId": 960,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ultima Thule - Base Omicron"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

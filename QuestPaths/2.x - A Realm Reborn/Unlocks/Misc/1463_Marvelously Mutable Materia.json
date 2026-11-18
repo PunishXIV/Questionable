@@ -15,9 +15,7 @@
             "Z": -359.63995
           },
           "TerritoryId": 141,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,9 +30,7 @@
             "Z": -392.2027
           },
           "TerritoryId": 141,
-          "InteractionType": "CompleteQuest",
-          "Mount": false,
-          "Fly": false
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

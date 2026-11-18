@@ -13,10 +13,8 @@
             "Y": 3.9999998,
             "Z": 200.34163
           },
-          "StopDistance": 1,
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -55,8 +53,7 @@
             "Z": -635.7367
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -86,8 +83,7 @@
             "Z": -635.712
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -101,10 +97,8 @@
             "Y": 3.9999998,
             "Z": 200.34163
           },
-          "StopDistance": 1,
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CLSFSH630_02896_Q1_000_000",

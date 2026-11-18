@@ -15,19 +15,7 @@
             "Z": 185.53442
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -70,11 +58,7 @@
             "Z": 211.5968
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

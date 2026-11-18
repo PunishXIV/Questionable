@@ -14,8 +14,7 @@
             "Z": 111.436646
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 284.99268
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": 230.85376
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,15 +57,13 @@
             "Y": 11.231914,
             "Z": 326.10486
           },
-          "StopDistance": 0.25,
           "TerritoryId": 138,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17612,
             17613
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -82,7 +77,6 @@
             "Y": 11.444184,
             "Z": 330.89185
           },
-          "StopDistance": 7,
           "TerritoryId": 138,
           "InteractionType": "Interact"
         }
@@ -98,7 +92,6 @@
             "Y": 11.569952,
             "Z": 329.57947
           },
-          "StopDistance": 10,
           "TerritoryId": 138,
           "InteractionType": "Action",
           "Action": "Esuna"
@@ -117,7 +110,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "NextQuestId": 4826
         }
       ]

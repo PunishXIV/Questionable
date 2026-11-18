@@ -14,8 +14,7 @@
             "Z": -71.70221
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 212.02405
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -142,11 +140,8 @@
             "Y": 58.91504,
             "Z": -274.61664
           },
-          "StopDistance": 1,
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -158,7 +153,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -170,8 +164,7 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
-          "Mount": false
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
     },
@@ -202,7 +195,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
           "NextQuestId": 4852
         }
       ]

@@ -14,11 +14,7 @@
             "Z": 12.218
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,7 +29,6 @@
             "Z": -498.0392
           },
           "TerritoryId": 1188,
-          "StopDistance": 5,
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -57,9 +52,7 @@
             "Z": -440.20355
           },
           "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 1188,
@@ -81,11 +74,7 @@
             "Z": 12.218
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

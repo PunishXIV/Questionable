@@ -15,19 +15,7 @@
             "Z": 95.26196
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,9 +31,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "UseItem",
-          "ItemId": 2000820,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "ItemId": 2000820
         },
         {
           "Position": {
@@ -90,10 +76,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
           "NextQuestId": 1065
         }
       ]

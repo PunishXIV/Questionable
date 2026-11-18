@@ -10,16 +10,7 @@
         {
           "TerritoryId": 133,
           "InteractionType": "SwitchClass",
-          "TargetClass": "Conjurer",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [133]
-            }
-          }
+          "TargetClass": "Conjurer"
         },
         {
           "DataId": 1000692,
@@ -29,16 +20,7 @@
             "Z": -27.267883
           },
           "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "InteractionType": "AcceptQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [133]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -54,9 +36,7 @@
           },
           "TerritoryId": 148,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": { "Enabled": true },
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true
+          "SinglePlayerDutyOptions": { "Enabled": true }
         }
       ]
     },
@@ -69,9 +49,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -95,7 +73,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"

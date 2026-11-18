@@ -13,7 +13,6 @@
             "Y": 119.49004,
             "Z": 190.72253
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "AcceptQuest"
         }
@@ -30,9 +29,7 @@
             "Z": 465.87305
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Earthenshire",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -106,7 +103,6 @@
             "Y": 130.34726,
             "Z": 610.3456
           },
-          "StopDistance": 7,
           "TerritoryId": 1187,
           "InteractionType": "CompleteQuest"
         }

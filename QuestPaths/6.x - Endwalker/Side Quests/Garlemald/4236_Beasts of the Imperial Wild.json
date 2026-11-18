@@ -29,8 +29,7 @@
             "Z": 485.67932
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,8 +44,7 @@
             "Z": 251.88062
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,7 +91,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "Interact",
-          "Fly": false,
           "$": "got a bit wonky on a slope here"
         }
       ]
@@ -109,8 +106,7 @@
             "Z": 470.32874
           },
           "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

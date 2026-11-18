@@ -13,7 +13,6 @@
             "Y": 7.1558266,
             "Z": -237.81189
           },
-          "StopDistance": 7,
           "TerritoryId": 815,
           "InteractionType": "AcceptQuest"
         }
@@ -45,8 +44,7 @@
             "Z": -20.859192
           },
           "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,7 +58,6 @@
             "Y": -41.81235,
             "Z": 81.55945
           },
-          "StopDistance": 6,
           "TerritoryId": 815,
           "InteractionType": "Interact"
         }
@@ -78,7 +75,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",

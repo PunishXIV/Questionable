@@ -14,8 +14,7 @@
             "Z": -67.73486
           },
           "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,12 +29,7 @@
             "Z": 40.238037
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,12 +44,7 @@
             "Z": 763.17993
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] The Ruby Bazaar",
-            "[Kugane] The Ruby Price"
-          ],
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -152,9 +141,7 @@
             "Z": -298.5733
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -200,7 +187,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
           "NextQuestId": 4761
         }
       ]

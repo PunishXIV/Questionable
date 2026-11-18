@@ -15,7 +15,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Interact",
-          "Fly": true,
           "TargetTerritoryId": 919,
           "SkipConditions": {"StepIf": {"InTerritory": [919]}}
         },
@@ -26,7 +25,6 @@
             "Y": 41,
             "Z": 17.56311
           },
-          "StopDistance": 7,
           "TerritoryId": 919,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
@@ -69,15 +67,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
-          "Position": {
-            "X": -15.634434,
-            "Y": 41,
-            "Z": 13.581184
-          },
-          "TerritoryId": 919,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1033629,
           "Position": {
             "X": -0.3204956,
@@ -115,7 +104,6 @@
             "Y": 34.999966,
             "Z": 78.01941
           },
-          "StopDistance": 7,
           "TerritoryId": 919,
           "InteractionType": "Interact"
         }
@@ -133,7 +121,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
           "NextQuestId": 4812
         }
       ]

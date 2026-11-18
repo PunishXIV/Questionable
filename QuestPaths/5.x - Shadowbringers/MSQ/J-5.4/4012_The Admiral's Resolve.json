@@ -14,8 +14,7 @@
             "Z": -223.40735
           },
           "TerritoryId": 399,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza","[Idyllshire] Epilogue Gate (Eastern Hinterlands)"]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -15.213318
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,10 +60,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "$.1": "QuestVariables if done first: 1 0 0 0 0 128"
         },
         {
@@ -75,13 +69,8 @@
             "Y": 44.399914,
             "Z": 132.34143
           },
-          "StopDistance": 5,
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,8 +85,7 @@
             "Z": -13.839966
           },
           "TerritoryId": 129,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

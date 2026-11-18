@@ -14,8 +14,7 @@
             "Z": 7.2174683
           },
           "TerritoryId": 759,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Doman Enclave"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,11 +30,7 @@
           },
           "TerritoryId": 759,
           "TargetTerritoryId": 614,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Doman Enclave] Aetheryte Plaza",
-            "[Doman Enclave] Ferry Docks"
-          ]
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1038494,
@@ -46,8 +41,7 @@
           },
           "TerritoryId": 614,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": false},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": false}
         }
       ]
     },
@@ -80,8 +74,7 @@
             "Z": 8.8654175
           },
           "TerritoryId": 759,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Doman Enclave"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,12 +89,7 @@
             "Z": -90.44025
           },
           "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

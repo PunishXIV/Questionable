@@ -14,21 +14,10 @@
             "Y": 79.05602,
             "Z": 45.303955
           },
-          "StopDistance": 7,
           "TerritoryId": 628,
           "InteractionType": "Interact",
           "TargetTerritoryId": 735,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Airship Landing"
-          ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                735
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 735
@@ -59,8 +48,7 @@
             "Z": -16.617126
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -90,9 +78,7 @@
             "Z": 455.10022
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -107,24 +93,13 @@
             "Z": -16.617126
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
       "Steps": [
-        {
-          "Position": {
-            "X": -371.6037,
-            "Y": 54.310753,
-            "Z": 428.55798
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1006312,
           "Position": {
@@ -180,8 +155,7 @@
             "Z": 431.75403
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -196,8 +170,7 @@
             "Z": -16.617126
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -212,9 +185,7 @@
             "Z": 455.10022
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -228,15 +199,9 @@
             "Y": 79.05602,
             "Z": 45.303955
           },
-          "StopDistance": 7,
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 735,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Airship Landing"
-          ]
+          "TargetTerritoryId": 735
         },
         {
           "DataId": 1026029,

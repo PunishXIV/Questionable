@@ -17,8 +17,7 @@
             "Z": -124.802
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -26,17 +25,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 419.3228,
-            "Y": 33.637783,
-            "Z": -107.16951
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1031369,
           "Position": {
             "X": 418.38696,
@@ -44,8 +32,7 @@
             "Z": -107.89661
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1031369,
@@ -57,22 +44,9 @@
           "TerritoryId": 817,
           "InteractionType": "UseItem",
           "ItemId": 2002861,
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
-          "Position": {
-            "X": 291.646,
-            "Y": 34.2428,
-            "Z": -149.737
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1031370,
           "Position": {
             "X": 291.646,
@@ -80,8 +54,7 @@
             "Z": -149.737
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1031370,
@@ -93,22 +66,9 @@
           "TerritoryId": 817,
           "InteractionType": "UseItem",
           "ItemId": 2002861,
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
-          "Position": {
-            "X": 449.538,
-            "Y": 18.9669,
-            "Z": -52.5691
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1031371,
           "Position": {
             "X": 449.538,
@@ -116,8 +76,7 @@
             "Z": -52.5691
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1031371,
@@ -129,22 +88,9 @@
           "TerritoryId": 817,
           "InteractionType": "UseItem",
           "ItemId": 2002861,
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
-          "Position": {
-            "X": 320.385,
-            "Y": 20.5108,
-            "Z": -220.174
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1031372,
           "Position": {
             "X": 320.385,
@@ -152,8 +98,7 @@
             "Z": -220.174
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1031372,
@@ -165,8 +110,6 @@
           "TerritoryId": 817,
           "InteractionType": "UseItem",
           "ItemId": 2002861,
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
         }
       ]
@@ -182,9 +125,7 @@
             "Z": -124.802
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

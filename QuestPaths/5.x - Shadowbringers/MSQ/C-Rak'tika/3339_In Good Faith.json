@@ -28,7 +28,6 @@
             "Y": 6.955061,
             "Z": -202.38043
           },
-          "StopDistance": 7,
           "TerritoryId": 817,
           "InteractionType": "Interact"
         }
@@ -43,7 +42,6 @@
             "Y": 18.753235,
             "Z": -43.01526
           },
-          "StopDistance": 1,
           "TerritoryId": 817,
           "InteractionType": "UseItem",
           "ItemId": 2002554
@@ -98,8 +96,7 @@
             "Z": -204.39465
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

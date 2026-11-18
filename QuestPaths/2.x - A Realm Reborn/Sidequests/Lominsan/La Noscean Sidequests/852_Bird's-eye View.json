@@ -14,9 +14,7 @@
             "Z": 456.43982
           },
           "TerritoryId": 137,
-          "StopDistance": 1,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "$": "auto: issuer 1006273 (Gegeruju)"
         }
       ]
@@ -32,9 +30,7 @@
             "Z": 156.63432
           },
           "TerritoryId": 137,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 1006320 (pitiless poacher)"
         }
       ]
@@ -51,7 +47,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2000661,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
           "$": "auto: todo location -> 2002066 (destination); use item ITEM0=2000661 on it"
@@ -65,7 +60,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2000661,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo location -> 2002065 (destination); use item ITEM0=2000661 on it"
@@ -79,7 +73,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2000661,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo location -> 2002064 (destination); use item ITEM0=2000661 on it"
@@ -93,7 +86,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2000661,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
           "$": "auto: todo location -> 2002677 (destination); use item ITEM0=2000661 on it"
@@ -111,9 +103,7 @@
             "Z": 156.63432
           },
           "TerritoryId": 137,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 1006320 (pitiless poacher)"
         }
       ]
@@ -129,9 +119,7 @@
             "Z": 456.43982
           },
           "TerritoryId": 137,
-          "StopDistance": 1,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "$": "auto: todo turn-in -> 1006273 (Gegeruju)"
         }
       ]

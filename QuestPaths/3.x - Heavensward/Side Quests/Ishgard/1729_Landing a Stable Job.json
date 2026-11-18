@@ -15,18 +15,7 @@
             "Z": -90.98956
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,18 +30,7 @@
             "Z": -87.66315
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,19 +45,7 @@
             "Z": 27.572998
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] Skysteel Manufactory"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,11 +62,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "TargetTerritoryId": 439,
           "DialogueChoices": [
             {
@@ -110,12 +71,6 @@
             }
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                439
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 439
@@ -148,15 +103,8 @@
           },
           "TerritoryId": 439,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard",
           "TargetTerritoryId": 418,
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                439
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 418
@@ -172,11 +120,7 @@
             "Z": 27.572998
           },
           "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

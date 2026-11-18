@@ -15,15 +15,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Tribunal"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [419]
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

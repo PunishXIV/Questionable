@@ -24,8 +24,7 @@
               "Prompt": "TEXT_AKTKZF005_04260_Q1_000_000",
               "Answer": "TEXT_AKTKZF005_04260_A1_000_002"
             }
-          ],
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          ]
         }
       ]
     },
@@ -48,10 +47,7 @@
               "Answer": "TEXT_AKTKZF005_04260_A1_001_001",
               "AnswerIsRegularExpression": true
             }
-          ],
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
@@ -65,8 +61,7 @@
             "Z": 125.93262
           },
           "TerritoryId": 957,
-          "InteractionType": "Dive",
-          "Fly": true
+          "InteractionType": "Dive"
         },
         {
           "DataId": 2012233,
@@ -92,9 +87,7 @@
             "Z": 94.6108
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -109,8 +102,7 @@
             "Z": -278.657
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

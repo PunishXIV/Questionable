@@ -13,7 +13,6 @@
             "Y": -99.19678,
             "Z": -221.36267
           },
-          "StopDistance": 7,
           "TerritoryId": 613,
           "InteractionType": "AcceptQuest"
         }
@@ -70,24 +69,6 @@
         },
         {
           "Position": {
-            "X": 543.42303,
-            "Y": -61.394184,
-            "Z": -153.51427
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 647.60547,
-            "Y": 3.3050807,
-            "Z": -55.93293
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
             "X": 664.2144,
             "Y": 1.8086157,
             "Z": -5.028036
@@ -117,8 +98,7 @@
             "Z": -221.36267
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

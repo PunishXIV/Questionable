@@ -14,8 +14,7 @@
             "Z": -73.80792
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,11 +30,7 @@
           "TerritoryId": 141,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "ComplexCombatData": [{ "DataId": 205, "MinimumKillCount": 5 }],
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ]
+          "ComplexCombatData": [{ "DataId": 205, "MinimumKillCount": 5 }]
         }
       ]
     },

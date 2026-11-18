@@ -58,7 +58,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Diving": true
@@ -75,8 +74,7 @@
           "TerritoryId": 613,
           "InteractionType": "SinglePlayerDuty",
           "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
-          "SinglePlayerDutyOptions": {"Enabled": false},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": false}
         }
       ]
     },

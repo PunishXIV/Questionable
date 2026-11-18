@@ -12,11 +12,8 @@
             "Y": -133.2695,
             "Z": -404.1352
           },
-          "StopDistance": 3,
           "TerritoryId": 401,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "InteractionType": "WalkTo"
         }
       ]
     }

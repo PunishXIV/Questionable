@@ -15,7 +15,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -38,10 +37,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Rakuza District",
-            "[Kugane] Sekiseigumi Barracks"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -53,10 +48,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] Aetheryte Plaza"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -129,11 +120,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ],
           "NextQuestId": 3021
         }
       ]

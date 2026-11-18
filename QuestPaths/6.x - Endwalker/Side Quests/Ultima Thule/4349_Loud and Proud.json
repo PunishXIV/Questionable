@@ -17,23 +17,7 @@
             "Z": 281.33057
           },
           "TerritoryId": 960,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 8,
-          "Fly": true,
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -564.5686,
-                  "Y": 72.34819,
-                  "Z": 281.33057
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 1000
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -49,29 +33,13 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "StopDistance": 8,
-          "Fly": true,
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_AKTKZJ013_04349_Q1_000_100",
               "Type": "List",
               "Answer": "TEXT_AKTKZJ013_04349_A1_000_100"
             }
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -609.1554,
-                  "Y": 71.0035,
-                  "Z": 57.175537
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 1000
-              }
-            }
-          }
+          ]
         }
       ]
     },
@@ -88,9 +56,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "StopDistance": 8,
-          "Fly": true,
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
           "SkipConditions": {
             "StepIf": {
               "NotNamePlateIconId": [
@@ -105,17 +70,6 @@
                 "TerritoryId": 960,
                 "MaximumDistance": 3
               }
-            },
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -609.1554,
-                  "Y": 71.0035,
-                  "Z": 57.175537
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 1000
-              }
             }
           }
         },
@@ -129,7 +83,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Action",
-          "Fly": true,
           "Action": "Roar"
         }
       ]
@@ -147,9 +100,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "StopDistance": 8,
-          "Fly": true,
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
           "SkipConditions": {
             "StepIf": {
               "NotNamePlateIconId": [
@@ -164,17 +114,6 @@
                 "TerritoryId": 960,
                 "MaximumDistance": 3
               }
-            },
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -609.1554,
-                  "Y": 71.0035,
-                  "Z": 57.175537
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 1000
-              }
             }
           }
         },
@@ -188,7 +127,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Action",
-          "Fly": true,
           "Action": "Roar"
         }
       ]
@@ -204,23 +142,7 @@
             "Z": 281.33057
           },
           "TerritoryId": 960,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 8,
-          "Fly": true,
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -564.5686,
-                  "Y": 72.34819,
-                  "Z": 281.33057
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 100
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

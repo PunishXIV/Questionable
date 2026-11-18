@@ -13,8 +13,7 @@
             "Z": 157.885
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] Pier #1"]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,8 +28,7 @@
             "Z": 34.0429
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": ["[Kugane] Pier #1", "[Kugane] Kogane Dori Markets"]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,8 +43,7 @@
             "Z": 157.885
           },
           "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": ["[Kugane] Kogane Dori Markets", "[Kugane] Pier #1"]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,10 +14,7 @@
             "Z": -171.76868
           },
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 2,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,9 +32,7 @@
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANGNA602_02277_SYSTEM_000_012"
-          },
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          }
         },
         {
           "DataId": 1016871,
@@ -50,8 +45,7 @@
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANGNA602_02277_SYSTEM_000_012"
-          },
-          "Fly": true
+          }
         },
         {
           "DataId": 1016873,
@@ -64,8 +58,7 @@
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANGNA602_02277_SYSTEM_000_012"
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -83,8 +76,7 @@
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANGNA602_02277_SYSTEM_000_012"
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -113,11 +105,8 @@
             "Y": -48.000004,
             "Z": -171.76868
           },
-          "StopDistance": 2,
           "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

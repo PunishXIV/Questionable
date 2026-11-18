@@ -13,10 +13,8 @@
             "Y": 222,
             "Z": 314.353
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,7 +43,6 @@
             "Y": 222.219,
             "Z": 309.089
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
           "InteractionType": "Emote",
           "Emote": "rally"
@@ -62,7 +59,6 @@
             "Y": 222.219,
             "Z": 309.089
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
           "InteractionType": "Emote",
           "Emote": "soothe"
@@ -79,7 +75,6 @@
             "Y": 222.219,
             "Z": 309.089
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
           "InteractionType": "Emote",
           "Emote": "cheer"
@@ -96,7 +91,6 @@
             "Y": 222.219,
             "Z": 309.089
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
           "InteractionType": "Emote",
           "Emote": "blowkiss"
@@ -113,7 +107,6 @@
             "Y": 222.219,
             "Z": 309.089
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
           "InteractionType": "Emote",
           "Emote": "goodbye"
@@ -130,10 +123,8 @@
             "Y": 222,
             "Z": 314.353
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

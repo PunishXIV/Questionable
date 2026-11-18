@@ -14,8 +14,7 @@
             "Z": 30.350098
           },
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,12 +29,7 @@
             "Z": 98.68005
           },
           "TerritoryId": 759,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Doman Enclave",
-          "AethernetShortcut": [
-            "[Doman Enclave] Aetheryte Plaza",
-            "[Doman Enclave] Ferry Docks"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

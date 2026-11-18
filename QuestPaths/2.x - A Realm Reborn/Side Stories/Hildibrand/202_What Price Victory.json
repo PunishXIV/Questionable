@@ -31,10 +31,6 @@
           "InteractionType": "WalkTo"
         },
         {
-          "AethernetShortcut": [
-            "[Ul'dah] Thaumaturges' Guild",
-            "[Ul'dah] Gladiators' Guild"
-          ],
           "DataId": 1010523,
           "Position": {
             "X": -53.48291,
@@ -49,17 +45,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Position": {
-            "X": -60.649715,
-            "Y": -11.872707,
-            "Z": -61.934204
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1010293,
           "Position": {
@@ -76,7 +61,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1010298,
           "Position": {
             "X": 19.851929,
@@ -92,7 +76,6 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1010310,
           "Position": {
             "X": -55.436035,
@@ -100,31 +83,13 @@
             "Z": 260.57825
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "AetheryteShortcut": "Ul'dah",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
-          "Position": {
-            "X": -153.18225,
-            "Y": 14.005,
-            "Z": 43.458076
-          },
-          "TerritoryId": 130,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1010290,
           "Position": {

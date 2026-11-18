@@ -14,8 +14,7 @@
             "Z": 68.28406
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +30,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Interact",
-          "StopDistance": 1,
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_BANALL040_01470_Q1_000_000",
@@ -55,11 +51,7 @@
             "Z": -6.1189575
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -90,9 +82,6 @@
           },
           "TerritoryId": 180,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "StopDistance": 1,
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_BANALL040_01470_Q2_000_000",
@@ -115,8 +104,6 @@
           },
           "TerritoryId": 180,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -135,8 +122,6 @@
           },
           "TerritoryId": 180,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -154,9 +139,7 @@
             "Z": -269.93848
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -171,8 +154,7 @@
             "Z": -147.448
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -187,10 +169,7 @@
             "Z": -171.49622
           },
           "TerritoryId": 180,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "StopDistance": 1,
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -47,7 +47,7 @@ internal sealed class MovementController
             throw failure;
         }
 
-        if (_route.IsCompleted)
+        if (_route.IsCompleted && mappingTheRealm.GetPathing() != true)
             ClearLocalState();
         else if (HasArrived(Destination))
             Stop();
@@ -80,7 +80,7 @@ internal sealed class MovementController
         if (!CanNavigate())
             return;
 
-        if (_route is { IsCompleted: false })
+        if (_route != null)
             mappingTheRealm.Stop();
 
         uint territory = territoryId ?? clientState.TerritoryType;
@@ -171,7 +171,7 @@ internal sealed class MovementController
     // MappingTheRealm only cancels a route Questionable started, so other plugins' travel is never cut.
     public void Stop()
     {
-        bool ours = _route is { IsCompleted: false };
+        bool ours = _route != null;
         ClearLocalState();
         if (!ours)
             return;

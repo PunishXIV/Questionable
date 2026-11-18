@@ -13,7 +13,6 @@
             "Y": 30.646172,
             "Z": -455.86328
           },
-          "StopDistance": 7,
           "TerritoryId": 614,
           "InteractionType": "AcceptQuest"
         }
@@ -37,8 +36,7 @@
               "Prompt": "TEXT_STMBDA507_02525_Q1_000_092",
               "Answer": "TEXT_STMBDA507_02525_A1_000_093"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -104,7 +102,6 @@
             "Y": -7.0001082,
             "Z": 53.81848
           },
-          "StopDistance": 4,
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest"
         }

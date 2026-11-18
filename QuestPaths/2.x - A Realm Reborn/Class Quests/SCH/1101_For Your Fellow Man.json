@@ -15,18 +15,7 @@
             "Z": -250.56848
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,9 +30,7 @@
             "Z": 20.004517
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -70,7 +57,6 @@
           },
           "TerritoryId": 139,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -123,11 +109,9 @@
             "Y": 8.499207,
             "Z": 108.07959
           },
-          "StopDistance": 0.5,
           "TerritoryId": 139,
           "InteractionType": "Action",
           "Action": "Esuna",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -140,7 +124,6 @@
           "TerritoryId": 139,
           "InteractionType": "Action",
           "Action": "Esuna",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         }
       ]
@@ -172,10 +155,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "NextQuestId": 1102
         }
       ]

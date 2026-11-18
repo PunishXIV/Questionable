@@ -21,18 +21,7 @@
               "Prompt": "TEXT_CHREND303_02363_Q1_000_000",
               "Answer": "TEXT_CHREND303_02363_A1_000_001"
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419
-              ]
-            }
-          }
+          ]
         }
       ]
     },

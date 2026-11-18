@@ -14,8 +14,7 @@
             "Z": -617.79205
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,12 +44,7 @@
             "Z": 69.047
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,11 +59,7 @@
             "Z": 140.82544
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] The Ruby Bazaar",
-            "[Kugane] Pier #1"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -84,8 +74,7 @@
             "Z": -636.56067
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -29,11 +29,7 @@
             "Z": 1.3884888
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Baldesion Annex"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,11 +44,7 @@
             "Z": 147.29529
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Baldesion Annex",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -66,7 +58,6 @@
             "Y": -13.777,
             "Z": 149.70618
           },
-          "StopDistance": 5,
           "TerritoryId": 962,
           "InteractionType": "Interact"
         }
@@ -84,10 +75,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Scholar's Harbor",
-            "[Old Sharlayan] The Studium"
-          ],
           "$.1": "QuestVariables if done first: 16 16 128 0 0 128"
         },
         {
@@ -98,11 +85,7 @@
             "Z": -149.58423
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] The Leveilleur Estate"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -116,13 +99,8 @@
             "Y": 4.357494,
             "Z": 0.7476196
           },
-          "StopDistance": 5,
           "TerritoryId": 962,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Leveilleur Estate",
-            "[Old Sharlayan] The Baldesion Annex"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

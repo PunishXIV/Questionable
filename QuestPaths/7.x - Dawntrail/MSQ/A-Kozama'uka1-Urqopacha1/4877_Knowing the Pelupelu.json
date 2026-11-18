@@ -29,8 +29,7 @@
             "Z": -483.48212
           },
           "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Urqopacha - Wachunpelo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -44,7 +43,6 @@
             "Y": -168.6204,
             "Z": -453.8186
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
           "InteractionType": "Interact"
         }
@@ -85,12 +83,7 @@
             "Z": 142.93127
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

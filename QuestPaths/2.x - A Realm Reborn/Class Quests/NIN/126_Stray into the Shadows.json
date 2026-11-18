@@ -16,12 +16,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "RoguesGuild"
@@ -35,7 +30,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest"
         }
@@ -51,7 +45,6 @@
             "Y": -129.4397,
             "Z": 267.10913
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -86,11 +79,7 @@
             "Z": 111.40613
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -118,14 +107,9 @@
             "Y": 42.300003,
             "Z": -151.94725
           },
-          "StopDistance": 0.5,
           "TerritoryId": 128,
           "InteractionType": "Action",
           "Action": "Hide",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -138,7 +122,6 @@
             "Y": 42.300007,
             "Z": -158.14607
           },
-          "StopDistance": 0.5,
           "TerritoryId": 128,
           "InteractionType": "WalkTo",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -154,14 +137,9 @@
             "Y": 18,
             "Z": 28.882175
           },
-          "StopDistance": 0.5,
           "TerritoryId": 129,
           "InteractionType": "Action",
           "Action": "Hide",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Culinarians' Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ],
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -174,7 +152,6 @@
             "Y": 18.2,
             "Z": 34.06711
           },
-          "StopDistance": 0.5,
           "TerritoryId": 129,
           "InteractionType": "WalkTo",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -190,14 +167,9 @@
             "Y": 1.2697256,
             "Z": 208.46738
           },
-          "StopDistance": 0.5,
           "TerritoryId": 129,
           "InteractionType": "Action",
           "Action": "Hide",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Hawkers' Alley",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -263,11 +235,7 @@
             "Z": 239.30713
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Hawkers' Alley",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -292,7 +260,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 144

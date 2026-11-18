@@ -22,16 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 191.63799,
-            "Y": 15.136713,
-            "Z": 508.80118
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 2012451,
           "Position": {
             "X": 215.53369,
@@ -39,8 +29,7 @@
             "Z": 597.4059
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,19 +66,7 @@
             "Z": 555.2623
           },
           "TerritoryId": 957,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 100,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 199.92545,
-            "Y": 10.335635,
-            "Z": 567.79816
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1041390,
@@ -99,19 +76,7 @@
             "Z": 552.88477
           },
           "TerritoryId": 957,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 100,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 157.38617,
-            "Y": 14.520461,
-            "Z": 539.5006
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1041390,
@@ -121,19 +86,7 @@
             "Z": 527.03894
           },
           "TerritoryId": 957,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 100,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 154.45122,
-            "Y": 23.673492,
-            "Z": 500.76654
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "Position": {
@@ -157,8 +110,7 @@
             "Z": 458.15198
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

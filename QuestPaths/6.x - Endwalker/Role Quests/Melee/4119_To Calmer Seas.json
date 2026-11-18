@@ -13,20 +13,8 @@
             "Y": 40,
             "Z": 66.300415
           },
-          "StopDistance": 5,
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "List",
@@ -89,7 +77,6 @@
             "Y": 39.999916,
             "Z": 21.22528
           },
-          "StopDistance": 7,
           "TerritoryId": 128,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -108,7 +95,6 @@
             "Y": 39.999992,
             "Z": 20.09607
           },
-          "StopDistance": 7,
           "TerritoryId": 128,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -127,7 +113,6 @@
             "Y": 39.999992,
             "Z": 19.638367
           },
-          "StopDistance": 7,
           "TerritoryId": 128,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -146,7 +131,6 @@
             "Y": 39.999992,
             "Z": 19.4552
           },
-          "StopDistance": 7,
           "TerritoryId": 128,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -165,7 +149,6 @@
             "Y": 39.999992,
             "Z": 19.516235
           },
-          "StopDistance": 7,
           "TerritoryId": 128,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -189,7 +172,6 @@
             "Y": 39.999916,
             "Z": 24.093994
           },
-          "StopDistance": 5,
           "TerritoryId": 128,
           "InteractionType": "Interact"
         }
@@ -205,7 +187,6 @@
             "Y": 39.999992,
             "Z": 25.986084
           },
-          "StopDistance": 5,
           "TerritoryId": 128,
           "InteractionType": "Interact"
         }
@@ -221,7 +202,6 @@
             "Y": 39.999992,
             "Z": 21.805054
           },
-          "StopDistance": 7,
           "TerritoryId": 128,
           "InteractionType": "Interact"
         }
@@ -238,12 +218,7 @@
             "Z": -81.22388
           },
           "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

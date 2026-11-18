@@ -29,8 +29,7 @@
             "Z": -26.535461
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,7 +44,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [7550]
         }
@@ -77,9 +75,7 @@
             "Z": 571.1909
           },
           "TerritoryId": 621,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,12 +14,7 @@
             "Z": 201.9226
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,11 +30,7 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 815,
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Amaro Launch"
-          ]
+          "TargetTerritoryId": 815
         },
         {
           "DataId": 1030623,
@@ -49,8 +40,7 @@
             "Z": -641.5351
           },
           "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,8 +59,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             10836
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -101,7 +90,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "NextQuestId": 3624
         }
       ]

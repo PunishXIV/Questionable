@@ -13,7 +13,6 @@
             "Y": -63.618378,
             "Z": -9.2317505
           },
-          "StopDistance": 7,
           "TerritoryId": 398,
           "InteractionType": "AcceptQuest"
         }
@@ -43,7 +42,6 @@
             "Y": -84.46064,
             "Z": 450.64175
           },
-          "StopDistance": 1,
           "TerritoryId": 398,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -64,7 +62,6 @@
             "Y": -63.319576,
             "Z": 333.95447
           },
-          "StopDistance": 1,
           "TerritoryId": 398,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",

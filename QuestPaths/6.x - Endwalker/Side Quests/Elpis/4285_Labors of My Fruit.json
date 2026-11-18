@@ -13,9 +13,7 @@
             "Z": 354.818
           },
           "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +28,7 @@
             "Z": 267.65845
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "$": "Prevent vnavmesh from getting stuck on tree",
@@ -40,10 +37,8 @@
             "Y": 8.025645,
             "Z": 191.7166
           },
-          "StopDistance": 0.25,
           "TerritoryId": 961,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "DataId": 1041534,
@@ -53,8 +48,7 @@
             "Z": 184.03906
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1041535,
@@ -64,8 +58,7 @@
             "Z": 224.81116
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,8 +73,7 @@
             "Z": 354.818
           },
           "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

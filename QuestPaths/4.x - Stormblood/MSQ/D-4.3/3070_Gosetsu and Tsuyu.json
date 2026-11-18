@@ -15,11 +15,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 639,
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ]
+          "TargetTerritoryId": 639
         },
         {
           "DataId": 1025023,
@@ -45,7 +41,6 @@
           },
           "TerritoryId": 759,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Doman Enclave",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -89,11 +84,7 @@
             "Z": 60.135742
           },
           "TerritoryId": 759,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Doman Enclave] Aetheryte Plaza",
-            "[Doman Enclave] Ferry Docks"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

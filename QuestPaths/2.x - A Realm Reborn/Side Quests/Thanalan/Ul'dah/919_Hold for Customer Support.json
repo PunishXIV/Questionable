@@ -14,19 +14,7 @@
             "Z": -59.80017
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131,
-                132
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,9 +29,7 @@
             "Z": 480.2776
           },
           "TerritoryId": 147,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

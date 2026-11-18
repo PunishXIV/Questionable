@@ -13,7 +13,6 @@
             "Y": 0,
             "Z": -9.079163
           },
-          "StopDistance": 5,
           "TerritoryId": 351,
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
@@ -31,11 +30,7 @@
             "Z": -56.168518
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,11 +46,7 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] The Last Vigil"
-          ]
+          "TargetTerritoryId": 433
         },
         {
           "DataId": 1012744,
@@ -64,7 +55,6 @@
             "Y": -9.313226E-10,
             "Z": 5.9052124
           },
-          "StopDistance": 5,
           "TerritoryId": 433,
           "InteractionType": "Interact"
         }
@@ -80,7 +70,6 @@
             "Y": 1.1443481,
             "Z": 13.199036
           },
-          "StopDistance": 4,
           "TerritoryId": 433,
           "InteractionType": "Interact",
           "TargetTerritoryId": 419
@@ -100,10 +89,6 @@
               "Prompt": "TEXT_HEAVNA332_01633_Q1_000_000",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] The Forgotten Knight"
           ]
         }
       ]

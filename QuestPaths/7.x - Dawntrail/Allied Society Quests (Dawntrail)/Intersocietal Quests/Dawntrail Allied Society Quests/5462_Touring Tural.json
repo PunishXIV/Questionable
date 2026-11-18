@@ -15,10 +15,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] The For'ard Cabins"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_BANALL410_05462_Q1_000_001",
@@ -41,10 +37,7 @@
             "Z": -201.73956
           },
           "TerritoryId": 1188,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
           "$": "auto: todo location -> 1051741 (Wawkesa)"
         }
       ]
@@ -61,7 +54,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_BANALL410_05462_Q3_000_001",
@@ -69,7 +61,6 @@
               "Type": "List"
             }
           ],
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "$": "auto: todo location -> 1054636 (Fahrafahr); hands over ITEM0=2003816"
         }
       ]
@@ -129,8 +120,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook",
           "$": "auto: todo location -> 1052561 (Ruvoll Ja); hands over ITEM0=2003816"
         }
       ]
@@ -155,7 +144,6 @@
               "Type": "List"
             }
           ],
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
           "$": "auto: todo turn-in -> 1051710 (Liplu)"
         }
       ]

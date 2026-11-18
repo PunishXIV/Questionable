@@ -15,15 +15,7 @@
             "Z": 56.839844
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -61,7 +53,6 @@
           },
           "ItemId": 5503,
           "ItemCount": 1,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -86,7 +77,6 @@
           },
           "ItemId": 5402,
           "ItemCount": 1,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -111,7 +101,6 @@
           },
           "ItemId": 5383,
           "ItemCount": 6,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -136,7 +125,6 @@
           },
           "ItemId": 5352,
           "ItemCount": 1,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -161,7 +149,6 @@
           },
           "ItemId": 5433,
           "ItemCount": 1,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -186,7 +173,6 @@
           },
           "ItemId": 5333,
           "ItemCount": 1,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -208,11 +194,7 @@
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "AllowHighQuality": true
         },
         {
           "DataId": 1000254,
@@ -223,11 +205,7 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Lancers' Guild"
-          ]
+          "AllowHighQuality": true
         }
       ]
     },
@@ -243,11 +221,7 @@
           },
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Aetheryte Plaza"
-          ]
+          "AllowHighQuality": true
         }
       ]
     }

@@ -30,8 +30,7 @@
             "Z": 145.49475
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -102,27 +101,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "TerritoryId": 145,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
           "Position": {
             "X": -492.96475,
             "Y": 20.999884,
@@ -130,7 +108,6 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },

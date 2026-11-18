@@ -14,34 +14,13 @@
             "Z": -90.98956
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [419]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "TerritoryId": 419,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [419] },
-            "StepIf": { "InTerritory": [419] }
-          }
-        },
         {
           "DataId": 1012263,
           "Position": {
@@ -50,11 +29,7 @@
             "Z": -127.91644
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ]
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1011215,
@@ -158,10 +133,6 @@
               "Prompt": "TEXT_HEAVNZ601_01869_Q1_000_000",
               "Answer": "TEXT_HEAVNZ601_01869_A1_000_005"
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] Saint Reymanaud's Cathedral",
-            "[Ishgard] The Jeweled Crozier"
           ],
           "NextQuestId": 2152
         }

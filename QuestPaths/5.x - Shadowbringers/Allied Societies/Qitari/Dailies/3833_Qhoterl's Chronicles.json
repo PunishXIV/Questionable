@@ -14,10 +14,7 @@
             "Z": -216.96419
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut":"Rak'tika - Fanow",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,8 +38,7 @@
               "ItemId": 29537,
               "ItemCount": 3
             }
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 33020,
@@ -61,8 +57,7 @@
               "ItemId": 29563,
               "ItemCount": 3
             }
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 1032643,
@@ -72,10 +67,7 @@
             "Z": -216.96419
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut":"Rak'tika - Fanow",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

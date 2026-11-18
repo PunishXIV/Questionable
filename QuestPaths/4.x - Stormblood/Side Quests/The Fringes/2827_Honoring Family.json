@@ -29,8 +29,7 @@
             "Z": 212.84802
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Peering Stones"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,8 +44,7 @@
             "Z": 362.6306
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,7 +58,6 @@
             "Y": 48.087296,
             "Z": 364.79736
           },
-          "StopDistance": 5,
           "TerritoryId": 612,
           "InteractionType": "Interact"
         }
@@ -78,7 +75,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "NextQuestId": 2828
         }
       ]

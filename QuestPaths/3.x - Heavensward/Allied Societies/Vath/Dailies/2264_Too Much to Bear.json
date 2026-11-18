@@ -14,10 +14,7 @@
             "Z": -171.76868
           },
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 2,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,8 +32,6 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [5546],
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
@@ -48,7 +43,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
@@ -62,7 +56,6 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [5546],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         }
       ]
@@ -77,11 +70,8 @@
             "Y": -48.000004,
             "Z": -171.76868
           },
-          "StopDistance": 2,
           "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

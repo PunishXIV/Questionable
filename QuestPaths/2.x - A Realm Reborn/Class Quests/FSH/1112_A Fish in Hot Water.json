@@ -14,18 +14,7 @@
             "Z": 164.294
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -47,29 +36,15 @@
           },
           "ItemId": 2614,
           "ItemCount": 10,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
                 "NotInInventory": false
               }
-            },
-            "AetheryteShortcutIf": {
-              "Item": {
-                "NotInInventory": false
-              },
-              "InTerritory": [
-                129
-              ]
             }
           }
         },
         {
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "Position": {
             "X": -303.75845,
             "Y": 6.4537888,
@@ -91,10 +66,6 @@
         },
         {
           "Comment": "Deliver Warmwater Trout to Chuchuroon",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "DataId": 1003516,
           "Position": {
             "X": -185.837,

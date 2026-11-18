@@ -14,21 +14,7 @@
             "Z": 246.1737
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 246.87573,
-                  "Y": -25.00047,
-                  "Z": 246.1737
-                },
-                "TerritoryId": 138,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -91,21 +77,7 @@
             "Z": 246.1737
           },
           "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 246.87573,
-                  "Y": -25.00047,
-                  "Z": 246.1737
-                },
-                "TerritoryId": 138,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

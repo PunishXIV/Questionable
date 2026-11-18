@@ -14,11 +14,7 @@
             "Z": 40.268433
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,8 +29,7 @@
             "Z": 42.83203
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,17 +45,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "List",
@@ -84,8 +68,6 @@
           "TerritoryId": 155,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true,
           "ComplexCombatData": [
             {
               "DataId": 7487,
@@ -121,11 +103,7 @@
             "Z": 2.822876
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -140,12 +118,7 @@
             "Z": 40.268433
           },
           "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Brume"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

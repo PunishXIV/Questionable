@@ -13,15 +13,9 @@
             "Y": 24.412834,
             "Z": -11.062805
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard",
           "TargetTerritoryId": 1001,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -30,11 +24,6 @@
             }
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1001
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 1001
@@ -75,11 +64,7 @@
               "AI doesn't kill ads",
               "AI doesn't move behind the shield to take cover and dies"
             ]
-          },
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Tribunal"
-          ]
+          }
         }
       ]
     },
@@ -98,10 +83,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Tribunal",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -132,7 +113,6 @@
             "Y": 0,
             "Z": -5.7526855
           },
-          "StopDistance": 5,
           "TerritoryId": 1001,
           "InteractionType": "Interact"
         }
@@ -148,7 +128,6 @@
             "Y": 0,
             "Z": -7.1260376
           },
-          "StopDistance": 5,
           "TerritoryId": 1001,
           "InteractionType": "Interact"
         }
@@ -165,12 +144,7 @@
             "Z": -91.66095
           },
           "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

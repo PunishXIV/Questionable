@@ -14,8 +14,7 @@
             "Z": 211.16956
           },
           "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,11 +30,7 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 205,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "TargetTerritoryId": 205
         },
         {
           "DataId": 1003027,

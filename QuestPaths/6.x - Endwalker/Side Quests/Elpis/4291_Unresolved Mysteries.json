@@ -20,9 +20,7 @@
               "Prompt": "TEXT_AKTKZG016_04291_Q1_000_002",
               "Answer": "TEXT_AKTKZG016_04291_A1_000_002"
             }
-          ],
-          "AetheryteShortcut": "Elpis - Twelve Wonders",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -38,8 +36,7 @@
           },
           "TerritoryId": 961,
           "InteractionType": "Emote",
-          "Emote": "doubt",
-          "Fly": true
+          "Emote": "doubt"
         },
         {
           "DataId": 1041869,
@@ -50,8 +47,7 @@
           },
           "TerritoryId": 961,
           "InteractionType": "Emote",
-          "Emote": "doubt",
-          "Fly": true
+          "Emote": "doubt"
         },
         {
           "DataId": 1041868,
@@ -62,8 +58,7 @@
           },
           "TerritoryId": 961,
           "InteractionType": "Emote",
-          "Emote": "doubt",
-          "Fly": true
+          "Emote": "doubt"
         }
       ]
     },
@@ -85,8 +80,7 @@
               "Prompt": "TEXT_AKTKZG016_04291_Q2_000_026",
               "Answer": "TEXT_AKTKZG016_04291_A2_000_002"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     }

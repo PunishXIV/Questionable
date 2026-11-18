@@ -14,8 +14,7 @@
             "Z": 56.931396
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,10 +30,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Hawkers' Alley",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -65,24 +60,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": -273.7194,
-            "Y": 11.32725,
-            "Z": 188.82817
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -268.3206,
-            "Y": 11.852169,
-            "Z": 189.21284
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1007797,
           "Position": {
             "X": -260.73096,
@@ -105,11 +82,7 @@
             "Z": 56.931396
           },
           "TerritoryId": 129,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

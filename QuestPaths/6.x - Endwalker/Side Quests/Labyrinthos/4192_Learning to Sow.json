@@ -14,9 +14,7 @@
             "Z": -150.012
           },
           "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": -112.021
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2011812,
@@ -42,8 +39,7 @@
             "Z": -93.8455
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2011813,
@@ -53,8 +49,7 @@
             "Z": -78.7372
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,9 +64,7 @@
             "Z": -150.012
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,8 +14,7 @@
             "Z": 204.66919
           },
           "TerritoryId": 814,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kholusia - Wright"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 352.19336
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,8 +59,7 @@
             "Z": 442.86243
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

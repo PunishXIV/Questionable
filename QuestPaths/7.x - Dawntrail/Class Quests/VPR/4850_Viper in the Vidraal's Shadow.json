@@ -15,7 +15,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -37,8 +36,7 @@
             "Z": 7.888855
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -53,8 +51,7 @@
             "Z": -72.15991
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,9 +66,7 @@
             "Z": 447.2876
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -87,7 +82,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -99,7 +93,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -111,7 +104,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -127,8 +119,7 @@
             "Z": 452.59778
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -143,24 +134,13 @@
             "Z": 502.79993
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 7,
       "Steps": [
-        {
-          "Position": {
-            "X": 31.303873,
-            "Y": 19.952045,
-            "Z": 199.71306
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1046362,
           "Position": {
@@ -185,7 +165,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 4851
         }
       ]

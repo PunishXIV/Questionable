@@ -14,9 +14,7 @@
             "Z": 20.004517
           },
           "TerritoryId": 139,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,9 +32,7 @@
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             139
-          ],
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          ]
         }
       ]
     },
@@ -52,9 +48,7 @@
             "Z": 64.530396
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,8 +83,7 @@
           },
           "TerritoryId": 139,
           "InteractionType": "UseItem",
-          "ItemId": 2000673,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "ItemId": 2000673
         }
       ]
     },
@@ -138,8 +131,6 @@
           },
           "TerritoryId": 139,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
           "NextQuestId": 868,
           "$": "Next quest: 'The Adventure of the Fainting Goldsmith'."
         }

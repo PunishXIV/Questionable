@@ -55,22 +55,12 @@
           "PickUpQuestId": 3592
         },
         {
-          "Position": {
-            "X": -0.41547322,
-            "Y": -276.906,
-            "Z": 269.2778
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1027772,
           "Position": {
             "X": 5.3864136,
             "Y": -276.906,
             "Z": 271.59534
           },
-          "StopDistance": 7,
           "TerritoryId": 818,
           "InteractionType": "Interact"
         }
@@ -95,22 +85,12 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Position": {
-            "X": -0.41547322,
-            "Y": -276.906,
-            "Z": 269.2778
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1027772,
           "Position": {
             "X": 5.3864136,
             "Y": -276.906,
             "Z": 271.59534
           },
-          "StopDistance": 7,
           "TerritoryId": 818,
           "InteractionType": "Interact"
         }
@@ -120,22 +100,12 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Position": {
-            "X": 314.43127,
-            "Y": -274.1735,
-            "Z": 659.203
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1027773,
           "Position": {
             "X": 316.4568,
             "Y": -274.1735,
             "Z": 653.65063
           },
-          "StopDistance": 7,
           "TerritoryId": 818,
           "InteractionType": "Interact"
         }
@@ -160,22 +130,12 @@
       "Sequence": 6,
       "Steps": [
         {
-          "Position": {
-            "X": 314.43127,
-            "Y": -274.1735,
-            "Z": 659.203
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1027773,
           "Position": {
             "X": 316.4568,
             "Y": -274.1735,
             "Z": 653.65063
           },
-          "StopDistance": 7,
           "TerritoryId": 818,
           "InteractionType": "Interact"
         }
@@ -184,16 +144,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -244.05957,
-            "Y": -266.0001,
-            "Z": 444.7069
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Tempest - Macarenses Angle"
-        },
         {
           "DataId": 1030558,
           "Position": {

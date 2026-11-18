@@ -7,24 +7,12 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": 770.70636,
-            "Y": 12.846572,
-            "Z": -260.59436
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
-          "Fly": true
-        },
-        {
           "DataId": 1051711,
           "Position": {
             "X": 770.7179,
             "Y": 12.84657,
             "Z": -263.99634
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "AcceptQuest"
         }
@@ -42,7 +30,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -54,7 +41,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -66,7 +52,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -82,8 +67,7 @@
             "Z": -222.06458
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,24 +75,12 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 770.70636,
-            "Y": 12.846572,
-            "Z": -260.59436
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
-          "Fly": true
-        },
-        {
           "DataId": 1051711,
           "Position": {
             "X": 770.7179,
             "Y": 12.84657,
             "Z": -263.99634
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "CompleteQuest"
         }

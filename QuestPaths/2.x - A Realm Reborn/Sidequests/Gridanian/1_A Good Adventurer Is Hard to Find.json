@@ -29,8 +29,7 @@
             "Z": 57.1145
           },
           "TerritoryId": 132,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": ["[Gridania] Aetheryte Plaza","[Gridania] Archers' Guild"]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

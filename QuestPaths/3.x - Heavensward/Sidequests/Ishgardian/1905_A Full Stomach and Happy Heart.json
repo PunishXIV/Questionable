@@ -14,11 +14,7 @@
             "Z": 34.3825
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,10 +30,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] Aetheryte Plaza"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -91,8 +83,7 @@
             "Z": -33.61566
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": ["[Ishgard] The Brume","[Ishgard] The Last Vigil"]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -107,8 +98,7 @@
             "Z": 34.3825
           },
           "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": ["[Ishgard] The Last Vigil","[Ishgard] Skysteel Manufactory"]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

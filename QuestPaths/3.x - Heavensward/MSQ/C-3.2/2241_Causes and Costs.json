@@ -13,10 +13,8 @@
             "Y": 217.95152,
             "Z": 762.72217
           },
-          "StopDistance": 7,
           "TerritoryId": 397,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,7 +30,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "TargetTerritoryId": 395
         },
         {
@@ -73,11 +70,7 @@
             "Z": -4.196289
           },
           "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

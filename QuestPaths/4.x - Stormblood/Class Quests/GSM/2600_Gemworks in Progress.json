@@ -17,24 +17,7 @@
 				"Z": 97.24573
 			},
 			"TerritoryId": 131,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ul'dah",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Goldsmiths' Guild"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					130,
-					131
-					]
-				}
-			}
+			"InteractionType": "AcceptQuest"
 		}
 		]
 	},
@@ -51,12 +34,7 @@
 				"Z": 347.12744
 			},
 			"TerritoryId": 141,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Goldsmiths' Guild",
-			"[Ul'dah] Gate of Nald (Central Thanalan)"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -74,7 +52,6 @@
 			},
 			"TerritoryId": 635,
 			"InteractionType": "Interact",
-			"AetheryteShortcut": "Rhalgr's Reach",
 			"DialogueChoices":
 			[
 			{

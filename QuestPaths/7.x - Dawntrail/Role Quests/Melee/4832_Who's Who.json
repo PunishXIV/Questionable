@@ -14,8 +14,7 @@
             "Z": -52.018066
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - Namai",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -68,10 +66,8 @@
             "Y": 76.04927,
             "Z": -114.885254
           },
-          "StopDistance": 0.5,
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -86,8 +82,7 @@
             "Z": -278.70605
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -103,11 +98,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ],
           "NextQuestId": 4833
         }
       ]

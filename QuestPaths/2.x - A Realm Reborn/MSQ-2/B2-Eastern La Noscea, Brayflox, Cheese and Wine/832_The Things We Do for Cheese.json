@@ -14,8 +14,7 @@
             "Z": 455.89368
           },
           "TerritoryId": 137,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -80,15 +79,6 @@
           "TaxiStandId": 1179673
         },
         {
-          "Position": {
-            "X": -272.5533,
-            "Y": 59.7689,
-            "Z": 176.81541
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1006268,
           "Position": {
             "X": -334.6151,
@@ -125,7 +115,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "$": "You don't get teleported to Brayflox after the dungeon"
         }
       ]
@@ -141,8 +130,7 @@
             "Z": 455.89368
           },
           "TerritoryId": 137,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

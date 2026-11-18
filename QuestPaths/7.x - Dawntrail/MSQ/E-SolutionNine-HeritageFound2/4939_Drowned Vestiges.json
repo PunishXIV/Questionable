@@ -52,16 +52,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Position": {
-            "X": -552.04144,
-            "Y": -2.079689,
-            "Z": 135.62419
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1047493,
           "Position": {
             "X": -543.3764,
@@ -69,8 +59,7 @@
             "Z": 170.78006
           },
           "TerritoryId": 1191,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 50
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "Position": {
@@ -90,17 +79,7 @@
             "Z": 171.72368
           },
           "TerritoryId": 1191,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 50
-        },
-        {
-          "Position": {
-            "X": -507.01544,
-            "Y": 0.29254055,
-            "Z": 168.97873
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "WalkTo"
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1047493,
@@ -110,8 +89,7 @@
             "Z": 168.61993
           },
           "TerritoryId": 1191,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 100
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1047493,
@@ -121,8 +99,7 @@
             "Z": 211.52757
           },
           "TerritoryId": 1191,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 100
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "Position": {
@@ -142,8 +119,7 @@
             "Z": 257.89444
           },
           "TerritoryId": 1191,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 100
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1047493,
@@ -154,8 +130,7 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 5,
-          "StopDistance": 100
+          "NpcWaitDistance": 5
         },
         {
           "DataId": 2013719,
@@ -179,7 +154,6 @@
             "Y": 7.829801,
             "Z": 315.32764
           },
-          "StopDistance": 5,
           "TerritoryId": 1191,
           "InteractionType": "Interact"
         }
@@ -203,25 +177,6 @@
           "TerritoryId": 1191,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818472
-        },
-        {
-          "Position": {
-            "X": -44.293804,
-            "Y": 59.430523,
-            "Z": 343.74417
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -238.53459,
-            "Y": 24.70902,
-            "Z": 438.2853
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2013842,
@@ -249,7 +204,6 @@
             "Y": 8.100235,
             "Z": 315.4497
           },
-          "StopDistance": 4,
           "TerritoryId": 1191,
           "InteractionType": "CompleteQuest"
         }

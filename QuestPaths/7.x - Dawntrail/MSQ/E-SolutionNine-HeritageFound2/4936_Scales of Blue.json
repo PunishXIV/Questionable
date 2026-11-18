@@ -59,7 +59,6 @@
             "Y": 70,
             "Z": 12.466553
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -83,8 +82,7 @@
             "Z": 50.459126
           },
           "TerritoryId": 1186,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 1
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048078,
@@ -95,8 +93,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 3,
-          "StopDistance": 5
+          "NpcWaitDistance": 3
         },
         {
           "DataId": 1048078,
@@ -124,7 +121,6 @@
             "Y": 51.39998,
             "Z": 199.20642
           },
-          "StopDistance": 2,
           "TerritoryId": 1186,
           "InteractionType": "WalkTo"
         }

@@ -47,9 +47,7 @@
             "Z": 754.1161
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yanxia - Namai"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -82,7 +80,6 @@
             "Y": -8.000055,
             "Z": 44.327393
           },
-          "StopDistance": 5,
           "TerritoryId": 786,
           "InteractionType": "Interact"
         }

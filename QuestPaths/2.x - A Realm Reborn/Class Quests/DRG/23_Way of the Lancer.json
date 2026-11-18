@@ -15,18 +15,7 @@
             "Z": -267.99426
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -91,11 +80,7 @@
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null],
-          "$": "0 0  0 0  0 0 -> 19 0  0 0  0 0",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ]
+          "$": "0 0  0 0  0 0 -> 19 0  0 0  0 0"
         },
         {
           "Position": {
@@ -164,10 +149,6 @@
             "Z": -270.34418
           },
           "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 47
         }

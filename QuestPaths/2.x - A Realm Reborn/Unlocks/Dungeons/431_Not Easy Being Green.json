@@ -14,10 +14,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona"
+          "$": "Rising Stones Door"
         },
         {
           "DataId": 1006975,
@@ -27,8 +24,7 @@
             "Z": -635.46204
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "Mount": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,10 +39,7 @@
             "Z": 73.99097
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": false,
-          "Mount": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,9 +54,7 @@
             "Z": 78.50769
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -92,10 +83,7 @@
             "Z": 73.99097
           },
           "TerritoryId": 139,
-          "InteractionType": "CompleteQuest",
-          "Fly": false,
-          "Mount": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

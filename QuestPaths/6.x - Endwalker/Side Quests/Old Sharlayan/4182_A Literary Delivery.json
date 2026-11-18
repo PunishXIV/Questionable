@@ -29,10 +29,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -44,10 +40,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Scholar's Harbor",
-            "[Old Sharlayan] Journey's End"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -59,10 +51,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Journey's End",
-            "[Old Sharlayan] The Studium"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -78,8 +66,7 @@
             "Z": -11.062805
           },
           "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

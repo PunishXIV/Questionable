@@ -14,8 +14,7 @@
             "Z": -48.17273
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -386.7094
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,7 +43,6 @@
             "Y": -52.88129,
             "Z": -418.6618
           },
-          "StopDistance": 5,
           "TerritoryId": 401,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true}
@@ -65,7 +62,6 @@
             "Y": -90.0236,
             "Z": -759.7925
           },
-          "StopDistance": 5,
           "TerritoryId": 401,
           "InteractionType": "Interact"
         }
@@ -82,11 +78,7 @@
             "Z": -0.6867676
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -101,12 +93,7 @@
             "Z": 203.14331
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

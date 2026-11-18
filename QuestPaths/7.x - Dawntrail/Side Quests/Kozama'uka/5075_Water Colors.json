@@ -28,7 +28,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked",
@@ -45,7 +44,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -57,7 +55,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -69,7 +66,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -85,8 +81,7 @@
             "Z": 347.70728
           },
           "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Many Fires"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

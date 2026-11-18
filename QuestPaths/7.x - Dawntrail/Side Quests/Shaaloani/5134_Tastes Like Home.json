@@ -29,8 +29,7 @@
             "Z": 466.20886
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -44,7 +43,6 @@
             "Y": 0.2806556,
             "Z": 468.43665
           },
-          "StopDistance": 7,
           "TerritoryId": 1190,
           "InteractionType": "CompleteQuest"
         }

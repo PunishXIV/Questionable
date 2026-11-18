@@ -14,10 +14,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona"
+          "$": "Rising Stones Door"
         },
         {
           "DataId": 1006975,
@@ -27,8 +24,7 @@
             "Z": -635.46204
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "Mount": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,9 +39,7 @@
             "Z": 455.89368
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,8 +55,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "$": "Don't strictly need the teleport, but it's faster"
         }
       ]

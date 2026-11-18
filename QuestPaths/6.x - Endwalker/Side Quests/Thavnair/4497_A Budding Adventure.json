@@ -29,17 +29,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 191.63799,
-            "Y": 15.136713,
-            "Z": 508.80118
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Thavnair - Yedlihmad"
-        },
-        {
           "DataId": 1041332,
           "Position": {
             "X": 194.68982,
@@ -55,16 +44,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": 191.63799,
-            "Y": 15.136713,
-            "Z": 508.80118
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1041412,
           "Position": {
             "X": 93.88867,
@@ -72,8 +51,7 @@
             "Z": 566.0028
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -86,15 +64,12 @@
             "Y": 67.704025,
             "Z": -545.84924
           },
-          "StopDistance": 1,
           "TerritoryId": 957,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             14039
-          ],
-          "Fly": true,
-          "AetheryteShortcut": "Thavnair - Great Work"
+          ]
         }
       ]
     },
@@ -108,7 +83,6 @@
             "Y": 67.844055,
             "Z": -543.1144
           },
-          "StopDistance": 7,
           "TerritoryId": 957,
           "InteractionType": "Interact"
         }
@@ -125,8 +99,7 @@
             "Z": -488.42606
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -141,8 +114,7 @@
             "Z": -212.35986
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "Interact"
         }
       ]
     },

@@ -20,18 +20,7 @@
               "Prompt": "TEXT_KINGBB201_04854_Q1_000_000",
               "Answer": "TEXT_KINGBB201_04854_A1_000_002"
             }
-          ],
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          ]
         }
       ]
     },
@@ -46,11 +35,7 @@
             "Z": 5.508484
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

@@ -7,27 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 129,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -184.8656,
-                  "Y": 3.999987,
-                  "Z": 174.76753
-                },
-                "TerritoryId": 129,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
           "DataId": 1000995,
           "Position": {
             "X": -52.018066,
@@ -36,15 +15,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [128]
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

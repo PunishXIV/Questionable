@@ -15,7 +15,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "$": "this thing starts out in the boonies"
         }
       ]
@@ -31,8 +30,7 @@
             "Z": 567.8645
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -55,7 +53,6 @@
             "Y": -18.777306,
             "Z": 527.2946
           },
-          "StopDistance": 0.5,
           "TerritoryId": 958,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -71,7 +68,6 @@
             "Y": -18.937208,
             "Z": 338.0957
           },
-          "StopDistance": 0.5,
           "TerritoryId": 958,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -91,10 +87,8 @@
             "Y": -17.135998,
             "Z": 567.8645
           },
-          "StopDistance": 2000,
           "TerritoryId": 958,
-          "InteractionType": "None",
-          "Mount": false
+          "InteractionType": "None"
         },
         {
           "DataId": 1041119,
@@ -105,7 +99,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 4218
         }
       ]

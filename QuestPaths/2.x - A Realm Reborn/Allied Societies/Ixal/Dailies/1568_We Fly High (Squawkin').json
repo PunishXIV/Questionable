@@ -14,10 +14,7 @@
             "Z": 114.64099
           },
           "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,10 +29,7 @@
             "Z": -18.094275
           },
           "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "WalkTo"
         },
         {
           "DelaySecondsAtStart": 1,
@@ -49,8 +43,7 @@
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANIXA607_01568_SYSTEM_100_062"
-          },
-          "Mount": false
+          }
         }
       ]
     },
@@ -65,8 +58,7 @@
             "Z": -253.55927
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -87,10 +79,7 @@
             "Z": 114.64099
           },
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

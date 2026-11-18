@@ -14,8 +14,7 @@
             "Z": 625.0857
           },
           "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Churning Mists - Moghome"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -527.5807
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -74,14 +72,12 @@
             "Y": 54.715424,
             "Z": -532.3533
           },
-          "StopDistance": 1,
           "TerritoryId": 612,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7491
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             {"Low": 2},
           null,null,null,null,null]
@@ -109,8 +105,7 @@
             "Z": -491.56943
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -125,8 +120,7 @@
             "Z": -470.08472
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -141,8 +135,7 @@
             "Z": -539.4217
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -174,8 +167,7 @@
           },
           "TerritoryId": 635,
           "InteractionType": "Emote",
-          "Emote": "respect",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "Emote": "respect"
         }
       ]
     },
@@ -191,10 +183,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "NextQuestId": 2919
         }
       ]

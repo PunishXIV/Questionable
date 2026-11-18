@@ -15,9 +15,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "StopDistance": 1,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -39,28 +36,13 @@
             "Z": 48.90515
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -509.02783,
-            "Y": -16.420786,
-            "Z": 11.723575
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
-        },
         {
           "DataId": 1006355,
           "Position": {
@@ -77,16 +59,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": -509.17432,
-            "Y": -16.420816,
-            "Z": 10.977634
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1030875,
           "Position": {
             "X": -458.64044,
@@ -94,8 +66,7 @@
             "Z": 110.64307
           },
           "TerritoryId": 145,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

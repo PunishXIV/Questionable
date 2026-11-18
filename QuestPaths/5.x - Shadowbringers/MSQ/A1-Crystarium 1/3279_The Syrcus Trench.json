@@ -13,7 +13,6 @@
             "Y": 0,
             "Z": -9.10968
           },
-          "StopDistance": 7,
           "TerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -84,7 +82,6 @@
             "Y": 0,
             "Z": 1.6326294
           },
-          "StopDistance": 5,
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest"
         }

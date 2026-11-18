@@ -16,12 +16,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "RoguesGuild"
@@ -35,7 +30,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest"
         }
@@ -71,11 +65,6 @@
           },
           "TerritoryId": 134,
           "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ],
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "InTerritory": [
@@ -106,7 +95,6 @@
             "Y": 95.90476,
             "Z": -446.11078
           },
-          "StopDistance": 0.5,
           "TerritoryId": 135,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -114,8 +102,7 @@
             2864,
             2865,
             2866
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -146,11 +133,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "TargetTerritoryId": 129
         },
         {
           "DataId": 1009943,
@@ -159,7 +142,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -210,17 +192,6 @@
               "AetheryteUnlocked": "Eastern La Noscea - Costa Del Sol"
             }
           }
-        },
-        {
-          "Position": {
-            "X": 449.17413,
-            "Y": 16.072088,
-            "Z": 406.06335
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
         },
         {
           "DataId": 1010251,
@@ -277,11 +248,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "TargetTerritoryId": 129
         },
         {
           "DataId": 1009943,
@@ -290,7 +257,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 154

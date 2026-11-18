@@ -14,11 +14,7 @@
             "Z": -53.3609
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -48,11 +44,7 @@
             "Z": 25.345215
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,11 +59,7 @@
             "Z": -53.3609
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -86,9 +74,7 @@
             "Z": 29.587158
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,8 +94,7 @@
           "KillEnemyDataIds": [
             5042,
             5045
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -123,7 +108,6 @@
             "Y": -37.88608,
             "Z": -132.55518
           },
-          "StopDistance": 7,
           "TerritoryId": 398,
           "InteractionType": "Interact"
         }
@@ -141,10 +125,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "NextQuestId": 1710
         }
       ]

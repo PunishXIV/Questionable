@@ -32,8 +32,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             11150
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 2010468,
@@ -47,8 +46,7 @@
           "KillEnemyDataIds": [
             11150
           ],
-          "TerritoryId": 818,
-          "Fly": true
+          "TerritoryId": 818
         },
         {
           "DataId": 2010469,
@@ -62,8 +60,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             11150
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -78,9 +75,7 @@
             "Z": -342.79395
           },
           "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Tempest - Ondo Cups"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -95,8 +90,7 @@
             "Z": -165.30103
           },
           "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

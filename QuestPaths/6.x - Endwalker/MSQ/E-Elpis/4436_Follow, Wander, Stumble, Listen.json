@@ -13,7 +13,6 @@
             "Y": 148.81448,
             "Z": -418.53973
           },
-          "StopDistance": 5,
           "TerritoryId": 961,
           "InteractionType": "AcceptQuest"
         }
@@ -38,16 +37,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": 463.18567,
-            "Y": 138.58543,
-            "Z": -273.41803
-          },
-          "TerritoryId": 961,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 2012169,
           "Position": {
             "X": 523.7352,
@@ -62,15 +51,6 @@
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": 726.4087,
-            "Y": 139.19812,
-            "Z": -131.47159
-          },
-          "TerritoryId": 961,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 2012170,
           "Position": {
@@ -108,7 +88,6 @@
             "Y": 151.56888,
             "Z": -303.88342
           },
-          "StopDistance": 5,
           "TerritoryId": 961,
           "InteractionType": "CompleteQuest"
         }

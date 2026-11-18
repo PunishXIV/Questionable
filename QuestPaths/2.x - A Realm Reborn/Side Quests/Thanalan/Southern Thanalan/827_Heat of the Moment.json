@@ -7,18 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "$": "Mumugoi is under a tent, so fly/walk nearby first",
-          "Position": {
-            "X": -110.91653,
-            "Y": -10.813497,
-            "Z": 723.6821
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
-        },
-        {
           "DataId": 1006295,
           "Position": {
             "X": -113.5119,
@@ -42,7 +30,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "StopDistance": 4,
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
             {
@@ -61,7 +48,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "StopDistance": 4,
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
             {
@@ -80,7 +66,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "StopDistance": 4,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -110,7 +95,6 @@
             "Z": 684.5715
           },
           "TerritoryId": 146,
-          "Fly": true,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -126,18 +110,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "$": "Mumugoi is under a tent, so fly/walk nearby first",
-          "Position": {
-            "X": -110.91653,
-            "Y": -10.813497,
-            "Z": 723.6821
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
-        },
         {
           "DataId": 1006295,
           "Position": {

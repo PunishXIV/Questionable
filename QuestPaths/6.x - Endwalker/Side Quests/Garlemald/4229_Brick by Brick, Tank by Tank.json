@@ -35,8 +35,7 @@
             14103
           ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
-          "$": "0 0 0 0 0 0 -> 16 0 16 0 0 128",
-          "Fly": true
+          "$": "0 0 0 0 0 0 -> 16 0 16 0 0 128"
         },
         {
           "DataId": 1040627,
@@ -59,7 +58,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "Interact",
-          "Mount": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
           "$": "32 16 16 0 0 160 -> 49 16 16 0 0 224"
         },
@@ -88,8 +86,7 @@
             "Z": -135.91211
           },
           "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Tertium"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

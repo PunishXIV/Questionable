@@ -16,12 +16,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "RoguesGuild"
@@ -35,7 +30,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest"
         }
@@ -51,7 +45,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -68,9 +61,7 @@
             "Z": 581.3839
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,8 +76,7 @@
             "Z": 729.9762
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -101,9 +91,7 @@
             "Z": 346.76123
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -134,7 +122,6 @@
             "Y": -36.353825,
             "Z": 346.76123
           },
-          "StopDistance": 5,
           "TerritoryId": 138,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 145

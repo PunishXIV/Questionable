@@ -15,11 +15,6 @@
           },
           "TerritoryId": 1278,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Phantom Village"
-          ],
           "$": "auto: issuer 1053803 (Ketenramm)"
         }
       ]
@@ -36,7 +31,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
           "$": "auto: todo turn-in -> 1053805 (expedition messenger)"
         }
       ]

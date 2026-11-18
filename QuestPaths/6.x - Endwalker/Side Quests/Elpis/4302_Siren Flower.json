@@ -13,9 +13,7 @@
             "Z": -253.92542
           },
           "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +28,7 @@
             "Z": -212.08514
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +43,7 @@
           },
           "TerritoryId": 961,
           "InteractionType": "None",
-          "DelaySecondsAtStart": 4,
-          "Mount": false
+          "DelaySecondsAtStart": 4
         },
         {
           "Position": {
@@ -56,7 +52,6 @@
             "Z": -268.7572
           },
           "TerritoryId": 961,
-          "Mount": false,
           "DelaySecondsAtStart": 2,
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
@@ -73,7 +68,6 @@
           },
           "TerritoryId": 961,
           "DelaySecondsAtStart": 5,
-          "Mount": false,
           "InteractionType": "Interact"
         }
       ]
@@ -89,7 +83,6 @@
             "Z": -235.91583
           },
           "TerritoryId": 961,
-          "Mount": false,
           "InteractionType": "None"
         },
         {
@@ -99,7 +92,6 @@
             "Z": -165.57906
           },
           "TerritoryId": 961,
-          "Mount": false,
           "InteractionType": "None"
         },
         {
@@ -109,7 +101,6 @@
             "Z": -142.14305
           },
           "TerritoryId": 961,
-          "Mount": false,
           "InteractionType": "None"
         },
         {
@@ -119,7 +110,6 @@
             "Z": -135.729
           },
           "TerritoryId": 961,
-          "Mount": false,
           "InteractionType": "None"
         },
         {
@@ -129,7 +119,6 @@
             "Z": -135.729
           },
           "TerritoryId": 961,
-          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "DelaySecondsAtStart": 3,
@@ -148,7 +137,6 @@
           },
           "TerritoryId": 961,
           "DelaySecondsAtStart": 3,
-          "Mount": false,
           "InteractionType": "Interact"
         }
       ]
@@ -163,7 +151,6 @@
             "Z": -65.322914
           },
           "TerritoryId": 961,
-          "Mount": false,
           "InteractionType": "None"
         },
         {
@@ -173,7 +160,6 @@
             "Z": 4.5929565
           },
           "TerritoryId": 961,
-          "Mount": false,
           "InteractionType": "None"
         },
         {
@@ -184,7 +170,6 @@
           },
           "DelaySecondsAtStart": 3,
           "TerritoryId": 961,
-          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
@@ -200,7 +185,6 @@
           },
           "TerritoryId": 961,
           "DelaySecondsAtStart": 3,
-          "Mount": false,
           "InteractionType": "Interact"
         }
       ]
@@ -216,7 +200,6 @@
             "Z": -0.9309082
           },
           "TerritoryId": 961,
-          "Mount": false,
           "InteractionType": "Interact"
         }
       ]
@@ -232,9 +215,7 @@
             "Z": -253.92542
           },
           "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

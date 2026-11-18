@@ -13,21 +13,7 @@
             "Z": -75.30328
           },
           "TerritoryId": 820,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eulmore",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 47.989624,
-                  "Y": 83.00107,
-                  "Z": -75.30328
-                },
-                "TerritoryId": 820,
-                "MaximumDistance": 100
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

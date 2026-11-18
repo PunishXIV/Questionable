@@ -14,8 +14,7 @@
             "Z": 639.4292
           },
           "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -75,8 +73,7 @@
               "Z": -36.29651
             },
             "DelaySeconds": 0.1
-          },
-          "StopDistance": 0.25
+          }
         },
         {
           "Position": {
@@ -93,8 +90,7 @@
               "Z": -38.626305
             },
             "DelaySeconds": 0.1
-          },
-          "StopDistance": 0.25
+          }
         },
         {
           "DataId": 2009058,
@@ -105,18 +101,8 @@
           },
           "TerritoryId": 738,
           "InteractionType": "Interact",
-          "StopDistance": 4,
           "DelaySecondsAtStart": 3,
           "$": "QW: 0 0 0 0 0 0 -> QW: 16 16 0 0 0 128"
-        },
-        {
-          "Position": {
-            "X": -0.01923807,
-            "Y": -2.0000002,
-            "Z": -35.31207
-          },
-          "TerritoryId": 738,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1024118,

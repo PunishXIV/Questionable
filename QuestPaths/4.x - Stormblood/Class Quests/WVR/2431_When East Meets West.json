@@ -17,24 +17,7 @@
 				"Z": 98.924194
 			},
 			"TerritoryId": 131,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ul'dah",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Weavers' Guild"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					130,
-					131
-					]
-				}
-			}
+			"InteractionType": "AcceptQuest"
 		}
 		]
 	},
@@ -51,12 +34,7 @@
 				"Z": -97.276245
 			},
 			"TerritoryId": 130,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Weavers' Guild",
-			"[Ul'dah] Adventurers' Guild"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -73,12 +51,7 @@
 				"Z": 22.415466
 			},
 			"TerritoryId": 131,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Adventurers' Guild",
-			"[Ul'dah] The Chamber of Rule"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -95,12 +68,7 @@
 				"Z": 98.924194
 			},
 			"TerritoryId": 131,
-			"InteractionType": "CompleteQuest",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] The Chamber of Rule",
-			"[Ul'dah] Weavers' Guild"
-			]
+			"InteractionType": "CompleteQuest"
 		}
 		]
 	}

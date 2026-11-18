@@ -15,18 +15,7 @@
             "Z": 164.29382
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -49,47 +38,11 @@
           },
           "ItemId": 2587,
           "ItemCount": 99,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
                 "NotInInventory": false
               }
-            },
-            "AetheryteShortcutIf": {
-              "Item": {
-                "NotInInventory": false
-              },
-              "InTerritory": [
-                129
-              ]
-            }
-          }
-        },
-        {
-          "$": "This first move is necessary to ensure the player is facing toward the water when we begin fishing.",
-          "Comment": "Move to fishing spot",
-          "Position": {
-            "X": -183.85957,
-            "Y": 4,
-            "Z": 181.72098
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Hawkers' Alley",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
             }
           }
         },

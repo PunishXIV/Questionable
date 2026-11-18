@@ -7,27 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 131,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Alchemists' Guild"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 157.36621,
-                  "Y": 7.7920074,
-                  "Z": 98.924194
-                },
-                "TerritoryId": 131,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
           "DataId": 1002281,
           "Position": {
             "X": -115.739685,
@@ -36,15 +15,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [131]
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

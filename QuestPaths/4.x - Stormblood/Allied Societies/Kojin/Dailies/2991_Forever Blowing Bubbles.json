@@ -14,27 +14,13 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 317.60294,
-            "Y": -83.18693,
-            "Z": -227.16872
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1024307,
           "Position": {
@@ -44,8 +30,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Snipe",
-          "Comment": "Snipe the stingray",
-          "Fly": true
+          "Comment": "Snipe the stingray"
         }
       ]
     },
@@ -60,11 +45,7 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -13,10 +13,8 @@
             "Y": -16.42,
             "Z": -7.522766
           },
-          "StopDistance": 7,
           "TerritoryId": 145,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

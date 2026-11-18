@@ -14,8 +14,7 @@
             "Z": 5.416931
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,7 @@
             "Z": 109.391846
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,10 +45,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -72,10 +63,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Goldsmiths' Guild",
-            "[Ul'dah] Alchemists' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -97,11 +84,7 @@
             "Z": 73.20917
           },
           "TerritoryId": 131,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Ul'dah] Alchemists' Guild",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "InteractionType": "WalkTo"
         }
       ]
     },

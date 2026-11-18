@@ -41,8 +41,7 @@
             "Z": 508.75085
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,12 +55,9 @@
             "Y": 132.6466,
             "Z": 728.96924
           },
-          "StopDistance": 0.5,
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 1024,
-          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
-          "Fly": true
+          "TargetTerritoryId": 1024
         },
         {
           "DataId": 2012529,
@@ -96,7 +92,6 @@
             "Y": 130.61172,
             "Z": 722.62134
           },
-          "StopDistance": 7,
           "TerritoryId": 959,
           "InteractionType": "Interact"
         }
@@ -128,24 +123,13 @@
             "Z": -444.66315
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
       "Steps": [
-        {
-          "Position": {
-            "X": -59.250706,
-            "Y": -133.00002,
-            "Z": -587.20355
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1042532,
           "Position": {
@@ -183,11 +167,8 @@
             "Y": 66.544556,
             "Z": 367.2693
           },
-          "StopDistance": 0.5,
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -201,7 +182,6 @@
             "Y": 130.1783,
             "Z": 711.94006
           },
-          "StopDistance": 7,
           "TerritoryId": 959,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4642

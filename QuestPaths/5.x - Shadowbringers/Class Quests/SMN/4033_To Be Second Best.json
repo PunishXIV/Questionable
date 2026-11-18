@@ -14,11 +14,7 @@
             "Z": -246.87573
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,11 +29,7 @@
             "Z": 108.62891
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -52,8 +44,7 @@
             "Z": 84.27551
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -83,8 +74,7 @@
             "Z": 108.62891
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -99,11 +89,7 @@
             "Z": -246.87573
           },
           "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

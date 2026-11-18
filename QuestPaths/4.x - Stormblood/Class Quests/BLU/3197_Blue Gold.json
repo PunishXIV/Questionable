@@ -14,18 +14,7 @@
             "Z": 88.70068
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,8 +34,6 @@
           "KillEnemyDataIds": [
             9840
           ],
-          "AetheryteShortcut": "Western Thanalan - Horizon",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -84,10 +71,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "NextQuestId": 3198
         }
       ]

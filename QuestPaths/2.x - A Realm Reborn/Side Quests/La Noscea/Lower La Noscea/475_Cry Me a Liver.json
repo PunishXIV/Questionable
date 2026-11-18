@@ -14,15 +14,7 @@
             "Z": 33.64612
           },
           "TerritoryId": 135,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [135] }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,8 +29,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "Combat",
-          "Fly": true,
-          "Land": true,
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -46,13 +36,6 @@
               "MinimumKillCount": 3
             }
           ],
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [135] }
-          },
           "$": "included aetheryte shortcut in case this quest is accepted and then done later; it's a long hike from Moraby Drydocks"
         }
       ]
@@ -68,8 +51,7 @@
             "Z": 33.64612
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,7 +67,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 476
         }
       ]

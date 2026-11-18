@@ -16,19 +16,7 @@
           "TerritoryId": 960,
           "InteractionType": "Interact",
           "TargetTerritoryId": 960,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -66,8 +54,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -88,7 +74,6 @@
             "Y": 269.09763,
             "Z": -497.1237
           },
-          "StopDistance": 5,
           "TerritoryId": 960,
           "InteractionType": "Interact"
         }
@@ -107,19 +92,7 @@
           "TerritoryId": 960,
           "InteractionType": "Interact",
           "TargetTerritoryId": 960,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {

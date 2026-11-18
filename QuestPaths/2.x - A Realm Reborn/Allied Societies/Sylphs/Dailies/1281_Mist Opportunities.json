@@ -14,10 +14,7 @@
             "Z": 251.17871
           },
           "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,9 +29,7 @@
             "Z": -55.161438
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,7 +51,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2001183,
           "RequiredQuestVariables": [null,null,null,[
             {"High": 4},{"High": 5}
@@ -72,7 +66,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2001183,
           "RequiredQuestVariables": [null,null,null,[
             {"High": 1},{"High": 2},{"High": 4}
@@ -88,7 +81,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2001183,
           "RequiredQuestVariables": [null,null,null,[
             {"High": 2},{"High": 3},{"High": 5}
@@ -104,7 +96,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2001183,
           "RequiredQuestVariables": [null,null,null,[
             {"High": 1},{"High": 3}
@@ -124,10 +115,7 @@
             "Z": 251.17871
           },
           "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

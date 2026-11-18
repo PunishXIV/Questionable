@@ -27,7 +27,6 @@
             "Y": -17.25763,
             "Z": 37.377193
           },
-          "StopDistance": 1,
           "TerritoryId": 815,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -47,7 +46,6 @@
             "Y": -17.25763,
             "Z": 35.416138
           },
-          "StopDistance": 5,
           "TerritoryId": 815,
           "InteractionType": "Interact"
         }
@@ -62,7 +60,6 @@
             "Y": -30.337545,
             "Z": 103.22127
           },
-          "StopDistance": 1,
           "TerritoryId": 815,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -82,7 +79,6 @@
             "Y": -30.173006,
             "Z": 101.76245
           },
-          "StopDistance": 5,
           "TerritoryId": 815,
           "InteractionType": "Interact"
         }

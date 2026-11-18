@@ -36,7 +36,6 @@
 							"MinimumKillCount": 4
 						}
 					],
-					"Fly": true,
 					"$": "we go to the west of the marked area to avoid idling in the FATE that spawns on the east of it; we'll still path through it when we expend all the westward mobs, but that's just how they spawn, shrugging emoji."
 				}
 			]
@@ -52,8 +51,7 @@
 						"Z": -527.48914
 					},
 					"TerritoryId": 402,
-					"InteractionType": "CompleteQuest",
-                    "Fly": true
+					"InteractionType": "CompleteQuest"
 				}
 			]
 		}

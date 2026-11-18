@@ -14,9 +14,7 @@
             "Z": 729.4575
           },
           "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,11 +30,9 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Say",
-          "AetheryteShortcut": "Yak T'el - Mamook",
           "ChatMessage": {
             "Key": "TEXT_BANMAM115_05275_SAYTODO_000_030"
           },
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -51,7 +47,6 @@
           "ChatMessage": {
             "Key": "TEXT_BANMAM115_05275_SAYTODO_000_030"
           },
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -66,7 +61,6 @@
           "ChatMessage": {
             "Key": "TEXT_BANMAM115_05275_SAYTODO_000_030"
           },
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -82,8 +76,7 @@
             "Z": 729.4575
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

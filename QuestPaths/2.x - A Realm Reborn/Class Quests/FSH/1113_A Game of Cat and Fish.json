@@ -14,16 +14,7 @@
             "Z": 164.294
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [129]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,34 +36,13 @@
           },
           "ItemId": 2586,
           "ItemCount": 99,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
                 "NotInInventory": false
               }
-            },
-            "AetheryteShortcutIf": {
-              "Item": {
-                "NotInInventory": false
-              },
-              "InTerritory": [129]
             }
           }
-        },
-        {
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Position": {
-            "X": -33.696224,
-            "Y": -39.771423,
-            "Z": 205.31651
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -104,10 +74,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "NextQuestId": 1114
         }
       ]

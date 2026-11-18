@@ -14,17 +14,7 @@
             "Z": 185.53442
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [128, 129]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,10 +30,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CLSBSM650_02617_Q1_000_000",
@@ -65,13 +51,8 @@
           },
           "TerritoryId": 129,
           "InteractionType": "WalkTo",
-          "StopDistance": 1,
           "TargetTerritoryId": 128,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Aetheryte Plaza"
-          ],
-		  "SkipConditions": {"StepIf": {"NotInTerritory": [129]}}
+          "SkipConditions": {"StepIf": {"NotInTerritory": [129]}}
         },
         {
           "DataId": 1021042,
@@ -116,7 +97,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "WalkTo",
-          "StopDistance": 1,
           "TargetTerritoryId": 129,
 		  "SkipConditions": {"StepIf": {"NotInTerritory": [128]}}
         },
@@ -128,11 +108,7 @@
             "Z": 177.5387
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -147,11 +123,7 @@
             "Z": 185.53442
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

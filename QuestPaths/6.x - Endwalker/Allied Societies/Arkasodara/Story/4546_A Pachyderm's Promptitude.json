@@ -28,8 +28,7 @@
             "Z": 22.445984
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -42,14 +41,12 @@
             "Y": 55.300343,
             "Z": -108.32965
           },
-          "StopDistance": 0.25,
           "TerritoryId": 957,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             14681
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -63,7 +60,6 @@
             "Y": 54.680054,
             "Z": -102.9527
           },
-          "StopDistance": 7,
           "TerritoryId": 957,
           "InteractionType": "Interact"
         }
@@ -80,8 +76,7 @@
             "Z": 88.97534
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -121,10 +116,8 @@
             "Y": 1.120665,
             "Z": 23.392029
           },
-          "StopDistance": 0.5,
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -136,7 +129,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -167,8 +159,7 @@
             "Z": -212.35986
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -184,8 +175,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true,
           "NextQuestId": 4547
         }
       ]

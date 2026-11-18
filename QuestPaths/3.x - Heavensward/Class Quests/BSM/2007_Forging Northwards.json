@@ -14,16 +14,7 @@
             "Z": 185.53442
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [128]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -53,16 +44,7 @@
             "Z": -25.833557
           },
           "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

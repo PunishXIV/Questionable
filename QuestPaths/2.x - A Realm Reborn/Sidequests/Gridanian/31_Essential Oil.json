@@ -13,14 +13,8 @@
             "Y": -4.00016,
             "Z": -7.91948
           },
-          "StopDistance": 2,
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,12 +30,7 @@
           "TerritoryId": 148,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [49],
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ],
-          "Fly": true
+          "KillEnemyDataIds": [49]
         }
       ]
     },
@@ -55,14 +44,8 @@
             "Y": -4.00016,
             "Z": -7.91948
           },
-          "StopDistance": 2,
           "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

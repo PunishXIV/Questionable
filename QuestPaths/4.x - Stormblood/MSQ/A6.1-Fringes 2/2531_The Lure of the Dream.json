@@ -44,16 +44,6 @@
           "AetherCurrentId": 2818139
         },
         {
-          "Position": {
-            "X": 328.29312,
-            "Y": 79.1903,
-            "Z": 2.052349
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1020817,
           "Position": {
             "X": 327.5348,
@@ -75,7 +65,6 @@
             "Y": 82.94969,
             "Z": -101.27417
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest"
         }

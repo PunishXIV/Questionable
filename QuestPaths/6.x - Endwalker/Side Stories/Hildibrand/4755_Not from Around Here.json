@@ -13,10 +13,8 @@
             "Y": 93.68002,
             "Z": -316.7926
           },
-          "StopDistance": 5,
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Great Work"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,7 +30,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Old Sharlayan",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -55,10 +52,6 @@
           },
           "TerritoryId": 956,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Hall of Artifice (Labyrinthos)"
-          ],
           "TargetTerritoryId": 962
         },
         {
@@ -84,8 +77,7 @@
             "Z": -431.7235
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Archeion"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -101,7 +93,6 @@
           },
           "TerritoryId": 956,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -124,7 +115,6 @@
           },
           "TerritoryId": 956,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -155,8 +145,7 @@
             "Z": 17.715698
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han"
+          "InteractionType": "Interact"
         }
       ]
     },

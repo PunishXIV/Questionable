@@ -29,8 +29,7 @@
             "Z": 7.095398
           },
           "TerritoryId": 820,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eulmore"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,8 +90,7 @@
             "Z": 336.8734
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -106,7 +104,6 @@
             "Y": -3.0654925E-07,
             "Z": 1.6021729
           },
-          "StopDistance": 5,
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest"
         }

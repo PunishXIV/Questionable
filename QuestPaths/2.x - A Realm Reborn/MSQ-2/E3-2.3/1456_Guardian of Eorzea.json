@@ -44,14 +44,12 @@
             "Y": -2.2044632,
             "Z": -556.2372
           },
-          "StopDistance": 1,
           "TerritoryId": 156,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.292"
-          },
-          "Fly": true
+          }
         }
       ]
     },

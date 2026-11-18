@@ -15,11 +15,7 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 210,
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Alchemists' Guild"
-          ]
+          "TargetTerritoryId": 210
         },
         {
           "DataId": 1004002,
@@ -55,11 +51,7 @@
             "Z": -78.78235
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Alchemists' Guild",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -74,11 +66,7 @@
             "Z": 110.795654
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,11 +81,7 @@
             "Z": -78.78235
           },
           "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Goldsmiths' Guild",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

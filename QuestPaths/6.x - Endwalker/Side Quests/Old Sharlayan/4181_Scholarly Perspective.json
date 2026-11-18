@@ -29,11 +29,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Snipe",
-          "Comment": "Click ewer, head and feet",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "Comment": "Click ewer, head and feet"
         }
       ]
     },
@@ -48,12 +44,7 @@
             "Z": 253.34546
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -68,8 +59,7 @@
             "Z": -22.90387
           },
           "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

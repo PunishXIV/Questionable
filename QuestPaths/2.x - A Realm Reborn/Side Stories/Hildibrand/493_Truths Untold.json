@@ -13,7 +13,6 @@
             "Y": 34,
             "Z": 30.22815
           },
-          "StopDistance": 7,
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest"
         }
@@ -29,7 +28,6 @@
             "Y": 33.99998,
             "Z": 29.343018
           },
-          "StopDistance": 7,
           "TerritoryId": 131,
           "InteractionType": "Interact"
         }
@@ -39,26 +37,12 @@
       "Sequence": 2,
       "Steps": [
         {
-          "AethernetShortcut": [
-            "[Ul'dah] The Chamber of Rule",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ],
-          "Position": {
-            "X": 137.68585,
-            "Y": 3.9999998,
-            "Z": -58.555218
-          },
-          "TerritoryId": 131,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1001679,
           "Position": {
             "X": 140.48975,
             "Y": 4.0099983,
             "Z": -59.80017
           },
-          "StopDistance": 5,
           "TerritoryId": 131,
           "InteractionType": "Interact"
         }
@@ -68,10 +52,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "AethernetShortcut": [
-            "[Ul'dah] Sapphire Avenue Exchange",
-            "[Ul'dah] The Chamber of Rule"
-          ],
           "DataId": 1011712,
           "Position": {
             "X": -43.86969,
@@ -86,15 +66,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 22.47297,
-            "Y": 33.999996,
-            "Z": -40.833565
-          },
-          "TerritoryId": 131,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1011707,
           "Position": {

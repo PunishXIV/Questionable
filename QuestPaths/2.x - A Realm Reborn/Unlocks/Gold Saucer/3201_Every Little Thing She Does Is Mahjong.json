@@ -14,8 +14,7 @@
             "Z": 0.8086548
           },
           "TerritoryId": 144,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gold Saucer"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,7 @@
             "Z": 83.57361
           },
           "TerritoryId": 144,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gold Saucer] Aetheryte Plaza",
-            "[Gold Saucer] Wonder Square East"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

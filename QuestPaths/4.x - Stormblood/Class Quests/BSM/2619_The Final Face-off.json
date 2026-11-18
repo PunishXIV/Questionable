@@ -14,16 +14,7 @@
             "Z": 185.53442
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [128, 129]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -38,12 +29,7 @@
             "Z": -67.704346
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Shiokaze Hostelry"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -58,11 +44,7 @@
             "Z": 198.01636
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Shiokaze Hostelry",
-            "[Kugane] Pier #1"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,11 +59,7 @@
             "Z": -67.704346
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Pier #1",
-            "[Kugane] Shiokaze Hostelry"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -109,11 +87,7 @@
             "Z": 198.01636
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Shiokaze Hostelry",
-            "[Kugane] Pier #1"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -143,11 +117,7 @@
             "Z": 185.53442
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

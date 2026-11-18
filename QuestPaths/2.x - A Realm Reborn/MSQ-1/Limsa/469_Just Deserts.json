@@ -89,16 +89,6 @@
       "Sequence": 6,
       "Steps": [
         {
-          "Position": {
-            "X": 205.08835,
-            "Y": 111.9045,
-            "Z": -245.44336
-          },
-          "TerritoryId": 134,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms"
-        },
-        {
           "DataId": 1002626,
           "Position": {
             "X": 207.2633,
@@ -136,11 +126,7 @@
             "Z": -6.1189575
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

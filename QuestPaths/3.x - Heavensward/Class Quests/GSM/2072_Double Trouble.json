@@ -15,16 +15,7 @@
             "Z": 66.544556
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [130, 131]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -54,11 +45,7 @@
             "Z": -5.6000977
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -73,8 +60,7 @@
             "Z": 486.10657
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -119,11 +105,7 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "AllowHighQuality": true
         }
       ]
     }

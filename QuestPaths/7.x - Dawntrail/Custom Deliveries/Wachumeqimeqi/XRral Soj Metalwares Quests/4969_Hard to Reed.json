@@ -16,10 +16,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: issuer 1047135 (Rral Soj)"
         }
       ]
@@ -48,10 +44,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: todo turn-in -> 1047135 (Rral Soj)"
         }
       ]

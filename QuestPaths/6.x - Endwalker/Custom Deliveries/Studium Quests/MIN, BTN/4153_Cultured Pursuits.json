@@ -14,8 +14,7 @@
             "Z": -95.99457
           },
           "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Old Sharlayan] Aetheryte Plaza","[Old Sharlayan] The Studium"]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -59,7 +58,6 @@
             "Y": 21.846018,
             "Z": -102.983154
           },
-          "StopDistance": 7,
           "TerritoryId": 962,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4154

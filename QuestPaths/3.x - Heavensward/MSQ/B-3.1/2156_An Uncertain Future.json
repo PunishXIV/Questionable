@@ -13,12 +13,8 @@
             "Y": 16.009666,
             "Z": -9.567444
           },
-          "StopDistance": 7,
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": ["[Ishgard] Aetheryte Plaza","[Ishgard] The Last Vigil"],
-          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [418,419]}},
           "TargetTerritoryId": 433
         },
         {
@@ -28,7 +24,6 @@
             "Y": 0.022254243,
             "Z": 4.623413
           },
-          "StopDistance": 5,
           "TerritoryId": 433,
           "InteractionType": "AcceptQuest"
         }
@@ -52,10 +47,6 @@
               "Prompt": "TEXT_HEAVNB101_02156_SCENE00010_EVENTAREA_WARP_YESNO_TITLE",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] The Forgotten Knight"
           ]
         }
       ]
@@ -70,7 +61,6 @@
             "Y": 24.388157,
             "Z": -4.3793945
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
           "InteractionType": "Interact"
         }

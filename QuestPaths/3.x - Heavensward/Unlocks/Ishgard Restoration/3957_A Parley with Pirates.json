@@ -29,8 +29,7 @@
             "Z": 16.189758
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,11 +44,7 @@
             "Z": 13.076904
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,11 +59,7 @@
             "Z": 131.2428
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -112,7 +103,6 @@
             "Y": 43.999985,
             "Z": -157.91565
           },
-          "StopDistance": 7,
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [

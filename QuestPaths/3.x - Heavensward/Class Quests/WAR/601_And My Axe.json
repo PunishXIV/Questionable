@@ -14,24 +14,13 @@
             "Z": 18.814331
           },
           "TerritoryId": 139,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 427.1206,
-            "Y": 7.9075317,
-            "Z": 24.77774
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
         {
           "DataId": 1013316,
           "Position": {
@@ -40,8 +29,7 @@
             "Z": 46.28064
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -72,10 +60,7 @@
             "Z": 61.41748
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,7 +76,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.292"

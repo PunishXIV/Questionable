@@ -14,12 +14,7 @@
             "Z": -194.41522
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Bokairo Inn"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,11 +29,7 @@
             "Z": -99.77875
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Bokairo Inn",
-            "[Kugane] Rakuza District"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -53,9 +44,7 @@
             "Z": 273.33484
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Reunion",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -145,7 +134,6 @@
           },
           "TerritoryId": 622,
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -182,8 +170,6 @@
           },
           "TerritoryId": 622,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Azim Steppe - Reunion",
-          "Fly": true,
           "NextQuestId": 2914
         }
       ]

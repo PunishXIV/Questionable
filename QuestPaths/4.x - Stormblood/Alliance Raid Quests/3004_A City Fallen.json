@@ -16,10 +16,6 @@
           "TerritoryId": 628,
           "InteractionType": "Interact",
           "TargetTerritoryId": 628,
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Kogane Dori Markets"
-          ],
           "SkipConditions": {
             "StepIf": {
               "InTerritory": [736],
@@ -115,7 +111,6 @@
             "Y": 15.000004,
             "Z": 42.557373
           },
-          "StopDistance": 7,
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3089

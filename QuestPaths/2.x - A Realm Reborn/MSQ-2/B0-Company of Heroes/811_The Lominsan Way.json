@@ -49,9 +49,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 137,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
+          "TargetTerritoryId": 137
         },
         {
           "TerritoryId": 137,
@@ -79,8 +77,7 @@
             "Z": 455.89368
           },
           "TerritoryId": 137,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

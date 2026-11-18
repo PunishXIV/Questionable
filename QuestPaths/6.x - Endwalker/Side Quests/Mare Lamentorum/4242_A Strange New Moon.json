@@ -17,9 +17,7 @@
             "Z": -466.04
           },
           "TerritoryId": 959,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,9 +39,7 @@
               "RewardItemId": 2003366,
               "RewardItemCount": 1
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
@@ -58,10 +54,7 @@
             "Z": -466.04
           },
           "TerritoryId": 959,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

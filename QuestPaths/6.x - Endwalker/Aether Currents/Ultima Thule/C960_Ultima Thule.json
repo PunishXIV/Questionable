@@ -14,8 +14,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "AetherCurrentUnlocked": 2818390

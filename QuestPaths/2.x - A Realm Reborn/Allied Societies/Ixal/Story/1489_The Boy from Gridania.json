@@ -14,9 +14,7 @@
             "Z": 100.72473
           },
           "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": 106.67578
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,11 +44,7 @@
             "Z": 57.114502
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -88,9 +81,6 @@
             "Z": 178.43575
           },
           "TerritoryId": 154,
-          "StopDistance": 1,
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "InteractionType": "Interact"
         }
       ]
@@ -119,9 +109,7 @@
             "Z": 100.72473
           },
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

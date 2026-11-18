@@ -13,7 +13,6 @@
             "Y": -168,
             "Z": -609.91833
           },
-          "StopDistance": 6.5,
           "TerritoryId": 959,
           "InteractionType": "AcceptQuest"
         }
@@ -31,24 +30,13 @@
           },
           "TerritoryId": 959,
           "InteractionType": "UseItem",
-          "ItemId": 2003328,
-          "Fly": true
+          "ItemId": 2003328
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -325.3802,
-            "Y": -152.73842,
-            "Z": -746.0951
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2012513,
           "Position": {
@@ -66,20 +54,10 @@
       "Steps": [
         {
           "Position": {
-            "X": -356.33234,
-            "Y": -161.8501,
-            "Z": -738.81055
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
             "X": -428.4264,
             "Y": -168,
             "Z": -676.6854
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -98,7 +76,6 @@
             "Y": -166.55412,
             "Z": -679.5478
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -117,7 +94,6 @@
             "Y": -165.05414,
             "Z": -682.2485
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -136,7 +112,6 @@
             "Y": -163.55414,
             "Z": -684.8062
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -155,7 +130,6 @@
             "Y": -162.05414,
             "Z": -687.71533
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -174,7 +148,6 @@
             "Y": -160.55414,
             "Z": -691.17804
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -186,15 +159,6 @@
             "DelaySeconds": 0.1
           },
           "Comment": "Platform 6"
-        },
-        {
-          "Position": {
-            "X": -434.91986,
-            "Y": -158.88745,
-            "Z": -693.17865
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2012611,
@@ -219,7 +183,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -245,7 +208,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -276,8 +238,7 @@
             "Z": -547.0817
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

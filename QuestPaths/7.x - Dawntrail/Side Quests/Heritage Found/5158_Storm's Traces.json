@@ -13,22 +13,7 @@
             "Z": 134.7218
           },
           "TerritoryId": 1191,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Heritage Found - Electrope Strike",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -250.04962,
-                  "Y": 31.000015,
-                  "Z": 134.7218
-                },
-                "TerritoryId": 1191,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,7 +26,6 @@
             "Y": 31.361284,
             "Z": 268.5205
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -49,7 +33,6 @@
             17682,
             17683
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -58,7 +41,6 @@
             "Y": 39.809544,
             "Z": -44.773865
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -66,7 +48,6 @@
             17680,
             17681
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -82,8 +63,7 @@
             "Z": 134.7218
           },
           "TerritoryId": 1191,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Heritage Found - Electrope Strike"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,18 +15,7 @@
             "Z": -255.8786
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,11 +30,7 @@
             "Z": -153.91785
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,9 +49,7 @@
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.1.0.1"
-          },
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "Fly": true
+          }
         }
       ]
     },
@@ -82,10 +65,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "NextQuestId": 319
         }
       ]

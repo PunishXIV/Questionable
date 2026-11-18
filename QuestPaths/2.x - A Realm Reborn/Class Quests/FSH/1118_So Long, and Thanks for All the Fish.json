@@ -14,18 +14,7 @@
             "Z": 164.294
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -72,7 +61,6 @@
             "Y": 3.9999998,
             "Z": 200.34163
           },
-          "StopDistance": 1,
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -96,36 +84,21 @@
           },
           "ItemId": 2587,
           "ItemCount": 99,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
                 "NotInInventory": false
               }
-            },
-            "AetheryteShortcutIf": {
-              "Item": {
-                "NotInInventory": false
-              },
-              "InTerritory": [
-                129
-              ]
             }
           }
         },
         {
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "Position": {
             "X": 559.52716,
             "Y": 15.584612,
             "Z": 102.16865
           },
           "TerritoryId": 137,
-          "Fly": true,
           "InteractionType": "WalkTo"
         },
         {
@@ -141,17 +114,6 @@
         },
         {
           "Comment": "Deliver a Mazlaya Marlin to Sisipu",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
-            }
-          },
           "DataId": 1000857,
           "Position": {
             "X": -165.27,

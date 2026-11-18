@@ -14,8 +14,7 @@
             "Z": -456.32104
           },
           "TerritoryId": 958,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,7 +29,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "$": "need to land on the road to avoid awkward flypathing through the burned buildings."
         },
         {
@@ -44,8 +42,7 @@
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             14102
-          ],
-          "Fly": false
+          ]
         },
         {
           "DataId": 14102,
@@ -86,9 +83,7 @@
             "Z": -456.32104
           },
           "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Tertium",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

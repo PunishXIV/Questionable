@@ -29,11 +29,7 @@
             "Z": 179.49182
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Brightploom Post",
-            "[Tuliyollal] The For'ard Cabins"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,12 +59,7 @@
             "Z": 113.11511
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] The For'ard Cabins"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -83,11 +74,7 @@
             "Z": -230.27393
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] The For'ard Cabins",
-            "[Tuliyollal] Brightploom Post"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

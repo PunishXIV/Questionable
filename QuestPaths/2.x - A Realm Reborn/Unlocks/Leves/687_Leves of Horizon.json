@@ -21,14 +21,7 @@
             "Z": -107.562
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [130] }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,8 +38,7 @@
             "Z": -245.824
           },
           "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western Thanalan - Horizon"
+          "InteractionType": "Interact"
         }
       ]
     },

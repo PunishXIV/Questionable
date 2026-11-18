@@ -14,9 +14,7 @@
             "Z": -477.89734
           },
           "TerritoryId": 1192,
-          "AetheryteShortcut": "Living Memory - Leynode Aero",
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,10 +28,8 @@
             "Y": -4.5319824,
             "Z": -466.45306
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1192,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -44,7 +40,6 @@
           },
           "TerritoryId": 1192,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -60,7 +55,6 @@
           },
           "TerritoryId": 1192,
           "InteractionType": "Interact",
-          "Mount": false,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -71,7 +65,6 @@
           },
           "TerritoryId": 1192,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -87,7 +80,6 @@
           },
           "TerritoryId": 1192,
           "InteractionType": "Interact",
-          "Mount": false,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -103,8 +95,7 @@
             "Z": -477.8363
           },
           "TerritoryId": 1192,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

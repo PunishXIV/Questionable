@@ -14,8 +14,7 @@
             "Z": 612.298
           },
           "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +29,7 @@
             "Z": 695.07056
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,8 +44,7 @@
             "Z": 681.269
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,7 +60,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -83,7 +78,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -102,7 +96,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -120,8 +113,7 @@
             "Z": 555.35205
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -136,7 +128,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [4056]
         }
@@ -153,8 +144,7 @@
             "Z": 555.9319
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -169,9 +159,7 @@
             "Z": 695.07056
           },
           "TerritoryId": 400,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

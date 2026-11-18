@@ -14,8 +14,7 @@
             "Z": -506.95053
           },
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -65,8 +64,7 @@
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.1.0.1"
-          },
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          }
         }
       ]
     },
@@ -83,7 +81,6 @@
             "Y": 86.34846,
             "Z": -289.84515
           },
-          "StopDistance": 5,
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest"
         }

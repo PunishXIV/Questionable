@@ -14,9 +14,7 @@
             "Z": 421.1947
           },
           "TerritoryId": 147,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,7 +30,6 @@
           },
           "TerritoryId": 147,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
@@ -44,8 +41,6 @@
           },
           "TerritoryId": 147,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
@@ -57,7 +52,6 @@
           },
           "TerritoryId": 147,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [188]
         }
@@ -75,8 +69,6 @@
           },
           "TerritoryId": 147,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog",
-          "Fly": true,
           "NextQuestId": 1041
         }
       ]

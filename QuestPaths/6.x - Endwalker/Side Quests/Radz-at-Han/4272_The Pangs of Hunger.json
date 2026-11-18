@@ -21,37 +21,14 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": -48.856667,
-            "Y": 13.068996,
-            "Z": 118.292465
-          },
-          "TerritoryId": 963,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 194,
           "Position": {
             "X": 6.6071167,
             "Y": -2.02948,
             "Z": 110.55151
           },
-          "StopDistance": 3,
           "TerritoryId": 963,
           "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -21.53136,
-            "Y": 1.7999926,
-            "Z": -182.28082
-          },
-          "TerritoryId": 963,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Alzadaal's Peace",
-            "[Radz-at-Han] Mehryde's Meyhane"
-          ]
         },
         {
           "DataId": 1037381,
@@ -60,7 +37,6 @@
             "Y": 1.7999947,
             "Z": -180.07172
           },
-          "StopDistance": 4,
           "TerritoryId": 963,
           "InteractionType": "Interact"
         }

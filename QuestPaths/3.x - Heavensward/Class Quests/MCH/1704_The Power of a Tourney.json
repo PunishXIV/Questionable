@@ -14,11 +14,7 @@
             "Z": -53.3609
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,9 +29,7 @@
             "Z": -276.84448
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,7 +59,6 @@
             "Y": 302,
             "Z": -189.01355
           },
-          "StopDistance": 5,
           "TerritoryId": 155,
           "InteractionType": "Interact"
         }
@@ -83,10 +76,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "NextQuestId": 1705
         }
       ]

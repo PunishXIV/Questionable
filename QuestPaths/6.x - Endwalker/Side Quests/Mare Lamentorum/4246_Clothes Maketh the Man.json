@@ -17,9 +17,7 @@
             "Z": -554.489
           },
           "TerritoryId": 959,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,9 +32,7 @@
             "Z": -399.789
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -53,8 +49,6 @@
           "TerritoryId": 959,
           "InteractionType": "Emote",
           "Emote": "pose",
-          "Fly": true,
-          "Land": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -77,9 +71,7 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Emote",
-          "Emote": "battlestance",
-          "Fly": true,
-          "Land": true
+          "Emote": "battlestance"
         }
       ]
     },
@@ -94,10 +86,7 @@
             "Z": -554.489
           },
           "TerritoryId": 959,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -21,23 +21,13 @@
               "Prompt": "TEXT_STMBDA312_02488_Q1_000_013",
               "Answer": "TEXT_STMBDA312_02488_A1_000_014"
             }
-          ],
-          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+          ]
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 322.05746,
-            "Y": -121.20501,
-            "Z": -314.00232
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1019981,
           "Position": {
@@ -46,8 +36,7 @@
             "Z": 191.85156
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,50 +45,10 @@
       "Steps": [
         {
           "Position": {
-            "X": -583.7968,
-            "Y": -58.207996,
-            "Z": 244.92668
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -655.3086,
-            "Y": 0,
-            "Z": 270.4341
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -692.9208,
-            "Y": -0.3971126,
-            "Z": 261.18878
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -721.99646,
-            "Y": 0.08899796,
-            "Z": 248.7757
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
             "X": -739.8565,
             "Y": 4.6514797,
             "Z": 233.82903
           },
-          "StopDistance": 0.5,
           "TerritoryId": 613,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -119,7 +68,6 @@
             "Y": 6.9741554,
             "Z": 19.126472
           },
-          "StopDistance": 0.5,
           "TerritoryId": 613,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",

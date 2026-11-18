@@ -14,8 +14,7 @@
             "Z": -669.9474
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -48,24 +47,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 159.34975,
-            "Y": -0.60327315,
-            "Z": -494.75882
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 529.52386,
-            "Y": -0.2066946,
-            "Z": -264.25665
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1019952,
           "Position": {
@@ -113,7 +94,6 @@
             "Y": -98.96018,
             "Z": -223.10223
           },
-          "StopDistance": 5,
           "TerritoryId": 613,
           "InteractionType": "CompleteQuest"
         }

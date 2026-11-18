@@ -27,14 +27,12 @@
             "Y": 62.87995,
             "Z": -293.59937
           },
-          "StopDistance": 0.5,
           "TerritoryId": 400,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             4044
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -43,14 +41,12 @@
             "Y": 76.75615,
             "Z": -348.67075
           },
-          "StopDistance": 0.5,
           "TerritoryId": 400,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             4044
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -59,14 +55,12 @@
             "Y": 76.75615,
             "Z": -249.3747
           },
-          "StopDistance": 0.5,
           "TerritoryId": 400,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             4044
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -83,7 +77,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 1881
         }
       ]

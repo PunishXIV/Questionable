@@ -14,8 +14,7 @@
             "Z": -220.93542
           },
           "TerritoryId": 140,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western Thanalan - Horizon"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,7 +28,6 @@
             "Y": 45.157562,
             "Z": -215.89996
           },
-          "StopDistance": 7,
           "TerritoryId": 140,
           "InteractionType": "Interact"
         }
@@ -38,16 +36,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 175.90674,
-            "Y": 52.66078,
-            "Z": -53.850098
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2003561,
           "Position": {
@@ -91,8 +79,7 @@
             "Z": -215.89996
           },
           "TerritoryId": 140,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

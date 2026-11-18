@@ -14,8 +14,7 @@
             "Z": 628.3817
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -54.154297
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,11 +44,7 @@
             "Z": -108.11017
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,11 +59,7 @@
             "Z": -54.154297
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Hall of the Radiant Host",
-            "[Radz-at-Han] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -84,9 +74,7 @@
             "Z": -165.05688
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -99,14 +87,12 @@
             "Y": -0.015813708,
             "Z": -710.37146
           },
-          "StopDistance": 0.25,
           "TerritoryId": 957,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17625
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -120,7 +106,6 @@
             "Y": 0.06509568,
             "Z": -710.9331
           },
-          "StopDistance": 7,
           "TerritoryId": 957,
           "InteractionType": "Interact"
         }
@@ -138,7 +123,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
           "NextQuestId": 4844
         }
       ]

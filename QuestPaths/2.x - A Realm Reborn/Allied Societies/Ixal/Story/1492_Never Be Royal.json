@@ -13,9 +13,7 @@
             "Z": 99.22937
           },
           "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,29 +28,13 @@
             "Z": 111.528076
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 175.1545,
-            "Y": 222.61827,
-            "Z": 354.20248
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true,
-          "Land": true
-        },
         {
           "DataId": 1009616,
           "Position": {
@@ -152,9 +134,7 @@
             "Z": 99.22937
           },
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

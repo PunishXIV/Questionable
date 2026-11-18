@@ -14,36 +14,13 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "TerritoryId": 613,
-          "Fly": true,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -795.0103,
-                  "Y": 21.373795,
-                  "Z": -466.20892
-                },
-                "TerritoryId": 613,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
         {
           "$": "QW: (-) (-) (-) (2L) (1H2L) (-)",
           "DataId": 1024310,
@@ -54,8 +31,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 0.25,
           "RequiredQuestVariables": [
             null,
             null,
@@ -82,8 +57,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 0.25,
           "RequiredQuestVariables": [
             null,
             null,
@@ -110,8 +83,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 0.25,
           "RequiredQuestVariables": [
             null,
             null,
@@ -138,8 +109,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 0.25,
           "RequiredQuestVariables": [
             null,
             null,
@@ -166,8 +135,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 0.25,
           "RequiredQuestVariables": [
             null,
             null,
@@ -194,8 +161,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 0.25,
           "RequiredQuestVariables": [
             null,
             null,
@@ -226,11 +191,7 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -30,13 +30,7 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 463,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
-          "Fly": true,
-          "Land": true
+          "TargetTerritoryId": 463
         },
         {
           "DataId": 1012138,
@@ -61,9 +55,7 @@
             "Z": -661.0056
           },
           "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azys Lla - Helix",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,29 +77,6 @@
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": -729.6362,
-            "Y": -136.38138,
-            "Z": -545.9192
-          },
-          "TerritoryId": 402,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "Fly": true
-        },
-        {
-          "$": "Move to Tiamat's location before interaction; without this step, would often see qst stop before pathfinding",
-          "Position": {
-            "X": -698.36835,
-            "Y": -45.76334,
-            "Z": 415.04565
-          },
-          "TerritoryId": 402,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
         {
           "DataId": 2007064,
           "Position": {
@@ -131,25 +100,13 @@
             "Z": -4.2268066
           },
           "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 174.36705,
-            "Y": 393.17496,
-            "Z": -569.3414
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
-        },
         {
           "DataId": 2007066,
           "Position": {
@@ -158,8 +115,7 @@
             "Z": -676.5088
           },
           "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

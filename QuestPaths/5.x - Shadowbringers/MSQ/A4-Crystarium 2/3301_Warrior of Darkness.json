@@ -29,8 +29,7 @@
             "Z": -7.370178
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,7 +58,6 @@
             "Y": 3.9998171,
             "Z": 204.24194
           },
-          "StopDistance": 4,
           "TerritoryId": 819,
           "InteractionType": "Interact"
         }
@@ -75,7 +73,6 @@
             "Y": 1.7160122,
             "Z": 249.7749
           },
-          "StopDistance": 5,
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [

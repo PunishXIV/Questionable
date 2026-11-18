@@ -14,8 +14,7 @@
             "Z": -5.081299
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -42,7 +41,6 @@
           "TerritoryId": 155,
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 979,
-          "Mount": false,
           "SkipConditions": {"StepIf": {"QuestsCompleted": [979]}}
         },
         {
@@ -53,9 +51,7 @@
             "Z": 317.1892
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -83,8 +79,7 @@
             "Z": -5.081299
           },
           "TerritoryId": 132,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

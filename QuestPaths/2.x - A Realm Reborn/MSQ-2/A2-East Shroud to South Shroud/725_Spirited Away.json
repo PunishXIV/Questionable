@@ -14,8 +14,7 @@
             "Z": 209.97937
           },
           "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -5.081299
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": 39.96338
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "InteractionType": "Interact"
         }
       ]
     },

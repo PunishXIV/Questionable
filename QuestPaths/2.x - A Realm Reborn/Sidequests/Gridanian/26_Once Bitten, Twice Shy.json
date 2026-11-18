@@ -13,14 +13,8 @@
             "Y": 1.19476,
             "Z": -184.436
           },
-          "StopDistance": 2,
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ],
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,14 +28,8 @@
             "Y": 4.18506,
             "Z": -17.4719
           },
-          "StopDistance": 2,
           "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Botanists' Guild",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

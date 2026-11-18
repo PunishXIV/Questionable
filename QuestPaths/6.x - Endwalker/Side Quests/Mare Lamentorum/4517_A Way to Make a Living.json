@@ -29,25 +29,13 @@
             "Z": -477.8363
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 10.0736885,
-            "Y": 27.10196,
-            "Z": 448.53668
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
-          "Fly": true
-        },
         {
           "DataId": 1041559,
           "Position": {
@@ -72,18 +60,7 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-        },
-        {
-          "Position": {
-            "X": -54.65185,
-            "Y": 40.539097,
-            "Z": 458.56393
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 2012509,
@@ -101,16 +78,6 @@
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": 10.0736885,
-            "Y": 27.10196,
-            "Z": 448.53668
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1041559,
           "Position": {
@@ -135,8 +102,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true,
           "NextQuestId": 4518
         }
       ]

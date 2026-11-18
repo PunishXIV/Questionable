@@ -14,9 +14,7 @@
             "Z": -283.0091
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,9 +30,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 613,
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "Fly": true
+          "TargetTerritoryId": 613
         },
         {
           "DataId": 2009398,
@@ -44,8 +40,7 @@
             "Z": 844.541
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -144,9 +139,7 @@
             "Z": -764.0345
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - House of the Fierce",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -190,12 +183,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ],
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -233,7 +220,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
           "NextQuestId": 3016
         }
       ]

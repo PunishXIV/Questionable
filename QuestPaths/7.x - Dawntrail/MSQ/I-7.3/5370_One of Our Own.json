@@ -15,10 +15,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] The Arcadion",
-            "[Solution Nine] Neon Stein"
-          ],
           "TargetTerritoryId": 1207
         },
         {
@@ -55,11 +51,7 @@
             "Z": -388.20483
           },
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Neon Stein",
-            "[Solution Nine] Resolution"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,8 +81,7 @@
             "Z": 768.27637
           },
           "TerritoryId": 1192,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

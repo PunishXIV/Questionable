@@ -33,8 +33,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             11153
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -62,14 +61,12 @@
             "Y": 7.3168135,
             "Z": 93.674324
           },
-          "StopDistance": 0.5,
           "TerritoryId": 817,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             11154
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -83,7 +80,6 @@
             "Y": 7.461609,
             "Z": 96.94055
           },
-          "StopDistance": 4,
           "TerritoryId": 817,
           "InteractionType": "Interact"
         }
@@ -100,8 +96,7 @@
             "Z": 318.98987
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

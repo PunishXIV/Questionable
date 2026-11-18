@@ -14,9 +14,7 @@
             "Z": -172.5033
           },
           "TerritoryId": 180,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": -246.84528
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,8 +44,7 @@
             "Z": -172.5033
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,9 +81,7 @@
               "Prompt": "TEXT_BANKOB003_01322_Q1_000_000",
               "Answer": "TEXT_BANKOB003_01322_A1_000_001"
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
@@ -145,15 +139,6 @@
       "Sequence": 8,
       "Steps": [
         {
-          "Position": {
-            "X": 224.7802,
-            "Y": 21.375952,
-            "Z": -579.86096
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2003720,
           "Position": {
             "X": 224.78064,
@@ -192,9 +177,7 @@
             "Z": -172.5033
           },
           "TerritoryId": 180,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

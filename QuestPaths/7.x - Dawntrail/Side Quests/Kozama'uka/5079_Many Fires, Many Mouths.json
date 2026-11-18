@@ -37,7 +37,6 @@
               "CompletionQuestVariablesFlags": [null,null,16,null,null,null]
             }
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,16,null,null,null],
           "$": "16 0 16 0 0 0"
         },
@@ -58,7 +57,6 @@
               "CompletionQuestVariablesFlags": [null,1,null,null,null,null]
             }
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,1,null,null,null,null],
           "$": "16 1 0 0 0 0"
         }
@@ -75,9 +73,7 @@
             "Z": 175.00574
           },
           "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Many Fires",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

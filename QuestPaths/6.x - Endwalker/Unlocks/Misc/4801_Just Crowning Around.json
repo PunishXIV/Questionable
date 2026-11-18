@@ -14,8 +14,7 @@
             "Z": 0.8086548
           },
           "TerritoryId": 144,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gold Saucer"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +30,7 @@
           },
           "TerritoryId": 144,
           "TargetTerritoryId": 1197,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gold Saucer"
+          "InteractionType": "Interact"
         }
       ]
     },

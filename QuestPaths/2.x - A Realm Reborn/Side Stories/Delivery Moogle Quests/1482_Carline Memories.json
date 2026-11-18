@@ -14,8 +14,7 @@
             "Z": 5.416931
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,13 +28,8 @@
             "Y": -8.000001,
             "Z": 115.7687
           },
-          "StopDistance": 1,
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -73,10 +67,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -88,10 +78,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Lancers' Guild"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -106,13 +92,8 @@
             "Y": -8.000001,
             "Z": 115.7687
           },
-          "StopDistance": 1,
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -126,14 +107,8 @@
             "Y": 4.7455444,
             "Z": -262.98932
           },
-          "StopDistance": 1,
           "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ],
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -147,7 +122,6 @@
             "Y": -8.000001,
             "Z": 115.7687
           },
-          "StopDistance": 1,
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1484

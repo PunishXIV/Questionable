@@ -15,19 +15,7 @@
             "Z": -151.23218
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,10 +31,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
             "Key": 262174
@@ -119,11 +103,7 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "AllowHighQuality": true
         }
       ]
     }

@@ -14,8 +14,7 @@
             "Z": -99.321045
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,7 @@
             "Z": 49.484985
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,8 +44,7 @@
             "Z": 120.74463
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -66,10 +60,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

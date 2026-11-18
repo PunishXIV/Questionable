@@ -15,11 +15,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 987,
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Baldesion Annex"
-          ]
+          "TargetTerritoryId": 987
         },
         {
           "DataId": 1038670,
@@ -28,7 +24,6 @@
             "Y": 1.9073486e-6,
             "Z": 0.16778564
           },
-          "StopDistance": 5,
           "TerritoryId": 987,
           "InteractionType": "AcceptQuest"
         }
@@ -66,11 +61,7 @@
             "Z": 10.849121
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Baldesion Annex",
-            "[Old Sharlayan] The Studium"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -208,7 +199,6 @@
             "Y": 19.003881,
             "Z": 13.321045
           },
-          "StopDistance": 5,
           "TerritoryId": 962,
           "InteractionType": "CompleteQuest"
         }

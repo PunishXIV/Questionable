@@ -15,7 +15,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: issuer 1000324 (Emeria)"
         }
       ]
@@ -32,8 +31,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             155
@@ -54,8 +51,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo location -> 1000324 (Emeria); hands over ITEM0=2000076"
         }
       ]
@@ -72,7 +67,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
           "$": "auto: todo turn-in -> 1000100 (Mother Miounne)"
         }
       ]

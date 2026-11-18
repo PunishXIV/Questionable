@@ -15,7 +15,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -60,7 +59,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -76,8 +74,7 @@
             "Z": 202.62451
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -100,16 +97,6 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Position": {
-            "X": 191.63799,
-            "Y": 15.136713,
-            "Z": 508.80118
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1042307,
           "Position": {
             "X": 121.01929,
@@ -118,7 +105,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -139,7 +125,6 @@
             "Y": 4.563182,
             "Z": 18.20398
           },
-          "StopDistance": 5,
           "TerritoryId": 957,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -185,16 +170,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 191.63799,
-            "Y": 15.136713,
-            "Z": 508.80118
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1042313,
           "Position": {
             "X": -78.690796,
@@ -202,8 +177,7 @@
             "Z": 323.2318
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

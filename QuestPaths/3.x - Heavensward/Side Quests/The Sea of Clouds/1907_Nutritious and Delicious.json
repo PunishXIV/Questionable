@@ -14,8 +14,7 @@
             "Z": -452.10956
           },
           "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,8 +33,7 @@
           "KillEnemyDataIds": [
             4060
           ],
-          "EnemySpawnType": "OverworldEnemies",
-          "Fly": true
+          "EnemySpawnType": "OverworldEnemies"
         }
       ]
     },
@@ -50,8 +48,7 @@
             "Z": -452.10956
           },
           "TerritoryId": 401,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

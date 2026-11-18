@@ -43,11 +43,7 @@
             "Z": -181.17041
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] The Cabinet of Curiosity"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,11 +85,7 @@
             "Z": -61.20398
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] The Cabinet of Curiosity",
-            "[Crystarium] The Dossal Gate"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

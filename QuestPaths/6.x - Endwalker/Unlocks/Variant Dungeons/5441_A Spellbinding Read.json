@@ -17,12 +17,7 @@
             "Z": 107.80493
           },
           "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,11 +32,7 @@
             "Z": -5.7526855
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Scholar's Harbor",
-            "[Old Sharlayan] Journey's End"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -98,12 +89,7 @@
             "Z": -5.7526855
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Scholar's Harbor",
-            "[Old Sharlayan] Journey's End"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -118,25 +104,7 @@
             "Z": 107.80493
           },
           "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Journey's End",
-            "[Old Sharlayan] Scholar's Harbor"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 176.77563,
-                  "Y": 4.58709,
-                  "Z": -5.7526855
-                },
-                "TerritoryId": 962,
-                "MaximumDistance": 20
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

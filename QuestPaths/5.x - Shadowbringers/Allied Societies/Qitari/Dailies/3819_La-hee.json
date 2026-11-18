@@ -14,10 +14,7 @@
             "Z": -216.96419
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut":"Rak'tika - Fanow",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,8 +32,7 @@
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANQIQ114_03819_SAYTODO_000_000"
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -51,10 +47,7 @@
             "Z": -216.96419
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut":"Rak'tika - Fanow",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

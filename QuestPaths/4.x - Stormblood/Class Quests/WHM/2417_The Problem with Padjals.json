@@ -14,8 +14,7 @@
             "Z": -474.72345
           },
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 370.80945
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,9 +47,7 @@
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7215
-          ],
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "Fly": true
+          ]
         },
         {
           "DataId": 1019128,

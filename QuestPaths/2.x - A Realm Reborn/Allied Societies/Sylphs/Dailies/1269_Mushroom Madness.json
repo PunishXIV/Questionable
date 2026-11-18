@@ -14,9 +14,7 @@
             "Z": 249.19507
           },
           "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,6 @@
             "Z": -80.421486
           },
           "TerritoryId": 152,
-          "Fly": true,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2001180,
           "RequiredQuestVariables": [null,[{"Low": 1},{"Low": 2},{"Low": 3},{"Low": 5}],null,null,null,null],
@@ -46,8 +42,6 @@
               "Z": -140.7707
           },
           "TerritoryId": 152,
-          "Fly": true,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2001180,
           "RequiredQuestVariables": [null,[{"Low": 1}],null,null,null,null],
@@ -61,8 +55,6 @@
               "Z": -142.27278
           },
           "TerritoryId": 152,
-          "Fly": true,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2001180,
           "RequiredQuestVariables": [null,[{"Low": 3},{"Low": 5}],null,null,null,null],
@@ -76,8 +68,6 @@
               "Z": -192.24521
           },
           "TerritoryId": 152,
-          "Fly": true,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2001180,
           "RequiredQuestVariables": [null,[{"Low": 2},{"Low": 3},{"Low": 4}],null,null,null,null],
@@ -91,8 +81,6 @@
               "Z": -175.72629
           },
           "TerritoryId": 152,
-          "Fly": true,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2001180,
           "RequiredQuestVariables": [null,[{"Low": 4},{"Low": 5}],null,null,null,null],
@@ -106,8 +94,6 @@
               "Z": -162.69167
           },
           "TerritoryId": 152,
-          "Fly": true,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2001180,
           "RequiredQuestVariables": [null,[{"Low": 1},{"Low": 2},{"Low": 4},{"Low": 5}],null,null,null,null],
@@ -121,8 +107,6 @@
               "Z": -224.5021
           },
           "TerritoryId": 152,
-          "Fly": true,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2001180,
           "RequiredQuestVariables": [null,[{"Low": 1},{"Low": 2},{"Low": 3},{"Low": 4}],null,null,null,null],
@@ -141,9 +125,7 @@
             "Z": 249.19507
           },
           "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

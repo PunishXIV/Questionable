@@ -13,7 +13,6 @@
             "Y": -2.0000012,
             "Z": -17.166443
           },
-          "StopDistance": 5,
           "TerritoryId": 212,
           "TargetTerritoryId": 212,
           "InteractionType": "AcceptQuest"
@@ -31,8 +30,7 @@
             "Z": 618.6465
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,9 +45,7 @@
             "Z": 188.83032
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,8 +61,7 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Snipe",
-          "Comment": "Aim at jaw",
-          "Fly": true
+          "Comment": "Aim at jaw"
         }
       ]
     },
@@ -80,7 +75,6 @@
             "Y": -0.3,
             "Z": 207.6294
           },
-          "StopDistance": 5,
           "TerritoryId": 621,
           "InteractionType": "Interact"
         }
@@ -98,7 +92,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Snipe",
-          "Fly": true,
           "Comment": "Aim at nearest eye"
         }
       ]
@@ -113,7 +106,6 @@
             "Y": 3.1742485,
             "Z": 249.34766
           },
-          "StopDistance": 6,
           "TerritoryId": 621,
           "InteractionType": "Interact"
         }
@@ -130,8 +122,7 @@
             "Z": 188.83032
           },
           "TerritoryId": 621,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

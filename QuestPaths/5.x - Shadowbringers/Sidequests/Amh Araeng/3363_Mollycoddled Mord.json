@@ -15,8 +15,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "$": "auto: issuer 1027879 (Ghin Gin)"
         }
       ]
@@ -33,8 +31,6 @@
           "TerritoryId": 815,
           "InteractionType": "UseItem",
           "GroundTarget": true,
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "ItemId": 2002622,
           "$": "auto: todo area 10y from lua EOBJECT0 -> 2010132; use item ITEM1=2002623 on it"
         }
@@ -52,8 +48,6 @@
           "TerritoryId": 815,
           "InteractionType": "UseItem",
           "GroundTarget": true,
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "ItemId": 2002622,
           "$": "auto: todo area 12y from lua EOBJECT1 -> 2010133; use item ITEM0=2002622 on it"
         }
@@ -71,8 +65,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "$": "auto: todo turn-in -> 1027865 (Thaymoth)"
         }
       ]

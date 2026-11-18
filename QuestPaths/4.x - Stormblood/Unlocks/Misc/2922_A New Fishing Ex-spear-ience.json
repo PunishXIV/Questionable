@@ -9,8 +9,7 @@
         {
           "InteractionType": "SwitchClass",
           "TargetClass": "Fisher",
-          "TerritoryId": 613,
-          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+          "TerritoryId": 613
         },
         {
           "DataId": 1021362,
@@ -28,17 +27,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "$": "Exit the bubble",
-          "Position": {
-            "X": 322.1539,
-            "Y": -121.22571,
-            "Z": -314.2446
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1023621,
           "Position": {
             "X": 294.1786,
@@ -46,8 +34,7 @@
             "Z": -413.35162
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

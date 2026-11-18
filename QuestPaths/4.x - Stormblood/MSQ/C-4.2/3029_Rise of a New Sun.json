@@ -15,7 +15,6 @@
           },
           "TerritoryId": 759,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Doman Enclave",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -35,7 +34,6 @@
           "TerritoryId": 744,
           "InteractionType": "AcceptQuest",
           "DelaySecondsAtStart": 3,
-          "StopDistance": 1,
           "$": "This may skip movement as the game thinks we're close enough at the start; unsure if delay helps"
         }
       ]
@@ -79,7 +77,6 @@
             "Y": 1.286227,
             "Z": 746.2118
           },
-          "StopDistance": 5,
           "TerritoryId": 614,
           "InteractionType": "Interact"
         }
@@ -97,12 +94,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 639,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ]
+          "TargetTerritoryId": 639
         },
         {
           "DataId": 1020622,

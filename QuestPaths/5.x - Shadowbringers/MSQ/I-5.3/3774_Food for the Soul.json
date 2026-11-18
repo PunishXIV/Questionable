@@ -22,17 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 26.789001,
-            "Y": 54.865185,
-            "Z": -770.47614
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
           "DataId": 1033818,
           "Position": {
             "X": 24.551636,
@@ -56,11 +45,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ],
           "TargetTerritoryId": 844
         },
         {
@@ -85,7 +69,6 @@
             "Y": -6.9874797E-13,
             "Z": -0.83929443
           },
-          "StopDistance": 5,
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest"
         }

@@ -14,9 +14,7 @@
             "Z": 321.06494
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": -241.77924
           },
           "TerritoryId": 957,
-          "Fly": true,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -45,8 +41,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Thavnair - Great Work",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -62,8 +56,7 @@
             "Z": 321.06494
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

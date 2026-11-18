@@ -31,10 +31,6 @@
           "InteractionType": "WalkTo"
         },
         {
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Aetheryte Plaza"
-          ],
           "DataId": 1001285,
           "Position": {
             "X": -68.77246,
@@ -50,10 +46,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ],
           "DataId": 1011620,
           "Position": {
             "X": -118.69995,
@@ -75,7 +67,6 @@
             "Y": 40,
             "Z": 92.11865
           },
-          "StopDistance": 5,
           "TerritoryId": 131,
           "InteractionType": "Interact"
         }
@@ -85,10 +76,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "AethernetShortcut": [
-            "[Ul'dah] Alchemists' Guild",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ],
           "DataId": 1011677,
           "Position": {
             "X": 363.54602,

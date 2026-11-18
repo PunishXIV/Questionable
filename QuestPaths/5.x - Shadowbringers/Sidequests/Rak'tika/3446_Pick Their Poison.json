@@ -14,7 +14,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -75,8 +74,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "UseItem",
-          "Fly": true,
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
           "ItemId": 2002540,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo location -> 2009929 (destination); use item ITEM0=2002540 on it"
@@ -121,8 +118,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
           "$": "auto: todo location -> 1029881 (Karnes)"
         }
       ]
@@ -139,7 +134,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
           "$": "auto: todo turn-in -> 1029883 (Karnes)"
         }
       ]

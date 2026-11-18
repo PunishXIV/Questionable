@@ -17,23 +17,7 @@
 				"Z": 202.04468
 			},
 			"TerritoryId": 628,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Kugane",
-			"AethernetShortcut":
-			[
-			"[Kugane] Aetheryte Plaza",
-			"[Kugane] Pier #1"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					628					
-					]
-				}
-			}
+			"InteractionType": "AcceptQuest"
 		}
 		]
 	},
@@ -50,12 +34,7 @@
 				"Z": -50.980408
 			},
 			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Pier #1",
-			"[Kugane] Aetheryte Plaza"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -72,12 +51,7 @@
 				"Z": 206.46973
 			},
 			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Aetheryte Plaza",
-			"[Kugane] Pier #1"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -94,12 +68,7 @@
 				"Z": -128.25214
 			},
 			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Pier #1",
-			"[Kugane] Sekiseigumi Barracks"
-			]
+			"InteractionType": "Interact"
 		},
 		{
 			"DataId": 1021370,
@@ -110,12 +79,7 @@
 				"Z": -151.1712
 			},
 			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Sekiseigumi Barracks",
-			"[Kugane] Bokairo Inn"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -132,12 +96,7 @@
 				"Z": 206.46973
 			},
 			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Bokairo Inn",
-			"[Kugane] Pier #1"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},

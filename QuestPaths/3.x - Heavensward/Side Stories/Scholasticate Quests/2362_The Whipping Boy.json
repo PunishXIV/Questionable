@@ -16,19 +16,9 @@
           "TerritoryId": 419,
           "InteractionType": "Interact",
           "TargetTerritoryId": 427,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
           "SkipConditions": {
             "StepIf": {
               "InTerritory": [
-                427
-              ]
-            },
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419,
                 427
               ]
             }

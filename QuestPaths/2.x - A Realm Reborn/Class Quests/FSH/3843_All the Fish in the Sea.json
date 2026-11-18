@@ -23,35 +23,6 @@
       "Steps": [
         {
           "TerritoryId": 129,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -168.47485,
-                  "Y": 4.5500045,
-                  "Z": 163.65295
-                },
-                "TerritoryId": 129,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 129,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
-        },
-        {
-          "TerritoryId": 129,
           "InteractionType": "SwitchClass",
           "TargetClass": "QuestStartJob"
         },

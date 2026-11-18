@@ -14,9 +14,7 @@
             "Z": 37.247192
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,9 +35,7 @@
               "DataId": 2839,
               "NameId": 2721
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         },
         {
           "DataId": 2003898,
@@ -69,9 +65,7 @@
               "DataId": 2839,
               "NameId": 2721
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         },
         {
           "DataId": 2003897,
@@ -101,8 +95,7 @@
               "DataId": 2839,
               "NameId": 2721
             }
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 2003900,
@@ -131,9 +124,7 @@
             "Z": 37.247192
           },
           "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

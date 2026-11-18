@@ -15,7 +15,6 @@
           "TerritoryId": 156,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1061,
-          "Fly": true,
           "SkipConditions": {"StepIf": {"InTerritory": [1061,1182]}}
         },
         {
@@ -36,7 +35,6 @@
             "Y": -950,
             "Z": -937.8042
           },
-          "StopDistance": 4,
           "TerritoryId": 1182,
           "InteractionType": "AcceptQuest"
         }
@@ -53,9 +51,7 @@
             "Z": 24.36853
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -70,11 +66,7 @@
             "Z": 50.461548
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,11 +81,7 @@
             "Z": 125.65808
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,8 +96,7 @@
             "Z": 348.989
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1045996,
@@ -119,8 +106,7 @@
             "Z": 376.23453
           },
           "TerritoryId": 135,
-          "InteractionType": "WaitForNpcAtPosition",
-          "Mount": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1045996,
@@ -129,10 +115,8 @@
             "Y": 71.30162,
             "Z": 379.11874
           },
-          "StopDistance": 10,
           "TerritoryId": 135,
-          "InteractionType": "WaitForNpcAtPosition",
-          "Mount": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1045998,
@@ -141,10 +125,8 @@
             "Y": 66.55368,
             "Z": 409.53687
           },
-          "StopDistance": 1,
           "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WalkTo"
         }
       ]
     },

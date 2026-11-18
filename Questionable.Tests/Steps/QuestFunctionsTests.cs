@@ -131,10 +131,20 @@ public sealed class QuestFunctionsTests
     {
         _state.TerritoryType = 132;
         _state.Regions[132] = _state.Regions[133] = _state.Regions[148] = 23;
-        QuestStep[] shroud = [new() { TerritoryId = 133 }, new() { TerritoryId = 148 }];
+        QuestStep[] shroud = [new() { TerritoryId = 132 }, new() { TerritoryId = 133 }, new() { TerritoryId = 148 }];
 
         Assert.True(_functions.CanBeDoneWithoutTeleport(Travels(shroud)));
         Assert.False(_functions.CanBeDoneWithoutTeleport(Travels([.. shroud, new() { TerritoryId = 130 }])));
+    }
+
+    // Way of the Marauder starts in Upper Decks while a new character is still in the opening zone.
+    [Fact]
+    public void WithoutTeleport_StartsHere()
+    {
+        _state.TerritoryType = 181;
+        _state.Regions[181] = _state.Regions[128] = 22;
+
+        Assert.False(_functions.CanBeDoneWithoutTeleport(Travels(new QuestStep { TerritoryId = 128 })));
     }
 
     [Fact]

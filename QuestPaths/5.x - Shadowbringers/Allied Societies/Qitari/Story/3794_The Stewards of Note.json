@@ -14,8 +14,7 @@
             "Z": 310.6278
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -199.02344
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Fanow"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -120,8 +118,7 @@
             "Z": -194.01855
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

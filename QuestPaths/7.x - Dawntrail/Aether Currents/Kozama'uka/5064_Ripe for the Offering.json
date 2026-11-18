@@ -82,13 +82,7 @@
             "Z": -527.36707
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "Kozama'uka - Dock Poga"
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -103,8 +97,7 @@
             "Z": -486.53394
           },
           "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

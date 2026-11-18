@@ -13,10 +13,8 @@
             "Y": 14.095936,
             "Z": 676.3553
           },
-          "StopDistance": 2,
           "TerritoryId": 135,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,12 +27,10 @@
             "Y": 37.742996,
             "Z": 657.43164
           },
-          "StopDistance": 2,
           "TerritoryId": 135,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [138],
-          "Fly": true
+          "KillEnemyDataIds": [138]
         }
       ]
     },
@@ -48,10 +44,8 @@
             "Y": 58.9528,
             "Z": 937.438
           },
-          "StopDistance": 2,
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,10 +59,8 @@
             "Y": 14.095936,
             "Z": 676.3553
           },
-          "StopDistance": 2,
           "TerritoryId": 135,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -13,10 +13,8 @@
             "Y": 9.999781,
             "Z": 156.08447
           },
-          "StopDistance": 5,
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

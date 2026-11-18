@@ -17,22 +17,7 @@
             "Z": -141.19171
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Ostall Imperative",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -643.33563,
-                  "Y": 55.75751,
-                  "Z": -141.19171
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -47,8 +32,7 @@
             "Z": -84.88599
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,8 +47,7 @@
             "Z": -18.173523
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -139,8 +122,7 @@
             "Z": 20.553894
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -155,8 +137,7 @@
             "Z": 114.335815
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -164,7 +145,6 @@
       "Sequence": 7,
       "Steps": [
         {
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
           "DataId": 1031056,
           "Position": {
             "X": 775.14294,
@@ -172,8 +152,7 @@
             "Z": -60.502075
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -181,7 +160,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "AetheryteShortcut": "Crystarium",
           "DataId": 1031058,
           "Position": {
             "X": -55.222473,

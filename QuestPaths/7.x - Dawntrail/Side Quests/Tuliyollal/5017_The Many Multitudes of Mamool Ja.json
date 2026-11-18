@@ -14,12 +14,7 @@
             "Z": -330.40363
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Brightploom Post"
-          ],
-          "SkipConditions": {"AethernetShortcutIf": {"InSameTerritory": true}}
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

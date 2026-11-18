@@ -13,23 +13,7 @@
             "Z": -700.64856
           },
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 490.2876,
-                  "Y": 90.00257,
-                  "Z": -700.64856
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,8 +28,7 @@
             "Z": -159.66423
           },
           "TerritoryId": 816,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "DataId": 1031507,
@@ -55,8 +38,7 @@
             "Z": -180.31586
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -71,9 +53,7 @@
             "Z": -879.9115
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -87,8 +67,7 @@
             "Z": -833.0812
           },
           "TerritoryId": 816,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "Position": {
@@ -97,8 +76,7 @@
             "Z": -753.12067
           },
           "TerritoryId": 816,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "Position": {
@@ -107,8 +85,7 @@
             "Z": -707.13934
           },
           "TerritoryId": 816,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "Position": {
@@ -117,8 +94,7 @@
             "Z": -666.76575
           },
           "TerritoryId": 816,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "$": "Avoid Phooka combat",
@@ -128,8 +104,7 @@
             "Z": -159.66423
           },
           "TerritoryId": 816,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "DataId": 1031507,
@@ -139,8 +114,7 @@
             "Z": -180.31586
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -155,23 +129,7 @@
             "Z": -700.64856
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 490.2876,
-                  "Y": 90.00257,
-                  "Z": -700.64856
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

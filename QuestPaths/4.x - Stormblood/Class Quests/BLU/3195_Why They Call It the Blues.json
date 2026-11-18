@@ -15,18 +15,7 @@
             "Z": 89.86035
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,12 +30,7 @@
             "Z": 451.0719
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Gate of Thal (Central Thanalan)"
-          ],
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,8 +49,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             9837
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -97,10 +80,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "NextQuestId": 3196
         }
       ]

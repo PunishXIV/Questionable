@@ -13,7 +13,6 @@
             "Y": -168,
             "Z": -618.7686
           },
-          "StopDistance": 5,
           "TerritoryId": 959,
           "InteractionType": "AcceptQuest"
         }
@@ -44,16 +43,6 @@
             "Z": -254.25537
           },
           "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -357.1918,
-            "Y": -161.84383,
-            "Z": -254.25537
-          },
-          "StopDistance": 1,
-          "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -64,7 +53,6 @@
             "StopDistance": 0.5,
             "DelaySeconds": 0.25
           },
-          "Mount": false,
           "Comment": "Platform 1"
         },
         {
@@ -73,7 +61,6 @@
             "Y": -160.81464,
             "Z": -258.94827
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -93,7 +80,6 @@
             "Y": -159.31464,
             "Z": -262.08554
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -113,7 +99,6 @@
             "Y": -157.81464,
             "Z": -265.16046
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -133,7 +118,6 @@
             "Y": -156.31464,
             "Z": -268.07187
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -153,7 +137,6 @@
             "Y": -154.81462,
             "Z": -270.27368
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -174,7 +157,6 @@
             "Y": -151.67168,
             "Z": -267.90265
           },
-          "StopDistance": 7,
           "TerritoryId": 959,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -196,17 +178,6 @@
             "Y": -161.84383,
             "Z": -362.42844
           },
-          "StopDistance": 1,
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -336.92316,
-            "Y": -161.84383,
-            "Z": -362.42844
-          },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -218,7 +189,6 @@
             "StopDistance": 0.5,
             "DelaySeconds": 0.25
           },
-          "Mount": false,
           "Comment": "Platform 1"
         },
         {
@@ -227,7 +197,6 @@
             "Y": -160.81464,
             "Z": -359.79532
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -247,7 +216,6 @@
             "Y": -159.31462,
             "Z": -358.21957
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -267,7 +235,6 @@
             "Y": -157.81464,
             "Z": -356.00974
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -287,7 +254,6 @@
             "Y": -156.31462,
             "Z": -353.9171
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -307,7 +273,6 @@
             "Y": -154.81462,
             "Z": -350.6315
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -322,22 +287,12 @@
           "Comment": "Platform 6"
         },
         {
-          "Position": {
-            "X": -337.69525,
-            "Y": -152.67764,
-            "Z": -344.93723
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1038924,
           "Position": {
             "X": -329.97632,
             "Y": -151.67169,
             "Z": -333.76062
           },
-          "StopDistance": 5,
           "TerritoryId": 959,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -392,7 +347,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
           "DialogueChoices": [
             {
               "Type": "YesNo",

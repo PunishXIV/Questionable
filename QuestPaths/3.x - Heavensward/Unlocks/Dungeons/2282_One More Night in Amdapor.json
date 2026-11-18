@@ -14,18 +14,7 @@
             "Z": -27.267883
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,17 +22,6 @@
       "Sequence": 1,
       "$": "No need to have non-flying route to Raya-O-Senna (like the WHM quests); will always have flying during this quest",
       "Steps": [
-        {
-          "Position": {
-            "X": -139.04318,
-            "Y": 8.522301,
-            "Z": 280.0128
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
-        },
         {
           "DataId": 1006751,
           "Position": {
@@ -67,16 +45,7 @@
             "Z": 459.83057
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                153
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,24 +65,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -139.04318,
-            "Y": 8.522301,
-            "Z": 280.0128
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                153
-              ]
-            }
-          }
-        },
         {
           "DataId": 1006751,
           "Position": {

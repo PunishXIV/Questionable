@@ -13,7 +13,6 @@
             "Y": 13.300535,
             "Z": 242.48108
           },
-          "StopDistance": 7,
           "TerritoryId": 957,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
             "Z": 17.715698
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": 507.53027
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,8 +59,7 @@
             "Z": -333.69952
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -78,9 +74,7 @@
             "Z": -789.7612
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Tertium",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -94,7 +88,6 @@
             "Y": 30.104027,
             "Z": -785.8244
           },
-          "StopDistance": 5,
           "TerritoryId": 958,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": false}
@@ -111,7 +104,6 @@
             "Y": -6.762952E-05,
             "Z": 17.715698
           },
-          "StopDistance": 5,
           "TerritoryId": 963,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4754

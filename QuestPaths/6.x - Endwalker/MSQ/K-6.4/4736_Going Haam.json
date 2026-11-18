@@ -40,7 +40,6 @@
             "Y": 1.2359009,
             "Z": 5.9662476
           },
-          "StopDistance": 4,
           "TerritoryId": 1161,
           "InteractionType": "Interact",
           "TargetTerritoryId": 963
@@ -53,11 +52,7 @@
             "Z": -146.47144
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Meghaduta",
-            "[Radz-at-Han] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -72,11 +67,7 @@
             "Z": 219.1958
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -90,7 +81,6 @@
             "Y": 4.357494,
             "Z": 0.7476196
           },
-          "StopDistance": 5,
           "TerritoryId": 962,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -114,13 +104,11 @@
           },
           "TerritoryId": 956,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
             }
-          },
-          "Mount": true
+          }
         },
         {
           "DataId": 1045407,
@@ -130,8 +118,7 @@
             "Z": -125.96332
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -146,8 +133,7 @@
             "Z": 54.276245
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -161,7 +147,6 @@
             "Y": -16.146997,
             "Z": 236.22485
           },
-          "StopDistance": 5,
           "TerritoryId": 962,
           "InteractionType": "Interact"
         }
@@ -193,7 +178,6 @@
             "Y": -16.147,
             "Z": 235.70605
           },
-          "StopDistance": 7,
           "TerritoryId": 962,
           "InteractionType": "CompleteQuest"
         }

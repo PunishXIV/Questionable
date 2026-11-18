@@ -15,34 +15,13 @@
             "Z": 262.92822
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 296.91254,
-            "Y": -40.425003,
-            "Z": 380.83066
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                138
-              ]
-            }
-          }
-        },
         {
           "DataId": 1005398,
           "Position": {
@@ -52,7 +31,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "CompleteQuest",
-          "Fly": false,
           "NextQuestId": 2201,
           "$": "Next quest: Pharos Sirius Hard unlock quest 'Things Are Getting Sirius'"
         }

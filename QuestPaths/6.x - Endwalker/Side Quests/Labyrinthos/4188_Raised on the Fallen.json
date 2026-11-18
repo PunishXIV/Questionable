@@ -10,17 +10,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": 400.6186,
-            "Y": 170.17088,
-            "Z": -432.8058
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
-        },
-        {
           "DataId": 1037506,
           "Position": {
             "X": 373.734,
@@ -36,16 +25,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 400.6186,
-            "Y": 170.17088,
-            "Z": -432.8058
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2011802,
           "Position": {
             "X": 269.985,
@@ -53,8 +32,7 @@
             "Z": -696.331
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2011803,
@@ -64,25 +42,13 @@
             "Z": -693.864
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 400.6186,
-            "Y": 170.17088,
-            "Z": -432.8058
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
-        },
         {
           "DataId": 1037506,
           "Position": {

@@ -44,11 +44,7 @@
             "Z": -16.281433
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,11 +59,7 @@
             "Z": -175.7077
           },
           "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -29,10 +29,7 @@
             "Z": 53.72693
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "StopDistance": 9,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,8 +44,7 @@
             "Z": 40.6958
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "Interact"
         }
       ]
     },

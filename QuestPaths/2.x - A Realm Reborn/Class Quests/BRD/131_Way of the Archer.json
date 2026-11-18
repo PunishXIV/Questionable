@@ -15,9 +15,7 @@
             "Z": 43.900146
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {"AetheryteShortcutIf": {"AetheryteLocked": "Gridania"}}
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +29,6 @@
             "Y": 0.9999819,
             "Z": 35.01941
           },
-          "StopDistance": 5,
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [

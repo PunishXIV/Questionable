@@ -15,16 +15,7 @@
             "Z": -84.397705
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -97,16 +88,7 @@
             "Z": 44.571533
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -121,11 +103,7 @@
             "Z": -84.397705
           },
           "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Jeweled Crozier"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

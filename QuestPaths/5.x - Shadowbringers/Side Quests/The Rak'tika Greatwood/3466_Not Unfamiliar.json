@@ -10,17 +10,6 @@
   "Sequence": 0,
   "Steps": [
     {
-      "Position": {
-        "X": 392.00415,
-        "Y": 33.637783,
-        "Z": -127.34448
-      },
-      "TerritoryId": 817,
-      "InteractionType": "WalkTo",
-      "Fly": true,
-      "Land": true
-    },
-    {
       "DataId": 1031380,
           "Position": {
             "X": 390.5,
@@ -28,10 +17,7 @@
             "Z": -128.446
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -47,8 +33,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -80,10 +64,7 @@
             "Z": -169.485
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,8 +14,6 @@
           },
           "TerritoryId": 814,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kholusia - Stilltide",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -43,8 +41,7 @@
           },
           "TerritoryId": 814,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 895,
-          "Fly": true
+          "TargetTerritoryId": 895
         },
         {
           "DataId": 2010830,
@@ -56,33 +53,6 @@
           "TerritoryId": 895,
           "InteractionType": "Interact",
           "TargetTerritoryId": 896
-        },
-        {
-          "Position": {
-            "X": -499.9735,
-            "Y": 463.36023,
-            "Z": 177.62115
-          },
-          "TerritoryId": 896,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -499.9782,
-            "Y": 400.99997,
-            "Z": 4.3087606
-          },
-          "TerritoryId": 896,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -557.9587,
-            "Y": 383,
-            "Z": -141.83781
-          },
-          "TerritoryId": 896,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2011457,
@@ -120,9 +90,7 @@
             "Z": -171.31305
           },
           "TerritoryId": 814,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kholusia - Stilltide",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

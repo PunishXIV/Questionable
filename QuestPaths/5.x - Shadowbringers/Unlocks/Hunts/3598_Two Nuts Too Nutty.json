@@ -13,10 +13,8 @@
             "Y": -2.7974376E-11,
             "Z": -93.247925
           },
-          "StopDistance": 5,
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,7 +28,6 @@
             "Y": 0.07107824,
             "Z": -83.66528
           },
-          "StopDistance": 7,
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3599

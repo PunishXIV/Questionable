@@ -15,7 +15,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -37,8 +36,7 @@
             "Z": 206.77502
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -102,8 +100,7 @@
             "Z": 95.47571
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

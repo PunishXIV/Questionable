@@ -12,20 +12,8 @@
             "Y": 14.005002,
             "Z": 89.829834
           },
-          "StopDistance": 7,
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,11 +29,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -68,10 +51,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] Shiokaze Hostelry"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -109,12 +88,7 @@
             "Z": -82.108826
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -129,11 +103,7 @@
             "Z": 92.36279
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] Kogane Dori Markets"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -148,11 +118,7 @@
             "Z": 50.70569
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Kogane Dori Markets",
-            "[Kugane] The Ruby Bazaar"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -166,7 +132,6 @@
             "Y": 18.1,
             "Z": 49.484985
           },
-          "StopDistance": 5,
           "TerritoryId": 628,
           "InteractionType": "Interact"
         }
@@ -184,10 +149,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Kugane] The Ruby Bazaar",
-            "[Kugane] Sekiseigumi Barracks"
-          ],
           "NextQuestId": 3991
         }
       ]

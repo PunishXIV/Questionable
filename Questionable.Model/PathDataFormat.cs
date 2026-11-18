@@ -5,5 +5,5 @@ namespace Questionable.Model;
 // properties. Separate from the plugin version; installed plugins refuse bundles that need a newer one.
 public static class PathDataFormat
 {
-    public const int CurrentVersion = 1;
+    public const int CurrentVersion = 2;
 }

@@ -14,18 +14,7 @@
             "Z": 113.725464
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,25 +29,13 @@
             "Z": -679.07227
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -335.20407,
-            "Y": -15.94506,
-            "Z": -491.67297
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "$": "Pathfinding workaround"
-        },
         {
           "DataId": 1021052,
           "Position": {
@@ -82,8 +59,7 @@
             "Z": -361.6236
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,14 +72,12 @@
             "Y": -17.148405,
             "Z": -361.9313
           },
-          "StopDistance": 0.5,
           "TerritoryId": 156,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7233
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -134,10 +108,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",

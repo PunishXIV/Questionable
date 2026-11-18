@@ -28,14 +28,12 @@
             "Y": -99.50415,
             "Z": -247.97437
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1187,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             17645
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -49,11 +47,8 @@
             "Y": -146.10005,
             "Z": -465.01874
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1187,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

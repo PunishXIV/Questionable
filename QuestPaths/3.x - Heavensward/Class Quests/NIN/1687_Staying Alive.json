@@ -15,7 +15,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
@@ -46,11 +45,7 @@
             "Z": 50.644653
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -66,12 +61,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "UseItem",
-          "ItemId": 2001725,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Hawkers' Alley",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "ItemId": 2001725
         }
       ]
     },
@@ -93,17 +83,6 @@
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": 234.53989,
-            "Y": -56.43721,
-            "Z": -254.02878
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
-        },
         {
           "DataId": 1013912,
           "Position": {
@@ -129,8 +108,7 @@
           "TerritoryId": 398,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [5042, 4619],
-          "Fly": true
+          "KillEnemyDataIds": [5042, 4619]
         }
       ]
     },
@@ -145,8 +123,7 @@
             "Z": -217.02905
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -162,7 +139,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "DockStorehouse"

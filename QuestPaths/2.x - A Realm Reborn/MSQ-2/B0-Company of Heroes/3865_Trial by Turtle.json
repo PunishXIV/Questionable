@@ -14,8 +14,7 @@
             "Z": 339.49792
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -55,15 +54,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Position": {
-            "X": -219.94328,
-            "Y": 21.050707,
-            "Z": 343.71066
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1006279,
           "Position": {
             "X": -231.4336,
@@ -78,25 +68,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -180.60515,
-            "Y": 17.857697,
-            "Z": -278.74887
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
-        },
-        {
-          "Position": {
-            "X": -183.61136,
-            "Y": 3.5857017,
-            "Z": -248.78667
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1004596,
           "Position": {

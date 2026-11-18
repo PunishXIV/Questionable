@@ -15,16 +15,7 @@
             "Z": -84.397705
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,11 +30,7 @@
             "Z": -166.52173
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -58,11 +45,7 @@
             "Z": -84.397705
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -106,16 +89,7 @@
             "Z": -26.840637
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -130,11 +104,7 @@
             "Z": -84.397705
           },
           "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Jeweled Crozier"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -30,8 +30,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Many Fires",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -43,7 +41,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -70,8 +67,7 @@
             "Z": -551.5984
           },
           "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

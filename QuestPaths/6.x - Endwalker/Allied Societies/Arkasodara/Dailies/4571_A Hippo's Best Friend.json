@@ -14,9 +14,7 @@
             "Z": 321.06494
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -24,24 +22,12 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 459.61847,
-            "Y": 7.3659906,
-            "Z": 22.413525
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true
-        },
-        {
           "DataId": 2012895,
           "Position": {
             "X": 461.8142,
             "Y": 9.262146,
             "Z": 24.2771
           },
-          "StopDistance": 5,
           "TerritoryId": 957,
           "InteractionType": "UseItem",
           "ItemId": 2003407,
@@ -75,9 +61,7 @@
             "Z": 321.06494
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

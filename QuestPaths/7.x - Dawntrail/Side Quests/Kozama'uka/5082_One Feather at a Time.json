@@ -28,8 +28,7 @@
             "Z": -570.64166
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,15 +50,6 @@
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": 37.763844,
-            "Y": 1.8493831,
-            "Z": -555.61774
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 2014284,
           "Position": {

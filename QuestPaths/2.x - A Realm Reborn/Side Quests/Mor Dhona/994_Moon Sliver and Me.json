@@ -14,9 +14,7 @@
             "Z": -387.541
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,8 +33,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2197
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -51,9 +48,7 @@
             "Z": -387.541
           },
           "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

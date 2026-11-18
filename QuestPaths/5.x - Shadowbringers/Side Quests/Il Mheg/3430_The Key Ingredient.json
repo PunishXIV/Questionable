@@ -13,23 +13,7 @@
             "Z": -649.2866
           },
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 37.76599,
-                  "Y": 53.890167,
-                  "Z": -649.2866
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,9 +28,7 @@
             "Z": 434.92773
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,8 +43,7 @@
             "Z": 341.90894
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -100,22 +81,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "CompleteQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 440.26855,
-                  "Y": 90.109146,
-                  "Z": -651.2093
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          },
           "NextQuestId": 3431
         }
       ]

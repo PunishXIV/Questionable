@@ -15,7 +15,6 @@
           "TerritoryId": 815,
           "InteractionType": "Interact",
           "TargetTerritoryId": 878,
-          "Fly": true,
           "SkipConditions": {"StepIf": {"InTerritory": [878]}}
         },
         {
@@ -25,7 +24,6 @@
             "Y": -2.4984214,
             "Z": 18.936401
           },
-          "StopDistance": 4,
           "TerritoryId": 878,
           "InteractionType": "AcceptQuest"
         }
@@ -41,7 +39,6 @@
             "Y": -2.4984214,
             "Z": 19.72992
           },
-          "StopDistance": 5,
           "TerritoryId": 878,
           "InteractionType": "Interact"
         }
@@ -73,7 +70,6 @@
             "Y": -2.4984214,
             "Z": 12.741211
           },
-          "StopDistance": 5,
           "TerritoryId": 878,
           "InteractionType": "Interact"
         }
@@ -102,7 +98,6 @@
             "Y": -3.8122757E-14,
             "Z": 103.715576
           },
-          "StopDistance": 7,
           "TerritoryId": 857,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3978

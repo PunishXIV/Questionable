@@ -16,12 +16,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "RoguesGuild"
@@ -35,7 +30,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest"
         }
@@ -63,12 +57,7 @@
             "Z": 291.82874
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ],
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -81,7 +70,6 @@
             "Y": 69.5,
             "Z": 327.67975
           },
-          "StopDistance": 0.5,
           "TerritoryId": 134,
           "InteractionType": "Action",
           "Action": "Hide"
@@ -113,8 +101,7 @@
             "Z": 291.82874
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -130,8 +117,6 @@
           },
           "TerritoryId": 134,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             3567,
@@ -167,11 +152,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "TargetTerritoryId": 129
         },
         {
           "DataId": 1009943,
@@ -180,7 +161,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -198,9 +178,7 @@
           },
           "TerritoryId": 135,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -214,7 +192,6 @@
             "Y": 8.000164,
             "Z": 668.2383
           },
-          "StopDistance": 7,
           "TerritoryId": 135,
           "InteractionType": "Interact"
         }
@@ -232,11 +209,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "TargetTerritoryId": 129
         },
         {
           "DataId": 1009943,
@@ -245,7 +218,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 148

@@ -13,9 +13,7 @@
             "Z": 253.34546
           },
           "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +28,7 @@
             "Z": 48.05066
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -44,7 +41,6 @@
             "Y": 7.8688097,
             "Z": 49.742996
           },
-          "StopDistance": 0.25,
           "TerritoryId": 961,
           "InteractionType": "Emote",
           "Emote": "stretch"
@@ -62,9 +58,7 @@
             "Z": 253.34546
           },
           "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,7 +15,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_BANALL420_05463_Q1_000_001",
@@ -39,7 +38,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "Interact",
-          "StopDistance": 5,
           "$": "auto: todo location -> 1058503 (Genuhanu)"
         }
       ]
@@ -55,10 +53,7 @@
             "Z": -201.82928
           },
           "TerritoryId": 1188,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
           "$": "auto: todo location -> 1051741 (Wawkesa)"
         }
       ]
@@ -75,8 +70,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
           "$": "auto: todo location -> 1058504 (Liplu); hands over ITEM0=2003817"
         }
       ]
@@ -93,7 +86,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "StopDistance": 5,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_BANALL420_05463_Q5_000_107",

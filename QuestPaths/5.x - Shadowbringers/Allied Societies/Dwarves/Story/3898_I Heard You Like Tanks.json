@@ -21,16 +21,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": -357.15628,
-            "Y": 108.72211,
-            "Z": -680.6214
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1033732,
           "Position": {
             "X": -356.22186,
@@ -52,7 +42,6 @@
             "Y": 108.722115,
             "Z": -683.1922
           },
-          "StopDistance": 5,
           "TerritoryId": 813,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -75,7 +64,6 @@
             "Y": 108.722115,
             "Z": -683.43634
           },
-          "StopDistance": 5,
           "TerritoryId": 813,
           "InteractionType": "Interact"
         }
@@ -92,12 +80,7 @@
             "Z": -145.4643
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -112,9 +95,7 @@
             "Z": -412.71082
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lakeland - Ostall Imperative",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

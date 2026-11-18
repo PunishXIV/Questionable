@@ -14,11 +14,7 @@
             "Z": 10.60498
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,11 +29,7 @@
             "Z": 211.13904
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Wachumeqimeqi",
-            "[Tuliyollal] The For'ard Cabins"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,9 +88,7 @@
             "Z": -575.62555
           },
           "TerritoryId": 1191,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
@@ -109,8 +99,7 @@
             "Z": -663.2639
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -125,12 +114,7 @@
             "Z": 10.60498
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -145,11 +129,7 @@
             "Z": 143.57214
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Wachumeqimeqi",
-            "[Tuliyollal] The For'ard Cabins"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -164,11 +144,7 @@
             "Z": -353.29218
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] The For'ard Cabins",
-            "[Tuliyollal] Brightploom Post"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -183,11 +159,7 @@
             "Z": 1.9073486
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Brightploom Post",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

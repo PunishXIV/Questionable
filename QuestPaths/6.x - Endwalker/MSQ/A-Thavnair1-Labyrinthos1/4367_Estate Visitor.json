@@ -13,7 +13,6 @@
             "Y": 41.37599,
             "Z": -142.1684
           },
-          "StopDistance": 5,
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest"
         }
@@ -29,7 +28,6 @@
             "Y": 41.37599,
             "Z": -141.00867
           },
-          "StopDistance": 5,
           "TerritoryId": 962,
           "InteractionType": "Interact"
         }
@@ -45,7 +43,6 @@
             "Y": 41.37599,
             "Z": -142.1684
           },
-          "StopDistance": 5,
           "TerritoryId": 962,
           "InteractionType": "Interact"
         }
@@ -62,11 +59,7 @@
             "Z": -160.60126
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Rostra",
-            "[Old Sharlayan] The Leveilleur Estate"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -97,10 +90,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Leveilleur Estate",
-            "[Old Sharlayan] The Baldesion Annex"
-          ],
           "TargetTerritoryId": 987
         },
         {

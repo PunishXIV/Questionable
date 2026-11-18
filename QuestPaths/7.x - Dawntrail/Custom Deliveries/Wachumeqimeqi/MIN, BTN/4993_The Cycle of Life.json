@@ -29,11 +29,7 @@
             "Z": -12.253052
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Wachumeqimeqi",
-            "[Tuliyollal] The Resplendent Quarter"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,12 +55,7 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 4994,
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "NextQuestId": 4994
         }
       ]
     }

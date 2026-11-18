@@ -44,11 +44,7 @@
             "Z": -117.052
           },
           "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

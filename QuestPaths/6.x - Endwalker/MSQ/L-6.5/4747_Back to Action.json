@@ -30,10 +30,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ],
           "TargetTerritoryId": 844
         },
         {
@@ -59,12 +55,7 @@
             "Z": -68.40625
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Meghaduta"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,9 +70,7 @@
             "Z": 401.26636
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

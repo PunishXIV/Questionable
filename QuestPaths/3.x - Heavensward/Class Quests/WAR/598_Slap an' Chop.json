@@ -14,24 +14,13 @@
             "Z": 18.814331
           },
           "TerritoryId": 139,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 427.1206,
-            "Y": 7.9075317,
-            "Z": 24.77774
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
         {
           "DataId": 1013339,
           "Position": {
@@ -40,8 +29,7 @@
             "Z": 48.142212
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,8 +44,7 @@
             "Z": 65.90369
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -88,8 +75,7 @@
             "Z": -9.445435
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -109,8 +95,7 @@
           "KillEnemyDataIds": [
             4404,
             4405
-          ],
-          "Fly": true
+          ]
         }
       ]
     },

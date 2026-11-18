@@ -14,10 +14,7 @@
             "Z": -171.76868
           },
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 2,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,12 +27,8 @@
             "Y": -48.533592,
             "Z": -171.12994
           },
-          "StopDistance": 3,
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -74,8 +67,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Action",
-          "Action": "Fumigate",
-          "Fly": true
+          "Action": "Fumigate"
         }
       ]
     },
@@ -91,8 +83,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Action",
-          "Action": "Fumigate",
-          "Fly": true
+          "Action": "Fumigate"
         }
       ]
     },
@@ -108,8 +99,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Action",
-          "Action": "Fumigate",
-          "Fly": true
+          "Action": "Fumigate"
         }
       ]
     },
@@ -123,11 +113,8 @@
             "Y": -48.000004,
             "Z": -171.76868
           },
-          "StopDistance": 2,
           "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

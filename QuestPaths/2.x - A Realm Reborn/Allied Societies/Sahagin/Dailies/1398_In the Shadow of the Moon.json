@@ -14,10 +14,7 @@
               "Z": 53.050713
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,7 +29,6 @@
             "Z": 15.213196
           },
           "TerritoryId": 138,
-          "Fly": true,
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -62,7 +58,6 @@
               "Z": 653.5796
           },
           "TerritoryId": 138,
-          "StopDistance": 1,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [315],
@@ -75,7 +70,6 @@
               "Z": 647.34735
           },
           "TerritoryId": 138,
-          "StopDistance": 1,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [317],
@@ -88,7 +82,6 @@
               "Z": 652.2138
           },
           "TerritoryId": 138,
-          "StopDistance": 1,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [315],
@@ -101,7 +94,6 @@
               "Z": 700.3351
           },
           "TerritoryId": 138,
-          "StopDistance": 1,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [315],
@@ -131,10 +123,7 @@
               "Z": 53.050713
           },
           "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

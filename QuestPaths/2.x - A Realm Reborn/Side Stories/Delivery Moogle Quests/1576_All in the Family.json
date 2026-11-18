@@ -14,8 +14,7 @@
             "Z": 5.416931
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,24 +29,13 @@
             "Z": -361.2574
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -255.1732,
-            "Y": 27.485052,
-            "Z": -324.7051
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
         {
           "DataId": 2004884,
           "Position": {
@@ -57,7 +45,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,4]
         },
         {
@@ -94,26 +81,13 @@
             "Z": -361.2574
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "$": "Fly near Hihibaru",
-          "Position": {
-            "X": -73.61801,
-            "Y": -22.01302,
-            "Z": -3.8327198
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
-        },
         {
           "DataId": 1006196,
           "Position": {
@@ -136,8 +110,7 @@
             "Z": 242.00226
           },
           "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "WalkTo"
         }
       ]
     },
@@ -165,7 +138,6 @@
             "Y": -31.787657,
             "Z": 244.7699
           },
-          "StopDistance": 5,
           "TerritoryId": 145,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 1
@@ -175,18 +147,6 @@
     {
       "Sequence": 7,
       "Steps": [
-        {
-          "$": "Fly near Hihibaru first; otherwise gets caught on tent",
-          "Position": {
-            "X": -73.61801,
-            "Y": -22.01302,
-            "Z": -3.8327198
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
-        },
         {
           "DataId": 1006196,
           "Position": {
@@ -211,7 +171,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
           "NextQuestId": 1577
         }
       ]

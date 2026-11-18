@@ -29,36 +29,13 @@
             "Z": 859.739
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 595.4312,
-            "Y": -0.26869023,
-            "Z": 800.52985
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 459.92212,
-            "Y": -0.19133466,
-            "Z": 672.5903
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1022745,
           "Position": {
@@ -86,12 +63,7 @@
             "Z": 859.739
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

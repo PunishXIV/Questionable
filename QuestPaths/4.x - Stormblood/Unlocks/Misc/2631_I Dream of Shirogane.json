@@ -14,8 +14,7 @@
             "Z": -66.7583
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,7 @@
             "Z": -39.292053
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Shiokaze Hostelry"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,7 +43,6 @@
             "Y": -7.0101376,
             "Z": -39.108948
           },
-          "StopDistance": 7,
           "TerritoryId": 628,
           "InteractionType": "Interact",
           "TargetTerritoryId": 641,
@@ -89,8 +83,7 @@
             "Z": -66.7583
           },
           "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

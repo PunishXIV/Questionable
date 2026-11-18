@@ -28,10 +28,8 @@
             "Y": 23.803606,
             "Z": 405.2644
           },
-          "StopDistance": 7,
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,7 +43,6 @@
             "Y": 22.554066,
             "Z": 430.01453
           },
-          "StopDistance": 5,
           "TerritoryId": 958,
           "InteractionType": "Interact"
         }
@@ -61,7 +58,6 @@
             "Y": 22.071072,
             "Z": 434.01233
           },
-          "StopDistance": 7,
           "TerritoryId": 958,
           "InteractionType": "Interact"
         }
@@ -102,8 +98,7 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 5,
-          "Mount": false
+          "NpcWaitDistance": 5
         },
         {
           "DataId": 1039882,
@@ -114,8 +109,7 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 5,
-          "Mount": false
+          "NpcWaitDistance": 5
         },
         {
           "DataId": 1039882,
@@ -125,8 +119,7 @@
             "Z": 149.8282
           },
           "TerritoryId": 958,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1039880,
@@ -135,7 +128,6 @@
             "Y": 0.26087344,
             "Z": 149.46323
           },
-          "StopDistance": 1,
           "TerritoryId": 958,
           "InteractionType": "Interact"
         }
@@ -151,7 +143,6 @@
             "Y": 0.21427588,
             "Z": 147.8446
           },
-          "StopDistance": 5,
           "TerritoryId": 958,
           "InteractionType": "CompleteQuest"
         }

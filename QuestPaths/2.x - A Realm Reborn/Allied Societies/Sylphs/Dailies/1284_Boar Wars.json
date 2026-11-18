@@ -21,10 +21,7 @@
             "Z": 251.17871
           },
           "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,7 +36,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "FateEnemies",
           "ItemId": 7003,
           "KillEnemyDataIds": [
@@ -61,10 +57,7 @@
             "Z": 251.17871
           },
           "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

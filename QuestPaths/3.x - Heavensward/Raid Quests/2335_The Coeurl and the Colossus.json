@@ -14,8 +14,7 @@
             "Z": -183.12354
           },
           "TerritoryId": 399,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza","[Idyllshire] Epilogue Gate (Eastern Hinterlands)"]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -131.12079
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": 68.16199
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -74,7 +71,6 @@
             "Y": 71.508316,
             "Z": 68.16199
           },
-          "StopDistance": 5,
           "TerritoryId": 399,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2336

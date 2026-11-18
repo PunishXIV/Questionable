@@ -14,9 +14,7 @@
             "Z": -492.79013
           },
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": -566.2471
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,9 +44,7 @@
             "Z": 65.049194
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,8 +59,7 @@
             "Z": 65.293335
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -81,16 +74,7 @@
             "Z": -56.595703
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                398
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -120,16 +104,7 @@
             "Z": -56.595703
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                398
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -144,9 +119,7 @@
             "Z": -414.4198
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -161,9 +134,7 @@
             "Z": 65.293335
           },
           "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

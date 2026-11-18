@@ -15,8 +15,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -40,8 +38,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "$": "auto: issuer 1058136 (Haermaga)"
         }
       ]
@@ -52,23 +48,12 @@
         {
           "Position": {
             "X": 744.2034,
-            "Y": 8.4,
-            "Z": 389.4422
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 744.2034,
             "Y": 12,
             "Z": 389.4422
           },
           "TerritoryId": 137,
           "InteractionType": "WalkTo",
           "Comment": "Flying up a bit to help with pathing",
-          "Mount": true,
           "SkipConditions": { "StepIf": { "Flying": "Locked" } }
         },
         {
@@ -80,7 +65,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 1058132 (pleasure cruise chaperone)"
         }
       ]
@@ -119,8 +103,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -144,8 +126,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "$": "auto: todo turn-in -> 1058136 (Haermaga)"
         }
       ]

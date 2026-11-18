@@ -15,7 +15,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -29,17 +28,6 @@
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -341.33426,
-            "Y": 94.733665,
-            "Z": -414.5643
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Peaks - Ala Gannha",
-          "Fly": true
-        },
         {
           "DataId": 1021780,
           "Position": {
@@ -64,7 +52,6 @@
           },
           "TerritoryId": 620,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -73,7 +60,6 @@
             "Y": 200.71986,
             "Z": -238.0671
           },
-          "StopDistance": 0.5,
           "TerritoryId": 620,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -129,7 +115,6 @@
           },
           "TerritoryId": 620,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -138,7 +123,6 @@
             "Y": 108.3858,
             "Z": -304.68738
           },
-          "StopDistance": 0.5,
           "InteractionType": "WalkTo",
           "TerritoryId": 620,
           "SkipConditions": {
@@ -154,7 +138,6 @@
             "Y": 108.3858,
             "Z": -304.68738
           },
-          "StopDistance": 0.5,
           "TerritoryId": 620,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -166,7 +149,6 @@
             "StopDistance": 0.5,
             "DelaySeconds": 0.2
           },
-          "Mount": false,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked",
@@ -181,10 +163,8 @@
             "Y": 109.666504,
             "Z": -299.794
           },
-          "StopDistance": 1,
           "TerritoryId": 620,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -214,8 +194,7 @@
             "Z": -372.2744
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -234,8 +213,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             7822
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -250,8 +228,7 @@
             "Z": -732.57043
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -267,7 +244,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "NextQuestId": 2585
         }
       ]

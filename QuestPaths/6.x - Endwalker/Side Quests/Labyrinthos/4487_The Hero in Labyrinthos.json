@@ -18,9 +18,6 @@
           },
           "TerritoryId": 956,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true,
-          "Land": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -51,10 +48,7 @@
               "RewardItemId": 2003335,
               "RewardItemCount": 2
             }
-          ],
-          "AetheryteShortcut": "Labyrinthos - Aporia",
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
@@ -69,10 +63,7 @@
             "Z": -145.098
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -87,10 +78,7 @@
             "Z": -33.3491
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

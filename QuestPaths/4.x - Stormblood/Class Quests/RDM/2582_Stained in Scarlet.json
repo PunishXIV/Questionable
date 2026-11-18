@@ -14,9 +14,7 @@
             "Z": -31.570984
           },
           "TerritoryId": 147,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": -770.1076
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,8 +44,7 @@
             "Z": -671.3207
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,8 +59,7 @@
             "Z": -609.4606
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -78,14 +72,12 @@
             "Y": 10.336163,
             "Z": -584.578
           },
-          "StopDistance": 0.5,
           "TerritoryId": 156,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7223
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             {"Low": 2},
           null,null,null,null,null]
@@ -111,14 +103,12 @@
             "Y": -17.479898,
             "Z": -470.8124
           },
-          "StopDistance": 0.5,
           "TerritoryId": 156,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7224
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null]
@@ -152,8 +142,7 @@
             "Notes": [
               "VBM does not switch target fireball, ally dies consistently"
             ]
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -169,7 +158,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona",
           "NextQuestId": 2583
         }
       ]

@@ -7,27 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 145,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
           "Position": {
             "X": -492.96475,
             "Y": 20.999884,
@@ -35,7 +14,6 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": {
             "StepIf": {
@@ -83,38 +61,13 @@
             "Z": 81.1322
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 71.55255,
-            "Y": 59.83099,
-            "Z": -516.4647
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
-        },
-        {
-          "Position": {
-            "X": 111.74668,
-            "Y": 23.614925,
-            "Z": -611.95605
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2003457,
           "Position": {
@@ -155,38 +108,13 @@
             "Z": 81.1322
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "TerritoryId": 132,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
         {
           "Position": {
             "X": -492.96475,
@@ -195,7 +123,6 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },

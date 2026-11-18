@@ -13,9 +13,7 @@
             "Z": 518.9136
           },
           "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -99,7 +95,6 @@
             "Y": 107.63,
             "Z": 132.86023
           },
-          "StopDistance": 4,
           "TerritoryId": 829,
           "InteractionType": "Interact"
         }
@@ -123,16 +118,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -507.93283,
-            "Y": 7.6638765,
-            "Z": 52.09985
-          },
-          "TerritoryId": 621,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1032586,
           "Position": {

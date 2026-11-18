@@ -15,27 +15,14 @@
             "Z": -166.52173
           },
           "TerritoryId": 133,
-          "AetheryteShortcut": "Gridania",
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CLSTAN002_00135_Q1_000_1",
               "Type": "YesNo",
               "Yes": true
             }
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
+          ]
         }
       ]
     },
@@ -64,11 +51,7 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ]
+          "AllowHighQuality": true
         }
       ]
     }

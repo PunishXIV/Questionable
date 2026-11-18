@@ -14,10 +14,7 @@
             "Z": 251.17871
           },
           "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,7 +31,6 @@
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "GroundTarget": true,
-          "Fly": true,
           "ItemId": 2001155,
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1}, {"Low": 3}
@@ -54,7 +50,6 @@
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "GroundTarget": true,
-          "Fly": true,
           "ItemId": 2001155,
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1}, {"Low": 2}, {"Low": 5}
@@ -74,7 +69,6 @@
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "GroundTarget": true,
-          "Fly": true,
           "ItemId": 2001155,
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 3}, {"Low": 4}
@@ -95,7 +89,6 @@
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "GroundTarget": true,
-          "Fly": true,
           "ItemId": 2001155,
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1}, {"Low": 4}
@@ -115,7 +108,6 @@
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "GroundTarget": true,
-          "Fly": true,
           "ItemId": 2001155,
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 3}, {"Low": 5}
@@ -135,7 +127,6 @@
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "GroundTarget": true,
-          "Fly": true,
           "ItemId": 2001155,
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 2}, {"Low": 5}
@@ -156,7 +147,6 @@
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "GroundTarget": true,
-          "Fly": true,
           "ItemId": 2001155,
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 2}, {"Low": 4}
@@ -179,10 +169,7 @@
             "Z": 251.17871
           },
           "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -29,8 +29,7 @@
             "Z": -8.255188
           },
           "TerritoryId": 820,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eulmore"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -72,10 +71,6 @@
           },
           "TerritoryId": 820,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Aetheryte Plaza",
-            "[Eulmore] The Mainstay"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -87,10 +82,6 @@
           },
           "TerritoryId": 820,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] The Mainstay",
-            "[Eulmore] Nightsoil Pots"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -106,11 +97,7 @@
             "Z": -8.255188
           },
           "TerritoryId": 820,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Nightsoil Pots",
-            "[Eulmore] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -124,7 +111,6 @@
             "Y": 82.05,
             "Z": -5.661133
           },
-          "StopDistance": 7,
           "TerritoryId": 820,
           "InteractionType": "CompleteQuest"
         }

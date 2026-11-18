@@ -14,11 +14,7 @@
             "Z": 110.85681
           },
           "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,7 +29,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -99,24 +94,9 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Mor Dhona",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [725],
-          "Fly": true,
-          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 37.581226,
-                  "Y": 29,
-                  "Z": -798.03467
-                },
-                "TerritoryId": 156,
-                "MaximumDistance": 5
-              }
-            }
-          }
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 1009640,
@@ -156,7 +136,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -205,11 +184,7 @@
             "Z": 110.85681
           },
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

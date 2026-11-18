@@ -14,8 +14,7 @@
             "Z": 437.2472
           },
           "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 427.2068
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },

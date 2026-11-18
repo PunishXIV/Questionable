@@ -13,7 +13,6 @@
             "Y": 41.530136,
             "Z": -165.27051
           },
-          "StopDistance": 7,
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest"
         }
@@ -31,11 +30,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -71,7 +65,6 @@
             "Y": 0,
             "Z": -3.3417358
           },
-          "StopDistance": 5,
           "TerritoryId": 844,
           "InteractionType": "Interact"
         }
@@ -88,12 +81,7 @@
             "Z": -69.47443
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Meghaduta"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -123,11 +111,7 @@
             "Z": -68.40625
           },
           "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Mehryde's Meyhane",
-            "[Radz-at-Han] Meghaduta"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,10 +15,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "$": "auto: issuer 1032898 (Neillemard)"
         }
       ]
@@ -26,14 +22,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "InteractionType": "None",
-          "TerritoryId": 418,
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] Aetheryte Plaza"
-          ]
-        },
         {
           "DataId": 1035012,
           "Position": {
@@ -43,10 +31,6 @@
           },
           "TerritoryId": 886,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
           "$": "auto: todo turn-in -> 1035012 (Emeny)"
         }
       ]

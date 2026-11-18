@@ -17,9 +17,7 @@
             "Z": -91.5389
           },
           "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,18 +31,7 @@
             "Z": 623.371
           },
           "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 195.036,
-            "Y": -5.43588,
-            "Z": 623.371
-          },
-          "TerritoryId": 956,
-          "InteractionType": "None",
-          "Land": true
+          "InteractionType": "None"
         },
         {
           "DataId": 2012778,
@@ -82,9 +69,7 @@
             "Z": -91.5389
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

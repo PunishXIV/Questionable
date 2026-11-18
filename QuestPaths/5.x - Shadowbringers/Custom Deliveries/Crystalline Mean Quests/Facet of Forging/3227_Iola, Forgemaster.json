@@ -15,12 +15,7 @@
             "Z": -124.55945
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,11 +30,7 @@
             "Z": -135.69855
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Crystalline Mean",
-            "[Crystarium] The Amaro Launch"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,10 +47,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] The Crystalline Mean"
-          ],
           "$": "No next quest, since that requires turn-ins before being available"
         }
       ]

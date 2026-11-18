@@ -30,19 +30,13 @@
             "Z": -188.61682
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "TerritoryId": 156,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Mor Dhona"
-        },
         {
           "DataId": 1010897,
           "Position": {

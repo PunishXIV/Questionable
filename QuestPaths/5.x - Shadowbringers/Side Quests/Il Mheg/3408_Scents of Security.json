@@ -13,22 +13,7 @@
             "Z": -857.87744
           },
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 32.028687,
-                  "Y": 101.900696,
-                  "Z": -857.87744
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -61,7 +46,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"High": 0}
             ],null,null,null,null
@@ -95,22 +79,7 @@
             "Z": -857.87744
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 32.028687,
-                  "Y": 101.900696,
-                  "Z": -857.87744
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

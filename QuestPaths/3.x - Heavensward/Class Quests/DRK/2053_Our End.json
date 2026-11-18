@@ -14,16 +14,7 @@
             "Z": -117.60132
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Tribunal"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [419]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -38,8 +29,7 @@
             "Z": 45.395508
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": ["[Ishgard] The Tribunal", "[Ishgard] The Brume"]
+          "InteractionType": "Interact"
         }
       ]
     },

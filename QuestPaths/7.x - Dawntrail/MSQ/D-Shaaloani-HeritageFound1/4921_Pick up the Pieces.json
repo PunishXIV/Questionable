@@ -45,11 +45,7 @@
             "Z": -346.2425
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Wachumeqimeqi",
-            "[Tuliyollal] Vollok Shoonsa"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,7 +59,6 @@
             "Y": 3.095488,
             "Z": -64.9577
           },
-          "StopDistance": 5,
           "TerritoryId": 1170,
           "InteractionType": "CompleteQuest"
         }

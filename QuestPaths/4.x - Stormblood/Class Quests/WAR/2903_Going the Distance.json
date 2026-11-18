@@ -13,10 +13,8 @@
             "Y": 7.999984,
             "Z": 686.427
           },
-          "StopDistance": 5,
           "TerritoryId": 135,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,8 +30,6 @@
           },
           "TerritoryId": 622,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Reunion",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -45,7 +41,6 @@
           },
           "TerritoryId": 622,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -57,7 +52,6 @@
           },
           "TerritoryId": 622,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -71,14 +65,12 @@
             "Y": 2.935472,
             "Z": 369.28806
           },
-          "StopDistance": 0.5,
           "TerritoryId": 622,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             6641
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -92,7 +84,6 @@
             "Y": 2.8128173,
             "Z": 370.3822
           },
-          "StopDistance": 5,
           "TerritoryId": 622,
           "InteractionType": "Interact"
         }
@@ -109,8 +100,7 @@
             "Z": 268.6045
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -126,8 +116,6 @@
           },
           "TerritoryId": 622,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Azim Steppe - Reunion",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",

@@ -16,7 +16,6 @@
           "TerritoryId": 815,
           "InteractionType": "Interact",
           "TargetTerritoryId": 878,
-          "Fly": true,
           "SkipConditions": {"StepIf": {"InTerritory": [878]}}
         },
         {

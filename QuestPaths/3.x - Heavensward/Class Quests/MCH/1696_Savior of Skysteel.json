@@ -14,11 +14,7 @@
             "Z": -53.3609
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -55,8 +51,7 @@
             "Z": -248.0965
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+          "InteractionType": "Interact"
         }
       ]
     },

@@ -14,18 +14,7 @@
             "Z": -54.154297
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,9 +30,7 @@
           },
           "TerritoryId": 141,
           "InteractionType": "UseItem",
-          "ItemId": 2000715,
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "ItemId": 2000715
         }
       ]
     },

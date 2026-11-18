@@ -70,8 +70,7 @@
             "Z": 300.52637
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Slitherbough"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -99,7 +98,6 @@
             "Y": 16.288988,
             "Z": 251.72075
           },
-          "StopDistance": 1,
           "TerritoryId": 817,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -151,9 +149,7 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 891,
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "TargetTerritoryId": 891
         },
         {
           "DataId": 1032032,
@@ -193,9 +189,7 @@
             "Z": 573.8766
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

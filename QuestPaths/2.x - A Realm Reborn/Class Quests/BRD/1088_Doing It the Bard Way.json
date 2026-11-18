@@ -15,9 +15,7 @@
             "Z": -7.3396606
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,9 +35,7 @@
             "Enabled": true,
             "TestedBossModVersion": "0.1.1.8"
           },
-          "ItemId": 2000952,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "ItemId": 2000952
         }
       ]
     },
@@ -55,8 +51,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true,
           "NextQuestId": 1089
         }
       ]

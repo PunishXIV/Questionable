@@ -15,18 +15,7 @@
             "Z": -27.267883
           },
           "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "InteractionType": "AcceptQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,9 +34,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             294
-          ],
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -81,8 +68,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             299
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -116,8 +102,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             297
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -148,10 +133,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
           "NextQuestId": 440
         }
       ]

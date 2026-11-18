@@ -14,8 +14,7 @@
             "Z": 5.416931
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,17 +36,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -339.63614,
-            "Y": -2.097362,
-            "Z": 142.24135
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true
-        },
         {
           "DataId": 1005249,
           "Position": {
@@ -97,8 +85,7 @@
             "Z": 104.600464
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -128,24 +115,13 @@
             "Z": -100.35864
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
       "Steps": [
-        {
-          "Position": {
-            "X": -339.63614,
-            "Y": -2.097362,
-            "Z": 142.24135
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1005249,
           "Position": {
@@ -181,7 +157,6 @@
           },
           "TerritoryId": 139,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 244
         }
       ]

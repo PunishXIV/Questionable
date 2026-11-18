@@ -13,7 +13,6 @@
             "Y": 28.760696,
             "Z": -426.50494
           },
-          "StopDistance": 7,
           "TerritoryId": 1189,
           "InteractionType": "AcceptQuest"
         }
@@ -90,8 +89,7 @@
             "Z": 176.83679
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -120,7 +118,6 @@
             "Y": -90.92853,
             "Z": 335.8662
           },
-          "StopDistance": 4,
           "TerritoryId": 1189,
           "InteractionType": "UseItem",
           "ItemId": 2003487

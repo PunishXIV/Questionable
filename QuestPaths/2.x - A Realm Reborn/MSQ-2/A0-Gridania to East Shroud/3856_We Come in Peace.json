@@ -17,8 +17,7 @@
             "Z": -5.081299
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,11 +43,7 @@
             "Z": -230.45703
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -101,8 +96,7 @@
             "Z": 283.4973
           },
           "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

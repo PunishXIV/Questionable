@@ -112,10 +112,8 @@
             "Y": 1.5723714,
             "Z": 750.0571
           },
-          "StopDistance": 7,
           "TerritoryId": 135,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -148,10 +146,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

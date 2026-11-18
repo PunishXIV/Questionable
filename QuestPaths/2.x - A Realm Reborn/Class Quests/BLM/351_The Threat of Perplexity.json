@@ -15,18 +15,7 @@
             "Z": 80.88806
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -56,16 +45,7 @@
             "Z": 72.3125
           },
           "TerritoryId": 140,
-          "Fly": true,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western Thanalan - Horizon",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                140
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,8 +60,6 @@
             "Z": 31.153059
           },
           "TerritoryId": 140,
-          "StopDistance": 1,
-          "Fly": true,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
@@ -138,7 +116,6 @@
               "Z": 48.76599
             }
           },
-          "StopDistance": 1,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -149,7 +126,6 @@
             "Z": 72.3125
           },
           "TerritoryId": 140,
-          "Fly": true,
           "InteractionType": "Interact"
         }
       ]
@@ -165,7 +141,6 @@
             "Z": -5.7526855
           },
           "TerritoryId": 140,
-          "Fly": true,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
@@ -206,7 +181,6 @@
               "Z": 48.76599
             }
           },
-          "StopDistance": 1,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -217,7 +191,6 @@
             "Z": 72.3125
           },
           "TerritoryId": 140,
-          "Fly": true,
           "InteractionType": "Interact"
         }
       ]
@@ -233,7 +206,6 @@
             "Z": 188.83032
           },
           "TerritoryId": 140,
-          "Fly": true,
           "InteractionType": "Interact"
         }
       ]
@@ -249,18 +221,7 @@
             "Z": 84.64172
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },

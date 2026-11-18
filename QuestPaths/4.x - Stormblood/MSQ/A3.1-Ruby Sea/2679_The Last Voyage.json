@@ -14,8 +14,7 @@
             "Z": -574.548
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -60,8 +59,7 @@
             "Z": -574.548
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

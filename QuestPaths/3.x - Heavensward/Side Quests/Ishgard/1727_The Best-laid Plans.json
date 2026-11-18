@@ -14,11 +14,7 @@
             "Z": 16.189758
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -48,11 +44,7 @@
             "Z": -48.844177
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,11 +59,7 @@
             "Z": 16.189758
           },
           "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

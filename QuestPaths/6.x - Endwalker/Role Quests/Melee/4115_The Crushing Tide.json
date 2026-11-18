@@ -13,20 +13,8 @@
             "Y": 40,
             "Z": 66.300415
           },
-          "StopDistance": 5,
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,9 +29,7 @@
             "Z": 59.861084
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,7 +45,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -86,8 +71,7 @@
             "Z": -228.6565
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -102,8 +86,7 @@
             "Z": 59.861084
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -151,8 +134,7 @@
             "Z": 100.57214
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -168,10 +150,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "NextQuestId": 4116
         }
       ]

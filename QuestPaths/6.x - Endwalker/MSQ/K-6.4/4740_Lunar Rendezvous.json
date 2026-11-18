@@ -13,7 +13,6 @@
             "Y": -36.65,
             "Z": -204.97449
           },
-          "StopDistance": 5,
           "TerritoryId": 958,
           "InteractionType": "AcceptQuest"
         }
@@ -30,9 +29,7 @@
             "Z": 585.1072
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,8 +44,7 @@
             "Z": 407.27856
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,7 +60,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
           "TargetTerritoryId": 959,
           "SkipConditions": {
             "StepIf": {
@@ -78,15 +73,13 @@
             "Y": -56.63768,
             "Z": -464.9354
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
             }
-          },
-          "Fly": true
+          }
         },
         {
           "DataId": 1039686,
@@ -96,8 +89,7 @@
             "Z": -494.31604
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -112,8 +104,7 @@
             "Z": -620.3861
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -127,7 +118,6 @@
             "Y": -49.589592,
             "Z": -626.42865
           },
-          "StopDistance": 6,
           "TerritoryId": 959,
           "InteractionType": "Emote",
           "Emote": "rally",
@@ -140,7 +130,6 @@
             "Y": -49.589596,
             "Z": -622.3087
           },
-          "StopDistance": 6,
           "TerritoryId": 959,
           "InteractionType": "Emote",
           "Emote": "rally",
@@ -153,7 +142,6 @@
             "Y": -49.589596,
             "Z": -621.48474
           },
-          "StopDistance": 6,
           "TerritoryId": 959,
           "InteractionType": "Emote",
           "Emote": "rally",
@@ -166,7 +154,6 @@
             "Y": -49.589592,
             "Z": -614.8623
           },
-          "StopDistance": 6,
           "TerritoryId": 959,
           "InteractionType": "Emote",
           "Emote": "rally",
@@ -184,7 +171,6 @@
             "Y": -49.589592,
             "Z": -619.9894
           },
-          "StopDistance": 6,
           "TerritoryId": 959,
           "InteractionType": "CompleteQuest"
         }

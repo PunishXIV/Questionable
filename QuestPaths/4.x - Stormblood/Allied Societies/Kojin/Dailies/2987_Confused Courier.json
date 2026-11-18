@@ -14,11 +14,7 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,9 +29,7 @@
             "Z": -578.1796
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,9 +45,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "StopDistance": 1,
-          "RequiredQuestVariables": [null, null, [33, 34], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [33, 34], null, null, null]
         },
         {
           "DataId": 1024303,
@@ -64,9 +56,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "StopDistance": 1,
-          "RequiredQuestVariables": [null, null, [17, 35], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [17, 35], null, null, null]
         },
         {
           "DataId": 1024301,
@@ -77,8 +67,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, null, [18, 19], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [18, 19], null, null, null]
         }
       ]
     },
@@ -93,11 +82,7 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

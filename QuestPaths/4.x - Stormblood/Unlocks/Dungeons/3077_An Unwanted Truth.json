@@ -14,33 +14,13 @@
             "Z": 48.355713
           },
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 207.80292,
-            "Y": 21.783838,
-            "Z": 556.45264
-          },
-          "TerritoryId": 402,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Azys Lla - Helix",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                402
-              ]
-            }
-          }
-        },
         {
           "DataId": 1025167,
           "Position": {
@@ -70,25 +50,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Position": {
-            "X": 199.77194,
-            "Y": 18.458643,
-            "Z": 550.1916
-          },
-          "TerritoryId": 402,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Azys Lla - Helix",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                402
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1024718,
           "Position": {
             "X": 196.3988,
@@ -111,9 +72,7 @@
             "Z": 120.10376
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -128,9 +87,7 @@
             "Z": 120.10376
           },
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

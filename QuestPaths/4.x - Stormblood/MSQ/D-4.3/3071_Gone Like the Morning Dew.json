@@ -14,8 +14,7 @@
             "Z": 60.135742
           },
           "TerritoryId": 759,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Doman Enclave"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -58,8 +56,7 @@
             "Z": 349.3247
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -74,8 +71,7 @@
             "Z": 234.79053
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -90,8 +86,7 @@
             "Z": 126.32947
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -106,8 +101,7 @@
             "Z": 39.78015
           },
           "TerritoryId": 614,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

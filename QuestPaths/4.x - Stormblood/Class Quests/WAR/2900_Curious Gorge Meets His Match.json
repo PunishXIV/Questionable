@@ -14,9 +14,7 @@
             "Z": 74.47925
           },
           "TerritoryId": 137,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,8 +33,7 @@
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.1.0.1"
-          },
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+          }
         }
       ]
     },
@@ -51,7 +48,6 @@
             "Y": 7.999984,
             "Z": 686.427
           },
-          "StopDistance": 5,
           "TerritoryId": 135,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2901

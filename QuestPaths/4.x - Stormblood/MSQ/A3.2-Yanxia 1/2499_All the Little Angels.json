@@ -13,7 +13,6 @@
             "Y": 8.442365,
             "Z": 373.22034
           },
-          "StopDistance": 7,
           "TerritoryId": 614,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
             "Z": -146.41034
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - Namai"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -71,7 +69,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "Interact",
-          "Mount": true,
           "$": "2 0 0 0 0 192 -> 3 0 0 0 0 224",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },

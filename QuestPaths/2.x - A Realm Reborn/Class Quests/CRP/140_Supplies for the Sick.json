@@ -15,15 +15,7 @@
             "Z": 56.839844
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -46,7 +38,6 @@
           },
           "ItemId": 5383,
           "ItemCount": 36,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {

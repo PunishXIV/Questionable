@@ -14,8 +14,7 @@
             "Z": -204.85242
           },
           "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 817.0442
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -88,8 +86,7 @@
             "Z": -653.3456
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,7 +105,6 @@
           "KillEnemyDataIds": [
             4677
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [2,null,null,null,null,null]
         },
         {
@@ -134,8 +130,7 @@
             "Z": -688.53284
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -151,7 +146,6 @@
           },
           "TerritoryId": 397,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
           "NextQuestId": 1722
         }
       ]

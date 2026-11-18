@@ -15,10 +15,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] The Arcadion",
-            "[Solution Nine] Neon Stein"
-          ],
           "TargetTerritoryId": 1207
         },
         {
@@ -62,11 +58,7 @@
             "Z": -388.90674
           },
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Neon Stein",
-            "[Solution Nine] Resolution"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,7 +72,6 @@
             "Y": 9.519508,
             "Z": 51.80432
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
           "InteractionType": "CompleteQuest"
         }

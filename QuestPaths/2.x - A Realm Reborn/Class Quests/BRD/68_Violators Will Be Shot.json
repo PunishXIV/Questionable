@@ -14,13 +14,8 @@
             "Y": 0.9999819,
             "Z": 35.01941
           },
-          "StopDistance": 7,
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -52,10 +47,6 @@
           "TerritoryId": 133,
           "InteractionType": "Interact",
           "TargetTerritoryId": 152,
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Lancers' Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "East Shroud - Hawthorne Hut"
@@ -80,8 +71,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [
@@ -105,7 +94,6 @@
             "Z": 329.67102
           },
           "TerritoryId": 152,
-          "StopDistance": 20,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [
@@ -150,7 +138,6 @@
             "Z": 290.1808
           },
           "TerritoryId": 152,
-          "StopDistance": 20,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [
@@ -195,7 +182,6 @@
             "Z": 307.60657
           },
           "TerritoryId": 152,
-          "StopDistance": 20,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [
@@ -240,7 +226,6 @@
             "Z": 262.68408
           },
           "TerritoryId": 152,
-          "StopDistance": 20,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [
@@ -285,7 +270,6 @@
             "Z": 250.96509
           },
           "TerritoryId": 152,
-          "StopDistance": 20,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [
@@ -300,15 +284,6 @@
           ]
         },
         {
-          "Position": {
-            "X": -264.77237,
-            "Y": -3.2272563,
-            "Z": 240.00267
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2000946,
           "Position": {
             "X": -269.00134,
@@ -316,7 +291,6 @@
             "Z": 230.45691
           },
           "TerritoryId": 152,
-          "StopDistance": 20,
           "InteractionType": "Action",
           "Action": "Heavy Shot"
         }
@@ -333,11 +307,7 @@
             "Z": 29.06836
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -353,11 +323,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "SinglePlayerDuty",
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -375,11 +340,7 @@
             "Z": 29.06836
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

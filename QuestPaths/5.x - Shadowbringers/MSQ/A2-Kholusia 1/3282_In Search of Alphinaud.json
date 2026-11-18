@@ -15,11 +15,7 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 844,
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Dossal Gate"
-          ]
+          "TargetTerritoryId": 844
         },
         {
           "DataId": 1028923,
@@ -39,8 +35,7 @@
         {
           "TerritoryId": 819,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Crystarium] Temenos Rookery",
-          "AetheryteShortcut": "Crystarium"
+          "AethernetShard": "[Crystarium] Temenos Rookery"
         },
         {
           "DataId": 1027246,
@@ -72,13 +67,8 @@
             "Z": -175.88983
           },
           "TerritoryId": 819,
-          "StopDistance": 1,
           "InteractionType": "UnlockTaxiStand",
-          "TaxiStandId": 1179721,
-          "AethernetShortcut": [
-            "[Crystarium] Temenos Rookery",
-            "[Crystarium] The Amaro Launch"
-          ]
+          "TaxiStandId": 1179721
         },
         {
           "DataId": 1029806,
@@ -88,11 +78,7 @@
             "Z": -169.39038
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] Temenos Rookery",
-            "[Crystarium] The Amaro Launch"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

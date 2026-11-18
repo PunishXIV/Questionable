@@ -20,26 +20,13 @@
             "Z": -119.18823
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "TerritoryId": 819,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Crystarium] The Crystalline Mean",
-            "[Crystarium] Tessellation (Lakeland)"
-          ]
-        },
         {
           "Position": {
             "X": 55.589294,
@@ -70,16 +57,6 @@
           }
         },
         {
-          "Position": {
-            "X": 16.098186,
-            "Y": 2.2509232,
-            "Z": 671.5291
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2009924,
           "Position": {
             "X": 16.922241,
@@ -102,12 +79,7 @@
             "Z": -273.27386
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Cabinet of Curiosity"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -124,10 +96,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] The Cabinet of Curiosity",
-            "[Crystarium] The Crystalline Mean"
-          ],
           "$": "No next quest, since that requires turn-ins before being available"
         }
       ]

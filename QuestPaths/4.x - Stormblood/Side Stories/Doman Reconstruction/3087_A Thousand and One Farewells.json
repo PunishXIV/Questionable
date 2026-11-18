@@ -13,10 +13,8 @@
             "Y": 30.6188,
             "Z": -722.3774
           },
-          "StopDistance": 7,
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": -682.06305
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,24 +44,13 @@
             "Z": -763.42413
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": 51.799374,
-            "Y": 50,
-            "Z": -774.0067
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1018433,
           "Position": {
@@ -88,8 +74,7 @@
             "Z": -754.0246
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -105,7 +90,6 @@
           },
           "TerritoryId": 759,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Doman Enclave",
           "NextQuestId": 3141
         }
       ]

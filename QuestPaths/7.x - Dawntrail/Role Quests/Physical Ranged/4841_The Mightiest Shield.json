@@ -14,8 +14,7 @@
             "Z": 618.09717
           },
           "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 545.5862
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,12 +78,7 @@
             "Z": 203.38745
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

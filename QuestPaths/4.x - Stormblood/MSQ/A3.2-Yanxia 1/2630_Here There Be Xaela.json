@@ -14,8 +14,7 @@
             "Z": -76.951294
           },
           "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yanxia - Namai"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 0.25,
           "TargetTerritoryId": 613
         },
         {
@@ -42,9 +39,7 @@
             "Z": -453.4829
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 0.25
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,7 +54,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "TargetTerritoryId": 622
         }
       ]

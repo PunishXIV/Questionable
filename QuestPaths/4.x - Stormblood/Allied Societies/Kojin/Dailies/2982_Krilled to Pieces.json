@@ -14,11 +14,7 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,8 +29,7 @@
             "Z": -257.64862
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,7 +44,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {"StepIf": {"Diving": true}}
         },
         {
@@ -135,11 +129,7 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

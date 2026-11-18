@@ -14,13 +14,7 @@
             "Z": -69.0166
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [628]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

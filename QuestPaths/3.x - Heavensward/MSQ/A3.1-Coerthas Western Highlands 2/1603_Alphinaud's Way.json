@@ -15,11 +15,7 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
+          "TargetTerritoryId": 433
         },
         {
           "DataId": 1012579,
@@ -28,7 +24,6 @@
             "Y": 0.022254243,
             "Z": -4.409851
           },
-          "StopDistance": 5,
           "TerritoryId": 433,
           "InteractionType": "AcceptQuest"
         }
@@ -72,10 +67,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -96,7 +87,6 @@
             "Y": 24.378597,
             "Z": -6.6987915
           },
-          "StopDistance": 7,
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest"
         }

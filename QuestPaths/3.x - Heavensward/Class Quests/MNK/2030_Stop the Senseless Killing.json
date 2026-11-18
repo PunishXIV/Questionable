@@ -14,8 +14,7 @@
             "Z": -682.76495
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,9 +28,7 @@
             "Z": 352.47165
           },
           "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1014005,
@@ -41,8 +38,7 @@
             "Z": -652.39954
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,8 +57,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             4627
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -77,8 +72,7 @@
             "Z": -648.5847
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -127,8 +121,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
           "NextQuestId": 2031
         }
       ]

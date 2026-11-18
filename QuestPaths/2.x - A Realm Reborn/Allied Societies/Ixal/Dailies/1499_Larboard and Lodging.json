@@ -13,11 +13,8 @@
             "Y": -6.672044,
             "Z": 71.121284
           },
-          "StopDistance": 1,
           "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,8 +38,7 @@
               "ItemId": 2001392,
               "ItemCount": 5
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -57,8 +53,7 @@
             "Z": 246.1737
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -73,9 +68,6 @@
             "Z": 178.43575
           },
           "TerritoryId": 154,
-          "StopDistance": 1,
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "InteractionType": "Interact"
         }
       ]
@@ -101,12 +93,8 @@
             "Y": -6.672044,
             "Z": 71.121284
           },
-          "StopDistance": 1,
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

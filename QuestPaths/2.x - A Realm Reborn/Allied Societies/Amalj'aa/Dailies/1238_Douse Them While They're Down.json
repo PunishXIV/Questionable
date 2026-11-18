@@ -14,9 +14,7 @@
             "Z": -349.4469
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,7 +30,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -58,7 +55,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -84,7 +80,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -111,7 +106,6 @@
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "DelaySecondsAtStart": 3,
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -138,7 +132,6 @@
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "DelaySecondsAtStart": 3,
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -165,7 +158,6 @@
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "DelaySecondsAtStart": 3,
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -192,7 +184,6 @@
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "DelaySecondsAtStart": 3,
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatItemUse": {
             "Condition": "Incapacitated",
@@ -222,9 +213,7 @@
             "Z": -349.4469
           },
           "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

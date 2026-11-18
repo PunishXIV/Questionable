@@ -11,10 +11,6 @@
           "InteractionType": "EquipItem",
           "ItemId": 4550,
           "TerritoryId": 128,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -46,11 +42,7 @@
             "Z": -250.56848
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -65,8 +57,6 @@
           },
           "TerritoryId": 139,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
         },
         {
@@ -88,7 +78,6 @@
           },
           "TerritoryId": 180,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Outer La Noscea - Camp Overlook"}}
         },
         {
@@ -108,11 +97,8 @@
             "Y": 59.519302,
             "Z": -120.80934
           },
-          "StopDistance": 1,
-          "Fly": true,
           "TerritoryId": 180,
           "InteractionType": "Interact",
-          "IgnoreDistanceToObject": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
@@ -123,9 +109,7 @@
             "Z": -197.56392
           },
           "TerritoryId": 180,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
@@ -136,7 +120,6 @@
           },
           "TerritoryId": 180,
           "InteractionType": "Jump",
-          "StopDistance": 0.25,
           "JumpDestination": {
             "Position": {
               "X": -304.04395,
@@ -154,8 +137,6 @@
             "Y": 64.60336,
             "Z": -267.98495
           },
-          "StopDistance": 1,
-          "Fly": true,
           "TerritoryId": 180,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
@@ -167,8 +148,6 @@
             "Y": 65.166664,
             "Z": -312.24045
           },
-          "StopDistance": 1,
-          "Fly": true,
           "TerritoryId": 180,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
@@ -186,8 +165,7 @@
             "Z": -321.24823
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -203,10 +181,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "NextQuestId": 1099
         }
       ]

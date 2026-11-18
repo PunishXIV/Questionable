@@ -15,19 +15,7 @@
             "Z": 95.26196
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,8 +31,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Mount": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -58,27 +44,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -258.66748,
-            "Y": 26.617363,
-            "Z": -320.76898
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": 38.911945,
-            "Y": 23.511465,
-            "Z": -142.86761
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
         {
           "DataId": 2002447,
           "Position": {
@@ -97,22 +62,11 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
             }
           }
-        },
-        {
-          "Position": {
-            "X": 22.885742,
-            "Y": 17.930914,
-            "Z": -619.7939
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 2002548,
@@ -122,19 +76,7 @@
             "Z": -629.1448
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": 214.89189,
-            "Y": 29.38419,
-            "Z": 59.154907
-          },
-          "TerritoryId": 147,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2002448,
@@ -159,9 +101,7 @@
             "Z": -343.9536
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Mount": true,
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -176,8 +116,6 @@
             "Z": 716.39575
           },
           "TerritoryId": 135,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "Fly": true,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "CombatDelaySecondsAtStart": 0,
@@ -215,9 +153,7 @@
             "Z": -343.9536
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Mount": true,
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -233,10 +169,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
           "NextQuestId": 1066
         }
       ]

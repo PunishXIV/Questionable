@@ -13,7 +13,6 @@
             "Y": -35.708496,
             "Z": -400.50354
           },
-          "StopDistance": 5,
           "TerritoryId": 138,
           "InteractionType": "AcceptQuest"
         }
@@ -32,7 +31,6 @@
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "TargetTerritoryId": 198,
-          "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -66,7 +64,6 @@
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "TargetTerritoryId": 198,
-          "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -103,20 +100,6 @@
           "SkipConditions": {"StepIf": {"NotInTerritory": [198]}}
         },
         {
-          "Position": {
-            "X": 709.16064,
-            "Y": 66.00693,
-            "Z": -285.91016
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ]
-        },
-        {
           "DataId": 1008692,
           "Position": {
             "X": 712.8556,
@@ -139,7 +122,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
@@ -154,7 +136,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
@@ -181,22 +162,6 @@
           "TerritoryId": 135,
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179675
-        },
-        {
-          "Position": {
-            "X": 156.7082,
-            "Y": 8.973654,
-            "Z": 584.51135
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "Lower La Noscea - Moraby Drydocks"
-            }
-          }
         },
         {
           "DataId": 1008693,

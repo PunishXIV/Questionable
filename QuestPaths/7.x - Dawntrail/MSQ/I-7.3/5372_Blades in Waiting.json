@@ -29,8 +29,7 @@
             "Z": -353.1701
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,8 +44,7 @@
             "Z": -486.6255
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,8 +59,7 @@
             "Z": -203.35706
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,7 +73,6 @@
             "Y": 44.324562,
             "Z": -159.5636
           },
-          "StopDistance": 7,
           "TerritoryId": 1191,
           "InteractionType": "Interact"
         }
@@ -94,12 +90,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 1207,
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ]
+          "TargetTerritoryId": 1207
         },
         {
           "DataId": 1054616,

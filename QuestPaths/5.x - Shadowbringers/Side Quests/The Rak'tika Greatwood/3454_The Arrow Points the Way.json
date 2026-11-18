@@ -17,8 +17,7 @@
             "Z": 305.592
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,8 +31,7 @@
             "Z": 305.17218
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "Position": {
@@ -42,9 +40,7 @@
             "Z": 717.1751
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "None"
         },
         {
           "DataId": 2010658,
@@ -69,9 +65,7 @@
             "Z": 305.592
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

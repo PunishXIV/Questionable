@@ -13,18 +13,7 @@
               "Z": 135.63745
           },
           "TerritoryId": 135,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                135
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,8 +28,7 @@
               "Z": 112.962524
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,7 +44,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -78,8 +65,7 @@
               "Z": 488.1819
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -94,24 +80,13 @@
               "Z": 797.3906
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
       "Steps": [
-        {
-          "Position": {
-              "X": 134.80649,
-              "Y": 58.968193,
-              "Z": 935.78265
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1002445,
           "Position": {
@@ -120,8 +95,7 @@
               "Z": 937.43787
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -136,8 +110,7 @@
               "Z": 163.07312
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

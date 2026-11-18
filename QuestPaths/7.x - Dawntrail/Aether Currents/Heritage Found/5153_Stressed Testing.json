@@ -27,7 +27,6 @@
             "Y": 82.089386,
             "Z": -355.71875
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1191,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -47,7 +46,6 @@
             "Y": 82.042984,
             "Z": -355.7641
           },
-          "StopDistance": 7,
           "TerritoryId": 1191,
           "InteractionType": "Interact"
         }
@@ -64,8 +62,7 @@
             "Z": -601.15967
           },
           "TerritoryId": 1191,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

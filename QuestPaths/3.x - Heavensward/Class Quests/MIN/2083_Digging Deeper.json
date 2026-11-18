@@ -14,11 +14,7 @@
             "Z": 40.66516
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,18 +29,7 @@
             "Z": 161.76086
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [399]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,8 +45,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "StopDistance": 1,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -80,8 +63,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "StopDistance": 1,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -100,8 +81,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "StopDistance": 1,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -124,18 +103,7 @@
             "Z": 161.76086
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [399]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -168,18 +136,7 @@
             "Z": 161.76086
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [399]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -194,11 +151,7 @@
             "Z": 40.66516
           },
           "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

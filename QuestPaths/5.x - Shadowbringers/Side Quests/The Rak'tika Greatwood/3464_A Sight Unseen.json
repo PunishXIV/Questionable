@@ -17,10 +17,7 @@
             "Z": -223.617
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,9 +31,7 @@
             "Z": -32.69986
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "None"
         },
         {
           "DataId": 1029994,
@@ -60,9 +55,7 @@
             "Z": 27.860317
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "None"
         },
         {
           "Position": {
@@ -76,9 +69,7 @@
           "KillEnemyDataIds": [
             11120,
             11120
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
@@ -92,9 +83,7 @@
             "Z": -32.682693
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "None"
         },
         {
           "DataId": 1029994,
@@ -119,9 +108,7 @@
             "Z": 426.171
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -136,9 +123,7 @@
             "Z": -34.28705
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -153,9 +138,7 @@
             "Z": 37.827026
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -170,10 +153,7 @@
             "Z": -223.617
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

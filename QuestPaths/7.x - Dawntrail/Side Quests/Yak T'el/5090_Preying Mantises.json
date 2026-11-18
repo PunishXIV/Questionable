@@ -31,8 +31,7 @@
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             17268
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -47,8 +46,7 @@
             "Z": -476.61554
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

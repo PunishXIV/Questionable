@@ -13,7 +13,6 @@
             "Y": 0,
             "Z": -3.2807007
           },
-          "StopDistance": 5,
           "TerritoryId": 351,
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -55,8 +53,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },

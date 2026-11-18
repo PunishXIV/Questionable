@@ -14,8 +14,7 @@
             "Z": -31.174255
           },
           "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,25 +29,13 @@
             "Z": 301.9912
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Aporia"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 807.9048,
-            "Y": 152.2857,
-            "Z": -243.60707
-          },
-          "TerritoryId": 961,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
-        },
         {
           "DataId": 2012293,
           "Position": {
@@ -113,8 +100,7 @@
             "Z": 301.9912
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Aporia"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

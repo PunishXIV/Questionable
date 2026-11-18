@@ -36,13 +36,8 @@
             "Y": 40.250286,
             "Z": 74.54028
           },
-          "StopDistance": 5,
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -68,11 +63,7 @@
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.292"
-          },
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ]
+          }
         }
       ]
     },
@@ -86,13 +77,8 @@
             "Y": 40.250286,
             "Z": 74.54028
           },
-          "StopDistance": 5,
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

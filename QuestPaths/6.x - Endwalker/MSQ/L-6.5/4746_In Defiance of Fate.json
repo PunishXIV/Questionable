@@ -13,13 +13,8 @@
             "Y": 82.05,
             "Z": -5.661133
           },
-          "StopDistance": 7,
           "TerritoryId": 820,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,8 +29,7 @@
             "Z": 298.20703
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Slitherbough"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -98,8 +92,7 @@
             "Z": -224.5976
           },
           "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Twine"
+          "InteractionType": "Interact"
         }
       ]
     },

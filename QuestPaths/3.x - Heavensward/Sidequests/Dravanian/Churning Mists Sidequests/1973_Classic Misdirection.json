@@ -14,8 +14,7 @@
             "Z": 555.371
           },
           "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -50,7 +48,6 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -68,8 +65,7 @@
             "Z": 622.98
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -84,8 +80,7 @@
             "Z": 836.33167
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -119,7 +114,6 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -137,8 +131,7 @@
             "Z": -403.6164
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -153,8 +146,7 @@
             "Z": -387.0451
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -170,7 +162,6 @@
           },
           "TerritoryId": 401,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 1974
         }
       ]

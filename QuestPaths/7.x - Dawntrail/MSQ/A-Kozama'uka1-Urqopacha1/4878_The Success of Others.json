@@ -57,28 +57,6 @@
           "AethernetShard": "[Tuliyollal] Wachumeqimeqi"
         },
         {
-          "Position": {
-            "X": -130.34163,
-            "Y": -14.999287,
-            "Z": 198.40685
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Tuliyollal] Wachumeqimeqi",
-            "[Tuliyollal] The For'ard Cabins"
-          ]
-        },
-        {
-          "Position": {
-            "X": -122.40268,
-            "Y": -19.754322,
-            "Z": 202.20439
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1046763,
           "Position": {
             "X": -114.64105,
@@ -100,7 +78,6 @@
             "Y": -19.725424,
             "Z": 203.72314
           },
-          "StopDistance": 7,
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest"
         }

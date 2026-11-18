@@ -30,10 +30,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Alchemists' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -72,8 +68,7 @@
             "Notes": [
               "(Phase 1) Healer NPCs are only killed after the boss dies - allied NPCs will kill them eventually; all NPCs need to be killed for the duty to complete"
             ]
-          },
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          }
         }
       ]
     },
@@ -92,10 +87,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

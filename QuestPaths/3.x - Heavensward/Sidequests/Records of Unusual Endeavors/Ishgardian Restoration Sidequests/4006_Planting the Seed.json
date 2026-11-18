@@ -7,32 +7,14 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
           "DataId": 2011341,
           "Position": {
             "X": 14.1741,
             "Y": -19,
             "Z": -45.6443
           },
-          "StopDistance": 2,
           "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Firmament] The Mendicant's Court","[Firmament] The Mattock"]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -47,8 +29,7 @@
             "Z": -94.56018
           },
           "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": ["[Firmament] The Mattock","[Firmament] Western Risensong Quarter"]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,7 +43,6 @@
             "Y": 10,
             "Z": -165.176
           },
-          "StopDistance": 2,
           "TerritoryId": 886,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
@@ -89,7 +69,6 @@
             "Y": -8.5,
             "Z": -94.533
           },
-          "StopDistance": 2,
           "TerritoryId": 886,
           "InteractionType": "CompleteQuest"
         }

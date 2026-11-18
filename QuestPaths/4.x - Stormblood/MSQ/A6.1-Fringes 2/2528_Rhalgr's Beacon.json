@@ -13,10 +13,8 @@
             "Y": 130,
             "Z": -506.95053
           },
-          "StopDistance": 5,
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,11 +29,7 @@
             "Z": -91.38635
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -88,11 +82,7 @@
             "Z": -91.38635
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -111,11 +101,7 @@
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.1.0.1"
-          },
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach",
-            "[Rhalgr's Reach] Fringes Gate"
-          ]
+          }
         }
       ]
     },

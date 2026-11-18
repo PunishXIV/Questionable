@@ -27,7 +27,6 @@
             "Y": -87.26642,
             "Z": -834.3175
           },
-          "StopDistance": 4,
           "TerritoryId": 401,
           "InteractionType": "Interact",
           "TargetTerritoryId": 567
@@ -92,9 +91,7 @@
             "Z": -869.5049
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -160,7 +157,6 @@
             "Y": -15.36437,
             "Z": 43.198242
           },
-          "StopDistance": 7,
           "TerritoryId": 567,
           "InteractionType": "Interact"
         }
@@ -189,7 +185,6 @@
             "Y": -15.36437,
             "Z": 43.198242
           },
-          "StopDistance": 5,
           "TerritoryId": 567,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2286

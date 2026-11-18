@@ -54,7 +54,6 @@
             "Y": 40.021717,
             "Z": -293.11053
           },
-          "StopDistance": 1,
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
@@ -66,7 +65,6 @@
             "Y": 42.70318,
             "Z": -318.90863
           },
-          "StopDistance": 1,
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
@@ -78,7 +76,6 @@
             "Y": 40.894764,
             "Z": -325.42456
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
@@ -89,7 +86,6 @@
             "Y": 41.341557,
             "Z": -311.63504
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -103,22 +99,12 @@
           "CombatDelaySecondsAtStart": 2
         },
         {
-          "Position": {
-            "X": -539.79065,
-            "Y": 42.696747,
-            "Z": -313.67438
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 17678,
           "Position": {
             "X": -549.0783,
             "Y": 38.5679,
             "Z": -342.1571
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
@@ -130,7 +116,6 @@
             "Y": 35.95048,
             "Z": -376.88058
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
@@ -142,7 +127,6 @@
             "Y": 30.139477,
             "Z": -387.31094
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
@@ -154,7 +138,6 @@
             "Y": 17.933014,
             "Z": -420.98196
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
@@ -166,7 +149,6 @@
             "Y": 10.040784,
             "Z": -443.45764
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
@@ -178,7 +160,6 @@
             "Y": 1.6734335,
             "Z": -468.76624
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
@@ -190,7 +171,6 @@
             "Y": -2.4803436,
             "Z": -489.28055
           },
-          "StopDistance": 1,
           "TerritoryId": 1191,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5

@@ -14,8 +14,7 @@
             "Z": -640.71106
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -634.8516
           },
           "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

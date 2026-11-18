@@ -13,9 +13,7 @@
             "Z": -147.282
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] Bokairo Inn"]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +28,7 @@
             "Z": -50.248
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": ["[Kugane] Bokairo Inn", "[Kugane] Shiokaze Hostelry"]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +43,7 @@
             "Z": -147.282
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": ["[Kugane] Shiokaze Hostelry", "[Kugane] Bokairo Inn"]
+          "InteractionType": "Interact"
         }
       ]
     },

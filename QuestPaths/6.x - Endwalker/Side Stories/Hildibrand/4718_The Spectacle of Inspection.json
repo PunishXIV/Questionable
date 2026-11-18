@@ -13,7 +13,6 @@
             "Y": -5.8859587E-07,
             "Z": -2.2125854
           },
-          "StopDistance": 5,
           "TerritoryId": 963,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
@@ -37,8 +36,7 @@
             "Z": -250.5379
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,7 +63,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -81,8 +78,7 @@
             "Z": -256.45844
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,7 +92,6 @@
             "Y": 3.1168795,
             "Z": -257.64862
           },
-          "StopDistance": 5,
           "TerritoryId": 957,
           "InteractionType": "Interact"
         }
@@ -114,7 +109,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -137,7 +131,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -173,7 +166,6 @@
             "Y": 13.300535,
             "Z": 242.48108
           },
-          "StopDistance": 7,
           "TerritoryId": 957,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4719

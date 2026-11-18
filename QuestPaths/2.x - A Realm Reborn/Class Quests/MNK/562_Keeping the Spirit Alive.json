@@ -15,8 +15,7 @@
             "Z": -42.404846
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -46,11 +45,8 @@
             "Z": 204.89229
           },
           "TerritoryId": 145,
-          "StopDistance": 1,
           "InteractionType": "Action",
-          "Action": "Bootshine",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "Action": "Bootshine"
         },
         {
           "Position": {
@@ -82,8 +78,7 @@
           },
           "TerritoryId": 145,
           "InteractionType": "Action",
-          "Action": "Bootshine",
-          "Mount": true
+          "Action": "Bootshine"
         },
         {
           "Position": {
@@ -111,8 +106,7 @@
           },
           "TerritoryId": 145,
           "InteractionType": "Action",
-          "Action": "Bootshine",
-          "Mount": true
+          "Action": "Bootshine"
         },
         {
           "Position": {
@@ -144,8 +138,7 @@
             "Z": -42.404846
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "Interact"
         }
       ]
     },

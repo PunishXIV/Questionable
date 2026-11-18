@@ -15,18 +15,7 @@
             "Z": -255.8786
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -50,12 +39,7 @@
             {"Low": 3},
           null,null,null,null,null]
             }
-          ],
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -70,11 +54,7 @@
             "Z": -255.8786
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,18 +73,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2
-          ],
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "Middle La Noscea - Summerford Farms"
-            }
-          },
-          "Fly": true
+          ]
         }
       ]
     },
@@ -120,10 +89,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "NextQuestId": 316
         }
       ]

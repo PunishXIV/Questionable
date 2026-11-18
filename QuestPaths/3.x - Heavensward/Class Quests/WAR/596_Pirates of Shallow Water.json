@@ -14,8 +14,7 @@
             "Z": 18.814331
           },
           "TerritoryId": 139,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +29,7 @@
             "Z": 332.69226
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -78,8 +75,7 @@
           "KillEnemyDataIds": [
             4361,
             4362
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -114,8 +110,7 @@
           "KillEnemyDataIds": [
             4361,
             4362
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -150,8 +145,7 @@
           "KillEnemyDataIds": [
             4402,
             4403
-          ],
-          "Fly": true
+          ]
         }
       ]
     },

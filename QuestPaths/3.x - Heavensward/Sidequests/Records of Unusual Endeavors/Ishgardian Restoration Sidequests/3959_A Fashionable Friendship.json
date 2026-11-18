@@ -7,22 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1032813,
           "Position": {
             "X": 117.809,
@@ -30,11 +14,7 @@
             "Z": 130.976
           },
           "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The New Nest"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -56,11 +36,7 @@
               "Z": 47.033604
             },
             "TerritoryId": 886
-          },
-          "AethernetShortcut": [
-            "[Firmament] The New Nest",
-            "[Firmament] Featherfall"
-          ]
+          }
         },
         {
           "DataId": 1034092,
@@ -103,8 +79,7 @@
             "Z": 136.98022
           },
           "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": ["[Firmament] The Mendicant's Court","[Firmament] The New Nest"]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -126,11 +101,7 @@
               "Z": 47.033604
             },
             "TerritoryId": 886
-          },
-          "AethernetShortcut": [
-            "[Firmament] The New Nest",
-            "[Firmament] Featherfall"
-          ]
+          }
         },
         {
           "DataId": 1034094,

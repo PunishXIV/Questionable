@@ -14,13 +14,7 @@
             "Z": 3.5552979
           },
           "TerritoryId": 1185,
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Dirigible Landing"
-          ],
-          "InteractionType": "AcceptQuest",
-          "SkipConditions": {"AethernetShortcutIf": {"InSameTerritory": true}}
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,11 +29,7 @@
             "Z": 93.12573
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Dirigible Landing",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,11 +66,7 @@
             "Z": 3.5552979
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Bayside Bevy Marketplace",
-            "[Tuliyollal] Dirigible Landing"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

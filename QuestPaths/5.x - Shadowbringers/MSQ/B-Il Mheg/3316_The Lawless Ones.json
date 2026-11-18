@@ -28,16 +28,6 @@
             "Z": -842.54065
           },
           "TerritoryId": 816,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 33.10641,
-            "Y": 106.830055,
-            "Z": -842.54065
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 816,
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -46,8 +36,7 @@
               "Z": -844.172
             },
             "DelaySeconds": 0.25
-          },
-          "Mount": false
+          }
         },
         {
           "Position": {
@@ -118,8 +107,7 @@
             "Z": -859.4154
           },
           "TerritoryId": 816,
-          "InteractionType": "WalkTo",
-          "Mount": true
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 816,
@@ -264,7 +252,6 @@
             "Y": 109.112404,
             "Z": -154.17346
           },
-          "StopDistance": 0.25,
           "TerritoryId": 816,
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
@@ -276,10 +263,8 @@
             "Y": 109.112404,
             "Z": -154.17346
           },
-          "StopDistance": 0.25,
           "TerritoryId": 816,
           "InteractionType": "Jump",
-          "Mount": false,
           "JumpDestination": {
             "Position": {
               "X": 536.68494,
@@ -307,7 +292,6 @@
             "Y": 111.31597,
             "Z": -155.06671
           },
-          "StopDistance": 0.5,
           "TerritoryId": 816,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -337,7 +321,6 @@
             "Y": 113.00041,
             "Z": -155.02728
           },
-          "StopDistance": 0.5,
           "TerritoryId": 816,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -367,7 +350,6 @@
             "Y": 114.6852,
             "Z": -154.211
           },
-          "StopDistance": 0.5,
           "TerritoryId": 816,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -440,8 +422,7 @@
             "Z": -838.49854
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Pla Enni"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

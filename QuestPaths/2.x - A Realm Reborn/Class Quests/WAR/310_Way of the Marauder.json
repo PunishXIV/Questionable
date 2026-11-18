@@ -15,10 +15,7 @@
             "Z": -245.80762
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Marauders' Guild"],
-          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [128,129]}}
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

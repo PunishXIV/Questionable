@@ -14,8 +14,7 @@
             "Z": 5.416931
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,7 @@
             "Z": -215.16754
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,11 +44,7 @@
             "Z": -117.265625
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Botanists' Guild",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,7 +80,6 @@
             "Y": 15.69998,
             "Z": -64.83563
           },
-          "StopDistance": 5,
           "TerritoryId": 133,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -154,7 +144,6 @@
           "TerritoryId": 132,
           "InteractionType": "Interact",
           "TargetTerritoryId": 148,
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NotInTerritory": [
@@ -169,18 +158,12 @@
             "Y": 63.686344,
             "Z": -206.74146
           },
-          "StopDistance": 0.5,
           "TerritoryId": 148,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             2863
-          ],
-          "AethernetShortcut": [
-            "[Gridania] Leatherworkers' Guild & Shaded Bower",
-            "[Gridania] White Wolf Gate (Central Shroud)"
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -195,8 +178,7 @@
             "Z": 2.090454
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -212,10 +194,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Airship Landing"
-          ],
           "NextQuestId": 36
         }
       ]

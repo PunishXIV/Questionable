@@ -14,12 +14,7 @@
             "Z": -130.1748
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,11 +29,7 @@
             "Z": -65.53754
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Crystalline Mean",
-            "[Crystarium] Temenos Rookery"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -74,9 +65,7 @@
             "Z": 224.17017
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -106,11 +95,7 @@
             "Z": -65.53754
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] Temenos Rookery"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -125,11 +110,7 @@
             "Z": -130.1748
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] Temenos Rookery",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

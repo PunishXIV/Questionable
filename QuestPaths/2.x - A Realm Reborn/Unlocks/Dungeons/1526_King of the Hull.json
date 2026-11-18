@@ -14,10 +14,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona"
+          "$": "Rising Stones Door"
         },
         {
           "DataId": 1006975,
@@ -27,8 +24,7 @@
             "Z": -635.46204
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "Mount": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,36 +39,13 @@
             "Z": -40.08551
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 274.4692,
-            "Y": 4.372302,
-            "Z": 727.8615
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
-        },
         {
           "DataId": 1009382,
           "Position": {
@@ -111,17 +84,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          },
           "NextQuestId": 2248
         }
       ]

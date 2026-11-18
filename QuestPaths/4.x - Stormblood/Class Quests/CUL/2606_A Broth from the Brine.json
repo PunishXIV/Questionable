@@ -14,8 +14,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -38,8 +36,7 @@
             "Z": -822.07983
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -54,11 +51,7 @@
             "Z": -151.23218
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -88,11 +81,7 @@
             "Z": 132.34143
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Culinarians' Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -107,8 +96,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -131,8 +118,7 @@
             "Z": -822.07983
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "Interact"
         }
       ]
     },

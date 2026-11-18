@@ -14,8 +14,7 @@
             "Z": -17.746277
           },
           "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 28.67163
           },
           "TerritoryId": 478,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,12 +43,7 @@
             "Z": -191.78416
           },
           "TerritoryId": 399,
-          "Fly": true,
           "InteractionType": "Combat",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
             {
@@ -73,10 +66,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Action",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
           "Action": "Diagnosis",
           "Comment": "This might get stuck if we are high level and killed the mob too fast?, we ended up locking ourselves on eukrasia aura, Diagnosis can't be casted!"
         }
@@ -92,12 +81,7 @@
             "Z": 52.931572
           },
           "TerritoryId": 399,
-          "Fly": true,
           "InteractionType": "Combat",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
             {
@@ -119,12 +103,7 @@
             "Z": 47.53174
           },
           "TerritoryId": 399,
-          "Fly": false,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -139,8 +118,7 @@
             "Z": -17.746277
           },
           "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -13,7 +13,6 @@
           },
           "TerritoryId": 956,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {"StepIf": {"InTerritory": [1158]}}
         },
         {
@@ -62,7 +61,6 @@
             "Y": 197.55505,
             "Z": 509.72766
           },
-          "StopDistance": 5,
           "TerritoryId": 1079,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4760

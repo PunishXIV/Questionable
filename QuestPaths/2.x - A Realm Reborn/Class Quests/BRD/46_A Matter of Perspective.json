@@ -14,13 +14,8 @@
             "Y": 0.9999819,
             "Z": 35.01941
           },
-          "StopDistance": 7,
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,7 +30,6 @@
             "Z": 79.087524
           },
           "TerritoryId": 132,
-          "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -62,7 +56,6 @@
             "Z": 54.306763
           },
           "TerritoryId": 132,
-          "StopDistance": 20,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -89,7 +82,6 @@
             "Z": 10.879639
           },
           "TerritoryId": 132,
-          "StopDistance": 20,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,2]
@@ -116,7 +108,6 @@
             "Z": 30.655273
           },
           "TerritoryId": 132,
-          "StopDistance": 20,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
@@ -143,7 +134,6 @@
             "Z": 70.63391
           },
           "TerritoryId": 132,
-          "StopDistance": 20,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
@@ -170,7 +160,6 @@
             "Z": 96.97107
           },
           "TerritoryId": 132,
-          "StopDistance": 20,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -188,11 +177,7 @@
             "Z": 35.01941
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -205,12 +190,7 @@
             "Y": -21.916101,
             "Z": 210.33368
           },
-          "StopDistance": 0.5,
           "TerritoryId": 154,
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -220,7 +200,6 @@
               "$": "Slay opo-opos."
             }
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             {"Low": 8},
           null,null,null,null,null]
@@ -231,7 +210,6 @@
             "Y": -11.9244995,
             "Z": 40.554157
           },
-          "StopDistance": 0.5,
           "TerritoryId": 154,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
@@ -242,7 +220,6 @@
               "$": "Slay microchus."
             }
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             {"High": 8},
@@ -261,13 +238,8 @@
             "Y": 0.9999819,
             "Z": 35.01941
           },
-          "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ],
           "NextQuestId": 134
         }
       ]

@@ -13,14 +13,8 @@
             "Y": 15.000004,
             "Z": 42.557373
           },
-          "StopDistance": 7,
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Kogane Dori Markets",
-            "[Kugane] Kogane Dori Markets"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,7 +39,6 @@
             "Y": 79.05602,
             "Z": 45.303955
           },
-          "StopDistance": 7,
           "TerritoryId": 628,
           "InteractionType": "Interact",
           "TargetTerritoryId": 735,
@@ -72,7 +65,6 @@
             "Y": 0.05124536,
             "Z": -3.768982
           },
-          "StopDistance": 7,
           "TerritoryId": 735,
           "InteractionType": "Interact"
         }
@@ -88,7 +80,6 @@
             "Y": 0.046870887,
             "Z": -3.7080078
           },
-          "StopDistance": 7,
           "TerritoryId": 735,
           "InteractionType": "Interact"
         }
@@ -105,12 +96,7 @@
             "Z": -67.826416
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Shiokaze Hostelry"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -123,15 +109,12 @@
             "Y": 9.982385,
             "Z": 551.7814
           },
-          "StopDistance": 0.5,
           "TerritoryId": 614,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             8801
-          ],
-          "AetheryteShortcut": "Yanxia - Namai",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -160,15 +143,9 @@
             "Y": 79.05602,
             "Z": 45.303955
           },
-          "StopDistance": 7,
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 735,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Airship Landing"
-          ]
+          "TargetTerritoryId": 735
         }
       ]
     },

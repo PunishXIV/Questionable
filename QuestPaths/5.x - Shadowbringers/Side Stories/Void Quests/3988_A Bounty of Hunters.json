@@ -29,8 +29,7 @@
             "Z": -312.70312
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,12 +90,7 @@
             "Z": 201.9226
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

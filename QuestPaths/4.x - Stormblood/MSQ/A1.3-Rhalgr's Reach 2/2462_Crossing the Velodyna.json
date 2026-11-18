@@ -14,8 +14,7 @@
             "Z": -91.50836
           },
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,12 +29,7 @@
             "Z": -80.27777
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "StopDistance": 2,
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach",
-            "[Rhalgr's Reach] Western Rhalgr's Reach"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -58,23 +52,12 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Position": {
-            "X": -611.21484,
-            "Y": 130,
-            "Z": -503.3509
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
-        },
-        {
           "DataId": 1020304,
           "Position": {
             "X": -606.7445,
             "Y": 130,
             "Z": -506.95053
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
           "InteractionType": "Interact"
         }
@@ -90,7 +73,6 @@
             "Y": 130,
             "Z": -501.12158
           },
-          "StopDistance": 5,
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest"
         }

@@ -14,13 +14,8 @@
             "Y": 0.9999819,
             "Z": 35.01941
           },
-          "StopDistance": 7,
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,17 +38,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": -87.448326,
-            "Y": -3.8114734,
-            "Z": -77.68485
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true
-        },
-        {
           "DataId": 2001173,
           "Position": {
             "X": -88.24298,
@@ -61,7 +45,6 @@
             "Z": -88.24298
           },
           "TerritoryId": 148,
-          "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,2]
@@ -88,7 +71,6 @@
             "Z": -51.07196
           },
           "TerritoryId": 148,
-          "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,4]
@@ -115,7 +97,6 @@
             "Z": -58.884644
           },
           "TerritoryId": 148,
-          "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
@@ -142,7 +123,6 @@
             "Z": -138.41461
           },
           "TerritoryId": 148,
-          "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
@@ -169,19 +149,9 @@
             "Z": -182.39111
           },
           "TerritoryId": 148,
-          "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
-        },
-        {
-          "Position": {
-            "X": -74.71171,
-            "Y": -4,
-            "Z": -190.44055
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2000937,
@@ -191,7 +161,6 @@
             "Z": -196.49048
           },
           "TerritoryId": 148,
-          "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot"
         }
@@ -208,11 +177,7 @@
             "Z": 28.580078
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -223,10 +188,6 @@
           "InteractionType": "None",
           "TerritoryId": 132,
           "TargetTerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Lancers' Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "NotInTerritory": [
@@ -256,8 +217,7 @@
         {
           "TerritoryId": 152,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "Aetheryte": "East Shroud - Hawthorne Hut"
         },
         {
           "Position": {
@@ -265,7 +225,6 @@
             "Y": 2.9039853,
             "Z": 239.26413
           },
-          "StopDistance": 0.5,
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
@@ -288,14 +247,7 @@
             {"Low": 8},
           null,null,null,null,null]
             }
-          ],
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "East Shroud - Hawthorne Hut"
-            }
-          }
+          ]
         }
       ]
     },
@@ -310,11 +262,7 @@
             "Z": 28.580078
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -328,7 +276,6 @@
             "Y": 0.9999819,
             "Z": 35.01941
           },
-          "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [

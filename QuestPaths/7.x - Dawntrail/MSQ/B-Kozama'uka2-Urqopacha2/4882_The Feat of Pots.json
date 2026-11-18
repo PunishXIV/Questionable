@@ -13,7 +13,6 @@
             "Y": 122.950645,
             "Z": 345.6626
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "AcceptQuest"
         }
@@ -44,7 +43,6 @@
             "Y": -17.964504,
             "Z": 166.55212
           },
-          "StopDistance": 5,
           "TerritoryId": 1185,
           "InteractionType": "Interact"
         }
@@ -76,11 +74,7 @@
             "Z": 184.6189
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Wachumeqimeqi",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -95,11 +89,7 @@
             "Z": 13.199036
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Bayside Bevy Marketplace",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

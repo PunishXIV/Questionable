@@ -44,11 +44,7 @@
             "Z": -65.0188
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Jeweled Crozier"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,11 +59,7 @@
             "Z": 31.296265
           },
           "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,8 +14,7 @@
             "Z": 3.463745
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -28,14 +27,12 @@
             "Y": 40.91181,
             "Z": -451.32486
           },
-          "StopDistance": 0.5,
           "TerritoryId": 957,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             14116
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -65,9 +62,7 @@
             "Z": 3.463745
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Great Work",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

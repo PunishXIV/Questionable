@@ -15,11 +15,7 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 844,
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Dossal Gate"
-          ]
+          "TargetTerritoryId": 844
         },
         {
           "DataId": 1028923,
@@ -28,7 +24,6 @@
             "Y": -1.0530548E-13,
             "Z": -6.0273438
           },
-          "StopDistance": 7,
           "TerritoryId": 844,
           "InteractionType": "AcceptQuest"
         }
@@ -45,14 +40,8 @@
             "Z": -175.88983
           },
           "TerritoryId": 819,
-          "StopDistance": 1,
           "InteractionType": "UnlockTaxiStand",
-          "TaxiStandId": 1179721,
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Amaro Launch"
-          ]
+          "TaxiStandId": 1179721
         },
         {
           "DataId": 1027854,
@@ -62,11 +51,7 @@
             "Z": -160.23505
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Amaro Launch"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -98,7 +83,6 @@
             "Y": -48.533764,
             "Z": -652.8573
           },
-          "StopDistance": 7,
           "TerritoryId": 815,
           "InteractionType": "Interact"
         }

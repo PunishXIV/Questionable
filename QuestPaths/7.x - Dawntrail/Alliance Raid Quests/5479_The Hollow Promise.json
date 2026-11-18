@@ -14,12 +14,7 @@
             "Z": -351.9494
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Brightploom Post"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,9 +29,7 @@
             "Z": -658.2894
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,9 +44,7 @@
             "Z": 473.10596
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,7 +60,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook",
           "TargetTerritoryId": 1189
         },
         {
@@ -82,7 +72,6 @@
           "TerritoryId": 1189,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1265,
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "InTerritory": [

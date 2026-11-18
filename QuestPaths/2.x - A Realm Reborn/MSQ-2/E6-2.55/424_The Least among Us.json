@@ -14,8 +14,7 @@
             "Z": 360.06702
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +29,7 @@
             "Z": 105.63818
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Quarrymill"
+          "InteractionType": "Interact"
         }
       ]
     },

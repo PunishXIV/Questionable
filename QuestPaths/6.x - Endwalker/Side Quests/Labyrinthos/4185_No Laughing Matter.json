@@ -18,8 +18,6 @@
           },
           "TerritoryId": 956,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -41,8 +39,7 @@
             "Z": -816.74
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -57,9 +54,7 @@
             "Z": -735.714
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

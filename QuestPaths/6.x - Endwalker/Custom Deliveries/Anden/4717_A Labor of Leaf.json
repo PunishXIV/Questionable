@@ -12,10 +12,8 @@
             "Y": 51.05899,
             "Z": 622.2477
           },
-          "StopDistance": 5,
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +28,7 @@
             "Z": 603.6621
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

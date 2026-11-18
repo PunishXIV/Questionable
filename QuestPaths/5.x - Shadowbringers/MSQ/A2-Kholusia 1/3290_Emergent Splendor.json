@@ -59,25 +59,14 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Position": {
-            "X": 741.7203,
-            "Y": 28.740948,
-            "Z": 265.54324
-          },
-          "TerritoryId": 814,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1029841,
           "Position": {
             "X": 800.0458,
             "Y": 1.4174876,
             "Z": 255.9701
           },
-          "StopDistance": 7,
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Stilltide"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,10 +82,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] The Dossal Gate"
-          ],
           "TargetTerritoryId": 844
         },
         {

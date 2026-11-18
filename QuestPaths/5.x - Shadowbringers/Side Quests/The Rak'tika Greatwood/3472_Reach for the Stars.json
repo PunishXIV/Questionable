@@ -17,10 +17,7 @@
             "Z": -193.072
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,8 +37,7 @@
           "ItemId": 2002580,
           "KillEnemyDataIds": [
             11123
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 11122,
@@ -56,24 +52,13 @@
           "ItemId": 2002580,
           "KillEnemyDataIds": [
             11123
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 447.179,
-            "Y": 9.284755,
-            "Z": -193.96558
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1027712,
           "Position": {
@@ -82,8 +67,7 @@
             "Z": -193.07245
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

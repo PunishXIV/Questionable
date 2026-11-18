@@ -14,8 +14,7 @@
             "Z": 111.436646
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 264.05737
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": 74.32666
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -119,7 +116,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "NextQuestId": 4828
         }
       ]

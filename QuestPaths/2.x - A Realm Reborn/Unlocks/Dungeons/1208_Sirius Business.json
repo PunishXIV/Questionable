@@ -14,34 +14,13 @@
             "Z": 262.92822
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 296.91254,
-            "Y": -40.425003,
-            "Z": 380.83066
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                138
-              ]
-            }
-          }
-        },
         {
           "DataId": 1005398,
           "Position": {
@@ -50,8 +29,7 @@
             "Z": 382.52844
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": false
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,15 +47,7 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 138,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                138
-              ]
-            }
-          }
+          "TargetTerritoryId": 138
         },
         {
           "DataId": 1006503,
@@ -87,8 +57,7 @@
             "Z": 461.72266
           },
           "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -28,7 +28,6 @@
             "Y": 24.386719,
             "Z": -2.3347168
           },
-          "StopDistance": 7,
           "TerritoryId": 418,
           "InteractionType": "Interact"
         }
@@ -45,10 +44,7 @@
             "Z": 53.72693
           },
           "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 9,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -13,8 +13,7 @@
             "Z": 221.75928
           },
           "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -28,18 +27,7 @@
             "Z": -33.4333
           },
           "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -286.51263,
-            "Y": 12.089579,
-            "Z": -33.4333
-          },
-          "TerritoryId": 152,
-          "InteractionType": "None",
-          "Land": true
+          "InteractionType": "None"
         },
         {
           "DataId": 2264,
@@ -78,8 +66,7 @@
             "Z": 221.75928
           },
           "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

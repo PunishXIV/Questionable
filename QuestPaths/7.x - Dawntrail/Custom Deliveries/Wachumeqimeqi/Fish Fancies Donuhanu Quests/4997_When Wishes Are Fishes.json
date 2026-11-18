@@ -14,11 +14,7 @@
             "Z": 12.218
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,12 +29,7 @@
             "Z": 90.34863
           },
           "TerritoryId": 1185,
-          "StopDistance": 5,
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": [
-            "[Tuliyollal] Wachumeqimeqi",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ],
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
             "Key": 263203
@@ -61,12 +52,7 @@
             "Z": 50.6654
           },
           "TerritoryId": 1185,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "AethernetShortcut": [
-            "[Tuliyollal] Bayside Bevy Marketplace",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 1185,

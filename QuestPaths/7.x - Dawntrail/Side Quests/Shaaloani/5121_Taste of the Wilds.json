@@ -14,8 +14,7 @@
             "Z": 503.04407
           },
           "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,7 +29,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -71,7 +69,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -87,8 +84,7 @@
             "Z": 503.04407
           },
           "TerritoryId": 1190,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

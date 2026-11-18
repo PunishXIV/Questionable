@@ -14,32 +14,13 @@
             "Z": 22.9953
           },
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -334.08136,
-            "Y": 40.34739,
-            "Z": 18.237068
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -324.42703,
-            "Y": -22.971008,
-            "Z": 51.45664
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1013406,
           "Position": {
@@ -147,8 +128,7 @@
             "Z": 22.9953
           },
           "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -45,9 +45,7 @@
             "Z": -18.509216
           },
           "TerritoryId": 145,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

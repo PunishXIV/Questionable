@@ -15,18 +15,7 @@
             "Z": -246.87573
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,8 +30,7 @@
             "Z": 429.22095
           },
           "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,8 +49,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             7228
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -132,10 +119,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "NextQuestId": 2627
         }
       ]

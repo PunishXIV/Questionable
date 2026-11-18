@@ -73,11 +73,7 @@
             "Z": 138.47559
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -120,7 +116,6 @@
             "Y": 1.7160122,
             "Z": 249.7749
           },
-          "StopDistance": 7,
           "TerritoryId": 819,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -145,10 +140,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Dossal Gate"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

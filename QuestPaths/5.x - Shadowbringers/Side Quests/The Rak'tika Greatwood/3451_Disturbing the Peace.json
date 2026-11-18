@@ -17,8 +17,7 @@
             "Z": 229.641
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +30,6 @@
             "Y": 28.3467,
             "Z": -97.5255
           },
-          "StopDistance": 0.5,
           "TerritoryId": 817,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -39,8 +37,7 @@
             11091,
             11091,
             11117
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -55,9 +52,7 @@
             "Z": 229.641
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,10 +15,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: issuer 1047109 (Xeerol Ja)"
         }
       ]
@@ -35,8 +31,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
           "$": "auto: todo location -> 1047112 (Halnaruk)"
         }
       ]
@@ -94,8 +88,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
           "$": "auto: todo location -> 1047131 (Xeerol Ja)"
         }
       ]
@@ -112,8 +104,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
           "$": "auto: todo location -> 1047113 (Halnaruk)"
         }
       ]
@@ -130,8 +120,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
           "$": "auto: todo location -> 1047167 (Halnaruk)"
         }
       ]
@@ -159,7 +147,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
           "$": "auto: todo location -> 1047115 (Xeerol Ja); npc trade"
         },
         {
@@ -188,10 +175,6 @@
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4987,
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: todo turn-in -> 1047109 (Xeerol Ja)"
         }
       ]

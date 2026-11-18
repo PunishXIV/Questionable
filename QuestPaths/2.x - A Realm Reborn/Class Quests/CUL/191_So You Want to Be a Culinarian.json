@@ -7,27 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 128,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -32.028687,
-                  "Y": 41.499985,
-                  "Z": 208.39233
-                },
-                "TerritoryId": 128,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
           "DataId": 1000946,
           "Position": {
             "X": -61.142883,
@@ -36,15 +15,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [128]
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

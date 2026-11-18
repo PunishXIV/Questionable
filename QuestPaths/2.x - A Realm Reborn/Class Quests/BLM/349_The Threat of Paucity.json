@@ -15,11 +15,7 @@
             "Z": 80.88806
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -42,26 +38,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "TerritoryId": 130,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ul'dah",
-          "AethernetShortcut": [
-            "[Ul'dah] Thaumaturges' Guild",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                141
-              ],
-              "AetheryteUnlocked": "Central Thanalan - Black Brush Station"
-            },
-            "AethernetShortcutIf": {
-              "AetheryteUnlocked": "Central Thanalan - Black Brush Station"
-            }
-          }
-        },
-        {
           "Position": {
             "X": -62.183617,
             "Y": -3.6582246,
@@ -83,8 +59,6 @@
             "Z": -225.21188
           },
           "TerritoryId": 141,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -112,10 +86,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -142,9 +112,7 @@
           "KillEnemyDataIds": [
             166,
             1238
-          ],
-          "Fly": true,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          ]
         }
       ]
     },
@@ -175,10 +143,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
           "NextQuestId": 350
         }
       ]

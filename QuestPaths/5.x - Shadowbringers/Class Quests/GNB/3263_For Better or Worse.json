@@ -14,11 +14,7 @@
             "Z": -115.31244
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,11 +29,7 @@
             "Z": 31.662354
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,25 +53,13 @@
             "Z": 418.66174
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": -306.12845,
-            "Y": -31.54935,
-            "Z": 173.07193
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
-        },
         {
           "DataId": 1029062,
           "Position": {
@@ -101,7 +81,6 @@
             "Y": -32.554207,
             "Z": 158.0957
           },
-          "StopDistance": 0.5,
           "TerritoryId": 145,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -139,10 +118,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "NextQuestId": 3264
         }
       ]

@@ -28,8 +28,7 @@
             "Z": 195.30017
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Many Fires"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,8 +46,7 @@
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             17244
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -63,8 +61,7 @@
             "Z": 195.30017
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Many Fires"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,7 +77,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Earthenshire",
           "NextQuestId": 5088
         }
       ]

@@ -13,7 +13,6 @@
             "Y": 75.72459,
             "Z": -23.51416
           },
-          "StopDistance": 5,
           "TerritoryId": 959,
           "InteractionType": "AcceptQuest"
         }
@@ -107,7 +106,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Jump",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
           "JumpDestination": {
             "Position": {
               "X": 315.84082,
@@ -124,19 +122,9 @@
             "Y": -154.98596,
             "Z": -595.5444
           },
-          "StopDistance": 3,
           "TerritoryId": 959,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818361
-        },
-        {
-          "Position": {
-            "X": 351.1467,
-            "Y": -167.87698,
-            "Z": -605.0467
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1038937,

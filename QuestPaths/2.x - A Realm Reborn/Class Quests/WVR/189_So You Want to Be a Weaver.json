@@ -7,27 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 131,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ul'dah] Goldsmiths' Guild",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -25.162231,
-                  "Y": 12.199998,
-                  "Z": 110.795654
-                },
-                "TerritoryId": 131,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
           "DataId": 1002283,
           "Position": {
             "X": 134.90503,
@@ -36,15 +15,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [131]
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "YesNo",

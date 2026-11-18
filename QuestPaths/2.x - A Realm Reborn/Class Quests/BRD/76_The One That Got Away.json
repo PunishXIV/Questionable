@@ -14,13 +14,8 @@
             "Y": 0.9999819,
             "Z": 35.01941
           },
-          "StopDistance": 7,
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,8 +31,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "SinglePlayerDuty",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -59,8 +52,7 @@
           "SinglePlayerDutyOptions": {
             "Index": 1,
             "Enabled": true
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -74,13 +66,8 @@
             "Y": 0.9999819,
             "Z": 35.01941
           },
-          "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ],
           "NextQuestId": 1085
         }
       ]

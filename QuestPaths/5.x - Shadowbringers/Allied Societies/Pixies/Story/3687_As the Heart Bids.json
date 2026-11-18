@@ -70,20 +70,7 @@
             "Z": -656.09216
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf"
-        },
-        {
-          "Position": {
-            "X": -107.78667,
-            "Y": 108.39998,
-            "Z": -840.88965
-          },
-          "TerritoryId": 816,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni"
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1027673,
@@ -103,9 +90,7 @@
             "Z": 456.65674
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Lydha Lran"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -120,8 +105,7 @@
             "Z": 571.8623
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -136,8 +120,7 @@
             "Z": 586.48047
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

@@ -15,11 +15,7 @@
             "Z": 9.994568
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,14 +40,9 @@
           null,null,null,null,null]
             }
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
-          null,null,null,null,null],
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ]
+          null,null,null,null,null]
         },
         {
           "Position": {
@@ -92,11 +83,7 @@
             "Z": 9.994568
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -115,10 +102,6 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             39
-          ],
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
           ]
         }
       ]
@@ -157,10 +140,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ],
           "NextQuestId": 457
         }
       ]

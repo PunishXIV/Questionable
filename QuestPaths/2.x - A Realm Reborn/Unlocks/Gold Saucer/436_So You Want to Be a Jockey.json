@@ -7,27 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 144,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Gold Saucer] Cactpot Board",
-            "[Gold Saucer] Chocobo Square"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 119.92558,
-                  "Y": 13.001013,
-                  "Z": -12.923852
-                },
-                "TerritoryId": 144,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
           "DataId": 1010464,
           "Position": {
             "X": -0.13309006,
@@ -35,17 +14,7 @@
             "Z": -64.397385
           },
           "TerritoryId": 388,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gold Saucer",
-          "AethernetShortcut": [
-            "[Gold Saucer] Aetheryte Plaza",
-            "[Gold Saucer] Chocobo Square"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [144]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -61,8 +30,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true,
           "NextQuestId": 565
         }
       ]

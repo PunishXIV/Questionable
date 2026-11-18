@@ -15,7 +15,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
           "$": "auto: issuer 1006542 (Aganbold)"
         }
       ]
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "$": "Prevent getting stuck in the building"
         },
         {
@@ -42,8 +40,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             140
@@ -64,7 +60,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
           "$": "auto: todo location -> 1006542 (Aganbold)"
         }
       ]
@@ -80,7 +75,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "$": "Prevent getting stuck in the building"
         },
         {
@@ -92,8 +86,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             1915
@@ -114,7 +106,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona",
           "$": "auto: todo turn-in -> 1006542 (Aganbold)"
         }
       ]

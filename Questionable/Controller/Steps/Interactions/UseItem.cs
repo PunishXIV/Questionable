@@ -1,18 +1,12 @@
 ﻿using Dalamud.Game.Text.SeStringHandling;
 using FFXIVClientStructs.FFXIV.Client.Game;
-using Questionable.Controller.Steps.Movement;
 using Questionable.Controller.Steps.Shared;
-using AethernetShortcut = Questionable.Controller.Steps.Shared.AethernetShortcut;
 
 namespace Questionable.Controller.Steps.Interactions;
 
 internal static class UseItem
 {
-    internal sealed class Factory
-    (
-        IClientState clientState,
-        ILogger<Factory> logger)
-        : ITaskFactory
+    internal sealed class Factory : ITaskFactory
     {
         public IEnumerable<ITask> CreateAllTasks(Quest quest, QuestSequence sequence, QuestStep step)
         {
@@ -25,37 +19,6 @@ internal static class UseItem
                 return [];
             if (!step.ItemId.HasValue)
                 throw new ArgumentNullException(nameof(step.ItemId));
-
-            if (step.ItemId == QuestStep.VesperBayAetheryteTicket)
-            {
-                unsafe
-                {
-                    InventoryManager* inventoryManager = InventoryManager.Instance();
-                    if (inventoryManager->GetInventoryItemCount(step.ItemId.Value) == 0)
-                        return CreateVesperBayFallback();
-                }
-
-                UseOnSelf task = new(quest.Id, step.ItemId.Value, step.CompletionQuestVariablesFlags);
-
-                int currentStepIndex = sequence.Steps.IndexOf(step);
-                QuestStep? nextStep = sequence.Steps.Skip(currentStepIndex + 1).FirstOrDefault();
-                Vector3? nextPosition = (nextStep ?? step).Position;
-                return
-                [
-                    task,
-                    new WaitCondition.Task(() => clientState.TerritoryType == 140,
-                        $"Wait(territory: {TerritoryData.GetNameAndId(140)})"),
-                    new MountStep.MountTask(140,
-                        nextPosition != null ? MountStep.EMountIf.AwayFromPosition : MountStep.EMountIf.Always,
-                        nextPosition),
-                    new MoveTask(
-                        TerritoryId: 140,
-                        AetheryteShortcut.VesperBayLanding,
-                        StopDistance: 0.25f,
-                        DataId: null,
-                        InteractionType: EInteractionType.WalkTo)
-                ];
-            }
 
             MountStep.UnmountTask unmount = new();
             if (step.GroundTarget == true)
@@ -90,20 +53,6 @@ internal static class UseItem
             }
         }
 
-        private IEnumerable<ITask> CreateVesperBayFallback()
-        {
-            logger.LogWarning("No vesper bay aetheryte tickets in inventory, navigating via ferry in Limsa instead");
-
-            uint npcId = 1003540;
-            ushort territoryId = 129;
-            Vector3 destination = new(-360.9217f, 8f, 38.92566f);
-            yield return new AetheryteShortcut.Task(Step: null, ElementId: null, EAetheryteLocation.Limsa, territoryId);
-            yield return new AethernetShortcut.Task(EAetheryteLocation.Limsa, EAetheryteLocation.LimsaArcanist);
-            yield return new WaitAtEnd.WaitDelay();
-            yield return new MoveTask(territoryId, destination, DataId: npcId,
-                InteractionType: EInteractionType.WalkTo);
-            yield return new Interact.Task(npcId, Quest: null, EInteractionType.None, SkipMarkerCheck: true);
-        }
     }
 
     internal interface IUseTask : ITask
@@ -126,7 +75,6 @@ internal static class UseItem
         private static readonly TimeSpan RefusalWindow = TimeSpan.FromSeconds(2);
 
         private DateTime _continueAt;
-        private int _itemCount;
         private bool _usedItem;
         private DateTime? _usedAt;
         private int _refusals;
@@ -153,8 +101,7 @@ internal static class UseItem
             if (inventoryManager == null)
                 throw new TaskException("No InventoryManager");
 
-            _itemCount = inventoryManager->GetInventoryItemCount(ItemId);
-            if (_itemCount == 0)
+            if (inventoryManager->GetInventoryItemCount(ItemId) == 0)
                 throw new NeedsPlayerException($"Don't have any {GetItemName(dataManager, ItemId)} ({ItemId}) in inventory (checks NQ only)");
 
             UseNow();
@@ -206,25 +153,6 @@ internal static class UseItem
             if (StartingCombat && condition[ConditionFlag.InCombat])
                 return ETaskResult.TaskComplete;
 
-            if (ItemId == QuestStep.VesperBayAetheryteTicket && _usedItem)
-            {
-                InventoryManager* inventoryManager = InventoryManager.Instance();
-                if (inventoryManager == null)
-                {
-                    logger.LogWarning("InventoryManager is not available");
-                    return ETaskResult.StillRunning;
-                }
-
-                int itemCount = inventoryManager->GetInventoryItemCount(ItemId);
-                if (itemCount == _itemCount)
-                {
-                    logger.LogInformation(
-                        "Attempted to use vesper bay aetheryte ticket, but it didn't consume an item - reattempting next frame");
-                    _usedItem = false;
-                    return ETaskResult.StillRunning;
-                }
-            }
-
             if (!_usedItem)
             {
                 UseNow();
@@ -234,13 +162,7 @@ internal static class UseItem
             return ETaskResult.TaskComplete;
         }
 
-        private TimeSpan GetRetryDelay()
-        {
-            if (ItemId == QuestStep.VesperBayAetheryteTicket)
-                return TimeSpan.FromSeconds(11);
-
-            return TimeSpan.FromSeconds(5);
-        }
+        private static TimeSpan GetRetryDelay() => TimeSpan.FromSeconds(5);
 
         public override bool ShouldInterruptOnDamage() => true;
     }

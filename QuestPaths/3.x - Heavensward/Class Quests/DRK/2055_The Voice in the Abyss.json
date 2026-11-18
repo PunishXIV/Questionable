@@ -15,10 +15,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -40,8 +36,7 @@
             "Z": -397.69592
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,26 +59,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Position": {
-            "X": -258.55716,
-            "Y": 26.612217,
-            "Z": -320.62222
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -257.8064,
-            "Y": 14.002786,
-            "Z": -105.36169
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1014892,
           "Position": {
             "X": -415.03015,
@@ -91,8 +66,7 @@
             "Z": -42.343872
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -154,10 +128,8 @@
             "Y": 16.844267,
             "Z": -270.6493
           },
-          "StopDistance": 1,
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

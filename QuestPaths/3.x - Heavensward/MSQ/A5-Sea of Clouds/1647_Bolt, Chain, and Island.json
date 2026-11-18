@@ -91,7 +91,6 @@
             "Y": -14.730623,
             "Z": -537.56006
           },
-          "StopDistance": 7,
           "TerritoryId": 401,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -128,7 +127,6 @@
             "Y": -14.153766,
             "Z": -543.0228
           },
-          "StopDistance": 7,
           "TerritoryId": 401,
           "InteractionType": "CompleteQuest"
         }

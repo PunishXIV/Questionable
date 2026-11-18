@@ -30,7 +30,6 @@
           },
           "TerritoryId": 622,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "TargetTerritoryId": 614,
           "SkipConditions": { "StepIf": { "InTerritory": [614] } }
         },
@@ -57,8 +56,7 @@
             "Z": -542.56506
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

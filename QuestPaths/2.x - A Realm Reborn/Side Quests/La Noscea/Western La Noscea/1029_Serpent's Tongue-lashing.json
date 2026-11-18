@@ -14,10 +14,7 @@
             "Z": 52.658813
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,7 +30,6 @@
           "TerritoryId": 138,
           "InteractionType": "Combat",
           "Comment": "If FATE is up, might take a while for\nnon-FATE mobs to respawn",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -63,10 +59,7 @@
             "Z": 52.658813
           },
           "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

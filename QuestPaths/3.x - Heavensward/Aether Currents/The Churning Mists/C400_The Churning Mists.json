@@ -15,7 +15,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "AttuneAetherCurrent",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
           "AetherCurrentId": 2818101
         },
         {
@@ -25,7 +24,6 @@
             "Y": -6.7597656,
             "Z": 223.83447
           },
-          "StopDistance": 5,
           "TerritoryId": 400,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818100

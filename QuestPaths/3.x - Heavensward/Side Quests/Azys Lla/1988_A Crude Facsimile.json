@@ -14,8 +14,7 @@
             "Z": 756.7101
           },
           "TerritoryId": 402,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,7 +29,6 @@
           },
           "TerritoryId": 402,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "$": "can get stuck on the spire structure when trying to land. could land elsewhere but we want to start with this one because it's the first on foot, so if done before flying unlocked that would necessitate walking directly past it.",
           "SkipConditions": {
             "StepIf": {
@@ -106,8 +104,7 @@
             "Z": 756.7101
           },
           "TerritoryId": 402,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,21 +14,8 @@
             "Y": 41.50014,
             "Z": 120.44341
           },
-          "StopDistance": 0.25,
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -68,7 +55,6 @@
             "Y": 41.50014,
             "Z": 120.44341
           },
-          "StopDistance": 0.25,
           "TerritoryId": 131,
           "InteractionType": "Interact",
           "AllowHighQuality": true
@@ -87,11 +73,7 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Ul'dah] Alchemists' Guild",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "AllowHighQuality": true
         }
       ]
     },
@@ -99,29 +81,15 @@
       "Sequence": 255,
       "Steps": [
         {
-          "TerritoryId": 130,
-          "InteractionType": "None",
-          "SkipConditions": {"StepIf": {"InTerritory": [131]}},
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ]
-        },
-        {
           "DataId": 1002299,
           "Position": {
             "X": -103.62651,
             "Y": 41.50014,
             "Z": 120.44341
           },
-          "StopDistance": 0.25,
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Alchemists' Guild"
-          ]
+          "AllowHighQuality": true
         }
       ]
     }

@@ -12,9 +12,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -47,7 +45,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -77,8 +74,7 @@
             "Z": 187.7622
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,9 +87,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -126,7 +120,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -156,8 +149,7 @@
             "Z": 34.561646
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -173,9 +165,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -218,9 +208,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -253,7 +241,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"

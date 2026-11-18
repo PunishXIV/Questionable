@@ -13,7 +13,6 @@
             "Y": 0.22516371,
             "Z": -44.235962
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
           "InteractionType": "AcceptQuest"
         }
@@ -59,7 +58,6 @@
             "Y": 0.92195225,
             "Z": -52.384216
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
           "InteractionType": "Interact"
         }
@@ -75,7 +73,6 @@
             "Y": 0.9219523,
             "Z": -51.499268
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
           "InteractionType": "Interact"
         }
@@ -90,22 +87,12 @@
           "AethernetShard": "[Solution Nine] Nexus Arcade"
         },
         {
-          "Position": {
-            "X": -320.34818,
-            "Y": 9.519508,
-            "Z": -6.9244547
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1048065,
           "Position": {
             "X": -320.34818,
             "Y": 9.519508,
             "Z": -6.9244547
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1186,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 3
@@ -122,7 +109,6 @@
             "Y": 14.000001,
             "Z": 133.25919
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1186,
           "InteractionType": "Interact"
         }
@@ -143,7 +129,6 @@
             "Y": 13.999998,
             "Z": 273.74304
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1186,
           "InteractionType": "Interact"
         }
@@ -159,7 +144,6 @@
             "Y": 13.999998,
             "Z": 275.8678
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
           "InteractionType": "CompleteQuest"
         }

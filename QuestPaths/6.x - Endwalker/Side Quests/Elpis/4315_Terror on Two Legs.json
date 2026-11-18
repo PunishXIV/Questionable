@@ -13,9 +13,7 @@
             "Z": -129.32025
           },
           "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +28,7 @@
             "Z": -20.035156
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,8 +44,7 @@
           },
           "TerritoryId": 961,
           "InteractionType": "Snipe",
-          "Comment": "Hit the creature with the blow dart",
-          "Fly": true
+          "Comment": "Hit the creature with the blow dart"
         }
       ]
     },
@@ -78,8 +74,7 @@
             "Z": -20.035156
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -94,8 +89,7 @@
             "Z": -129.32025
           },
           "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

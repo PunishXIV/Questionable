@@ -15,11 +15,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "$": "auto: issuer 1058686 (Pattin)"
         }
       ]
@@ -37,11 +32,6 @@
           "TerritoryId": 133,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1369,
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESHLX202_05468_SYSTEM_000_021",
@@ -98,7 +88,6 @@
             "Z": -15.735224
           },
           "TerritoryId": 1369,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2003819,
           "GroundTarget": true,
@@ -119,7 +108,6 @@
             "Z": 21.660215
           },
           "TerritoryId": 1369,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2003819,
           "GroundTarget": true,
@@ -140,7 +128,6 @@
             "Z": 82.79231
           },
           "TerritoryId": 1369,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2003819,
           "GroundTarget": true,
@@ -161,7 +148,6 @@
             "Z": 103.98318
           },
           "TerritoryId": 1369,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2003819,
           "GroundTarget": true,
@@ -182,7 +168,6 @@
             "Z": -18.691267
           },
           "TerritoryId": 1369,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2003819,
           "GroundTarget": true,
@@ -209,10 +194,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESHLX202_05468_SYSTEM_000_021",
@@ -260,11 +241,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "$": "auto: todo turn-in -> 1058686 (Pattin)"
         }
       ]

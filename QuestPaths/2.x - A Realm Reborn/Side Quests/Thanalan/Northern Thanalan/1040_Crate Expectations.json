@@ -14,8 +14,7 @@
             "Z": 422.65967
           },
           "TerritoryId": 147,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 232.56274
           },
           "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": 422.65967
           },
           "TerritoryId": 147,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,8 +15,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
           "$": "auto: issuer 1002232 (Yulgi Honalgi)"
         }
       ]
@@ -33,8 +31,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -54,7 +50,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -156,15 +151,6 @@
         },
         {
           "Position": {
-            "X": 201.07915,
-            "Y": 9.077367,
-            "Z": 590.21783
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
             "X": 176.8321,
             "Y": 8.973654,
             "Z": 593.45026
@@ -212,8 +198,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
           "$": "auto: todo turn-in -> 1002232 (Yulgi Honalgi)"
         }
       ]

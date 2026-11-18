@@ -13,7 +13,6 @@
             "Y": -35.95642,
             "Z": 18.722778
           },
-          "StopDistance": 7,
           "TerritoryId": 401,
           "InteractionType": "AcceptQuest"
         }
@@ -45,7 +44,6 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Jump",
-          "StopDistance": 1,
           "JumpDestination": {
             "Position": {
               "X": -759.4263,
@@ -64,15 +62,6 @@
           "TerritoryId": 401,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818117
-        },
-        {
-          "Position": {
-            "X": -755.9033,
-            "Y": -14.112402,
-            "Z": -177.06593
-          },
-          "TerritoryId": 401,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1013090,

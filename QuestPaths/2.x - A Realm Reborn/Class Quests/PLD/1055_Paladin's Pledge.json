@@ -10,16 +10,7 @@
         {
           "TerritoryId": 131,
           "InteractionType": "SwitchClass",
-          "TargetClass": "Gladiator",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [131]
-            }
-          }
+          "TargetClass": "Gladiator"
         },
         {
           "DataId": 1002277,
@@ -29,16 +20,7 @@
             "Z": 23.605652
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [131]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -53,11 +35,7 @@
             "Z": -2.4262085
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] The Chamber of Rule"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -72,11 +50,9 @@
             "Z": -188.2201
           },
           "TerritoryId": 146,
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [18, 19],
-          "Fly": true
+          "KillEnemyDataIds": [18, 19]
         }
       ]
     },
@@ -107,11 +83,7 @@
             "Z": -2.4262085
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

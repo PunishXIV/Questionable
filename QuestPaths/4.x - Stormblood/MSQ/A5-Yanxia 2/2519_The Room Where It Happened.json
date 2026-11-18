@@ -60,12 +60,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 639,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ]
+          "TargetTerritoryId": 639
         },
         {
           "DataId": 1023084,

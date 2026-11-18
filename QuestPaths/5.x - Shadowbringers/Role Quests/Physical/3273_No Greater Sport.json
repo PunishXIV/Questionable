@@ -14,12 +14,7 @@
             "Z": 235.40088
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,12 +29,7 @@
             "Z": 389.45593
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] Tessellation (Lakeland)"
-          ],
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -88,7 +78,6 @@
             "Y": -0.39049676,
             "Z": 389.4254
           },
-          "StopDistance": 5,
           "TerritoryId": 813,
           "InteractionType": "Interact"
         }
@@ -106,12 +95,7 @@
           },
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 3274,
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
+          "NextQuestId": 3274
         }
       ]
     }

@@ -12,11 +12,8 @@
             "Y": -26.29132,
             "Z": -437.46094
           },
-          "StopDistance": 1,
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "TargetTerritoryId": 1061
         },
         {
@@ -60,9 +57,7 @@
             "Z": -182.8794
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,19 +71,7 @@
             "Z": -772.4912
           },
           "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
-          "Position": {
-            "X": -693.9247,
-            "Y": 261.1125,
-            "Z": 436.2933
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1044310,
@@ -105,17 +88,6 @@
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": 180.50424,
-            "Y": 360.59534,
-            "Z": -609.197
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
-        },
         {
           "DataId": 1044314,
           "Position": {

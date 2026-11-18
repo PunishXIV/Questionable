@@ -15,7 +15,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: issuer 1000640 (Eadbert)"
         }
       ]
@@ -31,8 +30,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             136
@@ -53,9 +50,7 @@
           },
           "TerritoryId": 154,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 97,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo turn-in -> 1000640 (Eadbert)"
         }
       ]

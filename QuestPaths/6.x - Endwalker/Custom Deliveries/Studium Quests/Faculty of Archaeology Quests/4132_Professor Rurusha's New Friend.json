@@ -15,10 +15,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_AKTKLA101_04132_Q1_000_000",

@@ -19,7 +19,7 @@ internal static class Travel
         public override string ToString() => $"Travel({TerritoryData.GetNameAndId(TerritoryId)})";
     }
 
-    internal sealed class Executor(MappingTheRealmIpc mappingTheRealm, IClientState clientState)
+    internal sealed class Executor(MappingTheRealmIpc mappingTheRealm, IClientState clientState, IObjectTable objectTable)
         : TaskExecutor<Task>, IStoppable
     {
         private Route? _route;
@@ -33,16 +33,23 @@ internal static class Travel
             if (!mappingTheRealm.IsReady())
                 throw new NeedsPlayerException("MappingTheRealm is needed for travel between zones. Install it from the Plugins tab.");
 
-            if (mappingTheRealm.GetPathing() == true)
-                throw new NeedsPlayerException("MappingTheRealm is busy with another plugin's route. Restart Questionable when it's done.");
-
+            // A route from a stopped run can still be moving; Stop only cancels routes Questionable started.
+            mappingTheRealm.Stop();
             _route = mappingTheRealm.Travel(Task.TerritoryId, Task.Position, Task.DataId);
             return true;
         }
 
         public override ETaskResult Update()
         {
-            if (_route is not { IsCompleted: true } route)
+            // MappingTheRealm 1.0.0.0 can stay on "Planning route" after the character has arrived.
+            if (HasArrived())
+            {
+                mappingTheRealm.Stop();
+                return ETaskResult.TaskComplete;
+            }
+
+            // The route's task can finish when the move is handed over, while the character is still walking.
+            if (_route is not { IsCompleted: true } route || mappingTheRealm.GetPathing() == true)
                 return ETaskResult.StillRunning;
 
             if (route.IsFaulted)
@@ -53,9 +60,20 @@ internal static class Travel
             return ETaskResult.TaskComplete;
         }
 
+        // An NPC can be talked to from a few yalms away.
+        private bool HasArrived()
+        {
+            if (clientState.TerritoryType != Task.TerritoryId)
+                return false;
+            if (Task.Position is not { } destination)
+                return true;
+            return objectTable[0]?.Position is { } position &&
+                   Vector3.Distance(position, destination) < (Task.DataId != null ? 5f : QuestStep.DefaultStopDistance);
+        }
+
         public void StopNow()
         {
-            if (_route is { IsCompleted: false })
+            if (_route != null)
                 mappingTheRealm.Stop();
         }
 

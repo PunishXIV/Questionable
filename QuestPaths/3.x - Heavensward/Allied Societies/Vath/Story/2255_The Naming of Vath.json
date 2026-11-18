@@ -14,9 +14,7 @@
             "Z": -139.05548
           },
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 108.53735
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,7 +45,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -75,8 +70,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             5540
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -91,25 +85,13 @@
             "Z": -228.07666
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
       "Steps": [
-        {
-          "Position": {
-            "X": 471.25446,
-            "Y": -51.141403,
-            "Z": 35.94126
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true
-        },
         {
           "DataId": 1011916,
           "Position": {
@@ -126,16 +108,6 @@
       "Sequence": 6,
       "Steps": [
         {
-          "Position": {
-            "X": 471.25446,
-            "Y": -51.141403,
-            "Z": 35.94126
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1011928,
           "Position": {
             "X": 73.19751,
@@ -143,8 +115,7 @@
             "Z": -139.05548
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -174,25 +145,13 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Action",
-          "Action": "Fumigate",
-          "Fly": true
+          "Action": "Fumigate"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 58.88452,
-            "Y": -48.000004,
-            "Z": -171.06891
-          },
-          "StopDistance": 2,
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1016837,
           "Position": {
@@ -202,8 +161,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",

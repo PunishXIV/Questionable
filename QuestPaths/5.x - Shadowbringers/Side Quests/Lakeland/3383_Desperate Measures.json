@@ -17,22 +17,7 @@
             "Z": -26.93219
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 715.053,
-                  "Y": 21.41357,
-                  "Z": -26.93219
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -48,8 +33,7 @@
           "TerritoryId": 813,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [10367],
-          "Fly": true
+          "KillEnemyDataIds": [10367]
         }
       ]
     },
@@ -64,12 +48,7 @@
             "Z": 181.84167
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

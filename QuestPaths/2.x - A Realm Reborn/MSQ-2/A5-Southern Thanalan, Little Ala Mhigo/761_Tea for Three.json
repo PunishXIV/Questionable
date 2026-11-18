@@ -14,8 +14,7 @@
             "Z": -402.02948
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -96,8 +95,7 @@
             "Z": -402.02948
           },
           "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

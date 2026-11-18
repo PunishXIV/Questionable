@@ -13,7 +13,6 @@
             "Y": 122.53533,
             "Z": 542.9922
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
           "InteractionType": "AcceptQuest"
         }
@@ -29,7 +28,6 @@
             "Y": 123.88794,
             "Z": 546.53235
           },
-          "StopDistance": 4.5,
           "TerritoryId": 1187,
           "InteractionType": "Interact"
         }
@@ -45,7 +43,6 @@
             "Y": 123.88794,
             "Z": 546.53235
           },
-          "StopDistance": 4.5,
           "TerritoryId": 1187,
           "InteractionType": "Interact"
         }
@@ -61,8 +58,6 @@
             "Y": 131.0597,
             "Z": 640.772
           },
-          "StopDistance": 3,
-          "IgnoreDistanceToObject": true,
           "TerritoryId": 1187,
           "InteractionType": "UseItem",
           "ItemId": 2003618,
@@ -75,8 +70,6 @@
             "Y": 114.4884,
             "Z": 698.3596
           },
-          "StopDistance": 3,
-          "IgnoreDistanceToObject": true,
           "TerritoryId": 1187,
           "InteractionType": "UseItem",
           "ItemId": 2003618,
@@ -111,8 +104,6 @@
             "Y": 114.24426,
             "Z": 603.0823
           },
-          "StopDistance": 3,
-          "IgnoreDistanceToObject": true,
           "TerritoryId": 1187,
           "InteractionType": "UseItem",
           "ItemId": 2003618,
@@ -130,7 +121,6 @@
             "Y": 122.53533,
             "Z": 542.9922
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
           "InteractionType": "CompleteQuest"
         }

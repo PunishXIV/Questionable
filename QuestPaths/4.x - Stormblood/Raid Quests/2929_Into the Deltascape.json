@@ -16,7 +16,6 @@
           "TerritoryId": 612,
           "InteractionType": "Interact",
           "TargetTerritoryId": 724,
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_STMBDR102_02929_SYSTEM_000_026",
@@ -47,7 +46,6 @@
             "Y": -223.25,
             "Z": -117.021484
           },
-          "StopDistance": 6,
           "TerritoryId": 724,
           "InteractionType": "Interact"
         }

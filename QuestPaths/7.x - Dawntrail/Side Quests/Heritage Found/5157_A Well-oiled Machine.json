@@ -13,38 +13,13 @@
             "Z": 142.90063
           },
           "TerritoryId": 1191,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Heritage Found - Electrope Strike",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -195.23926,
-                  "Y": 31.00003,
-                  "Z": 142.90063
-                },
-                "TerritoryId": 1191,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -50.850063,
-            "Y": 67.24198,
-            "Z": 182.26367
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1050667,
           "Position": {
@@ -69,8 +44,7 @@
             "Z": 142.90063
           },
           "TerritoryId": 1191,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Heritage Found - Electrope Strike"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

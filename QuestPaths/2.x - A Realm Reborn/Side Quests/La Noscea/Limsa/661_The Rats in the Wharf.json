@@ -14,19 +14,7 @@
             "Z": 208.39233
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,17 +29,7 @@
           },
           "TerritoryId": 128,
           "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 135
@@ -68,10 +46,6 @@
           "TerritoryId": 135,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
           "ComplexCombatData": [
             {
               "DataId": 347,
@@ -83,14 +57,7 @@
           ],
           "CompletionQuestVariablesFlags": [
             {"Low": 5},
-          null,null,null,null,null],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                135
-              ]
-            }
-          }
+          null,null,null,null,null]
         }
       ]
     },
@@ -121,19 +88,7 @@
             "Z": -6.1189575
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

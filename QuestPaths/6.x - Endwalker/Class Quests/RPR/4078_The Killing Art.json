@@ -16,17 +16,7 @@
           "TerritoryId": 131,
           "InteractionType": "Interact",
           "TargetTerritoryId": 971,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131,
-                971
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 971
@@ -58,9 +48,7 @@
           },
           "TerritoryId": 397,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },

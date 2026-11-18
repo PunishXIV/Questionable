@@ -30,8 +30,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yanxia - Namai",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_BANKJN002_02974_Q1_000_000",
@@ -54,7 +52,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "Snipe",
-          "Fly": true,
           "Comment": "Snipe Namazu"
         }
       ]
@@ -71,7 +68,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "Snipe",
-          "Fly": true,
           "Comment": "Snipe Namazu"
         }
       ]
@@ -87,8 +83,7 @@
             "Z": 731.44116
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -103,8 +98,7 @@
             "Z": 553.2462
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -120,8 +114,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_BANKJN002_02974_Q3_000_000",

@@ -13,11 +13,8 @@
             "Y": 70,
             "Z": 510.61267
           },
-          "StopDistance": 6,
           "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +28,6 @@
             "Y": 70,
             "Z": 437.33875
           },
-          "StopDistance": 7,
           "TerritoryId": 621,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
@@ -70,12 +66,7 @@
             "Z": -80.73547
           },
           "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

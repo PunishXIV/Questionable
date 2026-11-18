@@ -14,9 +14,7 @@
             "Z": 575.1278
           },
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,12 +30,10 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Say",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
           "ChatMessage": {
             "Key": "TEXT_BANPIX103_03691_SAYTODO_000_030"
           },
           "$": "QW: 0 0 0 1 0 0",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,null,[
               1
             ],null,null
@@ -56,7 +52,6 @@
             "Key": "TEXT_BANPIX103_03691_SAYTODO_000_030"
           },
           "$": "QW: 0 0 0 3 0 0",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,null,[
               3
             ],null,null
@@ -75,7 +70,6 @@
           "ChatMessage": {
             "Key": "TEXT_BANPIX103_03691_SAYTODO_000_030"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,null,null,[
               2
             ],null,null
@@ -94,9 +88,7 @@
             "Z": 575.1278
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

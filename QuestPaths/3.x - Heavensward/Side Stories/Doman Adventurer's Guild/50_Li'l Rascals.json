@@ -14,8 +14,7 @@
             "Z": -763.42413
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -720.9735
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": -682.06305
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,10 +58,8 @@
             "Y": 28.34813,
             "Z": -622.18665
           },
-          "StopDistance": 0.5,
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -75,7 +70,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "$": "Rising Stones Door",
           "SkipConditions": {
             "StepIf": {
@@ -102,7 +96,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -129,7 +122,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -146,7 +138,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 100
         }
       ]

@@ -14,10 +14,7 @@
               "Z": 53.050713
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,10 +30,7 @@
           },
           "TerritoryId": 138,
           "InteractionType": "UseItem",
-          "StopDistance": 1,
           "ItemId": 2001264,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
             {"High": 8}
@@ -51,9 +45,7 @@
           },
           "TerritoryId": 138,
           "InteractionType": "UseItem",
-          "StopDistance": 1,
           "ItemId": 2001264,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
             {"High": 4}
@@ -68,9 +60,7 @@
           },
           "TerritoryId": 138,
           "InteractionType": "UseItem",
-          "StopDistance": 1,
           "ItemId": 2001264,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
             {"Low": 8}
@@ -85,9 +75,7 @@
           },
           "TerritoryId": 138,
           "InteractionType": "UseItem",
-          "StopDistance": 1,
           "ItemId": 2001264,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
             {"High": 2}
@@ -103,9 +91,7 @@
           "TerritoryId": 138,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
-          "StopDistance": 1,
           "ItemId": 2001264,
-          "Fly": true,
           "KillEnemyDataIds": [
             2949
           ],
@@ -127,10 +113,7 @@
               "Z": 53.050713
           },
           "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,12 +14,7 @@
             "Z": 107.80493
           },
           "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,9 +29,7 @@
             "Z": 116.746704
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,11 +44,7 @@
             "Z": 782.1787
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Thavnair - Yedlihmad"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,8 +69,7 @@
             "Z": 782.3147
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Yedlihmad"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,12 +84,7 @@
             "Z": 107.80493
           },
           "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

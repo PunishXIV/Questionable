@@ -14,9 +14,7 @@
             "Z": 313.98486
           },
           "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,8 +30,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -70,10 +66,7 @@
             "Z": 162.52861
           },
           "TerritoryId": 400,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,7 +82,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -101,7 +93,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -112,8 +103,7 @@
             "Z": 266.0105
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -128,10 +118,7 @@
             "Z": 162.52861
           },
           "TerritoryId": 400,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -146,9 +133,7 @@
             "Z": 313.98486
           },
           "TerritoryId": 400,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

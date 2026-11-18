@@ -13,22 +13,7 @@
             "Z": 583.7948
           },
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -246.63159,
-                  "Y": 50.84181,
-                  "Z": 583.7948
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,7 +28,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -74,22 +58,7 @@
             "Z": 583.7948
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -246.63159,
-                  "Y": 50.84181,
-                  "Z": 583.7948
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

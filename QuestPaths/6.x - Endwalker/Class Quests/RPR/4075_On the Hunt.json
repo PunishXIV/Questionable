@@ -16,17 +16,7 @@
           "TerritoryId": 131,
           "InteractionType": "Interact",
           "TargetTerritoryId": 971,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131,
-                971
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 971
@@ -57,8 +47,7 @@
             "Z": 58.54883
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -75,7 +64,6 @@
           "TerritoryId": 148,
           "InteractionType": "UseItem",
           "ItemId": 2003077,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -88,7 +76,6 @@
           "TerritoryId": 148,
           "InteractionType": "UseItem",
           "ItemId": 2003077,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -105,7 +92,6 @@
             14028
           ],
           "ItemId": 2003077,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -121,8 +107,7 @@
             "Z": 58.54883
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -138,11 +123,7 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 971,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "TargetTerritoryId": 971
         },
         {
           "DataId": 1036629,

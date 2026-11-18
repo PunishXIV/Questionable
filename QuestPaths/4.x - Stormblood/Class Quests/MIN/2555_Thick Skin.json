@@ -14,8 +14,7 @@
             "Z": -7.2786255
           },
           "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -95,9 +94,6 @@
             }
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [612]
-            },
             "StepIf": {
               "Item": {
                 "NotInInventory": false
@@ -113,8 +109,7 @@
             "Z": -91.99664
           },
           "TerritoryId": 478,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -129,8 +124,7 @@
             "Z": -7.2786255
           },
           "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

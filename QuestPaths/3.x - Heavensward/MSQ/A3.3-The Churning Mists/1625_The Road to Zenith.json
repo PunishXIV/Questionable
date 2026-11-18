@@ -68,15 +68,7 @@
           },
           "TerritoryId": 400,
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 1823,
-          "AetheryteShortcut": "The Churning Mists - Moghome",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "QuestsCompleted": [
-                1823
-              ]
-            }
-          }
+          "PickUpQuestId": 1823
         },
         {
           "DataId": 1013202,

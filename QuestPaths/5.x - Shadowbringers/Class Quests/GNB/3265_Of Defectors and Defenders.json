@@ -14,11 +14,7 @@
             "Z": 8.102478
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,11 +29,7 @@
             "Z": -75.60846
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -52,9 +44,7 @@
             "Z": 424.6432
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,8 +59,7 @@
             "Z": 291.73718
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -90,7 +79,6 @@
           "KillEnemyDataIds": [
             11131
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -107,7 +95,6 @@
             11132,
             11133
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -125,7 +112,6 @@
             11135,
             11136
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -141,8 +127,7 @@
             "Z": -174.88367
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -157,8 +142,7 @@
             "Z": -40.421204
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

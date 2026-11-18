@@ -60,22 +60,12 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": {
-            "X": 324.9114,
-            "Y": 353.76694,
-            "Z": -475.44562
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2010142,
           "Position": {
             "X": 326.8329,
             "Y": 355.79456,
             "Z": -477.53113
           },
-          "StopDistance": 4,
           "TerritoryId": 818,
           "InteractionType": "UseItem",
           "ItemId": 2002673,
@@ -134,7 +124,6 @@
             "Y": 381.81906,
             "Z": -524.4374
           },
-          "StopDistance": 5,
           "TerritoryId": 818,
           "InteractionType": "CompleteQuest"
         }

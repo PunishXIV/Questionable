@@ -14,11 +14,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Leveilleur Estate"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -67,11 +62,7 @@
             "Z": -110.70422
           },
           "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Journey's End",
-            "[Old Sharlayan] The Leveilleur Estate"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

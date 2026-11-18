@@ -13,7 +13,6 @@
             "Y": 55,
             "Z": -68.40625
           },
-          "StopDistance": 5,
           "TerritoryId": 963,
           "InteractionType": "AcceptQuest"
         }
@@ -30,11 +29,7 @@
             "Z": 37.216675
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Meghaduta",
-            "[Radz-at-Han] Kama"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,11 +44,7 @@
             "Z": -66.17847
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Kama",
-            "[Radz-at-Han] Meghaduta"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -68,12 +59,7 @@
             "Z": -66.17847
           },
           "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Meghaduta"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

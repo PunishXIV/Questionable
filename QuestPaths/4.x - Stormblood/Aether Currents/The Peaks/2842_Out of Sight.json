@@ -14,8 +14,7 @@
             "Z": 757.3815
           },
           "TerritoryId": 620,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Peaks - Ala Ghiri"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,16 +36,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -245.80753,
-            "Y": 258.90652,
-            "Z": 786.1918
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
         {
           "DataId": 1023259,
           "Position": {

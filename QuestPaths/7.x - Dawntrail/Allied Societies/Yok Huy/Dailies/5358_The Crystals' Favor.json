@@ -15,8 +15,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -55,15 +53,7 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1187,
-                1297
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 1297
@@ -106,8 +96,7 @@
             "Z": 283.6194
           },
           "TerritoryId": 1297,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -123,7 +112,6 @@
           },
           "TerritoryId": 1297,
           "InteractionType": "UseItem",
-          "Mount": true,
           "ItemId": 2003778,
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -139,7 +127,6 @@
           },
           "TerritoryId": 1297,
           "InteractionType": "UseItem",
-          "Mount": true,
           "ItemId": 2003778,
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -155,7 +142,6 @@
           },
           "TerritoryId": 1297,
           "InteractionType": "UseItem",
-          "Mount": true,
           "ItemId": 2003778,
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -171,7 +157,6 @@
           },
           "TerritoryId": 1297,
           "InteractionType": "UseItem",
-          "Mount": true,
           "ItemId": 2003778,
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
@@ -192,8 +177,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {

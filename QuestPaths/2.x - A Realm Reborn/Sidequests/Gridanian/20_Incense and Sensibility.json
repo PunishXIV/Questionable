@@ -13,14 +13,8 @@
             "Y": 6.65111,
             "Z": -114.305
           },
-          "StopDistance": 2,
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,10 +28,8 @@
             "Y": -4.00016,
             "Z": -7.91948
           },
-          "StopDistance": 2,
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -78,10 +70,8 @@
             "Y": -4.00016,
             "Z": -7.91948
           },
-          "StopDistance": 2,
           "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

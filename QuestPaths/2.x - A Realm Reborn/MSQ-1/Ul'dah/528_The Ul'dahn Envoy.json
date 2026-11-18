@@ -45,10 +45,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Airship Landing"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -173,11 +169,7 @@
         {
           "TerritoryId": 129,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Limsa Lominsa] Fishermen's Guild",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ]
+          "AethernetShard": "[Limsa Lominsa] Fishermen's Guild"
         },
         {
           "Position": {
@@ -188,11 +180,7 @@
           "TerritoryId": 129,
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 128,
-          "Comment": "Walk to Culinarians' Guild",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Aetheryte Plaza"
-          ]
+          "Comment": "Walk to Culinarians' Guild"
         },
         {
           "TerritoryId": 128,
@@ -218,10 +206,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Airship Landing"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -313,11 +297,7 @@
           },
           "TerritoryId": 132,
           "InteractionType": "WalkTo",
-          "TargetTerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Aetheryte Plaza"
-          ]
+          "TargetTerritoryId": 133
         },
         {
           "TerritoryId": 133,
@@ -341,11 +321,7 @@
         {
           "TerritoryId": 133,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Gridania] Mih Khetto's Amphitheatre",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ]
+          "AethernetShard": "[Gridania] Mih Khetto's Amphitheatre"
         },
         {
           "Position": {
@@ -364,11 +340,7 @@
         {
           "TerritoryId": 133,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Gridania] Conjurers' Guild",
-          "AethernetShortcut": [
-            "[Gridania] Botanists' Guild",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "AethernetShard": "[Gridania] Conjurers' Guild"
         },
         {
           "DataId": 1000460,

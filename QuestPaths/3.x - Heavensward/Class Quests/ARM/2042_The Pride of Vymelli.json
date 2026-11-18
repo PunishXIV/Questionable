@@ -15,16 +15,7 @@
             "Z": 178.72888
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [129, 128]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -54,17 +45,7 @@
             "Z": 31.418213
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [130, 131]
-            }
-          },
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,11 +60,7 @@
             "Z": 153.09375
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Miners' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -111,17 +88,7 @@
             "Z": 178.72888
           },
           "TerritoryId": 128,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [129, 128]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -136,8 +103,7 @@
             "Z": 1.0527954
           },
           "TerritoryId": 129,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

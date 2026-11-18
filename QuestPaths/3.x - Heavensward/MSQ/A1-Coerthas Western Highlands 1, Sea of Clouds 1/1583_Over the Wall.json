@@ -15,11 +15,7 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
+          "TargetTerritoryId": 433
         },
         {
           "DataId": 1012328,
@@ -62,10 +58,6 @@
               "Prompt": "TEXT_HEAVNA104_01583_SCENE00005_EVENTAREA_WARP_YESNO_TITLE",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] Skysteel Manufactory"
           ]
         }
       ]
@@ -106,7 +98,6 @@
           },
           "TerritoryId": 397,
           "InteractionType": "UnlockTaxiStand",
-          "Fly": true,
           "TaxiStandId": 1179685
         },
         {

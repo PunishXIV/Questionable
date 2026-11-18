@@ -13,10 +13,8 @@
             "Y": 3.543561,
             "Z": 283.71094
           },
-          "StopDistance": 5,
           "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

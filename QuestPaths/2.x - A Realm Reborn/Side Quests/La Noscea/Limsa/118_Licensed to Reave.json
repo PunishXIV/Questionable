@@ -14,19 +14,7 @@
             "Z": -164.23291
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128,
-                129
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -66,11 +54,7 @@
             "Z": -151.23218
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

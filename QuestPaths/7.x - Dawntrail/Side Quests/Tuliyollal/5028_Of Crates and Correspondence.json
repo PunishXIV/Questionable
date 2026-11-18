@@ -83,10 +83,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] The Resplendent Quarter"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -108,11 +104,7 @@
             "Z": 91.081055
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] The Resplendent Quarter",
-            "[Tuliyollal] Aetheryte Plaza"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

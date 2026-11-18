@@ -10,10 +10,6 @@
           "TerritoryId": 129,
           "TargetTerritoryId": 128,
           "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "SkipConditions": {
             "StepIf": {
               "InTerritory": [
@@ -45,8 +41,7 @@
             "Z": 484.73328
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Swiftperch"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -98,8 +93,7 @@
             "Z": -212.26831
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -113,8 +107,7 @@
             "Z": -199.21056
           },
           "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "WalkTo"
         }
       ]
     },
@@ -129,9 +122,7 @@
             "Z": -196.42938
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -147,8 +138,6 @@
           },
           "TerritoryId": 180,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true,
           "NextQuestId": 1321
         }
       ]

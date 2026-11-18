@@ -14,19 +14,7 @@
             "Z": 0.19836426
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128,
-                129
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,8 +29,7 @@
             "Z": 454.1847
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -57,7 +44,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "FateEnemies",
           "KillEnemyDataIds": [
             382
@@ -76,8 +62,7 @@
             "Z": -16.250854
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -92,14 +77,12 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "FateEnemies",
           "KillEnemyDataIds": [
             5273,
             390,
             21
-          ],
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          ]
         }
       ]
     },
@@ -114,8 +97,7 @@
             "Z": 96.87952
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -130,12 +112,10 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "FateEnemies",
           "KillEnemyDataIds": [
             5253
-          ],
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
+          ]
         }
       ]
     },
@@ -150,11 +130,7 @@
             "Z": -89.982544
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -170,7 +146,6 @@
           },
           "TerritoryId": 139,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "ExcelSheet": "Addon",
@@ -179,8 +154,7 @@
               "Prompt": 10125,
               "PromptIsRegularExpression": true
             }
-          ],
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          ]
         },
         {
           "DataId": 2006700,
@@ -219,7 +193,6 @@
           },
           "TerritoryId": 139,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "ExcelSheet": "Addon",
@@ -228,8 +201,7 @@
               "Prompt": 10125,
               "PromptIsRegularExpression": true
             }
-          ],
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          ]
         },
         {
           "DataId": 2006700,
@@ -272,23 +244,13 @@
             "Z": -16.250854
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -0.6313374,
-            "Y": 20.000422,
-            "Z": 20.376741
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo"
-        },
         {
           "Position": {
             "X": -7.600418,

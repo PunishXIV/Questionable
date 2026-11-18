@@ -13,7 +13,6 @@
             "Y": 207.49994,
             "Z": 85.34363
           },
-          "StopDistance": 7,
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest"
         }
@@ -30,12 +29,7 @@
             "Z": -346.7918
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,8 +59,7 @@
             "Z": -37.43042
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -81,8 +74,7 @@
             "Z": 16.739136
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -172,8 +164,7 @@
             "Z": -37.43042
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -187,7 +178,6 @@
             "Y": 147.58852,
             "Z": -39.230957
           },
-          "StopDistance": 7,
           "TerritoryId": 399,
           "InteractionType": "Interact"
         }
@@ -205,7 +195,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
           "NextQuestId": 2371
         }
       ]

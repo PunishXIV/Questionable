@@ -26,18 +26,7 @@
               "Prompt": "TEXT_CHREND304_02364_Q1_000_000",
               "Answer": "TEXT_CHREND304_02364_A1_000_003"
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419
-              ]
-            }
-          }
+          ]
         }
       ]
     },
@@ -52,11 +41,7 @@
             "Z": -92.729065
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Saint Reymanaud's Cathedral",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -71,11 +56,7 @@
             "Z": -174.36487
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

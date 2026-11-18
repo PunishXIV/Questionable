@@ -7,16 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": 379.64865,
-            "Y": -69.42944,
-            "Z": 695.1956
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "$": "Moglin"
-        },
-        {
           "DataId": 1012077,
           "Position": {
             "X": 381.70435,
@@ -24,9 +14,7 @@
             "Z": 700.86194
           },
           "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 8,
-          "IgnoreDistanceToObject": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -98,26 +86,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": 374.66388,
-            "Y": -74.11696,
-            "Z": 651.47766
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": 379.64865,
-            "Y": -69.42944,
-            "Z": 695.1956
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "$": "Moglin"
-        },
-        {
           "DataId": 1012077,
           "Position": {
             "X": 381.70435,
@@ -125,9 +93,7 @@
             "Z": 700.86194
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "StopDistance": 8,
-          "IgnoreDistanceToObject": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -141,7 +107,6 @@
             "Y": -69.42934,
             "Z": 693.5072
           },
-          "StopDistance": 7,
           "TerritoryId": 400,
           "InteractionType": "CompleteQuest"
         }

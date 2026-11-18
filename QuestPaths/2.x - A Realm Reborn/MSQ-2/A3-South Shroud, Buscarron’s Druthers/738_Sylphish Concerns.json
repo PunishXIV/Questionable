@@ -14,8 +14,7 @@
             "Z": -81.34589
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,7 +40,6 @@
             "Y": 5.6416674,
             "Z": -80.21974
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -90,7 +88,6 @@
             "Y": 3.3634722,
             "Z": -27.515985
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -154,7 +151,6 @@
             "Y": 7.614197,
             "Z": -43.137268
           },
-          "StopDistance": 6,
           "TerritoryId": 153,
           "InteractionType": "Interact",
           "$": "49 1  16 0  0 168 -> 65 17  16 0  0 184",
@@ -178,16 +174,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 51.85704,
-            "Y": 2.712612,
-            "Z": -42.67677
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "Mount": false
-        },
-        {
           "DataId": 1000590,
           "Position": {
             "X": -165.9419,
@@ -195,8 +181,7 @@
             "Z": -81.34589
           },
           "TerritoryId": 153,
-          "InteractionType": "CompleteQuest",
-          "Mount": false
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

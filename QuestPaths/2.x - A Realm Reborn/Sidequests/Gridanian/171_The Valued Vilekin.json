@@ -15,10 +15,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
           "$": "auto: issuer 1000629 (Bodwine)"
         }
       ]
@@ -35,11 +31,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             163
@@ -60,11 +51,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
           "$": "auto: todo location -> 2000142 (tangled undergrowth)"
         }
       ]
@@ -81,12 +67,7 @@
           },
           "TerritoryId": 154,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 174,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
           "$": "auto: todo turn-in -> 1000612 (Guithrit)"
         }
       ]

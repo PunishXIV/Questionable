@@ -15,9 +15,7 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 1162,
-          "StopDistance": 1,
-          "Fly": true
+          "TargetTerritoryId": 1162
         },
         {
           "DataId": 1045674,
@@ -26,7 +24,6 @@
             "Y": 56.66061,
             "Z": 467.39905
           },
-          "StopDistance": 15,
           "TerritoryId": 1162,
           "InteractionType": "AcceptQuest"
         }
@@ -58,8 +55,7 @@
             "Z": -191.51605
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Tertium"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -74,12 +70,7 @@
             "Z": -164.41602
           },
           "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Rostra"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

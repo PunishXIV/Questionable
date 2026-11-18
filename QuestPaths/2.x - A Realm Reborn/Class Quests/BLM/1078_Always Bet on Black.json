@@ -15,9 +15,7 @@
             "Z": -6.2105103
           },
           "TerritoryId": 145,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,19 +30,7 @@
             "Z": 113.725464
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,7 +45,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
@@ -88,7 +73,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -97,24 +81,12 @@
         },
         {
           "Position": {
-            "X": -428.2874,
-            "Y": 5.952176,
-            "Z": -21.0684
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
             "X": -431.92166,
             "Y": 6.5580425,
             "Z": -17.561014
           },
-          "StopDistance": 0.5,
           "TerritoryId": 146,
           "InteractionType": "SinglePlayerDuty",
-          "Mount": false,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -192,8 +164,6 @@
           },
           "TerritoryId": 145,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true,
           "NextQuestId": 1678
         }
       ]

@@ -27,7 +27,6 @@
             "Y": -129.27074,
             "Z": -351.33496
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1187,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -47,7 +46,6 @@
             "Y": -129.72865,
             "Z": -355.73358
           },
-          "StopDistance": 7,
           "TerritoryId": 1187,
           "InteractionType": "Interact"
         }
@@ -64,8 +62,7 @@
             "Z": -388.50995
           },
           "TerritoryId": 1187,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Urqopacha - Wachunpelo"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

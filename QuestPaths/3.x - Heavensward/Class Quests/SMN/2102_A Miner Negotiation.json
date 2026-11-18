@@ -14,8 +14,7 @@
             "Z": -96.23871
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +29,7 @@
             "Z": -414.87756
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -52,7 +49,6 @@
           "KillEnemyDataIds": [
             4781
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -84,7 +80,6 @@
             4781,
             4786
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -100,8 +95,7 @@
             "Z": -414.87756
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -117,7 +111,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "NextQuestId": 2103
         }
       ]

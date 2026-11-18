@@ -89,29 +89,7 @@
             "Z": -281.95883
           },
           "TerritoryId": 614,
-          "InteractionType": "Dive",
-          "StopDistance": 0.25
-        },
-        {
-          "Position": {
-            "X": 365.84177,
-            "Y": -50.164906,
-            "Z": -309.3022
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 301.059,
-            "Y": -21.410977,
-            "Z": -358.57938
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 0.25
+          "InteractionType": "Dive"
         },
         {
           "DataId": 1020007,

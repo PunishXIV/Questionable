@@ -15,11 +15,7 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 844,
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Dossal Gate"
-          ]
+          "TargetTerritoryId": 844
         },
         {
           "DataId": 1031722,
@@ -77,8 +73,7 @@
             "Z": -8.46875
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lakeland - Fort Jobb"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,8 +88,7 @@
             "Z": -645.9297
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

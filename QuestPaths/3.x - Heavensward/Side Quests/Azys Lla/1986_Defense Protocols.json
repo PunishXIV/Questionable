@@ -14,8 +14,7 @@
 						"Z": 100.02283
 					},
 					"TerritoryId": 402,
-					"InteractionType": "AcceptQuest",
-					"Fly": true
+					"InteractionType": "AcceptQuest"
 				}
 			]
 		},
@@ -31,8 +30,7 @@
 					"TerritoryId": 402,
 					"InteractionType": "Combat",
 					"EnemySpawnType": "OverworldEnemies",
-					"KillEnemyDataIds": [4669, 4970, 4671, 4672, 4673],
-					"Fly": true
+					"KillEnemyDataIds": [4669, 4970, 4671, 4672, 4673]
 				}
 			]
 		},
@@ -47,8 +45,7 @@
 						"Z": 100.02283
 					},
 					"TerritoryId": 402,
-					"InteractionType": "CompleteQuest",
-					"Fly": true
+					"InteractionType": "CompleteQuest"
 				}
 			]
 		}

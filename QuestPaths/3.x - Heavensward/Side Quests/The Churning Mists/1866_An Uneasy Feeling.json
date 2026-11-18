@@ -7,16 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": -662.4473,
-            "Y": 73,
-            "Z": 172.12396
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1014307,
           "Position": {
             "X": -661.40234,
@@ -43,7 +33,6 @@
           "KillEnemyDataIds": [
             4045
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -58,7 +47,6 @@
           "KillEnemyDataIds": [
             4045
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -73,7 +61,6 @@
           "KillEnemyDataIds": [
             4045
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -81,16 +68,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -662.4473,
-            "Y": 73,
-            "Z": 172.12396
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1014307,
           "Position": {

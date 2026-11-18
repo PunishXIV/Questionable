@@ -13,10 +13,8 @@
             "Y": 224.397,
             "Z": -199.359
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,13 +28,11 @@
             "Y": 209.391,
             "Z": -422
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2000729,
-          "KillEnemyDataIds": [387],
-          "Fly": true
+          "KillEnemyDataIds": [387]
         }
       ]
     },
@@ -50,10 +46,8 @@
             "Y": 224.397,
             "Z": -199.359
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,10 +61,8 @@
             "Y": 224.397,
             "Z": -199.359
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

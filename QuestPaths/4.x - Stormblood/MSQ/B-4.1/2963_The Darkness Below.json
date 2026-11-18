@@ -13,10 +13,8 @@
             "Y": 0,
             "Z": 58.64038
           },
-          "StopDistance": 5,
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,7 +30,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -44,18 +41,7 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-        },
-        {
-          "Position": {
-            "X": 682.593,
-            "Y": 69.99999,
-            "Z": 538.1847
-          },
-          "TerritoryId": 621,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 1024132,
@@ -96,9 +82,7 @@
             "Z": 576.1653
           },
           "TerritoryId": 621,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

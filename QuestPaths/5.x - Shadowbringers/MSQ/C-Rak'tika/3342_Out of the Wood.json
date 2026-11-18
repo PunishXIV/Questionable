@@ -13,7 +13,6 @@
             "Y": -19.053196,
             "Z": 296.65063
           },
-          "StopDistance": 5,
           "TerritoryId": 817,
           "InteractionType": "AcceptQuest"
         }
@@ -38,15 +37,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": -64.28227,
-            "Y": -19.16186,
-            "Z": 319.19778
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2009894,
           "Position": {
             "X": -259.51025,
@@ -54,8 +44,7 @@
             "Z": 332.81445
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -70,8 +59,7 @@
             "Z": 1.87677
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,13 +73,8 @@
             "Y": 1.7160122,
             "Z": 249.7749
           },
-          "StopDistance": 7,
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] The Pendants"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

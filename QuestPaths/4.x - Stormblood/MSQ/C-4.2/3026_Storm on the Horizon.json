@@ -14,8 +14,7 @@
             "Z": -433.24945
           },
           "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yanxia - House of the Fierce"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +29,7 @@
             "Z": 609.1859
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yanxia - Namai"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,7 +43,6 @@
             "Y": 1.7862457,
             "Z": 738.9486
           },
-          "StopDistance": 5,
           "TerritoryId": 614,
           "InteractionType": "Interact"
         }
@@ -63,8 +59,7 @@
             "Z": 537.77356
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -111,10 +106,6 @@
           },
           "TerritoryId": 759,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Doman Enclave] The Northern Enclave",
-            "[Doman Enclave] Aetheryte Plaza"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -161,7 +152,6 @@
             "Y": 0.19999999,
             "Z": -4.837158
           },
-          "StopDistance": 7,
           "TerritoryId": 744,
           "InteractionType": "Interact"
         }

@@ -14,24 +14,13 @@
             "Z": -732.9061
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -14.635355,
-            "Y": 206.49942,
-            "Z": 44.826305
-          },
-          "TerritoryId": 478,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Idyllshire"
-        },
         {
           "DataId": 1012299,
           "Position": {

@@ -13,7 +13,6 @@
             "Y": 0,
             "Z": 1.6326294
           },
-          "StopDistance": 5,
           "TerritoryId": 819,
           "InteractionType": "AcceptQuest"
         }
@@ -61,11 +60,7 @@
         {
           "TerritoryId": 819,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Crystarium] The Cabinet of Curiosity",
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] Aetheryte Plaza"
-          ]
+          "AethernetShard": "[Crystarium] The Cabinet of Curiosity"
         },
         {
           "DataId": 1027226,
@@ -85,11 +80,7 @@
             "Z": 118.08948
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Cabinet of Curiosity",
-            "[Crystarium] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -104,11 +95,7 @@
         {
           "TerritoryId": 819,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Crystarium] The Dossal Gate",
-          "AethernetShortcut": [
-            "[Crystarium] Musica Universalis Markets",
-            "[Crystarium] Aetheryte Plaza"
-          ]
+          "AethernetShard": "[Crystarium] The Dossal Gate"
         },
         {
           "DataId": 1028925,

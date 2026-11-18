@@ -15,8 +15,7 @@
             "Z": -42.404846
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +30,7 @@
             "Z": 471.3053
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -55,8 +52,7 @@
               "DataId": 357,
               "MinimumKillCount": 5
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -72,8 +68,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "SinglePlayerDuty",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -95,8 +89,7 @@
           "SinglePlayerDutyOptions": {
             "Index": 1,
             "Enabled": true
-          },
-          "AetheryteShortcut": "Ul'dah"
+          }
         }
       ]
     },

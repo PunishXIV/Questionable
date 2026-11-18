@@ -13,7 +13,6 @@
             "Y": 69.999954,
             "Z": 523.39966
           },
-          "StopDistance": 5,
           "TerritoryId": 621,
           "InteractionType": "AcceptQuest"
         }
@@ -29,7 +28,6 @@
             "Y": 70.139626,
             "Z": 522.88086
           },
-          "StopDistance": 7,
           "TerritoryId": 621,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -67,7 +65,6 @@
             "Y": 122,
             "Z": -362.96637
           },
-          "StopDistance": 7,
           "TerritoryId": 737,
           "InteractionType": "Interact",
           "Comment": "A-Ruhn-Senna",
@@ -80,7 +77,6 @@
             "Y": 122,
             "Z": -366.47595
           },
-          "StopDistance": 7,
           "TerritoryId": 737,
           "InteractionType": "Interact",
           "Comment": "Sicard",
@@ -93,7 +89,6 @@
             "Y": 122,
             "Z": -366.84216
           },
-          "StopDistance": 7,
           "TerritoryId": 737,
           "InteractionType": "Interact",
           "Comment": "Lyse",
@@ -106,7 +101,6 @@
             "Y": 122,
             "Z": -363.9124
           },
-          "StopDistance": 7,
           "TerritoryId": 737,
           "InteractionType": "Interact",
           "Comment": "Lucia",
@@ -119,7 +113,6 @@
             "Y": 122,
             "Z": -352.34613
           },
-          "StopDistance": 7,
           "TerritoryId": 737,
           "InteractionType": "Interact",
           "Comment": "Cirina",
@@ -137,7 +130,6 @@
             "Y": 122,
             "Z": -364.9806
           },
-          "StopDistance": 7,
           "TerritoryId": 737,
           "InteractionType": "Interact"
         }
@@ -153,7 +145,6 @@
             "Y": 69.9999,
             "Z": 534.3251
           },
-          "StopDistance": 7,
           "TerritoryId": 621,
           "InteractionType": "CompleteQuest"
         }

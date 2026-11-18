@@ -13,12 +13,7 @@
             "Z": 21.2863
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 4,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,15 +34,7 @@
               "DataId": 49,
               "MinimumKillCount": 4
             }
-          ],
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [131] },
-            "AethernetShortcutIf": { "InTerritory": [140] }
-          }
+          ]
         }
       ]
     },
@@ -62,12 +49,7 @@
             "Z": 21.286316
           },
           "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 4,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

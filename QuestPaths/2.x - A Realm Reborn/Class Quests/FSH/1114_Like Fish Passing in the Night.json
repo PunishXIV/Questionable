@@ -15,18 +15,7 @@
             "Z": 164.294
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -57,7 +46,6 @@
             "Y": 3.9999998,
             "Z": 200.34163
           },
-          "StopDistance": 1,
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -81,37 +69,13 @@
           },
           "ItemId": 2596,
           "ItemCount": 99,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
                 "NotInInventory": false
               }
-            },
-            "AetheryteShortcutIf": {
-              "Item": {
-                "NotInInventory": false
-              },
-              "InTerritory": [
-                129
-              ]
             }
           }
-        },
-        {
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Position": {
-            "X": 564.22797,
-            "Y": 17.553452,
-            "Z": 409.66574
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "Position": {
@@ -135,10 +99,6 @@
         },
         {
           "Comment": "Deliver Fullmoon Sardines to Tocktix",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "DataId": 1003628,
           "Position": {
             "X": -184.75,
@@ -154,11 +114,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "DataId": 1000857,
           "Position": {
             "X": -165.27,

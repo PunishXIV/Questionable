@@ -15,9 +15,7 @@
             "Z": -25.467346
           },
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,13 +31,11 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2002091,
           "KillEnemyDataIds": [
             7213
-          ],
-          "AetheryteShortcut": "Fringes - Peering Stones"
+          ]
         }
       ]
     },
@@ -54,9 +50,7 @@
             "Z": -25.467346
           },
           "TerritoryId": 635,
-          "InteractionType": "CompleteQuest",
-          "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

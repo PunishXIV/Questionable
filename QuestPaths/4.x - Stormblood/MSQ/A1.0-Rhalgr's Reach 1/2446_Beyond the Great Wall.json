@@ -45,9 +45,7 @@
             "Z": 401.9989
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,7 +59,6 @@
             "Y": 6.1844764,
             "Z": 400.99182
           },
-          "StopDistance": 7,
           "TerritoryId": 152,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -94,22 +91,12 @@
           "TaxiStandId": 1179696
         },
         {
-          "Position": {
-            "X": -612.8515,
-            "Y": 130,
-            "Z": -506.81757
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1020304,
           "Position": {
             "X": -606.7445,
             "Y": 130,
             "Z": -506.95053
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest"
         }

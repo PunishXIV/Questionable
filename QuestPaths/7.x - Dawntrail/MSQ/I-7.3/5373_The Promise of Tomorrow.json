@@ -15,10 +15,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] The Arcadion",
-            "[Solution Nine] Neon Stein"
-          ],
           "TargetTerritoryId": 1207
         },
         {
@@ -65,7 +61,6 @@
             "Y": 50.12499,
             "Z": 704.7378
           },
-          "StopDistance": 7,
           "TerritoryId": 1192,
           "InteractionType": "Interact"
         }
@@ -82,12 +77,7 @@
             "Z": -202.47198
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Vollok Shoonsa"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -102,12 +92,7 @@
             "Z": -389.0288
           },
           "TerritoryId": 1186,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Resolution"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

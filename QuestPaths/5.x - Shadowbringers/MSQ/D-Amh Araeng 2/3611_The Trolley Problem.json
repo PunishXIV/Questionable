@@ -53,15 +53,6 @@
       "Comment": "We take a huge detour here to attune to Twine, because dying before that happens puts us at your home aetheryte and we don't have an easy way to recover and get back here",
       "Steps": [
         {
-          "Position": {
-            "X": -341.64484,
-            "Y": 46.191288,
-            "Z": -244.7952
-          },
-          "TerritoryId": 815,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2010050,
           "Position": {
             "X": -343.80103,

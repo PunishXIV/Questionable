@@ -13,10 +13,8 @@
             "Y": 86.34846,
             "Z": -289.84515
           },
-          "StopDistance": 5,
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,14 +28,8 @@
             "Y": 13.02367,
             "Z": -90.53424
           },
-          "StopDistance": 1,
           "TerritoryId": 635,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

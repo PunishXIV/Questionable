@@ -9,7 +9,6 @@ namespace Questionable.Model.Questing;
 public sealed class QuestStep
 {
     public const float DefaultStopDistance = 3f;
-    public const int VesperBayAetheryteTicket = 30362;
 
     [JsonConstructor]
     public QuestStep()
@@ -41,13 +40,6 @@ public sealed class QuestStep
     public uint? PickUpItemId { get; set; }
 
     public bool Disabled { get; set; }
-    public bool DisableNavmesh { get; set; }
-    public bool? Mount { get; set; }
-    public bool? Fly { get; set; }
-    public bool? Land { get; set; }
-    public bool? Sprint { get; set; }
-    public bool? IgnoreDistanceToObject { get; set; }
-    public bool? RestartNavigationIfCancelled { get; set; }
     public bool? AllowHighQuality { get; set; }
     public EItemQuality ItemQuality { get; set; } = EItemQuality.Any;
     public string? Comment { get; set; }
@@ -57,9 +49,6 @@ public sealed class QuestStep
     [JsonConverter(typeof(AethernetShardConverter))]
     public EAetheryteLocation? AethernetShard { get; set; }
 
-    public EAetheryteLocation? AetheryteShortcut { get; set; }
-
-    public AethernetShortcut? AethernetShortcut { get; set; }
     public uint? AetherCurrentId { get; set; }
 
     public uint? ItemId { get; set; }

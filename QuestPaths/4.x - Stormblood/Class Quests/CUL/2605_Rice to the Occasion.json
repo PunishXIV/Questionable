@@ -14,8 +14,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -38,8 +36,7 @@
             "Z": -822.07983
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -77,8 +74,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
@@ -90,8 +85,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
@@ -103,9 +96,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
-          "StopDistance": 1,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         }
       ]
@@ -121,8 +111,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -173,8 +161,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -197,8 +183,7 @@
             "Z": -701.8082
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -213,8 +198,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {

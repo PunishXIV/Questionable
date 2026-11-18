@@ -13,7 +13,6 @@
             "Y": 100,
             "Z": -167.37628
           },
-          "StopDistance": 4,
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest"
         }
@@ -45,11 +44,7 @@
             "Z": 34.74475
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Vollok Shoonsa",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -94,11 +89,7 @@
             "Z": -169.8482
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Bayside Bevy Marketplace",
-            "[Tuliyollal] Vollok Shoonsa"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -113,11 +104,7 @@
             "Z": -425.5589
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Vollok Shoonsa",
-            "[Tuliyollal] Brightploom Post"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -57,7 +57,6 @@
             "Z": 357.80872
           },
           "TerritoryId": 614,
-          "Fly": true,
           "InteractionType": "UseItem",
           "ItemId": 2002176,
           "GroundTarget": true
@@ -115,7 +114,6 @@
             "Z": 301.07568
           },
           "TerritoryId": 614,
-          "Fly": true,
           "InteractionType": "UseItem",
           "ItemId": 2002176,
           "GroundTarget": true
@@ -223,8 +221,7 @@
             "Z": 206.43921
           },
           "TerritoryId": 614,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

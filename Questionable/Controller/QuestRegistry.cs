@@ -515,10 +515,7 @@ internal sealed class QuestRegistry : IDisposable
     }
     private static QuestStep CreateStep(EInteractionType interactionType, uint? dataId,
         System.Numerics.Vector3? position, uint territoryId) =>
-        new(interactionType, dataId, position, territoryId)
-        {
-            Fly = GameFunctions.IsFlyingUnlocked(territoryId) ? true : null
-        };
+        new(interactionType, dataId, position, territoryId);
 
     public static string GetQuestPathsDirectory()
     {

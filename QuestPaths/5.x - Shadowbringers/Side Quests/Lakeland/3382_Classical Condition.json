@@ -17,23 +17,7 @@
             "Z": -3.1586914
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 782.2842,
-                  "Y": 21.41485,
-                  "Z": -3.1586914
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -48,8 +32,7 @@
             "Z": 117.631714
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,8 +47,7 @@
             "Z": -84.031494
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,8 +62,7 @@
             "Z": 117.631714
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,9 +77,7 @@
             "Z": -3.1586914
           },
           "TerritoryId": 813,
-          "StopDistance": 0.25,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lakeland - Fort Jobb"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

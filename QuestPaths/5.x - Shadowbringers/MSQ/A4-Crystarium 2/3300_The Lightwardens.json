@@ -15,11 +15,7 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 844,
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Dossal Gate"
-          ]
+          "TargetTerritoryId": 844
         },
         {
           "DataId": 1028923,
@@ -28,7 +24,6 @@
             "Y": -1.0530548E-13,
             "Z": -6.0273438
           },
-          "StopDistance": 7,
           "TerritoryId": 844,
           "InteractionType": "AcceptQuest"
         }
@@ -44,7 +39,6 @@
             "Y": -1.0530548E-13,
             "Z": -6.0273438
           },
-          "StopDistance": 7,
           "TerritoryId": 844,
           "InteractionType": "Interact"
         }
@@ -62,12 +56,7 @@
           },
           "TerritoryId": 813,
           "InteractionType": "AttuneAetherCurrent",
-          "AetherCurrentId": 2818223,
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Tessellation (Lakeland)"
-          ]
+          "AetherCurrentId": 2818223
         },
         {
           "DataId": 1028928,
@@ -108,15 +97,6 @@
           "TerritoryId": 813,
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179723
-        },
-        {
-          "Position": {
-            "X": 601.42426,
-            "Y": 23.210327,
-            "Z": -223.36815
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2010028,

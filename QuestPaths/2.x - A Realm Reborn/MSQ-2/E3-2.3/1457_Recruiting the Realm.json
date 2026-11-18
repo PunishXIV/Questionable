@@ -30,8 +30,7 @@
             "Z": -15.640564
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,10 +46,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "$": "0 0  0 0  0 0 -> 1 0  0 0  0 64",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
@@ -75,10 +70,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "$": "2 0  0 0  0 96 -> 3 0  0 0  0 112",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
@@ -118,11 +109,7 @@
             "Z": -11.6427
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -148,11 +135,7 @@
             "Z": -20.187744
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -168,10 +151,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -191,10 +170,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Lancers' Guild"
-          ],
           "$": "1 0  0 0  0 128 -> 2 0  0 0  0 160",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
@@ -234,11 +209,7 @@
             "Z": 98.68005
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -291,10 +262,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] The Chamber of Rule",
-            "[Ul'dah] Gladiators' Guild"
-          ],
           "$": "0 0  0 0  0 0 -> 1 0  0 0  0 128",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
@@ -307,10 +274,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Miners' Guild"
-          ],
           "$": "1 0  0 0  0 128 -> 2 0  0 0  0 192",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
@@ -335,10 +298,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ],
           "$": "3 0  0 0  0 200 -> 4 0  0 0  0 232",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
@@ -365,11 +324,7 @@
             "Z": 19.272095
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Sapphire Avenue Exchange",
-            "[Ul'dah] The Chamber of Rule"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

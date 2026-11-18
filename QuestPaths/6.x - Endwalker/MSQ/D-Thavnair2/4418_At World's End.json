@@ -107,10 +107,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Hall of the Radiant Host",
-            "[Radz-at-Han] Mehryde's Meyhane"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -146,7 +142,6 @@
             "Y": -1.9999962,
             "Z": 87.44946
           },
-          "StopDistance": 5,
           "TerritoryId": 963,
           "InteractionType": "CompleteQuest"
         }

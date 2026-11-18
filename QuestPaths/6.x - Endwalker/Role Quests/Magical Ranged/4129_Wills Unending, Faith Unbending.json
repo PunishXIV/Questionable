@@ -13,14 +13,9 @@
             "Y": 24.412834,
             "Z": -11.062805
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1001,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -29,11 +24,6 @@
             }
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1001
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 1001
@@ -65,7 +55,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -141,10 +130,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

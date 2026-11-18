@@ -13,8 +13,7 @@
             "Z": 550.01135
           },
           "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,8 +28,7 @@
             "Z": 662.95874
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,8 +54,7 @@
               "RewardItemId": 2003670,
               "RewardItemCount": 2
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -72,8 +69,7 @@
             "Z": 662.95874
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -88,8 +84,7 @@
             "Z": 550.01135
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

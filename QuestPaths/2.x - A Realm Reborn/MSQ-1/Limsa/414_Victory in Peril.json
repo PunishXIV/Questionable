@@ -37,22 +37,12 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": 106.18569,
-            "Y": 53.59632,
-            "Z": 674.99817
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1002651,
           "Position": {
             "X": 107.65234,
             "Y": 54.64395,
             "Z": 674.9523
           },
-          "StopDistance": 5,
           "TerritoryId": 135,
           "InteractionType": "Interact"
         }
@@ -70,8 +60,7 @@
           },
           "TerritoryId": 135,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },

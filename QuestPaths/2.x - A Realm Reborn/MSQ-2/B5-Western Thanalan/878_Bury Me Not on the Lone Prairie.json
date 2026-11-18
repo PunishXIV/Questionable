@@ -14,8 +14,7 @@
             "Z": 39.993896
           },
           "TerritoryId": 145,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 209.97937
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": 39.993896
           },
           "TerritoryId": 145,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

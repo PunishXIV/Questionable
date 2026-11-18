@@ -16,17 +16,7 @@
           "TerritoryId": 131,
           "InteractionType": "Interact",
           "TargetTerritoryId": 971,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131,
-                971
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 971
@@ -57,8 +47,7 @@
             "Z": -170.06183
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -66,23 +55,12 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": 90.102264,
-            "Y": 0.33612514,
-            "Z": -274.36813
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1036646,
           "Position": {
             "X": 84.33655,
             "Y": 0.27463394,
             "Z": -279.86572
           },
-          "StopDistance": 5,
           "TerritoryId": 141,
           "InteractionType": "Interact"
         }
@@ -91,16 +69,6 @@
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": 156.258,
-            "Y": 1.9472685,
-            "Z": -165.4284
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1036647,
           "Position": {
@@ -122,7 +90,6 @@
             "Y": -0.6240455,
             "Z": -154.44577
           },
-          "StopDistance": 0.5,
           "TerritoryId": 141,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -158,8 +125,7 @@
             "Z": 212.57336
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -175,11 +141,7 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 971,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "TargetTerritoryId": 971
         }
       ]
     },

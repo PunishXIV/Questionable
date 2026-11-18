@@ -30,16 +30,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 51.626358,
-            "Y": 50,
-            "Z": -774.2433
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1018433,
           "Position": {
             "X": 50.766724,
@@ -47,8 +37,7 @@
             "Z": -772.3964
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,11 +68,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ],
           "TargetTerritoryId": 844
         },
         {

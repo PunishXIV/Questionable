@@ -13,7 +13,6 @@
             "Y": 79.691376,
             "Z": 299.8855
           },
-          "StopDistance": 5,
           "TerritoryId": 956,
           "InteractionType": "AcceptQuest"
         }
@@ -59,7 +58,6 @@
             "Y": 65.31176,
             "Z": -121.74779
           },
-          "StopDistance": 0.25,
           "TerritoryId": 956,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -82,7 +80,6 @@
             "Y": 65.16199,
             "Z": -119.62697
           },
-          "StopDistance": 0.25,
           "TerritoryId": 956,
           "InteractionType": "Interact"
         }
@@ -98,7 +95,6 @@
             "Y": 65.16199,
             "Z": -66.60645
           },
-          "StopDistance": 0.25,
           "TerritoryId": 956,
           "InteractionType": "Interact"
         }
@@ -114,7 +110,6 @@
             "Y": 65.16199,
             "Z": -96.01148
           },
-          "StopDistance": 0.25,
           "TerritoryId": 956,
           "InteractionType": "Interact"
         }

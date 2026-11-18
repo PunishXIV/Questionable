@@ -3,6 +3,9 @@ namespace Questionable.Controller.Steps.Movement;
 
 internal static class MoveTo
 {
+    // Steps without a position in these (Waking Sands, Rising Stones, city halves) still have to be there.
+    private static readonly HashSet<uint> PlaceBoundTerritories = [212, 351, 128, 131, 133, 419];
+
     internal sealed class Factory
     (
         IClientState clientState,
@@ -19,8 +22,6 @@ internal static class MoveTo
 
             if (step.Position != null)
                 return CreateMoveTasks(step, step.Position.Value);
-            if (step is { DataId: not null, StopDistance: not null })
-                return [new WaitForNearDataId(step.DataId.Value, step.StopDistance.Value)];
             if (step is
                 {
                     InteractionType: EInteractionType.AttuneAetheryte
@@ -34,7 +35,14 @@ internal static class MoveTo
             if (step is { InteractionType: EInteractionType.AttuneAethernetShard, AethernetShard: { } aethernetShard })
                 return CreateMoveTasks(step, aetheryteData.Locations[aethernetShard]);
 
-            return [];
+            List<ITask> tasks = [];
+            if (clientState.TerritoryType != step.TerritoryId &&
+                Travel.CanTravel(step, clientState.TerritoryType, territoryData) &&
+                (Travel.TalkTarget(step) != null || PlaceBoundTerritories.Contains(step.TerritoryId)))
+                tasks.Add(new Travel.Task(step.TerritoryId, null, null));
+            if (step is { DataId: not null, StopDistance: not null })
+                tasks.Add(new WaitForNearDataId(step.DataId.Value, step.StopDistance.Value));
+            return tasks;
         }
 
         private IEnumerable<ITask> CreateMoveTasks(QuestStep step, Vector3 destination)
@@ -50,8 +58,6 @@ internal static class MoveTo
             yield return Travel.CanTravel(step, clientState.TerritoryType, territoryData)
                 ? new Travel.Task(step.TerritoryId, destination, Travel.TalkTarget(step))
                 : new MoveTask(step, destination);
-            if (step is { Fly: true, Land: true })
-                yield return new LandTask();
         }
     }
 }

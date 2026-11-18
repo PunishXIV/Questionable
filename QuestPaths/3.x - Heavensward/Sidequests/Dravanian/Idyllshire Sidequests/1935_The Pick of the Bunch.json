@@ -15,7 +15,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: issuer 1012097 (Slowfix)"
         }
       ]
@@ -32,11 +31,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ],
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             4498
@@ -68,9 +62,7 @@
             "Z": -293.501
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -86,7 +78,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo location -> 1012132 (Drydox); hands over ITEM0=2001769"
         }
       ]
@@ -103,7 +94,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo turn-in -> 1012097 (Slowfix)"
         }
       ]

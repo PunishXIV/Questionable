@@ -13,7 +13,6 @@
             "Y": 1.7160122,
             "Z": 249.83594
           },
-          "StopDistance": 7,
           "TerritoryId": 819,
           "InteractionType": "AcceptQuest"
         }
@@ -45,8 +44,7 @@
             "Z": -58.06067
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -75,7 +73,6 @@
             "Y": 20,
             "Z": 12.619202
           },
-          "StopDistance": 5,
           "TerritoryId": 819,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {

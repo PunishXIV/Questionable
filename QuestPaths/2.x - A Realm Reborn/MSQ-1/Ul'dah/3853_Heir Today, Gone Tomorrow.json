@@ -15,7 +15,6 @@
             "Z": -272.60242
           },
           "TerritoryId": 141,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -32,7 +31,6 @@
           },
           "TerritoryId": 141,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
             352,
@@ -45,7 +43,6 @@
             "Y": 29.092033,
             "Z": -14.67918
           },
-          "StopDistance": 1,
           "TerritoryId": 141,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -58,25 +55,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 131.78122,
-            "Y": 20.119337,
-            "Z": -115.27284
-          },
-          "TerritoryId": 141,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 127.7017,
-            "Y": -0.15994573,
-            "Z": -161.89238
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1001605,
           "Position": {

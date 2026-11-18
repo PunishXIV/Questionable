@@ -14,7 +14,6 @@
             "Z": 22.079773
           },
           "TerritoryId": 1192,
-          "AetheryteShortcut": "Living Memory - Leynode Aero",
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 1192,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -54,7 +52,6 @@
           },
           "TerritoryId": 1192,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -76,8 +73,7 @@
             "Z": -382.58948
           },
           "TerritoryId": 1192,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Living Memory - Leynode Aero"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

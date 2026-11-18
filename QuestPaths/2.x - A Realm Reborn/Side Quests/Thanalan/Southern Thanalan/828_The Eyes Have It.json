@@ -14,8 +14,7 @@
             "Z": 474.29602
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,7 +32,6 @@
           "TerritoryId": 146,
           "InteractionType": "Emote",
           "Emote": "furious",
-          "Mount": false,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -47,7 +45,6 @@
           "TerritoryId": 146,
           "InteractionType": "Emote",
           "Emote": "furious",
-          "Mount": false,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -61,7 +58,6 @@
           "TerritoryId": 146,
           "InteractionType": "Emote",
           "Emote": "furious",
-          "Mount": false,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
@@ -75,7 +71,6 @@
           "TerritoryId": 146,
           "InteractionType": "Emote",
           "Emote": "furious",
-          "Mount": false,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,4]
         },
         {
@@ -89,7 +84,6 @@
           "TerritoryId": 146,
           "InteractionType": "Emote",
           "Emote": "furious",
-          "Mount": false,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
         },
         {
@@ -103,8 +97,6 @@
           "TerritoryId": 146,
           "InteractionType": "Emote",
           "Emote": "furious",
-          "StopDistance": 5,
-          "Mount": false,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -120,7 +112,6 @@
             "Z": 474.29602
           },
           "TerritoryId": 146,
-          "Mount": false,
           "InteractionType": "CompleteQuest"
         }
       ]

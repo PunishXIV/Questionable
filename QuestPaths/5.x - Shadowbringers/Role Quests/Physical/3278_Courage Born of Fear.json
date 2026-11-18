@@ -14,9 +14,7 @@
             "Z": 611.1085
           },
           "TerritoryId": 814,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kholusia - Wright",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,12 +29,7 @@
             "Z": -190.41736
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,11 +44,7 @@
             "Z": 234.97363
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Crystalline Mean",
-            "[Crystarium] The Pendants"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -71,9 +60,7 @@
           },
           "TerritoryId": 817,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -91,9 +78,7 @@
             "Z": 611.50525
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Kholusia - Wright"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,12 +93,7 @@
             "Z": 235.40088
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -16,8 +16,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -40,7 +38,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
@@ -52,7 +49,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
@@ -62,9 +58,7 @@
             "Z": 34.669674
           },
           "TerritoryId": 138,
-          "Fly": true,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "SkipConditions": {"StepIf": {"CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]}}
         },
         {
@@ -76,7 +70,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Interact",
-          "Fly": false,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
@@ -88,14 +81,9 @@
           },
           "TerritoryId": 141,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "Northern Thanalan - Camp Bluefog"
-            },
-            "AetheryteShortcutIf": {
-              "AetheryteUnlocked": "Northern Thanalan - Camp Bluefog",
-              "InTerritory": [147,141]
             }
           }
         },
@@ -113,7 +101,6 @@
         {
           "TerritoryId": 147,
           "InteractionType": "AttuneAetheryte",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog",
           "Aetheryte": "Northern Thanalan - Ceruleum Processing Plant",
           "SkipConditions": {"StepIf": {"AetheryteUnlocked": "Northern Thanalan - Ceruleum Processing Plant"}}
         },
@@ -125,7 +112,6 @@
           },
           "TerritoryId": 147,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {"StepIf": {"CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]}}
         },
         {
@@ -153,8 +139,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true,
           "NextQuestId": 1090
         }
       ]

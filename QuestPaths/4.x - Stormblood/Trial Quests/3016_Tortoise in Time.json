@@ -30,12 +30,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ],
-          "Fly": true,
           "TargetTerritoryId": 764
         },
         {
@@ -61,13 +55,7 @@
             "Z": 273.2738
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Doman Enclave",
-          "AethernetShortcut": [
-            "[Doman Enclave] Aetheryte Plaza",
-            "[Doman Enclave] The One River"
-          ],
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,12 +84,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ],
-          "Fly": true,
           "TargetTerritoryId": 764
         },
         {
@@ -162,7 +144,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
           "NextQuestId": 3152
         }
       ]

@@ -15,10 +15,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] The Arcadion",
-            "[Solution Nine] Neon Stein"
-          ],
           "TargetTerritoryId": 1207
         },
         {
@@ -28,7 +24,6 @@
             "Y": 0,
             "Z": 2.6397705
           },
-          "StopDistance": 5,
           "TerritoryId": 1207,
           "InteractionType": "AcceptQuest"
         }
@@ -44,7 +39,6 @@
             "Y": -0.44999987,
             "Z": 2.1820068
           },
-          "StopDistance": 5,
           "TerritoryId": 1207,
           "InteractionType": "Interact"
         }
@@ -61,8 +55,7 @@
             "Z": -816.8002
           },
           "TerritoryId": 1191,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

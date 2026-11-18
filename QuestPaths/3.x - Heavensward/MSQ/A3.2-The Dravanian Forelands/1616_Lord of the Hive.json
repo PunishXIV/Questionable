@@ -72,7 +72,6 @@
             "Y": -128.9908,
             "Z": 728.26733
           },
-          "StopDistance": 5,
           "TerritoryId": 398,
           "InteractionType": "Interact"
         }
@@ -90,13 +89,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 1797,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "QuestsCompleted": [1797]
-            }
-          }
+          "PickUpQuestId": 1797
         },
         {
           "DataId": 1011937,
@@ -107,13 +100,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 1802,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "QuestsCompleted": [1802]
-            }
-          }
+          "PickUpQuestId": 1802
         },
         {
           "Position": {
@@ -158,34 +145,6 @@
               }
             }
           }
-        },
-        {
-          "Position": {
-            "X": -30.522272,
-            "Y": -32.192017,
-            "Z": -84.3334
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
-        },
-        {
-          "Position": {
-            "X": -21.787895,
-            "Y": -30.428743,
-            "Z": -80.12713
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 22.235865,
-            "Y": -24.754946,
-            "Z": -119.65716
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1014544,

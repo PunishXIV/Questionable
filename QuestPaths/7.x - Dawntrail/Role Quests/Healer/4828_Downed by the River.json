@@ -14,8 +14,7 @@
             "Z": 111.436646
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -67,7 +65,6 @@
             "Y": 35.78235,
             "Z": 268.05518
           },
-          "StopDistance": 0.25,
           "TerritoryId": 137,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
@@ -76,8 +73,6 @@
             17615,
             17616
           ],
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "Fly": true,
           "Comment": "two waves of enemies"
         }
       ]
@@ -123,8 +118,7 @@
             "Z": 451.34656
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -140,7 +134,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "NextQuestId": 4829
         }
       ]

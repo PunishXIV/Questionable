@@ -16,8 +16,6 @@
           },
           "TerritoryId": 145,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -40,8 +38,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "SinglePlayerDuty",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -74,9 +70,7 @@
             "Z": -6.729248
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,9 +85,7 @@
             "Z": -6.2105103
           },
           "TerritoryId": 145,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

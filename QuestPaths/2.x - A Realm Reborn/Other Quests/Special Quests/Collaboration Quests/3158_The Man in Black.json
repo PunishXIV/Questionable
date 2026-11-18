@@ -15,7 +15,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "$": "auto: issuer 1026849 (Kipih Jakkya)"
         }
       ]
@@ -32,8 +31,6 @@
           },
           "TerritoryId": 141,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "$": "auto: todo location -> 2009661 (destination)"
         }
       ]
@@ -50,8 +47,7 @@
             "Z": -36.87684
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "Position": {
@@ -78,8 +74,6 @@
           },
           "TerritoryId": 141,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "$": "auto: todo location -> 2009662 (destination)"
         }
       ]
@@ -96,7 +90,6 @@
           },
           "TerritoryId": 141,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "$": "auto: todo location -> 1026850 (Cid)"
         }
       ]
@@ -113,7 +106,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah",
           "NextQuestId": 3159,
           "$": "auto: todo turn-in -> 1026849 (Kipih Jakkya)"
         }

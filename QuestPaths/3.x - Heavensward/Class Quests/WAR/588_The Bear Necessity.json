@@ -14,8 +14,7 @@
             "Z": 18.814331
           },
           "TerritoryId": 139,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -72,8 +70,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 0.25,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -89,7 +85,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "Fly": false,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
@@ -129,8 +124,6 @@
           "KillEnemyDataIds": [
             4373
           ],
-          "Fly": true,
-          "StopDistance": 0.25,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -151,8 +144,6 @@
           "KillEnemyDataIds": [
             4373
           ],
-          "Fly": false,
-          "StopDistance": 0.25,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
@@ -164,17 +155,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 427.1206,
-            "Y": 7.9075317,
-            "Z": 24.77774
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
-        },
         {
           "DataId": 1013279,
           "Position": {

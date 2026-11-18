@@ -14,8 +14,7 @@
             "Z": -682.06305
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -57,7 +56,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -85,7 +83,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "2 96  0 0  0 34 -> 3 80  0 0  0 35",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,1]
         },
@@ -98,7 +95,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "3 80  0 0  0 35 -> 4 64  0 0  0 43",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
         },
@@ -109,10 +105,8 @@
             "Y": 31.164318,
             "Z": -744.9912
           },
-          "StopDistance": 0.5,
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "4 64  0 0  0 43 -> 5 48  0 0  0 47",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,4]
         },
@@ -125,19 +119,8 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Mount": true,
           "$": "5 48  0 0  0 47 -> 6 32  0 0  0 111",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-        },
-        {
-          "Position": {
-            "X": 20.33117,
-            "Y": 32.412514,
-            "Z": -710.2311
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 1009141,
@@ -150,16 +133,6 @@
           "InteractionType": "Interact",
           "$": "6 32  0 0  0 111 -> 7 16  0 0  0 239",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-        },
-        {
-          "Position": {
-            "X": 19.0689,
-            "Y": 28.620823,
-            "Z": -687.8293
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 1009144,
@@ -184,7 +157,6 @@
             "Y": -1.9957249,
             "Z": -42.130188
           },
-          "StopDistance": 7,
           "TerritoryId": 351,
           "InteractionType": "Interact"
         }
@@ -200,7 +172,6 @@
             "Y": -1.9957249,
             "Z": -45.700806
           },
-          "StopDistance": 7,
           "TerritoryId": 351,
           "InteractionType": "CompleteQuest"
         }

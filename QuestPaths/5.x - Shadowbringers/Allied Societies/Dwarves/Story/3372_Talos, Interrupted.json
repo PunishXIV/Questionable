@@ -14,8 +14,7 @@
             "Z": 204.66919
           },
           "TerritoryId": 814,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kholusia - Wright"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 814,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             11152
@@ -65,7 +63,6 @@
             "Z": 204.66919
           },
           "TerritoryId": 814,
-          "Fly": true,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3373
         }

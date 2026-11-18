@@ -14,18 +14,7 @@
             "Z": -246.87573
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,9 +29,7 @@
             "Z": -565.0874
           },
           "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azys Lla - Helix",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -55,14 +42,12 @@
             "Y": 293.97687,
             "Z": -0.15623161
           },
-          "StopDistance": 0.5,
           "TerritoryId": 402,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7231
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -107,7 +92,6 @@
             "Y": 293.9787,
             "Z": -1.0529175
           },
-          "StopDistance": 5,
           "TerritoryId": 402,
           "InteractionType": "Interact"
         }
@@ -124,11 +108,7 @@
             "Z": -246.87573
           },
           "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

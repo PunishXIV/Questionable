@@ -29,10 +29,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] The Pendants"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -70,11 +66,7 @@
             "Z": -153.27692
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Amaro Launch"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

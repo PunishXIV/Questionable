@@ -14,8 +14,6 @@
           },
           "TerritoryId": 961,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Elpis - Twelve Wonders",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "AetherCurrentUnlocked": 2818375

@@ -14,8 +14,7 @@
             "Z": -80.03363
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,7 @@
             "Z": -111.92493
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,8 +60,6 @@
           },
           "TerritoryId": 141,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -85,16 +78,6 @@
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": 177.75328,
-            "Y": -1,
-            "Z": -316.30814
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1006359,
           "Position": {

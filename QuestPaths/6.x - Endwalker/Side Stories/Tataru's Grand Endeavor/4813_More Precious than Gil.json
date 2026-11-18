@@ -13,10 +13,8 @@
             "Y": 3.1168795,
             "Z": -272.26672
           },
-          "StopDistance": 5,
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,7 +28,6 @@
             "Y": 3.1168795,
             "Z": -272.26672
           },
-          "StopDistance": 5,
           "TerritoryId": 957,
           "InteractionType": "Interact"
         }
@@ -84,10 +81,8 @@
             "Y": 10.612534,
             "Z": 232.90868
           },
-          "StopDistance": 0.5,
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -101,7 +96,6 @@
             "Y": 3.1168792,
             "Z": -273.76215
           },
-          "StopDistance": 7,
           "TerritoryId": 957,
           "InteractionType": "Interact"
         }
@@ -118,8 +112,7 @@
             "Z": -67.73486
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Old Sharlayan"
+          "InteractionType": "Interact"
         }
       ]
     },

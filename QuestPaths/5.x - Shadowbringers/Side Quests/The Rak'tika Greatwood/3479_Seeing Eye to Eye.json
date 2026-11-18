@@ -30,7 +30,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -83,7 +82,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 3480
         }
       ]

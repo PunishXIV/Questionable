@@ -14,9 +14,7 @@
             "Z": 11.825684
           },
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": -309.65137
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,8 +45,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "NextQuestId": 1922
         }
       ]

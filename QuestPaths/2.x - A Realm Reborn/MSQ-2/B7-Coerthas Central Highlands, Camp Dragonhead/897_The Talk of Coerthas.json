@@ -14,8 +14,7 @@
             "Z": -199.96954
           },
           "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -98,8 +97,7 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "$": "NW Skyfire Locks door (inside)",
-          "Mount": true
+          "$": "NW Skyfire Locks door (inside)"
         },
         {
           "Position": {
@@ -163,8 +161,7 @@
             "Z": -199.96954
           },
           "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

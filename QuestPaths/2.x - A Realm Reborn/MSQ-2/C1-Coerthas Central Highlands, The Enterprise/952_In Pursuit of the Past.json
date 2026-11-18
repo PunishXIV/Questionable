@@ -14,8 +14,7 @@
             "Z": -245.7771
           },
           "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -75,7 +74,6 @@
             "Y": -21.970922,
             "Z": 119.73743
           },
-          "StopDistance": 5,
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest"
         }

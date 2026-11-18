@@ -15,10 +15,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
           "$": "auto: issuer 1000627 (Q'djawana)"
         }
       ]
@@ -34,8 +30,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -60,11 +54,8 @@
             "Z": -103.80447
           },
           "TerritoryId": 154,
-          "StopDistance": 1,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 98,
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo turn-in -> 1000656 (Dametta)"
         }
       ]

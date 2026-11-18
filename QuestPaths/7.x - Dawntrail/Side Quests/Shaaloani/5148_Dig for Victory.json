@@ -13,7 +13,6 @@
             "Z": -118.54736
           },
           "TerritoryId": 1190,
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -29,8 +28,7 @@
             "Z": 444.23596
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,7 +44,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -127,8 +124,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [
@@ -167,8 +162,7 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
-          "$": "Shaaloani Hhusatahwi Saloon Stairs (top)",
-          "Mount": true
+          "$": "Shaaloani Hhusatahwi Saloon Stairs (top)"
         },
         {
           "Position": {
@@ -203,9 +197,7 @@
             "Z": -118.54736
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

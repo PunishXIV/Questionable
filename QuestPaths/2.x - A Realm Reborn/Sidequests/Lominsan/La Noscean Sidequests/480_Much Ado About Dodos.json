@@ -15,11 +15,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
           "$": "auto: issuer 1002657 (Moegramm)"
         }
       ]
@@ -96,11 +91,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
           "$": "auto: todo turn-in -> 1002657 (Moegramm)"
         }
       ]

@@ -13,14 +13,8 @@
             "Y": 4.065,
             "Z": -107.286194
           },
-          "StopDistance": 5,
           "TerritoryId": 963,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,10 +30,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Hall of the Radiant Host",
-            "[Radz-at-Han] Aetheryte Plaza"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
@@ -51,11 +41,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Alzadaal's Peace"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -78,11 +63,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Ruveydah Fibers"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -98,12 +78,7 @@
             "Z": -106.55377
           },
           "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

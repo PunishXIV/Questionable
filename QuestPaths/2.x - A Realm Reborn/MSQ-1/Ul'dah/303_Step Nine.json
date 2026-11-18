@@ -27,7 +27,6 @@
             "Y": 0.9387207,
             "Z": 265.01544
           },
-          "StopDistance": 0.25,
           "TerritoryId": 141,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -45,7 +44,6 @@
             "Y": 0.99176025,
             "Z": 255.8479
           },
-          "StopDistance": 7,
           "TerritoryId": 141,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 2
@@ -55,15 +53,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -60.070023,
-            "Y": -3.6582303,
-            "Z": 160.2097
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1001541,
           "Position": {

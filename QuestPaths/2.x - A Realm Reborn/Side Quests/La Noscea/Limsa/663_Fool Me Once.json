@@ -14,14 +14,7 @@
             "Z": 3.5552979
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [128,129] }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,14 +30,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "SkipConditions": {
-            "AethernetShortcutIf": { "InSameTerritory": true }
-          },
           "NextQuestId": 475
         }
       ]

@@ -29,8 +29,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -41,7 +39,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -55,7 +52,6 @@
             "Y": 26.716875,
             "Z": -161.05902
           },
-          "StopDistance": 7,
           "TerritoryId": 1189,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -73,12 +69,7 @@
             "Z": -652.9183
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Dirigible Landing (Yak T'el)"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

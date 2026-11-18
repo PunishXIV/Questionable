@@ -14,18 +14,7 @@
             "Z": -9.414856
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -83,7 +72,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -94,10 +82,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -111,7 +95,6 @@
             "Y": 41.50014,
             "Z": 120.44341
           },
-          "StopDistance": 0.25,
           "TerritoryId": 131,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -129,11 +112,7 @@
             "Z": 61.81433
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

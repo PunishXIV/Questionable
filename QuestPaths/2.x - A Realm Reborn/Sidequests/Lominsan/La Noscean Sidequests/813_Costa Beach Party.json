@@ -14,9 +14,7 @@
             "Z": 456.43982
           },
           "TerritoryId": 137,
-          "StopDistance": 1,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "$": "auto: issuer 1006273 (Gegeruju)"
         }
       ]
@@ -33,7 +31,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 1006274 (carriage driver)"
         }
       ]
@@ -50,7 +47,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: lua ACTOR2 -> 1006275 (leggy dancer)"
         },
@@ -63,7 +59,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
@@ -75,7 +70,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
@@ -87,7 +81,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         }
       ]
@@ -103,9 +96,7 @@
             "Z": 456.43982
           },
           "TerritoryId": 137,
-          "StopDistance": 1,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "$": "auto: todo turn-in -> 1006273 (Gegeruju)"
         }
       ]

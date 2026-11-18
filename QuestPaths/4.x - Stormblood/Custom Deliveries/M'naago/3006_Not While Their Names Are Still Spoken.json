@@ -13,11 +13,6 @@
           },
           "TerritoryId": 635,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ],
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -39,7 +34,6 @@
             "Y": 13.02367,
             "Z": -90.53424
           },
-          "StopDistance": 1,
           "TerritoryId": 635,
           "InteractionType": "AcceptQuest"
         }
@@ -56,9 +50,7 @@
             "Z": 785.2749
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Peaks - Ala Ghiri"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -73,10 +65,7 @@
             "Z": 546.1499
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,8 +80,7 @@
             "Z": 212.84802
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Peering Stones"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -107,11 +95,6 @@
           },
           "TerritoryId": 635,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ],
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -133,7 +116,6 @@
             "Y": 13.02367,
             "Z": -90.53424
           },
-          "StopDistance": 1,
           "TerritoryId": 635,
           "InteractionType": "CompleteQuest"
         }

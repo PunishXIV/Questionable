@@ -15,10 +15,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_AKTKLA305_04150_Q1_000_000",
@@ -42,7 +38,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
           "$": "auto: todo location -> 1039229 (Debroye)"
         }
       ]
@@ -59,7 +54,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han",
           "$": "auto: todo location -> 1039230 (Debroye)"
         }
       ]
@@ -76,10 +70,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Alzadaal's Peace",
-            "[Radz-at-Han] The High Crucible of Al-Kimiya"
-          ],
           "$": "auto: todo location -> 1039231 (apprentice alchemist)"
         }
       ]
@@ -111,12 +101,7 @@
             "Z": -215.53165
           },
           "TerritoryId": 963,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] The High Crucible of Al-Kimiya",
-            "[Radz-at-Han] Mehryde's Meyhane"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_AKTKLA305_04150_Q3_000_000",
@@ -146,7 +131,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han",
           "$": "auto: todo location -> 1039233 (Debroye); npc trade"
         }
       ]
@@ -163,10 +147,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: todo turn-in -> 1039220 (Debroye)"
         }
       ]

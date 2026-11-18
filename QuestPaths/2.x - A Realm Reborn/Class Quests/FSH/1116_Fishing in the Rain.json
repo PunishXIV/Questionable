@@ -15,18 +15,7 @@
             "Z": 164.294
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -64,41 +53,11 @@
           },
           "ItemId": 2601,
           "ItemCount": 99,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
                 "NotInInventory": false
               }
-            },
-            "AetheryteShortcutIf": {
-              "Item": {
-                "NotInInventory": false
-              },
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
-        },
-        {
-          "AetheryteShortcut": "Gridania",
-          "Position": {
-            "X": 83.91077,
-            "Y": -8.111642,
-            "Z": 123.51372
-          },
-          "TerritoryId": 132,
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132
-              ]
             }
           }
         },
@@ -124,10 +83,6 @@
         },
         {
           "Comment": "Deliver Raincallers to Sybell",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "DataId": 1003629,
           "Position": {
             "X": -171.89,

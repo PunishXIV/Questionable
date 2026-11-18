@@ -28,8 +28,7 @@
             "Z": -168.5664
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -43,10 +42,8 @@
             "Y": 105.92186,
             "Z": -618.92126
           },
-          "StopDistance": 2,
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,7 +59,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",

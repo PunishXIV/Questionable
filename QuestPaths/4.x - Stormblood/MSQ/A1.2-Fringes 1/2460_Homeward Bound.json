@@ -29,8 +29,7 @@
             "Z": -730.4951
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -44,7 +43,6 @@
             "Y": 118.1921,
             "Z": -732.93665
           },
-          "StopDistance": 5,
           "TerritoryId": 620,
           "InteractionType": "Interact"
         }
@@ -69,27 +67,12 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 165.07161,
-            "Y": 13.02367,
-            "Z": -91.94302
-          },
-          "TerritoryId": 635,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ]
-        },
-        {
           "DataId": 1020338,
           "Position": {
             "X": 170.30591,
             "Y": 13.02367,
             "Z": -93.06476
           },
-          "StopDistance": 7,
           "TerritoryId": 635,
           "InteractionType": "CompleteQuest"
         }

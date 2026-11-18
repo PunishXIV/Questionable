@@ -7,22 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1032005,
           "Position": {
             "X": 206.22559,
@@ -45,11 +29,7 @@
             "Z": -93.7973
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,30 +44,13 @@
             "Z": 751.3999
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "TerritoryId": 886,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "AetheryteShortcut": "Ishgard",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886,418
-              ]
-            }
-          }
-        },
         {
           "DataId": 1032786,
           "Position": {
@@ -97,10 +60,6 @@
           },
           "TerritoryId": 886,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The Mattock"
-          ],
           "NextQuestId": 3889
         }
       ]

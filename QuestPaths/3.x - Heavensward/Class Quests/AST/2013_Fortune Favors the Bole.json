@@ -10,9 +10,7 @@
           "TerritoryId": 153,
           "InteractionType": "EquipItem",
           "ItemId": 10524,
-          "AetheryteShortcut": "South Shroud - Quarrymill",
           "SkipConditions": {
-            "AetheryteShortcutIf": {"InTerritory": [153]},
             "StepIf": {
               "Item": {
                 "NotInInventory": true
@@ -43,9 +41,7 @@
             "Z": 50.492065
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -61,9 +57,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "SinglePlayerDuty",
-          "StopDistance": 5,
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Quarrymill",
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -82,11 +75,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest",
-          "StopDistance": 5,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
           "NextQuestId": 2014
         }
       ]

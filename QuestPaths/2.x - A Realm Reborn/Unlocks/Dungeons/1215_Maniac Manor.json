@@ -14,10 +14,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona"
+          "$": "Rising Stones Door"
         },
         {
           "DataId": 1005523,
@@ -27,8 +24,7 @@
             "Z": -643.76294
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "Mount": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,18 +39,7 @@
             "Z": -334.5846
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -70,8 +55,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "Can possibly check if using White Wolf aethernet shortcut is quicker?"
         }
       ]

@@ -15,7 +15,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: issuer 1012097 (Slowfix)"
         }
       ]
@@ -65,12 +64,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         }
       ]
@@ -87,7 +80,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo location -> 1012097 (Slowfix)"
         }
       ]
@@ -104,12 +96,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ],
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             4779
@@ -142,13 +128,7 @@
             "Z": -151.692
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -163,8 +143,7 @@
             "Z": -385.158
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -180,7 +159,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo turn-in -> 1012097 (Slowfix)"
         }
       ]

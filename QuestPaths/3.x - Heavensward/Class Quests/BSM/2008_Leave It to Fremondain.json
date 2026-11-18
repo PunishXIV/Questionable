@@ -15,38 +15,13 @@
             "Z": -25.833557
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 388.20682,
-            "Y": 173.55502,
-            "Z": 451.4228
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [397]
-            }
-          }
-        },
         {
           "DataId": 1012511,
           "Position": {
@@ -77,16 +52,7 @@
             "Z": -25.833557
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -114,16 +80,7 @@
             "Z": -25.833557
           },
           "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Jeweled Crozier"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

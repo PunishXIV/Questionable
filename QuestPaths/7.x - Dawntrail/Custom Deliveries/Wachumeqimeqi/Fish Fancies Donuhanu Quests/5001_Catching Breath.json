@@ -14,11 +14,7 @@
             "Z": 12.218
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,25 +29,12 @@
         },
         {
           "Position": {
-            "X": 480.87372,
-            "Y": 15.46027,
-            "Z": 669.95386
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1
-        },
-        {
-          "Position": {
             "X": 482.38736,
             "Y": 14.930612,
             "Z": 672.66675
           },
           "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "Mount": false
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 1190,
@@ -72,11 +55,7 @@
             "Z": 12.218
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

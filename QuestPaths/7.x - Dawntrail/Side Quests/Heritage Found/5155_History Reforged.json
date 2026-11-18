@@ -13,22 +13,7 @@
             "Z": -502.09814
           },
           "TerritoryId": 1191,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -591.76013,
-                  "Y": -2.503842,
-                  "Z": -502.09814
-                },
-                "TerritoryId": 1191,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,7 +28,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -57,7 +41,6 @@
             "Y": 11.459534,
             "Z": -110.185425
           },
-          "StopDistance": 4,
           "TerritoryId": 1191,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -71,7 +54,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -82,7 +64,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -113,9 +94,7 @@
             "Z": -502.09814
           },
           "TerritoryId": 1191,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

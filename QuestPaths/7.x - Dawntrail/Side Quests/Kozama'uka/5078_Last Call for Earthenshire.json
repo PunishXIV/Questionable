@@ -51,7 +51,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -63,7 +62,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -79,8 +77,7 @@
             "Z": 176.98938
           },
           "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

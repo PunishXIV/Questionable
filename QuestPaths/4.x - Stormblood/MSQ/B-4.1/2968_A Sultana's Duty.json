@@ -29,11 +29,7 @@
             "Z": 78.62964
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,11 +44,7 @@
             "Z": -7.5532227
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Thaumaturges' Guild",
-            "[Ul'dah] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,14 +77,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "TerritoryId": 144,
-          "AethernetShortcut": [
-            "[Gold Saucer] Entrance & Card Squares",
-            "[Gold Saucer] Wonder Square West"
-          ],
-          "InteractionType": "None"
-        },
         {
           "DataId": 1024043,
           "Position": {

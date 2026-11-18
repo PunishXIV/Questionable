@@ -14,8 +14,7 @@
             "Z": 739.4979
           },
           "TerritoryId": 620,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Peaks - Ala Ghiri"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +29,7 @@
             "Z": -685.5116
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Gannha",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,7 +43,6 @@
             "Y": 118.31259,
             "Z": -684.596
           },
-          "StopDistance": 5,
           "TerritoryId": 620,
           "InteractionType": "Interact"
         }
@@ -61,14 +57,12 @@
             "Y": 101.93955,
             "Z": -691.41956
           },
-          "StopDistance": 0.5,
           "TerritoryId": 620,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17624
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [1,null,null,null,null,null]
         },
         {
@@ -94,9 +88,7 @@
             "Z": -684.596
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Gannha",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -111,8 +103,7 @@
             "Z": -282.5208
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -128,7 +119,6 @@
           },
           "TerritoryId": 620,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Peaks - Ala Ghiri",
           "NextQuestId": 4840
         }
       ]

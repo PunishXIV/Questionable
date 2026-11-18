@@ -14,56 +14,13 @@
             "Z": 107.04199
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut":[
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "$": "Backup Path: used if user teleported away",
-          "TerritoryId": 628,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut":[
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Rakuza District"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                628
-              ]
-            },
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 47.501343,
-                  "Y": 8.438171,
-                  "Z": -37.30841
-                },
-                "TerritoryId": 628,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
-          "$": "Main Path, Tested; if backup path (above) is used, this step is automatically skipped (since the user will end up near the Rakuza District)",
-          "TerritoryId": 628,
-          "InteractionType": "None",
-          "AethernetShortcut":[
-            "[Kugane] The Ruby Bazaar",
-            "[Kugane] Rakuza District"
-          ]
-          
-        },
         {
           "DataId": 1023613,
           "Position": {
@@ -100,12 +57,7 @@
             "Z": 107.04199
           },
           "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut":[
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

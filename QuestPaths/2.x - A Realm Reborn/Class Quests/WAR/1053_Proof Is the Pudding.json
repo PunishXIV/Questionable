@@ -15,8 +15,7 @@
             "Z": 74.47925
           },
           "TerritoryId": 137,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,8 +36,7 @@
               "DataId": 1922,
               "CompletionQuestVariablesFlags": [1,null,null,null,null,null]
             }
-          ],
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          ]
         },
         {
           "DataId": 2002312,
@@ -64,9 +62,7 @@
           },
           "TerritoryId": 137,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "NextQuestId": 1054,
-          "Fly": true
+          "NextQuestId": 1054
         }
       ]
     }

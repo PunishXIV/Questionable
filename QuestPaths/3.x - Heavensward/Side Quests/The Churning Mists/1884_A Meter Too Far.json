@@ -30,7 +30,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -42,7 +41,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -54,7 +52,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -69,10 +66,8 @@
             "Y": 266.003,
             "Z": -673.7926
           },
-          "StopDistance": 0.25,
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -86,10 +81,8 @@
             "Y": 285.65656,
             "Z": -168.65796
           },
-          "StopDistance": 0.25,
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -105,7 +98,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -117,7 +109,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -129,7 +120,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -144,10 +134,8 @@
             "Y": 285.65656,
             "Z": -168.65796
           },
-          "StopDistance": 0.25,
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -162,8 +150,7 @@
             "Z": -317.37244
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

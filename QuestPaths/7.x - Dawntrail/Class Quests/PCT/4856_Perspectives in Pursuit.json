@@ -13,18 +13,7 @@
             "Z": -339.13184
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,9 +28,7 @@
             "Z": -254.26111
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -71,8 +58,7 @@
             "Z": -575.8297
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,14 +71,12 @@
             "Y": 346.8219,
             "Z": -669.97644
           },
-          "StopDistance": 0.5,
           "TerritoryId": 155,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17628
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -108,8 +92,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Mount": true,
           "NextQuestId": 4857
         }
       ]

@@ -14,9 +14,7 @@
             "Z": -349.4469
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,9 +30,7 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1},{"Low": 2}
             ],null],
@@ -53,7 +49,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1},{"Low": 5}
@@ -73,7 +68,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 3},{"Low": 4},{"Low": 5}
@@ -93,7 +87,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 3},{"Low": 5}
@@ -113,7 +106,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 2},{"Low": 4}
@@ -133,7 +125,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 2}
@@ -153,7 +144,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "RequiredQuestVariables": [null,null,null,null,[
             {"Low": 1},{"Low": 3},{"Low": 4}
@@ -182,8 +172,7 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 3},{"High": 4}
             ],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "DataId": 2003122,
@@ -198,8 +187,7 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 1},{"High": 2},{"High": 4}
             ],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
           "DataId": 2003119,
@@ -214,8 +202,7 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 3}
             ],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 2003123,
@@ -230,8 +217,7 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 1},{"High": 3},{"High": 5}
             ],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
         },
         {
           "DataId": 2003120,
@@ -246,8 +232,7 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 2},{"High": 4},{"High": 5}
             ],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
           "DataId": 2003124,
@@ -262,8 +247,7 @@
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 1},{"High": 2},{"High": 5}
             ],null],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 4}],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 4}]
         }
       ]
     },
@@ -278,9 +262,7 @@
             "Z": -349.4469
           },
           "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

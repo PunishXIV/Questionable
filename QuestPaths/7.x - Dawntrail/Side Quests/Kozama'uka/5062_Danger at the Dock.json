@@ -34,8 +34,7 @@
           "KillEnemyDataIds": [
             17657,
             17658
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -50,8 +49,7 @@
             "Z": -510.70422
           },
           "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

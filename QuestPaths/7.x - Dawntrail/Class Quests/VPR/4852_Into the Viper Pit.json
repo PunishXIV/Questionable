@@ -14,8 +14,7 @@
             "Z": -71.70221
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,12 +29,7 @@
             "Z": -541.4359
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,7 +45,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -63,7 +56,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -75,7 +67,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -90,10 +81,8 @@
             "Y": 103.4929,
             "Z": -280.14038
           },
-          "StopDistance": 1,
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -115,9 +104,7 @@
             "Z": 288.19702
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -166,7 +153,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
           "NextQuestId": 4853
         }
       ]

@@ -14,9 +14,7 @@
             "Z": 98.54055
           },
           "TerritoryId": 622,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 90.62329
           },
           "TerritoryId": 622,
-          "Fly": true,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,9 +45,7 @@
           },
           "TerritoryId": 622,
           "InteractionType": "Action",
-          "Action": "Wasshoi",
-          "Fly": true,
-          "Land": true
+          "Action": "Wasshoi"
         }
       ]
     },
@@ -67,9 +61,7 @@
           },
           "TerritoryId": 622,
           "InteractionType": "Action",
-          "Action": "Wasshoi",
-          "Fly": true,
-          "Land": true
+          "Action": "Wasshoi"
         }
       ]
     },
@@ -84,9 +76,7 @@
             "Z": 98.54055
           },
           "TerritoryId": 622,
-          "StopDistance": 1,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

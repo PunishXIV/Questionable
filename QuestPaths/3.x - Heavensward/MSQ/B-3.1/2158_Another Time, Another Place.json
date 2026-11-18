@@ -14,8 +14,7 @@
             "Z": 37.064087
           },
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 19.546753
           },
           "TerritoryId": 478,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,8 +59,7 @@
             "Z": 700.8926
           },
           "TerritoryId": 399,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

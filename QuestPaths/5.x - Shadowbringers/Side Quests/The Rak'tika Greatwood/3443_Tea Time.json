@@ -34,7 +34,6 @@
           "TerritoryId": 817,
           "InteractionType": "UseItem",
           "ItemId": 2002521,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
@@ -47,7 +46,6 @@
           "TerritoryId": 817,
           "InteractionType": "UseItem",
           "ItemId": 2002521,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
@@ -60,7 +58,6 @@
           "TerritoryId": 817,
           "InteractionType": "UseItem",
           "ItemId": 2002521,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
@@ -73,7 +70,6 @@
           "TerritoryId": 817,
           "InteractionType": "UseItem",
           "ItemId": 2002521,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
         },
         {
@@ -86,7 +82,6 @@
           "TerritoryId": 817,
           "InteractionType": "UseItem",
           "ItemId": 2002521,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 8]
         }
       ]
@@ -103,7 +98,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
@@ -115,7 +109,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
@@ -127,7 +120,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
         {
@@ -139,7 +131,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
         },
         {
@@ -151,7 +142,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 8]
         }
       ]
@@ -167,8 +157,7 @@
             "Z": 246.595
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

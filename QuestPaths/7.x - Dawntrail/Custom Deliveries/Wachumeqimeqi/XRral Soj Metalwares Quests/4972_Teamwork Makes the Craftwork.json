@@ -15,10 +15,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: issuer 1047135 (Rral Soj)"
         }
       ]
@@ -35,7 +31,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Earthenshire",
           "$": "auto: todo location -> 1047138 (Rral Soj)"
         }
       ]
@@ -52,7 +47,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 1047139 (Rral Soj)"
         }
       ]
@@ -91,10 +85,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: todo turn-in -> 1047135 (Rral Soj)"
         }
       ]

@@ -15,11 +15,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -41,9 +36,7 @@
             "Z": 510.61267
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -58,9 +51,7 @@
             "Z": -576.9589
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Gannha",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -74,7 +65,6 @@
             "Y": 116.12106,
             "Z": -577.9355
           },
-          "StopDistance": 7,
           "TerritoryId": 620,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -86,7 +76,6 @@
             "Y": 116.152916,
             "Z": -574.4259
           },
-          "StopDistance": 7,
           "TerritoryId": 620,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -104,8 +93,7 @@
             "Z": -728.6946
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -121,8 +109,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true,
           "NextQuestId": 4109
         }
       ]

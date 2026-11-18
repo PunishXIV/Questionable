@@ -15,7 +15,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -38,12 +37,10 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             14013
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -78,7 +75,6 @@
           "KillEnemyDataIds": [
             14014
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128
           ]
         },
@@ -95,7 +91,6 @@
           "KillEnemyDataIds": [
             14014
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64
           ]
         },
@@ -107,8 +102,7 @@
             "Z": -93.614136
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -123,8 +117,7 @@
             "Z": 173.66284
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

@@ -16,20 +16,9 @@ internal static class QuestStepCapture
         };
     }
 
-    public static QuestStep CreateStepFromTarget(IGameObject target, uint territoryType)
-    {
-        return new QuestStep(GuessInteractionType(target), GameFunctions.GetBaseId(target), target.Position,
-            territoryType)
-        {
-            Fly = GameFunctions.IsFlyingUnlocked(territoryType) ? true : null
-        };
-    }
+    public static QuestStep CreateStepFromTarget(IGameObject target, uint territoryType) =>
+        new(GuessInteractionType(target), GameFunctions.GetBaseId(target), target.Position, territoryType);
 
-    public static QuestStep CreatePositionStep(Vector3 position, uint territoryType)
-    {
-        return new QuestStep(EInteractionType.WalkTo, null, position, territoryType)
-        {
-            Fly = GameFunctions.IsFlyingUnlocked(territoryType) ? true : null
-        };
-    }
+    public static QuestStep CreatePositionStep(Vector3 position, uint territoryType) =>
+        new(EInteractionType.WalkTo, null, position, territoryType);
 }

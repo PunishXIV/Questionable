@@ -13,11 +13,7 @@
             "Z": 29.281982
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,11 +28,7 @@
             "Z": 97.24573
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,11 +43,7 @@
             "Z": 154.554
           },
           "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Goldsmiths' Guild",
-            "[Ul'dah] Miners' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

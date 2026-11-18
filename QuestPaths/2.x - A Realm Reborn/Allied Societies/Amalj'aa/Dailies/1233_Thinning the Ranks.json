@@ -14,9 +14,7 @@
             "Z": -349.4469
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,7 +30,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "ComplexCombatData": [
             {
               "DataId": 739,
@@ -47,8 +44,7 @@
               "CompletionQuestVariablesFlags": [{"Low": 2},null,null,null,null,null]
             }
           ],
-          "EnemySpawnType": "OverworldEnemies",
-          "Fly": true
+          "EnemySpawnType": "OverworldEnemies"
         }
       ]
     },
@@ -63,9 +59,7 @@
             "Z": -349.4469
           },
           "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

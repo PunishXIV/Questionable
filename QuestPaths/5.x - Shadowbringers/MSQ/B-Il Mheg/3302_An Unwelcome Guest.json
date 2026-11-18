@@ -41,11 +41,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ],
           "TargetTerritoryId": 844
         }
       ]
@@ -61,12 +56,7 @@
             "Z": -266.2547
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Cabinet of Curiosity"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

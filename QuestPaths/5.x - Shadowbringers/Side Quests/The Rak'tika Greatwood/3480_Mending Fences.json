@@ -29,8 +29,7 @@
             "Z": 133.77576
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,8 +55,7 @@
           null,null,null,null
               ]
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -72,8 +70,7 @@
             "Z": 133.77576
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -88,8 +85,7 @@
             "Z": 134.59973
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -105,7 +101,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -115,10 +110,8 @@
             "Y": 11.184814,
             "Z": 30.502686
           },
-          "StopDistance": 0.5,
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -128,10 +121,8 @@
             "Y": 21.86615,
             "Z": -20.004639
           },
-          "StopDistance": 0.5,
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -147,8 +138,7 @@
             "Z": 134.59973
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -161,7 +151,6 @@
             "Y": 11.8605385,
             "Z": 172.98285
           },
-          "StopDistance": 0.5,
           "TerritoryId": 817,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -198,7 +187,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 3481
         }
       ]

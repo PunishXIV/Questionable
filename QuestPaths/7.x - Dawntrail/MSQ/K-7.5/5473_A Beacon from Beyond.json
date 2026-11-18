@@ -15,8 +15,7 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 1162,
-          "Fly": true
+          "TargetTerritoryId": 1162
         },
         {
           "DataId": 1058818,
@@ -42,8 +41,7 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 1162,
-          "Fly": true
+          "TargetTerritoryId": 1162
         },
         {
           "DataId": 1058821,
@@ -78,8 +76,7 @@
           "TerritoryId": 959,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1162,
-          "SkipConditions": {"StepIf": {"InTerritory": [1162, 1077]}},
-          "Fly": true
+          "SkipConditions": {"StepIf": {"InTerritory": [1162, 1077]}}
         },
         {
           "DataId": 2015308,
@@ -118,8 +115,7 @@
           "TerritoryId": 959,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1162,
-          "SkipConditions": {"StepIf": {"InTerritory": [1162, 1077]}},
-          "Fly": true
+          "SkipConditions": {"StepIf": {"InTerritory": [1162, 1077]}}
         },
         {
           "DataId": 2015308,

@@ -14,8 +14,7 @@
             "Z": -510.67374
           },
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,7 +42,6 @@
             "Y": 105.07213,
             "Z": -401.3476
           },
-          "StopDistance": 0.5,
           "TerritoryId": 612,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -62,7 +60,6 @@
             "Y": 64.93323,
             "Z": -676.26465
           },
-          "StopDistance": 2,
           "TerritoryId": 612,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -83,9 +80,7 @@
             "Z": -510.67374
           },
           "TerritoryId": 612,
-          "Mount": false,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

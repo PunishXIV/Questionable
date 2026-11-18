@@ -14,8 +14,7 @@
             "Z": 100.87732
           },
           "TerritoryId": 145,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 276.5697
           },
           "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

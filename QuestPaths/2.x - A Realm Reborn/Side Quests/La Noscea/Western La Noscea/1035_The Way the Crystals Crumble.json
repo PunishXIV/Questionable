@@ -14,9 +14,7 @@
             "Z": 60.50025
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,7 +33,6 @@
           "ItemId": 2000782,
           "GroundTarget": true,
           "KillEnemyDataIds": [2101, 2098],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -57,7 +54,6 @@
           "ItemId": 2000782,
           "GroundTarget": true,
           "KillEnemyDataIds": [2101, 2098],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -93,35 +89,13 @@
             "Z": 61.41748
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "TerritoryId": 132,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
         {
           "Position": {
             "X": -492.96475,
@@ -130,7 +104,6 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },

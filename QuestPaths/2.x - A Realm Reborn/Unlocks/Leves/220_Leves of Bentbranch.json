@@ -21,8 +21,7 @@
             "Z": 108.11
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,8 +38,7 @@
             "Z": 40.8088
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "InteractionType": "Interact"
         }
       ]
     },

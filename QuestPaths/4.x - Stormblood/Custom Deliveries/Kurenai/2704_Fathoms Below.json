@@ -7,26 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": 322.1539,
-            "Y": -121.22571,
-            "Z": -314.2446
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu"
-        },
-        {
-          "Position": {
-            "X": 22.288645,
-            "Y": -196.2301,
-            "Z": -155.5739
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "$": "Sui-no-Sato, NE outside"
-        },
-        {
           "DataId": 1023280,
           "Position": {
             "X": -62.790894,
@@ -34,8 +14,7 @@
             "Z": -64.34735
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -50,8 +29,7 @@
             "Z": -82.383545
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,7 +45,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 2705
         }
       ]

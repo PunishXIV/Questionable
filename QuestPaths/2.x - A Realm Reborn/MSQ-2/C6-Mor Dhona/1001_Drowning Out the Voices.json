@@ -144,35 +144,13 @@
         },
         {
           "Position": {
-            "X": -159.67096,
-            "Y": 2.7818115,
-            "Z": -634.4776
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "$": "Camp Revenant's Toll (bottom)"
-        },
-        {
-          "Position": {
-            "X": -169.94295,
-            "Y": 13.794385,
-            "Z": -610.4647
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "$": "Camp Revenant's Toll (top)",
-          "$2": "TODO Unsure if this can be reached without flying, or needs more nav"
-        },
-        {
-          "Position": {
             "X": -175.24794,
             "Y": 10.096513,
             "Z": -605.4419
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "$": "Camp Revenant's Toll (after jump)",
-          "Mount": false
+          "$": "Camp Revenant's Toll (after jump)"
         },
         {
           "DataId": 2002231,
@@ -199,8 +177,7 @@
             "Z": -687.4037
           },
           "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

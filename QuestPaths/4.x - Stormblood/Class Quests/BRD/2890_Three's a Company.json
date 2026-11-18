@@ -14,9 +14,7 @@
             "Z": -7.3396606
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,11 +29,7 @@
             "Z": 73.746826
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,11 +44,7 @@
             "Z": -5.081299
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,9 +59,7 @@
             "Z": 240.34485
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -87,7 +75,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "NextQuestId": 2891
         }
       ]

@@ -28,11 +28,7 @@
             "Z": 157.97656
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Ruveydah Fibers",
-            "[Radz-at-Han] Alzadaal's Peace"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -82,7 +78,6 @@
             "Y": 13.999934,
             "Z": 157.97656
           },
-          "StopDistance": 7,
           "TerritoryId": 963,
           "InteractionType": "Interact"
         }
@@ -92,25 +87,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": -38.102844,
-            "Y": 7.704563,
-            "Z": 106.27705
-          },
-          "TerritoryId": 963,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 6.6071167,
-            "Y": -2.02948,
-            "Z": 110.55151
-          },
-          "StopDistance": 2,
-          "TerritoryId": 963,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1037469,
           "Position": {
             "X": -148.8518,
@@ -118,11 +94,7 @@
             "Z": 38.895264
           },
           "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Alzadaal's Peace",
-            "[Radz-at-Han] Ruveydah Fibers"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

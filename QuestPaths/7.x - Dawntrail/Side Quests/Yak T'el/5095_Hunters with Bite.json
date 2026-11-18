@@ -33,8 +33,7 @@
           "KillEnemyDataIds": [
             17664,
             17665
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -49,8 +48,7 @@
             "Z": -94.83484
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "StopDistance": 7
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,9 +63,7 @@
             "Z": -360.55542
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

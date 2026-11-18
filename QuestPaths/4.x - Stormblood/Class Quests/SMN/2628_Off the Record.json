@@ -15,18 +15,7 @@
             "Z": -246.87573
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,35 +30,13 @@
             "Z": -465.72064
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 26.405773,
-            "Y": 29.49983,
-            "Z": -767.3998
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 25.629164,
-            "Y": 28.999998,
-            "Z": -823.2204
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1001304,
           "Position": {
@@ -93,8 +60,7 @@
             "Z": -657.49603
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -109,8 +75,7 @@
             "Z": -436.39276
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -126,10 +91,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "NextQuestId": 2629
         }
       ]

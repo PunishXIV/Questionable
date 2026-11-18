@@ -13,10 +13,8 @@
             "Y": 15.094684,
             "Z": 30.044922
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

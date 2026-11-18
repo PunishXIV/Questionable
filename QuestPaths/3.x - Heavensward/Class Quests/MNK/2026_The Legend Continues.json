@@ -14,19 +14,7 @@
             "Z": 95.26196
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,9 +29,7 @@
             "Z": -682.76495
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -58,8 +44,7 @@
             "Z": -533.56226
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -78,8 +63,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             777
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -113,8 +97,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             4615
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -144,8 +127,7 @@
             "Z": -533.56226
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -161,8 +143,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
           "NextQuestId": 2027
         }
       ]

@@ -14,9 +14,7 @@
             "Z": 313.98486
           },
           "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": -301.80823
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,8 +44,7 @@
             "Z": -314.6258
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,9 +80,7 @@
             "Z": 313.98486
           },
           "TerritoryId": 400,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

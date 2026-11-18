@@ -13,8 +13,7 @@
             "Z": 301.07568
           },
           "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Aporia"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,9 +28,7 @@
             "Z": -56.809387
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,9 +43,7 @@
             "Z": -254.35266
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,8 +58,7 @@
             "Z": -240.4975
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -78,7 +72,6 @@
             "Y": -9.999999E-12,
             "Z": -22.171448
           },
-          "StopDistance": 4,
           "TerritoryId": 1025,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4636

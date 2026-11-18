@@ -14,8 +14,7 @@
             "Z": -125.01721
           },
           "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yanxia - Namai"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -47,16 +46,6 @@
           "TerritoryId": 614,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818195
-        },
-        {
-          "Position": {
-            "X": 439.41403,
-            "Y": -0.3,
-            "Z": 464.3263
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Mount": true
         },
         {
           "DataId": 1022458,
@@ -94,15 +83,6 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Position": {
-            "X": 439.41403,
-            "Y": -0.3,
-            "Z": 464.3263
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1022457,
           "Position": {
             "X": 529.56433,
@@ -124,8 +104,7 @@
             "Z": 499.43237
           },
           "TerritoryId": 614,
-          "InteractionType": "Dive",
-          "StopDistance": 0.25
+          "InteractionType": "Dive"
         },
         {
           "DataId": 2008519,
@@ -135,35 +114,13 @@
             "Z": 559.83826
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 6,
       "Steps": [
-        {
-          "Position": {
-            "X": 605.15845,
-            "Y": -0.5999999,
-            "Z": 499.43237
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": 617.7405,
-            "Y": -0.3,
-            "Z": 493.613
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "StopDistance": 0.25
-        },
         {
           "DataId": 1022457,
           "Position": {
@@ -187,8 +144,7 @@
             "Z": -125.01721
           },
           "TerritoryId": 614,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yanxia - Namai"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

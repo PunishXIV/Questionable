@@ -16,7 +16,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
@@ -101,7 +100,6 @@
             "Y": 41.397705,
             "Z": 267.87207
           },
-          "StopDistance": 7,
           "TerritoryId": 137,
           "InteractionType": "Action",
           "Action": "Katon"
@@ -134,10 +132,7 @@
           },
           "TerritoryId": 138,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [139] },
             "StepIf": { "InTerritory": [139] }
           }
         },
@@ -151,7 +146,6 @@
           "TargetTerritoryId": 139,
           "InteractionType": "WalkTo",
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [139] },
             "StepIf": { "InTerritory": [139] }
           }
         },
@@ -164,8 +158,7 @@
           },
           "TerritoryId": 139,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -196,7 +189,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "DockStorehouse"

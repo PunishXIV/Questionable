@@ -14,9 +14,7 @@
             "Z": 575.1278
           },
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,9 +30,7 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
           "KillEnemyDataIds": [
             11452,
             11453,
@@ -54,8 +50,7 @@
             "Z": 575.1278
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

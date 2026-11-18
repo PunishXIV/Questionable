@@ -14,8 +14,7 @@
             "Z": -3.6469727
           },
           "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 11.612061
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,9 +44,7 @@
             "Z": 633.8445
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Ghiri",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,19 +59,7 @@
             "Z": 613.139
           },
           "TerritoryId": 620,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 50,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": -241.38339,
-            "Y": 264.6151,
-            "Z": 617.0616
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048318,
@@ -85,19 +69,7 @@
             "Z": 607.0586
           },
           "TerritoryId": 620,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 50,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": -245.83409,
-            "Y": 265.36874,
-            "Z": 597.0437
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048318,
@@ -107,19 +79,7 @@
             "Z": 622.3978
           },
           "TerritoryId": 620,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 50,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": -249.86191,
-            "Y": 264.12744,
-            "Z": 618.1598
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048318,
@@ -129,19 +89,7 @@
             "Z": 587.24493
           },
           "TerritoryId": 620,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 50,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": -239.25114,
-            "Y": 265.31882,
-            "Z": 605.55786
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048318,
@@ -151,9 +99,7 @@
             "Z": 563.91364
           },
           "TerritoryId": 620,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 50,
-          "Mount": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048317,
@@ -163,8 +109,7 @@
             "Z": 550.90546
           },
           "TerritoryId": 620,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WalkTo"
         }
       ]
     },
@@ -179,8 +124,7 @@
             "Z": 741.1459
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Ghiri"
+          "InteractionType": "Interact"
         }
       ]
     },

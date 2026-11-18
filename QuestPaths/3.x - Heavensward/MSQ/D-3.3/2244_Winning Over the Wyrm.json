@@ -13,10 +13,8 @@
             "Y": 39.04307,
             "Z": 33.6156
           },
-          "StopDistance": 5,
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 615.28955
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Churning Mists - Moghome"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,10 +44,7 @@
             "Z": 214.52649
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "The Churning Mists - Zenith"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,7 +58,6 @@
             "Y": 123.72871,
             "Z": 210.95593
           },
-          "StopDistance": 5,
           "TerritoryId": 400,
           "InteractionType": "Interact"
         }
@@ -82,8 +74,7 @@
             "Z": 267.68896
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -112,7 +103,6 @@
             "Y": 123.72872,
             "Z": 210.77283
           },
-          "StopDistance": 7,
           "TerritoryId": 400,
           "InteractionType": "CompleteQuest"
         }

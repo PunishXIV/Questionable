@@ -18,29 +18,13 @@
           },
           "TerritoryId": 960,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 5,
           "DialogueChoices": [
             {
               "Type": "List",
               "Prompt": "TEXT_AKTKZK003_04356_Q1_000_100",
               "Answer": "TEXT_AKTKZK003_04356_A2_000_100"
             }
-          ],
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 482.365,
-                  "Y": 437.001,
-                  "Z": 311.945
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          ]
         }
       ]
     },
@@ -56,9 +40,7 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Emote",
-          "Emote": "dance",
-          "Fly": true,
-          "StopDistance": 5
+          "Emote": "dance"
         }
       ]
     },
@@ -74,8 +56,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 5,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -97,23 +77,7 @@
             "Z": 311.945
           },
           "TerritoryId": 960,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "StopDistance": 5,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 482.365,
-                  "Y": 437.001,
-                  "Z": 311.945
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

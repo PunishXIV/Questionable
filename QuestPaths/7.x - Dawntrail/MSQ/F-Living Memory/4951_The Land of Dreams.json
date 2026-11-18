@@ -13,7 +13,6 @@
             "Y": 14.900001,
             "Z": 312.42847
           },
-          "StopDistance": 7,
           "TerritoryId": 1192,
           "InteractionType": "AcceptQuest"
         }
@@ -41,8 +40,7 @@
             "Z": 772.03015
           },
           "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -119,7 +117,6 @@
             "Y": -0.106494784,
             "Z": 551.68506
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1192,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -139,7 +136,6 @@
             "Y": -0.1618917,
             "Z": 557.6714
           },
-          "StopDistance": 7,
           "TerritoryId": 1192,
           "InteractionType": "Interact"
         }
@@ -155,7 +151,6 @@
             "Y": -0.15743838,
             "Z": 554.8638
           },
-          "StopDistance": 7,
           "TerritoryId": 1192,
           "InteractionType": "CompleteQuest"
         }

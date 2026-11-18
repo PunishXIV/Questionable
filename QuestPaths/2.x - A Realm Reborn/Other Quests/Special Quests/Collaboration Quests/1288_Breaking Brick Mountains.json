@@ -14,11 +14,7 @@
             "Z": -148.441
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,10 +30,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESDXQ001_01288_CHOICE1Q1_100_015",
@@ -60,10 +52,7 @@
           "TerritoryId": 141,
           "InteractionType": "Combat",
           "EnemySpawnType": "FateEnemies",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "KillEnemyDataIds": [2309, 2310, 2311],
-          "Fly": true,
-          "Land": true
+          "KillEnemyDataIds": [2309, 2310, 2311]
         }
       ]
     },
@@ -79,9 +68,7 @@
           "TerritoryId": 141,
           "InteractionType": "Combat",
           "EnemySpawnType": "FateEnemies",
-          "KillEnemyDataIds": [2309, 2310, 2311],
-          "Fly": true,
-          "Land": true
+          "KillEnemyDataIds": [2309, 2310, 2311]
         }
       ]
     },
@@ -96,11 +83,7 @@
             "Z": 56.1548
           },
           "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

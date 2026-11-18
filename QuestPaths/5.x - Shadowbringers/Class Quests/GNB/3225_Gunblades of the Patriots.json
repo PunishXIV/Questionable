@@ -13,10 +13,8 @@
             "Y": 20.687263,
             "Z": -660.12054
           },
-          "StopDistance": 5,
           "TerritoryId": 156,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -37,13 +35,8 @@
             "Y": -8.000001,
             "Z": 115.7687
           },
-          "StopDistance": 1,
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -58,11 +51,7 @@
             "Z": 31.662354
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,8 +66,7 @@
             "Z": -6.3935547
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,11 +81,7 @@
             "Z": -75.60846
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -112,9 +96,7 @@
             "Z": -386.1906
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -129,8 +111,7 @@
             "Z": -660.12054
           },
           "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

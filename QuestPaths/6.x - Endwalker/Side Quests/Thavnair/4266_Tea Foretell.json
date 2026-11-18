@@ -13,23 +13,13 @@
             "Z": -213.587
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 385.62238,
-            "Y": 3.1036642,
-            "Z": -225.968
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 2012065,
           "Position": {
@@ -51,10 +41,7 @@
               "Prompt": "TEXT_AKTKZF011_04266_Q2_000_000",
               "Yes": true
             }
-          ],
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true,
-          "Land": true
+          ]
         },
         {
           "DataId": 2012066,
@@ -77,9 +64,7 @@
               "Prompt": "TEXT_AKTKZF011_04266_Q2_000_000",
               "Yes": true
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
@@ -94,8 +79,7 @@
             "Z": -213.587
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

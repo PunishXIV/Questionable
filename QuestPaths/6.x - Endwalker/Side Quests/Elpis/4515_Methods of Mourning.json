@@ -13,9 +13,7 @@
             "Z": -189.47137
           },
           "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +28,7 @@
             "Z": 236.34692
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -54,8 +50,7 @@
               "Prompt": "TEXT_AKTKZH201_04515_Q1_000_000",
               "Answer": "TEXT_AKTKZH201_04515_A1_000_001"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -70,8 +65,7 @@
             "Z": 411.0017
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -121,8 +115,7 @@
             "Z": 518.9136
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -137,9 +130,7 @@
             "Z": -189.47137
           },
           "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

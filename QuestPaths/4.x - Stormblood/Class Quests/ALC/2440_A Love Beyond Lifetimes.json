@@ -17,24 +17,7 @@
 				"Z": -20.035156
 			},
 			"TerritoryId": 131,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ul'dah",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Sapphire Avenue Exchange"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					130,
-					131
-					]
-				}
-			}
+			"InteractionType": "AcceptQuest"
 		}
 		]
 	},
@@ -68,12 +51,7 @@
 				"Z": 69.13855
 			},
 			"TerritoryId": 130,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Sapphire Avenue Exchange",
-			"[Ul'dah] Thaumaturges' Guild"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -90,8 +68,7 @@
 				"Z": -774.197
 			},
 			"TerritoryId": 156,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Mor Dhona"
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -108,13 +85,7 @@
 				"Z": 120.83618
 			},
 			"TerritoryId": 131,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Ul'dah",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Alchemists' Guild"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -147,12 +118,7 @@
 				"Z": 71.7937
 			},
 			"TerritoryId": 130,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Alchemists' Guild",
-			"[Ul'dah] Thaumaturges' Guild"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -194,11 +160,6 @@
 				"Answer": "TEXT_CLSALC700_02440_A1_01",
 				"Type": "List"
 			}
-			],
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Thaumaturges' Guild",
-			"[Ul'dah] Alchemists' Guild"
 			]
 		}
 		]

@@ -93,7 +93,6 @@
             "Y": -14.757837,
             "Z": -115.15985
           },
-          "StopDistance": 7,
           "TerritoryId": 961,
           "InteractionType": "Interact"
         }
@@ -144,7 +143,6 @@
             "Y": -16.696985,
             "Z": -81.29199
           },
-          "StopDistance": 0.25,
           "TerritoryId": 961,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -161,7 +159,6 @@
             "Y": -15.332472,
             "Z": -84.65695
           },
-          "StopDistance": 0.25,
           "TerritoryId": 961,
           "InteractionType": "Emote",
           "Emote": "wave"
@@ -179,8 +176,7 @@
             "Z": 88.91431
           },
           "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

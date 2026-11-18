@@ -15,7 +15,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "AttuneAetherCurrent",
-          "AetheryteShortcut": "Yak T'el - Mamook",
           "AetherCurrentId": 2818443
         },
         {
@@ -115,8 +114,7 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "AttuneAetherCurrent",
-          "AetherCurrentId": 2818436,
-          "Mount": true
+          "AetherCurrentId": 2818436
         }
       ]
     }

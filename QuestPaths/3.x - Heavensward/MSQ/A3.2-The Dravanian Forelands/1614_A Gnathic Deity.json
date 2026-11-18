@@ -35,7 +35,6 @@
             "Y": -49.21252,
             "Z": -150.04199
           },
-          "StopDistance": 7,
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "$": "0 0 0 0 0 0 -> 1 0 0 0 0 32",
@@ -60,7 +59,6 @@
             "Y": -49.19563,
             "Z": -139.05548
           },
-          "StopDistance": 5,
           "TerritoryId": 398,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -104,7 +102,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "$": "Loth ast Vath navmesh workaround"
         },
         {

@@ -28,7 +28,6 @@
             "Y": 130.25946,
             "Z": -538.29254
           },
-          "StopDistance": 1,
           "TerritoryId": 612,
           "InteractionType": "Interact"
         }
@@ -60,8 +59,7 @@
             "Z": -241.13837
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,8 +74,7 @@
             "Z": -176.13495
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,8 +90,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "Fly": true,
           "NextQuestId": 2664
         }
       ]

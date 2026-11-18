@@ -13,7 +13,6 @@
             "Y": -22.39482,
             "Z": 505.08887
           },
-          "StopDistance": 5,
           "TerritoryId": 961,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
             "Z": 236.07227
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Elpis - Anagnorisis"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,7 +58,6 @@
             "Y": 161.78714,
             "Z": 26.108154
           },
-          "StopDistance": 5,
           "TerritoryId": 961,
           "InteractionType": "Interact"
         }

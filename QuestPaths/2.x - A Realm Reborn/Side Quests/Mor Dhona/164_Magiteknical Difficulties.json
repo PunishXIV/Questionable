@@ -14,9 +14,7 @@
             "Z": -682.06305
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "Mount": true,
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,7 +31,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
           "TargetTerritoryId": 156,
           "DialogueChoices": [
             {
@@ -43,11 +40,6 @@
             }
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                156
-              ]
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -87,14 +79,8 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
           "TargetTerritoryId": 156,
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                156
-              ]
-            },
             "StepIf": {
               "NotNearPosition": {
                 "Position": {
@@ -117,8 +103,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -150,8 +134,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -183,8 +165,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -222,7 +202,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
           "TargetTerritoryId": 156,
           "DialogueChoices": [
             {

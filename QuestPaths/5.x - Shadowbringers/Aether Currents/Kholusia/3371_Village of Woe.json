@@ -27,7 +27,6 @@
             "Y": 21.612165,
             "Z": 298.9232
           },
-          "StopDistance": 1,
           "TerritoryId": 814,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -47,7 +46,6 @@
             "Y": 21.592747,
             "Z": 297.8407
           },
-          "StopDistance": 7,
           "TerritoryId": 814,
           "InteractionType": "Interact"
         }
@@ -86,15 +84,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -283.69812,
-            "Y": 35.330315,
-            "Z": 205.46227
-          },
-          "TerritoryId": 814,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1030766,
           "Position": {

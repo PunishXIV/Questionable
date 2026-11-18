@@ -22,15 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "TerritoryId": 819,
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Tessellation (Lakeland)"
-          ],
-          "InteractionType": "None"
-        },
-        {
           "Position": {
             "X": 55.589294,
             "Y": 2.0276523,
@@ -88,16 +79,6 @@
           }
         },
         {
-          "Position": {
-            "X": -269.44116,
-            "Y": -0.82486916,
-            "Z": 724.67255
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1032528,
           "Position": {
             "X": -270.98505,
@@ -119,7 +100,6 @@
             "Y": 27.728632,
             "Z": 817.65466
           },
-          "StopDistance": 5,
           "TerritoryId": 813,
           "InteractionType": "Interact"
         }
@@ -136,8 +116,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "Mount": true,
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -152,7 +130,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -165,7 +142,6 @@
             "Y": -1.9743931,
             "Z": 799.9003
           },
-          "StopDistance": 1,
           "TerritoryId": 813,
           "InteractionType": "Dive",
           "SkipConditions": {
@@ -183,7 +159,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
@@ -201,16 +176,6 @@
           "InteractionType": "Interact",
           "$.1": "QuestVariables if done first: 1 0 0 0 0 64",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-        },
-        {
-          "Position": {
-            "X": -654.167,
-            "Y": -41.328938,
-            "Z": 741.29126
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "Mount": true
         },
         {
           "DataId": 2010278,
@@ -232,7 +197,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Mount": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -240,17 +204,6 @@
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": -643.2488,
-            "Y": -1.974393,
-            "Z": 714.8211
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "Fly": true
-        },
         {
           "Position": {
             "X": -573.45654,
@@ -273,7 +226,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
@@ -288,8 +240,7 @@
             "Z": 817.65466
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -362,8 +313,7 @@
             "Z": 552.1781
           },
           "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -13,8 +13,7 @@
             "Z": 426.13855
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -71,8 +70,7 @@
             "Condition": "Health%",
             "Value": 50,
             "ItemId": 2000647
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -87,8 +85,7 @@
             "Z": 278.21765
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

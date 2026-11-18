@@ -15,8 +15,7 @@
             "Z": -640.4364
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -88,13 +87,8 @@
             "Y": 41.50014,
             "Z": 120.44341
           },
-          "StopDistance": 0.25,
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -109,8 +103,7 @@
             "Z": -640.4364
           },
           "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

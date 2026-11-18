@@ -28,9 +28,7 @@
             "Z": -436.51483
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,12 +43,7 @@
             "Z": 268.635
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

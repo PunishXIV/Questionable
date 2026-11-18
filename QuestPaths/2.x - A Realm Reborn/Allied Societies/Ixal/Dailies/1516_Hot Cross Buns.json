@@ -16,11 +16,7 @@
             "Z": 64.199814
           },
           "TerritoryId": 154,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -50,17 +46,6 @@
           }
         },
         {
-          "Position": {
-            "X": 320.39117,
-            "Y": 255.37843,
-            "Z": 129.43526
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
-        },
-        {
           "DataId": 395,
           "Position": {
             "X": 326.40576,
@@ -71,7 +56,6 @@
           "InteractionType": "WaitForManualProgress",
           "Comment": "Manual: Use Shearing Knife on Feral Croc",
           "ItemId": 2001403,
-          "Mount": false,
           "CompletionQuestVariablesFlags": [
             { "High": 1 },
             null,
@@ -89,8 +73,7 @@
             "Z": 325.45972
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -126,11 +109,7 @@
             "Z": 64.199814
           },
           "TerritoryId": 154,
-          "StopDistance": 1,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

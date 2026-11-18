@@ -29,11 +29,7 @@
             "Z": -62.912964
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Crystalline Mean",
-            "[Crystarium] Temenos Rookery"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -87,9 +83,7 @@
             "Z": 570.18384
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -104,9 +98,7 @@
             "Z": -710.65845
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -121,12 +113,7 @@
             "Z": -130.1748
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

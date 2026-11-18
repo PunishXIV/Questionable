@@ -43,10 +43,6 @@
           "TerritoryId": 1185,
           "InteractionType": "Emote",
           "Emote": "soothe",
-          "AethernetShortcut": [
-            "[Tuliyollal] Dirigible Landing",
-            "[Tuliyollal] Aetheryte Plaza"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -62,11 +58,7 @@
             "Z": 71.97681
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] The Resplendent Quarter"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

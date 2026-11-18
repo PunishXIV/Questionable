@@ -13,21 +13,7 @@
             "Z": -56.6568
           },
           "TerritoryId": 820,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eulmore",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 48.264282,
-                  "Y": 82.001656,
-                  "Z": -56.6568
-                },
-                "TerritoryId": 820,
-                "MaximumDistance": 100
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -64,11 +50,7 @@
             "Z": 14.755432
           },
           "TerritoryId": 820,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Aetheryte Plaza",
-            "[Eulmore] The Mainstay"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -83,11 +65,7 @@
             "Z": -65.38495
           },
           "TerritoryId": 820,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Eulmore] The Mainstay",
-            "[Eulmore] Aetheryte Plaza"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

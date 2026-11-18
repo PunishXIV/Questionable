@@ -16,9 +16,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
-          "AethernetShortcut": ["[Ul'dah] Aetheryte Plaza","[Ul'dah] Gladiators' Guild"],
-          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [130,131]}},
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -77,10 +74,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Adventurers' Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "InTerritory": [
@@ -177,10 +170,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Gladiators' Guild"
-          ],
           "NextQuestId": 256
         }
       ]

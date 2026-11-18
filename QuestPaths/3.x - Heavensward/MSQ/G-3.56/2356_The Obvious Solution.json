@@ -13,7 +13,6 @@
             "Y": 0.01804012,
             "Z": -7.7669067
           },
-          "StopDistance": 5,
           "TerritoryId": 351,
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
@@ -31,11 +30,7 @@
             "Z": -4.1047363
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

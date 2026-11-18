@@ -13,7 +13,6 @@
             "Y": 100,
             "Z": -159.80774
           },
-          "StopDistance": 5,
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest"
         }
@@ -30,11 +29,7 @@
             "Z": -409.01813
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Vollok Shoonsa",
-            "[Tuliyollal] Brightploom Post"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -52,8 +47,7 @@
             "Z": 460.9292
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -68,8 +62,7 @@
             "Z": -61.661743
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -86,15 +79,6 @@
           "TerritoryId": 1190,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-        },
-        {
-          "Position": {
-            "X": -359.66742,
-            "Y": 18.137554,
-            "Z": -137.36826
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1047080,
@@ -171,7 +155,6 @@
             "Y": 15.771556,
             "Z": -355.64203
           },
-          "StopDistance": 7,
           "TerritoryId": 1190,
           "InteractionType": "CompleteQuest"
         }

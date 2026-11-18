@@ -28,8 +28,7 @@
             "Z": -188.696
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": ["[Kugane] Kogane Dori Markets", "[Kugane] Bokairo Inn"]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,8 +58,7 @@
             "Z": 27.0772
           },
           "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": ["[Kugane] Thavnairian Consulate", "[Kugane] Kogane Dori Markets"]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

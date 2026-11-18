@@ -6,22 +6,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1033543,
           "Position": {
             "X": 113.38977,
@@ -29,11 +13,7 @@
             "Z": -0.96136475
           },
           "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The Mattock"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -63,9 +43,7 @@
             "Z": 229.99915
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -88,14 +66,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ]
-        },
-        {
           "DataId": 1033922,
           "Position": {
             "X": 113.38977,
@@ -103,11 +73,7 @@
             "Z": -0.9918823
           },
           "TerritoryId": 886,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The Mattock"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

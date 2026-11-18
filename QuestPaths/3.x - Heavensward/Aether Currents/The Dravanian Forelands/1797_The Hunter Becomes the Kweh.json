@@ -14,8 +14,7 @@
             "Z": 20.370789
           },
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -84,7 +83,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -141,8 +139,7 @@
             "Z": 20.370789
           },
           "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

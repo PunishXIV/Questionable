@@ -14,8 +14,7 @@
             "Z": 5.416931
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 100.87732
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -55,16 +53,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Position": {
-            "X": -393.1081,
-            "Y": -57.326912,
-            "Z": 155.15263
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 2004877,
           "Position": {
             "X": -299.48883,
@@ -72,8 +60,7 @@
             "Z": 7.095398
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -112,26 +99,6 @@
       "Sequence": 6,
       "Steps": [
         {
-          "Position": {
-            "X": -393.1081,
-            "Y": -57.326912,
-            "Z": 155.15263
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -1.83288,
-            "Y": -17.544205,
-            "Z": 23.35826
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1006495,
           "Position": {
             "X": -2.2736206,
@@ -146,26 +113,6 @@
     {
       "Sequence": 7,
       "Steps": [
-        {
-          "Position": {
-            "X": -1.4535733,
-            "Y": -8.0592985,
-            "Z": 1.7329537
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": 435.9292,
-            "Y": 9.87471,
-            "Z": 143.03693
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2004868,
           "Position": {
@@ -208,7 +155,6 @@
           },
           "TerritoryId": 145,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
           "NextQuestId": 240
         }
       ]

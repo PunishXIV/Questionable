@@ -14,16 +14,7 @@
             "Z": -171.03839
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [132,133]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -38,9 +29,7 @@
             "Z": -31.082703
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,16 +65,7 @@
             "Z": -171.03839
           },
           "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ],
           "InteractionType": "CompleteQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [132,133]
-            }
-          },
           "NextQuestId": 10
         }
       ]

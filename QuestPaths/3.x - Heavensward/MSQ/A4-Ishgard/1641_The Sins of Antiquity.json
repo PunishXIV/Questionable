@@ -13,7 +13,6 @@
             "Y": 16.009666,
             "Z": -4.196289
           },
-          "StopDistance": 5,
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest"
         }
@@ -29,7 +28,6 @@
             "Y": 15.96505,
             "Z": -13.870483
           },
-          "StopDistance": 7,
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 1874
@@ -49,10 +47,6 @@
               "Prompt": "TEXT_HEAVNA405_01641_SCENE00020_EVENTAREA_WARP_YESNO_TITLE",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
           ]
         },
         {

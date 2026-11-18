@@ -20,9 +20,7 @@
               "Prompt": "TEXT_AKTKZG018_04293_Q1_000_000",
               "Answer": "TEXT_AKTKZG018_04293_Q1_000_001"
             }
-          ],
-          "AetheryteShortcut": "Elpis - Twelve Wonders",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -37,8 +35,7 @@
             "Z": 477.59204
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2012644,
@@ -58,8 +55,7 @@
             "Z": 445.8839
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -74,8 +70,7 @@
             "Z": 578.7594
           },
           "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

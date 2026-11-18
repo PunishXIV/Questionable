@@ -14,8 +14,7 @@
             "Z": -109.63611
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,8 +44,7 @@
             "Z": -477.4395
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,7 +57,6 @@
             "Y": -4.2369456,
             "Z": -300.13348
           },
-          "StopDistance": 0.5,
           "TerritoryId": 156,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -68,8 +65,7 @@
             62,
             63
           ],
-          "$": "0 0  0 0  0 0 -> 3 0  0 0  0 0",
-          "Fly": true
+          "$": "0 0  0 0  0 0 -> 3 0  0 0  0 0"
         },
         {
           "DataId": 1009966,
@@ -92,7 +88,6 @@
             "Y": -3.2168088,
             "Z": -231.61989
           },
-          "StopDistance": 0.5,
           "TerritoryId": 156,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -101,7 +96,6 @@
             64,
             3566
           ],
-          "Fly": true,
           "$": "0 0  0 0  0 0 -> 16 3  0 0  0 128",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
@@ -111,7 +105,6 @@
             "Y": -1.7329574,
             "Z": -291.1239
           },
-          "StopDistance": 0.5,
           "TerritoryId": 156,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -119,7 +112,6 @@
             55,
             3566
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -128,7 +120,6 @@
             "Y": -3.216822,
             "Z": -398.18915
           },
-          "StopDistance": 0.5,
           "TerritoryId": 156,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -138,7 +129,6 @@
             55,
             64
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -154,8 +144,7 @@
             "Z": -477.04285
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

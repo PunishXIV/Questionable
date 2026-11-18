@@ -14,11 +14,7 @@
             "Z": -83.78735
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,12 +29,7 @@
             "Z": -158.03778
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -54,9 +45,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 613,
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "Fly": true
+          "TargetTerritoryId": 613
         },
         {
           "Position": {
@@ -64,14 +53,12 @@
             "Y": 0.73303545,
             "Z": 754.9407
           },
-          "StopDistance": 0.5,
           "TerritoryId": 613,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7496
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -102,11 +89,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

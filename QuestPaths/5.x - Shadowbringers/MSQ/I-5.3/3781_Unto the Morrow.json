@@ -29,8 +29,7 @@
             "Z": 296.31494
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Slitherbough"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,8 +59,7 @@
             "Z": -236.68274
           },
           "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Twine"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,7 +75,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
           "DialogueChoices": [
             {
               "Type": "List",

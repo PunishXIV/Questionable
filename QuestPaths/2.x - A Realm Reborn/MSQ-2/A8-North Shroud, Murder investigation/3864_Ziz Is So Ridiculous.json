@@ -13,7 +13,6 @@
             "Y": -44.86564,
             "Z": 262.745
           },
-          "StopDistance": 5,
           "TerritoryId": 154,
           "InteractionType": "AcceptQuest"
         }
@@ -27,15 +26,6 @@
           "InteractionType": "AttuneAetheryte",
           "StopDistance": 5,
           "Aetheryte": "North Shroud - Fallgourd Float"
-        },
-        {
-          "Position": {
-            "X": -214.10292,
-            "Y": -56.837837,
-            "Z": 295.99493
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -66,8 +56,7 @@
             "Z": 262.745
           },
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

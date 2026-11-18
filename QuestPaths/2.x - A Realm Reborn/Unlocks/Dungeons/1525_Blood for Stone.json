@@ -14,10 +14,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona"
+          "$": "Rising Stones Door"
         },
         {
           "DataId": 1006977,
@@ -27,8 +24,7 @@
             "Z": -650.29376
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "Mount": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,18 +33,6 @@
       "$": "Fly to building, land and use stairs. Flying pathing will just slam into the building.",
       "Steps": [
         {
-          "Position": {
-            "X": -433.32874,
-            "Y": 210.7882,
-            "Z": -222.11073
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
-        },
-        {
           "DataId": 1006444,
           "Position": {
             "X": -432.9748,
@@ -56,8 +40,7 @@
             "Z": -199.6643
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": false
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -73,9 +56,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "Fly": false,
-          "Mount": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -98,8 +78,7 @@
             "Z": -515.7702
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -122,18 +101,6 @@
       "$": "Fly to building, land and use stairs. Flying pathing will just slam into the building.",
       "Steps": [
         {
-          "Position": {
-            "X": -433.32874,
-            "Y": 210.7882,
-            "Z": -222.11073
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
-        },
-        {
           "DataId": 1006444,
           "Position": {
             "X": -432.9748,
@@ -141,8 +108,7 @@
             "Z": -199.6643
           },
           "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": false
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

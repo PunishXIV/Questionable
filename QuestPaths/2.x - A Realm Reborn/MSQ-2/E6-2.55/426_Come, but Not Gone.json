@@ -29,11 +29,7 @@
             "Z": -78.78235
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] The Chamber of Rule",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,9 +44,7 @@
             "Z": -56.6568
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -95,11 +89,7 @@
             "Z": -78.78235
           },
           "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

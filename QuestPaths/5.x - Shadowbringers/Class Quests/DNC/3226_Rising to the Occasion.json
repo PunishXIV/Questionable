@@ -15,7 +15,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -37,9 +36,7 @@
             "Z": -75.33386
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -92,7 +89,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
               "Type": "List",

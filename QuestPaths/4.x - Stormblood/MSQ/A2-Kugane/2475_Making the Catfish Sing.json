@@ -31,7 +31,6 @@
             "Y": 0,
             "Z": -2.3041382
           },
-          "StopDistance": 7,
           "TerritoryId": 639,
           "InteractionType": "Interact"
         }
@@ -54,11 +53,7 @@
         {
           "TerritoryId": 628,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Kugane] Sekiseigumi Barracks",
-          "AethernetShortcut": [
-            "[Kugane] The Ruby Bazaar",
-            "[Kugane] Aetheryte Plaza"
-          ]
+          "AethernetShard": "[Kugane] Sekiseigumi Barracks"
         },
         {
           "DataId": 1020481,
@@ -112,7 +107,6 @@
             "Y": 14.650923,
             "Z": -101.701416
           },
-          "StopDistance": 7,
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest"
         }

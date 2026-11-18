@@ -14,27 +14,13 @@
             "Z": -52.018066
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 42.052795,
-            "Y": 4.000001,
-            "Z": 71.14965
-          },
-          "TerritoryId": 628,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] Kogane Dori Markets"
-          ]
-        },
         {
           "DataId": 1018984,
           "Position": {
@@ -74,9 +60,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "UseItem",
-          "ItemId": 2003492,
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "Fly": true
+          "ItemId": 2003492
         }
       ]
     },
@@ -110,12 +94,7 @@
             "Z": 56.443115
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Kogane Dori Markets"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

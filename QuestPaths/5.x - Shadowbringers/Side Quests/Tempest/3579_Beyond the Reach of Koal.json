@@ -32,8 +32,7 @@
           "EnemySpawnType":"AfterInteraction",
           "KillEnemyDataIds":[
             11124
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -48,9 +47,7 @@
             "Z": -177.75238
           },
           "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Tempest - Ondo Cups"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

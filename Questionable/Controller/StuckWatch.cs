@@ -62,8 +62,7 @@ internal sealed class StuckWatch(TimeProvider? timeProvider = null)
     ];
 
     private static bool IsMovement(ITask? task) =>
-        task is MoveTask or MountStep.MountTask or LandTask or Jump.SingleTask or Jump.RepeatedTask
-            or AetheryteShortcut.MoveAway;
+        task is MoveTask or MountStep.MountTask or Jump.SingleTask or Jump.RepeatedTask;
 
     private static bool IsInteraction(ITask? task) =>
         task is Interact.Task or Aetheryte.Attune or AethernetShard.Attune or AetherCurrent.Attune

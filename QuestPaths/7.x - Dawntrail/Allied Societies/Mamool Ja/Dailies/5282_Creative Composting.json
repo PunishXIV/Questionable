@@ -14,9 +14,7 @@
             "Z": 729.4575
           },
           "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 786.70935
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,7 +46,6 @@
           "TerritoryId": 1189,
           "InteractionType": "Action",
           "Action": "Shrouded Luminescence",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -63,7 +58,6 @@
           "TerritoryId": 1189,
           "InteractionType": "Action",
           "Action": "Shrouded Luminescence",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -76,7 +70,6 @@
           "TerritoryId": 1189,
           "InteractionType": "Action",
           "Action": "Shrouded Luminescence",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -92,9 +85,7 @@
             "Z": 729.4575
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

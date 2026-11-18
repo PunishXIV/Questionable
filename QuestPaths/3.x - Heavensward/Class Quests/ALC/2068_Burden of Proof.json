@@ -15,29 +15,13 @@
             "Z": -640.4364
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [156]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -228.30505,
-            "Y": -3.8901305,
-            "Z": -544.6265
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1012565,
           "Position": {
@@ -61,8 +45,7 @@
             "Z": 40.20752
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,8 +60,7 @@
             "Z": -640.4364
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "Interact"
         }
       ]
     },

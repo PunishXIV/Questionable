@@ -67,11 +67,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Cabinet of Curiosity"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_LUCKUN001_03986_Q3_000_000",
@@ -93,11 +88,7 @@
             "Z": 205.12695
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Cabinet of Curiosity",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

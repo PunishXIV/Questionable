@@ -16,10 +16,6 @@
           "TerritoryId": 819,
           "InteractionType": "Interact",
           "TargetTerritoryId": 844,
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Dossal Gate"
-          ],
           "SkipConditions": {"StepIf": {"InTerritory": [844]}}
         },
         {
@@ -29,7 +25,6 @@
             "Y": -5.996435E-14,
             "Z": -5.5390625
           },
-          "StopDistance": 7,
           "TerritoryId": 844,
           "InteractionType": "AcceptQuest"
         }
@@ -46,8 +41,7 @@
             "Z": -156.9696
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Fanow"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,7 +58,6 @@
           "TerritoryId": 817,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true},
-          "Fly": true,
           "Comment": "A Sleep Disturbed (Opo-Opo, Wolf, Serpent)",
           "$": "The dialogue choices and data ids here are recycled",
           "DialogueChoices": [
@@ -109,7 +102,6 @@
             "Y": 33.66181,
             "Z": -156.9696
           },
-          "StopDistance": 5,
           "TerritoryId": 817,
           "InteractionType": "CompleteQuest"
         }

@@ -14,9 +14,7 @@
             "Z": 68.28406
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,21 +42,8 @@
             "Y": -23.382679,
             "Z": -89.52834
           },
-          "StopDistance": 0.5,
           "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -41.15807,
-            "Y": -23.382679,
-            "Z": -89.52834
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WalkTo"
         }
       ]
     },
@@ -113,8 +98,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",

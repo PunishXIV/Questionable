@@ -14,19 +14,7 @@
             "Z": -13.290649
           },
           "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

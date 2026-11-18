@@ -14,18 +14,7 @@
             "Z": 81.1322
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,11 +29,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
@@ -73,8 +57,7 @@
           },
           "TerritoryId": 135,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 250,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+          "TargetTerritoryId": 250
         },
         {
           "TerritoryId": 250,

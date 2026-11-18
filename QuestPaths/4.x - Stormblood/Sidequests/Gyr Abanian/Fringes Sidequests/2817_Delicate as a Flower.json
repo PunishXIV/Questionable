@@ -15,8 +15,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "$": "auto: issuer 1020818 (Garima)"
         }
       ]
@@ -33,8 +31,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo area 18y from lua EOBJECT0 -> 2008841 (dreaming iris)"
         },
@@ -46,9 +42,7 @@
             "Z": -264.07642
           },
           "TerritoryId": 612,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo area 25y from lua EOBJECT1 -> 2008842 (dreaming iris)"
         },
@@ -61,7 +55,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
           "$": "auto: todo area 11y from lua EOBJECT2 -> 2008843 (dreaming iris)"
         },
@@ -74,7 +67,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
           "$": "auto: todo area 23y from lua EOBJECT3 -> 2008844 (dreaming iris)"
         },
@@ -87,7 +79,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}],
           "$": "auto: todo area 21y from lua EOBJECT4 -> 2008845 (dreaming iris)"
         }
@@ -105,8 +96,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "$": "auto: todo turn-in -> 1020818 (Garima)"
         }
       ]

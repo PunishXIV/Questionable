@@ -15,18 +15,7 @@
             "Z": -2.4262085
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -46,8 +35,6 @@
           "KillEnemyDataIds": [
             383
           ],
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true,
           "Comment": "The Level 50 mob Gatling may be nearby causing the AI to use AoE attacks and hit it"
         }
       ]
@@ -64,10 +51,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
           "NextQuestId": 1058
         }
       ]

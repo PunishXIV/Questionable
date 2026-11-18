@@ -15,18 +15,7 @@
             "Z": 164.294
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -65,30 +54,16 @@
           },
           "ItemId": 2605,
           "ItemCount": 99,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ],
           "SkipConditions": {
             "StepIf": {
               "Item": {
                 "NotInInventory": false
               }
-            },
-            "AetheryteShortcutIf": {
-              "Item": {
-                "NotInInventory": false
-              },
-              "InTerritory": [
-                129
-              ]
             }
           }
         },
         {
           "Comment": "Speak with Firminnant at Whitebrim Front",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "DataId": 1006804,
           "Position": {
             "X": -387.618,
@@ -96,8 +71,7 @@
             "Z": -257.508
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -111,7 +85,6 @@
             "Z": -324.8373
           },
           "TerritoryId": 155,
-          "Fly": true,
           "InteractionType": "WalkTo"
         },
         {
@@ -127,17 +100,6 @@
         },
         {
           "Comment": "Deliver Cloud Cutters to Sisipu",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129
-              ]
-            }
-          },
           "DataId": 1000857,
           "Position": {
             "X": -165.27,

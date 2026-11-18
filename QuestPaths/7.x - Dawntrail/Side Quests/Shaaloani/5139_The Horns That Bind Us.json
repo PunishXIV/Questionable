@@ -13,8 +13,7 @@
             "Z": -495.71985
           },
           "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,9 +28,7 @@
             "Z": 373.95276
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,8 +58,7 @@
             "Z": -495.71985
           },
           "TerritoryId": 1190,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

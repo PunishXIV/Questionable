@@ -14,9 +14,7 @@
             "Z": 96.54382
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 41.70288
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,9 +44,7 @@
             "Z": 56.839844
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -83,16 +77,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          },
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -104,7 +88,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "StopDistance": 5,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -116,7 +99,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "StopDistance": 5,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -132,20 +114,7 @@
             "Z": 41.70288
           },
           "TerritoryId": 132,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Aetheryte Plaza"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

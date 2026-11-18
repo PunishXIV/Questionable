@@ -13,29 +13,13 @@
             "Z": -115.617676
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Bokairo Inn"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 560.478,
-            "Y": -19.505653,
-            "Z": 351.4072
-          },
-          "TerritoryId": 622,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "AetheryteShortcut": "Azim Steppe - Reunion"
-        },
         {
           "DataId": 1025723,
           "Position": {
@@ -91,8 +75,7 @@
             "Z": 290.3943
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Reunion"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -107,9 +90,7 @@
             "Z": 571.9844
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Reunion",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -124,9 +105,7 @@
             "Z": -516.8689
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -157,8 +136,6 @@
           },
           "TerritoryId": 622,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_STMBDY991_01554_Q3_000_000",
@@ -180,12 +157,7 @@
             "Z": -115.617676
           },
           "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Bokairo Inn"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -37,7 +37,6 @@
               "Yes": true
             }
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
           "$": "0 0 0 0 0 0 -> 0 0 0 128 0 64"
         },
@@ -84,8 +83,7 @@
             "Z": -252.12488
           },
           "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Tertium"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,11 +15,7 @@
             "Z": 80.88806
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -50,19 +46,7 @@
             },
             "TerritoryId": 140,
             "InteractionType": "UseItem",
-            "ItemId": 2000414,
-            "AetheryteShortcut": "Ul'dah",
-            "AethernetShortcut": [
-              "[Ul'dah] Thaumaturges' Guild",
-              "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-            ],
-            "SkipConditions": {
-              "AetheryteShortcutIf": {
-                "InTerritory": [
-                  140
-                ]
-              }
-            }
+            "ItemId": 2000414
           }
         ]
     },
@@ -89,16 +73,6 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Position": {
-            "X": -253.97243,
-            "Y": 33.2412,
-            "Z": 408.68488
-          },
-          "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1002027,
           "Position": {
               "X": -255.23767,
@@ -122,10 +96,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
           "NextQuestId": 349
         }
       ]

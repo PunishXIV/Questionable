@@ -14,18 +14,7 @@
             "Z": 39.81079
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -69,11 +58,7 @@
             "Z": -37.27604
           },
           "TerritoryId": 131,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ]
+          "InteractionType": "WalkTo"
         }
       ]
     },
@@ -166,7 +151,6 @@
             7237,
             7238
           ],
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -187,7 +171,6 @@
             "Y": 15.770843,
             "Z": 512.5658
           },
-          "StopDistance": 7,
           "TerritoryId": 141,
           "InteractionType": "Interact"
         }
@@ -205,10 +188,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
           "NextQuestId": 2575
         }
       ]

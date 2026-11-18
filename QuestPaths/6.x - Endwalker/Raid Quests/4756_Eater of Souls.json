@@ -13,8 +13,7 @@
             "Z": 301.9912
           },
           "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Aporia"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,16 +30,6 @@
           "TerritoryId": 956,
           "InteractionType": "Interact",
           "TargetTerritoryId": 956
-        },
-        {
-          "Position": {
-            "X": -431.53903,
-            "Y": -220.1193,
-            "Z": 301.76364
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 2013029,
@@ -88,7 +77,6 @@
             "Y": 197.41248,
             "Z": 503.59338
           },
-          "StopDistance": 5,
           "TerritoryId": 1079,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4757

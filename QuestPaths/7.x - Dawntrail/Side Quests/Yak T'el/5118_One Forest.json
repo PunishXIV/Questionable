@@ -30,7 +30,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -52,8 +51,7 @@
             "Z": 556.115
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,7 +67,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -81,7 +78,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -112,8 +108,7 @@
             "Z": 556.115
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -128,8 +123,7 @@
             "Z": 738.6129
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -145,8 +139,7 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "UseItem",
-          "ItemId": 2003625,
-          "Fly": true
+          "ItemId": 2003625
         }
       ]
     },
@@ -180,8 +173,7 @@
             "Z": 738.6129
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -196,9 +188,7 @@
             "Z": 554.589
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,18 +14,7 @@
             "Z": 113.725464
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,9 +29,7 @@
             "Z": 459.83057
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,7 +50,6 @@
           "KillEnemyDataIds": [
             7232
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -111,8 +97,7 @@
             "Z": 454.45935
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -128,10 +113,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "NextQuestId": 2590
         }
       ]

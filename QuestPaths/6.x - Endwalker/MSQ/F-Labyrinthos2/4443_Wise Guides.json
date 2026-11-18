@@ -13,7 +13,6 @@
             "Y": -31.53043,
             "Z": -78.324646
           },
-          "StopDistance": 5,
           "TerritoryId": 956,
           "InteractionType": "AcceptQuest"
         }
@@ -44,7 +43,6 @@
             "Y": -17.532654,
             "Z": -77.073364
           },
-          "StopDistance": 5,
           "TerritoryId": 956,
           "InteractionType": "Snipe",
           "Comment": "Find Points of Interest"

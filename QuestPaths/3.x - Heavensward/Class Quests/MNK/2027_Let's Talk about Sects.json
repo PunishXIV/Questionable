@@ -14,10 +14,7 @@
             "Z": -682.76495
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "StopDistance": 2
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,24 +29,13 @@
             "Z": -622.52234
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -144.73549,
-            "Y": 1.9077771,
-            "Z": -655.4047
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1013984,
           "Position": {
@@ -84,16 +70,6 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Position": {
-            "X": -222.99123,
-            "Y": 3.602174,
-            "Z": -625.4028
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1013987,
           "Position": {
             "X": -223.40735,
@@ -126,16 +102,6 @@
     {
       "Sequence": 6,
       "Steps": [
-        {
-          "Position": {
-            "X": -256.7943,
-            "Y": -5.5647316,
-            "Z": -542.8478
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1013990,
           "Position": {
@@ -177,8 +143,7 @@
             "Z": -502.06763
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -194,8 +159,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
           "NextQuestId": 2028
         }
       ]

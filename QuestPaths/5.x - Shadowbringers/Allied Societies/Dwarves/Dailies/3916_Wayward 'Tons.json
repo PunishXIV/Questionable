@@ -14,9 +14,7 @@
             "Z": -423.87152
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,9 +30,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true,
-          "StopDistance": 1,
           "RequiredQuestVariables": [null,null,null,[
             {"High": 1}, {"High": 4}, {"High": 5}
             ],null,null
@@ -50,8 +45,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1,
           "RequiredQuestVariables": [null,null,null,[
             {"High": 1}, {"High": 2}, {"High": 6}
             ],null,null
@@ -67,8 +60,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1,
           "RequiredQuestVariables": [null,null,null,[
             {"High": 3}, {"High": 5}, {"High": 6}
             ],null,null
@@ -84,8 +75,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1,
           "RequiredQuestVariables": [null,null,null,[
             {"High": 2}, {"High": 3}, {"High": 4}
             ],null,null
@@ -105,9 +94,7 @@
             "Z": -423.87152
           },
           "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -13,7 +13,6 @@
             "Y": 119.490036,
             "Z": 187.48755
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "AcceptQuest"
         }
@@ -47,26 +46,6 @@
           "TerritoryId": 1188,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818427
-        },
-        {
-          "Position": {
-            "X": 35.692627,
-            "Y": 109.2,
-            "Z": 490.56314
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": -46.322823,
-            "Y": 109.2,
-            "Z": 475.24792
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "Mount": true
         },
         {
           "DataId": 2013619,
@@ -123,8 +102,7 @@
             "Z": 201.86157
           },
           "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Many Fires"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

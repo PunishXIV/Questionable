@@ -14,18 +14,7 @@
             "Z": 113.725464
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,8 +30,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true,
           "TargetTerritoryId": 146
         },
         {
@@ -72,10 +59,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "NextQuestId": 2589
         }
       ]

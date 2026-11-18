@@ -14,10 +14,7 @@
             "Z": 114.64099
           },
           "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,7 +34,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -45,8 +41,7 @@
               "MinimumKillCount": 1,
               "CompletionQuestVariablesFlags": [null,1,null,null,null,null]
             }
-          ],
-          "Fly": true
+          ]
         },
         {
           "Position": {
@@ -56,15 +51,13 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
               "DataId": 3241,
               "MinimumKillCount": 1
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -79,8 +72,7 @@
             "Z": -253.55927
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -106,10 +98,7 @@
             "Z": 114.64099
           },
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

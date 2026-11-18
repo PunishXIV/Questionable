@@ -14,9 +14,7 @@
             "Z": -209.15851
           },
           "TerritoryId": 180,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,8 +38,7 @@
             "ItemId": 2000670,
             "Condition": "Health%",
             "Value": 30
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -56,9 +53,7 @@
             "Z": -209.15851
           },
           "TerritoryId": 180,
-          "StopDistance": 1,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,26 +14,13 @@
             "Z": 313.98486
           },
           "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -0.5671045,
-            "Y": -23.618042,
-            "Z": 144.09882
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
-        },
         {
           "DataId": 1017455,
           "Position": {
@@ -57,8 +44,7 @@
             "Z": 158.70898
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -70,16 +56,6 @@
           "InteractionType": "Craft",
           "ItemId": 15742,
           "ItemCount": 1
-        },
-        {
-          "Position": {
-            "X": -0.5671045,
-            "Y": -23.618042,
-            "Z": 144.09882
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 1017455,
@@ -104,8 +80,7 @@
             "Z": -770.50433
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -120,9 +95,7 @@
             "Z": 299.61084
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -137,9 +110,7 @@
             "Z": 313.98486
           },
           "TerritoryId": 400,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

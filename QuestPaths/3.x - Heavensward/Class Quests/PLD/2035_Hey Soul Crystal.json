@@ -14,8 +14,7 @@
 						"Z": 695.796
 					},
 					"TerritoryId": 397,
-					"InteractionType": "AcceptQuest",
-					"AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+					"InteractionType": "AcceptQuest"
 				}
 			]
 		},
@@ -30,9 +29,7 @@
 						"Z": 108.93408
 					},
 					"TerritoryId": 398,
-					"InteractionType": "Interact",
-					"Fly": true,
-					"AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+					"InteractionType": "Interact"
 				}
 			]
 		},
@@ -47,8 +44,7 @@
 						"Z": -496.39127
 					},
 					"TerritoryId": 398,
-					"InteractionType": "Interact",
-					"Fly": true
+					"InteractionType": "Interact"
 				}
 			]
 		},
@@ -79,8 +75,6 @@
 					},
 					"TerritoryId": 397,
 					"InteractionType": "CompleteQuest",
-					"Fly": true,
-					"AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
 					"NextQuestId": 2036
 				}
 			]

@@ -121,7 +121,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64],

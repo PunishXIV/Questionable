@@ -14,21 +14,7 @@
             "Z": 97.24573
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 42.557373,
-                  "Y": -7.7058716,
-                  "Z": 97.24573
-                },
-                "TerritoryId": 132,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,22 +29,7 @@
             "Z": 30.533203
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -199.02344,
-                  "Y": 6.8735423,
-                  "Z": 30.533203
-                },
-                "TerritoryId": 153,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -73,22 +44,7 @@
             "Z": -39.261536
           },
           "TerritoryId": 153,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -199.02344,
-                  "Y": 6.8735423,
-                  "Z": 30.533203
-                },
-                "TerritoryId": 153,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,9 +14,7 @@
             "Z": 729.4575
           },
           "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -57,9 +55,7 @@
             "Z": 729.4575
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

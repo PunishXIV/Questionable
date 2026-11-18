@@ -15,7 +15,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "$": "auto: issuer 1002454 (Hezzkhezl)"
         }
       ]
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -57,8 +55,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
           "$": "auto: todo turn-in -> 1002454 (Hezzkhezl)"
         }
       ]

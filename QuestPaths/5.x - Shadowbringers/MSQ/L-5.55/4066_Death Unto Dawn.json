@@ -16,10 +16,6 @@
           "TerritoryId": 133,
           "InteractionType": "Interact",
           "TargetTerritoryId": 205,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
           "SkipConditions": {"StepIf": {"InTerritory": [205]}}
         },
         {
@@ -45,8 +41,7 @@
             "Z": 107.16406
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,7 +55,6 @@
             "Y": -19.000002,
             "Z": 103.34924
           },
-          "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true},

@@ -14,8 +14,7 @@
             "Z": 285.60303
           },
           "TerritoryId": 622,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Reunion"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,8 +40,7 @@
           null,null,null,null
               ]
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -57,8 +55,7 @@
             "Z": 285.60303
           },
           "TerritoryId": 622,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Azim Steppe - Reunion"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

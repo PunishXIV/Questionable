@@ -14,19 +14,13 @@
             "Z": 444.3275
           },
           "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "TerritoryId": 131,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ul'dah"
-        },
         {
           "DataId": 1011565,
           "Position": {
@@ -46,11 +40,7 @@
             "Z": 85.31323
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,11 +55,7 @@
             "Z": -121.53815
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] The Chamber of Rule",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,11 +71,6 @@
           },
           "TerritoryId": 141,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -111,9 +92,7 @@
             "Z": -152.36133
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -128,11 +107,7 @@
             "Z": -4.135254
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

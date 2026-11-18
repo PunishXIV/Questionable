@@ -15,11 +15,7 @@
             "Z": 9.994568
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,11 +30,7 @@
             "Z": 56.931396
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -53,11 +45,7 @@
             "Z": -241.84027
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Hawkers' Alley",
-            "[Limsa Lominsa] Marauders' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -72,28 +60,13 @@
             "Z": 9.994568
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": 177.58797,
-            "Y": -41.12709,
-            "Z": 260.26315
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
-        },
         {
           "DataId": 1005215,
           "Position": {
@@ -109,21 +82,6 @@
     {
       "Sequence": 5,
       "Steps": [
-        {
-          "Position": {
-            "X": 104.38023,
-            "Y": 68.15523,
-            "Z": 331.41037
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "Fly": true,
-          "Land": true
-        },
         {
           "DataId": 1005217,
           "Position": {
@@ -164,10 +122,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ],
           "NextQuestId": 460
         }
       ]

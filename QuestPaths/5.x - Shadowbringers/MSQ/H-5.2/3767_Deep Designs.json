@@ -29,8 +29,7 @@
             "Z": -197.95532
           },
           "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tempest - Ondo Cups"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,7 +44,6 @@
           },
           "TerritoryId": 818,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -95,16 +93,6 @@
           }
         },
         {
-          "Position": {
-            "X": -423.6145,
-            "Y": 393.0597,
-            "Z": -823.20044
-          },
-          "TerritoryId": 818,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2010814,
           "Position": {
             "X": -422.47656,
@@ -127,8 +115,7 @@
             "Z": -197.95532
           },
           "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tempest - Ondo Cups"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

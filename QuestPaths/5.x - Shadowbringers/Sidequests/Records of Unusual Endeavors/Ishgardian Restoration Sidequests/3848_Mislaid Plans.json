@@ -15,10 +15,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_LUCKHT001_03848_Q1_000_000",
@@ -42,10 +38,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "NextQuestId": 3849,
           "$": "auto: todo turn-in -> 1032898 (Neillemard)"
         }

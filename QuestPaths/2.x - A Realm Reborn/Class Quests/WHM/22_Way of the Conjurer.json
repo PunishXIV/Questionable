@@ -15,18 +15,7 @@
             "Z": -11.093384
           },
           "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "InteractionType": "AcceptQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -100,11 +89,7 @@
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null],
-          "$": "0 0  0 0  0 0 -> 19 0  0 0  0 0",
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ]
+          "$": "0 0  0 0  0 0 -> 19 0  0 0  0 0"
         },
         {
           "Position": {
@@ -163,10 +148,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
           "NextQuestId": 48
         }
       ]

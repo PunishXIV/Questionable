@@ -13,18 +13,7 @@
             "Z": 89.86035
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,11 +28,7 @@
             "Z": 84.51965
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -58,11 +43,7 @@
             "Z": 88.181885
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Goldsmiths' Guild",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,11 +58,7 @@
             "Z": -113.78656
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Thaumaturges' Guild",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,11 +73,7 @@
             "Z": 89.86035
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

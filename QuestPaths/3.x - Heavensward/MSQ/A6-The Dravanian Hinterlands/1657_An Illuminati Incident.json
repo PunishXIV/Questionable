@@ -30,11 +30,7 @@
           },
           "TerritoryId": 399,
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 1936,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ]
+          "PickUpQuestId": 1936
         },
         {
           "DataId": 1012416,
@@ -45,10 +41,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "SinglePlayerDuty",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ],
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.292"
@@ -66,7 +58,6 @@
             "Y": 77.859474,
             "Z": -5.9052734
           },
-          "StopDistance": 7,
           "TerritoryId": 399,
           "InteractionType": "Interact"
         }
@@ -83,8 +74,7 @@
             "Z": 23.483582
           },
           "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

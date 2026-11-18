@@ -14,9 +14,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -38,11 +35,8 @@
             "Y": 56.113926,
             "Z": 236.25537
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -57,7 +51,6 @@
             "Z": 211.38318
           },
           "TerritoryId": 612,
-          "Fly": true,
           "InteractionType": "Interact"
         }
       ]
@@ -68,33 +61,9 @@
         {
           "Position": {
             "X": 483.83258,
-            "Y": 60.34444,
-            "Z": 350.96707
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 483.83258,
             "Y": 42,
             "Z": 350.96707
           },
-          "StopDistance": 0.25,
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "Land": true
-        },
-        {
-          "Position": {
-            "X": 483.83258,
-            "Y": 42,
-            "Z": 350.96707
-          },
-          "StopDistance": 0.25,
           "TerritoryId": 612,
           "InteractionType": "Action",
           "Action": "Trample"
@@ -105,7 +74,6 @@
             "Y": 42,
             "Z": 350.96707
           },
-          "StopDistance": 0.25,
           "TerritoryId": 612,
           "InteractionType": "Action",
           "Action": "Trample"
@@ -116,7 +84,6 @@
             "Y": 42,
             "Z": 350.96707
           },
-          "StopDistance": 0.25,
           "TerritoryId": 612,
           "InteractionType": "Action",
           "Action": "Trample"
@@ -127,7 +94,6 @@
             "Y": 42,
             "Z": 350.96707
           },
-          "StopDistance": 0.25,
           "TerritoryId": 612,
           "InteractionType": "Action",
           "Action": "Trample"
@@ -138,7 +104,6 @@
             "Y": 42,
             "Z": 350.96707
           },
-          "StopDistance": 0.25,
           "TerritoryId": 612,
           "InteractionType": "Action",
           "Action": "Trample"
@@ -149,7 +114,6 @@
             "Y": 42,
             "Z": 350.96707
           },
-          "StopDistance": 0.25,
           "TerritoryId": 612,
           "InteractionType": "Action",
           "Action": "Trample"
@@ -160,7 +124,6 @@
             "Y": 42,
             "Z": 350.96707
           },
-          "StopDistance": 0.25,
           "TerritoryId": 612,
           "InteractionType": "Action",
           "Action": "Trample"
@@ -178,9 +141,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -202,11 +162,8 @@
             "Y": 56.113926,
             "Z": 236.25537
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

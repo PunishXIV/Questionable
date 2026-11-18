@@ -16,9 +16,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -58,15 +55,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                398
-              ]
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -87,10 +76,8 @@
             "Y": -4.925739,
             "Z": 275.1737
           },
-          "StopDistance": 3.0,
           "TerritoryId": 398,
           "InteractionType": "Combat",
-          "Mount": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             22
@@ -104,10 +91,8 @@
             "Y": -3.5871706,
             "Z": 243.56834
           },
-          "StopDistance": 3.0,
           "TerritoryId": 398,
           "InteractionType": "Combat",
-          "Mount": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             22
@@ -123,7 +108,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -137,10 +121,8 @@
             "Y": -6.478032,
             "Z": 237.16998
           },
-          "StopDistance": 3.0,
           "TerritoryId": 398,
           "InteractionType": "Combat",
-          "Mount": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             22
@@ -161,9 +143,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -202,35 +181,13 @@
             "Z": 132.24988
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "$": "Path to Hervoix",
-          "Position": {
-            "X": 453.9474,
-            "Y": -51.141403,
-            "Z": 19.29933
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                398
-              ]
-            }
-          }
-        },
         {
           "DataId": 1014502,
           "Position": {

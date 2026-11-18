@@ -30,11 +30,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ],
           "TargetTerritoryId": 844
         }
       ]
@@ -49,7 +44,6 @@
             "Y": 0,
             "Z": -5.142395
           },
-          "StopDistance": 7,
           "TerritoryId": 844,
           "InteractionType": "Interact"
         }
@@ -66,8 +60,7 @@
             "Z": 305.19568
           },
           "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head"
+          "InteractionType": "Interact"
         }
       ]
     },

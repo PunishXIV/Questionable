@@ -28,8 +28,7 @@
             "Z": 7.248047
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -95,13 +94,7 @@
             "Z": -55.832825
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Western Rhalgr's Reach"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -119,10 +112,7 @@
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             8577
-          ],
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          ]
         }
       ]
     },
@@ -152,9 +142,7 @@
             "Z": 237.96448
           },
           "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Peering Stones"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

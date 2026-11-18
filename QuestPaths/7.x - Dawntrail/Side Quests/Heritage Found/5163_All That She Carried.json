@@ -12,24 +12,8 @@
             "Y": 34.94368,
             "Z": -581.23145
           },
-          "StopDistance": 5,
           "TerritoryId": 1191,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -153.09375,
-                  "Y": 34.946026,
-                  "Z": -581.0178
-                },
-                "TerritoryId": 1191,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,8 +28,7 @@
             "Z": -637.2626
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,14 +42,12 @@
             "Y": 34.01233,
             "Z": -411.33746
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             17685
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -76,14 +57,12 @@
             "Y": 34.6532,
             "Z": -268.9403
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             17685
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -99,8 +78,7 @@
             "Z": -446.7079
           },
           "TerritoryId": 1191,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

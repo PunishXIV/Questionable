@@ -13,7 +13,6 @@
             "Y": 68.61058,
             "Z": 184.9851
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
           "InteractionType": "AcceptQuest"
         }
@@ -34,8 +33,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             17649
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -49,10 +47,8 @@
             "Y": 68.61058,
             "Z": 184.9851
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

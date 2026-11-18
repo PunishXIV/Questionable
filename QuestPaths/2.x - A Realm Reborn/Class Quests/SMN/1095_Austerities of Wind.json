@@ -15,18 +15,7 @@
             "Z": -246.87573
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,15 +32,10 @@
           "TerritoryId": 139,
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 180,
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
           "SkipConditions": {
             "StepIf": {
               "InTerritory": [180],
               "AetheryteUnlocked": "Outer La Noscea - Camp Overlook"
-            },
-            "AetheryteShortcutIf": {
-              "InTerritory": [139,180]
             }
           }
         },
@@ -60,7 +44,6 @@
           "TerritoryId": 180,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Outer La Noscea - Camp Overlook",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NotInTerritory": [180],
@@ -76,10 +59,8 @@
             "Z": -290.80536
           },
           "TerritoryId": 180,
-          "StopDistance": 1,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -110,10 +91,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "NextQuestId": 1096
         }
       ]

@@ -13,7 +13,6 @@
             "Y": -50.325172,
             "Z": -146.95972
           },
-          "StopDistance": 7,
           "TerritoryId": 398,
           "InteractionType": "AcceptQuest"
         }
@@ -29,10 +28,8 @@
             "Y": -30.095806,
             "Z": 102.22009
           },
-          "StopDistance": 7,
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,16 +56,6 @@
           "TerritoryId": 398,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818074
-        },
-        {
-          "Position": {
-            "X": -467.55936,
-            "Y": -11.599176,
-            "Z": -445.6323
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "Mount": true
         },
         {
           "DataId": 2005448,

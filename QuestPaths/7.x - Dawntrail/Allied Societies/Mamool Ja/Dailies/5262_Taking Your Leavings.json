@@ -14,9 +14,7 @@
             "Z": 729.4575
           },
           "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +28,8 @@
             "Y": -158.3429,
             "Z": 720.4851
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -44,10 +39,8 @@
             "Y": -158.67859,
             "Z": 668.39087
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -57,10 +50,8 @@
             "Y": -158.09875,
             "Z": 726.43616
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -69,25 +60,12 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": 472.2853,
-            "Y": -150,
-            "Z": 758.076
-          },
-          "StopDistance": 2,
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
-        },
-        {
           "DataId": 1052570,
           "Position": {
             "X": 470.6339,
             "Y": -150,
             "Z": 757.47314
           },
-          "StopDistance": 7,
           "TerritoryId": 1189,
           "InteractionType": "Interact"
         }
@@ -104,9 +82,7 @@
             "Z": 729.4575
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

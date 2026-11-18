@@ -13,9 +13,7 @@
             "Z": -63.35452
           },
           "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +28,7 @@
             "Z": -278.73657
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,9 +43,7 @@
             "Z": -63.35452
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,7 +58,6 @@
             "Z": -63.35452
           },
           "TerritoryId": 154,
-          "Fly": true,
           "InteractionType": "Instruction",
           "Comment": "Craft/purchase off marketboard an Erudite's Picatrix of Healing and meld 2 Quicktongue Materia III to it."
         },
@@ -76,9 +69,7 @@
             "Z": -63.35452
           },
           "InteractionType": "Interact",
-          "TerritoryId": 154,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "TerritoryId": 154
         }
       ]
     },
@@ -87,7 +78,6 @@
       "Steps": [
         {
           "TerritoryId": 154,
-          "Fly": true,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 74,
@@ -100,17 +90,6 @@
     {
       "Sequence": 5,
       "Steps": [
-        {
-          "Position": {
-            "X": 437.6279,
-            "Y": -3.1627378,
-            "Z": -67.35514
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
-        },
         {
           "DataId": 1003075,
           "Position": {
@@ -134,9 +113,7 @@
             "Z": -825.37573
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -145,7 +122,6 @@
       "Steps": [
         {
           "TerritoryId": 154,
-          "Fly": true,
           "InteractionType": "Duty",
           "DutyOptions": {
             "ContentFinderConditionId": 14,
@@ -174,17 +150,6 @@
       "Sequence": 9,
       "Steps": [
         {
-          "Position": {
-            "X": 437.6279,
-            "Y": -3.1627378,
-            "Z": -67.35514
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
-        },
-        {
           "DataId": 1003075,
           "Position": {
             "X": 440.60822,
@@ -202,8 +167,7 @@
         {
           "InteractionType": "EquipItem",
           "ItemId": 2192,
-          "TerritoryId": 138,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "TerritoryId": 138
         },
         {
           "DataId": 768,
@@ -227,25 +191,13 @@
               "Low": 8
             },
           null,null,null,null
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 11,
       "Steps": [
-        {
-          "Position": {
-            "X": 437.6279,
-            "Y": -3.1627378,
-            "Z": -67.35514
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
-        },
         {
           "DataId": 1003075,
           "Position": {
@@ -275,17 +227,6 @@
     {
       "Sequence": 13,
       "Steps": [
-        {
-          "Position": {
-            "X": 437.6279,
-            "Y": -3.1627378,
-            "Z": -67.35514
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
-        },
         {
           "DataId": 1003075,
           "Position": {
@@ -385,7 +326,6 @@
           "InteractionType": "PurchaseItem",
           "ItemId": 6267,
           "ItemCount": 1,
-          "AetheryteShortcut": "Mor Dhona",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -393,17 +333,6 @@
               }
             }
           }
-        },
-        {
-          "Position": {
-            "X": 437.6279,
-            "Y": -3.1627378,
-            "Z": -67.35514
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
         },
         {
           "DataId": 1003075,

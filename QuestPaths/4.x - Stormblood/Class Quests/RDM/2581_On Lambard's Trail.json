@@ -14,8 +14,7 @@
             "Z": 230.82312
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,10 +30,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -56,11 +51,7 @@
             "Z": -6.4240723
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Hawkers' Alley",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -75,9 +66,7 @@
             "Z": -140.82556
           },
           "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -97,8 +86,7 @@
           "KillEnemyDataIds": [
             7221,
             7222
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -113,8 +101,7 @@
             "Z": -140.82556
           },
           "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -130,8 +117,6 @@
           },
           "TerritoryId": 147,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
-          "Fly": true,
           "NextQuestId": 2582
         }
       ]

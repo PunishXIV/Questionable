@@ -13,20 +13,8 @@
             "Y": 40,
             "Z": 66.300415
           },
-          "StopDistance": 5,
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,9 +29,7 @@
             "Z": 77.927734
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -58,11 +44,7 @@
             "Z": 23.147888
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,7 +58,6 @@
             "Y": 39.999916,
             "Z": 21.22528
           },
-          "StopDistance": 7,
           "TerritoryId": 128,
           "InteractionType": "Interact"
         }

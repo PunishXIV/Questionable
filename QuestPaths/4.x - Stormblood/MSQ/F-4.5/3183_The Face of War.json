@@ -18,8 +18,7 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 829,
-          "Fly": true
+          "TargetTerritoryId": 829
         },
         {
           "DataId": 1026823,
@@ -28,7 +27,6 @@
             "Y": 107.62999,
             "Z": 130.9071
           },
-          "StopDistance": 6,
           "TerritoryId": 829,
           "InteractionType": "AcceptQuest"
         }
@@ -60,7 +58,6 @@
             "Y": 107.63,
             "Z": 103.74609
           },
-          "StopDistance": 7,
           "TerritoryId": 829,
           "InteractionType": "Interact"
         }

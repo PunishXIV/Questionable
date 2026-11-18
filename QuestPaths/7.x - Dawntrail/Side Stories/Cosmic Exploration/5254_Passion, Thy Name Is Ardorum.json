@@ -16,7 +16,6 @@
           "TerritoryId": 959,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1237,
-          "Fly": true,
           "Comment": "Select the destination Sinus Ardorum (#1)",
           "DialogueChoices": [
             {
@@ -49,7 +48,6 @@
             "Y": -3.3378603E-06,
             "Z": -72.64819
           },
-          "StopDistance": 7,
           "TerritoryId": 1237,
           "InteractionType": "Interact"
         }
@@ -65,7 +63,6 @@
             "Y": 11.930657,
             "Z": -95.35249
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1237,
           "InteractionType": "Interact"
         }
@@ -81,7 +78,6 @@
             "Y": 47.861256,
             "Z": 212.72206
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1237,
           "InteractionType": "Interact"
         }
@@ -97,7 +93,6 @@
             "Y": 39.006783,
             "Z": 167.32143
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1237,
           "InteractionType": "Interact"
         }

@@ -113,8 +113,7 @@
             "Z": 195.94104
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -129,9 +128,7 @@
             "Z": 457.69434
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "Interact"
         }
       ]
     },

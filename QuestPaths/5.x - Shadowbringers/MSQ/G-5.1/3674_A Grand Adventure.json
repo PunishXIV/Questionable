@@ -15,11 +15,7 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 844,
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Dossal Gate"
-          ]
+          "TargetTerritoryId": 844
         },
         {
           "DataId": 1032121,
@@ -36,15 +32,6 @@
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "TerritoryId": 819,
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Tessellation (Lakeland)"
-          ],
-          "InteractionType": "None"
-        },
         {
           "Position": {
             "X": 55.589294,
@@ -89,17 +76,6 @@
           }
         },
         {
-          "Position": {
-            "X": -115.65658,
-            "Y": -0.67464465,
-            "Z": 653.1527
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1031726,
           "Position": {
             "X": -116.80786,
@@ -137,7 +113,6 @@
             "Y": -0.6671539,
             "Z": 656.79407
           },
-          "StopDistance": 5,
           "TerritoryId": 813,
           "InteractionType": "CompleteQuest"
         }

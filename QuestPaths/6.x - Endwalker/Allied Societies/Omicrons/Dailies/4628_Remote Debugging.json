@@ -16,19 +16,7 @@
           "TerritoryId": 960,
           "InteractionType": "Interact",
           "TargetTerritoryId": 960,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -65,9 +53,7 @@
             "Z": 208.39233
           },
           "TerritoryId": 960,
-          "Fly": true,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -84,7 +70,6 @@
           "TerritoryId": 960,
           "InteractionType": "Action",
           "Action": "Electric Flux",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -97,7 +82,6 @@
           "TerritoryId": 960,
           "InteractionType": "Action",
           "Action": "Electric Flux",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -115,19 +99,7 @@
           "TerritoryId": 960,
           "InteractionType": "Interact",
           "TargetTerritoryId": 960,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 26
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {

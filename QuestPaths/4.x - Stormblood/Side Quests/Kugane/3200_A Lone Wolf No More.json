@@ -21,21 +21,7 @@
               "Prompt": "TEXT_SUBCTS825_03200_Q1_000_000",
               "Answer": "TEXT_SUBCTS825_03200_A1_000_001"
             }
-          ],
-          "AetheryteShortcut": "Kugane",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 18.478638,
-                  "Y": 0.0000029802322,
-                  "Z": -63.401245
-                },
-                "TerritoryId": 628,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          ]
         }
       ]
     },
@@ -50,21 +36,7 @@
             "Z": -63.797974
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - Namai",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 458.5182,
-                  "Y": 69.204285,
-                  "Z": -63.797974
-                },
-                "TerritoryId": 135,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },

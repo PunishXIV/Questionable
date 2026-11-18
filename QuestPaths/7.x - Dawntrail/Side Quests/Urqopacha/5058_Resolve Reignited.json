@@ -13,24 +13,8 @@
             "Y": 118.935005,
             "Z": 606.13403
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 425.07043,
-                  "Y": 118.935005,
-                  "Z": 606.13403
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,9 +29,7 @@
             "Z": 614.3434
           },
           "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,9 +44,7 @@
             "Z": 137.86523
           },
           "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -78,11 +58,8 @@
             "Y": 53.34527,
             "Z": 126.29883
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -95,11 +72,8 @@
             "Y": 61.86622,
             "Z": 198.07907
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1187,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17655
@@ -117,11 +91,8 @@
             "Y": 61.80422,
             "Z": 198.2909
           },
-          "StopDistance": 8,
           "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -135,11 +106,8 @@
             "Y": 50.050797,
             "Z": 88.54797
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -153,24 +121,8 @@
             "Y": 118.935005,
             "Z": 606.13403
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 425.07043,
-                  "Y": 118.935005,
-                  "Z": 606.13403
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 150
-              }
-            }
-          },
           "NextQuestId": 5059
         }
       ]

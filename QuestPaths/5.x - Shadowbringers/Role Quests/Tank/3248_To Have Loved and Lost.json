@@ -14,38 +14,13 @@
             "Z": -872.4651
           },
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 61.020752,
-                  "Y": 100.95007,
-                  "Z": -872.4651
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 100
-              }
-            }
-          },
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -823.0134,
-            "Y": 22.900805,
-            "Z": -55.223766
-          },
-          "TerritoryId": 816,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2009948,
           "Position": {
@@ -78,9 +53,7 @@
             "Z": -872.4651
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -95,12 +68,7 @@
             "Z": 251.75854
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

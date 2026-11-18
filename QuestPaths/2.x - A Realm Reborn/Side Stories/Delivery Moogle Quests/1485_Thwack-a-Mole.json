@@ -14,25 +14,13 @@
             "Z": 5.416931
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -243.19783,
-            "Y": 58.69102,
-            "Z": -140.41818
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
-        },
         {
           "DataId": 1006261,
           "Position": {
@@ -56,12 +44,7 @@
             "Z": 255.8479
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ],
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -128,17 +111,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -243.19783,
-            "Y": 58.69102,
-            "Z": -140.41818
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true
-        },
         {
           "DataId": 1006261,
           "Position": {

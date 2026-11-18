@@ -13,22 +13,7 @@
             "Z": 244.31213
           },
           "TerritoryId": 960,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 10,
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -653.3761,
-                  "Y": 73.711235,
-                  "Z": 244.31213
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,7 +29,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -67,7 +51,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -94,22 +77,7 @@
             "Z": 244.31213
           },
           "TerritoryId": 960,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 10,
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -653.3761,
-                  "Y": 73.711235,
-                  "Z": 244.31213
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

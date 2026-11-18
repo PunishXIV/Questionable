@@ -15,15 +15,7 @@
             "Z": 56.839844
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -94,7 +86,6 @@
             "Z": 309.95642
           },
           "TerritoryId": 154,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "InteractionType": "Interact"
         }
       ]
@@ -125,15 +116,7 @@
             "Z": 56.839844
           },
           "TerritoryId": 132,
-          "AetheryteShortcut": "Gridania",
-          "InteractionType": "CompleteQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132
-              ]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

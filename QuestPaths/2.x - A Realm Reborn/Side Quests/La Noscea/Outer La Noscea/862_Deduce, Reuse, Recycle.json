@@ -14,8 +14,7 @@
             "Z": -209.88788
           },
           "TerritoryId": 180,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -293.4768
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2002341,
@@ -97,8 +95,7 @@
           },
           "TerritoryId": 180,
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 863,
-          "Fly": true
+          "NextQuestId": 863
         }
       ]
     }

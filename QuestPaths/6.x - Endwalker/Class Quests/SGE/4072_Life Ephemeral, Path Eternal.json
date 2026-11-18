@@ -14,8 +14,7 @@
             "Z": -17.746277
           },
           "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +30,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -48,9 +45,7 @@
             "Z": -787.50287
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,8 +75,7 @@
             "Z": -16.494995
           },
           "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

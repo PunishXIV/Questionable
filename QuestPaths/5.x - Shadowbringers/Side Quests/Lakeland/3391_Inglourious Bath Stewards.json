@@ -17,22 +17,7 @@
             "Z": -142.83972
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Ostall Imperative",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -654.47473,
-                  "Y": 55.75751,
-                  "Z": -142.83972
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -47,8 +32,7 @@
             "Z": -679.9573
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,8 +49,7 @@
           "TerritoryId": 813,
           "InteractionType": "Interact",
           "$": "QW: 0 32 0 0 0 0 -> QW: 1(1) 16 0 0 0 128",
-          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 128]
         },
         {
           "DataId": 1031168,
@@ -76,8 +59,7 @@
             "Z": -706.1417
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -92,8 +74,7 @@
             "Z": -679.9573
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -101,7 +82,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "AetheryteShortcut": "Lakeland - Ostall Imperative",
           "DataId": 1027391,
           "Position": {
             "X": -654.47473,
@@ -109,8 +89,7 @@
             "Z": -142.83972
           },
           "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

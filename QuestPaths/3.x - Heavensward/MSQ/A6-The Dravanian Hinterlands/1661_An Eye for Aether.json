@@ -7,16 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 478,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
-          "SkipConditions": {"AetheryteShortcutIf": {"InTerritory": [399, 463, 478]}}
-        },
-        {
           "DataId": 2005336,
           "Position": {
             "X": -488.79227,
@@ -25,9 +15,7 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 463,
-          "Fly": true,
-          "Land": true
+          "TargetTerritoryId": 463
         },
         {
           "DataId": 1012138,
@@ -51,7 +39,6 @@
             "Y": 137.42972,
             "Z": 701.4724
           },
-          "StopDistance": 7,
           "TerritoryId": 399,
           "InteractionType": "Interact"
         }
@@ -68,12 +55,7 @@
             "Z": 0.47296143
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -88,11 +70,7 @@
             "Z": 51.285522
           },
           "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

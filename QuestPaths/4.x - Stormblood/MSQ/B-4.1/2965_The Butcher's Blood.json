@@ -13,10 +13,8 @@
             "Y": 70,
             "Z": 576.1653
           },
-          "StopDistance": 7,
           "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": 537.6515
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,7 +43,6 @@
             "Y": 69.999916,
             "Z": 637.3845
           },
-          "StopDistance": 5,
           "TerritoryId": 621,
           "InteractionType": "Interact"
         }
@@ -62,7 +58,6 @@
             "Y": 69.9999,
             "Z": 634.76
           },
-          "StopDistance": 7,
           "TerritoryId": 621,
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [

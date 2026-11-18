@@ -14,21 +14,7 @@
             "Z": 403.3722
           },
           "TerritoryId": 622,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Reunion",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 525.10876,
-                  "Y": -19.50681,
-                  "Z": 403.3722
-                },
-                "MaximumDistance": 100,
-                "TerritoryId": 622
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,8 +29,7 @@
             "Z": 277.57678
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -73,8 +58,7 @@
             "Z": -440.8484
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,9 +73,7 @@
             "Z": 403.3722
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Reunion",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -123,8 +105,7 @@
           },
           "TerritoryId": 622,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -156,10 +137,8 @@
             "Y": 7.999984,
             "Z": 686.427
           },
-          "StopDistance": 5,
           "TerritoryId": 135,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

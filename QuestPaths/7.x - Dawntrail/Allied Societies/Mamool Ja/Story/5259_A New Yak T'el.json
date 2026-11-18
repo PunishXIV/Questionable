@@ -29,9 +29,7 @@
             "Z": -407.8584
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": -496.2997
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,9 +59,7 @@
             "Z": 751.09485
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,7 +75,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [[
               0
             ],null,null,null,null,null]
@@ -124,8 +118,7 @@
             "Z": 751.09485
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -166,9 +159,7 @@
             "Z": 751.09485
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "Interact"
         }
       ]
     },

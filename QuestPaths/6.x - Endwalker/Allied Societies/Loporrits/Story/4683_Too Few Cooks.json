@@ -28,8 +28,7 @@
             "Z": 3.829956
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Old Sharlayan"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -82,11 +81,7 @@
             "Z": -113.359314
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Rostra",
-            "[Old Sharlayan] The Studium"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -100,13 +95,8 @@
             "Y": -14.169313,
             "Z": 105.30249
           },
-          "StopDistance": 7,
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -121,9 +111,7 @@
             "Z": -293.23267
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

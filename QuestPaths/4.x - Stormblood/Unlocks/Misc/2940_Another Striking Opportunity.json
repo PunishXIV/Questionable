@@ -14,8 +14,7 @@
             "Z": 93.0647
           },
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,10 +30,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Fringes Gate"
-          ],
           "NextQuestId": 3601
         }
       ]

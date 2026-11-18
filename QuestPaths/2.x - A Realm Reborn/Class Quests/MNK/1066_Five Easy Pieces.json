@@ -15,19 +15,7 @@
             "Z": 95.26196
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,25 +24,12 @@
       "Steps": [
         {
           "Position": {
-            "X": 107.50675,
-            "Y": -4.574165,
-            "Z": -543.2282
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
-          "Land": true
-        },
-        {
-          "Position": {
             "X": 104.612144,
             "Y": -4.931232,
             "Z": -533.5191
           },
           "TerritoryId": 156,
           "InteractionType": "SinglePlayerDuty",
-          "Mount": false,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -73,7 +48,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 2026
         }
       ]

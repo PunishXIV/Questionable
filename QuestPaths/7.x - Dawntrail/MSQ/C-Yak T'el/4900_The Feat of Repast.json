@@ -13,7 +13,6 @@
             "Y": 19.501463,
             "Z": -358.05298
           },
-          "StopDistance": 5,
           "TerritoryId": 1189,
           "InteractionType": "AcceptQuest"
         }
@@ -45,8 +44,7 @@
             "Z": -424.2771
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -75,7 +73,6 @@
             "Y": 28.775951,
             "Z": -420.95068
           },
-          "StopDistance": 7,
           "TerritoryId": 1189,
           "InteractionType": "CompleteQuest"
         }

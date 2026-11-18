@@ -40,8 +40,7 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Emote",
-          "Emote": "lookout",
-          "StopDistance": 0.25
+          "Emote": "lookout"
         }
       ]
     },
@@ -57,7 +56,6 @@
           "TerritoryId": 401,
           "InteractionType": "SinglePlayerDuty",
           "Emote": "lookout",
-          "StopDistance": 0.25,
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.292"
@@ -75,7 +73,6 @@
             "Y": -35.95642,
             "Z": 18.722778
           },
-          "StopDistance": 7,
           "TerritoryId": 401,
           "InteractionType": "CompleteQuest"
         }

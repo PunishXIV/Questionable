@@ -16,10 +16,6 @@
           "TerritoryId": 1186,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1207,
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ],
           "SkipConditions": {"StepIf": {"InTerritory": [1207, 1268]}}
         },
         {
@@ -41,7 +37,6 @@
             "Y": 0.024999976,
             "Z": 1.0550152
           },
-          "StopDistance": 5,
           "TerritoryId": 1268,
           "InteractionType": "AcceptQuest"
         }
@@ -106,10 +101,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Neon Stein",
-            "[Solution Nine] Information Center"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -147,11 +138,7 @@
             "Z": 1.8157349
           },
           "TerritoryId": 1186,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Solution Nine] Information Center",
-            "[Solution Nine] Residential Sector"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

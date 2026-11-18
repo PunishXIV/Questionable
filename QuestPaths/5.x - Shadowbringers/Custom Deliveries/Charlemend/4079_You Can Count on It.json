@@ -7,22 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1035529,
           "Position": {
             "X": -7.156494,
@@ -45,11 +29,7 @@
             "Z": -129.56439
           },
           "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] Western Risensong Quarter"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -57,22 +37,12 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": -113.73003,
-            "Y": 0,
-            "Z": -136.48384
-          },
-          "TerritoryId": 886,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1036127,
           "Position": {
             "X": -116.92993,
             "Y": 0,
             "Z": -137.31598
           },
-          "StopDistance": 5,
           "TerritoryId": 886,
           "InteractionType": "Interact"
         }
@@ -89,11 +59,7 @@
             "Z": 158.55652
           },
           "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] Western Risensong Quarter",
-            "[Firmament] The New Nest"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,11 +74,7 @@
             "Z": -137.31598
           },
           "TerritoryId": 886,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Firmament] The New Nest",
-            "[Firmament] Western Risensong Quarter"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -16,7 +16,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
@@ -40,7 +39,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "Position": {
             "X": -116.833,
             "Y": 70.279,
@@ -49,9 +47,7 @@
           "TerritoryId": 137,
           "TargetTerritoryId": 134,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [134] },
             "StepIf": { "InTerritory": [134] }
           }
         },
@@ -62,7 +58,6 @@
             "Y": 30.723186,
             "Z": -685.1759
           },
-          "Fly": true,
           "TerritoryId": 134,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
@@ -95,14 +90,9 @@
             "Y": 56.384,
             "Z": 839.334
           },
-          "Fly": true,
           "TerritoryId": 137,
           "TargetTerritoryId": 135,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [135]
-            },
             "StepIf": { "InTerritory": [135] }
           }
         },
@@ -114,7 +104,6 @@
             "Z": -198.50464
           },
           "TerritoryId": 135,
-          "Fly": true,
           "KillEnemyDataIds": [3573],
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction"
@@ -146,12 +135,10 @@
             "Y": 9.414734,
             "Z": 351.12524
           },
-          "Fly": true,
           "KillEnemyDataIds": [3572],
           "TerritoryId": 137,
           "InteractionType": "Combat",
-          "EnemySpawnType": "AfterInteraction",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "EnemySpawnType": "AfterInteraction"
         }
       ]
     },
@@ -181,11 +168,9 @@
             "Z": 260.3036
           },
           "KillEnemyDataIds": [3573],
-          "Fly": true,
           "TerritoryId": 139,
           "InteractionType": "Combat",
-          "EnemySpawnType": "AfterInteraction",
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "EnemySpawnType": "AfterInteraction"
         }
       ]
     },
@@ -217,15 +202,10 @@
           "TerritoryId": 139,
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 180,
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
           "SkipConditions": {
             "StepIf": {
               "InTerritory": [180],
               "AetheryteUnlocked": "Outer La Noscea - Camp Overlook"
-            },
-            "AetheryteShortcutIf": {
-              "InTerritory": [139,180]
             }
           }
         },
@@ -234,7 +214,6 @@
           "TerritoryId": 180,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Outer La Noscea - Camp Overlook",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NotInTerritory": [180],
@@ -275,7 +254,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "Position": {
             "X": -116.833,
             "Y": 70.279,
@@ -284,11 +262,7 @@
           "TerritoryId": 137,
           "TargetTerritoryId": 134,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [134]
-            },
             "StepIf": { "InTerritory": [134] }
           }
         },
@@ -299,7 +273,6 @@
             "Y": 30.533203,
             "Z": -684.93176
           },
-          "Fly": true,
           "TerritoryId": 134,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 233

@@ -12,10 +12,8 @@
             "Y": 11.971041,
             "Z": 25.192627
           },
-          "StopDistance": 7,
           "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 152,
@@ -40,7 +38,6 @@
             "Y": 11.971041,
             "Z": 25.192627
           },
-          "StopDistance": 7,
           "TerritoryId": 152,
           "InteractionType": "UseItem",
           "ItemId": 27266,
@@ -50,8 +47,7 @@
                 "NotInInventory": true
               }
             }
-          },
-          "Fly": true
+          }
         },
         {
           "TerritoryId": 152,
@@ -130,7 +126,6 @@
             "Y": 11.971041,
             "Z": 25.192627
           },
-          "StopDistance": 7,
           "TerritoryId": 152,
           "InteractionType": "AcceptQuest"
         }
@@ -147,8 +142,7 @@
             "Z": 115.31238
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -163,11 +157,7 @@
             "Z": -270.83246
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -183,10 +173,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -261,10 +247,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "SinglePlayerDuty",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Lancers' Guild"
-          ],
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -278,26 +260,12 @@
       "Sequence": 7,
       "Steps": [
         {
-          "Position": {
-            "X": -232.38095,
-            "Y": 2.3337264,
-            "Z": -205.92738
-          },
-          "TerritoryId": 133,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Botanists' Guild"
-          ]
-        },
-        {
           "DataId": 1029043,
           "Position": {
             "X": -232.25757,
             "Y": 2.4186904,
             "Z": -210.98651
           },
-          "StopDistance": 7,
           "TerritoryId": 133,
           "InteractionType": "Interact"
         }
@@ -314,11 +282,7 @@
             "Z": -115.31244
           },
           "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

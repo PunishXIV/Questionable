@@ -13,7 +13,6 @@
             "Y": 35.86156,
             "Z": -223.10223
           },
-          "StopDistance": 5,
           "TerritoryId": 816,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
@@ -86,8 +85,7 @@
             "Z": 482.0172
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

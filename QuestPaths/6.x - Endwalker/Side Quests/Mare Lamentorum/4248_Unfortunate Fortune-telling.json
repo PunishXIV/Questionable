@@ -17,9 +17,7 @@
             "Z": -479.444
           },
           "TerritoryId": 959,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,9 +32,7 @@
             "Z": -743.365
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -82,10 +78,7 @@
             "Z": -479.444
           },
           "TerritoryId": 959,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

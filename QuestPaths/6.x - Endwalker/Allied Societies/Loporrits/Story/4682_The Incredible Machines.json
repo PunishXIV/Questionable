@@ -12,10 +12,7 @@
             "Z": -262.13477
           },
           "TerritoryId": 959,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true,
-          "StopDistance": 5
+          "InteractionType": "None"
         }
         ,
         {
@@ -26,9 +23,7 @@
             "Z": -262.13477
           },
           "TerritoryId": 959,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,10 +38,7 @@
             "Z": -403.89105
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,10 +53,7 @@
             "Z": -698.3902
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,10 +68,7 @@
             "Z": -250.8736
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -103,10 +89,7 @@
             "Z": -250.8736
           },
           "TerritoryId": 959,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -10,18 +10,7 @@
         {
           "TerritoryId": 137,
           "InteractionType": "EquipItem",
-          "ItemId": 4542,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "ItemId": 4542
         },
         {
           "TerritoryId": 131,
@@ -44,17 +33,6 @@
       "Steps": [
         {
           "Position": {
-            "X": 287.2875,
-            "Y": 41.545933,
-            "Z": -200.75758
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
-        },
-        {
-          "Position": {
             "X": 285.82883,
             "Y": 42.26685,
             "Z": -203.32939
@@ -70,8 +48,7 @@
             "Z": -217.34372
           },
           "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 180,
@@ -91,7 +68,6 @@
           },
           "TerritoryId": 180,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -106,7 +82,6 @@
           },
           "TerritoryId": 180,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -128,8 +103,7 @@
               "DataId": 6,
               "NameId": 2020
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -145,10 +119,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
           "NextQuestId": 1057
         }
       ]

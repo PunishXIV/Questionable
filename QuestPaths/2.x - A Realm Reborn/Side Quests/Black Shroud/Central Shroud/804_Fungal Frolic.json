@@ -7,17 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": -243.19783,
-            "Y": 58.69102,
-            "Z": -140.41818
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
-        },
-        {
           "DataId": 1006261,
           "Position": {
             "X": -244.73944,
@@ -51,7 +40,6 @@
               ]
             }
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             {"High": 5},
@@ -63,16 +51,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -243.19783,
-            "Y": 58.69102,
-            "Z": -140.41818
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1006261,
           "Position": {

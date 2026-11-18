@@ -15,18 +15,7 @@
             "Z": -2.4262085
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,9 +30,7 @@
             "Z": 44.418945
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,26 +43,12 @@
             "Y": 224.95006,
             "Z": 29.04266
           },
-          "StopDistance": 0.5,
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -775.4471,
-            "Y": 224.95006,
-            "Z": 29.04266
-          },
-          "StopDistance": 0.5,
           "TerritoryId": 155,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.4.21.1"
-          },
-          "Mount": false
+          }
         }
       ]
     },
@@ -91,10 +64,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
           "NextQuestId": 2032
         }
       ]

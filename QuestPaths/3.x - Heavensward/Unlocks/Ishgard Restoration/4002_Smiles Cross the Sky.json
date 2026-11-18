@@ -14,19 +14,7 @@
             "Z": -11.062805
           },
           "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,11 +29,7 @@
             "Z": 163.43933
           },
           "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] Saint Roelle's Dais",
-            "[Firmament] The Mendicant's Court"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

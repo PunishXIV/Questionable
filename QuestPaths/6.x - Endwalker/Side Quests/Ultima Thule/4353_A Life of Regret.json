@@ -17,23 +17,7 @@
             "Z": -679.625
           },
           "TerritoryId": 960,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 5,
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 3.77302,
-                  "Y": 269.758,
-                  "Z": -679.625
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -48,9 +32,7 @@
             "Z": -685.423
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,9 +47,7 @@
             "Z": -679.625
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 5
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,9 +69,7 @@
               "RewardItemId": 2003385,
               "RewardItemCount": 1
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
@@ -106,23 +84,7 @@
             "Z": -679.625
           },
           "TerritoryId": 960,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "StopDistance": 5,
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 3.77302,
-                  "Y": 269.758,
-                  "Z": -679.625
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

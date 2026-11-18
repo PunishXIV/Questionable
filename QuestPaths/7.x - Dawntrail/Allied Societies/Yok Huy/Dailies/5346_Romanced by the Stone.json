@@ -18,8 +18,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -58,8 +56,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Emote",
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "Fly": true,
           "Emote": "poke",
           "RequiredQuestVariables": [null,[
             {"High": 3}
@@ -75,7 +71,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Emote",
-          "Fly": true,
           "Emote": "poke",
           "RequiredQuestVariables": [null,[
             {"High": 1}
@@ -91,7 +86,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Emote",
-          "Fly": true,
           "Emote": "poke",
           "RequiredQuestVariables": [null,[
             {"High": 4}
@@ -107,7 +101,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Emote",
-          "Fly": true,
           "Emote": "poke",
           "RequiredQuestVariables": [null,[
             {"High": 2}
@@ -128,8 +121,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {

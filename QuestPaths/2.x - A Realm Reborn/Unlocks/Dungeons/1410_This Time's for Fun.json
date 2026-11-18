@@ -14,10 +14,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona"
+          "$": "Rising Stones Door"
         },
         {
           "DataId": 1005524,
@@ -27,8 +24,7 @@
             "Z": -635.98083
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "Mount": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,9 +39,7 @@
             "Z": 431.38782
           },
           "TerritoryId": 145,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

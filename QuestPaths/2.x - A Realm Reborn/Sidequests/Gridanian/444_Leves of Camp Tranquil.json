@@ -21,8 +21,7 @@
             "Z": 344.381
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,7 +36,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "Instruction",
-          "Fly": true,
           "Comment": "Complete the Trial Levequest\nComplete manually or can use Battlevest"
         }
       ]

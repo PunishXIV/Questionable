@@ -29,8 +29,7 @@
             "Z": -509.20883
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,8 +44,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [7549]
         }
@@ -77,9 +74,7 @@
             "Z": -17.166004
           },
           "TerritoryId": 621,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1023383,
@@ -89,8 +84,7 @@
             "Z": 397.39062
           },
           "TerritoryId": 620,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

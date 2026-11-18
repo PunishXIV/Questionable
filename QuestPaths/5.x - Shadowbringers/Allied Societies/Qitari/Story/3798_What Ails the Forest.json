@@ -44,8 +44,7 @@
             "Z": -224.93329
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,8 +59,7 @@
             "Z": -205.52374
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -117,9 +115,7 @@
             "Z": -205.52374
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Rak'tika - Fanow"
+          "InteractionType": "Interact"
         }
       ]
     },

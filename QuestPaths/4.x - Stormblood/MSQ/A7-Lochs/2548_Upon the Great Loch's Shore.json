@@ -13,10 +13,8 @@
             "Y": -0.11677644,
             "Z": -28.610718
           },
-          "StopDistance": 7,
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -38,17 +36,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -271.59692,
-            "Y": 257.52652,
-            "Z": 737.01855
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo",
-          "Mount": true,
-          "AetheryteShortcut": "Peaks - Ala Ghiri"
-        },
         {
           "DataId": 1021557,
           "Position": {
@@ -87,8 +74,7 @@
             "Z": 422.17126
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

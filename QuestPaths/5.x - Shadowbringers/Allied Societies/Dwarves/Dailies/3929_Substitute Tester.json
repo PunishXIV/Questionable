@@ -14,9 +14,7 @@
             "Z": -425.25372
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,6 @@
             "Z": -405.56958
           },
           "TerritoryId": 813,
-          "Fly": true,
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
           "InteractionType": "Interact"
         }
       ]
@@ -48,7 +44,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "RequiredQuestVariables": [null,[ 16, 32, 48, 64, 128 ],null,null,null,null],
           "Comment": "west of The Stay - landing point"
         },
@@ -84,7 +79,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "RequiredQuestVariables": [null,[ 16, 32, 80, 96, 112, 128 ],null,null,null,null],
           "Comment": "inside The Stay - landing point"
         },
@@ -120,7 +114,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "RequiredQuestVariables": [null,[ 16, 48, 64, 96, 112, 144 ],null,null,null,null],
           "Comment": "north of The Stay - landing point"
         },
@@ -156,7 +149,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "RequiredQuestVariables": [null,[ 32, 48, 80, 112, 144 ],null,null,null,null],
           "Comment": "NE of The Stay - landing point"
         },
@@ -192,7 +184,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "RequiredQuestVariables": [null,[ 64, 80, 96, 128, 144 ],null,null,null,null],
           "Comment": "east of The Stay - landing point"
         },
@@ -233,9 +224,7 @@
             "Z": -423.84705
           },
           "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

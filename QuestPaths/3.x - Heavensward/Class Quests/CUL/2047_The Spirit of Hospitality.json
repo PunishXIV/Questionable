@@ -20,16 +20,7 @@
             "Z": 135.9425
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [129, 128]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,11 +35,7 @@
             "Z": -136.79718
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,10 +51,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Culinarians' Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CLSCUL600_02047_Q1_000_122",
@@ -104,10 +87,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
           "AllowHighQuality": true
         }
       ]
@@ -123,11 +102,7 @@
             "Z": 135.9425
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Culinarians' Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

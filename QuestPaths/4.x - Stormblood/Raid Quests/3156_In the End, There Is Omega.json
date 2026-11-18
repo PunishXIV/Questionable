@@ -14,7 +14,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "TargetTerritoryId": 807,
           "DialogueChoices": [
             {
@@ -31,7 +30,6 @@
             "Y": -16.150002,
             "Z": 156.20654
           },
-          "StopDistance": 7,
           "TerritoryId": 807,
           "InteractionType": "AcceptQuest"
         }
@@ -47,7 +45,6 @@
             "Y": 69.25287,
             "Z": 518.88293
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
           "InteractionType": "Interact"
         }
@@ -64,8 +61,7 @@
             "Z": 41.794434
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,8 +92,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -157,7 +151,6 @@
             "Y": 69.25287,
             "Z": 518.88293
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3157

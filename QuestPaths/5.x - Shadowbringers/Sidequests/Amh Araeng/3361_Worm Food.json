@@ -15,8 +15,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "$": "auto: issuer 1030500 (flea-bitten scavenger)"
         }
       ]
@@ -33,8 +31,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "$": "auto: todo location -> 1030501 (flea-bitten scavenger)"
         }
       ]
@@ -52,8 +48,6 @@
           "TerritoryId": 815,
           "InteractionType": "UseItem",
           "GroundTarget": true,
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "ItemId": 2002619,
           "$": "auto: lua EOBJECT0 -> 2010130 (destination); use item ITEM0=2002619 on it"
         }
@@ -71,9 +65,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "StopDistance": 5,
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
           "ItemId": 2002620,
           "$": "auto: todo area 9y from lua EOBJECT4 -> 2010129 (sand wriggler); use item ITEM1=2002620 on it"
@@ -87,7 +78,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "StopDistance": 5,
           "ItemId": 2002620,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo area 9y from lua EOBJECT2 -> 2010127 (sand wriggler); use item ITEM1=2002620 on it"
@@ -101,7 +91,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "StopDistance": 5,
           "ItemId": 2002620,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo area 10y from lua EOBJECT1 -> 2010126 (sand wriggler); use item ITEM1=2002620 on it"
@@ -115,7 +104,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "StopDistance": 5,
           "ItemId": 2002620,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
           "$": "auto: todo area 10y from lua EOBJECT3 -> 2010128 (sand wriggler); use item ITEM1=2002620 on it"
@@ -134,8 +122,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "$": "auto: todo location -> 1030501 (flea-bitten scavenger); hands over ITEM1=2002620"
         }
       ]
@@ -152,8 +138,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "$": "auto: todo turn-in -> 1030502 (flea-bitten scavenger)"
         }
       ]

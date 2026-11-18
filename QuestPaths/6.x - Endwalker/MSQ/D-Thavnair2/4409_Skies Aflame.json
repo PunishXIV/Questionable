@@ -13,7 +13,6 @@
             "Y": 3.8989394,
             "Z": 7.003784
           },
-          "StopDistance": 5,
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest"
         }
@@ -45,7 +44,6 @@
             "Z": 0
           },
           "TerritoryId": 957,
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
           "InteractionType": "WalkTo",
           "Comment": "Quest automatically progresses once teleported to Yedlihmad"
         }
@@ -92,7 +90,6 @@
             "Y": -1.9999963,
             "Z": 93.492065
           },
-          "StopDistance": 5,
           "TerritoryId": 963,
           "InteractionType": "CompleteQuest"
         }

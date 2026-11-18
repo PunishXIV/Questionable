@@ -117,47 +117,10 @@
       "Steps": [
         {
           "Position": {
-            "X": 60.480736,
-            "Y": 82.909546,
-            "Z": -37.52441
-          },
-          "TerritoryId": 820,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 63.647987,
-            "Y": 84.80449,
-            "Z": -36.65881
-          },
-          "TerritoryId": 820,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 65.76068,
-            "Y": 86.70241,
-            "Z": -39.688606
-          },
-          "TerritoryId": 820,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 64.27692,
-            "Y": 86.7024,
-            "Z": -40.825073
-          },
-          "TerritoryId": 820,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
             "X": 61.212788,
             "Y": 86.7,
             "Z": -40.65704
           },
-          "StopDistance": 0.5,
           "TerritoryId": 820,
           "InteractionType": "Emote",
           "Emote": "dance"

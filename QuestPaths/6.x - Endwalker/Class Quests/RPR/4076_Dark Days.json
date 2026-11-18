@@ -16,17 +16,7 @@
           "TerritoryId": 131,
           "InteractionType": "Interact",
           "TargetTerritoryId": 971,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131,
-                971
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 971
@@ -57,11 +47,7 @@
             "Z": 54.8562
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,27 +62,13 @@
             "Z": 302.2965
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Thaumaturges' Guild",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": -66.87344,
-            "Y": -3.6581912,
-            "Z": 179.7406
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1036644,
           "Position": {
@@ -136,11 +108,7 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 971,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "TargetTerritoryId": 971
         },
         {
           "DataId": 1036629,

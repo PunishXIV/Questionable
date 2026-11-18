@@ -13,8 +13,7 @@
             "Z": 546.25757
           },
           "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,8 +34,7 @@
             17743,
             17744,
             17745
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -51,8 +49,7 @@
             "Z": 546.25757
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

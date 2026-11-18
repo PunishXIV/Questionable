@@ -14,12 +14,7 @@
             "Z": -389.05933
           },
           "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Resolution"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,17 +31,7 @@
           "TerritoryId": 1186,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1207,
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1207
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 1207
@@ -77,12 +62,7 @@
             "Z": 165.85034
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

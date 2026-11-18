@@ -14,10 +14,6 @@
             "Z": 150.04187
           },
           "TerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

@@ -14,8 +14,7 @@
             "Z": 539.45215
           },
           "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,24 +29,13 @@
             "Z": 485.3131
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -463.34363,
-            "Y": 1.3011811,
-            "Z": 578.3476
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1023238,
           "Position": {
@@ -80,34 +68,13 @@
             "Z": 569.32935
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": -487.5986,
-            "Y": -0.5999999,
-            "Z": 578.5466
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -463.34363,
-            "Y": 1.3011811,
-            "Z": 578.3476
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1023238,
           "Position": {
@@ -132,7 +99,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 2749
         }
       ]

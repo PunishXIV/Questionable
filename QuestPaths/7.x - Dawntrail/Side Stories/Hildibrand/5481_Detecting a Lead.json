@@ -15,11 +15,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ],
           "$": "auto: issuer 1053655 (Hardiboiled)"
         }
       ]
@@ -43,16 +38,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -249.51462,
-            "Y": 36.99997,
-            "Z": -496.92407
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1058941,
           "Position": {
@@ -101,10 +86,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ],
           "$": "auto: todo location -> 1049153 (Saralla)"
         }
       ]
@@ -121,10 +102,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Neon Stein",
-            "[Solution Nine] Nexus Arcade"
-          ],
           "$": "auto: todo location -> 1058952 (Hardiboiled)"
         }
       ]
@@ -174,7 +151,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "$": "auto: todo turn-in -> 1058957 (Hardiboiled)"
         }
       ]

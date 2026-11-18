@@ -13,7 +13,6 @@
             "Y": -8.000001,
             "Z": 115.7687
           },
-          "StopDistance": 1,
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest"
         }
@@ -31,10 +30,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -50,7 +45,6 @@
             "Y": 0.500025,
             "Z": -4.3793945
           },
-          "StopDistance": 7,
           "TerritoryId": 204,
           "InteractionType": "Interact"
         }
@@ -74,8 +68,7 @@
             "Notes": [
               "(Phase 1) Healer NPCs are only killed after the boss dies - allied NPCs will kill them eventually; all NPCs need to be killed for the duty to complete"
             ]
-          },
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          }
         }
       ]
     },
@@ -94,10 +87,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -113,7 +102,6 @@
             "Y": 0.500025,
             "Z": -4.3793945
           },
-          "StopDistance": 7,
           "TerritoryId": 204,
           "InteractionType": "CompleteQuest"
         }

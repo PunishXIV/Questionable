@@ -14,9 +14,7 @@
             "Z": -506.2486
           },
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 7,
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -49,7 +47,6 @@
             "Y": 0.024691548,
             "Z": -75.76111
           },
-          "StopDistance": 5,
           "TerritoryId": 635,
           "InteractionType": "CompleteQuest"
         }

@@ -15,8 +15,7 @@
             "Z": -42.404846
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -115,8 +114,6 @@
           "KillEnemyDataIds": [
             771
           ],
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "CombatDelaySecondsAtStart": 0,
           "$": "Will stop once 3 Qiqirn Shellsweppers get hit by Snap Punch since it will move on to the next sequence"
         }
@@ -142,7 +139,6 @@
             "Z": -42.404846
           },
           "TerritoryId": 130,
-          "AetheryteShortcut": "Ul'dah",
           "InteractionType": "CompleteQuest",
           "NextQuestId": 558
         }

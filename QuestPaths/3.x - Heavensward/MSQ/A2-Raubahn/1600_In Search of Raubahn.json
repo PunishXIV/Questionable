@@ -29,26 +29,13 @@
             "Z": -3.982666
           },
           "TerritoryId": 145,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true,
-          "StopDistance": 1
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -368.91202,
-            "Y": -22.538002,
-            "Z": 386.9863
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1013028,
           "Position": {
@@ -57,8 +44,7 @@
             "Z": 388.63196
           },
           "TerritoryId": 145,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

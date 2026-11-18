@@ -13,8 +13,7 @@
             "Z": -634.8516
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,21 +28,7 @@
             "Z": 201.5564
           },
           "TerritoryId": 399,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                399,
-                478
-              ]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

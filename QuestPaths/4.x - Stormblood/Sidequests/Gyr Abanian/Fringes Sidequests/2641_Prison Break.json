@@ -15,7 +15,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: issuer 1022954 (Maelstrom officer)"
         }
       ]
@@ -30,10 +29,7 @@
             "Z": -663.6735
           },
           "TerritoryId": 612,
-          "StopDistance": 1,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7565,
@@ -56,8 +52,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo location -> 1022955 (Maelstrom officer)"
         }
       ]
@@ -74,7 +68,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo turn-in -> 1022954 (Maelstrom officer)"
         }
       ]

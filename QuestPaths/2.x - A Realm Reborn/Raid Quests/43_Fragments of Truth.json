@@ -8,27 +8,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 132,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
           "Position": {
             "X": -492.96475,
             "Y": 20.999884,
@@ -36,7 +15,6 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
@@ -69,24 +47,12 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 430.20032,
-            "Y": 3.6547468,
-            "Z": 168.62611
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
-        },
-        {
           "DataId": 1009769,
           "Position": {
             "X": 430.6858,
             "Y": 3.26411,
             "Z": 171.58765
           },
-          "StopDistance": 5,
           "TerritoryId": 145,
           "InteractionType": "Interact"
         }
@@ -103,9 +69,7 @@
             "Z": -781.1856
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -120,24 +84,13 @@
             "Z": -52.048523
           },
           "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": -67.2906,
-            "Y": 71.11877,
-            "Z": -189.74506
-          },
-          "TerritoryId": 147,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1009772,
           "Position": {
@@ -162,7 +115,6 @@
           },
           "TerritoryId": 147,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 44
         }
       ]

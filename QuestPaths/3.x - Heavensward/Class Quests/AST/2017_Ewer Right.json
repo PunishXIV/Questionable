@@ -14,34 +14,13 @@
             "Z": -58.9151
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [419]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 197.69202,
-            "Y": 307.86456,
-            "Z": 409.4611
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
-        },
         {
           "DataId": 1006377,
           "Position": {
@@ -50,10 +29,7 @@
             "Z": 420.37073
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "StopDistance": 4,
-          "Fly": false,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -68,25 +44,7 @@
             "Z": -58.9151
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 202.38037,
-                  "Y": -5.3999662,
-                  "Z": -58.9151
-                },
-                "TerritoryId": 419,
-                "MaximumDistance": 100
-              }
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -102,9 +60,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "SinglePlayerDuty",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -122,8 +77,7 @@
             "Z": -186.63312
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "StopDistance": 3
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -139,24 +93,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest",
-          "StopDistance": 5,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 202.38037,
-                  "Y": -5.3999662,
-                  "Z": -58.9151
-                },
-                "TerritoryId": 419,
-                "MaximumDistance": 100
-              }
-            }
-          },
           "NextQuestId": 2018
         }
       ]

@@ -14,8 +14,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
           "$": "auto: issuer 1025846 (Kyusei)"
         }
       ]
@@ -32,8 +30,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
           "$": "auto: todo location -> 2009515 (destination)"
         }
       ]
@@ -50,8 +46,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
           "$": "auto: todo location -> 2009516 (Ten-thousand-year Pine)"
         },
         {
@@ -63,7 +57,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 2009572 (winding path)"
         }
       ]
@@ -80,8 +73,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
           "$": "auto: todo turn-in -> 1025846 (Kyusei)"
         }
       ]

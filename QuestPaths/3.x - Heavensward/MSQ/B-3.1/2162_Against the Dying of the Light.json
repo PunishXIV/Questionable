@@ -14,8 +14,7 @@
             "Z": -5.5390625
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,7 @@
             "Z": -39.871887
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Jeweled Crozier"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,10 +46,6 @@
           "TerritoryId": 419,
           "InteractionType": "Interact",
           "$": "0 0 0 0 0 0 -> 17 0 0 0 0 64",
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] The Tribunal"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -107,13 +98,8 @@
             "Y": -12.020877,
             "Z": 37.03357
           },
-          "StopDistance": 7,
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] The Brume"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -128,11 +114,7 @@
             "Z": -5.5390625
           },
           "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

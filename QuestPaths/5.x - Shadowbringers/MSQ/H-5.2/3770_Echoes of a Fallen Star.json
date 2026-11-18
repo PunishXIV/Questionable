@@ -47,11 +47,7 @@
             "Z": -169.23785
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] The Amaro Launch"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,10 +63,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] The Dossal Gate"
-          ],
           "TargetTerritoryId": 844
         },
         {
@@ -106,13 +98,8 @@
             "Y": 1.7160122,
             "Z": 249.7749
           },
-          "StopDistance": 5,
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] The Pendants"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

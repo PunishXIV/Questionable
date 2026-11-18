@@ -12,11 +12,8 @@
             "Y": 39.981316,
             "Z": 311.78748
           },
-          "StopDistance": 7,
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,20 +30,7 @@
           "TerritoryId": 960,
           "TargetTerritoryId": 960,
           "InteractionType": "Interact",
-          "Mount": true,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 300
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -69,7 +53,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "Mount": true,
           "TargetTerritoryId": 960,
           "SkipConditions": {
             "StepIf": {
@@ -93,8 +76,7 @@
             "Z": 241.32141
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -110,7 +92,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -134,20 +115,7 @@
           "TerritoryId": 960,
           "TargetTerritoryId": 960,
           "InteractionType": "Interact",
-          "Mount": true,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 300
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -185,8 +153,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -215,20 +181,7 @@
           "TerritoryId": 960,
           "TargetTerritoryId": 960,
           "InteractionType": "Interact",
-          "Mount": true,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 314.9004,
-                  "Y": 481.99442,
-                  "Z": 148.11926
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 300
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -251,7 +204,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "Mount": true,
           "TargetTerritoryId": 960,
           "SkipConditions": {
             "StepIf": {
@@ -274,7 +226,6 @@
             "Y": 567.4998,
             "Z": 239.9176
           },
-          "StopDistance": 7,
           "TerritoryId": 960,
           "InteractionType": "CompleteQuest"
         }

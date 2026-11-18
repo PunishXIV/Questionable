@@ -18,8 +18,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -58,8 +56,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
             {"High": 8}
@@ -74,8 +70,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
             {"High": 4}
@@ -90,8 +84,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
           "CompletionQuestVariablesFlags": [null,null,null,null,
             null,
             {"High": 2}
@@ -111,14 +103,7 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1297
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 1297
@@ -161,8 +146,7 @@
             "Z": 172.07593
           },
           "TerritoryId": 1297,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -178,8 +162,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {

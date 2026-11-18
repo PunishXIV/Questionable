@@ -28,8 +28,7 @@
             "Z": 425.55872
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -90,12 +89,7 @@
             "Z": 770.8705
           },
           "TerritoryId": 1190,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Xak Tural Skygate (Shaaloani)"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

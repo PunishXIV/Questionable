@@ -23,16 +23,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 26.110107,
-            "Y": 29.57478,
-            "Z": -770.24866
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2007563,
           "Position": {
             "X": 35.38562,
@@ -55,11 +45,7 @@
             "Z": 2.456604
           },
           "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

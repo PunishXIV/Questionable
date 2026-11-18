@@ -15,7 +15,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: issuer 1021654 (Resistance fighter)"
         }
       ]
@@ -32,8 +31,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo location -> 1021655 (Resistance fighter)"
         }
       ]
@@ -50,8 +47,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "UseItem",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "ItemId": 2002184,
           "$": "auto: todo location -> 2008260 (destination); use item ITEM0=2002184 on it"
         }
@@ -69,8 +64,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo location -> 1021655 (Resistance fighter)"
         }
       ]
@@ -78,15 +71,6 @@
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": -271.97974,
-            "Y": 43.28432,
-            "Z": -289.64096
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo"
-        },
         {
           "Position": {
             "X": -278.45758,
@@ -113,8 +97,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo location -> 1021655 (Resistance fighter)"
         }
       ]
@@ -131,7 +113,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo turn-in -> 1021654 (Resistance fighter)"
         }
       ]

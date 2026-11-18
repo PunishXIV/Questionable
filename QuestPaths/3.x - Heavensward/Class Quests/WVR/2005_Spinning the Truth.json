@@ -15,16 +15,7 @@
             "Z": -30.47229
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,11 +30,7 @@
             "Z": -159.80774
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -58,11 +45,7 @@
             "Z": -30.47229
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Saint Reymanaud's Cathedral",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

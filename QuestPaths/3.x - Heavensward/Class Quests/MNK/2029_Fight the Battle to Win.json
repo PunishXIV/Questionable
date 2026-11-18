@@ -14,8 +14,7 @@
             "Z": -682.76495
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +29,7 @@
             "Z": 126.17676
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,8 +48,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             5043
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -67,8 +63,7 @@
             "Z": 72.342896
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -84,8 +79,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
           "NextQuestId": 2030
         }
       ]

@@ -14,8 +14,7 @@
             "Z": 769.9243
           },
           "TerritoryId": 397,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,10 +36,6 @@
               "Prompt": "TEXT_HEAVNC108_02238_Q1_000_031",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
           ]
         },
         {
@@ -65,7 +60,6 @@
             "Y": 24.391685,
             "Z": -2.9145508
           },
-          "StopDistance": 7,
           "TerritoryId": 418,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -104,11 +98,7 @@
             "Z": 40.268433
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Brume"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -123,11 +113,7 @@
             "Z": -43.137268
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] The Jeweled Crozier"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -149,10 +135,6 @@
               "Prompt": "TEXT_HEAVNC108_02238_Q3_000_223",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] The Forgotten Knight"
           ]
         }
       ]
@@ -167,7 +149,6 @@
             "Y": 24.391685,
             "Z": -2.9145508
           },
-          "StopDistance": 7,
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest"
         }

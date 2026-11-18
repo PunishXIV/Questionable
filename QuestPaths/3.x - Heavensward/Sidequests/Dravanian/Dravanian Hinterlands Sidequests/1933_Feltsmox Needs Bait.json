@@ -14,12 +14,7 @@
             "Z": 164.73
           },
           "TerritoryId": 399,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,11 +30,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ],
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -63,12 +53,7 @@
             "Z": 164.73
           },
           "TerritoryId": 399,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,8 +14,7 @@
             "Z": 455.89368
           },
           "TerritoryId": 137,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 339.49792
           },
           "TerritoryId": 153,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,7 +15,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: issuer 1012133 (Midnight Dew)"
         }
       ]
@@ -31,13 +30,7 @@
             "Z": -182.77684
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -53,7 +46,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo turn-in -> 1012133 (Midnight Dew)"
         }
       ]

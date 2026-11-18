@@ -14,9 +14,7 @@
             "Z": 78.538086
           },
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,13 +29,7 @@
             "Z": -286.54926
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,13 +57,7 @@
             "Z": -286.54926
           },
           "TerritoryId": 635,
-          "InteractionType": "CompleteQuest",
-          "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

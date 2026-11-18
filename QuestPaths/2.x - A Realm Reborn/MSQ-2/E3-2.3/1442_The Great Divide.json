@@ -29,7 +29,6 @@
             "Y": 21.252728,
             "Z": -639.7345
           },
-          "StopDistance": 7,
           "TerritoryId": 156,
           "InteractionType": "Interact"
         }
@@ -46,11 +45,7 @@
             "Z": -80.03363
           },
           "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

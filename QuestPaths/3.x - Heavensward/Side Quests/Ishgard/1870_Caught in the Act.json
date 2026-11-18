@@ -83,11 +83,7 @@
             "Z": -13.626343
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -117,11 +113,7 @@
             "Z": -21.561035
           },
           "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] The Jeweled Crozier"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

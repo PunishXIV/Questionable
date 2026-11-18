@@ -31,7 +31,6 @@
             "Y": 3.095488,
             "Z": -64.9577
           },
-          "StopDistance": 5,
           "TerritoryId": 1170,
           "InteractionType": "AcceptQuest"
         }
@@ -49,11 +48,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] The Resplendent Quarter"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -129,11 +123,7 @@
             "Z": -321.09564
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Vollok Shoonsa"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

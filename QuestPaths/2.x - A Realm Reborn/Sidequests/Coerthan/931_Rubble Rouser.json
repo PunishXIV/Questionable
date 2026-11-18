@@ -14,9 +14,7 @@
             "Z": -298.024
           },
           "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,7 +30,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Interact",
-          "Mount": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
         {
@@ -44,7 +41,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Interact",
-          "Mount": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
@@ -56,7 +52,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Interact",
-          "Mount": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
@@ -68,7 +63,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Interact",
-          "Mount": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
@@ -80,7 +74,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Interact",
-          "Mount": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}]
         }
       ]
@@ -96,9 +89,7 @@
             "Z": -298.024
           },
           "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

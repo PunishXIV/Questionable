@@ -14,8 +14,7 @@
             "Z": -85.404785
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -53,8 +52,7 @@
             "Z": -85.404785
           },
           "TerritoryId": 153,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,11 +15,7 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
+          "TargetTerritoryId": 433
         },
         {
           "DataId": 1012387,
@@ -45,7 +41,6 @@
           },
           "TerritoryId": 401,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
           "PickUpQuestId": 1748
         },
         {
@@ -57,7 +52,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -71,17 +65,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 26.194313,
-            "Y": 50.989883,
-            "Z": -778.7069
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona"
-        },
         {
           "DataId": 1013018,
           "Position": {

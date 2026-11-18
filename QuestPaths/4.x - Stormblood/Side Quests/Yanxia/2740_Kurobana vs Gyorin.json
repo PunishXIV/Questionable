@@ -29,8 +29,7 @@
             "Z": 485.3131
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,9 +59,7 @@
             "Z": -11.306946
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - Namai",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,22 +74,7 @@
             "Z": -106.55377
           },
           "TerritoryId": 614,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yanxia - Namai",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 462.13455,
-                  "Y": 68.01515,
-                  "Z": -104.52245
-                },
-                "TerritoryId": 622,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

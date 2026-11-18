@@ -14,15 +14,7 @@
             "Z": 28.67163
           },
           "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                478
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,13 +29,7 @@
           },
           "TerritoryId": 478,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Idyllshire",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                399
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 399
@@ -59,8 +45,7 @@
             "Z": 767.14734
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -88,8 +73,7 @@
             "Z": 28.67163
           },
           "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

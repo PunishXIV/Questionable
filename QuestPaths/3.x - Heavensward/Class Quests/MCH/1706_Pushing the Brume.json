@@ -13,13 +13,8 @@
             "Y": 16.999992,
             "Z": -53.3609
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,15 +27,12 @@
             "Y": -4.0053887,
             "Z": -292.6277
           },
-          "StopDistance": 0.5,
           "TerritoryId": 156,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             201
           ],
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -54,7 +46,6 @@
             "Y": -2.7619019,
             "Z": -289.4179
           },
-          "StopDistance": 4.5,
           "TerritoryId": 156,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -65,7 +56,6 @@
             "Y": -3.9906769,
             "Z": -334.9877
           },
-          "StopDistance": 0.5,
           "TerritoryId": 156,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -74,7 +64,6 @@
             5040,
             5041
           ],
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -88,7 +77,6 @@
             "Y": -2.8840332,
             "Z": -334.76776
           },
-          "StopDistance": 4.5,
           "TerritoryId": 156,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -106,7 +94,6 @@
             4472,
             4473
           ],
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -136,13 +123,8 @@
             "Y": 16.999992,
             "Z": -53.3609
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -158,10 +140,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] The Brume"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -198,13 +176,8 @@
             "Y": 16.999992,
             "Z": -53.3609
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -219,8 +192,7 @@
             "Z": 726.8329
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -236,10 +208,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "NextQuestId": 1707,
           "DialogueChoices": [
             {

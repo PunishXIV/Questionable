@@ -29,8 +29,7 @@
             "Z": -476.95123
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -43,7 +42,6 @@
             "Y": 93.57029,
             "Z": -472.15475
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1188,
           "InteractionType": "Emote",
           "Emote": "pray"
@@ -74,7 +72,6 @@
             "Y": 6.1739964,
             "Z": -472.80084
           },
-          "StopDistance": 7,
           "TerritoryId": 1188,
           "InteractionType": "CompleteQuest"
         }

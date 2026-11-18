@@ -13,7 +13,6 @@
             "Y": 269.0903,
             "Z": -490.44025
           },
-          "StopDistance": 7,
           "TerritoryId": 960,
           "InteractionType": "AcceptQuest"
         }
@@ -52,17 +51,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 48.215565,
-            "Y": 269.00882,
-            "Z": -703.63995
-          },
-          "TerritoryId": 960,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "Mount": true
-        },
         {
           "DataId": 2012031,
           "Position": {

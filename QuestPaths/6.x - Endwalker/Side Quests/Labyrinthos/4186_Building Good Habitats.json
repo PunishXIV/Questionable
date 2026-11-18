@@ -17,9 +17,7 @@
             "Z": -792.192
           },
           "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,9 +35,7 @@
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             13390
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
@@ -54,9 +50,7 @@
             "Z": -792.192
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

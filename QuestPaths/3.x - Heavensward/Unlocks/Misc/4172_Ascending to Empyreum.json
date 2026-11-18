@@ -14,8 +14,7 @@
             "Z": 28.732666
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,10 +30,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -74,8 +69,7 @@
             "Z": 28.732666
           },
           "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,8 +15,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: issuer 1006248 (Oriane)"
         }
       ]
@@ -146,10 +144,7 @@
             "Z": 203.2394
           },
           "TerritoryId": 154,
-          "StopDistance": 1,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo turn-in -> 1006248 (Oriane)"
         }
       ]

@@ -15,7 +15,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "TargetTerritoryId": 1056
         },
         {
@@ -25,7 +24,6 @@
             "Y": -350,
             "Z": -83.14642
           },
-          "StopDistance": 5,
           "TerritoryId": 1056,
           "InteractionType": "AcceptQuest"
         }
@@ -57,8 +55,7 @@
             "Z": 108.11011
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -95,12 +92,7 @@
             "Z": -68.40625
           },
           "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Meghaduta"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

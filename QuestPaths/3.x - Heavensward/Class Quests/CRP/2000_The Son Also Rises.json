@@ -15,16 +15,7 @@
             "Z": 64.7135
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,11 +30,7 @@
             "Z": 34.86682
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -58,35 +45,13 @@
             "Z": 56.839844
           },
           "TerritoryId": 132,
-          "AetheryteShortcut": "Gridania",
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [132]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": 116.76828,
-            "Y": 285.9804,
-            "Z": 139.23105
-          },
-          "TerritoryId": 155,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [155]
-            }
-          }
-        },
         {
           "DataId": 1000776,
           "Position": {
@@ -124,17 +89,7 @@
             "Z": 64.7135
           },
           "TerritoryId": 418,
-          "AetheryteShortcut": "Ishgard",
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

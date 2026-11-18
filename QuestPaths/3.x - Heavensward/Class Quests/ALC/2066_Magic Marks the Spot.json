@@ -15,13 +15,7 @@
             "Z": -640.4364
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [156]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,11 +30,7 @@
             "Z": -6.1189575
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,7 +46,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CLSALC530_02066_Q1_100_090",
@@ -98,16 +87,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 424.9756,
-            "Y": -5.6390505,
-            "Z": -443.25757
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1012560,
           "Position": {

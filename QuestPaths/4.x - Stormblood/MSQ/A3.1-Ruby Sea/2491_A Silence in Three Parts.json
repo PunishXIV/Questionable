@@ -13,7 +13,6 @@
             "Y": 4.763445,
             "Z": -460.01373
           },
-          "StopDistance": 5,
           "TerritoryId": 613,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "TargetTerritoryId": 614,
-          "Fly": true
+          "TargetTerritoryId": 614
         }
       ]
     },

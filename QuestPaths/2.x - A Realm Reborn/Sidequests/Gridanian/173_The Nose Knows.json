@@ -15,7 +15,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: issuer 1000632 (Vionne)"
         }
       ]
@@ -30,11 +29,8 @@
             "Y": -5.484335,
             "Z": 378.46558
           },
-          "StopDistance": 1,
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo location -> 1000784 (Gillian)"
         }
       ]
@@ -51,7 +47,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo location -> 2000146 (burlap sacks)"
         }
       ]
@@ -68,8 +63,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo location -> 1000764 (Nolanel)"
         }
       ]
@@ -86,8 +79,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo turn-in -> 1000632 (Vionne)"
         }
       ]

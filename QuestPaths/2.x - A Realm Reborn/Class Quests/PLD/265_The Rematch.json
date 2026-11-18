@@ -15,18 +15,7 @@
             "Z": 39.81079
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -42,10 +31,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Aetheryte Plaza"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -68,10 +53,6 @@
           },
           "TerritoryId": 141,
           "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gate of Thal (Central Thanalan)"
-          ],
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "Southern Thanalan - Little Ala Mhigo"
@@ -91,15 +72,6 @@
         {
           "TerritoryId": 146,
           "InteractionType": "EquipRecommended"
-        },
-        {
-          "Position": {
-            "X": 140.30618,
-            "Y": 4.2185926,
-            "Z": -585.2695
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2001455,
@@ -159,11 +131,7 @@
             "Z": 39.81079
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -179,7 +147,6 @@
           },
           "TerritoryId": 145,
           "InteractionType": "SinglePlayerDuty",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "Notes": [
@@ -202,10 +169,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
           "NextQuestId": 1055
         }
       ]

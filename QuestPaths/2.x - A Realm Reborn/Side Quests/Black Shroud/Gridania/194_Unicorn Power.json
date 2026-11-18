@@ -8,33 +8,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "InteractionType": "None",
-          "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -243.15253,
-                  "Y": -4.000101,
-                  "Z": -7.950012
-                },
-                "TerritoryId": 133,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "TerritoryId": 133,
           "InteractionType": "SwitchClass",
           "TargetClass": "Conjurer"
@@ -61,17 +34,8 @@
             "Y": -79.661125,
             "Z": 475.02856
         },
-          "Fly":false,
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                154
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1008174,
@@ -80,18 +44,9 @@
             "Y": -79.661125,
             "Z": 475.02856
         },
-          "Fly":false,
           "TerritoryId": 154,
           "InteractionType": "Action",
-          "Action":"Cure",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                154
-              ]
-            }
-          }
+          "Action":"Cure"
         }
 
       ]
@@ -99,33 +54,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "InteractionType": "None",
-          "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            },
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -243.15253,
-                  "Y": -4.000101,
-                  "Z": -7.950012
-                },
-                "TerritoryId": 133,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
         {
           "DataId": 1000705,
           "Position": {

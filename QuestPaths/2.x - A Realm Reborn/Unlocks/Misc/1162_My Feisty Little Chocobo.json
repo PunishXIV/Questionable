@@ -14,8 +14,7 @@
             "Z": 338.4298
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 6.301941
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -81,7 +79,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -105,8 +102,7 @@
           },
           "TerritoryId": 148,
           "InteractionType": "WalkTo",
-          "ItemId": 4868,
-          "Fly": true
+          "ItemId": 4868
         },
         {
           "Position": {
@@ -137,7 +133,6 @@
             "Z": -13.498969
           },
           "TerritoryId": 148,
-          "StopDistance": 1,
           "InteractionType": "PurchaseItem",
           "ItemId": 4868,
           "ItemCount": 99,
@@ -145,7 +140,6 @@
             "ExcelSheet": "GilShop",
             "Key": 262773
           },
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -162,8 +156,7 @@
             "Z": 6.301941
           },
           "TerritoryId": 148,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

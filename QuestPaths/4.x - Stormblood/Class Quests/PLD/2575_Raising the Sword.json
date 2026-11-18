@@ -14,18 +14,7 @@
             "Z": 39.81079
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -53,15 +42,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -95.62987,
-            "Y": 6.500003,
-            "Z": 41.749443
-          },
-          "TerritoryId": 131,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1001739,
           "Position": {

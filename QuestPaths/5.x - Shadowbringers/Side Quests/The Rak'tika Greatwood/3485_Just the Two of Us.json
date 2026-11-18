@@ -17,9 +17,7 @@
             "Z": -48.859463
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "None"
         },
         {
           "DataId": 1031405,
@@ -29,9 +27,7 @@
             "Z": -73.10602
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Mount": false,
-          "Fly": false
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -46,8 +42,7 @@
             "Z": 365.316
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,10 +56,7 @@
             "Z": -48.859463
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "None"
         },
         {
           "DataId": 1031405,
@@ -86,9 +78,7 @@
               "Prompt": "TEXT_LUCKZF204_03485_Q1_000_000",
               "Answer": "TEXT_LUCKZF204_03485_A1_000_002"
             }
-          ],
-          "Mount": false,
-          "Fly": false
+          ]
         }
       ]
     }

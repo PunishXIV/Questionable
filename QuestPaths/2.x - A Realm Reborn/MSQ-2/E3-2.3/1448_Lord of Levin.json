@@ -30,8 +30,7 @@
             "Z": -5.081299
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -82,9 +81,7 @@
             "Z": 211.16956
           },
           "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

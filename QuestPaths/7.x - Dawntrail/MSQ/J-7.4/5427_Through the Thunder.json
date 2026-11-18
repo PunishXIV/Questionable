@@ -14,12 +14,7 @@
             "Z": 176.01282
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -49,9 +44,7 @@
             "Z": 725.6428
           },
           "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -66,8 +59,7 @@
             "Z": 723.781
           },
           "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "StopDistance": 4
+          "InteractionType": "Interact"
         }
       ]
     },

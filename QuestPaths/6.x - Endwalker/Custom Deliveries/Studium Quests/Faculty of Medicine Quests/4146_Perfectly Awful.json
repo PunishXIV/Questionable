@@ -15,10 +15,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: issuer 1039227 (Debroye)"
         }
       ]
@@ -51,10 +47,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] Scholar's Harbor"
-          ],
           "$": "auto: todo location -> 1039228 (Debroye)"
         }
       ]
@@ -71,10 +63,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Scholar's Harbor",
-            "[Old Sharlayan] The Studium"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_AKTKLA301_04146_Q3_000_000",

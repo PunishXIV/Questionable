@@ -29,7 +29,6 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -48,8 +47,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             17656
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -64,9 +62,7 @@
             "Z": -525.41394
           },
           "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

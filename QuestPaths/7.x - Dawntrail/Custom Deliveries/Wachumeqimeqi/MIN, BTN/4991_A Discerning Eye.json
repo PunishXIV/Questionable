@@ -41,12 +41,7 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 4992,
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "NextQuestId": 4992
         }
       ]
     }

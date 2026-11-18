@@ -15,9 +15,7 @@
             "Z": -7.3396606
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,9 +34,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             58
-          ],
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -54,8 +50,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true,
           "NextQuestId": 1088
         }
       ]

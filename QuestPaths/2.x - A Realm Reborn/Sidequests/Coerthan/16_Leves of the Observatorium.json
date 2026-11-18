@@ -21,9 +21,7 @@
             "Z": 340.4614
           },
           "TerritoryId": 155,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

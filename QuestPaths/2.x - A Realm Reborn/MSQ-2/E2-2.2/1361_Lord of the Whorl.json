@@ -14,8 +14,7 @@
             "Z": 584.1306
           },
           "TerritoryId": 135,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,7 +43,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
               "Type": "YesNo",

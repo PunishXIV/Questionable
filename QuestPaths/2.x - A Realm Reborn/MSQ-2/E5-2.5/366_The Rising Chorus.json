@@ -45,8 +45,7 @@
             "Z": -369.7414
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,7 +75,6 @@
             "Y": -27.808832,
             "Z": -369.7414
           },
-          "StopDistance": 7,
           "TerritoryId": 156,
           "InteractionType": "Interact"
         }
@@ -85,11 +83,6 @@
     {
       "Sequence": 6,
       "Steps": [
-        {
-          "TerritoryId": 156,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Mor Dhona"
-        },
         {
           "DataId": 1010857,
           "Position": {
@@ -112,7 +105,6 @@
             "Y": 0,
             "Z": -3.1281738
           },
-          "StopDistance": 7,
           "TerritoryId": 351,
           "InteractionType": "CompleteQuest"
         }

@@ -29,28 +29,13 @@
             "Z": -603.11285
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -65.20557,
-            "Y": 38.80659,
-            "Z": -459.1674
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Resolution"
-          ]
-        },
         {
           "DataId": 1049180,
           "Position": {
@@ -74,11 +59,7 @@
             "Z": 112.26062
           },
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Resolution",
-            "[Solution Nine] Residential Sector"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -94,11 +75,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ],
           "NextQuestId": 5012
         }
       ]

@@ -16,7 +16,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
@@ -69,11 +68,8 @@
           },
           "TerritoryId": 138,
           "TargetTerritoryId": 139,
-          "Fly": true,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [139] },
             "StepIf": { "InTerritory": [139] }
           }
         },
@@ -86,7 +82,6 @@
           },
           "TerritoryId": 139,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -123,9 +118,7 @@
             "Z": 831.6013
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -141,9 +134,7 @@
           },
           "TerritoryId": 135,
           "InteractionType": "SinglePlayerDuty",
-          "StopDistance": 0.25,
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -159,7 +150,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "DockStorehouse"

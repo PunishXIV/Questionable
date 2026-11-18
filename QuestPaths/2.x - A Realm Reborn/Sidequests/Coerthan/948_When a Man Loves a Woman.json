@@ -14,8 +14,7 @@
             "Z": 53.5825
           },
           "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,7 +39,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -51,7 +49,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -62,7 +59,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -80,7 +76,6 @@
               "Z": -35.672012
             }
           },
-          "StopDistance": 0.25,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -98,7 +93,6 @@
               "Z": -27.55914
             }
           },
-          "StopDistance": 0.25,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -109,7 +103,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -120,7 +113,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -131,7 +123,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -149,7 +140,6 @@
               "Z": -17.92023
             }
           },
-          "StopDistance": 0.25,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -176,9 +166,7 @@
             "Z": -38.5527
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "StopDistance": 4,
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -193,7 +181,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -204,7 +191,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
           "SkipConditions": { "StepIf": { "Flying": "Unlocked" } }
         },
         {
@@ -215,8 +201,7 @@
             "Z": 53.5825
           },
           "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

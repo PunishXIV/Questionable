@@ -17,23 +17,7 @@
 				"Z": 203.8147
 			},
 			"TerritoryId": 628,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Kugane",
-			"AethernetShortcut":
-			[
-			"[Kugane] Aetheryte Plaza",
-			"[Kugane] Pier #1"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					628					
-					]
-				}
-			}
+			"InteractionType": "AcceptQuest"
 		}
 		]
 	},
@@ -67,12 +51,7 @@
 				"Z": -128.25214
 			},
 			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Pier #1",
-			"[Kugane] Sekiseigumi Barracks"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -89,12 +68,7 @@
 				"Z": 206.46973
 			},
 			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Kugane] Sekiseigumi Barracks",
-			"[Kugane] Pier #1"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},

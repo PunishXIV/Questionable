@@ -14,9 +14,7 @@
             "Z": -183.76447
           },
           "TerritoryId": 180,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": -244.19019
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,8 +52,6 @@
               "Yes": true
             }
           ],
-          "Fly": true,
-          "Land": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -183,9 +177,7 @@
             "Z": -244.19019
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -200,9 +192,7 @@
             "Z": -183.76447
           },
           "TerritoryId": 180,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

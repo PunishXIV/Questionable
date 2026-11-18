@@ -14,11 +14,7 @@
             "Z": -121.025
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Bokairo Inn"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,11 +29,7 @@
             "Z": 156.531
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Bokairo Inn",
-            "[Kugane] Thavnairian Consulate"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -52,11 +44,7 @@
             "Z": -121.025
           },
           "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Kugane] Thavnairian Consulate",
-            "[Kugane] Bokairo Inn"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

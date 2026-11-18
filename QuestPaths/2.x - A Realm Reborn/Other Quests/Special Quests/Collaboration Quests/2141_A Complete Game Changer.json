@@ -15,7 +15,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "$": "auto: issuer 1017234 (poor-heeled youth)"
         }
       ]
@@ -32,8 +31,6 @@
           },
           "TerritoryId": 144,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gold Saucer",
-          "AethernetShortcut": ["[Gold Saucer] Aetheryte Plaza","[Gold Saucer] Entrance & Card Squares"],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESYKW001_02141_Q1_000_000",
@@ -69,8 +66,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo location -> 1000470 (Keitha)"
         },
@@ -83,7 +78,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
           "$": "auto: todo location -> 1000474 (Aethelthryth)"
         }
@@ -101,7 +95,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESYKW001_02141_Q2_000_000",
@@ -109,7 +102,6 @@
               "Yes": true
             }
           ],
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: todo location -> 2007169 (ancient stone vessel)"
         }
       ]
@@ -126,8 +118,6 @@
           },
           "TerritoryId": 144,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gold Saucer",
-          "AethernetShortcut": ["[Gold Saucer] Aetheryte Plaza","[Gold Saucer] Entrance & Card Squares"],
           "$": "auto: todo turn-in -> 1017235 (wandering executive)"
         }
       ]

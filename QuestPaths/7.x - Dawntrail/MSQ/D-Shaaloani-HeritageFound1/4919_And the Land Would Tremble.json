@@ -13,7 +13,6 @@
             "Y": -16.536486,
             "Z": -442.8626
           },
-          "StopDistance": 6,
           "TerritoryId": 1190,
           "InteractionType": "AcceptQuest"
         }
@@ -29,7 +28,6 @@
             "Y": -16.434021,
             "Z": -441.91656
           },
-          "StopDistance": 4,
           "TerritoryId": 1190,
           "InteractionType": "Interact"
         }
@@ -72,14 +70,8 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
           "SkipConditions": {
             "StepIf": {
-              "QuestsCompleted": [
-                5140
-              ]
-            },
-            "AetheryteShortcutIf": {
               "QuestsCompleted": [
                 5140
               ]
@@ -93,7 +85,6 @@
             "Y": -0.24794838,
             "Z": 437.2472
           },
-          "StopDistance": 6,
           "TerritoryId": 1190,
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 5140
@@ -118,7 +109,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -139,7 +129,6 @@
             "Y": 3.0954878,
             "Z": -49.851257
           },
-          "StopDistance": 5,
           "TerritoryId": 1170,
           "InteractionType": "CompleteQuest"
         }

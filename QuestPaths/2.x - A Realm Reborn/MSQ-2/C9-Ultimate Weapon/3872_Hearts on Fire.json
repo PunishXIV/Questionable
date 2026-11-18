@@ -14,8 +14,7 @@
             "Z": 420.27917
           },
           "TerritoryId": 147,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -101,7 +100,6 @@
             "Y": 46.99734,
             "Z": 32.547485
           },
-          "StopDistance": 7,
           "TerritoryId": 147,
           "InteractionType": "CompleteQuest",
           "Emote": "psych"

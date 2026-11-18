@@ -44,8 +44,7 @@
             "Z": 780.9109
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Ghiri"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -90,11 +89,7 @@
           },
           "TerritoryId": 621,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "Lochs - Porta Praetoria"
-            },
             "StepIf": {
               "AetheryteLocked": "Lochs - Porta Praetoria"
             }
@@ -115,15 +110,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 364.314,
-            "Y": 326.0898,
-            "Z": 338.17725
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1023167,
           "Position": {

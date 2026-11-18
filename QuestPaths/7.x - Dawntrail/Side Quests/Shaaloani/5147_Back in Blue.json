@@ -12,7 +12,6 @@
             "Y": 1.8010846,
             "Z": 318.13525
           },
-          "StopDistance": 5,
           "TerritoryId": 1190,
           "InteractionType": "AcceptQuest"
         }
@@ -29,8 +28,7 @@
             "Z": 9.262146
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,8 +46,7 @@
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17742
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -65,7 +62,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 5148
         }
       ]

@@ -13,12 +13,7 @@
             "Z": 43.289795
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -139,7 +134,6 @@
             "Y": 0,
             "Z": -0.13739014
           },
-          "StopDistance": 5,
           "TerritoryId": 1269,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5310

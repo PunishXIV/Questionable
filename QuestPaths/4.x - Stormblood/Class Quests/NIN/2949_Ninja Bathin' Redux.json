@@ -15,7 +15,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "DockStorehouse"
@@ -46,12 +45,7 @@
             "Z": -40.45172
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,10 +61,6 @@
           "TerritoryId": 628,
           "InteractionType": "Action",
           "Action": "Hide",
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] Aetheryte Plaza"
-          ],
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -129,11 +119,7 @@
             "Z": -40.45172
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -154,11 +140,7 @@
             "Z": -164.78288
           },
           "InteractionType": "Jump",
-          "TerritoryId": 628,
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] Bokairo Inn"
-          ]
+          "TerritoryId": 628
         },
         {
           "JumpDestination": {
@@ -193,15 +175,6 @@
           "InteractionType": "Jump"
         },
         {
-          "Position": {
-            "X": -39.38211,
-            "Y": 20.545578,
-            "Z": -156.03827
-          },
-          "TerritoryId": 628,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2008933,
           "Position": {
             "X": -40.05493,
@@ -216,15 +189,6 @@
     {
       "Sequence": 5,
       "Steps": [
-        {
-          "Position": {
-            "X": -55.23437,
-            "Y": 5.9548235,
-            "Z": -144.91388
-          },
-          "TerritoryId": 628,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 2008934,
           "Position": {
@@ -279,10 +243,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Kugane] Bokairo Inn",
-            "[Kugane] Sekiseigumi Barracks"
-          ],
           "NextQuestId": 2950
         }
       ]

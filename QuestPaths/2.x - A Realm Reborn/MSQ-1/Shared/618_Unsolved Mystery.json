@@ -41,7 +41,6 @@
             "Y": -37.195824,
             "Z": 242.20642
           },
-          "StopDistance": 7,
           "TerritoryId": 145,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -53,7 +52,6 @@
             "Y": -37.370598,
             "Z": 245.31921
           },
-          "StopDistance": 7,
           "TerritoryId": 145,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -65,7 +63,6 @@
             "Y": -37.60504,
             "Z": 243.42712
           },
-          "StopDistance": 7,
           "TerritoryId": 145,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -172,8 +169,7 @@
             "Z": 106.79785
           },
           "TerritoryId": 145,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

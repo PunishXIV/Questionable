@@ -6,22 +6,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1032220,
           "Position": {
             "X": 113.29822,
@@ -29,11 +13,7 @@
             "Z": 1.449585
           },
           "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The Mattock"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

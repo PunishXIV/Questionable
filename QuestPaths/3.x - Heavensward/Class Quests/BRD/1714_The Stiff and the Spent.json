@@ -13,10 +13,8 @@
             "Y": 8.059147,
             "Z": 31.72351
           },
-          "StopDistance": 7,
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": 697.444
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,8 +44,7 @@
             "Z": -50.797363
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,8 +61,7 @@
           "TerritoryId": 397,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [4680],
-          "Fly": true
+          "KillEnemyDataIds": [4680]
         }
       ]
     },
@@ -81,8 +76,7 @@
             "Z": -51.682373
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -98,7 +92,6 @@
           },
           "TerritoryId": 397,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
           "NextQuestId": 1715
         }
       ]

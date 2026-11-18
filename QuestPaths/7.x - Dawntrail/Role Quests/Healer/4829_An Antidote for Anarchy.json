@@ -14,8 +14,7 @@
             "Z": 111.436646
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 155.87085
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,7 +62,6 @@
             "Y": 69.418495,
             "Z": 155.87085
           },
-          "StopDistance": 5,
           "TerritoryId": 137,
           "InteractionType": "Interact"
         }
@@ -81,8 +78,7 @@
             "Z": 264.88135
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -97,12 +93,7 @@
             "Z": 201.28174
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

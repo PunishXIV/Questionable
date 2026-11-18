@@ -14,12 +14,7 @@
             "Z": 36.301147
           },
           "TerritoryId": 963,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Meghaduta"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,11 +29,7 @@
             "Z": -107.286194
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Meghaduta",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,10 +56,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Hall of the Radiant Host",
-            "[Radz-at-Han] Mehryde's Meyhane"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -80,10 +67,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Mehryde's Meyhane",
-            "[Radz-at-Han] Kama"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -95,10 +78,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Kama",
-            "[Radz-at-Han] Airship Landing"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         }
       ]
@@ -115,10 +94,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Airship Landing",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ],
           "NextQuestId": 4661
         }
       ]

@@ -14,12 +14,7 @@
             "Z": -64.4389
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Shiokaze Hostelry"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,8 +29,7 @@
             "Z": -306.0197
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

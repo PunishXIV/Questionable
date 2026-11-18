@@ -15,7 +15,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: issuer 1019524 (Lucinne)"
         }
       ]
@@ -32,7 +31,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
           "$": "auto: todo area 41y from lua EOBJECT2 -> 2008828 (destination)"
         },
@@ -45,7 +43,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
           "$": "auto: todo area 40y from lua EOBJECT3 -> 2008829 (destination)"
         },
@@ -58,7 +55,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo area 20y from lua EOBJECT1 -> 2008827 (destination)"
         },
@@ -71,7 +67,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo area 42y from lua EOBJECT0 -> 2008826 (destination)"
         }
@@ -89,7 +84,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo turn-in -> 1019524 (Lucinne)"
         }
       ]

@@ -23,17 +23,6 @@
       "Steps": [
         {
           "Position": {
-            "X": -793.8348,
-            "Y": -122.09079,
-            "Z": 577.7538
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
-        },
-        {
-          "Position": {
             "X": -802.08453,
             "Y": -122.82994,
             "Z": 577.8909

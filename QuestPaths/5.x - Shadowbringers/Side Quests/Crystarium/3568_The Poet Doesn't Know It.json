@@ -29,10 +29,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] The Dossal Gate"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -44,10 +40,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] The Pendants"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -58,12 +50,7 @@
             "Z": -271.4123
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Cabinet of Curiosity"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -78,11 +65,7 @@
             "Z": -113.75604
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Cabinet of Curiosity",
-            "[Crystarium] The Amaro Launch"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -97,11 +80,7 @@
             "Z": 101.8844
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

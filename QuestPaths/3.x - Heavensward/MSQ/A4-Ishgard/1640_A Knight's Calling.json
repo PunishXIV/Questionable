@@ -13,7 +13,6 @@
             "Y": 23.979128,
             "Z": 12.802246
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest"
         }
@@ -29,7 +28,6 @@
             "Y": 23.979126,
             "Z": 10.452393
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
           "InteractionType": "Interact"
         }
@@ -46,11 +44,7 @@
             "Z": -207.04968
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Tribunal"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,7 +74,6 @@
             "Y": 42.34489,
             "Z": -207.04968
           },
-          "StopDistance": 7,
           "TerritoryId": 419,
           "InteractionType": "Interact"
         }
@@ -112,7 +105,6 @@
             "Y": 16.009666,
             "Z": -4.196289
           },
-          "StopDistance": 5,
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest"
         }

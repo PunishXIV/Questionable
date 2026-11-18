@@ -38,10 +38,8 @@
             "Y": 82.78693,
             "Z": 32.303345
           },
-          "StopDistance": 7,
           "TerritoryId": 820,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Eulmore",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -53,10 +51,6 @@
           },
           "TerritoryId": 820,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Aetheryte Plaza",
-            "[Eulmore] Southeast Derelicts"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]

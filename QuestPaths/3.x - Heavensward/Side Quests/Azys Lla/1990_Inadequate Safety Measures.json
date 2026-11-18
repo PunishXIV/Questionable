@@ -14,8 +14,7 @@
 						"Z": 699.1531
 					},
 					"TerritoryId": 402,
-					"InteractionType": "AcceptQuest",
-					"Fly": true
+					"InteractionType": "AcceptQuest"
 				}
 			]
 		},
@@ -44,8 +43,7 @@
 						null,
 						null,
 						null
-					],
-					"Fly": true
+					]
 				},
 				{
 					"Position": {
@@ -61,8 +59,7 @@
 							"DataId": 4668,
 							"MinimumKillCount": 3
 						}
-					],
-					"Fly": true
+					]
 				}
 			]
 		},
@@ -77,8 +74,7 @@
 						"Z": 699.1531
 					},
 					"TerritoryId": 402,
-					"InteractionType": "CompleteQuest",
-					"Fly": true
+					"InteractionType": "CompleteQuest"
 				}
 			]
 		}

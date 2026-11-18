@@ -29,8 +29,7 @@
             "Z": 507.5608
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,7 +45,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
@@ -56,7 +54,6 @@
             "Y": -135.17876,
             "Z": 582.11633
           },
-          "StopDistance": 4,
           "TerritoryId": 1189,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -97,8 +94,7 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,64],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1047157,
@@ -109,8 +105,7 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
     },
@@ -125,8 +120,7 @@
             "Z": 414.0536
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -141,9 +135,7 @@
             "Z": -477.22595
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -175,26 +167,6 @@
           ]
         },
         {
-          "Position": {
-            "X": 674.17834,
-            "Y": -33.187485,
-            "Z": -598.0982
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 674.17834,
-            "Y": -0.6,
-            "Z": -598.0982
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1047160,
           "Position": {
             "X": 664.6067,
@@ -202,8 +174,7 @@
             "Z": -477.22595
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -218,12 +189,7 @@
             "Z": -5.6916504
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

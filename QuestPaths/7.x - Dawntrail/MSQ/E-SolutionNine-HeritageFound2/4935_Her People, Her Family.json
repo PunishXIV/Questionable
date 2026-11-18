@@ -13,12 +13,7 @@
             "Y": 13.999998,
             "Z": 275.8678
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Residential Sector"
-          ],
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -34,8 +29,7 @@
             "Z": -97.45941
           },
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Solution Nine"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -95,8 +89,7 @@
             "Z": 3.5248413
           },
           "TerritoryId": 1186,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Solution Nine"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

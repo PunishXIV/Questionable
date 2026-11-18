@@ -13,7 +13,6 @@
             "Y": -137.174,
             "Z": 559.47205
           },
-          "StopDistance": 7,
           "TerritoryId": 1189,
           "InteractionType": "AcceptQuest"
         }
@@ -82,8 +81,7 @@
             "Z": 515.80054
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -97,7 +95,6 @@
             "Y": -199.5873,
             "Z": 624.1703
           },
-          "StopDistance": 5,
           "TerritoryId": 1189,
           "InteractionType": "Interact",
           "DialogueChoices": [

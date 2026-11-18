@@ -13,7 +13,6 @@
             "Y": -27.966003,
             "Z": 302.3269
           },
-          "StopDistance": 5,
           "TerritoryId": 815,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
             "Z": 17.837708
           },
           "TerritoryId": 820,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eulmore"
+          "InteractionType": "Interact"
         }
       ]
     },

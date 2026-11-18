@@ -29,8 +29,7 @@
             "Z": -111.77234
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,9 +44,7 @@
             "Z": 105.088745
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,11 +59,7 @@
             "Z": -21.194885
           },
           "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

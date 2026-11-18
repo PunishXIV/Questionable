@@ -35,9 +35,7 @@
             "Z": 164.29382
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": ["[Limsa Lominsa] Aetheryte Plaza","[Limsa Lominsa] Fishermen's Guild"]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -53,10 +51,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
             "Key": 262186
@@ -80,10 +74,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "NextQuestId": 3843,
           "Comment": "Complete quest"
         }

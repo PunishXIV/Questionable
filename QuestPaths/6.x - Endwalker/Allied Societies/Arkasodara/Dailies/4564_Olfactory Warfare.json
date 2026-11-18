@@ -14,9 +14,7 @@
             "Z": 321.06494
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +29,6 @@
             "Z": 331.89893
           },
           "TerritoryId": 957,
-          "Fly": true,
           "InteractionType": "Interact"
         }
       ]
@@ -47,8 +44,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -62,7 +57,6 @@
             "Y": 38.70359,
             "Z": 377.7981
           },
-          "StopDistance": 5,
           "TerritoryId": 957,
           "InteractionType": "Action",
           "Action": "Yellow Gulal",
@@ -76,8 +70,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -91,7 +83,6 @@
             "Y": 50.095337,
             "Z": 160.41797
           },
-          "StopDistance": 5,
           "TerritoryId": 957,
           "InteractionType": "Action",
           "Action": "Yellow Gulal",
@@ -105,8 +96,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -120,7 +109,6 @@
             "Y": 36.209595,
             "Z": 94.102295
           },
-          "StopDistance": 5,
           "TerritoryId": 957,
           "InteractionType": "Action",
           "Action": "Yellow Gulal",
@@ -132,16 +120,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": -68.59158,
-            "Y": 39.9961,
-            "Z": 320.7581
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1042301,
           "Position": {
             "X": -66.02582,
@@ -149,8 +127,7 @@
             "Z": 321.06494
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "Mount": false
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

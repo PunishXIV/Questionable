@@ -14,8 +14,7 @@
             "Z": 203.38745
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 635,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Rhalgr's Reach",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -69,9 +67,7 @@
             "Z": 335.10327
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -87,7 +83,6 @@
           },
           "TerritoryId": 635,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rhalgr's Reach",
           "NextQuestId": 4837
         }
       ]

@@ -10,8 +10,7 @@
         {
           "TerritoryId": 129,
           "InteractionType": "UnequipItem",
-          "ItemId": 4550,
-          "AetheryteShortcut": "Limsa Lominsa"
+          "ItemId": 4550
         },
         {
           "DataId": 1000909,
@@ -21,11 +20,7 @@
             "Z": 9.994568
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,11 +35,7 @@
             "Z": -246.87573
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,9 +51,7 @@
           },
           "TerritoryId": 146,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -76,7 +65,6 @@
             "Y": 0.9522269,
             "Z": 741.3595
           },
-          "StopDistance": 5,
           "TerritoryId": 146,
           "InteractionType": "Interact"
         }
@@ -94,10 +82,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "NextQuestId": 1092
         }
       ]

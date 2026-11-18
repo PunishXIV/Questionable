@@ -14,8 +14,7 @@
             "Z": 447.8064
           },
           "TerritoryId": 137,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 455.10022
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,11 +44,7 @@
             "Z": -118.669495
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,11 +59,7 @@
             "Z": 286.82385
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -84,8 +74,7 @@
             "Z": 323.35388
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1028748,
@@ -95,8 +84,7 @@
             "Z": 332.96704
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -111,8 +99,7 @@
             "Z": 289.66187
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -125,14 +112,12 @@
             "Y": -1.5503908,
             "Z": 105.86304
           },
-          "StopDistance": 0.5,
           "TerritoryId": 141,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             10849
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -163,10 +148,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ],
           "NextQuestId": 3252
         }
       ]

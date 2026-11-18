@@ -14,26 +14,13 @@
             "Z": 62.302612
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 79.70269,
-            "Y": -15.835008,
-            "Z": 69.00836
-          },
-          "TerritoryId": 418,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1021882,
           "Position": {
@@ -109,13 +96,8 @@
             "Y": 13.46524,
             "Z": 59.15918
           },
-          "StopDistance": 7,
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] The Last Vigil"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -128,16 +110,13 @@
             "Y": 161.10802,
             "Z": 27.17857
           },
-          "StopDistance": 0.5,
           "TerritoryId": 397,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7237,
             7494
-          ],
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -168,10 +147,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
           "NextQuestId": 2565
         }
       ]

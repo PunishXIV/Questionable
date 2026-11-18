@@ -14,8 +14,7 @@
             "Z": 63.61487
           },
           "TerritoryId": 622,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -80,9 +79,7 @@
           },
           "TerritoryId": 622,
           "InteractionType": "Emote",
-          "Emote": "lookout",
-          "StopDistance": 0.25,
-          "AetheryteShortcut": "Azim Steppe - Reunion"
+          "Emote": "lookout"
         }
       ]
     },
@@ -130,7 +127,6 @@
             "Y": 10.389871,
             "Z": 598.9928
           },
-          "StopDistance": 7,
           "TerritoryId": 622,
           "InteractionType": "CompleteQuest"
         }

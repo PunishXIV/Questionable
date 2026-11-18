@@ -15,10 +15,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: issuer 1047135 (Rral Soj)"
         }
       ]
@@ -35,10 +31,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Wachumeqimeqi",
-            "[Tuliyollal] Vollok Shoonsa"
-          ],
           "$": "auto: todo location -> 1047143 (palace seer)"
         }
       ]
@@ -55,7 +47,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
           "$": "auto: todo location -> 1047135 (Rral Soj)"
         }
       ]
@@ -78,10 +69,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: todo location -> 1047135 (Rral Soj); npc trade"
         }
       ]
@@ -98,10 +85,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: todo turn-in -> 1047135 (Rral Soj)"
         }
       ]

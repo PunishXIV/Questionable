@@ -14,8 +14,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: issuer 1059323 (J'yhuh Tia)"
         }
       ]
@@ -33,8 +31,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             19456
@@ -55,8 +51,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
         }
       ]
@@ -73,8 +67,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
         }
       ]
@@ -91,8 +83,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             19456
@@ -113,8 +103,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
         }
       ]
@@ -131,8 +119,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: todo location -> 5000000"
         },
         {
@@ -163,8 +149,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: todo location -> 1059329 (Lauda)"
         }
       ]
@@ -181,8 +165,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: todo location -> 1059333 (Lauda)"
         }
       ]
@@ -199,8 +181,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: todo location -> 1059325 (J'yhuh Tia)"
         }
       ]
@@ -217,8 +197,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: todo turn-in -> 1059325 (J'yhuh Tia)"
         }
       ]

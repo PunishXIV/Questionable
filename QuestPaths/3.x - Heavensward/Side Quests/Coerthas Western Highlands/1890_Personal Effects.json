@@ -35,8 +35,7 @@
               "DataId": 3992,
               "MinimumKillCount": 5
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -44,7 +43,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1014150,
           "Position": {
             "X": 507.13354,
@@ -52,8 +50,7 @@
             "Z": 791.37854
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -68,7 +65,6 @@
           },
           "TerritoryId": 397,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -76,7 +72,6 @@
           }
         },
         {
-          "Fly": true,
           "DataId": 1014146,
           "Position": {
             "X": -258.74725,

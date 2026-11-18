@@ -48,7 +48,6 @@ public sealed class AetherCurrentZoneFileTests
             QuestStep[] attunes = [.. steps.Where(x => x.InteractionType == EInteractionType.AttuneAetherCurrent)];
             Assert.Equal(inQuests[zone], attunes.Select(x => x.AetherCurrentId!.Value).Order());
             Assert.All(steps, x => Assert.Equal(zone, x.TerritoryId));
-            Assert.NotNull(steps[0].AetheryteShortcut);
         }
     }
 

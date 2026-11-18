@@ -13,8 +13,7 @@
             "Z": 7.4921875
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,11 +28,7 @@
             "Z": 243.18298
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,11 +43,7 @@
             "Z": 7.4921875
           },
           "TerritoryId": 129,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Aetheryte Plaza"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

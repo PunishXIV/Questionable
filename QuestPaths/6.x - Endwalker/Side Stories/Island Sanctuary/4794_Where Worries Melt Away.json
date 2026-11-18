@@ -15,7 +15,6 @@
           "TerritoryId": 135,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1055,
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -125,7 +124,6 @@
             "Y": 1.7196094,
             "Z": 226.4591
           },
-          "StopDistance": 5,
           "TerritoryId": 1055,
           "InteractionType": "CompleteQuest"
         }

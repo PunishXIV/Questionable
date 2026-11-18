@@ -12,7 +12,6 @@
             "Y": 69.34,
             "Z": 522.4231
           },
-          "StopDistance": 5,
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest"
         }
@@ -28,7 +27,6 @@
             "Y": 69.31414,
             "Z": 525.9021
           },
-          "StopDistance": 6,
           "TerritoryId": 612,
           "InteractionType": "Interact"
         }
@@ -45,8 +43,7 @@
             "Z": 60.227295
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "Interact"
         }
       ]
     },

@@ -15,17 +15,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          },
           "DialogueChoices": [
             {
               "Type": "List",
@@ -63,11 +52,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] The Chamber of Rule",
-            "[Ul'dah] Gladiators' Guild"
-          ],
-          "SkipConditions": {"AethernetShortcutIf": {"Never": true}},
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {

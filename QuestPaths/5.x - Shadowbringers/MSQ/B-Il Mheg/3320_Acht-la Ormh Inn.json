@@ -13,7 +13,6 @@
             "Y": 87.48282,
             "Z": -691.9814
           },
-          "StopDistance": 9,
           "TerritoryId": 816,
           "InteractionType": "AcceptQuest"
         }
@@ -32,15 +31,6 @@
           "TerritoryId": 816,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818277
-        },
-        {
-          "Position": {
-            "X": -88.91068,
-            "Y": 109.10638,
-            "Z": -282.8004
-          },
-          "TerritoryId": 816,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2009840,
@@ -77,7 +67,6 @@
             "Y": 49.038586,
             "Z": 468.65027
           },
-          "StopDistance": 7,
           "TerritoryId": 816,
           "InteractionType": "CompleteQuest"
         }

@@ -13,10 +13,8 @@
             "Y": 14.054269,
             "Z": -99.47363
           },
-          "StopDistance": 7,
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,11 +30,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 639,
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] The Ruby Bazaar"
-          ]
+          "TargetTerritoryId": 639
         }
       ]
     },
@@ -58,10 +52,6 @@
               "Prompt": "TEXT_STMBDA207_02476_Q1_000_000",
               "Answer": "TEXT_STMBDA207_02476_A1_000_001"
             }
-          ],
-          "AethernetShortcut": [
-            "[Kugane] The Ruby Bazaar",
-            "[Kugane] Shiokaze Hostelry"
           ]
         }
       ]
@@ -76,7 +66,6 @@
             "Y": 5.923008,
             "Z": 847.7759
           },
-          "StopDistance": 7,
           "TerritoryId": 613,
           "InteractionType": "CompleteQuest"
         }

@@ -32,11 +32,7 @@
             "Z": -245.50244
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Lancers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,7 +46,6 @@
             "Y": -2.3519497,
             "Z": -240.40594
           },
-          "StopDistance": 7,
           "TerritoryId": 133,
           "InteractionType": "Interact",
           "TargetTerritoryId": 152
@@ -69,15 +64,6 @@
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": -561.9863,
-            "Y": 9.919454,
-            "Z": 66.29564
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1008276,
           "Position": {
@@ -99,7 +85,6 @@
             "Y": 7.8566074,
             "Z": 71.93724
           },
-          "StopDistance": 0.5,
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -109,8 +94,7 @@
               "IgnoreQuestMarker": true,
               "MinimumKillCount": 1
             }
-          ],
-          "Mount": false
+          ]
         },
         {
           "Position": {
@@ -118,7 +102,6 @@
             "Y": -0.28167063,
             "Z": 72.2678
           },
-          "StopDistance": 0.5,
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -128,8 +111,7 @@
               "IgnoreQuestMarker": true,
               "MinimumKillCount": 3
             }
-          ],
-          "Mount": false
+          ]
         },
         {
           "Position": {
@@ -137,7 +119,6 @@
             "Y": 4.4168873,
             "Z": 63.1877
           },
-          "StopDistance": 0.5,
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -147,8 +128,7 @@
               "IgnoreQuestMarker": true,
               "MinimumKillCount": 1
             }
-          ],
-          "Mount": false
+          ]
         },
         {
           "Position": {
@@ -156,7 +136,6 @@
             "Y": 8.511529,
             "Z": 69.76721
           },
-          "StopDistance": 0.5,
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -166,8 +145,7 @@
               "IgnoreQuestMarker": true,
               "MinimumKillCount": 2
             }
-          ],
-          "Mount": false
+          ]
         },
         {
           "DataId": 2482,
@@ -176,11 +154,9 @@
             "Y": 7.8999486,
             "Z": 64.43884
           },
-          "StopDistance": 0.25,
           "TerritoryId": 152,
           "InteractionType": "WaitForNpcAtPosition",
-          "NpcWaitDistance": 5,
-          "Mount": false
+          "NpcWaitDistance": 5
         },
         {
           "Position": {
@@ -188,7 +164,6 @@
             "Y": 11.837363,
             "Z": 19.533478
           },
-          "StopDistance": 0.5,
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -204,7 +179,6 @@
               "MinimumKillCount": 1
             }
           ],
-          "Mount": false,
           "CombatDelaySecondsAtStart": 3
         },
         {
@@ -215,9 +189,7 @@
             "Z": -22.394428
           },
           "TerritoryId": 152,
-          "StopDistance": 1,
           "InteractionType": "WaitForNpcAtPosition",
-          "Mount": false,
           "NpcWaitDistance": 5
         },
         {
@@ -227,10 +199,8 @@
             "Y": 11.905772,
             "Z": -34.105675
           },
-          "StopDistance": 0.25,
           "TerritoryId": 152,
           "InteractionType": "WaitForNpcAtPosition",
-          "Mount": false,
           "NpcWaitDistance": 5
         },
         {
@@ -240,7 +210,6 @@
             "Y": 12.25293,
             "Z": -35.05005
           },
-          "StopDistance": 4,
           "TerritoryId": 152,
           "InteractionType": "Interact"
         }
@@ -256,7 +225,6 @@
             "Y": 12.293127,
             "Z": -37.30841
           },
-          "StopDistance": 4,
           "TerritoryId": 152,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 2
@@ -273,7 +241,6 @@
             "Y": 12.25293,
             "Z": -35.080566
           },
-          "StopDistance": 4,
           "TerritoryId": 152,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 3
@@ -297,17 +264,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -139.69998,
-            "Y": 8.511277,
-            "Z": 279.65753
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
-        },
         {
           "DataId": 1007862,
           "Position": {

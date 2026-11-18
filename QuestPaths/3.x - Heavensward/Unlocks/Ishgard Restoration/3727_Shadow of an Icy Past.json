@@ -13,21 +13,8 @@
             "Y": -16,
             "Z": 164.20227
           },
-          "StopDistance": 5,
           "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -42,22 +29,13 @@
             "Z": 115.37341
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "TerritoryId": 886,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ]
-        },
         {
           "DataId": 1031996,
           "Position": {
@@ -66,11 +44,7 @@
             "Z": 8.132996
           },
           "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] Saint Roelle's Dais"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

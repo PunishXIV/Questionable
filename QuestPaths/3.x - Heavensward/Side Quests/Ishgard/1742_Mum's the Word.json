@@ -29,11 +29,7 @@
             "Z": 55.191895
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,10 +44,7 @@
             "Z": 770.0725
           },
           "TerritoryId": 397,
-          "StopDistance": 1,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

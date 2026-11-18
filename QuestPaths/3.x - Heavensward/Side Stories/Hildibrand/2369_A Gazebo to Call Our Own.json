@@ -29,11 +29,7 @@
             "Z": -29.922974
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -101,8 +97,7 @@
             "Z": 80.9491
           },
           "TerritoryId": 478,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -127,7 +122,6 @@
             "Y": 206.49942,
             "Z": 42.98462
           },
-          "StopDistance": 5,
           "TerritoryId": 478,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -153,7 +147,6 @@
             "Y": 206.49947,
             "Z": 20.09607
           },
-          "StopDistance": 7,
           "TerritoryId": 478,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]

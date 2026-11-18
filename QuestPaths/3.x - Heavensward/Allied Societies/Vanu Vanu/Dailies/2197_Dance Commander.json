@@ -14,9 +14,7 @@
             "Z": -404.1352
           },
           "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,25 +29,13 @@
             "Z": -414.02307
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 650.37317,
-            "Y": -41.15606,
-            "Z": -302.4378
-          },
-          "TerritoryId": 401,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1016362,
           "Position": {
@@ -70,8 +56,7 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Emote",
-          "Emote": "sundropdance",
-          "Fly": true
+          "Emote": "sundropdance"
         },
         {
           "DataId": 1016364,
@@ -82,8 +67,7 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Emote",
-          "Emote": "sundropdance",
-          "Fly": true
+          "Emote": "sundropdance"
         },
         {
           "DataId": 1016363,
@@ -94,8 +78,7 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Emote",
-          "Emote": "sundropdance",
-          "Fly": true
+          "Emote": "sundropdance"
         }
       ]
     },
@@ -110,9 +93,7 @@
             "Z": -414.02307
           },
           "TerritoryId": 401,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

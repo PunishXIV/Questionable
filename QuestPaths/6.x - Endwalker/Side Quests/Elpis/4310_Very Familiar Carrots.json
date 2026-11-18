@@ -13,9 +13,7 @@
             "Z": -181.99438
           },
           "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,8 +31,7 @@
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             14054
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -109,9 +106,7 @@
             "Z": -181.99438
           },
           "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Poieten Oikos",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

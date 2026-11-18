@@ -15,7 +15,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "AttuneAetherCurrent",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
           "AetherCurrentId": 2818362
         },
         {
@@ -25,7 +24,6 @@
             "Y": -154.98596,
             "Z": -595.5444
           },
-          "StopDistance": 3,
           "TerritoryId": 959,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818361

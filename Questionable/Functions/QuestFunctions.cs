@@ -592,7 +592,9 @@ internal sealed class QuestFunctions
 
     private bool IsWalk((uint From, uint To) change) => state.RegionOf(change.From) == state.RegionOf(change.To);
 
-    internal bool CanBeDoneWithoutTeleport(Quest quest) => ZoneChanges(quest).All(IsWalk);
+    // A new character's level 1 class quest starts in another part of the city than the opening quests.
+    internal bool CanBeDoneWithoutTeleport(Quest quest) =>
+        quest.FindSequence(0)?.FindStep(0)?.TerritoryId == state.TerritoryType && ZoneChanges(quest).All(IsWalk);
 
     internal EAetheryteLocation? GetFirstLockedAetheryte(Quest quest)
     {

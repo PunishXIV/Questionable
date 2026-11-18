@@ -22,20 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "AetheryteShortcut": "Ul'dah",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
-          "Position": {
-            "X": -171.53638,
-            "Y": 17.999998,
-            "Z": 66.511505
-          },
-          "TerritoryId": 130,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1011681,
           "Position": {
             "X": -182.29956,
@@ -100,7 +86,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "AetheryteShortcut": "Western Thanalan - Horizon",
           "DataId": 1011683,
           "Position": {
             "X": 76.8291,
@@ -122,8 +107,7 @@
             "Z": -352.02484
           },
           "TerritoryId": 140,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "WalkTo"
         }
       ]
     },
@@ -131,11 +115,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "AetheryteShortcut": "Ul'dah",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Alchemists' Guild"
-          ],
           "DataId": 1011675,
           "Position": {
             "X": -118.150635,

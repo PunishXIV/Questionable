@@ -14,8 +14,7 @@
             "Z": 276.5697
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -57,7 +56,6 @@
             "Y": -15.187395,
             "Z": 253.52856
           },
-          "StopDistance": 5,
           "TerritoryId": 138,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -87,7 +85,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {

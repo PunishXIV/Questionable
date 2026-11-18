@@ -13,10 +13,8 @@
             "Y": 7.999984,
             "Z": 686.427
           },
-          "StopDistance": 5,
           "TerritoryId": 135,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": -294.33136
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -53,8 +49,7 @@
           "KillEnemyDataIds": [
             7500,
             7501
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -74,8 +69,7 @@
           "KillEnemyDataIds": [
             7500,
             7501
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -90,8 +84,7 @@
             "Z": -365.37732
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -105,10 +98,8 @@
             "Y": 7.999984,
             "Z": 686.427
           },
-          "StopDistance": 5,
           "TerritoryId": 135,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
           "NextQuestId": 2902
         }
       ]

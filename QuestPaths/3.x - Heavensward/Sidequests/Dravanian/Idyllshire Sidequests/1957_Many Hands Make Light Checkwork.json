@@ -15,7 +15,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: issuer 1012132 (Drydox)"
         }
       ]
@@ -31,13 +30,7 @@
             "Z": -238.297
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -52,12 +45,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             4024
@@ -77,13 +64,7 @@
             "Z": -238.297
           },
           "TerritoryId": 399,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

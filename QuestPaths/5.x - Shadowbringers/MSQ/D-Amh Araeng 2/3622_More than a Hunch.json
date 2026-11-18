@@ -13,7 +13,6 @@
             "Y": -86.381516,
             "Z": 462.33313
           },
-          "StopDistance": 5,
           "TerritoryId": 815,
           "InteractionType": "AcceptQuest"
         }
@@ -30,12 +29,7 @@
             "Z": 1.87677
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,13 +43,8 @@
             "Y": 1.7160122,
             "Z": 249.7749
           },
-          "StopDistance": 7,
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] The Pendants"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

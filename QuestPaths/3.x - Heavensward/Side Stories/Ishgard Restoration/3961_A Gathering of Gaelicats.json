@@ -7,43 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
-          "TerritoryId": 886,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] Featherfall"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -80.88812,
-                  "Y": -7.356983E-05,
-                  "Z": 107.71338
-                },
-                "TerritoryId": 886,
-                "MaximumDistance": 100
-              }
-            }
-          }
-        },
-        {
           "DataId": 1034084,
           "Position": {
             "X": -80.88812,

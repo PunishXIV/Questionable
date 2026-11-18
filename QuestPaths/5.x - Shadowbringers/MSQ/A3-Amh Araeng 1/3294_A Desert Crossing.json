@@ -40,8 +40,7 @@
             "Z": -117.93707
           },
           "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Mord Souq"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -54,7 +53,6 @@
             "Y": -23.82671,
             "Z": -44.724243
           },
-          "StopDistance": 1,
           "TerritoryId": 815,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",

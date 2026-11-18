@@ -14,8 +14,7 @@
             "Z": 185.74805
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "Mount": false
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -250.90417
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+          "InteractionType": "Interact"
         }
       ]
     },

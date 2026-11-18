@@ -13,7 +13,6 @@
             "Y": 1.7160122,
             "Z": 249.83594
           },
-          "StopDistance": 5,
           "TerritoryId": 819,
           "InteractionType": "AcceptQuest"
         }
@@ -30,11 +29,7 @@
             "Z": -266.2547
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Cabinet of Curiosity"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -71,11 +66,7 @@
             "Z": -51.438232
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Cabinet of Curiosity",
-            "[Crystarium] The Dossal Gate"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -116,7 +107,6 @@
             "Y": 0.99176025,
             "Z": 167.65088
           },
-          "StopDistance": 5,
           "TerritoryId": 819,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
@@ -161,8 +151,7 @@
             "Z": -51.438232
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,26 +14,7 @@
             "Z": 87.44946
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 98.10022,
-                  "Y": 4.0000014,
-                  "Z": 87.44946
-                },
-                "TerritoryId": 628,
-                "MaximumDistance": 20
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -48,9 +29,7 @@
             "Z": -68.37573
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Yanxia - Namai"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -66,8 +45,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "Combat",
-          "StopDistance": 4,
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -75,7 +52,6 @@
               "Yes": true
             }
           ],
-          "AetheryteShortcut": "Yanxia - Namai",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             7236
@@ -94,9 +70,7 @@
             "Z": 305.83655
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "StopDistance": 4,
-          "Fly": false
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -111,9 +85,7 @@
             "Z": -58.457336
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "StopDistance": 4
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -129,25 +101,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 98.10022,
-                  "Y": 4.0000014,
-                  "Z": 87.44946
-                },
-                "TerritoryId": 628,
-                "MaximumDistance": 20
-              }
-            }
-          },
           "NextQuestId": 2413
         }
       ]

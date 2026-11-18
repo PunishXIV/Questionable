@@ -47,26 +47,13 @@
             "Z": -669.84753
           },
           "TerritoryId": 613,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 116.05634,
-            "Y": 3.799895,
-            "Z": -868.98865
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2009420,
           "Position": {
@@ -75,18 +62,7 @@
             "Z": -874.38776
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 63.579952,
-            "Y": -1.1090306,
-            "Z": -869.52625
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2009469,
@@ -96,8 +72,7 @@
             "Z": -870.66455
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -112,8 +87,7 @@
             "Z": -877.0428
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -129,7 +103,6 @@
           },
           "TerritoryId": 759,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Doman Enclave",
           "DialogueChoices": [
             {
               "Type": "YesNo",

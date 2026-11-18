@@ -16,17 +16,7 @@
           "TerritoryId": 419,
           "InteractionType": "Interact",
           "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419,
-                433
-              ]
-            },
             "StepIf": {
               "InTerritory": [433]
             }
@@ -71,11 +61,7 @@
             "Z": -21.561035
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] The Jeweled Crozier"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -90,11 +76,7 @@
             "Z": 31.296265
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -109,9 +91,7 @@
             "Z": 741.60376
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -126,9 +106,7 @@
             "Z": 790.2189
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -143,11 +121,7 @@
             "Z": -156.6034
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Tribunal"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -178,7 +152,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "TargetTerritoryId": 198
         }
       ]
@@ -186,17 +159,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 25.714342,
-            "Y": 50.98988,
-            "Z": -779.1884
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
-        },
         {
           "DataId": 1016809,
           "Position": {

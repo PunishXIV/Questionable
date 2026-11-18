@@ -14,8 +14,7 @@
             "Z": 5.0201416
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +29,7 @@
             "Z": 220.99634
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -116,8 +113,7 @@
             "Z": 675.6847
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -166,7 +162,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
           "NextQuestId": 4104
         }
       ]

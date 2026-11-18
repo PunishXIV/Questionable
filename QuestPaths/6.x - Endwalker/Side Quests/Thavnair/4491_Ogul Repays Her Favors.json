@@ -13,7 +13,6 @@
             "Y": 1.2757957,
             "Z": 616.5408
           },
-          "StopDistance": 7,
           "TerritoryId": 957,
           "InteractionType": "AcceptQuest"
         }
@@ -22,17 +21,6 @@
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 191.63799,
-            "Y": 15.136713,
-            "Z": 508.80118
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
-        },
         {
           "DataId": 1041332,
           "Position": {
@@ -56,8 +44,7 @@
             "Z": 670.7103
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -72,8 +59,7 @@
             "Z": 549.0044
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -88,7 +74,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -115,7 +100,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {

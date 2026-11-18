@@ -14,9 +14,7 @@
             "Z": 57.083984
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,9 +32,6 @@
           "TerritoryId": 138,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "StopDistance": 1,
-          "Fly": true,
           "KillEnemyDataIds": [
             2844
           ],
@@ -55,7 +50,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Combat",
-          "StopDistance": 1,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2844
@@ -75,7 +69,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Interact",
-          "StopDistance": 1,
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 3},{"High": 5},{"High": 6}
           ],null],
@@ -91,7 +84,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Combat",
-          "StopDistance": 1,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2844
@@ -111,7 +103,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Combat",
-          "StopDistance": 1,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2844
@@ -131,7 +122,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Interact",
-          "StopDistance": 1,
           "RequiredQuestVariables": [null,null,null,null,[
             {"High": 2},{"High": 4},{"High": 6}
           ],null],
@@ -147,7 +137,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Combat",
-          "StopDistance": 1,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2844
@@ -170,9 +159,7 @@
             "Z": 57.083984
           },
           "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

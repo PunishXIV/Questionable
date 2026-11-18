@@ -13,10 +13,8 @@
             "Y": 118.44431,
             "Z": -789.27295
           },
-          "StopDistance": 5,
           "TerritoryId": 620,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +29,6 @@
             "Z": -42.404846
           },
           "TerritoryId": 130,
-          "AetheryteShortcut": "Ul'dah",
           "InteractionType": "Interact"
         }
       ]
@@ -47,9 +44,7 @@
             "Z": -789.27295
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,13 +59,7 @@
             "Z": -667.2923
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Fringes Gate"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,8 +78,7 @@
           "KillEnemyDataIds": [
             7217
           ],
-          "CombatDelaySecondsAtStart": 0,
-          "Mount": false
+          "CombatDelaySecondsAtStart": 0
         },
         {
           "DataId": 1022405,
@@ -130,9 +118,7 @@
             "Z": -707.393
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -148,7 +134,6 @@
           },
           "TerritoryId": 620,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 2429
         }
       ]

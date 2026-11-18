@@ -14,8 +14,7 @@
             "Z": 5.0201416
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,12 +30,10 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             14011
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -67,7 +64,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             14010
@@ -101,10 +97,7 @@
             "Z": -97.76465
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -119,9 +112,7 @@
             "Z": 175.12769
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

@@ -14,12 +14,7 @@
             "Z": 47.837036
           },
           "TerritoryId": 144,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gold Saucer",
-          "AethernetShortcut": [
-            "[Gold Saucer] Aetheryte Plaza",
-            "[Gold Saucer] Wonder Square West"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,12 +30,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 639,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ]
+          "TargetTerritoryId": 639
         },
         {
           "DataId": 1020622,
@@ -65,10 +55,8 @@
             "Z": -63.81958
           },
           "TerritoryId": 628,
-          "StopDistance": 1,
           "InteractionType": "UnlockTaxiStand",
-          "TaxiStandId": 1179702,
-          "AethernetShortcut": ["[Kugane] Aetheryte Plaza","[Kugane] Shiokaze Hostelry"]
+          "TaxiStandId": 1179702
         },
         {
           "DataId": 1024044,
@@ -78,8 +66,7 @@
             "Z": -114.00018
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,7 +80,6 @@
             "Y": -2.0000012,
             "Z": -17.166443
           },
-          "StopDistance": 5,
           "TerritoryId": 212,
           "InteractionType": "Interact"
         }
@@ -109,7 +95,6 @@
             "Y": -2.0000012,
             "Z": -17.166443
           },
-          "StopDistance": 5,
           "TerritoryId": 212,
           "InteractionType": "CompleteQuest"
         }

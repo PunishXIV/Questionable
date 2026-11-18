@@ -13,9 +13,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -48,7 +46,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -78,9 +75,7 @@
             "Z": -46.28064
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,7 +88,6 @@
             "Y": 13.748352,
             "Z": -51.773926
           },
-          "StopDistance": 2,
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -126,9 +120,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -161,7 +153,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"

@@ -14,18 +14,7 @@
             "Z": 66.300415
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,7 +28,6 @@
             "Y": 40,
             "Z": 66.14783
           },
-          "StopDistance": 5,
           "TerritoryId": 128,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -68,9 +56,7 @@
             "Z": 792.6909
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -86,10 +72,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -127,10 +109,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "NextQuestId": 4118
         }
       ]

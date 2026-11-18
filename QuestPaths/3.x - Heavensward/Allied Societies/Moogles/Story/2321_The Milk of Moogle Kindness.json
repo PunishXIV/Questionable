@@ -14,9 +14,7 @@
             "Z": 315.14453
           },
           "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": 317.1587
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Zenith"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,8 +44,7 @@
             "Z": 170.48901
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,7 +60,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -86,9 +81,7 @@
             "Z": 693.5072
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Moghome",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -103,9 +96,7 @@
             "Z": 170.48901
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -120,8 +111,7 @@
             "Z": 44.541016
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -136,9 +126,7 @@
             "Z": 307.27087
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -153,9 +141,7 @@
             "Z": 322.43085
           },
           "TerritoryId": 400,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -171,8 +157,7 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Action",
-          "Action": "Seed",
-          "Fly": true
+          "Action": "Seed"
         }
       ]
     },
@@ -187,8 +172,7 @@
             "Z": 315.14453
           },
           "TerritoryId": 400,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

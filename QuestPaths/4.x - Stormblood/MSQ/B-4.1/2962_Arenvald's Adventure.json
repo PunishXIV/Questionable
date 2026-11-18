@@ -13,14 +13,8 @@
             "Y": 13.02367,
             "Z": -90.53424
           },
-          "StopDistance": 1,
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,8 +29,7 @@
             "Z": -124.52893
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "StopDistance": 4
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,7 +44,6 @@
             "Z": 26.21167
           },
           "TerritoryId": 635,
-          "StopDistance": 1,
           "InteractionType": "UnlockTaxiStand",
           "TaxiStandId": 1179695
         },

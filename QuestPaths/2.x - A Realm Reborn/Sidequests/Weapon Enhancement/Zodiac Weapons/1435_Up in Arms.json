@@ -14,10 +14,8 @@
             "Y": -0.6576674,
             "Z": -67.84026
           },
-          "StopDistance": 1,
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "TerritoryId": 154,
@@ -32,9 +30,7 @@
             "Z": -63.35452
           },
           "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -49,8 +45,7 @@
             "Z": -89.1504
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -66,7 +61,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_JOBREL001_01435_Q1_000_000",

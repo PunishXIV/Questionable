@@ -29,7 +29,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -51,8 +50,7 @@
             "Z": 485.3131
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -82,8 +80,7 @@
             "Z": 654.4442
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -99,7 +96,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 2751
         }
       ]

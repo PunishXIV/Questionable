@@ -45,18 +45,7 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "AttuneAetherCurrent",
-          "AetherCurrentId": 2818436,
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -112.97611,
-            "Y": -197.49266,
-            "Z": 595.45026
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "Mount": true
+          "AetherCurrentId": 2818436
         },
         {
           "DataId": 1047620,
@@ -95,7 +84,6 @@
             "Y": -199.5873,
             "Z": 620.1113
           },
-          "StopDistance": 5,
           "TerritoryId": 1189,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -130,8 +118,7 @@
             "Z": 543.1144
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

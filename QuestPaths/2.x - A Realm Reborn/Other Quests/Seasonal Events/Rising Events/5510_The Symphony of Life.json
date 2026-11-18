@@ -15,10 +15,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "$": "auto: issuer 1059427 (wandering minstrel)"
         }
       ]
@@ -35,10 +31,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "$": "auto: todo location -> 1059492 (querying Keeper of the Moon)"
         }
       ]
@@ -87,10 +79,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
           "$": "auto: todo location -> 1000947 (Lyngsath)"
         }
       ]
@@ -107,11 +95,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Culinarians' Guild",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "$": "auto: todo location -> 1059431 (Ayoyo)"
         }
       ]
@@ -128,10 +111,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "$": "auto: todo location -> 2015392 (destination)"
         }
       ]
@@ -148,10 +127,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "$": "auto: todo location -> 1059432 (Bathu Molkoh)"
         }
       ]
@@ -168,8 +143,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": false,
           "$": "auto: todo location -> 1059435 (Bathu Molkoh)"
         }
       ]
@@ -186,10 +159,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "NextQuestId": 5520,
           "$": "auto: todo turn-in -> 1059495 (wandering minstrel)"
         }

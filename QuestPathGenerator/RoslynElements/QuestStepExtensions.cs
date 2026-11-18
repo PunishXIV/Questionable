@@ -48,35 +48,12 @@ internal static class QuestStepExtensions
                                 .AsSyntaxNodeOrToken(),
                             Assignment(nameof(QuestStep.Disabled), step.Disabled, emptyStep.Disabled)
                                 .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(QuestStep.DisableNavmesh), step.DisableNavmesh,
-                                    emptyStep.DisableNavmesh)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(QuestStep.Mount), step.Mount, emptyStep.Mount)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(QuestStep.Fly), step.Fly, emptyStep.Fly)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(QuestStep.Land), step.Land, emptyStep.Land)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(QuestStep.Sprint), step.Sprint, emptyStep.Sprint)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(QuestStep.IgnoreDistanceToObject),
-                                    step.IgnoreDistanceToObject, emptyStep.IgnoreDistanceToObject)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(QuestStep.RestartNavigationIfCancelled),
-                                    step.RestartNavigationIfCancelled, emptyStep.RestartNavigationIfCancelled)
-                                .AsSyntaxNodeOrToken(),
                             Assignment(nameof(QuestStep.Comment), step.Comment, emptyStep.Comment)
                                 .AsSyntaxNodeOrToken(),
                             Assignment(nameof(QuestStep.Aetheryte), step.Aetheryte, emptyStep.Aetheryte)
                                 .AsSyntaxNodeOrToken(),
                             Assignment(nameof(QuestStep.AethernetShard), step.AethernetShard,
                                     emptyStep.AethernetShard)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(QuestStep.AetheryteShortcut), step.AetheryteShortcut,
-                                    emptyStep.AetheryteShortcut)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(QuestStep.AethernetShortcut), step.AethernetShortcut,
-                                    emptyStep.AethernetShortcut)
                                 .AsSyntaxNodeOrToken(),
                             Assignment(nameof(QuestStep.AetherCurrentId), step.AetherCurrentId,
                                     emptyStep.AetherCurrentId)

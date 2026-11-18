@@ -22,16 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 11.922524,
-            "Y": -105.8306,
-            "Z": -397.17743
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1038897,
           "Position": {
             "X": 30.838379,
@@ -50,15 +40,6 @@
           "TerritoryId": 959,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Mare Lamentorum - Bestways Burrow"
-        },
-        {
-          "Position": {
-            "X": 36.500526,
-            "Y": -129.20917,
-            "Z": -521.85284
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1038901,
@@ -90,24 +71,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -72.39724,
-            "Y": -49.589592,
-            "Z": -336.63968
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -105.34293,
-            "Y": -49.589592,
-            "Z": -367.6591
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1038903,
           "Position": {

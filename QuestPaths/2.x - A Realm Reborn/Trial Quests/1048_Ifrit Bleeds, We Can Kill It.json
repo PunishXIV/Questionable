@@ -7,27 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 145,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
           "Position": {
             "X": -492.96475,
             "Y": 20.999884,
@@ -35,7 +14,6 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": {
             "StepIf": {
@@ -83,55 +61,13 @@
             "Z": -114.67157
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -22.992174,
-            "Y": 31.881628,
-            "Z": -3.1655574
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
-        },
-        {
-          "Position": {
-            "X": 373.0123,
-            "Y": 46.21888,
-            "Z": -47.523537
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 500.2741,
-            "Y": 36.9815,
-            "Z": -153.72185
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 694.0748,
-            "Y": 4.267518,
-            "Z": -84.443855
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2002581,
           "Position": {
@@ -140,10 +76,7 @@
             "Z": -80.1557
           },
           "TerritoryId": 146,
-          "Mount": false,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 5,
-          "IgnoreDistanceToObject": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

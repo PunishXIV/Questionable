@@ -14,16 +14,7 @@
             "Z": 95.26196
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [130, 131]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -38,9 +29,7 @@
             "Z": -706.1417
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Gannha",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1028410,
@@ -50,8 +39,7 @@
             "Z": -750.57605
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1028408,
@@ -61,8 +49,7 @@
             "Z": -784.2069
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,9 +64,7 @@
             "Z": -408.16364
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -94,12 +79,7 @@
             "Z": -83.32953
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Northeastern Rhalgr's Reach"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -114,16 +94,7 @@
             "Z": 95.26196
           },
           "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [130, 131]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

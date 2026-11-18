@@ -14,9 +14,7 @@
             "Z": 20.004517
           },
           "TerritoryId": 139,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,9 +31,7 @@
           },
           "TerritoryId": 139,
           "InteractionType": "Emote",
-          "Emote": "poke",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "Emote": "poke"
         }
       ]
     },
@@ -70,8 +66,7 @@
           },
           "TerritoryId": 139,
           "InteractionType": "UseItem",
-          "ItemId": 2000676,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "ItemId": 2000676
         }
       ]
     },
@@ -89,8 +84,7 @@
           },
           "TerritoryId": 139,
           "InteractionType": "UseItem",
-          "ItemId": 2000676,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "ItemId": 2000676
         }
       ]
     },
@@ -105,9 +99,7 @@
             "Z": 20.004517
           },
           "TerritoryId": 139,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

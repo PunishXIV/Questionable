@@ -38,7 +38,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -62,10 +61,6 @@
           "TerritoryId": 133,
           "InteractionType": "Interact",
           "TargetTerritoryId": 152,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "East Shroud - Hawthorne Hut"
@@ -94,8 +89,7 @@
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.292"
-          },
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          }
         }
       ]
     },
@@ -110,8 +104,7 @@
             "Z": -9.99469
           },
           "TerritoryId": 132,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

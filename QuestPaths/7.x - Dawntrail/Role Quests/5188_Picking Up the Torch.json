@@ -14,12 +14,7 @@
             "Z": 182.7268
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] The For'ard Cabins"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,10 +30,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -74,7 +65,6 @@
             "Y": 4,
             "Z": -23.562449
           },
-          "StopDistance": 0.5,
           "TerritoryId": 131,
           "InteractionType": "Emote",
           "Emote": "angry"
@@ -124,7 +114,6 @@
             "Y": 10,
             "Z": 5.935669
           },
-          "StopDistance": 7,
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5189

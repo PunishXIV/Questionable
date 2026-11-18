@@ -58,16 +58,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 205.08835,
-            "Y": 111.9045,
-            "Z": -245.44336
-          },
-          "TerritoryId": 134,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms"
-        },
-        {
           "DataId": 1002626,
           "Position": {
             "X": 207.2633,

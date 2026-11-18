@@ -29,11 +29,7 @@
             "Z": 316.33472
           },
           "TerritoryId": 141,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -29,12 +29,7 @@
             "Z": -203.8758
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Mehryde's Meyhane"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -110,7 +105,6 @@
             "Y": -3.2177195E-06,
             "Z": -13.687378
           },
-          "StopDistance": 5,
           "TerritoryId": 963,
           "InteractionType": "Interact"
         }
@@ -127,9 +121,7 @@
             "Z": 570.94666
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

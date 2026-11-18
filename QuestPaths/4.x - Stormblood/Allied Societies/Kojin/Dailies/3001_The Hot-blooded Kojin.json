@@ -14,23 +14,13 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "TerritoryId": 613,
-          "Fly": true,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
-        },
         {
           "Position": {
             "X": -727.74854,
@@ -41,8 +31,7 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [8245, 8246],
-          "RequiredQuestVariables": [null, null, [16], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [16], null, null, null]
         },
         {
           "DataId": 1024320,
@@ -65,8 +54,7 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [8247, 8248, 8249],
-          "RequiredQuestVariables": [null, null, [32], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [32], null, null, null]
         },
         {
           "DataId": 1024322,
@@ -89,8 +77,7 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [8244, 8246],
-          "RequiredQuestVariables": [null, null, [48], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [48], null, null, null]
         },
         {
           "DataId": 1024318,
@@ -116,11 +103,7 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

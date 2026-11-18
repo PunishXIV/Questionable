@@ -14,8 +14,7 @@
             "Z": 20.58435
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -52,33 +51,6 @@
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": 49.68947,
-            "Y": -8.046954,
-            "Z": 100.59061
-          },
-          "TerritoryId": 132,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 38.482037,
-            "Y": -9.182595,
-            "Z": 124.36735
-          },
-          "TerritoryId": 132,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 40.59977,
-            "Y": -18.800003,
-            "Z": 103.46791
-          },
-          "TerritoryId": 132,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1010012,
           "Position": {

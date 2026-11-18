@@ -16,7 +16,6 @@
           "TerritoryId": 959,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1291,
-          "Fly": true,
           "Comment": "Select the destination Phaenna (#2)",
           "DialogueChoices": [
             {

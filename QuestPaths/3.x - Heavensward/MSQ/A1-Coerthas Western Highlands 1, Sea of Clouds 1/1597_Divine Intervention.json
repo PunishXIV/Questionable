@@ -15,11 +15,7 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
+          "TargetTerritoryId": 433
         },
         {
           "DataId": 1012377,
@@ -43,7 +39,6 @@
             "Y": -9.313226E-10,
             "Z": 9.018005
           },
-          "StopDistance": 5,
           "TerritoryId": 433,
           "InteractionType": "Interact"
         }
@@ -71,11 +66,7 @@
             "Z": 0.47296143
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,10 +82,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "SinglePlayerDuty",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Tribunal"
-          ],
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.292"

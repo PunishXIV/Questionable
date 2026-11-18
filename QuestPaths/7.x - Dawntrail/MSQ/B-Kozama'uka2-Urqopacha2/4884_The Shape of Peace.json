@@ -13,7 +13,6 @@
             "Y": 120.79523,
             "Z": -326.37524
           },
-          "StopDistance": 7,
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest"
         }
@@ -31,11 +30,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] The For'ard Cabins"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -81,7 +75,6 @@
             "Y": 121.633156,
             "Z": 327.62634
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "Interact"
         }
@@ -127,7 +120,6 @@
             "Y": 127.336426,
             "Z": 468.0094
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "Interact"
         }
@@ -143,7 +135,6 @@
             "Y": 127.336426,
             "Z": 468.0094
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "Interact"
         }
@@ -160,8 +151,7 @@
             "Z": 341.7257
           },
           "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Earthenshire"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

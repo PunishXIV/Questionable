@@ -17,12 +17,7 @@
             "Z": 125.10864
           },
           "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] True Vue"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -79,11 +74,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 1224,
-          "AethernetShortcut": [
-            "[Solution Nine] True Vue",
-            "[Solution Nine] The Arcadion"
-          ]
+          "TargetTerritoryId": 1224
         },
         {
           "DataId": 1056303,

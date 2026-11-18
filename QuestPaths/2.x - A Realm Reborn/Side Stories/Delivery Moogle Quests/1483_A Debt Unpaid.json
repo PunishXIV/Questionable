@@ -14,8 +14,7 @@
             "Z": 5.416931
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -86,12 +85,7 @@
             "Z": 48.447266
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ],
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -107,7 +101,6 @@
           },
           "TerritoryId": 134,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2001324
         }
       ]
@@ -123,8 +116,7 @@
             "Z": 128.67932
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -139,9 +131,7 @@
             "Z": -222.43079
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -164,16 +154,6 @@
       "Sequence": 8,
       "Steps": [
         {
-          "Position": {
-            "X": 212.61609,
-            "Y": 113.49741,
-            "Z": -216.9579
-          },
-          "TerritoryId": 134,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1009184,
           "Position": {
             "X": -22.171448,
@@ -181,12 +161,7 @@
             "Z": 128.67932
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -201,11 +176,7 @@
             "Z": -6.1189575
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

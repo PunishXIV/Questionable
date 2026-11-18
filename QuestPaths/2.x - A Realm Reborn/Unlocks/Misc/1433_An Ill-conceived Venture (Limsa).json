@@ -14,7 +14,6 @@
             "Z": -0.22894287
           },
           "TerritoryId": 129,
-          "AetheryteShortcut": "Limsa Lominsa",
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -30,9 +29,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Combat",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             397
@@ -61,8 +57,7 @@
             "Z": 14.358704
           },
           "TerritoryId": 129,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

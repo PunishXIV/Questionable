@@ -14,8 +14,7 @@
             "Z": 775.1736
           },
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -28,9 +27,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -63,7 +60,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"

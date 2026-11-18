@@ -13,8 +13,7 @@
             "Z": -140.30676
           },
           "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,8 +28,7 @@
             "Z": -174.09027
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -44,7 +42,6 @@
             "Y": 29.526123,
             "Z": -175.64667
           },
-          "StopDistance": 4,
           "TerritoryId": 1190,
           "InteractionType": "Emote",
           "Emote": "respect"

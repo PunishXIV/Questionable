@@ -17,24 +17,7 @@
 				"Z": 98.924194
 			},
 			"TerritoryId": 131,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ul'dah",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Weavers' Guild"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					130,
-					131
-					]
-				}
-			}
+			"InteractionType": "AcceptQuest"
 		}
 		]
 	},
@@ -51,13 +34,7 @@
 				"Z": -147.93628
 			},
 			"TerritoryId": 628,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Kugane",
-			"AethernetShortcut":
-			[
-			"[Kugane] Aetheryte Plaza",
-			"[Kugane] Rakuza District"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},

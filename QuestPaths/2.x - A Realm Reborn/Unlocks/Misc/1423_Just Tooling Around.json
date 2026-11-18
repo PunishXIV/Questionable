@@ -8,16 +8,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": 24.076426,
-            "Y": 28.999966,
-            "Z": -729.6976
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
           "DataId": 1006971,
           "Position": {
             "X": 24.307495,

@@ -28,7 +28,6 @@
             "Y": 4.1,
             "Z": -109.819214
           },
-          "StopDistance": 5,
           "TerritoryId": 130,
           "InteractionType": "Interact"
         }
@@ -45,11 +44,7 @@
             "Z": 10.452393
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,7 +74,6 @@
             "Y": 83.2,
             "Z": 15.121643
           },
-          "StopDistance": 7,
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest"
         }

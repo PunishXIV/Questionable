@@ -14,8 +14,7 @@
             "Z": 422.4154
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -79,8 +78,7 @@
             "Z": 422.4154
           },
           "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -17,9 +17,7 @@
             "Z": -127.00523
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "None"
         },
         {
           "DataId": 1027714,
@@ -29,8 +27,7 @@
             "Z": -124.80359
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,9 +41,7 @@
             "Z": 138.81181
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "None"
         },
         {
           "DataId": 1031401,
@@ -56,8 +51,7 @@
             "Z": 139.8794
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -71,24 +65,12 @@
             "Z": -123.772446
           },
           "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 249.18459,
-            "Y": -66.52561,
-            "Z": -123.772446
-          },
-          "TerritoryId": 817,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             11168
           ],
-          "CombatDelaySecondsAtStart": 0,
-          "Mount": false
+          "CombatDelaySecondsAtStart": 0
         },
         {
           "DataId": 2010723,
@@ -99,19 +81,7 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "DelaySecondsAtStart": 5,
-          "Fly": true,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 102.04852,
-            "Y": 38.524307,
-            "Z": -160.11539
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "DelaySecondsAtStart": 5
         },
         {
           "Position": {
@@ -125,8 +95,7 @@
           "KillEnemyDataIds": [
             11169
           ],
-          "CombatDelaySecondsAtStart": 0,
-          "Mount": false
+          "CombatDelaySecondsAtStart": 0
         },
         {
           "DataId": 2010724,
@@ -137,19 +106,7 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "DelaySecondsAtStart": 5,
-          "Fly": true,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 628.8899,
-            "Y": 12.333022,
-            "Z": -382.83636
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "DelaySecondsAtStart": 5
         },
         {
           "Position": {
@@ -163,8 +120,7 @@
           "KillEnemyDataIds": [
             11170
           ],
-          "CombatDelaySecondsAtStart": 0,
-          "Mount": false
+          "CombatDelaySecondsAtStart": 0
         },
         {
           "Position": {
@@ -178,8 +134,7 @@
           "KillEnemyDataIds": [
             11149
           ],
-          "CombatDelaySecondsAtStart": 5,
-          "Mount": false
+          "CombatDelaySecondsAtStart": 5
         },
         {
           "DataId": 2010725,
@@ -190,9 +145,7 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "DelaySecondsAtStart": 5,
-          "Fly": true,
-          "Mount": false
+          "DelaySecondsAtStart": 5
         }
       ]
     },
@@ -207,9 +160,7 @@
             "Z": -124.80359
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

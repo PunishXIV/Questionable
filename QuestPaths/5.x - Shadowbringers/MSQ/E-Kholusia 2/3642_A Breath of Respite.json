@@ -13,7 +13,6 @@
             "Y": 352.35822,
             "Z": -188.95251
           },
-          "StopDistance": 7,
           "TerritoryId": 814,
           "InteractionType": "AcceptQuest"
         }
@@ -44,7 +43,6 @@
             "Y": 354.35815,
             "Z": -179.18677
           },
-          "StopDistance": 5,
           "TerritoryId": 814,
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 3537
@@ -55,10 +53,8 @@
             "Y": 352.3582,
             "Z": -173.26604
           },
-          "StopDistance": 0.5,
           "TerritoryId": 814,
           "InteractionType": "Jump",
-          "Mount": true,
           "JumpDestination": {
             "Position": {
               "X": -119.30471,
@@ -77,16 +73,6 @@
           "TerritoryId": 814,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818246
-        },
-        {
-          "Position": {
-            "X": -41.071743,
-            "Y": 324.03458,
-            "Z": 14.810446
-          },
-          "TerritoryId": 814,
-          "InteractionType": "WalkTo",
-          "Mount": true
         },
         {
           "DataId": 1030293,
@@ -109,7 +95,6 @@
             "Y": 351.37643,
             "Z": -192.06285
           },
-          "StopDistance": 0.25,
           "TerritoryId": 814,
           "InteractionType": "Jump",
           "JumpDestination": {

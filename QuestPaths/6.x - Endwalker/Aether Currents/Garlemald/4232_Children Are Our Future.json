@@ -63,17 +63,7 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 50,
           "NpcWaitDistance": 3
-        },
-        {
-          "Position": {
-            "X": 129.07327,
-            "Y": 10.499999,
-            "Z": -675.6929
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1040635,
@@ -84,28 +74,7 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 50,
           "NpcWaitDistance": 3
-        },
-        {
-          "Position": {
-            "X": 121.80121,
-            "Y": 10.5,
-            "Z": -668.12524
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 88.11899,
-            "Y": 10.8,
-            "Z": -647.2713
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
-          "Mount": false
         },
         {
           "DataId": 1040635,
@@ -116,19 +85,7 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WaitForNpcAtPosition",
-          "Mount": false,
-          "StopDistance": 50,
           "NpcWaitDistance": 3
-        },
-        {
-          "Position": {
-            "X": 68.38609,
-            "Y": 10.799999,
-            "Z": -630.82086
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
-          "Mount": false
         },
         {
           "DataId": 1040635,
@@ -139,19 +96,7 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WaitForNpcAtPosition",
-          "Mount": false,
-          "StopDistance": 50,
           "NpcWaitDistance": 3
-        },
-        {
-          "Position": {
-            "X": 72.18486,
-            "Y": 10.799999,
-            "Z": -617.59485
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
-          "Mount": false
         },
         {
           "DataId": 1040635,
@@ -162,8 +107,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WaitForNpcAtPosition",
-          "Mount": false,
-          "StopDistance": 50,
           "NpcWaitDistance": 3
         },
         {
@@ -175,8 +118,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WaitForNpcAtPosition",
-          "Mount": false,
-          "StopDistance": 50,
           "NpcWaitDistance": 3
         },
         {
@@ -187,7 +128,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "WalkTo",
-          "Mount": false,
           "DelaySecondsAtStart": 8
         },
         {
@@ -198,9 +138,7 @@
             "Z": -589.2936
           },
           "TerritoryId": 958,
-          "InteractionType": "WaitForNpcAtPosition",
-          "Mount": false,
-          "StopDistance": 50
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1040636,
@@ -209,10 +147,8 @@
             "Y": 10.5,
             "Z": -589.3187
           },
-          "StopDistance": 4,
           "TerritoryId": 958,
           "InteractionType": "WalkTo",
-          "Mount": false,
           "DelaySecondsAtStart": 5
         }
       ]
@@ -226,7 +162,6 @@
             "Y": 10.5,
             "Z": -530.3922
           },
-          "StopDistance": 1,
           "TerritoryId": 958,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -246,7 +181,6 @@
             "Y": 10.5,
             "Z": -532.15845
           },
-          "StopDistance": 7,
           "TerritoryId": 958,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -270,8 +204,7 @@
             "Z": -418.57025
           },
           "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Tertium"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

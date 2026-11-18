@@ -14,9 +14,7 @@
             "Z": 57.083984
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,10 +29,8 @@
             "Z": -411.69516
           },
           "TerritoryId": 138,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2001270,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,
             {"High": 1}
           ]
@@ -47,10 +43,8 @@
             "Z": -435.93167
           },
           "TerritoryId": 138,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2001270,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,
             {"High": 4}
           ]
@@ -63,10 +57,8 @@
             "Z": -400.86206
           },
           "TerritoryId": 138,
-          "StopDistance": 1,
           "InteractionType": "UseItem",
           "ItemId": 2001270,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,
             {"High": 8}
           ]
@@ -79,7 +71,6 @@
             "Z": -389.19644
           },
           "TerritoryId": 138,
-          "StopDistance": 1,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2001270,
@@ -95,7 +86,6 @@
               "MinimumKillCount": 1
             }
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,
             {"High": 2}
           ]
@@ -113,9 +103,7 @@
             "Z": 57.083984
           },
           "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

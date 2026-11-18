@@ -13,8 +13,7 @@
             "Z": 102.92212
           },
           "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,8 +35,7 @@
               "Prompt": "TEXT_AKTKZG006_04281_Q1_000_000",
               "Answer": "TEXT_AKTKZG006_04281_A1_000_002"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -98,8 +96,7 @@
             "Z": 102.92212
           },
           "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

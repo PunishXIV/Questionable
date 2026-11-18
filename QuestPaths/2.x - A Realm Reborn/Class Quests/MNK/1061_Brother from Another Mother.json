@@ -20,8 +20,7 @@
             "Z": -51.163513
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,31 +35,13 @@
             "Z": 95.26196
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -231.99818,
-            "Y": -28.997791,
-            "Z": 123.01078
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Ul'dah] Goldsmiths' Guild",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ],
-          "Fly": true
-        },
         {
           "DataId": 2002439,
           "Position": {
@@ -104,10 +85,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
           "NextQuestId": 1062
         }
       ]

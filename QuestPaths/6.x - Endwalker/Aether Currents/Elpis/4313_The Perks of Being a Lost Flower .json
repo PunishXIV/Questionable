@@ -30,7 +30,6 @@
           },
           "TerritoryId": 961,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -67,8 +66,7 @@
             "Z": -97.21527
           },
           "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Poieten Oikos"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

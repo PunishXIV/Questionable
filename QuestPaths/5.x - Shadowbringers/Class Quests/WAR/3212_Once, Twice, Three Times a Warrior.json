@@ -15,8 +15,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_LUCKBC003_03212_Q1_000_000",
@@ -38,24 +36,13 @@
             "Z": 686.427
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 226.71358,
-            "Y": 8.000019,
-            "Z": 671.0062
-          },
-          "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
         {
           "DataId": 1030042,
           "Position": {
@@ -64,8 +51,7 @@
             "Z": -42.404846
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -82,7 +68,6 @@
           "TerritoryId": 135,
           "InteractionType": "Action",
           "Action": "Heavy Swing",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -95,7 +80,6 @@
           "TerritoryId": 135,
           "InteractionType": "Action",
           "Action": "Heavy Swing",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -108,7 +92,6 @@
           "TerritoryId": 135,
           "InteractionType": "Action",
           "Action": "Heavy Swing",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -124,8 +107,7 @@
             "Z": -42.404846
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -140,8 +122,7 @@
             "Z": -276.56976
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -173,9 +154,7 @@
             "Z": 74.47925
           },
           "TerritoryId": 137,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

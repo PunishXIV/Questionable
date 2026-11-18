@@ -13,7 +13,6 @@
             "Y": 50.749996,
             "Z": 273.9757
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
           "InteractionType": "AcceptQuest"
         }
@@ -60,11 +59,7 @@
             "Z": 123.00293
           },
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] True Vue",
-            "[Solution Nine] Neon Stein"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -78,7 +73,6 @@
             "Y": 50.749996,
             "Z": 186.05322
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
           "InteractionType": "CompleteQuest"
         }

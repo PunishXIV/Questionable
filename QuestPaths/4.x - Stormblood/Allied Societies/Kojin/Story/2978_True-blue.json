@@ -30,8 +30,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yanxia - Namai",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -53,8 +51,7 @@
             "Z": 316.15173
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Reunion"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,12 +66,7 @@
             "Z": 183.36768
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Pier #1"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,8 +81,7 @@
             "Z": -250.90417
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

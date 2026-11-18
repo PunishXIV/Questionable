@@ -13,27 +13,14 @@
             "Y": 70,
             "Z": 510.61267
           },
-          "StopDistance": 6,
           "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 611.34705,
-            "Y": 80.000015,
-            "Z": 626.28424
-          },
-          "TerritoryId": 621,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1039421,
           "Position": {
@@ -58,7 +45,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -70,7 +56,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -86,8 +71,7 @@
             "Z": 624.6891
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -103,7 +87,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -124,7 +107,6 @@
             "Y": 70,
             "Z": 511.0398
           },
-          "StopDistance": 5,
           "TerritoryId": 621,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4112

@@ -89,10 +89,8 @@
             "Y": 205.6815,
             "Z": 31.631958
           },
-          "StopDistance": 5,
           "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -17,18 +17,7 @@
 				"Z": 45.548096
 			},
 			"TerritoryId": 635,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Rhalgr's Reach",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					635
-					]
-				}
-			}
+			"InteractionType": "AcceptQuest"
 		}
 		]
 	},
@@ -62,13 +51,7 @@
 				"Z": 66.544556
 			},
 			"TerritoryId": 131,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Ul'dah",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Goldsmiths' Guild"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -85,12 +68,7 @@
 				"Z": -52.933594
 			},
 			"TerritoryId": 131,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Goldsmiths' Guild",
-			"[Ul'dah] Sapphire Avenue Exchange"
-			]
+			"InteractionType": "Interact"
 		},
 		{
 			"DataId": 1021157,
@@ -145,8 +123,7 @@
 				"Z": 45.548096
 			},
 			"TerritoryId": 635,
-			"InteractionType": "Interact",
-			"AetheryteShortcut": "Rhalgr's Reach"
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -179,8 +156,7 @@
 				"Z": 45.548096
 			},
 			"TerritoryId": 635,
-			"InteractionType": "CompleteQuest",
-			"AetheryteShortcut": "Rhalgr's Reach"
+			"InteractionType": "CompleteQuest"
 		}
 		]
 	}

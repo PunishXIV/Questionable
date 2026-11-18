@@ -14,8 +14,7 @@
             "Z": -494.481
           },
           "TerritoryId": 622,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +30,7 @@
           "TerritoryId": 622,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [7511],
-          "Fly": true
+          "KillEnemyDataIds": [7511]
         }
       ]
     },
@@ -47,8 +45,7 @@
             "Z": -289.987
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,8 +60,7 @@
             "Z": -494.481
           },
           "TerritoryId": 622,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

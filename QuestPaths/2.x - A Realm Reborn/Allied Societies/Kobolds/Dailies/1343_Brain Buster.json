@@ -14,9 +14,7 @@
             "Z": -183.76447
           },
           "TerritoryId": 180,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,9 +30,6 @@
           },
           "TerritoryId": 180,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true,
-          "Land": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -125,7 +120,6 @@
           },
           "TerritoryId": 180,
           "InteractionType": "Combat",
-          "StopDistance": 1,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             758
@@ -174,9 +168,7 @@
             "Z": -183.76447
           },
           "TerritoryId": 180,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

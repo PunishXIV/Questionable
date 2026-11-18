@@ -29,11 +29,7 @@
             "Z": -27.298462
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,11 +44,7 @@
             "Z": -96.75751
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] The Tribunal"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,11 +59,7 @@
             "Z": -10.635559
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Tribunal",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -86,11 +74,7 @@
             "Z": -66.14789
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] The Jeweled Crozier"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -104,7 +88,6 @@
             "Y": -20.03499,
             "Z": -66.11737
           },
-          "StopDistance": 5,
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 2229

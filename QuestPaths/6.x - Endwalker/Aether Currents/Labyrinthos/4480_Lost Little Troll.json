@@ -59,8 +59,7 @@
             "Z": -430.4723
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Archeion"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,7 +88,6 @@
             "Y": 185.65448,
             "Z": -729.67114
           },
-          "StopDistance": 1,
           "TerritoryId": 956,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
@@ -109,7 +107,6 @@
             "Y": 185.65448,
             "Z": -729.67114
           },
-          "StopDistance": 5,
           "TerritoryId": 956,
           "InteractionType": "CompleteQuest"
         }

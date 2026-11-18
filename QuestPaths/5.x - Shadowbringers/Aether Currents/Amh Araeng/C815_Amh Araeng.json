@@ -14,7 +14,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Amh Araeng - Twine",
           "SkipConditions": {
             "StepIf": {
               "AetherCurrentUnlocked": 2818259

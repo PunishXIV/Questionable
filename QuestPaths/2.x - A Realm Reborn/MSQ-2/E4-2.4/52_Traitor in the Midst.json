@@ -13,7 +13,6 @@
             "Y": -1.9957249,
             "Z": -45.700806
           },
-          "StopDistance": 7,
           "TerritoryId": 351,
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
@@ -61,8 +60,7 @@
             "Z": -111.92493
           },
           "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -30,8 +30,7 @@
           },
           "TerritoryId": 818,
           "InteractionType": "UseItem",
-          "ItemId": 2002836,
-          "Fly": true
+          "ItemId": 2002836
         }
       ]
     },
@@ -55,7 +54,6 @@
             "Y": 415.59628,     
             "Z": -513.87805 
           }, 
-          "StopDistance": 1,
           "TerritoryId": 818, 
           "InteractionType": "Combat",
           "ItemId": 2002837,
@@ -77,8 +75,7 @@
             "Z": -215.65582
           },
           "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

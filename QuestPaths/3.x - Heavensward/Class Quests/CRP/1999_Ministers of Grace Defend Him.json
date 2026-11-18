@@ -15,16 +15,7 @@
             "Z": 64.7135
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,11 +30,7 @@
             "Z": 23.727722
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -71,13 +58,7 @@
             "Z": 23.727722
           },
           "TerritoryId": 418,
-          "AetheryteShortcut": "Ishgard",
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -92,11 +73,7 @@
             "Z": 64.7135
           },
           "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

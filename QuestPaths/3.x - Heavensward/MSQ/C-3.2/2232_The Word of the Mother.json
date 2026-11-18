@@ -30,8 +30,7 @@
             "Z": 19.638367
           },
           "TerritoryId": 478,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -57,9 +56,7 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 463,
-          "Fly": true,
-          "StopDistance": 0.25
+          "TargetTerritoryId": 463
         },
         {
           "DataId": 1012138,
@@ -97,7 +94,6 @@
             "Y": 38.4364,
             "Z": 8.041443
           },
-          "StopDistance": 7,
           "TerritoryId": 463,
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [

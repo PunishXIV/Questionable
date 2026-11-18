@@ -10,7 +10,6 @@
           "TerritoryId": 180,
           "InteractionType": "EquipItem",
           "ItemId": 10462,
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -58,7 +57,6 @@
           },
           "TerritoryId": 180,
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -77,10 +75,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "NextQuestId": 1698
         }
       ]

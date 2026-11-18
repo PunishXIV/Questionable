@@ -13,13 +13,8 @@
             "Y": -17.97287,
             "Z": 180.3158
           },
-          "StopDistance": 5,
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },

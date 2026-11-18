@@ -123,14 +123,6 @@
           "description": "Set if pathfinding should stop closer or further away from the default stop distance",
           "minimum": 0.25
         },
-        "IgnoreDistanceToObject": {
-          "type": "boolean",
-          "description": "Most interactions with objects are checked for a Y (height) difference of 2 in-game units. If set to true, the game won't attempt to get any closer if the height difference is larger than this."
-        },
-        "RestartNavigationIfCancelled": {
-          "type": "boolean",
-          "description": "For some specific loading screen transitions (e.g. when entering/leaving the water through the portals in the ruby sea), setting this to 'false' means it won't re-attempt to move to the portal after the loading animation"
-        },
         "TerritoryId": {
           "type": "integer",
           "description": "The territory id associated with the location",
@@ -187,44 +179,6 @@
         "Disabled": {
           "description": "Whether this step is disabled (see SkipIf for more control)",
           "type": "boolean"
-        },
-        "DisableNavmesh": {
-          "description": "If true, will go to the position in a straight line instead of using pathfinding",
-          "type": "boolean"
-        },
-        "Mount": {
-          "type": [
-            "boolean",
-            "null"
-          ],
-          "description": "If true, will mount regardless of distance to position. If false, will unmount."
-        },
-        "Fly": {
-          "type": "boolean",
-          "description": "If true and flying is unlocked in a zone, will use a flight path"
-        },
-        "Land": {
-          "type": "boolean",
-          "description": "If true and flying, will attempt to land on the ground"
-        },
-        "Sprint": {
-          "type": [
-            "boolean",
-            "null"
-          ]
-        },
-        "AetheryteShortcut": {
-          "description": "The Aetheryte to teleport to (before moving)",
-          "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
-        },
-        "AethernetShortcut": {
-          "type": "array",
-          "description": "A pair of aethernet locations (from + to) to use as a shortcut",
-          "minItems": 2,
-          "maxItems": 2,
-          "items": {
-            "$ref": "https://qstxiv.github.io/schema/common-aethernetshard.json"
-          }
         },
         "ItemId": {
           "type": [
@@ -393,135 +347,6 @@
                     "NewGamePlus",
                     "NotNewGamePlus"
                   ]
-                }
-              },
-              "additionalProperties": false
-            },
-            "AetheryteShortcutIf": {
-              "type": "object",
-              "properties": {
-                "Never": {
-                  "type": "boolean"
-                },
-                "InSameTerritory": {
-                  "type": "boolean",
-                  "deprecated": true,
-                  "description": "No longer evaluated for aetheryte shortcuts; proximity/distance checks are used instead. Kept for backward compatibility with existing quest files."
-                },
-                "InTerritory": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer"
-                  }
-                },
-                "QuestsAccepted": {
-                  "type": "array",
-                  "items": {
-                    "type": [
-                      "number",
-                      "string"
-                    ]
-                  }
-                },
-                "QuestsCompleted": {
-                  "type": "array",
-                  "items": {
-                    "type": [
-                      "number",
-                      "string"
-                    ]
-                  }
-                },
-                "AetheryteLocked": {
-                  "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
-                },
-                "AetheryteUnlocked": {
-                  "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
-                },
-                "RequiredQuestVariablesNotMet": {
-                  "type": "boolean"
-                },
-                "NearPosition": {
-                  "type": "object",
-                  "properties": {
-                    "Position": {
-                      "$ref": "https://qstxiv.github.io/schema/common-vector3.json"
-                    },
-                    "MaximumDistance": {
-                      "type": "number"
-                    },
-                    "TerritoryId": {
-                      "type": "number"
-                    }
-                  },
-                  "required": [
-                    "Position",
-                    "MaximumDistance",
-                    "TerritoryId"
-                  ],
-                  "additionalProperties": false
-                },
-                "NotNearPosition": {
-                  "type": "object",
-                  "properties": {
-                    "Position": {
-                      "$ref": "https://qstxiv.github.io/schema/common-vector3.json"
-                    },
-                    "MaximumDistance": {
-                      "type": "number"
-                    },
-                    "TerritoryId": {
-                      "type": "number"
-                    }
-                  },
-                  "required": [
-                    "Position",
-                    "MaximumDistance",
-                    "TerritoryId"
-                  ],
-                  "additionalProperties": false
-                },
-                "Item": {
-                  "type": "object",
-                  "properties": {
-                    "NotInInventory": {
-                      "type": "boolean",
-                      "description": "Skip this aetheryte teleport if the item is NOT in inventory."
-                    }
-                  }
-                },
-                "ExtraCondition": {
-                  "type": "string",
-                  "enum": [
-                    "SkipFreeFantasia",
-                    "CostaDelSol",
-                    "NewGamePlus",
-                    "NotNewGamePlus"
-                  ]
-                }
-              },
-              "additionalProperties": false
-            },
-            "AethernetShortcutIf": {
-              "type": "object",
-              "properties": {
-                "Never": {
-                  "type": "boolean"
-                },
-                "InSameTerritory": {
-                  "type": "boolean"
-                },
-                "InTerritory": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer"
-                  }
-                },
-                "AetheryteLocked": {
-                  "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
-                },
-                "AetheryteUnlocked": {
-                  "$ref": "https://qstxiv.github.io/schema/common-aetheryte.json"
                 }
               },
               "additionalProperties": false

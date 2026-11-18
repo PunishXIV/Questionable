@@ -13,7 +13,6 @@
             "Y": 13.999993,
             "Z": 114.67151
           },
-          "StopDistance": 6,
           "TerritoryId": 963,
           "InteractionType": "AcceptQuest"
         }
@@ -49,16 +48,6 @@
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
-          "Position": {
-            "X": -277.7818,
-            "Y": 25.227219,
-            "Z": 423.6428
-          },
-          "TerritoryId": 958,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1042810,
           "Position": {
             "X": -276.41718,
@@ -82,8 +71,7 @@
             "Z": 430.56573
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -113,8 +101,7 @@
             "Z": 191.30237
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -128,7 +115,6 @@
             "Y": 34.7239,
             "Z": 203.32642
           },
-          "StopDistance": 5,
           "TerritoryId": 958,
           "InteractionType": "Interact"
         }
@@ -161,7 +147,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -183,8 +168,7 @@
             "Z": 575.7992
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -200,23 +184,12 @@
           },
           "TerritoryId": 956,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Aporia",
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
             }
           },
           "TargetTerritoryId": 956
-        },
-        {
-          "Position": {
-            "X": -431.53903,
-            "Y": -220.1193,
-            "Z": 301.76364
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 1042800,

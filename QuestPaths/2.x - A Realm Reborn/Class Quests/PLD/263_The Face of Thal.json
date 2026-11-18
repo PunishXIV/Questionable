@@ -15,18 +15,7 @@
             "Z": 39.81079
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,8 +30,7 @@
             "Z": -69.13867
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -110,8 +98,7 @@
             "Z": -126.51257
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -127,10 +114,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -156,12 +139,7 @@
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.4.21.1"
-          },
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ],
-          "Fly": true
+          }
         }
       ]
     },
@@ -177,10 +155,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
           "NextQuestId": 264
         }
       ]

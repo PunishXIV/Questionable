@@ -14,26 +14,14 @@
             "Y": -36.353825,
             "Z": 346.76123
           },
-          "StopDistance": 5,
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 593.2056,
-            "Y": 43.88314,
-            "Z": 304.65137
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1010228,
           "Position": {
@@ -64,11 +52,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "TargetTerritoryId": 129
         },
         {
           "DataId": 1009943,
@@ -77,7 +61,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 146

@@ -63,7 +63,6 @@
           "TerritoryId": 960,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1026,
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_AKTKMG115_04464_Q4_000_090",
@@ -101,7 +100,6 @@
             "Y": 0,
             "Z": 0.8086548
           },
-          "StopDistance": 5,
           "TerritoryId": 351,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,1],
@@ -114,7 +112,6 @@
             "Y": 0,
             "Z": 0.6560669
           },
-          "StopDistance": 5,
           "TerritoryId": 351,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -137,7 +134,6 @@
             "Y": 0,
             "Z": -5.8442383
           },
-          "StopDistance": 5,
           "TerritoryId": 351,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]

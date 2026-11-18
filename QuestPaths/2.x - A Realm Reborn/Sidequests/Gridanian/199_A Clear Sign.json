@@ -15,10 +15,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
           "$": "auto: issuer 1000172 (Paulemont)"
         }
       ]
@@ -35,11 +31,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo location -> 2000143 (dusty malmstone)"
         },
@@ -52,7 +43,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo location -> 2000144 (dusty malmstone)"
         }
@@ -70,11 +60,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
           "NextQuestId": 103,
           "$": "auto: todo turn-in -> 1000627 (Q'djawana)"
         }

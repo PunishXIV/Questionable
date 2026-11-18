@@ -13,11 +13,8 @@
             "Y": 70,
             "Z": 510.61267
           },
-          "StopDistance": 6,
           "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,11 +29,7 @@
             "Z": 25.558838
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,11 +44,7 @@
             "Z": 16.464417
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] The Chamber of Rule",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,7 +68,6 @@
             "Y": 4,
             "Z": -11.791445
           },
-          "StopDistance": 10,
           "TerritoryId": 131,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 2
@@ -101,7 +89,6 @@
             "Y": 4,
             "Z": -66.995674
           },
-          "StopDistance": 10,
           "TerritoryId": 131,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 2
@@ -123,7 +110,6 @@
             "Y": 4,
             "Z": -76.0361
           },
-          "StopDistance": 10,
           "TerritoryId": 131,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 2
@@ -177,13 +163,8 @@
             "Y": 12.789965,
             "Z": 47.394222
           },
-          "StopDistance": 0.5,
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Sapphire Avenue Exchange",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -198,11 +179,7 @@
             "Z": 25.558838
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] The Chamber of Rule"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -218,8 +195,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true,
           "NextQuestId": 4111
         }
       ]

@@ -13,7 +13,6 @@
             "Y": -19.725424,
             "Z": 203.72314
           },
-          "StopDistance": 7,
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest"
         }
@@ -30,11 +29,7 @@
             "Z": 12.405518
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] The For'ard Cabins",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,7 +74,6 @@
             "Y": 114.61811,
             "Z": 565.3314
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "Interact"
         }
@@ -110,7 +104,6 @@
             "Y": 119.49004,
             "Z": 148.76013
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "CompleteQuest"
         }

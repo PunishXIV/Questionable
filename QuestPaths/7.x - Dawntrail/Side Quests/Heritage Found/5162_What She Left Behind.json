@@ -13,22 +13,7 @@
             "Z": -581.0178
           },
           "TerritoryId": 1191,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -153.09375,
-                  "Y": 34.946026,
-                  "Z": -581.0178
-                },
-                "TerritoryId": 1191,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,8 +28,7 @@
             "Z": -637.2626
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,8 +43,7 @@
             "Z": -306.99628
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -75,8 +58,7 @@
             "Z": 228.34976
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - Yyasulani Station"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -90,7 +72,6 @@
             "Y": 34.94368,
             "Z": -581.23145
           },
-          "StopDistance": 5,
           "TerritoryId": 1191,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5163

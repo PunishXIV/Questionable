@@ -13,7 +13,6 @@
             "Y": 36.19769,
             "Z": -162.4018
           },
-          "StopDistance": 7,
           "TerritoryId": 819,
           "InteractionType": "AcceptQuest"
         }
@@ -22,14 +21,6 @@
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "TerritoryId": 819,
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] Tessellation (Lakeland)"
-          ],
-          "InteractionType": "None"
-        },
         {
           "Position": {
             "X": 55.589294,
@@ -80,26 +71,14 @@
             "Y": 9.572956,
             "Z": 704.6769
           },
-          "StopDistance": 1,
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -578.07544,
-            "Y": -28.413673,
-            "Z": 749.037
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2010138,
           "Position": {
@@ -110,15 +89,6 @@
           "TerritoryId": 813,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-        },
-        {
-          "Position": {
-            "X": -621.1358,
-            "Y": -29.51201,
-            "Z": 744.7277
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2010137,
@@ -136,16 +106,6 @@
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": -667.5838,
-            "Y": -1.974393,
-            "Z": 698.4002
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
         {
           "Position": {
             "X": -573.45654,
@@ -168,7 +128,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
@@ -184,7 +143,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -205,7 +163,6 @@
             "Y": 414.78137,
             "Z": -857.02295
           },
-          "StopDistance": 5,
           "TerritoryId": 818,
           "InteractionType": "CompleteQuest"
         }

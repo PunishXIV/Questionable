@@ -7,18 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": 427.9154,
-            "Y": 33.637783,
-            "Z": -113.15743
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1027711,
           "Position": {
             "X": 429.862,
@@ -26,26 +14,13 @@
             "Z": -114.855
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 206.10101,
-            "Y": 19.048128,
-            "Z": 123.162636
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
         {
           "DataId": 2010659,
           "Position": {
@@ -61,17 +36,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -61.72873,
-            "Y": -19.20542,
-            "Z": 305.18402
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
-          "Fly": true
-        },
         {
           "DataId": 1031413,
           "Position": {
@@ -105,9 +69,7 @@
             "Z": -114.855
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

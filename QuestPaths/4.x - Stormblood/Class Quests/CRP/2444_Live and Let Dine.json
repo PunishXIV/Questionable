@@ -14,13 +14,7 @@
             "Z": -50.247986
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [628]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,13 +29,7 @@
             "Z": -168.47485
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - Namai",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [614]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -99,16 +87,6 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Position": {
-            "X": 477.62292,
-            "Y": 58.267426,
-            "Z": -174.17065
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1020913,
           "Position": {
             "X": 480.94897,
@@ -165,13 +143,7 @@
             "Z": 34.92565
           },
           "TerritoryId": 132,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [132]
-            }
-          }
+          "InteractionType": "WalkTo"
         }
       ]
     },

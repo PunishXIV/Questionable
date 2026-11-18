@@ -13,10 +13,8 @@
             "Y": 24.391697,
             "Z": -2.8840332
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 71.854614
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,10 +44,7 @@
             "Z": 53.72693
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "StopDistance": 9,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

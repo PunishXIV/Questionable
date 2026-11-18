@@ -15,74 +15,13 @@
             "Z": 39.81079
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "$": "Aethernet - Gladiator to Central Thanalan",
-          "TerritoryId": 131,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteUnlocked": "Central Thanalan - Black Brush Station",
-              "InTerritory": [
-                141,
-                130
-              ]
-            },
-            "StepIf": {
-              "AetheryteUnlocked": "Central Thanalan - Black Brush Station",
-              "InTerritory": [
-                141,
-                130
-              ]
-            }
-          }
-        },
-        {
-          "$": "Aethernet - Ul'dah to Central Thanalan (if you left ul'dah after this step)",
-          "TerritoryId": 130,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteUnlocked": "Central Thanalan - Black Brush Station",
-              "InTerritory": [
-                141,
-                131
-              ]
-            },
-            "StepIf": {
-              "AetheryteUnlocked": "Central Thanalan - Black Brush Station",
-              "InTerritory": [
-                141,
-                131
-              ]
-            }
-          }
-        },
         {
           "$": "Unlock Central Thanalan Taxi Stand",
           "DataId": 1001607,
@@ -121,15 +60,7 @@
           "TerritoryId": 141,
           "InteractionType": "WalkTo",
           "TargetTerritoryId": 145,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteUnlocked": "Eastern Thanalan - Camp Drybone",
-              "InTerritory": [
-                145,
-                141
-              ]
-            },
             "StepIf": {
               "AetheryteUnlocked": "Eastern Thanalan - Camp Drybone",
               "InTerritory": [
@@ -209,18 +140,7 @@
             "Z": 39.81079
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -236,11 +156,7 @@
           },
           "TerritoryId": 130,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AethernetShortcut": [
-            "[Ul'dah] Gladiators' Guild",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -256,10 +172,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Gladiators' Guild"
-          ],
           "NextQuestId": 263
         }
       ]

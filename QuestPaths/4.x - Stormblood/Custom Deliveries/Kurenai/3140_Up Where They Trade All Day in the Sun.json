@@ -22,26 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 322.1539,
-            "Y": -121.22571,
-            "Z": -314.2446
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": 22.288645,
-            "Y": -196.2301,
-            "Z": -155.5739
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "$": "Sui-no-Sato, NE outside"
-        },
-        {
           "DataId": 1025966,
           "Position": {
             "X": -10.51355,
@@ -49,8 +29,7 @@
             "Z": -95.07898
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,12 +44,7 @@
             "Z": 876.0051
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,12 +59,7 @@
             "Z": -143.63324
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Rakuza District"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -105,8 +74,7 @@
             "Z": -306.0197
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

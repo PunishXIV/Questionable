@@ -42,11 +42,7 @@
             "Z": 35.01941
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -82,18 +78,6 @@
               "$": "Slay little ladybugs as an archer"
             }
           ],
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                148
-              ]
-            }
-          },
           "CompletionQuestVariablesFlags": [
             {"Low": 3}, {"High": 3},
           null,null,null,null
@@ -133,13 +117,8 @@
             "Y": 0.9999819,
             "Z": 35.01941
           },
-          "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ],
           "NextQuestId": 46
         }
       ]

@@ -14,8 +14,7 @@
             "Z": -240.238
           },
           "TerritoryId": 134,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -244.164
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,7 +45,6 @@
           },
           "TerritoryId": 134,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
           "$": "auto: todo area 21y from lua EOBJECT4 -> 2001246 (strewn debris)"
         },
@@ -60,7 +57,6 @@
           },
           "TerritoryId": 134,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 8}],
           "$": "auto: todo area 18y from lua EOBJECT5 -> 2001247 (strewn debris)"
         },
@@ -73,7 +69,6 @@
           },
           "TerritoryId": 134,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"Low": 4}],
           "$": "auto: todo area 20y from lua EOBJECT6 -> 2001248 (strewn debris)"
         },
@@ -86,7 +81,6 @@
           },
           "TerritoryId": 134,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2000350,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo area 25y from lua EOBJECT1 -> 2001243 (cumbersome rock)"
@@ -100,7 +94,6 @@
           },
           "TerritoryId": 134,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2000350,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo area 24y from lua EOBJECT2 -> 2001244 (cumbersome rock)"
@@ -114,7 +107,6 @@
           },
           "TerritoryId": 134,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2000350,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
           "$": "auto: todo area 26y from lua EOBJECT3 -> 2001245 (cumbersome rock)"
@@ -132,8 +124,7 @@
             "Z": -240.238
           },
           "TerritoryId": 134,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

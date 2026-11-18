@@ -30,12 +30,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ],
-          "Fly": true,
           "TargetTerritoryId": 764
         },
         {
@@ -108,7 +102,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
           "NextQuestId": 3165
         }
       ]

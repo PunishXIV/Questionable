@@ -17,22 +17,7 @@
             "Z": -81.34589
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 702.38794,
-                  "Y": 21.798542,
-                  "Z": -81.34589
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -51,8 +36,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [11159, 11159],
           "$": "QW: 0 0 0 0 0 0 -> QW: 16 2(2) 0 0 0 64",
-          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
           "DataId": 2010683,
@@ -91,8 +75,7 @@
             "Z": -81.34589
           },
           "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

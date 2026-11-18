@@ -28,7 +28,6 @@
             "Y": 10.800001,
             "Z": -427.75616
           },
-          "StopDistance": 5,
           "TerritoryId": 958,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
@@ -48,7 +47,6 @@
             "Y": -36.65,
             "Z": -246.44855
           },
-          "StopDistance": 5,
           "TerritoryId": 958,
           "InteractionType": "CompleteQuest"
         }

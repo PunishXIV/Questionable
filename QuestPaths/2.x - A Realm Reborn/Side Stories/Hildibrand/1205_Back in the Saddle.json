@@ -22,14 +22,12 @@
       "Sequence": 1,
       "Steps": [
         {
-          "AetheryteShortcut": "Ul'dah",
           "DataId": 1004333,
           "Position": {
             "X": -101.854004,
             "Y": 4.0131226,
             "Z": -98.95477
           },
-          "StopDistance": 7,
           "TerritoryId": 130,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]

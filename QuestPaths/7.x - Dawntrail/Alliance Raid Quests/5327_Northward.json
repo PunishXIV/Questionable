@@ -47,12 +47,7 @@
             "Z": -348.95862
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Brightploom Post"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,8 +62,7 @@
             "Z": -104.57007
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -84,7 +78,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -96,7 +89,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Mount": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -107,8 +99,7 @@
             "Z": 367.87964
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -123,8 +114,7 @@
             "Z": 347.219
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -140,7 +130,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 5328
         }
       ]

@@ -13,23 +13,7 @@
             "Z": -889.34155
           },
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -1.8158569,
-                  "Y": 100.46835,
-                  "Z": -889.34155
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,9 +28,7 @@
             "Z": -883.69574
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "StopDistance": 0.25,
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1027671,
@@ -56,8 +38,7 @@
             "Z": -879.9115
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1027673,
@@ -67,9 +48,7 @@
             "Z": -841.7639
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "StopDistance": 0.25,
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -84,8 +63,7 @@
             "Z": -889.34155
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -102,7 +80,6 @@
           "TerritoryId": 816,
           "$": "Leveled players kill mob too quickly for CombatItemUse.Condition to trigger",
           "InteractionType": "WalkTo",
-          "Fly": true,
           "Comment": "Manual: Bring echevore to <49% health, then use sack",
           "KillEnemyDataIds": [
             10246
@@ -111,20 +88,6 @@
             "Condition": "Health%",
             "Value": 49,
             "ItemId": 2002661
-          },
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -306.4134,
-                  "Y": 67.26528,
-                  "Z": 653.3375
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
           }
         }
       ]
@@ -140,23 +103,7 @@
             "Z": -889.34155
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -1.8158569,
-                  "Y": 100.46835,
-                  "Z": -889.34155
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

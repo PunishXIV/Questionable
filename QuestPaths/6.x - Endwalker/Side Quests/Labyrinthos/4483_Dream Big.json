@@ -17,10 +17,7 @@
             "Z": -104.234
           },
           "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,11 +33,7 @@
           },
           "TerritoryId": 956,
           "InteractionType": "Emote",
-          "Emote": "pet",
-          "StopDistance": 5,
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true,
-          "Land": true
+          "Emote": "pet"
         }
       ]
     },
@@ -57,7 +50,6 @@
           "TerritoryId": 956,
           "InteractionType": "Emote",
           "Emote": "pet",
-          "StopDistance": 5,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -79,10 +71,7 @@
             "Z": 8.59076
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2012570,
@@ -92,9 +81,7 @@
             "Z": 101.16489
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2012569,
@@ -104,9 +91,7 @@
             "Z": 167.273
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -122,9 +107,6 @@
           },
           "TerritoryId": 956,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true,
-          "Land": true,
           "DialogueChoices": [
             {
               "Type": "List",

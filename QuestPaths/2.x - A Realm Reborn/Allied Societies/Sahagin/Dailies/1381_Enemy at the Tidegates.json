@@ -14,9 +14,7 @@
             "Z": 37.247192
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,8 +32,7 @@
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             2835
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -50,9 +47,7 @@
             "Z": 37.247192
           },
           "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

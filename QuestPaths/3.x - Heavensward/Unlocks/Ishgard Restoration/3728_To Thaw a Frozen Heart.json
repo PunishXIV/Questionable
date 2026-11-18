@@ -14,19 +14,7 @@
             "Z": 8.132996
           },
           "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -64,11 +52,7 @@
           },
           "ItemId": 52254,
           "ItemCount": 2,
-          "Comment": "Buy standard spectrum dye",
-          "AethernetShortcut": [
-            "[Firmament] The New Nest",
-            "[Firmament] The Mendicant's Court"
-          ]
+          "Comment": "Buy standard spectrum dye"
         },
         {
           "DataId": 1032844,
@@ -78,11 +62,7 @@
             "Z": 76.920654
           },
           "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The New Nest"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -98,10 +78,6 @@
           },
           "TerritoryId": 886,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] The New Nest",
-            "[Firmament] The Mendicant's Court"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -123,11 +99,7 @@
             "Z": 4.196167
           },
           "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The Mattock"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -143,10 +115,6 @@
           },
           "TerritoryId": 886,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Firmament] The Mattock",
-            "[Firmament] Saint Roelle's Dais"
-          ],
           "NextQuestId": 3837
         }
       ]

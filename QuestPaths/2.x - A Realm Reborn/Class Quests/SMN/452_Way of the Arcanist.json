@@ -8,19 +8,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": -335.8204,
-            "Y": 12.899764,
-            "Z": 4.017052
-          },
-          "TerritoryId": 129,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
-        },
-        {
           "DataId": 1000895,
           "Position": {
             "X": -335.74432,

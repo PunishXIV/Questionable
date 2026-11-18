@@ -15,10 +15,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] The Arcadion",
-            "[Solution Nine] Neon Stein"
-          ],
           "TargetTerritoryId": 1207
         },
         {
@@ -28,7 +24,6 @@
             "Y": -4.1909516E-08,
             "Z": 6.42395
           },
-          "StopDistance": 5,
           "TerritoryId": 1207,
           "InteractionType": "AcceptQuest"
         }
@@ -38,23 +33,12 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": -363.22934,
-            "Y": 20.162338,
-            "Z": -90.19407
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
-        },
-        {
           "DataId": 1051495,
           "Position": {
             "X": -365.28577,
             "Y": 20.14268,
             "Z": -88.51758
           },
-          "StopDistance": 5,
           "TerritoryId": 1190,
           "InteractionType": "Interact"
         }
@@ -63,17 +47,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 302.1455,
-            "Y": -15.629961,
-            "Z": -516.2348
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan",
-          "Fly": true
-        },
         {
           "DataId": 1046988,
           "Position": {
@@ -113,7 +86,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -132,7 +104,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -144,7 +115,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -156,7 +126,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -186,7 +155,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"

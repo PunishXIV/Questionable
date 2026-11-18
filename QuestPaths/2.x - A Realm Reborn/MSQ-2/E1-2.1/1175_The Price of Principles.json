@@ -7,27 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 145,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
           "Position": {
             "X": -492.96475,
             "Y": 20.999884,
@@ -35,7 +14,6 @@
           },
           "TerritoryId": 140,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "$": "Avoid walking around Waking Sands table",
           "SkipConditions": { "StepIf": { "InTerritory": [212] } }
         },
@@ -131,7 +109,6 @@
             "Y": -3.0000012,
             "Z": -52.71997
           },
-          "StopDistance": 7,
           "TerritoryId": 212,
           "InteractionType": "Interact",
           "$": "33 16  0 0  0 192 -> 49 17  0 0  0 224",
@@ -144,7 +121,6 @@
             "Y": -3.0000012,
             "Z": -52.262207
           },
-          "StopDistance": 7,
           "TerritoryId": 212,
           "InteractionType": "Interact",
           "$": "49 17  0 0  0 224 -> 65 17  16 0  0 240",

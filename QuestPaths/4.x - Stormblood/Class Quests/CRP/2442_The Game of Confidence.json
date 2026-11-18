@@ -14,13 +14,7 @@
             "Z": 56.839844
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [132]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,13 +29,7 @@
             "Z": -69.0166
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [628]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,11 +44,7 @@
             "Z": 85.34363
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Kogane Dori Markets"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -111,10 +95,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Kogane Dori Markets",
-            "[Kugane] Aetheryte Plaza"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CLSWDK630_02442_Q1_000_000",

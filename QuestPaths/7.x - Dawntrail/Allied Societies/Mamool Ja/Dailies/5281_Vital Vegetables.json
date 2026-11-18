@@ -17,9 +17,7 @@
             "Z": 729.4575
           },
           "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,20 +32,7 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
-          "Fly": true,
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -669.549,
-                  "Y": -165.500,
-                  "Z": 374.399
-                },
-                "TerritoryId": 1189,
-                "MaximumDistance": 900
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -109,9 +94,7 @@
             "Z": 729.4575
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

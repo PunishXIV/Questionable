@@ -14,10 +14,7 @@
             "Z": -216.96419
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut":"Rak'tika - Fanow",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,9 +29,6 @@
             "Z": -189.18097
           },
           "TerritoryId": 817,
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true,
           "InteractionType": "Interact"
         }
       ]
@@ -51,8 +45,7 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Action",
-          "Action": "Peculiar Light",
-          "Fly": true
+          "Action": "Peculiar Light"
         }
       ]
     },
@@ -67,10 +60,7 @@
             "Z": -216.96419
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut":"Rak'tika - Fanow",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

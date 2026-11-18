@@ -33,7 +33,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Snipe",
-          "Fly": true,
           "Comment": "Use the blowgun on the razor-tusked swine"
         }
       ]
@@ -49,8 +48,7 @@
             "Z": 262.62
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,8 +63,7 @@
             "Z": 164.296
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -81,8 +78,7 @@
             "Z": 286.103
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,14 +14,7 @@
             "Z": -106.21808
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [130] }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,11 +29,7 @@
             "Z": -8.438293
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,8 +58,7 @@
             "Z": 141.22217
           },
           "TerritoryId": 140,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

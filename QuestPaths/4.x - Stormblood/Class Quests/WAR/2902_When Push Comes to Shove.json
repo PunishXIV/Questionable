@@ -13,10 +13,8 @@
             "Y": 7.999984,
             "Z": 686.427
           },
-          "StopDistance": 5,
           "TerritoryId": 135,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 197.52808
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -53,8 +49,7 @@
           "KillEnemyDataIds": [
             7500,
             7501
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -74,8 +69,7 @@
           "KillEnemyDataIds": [
             7502,
             7503
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -95,8 +89,7 @@
           "KillEnemyDataIds": [
             7502,
             7503
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -111,8 +104,7 @@
             "Z": 642.7251
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -127,8 +119,7 @@
             "Z": 467.73462
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -142,10 +133,8 @@
             "Y": 7.999984,
             "Z": 686.427
           },
-          "StopDistance": 5,
           "TerritoryId": 135,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
           "NextQuestId": 2903
         }
       ]

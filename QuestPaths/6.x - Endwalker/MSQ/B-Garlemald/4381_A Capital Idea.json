@@ -30,10 +30,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] The Baldesion Annex"
-          ],
           "TargetTerritoryId": 987
         },
         {
@@ -60,7 +56,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -82,9 +77,7 @@
             "Z": 525.2003
           },
           "TerritoryId": 621,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

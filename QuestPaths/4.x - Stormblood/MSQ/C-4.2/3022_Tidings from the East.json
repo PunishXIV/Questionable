@@ -13,10 +13,8 @@
             "Y": 13.02367,
             "Z": -90.53424
           },
-          "StopDistance": 1,
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,12 +30,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 639,
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ]
+          "TargetTerritoryId": 639
         }
       ]
     },
@@ -52,11 +45,7 @@
             "Z": -212.75659
           },
           "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Kugane] The Ruby Bazaar",
-            "[Kugane] Rakuza District"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

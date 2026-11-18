@@ -14,8 +14,7 @@
             "Z": -67.73486
           },
           "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +30,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
-          "Fly": true,
           "TargetTerritoryId": 919
         },
         {
@@ -64,7 +61,6 @@
             "Y": 41.01997,
             "Z": 30.289062
           },
-          "StopDistance": 7,
           "TerritoryId": 919,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -87,7 +83,6 @@
             "Y": 0,
             "Z": 106.46216
           },
-          "StopDistance": 7,
           "TerritoryId": 991,
           "InteractionType": "WaitForManualProgress",
           "Comment": "Interact with Gaius, then complete brief minigame",
@@ -111,7 +106,6 @@
             "Y": 41,
             "Z": 17.56311
           },
-          "StopDistance": 7,
           "TerritoryId": 919,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4762

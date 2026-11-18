@@ -28,13 +28,11 @@
             "Z": -421.95776
           },
           "TerritoryId": 818,
-          "StopDistance": 0.5,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             11145
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -49,9 +47,7 @@
             "Z": -246.72314
           },
           "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Tempest - Ondo Cups"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -66,8 +62,7 @@
             "Z": -170.15338
           },
           "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

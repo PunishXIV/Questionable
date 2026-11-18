@@ -29,8 +29,7 @@
             "Z": -595.36127
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -43,15 +42,13 @@
             "Y": 86.3551,
             "Z": -419.18634
           },
-          "StopDistance": 0.5,
           "TerritoryId": 1191,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             18476,
             18477
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -81,8 +78,7 @@
             "Z": -575.3109
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "InteractionType": "Interact"
         }
       ]
     },

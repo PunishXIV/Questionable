@@ -56,8 +56,7 @@
             "Z": -618.7686
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -70,7 +69,6 @@
             "Y": -168,
             "Z": -623.01324
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -80,7 +78,6 @@
               "Z": -628.15826
             }
           },
-          "Mount": false,
           "Comment": "Platform 1"
         },
         {
@@ -211,7 +208,6 @@
             "Y": -154.37555,
             "Z": -689.26526
           },
-          "StopDistance": 3,
           "TerritoryId": 959,
           "InteractionType": "Interact",
           "DialogueChoices": [

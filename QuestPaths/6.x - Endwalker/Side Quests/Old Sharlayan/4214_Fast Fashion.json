@@ -13,11 +13,6 @@
             "Z": -143.29755
           },
           "TerritoryId": 962,
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
             {
@@ -54,7 +49,6 @@
             "Y": 21.927185,
             "Z": -151.29321
           },
-          "StopDistance": 0.25,
           "TerritoryId": 962,
           "InteractionType": "Emote",
           "Emote": "battlestance"
@@ -142,12 +136,7 @@
             "Z": -143.29755
           },
           "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

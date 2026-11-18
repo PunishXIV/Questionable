@@ -15,11 +15,7 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ]
+          "TargetTerritoryId": 433
         },
         {
           "DataId": 1017721,
@@ -28,7 +24,6 @@
             "Y": 0.022254245,
             "Z": -1.3275757
           },
-          "StopDistance": 5,
           "TerritoryId": 433,
           "InteractionType": "AcceptQuest"
         }
@@ -45,9 +40,7 @@
             "Z": -260.85297
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,8 +55,7 @@
             "Z": -306.508
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -92,7 +84,6 @@
             "Y": 331.81714,
             "Z": -308.8579
           },
-          "StopDistance": 7,
           "TerritoryId": 155,
           "InteractionType": "CompleteQuest"
         }

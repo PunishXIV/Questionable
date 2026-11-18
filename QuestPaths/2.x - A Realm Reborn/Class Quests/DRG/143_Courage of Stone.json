@@ -15,16 +15,7 @@
             "Z": -270.34418
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [133]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,16 +28,10 @@
             "Y": 43.200996,
             "Z": -32.464188
           },
-          "StopDistance": 0.5,
           "TerritoryId": 148,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "FinishCombatIfAny",
-          "KillEnemyDataIds": [],
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ]
+          "KillEnemyDataIds": []
         },
         {
           "DataId": 142,
@@ -55,7 +40,6 @@
             "Y": 44.169823,
             "Z": -42.008118
           },
-          "StopDistance": 0.5,
           "TerritoryId": 148,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -67,8 +51,7 @@
             null,
             null,
             null
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 2000967,
@@ -87,22 +70,10 @@
       "Steps": [
         {
           "Position": {
-            "X": 211.82181,
-            "Y": 23.457642,
-            "Z": 163.4502
-          },
-          "TerritoryId": 148,
-          "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "Fly": true
-        },
-        {
-          "Position": {
             "X": 211.82294,
             "Y": 23.458103,
             "Z": 157.57333
           },
-          "StopDistance": 0.5,
           "TerritoryId": 148,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -124,7 +95,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -162,10 +132,6 @@
             "Z": -270.34418
           },
           "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 55
         }

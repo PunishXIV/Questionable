@@ -13,7 +13,6 @@
             "Y": 10.014645,
             "Z": -11.703674
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
           "InteractionType": "AcceptQuest"
         }
@@ -30,11 +29,7 @@
             "Z": 10.72699
           },
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Residential Sector",
-            "[Solution Nine] True Vue"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,7 +43,6 @@
             "Y": 70.00006,
             "Z": 9.811523
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
           "InteractionType": "Emote",
           "Emote": "rally"
@@ -65,7 +59,6 @@
             "Y": 70.00006,
             "Z": 10.421875
           },
-          "StopDistance": 7,
           "TerritoryId": 1186,
           "InteractionType": "Interact"
         }

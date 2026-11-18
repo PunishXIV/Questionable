@@ -14,8 +14,7 @@
             "Z": -354.75702
           },
           "TerritoryId": 140,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western Thanalan - Horizon"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,15 +43,12 @@
             "Y": 52.140015,
             "Z": 29.06836
           },
-          "StopDistance": 0.25,
           "TerritoryId": 140,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2848
-          ],
-          "Fly": true,
-          "AetheryteShortcut": "Western Thanalan - Horizon"
+          ]
         }
       ]
     },
@@ -67,9 +63,7 @@
             "Z": -173.23572
           },
           "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Western Thanalan - Horizon"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -84,11 +78,7 @@
             "Z": -80.03363
           },
           "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

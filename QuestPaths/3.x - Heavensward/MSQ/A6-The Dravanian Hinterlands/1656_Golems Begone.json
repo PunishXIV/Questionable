@@ -28,7 +28,6 @@
             "Y": 205.62819,
             "Z": 26.901611
           },
-          "StopDistance": 7,
           "TerritoryId": 478,
           "InteractionType": "Interact"
         }
@@ -84,11 +83,7 @@
             "Z": 23.483582
           },
           "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Idyllshire] West Idyllshire",
-            "[Idyllshire] Aetheryte Plaza"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

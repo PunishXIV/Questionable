@@ -14,8 +14,6 @@
           },
           "TerritoryId": 814,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kholusia - Tomra",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -45,8 +43,7 @@
             "ItemId": 2003071,
             "Condition": "Health%",
             "Value": 30
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -61,8 +58,7 @@
             "Z": -171.03839
           },
           "TerritoryId": 814,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

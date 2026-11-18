@@ -24,8 +24,7 @@
               "Prompt": "TEXT_AKTKZF001_04256_Q1_000_004",
               "Answer": "TEXT_AKTKZF001_04256_A1_000_001"
             }
-          ],
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          ]
         }
       ]
     },
@@ -49,10 +48,7 @@
               "RewardItemId": 2003214,
               "RewardItemCount": 1
             }
-          ],
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
@@ -67,8 +63,7 @@
             "Z": -220.50812
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

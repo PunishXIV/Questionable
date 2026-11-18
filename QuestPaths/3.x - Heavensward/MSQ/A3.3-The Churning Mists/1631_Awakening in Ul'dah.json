@@ -29,11 +29,7 @@
             "Z": 85.31323
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,7 +43,6 @@
             "Y": 37.760002,
             "Z": 78.812744
           },
-          "StopDistance": 5,
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest"
         }

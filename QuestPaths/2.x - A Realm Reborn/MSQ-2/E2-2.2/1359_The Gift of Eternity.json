@@ -27,15 +27,13 @@
             "Y": -42.30963,
             "Z": -253.10411
           },
-          "StopDistance": 0.25,
           "TerritoryId": 138,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             2890,
             2891
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -48,7 +46,6 @@
             "Y": -40.771305,
             "Z": -323.02054
           },
-          "StopDistance": 0.25,
           "TerritoryId": 138,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -57,8 +54,7 @@
             2893,
             2894,
             2895
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -71,7 +67,6 @@
             "Y": -41.52895,
             "Z": -327.2867
           },
-          "StopDistance": 0.25,
           "TerritoryId": 138,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -79,24 +74,13 @@
             2896,
             2897,
             2898
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": -405.274,
-            "Y": -32.782516,
-            "Z": -296.08218
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1008706,
           "Position": {
@@ -119,7 +103,6 @@
             "Y": -35.708496,
             "Z": -400.50354
           },
-          "StopDistance": 5,
           "TerritoryId": 138,
           "InteractionType": "CompleteQuest"
         }

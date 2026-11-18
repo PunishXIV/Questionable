@@ -14,8 +14,7 @@
             "Z": 7.2174683
           },
           "TerritoryId": 759,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Doman Enclave"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,21 +29,7 @@
             "Z": -81.31531
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - Namai",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 442.2522,
-                  "Y": 68.02853,
-                  "Z": -81.31531
-                },
-                "TerritoryId": 614,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -82,7 +67,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -90,16 +74,6 @@
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": 625.23627,
-            "Y": 81.04776,
-            "Z": -212.65506
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1038491,
           "Position": {

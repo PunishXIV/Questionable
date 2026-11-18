@@ -77,25 +77,13 @@
             "Z": -313.34406
           },
           "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": 201.67809,
-            "Y": 7.1558266,
-            "Z": -137.17564
-          },
-          "TerritoryId": 815,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1031869,
           "Position": {
@@ -117,7 +105,6 @@
             "Y": -19.54202,
             "Z": -4.2170615
           },
-          "StopDistance": 0.5,
           "TerritoryId": 815,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -137,7 +124,6 @@
             "Y": -18.544811,
             "Z": -15.793152
           },
-          "StopDistance": 7,
           "TerritoryId": 815,
           "InteractionType": "Interact"
         }
@@ -146,16 +132,6 @@
     {
       "Sequence": 7,
       "Steps": [
-        {
-          "Position": {
-            "X": 201.67809,
-            "Y": 7.1558266,
-            "Z": -137.17564
-          },
-          "TerritoryId": 815,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1031869,
           "Position": {
@@ -180,9 +156,7 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 891,
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "TargetTerritoryId": 891
         },
         {
           "DataId": 1032030,
@@ -222,9 +196,7 @@
             "Z": 573.8766
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

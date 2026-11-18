@@ -14,8 +14,7 @@
             "Z": 26.41333
           },
           "TerritoryId": 148,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,7 +29,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Jump",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "JumpDestination": {
             "Position": {
               "X": -67.083466,
@@ -63,7 +61,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -87,7 +84,6 @@
             "Z": -43.595093
           },
           "TerritoryId": 148,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "InteractionType": "CompleteQuest"
         }
       ]

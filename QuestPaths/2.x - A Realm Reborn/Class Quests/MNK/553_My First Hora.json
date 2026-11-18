@@ -42,8 +42,7 @@
             "Z": -42.404846
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -71,11 +70,7 @@
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null],
-          "$": "0 0  0 0  0 0 -> 19 0  0 0  0 0",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ]
+          "$": "0 0  0 0  0 0 -> 19 0  0 0  0 0"
         },
         {
           "Position": {
@@ -143,7 +138,6 @@
             "Z": -42.404846
           },
           "TerritoryId": 130,
-          "AetheryteShortcut": "Ul'dah",
           "InteractionType": "CompleteQuest",
           "NextQuestId": 554
         }

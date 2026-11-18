@@ -13,7 +13,6 @@
             "Y": -1.9999962,
             "Z": 88.12085
           },
-          "StopDistance": 5,
           "TerritoryId": 963,
           "InteractionType": "AcceptQuest"
         }
@@ -30,13 +29,7 @@
             "Z": 305.80603
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Tessellation (Lakeland)"
-          ],
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -52,11 +45,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Cabinet of Curiosity"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -92,7 +80,6 @@
             "Y": -37.7,
             "Z": -208.85028
           },
-          "StopDistance": 6,
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest"
         }

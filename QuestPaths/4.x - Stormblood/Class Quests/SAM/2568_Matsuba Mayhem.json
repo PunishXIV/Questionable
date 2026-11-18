@@ -14,12 +14,7 @@
             "Z": -157.61047
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,11 +29,7 @@
             "Z": 67.03284
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] Kogane Dori Markets"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -98,11 +89,7 @@
             "Z": 144.79285
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Kogane Dori Markets",
-            "[Kugane] Thavnairian Consulate"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -118,11 +105,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AethernetShortcut": [
-            "[Kugane] Thavnairian Consulate",
-            "[Kugane] Rakuza District"
-          ]
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },

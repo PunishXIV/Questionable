@@ -13,10 +13,8 @@
             "Y": 23.164677,
             "Z": -415.36584
           },
-          "StopDistance": 7,
           "TerritoryId": 958,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "$": "you should be right next to it, but if you aren't..."
         }
       ]
@@ -43,7 +41,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "there's an underpass flypathing that /looks/ like it should get stuck, but doesn't. not sure if WoL size and/or mount would make it stuck; YMMV"
         }
       ]
@@ -59,8 +56,7 @@
             "Z": -590.08167
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -98,7 +94,6 @@
               "Answer": "TEXT_AKTKZD104_04505_A1_000_002"
             }
           ],
-          "AetheryteShortcut": "Garlemald - Tertium",
           "NextQuestId": 4506
         }
       ]

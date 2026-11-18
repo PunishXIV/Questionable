@@ -43,8 +43,7 @@
             "Z": -281.26953
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,7 +90,6 @@
             "Y": 1.6214006,
             "Z": 594.72034
           },
-          "StopDistance": 5,
           "TerritoryId": 817,
           "InteractionType": "Interact"
         }
@@ -100,51 +98,6 @@
     {
       "Sequence": 6,
       "Steps": [
-        {
-          "Position": {
-            "X": -385.29327,
-            "Y": 1.622011,
-            "Z": 516.6794
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -390.73163,
-            "Y": 3.5300047,
-            "Z": 512.3785
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -384.37488,
-            "Y": 6.260351,
-            "Z": 512.5016
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -391.96292,
-            "Y": 6.3778677,
-            "Z": 509.45285
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -398.71173,
-            "Y": 6.5935116,
-            "Z": 505.39233
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 2010064,
           "Position": {
@@ -155,16 +108,6 @@
           "TerritoryId": 817,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818283
-        },
-        {
-          "Position": {
-            "X": -405.7318,
-            "Y": 1.622011,
-            "Z": 512.249
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Mount": true
         },
         {
           "DataId": 1029189,

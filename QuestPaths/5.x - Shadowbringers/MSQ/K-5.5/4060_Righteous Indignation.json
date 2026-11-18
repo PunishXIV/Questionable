@@ -28,10 +28,8 @@
             "Y": -41.153625,
             "Z": 424.58215
           },
-          "StopDistance": 1,
           "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,7 +43,6 @@
             "Y": -41.403988,
             "Z": 426.44385
           },
-          "StopDistance": 5,
           "TerritoryId": 402,
           "InteractionType": "Interact"
         }
@@ -62,8 +59,7 @@
             "Z": 96.75745
           },
           "TerritoryId": 402,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,7 +75,6 @@
           },
           "TerritoryId": 402,
           "InteractionType": "Interact",
-          "Fly": true,
           "$.1": "QuestVariables if done first: 1 16 0 0 0 64",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
@@ -92,8 +87,6 @@
           },
           "TerritoryId": 402,
           "InteractionType": "Interact",
-          "Mount": true,
-          "Fly": true,
           "$.1": "QuestVariables if done after [1]: 2 16 0 0 0 96",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
@@ -122,7 +115,6 @@
           },
           "TerritoryId": 402,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -144,8 +136,7 @@
             "Z": -20.981201
           },
           "TerritoryId": 402,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

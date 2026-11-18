@@ -14,8 +14,7 @@
             "Z": -16.617126
           },
           "TerritoryId": 137,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -64,8 +63,7 @@
             "Z": -16.617126
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,8 +78,7 @@
             "Z": 455.89368
           },
           "TerritoryId": 137,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

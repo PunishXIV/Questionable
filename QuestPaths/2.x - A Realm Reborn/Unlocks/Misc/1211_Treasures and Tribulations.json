@@ -14,7 +14,6 @@
             "Z": -17.71582
           },
           "TerritoryId": 137,
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -23,24 +22,12 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": -71.69795,
-            "Y": 46.029457,
-            "Z": 178.39331
-          },
-          "StopDistance": 0.5,
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1005527,
           "Position": {
             "X": -68.2536,
             "Y": 46.91121,
             "Z": 178.2406
           },
-          "StopDistance": 5,
           "TerritoryId": 137,
           "InteractionType": "Interact"
         }
@@ -65,10 +52,8 @@
             "Y": -3.0527444,
             "Z": 165.27039
           },
-          "StopDistance": 0.5,
           "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

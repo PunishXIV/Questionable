@@ -13,7 +13,6 @@
             "Y": -166.21887,
             "Z": 2.1209717
           },
-          "StopDistance": 7,
           "TerritoryId": 1189,
           "InteractionType": "AcceptQuest"
         }
@@ -29,7 +28,6 @@
             "Y": -166.18016,
             "Z": 2.1209717
           },
-          "StopDistance": 5,
           "TerritoryId": 1189,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -52,7 +50,6 @@
             "Y": -166.37114,
             "Z": -6.1799316
           },
-          "StopDistance": 7,
           "TerritoryId": 1189,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
@@ -64,7 +61,6 @@
             "Y": -166.20668,
             "Z": -3.2807007
           },
-          "StopDistance": 7,
           "TerritoryId": 1189,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -81,7 +77,6 @@
             "Y": -166.21887,
             "Z": 2.1209717
           },
-          "StopDistance": 7,
           "TerritoryId": 1189,
           "InteractionType": "Interact"
         }
@@ -113,7 +108,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -195,16 +189,6 @@
       "Sequence": 5,
       "Steps": [
         {
-          "Position": {
-            "X": -136.90475,
-            "Y": -215.01514,
-            "Z": 330.17505
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1047669,
           "Position": {
             "X": -96.87958,
@@ -219,15 +203,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -26.8908,
-            "Y": -164.33757,
-            "Z": 40.24882
-          },
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1047622,
           "Position": {

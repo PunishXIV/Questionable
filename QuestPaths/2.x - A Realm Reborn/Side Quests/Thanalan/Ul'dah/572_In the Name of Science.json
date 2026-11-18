@@ -14,11 +14,7 @@
             "Z": 60.53247
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,11 +31,7 @@
           "TerritoryId": 140,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "ComplexCombatData": [{ "DataId": 351, "MinimumKillCount": 5 }],
-          "AethernetShortcut": [
-            "[Ul'dah] Thaumaturges' Guild",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ]
+          "ComplexCombatData": [{ "DataId": 351, "MinimumKillCount": 5 }]
         }
       ]
     },
@@ -54,11 +46,7 @@
             "Z": 60.53247
           },
           "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

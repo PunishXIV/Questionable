@@ -14,8 +14,7 @@
             "Z": -71.70221
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 7.7667847
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,9 +49,7 @@
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "Notes": ["Galeripper attack is not dodged"]
-          },
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true
+          }
         }
       ]
     },
@@ -86,8 +82,7 @@
             "Z": -71.488525
           },
           "TerritoryId": 153,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

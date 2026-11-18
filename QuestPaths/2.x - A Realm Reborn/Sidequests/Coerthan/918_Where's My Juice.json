@@ -17,10 +17,7 @@
             "Z": -253.13805
           },
           "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,11 +33,7 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Emote",
-          "Emote": "doubt",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ]
+          "Emote": "doubt"
         },
         {
           "TerritoryId": 131,

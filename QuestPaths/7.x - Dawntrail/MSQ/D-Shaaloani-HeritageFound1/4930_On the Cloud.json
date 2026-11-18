@@ -29,8 +29,7 @@
             "Z": -494.98743
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -121,15 +120,6 @@
       "Sequence": 6,
       "Steps": [
         {
-          "Position": {
-            "X": 230.06555,
-            "Y": 67.24928,
-            "Z": -473.94547
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1047428,
           "Position": {
             "X": 248.70679,
@@ -177,7 +167,6 @@
             "Y": -2.5286822E-06,
             "Z": -0.5340576
           },
-          "StopDistance": 5,
           "TerritoryId": 1171,
           "InteractionType": "CompleteQuest"
         }

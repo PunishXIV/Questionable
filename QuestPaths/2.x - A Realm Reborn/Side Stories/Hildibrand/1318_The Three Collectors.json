@@ -13,7 +13,6 @@
             "Y": 23.113976,
             "Z": -367.8188
           },
-          "StopDistance": 5,
           "TerritoryId": 140,
           "InteractionType": "AcceptQuest"
         }
@@ -23,8 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true,
           "DataId": 1008739,
           "Position": {
             "X": 176.71472,
@@ -77,8 +74,7 @@
             "Z": 378.80518
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,8 +89,7 @@
             "Z": 479.69775
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -121,7 +116,6 @@
             "Y": 207.33582,
             "Z": 475.33374
           },
-          "StopDistance": 7,
           "TerritoryId": 155,
           "InteractionType": "Interact"
         }
@@ -131,28 +125,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "TerritoryId": 145,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "InTerritory": [212],
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
-          "Fly": true,
           "DataId": 1008788,
           "Position": {
             "X": -421.46948,

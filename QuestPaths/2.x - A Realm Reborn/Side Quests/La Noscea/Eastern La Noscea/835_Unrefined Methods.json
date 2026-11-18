@@ -14,9 +14,7 @@
             "Z": 455.95483
           },
           "TerritoryId": 137,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +29,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2000651,
           "GroundTarget": true,
@@ -57,7 +54,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2000651,
           "GroundTarget": true,
@@ -83,7 +79,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2000651,
           "GroundTarget": true,
@@ -114,9 +109,7 @@
             "Z": 455.95483
           },
           "TerritoryId": 137,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

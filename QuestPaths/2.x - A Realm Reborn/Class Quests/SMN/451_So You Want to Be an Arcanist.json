@@ -16,10 +16,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

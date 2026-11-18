@@ -92,15 +92,6 @@
             "Z": 23.111439
           },
           "TerritoryId": 622,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 65.04901,
-            "Y": 1.9869974,
-            "Z": 23.111439
-          },
-          "TerritoryId": 622,
           "InteractionType": "Dive",
           "DelaySecondsAtStart": 2
         },
@@ -212,8 +203,7 @@
             "Z": 70.66455
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne"
+          "InteractionType": "Interact"
         }
       ]
     },

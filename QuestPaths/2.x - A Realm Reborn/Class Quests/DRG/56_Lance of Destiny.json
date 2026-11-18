@@ -15,18 +15,7 @@
             "Z": -270.34418
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,7 +29,6 @@
             "Y": 16.189758,
             "Z": -273.64008
           },
-          "StopDistance": 4,
           "TerritoryId": 133,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
@@ -61,7 +49,6 @@
             "Y": 15.900381,
             "Z": -270.34418
           },
-          "StopDistance": 7,
           "TerritoryId": 133,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -102,14 +89,12 @@
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "ComplexCombatData": [
             {
               "DataId": 15,
               "MinimumKillCount": 10
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -124,8 +109,7 @@
             "Z": 29.007324
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -161,10 +145,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
           "NextQuestId": 438
         }
       ]

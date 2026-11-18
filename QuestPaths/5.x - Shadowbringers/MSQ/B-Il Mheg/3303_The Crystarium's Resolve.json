@@ -13,7 +13,6 @@
             "Y": -37.7,
             "Z": -209.0028
           },
-          "StopDistance": 5,
           "TerritoryId": 819,
           "InteractionType": "AcceptQuest"
         }
@@ -29,7 +28,6 @@
             "Y": -37.7,
             "Z": -210.2846
           },
-          "StopDistance": 5,
           "TerritoryId": 819,
           "InteractionType": "Interact"
         }
@@ -46,11 +44,7 @@
             "Z": -136.52252
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Cabinet of Curiosity",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,11 +59,7 @@
             "Z": -51.438232
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Crystalline Mean",
-            "[Crystarium] The Dossal Gate"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -99,11 +89,7 @@
             "Z": -73.777466
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] Temenos Rookery"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

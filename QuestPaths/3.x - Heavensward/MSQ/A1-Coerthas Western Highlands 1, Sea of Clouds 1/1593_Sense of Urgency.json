@@ -29,7 +29,6 @@
           },
           "TerritoryId": 401,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -61,15 +60,6 @@
           "InteractionType": "Emote",
           "Emote": "psych",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-        },
-        {
-          "Position": {
-            "X": -368.08698,
-            "Y": -185.05266,
-            "Z": 792.836
-          },
-          "TerritoryId": 401,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1012360,

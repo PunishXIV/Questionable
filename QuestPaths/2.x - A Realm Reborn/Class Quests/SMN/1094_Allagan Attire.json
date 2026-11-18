@@ -15,18 +15,7 @@
             "Z": -246.87573
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,9 +30,7 @@
             "Z": -465.72064
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,8 +49,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             1948
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -85,17 +71,6 @@
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": 495.98267,
-            "Y": -2.6789598,
-            "Z": -473.95493
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
         {
           "DataId": 1006790,
           "Position": {
@@ -130,16 +105,6 @@
     {
       "Sequence": 6,
       "Steps": [
-        {
-          "Position": {
-            "X": 372.27008,
-            "Y": -4.9949923,
-            "Z": -482.91302
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1006791,
           "Position": {
@@ -182,8 +147,7 @@
             "Z": -465.72064
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -203,10 +167,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "NextQuestId": 1095
         }
       ]

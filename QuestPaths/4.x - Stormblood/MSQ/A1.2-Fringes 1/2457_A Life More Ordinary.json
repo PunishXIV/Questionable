@@ -14,8 +14,7 @@
             "Z": -758.053
           },
           "TerritoryId": 620,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -59,7 +58,6 @@
             "Y": 118.15579,
             "Z": -719.96643
           },
-          "StopDistance": 5,
           "TerritoryId": 620,
           "InteractionType": "CompleteQuest"
         }

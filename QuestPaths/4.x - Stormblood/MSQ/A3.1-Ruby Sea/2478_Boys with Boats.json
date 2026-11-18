@@ -33,16 +33,6 @@
           "AetherCurrentId": 2818178
         },
         {
-          "Position": {
-            "X": 375.51163,
-            "Y": 9.2976055,
-            "Z": 788.4051
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 2007848,
           "Position": {
             "X": 150.46924,
@@ -64,7 +54,6 @@
             "Y": -0.5,
             "Z": 499.32092
           },
-          "StopDistance": 7,
           "TerritoryId": 613,
           "InteractionType": "Interact"
         }
@@ -79,7 +68,6 @@
             "Y": 10.638865,
             "Z": 792.4622
           },
-          "StopDistance": 0.5,
           "TerritoryId": 613,
           "InteractionType": "Jump",
           "JumpDestination": {

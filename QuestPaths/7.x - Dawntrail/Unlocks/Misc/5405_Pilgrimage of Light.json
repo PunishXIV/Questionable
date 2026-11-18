@@ -13,9 +13,7 @@
             "Z": -23.8804
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 3,
-          "AetheryteShortcut": "Crystarium"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,12 +28,7 @@
             "Z": -136.0647
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Cabinet of Curiosity"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,9 +43,7 @@
             "Z": -699.54987
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,9 +58,7 @@
             "Z": -869.4133
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -84,9 +73,7 @@
             "Z": -777.0962
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -101,22 +88,7 @@
             "Z": -772.245
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 3,
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 424.119,
-                  "Y": 89.4291,
-                  "Z": -772.245
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -28,33 +28,14 @@
             "Y": 4.357494,
             "Z": 0.7476196
           },
-          "StopDistance": 5,
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Baldesion Annex"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -350.9551,
-            "Y": 18.999998,
-            "Z": 56.043774
-          },
-          "TerritoryId": 962,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Baldesion Annex",
-            "[Old Sharlayan] The Studium"
-          ]
-        },
         {
           "DataId": 1039581,
           "Position": {
@@ -79,23 +60,12 @@
           },
           "TerritoryId": 956,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Aporia",
           "TargetTerritoryId": 956,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
             }
           }
-        },
-        {
-          "Position": {
-            "X": -431.53903,
-            "Y": -220.1193,
-            "Z": 301.76364
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 1039582,
@@ -105,8 +75,7 @@
             "Z": 298.39014
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Fly": false
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -121,9 +90,7 @@
             "Z": 603.41797
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

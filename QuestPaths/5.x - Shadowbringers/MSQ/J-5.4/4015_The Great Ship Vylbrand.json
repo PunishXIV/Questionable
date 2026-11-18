@@ -15,7 +15,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "TargetTerritoryId": 198,
           "SkipConditions": {"StepIf": {"InTerritory": [198]}}
         },
@@ -42,47 +41,13 @@
             "Z": -243.15253
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 112.33268,
-            "Y": 23.437105,
-            "Z": -609.04865
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 125.817085,
-            "Y": 23.503817,
-            "Z": -718.88574
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 143.67847,
-            "Y": 24.069574,
-            "Z": -642.77527
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1,
-          "Fly": true
-        },
         {
           "DataId": 1035401,
           "Position": {
@@ -109,7 +74,6 @@
             "Y": 64.39152,
             "Z": -241.32147
           },
-          "StopDistance": 5,
           "TerritoryId": 180,
           "InteractionType": "CompleteQuest"
         }

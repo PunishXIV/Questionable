@@ -14,7 +14,6 @@
             "Z": -9.170715
           },
           "TerritoryId": 351,
-          "AetheryteShortcut": "Mor Dhona",
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -31,9 +30,7 @@
             "Z": 522.88086
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -78,8 +75,7 @@
             "Z": -503.19678
           },
           "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

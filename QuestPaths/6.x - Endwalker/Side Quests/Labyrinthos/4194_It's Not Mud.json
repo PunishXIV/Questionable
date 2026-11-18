@@ -17,26 +17,13 @@
             "Z": -93.4299
           },
           "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 735.042,
-            "Y": 170.636,
-            "Z": -414.633
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
         {
           "DataId": 2011814,
           "Position": {
@@ -46,19 +33,7 @@
           },
           "TerritoryId": 956,
           "InteractionType": "Interact",
-          "DelaySecondsAtStart": 1,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 837.705,
-            "Y": 171.405,
-            "Z": -477.745
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
+          "DelaySecondsAtStart": 1
         },
         {
           "DataId": 2011815,
@@ -69,19 +44,7 @@
           },
           "TerritoryId": 956,
           "InteractionType": "Interact",
-          "DelaySecondsAtStart": 1,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 843.608,
-            "Y": 177.07,
-            "Z": -386.455
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
+          "DelaySecondsAtStart": 1
         },
         {
           "DataId": 2011816,
@@ -92,8 +55,7 @@
           },
           "TerritoryId": 956,
           "InteractionType": "Interact",
-          "DelaySecondsAtStart": 1,
-          "Mount": false
+          "DelaySecondsAtStart": 1
         }
       ]
     },
@@ -108,9 +70,7 @@
             "Z": -93.4299
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

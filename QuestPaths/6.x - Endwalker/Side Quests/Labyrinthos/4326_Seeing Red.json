@@ -36,8 +36,7 @@
             "ItemId": 2003316,
             "Condition": "Health%",
             "Value": 50
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -52,9 +51,7 @@
             "Z": -78.14148
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

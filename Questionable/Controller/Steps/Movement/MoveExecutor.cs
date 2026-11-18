@@ -20,7 +20,6 @@ internal sealed class MoveExecutor(MovementController movementController, IObjec
             movementController.NavigateTo(EMovementType.Quest, Task.DataId, Task.Destination, new()
             {
                 StopDistance = Task.StopDistance,
-                VerticalStopDistance = Task.IgnoreDistanceToObject ? float.MaxValue : null,
             });
             return true;
         }

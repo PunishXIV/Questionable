@@ -13,7 +13,6 @@
             "Y": 9.842161,
             "Z": -441.21466
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "AcceptQuest"
         }
@@ -110,8 +109,7 @@
           },
           "TerritoryId": 1188,
           "InteractionType": "Snipe",
-          "Comment": "Inspect Eye, Carrying Pole and Tail",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+          "Comment": "Inspect Eye, Carrying Pole and Tail"
         }
       ]
     },
@@ -125,7 +123,6 @@
             "Y": 9.773315,
             "Z": -537.0718
           },
-          "StopDistance": 7,
           "TerritoryId": 1188,
           "InteractionType": "CompleteQuest"
         }

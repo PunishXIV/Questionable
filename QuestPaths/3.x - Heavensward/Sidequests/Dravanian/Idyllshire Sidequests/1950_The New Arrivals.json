@@ -15,7 +15,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: issuer 1012133 (Midnight Dew)"
         }
       ]
@@ -32,7 +31,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo location -> 1012134 (Notched Bone)"
         }
       ]
@@ -49,7 +47,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: lua ACTOR3 -> 1013640 (adventure-dreaming porter); hands over ITEM0=2001797"
         },
@@ -62,10 +59,7 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
-          "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza", "[Idyllshire] Prologue Gate (Western Hinterlands)"]
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
           "DataId": 1014341,
@@ -76,10 +70,7 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
-          "AethernetShortcut": ["[Idyllshire] Aetheryte Plaza", "[Idyllshire] Prologue Gate (Western Hinterlands)"]
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         }
       ]
     },
@@ -95,7 +86,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo turn-in -> 1012134 (Notched Bone)"
         }
       ]

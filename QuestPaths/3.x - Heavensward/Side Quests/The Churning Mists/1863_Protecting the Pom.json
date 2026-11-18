@@ -27,10 +27,8 @@
             "Y": -20.632738,
             "Z": 181.941
           },
-          "StopDistance": 0.25,
           "TerritoryId": 400,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             3999
@@ -65,7 +63,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 1864
         }
       ]

@@ -15,17 +15,6 @@
 					},
 					"TerritoryId": 141,
 					"InteractionType": "AcceptQuest",
-					"Fly": true,
-					"AetheryteShortcut": "Ul'dah",
-					"AethernetShortcut": [
-						"[Ul'dah] Aetheryte Plaza",
-						"[Ul'dah] Gate of Thal (Central Thanalan)"
-					],
-					"SkipConditions": {
-						"AetheryteShortcutIf": {
-							"InTerritory": [141]
-						}
-					},
 					"$":"you could swap this shortcut out for black brush station, just figured it worked once."
 				}
 			]
@@ -42,7 +31,6 @@
 					},
 					"TerritoryId": 397,
 					"InteractionType": "Interact",
-					"AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
 					"CompletionQuestVariablesFlags": [null, null, null, null, null, 32],
 					"$": "0 0 0 0 0 0 -> 1 0 0 0 0 32"
 				},
@@ -54,9 +42,7 @@
             "Z": 770.0725
           },
           "TerritoryId": 397,
-          "StopDistance": 1,
-					"InteractionType": "Interact",
-					"Fly": true,
+          "InteractionType": "Interact",
 					"CompletionQuestVariablesFlags": [null, null, null, null, null, 128],
 					"$": "1 0 0 0 0 32 -> 2 0 0 0 0 160"
 				},
@@ -69,7 +55,6 @@
 					},
 					"TerritoryId": 397,
 					"InteractionType": "Interact",
-					"Fly": true,
 					"CompletionQuestVariablesFlags": [null, null, null, null, null, 64],
 					"$": "if done as second step, 1 0 0 0 0 32 -> 2 0 0 0 0 96"
 				}
@@ -86,8 +71,7 @@
 						"Z": 658.0757
 					},
 					"TerritoryId": 397,
-					"InteractionType": "Interact",
-					"Fly": true
+					"InteractionType": "Interact"
 				}
 			]
 		},
@@ -103,7 +87,6 @@
 					"TerritoryId": 397,
 					"InteractionType": "Combat",
 					"EnemySpawnType": "AutoOnEnterArea",
-					"Fly": true,
 					"KillEnemyDataIds": [5043, 4619],
 					"CompletionQuestVariablesFlags": [
 						{ "Low": 3 },
@@ -138,7 +121,6 @@
 					},
 					"TerritoryId": 397,
 					"InteractionType": "CompleteQuest",
-					"AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
 					"NextQuestId": 2034
 				}
 			]

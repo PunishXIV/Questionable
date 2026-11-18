@@ -14,9 +14,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -38,11 +35,8 @@
             "Y": 56.113926,
             "Z": 236.25537
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -55,7 +49,6 @@
             "Y": 63.10759,
             "Z": -378.01178
           },
-          "StopDistance": 1,
           "TerritoryId": 612,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -65,8 +58,6 @@
               "CompletionQuestVariablesFlags": [1,null,null,null,null,null]
             }
           ],
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               16
             ],null,null,null]
@@ -90,7 +81,6 @@
             "Y": 94.91285,
             "Z": -332.41785
           },
-          "StopDistance": 1,
           "TerritoryId": 612,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -100,8 +90,6 @@
               "CompletionQuestVariablesFlags": [1,null,null,null,null,null]
             }
           ],
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               32
             ],null,null,null]
@@ -134,7 +122,6 @@
               "CompletionQuestVariablesFlags": [1,null,null,null,null,null]
             }
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               48
             ],null,null,null]
@@ -165,9 +152,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -189,10 +173,8 @@
             "Y": 56.113926,
             "Z": 236.25537
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

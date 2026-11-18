@@ -41,9 +41,7 @@
             "Z": -388.8457
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -71,9 +69,7 @@
             "Z": -388.8457
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -101,9 +97,7 @@
             "Z": -388.8457
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -131,9 +125,7 @@
             "Z": -388.8457
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -148,9 +140,7 @@
             "Z": -388.8457
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -165,8 +155,7 @@
             "Z": -388.8457
           },
           "TerritoryId": 141,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

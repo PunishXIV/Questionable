@@ -14,9 +14,7 @@
             "Z": -357.3816
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,7 +30,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "RequiredQuestVariables": [
             null,
             null,
@@ -66,7 +63,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "RequiredQuestVariables": [
             null,
             null,
@@ -100,7 +96,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "RequiredQuestVariables": [
             null,
             null,
@@ -134,7 +129,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "RequiredQuestVariables": [
             null,
             null,
@@ -168,7 +162,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -194,7 +187,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "RequiredQuestVariables": [
             null,
             null,
@@ -249,7 +241,6 @@
             null,
             { "Low": 2 }
           ],
-          "Fly": true,
           "ItemId": 2001148
         },
         {
@@ -277,7 +268,6 @@
             null,
             { "Low": 8 }
           ],
-          "Fly": true,
           "ItemId": 2001148
         },
         {
@@ -305,7 +295,6 @@
             null,
             { "High": 2 }
           ],
-          "Fly": true,
           "ItemId": 2001148
         },
         {
@@ -333,7 +322,6 @@
             null,
             { "High": 1 }
           ],
-          "Fly": true,
           "ItemId": 2001148
         },
         {
@@ -361,7 +349,6 @@
             null,
             { "High": 8 }
           ],
-          "Fly": true,
           "ItemId": 2001148
         },
         {
@@ -389,7 +376,6 @@
             null,
             { "High": 4 }
           ],
-          "Fly": true,
           "ItemId": 2001148
         },
         {
@@ -417,7 +403,6 @@
             null,
             { "Low": 4 }
           ],
-          "Fly": true,
           "ItemId": 2001148
         }
       ]
@@ -433,9 +418,7 @@
             "Z": -357.3816
           },
           "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

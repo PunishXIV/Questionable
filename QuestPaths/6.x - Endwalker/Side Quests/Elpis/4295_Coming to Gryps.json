@@ -13,9 +13,7 @@
             "Z": 588.1588
           },
           "TerritoryId": 961,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Elpis - Twelve Wonders",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -52,9 +50,7 @@
             "Z": 588.1588
           },
           "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Twelve Wonders",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,10 +15,6 @@
           },
           "TerritoryId": 886,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
           "SkipConditions": {
             "StepIf": {
               "NotNamePlateIconId": [60091]
@@ -47,7 +43,6 @@
             "Y": -16.000002,
             "Z": 170.61108
           },
-          "StopDistance": 5,
           "TerritoryId": 886,
           "InteractionType": "Interact",
           "SkipConditions": {
@@ -55,15 +50,6 @@
               "NotNamePlateIconId": [60091]
             }
           }
-        },
-        {
-          "Position": {
-            "X": 39.29597,
-            "Y": -16.000002,
-            "Z": 140.2944
-          },
-          "TerritoryId": 886,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1031680,
@@ -102,7 +88,6 @@
             "Y": -16,
             "Z": 138.99438
           },
-          "StopDistance": 7,
           "TerritoryId": 886,
           "InteractionType": "Interact",
           "SkipConditions": {
@@ -206,10 +191,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
         {
@@ -232,10 +213,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Jeweled Crozier"
-          ],
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         }
       ]
@@ -252,10 +229,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] The Brume"
-          ],
           "TargetTerritoryId": 886
         },
         {

@@ -14,8 +14,7 @@
             "Z": 7.2174683
           },
           "TerritoryId": 759,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Doman Enclave"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,11 +28,8 @@
             "Y": 1.1992621,
             "Z": -365.56042
           },
-          "StopDistance": 1,
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,7 +44,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -86,7 +81,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -101,10 +95,8 @@
             "Y": 1.1992621,
             "Z": -365.56042
           },
-          "StopDistance": 1,
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -150,7 +142,6 @@
           },
           "TerritoryId": 759,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Doman Enclave",
           "NextQuestId": 4122
         }
       ]

@@ -21,9 +21,7 @@
             "Z": -445.3679
           },
           "TerritoryId": 156,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -38,7 +36,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Instruction",
-          "Fly": true,
           "Comment": "Remove gear, or use an underleveled class.\nComplete Trial Leve to continue"
         }
       ]

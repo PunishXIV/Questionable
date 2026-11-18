@@ -26,17 +26,11 @@
             "Y": 0.80940175,
             "Z": -773.5188
           },
-          "StopDistance": 1,
           "TerritoryId": 1189,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Tuliyollal",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17663
-          ],
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Dirigible Landing (Yak T'el)"
           ]
         }
       ]
@@ -51,7 +45,6 @@
             "Y": 0.81595546,
             "Z": -770.19916
           },
-          "StopDistance": 7,
           "TerritoryId": 1189,
           "InteractionType": "Interact"
         }
@@ -68,9 +61,7 @@
             "Z": -404.22675
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,7 +15,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: issuer 1012134 (Notched Bone)"
         }
       ]
@@ -32,12 +31,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             4024
@@ -57,12 +50,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "UseItem",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
           "ItemId": 2001773
         }
       ]
@@ -79,7 +66,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo location -> 1012134 (Notched Bone); hands over ITEM1=2001774"
         }
       ]
@@ -95,13 +81,7 @@
             "Z": -173.805
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -117,7 +97,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo location -> 1012134 (Notched Bone)"
         }
       ]
@@ -134,7 +113,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "UseItem",
-          "AetheryteShortcut": "Idyllshire",
           "ItemId": 2001776,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo location -> 1012134 (Notched Bone); use item ITEM3=2001776 on it"
@@ -166,7 +144,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo turn-in -> 1012134 (Notched Bone)"
         }
       ]

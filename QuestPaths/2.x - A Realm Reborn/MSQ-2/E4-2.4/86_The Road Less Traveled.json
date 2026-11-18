@@ -22,16 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": -430.21158,
-            "Y": 265.1,
-            "Z": -212.42732
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1009984,
           "Position": {
             "X": -431.1742,
@@ -54,9 +44,7 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "$": "Camp Dragonhead, door to Haurchefant",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "$": "Camp Dragonhead, door to Haurchefant"
         },
         {
           "DataId": 1006384,
@@ -82,7 +70,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "CompleteQuest",
-          "Mount": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",

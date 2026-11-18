@@ -15,7 +15,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: issuer 1019524 (Lucinne)"
         }
       ]
@@ -32,8 +31,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo location -> 2008074 (destination)"
         },
         {
@@ -45,7 +42,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 2008075 (destination)"
         },
         {
@@ -57,7 +53,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 2008076 (destination)"
         },
         {
@@ -69,7 +64,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 2008077 (destination)"
         }
       ]
@@ -86,7 +80,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo turn-in -> 1019524 (Lucinne)"
         }
       ]

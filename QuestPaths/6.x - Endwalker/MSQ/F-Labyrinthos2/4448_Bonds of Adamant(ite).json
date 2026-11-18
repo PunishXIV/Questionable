@@ -22,17 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 5.4520116,
-            "Y": -28.723352,
-            "Z": -42.992764
-          },
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 2012226,
           "Position": {
             "X": -11.6427,
@@ -77,8 +66,7 @@
             "Z": 301.93018
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Aporia"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -114,7 +102,6 @@
             "Y": -191.11913,
             "Z": 301.71655
           },
-          "StopDistance": 7,
           "TerritoryId": 956,
           "InteractionType": "Interact"
         }

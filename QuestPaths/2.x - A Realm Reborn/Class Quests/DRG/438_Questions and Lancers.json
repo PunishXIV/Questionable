@@ -15,18 +15,7 @@
             "Z": -270.34418
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,11 +29,8 @@
             "Y": 24.30847,
             "Z": 392.56873
           },
-          "StopDistance": 2,
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,7 +45,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -93,10 +78,8 @@
             "Y": 24.30847,
             "Z": 392.56873
           },
-          "StopDistance": 2,
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -111,8 +94,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Quarrymill",
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -128,7 +109,6 @@
             "Z": -81.34589
           },
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Quarrymill",
           "InteractionType": "Interact"
         }
       ]
@@ -160,8 +140,7 @@
           },
           "TerritoryId": 153,
           "InteractionType": "UseItem",
-          "ItemId": 2000232,
-          "Fly": true
+          "ItemId": 2000232
         }
       ]
     },
@@ -176,7 +155,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -207,8 +185,7 @@
             "Z": 173.05249
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -239,8 +216,7 @@
               "DataId": 17,
               "MinimumKillCount": 6
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -275,7 +251,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {"StepIf": {"Flying": "Locked"}}
         },
         {
@@ -301,10 +276,6 @@
             "Z": -270.34418
           },
           "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 439
         }

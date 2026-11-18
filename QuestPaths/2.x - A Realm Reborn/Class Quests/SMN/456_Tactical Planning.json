@@ -15,11 +15,7 @@
             "Z": 9.994568
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -38,7 +34,6 @@
           "KillEnemyDataIds": [
             22
           ],
-          "AetheryteShortcut": "Western La Noscea - Swiftperch",
           "CompletionQuestVariablesFlags": [
             {"Low": 3},
           null,null,null,null,null]
@@ -74,11 +69,7 @@
             "Z": 9.994568
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -109,9 +100,7 @@
           },
           "TerritoryId": 134,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -125,7 +114,6 @@
             "Y": 47.27536,
             "Z": -262.31793
           },
-          "StopDistance": 5,
           "TerritoryId": 134,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -150,10 +138,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ],
           "NextQuestId": 1103
         }
       ]

@@ -14,8 +14,7 @@
             "Z": -114.21387
           },
           "TerritoryId": 1190,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,8 +31,7 @@
           "TerritoryId": 1190,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [17734],
-          "Fly": true
+          "KillEnemyDataIds": [17734]
         }
       ]
     },
@@ -49,22 +47,7 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "$": "There's a big crater here that's hard to navigate out of. So we teleport out if we fall into it during combat.",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -446.90082,
-                  "Y": 14.171233,
-                  "Z": 51.690197
-                },
-                "TerritoryId": 1190,
-                "MaximumDistance": 15
-              }
-            }
-          }
+          "$": "There's a big crater here that's hard to navigate out of. So we teleport out if we fall into it during combat."
         }
       ]
     }

@@ -65,22 +65,12 @@
           "Aetheryte": "Western La Noscea - Swiftperch"
         },
         {
-          "Position": {
-            "X": 652.74164,
-            "Y": 8.129893,
-            "Z": 522.6646
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1003244,
           "Position": {
             "X": 650.72095,
             "Y": 7.856781,
             "Z": 527.21436
           },
-          "StopDistance": 6,
           "TerritoryId": 138,
           "InteractionType": "CompleteQuest"
         }

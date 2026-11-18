@@ -14,8 +14,7 @@
             "Z": 422.4154
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,7 +29,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "StopDistance": 1,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -55,8 +53,6 @@
           "TerritoryId": 146,
           "InteractionType": "UseItem",
           "ItemId": 2000780,
-          "Fly": true,
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -76,7 +72,6 @@
           "TerritoryId": 146,
           "InteractionType": "UseItem",
           "ItemId": 2000780,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -96,7 +91,6 @@
           "TerritoryId": 146,
           "InteractionType": "UseItem",
           "ItemId": 2000780,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -119,8 +113,7 @@
             "Z": 422.4154
           },
           "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

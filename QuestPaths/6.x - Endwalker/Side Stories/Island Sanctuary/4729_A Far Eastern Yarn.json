@@ -15,7 +15,6 @@
           "TerritoryId": 135,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1055,
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",

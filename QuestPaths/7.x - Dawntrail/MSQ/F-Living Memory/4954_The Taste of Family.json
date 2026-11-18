@@ -13,7 +13,6 @@
             "Y": 26.972605,
             "Z": -296.37604
           },
-          "StopDistance": 7,
           "TerritoryId": 1192,
           "InteractionType": "AcceptQuest"
         }
@@ -155,8 +154,7 @@
             "Z": -305.98926
           },
           "TerritoryId": 1192,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Living Memory - Leynode Pyro"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

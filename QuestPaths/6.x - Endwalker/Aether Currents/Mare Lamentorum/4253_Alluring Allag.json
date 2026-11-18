@@ -29,15 +29,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 425.62292,
-            "Y": 123.48844,
-            "Z": 89.52347
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1041127,
           "Position": {
             "X": 537.3159,
@@ -103,7 +94,6 @@
             "Y": 132.40395,
             "Z": 233.81396
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -123,7 +113,6 @@
             "Y": 132.40395,
             "Z": 233.81396
           },
-          "StopDistance": 5,
           "TerritoryId": 959,
           "InteractionType": "Interact"
         }
@@ -140,8 +129,7 @@
             "Z": -521.6602
           },
           "TerritoryId": 959,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

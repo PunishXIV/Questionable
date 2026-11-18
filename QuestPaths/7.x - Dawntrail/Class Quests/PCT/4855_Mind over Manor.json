@@ -14,7 +14,6 @@
           "TerritoryId": 132,
           "InteractionType": "UseItem",
           "ItemId": 43538,
-          "AetheryteShortcut": "Gridania",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -133,11 +132,7 @@
             "Z": -45.63977
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -155,10 +150,6 @@
           "InteractionType": "SinglePlayerDuty",
           "Comment": "Please report in discord whether this solo duty works fine.\nIt has not been tested yet and may fail. Thank you.",
           "SinglePlayerDutyOptions": {"Enabled": true},
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Lancers' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -179,7 +170,6 @@
             "Y": 16.16987,
             "Z": -339.13184
           },
-          "StopDistance": 5,
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest"
         }

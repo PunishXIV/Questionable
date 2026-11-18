@@ -20,9 +20,7 @@
               "Prompt": "TEXT_AKTKZG019_04294_Q1_000_000",
               "Answer": "TEXT_AKTKZG019_04294_A1_000_001"
             }
-          ],
-          "AetheryteShortcut": "Elpis - Twelve Wonders",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -37,9 +35,7 @@
             "Z": 186.78564
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1037945,
@@ -49,8 +45,7 @@
             "Z": 202.47192
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1037947,
@@ -60,8 +55,7 @@
             "Z": 306.11108
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,9 +70,7 @@
             "Z": 602.8992
           },
           "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Twelve Wonders",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -7,7 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "AetheryteShortcut": "Ul'dah",
           "DataId": 1001285,
           "Position": {
             "X": -68.77246,
@@ -23,10 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "DataId": 1001691,
           "Position": {
             "X": 142.16821,
@@ -42,10 +37,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Aetheryte Plaza"
-          ],
           "DataId": 1005713,
           "Position": {
             "X": -72.98395,
@@ -60,15 +51,6 @@
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": -147.13564,
-            "Y": 11.999999,
-            "Z": -5.086131
-          },
-          "TerritoryId": 130,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1005716,
           "Position": {
@@ -122,7 +104,6 @@
             "Y": 12,
             "Z": 0.99176025
           },
-          "StopDistance": 7,
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1207

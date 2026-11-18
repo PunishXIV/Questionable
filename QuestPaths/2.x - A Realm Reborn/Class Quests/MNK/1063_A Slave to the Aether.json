@@ -15,19 +15,7 @@
             "Z": 95.26196
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -42,9 +30,7 @@
             "Z": -343.9536
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Mount": true,
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,9 +46,7 @@
           },
           "TerritoryId": 153,
           "InteractionType": "UseItem",
-          "ItemId": 2000818,
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true
+          "ItemId": 2000818
         },
         {
           "Position": {
@@ -107,10 +91,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
           "NextQuestId": 1604
         }
       ]

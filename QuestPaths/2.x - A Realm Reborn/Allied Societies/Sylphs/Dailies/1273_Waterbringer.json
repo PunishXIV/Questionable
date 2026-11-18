@@ -14,27 +14,13 @@
             "Z": 249.19507
           },
           "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 255.45511,
-            "Y": -7.2411766,
-            "Z": -64.145386
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "StopDistance": 1
-        },
         {
           "DataId": 1005883,
           "Position": {
@@ -51,18 +37,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {"$": "2 3",
-          "Position": {
-            "X": 255.45511,
-            "Y": -7.2411766,
-            "Z": -64.145386
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "StopDistance": 1
-        },
         {
           "DataId": 1005883,
           "Position": {
@@ -247,18 +221,6 @@
           "Status": "Transparent"
         },
         {
-          "Position": {
-            "X": 384.4284,
-            "Y": -34.5,
-            "Z": -432.9074
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 2003257,
           "Position": {
             "X": 384.11523,
@@ -267,20 +229,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "UseItem",
-          "StopDistance": 4,
           "ItemId": 2001182
-        },
-        {
-          "Position": {
-            "X": 363.49725,
-            "Y": -25.73384,
-            "Z": -439.295
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "Land": true
         },
         {
           "DataId": 2003259,
@@ -291,20 +240,7 @@
           },
           "TerritoryId": 152,
           "InteractionType": "UseItem",
-          "StopDistance": 4,
           "ItemId": 2001182
-        },
-        {
-          "Position": {
-            "X": 395.37976,
-            "Y": -34.590233,
-            "Z": -458.55423
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "Land": true
         },
         {
           "DataId": 2003258,
@@ -315,7 +251,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "UseItem",
-          "StopDistance": 4,
           "ItemId": 2001182
         }
       ]
@@ -331,9 +266,7 @@
             "Z": 249.19507
           },
           "TerritoryId": 152,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

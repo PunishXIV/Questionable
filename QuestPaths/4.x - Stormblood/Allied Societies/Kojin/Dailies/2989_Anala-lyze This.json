@@ -14,27 +14,13 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "TerritoryId": 613,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Price"
-          ],
-          "Fly": true
-        },
         {
           "DataId": 2009161,
           "Position": {
@@ -46,8 +32,7 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [8238,8239,8240],
-          "RequiredQuestVariables": [null, null, [{"High": 1}], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [{"High": 1}], null, null, null]
         },
         {
           "Position": {
@@ -86,8 +71,7 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [8238,8239,8240],
-          "RequiredQuestVariables": [null, null, [{"High": 2}], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [{"High": 2}], null, null, null]
         },
         {
           "Position": {
@@ -126,8 +110,7 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [8238,8239,8240],
-          "RequiredQuestVariables": [null, null, [{"High": 3}], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [{"High": 3}], null, null, null]
         },
         {
           "Position": {
@@ -168,11 +151,7 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

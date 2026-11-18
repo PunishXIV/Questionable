@@ -14,9 +14,7 @@
             "Z": -404.1352
           },
           "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": -386.61786
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,10 +42,8 @@
             "Y": -133.35559,
             "Z": -414.32825
           },
-          "StopDistance": 3,
           "TerritoryId": 401,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -72,8 +66,7 @@
             "Z": -414.32825
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,8 +82,7 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Action",
-          "Action": "Buffet (Sanuwa)",
-          "Fly": true
+          "Action": "Buffet (Sanuwa)"
         },
         {
           "DataId": 1016226,
@@ -101,8 +93,7 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Action",
-          "Action": "Buffet (Sanuwa)",
-          "Fly": true
+          "Action": "Buffet (Sanuwa)"
         }
       ]
     },
@@ -117,8 +108,7 @@
             "Z": -386.61786
           },
           "TerritoryId": 401,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

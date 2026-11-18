@@ -14,29 +14,13 @@
             "Z": 5.416931
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Aetheryte Plaza"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -371.6037,
-            "Y": 54.310753,
-            "Z": 428.55798
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "Fly": true
-        },
         {
           "DataId": 1006312,
           "Position": {
@@ -53,26 +37,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": -371.6037,
-            "Y": 54.310753,
-            "Z": 428.55798
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -250.51706,
-            "Y": 48.854584,
-            "Z": 462.12476
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 2004858,
           "Position": {
             "X": -252.76575,
@@ -87,16 +51,6 @@
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": -371.6037,
-            "Y": 54.310753,
-            "Z": 428.55798
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1006312,
           "Position": {
@@ -114,23 +68,12 @@
       "Steps": [
         {
           "Position": {
-            "X": -371.6037,
-            "Y": 54.310753,
-            "Z": 428.55798
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
             "X": -133.36604,
             "Y": 70.192245,
             "Z": 746.02716
           },
           "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -139,8 +82,7 @@
             "Z": -497.8778
           },
           "TerritoryId": 135,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "WalkTo"
         }
       ]
     },

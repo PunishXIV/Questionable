@@ -14,9 +14,7 @@
             "Z": -423.87152
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,6 @@
             "Z": -405.56958
           },
           "TerritoryId": 813,
-          "Fly": true,
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
           "InteractionType": "Interact"
         }
       ]
@@ -49,9 +45,7 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Action",
-          "Action": "Cannonfire",
-          "Fly": true,
-          "Land": true
+          "Action": "Cannonfire"
         }
       ]
     },
@@ -82,9 +76,7 @@
             "Z": -425.25372
           },
           "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

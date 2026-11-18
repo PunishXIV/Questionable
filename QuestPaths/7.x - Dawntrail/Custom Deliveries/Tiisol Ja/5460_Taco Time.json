@@ -14,8 +14,7 @@
             "Z": 58.79297
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "StopDistance": 5,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_KINGSF201_05460_Q0_000_000",

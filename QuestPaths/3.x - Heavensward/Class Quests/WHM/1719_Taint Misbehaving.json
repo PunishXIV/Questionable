@@ -12,9 +12,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -47,7 +45,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -77,9 +74,7 @@
             "Z": 183.03198
           },
           "TerritoryId": 148,
-          "Fly": true,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -95,7 +90,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -116,7 +110,6 @@
             "Y": -40.705082,
             "Z": 174.59982
           },
-          "StopDistance": 1,
           "TerritoryId": 154,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -132,7 +125,6 @@
             "Y": 7.167203,
             "Z": -47.01306
           },
-          "Fly": true,
           "TerritoryId": 154,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -179,9 +171,7 @@
             "Z": 183.03198
           },
           "TerritoryId": 148,
-          "Fly": true,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -210,7 +200,6 @@
             "Y": -40.949986,
             "Z": 187.7622
           },
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "TerritoryId": 154,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1720

@@ -15,11 +15,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 987,
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Baldesion Annex"
-          ]
+          "TargetTerritoryId": 987
         },
         {
           "DataId": 1058790,
@@ -44,8 +40,7 @@
             "Z": -231.49463
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Tertium"
+          "InteractionType": "Interact"
         }
       ]
     },

@@ -38,22 +38,12 @@
           "InteractionType": "Interact"
         },
         {
-          "Position": {
-            "X": 193.6185,
-            "Y": 1.9123514,
-            "Z": 713.436
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1037622,
           "Position": {
             "X": 189.94562,
             "Y": 0.8560083,
             "Z": 702.7896
           },
-          "StopDistance": 0.25,
           "TerritoryId": 957,
           "InteractionType": "Interact"
         },
@@ -82,24 +72,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 223.328,
-            "Y": -0.6,
-            "Z": 752.7248
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 253.03053,
-            "Y": 0.7659681,
-            "Z": 732.0563
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1038606,
           "Position": {

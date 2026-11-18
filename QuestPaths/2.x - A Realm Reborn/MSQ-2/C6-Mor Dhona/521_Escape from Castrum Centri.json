@@ -112,22 +112,12 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Position": {
-            "X": -530.1089,
-            "Y": -3.3262053,
-            "Z": -308.2147
-          },
-          "TerritoryId": 335,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1007611,
           "Position": {
             "X": -536.4004,
             "Y": -1.9197441,
             "Z": -308.00336
           },
-          "StopDistance": 7,
           "TerritoryId": 335,
           "InteractionType": "Emote",
           "Emote": "imperialsalute"
@@ -190,7 +180,6 @@
             "Y": 84,
             "Z": 2.1514893
           },
-          "StopDistance": 5,
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest"
         }

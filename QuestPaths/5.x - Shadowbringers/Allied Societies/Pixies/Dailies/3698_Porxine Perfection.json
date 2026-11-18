@@ -14,9 +14,7 @@
             "Z": 575.1278
           },
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 573.69336
           },
           "TerritoryId": 816,
-          "Fly": true,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,7 +46,6 @@
           "TerritoryId": 816,
           "InteractionType": "Action",
           "Action": "Siphon Snout",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 1}, {"High": 2}
             ],null,null,null]
@@ -65,7 +60,6 @@
           "TerritoryId": 816,
           "InteractionType": "Action",
           "Action": "Siphon Snout",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 1}, {"High": 3}
             ],null,null,null]
@@ -80,7 +74,6 @@
           "TerritoryId": 816,
           "InteractionType": "Action",
           "Action": "Siphon Snout",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 2}, {"High": 3}
             ],null,null,null]
@@ -97,11 +90,8 @@
             "Y": 71.43217,
             "Z": 575.1278
           },
-          "StopDistance": 3,
           "TerritoryId": 816,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1031809,
@@ -111,8 +101,7 @@
             "Z": 575.1278
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "Mount": false
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

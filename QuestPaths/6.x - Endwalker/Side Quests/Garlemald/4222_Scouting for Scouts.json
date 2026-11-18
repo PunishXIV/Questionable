@@ -33,8 +33,7 @@
           "KillEnemyDataIds": [
             14105,
             14106
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -79,8 +78,7 @@
             "Z": 449.08826
           },
           "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

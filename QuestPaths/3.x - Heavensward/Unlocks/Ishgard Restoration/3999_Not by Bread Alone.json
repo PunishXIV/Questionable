@@ -7,22 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
           "DataId": 1035506,
           "Position": {
             "X": 49.729126,
@@ -30,11 +14,7 @@
             "Z": 7.675232
           },
           "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The Mattock"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -49,11 +29,7 @@
             "Z": -132.86035
           },
           "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] Western Risensong Quarter"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -68,11 +44,7 @@
             "Z": -135.36285
           },
           "TerritoryId": 886,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] Western Risensong Quarter",
-            "[Firmament] Eastern Risensong Quarter"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

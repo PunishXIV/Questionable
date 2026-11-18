@@ -14,8 +14,7 @@
             "Z": 194.72034
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -55.10034
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": 618.2803
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Yedlihmad"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,7 +58,6 @@
             "Y": 90.22656,
             "Z": -83.024414
           },
-          "StopDistance": 0.5,
           "TerritoryId": 957,
           "InteractionType": "Interact"
         }

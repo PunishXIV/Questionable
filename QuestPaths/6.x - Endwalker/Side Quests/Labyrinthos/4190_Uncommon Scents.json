@@ -17,9 +17,7 @@
             "Z": -486.388
           },
           "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,8 +33,7 @@
           },
           "TerritoryId": 956,
           "InteractionType": "UseItem",
-          "ItemId": 2003119,
-          "Fly": true
+          "ItemId": 2003119
         },
         {
           "DataId": 2011809,
@@ -47,8 +44,7 @@
           },
           "TerritoryId": 956,
           "InteractionType": "UseItem",
-          "ItemId": 2003119,
-          "Fly": true
+          "ItemId": 2003119
         },
         {
           "DataId": 2011810,
@@ -59,8 +55,7 @@
           },
           "TerritoryId": 956,
           "InteractionType": "UseItem",
-          "ItemId": 2003119,
-          "Fly": true
+          "ItemId": 2003119
         }
       ]
     },
@@ -75,8 +70,7 @@
             "Z": -486.388
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

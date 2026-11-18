@@ -15,10 +15,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
           "$": "auto: issuer 1000612 (Guithrit)"
         }
       ]
@@ -34,11 +30,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             743,
@@ -61,11 +52,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Yellow Serpent Gate (North Shroud)"
-          ],
           "$": "auto: todo turn-in -> 1000612 (Guithrit)"
         }
       ]

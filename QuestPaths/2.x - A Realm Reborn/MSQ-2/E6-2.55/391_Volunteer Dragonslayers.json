@@ -76,7 +76,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "0 0  0 0  0 0 -> 1 0  0 0  0 16",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
@@ -89,19 +88,8 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "1 0  0 0  0 16 -> 2 0  0 0  0 144",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
-        },
-        {
-          "Position": {
-            "X": 68.349144,
-            "Y": 50,
-            "Z": -776.29706
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 1010956,
@@ -114,16 +102,6 @@
           "InteractionType": "Interact",
           "$": "2 0  0 0  0 144 -> 3 0  0 0  0 208",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-        },
-        {
-          "Position": {
-            "X": 26.19157,
-            "Y": 29.595585,
-            "Z": -768.4571
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 1010957,
@@ -142,16 +120,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 26.19157,
-            "Y": 29.595585,
-            "Z": -768.4571
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1010961,
           "Position": {
             "X": 33.279907,
@@ -159,8 +127,7 @@
             "Z": -655.20715
           },
           "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

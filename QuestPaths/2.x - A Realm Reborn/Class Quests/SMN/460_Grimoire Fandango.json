@@ -15,11 +15,7 @@
             "Z": 9.994568
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,10 +30,7 @@
           },
           "TerritoryId": 138,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true,
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [139] },
             "StepIf": { "InTerritory": [139] }
           }
         },
@@ -49,8 +42,7 @@
             "Z": 127.336426
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,10 +57,7 @@
           },
           "TerritoryId": 138,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true,
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [139] },
             "StepIf": { "InTerritory": [139] }
           }
         },
@@ -85,16 +74,6 @@
               "Flying": "Unlocked"
             }
           }
-        },
-        {
-          "Position": {
-            "X": -449.98322,
-            "Y": 3.358525,
-            "Z": 88.437485
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 1006195,
@@ -119,22 +98,9 @@
           },
           "TerritoryId": 138,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true,
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [139] },
             "StepIf": { "InTerritory": [139] }
           }
-        },
-        {
-          "Position": {
-            "X": -449.98322,
-            "Y": 3.358525,
-            "Z": 88.437485
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Mount": true
         },
         {
           "DataId": 2001892,
@@ -187,7 +153,6 @@
           },
           "TerritoryId": 139,
           "InteractionType": "WalkTo",
-          "Mount": false,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [
@@ -225,40 +190,9 @@
           },
           "TerritoryId": 138,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true,
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [139] },
             "StepIf": { "InTerritory": [139] }
           }
-        },
-        {
-          "Position": {
-            "X": -419.99802,
-            "Y": 19.50849,
-            "Z": 60.498474
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -428.06293,
-            "Y": -1.8700926,
-            "Z": 65.585
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -449.98322,
-            "Y": 3.358525,
-            "Z": 88.437485
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1006195,
@@ -283,32 +217,9 @@
           },
           "TerritoryId": 138,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true,
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [139] },
             "StepIf": { "InTerritory": [139] }
           }
-        },
-        {
-          "Position": {
-            "X": -449.98322,
-            "Y": 3.358525,
-            "Z": 88.437485
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -599.5244,
-            "Y": -3.3999999,
-            "Z": -51.651997
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 2002478,
@@ -334,10 +245,7 @@
           },
           "TerritoryId": 138,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true,
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [139] },
             "StepIf": { "InTerritory": [139] }
           }
         },
@@ -364,10 +272,7 @@
           },
           "TerritoryId": 138,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true,
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [139] },
             "StepIf": { "InTerritory": [139] }
           }
         },
@@ -410,10 +315,7 @@
           },
           "TerritoryId": 138,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true,
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [139] },
             "StepIf": { "InTerritory": [139] }
           }
         },
@@ -449,27 +351,13 @@
           },
           "TerritoryId": 139,
           "InteractionType": "Emote",
-          "Emote": "dance",
-          "Fly": true
+          "Emote": "dance"
         }
       ]
     },
     {
       "Sequence": 9,
       "Steps": [
-        {
-          "Position": {
-            "X": -139.68823,
-            "Y": 39.999985,
-            "Z": 154.54538
-          },
-          "TerritoryId": 128,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
-        },
         {
           "DataId": 1005228,
           "Position": {
@@ -517,10 +405,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ],
           "NextQuestId": 461
         }
       ]

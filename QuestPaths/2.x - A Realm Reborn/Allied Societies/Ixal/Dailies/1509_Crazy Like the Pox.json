@@ -15,11 +15,7 @@
             "Z": 110.85681
           },
           "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 1,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,7 +31,6 @@
             "Z": 332.47876
           },
           "TerritoryId": 154,
-          "Fly": true,
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -52,17 +47,6 @@
           }
         },
         {
-          "Position": {
-            "X": 28.032156,
-            "Y": 29,
-            "Z": -797.6099
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
           "DataId": 1009220,
           "Position": {
             "X": 38.115906,
@@ -70,9 +54,7 @@
             "Z": -798.2466
           },
           "TerritoryId": 156,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -109,7 +91,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -123,18 +104,6 @@
               }
             }
           }
-        },
-        {
-          "Comment": "Move to fishing spot",
-          "Position": {
-            "X": -374.5691,
-            "Y": -17.148396,
-            "Z": -409.93008
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona"
         },
         {
           "Comment": "Fish for 2x Tangle Skipper (!!) using Moth Pupa",
@@ -164,17 +133,6 @@
           "DelaySecondsAtStart": 1
         },
         {
-          "Position": {
-            "X": 28.032156,
-            "Y": 29,
-            "Z": -797.6099
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona"
-        },
-        {
           "DataId": 1009220,
           "Position": {
             "X": 38.115906,
@@ -182,9 +140,7 @@
             "Z": -798.2466
           },
           "TerritoryId": 156,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -205,11 +161,7 @@
             "Z": 110.85681
           },
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

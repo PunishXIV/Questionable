@@ -14,25 +14,7 @@
             "Z": -58.9151
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 202.38037,
-                  "Y": -5.3999662,
-                  "Z": -58.9151
-                },
-                "TerritoryId": 419,
-                "MaximumDistance": 100
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -47,10 +29,7 @@
             "Z": 402.45667
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "StopDistance": 5,
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -66,9 +45,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "Interact",
-          "StopDistance": 5,
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -91,24 +67,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest",
-          "StopDistance": 5,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 195.1781,
-                  "Y": -5.3999624,
-                  "Z": -67.06348
-                },
-                "TerritoryId": 419,
-                "MaximumDistance": 100
-              }
-            }
-          },
           "NextQuestId": 2410
         }
       ]

@@ -15,12 +15,7 @@
             "Z": 106.55371
           },
           "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     }

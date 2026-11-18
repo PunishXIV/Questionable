@@ -30,10 +30,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_KINGSF202_05461_Q1_000_000",
@@ -71,10 +67,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Neon Stein",
-            "[Solution Nine] Nexus Arcade"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -93,10 +85,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Nexus Arcade",
-            "[Solution Nine] Residential Sector"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -128,13 +116,8 @@
             "Y": 50.75,
             "Z": 201.337
           },
-          "StopDistance": 1,
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Residential Sector",
-            "[Solution Nine] Neon Stein"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -148,7 +131,6 @@
             "Y": 50.75,
             "Z": 201.337
           },
-          "StopDistance": 1,
           "TerritoryId": 1186,
           "InteractionType": "Interact",
           "DialogueChoices": [

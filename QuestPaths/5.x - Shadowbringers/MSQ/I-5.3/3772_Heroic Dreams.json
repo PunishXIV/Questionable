@@ -29,11 +29,7 @@
             "Z": 417.99023
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] Tessellation (Lakeland)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,7 +44,6 @@
             "Y": 15.8845825,
             "Z": 273.88416
           },
-          "StopDistance": 1,
           "TerritoryId": 813,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
@@ -56,7 +51,6 @@
           "KillEnemyDataIds": [
             12168
           ],
-          "Fly": true,
           "$.0": "[1]",
           "$.1": "QuestVariables if done first: 0 0 0 3 0 0 during fight; 16 1 0 2 16 8 after",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
@@ -75,7 +69,6 @@
           "KillEnemyDataIds": [
             12166
           ],
-          "Fly": true,
           "$.1": "QuestVariables if done after [1]: 34 1 0 1 48 40",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
@@ -93,7 +86,6 @@
           "KillEnemyDataIds": [
             12168
           ],
-          "Fly": true,
           "$.2": "QuestVariables if done after [1, 2]: irrelevant because it automatically progresses to the next step"
         }
       ]
@@ -109,8 +101,7 @@
             "Z": 419.51624
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

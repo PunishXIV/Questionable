@@ -15,18 +15,7 @@
             "Z": -250.56848
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,24 +23,12 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": -260.8949,
-            "Y": -17.148405,
-            "Z": -346.92633
-          },
-          "TerritoryId": 156,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
-        },
-        {
           "DataId": 2002715,
           "Position": {
             "X": -259.02197,
             "Y": -15.762573,
             "Z": -344.71655
           },
-          "StopDistance": 4.5,
           "TerritoryId": 156,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
@@ -72,7 +49,6 @@
             "Y": -15.94574,
             "Z": -344.71655
           },
-          "StopDistance": 4.5,
           "TerritoryId": 156,
           "InteractionType": "Interact"
         }
@@ -89,11 +65,7 @@
             "Z": 98.924194
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,11 +80,7 @@
             "Z": 110.795654
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -127,11 +95,7 @@
             "Z": -166.52173
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -162,11 +126,7 @@
           },
           "TerritoryId": 128,
           "InteractionType": "EquipItem",
-          "ItemId": 2905,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ]
+          "ItemId": 2905
         },
         {
           "TerritoryId": 128,

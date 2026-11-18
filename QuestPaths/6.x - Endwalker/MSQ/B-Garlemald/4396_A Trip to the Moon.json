@@ -15,8 +15,7 @@
           },
           "TerritoryId": 958,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 1024,
-          "Fly": true
+          "TargetTerritoryId": 1024
         },
         {
           "DataId": 1039974,
@@ -61,8 +60,7 @@
         {
           "TerritoryId": 959,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Mare Lamentorum - Sinus Lacrimarum",
-          "Mount": true
+          "Aetheryte": "Mare Lamentorum - Sinus Lacrimarum"
         },
         {
           "DataId": 1039977,

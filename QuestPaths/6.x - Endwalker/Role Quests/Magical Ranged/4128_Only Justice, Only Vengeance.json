@@ -15,12 +15,7 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard",
           "TargetTerritoryId": 1001,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -29,11 +24,6 @@
             }
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1001
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 1001
@@ -82,11 +72,7 @@
             "Z": -142.74823
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -117,10 +103,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

@@ -14,8 +14,7 @@
             "Z": 441.24512
           },
           "TerritoryId": 137,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -65,7 +64,6 @@
             "Y": 33.89026,
             "Z": 276.53918
           },
-          "StopDistance": 4.5,
           "TerritoryId": 137,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -83,8 +81,7 @@
             "Z": -16.617126
           },
           "TerritoryId": 137,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

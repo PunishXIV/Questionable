@@ -7,27 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 133,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Gridania] Leatherworkers' Guild & Shaded Bower",
-            "[Gridania] Botanists' Guild"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": 71.97681,
-                  "Y": 8,
-                  "Z": -166.52173
-                },
-                "TerritoryId": 133,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
           "DataId": 1000294,
           "Position": {
             "X": -238.05603,
@@ -35,10 +14,6 @@
             "Z": -142.93127
           },
           "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -46,12 +21,7 @@
               "Yes": true
             }
           ],
-          "InteractionType": "AcceptQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [133]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     }

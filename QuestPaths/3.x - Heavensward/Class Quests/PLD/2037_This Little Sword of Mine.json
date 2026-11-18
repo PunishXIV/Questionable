@@ -14,8 +14,7 @@
             "Z": 695.796
           },
           "TerritoryId": 397,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 660.8834
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": 179.85803
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,9 +59,7 @@
             "Z": 659.7848
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,7 +75,6 @@
           },
           "TerritoryId": 397,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "it might be faster to shortcut to ok' zundu and fly to the adjoiner? this is simpler; smacks into the North Star but doesn't get stuck."
         }
       ]
@@ -113,7 +107,6 @@
             "Y": 130.79962,
             "Z": -850.2479
           },
-          "StopDistance": 5,
           "TerritoryId": 397,
           "InteractionType": "Interact"
         }
@@ -130,8 +123,7 @@
             "Z": 695.796
           },
           "TerritoryId": 397,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

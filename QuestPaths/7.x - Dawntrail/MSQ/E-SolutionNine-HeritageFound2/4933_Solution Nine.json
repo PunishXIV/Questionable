@@ -24,7 +24,6 @@
             "Y": -2.9624603E-06,
             "Z": -0.6256714
           },
-          "StopDistance": 5,
           "TerritoryId": 1171,
           "InteractionType": "AcceptQuest"
         }
@@ -42,8 +41,7 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 5153,
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "PickUpQuestId": 5153
         },
         {
           "DataId": 1050805,
@@ -81,7 +79,6 @@
             "Y": -6.050003,
             "Z": 218.24976
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
           "InteractionType": "Interact"
         }

@@ -39,8 +39,7 @@
             "Z": 98.98523
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,18 +55,7 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 1247,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132
-              ]
-            }
-          }
+          "TargetTerritoryId": 1247
         },
         {
           "DataId": 1051823,

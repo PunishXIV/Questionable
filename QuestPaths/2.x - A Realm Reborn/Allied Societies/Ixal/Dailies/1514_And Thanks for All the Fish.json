@@ -15,11 +15,7 @@
             "Z": 64.199814
           },
           "TerritoryId": 154,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,7 +31,6 @@
             "Z": 332.47876
           },
           "TerritoryId": 154,
-          "Fly": true,
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -60,14 +55,7 @@
           "TerritoryId": 154,
           "InteractionType": "WalkTo",
           "Comment": "Move to next zone",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                155
-              ]
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -80,17 +68,6 @@
               }
             }
           }
-        },
-        {
-          "Position": {
-            "X": -55.165855,
-            "Y": 199.67697,
-            "Z": 470.63123
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Comment": "Move to fishing spot",
-          "Fly": true
         },
         {
           "$": "QW: (-) (1H1L) (-) (-) (-) (-)",
@@ -121,18 +98,6 @@
           "TargetClass": "QuestStartJob",
           "TerritoryId": 155,
           "DelaySecondsAtStart": 1
-        },
-        {
-          "Comment": "Move to quest NPC",
-          "Position": {
-            "X": 244.82239,
-            "Y": 222.01717,
-            "Z": 352.99496
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
         },
         {
           "Comment": "Give materials to quest NPC",
@@ -167,11 +132,7 @@
             "Z": 64.199814
           },
           "TerritoryId": 154,
-          "StopDistance": 1,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

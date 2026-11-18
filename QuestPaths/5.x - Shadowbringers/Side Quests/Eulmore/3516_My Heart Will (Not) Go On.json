@@ -28,11 +28,7 @@
             "Z": 145.28113
           },
           "TerritoryId": 820,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Aetheryte Plaza",
-            "[Eulmore] Southeast Derelicts"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,11 +43,7 @@
             "Z": -74.540344
           },
           "TerritoryId": 820,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Southeast Derelicts",
-            "[Eulmore] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,10 +59,6 @@
           },
           "TerritoryId": 820,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Eulmore] Aetheryte Plaza",
-            "[Eulmore] Southeast Derelicts"
-          ],
           "NextQuestId": 3517
         }
       ]

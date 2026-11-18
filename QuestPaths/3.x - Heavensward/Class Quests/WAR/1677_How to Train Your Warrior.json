@@ -14,25 +14,13 @@
             "Z": 332.69226
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 427.1206,
-            "Y": 7.9075317,
-            "Z": 24.77774
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake"
-        },
         {
           "DataId": 1013279,
           "Position": {
@@ -49,16 +37,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": 427.1206,
-            "Y": 7.9075317,
-            "Z": 24.77774
-          },
-          "TerritoryId": 139,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1013339,
           "Position": {
             "X": 396.16992,
@@ -66,8 +44,7 @@
             "Z": 48.142212
           },
           "TerritoryId": 139,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

@@ -15,7 +15,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: issuer 1019520 (Quincompaix)"
         }
       ]
@@ -32,7 +31,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo location -> 1019517 (Loezkirz)"
         },
@@ -45,7 +43,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo location -> 1019518 (Kakalai)"
         },
@@ -75,7 +72,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo location -> 1019520 (Quincompaix)"
         }
       ]
@@ -91,9 +87,7 @@
             "Z": -307.01376
           },
           "TerritoryId": 612,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
@@ -104,9 +98,7 @@
             "Z": -245.64116
           },
           "TerritoryId": 612,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
         {
@@ -118,7 +110,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
@@ -130,8 +121,7 @@
           "TerritoryId": 612,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [7444],
-          "Fly": true
+          "KillEnemyDataIds": [7444]
         }
       ]
     },
@@ -147,7 +137,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "$": "auto: todo turn-in -> 1019520 (Quincompaix)"
         }
       ]

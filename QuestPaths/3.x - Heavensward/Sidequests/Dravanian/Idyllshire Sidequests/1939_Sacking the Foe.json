@@ -15,7 +15,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: issuer 1012132 (Drydox)"
         }
       ]
@@ -32,12 +31,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         },
         {
@@ -49,7 +42,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo area 55y from lua EOBJECT1 -> 2005871 (cumbersome sack)"
         },
@@ -62,7 +54,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo area 58y from lua EOBJECT0 -> 2005870 (cumbersome sack)"
         },
@@ -75,7 +66,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}],
           "$": "auto: todo area 70y from lua EOBJECT3 -> 2005873 (cumbersome sack)"
         }
@@ -93,7 +83,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo turn-in -> 1012132 (Drydox)"
         }
       ]

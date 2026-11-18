@@ -29,11 +29,7 @@
             "Z": 92.36279
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,7 +43,6 @@
             "Y": -19.000002,
             "Z": 106.67578
           },
-          "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -70,7 +65,6 @@
             "Y": -15.185763,
             "Z": -431.7846
           },
-          "StopDistance": 7,
           "TerritoryId": 156,
           "InteractionType": "Interact"
         }

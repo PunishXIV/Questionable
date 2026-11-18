@@ -69,7 +69,6 @@
             "Y": 2.0050092,
             "Z": 14.541748
           },
-          "StopDistance": 5,
           "TerritoryId": 351,
           "InteractionType": "Interact"
         }
@@ -78,19 +77,6 @@
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": -150.08533,
-            "Y": 16.999998,
-            "Z": -48.293888
-          },
-          "TerritoryId": 418,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
-        },
         {
           "DataId": 1014578,
           "Position": {
@@ -114,11 +100,7 @@
             "Z": -13.290649
           },
           "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

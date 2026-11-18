@@ -14,11 +14,7 @@
             "Z": 40.787354
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -55,9 +51,7 @@
             "Z": 476.24915
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -86,8 +80,7 @@
                 null
               ]
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -102,8 +95,7 @@
             "Z": 326.74133
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -120,8 +112,7 @@
           "TerritoryId": 401,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [4619, 5044, 5045],
-          "Fly": true
+          "KillEnemyDataIds": [4619, 5044, 5045]
         }
       ]
     },
@@ -136,8 +127,7 @@
             "Z": 331.41064
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -153,10 +143,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "NextQuestId": 2061
         }
       ]

@@ -14,9 +14,7 @@
             "Z": -355.75388
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": -362.085
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": false
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,8 +44,7 @@
             "Z": -355.697
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": false
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,24 +59,13 @@
             "Z": -2.7632384
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 4,
       "Steps": [
-        {
-          "Position": {
-            "X": 322.43076,
-            "Y": 9.526134,
-            "Z": -35.83542
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2002978,
           "Position": {
@@ -90,7 +75,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "CombatDelaySecondsAtStart": 3,
           "KillEnemyDataIds": [
@@ -111,7 +95,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2001137
         }
       ]
@@ -127,7 +110,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             2453
@@ -151,7 +133,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             2453
@@ -175,7 +156,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             2453
@@ -204,8 +184,7 @@
             "Z": -98.00879
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -220,8 +199,7 @@
             "Z": -362.085
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": false
+          "InteractionType": "Interact"
         }
       ]
     },

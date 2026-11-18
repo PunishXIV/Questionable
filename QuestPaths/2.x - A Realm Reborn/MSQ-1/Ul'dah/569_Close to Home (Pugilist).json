@@ -92,11 +92,7 @@
             "Z": 9.960203
           },
           "TerritoryId": 131,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Ul'dah] Alchemists' Guild",
-            "[Ul'dah] Gladiators' Guild"
-          ]
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 130,
@@ -152,11 +148,7 @@
             "Z": -78.78235
           },
           "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

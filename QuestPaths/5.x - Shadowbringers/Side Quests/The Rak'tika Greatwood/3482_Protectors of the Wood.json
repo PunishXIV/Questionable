@@ -14,8 +14,7 @@
             "Z": -61.08191
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 297.26086
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -44,7 +42,6 @@
             "Y": -26.65495,
             "Z": 784.1922
           },
-          "StopDistance": 0.5,
           "TerritoryId": 817,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -64,7 +61,6 @@
             "Y": -26.785097,
             "Z": 785.3054
           },
-          "StopDistance": 5,
           "TerritoryId": 817,
           "InteractionType": "Interact"
         }
@@ -81,9 +77,7 @@
             "Z": -224.93329
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -99,7 +93,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -110,7 +103,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -152,8 +144,7 @@
             "Z": -530.2052
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -168,9 +159,7 @@
             "Z": -224.93329
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

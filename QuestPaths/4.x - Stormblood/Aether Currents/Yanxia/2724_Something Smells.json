@@ -14,8 +14,7 @@
             "Z": -293.9651
           },
           "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yanxia - Namai"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -86,16 +85,6 @@
           "ItemId": 2002241,
           "$": "4 32 0 0 0 240 -> 5 16 0 0 0 244",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,4]
-        },
-        {
-          "Position": {
-            "X": 445.11514,
-            "Y": 40.55606,
-            "Z": -51.57855
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Mount": true
         },
         {
           "DataId": 2008465,

@@ -10,14 +10,7 @@
           "InteractionType": "AttuneAetheryte",
           "TerritoryId": 148,
           "Aetheryte": "Central Shroud - Bentbranch Meadows",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteUnlocked": "Central Shroud - Bentbranch Meadows"
-            },
             "StepIf": {
               "AetheryteUnlocked": "Central Shroud - Bentbranch Meadows"
             }
@@ -31,13 +24,7 @@
             "Z": 21.072632
           },
           "TerritoryId": 148,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "Central Shroud - Bentbranch Meadows"
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -63,8 +50,7 @@
             "Z": 327.8706
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -118,8 +104,7 @@
             "Z": 21.072632
           },
           "TerritoryId": 148,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

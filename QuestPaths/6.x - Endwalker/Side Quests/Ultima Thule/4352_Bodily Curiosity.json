@@ -17,23 +17,7 @@
             "Z": -509.683
           },
           "TerritoryId": 960,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 5,
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 124.111,
-                  "Y": 269.373,
-                  "Z": -509.683
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -49,9 +33,7 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Emote",
-          "Emote": "joy",
-          "Fly": true,
-          "StopDistance": 5
+          "Emote": "joy"
         }
       ]
     },
@@ -68,8 +50,6 @@
           "TerritoryId": 960,
           "InteractionType": "Emote",
           "Emote": "slap",
-          "Fly": true,
-          "StopDistance": 5,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -87,29 +67,13 @@
           },
           "TerritoryId": 960,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "StopDistance": 5,
           "DialogueChoices": [
             {
               "Type": "List",
               "Prompt": "TEXT_AKTKZJ016_04352_Q1_000_100",
               "Answer": "TEXT_AKTKZJ016_04352_A2_000_100"
             }
-          ],
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 124.111,
-                  "Y": 269.373,
-                  "Z": -509.683
-                },
-                "TerritoryId": 960,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          ]
         }
       ]
     }

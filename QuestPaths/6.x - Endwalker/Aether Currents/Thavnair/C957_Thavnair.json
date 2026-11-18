@@ -14,7 +14,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
           "SkipConditions": {
             "StepIf": {
               "AetherCurrentUnlocked": 2818332

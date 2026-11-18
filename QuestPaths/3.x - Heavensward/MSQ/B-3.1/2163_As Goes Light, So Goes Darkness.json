@@ -14,8 +14,7 @@
             "Z": -5.5390625
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,10 +34,6 @@
             "Enabled": true,
             "TestedBossModVersion": "0.1.0.1"
           },
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
           "$": "Changed aethernet from Jeweled Crozier, since navmesh thinks the pillar atop the stairs is walk-through"
         }
       ]
@@ -56,7 +51,6 @@
             "Y": 27.79051,
             "Z": -140.36774
           },
-          "StopDistance": 7,
           "TerritoryId": 419,
           "InteractionType": "Interact"
         }
@@ -83,7 +77,6 @@
             "Y": 0.022254243,
             "Z": 4.623413
           },
-          "StopDistance": 7,
           "TerritoryId": 433,
           "InteractionType": "CompleteQuest"
         }

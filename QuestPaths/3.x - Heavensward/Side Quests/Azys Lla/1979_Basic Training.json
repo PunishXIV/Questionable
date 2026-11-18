@@ -36,7 +36,6 @@
               "MinimumKillCount": 5
             }
           ],
-          "Fly": true,
           "$": "5 in close range here, so if any dead it might be a little slower.",
           "$.1": "this is the area the quest suggests; there /are/ spinner-rooks sooner, and walking there at level w/o flying might cause interruption, but they're more spread out everywhere else - YMMV."
         }
@@ -53,8 +52,7 @@
             "Z": -527.5502
           },
           "TerritoryId": 402,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

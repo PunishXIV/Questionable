@@ -15,7 +15,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: issuer 1012102 (Halfsix)"
         }
       ]
@@ -32,12 +31,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "UseItem",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ],
           "ItemId": 2001712,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
@@ -50,7 +43,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2001712,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo area 8y from lua EOBJECT1 -> 2005875 (destination); use item ITEM0=2001712 on it"
@@ -64,7 +56,6 @@
           },
           "TerritoryId": 399,
           "InteractionType": "UseItem",
-          "Fly": true,
           "ItemId": 2001712,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}],
           "$": "auto: todo area 15y from lua EOBJECT2 -> 2005876 (destination); use item ITEM0=2001712 on it"
@@ -83,7 +74,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo turn-in -> 1012102 (Halfsix)"
         }
       ]

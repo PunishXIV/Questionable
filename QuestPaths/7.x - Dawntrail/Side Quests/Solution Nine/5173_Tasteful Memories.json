@@ -14,11 +14,7 @@
             "Z": 5.0201416
           },
           "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] True Vue"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -86,11 +82,7 @@
             "Z": 319.44763
           },
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Neon Stein",
-            "[Solution Nine] The Arcadion"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

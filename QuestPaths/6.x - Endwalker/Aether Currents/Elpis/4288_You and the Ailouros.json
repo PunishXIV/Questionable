@@ -38,10 +38,8 @@
             "Y": -22.394821,
             "Z": 498.91443
           },
-          "StopDistance": 1,
           "TerritoryId": 961,
-          "InteractionType": "WaitForNpcAtPosition",
-          "Mount": true
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1041141,
@@ -50,7 +48,6 @@
             "Y": -25.994936,
             "Z": 443.804
           },
-          "StopDistance": 1,
           "TerritoryId": 961,
           "InteractionType": "WaitForNpcAtPosition"
         },
@@ -61,7 +58,6 @@
             "Y": -25.933691,
             "Z": 487.78436
           },
-          "StopDistance": 1,
           "TerritoryId": 961,
           "InteractionType": "WaitForNpcAtPosition"
         },
@@ -71,7 +67,6 @@
             "Y": -38.65795,
             "Z": 506.43152
           },
-          "StopDistance": 1,
           "TerritoryId": 961,
           "InteractionType": "WalkTo"
         }

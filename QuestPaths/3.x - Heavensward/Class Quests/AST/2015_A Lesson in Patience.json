@@ -14,17 +14,7 @@
             "Z": -58.9151
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 5,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [419]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,24 +30,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest",
-          "StopDistance": 5,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 199.93884,
-                  "Y": -0.899981,
-                  "Z": -48.722107
-                },
-                "TerritoryId": 419,
-                "MaximumDistance": 100
-              }
-            }
-          },
           "NextQuestId": 2016
         }
       ]

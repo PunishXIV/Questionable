@@ -22,8 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog",
-          "Fly": true,
           "DataId": 2003664,
           "Position": {
             "X": 11.337402,
@@ -46,24 +44,13 @@
             "Z": 254.13892
           },
           "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 110.67165,
-            "Y": 18.372795,
-            "Z": 122.4577
-          },
-          "TerritoryId": 147,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2003666,
           "Position": {

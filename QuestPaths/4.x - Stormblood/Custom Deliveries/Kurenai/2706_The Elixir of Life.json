@@ -30,8 +30,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -54,7 +52,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -73,27 +70,6 @@
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": 322.1539,
-            "Y": -121.22571,
-            "Z": -314.2446
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": 198.4342,
-            "Y": -162.28119,
-            "Z": 115.91883
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "$": "Exile, outside",
-          "Fly": true
-        },
         {
           "DataId": 1023290,
           "Position": {
@@ -118,7 +94,6 @@
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
           "$": "Exile, outside",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Diving": false,
@@ -145,8 +120,7 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2002332,
-          "KillEnemyDataIds": [7824],
-          "Fly": true
+          "KillEnemyDataIds": [7824]
         }
       ]
     },
@@ -161,24 +135,13 @@
             "Z": 137.89575
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 200.64441,
-            "Y": -165.55836,
-            "Z": 116.97804
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
         {
           "Position": {
             "X": 163.43794,
@@ -188,17 +151,6 @@
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 2
-        },
-        {
-          "Position": {
-            "X": -96.41638,
-            "Y": -199.01863,
-            "Z": -68.85027
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "$": "Sui-no-Sato, SW outside",
-          "Fly": true
         },
         {
           "DataId": 1023280,

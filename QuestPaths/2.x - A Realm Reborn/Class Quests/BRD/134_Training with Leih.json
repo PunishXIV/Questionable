@@ -14,13 +14,8 @@
             "Y": 0.9999819,
             "Z": 35.01941
           },
-          "StopDistance": 7,
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -50,8 +45,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null, null, null, null, null, 2]
@@ -66,7 +59,6 @@
             "Z": -88.24298
           },
           "TerritoryId": 148,
-          "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 2]
@@ -93,7 +85,6 @@
             "Z": -51.07196
           },
           "TerritoryId": 148,
-          "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 4]
@@ -120,7 +111,6 @@
             "Z": -58.884644
           },
           "TerritoryId": 148,
-          "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 8]
@@ -154,7 +144,6 @@
             "Z": -138.41461
           },
           "TerritoryId": 148,
-          "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 16]
@@ -188,7 +177,6 @@
             "Z": -182.39111
           },
           "TerritoryId": 148,
-          "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
@@ -222,7 +210,6 @@
             "Z": -196.49048
           },
           "TerritoryId": 148,
-          "StopDistance": 15,
           "InteractionType": "Action",
           "Action": "Heavy Shot",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
@@ -240,11 +227,7 @@
             "Z": 28.580078
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -261,10 +244,6 @@
           "TerritoryId": 133,
           "InteractionType": "Interact",
           "TargetTerritoryId": 152,
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Lancers' Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "East Shroud - Hawthorne Hut"
@@ -282,7 +261,6 @@
             "Y": 2.9039853,
             "Z": 239.26413
           },
-          "StopDistance": 0.5,
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
@@ -313,14 +291,7 @@
                 null
               ]
             }
-          ],
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "East Shroud - Hawthorne Hut"
-            }
-          }
+          ]
         }
       ]
     },
@@ -335,11 +306,7 @@
             "Z": 28.580078
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -353,7 +320,6 @@
             "Y": 0.9999819,
             "Z": 35.01941
           },
-          "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [

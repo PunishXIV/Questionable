@@ -48,15 +48,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": 188.16484,
-            "Y": -19.576328,
-            "Z": -435.14563
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1030944,
           "Position": {
             "X": 169.604,
@@ -78,10 +69,8 @@
             "Y": -18.933985,
             "Z": -424.23593
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
@@ -94,10 +83,8 @@
             "Y": -18.933985,
             "Z": -424.23593
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "Jump",
-          "Mount": false,
           "$": "Southeast",
           "JumpDestination": {
             "Position": {
@@ -121,10 +108,8 @@
             "Y": -3.6865087,
             "Z": -426.3127
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "Jump",
-          "Mount": false,
           "$": "Southeast",
           "JumpDestination": {
             "Position": {
@@ -160,7 +145,6 @@
             "Y": -18.933985,
             "Z": -424.23593
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
           "SkipConditions": {
@@ -185,10 +169,8 @@
             "Y": -19.347927,
             "Z": -429.9049
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -201,10 +183,8 @@
             "Y": -19.347927,
             "Z": -429.9049
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "Jump",
-          "Mount": false,
           "$": "Southwest",
           "JumpDestination": {
             "Position": {
@@ -230,8 +210,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Jump",
-          "StopDistance": 0.25,
-          "Mount": false,
           "$": "Southwest",
           "JumpDestination": {
             "Position": {
@@ -267,7 +245,6 @@
             "Y": -19.347927,
             "Z": -429.9049
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
           "SkipConditions": {
@@ -291,10 +268,8 @@
             "Y": -20,
             "Z": -511.56027
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -307,10 +282,8 @@
             "Y": -20,
             "Z": -511.56027
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "Jump",
-          "Mount": false,
           "$": "Northwest",
           "JumpDestination": {
             "Position": {
@@ -336,8 +309,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Jump",
-          "StopDistance": 0.25,
-          "Mount": false,
           "$": "Northwest",
           "JumpDestination": {
             "Position": {
@@ -361,10 +332,8 @@
             "Y": -1.8364718,
             "Z": -512.14294
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "Jump",
-          "Mount": false,
           "$": "Northwest",
           "JumpDestination": {
             "Position": {
@@ -400,7 +369,6 @@
             "Y": -20,
             "Z": -511.56027
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
           "SkipConditions": {
@@ -425,10 +393,8 @@
             "Y": -19.677738,
             "Z": -516.0344
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -441,10 +407,8 @@
             "Y": -19.677738,
             "Z": -516.0344
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "Jump",
-          "Mount": false,
           "$": "Northwest",
           "JumpDestination": {
             "Position": {
@@ -468,10 +432,8 @@
             "Y": -5.0838485,
             "Z": -515.7744
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "Jump",
-          "Mount": false,
           "$": "Northwest",
           "JumpDestination": {
             "Position": {
@@ -495,10 +457,8 @@
             "Y": -3.5484233,
             "Z": -512.7198
           },
-          "StopDistance": 0.25,
           "TerritoryId": 817,
           "InteractionType": "Jump",
-          "Mount": false,
           "$": "Northwest",
           "JumpDestination": {
             "Position": {
@@ -534,16 +494,6 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Position": {
-            "X": 184.5605,
-            "Y": -19.879814,
-            "Z": -516.7151
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
           "DataId": 1029241,
           "Position": {
             "X": 177.203,
@@ -565,7 +515,6 @@
             "Y": -19.521969,
             "Z": -536.0647
           },
-          "StopDistance": 7,
           "TerritoryId": 817,
           "InteractionType": "Interact",
           "DialogueChoices": [

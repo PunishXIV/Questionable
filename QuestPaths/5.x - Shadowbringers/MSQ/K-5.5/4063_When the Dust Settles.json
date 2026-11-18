@@ -13,7 +13,6 @@
             "Y": 83.2,
             "Z": 15.121643
           },
-          "StopDistance": 7,
           "TerritoryId": 130,
           "InteractionType": "AcceptQuest"
         }
@@ -42,10 +41,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] The Chamber of Rule",
-            "[Ul'dah] Alchemists' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -98,7 +93,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
           "TargetTerritoryId": 351
         }
       ]

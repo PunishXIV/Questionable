@@ -14,8 +14,7 @@
             "Z": -188.3421
           },
           "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yanxia - Namai"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -85,8 +84,7 @@
             "Z": -164.72119
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },

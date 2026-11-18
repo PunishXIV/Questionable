@@ -15,7 +15,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah",
           "$": "auto: issuer 1026849 (Kipih Jakkya)"
         }
       ]
@@ -51,11 +50,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -99,10 +93,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESBKC002_03159_Q1_000_000",
@@ -127,8 +117,6 @@
           "TerritoryId": 152,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": { "Enabled": true },
-          "Fly": true,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "$": "auto: lua EOBJECT0 -> 2009664 (destination)"
         }
       ]
@@ -145,8 +133,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "$": "auto: todo location -> 1026871 (Noctis)"
         }
       ]
@@ -163,11 +149,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "$": "auto: todo location -> 1026867 (Kipih Jakkya)"
         }
       ]
@@ -184,10 +165,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Aetheryte Plaza"
-          ],
           "NextQuestId": 3160,
           "$": "auto: todo turn-in -> 1026870 (Noctis)"
         }

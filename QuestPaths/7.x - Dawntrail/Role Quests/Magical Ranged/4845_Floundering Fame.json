@@ -15,7 +15,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -38,11 +37,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Ruveydah Fibers"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -80,11 +74,7 @@
             "Z": -204.91345
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Ruveydah Fibers",
-            "[Radz-at-Han] Mehryde's Meyhane"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -114,8 +104,7 @@
             "Z": -219.40955
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -144,10 +133,8 @@
             "Y": 3.616333,
             "Z": -241.77924
           },
-          "StopDistance": 0.25,
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "NotTargetable": true
@@ -170,19 +157,7 @@
             "Z": -203.20459
           },
           "TerritoryId": 957,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 50,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 386.85394,
-            "Y": 3.0972311,
-            "Z": -220.57103
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048364,
@@ -192,19 +167,7 @@
             "Z": -174.068
           },
           "TerritoryId": 957,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 50,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 395.88028,
-            "Y": 10.267179,
-            "Z": -192.21916
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048364,
@@ -214,39 +177,7 @@
             "Z": -169.7558
           },
           "TerritoryId": 957,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 50,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 398.42825,
-            "Y": 12.946791,
-            "Z": -180.08061
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 368.02908,
-            "Y": 5.7749786,
-            "Z": -135.06207
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 300.81885,
-            "Y": 18.925224,
-            "Z": -43.56831
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048364,
@@ -256,19 +187,7 @@
             "Z": -2.1020741
           },
           "TerritoryId": 957,
-          "InteractionType": "WaitForNpcAtPosition",
-          "StopDistance": 50,
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 256.60135,
-            "Y": 19.312042,
-            "Z": -1.2628903
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "Position": {
@@ -277,8 +196,7 @@
             "Z": 14.936783
           },
           "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          "InteractionType": "WalkTo"
         }
       ]
     },
@@ -309,7 +227,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
           "NextQuestId": 4846
         }
       ]

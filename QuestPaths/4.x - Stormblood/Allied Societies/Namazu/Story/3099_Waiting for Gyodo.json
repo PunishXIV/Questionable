@@ -13,9 +13,7 @@
             "Z": 91.11157
           },
           "TerritoryId": 622,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "UseItem",
-          "ItemId": 2002473,
-          "AetheryteShortcut": "Kugane"
+          "ItemId": 2002473
         }
       ]
     },
@@ -62,8 +59,7 @@
             "Z": 91.203125
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -101,7 +97,6 @@
               "ItemCount": 2
             }
           ],
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
           "RequiredQuestAcceptedJob": [
             "Miner"
           ]
@@ -115,7 +110,6 @@
               "ItemCount": 2
             }
           ],
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
           "RequiredQuestAcceptedJob": [
             "Botanist"
           ]
@@ -128,8 +122,7 @@
             "Z": 91.63037
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -188,9 +181,7 @@
             "Z": 91.203125
           },
           "TerritoryId": 622,
-          "InteractionType": "CompleteQuest",
-          "Mount": false,
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,16 +15,7 @@
             "Z": 178.72888
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [129, 128]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -69,17 +60,7 @@
             "Z": 110.795654
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ul'dah",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [130, 131]
-            }
-          },
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1003818,
@@ -89,11 +70,7 @@
             "Z": 98.924194
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Goldsmiths' Guild",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,17 +85,7 @@
             "Z": 208.39233
           },
           "TerritoryId": 128,
-          "AetheryteShortcut": "Limsa Lominsa",
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [129, 128]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },

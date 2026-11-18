@@ -17,9 +17,7 @@
             "Z": -205.09656
           },
           "TerritoryId": 818,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tempest - Ondo Cups",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,8 +42,6 @@
             "Value": 50,
             "ItemId": 2002616
           },
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -75,8 +71,6 @@
             "Value": 50,
             "ItemId": 2002616
           },
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [
             {
               "Low": 1
@@ -106,8 +100,6 @@
             "Value": 50,
             "ItemId": 2002616
           },
-          "Fly": true,
-          "Land": true,
           "CompletionQuestVariablesFlags": [
             null,
             {
@@ -132,9 +124,7 @@
             "Z": -205.09656
           },
           "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tempest - Ondo Cups",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

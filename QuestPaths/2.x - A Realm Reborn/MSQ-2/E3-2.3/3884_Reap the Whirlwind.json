@@ -14,24 +14,13 @@
             "Z": -302.93738
           },
           "TerritoryId": 141,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -141.48044,
-            "Y": 4.2354183,
-            "Z": 232.0292
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1009055,
           "Position": {
@@ -47,16 +36,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 57.739433,
-            "Y": -1.247997,
-            "Z": 343.4356
-          },
-          "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1009056,
           "Position": {
@@ -87,17 +66,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -119.1183,
-            "Y": 3.7999938,
-            "Z": -104.33473
-          },
-          "TerritoryId": 130,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ul'dah",
-          "$": "Ul'dah Aetheryte to Immortal Flames"
-        },
         {
           "DataId": 1004576,
           "Position": {

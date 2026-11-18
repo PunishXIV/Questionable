@@ -14,9 +14,7 @@
             "Z": 575.1278
           },
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,16 +27,13 @@
             "Y": 30.646347,
             "Z": -487.75848
           },
-          "StopDistance": 0.5,
           "TerritoryId": 816,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             11455,
             11456
-          ],
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -68,9 +63,7 @@
             "Z": 575.1278
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

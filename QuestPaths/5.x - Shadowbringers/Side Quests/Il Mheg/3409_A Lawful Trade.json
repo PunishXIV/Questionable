@@ -13,23 +13,7 @@
             "Z": -882.7626
           },
           "TerritoryId": 816,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 69.7489,
-                  "Y": 110.69292,
-                  "Z": -883.69574
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,8 +29,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -68,8 +50,7 @@
             "Z": 331.80737
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2010186,
@@ -79,8 +60,7 @@
             "Z": 209.18591
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2010185,
@@ -100,8 +80,7 @@
             "Z": 27.725586
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2010187,
@@ -136,23 +115,7 @@
             "Z": -882.7626
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 1,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 71.46892,
-                  "Y": 110.75986,
-                  "Z": -882.7626
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -29,8 +29,7 @@
             "Z": 40.6958
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,9 +44,7 @@
             "Z": 69.16907
           },
           "TerritoryId": 398,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

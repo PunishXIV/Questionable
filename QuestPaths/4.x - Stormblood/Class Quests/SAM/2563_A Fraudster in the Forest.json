@@ -13,10 +13,8 @@
             "Y": -8,
             "Z": 99.19885
           },
-          "StopDistance": 1.5,
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -97,16 +95,13 @@
             "Y": -13.3742895,
             "Z": 13.173157
           },
-          "StopDistance": 0.5,
           "TerritoryId": 154,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7492,
             7493
-          ],
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -167,10 +162,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
           "NextQuestId": 2564
         }
       ]

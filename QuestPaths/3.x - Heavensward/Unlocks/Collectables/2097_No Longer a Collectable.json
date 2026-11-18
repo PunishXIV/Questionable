@@ -28,11 +28,8 @@
             "Y": 30.907087,
             "Z": -359.63995
           },
-          "StopDistance": 1,
           "TerritoryId": 141,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true,
           "NextQuestId": 2098
         }
       ]

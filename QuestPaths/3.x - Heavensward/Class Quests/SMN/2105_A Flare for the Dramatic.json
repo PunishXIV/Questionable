@@ -14,8 +14,7 @@
             "Z": -96.23871
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,11 +31,6 @@
           "TerritoryId": 399,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true},
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
           "$": "Unsure if this works without flying unlocked"
         }
       ]
@@ -66,7 +60,6 @@
             "Y": 232.54102,
             "Z": 728.84717
           },
-          "StopDistance": 7,
           "TerritoryId": 399,
           "InteractionType": "CompleteQuest"
         }

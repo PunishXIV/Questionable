@@ -44,8 +44,7 @@
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.0.0.294"
-          },
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+          }
         }
       ]
     },
@@ -62,7 +61,6 @@
             "Y": 28.760696,
             "Z": -426.50494
           },
-          "StopDistance": 7,
           "TerritoryId": 1189,
           "InteractionType": "CompleteQuest"
         }

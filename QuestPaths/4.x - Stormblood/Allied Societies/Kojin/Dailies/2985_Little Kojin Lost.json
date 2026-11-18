@@ -14,37 +14,13 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 324.734,
-            "Y": -118.16611,
-            "Z": -310.65613
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": 316.56665,
-            "Y": -118.78511,
-            "Z": -321.79645
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2009099,
           "Position": {
@@ -56,8 +32,7 @@
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANKJN401_02985_SAYTODO_000_015"
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -73,7 +48,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null, [16], null, null, null, null]
         },
         {
@@ -85,7 +59,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null, [32], null, null, null, null]
         },
         {
@@ -97,7 +70,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null, [48], null, null, null, null]
         }
       ]
@@ -113,11 +85,7 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

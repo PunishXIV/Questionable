@@ -14,8 +14,7 @@
             "Z": -597.1008
           },
           "TerritoryId": 814,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kholusia - Tomra"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,8 +33,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             10870
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -54,8 +52,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             10871
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -71,7 +68,6 @@
           },
           "TerritoryId": 814,
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "7.5.7.4"
@@ -120,12 +116,7 @@
             "Z": 209.88782
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

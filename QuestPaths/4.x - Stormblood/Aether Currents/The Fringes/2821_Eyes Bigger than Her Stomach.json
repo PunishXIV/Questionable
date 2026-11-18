@@ -14,8 +14,7 @@
             "Z": 233.29517
           },
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -53,8 +52,7 @@
             "Z": 233.29517
           },
           "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

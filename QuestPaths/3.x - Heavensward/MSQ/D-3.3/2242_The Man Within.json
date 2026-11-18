@@ -13,7 +13,6 @@
             "Y": 15.96505,
             "Z": -0.22894287
           },
-          "StopDistance": 7,
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest"
         }
@@ -29,7 +28,6 @@
             "Y": 16.009666,
             "Z": -9.567444
           },
-          "StopDistance": 7,
           "TerritoryId": 419,
           "InteractionType": "Interact",
           "TargetTerritoryId": 433
@@ -41,7 +39,6 @@
             "Y": 0.022254243,
             "Z": 4.623413
           },
-          "StopDistance": 7,
           "TerritoryId": 433,
           "InteractionType": "Interact"
         }
@@ -58,11 +55,7 @@
             "Z": 38.254395
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

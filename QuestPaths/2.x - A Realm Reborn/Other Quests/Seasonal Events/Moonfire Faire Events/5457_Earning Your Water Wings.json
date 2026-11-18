@@ -15,10 +15,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "$": "auto: issuer 1058130 (Mayaru Moyaru)"
         }
       ]
@@ -26,17 +22,6 @@
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 678.8558,
-            "Y": 8.175947,
-            "Z": 421.00647
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true
-        },
         {
           "DataId": 1058131,
           "Position": {
@@ -46,7 +31,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "Mount": false,
           "$": "auto: todo location -> 1058131 (Haermaga)"
         }
       ]
@@ -54,27 +38,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 744.2034,
-            "Y": 8.4,
-            "Z": 389.4422
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 744.2034,
-            "Y": 10,
-            "Z": 389.4422
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Comment": "Flying up a bit to help with pathing",
-          "Mount": true
-        },
         {
           "DataId": 2015117,
           "Position": {
@@ -84,7 +47,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 2015117 (destination)"
         }
       ]
@@ -101,7 +63,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 1058132 (pleasure cruise chaperone)"
         }
       ]
@@ -118,7 +79,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "Interact",
-          "StopDistance": 5,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_FESSUX201_05457_Q2_000_000",
@@ -157,16 +117,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 678.8558,
-            "Y": 8.175947,
-            "Z": 421.00647
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1058136,
           "Position": {
             "X": 775.021,
@@ -175,7 +125,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "CompleteQuest",
-          "Mount": false,
           "$": "auto: todo turn-in -> 1058136 (Haermaga)"
         }
       ]

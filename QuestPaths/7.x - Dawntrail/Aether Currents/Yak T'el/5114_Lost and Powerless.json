@@ -14,21 +14,7 @@
             "Z": 492.0271
           },
           "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 531.0597,
-                  "Y": -142.49185,
-                  "Z": 492.0271
-                },
-                "TerritoryId": 1189,
-                "MaximumDistance": 250
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,7 +27,6 @@
             "Y": -154.60175,
             "Z": 328.8051
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1189,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -61,7 +46,6 @@
             "Y": -155.05281,
             "Z": 322.80444
           },
-          "StopDistance": 7,
           "TerritoryId": 1189,
           "InteractionType": "Interact"
         }

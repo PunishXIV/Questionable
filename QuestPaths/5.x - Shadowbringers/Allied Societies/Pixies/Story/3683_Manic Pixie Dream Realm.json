@@ -14,11 +14,7 @@
             "Z": 204.11987
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,9 +29,7 @@
             "Z": 655.4512
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,8 +44,7 @@
             "Z": 737.8804
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,12 +57,10 @@
             "Y": 10.83118,
             "Z": 738.46594
           },
-          "StopDistance": 1,
           "TerritoryId": 813,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [11437],
-          "Fly": true
+          "KillEnemyDataIds": [11437]
         }
       ]
     },
@@ -83,7 +74,6 @@
             "Y": 9.887029,
             "Z": 726.74133
           },
-          "StopDistance": 7,
           "TerritoryId": 813,
           "InteractionType": "Interact"
         }
@@ -100,8 +90,7 @@
             "Z": 739.9557
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -117,8 +106,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -177,8 +164,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",

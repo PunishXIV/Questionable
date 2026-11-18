@@ -14,8 +14,7 @@
             "Z": -417.41058
           },
           "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yanxia - House of the Fierce"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -382.8031
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,8 +58,7 @@
             "Z": -641.413
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,8 +73,7 @@
             "Z": -792.6604
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -99,8 +95,7 @@
               "Prompt": "TEXT_STMBDA502_02520_Q1_000_081",
               "Answer": "TEXT_STMBDA502_02520_A1_000_082"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -129,8 +124,7 @@
             "Z": -690.486
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -163,8 +157,7 @@
             "Z": -838.34595
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -179,8 +172,7 @@
             "Z": -382.8031
           },
           "TerritoryId": 614,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yanxia - House of the Fierce"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

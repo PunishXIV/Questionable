@@ -13,10 +13,8 @@
             "Y": 23.979128,
             "Z": -48.17273
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,7 +28,6 @@
             "Y": 23.979128,
             "Z": -48.17273
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
           "InteractionType": "Interact"
         }
@@ -92,11 +89,7 @@
             "Z": -0.6867676
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

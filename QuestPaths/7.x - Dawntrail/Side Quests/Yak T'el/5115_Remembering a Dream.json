@@ -14,22 +14,7 @@
             "Z": 477.0122
           },
           "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 515.58704,
-                  "Y": -146.73436,
-                  "Z": 477.0122
-                },
-                "TerritoryId": 1189,
-                "MaximumDistance": 250
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -49,7 +34,6 @@
           "KillEnemyDataIds": [
             17674
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -65,7 +49,6 @@
           "KillEnemyDataIds": [
             17674
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -77,7 +60,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -93,8 +75,7 @@
             "Z": 307.97278
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -110,8 +91,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true,
           "NextQuestId": 5116
         }
       ]

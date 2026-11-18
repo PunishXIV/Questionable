@@ -15,19 +15,7 @@
             "Z": 98.924194
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -42,11 +30,7 @@
             "Z": 108.20166
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Miners' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,15 +64,6 @@
           }
         },
         {
-          "TerritoryId": 130,
-          "InteractionType": "None",
-          "SkipConditions": {"StepIf": {"InTerritory": [131]}},
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
-        },
-        {
           "DataId": 1003818,
           "Position": {
             "X": 157.36621,
@@ -97,11 +72,7 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Ul'dah] Miners' Guild",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "AllowHighQuality": true
         }
       ]
     }

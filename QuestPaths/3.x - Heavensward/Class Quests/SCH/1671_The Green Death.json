@@ -14,18 +14,7 @@
             "Z": -250.56848
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,9 +29,6 @@
             "Z": 42.04371
           },
           "TerritoryId": 139,
-          "StopDistance": 0.25,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true,
           "InteractionType": "Interact"
         }
       ]
@@ -57,15 +43,12 @@
             "Y": 64.25574,
             "Z": -197.34491
           },
-          "StopDistance": 0.5,
           "TerritoryId": 180,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             4399
-          ],
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -95,9 +78,6 @@
             "Z": 42.04371
           },
           "TerritoryId": 139,
-          "StopDistance": 0.25,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1672
         }

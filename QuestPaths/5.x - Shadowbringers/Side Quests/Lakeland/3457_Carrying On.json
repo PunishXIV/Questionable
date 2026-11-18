@@ -17,22 +17,7 @@
             "Z": -79.54535
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Ostall Imperative",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -137.3465,
-                  "Y": 5.7616596,
-                  "Z": -79.54535
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 600
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,7 +25,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
           "DataId": 1030710,
           "Position": {
             "X": 791.1345,
@@ -48,8 +32,7 @@
             "Z": -29.800903
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -57,11 +40,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza", 
-            "[Crystarium] Musica Universalis Markets"
-          ],
           "DataId": 1027985,
           "Position": {
             "X": 86.41174,
@@ -69,8 +47,7 @@
             "Z": 143.75525
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -78,7 +55,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "AetheryteShortcut": "Lakeland - Fort Jobb",
           "DataId": 1030711,
           "Position": {
             "X": 778.2252,
@@ -87,7 +63,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 3458
         }
       ]

@@ -15,11 +15,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "$": "auto: issuer 1058681 (pumpkin-headed apparition)"
         }
       ]
@@ -36,10 +31,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "$": "auto: todo location -> 1058682 (pumpkin-headed apparition)"
         }
       ]
@@ -68,10 +59,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Botanists' Guild",
-            "[Gridania] Conjurers' Guild"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}],
           "$": "auto: todo area 10y from lua ACTOR3 -> 1058684 (ebullient adventurer)"
         }
@@ -96,10 +83,6 @@
               "Answer": "TEXT_FESHLX201_05467_A2_000_001",
               "Type": "List"
             }
-          ],
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Mih Khetto's Amphitheatre"
           ],
           "$": "auto: todo turn-in -> 1058686 (Pattin)"
         }

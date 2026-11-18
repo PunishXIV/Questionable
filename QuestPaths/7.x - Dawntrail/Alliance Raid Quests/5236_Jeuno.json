@@ -13,7 +13,6 @@
             "Y": -14,
             "Z": 29.587158
           },
-          "StopDistance": 7,
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest"
         }
@@ -30,9 +29,7 @@
             "Z": 663.6301
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -106,7 +103,6 @@
             "Y": 41.99999,
             "Z": -50.55316
           },
-          "StopDistance": 5,
           "TerritoryId": 1265,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -168,12 +164,7 @@
             "Z": -354.84857
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Brightploom Post"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

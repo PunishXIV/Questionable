@@ -36,11 +36,7 @@
             "Z": -54.703613
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Bayside Bevy Marketplace",
-            "[Tuliyollal] The Resplendent Quarter"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -55,11 +51,7 @@
             "Z": 153.06323
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] The Resplendent Quarter",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

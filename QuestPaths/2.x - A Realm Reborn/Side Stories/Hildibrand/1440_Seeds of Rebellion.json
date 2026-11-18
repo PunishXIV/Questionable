@@ -64,7 +64,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -76,7 +75,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -94,7 +92,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -129,17 +126,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true,
-          "Position": {
-            "X": 581.46533,
-            "Y": 14.587067,
-            "Z": 393.86594
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1009319,
           "Position": {
             "X": 581.3534,
@@ -155,7 +141,6 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1009336,
           "Position": {
             "X": 494.49902,
@@ -171,7 +156,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
           "DataId": 1009337,
           "Position": {
             "X": -46.860474,

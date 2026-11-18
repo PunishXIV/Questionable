@@ -30,11 +30,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ],
           "TargetTerritoryId": 844
         },
         {
@@ -94,7 +89,6 @@
             "Y": 3.9998171,
             "Z": 204.24194
           },
-          "StopDistance": 4,
           "TerritoryId": 819,
           "InteractionType": "Interact",
           "Comment": "Glynard",
@@ -110,10 +104,6 @@
           "TerritoryId": 819,
           "InteractionType": "Interact",
           "Comment": "Katliss",
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Crystalline Mean"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
@@ -126,10 +116,6 @@
           "TerritoryId": 819,
           "InteractionType": "Interact",
           "Comment": "Moren",
-          "AethernetShortcut": [
-            "[Crystarium] The Crystalline Mean",
-            "[Crystarium] The Cabinet of Curiosity"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -145,8 +131,7 @@
             "Z": -0.869812
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

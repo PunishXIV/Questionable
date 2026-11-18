@@ -14,9 +14,7 @@
             "Z": 729.4575
           },
           "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,7 +28,6 @@
             "Z": -852.278
           },
           "TerritoryId": 1189,
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
           "InteractionType": "Gather",
           "RequiredQuestAcceptedJob": [
             "Miner"
@@ -77,9 +74,7 @@
             "Z": 729.4575
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

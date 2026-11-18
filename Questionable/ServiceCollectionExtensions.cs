@@ -2,7 +2,6 @@
 using Questionable.Controller.Steps.Interactions;
 using Questionable.Controller.Steps.Movement;
 using Questionable.Controller.Steps.Shared;
-using AethernetShortcut = Questionable.Controller.Steps.Shared.AethernetShortcut;
 
 namespace Questionable;
 
@@ -81,23 +80,13 @@ internal static class ServiceCollectionExtensions
             .AddTaskFactoryAndExecutor<StepDisabled.Task, StepDisabled.Factory,
                 StepDisabled.Executor>();
         serviceCollection.AddTaskFactory<EquipRecommended.BeforeDutyOrInstance>();
-        serviceCollection
-            .AddTaskFactoryAndExecutor<AetheryteShortcut.Task, AetheryteShortcut.Factory,
-                AetheryteShortcut.Executor>();
-        serviceCollection.AddTaskExecutor<AetheryteShortcut.WaitAfterTeleport, AetheryteShortcut.WaitAfterTeleportExecutor>();
-        serviceCollection
-            .AddTaskExecutor<AetheryteShortcut.MoveAway,
-                AetheryteShortcut.MoveAwayExecutor>();
+        serviceCollection.AddTaskExecutor<AetheryteShortcut.Task, AetheryteShortcut.Executor>();
         serviceCollection.AddTaskFactoryAndExecutor<Gather.Task, Gather.Factory, Gather.Executor>();
-        serviceCollection
-            .AddTaskFactoryAndExecutor<AethernetShortcut.Task, AethernetShortcut.Factory,
-                AethernetShortcut.Executor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<WaitAtStart.WaitDelay, WaitAtStart.Factory, WaitAtStart.WaitDelayExecutor>();
         serviceCollection.AddTaskFactoryAndExecutor<MoveTask, MoveTo.Factory, MoveExecutor>();
         serviceCollection.AddTaskExecutor<Travel.Task, Travel.Executor>();
         serviceCollection.AddTaskExecutor<WaitForNearDataId, WaitForNearDataIdExecutor>();
-        serviceCollection.AddTaskExecutor<LandTask, LandExecutor>();
         serviceCollection
             .AddTaskFactoryAndExecutor<SendNotification.Task, SendNotification.Factory, SendNotification.Executor>();
 

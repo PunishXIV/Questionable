@@ -34,8 +34,7 @@
 							"DataId": 10302,
 							"MinimumKillCount": 3
 						}
-					],
-          "Fly": true
+					]
         }
       ]
     },
@@ -50,9 +49,7 @@
             "Z": -230.02979
           },
           "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Tempest - Ondo Cups"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

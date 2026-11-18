@@ -14,19 +14,7 @@
             "Z": 95.26196
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,9 +29,7 @@
             "Z": -682.76495
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -58,9 +44,7 @@
             "Z": -353.38373
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -75,8 +59,7 @@
             "Z": -336.96503
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Mount": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -92,8 +75,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_JOBMNK601_02426_Q2_000_000",

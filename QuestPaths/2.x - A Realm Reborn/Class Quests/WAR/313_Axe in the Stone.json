@@ -15,18 +15,7 @@
             "Z": -255.8786
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -56,11 +45,7 @@
             "Z": 45.334473
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -187,11 +172,7 @@
             "Z": -255.8786
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -230,11 +211,7 @@
             "Z": 28.519043
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -247,7 +224,6 @@
             "Y": 33.93623,
             "Z": 91.90441
           },
-          "StopDistance": 0.5,
           "TerritoryId": 135,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
@@ -269,10 +245,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "NextQuestId": 315
         }
       ]

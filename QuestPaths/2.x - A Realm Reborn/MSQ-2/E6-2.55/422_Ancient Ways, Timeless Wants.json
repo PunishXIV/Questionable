@@ -29,9 +29,7 @@
             "Z": 490.6233
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": 601.77
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

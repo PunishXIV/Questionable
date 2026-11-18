@@ -14,9 +14,7 @@
             "Z": 575.1278
           },
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,6 @@
             "Z": 573.69336
           },
           "TerritoryId": 816,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
           "InteractionType": "Interact"
         }
       ]
@@ -50,7 +46,6 @@
           "TerritoryId": 816,
           "InteractionType": "Action",
           "Action": "Siphon Snout",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -63,7 +58,6 @@
           "TerritoryId": 816,
           "InteractionType": "Action",
           "Action": "Siphon Snout",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -77,11 +71,9 @@
             "Y": 55.954834,
             "Z": -671.29016
           },
-          "StopDistance": 100,
           "TerritoryId": 816,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 2,
-          "Fly": true,
           "$": "Teleport won't work without a delay"
         },
         {
@@ -92,9 +84,7 @@
             "Z": 575.1278
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,8 +14,7 @@
             "Z": -118.48633
           },
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,7 +42,6 @@
           },
           "TerritoryId": 635,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Rhalgr's Reach",
           "$": "1 16 0 0 0 128 -> 2 16 0 0 0 160",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
@@ -103,16 +101,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 79.89871,
-            "Y": -0.38368523,
-            "Z": -108.87432
-          },
-          "TerritoryId": 635,
-          "InteractionType": "WalkTo",
-          "Mount": false
-        },
         {
           "DataId": 1019470,
           "Position": {

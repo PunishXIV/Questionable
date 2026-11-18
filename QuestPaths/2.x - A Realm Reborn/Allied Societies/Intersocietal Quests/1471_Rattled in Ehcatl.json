@@ -15,9 +15,6 @@
           },
           "TerritoryId": 180,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "StopDistance": 1,
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_BANALL050_01471_Q1_000_000",
@@ -39,10 +36,7 @@
             "Z": -212.26831
           },
           "TerritoryId": 180,
-          "InteractionType": "Interact",
-          "StopDistance": 1,
-          "AetheryteShortcut": "Outer La Noscea - Camp Overlook",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -73,8 +67,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_BANALL050_01471_Q2_000_000",
@@ -96,8 +88,7 @@
             "Z": 18.295532
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -112,8 +103,7 @@
             "Z": 100.72473
           },
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

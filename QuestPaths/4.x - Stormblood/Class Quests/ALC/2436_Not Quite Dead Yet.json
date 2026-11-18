@@ -17,24 +17,7 @@
 				"Z": 120.83618
 			},
 			"TerritoryId": 131,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Ul'dah",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Aetheryte Plaza",
-			"[Ul'dah] Alchemists' Guild"
-			],
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					130,
-					131
-					]
-				}
-			}
+			"InteractionType": "AcceptQuest"
 		}
 		]
 	},
@@ -51,12 +34,7 @@
 				"Z": 66.20886
 			},
 			"TerritoryId": 130,
-			"InteractionType": "Interact",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Alchemists' Guild",
-			"[Ul'dah] Thaumaturges' Guild"
-			]
+			"InteractionType": "Interact"
 		}
 		]
 	},
@@ -107,12 +85,7 @@
 				"Z": 120.83618
 			},
 			"TerritoryId": 131,
-			"InteractionType": "CompleteQuest",
-			"AethernetShortcut":
-			[
-			"[Ul'dah] Thaumaturges' Guild",
-			"[Ul'dah] Alchemists' Guild"
-			]
+			"InteractionType": "CompleteQuest"
 		}
 		]
 	}

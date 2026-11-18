@@ -13,7 +13,6 @@
             "Y": -0.00010118321,
             "Z": 14.816467
           },
-          "StopDistance": 5,
           "TerritoryId": 963,
           "InteractionType": "AcceptQuest"
         }
@@ -30,11 +29,7 @@
             "Z": 36.819946
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Kama"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -57,9 +52,7 @@
               "RewardItemId": 2003459,
               "RewardItemCount": 1
             }
-          ],
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -74,9 +67,7 @@
             "Z": -24.551819
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,8 +82,7 @@
             "Z": -285.42004
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,11 +98,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Kama"
-          ],
           "NextQuestId": 4755
         }
       ]

@@ -15,7 +15,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "$": "auto: issuer 1003359 (S'nairoh)"
         }
       ]
@@ -68,7 +67,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "$": "auto: todo turn-in -> 1003359 (S'nairoh)"
         }
       ]

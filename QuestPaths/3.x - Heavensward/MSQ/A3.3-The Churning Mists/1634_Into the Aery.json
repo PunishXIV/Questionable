@@ -29,11 +29,7 @@
             "Z": -47.68445
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,7 +59,6 @@
             "Y": -1.1916885,
             "Z": -354.94012
           },
-          "StopDistance": 7,
           "TerritoryId": 400,
           "InteractionType": "CompleteQuest"
         }

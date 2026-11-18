@@ -29,9 +29,7 @@
             "Z": -452.20117
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,13 +44,7 @@
             "Z": -48.233826
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Western Rhalgr's Reach"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,9 +59,7 @@
             "Z": 237.96448
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -84,8 +74,7 @@
             "Z": 218.46338
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -101,8 +90,7 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Action",
-          "Action": "Buffet (Griffin)",
-          "Fly": true
+          "Action": "Buffet (Griffin)"
         }
       ]
     },
@@ -118,8 +106,7 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Action",
-          "Action": "Buffet (Griffin)",
-          "Fly": true
+          "Action": "Buffet (Griffin)"
         }
       ]
     },
@@ -135,8 +122,7 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Action",
-          "Action": "Buffet (Griffin)",
-          "Fly": true
+          "Action": "Buffet (Griffin)"
         }
       ]
     },
@@ -151,8 +137,7 @@
             "Z": 231.40308
           },
           "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "Mount": false
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,18 +15,7 @@
             "Z": -27.267883
           },
           "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "InteractionType": "AcceptQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,9 +34,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             294
-          ],
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -61,7 +48,6 @@
             "Y": 6.6893935,
             "Z": -3.2490644
           },
-          "StopDistance": 7,
           "TerritoryId": 153,
           "InteractionType": "Interact"
         }
@@ -82,8 +68,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             294
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -97,7 +82,6 @@
             "Y": 17.550354,
             "Z": -129.90009
           },
-          "StopDistance": 7,
           "TerritoryId": 153,
           "InteractionType": "Interact"
         }
@@ -118,8 +102,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             294
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -133,7 +116,6 @@
             "Y": 16.181925,
             "Z": -112.68793
           },
-          "StopDistance": 7,
           "TerritoryId": 153,
           "InteractionType": "Interact"
         }
@@ -151,8 +133,7 @@
           },
           "TerritoryId": 153,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -168,10 +149,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
           "NextQuestId": 1079
         }
       ]

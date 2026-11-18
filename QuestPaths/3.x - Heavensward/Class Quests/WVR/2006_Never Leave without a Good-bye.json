@@ -15,16 +15,7 @@
             "Z": -30.47229
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,11 +30,7 @@
             "Z": -27.634155
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] The Last Vigil"
-          ]
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1012553,
@@ -83,11 +70,7 @@
             "Z": 98.924194
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -116,11 +99,7 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "AllowHighQuality": true
         }
       ]
     },
@@ -135,8 +114,7 @@
             "Z": 109.453
           },
           "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

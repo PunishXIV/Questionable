@@ -15,7 +15,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "AttuneAetherCurrent",
-          "AetheryteShortcut": "Heritage Found - Electrope Strike",
           "AetherCurrentId": 2818472
         },
         {
@@ -113,7 +112,6 @@
             "Y": -13.412781,
             "Z": 693.1105
           },
-          "StopDistance": 4.5,
           "TerritoryId": 1191,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818473

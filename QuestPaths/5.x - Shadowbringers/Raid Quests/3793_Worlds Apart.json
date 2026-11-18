@@ -13,7 +13,6 @@
             "Y": 7.1558266,
             "Z": -237.78137
           },
-          "StopDistance": 4,
           "TerritoryId": 815,
           "InteractionType": "AcceptQuest"
         }
@@ -30,12 +29,7 @@
             "Z": 221.36255
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -43,24 +37,12 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 268.15204,
-            "Y": 7.1558266,
-            "Z": -237.94643
-          },
-          "TerritoryId": 815,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
-          "Fly": true
-        },
-        {
           "DataId": 1032590,
           "Position": {
             "X": 265.3086,
             "Y": 7.1558266,
             "Z": -237.78137
           },
-          "StopDistance": 4,
           "TerritoryId": 815,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3975

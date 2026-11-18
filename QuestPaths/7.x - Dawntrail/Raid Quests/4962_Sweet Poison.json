@@ -15,10 +15,6 @@
           "TerritoryId": 1186,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1224,
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] The Arcadion"
-          ],
           "SkipConditions": {"StepIf": {"InTerritory": [1224]}}
         },
         {
@@ -28,7 +24,6 @@
             "Y": -3.3667622E-13,
             "Z": -9.658997
           },
-          "StopDistance": 7,
           "TerritoryId": 1224,
           "InteractionType": "AcceptQuest"
         }
@@ -57,7 +52,6 @@
             "Y": -3.3667622E-13,
             "Z": -9.658997
           },
-          "StopDistance": 7,
           "TerritoryId": 1224,
           "InteractionType": "Interact"
         }
@@ -73,7 +67,6 @@
             "Y": -1.9688797E-12,
             "Z": -10.727112
           },
-          "StopDistance": 7,
           "TerritoryId": 1224,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4963

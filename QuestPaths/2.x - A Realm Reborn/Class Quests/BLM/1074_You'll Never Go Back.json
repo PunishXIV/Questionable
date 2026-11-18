@@ -16,19 +16,7 @@
           },
           "TerritoryId": 131,
           "InteractionType": "EquipItem",
-          "ItemId": 4548,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "ItemId": 4548
         },
         {
           "TerritoryId": 131,
@@ -58,8 +46,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             21
@@ -94,11 +80,7 @@
               "Z": 59.952637
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -113,18 +95,7 @@
               "Z": 113.725464
           },
           "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130
-              ]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

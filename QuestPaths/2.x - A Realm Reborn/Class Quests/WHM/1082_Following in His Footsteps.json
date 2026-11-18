@@ -13,9 +13,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -48,7 +46,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -78,8 +75,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [
@@ -124,8 +119,6 @@
           "TerritoryId": 156,
           "InteractionType": "Emote",
           "Emote": "pray",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "$": "17 0 1 16 0 128 -> 33 16 1 0 0 192",
           "CompletionQuestVariablesFlags": [
             null,
@@ -143,18 +136,7 @@
             "Z": -495.80618
           },
           "TerritoryId": 141,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
-        },
-        {
-          "Position": {
-            "X": -255.17686,
-            "Y": 59.31324,
-            "Z": -44.453175
-          },
-          "TerritoryId": 147,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2002398,
@@ -187,9 +169,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -222,7 +202,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -245,17 +224,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Position": {
-            "X": 109.89845,
-            "Y": 7.0051613,
-            "Z": -45.239243
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
-        },
-        {
           "DataId": 2002399,
           "Position": {
             "X": 107.83545,
@@ -276,9 +244,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -311,7 +277,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -341,19 +306,7 @@
           },
           "TerritoryId": 139,
           "InteractionType": "WalkTo",
-          "TargetTerritoryId": 180,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": false
-        },
-        {
-          "Position": {
-            "X": 118.0728,
-            "Y": 74.37976,
-            "Z": -248.26317
-          },
-          "TerritoryId": 180,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "TargetTerritoryId": 180
         },
         {
           "DataId": 2002400,
@@ -377,9 +330,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -412,7 +363,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"

@@ -13,22 +13,7 @@
             "Z": -581.23145
           },
           "TerritoryId": 1191,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "Fly": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -151.99518,
-                  "Y": 34.94368,
-                  "Z": -581.23145
-                },
-                "TerritoryId": 1191,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -59,7 +44,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -82,7 +66,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -94,7 +77,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -106,7 +88,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -123,8 +104,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "Fly": true,
           "NextQuestId": 5162
         }
       ]

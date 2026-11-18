@@ -14,9 +14,7 @@
             "Z": 65.293335
           },
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 107.499756
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,16 +44,7 @@
             "Z": -413.10748
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                398
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -72,16 +59,7 @@
             "Z": -271.62585
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                398
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,9 +74,7 @@
             "Z": -413.10748
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -114,8 +90,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "NextQuestId": 1782
         }
       ]

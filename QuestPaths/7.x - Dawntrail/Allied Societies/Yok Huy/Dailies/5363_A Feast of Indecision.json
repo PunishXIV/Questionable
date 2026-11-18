@@ -15,20 +15,7 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 493.2173,
-                  "Y": 142.24991,
-                  "Z": 783.0471
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 200
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -65,11 +52,7 @@
             "Z": -188.28113
           },
           "TerritoryId": 1187,
-          "StopDistance": 4,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Urqopacha - Wachunpelo",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_BANYOK128_05363_Q1_000_000",
@@ -92,20 +75,7 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 493.2173,
-                  "Y": 142.24991,
-                  "Z": 783.0471
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 200
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {

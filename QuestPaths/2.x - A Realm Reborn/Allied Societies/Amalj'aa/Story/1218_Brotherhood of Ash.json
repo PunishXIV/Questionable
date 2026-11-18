@@ -14,9 +14,7 @@
             "Z": -362.11188
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,15 +28,13 @@
             "Y": 4.7455444,
             "Z": -77.16492
           },
-          "StopDistance": 0.5,
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             2458,
             2459
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -68,8 +64,7 @@
             "Z": -387.77753
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,7 +80,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
           "DialogueChoices": [
             {
               "Type": "List",

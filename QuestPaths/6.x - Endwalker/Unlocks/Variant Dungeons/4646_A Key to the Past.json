@@ -14,11 +14,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_AKTKVA101_04646_Q1_000_000",
@@ -40,11 +35,7 @@
             "Z": -143.14496
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,9 +51,7 @@
             "Z": 110.185425
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -94,9 +83,7 @@
             "Z": 110.185425
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -111,11 +98,7 @@
             "Z": -143.14496
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -130,12 +113,7 @@
             "Z": 107.80493
           },
           "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

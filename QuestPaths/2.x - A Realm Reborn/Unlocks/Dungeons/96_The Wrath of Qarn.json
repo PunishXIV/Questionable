@@ -14,10 +14,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "$": "Rising Stones Door",
-          "AetheryteShortcut": "Mor Dhona"
+          "$": "Rising Stones Door"
         },
         {
           "DataId": 1005524,
@@ -27,8 +24,7 @@
             "Z": -635.98083
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "Mount": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,18 +39,7 @@
             "Z": 146.68494
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Miners' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,15 +54,7 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "Fly": false,
-          "Mount": true,
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                146
-              ]
-            },
             "StepIf": {
               "NotNearPosition": {
                 "Position": {
@@ -99,8 +76,7 @@
             "Z": -443.1983
           },
           "TerritoryId": 146,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -129,18 +105,7 @@
             "Z": 146.68494
           },
           "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Miners' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

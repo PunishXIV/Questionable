@@ -13,7 +13,6 @@
             "Y": 48.168007,
             "Z": -261.70752
           },
-          "StopDistance": 7,
           "TerritoryId": 128,
           "InteractionType": "AcceptQuest"
         }
@@ -30,11 +29,7 @@
             "Z": -6.1189575
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Marauders' Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

@@ -10,8 +10,7 @@
         {
           "TerritoryId": 129,
           "InteractionType": "UnequipItem",
-          "ItemId": 4549,
-          "AetheryteShortcut": "Limsa Lominsa"
+          "ItemId": 4549
         },
         {
           "InteractionType": "CreateGearset",
@@ -36,11 +35,7 @@
             "Z": 1.3884888
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -55,11 +50,7 @@
             "Z": -250.56848
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Marauders' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -75,8 +66,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "SinglePlayerDuty",
-          "AetheryteShortcut": "Eastern La Noscea - Wineport",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -93,7 +82,6 @@
             "Y": 34.078865,
             "Z": 222.76636
           },
-          "StopDistance": 5,
           "TerritoryId": 137,
           "InteractionType": "Interact"
         }
@@ -111,10 +99,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ],
           "NextQuestId": 1098
         }
       ]

@@ -42,7 +42,6 @@
           },
           "TerritoryId": 622,
           "InteractionType": "Interact",
-          "StopDistance": 7,
           "$": "1 0 0 0 0 128 -> 2 0 0 0 0 192",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
@@ -69,7 +68,6 @@
           },
           "TerritoryId": 622,
           "InteractionType": "Interact",
-          "StopDistance": 7,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]

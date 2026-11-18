@@ -17,18 +17,7 @@
 				"Z": 45.548096
 			},
 			"TerritoryId": 635,
-			"InteractionType": "AcceptQuest",
-			"AetheryteShortcut": "Rhalgr's Reach",
-			"SkipConditions":
-			{
-				"AetheryteShortcutIf":
-				{
-					"InTerritory":
-					[
-					635
-					]
-				}
-			}
+			"InteractionType": "AcceptQuest"
 		}
 		]
 	},

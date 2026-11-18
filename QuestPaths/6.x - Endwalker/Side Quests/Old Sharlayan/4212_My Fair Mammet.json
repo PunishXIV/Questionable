@@ -28,11 +28,7 @@
             "Z": 123.03345
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,11 +43,7 @@
             "Z": -142.56512
           },
           "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Scholar's Harbor",
-            "[Old Sharlayan] The Studium"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

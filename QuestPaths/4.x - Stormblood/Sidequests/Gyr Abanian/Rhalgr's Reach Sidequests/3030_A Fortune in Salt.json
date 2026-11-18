@@ -15,7 +15,6 @@
           },
           "TerritoryId": 635,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach",
           "$": "auto: issuer 1025653 (perky peddler)"
         }
       ]
@@ -32,8 +31,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
           "$": "auto: todo location -> 1024010 (Wiscar)"
         }
       ]
@@ -50,8 +47,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
           "$": "auto: todo location -> 1025654 (Wiscar)"
         }
       ]
@@ -68,7 +63,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_STMBDZ980_03030_Q1_000_000",
@@ -76,7 +70,6 @@
               "Type": "List"
             }
           ],
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
           "$": "auto: todo location -> 1025655 (Wiscar)"
         }
       ]
@@ -93,8 +86,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
           "$": "auto: todo turn-in -> 1025115 (Watt)"
         }
       ]

@@ -16,7 +16,6 @@
           "TerritoryId": 959,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1319,
-          "Fly": true,
           "Comment": "Select the destination Auxesia (#4)",
           "DialogueChoices": [
             {
@@ -35,8 +34,7 @@
             "Z": 397.851
           },
           "TerritoryId": 1319,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 4
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -66,8 +64,7 @@
             "Z": -766.781
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -162,8 +159,7 @@
             "Z": 725.21545
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Ghiri"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -178,9 +174,7 @@
             "Z": -687.0985
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -195,8 +189,7 @@
             "Z": -481.1837
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -207,8 +200,7 @@
           "TerritoryId": 959,
           "DataId": 175,
           "InteractionType": "Interact",
-          "Comment": "Click Travel to Auxesia",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow"
+          "Comment": "Click Travel to Auxesia"
         },
         {
           "DataId": 1056850,

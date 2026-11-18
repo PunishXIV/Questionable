@@ -15,16 +15,7 @@
             "Z": 178.72888
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [129, 128]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -54,17 +45,7 @@
             "Z": -295.82666
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ishgard",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418]
-            }
-          },
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Gates of Judgement (Coerthas Central Highlands)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,17 +60,7 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Emote",
-          "Emote": "pray",
-          "AetheryteShortcut": "Ishgard",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418, 419]
-            }
-          },
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ]
+          "Emote": "pray"
         }
       ]
     },
@@ -104,11 +75,7 @@
             "Z": -295.82666
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Saint Reymanaud's Cathedral",
-            "[Ishgard] The Gates of Judgement (Coerthas Central Highlands)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -136,16 +103,7 @@
             "Z": 4.989685
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [129, 128]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

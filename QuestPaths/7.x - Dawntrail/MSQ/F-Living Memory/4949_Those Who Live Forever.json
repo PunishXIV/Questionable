@@ -13,7 +13,6 @@
             "Y": 50.124947,
             "Z": 361.95923
           },
-          "StopDistance": 7,
           "TerritoryId": 1192,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
             "Z": 772.8236
           },
           "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,7 +58,6 @@
             "Y": 6.380001,
             "Z": 551.75085
           },
-          "StopDistance": 6,
           "TerritoryId": 1192,
           "InteractionType": "Interact"
         }
@@ -108,22 +105,12 @@
       "Sequence": 5,
       "Steps": [
         {
-          "Position": {
-            "X": -179.35655,
-            "Y": 0,
-            "Z": 606.5711
-          },
-          "TerritoryId": 1192,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1047868,
           "Position": {
             "X": -183.18463,
             "Y": -6.346533E-12,
             "Z": 606.71387
           },
-          "StopDistance": 5,
           "TerritoryId": 1192,
           "InteractionType": "Interact"
         }

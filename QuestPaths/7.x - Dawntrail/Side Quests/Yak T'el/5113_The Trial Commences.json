@@ -29,8 +29,7 @@
             "Z": -85.55737
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -43,15 +42,13 @@
             "Y": 28.302685,
             "Z": 2.3153868
           },
-          "StopDistance": 1,
           "TerritoryId": 1189,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17671,
             17672
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -66,8 +63,7 @@
             "Z": -85.55737
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -82,8 +78,7 @@
             "Z": -399.28284
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

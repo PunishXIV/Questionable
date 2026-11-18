@@ -15,9 +15,7 @@
           },
           "Comment": "Quest requires capturing low health enemies, lower level/lowered dps melee class needed",
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,8 +39,7 @@
             "ItemId": 2002281,
             "Condition": "Health%",
             "Value": 50
-          },
-          "Fly": true
+          }
         },
         {
           "Position": {
@@ -61,8 +58,7 @@
             "ItemId": 2002281,
             "Condition": "Health%",
             "Value": 50
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -77,9 +73,7 @@
             "Z": -641.475
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

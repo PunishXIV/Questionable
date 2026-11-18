@@ -7,26 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 1,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
           "DataId": 1005021,
           "Position": {
             "X": -472.49567,
@@ -49,13 +29,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true,
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "Mor Dhona",
-              "InTerritory": [155]
-            },
             "StepIf": {
               "AetheryteLocked": "Mor Dhona",
               "InTerritory": [155]
@@ -86,9 +60,7 @@
             "Z": 692.65283
           },
           "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

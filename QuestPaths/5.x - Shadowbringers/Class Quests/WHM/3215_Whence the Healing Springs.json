@@ -7,24 +7,12 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": -137.7745,
-            "Y": 10.010047,
-            "Z": 278.79453
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "Fly": true
-        },
-        {
           "DataId": 1006751,
           "Position": {
             "X": -139.45221,
             "Y": 8.712891,
             "Z": 281.69678
           },
-          "StopDistance": 4,
           "TerritoryId": 153,
           "InteractionType": "AcceptQuest"
         }
@@ -41,11 +29,7 @@
             "Z": 1.2054443
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,9 +44,7 @@
             "Z": 307.1488
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,8 +59,7 @@
             "Z": 473.3806
           },
           "TerritoryId": 148,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -92,7 +73,6 @@
             "Y": -34.365856,
             "Z": 416.76965
           },
-          "StopDistance": 7,
           "TerritoryId": 148,
           "InteractionType": "Interact"
         }
@@ -102,24 +82,12 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": -137.7745,
-            "Y": 10.010047,
-            "Z": 278.79453
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "Fly": true
-        },
-        {
           "DataId": 1006751,
           "Position": {
             "X": -139.45221,
             "Y": 8.712891,
             "Z": 281.69678
           },
-          "StopDistance": 4,
           "TerritoryId": 153,
           "InteractionType": "CompleteQuest"
         }

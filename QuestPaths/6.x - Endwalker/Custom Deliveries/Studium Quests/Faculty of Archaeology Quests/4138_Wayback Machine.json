@@ -15,10 +15,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: issuer 1039203 (Rurusha)"
         }
       ]
@@ -41,10 +37,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: todo location -> 1039203 (Rurusha); npc trade"
         }
       ]
@@ -77,7 +69,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
           "$": "auto: todo turn-in -> 1039203 (Rurusha)"
         }
       ]

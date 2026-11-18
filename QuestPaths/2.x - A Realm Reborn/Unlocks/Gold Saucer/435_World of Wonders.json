@@ -19,19 +19,8 @@
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Airship Landing"
-          ],
           "TargetTerritoryId": 144,
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                144,
-                388
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 144,
@@ -48,7 +37,6 @@
             "Y": -2.7930364E-06,
             "Z": 97.33728
           },
-          "StopDistance": 7,
           "TerritoryId": 144,
           "InteractionType": "AcceptQuest"
         }
@@ -67,19 +55,8 @@
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Airship Landing"
-          ],
           "TargetTerritoryId": 144,
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                144,
-                388
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 144,
@@ -102,7 +79,6 @@
             "Y": 1.6000003,
             "Z": 30.685791
           },
-          "StopDistance": 5,
           "TerritoryId": 144,
           "InteractionType": "Interact"
         }
@@ -121,19 +97,8 @@
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Airship Landing"
-          ],
           "TargetTerritoryId": 144,
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                144,
-                388
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 144,
@@ -150,7 +115,6 @@
             "Y": 1.6000003,
             "Z": 27.634033
           },
-          "StopDistance": 5,
           "TerritoryId": 144,
           "InteractionType": "Interact"
         }
@@ -169,19 +133,8 @@
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Airship Landing"
-          ],
           "TargetTerritoryId": 144,
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                144,
-                388
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 144,
@@ -216,19 +169,8 @@
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Airship Landing"
-          ],
           "TargetTerritoryId": 144,
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                144,
-                388
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 144,
@@ -267,14 +209,6 @@
           "InteractionType": "AttuneAethernetShard",
           "AethernetShard": "[Gold Saucer] Chocobo Square",
           "StopDistance": 7
-        },
-        {
-          "TerritoryId": 388,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Gold Saucer] Chocobo Square",
-            "[Gold Saucer] Entrance & Card Squares"
-          ]
         },
         {
           "TerritoryId": 144,
@@ -349,7 +283,6 @@
             "Y": 13.000635,
             "Z": -13.778931
           },
-          "StopDistance": 4,
           "TerritoryId": 144,
           "InteractionType": "Interact"
         }
@@ -358,23 +291,6 @@
     {
       "Sequence": 6,
       "Steps": [
-        {
-          "Position": {
-            "X": 111.36922,
-            "Y": 13.000123,
-            "Z": -24.209782
-          },
-          "TerritoryId": 144,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "TerritoryId": 144,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Gold Saucer] Cactpot Board",
-            "[Gold Saucer] Aetheryte Plaza"
-          ]
-        },
         {
           "DataId": 1011084,
           "Position": {
@@ -398,21 +314,12 @@
           "StopDistance": 7
         },
         {
-          "TerritoryId": 144,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Gold Saucer] Round Square",
-            "[Gold Saucer] Entrance & Card Squares"
-          ]
-        },
-        {
           "DataId": 1010448,
           "Position": {
             "X": -54.00177,
             "Y": 1.6000003,
             "Z": 30.685791
           },
-          "StopDistance": 5,
           "TerritoryId": 144,
           "InteractionType": "CompleteQuest",
           "DelaySecondsAtStart": 3

@@ -14,8 +14,7 @@
             "Z": 79.9115
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,10 +30,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Brightploom Post"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -61,11 +56,7 @@
             "Z": 79.9115
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Brightploom Post",
-            "[Tuliyollal] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -95,8 +86,7 @@
             "Z": -627.2526
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -111,8 +101,7 @@
             "Z": -832.3644
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -143,10 +132,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Information Center",
-            "[Solution Nine] The Arcadion"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -156,7 +141,6 @@
             "Y": 50.75,
             "Z": 223.46838
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -200,11 +184,7 @@
             "Z": -25.0401
           },
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Neon Stein",
-            "[Solution Nine] True Vue"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -218,7 +198,6 @@
             "Y": 70.00009,
             "Z": -26.962769
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5295

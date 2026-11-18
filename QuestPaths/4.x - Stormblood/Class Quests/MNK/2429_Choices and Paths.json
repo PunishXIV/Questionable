@@ -14,8 +14,7 @@
             "Z": -789.27295
           },
           "TerritoryId": 620,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -792.7825
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,13 +44,7 @@
             "Z": -67.67377
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "Mount": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Western Rhalgr's Reach"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,9 +59,7 @@
             "Z": -789.27295
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -84,13 +74,7 @@
             "Z": -251.9112
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Rhalgr's Reach",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Aetheryte Plaza",
-            "[Rhalgr's Reach] Fringes Gate"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -106,8 +90,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
-          "AetheryteShortcut": "Fringes - Castrum Oriens",
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -127,7 +109,6 @@
             "Y": 113.00655,
             "Z": -312.7337
           },
-          "StopDistance": 4,
           "TerritoryId": 612,
           "InteractionType": "Interact"
         }
@@ -145,8 +126,6 @@
           },
           "TerritoryId": 620,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Peaks - Ala Gannha",
-          "Fly": true,
           "NextQuestId": 2430
         }
       ]

@@ -60,8 +60,7 @@
             "Z": 765.31616
           },
           "TerritoryId": 620,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 6
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -13,7 +13,6 @@
             "Y": 119.49004,
             "Z": 148.66858
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "AcceptQuest"
         }
@@ -26,29 +25,6 @@
           "TerritoryId": 1188,
           "InteractionType": "AttuneAetheryte",
           "Aetheryte": "Kozama'uka - Many Fires"
-        },
-        {
-          "Position": {
-            "X": 533.37555,
-            "Y": 122.98077,
-            "Z": 790.01416
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Ihuykatumu (Kozama'uka)"
-          ]
-        },
-        {
-          "Position": {
-            "X": 522.3003,
-            "Y": 120.81023,
-            "Z": 803.62744
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 2013943,
@@ -69,8 +45,7 @@
             "Z": 259.66272
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Many Fires"
+          "InteractionType": "Interact"
         }
       ]
     },

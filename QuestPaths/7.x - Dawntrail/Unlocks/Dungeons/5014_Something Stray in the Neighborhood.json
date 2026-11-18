@@ -14,12 +14,7 @@
             "Z": 198.07727
           },
           "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,8 +29,7 @@
             "Z": 761.68445
           },
           "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -66,9 +60,7 @@
             "Z": 610.13184
           },
           "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -95,11 +87,8 @@
             "Y": 9.022844,
             "Z": 612.1156
           },
-          "StopDistance": 7,
           "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -114,12 +103,7 @@
             "Z": 198.07727
           },
           "TerritoryId": 1186,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -17,9 +17,7 @@
             "Z": -426.016
           },
           "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -47,9 +45,7 @@
               "RewardItemId": 2003109,
               "RewardItemCount": 1
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
@@ -64,9 +60,7 @@
             "Z": -426.016
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

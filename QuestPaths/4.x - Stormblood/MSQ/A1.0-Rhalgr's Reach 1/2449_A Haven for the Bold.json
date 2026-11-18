@@ -13,10 +13,8 @@
             "Y": 13.023668,
             "Z": -91.50836
           },
-          "StopDistance": 7,
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -76,11 +74,7 @@
             "Z": 88.70068
           },
           "TerritoryId": 635,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Rhalgr's Reach] Western Rhalgr's Reach",
-            "[Rhalgr's Reach] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

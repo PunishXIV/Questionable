@@ -13,13 +13,8 @@
             "Y": 1.7160122,
             "Z": 249.83594
           },
-          "StopDistance": 7,
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Pendants"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,11 +29,7 @@
             "Z": 118.08948
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -68,11 +59,7 @@
             "Z": -266.2547
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] The Cabinet of Curiosity"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -87,12 +74,7 @@
             "Z": -136.52252
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

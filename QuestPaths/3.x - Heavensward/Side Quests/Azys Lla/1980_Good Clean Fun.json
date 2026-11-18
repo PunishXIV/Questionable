@@ -36,7 +36,6 @@
 							"MinimumKillCount": 5
 						}
 					],
-					"Fly": true,
 					"$": "by starting here we can guarantee a more sane straightline progression instead of starting in the middle, going all the way to one side, then running all the way to the other side."
 				}
 			]
@@ -52,8 +51,7 @@
 						"Z": -527.3976
 					},
 					"TerritoryId": 402,
-					"InteractionType": "CompleteQuest",
-					"AetheryteShortcut": "Azys Lla - Helix"
+					"InteractionType": "CompleteQuest"
 				}
 			]
 		}

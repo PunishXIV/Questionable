@@ -14,8 +14,7 @@
             "Z": 5.0201416
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -62,9 +61,7 @@
             "Z": -49.94281
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,8 +76,7 @@
             "Z": 64.286255
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -99,8 +95,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             14012
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -131,7 +126,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
           "NextQuestId": 4106
         }
       ]

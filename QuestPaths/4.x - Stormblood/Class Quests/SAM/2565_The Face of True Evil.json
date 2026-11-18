@@ -14,11 +14,7 @@
             "Z": 60.837646
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -63,7 +59,6 @@
           },
           "TerritoryId": 397,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
@@ -81,8 +76,7 @@
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true
-          },
-          "Fly": true
+          }
         }
       ]
     },

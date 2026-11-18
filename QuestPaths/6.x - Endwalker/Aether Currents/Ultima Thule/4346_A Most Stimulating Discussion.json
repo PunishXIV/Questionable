@@ -29,7 +29,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ultima Thule - Abode of the Ea",
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]

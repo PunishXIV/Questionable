@@ -17,8 +17,7 @@
             "Z": -269.487
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,10 +35,7 @@
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_AKTKZF007_04262_SYSTEM_000_010"
-          },
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true,
-          "Land": true
+          }
         }
       ]
     },
@@ -54,9 +50,7 @@
             "Z": -440.885
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -72,9 +66,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "UseItem",
-          "ItemId": 2003384,
-          "Fly": true,
-          "Land": true
+          "ItemId": 2003384
         }
       ]
     },
@@ -96,8 +88,7 @@
               "Prompt": "TEXT_AKTKZF007_04262_Q1_000_000",
               "Answer": "TEXT_AKTKZF007_04262_A1_000_001"
             }
-          ],
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          ]
         }
       ]
     }

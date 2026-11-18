@@ -37,7 +37,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1014136,
           "Position": {
             "X": 292.74426,
@@ -82,7 +81,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1013710,
           "Position": {
             "X": -294.6975,

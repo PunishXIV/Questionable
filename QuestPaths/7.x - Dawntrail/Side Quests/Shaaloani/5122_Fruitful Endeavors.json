@@ -29,8 +29,7 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "UseItem",
-          "ItemId": 2003581,
-          "Fly": true
+          "ItemId": 2003581
         }
       ]
     },
@@ -64,8 +63,7 @@
             "Z": 397.177
           },
           "TerritoryId": 1190,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

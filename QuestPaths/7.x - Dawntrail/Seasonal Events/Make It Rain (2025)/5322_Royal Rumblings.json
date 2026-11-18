@@ -13,8 +13,7 @@
             "Z": -104.35651
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -42,19 +41,8 @@
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Airship Landing"
-          ],
           "TargetTerritoryId": 144,
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                144
-              ],
-              "AetheryteUnlocked": "Gold Saucer"
-            },
             "StepIf": {
               "InTerritory": [
                 144
@@ -70,11 +58,9 @@
             "Y": -2.7930364E-06,
             "Z": 97.33728
           },
-          "StopDistance": 7,
           "TerritoryId": 144,
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 435,
-          "AetheryteShortcut": "Gold Saucer"
+          "PickUpQuestId": 435
         },
         {
           "DataId": 1049021,
@@ -84,12 +70,7 @@
             "Z": 46.463623
           },
           "TerritoryId": 144,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gold Saucer",
-          "AethernetShortcut": [
-            "[Gold Saucer] Aetheryte Plaza",
-            "[Gold Saucer] Entrance & Card Squares"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -105,10 +86,6 @@
           },
           "TerritoryId": 144,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gold Saucer] Entrance & Card Squares",
-            "[Gold Saucer] Wonder Square West"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -168,11 +145,7 @@
             "Z": -45.212524
           },
           "TerritoryId": 144,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gold Saucer] Aetheryte Plaza",
-            "[Gold Saucer] Cactpot Board"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -186,7 +159,6 @@
             "Y": 13.01593,
             "Z": -5.935791
           },
-          "StopDistance": 4.5,
           "TerritoryId": 144,
           "InteractionType": "Interact"
         }
@@ -203,11 +175,7 @@
             "Z": -58.54895
           },
           "TerritoryId": 144,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gold Saucer] Cactpot Board",
-            "[Gold Saucer] Event Square"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -222,11 +190,7 @@
             "Z": 39.230957
           },
           "TerritoryId": 144,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gold Saucer] Event Square",
-            "[Gold Saucer] Entrance & Card Squares"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -240,7 +204,6 @@
             "Y": 0.044279926,
             "Z": 18.32605
           },
-          "StopDistance": 5,
           "TerritoryId": 144,
           "InteractionType": "CompleteQuest"
         }

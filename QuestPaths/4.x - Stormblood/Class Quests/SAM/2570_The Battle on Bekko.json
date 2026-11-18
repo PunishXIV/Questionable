@@ -14,12 +14,7 @@
             "Z": -157.61047
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,10 +30,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Sekiseigumi Barracks",
-            "[Kugane] Aetheryte Plaza"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -61,10 +52,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Shiokaze Hostelry",
-            "[Kugane] Kogane Dori Markets"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -80,11 +67,7 @@
             "Z": -154.83331
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Kogane Dori Markets",
-            "[Kugane] Sekiseigumi Barracks"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -99,7 +82,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
@@ -129,8 +111,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -145,12 +126,7 @@
             "Z": -157.61047
           },
           "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Sekiseigumi Barracks"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

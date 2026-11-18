@@ -14,12 +14,7 @@
             "Z": 116.13635
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] The Resplendent Quarter"
-          ],
-          "SkipConditions": {"AethernetShortcutIf": {"InSameTerritory": true}}
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,15 +36,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": -290.98425,
-            "Y": -9.417534E-06,
-            "Z": 179.37634
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 2014234,
           "Position": {

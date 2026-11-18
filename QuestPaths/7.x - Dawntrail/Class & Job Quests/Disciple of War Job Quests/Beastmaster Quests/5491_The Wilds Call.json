@@ -84,8 +84,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: issuer 1059767 (J'yhuh Tia)"
         }
       ]
@@ -102,8 +100,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: todo location -> 1059322 (wary Wailer)"
         }
       ]
@@ -120,8 +116,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "$": "auto: todo location -> 1059323 (J'yhuh Tia)"
         }
       ]
@@ -156,8 +150,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows",
           "NextQuestId": 5492,
           "$": "auto: todo turn-in -> 1059323 (J'yhuh Tia)"
         }

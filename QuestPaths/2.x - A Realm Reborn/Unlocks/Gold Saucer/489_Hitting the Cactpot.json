@@ -7,27 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 144,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Gold Saucer] Entrance & Card Squares",
-            "[Gold Saucer] Cactpot Board"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -94.31675,
-                  "Y": -1.2929175,
-                  "Z": 65.39152
-                },
-                "TerritoryId": 144,
-                "MaximumDistance": 50
-              }
-            }
-          }
-        },
-        {
           "DataId": 1010446,
           "Position": {
             "X": 121.0189,
@@ -35,13 +14,7 @@
             "Z": -10.356828
           },
           "TerritoryId": 144,
-          "StopDistance": 1,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gold Saucer",
-          "AethernetShortcut": [
-            "[Gold Saucer] Aetheryte Plaza",
-            "[Gold Saucer] Cactpot Board"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

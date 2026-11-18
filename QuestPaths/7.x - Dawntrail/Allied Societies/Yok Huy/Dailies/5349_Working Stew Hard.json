@@ -18,8 +18,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -58,9 +56,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WalkTo",
-          "StopDistance": 2,
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -84,7 +79,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Say",
-          "Fly": true,
           "ChatMessage": {
             "Key": "TEXT_BANYOK114_05349_SAYTODO_000_010"
           }
@@ -98,7 +92,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Say",
-          "Fly": true,
           "ChatMessage": {
             "Key": "TEXT_BANYOK114_05349_SAYTODO_000_010"
           }
@@ -117,8 +110,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {

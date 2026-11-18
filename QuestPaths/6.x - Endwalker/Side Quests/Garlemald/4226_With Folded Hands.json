@@ -44,7 +44,6 @@
             "Y": 10.8,
             "Z": -468.8335
           },
-          "StopDistance": 0.5,
           "TerritoryId": 958,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
@@ -53,8 +52,7 @@
             "ItemId": 2003202,
             "Condition": "Health%",
             "Value": 40
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -69,8 +67,7 @@
             "Z": -133.04346
           },
           "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Tertium"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -15,27 +15,13 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
           "DialogueChoices": [
             {
               "Type": "List",
               "Prompt": "TEXT_KINGZD203_05112_Q1_000_000",
               "Answer": "TEXT_KINGZD203_05112_A1_000_001"
             }
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -508.87314,
-                  "Y": 29.61908,
-                  "Z": -350.1183
-                },
-                "TerritoryId": 1189,
-                "MaximumDistance": 250
-              }
-            }
-          }
+          ]
         }
       ]
     },
@@ -49,10 +35,8 @@
             "Y": 0.35915944,
             "Z": -312.1233
           },
-          "StopDistance": 1,
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -83,7 +67,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 5113
         }
       ]

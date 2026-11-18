@@ -14,12 +14,7 @@
             "Z": 190.72253
           },
           "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,9 +29,7 @@
             "Z": -6.607239
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Sharlayan Hamlet",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,8 +44,7 @@
             "Z": -53.26935
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

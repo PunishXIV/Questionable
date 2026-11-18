@@ -17,9 +17,7 @@
             "Z": -525.93
           },
           "TerritoryId": 959,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,19 +32,7 @@
           },
           "TerritoryId": 959,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
-        {
-          "Position": {
-            "X": 225.946,
-            "Y": 96.971,
-            "Z": -59.4212
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-          "DelaySecondsAtStart": 2,
-          "Mount": false
+          "DelaySecondsAtStart": 2
         },
         {
           "DataId": 1041821,
@@ -57,8 +43,7 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "DelaySecondsAtStart": 2,
-          "Mount": false
+          "DelaySecondsAtStart": 2
         }
       ]
     },
@@ -80,9 +65,7 @@
               "Prompt": "TEXT_AKTKZE012_04251_SYSTEM_100_022",
               "Yes": true
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         }
       ]
     },
@@ -97,10 +80,7 @@
             "Z": -525.93
           },
           "TerritoryId": 959,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,8 +14,7 @@
             "Z": 209.97937
           },
           "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -55,7 +54,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "$": "2 0  0 0  0 192 -> 3 0  0 0  0 224",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },

@@ -14,16 +14,7 @@
             "Z": -2.4262085
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [131]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -38,8 +29,7 @@
             "Z": 404.28784
           },
           "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Northern Thanalan - Camp Bluefog"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -54,8 +44,7 @@
             "Z": 197.92468
           },
           "TerritoryId": 147,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -102,16 +91,7 @@
             "Z": -2.4262085
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [131]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -127,11 +107,6 @@
           },
           "TerritoryId": 141,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Ul'dah] The Chamber of Rule",
-            "[Ul'dah] Gate of Thal (Central Thanalan)"
-          ],
           "$": "nald and thal are approx. the same distance but coming from nald requires an extra walkto because it tries and fails to land on the ledge",
 		  "NextQuestId": 2033
         }

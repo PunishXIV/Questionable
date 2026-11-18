@@ -29,8 +29,7 @@
             "Z": 304.5243
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Zenith"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -136,7 +135,6 @@
             "Y": 73,
             "Z": 288.4718
           },
-          "StopDistance": 5,
           "TerritoryId": 400,
           "InteractionType": "Interact"
         }
@@ -154,7 +152,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "NextQuestId": 3008
         }
       ]

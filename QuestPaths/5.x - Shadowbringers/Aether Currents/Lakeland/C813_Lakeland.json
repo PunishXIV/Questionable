@@ -14,7 +14,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Lakeland - Ostall Imperative",
           "SkipConditions": {
             "StepIf": {
               "AetherCurrentUnlocked": 2818231

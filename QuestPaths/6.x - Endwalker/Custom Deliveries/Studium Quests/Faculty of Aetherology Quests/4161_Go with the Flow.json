@@ -16,10 +16,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: issuer 1038551 (T'laqa Tia)"
         }
       ]
@@ -36,10 +32,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] Aetheryte Plaza"
-          ],
           "ItemId": 36588,
           "ItemCount": 99,
           "SkipConditions": {
@@ -57,17 +49,12 @@
           },
           "TerritoryId": 956,
           "InteractionType": "Fish",
-          "Fly": true,
           "ItemsToGather": [
             {
               "ItemId": 35604,
               "ItemCount": 6,
               "Collectability": 70
             }
-          ],
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Hall of Artifice (Labyrinthos)"
           ],
           "SkipConditions": { "StepIf": { "ExtraCondition": "NewGamePlus" } }
         },
@@ -80,10 +67,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: todo turn-in -> 1038551 (T'laqa Tia)"
         }
       ]

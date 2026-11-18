@@ -13,7 +13,6 @@
             "Y": 27.979128,
             "Z": -116.41113
           },
-          "StopDistance": 7,
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest"
         }
@@ -31,11 +30,7 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] The Last Vigil"
-          ]
+          "TargetTerritoryId": 433
         }
       ]
     },
@@ -49,7 +44,6 @@
             "Y": -9.313226E-10,
             "Z": 7.6447144
           },
-          "StopDistance": 5,
           "TerritoryId": 433,
           "InteractionType": "CompleteQuest"
         }

@@ -16,17 +16,7 @@
           "TerritoryId": 131,
           "InteractionType": "Interact",
           "TargetTerritoryId": 971,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131,
-                971
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 971
@@ -145,7 +135,6 @@
             "Y": 0.014807776,
             "Z": -4.3793945
           },
-          "StopDistance": 5,
           "TerritoryId": 971,
           "InteractionType": "AcceptQuest"
         }
@@ -162,9 +151,7 @@
             "Z": -371.38934
           },
           "TerritoryId": 141,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -196,11 +183,7 @@
           },
           "TerritoryId": 131,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 971,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "TargetTerritoryId": 971
         },
         {
           "DataId": 1036629,

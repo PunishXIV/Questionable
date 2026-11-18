@@ -13,7 +13,6 @@
             "Y": 63.313274,
             "Z": -169.23785
           },
-          "StopDistance": 5,
           "TerritoryId": 1191,
           "InteractionType": "AcceptQuest"
         }
@@ -46,15 +45,6 @@
           "TerritoryId": 1191,
           "InteractionType": "WalkTo",
           "$": "Outskirts Navmesh workaround"
-        },
-        {
-          "Position": {
-            "X": -120.99963,
-            "Y": 28.090134,
-            "Z": -456.97507
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1047397,

@@ -21,24 +21,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": -201.63965,
-            "Y": 25.46388,
-            "Z": -157.38919
-          },
-          "TerritoryId": 962,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -191.05865,
-            "Y": 22.001097,
-            "Z": -166.16983
-          },
-          "TerritoryId": 962,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1039346,
           "Position": {
             "X": -188.922,
@@ -99,12 +81,7 @@
             "Z": -174.36487
           },
           "TerritoryId": 962,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

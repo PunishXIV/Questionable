@@ -13,7 +13,6 @@
             "Y": 1.7160122,
             "Z": 249.83594
           },
-          "StopDistance": 5,
           "TerritoryId": 819,
           "InteractionType": "AcceptQuest"
         }
@@ -31,10 +30,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Dossal Gate"
-          ],
           "TargetTerritoryId": 844
         }
       ]
@@ -49,7 +44,6 @@
             "Y": 0,
             "Z": 4.2877197
           },
-          "StopDistance": 7,
           "TerritoryId": 844,
           "InteractionType": "Interact"
         }
@@ -66,8 +60,7 @@
             "Z": -2.7314453
           },
           "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lakeland - Fort Jobb"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

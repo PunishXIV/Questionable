@@ -14,12 +14,7 @@
             "Z": -136.52252
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,11 +30,7 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
-          "AethernetShortcut": [
-            "[Crystarium] The Crystalline Mean",
-            "[Crystarium] The Pendants"
-          ]
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1031091,
@@ -83,10 +74,6 @@
               "Type": "List",
               "Answer": "TEXT_LUCKLZ001_03242_A1_000_001"
             }
-          ],
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Crystalline Mean"
           ]
         }
       ]
@@ -183,11 +170,7 @@
             "Z": 14.389221
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Crystarium] The Crystalline Mean",
-            "[Crystarium] Aetheryte Plaza"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

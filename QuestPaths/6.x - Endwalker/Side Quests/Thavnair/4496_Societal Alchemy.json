@@ -29,8 +29,7 @@
             "Z": -556.5729
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -38,23 +37,12 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": 274.3244,
-            "Y": 6.2260103,
-            "Z": -553.4195
-          },
-          "TerritoryId": 957,
-          "InteractionType": "WalkTo",
-          "Mount": false
-        },
-        {
           "DataId": 1041410,
           "Position": {
             "X": 271.5343,
             "Y": 6.226011,
             "Z": -556.54236
           },
-          "StopDistance": 5,
           "TerritoryId": 957,
           "InteractionType": "Interact"
         }
@@ -71,8 +59,7 @@
             "Z": -212.35986
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -87,8 +74,7 @@
             "Z": -268.6046
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -104,7 +90,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 4497
         }
       ]

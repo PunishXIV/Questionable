@@ -13,7 +13,6 @@
             "Y": -168.00002,
             "Z": -625.11633
           },
-          "StopDistance": 5,
           "TerritoryId": 959,
           "InteractionType": "AcceptQuest"
         }
@@ -31,15 +30,7 @@
           },
           "TerritoryId": 959,
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 4516,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "QuestsCompleted": [
-                4516
-              ]
-            }
-          }
+          "PickUpQuestId": 4516
         },
         {
           "DataId": 1041123,
@@ -72,15 +63,6 @@
           "TargetTerritoryId": 959
         },
         {
-          "Position": {
-            "X": 65.32143,
-            "Y": -49.589592,
-            "Z": -690.11676
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1038947,
           "Position": {
             "X": 184.00854,
@@ -101,7 +83,6 @@
             "Y": -49.589592,
             "Z": -637.9577
           },
-          "StopDistance": 3,
           "TerritoryId": 959,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -139,7 +120,6 @@
             "Y": 128.67769,
             "Z": 572.0454
           },
-          "StopDistance": 5,
           "TerritoryId": 959,
           "InteractionType": "CompleteQuest"
         }

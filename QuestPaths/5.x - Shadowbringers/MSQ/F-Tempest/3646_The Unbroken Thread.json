@@ -30,11 +30,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Dossal Gate"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -71,26 +66,12 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Position": {
-            "X": 59.71554,
-            "Y": 36.19769,
-            "Z": -167.87686
-          },
-          "TerritoryId": 819,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] The Amaro Launch"
-          ]
-        },
-        {
           "DataId": 1027225,
           "Position": {
             "X": 61.905884,
             "Y": 36.247692,
             "Z": -169.17682
           },
-          "StopDistance": 7,
           "TerritoryId": 819,
           "InteractionType": "Interact"
         }
@@ -106,7 +87,6 @@
             "Y": 36.19769,
             "Z": -162.4018
           },
-          "StopDistance": 7,
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest"
         }

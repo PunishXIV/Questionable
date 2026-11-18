@@ -15,10 +15,7 @@
             "Z": 114.64099
           },
           "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,7 +31,6 @@
             "Z": 332.47876
           },
           "TerritoryId": 154,
-          "Fly": true,
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -57,9 +53,7 @@
             "Z": -244.59177
           },
           "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "WalkTo"
         },
         {
           "Comment": "Catch 3x Snow Smelt (!!) using Moth Pupa",
@@ -91,9 +85,7 @@
             "Z": -254.1391
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,8 +100,7 @@
             "Z": -253.55927
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -135,10 +126,7 @@
             "Z": 114.64099
           },
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

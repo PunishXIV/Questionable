@@ -14,22 +14,7 @@
             "Z": -325.0324
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Ostall Imperative",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -782.34534,
-                  "Y": 200.1388,
-                  "Z": -325.0324
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,8 +30,7 @@
           "TerritoryId": 813,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "KillEnemyDataIds": [10365, 10365, 10365],
-          "Fly": true
+          "KillEnemyDataIds": [10365, 10365, 10365]
         }
       ]
     },
@@ -61,9 +45,7 @@
             "Z": -325.0324
           },
           "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lakeland - Ostall Imperative",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -16,7 +16,6 @@
           "TerritoryId": 1191,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1254,
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CHRHDB922_05296_SYSTEM_000_003",
@@ -48,11 +47,7 @@
             "Z": 210.193
           },
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,8 +62,7 @@
             "Z": 103.04407
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - Electrope Strike"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -99,7 +93,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -121,8 +114,7 @@
             "Z": 652.64355
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -138,12 +130,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "CompleteQuest",
-          "NextQuestId": 5378,
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] Neon Stein"
-          ]
+          "NextQuestId": 5378
         }
       ]
     }

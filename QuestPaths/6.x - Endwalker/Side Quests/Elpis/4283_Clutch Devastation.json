@@ -20,9 +20,7 @@
               "Prompt": "TEXT_AKTKZG008_04283_Q1_000_000",
               "Answer": "TEXT_AKTKZG008_04283_A1_000_001"
             }
-          ],
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -37,8 +35,7 @@
             "Z": 523.5217
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2012275,
@@ -48,8 +45,7 @@
             "Z": 511.0094
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -73,8 +69,7 @@
             "Z": 314.50354
           },
           "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

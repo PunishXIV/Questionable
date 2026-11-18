@@ -14,11 +14,7 @@
             "Z": -53.3609
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -70,10 +66,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] Aetheryte Plaza"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -92,10 +84,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -117,13 +105,8 @@
             "Y": 16.999992,
             "Z": -53.3609
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -137,9 +120,7 @@
             "Z": 353.70963
           },
           "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1014841,
@@ -150,7 +131,6 @@
           },
           "TerritoryId": 397,
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -169,10 +149,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "NextQuestId": 2109
         }
       ]

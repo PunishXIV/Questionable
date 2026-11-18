@@ -15,22 +15,7 @@
             "Z": -39.261536
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -199.02344,
-                  "Y": 6.8735423,
-                  "Z": 30.533203
-                },
-                "TerritoryId": 153,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     }

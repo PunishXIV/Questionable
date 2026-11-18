@@ -15,7 +15,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: issuer 1013713 (Rowena)"
         }
       ]
@@ -32,8 +31,6 @@
           },
           "TerritoryId": 402,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Azys Lla - Helix",
           "$": "auto: todo turn-in -> 1016135 (Ardashir)"
         }
       ]

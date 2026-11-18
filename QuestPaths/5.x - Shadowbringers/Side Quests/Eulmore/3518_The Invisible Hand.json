@@ -27,7 +27,6 @@
             "Y": -4.820967,
             "Z": -94.65173
           },
-          "StopDistance": 7,
           "TerritoryId": 820,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -52,10 +51,6 @@
           },
           "TerritoryId": 820,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] Nightsoil Pots",
-            "[Eulmore] The Glory Gate"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]

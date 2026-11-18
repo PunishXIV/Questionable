@@ -14,13 +14,7 @@
             "Z": 56.839844
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [132]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,12 +29,7 @@
             "Z": 12.069824
           },
           "TerritoryId": 418,
-          "AetheryteShortcut": "Ishgard",
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -55,11 +44,7 @@
             "Z": 64.7135
           },
           "TerritoryId": 418,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Brume"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

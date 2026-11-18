@@ -13,7 +13,6 @@
             "Y": 88.525505,
             "Z": -582.8794
           },
-          "StopDistance": 7,
           "TerritoryId": 397,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
             "Z": -448.661
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": -538.26196
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -111,7 +108,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
           "NextQuestId": 2228
         }
       ]

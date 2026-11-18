@@ -14,8 +14,7 @@
             "Z": 451.13293
           },
           "TerritoryId": 137,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -119,7 +118,6 @@
             "Y": 20.706482,
             "Z": 451.13293
           },
-          "StopDistance": 7,
           "TerritoryId": 137,
           "InteractionType": "CompleteQuest"
         }

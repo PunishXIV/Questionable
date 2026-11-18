@@ -13,7 +13,6 @@
             "Y": -31.53043,
             "Z": 321.46167
           },
-          "StopDistance": 5,
           "TerritoryId": 956,
           "InteractionType": "AcceptQuest"
         }
@@ -81,8 +80,7 @@
           },
           "TerritoryId": 956,
           "InteractionType": "WalkTo",
-          "Comment": "Avoids aggro + possible navmesh issue",
-          "Mount": true
+          "Comment": "Avoids aggro + possible navmesh issue"
         },
         {
           "Position": {
@@ -104,15 +102,6 @@
           "TerritoryId": 956,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818316
-        },
-        {
-          "Position": {
-            "X": -102.94707,
-            "Y": -29.933468,
-            "Z": 674.6727
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -142,16 +131,6 @@
           "TerritoryId": 956,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818317
-        },
-        {
-          "Position": {
-            "X": -114.01625,
-            "Y": -30.313616,
-            "Z": 670.05585
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Mount": true
         },
         {
           "DataId": 1040455,

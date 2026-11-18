@@ -15,11 +15,7 @@
             "Z": 43.900146
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -70,10 +66,6 @@
             "Z": -269.5008
           },
           "TerritoryId": 148,
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ],
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
@@ -156,11 +148,6 @@
             "Y": 0.9999819,
             "Z": 35.01941
           },
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ],
-          "StopDistance": 7,
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 46

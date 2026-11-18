@@ -16,10 +16,6 @@
           "TerritoryId": 1278,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1346,
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Phantom Village"
-          ],
           "Comment": "This requires queueing into Occult Crescent: North Horn, so isn't started automatically"
         },
         {
@@ -47,11 +43,6 @@
           },
           "TerritoryId": 1278,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Phantom Village"
-          ],
           "$": "auto: todo location -> 1059644 (Ofangeim)"
         }
       ]
@@ -68,11 +59,6 @@
           },
           "TerritoryId": 1278,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Phantom Village"
-          ],
           "$": "auto: todo location -> 1059648 (Ketenramm)"
         }
       ]
@@ -89,7 +75,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
           "$": "auto: todo location -> 1053805 (expedition messenger)"
         }
       ]
@@ -106,7 +91,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tuliyollal",
           "$": "auto: todo turn-in -> 1053805 (expedition messenger)"
         }
       ]

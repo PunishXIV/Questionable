@@ -15,10 +15,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: issuer 1047120 (Pameka)"
         }
       ]
@@ -35,10 +31,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Wachumeqimeqi",
-            "[Tuliyollal] Brightploom Post"
-          ],
           "$": "auto: todo location -> 2013893 (destination)"
         }
       ]
@@ -55,8 +47,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "$": "auto: todo location -> 1047123 (Pameka)"
         }
       ]
@@ -73,8 +63,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "$": "auto: todo location -> 1047124 (young Yok Huy)"
         },
         {
@@ -86,7 +74,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 1047125 (severe Yok Huy)"
         },
         {
@@ -98,7 +85,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 1047126 (drowsy Yok Huy)"
         },
         {
@@ -110,7 +96,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 1047123 (Pameka)"
         }
       ]
@@ -127,8 +112,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "$": "auto: lua ACTOR5 -> 1047127 (Yok Huy stonemason)"
         }
       ]
@@ -145,9 +128,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "StopDistance": 4,
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "$": "auto: todo location -> 1047128 (Pameka)"
         }
       ]
@@ -175,8 +155,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "StopDistance": 4,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
           "$": "auto: todo location -> 1047128 (Pameka); npc trade"
         }
       ]
@@ -194,10 +172,6 @@
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4980,
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: todo turn-in -> 1047120 (Pameka)"
         }
       ]

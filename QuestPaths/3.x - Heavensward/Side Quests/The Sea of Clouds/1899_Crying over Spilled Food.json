@@ -14,9 +14,7 @@
             "Z": 836.33167
           },
           "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,7 +29,6 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Combat",
-          "Fly": true,
           "KillEnemyDataIds": [4049],
           "EnemySpawnType": "OverworldEnemies"
         }
@@ -48,9 +45,7 @@
             "Z": 836.33167
           },
           "TerritoryId": 401,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

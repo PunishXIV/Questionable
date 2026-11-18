@@ -14,9 +14,7 @@
             "Z": 212.84802
           },
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,11 +43,9 @@
             "Y": 78.03014,
             "Z": 118.72834
           },
-          "StopDistance": 0.5,
           "TerritoryId": 612,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "Fly": true,
           "KillEnemyDataIds": [7825, 7826, 7827]
         }
       ]
@@ -80,8 +76,7 @@
             "Z": 245.89917
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,9 +91,7 @@
             "Z": 212.84802
           },
           "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

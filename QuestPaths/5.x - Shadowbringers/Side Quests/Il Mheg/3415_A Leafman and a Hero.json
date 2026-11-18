@@ -13,23 +13,7 @@
             "Z": -889.82983
           },
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -15.610046,
-                  "Y": 106.46049,
-                  "Z": -889.82983
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,8 +27,7 @@
             "Z": -828.22034
           },
           "TerritoryId": 816,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "Position": {
@@ -53,8 +36,7 @@
             "Z": -757.84467
           },
           "TerritoryId": 816,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "DataId": 2010193,
@@ -65,8 +47,7 @@
           },
           "TerritoryId": 816,
           "InteractionType": "UseItem",
-          "ItemId": 2002646,
-          "Fly": true
+          "ItemId": 2002646
         }
       ]
     },
@@ -81,23 +62,7 @@
             "Z": -889.82983
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Il Mheg - Pla Enni",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -15.610046,
-                  "Y": 106.46049,
-                  "Z": -889.82983
-                },
-                "TerritoryId": 816,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

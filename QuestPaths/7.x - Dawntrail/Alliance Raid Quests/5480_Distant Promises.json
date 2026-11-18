@@ -15,7 +15,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook",
           "TargetTerritoryId": 1189,
           "SkipConditions": {
             "StepIf": {
@@ -35,7 +34,6 @@
           "TerritoryId": 1189,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1265,
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "InTerritory": [
@@ -67,9 +65,7 @@
             "Z": 473.1975
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,7 +81,6 @@
           },
           "TerritoryId": 1189,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook",
           "TargetTerritoryId": 1189
         },
         {
@@ -96,8 +91,7 @@
             "Z": 553.30725
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -127,12 +121,7 @@
             "Z": -60.16632
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Dirigible Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -147,11 +136,7 @@
             "Z": -351.9494
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Dirigible Landing",
-            "[Tuliyollal] Brightploom Post"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -166,10 +151,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Jump",
-          "AethernetShortcut": [
-            "[Tuliyollal] Brightploom Post",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ],
           "JumpDestination": {
             "Position": {
               "X": -18.120121,
@@ -260,9 +241,7 @@
             "Z": 610.1013
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

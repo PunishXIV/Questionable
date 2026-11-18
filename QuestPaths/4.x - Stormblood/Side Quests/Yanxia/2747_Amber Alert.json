@@ -7,16 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": -297.51367,
-            "Y": 17.31996,
-            "Z": 508.2195
-          },
-          "TerritoryId": 614,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1019298,
           "Position": {
             "X": -318.87692,
@@ -24,8 +14,7 @@
             "Z": 508.29004
           },
           "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 0.25
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,9 +29,7 @@
             "Z": -148.8518
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yanxia - Namai"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -57,8 +44,7 @@
             "Z": 508.29004
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "StopDistance": 0.25
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -74,8 +60,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Yanxia - Namai",
           "NextQuestId": 2740
         }
       ]

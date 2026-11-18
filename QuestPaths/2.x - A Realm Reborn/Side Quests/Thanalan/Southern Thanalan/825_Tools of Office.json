@@ -15,7 +15,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Southern Thanalan - Forgotten Springs",
           "SkipConditions": { "StepIf": { "Flying": "Locked" } }
         },
         {
@@ -26,8 +25,7 @@
             "Z": 426.13855
           },
           "TerritoryId": 146,
-          "InteractionType": "AcceptQuest",
-          "Fly": false
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,7 +41,6 @@
           },
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
-          "Fly": false,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -108,7 +105,6 @@
             "Z": 426.13855
           },
           "TerritoryId": 146,
-          "Fly": false,
           "InteractionType": "CompleteQuest"
         }
       ]

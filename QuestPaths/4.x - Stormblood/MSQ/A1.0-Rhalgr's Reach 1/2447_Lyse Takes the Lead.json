@@ -13,10 +13,8 @@
             "Y": 130,
             "Z": -504.02078
           },
-          "StopDistance": 5,
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -57,23 +55,13 @@
             "Z": -531.426
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Castrum Oriens"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": -124.70333,
-            "Y": 58.571022,
-            "Z": -581.12805
-          },
-          "TerritoryId": 612,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 2007967,
           "Position": {

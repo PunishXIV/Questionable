@@ -14,9 +14,7 @@
             "Z": -103.80447
           },
           "TerritoryId": 154,
-          "StopDistance": 1,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: issuer 1000656 (Dametta)"
         }
       ]
@@ -32,8 +30,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -58,10 +54,7 @@
             "Z": -103.80447
           },
           "TerritoryId": 154,
-          "StopDistance": 1,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "$": "auto: todo turn-in -> 1000656 (Dametta)"
         }
       ]

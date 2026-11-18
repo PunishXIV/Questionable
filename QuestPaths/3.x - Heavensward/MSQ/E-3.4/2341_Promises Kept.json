@@ -13,34 +13,14 @@
             "Y": 15.96505,
             "Z": -0.22894287
           },
-          "StopDistance": 7,
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [418, 419] }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Athenaeum Astrologicum"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [419] },
-            "StepIf": { "InTerritory": [419] }
-          }
-        },
         {
           "DataId": 1017719,
           "Position": {
@@ -49,11 +29,7 @@
             "Z": -87.937744
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,7 +43,6 @@
             "Y": 16.009666,
             "Z": -9.567444
           },
-          "StopDistance": 7,
           "TerritoryId": 419,
           "InteractionType": "Interact",
           "TargetTerritoryId": 433
@@ -84,7 +59,6 @@
             "Y": 0.022254245,
             "Z": -1.3275757
           },
-          "StopDistance": 5,
           "TerritoryId": 433,
           "InteractionType": "CompleteQuest"
         }

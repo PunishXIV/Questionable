@@ -13,21 +13,7 @@
             "Z": -577.59973
           },
           "TerritoryId": 1191,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -272.23627,
-                  "Y": 30.001156,
-                  "Z": -577.59973
-                },
-                "TerritoryId": 1191,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -73,11 +59,9 @@
             "Y": 30.838379,
             "Z": -618.0362
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1191,
           "InteractionType": "UseItem",
           "ItemId": 2003594,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -119,11 +103,9 @@
             "Y": 37.857544,
             "Z": -504.9058
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1191,
           "InteractionType": "UseItem",
           "ItemId": 2003594,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -165,11 +147,9 @@
             "Y": 37.857544,
             "Z": -610.5898
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1191,
           "InteractionType": "UseItem",
           "ItemId": 2003594,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
@@ -177,16 +157,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -270.87784,
-            "Y": 30,
-            "Z": -577.24225
-          },
-          "TerritoryId": 1191,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1049442,
           "Position": {

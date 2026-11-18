@@ -15,10 +15,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: issuer 1038525 (Jude)"
         }
       ]
@@ -35,10 +31,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] The Leveilleur Estate"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_AKTKLA205_04143_Q1_000_000",
@@ -84,10 +76,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Leveilleur Estate",
-            "[Old Sharlayan] Scholar's Harbor"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_AKTKLA205_04143_Q2_000_000",
@@ -111,10 +99,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Scholar's Harbor",
-            "[Old Sharlayan] The Baldesion Annex"
-          ],
           "$": "auto: todo location -> 1039238 (Jeromere)"
         }
       ]

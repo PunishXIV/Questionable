@@ -13,18 +13,7 @@
             "Z": -90.013
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,11 +28,7 @@
             "Z": -175.49408
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Botanists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,10 +44,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Botanists' Guild",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -75,24 +56,6 @@
           "TerritoryId": 133,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
-        },
-        {
-          "Position": {
-            "X": -52.803135,
-            "Y": 7.148118,
-            "Z": -115.562614
-          },
-          "TerritoryId": 133,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -46.505447,
-            "Y": 6.4003353,
-            "Z": -106.06247
-          },
-          "TerritoryId": 133,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1052369,
@@ -118,11 +81,7 @@
             "Z": -101.1521
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -149,10 +108,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Leatherworkers' Guild & Shaded Bower",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -164,20 +119,7 @@
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Aetheryte Plaza"
-          ],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
-          "AetheryteShortcut": "Gridania",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                132,
-                133
-              ]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         }
       ]
     },
@@ -192,11 +134,7 @@
             "Z": -188.61682
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Botanists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -226,11 +164,7 @@
             "Z": -90.013
           },
           "TerritoryId": 133,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Botanists' Guild",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

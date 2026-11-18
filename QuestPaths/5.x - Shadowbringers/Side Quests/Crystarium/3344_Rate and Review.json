@@ -29,10 +29,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Dossal Gate",
-            "[Crystarium] Temenos Rookery"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -44,10 +40,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] Temenos Rookery",
-            "[Crystarium] The Cabinet of Curiosity"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
@@ -59,10 +51,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Cabinet of Curiosity",
-            "[Crystarium] The Amaro Launch"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -71,7 +59,6 @@
             "Y": 35.999687,
             "Z": -146.81993
           },
-          "StopDistance": 0.5,
           "TerritoryId": 819,
           "InteractionType": "Jump",
           "JumpDestination": {

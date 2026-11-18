@@ -14,22 +14,7 @@
             "Z": -180.95679
           },
           "TerritoryId": 614,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yanxia - Namai",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 472.4036,
-                  "Y": 58.568016,
-                  "Z": -181.87
-                },
-                "TerritoryId": 614,
-                "MaximumDistance": 50
-              }
-            }
-          },
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,10 +28,8 @@
             "Y": 100.83898,
             "Z": -93.91931
           },
-          "StopDistance": 0.5,
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,8 +44,7 @@
             "Z": -103.80713
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,8 +59,7 @@
             "Z": -35.05005
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,7 +74,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7540
@@ -112,8 +92,7 @@
             "Z": -35.05005
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -129,21 +108,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yanxia - Namai",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 435.81787,
-                  "Y": 68.84845,
-                  "Z": -94.02999
-                },
-                "TerritoryId": 614,
-                "MaximumDistance": 150
-              }
-            }
-          },
-          "Fly": true,
           "NextQuestId": 2740
         }
       ]

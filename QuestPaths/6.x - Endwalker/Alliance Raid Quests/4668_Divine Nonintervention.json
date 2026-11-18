@@ -13,8 +13,7 @@
             "Z": -674.49457
           },
           "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,8 +28,7 @@
             "Z": 8.8349
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -70,9 +68,7 @@
             "Z": 384.60352
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -86,7 +82,6 @@
             "Y": 0.7061289,
             "Z": 384.08484
           },
-          "StopDistance": 7,
           "TerritoryId": 153,
           "InteractionType": "Interact",
           "DialogueChoices": [

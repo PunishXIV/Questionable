@@ -13,7 +13,6 @@
             "Y": -15.134371,
             "Z": 38.52893
           },
-          "StopDistance": 7,
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest"
         }
@@ -37,10 +36,6 @@
               "Prompt": "TEXT_HEAVNA601_01650_SCENE00008_EVENTAREA_WARP_YESNO_TITLE",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] The Forgotten Knight"
           ]
         },
         {

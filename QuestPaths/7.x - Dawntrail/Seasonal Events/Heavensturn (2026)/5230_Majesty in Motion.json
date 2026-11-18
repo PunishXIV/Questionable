@@ -14,18 +14,7 @@
             "Z": 133.92847
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,11 +29,7 @@
             "Z": 140.33716
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,8 +54,7 @@
             "Z": 59.830566
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "Mount": false
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -85,8 +69,7 @@
             "Z": 59.830566
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "Mount": false
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1051874,
@@ -96,8 +79,7 @@
             "Z": 156.11499
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "Mount": false
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -112,8 +94,7 @@
             "Z": 156.11499
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "Mount": false
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1051875,
@@ -123,8 +104,7 @@
             "Z": 261.31067
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "Mount": false
+          "InteractionType": "Interact"
         }
       ]
     },

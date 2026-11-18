@@ -47,8 +47,7 @@
             "Z": 246.72314
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,9 +62,7 @@
             "Z": 319.53918
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron"
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1043529,
@@ -75,8 +72,7 @@
             "Z": 341.5122
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,8 +87,7 @@
             "Z": 200.73242
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,9 +103,7 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "Mount": true,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron"
+          "TargetTerritoryId": 960
         },
         {
           "DataId": 1043865,
@@ -121,8 +114,7 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "Fly": true
+          "TargetTerritoryId": 960
         },
         {
           "DataId": 1043586,
@@ -132,8 +124,7 @@
             "Z": 246.72314
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -190,9 +181,7 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "Mount": true,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron"
+          "TargetTerritoryId": 960
         },
         {
           "DataId": 1043865,
@@ -203,7 +192,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "Fly": true,
           "TargetTerritoryId": 960
         },
         {
@@ -214,8 +202,7 @@
             "Z": 246.72314
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -238,8 +225,7 @@
               "Type": "YesNo",
               "Yes": true
             }
-          ],
-          "Fly": true
+          ]
         },
         {
           "DataId": 1043515,

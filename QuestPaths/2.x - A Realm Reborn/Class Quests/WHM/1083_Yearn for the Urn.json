@@ -13,9 +13,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -48,7 +46,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -77,7 +74,6 @@
             "Y": 8.561184,
             "Z": 281.2085
           },
-          "StopDistance": 5,
           "TerritoryId": 153,
           "InteractionType": "Interact"
         }
@@ -92,10 +88,8 @@
             "Y": 9.470074,
             "Z": -98.02502
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
           "InteractionType": "Jump",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
           "JumpDestination": {
             "Position": {
               "X": 51.224842,
@@ -118,24 +112,13 @@
             "Z": -111.25354
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": 47.682095,
-            "Y": 9.470074,
-            "Z": -98.02502
-          },
-          "StopDistance": 0.25,
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 2002403,
           "Position": {
@@ -176,9 +159,7 @@
             "Y": 8.006159,
             "Z": 268.78055
           },
-          "StopDistance": 0.25,
           "TerritoryId": 153,
-          "AetheryteShortcut": "South Shroud - Camp Tranquil",
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": {
@@ -211,7 +192,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"

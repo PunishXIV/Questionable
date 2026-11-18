@@ -10,16 +10,7 @@
           "TerritoryId": 131,
           "InteractionType": "EquipItem",
           "ItemId": 20388,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            },
             "StepIf": {
               "Item": {
                 "NotInInventory": true
@@ -137,10 +128,6 @@
       "Steps": [
         {
           "TerritoryId": 131,
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Gladiators' Guild"
-          ],
           "InteractionType": "EquipRecommended"
         },
         {
@@ -166,7 +153,6 @@
             "Y": 2.150006,
             "Z": 59.739014
           },
-          "StopDistance": 5,
           "TerritoryId": 131,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -190,11 +176,7 @@
             "Z": -82.993835
           },
           "TerritoryId": 130,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

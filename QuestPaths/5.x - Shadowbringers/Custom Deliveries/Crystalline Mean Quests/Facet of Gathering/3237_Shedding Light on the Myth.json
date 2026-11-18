@@ -14,12 +14,7 @@
             "Z": -148.91284
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,9 +30,7 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "Fly": true,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
-          "AetheryteShortcut": "Il Mheg - Lydha Lran"
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1028499,
@@ -48,7 +41,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -60,7 +52,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -76,8 +67,7 @@
             "Z": 579.6139
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -92,8 +82,7 @@
             "Z": -80.857605
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -118,8 +107,7 @@
             "Z": -78.78235
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -134,12 +122,7 @@
             "Z": -148.91284
           },
           "TerritoryId": 819,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

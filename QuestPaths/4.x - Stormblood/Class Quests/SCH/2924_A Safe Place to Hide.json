@@ -14,9 +14,6 @@
             "Z": 42.04371
           },
           "TerritoryId": 139,
-          "StopDistance": 0.25,
-          "AetheryteShortcut": "Upper La Noscea - Camp Bronze Lake",
-          "Fly": true,
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -32,11 +29,7 @@
             "Z": -250.56848
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Marauders' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,8 +44,7 @@
             "Z": 353.16992
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "South Shroud - Camp Tranquil"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,8 +59,7 @@
             "Z": 406.3629
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -83,8 +74,7 @@
             "Z": 463.76733
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -99,8 +89,7 @@
             "Z": 395.71216
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -152,7 +141,6 @@
           },
           "TerritoryId": 153,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 2925
         }
       ]

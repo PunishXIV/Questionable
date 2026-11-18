@@ -17,24 +17,13 @@
             "Z": 334.733
           },
           "TerritoryId": 817,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -154.88077,
-            "Y": -16.147165,
-            "Z": 293.14914
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1028922,
           "Position": {
@@ -44,7 +33,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Say",
-          "Fly": true,
           "ChatMessage": {
             "Key": "TEXT_LUCKZE007_03441_SYSTEM_100_011"
           }
@@ -63,7 +51,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "Say",
-          "Fly": true,
           "ChatMessage": {
             "Key": "TEXT_LUCKZE007_03441_SYSTEM_100_021"
           }
@@ -82,8 +69,6 @@
           },
           "TerritoryId": 817,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Rak'tika - Slitherbough",
           "DialogueChoices": [
             {
               "Type": "List",

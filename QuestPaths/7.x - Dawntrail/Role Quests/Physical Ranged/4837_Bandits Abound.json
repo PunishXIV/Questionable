@@ -14,8 +14,7 @@
             "Z": 47.226562
           },
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -2.02948
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": 10.940674
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -83,8 +80,7 @@
             "Z": 10.940674
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -100,7 +96,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
           "NextQuestId": 4838
         }
       ]

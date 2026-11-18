@@ -14,9 +14,7 @@
             "Z": 65.293335
           },
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": 64.98816
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,16 +46,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "Fly": true,
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,32],
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                398
-              ]
-            }
-          }
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "$": "Path to 'Under fallen tree/bridge to top'",
@@ -69,8 +57,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
@@ -87,7 +73,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "Mount": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
@@ -99,8 +84,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
@@ -117,7 +100,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "Mount": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
         },
         {
@@ -129,7 +111,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,8],
@@ -147,8 +128,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Mount": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -161,7 +140,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -177,9 +155,7 @@
             "Z": 64.98816
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Mount": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -195,8 +171,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "NextQuestId": 1776
         }
       ]

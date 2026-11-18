@@ -53,7 +53,6 @@
             "Y": 8.7010765,
             "Z": 603.8272
           },
-          "StopDistance": 1,
           "TerritoryId": 817,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -119,8 +118,7 @@
             "Z": 298.20703
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Slitherbough"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

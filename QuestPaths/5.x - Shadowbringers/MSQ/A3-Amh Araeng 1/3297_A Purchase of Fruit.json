@@ -43,7 +43,6 @@
             "Y": -27.8172,
             "Z": 310.04797
           },
-          "StopDistance": 7,
           "TerritoryId": 815,
           "InteractionType": "Interact"
         }
@@ -53,22 +52,12 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Position": {
-            "X": 362.283,
-            "Y": -27.966003,
-            "Z": 304.85144
-          },
-          "TerritoryId": 815,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1030386,
           "Position": {
             "X": 363.4851,
             "Y": -27.966003,
             "Z": 301.2893
           },
-          "StopDistance": 5,
           "TerritoryId": 815,
           "InteractionType": "Interact"
         }
@@ -100,8 +89,7 @@
             "Z": -186.14484
           },
           "TerritoryId": 815,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Amh Araeng - Mord Souq"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -146,8 +134,7 @@
             "Z": 290.6996
           },
           "TerritoryId": 815,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Amh Araeng - Inn at Journey's Head"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -13,7 +13,6 @@
             "Y": 242.184,
             "Z": 373.495
           },
-          "StopDistance": 7,
           "TerritoryId": 155,
           "InteractionType": "AcceptQuest"
         }
@@ -38,26 +37,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": -692.2779,
-            "Y": 242.18399,
-            "Z": 366.4715
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (inside)"
-        },
-        {
-          "Position": {
-            "X": -688.1699,
-            "Y": 241.99994,
-            "Z": 355.80283
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (outside)"
-        },
-        {
           "DataId": 2002265,
           "Position": {
             "X": -693.01904,
@@ -80,29 +59,7 @@
           },
           "TerritoryId": 155,
           "InteractionType": "WalkTo",
-          "Comment": "Enemies lose aggro around here",
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": -688.1699,
-            "Y": 241.99994,
-            "Z": 355.80283
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (outside)",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -692.2779,
-            "Y": 242.18399,
-            "Z": 366.4715
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "$": "Monument Tower (inside)"
+          "Comment": "Enemies lose aggro around here"
         },
         {
           "DataId": 1006520,

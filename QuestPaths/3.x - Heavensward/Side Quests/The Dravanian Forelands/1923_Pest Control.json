@@ -16,9 +16,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -57,16 +54,7 @@
             "Z": -39.56665
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                398
-              ]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -82,15 +70,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                398
-              ]
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -111,10 +91,8 @@
             "Y": -31.559177,
             "Z": -319.8049
           },
-          "StopDistance": 4.0,
           "TerritoryId": 398,
           "InteractionType": "Combat",
-          "Mount": false,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             4783,
@@ -126,19 +104,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "$": "Path to Hervoix",
-          "Position": {
-            "X": 453.9474,
-            "Y": -51.141403,
-            "Z": 19.29933
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather"
-        },
         {
           "DataId": 1014502,
           "Position": {

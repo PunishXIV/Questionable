@@ -15,8 +15,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "$": "auto: issuer 1027865 (Thaymoth)"
         }
       ]
@@ -33,9 +31,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "StopDistance": 0.25,
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "$": "auto: todo location -> 1027864 (Lorotte)"
         }
       ]
@@ -52,8 +47,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "$": "auto: todo location -> 1027865 (Thaymoth)"
         }
       ]
@@ -70,8 +63,6 @@
           },
           "TerritoryId": 815,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Amh Araeng - Mord Souq",
           "$": "auto: todo turn-in -> 1027879 (Ghin Gin)"
         }
       ]

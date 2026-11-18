@@ -80,11 +80,7 @@
         {
           "TerritoryId": 133,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Gridania] Mih Khetto's Amphitheatre",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Leatherworkers' Guild & Shaded Bower"
-          ]
+          "AethernetShard": "[Gridania] Mih Khetto's Amphitheatre"
         },
         {
           "Position": {
@@ -103,11 +99,7 @@
         {
           "TerritoryId": 133,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Gridania] Conjurers' Guild",
-          "AethernetShortcut": [
-            "[Gridania] Botanists' Guild",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "AethernetShard": "[Gridania] Conjurers' Guild"
         },
         {
           "DataId": 1000251,
@@ -118,10 +110,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Lancers' Guild"
-          ],
           "Comment": "Lancer Receptionist"
         }
       ]
@@ -147,13 +135,8 @@
             "Y": -8.000001,
             "Z": 115.7687
           },
-          "StopDistance": 1,
           "TerritoryId": 132,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Airship Landing"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

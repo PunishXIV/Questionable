@@ -7,26 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 1,
-          "InteractionType": "UseItem",
-          "ItemId": 30362,
-          "TargetTerritoryId": 140,
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -516.35004,
-                  "Y": 14.956879,
-                  "Z": -370.47382
-                },
-                "TerritoryId": 140,
-                "MaximumDistance": 300
-              },
-              "Item": { "NotInInventory": true }
-            }
-          }
-        },
-        {
           "DataId": 1005021,
           "Position": {
             "X": -472.49567,
@@ -42,17 +22,6 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": -157.07425,
-            "Y": 24.884384,
-            "Z": -354.37775
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true
-        },
-        {
           "DataId": 1006220,
           "Position": {
             "X": 185.74805,
@@ -60,8 +29,7 @@
             "Z": -443.1983
           },
           "TerritoryId": 146,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -13,12 +13,7 @@
             "Z": 62.42456
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Kogane Dori Markets"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,12 +28,7 @@
             "Z": 804.7455
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Kugane] Kogane Dori Markets",
-            "[Kugane] The Ruby Price"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -53,8 +43,7 @@
             "Z": 819.6688
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1026397,
@@ -64,8 +53,7 @@
             "Z": 863.8589
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,8 +68,7 @@
             "Z": 844.75464
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,9 +83,7 @@
             "Z": -360.9217
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -113,8 +98,7 @@
             "Z": -568.5359
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1026404,
@@ -124,8 +108,7 @@
             "Z": -593.62177
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1026405,
@@ -135,8 +118,7 @@
             "Z": -611.2917
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -152,7 +134,6 @@
           },
           "TerritoryId": 613,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 3163
         }
       ]

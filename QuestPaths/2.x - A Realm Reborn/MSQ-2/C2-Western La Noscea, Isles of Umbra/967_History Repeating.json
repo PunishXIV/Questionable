@@ -81,11 +81,7 @@
           "TerritoryId": 138,
           "InteractionType": "Interact",
           "TargetTerritoryId": 138,
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [138]
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -107,12 +103,7 @@
             "Z": 682.70386
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [138]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },

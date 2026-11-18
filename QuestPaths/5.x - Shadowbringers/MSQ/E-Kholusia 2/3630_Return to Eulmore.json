@@ -13,7 +13,6 @@
             "Y": 1.7160122,
             "Z": 249.83594
           },
-          "StopDistance": 7,
           "TerritoryId": 819,
           "InteractionType": "AcceptQuest"
         }
@@ -31,10 +30,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Pendants",
-            "[Crystarium] The Dossal Gate"
-          ],
           "TargetTerritoryId": 844
         }
       ]
@@ -50,8 +45,7 @@
             "Z": 399.31323
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Wright"
+          "InteractionType": "Interact"
         }
       ]
     },

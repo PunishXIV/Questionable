@@ -28,9 +28,7 @@
             "Z": 554.5586
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mare Lamentorum - Sinus Lacrimarum"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,9 +58,7 @@
             "Z": -361.77618
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,8 +73,7 @@
             "Z": -262.13477
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -94,8 +89,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64
           ]
         },
@@ -108,7 +101,6 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32
           ]
         },
@@ -120,8 +112,7 @@
             "Z": -639.9481
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -136,9 +127,7 @@
             "Z": -271.5343
           },
           "TerritoryId": 959,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow"
+          "InteractionType": "Interact"
         }
       ]
     },

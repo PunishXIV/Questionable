@@ -14,9 +14,7 @@
             "Z": 37.247192
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,7 +34,6 @@
           "KillEnemyDataIds": [
             2903
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[{"Low": 3},{"Low": 4}],null,null,null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 4}]
         },
@@ -53,7 +50,6 @@
           "KillEnemyDataIds": [
             2903
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[{"Low":1},{"Low": 2}],null,null,null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
@@ -70,7 +66,6 @@
           "KillEnemyDataIds": [
             2903
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[{"Low": 2},{"Low": 3}],null,null,null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 1}]
         },
@@ -87,7 +82,6 @@
           "KillEnemyDataIds": [
             2903
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[{"Low": 1},{"Low": 4}],null,null,null],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 2}]
         }
@@ -104,9 +98,7 @@
             "Z": 37.247192
           },
           "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

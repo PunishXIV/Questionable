@@ -15,11 +15,7 @@
             "Z": 80.88806
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -109,9 +105,7 @@
             "Notes": [
               "vbm takes a while to move to the enemies, but it does fight as well as interact -alydev"
             ]
-          },
-          "Fly": true,
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+          }
         }
       ]
     },
@@ -127,10 +121,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",

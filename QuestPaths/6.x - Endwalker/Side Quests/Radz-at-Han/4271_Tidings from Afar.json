@@ -29,10 +29,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Alzadaal's Peace",
-            "[Radz-at-Han] Kama"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -42,13 +38,8 @@
             "Y": 1.8631814,
             "Z": -100.1145
           },
-          "StopDistance": 7,
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Kama",
-            "[Radz-at-Han] Aetheryte Plaza"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -64,11 +55,7 @@
             "Z": 129.77795
           },
           "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Alzadaal's Peace"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

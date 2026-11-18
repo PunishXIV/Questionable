@@ -14,8 +14,6 @@
             "Z": 439.3529
           },
           "TerritoryId": 1192,
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo",
-          "Fly": true,
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -45,10 +43,8 @@
             "Y": 1.3939283,
             "Z": 550.029
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,10 +58,8 @@
             "Y": 7.5857296,
             "Z": 662.96063
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,7 +73,6 @@
             "Y": 7.6887574,
             "Z": 664.05725
           },
-          "StopDistance": 5,
           "TerritoryId": 1192,
           "InteractionType": "CompleteQuest"
         }

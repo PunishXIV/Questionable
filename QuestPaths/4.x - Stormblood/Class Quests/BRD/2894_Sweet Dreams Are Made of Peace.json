@@ -14,8 +14,7 @@
             "Z": 20.58435
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,10 +30,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -51,13 +46,8 @@
             "Y": 0.9999819,
             "Z": 35.01941
           },
-          "StopDistance": 5,
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] Archers' Guild"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -80,38 +70,13 @@
             "Z": -5.081299
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Archers' Guild",
-            "[Gridania] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": -183.93188,
-            "Y": -53.111656,
-            "Z": 330.18417
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
-        },
-        {
-          "Position": {
-            "X": -248.3785,
-            "Y": -74.95606,
-            "Z": 424.39832
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1022529,
           "Position": {
@@ -140,7 +105,6 @@
             "Y": -75.542496,
             "Z": 426.5354
           },
-          "StopDistance": 5,
           "TerritoryId": 154,
           "InteractionType": "Interact"
         }
@@ -157,8 +121,7 @@
             "Z": -5.081299
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -173,9 +136,7 @@
             "Z": -7.3396606
           },
           "TerritoryId": 153,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

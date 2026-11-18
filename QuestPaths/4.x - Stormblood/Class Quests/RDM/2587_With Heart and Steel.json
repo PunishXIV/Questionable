@@ -14,18 +14,7 @@
             "Z": -37.247314
           },
           "TerritoryId": 419,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                419
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,11 +29,7 @@
             "Z": 61.08191
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -74,8 +59,7 @@
             "Z": -676.6614
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,8 +75,7 @@
           },
           "TerritoryId": 156,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": false},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": false}
         }
       ]
     },
@@ -109,7 +92,6 @@
             "Y": -16.339586,
             "Z": -331.44128
           },
-          "StopDistance": 5,
           "TerritoryId": 156,
           "InteractionType": "Interact"
         }
@@ -126,8 +108,7 @@
             "Z": -675.5627
           },
           "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

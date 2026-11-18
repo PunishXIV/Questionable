@@ -15,19 +15,7 @@
             "Z": -151.23218
           },
           "TerritoryId": 128,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                129,
-                128
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -109,10 +97,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Culinarians' Guild",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -131,10 +115,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Aetheryte Plaza"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -157,11 +137,7 @@
             "Z": -164.08032
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -553,11 +529,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AllowHighQuality": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Culinarians' Guild",
-            "[Limsa Lominsa] Aetheryte Plaza"
-          ]
+          "AllowHighQuality": true
         }
       ]
     },
@@ -572,11 +544,7 @@
             "Z": -151.23218
           },
           "TerritoryId": 128,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Culinarians' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

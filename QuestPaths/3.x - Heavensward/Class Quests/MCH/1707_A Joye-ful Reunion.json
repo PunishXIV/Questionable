@@ -14,11 +14,7 @@
             "Z": -53.3609
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,8 +29,7 @@
             "Z": 724.7882
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,11 +44,7 @@
             "Z": 61.81433
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -67,7 +58,6 @@
             "Y": -22.017334,
             "Z": 32.791626
           },
-          "StopDistance": 10,
           "TerritoryId": 418,
           "InteractionType": "Action",
           "Action": "Slug Shot"
@@ -86,8 +76,6 @@
           },
           "TerritoryId": 397,
           "InteractionType": "SinglePlayerDuty",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -104,7 +92,6 @@
             "Y": 161.18224,
             "Z": -98.10034
           },
-          "StopDistance": 5,
           "TerritoryId": 397,
           "InteractionType": "Interact"
         }
@@ -122,10 +109,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "NextQuestId": 1708
         }
       ]

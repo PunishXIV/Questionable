@@ -14,8 +14,7 @@
             "Z": 37.125122
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +30,6 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_CLSHRV530_02049_Q1_000_000",
@@ -52,7 +49,6 @@
         },
         {
           "TerritoryId": 398,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "InteractionType": "Gather",
           "ItemsToGather": [
             {
@@ -77,9 +73,7 @@
             "Z": 639.9481
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -95,7 +89,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
           "NextQuestId": 2050
         }
       ]

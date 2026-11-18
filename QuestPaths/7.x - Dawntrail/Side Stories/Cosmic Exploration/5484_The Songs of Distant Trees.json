@@ -16,7 +16,6 @@
           "TerritoryId": 959,
           "InteractionType": "Interact",
           "TargetTerritoryId": 1319,
-          "Fly": true,
           "Comment": "Select the destination Auxesia (#4)",
           "DialogueChoices": [
             {
@@ -65,8 +64,7 @@
             "Z": -381.185
           },
           "TerritoryId": 1319,
-          "InteractionType": "Interact",
-          "StopDistance": 4
+          "InteractionType": "Interact"
         }
       ]
     },

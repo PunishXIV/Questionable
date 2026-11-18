@@ -14,9 +14,7 @@
             "Z": -59.722023
           },
           "TerritoryId": 635,
-          "StopDistance": 0.25,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Rhalgr's Reach] Aetheryte Plaza","[Rhalgr's Reach] Western Rhalgr's Reach"],
           "$": "auto: issuer 1021173 (wounded Resistance fighter)"
         }
       ]
@@ -33,8 +31,6 @@
           },
           "TerritoryId": 620,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Peaks - Ala Gannha",
           "$": "auto: turn-in 1021174 (Resistance fighter's mother)"
         }
       ]

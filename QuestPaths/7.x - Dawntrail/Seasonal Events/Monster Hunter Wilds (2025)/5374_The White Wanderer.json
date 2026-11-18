@@ -13,26 +13,7 @@
             "Z": 106.233
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "StopDistance": 3,
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ],
-          "AetheryteShortcut": "Tuliyollal",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 0.165078,
-                  "Y": -14,
-                  "Z": 106.233
-                },
-                "TerritoryId": 1185,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -47,9 +28,7 @@
             "Z": 438.4984
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,9 +43,7 @@
             "Z": 390.67664
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "StopDistance": 4,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -82,9 +59,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 4,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
           "SkipConditions": {
             "StepIf": {
               "NotNamePlateIconId": [
@@ -101,8 +75,7 @@
             "Z": 237.53711
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -118,9 +91,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 4,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
           "SkipConditions": {
             "StepIf": {
               "NotNamePlateIconId": [
@@ -137,8 +107,7 @@
             "Z": 220.78271
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -154,9 +123,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 4,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
           "SkipConditions": {
             "StepIf": {
               "NotNamePlateIconId": [
@@ -173,9 +139,7 @@
             "Z": 40.604248
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 4
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -191,9 +155,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 4,
-          "AetheryteShortcut": "Shaaloani - Hhusatahwi",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_KINGYX901_05374_SYSTEM_000_301",
@@ -216,9 +177,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 3,
-          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_KINGYX901_05374_SYSTEM_200_402",
@@ -244,9 +202,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 3,
-          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan",
           "TargetTerritoryId": 1301,
           "DialogueChoices": [
             {
@@ -256,11 +211,6 @@
             }
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1301
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 1301
@@ -292,9 +242,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 3,
-          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan",
           "TargetTerritoryId": 1301,
           "DialogueChoices": [
             {
@@ -304,11 +251,6 @@
             }
           ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                1301
-              ]
-            },
             "StepIf": {
               "InTerritory": [
                 1301
@@ -364,12 +306,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest",
-          "StopDistance": 3,
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ],
-          "AetheryteShortcut": "Tuliyollal",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {

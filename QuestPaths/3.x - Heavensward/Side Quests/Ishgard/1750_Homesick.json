@@ -29,9 +29,7 @@
             "Z": 723.5675
           },
           "TerritoryId": 397,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

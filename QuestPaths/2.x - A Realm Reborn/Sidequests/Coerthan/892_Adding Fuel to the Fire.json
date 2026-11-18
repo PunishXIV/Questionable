@@ -13,10 +13,8 @@
             "Y": 245.404,
             "Z": 195.132
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -122,10 +120,8 @@
             "Y": 267.288,
             "Z": 169.796
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "Fly": true
+          "InteractionType": "WalkTo"
         }
       ]
     },
@@ -139,10 +135,8 @@
             "Y": 285.065,
             "Z": 176.807
           },
-          "StopDistance": 2,
           "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

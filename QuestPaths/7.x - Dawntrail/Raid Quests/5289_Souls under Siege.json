@@ -13,12 +13,7 @@
             "Z": 125.10864
           },
           "TerritoryId": 1186,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Solution Nine",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] True Vue"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -65,7 +60,6 @@
             "Y": -0.015319824,
             "Z": -6.3325195
           },
-          "StopDistance": 4.5,
           "TerritoryId": 1223,
           "InteractionType": "Interact"
         }
@@ -74,28 +68,6 @@
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": -368.6605,
-            "Y": 14.000002,
-            "Z": 137.47444
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Solution Nine] True Vue",
-            "[Solution Nine] Residential Sector"
-          ]
-        },
-        {
-          "Position": {
-            "X": -259.1231,
-            "Y": 2.2290611,
-            "Z": 206.59184
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1053743,
           "Position": {
@@ -112,15 +84,6 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Position": {
-            "X": -245.43587,
-            "Y": 2.19987,
-            "Z": 265.6901
-          },
-          "TerritoryId": 1186,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2013724,
           "Position": {
             "X": 498.34436,
@@ -129,10 +92,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] Residential Sector",
-            "[Solution Nine] True Vue"
-          ],
           "TargetTerritoryId": 1223,
           "SkipConditions": {
             "StepIf": {
@@ -184,10 +143,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] True Vue",
-            "[Solution Nine] The Arcadion"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -208,7 +163,6 @@
             "Y": -2.9191749E-12,
             "Z": -12.466675
           },
-          "StopDistance": 5,
           "TerritoryId": 1224,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5290

@@ -14,8 +14,7 @@
             "Z": 59.372803
           },
           "TerritoryId": 635,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Rhalgr's Reach"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,9 +44,7 @@
             "Z": 525.7495
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -76,7 +73,6 @@
             "Y": 69.25287,
             "Z": 518.88293
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true}

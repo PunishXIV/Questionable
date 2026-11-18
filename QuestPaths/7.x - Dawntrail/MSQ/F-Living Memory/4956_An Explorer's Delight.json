@@ -13,7 +13,6 @@
             "Y": 106.24457,
             "Z": -331.899
           },
-          "StopDistance": 5,
           "TerritoryId": 1192,
           "InteractionType": "AcceptQuest"
         }
@@ -31,15 +30,7 @@
           },
           "TerritoryId": 1192,
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 5178,
-          "AetheryteShortcut": "Living Memory - Leynode Pyro",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "QuestsCompleted": [
-                5178
-              ]
-            }
-          }
+          "PickUpQuestId": 5178
         },
         {
           "DataId": 1050632,
@@ -50,15 +41,7 @@
           },
           "TerritoryId": 1192,
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 5179,
-          "AetheryteShortcut": "Living Memory - Leynode Pyro",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "QuestsCompleted": [
-                5179
-              ]
-            }
-          }
+          "PickUpQuestId": 5179
         },
         {
           "DataId": 1047971,
@@ -68,8 +51,7 @@
             "Z": 767.4829
           },
           "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo"
+          "InteractionType": "Interact"
         }
       ]
     },

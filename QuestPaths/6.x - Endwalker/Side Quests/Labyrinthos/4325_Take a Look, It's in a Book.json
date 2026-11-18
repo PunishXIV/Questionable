@@ -18,8 +18,6 @@
           },
           "TerritoryId": 956,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -56,8 +54,7 @@
             "Z": 313.235
           },
           "TerritoryId": 956,
-          "InteractionType": "Interact",
-          "Mount": false
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -72,9 +69,7 @@
             "Z": -42.1759
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Labyrinthos - Archeion",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

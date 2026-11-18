@@ -43,10 +43,8 @@
             "Y": 87.4745,
             "Z": -691.9509
           },
-          "StopDistance": 9,
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Wolekdorf",
           "DialogueChoices": [
             {
               "Type": "List",

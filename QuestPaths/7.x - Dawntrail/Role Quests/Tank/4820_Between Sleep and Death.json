@@ -15,7 +15,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
           "DialogueChoices": [
             {
               "Type": "List",
@@ -37,8 +36,7 @@
             "Z": 790.2189
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -53,23 +51,13 @@
             "Z": -493.33948
           },
           "TerritoryId": 397,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": 454.6491,
-            "Y": 164.30826,
-            "Z": -541.31744
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo"
-        },
         {
           "Position": {
             "X": 455.58475,
@@ -82,8 +70,7 @@
           "KillEnemyDataIds": [
             17606,
             17607
-          ],
-          "Fly": false
+          ]
         }
       ]
     },
@@ -97,7 +84,6 @@
             "Y": 157.40831,
             "Z": -556.87805
           },
-          "StopDistance": 7,
           "TerritoryId": 397,
           "InteractionType": "Interact"
         }
@@ -151,10 +137,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "NextQuestId": 4821
         }
       ]

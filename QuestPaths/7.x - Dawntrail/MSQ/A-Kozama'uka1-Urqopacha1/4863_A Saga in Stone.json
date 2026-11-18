@@ -13,7 +13,6 @@
             "Y": -5.0000086,
             "Z": 127.18384
           },
-          "StopDistance": 7,
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest"
         }
@@ -29,7 +28,6 @@
             "Y": -4.928711,
             "Z": 129.80847
           },
-          "StopDistance": 4.5,
           "TerritoryId": 1185,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -92,7 +90,6 @@
             "Y": -17.97287,
             "Z": 180.3158
           },
-          "StopDistance": 5,
           "TerritoryId": 1185,
           "InteractionType": "Interact"
         }
@@ -129,10 +126,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Tuliyollal] Bayside Bevy Marketplace",
-            "[Tuliyollal] The Resplendent Quarter"
-          ],
           "Comment": "Resplentend Quarter Lamp nav"
         },
         {

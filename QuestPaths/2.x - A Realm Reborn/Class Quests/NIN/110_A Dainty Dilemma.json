@@ -16,12 +16,7 @@
           },
           "TerritoryId": 129,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Limsa Lominsa",
           "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "RoguesGuild"
@@ -35,7 +30,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest"
         }
@@ -51,7 +45,6 @@
             "Y": -129.4397,
             "Z": 266.31567
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -87,13 +80,8 @@
           "TerritoryId": 135,
           "InteractionType": "Combat",
           "EnemySpawnType": "OverworldEnemies",
-          "Fly": true,
           "KillEnemyDataIds": [
             324
-          ],
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
           ]
         }
       ]
@@ -111,10 +99,6 @@
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "RoguesGuild"
@@ -128,7 +112,6 @@
             "Y": -129.4397,
             "Z": 266.31567
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -162,10 +145,6 @@
           },
           "TerritoryId": 128,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Fishermen's Guild",
-            "[Limsa Lominsa] The Aftcastle"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -187,12 +166,7 @@
             "Z": 50.736206
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] The Aftcastle",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -210,8 +184,7 @@
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             769
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -243,10 +216,6 @@
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "TargetTerritoryId": 129,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "ExtraCondition": "RoguesGuild"
@@ -260,7 +229,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -276,7 +244,6 @@
             "Y": -129.4397,
             "Z": 265.88843
           },
-          "StopDistance": 7,
           "TerritoryId": 129,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 126

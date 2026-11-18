@@ -28,8 +28,7 @@
             "Z": 376.7909
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Wright"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -44,9 +43,7 @@
             "Z": -272.90765
           },
           "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Tempest - Ondo Cups",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

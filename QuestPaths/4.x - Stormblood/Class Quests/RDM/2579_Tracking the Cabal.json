@@ -14,9 +14,7 @@
             "Z": -430.71643
           },
           "TerritoryId": 140,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western Thanalan - Horizon",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": 243.7323
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -84,10 +81,8 @@
             "Y": -24.99566,
             "Z": 243.7323
           },
-          "StopDistance": 1,
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -106,8 +101,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             7219
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -122,8 +116,7 @@
             "Z": 328.11462
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

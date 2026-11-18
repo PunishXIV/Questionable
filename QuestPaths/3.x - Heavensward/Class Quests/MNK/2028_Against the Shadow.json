@@ -14,8 +14,7 @@
             "Z": -682.76495
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +30,6 @@
           },
           "TerritoryId": 147,
           "InteractionType": "SinglePlayerDuty",
-          "Fly": true,
-          "AetheryteShortcut": "Northern Thanalan - Ceruleum Processing Plant",
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -49,7 +46,6 @@
             "Y": 68.34659,
             "Z": -157.33582
           },
-          "StopDistance": 4,
           "TerritoryId": 147,
           "InteractionType": "Interact"
         }
@@ -67,8 +63,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
           "NextQuestId": 2029
         }
       ]

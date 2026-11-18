@@ -15,10 +15,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: issuer 1038551 (T'laqa Tia)"
         }
       ]
@@ -35,10 +31,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "PurchaseItem",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] Aetheryte Plaza"
-          ],
           "ItemId": 36592,
           "ItemCount": 99,
           "SkipConditions": {
@@ -55,9 +47,7 @@
             "Z": 24.55191
           },
           "TerritoryId": 957,
-          "StopDistance": 1,
           "InteractionType": "Fish",
-          "AetheryteShortcut": "Thavnair - Great Work",
           "ItemsToGather": [
             {
               "ItemId": 35605,
@@ -76,10 +66,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Studium"
-          ],
           "$": "auto: todo turn-in -> 1038551 (T'laqa Tia)"
         }
       ]

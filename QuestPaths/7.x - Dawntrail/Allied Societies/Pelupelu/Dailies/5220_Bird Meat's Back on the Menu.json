@@ -7,24 +7,12 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": 770.70636,
-            "Y": 12.846572,
-            "Z": -260.59436
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
-          "Fly": true
-        },
-        {
           "DataId": 1051711,
           "Position": {
             "X": 770.7179,
             "Y": 12.84657,
             "Z": -263.99634
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "AcceptQuest"
         }
@@ -47,8 +35,6 @@
           "KillEnemyDataIds": [
             18176
           ],
-          "AetheryteShortcut": "Kozama'uka - Earthenshire",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,null,[
             {"High": 1}
             ],null,null
@@ -68,7 +54,6 @@
           "KillEnemyDataIds": [
             18176
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,null,[
             {"High": 2}
             ],null,null
@@ -88,7 +73,6 @@
           "KillEnemyDataIds": [
             18176
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,null,[
             {"High": 3}
             ],null,null
@@ -100,23 +84,12 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": 746.76465,
-            "Y": 15.431515,
-            "Z": -201.92921
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Kozama'uka - Dock Poga"
-        },
-        {
           "DataId": 1051741,
           "Position": {
             "X": 744.19763,
             "Y": 15.431515,
             "Z": -199.17603
           },
-          "StopDistance": 7,
           "TerritoryId": 1188,
           "InteractionType": "Interact"
         }
@@ -126,24 +99,12 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 770.70636,
-            "Y": 12.846572,
-            "Z": -260.59436
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
-          "Fly": true
-        },
-        {
           "DataId": 1051711,
           "Position": {
             "X": 770.7179,
             "Y": 12.84657,
             "Z": -263.99634
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "CompleteQuest"
         }

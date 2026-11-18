@@ -28,11 +28,7 @@
             "Z": 73.258545
           },
           "TerritoryId": 820,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Eulmore] The Glory Gate",
-            "[Eulmore] Southeast Derelicts"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,11 +43,7 @@
             "Z": -30.319702
           },
           "TerritoryId": 820,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Eulmore] Southeast Derelicts",
-            "[Eulmore] The Glory Gate"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

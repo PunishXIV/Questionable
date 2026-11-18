@@ -30,8 +30,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -83,7 +81,6 @@
             "Y": -16.15,
             "Z": 153.8872
           },
-          "StopDistance": 5,
           "TerritoryId": 807,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3155

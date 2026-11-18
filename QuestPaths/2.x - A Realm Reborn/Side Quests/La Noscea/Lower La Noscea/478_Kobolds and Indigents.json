@@ -14,15 +14,7 @@
             "Z": -99.59564
           },
           "TerritoryId": 135,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [135] }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,9 +29,7 @@
             "Z": -323.9289
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,8 +55,7 @@
               "DataId": 331,
               "NameId": 372
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -81,9 +70,7 @@
             "Z": -323.9289
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "StopDistance": 1
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -98,8 +85,7 @@
             "Z": -99.59564
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -115,7 +101,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 479
         }
       ]

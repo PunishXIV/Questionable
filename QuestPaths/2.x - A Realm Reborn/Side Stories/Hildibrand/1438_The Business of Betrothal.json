@@ -7,7 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "AetheryteShortcut": "Western Thanalan - Horizon",
           "DataId": 1008757,
           "Position": {
             "X": -422.5376,
@@ -23,8 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true,
           "DataId": 1009305,
           "Position": {
             "X": 562.4321,
@@ -59,8 +56,7 @@
               "Prompt": "TEXT_CHRHDB301_01438_Q2_000_000",
               "Answer": "TEXT_CHRHDB301_01438_A2_000_030"
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -68,7 +64,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1009310,
           "Position": {
             "X": 471.18323,
@@ -84,7 +79,6 @@
       "Sequence": 4,
       "Steps": [
         {
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
           "DataId": 1009308,
           "Position": {
             "X": 560.32654,
@@ -92,8 +86,7 @@
             "Z": 421.01147
           },
           "TerritoryId": 137,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -115,16 +108,6 @@
     {
       "Sequence": 6,
       "Steps": [
-        {
-          "Position": {
-            "X": 582.44116,
-            "Y": 14.587065,
-            "Z": 394.23407
-          },
-          "TerritoryId": 137,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1009317,
           "Position": {
@@ -149,7 +132,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 1439
         }
       ]

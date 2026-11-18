@@ -28,10 +28,8 @@
             "Y": 3.1168795,
             "Z": -262.0432
           },
-          "StopDistance": 15,
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,7 +43,6 @@
             "Y": 3.1168792,
             "Z": -262.62305
           },
-          "StopDistance": 7,
           "TerritoryId": 957,
           "InteractionType": "Interact"
         }

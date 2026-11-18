@@ -27,7 +27,6 @@
             "Y": -161.8501,
             "Z": -651.4007
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "WalkTo",
           "SkipConditions": {
@@ -42,7 +41,6 @@
             "Y": -161.8501,
             "Z": -651.4007
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -52,7 +50,6 @@
               "Z": -654.19385
             }
           },
-          "Mount": false,
           "Comment": "Platform 1",
           "SkipConditions": {
             "StepIf": {
@@ -196,7 +193,6 @@
             "Y": -151.26128,
             "Z": -657.2519
           },
-          "StopDistance": 6,
           "TerritoryId": 959,
           "InteractionType": "Say",
           "ChatMessage": {
@@ -211,7 +207,6 @@
             "Y": -167.50002,
             "Z": -545.6169
           },
-          "StopDistance": 3,
           "TerritoryId": 959,
           "InteractionType": "Say",
           "ChatMessage": {
@@ -225,17 +220,6 @@
             "Y": -168.00002,
             "Z": -420.43494
           },
-          "StopDistance": 1,
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -438.33246,
-            "Y": -168.00002,
-            "Z": -420.43494
-          },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -246,7 +230,6 @@
             },
             "DelaySeconds": 0.25
           },
-          "Mount": false,
           "Comment": "Platform 1",
           "SkipConditions": {
             "StepIf": {
@@ -260,7 +243,6 @@
             "Y": -166.55414,
             "Z": -415.94168
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -284,7 +266,6 @@
             "Y": -165.05412,
             "Z": -413.06158
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -308,7 +289,6 @@
             "Y": -163.55417,
             "Z": -411.54132
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -332,7 +312,6 @@
             "Y": -162.05412,
             "Z": -409.53986
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -356,7 +335,6 @@
             "Y": -160.55412,
             "Z": -408.93143
           },
-          "StopDistance": 1,
           "TerritoryId": 959,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -381,7 +359,6 @@
             "Y": -158.89125,
             "Z": -426.68805
           },
-          "StopDistance": 3,
           "TerritoryId": 959,
           "InteractionType": "Say",
           "ChatMessage": {
@@ -394,16 +371,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -376.5167,
-            "Y": -168,
-            "Z": -432.03497
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
         {
           "DataId": 1039520,
           "Position": {

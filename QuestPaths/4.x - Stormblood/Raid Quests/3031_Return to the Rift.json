@@ -30,9 +30,7 @@
           },
           "TerritoryId": 612,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -46,7 +44,6 @@
             "Y": -72.25,
             "Z": 181.47546
           },
-          "StopDistance": 7,
           "TerritoryId": 756,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3032

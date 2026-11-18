@@ -13,7 +13,6 @@
             "Y": 59.95439,
             "Z": 130.93762
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
           "InteractionType": "AcceptQuest"
         }
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Instruction",
-          "Fly": true,
           "Comment": "TODO Needs item use",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
@@ -44,7 +42,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -56,7 +53,6 @@
           },
           "TerritoryId": 1187,
           "InteractionType": "Instruction",
-          "Fly": true,
           "Comment": "TODO Needs item use",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
@@ -72,10 +68,8 @@
             "Y": 59.95439,
             "Z": 130.93762
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

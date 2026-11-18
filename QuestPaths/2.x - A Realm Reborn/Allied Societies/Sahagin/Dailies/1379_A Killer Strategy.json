@@ -20,9 +20,7 @@
             "Z": 37.247192
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,7 +42,6 @@
             2147
           ],
           "ItemId": 7798,
-          "Fly": true,
           "Comment": "Do the FATE, or click Skip if you have the item",
           "SkipConditions": {
             "StepIf": {
@@ -62,9 +59,7 @@
             "Z": 37.247192
           },
           "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

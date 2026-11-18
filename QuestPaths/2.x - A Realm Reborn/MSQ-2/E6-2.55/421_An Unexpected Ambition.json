@@ -30,11 +30,7 @@
             "Z": 10.696533
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,12 +60,7 @@
             "Z": 172.96094
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -84,8 +75,7 @@
             "Z": 135.7594
           },
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -100,11 +90,7 @@
             "Z": 9.994568
           },
           "TerritoryId": 129,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

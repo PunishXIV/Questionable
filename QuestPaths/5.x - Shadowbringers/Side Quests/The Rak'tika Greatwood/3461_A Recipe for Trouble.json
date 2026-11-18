@@ -16,8 +16,7 @@
             "Z": -138.33932
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "DataId": 1027732,
@@ -41,8 +40,7 @@
             "Z": -138.33932
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "Position": {
@@ -51,8 +49,7 @@
             "Z": -129.45145
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true
+          "InteractionType": "None"
         },
         {
           "Position": {
@@ -70,8 +67,7 @@
               "RewardItemId": 2002570,
               "RewardItemCount": 2
             }
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -87,8 +83,7 @@
           },
           "TerritoryId": 817,
           "InteractionType": "UseItem",
-          "ItemId": 2002570,
-          "Fly": true
+          "ItemId": 2002570
         }
       ]
     },
@@ -107,8 +102,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             11119
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -122,9 +116,7 @@
             "Z": -138.33932
           },
           "TerritoryId": 817,
-          "InteractionType": "None",
-          "Fly": true,
-          "AetheryteShortcut": "Rak'tika - Fanow"
+          "InteractionType": "None"
         },
         {
           "DataId": 1027732,

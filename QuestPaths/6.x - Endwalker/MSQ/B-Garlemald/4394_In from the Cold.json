@@ -41,15 +41,7 @@
           },
           "TerritoryId": 958,
           "InteractionType": "AcceptQuest",
-          "PickUpQuestId": 4502,
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "QuestsCompleted": [
-                4502
-              ]
-            }
-          }
+          "PickUpQuestId": 4502
         },
         {
           "DataId": 1039932,
@@ -80,21 +72,7 @@
               "Prompt": 254,
               "Answer": 248
             }
-          ],
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -357.99194,
-                  "Y": 22,
-                  "Z": 488.3954
-                },
-                "TerritoryId": 958,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          ]
         }
       ]
     },
@@ -108,7 +86,6 @@
             "Y": 22.20836,
             "Z": 403.76892
           },
-          "StopDistance": 5,
           "TerritoryId": 958,
           "InteractionType": "CompleteQuest"
         }

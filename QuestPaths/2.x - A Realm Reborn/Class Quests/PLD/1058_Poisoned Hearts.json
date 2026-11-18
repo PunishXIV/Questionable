@@ -15,18 +15,7 @@
             "Z": -2.4262085
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -39,7 +28,6 @@
             "Y": 14.866778,
             "Z": -189.99821
           },
-          "StopDistance": 0.5,
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -47,8 +35,6 @@
             1923,
             1924
           ],
-          "AetheryteShortcut": "Southern Thanalan - Little Ala Mhigo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -72,7 +58,6 @@
           "Y": 4.1472216,
           "Z": -216.97708
           },
-          "StopDistance": 0.5,
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
           "SkipConditions": {
@@ -87,7 +72,6 @@
           "Y": -4.7999415,
           "Z": -104.621376
           },
-          "StopDistance": 0.5,
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
           "SkipConditions": {
@@ -102,7 +86,6 @@
           "Y": -16.84673,
           "Z": -170.08568
           },
-          "StopDistance": 0.5,
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
           "SkipConditions": {
@@ -117,7 +100,6 @@
           "Y": -14.578715,
           "Z": -170.62582
           },
-          "StopDistance": 0.5,
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
           "SkipConditions": {
@@ -132,7 +114,6 @@
             "Y": -14.397484,
             "Z": -172.42706
           },
-          "StopDistance": 0.5,
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -140,7 +121,6 @@
             1923,
             1924
           ],
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -164,7 +144,6 @@
           "Y": -16.84673,
           "Z": -170.08568
           },
-          "StopDistance": 0.5,
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
           "SkipConditions": {
@@ -179,7 +158,6 @@
           "Y": -1.9464281,
           "Z": -102.63653
           },
-          "StopDistance": 0.5,
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
           "SkipConditions": {
@@ -194,7 +172,6 @@
             "Y": 10.371678,
             "Z": -427.8172
           },
-          "StopDistance": 0.5,
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -214,7 +191,6 @@
             "Y": 10.371678,
             "Z": -427.8172
           },
-          "StopDistance": 0.5,
           "TerritoryId": 146,
           "InteractionType": "WalkTo",
           "SkipConditions": {
@@ -236,20 +212,10 @@
         },
         {
           "Position": {
-            "X": 137.70113,
-            "Y": 10.371678,
-            "Z": -427.45047
-          },
-          "TerritoryId": 146,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
             "X": 116.208305,
             "Y": 11.091853,
             "Z": -475.35126
           },
-          "StopDistance": 0.5,
           "TerritoryId": 146,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -290,10 +256,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] The Chamber of Rule"
-          ],
           "NextQuestId": 1059
         }
       ]

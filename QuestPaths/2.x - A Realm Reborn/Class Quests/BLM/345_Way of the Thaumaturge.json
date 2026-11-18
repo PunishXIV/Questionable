@@ -15,11 +15,7 @@
             "Z": 59.952637
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -93,18 +89,6 @@
               ]
             }
           ],
-          "AetheryteShortcut": "Ul'dah",
-          "AethernetShortcut": [
-            "[Ul'dah] Thaumaturges' Guild",
-            "[Ul'dah] Gate of Nald (Central Thanalan)"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                141
-              ]
-            }
-          },
           "CompletionQuestVariablesFlags": [
             {"Low": 3}, {"High": 3},
           null,null,null,null
@@ -146,10 +130,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
           "NextQuestId": 351
         }
       ]

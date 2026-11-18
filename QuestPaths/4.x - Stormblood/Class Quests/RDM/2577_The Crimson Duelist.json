@@ -10,7 +10,6 @@
           "TerritoryId": 141,
           "InteractionType": "EquipItem",
           "ItemId": 20389,
-          "AetheryteShortcut": "Central Thanalan - Black Brush Station",
           "SkipConditions": {
             "StepIf": {
               "Item": {
@@ -128,17 +127,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": -508.00916,
-            "Y": -17.453016,
-            "Z": 16.0174
-          },
-          "TerritoryId": 145,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone",
-          "Fly": true
-        },
-        {
           "DataId": 1021439,
           "Position": {
             "X": -513.7255,
@@ -179,7 +167,6 @@
             "Y": -29.27635,
             "Z": 24.826416
           },
-          "StopDistance": 5,
           "TerritoryId": 145,
           "InteractionType": "Interact"
         }
@@ -195,10 +182,8 @@
             "Y": -17.41137,
             "Z": 28.091797
           },
-          "StopDistance": 1,
           "TerritoryId": 145,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

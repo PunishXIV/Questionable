@@ -28,8 +28,7 @@
             "Z": -125.01721
           },
           "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2010751,
@@ -39,8 +38,7 @@
             "Z": -56.168518
           },
           "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2010750,
@@ -50,8 +48,7 @@
             "Z": -84.763916
           },
           "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 2010746,
@@ -61,8 +58,7 @@
             "Z": -249.80548
           },
           "TerritoryId": 818,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,8 +73,7 @@
             "Z": -170.15338
           },
           "TerritoryId": 818,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

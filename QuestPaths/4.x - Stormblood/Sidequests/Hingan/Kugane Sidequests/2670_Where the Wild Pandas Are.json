@@ -15,11 +15,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Rakuza District"
-          ],
           "$": "auto: issuer 1021331 (graceful geiko)"
         }
       ]
@@ -35,7 +30,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Jump",
-          "StopDistance": 1,
           "JumpDestination": {
             "Position": {
               "X": -66.46514,
@@ -64,7 +58,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Jump",
-          "StopDistance": 1,
           "JumpDestination": {
             "Position": {
               "X": -57.925667,
@@ -121,15 +114,6 @@
           }
         },
         {
-          "Position": {
-            "X": -43.59481,
-            "Y": 1.4305115e-6,
-            "Z": -108.103035
-          },
-          "TerritoryId": 628,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1021265,
           "Position": {
             "X": -48.96658,
@@ -137,12 +121,7 @@
             "Z": 67.37674
           },
           "TerritoryId": 628,
-          "StopDistance": 0.25,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Kogane Dori Markets"
-          ],
           "$": "auto: todo area 9y from lua ACTOR2 -> 1021265 (red panda cub)"
         }
       ]
@@ -159,11 +138,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Kogane Dori Markets",
-            "[Kugane] Rakuza District"
-          ],
           "$": "auto: todo turn-in -> 1021331 (graceful geiko)"
         }
       ]

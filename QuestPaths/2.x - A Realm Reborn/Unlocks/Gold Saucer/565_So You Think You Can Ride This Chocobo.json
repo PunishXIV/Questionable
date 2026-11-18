@@ -14,8 +14,7 @@
             "Z": 69.41321
           },
           "TerritoryId": 148,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Central Shroud - Bentbranch Meadows"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,20 +29,7 @@
             "Z": -65.61273
           },
           "TerritoryId": 388,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gold Saucer",
-          "AethernetShortcut": [
-            "[Gold Saucer] Aetheryte Plaza",
-            "[Gold Saucer] Chocobo Square"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                388,
-                144
-              ]
-            }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

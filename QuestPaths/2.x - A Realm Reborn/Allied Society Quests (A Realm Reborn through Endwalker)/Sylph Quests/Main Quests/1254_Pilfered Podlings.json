@@ -15,8 +15,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
           "$": "auto: issuer 1005565 (Voyce)"
         }
       ]
@@ -40,15 +38,6 @@
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 57.02472,
-            "Y": 0.55616474,
-            "Z": 245.69197
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 2003330,
           "Position": {
@@ -104,7 +93,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: lua EOBJECT4 -> 2002865 (sylph podling)"
         }
       ]
@@ -151,7 +139,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "auto: todo location -> 2003035 (destination)"
         }
       ]
@@ -168,7 +155,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "$": "auto: todo turn-in -> 1005565 (Voyce)"
         }
       ]

@@ -14,8 +14,7 @@
             "Z": -68.3147
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Kugane"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -46,11 +45,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 639,
-          "AethernetShortcut": [
-            "[Kugane] Shiokaze Hostelry",
-            "[Kugane] The Ruby Bazaar"
-          ]
+          "TargetTerritoryId": 639
         },
         {
           "DataId": 1020465,
@@ -105,11 +100,7 @@
           "SinglePlayerDutyOptions": {
             "Enabled": true,
             "TestedBossModVersion": "0.1.0.1"
-          },
-          "AethernetShortcut": [
-            "[Kugane] The Ruby Bazaar",
-            "[Kugane] Kogane Dori Markets"
-          ]
+          }
         }
       ]
     },

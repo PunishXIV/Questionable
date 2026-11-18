@@ -13,10 +13,8 @@
             "Y": 20,
             "Z": 85.55737
           },
-          "StopDistance": 5,
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,13 +28,8 @@
             "Y": 42.597717,
             "Z": 163.7445
           },
-          "StopDistance": 5,
           "TerritoryId": 134,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Zephyr Gate (Middle La Noscea)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,11 +43,8 @@
             "Y": 42.597717,
             "Z": 163.7445
           },
-          "StopDistance": 5,
           "TerritoryId": 134,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",

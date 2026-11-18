@@ -14,11 +14,7 @@
             "Z": -53.3609
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -47,7 +43,6 @@
             "Y": 16.979582,
             "Z": -38.376526
           },
-          "StopDistance": 10,
           "TerritoryId": 418,
           "InteractionType": "Action",
           "Action": "Slug Shot",
@@ -67,14 +62,9 @@
             "Y": 24.071722,
             "Z": -25.070618
           },
-          "StopDistance": 10,
           "TerritoryId": 418,
           "InteractionType": "Action",
           "Action": "Slug Shot",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -91,14 +81,9 @@
             "Y": -7.146736,
             "Z": 83.66516
           },
-          "StopDistance": 10,
           "TerritoryId": 418,
           "InteractionType": "Action",
           "Action": "Slug Shot",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Brume"
-          ],
           "CompletionQuestVariablesFlags": [
             null,
             null,
@@ -121,11 +106,7 @@
             "Z": -53.3609
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -141,8 +122,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "SinglePlayerDuty",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -191,10 +170,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "NextQuestId": 1701
         }
       ]

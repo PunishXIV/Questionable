@@ -13,7 +13,6 @@
             "Y": 23.164677,
             "Z": -414.87756
           },
-          "StopDistance": 5,
           "TerritoryId": 958,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
             "Z": 408.1941
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -54,8 +52,7 @@
               "(phase 1) AI doesn't move automatically",
               "(phase 2) AI doesn't target enemy"
             ]
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -72,7 +69,6 @@
             "Y": 21.765957,
             "Z": 409.99463
           },
-          "StopDistance": 5,
           "TerritoryId": 958,
           "InteractionType": "Interact"
         }
@@ -89,12 +85,7 @@
             "Z": -91.38635
           },
           "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

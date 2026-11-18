@@ -15,10 +15,6 @@
           },
           "TerritoryId": 129,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ],
           "$": "auto: issuer 1000909 (Thubyrgeim)"
         }
       ]

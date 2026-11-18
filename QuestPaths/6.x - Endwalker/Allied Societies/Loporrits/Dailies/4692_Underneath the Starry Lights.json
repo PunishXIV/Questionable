@@ -15,23 +15,8 @@
           },
           "TerritoryId": 959,
           "TargetTerritoryId": 959,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -201.89743,
-                  "Y": -49.149708,
-                  "Z": -273.6312
-                },
-                "TerritoryId": 959,
-                "MaximumDistance": 100
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -61,18 +46,6 @@
       "Sequence": 1,
       "Steps": [
 {
-  "Position": {
-            "X": -384.9466,
-            "Y": -151.67169,
-            "Z": -259.70673
-          },
-          "TerritoryId": 959,
-          "InteractionType": "WalkTo",
-                    "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
-          "Fly": true,
-          "Land": true
-},
-        {
           "DataId": 1044569,
           "Position": {
             "X": -385.6718,
@@ -103,23 +76,8 @@
           },
           "TerritoryId": 959,
           "TargetTerritoryId": 959,
-          "StopDistance": 1,
           "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Mare Lamentorum - Bestways Burrow",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -201.89743,
-                  "Y": -49.149708,
-                  "Z": -273.6312
-                },
-                "TerritoryId": 959,
-                "MaximumDistance": 100
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {

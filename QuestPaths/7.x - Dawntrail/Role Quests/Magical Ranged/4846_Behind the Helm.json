@@ -14,8 +14,7 @@
             "Z": 628.3817
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,12 +29,7 @@
             "Z": 194.72034
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,7 +44,6 @@
           },
           "TerritoryId": 1190,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Shaaloani - Mehwahhetsoan",
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
@@ -68,8 +61,7 @@
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17627
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -83,7 +75,6 @@
             "Y": -16.619904,
             "Z": -109.14783
           },
-          "StopDistance": 7,
           "TerritoryId": 1190,
           "InteractionType": "Interact"
         }
@@ -100,8 +91,7 @@
             "Z": -54.154297
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -115,7 +105,6 @@
             "Y": -1.9999962,
             "Z": 147.60046
           },
-          "StopDistance": 7,
           "TerritoryId": 963,
           "InteractionType": "Interact"
         }
@@ -133,7 +122,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
           "NextQuestId": 4847
         }
       ]

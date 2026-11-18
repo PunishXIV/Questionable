@@ -15,7 +15,6 @@ public enum EIssueType
     QuestDisabled,
     UnexpectedAcceptQuestStep,
     UnexpectedCompleteQuestStep,
-    InvalidAethernetShortcut,
     InvalidExcelRef,
     DuplicateSinglePlayerInstance,
     UnusedSinglePlayerInstance,

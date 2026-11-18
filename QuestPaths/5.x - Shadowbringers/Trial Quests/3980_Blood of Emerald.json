@@ -13,8 +13,7 @@
             "Z": 51.621216
           },
           "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,7 +29,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -94,7 +92,6 @@
             "Y": 3.9999998,
             "Z": 25.558838
           },
-          "StopDistance": 5,
           "TerritoryId": 967,
           "InteractionType": "Interact"
         }
@@ -140,7 +137,6 @@
             "Y": 41.019974,
             "Z": 25.680908
           },
-          "StopDistance": 7,
           "TerritoryId": 919,
           "InteractionType": "Interact",
           "TargetTerritoryId": 621,
@@ -151,17 +147,6 @@
               ]
             }
           }
-        },
-        {
-          "Position": {
-            "X": -507.93283,
-            "Y": 7.6638765,
-            "Z": 52.09985
-          },
-          "TerritoryId": 621,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
         },
         {
           "DataId": 1032586,

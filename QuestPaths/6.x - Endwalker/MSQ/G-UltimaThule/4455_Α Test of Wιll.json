@@ -29,8 +29,7 @@
             "Z": 273.9757
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -44,7 +43,6 @@
             "Y": 59.814697,
             "Z": 55.954834
           },
-          "StopDistance": 8,
           "TerritoryId": 960,
           "InteractionType": "Interact"
         }
@@ -85,10 +83,8 @@
             "Y": 232.19641,
             "Z": -253.10144
           },
-          "StopDistance": 5,
           "TerritoryId": 960,
-          "InteractionType": "CompleteQuest",
-          "Mount": false
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

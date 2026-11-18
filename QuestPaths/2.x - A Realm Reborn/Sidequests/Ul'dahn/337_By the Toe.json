@@ -15,7 +15,6 @@
           },
           "TerritoryId": 140,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Western Thanalan - Horizon",
           "$": "auto: issuer 1002058 (Fufulupa)"
         }
       ]
@@ -33,7 +32,6 @@
           "TerritoryId": 140,
           "InteractionType": "UseItem",
           "ItemId": 2000373,
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
           "$": "auto: todo location -> 2001374 (trap point)"
         },
@@ -90,7 +88,6 @@
           },
           "TerritoryId": 140,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Western Thanalan - Horizon",
           "$": "auto: todo turn-in -> 1002064 (Chechezan)"
         }
       ]

@@ -31,7 +31,6 @@
           "TerritoryId": 129,
           "InteractionType": "Interact",
           "TargetTerritoryId": 198,
-          "AetheryteShortcut": "Limsa Lominsa",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_GAIUSE212_01356_Q1_000_1",
@@ -55,27 +54,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 256.67426,
-            "Y": 1.7067826,
-            "Z": 216.63573
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
-        },
-        {
-          "Position": {
-            "X": 62.872204,
-            "Y": -3.1182384,
-            "Z": 61.10103
-          },
-          "TerritoryId": 138,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1006614,
           "Position": {

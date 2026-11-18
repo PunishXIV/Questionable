@@ -30,10 +30,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Ruveydah Fibers",
-            "[Radz-at-Han] Meghaduta"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -54,7 +50,6 @@
             "Y": 55,
             "Z": -68.40625
           },
-          "StopDistance": 5,
           "TerritoryId": 963,
           "InteractionType": "CompleteQuest"
         }

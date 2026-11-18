@@ -21,8 +21,7 @@
               "Prompt": "TEXT_AKTKBB121_04070_Q1_000_000",
               "Answer": "TEXT_AKTKBB121_04070_A1_000_001"
             }
-          ],
-          "AetheryteShortcut": "Idyllshire"
+          ]
         }
       ]
     },
@@ -37,8 +36,7 @@
             "Z": 235.4314
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -53,8 +51,7 @@
             "Z": 202.594
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -68,10 +65,8 @@
             "Y": -24.721268,
             "Z": 205.34058
           },
-          "StopDistance": 6,
           "TerritoryId": 138,
           "InteractionType": "Action",
-          "AetheryteShortcut": "Western La Noscea - Aleport",
           "Action": "Diagnosis"
         }
       ]
@@ -86,10 +81,8 @@
             "Y": -24.724764,
             "Z": 205.24902
           },
-          "StopDistance": 6,
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -104,8 +97,7 @@
             "Z": -17.746277
           },
           "TerritoryId": 478,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

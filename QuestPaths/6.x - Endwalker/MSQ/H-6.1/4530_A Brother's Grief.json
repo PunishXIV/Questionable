@@ -15,7 +15,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "TargetTerritoryId": 1056
         },
         {
@@ -25,7 +24,6 @@
             "Y": -350,
             "Z": -73.68585
           },
-          "StopDistance": 5,
           "TerritoryId": 1056,
           "InteractionType": "AcceptQuest"
         }
@@ -41,7 +39,6 @@
             "Y": -350,
             "Z": -84.82495
           },
-          "StopDistance": 5,
           "TerritoryId": 1056,
           "InteractionType": "Interact"
         }
@@ -58,8 +55,7 @@
             "Z": -148.57715
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Radz-at-Han"
+          "InteractionType": "Interact"
         }
       ]
     },

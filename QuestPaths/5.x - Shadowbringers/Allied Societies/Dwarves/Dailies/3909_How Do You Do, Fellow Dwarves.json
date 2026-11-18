@@ -14,9 +14,7 @@
             "Z": -423.87152
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,11 +30,9 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Say",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
           "ChatMessage": {
             "Key": "TEXT_BANDWA108_03909_SAYTODO_000_030"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               16
             ],null,null,null]
@@ -53,7 +49,6 @@
           "ChatMessage": {
             "Key": "TEXT_BANDWA108_03909_SAYTODO_000_030"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               32
             ],null,null,null]
@@ -70,7 +65,6 @@
           "ChatMessage": {
             "Key": "TEXT_BANDWA108_03909_SAYTODO_000_030"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
               48
             ],null,null,null]
@@ -88,9 +82,7 @@
             "Z": -423.87152
           },
           "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut":"Lakeland - Ostall Imperative",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -20,9 +20,7 @@
               "Prompt": "TEXT_AKTKZG004_04279_Q1_000_000",
               "Answer": "TEXT_AKTKZG004_04279_A1_000_001"
             }
-          ],
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -37,8 +35,7 @@
             "Z": -41.21466
           },
           "TerritoryId": 961,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "$": "QuestCleanUp.cs is looking for interaction with the Allied Society quest issuer or else it will teleport to hawthorne hut for Mount ID 24. This step should do nothing.",
@@ -101,8 +98,7 @@
             "Z": -40.082848
           },
           "TerritoryId": 961,
-          "InteractionType": "None",
-          "Mount": false
+          "InteractionType": "None"
         },
         {
           "DataId": 1041521,
@@ -128,9 +124,7 @@
             "Z": 189.53223
           },
           "TerritoryId": 961,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Elpis - Anagnorisis",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

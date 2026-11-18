@@ -14,23 +14,13 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "TerritoryId": 613,
-          "Fly": true,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
-        },
         {
           "Position": {
             "X": -848.8846,
@@ -40,8 +30,7 @@
           "TerritoryId": 613,
           "InteractionType": "UseItem",
           "ItemId": 2002422,
-          "GroundTarget": true,
-          "Fly": true
+          "GroundTarget": true
         },
         {
           "Position": {
@@ -52,8 +41,7 @@
           "TerritoryId": 613,
           "InteractionType": "UseItem",
           "ItemId": 2002422,
-          "GroundTarget": true,
-          "Fly": true
+          "GroundTarget": true
         },
         {
           "Position": {
@@ -64,8 +52,7 @@
           "TerritoryId": 613,
           "InteractionType": "UseItem",
           "ItemId": 2002422,
-          "GroundTarget": true,
-          "Fly": true
+          "GroundTarget": true
         }
       ]
     },
@@ -80,11 +67,7 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

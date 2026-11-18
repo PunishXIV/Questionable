@@ -14,9 +14,7 @@
             "Z": -404.1352
           },
           "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": -425.5589
           },
           "TerritoryId": 401,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -52,9 +48,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             5242
-          ],
-          "AetheryteShortcut": "The Sea of Clouds - Camp Cloudtop",
-          "Fly": true
+          ]
         }
       ]
     },
@@ -73,8 +67,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             5242
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -89,9 +82,7 @@
             "Z": -425.5589
           },
           "TerritoryId": 401,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

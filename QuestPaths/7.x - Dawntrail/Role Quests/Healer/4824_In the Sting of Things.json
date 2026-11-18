@@ -14,8 +14,7 @@
             "Z": 201.28174
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,7 @@
             "Z": 14.846985
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Arcanists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,11 +44,7 @@
             "Z": 112.962524
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Arcanists' Guild",
-            "[Limsa Lominsa] Hawkers' Alley"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -106,11 +97,7 @@
             "Z": 189.6543
           },
           "TerritoryId": 129,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Fishermen's Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -124,7 +111,6 @@
             "Y": 20,
             "Z": 111.95532
           },
-          "StopDistance": 1,
           "TerritoryId": 129,
           "InteractionType": "Interact"
         }
@@ -140,7 +126,6 @@
             "Y": 20,
             "Z": 111.283936
           },
-          "StopDistance": 10,
           "TerritoryId": 129,
           "InteractionType": "Action",
           "Action": "Esuna"

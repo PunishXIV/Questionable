@@ -13,11 +13,8 @@
             "Y": -6.672044,
             "Z": 71.121284
           },
-          "StopDistance": 1,
           "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,9 +29,7 @@
             "Z": 141.8734
           },
           "TerritoryId": 154,
-          "StopDistance": 1,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,7 +58,6 @@
               "MinimumKillCount": 1
             }
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,null,[
             {"Low": 1}, {"Low": 3}
             ],null,null
@@ -90,7 +84,6 @@
               "MinimumKillCount": 1
             }
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,null,[
             {"Low": 2}, {"Low": 4}
             ],null,null
@@ -117,7 +110,6 @@
               "MinimumKillCount": 1
             }
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,null,[
             {"Low": 1}, {"Low": 2}, {"Low": 3}, {"Low": 4}, {"Low": 5}
             ],null,null
@@ -144,7 +136,6 @@
               "MinimumKillCount": 1
             }
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,null,[
             {"Low": 1}, {"Low": 2}, {"Low": 5}
             ],null,null
@@ -162,7 +153,6 @@
             "Z": -22.923096
           },
           "TerritoryId": 154,
-          "StopDistance": 1,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [
@@ -172,7 +162,6 @@
               "MinimumKillCount": 1
             }
           ],
-          "Fly": true,
           "RequiredQuestVariables": [null,null,null,[
             {"Low": 3}, {"Low": 4}, {"Low": 5}
             ],null,null
@@ -206,9 +195,6 @@
             "Z": 178.43575
           },
           "TerritoryId": 154,
-          "StopDistance": 1,
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "InteractionType": "Interact"
         }
       ]
@@ -229,11 +215,8 @@
             "Y": -6.672044,
             "Z": 71.121284
           },
-          "StopDistance": 1,
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

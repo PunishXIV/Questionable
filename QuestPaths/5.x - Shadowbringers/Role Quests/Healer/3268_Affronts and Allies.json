@@ -14,12 +14,7 @@
             "Z": 209.88782
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,8 +29,7 @@
             "Z": 278.85852
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Stilltide"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -54,8 +48,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             10866
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -74,8 +67,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             10867
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -90,8 +82,7 @@
             "Z": 177.47766
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -107,11 +98,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Musica Universalis Markets"
-          ],
           "NextQuestId": 3269
         }
       ]

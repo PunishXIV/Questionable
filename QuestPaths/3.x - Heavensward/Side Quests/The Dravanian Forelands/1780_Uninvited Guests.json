@@ -15,14 +15,7 @@
           },
           "TerritoryId": 398,
           "InteractionType": "WalkTo",
-          "Mount": false,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                398
-              ]
-            },
             "StepIf": {
               "NotNearPosition": {
                 "Position": {
@@ -44,8 +37,7 @@
             "Z": -419.21112
           },
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -63,16 +55,7 @@
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             4029
-          ],
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                398
-              ]
-            }
-          }
+          ]
         }
       ]
     },
@@ -88,15 +71,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                398
-              ]
-            }
-          },
           "NextQuestId": 1785
         }
       ]

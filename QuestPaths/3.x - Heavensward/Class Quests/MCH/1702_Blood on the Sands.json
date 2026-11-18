@@ -14,11 +14,7 @@
             "Z": -53.3609
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,10 +30,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] The Jeweled Crozier"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -58,7 +50,6 @@
             "Y": -20.035156,
             "Z": -64.683044
           },
-          "StopDistance": 4.5,
           "TerritoryId": 419,
           "InteractionType": "Interact"
         }
@@ -76,10 +67,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] The Last Vigil"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -102,8 +89,6 @@
           },
           "TerritoryId": 137,
           "InteractionType": "SinglePlayerDuty",
-          "AetheryteShortcut": "Eastern La Noscea - Costa Del Sol",
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -122,10 +107,6 @@
           },
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Skysteel Manufactory"
-          ],
           "NextQuestId": 1703
         }
       ]

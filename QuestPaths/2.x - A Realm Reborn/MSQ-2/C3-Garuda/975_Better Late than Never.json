@@ -14,11 +14,7 @@
             "Z": -149.98096
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,10 +30,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Mih Khetto's Amphitheatre",
-            "[Gridania] Airship Landing"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

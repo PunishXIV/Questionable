@@ -14,8 +14,7 @@
             "Z": 153.76514
           },
           "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Old Sharlayan] Aetheryte Plaza","[Old Sharlayan] Scholar's Harbor"]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,23 +30,12 @@
           },
           "TerritoryId": 956,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Labyrinthos - Aporia",
           "SkipConditions": {
             "StepIf": {
               "Flying": "Unlocked"
             }
           },
           "TargetTerritoryId": 956
-        },
-        {
-          "Position": {
-            "X": -431.53903,
-            "Y": -220.1193,
-            "Z": 301.76364
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "Fly": true
         },
         {
           "DataId": 1042797,
@@ -110,10 +98,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Kama"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -150,7 +134,6 @@
             "Y": 26.99999,
             "Z": 45.689087
           },
-          "StopDistance": 0.25,
           "TerritoryId": 963,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -174,11 +157,7 @@
             "Z": 110.61267
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Kama",
-            "[Radz-at-Han] Ruveydah Fibers"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -192,7 +171,6 @@
             "Y": 14,
             "Z": 106.82837
           },
-          "StopDistance": 4,
           "TerritoryId": 963,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4587

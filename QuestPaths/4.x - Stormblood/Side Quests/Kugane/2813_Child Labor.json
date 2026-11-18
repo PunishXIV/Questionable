@@ -40,7 +40,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AethernetShortcut": ["[Kugane] Bokairo Inn", "[Kugane] Aetheryte Plaza"],
           "CompletionQuestVariablesFlags": [null, null, null, null, null, {"High": 8}]
         },
         {
@@ -63,7 +62,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AethernetShortcut": ["[Kugane] Shiokaze Hostelry", "[Kugane] Thavnairian Consulate"],
           "CompletionQuestVariablesFlags": [null, null, null, null, null, {"High": 1}]
         },
         {
@@ -75,7 +73,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AethernetShortcut": ["[Kugane] Thavnairian Consulate", "[Kugane] Kogane Dori Markets"],
           "CompletionQuestVariablesFlags": [null, null, null, null, null, {"Low": 8}]
         },
         {

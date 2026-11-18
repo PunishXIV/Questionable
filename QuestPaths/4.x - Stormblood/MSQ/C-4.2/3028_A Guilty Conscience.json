@@ -13,7 +13,6 @@
             "Y": 17.720512,
             "Z": 301.59448
           },
-          "StopDistance": 5,
           "TerritoryId": 614,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
             "Z": 17.471558
           },
           "TerritoryId": 759,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Doman Enclave"
+          "InteractionType": "Interact"
         }
       ]
     },

@@ -14,8 +14,7 @@
             "Z": -602.74664
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,7 +28,6 @@
             "Y": 4.1046753,
             "Z": -603.87585
           },
-          "StopDistance": 4,
           "TerritoryId": 613,
           "InteractionType": "Interact"
         }
@@ -101,7 +99,6 @@
             "Y": 9.2068815,
             "Z": -661.21924
           },
-          "StopDistance": 7,
           "TerritoryId": 613,
           "InteractionType": "Interact"
         }
@@ -118,8 +115,7 @@
             "Z": -643.6713
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ruby Sea - Onokoro"
+          "InteractionType": "Interact"
         }
       ]
     },

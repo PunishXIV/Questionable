@@ -14,9 +14,7 @@
             "Z": 801.75464
           },
           "TerritoryId": 622,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 511.98596
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Yanxia - Namai"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -55,17 +51,6 @@
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": 494.13614,
-            "Y": 40.921455,
-            "Z": -482.27777
-          },
-          "TerritoryId": 622,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne"
-        },
         {
           "DataId": 1019382,
           "Position": {
@@ -89,12 +74,7 @@
           },
           "TerritoryId": 622,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "Azim Steppe - Dhoro Iloh"
-            },
             "StepIf": {
               "AetheryteLocked": "Azim Steppe - Dhoro Iloh"
             }
@@ -109,7 +89,6 @@
           },
           "TerritoryId": 622,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Azim Steppe - Dawn Throne",
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -127,7 +106,6 @@
           },
           "TerritoryId": 622,
           "InteractionType": "Interact",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "Azim Steppe - Dhoro Iloh"
@@ -147,9 +125,7 @@
             "Z": 91.23364
           },
           "TerritoryId": 622,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

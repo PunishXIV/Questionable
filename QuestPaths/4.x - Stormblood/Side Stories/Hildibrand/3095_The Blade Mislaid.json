@@ -29,9 +29,7 @@
             "Z": -664.9729
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yanxia - House of the Fierce",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": -530.2663
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,8 +59,7 @@
             "Z": -581.3535
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -78,8 +74,7 @@
             "Z": -597.80273
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -94,8 +89,7 @@
             "Z": -648.4321
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -109,7 +103,6 @@
             "Y": 53.217514,
             "Z": -650.6905
           },
-          "StopDistance": 5,
           "TerritoryId": 614,
           "InteractionType": "Interact"
         }
@@ -126,8 +119,7 @@
             "Z": -167.1626
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -141,7 +133,6 @@
             "Y": 10.503965,
             "Z": -155.59625
           },
-          "StopDistance": 5,
           "TerritoryId": 628,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 3150

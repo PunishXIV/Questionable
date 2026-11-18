@@ -15,18 +15,7 @@
             "Z": -270.34418
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -60,11 +49,6 @@
           },
           "TerritoryId": 148,
           "InteractionType": "SinglePlayerDuty",
-          "AethernetShortcut": [
-            "[Gridania] Lancers' Guild",
-            "[Gridania] White Wolf Gate (Central Shroud)"
-          ],
-          "Fly": true,
           "SinglePlayerDutyOptions": {
             "Enabled": true
           }
@@ -86,9 +70,7 @@
           "SinglePlayerDutyOptions": {
             "Index": 1,
             "Enabled": true
-          },
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          }
         }
       ]
     },
@@ -103,10 +85,6 @@
             "Z": -270.34418
           },
           "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Lancers' Guild"
-          ],
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1067
         }

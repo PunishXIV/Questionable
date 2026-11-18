@@ -16,10 +16,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: issuer 1047120 (Pameka)"
         }
       ]
@@ -49,10 +45,6 @@
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4979,
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ],
           "$": "auto: todo turn-in -> 1047120 (Pameka)"
         }
       ]

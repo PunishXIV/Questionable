@@ -9,15 +9,7 @@ internal sealed class StepFormComponent
     private static readonly string[] InteractionTypeLabels =
         InteractionTypes.Select(x => x.ToString()).ToArray();
 
-    private static readonly EAetheryteLocation?[] AetheryteValues =
-        new EAetheryteLocation?[] { null }
-            .Concat(Enum.GetValues<EAetheryteLocation>().Cast<EAetheryteLocation?>())
-            .ToArray();
-    private static readonly string[] AetheryteLabels =
-        new[] { "-" }.Concat(Enum.GetValues<EAetheryteLocation>().Select(x => x.ToString())).ToArray();
-
     private string _interactionTypeSearch = string.Empty;
-    private string _aetheryteSearch = string.Empty;
 
     public void Draw(PathEditorSession session)
     {
@@ -84,27 +76,11 @@ internal sealed class StepFormComponent
             session.Dirty = true;
         }
 
-        EAetheryteLocation? selectedAetheryte = step.AetheryteShortcut;
-        ImGuiComponentsLocal.DrawSearchableCombo(_L("Aetheryte Shortcut"), AetheryteValues, AetheryteLabels,
-            step.AetheryteShortcut, ref _aetheryteSearch, ref selectedAetheryte);
-        if (selectedAetheryte != step.AetheryteShortcut)
-        {
-            step.AetheryteShortcut = selectedAetheryte;
-            session.Dirty = true;
-        }
-
         string comment = step.Comment ?? string.Empty;
         ImGui.SetNextItemWidth(inputWidth);
         if (ImGui.InputTextWithHint(_L("Comment"), _L("Shown in the debug overlay"), ref comment, 256))
         {
             step.Comment = string.IsNullOrWhiteSpace(comment) ? null : comment;
-            session.Dirty = true;
-        }
-
-        bool fly = step.Fly == true;
-        if (ImGui.Checkbox(_L("Fly"), ref fly))
-        {
-            step.Fly = fly ? true : null;
             session.Dirty = true;
         }
 

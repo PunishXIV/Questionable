@@ -14,9 +14,7 @@
             "Z": 444.23596
           },
           "TerritoryId": 814,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Kholusia - Wright"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,12 +29,7 @@
             "Z": -148.27197
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] The Amaro Launch"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,11 +44,7 @@
             "Z": -155.13855
           },
           "TerritoryId": 819,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Amaro Launch",
-            "[Crystarium] The Crystalline Mean"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -70,9 +59,7 @@
             "Z": -605.27966
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Lakeland - Ostall Imperative"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -88,7 +75,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",

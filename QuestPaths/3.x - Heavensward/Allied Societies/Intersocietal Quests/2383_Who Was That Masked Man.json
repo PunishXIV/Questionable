@@ -14,9 +14,7 @@
             "Z": 315.14453
           },
           "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": 279.89612
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         },
         {
           "DataId": 1018241,
@@ -42,8 +39,7 @@
             "Z": 272.755
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -58,8 +54,7 @@
             "Z": 317.03674
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -74,9 +69,7 @@
             "Z": -139.05548
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,26 +84,13 @@
             "Z": 543.3279
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 5,
       "Steps": [
-        {
-          "Position": {
-            "X": 471.06836,
-            "Y": -51.141403,
-            "Z": 35.919243
-          },
-          "TerritoryId": 398,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true,
-          "Land": true
-        },
         {
           "DataId": 1011916,
           "Position": {
@@ -135,8 +115,6 @@
           },
           "TerritoryId": 397,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "Fly": true,
           "NextQuestId": 2384
         }
       ]

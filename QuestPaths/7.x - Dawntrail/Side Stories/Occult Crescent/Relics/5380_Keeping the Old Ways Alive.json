@@ -13,9 +13,7 @@
             "Z": 13.38208
           },
           "TerritoryId": 1278,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": ["[Tuliyollal] Aetheryte Plaza","[Tuliyollal] Phantom Village"]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -46,7 +44,6 @@
             "Z": -436.94214
           },
           "TerritoryId": 1189,
-          "AetheryteShortcut": "Yak T'el - Iq Br'aax",
           "InteractionType": "PurchaseItem",
           "ItemId": 46852,
           "ItemCount": 1,
@@ -66,7 +63,6 @@
             "Z": 90.34863
           },
           "TerritoryId": 1185,
-          "AetheryteShortcut": "Tuliyollal",
           "InteractionType": "PurchaseItem",
           "ItemId": 46854,
           "ItemCount": 1,
@@ -125,11 +121,7 @@
             "Z": 63.309692
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Bayside Bevy Marketplace",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "Interact"
         },
         {
           "InteractionType": "SwitchClass",
@@ -144,8 +136,7 @@
             "Z": 13.351624
           },
           "TerritoryId": 1278,
-          "InteractionType": "Interact",
-          "AethernetShortcut": ["[Tuliyollal] Bayside Bevy Marketplace","[Tuliyollal] Phantom Village"]
+          "InteractionType": "Interact"
         }
       ]
     },

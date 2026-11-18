@@ -14,8 +14,7 @@
             "Z": -494.481
           },
           "TerritoryId": 622,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +29,7 @@
             "Z": 405.20325
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Azim Steppe - Reunion"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -48,7 +45,6 @@
           },
           "TerritoryId": 622,
           "InteractionType": "Combat",
-          "StopDistance": 60,
           "EnemySpawnType": "OverworldEnemies",
           "ComplexCombatData": [
             {
@@ -75,8 +71,7 @@
             "Z": 405.20325
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -91,8 +86,7 @@
             "Z": -494.481
           },
           "TerritoryId": 622,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

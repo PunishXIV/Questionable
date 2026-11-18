@@ -28,7 +28,6 @@
             "Y": -16.246998,
             "Z": 147.02063
           },
-          "StopDistance": 5,
           "TerritoryId": 962,
           "InteractionType": "Interact"
         }
@@ -64,7 +63,6 @@
             "Y": -15.127001,
             "Z": 130.76611
           },
-          "StopDistance": 0.25,
           "TerritoryId": 962,
           "InteractionType": "Interact"
         }
@@ -80,7 +78,6 @@
             "Y": 3.2249997,
             "Z": 8.909777
           },
-          "StopDistance": 0.25,
           "TerritoryId": 962,
           "InteractionType": "Interact"
         }
@@ -101,7 +98,6 @@
             "Y": 5.0999994,
             "Z": -63.37148
           },
-          "StopDistance": 0.25,
           "TerritoryId": 962,
           "InteractionType": "Interact"
         }
@@ -117,7 +113,6 @@
             "Y": 41.37599,
             "Z": -142.5033
           },
-          "StopDistance": 0.25,
           "TerritoryId": 962,
           "InteractionType": "Interact"
         }
@@ -138,7 +133,6 @@
             "Y": 18.800978,
             "Z": -142.65858
           },
-          "StopDistance": 0.25,
           "TerritoryId": 962,
           "InteractionType": "Interact"
         }
@@ -164,13 +158,8 @@
             "Y": 1.0594833,
             "Z": 30.052902
           },
-          "StopDistance": 0.25,
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Journey's End",
-            "[Old Sharlayan] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -196,10 +185,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] The Baldesion Annex"
-          ],
           "TargetTerritoryId": 987
         },
         {

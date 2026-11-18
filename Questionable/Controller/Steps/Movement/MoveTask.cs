@@ -6,7 +6,6 @@ internal sealed record MoveTask
     Vector3 Destination,
     float? StopDistance = null,
     uint? DataId = null,
-    bool IgnoreDistanceToObject = false,
     EInteractionType InteractionType = EInteractionType.None) : ITask
 {
     public MoveTask(QuestStep step, Vector3 destination)
@@ -14,7 +13,6 @@ internal sealed record MoveTask
             destination,
             step.CalculateActualStopDistance(),
             step.DataId,
-            step.IgnoreDistanceToObject == true,
             step.InteractionType)
     {
     }

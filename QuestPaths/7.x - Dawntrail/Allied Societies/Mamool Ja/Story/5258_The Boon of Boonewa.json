@@ -14,8 +14,7 @@
             "Z": 721.8279
           },
           "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": -279.8047
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - The Outskirts"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,7 +60,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [[0],null,null,null,null,null]
 
         },
@@ -75,7 +72,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [[16],null,null,null,null,null]
 
         },
@@ -88,7 +84,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [[33],null,null,null,null,null]
         }
       ]
@@ -104,8 +99,7 @@
             "Z": -418.1114
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -120,8 +114,7 @@
             "Z": 757.71716
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -177,9 +170,7 @@
             "Z": 757.71716
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

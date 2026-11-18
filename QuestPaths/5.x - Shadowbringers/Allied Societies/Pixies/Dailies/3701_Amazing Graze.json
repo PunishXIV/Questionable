@@ -14,9 +14,7 @@
             "Z": 575.1278
           },
           "TerritoryId": 816,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 601.2206
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,7 +45,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 2}, {"Low": 3}
             ],null,null,null,null
@@ -64,7 +59,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}
             ],null,null,null,null
@@ -79,7 +73,6 @@
           },
           "TerritoryId": 816,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 3}
             ],null,null,null,null
@@ -98,9 +91,7 @@
             "Z": 601.2206
           },
           "TerritoryId": 816,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Il Mheg - Lydha Lran",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -115,8 +106,7 @@
             "Z": 575.1278
           },
           "TerritoryId": 816,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

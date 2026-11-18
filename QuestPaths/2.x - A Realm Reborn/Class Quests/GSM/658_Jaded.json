@@ -15,19 +15,7 @@
             "Z": 110.795654
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                130,
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -55,11 +43,7 @@
             "Z": 110.795654
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,11 +73,7 @@
             "Z": -80.1557
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Goldsmiths' Guild",
-            "[Ul'dah] Sapphire Avenue Exchange"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,11 +88,7 @@
             "Z": 110.795654
           },
           "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Sapphire Avenue Exchange",
-            "[Ul'dah] Goldsmiths' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

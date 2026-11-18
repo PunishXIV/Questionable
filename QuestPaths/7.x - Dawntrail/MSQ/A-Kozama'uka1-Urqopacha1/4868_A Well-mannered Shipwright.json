@@ -13,7 +13,6 @@
             "Y": 9.773315,
             "Z": -536.9192
           },
-          "StopDistance": 7,
           "TerritoryId": 1188,
           "InteractionType": "AcceptQuest"
         }
@@ -86,8 +85,7 @@
             "Z": -388.50995
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -151,24 +149,6 @@
       "Sequence": 8,
       "Steps": [
         {
-          "Position": {
-            "X": -510.37933,
-            "Y": -0.39999998,
-            "Z": -277.78192
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -521.0261,
-            "Y": -0.40000004,
-            "Z": -329.19336
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2013936,
           "Position": {
             "X": -638.056,
@@ -187,8 +167,7 @@
             "Z": -612.54297
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -203,8 +182,7 @@
             "Z": -533.40967
           },
           "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Ok'hanu"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

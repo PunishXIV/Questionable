@@ -20,12 +20,6 @@ internal static class SkipConditionsExtensions
                         SyntaxNodeList(
                             Assignment(nameof(SkipConditions.StepIf), skipConditions.StepIf,
                                     emptySkip.StepIf)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(SkipConditions.AetheryteShortcutIf),
-                                    skipConditions.AetheryteShortcutIf, emptySkip.AetheryteShortcutIf)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(skipConditions.AethernetShortcutIf),
-                                    skipConditions.AethernetShortcutIf, emptySkip.AethernetShortcutIf)
                                 .AsSyntaxNodeOrToken()))));
     }
 
@@ -130,48 +124,4 @@ internal static class SkipConditionsExtensions
                                 .AsSyntaxNodeOrToken()))));
     }
 
-    public static ExpressionSyntax ToExpressionSyntax(this SkipAetheryteCondition skipAetheryteCondition)
-    {
-        SkipAetheryteCondition emptyAetheryte = new();
-        return ObjectCreationExpression(
-                IdentifierName(nameof(SkipAetheryteCondition)))
-            .WithInitializer(
-                InitializerExpression(
-                    SyntaxKind.ObjectInitializerExpression,
-                    SeparatedList<ExpressionSyntax>(
-                        SyntaxNodeList(
-                            Assignment(nameof(SkipAetheryteCondition.Never), skipAetheryteCondition.Never,
-                                emptyAetheryte.Never),
-                            Assignment(nameof(SkipAetheryteCondition.InSameTerritory),
-                                skipAetheryteCondition.InSameTerritory, emptyAetheryte.InSameTerritory),
-                            AssignmentList(nameof(SkipAetheryteCondition.InTerritory),
-                                skipAetheryteCondition.InTerritory),
-                            AssignmentList(nameof(SkipAetheryteCondition.QuestsAccepted),
-                                skipAetheryteCondition.QuestsAccepted),
-                            AssignmentList(nameof(skipAetheryteCondition.QuestsCompleted),
-                                skipAetheryteCondition.QuestsCompleted),
-                            Assignment(nameof(SkipAetheryteCondition.AetheryteLocked),
-                                    skipAetheryteCondition.AetheryteLocked, emptyAetheryte.AetheryteLocked)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(SkipAetheryteCondition.AetheryteUnlocked),
-                                    skipAetheryteCondition.AetheryteUnlocked,
-                                    emptyAetheryte.AetheryteUnlocked)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(SkipAetheryteCondition.RequiredQuestVariablesNotMet),
-                                    skipAetheryteCondition.RequiredQuestVariablesNotMet,
-                                    emptyAetheryte.RequiredQuestVariablesNotMet)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(skipAetheryteCondition.NearPosition), skipAetheryteCondition.NearPosition,
-                                    emptyAetheryte.NearPosition)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(skipAetheryteCondition.NotNearPosition), skipAetheryteCondition.NotNearPosition,
-                                    emptyAetheryte.NotNearPosition)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(SkipAetheryteCondition.Item), skipAetheryteCondition.Item,
-                                    emptyAetheryte.Item)
-                                .AsSyntaxNodeOrToken(),
-                            Assignment(nameof(skipAetheryteCondition.ExtraCondition), skipAetheryteCondition.ExtraCondition,
-                                    emptyAetheryte.ExtraCondition)
-                                .AsSyntaxNodeOrToken()))));
-    }
 }

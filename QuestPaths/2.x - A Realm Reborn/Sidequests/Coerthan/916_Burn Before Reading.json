@@ -14,10 +14,7 @@
             "Z": -222.1973
           },
           "TerritoryId": 155,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,7 +30,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
             {
@@ -76,10 +72,7 @@
             "Z": -222.1973
           },
           "TerritoryId": 155,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

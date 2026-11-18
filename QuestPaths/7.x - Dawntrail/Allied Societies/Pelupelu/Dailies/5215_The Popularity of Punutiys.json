@@ -7,24 +7,12 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": 770.70636,
-            "Y": 12.846572,
-            "Z": -260.59436
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
-          "Fly": true
-        },
-        {
           "DataId": 1051711,
           "Position": {
             "X": 770.7179,
             "Y": 12.84657,
             "Z": -263.99634
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "AcceptQuest"
         }
@@ -41,8 +29,7 @@
             "Z": -285.1759
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -59,7 +46,6 @@
           "TerritoryId": 1188,
           "InteractionType": "Action",
           "Action": "Bosom Brook",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 1}
             ],null,null,null]
@@ -74,7 +60,6 @@
           "TerritoryId": 1188,
           "InteractionType": "Action",
           "Action": "Bosom Brook",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 2}
             ],null,null,null]
@@ -89,7 +74,6 @@
           "TerritoryId": 1188,
           "InteractionType": "Action",
           "Action": "Bosom Brook",
-          "Fly": true,
           "RequiredQuestVariables": [null,null,[
             {"High": 3}
             ],null,null,null]
@@ -100,24 +84,12 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 770.70636,
-            "Y": 12.846572,
-            "Z": -260.59436
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Kozama'uka - Dock Poga",
-          "Fly": true
-        },
-        {
           "DataId": 1051711,
           "Position": {
             "X": 770.7179,
             "Y": 12.84657,
             "Z": -263.99634
           },
-          "StopDistance": 5,
           "TerritoryId": 1188,
           "InteractionType": "CompleteQuest"
         }

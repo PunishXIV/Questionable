@@ -14,8 +14,7 @@
             "Z": 57.694214
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Tuliyollal"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +29,7 @@
             "Z": -242.17596
           },
           "TerritoryId": 1190,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -40,23 +37,12 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": -363.22934,
-            "Y": 20.162338,
-            "Z": -90.19407
-          },
-          "TerritoryId": 1190,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Shaaloani - Sheshenewezi Springs"
-        },
-        {
           "DataId": 1051495,
           "Position": {
             "X": -365.28577,
             "Y": 20.14268,
             "Z": -88.51758
           },
-          "StopDistance": 5,
           "TerritoryId": 1190,
           "InteractionType": "Interact"
         }

@@ -30,11 +30,7 @@
           },
           "TerritoryId": 962,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Studium",
-            "[Old Sharlayan] Scholar's Harbor"
-          ]
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -66,7 +62,6 @@
             "Y": -14.169313,
             "Z": 105.30249
           },
-          "StopDistance": 7,
           "TerritoryId": 962,
           "InteractionType": "Interact"
         }
@@ -82,7 +77,6 @@
             "Y": -15.127002,
             "Z": 139.42163
           },
-          "StopDistance": 5,
           "TerritoryId": 962,
           "InteractionType": "CompleteQuest"
         }

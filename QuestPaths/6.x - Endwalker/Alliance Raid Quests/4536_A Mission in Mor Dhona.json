@@ -14,12 +14,7 @@
             "Z": 13.290527
           },
           "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Baldesion Annex"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,8 +29,7 @@
             "Z": -683.1617
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,8 +44,7 @@
             "Z": -496.14713
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -83,10 +76,8 @@
             "Y": 2.960754,
             "Z": 6.778096
           },
-          "StopDistance": 5,
           "TerritoryId": 1061,
           "InteractionType": "Interact",
-          "IgnoreDistanceToObject": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {

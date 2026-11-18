@@ -14,18 +14,7 @@
             "Z": -246.87573
           },
           "TerritoryId": 133,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -40,11 +29,7 @@
             "Z": 0.6560669
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Airship Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -58,7 +43,6 @@
             "Y": 83.19998,
             "Z": -1.4801636
           },
-          "StopDistance": 7,
           "TerritoryId": 130,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {"Enabled": true}
@@ -78,7 +62,6 @@
             "Y": 83.19999,
             "Z": 0.10675049
           },
-          "StopDistance": 7,
           "TerritoryId": 130,
           "InteractionType": "Interact"
         }
@@ -96,10 +79,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Mih Khetto's Amphitheatre"
-          ],
           "NextQuestId": 2628
         }
       ]

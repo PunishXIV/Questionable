@@ -15,11 +15,7 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 1078,
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Meghaduta"
-          ]
+          "TargetTerritoryId": 1078
         },
         {
           "DataId": 1043848,
@@ -28,7 +24,6 @@
             "Y": 0.008460393,
             "Z": -1.8463745
           },
-          "StopDistance": 7,
           "TerritoryId": 1078,
           "InteractionType": "AcceptQuest",
           "DialogueChoices": [
@@ -51,7 +46,6 @@
             "Y": 1.2359009,
             "Z": 5.3864136
           },
-          "StopDistance": 4,
           "TerritoryId": 1078,
           "InteractionType": "Interact",
           "TargetTerritoryId": 963,
@@ -64,13 +58,8 @@
             "Y": 1.7999947,
             "Z": -180.07172
           },
-          "StopDistance": 5,
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Meghaduta",
-            "[Radz-at-Han] Mehryde's Meyhane"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -93,10 +82,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Mehryde's Meyhane",
-            "[Radz-at-Han] Meghaduta"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -133,11 +118,7 @@
             "Z": -203.8758
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Meghaduta",
-            "[Radz-at-Han] Mehryde's Meyhane"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -151,7 +132,6 @@
             "Y": 0.59983087,
             "Z": -74.57541
           },
-          "StopDistance": 0.25,
           "TerritoryId": 963,
           "InteractionType": "Interact"
         }
@@ -167,7 +147,6 @@
             "Y": 1.8631814,
             "Z": -100.1145
           },
-          "StopDistance": 7,
           "TerritoryId": 963,
           "InteractionType": "Interact"
         }
@@ -183,13 +162,8 @@
             "Y": 36.051323,
             "Z": 70.24
           },
-          "StopDistance": 0.25,
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Ruveydah Fibers"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

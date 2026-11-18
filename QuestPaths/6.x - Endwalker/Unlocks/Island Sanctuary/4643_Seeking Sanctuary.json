@@ -14,22 +14,7 @@
             "Z": -9.079163
           },
           "TerritoryId": 962,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Old Sharlayan",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 36.27063,
-                  "Y": 2.3729992,
-                  "Z": -9.079163
-                },
-                "TerritoryId": 962,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,21 +29,7 @@
             "Z": 667.5669
           },
           "TerritoryId": 135,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 174.12073,
-                  "Y": 14.095924,
-                  "Z": 667.5669
-                },
-                "TerritoryId": 135,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -87,21 +58,7 @@
               "Prompt": "TEXT_CTSMJIENTRANCE_00798_SYSTEM_000_005",
               "Yes": true
             }
-          ],
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 174.12073,
-                  "Y": 14.095924,
-                  "Z": 667.5669
-                },
-                "TerritoryId": 135,
-                "MaximumDistance": 200
-              }
-            }
-          }
+          ]
         }
       ]
     },

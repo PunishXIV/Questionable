@@ -14,9 +14,7 @@
             "Z": 321.06494
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": -220.5387
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -52,7 +48,6 @@
           "ChatMessage": {
             "Key": "TEXT_BANARK127_04577_SAYTODO_000_016"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               {"High": 4}
             ],null,null,null,null
@@ -77,7 +72,6 @@
           "ChatMessage": {
             "Key": "TEXT_BANARK127_04577_SAYTODO_000_016"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               {"High": 3}
             ],null,null,null,null
@@ -102,7 +96,6 @@
           "ChatMessage": {
             "Key": "TEXT_BANARK127_04577_SAYTODO_000_016"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               {"High": 1}
             ],null,null,null,null
@@ -127,7 +120,6 @@
           "ChatMessage": {
             "Key": "TEXT_BANARK127_04577_SAYTODO_000_016"
           },
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               {"High": 2}
             ],null,null,null,null
@@ -153,8 +145,7 @@
             "Z": -220.5387
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -169,9 +160,7 @@
             "Z": 321.06494
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

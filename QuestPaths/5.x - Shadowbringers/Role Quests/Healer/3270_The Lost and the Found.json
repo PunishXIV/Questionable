@@ -14,12 +14,7 @@
             "Z": 209.88782
           },
           "TerritoryId": 819,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Musica Universalis Markets"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,8 +29,7 @@
             "Z": 309.83435
           },
           "TerritoryId": 817,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Rak'tika - Slitherbough"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -54,8 +48,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             10950
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -74,8 +67,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             10869
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -91,8 +83,7 @@
           },
           "TerritoryId": 817,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "Fly": true
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -111,11 +102,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Crystarium",
-          "AethernetShortcut": [
-            "[Crystarium] Aetheryte Plaza",
-            "[Crystarium] Musica Universalis Markets"
-          ],
           "NextQuestId": 3271
         }
       ]

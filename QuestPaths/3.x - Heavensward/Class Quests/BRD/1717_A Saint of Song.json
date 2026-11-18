@@ -13,11 +13,8 @@
             "Y": -51.27571,
             "Z": 65.384766
           },
-          "StopDistance": 7,
           "TerritoryId": 398,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Dravanian Forelands - Tailfeather",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,7 +30,6 @@
           },
           "TerritoryId": 398,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -55,9 +51,7 @@
             "Z": 78.72119
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -72,9 +66,7 @@
             "Z": 685.84717
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Moghome",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -82,24 +74,12 @@
       "Sequence": 4,
       "Steps": [
         {
-          "Position": {
-            "X": 379.64865,
-            "Y": -69.42944,
-            "Z": 695.1956
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "$": "Moglin",
-          "Fly": true
-        },
-        {
           "DataId": 1012077,
           "Position": {
             "X": 381.70435,
             "Y": -66.84979,
             "Z": 700.86194
           },
-          "StopDistance": 8,
           "TerritoryId": 400,
           "InteractionType": "Interact"
         }
@@ -116,8 +96,7 @@
             "Z": 524.95605
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -134,8 +113,7 @@
           "TerritoryId": 400,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [4681],
-          "Fly": true
+          "KillEnemyDataIds": [4681]
         }
       ]
     },
@@ -152,8 +130,7 @@
           "TerritoryId": 400,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [4682],
-          "Fly": true
+          "KillEnemyDataIds": [4682]
         }
       ]
     },
@@ -170,8 +147,7 @@
           "TerritoryId": 400,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [4483],
-          "Fly": true
+          "KillEnemyDataIds": [4483]
         }
       ]
     },
@@ -186,8 +162,7 @@
             "Z": 97.18469
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -195,25 +170,12 @@
       "Sequence": 255,
       "Steps": [
         {
-          "Position": {
-            "X": 379.64865,
-            "Y": -69.42944,
-            "Z": 695.1956
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "The Churning Mists - Moghome",
-          "$": "Moglin",
-          "Fly": true
-        },
-        {
           "DataId": 1012077,
           "Position": {
             "X": 381.70435,
             "Y": -66.84979,
             "Z": 700.86194
           },
-          "StopDistance": 8,
           "TerritoryId": 400,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1718

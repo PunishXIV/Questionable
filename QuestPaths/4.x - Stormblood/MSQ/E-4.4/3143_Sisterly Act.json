@@ -13,7 +13,6 @@
             "Y": -1.1041565E-05,
             "Z": -11.734253
           },
-          "StopDistance": 5,
           "TerritoryId": 351,
           "InteractionType": "AcceptQuest"
         }
@@ -30,10 +29,7 @@
             "Z": 546.08887
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true,
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,8 +59,7 @@
             "Z": -16.31195
           },
           "TerritoryId": 759,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Doman Enclave"
+          "InteractionType": "Interact"
         }
       ]
     },

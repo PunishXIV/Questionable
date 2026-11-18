@@ -13,7 +13,6 @@
             "Y": 18.990517,
             "Z": -839.353
           },
-          "StopDistance": 5,
           "TerritoryId": 1192,
           "InteractionType": "AcceptQuest"
         }
@@ -30,7 +29,6 @@
           },
           "TerritoryId": 1192,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Living Memory - Leynode Mnemo",
           "$": "Leynode Mnemo to Meso Terminal waypoint",
           "SkipConditions": {
             "StepIf": {
@@ -46,8 +44,7 @@
             "Z": 363.05774
           },
           "TerritoryId": 1192,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -93,7 +90,6 @@
             "Y": -14.999356,
             "Z": 204.42505
           },
-          "StopDistance": 7,
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest"
         }

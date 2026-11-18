@@ -14,9 +14,7 @@
             "Z": 321.06494
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut":"Thavnair - Yedlihmad",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,8 +31,6 @@
           "TerritoryId": 957,
           "InteractionType": "UseItem",
           "ItemId": 2003420,
-          "Fly": true,
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
           "RequiredQuestVariables": [null,[
               19
             ],null,null,null,null
@@ -50,7 +46,6 @@
           "TerritoryId": 957,
           "InteractionType": "UseItem",
           "ItemId": 2003420,
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               18
             ],null,null,null,null
@@ -66,7 +61,6 @@
           "TerritoryId": 957,
           "InteractionType": "UseItem",
           "ItemId": 2003420,
-          "Fly": true,
           "RequiredQuestVariables": [null,[
               17
             ],null,null,null,null
@@ -129,8 +123,7 @@
             "Z": 321.06494
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

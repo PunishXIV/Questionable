@@ -15,7 +15,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona",
           "$": "auto: issuer 1006543 (Npah Tayuun)"
         }
       ]
@@ -32,8 +31,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Combat",
-          "Fly": true,
-          "AetheryteShortcut": "Mor Dhona",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             27
@@ -49,7 +46,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             27
@@ -70,7 +66,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona",
           "$": "auto: todo turn-in -> 1006543 (Npah Tayuun)"
         }
       ]

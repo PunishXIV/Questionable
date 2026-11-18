@@ -14,9 +14,7 @@
             "Z": 313.98486
           },
           "TerritoryId": 400,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 158.70898
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,10 +43,8 @@
             "Y": -8.6555605,
             "Z": 202.83813
           },
-          "StopDistance": 0.5,
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -66,8 +60,7 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Emote",
-          "Emote": "psych",
-          "Fly": true
+          "Emote": "psych"
         }
       ]
     },
@@ -81,11 +74,9 @@
             "Y": 10.765197,
             "Z": 243.12195
           },
-          "StopDistance": 0.5,
           "TerritoryId": 400,
           "InteractionType": "Emote",
-          "Emote": "slap",
-          "Fly": true
+          "Emote": "slap"
         }
       ]
     },
@@ -100,8 +91,7 @@
             "Z": 158.70898
           },
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -121,10 +111,8 @@
             "Y": 10.765197,
             "Z": 243.12195
           },
-          "StopDistance": 0.5,
           "TerritoryId": 400,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -139,9 +127,7 @@
             "Z": 313.98486
           },
           "TerritoryId": 400,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

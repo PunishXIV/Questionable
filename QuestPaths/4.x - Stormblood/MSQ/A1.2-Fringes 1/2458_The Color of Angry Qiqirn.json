@@ -13,10 +13,8 @@
             "Y": 118.15579,
             "Z": -719.96643
           },
-          "StopDistance": 5,
           "TerritoryId": 620,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Peaks - Ala Gannha"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -69,29 +67,10 @@
         },
         {
           "Position": {
-            "X": -270.3264,
-            "Y": 202.14117,
-            "Z": -232.75537
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -270.3756,
-            "Y": 200.71988,
-            "Z": -237.96118
-          },
-          "TerritoryId": 620,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
             "X": -281.3983,
             "Y": 200.71988,
             "Z": -294.9439
           },
-          "StopDistance": 0.25,
           "TerritoryId": 620,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",

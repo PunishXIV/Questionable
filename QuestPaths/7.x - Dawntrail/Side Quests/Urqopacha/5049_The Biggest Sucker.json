@@ -13,7 +13,6 @@
             "Y": 131.25926,
             "Z": 690.66907
           },
-          "StopDistance": 1,
           "TerritoryId": 1187,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
             "Z": 210.49817
           },
           "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -44,14 +42,12 @@
             "Y": 47.201637,
             "Z": 78.30595
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1187,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             17650
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -66,7 +62,6 @@
           "KillEnemyDataIds": [
             17650
           ],
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -86,8 +81,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             17651
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -101,11 +95,8 @@
             "Y": 131.25926,
             "Z": 690.66907
           },
-          "StopDistance": 1,
           "TerritoryId": 1187,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

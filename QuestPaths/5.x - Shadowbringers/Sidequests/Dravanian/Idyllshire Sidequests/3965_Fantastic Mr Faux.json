@@ -15,7 +15,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "DialogueChoices": [
             {
               "Prompt": "TEXT_LUCKYB815_03965_Q1_000_000",
@@ -39,7 +38,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo turn-in -> 1033921 (faux commander)"
         }
       ]

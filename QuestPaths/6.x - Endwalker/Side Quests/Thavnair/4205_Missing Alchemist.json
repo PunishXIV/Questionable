@@ -14,8 +14,7 @@
             "Z": 33.035767
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,8 +29,7 @@
             "Z": 658.2893
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Yedlihmad"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,7 +45,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -70,7 +67,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -82,7 +78,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Mount": false,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -91,7 +86,6 @@
             "Y": -0.19836426,
             "Z": 830.8689
           },
-          "StopDistance": 5,
           "TerritoryId": 957,
           "InteractionType": "Dive"
         },
@@ -141,9 +135,7 @@
             "Z": 33.035767
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Great Work",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -12,15 +12,12 @@
             "Z": -226.64441
           },
           "TerritoryId": 815,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1027925,
           "TerritoryId": 815,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Amh Araeng - Twine"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -35,8 +32,7 @@
           },
           "TerritoryId": 815,
           "InteractionType": "Emote",
-          "Emote": "kneel",
-          "Fly": true
+          "Emote": "kneel"
         }
       ]
     },
@@ -50,15 +46,12 @@
             "Z": -226.64441
           },
           "TerritoryId": 815,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1027925,
           "TerritoryId": 815,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Amh Araeng - Twine"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

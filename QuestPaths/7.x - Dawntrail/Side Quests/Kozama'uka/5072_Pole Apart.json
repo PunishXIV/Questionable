@@ -21,16 +21,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": -298.1575,
-            "Y": 112.88461,
-            "Z": 684.6612
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
-        {
           "DataId": 1050708,
           "Position": {
             "X": -296.52863,
@@ -53,24 +43,13 @@
             "Z": 523.7964
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": -298.1575,
-            "Y": 112.88461,
-            "Z": 684.6612
-          },
-          "TerritoryId": 1188,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1050708,
           "Position": {
@@ -94,8 +73,7 @@
             "Z": 368.00183
           },
           "TerritoryId": 1188,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kozama'uka - Earthenshire"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

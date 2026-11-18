@@ -43,9 +43,6 @@ internal sealed class AetheryteData
 
         TerritoryIds = territoryIds.AsReadOnly();
         AethernetGroups = aethernetGroups.AsReadOnly();
-        TerritoryRoutes = new Dictionary<uint, AethernetShortcut>() {
-            { 419, new() { From = EAetheryteLocation.Ishgard, To = EAetheryteLocation.IshgardLastVigil } }
-        }.AsReadOnly();
 
         TownTerritoryIds = dataManager.GetExcelSheet<TerritoryType>()
             .Where(x => x.RowId > 0 && !string.IsNullOrEmpty(x.Name.ToString()) && x.TerritoryIntendedUse.RowId == 0)
@@ -340,8 +337,6 @@ internal sealed class AetheryteData
     public ReadOnlyDictionary<EAetheryteLocation, uint> TerritoryIds { get; }
     public ReadOnlyDictionary<EAetheryteLocation, ushort> AethernetGroups { get; }
     private IReadOnlyList<uint> TownTerritoryIds { get; }
-
-    public ReadOnlyDictionary<uint, AethernetShortcut> TerritoryRoutes { get; }
 
     public EAetheryteLocation? NearestTo(uint territoryId, Vector3? position)
     {

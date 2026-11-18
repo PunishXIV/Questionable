@@ -14,27 +14,13 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": 317.37,
-            "Y": -83.39401,
-            "Z": -227.2903
-          },
-          "TerritoryId": 613,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2009216,
           "Position": {
@@ -44,8 +30,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, null, [2], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [2], null, null, null]
         },
         {
           "DataId": 2009217,
@@ -56,8 +41,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, null, [2], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [2], null, null, null]
         },
         {
           "DataId": 2009218,
@@ -68,8 +52,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, null, [3], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [3], null, null, null]
         },
         {
           "DataId": 2009146,
@@ -80,8 +63,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, null, [1], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [1], null, null, null]
         },
         {
           "DataId": 2009147,
@@ -92,8 +74,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, null, [3], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [3], null, null, null]
         },
         {
           "DataId": 2009148,
@@ -104,8 +85,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, null, [3], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [3], null, null, null]
         },
         {
           "DataId": 2009149,
@@ -116,8 +96,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, null, [1], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [1], null, null, null]
         },
         {
           "DataId": 2009150,
@@ -128,8 +107,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, null, [2], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [2], null, null, null]
         },
         {
           "DataId": 2009151,
@@ -140,8 +118,7 @@
           },
           "TerritoryId": 613,
           "InteractionType": "Interact",
-          "RequiredQuestVariables": [null, null, [1], null, null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, [1], null, null, null]
         }
       ]
     },
@@ -156,11 +133,7 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

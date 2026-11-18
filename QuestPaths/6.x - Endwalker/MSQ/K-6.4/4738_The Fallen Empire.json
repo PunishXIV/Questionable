@@ -13,7 +13,6 @@
             "Y": 15.5581665,
             "Z": -638.3002
           },
-          "StopDistance": 5,
           "TerritoryId": 958,
           "InteractionType": "AcceptQuest"
         }
@@ -31,7 +30,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "Interact",
-          "Fly": true,
           "TargetTerritoryId": 1160
         }
       ]
@@ -125,10 +123,8 @@
             "Y": 23.803606,
             "Z": 406.05774
           },
-          "StopDistance": 7,
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -143,8 +139,7 @@
             "Z": -202.99078
           },
           "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Tertium"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

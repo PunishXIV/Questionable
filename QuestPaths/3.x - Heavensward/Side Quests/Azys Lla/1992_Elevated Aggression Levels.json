@@ -14,8 +14,7 @@
             "Z": 476.9817
           },
           "TerritoryId": 402,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -37,8 +36,7 @@
               "MinimumKillCount": 1
             }
           ],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
-          "Fly": true
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "Position": {
@@ -87,8 +85,7 @@
             "Z": 476.9817
           },
           "TerritoryId": 402,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

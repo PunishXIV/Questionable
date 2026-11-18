@@ -29,8 +29,7 @@
             "Z": 556.115
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,12 +44,7 @@
             "Z": 98.527466
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] The Resplendent Quarter"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,9 +74,7 @@
             "Z": 739.89465
           },
           "TerritoryId": 1189,
-          "Fly": true,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -123,9 +115,7 @@
             "Z": 723.81165
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

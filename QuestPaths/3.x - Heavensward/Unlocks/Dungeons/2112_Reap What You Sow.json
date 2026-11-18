@@ -14,9 +14,7 @@
             "Z": -381.7655
           },
           "TerritoryId": 401,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,14 +31,7 @@
           },
           "TerritoryId": 401,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu",
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                401
-              ]
-            },
             "StepIf": {
               "Flying": "Locked"
             }
@@ -72,9 +63,7 @@
             "Z": -381.7655
           },
           "TerritoryId": 401,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "The Sea of Clouds - Ok' Zundu"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

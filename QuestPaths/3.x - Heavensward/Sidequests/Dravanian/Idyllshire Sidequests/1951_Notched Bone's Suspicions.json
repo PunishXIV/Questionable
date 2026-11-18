@@ -15,7 +15,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: issuer 1012134 (Notched Bone)"
         }
       ]
@@ -31,13 +30,7 @@
             "Z": -282.062
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -57,12 +50,7 @@
           "KillEnemyDataIds": [
             4061
           ],
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}],
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ]
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,{"High": 8}]
         },
         {
           "DataId": 2006102,
@@ -109,12 +97,7 @@
             "Z": -282.062
           },
           "TerritoryId": 399,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Epilogue Gate (Eastern Hinterlands)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -130,7 +113,6 @@
           },
           "TerritoryId": 478,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Idyllshire",
           "$": "auto: todo turn-in -> 1012134 (Notched Bone)"
         }
       ]

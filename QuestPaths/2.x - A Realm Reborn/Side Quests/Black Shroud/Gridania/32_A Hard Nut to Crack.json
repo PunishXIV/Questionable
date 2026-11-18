@@ -14,8 +14,7 @@
             "Z": 112.13855
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,14 +29,7 @@
             "Z": -98.64966
           },
           "TerritoryId": 133,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "SkipConditions": {
-            "AethernetShortcutIf": { "InSameTerritory": true }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -66,8 +58,7 @@
             "Z": 343.89246
           },
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

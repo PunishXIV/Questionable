@@ -15,7 +15,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "$": "you should be in range right away, but if you aren't then you might be 700 yalms away back at camp"
         }
       ]
@@ -36,8 +35,7 @@
           "KillEnemyDataIds": [
             14094,
             14095
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -52,8 +50,7 @@
             "Z": 612.05444
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -83,8 +80,7 @@
             "Z": 450.49194
           },
           "TerritoryId": 958,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

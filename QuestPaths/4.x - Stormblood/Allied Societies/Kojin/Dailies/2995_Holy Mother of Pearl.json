@@ -14,11 +14,7 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,8 +29,7 @@
             "Z": 140.3982
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,8 +46,7 @@
           "TerritoryId": 613,
           "InteractionType": "UseItem",
           "ItemId": 2002414,
-          "RequiredQuestVariables": [null, null, null, [{"Low": 1}, {"Low": 2}, {"Low": 3}, {"Low": 4}], null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, null, [{"Low": 1}, {"Low": 2}, {"Low": 3}, {"Low": 4}], null, null]
         },
         {
           "DataId": 2009126,
@@ -64,8 +58,7 @@
           "TerritoryId": 613,
           "InteractionType": "UseItem",
           "ItemId": 2002414,
-          "RequiredQuestVariables": [null, null, null, [{"Low": 2}, {"Low": 3}], null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, null, [{"Low": 2}, {"Low": 3}], null, null]
         },
         {
           "DataId": 2009127,
@@ -77,8 +70,7 @@
           "TerritoryId": 613,
           "InteractionType": "UseItem",
           "ItemId": 2002414,
-          "RequiredQuestVariables": [null, null, null, [{"Low": 1}, {"Low": 4}], null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, null, [{"Low": 1}, {"Low": 4}], null, null]
         },
         {
           "DataId": 2009128,
@@ -90,8 +82,7 @@
           "TerritoryId": 613,
           "InteractionType": "UseItem",
           "ItemId": 2002414,
-          "RequiredQuestVariables": [null, null, null, [{"Low": 1}, {"Low": 3}], null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, null, [{"Low": 1}, {"Low": 3}], null, null]
         },
         {
           "DataId": 2009227,
@@ -103,8 +94,7 @@
           "TerritoryId": 613,
           "InteractionType": "UseItem",
           "ItemId": 2002414,
-          "RequiredQuestVariables": [null, null, null, [{"Low": 2}, {"Low": 4}], null, null],
-          "Fly": true
+          "RequiredQuestVariables": [null, null, null, [{"Low": 2}, {"Low": 4}], null, null]
         }
       ]
     },
@@ -119,8 +109,7 @@
             "Z": 140.3982
           },
           "TerritoryId": 613,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -135,11 +124,7 @@
             "Z": -235.04329
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ruby Sea - Tamamizu",
-          "StopDistance": 1,
-          "Fly": true,
-          "Land": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

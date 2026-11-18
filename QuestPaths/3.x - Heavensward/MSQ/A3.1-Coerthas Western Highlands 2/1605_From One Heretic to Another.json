@@ -22,26 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 454.75964,
-            "Y": 164.27075,
-            "Z": -535.00354
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "$": "Gorgagne Mills (outside)"
-        },
-        {
-          "Position": {
-            "X": 454.9128,
-            "Y": 164.30827,
-            "Z": -542.1735
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "$": "Gorgagne Mills (inside)"
-        },
-        {
           "DataId": 2005432,
           "Position": {
             "X": 450.85828,

@@ -15,11 +15,7 @@
             "Z": -83.78735
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -47,18 +43,12 @@
             "Y": 49.52189,
             "Z": 322.85992
           },
-          "StopDistance": 0.5,
           "TerritoryId": 140,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7495
-          ],
-          "AethernetShortcut": [
-            "[Ul'dah] Adventurers' Guild",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -72,7 +62,6 @@
             "Y": 49.469913,
             "Z": 317.83008
           },
-          "StopDistance": 7,
           "TerritoryId": 140,
           "InteractionType": "Interact"
         }
@@ -89,8 +78,7 @@
             "Z": 446.5553
           },
           "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -106,10 +94,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Adventurers' Guild"
-          ],
           "NextQuestId": 2567
         }
       ]

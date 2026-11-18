@@ -15,11 +15,6 @@
           },
           "TerritoryId": 963,
           "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Hall of the Radiant Host"
-          ],
           "DialogueChoices": [
             {
               "Type": "List",
@@ -41,8 +36,7 @@
             "Z": 5.0201416
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -57,23 +51,13 @@
             "Z": 195.88
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": -85.105965,
-            "Y": -46.544624,
-            "Z": 210.43315
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1038405,
           "Position": {
@@ -82,9 +66,7 @@
             "Z": 171.06885
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -99,9 +81,7 @@
             "Z": 234.72949
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -119,8 +99,7 @@
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             14016
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -150,9 +129,7 @@
             "Z": 172.22852
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "Land": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -168,7 +145,6 @@
           },
           "TerritoryId": 132,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania",
           "NextQuestId": 4103
         }
       ]

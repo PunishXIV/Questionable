@@ -14,23 +14,7 @@
             "Z": 702.57104
           },
           "TerritoryId": 813,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 1.0,
-          "AetheryteShortcut": "Lakeland - Ostall Imperative",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": -127.91644,
-                  "Y": 9.572956,
-                  "Z": 702.57104
-                },
-                "TerritoryId": 813,
-                "MaximumDistance": 1150
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -45,9 +29,7 @@
             "Z": 198.10791
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "StopDistance": 1.0,
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -65,7 +47,6 @@
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [11111],
-          "Fly": true,
           "$": "QW: 0 0 0 0 0 0 -> QW: 16 1(1) 0 16 0 32",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 32]
         },
@@ -78,7 +59,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "QW: 16 1(1) 0 16 0 32 -> QW: 33(1) 1(1) 16 16 0 96",
           "CompletionQuestVariablesFlags": [null, null, null, null, null, 64]
         },
@@ -90,8 +70,7 @@
             "Z": 243.0304
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -106,9 +85,7 @@
             "Z": 198.10791
           },
           "TerritoryId": 813,
-          "InteractionType": "Interact",
-          "StopDistance": 1.0,
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -123,9 +100,7 @@
             "Z": 699.1531
           },
           "TerritoryId": 813,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "StopDistance": 1.0
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

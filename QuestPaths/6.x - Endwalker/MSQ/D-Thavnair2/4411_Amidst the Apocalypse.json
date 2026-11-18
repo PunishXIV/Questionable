@@ -28,13 +28,8 @@
             "Y": 26.99999,
             "Z": 46.383568
           },
-          "StopDistance": 0.25,
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Mehryde's Meyhane",
-            "[Radz-at-Han] Ruveydah Fibers"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -79,11 +74,7 @@
             "Z": 110.61267
           },
           "TerritoryId": 963,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Kama",
-            "[Radz-at-Han] Ruveydah Fibers"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

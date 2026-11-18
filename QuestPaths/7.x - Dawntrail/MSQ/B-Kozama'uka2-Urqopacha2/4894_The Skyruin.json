@@ -13,7 +13,6 @@
             "Y": 119.71409,
             "Z": 357.7478
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
           "InteractionType": "AcceptQuest"
         }
@@ -34,25 +33,6 @@
           "AetherCurrentId": 2818413
         },
         {
-          "Position": {
-            "X": 400.70453,
-            "Y": 56.34349,
-            "Z": 226.48372
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": 380.3574,
-            "Y": 59.728928,
-            "Z": -3.9185147
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2013932,
           "Position": {
             "X": 368.33752,
@@ -62,33 +42,6 @@
           "TerritoryId": 1187,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818412
-        },
-        {
-          "Position": {
-            "X": 341.56342,
-            "Y": 57.53834,
-            "Z": 10.309054
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 308.72827,
-            "Y": 60.2934,
-            "Z": 111.43004
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 267.1766,
-            "Y": 29.79629,
-            "Z": 184.32184
-          },
-          "TerritoryId": 1187,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1046894,

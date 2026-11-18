@@ -15,18 +15,7 @@
             "Z": 89.86035
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                131
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -41,11 +30,7 @@
             "Z": 76.06616
           },
           "TerritoryId": 131,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Alchemists' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -60,12 +45,7 @@
             "Z": 98.10022
           },
           "TerritoryId": 140,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Alchemists' Guild",
-            "[Ul'dah] Gate of the Sultana (Western Thanalan)"
-          ],
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -78,7 +58,6 @@
             "Y": 83.40785,
             "Z": 92.904495
           },
-          "StopDistance": 0.5,
           "TerritoryId": 140,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -99,7 +78,6 @@
             "Y": 83.013695,
             "Z": 92.24072
           },
-          "StopDistance": 5,
           "TerritoryId": 140,
           "InteractionType": "Interact"
         }
@@ -117,10 +95,6 @@
           },
           "TerritoryId": 131,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ],
           "NextQuestId": 3197
         }
       ]

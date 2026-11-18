@@ -14,11 +14,7 @@
             "Z": 12.218
           },
           "TerritoryId": 1185,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,8 +29,7 @@
             "Z": -772.43
           },
           "TerritoryId": 1188,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,7 +44,6 @@
             "Z": 517.7843
           },
           "TerritoryId": 1189,
-          "StopDistance": 5,
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -73,8 +67,7 @@
             "Z": 845.0293
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -89,7 +82,6 @@
             "Z": 517.7843
           },
           "TerritoryId": 1189,
-          "StopDistance": 5,
           "InteractionType": "PurchaseItem",
           "PurchaseMenu": {
             "ExcelSheet": "GilShop",
@@ -111,8 +103,7 @@
             "Z": 868.16864
           },
           "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "StopDistance": 1
+          "InteractionType": "WalkTo"
         },
         {
           "TerritoryId": 1189,
@@ -132,8 +123,7 @@
             "Z": 845.0293
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -148,11 +138,7 @@
             "Z": 12.218
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

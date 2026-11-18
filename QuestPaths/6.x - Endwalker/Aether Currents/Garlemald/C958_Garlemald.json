@@ -15,7 +15,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "AttuneAetherCurrent",
-          "AetheryteShortcut": "Garlemald - Tertium",
           "AetherCurrentId": 2818349
         },
         {
@@ -50,7 +49,6 @@
             "Y": 31.937134,
             "Z": 423.6056
           },
-          "StopDistance": 5,
           "TerritoryId": 958,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818344

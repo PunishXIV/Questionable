@@ -14,11 +14,7 @@
             "Z": 47.287598
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,12 +32,7 @@
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_JOBDRK500_02058_SAY_000_000"
-          },
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] The Gates of Judgement (Coerthas Central Highlands)"
-          ],
-          "Fly": true
+          }
         }
       ]
     },
@@ -56,8 +47,7 @@
             "Z": 33.310425
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -74,8 +64,7 @@
           "TerritoryId": 155,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [4678, 4679, 4696],
-          "Fly": true
+          "KillEnemyDataIds": [4678, 4679, 4696]
         }
       ]
     },
@@ -90,8 +79,7 @@
             "Z": 33.310425
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },

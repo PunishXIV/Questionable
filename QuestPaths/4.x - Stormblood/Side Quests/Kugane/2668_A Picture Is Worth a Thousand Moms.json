@@ -28,11 +28,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "WalkTo",
-          "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
-          "AethernetShortcut": [
-            "[Kugane] Thavnairian Consulate",
-            "[Kugane] Shiokaze Hostelry"
-          ]
+          "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
           "Position": {
@@ -42,10 +38,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Jump",
-          "AethernetShortcut": [
-            "[Kugane] Shiokaze Hostelry",
-            "[Kugane] Bokairo Inn"
-          ],
           "JumpDestination": {
             "Position": {
               "X": -67.259315,
@@ -58,20 +50,10 @@
         },
         {
           "Position": {
-            "X": -37.85175,
-            "Y": 20.196363,
-            "Z": -163.43034
-          },
-          "TerritoryId": 628,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
             "X": -37.806847,
             "Y": 21.332985,
             "Z": -161.45049
           },
-          "StopDistance": 1,
           "TerritoryId": 628,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -88,7 +70,6 @@
             "Y": 23.164635,
             "Z": -159.86409
           },
-          "StopDistance": 0.5,
           "TerritoryId": 628,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -105,7 +86,6 @@
             "Y": 24.146992,
             "Z": -159.81477
           },
-          "StopDistance": 0.5,
           "TerritoryId": 628,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -131,12 +111,7 @@
             "Z": 159.47205
           },
           "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] Thavnairian Consulate"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

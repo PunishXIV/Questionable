@@ -13,8 +13,7 @@
             "Z": 23.2394
           },
           "TerritoryId": 628,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] The Ruby Bazaar"]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,8 +28,7 @@
             "Z": 93.876
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane"
+          "InteractionType": "Interact"
         }
       ]
     },

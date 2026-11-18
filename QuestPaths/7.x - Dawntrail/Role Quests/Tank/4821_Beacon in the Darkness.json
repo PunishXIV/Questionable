@@ -14,8 +14,7 @@
             "Z": -1.7243042
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +30,6 @@
           },
           "TerritoryId": 400,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "The Churning Mists - Zenith",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -63,13 +60,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             17611
-          ],
-          "AetheryteShortcut": "Idyllshire",
-          "AethernetShortcut": [
-            "[Idyllshire] Aetheryte Plaza",
-            "[Idyllshire] Prologue Gate (Western Hinterlands)"
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -84,11 +75,7 @@
             "Z": -8.560364
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Forgotten Knight"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -102,7 +89,6 @@
             "Y": 23.979128,
             "Z": -48.17273
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 4822

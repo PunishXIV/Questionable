@@ -52,18 +52,8 @@
             "Y": 31.051857,
             "Z": 20.292212
           },
-          "StopDistance": 100,
           "TerritoryId": 963,
           "InteractionType": "WaitForNpcAtPosition"
-        },
-        {
-          "Position": {
-            "X": -68.410736,
-            "Y": 30.999716,
-            "Z": 20.657598
-          },
-          "TerritoryId": 963,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1041515,
@@ -72,18 +62,8 @@
             "Y": 27.05736,
             "Z": 31.972898
           },
-          "StopDistance": 100,
           "TerritoryId": 963,
           "InteractionType": "WaitForNpcAtPosition"
-        },
-        {
-          "Position": {
-            "X": -27.071863,
-            "Y": 27.000011,
-            "Z": 27.903757
-          },
-          "TerritoryId": 963,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1041515,
@@ -92,7 +72,6 @@
             "Y": 26.999846,
             "Z": 34.94524
           },
-          "StopDistance": 100,
           "TerritoryId": 963,
           "InteractionType": "WaitForNpcAtPosition"
         },
@@ -113,7 +92,6 @@
             "Y": 26.999992,
             "Z": 47.213455
           },
-          "StopDistance": 100,
           "TerritoryId": 963,
           "InteractionType": "WaitForNpcAtPosition"
         },
@@ -124,7 +102,6 @@
             "Y": 26.99999,
             "Z": 61.356277
           },
-          "StopDistance": 2,
           "TerritoryId": 963,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 8

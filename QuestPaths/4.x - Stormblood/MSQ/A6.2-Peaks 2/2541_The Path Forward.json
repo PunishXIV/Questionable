@@ -13,7 +13,6 @@
             "Y": 263.73114,
             "Z": 655.75635
           },
-          "StopDistance": 7,
           "TerritoryId": 620,
           "InteractionType": "AcceptQuest"
         }
@@ -30,8 +29,7 @@
             "Z": 770.7484
           },
           "TerritoryId": 620,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Peaks - Ala Ghiri"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,8 +44,7 @@
             "Z": 764.98047
           },
           "TerritoryId": 620,
-          "InteractionType": "CompleteQuest",
-          "StopDistance": 7
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

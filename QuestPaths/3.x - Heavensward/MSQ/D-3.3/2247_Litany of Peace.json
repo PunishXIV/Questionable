@@ -28,7 +28,6 @@
             "Y": 24.458836,
             "Z": 0.62561035
           },
-          "StopDistance": 4,
           "TerritoryId": 418,
           "InteractionType": "Interact",
           "DialogueChoices": [
@@ -68,11 +67,7 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] The Last Vigil"
-          ]
+          "TargetTerritoryId": 433
         },
         {
           "DataId": 1012857,
@@ -81,7 +76,6 @@
             "Y": 0.022254243,
             "Z": 4.623413
           },
-          "StopDistance": 7,
           "TerritoryId": 433,
           "InteractionType": "CompleteQuest"
         }

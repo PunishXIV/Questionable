@@ -29,9 +29,7 @@
             "Z": 181.75012
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] Pier #1"]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,9 +45,7 @@
           "TerritoryId": 613,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
-          "KillEnemyDataIds": [8244, 8246],
-          "Fly": true,
-          "AethernetShortcut": ["[Kugane] Pier #1", "[Kugane] The Ruby Price"]
+          "KillEnemyDataIds": [8244, 8246]
         }
       ]
     },
@@ -79,9 +75,7 @@
             "Z": 183.36768
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kugane",
-          "AethernetShortcut": ["[Kugane] Aetheryte Plaza", "[Kugane] Pier #1"]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,9 +90,7 @@
             "Z": -247.54712
           },
           "TerritoryId": 613,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Ruby Sea - Tamamizu"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

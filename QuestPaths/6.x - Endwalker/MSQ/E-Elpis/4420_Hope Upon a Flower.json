@@ -13,7 +13,6 @@
             "Y": -37.7,
             "Z": -208.85028
           },
-          "StopDistance": 6,
           "TerritoryId": 819,
           "InteractionType": "AcceptQuest"
         }
@@ -31,10 +30,6 @@
           },
           "TerritoryId": 819,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Crystarium] The Cabinet of Curiosity",
-            "[Crystarium] The Dossal Gate"
-          ],
           "TargetTerritoryId": 844
         }
       ]
@@ -137,7 +132,6 @@
             "Y": 44.32154,
             "Z": 771.4198
           },
-          "StopDistance": 5,
           "TerritoryId": 961,
           "InteractionType": "CompleteQuest"
         }

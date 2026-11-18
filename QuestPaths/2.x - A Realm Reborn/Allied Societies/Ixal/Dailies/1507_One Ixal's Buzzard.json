@@ -14,9 +14,7 @@
             "Z": 79.697754
           },
           "TerritoryId": 154,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -32,7 +30,6 @@
           "TerritoryId": 154,
           "TargetTerritoryId": 148,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "InTerritory": [
@@ -52,8 +49,7 @@
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANIXA204_01507_SYSTEM_100_062"
-          },
-          "Fly": true
+          }
         }
       ]
     },
@@ -68,9 +64,6 @@
             "Z": 178.43575
           },
           "TerritoryId": 154,
-          "StopDistance": 1,
-          "Fly": true,
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
           "InteractionType": "Interact"
         }
       ]
@@ -92,9 +85,7 @@
             "Z": 79.697754
           },
           "TerritoryId": 154,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

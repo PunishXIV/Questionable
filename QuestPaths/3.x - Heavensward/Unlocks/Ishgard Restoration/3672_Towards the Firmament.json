@@ -14,8 +14,7 @@
             "Z": 16.739136
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,7 @@
             "Z": 63.767456
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,10 +51,6 @@
               "Prompt": "TEXT_LUCKHA001_03672_Q3_000_000",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] The Jeweled Crozier"
           ]
         }
       ]
@@ -74,7 +65,6 @@
             "Y": -12.634913,
             "Z": -33.951355
           },
-          "StopDistance": 7,
           "TerritoryId": 419,
           "InteractionType": "Interact"
         }
@@ -98,10 +88,6 @@
               "Prompt": "TEXT_LUCKHA001_03672_EVENTAREA_WARP_000_117",
               "Yes": true
             }
-          ],
-          "AethernetShortcut": [
-            "[Ishgard] The Jeweled Crozier",
-            "[Ishgard] The Brume"
           ]
         }
       ]

@@ -16,10 +16,6 @@
           "TerritoryId": 132,
           "InteractionType": "Interact",
           "TargetTerritoryId": 204,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ],
           "SkipConditions": {"StepIf": {"InTerritory": [204]}}
         },
         {
@@ -45,24 +41,13 @@
             "Z": -57.724915
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 616.5126,
-            "Y": 22.329094,
-            "Z": 84.68576
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2002241,
           "Position": {
@@ -105,24 +90,13 @@
             "Z": -57.724915
           },
           "TerritoryId": 153,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "South Shroud - Quarrymill"
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 210.56421,
-            "Y": 18.119999,
-            "Z": -21.370262
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1006585,
           "Position": {

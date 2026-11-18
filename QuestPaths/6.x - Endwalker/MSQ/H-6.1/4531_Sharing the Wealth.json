@@ -29,9 +29,7 @@
             "Z": 605.9204
           },
           "TerritoryId": 957,
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,7 +44,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Thavnair - Yedlihmad",
           "SkipConditions": {
             "StepIf": {
               "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -60,7 +57,6 @@
             "Y": 5.34517,
             "Z": 635.9807
           },
-          "StopDistance": 5,
           "TerritoryId": 957,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128],
@@ -96,12 +92,7 @@
             "Z": -68.61987
           },
           "TerritoryId": 963,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Radz-at-Han",
-          "AethernetShortcut": [
-            "[Radz-at-Han] Aetheryte Plaza",
-            "[Radz-at-Han] Meghaduta"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

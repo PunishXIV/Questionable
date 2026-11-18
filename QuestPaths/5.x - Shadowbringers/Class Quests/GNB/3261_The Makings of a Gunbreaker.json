@@ -14,8 +14,7 @@
             "Z": 37.704956
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +29,7 @@
             "Z": 80.03345
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,7 +42,6 @@
             "Y": 11.806735,
             "Z": 18.429258
           },
-          "StopDistance": 0.5,
           "TerritoryId": 152,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -65,7 +61,6 @@
             "Y": 11.980015,
             "Z": 25.40625
           },
-          "StopDistance": 7,
           "TerritoryId": 152,
           "InteractionType": "Interact"
         }
@@ -81,7 +76,6 @@
             "Y": 11.971041,
             "Z": 25.192627
           },
-          "StopDistance": 7,
           "TerritoryId": 152,
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [

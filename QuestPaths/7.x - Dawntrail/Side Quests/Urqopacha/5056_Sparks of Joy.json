@@ -21,22 +21,7 @@
               "Prompt": "TEXT_KINGZB302_05056_Q1_000_000",
               "Answer": "TEXT_KINGZB302_05056_A1_000_001"
             }
-          ],
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 425.07043,
-                  "Y": 118.935005,
-                  "Z": 606.13403
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          ]
         }
       ]
     },
@@ -51,9 +36,7 @@
             "Z": 711.57385
           },
           "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -61,34 +44,14 @@
       "Sequence": 2,
       "Steps": [
         {
-          "InteractionType": "None",
-          "TerritoryId": 1187,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 673.2433,
-                  "Y": 124.40674,
-                  "Z": 416.28137
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 150
-              }
-            }
-          }
-        },
-        {
           "DataId": 2014275,
           "Position": {
             "X": 673.2433,
             "Y": 124.40674,
             "Z": 416.28137
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -98,10 +61,8 @@
             "Y": 124.833984,
             "Z": 405.7527
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -111,10 +72,8 @@
             "Y": 120.80554,
             "Z": 352.34607
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1187,
           "InteractionType": "Interact",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         }
       ]
@@ -129,11 +88,8 @@
             "Y": 122.30835,
             "Z": 387.41125
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -148,22 +104,7 @@
             "Z": 711.57385
           },
           "TerritoryId": 1187,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 508.35413,
-                  "Y": 111.134995,
-                  "Z": 711.57385
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 150
-              }
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -177,24 +118,8 @@
             "Y": 118.935005,
             "Z": 606.13403
           },
-          "StopDistance": 5,
           "TerritoryId": 1187,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Urqopacha - Worlar's Echo",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 425.07043,
-                  "Y": 118.935005,
-                  "Z": 606.13403
-                },
-                "TerritoryId": 1187,
-                "MaximumDistance": 150
-              }
-            }
-          },
           "NextQuestId": 5057
         }
       ]

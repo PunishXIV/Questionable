@@ -14,8 +14,7 @@
             "Z": -114.67157
           },
           "TerritoryId": 130,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ul'dah"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,11 +29,6 @@
           },
           "TerritoryId": 135,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] Tempest Gate (Lower La Noscea)"
-          ],
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "Lower La Noscea - Moraby Drydocks"
@@ -60,8 +54,7 @@
           },
           "TerritoryId": 135,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 250,
-          "AetheryteShortcut": "Lower La Noscea - Moraby Drydocks"
+          "TargetTerritoryId": 250
         },
         {
           "TerritoryId": 250,

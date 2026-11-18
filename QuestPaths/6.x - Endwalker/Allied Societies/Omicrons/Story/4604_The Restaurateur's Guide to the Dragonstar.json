@@ -29,7 +29,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "Mount": true,
           "TargetTerritoryId": 960,
           "DialogueChoices": [
             {
@@ -47,8 +46,7 @@
             "Z": 246.72314
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -63,9 +61,7 @@
             "Z": 212.78699
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Ultima Thule - Reah Tahra"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -80,9 +76,7 @@
             "Z": 53.72693
           },
           "TerritoryId": 398,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "The Dravanian Forelands - Anyx Trine"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -124,9 +118,7 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 960,
-          "Mount": true,
-          "AetheryteShortcut": "Ultima Thule - Base Omicron"
+          "TargetTerritoryId": 960
         },
         {
           "DataId": 1043865,
@@ -137,7 +129,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "Fly": true,
           "TargetTerritoryId": 960
         },
         {
@@ -148,8 +139,7 @@
             "Z": 246.87573
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -165,7 +155,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "Fly": true,
           "TargetTerritoryId": 960,
           "DialogueChoices": [
             {

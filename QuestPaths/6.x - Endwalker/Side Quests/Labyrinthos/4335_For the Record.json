@@ -10,18 +10,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": -681.62787,
-            "Y": -27.599773,
-            "Z": 302.4099
-          },
-          "TerritoryId": 956,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Labyrinthos - Aporia",
-          "Fly": true,
-          "Land": true
-        },
-        {
           "DataId": 1037591,
           "Position": {
             "X": -664.846,
@@ -29,8 +17,7 @@
             "Z": 306.236
           },
           "TerritoryId": 956,
-          "InteractionType": "AcceptQuest",
-          "Mount": false
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -101,8 +88,7 @@
             "Z": 306.236
           },
           "TerritoryId": 956,
-          "InteractionType": "CompleteQuest",
-          "Mount": false
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

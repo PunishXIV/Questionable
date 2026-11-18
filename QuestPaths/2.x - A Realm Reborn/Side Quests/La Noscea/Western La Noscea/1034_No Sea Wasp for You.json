@@ -14,10 +14,7 @@
             "Z": 66.72766
           },
           "TerritoryId": 138,
-          "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,7 +30,6 @@
           },
           "TerritoryId": 138,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
           "PickUpQuestId": 1033,
           "SkipConditions": {
             "StepIf": {
@@ -55,7 +51,6 @@
           "TerritoryId": 138,
           "Comment": "7 mobs spawn at once, have to wait for respawn",
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "OverworldEnemies",
           "KillEnemyDataIds": [
             312
@@ -74,10 +69,7 @@
             "Z": 66.72766
           },
           "TerritoryId": 138,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Western La Noscea - Aleport"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

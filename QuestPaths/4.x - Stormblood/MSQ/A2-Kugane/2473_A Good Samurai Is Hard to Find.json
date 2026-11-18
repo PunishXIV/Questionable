@@ -15,11 +15,7 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 639,
-          "AethernetShortcut": [
-            "[Kugane] Aetheryte Plaza",
-            "[Kugane] The Ruby Bazaar"
-          ]
+          "TargetTerritoryId": 639
         },
         {
           "DataId": 1020465,
@@ -28,7 +24,6 @@
             "Y": 0,
             "Z": -0.96136475
           },
-          "StopDistance": 7,
           "TerritoryId": 639,
           "InteractionType": "AcceptQuest"
         }
@@ -70,11 +65,7 @@
         {
           "TerritoryId": 628,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Kugane] Rakuza District",
-          "AethernetShortcut": [
-            "[Kugane] The Ruby Bazaar",
-            "[Kugane] Aetheryte Plaza"
-          ]
+          "AethernetShard": "[Kugane] Rakuza District"
         },
         {
           "TerritoryId": 628,
@@ -104,11 +95,7 @@
             "Z": -50.247986
           },
           "TerritoryId": 628,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Bokairo Inn",
-            "[Kugane] Shiokaze Hostelry"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -124,10 +111,6 @@
           },
           "TerritoryId": 628,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Kugane] Shiokaze Hostelry",
-            "[Kugane] Kogane Dori Markets"
-          ],
           "$": "? ? ? ? ? ? -> 16 16 16 0 0 32",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
@@ -165,7 +148,6 @@
             "Y": 4.510561,
             "Z": 117.53347
           },
-          "StopDistance": 0.25,
           "TerritoryId": 628,
           "InteractionType": "Jump",
           "JumpDestination": {
@@ -176,15 +158,6 @@
             },
             "StopDistance": 0.5
           }
-        },
-        {
-          "Position": {
-            "X": -125.70999,
-            "Y": 8.414458,
-            "Z": 123.2643
-          },
-          "TerritoryId": 628,
-          "InteractionType": "WalkTo"
         },
         {
           "Position": {
@@ -213,11 +186,7 @@
             "Z": -68.3147
           },
           "TerritoryId": 628,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Kugane] Thavnairian Consulate",
-            "[Kugane] Shiokaze Hostelry"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

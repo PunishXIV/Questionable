@@ -14,9 +14,7 @@
             "Z": -7.3396606
           },
           "TerritoryId": 153,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "South Shroud - Quarrymill",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,11 +29,7 @@
             "Z": 73.136475
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -98,8 +92,6 @@
           },
           "TerritoryId": 152,
           "InteractionType": "Combat",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true,
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [4684]
         }
@@ -130,7 +122,6 @@
             "Y": 6.386869,
             "Z": 414.9386
           },
-          "StopDistance": 7,
           "TerritoryId": 152,
           "InteractionType": "Interact"
         }
@@ -147,11 +138,7 @@
             "Z": 74.75391
           },
           "TerritoryId": 132,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Archers' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -165,10 +152,8 @@
             "Y": 8.059147,
             "Z": 31.72351
           },
-          "StopDistance": 7,
           "TerritoryId": 418,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Ishgard",
           "NextQuestId": 1714
         }
       ]

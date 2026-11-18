@@ -14,8 +14,7 @@
             "Z": 5.416931
           },
           "TerritoryId": 129,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Limsa Lominsa"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +29,7 @@
             "Z": 140.91699
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "North Shroud - Fallgourd Float",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,15 +42,13 @@
             "Y": -5.423937,
             "Z": 266.34305
           },
-          "StopDistance": 0.5,
           "TerritoryId": 154,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             3556,
             3557
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -90,8 +85,7 @@
             "Z": 233.56982
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -106,8 +100,7 @@
             "Z": 275.89832
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -122,8 +115,7 @@
             "Z": 140.91699
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -154,7 +146,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -177,8 +168,7 @@
             "Z": 140.91699
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -193,24 +183,13 @@
             "Z": 22.934265
           },
           "TerritoryId": 154,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 10,
       "Steps": [
-        {
-          "Position": {
-            "X": 63.714115,
-            "Y": -13.671487,
-            "Z": 143.30328
-          },
-          "TerritoryId": 154,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1010509,
           "Position": {
@@ -250,7 +229,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "WalkTo",
-          "Mount": true,
           "SkipConditions": {
             "StepIf": {
               "NotNearPosition": {
@@ -274,7 +252,6 @@
           },
           "TerritoryId": 154,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 243
         }
       ]

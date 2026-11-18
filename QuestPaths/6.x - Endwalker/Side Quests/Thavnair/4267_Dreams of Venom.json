@@ -17,8 +17,7 @@
             "Z": -223.405
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -33,9 +32,7 @@
             "Z": -405.41
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -51,8 +48,7 @@
           },
           "TerritoryId": 957,
           "InteractionType": "UseItem",
-          "ItemId": 2003222,
-          "Fly": true
+          "ItemId": 2003222
         },
         {
           "DataId": 2012772,
@@ -80,9 +76,7 @@
               "RewardItemId": 2003224,
               "RewardItemCount": 1
             }
-          ],
-          "Fly": true,
-          "Land": true
+          ]
         },
         {
           "DataId": 2012773,
@@ -108,8 +102,7 @@
             "Z": -405.41
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -124,8 +117,7 @@
             "Z": -223.405
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

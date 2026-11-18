@@ -14,8 +14,7 @@
             "Z": -676.3562
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,9 +29,7 @@
             "Z": 623.07153
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Ala Mhigan Quarter",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,8 +44,7 @@
             "Z": -543.05334
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,7 +60,6 @@
           },
           "TerritoryId": 621,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Prompt": "TEXT_LUCKBC015_03224_Q1_000_100",
@@ -88,8 +83,7 @@
           "TerritoryId": 621,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
-          "KillEnemyDataIds": [10834, 10835],
-          "Fly": true
+          "KillEnemyDataIds": [10834, 10835]
         }
       ]
     },
@@ -104,8 +98,7 @@
             "Z": -543.05334
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -120,9 +113,7 @@
             "Z": -699.5804
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Lochs - Porta Praetoria",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -137,8 +128,7 @@
             "Z": -787.9301
           },
           "TerritoryId": 621,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -168,8 +158,7 @@
             "Z": -676.3562
           },
           "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

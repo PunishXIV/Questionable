@@ -15,8 +15,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "AcceptQuest",
-          "Fly": true,
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
           "$": "auto: issuer 1058957 (Hardiboiled)"
         }
       ]
@@ -36,8 +34,6 @@
           "SinglePlayerDutyOptions": {
             "Enabled": false
           },
-          "Fly": true,
-          "AetheryteShortcut": "Heritage Found - Yyasulani Station",
           "$": "auto: todo location -> 2015340 (destination)"
         }
       ]
@@ -73,7 +69,6 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Solution Nine",
           "$": "auto: todo turn-in -> 1058961 (Noirshu)"
         }
       ]

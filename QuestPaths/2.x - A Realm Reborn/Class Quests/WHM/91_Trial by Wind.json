@@ -15,18 +15,7 @@
             "Z": -27.267883
           },
           "TerritoryId": 133,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
-          "InteractionType": "AcceptQuest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                133
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -43,10 +32,6 @@
           "TerritoryId": 133,
           "InteractionType": "Interact",
           "TargetTerritoryId": 152,
-          "AethernetShortcut": [
-            "[Gridania] Conjurers' Guild",
-            "[Gridania] Lancers' Guild"
-          ],
           "SkipConditions": {
             "StepIf": {
               "AetheryteUnlocked": "East Shroud - Hawthorne Hut"
@@ -61,13 +46,7 @@
             "Z": 209.46057
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "AetheryteLocked": "East Shroud - Hawthorne Hut"
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -151,10 +130,6 @@
           },
           "TerritoryId": 133,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Conjurers' Guild"
-          ],
           "NextQuestId": 92
         }
       ]

@@ -13,23 +13,7 @@
             "Z": -476.67664
           },
           "TerritoryId": 1191,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "Fly": true,
-          "Land": true,
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 421.8661,
-                  "Y": 90,
-                  "Z": -476.67664
-                },
-                "TerritoryId": 1191,
-                "MaximumDistance": 50
-              }
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -44,9 +28,7 @@
             "Z": -509.39197
           },
           "TerritoryId": 1191,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -62,8 +44,7 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "Emote",
-          "Emote": "cheer",
-          "Fly": true
+          "Emote": "cheer"
         }
       ]
     },
@@ -79,8 +60,7 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "Emote",
-          "Emote": "cheer",
-          "Fly": true
+          "Emote": "cheer"
         }
       ]
     },
@@ -94,11 +74,9 @@
             "Y": 71.38871,
             "Z": -473.68585
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1191,
           "InteractionType": "Emote",
-          "Emote": "psych",
-          "Fly": true
+          "Emote": "psych"
         }
       ]
     },
@@ -112,10 +90,8 @@
             "Y": 90,
             "Z": -476.67664
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1191,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

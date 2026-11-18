@@ -31,7 +31,6 @@
             "Y": 3.0954878,
             "Z": -49.851257
           },
-          "StopDistance": 5,
           "TerritoryId": 1170,
           "InteractionType": "AcceptQuest"
         }
@@ -47,7 +46,6 @@
             "Y": 3.095488,
             "Z": -48.630554
           },
-          "StopDistance": 5,
           "TerritoryId": 1170,
           "InteractionType": "Interact"
         }
@@ -65,11 +63,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] The Resplendent Quarter"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -145,10 +138,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] The Resplendent Quarter",
-            "[Tuliyollal] The For'ard Cabins"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -160,10 +149,6 @@
           },
           "TerritoryId": 1185,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] The For'ard Cabins",
-            "[Tuliyollal] Bayside Bevy Marketplace"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
         },
         {
@@ -230,7 +215,6 @@
             "Y": -14.999287,
             "Z": 270.64917
           },
-          "StopDistance": 5,
           "TerritoryId": 1185,
           "InteractionType": "Interact"
         }
@@ -247,11 +231,7 @@
             "Z": 26.504883
           },
           "TerritoryId": 1185,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Tuliyollal] The For'ard Cabins",
-            "[Tuliyollal] Wachumeqimeqi"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

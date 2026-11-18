@@ -14,8 +14,7 @@
             "Z": 113.60339
           },
           "TerritoryId": 132,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -30,15 +29,7 @@
             "Z": -75.669556
           },
           "TerritoryId": 148,
-          "InteractionType": "CompleteQuest",
-          "Fly": true,
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ],
-          "SkipConditions": {
-            "AethernetShortcutIf": { "InSameTerritory": true }
-          }
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -14,9 +14,7 @@
             "Z": 729.4575
           },
           "TerritoryId": 1189,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -24,25 +22,12 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": 213.46579,
-            "Y": -160.31227,
-            "Z": 431.11423
-          },
-          "StopDistance": 1,
-          "TerritoryId": 1189,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
-        },
-        {
           "DataId": 1048991,
           "Position": {
             "X": 211.10852,
             "Y": -160.27475,
             "Z": 432.4253
           },
-          "StopDistance": 7,
           "TerritoryId": 1189,
           "InteractionType": "Interact"
         }
@@ -74,9 +59,7 @@
             "Z": 729.4575
           },
           "TerritoryId": 1189,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

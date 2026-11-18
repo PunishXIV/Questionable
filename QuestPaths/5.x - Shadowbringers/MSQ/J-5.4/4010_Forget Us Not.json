@@ -13,7 +13,6 @@
             "Y": 0,
             "Z": -8.529846
           },
-          "StopDistance": 5,
           "TerritoryId": 351,
           "TargetTerritoryId": 351,
           "InteractionType": "AcceptQuest",
@@ -38,11 +37,7 @@
             "Z": 69.90149
           },
           "TerritoryId": 128,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Limsa Lominsa] Aetheryte Plaza",
-            "[Limsa Lominsa] The Aftcastle"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -56,7 +51,6 @@
             "Y": 39.999992,
             "Z": 116.990845
           },
-          "StopDistance": 5,
           "TerritoryId": 128,
           "InteractionType": "CompleteQuest"
         }

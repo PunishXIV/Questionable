@@ -71,7 +71,6 @@
             "Y": 46.299305,
             "Z": 122.11792
           },
-          "StopDistance": 7,
           "TerritoryId": 134,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -83,7 +82,6 @@
             "Y": 46.324783,
             "Z": 118.30322
           },
-          "StopDistance": 7,
           "TerritoryId": 134,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
@@ -138,16 +136,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 205.08835,
-            "Y": 111.9045,
-            "Z": -245.44336
-          },
-          "TerritoryId": 134,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Middle La Noscea - Summerford Farms"
-        },
         {
           "DataId": 1002626,
           "Position": {

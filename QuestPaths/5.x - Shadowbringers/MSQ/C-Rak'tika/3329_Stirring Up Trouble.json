@@ -13,7 +13,6 @@
             "Y": -18.920458,
             "Z": 336.62915
           },
-          "StopDistance": 5,
           "TerritoryId": 817,
           "InteractionType": "AcceptQuest"
         }
@@ -38,15 +37,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": -138.85619,
-            "Y": -3.036951,
-            "Z": 54.482983
-          },
-          "TerritoryId": 817,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2010066,
           "Position": {
             "X": -141.58856,
@@ -64,7 +54,6 @@
             "Y": 7.3982058,
             "Z": -13.351685
           },
-          "StopDistance": 2,
           "TerritoryId": 817,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",

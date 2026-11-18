@@ -14,8 +14,7 @@
             "Z": -736.66284
           },
           "TerritoryId": 156,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Mor Dhona"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +30,6 @@
           },
           "TerritoryId": 156,
           "InteractionType": "Interact",
-          "Mount": true,
-          "Fly": false,
           "$": "Don't fly in the building, it takes a long time for pathing"
         }
       ]
@@ -48,9 +45,7 @@
             "Z": -736.66284
           },
           "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "Mount": true,
-          "Fly": false
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

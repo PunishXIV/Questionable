@@ -33,15 +33,6 @@
           "KillEnemyDataIds": [63]
         },
         {
-          "Position": {
-            "X": -111.3334,
-            "Y": 1.7872865,
-            "Z": -60.205475
-          },
-          "TerritoryId": 153,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 2001956,
           "Position": {
             "X": -110.03284,
@@ -49,7 +40,6 @@
             "Z": -57.053528
           },
           "TerritoryId": 153,
-          "StopDistance": 5,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [63]

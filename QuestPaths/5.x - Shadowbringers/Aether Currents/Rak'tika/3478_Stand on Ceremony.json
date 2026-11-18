@@ -42,7 +42,6 @@
             "Y": -20,
             "Z": -483.02176
           },
-          "StopDistance": 0.5,
           "TerritoryId": 817,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -63,7 +62,6 @@
             "Y": -20,
             "Z": -471.00024
           },
-          "StopDistance": 7,
           "TerritoryId": 817,
           "InteractionType": "Interact"
         }
@@ -80,8 +78,7 @@
             "Z": -224.93329
           },
           "TerritoryId": 817,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Rak'tika - Fanow"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

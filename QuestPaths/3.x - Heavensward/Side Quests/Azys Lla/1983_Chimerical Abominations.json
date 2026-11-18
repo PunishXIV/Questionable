@@ -14,8 +14,7 @@
 						"Z": -603.1434
 					},
 					"TerritoryId": 402,
-					"InteractionType": "AcceptQuest",
-					"Fly": true
+					"InteractionType": "AcceptQuest"
 				}
 			]
 		},
@@ -37,7 +36,6 @@
 							"MinimumKillCount": 2
 						}
 					],
-					"Fly": true,
 					"$": "FATE spawns on top of the suggested area, so we move a bit east."
 				}
 			]
@@ -53,8 +51,7 @@
 						"Z": -603.1434
 					},
 					"TerritoryId": 402,
-					"InteractionType": "CompleteQuest",
-					"Fly": true
+					"InteractionType": "CompleteQuest"
 				}
 			]
 		}

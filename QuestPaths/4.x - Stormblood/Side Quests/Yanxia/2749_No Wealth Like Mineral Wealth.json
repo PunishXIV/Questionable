@@ -28,10 +28,8 @@
             "Y": 46.670254,
             "Z": 452.93335
           },
-          "StopDistance": 0.5,
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -46,7 +44,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "WalkTo",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -61,8 +58,7 @@
             "Z": 217.9751
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -75,10 +71,8 @@
             "Y": 39.150906,
             "Z": 206.95801
           },
-          "StopDistance": 0.5,
           "TerritoryId": 614,
           "InteractionType": "Combat",
-          "Fly": true,
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             7541
@@ -97,8 +91,7 @@
             "Z": 217.9751
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -113,8 +106,7 @@
             "Z": 486.9917
           },
           "TerritoryId": 614,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -130,7 +122,6 @@
           },
           "TerritoryId": 614,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 2750
         }
       ]

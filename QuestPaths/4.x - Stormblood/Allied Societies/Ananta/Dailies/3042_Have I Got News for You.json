@@ -14,9 +14,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -38,11 +35,8 @@
             "Y": 56.113926,
             "Z": 236.25537
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Fringes - Peering Stones",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -56,10 +50,8 @@
             "Y": 40.390625,
             "Z": 228.38171
           },
-          "StopDistance": 0.5,
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}, {"Low": 3}, {"Low": 7}, {"Low": 9}, {"Low": 10}
             ],null,null,null,null
@@ -72,10 +64,8 @@
             "Y": 51.71277,
             "Z": 285.7556
           },
-          "StopDistance": 0.5,
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 5}, {"Low": 6}, {"Low": 7}, {"Low": 8}, {"Low": 9}, {"Low": 10}
             ],null,null,null,null
@@ -88,10 +78,8 @@
             "Y": 46.066895,
             "Z": 216.99854
           },
-          "StopDistance": 0.5,
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 2}, {"Low": 4}, {"Low": 5}, {"Low": 6}, {"Low": 9}
             ],null,null,null,null
@@ -104,10 +92,8 @@
             "Y": 57.114502,
             "Z": 354.42126
           },
-          "StopDistance": 0.5,
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 1}, {"Low": 3}, {"Low": 4}, {"Low": 6}, {"Low": 7}, {"Low": 8}
             ],null,null,null,null
@@ -120,10 +106,8 @@
             "Y": 60.715576,
             "Z": 363.08838
           },
-          "StopDistance": 0.5,
           "TerritoryId": 612,
           "InteractionType": "Interact",
-          "Fly": true,
           "RequiredQuestVariables": [null,[
             {"Low": 2}, {"Low": 3}, {"Low": 4}, {"Low": 5}, {"Low": 8}, {"Low": 10}
             ],null,null,null,null
@@ -142,8 +126,7 @@
             "Z": 299.94653
           },
           "TerritoryId": 612,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -158,9 +141,6 @@
           },
           "TerritoryId": 612,
           "InteractionType": "WalkTo",
-          "Fly": true,
-          "StopDistance": 1,
-          "AetheryteShortcut": "Fringes - Peering Stones",
           "SkipConditions": {
             "StepIf": {
               "NearPosition": {
@@ -182,10 +162,8 @@
             "Y": 56.113926,
             "Z": 236.25537
           },
-          "StopDistance": 7,
           "TerritoryId": 612,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

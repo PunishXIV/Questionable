@@ -28,9 +28,7 @@
             "Z": -738.21625
           },
           "TerritoryId": 156,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -45,9 +43,7 @@
             "Z": 551.59827
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Swiftperch",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -94,9 +90,7 @@
             "Z": 551.59827
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Swiftperch",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -124,9 +118,7 @@
             "Z": 551.59827
           },
           "TerritoryId": 138,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Western La Noscea - Swiftperch",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -141,9 +133,7 @@
             "Z": -738.21625
           },
           "TerritoryId": 156,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Mor Dhona",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

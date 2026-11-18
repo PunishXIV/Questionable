@@ -28,7 +28,6 @@
             "Y": -4.5634806E-08,
             "Z": 6.7596436
           },
-          "StopDistance": 7,
           "TerritoryId": 1207,
           "InteractionType": "Interact"
         }
@@ -44,7 +43,6 @@
             "Y": -4.656613E-08,
             "Z": 7.1869507
           },
-          "StopDistance": 7,
           "TerritoryId": 1207,
           "InteractionType": "Interact"
         }
@@ -101,8 +99,7 @@
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             18915
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -134,7 +131,6 @@
             "Y": 0.37129992,
             "Z": -18.570251
           },
-          "StopDistance": 7,
           "TerritoryId": 1171,
           "InteractionType": "CompleteQuest"
         }

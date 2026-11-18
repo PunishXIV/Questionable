@@ -14,11 +14,7 @@
             "Z": 113.725464
           },
           "TerritoryId": 131,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Aetheryte Plaza",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -34,10 +30,6 @@
           },
           "TerritoryId": 130,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Weavers' Guild",
-            "[Ul'dah] Thaumaturges' Guild"
-          ],
           "DialogueChoices": [
             {
               "Prompt": "TEXT_LUCKBC007_03216_Q1_000_300",
@@ -93,7 +85,6 @@
             "Y": 39.99999,
             "Z": 106.98096
           },
-          "StopDistance": 4,
           "TerritoryId": 131,
           "InteractionType": "Interact"
         }
@@ -110,11 +101,7 @@
             "Z": 80.88806
           },
           "TerritoryId": 130,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ul'dah] Alchemists' Guild",
-            "[Ul'dah] Thaumaturges' Guild"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -144,11 +131,7 @@
             "Z": 113.725464
           },
           "TerritoryId": 131,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ul'dah] Thaumaturges' Guild",
-            "[Ul'dah] Weavers' Guild"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

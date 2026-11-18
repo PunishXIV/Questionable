@@ -14,8 +14,7 @@
             "Z": -3.1281738
           },
           "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -71,11 +70,9 @@
             "Y": 50.00002,
             "Z": -1.9990234
           },
-          "StopDistance": 7,
           "TerritoryId": 621,
           "InteractionType": "SinglePlayerDuty",
-          "SinglePlayerDutyOptions": {"Enabled": true},
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
+          "SinglePlayerDutyOptions": {"Enabled": true}
         }
       ]
     },
@@ -89,7 +86,6 @@
             "Y": 45.410225,
             "Z": 766.47595
           },
-          "StopDistance": 5,
           "TerritoryId": 621,
           "InteractionType": "CompleteQuest"
         }

@@ -47,9 +47,7 @@
             "Z": 609.21643
           },
           "TerritoryId": 1189,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Yak T'el - Mamook",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -64,12 +62,7 @@
             "Z": -57.846985
           },
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Tuliyollal",
-          "AethernetShortcut": [
-            "[Tuliyollal] Aetheryte Plaza",
-            "[Tuliyollal] Dirigible Landing"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -83,7 +76,6 @@
             "Y": 3,
             "Z": -55.10034
           },
-          "StopDistance": 5,
           "TerritoryId": 1185,
           "InteractionType": "Interact"
         }
@@ -99,13 +91,8 @@
             "Y": -14,
             "Z": 50.456287
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Dirigible Landing",
-            "[Tuliyollal] Aetheryte Plaza"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -119,7 +106,6 @@
             "Y": -14,
             "Z": 27.115234
           },
-          "StopDistance": 5,
           "TerritoryId": 1185,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 5236

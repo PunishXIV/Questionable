@@ -28,25 +28,13 @@
             "Z": -162.24927
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Kholusia - Stilltide",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 2,
       "Steps": [
-        {
-          "Position": {
-            "X": 547.1434,
-            "Y": 295.63748,
-            "Z": -219.3426
-          },
-          "TerritoryId": 814,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 2010833,
           "Position": {
@@ -70,8 +58,7 @@
             "Z": -162.24927
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -86,8 +73,7 @@
             "Z": -199.51172
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -102,8 +88,7 @@
             "Z": -84.97754
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -134,8 +119,7 @@
             "Z": -17.349548
           },
           "TerritoryId": 814,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -148,7 +132,6 @@
             "Y": 315.57245,
             "Z": -22.744217
           },
-          "StopDistance": 0.5,
           "TerritoryId": 814,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -162,16 +145,6 @@
     {
       "Sequence": 9,
       "Steps": [
-        {
-          "Position": {
-            "X": 237.7035,
-            "Y": 308.6692,
-            "Z": -119.51825
-          },
-          "TerritoryId": 814,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1031828,
           "Position": {
@@ -211,7 +184,6 @@
           },
           "TerritoryId": 814,
           "InteractionType": "CompleteQuest",
-          "Fly": true,
           "NextQuestId": 3718
         }
       ]

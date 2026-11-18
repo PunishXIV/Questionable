@@ -10,43 +10,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
-        },
-        {
-          "TerritoryId": 886,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The Mattock"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 39.627686,
-                  "Y": -20.000002,
-                  "Z": 48.996704
-                },
-                "TerritoryId": 886,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
           "DataId": 1032788,
           "Position": {
             "X": 39.627686,
@@ -61,22 +24,6 @@
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Saint Reymanaud's Cathedral"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                419
-              ]
-            }
-          }
-        },
         {
           "$": "3838 → 1 - QW: 0 0    0 0    0 0",
           "DataId": 1032791,
@@ -94,64 +41,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "TerritoryId": 419,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ishgard] Saint Reymanaud's Cathedral",
-            "[Ishgard] Aetheryte Plaza"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NotNearPosition": {
-                "Position": {
-                  "X": -64.4389,
-                  "Y": 10.0549,
-                  "Z": -112.90161
-                },
-                "TerritoryId": 419,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                886
-              ]
-            }
-          }
-        },
-        {
-          "TerritoryId": 886,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The Mattock"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 39.627686,
-                  "Y": -20.000002,
-                  "Z": 48.996704
-                },
-                "TerritoryId": 886,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
-        {
           "DataId": 1032788,
           "Position": {
             "X": 39.627686,
@@ -166,43 +55,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "TerritoryId": 418,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                418,
-                886
-              ]
-            }
-          }
-        },
-        {
-          "TerritoryId": 886,
-          "InteractionType": "None",
-          "AethernetShortcut": [
-            "[Firmament] The Mendicant's Court",
-            "[Firmament] The Mattock"
-          ],
-          "SkipConditions": {
-            "StepIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 39.627686,
-                  "Y": -20.000002,
-                  "Z": 48.996704
-                },
-                "TerritoryId": 886,
-                "MaximumDistance": 20
-              }
-            }
-          }
-        },
         {
           "$": "3838 → 255 - QW: 0 0    0 0    0 0",
           "DataId": 1032793,

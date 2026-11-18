@@ -14,22 +14,7 @@
           },
           "TerritoryId": 1186,
           "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Solution Nine] Aetheryte Plaza",
-            "[Solution Nine] True Vue"
-          ],
           "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "NearPosition": {
-                "Position": {
-                  "X": 311.757,
-                  "Y": 70.0001,
-                  "Z": -27.256859
-                },
-                "TerritoryId": 1186,
-                "MaximumDistance": 50
-              }
-            },
             "StepIf": {
               "NearPosition": {
                 "Position": {
@@ -50,7 +35,6 @@
             "Y": 70.00009,
             "Z": -26.962769
           },
-          "StopDistance": 5,
           "TerritoryId": 1186,
           "InteractionType": "AcceptQuest"
         }
@@ -67,11 +51,7 @@
             "Z": 207.50745
           },
           "TerritoryId": 1186,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Solution Nine] True Vue",
-            "[Solution Nine] Information Center"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -169,8 +149,6 @@
           },
           "TerritoryId": 1191,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Heritage Found - The Outskirts",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",

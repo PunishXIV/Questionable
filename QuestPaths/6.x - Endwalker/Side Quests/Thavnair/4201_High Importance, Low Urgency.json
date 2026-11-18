@@ -14,8 +14,7 @@
             "Z": 125.10864
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -29,11 +28,9 @@
             "Y": 1.6023201,
             "Z": 50.766724
           },
-          "StopDistance": 1,
           "TerritoryId": 957,
           "InteractionType": "Emote",
           "Emote": "greeting",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
@@ -46,7 +43,6 @@
           "TerritoryId": 957,
           "InteractionType": "Emote",
           "Emote": "greeting",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
@@ -59,7 +55,6 @@
           "TerritoryId": 957,
           "InteractionType": "Emote",
           "Emote": "greeting",
-          "Fly": true,
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }
       ]
@@ -75,8 +70,7 @@
             "Z": 125.10864
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "Fly": true
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

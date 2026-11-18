@@ -22,19 +22,6 @@
       "Sequence": 1,
       "Steps": [
         {
-          "Position": {
-            "X": -424.15686,
-            "Y": 11.01,
-            "Z": -13.636331
-          },
-          "TerritoryId": 1185,
-          "InteractionType": "WalkTo",
-          "AethernetShortcut": [
-            "[Tuliyollal] The For'ard Cabins",
-            "[Tuliyollal] Dirigible Landing"
-          ]
-        },
-        {
           "DataId": 1047509,
           "Position": {
             "X": -426.47443,
@@ -59,7 +46,6 @@
             "Y": 8.205901,
             "Z": -655.848
           },
-          "StopDistance": 7,
           "TerritoryId": 1189,
           "InteractionType": "Interact"
         }
@@ -101,7 +87,6 @@
             "Y": 16.964071,
             "Z": -428.4276
           },
-          "StopDistance": 1,
           "TerritoryId": 1189,
           "InteractionType": "CompleteQuest"
         }

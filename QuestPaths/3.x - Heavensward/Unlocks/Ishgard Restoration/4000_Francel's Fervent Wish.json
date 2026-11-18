@@ -13,21 +13,8 @@
             "Y": 1.8347055E-07,
             "Z": -158.92273
           },
-          "StopDistance": 5,
           "TerritoryId": 886,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ishgard",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] Firmament"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [
-                886
-              ]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -73,10 +60,6 @@
           },
           "TerritoryId": 886,
           "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Firmament] The Mattock",
-            "[Firmament] Saint Roelle's Dais"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

@@ -13,7 +13,6 @@
             "Y": 128.6778,
             "Z": 566.8573
           },
-          "StopDistance": 5,
           "TerritoryId": 959,
           "InteractionType": "AcceptQuest"
         }
@@ -46,8 +45,7 @@
           },
           "TerritoryId": 959,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 1024,
-          "Fly": true
+          "TargetTerritoryId": 1024
         },
         {
           "DataId": 1038960,
@@ -72,8 +70,7 @@
             "Z": 407.79736
           },
           "TerritoryId": 958,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -88,12 +85,7 @@
             "Z": 9.262146
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Old Sharlayan",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Baldesion Annex"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -142,10 +134,6 @@
           },
           "TerritoryId": 962,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Old Sharlayan] Aetheryte Plaza",
-            "[Old Sharlayan] The Baldesion Annex"
-          ],
           "DialogueChoices": [
             {
               "Type": "YesNo",

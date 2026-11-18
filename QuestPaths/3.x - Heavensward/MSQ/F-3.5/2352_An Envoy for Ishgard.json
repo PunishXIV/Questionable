@@ -13,7 +13,6 @@
             "Y": 24.458836,
             "Z": -5.5390625
           },
-          "StopDistance": 5,
           "TerritoryId": 418,
           "InteractionType": "AcceptQuest"
         }
@@ -30,11 +29,7 @@
             "Z": -311.14673
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Forgotten Knight",
-            "[Ishgard] The Gates of Judgement (Coerthas Central Highlands)"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -49,9 +44,7 @@
             "Z": -188.95251
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -66,8 +59,7 @@
             "Z": 13.9314575
           },
           "TerritoryId": 132,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -13,7 +13,6 @@
             "Y": -14.34896,
             "Z": 51.651733
           },
-          "StopDistance": 5,
           "TerritoryId": 419,
           "InteractionType": "AcceptQuest"
         }
@@ -29,7 +28,6 @@
             "Y": -14.52896,
             "Z": 41.153564
           },
-          "StopDistance": 7,
           "TerritoryId": 419,
           "InteractionType": "Interact"
         }
@@ -48,10 +46,6 @@
           "TerritoryId": 418,
           "InteractionType": "Interact",
           "$": "0 0 0 0 0 0 -> 16 1 0 0 0 128",
-          "AethernetShortcut": [
-            "[Ishgard] Athenaeum Astrologicum",
-            "[Ishgard] The Forgotten Knight"
-          ],
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         },
         {
@@ -119,11 +113,7 @@
           },
           "TerritoryId": 419,
           "InteractionType": "Interact",
-          "TargetTerritoryId": 433,
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] The Last Vigil"
-          ]
+          "TargetTerritoryId": 433
         },
         {
           "DataId": 1012397,
@@ -132,7 +122,6 @@
             "Y": -9.313226E-10,
             "Z": 5.661072
           },
-          "StopDistance": 7,
           "TerritoryId": 433,
           "InteractionType": "Interact"
         }
@@ -160,11 +149,7 @@
             "Z": 51.651733
           },
           "TerritoryId": 419,
-          "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] The Last Vigil",
-            "[Ishgard] Athenaeum Astrologicum"
-          ]
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

@@ -13,10 +13,8 @@
             "Y": 210.99998,
             "Z": -39.658203
           },
-          "StopDistance": 7,
           "TerritoryId": 478,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Idyllshire"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,11 +29,7 @@
             "Z": -165.11792
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Tribunal"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -50,11 +44,7 @@
             "Z": 48.355713
           },
           "TerritoryId": 419,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Tribunal",
-            "[Ishgard] The Last Vigil"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -69,9 +59,7 @@
             "Z": -349.32483
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -90,8 +78,7 @@
           "EnemySpawnType": "AfterInteraction",
           "KillEnemyDataIds": [
             7226
-          ],
-          "Fly": true
+          ]
         }
       ]
     },
@@ -106,8 +93,7 @@
             "Z": -309.25464
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -122,8 +108,7 @@
             "Z": -317.34192
           },
           "TerritoryId": 155,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -154,10 +139,6 @@
           },
           "TerritoryId": 419,
           "InteractionType": "CompleteQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Last Vigil"
-          ],
           "NextQuestId": 2587
         }
       ]

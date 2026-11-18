@@ -13,7 +13,6 @@
             "Y": 46.999996,
             "Z": -413.016
           },
-          "StopDistance": 7,
           "TerritoryId": 1185,
           "InteractionType": "AcceptQuest"
         }
@@ -29,7 +28,6 @@
             "Y": 46.999996,
             "Z": -413.016
           },
-          "StopDistance": 7,
           "TerritoryId": 1185,
           "InteractionType": "Interact"
         }
@@ -45,7 +43,6 @@
             "Y": 46.999996,
             "Z": -125.71052
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1185,
           "InteractionType": "Interact"
         }
@@ -61,7 +58,6 @@
             "Y": 39.935753,
             "Z": 16.35889
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1185,
           "InteractionType": "Interact"
         }
@@ -82,7 +78,6 @@
             "Y": 2.9999998,
             "Z": -13.00843
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1185,
           "InteractionType": "Interact"
         }
@@ -104,13 +99,8 @@
             "Y": 0.0722692,
             "Z": 129.50276
           },
-          "StopDistance": 0.25,
           "TerritoryId": 1185,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Tuliyollal] Dirigible Landing",
-            "[Tuliyollal] The Resplendent Quarter"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },

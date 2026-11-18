@@ -15,11 +15,8 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
           "TargetTerritoryId": 395,
           "SkipConditions": {
-            "AetheryteShortcutIf": { "InTerritory": [395] },
             "StepIf": { "InTerritory": [395] }
           }
         },
@@ -30,7 +27,6 @@
             "Y": 0.014982708,
             "Z": -0.07635498
           },
-          "StopDistance": 7,
           "TerritoryId": 395,
           "InteractionType": "AcceptQuest"
         }
@@ -68,17 +64,6 @@
           "SkipConditions": {"StepIf": {"InTerritory": [155]}}
         },
         {
-          "Position": {
-            "X": -133.9223,
-            "Y": 304.15378,
-            "Z": -292.65924
-          },
-          "TerritoryId": 155,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Coerthas Central Highlands - Camp Dragonhead",
-          "Fly": true
-        },
-        {
           "DataId": 1012309,
           "Position": {
             "X": -163.89722,
@@ -87,7 +72,6 @@
           },
           "TerritoryId": 155,
           "InteractionType": "Interact",
-          "Fly": true,
           "DialogueChoices": [
             {
               "Type": "YesNo",
@@ -132,11 +116,7 @@
         {
           "TerritoryId": 418,
           "InteractionType": "AttuneAethernetShard",
-          "AethernetShard": "[Ishgard] The Brume",
-          "AethernetShortcut": [
-            "[Ishgard] Skysteel Manufactory",
-            "[Ishgard] Aetheryte Plaza"
-          ]
+          "AethernetShard": "[Ishgard] The Brume"
         },
         {
           "TerritoryId": 418,

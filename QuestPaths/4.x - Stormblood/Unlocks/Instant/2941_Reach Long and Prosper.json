@@ -7,16 +7,6 @@
       "Sequence": 0,
       "Steps": [
         {
-          "Position": {
-            "X": -69.61145,
-            "Y": 0.00999999,
-            "Z": 62.405437
-          },
-          "TerritoryId": 635,
-          "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Rhalgr's Reach"
-        },
-        {
           "DataId": 1019459,
           "Position": {
             "X": -70.54254,

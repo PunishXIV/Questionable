@@ -52,7 +52,6 @@
       "Sequence": 3,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1014154,
           "Position": {
             "X": -519.1577,
@@ -98,7 +97,6 @@
       "Sequence": 6,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1013710,
           "Position": {
             "X": -294.6975,
@@ -113,16 +111,6 @@
     {
       "Sequence": 7,
       "Steps": [
-        {
-          "Fly": true,
-          "Position": {
-            "X": -92.57648,
-            "Y": 96.33008,
-            "Z": -645.1057
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 2006027,
           "Position": {
@@ -184,7 +172,6 @@
       "Sequence": 10,
       "Steps": [
         {
-          "Fly": true,
           "DataId": 1013710,
           "Position": {
             "X": -294.6975,

@@ -37,7 +37,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "Interact",
-          "Fly": true,
           "$": "multi option, this one is correct so we can skip the rest"
         }
       ]
@@ -54,7 +53,6 @@
           },
           "TerritoryId": 958,
           "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Garlemald - Camp Broken Glass",
           "NextQuestId": 4500
         }
       ]

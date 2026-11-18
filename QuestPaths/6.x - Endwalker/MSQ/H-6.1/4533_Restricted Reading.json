@@ -29,11 +29,7 @@
             "Z": 71.61047
           },
           "TerritoryId": 962,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Old Sharlayan] The Baldesion Annex",
-            "[Old Sharlayan] The Studium"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -77,7 +73,6 @@
             "Y": 19,
             "Z": 69.10803
           },
-          "StopDistance": 5,
           "TerritoryId": 962,
           "InteractionType": "Interact"
         }
@@ -94,8 +89,7 @@
             "Z": 29.55664
           },
           "TerritoryId": 957,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Thavnair - Great Work"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,11 +102,8 @@
             "Y": 1.2090492,
             "Z": 118.133255
           },
-          "StopDistance": 4,
           "TerritoryId": 957,
           "InteractionType": "WalkTo",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand",
-          "Fly": true,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -128,7 +119,6 @@
           },
           "TerritoryId": 957,
           "InteractionType": "Interact",
-          "Mount": false,
           "SkipConditions": {
             "StepIf": {
               "Flying": "Locked"
@@ -163,8 +153,7 @@
             "Z": 26.779541
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Great Work"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

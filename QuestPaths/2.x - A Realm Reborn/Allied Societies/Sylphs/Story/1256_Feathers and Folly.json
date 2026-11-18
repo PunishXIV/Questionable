@@ -14,9 +14,7 @@
             "Z": 247.79126
           },
           "TerritoryId": 152,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "East Shroud - Hawthorne Hut",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": 210.62024
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -47,8 +44,7 @@
             "Z": -65.56492
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -68,8 +64,7 @@
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
             27
-          ],
-          "Mount": false
+          ]
         },
         {
           "Position": {
@@ -83,8 +78,7 @@
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
             27
-          ],
-          "Mount": false
+          ]
         },
         {
           "Position": {
@@ -97,8 +91,7 @@
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
             27
-          ],
-          "Mount": false
+          ]
         },
         {
           "Position": {
@@ -111,18 +104,7 @@
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
             403
-          ],
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 315.46304,
-            "Y": -18.326637,
-            "Z": -264.94223
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          ]
         },
         {
           "Position": {
@@ -135,18 +117,7 @@
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
             403
-          ],
-          "Mount": false
-        },
-        {
-          "Position": {
-            "X": 247.6315,
-            "Y": -22.630655,
-            "Z": -373.3534
-          },
-          "TerritoryId": 152,
-          "InteractionType": "WalkTo",
-          "Mount": false
+          ]
         },
         {
           "Position": {
@@ -159,8 +130,7 @@
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
             48
-          ],
-          "Mount": false
+          ]
         },
         {
           "Position": {
@@ -173,8 +143,7 @@
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
             24
-          ],
-          "Mount": false
+          ]
         },
         {
           "DataId": 2474,
@@ -183,7 +152,6 @@
             "Y": -34.019325,
             "Z": -529.8713
           },
-          "StopDistance": 1,
           "TerritoryId": 152,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
@@ -196,8 +164,7 @@
             "Z": -531.5176
           },
           "TerritoryId": 152,
-          "InteractionType": "Interact",
-          "Mount": false
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -353,8 +320,7 @@
             "Z": -5.081299
           },
           "TerritoryId": 132,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Gridania"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

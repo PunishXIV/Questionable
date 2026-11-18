@@ -39,19 +39,9 @@
             "Y": -6.7597656,
             "Z": 223.83447
           },
-          "StopDistance": 5,
           "TerritoryId": 400,
           "InteractionType": "AttuneAetherCurrent",
           "AetherCurrentId": 2818100
-        },
-        {
-          "Position": {
-            "X": -263.82666,
-            "Y": 24.845102,
-            "Z": 446.3256
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo"
         },
         {
           "DataId": 1012759,
@@ -101,15 +91,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -250.59578,
-            "Y": 19.834919,
-            "Z": 438.27606
-          },
-          "TerritoryId": 400,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1012757,
           "Position": {

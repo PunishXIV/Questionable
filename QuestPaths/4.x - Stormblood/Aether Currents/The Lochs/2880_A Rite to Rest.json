@@ -14,32 +14,13 @@
             "Z": -19.424805
           },
           "TerritoryId": 621,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -64.335396,
-            "Y": -0.3,
-            "Z": -341.21475
-          },
-          "TerritoryId": 621,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": 2.4417508,
-            "Y": 0.14104319,
-            "Z": -387.06744
-          },
-          "TerritoryId": 621,
-          "InteractionType": "WalkTo"
-        },
         {
           "Position": {
             "X": -89.3111,
@@ -69,8 +50,7 @@
             "Z": -19.424805
           },
           "TerritoryId": 621,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Lochs - Porta Praetoria"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

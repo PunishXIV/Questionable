@@ -17,8 +17,7 @@
             "Z": -277.996
           },
           "TerritoryId": 957,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -36,8 +35,7 @@
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
             14110
-          ],
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          ]
         }
       ]
     },
@@ -107,8 +105,7 @@
             "Z": -277.996
           },
           "TerritoryId": 957,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Thavnair - Palaka's Stand"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }

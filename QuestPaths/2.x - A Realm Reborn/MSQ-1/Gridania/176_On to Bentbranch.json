@@ -13,7 +13,6 @@
             "Y": -8.000001,
             "Z": 115.7687
           },
-          "StopDistance": 1,
           "TerritoryId": 132,
           "InteractionType": "AcceptQuest"
         }
@@ -25,11 +24,7 @@
         {
           "TerritoryId": 148,
           "InteractionType": "AttuneAetheryte",
-          "Aetheryte": "Central Shroud - Bentbranch Meadows",
-          "AethernetShortcut": [
-            "[Gridania] Aetheryte Plaza",
-            "[Gridania] Blue Badger Gate (Central Shroud)"
-          ]
+          "Aetheryte": "Central Shroud - Bentbranch Meadows"
         },
         {
           "TerritoryId": 148,

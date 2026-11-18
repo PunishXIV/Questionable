@@ -14,9 +14,7 @@
             "Z": 242.78625
           },
           "TerritoryId": 960,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
-          "Fly": true
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,8 +29,7 @@
             "Z": 315.69385
           },
           "TerritoryId": 960,
-          "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Base Omicron"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -149,7 +146,6 @@
           },
           "TerritoryId": 960,
           "InteractionType": "Interact",
-          "AetheryteShortcut": "Ultima Thule - Base Omicron",
           "DialogueChoices": [
             {
               "Type": "YesNo",

@@ -15,38 +15,13 @@
             "Z": 64.7135
           },
           "TerritoryId": 418,
-          "InteractionType": "AcceptQuest",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418]
-            }
-          }
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
     {
       "Sequence": 1,
       "Steps": [
-        {
-          "Position": {
-            "X": -288.62503,
-            "Y": 125.43845,
-            "Z": -17.291916
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [397]
-            }
-          }
-        },
         {
           "DataId": 1013596,
           "Position": {
@@ -70,17 +45,7 @@
             "Z": 64.7135
           },
           "TerritoryId": 418,
-          "AetheryteShortcut": "Ishgard",
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -108,17 +73,7 @@
             "Z": 64.7135
           },
           "TerritoryId": 418,
-          "AetheryteShortcut": "Ishgard",
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] Aetheryte Plaza",
-            "[Ishgard] The Brume"
-          ],
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [418]
-            }
-          }
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -133,11 +88,7 @@
             "Z": 34.86682
           },
           "TerritoryId": 418,
-          "InteractionType": "Interact",
-          "AethernetShortcut": [
-            "[Ishgard] The Brume",
-            "[Ishgard] Skysteel Manufactory"
-          ]
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -151,14 +102,7 @@
             "Z": -347.98065
           },
           "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "AetheryteShortcut": "Coerthas Western Highlands - Falcon's Nest",
-          "SkipConditions": {
-            "AetheryteShortcutIf": {
-              "InTerritory": [397]
-            }
-          }
+          "InteractionType": "WalkTo"
         }
       ]
     },
@@ -180,16 +124,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": 541.1628,
-            "Y": 177.20065,
-            "Z": -551.317
-          },
-          "TerritoryId": 397,
-          "InteractionType": "WalkTo",
-          "Fly": true
-        },
         {
           "DataId": 1013686,
           "Position": {

@@ -41,7 +41,6 @@
           },
           "TerritoryId": 813,
           "InteractionType": "Interact",
-          "Mount": true,
           "DialogueChoices": [
             {
               "Type": "List",
@@ -56,25 +55,6 @@
       "Sequence": 2,
       "Steps": [
         {
-          "Position": {
-            "X": -159.60991,
-            "Y": 28.47209,
-            "Z": -130.60031
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "Mount": true
-        },
-        {
-          "Position": {
-            "X": -159.76884,
-            "Y": 32.30582,
-            "Z": -122.91172
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo"
-        },
-        {
           "DataId": 1028317,
           "Position": {
             "X": -157.64093,
@@ -84,16 +64,6 @@
           "TerritoryId": 813,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
-        },
-        {
-          "Position": {
-            "X": -156.64954,
-            "Y": 5.779213,
-            "Z": -158.39209
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo",
-          "Mount": true
         },
         {
           "DataId": 1027368,
@@ -122,24 +92,6 @@
     {
       "Sequence": 255,
       "Steps": [
-        {
-          "Position": {
-            "X": -137.97934,
-            "Y": 14.623874,
-            "Z": -136.3065
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo"
-        },
-        {
-          "Position": {
-            "X": -137.54897,
-            "Y": 14.623859,
-            "Z": -121.3416
-          },
-          "TerritoryId": 813,
-          "InteractionType": "WalkTo"
-        },
         {
           "DataId": 1027353,
           "Position": {

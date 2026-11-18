@@ -14,9 +14,7 @@
             "Z": 98.54055
           },
           "TerritoryId": 622,
-          "StopDistance": 1,
-          "InteractionType": "AcceptQuest",
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
+          "InteractionType": "AcceptQuest"
         }
       ]
     },
@@ -31,9 +29,7 @@
             "Z": 225.57397
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true,
-          "AetheryteShortcut": "Azim Steppe - Reunion"
+          "InteractionType": "Interact"
         }
       ]
     },
@@ -96,25 +92,13 @@
             "Z": 225.57397
           },
           "TerritoryId": 622,
-          "InteractionType": "Interact",
-          "Fly": true
+          "InteractionType": "Interact"
         }
       ]
     },
     {
       "Sequence": 3,
       "Steps": [
-        {
-          "Position": {
-            "X": 546.2235,
-            "Y": -19.50565,
-            "Z": 391.4511
-          },
-          "TerritoryId": 622,
-          "InteractionType": "WalkTo",
-          "Fly": true,
-          "Land": true
-        },
         {
           "DataId": 1019353,
           "Position": {
@@ -138,9 +122,7 @@
             "Z": 98.54055
           },
           "TerritoryId": 622,
-          "StopDistance": 1,
-          "InteractionType": "CompleteQuest",
-          "AetheryteShortcut": "Azim Steppe - Dhoro Iloh"
+          "InteractionType": "CompleteQuest"
         }
       ]
     }
