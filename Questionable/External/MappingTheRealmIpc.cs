@@ -15,6 +15,7 @@ internal sealed class MappingTheRealmIpc : Ipc, IDisposable
     [EzIPC("PathToInteractable")] private readonly Func<uint, Vector3, uint, Task> _pathToInteractable = null!;
     [EzIPC("PathToInteractableById")] private readonly Func<uint, uint, Task> _pathToInteractableById = null!;
     [EzIPC("PathToInteractableWithRange")] private readonly Func<uint, Vector3, uint, float, Task> _pathToInteractableWithRange = null!;
+    [EzIPC("PathToInteractableByIdWithRange")] private readonly Func<uint, uint, float, Task> _pathToInteractableByIdWithRange = null!;
     [EzIPC("CanReach")] private readonly Func<uint, Vector3, CancellationToken, Task<bool>> _canReach = null!;
     [EzIPC("Stop")] private readonly Action _stop = null!;
 
@@ -34,13 +35,15 @@ internal sealed class MappingTheRealmIpc : Ipc, IDisposable
     // A range above 0 is yalms to the loaded object; 0 is the game's interaction range.
     public Task Travel(uint territoryId, Vector3? position, uint? dataId, float range = 0)
     {
+        Task route;
         try
         {
-            return (position, dataId) switch
+            route = (position, dataId) switch
             {
                 ({ } at, { } id) when range > 0 => _pathToInteractableWithRange(territoryId, at, id, range),
                 ({ } at, { } id) => _pathToInteractable(territoryId, at, id),
                 ({ } at, _) => _pathTo(territoryId, at),
+                (_, { } id) when range > 0 => _pathToInteractableByIdWithRange(territoryId, id, range),
                 (_, { } id) => _pathToInteractableById(territoryId, id),
                 _ => _pathToTerritory(territoryId),
             };
@@ -49,6 +52,11 @@ internal sealed class MappingTheRealmIpc : Ipc, IDisposable
         {
             return Task.FromException(e);
         }
+
+        // A route that's replaced before it fails would otherwise log "Unobserved exception in Task".
+        route.ContinueWith(static t => _ = t.Exception, CancellationToken.None, TaskContinuationOptions.OnlyOnFaulted,
+            TaskScheduler.Default);
+        return route;
     }
 
     public Task<bool> CanReach(uint territoryId, Vector3 position, CancellationToken token) =>

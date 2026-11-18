@@ -61,8 +61,7 @@ internal static class MoveTo
             }
 
             yield return Travel.CanTravel(step, clientState.TerritoryType, territoryData)
-                ? new Travel.Task(step.TerritoryId, destination, Travel.InteractTarget(step), Travel.GoesById(step),
-                    Travel.StopRange(step))
+                ? new Travel.Task(step.TerritoryId, destination, Travel.InteractTarget(step), Travel.StopRange(step))
                 : new MoveTask(step, destination);
         }
     }

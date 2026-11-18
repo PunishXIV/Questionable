@@ -18,15 +18,10 @@ internal static class Travel
         _ => step.DataId,
     };
 
-    // MappingTheRealm's PathToInteractable doesn't route across zones to aetherytes and shards.
-    internal static bool GoesById(QuestStep step) =>
-        step.InteractionType is EInteractionType.AttuneAetheryte or EInteractionType.RegisterFreeOrFavoredAetheryte
-            or EInteractionType.AttuneAethernetShard;
-
     // Skills need attack range; MappingTheRealm otherwise stops at interaction range (rock 2001481).
     internal static float StopRange(QuestStep step) => step.InteractionType == EInteractionType.Action ? 3f : 0;
 
-    internal sealed record Task(uint TerritoryId, Vector3? Position, uint? DataId, bool ById = false, float Range = 0) : ITask
+    internal sealed record Task(uint TerritoryId, Vector3? Position, uint? DataId, float Range = 0) : ITask
     {
         public override string ToString() => $"Travel({TerritoryData.GetNameAndId(TerritoryId)})";
     }
@@ -36,14 +31,16 @@ internal static class Travel
     {
         private Route? _route;
         private bool _started;
-        private bool _arrived;
+        private uint _zone;
+        private bool _byPosition;
 
         protected override bool Start()
         {
             _route = null;
             _started = false;
-            _arrived = clientState.TerritoryType == Task.TerritoryId;
-            if (Task.Position == null && _arrived)
+            _byPosition = false;
+            _zone = clientState.TerritoryType;
+            if (Task.Position == null && _zone == Task.TerritoryId)
                 return false;
 
             if (!mappingTheRealm.IsReady())
@@ -55,17 +52,19 @@ internal static class Travel
             return true;
         }
 
+        private bool UseId => Task.DataId != null && !_byPosition;
+
         private void Go() =>
-            _route = mappingTheRealm.Travel(Task.TerritoryId, Task.ById && Task.DataId != null ? null : Task.Position, Task.DataId, Task.Range);
+            _route = mappingTheRealm.Travel(Task.TerritoryId, UseId ? null : Task.Position, Task.DataId, Task.Range);
 
         public override ETaskResult Update()
         {
-            // MappingTheRealm fails a cross-zone route once a zone gate moves the player (129 -> 128, gate 2210434).
-            if (!_arrived && clientState.TerritoryType == Task.TerritoryId)
+            // MappingTheRealm fails a route once a zone gate moves the player (129 -> 128 gate 2210434, 135 -> 134 gate 2453662).
+            if (clientState.TerritoryType != _zone)
             {
-                _arrived = true;
+                _zone = clientState.TerritoryType;
                 mappingTheRealm.Stop();
-                if (Task.Position == null && Task.DataId == null)
+                if (_zone == Task.TerritoryId && Task.Position == null && Task.DataId == null)
                     return ETaskResult.TaskComplete;
 
                 _started = false;
@@ -76,6 +75,15 @@ internal static class Travel
             if (mappingTheRealm.GetPathing() == true)
             {
                 _started = true;
+                return ETaskResult.StillRunning;
+            }
+
+            // By-id lookups fail for objects MappingTheRealm hasn't indexed, e.g. rock 2001481.
+            if (_route is { IsFaulted: true } && UseId && Task.Position != null)
+            {
+                _byPosition = true;
+                _started = false;
+                Go();
                 return ETaskResult.StillRunning;
             }
 
@@ -95,6 +103,6 @@ internal static class Travel
                 mappingTheRealm.Stop();
         }
 
-        public override bool ShouldInterruptOnDamage() => true;
+        public override bool ShouldInterruptOnDamage() => false;
     }
 }
