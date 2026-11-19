@@ -1,0 +1,93 @@
+{
+  "$schema": "https://qstxiv.github.io/schema/quest-v1.json",
+  "Author": "Kiarra",
+  "QuestSequence": [
+    {
+      "Sequence": 0,
+      "Steps": [
+        {
+          "DataId": 1046043,
+          "Position": {
+            "X": -117.614,
+            "Y": 4,
+            "Z": -67.1382
+          },
+          "TerritoryId": 130,
+          "InteractionType": "AcceptQuest",
+          "AetheryteShortcut": "Ul'dah",
+          "DialogueChoices": [
+            {
+              "Type": "YesNo",
+              "Prompt": "TEXT_FESSXT101_04796_Q3_100_001",
+              "Yes": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Sequence": 1,
+      "Steps": [
+        {
+          "DataId": 1046044,
+          "Position": {
+            "X": 346.337,
+            "Y": -6.97824,
+            "Z": 151.914
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "Fly": true,
+          "AetheryteShortcut": "Eastern Thanalan - Camp Drybone"
+        }
+      ]
+    },
+    {
+      "Sequence": 2,
+      "Steps": [
+        {
+          "DataId": 2013582,
+          "Position": {
+            "X": 347.245,
+            "Y": -6.66511,
+            "Z": 155.074
+          },
+          "TerritoryId": 145,
+          "InteractionType": "Interact",
+          "Mount": false
+        }
+      ]
+    },
+    {
+      "Sequence": 3,
+      "Steps": [
+        {
+          "DataId": 2013507,
+          "Position": {
+            "X": -85.62081,
+            "Y": 41,
+            "Z": 66.82838
+          },
+          "TerritoryId": 131,
+          "StopDistance": 1,
+          "InteractionType": "Interact"
+        }
+      ]
+    },
+    {
+      "Sequence": 255,
+      "Steps": [
+        {
+          "DataId": 1046046,
+          "Position": {
+            "X": -86.8969,
+            "Y": 41,
+            "Z": 66.1701
+          },
+          "TerritoryId": 131,
+          "InteractionType": "CompleteQuest"
+        }
+      ]
+    }
+  ]
+}
