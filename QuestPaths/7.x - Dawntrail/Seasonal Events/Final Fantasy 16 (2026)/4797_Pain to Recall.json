@@ -35,7 +35,6 @@
           "TerritoryId": 130,
           "InteractionType": "Interact",
           "AetheryteShortcut": "Ul'dah"
-          
         }
       ]
     },
@@ -151,8 +150,8 @@
           "AethernetShortcut": [
             "[Gridania] Aetheryte Plaza",
             "[Gridania] Conjurers' Guild"
-          ]
-
+          ],
+          "NextQuestId": 4798
         }
       ]
     }
