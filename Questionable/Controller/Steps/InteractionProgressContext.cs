@@ -35,8 +35,6 @@ internal sealed class InteractionProgressContext
         return (true, Create(checkSequence: true));
     }
 
-    public static InteractionProgressContext? FromActionUse(Func<bool> func) => FromActionUseInternal(func).Item2;
-
     public static InteractionProgressContext? FromActionUseOrDefault(Func<bool> func)
     {
         (bool, InteractionProgressContext?) result = FromActionUseInternal(func);

@@ -13,7 +13,6 @@ internal sealed class TerritoryData
     private readonly ImmutableDictionary<uint, string> _instanceNames;
     private readonly ImmutableDictionary<(ElementId QuestId, byte Index), uint> _questBattleCfcs;
     private readonly ImmutableHashSet<uint> _supportCfcs;
-    private readonly ImmutableHashSet<uint> _territoriesWithMount;
     private readonly ImmutableDictionary<uint, string> _territoryNames;
 
     private static TerritoryData _instance;
@@ -31,11 +30,6 @@ internal sealed class TerritoryData
                 })
             .Where(x => !string.IsNullOrEmpty(x.Name))
             .ToImmutableDictionary(x => x.RowId, x => x.Name!);
-
-        _territoriesWithMount = dataManager.GetExcelSheet<TerritoryType>()
-            .Where(x => x.RowId > 0 && x.Mount)
-            .Select(x => x.RowId)
-            .ToImmutableHashSet();
 
         _dutyTerritories = dataManager.GetExcelSheet<TerritoryType>()
             .Where(x => x.RowId > 0 && x.ContentFinderCondition.RowId != 0)
@@ -77,7 +71,6 @@ internal sealed class TerritoryData
         return territoryId.ToString(CultureInfo.InvariantCulture);
     }
 
-    public bool CanUseMount(uint territoryId) => _territoriesWithMount.Contains(territoryId);
 
     public bool IsDutyInstance(uint territoryId) => _dutyTerritories.ContainsKey(territoryId);
 

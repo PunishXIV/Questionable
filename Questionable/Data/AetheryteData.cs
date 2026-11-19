@@ -8,46 +8,21 @@ internal sealed class AetheryteData
     public AetheryteData(IDataManager dataManager)
     {
         Dictionary<EAetheryteLocation, uint> territoryIds = [];
-        Dictionary<EAetheryteLocation, ushort> aethernetGroups = [];
-
-        void Configure(EAetheryteLocation aetheryteLocation, uint territoryId,
-            ushort aethernetGroup)
-        {
-            territoryIds[aetheryteLocation] = territoryId;
-            aethernetGroups[aetheryteLocation] = aethernetGroup;
-        }
-
-        void ConfigureWithAutoGroup(EAetheryteLocation aetheryteLocation, uint territoryId) => Configure(aetheryteLocation, territoryId, (ushort)((int)aetheryteLocation / 100));
-
         foreach (Aetheryte aetheryte in dataManager.GetExcelSheet<Aetheryte>().Where(x => x.RowId > 0))
         {
-            if (!Enum.IsDefined((EAetheryteLocation)aetheryte.RowId))
-                continue;
-
-            if (aetheryte.Territory.RowId > 0)
+            if (Enum.IsDefined((EAetheryteLocation)aetheryte.RowId) && aetheryte.Territory.RowId > 0)
                 territoryIds[(EAetheryteLocation)aetheryte.RowId] = (ushort)aetheryte.Territory.RowId;
-
-            if (aetheryte.AethernetGroup > 0)
-                aethernetGroups[(EAetheryteLocation)aetheryte.RowId] = aetheryte.AethernetGroup;
         }
 
-        Configure(EAetheryteLocation.IshgardFirmament, 886, aethernetGroups[EAetheryteLocation.Ishgard]);
-        ConfigureWithAutoGroup(EAetheryteLocation.FirmamentMendicantsCourt, 886);
-        ConfigureWithAutoGroup(EAetheryteLocation.FirmamentMattock, 886);
-        ConfigureWithAutoGroup(EAetheryteLocation.FirmamentNewNest, 886);
-        ConfigureWithAutoGroup(EAetheryteLocation.FirmanentSaintRoellesDais, 886);
-        ConfigureWithAutoGroup(EAetheryteLocation.FirmamentFeatherfall, 886);
-        ConfigureWithAutoGroup(EAetheryteLocation.FirmamentHoarfrostHall, 886);
-        ConfigureWithAutoGroup(EAetheryteLocation.FirmamentWesternRisensongQuarter, 886);
-        ConfigureWithAutoGroup(EAetheryteLocation.FirmamentEasternRisensongQuarter, 886);
+        foreach (EAetheryteLocation firmament in (EAetheryteLocation[])[
+                     EAetheryteLocation.IshgardFirmament, EAetheryteLocation.FirmamentMendicantsCourt,
+                     EAetheryteLocation.FirmamentMattock, EAetheryteLocation.FirmamentNewNest,
+                     EAetheryteLocation.FirmanentSaintRoellesDais, EAetheryteLocation.FirmamentFeatherfall,
+                     EAetheryteLocation.FirmamentHoarfrostHall, EAetheryteLocation.FirmamentWesternRisensongQuarter,
+                     EAetheryteLocation.FirmamentEasternRisensongQuarter])
+            territoryIds[firmament] = 886;
 
         TerritoryIds = territoryIds.AsReadOnly();
-        AethernetGroups = aethernetGroups.AsReadOnly();
-
-        TownTerritoryIds = dataManager.GetExcelSheet<TerritoryType>()
-            .Where(x => x.RowId > 0 && !string.IsNullOrEmpty(x.Name.ToString()) && x.TerritoryIntendedUse.RowId == 0)
-            .Select(x => x.RowId)
-            .ToList();
     }
 
     public ReadOnlyDictionary<EAetheryteLocation, Vector3> Locations { get; } = OrderedLocations.AsReadOnly<EAetheryteLocation, Vector3>();
@@ -324,64 +299,5 @@ internal sealed class AetheryteData
         }
     }
 
-    private ReadOnlyDictionary<EAetheryteLocation, Vector3> AirshipLandingLocations { get; } =
-        new Dictionary<EAetheryteLocation, Vector3>
-        {
-            { EAetheryteLocation.LimsaAirship, new(-19.44352f, 91.99999f, -9.892939f) },
-            { EAetheryteLocation.GridaniaAirship, new(24.86354f, -19.000002f, 96f) },
-            { EAetheryteLocation.UldahAirship, new(-16.954851f, 82.999985f, -9.421141f) },
-            { EAetheryteLocation.KuganeAirship, new(-55.72525f, 79.10602f, 46.23109f) },
-            { EAetheryteLocation.IshgardFirmament, new(9.92315f, -15.2f, 173.5059f) }
-        }.AsReadOnly();
-
     public ReadOnlyDictionary<EAetheryteLocation, uint> TerritoryIds { get; }
-    public ReadOnlyDictionary<EAetheryteLocation, ushort> AethernetGroups { get; }
-    private IReadOnlyList<uint> TownTerritoryIds { get; }
-
-    public EAetheryteLocation? NearestTo(uint territoryId, Vector3? position)
-    {
-        var candidates = TerritoryIds
-                .Where(item => item.Value == territoryId &&
-                               !item.Key.IsAethernetShard() &&
-                               AetheryteFunctions.IsAetheryteUnlocked((uint)item.Key, out var _))
-                .Select(item => item.Key)
-                .OrderBy(key => CalculateDistance(position ?? new(), territoryId, key));
-        Svc.Log.Debug($"NearestTo: {(candidates.Any() ? string.Join(',', candidates) : "no results")}");
-        return candidates.FirstOrNull();
-    }
-
-    public float CalculateDistance(Vector3 fromPosition, uint fromTerritoryType, EAetheryteLocation to)
-    {
-        if (!TerritoryIds.TryGetValue(to, out uint toTerritoryType) || fromTerritoryType != toTerritoryType)
-            return float.MaxValue;
-
-        if (!Locations.TryGetValue(to, out Vector3 toPosition))
-            return float.MaxValue;
-
-        return (fromPosition - toPosition).Length();
-    }
-
-    public float CalculateAirshipDistance(Vector3 fromPosition, uint fromTerritoryType, EAetheryteLocation to)
-    {
-        if (!TerritoryIds.TryGetValue(to, out uint toTerritoryType) || fromTerritoryType != toTerritoryType)
-            return float.MaxValue;
-
-        if (!AirshipLandingLocations.TryGetValue(to, out Vector3 toPosition))
-            return float.MaxValue;
-
-        return (fromPosition - toPosition).Length();
-    }
-
-    public bool IsCity(EAetheryteLocation aetheryte)
-    {
-        if (aetheryte == EAetheryteLocation.IshgardFirmament)
-            return true;
-
-        uint territoryId = TerritoryIds[aetheryte];
-        return TownTerritoryIds.Contains(territoryId);
-    }
-
-    public bool IsAirshipLanding(EAetheryteLocation aetheryte) => AirshipLandingLocations.ContainsKey(aetheryte);
-
-    public bool IsGoldSaucer(EAetheryteLocation aetheryte) => TerritoryIds[aetheryte] is 144 or 388;
 }
