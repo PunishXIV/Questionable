@@ -31,15 +31,6 @@
       "TerritoryId": 152,
       "Steps": [
         {
-          "Position": [37.875587, -1.4320529, 335.96927],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 2000963,
           "Position": [39.230957, -0.5036011, 337.3922],
           "InteractionType": "Combat",
@@ -67,16 +58,6 @@
       "TerritoryId": 153,
       "Steps": [
         {
-          "Position": [-166.19086, 8.399985, -64.10584],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          },
-          "$": "Buscarron SE steps"
-        },
-        {
           "DataId": 1000590,
           "Position": [-165.9419, 9.869227, -81.34589],
           "InteractionType": "Interact"
@@ -87,16 +68,6 @@
       "Sequence": 5,
       "TerritoryId": 153,
       "Steps": [
-        {
-          "Position": [-166.19086, 8.399985, -64.10584],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          },
-          "$": "Buscarron SE steps"
-        },
         {
           "DataId": 2000921,
           "Position": [-103.71564, 6.42395, 101.60974],
@@ -109,16 +80,6 @@
       "Sequence": 6,
       "TerritoryId": 153,
       "Steps": [
-        {
-          "Position": [-166.19086, 8.399985, -64.10584],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          },
-          "$": "Buscarron SE steps"
-        },
         {
           "DataId": 1000590,
           "Position": [-165.9419, 9.869227, -81.34589],
@@ -141,11 +102,6 @@
       "Sequence": 8,
       "TerritoryId": 154,
       "Steps": [
-        {
-          "Position": [-32.55554, -40.683945, 196.98996],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {"StepIf": {"Flying": "Locked"}}
-        },
         {
           "Position": [-39.98818, -46.837822, 403.3237],
           "InteractionType": "Combat",
@@ -179,11 +135,6 @@
       "Sequence": 10,
       "TerritoryId": 154,
       "Steps": [
-        {
-          "Position": [-32.55554, -40.683945, 196.98996],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {"StepIf": {"Flying": "Locked"}}
-        },
         {
           "DataId": 1002815,
           "Position": [-27.328918, -34.62274, 173.05249],

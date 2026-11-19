@@ -2,7 +2,6 @@ using static Questionable.External.IPCUtils;
 
 namespace Questionable.External;
 
-// Only reads vnav's state, to see when AutoDuty's own movement has settled; QST moves through MappingTheRealm.
 [RegisterSingleton]
 internal sealed class NavmeshIpc : Ipc, IDisposable
 {
@@ -12,6 +11,8 @@ internal sealed class NavmeshIpc : Ipc, IDisposable
     [EzIPC("Path.IsRunning")] private readonly Func<bool> _pathIsRunning = null!;
     [EzIPC("SimpleMove.PathfindInProgress")] private readonly Func<bool> _simpleMoveInProgress = null!;
     [EzIPC("Nav.PathfindInProgress")] private readonly Func<bool> _pathfindInProgress = null!;
+    [EzIPC("SimpleMove.PathfindAndMoveTo")] private readonly Func<Vector3, bool, bool> _pathfindAndMoveTo = null!;
+    [EzIPC("Path.Stop")] private readonly Action _pathStop = null!;
 
     public NavmeshIpc()
     {
@@ -25,6 +26,8 @@ internal sealed class NavmeshIpc : Ipc, IDisposable
     public bool? GetPathRunning() => ReadOptional(() => _pathIsRunning());
     public bool? GetSimpleMoveInProgress() => ReadOptional(() => _simpleMoveInProgress());
     public bool? GetPathfindInProgress() => ReadOptional(() => _pathfindInProgress());
+    public bool FlyTo(Vector3 destination) => IpcInvoke.SafeFunc(() => _pathfindAndMoveTo(destination, true), fallback: false);
+    public void Stop() => IpcInvoke.SafeAction(() => _pathStop());
 
     private static bool? ReadOptional(Func<bool> read)
     {

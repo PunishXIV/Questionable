@@ -49,15 +49,6 @@
           }
         },
         {
-          "Position": [-261.198, 18.43726, -104.834755],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "Position": [-431.92166, 6.5580425, -17.561014],
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {

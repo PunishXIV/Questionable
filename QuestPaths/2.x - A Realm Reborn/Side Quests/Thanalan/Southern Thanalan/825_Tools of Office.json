@@ -8,12 +8,6 @@
       "TerritoryId": 146,
       "Steps": [
         {
-          "$": "Walk to outside of building first - only needed if you have flying",
-          "Position": [-346.46524, 8.5170555, 420.88474],
-          "InteractionType": "WalkTo",
-          "SkipConditions": { "StepIf": { "Flying": "Locked" } }
-        },
-        {
           "DataId": 1006288,
           "Position": [-361.40997, 8.46532, 426.13855],
           "InteractionType": "AcceptQuest"
@@ -61,12 +55,6 @@
       "Sequence": 255,
       "TerritoryId": 146,
       "Steps": [
-        {
-          "$": "Walk to outside of building first - only needed if you have flying",
-          "Position": [-346.46524, 8.5170555, 420.88474],
-          "InteractionType": "WalkTo",
-          "SkipConditions": { "StepIf": { "Flying": "Locked" } }
-        },
         {
           "DataId": 1006288,
           "Position": [-361.40997, 8.46532, 426.13855],

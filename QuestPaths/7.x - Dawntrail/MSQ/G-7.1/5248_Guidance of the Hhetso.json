@@ -105,15 +105,6 @@
           }
         },
         {
-          "Position": [302.1455, -15.629961, -516.2348],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 1051013,
           "Position": [303.79175, -15.629962, -516.25854],
           "InteractionType": "CompleteQuest"

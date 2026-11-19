@@ -78,24 +78,6 @@
       "TerritoryId": 813,
       "Steps": [
         {
-          "Position": [-591.3982, 26.347507, 773.5695],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
-          "Position": [-610.2863, -2.1544409, 734.7734],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "Position": [-565.32196, -1.9743931, 799.9003],
           "InteractionType": "Dive",
           "SkipConditions": {

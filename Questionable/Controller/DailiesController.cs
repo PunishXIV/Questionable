@@ -83,7 +83,7 @@ internal sealed class DailiesController(
             string unlockName = unlock != 0 ? questData.GetQuestInfo(new QuestId(unlock)).Name : "";
             if (locked)
             {
-                (List<QuestId> chain, QuestId? story) = UnlockChain(new QuestId(unlock),
+                (List<QuestId> chain, QuestId? story) = QuestChain.Before(new QuestId(unlock),
                     x => questData.TryGetQuestInfo(x, out IQuestInfo? y) ? y : null, questFunctions.IsPreviousQuestMet);
                 QuestId? noPath = chain.FirstOrDefault(x => !questRegistry.TryGetQuest(x, out Quest? path) || path.Root.Disabled);
                 string? chainBlock = story != null
@@ -165,36 +165,6 @@ internal sealed class DailiesController(
         missing is { Count: > 0 }
             ? _LF("Not unlocked yet (unlock quest: {0}). {1}", name, string.Join(". ", missing))
             : _LF("Not unlocked yet (unlock quest: {0}); it can't be accepted yet.", name);
-
-    internal static (List<QuestId> Chain, QuestId? Story) UnlockChain(QuestId unlock,
-        Func<QuestId, IQuestInfo?> info, Func<PreviousQuestInfo, bool> met)
-    {
-        List<QuestId> chain = [];
-        HashSet<QuestId> seen = [];
-        QuestId? story = null;
-        Visit(unlock);
-        return (chain, story);
-
-        void Visit(QuestId id)
-        {
-            if (story != null || !seen.Add(id) || info(id) is not { } quest)
-                return;
-            if (quest.IsMainScenarioQuest && id != unlock)
-            {
-                story = id;
-                return;
-            }
-
-            List<PreviousQuestInfo> missing = [.. quest.PreviousQuests.Where(x => !met(x))];
-            bool anyOne = quest.PreviousQuestJoin == EQuestJoin.AtLeastOne;
-            if (!anyOne || missing.Count == quest.PreviousQuests.Count)
-                foreach (PreviousQuestInfo previous in anyOne
-                             ? missing.OrderBy(x => info(x.QuestId)?.IsMainScenarioQuest == true).Take(1)
-                             : missing)
-                    Visit(previous.QuestId);
-            chain.Add(id);
-        }
-    }
 
     internal static string? GetBlockReason(Quest? quest, QuestInfo info, bool accepted, bool hasJob) =>
         quest == null ? _LF("No quest path for {0}.", info.Name) :

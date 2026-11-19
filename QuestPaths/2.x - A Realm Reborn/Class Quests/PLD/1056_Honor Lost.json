@@ -41,24 +41,6 @@
           }
         },
         {
-          "Position": [-259.72705, 67.23717, -293.5509],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
-          "Position": [-355.4327, 63.813503, -382.56308],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 2002346,
           "Position": [-312.27594, 32.547485, -444.9989],
           "InteractionType": "Combat",

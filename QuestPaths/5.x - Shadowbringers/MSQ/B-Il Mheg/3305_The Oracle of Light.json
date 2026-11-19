@@ -205,15 +205,6 @@
           }
         },
         {
-          "Position": [-756.9433, 200.1388, -295.38437],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 1028955,
           "Position": [-755.67255, 200.19878, -293.87354],
           "InteractionType": "SinglePlayerDuty",

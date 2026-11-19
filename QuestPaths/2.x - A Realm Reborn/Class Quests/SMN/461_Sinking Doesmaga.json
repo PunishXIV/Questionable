@@ -38,15 +38,6 @@
           }
         },
         {
-          "Position": [548.48584, 12.640512, 220.15768],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 1005251,
           "Position": [550.46924, 12.147732, 220.9353],
           "InteractionType": "Interact"
@@ -90,15 +81,6 @@
       "Sequence": 5,
       "TerritoryId": 137,
       "Steps": [
-        {
-          "Position": [515.26044, 27.708418, 469.322],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
         {
           "DataId": 1005254,
           "Position": [442.00806, 15.793267, 370.32104],

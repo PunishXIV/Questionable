@@ -30,15 +30,6 @@
       "TerritoryId": 1188,
       "Steps": [
         {
-          "Position": [623.9169, 46.050114, -526.32715],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 2014173,
           "Position": [670.5576, 42.923584, -515.55664],
           "InteractionType": "Interact"

@@ -1,6 +1,8 @@
 // Authored with LLM assistance, changes must be reviewed and owned by a human.
 // Initial version reviewed and owned by @Kagekazu
+using Questionable.Domain;
 using Questionable.Model.Questing;
+using Questionable.Tests.TestData;
 using Questionable.Windows.QuestComponents;
 using Xunit;
 
@@ -8,63 +10,74 @@ namespace Questionable.Tests.Steps;
 
 public sealed class EventInfoComponentTests
 {
-    private static readonly DateTime Now = new(2026, 11, 16, 12, 0, 0, DateTimeKind.Utc);
-
     [Fact]
-    public void CompletedUnlock_KeepsFollowupFirst()
+    public void RunningFestival_ListsItsQuests()
     {
-        var quests = Pending([Event(434, 435, 5466)], complete: [434]);
+        var events = Events([(147, 0)], Seasonal(4796, 147), Seasonal(4797, 147), Seasonal(5466, 257));
 
-        Assert.Equal([435, 5466], quests);
+        Assert.Equal([4796, 4797], Ids(Assert.Single(events)));
+        Assert.Equal("Quest 4796", events[0].Name);
+    }
+
+    [Theory]
+    [InlineData(0, false)]
+    [InlineData(1, true)]
+    [InlineData(2, true)]
+    [InlineData(3, false)]
+    public void PhaseRange_DecidesQuest(ushort phase, bool shown)
+    {
+        var events = Events([(5, phase)], Seasonal(100, 5, begin: 1, end: 3));
+
+        Assert.Equal(shown, events.Count == 1);
     }
 
     [Fact]
-    public void FuturePrerequisites_StayInOrder()
+    public void Prerequisites_ComeFirst()
     {
-        Assert.Equal([434, 435, 5466], Pending([Event(434, 435, 5466)]));
+        var events = Events([(257, 0)], [434],
+            Seasonal(5466, 257, previous: 435), TestQuestInfo.Create(435, previous: new PreviousQuestInfo(new QuestId(434))),
+            TestQuestInfo.Create(434));
+
+        Assert.Equal([435, 5466], Ids(Assert.Single(events)));
     }
 
     [Fact]
-    public void CompletedEvent_HasNoWork()
+    public void SharedPrerequisite_ListedOnce()
     {
-        Assert.Empty(Pending([Event(434, 435, 5466)], complete: [434, 435, 5466]));
+        var events = Events([(9, 0)], [],
+            Seasonal(200, 9, previous: 150), Seasonal(201, 9, previous: 150), TestQuestInfo.Create(150));
+
+        Assert.Equal([150, 200, 201], Ids(Assert.Single(events)));
     }
 
     [Fact]
-    public void AcceptedQuest_RemainsInQueue()
+    public void ActiveQuests_SkipDoneAndUnobtainable()
     {
-        Assert.Equal([435], Pending([Event(435)], complete: [435], accepted: [435], unobtainable: [435]));
-    }
+        var events = Events([(9, 0)], Seasonal(1, 9), Seasonal(2, 9), Seasonal(3, 9), Seasonal(4, 9));
 
-    [Fact]
-    public void UnobtainableQuest_IsOmitted()
-    {
-        Assert.Equal([435], Pending([Event(434, 435)], unobtainable: [434]));
-    }
-
-    [Fact]
-    public void InactiveEvents_HaveNoWork()
-    {
-        Assert.Empty(Pending([
-            Event(434) with { EndsAtUtc = Now.AddDays(-1) },
-            Event(435) with { StartsAtUtc = Now.AddDays(1) }
-        ]));
-    }
-
-    [Fact]
-    public void SharedUnlock_IsOnlyQueuedOnce()
-    {
-        Assert.Equal([434, 435, 5466], Pending([Event(434, 435), Event(434, 5466)]));
-    }
-
-    private static EventInfoComponent.EventQuest Event(params ushort[] ids) =>
-        new("Event", [.. ids.Select(x => (ElementId)new QuestId(x))], Now.AddDays(2), Now.AddDays(-2));
-
-    private static ushort[] Pending(IEnumerable<EventInfoComponent.EventQuest> events,
-        ushort[]? complete = null, ushort[]? accepted = null, ushort[]? unobtainable = null) =>
-        [.. EventInfoComponent.GetActiveQuests(events, Now,
-                x => accepted?.Contains(x.Value) == true,
-                x => complete?.Contains(x.Value) == true,
-                x => unobtainable?.Contains(x.Value) == true)
+        ushort[] active = [.. EventInfoComponent.GetActiveQuests(events,
+                x => x.Value == 4,
+                x => x.Value is 2 or 4,
+                x => x.Value is 3 or 4)
             .Select(x => x.Value)];
+
+        Assert.Equal([1, 4], active);
+    }
+
+    private static QuestInfo Seasonal(ushort id, ushort festival, ushort begin = 0, ushort end = 1, ushort? previous = null) =>
+        TestQuestInfo.Create(id, previous: previous is { } p ? [new PreviousQuestInfo(new QuestId(p))] : [])
+            .With(nameof(QuestInfo.IsSeasonalEvent), true)
+            .With(nameof(QuestInfo.FestivalId), festival)
+            .With(nameof(QuestInfo.FestivalBegin), begin)
+            .With(nameof(QuestInfo.FestivalEnd), end);
+
+    private static List<EventInfoComponent.Event> Events((ushort, ushort)[] festivals, params QuestInfo[] quests) =>
+        Events(festivals, [], quests);
+
+    private static List<EventInfoComponent.Event> Events((ushort, ushort)[] festivals, ushort[] done, params QuestInfo[] quests) =>
+        EventInfoComponent.GetEvents(quests.Where(x => x.IsSeasonalEvent), festivals,
+            x => quests.FirstOrDefault(y => y.QuestId.Equals(x)),
+            x => done.Contains(x.QuestId.Value));
+
+    private static int[] Ids(EventInfoComponent.Event gameEvent) => [.. gameEvent.QuestIds.Select(x => (int)x.Value)];
 }

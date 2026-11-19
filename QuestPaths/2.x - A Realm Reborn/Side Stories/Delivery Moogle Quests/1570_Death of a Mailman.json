@@ -19,16 +19,6 @@
       "TerritoryId": 153,
       "Steps": [
         {
-          "Position": [-139.04318, 8.522301, 280.0128],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          },
-          "$": "Post-ARR, flying always unlocked"
-        },
-        {
           "DataId": 1006751,
           "Position": [-139.45221, 8.712891, 281.69678],
           "InteractionType": "Interact"

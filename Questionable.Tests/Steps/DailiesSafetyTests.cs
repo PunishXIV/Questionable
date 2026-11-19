@@ -255,7 +255,7 @@ public sealed class DailiesSafetyTests
     }
 
     private static (List<QuestId> Chain, QuestId? Story) Chain(ushort[] done, params QuestInfo[] quests) =>
-        DailiesController.UnlockChain(new QuestId(10), x => quests.FirstOrDefault(y => y.QuestId.Equals(x)),
+        QuestChain.Before(new QuestId(10), x => quests.FirstOrDefault(y => y.QuestId.Equals(x)),
             x => done.Contains(x.QuestId.Value));
 
     [Fact]

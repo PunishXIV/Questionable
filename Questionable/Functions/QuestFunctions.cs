@@ -896,11 +896,7 @@ internal sealed class QuestFunctions
             prerequisite.GetUnmetReason(state) is { } unmetReason)
             lockedReason.Add(unmetReason);
 
-        if (questInfo.IsSeasonalEvent &&
-                !EventInfoComponent.EventQuests.Any(eq =>
-                    eq.QuestIds.Contains(questId) &&
-                    (eq.StartsAtUtc == null || eq.StartsAtUtc < DateTime.UtcNow) &&
-                    eq.EndsAtUtc >= DateTime.UtcNow))
+        if (questInfo.IsSeasonalEvent && !questInfo.IsRunning(state.ActiveFestivals))
             lockedReason.Add(_L("Limited time event"));
 
         return (lockedReason.Count > 0, lockedReason.ToArray());
@@ -921,6 +917,8 @@ internal sealed class QuestFunctions
     }
 
     public uint SocietyAllowances => state.SocietyAllowances;
+
+    public IReadOnlyList<(ushort Id, ushort Phase)> ActiveFestivals => state.ActiveFestivals;
 
     public bool IsOutOfSocietyAllowances(ElementId questId) =>
         questId is QuestId qId && IsDailyAlliedSocietyQuest(qId) && state.SocietyAllowances == 0;

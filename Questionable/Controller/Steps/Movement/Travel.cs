@@ -27,9 +27,11 @@ internal static class Travel
     }
 
     internal sealed class Executor(MappingTheRealmIpc mappingTheRealm, NavmeshIpc navmesh, IClientState clientState,
-        ILogger<Executor> logger)
+        ICondition condition, IObjectTable objectTable, ILogger<Executor> logger)
         : TaskExecutor<Task>, IStoppable
     {
+        private const float SwimArrival = 3f;
+
         private Route? _route;
         private bool _started;
         private uint _zone;
@@ -37,6 +39,7 @@ internal static class Travel
         private bool _waiting;
         private DateTime _readyAfter;
         private int _retries;
+        private DateTime? _swimSince;
 
         protected override bool Start()
         {
@@ -44,6 +47,7 @@ internal static class Travel
             _started = false;
             _byPosition = false;
             _retries = 0;
+            _swimSince = null;
             _zone = clientState.TerritoryType;
             if (Task.Position == null && _zone == Task.TerritoryId)
                 return false;
@@ -74,7 +78,28 @@ internal static class Travel
                 return;
 
             _waiting = false;
+            // MappingTheRealm can't route underwater; its fallback teleports the player out of the water.
+            if (condition[ConditionFlag.Diving] && clientState.TerritoryType == Task.TerritoryId && Task.Position is { } position)
+            {
+                if (!navmesh.FlyTo(position))
+                    throw new TaskException("vnavmesh couldn't find an underwater path");
+                _swimSince = DateTime.Now;
+                return;
+            }
+
             _route = mappingTheRealm.Travel(Task.TerritoryId, UseId ? null : Task.Position, Task.DataId, Task.Range);
+        }
+
+        private ETaskResult Swim(DateTime since)
+        {
+            if (objectTable[0]?.Position is { } here && Vector3.Distance(here, Task.Position!.Value) <= SwimArrival)
+            {
+                navmesh.Stop();
+                return ETaskResult.TaskComplete;
+            }
+
+            bool moving = navmesh.GetPathfindInProgress() == true || navmesh.GetPathRunning() == true;
+            return moving || DateTime.Now - since < TimeSpan.FromSeconds(1) ? ETaskResult.StillRunning : ETaskResult.TaskComplete;
         }
 
         public override ETaskResult Update()
@@ -98,6 +123,9 @@ internal static class Travel
                 return ETaskResult.StillRunning;
             }
 
+            if (_swimSince is { } since)
+                return Swim(since);
+
             if (mappingTheRealm.GetPathing() == true)
             {
                 _started = true;
@@ -105,14 +133,15 @@ internal static class Travel
             }
 
             // By-id lookups fail for objects MappingTheRealm hasn't indexed, e.g. rock 2001481.
-            if (_route is { IsFaulted: true } && UseId && Task.Position != null)
+            // Every retry can cost a teleport: MappingTheRealm's fallback for an unreachable target.
+            if (_route is { IsFaulted: true } && UseId && Task.Position != null && _retries++ < 1)
             {
                 _byPosition = true;
                 Restart(TimeSpan.Zero);
                 return ETaskResult.StillRunning;
             }
 
-            if (_route is { IsFaulted: true } failed && _retries++ < 2)
+            if (_route is { IsFaulted: true } failed && _retries++ < 1)
             {
                 logger.LogWarning("MappingTheRealm route failed ({Reason}), waiting for the navmesh and trying again",
                     failed.Exception!.GetBaseException().Message);
@@ -134,6 +163,8 @@ internal static class Travel
         {
             if (_route != null)
                 mappingTheRealm.Stop();
+            if (_swimSince != null)
+                navmesh.Stop();
         }
 
         public override bool ShouldInterruptOnDamage() => false;

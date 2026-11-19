@@ -47,16 +47,6 @@
       "TerritoryId": 155,
       "Steps": [
         {
-          "Position": [215.65454, 222.1, 345.1806],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          },
-          "$": "Alberic"
-        },
-        {
           "DataId": 1006748,
           "Position": [217.88354, 222, 345.3269],
           "InteractionType": "CompleteQuest",

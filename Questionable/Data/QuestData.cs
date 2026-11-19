@@ -438,6 +438,7 @@ internal sealed class QuestData
         MainScenarioQuests = _quests.Values.Where(x => x is QuestInfo { IsMainScenarioQuest: true })
             .Cast<QuestInfo>()
             .ToList();
+        SeasonalQuests = [.. _quests.Values.OfType<QuestInfo>().Where(x => x.IsSeasonalEvent).OrderBy(x => x.QuestId.Value)];
 
         LastMainScenarioQuestId = MainScenarioQuests
             .Where(x => !MainScenarioQuests.Any(y => y.PreviousQuests.Any(z => z.QuestId == x.QuestId)))
@@ -486,6 +487,7 @@ internal sealed class QuestData
         AetherCurrentQuestsByTerritory.Values.SelectMany(x => x).ToImmutableHashSet();
 
     public IReadOnlyList<QuestInfo> MainScenarioQuests { get; }
+    public IReadOnlyList<QuestInfo> SeasonalQuests { get; }
     public ImmutableHashSet<ItemReward> RedeemableItems { get; }
     public QuestId LastMainScenarioQuestId { get; }
 

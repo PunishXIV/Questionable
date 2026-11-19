@@ -19,15 +19,6 @@
       "TerritoryId": 146,
       "Steps": [
         {
-          "Position": [-347.53528, 8.5170555, 420.7671],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "Position": [-452.6925, 7.386449, 579.44867],
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
@@ -47,15 +38,6 @@
       "Sequence": 255,
       "TerritoryId": 146,
       "Steps": [
-        {
-          "Position": [-347.53528, 8.5170555, 420.7671],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
         {
           "DataId": 1006287,
           "Position": [-354.66547, 8.469922, 416.80017],

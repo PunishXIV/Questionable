@@ -38,15 +38,6 @@
           }
         },
         {
-          "Position": [-573.30396, -153.01865, 529.2467],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          }
-        },
-        {
           "DataId": 1047813,
           "Position": [-826.32184, -297.8752, 875.15063],
           "InteractionType": "Interact"

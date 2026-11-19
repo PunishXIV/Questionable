@@ -34,12 +34,6 @@
       "TerritoryId": 137,
       "Steps": [
         {
-          "Position": [744.2034, 12, 389.4422],
-          "InteractionType": "WalkTo",
-          "Comment": "Flying up a bit to help with pathing",
-          "SkipConditions": { "StepIf": { "Flying": "Locked" } }
-        },
-        {
           "DataId": 1058132,
           "Position": [508.537, 9.03786, 283.192],
           "InteractionType": "Interact",

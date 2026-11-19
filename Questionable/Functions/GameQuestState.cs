@@ -46,6 +46,25 @@ internal sealed unsafe class GameQuestState(
     public bool IsDailyQuestCompleted(ushort questId) => QuestManager.Instance()->IsDailyQuestCompleted(questId);
     public uint SocietyAllowances => QuestManager.Instance()->GetBeastTribeAllowance();
 
+    private CacheUtils.CachedValue<IReadOnlyList<(ushort Id, ushort Phase)>> _festivals = new(ttlSeconds: 1);
+
+    public IReadOnlyList<(ushort Id, ushort Phase)> ActiveFestivals => _festivals.Get(ReadFestivals);
+
+    private static IReadOnlyList<(ushort Id, ushort Phase)> ReadFestivals()
+    {
+        GameMain* gameMain = GameMain.Instance();
+        if (gameMain == null)
+            return [];
+        List<(ushort, ushort)> festivals = [];
+        foreach (GameMain.Festival festival in gameMain->ActiveFestivals)
+        {
+            if (festival.Id != 0)
+                festivals.Add((festival.Id, festival.Phase));
+        }
+
+        return festivals;
+    }
+
     public IReadOnlyList<ushort> TrackedQuestIds
     {
         get

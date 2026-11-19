@@ -92,6 +92,9 @@ internal sealed class QuestInfo : IQuestInfo
         ClassJobs = QuestInfoUtils.AsList(quest.ClassJobCategory0.ValueNullable!);
         ClassJobCategory = quest.ClassJobCategory0.Value;
         IsSeasonalEvent = quest.Festival.RowId != 0;
+        FestivalId = (ushort)quest.Festival.RowId;
+        FestivalBegin = quest.FestivalBegin;
+        FestivalEnd = quest.FestivalEnd;
         NewGamePlusChapter = newGamePlusChapter;
         StartingCity = startingCity;
         MoogleDeliveryLevel = (byte)quest.DeliveryQuest.RowId;
@@ -139,6 +142,12 @@ internal sealed class QuestInfo : IQuestInfo
     public uint Experience { get; }
     public uint Gil { get; }
     public bool IsSeasonalEvent { get; }
+    public ushort FestivalId { get; }
+    public ushort FestivalBegin { get; }
+    public ushort FestivalEnd { get; }
+
+    public bool IsRunning(IReadOnlyList<(ushort Id, ushort Phase)> festivals) =>
+        festivals.Any(x => x.Id == FestivalId && x.Phase >= FestivalBegin && (FestivalEnd == 0 || x.Phase < FestivalEnd));
     public uint NewGamePlusChapter { get; }
     public byte StartingCity { get; set; }
     public byte MoogleDeliveryLevel { get; }

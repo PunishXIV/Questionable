@@ -20,16 +20,6 @@
       "TerritoryId": 153,
       "Steps": [
         {
-          "Position": [-166.19086, 8.399985, -64.10584],
-          "InteractionType": "WalkTo",
-          "SkipConditions": {
-            "StepIf": {
-              "Flying": "Locked"
-            }
-          },
-          "$": "Buscarron SE steps"
-        },
-        {
           "DataId": 1000590,
           "Position": [-165.9419, 9.869227, -81.34589],
           "InteractionType": "Interact"
