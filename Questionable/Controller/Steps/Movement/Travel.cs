@@ -27,7 +27,7 @@ internal static class Travel
     }
 
     internal sealed class Executor(MappingTheRealmIpc mappingTheRealm, NavmeshIpc navmesh, IClientState clientState,
-        ICondition condition, IObjectTable objectTable, ILogger<Executor> logger)
+        ICondition condition, IObjectTable objectTable, GameFunctions gameFunctions, ILogger<Executor> logger)
         : TaskExecutor<Task>, IStoppable
     {
         private const float SwimArrival = 3f;
@@ -45,12 +45,13 @@ internal static class Travel
         {
             _route = null;
             _started = false;
-            _byPosition = false;
             _retries = 0;
             _swimSince = null;
             _zone = clientState.TerritoryType;
             if (Task.Position == null && _zone == Task.TerritoryId)
                 return false;
+
+            _byPosition = FollowsPlayer();
 
             if (!mappingTheRealm.IsReady())
                 throw new NeedsPlayerException("MappingTheRealm is needed for travel between zones. Install it from the Helper plugins page in settings.");
@@ -62,6 +63,12 @@ internal static class Travel
         }
 
         private bool UseId => Task.DataId != null && !_byPosition;
+
+        // An escorted NPC walks with the player, so a route to it ends where the player stands (FF16 4797, Clive).
+        private bool FollowsPlayer() =>
+            Task is { DataId: { } id, Position: { } spot } && _zone == Task.TerritoryId &&
+            gameFunctions.FindObjectByDataId(id) is { } target && objectTable[0] is { } player &&
+            Vector3.Distance(target.Position, player.Position) < 5 && Vector3.Distance(target.Position, spot) > 10;
 
         private void Restart(TimeSpan settle)
         {

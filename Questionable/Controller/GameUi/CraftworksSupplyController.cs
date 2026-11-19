@@ -9,17 +9,15 @@ namespace Questionable.Controller.GameUi;
 internal sealed class CraftworksSupplyController : IDisposable
 {
     private readonly IAddonLifecycle _addonLifecycle;
-    private readonly Configuration _configuration;
     private readonly IFramework _framework;
     private readonly GameGuiAdapter _gameGui;
     private readonly ILogger<CraftworksSupplyController> _logger;
     private readonly QuestController _questController;
 
     public CraftworksSupplyController(QuestController questController, IAddonLifecycle addonLifecycle,
-        GameGuiAdapter gameGui, IFramework framework, Configuration configuration,
+        GameGuiAdapter gameGui, IFramework framework,
         ILogger<CraftworksSupplyController> logger)
     {
-        _configuration = configuration;
         _questController = questController;
         _addonLifecycle = addonLifecycle;
         _gameGui = gameGui;
@@ -65,8 +63,6 @@ internal sealed class CraftworksSupplyController : IDisposable
             _logger.LogInformation("Selecting an item for slot {Slot}", slot);
             master.TryHandOver(slot);
         }
-        else if (_configuration.Advanced.SkipCraftworksDelivery)
-            _logger.LogInformation("All slots filled; not delivering (testing option is on)");
         else
         {
             _logger.LogInformation("Confirming turn-in");

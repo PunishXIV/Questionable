@@ -1,3 +1,4 @@
+using Dalamud.Interface.Utility;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 namespace Questionable.Windows.QuestComponents;
@@ -9,7 +10,6 @@ internal sealed class QueueComponent
     internal const string Source = "PriorityWindow";
 
     private readonly IChatGui _chatGui;
-    private bool _showPresets;
 
     private readonly Configuration _configuration;
     private readonly IDalamudPluginInterface _pluginInterface;
@@ -26,6 +26,7 @@ internal sealed class QueueComponent
     private Job? _lastKnownJob;
     private string _presetName = string.Empty;
     private string? _selectedPresetName;
+    private bool? _jobQuestsReplace;
 
     public QueueComponent(QuestController questController, QuestFunctions questFunctions, QuestSelector questSelector,
         QuestTooltipComponent questTooltipComponent, UiUtils uiUtils, IChatGui chatGui, PriorityPresets presets,
@@ -59,49 +60,20 @@ internal sealed class QueueComponent
     public unsafe void Draw()
     {
         Job currentJob = (Job)(PlayerState.Instance()->CurrentClassJobId);
-        if (_lastKnownJob != null && currentJob != _lastKnownJob && _selectedPresetName == _presets.JobQuestsName)
-            LoadPreset(_presets.JobQuestsName);
+        if (_lastKnownJob != null && currentJob != _lastKnownJob && _jobQuestsReplace is { } replace)
+            LoadPreset(_presets.JobQuestsName, replace);
         _lastKnownJob = currentJob;
 
-        using (QstWidgets.SegmentGroup(armed: false))
-        {
-            if (QstWidgets.SegmentToggle(FontAwesomeIcon.ListOl, !_showPresets, _L("List"), _L("Show the list")))
-                _showPresets = false;
-            ImGui.SameLine();
-            if (QstWidgets.SegmentToggle(FontAwesomeIcon.Bookmark, _showPresets, _L("Presets"), _L("Show presets")))
-                _showPresets = true;
-        }
-
-        if (_showPresets)
-        {
-            DrawPresets();
-            return;
-        }
-
-        if (QstWidgets.SectionHeader(_L("Explanation"), "PriorityExplanation", defaultOpen: false))
-        {
-            ImGui.TextWrapped(
-                _L("Questionable will generally try to do:"));
-            QstWidgets.BulletTextWrapped(_L("Quests added below, in order"));
-            QstWidgets.BulletTextWrapped(_L("'Priority' quests: class quests, ARR primals, ARR raids"));
-            QstWidgets.BulletTextWrapped(
-                _L("Supported quests you track in the game's To-Do list"));
-            QstWidgets.BulletTextWrapped(_L("The next story quest (unless it's hidden in your journal)"));
-            ImGui.TextWrapped(
-                _L("With no story quest open and nothing added here, it picks up the next story quest first."));
-            ImGui.Spacing();
-            QstWidgets.BulletTextWrapped(_L("Quests marked 'Accept only' are picked up first, but not done from this list."));
-            QstWidgets.BulletTextWrapped(
-                _L("With 'Interrupt the current quest' off, quests added here wait until the current quest is done."));
-        }
-
         ImGui.Text(_L("Quests to do first:"));
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(_L("Order: this list, then class, primal and raid quests, then quests you track in the To-Do list, then the story."));
         bool canInterrupt = _questController.PriorityManager.CanInterrupt;
         if (ImGui.Checkbox(_L("Interrupt the current quest"), ref canInterrupt))
             _questController.PriorityManager.CanInterrupt = canInterrupt;
         if (ImGui.IsItemHovered())
             QstWidgets.Tooltip(_L("When off, quests added here wait until the current quest is done.\nTurns back on when the plugin restarts."));
         _questSelector.DrawSelection();
+        DrawSavedLists();
         DrawQuestList();
         DrawRewardTotal();
 
@@ -243,129 +215,141 @@ internal sealed class QueueComponent
 
     private void ImportFromClipboard(List<ElementId> questIds) => _questController.PriorityManager.Import(questIds);
 
-    private void DrawPresets()
+    private void DrawSavedLists()
     {
-        IReadOnlyList<PriorityPresets.Preset> builtInPresets = _presets.BuiltIn;
-        Dictionary<string, List<string>> userPresets = _configuration.Priority.Presets;
+        Dictionary<string, List<string>> userLists = _configuration.Priority.Presets;
+        float button = ImGui.GetFrameHeight() + ImGui.GetStyle().ItemSpacing.X;
 
-        string preview = _selectedPresetName ?? _L("Select a preset...");
-        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-        if (ImGui.BeginCombo("##PresetSelection", preview, ImGuiComboFlags.HeightLarge))
+        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 2 * button);
+        if (ImGui.BeginCombo("##PresetSelection", _selectedPresetName ?? _L("Saved lists..."), ImGuiComboFlags.HeightLarge))
         {
-            if (userPresets.Count > 0)
+            if (userLists.Count > 0)
             {
-                ImGui.Separator();
-                ImGui.TextDisabled(_L("Custom"));
-                foreach (string name in userPresets.Keys)
+                ImGui.TextDisabled(_L("Yours"));
+                foreach (string name in userLists.Keys)
                 {
                     if (ImGui.Selectable(name, _selectedPresetName == name))
-                    {
                         _selectedPresetName = name;
-                        LoadPreset(name);
-                    }
                 }
+
+                ImGui.Separator();
             }
 
             ImGui.TextDisabled(_L("Built-in"));
-            foreach (string name in builtInPresets.Select(x => x.Name))
+            foreach (string name in _presets.BuiltIn.Select(x => x.Name))
             {
                 if (ImGui.Selectable(name, _selectedPresetName == name))
-                {
                     _selectedPresetName = name;
-                    LoadPreset(name);
-                }
             }
 
             ImGui.EndCombo();
         }
 
-        bool addPresetsToList = _configuration.Priority.AddPresetsToList;
-        if (ImGui.Checkbox(_L("Add presets to the current list"), ref addPresetsToList))
+        using (ImRaii.Disabled(_selectedPresetName == null))
         {
-            _configuration.Priority.AddPresetsToList = addPresetsToList;
-            SaveConfig();
+            ImGui.SameLine();
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.FileImport))
+                LoadPreset(_selectedPresetName!, replace: true);
+            if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                QstWidgets.Tooltip(_L("Replace the list with this saved list"));
+
+            ImGui.SameLine();
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Plus))
+                LoadPreset(_selectedPresetName!, replace: false);
+            if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+                QstWidgets.Tooltip(_L("Add this saved list to the end of the list"));
         }
 
-        if (addPresetsToList)
-        {
-            ImGui.TextWrapped(_L("Selecting a preset adds its quests to the end of your Priority Quests. " +
-                "You can save your current list as a preset by entering a name below and selecting Save."));
-        }
-        else
-        {
-            ImGui.TextColoredWrapped(QstTheme.Danger, _L("Selecting a preset replaces your Priority Quests and activates the preset. " +
-                "You can save your current list as a preset by entering a name below and selecting Save."));
-        }
-
-        ImGui.Spacing();
-
-        ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-        ImGui.InputTextWithHint("##PresetName", _L("Preset name..."), ref _presetName, 128);
-
-        bool nameEmpty = string.IsNullOrWhiteSpace(_presetName);
-        bool nameIsBuiltIn = !nameEmpty && builtInPresets.Any(x => x.Name == _presetName.Trim());
-        bool nameExists = !nameEmpty && userPresets.ContainsKey(_presetName.Trim());
         bool noQuests = _questController.PriorityManager.IsEmpty;
-
-        using (ImRaii.Disabled(nameEmpty || nameIsBuiltIn || noQuests || (nameExists && !ImGui.IsKeyDown(ImGuiKey.ModCtrl))))
+        using (ImRaii.Disabled(noQuests))
         {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Save, _L("Save Preset")))
-            {
-                SavePreset(_presetName.Trim());
-                _presetName = string.Empty;
-            }
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Save, _L("Save as...")))
+                ImGui.OpenPopup("##SaveList");
         }
-        ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Redo))
-            _presets.Reload();
-        if (ImGui.IsItemHovered())
-            QstWidgets.Tooltip(_L("Reload presets"));
 
-        bool isUserPreset = _selectedPresetName != null && userPresets.ContainsKey(_selectedPresetName);
-        if (isUserPreset)
+        if (_selectedPresetName != null && userLists.ContainsKey(_selectedPresetName))
         {
             ImGui.SameLine();
             using (ImRaii.Disabled(!ImGui.IsKeyDown(ImGuiKey.ModCtrl)))
             {
-                if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Trash, _L("Delete Preset")))
+                if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Trash))
                 {
-                    userPresets.Remove(_selectedPresetName!);
+                    userLists.Remove(_selectedPresetName);
                     _selectedPresetName = null;
                     SaveConfig();
                 }
             }
 
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                QstWidgets.Tooltip(_L("Hold CTRL to enable this button."));
+                QstWidgets.Tooltip(_L("Delete this saved list (hold CTRL)"));
         }
 
-        if (nameIsBuiltIn)
-            ImGui.TextColored(QstTheme.Danger, _L("Cannot overwrite a built-in preset."));
-        else if (nameExists)
-            ImGui.TextColored(QstTheme.Amber, _L("Hold CTRL to overwrite existing preset."));
-
-        ImGui.Spacing();
-        List<ElementId> clipboardItems = ParseClipboardItems();
-        using (ImRaii.Disabled(clipboardItems.Count == 0))
-        {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Paste, _L("Import from Clipboard")))
-                ImportFromClipboard(clipboardItems);
-        }
         ImGui.SameLine();
         using (ImRaii.Disabled(noQuests))
         {
-            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Copy, _L("Export to Clipboard")))
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy))
                 ExportToClipboard();
         }
+
+        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+            QstWidgets.Tooltip(_L("Copy the list to the clipboard"));
+
+        ImGui.SameLine();
+        List<ElementId> clipboardItems = ParseClipboardItems();
+        using (ImRaii.Disabled(clipboardItems.Count == 0))
+        {
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Paste))
+                ImportFromClipboard(clipboardItems);
+        }
+
+        if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+            QstWidgets.Tooltip(_L("Add quests from the clipboard to the end of the list"));
+
+        ImGui.SameLine();
+        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Redo))
+            _presets.Reload();
+        if (ImGui.IsItemHovered())
+            QstWidgets.Tooltip(_L("Reload the built-in lists"));
+
+        DrawSavePopup(userLists);
     }
 
-    private void LoadPreset(string name)
+    private void DrawSavePopup(Dictionary<string, List<string>> userLists)
     {
-        if (!_configuration.Priority.AddPresetsToList)
+        using ImRaii.PopupDisposable popup = ImRaii.Popup("##SaveList");
+        if (!popup)
+            return;
+
+        ImGui.SetNextItemWidth(200 * ImGuiHelpers.GlobalScale);
+        ImGui.InputTextWithHint("##PresetName", _L("Name..."), ref _presetName, 128);
+
+        string name = _presetName.Trim();
+        bool isBuiltIn = _presets.BuiltIn.Any(x => x.Name == name);
+        bool exists = userLists.ContainsKey(name);
+        using (ImRaii.Disabled(name.Length == 0 || isBuiltIn || (exists && !ImGui.IsKeyDown(ImGuiKey.ModCtrl))))
+        {
+            if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Save, _L("Save")))
+            {
+                SavePreset(name);
+                _presetName = string.Empty;
+                ImGui.CloseCurrentPopup();
+            }
+        }
+
+        if (isBuiltIn)
+            ImGui.TextColored(QstTheme.Danger, _L("A built-in list already has this name."));
+        else if (exists)
+            ImGui.TextColored(QstTheme.Amber, _L("Hold CTRL to overwrite your saved list."));
+    }
+
+    private void LoadPreset(string name, bool replace)
+    {
+        if (replace)
             _questController.PriorityManager.Clear();
 
         if (_presets.TryGetByName(name, out List<ElementId>? quests))
             _questController.PriorityManager.Import(quests);
+        _jobQuestsReplace = name == _presets.JobQuestsName ? replace : null;
     }
 
     private void SavePreset(string name)

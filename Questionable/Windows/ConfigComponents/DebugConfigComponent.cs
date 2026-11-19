@@ -41,9 +41,7 @@ internal sealed class DebugConfigComponent
             using (ImRaii.PushIndent())
             {
                 ImGui.TextColored(QstTheme.Accent,
-                    _L("Generated paths are unreviewed machine drafts: expect wrong targets, missing steps and stalls."));
-                ImGui.TextColored(QstTheme.Accent,
-                    _L("Stay at the keyboard while one is running - never leave it unattended."));
+                    _L("Unreviewed drafts: expect wrong steps; stay at the keyboard."));
                 ImGui.TextUnformatted(
                     _L("Right-click a quest without a path in the Journal Progress window to generate a draft."));
 
@@ -198,16 +196,6 @@ internal sealed class DebugConfigComponent
 
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(_L("When enabled, Questionable will not attempt to turn-in and complete quests. This will do everything automatically except the final turn-in step."));
-
-            bool skipCraftworksDelivery = Configuration.Advanced.SkipCraftworksDelivery;
-            if (ImGui.Checkbox(_L("Testing: fill Wachumeqimeqi turn-ins without delivering"), ref skipCraftworksDelivery))
-            {
-                Configuration.Advanced.SkipCraftworksDelivery = skipCraftworksDelivery;
-                Save();
-            }
-
-            ImGui.SameLine();
-            ImGuiComponents.HelpMarker(_L("Questionable puts the items into the Wachumeqimeqi delivery window but doesn't press Deliver, so the quest isn't used up. Close the window and talk to the NPC again to retry."));
 
             bool abandonBeforeComplete = Configuration.Advanced.AbandonQuestBeforeCompletion;
             bool removeOnAbandon = Configuration.Advanced.RemoveFromPriorityWhenAbandoned;

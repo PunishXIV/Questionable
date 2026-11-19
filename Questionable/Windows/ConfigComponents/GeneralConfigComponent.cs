@@ -210,7 +210,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             }
 
             bool showIncompleteEvents = Configuration.General.ShowIncompleteSeasonalEvents;
-            if (ImGui.Checkbox(_L("Show details for incomplete seasonal events"), ref showIncompleteEvents))
+            if (ImGui.Checkbox(_L("Show seasonal events"), ref showIncompleteEvents))
             {
                 Configuration.General.ShowIncompleteSeasonalEvents = showIncompleteEvents;
                 Save();
@@ -219,7 +219,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             using (ImRaii.Disabled(!showIncompleteEvents))
             {
                 bool showCompleteEvents = Configuration.General.ShowCompleteSeasonalEvents;
-                if (ImGui.Checkbox(_L("Continue showing completed seasonal events"), ref showCompleteEvents))
+                if (ImGui.Checkbox(_L("Also show finished event quests"), ref showCompleteEvents))
                 {
                     Configuration.General.ShowCompleteSeasonalEvents = showCompleteEvents;
                     Save();
@@ -354,7 +354,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             if (ImGui.IsItemHovered())
             {
-                QstWidgets.Tooltip(_L("Better set in the game's Teleport settings; here for convenience."));
+                QstWidgets.Tooltip(_L("Answers Yes to the game's aetheryte ticket prompt."));
             }
 
             bool confirmCurrencyOverCap = Configuration.General.ConfirmCurrencyOverCap;

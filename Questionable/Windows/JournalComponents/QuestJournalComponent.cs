@@ -30,21 +30,6 @@ internal sealed class QuestJournalComponent
         if (_refresh.Tick(DateTime.Now, RecountChanged))
             ApplyFilter();
 
-        if (QstWidgets.SectionHeader(_L("Explanation"), "JournalExplanation", defaultOpen: false))
-        {
-            ImGui.Text(_L("The list below contains all quests that appear in your journal."));
-            ImGui.BulletText(_L("'Supported' lists quests that Questionable can do for you."));
-            ImGui.BulletText(_L("'Completed' lists quests your current character has completed."));
-            ImGui.BulletText(
-                _L("Not all quests can be completed even if they're listed as available, e.g. starting city quest chains."));
-            ImGui.BulletText(_L("Hover the Supported column to see when a quest path was last reported to work."));
-            ImGui.TextColoredWrapped(QstTheme.Amber, _L("Quests can be added to Priority Quests, one at a time or by group, from the right-click menu."));
-
-            ImGui.Spacing();
-            ImGui.Separator();
-            ImGui.Spacing();
-        }
-
         QuestJournalUtils.ShowFilterContextMenu(this);
 
         ImGui.SameLine();
@@ -59,6 +44,9 @@ internal sealed class QuestJournalComponent
                 _applyOpenState = true;
             }
         }
+
+        ImGui.SameLine();
+        ImGuiComponents.HelpMarker(_L("Right-click a quest or a group to add it to Priority Quests."));
 
         ImGui.SameLine();
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - ImGui.CalcTextSize("9999").X - ImGui.GetStyle().ItemSpacing.X);
