@@ -200,10 +200,13 @@ internal abstract class MiniTaskController<T> : IDisposable
 
     internal IReadOnlyList<string> RecentTasks => _recentTasks is { } tasks ? [.. tasks] : [];
 
+    internal bool StartedAnyTask { get; set; }
+
     private void StartTask(ITask task)
     {
         try
         {
+            StartedAnyTask = true;
             _logger.LogInformation("Starting task {TaskName}", task.ToString());
             (_recentTasks ??= new()).Enqueue(task.ToString() ?? string.Empty);
             while (_recentTasks.Count > 10)

@@ -114,7 +114,9 @@ internal sealed class ProfilesConfigComponent
             return;
         }
 
-        ImGui.TextWrapped(_L("Tick characters to quest on them in a row. Start on a ticked one; when its run ends, Questionable moves to the next. Each uses its own profile and stop conditions."));
+        // Wrapping at the full width pushes the help marker past the card edge.
+        using (ImRaii.TextWrapPos(ImGui.GetCursorPosX() + ImGui.GetContentRegionAvail().X - ImGui.GetFrameHeight() - ImGui.GetStyle().ItemSpacing.X))
+            ImGui.TextUnformatted(_L("Tick characters to quest on them in a row. Start on a ticked one; when its run ends, Questionable moves to the next. Each uses its own profile and stop conditions."));
         ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("The run-end commands on the Stopping page run for every character; logging out or closing the game only happens after the last one."));
         DrawRun();

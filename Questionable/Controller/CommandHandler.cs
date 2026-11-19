@@ -164,7 +164,7 @@ internal sealed class CommandHandler : IDisposable
             case "stop":
                 if (!_questController.HasExternalOperation)
                     _movementController.Stop();
-                _questController.Stop(_L("Stop command"));
+                _questController.StopRequested(_L("Stop command"));
                 break;
 
             case "reload":

@@ -25,6 +25,7 @@ internal sealed class QuestStopPolicy
     private readonly ILogger<QuestStopPolicy> _logger;
     private readonly Action? _saveConfig;
     private readonly Func<bool> _isTraveling;
+    private readonly Func<bool> _hasLifestream;
     private Ending? _ending;
 
     public QuestStopPolicy(Configuration configuration, NotificationMasterIpc notifications,
@@ -32,15 +33,17 @@ internal sealed class QuestStopPolicy
         LifestreamIpc lifestream, IChatGui chatGui, ILogger<QuestStopPolicy> logger)
         : this(configuration, notifications.NotifyOnFailure, notifications.Notify,
             command => Run(command, commands.ProcessCommand, chatFunctions.ExecuteCommand), chatGui, logger,
-            () => pluginInterface.SavePluginConfig(configuration), () => lifestream.IsBusy)
+            () => pluginInterface.SavePluginConfig(configuration), () => lifestream.IsBusy,
+            () => lifestream.GetVersion() != null)
     {
     }
 
     internal QuestStopPolicy(Configuration configuration, Action<string> notifyOnFailure, Action<string> notify,
         Action<string> runCommand, IChatGui chatGui, ILogger<QuestStopPolicy> logger, Action? saveConfig = null,
-        Func<bool>? isTraveling = null)
+        Func<bool>? isTraveling = null, Func<bool>? hasLifestream = null)
     {
         _isTraveling = isTraveling ?? (() => false);
+        _hasLifestream = hasLifestream ?? (() => true);
         _configuration = configuration;
         _notifyOnFailure = notifyOnFailure;
         _notify = notify;
@@ -69,7 +72,8 @@ internal sealed class QuestStopPolicy
 
     internal bool IsListRun { get; set; }
 
-    public void Apply(string label, bool wasAutomatic, bool finished = false, EEndAction? endAction = null)
+    public void Apply(string label, bool wasAutomatic, bool finished = false, EEndAction? endAction = null,
+        bool idle = false, bool requested = false)
     {
         if (!wasAutomatic)
             return;
@@ -80,9 +84,19 @@ internal sealed class QuestStopPolicy
             return;
         }
 
-        TryRun(() => _notifyOnFailure(_L("Automatic questing has stopped.")), "stop notification");
-
         Configuration.StopConfiguration stop = _configuration.Stop;
+        // Play with nothing left must not travel, run commands, log out or close the game.
+        if (idle && !IsListRun)
+        {
+            if (stop.RunCommandAfterStop || stop.Destination != EDestination.None || (endAction ?? stop.EndAction) != EEndAction.None)
+                _chatGui.Print(_L("Nothing to do, so the after-run actions were skipped."), CommandHandler.MessageTag, CommandHandler.TagColor);
+            StopHandler?.Invoke(false);
+            return;
+        }
+
+        if (!requested || _configuration.Notifications.NotifyOnRequestedStop)
+            TryRun(() => _notifyOnFailure(_L("Automatic questing has stopped.")), "stop notification");
+
         if (!finished && !stop.RunAfterProblemStop)
         {
             StopHandler?.Invoke(false);
@@ -93,6 +107,12 @@ internal sealed class QuestStopPolicy
         EEndAction action = endAction ?? stop.EndAction;
         string? final = nextCharacter ? null : GetCommand(action);
         string? travel = GetCommand(stop.Destination);
+        if (travel != null && !_hasLifestream())
+        {
+            Print(_L("'Go to' needs Lifestream, so Questionable stays here."));
+            travel = null;
+        }
+
         DateTime now = DateTime.Now;
         if (travel != null)
             TryRun(() => _runCommand(travel), "travel");

@@ -346,7 +346,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             _logger.LogInformation("Setting automation type to {NewAutomationType} (previous: {OldAutomationType})",
                 value, _automationType);
             if (_automationType == EAutomationType.Manual)
+            {
                 StopReason = "";
+                StartedAnyTask = false;
+            }
             _automationType = value;
             AutomationTypeChanged?.Invoke(this, value);
         }
@@ -1080,7 +1083,11 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     internal void StopFinished(string label) => Stop(label, clearQuest: true, finished: true);
 
-    private void Stop(string label, bool clearQuest, string? policyReason = null, bool finished = false)
+    // /qst stop and other plugins: a stop someone asked for, not a problem.
+    public void StopRequested(string label) => Stop(label, clearQuest: true, requested: true);
+
+    private void Stop(string label, bool clearQuest, string? policyReason = null, bool finished = false,
+        bool requested = false)
     {
         FinishDailies(false);
         Configuration.EEndAction? endAction = EndActionOnce;
@@ -1111,7 +1118,8 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         }
         _lastTaskUpdate = DateTime.Now;
 
-        _stopPolicy.Apply(policyReason ?? label, wasAutomatic, finished, endAction);
+        _stopPolicy.Apply(policyReason ?? label, wasAutomatic, finished, endAction, idle: finished && !StartedAnyTask,
+            requested: requested);
         unsafe
         {
             if (_objectTable[0] is IPlayerCharacter player)
@@ -1125,10 +1133,12 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         }
     }
 
-    public void StopAll(string label)
+    public void StopAll(string label) => StopAll(label, requested: false);
+
+    public void StopAll(string label, bool requested)
     {
         bool hadExternalOperation = HasExternalOperation;
-        Stop(label);
+        Stop(label, clearQuest: true, requested: requested);
         // Our own movement is already stopped; a plugin request still running doesn't allow stopping a manual route.
         if (hadExternalOperation || HasExternalOperation)
             return;

@@ -67,6 +67,43 @@ public sealed class QuestStopPolicyTests
     }
 
     [Theory]
+    [InlineData(true, false, false)]
+    [InlineData(true, true, true)]
+    [InlineData(false, false, true)]
+    public void RequestedStop_AlertsOnlyIfAsked(bool requested, bool alertSetting, bool expectedNotify)
+    {
+        var configuration = Config();
+        configuration.Notifications.NotifyOnRequestedStop = alertSetting;
+        List<string> effects = [];
+        var policy = new QuestStopPolicy(configuration, _ => effects.Add("notify"), _ => { }, effects.Add,
+            Substitute.For<IChatGui>(), NullLogger<QuestStopPolicy>.Instance);
+
+        policy.Apply("Stop command", true, requested: requested);
+
+        Assert.Equal(expectedNotify, effects.Contains("notify"));
+    }
+
+    [Theory]
+    [InlineData(false, "")]
+    [InlineData(true, "notify,/after-stop")]
+    public void IdleRun_SkipsEndActions(bool listRun, string expected)
+    {
+        var configuration = Config();
+        configuration.Stop.EndAction = Configuration.EEndAction.LogOut;
+        List<string> effects = [];
+        var policy = new QuestStopPolicy(configuration, _ => effects.Add("notify"), _ => { }, effects.Add,
+            Substitute.For<IChatGui>(), NullLogger<QuestStopPolicy>.Instance)
+        {
+            IsListRun = listRun,
+            StopHandler = canContinue => canContinue,
+        };
+
+        policy.Apply("No quest active", true, finished: true, idle: true);
+
+        Assert.Equal(expected, string.Join(',', effects));
+    }
+
+    [Theory]
     [InlineData("Skip", true, true, true, "notify,/after-stop")]
     [InlineData("Skip", true, true, false, "notify,/after-stop,/logout")]
     [InlineData("Skip", false, false, true, "notify")]
@@ -121,6 +158,22 @@ public sealed class QuestStopPolicyTests
         policy.Update(DateTime.Now.AddSeconds(10));
         Assert.Equal(["notify", "/li inn", "/after-stop", "/logout"], effects);
         Assert.False(policy.IsEnding);
+    }
+
+    [Fact]
+    public void NoLifestream_SkipsTravel()
+    {
+        var configuration = Config();
+        configuration.Stop.Destination = Configuration.EDestination.Inn;
+        configuration.Stop.EndAction = Configuration.EEndAction.LogOut;
+        List<string> effects = [];
+        var policy = new QuestStopPolicy(configuration, _ => effects.Add("notify"), _ => { }, effects.Add,
+            Substitute.For<IChatGui>(), NullLogger<QuestStopPolicy>.Instance, hasLifestream: () => false);
+
+        policy.Apply("Skip", true, finished: true);
+        policy.Update(DateTime.Now.AddSeconds(10));
+
+        Assert.Equal(["notify", "/after-stop", "/logout"], effects);
     }
 
     [Fact]

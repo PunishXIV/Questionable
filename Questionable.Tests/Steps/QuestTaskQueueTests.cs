@@ -76,6 +76,7 @@ public sealed class QuestTaskQueueTests
     {
         using var context = new SkipTestContext(automatic: true, stepCount: 1, problemStops: false);
         context.Controller.EndActionOnce = (Configuration.EEndAction?)picked;
+        context.Controller.StartedAnyTask = true;
 
         context.Controller.StopFinished("No quest active");
 

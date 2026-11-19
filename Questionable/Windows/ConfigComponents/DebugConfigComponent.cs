@@ -131,7 +131,7 @@ internal sealed class DebugConfigComponent
                 using (ImRaii.PushIndent())
                 {
                     ImGui.SetNextItemWidth(150f);
-                    DrawComboOption(("Highlight Color"),
+                    DrawComboOption(_L("Highlight colour"),
                         Enum.GetValues<ObjectHighlightColor>(),
                         Enum.GetNames<ObjectHighlightColor>(),
                         () => Configuration.Advanced.HighlightColor,
@@ -199,24 +199,37 @@ internal sealed class DebugConfigComponent
 
             bool abandonBeforeComplete = Configuration.Advanced.AbandonQuestBeforeCompletion;
             bool removeOnAbandon = Configuration.Advanced.RemoveFromPriorityWhenAbandoned;
-            if (ImGui.Checkbox(_L("Abandon quest before completion"), ref abandonBeforeComplete))
+            using (ImRaii.PushIndent())
             {
-                Configuration.Advanced.AbandonQuestBeforeCompletion = abandonBeforeComplete;
-                Save();
-            }
+                using (ImRaii.Disabled(!preventQuestCompletion))
+                {
+                    if (ImGui.Checkbox(_L("Abandon quest before completion"), ref abandonBeforeComplete))
+                    {
+                        Configuration.Advanced.AbandonQuestBeforeCompletion = abandonBeforeComplete;
+                        Save();
+                    }
+                }
 
-            ImGui.SameLine();
-            ImGuiComponents.HelpMarker(_L("When enabled, Questionable abandons the quest instead of turning it in. " +
-                "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed."));
-            if (ImGui.Checkbox(_L("Remove from Priority Quests when abandoned"), ref removeOnAbandon))
-            {
-                Configuration.Advanced.RemoveFromPriorityWhenAbandoned = removeOnAbandon;
-                Save();
-            }
+                ImGui.SameLine();
+                ImGuiComponents.HelpMarker(_L("When enabled, Questionable abandons the quest instead of turning it in. " +
+                    "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed."));
 
-            ImGui.SameLine();
-            ImGuiComponents.HelpMarker(_L("When enabled, Questionable also removes an abandoned quest from Priority Quests. " +
-                "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed."));
+                using (ImRaii.PushIndent())
+                {
+                    using (ImRaii.Disabled(!preventQuestCompletion || !abandonBeforeComplete))
+                    {
+                        if (ImGui.Checkbox(_L("Remove from Priority Quests when abandoned"), ref removeOnAbandon))
+                        {
+                            Configuration.Advanced.RemoveFromPriorityWhenAbandoned = removeOnAbandon;
+                            Save();
+                        }
+                    }
+
+                    ImGui.SameLine();
+                    ImGuiComponents.HelpMarker(_L("When enabled, Questionable also removes an abandoned quest from Priority Quests. " +
+                        "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed."));
+                }
+            }
 
             bool openEditor = Configuration.Advanced.OpenEditor;
             if (ImGui.Checkbox(_L("Open editor when starting quest"), ref openEditor))

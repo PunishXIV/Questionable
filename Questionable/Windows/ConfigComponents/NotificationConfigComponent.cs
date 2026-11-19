@@ -13,7 +13,7 @@ internal sealed class NotificationConfigComponent
     {
         using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("Alerts"));
         bool enabled = Configuration.Notifications.Enabled;
-        if (ImGui.Checkbox(_L("Enable notifications when manual interaction is required"), ref enabled))
+        if (ImGui.Checkbox(_L("Use alerts"), ref enabled))
         {
             Configuration.Notifications.Enabled = enabled;
             Save();
@@ -23,6 +23,20 @@ internal sealed class NotificationConfigComponent
         {
             using (ImRaii.PushIndent())
             {
+                ImGui.TextUnformatted(_L("Alert me when"));
+                using (ImRaii.PushIndent())
+                {
+                    ImGui.TextDisabled(_L("Questionable needs you for a step (always)"));
+                    DrawCheckbox(_L("A stop condition is reached"),
+                        () => Configuration.Notifications.NotifyOnStopCondition, x => Configuration.Notifications.NotifyOnStopCondition = x);
+                    DrawCheckbox(_L("Questionable can't continue"),
+                        () => Configuration.Notifications.NotifyOnCriticalFailure, x => Configuration.Notifications.NotifyOnCriticalFailure = x);
+                    DrawCheckbox(_L("You or another plugin stops it"),
+                        () => Configuration.Notifications.NotifyOnRequestedStop, x => Configuration.Notifications.NotifyOnRequestedStop = x,
+                        _L("/qst stop, or a plugin such as Automaton or an SND script. The Stop button never alerts."));
+                }
+
+                ImGui.Spacing();
                 XivChatType[] chatTypes = Enum.GetValues<XivChatType>()
                     .Where(x => x != XivChatType.StandardEmote)
                     .ToArray();
@@ -32,6 +46,8 @@ internal sealed class NotificationConfigComponent
                 DrawComboOption(_L("Chat channel"), chatTypes, chatTypeNames,
                     () => Configuration.Notifications.ChatType,
                     v => Configuration.Notifications.ChatType = v);
+                ImGui.SameLine();
+                ImGuiComponents.HelpMarker(_L("Only for steps that need you. Stop and problem messages always show in Questionable's own chat line."));
 
                 string[] sounds = ["", .. GetSounds()];
                 string[] soundNames = [_L("None"), .. sounds.Skip(1).Select(Path.GetFileNameWithoutExtension).Cast<string>()];
@@ -53,7 +69,7 @@ internal sealed class NotificationConfigComponent
                 }
 
                 ImGui.Separator();
-                ImGui.Text(_L("NotificationMaster settings"));
+                ImGui.Text("NotificationMaster");
                 ImGui.SameLine();
                 ImGuiComponents.HelpMarker(_L("Requires the plugin 'NotificationMaster' to be installed."));
                 ImGui.SameLine();
@@ -61,6 +77,7 @@ internal sealed class NotificationConfigComponent
                 {
                     if (ImGuiComponentsLocal.IconButtonWithText(Dalamud.Interface.FontAwesomeIcon.Bell, _L("Test")))
                         notificationMasterIpc.Notify(_L("Test message"));
+                    using var nmIndent = ImRaii.PushIndent();
                     bool showTrayMessage = Configuration.Notifications.ShowTrayMessage;
                     if (ImGui.Checkbox(_L("Show tray notification"), ref showTrayMessage))
                     {
@@ -74,18 +91,6 @@ internal sealed class NotificationConfigComponent
                         Configuration.Notifications.FlashTaskbar = flashTaskbar;
                         Save();
                     }
-                }
-                bool notifyOnStopCondition = Configuration.Notifications.NotifyOnStopCondition;
-                if (ImGui.Checkbox(_L("Notify when stop condition is reached"), ref notifyOnStopCondition))
-                {
-                    Configuration.Notifications.NotifyOnStopCondition = notifyOnStopCondition;
-                    Save();
-                }
-                bool notifyOnCriticalFailure = Configuration.Notifications.NotifyOnCriticalFailure;
-                if (ImGui.Checkbox(_L("Notify when Questionable is unable to continue automatic questing"), ref notifyOnCriticalFailure))
-                {
-                    Configuration.Notifications.NotifyOnCriticalFailure = notifyOnCriticalFailure;
-                    Save();
                 }
             }
         }

@@ -1841,15 +1841,6 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
-    <Key>Enable notifications when manual interaction is required</Key>
-    <Value lang="en">Enable notifications when manual interaction is required</Value>
-    <Value lang="ja-jp">手動操作が必要なときに通知を有効にする</Value>
-    <Value lang="zh-cn">需要手动交互时启用通知</Value>
-    <Value lang="zh-tw">需要手動互動時啟用通知</Value>
-    <Value lang="ko">수동 상호작용이 필요할 때 알림 활성화</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
     <Key>Chat channel</Key>
     <Value lang="en">Chat channel</Value>
     <Value lang="ja-jp">チャットチャンネル</Value>
@@ -2217,15 +2208,6 @@
     <Value lang="zh-cn">停止</Value>
     <Value lang="zh-tw">停止</Value>
     <Value lang="ko">중단</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
-    <Key>Stop Questionable when any of the conditions below are met</Key>
-    <Value lang="en">Stop Questionable when any of the conditions below are met</Value>
-    <Value lang="ja-jp">以下の条件のいずれかが満たされた場合にQuestionableを停止</Value>
-    <Value lang="zh-cn">当满足以下任一条件时停止 Questionable</Value>
-    <Value lang="zh-tw">當滿足以下任一條件時停止 Questionable</Value>
-    <!--<Value lang="ko">아래 조건 중 하나라도 충족되면 Questionable을 중단합니다.</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
@@ -4440,32 +4422,6 @@
     <Value lang="zh-cn">已完成任务 '{0}', 正在按照要求停止。</Value>
     <Value lang="zh-tw">已完成任務 '{0}', 正在按照要求停止。</Value>
     <!--<Value lang="ko">퀘스트 '{0}'를 완료하고 요청에 따라 중지합니다.</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
-    <Key>Notify when stop condition is reached</Key>
-    <Value lang="en">Notify when stop condition is reached</Value>
-    <Value lang="ja-jp">停止条件に達したときに通知する</Value>
-    <Value lang="zh-cn">达到停止条件时发送通知</Value>
-    <Value lang="zh-tw">達到停止條件時傳送通知</Value>
-    <!--<Value lang="ko">중지 조건에 도달하면 알림</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
-    <Key>Notify when Questionable is unable to continue automatic questing</Key>
-    <Value lang="en">Notify when Questionable is unable to continue automatic questing</Value>
-    <Value lang="ja-jp">Questionableが自動クエストを続行できなくなったときに通知する</Value>
-    <Value lang="zh-cn">Questionable 无法继续自动任务时发送通知</Value>
-    <Value lang="zh-tw">Questionable 無法繼續自動任務時傳送通知</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
-    <Key>NotificationMaster settings</Key>
-    <Value lang="en">NotificationMaster settings</Value>
-    <Value lang="ja-jp">NotificationMaster設定</Value>
-    <Value lang="zh-cn">NotificationMaster 设置</Value>
-    <Value lang="zh-tw">NotificationMaster 設定</Value>
-    <!--<Value lang="ko">NotificationMaster 설정</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
@@ -7018,14 +6974,6 @@
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
-    <Key>Browsing quests and rewards</Key>
-    <Value lang="en">Browsing quests and rewards</Value>
-    <Value lang="ja-jp">クエストと報酬の閲覧</Value>
-    <Value lang="zh-cn">浏览任务与奖励</Value>
-    <Value lang="zh-tw">瀏覽任務與獎勵</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
     <Key>Buying quest items (allow Questionable in its settings)</Key>
     <Value lang="en">Buying quest items (allow Questionable in its settings)</Value>
     <Value lang="ja-jp">クエストアイテムの購入（設定でQuestionableを許可）</Value>
@@ -7119,14 +7067,6 @@
     <Value lang="ja-jp">実行後の帰宅とキャラクター切り替え</Value>
     <Value lang="zh-cn">运行后返家与切换角色</Value>
     <Value lang="zh-tw">執行後返家與切換角色</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
-    <Key>Menu choices with number keys</Key>
-    <Value lang="en">Menu choices with number keys</Value>
-    <Value lang="ja-jp">数字キーでのメニュー選択</Value>
-    <Value lang="zh-cn">使用数字键选择菜单</Value>
-    <Value lang="zh-tw">使用數字鍵選擇選單</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
@@ -9153,5 +9093,117 @@ Right click: Copy without .json</Value>
     <Value lang="ja-jp">現在のジョブのレベルが不足しています</Value>
     <Value lang="zh-cn">当前职业等级过低</Value>
     <Value lang="zh-tw">目前職業等級過低</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
+    <Key>Nothing to do, so the after-run actions were skipped.</Key>
+    <Value lang="en">Nothing to do, so the after-run actions were skipped.</Value>
+    <Value lang="ja-jp">実行する内容がないため、停止後の処理はスキップしました。</Value>
+    <Value lang="zh-cn">没有可执行的内容，因此已跳过运行结束后的操作。</Value>
+    <Value lang="zh-tw">沒有可執行的內容，因此已略過執行結束後的動作。</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
+    <Key>Run commands</Key>
+    <Value lang="en">Run commands</Value>
+    <Value lang="ja-jp">コマンドを実行</Value>
+    <Value lang="zh-cn">执行命令</Value>
+    <Value lang="zh-tw">執行命令</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/StopConditionComponent.cs -->
+    <Key>Use stop conditions</Key>
+    <Value lang="en">Use stop conditions</Value>
+    <Value lang="ja-jp">停止条件を使用</Value>
+    <Value lang="zh-cn">使用停止条件</Value>
+    <Value lang="zh-tw">使用停止條件</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
+    <Key>/qst stop, or a plugin such as Automaton or an SND script. The Stop button never alerts.</Key>
+    <Value lang="en">/qst stop, or a plugin such as Automaton or an SND script. The Stop button never alerts.</Value>
+    <Value lang="ja-jp">/qst stop、またはAutomatonやSNDスクリプトなどのプラグインによる停止。停止ボタンでは通知しません。</Value>
+    <Value lang="zh-cn">/qst stop，或 Automaton、SND 脚本等插件发起的停止。停止按钮从不提醒。</Value>
+    <Value lang="zh-tw">/qst stop，或 Automaton、SND 腳本等外掛發起的停止。停止按鈕從不提醒。</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
+    <Key>A stop condition is reached</Key>
+    <Value lang="en">A stop condition is reached</Value>
+    <Value lang="ja-jp">停止条件に達したとき</Value>
+    <Value lang="zh-cn">达到停止条件时</Value>
+    <Value lang="zh-tw">達到停止條件時</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
+    <Key>Alert me when</Key>
+    <Value lang="en">Alert me when</Value>
+    <Value lang="ja-jp">通知するタイミング</Value>
+    <Value lang="zh-cn">在以下情况提醒我</Value>
+    <Value lang="zh-tw">在以下情況提醒我</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
+    <Key>Only for steps that need you. Stop and problem messages always show in Questionable's own chat line.</Key>
+    <Value lang="en">Only for steps that need you. Stop and problem messages always show in Questionable's own chat line.</Value>
+    <Value lang="ja-jp">手動の操作が必要なステップのみ。停止や問題のメッセージは常にQuestionable自身のチャット行に表示されます。</Value>
+    <Value lang="zh-cn">仅用于需要你处理的步骤。停止和问题消息始终显示在 Questionable 自己的聊天行中。</Value>
+    <Value lang="zh-tw">僅用於需要你處理的步驟。停止和問題訊息始終顯示在 Questionable 自己的聊天行中。</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
+    <Key>Questionable can't continue</Key>
+    <Value lang="en">Questionable can't continue</Value>
+    <Value lang="ja-jp">Questionableが続行できないとき</Value>
+    <Value lang="zh-cn">Questionable 无法继续时</Value>
+    <Value lang="zh-tw">Questionable 無法繼續時</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
+    <Key>Questionable needs you for a step (always)</Key>
+    <Value lang="en">Questionable needs you for a step (always)</Value>
+    <Value lang="ja-jp">Questionableが手動の操作を必要とするとき（常時）</Value>
+    <Value lang="zh-cn">Questionable 需要你手动处理某个步骤时（始终）</Value>
+    <Value lang="zh-tw">Questionable 需要你手動處理某個步驟時（始終）</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
+    <Key>Use alerts</Key>
+    <Value lang="en">Use alerts</Value>
+    <Value lang="ja-jp">通知を使用</Value>
+    <Value lang="zh-cn">使用提醒</Value>
+    <Value lang="zh-tw">使用提醒</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/NotificationConfigComponent.cs -->
+    <Key>You or another plugin stops it</Key>
+    <Value lang="en">You or another plugin stops it</Value>
+    <Value lang="ja-jp">自分または他のプラグインが停止したとき</Value>
+    <Value lang="zh-cn">你或其他插件将其停止时</Value>
+    <Value lang="zh-tw">你或其他外掛將其停止時</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/QuestStopPolicy.cs -->
+    <Key>'Go to' needs Lifestream, so Questionable stays here.</Key>
+    <Value lang="en">'Go to' needs Lifestream, so Questionable stays here.</Value>
+    <Value lang="ja-jp">「移動先」にはLifestreamが必要なため、Questionableはこの場に留まります。</Value>
+    <Value lang="zh-cn">“前往”需要 Lifestream，因此 Questionable 将留在原地。</Value>
+    <Value lang="zh-tw">「前往」需要 Lifestream，因此 Questionable 將留在原地。</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/DebugConfigComponent.cs -->
+    <Key>Highlight colour</Key>
+    <Value lang="en">Highlight colour</Value>
+    <Value lang="ja-jp">ハイライトの色</Value>
+    <Value lang="zh-cn">高亮颜色</Value>
+    <Value lang="zh-tw">醒目提示顏色</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/ConfigComponents/PluginConfigComponent.cs -->
+    <Key>'View in Quest Map' buttons (quest info and quest graph)</Key>
+    <Value lang="en">'View in Quest Map' buttons (quest info and quest graph)</Value>
+    <Value lang="ja-jp">「クエストマップで表示」ボタン（クエスト情報とクエストグラフ）</Value>
+    <Value lang="zh-cn">“在任务地图中显示”按钮（任务信息和任务关系图）</Value>
+    <Value lang="zh-tw">「在任務地圖中顯示」按鈕（任務資訊和任務關係圖）</Value>
   </Entry>
 </I18N>

@@ -1,4 +1,3 @@
-using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 namespace Questionable.Windows.ConfigComponents;
@@ -79,13 +78,13 @@ internal sealed class StopConditionComponent : ConfigComponent
         using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("Stop the run when"));
 
         bool enabled = Configuration.Stop.Enabled;
-        if (ImGui.Checkbox(_L("Stop Questionable when any of the conditions below are met"), ref enabled))
+        if (ImGui.Checkbox(_L("Use stop conditions"), ref enabled))
         {
             Configuration.Stop.Enabled = enabled;
             Save();
         }
 
-        using ImRaii.ColorDisposable muted = ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudGrey, !enabled);
+        using var disabled = ImRaii.Disabled(!enabled);
         using var indent = ImRaii.PushIndent();
 
         bool levelToStopAfter = Configuration.Stop.LevelToStopAfter;
@@ -174,7 +173,7 @@ internal sealed class StopConditionComponent : ConfigComponent
         ImGuiComponents.HelpMarker(_L("Travels there with Lifestream first. The commands below wait until you have arrived."));
 
         bool runCommand = Configuration.Stop.RunCommandAfterStop;
-        if (ImGui.Checkbox(_L("Run command when Questionable finishes automatic questing"), ref runCommand))
+        if (ImGui.Checkbox(_L("Run commands"), ref runCommand))
         {
             Configuration.Stop.RunCommandAfterStop = runCommand;
             Save();
@@ -185,13 +184,16 @@ internal sealed class StopConditionComponent : ConfigComponent
             string command = Configuration.Stop.CommandAfterStop;
             Vector2 commandSize = new(ImGui.CalcItemWidth(),
                 ImGui.GetTextLineHeight() * (command.Count(c => c == '\n') + 1) + ImGui.GetStyle().FramePadding.Y * 2);
-            if (ImGui.InputTextMultiline("##Command", ref command, 512, commandSize))
+            using (ImRaii.Disabled(!runCommand))
             {
-                Configuration.Stop.CommandAfterStop = command;
-                Save();
+                if (ImGui.InputTextMultiline("##Command", ref command, 512, commandSize))
+                {
+                    Configuration.Stop.CommandAfterStop = command;
+                    Save();
+                }
+                if (ImGui.IsItemDeactivatedAfterEdit())
+                    Save();
             }
-            if (ImGui.IsItemDeactivatedAfterEdit())
-                Save();
             ImGuiComponentsLocal.HelpMarker(
                 _L("Press Enter for another command, one per line. Plugin commands and game commands both work. Never runs after these stops:"),
                 QuestStopPolicy.ExcludedStopReasons.ToArray());
