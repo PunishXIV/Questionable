@@ -218,8 +218,10 @@ internal sealed class QueueComponent
     private void DrawSavedLists()
     {
         Dictionary<string, List<string>> userLists = _configuration.Priority.Presets;
-        float button = ImGui.GetFrameHeight() + ImGui.GetStyle().ItemSpacing.X;
+        Vector2 square = new(ImGui.GetFrameHeight());
+        float button = square.X + ImGui.GetStyle().ItemSpacing.X;
 
+        // Wider buttons than reserved here make the auto-resizing quest window grow every frame.
         ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 2 * button);
         if (ImGui.BeginCombo("##PresetSelection", _selectedPresetName ?? _L("Saved lists..."), ImGuiComboFlags.HeightLarge))
         {
@@ -248,13 +250,13 @@ internal sealed class QueueComponent
         using (ImRaii.Disabled(_selectedPresetName == null))
         {
             ImGui.SameLine();
-            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.FileImport))
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.FileImport, square))
                 LoadPreset(_selectedPresetName!, replace: true);
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
                 QstWidgets.Tooltip(_L("Replace the list with this saved list"));
 
             ImGui.SameLine();
-            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Plus))
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Plus, square))
                 LoadPreset(_selectedPresetName!, replace: false);
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
                 QstWidgets.Tooltip(_L("Add this saved list to the end of the list"));

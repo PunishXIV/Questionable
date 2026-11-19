@@ -36,6 +36,7 @@ internal static class Travel
         private bool _started;
         private uint _zone;
         private bool _byPosition;
+        private bool _escort;
         private bool _waiting;
         private DateTime _readyAfter;
         private int _retries;
@@ -51,7 +52,10 @@ internal static class Travel
             if (Task.Position == null && _zone == Task.TerritoryId)
                 return false;
 
-            _byPosition = FollowsPlayer();
+            _byPosition = false;
+            _escort = FollowsPlayer();
+            if (_escort)
+                logger.LogInformation("{DataId} walks with the player, travelling to the step's position", Task.DataId);
 
             if (!mappingTheRealm.IsReady())
                 throw new NeedsPlayerException("MappingTheRealm is needed for travel between zones. Install it from the Helper plugins page in settings.");
@@ -94,7 +98,10 @@ internal static class Travel
                 return;
             }
 
-            _route = mappingTheRealm.Travel(Task.TerritoryId, UseId ? null : Task.Position, Task.DataId, Task.Range);
+            // MappingTheRealm routes to the object whenever it gets an id, even with a position.
+            _route = _escort
+                ? mappingTheRealm.Travel(Task.TerritoryId, Task.Position, null)
+                : mappingTheRealm.Travel(Task.TerritoryId, UseId ? null : Task.Position, Task.DataId, Task.Range);
         }
 
         private ETaskResult Swim(DateTime since)
