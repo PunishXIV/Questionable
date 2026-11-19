@@ -258,12 +258,12 @@ internal sealed class QuestStopPolicy
     public void ReportPriorityListDone()
     {
         _logger.LogInformation("Priority list done, stopping as configured");
-        PrintAndNotify(_L("The priority list is done, stopping as configured."));
+        PrintAndNotify(_L("Priority Quests are done, stopping as configured."));
     }
 
     public void ReportStopBeforeTeleport(ITask nextTask)
     {
-        string stopping = _L("Stopping before teleport as requested.");
+        string stopping = _L("Stopping before travelling to another zone, as requested.");
         _logger.LogInformation("{Stopping} (upcoming task: {Task})", stopping, nextTask);
         PrintAndNotify(stopping);
     }
@@ -334,14 +334,15 @@ internal sealed class QuestStopPolicy
     }
 
     public void ReportDeathLimit(int deaths) =>
-        PrintError($"You died {deaths} times, manual intervention needed.");
+        PrintError(_LF("Stopped: you died {0} times on this step.", deaths));
 
     public void ReportTasksFailed(Exception e, QuestProgress? current)
     {
         _logger.LogError(e, "Failed to create tasks [{QuestId}, {Sequence}, {Step}]",
             current?.Quest.Id, current?.Sequence, current?.Step);
-        PrintError("Failed to start next task sequence, please check /xllog for details.");
-        _notifyOnFailure(_L("Failed to start next task sequence, stopping.") + " " + _L("Please try Reload Data, fixing manually, or reporting an issue with the 'Stuck?' button."));
+        string message = _L("Couldn't start the next quest step, stopping.") + " " + _L("Try Reload Data, or report it with Stuck?");
+        PrintError(message);
+        _notifyOnFailure(message);
     }
 
     private void PrintLevelStop(IQuestInfo quest, int playerLevel) =>

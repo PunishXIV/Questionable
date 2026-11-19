@@ -113,7 +113,7 @@ internal sealed class QuestTooltipComponent
         else
         {
             ImGui.SameLine();
-            ImGui.TextColored(QstTheme.Danger, _L("NoQuestPath"));
+            ImGui.TextColored(QstTheme.Danger, _L("No quest path"));
             ImGui.Text($"{info.IssuerLocation.Territory.PlaceName.Value.Name}");
         }
 

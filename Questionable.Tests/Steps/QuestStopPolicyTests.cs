@@ -248,7 +248,7 @@ public sealed class QuestStopPolicyTests
         reports.Policy.ReportStopAfterAttune(EAetheryteLocation.Limsa);
 
         Assert.Equal(["Reached or exceeded target level 50.", "Completed quest 'Test', stopping as requested.",
-            "Stopping before teleport as requested.", "Attuned to the aetheryte, stopping as requested."], reports.Printed);
+            "Stopping before travelling to another zone, as requested.", "Attuned to the aetheryte, stopping as requested."], reports.Printed);
         Assert.Equal(setting ? reports.Printed : [], reports.Notified);
     }
 

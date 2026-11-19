@@ -102,7 +102,7 @@ internal static class UseItem
                 throw new TaskException("No InventoryManager");
 
             if (inventoryManager->GetInventoryItemCount(ItemId) == 0)
-                throw new NeedsPlayerException($"Don't have any {GetItemName(dataManager, ItemId)} ({ItemId}) in inventory (checks NQ only)");
+                throw new NeedsPlayerException($"You don't have any {GetItemName(dataManager, ItemId)} (normal quality) in your inventory.");
 
             UseNow();
             return true;

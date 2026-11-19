@@ -141,7 +141,7 @@ internal sealed class QuestSelectionWindow : LWindow
         }
 
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Adds every quest in this list that has a path and isn't completed yet."));
+            QstWidgets.Tooltip(_L("Adds every quest in this list that has a path and isn't completed yet."));
 
         if (_offeredQuests.Count != 0)
         {
@@ -236,7 +236,7 @@ internal sealed class QuestSelectionWindow : LWindow
                 {
                     bool priority = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.AngleDoubleUp);
                     if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(_L("Add to priority quests"));
+                        QstWidgets.Tooltip(_L("Add to Priority Quests"));
                     if (priority)
                         _questController.PriorityManager.Add(quest.QuestId);
                 }
@@ -245,13 +245,13 @@ internal sealed class QuestSelectionWindow : LWindow
                     if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ArrowAltCircleRight))
                         _draftQuestPathService.GenerateDraft(quest);
                     if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(_L("Generate draft path"));
+                        QstWidgets.Tooltip(_L("Generate draft path"));
                 }
                 ImGui.SameLine();
 
                 bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_L("Left click: Copy as file name\nRight click: Copy without .json"));
+                    QstWidgets.Tooltip(_L("Left click: Copy as file name\nRight click: Copy without .json"));
                 if (copy)
                     CopyToClipboard(quest, suffix: true);
                 else if (ImGui.IsItemClicked(ImGuiMouseButton.Right))
@@ -267,7 +267,7 @@ internal sealed class QuestSelectionWindow : LWindow
                     {
                         bool startNextQuest = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Play);
                         if (ImGui.IsItemHovered())
-                            ImGui.SetTooltip(_L("Start as next quest"));
+                            QstWidgets.Tooltip(_L("Start as next quest"));
                         if (startNextQuest)
                         {
                             _questController.SetNextQuest(knownQuest);
@@ -277,7 +277,7 @@ internal sealed class QuestSelectionWindow : LWindow
 
                         bool setNextQuest = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.AngleDoubleRight);
                         if (ImGui.IsItemHovered())
-                            ImGui.SetTooltip(_L("Set as next quest"));
+                            QstWidgets.Tooltip(_L("Set as next quest"));
                         if (setNextQuest)
                             _questController.SetNextQuest(knownQuest);
                     }

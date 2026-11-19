@@ -67,7 +67,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
         ImGui.SameLine();
         ImGuiComponents.HelpMarker(
-            _L("AutoDuty runs the duty with its own settings, including which rotation plugin to use. The combat plugin picked in General isn't used."));
+            _L("AutoDuty runs the duty with its own settings, including which rotation plugin to use. The combat plugin picked on the Basics page isn't used."));
 
         bool setAside = Configuration.Duties.SetAsideManualDuties;
         if (ImGui.Checkbox(_L("Set aside quests waiting on a duty you run yourself"), ref setAside))
@@ -91,7 +91,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(
-                _L("When the next story quest or its duty needs a higher level, AutoDuty runs the highest Duty Support dungeon you can enter until you reach it. When the item level is short, Questionable first buys the best accessories your job can wear with tomestones (Knightshopper), then runs dungeons; it stops after 5 runs that don't raise your item level."));
+                _L("When the next story quest needs a higher level, AutoDuty runs your best Duty Support dungeon until you get there. If your item level is short, Questionable first buys tomestone accessories (Knightshopper). Stops after 5 runs without an item level gain."));
 
             bool runUnsynced = Configuration.Duties.RunUnsynced;
             if (ImGui.Checkbox(_L("Run content unsynced where safe"), ref runUnsynced))
@@ -215,7 +215,7 @@ internal sealed class DutyConfigComponent : ConfigComponent
 
         if (_useAutoDuty && !_autoDuty.HasPath(dutyInfo.CfcId))
         {
-            ImGuiComponents.HelpMarker(_L("This duty is not supported by AutoDuty"),
+            ImGuiComponents.HelpMarker(_L("This duty is not supported by AutoDuty."),
                 FontAwesomeIcon.Times, QstTheme.Danger);
         }
         else if (dutyOptions.Notes.Count > 0)

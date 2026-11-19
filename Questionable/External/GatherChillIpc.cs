@@ -28,7 +28,7 @@ internal sealed class GatherChillIpc : Ipc, IDisposable
 
     public override string InternalName => "GatherChill";
     public override Version? GetVersion() => IPCSubscriber.Version(InternalName);
-    // Only the current Gather n Chill is supported; answering at all means it is loaded.
+    // Only the current Gather & Chill is supported; answering at all means it is loaded.
     public bool IsAvailable() => GetBusy() != null;
     public override bool IsReady() => IsAvailable();
     public bool? GetBusy() => Read(_isBusy);
@@ -49,7 +49,7 @@ internal sealed class GatherChillIpc : Ipc, IDisposable
         Guid id = _operation.BeginRequest();
         try
         {
-            _logger.LogInformation("Asking Gather n Chill for {Count} more of {ItemId}", additionalCount, itemId);
+            _logger.LogInformation("Asking Gather & Chill for {Count} more of {ItemId}", additionalCount, itemId);
             (int result, Guid jobId, message) = _startJob(CallerName, itemId, additionalCount);
             if (result == (int)GatherStartResult.Started && jobId != Guid.Empty)
             {
@@ -57,7 +57,7 @@ internal sealed class GatherChillIpc : Ipc, IDisposable
                 return GatherStartResult.Started;
             }
 
-            // Gather n Chill's refusals use the same numbers as GatherStartResult.
+            // Gather & Chill's refusals use the same numbers as GatherStartResult.
             if (result != (int)GatherStartResult.Started && Enum.IsDefined((GatherStartResult)result) &&
                 result >= (int)GatherStartResult.Busy)
             {
@@ -67,7 +67,7 @@ internal sealed class GatherChillIpc : Ipc, IDisposable
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "Unable to start a Gather n Chill job");
+            _logger.LogError(e, "Unable to start a Gather & Chill job");
             message = e.Message;
         }
 
@@ -99,12 +99,12 @@ internal sealed class GatherChillIpc : Ipc, IDisposable
             return;
         try
         {
-            _logger.LogInformation("Cancelling Gather n Chill job {JobId}", jobId);
+            _logger.LogInformation("Cancelling Gather & Chill job {JobId}", jobId);
             _operation.ObserveCancel(jobId, _cancelJob(CallerName, jobId));
         }
         catch (Exception e)
         {
-            _logger.LogDebug(e, "Unable to cancel Gather n Chill job {JobId}", jobId);
+            _logger.LogDebug(e, "Unable to cancel Gather & Chill job {JobId}", jobId);
         }
     }
 
@@ -119,7 +119,7 @@ internal sealed class GatherChillIpc : Ipc, IDisposable
         }
         catch (Exception e)
         {
-            _logger.LogDebug(e, "Unable to read Gather n Chill job {JobId}", jobId);
+            _logger.LogDebug(e, "Unable to read Gather & Chill job {JobId}", jobId);
             return (ExternalOperationStatus.Unknown, e.Message);
         }
     }
@@ -154,7 +154,7 @@ internal sealed class GatherChillProvider(GatherChillIpc gatherChillIpc, Gatheri
     : PluginOperationProvider(operation)
 {
     public override int Order => 300;
-    public override string Name => "Gather n Chill";
+    public override string Name => "Gather & Chill";
     protected override string CancelLabel => "gathering";
     public override bool HandlesLeadInTravel => true;
 
@@ -169,28 +169,28 @@ internal sealed class GatherChillProvider(GatherChillIpc gatherChillIpc, Gatheri
         return busy == true || (busy == null && gatherChillIpc.IsAvailable());
     }
 
-    // Gathering always goes through Gather n Chill; steps naming a quest-specific node (e.g. 3833) still walk there.
+    // Gathering always goes through Gather & Chill; steps naming a quest-specific node (e.g. 3833) still walk there.
     public override bool HandlesTravel(QuestStep step) => step is { InteractionType: EInteractionType.Gather, DataId: null };
 
     public override OperationStatusView? GetStatusView() => StatusView(
-        _L("Check Gather n Chill before restarting."),
-        _L("Gathering quest items with Gather n Chill"),
-        _L("I stopped Gather n Chill"),
-        _L("Finish or stop gathering in Gather n Chill before confirming."),
-        _L("Gather n Chill must remain idle for at least 2 seconds. Confirmation only clears the block; start questing separately."));
+        _L("Check Gather & Chill before restarting."),
+        _L("Gathering quest items with Gather & Chill"),
+        _L("I stopped Gather & Chill"),
+        _L("Finish or stop gathering in Gather & Chill before confirming."),
+        _L("Gather & Chill must remain idle for at least 2 seconds. Confirmation only clears the block; start questing separately."));
 
     public override OperationPill? GetTitleBarPill() =>
-        TitleBarPill(_L("Check Gather n Chill"), _L("Gathering"), _L("Stopping gathering"));
+        TitleBarPill(_L("Check Gather & Chill"), _L("Gathering"), _L("Stopping gathering"));
 
     public override string? GetStartBlockReason() =>
         gatherChillIpc.IsAvailable() && gatherChillIpc.GetBusy() != false
-            ? _L("Gather n Chill is busy or its status is unavailable. Finish its current work before starting questing.")
+            ? _L("Gather & Chill is busy or its status is unavailable. Finish its current work before starting questing.")
             : null;
 }
 
 [RegisterSingleton]
 internal sealed class GatheringState(TimeProvider? timeProvider = null)
-    : PluginOperationState("Gather n Chill", "gathering quest items", timeProvider)
+    : PluginOperationState("Gather & Chill", "gathering quest items", timeProvider)
 {
     public void ObserveJob(Guid id, ExternalOperationStatus status, string message) =>
         ObserveStatus(id, status, message);
@@ -223,11 +223,11 @@ internal sealed class GatheringController(
             return false;
 
         if (!gatherChillIpc.IsReady())
-            throw new NeedsPlayerException("Gather n Chill is required for gathering, but isn't installed, enabled or up to date");
+            throw new NeedsPlayerException("Gather & Chill is required for gathering, but isn't installed, enabled or up to date");
         if (gatherChillIpc.GetBusy() != false)
-            throw new NeedsPlayerException("Gather n Chill is busy or unavailable; finish its current work before gathering quest items");
+            throw new NeedsPlayerException("Gather & Chill is busy or unavailable; finish its current work before gathering quest items");
         if (!gatherChillIpc.CanGather(request.ItemId))
-            throw new TaskException($"Gather n Chill can't gather item {request.ItemId}");
+            throw new TaskException($"Gather & Chill can't gather item {request.ItemId}");
 
         movementController.Stop();
         _request = request;
@@ -236,14 +236,14 @@ internal sealed class GatheringController(
         if (result is GatherStartResult.Started or GatherStartResult.Uncertain)
             id = operation.Id;
         if (result != GatherStartResult.Started)
-            throw new TaskException($"Gather n Chill didn't start gathering {request.ItemId} ({result}): {message}");
+            throw new TaskException($"Gather & Chill didn't start gathering {request.ItemId} ({result}): {message}");
         return true;
     }
 
     public EStatus Update(Guid? id)
     {
         if (!id.HasValue || id != operation.Id || _request == null)
-            throw new TaskException("Gather n Chill is no longer running Questionable's request");
+            throw new TaskException("Gather & Chill is no longer running Questionable's request");
         if (operation.NeedsConfirmation || operation.IsAbandoned)
             throw new TaskException(operation.BlockReason!);
         if (!operation.IsFinished)
@@ -255,7 +255,7 @@ internal sealed class GatheringController(
         bool satisfied = status == ExternalOperationStatus.Succeeded && GetItemCount(request) >= request.Quantity;
         if (!satisfied && status == ExternalOperationStatus.Succeeded)
         {
-            // The last gathered item can reach the bags after Gather n Chill reports success.
+            // The last gathered item can reach the bags after Gather & Chill reports success.
             _shortSince ??= TimeProvider.System.GetTimestamp();
             if (TimeProvider.System.GetElapsedTime(_shortSince.Value) < TimeSpan.FromSeconds(2))
                 return EStatus.Gathering;
@@ -266,7 +266,7 @@ internal sealed class GatheringController(
         if (satisfied)
             return EStatus.Complete;
 
-        throw new TaskException($"Gather n Chill ended ({status}) without completing {request.Quantity}x {request.ItemId} at collectability {request.Collectability}: {message}");
+        throw new TaskException($"Gather & Chill ended ({status}) without completing {request.Quantity}x {request.ItemId} at collectability {request.Collectability}: {message}");
     }
 
     public void Stop(string label) => gatherChillIpc.CancelWork();
@@ -279,7 +279,7 @@ internal sealed class GatheringController(
 
     public IList<string> GetRemainingTaskNames() =>
         operation.HasOperation && _request is { } request
-            ? [$"Gather n Chill: {request.Quantity}x {request.ItemId}"]
+            ? [$"Gather & Chill: {request.Quantity}x {request.ItemId}"]
             : [];
 
     private static unsafe int GetItemCount(Request request)

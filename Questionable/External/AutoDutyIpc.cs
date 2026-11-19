@@ -147,7 +147,7 @@ internal sealed class AutoDutyProvider : PluginOperationProvider, IDisposable
             throw new NeedsPlayerException("AutoDuty is disabled or this duty is excluded or unsupported.");
         var data = FindContent(cfcId) ?? throw new TaskException($"Unknown ContentFinderConditionId {cfcId}");
         if (_ipc.GetStopped() != true)
-            throw new NeedsPlayerException("AutoDuty is unavailable or busy; refusing to replace its work.");
+            throw new NeedsPlayerException("AutoDuty is busy or unavailable; finish its current work first.");
         var game = ReadGameState();
         if (!game.Available || !game.Idle || game.InQueue || game.Loading || game.InDuty)
             throw new NeedsPlayerException("Can't start AutoDuty while you're in combat, in a duty or queue, or moving.");

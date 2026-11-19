@@ -206,7 +206,7 @@ internal sealed class JournalTable(
                 acceptOnly ? (accepted ? QstTheme.Success : QstTheme.Accent) : QstTheme.Amber,
                 (acceptOnly ? FontAwesomeIcon.Inbox : FontAwesomeIcon.AngleDoubleUp).ToIconString());
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(acceptOnly
+            QstWidgets.Tooltip(acceptOnly
                 ? (accepted ? _L("Accepted; completion follows the normal quest order.") : _L("Queued to be accepted"))
                 : _L("This quest is in Priority Quests."));
     }
@@ -229,27 +229,27 @@ internal sealed class JournalTable(
         {
             case EPathSupport.Removed:
                 if (uiUtils.ChecklistItem("", QstTheme.TextMuted, FontAwesomeIcon.Minus))
-                    ImGui.SetTooltip(_L("This quest is not available.") + addendum);
+                    QstWidgets.Tooltip(_L("This quest is not available.") + addendum);
                 break;
             case EPathSupport.Fate:
                 if (uiUtils.ChecklistItem("", QstTheme.Accent, FontAwesomeIcon.ExclamationTriangle))
-                    ImGui.SetTooltip(_L("This quest requires completing a FATE.") + addendum);
+                    QstWidgets.Tooltip(_L("This quest requires completing a FATE.") + addendum);
                 break;
             case EPathSupport.LoadError:
                 if (uiUtils.ChecklistItem("", QstTheme.Danger, FontAwesomeIcon.ExclamationTriangle))
-                    ImGui.SetTooltip(_L("This quest could not be loaded.") + addendum);
+                    QstWidgets.Tooltip(_L("This quest could not be loaded.") + addendum);
                 break;
             case EPathSupport.Issues:
                 if (uiUtils.ChecklistItem("", QstTheme.Info, FontAwesomeIcon.InfoCircle))
-                    ImGui.SetTooltip(_L("This quest had validation issues.") + addendum);
+                    QstWidgets.Tooltip(_L("This quest had validation issues.") + addendum);
                 break;
             case EPathSupport.Supported:
                 if (uiUtils.ChecklistItem("", complete: true))
-                    ImGui.SetTooltip(_L("This quest is supported.") + addendum);
+                    QstWidgets.Tooltip(_L("This quest is supported.") + addendum);
                 break;
             default:
                 if (uiUtils.ChecklistItem("", complete: false))
-                    ImGui.SetTooltip(_L("This quest is not yet supported.") + addendum);
+                    QstWidgets.Tooltip(_L("This quest isn't supported yet.") + addendum);
                 break;
         }
 
@@ -260,7 +260,7 @@ internal sealed class JournalTable(
             using (pluginInterface.UiBuilder.IconFontFixedWidthHandle.Push())
                 ImGui.TextColored(QstTheme.Amber, FontAwesomeIcon.StopCircle.ToIconString());
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("This quest is in Stop Conditions."));
+                QstWidgets.Tooltip(_L("This quest is on the Stopping page."));
         }
     }
 
@@ -269,13 +269,13 @@ internal sealed class JournalTable(
         if (unlocked is { } done)
         {
             if (uiUtils.ChecklistItem("", done))
-                ImGui.SetTooltip(done ? _L("Unlocked") : _L("Not unlocked yet"));
+                QstWidgets.Tooltip(done ? _L("Unlocked") : _L("Not unlocked yet"));
             return;
         }
 
         (Vector4 color, FontAwesomeIcon icon, string text) = uiUtils.GetQuestStyle(questInfo.QuestId);
         uint? iconOverride = questInfo is QuestInfo info ? QuestJournalUtils.GetIconOverride(info, icon) : null;
         if (uiUtils.ChecklistItem(text.Split(':')[0], color, icon, iconOverride: iconOverride))
-            ImGui.SetTooltip(text);
+            QstWidgets.Tooltip(text);
     }
 }

@@ -32,11 +32,11 @@ internal sealed class CustomDeliveryComponent(
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip(!satisfy.IsInstalled
+            QstWidgets.Tooltip(!satisfy.IsInstalled
                 ? _L("Needs the Satisfy plugin (vsatisfy).")
                 : order.Count == 0
                     ? _L("Tick the NPCs to include with the box in front of their name.")
-                    : _L("Satisfy does the ticked NPCs from top to bottom until this week's deliveries run out. Same as /qst deliveries."));
+                    : _L("Satisfy does this week's deliveries for the ticked NPCs, top to bottom. Same as /qst deliveries."));
 
         ImGui.SameLine();
         ImGui.TextUnformatted(_LF("Deliveries left this week: {0}/12", CustomDeliveries.WeeklyLeft));
@@ -91,7 +91,7 @@ internal sealed class CustomDeliveryComponent(
             {
                 ImGui.TextUnformatted(npc.TurnInsLeft(chosen).ToString(CultureInfo.CurrentCulture));
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_LF("{0} of {1} used this week", npc.Used, npc.Max));
+                    QstWidgets.Tooltip(_LF("{0} of {1} used this week", npc.Used, npc.Max));
             }
 
             ImGui.TableNextColumn();
@@ -101,7 +101,7 @@ internal sealed class CustomDeliveryComponent(
                 bool hovered = ImGui.IsItemHovered();
                 QstWidgets.ThinProgressBar((float)npc.AchievementCur / npc.AchievementMax, QstTheme.Amber);
                 if (hovered && npc.Max > 0)
-                    ImGui.SetTooltip(_LF("{0:0.0} weeks to go", (npc.AchievementMax - npc.AchievementCur) / (float)npc.Max));
+                    QstWidgets.Tooltip(_LF("{0:0.0} weeks to go", (npc.AchievementMax - npc.AchievementCur) / (float)npc.Max));
             }
 
             ImGui.TableNextColumn();
@@ -159,6 +159,6 @@ internal sealed class CustomDeliveryComponent(
         ImGui.TextColored(request.Bonus ? QstTheme.WithAlpha(QstTheme.Amber, picked ? 1f : 0.55f)
             : picked ? QstTheme.Text : QstTheme.TextMuted, name);
         if (request.Bonus && ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Bonus this week"));
+            QstWidgets.Tooltip(_L("Bonus this week"));
     }
 }

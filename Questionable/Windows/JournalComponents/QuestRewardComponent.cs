@@ -41,7 +41,7 @@ internal sealed class QuestRewardComponent
         ImGui.Spacing();
 
         ImGui.BulletText(
-            _L("Only untradeable items are listed (e.g. the Wind-up Airship can be sold on the market board)."));
+            _L("Tradeable items (like the Wind-up Airship) aren't listed."));
 
         DrawAetheryteGroup();
         DrawChocoboPorterGroup();
@@ -150,7 +150,7 @@ internal sealed class QuestRewardComponent
             ImGui.Text(AetheryteName(aetheryteLocation));
             if (ImGui.IsItemHovered() && aetheryteData.TerritoryIds.TryGetValue(aetheryteLocation, out var territoryId))
             {
-                ImGui.SetTooltip(TerritoryData.GetNameAndId(territoryId));
+                QstWidgets.Tooltip(TerritoryData.GetNameAndId(territoryId));
             }
             foreach (QuestInfo info in results)
             {

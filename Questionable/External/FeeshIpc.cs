@@ -300,7 +300,7 @@ internal sealed class FeeshProvider(FeeshIpc feeshIpc, FishingState operation)
         _L("Fishing for quest items with Feesh"),
         _L("I stopped Feesh"),
         _L("Finish or stop fishing in Feesh before confirming."),
-        _L("WahTools must remain idle for at least 2 seconds. Confirmation only clears the block; start questing separately."));
+        _L("Feesh must remain idle for at least 2 seconds. Confirmation only clears the block; start questing separately."));
 
     public override OperationPill? GetTitleBarPill() =>
         TitleBarPill(_L("Check Feesh"), _L("Fishing"), _L("Stopping fishing"));
@@ -308,7 +308,7 @@ internal sealed class FeeshProvider(FeeshIpc feeshIpc, FishingState operation)
     // WahTools drives the character while busy.
     public override string? GetStartBlockReason() =>
         feeshIpc.IsAvailable() && feeshIpc.GetBusy() != false
-            ? _L("WahTools is busy or its status is unavailable. Finish its current work before starting questing.")
+            ? _L("Feesh is busy or its status is unavailable. Finish its current work before starting questing.")
             : null;
 }
 

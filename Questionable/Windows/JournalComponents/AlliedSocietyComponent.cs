@@ -74,9 +74,9 @@ internal sealed class AlliedSocietyComponent
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip(societies.Count == 0
+            QstWidgets.Tooltip(societies.Count == 0
                 ? _L("Tick the societies to include with the box in front of their name.")
-                : _L("Runs only the ticked societies. List order decides who gets the daily allowances, highest-rank quests first, including maxed societies. Unlock and rank-up quests run first when it is safe to switch; travel order decides which society to visit next."));
+                : _L("Does today's dailies for the ticked societies. Higher on the list gets your allowances first; unlocks and rank-ups go first."));
 
         using var disabled = ImRaii.Disabled(questController.IsRunning);
         for (int i = 0; i < societies.Count; i++)
@@ -110,7 +110,7 @@ internal sealed class AlliedSocietyComponent
         }
 
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Include in Do dailies"));
+            QstWidgets.Tooltip(_L("Include in Do dailies"));
         ImGui.SameLine();
     }
 
@@ -121,7 +121,7 @@ internal sealed class AlliedSocietyComponent
         if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Plus, _L("Add for testing")))
             addPending = true;
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Add quests needing attention from expanded categories to priority. Includes unreported paths once report data has loaded."));
+            QstWidgets.Tooltip(_L("Adds quests from expanded categories that need testing to Priority Quests, including unreported paths once reports have loaded."));
         ImGui.SameLine();
 
         bool preventQuestCompletion = configuration.Advanced.PreventQuestCompletion;
@@ -134,7 +134,7 @@ internal sealed class AlliedSocietyComponent
             pluginInterface.SavePluginConfig(configuration);
         }
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Prevent quest completion"));
+            QstWidgets.Tooltip(_L("Prevent quest completion"));
 
         ImGui.SameLine();
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.SignOutAlt, abandonBeforeComplete ? QstTheme.Accent : null))
@@ -143,7 +143,7 @@ internal sealed class AlliedSocietyComponent
             pluginInterface.SavePluginConfig(configuration);
         }
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Abandon quest before completion"));
+            QstWidgets.Tooltip(_L("Abandon quest before completion"));
 
         ImGui.SameLine();
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.MinusCircle, removeWhenAbandoned ? QstTheme.Accent : null))
@@ -152,7 +152,7 @@ internal sealed class AlliedSocietyComponent
             pluginInterface.SavePluginConfig(configuration);
         }
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Remove from priority when abandoned"));
+            QstWidgets.Tooltip(_L("Remove from Priority Quests when abandoned"));
 
         ImGui.SameLine();
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Terminal, runCommandAfterStop ? QstTheme.Accent : null))
@@ -161,7 +161,7 @@ internal sealed class AlliedSocietyComponent
             pluginInterface.SavePluginConfig(configuration);
         }
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Run command when Questionable finishes automatic questing"));
+            QstWidgets.Tooltip(_L("Run command when Questionable finishes automatic questing"));
 
         ImGui.SameLine();
         return addPending;
@@ -211,7 +211,7 @@ internal sealed class AlliedSocietyComponent
             string details = ReportUi.GroupDescription(reports);
             if (debug && missing.Count > 0)
                 details += "\n" + _LF("Missing or disabled paths: {0}", string.Join(", ", missing));
-            ReportUi.Tooltip(details);
+            QstWidgets.Tooltip(details);
         }
 
         questJournalUtils.ShowGroupContextMenu($"DrawAlliedSocietyQuests{alliedSociety}", quests,

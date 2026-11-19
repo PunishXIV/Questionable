@@ -180,7 +180,7 @@ public sealed class QuestFunctionsTests
             .With(nameof(QuestInfo.AlliedSocietyRank), EAlliedSocietyRank.Recognized));
         _state.AlliedSocieties[(byte)EAlliedSociety.Amaljaa] = ((byte)rank, (ushort)reputation, (ushort)needed);
 
-        string[] expected = locked ? ["Society rep"] : [];
+        string[] expected = locked ? ["Society reputation"] : [];
         Assert.Equal(expected, LockReasons(1));
     }
 

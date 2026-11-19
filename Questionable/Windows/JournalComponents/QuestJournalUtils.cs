@@ -81,7 +81,7 @@ internal sealed class QuestJournalUtils
                 {
                     if (questController.PriorityManager.IsAcceptOnly(quest.Id))
                     {
-                        if (ImGui.MenuItem(_L("Change to normal priority quest")))
+                        if (ImGui.MenuItem(_L("Change to normal")))
                             questController.PriorityManager.ClearAcceptOnly(quest.Id);
                     }
                     else
@@ -158,14 +158,14 @@ internal sealed class QuestJournalUtils
 
         using (ImRaii.PushIndent())
         {
-            if (ImGui.MenuItem(_L("Add to Stop condition (on complete)")) &&
+            if (ImGui.MenuItem(_L("Stop after completing")) &&
                 !configuration.Stop.QuestsToStopAfter.Contains(questInfo.QuestId))
             {
                 configuration.Stop.QuestsToStopAfter.Add(questInfo.QuestId);
                 pluginInterface.SavePluginConfig(configuration);
             }
 
-            if (ImGui.MenuItem(_L("Add to Stop condition (on accept)")) &&
+            if (ImGui.MenuItem(_L("Stop after accepting")) &&
                 !configuration.Stop.QuestsToStopWhenAccepted.Contains(questInfo.QuestId))
             {
                 configuration.Stop.QuestsToStopWhenAccepted.Add(questInfo.QuestId);

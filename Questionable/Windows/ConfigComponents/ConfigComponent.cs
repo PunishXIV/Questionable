@@ -106,6 +106,6 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
+            QstWidgets.Tooltip(_L("Hold CTRL to enable this button."));
     }
 }

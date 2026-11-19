@@ -63,8 +63,8 @@ internal sealed class QuickAccessComponent
     internal void DrawPriorityQuestsButton(bool showLabel = false)
     {
         if (QstWidgets.RailButton(FontAwesomeIcon.AngleDoubleUp,
-                _L("Up next"),
-                _L("Priority quests, done as soon as possible."),
+                _L("Priority Quests"),
+                _L("Quests done as soon as possible."),
                 enabled: objectTable[0] != null,
                 showLabel: showLabel))
             queueComponent.Open();
@@ -74,7 +74,7 @@ internal sealed class QuickAccessComponent
     {
         if (QstWidgets.RailButton(FontAwesomeIcon.Gift,
                 _L("Redeem Reward Items"),
-                _L("Use the reward items in your inventory now, such as mounts, minions and orchestrion rolls.\nSkips items on the auto-redeem blacklist. Same as /qst redeem."),
+                _L("Opens reward items in your bags now (mounts, minions, orchestrion rolls...), except blacklisted ones. Same as /qst redeem."),
                 enabled: objectTable[0] != null && !questController.IsRunning,
                 showLabel: showLabel))
             questStarter.RedeemRewards();
@@ -83,7 +83,7 @@ internal sealed class QuickAccessComponent
     private void DrawDeliveriesButton()
     {
         string tooltip = satisfy.IsInstalled
-            ? _L("Has Satisfy do this week's custom deliveries for the NPCs ticked in Journal Progress, Custom Deliveries tab. Same as /qst deliveries.")
+            ? _L("Has Satisfy do this week's custom deliveries for the NPCs ticked on the Custom Deliveries page in Journal Progress. Same as /qst deliveries.")
             : _L("Satisfy (vsatisfy) is not available. Please install it first.");
         if (QstWidgets.RailButton(FontAwesomeIcon.Truck, _L("Custom Deliveries"), tooltip,
                 enabled: objectTable[0] != null && !questController.IsRunning && satisfy.IsInstalled))
@@ -106,9 +106,9 @@ internal sealed class QuickAccessComponent
     {
         bool isBossModAvailable = commandManager.Commands.ContainsKey("/vbm");
         string tooltip = isBossModAvailable
-            ? _L("Clear BossMod obstacle maps to fix pathfinding issues. Hold CTRL to enable this button")
-            : _L("BossMod is not available. Please install it first.");
-        if (QstWidgets.RailButton(FontAwesomeIcon.RoadBarrier, _L("Clear BossMod obstacle maps"), tooltip,
+            ? _L("Clear Boss Mod obstacle maps to fix pathfinding issues. Hold CTRL to enable this button.")
+            : _L("Boss Mod is not available. Please install it first.");
+        if (QstWidgets.RailButton(FontAwesomeIcon.RoadBarrier, _L("Clear Boss Mod obstacle maps"), tooltip,
                 enabled: isBossModAvailable && ImGui.IsKeyDown(ImGuiKey.ModCtrl),
                 showLabel: showLabel))
             bossModIpc.ClearObstacleMaps();
@@ -125,7 +125,7 @@ internal sealed class QuickAccessComponent
     internal void DrawJournalProgressButton(bool showLabel = false)
     {
         if (QstWidgets.RailButton(FontAwesomeIcon.BookBookmark, _L("Journal Progress"),
-                _L("Utility to browse quest data used by this plugin"),
+                _L("Quests, unlocks, allied societies and custom deliveries"),
                 showLabel: showLabel))
             journalProgressWindow.ToggleOrUncollapse();
     }

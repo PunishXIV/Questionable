@@ -117,14 +117,14 @@ internal sealed class StopConditionComponent : ConfigComponent
         }
 
         bool priorityListEmpty = Configuration.Stop.PriorityListEmpty;
-        if (ImGui.Checkbox(_L("Stop when the priority list is empty"), ref priorityListEmpty))
+        if (ImGui.Checkbox(_L("Stop when the Priority Quests list is empty"), ref priorityListEmpty))
         {
             Configuration.Stop.PriorityListEmpty = priorityListEmpty;
             Save();
         }
 
         ImGui.SameLine();
-        ImGuiComponents.HelpMarker(_L("Questionable only does the quests on your priority list, then stops instead of going on with the story or other quests."));
+        ImGuiComponents.HelpMarker(_L("Questionable only does your Priority Quests, then stops instead of going on with the story or other quests."));
 
         ImGui.Spacing();
 
@@ -212,7 +212,7 @@ internal sealed class StopConditionComponent : ConfigComponent
         ImGui.SameLine();
         ImGui.TextUnformatted(_L("seconds before the next step"));
         ImGui.SameLine();
-        ImGuiComponents.HelpMarker(_L("For SND scripts or commands that keep running: Questionable waits this long after the commands before logging out, closing the game or switching to the next character. Lifestream travel is waited for on its own."));
+        ImGuiComponents.HelpMarker(_L("For SND scripts or other long commands: wait this long before logging out, closing the game or switching characters. Lifestream travel is waited for anyway."));
 
         ImGui.AlignTextToFramePadding();
         ImGui.TextUnformatted(_L("After that"));
@@ -225,7 +225,7 @@ internal sealed class StopConditionComponent : ConfigComponent
 
         DrawCheckbox(_L("Do this after a problem stop too (stuck, too many deaths, missing path)"),
             () => Configuration.Stop.RunAfterProblemStop, x => Configuration.Stop.RunAfterProblemStop = x,
-            _L("Off: travel, the commands and the action above only run when a run finished: nothing left to do, a stop condition above, or one of the stop buttons in the main window. A character list also stops at a character that hit a problem."));
+            _L("Off: travel, commands and the action above only run after a normal finish (nothing left, a stop condition, or a stop button in the quest window). A character list also stops at a character that hit a problem."));
     }
 
     private void DrawQuestStopSection(string label, string sectionId, QuestSelector selector, List<ElementId> quests,
@@ -248,7 +248,7 @@ internal sealed class StopConditionComponent : ConfigComponent
             }
 
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Adds quests copied from a stop list or the priority list."));
+                QstWidgets.Tooltip(_L("Adds quests copied from a stop list or Priority Quests."));
 
             if (quests.Count > 0)
             {
@@ -267,7 +267,7 @@ internal sealed class StopConditionComponent : ConfigComponent
                 }
 
                 if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                    ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
+                    QstWidgets.Tooltip(_L("Hold CTRL to enable this button."));
             }
 
             Quest? itemToRemove = null;
@@ -321,7 +321,7 @@ internal sealed class StopConditionComponent : ConfigComponent
         ImGui.SetNextItemWidth(170 * ImGuiHelpers.GlobalScale);
         bool open = ImGui.BeginCombo("##Preset", preview, ImGuiComboFlags.HeightLarge);
         if (!open && ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("When this quest completes: stop, or add a preset to the priority quests and keep going."));
+            QstWidgets.Tooltip(_L("When this quest is done: stop, or add a preset to Priority Quests and keep going."));
         if (!open)
             return;
 

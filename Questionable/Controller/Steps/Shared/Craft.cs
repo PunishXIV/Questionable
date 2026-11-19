@@ -143,7 +143,7 @@ internal static class Craft
         {
             ArtisanStartResult.Sent => true,
             ArtisanStartResult.MissingList => false,
-            _ => throw new TaskException($"Artisan list request was not accepted ({result}); recipe fallback is unsafe"),
+            _ => throw new TaskException($"Artisan didn't accept the crafting list ({result})."),
         };
     }
 

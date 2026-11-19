@@ -22,7 +22,6 @@ public sealed class AlliedSocietyDataTests
             .With(nameof(QuestInfo.AlliedSociety), society)
             .With(nameof(QuestInfo.IsRepeatable), repeatable)));
 
-    // Without a listed giver earlier in the quest, the mount counts as a leftover and QST teleports off it.
     [Fact]
     public void MountActions_HaveListedGiver()
     {

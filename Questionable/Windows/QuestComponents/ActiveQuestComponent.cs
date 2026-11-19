@@ -95,7 +95,7 @@ internal sealed partial class ActiveQuestComponent
                 }
             }
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(inDuty ? _L("Ask the game to leave this duty") : _L("Ask the game to abandon this quest"));
+                QstWidgets.Tooltip(inDuty ? _L("Ask the game to leave this duty") : _L("Ask the game to abandon this quest"));
         }
 
         if (currentQuest != null)
@@ -104,7 +104,7 @@ internal sealed partial class ActiveQuestComponent
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExclamationCircle))
                 ImGui.OpenPopup("##QuestReport");
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Report how this quest's path went"));
+                QstWidgets.Tooltip(_L("Report how this quest's path went"));
             DrawReportPopup(currentQuest);
         }
     }
@@ -147,7 +147,7 @@ internal sealed partial class ActiveQuestComponent
         ImGui.SameLine();
         QstWidgets.Chip(ReportUi.Label(status), ReportUi.Color(status));
         if (ImGui.IsItemHovered())
-            ReportUi.Tooltip(ReportUi.Description(status));
+            QstWidgets.Tooltip(ReportUi.Description(status));
     }
 
     private void DrawCharacterRun()
@@ -161,7 +161,7 @@ internal sealed partial class ActiveQuestComponent
             }
 
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Cancel what is left after the run: travel, commands, logging out or the next character."));
+                QstWidgets.Tooltip(_L("Cancel what is left after the run: travel, commands, logging out or the next character."));
             ImGui.SameLine();
             ImGui.TextColored(QstTheme.Amber, ending);
         }
@@ -172,7 +172,7 @@ internal sealed partial class ActiveQuestComponent
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Times))
             characterRun.Cancel();
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Cancel the character list. Questing on the current character keeps going."));
+            QstWidgets.Tooltip(_L("Cancel the character list. Questing on the current character keeps going."));
         ImGui.SameLine();
         ImGui.TextColored(QstTheme.Accent, status);
     }
@@ -276,7 +276,7 @@ internal sealed partial class ActiveQuestComponent
         ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
         IEnumerable<string> names = SetAsideQuests.All.Keys
             .Select(x => questRegistry.TryGetQuest(x, out Quest? quest) ? quest.Info.Name : x.ToString());
-        ImGui.SetTooltip(string.Join("\n", names) + "\n\n" +
+        QstWidgets.Tooltip(string.Join("\n", names) + "\n\n" +
                          _L("These wait on a duty you run yourself. Click to bring them back."));
         if (ImGui.IsItemClicked())
             SetAsideQuests.Clear();
@@ -304,7 +304,7 @@ internal sealed partial class ActiveQuestComponent
             }
             if (ImGui.IsItemHovered())
             {
-                ImGui.SetTooltip(_L("Click to reload quest path data from server"));
+                QstWidgets.Tooltip(_L("Click to reload quest path data from server"));
                 ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
             }
 
@@ -336,11 +336,11 @@ internal sealed partial class ActiveQuestComponent
                         {
                             ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
                             if (reasons != null && reasons.Length > 0)
-                                ImGui.SetTooltip(status + "\n  " + string.Join("\n  ", reasons));
+                                QstWidgets.Tooltip(status + "\n  " + string.Join("\n  ", reasons));
                             else if (acceptedButHidden)
-                                ImGui.SetTooltip(_L("This quest is accepted, but is hidden in your Journal."));
+                                QstWidgets.Tooltip(_L("This quest is accepted, but is hidden in your Journal."));
                             else
-                                ImGui.SetTooltip(status);
+                                QstWidgets.Tooltip(status);
                         }
                     }
                 }
@@ -355,7 +355,7 @@ internal sealed partial class ActiveQuestComponent
             gatheringController.Stop(_L("Manual (no active quest)"));
         }
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Stop all actions now."));
+            QstWidgets.Tooltip(_L("Stop all actions now."));
 
         ImGui.SameLine();
         quickAccessComponent.DrawTroubleshootingButton(showLabel: true);
@@ -493,8 +493,8 @@ internal sealed partial class ActiveQuestComponent
 
             if (ImGui.IsItemHovered())
             {
-                ImGui.SetTooltip(
-                    _L("This quest is loaded from your 'pluginConfigs\\Questionable\\Quests' directory. This gets loaded even if Questionable ships with a newer/different version of the quest."));
+                QstWidgets.Tooltip(
+                    _L("Loaded from your own Quests folder (pluginConfigs\\Questionable\\Quests), even if Questionable has a newer version."));
             }
         }
 
@@ -624,7 +624,7 @@ internal sealed partial class ActiveQuestComponent
             if (ImGui.IsItemHovered())
             {
                 ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-                ImGui.SetTooltip(_LF("This quest was added to the game in Patch {0}.\nClick here to view the changelog from this patch.", patch));
+                QstWidgets.Tooltip(_LF("This quest was added to the game in Patch {0}.\nClick here to view the changelog from this patch.", patch));
             }
             if (ImGui.IsItemClicked())
                 MoreInfoUtils.SearchConsoleGamesWiki($"Patch {patch}");
@@ -696,7 +696,7 @@ internal sealed partial class ActiveQuestComponent
             if (ImGui.IsItemHovered())
             {
                 ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-                ImGui.SetTooltip(questWork.Tooltip);
+                QstWidgets.Tooltip(questWork.Tooltip);
                 ImGui.SameLine();
                 using (ImRaii.PushFont(UiBuilder.IconFont))
                 {
@@ -778,7 +778,7 @@ internal sealed partial class ActiveQuestComponent
             }
 
             if (characterRun.StartsList && ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("This character is ticked on the Profiles tab: when its run ends, Questionable switches to the next ticked character."));
+                QstWidgets.Tooltip(_L("On the character list: when this run ends, Questionable switches to the next ticked character."));
 
             // Step is for path makers; its icon reads like Skip to everyone else.
             if (configuration.Advanced.Debug)
@@ -788,7 +788,7 @@ internal sealed partial class ActiveQuestComponent
                 if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.StepForward, _L("Step")))
                     questStarter.StartSingleStep(_L("UI step"));
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_L("Execute next step and then stop."));
+                    QstWidgets.Tooltip(_L("Execute next step and then stop."));
             }
         }
 
@@ -804,7 +804,7 @@ internal sealed partial class ActiveQuestComponent
             stopPolicy.CancelEnding();
         }
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Stop all actions now."));
+            QstWidgets.Tooltip(_L("Stop all actions now."));
 
         ImGui.SameLine();
         quickAccessComponent.DrawTroubleshootingButton(showLabel: true);
@@ -839,7 +839,7 @@ internal sealed partial class ActiveQuestComponent
                 }
 
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_L("Skip the current step of the quest path."));
+                    QstWidgets.Tooltip(_L("Skip the current step of the quest path."));
                 rowEmpty = false;
             }
 
@@ -854,7 +854,7 @@ internal sealed partial class ActiveQuestComponent
                     commandManager.ProcessCommand($"/questgraph {currentQuest.Quest.Id}");
 
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(commandManager.Commands.ContainsKey("/questgraph")
+                    QstWidgets.Tooltip(commandManager.Commands.ContainsKey("/questgraph")
                         ? _LF("Left click: Show information about '{0}' in Quest Map plugin.\nRight click: Show its quest graph.", currentQuest.Quest.Info.Name)
                         : _LF("Show information about '{0}' in Quest Map plugin.", currentQuest.Quest.Info.Name));
             }
@@ -885,8 +885,8 @@ internal sealed partial class ActiveQuestComponent
                 ImGui.SameLine();
 
                 if (QstWidgets.SegmentToggle(FontAwesomeIcon.Gem, questController.StopBeforeTeleport,
-                        _L("Cancel scheduled stop before teleport."),
-                        _L("Stop before the next teleport (aetheryte or Vesper Bay ticket).")))
+                        _L("Cancel the stop before the next zone trip."),
+                        _L("Stop before the next trip to another zone.")))
                     questController.StopBeforeTeleport = !questController.StopBeforeTeleport;
 
                 ImGui.SameLine();
@@ -1081,10 +1081,11 @@ internal sealed partial class ActiveQuestComponent
                 .Where(x => !x.IsAvailable)
                 .ToList();
             using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
-            ImGui.Text(
-                _L("Certain priority quest (e.g. class quests) may be started/completed by the plugin prior to continuing, usually at a teleport step."));
+            using (ImRaii.TextWrapPos(ImGui.GetFontSize() * 35))
+                ImGui.TextUnformatted(
+                    _L("Some quests (e.g. class quests) may be done first, usually when the story moves to another zone."));
             ImGui.Separator();
-            ImGui.Text(_L("Available priority quests:"));
+            ImGui.Text(_L("Available Priority Quests:"));
             if (availablePriorityQuests.Count > 0)
             {
                 foreach (ElementId questId in availablePriorityQuests)
@@ -1098,7 +1099,7 @@ internal sealed partial class ActiveQuestComponent
 
             if (unavailablePriorityQuests.Count > 0)
             {
-                ImGui.Text(_L("Unavailable priority quests:"));
+                ImGui.Text(_L("Unavailable Priority Quests:"));
                 foreach ((ElementId questId, string? reason) in unavailablePriorityQuests)
                 {
                     if (questRegistry.TryGetQuest(questId, out Quest? quest))

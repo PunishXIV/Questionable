@@ -27,7 +27,7 @@ internal static class AbandonQuest
         {
             if (objectTable[0] == null || !clientState.IsLoggedIn || Task.Quest == null)
             {
-                throw new TaskException("Player is not logged in or quest is null");
+                throw new TaskException("Not logged in, or there's no quest to abandon.");
             }
 
             if (condition[ConditionFlag.InCombat] ||

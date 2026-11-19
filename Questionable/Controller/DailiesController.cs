@@ -40,7 +40,7 @@ internal sealed class DailiesController(
         List<EAlliedSociety> societies = configuration.Dailies.Societies;
         if (societies.Count == 0)
         {
-            chatGui.PrintError(_L("Tick the societies for Do dailies in the journal's Allied Societies tab first."),
+            chatGui.PrintError(_L("Tick the societies for Do dailies on the Allied Societies page in Journal Progress first."),
                 CommandHandler.MessageTag, CommandHandler.TagColor);
             return;
         }
@@ -134,7 +134,6 @@ internal sealed class DailiesController(
                 bool manualBattle = !info.IsRepeatable && quest != null && quest.AllSteps().Any(x =>
                     x.Sequence.Sequence >= sequence && x.Step.InteractionType == EInteractionType.SinglePlayerDuty &&
                     !bossMod.CanRunQuestBattle(id, x.Step.SinglePlayerDutyOptions));
-                // One society's unlock problem skips that society; the others still run.
                 if (locked && !accepted && (blocked != null || manualBattle))
                 {
                     lockedReason ??= _LF("Not unlocked yet (unlock quest: {0}). {1}", unlockName,
@@ -167,8 +166,6 @@ internal sealed class DailiesController(
             ? _LF("Not unlocked yet (unlock quest: {0}). {1}", name, string.Join(". ", missing))
             : _LF("Not unlocked yet (unlock quest: {0}); it can't be accepted yet.", name);
 
-    // Unfinished quests the unlock quest waits on, earliest first, ending with the unlock quest.
-    // Stops at an unfinished main story quest: Do dailies never runs the story.
     internal static (List<QuestId> Chain, QuestId? Story) UnlockChain(QuestId unlock,
         Func<QuestId, IQuestInfo?> info, Func<PreviousQuestInfo, bool> met)
     {

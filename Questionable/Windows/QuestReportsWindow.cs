@@ -112,7 +112,7 @@ internal sealed class QuestReportsWindow : LWindow
                 if (ImGui.Button(_L("Verified working")))
                     Change(view, null);
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                ImGui.SetTooltip(_L("Verify the currently installed path for 30 days and resolve problems recorded when this view was loaded. Later reports remain open. Only use this after testing the fix."));
+                QstWidgets.Tooltip(_L("Verify the currently installed path for 30 days and resolve problems recorded when this view was loaded. Later reports remain open. Only use this after testing the fix."));
         }
         if (view.Local)
             ImGui.TextColored(QstTheme.Amber,
@@ -154,13 +154,13 @@ internal sealed class QuestReportsWindow : LWindow
             ImGui.TableNextColumn();
             ImGui.TextColored(QstTheme.TextMuted, report.Path);
             if (report.Path == view.Path && ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Currently installed path"));
+                QstWidgets.Tooltip(_L("Currently installed path"));
             ImGui.TableNextColumn();
             if (report.ResolvedAt is { } resolved)
             {
                 ImGui.TextDisabled(_L("Resolved"));
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_LF("Resolved by {0} on {1}", report.ResolvedBy ?? "?",
+                    QstWidgets.Tooltip(_LF("Resolved by {0} on {1}", report.ResolvedBy ?? "?",
                         DateTimeOffset.FromUnixTimeMilliseconds(resolved).LocalDateTime.ToString("g", CultureInfo.CurrentCulture)));
             }
             else if (report.Kind == "playerStopped")
@@ -180,7 +180,7 @@ internal sealed class QuestReportsWindow : LWindow
             {
                 ImGui.TextColored(QstTheme.TextMuted, _LF("{0} last actions (hover)", actions.Count));
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(string.Join("\n", actions));
+                    QstWidgets.Tooltip(string.Join("\n", actions));
             }
         }
     }

@@ -44,7 +44,7 @@ internal sealed class ProfilesConfigComponent
         }
 
         ImGui.SameLine();
-        ImGuiComponents.HelpMarker(_L("The other tabs change the profile picked here, which is also in use while this window is open. Closing the window switches back to your character's profile."));
+        ImGuiComponents.HelpMarker(_L("The other pages change the profile picked here, which is also in use while this window is open. Closing the window switches back to your character's profile."));
 
         if (Configuration.ActiveProfileName is not { } activeProfile)
             return;
@@ -71,7 +71,7 @@ internal sealed class ProfilesConfigComponent
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip(_L("Hold Ctrl to delete. Characters using this profile go back to the default settings."));
+            QstWidgets.Tooltip(_L("Hold CTRL to delete. Characters using this profile go back to the default settings."));
     }
 
     private void DrawCreateProfile()
@@ -115,7 +115,7 @@ internal sealed class ProfilesConfigComponent
             return;
         }
 
-        ImGui.TextWrapped(_L("Tick characters to quest on them in a row. Start Questionable on a ticked character: when its run ends, Questionable switches to the next ticked one. Each one uses its own profile, including its stop conditions."));
+        ImGui.TextWrapped(_L("Tick characters to quest on them in a row. Start on a ticked one; when its run ends, Questionable moves to the next. Each uses its own profile and stop conditions."));
         ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("The run-end commands on the Stopping page run for every character; logging out or closing the game only happens after the last one."));
         DrawRun();
@@ -132,7 +132,7 @@ internal sealed class ProfilesConfigComponent
         if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Times, _L("Cancel list")))
             characterRun.Cancel();
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Stops switching characters. Questing on the current character keeps going."));
+            QstWidgets.Tooltip(_L("Stops switching characters. Questing on the current character keeps going."));
     }
 
     private void DrawTable(List<(string ContentId, string Name)> characters, bool canTick)

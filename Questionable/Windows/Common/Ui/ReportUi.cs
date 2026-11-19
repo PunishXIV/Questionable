@@ -49,13 +49,6 @@ internal static class ReportUi
             entries.Count(x => x.Status.State == EReportState.Working)) +
         "\n" + string.Join('\n', entries.Select(x => $"{x.Name}: {Label(x.Status)}"));
 
-    public static void Tooltip(string text)
-    {
-        using var tooltip = ImRaii.Tooltip();
-        using var wrap = ImRaii.TextWrapPos(ImGui.GetFontSize() * 35);
-        ImGui.TextUnformatted(text);
-    }
-
     private static string Date(long timestamp) =>
         DateTimeOffset.FromUnixTimeMilliseconds(timestamp).LocalDateTime.ToString("g", CultureInfo.CurrentCulture);
 }

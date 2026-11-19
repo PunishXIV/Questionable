@@ -82,7 +82,7 @@ internal sealed class QuestStarter(
     {
         if (questController.IsRunning)
         {
-            chatGui.PrintError("Busy!", CommandHandler.MessageTag, CommandHandler.TagColor);
+            chatGui.PrintError(_L("Stop questing first."), CommandHandler.MessageTag, CommandHandler.TagColor);
             return;
         }
 
@@ -91,14 +91,14 @@ internal sealed class QuestStarter(
         List<ITask> tasks = RedeemRewardItems.CreateTasks(questData, dataManager, overrideConfig: true);
         if (tasks.Count == 0)
         {
-            chatGui.Print("Nothing to redeem.", CommandHandler.MessageTag, CommandHandler.TagColor);
+            chatGui.Print(_L("Nothing to redeem."), CommandHandler.MessageTag, CommandHandler.TagColor);
             return;
         }
 
         if (!dry)
             foreach (ITask task in tasks)
                 questController.UnsafeEnqueueManualTask(task);
-        chatGui.Print($"Redeeming {tasks.Count - 1} item{(tasks.Count != 2 ? "s" : "")}", CommandHandler.MessageTag, CommandHandler.TagColor);
+        chatGui.Print(_LF("Redeeming {0} item(s).", tasks.Count - 1), CommandHandler.MessageTag, CommandHandler.TagColor);
         if (dry)
             foreach (ITask task in tasks)
                 if (task is RedeemRewardItems.Task redeemTask)
@@ -111,7 +111,7 @@ internal sealed class QuestStarter(
     {
         if (questController.IsRunning)
         {
-            chatGui.PrintError("Busy!", CommandHandler.MessageTag, CommandHandler.TagColor);
+            chatGui.PrintError(_L("Stop questing first."), CommandHandler.MessageTag, CommandHandler.TagColor);
             return;
         }
 
@@ -125,7 +125,7 @@ internal sealed class QuestStarter(
         List<uint> npcs = configuration.General.DeliveryNpcs;
         if (npcs.Count == 0)
         {
-            chatGui.Print(_L("Tick the NPCs to deliver to in Journal Progress, Custom Deliveries tab."),
+            chatGui.Print(_L("Tick the NPCs to deliver to on the Custom Deliveries page in Journal Progress."),
                 CommandHandler.MessageTag, CommandHandler.TagColor);
             return;
         }
@@ -142,7 +142,7 @@ internal sealed class QuestStarter(
     {
         if (questController.IsRunning)
         {
-            chatGui.PrintError("Busy!", CommandHandler.MessageTag, CommandHandler.TagColor);
+            chatGui.PrintError(_L("Stop questing first."), CommandHandler.MessageTag, CommandHandler.TagColor);
             return;
         }
 

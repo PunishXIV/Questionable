@@ -110,7 +110,7 @@ internal sealed class QuestPriorityManager(
         catch (Exception e)
         {
             logger.LogError(e, "Failed to insert quest in priority list");
-            chatGui.PrintError("Failed to insert quest in priority list, please check /xllog for details.",
+            chatGui.PrintError(_L("Couldn't add the quest to Priority Quests. Check /xllog for details."),
                 CommandHandler.MessageTag, CommandHandler.TagColor);
             return false;
         }

@@ -98,7 +98,7 @@ internal sealed class CommandHandler : IDisposable
 
         _clientState.Logout += OnLogout;
         // Shown in the plugin installer; the Debug-only commands stay out of it.
-        string[] help = [_L("Opens the Questing window"), .. HelpLines()];
+        string[] help = [_L("Opens the quest window"), .. HelpLines()];
         _commandManager.AddHandler("/qst", new(ProcessCommand)
         {
             HelpMessage = string.Join($"{Environment.NewLine}\t", help)
@@ -418,25 +418,25 @@ internal sealed class CommandHandler : IDisposable
         _L("/qst start - starts doing quests"),
         _L("/qst stop - stops doing quests"),
         _L("/qst dailies - accepts and does the allied society dailies ticked in the journal"),
-        _L("/qst reload - reload all quest data"),
+        _L("/qst reload - reloads all quest data"),
         _L("/qst skipstep - skips the current quest step, e.g. one you finished by hand"),
         _L("/qst next <questId> - sets the next quest to do (or clears it if no questId is specified)"),
         _L("/qst which - shows all quests starting with your selected target"),
         _L("/qst zone - shows all quests starting in the current zone (only includes quests with a known quest path, and currently visible unaccepted quests)"),
         _L("/qst journal - toggles the Journal Progress window"),
-        _L("/qst priority - opens the Up next tab"),
+        _L("/qst priority - opens the Priority Quests tab"),
         _L("/qst validation - toggles the Quest Validation window"),
-        _L("/qst cleanup - adds every quest you already have open to the priority list, finished ones first"),
-        _L("/qst handle-interrupt - makes Questionable handle queued interrupts immediately (useful if you manually start combat)"),
-        _L("/qst clearlog - clears QuestCompletionLog.json"),
-        _L("/qst redeem - Redeem all reward items in inventory"),
-        _L("/qst deliveries - Has Satisfy do this week's custom deliveries"),
+        _L("/qst cleanup - adds every quest you already have open to Priority Quests, finished ones first"),
+        _L("/qst handle-interrupt - makes Questionable fight now, e.g. after you pulled enemies yourself"),
+        _L("/qst clearlog - clears the completed-quest log Stuck? copies"),
+        _L("/qst redeem - redeems all reward items in your inventory"),
+        _L("/qst deliveries - has Satisfy do this week's custom deliveries"),
     ];
 
     private void PrintHelp(string[] lines)
     {
         _chatGui.Print(_L("Available commands:"), MessageTag, TagColor);
-        _chatGui.Print(_L("/qst - toggles the Questing window"), MessageTag, TagColor);
+        _chatGui.Print(_L("/qst - toggles the quest window"), MessageTag, TagColor);
         foreach (string line in lines)
             _chatGui.Print(line, MessageTag, TagColor);
     }

@@ -103,7 +103,7 @@ internal sealed class PathEditorWindow : LWindow
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip(_L("Writes the path to your user quest directory and reloads all quest data.\nSaving reformats the file (property order, omitted defaults)."));
+            QstWidgets.Tooltip(_L("Writes the path to your user quest directory and reloads all quest data.\nSaving reformats the file (property order, omitted defaults)."));
 
         ImGui.SameLine();
         using (ImRaii.Disabled(!_session.Dirty))
@@ -116,7 +116,7 @@ internal sealed class PathEditorWindow : LWindow
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.FolderOpen))
             QuestRegistry.OpenFolder();
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Open Quests folder"));
+            QstWidgets.Tooltip(_L("Open Quests folder"));
 
         if (_session.Info is { } editableInfo)
         {
@@ -124,7 +124,7 @@ internal sealed class PathEditorWindow : LWindow
             if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.ExternalLinkAlt))
                 QuestRegistry.OpenEditor(editableInfo);
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Open this quest in your default .json text editor"));
+                QstWidgets.Tooltip(_L("Open this quest in your default .json text editor"));
         }
     }
 
@@ -197,7 +197,7 @@ internal sealed class PathEditorWindow : LWindow
             }
 
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Add a step to this sequence"));
+                QstWidgets.Tooltip(_L("Add a step to this sequence"));
 
             if (sequence.Steps.Count == 0)
             {
@@ -212,7 +212,7 @@ internal sealed class PathEditorWindow : LWindow
                 }
 
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_L("Remove this empty sequence"));
+                    QstWidgets.Tooltip(_L("Remove this empty sequence"));
             }
         }
 

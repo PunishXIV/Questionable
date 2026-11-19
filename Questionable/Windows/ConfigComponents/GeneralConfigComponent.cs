@@ -152,7 +152,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         DrawCheckbox(_L("Namazu: prefer Crafting job over Gatherer"),
             () => Configuration.Advanced.NamazuPreferCraft,
             value => Configuration.Advanced.NamazuPreferCraft = value,
-            _L("Namazu tribe quests can be done as either DoH or DoL, this lets you set that preference."));
+            _L("Namazu quests can be done as a crafter or a gatherer; this picks which."));
 
         ImGui.BeginGroup();
         using (ImRaii.Disabled(!StylistIpc.IsInstalled))
@@ -168,7 +168,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         }
         ImGui.EndGroup();
         if (!StylistIpc.IsInstalled && ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Stylist is not installed."));
+            QstWidgets.Tooltip(_L("Stylist is not installed."));
 
         string chocoboName = Configuration.General.ChocoboName;
         ImGui.SetNextItemWidth(size.X / 2);
@@ -206,10 +206,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             if (ImGui.IsItemHovered())
             {
-                using (ImRaii.Tooltip())
-                {
-                    ImGui.Text(_L("When disabled, Questionable's windows use your Dalamud style/theme instead."));
-                }
+                QstWidgets.Tooltip(_L("When disabled, Questionable's windows use your Dalamud style/theme instead."));
             }
 
             bool showIncompleteEvents = Configuration.General.ShowIncompleteSeasonalEvents;
@@ -250,7 +247,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Takes effect next time the plugin is loaded"));
+                QstWidgets.Tooltip(_L("Takes effect the next time the plugin loads."));
 
             bool hideRemainingTasks = Configuration.General.HideRemainingTasks;
             if (ImGui.Checkbox(_L("Hide remaining tasks"), ref hideRemainingTasks))
@@ -287,17 +284,17 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 Save();
             }
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("If you are on free trial, or do not own the current expansion, this will hide content in locked expansions"));
+                QstWidgets.Tooltip(_L("Hides content from expansions you don't own (or on the free trial)."));
 
             DrawCheckbox(_L("Show window on start"),
                 () => Configuration.Advanced.ShowWindowOnStart,
                 value => Configuration.Advanced.ShowWindowOnStart = value,
-                _L("When enabled, Questionable's progress window will show when the plugin is loaded."));
+                _L("When enabled, the quest window opens when the plugin loads."));
 
             DrawCheckbox(_L("Start minimized"),
                 () => Configuration.Advanced.StartMinimized,
                 value => Configuration.Advanced.StartMinimized = value,
-                _L("When enabled, Questionable's progress window will be in its minimized state when loaded."));
+                _L("When enabled, the quest window starts minimized."));
         }
     }
 
@@ -357,10 +354,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             if (ImGui.IsItemHovered())
             {
-                using (ImRaii.Tooltip())
-                {
-                    ImGui.Text(_L("Ideally this should be set in the in-game Teleport settings, but is provided here for convenience."));
-                }
+                QstWidgets.Tooltip(_L("Better set in the game's Teleport settings; here for convenience."));
             }
 
             bool confirmCurrencyOverCap = Configuration.General.ConfirmCurrencyOverCap;
@@ -372,10 +366,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             if (ImGui.IsItemHovered())
             {
-                using (ImRaii.Tooltip())
-                {
-                    ImGui.Text(_L("When a reward would go over the cap, the game asks before discarding the excess. Off: Questionable stops so you can spend them first. On: it confirms and continues."));
-                }
+                QstWidgets.Tooltip(_L("Off: Questionable stops so you can spend them. On: it accepts the loss and keeps going."));
             }
 
             bool sameJobThroughoutQuest = Configuration.General.SameJobThroughoutQuest;
@@ -386,7 +377,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             }
 
             bool ignoreNextQuestIfPrioSet = Configuration.General.IgnoreNextQuestIfPrioSet;
-            if (ImGui.Checkbox(_L("When a quest finishes, do ready priority quests before its follow-up quest"), ref ignoreNextQuestIfPrioSet))
+            if (ImGui.Checkbox(_L("When a quest finishes, do ready Priority Quests before its follow-up quest"), ref ignoreNextQuestIfPrioSet))
             {
                 Configuration.General.IgnoreNextQuestIfPrioSet = ignoreNextQuestIfPrioSet;
                 Save();
@@ -401,7 +392,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(
-                _L("Uses Gysahl Greens in the open world when your chocobo isn't out or has under five minutes left. Needs 'My Feisty Little Chocobo' done. When you run out of Gysahl Greens, Knightshopper buys 99 more. Pandora's Box \"Auto-Summon Chocobo\" stays paused while Questionable runs."));
+                _L("Calls your chocobo in the open world with Gysahl Greens when it isn't out or has under 5 minutes left (needs 'My Feisty Little Chocobo'). Knightshopper buys 99 more when you run out. Pandora's Box auto-summon pauses while Questionable runs."));
         }
     }
 
@@ -418,7 +409,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(
-                _L("Between quests, Questionable fetches the free job gear for your current job from Grenoldt (level 80, The Tempest), Varsarudh (level 89, Old Sharlayan) or Mewazunte (level 99, Tuliyollal) once its shop is unlocked and the set beats what you wear, then equips your best gear. Each set is fetched once per character and job."));
+                _L("Between quests, fetches the free level 80, 89 and 99 job gear (The Tempest, Old Sharlayan, Tuliyollal) once its shop is unlocked and it beats what you wear, then equips your best gear. Once per character and job."));
 
             bool repairGear = Configuration.General.RepairGear;
             if (ImGui.Checkbox(_L("Repair gear"), ref repairGear))
@@ -452,7 +443,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(
-                _L("Between quests, when Mog Station or reward mail is waiting, Questionable goes to a delivery moogle and has Mogmail claim it and delete the emptied letters. Mogmail's own Auto Pop setting decides whether claimed items get used. Needs the Mogmail plugin."));
+                _L("Between quests, goes to a delivery moogle and has Mogmail claim waiting Mog Station and reward mail. Mogmail's Auto Pop decides whether items get used. Needs Mogmail."));
 
             bool runNoviceHall = Configuration.General.RunNoviceHall;
             if (ImGui.Checkbox(_L("Run the Hall of the Novice for the Neophyte's Ring"), ref runNoviceHall))
@@ -463,7 +454,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(
-                _L("Between quests, while your class is level 49 to 59 and you don't have the Neophyte's Ring, Questionable has AutoDuty run the three new Hall of the Novice exercises. The ring gives 30% more EXP up to level 60. Needs AutoDuty with duties turned on."));
+                _L("Between quests, at class level 49-59 without the Neophyte's Ring, AutoDuty runs the three new Hall of the Novice exercises. The ring gives 30% more EXP up to level 60. Needs AutoDuty with duties on."));
         }
     }
 
@@ -486,12 +477,9 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             if (ImGui.IsItemHovered())
             {
-                using (ImRaii.Tooltip())
-                {
-                    ImGui.Text(_L("If you haven't moved and the step hasn't changed for the set time, Questionable retries the step."));
-                    ImGui.Text(_L("Only movement and simple interactions (talking, attuning, emotes) are retried."));
-                    ImGui.Text(_L("Combat, cutscenes, dialogs and duties pause the timer."));
-                }
+                QstWidgets.Tooltip(_L("If you haven't moved and the step hasn't changed for the set time, Questionable retries the step.") + "\n" +
+                    _L("Only movement and simple interactions (talking, attuning, emotes) are retried.") + "\n" +
+                    _L("Combat, cutscenes, dialogs and duties pause the timer."));
             }
 
             using (ImRaii.Disabled(!autoStepRefreshEnabled))
@@ -543,12 +531,12 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             DrawPickUp(_L("Pick up aether currents and aether current quests"),
                 () => Configuration.Advanced.SkipAetherCurrents,
                 value => Configuration.Advanced.SkipAetherCurrents = value,
-                _L("If not done during the MSQ by Questionable, you have to manually pick up any missed aether currents/quests. You can set Questionable to run all pending aether current quests using the Priority Quests preset system."));
+                _L("When off, you pick up aether currents yourself, or later with an aether current preset in Priority Quests."));
 
             DrawPickUp(_L("Pick up class/job/role quests"),
                 () => Configuration.Advanced.SkipClassJobQuests,
                 value => Configuration.Advanced.SkipClassJobQuests = value,
-                _L("Class and job skills for A Realm Reborn, Heavensward and (for the Lv70 skills) Stormblood are locked behind quests. Not recommended if you plan on queueing for instances with duty finder/party finder."));
+                _L("ARR, Heavensward and Stormblood (level 70) skills come from these quests. Not recommended if you queue with the Duty Finder or Party Finder."));
 
             DrawPickUp(_L("Pick up ARR hard mode primal quests"),
                 () => Configuration.Advanced.SkipARealmRebornHardModePrimals,
@@ -582,8 +570,8 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             {
                 using (ImRaii.Tooltip())
                 {
-                    ImGui.Text(_L("Questionable automatically picks up some optional quests (e.g. for aether currents, or the ARR alliance raids)."));
-                    ImGui.Text(_L("If this setting is enabled, Questionable will continue with other quests, instead of waiting for manual completion of the duty."));
+                    using (ImRaii.TextWrapPos(ImGui.GetFontSize() * 35))
+                        ImGui.TextUnformatted(_L("Some optional quests (aether currents, ARR alliance raids) end in a duty. When ticked, Questionable moves on to other quests instead of waiting for you to run it."));
 
                     ImGui.Separator();
                     ImGui.Text(_L("This affects the following dungeons and raids:"));
@@ -601,7 +589,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
     {
         using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("Quest reward choice"));
         using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.TextMuted))
-            ImGui.TextWrapped(_L("When a quest lets you choose a reward, the first ticked rule that matches wins. If none matches, Questionable takes the highest vendor value, then the first option. Needs \"Configure TextAdvance\"."));
+            ImGui.TextWrapped(_L("When a quest lets you choose a reward, the first ticked rule that matches wins. If none matches, Questionable takes the highest vendor value, then the first option. Needs \"Automatically configure TextAdvance\" on the Questing page."));
 
         List<Configuration.ERewardRule> order = Configuration.General.RewardOrder
             .Concat(RewardPickHandler.DefaultOrder).Distinct().ToList();
@@ -669,7 +657,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(_L(
-                "After turning in a quest (or before accepting one), Questionable uses items in your inventory that unlock mounts, minions, orchestrion rolls, emotes, and similar rewards. Disable this if you prefer to open them yourself."));
+                "After turning in a quest (or before accepting one), uses items that unlock mounts, minions, orchestrion rolls, emotes and similar. Turn off to open them yourself."));
 
             using (ImRaii.Disabled(!autoRedeemRewardItems))
             {
@@ -698,7 +686,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                         }
 
                         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                            ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
+                            QstWidgets.Tooltip(_L("Hold CTRL to enable this button."));
 
                         ImGui.Separator();
                     }
@@ -758,7 +746,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             }
 
             ImGui.SameLine();
-            ImGuiComponents.HelpMarker(_L("Downloads recent reports and admin verification for quest paths. Green means five successful character reports or admin verification within 30 days; orange needs more or newer reports, red has unresolved problems, and grey has no reports or unavailable data. Sends nothing about you."));
+            ImGuiComponents.HelpMarker(_L("Shows how often each quest's path worked for others in the last 30 days: green works, orange needs more reports, red has problems, grey has no data. Sends nothing about you."));
 
             if (ImGui.Button(_L("Check for path updates now")))
                 _pathDataUpdater.CheckForUpdatesManually();

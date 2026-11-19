@@ -74,7 +74,7 @@ internal sealed class QuestValidationWindow : LWindow
                     IQuestInfo quest = _questData.GetQuestInfo(issue.ElementId);
                     bool copy = ImGuiComponentsLocal.IconButton($"###ValidationWindowCopy{quest.QuestId.Value}", FontAwesomeIcon.Copy);
                     if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(_L("Copy as file name"));
+                        QstWidgets.Tooltip(_L("Copy as file name"));
                     if (copy)
                     {
                         string fileName = $"{quest.QuestId}_{quest.SimplifiedName}.json";
@@ -85,7 +85,7 @@ internal sealed class QuestValidationWindow : LWindow
                     bool edit = ImGuiComponentsLocal.IconButton($"###ValidationWindowEdit{quest.QuestId.Value}", FontAwesomeIcon.Edit);
                     bool editExternal = ImGui.IsItemClicked(ImGuiMouseButton.Right);
                     if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(_L("Left click: Open in Path Editor\nRight click: Open in your default .json text editor"));
+                        QstWidgets.Tooltip(_L("Left click: Open in Path Editor\nRight click: Open in your default .json text editor"));
                     if (edit)
                         _pathEditorWindow.Open(quest.QuestId);
                     else if (editExternal)

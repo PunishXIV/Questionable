@@ -202,7 +202,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
     private async Task CheckForUpdatesAsync(int retryCount = 1)
     {
         _shutdownToken.ThrowIfCancellationRequested();
-        Status = _L("Checking for path updates…");
+        Status = _L("Checking for path updates...");
         using HttpClient http = _createHttpClient();
 
         string host = Domains[retryCount % Domains.Length];
@@ -271,7 +271,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
             return;
         }
 
-        Status = _L("Downloading path data…");
+        Status = _L("Downloading path data...");
         byte[] zipBytes;
         try
         {

@@ -147,7 +147,7 @@ internal sealed class CreationUtilsComponent
                                     if (ImGui.IsItemHovered())
                                     {
                                         ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-                                        ImGui.SetTooltip($"{quest.Info.Name} ({quest.Info.AlliedSociety})");
+                                        QstWidgets.Tooltip($"{quest.Info.Name} ({quest.Info.AlliedSociety})");
                                     }
 
                                     if (ImGui.IsItemClicked())
@@ -216,7 +216,7 @@ internal sealed class CreationUtilsComponent
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip(_L("Left click: Open in Path Editor\nRight click: Open in your default .json text editor"));
+            QstWidgets.Tooltip(_L("Left click: Open in Path Editor\nRight click: Open in your default .json text editor"));
     }
 
     private unsafe void DrawTargetDetails(IGameObject target)
@@ -231,7 +231,7 @@ internal sealed class CreationUtilsComponent
             ImGui.Text(_LF("Target: {0}", target.Name));
             ImGui.SameLine();
             if (QstWidgets.Chip(QuestStepCapture.GuessInteractionType(target).ToString(), QstTheme.Info))
-                ImGui.SetTooltip(_L("Interaction type detected from the target's nameplate icon."));
+                QstWidgets.Tooltip(_L("Interaction type detected from the target's nameplate icon."));
 
             ImGui.Text(_LF("  ({0}; {1}{2})",
                                 target.ObjectKind, GameFunctions.GetBaseId(target), nameId));
@@ -295,7 +295,7 @@ internal sealed class CreationUtilsComponent
                 logger.LogDebug($"SavedPos: {debugOverlay.SavedPos?.ToString("G5", CultureInfo.InvariantCulture)}");
             }
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Save/clear current position as reference"));
+                QstWidgets.Tooltip(_L("Save/clear current position as reference"));
             ImGui.SameLine();
         }
 
@@ -312,7 +312,7 @@ internal sealed class CreationUtilsComponent
                 }
             }
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Show all Quests starting with your current target."));
+                QstWidgets.Tooltip(_L("Show all Quests starting with your current target."));
         }
         else
         {
@@ -323,7 +323,7 @@ internal sealed class CreationUtilsComponent
                 questSelectionWindow.OpenForCurrentZone();
             }
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Show all (currently visible) Quests starting in this zone."));
+                QstWidgets.Tooltip(_L("Show all (currently visible) Quests starting in this zone."));
         }
 
         if (target != null)
@@ -358,7 +358,7 @@ internal sealed class CreationUtilsComponent
                 }
             }
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Interact with your current target."));
+                QstWidgets.Tooltip(_L("Interact with your current target."));
         }
     }
 
@@ -390,7 +390,7 @@ internal sealed class CreationUtilsComponent
         bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
         if (ImGui.IsItemHovered())
         {
-            ImGui.SetTooltip(
+            QstWidgets.Tooltip(
                 _L("Left click: Copy your position as JSON.\nRight click: Copy your position as C# code."));
         }
 
@@ -455,7 +455,7 @@ internal sealed class CreationUtilsComponent
         bool copy = ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy);
         if (ImGui.IsItemHovered())
         {
-            ImGui.SetTooltip(
+            QstWidgets.Tooltip(
                 _L("Left click: Copy your position as JSON.\nRight click: Copy your position as C# code."));
         }
 

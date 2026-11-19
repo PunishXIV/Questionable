@@ -64,6 +64,7 @@ Applies to every window, tab and widget in `Questionable`, without the human hav
 - **Every card, button, toggle, dropdown and bar looks the same everywhere.** Reuse `QstWidgets` (`Card`, `Chip`, `RailButton`, `SegmentToggle`, `ThinProgressBar`, ...), the `ImGuiComponentsLocal` icon buttons and `QstTheme` colours (`Text`, `TextMuted`, `Amber`, `Accent`, ...).
 - **Look before you draw.** Search how QST already draws that kind of thing and copy it. Don't style a raw ImGui widget inline when a house version exists (e.g. a plain `ImGui.ProgressBar`, a `Selectable` used as a button, hand-picked alpha for muted text).
 - **One meaning per colour or highlight.** Don't make one element carry several signals (picked, bonus, clickable) through overlapping colours and backgrounds.
+- **Hover text** goes through `QstWidgets.Tooltip`, which wraps long text; plain `ImGui.SetTooltip` never wraps.
 - **Nothing fits?** Propose a new widget in `QstWidgets` rather than one-off styling.
 
 ## When to stop and hand back

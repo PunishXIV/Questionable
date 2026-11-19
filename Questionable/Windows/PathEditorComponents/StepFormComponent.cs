@@ -142,7 +142,7 @@ internal sealed class StepFormComponent
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Copy))
             ImGui.SetClipboardText(json);
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Copy this step as JSON"));
+            QstWidgets.Tooltip(_L("Copy this step as JSON"));
 
         using ImRaii.ColorDisposable textColor = ImRaii.PushColor(ImGuiCol.Text, QstTheme.TextMuted);
         using (ImRaii.PushFont(UiBuilder.MonoFont))

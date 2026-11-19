@@ -232,7 +232,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
         using var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
 
         bool useBossMod = Configuration.SinglePlayerDuties.RunSoloInstancesWithBossMod;
-        if (ImGui.Checkbox(_L("Run quest battles with BossMod"), ref useBossMod))
+        if (ImGui.Checkbox(_L("Run quest battles with Boss Mod"), ref useBossMod))
         {
             Configuration.SinglePlayerDuties.RunSoloInstancesWithBossMod = useBossMod;
             Save();
@@ -240,7 +240,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
 
         ImGui.SameLine();
         ImGuiComponents.HelpMarker(
-            _L("BossMod fights every quest battle, whichever combat plugin you picked in General. BossMod forks (such as Reborn) don't work with Questionable."));
+            _L("Boss Mod fights every quest battle, whichever combat plugin you picked on the Basics page. Boss Mod forks (such as Reborn) don't work with Questionable."));
 
         using (ImRaii.Disabled(!useBossMod))
         {
@@ -272,7 +272,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
         using (ImRaii.Disabled(!useBossMod))
         {
             ImGui.TextUnformatted(
-                _L("Questionable comes with a list of quest battles that work with BossMod, and updates can change it. Set a quest battle to Enabled or Disabled to override the list."));
+                _L("Questionable comes with a list of quest battles that work with Boss Mod, and updates can change it. Set a quest battle to Enabled or Disabled to override the list."));
 
             using ImRaii.TabBarDisposable tabBar = ImRaii.TabBar("QuestionableConfigTabs");
             if (tabBar)
@@ -604,7 +604,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
 
                     if (!battle.Enabled)
                     {
-                        ImGuiComponents.HelpMarker(_L("Questionable doesn't include support for this quest yet."),
+                        ImGuiComponents.HelpMarker(_L("This quest isn't supported yet."),
                             FontAwesomeIcon.Times, QstTheme.Danger);
                     }
                     else if (battle.Notes.Count > 0)
@@ -652,7 +652,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
         }
 
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Enable all of the quest battles, use at your own risk."));
+            QstWidgets.Tooltip(_L("Enable all of the quest battles, use at your own risk."));
     }
 
     private IEnumerable<BattleInfo> GetEnabledBattles()

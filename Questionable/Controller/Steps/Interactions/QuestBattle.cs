@@ -20,7 +20,7 @@ internal static class QuestBattle
             if (contentId == null)
             {
                 Clear();
-                throw new TaskException("Cannot retry a solo duty without a logged-in character.");
+                throw new TaskException("Cannot retry a quest battle without a logged-in character.");
             }
 
             var key = (contentId, questId, cfcId, sequence);
@@ -58,7 +58,7 @@ internal static class QuestBattle
                 yield break;
 
             if (!territoryData.TryGetQuestBattleCfc(quest.Id, step.SinglePlayerDutyIndex, out var content))
-                throw new TaskException("Failed to resolve the solo duty from quest data.");
+                throw new TaskException("Failed to resolve the quest battle from quest data.");
 
             foreach (var task in CreateDutyTasks(content.Id, quest.Id, sequence.Sequence))
                 yield return task;

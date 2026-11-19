@@ -50,7 +50,7 @@ internal sealed class ARealmRebornComponent
             }
         }
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Add to priority quests"));
+            QstWidgets.Tooltip(_L("Add to Priority Quests"));
         ImGui.SameLine();
         bool hover = uiUtils.ChecklistItem(_L("Hard Mode Primals"), complete,
             configuration.Advanced.SkipARealmRebornHardModePrimals ? QstTheme.TextMuted : null);
@@ -76,7 +76,7 @@ internal sealed class ARealmRebornComponent
                     questController.PriorityManager.Add(quest);
         }
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Add to priority quests"));
+            QstWidgets.Tooltip(_L("Add to Priority Quests"));
         ImGui.SameLine();
         bool hover = uiUtils.ChecklistItem(_L("Crystal Tower Raids"), complete,
             configuration.Advanced.SkipCrystalTowerRaids ? QstTheme.TextMuted : null);

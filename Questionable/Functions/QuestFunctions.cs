@@ -820,9 +820,9 @@ internal sealed class QuestFunctions
         if (questInfo.GrandCompany != GrandCompany.None)
         {
             if (questInfo.GrandCompany != GetGrandCompany())
-                lockedReason.Add(_L("GC"));
+                lockedReason.Add(_L("Grand Company"));
             if (questInfo.GrandCompanyRank > GetGrandCompanyRank())
-                lockedReason.Add(_L("Rank"));
+                lockedReason.Add(_L("Grand Company rank"));
         }
 
         // quest is in a ng+ chapter, and the chapter id is a known class quest group
@@ -856,7 +856,7 @@ internal sealed class QuestFunctions
             }
             else if (!IsSocietyStoryAvailable(questId))
             {
-                lockedReason.Add(_L("Society rep"));
+                lockedReason.Add(_L("Society reputation"));
             }
         }
 
@@ -886,7 +886,7 @@ internal sealed class QuestFunctions
                     .Select(x => catalog.TryGetQuestInfo(x.QuestId, out IQuestInfo? info) ? info.Name : x.QuestId.ToString())
                     .ToList()));
         if (!ArePreviousInstancesMet(questInfo))
-            lockedReason.Add(_L("Prev instance"));
+            lockedReason.Add(_L("Previous duty"));
 
         if (catalog.TryGetQuest(questId, out Quest? quest) &&
             GetFirstLockedAetheryte(quest) is EAetheryteLocation firstLockedAetheryte)

@@ -40,7 +40,7 @@ internal static class Dive
             if (PerformDive())
                 return true;
 
-            throw new TaskException("You aren't swimming, so we can't dive.");
+            throw new TaskException("You need to be swimming to dive.");
         }
 
         private bool PerformDive()

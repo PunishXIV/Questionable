@@ -56,7 +56,7 @@ internal static class PreviousQuestReason
     public static string Format(bool anyOf, IReadOnlyList<string> missingNames)
     {
         if (missingNames.Count == 0)
-            return _L("Prev quest");
+            return _L("Previous quest");
 
         string names = string.Join(", ", missingNames.Take(ShownNames));
         int hidden = missingNames.Count - ShownNames;

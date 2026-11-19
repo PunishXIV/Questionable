@@ -82,18 +82,18 @@ internal sealed class PluginConfigComponent
     [
         new("vnavmesh",
             "vnavmesh",
-            _L("Moving to quest objectives"),
+            _L("Navigation mesh MappingTheRealm walks on"),
             new("https://github.com/awgil/ffxiv_navmesh/"),
             new("https://puni.sh/api/repository/veyn"),
             "/vnav"),
         new("MappingTheRealm",
             "MappingTheRealm",
-            _L("Travel between zones"),
+            _L("Moving to quest objectives, in any zone"),
             new("https://github.com/Knightmore"),
             new("https://puni.sh/api/repository/knightmore")),
         new("Lifestream",
             "Lifestream",
-            _L("Aethernet and world travel"),
+            _L("Going home after a run, and switching characters"),
             new("https://github.com/NightmareXIV/Lifestream"),
             new(NightmareXivRepositoryUrl),
             "/lifestream",
@@ -124,7 +124,7 @@ internal sealed class PluginConfigComponent
             "/gatherchill"),
         new("Knightshopper",
             "Knightshopper",
-            _L("Buying quest items (allow Questionable in its IPC settings)"),
+            _L("Buying quest items (allow Questionable in its settings)"),
             new("https://github.com/Knightmore"),
             new("https://puni.sh/api/repository/knightmore")),
         new("AutoDuty",
@@ -184,7 +184,7 @@ internal sealed class PluginConfigComponent
             "/pandora",
             [
                 new(_L("'Auto Active Time Maneuver' enabled"),
-                    _L("Automatically completes active time maneuvers in single player instances, trials and raids"),
+                    _L("Automatically completes active time maneuvers in quest battles, trials and raids"),
                     () => pandorasBoxIpc.IsAutoActiveTimeManeuverEnabled,
                     () => pandorasBoxIpc.SetAutoActiveTimeManeuverEnabled(enabled: true))
             ],
@@ -299,7 +299,7 @@ internal sealed class PluginConfigComponent
             if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Download, _L("Install all required plugins")))
                 InstallMissingPlugins();
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Adds missing repositories and installs required plugins."));
+                QstWidgets.Tooltip(_L("Adds missing repositories and installs required plugins."));
         }
 
         foreach (PluginInfo plugin in plugins)
@@ -396,7 +396,7 @@ internal sealed class PluginConfigComponent
                 }
 
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_LF("Enable the recommended options for {0}.", plugin.DisplayName));
+                    QstWidgets.Tooltip(_LF("Enable the recommended options for {0}.", plugin.DisplayName));
                 sameLine = true;
             }
 
@@ -417,7 +417,7 @@ internal sealed class PluginConfigComponent
                 }
 
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_L("Open Config"));
+                    QstWidgets.Tooltip(_L("Open Config"));
             }
         }
         else if (installedPlugin != null)
@@ -478,7 +478,7 @@ internal sealed class PluginConfigComponent
         }
 
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_LF("Install {0} from its plugin repository.", plugin.DisplayName));
+            QstWidgets.Tooltip(_LF("Install {0} from its plugin repository.", plugin.DisplayName));
 
         ImGui.SameLine();
         if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Globe, _L("Open Website")))

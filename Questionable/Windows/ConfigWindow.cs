@@ -47,7 +47,7 @@ internal sealed class ConfigWindow
             new(playing, "Questing", _L("Questing"), FontAwesomeIcon.Scroll),
             new(playing, "Rewards", _L("Loot & gear"), FontAwesomeIcon.Coins),
             new(content, "Dungeons", _L("Dungeons & trials"), FontAwesomeIcon.Dragon),
-            new(content, "QuestBattles", _L("Solo battles"), FontAwesomeIcon.UserShield),
+            new(content, "QuestBattles", _L("Quest battles"), FontAwesomeIcon.UserShield),
             new(automation, "Stop", _L("Stopping"), FontAwesomeIcon.HandPaper),
             new(automation, "Notifications", _L("Alerts"), FontAwesomeIcon.Bullhorn),
             new(automation, "Profiles", _L("Profiles"), FontAwesomeIcon.IdCard),

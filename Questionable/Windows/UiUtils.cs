@@ -25,7 +25,7 @@ internal sealed class UiUtils(
                         foreach (string reason in previousReasons)
                             blockers.Add($"{previous.QuestId.Value}: {reason}");
             if (blockers.Count != 0)
-                lockedReason = _L("Prev quest") + $" ({blockers[0]}{(blockers.Count > 1 ? $" +{blockers.Count - 1}" : "")})";
+                lockedReason = _L("Previous quest") + $" ({blockers[0]}{(blockers.Count > 1 ? $" +{blockers.Count - 1}" : "")})";
         }
 
         if (questFunctions.IsQuestAccepted(elementId))
@@ -39,11 +39,11 @@ internal sealed class UiUtils(
             if (!string.IsNullOrEmpty(lockedReason))
                 return (QstTheme.Danger, FontAwesomeIcon.Lock, $"{_L("Locked")}:\n  {lockedReason}");
             if (questFunctions.IsOutOfSocietyAllowances(questId))
-                return (QstTheme.Danger, FontAwesomeIcon.Lock, _L("No allowances: no daily allowances remaining"));
+                return (QstTheme.Danger, FontAwesomeIcon.Lock, _L("No daily allowances left"));
             if (!questFunctions.IsReadyToAcceptQuest(questId))
                 return (QstTheme.Danger, FontAwesomeIcon.Lock,
                     questFunctions.IsReadyToAcceptQuest(questId, ignoreLevel: true)
-                        ? _L("Level too low: current job level too low") : _L("Unavailable"));
+                        ? _L("Your job's level is too low") : _L("Unavailable"));
             if (questFunctions.IsQuestComplete(questId))
                 return (QstTheme.Info, FontAwesomeIcon.Running, _L("Available"));
 

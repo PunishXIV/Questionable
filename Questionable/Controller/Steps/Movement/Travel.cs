@@ -26,19 +26,24 @@ internal static class Travel
         public override string ToString() => $"Travel({TerritoryData.GetNameAndId(TerritoryId)})";
     }
 
-    internal sealed class Executor(MappingTheRealmIpc mappingTheRealm, IClientState clientState)
+    internal sealed class Executor(MappingTheRealmIpc mappingTheRealm, NavmeshIpc navmesh, IClientState clientState,
+        ILogger<Executor> logger)
         : TaskExecutor<Task>, IStoppable
     {
         private Route? _route;
         private bool _started;
         private uint _zone;
         private bool _byPosition;
+        private bool _waiting;
+        private DateTime _readyAfter;
+        private int _retries;
 
         protected override bool Start()
         {
             _route = null;
             _started = false;
             _byPosition = false;
+            _retries = 0;
             _zone = clientState.TerritoryType;
             if (Task.Position == null && _zone == Task.TerritoryId)
                 return false;
@@ -48,14 +53,29 @@ internal static class Travel
 
             // A route from a stopped run can still be moving; Stop only cancels routes Questionable started.
             mappingTheRealm.Stop();
-            Go();
+            Restart(TimeSpan.Zero);
             return true;
         }
 
         private bool UseId => Task.DataId != null && !_byPosition;
 
-        private void Go() =>
+        private void Restart(TimeSpan settle)
+        {
+            _route = null;
+            _started = false;
+            _waiting = true;
+            _readyAfter = DateTime.Now + settle;
+        }
+
+        // A route started while vnavmesh (re)loads its mesh fails.
+        private void TryGo()
+        {
+            if (DateTime.Now < _readyAfter || !navmesh.IsReady())
+                return;
+
+            _waiting = false;
             _route = mappingTheRealm.Travel(Task.TerritoryId, UseId ? null : Task.Position, Task.DataId, Task.Range);
+        }
 
         public override ETaskResult Update()
         {
@@ -67,8 +87,14 @@ internal static class Travel
                 if (_zone == Task.TerritoryId && Task.Position == null && Task.DataId == null)
                     return ETaskResult.TaskComplete;
 
-                _started = false;
-                Go();
+                // vnavmesh briefly reports the old zone's mesh as ready.
+                Restart(TimeSpan.FromSeconds(1));
+                return ETaskResult.StillRunning;
+            }
+
+            if (_waiting)
+            {
+                TryGo();
                 return ETaskResult.StillRunning;
             }
 
@@ -82,8 +108,15 @@ internal static class Travel
             if (_route is { IsFaulted: true } && UseId && Task.Position != null)
             {
                 _byPosition = true;
-                _started = false;
-                Go();
+                Restart(TimeSpan.Zero);
+                return ETaskResult.StillRunning;
+            }
+
+            if (_route is { IsFaulted: true } failed && _retries++ < 2)
+            {
+                logger.LogWarning("MappingTheRealm route failed ({Reason}), waiting for the navmesh and trying again",
+                    failed.Exception!.GetBaseException().Message);
+                Restart(TimeSpan.FromSeconds(1));
                 return ETaskResult.StillRunning;
             }
 

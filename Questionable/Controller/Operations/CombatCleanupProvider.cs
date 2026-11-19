@@ -91,8 +91,8 @@ internal sealed class CombatCleanupProvider(
         return new(bossModIpc.CleanupReason ?? combatController.BlockReason ??
                    _L("Waiting for combat control to be released."),
             bossModIpc.HasPendingCleanup
-                ? new OperationRecoveryView(_L("I stopped BossMod"), bossModIpc.CanConfirmStopped,
-                    [_L("Stop BossMod's active presets and check its settings before confirming. Confirmation does not restart questing.")])
+                ? new OperationRecoveryView(_L("I stopped Boss Mod"), bossModIpc.CanConfirmStopped,
+                    [_L("Stop Boss Mod's active presets and check its settings before confirming. Confirmation does not restart questing.")])
                 : null);
     }
 

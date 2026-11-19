@@ -121,7 +121,7 @@ internal sealed class CharacterRun : IDisposable
         List<Character> queue = GetQueue(_autoRetainer.GetCharacters(), _configuration.Characters.EnabledIds, CurrentId);
         if (queue.Count == 0)
         {
-            PrintError(_L("Tick at least one character on the Profiles tab first."));
+            PrintError(_L("Tick at least one character on the Profiles page first."));
             return;
         }
 

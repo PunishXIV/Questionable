@@ -5,6 +5,13 @@ namespace Questionable.Windows.Common.Ui;
 
 internal static class QstWidgets
 {
+    public static void Tooltip(string text)
+    {
+        using var tooltip = ImRaii.Tooltip();
+        using var wrap = ImRaii.TextWrapPos(ImGui.GetFontSize() * 35);
+        ImGui.TextUnformatted(text);
+    }
+
     public static bool SectionHeader(string label, string id, int? count = null, bool defaultOpen = true)
     {
         ImGuiTreeNodeFlags flags = defaultOpen ? ImGuiTreeNodeFlags.DefaultOpen : ImGuiTreeNodeFlags.None;
@@ -134,12 +141,12 @@ internal static class QstWidgets
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
         {
             if (showLabel && tooltip?.Length != 0)
-                ImGui.SetTooltip(tooltip);
+                Tooltip(tooltip ?? string.Empty);
             else
             {
                 if (tooltip?.Length != 0)
                     tooltip = $"\n{tooltip}";
-                ImGui.SetTooltip($"{label}{tooltip}");
+                Tooltip($"{label}{tooltip}");
             }
         }
 
@@ -224,7 +231,7 @@ internal static class QstWidgets
         if (iconsOnly)
         {
             if (hovered)
-                ImGui.SetTooltip(page.Label);
+                Tooltip(page.Label);
         }
         else
         {
@@ -283,10 +290,7 @@ internal static class QstWidgets
             new Vector2(size, size), file, line);
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-        {
-            using ImRaii.TooltipDisposable _ = ImRaii.Tooltip();
-            ImGui.TextUnformatted(active ? tooltipOn : tooltipOff);
-        }
+            Tooltip(active ? tooltipOn : tooltipOff);
 
         return clicked;
     }

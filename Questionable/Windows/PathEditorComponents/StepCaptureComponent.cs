@@ -23,7 +23,7 @@ internal sealed class StepCaptureComponent(
                 QstWidgets.Chip(GameFunctions.GetBaseId(target).ToString(CultureInfo.InvariantCulture), QstTheme.Info);
                 ImGui.SameLine();
                 if (QstWidgets.Chip(guessedType.ToString(), QstTheme.Accent))
-                    ImGui.SetTooltip(_L("Interaction type detected from the target's nameplate icon."));
+                    QstWidgets.Tooltip(_L("Interaction type detected from the target's nameplate icon."));
 
                 using (ImRaii.Disabled(sequence == null))
                 {

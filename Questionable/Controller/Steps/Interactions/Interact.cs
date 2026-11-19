@@ -2,6 +2,8 @@
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using ECommons.ExcelServices;
 using FFXIVClientStructs.FFXIV.Client.Game;
+using FFXIVClientStructs.FFXIV.Client.Game.Character;
+using FFXIVClientStructs.FFXIV.Client.Game.Control;
 using FFXIVClientStructs.FFXIV.Client.Game.Object;
 using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Questionable.Controller.Steps.Shared;
@@ -243,8 +245,22 @@ internal static class Interact
                 _reportedStillMounted = true;
             }
 
+            // In the air the game rejects the interaction but still reports success.
+            if (condition[ConditionFlag.Jumping] || condition[ConditionFlag.Jumping61] || IsFalling())
+            {
+                _continueAt = DateTime.Now.AddSeconds(0.25);
+                return ETaskResult.StillRunning;
+            }
+
             TriggerInteraction(gameObject);
             return ETaskResult.StillRunning;
+        }
+
+        // The fall after a mid-air dismount sets neither jumping condition.
+        private static unsafe bool IsFalling()
+        {
+            BattleChara* player = Control.GetLocalPlayer();
+            return player != null && player->IsJumping();
         }
 
         private void UnequipJobStone()

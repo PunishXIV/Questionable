@@ -33,7 +33,7 @@ internal sealed class RemainingTasksComponent(
                 }
 
                 if (task.Length > MaxTaskLength && ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                    ImGui.SetTooltip(task);
+                    QstWidgets.Tooltip(task);
             }
         }
     }

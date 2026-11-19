@@ -171,7 +171,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
 
             string notice = "";
             if (_bossModIpc.IsRebornInstalled())
-                notice = _L("Questionable is not compatible with BossMod Reborn!");
+                notice = _L("Questionable is not compatible with Boss Mod Reborn!");
             if (notice.Length != 0)
             {
                 ImGui.TextColored(QstTheme.Danger, _L("Notice"));
@@ -196,7 +196,7 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
                     DrawNow();
             }
 
-            using ImRaii.TabItemDisposable upNext = ImRaii.TabItem(_L("Up next") + "###UpNext",
+            using ImRaii.TabItemDisposable upNext = ImRaii.TabItem(_L("Priority Quests") + "###UpNext",
                 _selectQueue ? ImGuiTabItemFlags.SetSelected : ImGuiTabItemFlags.None);
             _selectQueue = false;
             if (upNext)

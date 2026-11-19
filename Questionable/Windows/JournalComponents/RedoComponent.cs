@@ -58,7 +58,7 @@ internal sealed class RedoComponent
                 _hideDone = !_hideDone;
             }
             if (ImGui.IsItemHovered())
-                ImGui.SetTooltip(_L("Hide chapters whose paths all have current working reports or admin verification"));
+                QstWidgets.Tooltip(_L("Hide chapters whose paths all have current working reports or admin verification"));
         }
         ImGui.SameLine();
         ImGuiComponents.HelpMarker(_L("Red has unresolved problems; orange needs more or newer reports; green is recently reported or verified working; grey has no reports or unavailable data. Hover a chapter for details."),
@@ -122,7 +122,7 @@ internal sealed class RedoComponent
                 string details = ReportUi.GroupDescription(reports);
                 if (showAnyway)
                     details += "\n" + _L("This chapter also has missing or disabled paths.");
-                ReportUi.Tooltip(details);
+                QstWidgets.Tooltip(details);
             }
 
             ShowGroupContextMenu($"DrawRedoChapter{chapter.RowId}",
@@ -155,7 +155,7 @@ internal sealed class RedoComponent
                             ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen | ImGuiTreeNodeFlags.SpanFullWidth);
                         journalTable.SupportedCell();
                         if (uiUtils.ChecklistItem("", QstTheme.TextMuted, FontAwesomeIcon.Minus))
-                            ImGui.SetTooltip(_L("This quest is not supported."));
+                            QstWidgets.Tooltip(_L("This quest isn't supported yet."));
                         ImGui.TableNextColumn();
                     }
                     if (questRegistry.TryGetQuest(questId, out Domain.Quest? quest))

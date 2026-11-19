@@ -83,14 +83,13 @@ internal sealed class QueueComponent
         {
             ImGui.TextWrapped(
                 _L("Questionable will generally try to do:"));
-            QstWidgets.BulletTextWrapped(_L("Priority quests added below, in order"));
+            QstWidgets.BulletTextWrapped(_L("Quests added below, in order"));
             QstWidgets.BulletTextWrapped(_L("'Priority' quests: class quests, ARR primals, ARR raids"));
             QstWidgets.BulletTextWrapped(
-                _L("Supported quests in your 'To-Do list' (quests from your Quest Journal that are always on-screen)"));
-            QstWidgets.BulletTextWrapped(_L("MSQ quest (if available, unless it is marked as 'ignored' in your Journal)"));
+                _L("Supported quests you track in the game's To-Do list"));
+            QstWidgets.BulletTextWrapped(_L("The next story quest (unless it's hidden in your journal)"));
             ImGui.TextWrapped(
-                _L("If you don't have any active MSQ quest and there is no Priority Quest added here, " +
-                "it will always try to pick up the next quest in the MSQ first."));
+                _L("With no story quest open and nothing added here, it picks up the next story quest first."));
             ImGui.Spacing();
             QstWidgets.BulletTextWrapped(_L("Quests marked 'Accept only' are picked up first, but not done from this list."));
             QstWidgets.BulletTextWrapped(
@@ -102,7 +101,7 @@ internal sealed class QueueComponent
         if (ImGui.Checkbox(_L("Interrupt the current quest"), ref canInterrupt))
             _questController.PriorityManager.CanInterrupt = canInterrupt;
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("When off, quests added here wait until the current quest is done.\nTurns back on when the plugin restarts."));
+            QstWidgets.Tooltip(_L("When off, quests added here wait until the current quest is done.\nTurns back on when the plugin restarts."));
         _questSelector.DrawSelection();
         DrawQuestList();
         DrawRewardTotal();
@@ -127,7 +126,7 @@ internal sealed class QueueComponent
             }
 
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
+                QstWidgets.Tooltip(_L("Hold CTRL to enable this button."));
         }
 
         if (_questController.PriorityManager.HasPendingAcceptOnly &&
@@ -152,7 +151,7 @@ internal sealed class QueueComponent
         ImGui.TextUnformatted(_LF("Total: {0} XP, {1} gil",
             experience.ToString("N0", CultureInfo.CurrentCulture), gil.ToString("N0", CultureInfo.CurrentCulture)));
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Quests still to do. Synced quests (most society dailies) scale XP to your level."));
+            QstWidgets.Tooltip(_L("Quests still to do. Synced quests (most society dailies) scale XP to your level."));
     }
 
     private void DrawQuestList()
@@ -178,8 +177,8 @@ internal sealed class QueueComponent
                         ImGui.TextColored(accepted ? QstTheme.Success : QstTheme.Accent,
                             FontAwesomeIcon.Inbox.ToIconString());
                     if (ImGui.IsItemHovered())
-                        ImGui.SetTooltip(accepted
-                            ? _L("Accepted — completion follows the normal quest order.")
+                        QstWidgets.Tooltip(accepted
+                            ? _L("Accepted; completion follows the normal quest order.")
                             : _L("Accept only — picked up before any queued quest is completed."));
                 }
 
@@ -218,13 +217,13 @@ internal sealed class QueueComponent
                 if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Edit))
                     (bool success, string filename) = QuestRegistry.OpenEditor(quest.Info);
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_L("Edit quest path"));
+                    QstWidgets.Tooltip(_L("Edit quest path"));
                 ImGui.SameLine();
 
                 if (ImGuiComponentsLocal.IconButton($"##Remove{i}", FontAwesomeIcon.Times))
                     itemToRemove = quest;
                 if (ImGui.IsItemHovered())
-                    ImGui.SetTooltip(_L("Remove from priority quests"));
+                    QstWidgets.Tooltip(_L("Remove from Priority Quests"));
             }
         }
 
@@ -290,12 +289,12 @@ internal sealed class QueueComponent
 
         if (addPresetsToList)
         {
-            ImGui.TextWrapped(_L("Selecting a preset adds its quests to the end of your current priority list. " +
+            ImGui.TextWrapped(_L("Selecting a preset adds its quests to the end of your Priority Quests. " +
                 "You can save your current list as a preset by entering a name below and selecting Save."));
         }
         else
         {
-            ImGui.TextColoredWrapped(QstTheme.Danger, _L("Selecting a preset will override your current priority list and activate the preset. " +
+            ImGui.TextColoredWrapped(QstTheme.Danger, _L("Selecting a preset replaces your Priority Quests and activates the preset. " +
                 "You can save your current list as a preset by entering a name below and selecting Save."));
         }
 
@@ -321,7 +320,7 @@ internal sealed class QueueComponent
         if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Redo))
             _presets.Reload();
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Reload presets"));
+            QstWidgets.Tooltip(_L("Reload presets"));
 
         bool isUserPreset = _selectedPresetName != null && userPresets.ContainsKey(_selectedPresetName);
         if (isUserPreset)
@@ -338,7 +337,7 @@ internal sealed class QueueComponent
             }
 
             if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-                ImGui.SetTooltip(_L("Hold CTRL to enable this button."));
+                QstWidgets.Tooltip(_L("Hold CTRL to enable this button."));
         }
 
         if (nameIsBuiltIn)

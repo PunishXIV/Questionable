@@ -23,7 +23,7 @@ internal sealed class DragOrder<T> where T : notnull
             return;
 
         if (ImGui.IsItemHovered())
-            ImGui.SetTooltip(_L("Drag to change the order"));
+            QstWidgets.Tooltip(_L("Drag to change the order"));
         if (!_dragging && ImGui.IsItemActive() && ImGui.IsMouseDragging(ImGuiMouseButton.Left))
             (_dragging, _dragged) = (true, key);
 

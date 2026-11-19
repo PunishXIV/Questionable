@@ -112,7 +112,6 @@ internal sealed unsafe class CustomDeliveries : IDisposable
         return result;
     }
 
-    // The game sends one achievement progress request at a time, so callers should ask again soon while this is set.
     public bool Loading { get; private set; }
 
     private static bool IsRequesting =>

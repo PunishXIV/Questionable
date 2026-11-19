@@ -26,7 +26,7 @@ internal sealed class OpenQuestCleanUp(
         }
 
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
-            ImGui.SetTooltip(tooltip);
+            QstWidgets.Tooltip(tooltip);
     }
 
     public void Run()
@@ -38,7 +38,7 @@ internal sealed class OpenQuestCleanUp(
             return;
         }
 
-        chatGui.Print(_LF("Added {0} open quest(s) to the priority list:", added.Count) + " " +
+        chatGui.Print(_LF("Added {0} open quest(s) to Priority Quests:", added.Count) + " " +
                       string.Join(", ", added.Select(x => x.Info.Name)),
             CommandHandler.MessageTag, CommandHandler.TagColor);
     }
@@ -55,11 +55,11 @@ internal sealed class OpenQuestCleanUp(
         else if (openQuests.Count == 0)
             tooltip = _L("No open quests in your journal that Questionable knows how to continue.");
         else if (queueable == 0)
-            tooltip = _LF("All {0} open quest(s) are already in your priority list.", openQuests.Count);
+            tooltip = _LF("All {0} open quest(s) are already in Priority Quests.", openQuests.Count);
         else
             tooltip = _LF("Queue the {0} quest(s) you already have open, finished ones first.", queueable) +
                       "\n" +
-                      _L("Long or blocked quests are queued too - check the priority list afterwards.");
+                      _L("Long or blocked quests are queued too, so check Priority Quests afterwards.");
 
         return (loggedIn && queueable > 0, tooltip);
     }

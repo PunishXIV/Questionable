@@ -242,7 +242,7 @@ internal sealed class PriorityPresets(
         [
             new(JobQuestsKey, JobQuestsName, []),
             new("LevelCapDungeons", _T<ContentRoulette>(8), ((ushort[])[4959, 5013, 5014]).FromNumericListOfQuests()),
-            new("Gil", _L("Gil (set TextAdvance to prefer Gil sacks)"), gilQuests),
+            new("Gil", _L("Gil (tick \"Allagan pieces\" under Quest reward choice)"), gilQuests),
             new("JobUnlocks", _L("Unlock all jobs"), jobUnlocks),
             new("CrafterGathererUnlocks", _L("DoH/DoL unlocks"), dohDolUnlocks),
             new("PostRealmRebornUnlocks", _L("Post-ARR unlocks"), postArrUnlocks),

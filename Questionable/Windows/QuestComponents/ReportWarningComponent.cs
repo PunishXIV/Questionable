@@ -16,7 +16,7 @@ internal sealed class ReportWarningComponent(Configuration configuration, IDalam
         if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.Times, _L("No thanks")))
             Answer(false);
         ImGui.SameLine();
-        ImGui.TextColored(QstTheme.TextMuted, _L("You can change this in General > Questing."));
+        ImGui.TextColored(QstTheme.TextMuted, _L("You can change this in Settings > Questing."));
     }
 
     private void Answer(bool share)

@@ -1356,9 +1356,10 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         (QuestSequence? seq, QuestStep? step, bool createTasks) = GetNextStep();
         if (CurrentQuest == null || seq == null)
         {
-            _logger.LogWarning(
-                "Could not retrieve next quest step, not doing anything [{QuestId}, {Sequence}, {Step}]",
-                CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
+            if (EzThrottler.Throttle("NoNextStep", 10_000))
+                _logger.LogWarning(
+                    "Could not retrieve next quest step, not doing anything [{QuestId}, {Sequence}, {Step}]",
+                    CurrentQuest?.Quest.Id, CurrentQuest?.Sequence, CurrentQuest?.Step);
 
             if (CurrentQuest == null || !createTasks)
                 return;

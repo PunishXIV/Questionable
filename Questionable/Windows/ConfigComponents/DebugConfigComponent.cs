@@ -26,13 +26,13 @@ internal sealed class DebugConfigComponent
     private void DrawOptions()
     {
         using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("Options"));
-        DrawCheckbox(_L("Disable flying (even if unlocked for the zone)"),
+        DrawCheckbox(_L("Treat flying as locked when skipping steps"),
             () => Configuration.Advanced.NeverFly,
             value => Configuration.Advanced.NeverFly = value);
 
         ImGui.Separator();
 
-        bool allowPathGeneration = DrawCheckbox(_L("Allow questpath generation (experimental)"),
+        bool allowPathGeneration = DrawCheckbox(_L("Allow quest path generation (experimental)"),
             () => Configuration.Advanced.AllowPathGeneration,
             value => Configuration.Advanced.AllowPathGeneration = value);
 
@@ -218,16 +218,16 @@ internal sealed class DebugConfigComponent
             }
 
             ImGui.SameLine();
-            ImGuiComponents.HelpMarker(_L("When enabled, Questionable will attempt to send an AbandonQuest command to the server when it arrives at the CompleteQuest step. " +
+            ImGuiComponents.HelpMarker(_L("When enabled, Questionable abandons the quest instead of turning it in. " +
                 "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed."));
-            if (ImGui.Checkbox(_L("Remove from priority when abandoned"), ref removeOnAbandon))
+            if (ImGui.Checkbox(_L("Remove from Priority Quests when abandoned"), ref removeOnAbandon))
             {
                 Configuration.Advanced.RemoveFromPriorityWhenAbandoned = removeOnAbandon;
                 Save();
             }
 
             ImGui.SameLine();
-            ImGuiComponents.HelpMarker(_L("When enabled, Questionable will also remove a quest from the priority queue when it is abandoned. " +
+            ImGuiComponents.HelpMarker(_L("When enabled, Questionable also removes an abandoned quest from Priority Quests. " +
                 "This setting is reset to Off when the plugin is loaded to avoid confusion with quests not being completed."));
 
             bool openEditor = Configuration.Advanced.OpenEditor;
