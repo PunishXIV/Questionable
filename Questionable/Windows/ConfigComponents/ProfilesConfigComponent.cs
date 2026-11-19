@@ -18,26 +18,16 @@ internal sealed class ProfilesConfigComponent
 
     private static string DefaultLabel => _L("Default");
 
-    internal bool IsOpen { get; private set; }
-
-    public override void DrawTab()
+    public void Draw()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Profiles") + "###Profiles");
-        IsOpen = tab;
-        if (!tab)
-            return;
-
         ImGui.TextWrapped(_L("A profile lets a character use different settings. It only stores what you change while editing it; everything else follows the default settings."));
-        ImGui.Separator();
 
-        ImGui.TextColored(QstTheme.Accent, _L("Edit a profile"));
-        DrawEditedProfile();
-        ImGui.Separator();
-        ImGui.TextColored(QstTheme.Accent, _L("New profile"));
-        DrawCreateProfile();
-        ImGui.Separator();
-        ImGui.TextColored(QstTheme.Accent, _L("Characters"));
-        DrawCharacters();
+        using (QstWidgets.TitledCard(_L("Edit a profile")))
+            DrawEditedProfile();
+        using (QstWidgets.TitledCard(_L("New profile")))
+            DrawCreateProfile();
+        using (QstWidgets.TitledCard(_L("Characters")))
+            DrawCharacters();
     }
 
     private void DrawEditedProfile()

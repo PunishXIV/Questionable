@@ -16,12 +16,8 @@ internal sealed class CustomDeliveryComponent(
     private List<DeliveryNpc> _rows = [];
     private long _rowsAt;
 
-    public void DrawTab()
+    public void Draw()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Custom Deliveries"));
-        if (!tab)
-            return;
-
         if (!clientState.IsLoggedIn)
         {
             ImGui.TextDisabled(_L("Log in to see your custom deliveries."));

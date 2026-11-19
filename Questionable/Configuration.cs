@@ -33,6 +33,7 @@ internal sealed class Configuration : IPluginConfiguration
     [JsonProperty(nameof(Advanced))] private AdvancedConfiguration _advanced { get; } = new();
     public WindowConfig DebugWindowConfig { get; } = new();
     public WindowConfig ConfigWindowConfig { get; } = new();
+    public WindowConfig JournalWindowConfig { get; } = new();
     public PriorityConfiguration Priority { get; } = new();
     public CharacterConfiguration Characters { get; } = new();
     public JobGearConfiguration JobGear { get; } = new();

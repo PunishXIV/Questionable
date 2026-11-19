@@ -13,7 +13,6 @@ internal sealed class StopConditionComponent : ConfigComponent
     private readonly QuestTooltipComponent _questTooltipComponent;
     private readonly UiUtils _uiUtils;
     private readonly PriorityPresets _presets;
-    private readonly NotificationConfigComponent _notifications;
     private readonly Configuration.EEndAction[] _endActions = Enum.GetValues<Configuration.EEndAction>();
     // Lifestream's /li auto picks the estate, apartment or inn from its own settings.
     private static readonly Configuration.EDestination[] Destinations =
@@ -32,7 +31,6 @@ internal sealed class StopConditionComponent : ConfigComponent
         UiUtils uiUtils,
         PriorityPresets presets,
         IClientState clientState,
-        NotificationConfigComponent notifications,
         Configuration configuration)
         : base(pluginInterface, configuration)
     {
@@ -40,7 +38,6 @@ internal sealed class StopConditionComponent : ConfigComponent
         _questTooltipComponent = questTooltipComponent;
         _uiUtils = uiUtils;
         _presets = presets;
-        _notifications = notifications;
         _clientState = clientState;
 
         _completeQuestSelector = questSelector;
@@ -69,25 +66,18 @@ internal sealed class StopConditionComponent : ConfigComponent
         };
     }
 
-    public override void DrawTab()
+    public void Draw()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Stop") + "###StopConditionns");
-        if (!tab)
-            return;
         _contentSize = ImGui.GetWindowContentRegionMax();
         using var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);
 
         DrawConditions();
-        ImGui.Separator();
         DrawAfterStop();
-        ImGui.Separator();
-        ImGui.TextColored(QstTheme.Accent, _L("Notifications"));
-        _notifications.DrawSection();
     }
 
     private void DrawConditions()
     {
-        ImGui.TextColored(QstTheme.Accent, _L("Stop the run when"));
+        using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("Stop the run when"));
 
         bool enabled = Configuration.Stop.Enabled;
         if (ImGui.Checkbox(_L("Stop Questionable when any of the conditions below are met"), ref enabled))
@@ -159,7 +149,7 @@ internal sealed class StopConditionComponent : ConfigComponent
 
     private void DrawAfterStop()
     {
-        ImGui.TextColored(QstTheme.Accent, _L("After the run stops"));
+        using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("After the run stops"));
 
         ImGui.AlignTextToFramePadding();
         ImGui.TextUnformatted(_L("Go to"));

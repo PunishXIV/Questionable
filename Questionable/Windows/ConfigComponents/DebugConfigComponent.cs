@@ -10,17 +10,22 @@ internal sealed class DebugConfigComponent
     Configuration configuration,
     DraftQuestPathService draftQuestPathService) : ConfigComponent(pluginInterface, configuration)
 {
-    public override void DrawTab()
+    public void Draw()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Advanced") + "###Debug");
-        if (!tab)
-            return;
-
         ImGui.TextColored(QstTheme.Danger,
             _L("Enabling any option here may cause unexpected behavior. Use at your own risk."));
 
-        ImGui.Separator();
+        DrawOptions();
+        DrawInformation();
+        DrawTesting();
 
+        if (QstWidgets.SectionHeader(_L("About"), "AboutQuestionable", defaultOpen: false))
+            AboutTab.Draw("Questionable");
+    }
+
+    private void DrawOptions()
+    {
+        using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("Options"));
         DrawCheckbox(_L("Disable flying (even if unlocked for the zone)"),
             () => Configuration.Advanced.NeverFly,
             value => Configuration.Advanced.NeverFly = value);
@@ -89,23 +94,11 @@ internal sealed class DebugConfigComponent
                 () => Configuration.Reports.ReportProjectPaths,
                 value => Configuration.Reports.ReportProjectPaths = value);
         }
-
-        ImGui.Separator();
-
-        DrawInformation();
-
-        ImGui.Separator();
-        DrawTesting();
-
-        ImGui.Separator();
-        if (QstWidgets.SectionHeader(_L("About"), "AboutQuestionable", defaultOpen: false))
-            AboutTab.Draw("Questionable");
     }
 
     private void DrawInformation()
     {
-        if (!QstWidgets.SectionHeader(_L("Information"), "Information", defaultOpen: false))
-            return;
+        using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("Information"));
 
         using (ImRaii.PushIndent())
         {
@@ -182,8 +175,7 @@ internal sealed class DebugConfigComponent
 
     private void DrawTesting()
     {
-        if (!QstWidgets.SectionHeader(_L("Testing"), "QuestSkips", defaultOpen: false))
-            return;
+        using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("Testing"));
 
         using (ImRaii.PushIndent())
         {

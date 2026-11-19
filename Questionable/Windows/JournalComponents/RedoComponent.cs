@@ -20,12 +20,8 @@ internal sealed class RedoComponent
     private bool _hideDone;
     private readonly Dictionary<QuestRedoChapterUI, (int Supported, int Completed, int Total)> _counts = [];
     private string _filter = "";
-    public void DrawTab()
+    public void Draw()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("New Game+"));
-        if (!tab)
-            return;
-
         // Prevent ng+ activation if ng+ unlock quest is incomplete
         if (redoUtil.IsLocked)
         {

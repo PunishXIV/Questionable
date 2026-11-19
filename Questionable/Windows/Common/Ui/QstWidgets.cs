@@ -150,6 +150,91 @@ internal static class QstWidgets
 
     public static CardScope Card(Vector4? borderColor = null) => new(borderColor);
 
+    public static CardScope TitledCard(string title)
+    {
+        ImGui.Spacing();
+        ImGui.TextColored(QstTheme.TextMuted, title.ToUpper(CultureInfo.CurrentUICulture));
+        return new(null);
+    }
+
+    internal sealed record MenuPage(string Group, string Id, string Label, FontAwesomeIcon Icon);
+
+    // Draws the menu on the left and opens the page area on the right; dispose after drawing the page.
+    public static ImRaii.ChildDisposable SideMenu(string id, IReadOnlyList<MenuPage> pages, ref string selected)
+    {
+        float scale = ImGuiHelpers.GlobalScale;
+        string current = selected;
+        if (!pages.Any(x => x.Id == current))
+            selected = pages[0].Id;
+
+        bool iconsOnly = ImGui.GetContentRegionAvail().X < 560f * scale;
+        float rowHeight = ImGui.GetFrameHeight();
+        float width = iconsOnly ? rowHeight + 12f * scale : 170f * scale;
+
+        using (ImRaii.ChildDisposable menu = ImRaii.Child($"{id}Menu", new Vector2(width, 0), border: false))
+        {
+            if (menu)
+            {
+                string? group = null;
+                foreach (MenuPage page in pages)
+                {
+                    if (page.Group != group)
+                    {
+                        group = page.Group;
+                        ImGui.Spacing();
+                        if (iconsOnly)
+                            ImGui.Separator();
+                        else
+                            ImGui.TextColored(QstTheme.TextMuted, group.ToUpper(CultureInfo.CurrentUICulture));
+                    }
+
+                    if (MenuRow(page, page.Id == selected, iconsOnly, rowHeight))
+                        selected = page.Id;
+                }
+            }
+        }
+
+        ImGui.SameLine();
+        return ImRaii.Child($"{id}Page", Vector2.Zero, border: false);
+    }
+
+    private static bool MenuRow(MenuPage page, bool active, bool iconsOnly, float height)
+    {
+        float scale = ImGuiHelpers.GlobalScale;
+        Vector2 pos = ImGui.GetCursorScreenPos();
+        Vector2 size = new(ImGui.GetContentRegionAvail().X, height);
+        bool clicked = ImGui.InvisibleButton(page.Id, size);
+        bool hovered = ImGui.IsItemHovered();
+
+        ImDrawListPtr drawList = ImGui.GetWindowDrawList();
+        if (active || hovered)
+            drawList.AddRectFilled(pos, pos + size,
+                QstTheme.ToU32(active ? QstTheme.WithAlpha(QstTheme.Accent, 0.15f) : QstTheme.WithAlpha(QstTheme.Text, 0.06f)),
+                4f * scale);
+
+        uint color = QstTheme.ToU32(active ? QstTheme.Accent : QstTheme.Text);
+        string icon = page.Icon.ToIconString();
+        float x = pos.X + 6f * scale;
+        using (ImRaii.PushFont(UiBuilder.IconFont))
+        {
+            Vector2 iconSize = ImGui.CalcTextSize(icon);
+            drawList.AddText(new Vector2(x, pos.Y + (height - iconSize.Y) / 2f), color, icon);
+        }
+
+        if (iconsOnly)
+        {
+            if (hovered)
+                ImGui.SetTooltip(page.Label);
+        }
+        else
+        {
+            Vector2 textSize = ImGui.CalcTextSize(page.Label);
+            drawList.AddText(new Vector2(x + 22f * scale, pos.Y + (height - textSize.Y) / 2f), color, page.Label);
+        }
+
+        return clicked;
+    }
+
     internal sealed class CardScope : IDisposable
     {
         private readonly Vector2 _topLeft;

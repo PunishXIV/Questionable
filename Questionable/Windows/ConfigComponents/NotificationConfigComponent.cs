@@ -9,8 +9,9 @@ internal sealed class NotificationConfigComponent
     NotificationMasterIpc notificationMasterIpc) : ConfigComponent(pluginInterface, configuration)
 {
 
-    public void DrawSection()
+    public void Draw()
     {
+        using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("Alerts"));
         bool enabled = Configuration.Notifications.Enabled;
         if (ImGui.Checkbox(_L("Enable notifications when manual interaction is required"), ref enabled))
         {

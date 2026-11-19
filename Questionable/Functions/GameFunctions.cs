@@ -24,8 +24,6 @@ internal sealed unsafe partial class GameFunctions
     ICondition condition,
     IClientState clientState,
     GameGuiAdapter gameGui,
-    Configuration configuration,
-    QuestFunctions questFunctions,
     ILogger<GameFunctions> logger,
     HighlightObject highlightObject)
 {
@@ -272,47 +270,6 @@ internal sealed unsafe partial class GameFunctions
         return gameObject != null && (gameObject.Position - position).Length() < distance;
     }
 
-    public bool IsMountingUnlocked()
-    {
-        List<ushort> quests = [700, 701, 702];
-        return quests.Any(q => questFunctions.IsQuestComplete(new QuestId(q)));
-    }
-
-    public bool HasStatusPreventingMount()
-    {
-        if (condition[ConditionFlag.Swimming] && !IsFlyingUnlockedHere())
-        {
-            logger.LogDebug("Swimming && !IsFlyingUnlockedHere");
-            return true;
-        }
-
-        if (!IsMountingUnlocked())
-        {
-            logger.LogDebug("!IsMountingUnlocked");
-            return true;
-        }
-
-        IGameObject? localPlayer = objectTable[0];
-        if (localPlayer == null)
-            return false;
-
-        if (HasStatus(1151) ||
-            HasStatus(1945)) // hoofing it
-        {
-            logger.LogDebug("hoofing it");
-            return true;
-        }
-
-        if (IsMountOrSprintBlocked())
-        {
-            logger.LogDebug("IsMountOrSprintBlocked");
-            return true;
-        }
-        return false;
-    }
-
-    public bool HasStatusPreventingSprint() => IsMountOrSprintBlocked();
-
     internal bool IsMountOrSprintBlocked()
     {
         return HasStatus(565) || // Transfiguration
@@ -340,41 +297,6 @@ internal sealed unsafe partial class GameFunctions
     }
 
     public static bool RemoveStatus(EStatus statusId) => StatusManager.ExecuteStatusOff((uint)statusId);
-
-    public bool Mount()
-    {
-        if (condition[ConditionFlag.Mounted])
-            return true;
-
-        PlayerState* playerState = PlayerState.Instance();
-        if (playerState != null && configuration.General.MountId != 0 &&
-            playerState->IsMountUnlocked(configuration.General.MountId))
-        {
-            if (ActionManager.Instance()->GetActionStatus(ActionType.Mount, configuration.General.MountId) == 0)
-            {
-                logger.LogDebug("Attempting to use preferred mount...");
-                if (ActionManager.Instance()->UseAction(ActionType.Mount, configuration.General.MountId))
-                {
-                    logger.LogInformation("Using preferred mount");
-                    return true;
-                }
-            }
-        }
-        else
-        {
-            if (ActionManager.Instance()->GetActionStatus(ActionType.GeneralAction, 9) == 0)
-            {
-                logger.LogDebug("Attempting to use mount roulette...");
-                if (ActionManager.Instance()->UseAction(ActionType.GeneralAction, 9))
-                {
-                    logger.LogInformation("Using mount roulette");
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
 
     public bool Unmount()
     {

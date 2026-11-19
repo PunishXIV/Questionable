@@ -33,12 +33,8 @@ internal sealed class QuestRewardComponent
         _taxiStandUnlockQuests = [];
     }
 
-    public void DrawTab()
+    public void Draw()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Unlocks"));
-        if (!tab)
-            return;
-
         ImGui.Checkbox(_L("Show rewards from seasonal event quests"), ref _showEventRewards);
         ImGui.Checkbox(_L("Hide Unobtainable Quests"), ref _hideUnobtainable);
         ImGui.Checkbox(_L("Hide unlocked items"), ref _hideCompleted);

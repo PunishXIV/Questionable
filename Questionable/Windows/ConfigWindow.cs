@@ -13,7 +13,8 @@ internal sealed class ConfigWindow
     private readonly ProfilesConfigComponent _profilesConfigComponent;
     private readonly IDalamudPluginInterface _pluginInterface;
     private readonly StopConditionComponent _stopConditionComponent;
-    private bool _hideProfileBanner;
+    private readonly NotificationConfigComponent _notificationConfigComponent;
+    private readonly QstWidgets.MenuPage[] _pages;
 
     public ConfigWindow(
     IDalamudPluginInterface pluginInterface,
@@ -23,6 +24,7 @@ internal sealed class ConfigWindow
     ProfileController profileController,
     DutyConfigComponent dutyConfigComponent,
     StopConditionComponent stopConditionComponent,
+    NotificationConfigComponent notificationConfigComponent,
     DebugConfigComponent debugConfigComponent,
     Configuration configuration) : base(_L("Config - Questionable") + "###QuestionableConfig")
     {
@@ -35,8 +37,25 @@ internal sealed class ConfigWindow
         _profileController = profileController;
         _pluginInterface = pluginInterface;
         _stopConditionComponent = stopConditionComponent;
+        _notificationConfigComponent = notificationConfigComponent;
 
-        Size = new Vector2(400, 400);
+        // Page ids are saved as the last open page; don't rename them.
+        string playing = _L("Playing"), content = _L("Content"), automation = _L("Automation"), plugin = _L("Plugin");
+        _pages =
+        [
+            new(playing, "General", _L("Basics"), FontAwesomeIcon.SlidersH),
+            new(playing, "Questing", _L("Questing"), FontAwesomeIcon.Scroll),
+            new(playing, "Rewards", _L("Loot & gear"), FontAwesomeIcon.Coins),
+            new(content, "Dungeons", _L("Dungeons & trials"), FontAwesomeIcon.Dragon),
+            new(content, "QuestBattles", _L("Solo battles"), FontAwesomeIcon.UserShield),
+            new(automation, "Stop", _L("Stopping"), FontAwesomeIcon.HandPaper),
+            new(automation, "Notifications", _L("Alerts"), FontAwesomeIcon.Bullhorn),
+            new(automation, "Profiles", _L("Profiles"), FontAwesomeIcon.IdCard),
+            new(plugin, "Plugins", _L("Helper plugins"), FontAwesomeIcon.PuzzlePiece),
+            new(plugin, "Advanced", _L("Expert"), FontAwesomeIcon.Wrench),
+        ];
+
+        Size = new Vector2(760, 600);
         SizeCondition = ImGuiCond.Once;
         SizeConstraints = new WindowSizeConstraints
         {
@@ -67,7 +86,9 @@ internal sealed class ConfigWindow
 
     public override void DrawContent()
     {
-        if (_configuration.Profiles.Count > 0 && !_hideProfileBanner)
+        string page = WindowConfig.Page;
+        // Neither page holds profile settings.
+        if (_configuration.Profiles.Count > 0 && page is not ("Plugins" or "Profiles"))
         {
             if (_configuration.ActiveProfileName is { } profileName)
                 ImGui.TextColored(QstTheme.Amber, _LF("Editing profile '{0}': changes only apply to this profile.", profileName));
@@ -75,18 +96,28 @@ internal sealed class ConfigWindow
                 ImGui.TextDisabled(_L("Editing the default settings."));
         }
 
-        using ImRaii.TabBarDisposable tabBar = ImRaii.TabBar("QuestionableConfigTabs");
-        if (!tabBar)
+        using ImRaii.ChildDisposable content = QstWidgets.SideMenu("QuestionableConfig", _pages, ref page);
+        if (page != WindowConfig.Page)
+        {
+            WindowConfig.Page = page;
+            SaveWindowConfig();
+        }
+
+        if (!content)
             return;
 
-        _generalConfigComponent.DrawTab();
-        _profilesConfigComponent.DrawTab();
-        _dutyConfigComponent.DrawTab();
-        _stopConditionComponent.DrawTab();
-        _pluginConfigComponent.DrawTab();
-        _debugConfigComponent.DrawTab();
-
-        // Neither tab holds profile settings. The tab is only known after drawing, so this lags one frame.
-        _hideProfileBanner = _pluginConfigComponent.IsOpen || _profilesConfigComponent.IsOpen;
+        switch (page)
+        {
+            case "General": _generalConfigComponent.DrawGeneral(); break;
+            case "Questing": _generalConfigComponent.DrawQuestingPage(); break;
+            case "Rewards": _generalConfigComponent.DrawRewardsPage(); break;
+            case "Dungeons": _dutyConfigComponent.DrawDuties(); break;
+            case "QuestBattles": _dutyConfigComponent.DrawQuestBattles(); break;
+            case "Stop": _stopConditionComponent.Draw(); break;
+            case "Notifications": _notificationConfigComponent.Draw(); break;
+            case "Profiles": _profilesConfigComponent.Draw(); break;
+            case "Plugins": _pluginConfigComponent.DrawPage(); break;
+            case "Advanced": _debugConfigComponent.Draw(); break;
+        }
     }
 }

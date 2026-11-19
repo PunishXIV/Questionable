@@ -1,6 +1,5 @@
 using ECommons.ExcelServices;
 using ECommons.ImGuiMethods;
-using FFXIVClientStructs.FFXIV.Client.Game.UI;
 using Lumina.Excel.Sheets;
 using GrandCompany = FFXIVClientStructs.FFXIV.Client.UI.Agent.GrandCompany;
 namespace Questionable.Windows.ConfigComponents;
@@ -8,7 +7,6 @@ namespace Questionable.Windows.ConfigComponents;
 [RegisterSingleton]
 internal sealed class GeneralConfigComponent : ConfigComponent
 {
-    private static readonly (uint Id, string Name) DefaultMount = (0, _L("Mount Roulette"));
     private static readonly (Job ClassJob, string Name) DefaultClassJob = (Job.ADV, _L("Auto (highest level/item level)"));
 
     private readonly string[] _grandCompanyNames =
@@ -22,12 +20,9 @@ internal sealed class GeneralConfigComponent : ConfigComponent
     private readonly PluginConfigComponent _plugins;
     private uint? _itemToRemove;
     private readonly Lazy<List<Job>> _sortedClassJobs;
-    private readonly Lazy<(uint[] Ids, string[] Names)> _mounts;
-    private (ulong ContentId, ushort Owned, uint[] Ids, string[] Names)? _ownedMounts;
     private readonly Lazy<(Job[] Ids, string[] Names)> _combatJobs;
     private readonly Lazy<(Job[] Ids, string[] Names)> _craftJobs;
     private readonly Lazy<(Job[] Ids, string[] Names)> _gatherJobs;
-    private string _mountSearch = string.Empty;
     private string _languageSearch = string.Empty;
 
     public GeneralConfigComponent(
@@ -49,7 +44,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         _itemBlacklistSelector = new(dataManager);
 
         _sortedClassJobs = new(() => [.. classJobUtils.SortedJobs.Select(x => x.ClassJob)]);
-        _mounts = new(() => BuildMounts(dataManager));
         _combatJobs = new(() => BuildJobList(
             Enum.GetValues<Job>().Where(x => x != Job.ADV && !x.IsCrafter() && !x.IsGatherer() && !x.IsClass()),
             prependDefault: true));
@@ -59,50 +53,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         _gatherJobs = new(() => BuildJobList(
             Enum.GetValues<Job>().Where(x => x == Job.MIN || x == Job.BTN),
             prependDefault: false));
-    }
-
-    private static (uint[] Ids, string[] Names) BuildMounts(IDataManager dataManager)
-    {
-        List<(uint MountId, string Name)> mounts = dataManager.GetExcelSheet<Mount>()
-            .Where(x => x is { RowId: > 0, Icon: > 0 })
-            .Select(x => (MountId: x.RowId, Name: x.Singular.ToString()))
-            .Where(x => !string.IsNullOrEmpty(x.Name))
-            .OrderBy(x => x.Name, StringComparer.Ordinal)
-            .ToList();
-        uint[] ids = [DefaultMount.Id, .. mounts.Select(x => x.MountId)];
-        string[] names = [DefaultMount.Name, .. mounts.Select(x => x.Name)];
-        return (ids, names);
-    }
-  
-    private unsafe (uint[] Ids, string[] Names) GetOwnedMounts()
-    {
-        (uint[] ids, string[] names) = _mounts.Value;
-        PlayerState* playerState = PlayerState.Instance();
-        if (playerState == null || !playerState->IsLoaded)
-            return (ids, names);
-
-        if (_ownedMounts is not { } cached ||
-            cached.ContentId != playerState->ContentId ||
-            cached.Owned != playerState->NumOwnedMounts)
-        {
-            (uint[] ownedIds, string[] ownedNames) = KeepOwned(ids, names, id => PlayerState.Instance()->IsMountUnlocked(id));
-            cached = (playerState->ContentId, playerState->NumOwnedMounts, ownedIds, ownedNames);
-            _ownedMounts = cached;
-        }
-
-        return (cached.Ids, cached.Names);
-    }
-
-    internal static (uint[] Ids, string[] Names) KeepOwned(uint[] ids, string[] names, Func<uint, bool> isOwned)
-    {
-        List<int> keep = [];
-        for (int i = 0; i < ids.Length; i++)
-        {
-            if (ids[i] == DefaultMount.Id || isOwned(ids[i]))
-                keep.Add(i);
-        }
-
-        return ([.. keep.Select(i => ids[i])], [.. keep.Select(i => names[i])]);
     }
 
     private (Job[] Ids, string[] Names) BuildJobList(IEnumerable<Job> source, bool prependDefault)
@@ -119,13 +69,34 @@ internal sealed class GeneralConfigComponent : ConfigComponent
         return ([.. jobs], [.. jobs.Select(x => x.ToString())]);
     }
 
-    public override void DrawTab()
+    public void DrawGeneral()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("General") + "###General");
-        if (!tab)
-            return;
         var size = ImGui.GetWindowContentRegionMax();
         using var _ = ImRaii.TextWrapPos(size.X);
+        DrawPreferences(size);
+        DrawUi();
+        DrawUpdates();
+    }
+
+    public void DrawQuestingPage()
+    {
+        using var _ = ImRaii.TextWrapPos(ImGui.GetWindowContentRegionMax().X);
+        DrawQuesting();
+        DrawRecovery();
+        DrawOptionalQuests();
+    }
+
+    public void DrawRewardsPage()
+    {
+        using var _ = ImRaii.TextWrapPos(ImGui.GetWindowContentRegionMax().X);
+        DrawBetweenQuests();
+        DrawRewardRules();
+        DrawRewardRedemption();
+    }
+
+    private void DrawPreferences(Vector2 size)
+    {
+        using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("Preferences"));
         Dictionary<string, string> languages = new(StringComparer.Ordinal){
             { "en",    _L("English") },
             { "ja-jp", _L("Japanese") },
@@ -140,44 +111,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             Configuration.SetLanguage(language);
             Save();
         }
-
-        DrawPreferences(size);
-
-        DrawUi();
-
-        DrawQuesting();
-
-        DrawOptionalQuests();
-        DrawRewardRedemption();
-        DrawUpdates();
-    }
-
-    private void DrawPreferences(Vector2 size)
-    {
-        if (!QstWidgets.SectionHeader(_L("Preferences"), "Preferences", defaultOpen: false))
-            return;
-
-        (uint[] mountIds, string[] mountNames) = GetOwnedMounts();
-        uint mountId = Configuration.General.MountId;
-        ImGui.SetNextItemWidth(size.X / 2);
-        if (ImGuiComponentsLocal.DrawSearchableCombo(_L("Preferred Mount"), mountIds, mountNames,
-            Configuration.General.MountId, ref _mountSearch, ref mountId))
-        {
-            Configuration.General.MountId = mountId;
-            Save();
-        }
-
-        int mountDistance = Configuration.General.MountDistance;
-        ImGui.SetNextItemWidth(size.X / 2);
-        if (ImGui.SliderInt(_L("Walk instead of mounting within (yalms)"), ref mountDistance, 0, 200))
-        {
-            Configuration.General.MountDistance = mountDistance;
-            Save();
-        }
-
-        ImGui.SameLine();
-        ImGuiComponents.HelpMarker(
-            _L("Closer than this, Questionable walks instead of calling your mount. Steps that would fly still fly when the place can't be reached on foot. 0 always mounts."));
 
         int grandCompany = (int)Configuration.General.GrandCompany;
         ImGui.SetNextItemWidth(size.X / 2);
@@ -255,10 +188,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
     private void DrawUi()
     {
-        if (!QstWidgets.SectionHeader(_L("UI"), "UI", defaultOpen: false))
-            return;
-
-        using (ImRaii.PushIndent())
+        using (QstWidgets.TitledCard(_L("UI")))
         {
             bool useQuestionableTheme = Configuration.General.UseQuestionableTheme;
             if (ImGui.Checkbox(_L("Use Questionable theme"), ref useQuestionableTheme))
@@ -366,10 +296,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
     private void DrawQuesting()
     {
-        if (!QstWidgets.SectionHeader(_L("Questing"), "Questing", defaultOpen: false))
-            return;
-
-        using (ImRaii.PushIndent())
+        using (QstWidgets.TitledCard(_L("While questing")))
         {
             bool configureTextAdvance = Configuration.General.ConfigureTextAdvance;
             if (ImGui.Checkbox(_L("Automatically configure TextAdvance with the recommended settings"),
@@ -468,7 +395,13 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(
                 _L("Uses Gysahl Greens in the open world when your chocobo isn't out or has under five minutes left. Needs 'My Feisty Little Chocobo' done. When you run out of Gysahl Greens, Knightshopper buys 99 more. Pandora's Box \"Auto-Summon Chocobo\" stays paused while Questionable runs."));
+        }
+    }
 
+    private void DrawBetweenQuests()
+    {
+        using (QstWidgets.TitledCard(_L("Between quests")))
+        {
             bool collectJobGear = Configuration.General.CollectJobGear;
             if (ImGui.Checkbox(_L("Collect free job gear"), ref collectJobGear))
             {
@@ -503,8 +436,6 @@ internal sealed class GeneralConfigComponent : ConfigComponent
                 }
             }
 
-            DrawRewardRules();
-
             bool claimMail = Configuration.General.ClaimMail;
             if (ImGui.Checkbox(_L("Claim Mog Station and reward mail"), ref claimMail))
             {
@@ -526,7 +457,13 @@ internal sealed class GeneralConfigComponent : ConfigComponent
             ImGui.SameLine();
             ImGuiComponents.HelpMarker(
                 _L("Between quests, while your class is level 49 to 59 and you don't have the Neophyte's Ring, Questionable has AutoDuty run the three new Hall of the Novice exercises. The ring gives 30% more EXP up to level 60. Needs AutoDuty with duties turned on."));
+        }
+    }
 
+    private void DrawRecovery()
+    {
+        using (QstWidgets.TitledCard(_L("Recovery and reports")))
+        {
             bool autoStepRefreshEnabled = Configuration.General.AutoStepRefreshEnabled;
             if (ImGui.Checkbox(_L("Retry the current step when stuck"), ref autoStepRefreshEnabled))
             {
@@ -594,10 +531,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
     private void DrawOptionalQuests()
     {
-        if (!QstWidgets.SectionHeader(_L("Optional quests"), "OptionalQuests", defaultOpen: false))
-            return;
-
-        using (ImRaii.PushIndent())
+        using (QstWidgets.TitledCard(_L("Optional quests")))
         {
             DrawPickUp(_L("Pick up aether currents and aether current quests"),
                 () => Configuration.Advanced.SkipAetherCurrents,
@@ -658,13 +592,12 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
     private void DrawRewardRules()
     {
-        ImGui.Text(_L("Quest reward choice"));
-        ImGui.SameLine();
-        ImGuiComponents.HelpMarker(_L("When a quest lets you choose a reward, the first ticked rule that matches wins. If none matches, Questionable takes the highest vendor value, then the first option. Needs \"Configure TextAdvance\"."));
+        using QstWidgets.CardScope card = QstWidgets.TitledCard(_L("Quest reward choice"));
+        using (ImRaii.PushColor(ImGuiCol.Text, QstTheme.TextMuted))
+            ImGui.TextWrapped(_L("When a quest lets you choose a reward, the first ticked rule that matches wins. If none matches, Questionable takes the highest vendor value, then the first option. Needs \"Configure TextAdvance\"."));
 
         List<Configuration.ERewardRule> order = Configuration.General.RewardOrder
             .Concat(RewardPickHandler.DefaultOrder).Distinct().ToList();
-        using ImRaii.IndentDisposable indent = ImRaii.PushIndent();
         for (int i = 0; i < order.Count; i++)
         {
             Configuration.ERewardRule rule = order[i];
@@ -717,10 +650,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
     private void DrawRewardRedemption()
     {
-        if (!QstWidgets.SectionHeader(_L("Reward item redemption"), "RewardRedemption", defaultOpen: false))
-            return;
-
-        using (ImRaii.PushIndent())
+        using (QstWidgets.TitledCard(_L("Reward item redemption")))
         {
             bool autoRedeemRewardItems = Configuration.Advanced.AutoRedeemRewardItems;
             if (ImGui.Checkbox(_L("Automatically open redeemable items (coffers, minions, emotes, etc.)"),
@@ -801,10 +731,7 @@ internal sealed class GeneralConfigComponent : ConfigComponent
 
     private void DrawUpdates()
     {
-        if (!QstWidgets.SectionHeader(_L("Updates"), "Updates", defaultOpen: false))
-            return;
-
-        using (ImRaii.PushIndent())
+        using (QstWidgets.TitledCard(_L("Updates")))
         {
             bool autoUpdatePaths = Configuration.PathData.AutoUpdate;
             if (ImGui.Checkbox(_L("Automatically download quest/gathering path updates"), ref autoUpdatePaths))

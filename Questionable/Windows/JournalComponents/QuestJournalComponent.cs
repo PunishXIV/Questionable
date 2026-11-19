@@ -25,12 +25,8 @@ internal sealed class QuestJournalComponent
     private bool _applyOpenState = true;
     private int _resultCount;
 
-    public void DrawTab()
+    public void Draw()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Quests"));
-        if (!tab)
-            return;
-
         if (_refresh.Tick(DateTime.Now, RecountChanged))
             ApplyFilter();
 

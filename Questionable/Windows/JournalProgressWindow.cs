@@ -10,6 +10,9 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
     private readonly QuestRegistry _questRegistry;
     private readonly QuestRewardComponent _questRewardComponent;
     private readonly RedoComponent _redoComponent;
+    private readonly Configuration _configuration;
+    private readonly IDalamudPluginInterface _pluginInterface;
+    private readonly QstWidgets.MenuPage[] _pages;
 
     public JournalProgressWindow(
         QuestJournalComponent questJournalComponent,
@@ -18,9 +21,25 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
         CustomDeliveryComponent customDeliveryComponent,
         RedoComponent redoComponent,
         QuestRegistry questRegistry,
-        IClientState clientState)
+        IClientState clientState,
+        Configuration configuration,
+        IDalamudPluginInterface pluginInterface)
         : base(_L("Journal Progress") + "###QuestionableJournalProgress")
     {
+        _configuration = configuration;
+        _pluginInterface = pluginInterface;
+
+        // Page ids are saved as the last open page; don't rename them.
+        string completion = _L("Completion"), societies = _L("Societies & deliveries");
+        _pages =
+        [
+            new(completion, "Quests", _L("Quests"), FontAwesomeIcon.Tasks),
+            new(completion, "Unlocks", _L("Unlocks"), FontAwesomeIcon.Star),
+            new(completion, "NewGamePlus", _L("New Game+"), FontAwesomeIcon.History),
+            new(societies, "AlliedSocieties", _L("Allied Societies"), FontAwesomeIcon.Feather),
+            new(societies, "CustomDeliveries", _L("Custom Deliveries"), FontAwesomeIcon.BoxOpen),
+        ];
+
         _questJournalComponent = questJournalComponent;
         _alliedSocietyComponent = alliedSocietyComponent;
         _customDeliveryComponent = customDeliveryComponent;
@@ -60,14 +79,25 @@ internal sealed class JournalProgressWindow : LWindow, IDisposable
 
     public override void DrawContent()
     {
-        using ImRaii.TabBarDisposable tabBar = ImRaii.TabBar("Journal");
-        if (!tabBar)
+        WindowConfig windowConfig = _configuration.JournalWindowConfig;
+        string page = windowConfig.Page;
+        using ImRaii.ChildDisposable content = QstWidgets.SideMenu("Journal", _pages, ref page);
+        if (page != windowConfig.Page)
+        {
+            windowConfig.Page = page;
+            _pluginInterface.SavePluginConfig(_configuration);
+        }
+
+        if (!content)
             return;
 
-        _questJournalComponent.DrawTab();
-        _alliedSocietyComponent.DrawTab();
-        _customDeliveryComponent.DrawTab();
-        _questRewardComponent.DrawTab();
-        _redoComponent.DrawTab();
+        switch (page)
+        {
+            case "Quests": _questJournalComponent.Draw(); break;
+            case "Unlocks": _questRewardComponent.Draw(); break;
+            case "NewGamePlus": _redoComponent.Draw(); break;
+            case "AlliedSocieties": _alliedSocietyComponent.Draw(); break;
+            case "CustomDeliveries": _customDeliveryComponent.Draw(); break;
+        }
     }
 }

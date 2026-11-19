@@ -211,15 +211,8 @@ internal sealed class PluginConfigComponent
             "/quests"),
     ];
 
-    internal bool IsOpen { get; private set; }
-
-    public override void DrawTab()
+    public void DrawPage()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Plugins") + "###Plugins");
-        IsOpen = tab;
-        if (!tab)
-            return;
-
         Draw(out bool allRequiredInstalled);
 
         ImGui.Spacing();

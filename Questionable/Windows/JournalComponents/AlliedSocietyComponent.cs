@@ -28,12 +28,8 @@ internal sealed class AlliedSocietyComponent
         Gathering,
         CraftingAndGathering,
     }
-    public void DrawTab()
+    public void Draw()
     {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Allied Societies"));
-        if (!tab)
-            return;
-
         bool debug = configuration.Advanced.Debug;
         bool addPending = debug && DrawTesterTools();
 

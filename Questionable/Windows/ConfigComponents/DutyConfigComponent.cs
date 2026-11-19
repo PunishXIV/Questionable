@@ -50,19 +50,9 @@ internal sealed class DutyConfigComponent : ConfigComponent
                     .ToList());
     }
 
-    public override void DrawTab()
-    {
-        using ImRaii.TabItemDisposable tab = ImRaii.TabItem(_L("Duties") + "###Duties");
-        if (!tab)
-            return;
+    public void DrawQuestBattles() => _questBattles.DrawSection();
 
-        if (QstWidgets.SectionHeader(_L("Dungeons & trials"), "DutyList"))
-            DrawDuties();
-        if (QstWidgets.SectionHeader(_L("Quest battles"), "QuestBattleList"))
-            _questBattles.DrawSection();
-    }
-
-    private void DrawDuties()
+    public void DrawDuties()
     {
         _contentSize = ImGui.GetWindowContentRegionMax();
         using var wrap = ImRaii.TextWrapPos(_contentSize.X + 10);

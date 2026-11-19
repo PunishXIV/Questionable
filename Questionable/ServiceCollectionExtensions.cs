@@ -76,7 +76,6 @@ internal static class ServiceCollectionExtensions
             CreateGearset.Executor>();
         serviceCollection.AddTaskFactoryAndExecutor<UpdateGearset.Task, UpdateGearset.Factory,
             UpdateGearset.Executor>();
-        serviceCollection.AddTaskExecutor<MountStep.MountTask, MountStep.MountExecutor>();
         serviceCollection.AddTaskExecutor<MountStep.UnmountTask, MountStep.UnmountExecutor>();
 
         serviceCollection
