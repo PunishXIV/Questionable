@@ -32,6 +32,7 @@
         {
           "DataId": 1003587,
           "Position": [220.90479, -0.9591979, 257.4043],
+          "Mount": false,
           "InteractionType": "Interact",
           "TargetTerritoryId": 139
         },

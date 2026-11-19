@@ -49,6 +49,7 @@
       "Steps": [
         {
           "Position": [-496.3975, 7.8566074, 71.93724],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -61,6 +62,7 @@
         },
         {
           "Position": [-393.63492, -0.28167063, 72.2678],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -73,6 +75,7 @@
         },
         {
           "Position": [-359.14633, 4.4168873, 63.1877],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -85,6 +88,7 @@
         },
         {
           "Position": [-324.51694, 8.511529, 69.76721],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -98,11 +102,13 @@
         {
           "DataId": 2482,
           "Position": [-238.72742, 7.8999486, 64.43884],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
         },
         {
           "Position": [-242.57193, 11.837363, 19.533478],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "ComplexCombatData": [
@@ -122,12 +128,14 @@
         {
           "DataId": 2482,
           "Position": [-285.59854, 11.75, -22.394428],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
         },
         {
           "DataId": 2482,
           "Position": [-315.8217, 11.905772, -34.105675],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
         },

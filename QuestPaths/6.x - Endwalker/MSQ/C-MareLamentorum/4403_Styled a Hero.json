@@ -24,6 +24,7 @@
       "Steps": [
         {
           "Position": [-357.1918, -161.84383, -254.25537],
+          "Mount": false,
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": [-357.36722, -160.81464, -258.94827],
@@ -102,6 +103,7 @@
       "Steps": [
         {
           "Position": [-336.92316, -161.84383, -362.42844],
+          "Mount": false,
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": [-333.76025, -160.81464, -359.79532],

@@ -21,7 +21,7 @@ internal static class Travel
     // Skills need attack range; MappingTheRealm otherwise stops at interaction range (rock 2001481).
     internal static float StopRange(QuestStep step) => step.InteractionType == EInteractionType.Action ? 3f : 0;
 
-    internal sealed record Task(uint TerritoryId, Vector3? Position, uint? DataId, float Range = 0) : ITask
+    internal sealed record Task(uint TerritoryId, Vector3? Position, uint? DataId, float Range = 0, bool Walk = false) : ITask
     {
         public override string ToString() => $"Travel({TerritoryData.GetNameAndId(TerritoryId)})";
     }
@@ -30,7 +30,7 @@ internal static class Travel
         ICondition condition, IObjectTable objectTable, GameFunctions gameFunctions, ILogger<Executor> logger)
         : TaskExecutor<Task>, IStoppable
     {
-        private const float SwimArrival = 3f;
+        private const float VnavArrival = 3f;
 
         private Route? _route;
         private bool _started;
@@ -40,14 +40,14 @@ internal static class Travel
         private bool _waiting;
         private DateTime _readyAfter;
         private int _retries;
-        private DateTime? _swimSince;
+        private DateTime? _vnavSince;
 
         protected override bool Start()
         {
             _route = null;
             _started = false;
             _retries = 0;
-            _swimSince = null;
+            _vnavSince = null;
             _zone = clientState.TerritoryType;
             if (Task.Position == null && _zone == Task.TerritoryId)
                 return false;
@@ -94,7 +94,30 @@ internal static class Travel
             {
                 if (!navmesh.FlyTo(position))
                     throw new TaskException("vnavmesh couldn't find an underwater path");
-                _swimSince = DateTime.Now;
+                _vnavSince = DateTime.Now;
+                return;
+            }
+
+            // MappingTheRealm mounts and flies whenever it can; follow and stealth steps fail when you outrun the NPC.
+            if (Task.Walk && clientState.TerritoryType == Task.TerritoryId && Task.Position is { } walkTo)
+            {
+                if (condition[ConditionFlag.Mounted])
+                {
+                    gameFunctions.Unmount();
+                    _waiting = true;
+                    _readyAfter = DateTime.Now.AddSeconds(1);
+                    return;
+                }
+
+                if (!navmesh.WalkTo(walkTo))
+                    throw new TaskException("vnavmesh couldn't find a path on foot");
+                _vnavSince = DateTime.Now;
+                return;
+            }
+
+            if (Task.Walk)
+            {
+                _route = mappingTheRealm.Travel(Task.TerritoryId, null, null);
                 return;
             }
 
@@ -104,9 +127,9 @@ internal static class Travel
                 : mappingTheRealm.Travel(Task.TerritoryId, UseId ? null : Task.Position, Task.DataId, Task.Range);
         }
 
-        private ETaskResult Swim(DateTime since)
+        private ETaskResult FollowVnav(DateTime since)
         {
-            if (objectTable[0]?.Position is { } here && Vector3.Distance(here, Task.Position!.Value) <= SwimArrival)
+            if (objectTable[0]?.Position is { } here && Vector3.Distance(here, Task.Position!.Value) <= VnavArrival)
             {
                 navmesh.Stop();
                 return ETaskResult.TaskComplete;
@@ -137,8 +160,8 @@ internal static class Travel
                 return ETaskResult.StillRunning;
             }
 
-            if (_swimSince is { } since)
-                return Swim(since);
+            if (_vnavSince is { } since)
+                return FollowVnav(since);
 
             if (mappingTheRealm.GetPathing() == true)
             {
@@ -176,7 +199,7 @@ internal static class Travel
         {
             if (_route != null)
                 mappingTheRealm.Stop();
-            if (_swimSince != null)
+            if (_vnavSince != null)
                 navmesh.Stop();
         }
 

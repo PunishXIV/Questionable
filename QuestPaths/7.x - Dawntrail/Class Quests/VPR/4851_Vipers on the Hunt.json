@@ -108,6 +108,7 @@
         {
           "DataId": 2013573,
           "Position": [-292.80542, 61.875244, -326.833],
+          "Mount": false,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }

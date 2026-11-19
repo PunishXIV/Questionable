@@ -18,6 +18,7 @@
         {
           "DataId": 1031405,
           "Position": [456.9314, 18.978712, -73.10602],
+          "Mount": false,
           "InteractionType": "AcceptQuest"
         }
       ]
@@ -44,6 +45,7 @@
         {
           "DataId": 1031405,
           "Position": [456.9314, 18.978712, -73.10602],
+          "Mount": false,
           "InteractionType": "CompleteQuest",
           "DialogueChoices": [
             {

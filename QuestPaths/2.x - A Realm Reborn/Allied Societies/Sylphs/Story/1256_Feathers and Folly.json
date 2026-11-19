@@ -36,6 +36,7 @@
       "Steps": [
         {
           "Position": [274.21375, -11.57235, -143.24345],
+          "Mount": false,
           "InteractionType": "Combat",
           "DelaySecondsAtStart": 3,
           "EnemySpawnType": "FinishCombatIfAny",
@@ -45,6 +46,7 @@
         },
         {
           "Position": [311.25394, -16.537638, -171.698],
+          "Mount": false,
           "InteractionType": "Combat",
           "DelaySecondsAtStart": 3,
           "EnemySpawnType": "FinishCombatIfAny",
@@ -54,6 +56,7 @@
         },
         {
           "Position": [326.8417, -17.631077, -185.55954],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
@@ -62,6 +65,7 @@
         },
         {
           "Position": [330.1656, -18.237339, -219.81784],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
@@ -70,6 +74,7 @@
         },
         {
           "Position": [324.47534, -17.542734, -261.2537],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
@@ -78,6 +83,7 @@
         },
         {
           "Position": [210.71255, -20.98461, -409.86917],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
@@ -86,6 +92,7 @@
         },
         {
           "Position": [147.78357, -23.618519, -480.24725],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [
@@ -101,6 +108,7 @@
         {
           "DataId": 2003388,
           "Position": [-8.194153, -34.836426, -531.5176],
+          "Mount": false,
           "InteractionType": "Interact"
         }
       ]

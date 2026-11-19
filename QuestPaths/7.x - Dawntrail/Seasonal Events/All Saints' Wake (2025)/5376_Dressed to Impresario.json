@@ -225,6 +225,7 @@
         {
           "DataId": 1054794,
           "Position": [72.129395, 0, -0.5340576],
+          "Mount": false,
           "TerritoryId": 1305,
           "InteractionType": "Interact",
           "DialogueChoices": [

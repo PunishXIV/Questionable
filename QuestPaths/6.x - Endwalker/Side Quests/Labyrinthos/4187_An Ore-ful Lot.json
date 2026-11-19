@@ -52,6 +52,7 @@
         {
           "DataId": 1039334,
           "Position": [563.47, 164.255, -400.87],
+          "Mount": false,
           "InteractionType": "Interact",
           "DialogueChoices": [
             {
@@ -69,22 +70,26 @@
         },
         {
           "Position": [615.75146, 168.56168, -294.40198],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 20
         },
         {
           "Position": [618.61115, 172.58095, -256.74924],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 20
         },
         {
           "Position": [579.22754, 167.59027, -233.25731],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 20
         },
         {
           "DataId": 1039335,
           "Position": [575.799, 167.59, -228.046],
+          "Mount": false,
           "InteractionType": "Interact"
         }
       ]

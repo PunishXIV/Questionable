@@ -28,6 +28,7 @@
         {
           "DataId": 1041382,
           "Position": [-54.6022, -17.5304, -222.178],
+          "Mount": false,
           "InteractionType": "Emote",
           "Emote": "pet"
         }
@@ -40,6 +41,7 @@
         {
           "DataId": 1041382,
           "Position": [-54.6022, -17.5304, -222.178],
+          "Mount": false,
           "InteractionType": "UseItem",
           "ItemId": 2003321,
           "DelaySecondsAtStart": 1

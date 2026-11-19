@@ -94,62 +94,73 @@
         {
           "DataId": 1038845,
           "Position": [156.66682, -18.078814, 361.58972],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
         },
         {
           "Position": [204.82344, -19.113703, 373.52936],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 1
         },
         {
           "DataId": 1038845,
           "Position": [232.28406, -16.777779, 339.1168],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
         },
         {
           "Position": [272.79572, -13.174152, 317.53406],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 8
         },
         {
           "DataId": 1038845,
           "Position": [287.9112, -11.811615, 292.6589],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
         },
         {
           "DataId": 1038845,
           "Position": [354.5913, -5.5008125, 245.22939],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
         },
         {
           "Position": [354.71964, -2.2201555, 233.99152],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 1
         },
         {
           "DataId": 1038845,
           "Position": [382.75116, 2.7549856, 226.49387],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
         },
         {
           "DataId": 1038845,
           "Position": [408.44272, 4.965298, 208.22794],
+          "Mount": false,
           "InteractionType": "WalkTo"
         },
         {
           "DataId": 1038845,
           "Position": [426.39246, 5.348692, 194.86263],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
         },
         {
           "DataId": 1038846,
           "Position": [555.8098, 32.30835, 159.10571],
+          "Mount": false,
           "InteractionType": "WalkTo"
         }
       ]

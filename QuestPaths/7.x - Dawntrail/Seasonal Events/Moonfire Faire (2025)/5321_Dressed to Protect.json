@@ -70,18 +70,21 @@
         {
           "DataId": 1053947,
           "Position": [695.9181, 8.4, 442.31323],
+          "Mount": false,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
         {
           "DataId": 1053946,
           "Position": [849.2407, 8.4, 461.17346],
+          "Mount": false,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
         {
           "DataId": 1053945,
           "Position": [872.0989, 8.4, 402.8534],
+          "Mount": false,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }

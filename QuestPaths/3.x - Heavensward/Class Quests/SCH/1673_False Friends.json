@@ -14,6 +14,7 @@
         {
           "DataId": 2005521,
           "Position": [-292.83594, 72.15991, -275.4101],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterInteraction",
           "ComplexCombatData": [

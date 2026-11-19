@@ -29,6 +29,7 @@
         {
           "DataId": 2013916,
           "Position": [-648.85944, -3.7995605, -454.06274],
+          "Mount": false,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
         },
@@ -44,6 +45,7 @@
         {
           "DataId": 2013917,
           "Position": [-573.14417, -1.0529175, -702.05237],
+          "Mount": false,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]
         }

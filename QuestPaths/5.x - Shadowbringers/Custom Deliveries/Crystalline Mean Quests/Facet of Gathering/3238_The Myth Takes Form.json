@@ -45,6 +45,7 @@
         {
           "DataId": 2009806,
           "Position": [125.596924, 361.16577, -471.30542],
+          "Mount": false,
           "InteractionType": "UseItem",
           "ItemId": 2002566
         }

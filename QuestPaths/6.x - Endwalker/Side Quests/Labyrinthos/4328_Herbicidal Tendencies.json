@@ -17,12 +17,14 @@
         {
           "DataId": 2012254,
           "Position": [-618.86, -4.26108, -121.019],
+          "Mount": false,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 1
         },
         {
           "DataId": 14090,
           "Position": [-626.465, -3.74359, -127.515],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AfterItemUse",
           "ItemId": 2003263,

@@ -37,6 +37,7 @@
       "Steps": [
         {
           "Position": [-451.1233, -168, -623.01324],
+          "Mount": false,
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": [-448.59048, -166.16438, -628.15826]

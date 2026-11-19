@@ -46,4 +46,14 @@ public sealed class QuestGeneratorTests
             }
             """.ReplaceLineEndings(), code.ReplaceLineEndings());
     }
+
+    [Fact]
+    public void MountFalse_IsRendered()
+    {
+        QuestStep step = new() { TerritoryId = 1, InteractionType = EInteractionType.WalkTo, Mount = false };
+
+        string code = RoslynShortcuts.LiteralValue(step).NormalizeWhitespace().ToFullString();
+
+        Assert.Contains("Mount = false", code);
+    }
 }

@@ -444,6 +444,10 @@
             "$ref": "https://raw.githubusercontent.com/PunishXIV/Questionable/new-main/Questionable.Model/common-classjob.json"
           }
         },
+        "Mount": {
+          "description": "false: go there on foot (follow and stealth steps, places where a mount breaks the step)",
+          "type": "boolean"
+        },
         "DelaySecondsAtStart": {
           "description": "Time to wait before starting",
           "type": [

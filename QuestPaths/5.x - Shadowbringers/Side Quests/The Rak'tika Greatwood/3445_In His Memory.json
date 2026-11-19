@@ -57,6 +57,7 @@
       "Steps": [
         {
           "Position": [-444.81573, 2.4261475, 530.2357],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [

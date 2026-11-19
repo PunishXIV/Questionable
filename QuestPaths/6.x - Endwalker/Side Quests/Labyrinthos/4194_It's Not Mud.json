@@ -17,18 +17,21 @@
         {
           "DataId": 2011814,
           "Position": [735.042, 170.636, -414.633],
+          "Mount": false,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 1
         },
         {
           "DataId": 2011815,
           "Position": [837.705, 171.405, -477.745],
+          "Mount": false,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 1
         },
         {
           "DataId": 2011816,
           "Position": [843.608, 177.07, -386.455],
+          "Mount": false,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 1
         }

@@ -38,6 +38,8 @@ internal static class QuestStepExtensions
                             Assignment(nameof(QuestStep.NpcWaitDistance), step.NpcWaitDistance,
                                     emptyStep.NpcWaitDistance)
                                 .AsSyntaxNodeOrToken(),
+                            Assignment(nameof(QuestStep.Mount), step.Mount, emptyStep.Mount)
+                                .AsSyntaxNodeOrToken(),
                             Assignment(nameof(QuestStep.TargetTerritoryId), step.TargetTerritoryId,
                                     emptyStep.TargetTerritoryId)
                                 .AsSyntaxNodeOrToken(),

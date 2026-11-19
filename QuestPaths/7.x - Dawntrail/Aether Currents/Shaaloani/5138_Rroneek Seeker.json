@@ -49,22 +49,26 @@
       "Steps": [
         {
           "Position": [379.76282, -18.2, -293.1074],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 3
         },
         {
           "Position": [370.89987, -18.2, -351.861],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 3
         },
         {
           "Position": [392.1876, -18.2, -381.36987],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 3
         },
         {
           "DataId": 17739,
           "Position": [287.58667, -15.274292, -476.0052],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 4
         },

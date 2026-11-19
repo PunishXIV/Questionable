@@ -19,6 +19,7 @@
         {
           "DataId": 1006382,
           "Position": [165.20935, 222.99998, 367.72717],
+          "Mount": false,
           "InteractionType": "AcceptQuest",
           "PickUpQuestId": 979,
           "SkipConditions": {"StepIf": {"QuestsCompleted": [979]}}

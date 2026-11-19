@@ -42,6 +42,7 @@
       "Steps": [
         {
           "Position": [194.39781, -18.933985, -424.23593],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -67,6 +68,7 @@
         },
         {
           "Position": [204.63402, -3.6865087, -426.3127],
+          "Mount": false,
           "InteractionType": "Jump",
           "$": "Southeast",
           "JumpDestination": {
@@ -105,6 +107,7 @@
 
         {
           "Position": [149.22775, -19.347927, -429.9049],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -130,6 +133,7 @@
         },
         {
           "Position": [137.85182, -3.229692, -431.05783],
+          "Mount": false,
           "InteractionType": "Jump",
           "$": "Southwest",
           "JumpDestination": {
@@ -167,6 +171,7 @@
 
         {
           "Position": [144.95807, -20, -511.56027],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -180,6 +185,7 @@
           "$": "Northwest",
           "JumpDestination": {
             "Position": [133.11566, -3.375117, -509.62543],
+            "Mount": false,
             "DelaySeconds": 0.2,
             "StopDistance": 2,
             "Type": "RepeatedJumps"
@@ -208,6 +214,7 @@
         },
         {
          "Position": [132.24214, -1.8364718, -512.14294],
+         "Mount": false,
           "InteractionType": "Jump",
           "$": "Northwest",
           "JumpDestination": {
@@ -246,6 +253,7 @@
 
         {
           "Position": [195.20181, -19.677738, -516.0344],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -259,6 +267,7 @@
           "$": "Northwest",
           "JumpDestination": {
             "Position": [205.8763, -5.0838485, -515.7744],
+            "Mount": false,
             "DelaySeconds": 0.2,
             "StopDistance": 2,
             "Type": "RepeatedJumps"
@@ -287,6 +296,7 @@
         },
         {
           "Position": [206.62883, -3.5484233, -512.7198],
+          "Mount": false,
           "InteractionType": "Jump",
           "$": "Northwest",
           "JumpDestination": {

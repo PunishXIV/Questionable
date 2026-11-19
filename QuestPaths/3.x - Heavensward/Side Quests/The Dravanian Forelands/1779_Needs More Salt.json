@@ -15,6 +15,7 @@
             "StepIf": {
               "NearPosition": {
                 "Position": [470.02356, -49.89133, 20.370789],
+                "Mount": false,
                 "TerritoryId": 398,
                 "MaximumDistance": 10
               }
@@ -36,6 +37,7 @@
         {
           "$": "Path out of building",
           "Position": [471.40442, -51.141407, 36.84344],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -93,6 +95,7 @@
           "$": "Marcechamp",
           "DataId": 1011916,
           "Position": [470.02356, -49.89133, 20.370789],
+          "Mount": false,
           "InteractionType": "CompleteQuest",
           "NextQuestId": 1780
         }

@@ -29,6 +29,7 @@
         {
           "DataId": 395,
           "Position": [326.40576, 256.4665, 129.65588],
+          "Mount": false,
           "InteractionType": "WaitForManualProgress",
           "Comment": "Manual: Use Shearing Knife on Feral Croc",
           "ItemId": 2001403,

@@ -85,6 +85,7 @@
         {
           "DataId": 1038701,
           "Position": [280.38452, 216.34708, -823.3921],
+          "Mount": false,
           "InteractionType": "UseItem",
           "ItemId": 2003129,
           "DelaySecondsAtStart": 2

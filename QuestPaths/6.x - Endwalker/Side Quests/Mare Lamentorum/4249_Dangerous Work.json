@@ -63,6 +63,7 @@
         {
           "DataId": 1041809,
           "Position": [12.3751, -127.349, -573.998],
+          "Mount": false,
           "InteractionType": "CompleteQuest",
           "DelaySecondsAtStart": 2
         }

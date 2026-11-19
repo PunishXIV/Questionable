@@ -37,6 +37,7 @@
         {
           "$": "Need to move slightly out of the way so that flying pathing doesn't get caught on the tent.",
           "Position": [-216.62369, 20.914747, 342.7406],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {

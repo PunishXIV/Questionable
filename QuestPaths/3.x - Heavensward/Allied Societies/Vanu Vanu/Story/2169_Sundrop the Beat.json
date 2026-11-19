@@ -34,6 +34,7 @@
       "Steps": [
         {
           "Position": [-589.2831, -1.0348412, -340.14413],
+          "Mount": false,
           "InteractionType": "Emote",
           "Emote": "dance"
         }
@@ -67,6 +68,7 @@
       "Steps": [
         {
           "Position": [702.4233, -60.78939, 145.91805],
+          "Mount": false,
           "InteractionType": "Emote",
           "Emote": "dance"
         }

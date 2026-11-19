@@ -43,6 +43,7 @@
         },
         {
           "Position": [-431.92166, 6.5580425, -17.561014],
+          "Mount": false,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true

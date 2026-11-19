@@ -24,6 +24,7 @@
       "Steps": [
         {
           "Position": [611.58606, -1.6943853, -91.26402],
+          "Mount": false,
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": [617.04565, -17.818226, -108.994415]
@@ -31,6 +32,7 @@
         },
         {
           "Position": [617.01825, -18.570948, -114.45003],
+          "Mount": false,
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": [619.67755, -28.768707, -127.102554]
@@ -44,6 +46,7 @@
       "Steps": [
         {
           "Position": [617.17053, -29.302427, -130.22484],
+          "Mount": false,
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": [604.2836, -34.756268, -136.64783]
@@ -51,6 +54,7 @@
         },
         {
           "Position": [601.5953, -36.643044, -144.1365],
+          "Mount": false,
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": [598.6192, -43.845043, -154.23668]

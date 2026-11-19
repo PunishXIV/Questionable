@@ -47,6 +47,7 @@
         {
           "DataId": 1017734,
           "Position": [-105.4552, 67.90736, -277.7295],
+          "Mount": false,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 1
         }

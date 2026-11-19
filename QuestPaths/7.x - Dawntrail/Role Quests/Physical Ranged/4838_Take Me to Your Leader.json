@@ -36,31 +36,37 @@
         {
           "DataId": 1048318,
           "Position": [-232.29796, 264.9192, 613.139],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048318,
           "Position": [-256.2343, 264.3857, 607.0586],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048318,
           "Position": [-241.25351, 264.14194, 622.3978],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048318,
           "Position": [-246.00586, 265.5263, 587.24493],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048318,
           "Position": [-264.12643, 263.13184, 563.91364],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048317,
           "Position": [-256.79233, 264.02664, 550.90546],
+          "Mount": false,
           "InteractionType": "WalkTo"
         }
       ]

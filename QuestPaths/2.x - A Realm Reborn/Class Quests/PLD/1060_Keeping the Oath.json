@@ -25,6 +25,7 @@
       "Steps": [
         {
           "Position": [-775.4471, 224.95006, 29.04266],
+          "Mount": false,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,

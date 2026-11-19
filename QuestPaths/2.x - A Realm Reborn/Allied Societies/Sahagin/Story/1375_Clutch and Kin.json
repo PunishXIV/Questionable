@@ -24,6 +24,7 @@
       "Steps": [
         {
           "Position": [-41.15807, -23.382679, -89.52834],
+          "Mount": false,
           "InteractionType": "WalkTo"
         }
       ]

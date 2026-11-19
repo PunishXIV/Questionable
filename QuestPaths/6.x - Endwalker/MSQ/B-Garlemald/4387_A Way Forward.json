@@ -66,18 +66,21 @@
         {
           "DataId": 1039882,
           "Position": [-286.71664, 5.6315875, 264.1926],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
         },
         {
           "DataId": 1039882,
           "Position": [-126.2175, 0.18809877, 233.39058],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 5
         },
         {
           "DataId": 1039882,
           "Position": [67.2465, 0.33215836, 149.8282],
+          "Mount": false,
           "InteractionType": "WalkTo"
         },
         {

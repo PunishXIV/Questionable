@@ -62,6 +62,7 @@
         {
           "$": "Combat",
           "Position": [839.72797, -31.559177, -319.8049],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [

@@ -50,40 +50,47 @@
         {
           "DataId": 1040635,
           "Position": [55.128044, 10.799999, -632.78925],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 3
         },
         {
           "DataId": 1040635,
           "Position": [42.153065, 10.8, -625.0765],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 3
         },
         {
           "DataId": 1040635,
           "Position": [60.43399, 10.799999, -600.4008],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 3
         },
         {
           "DataId": 1040635,
           "Position": [55.30184, 10.8, -598.927],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 3
         },
         {
           "Position": [43.088688, 10.8, -617.3753],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 8
         },
         {
           "DataId": 1040635,
           "Position": [21.752983, 10.5, -589.2936],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1040636,
           "Position": [21.744019, 10.5, -589.3187],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 5
         }

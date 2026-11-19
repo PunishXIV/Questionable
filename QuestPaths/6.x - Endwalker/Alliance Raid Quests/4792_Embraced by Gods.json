@@ -73,16 +73,19 @@
         {
           "DataId": 1045996,
           "Position": [45.021595, 71.30157, 376.23453],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1045996,
           "Position": [43.50745, 71.30162, 379.11874],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1045998,
           "Position": [9.048584, 66.55368, 409.53687],
+          "Mount": false,
           "InteractionType": "WalkTo"
         }
       ]

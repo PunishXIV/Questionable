@@ -16,6 +16,7 @@
       "Steps": [
         {
           "Position": [-146.746, -9.659, -255.299],
+          "Mount": false,
           "InteractionType": "UseItem",
           "ItemId": 2003319,
           "GroundTarget": true,

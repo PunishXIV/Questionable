@@ -22,6 +22,7 @@
         {
           "DataId": 1058131,
           "Position": [777.493, 39, 400.942],
+          "Mount": false,
           "InteractionType": "Interact",
           "$": "auto: todo location -> 1058131 (Haermaga)"
         }
@@ -96,6 +97,7 @@
         {
           "DataId": 1058136,
           "Position": [775.021, 39, 398.218],
+          "Mount": false,
           "InteractionType": "CompleteQuest",
           "$": "auto: todo turn-in -> 1058136 (Haermaga)"
         }

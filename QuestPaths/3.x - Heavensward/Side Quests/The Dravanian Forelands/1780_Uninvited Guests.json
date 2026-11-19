@@ -10,6 +10,7 @@
         {
           "$": "Path out of Marcechamp's building (if you're still there from turning in the previous quest)",
           "Position": [471.40442, -51.141407, 36.84344],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {

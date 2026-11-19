@@ -17,12 +17,14 @@
         {
           "DataId": 1040852,
           "Position": [330.904, 52.6869, 442.036],
+          "Mount": false,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 1
         },
         {
           "DataId": 1040853,
           "Position": [510.947, 75.4707, 413.792],
+          "Mount": false,
           "InteractionType": "Interact",
           "DelaySecondsAtStart": 1
         }

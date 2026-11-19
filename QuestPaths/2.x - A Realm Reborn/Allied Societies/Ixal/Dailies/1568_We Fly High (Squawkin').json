@@ -20,6 +20,7 @@
           "DelaySecondsAtStart": 1,
           "DataId": 1009649,
           "Position": [627.8019, 300.56494, -16.434021],
+          "Mount": false,
           "InteractionType": "Say",
           "ChatMessage": {
             "Key": "TEXT_BANIXA607_01568_SYSTEM_100_062"

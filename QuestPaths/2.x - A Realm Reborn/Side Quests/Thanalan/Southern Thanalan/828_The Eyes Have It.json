@@ -15,6 +15,7 @@
           "$": "Gauging Gent",
           "DataId": 1006299,
           "Position": [-250.38531, 4.989685, 478.0498],
+          "Mount": false,
           "InteractionType": "Emote",
           "Emote": "furious",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,32]
@@ -23,6 +24,7 @@
           "$": "Discerning Dandy",
           "DataId": 1006298,
           "Position": [-250.47687, 5.0201416, 477.1953],
+          "Mount": false,
           "InteractionType": "Emote",
           "Emote": "furious",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
@@ -31,6 +33,7 @@
           "$": "Fatigued Fellow",
           "DataId": 1006300,
           "Position": [-250.0191, 6.9122925, 494.6211],
+          "Mount": false,
           "InteractionType": "Emote",
           "Emote": "furious",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,16]
@@ -39,6 +42,7 @@
           "$": "Spineless Sap",
           "DataId": 1006302,
           "Position": [-245.594, 7.248047, 504.50903],
+          "Mount": false,
           "InteractionType": "Emote",
           "Emote": "furious",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,4]
@@ -47,6 +51,7 @@
           "$": "Laboring Lad",
           "DataId": 1006301,
           "Position": [-278.2483, 5.1727905, 485.37415],
+          "Mount": false,
           "InteractionType": "Emote",
           "Emote": "furious",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,8]
@@ -55,6 +60,7 @@
           "$": "Concentrating Carl",
           "DataId": 1006297,
           "Position": [-287.8615, 7.370056, 466.72766],
+          "Mount": false,
           "InteractionType": "Emote",
           "Emote": "furious",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,128]

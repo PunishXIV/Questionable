@@ -35,6 +35,7 @@ public sealed class QuestStep
     public EInteractionType InteractionType { get; set; }
 
     public float? NpcWaitDistance { get; set; }
+    public bool? Mount { get; set; }
     public ushort? TargetTerritoryId { get; set; }
     public float? DelaySecondsAtStart { get; set; }
     public uint? PickUpItemId { get; set; }

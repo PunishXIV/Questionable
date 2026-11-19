@@ -67,6 +67,7 @@
         {
           "DataId": 1046052,
           "Position": [457.37253, -3.6998415, 283.26285],
+          "Mount": false,
           "InteractionType": "Interact"
         }
       ]
@@ -78,6 +79,7 @@
         {
           "DataId": 1046056,
           "Position": [461.156, -4.92405, 275.812],
+          "Mount": false,
           "InteractionType": "CompleteQuest"
         }
       ]

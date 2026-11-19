@@ -62,6 +62,7 @@
       "Steps": [
         {
           "Position": [-210.32118, 21.582167, -94.337494],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "Comment": "Use Bootshine / True Strike / Snap Punch combo three times",
           "EnemySpawnType": "OverworldEnemies",

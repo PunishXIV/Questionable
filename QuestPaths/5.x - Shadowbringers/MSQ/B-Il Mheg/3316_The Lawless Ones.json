@@ -13,6 +13,7 @@
       "Steps": [
         {
           "Position": [33.10641, 106.830055, -842.54065],
+          "Mount": false,
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": [27.701914, 108.983986, -844.172],
@@ -153,6 +154,7 @@
         },
         {
           "Position": [533.1536, 109.112404, -154.17346],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
           "KillEnemyDataIds": [10249, 10250, 10251]

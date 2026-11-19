@@ -43,6 +43,7 @@
         {
           "$": "Path to building/Marchechamp",
           "Position": [471.40442, -51.141407, 36.84344],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -54,6 +55,7 @@
           "$": "Marcechamp",
           "DataId": 1011916,
           "Position": [470.02356, -49.89133, 20.370789],
+          "Mount": false,
           "InteractionType": "Interact",
           "CompletionQuestVariablesFlags": [null,null,null,null,null,64]
         },
@@ -87,6 +89,7 @@
         {
           "$": "Path out of building (if Marchechamp was the last one you did)",
           "Position": [471.40442, -51.141407, 36.84344],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {

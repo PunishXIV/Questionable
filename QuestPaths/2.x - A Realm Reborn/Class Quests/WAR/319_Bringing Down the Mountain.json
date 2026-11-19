@@ -55,6 +55,7 @@
         {
           "DataId": 2000297,
           "Position": [590.8141, 72.40405, -272.08368],
+          "Mount": false,
           "InteractionType": "Interact"
         }
       ]
@@ -77,6 +78,7 @@
         {
           "DataId": 2000299,
           "Position": [574.0901, 90.440186, -429.06842],
+          "Mount": false,
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,

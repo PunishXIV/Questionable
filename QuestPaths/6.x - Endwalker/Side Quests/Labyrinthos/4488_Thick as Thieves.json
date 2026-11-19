@@ -60,6 +60,7 @@
         {
           "DataId": 1041613,
           "Position": [-610.952, -19.1261, -34.7777],
+          "Mount": false,
           "InteractionType": "Interact"
         }
       ]
@@ -71,6 +72,7 @@
         {
           "DataId": 1041613,
           "Position": [-718.372, -1.62884, -37.6963],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 8
         },

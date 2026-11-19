@@ -39,23 +39,27 @@
         {
           "DataId": 17653,
           "Position": [218.81328, 24.800442, 184.70943],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 6
         },
         {
           "DataId": 17653,
           "Position": [167.20306, 24.205856, 150.9515],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 6
         },
         {
           "DataId": 17653,
           "Position": [202.11948, 39.574707, 86.737045],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 6
         },
         {
           "Position": [194.26257, 47.196045, 45.853394],
+          "Mount": false,
           "InteractionType": "Combat",
           "EnemySpawnType": "AutoOnEnterArea",
           "KillEnemyDataIds": [
@@ -76,12 +80,14 @@
         {
           "DataId": 17653,
           "Position": [235.00903, 44.070503, -28.761452],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 6.5
         },
         {
           "DataId": 17653,
           "Position": [248.98132, 29.587158, -67.73486],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition",
           "NpcWaitDistance": 6
         },

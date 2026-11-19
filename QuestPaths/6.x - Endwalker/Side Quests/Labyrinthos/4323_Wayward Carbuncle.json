@@ -17,6 +17,7 @@
         {
           "DataId": 1041317,
           "Position": [-602.478, -16.6873, 784.892],
+          "Mount": false,
           "InteractionType": "Interact",
           "SkipConditions": {
             "StepIf": {

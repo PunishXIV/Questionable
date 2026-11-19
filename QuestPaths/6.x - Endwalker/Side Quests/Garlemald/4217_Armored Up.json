@@ -62,6 +62,7 @@
       "Steps": [
         {
           "Position": [135.85095, -17.135998, 567.8645],
+          "Mount": false,
           "InteractionType": "None"
         },
         {

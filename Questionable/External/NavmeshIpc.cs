@@ -27,6 +27,7 @@ internal sealed class NavmeshIpc : Ipc, IDisposable
     public bool? GetSimpleMoveInProgress() => ReadOptional(() => _simpleMoveInProgress());
     public bool? GetPathfindInProgress() => ReadOptional(() => _pathfindInProgress());
     public bool FlyTo(Vector3 destination) => IpcInvoke.SafeFunc(() => _pathfindAndMoveTo(destination, true), fallback: false);
+    public bool WalkTo(Vector3 destination) => IpcInvoke.SafeFunc(() => _pathfindAndMoveTo(destination, false), fallback: false);
     public void Stop() => IpcInvoke.SafeAction(() => _pathStop());
 
     private static bool? ReadOptional(Func<bool> read)

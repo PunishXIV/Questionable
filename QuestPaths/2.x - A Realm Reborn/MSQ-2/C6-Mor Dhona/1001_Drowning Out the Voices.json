@@ -94,6 +94,7 @@
         },
         {
           "Position": [-175.24794, 10.096513, -605.4419],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "$": "Camp Revenant's Toll (after jump)"
         },

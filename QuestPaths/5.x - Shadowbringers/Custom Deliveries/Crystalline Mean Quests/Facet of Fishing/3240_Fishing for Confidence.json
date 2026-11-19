@@ -58,6 +58,7 @@
             "StepIf": {
               "NearPosition": {
                 "Position": [-435.4137, 52.479874, -328.0926],
+                "Mount": false,
                 "TerritoryId": 816,
                 "MaximumDistance": 20
               }

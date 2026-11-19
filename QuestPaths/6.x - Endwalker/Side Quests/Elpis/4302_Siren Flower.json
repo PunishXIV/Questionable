@@ -23,11 +23,13 @@
       "Steps": [
         {
           "Position": [-703.6396, 149.24722, -219.15305],
+          "Mount": false,
           "InteractionType": "None",
           "DelaySecondsAtStart": 4
         },
         {
           "Position": [-784.93933, 164.81262, -268.7572],
+          "Mount": false,
           "DelaySecondsAtStart": 2,
           "InteractionType": "Combat",
           "EnemySpawnType": "FinishCombatIfAny",
@@ -50,18 +52,22 @@
         {
 
           "Position": [-789.93115, 163.8504, -235.91583],
+          "Mount": false,
           "InteractionType": "None"
         },
         {
           "Position": [-819.2092, 169.3925, -165.57906],
+          "Mount": false,
           "InteractionType": "None"
         },
         {
           "Position": [-826.693, 164.90277, -142.14305],
+          "Mount": false,
           "InteractionType": "None"
         },
         {
           "Position": [-769.40564, 164.99573, -135.729],
+          "Mount": false,
           "InteractionType": "None"
         },
         {
@@ -89,10 +95,12 @@
       "Steps": [
         {
           "Position": [-757.24963, 165.59544, -65.322914],
+          "Mount": false,
           "InteractionType": "None"
         },
         {
           "Position": [-793.3928, 167.1626, 4.5929565],
+          "Mount": false,
           "InteractionType": "None"
         },
         {
@@ -119,6 +127,7 @@
         {
           "DataId": 1040869,
           "Position": [-793.82007, 167.68048, -0.9309082],
+          "Mount": false,
           "InteractionType": "Interact"
         }
       ]

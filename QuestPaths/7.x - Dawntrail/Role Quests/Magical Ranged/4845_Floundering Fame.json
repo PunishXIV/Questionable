@@ -114,25 +114,30 @@
         {
           "DataId": 1048364,
           "Position": [387.43045, 5.8062716, -203.20459],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048364,
           "Position": [398.46808, 12.103142, -174.068],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048364,
           "Position": [395.6862, 11.099065, -169.7558],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "DataId": 1048364,
           "Position": [274.41418, 17.838093, -2.1020741],
+          "Mount": false,
           "InteractionType": "WaitForNpcAtPosition"
         },
         {
           "Position": [244.453, 16.725914, 14.936783],
+          "Mount": false,
           "InteractionType": "WalkTo"
         }
       ]

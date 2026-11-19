@@ -42,6 +42,7 @@
         {
           "DataId": 2012497,
           "Position": [-636.71326, -19.150085, -32.028687],
+          "Mount": false,
           "InteractionType": "UseItem",
           "ItemId": 2003310,
           "DelaySecondsAtStart": 1
@@ -49,6 +50,7 @@
         {
           "DataId": 2012495,
           "Position": [-613.3059, -19.150085, -56.717834],
+          "Mount": false,
           "InteractionType": "UseItem",
           "ItemId": 2003310,
           "DelaySecondsAtStart": 1
@@ -56,6 +58,7 @@
         {
           "DataId": 2012496,
           "Position": [-636.4386, -19.150085, -57.02301],
+          "Mount": false,
           "InteractionType": "UseItem",
           "ItemId": 2003310,
           "DelaySecondsAtStart": 1

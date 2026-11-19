@@ -30,6 +30,7 @@
         {
           "DataId": 1051873,
           "Position": [55.588623, 47.3197, 59.830566],
+          "Mount": false,
           "InteractionType": "Interact"
         }
       ]
@@ -41,11 +42,13 @@
         {
           "DataId": 1051873,
           "Position": [55.588623, 47.3197, 59.830566],
+          "Mount": false,
           "InteractionType": "Interact"
         },
         {
           "DataId": 1051874,
           "Position": [145.73889, 47.20847, 156.11499],
+          "Mount": false,
           "InteractionType": "Interact"
         }
       ]
@@ -57,11 +60,13 @@
         {
           "DataId": 1051874,
           "Position": [145.73889, 47.20847, 156.11499],
+          "Mount": false,
           "InteractionType": "Interact"
         },
         {
           "DataId": 1051875,
           "Position": [171.25195, 60.953327, 261.31067],
+          "Mount": false,
           "InteractionType": "Interact"
         }
       ]

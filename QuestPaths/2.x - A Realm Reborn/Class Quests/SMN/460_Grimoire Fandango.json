@@ -97,6 +97,7 @@
         },
         {
           "Position": [-367.3377, 27.109692, 40.748257],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {

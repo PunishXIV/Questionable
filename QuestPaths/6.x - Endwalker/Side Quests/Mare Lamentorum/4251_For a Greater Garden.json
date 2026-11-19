@@ -16,6 +16,7 @@
       "Steps": [
         {
           "Position": [225.946, 96.971, -59.4212],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "DelaySecondsAtStart": 2
         },

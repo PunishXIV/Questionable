@@ -17,6 +17,7 @@
         },
         {
           "Position": [482.38736, 14.930612, 672.66675],
+          "Mount": false,
           "TerritoryId": 1190,
           "InteractionType": "WalkTo"
         },

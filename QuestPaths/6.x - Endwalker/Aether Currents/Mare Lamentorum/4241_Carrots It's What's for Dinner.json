@@ -13,6 +13,7 @@
       "Steps": [
         {
           "Position": [-348.90564, -161.8501, -651.4007],
+          "Mount": false,
           "InteractionType": "WalkTo",
           "SkipConditions": {
             "StepIf": {
@@ -132,6 +133,7 @@
         },
         {
           "Position": [-438.33246, -168.00002, -420.43494],
+          "Mount": false,
           "InteractionType": "Jump",
           "JumpDestination": {
             "Position": [-438.3488, -166.55414, -415.94168],

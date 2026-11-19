@@ -3,7 +3,7 @@
 Rewrites quest path files in place, touching only the text that changes.
 
     strip-routing  Remove routing that MappingTheRealm now decides: AetheryteShortcut, AethernetShortcut,
-                   their SkipConditions, Fly, Land, Mount, IgnoreDistanceToObject, StopDistance on steps with a
+                   their SkipConditions, Fly, Land, IgnoreDistanceToObject, StopDistance on steps with a
                    Position, and steps that only routed (Vesper Bay ticket use, position-less "None" teleports).
 
     v2             quest-v2 layout: "$schema" -> quest-v2.json, every {"X", "Y", "Z"} object -> [x, y, z] (number
@@ -37,7 +37,7 @@ import sys
 from pathlib import Path
 
 ROUTING_KEYS = {
-    "AetheryteShortcut", "AethernetShortcut", "Fly", "Land", "Mount", "Sprint", "DisableNavmesh",
+    "AetheryteShortcut", "AethernetShortcut", "Fly", "Land", "Sprint", "DisableNavmesh",
     "RestartNavigationIfCancelled", "IgnoreDistanceToObject",
 }
 ROUTING_SKIPS = {"AetheryteShortcutIf", "AethernetShortcutIf"}
