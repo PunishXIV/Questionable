@@ -16,6 +16,7 @@ internal sealed class JournalTable(
 {
     // Journal tables are never nested, so the open table's optional columns are kept here for its rows.
     private bool _repColumn;
+    private bool _owned;
 
     public static EPathSupport GetSupport(bool removed, QuestRoot? root, IReadOnlyCollection<EIssueSeverity> issues)
     {
@@ -32,9 +33,10 @@ internal sealed class JournalTable(
 
     // pinHeader scrolls the table instead of the window; only for the last thing on its tab.
     public ImRaii.TableDisposable Begin(string id, bool repColumn = false,
-        bool pinHeader = false)
+        bool pinHeader = false, bool owned = false)
     {
         _repColumn = repColumn;
+        _owned = owned;
         ImGuiTableFlags flags = ImGuiTableFlags.NoSavedSettings;
         if (pinHeader)
             flags |= ImGuiTableFlags.ScrollY;
@@ -53,7 +55,7 @@ internal sealed class JournalTable(
         if (repColumn)
             ImGui.TableSetupColumn(_L("Reputation"), ImGuiTableColumnFlags.WidthFixed, 70 * scale);
         ImGui.TableSetupColumn(_L("Supported"), ImGuiTableColumnFlags.WidthFixed, 100 * scale);
-        ImGui.TableSetupColumn(_L("Completed"), ImGuiTableColumnFlags.WidthFixed, 125 * scale);
+        ImGui.TableSetupColumn(owned ? _L("Owned") : _L("Completed"), ImGuiTableColumnFlags.WidthFixed, 125 * scale);
         ImGui.TableHeadersRow();
         return table;
     }
@@ -107,7 +109,7 @@ internal sealed class JournalTable(
         if (ImGui.IsItemHovered())
         {
             ImGui.SetMouseCursor(ImGuiMouseCursor.Hand);
-            DrawTooltip(questInfo, label != null);
+            DrawTooltip(questInfo, label != null, _owned ? unlocked : null);
         }
 
         if (ImGui.IsItemClicked() && questInfo is QuestInfo)
@@ -170,7 +172,7 @@ internal sealed class JournalTable(
         return name;
     }
 
-    private void DrawTooltip(IQuestInfo questInfo, bool reward)
+    private void DrawTooltip(IQuestInfo questInfo, bool reward, bool? owned)
     {
         if (!reward)
         {
@@ -179,6 +181,8 @@ internal sealed class JournalTable(
         }
 
         using ImRaii.TooltipDisposable tooltip = ImRaii.Tooltip();
+        if (owned is { } isOwned)
+            ImGui.Text(isOwned ? _L("You own this.") : _L("You don't own this yet. Items from the quest count once used."));
         ImGui.Text(_LF("Obtained from: {0}", questInfo.Name));
         using (ImRaii.PushIndent())
             questTooltipComponent.DrawInner(questInfo, showItemRewards: false);

@@ -174,7 +174,7 @@ internal sealed class QuestRewardComponent
         if (!ImGui.CollapsingHeader($"{label}###Reward{type}"))
             return;
 
-        using ImRaii.TableDisposable table = journalTable.Begin($"Reward{type}");
+        using ImRaii.TableDisposable table = journalTable.Begin($"Reward{type}", owned: true);
         if (!table)
             return;
 

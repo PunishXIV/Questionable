@@ -18,9 +18,13 @@ internal sealed class ContentProgressComponent(TerritoryData territoryData, Game
     private readonly Lazy<ILookup<EContentType, (TerritoryData.CfcData Cfc, uint ContentId)>> _duties = new(() =>
         territoryData.AllCfcs
             .Where(x => x.ContentType != null && !string.IsNullOrEmpty(x.Name) &&
-                        gameFunctions.CfcToContentId.ContainsKey(x.Id))
+                        gameFunctions.CfcToContentId.ContainsKey(x.Id) && !IsHidden(x.Id))
             .OrderBy(x => x.RequiredLevel).ThenBy(x => x.Name, StringComparer.CurrentCulture)
             .ToLookup(x => x.ContentType!.Value, x => (x, gameFunctions.CfcToContentId[x.Id])));
+
+    // Sort key 9999 marks a row the Duty Finder hides (an old copy of the Gilded Araya).
+    private static bool IsHidden(uint cfcId) =>
+        Svc.Data.GetExcelSheet<Lumina.Excel.Sheets.ContentFinderCondition>().GetRowOrDefault(cfcId)?.SortKey == 9999;
 
     private readonly JournalRefresh _refresh = new(TimeSpan.FromSeconds(1));
     private readonly Dictionary<EContentType, (List<(TerritoryData.CfcData Cfc, uint ContentId)> Duties, int Unlocked, int Completed)> _counts = [];
