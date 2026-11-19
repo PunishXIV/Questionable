@@ -16,10 +16,6 @@
         <DefineConstants>DEBUG;TRACE</DefineConstants>
     </PropertyGroup>
 
-    <PropertyGroup>
-        <SixLaborsLicenseKey>$(SIXLABORS_LICENSE_KEY)</SixLaborsLicenseKey>
-    </PropertyGroup>
-
     <ItemGroup>
         <PackageReference Include="Dalamud.Extensions.MicrosoftLogging" Version="4.0.1" />
         <PackageReference Include="ECommons" Version="3.2.1.26" />
