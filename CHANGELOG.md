@@ -1,1 +1,1 @@
-- Add the FF 16 event. - Alydev
+- Fix solo duty accept hanging - Kage

@@ -328,9 +328,9 @@ internal sealed class YesNoChoiceHandler : IDisposable
         if (!_questController.IsRunning)
             return;
 
+        // The duty prompt keeps OccupiedInCutSceneEvent set, so only loading or being in the duty blocks the confirmation.
         if (_condition[ConditionFlag.BoundByDuty] ||
-            _condition[ConditionFlag.BetweenAreas] ||
-            _condition[ConditionFlag.OccupiedInCutSceneEvent])
+            _condition[ConditionFlag.BetweenAreas])
             return;
 
         if (!_gameGui.TryGetAddonByName("SelectYesno", out AddonSelectYesno* addon) ||
