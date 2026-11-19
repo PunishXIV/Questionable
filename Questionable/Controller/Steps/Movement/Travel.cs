@@ -41,6 +41,8 @@ internal static class Travel
         private bool _pace;
         private bool _paused;
         private Vector3? _heading;
+        private Vector3? _leaderAt;
+        private DateTime _leaderMoved;
         private bool _waiting;
         private DateTime _readyAfter;
         private int _retries;
@@ -54,6 +56,7 @@ internal static class Travel
             _vnavSince = null;
             _paused = false;
             _heading = null;
+            _leaderAt = null;
             _zone = clientState.TerritoryType;
             if (Task.Position == null && _zone == Task.TerritoryId)
                 return false;
@@ -62,7 +65,9 @@ internal static class Travel
             _escort = Task.DataId is { } escorted && NearPlayer(escorted);
             if (_escort)
                 logger.LogInformation("{DataId} walks with the player, travelling to the step's position", Task.DataId);
-            _pace = Task is { Walk: true, Leader: { } leader } && NearPlayer(leader);
+            // The leader waits ahead of the player, often further than an escort walks (FF16 4798, Torgal).
+            _pace = Task is { Walk: true, Leader: { } leader, Position: { } goal } && _zone == Task.TerritoryId &&
+                gameFunctions.FindObjectByDataId(leader) is { } npc && Vector3.Distance(npc.Position, goal) > 8;
             if (_pace)
                 logger.LogInformation("Walking behind {Leader}", Task.Leader);
 
@@ -136,8 +141,12 @@ internal static class Travel
                 : mappingTheRealm.Travel(Task.TerritoryId, UseId ? null : Task.Position, Task.DataId, Task.Range);
         }
 
-        // Follow steps fail when the player passes the NPC, and the NPC waits until the player is close (FF16 4798, Torgal).
-        internal static bool KeepWalking(bool walking, float gap) => walking ? gap > 2 : gap > 4;
+        // Follow steps fail when the player passes the NPC, and a resting NPC waits until the player is close (FF16 4798, Torgal).
+        internal static bool KeepWalking(bool walking, float gap, bool resting)
+        {
+            float stop = resting ? 2 : 3;
+            return walking ? gap > stop : gap > (resting ? stop : 5);
+        }
 
         private ETaskResult Pace(Vector3 goal, Vector3 player, Vector3 npc)
         {
@@ -148,7 +157,14 @@ internal static class Travel
                 return ETaskResult.TaskComplete;
             }
 
-            _paused = !KeepWalking(!_paused, Vector3.Distance(player, npc));
+            if (_leaderAt is not { } last || Vector3.Distance(last, npc) > 0.5f)
+            {
+                _leaderAt = npc;
+                _leaderMoved = DateTime.Now;
+            }
+
+            bool resting = DateTime.Now - _leaderMoved > TimeSpan.FromSeconds(2);
+            _paused = !KeepWalking(!_paused, Vector3.Distance(player, npc), resting);
             if (!_paused)
             {
                 // vnavmesh rejects a new route while it is still pathfinding the last one.

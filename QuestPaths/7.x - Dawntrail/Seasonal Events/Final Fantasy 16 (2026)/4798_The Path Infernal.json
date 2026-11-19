@@ -66,6 +66,11 @@
       "Steps": [
         {
           "DataId": 1046053,
+          "Position": [432.0592, 7.2534957, 152.33081],
+          "InteractionType": "Interact"
+        },
+        {
+          "DataId": 1046053,
           "Position": [457.37253, -3.6998415, 283.26285],
           "Mount": false,
           "InteractionType": "WalkTo"
