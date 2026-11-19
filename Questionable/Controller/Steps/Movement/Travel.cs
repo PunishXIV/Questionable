@@ -37,6 +37,7 @@ internal static class Travel
         private uint _zone;
         private bool _byPosition;
         private bool _escort;
+        private bool _paused;
         private bool _waiting;
         private DateTime _readyAfter;
         private int _retries;
@@ -48,6 +49,7 @@ internal static class Travel
             _started = false;
             _retries = 0;
             _vnavSince = null;
+            _paused = false;
             _zone = clientState.TerritoryType;
             if (Task.Position == null && _zone == Task.TerritoryId)
                 return false;
@@ -127,8 +129,41 @@ internal static class Travel
                 : mappingTheRealm.Travel(Task.TerritoryId, UseId ? null : Task.Position, Task.DataId, Task.Range);
         }
 
+        // Follow steps fail when the player passes the NPC while it waits (FF16 4798, Torgal).
+        internal static bool KeepWalking(bool walking, Vector3 player, Vector3 npc, Vector3 goal)
+        {
+            float gap = Vector3.Distance(player, npc);
+            bool ahead = Vector3.Distance(player, goal) < Vector3.Distance(npc, goal);
+            return walking ? !ahead && gap >= 4 : !ahead && gap > 6;
+        }
+
+        private ETaskResult Pace(Vector3 goal, Vector3 player, Vector3 npc)
+        {
+            if (Vector3.Distance(npc, goal) <= VnavArrival)
+            {
+                navmesh.Stop();
+                return ETaskResult.TaskComplete;
+            }
+
+            bool walk = KeepWalking(!_paused, player, npc, goal);
+            if (walk == _paused)
+            {
+                _paused = !walk;
+                if (_paused)
+                    navmesh.Stop();
+                else if (!navmesh.WalkTo(goal))
+                    throw new TaskException("vnavmesh couldn't find a path on foot");
+            }
+
+            return ETaskResult.StillRunning;
+        }
+
         private ETaskResult FollowVnav(DateTime since)
         {
+            if (_escort && Task is { Walk: true, DataId: { } id } && objectTable[0] is { } player &&
+                gameFunctions.FindObjectByDataId(id) is { } npc)
+                return Pace(Task.Position!.Value, player.Position, npc.Position);
+
             if (objectTable[0]?.Position is { } here && Vector3.Distance(here, Task.Position!.Value) <= VnavArrival)
             {
                 navmesh.Stop();
