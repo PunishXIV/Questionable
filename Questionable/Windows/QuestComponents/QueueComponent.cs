@@ -76,6 +76,8 @@ internal sealed class QueueComponent
         DrawSavedLists();
         DrawQuestList();
         DrawRewardTotal();
+        if (_questController.PriorityManager.IsEmpty)
+            ImGui.TextDisabled(_L("No quests yet. Add one above or pick a saved list."));
 
         _openQuestCleanUp.DrawButton();
         using (ImRaii.Disabled(_questController.PriorityManager.IsEmpty))
@@ -238,10 +240,17 @@ internal sealed class QueueComponent
             }
 
             ImGui.TextDisabled(_L("Built-in"));
-            foreach (string name in _presets.BuiltIn.Select(x => x.Name))
+            foreach (IGrouping<PriorityPresets.EGroup, PriorityPresets.Preset> group in _presets.Grouped(_configuration.Advanced.Debug))
             {
-                if (ImGui.Selectable(name, _selectedPresetName == name))
-                    _selectedPresetName = name;
+                ImGui.TextDisabled("  " + PriorityPresets.GroupName(group.Key));
+                using var indent = ImRaii.PushIndent();
+                foreach (PriorityPresets.Preset preset in group)
+                {
+                    if (ImGui.Selectable(preset.Short ?? preset.Name, _selectedPresetName == preset.Name))
+                        _selectedPresetName = preset.Name;
+                    if (preset.Hint != null && ImGui.IsItemHovered())
+                        QstWidgets.Tooltip(preset.Hint);
+                }
             }
 
             ImGui.EndCombo();
@@ -307,11 +316,14 @@ internal sealed class QueueComponent
         if (ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
             QstWidgets.Tooltip(_L("Add quests from the clipboard to the end of the list"));
 
-        ImGui.SameLine();
-        if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Redo))
-            _presets.Reload();
-        if (ImGui.IsItemHovered())
-            QstWidgets.Tooltip(_L("Reload the built-in lists"));
+        if (_configuration.Advanced.Debug)
+        {
+            ImGui.SameLine();
+            if (ImGuiComponentsLocal.IconButton(FontAwesomeIcon.Redo))
+                _presets.Reload();
+            if (ImGui.IsItemHovered())
+                QstWidgets.Tooltip(_L("Reload the built-in lists"));
+        }
 
         DrawSavePopup(userLists);
     }

@@ -285,7 +285,11 @@ internal sealed partial class ActiveQuestComponent
     private unsafe void DrawNoQuest(bool isMinimized)
     {
         if (pathDataUpdater.Status != _L("Idle") && (DateTime.Now - pathDataUpdater.StatusLastChanged).TotalSeconds < 30)
+        {
             ImGui.Text(pathDataUpdater.Status);
+            if (ImGui.IsItemHovered())
+                QstWidgets.Tooltip(_LF("Data version {0}", configuration.PathData.InstalledDataVersion));
+        }
         else if (questFunctions.GetLevelLockedMainScenarioQuest() is var (lockedMsq, _))
             ImGui.TextColored(QstTheme.Amber, _LF("Next MSQ '{0}' needs level {1}", lockedMsq.Name, lockedMsq.Level));
         else
@@ -627,11 +631,49 @@ internal sealed partial class ActiveQuestComponent
         }
     }
 
+    internal static string StepLabel(EInteractionType type) => type switch
+    {
+        EInteractionType.Interact => _L("Interact"),
+        EInteractionType.WalkTo => _L("Walk"),
+        EInteractionType.AttuneAethernetShard => _L("Attune shard"),
+        EInteractionType.AttuneAetheryte => _L("Attune aetheryte"),
+        EInteractionType.RegisterFreeOrFavoredAetheryte => _L("Favourite aetheryte"),
+        EInteractionType.AttuneAetherCurrent => _L("Aether current"),
+        EInteractionType.Combat => _L("Combat"),
+        EInteractionType.UseItem => _L("Use item"),
+        EInteractionType.EquipItem => _L("Equip item"),
+        EInteractionType.UnequipItem => _L("Unequip item"),
+        EInteractionType.PurchaseItem => _L("Buy item"),
+        EInteractionType.EquipRecommended => _L("Equip gear"),
+        EInteractionType.Say => _L("Say"),
+        EInteractionType.Emote => _L("Emote"),
+        EInteractionType.Action => _L("Use action"),
+        EInteractionType.StatusOff => _L("Remove status"),
+        EInteractionType.WaitForObjectAtPosition or EInteractionType.WaitForNpcAtPosition => _L("Wait for NPC"),
+        EInteractionType.WaitForManualProgress or EInteractionType.Instruction => _L("Your turn"),
+        EInteractionType.Duty => _L("Duty"),
+        EInteractionType.SinglePlayerDuty => _L("Quest battle"),
+        EInteractionType.Jump => _L("Jump"),
+        EInteractionType.Dive => _L("Dive"),
+        EInteractionType.Craft => _L("Craft"),
+        EInteractionType.Gather => _L("Gather"),
+        EInteractionType.Snipe => _L("Snipe"),
+        EInteractionType.CreateGearset or EInteractionType.UpdateGearset => _L("Gear set"),
+        EInteractionType.SwitchClass => _L("Switch job"),
+        EInteractionType.UnlockTaxiStand => _L("Chocobo porter"),
+        EInteractionType.AcceptQuest => _L("Accept"),
+        EInteractionType.CompleteQuest => _L("Turn in"),
+        EInteractionType.Fish => _L("Fish"),
+        EInteractionType.Macro => _L("Macro"),
+        EInteractionType.CleanUpOtherQuests => _L("Clean up"),
+        _ => Regex.Replace(type.ToString(), "(?<=[a-z])(?=[A-Z])", " "),
+    };
+
     private void DrawStepChips(QuestSequence? metaSequence, int step)
     {
         if (metaSequence?.FindStep(step) is { } metaStep)
         {
-            QstWidgets.Chip(metaStep.InteractionType.ToString(), QstTheme.Accent);
+            QstWidgets.Chip(StepLabel(metaStep.InteractionType), QstTheme.Accent);
             if (metaStep.DataId is { } metaDataId && configuration.Advanced.Debug)
             {
                 ImGui.SameLine();

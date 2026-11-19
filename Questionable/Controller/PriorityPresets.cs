@@ -23,9 +23,32 @@ internal sealed class PriorityPresets(
     internal const string CustomPrefix = "custom:";
     private const string JobQuestsKey = "JobQuests";
 
-    internal sealed record Preset(string Key, string Name, List<ElementId> Quests);
+    internal enum EGroup
+    {
+        Story,
+        Societies,
+        AetherCurrents,
+        RoleQuests,
+        Experimental,
+    }
+
+    // Short is the name under its group heading; Name is shown everywhere else.
+    internal sealed record Preset(string Key, string Name, List<ElementId> Quests, EGroup Group = EGroup.Story,
+        string? Short = null, string? Hint = null);
 
     private List<Preset>? _builtIn;
+
+    public static string GroupName(EGroup group) => group switch
+    {
+        EGroup.Societies => _T<AchievementCategory>(37),
+        EGroup.AetherCurrents => _T<Addon>(2445),
+        EGroup.RoleQuests => _T<JournalCategory>(95),
+        EGroup.Experimental => _L("Experimental"),
+        _ => _L("Story & unlocks"),
+    };
+
+    public IEnumerable<IGrouping<EGroup, Preset>> Grouped(bool debug) =>
+        BuiltIn.Where(x => debug || x.Group != EGroup.Experimental).GroupBy(x => x.Group);
 
     public string JobQuestsName { get; } = _L("Job Quests");
 
@@ -241,7 +264,7 @@ internal sealed class PriorityPresets(
         [
             new(JobQuestsKey, JobQuestsName, []),
             new("LevelCapDungeons", _T<ContentRoulette>(8), ((ushort[])[4959, 5013, 5014]).FromNumericListOfQuests()),
-            new("Gil", _L("Gil (tick \"Allagan pieces\" under Quest reward choice)"), gilQuests),
+            new("Gil", _L("Gil"), gilQuests, Hint: _L("Tick 'Allagan pieces' under Quest reward choice.")),
             new("JobUnlocks", _L("Unlock all jobs"), jobUnlocks),
             new("CrafterGathererUnlocks", _L("DoH/DoL unlocks"), dohDolUnlocks),
             new("PostRealmRebornUnlocks", _L("Post-ARR unlocks"), postArrUnlocks),
@@ -251,23 +274,42 @@ internal sealed class PriorityPresets(
             new("Primals", _T<JournalCategory>(16), QuestData.HardModePrimals.Cast<ElementId>().ToList()),
             new("CrystalTower", _T<JournalCategory>(18), QuestData.CrystalTowerQuests.Cast<ElementId>().ToList()),
             new("CustomDeliveries", _T<Addon>(5700), unlockCustomDeliveries),
-            new("SocietyMoogle", $"{_T<AchievementCategory>(37)}: {_T<BeastTribe>(8).Titleize()}", QuestData.UnlockMoogleSocietyQuests.ToList()),
-            new("SocietyPelupelu", $"{_T<AchievementCategory>(37)}: {_T<BeastTribe>(18).Titleize()}", QuestData.PelupeluQuests.ToList()),
-            new("SocietyMamoolJa", $"{_T<AchievementCategory>(37)}: {_T<BeastTribe>(19).Titleize()}", QuestData.MamoolJaQuests.ToList()),
-            new("SocietyYokHuy", $"{_T<AchievementCategory>(37)}: {_T<BeastTribe>(20).Titleize()}", QuestData.YokHuyQuests.ToList()),
-            new("AetherCurrents1", $"{aetherCurrents}: {_T<ExVersion>(1)}", GetAetherCurrentQuests(397, 398, 399, 400, 401)),
-            new("AetherCurrents2", $"{aetherCurrents}: {_T<ExVersion>(2)}", GetAetherCurrentQuests(612, 613, 614, 620, 621, 622)),
-            new("AetherCurrents3", $"{aetherCurrents}: {_T<ExVersion>(3)}", GetAetherCurrentQuests(813, 814, 815, 816, 817, 818)),
-            new("AetherCurrents4", $"{aetherCurrents}: {_T<ExVersion>(4)}", GetAetherCurrentQuests(956, 957, 958, 959, 960, 961)),
-            new("AetherCurrents5", $"{aetherCurrents}: {_T<ExVersion>(5)}", GetAetherCurrentQuests(1187, 1188, 1189, 1190, 1191, 1192)),
-            new("RoleQuestsTank", $"{roleQuests}: {_T<Addon>(1082)}", GetRoleQuests(Job.PLD)),
-            new("RoleQuestsHealer", $"{roleQuests}: {_T<Addon>(1083)}", GetRoleQuests(Job.WHM)),
-            new("RoleQuestsMelee", $"{roleQuests}: {_T<Addon>(1084)}", GetRoleQuests(Job.MNK)),
-            new("RoleQuestsRanged", $"{roleQuests}: {_T<Addon>(1085)}", GetRoleQuests(Job.BRD)),
-            new("RoleQuestsCaster", $"{roleQuests}: {_T<Addon>(1086)}", GetRoleQuests(Job.BLM)),
-            new("GilSacks", "Experimental: Available quests rewarding silver/gold gil sacks", gilSackQuests),
-            new("HealthPercent", "Experimental: Quests that require a mob to be damaged to a certain health%", healthPercentQuests),
+            Society("SocietyMoogle", 8, QuestData.UnlockMoogleSocietyQuests.ToList()),
+            Society("SocietyPelupelu", 18, QuestData.PelupeluQuests.ToList()),
+            Society("SocietyMamoolJa", 19, QuestData.MamoolJaQuests.ToList()),
+            Society("SocietyYokHuy", 20, QuestData.YokHuyQuests.ToList()),
+            Currents(1, GetAetherCurrentQuests(397, 398, 399, 400, 401)),
+            Currents(2, GetAetherCurrentQuests(612, 613, 614, 620, 621, 622)),
+            Currents(3, GetAetherCurrentQuests(813, 814, 815, 816, 817, 818)),
+            Currents(4, GetAetherCurrentQuests(956, 957, 958, 959, 960, 961)),
+            Currents(5, GetAetherCurrentQuests(1187, 1188, 1189, 1190, 1191, 1192)),
+            Role("RoleQuestsTank", 1082, Job.PLD),
+            Role("RoleQuestsHealer", 1083, Job.WHM),
+            Role("RoleQuestsMelee", 1084, Job.MNK),
+            Role("RoleQuestsRanged", 1085, Job.BRD),
+            Role("RoleQuestsCaster", 1086, Job.BLM),
+            new("GilSacks", "Experimental: Available quests rewarding silver/gold gil sacks", gilSackQuests, EGroup.Experimental),
+            new("HealthPercent", "Experimental: Quests that require a mob to be damaged to a certain health%", healthPercentQuests,
+                EGroup.Experimental),
         ];
+
+        Preset Society(string key, uint tribe, List<ElementId> quests)
+        {
+            string name = _T<BeastTribe>(tribe).Titleize();
+            return new(key, $"{GroupName(EGroup.Societies)}: {name}", quests, EGroup.Societies, name);
+        }
+
+        Preset Currents(uint expansion, List<ElementId> quests)
+        {
+            string name = _T<ExVersion>(expansion);
+            return new($"AetherCurrents{expansion}", $"{aetherCurrents}: {name}", quests, EGroup.AetherCurrents, name);
+        }
+
+        Preset Role(string key, uint addon, Job job)
+        {
+            string name = _T<Addon>(addon);
+            return new(key, $"{roleQuests}: {name}", GetRoleQuests(job), EGroup.RoleQuests, name);
+        }
     }
 
     private static List<ElementId> GetAetherCurrentQuests(params uint[] territories)

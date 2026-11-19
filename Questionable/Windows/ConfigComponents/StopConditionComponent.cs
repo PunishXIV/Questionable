@@ -343,11 +343,16 @@ internal sealed class StopConditionComponent : ConfigComponent
 
         ImGui.Separator();
         ImGui.TextDisabled(_L("Built-in"));
-        foreach (PriorityPresets.Preset preset in _presets.BuiltIn)
+        foreach (IGrouping<PriorityPresets.EGroup, PriorityPresets.Preset> group in _presets.Grouped(Configuration.Advanced.Debug))
         {
-            string id = PriorityPresets.BuiltInPrefix + preset.Key;
-            if (ImGui.Selectable(preset.Name, presetId == id))
-                picked = id;
+            ImGui.TextDisabled("  " + PriorityPresets.GroupName(group.Key));
+            using var indent = ImRaii.PushIndent();
+            foreach (PriorityPresets.Preset preset in group)
+            {
+                string id = PriorityPresets.BuiltInPrefix + preset.Key;
+                if (ImGui.Selectable(preset.Short ?? preset.Name, presetId == id))
+                    picked = id;
+            }
         }
 
         ImGui.EndCombo();

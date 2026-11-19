@@ -18,7 +18,7 @@ internal sealed class QuestSelector(QuestRegistry questRegistry)
         if (ImGui.BeginCombo("##QuestSelection", _L("Add Quest..."), ImGuiComboFlags.HeightLarge))
         {
             ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-            bool addFirst = ImGui.InputTextWithHint("##", _L("Filter..."), ref _searchString, 256,
+            bool addFirst = ImGui.InputTextWithHint("##", _L("Quest name or ID..."), ref _searchString, 256,
                 ImGuiInputTextFlags.AutoSelectAll | ImGuiInputTextFlags.EnterReturnsTrue);
 
             IEnumerable<Quest> foundQuests;

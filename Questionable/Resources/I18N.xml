@@ -3270,15 +3270,6 @@
     <!--<Value lang="ko">퀘스트 추가...</Value>-->
   </Entry>
   <Entry>
-    <!-- Found in: ../Questionable/Windows/Utils/QuestSelector.cs -->
-    <Key>Filter...</Key>
-    <Value lang="en">Filter...</Value>
-    <Value lang="ja-jp">フィルター...</Value>
-    <Value lang="zh-cn">筛选...</Value>
-    <Value lang="zh-tw">篩選...</Value>
-    <!--<Value lang="ko">필터...</Value>-->
-  </Entry>
-  <Entry>
     <!-- Found in: ../Questionable/Windows/ConfigComponents/GeneralConfigComponent.cs -->
     <Key>English</Key>
     <Value lang="en">English</Value>
@@ -3501,15 +3492,6 @@
     <Value lang="zh-cn">安装失败</Value>
     <Value lang="zh-tw">安裝失敗</Value>
     <!--<Value lang="ko">설치 실패</Value>-->
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/PathData/PathDataUpdater.cs -->
-    <Key>Updated to data version {0}</Key>
-    <Value lang="en">Updated to data version {0}</Value>
-    <Value lang="ja-jp">データバージョン {0} に更新しました</Value>
-    <Value lang="zh-cn">已更新到路径数据版本 {0}</Value>
-    <Value lang="zh-tw">已更新到路徑資料版本 {0}</Value>
-    <!--<Value lang="ko">데이터 버전 {0}으로 업데이트되었습니다</Value>-->
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Windows/JournalComponents/AlliedSocietyComponent.cs -->
@@ -5225,14 +5207,6 @@
     <Value lang="ja-jp">外部操作を確認できません。</Value>
     <Value lang="zh-cn">无法观察外部操作。</Value>
     <Value lang="zh-tw">無法觀察外部操作。</Value>
-  </Entry>
-  <Entry>
-    <!-- Found in: ../Questionable/Controller/PriorityPresets.cs -->
-    <Key>Gil (tick "Allagan pieces" under Quest reward choice)</Key>
-    <Value lang="en">Gil (tick "Allagan pieces" under Quest reward choice)</Value>
-    <Value lang="ja-jp">ギル（クエスト報酬選択の「アラグ貨幣」を選択）</Value>
-    <Value lang="zh-cn">金币（勾选任务奖励选择中的“亚拉戈钱币”）</Value>
-    <Value lang="zh-tw">金幣（勾選任務獎勵選擇中的「亞拉戈錢幣」）</Value>
   </Entry>
   <Entry>
     <!-- Found in: ../Questionable/Controller/QuestController.cs, ../Questionable/Controller/Steps/Interactions/Duty.cs -->
@@ -9205,5 +9179,293 @@ Right click: Copy without .json</Value>
     <Value lang="ja-jp">「クエストマップで表示」ボタン（クエスト情報とクエストグラフ）</Value>
     <Value lang="zh-cn">“在任务地图中显示”按钮（任务信息和任务关系图）</Value>
     <Value lang="zh-tw">「在任務地圖中顯示」按鈕（任務資訊和任務關係圖）</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/PriorityPresets.cs -->
+    <Key>Experimental</Key>
+    <Value lang="en">Experimental</Value>
+    <Value lang="ja-jp">実験的</Value>
+    <Value lang="zh-cn">实验性</Value>
+    <Value lang="zh-tw">實驗性</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/PriorityPresets.cs -->
+    <Key>Story &amp; unlocks</Key>
+    <Value lang="en">Story &amp; unlocks</Value>
+    <Value lang="ja-jp">ストーリーと解放</Value>
+    <Value lang="zh-cn">剧情与解锁</Value>
+    <Value lang="zh-tw">劇情與解鎖</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Controller/PriorityPresets.cs -->
+    <Key>Tick 'Allagan pieces' under Quest reward choice.</Key>
+    <Value lang="en">Tick 'Allagan pieces' under Quest reward choice.</Value>
+    <Value lang="ja-jp">「クエスト報酬の選択」で「アラガン貨幣」にチェックを入れてください。</Value>
+    <Value lang="zh-cn">请在“任务奖励选择”中勾选“亚拉戈货币”。</Value>
+    <Value lang="zh-tw">請在「任務獎勵選擇」中勾選「亞拉戈貨幣」。</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/PathData/PathDataUpdater.cs -->
+    <Key>Quest paths updated</Key>
+    <Value lang="en">Quest paths updated</Value>
+    <Value lang="ja-jp">クエストパスを更新しました</Value>
+    <Value lang="zh-cn">任务路径已更新</Value>
+    <Value lang="zh-tw">任務路徑已更新</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Accept</Key>
+    <Value lang="en">Accept</Value>
+    <Value lang="ja-jp">受注</Value>
+    <Value lang="zh-cn">接受</Value>
+    <Value lang="zh-tw">接受</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Aether current</Key>
+    <Value lang="en">Aether current</Value>
+    <Value lang="ja-jp">風脈</Value>
+    <Value lang="zh-cn">风脉</Value>
+    <Value lang="zh-tw">風脈</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Attune aetheryte</Key>
+    <Value lang="en">Attune aetheryte</Value>
+    <Value lang="ja-jp">エーテライト交感</Value>
+    <Value lang="zh-cn">以太之光感应</Value>
+    <Value lang="zh-tw">以太之光感應</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Attune shard</Key>
+    <Value lang="en">Attune shard</Value>
+    <Value lang="ja-jp">エーテライト・プラザ交感</Value>
+    <Value lang="zh-cn">以太小水晶感应</Value>
+    <Value lang="zh-tw">以太小水晶感應</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Buy item</Key>
+    <Value lang="en">Buy item</Value>
+    <Value lang="ja-jp">アイテム購入</Value>
+    <Value lang="zh-cn">购买物品</Value>
+    <Value lang="zh-tw">購買物品</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Chocobo porter</Key>
+    <Value lang="en">Chocobo porter</Value>
+    <Value lang="ja-jp">チョコボポーター</Value>
+    <Value lang="zh-cn">陆行鸟搬运</Value>
+    <Value lang="zh-tw">陸行鳥搬運</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Clean up</Key>
+    <Value lang="en">Clean up</Value>
+    <Value lang="ja-jp">整理</Value>
+    <Value lang="zh-cn">整理</Value>
+    <Value lang="zh-tw">整理</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Data version {0}</Key>
+    <Value lang="en">Data version {0}</Value>
+    <Value lang="ja-jp">データバージョン {0}</Value>
+    <Value lang="zh-cn">数据版本 {0}</Value>
+    <Value lang="zh-tw">資料版本 {0}</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Dive</Key>
+    <Value lang="en">Dive</Value>
+    <Value lang="ja-jp">潜水</Value>
+    <Value lang="zh-cn">潜水</Value>
+    <Value lang="zh-tw">潛水</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Duty</Key>
+    <Value lang="en">Duty</Value>
+    <Value lang="ja-jp">コンテンツ</Value>
+    <Value lang="zh-cn">任务</Value>
+    <Value lang="zh-tw">任務</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Emote</Key>
+    <Value lang="en">Emote</Value>
+    <Value lang="ja-jp">エモート</Value>
+    <Value lang="zh-cn">情感动作</Value>
+    <Value lang="zh-tw">情感動作</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Equip gear</Key>
+    <Value lang="en">Equip gear</Value>
+    <Value lang="ja-jp">装備更新</Value>
+    <Value lang="zh-cn">更换装备</Value>
+    <Value lang="zh-tw">更換裝備</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Equip item</Key>
+    <Value lang="en">Equip item</Value>
+    <Value lang="ja-jp">装備</Value>
+    <Value lang="zh-cn">装备物品</Value>
+    <Value lang="zh-tw">裝備物品</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Favourite aetheryte</Key>
+    <Value lang="en">Favourite aetheryte</Value>
+    <Value lang="ja-jp">お気に入りエーテライト</Value>
+    <Value lang="zh-cn">收藏以太之光</Value>
+    <Value lang="zh-tw">收藏以太之光</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Gear set</Key>
+    <Value lang="en">Gear set</Value>
+    <Value lang="ja-jp">ギアセット</Value>
+    <Value lang="zh-cn">套装</Value>
+    <Value lang="zh-tw">套裝</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Interact</Key>
+    <Value lang="en">Interact</Value>
+    <Value lang="ja-jp">話しかける</Value>
+    <Value lang="zh-cn">交互</Value>
+    <Value lang="zh-tw">互動</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Jump</Key>
+    <Value lang="en">Jump</Value>
+    <Value lang="ja-jp">ジャンプ</Value>
+    <Value lang="zh-cn">跳跃</Value>
+    <Value lang="zh-tw">跳躍</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Macro</Key>
+    <Value lang="en">Macro</Value>
+    <Value lang="ja-jp">マクロ</Value>
+    <Value lang="zh-cn">宏</Value>
+    <Value lang="zh-tw">巨集</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Quest battle</Key>
+    <Value lang="en">Quest battle</Value>
+    <Value lang="ja-jp">クエストバトル</Value>
+    <Value lang="zh-cn">任务战斗</Value>
+    <Value lang="zh-tw">任務戰鬥</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Remove status</Key>
+    <Value lang="en">Remove status</Value>
+    <Value lang="ja-jp">ステータス解除</Value>
+    <Value lang="zh-cn">移除状态</Value>
+    <Value lang="zh-tw">移除狀態</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Say</Key>
+    <Value lang="en">Say</Value>
+    <Value lang="ja-jp">発言</Value>
+    <Value lang="zh-cn">说话</Value>
+    <Value lang="zh-tw">說話</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Snipe</Key>
+    <Value lang="en">Snipe</Value>
+    <Value lang="ja-jp">狙撃</Value>
+    <Value lang="zh-cn">狙击</Value>
+    <Value lang="zh-tw">狙擊</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Switch job</Key>
+    <Value lang="en">Switch job</Value>
+    <Value lang="ja-jp">ジョブ変更</Value>
+    <Value lang="zh-cn">切换职业</Value>
+    <Value lang="zh-tw">切換職業</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Turn in</Key>
+    <Value lang="en">Turn in</Value>
+    <Value lang="ja-jp">報告</Value>
+    <Value lang="zh-cn">交付</Value>
+    <Value lang="zh-tw">交付</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Unequip item</Key>
+    <Value lang="en">Unequip item</Value>
+    <Value lang="ja-jp">装備解除</Value>
+    <Value lang="zh-cn">卸下物品</Value>
+    <Value lang="zh-tw">卸下物品</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Use action</Key>
+    <Value lang="en">Use action</Value>
+    <Value lang="ja-jp">アクション使用</Value>
+    <Value lang="zh-cn">使用技能</Value>
+    <Value lang="zh-tw">使用技能</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Use item</Key>
+    <Value lang="en">Use item</Value>
+    <Value lang="ja-jp">アイテム使用</Value>
+    <Value lang="zh-cn">使用物品</Value>
+    <Value lang="zh-tw">使用物品</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Wait for NPC</Key>
+    <Value lang="en">Wait for NPC</Value>
+    <Value lang="ja-jp">NPCを待つ</Value>
+    <Value lang="zh-cn">等待NPC</Value>
+    <Value lang="zh-tw">等待NPC</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Walk</Key>
+    <Value lang="en">Walk</Value>
+    <Value lang="ja-jp">移動</Value>
+    <Value lang="zh-cn">移动</Value>
+    <Value lang="zh-tw">移動</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/ActiveQuestComponent.cs -->
+    <Key>Your turn</Key>
+    <Value lang="en">Your turn</Value>
+    <Value lang="ja-jp">手動操作</Value>
+    <Value lang="zh-cn">需要手动操作</Value>
+    <Value lang="zh-tw">需要手動操作</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/QuestComponents/QueueComponent.cs -->
+    <Key>No quests yet. Add one above or pick a saved list.</Key>
+    <Value lang="en">No quests yet. Add one above or pick a saved list.</Value>
+    <Value lang="ja-jp">クエストがまだありません。上で追加するか、保存済みリストを選んでください。</Value>
+    <Value lang="zh-cn">还没有任务。请在上方添加，或选择一个已保存的列表。</Value>
+    <Value lang="zh-tw">還沒有任務。請在上方新增，或選擇一個已儲存的清單。</Value>
+  </Entry>
+  <Entry>
+    <!-- Found in: ../Questionable/Windows/Utils/QuestSelector.cs -->
+    <Key>Quest name or ID...</Key>
+    <Value lang="en">Quest name or ID...</Value>
+    <Value lang="ja-jp">クエスト名またはID...</Value>
+    <Value lang="zh-cn">任务名称或ID...</Value>
+    <Value lang="zh-tw">任務名稱或ID...</Value>
   </Entry>
 </I18N>

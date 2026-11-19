@@ -325,7 +325,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
         }
 
         _logger.LogInformation("Installed path data bundle (data version {DataVersion})", manifest.DataVersion);
-        Status = _LF("Updated to data version {0}", manifest.DataVersion);
+        Status = _L("Quest paths updated");
 
         _shutdownToken.ThrowIfCancellationRequested();
         await _runOnFrameworkThread(() =>
