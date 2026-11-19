@@ -110,6 +110,31 @@
       "Sequence": 5,
       "Steps": [
         {
+          "Position": {
+            "X": 395.15833,
+            "Y": -8.069527,
+            "Z": 202.0083
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "StopDistance": 1,
+          "Mount": false,
+          "Sprint": false
+        },
+        {
+          "Position": {
+            "X": 377.9299,
+            "Y": -17.379961,
+            "Z": 262.46588
+          },
+          "TerritoryId": 145,
+          "InteractionType": "WalkTo",
+          "StopDistance": 1,
+          "Mount": false,
+          "Sprint": false,
+          "DelaySecondsAtStart": 1
+        },
+        {
           "DataId": 1046052,
           "Position": {
             "X": 457.37253,
@@ -120,7 +145,9 @@
           "StopDistance": 1,
           "InteractionType": "Interact",
           "Fly": false,
-          "Mount": false
+          "Mount": false,
+          "Sprint": false,
+          "DelaySecondsAtStart": 2
         }
       ]
     },
