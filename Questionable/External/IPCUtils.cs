@@ -8,7 +8,7 @@ internal interface IPCUtils
             Svc.PluginInterface.InstalledPlugins.Any(p => p.InternalName == pluginName && p.IsLoaded);
 
         internal static Version? Version(string pluginName) =>
-            Svc.PluginInterface.InstalledPlugins.FirstOrDefault(p => p.Name == pluginName && p.IsLoaded)?.Version;
+            Svc.PluginInterface.InstalledPlugins.FirstOrDefault(p => (p.InternalName == pluginName || p.Name == pluginName) && p.IsLoaded)?.Version;
 
         internal static void DisposeAll(EzIPCDisposalToken[] _disposalTokens)
         {
