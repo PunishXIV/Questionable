@@ -21,7 +21,7 @@ internal sealed class EventInfoComponent
     [
         // Add seasonal events here. If a quest has additional required quests (e.g Make It Rain > Gold Saucer), add a relation in QuestData#L220
         // Comment out inactive events so they can be reused in future, don't delete blocks
-        new(_L("Limited Time Items"), [new UnlockLinkId(568)], DateTime.MaxValue),
+        //new(_L("Limited Time Items"), [new UnlockLinkId(568)], DateTime.MaxValue),
         // Yokai
         //new(
         //    $"{_T<Lumina.Excel.Sheets.BannerBg>(233)} {DateTime.UtcNow.Year}",
@@ -35,11 +35,11 @@ internal sealed class EventInfoComponent
         //    AtDailyReset(2026, 10, 13)
         //),
         // All Saints 2026
-        new(
-            $"{_T<Lumina.Excel.Sheets.FittingShopCategory>(109)} {DateTime.UtcNow.Year}",
-            [new QuestId(5467), new QuestId(5468)],
-            AtDailyReset(2026, 11, 2)
-        ),
+        //new(
+        //    $"{_T<Lumina.Excel.Sheets.FittingShopCategory>(109)} {DateTime.UtcNow.Year}",
+        //    [new QuestId(5467), new QuestId(5468)],
+        //    AtDailyReset(2026, 11, 2)
+        //),
         // Fall Guys
         //new(
         //    $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(74)} {DateTime.UtcNow.Year}",
@@ -55,6 +55,12 @@ internal sealed class EventInfoComponent
             EndsAtUtc: AtDailyReset(2027, 2, 23),
             StartsAtUtc: AtDailyReset(2026, 10, 27),
             staysActive: true
+        ),
+        // FFXVI
+        new(
+            $"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(71)} {DateTime.UtcNow.Year}",
+            [new QuestId(4796), new QuestId(4797), new QuestId(4798)],
+            AtDailyReset(2026, 12, 9)
         ),
     ];
 
