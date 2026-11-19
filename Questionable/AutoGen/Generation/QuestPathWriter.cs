@@ -85,8 +85,7 @@ internal static class QuestPathWriter
     {
         foreach (JsonPropertyInfo property in typeInfo.Properties)
         {
-            // Generic list properties (IList&lt;T&gt;) are not assignable to the non-generic ICollection, but
-            // their values are - so test the declared type loosely and the value strictly.
+            // IList<T> properties aren't assignable to ICollection, but their values are.
             if (typeof(ICollection).IsAssignableFrom(property.PropertyType) || IsGenericCollection(property.PropertyType))
                 property.ShouldSerialize = (_, value) => value is ICollection { Count: > 0 };
         }

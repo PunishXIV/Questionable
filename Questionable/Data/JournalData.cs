@@ -86,7 +86,6 @@ internal sealed class JournalData
             .ToList();
     }
 
-    // QST's own list entries have no place in the game's journal, so they get a last section of their own.
     internal static Section CreateOtherSection(IEnumerable<IQuestInfo> entries, string aetherCurrents,
         Func<EExpansionVersion, string> expansionName)
     {

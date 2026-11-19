@@ -208,8 +208,7 @@ internal sealed class RotationSolverRebornIpc : Ipc
 
     internal static StateCommandType ReadMode(object provider)
     {
-        // RSR has no GetOperatingMode IPC. AutorotationActive also returns false without a player.
-        // Read the actual mode flags used by RSCommands.ApplyState; missing flags are unsupported.
+        // RSR has no GetOperatingMode IPC and AutorotationActive is false without a player; read RSCommands.ApplyState's flags.
         Type state = ResolveModeType(provider.GetType().Assembly);
         bool Read(string name) => state.GetProperty(name, BindingFlags.Static | BindingFlags.Public)?.GetValue(null) as bool?
             ?? throw new TaskException($"RotationSolverReborn mode property {name} is unavailable.");
@@ -235,8 +234,7 @@ internal sealed class RotationSolverRebornIpc : Ipc
         if (providerAssembly.GetType(typeName) is { } localType)
             return localType;
 
-        // Before 2026-10-28 Basic was a separate project. Only resolve the exact reference in the
-        // provider's own load context; another plugin/reloaded instance may have the same type name.
+        // Resolve the type only in the provider's own load context; a reloaded instance can share the name.
         AssemblyName? reference = providerAssembly.GetReferencedAssemblies()
             .FirstOrDefault(x => x.Name == "RotationSolver.Basic");
         if (reference != null && AssemblyLoadContext.GetLoadContext(providerAssembly) is { } context)

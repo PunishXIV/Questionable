@@ -22,7 +22,6 @@ internal static class CleanUpOtherQuests
             if (priorityQuestId == null)
                 return null;
 
-            // don't start a second priority quest until the first one is resolved
             if (questController.StartedQuest != null && priorityQuestId.Equals(quest.Id))
                 return null;
 

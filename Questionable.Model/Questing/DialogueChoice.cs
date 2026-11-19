@@ -20,7 +20,6 @@ public sealed class DialogueChoice
     public bool PromptIsRegularExpression { get; set; }
     public bool AnswerIsRegularExpression { get; set; }
 
-    // If set, the choice only applies while targeting this object.
     public uint? DataId { get; set; }
 
     // Used for In from the Cold.

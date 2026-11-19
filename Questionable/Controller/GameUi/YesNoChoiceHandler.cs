@@ -119,7 +119,6 @@ internal sealed class YesNoChoiceHandler : IDisposable
         HandleDifficultyYesNo((AtkUnitBase*)args.Addon.Address, checkAllSteps: false);
     }
 
-    // The initial sweep bypasses the interaction gate.
     public unsafe void CheckExisting()
     {
         if (_questController.HasExternalOperation)
@@ -262,7 +261,7 @@ internal sealed class YesNoChoiceHandler : IDisposable
             if (dialogueChoice.Type != EDialogChoiceType.YesNo)
                 continue;
 
-            //force Yes if prompt is set to `null` while an answer is still given - basically means no key is available on sheets yet
+            // A null prompt with Yes means the sheet key isn't known yet.
             if (dialogueChoice.Prompt == null && dialogueChoice.Yes)
             {
                 _logger.LogInformation("Forcing Yes because no key for this prompt is currently available.");

@@ -48,8 +48,7 @@ internal sealed class StuckWatch(TimeProvider? timeProvider = null)
         Tries = 0;
     }
 
-    // Movement can be redone on any step; an interaction only where doing it twice is harmless
-    // (not item use, purchases, abandoning quests, combat or duties).
+    // Interactions are only redone where doing them twice is harmless (no item use, purchases, abandons, combat or duties).
     internal static bool CanRetry(EInteractionType? stepType, ITask? task) =>
         IsMovement(task) || (stepType is { } type && SafeSteps.Contains(type) && IsInteraction(task));
 

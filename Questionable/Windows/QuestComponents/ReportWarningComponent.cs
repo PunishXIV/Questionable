@@ -1,6 +1,5 @@
 namespace Questionable.Windows.QuestComponents;
 
-// The one-time question about sharing quest results; nothing is sent automatically until it is answered.
 [RegisterSingleton]
 internal sealed class ReportWarningComponent(Configuration configuration, IDalamudPluginInterface pluginInterface)
 {

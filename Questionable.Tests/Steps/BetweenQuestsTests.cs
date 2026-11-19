@@ -25,7 +25,6 @@ public sealed class BetweenQuestsTests
     public void MidQuestStep_NoDetour() =>
         Assert.False(BetweenQuests.IsAcceptStep(new QuestStep(EInteractionType.Interact, 1, Giver, 1), false));
 
-    // Accept All queue of 1, 2, 3: detours before the first accept and after the last, not in between.
     [Theory]
     [InlineData(new ushort[0], new ushort[] { 1, 2, 3 }, false)]
     [InlineData(new ushort[] { 1 }, new ushort[] { 2, 3 }, true)]

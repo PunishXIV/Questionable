@@ -1,7 +1,6 @@
 using static Questionable.Controller.Steps.ITaskExecutor;
 namespace Questionable.Controller.Steps.Shared;
 
-// Satisfy does the whole delivery (gather, craft or fish, then turn in) for one NPC at a time.
 internal static class CustomDelivery
 {
     internal sealed record Task(uint Npc, Configuration.EDeliveryItem Item) : ITask

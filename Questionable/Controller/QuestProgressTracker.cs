@@ -16,7 +16,6 @@ internal sealed class QuestProgressTracker(
     // Leve acceptance is delayed.
     public QuestController.QuestProgress? PendingQuest { get; set; }
 
-    // The started quest a brief switch replaced, so switching back resumes its step.
     public QuestController.QuestProgress? DisplacedQuest { get; set; }
 
     public (QuestController.QuestProgress Progress, QuestController.ECurrentQuestType Type)? CurrentQuestDetails

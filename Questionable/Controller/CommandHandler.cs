@@ -97,7 +97,6 @@ internal sealed class CommandHandler : IDisposable
         _openQuestCleanUp = openQuestCleanUp;
 
         _clientState.Logout += OnLogout;
-        // Shown in the plugin installer; the Debug-only commands stay out of it.
         string[] help = [_L("Opens the quest window"), .. HelpLines()];
         _commandManager.AddHandler("/qst", new(ProcessCommand)
         {
@@ -125,7 +124,6 @@ internal sealed class CommandHandler : IDisposable
 
         switch (parts[0])
         {
-            // help-all used to be the long list; it stays as an unlisted alias.
             case "h":
             case "help":
             case "ha":
@@ -441,7 +439,6 @@ internal sealed class CommandHandler : IDisposable
             _chatGui.Print(line, MessageTag, TagColor);
     }
 
-    // Debug tools; without Debug they answer like an unknown command.
     internal static bool NeedsDebug(string subcommand) =>
         subcommand is "do" or "sim" or "mountid" or "gen" or "d2qwh" or "d2qwl" or "rewards" or "tname" or "jobgear" or
             "navcheck" or "eventquests" or "unlock-links" or "taxi" or "festivals" or "loc";

@@ -1,6 +1,5 @@
 namespace Questionable.Data;
 
-// Unlock conditions the quest sheets don't describe. GetUnmetReason is null when the condition is met.
 internal abstract record QuestPrerequisite
 {
     public abstract string? GetUnmetReason(IPrerequisiteState state);

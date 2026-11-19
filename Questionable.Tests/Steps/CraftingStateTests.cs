@@ -33,9 +33,9 @@ public sealed class CraftingStateTests
         Assert.False(_state.TryComplete(id));
 
         ObserveStableIdle();
-        Assert.True(_state.HasOperation); // status alone never releases ownership
+        Assert.True(_state.HasOperation);
         Assert.False(_state.TryComplete(Guid.NewGuid()));
-        Assert.False(_state.TryConfirmIdle()); // a live executor cannot be acknowledged away
+        Assert.False(_state.TryConfirmIdle());
         Assert.True(_state.TryComplete(id));
         Assert.False(_state.HasOperation);
     }

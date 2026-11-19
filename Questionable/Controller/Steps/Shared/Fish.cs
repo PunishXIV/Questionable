@@ -110,8 +110,7 @@ internal static class Fish
 
             if (_state.IsFinished)
             {
-                // The quest flags decide: the stop QST sends once they are met ends Feesh's job as stopped, which
-                // reads as failed, and Feesh's own count can lag one fish behind.
+                // Quest flags decide: our stop makes Feesh report failed, and its count can lag one fish.
                 if (HasCompletedObjectives(Task, _gameState))
                 {
                     Release();
@@ -129,8 +128,7 @@ internal static class Fish
 
             if (_state.NeedsConfirmation)
                 throw new TaskException(_state.BlockReason!);
-            // Feesh normally ends by itself right after the last catch; stopping it first shows "stopped by hand".
-            // The late stop is for Feesh counting differently from the quest and fishing on.
+            // Stop late: Feesh ends by itself after the last catch, unless it counts differently and fishes on.
             if (HasCompletedObjectives(Task, _gameState) && !_state.StopRequested)
             {
                 _objectivesMetAt ??= TimeProvider.System.GetTimestamp();
@@ -156,8 +154,6 @@ internal static class Fish
         public override bool ShouldInterruptOnDamage() => false;
     }
 
-    // Buying bait and walking to the spot only serve the fishing steps right after them; with those fish already
-    // in the bags (e.g. bought on the market board) they can be skipped.
     internal static IReadOnlyList<GatheredItem> FishAhead(QuestSequence sequence, QuestStep step)
     {
         int index = sequence.Steps.IndexOf(step);

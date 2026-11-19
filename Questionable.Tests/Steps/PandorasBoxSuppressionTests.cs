@@ -53,7 +53,7 @@ public sealed class PandorasBoxSuppressionTests
 
         _available = true;
         Update(suppression, active: true);
-        Assert.True(_enabled["A"]); // still within the retry interval
+        Assert.True(_enabled["A"]);
 
         _clock.Advance(TimeSpan.FromSeconds(5));
         Update(suppression, active: true);

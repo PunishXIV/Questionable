@@ -269,7 +269,6 @@ internal sealed class QuestRegistry : IDisposable
         FinishReload();
     }
 
-    // Bundles override compiled paths but not user paths; malformed entries are skipped.
     private bool LoadFromBundle()
     {
         string bundlePath = PathDataBundle.GetFilePath(_pluginInterface);
@@ -286,7 +285,7 @@ internal sealed class QuestRegistry : IDisposable
                 return false;
             }
 
-            // Gate A: never load a bundle that needs a newer plugin than this one.
+            // Never load a bundle that needs a newer plugin than this one.
             if (!manifest.IsCompatibleWith(PathDataFormat.CurrentVersion))
             {
                 _logger.LogWarning(
@@ -352,8 +351,6 @@ internal sealed class QuestRegistry : IDisposable
         }
     }
 
-    // The compiled baseline and downloaded bundles are validated by CI before publication, so
-    // only the hand-authored user directory (and dev project directory) is validated at runtime.
     private void ValidateQuests() => _questValidator.Validate(_quests.Values
         .Where(x => x.Source is not (Quest.ESource.Assembly or Quest.ESource.DownloadedBundle))
         .ToList());
@@ -380,8 +377,6 @@ internal sealed class QuestRegistry : IDisposable
 
     private void AddQuest(ParsedQuest parsed, Quest.ESource source)
     {
-        // Downloaded bundles are trusted (CI-validated + checksum-verified); only runtime-loaded
-        // hand-authored data is schema-validated here.
         if (source != Quest.ESource.DownloadedBundle)
             _jsonSchemaValidator.Enqueue(parsed.QuestId, parsed.Node);
 

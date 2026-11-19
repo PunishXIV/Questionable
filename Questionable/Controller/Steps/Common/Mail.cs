@@ -7,8 +7,6 @@ using static Questionable.Controller.Steps.ITaskExecutor;
 using Quest = Questionable.Domain.Quest;
 namespace Questionable.Controller.Steps.Common;
 
-// Between quests, has Mogmail claim waiting Mog Station and reward mail at a delivery moogle. Mogmail's own
-// Auto Pop setting decides whether claimed items are used afterwards.
 internal static class Mail
 {
     // Delivery moogles talk through CustomTalk CmnDefMogLetter_00002.
@@ -30,7 +28,7 @@ internal static class Mail
         new(EAetheryteLocation.Uldah, 1005989, 130, new(-24.632f, 10.056f, -60.799f)),
     ];
 
-    // The starting city first (1 Limsa, 2 Gridania, 3 Ul'dah), then the others; the first unlocked city wins.
+    // Starting city first (1 Limsa, 2 Gridania, 3 Ul'dah).
     internal static Moogle? ChooseRoute(byte startTown, Func<EAetheryteLocation, bool> unlocked) =>
         CityMoogles.OrderBy(x => Array.IndexOf(CityMoogles, x) + 1 == startTown ? 0 : 1)
             .FirstOrDefault(x => unlocked(x.City));
@@ -208,7 +206,6 @@ internal static class Mail
             CloseMailbox();
         }
 
-        // Returns whether a mail window was still open.
         private static unsafe bool CloseMailbox()
         {
             bool open = false;
@@ -244,7 +241,6 @@ internal static class Mail
         public override string ToString() => "ClaimMailDone";
     }
 
-    // Plans the accept step again, which walks back to the quest giver.
     internal sealed class DoneExecutor : TaskExecutor<Done>
     {
         protected override bool Start() => true;

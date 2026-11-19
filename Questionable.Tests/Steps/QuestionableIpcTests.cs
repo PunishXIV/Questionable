@@ -40,7 +40,6 @@ public sealed class QuestionableIpcTests
         SetField(ipc, "_questRegistry", registry);
         SetField(ipc, "_questFunctions", functions);
 
-        // No controller/starter is installed: any attempt to select a quest or activate the MSQ fallback fails this test.
         object? result = typeof(QuestionableIpc).GetMethod("StartQuest", BindingFlags.Instance | BindingFlags.NonPublic)!
             .Invoke(ipc, ["435", true]);
 

@@ -244,7 +244,6 @@ internal sealed class QuestJournalComponent
         return new(category, filteredGenres.Where(x => x.Quests.Count > 0).ToList());
     }
 
-    // Hide Completed also hides a group once nothing obtainable is left in it.
     internal static bool NothingLeft(IEnumerable<ElementId> quests, Func<ElementId, bool> isComplete,
         Func<ElementId, bool> isUnobtainable) =>
         quests.All(x => isComplete(x) || isUnobtainable(x));
@@ -388,7 +387,6 @@ internal sealed class QuestJournalComponent
         public bool HideRepeatable;
         public string SearchText = string.Empty;
 
-        // The search text isn't saved, so the journal reopens unfiltered by name.
         public static FilterOptions From(Configuration.JournalConfiguration saved) => new()
         {
             AvailableOnly = saved.AvailableOnly,

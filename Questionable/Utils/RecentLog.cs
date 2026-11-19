@@ -1,6 +1,5 @@
 namespace Questionable.Utils;
 
-// Memory only: the Stuck? report reads this so people don't have to dig through /xllog.
 internal sealed class RecentLog : ILoggerProvider
 {
     private const int Capacity = 40;

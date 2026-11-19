@@ -95,7 +95,7 @@ internal sealed class CombatController : IDisposable
             throw new NeedsPlayerException("No combat plugin is set up for this fight. Pick one on the Basics page.");
         _logger.LogInformation($"Combat module: {combatModule}");
 
-        // Record cleanup before calling a provider: a throwing or rejected start can still take resources.
+        // Record cleanup first: a throwing or rejected start can still hold resources.
         _pendingCleanup = combatModule;
         try
         {
@@ -152,7 +152,6 @@ internal sealed class CombatController : IDisposable
             _movementController.StartedAt > DateTime.Now.AddSeconds(-1))
             return EStatus.Moving;
 
-        // Overworld enemies are variable; instanced or area spawns have fixed enemies.
         if (_currentFight.Data.SpawnType is EEnemySpawnType.OverworldEnemies)
         {
             if (_targetManager.Target != null)
@@ -164,7 +163,7 @@ internal sealed class CombatController : IDisposable
                     IGameObject? lastTarget = _objectTable.FirstOrDefault(x => x.GameObjectId == _lastTargetId);
                     if (lastTarget != null)
                     {
-                        // wait until the game cleans up the target
+                        // Wait until the game cleans up the target.
                         if (lastTarget.IsDead)
                         {
                             ElementId? elementId = _currentFight.Data.ElementId;
@@ -301,7 +300,6 @@ internal sealed class CombatController : IDisposable
         if (rawPriority == null)
             return (0, reason);
 
-        // priority is a value between 0 and 100 inclusive; we want to always kill enemies we have fight with on first
         if (gameObject is IBattleNpc battleNpc && battleNpc.StatusFlags.HasFlag(StatusFlags.InCombat))
         {
             if (gameObject.TargetObjectId == _objectTable[0]?.GameObjectId)
@@ -384,7 +382,7 @@ internal sealed class CombatController : IDisposable
 
             if (battleNpc.BattleNpcKind is BattleNpcSubKind.BNpcPart or BattleNpcSubKind.Combatant)
             {
-                // npc that starts a fate or does turn-ins; not sure why they're marked as hostile
+                // FATE and turn-in NPCs the game marks as hostile.
                 if (gameObjectStruct->NamePlateIconId is 60093 or 60732)
                     return (null, _L("FATE NPC"));
 

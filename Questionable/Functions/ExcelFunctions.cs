@@ -16,7 +16,6 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
     public StringOrRegex GetDialogueText(Quest? currentQuest, string? excelSheetName, string key, bool isRegex)
     {
         ReadOnlySeString? seString = GetRawDialogueText(currentQuest, excelSheetName, key);
-        // Return empty string if dialogue text lookup fails to prevent ArgumentNullException
         if (seString == null)
         {
             _logger.LogWarning("Could not find dialogue text for key '{Key}' in sheet '{Sheet}'", key, excelSheetName);
@@ -69,8 +68,6 @@ internal sealed class ExcelFunctions(IDataManager dataManager, ILogger<ExcelFunc
 
     public ReadOnlySeString? GetRawDialogueByRowId(string? excelSheet, uint rowId)
     {
-        // Support raw sheets for dialogue text lookup by RowId
-        // quest, custom, cut_scene, and dungeon sheets all use QuestDialogueText
         if (excelSheet?.StartsWith("quest/") == true || excelSheet?.StartsWith("custom/") == true ||
             excelSheet?.StartsWith("cut_scene/") == true || excelSheet?.StartsWith("dungeon/") == true)
         {

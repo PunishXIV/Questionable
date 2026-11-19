@@ -57,7 +57,7 @@ internal sealed class DraftQuestPathService(
                     CommandHandler.MessageTag, CommandHandler.TagColor);
             }
         }
-#pragma warning disable CA1031 // a failed draft should never take the UI down with it
+#pragma warning disable CA1031
         catch (Exception e)
         {
             logger.LogError(e, "Unable to generate draft quest path for {QuestId}", questInfo.QuestId);

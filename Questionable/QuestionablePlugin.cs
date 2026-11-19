@@ -211,22 +211,15 @@ public sealed class QuestionablePlugin(
         LocalizeShortcut.Initialize(configuration, dataManager, clientState);
         QstTheme.Initialize(configuration);
 
-        // Injectio-discovered registrations: every class carrying [RegisterSingleton]/[RegisterTransient],
-        // and the [RegisterServices] task-registration module in ServiceCollectionExtensions.
         serviceCollection.AddQuestionable();
 
-        // Questpath auto-generation (Questionable/AutoGen): reads game data through Dalamud's Lumina
-        // instance, which QuestGameData borrows without disposing.
         serviceCollection.AddSingleton(sp =>
             new QuestGameData(sp.GetRequiredService<IDataManager>().GameData));
 
-        // Same-instance forward: JsonSchemaValidator also satisfies IQuestValidator and must resolve to the
-        // singleton already registered above, not to a second independently-constructed instance.
+        // Same instance: JsonSchemaValidator is also the IQuestValidator singleton.
         serviceCollection.AddSingleton<IQuestValidator>(sp => sp.GetRequiredService<JsonSchemaValidator>());
 
-        // Breaks the QuestController <-> MovementController ctor cycle without handing MovementController
-        // the whole IServiceProvider. Once .Value is evaluated the container isn't touched again, so a
-        // framework tick during shutdown can't hit a disposed scope through this path.
+        // Breaks the QuestController <-> MovementController constructor cycle.
         serviceCollection.AddSingleton(sp => new Lazy<QuestController>(sp.GetRequiredService<QuestController>));
         // Same for MovementController <-> operation providers (combat cleanup needs CombatController, which moves).
         serviceCollection.AddSingleton(sp =>
@@ -240,8 +233,7 @@ public sealed class QuestionablePlugin(
 
     private void Initialize(IServiceProvider serviceProvider)
     {
-        // Resolve before the registry loads — its constructor discards a bundle left by an older
-        // plugin version, so the registry doesn't pick up a stale one.
+        // Resolve before the registry loads: it discards a bundle left by an older plugin version.
         _pathDataUpdater = serviceProvider.GetRequiredService<PathDataUpdater>();
         serviceProvider.GetRequiredService<QuestRegistry>().Reload(projectInBackground: true);
         serviceProvider.GetRequiredService<QuestBattleConfigComponent>().Reload();

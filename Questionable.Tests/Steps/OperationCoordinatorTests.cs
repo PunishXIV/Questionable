@@ -106,7 +106,6 @@ public sealed class OperationCoordinatorTests
     public void EveryProviderIsRegistered()
     {
         IServiceCollection services = new ServiceCollection().AddQuestionable();
-        // AutoDuty is also used by its concrete type, so its interface registration forwards to that singleton.
         using var fixture = new ExternalOperationFixture();
         var resolver = Substitute.For<IServiceProvider>();
         resolver.GetService(typeof(AutoDutyProvider)).Returns(fixture.Provider<AutoDutyProvider>());
@@ -127,7 +126,6 @@ public sealed class OperationCoordinatorTests
     public void Purchase_OptionalFailureSkips(bool optional)
     {
         using var fixture = new ExternalOperationFixture();
-        // Another purchase in progress makes the start fail before the inventory is read.
         fixture.Purchase.BeginRequest();
         IChatGui chat = Substitute.For<IChatGui>();
         var buy = new Purchase.BuyExecutor(fixture.Knightshopper, fixture.Purchase, fixture.Movement, chat);

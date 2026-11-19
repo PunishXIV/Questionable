@@ -14,7 +14,6 @@ using Xunit;
 
 namespace Questionable.Tests.Validation;
 
-// Only validators independent of runtime Dalamud services belong in this test gate.
 public sealed class QuestPathsSemanticValidationTests
 {
     private static IReadOnlyList<IQuestValidator> BuildValidators() =>
@@ -60,8 +59,7 @@ public sealed class QuestPathsSemanticValidationTests
 
     private static ElementId? ExtractQuestId(EmbeddedQuest embedded)
     {
-        // Mirrors QuestRegistry.ExtractQuestIdFromName: take the segment after the last '/',
-        // then the '<id>_' prefix before the first underscore.
+        // Mirrors QuestRegistry.ExtractQuestIdFromName.
         string name = embedded.ManifestName[(embedded.ManifestName.LastIndexOf('/') + 1)..];
         name = name[..^".json".Length];
 

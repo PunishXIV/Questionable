@@ -39,7 +39,6 @@ public sealed class StartAutoDutyExecutorTests
     {
         var condition = Substitute.For<ICondition>();
         condition[ConditionFlag.InCombat].Returns(true);
-        // An unknown duty gives a managed failure before native gear/level reads.
         var territories = (TerritoryData)RuntimeHelpers.GetUninitializedObject(typeof(TerritoryData));
         typeof(TerritoryData).GetField("_cfcs", BindingFlags.NonPublic | BindingFlags.Instance)!
             .SetValue(territories, ImmutableDictionary<uint, TerritoryData.CfcData>.Empty);

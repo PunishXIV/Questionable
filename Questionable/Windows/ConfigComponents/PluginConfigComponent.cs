@@ -222,7 +222,6 @@ internal sealed class PluginConfigComponent
             ImGui.TextColored(QstTheme.Danger, _L("Required plugins are missing, Questionable will not work properly."));
     }
 
-    // The setup window asks for the combat plugin here; otherwise it is picked on the Basics page.
     public void Draw(out bool allRequiredInstalled, bool combatPicker = false)
     {
         allRequiredInstalled = !HasMissingRequiredPlugins() && IsCombatPluginReady();
@@ -233,7 +232,6 @@ internal sealed class PluginConfigComponent
             ImGui.Separator();
         }
 
-        // The chosen combat plugin counts as required.
         ECombatModule combatModule = _configuration.General.CombatModule;
         List<PluginInfo> required = [.. RequiredPlugins];
         if (combatModule != ECombatModule.None)
@@ -269,7 +267,6 @@ internal sealed class PluginConfigComponent
                 CombatPlugins[_configuration.General.CombatModule].DisplayName));
     }
 
-    // One table, so both groups line up.
     private void DrawTable(List<PluginInfo> required, List<PluginInfo> optional, float width)
     {
         using ImRaii.TableDisposable table = ImRaii.Table("Plugins", 3,
@@ -400,7 +397,6 @@ internal sealed class PluginConfigComponent
                 sameLine = true;
             }
 
-            // Without a known command, ask the plugin itself to open its settings (or its main window).
             bool hasCommand = plugin.ConfigCommand is { } command && command.StartsWith('/');
             if (hasCommand || installedPlugin!.HasConfigUi || installedPlugin.HasMainUi)
             {
@@ -615,8 +611,7 @@ internal sealed class PluginConfigComponent
         return false;
     }
 
-    // ECommons AddPlugin hard-codes InstallPluginAsync's arguments; Dalamud's optional inheritedWorkingPluginId
-    // makes that reflection throw "Parameter count mismatch", so bind the parameters by name.
+    // ECommons' AddPlugin reflection throws "Parameter count mismatch" on Dalamud's optional parameter; bind by name.
     private async Task<bool> InstallFromRepositoryAsync(string repoUrl, string internalName)
     {
         var plugins = await DalamudReflector.GetPluginMaster(repoUrl).ConfigureAwait(false);

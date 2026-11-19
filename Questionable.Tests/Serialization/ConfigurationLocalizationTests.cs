@@ -38,7 +38,6 @@ public sealed class ConfigurationLocalizationTests
 
         configuration.ActivateProfile("Editing");
         configuration.SetLanguage("ja-jp");
-        // ConfigWindow.OnClose restores the current character's profile through this operation.
         configuration.ActivateForCharacter("42");
 
         Assert.Equal(characterLanguage, applied[^1]);

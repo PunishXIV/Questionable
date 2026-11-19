@@ -74,7 +74,6 @@ public sealed class ReportStatusTests
     [Fact]
     public void ConcurrentProblem_StillWins()
     {
-        // A report excluded by the admin snapshot can predate the verification timestamp.
         ReportStatus status = Status(Reports with { LastProblemAt = At(0.001), VerifiedAt = At() });
         Assert.Equal(EReportState.Problems, status.State);
     }

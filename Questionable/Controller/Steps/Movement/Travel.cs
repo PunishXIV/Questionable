@@ -132,8 +132,7 @@ internal static class Travel
                 return ETaskResult.StillRunning;
             }
 
-            // By-id lookups fail for objects MappingTheRealm hasn't indexed, e.g. rock 2001481.
-            // Every retry can cost a teleport: MappingTheRealm's fallback for an unreachable target.
+            // By-id lookups fail for objects MappingTheRealm hasn't indexed (rock 2001481); each retry can cost a teleport.
             if (_route is { IsFaulted: true } && UseId && Task.Position != null && _retries++ < 1)
             {
                 _byPosition = true;

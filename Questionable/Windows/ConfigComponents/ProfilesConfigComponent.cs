@@ -105,7 +105,6 @@ internal sealed class ProfilesConfigComponent
             _loadedAt = DateTime.Now;
         }
 
-        // Without AutoRetainer's list, only the logged-in character can be set up.
         if (!autoRetainer.IsReady() || _characters.Count == 0)
         {
             ImGui.TextWrapped(!autoRetainer.IsReady()

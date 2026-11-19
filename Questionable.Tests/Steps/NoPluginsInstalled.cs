@@ -8,7 +8,6 @@ using NSubstitute;
 namespace Questionable.Tests.Steps;
 
 // EzIPC binds through ECommons' static Svc, so tests that build plugin classes need it set.
-// Every IPC call then fails the way Dalamud reports a plugin that isn't installed.
 internal static class NoPluginsInstalled
 {
     private static readonly Lazy<bool> Installed = new(() =>

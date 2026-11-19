@@ -5,7 +5,6 @@ using System.Text.Json.Serialization;
 
 namespace Questionable.External;
 
-// Client for the qst-reports Worker (cloudflare/report-api in this repo). Failures are logged, never thrown.
 [RegisterSingleton]
 internal sealed class ReportApi : IDisposable
 {

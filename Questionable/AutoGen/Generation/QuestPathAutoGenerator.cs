@@ -114,13 +114,9 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         List<Level> withObject = [.. todoLevels.Where(x => x.Object.RowId != 0)];
         analysis.Hints.TryGetValue(number, out SequenceHint? hint);
 
-        // Only trust the to-do objects when they account for the whole list. A sequence that is mostly bare
-        // search areas with one named NPC among them is pointing at the areas; the NPC is a bystander who
-        // happens to stand there, and interacting with them is not the objective.
         if (withObject.Count > 0 && withObject.Count == todoLevels.Count)
         {
-            // A sequence's to-do list can name the same object more than once; interacting with it twice is not
-            // what that means, so one step per object is enough.
+            // A to-do list can name the same object more than once.
             HashSet<uint> alreadyStepped = [];
             foreach (Level level in withObject)
             {
@@ -136,15 +132,11 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         else if (hint != null && TodoQty(quest, number) > 1 && todoLevels.Count > 1 &&
                  hint.CandidateSymbols.Count > 1)
         {
-            // "Speak with all three": the to-do entries are bare map ranges with nothing to interact with, and
-            // the actor for each one has to be matched to it by position.
             AddStepsPerTodoArea(symbols, sequence, hint, todoLevels);
         }
 
-        // An unattributed enemy makes this a combat sequence; omit its persistent quest giver as an interaction.
         bool objectiveIsCombat = hint != null && hint.EnemyPairs.Any(x => x.Actor == null);
 
-        // Combat actors anchor combat steps, not separate interactions.
         if (sequence.Steps.Count == 0 && !objectiveIsCombat && hint is { TargetSymbols.Count: > 0 })
         {
             uint? preferredTerritory = todoLevels.Count > 0 ? todoLevels[0].Territory.RowId : null;
@@ -158,7 +150,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
             }
         }
 
-        // Apply emotes first: explicit to-do text is stronger evidence than carrying the item.
         ApplyEmote(quest, sequence, number);
 
         if (hint != null)
@@ -167,11 +158,9 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
             AnnotateTrade(symbols, sequence, hint);
         }
 
-        // A sequence with only a search area and nothing to talk to is where an unclaimed hunt objective belongs.
         if (sequence.Steps.Count == 0 && todoLevels.Count > 0 && AddUnattributedCombat(symbols, sequence, todoLevels, TodoQty(quest, number)))
             return sequence;
 
-        // As a non-combat fallback, match remaining search areas to sequence actors.
         if (sequence.Steps.Count == 0 && !objectiveIsCombat && hint != null && todoLevels.Count > 0)
             AddStepsPerTodoArea(symbols, sequence, hint, todoLevels);
 
@@ -218,8 +207,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
 
             if (group.Key is not { } actorSymbol)
             {
-                // No actor spawns these, but the sequence's actor is still where the fight is - hand-written
-                // paths anchor the combat step to them rather than adding a step in front of it.
                 Level? anchorLevel = null;
                 uint anchorDataId = 0;
                 if (hint.TargetSymbols.Count > 0 && hint.TargetSymbols[0] is { } anchorSymbol &&
@@ -251,8 +238,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
             step.InteractionType = EInteractionType.Combat;
             step.EnemySpawnType = EEnemySpawnType.AfterInteraction;
 
-            // The schema allows exactly one of the two enemy lists. A step anchored by a standalone fight
-            // already carries ComplexCombatData, so these enemies join it rather than opening a second list.
+            // The schema allows exactly one of the two enemy lists.
             if (step.ComplexCombatData.Count > 0)
             {
                 foreach (uint enemy in enemies.Where(x => !step.ComplexCombatData.Exists(y => y.DataId == x)))
@@ -268,7 +254,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         }
     }
 
-    // Past this, a placed actor isn't the thing the journal's marker points at.
     private const float MaximumAreaMatchDistance = 200f;
 
     private void AddStepsPerTodoArea(
@@ -303,8 +288,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
 
                 foreach (Vector3 candidate in PlacementsIn(actor, todo.Territory.RowId))
                 {
-                    // An actor standing hundreds of yalms from the marker is not what the marker points at; it
-                    // is placed somewhere else entirely and the area is the better position to use.
                     float distance = Vector3.Distance(candidate, area);
                     if (distance >= bestDistance || distance > MaximumAreaMatchDistance)
                         continue;
@@ -324,8 +307,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
                 continue;
             }
 
-            // Nothing placed nearby: fall back to the next unused actor and let the area stand in for its
-            // position, which is the best the data offers once neither source knows where the actor is.
             if (actors.FirstOrDefault(x => !used.Contains(x.DataId) && x.DataId != 0) is not { DataId: not 0 } spare)
                 continue;
 
@@ -383,9 +364,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
             if (symbols.Value(symbol) is not { } itemId || itemId == 0)
                 continue;
 
-            // IsEventItemUsable names the sequence the item may actually be used in. That is exact, so when it
-            // is present it settles the question - the item is not used anywhere else, even if a later
-            // sequence still carries it or an earlier one has something interactable.
+            // IsEventItemUsable names the exact sequence the item is used in.
             List<SequenceHint> usableAt =
             [
                 .. analysis.Hints.Values
@@ -404,14 +383,11 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
                 }
             }
 
-            // Only when none of those sequences had anything to use it on does the carried-item heuristic get
-            // a turn; the exact answer is preferred, but silence is worse than a good guess.
             if (applied)
                 continue;
 
             if (analysis.UsesEventItems)
             {
-                // For carried event items, apply use to the latest non-trade sequence that holds it.
                 IEnumerable<SequenceHint> holders = analysis.Hints.Values
                     .Where(x => x.HeldItemSymbols.Contains(symbol, StringComparer.Ordinal) && !x.IsNpcTrade)
                     .OrderByDescending(x => x.Sequence);
@@ -428,7 +404,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
                 continue;
             }
 
-            // If the script lacks IsEventItemUsable, use an explicit journal instruction as a fallback.
             if (SequenceUsingItem(quest, itemId) is { } named &&
                 bySequence.TryGetValue(named, out QuestSequence? namedSequence))
             {
@@ -471,7 +446,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
                     step.ItemId = itemId;
                     break;
 
-                // Interacting is not what starts this fight - using the item on the target is.
                 case EInteractionType.Combat when step.EnemySpawnType == EEnemySpawnType.AfterInteraction:
                     step.EnemySpawnType = EEnemySpawnType.AfterItemUse;
                     step.ItemId = itemId;
@@ -553,15 +527,10 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         uint anchorDataId = 0,
         Level? anchorLevel = null)
     {
-        // A placed enemy fights where it stands; an id-only enemy is hunted wherever the journal points; and
-        // failing both, next to whichever actor the sequence revolves around.
         Level? location = spawnLocation ?? (todoLevels.Count > 0 ? todoLevels[0] : anchorLevel);
         if (location is not { } spot)
             return;
 
-        // The anchor may already have a step of its own from an earlier pass. Turning that one into the fight
-        // keeps the sequence at one step per target instead of interacting with the NPC and then fighting at
-        // the same spot.
         QuestStep? existing = anchorDataId != 0
             ? sequence.Steps.Find(x => x.DataId == anchorDataId)
             : null;
@@ -696,8 +665,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         else if (preferredTerritory is { } territory &&
                  NearestPlacement(dataId, territory, near) is { } placement)
         {
-            // No Level row anywhere, but the zone the journal points at lays the actor out; that is a real
-            // position rather than the guess a bare search area would give.
             step = new QuestStep(EInteractionType.Interact, dataId, placement, territory);
             provenance += "; positioned from layer data";
         }
@@ -754,7 +721,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         Level? level = null;
         string provenance = $"auto: turn-in {Describe(dataId)}";
 
-        // The journal's own turn-in marker, when the quest has one.
         Level? todoLevel = TodoLevels(quest, 255)
             .Cast<Level?>()
             .FirstOrDefault(x => x!.Value.Object.RowId != 0);
@@ -767,7 +733,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
         }
         else if (dataId != 0 && dataId == quest.IssuerStart.RowId)
         {
-            // Turned in to whoever gave it out, so the issuer location is the right placement of several.
             level = gameData.FindLevel(quest.IssuerLocation.RowId);
             if (level != null)
                 provenance = $"auto: turn-in back to issuer {Describe(dataId)}";
@@ -775,7 +740,6 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
 
         if (level == null && dataId != 0)
         {
-            // SEQ_FINISH usually maps to the turn-in actor, which gives its LOC_ symbol as a last resort.
             string? symbol = analysis.Hints.TryGetValue(255, out SequenceHint? hint)
                 ? hint.TargetSymbols.FirstOrDefault(x => symbols.DataId(x) == dataId)
                 : null;
@@ -799,8 +763,7 @@ internal sealed class QuestPathAutoGenerator(QuestGameData gameData, string auth
 
     private void Note(QuestStep step, string provenance) => _provenance[step] = provenance;
 
-    // Level rows without an object can sit just under the floor, and vnavmesh fails on a point below the mesh.
-    // QuestRegistry.CreateQuestRoot uses 30 for the same reason.
+    // Object-less Level rows can sit just under the floor, where vnavmesh fails.
     private const float AreaHeightPadding = 30f;
 
     private static Vector3 Position(Level level) => new(level.X, level.Y, level.Z);

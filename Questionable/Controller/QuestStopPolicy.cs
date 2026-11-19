@@ -65,13 +65,10 @@ internal sealed class QuestStopPolicy
         }
     }
 
-    // Set by the character list run. It gets whether the end actions apply to this stop, and answers
-    // true when another character is up next, so the final action waits for the last one.
     internal Func<bool, bool>? StopHandler { get; set; }
 
     internal bool IsListRun { get; set; }
 
-    // A finished run reached its goal or a stop the user asked for; anything else is a problem stop.
     public void Apply(string label, bool wasAutomatic, bool finished = false, EEndAction? endAction = null)
     {
         if (!wasAutomatic)
@@ -106,7 +103,6 @@ internal sealed class QuestStopPolicy
             Final = final,
             Next = nextCharacter ? _L("the next character") : final != null ? GetName(action) : null,
             ReadyAt = travel != null ? now + TravelStart : now,
-            // With nothing after the commands there is nothing to wait for.
             Wait = final != null || nextCharacter
                 ? TimeSpan.FromSeconds(Math.Clamp(stop.WaitSeconds, 0, MaxWaitSeconds))
                 : TimeSpan.Zero,
@@ -143,8 +139,7 @@ internal sealed class QuestStopPolicy
         _ending = null;
     }
 
-    // Travel first, then the commands, then the wait and the final action, each only once nothing is travelling.
-    // CharacterRun calls this every frame.
+    // CharacterRun calls this every frame; each part runs once, only when nothing is travelling.
     internal void Update(DateTime now)
     {
         while (_ending is { } ending && now >= ending.ReadyAt && !_isTraveling())

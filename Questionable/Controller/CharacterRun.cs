@@ -15,7 +15,7 @@ internal sealed class CharacterRun : IDisposable
         Starting,
     }
 
-    // Stop commands such as /li auto and a fresh login both need a moment before the next step.
+    // /li auto and a fresh login need a moment before the next step.
     private static readonly TimeSpan SettleTime = TimeSpan.FromSeconds(5);
     private static readonly TimeSpan RetryTime = TimeSpan.FromSeconds(2);
     private static readonly TimeSpan Timeout = TimeSpan.FromMinutes(5);
@@ -95,7 +95,6 @@ internal sealed class CharacterRun : IDisposable
     private static ulong? CurrentId =>
         ulong.TryParse(ProfileController.CurrentContentId, CultureInfo.InvariantCulture, out ulong id) ? id : null;
 
-    // The current character goes first when it is ticked; the others follow in list order, each once.
     internal static List<Character> GetQueue(IReadOnlyList<Character> characters, IReadOnlyCollection<ulong> ticked,
         ulong? current)
     {
@@ -183,7 +182,7 @@ internal sealed class CharacterRun : IDisposable
         switch (State)
         {
             case EState.Leaving:
-                // Travel, commands and the wait come first, and can take longer than one step's time limit.
+                // Travel, commands and the wait can outlast one step's time limit.
                 if (_stopPolicy.IsEnding || _lifestream.IsBusy)
                 {
                     _deadline = now + Timeout;
@@ -218,7 +217,7 @@ internal sealed class CharacterRun : IDisposable
 
     private void BeginQuesting()
     {
-        // Set first: a run with nothing to do stops inside Start and already moves on.
+        // Set first: Start can stop and move on before it returns.
         State = EState.Questing;
         _questStarter.Start("Character list");
         if (State == EState.Questing && _questController.AutomationType == EAutomationType.Manual)

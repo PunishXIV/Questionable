@@ -26,8 +26,6 @@ internal static class Duty
     internal const int MinLevelGap = 10;
     internal const int MaxLevelGap = 30;
 
-    // How far above a duty's sync level the player has to be before it runs unsynced. Trials count too;
-    // one that can't be soloed gets "CanUnsync": false in its path.
     internal static bool MeetsLevelGap(int playerLevel, int syncLevel, int gap) =>
         playerLevel - Math.Clamp(gap, MinLevelGap, MaxLevelGap) >= syncLevel;
 

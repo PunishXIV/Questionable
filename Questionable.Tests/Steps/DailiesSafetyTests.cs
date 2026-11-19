@@ -122,7 +122,6 @@ public sealed class DailiesSafetyTests
         Assert.Equal(EInteractionType.Instruction, quest.FindSequence(0)!.Steps[0].InteractionType);
         Assert.False(_functions.CanQueueSociety(quest.Id));
         Assert.Contains("disabled", DailiesController.GetBlockReason(quest, (QuestInfo)quest.Info, false, true)!);
-        // The support filter does not alter the path used by explicit manual/simulation entry points.
         Assert.NotNull(quest.FindSequence(0));
     }
 

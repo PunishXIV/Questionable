@@ -72,8 +72,7 @@ internal sealed class QuestSelectionController(Configuration configuration)
         if (isPriority(currentQuest.Quest))
             return false;
 
-        // "ifrit bleeds, we can kill it" isn't listed as priority quest, as we accept it during the MSQ 'Moving On'
-        // the rest are priority quests, but that's fine here
+        // "Ifrit Bleeds, We Can Kill It" is accepted during the MSQ 'Moving On', so it isn't a priority quest.
         if (QuestData.HardModePrimals.Contains(currentQuest.Quest.Id))
             return false;
 
@@ -83,7 +82,6 @@ internal sealed class QuestSelectionController(Configuration configuration)
         if (currentQuest.Step > 0)
             return false;
 
-        // Leaving the zone the previous sequence ended in anyway, so a detour costs no extra trip.
         QuestStep? previous = currentQuest.Quest.Root.QuestSequence
             .Where(x => x.Sequence < currentQuest.Sequence)
             .MaxBy(x => x.Sequence)?.Steps.LastOrDefault();
@@ -105,9 +103,6 @@ internal sealed class QuestSelectionController(Configuration configuration)
                IsSameCity(classStart.TerritoryId, teleportStep.TerritoryId);
     }
 
-    // A finished quest only counts once it's no longer accepted (repeatables). After a stop there's no started quest,
-    // so an accepted journal quest counts instead. A priority quest picked while interrupting was on, but not yet
-    // accepted, doesn't count as started either.
     internal static bool IsOtherQuestRunning(QuestProgress? started, ElementId priorityQuestId, IQuestSelectionState state,
         Func<ElementId?> journalQuest)
     {
@@ -119,7 +114,6 @@ internal sealed class QuestSelectionController(Configuration configuration)
         return journalQuest() is { } questId && questId != priorityQuestId && state.IsAccepted(questId);
     }
 
-    // The list is only read once nothing else blocks the switch.
     public static ElementId? PickPriorityQuest(QuestSlots slots, bool stopRequested,
         Func<IEnumerable<PriorityQuestInfo>> priorityQuests)
     {
@@ -131,14 +125,12 @@ internal sealed class QuestSelectionController(Configuration configuration)
             .Select(x => x.QuestId)
             .FirstOrDefault();
 
-        // don't start a second priority quest until the first one is resolved
         if (questId == null || (slots.Started != null && questId == slots.Started.Quest.Id))
             return null;
 
         return questId;
     }
 
-    // Accept-only entries are queued apart from the priority pick, so the list isn't done while one waits to be accepted.
     internal static bool IsPastPriorityList(QuestChoice choice, IReadOnlyList<Quest> priorityQuests,
         Func<ElementId, bool> waitingToAccept) =>
         choice is { Source: EQuestSource.Journal or EQuestSource.Next, QuestId: { } questId } &&
@@ -159,7 +151,6 @@ internal sealed class QuestSelectionController(Configuration configuration)
                 : null;
     }
 
-    // Only the first eligible priority quest is considered; if it can't take over, the journal's quest runs.
     private sealed class PriorityRule : IQuestRule
     {
         public QuestChoice? Offer(QuestSelectionContext context)

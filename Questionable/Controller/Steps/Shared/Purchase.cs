@@ -4,7 +4,6 @@ using LuminaItem = Lumina.Excel.Sheets.Item;
 
 namespace Questionable.Controller.Steps.Shared;
 
-// Knightshopper chooses the vendor and travels for gil, company seal and tomestone purchases.
 internal static class Purchase
 {
     // Knightshopper's currency ids, from the IPC docs it ships with.
@@ -47,7 +46,6 @@ internal static class Purchase
         }
     }
 
-    // An optional purchase (the Gysahl Greens restock) is skipped with a chat line instead of stopping the run.
     internal sealed record BuyTask(uint ItemId, int ItemCount, EItemQuality Quality = EItemQuality.Any,
         int Currency = Gil, bool Optional = false) : ITask
     {

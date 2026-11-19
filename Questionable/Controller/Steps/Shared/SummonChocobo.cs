@@ -69,7 +69,6 @@ internal static class SummonChocobo
                     return [new Purchase.BuyTask(GysahlGreens, RestockTo, Optional: true), new Restocked()];
                 }
 
-                // Out of greens with a restock coming before the next quest isn't worth a message.
                 if (!canBuy && !_warnedNoGreens && ShouldSummon(enabled: true, unlocked, openWorld, timeLeft, greens: 1))
                 {
                     _warnedNoGreens = true;
@@ -134,7 +133,6 @@ internal static class SummonChocobo
             return true;
         }
 
-        // Never fails the step: a chocobo that didn't come is not worth stopping for.
         public override ETaskResult Update()
         {
             if (_usedAt is { } usedAt)

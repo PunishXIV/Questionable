@@ -12,7 +12,6 @@ using Xunit.Abstractions;
 
 namespace Questionable.Tests.AutoGen;
 
-// Regression floors catch broad path-generation regressions that individual rule tests miss.
 public sealed class QuestPathGenerationAccuracyTests(GameDataFixture fixture, ITestOutputHelper output)
     : IClassFixture<GameDataFixture>
 {

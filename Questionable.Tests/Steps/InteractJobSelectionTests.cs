@@ -15,7 +15,6 @@ public sealed class InteractJobSelectionTests
     public void IneligibleJob_FallsBackToEligible(Job first, Job second, Job preferred)
     {
         var configuration = ConfigurationWithPreference(preferred);
-        // The preferred job was excluded by the quest's job, gearset or level filter.
         Job[] eligibleJobs = [first, second];
 
         Job selected = SelectJob(eligibleJobs, configuration, EAlliedSociety.None);

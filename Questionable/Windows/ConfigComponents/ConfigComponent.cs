@@ -22,7 +22,6 @@ internal abstract class ConfigComponent(IDalamudPluginInterface pluginInterface,
 
     protected void Save() => _pluginInterface.SavePluginConfig(Configuration);
 
-    // Invalid saved values reset to the first option.
     protected void DrawComboOption<T>(string label, T[] values, string[] labels, Func<T> get, Action<T> set)
     {
         if (values.Length == 0)

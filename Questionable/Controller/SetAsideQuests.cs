@@ -1,6 +1,5 @@
 namespace Questionable.Controller;
 
-// Quests waiting on a duty the player runs by hand. They're skipped for this session until their sequence moves on.
 internal static class SetAsideQuests
 {
     private static readonly Dictionary<ElementId, byte> Quests = [];

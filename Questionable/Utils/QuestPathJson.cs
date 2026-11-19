@@ -11,7 +11,6 @@ internal static partial class QuestPathJson
     internal static string Write(JsonObject root, JsonSerializerOptions options) =>
         OneLinePositions().Replace(ToFile(root).ToJsonString(options), "[$1, $2, $3]");
 
-    // $schema first, and each sequence's most common zone on the sequence instead of on every step.
     internal static JsonObject ToFile(JsonObject root)
     {
         JsonObject file = new() { ["$schema"] = SchemaUrl };

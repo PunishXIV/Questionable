@@ -68,8 +68,7 @@ internal sealed class GameIcons(
             $"Questionable icon {iconId}@{size}");
     }
 
-    // Each target pixel averages the source area it covers. GPU scaling from 80px to text height looks grainy.
-    // Colour is weighted by alpha, so transparent pixels don't darken the edges.
+    // GPU scaling 80px icons to text height looks grainy, so each pixel averages its source area.
     internal static byte[] Downscale(byte[] bgra, int width, int height, int size)
     {
         byte[] result = new byte[size * size * 4];

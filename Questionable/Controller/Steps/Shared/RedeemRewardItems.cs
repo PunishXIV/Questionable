@@ -5,7 +5,6 @@ namespace Questionable.Controller.Steps.Shared;
 
 internal static class RedeemRewardItems
 {
-    // Avoid retrying an unchanged reward item indefinitely; retry if its stack changes.
     private static readonly Dictionary<uint, int> AttemptedItems = [];
 
     internal static void ResetAttemptedItems() => AttemptedItems.Clear();
@@ -48,7 +47,6 @@ internal static class RedeemRewardItems
                 if (count <= 0 || itemReward.IsUnlocked())
                     return;
 
-                // Already tried this exact stack once - don't loop on it.
                 if (AttemptedItems.TryGetValue(itemReward.ItemId, out int attemptedCount) && attemptedCount == count)
                     return;
 
@@ -109,7 +107,6 @@ internal static class RedeemRewardItems
     {
         private static readonly TimeSpan MinimumCastTime = TimeSpan.FromSeconds(4);
 
-        // Don't block the queue forever when the item never becomes usable or never gets consumed.
         private static readonly TimeSpan GiveUpAfter = TimeSpan.FromSeconds(30);
 
         private DateTime _giveUpAt;
@@ -158,8 +155,7 @@ internal static class RedeemRewardItems
                     return ETaskResult.TaskComplete;
                 }
 
-                // Wait until the character can actually use an item (not mounted, in combat,
-                // casting, animation-locked, between areas, ...) before trying to redeem.
+                // The game refuses item use while mounted, in combat, casting or between areas.
                 if (!IsReadyToUseItem())
                     return ETaskResult.StillRunning;
 

@@ -11,12 +11,10 @@ internal sealed class QuestPriorityManager(
     private const char ClipboardSeparator = ';';
     private readonly List<Quest> _quests = [];
 
-    // Accepted accept-only quests remain listed but are skipped until normal completion.
     private readonly HashSet<ElementId> _acceptOnly = [];
 
     public IReadOnlyList<Quest> Quests => _quests;
 
-    // Session only: off holds the list until the running quest is done.
     public bool CanInterrupt { get; set; } = true;
     public bool IsDailiesRun { get; set; }
     public int Count => _quests.Count;
@@ -142,7 +140,6 @@ internal sealed class QuestPriorityManager(
 
     public void RemoveCompleted(Func<ElementId, bool> isComplete, Func<ElementId, bool> isAccepted)
     {
-        // Keep accept-only flags in sync with the quests that remain.
         _quests.RemoveAll(q => isComplete(q.Id));
         _quests.RemoveAll(q => _acceptOnly.Contains(q.Id) && isAccepted(q.Id));
         _acceptOnly.RemoveWhere(id => _quests.All(q => q.Id != id));

@@ -37,7 +37,6 @@ internal sealed class ItemUseModule(IServiceProvider serviceProvider, ICondition
 
     public bool Stop()
     {
-        // A failed start or an item-use pause may still leave partial provider state.
         if (_delegate != null && !_delegate.Stop())
             return false;
         _rotationRunning = false;

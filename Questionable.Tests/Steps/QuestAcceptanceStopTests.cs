@@ -98,7 +98,6 @@ public sealed class QuestAcceptanceStopTests
     }
 }
 
-// Covers the controller wiring around the acceptance component.
 public sealed class QuestAcceptanceWiringTests : IDisposable
 {
     private readonly ExternalOperationFixture _operations = new();

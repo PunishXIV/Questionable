@@ -34,8 +34,7 @@ internal sealed class OperationCoordinator : IOperationContext
 
     public bool Update(IExternalOperationHost host)
     {
-        // Check unfinished plugin work even while stopped, occupied or logged out. Each provider sees the executor
-        // as earlier providers left it.
+        // Check unfinished plugin work even while stopped, occupied or logged out.
         bool blocked = false;
         foreach (IOperationProvider provider in _providers)
             blocked |= provider.Update(host, this);
@@ -49,7 +48,6 @@ internal sealed class OperationCoordinator : IOperationContext
             provider.Abandon();
         bool success = resetQueue();
 
-        // Provider work is cleaned up even when its executor is already gone.
         foreach (IOperationProvider provider in _providers)
             success &= provider.Cancel(this);
         if (stopMovement)

@@ -24,8 +24,6 @@ public sealed class RuntimeConfigurationTests : IDisposable
         _configuration.Advanced.NeverFly = !baseEnabled;
         _configuration.Advanced.AutoRedeemItemBlacklist = [200];
 
-        // Dalamud saves only base sections plus profile patches. Loading this file
-        // again must not replace the live, character-specific configuration.
         Configuration saved = JsonConvert.DeserializeObject<Configuration>(JsonConvert.SerializeObject(_configuration))!;
         Assert.Equal(baseEnabled, saved.Advanced.AutoRedeemRewardItems);
         Assert.Equal(baseEnabled, saved.Advanced.NeverFly);

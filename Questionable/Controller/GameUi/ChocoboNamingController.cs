@@ -67,8 +67,7 @@ internal sealed unsafe class ChocoboNamingController : IDisposable
         {
             _namePending = false;
 
-            // Confirm the InputString dialog: [0 = OK, name, ""]. A "Name your chocobo?"
-            // SelectYesno follows, which YesNoChoiceHandler accepts via IsAwaitingYesNo.
+            // InputString values: [0 = OK, name, ""]; the SelectYesno after it goes through YesNoChoiceHandler.
             if (_gameGui.TryGetAddonByName(AddonName, out AtkUnitBase* addon))
             {
                 Callback.Fire(addon, updateState: true, 0, GetConfiguredName(), "");

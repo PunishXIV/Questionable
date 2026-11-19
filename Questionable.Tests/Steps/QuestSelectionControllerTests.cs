@@ -148,7 +148,6 @@ public sealed class QuestSelectionControllerTests
     [Fact]
     public void PriorityQuests_OnlyFirstEligible()
     {
-        // The started quest can't be interrupted, so the first candidate is refused even though the second is the started one.
         _state.Current = new QuestReference(new QuestId(11), 1, MainScenarioQuestState.Available);
         Quest first = NewQuest(10);
         Quest second = NewQuest(11);
@@ -379,7 +378,6 @@ public sealed class QuestSelectionControllerTests
 
     private static QuestStep Start(uint territory) => new(EInteractionType.AcceptQuest, 1, null, territory);
 
-    // Here is Eastern Thanalan (145); the class quest starts in the given zone; the next story step is in the other.
     [Theory]
     [InlineData(145u, 140u, true)]
     [InlineData(128u, 129u, true)]

@@ -11,7 +11,6 @@ public sealed class IpcTestPlugin : IDalamudPlugin
 {
     private readonly IChatGui _chatGui;
     private readonly ICommandManager _commandManager;
-    //private readonly WindowSystem _windowSystem = new("Questionable/" + nameof(IpcTestPlugin));
     private readonly IDalamudPluginInterface _pluginInterface;
 
     public IpcTestPlugin(

@@ -87,7 +87,6 @@ internal sealed class ConfigWindow
     public override void DrawContent()
     {
         string page = WindowConfig.Page;
-        // Neither page holds profile settings.
         if (_configuration.Profiles.Count > 0 && page is not ("Plugins" or "Profiles"))
         {
             if (_configuration.ActiveProfileName is { } profileName)

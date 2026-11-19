@@ -77,7 +77,6 @@ internal sealed class QuestStarter(
             tracker.SimulateQuest(quest, sequence, step);
     }
 
-    // Uses the reward items in the inventory once, whatever the auto-redeem setting says.
     public void RedeemRewards(bool dry = false)
     {
         if (questController.IsRunning)
@@ -137,7 +136,6 @@ internal sealed class QuestStarter(
             string.Join(", ", npcs.Select(x => $"{x} {configuration.General.DeliveryItemFor(x)}")));
     }
 
-    // For testing the job gear pickup without levelling a character (see JobGear.Factory.CreateTasks).
     public void CollectJobGear(int? level)
     {
         if (questController.IsRunning)

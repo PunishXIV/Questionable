@@ -363,7 +363,6 @@ internal static class Interact
                     .Where(x => jobGearSets.Count == 0 || jobGearSets.Any(v => v.ClassJob.Equals(x)))
                     .OrderByDescending(x => jobGearSets.Where(v => v.ClassJob.Equals(x)).Select(v => (int)v.Level).DefaultIfEmpty().Max())
                     .ThenByDescending(x => jobGearSets.Where(v => v.ClassJob.Equals(x)).Select(v => (int)v.ItemLevel).DefaultIfEmpty().Max())];
-                // Runs every frame while waiting for the target.
                 string acceptableJobsText = string.Join(',', acceptableJobs);
                 if (acceptableJobsText != _loggedAcceptableJobs)
                 {
@@ -373,7 +372,7 @@ internal static class Interact
                 if (acceptableJobs.Count == 0)
                     throw new Exception(_LF("_JobGearsetError", Task.Quest.Info.ClassJobs[0].ToFriendlyString(), Task.Quest.Info.Name));
 
-                // the game won't offer the quest on a class below its level, so prefer classes that are high enough
+                // The game won't offer the quest on a class below its level.
                 List<Job> levelledJobs = [.. acceptableJobs.Where(x => gameState.GetClassJobLevel(x) >= Task.Quest.Info.Level)];
                 if (levelledJobs.Count > 0)
                     acceptableJobs = levelledJobs;

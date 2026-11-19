@@ -130,8 +130,7 @@ internal sealed class QuestFunctions
         if (!state.HasQuestManager)
             return QuestReference.NoQuest(MainScenarioQuestState.Unavailable);
 
-        // always prioritize accepting MSQ quests, to make sure we don't turn in one MSQ quest and then go off to do
-        // side quests until the end of time.
+        // Prefer accepting MSQ quests, or a turn-in sends the run off on side quests.
         (QuestReference msqQuest, string? _) = GetMainScenarioQuest();
         if (msqQuest.CurrentQuest != null && !catalog.IsKnownQuest(msqQuest.CurrentQuest) ||
             SetAsideQuests.Contains(msqQuest.CurrentQuest, msqQuest.Sequence))
@@ -147,9 +146,7 @@ internal sealed class QuestFunctions
             msqQuest = QuestReference.NoQuest(msqQuest.State);
         }
 
-        // Use the quests in the same order as they're shown in the to-do list, e.g. if the MSQ is the first item,
-        // do the MSQ; if a side quest is the first item do that side quest.
-        // If no quests are marked as 'priority', accepting a new quest adds it to the top of the list.
+        // Follow the to-do list order: its first item is the quest the player picked.
         List<(ElementId Quest, byte Sequence)> trackedQuests = [];
         foreach (ushort trackedQuestId in state.TrackedQuestIds)
         {
@@ -167,7 +164,6 @@ internal sealed class QuestFunctions
 
         if (trackedQuests.Count > 0)
         {
-            // if we have multiple quests to turn in for an allied society, try and complete all of them
             (ElementId firstTrackedQuest, byte firstTrackedSequence) = trackedQuests[0];
             EAlliedSociety firstTrackedAlliedSociety =
                 CommonTurnIn(firstTrackedQuest);
@@ -198,10 +194,8 @@ internal sealed class QuestFunctions
                     }
                     else if (!IsOnAlliedSocietyMount())
                     {
-                        // a few of the vanu quests require you to talk to one of the npcs near the issuer, so we
-                        // give priority to those
+                        // Some Vanu dailies need a talk with an NPC near the issuer first.
 
-                        // also include the first quest in the list for those
                         sameSocietyQuests.Insert(0, (firstTrackedQuest, firstTrackedSequence));
 
                         alliedSocietyData.GetCommonNpcs(firstTrackedAlliedSociety,
@@ -235,14 +229,11 @@ internal sealed class QuestFunctions
             .FirstOrDefault();
         if (priorityQuest != null)
         {
-            // if we have an accepted msq quest, and know of no quest of those currently in the to-do list...
-            // (1) try and find a priority quest to do
             return new(priorityQuest, state.GetQuestSequence(priorityQuest.Value), msqQuest.State);
         }
 
         if (msqQuest.CurrentQuest != null)
         {
-            // (2) just do a normal msq quest
             return msqQuest;
         }
 
@@ -300,9 +291,6 @@ internal sealed class QuestFunctions
             if (IsMainScenarioComplete())
                 return (QuestReference.NoQuest(MainScenarioQuestState.Complete), _L("Main Scenario is complete"));
 
-            // fallback lookup; find a quest which isn't completed but where all prequisites are met
-            // excluding branching quests
-
             List<QuestInfo> potentialQuests = catalog.MainScenarioQuests
                     .Where(x => (x.StartingCity == 0 || x.StartingCity == state.StartTown) &&
                                 IsReadyToAcceptQuest(x.QuestId, ignoreLevel: true) &&
@@ -313,8 +301,7 @@ internal sealed class QuestFunctions
 
             if (potentialQuests.Count > 1)
             {
-                // for all of these (except the GC quests), questionable normally auto-picks the next quest based on the
-                // agent data. This should (hopefully) pick the exact same quest when the agent does not know for a bit.
+                // The agent data can briefly not know the next quest; this picks the same one it would.
                 if (potentialQuests.All(x => x.QuestId.Value is 680 or 681 or 682))
                 {
                     currentQuest = new(681); // The Company You Keep; actual quest will be resolved later in GetCurrentQuest
@@ -344,9 +331,7 @@ internal sealed class QuestFunctions
         if (IsQuestAccepted(currentQuest) && state.GetQuestProgress(currentQuest.Value)!.IsHidden)
             return (QuestReference.NoQuest(MainScenarioQuestState.Available), ("Quest accepted but hidden"));
 
-        // it can sometimes happen (although this isn't reliably reproducible) that the quest returned here
-        // is one you've just completed. We return 255 as sequence here, since that is the end of said quest;
-        // but this is just really hoping that this breaks nothing.
+        // The quest returned here can be one just completed; 255 is its end sequence.
         if (IsQuestComplete(currentQuest))
             return (QuestReference.NoQuest(MainScenarioQuestState.Unavailable), _LF("Quest {0} complete", currentQuest.Value));
 
@@ -424,8 +409,7 @@ internal sealed class QuestFunctions
         return null;
     }
 
-    // The quest's materials are used up by the craft. The to-do icon changes with your job, and crafted
-    // items left over from an abandoned attempt don't count for the quest, so neither can tell.
+    // Craft materials are used up by the craft, and leftover crafted items don't count for the quest.
     public bool HasCraftMaterials(uint itemId) => state.HasCraftMaterials(itemId);
 
     private (ElementId Quest, byte Sequence) PreferThisZone(List<(ElementId Quest, byte Sequence)> quests)
@@ -504,10 +488,6 @@ internal sealed class QuestFunctions
     public List<PriorityQuestInfo> NextPriorityQuests => _nextPriorityQuests.Get(GetNextPriorityQuests);
     private List<PriorityQuestInfo> GetNextPriorityQuests()
     {
-        // ideally, we'd also be able to afford *some* teleports
-        // this implicitly makes sure we're not starting one of the lv1 class quests if we can't afford to teleport back
-        //
-        // Of course, they can still be accepted manually.
         int gil = state.Gil;
 
         return GetPriorityQuests()
@@ -521,9 +501,6 @@ internal sealed class QuestFunctions
                 if (firstStep == null)
                     return new(x, _L("No sequence 0 with steps"));
 
-                // all priority quests assume we're able to teleport to the beginning (and for e.g. class quests, the end)
-                // ideally without having to wait 15m for Return. Teleport can unlock as late as level 10 (Gridania), so
-                // until then we still allow quests that never need it, which covers most level 1-5 class quests.
                 if (!state.IsTeleportUnlocked)
                 {
                     if (!CanBeDoneWithoutTeleport(quest))
@@ -578,7 +555,6 @@ internal sealed class QuestFunctions
         catalog.TryGetQuest(questId, out Quest? quest) && quest.FindSequence(0)?.FindStep(0) is { } start &&
         QuestSelectionController.IsFreeClassQuestDetour(start, state.TerritoryType, teleportStep);
 
-    // Every move into another zone, starting where the player is; a door step's TargetTerritoryId moves us too.
     private IEnumerable<(uint From, uint To)> ZoneChanges(Quest quest)
     {
         uint current = state.TerritoryType;
@@ -680,16 +656,13 @@ internal sealed class QuestFunctions
                             return false;
                         }
 
-                        // if no shadowbringers role quest is complete, (at least one) is required
                         if (shadowbringersChapters.Contains(questInfo.NewGamePlusChapter))
                             return !QuestData.FinalShadowbringersRoleQuests.Any(IsQuestComplete);
 
-                        // ignore all other role quests
                         if (QuestData.AllRoleQuestChapters.Any(y => y.Contains(questInfo.NewGamePlusChapter)))
                             return false;
 
-                        // even job quests for the later expacs (after role quests were introduced) might have skills locked
-                        // behind them, e.g. reaper and sage
+                        // Later job quests can lock skills behind them (e.g. Reaper, Sage).
 
                         return true;
                     })
@@ -825,11 +798,9 @@ internal sealed class QuestFunctions
                 lockedReason.Add(_L("Grand Company rank"));
         }
 
-        // quest is in a ng+ chapter, and the chapter id is a known class quest group
         bool isClassQuest = questInfo.NewGamePlusChapter != 0 &&
             QuestData.JobToClassQuestChapterIds.Values
                 .Any(x => x.Contains(questInfo.NewGamePlusChapter));
-        // if this is a class quest with only one or two acceptable jobs (i.e class or job)
         if (isClassQuest && questInfo.ClassJobs.Count >= 1 && questInfo.ClassJobs.Count <= 2)
         {
             var levels = state.ClassJobLevels;
@@ -837,7 +808,6 @@ internal sealed class QuestFunctions
             if (index >= 0 && levels.Count > index && levels[index] < questInfo.Level)
                 lockedReason.Add($"{_L("Low level")} ({questInfo.ClassJobs[0]})");
         }
-        // if this is a class quest with a wider range of acceptable jobs (i.e an unlock quest)
         if (isClassQuest && questInfo.ClassJobs.Count > 5)
         {
             var levels = state.ClassJobLevels;
@@ -1003,8 +973,7 @@ internal sealed class QuestFunctions
             { 570, Job.THM }
         };
 
-        // The starter-city NPC offers every Close to Home quest but selects the current class's quest.
-        // Once one has started, treat the other starting-class quests as unavailable.
+        // The starter-city NPC offers every Close to Home quest; once one started, the others are unavailable.
         if (closeToHomeQuests.TryGetValue(questId.Value, out Job neededStartingClass) &&
             closeToHomeQuests.Any(x => IsQuestAcceptedOrComplete(new QuestId(x.Key))))
         {

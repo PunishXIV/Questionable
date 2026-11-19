@@ -44,7 +44,6 @@ public sealed class GameDataFixture : IDisposable
 
     public bool Available => GameData != null && Factory != null;
 
-    // Keep generated output independent of machine configuration.
     public const string Author = "TestBot";
 
     internal QuestPathAutoGenerator CreateGenerator() =>

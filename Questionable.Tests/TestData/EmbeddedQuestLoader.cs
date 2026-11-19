@@ -43,7 +43,6 @@ public sealed class EmbeddedQuestLoader : IEnumerable<object[]>
         if (string.IsNullOrWhiteSpace(raw))
             return null;
 
-        // Accept ';' or newline separators; normalize to forward slashes.
         return raw
             .Split([';', '\r', '\n'], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
             .Select(x => x.Replace('\\', '/'))

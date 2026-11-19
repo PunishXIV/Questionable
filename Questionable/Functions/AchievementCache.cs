@@ -1,7 +1,6 @@
 namespace Questionable.Functions;
 
-// The game only loads achievement data once the Achievements window has been opened. Open it at most once per
-// login and remember completions, since they never revert.
+// The game only loads achievement data once the Achievements window has been opened.
 internal sealed class AchievementCache(
     Func<string?> contentId,
     Func<bool> isLoaded,

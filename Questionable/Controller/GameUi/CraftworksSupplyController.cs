@@ -62,7 +62,6 @@ internal sealed class CraftworksSupplyController : IDisposable
         AddonMaster.BankaCraftworksSupply master = new(addon);
         if (master.FirstUnfilledSlot is { } slot)
         {
-            // TryHandOver opens the item-pick context menu, which ContextIconMenuPostOpen handles.
             _logger.LogInformation("Selecting an item for slot {Slot}", slot);
             master.TryHandOver(slot);
         }

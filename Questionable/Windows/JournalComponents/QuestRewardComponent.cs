@@ -224,7 +224,6 @@ internal sealed class QuestRewardComponent
         if (!table)
             return;
 
-        // Unlike Duties, this also lists unlock quests without a path, so nothing is missing from the list.
         _mentorQuests ??=
         [
             .. questData.GetAll().OfType<QuestInfo>()

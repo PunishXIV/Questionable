@@ -42,7 +42,6 @@ internal sealed class StopConditionComponent : ConfigComponent
 
         _completeQuestSelector = questSelector;
         _completeQuestSelector.SuggestionPredicate = quest => configuration.Stop.QuestsToStopAfter.All(x => x != quest.Id);
-        // Both lists default to the main scenario quests still ahead of this character.
         _completeQuestSelector.DefaultPredicate = quest =>
             quest.Info.IsMainScenarioQuest && !questFunctions.IsQuestComplete(quest.Id) &&
             !questFunctions.IsQuestUnobtainable(quest.Id);
@@ -184,7 +183,6 @@ internal sealed class StopConditionComponent : ConfigComponent
         using (ImRaii.PushIndent())
         {
             string command = Configuration.Stop.CommandAfterStop;
-            // One line tall, growing with each command added.
             Vector2 commandSize = new(ImGui.CalcItemWidth(),
                 ImGui.GetTextLineHeight() * (command.Count(c => c == '\n') + 1) + ImGui.GetStyle().FramePadding.Y * 2);
             if (ImGui.InputTextMultiline("##Command", ref command, 512, commandSize))

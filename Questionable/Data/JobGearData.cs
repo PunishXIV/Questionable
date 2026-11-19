@@ -10,7 +10,6 @@ internal sealed class JobGearData(IDataManager dataManager)
     internal sealed record GearSet(Vendor Vendor, string ShopName, QuestId UnlockQuest, int ItemLevel,
         IReadOnlyList<uint> Items);
 
-    // Free job gear, highest level first. Positions are from the zones' event layouts.
     internal static readonly Vendor[] Vendors =
     [
         new(99, 1048376, 1185, new(-48.949f, -10f, 93.496f), [1770757, 1770758, 1770759, 1770760]), // Mewazunte

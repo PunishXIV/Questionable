@@ -55,8 +55,7 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
         {
             if (_hasControl && (dontSkipCutscenes != _sentDontSkipCutscenes || completeQuests != _sentCompleteQuests))
             {
-                // TextAdvance accepts updated settings from the same requester. Keep control
-                // throughout so its normal auto-interact/cutscene settings cannot take over.
+                // Keep control throughout, or TextAdvance's own auto-interact/cutscene settings take over.
                 if (IpcInvoke.SafeFunc(() => _enableExternalControl(
                         _pluginName, CreateConfig(dontSkipCutscenes, completeQuests)), fallback: false))
                 {
@@ -93,7 +92,6 @@ internal sealed class TextAdvanceIpc : Ipc, IDisposable
     {
         EnableQuestAccept = true,
         EnableQuestComplete = completeQuests,
-        // RewardPickHandler picks while Questionable controls TextAdvance.
         EnableRewardPick = false,
         EnableRequestHandin = true,
         EnableCutsceneEsc = !dontSkipCutscenes,

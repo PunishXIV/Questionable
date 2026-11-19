@@ -2,7 +2,6 @@ namespace Questionable.Controller.Operations;
 
 internal interface IOperationProvider
 {
-    // Lower orders win when several providers block.
     int Order { get; }
 
     string Name { get; }

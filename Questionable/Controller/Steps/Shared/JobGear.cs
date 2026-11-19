@@ -20,7 +20,6 @@ internal static class JobGear
 
     internal sealed record Option(int Level, int ItemLevel, bool Unlocked, bool Collected);
 
-    // Only the highest unlocked set the job can wear counts; a lower set is never the fallback.
     internal static Option? Choose(IReadOnlyList<Option> options, int playerLevel, int equippedItemLevel)
     {
         Option? best = options.Where(x => x.Unlocked && x.Level <= playerLevel).MaxBy(x => x.Level);
@@ -66,7 +65,6 @@ internal static class JobGear
             return CreateTasks(contentId, level: null, force: false, out _);
         }
 
-        // Force is for /qst jobgear: no between-quests rule, collected record, retry pause or upgrade check.
         internal unsafe List<ITask> CreateTasks(string contentId, int? level, bool force, out string reason)
         {
             reason = "";

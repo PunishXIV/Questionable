@@ -9,7 +9,7 @@ namespace Questionable.Domain;
 
 internal sealed class QuestInfo : IQuestInfo
 {
-    // The formula XIVAPI uses, with ParamGrow at the quest's level. Synced quests (HW+ society dailies) scale to your level instead.
+    // XIVAPI's formula with ParamGrow at the quest level; synced quests (HW+ society dailies) scale instead.
     internal static uint ScaleExperience(ushort expFactor, ushort scaledQuestXp, byte questExpModifier) =>
         (uint)((ulong)expFactor * scaledQuestXp * questExpModifier / 100);
 

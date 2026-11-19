@@ -47,7 +47,6 @@ internal sealed class PointMenuHandler : IDisposable
         HandlePointMenu((AtkUnitBase*)args.Addon.Address);
     }
 
-    // The initial sweep bypasses the interaction gate.
     public unsafe void CheckExisting()
     {
         if (_gameGui.TryGetAddonByName("PointMenu", out AtkUnitBase* addonPointMenu))

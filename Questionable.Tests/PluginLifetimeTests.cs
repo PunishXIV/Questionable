@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-#pragma warning disable CA2007 // Test awaits retain xUnit's synchronization context.
+#pragma warning disable CA2007
 
 namespace Questionable.Tests;
 

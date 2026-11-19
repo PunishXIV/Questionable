@@ -23,7 +23,6 @@ internal sealed class TomestoneShopData(IDataManager dataManager)
             .Distinct()
     ]);
 
-    // Every item a tomestone shop sells.
     public IReadOnlyList<uint> Items => _items.Value;
 
     public bool IsSoldForTomestones(uint shopId, uint itemId)

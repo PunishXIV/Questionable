@@ -208,7 +208,6 @@ internal sealed class ClassJobUtils
                 { Job.ACN, (Job.SMN, 4549) },
                 { Job.ROG, (Job.NIN, 7886) }
             };
-    // Arcanist is the only class with two jobs; the setting picks which line QST follows.
     internal static Job FollowUpJob(Job classJob, Job arcanistJob) =>
         classJob == Job.ACN ? (arcanistJob == Job.SCH ? Job.SCH : Job.SMN) : classJob.AsJob();
 

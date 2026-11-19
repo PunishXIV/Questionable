@@ -30,7 +30,6 @@ public sealed class GameIconsTests
 
         byte[] result = GameIcons.Downscale(source, 3, 1, 2);
 
-        // The target is square, so this is its first row.
         Assert.Equal([.. Pixel(30, 30, 30, 255), .. Pixel(150, 150, 150, 255)], result[..8]);
     }
 }

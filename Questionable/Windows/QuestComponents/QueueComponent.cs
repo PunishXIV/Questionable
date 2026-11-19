@@ -52,7 +52,6 @@ internal sealed class QueueComponent
         _questSelector.OnSelect = quest => _questController.PriorityManager.Add(quest);
     }
 
-    // The quest window listens and switches to its Up next tab.
     public event EventHandler? OpenRequested;
 
     public void Open() => OpenRequested?.Invoke(this, EventArgs.Empty);

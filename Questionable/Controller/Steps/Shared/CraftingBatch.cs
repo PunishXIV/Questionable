@@ -4,7 +4,6 @@ internal static class CraftingBatch
 {
     internal static IReadOnlyList<CraftingItem>? Resolve(Craft.Task task, IReadOnlySet<uint>? requiredItemIds)
     {
-        // Legacy list-only step without item targets.
         if (task.ItemId == null && task.ItemCount == null)
             return Craft.GetItemTargets(task);
 

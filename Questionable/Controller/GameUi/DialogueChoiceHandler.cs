@@ -109,7 +109,6 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
         HandleSelectIconString((AddonSelectIconString*)args.Addon.Address, checkAllSteps: false);
     }
 
-    // The initial sweep bypasses the interaction gate.
     public unsafe void CheckExisting()
     {
         if (_questController.HasExternalOperation)
@@ -186,7 +185,7 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
             return;
         }
 
-        // this is 'Daily Quests' for tribal quests, but not set for normal selections
+        // 'Daily Quests' for society dailies; not set for normal selections.
         string? title = AtkValueAdapter.ReadString(addonSelectIconString->AtkValues[0]);
 
         QuestController.QuestProgress? currentQuest = _questController.StartedQuest;
@@ -434,7 +433,6 @@ internal sealed partial class DialogueChoiceHandler : IDisposable
         }
     }
 
-    // False skips this choice. The answer can still be null when the choice applies.
     private bool TryGetExpectedAnswer(Quest? quest, DialogueChoice dialogueChoice, string? actualPrompt,
         out StringOrRegex? excelAnswer)
     {

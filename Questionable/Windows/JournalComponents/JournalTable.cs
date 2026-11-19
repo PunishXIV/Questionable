@@ -30,8 +30,7 @@ internal sealed class JournalTable(
         return issues.Count > 0 ? EPathSupport.Issues : EPathSupport.Supported;
     }
 
-    // pinHeader makes the table scroll instead of the window, so the header row stays in view.
-    // Only for a table that is the last thing on its tab: it takes the remaining height.
+    // pinHeader scrolls the table instead of the window; only for the last thing on its tab.
     public ImRaii.TableDisposable Begin(string id, bool repColumn = false,
         bool pinHeader = false)
     {
@@ -59,15 +58,12 @@ internal sealed class JournalTable(
         return table;
     }
 
-    // For header rows (section, rank, item group): the caller draws the name cell, then optionally the counts.
     public static void BeginRow()
     {
         ImGui.TableNextRow();
         ImGui.TableNextColumn();
     }
 
-    // A group row's Level, XP and Gil cells are empty, so its name may run across them
-    // instead of being cut off at the Name column.
     public WideNameEnd WideName()
     {
         ImGui.TableSetColumnIndex(_repColumn ? 5 : 4);
@@ -93,14 +89,12 @@ internal sealed class JournalTable(
         DrawCount(completed, obtainable);
     }
 
-    // Moves a header row past the reward columns to Supported.
     public void SupportedCell()
     {
         for (int i = _repColumn ? 5 : 4; i > 0; --i)
             ImGui.TableNextColumn();
     }
 
-    // label and unlocked replace the quest's name and completion, for rows that stand for a quest reward.
     public void QuestRow(IQuestInfo questInfo, string source, string? label = null, bool? unlocked = null)
     {
         questRegistry.TryGetQuest(questInfo.QuestId, out Quest? quest);

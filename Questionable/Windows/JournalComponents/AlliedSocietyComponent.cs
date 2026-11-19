@@ -114,7 +114,6 @@ internal sealed class AlliedSocietyComponent
         ImGui.SameLine();
     }
 
-    // Path checker tools; true when "Add" was pressed this frame.
     private bool DrawTesterTools()
     {
         bool addPending = false;
@@ -270,8 +269,6 @@ internal sealed class AlliedSocietyComponent
         };
     }
 
-    // Each entry says which kinds of job one quest accepts. Judged per quest, so one odd quest
-    // doesn't change a society's type.
     internal static EType? GetSocietyType(IEnumerable<(bool Combat, bool Crafter, bool Gatherer)> quests)
     {
         int combat = 0, crafting = 0, gathering = 0, mixed = 0;

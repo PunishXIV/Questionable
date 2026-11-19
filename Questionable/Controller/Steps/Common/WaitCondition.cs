@@ -2,7 +2,6 @@
 
 internal static class WaitCondition
 {
-    // Description is shown in the in-game task list; ideal format: Wait(description).
     internal sealed record Task(Func<bool> Predicate, string Description) : ITask
     {
         public override string ToString() => Description;

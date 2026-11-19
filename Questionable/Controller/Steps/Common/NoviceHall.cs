@@ -6,8 +6,6 @@ using Questionable.Controller.Steps.Shared;
 using Quest = Questionable.Domain.Quest;
 namespace Questionable.Controller.Steps.Common;
 
-// Between quests, has AutoDuty run the three Hall of the Novice exercises that give the Neophyte's Ring.
-// AutoDuty queues them from anywhere, so there is no trip to the Hall.
 internal static class NoviceHall
 {
     // React to Attack Markers, React to Floor Markers, React to Advanced Visual Indicators.
@@ -80,7 +78,6 @@ internal static class NoviceHall
         Svc.Chat.Print(message, CommandHandler.MessageTag, CommandHandler.TagColor);
     }
 
-    // Plans the accept step again, which walks back to the quest giver.
     internal sealed class DoneExecutor : TaskExecutor<Done>
     {
         protected override bool Start() => true;

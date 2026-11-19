@@ -320,8 +320,6 @@ public sealed class QuestFunctionsTests
         Assert.Equal(new QuestId(expected), _functions.GetCurrentQuestInternal(allowNewMsq: true).CurrentQuest);
     }
 
-    // Only 1222 is on the to-do list; 1223 and 1224 are accepted but untracked. 1224 starts with a class switch
-    // in another zone, but its stage happens here.
     [Theory]
     [InlineData(147u, 1223)]
     [InlineData(148u, 1224)]

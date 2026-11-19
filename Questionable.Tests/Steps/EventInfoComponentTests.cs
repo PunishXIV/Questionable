@@ -13,10 +13,22 @@ public sealed class EventInfoComponentTests
     [Fact]
     public void RunningFestival_ListsItsQuests()
     {
-        var events = Events([(147, 0)], Seasonal(4796, 147), Seasonal(4797, 147), Seasonal(5466, 257));
+        var events = Events([(900, 0)], Seasonal(4796, 900), Seasonal(4797, 900), Seasonal(5466, 901));
 
         Assert.Equal([4796, 4797], Ids(Assert.Single(events)));
         Assert.Equal("Quest 4796", events[0].Name);
+        Assert.Null(events[0].EndsAtUtc);
+    }
+
+    [Fact]
+    public void KnownFestival_UsesDetails()
+    {
+        DateTime ends = new(2026, 12, 9, 14, 59, 0, DateTimeKind.Utc);
+        var gameEvent = Assert.Single(EventInfoComponent.GetEvents([Seasonal(4796, 147)], [(147, 0)], _ => null, _ => true,
+            x => x == 147 ? new EventInfoComponent.EventDetails("FFXVI", ends) : null));
+
+        Assert.Equal("FFXVI", gameEvent.Name);
+        Assert.Equal(ends, gameEvent.EndsAtUtc);
     }
 
     [Theory]
@@ -77,7 +89,7 @@ public sealed class EventInfoComponentTests
     private static List<EventInfoComponent.Event> Events((ushort, ushort)[] festivals, ushort[] done, params QuestInfo[] quests) =>
         EventInfoComponent.GetEvents(quests.Where(x => x.IsSeasonalEvent), festivals,
             x => quests.FirstOrDefault(y => y.QuestId.Equals(x)),
-            x => done.Contains(x.QuestId.Value));
+            x => done.Contains(x.QuestId.Value), _ => null);
 
     private static int[] Ids(EventInfoComponent.Event gameEvent) => [.. gameEvent.QuestIds.Select(x => (int)x.Value)];
 }

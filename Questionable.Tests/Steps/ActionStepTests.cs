@@ -161,12 +161,11 @@ public sealed class ActionStepTests
 
     private ActionStep.UseOnObjectExecutor CreateExecutor(bool withFlags = false)
     {
-        // Avoid installing a native hook; use its real managed confirmation store and executor update path.
         var interrupt = (InterruptHandler)RuntimeHelpers.GetUninitializedObject(typeof(InterruptHandler));
         typeof(InterruptHandler).GetField("<Confirmations>k__BackingField", BindingFlags.Instance | BindingFlags.NonPublic)!
             .SetValue(interrupt, _confirmations);
         var condition = Substitute.For<ICondition>();
-        condition[ConditionFlag.Casting].Returns(true); // Keep native retry submission outside this test boundary.
+        condition[ConditionFlag.Casting].Returns(true);
         var executor = new ActionStep.UseOnObjectExecutor(null!, interrupt, condition,
             NullLogger<ActionStep.UseOnObject>.Instance, new FakeQuestGameState());
         var task = new ActionStep.UseOnObject(123, QuestTestData.CreateQuest(new QuestId(92)), EAction.Cure,

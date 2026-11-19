@@ -134,7 +134,6 @@ internal sealed class QuestSelectionWindow : LWindow
         List<IQuestInfo> shown = (_offeredQuests.Count != 0 && _onlyOffered) ? _offeredQuests : _quests;
         if (ImGuiComponentsLocal.IconButtonWithText(FontAwesomeIcon.AngleDoubleUp, _L("Add all to Priority Quests")))
         {
-            // Quests without a path are skipped by the priority list itself.
             foreach (IQuestInfo quest in shown)
                 if (!_questFunctions.IsQuestComplete(quest.QuestId) && !_questFunctions.IsQuestUnobtainable(quest.QuestId))
                     _questController.PriorityManager.Add(quest.QuestId);
@@ -200,8 +199,7 @@ internal sealed class QuestSelectionWindow : LWindow
                 if (ImGui.IsItemHovered())
                     _questTooltipComponent.Draw(quest);
 
-                // The menu has to be drawn every frame to stay open; the id keeps this cell's menu
-                // apart from the name cell's.
+                // Drawn every frame to stay open; the id keeps it apart from the name cell's menu.
                 using (ImRaii.PushId("Icon"))
                     _questJournalUtils.ShowContextMenu(quest, knownQuest, nameof(QuestSelectionWindow));
             }

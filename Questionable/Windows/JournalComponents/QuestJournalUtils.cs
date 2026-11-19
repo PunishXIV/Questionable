@@ -100,7 +100,6 @@ internal sealed class QuestJournalUtils
 
         using (ImRaii.PushIndent())
         {
-            // Without a path there is nothing to set, and Start would just run whatever is current.
             using (ImRaii.Disabled(quest == null || !questFunctions.IsReadyToAcceptQuest(questInfo.QuestId)))
             {
                 if (ImGui.MenuItem(_L("Start as next quest")))
@@ -173,7 +172,6 @@ internal sealed class QuestJournalUtils
             }
         }
 
-        // The rest is for writing and checking paths.
         if (!configuration.Advanced.Debug)
             return;
 
@@ -193,8 +191,6 @@ internal sealed class QuestJournalUtils
             if (ImGui.MenuItem(_L("Edit quest path")))
                 (bool success, string filename) = QuestRegistry.OpenEditor(questInfo);
 
-            // Only offered while the quest has no path at all; once the draft is written and the registry
-            // reloads, the quest is known and the entry disappears on its own.
             if (draftQuestPathService.CanGenerateDrafts &&
                 ImGui.MenuItem(_L("Generate draft path")))
             {
@@ -247,14 +243,11 @@ internal sealed class QuestJournalUtils
             }
         }
 
-        // Queue the group's accept steps before any completions, unlike the normal priority flow.
         if (ImGui.MenuItem(_L("Accept all quests")))
         {
             foreach (IQuestInfo quest in quests)
             {
-                // Only queue quests we can actually accept. This skips ones already completed (e.g. today's daily
-                // is done) and ones already accepted (the normal rules complete those). The current class doesn't
-                // need the level, as long as another class does: the accept step switches to it.
+                // Only quests we can accept now; another class's level is enough, the accept step switches to it.
                 if (questFunctions.CanQueueSociety(quest.QuestId) &&
                     questFunctions.IsReadyToAcceptQuest(quest.QuestId, ignoreLevel: true) &&
                     questFunctions.HasClassJobAtQuestLevel(quest.QuestId))

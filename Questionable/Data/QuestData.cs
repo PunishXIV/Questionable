@@ -595,13 +595,7 @@ internal sealed class QuestData
         if (startingClass == Job.ADV)
             return [];
 
-        // If you start the game as another class, you get:
-        // - "So you want to be a XX"
-        // - "Way of the XX" (depends on "So you want to be a XX")
-        // - "My First XX"
-        // If you start the game with this class, you get:
-        // - "Way of the XX" (no preconditions)
-        // In both cases, the level 10 quests are different
+        // Starting as another class adds "So you want to be a XX" before "Way of the XX"; the level 10 quests differ too.
         List<List<ushort>> startingClassQuests =
         [
             startingClass == Job.GLA ? [177, 285, 286, 288] : [253, 261],

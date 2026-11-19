@@ -1,6 +1,5 @@
 namespace Questionable.Controller.Operations;
 
-// Combat and BossMod solo-duty work can outlive a stop until released.
 [RegisterSingleton<IOperationProvider, CombatCleanupProvider>(Duplicate = DuplicateStrategy.Append)]
 internal sealed class CombatCleanupProvider(
     CombatController combatController,
@@ -42,7 +41,6 @@ internal sealed class CombatCleanupProvider(
             combatController.RetryCleanup();
             try
             {
-                // Solo duties keep local movement/interaction tasks between BossMod activations.
                 bossModIpc.PollQuestBattle();
             }
             catch (Exception e)
@@ -96,6 +94,5 @@ internal sealed class CombatCleanupProvider(
                 : null);
     }
 
-    // The title bar shows combat itself, from CombatController.IsRunning.
     public OperationPill? GetTitleBarPill() => null;
 }

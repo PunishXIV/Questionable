@@ -57,8 +57,7 @@ internal sealed unsafe partial class GameFunctions
 
         if (QuestManager.Instance()->IsQuestAccepted(3304) && Svc.Condition[ConditionFlag.Mounted])
         {
-            // special quest amaro, not the normal one
-            // TODO Check if this also applies to beast tribe mounts
+            // Special quest Amaro (mount 198), not the normal one.
             if (GetMountId() == 198)
                 return true;
         }
@@ -95,8 +94,7 @@ internal sealed unsafe partial class GameFunctions
                 or ObjectKind.Retainer or ObjectKind.HousingEventObject)
                 continue;
 
-            // multiple objects in the object table can share the same data id for gathering points; only one of those
-            // (at most) is visible
+            // Several gathering-point objects share a data id; at most one is visible.
             if (gameObject is { ObjectKind: ObjectKind.GatheringPoint, IsTargetable: false })
                 continue;
 

@@ -36,7 +36,6 @@ internal sealed class HelpUiController : IDisposable
         _addonLifecycle.RegisterListener(AddonEvent.PostSetup, ActiveHelpAddons, ActiveHelpPostSetup);
     }
 
-    // Active Help: the popup and the "?" notice that opens it.
     private static readonly string[] ActiveHelpAddons = ["HowTo", "HowToNotice"];
 
 

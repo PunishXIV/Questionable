@@ -63,7 +63,7 @@ public sealed class PurchaseStateTests
         Assert.False(_state.TryBeginCancel(out _));
         Assert.Throws<TaskException>(() => _state.BeginRequest());
         StableIdle();
-        Assert.False(_state.TryConfirmIdle()); // live operation status overrides an inconsistent idle flag
+        Assert.False(_state.TryConfirmIdle());
         _state.ObservePurchase(owner, ExternalOperationStatus.Cancelled, "stopped");
         Assert.False(_state.HasOperation);
     }

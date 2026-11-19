@@ -3,8 +3,7 @@ using Json.Schema;
 using Questionable.QuestPaths;
 namespace Questionable.Validation.Validators;
 
-// Registered as both JsonSchemaValidator (self) and IQuestValidator via a factory forward in QuestionablePlugin
-// so the same instance is used for both service registrations.
+// Also the IQuestValidator singleton through a factory forward in QuestionablePlugin.
 [RegisterSingleton]
 internal sealed class JsonSchemaValidator : IQuestValidator
 {

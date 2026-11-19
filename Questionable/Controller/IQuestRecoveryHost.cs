@@ -9,7 +9,6 @@ internal interface IQuestRecoveryHost
     bool EscapeRequested { get; }
     bool PlayerMoved { get; }
     bool IsUnconscious { get; }
-    // AutoDuty and Boss Mod quest battles handle death and retries themselves.
     bool ProviderHandlesDeath { get; }
     bool HasExternalOperation { get; }
     bool IsZoning { get; }

@@ -261,7 +261,6 @@ internal sealed class ArtisanProvider(
     }
 }
 
-// Artisan cannot identify or cancel submissions, so uncertain work needs reconciliation.
 [RegisterSingleton]
 internal sealed class CraftingState(TimeProvider? timeProvider = null)
 {

@@ -149,7 +149,6 @@ internal sealed class DebugOverlay : Window
                 continue;
 
             (int priority, string reason) = _combatController.GetKillPriority(npc);
-            // Combat targets move too quickly for smoothing.
             ImGui.GetWindowDrawList().AddText(screenPos + new Vector2(10, -8), priority > 0 ? 0xFF00FF00 : 0xFFFFFFFF,
                 $"{npc.Name}/{npc.GameObjectId:X}, {GameFunctions.GetBaseId(npc)}, {priority} - {reason}, {Vector3.Distance(npc.Position, _objectTable[0]!.Position):N2}, {npc.IsTargetable}");
         }
@@ -206,7 +205,6 @@ internal sealed class DebugOverlay : Window
         var marker = agentMap->FlagMapMarkers[0];
         if (marker.TerritoryId != _clientState.TerritoryType)
             return;
-        // The map flag has no height; the player's is close enough for a debug marker.
         Vector3 flagPos = new(marker.XFloat, _objectTable[0]!.Position.Y, marker.YFloat);
         bool visible = _gameGui.WorldToScreen(flagPos, out Vector2 screenPos);
         if (!visible)

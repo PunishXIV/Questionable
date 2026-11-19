@@ -2,7 +2,6 @@ using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Validation;
 
-// Debug tool: asks MappingTheRealm whether it can reach each positioned quest step, without moving.
 [RegisterSingleton]
 internal sealed class NavCheck(
     MappingTheRealmIpc mappingTheRealm,

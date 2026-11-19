@@ -246,18 +246,12 @@ internal sealed unsafe class GameQuestState(
             if (questRedoHud == null || !questRedoHud->IsAgentActive())
                 return null;
 
-            // there's surely better ways to check this, but the one in the OOB Plugin was even less reliable
             if (gameGui.TryGetAddonByName<AtkUnitBase>("QuestRedoHud", out AtkUnitBase* addon) &&
                 addon->AtkValuesCount == 4 &&
-                // 0 seems to be active,
-                // 1 seems to be paused,
-                // 2 is unknown, but it happens e.g. before the quest 'Alzadaal's Legacy'
-                // 3 seems to be having /ng+ open while active,
-                // 4 seems to be when (a) suspending the chapter, or (b) having turned in a quest
+                // 0 active, 1 paused, 2 before e.g. 'Alzadaal's Legacy', 3 /ng+ open while active, 4 suspended or just turned in.
                 addon->AtkValues[0].UInt is 0 or 2 or 3 or 4)
             {
-                // redoHud+44 is chapter
-                // redoHud+46 is quest
+                // redoHud+44 is the chapter, +46 the quest.
                 return MemoryHelper.Read<ushort>((nint)questRedoHud + 46);
             }
 

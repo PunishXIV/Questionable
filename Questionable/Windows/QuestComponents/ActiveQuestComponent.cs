@@ -780,7 +780,6 @@ internal sealed partial class ActiveQuestComponent
             if (characterRun.StartsList && ImGui.IsItemHovered())
                 QstWidgets.Tooltip(_L("On the character list: when this run ends, Questionable switches to the next ticked character."));
 
-            // Step is for path makers; its icon reads like Skip to everyone else.
             if (configuration.Advanced.Debug)
             {
                 ImGui.SameLine();

@@ -21,7 +21,6 @@ public sealed class StylistIpcTests
         Assert.True(ipc.UpdateGearset());
         Assert.True(ipc.UpdateGearset());
 
-        // Still check for upgrades on each step, but never force an unchanged set to be equipped.
         Assert.Equal(2, requests.Count);
         Assert.All(requests, request =>
         {

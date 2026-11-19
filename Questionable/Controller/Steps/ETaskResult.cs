@@ -11,7 +11,6 @@ internal enum ETaskResult
     // Requires an IExtraTaskCreator executor.
     CreateNewTasks,
 
-    // Clears the queue and regenerates the current step.
     RetryStep,
 
     NextStep,

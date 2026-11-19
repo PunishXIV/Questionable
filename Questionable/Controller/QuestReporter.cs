@@ -8,8 +8,6 @@ using QuestProgress = Questionable.Controller.QuestController.QuestProgress;
 
 namespace Questionable.Controller;
 
-// Quest results for the community counts (GitHub #9 and #10). Automatic reports need the player's yes;
-// a click on the report button or chat link is consent for that one report.
 [RegisterSingleton]
 internal sealed class QuestReporter
 {
@@ -21,8 +19,7 @@ internal sealed class QuestReporter
     private static readonly TimeSpan RetryDelay = TimeSpan.FromMinutes(1);
     private static readonly TimeSpan FreshWindow = TimeSpan.FromMinutes(15);
 
-    // Plugins whose version helps reproduce a problem; the Worker accepts up to 16 entries,
-    // including Questionable and Paths.
+    // The Worker accepts up to 16 entries, including Questionable and Paths.
     private static readonly string[] TrackedPlugins =
         ["BossMod", "vnavmesh", "TextAdvance", "Lifestream", "AutoDuty", "WrathCombo", "RotationSolver", "GatherChill",
             "Knightshopper", "WahTools", "MappingTheRealm"];
@@ -83,7 +80,6 @@ internal sealed class QuestReporter
 
     private bool Sharing => _configuration.Reports.Share == true;
 
-    // Detection points call this right before the stop that follows.
     public void Problem(EProblemKind kind) => _pending = kind;
 
     public void Stopped(QuestProgress? at, string reason, IReadOnlyList<string> recentTasks)
@@ -101,7 +97,6 @@ internal sealed class QuestReporter
             Offer(body);
     }
 
-    // A quest QST finished; a quest that already had a problem this session isn't "worked".
     public void Completed(Quest quest)
     {
         if (_problemSent.Remove(quest.Id) || !Sharing ||

@@ -233,7 +233,7 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
 
         WhileActive(() => _configuration.PathData.LastCheck = DateTimeOffset.UtcNow);
 
-        // Gate A: a bundle that needs a newer plugin can't be used.
+        // A bundle that needs a newer plugin can't be used.
         if (!manifest.IsCompatibleWith(PathDataFormat.CurrentVersion))
         {
             _logger.LogInformation("Newer path data is available but requires a newer plugin version");
@@ -297,7 +297,6 @@ internal sealed class PathDataUpdater : IDisposable, IAsyncDisposable
             }
         }
 
-        // Atomic install: write to a temp file, then move into place.
         string bundlePath = PathDataBundle.GetFilePath(_pluginInterface);
         string tempPath = bundlePath + $".{Guid.NewGuid():N}.tmp";
         try

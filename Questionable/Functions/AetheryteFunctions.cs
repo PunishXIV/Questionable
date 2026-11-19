@@ -98,8 +98,7 @@ internal sealed unsafe class AetheryteFunctions
         if (playerState == null)
             return AetheryteRegistrationResult.NotPossible;
 
-        // if we have a free or favored aetheryte assigned to this location, we don't override it (and don't upgrade
-        // favored to free, either).
+        // Don't override (or upgrade) a free or favored aetheryte already set here.
         if (IsFreeAetheryte(aetheryteLocation))
             return AetheryteRegistrationResult.NotPossible;
 

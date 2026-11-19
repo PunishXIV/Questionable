@@ -157,7 +157,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
             .ToImmutableDictionary(x => x.Key,
                 x =>
                     x.Value
-                        // level 10 quests use the same quest battle for [you started as this class] and [you picked this class up later]
+                        // Level 10 class quests share one quest battle, whether the class was the first or picked up later.
                         .DistinctBy(y => y.CfcId)
                         .OrderBy(y => y.JournalGenreId)
                         .ThenBy(y => y.SortKey)

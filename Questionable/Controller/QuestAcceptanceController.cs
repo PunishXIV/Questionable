@@ -5,11 +5,8 @@ namespace Questionable.Controller;
 [RegisterSingleton]
 internal sealed class QuestAcceptanceController(Configuration configuration)
 {
-    // Waits queued for quests that weren't accepted yet. They end with the task plan.
     private readonly HashSet<ElementId> _queued = [];
 
-    // The unaccepted next-quest selection. It survives replans but ends when this exact selection is replaced,
-    // so selecting the same quest again starts a new expectation.
     private QuestController.QuestProgress? _selectedNext;
 
     public bool StopAfterNextAccept { get; set; }
@@ -37,7 +34,6 @@ internal sealed class QuestAcceptanceController(Configuration configuration)
                 continue;
             }
 
-            // Fails for waits an earlier report's stop already ended.
             if (isAccepted(questId) && TryConsumeQueued(questId))
                 onAccepted(questId);
         }

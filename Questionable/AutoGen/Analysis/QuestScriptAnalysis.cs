@@ -7,8 +7,7 @@ namespace Questionable.AutoGen.Analysis;
 
 internal sealed class QuestScriptAnalysis
 {
-    // Function names are compared case-insensitively: the same helper is spelled getNpcTradeItemInfo in some
-    // scripts and GetNpcTradeItemInfo in others.
+    // Script helper names vary in case (getNpcTradeItemInfo vs GetNpcTradeItemInfo).
     private static readonly string[] SequenceMappingFunctions =
     [
         "IsAcceptEvent",
@@ -94,9 +93,6 @@ internal sealed class QuestScriptAnalysis
                 continue;
             }
 
-            // Only the first actor of a branch is that sequence's primary target; the ones after it are usually
-            // actors carried over from earlier sequences that happen to still be targetable. They are kept as
-            // candidates anyway, because a "speak with all three" sequence really does need all of them.
             if (symbols.DataId(symbol) is > 0)
             {
                 lastActor = symbol;

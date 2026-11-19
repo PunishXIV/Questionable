@@ -37,7 +37,6 @@ internal sealed class CreationUtilsComponent
         if (objectTable[0] == null)
             return;
 
-        // Pathmaker info; the status lines below have their own toggles.
         if (configuration.Advanced.Debug)
             DrawZone();
 

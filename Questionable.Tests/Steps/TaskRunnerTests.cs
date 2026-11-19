@@ -244,10 +244,10 @@ public sealed class TaskRunnerTests
         {
             fixture.Queue.Enqueue(interaction);
             fixture.Queue.Enqueue(new WaitAtEnd.NextStep(new QuestId(123), 1));
-            fixture.Controller.Tick(); // Start interaction.
-            fixture.Controller.Tick(); // Complete interaction.
-            fixture.Controller.Tick(); // Start final step marker.
-            fixture.Controller.Tick(); // Complete step; no next step is enqueued.
+            fixture.Controller.Tick();
+            fixture.Controller.Tick();
+            fixture.Controller.Tick();
+            fixture.Controller.Tick();
             Assert.Equal(1, fixture.Controller.CompletedTasks);
         }
         Assert.True(fixture.Queue.AllTasksComplete);
@@ -279,8 +279,8 @@ public sealed class TaskRunnerTests
         var next = new WaitAtEnd.NextStep(new QuestId(123), 1);
         fixture.Queue.Enqueue(interaction);
         fixture.Queue.Enqueue(next);
-        fixture.Controller.Tick(); // Start interaction.
-        fixture.Controller.Tick(); // Complete interaction; final marker remains pending.
+        fixture.Controller.Tick();
+        fixture.Controller.Tick();
         Assert.Equal(1, fixture.Controller.CompletedTasks);
         Assert.Null(fixture.Queue.CurrentTaskExecutor);
         Assert.Same(next, Assert.Single(fixture.Queue.RemainingTasks));
@@ -327,10 +327,10 @@ public sealed class TaskRunnerTests
             previous.CurrentTask.Returns(current);
             previous.Update().Returns(ETaskResult.SkipRemainingTasksForStep);
             Assert.True(fixture.Queue.StartTask(previous, current));
-            fixture.Queue.Enqueue(new WaitAtEnd.WaitDelay()); // Must be discarded before the final task.
+            fixture.Queue.Enqueue(new WaitAtEnd.WaitDelay());
         }
         fixture.Queue.Enqueue(final);
-        fixture.Queue.Enqueue(new WaitAtEnd.WaitDelay()); // Must not start if the final task fails.
+        fixture.Queue.Enqueue(new WaitAtEnd.WaitDelay());
         return previous;
     }
 }

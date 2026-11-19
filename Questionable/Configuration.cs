@@ -11,8 +11,7 @@ internal sealed class Configuration : IPluginConfiguration
 {
     private static Configuration? _runtimeInstance;
 
-    // Static game helpers must use the same live profile as injected consumers.
-    // GetPluginConfig deserializes the saved base settings without activating a profile.
+    // GetPluginConfig deserializes the base settings without activating a profile.
     internal static Configuration Instance() => Volatile.Read(ref _runtimeInstance)
         ?? throw new InvalidOperationException("Runtime configuration has not been initialized.");
 
@@ -347,7 +346,6 @@ internal sealed class Configuration : IPluginConfiguration
     // Outside the profiles: the player's answer and the admin token belong to this install.
     internal sealed class ReportConfiguration
     {
-        // Null until the player answered the one-time question.
         public bool? Share { get; set; }
         public bool ShowCounts { get; set; } = true;
         public string AdminToken { get; set; } = string.Empty;
@@ -363,7 +361,6 @@ internal sealed class Configuration : IPluginConfiguration
 
     internal sealed class CharacterConfiguration
     {
-        // Content ids ticked for a run over several characters.
         public List<ulong> EnabledIds { get; set; } = [];
     }
 

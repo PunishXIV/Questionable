@@ -9,7 +9,6 @@ using Quest = Questionable.Domain.Quest;
 
 namespace Questionable.Controller.Steps.Shared;
 
-// Between quests, repairs worn gear: with Dark Matter when a crafter can, otherwise at a Grand Company mender.
 internal static class Repair
 {
     private const uint RepairAction = 6;
@@ -219,7 +218,6 @@ internal static class Repair
         public override string ToString() => "RepairDone";
     }
 
-    // Plans the accept step again, which walks back to the quest giver.
     internal sealed class DoneExecutor : TaskExecutor<Done>
     {
         protected override bool Start() => true;

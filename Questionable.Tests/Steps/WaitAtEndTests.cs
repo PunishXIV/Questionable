@@ -53,7 +53,7 @@ public sealed class WaitAtEndTests
             turnIn ? EInteractionType.CompleteQuest : EInteractionType.AcceptQuest);
         TaskQueue queue = fixture.Queue;
         queue.Enqueue(interaction);
-        Assert.True(queue.TryDequeue(out _)); // Interaction completed before the quest-state wait.
+        Assert.True(queue.TryDequeue(out _));
         queue.Enqueue(wait);
         Assert.True(queue.TryDequeue(out ITask? current));
         Assert.True(queue.StartTask(executor, current));
@@ -123,18 +123,18 @@ public sealed class WaitAtEndTests
             task => Assert.Same(wait, task),
             task => Assert.Same(next, task));
 
-        fixture.ReceiveDamage(); // No executor between tasks: do not duplicate replay.
-        controller.Tick(); // Start the existing recovery delay.
+        fixture.ReceiveDamage();
+        controller.Tick();
         var delay = Assert.IsType<WaitAtEnd.WaitDelayExecutor>(queue.CurrentTaskExecutor);
         condition[ConditionFlag.InCombat].Returns(entersCombat);
-        fixture.ReceiveDamage(); // Recovery itself is not damage-interruptible.
+        fixture.ReceiveDamage();
         typeof(DelayedTaskExecutor<WaitAtEnd.WaitDelay>)
             .GetField("_continueAt", BindingFlags.Instance | BindingFlags.NonPublic)!
             .SetValue(delay, DateTime.MinValue);
-        controller.Tick(); // Complete recovery without a wall-clock sleep.
-        controller.Tick(); // Start the late check.
+        controller.Tick();
+        controller.Tick();
         fixture.ReceiveDamage();
-        controller.Tick(); // Insert combat ahead of the original replay, if now needed.
+        controller.Tick();
 
         ITask[] remaining = queue.RemainingTasks.ToArray();
         int index = 0;

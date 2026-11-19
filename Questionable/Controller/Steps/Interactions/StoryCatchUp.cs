@@ -7,7 +7,6 @@ using static Questionable.Controller.Steps.ITaskExecutor;
 
 namespace Questionable.Controller.Steps.Interactions;
 
-// When the story is too high: AutoDuty dungeon runs for level, tomestone accessories and then runs for item level.
 [RegisterSingleton]
 internal sealed class StoryCatchUp(
     AutoDutyProvider autoDuty,
@@ -26,7 +25,6 @@ internal sealed class StoryCatchUp(
 
     public bool Enabled => configuration.Duties.CatchUpForStory && configuration.Duties.RunInstancedContentWithAutoDuty;
 
-    // The highest Duty Support dungeon the player can enter that AutoDuty has a path for.
     internal static TerritoryData.CfcData? PickDungeon(IEnumerable<TerritoryData.CfcData> duties, int playerLevel,
         Func<uint, bool> hasSupport, Func<uint, bool> hasPath) =>
         duties
@@ -38,7 +36,6 @@ internal sealed class StoryCatchUp(
 
     internal sealed record Accessory(uint ItemId, int Slot, int ItemLevel);
 
-    // Per slot the best offered piece, kept only when it beats what's worn there.
     internal static List<uint> PickAccessories(IEnumerable<Accessory> offered, Func<int, int> wornLevel) =>
         offered.GroupBy(x => x.Slot)
             .Select(x => x.MaxBy(y => y.ItemLevel)!)
@@ -59,7 +56,6 @@ internal sealed class StoryCatchUp(
         return new Duty.StartAutoDutyTask(dungeon.Id, Duty.Mode.Support);
     }
 
-    // Null lets the duty's own item level check stop as before.
     public List<ITask>? GearUp(TerritoryData.CfcData duty, int playerLevel, short itemLevel)
     {
         string reason = _LF("'{0}' needs item level {1} (you have {2})", duty.Name, duty.RequiredItemLevel, itemLevel);
@@ -124,7 +120,6 @@ internal sealed class StoryCatchUp(
         _ => null,
     };
 
-    // Plans the step again, so the duty is checked with the new level or gear.
     internal sealed record Replan : ITask
     {
         public override string ToString() => "CatchUpReplan";

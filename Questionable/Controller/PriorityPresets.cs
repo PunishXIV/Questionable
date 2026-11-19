@@ -33,7 +33,6 @@ internal sealed class PriorityPresets(
 
     public void Reload() => _builtIn = null;
 
-    // Built-in presets win over a custom preset with the same name.
     public bool TryGetByName(string name, [NotNullWhen(true)] out List<ElementId>? quests)
     {
         if (BuiltIn.FirstOrDefault(x => x.Name == name) is { } preset)
@@ -173,7 +172,7 @@ internal sealed class PriorityPresets(
             2386, // gubal hard
             2402, // sohm al hard
         ]).FromNumericListOfQuests();
-        // Highest unlock level first: a new 80 job meets the level of every unlock after it.
+        // Highest unlock level first.
         List<ElementId> jobUnlocks = ((ushort[])[
             4854,4855, // Pictomancer (80)
             4848,4849, // Viper (80)

@@ -139,8 +139,7 @@ internal sealed class QuestGameData : IDisposable
             }
             catch (Exception)
             {
-                // Not every zone has every layer file, and a few of the ones that do fail to parse. Layer data
-                // is a fallback for positions the Level sheet is missing, so losing one file is not fatal.
+                // Not every zone has every layer file, and a few fail to parse.
                 continue;
             }
 

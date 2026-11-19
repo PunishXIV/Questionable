@@ -615,7 +615,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
                 return;
             }
 
-            // Queue currently available accept-only priority quests before completing any.
             if (QuestSelectionController.ShouldQueueAcceptOnly(Slots, AutomationType))
                 TryQueueAcceptOnly();
 
@@ -671,7 +670,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         }
     }
 
-    // True ends this update.
     private bool UpdateAcceptedQuests()
     {
         // Observe expected acceptances before quest selection or a sequence change replaces the queue.
@@ -709,7 +707,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
 
     private bool TryStopAtStopPoint()
     {
-        // Honor the stop-after toggle before starting queued or priority quests.
         EStopPoint? stopPoint = _selection.GetStopPoint(StartedQuest, StopAfterCurrentQuest, SelectionState);
         if (StartedQuest != null && stopPoint == EStopPoint.Configured && TryLoadPreset(StartedQuest.Quest))
         {
@@ -749,7 +746,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         return false;
     }
 
-    // A stop point with a preset queues that preset and lets the run continue.
     private bool TryLoadPreset(Quest quest)
     {
         Configuration.StopConfiguration stop = _configuration.Stop;
@@ -771,7 +767,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         return true;
     }
 
-    // False ends this update. A null quest with true means there is nothing left to run.
     private bool TryGetQuestToRun(QuestChoice choice, out QuestProgress? questToRun)
     {
         questToRun = choice.Progress;
@@ -870,7 +865,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         {
             if (_storyCatchUp?.Enabled == true)
             {
-                // A levelling run is queued or running; the next update checks the level again.
                 if (IsRunning)
                     return;
                 if (_storyCatchUp.LevelRun(_LF("'{0}' needs level {1} (you're level {2})", lockedMsq.Name, lockedMsq.Level, playerLevel),
@@ -1074,7 +1068,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
         bool wasRunning = IsRunning || AutomationType != EAutomationType.Manual;
         bool wasAutomatic = AutomationType == EAutomationType.Automatic;
         QuestProgress? stoppedAt = wasRunning && IsQuestRun() && SimulatedQuest == null ? StartedQuest : null;
-        // Plugin work still needs cleanup even if its executor is already gone.
         ClearTasksInternal();
         _reports.Stopped(stoppedAt, policyReason ?? label, RecentTasks);
         if (!wasRunning)
@@ -1482,7 +1475,6 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             controller._questFunctions.GetCurrentQuest(allowNewMsq, skipPriority);
     }
 
-    // Accept-only priorities run sequence 0, then remain for normal completion.
     private bool TryQueueAcceptOnly()
     {
         if (_dailies != null)
@@ -1508,8 +1500,7 @@ internal sealed class QuestController : MiniTaskController<QuestController>, IEx
             return false;
         }
 
-        // We are already trying to accept this quest: don't call SetNextQuest again. It rebuilds NextQuest with Step = 0,
-        // which would reset the accept sequence every step boundary and loop it forever before it ever reaches the Interact/accept step.
+        // SetNextQuest resets Step to 0, which would restart the accept every step boundary forever.
         if (NextQuest?.Quest.Id == next.Id)
             return true;
 

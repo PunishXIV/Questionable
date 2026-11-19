@@ -9,8 +9,7 @@ internal sealed class TravelDestinationResolver(
 {
     public ushort? FindTargetTerritory(QuestController.QuestProgress currentQuest)
     {
-        // this can be triggered either manually (in which case we should increase the step counter), or automatically
-        // (in which case it is ~1 frame later, and the step counter has already been increased)
+        // Manual triggers need the step count increased; automatic ones come a frame later, already counted.
         QuestSequence? sequence = currentQuest.FindSequence();
         if (sequence == null)
             return null;

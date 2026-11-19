@@ -229,7 +229,6 @@ internal sealed class QuestWindow : LWindow, IPersistableWindowConfig
             _creationUtilsComponent.Draw();
     }
 
-    // /qst priority and the quest window's buttons open the queue.
     private void OnQueueRequested(object? sender, EventArgs e)
     {
         IsOpenAndUncollapsed = true;

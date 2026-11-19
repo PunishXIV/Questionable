@@ -29,10 +29,7 @@ internal static class QuestCraftingRequirements
             ? GetItems(questId)
             : [];
 
-    // Reviewed requirements for shipped crafting quests, from the QuestRequiredItem.csv embedded in
-    // LuminaSupplemental.Excel 4.3.3. This is local data, not a runtime dependency on that package or Artisan.
-    // Level-5 counts include Artisan's correction, cross-checked against our existing paths.
-    // WVR 590 and the seven Namazu additions were verified in installed quest Lua (2026.10.16).
+    // From LuminaSupplemental.Excel 4.3.3's QuestRequiredItem.csv; WVR 590 and seven Namazu entries checked in quest Lua.
     private static readonly Dictionary<ushort, IReadOnlyList<CraftingItem>> Items =
         new()
     {

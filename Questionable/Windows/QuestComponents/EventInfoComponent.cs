@@ -1,4 +1,6 @@
-﻿using static Questionable.Utils.CacheUtils;
+﻿using Humanizer;
+using Humanizer.Localisation;
+using static Questionable.Utils.CacheUtils;
 namespace Questionable.Windows.QuestComponents;
 
 [RegisterSingleton]
@@ -13,10 +15,23 @@ internal sealed class EventInfoComponent
     QuestTooltipComponent questTooltipComponent,
     Configuration configuration)
 {
+    internal static readonly Dictionary<ushort, EventDetails> Details = new()
+    {
+        [39] = new($"{_T<Lumina.Excel.Sheets.BannerBg>(233)} {DateTime.UtcNow.Year}"), // Yokai Watch
+        [84] = new($"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(70)} {DateTime.UtcNow.Year}"), // FFXV
+        [147] = new($"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(71)} {DateTime.UtcNow.Year}", AtDailyReset(2026, 12, 9)), // FFXVI
+        [148] = new($"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(74)} {DateTime.UtcNow.Year}"), // Fall Guys
+        [176] = new($"{_T<Lumina.Excel.Sheets.FittingShopCategory>(109)} {DateTime.UtcNow.Year}"), // All Saints' Wake
+        [257] = new($"{_T<Lumina.Excel.Sheets.CabinetSubCategory>(200)} {DateTime.UtcNow.Year}", AtDailyReset(2027, 2, 23)), // FFVII Keybound Brawlers
+    };
+
+    private static DateTime AtDailyReset(int year, int month, int day) => new(new(year, month, day), new(14, 59), DateTimeKind.Utc);
+
     private CachedValue<List<Event>> _events = new(ttlSeconds: 1);
 
     private List<Event> Events => _events.Get(() => GetEvents(questData.SeasonalQuests, questFunctions.ActiveFestivals,
-        x => questData.TryGetQuestInfo(x, out IQuestInfo? info) ? info : null, questFunctions.IsPreviousQuestMet));
+        x => questData.TryGetQuestInfo(x, out IQuestInfo? info) ? info : null, questFunctions.IsPreviousQuestMet,
+        x => Details.GetValueOrDefault(x)));
 
     public bool ShouldDraw => configuration.General.ShowIncompleteSeasonalEvents && Events.Any(x => x.QuestIds.Any(ShouldShowQuest));
 
@@ -29,6 +44,12 @@ internal sealed class EventInfoComponent
     private void DrawEvent(Event gameEvent)
     {
         ImGui.Text(gameEvent.Name);
+        if (gameEvent.EndsAtUtc is { } endsAt && endsAt > DateTime.UtcNow)
+        {
+            ImGui.SameLine();
+            ImGui.Text(_LF("ends in {0}", (endsAt - DateTime.UtcNow).Humanize(1, CultureInfo.InvariantCulture,
+                minUnit: TimeUnit.Minute, maxUnit: TimeUnit.Day)));
+        }
 
         List<ElementId> startableQuests = gameEvent.QuestIds.Where(x =>
                 questRegistry.IsKnownQuest(x) &&
@@ -87,21 +108,26 @@ internal sealed class EventInfoComponent
             .Distinct();
 
     internal static List<Event> GetEvents(IEnumerable<QuestInfo> seasonal, IReadOnlyList<(ushort Id, ushort Phase)> festivals,
-        Func<QuestId, IQuestInfo?> info, Func<PreviousQuestInfo, bool> met) =>
+        Func<QuestId, IQuestInfo?> info, Func<PreviousQuestInfo, bool> met, Func<ushort, EventDetails?> details) =>
     [
         .. seasonal
             .Where(x => x.IsRunning(festivals))
             .GroupBy(x => x.FestivalId)
-            .Select(x => new Event(x.First().Name, [
-                .. x.SelectMany(y => QuestChain.Before((QuestId)y.QuestId, info, met).Chain)
-                    .Distinct()
-                    .Cast<ElementId>()
-            ]))
+            .Select(x => new Event(
+                details(x.Key)?.Name ?? x.First().Name,
+                [
+                    .. x.SelectMany(y => QuestChain.Before((QuestId)y.QuestId, info, met).Chain)
+                        .Distinct()
+                        .Cast<ElementId>()
+                ],
+                details(x.Key)?.EndsAtUtc))
     ];
 
     private bool ShouldShowQuest(ElementId questId) =>
         !questFunctions.IsQuestUnobtainable(questId) &&
         (configuration.General.ShowCompleteSeasonalEvents || !questFunctions.IsQuestComplete(questId));
 
-    internal sealed record Event(string Name, List<ElementId> QuestIds);
+    internal sealed record Event(string Name, List<ElementId> QuestIds, DateTime? EndsAtUtc = null);
+
+    internal sealed record EventDetails(string Name, DateTime? EndsAtUtc = null);
 }

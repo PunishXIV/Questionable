@@ -82,8 +82,6 @@ public sealed class UniqueStartStopValidatorTests
     [Fact]
     public void AcceptQuestWithPickUpQuestId_IsIgnored()
     {
-        // A nested quest-accept (PickUpQuestId set) should not count
-        // as the quest's own AcceptQuest, so MissingQuestAccept is expected
         var quest = CreateQuest(new QuestId(1),
             Seq(0, Step(EInteractionType.AcceptQuest, pickUpQuestId: new QuestId(99))),
             Seq(255, Step(EInteractionType.CompleteQuest)));
@@ -150,7 +148,6 @@ public sealed class UniqueStartStopValidatorTests
     [Fact]
     public void NoSequence0_NoMissingAcceptIssue()
     {
-        // Guard: MissingQuestAccept is only reported when sequence 0 exists
         var quest = CreateQuest(new QuestId(1),
             Seq(255, Step(EInteractionType.CompleteQuest)));
 
@@ -162,7 +159,6 @@ public sealed class UniqueStartStopValidatorTests
     [Fact]
     public void NoSequence255_NoMissingCompleteIssue()
     {
-        // Guard: MissingQuestComplete is only reported when sequence 255 exists
         var quest = CreateQuest(new QuestId(1),
             Seq(0, Step(EInteractionType.AcceptQuest)));
 

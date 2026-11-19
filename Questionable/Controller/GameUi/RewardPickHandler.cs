@@ -12,7 +12,6 @@ using ERewardRule = Questionable.Configuration.ERewardRule;
 
 namespace Questionable.Controller.GameUi;
 
-// Picks a quest's optional reward while Questionable runs TextAdvance, whose own pick is off then.
 [RegisterSingleton]
 internal sealed unsafe class RewardPickHandler : IDisposable
 {
@@ -48,7 +47,6 @@ internal sealed unsafe class RewardPickHandler : IDisposable
     internal sealed record Option(uint ItemId, bool UnownedCollectible, int UpgradeGain, bool Coffer, bool AllaganPiece,
         uint VendorValue);
 
-    // The first enabled rule that matches wins; otherwise the highest vendor value, then the first option.
     internal static int Choose(IReadOnlyList<Option> options, IEnumerable<ERewardRule> order, IReadOnlySet<ERewardRule> disabled)
     {
         foreach (ERewardRule rule in order.Distinct().Concat(DefaultOrder).Distinct().Where(x => !disabled.Contains(x)))

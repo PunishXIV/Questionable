@@ -99,8 +99,7 @@ internal static class ImGuiComponentsLocal
         ImGui.InputTextWithHint("##filter", "Search...", ref searchString, 256);
 
         bool picked = false;
-        // The option list lives in its own fixed-height scrollable child so the search box above
-        // stays pinned and visible; SetItemDefaultFocus() then scrolls the child, not the popup.
+        // A fixed-height child keeps the search box visible; SetItemDefaultFocus then scrolls the child.
         int visibleRows = Math.Clamp(labels.Length, 1, 12);
         var listSize = ImGui.GetContentRegionAvail() with { Y = ImGui.GetTextLineHeightWithSpacing() * visibleRows };
         using (var child = ImRaii.Child("##searchableComboList", listSize))

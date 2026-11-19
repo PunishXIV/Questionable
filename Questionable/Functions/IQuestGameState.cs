@@ -2,7 +2,6 @@ using ECommons.ExcelServices;
 
 namespace Questionable.Functions;
 
-// Every live game read QuestFunctions needs; GameQuestState reads the client, tests use a fake.
 internal interface IQuestGameState : IPrerequisiteState
 {
     bool HasQuestManager { get; }

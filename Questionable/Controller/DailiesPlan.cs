@@ -68,7 +68,7 @@ internal sealed class DailiesPlan(IReadOnlyList<EAlliedSociety> societies)
         if (work.Count == 0)
             return null;
 
-        // Ixal craft materials carry a timed buff; do not leave them waiting for another trip.
+        // Ixal craft materials carry a timed buff.
         Entry? craft = Travel(work.Where(x => x.Accepted && x.CraftReady), territory, position).FirstOrDefault();
         if (craft != null)
             return Pick(craft);
