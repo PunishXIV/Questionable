@@ -103,9 +103,6 @@
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
-            "Notes": [
-              "Move up the ramp to the bridge, stay by Mylla, ignore Leavold"
-            ],
             "TestedBossModVersion": "0.4.21.1"
           }
         }

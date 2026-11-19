@@ -89,10 +89,7 @@
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
-            "TestedBossModVersion": "0.3.2.4",
-            "Notes": [
-              "Duty somewhat expects you to put the boss to sleep, vbm doesn't and lets the friendly NPC die"
-            ]
+            "TestedBossModVersion": "0.3.2.4"
           }
         }
       ]

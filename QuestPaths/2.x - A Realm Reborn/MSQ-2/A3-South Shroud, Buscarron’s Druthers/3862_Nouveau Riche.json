@@ -54,10 +54,7 @@
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292",
-            "Notes": [
-              "AI will kill initial adds before the boss, but not switch target whenever new enemies spawn; all NPCs need to be killed for the duty to complete"
-            ]
+            "TestedBossModVersion": "0.0.0.292"
           }
         }
       ]

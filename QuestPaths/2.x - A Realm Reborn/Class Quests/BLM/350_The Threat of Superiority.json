@@ -64,10 +64,7 @@
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
-            "TestedBossModVersion": "0.3.2.4",
-            "Notes": [
-              "vbm takes a while to move to the enemies, but it does fight as well as interact -alydev"
-            ]
+            "TestedBossModVersion": "0.3.2.4"
           }
         }
       ]

@@ -252,7 +252,7 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
             }
 
             ImGui.SameLine();
-            ImGuiComponents.HelpMarker(_L("Retries start at 'Very Easy'. The first attempt may start at 'Normal'."));
+            ImGuiComponents.HelpMarker(_L("Retries run at 'Very Easy'."));
 
             using (ImRaii.Disabled(!retryOnFailure))
             using (ImRaii.PushIndent())
@@ -283,8 +283,12 @@ internal sealed class QuestBattleConfigComponent : ConfigComponent, IDisposable
                 DrawOtherQuestTab();
             }
 
-            DrawEnableAllButton();
-            ImGui.SameLine();
+            if (Configuration.Advanced.Debug)
+            {
+                DrawEnableAllButton();
+                ImGui.SameLine();
+            }
+
             DrawResetButton(Configuration.SinglePlayerDuties.WhitelistedSinglePlayerDutyCfcIds,
                 Configuration.SinglePlayerDuties.BlacklistedSinglePlayerDutyCfcIds);
         }

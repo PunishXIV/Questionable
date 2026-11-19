@@ -52,10 +52,7 @@
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292",
-            "Notes": [
-              "Healer NPC is only killed after the boss dies; all NPCs need to be killed for the duty to complete"
-            ]
+            "TestedBossModVersion": "0.0.0.292"
           }
         }
       ]

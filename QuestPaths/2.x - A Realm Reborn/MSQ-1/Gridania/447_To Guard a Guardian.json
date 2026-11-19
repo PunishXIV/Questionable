@@ -41,10 +41,7 @@
           "InteractionType": "SinglePlayerDuty",
           "SinglePlayerDutyOptions": {
             "Enabled": true,
-            "TestedBossModVersion": "0.0.0.292",
-            "Notes": [
-              "(Phase 1) Healer NPCs are only killed after the boss dies - allied NPCs will kill them eventually; all NPCs need to be killed for the duty to complete"
-            ]
+            "TestedBossModVersion": "0.0.0.292"
           }
         }
       ]
